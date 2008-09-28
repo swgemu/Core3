@@ -157,6 +157,8 @@ public:
 
 	NpcConversationMessage(CreatureObject* creo, const string& file, const string& str, StfParameter * params)
 			: ObjectControllerMessage(creo->getObjectID(), 0x0B, 0xDF) {
+		params->generate();
+
 		int size = 0x0F + file.size() + str.size() + params->size();
 		bool odd = (size & 1);
 
@@ -180,6 +182,8 @@ public:
 			insertByte(0);
 
 		insertInt(0);
+
+		delete params;
 	}
 
 };

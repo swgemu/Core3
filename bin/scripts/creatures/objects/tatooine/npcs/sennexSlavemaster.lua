@@ -136,7 +136,7 @@ sennexSlavemaster = Creature:new {
       meatMax = 0,
 
       skills = { "sennexattack1", "sennexattack2", "sennexattack3", "sennexattack4", "sennexattack5" },
-      respawnTimer = 120 ,
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

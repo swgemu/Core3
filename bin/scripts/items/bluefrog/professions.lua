@@ -68,3 +68,5 @@ addBFGroup("Non-Combatant Professions", "root");
     addBFProfession("Master Dancer", "Social Professions", "social_dancer_master");
     addBFProfession("Master Image Designer", "Social Professions", "social_imagedesigner_master");
 
+addBFGroup("Jedi Professions", "root");
+ addBFProfession("Master LightSaber", "Jedi Professions", "force_discipline_light_saber_master");

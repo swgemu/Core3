@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-shirtsClothingSet = {nightsisterShirt1, nightsisterShirt2, nightsisterShirt3, shirt3, shirt3Rebel, shirt4, shirt5, shirt7, shirt8, shirt9, shirt10, shirt11, shirt12, shirt13, shirt14, shirt15, shirt16, shirt24, shirt26, shirt27, shirt28, shirt30, shirt32, shirt34, shirt38, shirt42, shirtDera, smcShirt1, smcShirt2, smcShirt3}
+shirtsClothingSet = {shirt3, shirt3Rebel, shirt4, shirt5, shirt7, shirt8, shirt9, shirt10, shirt11, shirt12, shirt13, shirt14, shirt15, shirt16, shirt24, shirt26, shirt27, shirt28, shirt30, shirt32, shirt34, shirt38, shirt42, shirtDera}
 
 addBFItemSet("Shirts Clothing Set" , shirtsClothingSet);

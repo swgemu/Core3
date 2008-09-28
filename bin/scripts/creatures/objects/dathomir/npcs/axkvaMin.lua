@@ -136,7 +136,7 @@ axkvaMin = Creature:new {
       meatMax = 0,
 
       skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
-      respawnTimer = 9000,
+      respawnTimer = 43200,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

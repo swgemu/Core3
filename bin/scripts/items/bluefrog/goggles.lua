@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-goggles = {googles1, goggles2, goggles3, goggles4, goggles5, goggles6, rebreather}
+goggles = {goggles1, goggles2, goggles3, goggles4, goggles5, goggles6, rebreather}
 
 addBFItemSet("Goggles" , goggles);

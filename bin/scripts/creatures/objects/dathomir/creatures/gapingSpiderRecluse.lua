@@ -136,7 +136,7 @@ gapingSpiderRecluse = Creature:new {
       meatMax = 11,
 	  skills = { "gapingSpiderAttack2" },
       --skills = { " Poison attack (strong)", " Ranged attack (spit)", " Area attack (poison)" }  future  area poisons...
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

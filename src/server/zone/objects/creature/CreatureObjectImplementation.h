@@ -609,12 +609,17 @@ public:
 	void setMeditateState();
 
 	void addDamage(CreatureObject* creature, uint32 damage);
+	void removeFromDamageMap(CreatureObject* target);
 
 	bool isLootOwner(CreatureObject* creature);
 	CreatureObject* getLootOwner();
 
 	virtual bool isAttackable() {
 		return !isIncapacitated() && !isDead();
+	}
+
+	virtual void handleDeath() {
+		setPosture(DEAD_POSTURE);
 	}
 
 	inline bool isAttackableBy(CreatureObject* attacker) {
@@ -2006,6 +2011,10 @@ public:
 
 	inline string& getHideType() {
 		return hideType;
+	}
+
+	inline bool hasOrganics(){
+		return ((hideMax + boneMax + meatMax) > 0);
 	}
 
 	inline int getMilk() {

@@ -57,7 +57,7 @@ public:
 	SpawnInfo() {
 		name = "";
 		filename = "";
-		crc = -1;
+		crc = 0;
 	}
 
 	void setName(string n){
@@ -109,9 +109,26 @@ public:
 		if(spawnInfo == NULL)
 			return false;
 
-		spawnInfo->setCRC(crc);
-
+		if (spawnInfo->getCRC() == 0) {
+			spawnInfo->setCRC(crc);
+			//spawnInfo->toString();
+		}
 		return true;
+	}
+
+	void printBadSpawns(){
+		SpawnInfo* spawnInfo;
+		for(int i = 0; i < spawnInfoMap.size(); ++i) {
+
+			spawnInfo = spawnInfoMap.get(i);
+			if(spawnInfo->getCRC() == 0){
+
+				//spawnInfo->toString();
+
+			}
+
+		}
+
 	}
 
 };

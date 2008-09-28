@@ -73,7 +73,7 @@ AddRandomPoolAttackTargetSkill(stormTrooperAttack1)
 
 stormTrooperAttack2 = {
 	attackname = "stormTrooperAttack2",
-	animation = "fire_turret_medium",
+	animation = "fire_turret",
 	
 	requiredWeaponType = RANGED,
 

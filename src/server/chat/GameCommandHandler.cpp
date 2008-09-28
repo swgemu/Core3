@@ -62,20 +62,20 @@ which carries forward this exception.
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
-void GameCommandHandler::init() {	
+void GameCommandHandler::init() {
 	/* Admin Levels */
-	const int DEVELOPER = PlayerImplementation::DEVELOPER;	
-	const int CSR = PlayerImplementation::CSR;	
-	const int EC = PlayerImplementation::EC;	
-	const int LEADQA = PlayerImplementation::LEADQA;		
-	const int QA = PlayerImplementation::QA;		
-	const int NORMAL = PlayerImplementation::NORMAL;	
-	
+	const int DEVELOPER = PlayerImplementation::DEVELOPER;
+	const int CSR = PlayerImplementation::CSR;
+	const int EC = PlayerImplementation::EC;
+	const int LEADQA = PlayerImplementation::LEADQA;
+	const int QA = PlayerImplementation::QA;
+	const int NORMAL = PlayerImplementation::NORMAL;
+
 	/* Admin Groups */
 	const int ALL = DEVELOPER | CSR | EC | LEADQA | QA | NORMAL;
-	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA;	
-	const int PRIVILEGED = DEVELOPER | CSR;	
-	const int CSREVENTS = DEVELOPER | CSR | EC;	
+	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA;
+	const int PRIVILEGED = DEVELOPER | CSR;
+	const int CSREVENTS = DEVELOPER | CSR | EC;
 
 	gmCommands = new GMCommandMap();
 
@@ -103,7 +103,7 @@ void GameCommandHandler::init() {
 			"Warps a player to a given set of coordinates.",
 			"Usage: @warpPlayer <player> <starport |hotel | shuttle | medical | bank | garage | salon | punish>",
 			&warpPlayer);
-	gmCommands->addCommand("summon", PRIVILEGED,
+	gmCommands->addCommand("summon", PRIVILEGED | LEADQA,
 			"Warps a player to your location.",
 			"Usage: @summon <player>",
 			&summon);
@@ -159,7 +159,7 @@ void GameCommandHandler::init() {
 			"Awards a badge to targeted player.",
 			"Usage: @awardBadge <badgeid>",
 			&awardBadge);
-	gmCommands->addCommand("systemMessage", CSREVENTS,
+	gmCommands->addCommand("systemMessage", CSREVENTS | LEADQA,
 			"Sends a message to all players on the server.",
 			"Usage: @systemMessage <range> <message>",
 			&systemMessage);
@@ -199,7 +199,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", STAFF,
+	gmCommands->addCommand("buff", PRIVILEGED | LEADQA,
 			"Buffs your player.",
 			"Usage: @buff",
 			&buff);
@@ -225,7 +225,7 @@ void GameCommandHandler::init() {
 			&getDirection);
 	gmCommands->addCommand("setAdminLevel", DEVELOPER,
 			"Sets your admin level.",
-			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC",
+			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC 32-LEADQA",
 			&setAdminLevel);
 	gmCommands->addCommand("getLocation", ALL,
 			"Gives full detailsofyour location.",
@@ -244,11 +244,11 @@ void GameCommandHandler::init() {
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
-	gmCommands->addCommand("revive", PRIVILEGED,
+	gmCommands->addCommand("revive", PRIVILEGED | LEADQA,
 			"Revives a player.",
 			"Usage: @revive <player>",
 			&revive);
-	gmCommands->addCommand("immune", PRIVILEGED,
+	gmCommands->addCommand("immune", PRIVILEGED | LEADQA,
 			"Toggles immunity.",
 			"Usage: @immune",
 			&immune);
@@ -264,6 +264,14 @@ void GameCommandHandler::init() {
 			"Adds a no build area to the map.",
 			"Usage: @addNoBuildArea <minX> <maxX> <minY> <maxY>",
 			&addNoBuildArea);
+	gmCommands->addCommand("guildAdmin", PRIVILEGED,
+			"Let you join a guild temporarily to administer the guild via guildterminal.",
+			"Usage: @guildAdmin GUILDTAG",
+			&guildAdmin);
+	gmCommands->addCommand("endGuildAdmin", PRIVILEGED,
+			"Let you leave the guild you temporarily joined for support actions.",
+			"Usage: @endGuildAdmin",
+			&endGuildAdmin);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -318,7 +326,7 @@ void GameCommandHandler::map(StringTokenizer tokenizer, Player * player) {
 			player->switchMap(planetid);
 	} else {
 		player->sendSystemMessage("Usage: map <planetid>\n"
-		"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor,\n"
+		"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok,\n"
 		"5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4, 10=Bad player prison (Space)");
 	}
 }
@@ -962,13 +970,15 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 			if (targetPlayer != player)
 				targetPlayer->unlock();
 		}
-	} else if (creature != NULL) {
+	} else if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter()) {
 
 		try {
 			creature->wlock();
 
 			creature->explode(2, false);
 			uint damage = 100000000;
+
+			creature->addDamage(player, damage);
 			creature->takeHealthDamage(damage);
 
 			creature->unlock();
@@ -999,13 +1009,18 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 		zone->lock();
 
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
+			SceneObject
+					* obj =
+							(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
+									i))->_getStub());
 
 			if (obj->isPlayer()) {
 				Player* otherPlayer = (Player*) obj;
 				string otherName = otherPlayer->getFirstName();
 
-				if (otherName != name && player->isInRange(otherPlayer, meter) && (otherPlayer->getAdminLevel() == PlayerImplementation::NORMAL)) {
+				if (otherName != name && player->isInRange(otherPlayer, meter)
+						&& (otherPlayer->getAdminLevel()
+								== PlayerImplementation::NORMAL)) {
 					zone->unlock();
 
 					try {
@@ -1018,18 +1033,41 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 						if (otherPlayer != player)
 							otherPlayer->unlock();
 
-						player->sendSystemMessage("player \'" + otherName + "\' has been killed.");
+						player->sendSystemMessage("player \'" + otherName
+								+ "\' has been killed.");
 					} catch (...) {
 						if (otherPlayer != player)
 							otherPlayer->unlock();
-						player->sendSystemMessage("unable to kill player \'" + otherName + "\'");
+						player->sendSystemMessage("unable to kill player \'"
+								+ otherName + "\'");
 					}
 
 					zone->lock();
 				}
+			} else if (obj->isNonPlayerCreature()) {
+
+				Creature* creature = (Creature*) obj;
+
+				if (!creature->isTrainer() && !creature->isRecruiter()) {
+					zone->unlock();
+
+
+
+					try {
+						uint damage = 100000000;
+						creature->explode(2, false);
+						creature->addDamage(player, damage);
+						creature->takeHealthDamage(damage);
+						player->sendSystemMessage("creature has been killed.");
+					} catch (...) {
+						player->sendSystemMessage("unable to kill creature");
+					}
+
+					zone->lock();
+
+				}
 			}
 		}
-
 		zone->unlock();
 	} catch (...) {
 		zone->unlock();
@@ -1875,49 +1913,66 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 		return;
 	}
 
-	try {
-		objcrc = creatureManager->getCreatureCrc(name);
+	objcrc = creatureManager->getCreatureCrc(name);
 
-		if(objcrc == 0)
-			return;
-
-	} catch (...) {
-		return;
-	}
 
 	if (player->getParent() != NULL) {
 		cellid = player->getParent()->getObjectID();
 	} else {
-		cellid = player->getZoneID();
+		cellid = 0;
 	}
 
+	float height = 1;
 	x = player->getPositionX();
 	y = player->getPositionY();
 
-	/*try {
+	if (tokenizer.hasMoreTokens())
+		height = tokenizer.getFloatToken();
 
-		if (tokenizer.hasMoreTokens()) {
-			tokenizer.getFloatToken(x);
-		}
-		if (tokenizer.hasMoreTokens()) {
-			tokenizer.getFloatToken(y);
-		}
+	if (tokenizer.hasMoreTokens()) {
+		x = tokenizer.getFloatToken();
+	}
 
-	} catch (...) {
+	if (tokenizer.hasMoreTokens()) {
+		y = tokenizer.getFloatToken();
+	}
 
-	}*/
+	if (height > 100)
+		height = 100;
 
-	Creature* creature =  creatureManager->spawnCreature(objcrc, 0, x, y, 0, false, true);
+	if (height < .01f)
+		height = .01f;
 
-	if(creature != NULL)
-		return;
+	if (x > 7680)
+		x = 7680;
+	if(x < -7680)
+		x = -7680;
 
-	creatureManager->hotLoadCreature(name);
+	if(y > 7680)
+		y = 7680;
+	if(y < -7680)
+		y = -7680;
 
-	creature = creatureManager->spawnCreature(objcrc, 0, x, y, 0, false, true);
 
-	if(creature == NULL)
-		player->sendSystemMessage("Error spawning creature");
+	Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
+			0, false, true, height);
+
+	if (creature == NULL) {
+
+		creatureManager->hotLoadCreature(name);
+
+		creature = creatureManager->spawnCreature(objcrc, cellid, x, y, 0,
+				false, true, height);
+
+	}
+
+	if (creature != NULL) {
+		creature->setRespawnTimer(0);
+		creature->setHeight(height);
+	}
+	else
+		player->sendSystemMessage("Cannot spawn creature");
+
 
 }
 void GameCommandHandler::addNoBuildArea(StringTokenizer tokenizer, Player* player) {
@@ -1955,5 +2010,94 @@ void GameCommandHandler::addNoBuildArea(StringTokenizer tokenizer, Player* playe
 	} catch (...) {
 		player->sendSystemMessage("No Build Area could not be created (Exception Thrown)");
 		cout << "Unspecified Exception Caught in GameCommandHandler::addNoBuildArea" << endl;
+	}
+}
+
+void GameCommandHandler::guildAdmin(StringTokenizer tokenizer, Player * player) {
+	string tag;
+
+	if (!tokenizer.hasMoreTokens()) {
+		player->sendSystemMessage("Wrong format: Guildtag/abbrev. missing!");
+		return;
+	} else {
+			tokenizer.getStringToken(tag);
+	}
+
+	ZoneServer* server;
+
+	GuildManager* guildManager;
+
+	Guild* playerGuild;
+
+	ChatRoom* room;
+
+	try {
+		server = player->getZone()->getZoneServer();
+		if (server == NULL)
+			return;
+
+
+		guildManager = server->getGuildManager();
+		if (guildManager == NULL)
+			return;
+
+
+		playerGuild = guildManager->getGuild(tag, true);
+
+		if (playerGuild == NULL) {
+			player->sendSystemMessage("Guild not found!  Remember: Tag/abbrev. is case sensitive.");
+				return;
+		}
+
+		player->setGuild(playerGuild);
+		player->updateGuild(playerGuild);
+		player->setGuildLeader(true);
+		player->setGuildPermissions(255);
+
+		room = playerGuild->getGuildChat();
+
+		if (room != NULL) {
+			room->sendTo(player);
+			room->addPlayer(player, false);
+		}
+
+
+		stringstream message;
+
+		message << "You have become part and temporarely co-leader of the guild '" << playerGuild->getGuildName() << "'.\n"
+			<< "Please make sure, after you finished support actions, to leave the guild by typing @endGuildAdmin.";
+
+		player->sendSystemMessage(message.str());
+
+	} catch (...) {
+		return;
+	}
+}
+
+void GameCommandHandler::endGuildAdmin(StringTokenizer tokenizer, Player * player) {
+	uint64 defGuild = 0;
+
+	Guild* playerGuild;
+
+	ChatRoom* room;
+
+	try {
+		playerGuild = player->getGuild();
+
+		if (playerGuild != 0) {
+
+			room = playerGuild->getGuildChat();
+			if (room != NULL)
+				room->removePlayer(player, false);
+
+			player->setGuild(defGuild);
+			player->updateGuild(defGuild);
+			player->setGuildLeader(false);
+			player->setGuildPermissions(0);
+
+		}
+
+	} catch (...) {
+		return;
 	}
 }

@@ -696,9 +696,13 @@ bool GuildManagerImplementation::checkGuildProfanity(string returnString, string
 	try {
 		player->wlock();
 
-		//Check guild tag and guild name for invalid characters and profanity
 		string name = tag + returnString;
-		string species = player->getSpeciesName();
+
+		//Since we are "misusing" the character-name-check here for the guildname profanity check,
+		//we need to fake the species to human, o/w the check complains if a (eg.) wookie creates a
+		// two word guild name (Wookies are not allowed to have a surname ( = two words)
+
+		string species = "human"; //player->getSpeciesName();
 
 		if ( playerManager != NULL) {
 			playerManager->wlock();
@@ -2968,7 +2972,7 @@ bool GuildManagerImplementation::checkLastRenameTime(Player* player) {
 
 			uint64 currentTime = systemTime.getMiliTime() / 1000;
 
-			if (currentTime < lastchange+864000) { //1 Day (24 h)
+			if (currentTime < lastchange+86400) { //1 Day (24 h)
 				player->unlock();
 
 				return false;

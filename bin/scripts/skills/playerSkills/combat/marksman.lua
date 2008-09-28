@@ -52,6 +52,9 @@ RandPoolAtt = {
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -83,6 +86,9 @@ RandPoolAtt = {
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -114,6 +120,9 @@ RandPoolAtt = {
 	speedRatio = 1.05,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -146,6 +155,9 @@ DirectPoolAtt = {
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -189,6 +201,9 @@ DirectPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
@@ -230,6 +245,9 @@ DotPoolAtt = {
 	speedRatio = 1.80,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -281,6 +299,9 @@ DirectPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
@@ -323,6 +344,9 @@ DirectPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
@@ -364,6 +388,9 @@ DotPoolAtt = {
 	speedRatio = 1.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 50,
 	strengthAttackChance = 25,
@@ -415,6 +442,9 @@ DirectPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
@@ -456,6 +486,9 @@ RandPoolAtt = {
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	healthAttackChance = 40,
 	strengthAttackChance = 0,
@@ -500,6 +533,9 @@ DirectPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
@@ -541,6 +577,9 @@ DotPoolAtt = {
 	speedRatio = 1.6,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	
@@ -588,6 +627,9 @@ RandPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 	postureUpChance = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -658,6 +700,9 @@ RandPoolAtt = {
 	speedRatio = 1.05,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -689,6 +734,9 @@ RandPoolAtt = {
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 33,
@@ -720,6 +768,9 @@ RandPoolAtt = {
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,

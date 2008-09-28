@@ -112,6 +112,8 @@ interface Weapon implements TangibleObject {
 
 	int getMindAttackCost();
 	
+	int getForceCost();
+	
 	int getPointBlankRange();
 	
 	int getPointBlankAccuracy();

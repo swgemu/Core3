@@ -40,46 +40,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-naboostormtrooper = Creature:new {
-      objectName = "naboostormtrooper",  -- Lua Object Name
+wanderingDesertMarauder = Creature:new {
+      objectName = "wanderingDesertMarauder",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "Marauder",
       gender = "",
 
-      name = "Stormtrooper",
-      objectCRC = 3128894413, 
-      socialGroup = "Imperial",
+      name = "wondering desert Marauder",
+      objectCRC = 4103644702, 
+      socialGroup = "Marauder",
       named = FALSE, 
 
-      level = 80,
-      xp = 10000,
+      level = 47,
+      xp = 4643,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 8800,
-      healthMin = 7200,
-      strength = 500,
-      constitution = 500,
+      healthMax = 12200,
+      healthMin = 10000,
+      strength = 0,
+      constitution = 0,
 
-      actionMax = 8800,
-      actionMin = 7200,
-      quickness = 500,
-      stamina = 500,
+      actionMax = 12200,
+      actionMin = 10000,
+      quickness = 0,
+      stamina = 0,
 
-      mindMax = 8800,
-      mindMin = 7200,
-      focus = 500,
-      willpower = 500,
+      mindMax = 12200,
+      mindMin = 10000,
+      focus = 0,
+      willpower = 0,
 
       height = 1, -- Size of creature
-      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 30,
-      energy = 30,
-      electricity = 30,
-      stun = 0,
-      blast = 30,
+      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      kinetic = 25,
+      energy = 20,
+      electricity = 0,
+      stun = -1,
+      blast = 0,
       heat = 0,
-      cold = 30,
+      cold = -1,
       acid = 0,
       lightsaber = 0,
 
@@ -91,36 +91,36 @@ naboostormtrooper = Creature:new {
       herd = 0,
       stalker = 0,
       killer = 1,
-      aggressive = 0,
+      aggressive = 1,
       invincible = 0,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
-      weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/ranged/pistol/shared_pistol_dl44.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "DL44 Pistol", -- Name ex. 'a Vibrolance'
+      weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 400,
+      weaponMinDamage = 200,
+      weaponMaxDamage =400,
       weaponAttackSpeed = 2,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      alternateWeapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+      alternateWeaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+      alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      alternateWeaponEquipped = 1,
+      alternateWeaponMinDamage = 100,
+      alternateWeaponMaxDamage = 250,
+      alternateWeaponAttackSpeed = 3,
+      alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,42", -- Group it belongs to for loot
+      lootGroup = 0, -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,10 +135,10 @@ naboostormtrooper = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "stormTrooperAttack1" },
-      -- respawnTimer = 180,
+      skills = { "marauderAttack40", "marauderAttack41", "marauderAttack42", "marauderRangedAttack1", "marauderRangedAttack2", "marauderRangedAttack3" },
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(naboostormtrooper, 628727249) --  Add to Global Table
+Creatures:addCreature(wanderingDesertMarauder, 4103644702) --  Add to Global Table

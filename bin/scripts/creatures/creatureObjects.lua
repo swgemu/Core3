@@ -64,10 +64,10 @@ end
 -------------------------------------------------------------
 
 --Endor
---if (PLANET_ID == 3) then
--- RunCreatureFile("objects/endor/creatures.lua") 
--- RunCreatureFile("objects/endor/npcs.lua")
---end
+if (PLANET_ID == 3) then
+RunCreatureFile("objects/endor/creatures.lua") 
+RunCreatureFile("objects/endor/npcs.lua")
+end
 
 --------------------------------------------------------------
 
@@ -121,20 +121,30 @@ end
 --------------------------------------------------------------------
 
 --Faction Spawns (All Planets) 
+
 --Imperial
 RunCreatureFile("objects/npcs/atSt.lua")
 RunCreatureFile("objects/npcs/atAt.lua")
+
 RunCreatureFile("objects/npcs/darkTrooper.lua")
-RunCreatureFile("objects/npcs/darthVader.lua")
 RunCreatureFile("objects/npcs/imperialColonel.lua")
 RunCreatureFile("objects/npcs/imperialMajor.lua")
 RunCreatureFile("objects/npcs/imperialMajorGeneral.lua")
 RunCreatureFile("objects/npcs/imperialSurfaceMarshal.lua")
-RunCreatureFile("objects/npcs/darthVader.lua")
 RunCreatureFile("objects/npcs/stormTrooper.lua")
 
 --Rebel
 RunCreatureFile("objects/npcs/rebelGeneral.lua")
 RunCreatureFile("objects/npcs/rebelSurfaceMarshal.lua")
+
+--Misc
+RunCreatureFile("objects/npcs/palpatine.lua")
+RunCreatureFile("objects/npcs/darthVader.lua")
+RunCreatureFile("objects/npcs/mellichae.lua")
+RunCreatureFile("objects/npcs/moJediMaster.lua")
+RunCreatureFile("objects/npcs/jediMaster.lua")
+RunCreatureFile("objects/npcs/jediKnight.lua")
+
+
 
 ----------------------------------------------------------------------------------------------------

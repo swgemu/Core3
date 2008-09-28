@@ -136,7 +136,7 @@ ikopi = Creature:new {
       meatMax = 70,
 
       skills = { "", "", "" }
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

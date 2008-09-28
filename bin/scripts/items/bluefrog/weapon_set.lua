@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-weapon_set = {gaderiffi_baton, vibroknuckler, t21, power_hammer, vibrolance, ee3_carbine, fwg5_pistol}
+weapon_set = {gaderiffi_baton, vibroknuckler, t21, power_hammer, vibrolance, ee3_carbine, fwg5_pistol, lightsaber, polarmsaber}
 
 addBFItemSet("Weapon Set" , weapon_set);

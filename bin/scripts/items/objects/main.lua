@@ -58,5 +58,6 @@ RunItemLUAFile("objects/clothing/main.lua");
 RunItemLUAFile("objects/food/main.lua");
 RunItemLUAFile("objects/pharmaceutical/main.lua");
 RunItemLUAFile("objects/deed/main.lua");
+RunItemLUAFile("objects/jedi/main.lua");
 
 

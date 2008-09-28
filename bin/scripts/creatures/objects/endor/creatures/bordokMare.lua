@@ -137,7 +137,7 @@ bordokMare = Creature:new {
 
       skills = { "bordokAttack1" },
 	  -- skills = { " Stun attack", " Area attack (knockdown)", "" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

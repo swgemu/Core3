@@ -136,7 +136,7 @@ jabbasSwooperLeader = Creature:new {
       meatMax = 0,
 
       skills = { "jabbaAttack25", "jabbaAttack26", "jabbaAttack27", "jabbaAttack28" },
-      respawnTimer = 120 ,
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

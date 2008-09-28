@@ -203,6 +203,8 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 			player->setGuild(guild);
 
 			player->setGuildLeader(false);
+
+			player->setGuildPermissions(0);
 		}
 
 		server->unlock();
@@ -484,6 +486,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->resetHAMBars(false);
 
 	player->loadProfessions();
+
+	player->setForcePowerBar(player->getForcePowerMax());
 
 	PlanetManager* planetManager = zne->getPlanetManager();
 	SceneObject* parent = planetManager->getCell(character->getUnsignedLong(33));

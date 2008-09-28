@@ -51,7 +51,10 @@ RandPoolAtt = {
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
-		
+	
+	hamCostMultiplier = 0,
+	forceCostMultiplier = 0,
+	
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,

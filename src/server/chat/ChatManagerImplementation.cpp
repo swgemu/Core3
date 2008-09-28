@@ -148,6 +148,19 @@ void ChatManagerImplementation::initiateRooms() {
 	generalRoom->deploy();
 	core3Room->addSubRoom(generalRoom);
 	addRoom(generalRoom);
+
+	// Planet Chat
+
+	// Naboo
+	ChatRoom* nabooRoom = new ChatRoom(server, core3Room, "naboo", getNextRoomID());
+	nabooRoom->deploy();
+	core3Room->addSubRoom(nabooRoom);
+	addRoom(nabooRoom);
+
+	ChatRoom* nabooPlanetary = new ChatRoom(server, nabooRoom, "chat", getNextRoomID());
+	nabooPlanetary->deploy();
+	nabooRoom->addSubRoom(nabooPlanetary);
+	addRoom(nabooPlanetary);
 }
 
 void ChatManagerImplementation::destroyRooms() {
@@ -350,13 +363,18 @@ void ChatManagerImplementation::handleEmote(Player* player, Message* pack) {
 		uint32 unkint = tokenizer.getIntToken();
 		uint32 unkint2 = tokenizer.getIntToken();
 
+		bool showtext = true;
+
+		if(unkint2 == 0)
+			showtext = false;
+
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
 
 			if (object->isPlayer()) {
 				Player* creature = (Player*) object;
 
-				Emote* emsg = new Emote(creature, player, targetid, emoteid);
+				Emote* emsg = new Emote(creature, player, targetid, emoteid, showtext);
 				creature->sendMessage(emsg);
 			}
 		}
@@ -442,6 +460,39 @@ void ChatManagerImplementation::sendMail(const string& sendername, unicode& head
 	string Name = name;
   	String::toLower(Name);
   	receiver = getPlayer(Name);
+
+
+
+  	//guild mail?
+  	string checkReceiver = Name;
+  	String::toLower(checkReceiver);
+  	string guildSender = sendername;
+
+  	if (checkReceiver == "guild") {
+		Player* sender = getPlayer(guildSender);
+
+		if (sender == NULL)
+			return;
+
+  		if ( ! ( ( sender->getGuildPermissions() ) & (PlayerImplementation::GUILDMAIL) ) ) {
+			sender->sendSystemMessage("@guild:generic_fail_no_permission");
+			return;
+		}
+
+  		GuildManager* gm = server->getGuildManager();
+
+  		if (gm == NULL)
+  			return;
+
+  		stringstream mySender;
+  		mySender << "Guildmail: " << sendername;
+
+  		gm->sendGuildMail(sender, mySender.str(), header.c_str() , body.c_str(), false);
+
+  		return;
+  	}
+  	//end guildmail
+
 
   	try {
 		MySqlDatabase::escapeString(Name);
@@ -615,6 +666,13 @@ void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* p
 	unicode message;
 	pack->parseUnicode(message);
 
+	string adminmsg = message.c_str();
+
+	if (adminmsg[0] == '@') {
+		handleGameCommand(sender, adminmsg.c_str());
+		return;
+	}
+
 	pack->shiftOffset(4);
 
 	uint32 channelid = pack->parseInt();
@@ -654,6 +712,15 @@ void ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack) {
 	unicode message;
 	pack->parseUnicode(message);
 
+
+	string adminmsg = message.c_str();
+
+	if (adminmsg[0] == '@') {
+		handleGameCommand(sender, adminmsg.c_str());
+		return;
+	}
+
+
 	GroupObject* group = sender->getGroupObject();
 	if (group == NULL)
 		return;
@@ -679,8 +746,16 @@ void ChatManagerImplementation::handleGuildChat(Player* sender, Message* pack) {
 	pack->shiftOffset(8);
 
 	unicode message;
-
 	pack->parseUnicode(message);
+
+
+	string adminmsg = message.c_str();
+
+	if (adminmsg[0] == '@') {
+		handleGameCommand(sender, adminmsg.c_str());
+		return;
+	}
+
 
 	Guild* kuild;
 	kuild = sender->getGuild();
@@ -1024,8 +1099,6 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 
 	roomMap->remove(room->getRoomID());
 
-	unlock();
-
 	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getServerName(), room->getRoomID());
 	room->broadcastMessage(msg);
 	room->removeAllPlayers();
@@ -1036,4 +1109,6 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 		parent->removeSubRoom(room);
 
 	room->finalize();
+
+	unlock();
 }

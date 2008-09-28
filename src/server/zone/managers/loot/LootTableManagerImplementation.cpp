@@ -67,9 +67,10 @@ LootTableManagerImplementation::LootTableManagerImplementation(ZoneServer* inser
 
 	serv = inserv;
 
+	setLoggingName("LootTableManager");
+
 	setLogging(false);
 	setGlobalLogging(true);
-
 }
 
 LootTableManagerImplementation::~LootTableManagerImplementation() {
@@ -185,13 +186,8 @@ void LootTableManagerImplementation::buildLootMap() {
 
 
 void LootTableManagerImplementation::createLootItem(Creature* creature, int level, Player* player) {
-	//lock(); TA: moved selectedLootTableMap into the function
-	//to avoid locking the whole manager so the server can create the loot items for more then one creature at once
-
-	if (creature == NULL) {
-		//unlock();
+	if (creature == NULL)
 		return;
-	}
 
 	int i, itemcount;
 	i = 0;
@@ -258,19 +254,22 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		//for testing: cout << "Selected lootitem is " << lootTableTemp->getLootItemName() << endl;
 		TangibleObject* item = im->createPlayerObjectTemplate(itemType, creature->getNewItemID(), itemCRC,
 				clearName, itemName, false, true, lootAttributes, level);
-				
+
 		items[i] = item;
-		
-		//TODO - FIXME: how can item be NULL 
+
 		if (item != NULL) {
 			item->setPlayerUseMask(itemMask);
-
 			creature->addLootItem(item);
+		} else {
+			stringstream err;
+			err << "Loot item could not be created"
+				<< " itemType = 0x" << hex << itemType
+				<< " itemCRC = " << itemCRC
+				<< " itemMask = " << itemMask
+				<< " itemName = " << itemName;
+			error(err.str());
 		}
 	}
-
-	//unlock();
-
 }
 
 int LootTableManagerImplementation::makeLootGroup(Creature* creature) {

@@ -135,8 +135,8 @@ shaggyKorgaYouth = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "", "", "" }
-      -- respawnTimer = 180,
+      skills = { "korgaAttack01", "korgaAttack02", "korgaAttack03", "korgaAttack04", "korgaAttack05", "korgaAttack06" },
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

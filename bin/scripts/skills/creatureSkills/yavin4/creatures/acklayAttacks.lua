@@ -48,7 +48,7 @@ acklayAttack1 = {
 
 	range = 40,
 
-	damageRatio = 95,
+	damageRatio = 512,
 
 	speedRatio = .5,
 
@@ -82,7 +82,7 @@ acklayAttack2 = {
 
 	range = 40,
 
-	damageRatio = 95,
+	damageRatio = 512,
 
 	speedRatio = .5,
 
@@ -116,7 +116,7 @@ acklayAttack3 = {
 
 	range = 40,
 
-	damageRatio = 95,
+	damageRatio = 512,
 
 	speedRatio = .5,
 
@@ -150,7 +150,7 @@ acklayAttack4 = {
 
 	range = 40,
 
-	damageRatio = 95,
+	damageRatio = 512,
 
 	speedRatio = .5,
 
@@ -184,7 +184,7 @@ acklayAttack5 = {
 
 	range = 40,
 
-	damageRatio = 95,
+	damageRatio = 512,
 
 	speedRatio = .5,
 
@@ -218,7 +218,7 @@ acklayAttack6 = {
 
 	range = 40,
 
-	damageRatio = 95,
+	damageRatio = 512,
 
 	speedRatio = .5,
 
@@ -252,7 +252,7 @@ acklayAttack7 = {
 
 	range = 40,
 
-	damageRatio = 95,
+	damageRatio = 512,
 
 	speedRatio = .5,
 
@@ -286,7 +286,7 @@ acklayAttack8 = {
 
 	range = 40,
 
-	damageRatio = 95,
+	damageRatio = 512,
 
 	speedRatio = .5,
 
@@ -320,7 +320,7 @@ acklayAttack9 = {
 
 	range = 40,
 
-	damageRatio = 95,
+	damageRatio = 512,
 
 	speedRatio = 4,
 

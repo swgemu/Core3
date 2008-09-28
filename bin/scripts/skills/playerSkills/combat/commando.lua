@@ -45,11 +45,14 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 64,
+	range = 25,
 	damageRatio = 5,
 	speedRatio = 4,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -86,11 +89,14 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 64,
+	range = 20,
 	damageRatio = 5,
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -127,11 +133,14 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 64,
+	range = 25,
 	damageRatio = 8,
 	speedRatio = 4,
 	coneAngle = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -168,11 +177,14 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 64,
+	range = 20,
 	damageRatio = 6,
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -208,13 +220,16 @@ RandPoolAtt = {
 	attackname = "fireacidsingle1",
 	animation = "fire_acid_rifle_single_1_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLEACIDBEAM,
 	
-	range = 64,
+	range = 40,
 	damageRatio = 5,
 	speedRatio = 4,
 	coneAngle = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -239,13 +254,16 @@ RandPoolAtt = {
 	attackname = "fireacidcone1",
 	animation = "fire_acid_rifle_cone_1_light",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLEACIDBEAM,
 	
-	range = 64,
+	range = 30,
 	damageRatio = 5,
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -270,13 +288,16 @@ RandPoolAtt = {
 	attackname = "fireacidsingle2",
 	animation = "fire_acid_rifle_single_2_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLEACIDBEAM,
 	
-	range = 64,
+	range = 40,
 	damageRatio = 8,
 	speedRatio = 4,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -301,13 +322,16 @@ RandPoolAtt = {
 	attackname = "fireacidcone2",
 	animation = "fire_acid_rifle_cone_2_light",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLEACIDBEAM,
 	
-	range = 64,
+	range = 30,
 	damageRatio = 6,
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,

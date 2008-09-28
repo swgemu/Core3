@@ -137,7 +137,7 @@ bileDrenchedQuenker = Creature:new {
 
       skills = { "quenkerAttack1" },
 	  -- skills = { " Dizzy attack", " Poison attack (strong)", " Ranged attack (spit)" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

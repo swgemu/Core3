@@ -136,7 +136,7 @@ tuskenRaider = Creature:new {
       meatMax = 0,
 
       skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3" },
-      respawnTimer = 120 ,
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

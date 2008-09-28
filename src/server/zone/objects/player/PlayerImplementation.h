@@ -225,7 +225,7 @@ class PlayerImplementation : public PlayerServant {
 
 	// SuiEvents
 	VectorMap<uint32, SuiBox*> suiBoxes;
-	uint32 suiBoxNextID;	
+	uint32 suiBoxNextID;
 	string inputBoxReturnBuffer;
 
 	uint64 currentStructureID;
@@ -260,7 +260,7 @@ public:
 	static const int LOGGINGOUT = 5;
 
 	static const int CSR = 1;
-	static const int DEVELOPER = 2;	
+	static const int DEVELOPER = 2;
 	static const int ADMIN = CSR | DEVELOPER;
 	static const int NORMAL = 4;
 	static const int QA = 8;
@@ -541,8 +541,7 @@ public:
 		return inputBoxReturnBuffer;
 	}
 
-
-
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	// Stat Migration Targets
 	// HAM getters

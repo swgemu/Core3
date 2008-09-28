@@ -225,7 +225,7 @@ float DraftSchematicValuesImplementation::getCurrentValue(const int i) {
 }
 
 void DraftSchematicValuesImplementation::setCurrentPercentage(const string& subtitle, const float value) {
-	float max = 0;
+	float max = 0.f;
 
 	Subclasses* subClasses;
 

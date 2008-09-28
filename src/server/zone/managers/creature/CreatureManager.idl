@@ -82,7 +82,7 @@ interface CreatureManager {
 	
 	// creation methods
 	//Creature spawnCreature(const string stfname, const string name, int objCrc, float x, float y, int bitmask = 0x00, boolean doLock = true);
-	Creature spawnCreature(unsigned int objcrc, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true);
+	Creature spawnCreature(unsigned int objcrc, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
 	TrainerCreature spawnTrainer(const string profession, const string stfname, const string name, int objCrc, unsigned long cell, float x, float y, float z, float oy, float ow, boolean doLock = true);
 	ShuttleCreature spawnShuttle(const string Planet, const string City, Coordinate playerSpawnPoint, unsigned long cellid, float x, float y, float z, int tax = 0, boolean starport = false, boolean doLock = true);
 	RecruiterCreature spawnRecruiter(const string stfname, const string name, int objCrc, float x, float y, boolean doLock = true);

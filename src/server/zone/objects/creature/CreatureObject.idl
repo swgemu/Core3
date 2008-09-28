@@ -96,6 +96,7 @@ interface CreatureObject implements SceneObject {
 	void addDamage(CreatureObject creature, unsigned int damage);
 	
 	unsigned int getDamage(CreatureObject creature);
+	void removeFromDamageMap(CreatureObject target);
 	
 	boolean isLootOwner(CreatureObject creature);
 	CreatureObject getLootOwner();
@@ -229,6 +230,8 @@ interface CreatureObject implements SceneObject {
 	void setMindWoundsBar(unsigned int  wnds);
 	void setFocusWoundsBar(unsigned int  wnds);
 	void setWillpowerWoundsBar(unsigned int  wnds);
+
+	void handleDeath();
 	
 	boolean hasAttackDelay();
 	void clearAttackDelay();
@@ -570,6 +573,7 @@ interface CreatureObject implements SceneObject {
 	int getHideMax();
 	int getMeatMax();
 	int getMilk();
+	boolean hasOrganics();
 	
 	int getXP();
 	

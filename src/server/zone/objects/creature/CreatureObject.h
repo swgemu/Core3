@@ -69,6 +69,8 @@ public:
 
 	unsigned int getDamage(CreatureObject* creature);
 
+	void removeFromDamageMap(CreatureObject* target);
+
 	bool isLootOwner(CreatureObject* creature);
 
 	CreatureObject* getLootOwner();
@@ -274,6 +276,8 @@ public:
 	void setFocusWoundsBar(unsigned int wnds);
 
 	void setWillpowerWoundsBar(unsigned int wnds);
+
+	void handleDeath();
 
 	bool hasAttackDelay();
 
@@ -727,6 +731,8 @@ public:
 
 	int getMilk();
 
+	bool hasOrganics();
+
 	int getXP();
 
 	int isHealer();
@@ -1122,6 +1128,8 @@ public:
 
 	unsigned int getDamage(CreatureObject* creature);
 
+	void removeFromDamageMap(CreatureObject* target);
+
 	bool isLootOwner(CreatureObject* creature);
 
 	CreatureObject* getLootOwner();
@@ -1327,6 +1335,8 @@ public:
 	void setFocusWoundsBar(unsigned int wnds);
 
 	void setWillpowerWoundsBar(unsigned int wnds);
+
+	void handleDeath();
 
 	bool hasAttackDelay();
 
@@ -1777,6 +1787,8 @@ public:
 	int getMeatMax();
 
 	int getMilk();
+
+	bool hasOrganics();
 
 	int getXP();
 

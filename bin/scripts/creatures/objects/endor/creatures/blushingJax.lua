@@ -135,9 +135,9 @@ blushingJax = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 0,
 
-      skills = { "JaxAttack1" }
+      skills = { "JaxAttack1" },
 	  -- skills = { " Blind attack", " Dizzy attack", "" }
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

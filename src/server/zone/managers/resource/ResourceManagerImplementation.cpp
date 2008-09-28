@@ -1015,7 +1015,7 @@ void ResourceManagerImplementation::buildResourceMap() {
 		"resource_data.entangle_resistance, resource_data.shiftedIn, resource_data.shiftedOut, resource_data.container, "
 		"resource_data.containerCRC, resource_spawns.`INDEX`, resource_spawns.resource_name, resource_spawns.planet_id, "
 		"resource_spawns.x, resource_spawns.y, resource_spawns.radius, resource_spawns.`max`, resource_spawns.despawn, "
-		"resource_spawns.pool FROM resource_data Inner Join resource_spawns ON resource_data.resource_name = "
+		"resource_spawns.pool FROM resource_data LEFT JOIN resource_spawns ON resource_data.resource_name = "
 		"resource_spawns.resource_name ORDER BY resource_data.resource_name ASC";
 
 	try {
@@ -1080,10 +1080,19 @@ void ResourceManagerImplementation::buildResourceMap() {
 					resTemp = resourceMap->get(resname);
 				}
 
-				string pool = res->getString(33);
-				sl = new SpawnLocation(res->getUnsignedLong(25), res->getInt(27), res->getFloat(28), res->getFloat(29), res->getFloat(30), res->getFloat(31), pool);
+				try {
 
-				resTemp->addSpawn(sl);
+					string pool = res->getString(33);
+					sl
+							= new SpawnLocation(res->getUnsignedLong(25), res->getInt(
+									27), res->getFloat(28), res->getFloat(29), res->getFloat(
+									30), res->getFloat(31), pool);
+
+					resTemp->addSpawn(sl);
+
+				} catch (...) {
+
+				}
 			}
 		}
 

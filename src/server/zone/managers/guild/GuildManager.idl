@@ -100,4 +100,6 @@ interface GuildManager {
 	void handleGuildTransferLeader(Player player);
 	void handleGuildTransferLeaderBox(unsigned int boxID, Player player, unsigned int cancel, string returnString);	
 	void handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player player, unsigned int cancel);
+	
+	void sendGuildMail(Player player, const string& sender, const string& subject, const string& body, boolean excludeSender);
 }

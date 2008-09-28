@@ -136,7 +136,7 @@ scyk = Creature:new {
       meatMax = 40,
 
       skills = { "scykAttack1" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

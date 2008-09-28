@@ -137,7 +137,7 @@ voritorDasher = Creature:new {
 
 	  skills = { "voritorAttack1" },
       -- skills = { " Ranged attack (spit)", " Area attack (poison)", " Dizzy attack" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

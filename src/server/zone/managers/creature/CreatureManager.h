@@ -53,7 +53,7 @@ public:
 
 	void unloadCreature(Creature* creature);
 
-	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true);
+	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
 
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock = true);
 
@@ -111,7 +111,7 @@ public:
 
 	void unloadCreature(Creature* creature);
 
-	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock);
+	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock, float height);
 
 	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock);
 

@@ -52,6 +52,9 @@ RandPoolAtt = {
 	coneAngle = 45,
 	accuracyBonus = 0,
 
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
@@ -82,7 +85,10 @@ RandPoolAtt = {
 	speedRatio = 2.4,
 	areaRange = 0,
 	accuracyBonus = 5,
-		
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
 	knockdownChance = 30,
 	postureDownChance = 0,
 	postureUpChance = 0,
@@ -114,6 +120,9 @@ RandPoolAtt = {
 	speedRatio = 4.0,
 	areaRange = 0,
 	accuracyBonus = 10,
+
+	hamCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	knockdownChance = 0,
 	postureDownChance = 0,

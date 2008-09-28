@@ -137,7 +137,7 @@ bocattDiseased = Creature:new {
 
       skills = { "bocattAttack1" },
 	  -- skills = { " Intimidation attack", " Disease attack (mild)", "" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

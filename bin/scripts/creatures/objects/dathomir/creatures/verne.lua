@@ -136,7 +136,7 @@ verne = Creature:new {
       meatMax = 125,
 
       skills = { "verneAttack1" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

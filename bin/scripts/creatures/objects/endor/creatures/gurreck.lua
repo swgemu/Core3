@@ -137,7 +137,7 @@ gurreck = Creature:new {
 
       skills = { "gurreckAttack1" },
 	  -- skills = { " Intimidation attack", " Posture down attack", "" },
-      -- respawnTimer = 180,
+       respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

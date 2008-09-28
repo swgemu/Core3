@@ -40,6 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+RunCreatureFile("objects/yavin4/creatures/acklay.lua")
 RunCreatureFile("objects/yavin4/creatures/angler.lua")
 RunCreatureFile("objects/yavin4/creatures/choku.lua")
 RunCreatureFile("objects/yavin4/creatures/crystalSnake.lua")

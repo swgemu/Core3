@@ -1144,7 +1144,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 	return reduction;
 }
 
-bool CombatManager::calculateCost(CreatureObject* creature, float specialMultiplier) {
+bool CombatManager::calculateCost(CreatureObject* creature, float hamMultiplier, float forceMultiplier) {
 	if (!creature->isPlayer())
 		return true;
 
@@ -1153,9 +1153,10 @@ bool CombatManager::calculateCost(CreatureObject* creature, float specialMultipl
 
 	if (weapon != NULL) {
 
-		int wpnHealth = (int)(weapon->getHealthAttackCost() * specialMultiplier);
-		int wpnAction = (int)(weapon->getActionAttackCost() * specialMultiplier);
-		int wpnMind = (int)(weapon->getMindAttackCost() * specialMultiplier);
+		int wpnHealth = (int)(weapon->getHealthAttackCost() * hamMultiplier);
+		int wpnAction = (int)(weapon->getActionAttackCost() * hamMultiplier);
+		int wpnMind = (int)(weapon->getMindAttackCost() * hamMultiplier);
+		int forceCost = (int)(weapon->getForceCost() * forceMultiplier);
 
 		int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength() / 1500);
 		int actionAttackCost = wpnAction - (wpnAction * creature->getQuickness() / 1500);

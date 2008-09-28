@@ -94,7 +94,7 @@ public:
 	void handleStructureAddEnergy(Player* player, SceneObject* obj);
 
 	void sendRadialResponseForVehicleDeed(Player* player, VehicleDeed* deed, ObjectMenuResponse* omr);
-	
+
 	void handleOpenCraftingToolHopper(Player* player, SceneObject* obj);
 	void handleHarvest(Player* player, SceneObject* obj, int type);
 
@@ -111,6 +111,9 @@ public:
 	//Surveytools
 	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
 	void sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj);
+
+	//Watch / Listen
+	void handleEntertainerActions(Player* player, SceneObject* obj);
 };
 
 #endif /*RADIALMANAGER_H_*/

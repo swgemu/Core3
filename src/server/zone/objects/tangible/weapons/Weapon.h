@@ -77,6 +77,8 @@ public:
 
 	int getMindAttackCost();
 
+	int getForceCost();
+
 	int getPointBlankRange();
 
 	int getPointBlankAccuracy();
@@ -294,6 +296,8 @@ public:
 	int getActionAttackCost();
 
 	int getMindAttackCost();
+
+	int getForceCost();
 
 	int getPointBlankRange();
 
