@@ -13,6 +13,8 @@
 
 #include "../../../../ZoneClientSessionImplementation.h"
 
+#include "../../../../managers/item/ItemManager.h"
+
 VehicleDeedImplementation::VehicleDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn)
 	: VehicleDeedServant(creature, tempcrc, n, tempn, VEHICLEDEED) {
 
@@ -84,14 +86,12 @@ void VehicleDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 }
 
 int VehicleDeedImplementation::useObject(Player* player) {
-
 	Datapad * datapad = player->getDatapad();
 
 	MountCreature * vehicle = new MountCreature(player, targetName.c_str(), "monster_name",
 			String::hashCode(targetFile),
 			String::hashCode(vehicleFile),
 			player->getNewItemID());
-
 
 	try {
 		vehicle->addToDatapad();
@@ -103,15 +103,28 @@ int VehicleDeedImplementation::useObject(Player* player) {
 
 		player->unlock();
 		vehicle->wlock();
+
 		vehicle->call();
+
 		vehicle->unlock();
 		player->wlock();
 
 		// Remove Deed
-		/*player->removeInventoryItem(this->getObjectID());
+		_this->sendDestroyTo(player);
 
-		 SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(this->getObjectID());
-		 player->sendMessage(destroy);*/
+		Zone* zone = player->getZone();
+		if (zone != NULL) {
+			ZoneServer* zoneServer = zone->getZoneServer();
+
+			ItemManager* itemManager;
+
+			if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
+				player->removeInventoryItem(objectID);
+				itemManager->deletePlayerItem(player, _this, true);
+				finalize();
+			}
+		}
+
 		return 1;
 	}
 	catch(...) {

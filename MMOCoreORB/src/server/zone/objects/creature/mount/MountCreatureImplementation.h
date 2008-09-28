@@ -111,7 +111,7 @@ public:
 	inline bool isJetpack() {
 		return objectCRC == 0x60250B32;
 	}
-	
+
 	inline bool isPet() {
 		return mountType == PET;
 	}
@@ -120,6 +120,9 @@ public:
 		return isInQuadTree();
 	}
 
+	inline uint32 getItnocrc() {
+		return itnoCRC;
+	}
 };
 
 #endif /*MOUNTCREATUREIMPLEMENTATION_H_*/

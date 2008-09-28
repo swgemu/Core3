@@ -672,6 +672,8 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 
 	saveWaypoints(_this);
 
+	saveDatapad(_this);
+
 	playerObject->saveFriends();
 	playerObject->saveIgnore();
 
@@ -4082,3 +4084,67 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 	player->sendMessage(omr);
 }
 
+void PlayerImplementation::saveDatapad(Player* player) {
+	try {
+		Datapad* datapad = player->getDatapad();
+		if (datapad == NULL)
+			return;
+
+		string name, detailName;
+		stringstream query;
+		uint32 objCRC, itnoCRC;
+
+		query.str("");
+		query << "DELETE FROM datapad where character_id = " << player->getCharacterID() << ";";
+		ServerDatabase::instance()->executeStatement(query);
+
+		for (int i = 0; i < datapad->objectsSize(); ++i) {
+			name = "";
+			detailName = "";
+			objCRC = 0;
+			itnoCRC = 0;
+
+			SceneObject* item = datapad->getObject(i);
+
+			if (item != NULL) {
+				IntangibleObject* itno = (IntangibleObject*) item;
+
+				if (itno != NULL) {
+					if (item->getObjectType() == 7 ) { //Vehicle (MountCreature)
+						name = itno->getName();
+						detailName = itno->getDetailName();
+						objCRC = item->getObjectCRC();
+
+						MountCreature* mountCreature = (MountCreature*) itno->getWorldObject();
+
+						if (mountCreature != NULL)
+							itnoCRC = mountCreature->getObjectCRC();
+					}
+
+					//Schematic
+					//ToDO
+
+					//Droid
+					//ToDo
+
+					//Pet
+					//ToDo
+
+					if (itnoCRC != 0 ) {
+						query.str("");
+						query << "Insert into datapad set character_id = " << player->getCharacterID()
+						<< ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = " << itnoCRC << ",itemMask = 65535;";
+
+						ServerDatabase::instance()->executeStatement(query);
+					}
+				}
+			}
+		}
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+		player->info("DB Exception in PlayerImplementation::saveDatapad(Player* player)");
+	} catch (...) {
+		player->info("Unreported Exception in PlayerImplementation::saveDatapad(Player* player)");
+
+	}
+}

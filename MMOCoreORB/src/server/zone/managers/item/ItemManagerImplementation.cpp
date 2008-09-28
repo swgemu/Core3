@@ -1117,12 +1117,30 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 
-	// Leave in the x34 incase something goes wrong with deeds
-	// x34
-	MountCreature* land3 = new MountCreature(player, "landspeeder_x34", "monster_name",
-			String::hashCode("object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"), 0x4EC3780C, player->getNewItemID());
-	land3->addToDatapad();
+	try {
+		stringstream query;
+		query << "Select * from datapad where character_id = " << player->getCharacterID() << ";";
 
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+		int a = 0;
+		MountCreature* land[128];
+
+		while (res->next()) {
+			land[a] = new MountCreature(player, res->getString(2), "monster_name",
+					res->getLong(3), res->getLong(4), player->getNewItemID());
+
+			land[a]->addToDatapad();
+
+		}
+		a++;
+	} catch (...) {
+		cout << "Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)" << endl;
+		player->info("Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
+	}
+
+
+	//ToDO: If the datapad load is working fine for a while, delete this commented stuff here
 	/*
 	// SWOOP
 	MountCreature* swoop = new MountCreature(player, "speederbike_swoop", "monster_name",

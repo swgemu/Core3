@@ -93,7 +93,7 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 	IgnoreList* ignoreList;
 
 	uint32 guildPermissionsBitmask;
-	
+
 	uint32 adminLevel;
 
 public:

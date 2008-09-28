@@ -201,6 +201,18 @@ bool MountCreature::isInWorld() {
 		return ((MountCreatureImplementation*) _impl)->isInWorld();
 }
 
+unsigned int MountCreature::getItnocrc() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((MountCreatureImplementation*) _impl)->getItnocrc();
+}
+
 /*
  *	MountCreatureAdapter
  */
@@ -253,6 +265,9 @@ Packet* MountCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 19:
 		resp->insertBoolean(isInWorld());
+		break;
+	case 20:
+		resp->insertInt(getItnocrc());
 		break;
 	default:
 		return NULL;
@@ -315,6 +330,10 @@ void MountCreatureAdapter::setInstantMount(bool val) {
 
 bool MountCreatureAdapter::isInWorld() {
 	return ((MountCreatureImplementation*) impl)->isInWorld();
+}
+
+unsigned int MountCreatureAdapter::getItnocrc() {
+	return ((MountCreatureImplementation*) impl)->getItnocrc();
 }
 
 /*
