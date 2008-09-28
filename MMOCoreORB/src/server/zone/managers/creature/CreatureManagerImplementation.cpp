@@ -523,6 +523,57 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Plane
 	}
 }
 
+bool CreatureManagerImplementation::verifyCreatureSpawn(string objname) {
+
+	try {
+		lock();
+
+		hotLoadCreature(objname);
+
+		SpawnInfo* spawnInfo = spawnInfoMap->get(objname);
+
+		if(spawnInfo == NULL) {
+
+			spawnInfo = spawnInfoMap->get(objname);
+
+			if(spawnInfo == NULL) {
+				unlock();
+				return false;
+			}
+		}
+
+		uint32 objcrc = spawnInfo->getCRC();
+
+		// Load creature from lua
+		LuaFunction getCreature(getLuaState(), "getCreature", 1);
+		getCreature << objcrc; // push first argument
+		callFunction(&getCreature);
+
+		LuaObject result(getLuaState());
+		if (!result.isValidTable()) {
+			stringstream ss;
+			ss << "Unknown object CRC " << objcrc;
+			info(ss.str());
+			unlock();
+			return false;
+		}
+
+		string objectName = result.getStringField("objectName");
+
+		unlock();
+
+		if(objectName == spawnInfo->getName())
+			return true;
+		else
+			return false;
+
+
+	} catch (...) {
+		unlock();
+		return false;
+	}
+
+}
 Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock, float height) {
 	lock(doLock);
 	Creature* creature = new Creature(getNextCreatureID());
@@ -1192,7 +1243,7 @@ string CreatureManagerImplementation::makeDarkTrooperName() {
 uint32 CreatureManagerImplementation::getCreatureCrc(string name) {
 	SpawnInfo* spawnInfo = spawnInfoMap->get(name);
 	if(spawnInfo == NULL)
-		return -1;
+		return 0;
 
 	return spawnInfo->getCRC();
 }
