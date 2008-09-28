@@ -667,6 +667,8 @@ public:
 
 	void doPeace();
 
+	void deaggro();
+
 	void lootCorpse(bool lootAll = false);
 	void lootObject(Creature* creature, SceneObject* object);
 

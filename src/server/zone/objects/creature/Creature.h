@@ -51,6 +51,8 @@ public:
 
 	bool attack(CreatureObject* target);
 
+	void deagro();
+
 	void activateRecovery();
 
 	bool doRecovery();
@@ -82,6 +84,8 @@ public:
 	int getZoneIndex();
 
 	Zone* getZone();
+
+	CreatureObject* getAggroedCreature();
 
 	unsigned long long getNewItemID();
 
@@ -155,6 +159,8 @@ public:
 
 	bool attack(CreatureObject* target);
 
+	void deagro();
+
 	void activateRecovery();
 
 	bool doRecovery();
@@ -186,6 +192,8 @@ public:
 	int getZoneIndex();
 
 	Zone* getZone();
+
+	CreatureObject* getAggroedCreature();
 
 	unsigned long long getNewItemID();
 

@@ -191,6 +191,10 @@ public:
 
 	void doIncapAnimation();
 
+	CreatureObject* getAggroedCreature() {
+		return aggroedCreature;
+	}
+
 	// waypoint methods
 	void setPatrolPoint(PatrolPoint* cord, bool doLock = true );
 
