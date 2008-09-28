@@ -89,6 +89,8 @@ interface Creature implements CreatureObject {
 	void doAttack(CreatureObject target, int damage);
 	boolean attack(CreatureObject target);
 
+	void deagro();
+
 	void activateRecovery();
 	boolean doRecovery();
 	void doStatesRecovery();
@@ -116,6 +118,8 @@ interface Creature implements CreatureObject {
 	int getZoneIndex();
 
 	Zone getZone();
+
+	CreatureObject getAggroedCreature();
 	
 	unsigned long getNewItemID();
 	

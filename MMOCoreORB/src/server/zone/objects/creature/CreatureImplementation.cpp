@@ -1495,8 +1495,10 @@ void CreatureImplementation::deagro() {
 				&& aggroedCreature->isPlayer()) {
 
 			aggroedCreature->handleDeath();
-			removeFromDamageMap(aggroedCreature);
 		}
+
+		removeFromDamageMap(aggroedCreature);
+		removeDefender(aggroedCreature);
 
 		try {
 			zone->lock();

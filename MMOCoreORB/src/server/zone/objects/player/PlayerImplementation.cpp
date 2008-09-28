@@ -1008,6 +1008,8 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 	try {
 		zone->lock();
 
+		deaggro();
+
 		info("inserting to zone");
 
 		if (parent == NULL) {
@@ -1069,6 +1071,8 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 void PlayerImplementation::reinsertToZone(Zone* zone) {
 	try {
 		zone->lock();
+
+		deaggro();
 
 		info("reinserting to zone");
 
@@ -1283,6 +1287,70 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		error("exception Player::removeFromZone(bool doLock)");
 
 		zone->unlock(doLock);
+	}
+}
+
+void PlayerImplementation::deaggro() {
+	try {
+
+		zone->unlock();
+
+		if (isInCombat()) {
+
+			SceneObject* scno;
+			Creature* defender;
+
+			CreatureObject* aggroedCreature;
+			Player* aggroedPlayer;
+
+			for (int i = 0; i < getDefenderListSize(); ++i) {
+
+				scno = getDefender(i);
+
+				if (scno->isNonPlayerCreature()) {
+
+					defender = (Creature*) scno;
+					aggroedCreature = defender->getAggroedCreature();
+
+					if (aggroedCreature != NULL && aggroedCreature->isPlayer()) {
+
+						aggroedPlayer = (Player*) aggroedCreature;
+
+						if (aggroedPlayer->getFirstName() == getFirstName()) {
+
+							defender->lock();
+
+							defender->deagro();
+							removeDefender(scno);
+
+							defender->unlock();
+						}
+					}
+				}
+				if (scno->isPlayer()) {
+
+					aggroedPlayer = (Player*) scno;
+
+					defender->lock();
+
+					aggroedPlayer->removeDefender(_this);
+					removeDefender(scno);
+
+					defender->unlock();
+
+				}
+
+			}
+
+			if (setState(PEACE_STATE)) {
+				postureState = UPRIGHT_POSTURE;
+				updateStates();
+			}
+		}
+		zone->lock();
+
+	} catch (...) {
+		zone->lock();
 	}
 }
 
