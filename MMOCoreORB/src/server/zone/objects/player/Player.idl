@@ -44,6 +44,7 @@ which carries forward this exception.
 
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
+include "../../packets/object/StfParameter";
 
 import "../../ZoneClientSession";
 import "../../Zone";
@@ -331,7 +332,8 @@ interface Player implements CreatureObject {
 	void sendSystemMessage(unicode msg);
 
 	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
-
+	void sendSystemMessage(const string file, const string str, StfParameter param);
+	
 	// setters
 	void setConversatingCreature(CreatureObject conversator);
 	void setFirstName(const string name);

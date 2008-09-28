@@ -46,7 +46,7 @@ korgaSpiritmaster = Creature:new {
       faction = "Korga Tribe",
       gender = "",
 
-      name = "Korga spiri/master",
+      name = "Korga spiritmaster",
       objectCRC = 4186110670, 
       socialGroup = "Korga Tribe",
       named = FALSE, 

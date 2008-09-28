@@ -11,6 +11,8 @@
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
 
+#include "../../packets/object/StfParameter.h"
+
 class SceneObject;
 
 class Inventory;
@@ -1064,6 +1066,10 @@ public:
 	void setCreatureWeaponDamageType(const string& weapondamtype);
 
 	void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing);
+
+	void say(unicode& message, unsigned int moodid = 0, unsigned int mood2 = 0);
+
+	void say(const string& file, const string& str, StfParameter* param, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -2122,6 +2128,10 @@ public:
 
 	void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing);
 
+	void say(unicode& message, unsigned int moodid, unsigned int mood2);
+
+	void say(const string& file, const string& str, StfParameter* param, unsigned int moodid, unsigned int mood2);
+
 protected:
 	string _param0_info__string_bool_;
 	string _param0_doAnimation__string_;
@@ -2168,6 +2178,9 @@ protected:
 	string _param0_setCreatureWeaponClass__string_;
 	string _param0_setCreatureWeaponDamageType__string_;
 	string _param0_setCreatureWeaponArmorPiercing__string_;
+	unicode _param0_say__unicode_int_int_;
+	string _param0_say__string_string_StfParameter_int_int_;
+	string _param1_say__string_string_StfParameter_int_int_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

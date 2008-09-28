@@ -47,7 +47,7 @@ which carries forward this exception.
 
 class StfParameter;
 
-class StfPointerParameter : public Packet {
+class StfPointerParameter : public Message {
 	StfPointerParameter(uint64 p) {
 		insertLong(p);
 		insertAscii("");
@@ -59,7 +59,7 @@ class StfPointerParameter : public Packet {
 	friend class StfParameter;
 };
 
-class StfFileParameter : public Packet {
+class StfFileParameter : public Message {
 	StfFileParameter(const string& file, const string& str) {
 		insertLong(0);
 		insertAscii(file);
@@ -71,7 +71,7 @@ class StfFileParameter : public Packet {
 	friend class StfParameter;
 };
 
-class StfUnicodeParameter : public Packet {
+class StfUnicodeParameter : public Message {
 	StfUnicodeParameter(const unicode& str) {
 		insertLong(0);
 		insertAscii("");
@@ -84,7 +84,7 @@ class StfUnicodeParameter : public Packet {
 };
 
 
-class StfParameter : public Packet {
+class StfParameter : public Message {
 	Stream * toParam;
 	Stream * tuParam;
 	Stream * ttParam;

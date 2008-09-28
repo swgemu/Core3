@@ -44,6 +44,7 @@ which carries forward this exception.
 
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
+include "../../packets/object/StfParameter";
 
 import "../scene/SceneObject";
 
@@ -807,5 +808,9 @@ interface CreatureObject implements SceneObject {
 	void setCreatureWeaponMaxDamage(int weaponmaxdam);
 	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
 	void setCreatureWeaponDamageType(const string weapondamtype);
-	void setCreatureWeaponArmorPiercing(const string weaponarmorpiercing);		
+	void setCreatureWeaponArmorPiercing(const string weaponarmorpiercing);	
+	
+	void say(unicode message, unsigned int moodid = 0, unsigned int mood2 = 0);
+
+	void say(const string file, const string str, StfParameter param, unsigned int moodid = 0, unsigned int mood2 = 0);
 }

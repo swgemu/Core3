@@ -6581,6 +6581,38 @@ void CreatureObject::setCreatureWeaponArmorPiercing(const string& weaponarmorpie
 		((CreatureObjectImplementation*) _impl)->setCreatureWeaponArmorPiercing(weaponarmorpiercing);
 }
 
+void CreatureObject::say(unicode& message, unsigned int moodid, unsigned int mood2) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 514);
+		method.addUnicodeParameter(message);
+		method.addUnsignedIntParameter(moodid);
+		method.addUnsignedIntParameter(mood2);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->say(message, moodid, mood2);
+}
+
+void CreatureObject::say(const string& file, const string& str, StfParameter* param, unsigned int moodid, unsigned int mood2) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 515);
+		method.addAsciiParameter(file);
+		method.addAsciiParameter(str);
+		method.addObjectParameter(param);
+		method.addUnsignedIntParameter(moodid);
+		method.addUnsignedIntParameter(mood2);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->say(file, str, param, moodid, mood2);
+}
+
 /*
  *	CreatureObjectAdapter
  */
@@ -8115,6 +8147,12 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 513:
 		setCreatureWeaponArmorPiercing(inv->getAsciiParameter(_param0_setCreatureWeaponArmorPiercing__string_));
+		break;
+	case 514:
+		say(inv->getUnicodeParameter(_param0_say__unicode_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 515:
+		say(inv->getAsciiParameter(_param0_say__string_string_StfParameter_int_int_), inv->getAsciiParameter(_param1_say__string_string_StfParameter_int_int_), (StfParameter*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -10153,6 +10191,14 @@ void CreatureObjectAdapter::setCreatureWeaponDamageType(const string& weapondamt
 
 void CreatureObjectAdapter::setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing) {
 	return ((CreatureObjectImplementation*) impl)->setCreatureWeaponArmorPiercing(weaponarmorpiercing);
+}
+
+void CreatureObjectAdapter::say(unicode& message, unsigned int moodid, unsigned int mood2) {
+	return ((CreatureObjectImplementation*) impl)->say(message, moodid, mood2);
+}
+
+void CreatureObjectAdapter::say(const string& file, const string& str, StfParameter* param, unsigned int moodid, unsigned int mood2) {
+	return ((CreatureObjectImplementation*) impl)->say(file, str, param, moodid, mood2);
 }
 
 /*

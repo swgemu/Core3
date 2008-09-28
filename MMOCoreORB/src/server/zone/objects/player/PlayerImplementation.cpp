@@ -1600,6 +1600,11 @@ void PlayerImplementation::sendSystemMessage(const string& file, const string& s
 	sendMessage(msg);
 }
 
+void PlayerImplementation::sendSystemMessage(const string& file, const string& str,StfParameter * param) {
+	ChatSystemMessage* msg = new ChatSystemMessage(file, str, param);
+	sendMessage(msg);
+}
+
 void PlayerImplementation::sendMail(string& mailSender, unicode& subjectSender,
 		unicode& bodySender, string& charNameSender) {
 
