@@ -1913,8 +1913,6 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 		return;
 	}
 
-	objcrc = creatureManager->getCreatureCrc(name);
-
 
 	if (player->getParent() != NULL) {
 		cellid = player->getParent()->getObjectID();
@@ -1953,24 +1951,19 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 	if(y < -7680)
 		y = -7680;
 
+	if (creatureManager->verifyCreatureSpawn(name)) {
 
-	Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
-			0, false, true, height);
+		uint32 objcrc = creatureManager->getCreatureCrc(name);
 
-	if (creature == NULL) {
+		Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
+				0, false, true, height);
 
-		creatureManager->hotLoadCreature(name);
+		if (creature != NULL) {
+			creature->setRespawnTimer(0);
+			creature->setHeight(height);
+		}
 
-		creature = creatureManager->spawnCreature(objcrc, cellid, x, y, 0,
-				false, true, height);
-
-	}
-
-	if (creature != NULL) {
-		creature->setRespawnTimer(0);
-		creature->setHeight(height);
-	}
-	else
+	} else
 		player->sendSystemMessage("Cannot spawn creature");
 
 
