@@ -331,6 +331,8 @@ public:
 	void createItems();
 	void loadItems();
 
+	void saveDatapad(Player* player);
+
 	void updateHair();
 
 	void createBaseStats();

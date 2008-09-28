@@ -301,6 +301,8 @@ public:
 
 	void equipPlayerItem(TangibleObject* item);
 
+	void saveDatapad(Player* player);
+
 	void saveProfessions();
 
 	void loadProfessions();
@@ -972,6 +974,8 @@ public:
 	void addInventoryResource(ResourceContainer* item);
 
 	void equipPlayerItem(TangibleObject* item);
+
+	void saveDatapad(Player* player);
 
 	void saveProfessions();
 

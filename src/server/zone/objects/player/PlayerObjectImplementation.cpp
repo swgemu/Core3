@@ -442,3 +442,5 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 	unlock();
 	return returnWP;
 }
+
+

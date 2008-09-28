@@ -272,6 +272,8 @@ interface Player implements CreatureObject {
 	void addInventoryItem(TangibleObject item);
 	void addInventoryResource(ResourceContainer item);
 	void equipPlayerItem(TangibleObject item);
+	
+	void saveDatapad(Player player);
 
 	// Profession
 	void saveProfessions();
