@@ -34,24 +34,12 @@ DeedObject::DeedObject(DummyConstructorParameter* param) : TangibleObject(param)
 DeedObject::~DeedObject() {
 }
 
-int DeedObject::getDeedSubType() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((DeedObjectImplementation*) _impl)->getDeedSubType();
-}
-
 unicode& DeedObject::getTargetName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 6);
 
 		method.executeWithUnicodeReturn(_return_getTargetName);
 		return _return_getTargetName;
@@ -64,7 +52,7 @@ string& DeedObject::getTargetFile() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 7);
 
 		method.executeWithAsciiReturn(_return_getTargetFile);
 		return _return_getTargetFile;
@@ -77,7 +65,7 @@ string& DeedObject::getTargetTemplate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 8);
 
 		method.executeWithAsciiReturn(_return_getTargetTemplate);
 		return _return_getTargetTemplate;
@@ -85,25 +73,12 @@ string& DeedObject::getTargetTemplate() {
 		return ((DeedObjectImplementation*) _impl)->getTargetTemplate();
 }
 
-void DeedObject::setDeedSubType(int tp) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addSignedIntParameter(tp);
-
-		method.executeWithVoidReturn();
-	} else
-		((DeedObjectImplementation*) _impl)->setDeedSubType(tp);
-}
-
 void DeedObject::setTargetFile(string& path) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(path);
 
 		method.executeWithVoidReturn();
@@ -116,7 +91,7 @@ string& DeedObject::getTargetTempFile() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 10);
 
 		method.executeWithAsciiReturn(_return_getTargetTempFile);
 		return _return_getTargetTempFile;
@@ -129,7 +104,7 @@ int DeedObject::useObject(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -149,27 +124,21 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertSignedInt(getDeedSubType());
-		break;
-	case 7:
 		resp->insertUnicode(getTargetName());
 		break;
-	case 8:
+	case 7:
 		resp->insertAscii(getTargetFile());
 		break;
-	case 9:
+	case 8:
 		resp->insertAscii(getTargetTemplate());
 		break;
-	case 10:
-		setDeedSubType(inv->getSignedIntParameter());
-		break;
-	case 11:
+	case 9:
 		setTargetFile(inv->getAsciiParameter(_param0_setTargetFile__string_));
 		break;
-	case 12:
+	case 10:
 		resp->insertAscii(getTargetTempFile());
 		break;
-	case 13:
+	case 11:
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
 	default:
@@ -177,10 +146,6 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
-}
-
-int DeedObjectAdapter::getDeedSubType() {
-	return ((DeedObjectImplementation*) impl)->getDeedSubType();
 }
 
 unicode& DeedObjectAdapter::getTargetName() {
@@ -193,10 +158,6 @@ string& DeedObjectAdapter::getTargetFile() {
 
 string& DeedObjectAdapter::getTargetTemplate() {
 	return ((DeedObjectImplementation*) impl)->getTargetTemplate();
-}
-
-void DeedObjectAdapter::setDeedSubType(int tp) {
-	return ((DeedObjectImplementation*) impl)->setDeedSubType(tp);
 }
 
 void DeedObjectAdapter::setTargetFile(string& path) {

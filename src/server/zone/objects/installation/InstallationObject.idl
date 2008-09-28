@@ -61,7 +61,7 @@ interface InstallationObject implements TangibleObject {
 		super(unsigned long oid, int type);
 	}
 
-	void insertToZone(Zone zone);
+	//void insertToZone(Zone zone);
 
 	void sendTo(Player player, boolean doClose = true);
 

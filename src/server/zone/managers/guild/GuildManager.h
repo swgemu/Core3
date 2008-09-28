@@ -75,6 +75,8 @@ public:
 
 	void handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player* player, unsigned int cancel);
 
+	void sendGuildMail(Player* player, const string& sender, const string& subject, const string& body, bool excludeSender);
+
 protected:
 	GuildManager(DummyConstructorParameter* param);
 
@@ -147,6 +149,8 @@ public:
 
 	void handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player* player, unsigned int cancel);
 
+	void sendGuildMail(Player* player, const string& sender, const string& subject, const string& body, bool excludeSender);
+
 protected:
 	string _param1_createGuild__Player_string_string_;
 	string _param2_createGuild__Player_string_string_;
@@ -158,6 +162,9 @@ protected:
 	string _param3_handleGuildNameChange__int_Player_int_string_;
 	string _param3_handleGuildNameChangeName__int_Player_int_string_;
 	string _param3_handleGuildTransferLeaderBox__int_Player_int_string_;
+	string _param1_sendGuildMail__Player_string_string_string_bool_;
+	string _param2_sendGuildMail__Player_string_string_string_bool_;
+	string _param3_sendGuildMail__Player_string_string_string_bool_;
 };
 
 class GuildManagerHelper : public DistributedObjectClassHelper, public Singleton<GuildManagerHelper> {

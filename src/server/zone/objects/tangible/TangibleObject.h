@@ -133,6 +133,8 @@ public:
 
 	void setName(const string& n);
 
+	void setName(const unicode& n);
+
 	void setTemplateName(const string& tempName);
 
 	void setTemplateTypeName(const string& tempTypeName);
@@ -279,6 +281,8 @@ public:
 
 	void setName(const string& n);
 
+	void setName(const unicode& n);
+
 	void setTemplateName(const string& tempName);
 
 	void setTemplateTypeName(const string& tempTypeName);
@@ -305,6 +309,7 @@ protected:
 	string _param0_getCustomizationString__string_;
 	string _param0_setAttributes__string_;
 	string _param0_setName__string_;
+	unicode _param0_setName__unicode_;
 	string _param0_setTemplateName__string_;
 	string _param0_setTemplateTypeName__string_;
 	string _param0_setCustomizationString__string_;

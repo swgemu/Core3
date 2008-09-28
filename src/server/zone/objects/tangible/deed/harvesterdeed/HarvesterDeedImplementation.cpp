@@ -8,42 +8,39 @@
 
 
 HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn) :
-	HarvesterDeedServant(creature->getNewItemID(), tempcrc, n, tempn, INSTALLATIONDEED) {
+	HarvesterDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectCRC = tempcrc;
 	name = n;
 	templateName = tempn;
+
 	init();
 }
 
 HarvesterDeedImplementation::HarvesterDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn) :
-	HarvesterDeedServant(objid, tempcrc, n, tempn, INSTALLATIONDEED) {
+	HarvesterDeedServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectID = objid;
 	objectCRC = tempcrc;
 	name = n;
 	templateName = tempn;
+
 	init();
 }
+
 HarvesterDeedImplementation::~HarvesterDeedImplementation() {
 
 }
 void HarvesterDeedImplementation::init() {
-
 	getType();
-
 	getSize();
 
-	deedSubType = HARVESTER;
+	objectSubType = TangibleObjectImplementation::INSTALLATIONDEED;
 
 	switch (type) {
-
 	case ORE:
-
 		switch (size) {
-
 		case SMALL:
 			targetTemplate = "small_ore_mine";
-			targetFile
-					= "object/installation/mining_ore/shared_mining_ore_harvester_style_1.iff";
+			targetFile = "object/installation/mining_ore/shared_mining_ore_harvester_style_1.iff";
 			targetName = unicode("Personal Mineral Extractor");
 			break;
 
@@ -181,7 +178,7 @@ void HarvesterDeedImplementation::init() {
 		targetTempFile
 			= "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_1.iff";
 		break;
-case MEDIUM:
+	case MEDIUM:
 		targetTempFile
 				= "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_2.iff";
 	break;

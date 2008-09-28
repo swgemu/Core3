@@ -28,16 +28,14 @@ PlayerHouseDeedImplementation::PlayerHouseDeedImplementation(uint64 objid, uint3
 PlayerHouseDeedImplementation::~PlayerHouseDeedImplementation() {
 
 }
-void PlayerHouseDeedImplementation::init() {
 
-	deedSubType = BUILDING;
-	objectSubType = BUILDINGDEED;
+void PlayerHouseDeedImplementation::init() {
+	objectSubType = TangibleObjectImplementation::BUILDINGDEED;
 
 	//if(templateName == "corellia_house_large_deed"){
 		targetTemplate = "naboo_house_medium";
 		targetName = unicode("Medium Naboo House");
 		targetTempFile = "object/building/player/construction/shared_construction_player_house_naboo_medium_style_01.iff";
-		//targetFile = "object/building/player/shared_player_house_naboo_medium_style_01.iff";
 		targetFile = "object/building/player/shared_player_house_naboo_medium_style_01.iff";
 		cellCount = 7;
 	//}

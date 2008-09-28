@@ -36,25 +36,12 @@ InstallationObject::InstallationObject(DummyConstructorParameter* param) : Tangi
 InstallationObject::~InstallationObject() {
 }
 
-void InstallationObject::insertToZone(Zone* zone) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(zone);
-
-		method.executeWithVoidReturn();
-	} else
-		((InstallationObjectImplementation*) _impl)->insertToZone(zone);
-}
-
 void InstallationObject::sendTo(Player* player, bool doClose) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 6);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doClose);
 
@@ -68,7 +55,7 @@ void InstallationObject::handleStructureRedeed(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -81,7 +68,7 @@ void InstallationObject::handleStructureRedeedConfirm(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -94,7 +81,7 @@ void InstallationObject::handleMakeDeed(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 9);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -107,7 +94,7 @@ void InstallationObject::handleStructureStatus(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -120,7 +107,7 @@ void InstallationObject::handleStructureAddMaintenance(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -133,7 +120,7 @@ void InstallationObject::handleStructureAddEnergy(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -146,7 +133,7 @@ void InstallationObject::setOwner(const string& owner) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 		method.addAsciiParameter(owner);
 
 		method.executeWithVoidReturn();
@@ -159,7 +146,7 @@ int InstallationObject::getDestroyCode() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -171,7 +158,7 @@ void InstallationObject::addMaintenance(unsigned long long maint) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 		method.addUnsignedLongParameter(maint);
 
 		method.executeWithVoidReturn();
@@ -184,7 +171,7 @@ void InstallationObject::addEnergy(unsigned long long pow) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 16);
 		method.addUnsignedLongParameter(pow);
 
 		method.executeWithVoidReturn();
@@ -197,7 +184,7 @@ unsigned long long InstallationObject::getMaintenance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -209,7 +196,7 @@ unsigned long long InstallationObject::getEnergy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -228,45 +215,42 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 	switch (methid) {
 	case 6:
-		insertToZone((Zone*) inv->getObjectParameter());
-		break;
-	case 7:
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case 8:
+	case 7:
 		handleStructureRedeed((Player*) inv->getObjectParameter());
 		break;
-	case 9:
+	case 8:
 		handleStructureRedeedConfirm((Player*) inv->getObjectParameter());
 		break;
-	case 10:
+	case 9:
 		handleMakeDeed((Player*) inv->getObjectParameter());
 		break;
-	case 11:
+	case 10:
 		handleStructureStatus((Player*) inv->getObjectParameter());
 		break;
-	case 12:
+	case 11:
 		handleStructureAddMaintenance((Player*) inv->getObjectParameter());
 		break;
-	case 13:
+	case 12:
 		handleStructureAddEnergy((Player*) inv->getObjectParameter());
 		break;
-	case 14:
+	case 13:
 		setOwner(inv->getAsciiParameter(_param0_setOwner__string_));
 		break;
-	case 15:
+	case 14:
 		resp->insertSignedInt(getDestroyCode());
 		break;
-	case 16:
+	case 15:
 		addMaintenance(inv->getUnsignedLongParameter());
 		break;
-	case 17:
+	case 16:
 		addEnergy(inv->getUnsignedLongParameter());
 		break;
-	case 18:
+	case 17:
 		resp->insertLong(getMaintenance());
 		break;
-	case 19:
+	case 18:
 		resp->insertLong(getEnergy());
 		break;
 	default:
@@ -274,10 +258,6 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	}
 
 	return resp;
-}
-
-void InstallationObjectAdapter::insertToZone(Zone* zone) {
-	return ((InstallationObjectImplementation*) impl)->insertToZone(zone);
 }
 
 void InstallationObjectAdapter::sendTo(Player* player, bool doClose) {

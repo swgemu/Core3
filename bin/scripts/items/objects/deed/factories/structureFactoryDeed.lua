@@ -40,8 +40,8 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-factoryStructureDeed = Deed:new {
-	objectName = "",
+structureFactoryDeed = Deed:new {
+	objectName = "Deed for: Structure Factory",
 
 	templateName = "structure_factory",
 

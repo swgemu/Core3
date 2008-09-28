@@ -16,20 +16,20 @@ HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid) : Harve
 
 	objectID = oid;
 
-	initialize();
+	init();
 
 	pvpStatusBitmask = 0;
 }
 
 
-HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid, DeedObject * deed) : HarvesterObjectServant(oid, deed) {
+HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid, DeedObject* deed) : HarvesterObjectServant(oid, deed) {
 
 	cout << "HarvesterObjectImplementation constructor" << endl;
-	harvesterType = deed->getDeedSubType();
+	//harvesterType = deed->getDeedSubType();
 
 	objectID = oid;
 
-	initialize();
+	init();
 
 	pvpStatusBitmask = 0;
 }
@@ -38,9 +38,9 @@ HarvesterObjectImplementation::~HarvesterObjectImplementation(){
 
 }
 
-void HarvesterObjectImplementation::initialize() {
-
+void HarvesterObjectImplementation::init() {
 	objectSubType = TangibleObjectImplementation::HARVESTER;
+
 	operating = 0;
 	capacity = 0;
 }

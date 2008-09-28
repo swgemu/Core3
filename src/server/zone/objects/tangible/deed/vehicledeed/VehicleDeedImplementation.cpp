@@ -35,8 +35,6 @@ VehicleDeedImplementation::~VehicleDeedImplementation() {
 
 }
 void VehicleDeedImplementation::init() {
-
-	deedSubType = VEHICLEDEED;
 	objectSubType = VEHICLEDEED;
 
 	if(templateName == "speederbike_swoop_deed") {

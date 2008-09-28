@@ -16,6 +16,8 @@
 
 #include "../../objects/building/cell/CellObject.h"
 
+#include "../../objects/tangible/deed/DeedObject.h"
+
 #include "../../objects/tangible/terminal/mission/MissionTerminal.h"
 
 #include "../../objects/area/NoBuildArea.h"
@@ -150,12 +152,75 @@ void PlanetManager::sendPlanetTravelPointListResponse(Player* player) {
 		((PlanetManagerImplementation*) _impl)->sendPlanetTravelPointListResponse(player);
 }
 
-CellObject* PlanetManager::getCell(unsigned long long id) {
+void PlanetManager::spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
+		method.addObjectParameter(player);
+		method.addObjectParameter(deed);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addFloatParameter(oX);
+		method.addFloatParameter(oZ);
+		method.addFloatParameter(oY);
+		method.addFloatParameter(oW);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->spawnInstallation(player, deed, x, z, y, oX, oZ, oY, oW);
+}
+
+void PlanetManager::spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addObjectParameter(player);
+		method.addObjectParameter(deed);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addFloatParameter(oX);
+		method.addFloatParameter(oZ);
+		method.addFloatParameter(oY);
+		method.addFloatParameter(oW);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->spawnHarvester(player, deed, x, z, y, oX, oZ, oY, oW);
+}
+
+void PlanetManager::spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+		method.addObjectParameter(deed);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addFloatParameter(oX);
+		method.addFloatParameter(oZ);
+		method.addFloatParameter(oY);
+		method.addFloatParameter(oW);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->spawnBuilding(player, deed, x, z, y, oX, oZ, oY, oW);
+}
+
+CellObject* PlanetManager::getCell(unsigned long long id) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 		method.addUnsignedLongParameter(id);
 
 		return (CellObject*) method.executeWithObjectReturn();
@@ -168,7 +233,7 @@ BuildingObject* PlanetManager::getBuilding(unsigned long long id) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 19);
 		method.addUnsignedLongParameter(id);
 
 		return (BuildingObject*) method.executeWithObjectReturn();
@@ -181,7 +246,7 @@ MissionTerminal* PlanetManager::getMissionTerminal(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 20);
 		method.addUnsignedLongParameter(oid);
 
 		return (MissionTerminal*) method.executeWithObjectReturn();
@@ -194,7 +259,7 @@ unsigned long long PlanetManager::getLandingTime() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -206,7 +271,7 @@ void PlanetManager::placePlayerStructure(Player* player, unsigned long long obje
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(objectID);
 		method.addFloatParameter(x);
@@ -223,7 +288,7 @@ unsigned int PlanetManager::getTravelFare(string& departurePlanet, string& arriv
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 23);
 		method.addAsciiParameter(departurePlanet);
 		method.addAsciiParameter(arrivalPlanet);
 
@@ -237,7 +302,7 @@ bool PlanetManager::isNoBuildArea(bool x, bool y) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 24);
 		method.addBooleanParameter(x);
 		method.addBooleanParameter(y);
 
@@ -251,7 +316,7 @@ void PlanetManager::addNoBuildArea(float minX, float maxX, float minY, float max
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 25);
 		method.addFloatParameter(minX);
 		method.addFloatParameter(maxX);
 		method.addFloatParameter(minY);
@@ -269,7 +334,7 @@ void PlanetManager::addNoBuildArea(NoBuildArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(area);
 
 		method.executeWithVoidReturn();
@@ -282,7 +347,7 @@ NoBuildArea* PlanetManager::createNoBuildArea(float minX, float maxX, float minY
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 27);
 		method.addFloatParameter(minX);
 		method.addFloatParameter(maxX);
 		method.addFloatParameter(minY);
@@ -333,33 +398,42 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		sendPlanetTravelPointListResponse((Player*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getObjectID());
+		spawnInstallation((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 16:
-		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getObjectID());
+		spawnHarvester((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 17:
-		resp->insertLong(getMissionTerminal(inv->getUnsignedLongParameter())->_getObjectID());
+		spawnBuilding((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 18:
-		resp->insertLong(getLandingTime());
+		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 19:
-		placePlayerStructure((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+		resp->insertLong(getBuilding(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 20:
-		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__string_string_), inv->getAsciiParameter(_param1_getTravelFare__string_string_)));
+		resp->insertLong(getMissionTerminal(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 21:
-		resp->insertBoolean(isNoBuildArea(inv->getBooleanParameter(), inv->getBooleanParameter()));
+		resp->insertLong(getLandingTime());
 		break;
 	case 22:
-		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedCharParameter());
+		placePlayerStructure((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
 		break;
 	case 23:
-		addNoBuildArea((NoBuildArea*) inv->getObjectParameter());
+		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__string_string_), inv->getAsciiParameter(_param1_getTravelFare__string_string_)));
 		break;
 	case 24:
+		resp->insertBoolean(isNoBuildArea(inv->getBooleanParameter(), inv->getBooleanParameter()));
+		break;
+	case 25:
+		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedCharParameter());
+		break;
+	case 26:
+		addNoBuildArea((NoBuildArea*) inv->getObjectParameter());
+		break;
+	case 27:
 		resp->insertLong(createNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedCharParameter())->_getObjectID());
 		break;
 	default:
@@ -403,6 +477,18 @@ ShuttleCreature* PlanetManagerAdapter::getShuttle(const string& Shuttle) {
 
 void PlanetManagerAdapter::sendPlanetTravelPointListResponse(Player* player) {
 	return ((PlanetManagerImplementation*) impl)->sendPlanetTravelPointListResponse(player);
+}
+
+void PlanetManagerAdapter::spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
+	return ((PlanetManagerImplementation*) impl)->spawnInstallation(player, deed, x, z, y, oX, oZ, oY, oW);
+}
+
+void PlanetManagerAdapter::spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
+	return ((PlanetManagerImplementation*) impl)->spawnHarvester(player, deed, x, z, y, oX, oZ, oY, oW);
+}
+
+void PlanetManagerAdapter::spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
+	return ((PlanetManagerImplementation*) impl)->spawnBuilding(player, deed, x, z, y, oX, oZ, oY, oW);
 }
 
 CellObject* PlanetManagerAdapter::getCell(unsigned long long id) {
