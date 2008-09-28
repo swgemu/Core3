@@ -11,6 +11,8 @@
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
 
+#include "../../packets/object/StfParameter.h"
+
 class ZoneClientSession;
 
 class Zone;
@@ -368,6 +370,8 @@ public:
 	void sendSystemMessage(unicode& msg);
 
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
+
+	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
 
 	void setConversatingCreature(CreatureObject* conversator);
 
@@ -1039,6 +1043,8 @@ public:
 
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
 
+	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
+
 	void setConversatingCreature(CreatureObject* conversator);
 
 	void setFirstName(const string& name);
@@ -1386,6 +1392,8 @@ protected:
 	unicode _param0_sendSystemMessage__unicode_;
 	string _param0_sendSystemMessage__string_string_long_;
 	string _param1_sendSystemMessage__string_string_long_;
+	string _param0_sendSystemMessage__string_string_StfParameter_;
+	string _param1_sendSystemMessage__string_string_StfParameter_;
 	string _param0_setFirstName__string_;
 	string _param0_setLastName__string_;
 	string _param0_setFirstNameProper__string_;

@@ -62,6 +62,8 @@ class ChatRoomMap;
 #include "ChatManager.h"
 #include "GameCommandHandler.h"
 
+#include "../zone/objects/creature/CreatureObject.h"
+
 class ZoneServer;
 
 class ChatManagerImplementation : public ChatManagerServant, public Mutex {
@@ -113,9 +115,11 @@ public:
 
 	void handleGameCommand(Player* player, const string& command);
 	static void sendSystemMessage(Player* player, unicode& message);
+	static void sendSystemMessage(Player* player, const string& file, const string& str, StfParameter * param);
 
 	static void broadcastSystemMessage(unicode& message);
-	static void broadcastMessage(Player* player, unicode& message, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
+	static void broadcastMessage(CreatureObject* player, unicode& message, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
+	static void broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter * param, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
 
 	void broadcastMessage(const string& message);
 	void broadcastMessageRange(Player* player, const string& message, float range);

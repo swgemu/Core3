@@ -211,8 +211,59 @@ void ChatManagerImplementation::sendSystemMessage(Player* player, unicode& messa
 	player->sendMessage(smsg);
 }
 
-void ChatManagerImplementation::broadcastMessage(Player* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2) {
-	if ( !player->isChatMuted() ) {
+void ChatManagerImplementation::sendSystemMessage(Player* player, const string& file, const string& str, StfParameter * param) {
+	ChatSystemMessage* smsg = new ChatSystemMessage(file, str, param);
+	player->sendMessage(smsg);
+}
+
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter * param, uint64 target, uint32 moodid, uint32 mood2) {
+	if ( !player->isPlayer() || !((Player *)player)->isChatMuted() ) {
+		Zone* zone = player->getZone();
+
+		/*if (message.c_str() == "LAG") {
+			ZoneClientSession* client = player->getClient();
+
+			client->reportStats(true);
+
+			Logger::slog("Client (" + client->getAddress() + ") is experiencing lag", true);
+			return;
+		} else if (message.c_str() == "QUEUE") {
+			ZoneClientSession* client = player->getClient();
+
+			client->reportStats(true);
+
+			Logger::slog("Client (" + client->getAddress() + ") is experiencing queue lag", true);
+			return;
+		}*/
+
+		try {
+			zone->lock();
+
+			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+
+				if (object->isPlayer()) {
+					Player* creature = (Player*) object;
+
+					if (player->isInRange(creature, 128)) {
+						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), file, str, param, target, moodid, mood2);
+						creature->sendMessage(cmsg);
+					}
+				}
+			}
+
+			zone->unlock();
+		} catch (...) {
+
+			zone->unlock();
+
+			cout << "exception ChatManagerImplementation::broadcastMessage(Player* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2)\n";
+		}
+	}
+}
+
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2) {
+	if ( !player->isPlayer() || !((Player *)player)->isChatMuted() ) {
 		Zone* zone = player->getZone();
 
 		/*if (message.c_str() == "LAG") {

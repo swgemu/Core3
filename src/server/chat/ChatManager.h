@@ -9,9 +9,13 @@
 
 #include "engine/service/Message.h"
 
+#include "../zone/packets/object/StfParameter.h"
+
 class ChatRoom;
 
 class Player;
+
+class CreatureObject;
 
 class ZoneServer;
 
@@ -47,7 +51,11 @@ public:
 
 	void sendSystemMessage(Player* player, unicode& message);
 
-	void broadcastMessage(Player* player, unicode& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void sendSystemMessage(Player* player, const string& file, const string& str, StfParameter* param);
+
+	void broadcastMessage(CreatureObject* player, unicode& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+
+	void broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter* param, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void broadcastMessage(const string& message);
 
@@ -145,7 +153,11 @@ public:
 
 	void sendSystemMessage(Player* player, unicode& message);
 
-	void broadcastMessage(Player* player, unicode& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
+	void sendSystemMessage(Player* player, const string& file, const string& str, StfParameter* param);
+
+	void broadcastMessage(CreatureObject* player, unicode& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
+
+	void broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2);
 
 	void broadcastMessage(const string& message);
 
@@ -207,7 +219,11 @@ protected:
 	unicode _param2_sendMail__string_unicode_unicode_string_;
 	string _param3_sendMail__string_unicode_unicode_string_;
 	unicode _param1_sendSystemMessage__Player_unicode_;
-	unicode _param1_broadcastMessage__Player_unicode_long_int_int_;
+	string _param1_sendSystemMessage__Player_string_string_StfParameter_;
+	string _param2_sendSystemMessage__Player_string_string_StfParameter_;
+	unicode _param1_broadcastMessage__CreatureObject_unicode_long_int_int_;
+	string _param1_broadcastMessage__CreatureObject_string_string_StfParameter_long_int_int_;
+	string _param2_broadcastMessage__CreatureObject_string_string_StfParameter_long_int_int_;
 	string _param0_broadcastMessage__string_;
 	string _param1_broadcastMessageRange__Player_string_float_;
 	string _param1_handleGameCommand__Player_string_;

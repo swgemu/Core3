@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../ZoneClientSession.h"
 
+#include "../../packets/object/StfParameter.h"
+
 #include "PlayerObject.h"
 
 #include "professions/SkillBoxMap.h"
@@ -472,6 +474,7 @@ public:
 
 	void sendSystemMessage(const string& message);
 	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
+	void sendSystemMessage(const string& file, const string& str, StfParameter * param);
 	void sendSystemMessage(unicode& message);
 
 	//item methods

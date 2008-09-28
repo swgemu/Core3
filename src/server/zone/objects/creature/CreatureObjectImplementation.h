@@ -64,6 +64,8 @@ which carries forward this exception.
 
 #include "../guild/Guild.h"
 
+#include "../../../chat/ChatManager.h"
+
 class CombatManager;
 
 class Player;
@@ -2501,6 +2503,16 @@ public:
 	}
 
 	int getMedicalFacilityRating();
+
+	inline void say(unicode& message, uint32 moodid = 0, uint32 mood2 = 0) {
+		ChatManager * chatManager = this->getZone()->getChatManager();
+		chatManager->broadcastMessage(_this, message, this->getTargetID(),moodid, mood2);
+	}
+
+	inline void say(const string& file, const string& str, StfParameter * param, uint32 moodid = 0, uint32 mood2 = 0) {
+		ChatManager * chatManager = this->getZone()->getChatManager();
+		chatManager->broadcastMessage(_this, file, str, param, this->getTargetID(),moodid, mood2);
+	}
 
 	friend class CombatManager;
 	friend class SkillManager;
