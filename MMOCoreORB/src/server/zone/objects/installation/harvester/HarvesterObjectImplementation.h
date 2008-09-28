@@ -30,15 +30,10 @@ protected:
 
 	string temp;
 
-
-public:
-
 public:
 	HarvesterObjectImplementation(uint64 oid);
 	HarvesterObjectImplementation(uint64 oid, DeedObject * deed);
 	~HarvesterObjectImplementation();
-
-	void initialize();
 
 	void insertToZone(Zone* zone);
 
@@ -53,8 +48,6 @@ public:
 	inline uint64 getActiveResourceID(){
 		return activeResourceID;
 	}
-
-
 
 	inline bool isOperating(){
 		return operating;
@@ -76,9 +69,8 @@ public:
 		return hopperSize;
 	}
 
-	//inline HarvesterObject* deploy() {
-	//	return (HarvesterObject*) SceneObjectImplementation::deploy();
-	//}
+private:
+	void init();
 };
 
 #endif /*HARVESTEROBJECTIMPLEMENTATION_H_*/

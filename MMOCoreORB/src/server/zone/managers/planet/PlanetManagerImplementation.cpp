@@ -1076,28 +1076,6 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 		}
 
 		spawnTempStructure(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
-
-		//cout << "Deed is = " << deed->getDeedSubType() << endl;
-		switch(deed->getDeedSubType()) {
-			case DeedObjectImplementation::HARVESTER:
-
-				spawnHarvester(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
-				break;
-
-			case DeedObjectImplementation::GENERATOR:
-			case DeedObjectImplementation::FACTORY:
-
-				spawnInstallation(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
-				break;
-
-			case DeedObjectImplementation::BUILDING:
-
-				spawnBuilding(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
-				break;
-
-			default:
-				break;
-		}
 	}
 	catch(...) {
 		cout << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
@@ -1108,30 +1086,37 @@ void PlanetManagerImplementation::spawnTempStructure(Player * player,
 		DeedObject * deed, float x, float z, float y, float oX, float oZ,
 		float oY, float oW) {
 
-	InstallationObject* inso = new InstallationObject(player->getNewItemID(), deed);
+	cout << "PlanetManagerImplementation::spawnTempStructure" << endl;
+	InstallationObject* inso = new InstallationObject(player->getNewItemID());
 
 	//inso->setObjectID(player->getNewItemID());
 	inso->setObjectCRC(String::hashCode(deed->getTargetTempFile()));
-	inso->setObjectSubType(0);
+	inso->setName(deed->getTargetName());
+	inso->setTemplateName(deed->getTargetTemplate());
+
+	//inso->setObjectSubType(0);
 	inso->initializePosition(x, z, y);
 	inso->setDirection(oX, oZ, oY, oW);
 	inso->setOwner(player->getFirstName());
 	inso->setZoneProcessServer(server);
 
-	tempInstallationSpawnEvent = new TempInstallationSpawnEvent(player, inso);
-	tempInstallationDespawnEvent = new TempInstallationDespawnEvent(inso);
 
-	//server->addEvent(tempInstallationSpawnEvent, 20);
-	//server->addEvent(tempInstallationDespawnEvent, 5000);
+	tempInstallationSpawnEvent = new TempInstallationSpawnEvent(inso, player->getZone());
+	tempInstallationDespawnEvent = new TempInstallationDespawnEvent(inso, player, deed, x, z, y, oX, oZ, oY, oW);
+
+	server->addEvent(tempInstallationSpawnEvent, 100);
+	server->addEvent(tempInstallationDespawnEvent, 10000);
+	cout << "PlanetManagerImplementation::spawnTempStructure Completed" << endl;
 }
 void PlanetManagerImplementation::spawnInstallation(Player * player,
 		DeedObject * deed, float x, float z, float y, float oX, float oZ,
 		float oY, float oW) {
 
+	cout << "PlanetManagerImplementation::spawnInstallation" << endl;
 	InstallationObject* inso = new InstallationObject(player->getNewItemID(), deed);
 
 	//inso->setObjectID(player->getNewItemID());
-	inso->setObjectCRC(String::hashCode(deed->getTargetFile()));
+	//inso->setObjectCRC(String::hashCode(deed->getTargetFile()));
 	inso->initializePosition(x, z, y);
 	inso->setDirection(oX, oZ, oY, oW);
 	inso->setOwner(player->getFirstName());
@@ -1139,7 +1124,7 @@ void PlanetManagerImplementation::spawnInstallation(Player * player,
 
 	installationSpawnEvent = new InstallationSpawnEvent(player, inso);
 
-	server->addEvent(installationSpawnEvent, 5500);
+	server->addEvent(installationSpawnEvent, 100);
 }
 
 void PlanetManagerImplementation::spawnHarvester(Player * player,
@@ -1150,7 +1135,7 @@ void PlanetManagerImplementation::spawnHarvester(Player * player,
 	HarvesterObject*  hino = new HarvesterObject(player->getNewItemID(), deed);
 
 	//hino->setObjectID(player->getNewItemID());
-	hino->setObjectCRC(String::hashCode(deed->getTargetFile()));
+	//hino->setObjectCRC(String::hashCode(deed->getTargetFile()));
 	hino->initializePosition(x, z, y);
 	hino->setDirection(oX, oZ, oY, oW);
 	hino->setOwner(player->getFirstName());
@@ -1159,7 +1144,7 @@ void PlanetManagerImplementation::spawnHarvester(Player * player,
 	cout << "PlanetManagerImplementation::spawnHarvester, creating event" << endl;
 	harvesterSpawnEvent = new HarvesterSpawnEvent(player, hino);
 
-	server->addEvent(harvesterSpawnEvent, 5500);
+	server->addEvent(harvesterSpawnEvent, 100);
 	cout << "PlanetManagerImplementation::did spawnHarvester, creating event" << endl;
 }
 

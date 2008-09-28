@@ -21,6 +21,8 @@ class BuildingObject;
 
 class CellObject;
 
+class DeedObject;
+
 class MissionTerminal;
 
 class NoBuildArea;
@@ -46,6 +48,12 @@ public:
 	ShuttleCreature* getShuttle(const string& Shuttle);
 
 	void sendPlanetTravelPointListResponse(Player* player);
+
+	void spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
+	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
+	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	CellObject* getCell(unsigned long long id);
 
@@ -100,6 +108,12 @@ public:
 	ShuttleCreature* getShuttle(const string& Shuttle);
 
 	void sendPlanetTravelPointListResponse(Player* player);
+
+	void spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
+	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
+	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	CellObject* getCell(unsigned long long id);
 

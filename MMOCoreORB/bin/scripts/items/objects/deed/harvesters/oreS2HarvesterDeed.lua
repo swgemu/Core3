@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-harvesterOreS2Deed = Deed:new {
+oreS2HarvesterDeed = Deed:new {
 	objectName = "Deed for: Mineral Mining Installation",
 
 	templateName = "harvester_ore_s2_deed",

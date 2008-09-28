@@ -678,12 +678,25 @@ void TangibleObject::setName(const string& n) {
 		((TangibleObjectImplementation*) _impl)->setName(n);
 }
 
-void TangibleObject::setTemplateName(const string& tempName) {
+void TangibleObject::setName(const unicode& n) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 57);
+		method.addUnicodeParameter(n);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setName(n);
+}
+
+void TangibleObject::setTemplateName(const string& tempName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 58);
 		method.addAsciiParameter(tempName);
 
 		method.executeWithVoidReturn();
@@ -696,7 +709,7 @@ void TangibleObject::setTemplateTypeName(const string& tempTypeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 59);
 		method.addAsciiParameter(tempTypeName);
 
 		method.executeWithVoidReturn();
@@ -709,7 +722,7 @@ void TangibleObject::setObjectSubType(const int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 60);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -722,7 +735,7 @@ void TangibleObject::setPersistent(bool pers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 61);
 		method.addBooleanParameter(pers);
 
 		method.executeWithVoidReturn();
@@ -735,7 +748,7 @@ void TangibleObject::setUpdated(bool upd) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 62);
 		method.addBooleanParameter(upd);
 
 		method.executeWithVoidReturn();
@@ -748,7 +761,7 @@ void TangibleObject::setConditionDamage(int damage) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 63);
 		method.addSignedIntParameter(damage);
 
 		method.executeWithVoidReturn();
@@ -761,7 +774,7 @@ void TangibleObject::setCustomizationString(string& cust) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 64);
 		method.addAsciiParameter(cust);
 
 		method.executeWithVoidReturn();
@@ -774,7 +787,7 @@ void TangibleObject::setCustomizationVariable(const string& type, unsigned int v
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 65);
 		method.addAsciiParameter(type);
 		method.addUnsignedIntParameter(value);
 
@@ -788,7 +801,7 @@ void TangibleObject::setCustomizationVariable(unsigned char type, unsigned int v
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 66);
 		method.addUnsignedCharParameter(type);
 		method.addUnsignedIntParameter(value);
 
@@ -802,7 +815,7 @@ void TangibleObject::setObjectCount(const int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 67);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
@@ -975,33 +988,36 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setName(inv->getAsciiParameter(_param0_setName__string_));
 		break;
 	case 57:
-		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__string_));
+		setName(inv->getUnicodeParameter(_param0_setName__unicode_));
 		break;
 	case 58:
-		setTemplateTypeName(inv->getAsciiParameter(_param0_setTemplateTypeName__string_));
+		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__string_));
 		break;
 	case 59:
-		setObjectSubType(inv->getSignedIntParameter());
+		setTemplateTypeName(inv->getAsciiParameter(_param0_setTemplateTypeName__string_));
 		break;
 	case 60:
-		setPersistent(inv->getBooleanParameter());
+		setObjectSubType(inv->getSignedIntParameter());
 		break;
 	case 61:
-		setUpdated(inv->getBooleanParameter());
+		setPersistent(inv->getBooleanParameter());
 		break;
 	case 62:
-		setConditionDamage(inv->getSignedIntParameter());
+		setUpdated(inv->getBooleanParameter());
 		break;
 	case 63:
-		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__string_));
+		setConditionDamage(inv->getSignedIntParameter());
 		break;
 	case 64:
-		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__string_int_), inv->getUnsignedIntParameter());
+		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__string_));
 		break;
 	case 65:
-		setCustomizationVariable(inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
+		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__string_int_), inv->getUnsignedIntParameter());
 		break;
 	case 66:
+		setCustomizationVariable(inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 67:
 		setObjectCount(inv->getSignedIntParameter());
 		break;
 	default:
@@ -1212,6 +1228,10 @@ void TangibleObjectAdapter::addAttributes(AttributeListMessage* alm) {
 }
 
 void TangibleObjectAdapter::setName(const string& n) {
+	return ((TangibleObjectImplementation*) impl)->setName(n);
+}
+
+void TangibleObjectAdapter::setName(const unicode& n) {
 	return ((TangibleObjectImplementation*) impl)->setName(n);
 }
 

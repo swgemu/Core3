@@ -78,6 +78,8 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 te
 
 	name = n;
 
+	templateName = tempname;
+
 	objectSubType = tp;
 
 	pvpStatusBitmask = 0;
@@ -92,6 +94,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 	name = n;
 
 	objectCRC = tempCRC;
+	templateName = tempname;
 	objectID = creature->getNewItemID();
 
 	objectType = TANGIBLE;

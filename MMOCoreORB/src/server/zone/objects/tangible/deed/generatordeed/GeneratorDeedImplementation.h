@@ -13,6 +13,7 @@ class SceneObject;
 
 class GeneratorDeedImplementation : public GeneratorDeedServant {
 protected:
+	int type;
 public:
 	static const int FUSION = 1;
 	static const int PHOTOBIO = 2;
@@ -25,13 +26,11 @@ public:
 	GeneratorDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
 	~GeneratorDeedImplementation();
 
-	void init();
-
 	//inline GeneratorDeed* deploy() {
 	//	return (GeneratorDeed*) SceneObjectImplementation::deploy();
 	//}
 private:
-
+	void init();
 };
 
 #endif /*GENERATORDEEDIMPLEMENTATION_H_*/

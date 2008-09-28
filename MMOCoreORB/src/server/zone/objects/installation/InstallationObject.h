@@ -27,8 +27,6 @@ public:
 
 	InstallationObject(unsigned long long oid, DeedObject* deed);
 
-	void insertToZone(Zone* zone);
-
 	void sendTo(Player* player, bool doClose = true);
 
 	void handleStructureRedeed(Player* player);
@@ -70,8 +68,6 @@ public:
 	InstallationObjectAdapter(InstallationObjectImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void insertToZone(Zone* zone);
 
 	void sendTo(Player* player, bool doClose);
 

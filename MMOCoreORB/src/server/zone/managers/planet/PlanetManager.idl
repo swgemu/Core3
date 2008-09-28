@@ -53,6 +53,7 @@ import "../../objects/creature/shuttle/ShuttleCreature";
 
 import "../../objects/building/BuildingObject";
 import "../../objects/building/cell/CellObject";
+import "../../objects/tangible/deed/DeedObject";
 import "../../objects/tangible/terminal/mission/MissionTerminal";
 import "../../objects/area/NoBuildArea";
 
@@ -77,6 +78,11 @@ interface PlanetManager {
 	ShuttleCreature getShuttle(const string Shuttle);
 	
 	void sendPlanetTravelPointListResponse(Player player);
+	
+	void spawnInstallation(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+	void spawnHarvester(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);	
+	void spawnBuilding(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
 	
 	CellObject getCell(unsigned long id);
 	BuildingObject getBuilding(unsigned long id);

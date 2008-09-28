@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-generatorFusionDeed = Deed:new {
+fusionGeneratorDeed = Deed:new {
 	objectName = "Deed for: Fusion Power Generator",
 
 	templateName = "fusion_generator_deed_name",

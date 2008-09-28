@@ -23,15 +23,11 @@ public:
 
 	DeedObject(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
 
-	int getDeedSubType();
-
 	unicode& getTargetName();
 
 	string& getTargetFile();
 
 	string& getTargetTemplate();
-
-	void setDeedSubType(int tp);
 
 	void setTargetFile(string& path);
 
@@ -61,15 +57,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	int getDeedSubType();
-
 	unicode& getTargetName();
 
 	string& getTargetFile();
 
 	string& getTargetTemplate();
-
-	void setDeedSubType(int tp);
 
 	void setTargetFile(string& path);
 

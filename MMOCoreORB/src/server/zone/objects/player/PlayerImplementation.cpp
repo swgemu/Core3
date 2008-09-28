@@ -1437,6 +1437,8 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 }
 
 void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
+	//cout << "PlayerImplementation::notifyDissapear" << endl;
+
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
 	Player* player;

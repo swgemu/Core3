@@ -151,6 +151,8 @@ interface TangibleObject implements SceneObject {
 
 	// setters
 	void setName(const string n);
+	void setName(const unicode n);
+	
 	void setTemplateName(const string tempName);
 	void setTemplateTypeName(const string tempTypeName);	
 

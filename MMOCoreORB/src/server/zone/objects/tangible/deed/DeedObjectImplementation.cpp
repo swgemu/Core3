@@ -12,6 +12,7 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 	templateTypeName = "deed";
 	templateName = tempname;
 	name = n;
+
 	init();
 }
 
@@ -21,6 +22,7 @@ DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uin
 	templateTypeName = "deed";
 	templateName = tempname;
 	name = n;
+
 	init();
 }
 
@@ -31,6 +33,7 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 	templateTypeName = "deed";
 	templateName = tempname;
 	name = n;
+
 	init();
 }
 
@@ -40,6 +43,7 @@ DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uin
 	templateTypeName = "deed";
 	templateName = tempname;
 	name = n;
+
 	init();
 }
 
@@ -49,8 +53,6 @@ DeedObjectImplementation::~DeedObjectImplementation(){
 
 void DeedObjectImplementation::init(){
 	objectSubType = INSTALLATIONDEED;
-	deedSubType = 0;
-
 }
 
 int DeedObjectImplementation::useObject(Player* player) {

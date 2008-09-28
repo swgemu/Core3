@@ -11,11 +11,6 @@ protected:
 	string targetTemplate;
 	string targetTempFile;
 	unicode targetName;
-	//uint64 objectID;
-	int subtype;
-	int deedSubType;
-
-public:
 
 public:
 	// Sub Types
@@ -59,9 +54,6 @@ public:
 	//	return (DeedObject*) SceneObjectImplementation::deploy();
 	//}
 
-	inline int getDeedSubType() {
-		return deedSubType;
-	}
 	inline unicode& getTargetName() {
 		return targetName;
 	}
@@ -73,9 +65,6 @@ public:
 	}
 	inline string& getTargetTempFile() {
 		return targetTempFile;
-	}
-	inline void setDeedSubType(int tp) {
-		deedSubType = tp;
 	}
 	inline void setTargetFile(string path) {
 		targetFile = path;

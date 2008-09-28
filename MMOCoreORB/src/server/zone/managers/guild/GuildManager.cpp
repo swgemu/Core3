@@ -439,6 +439,23 @@ void GuildManager::handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player
 		((GuildManagerImplementation*) _impl)->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
 }
 
+void GuildManager::sendGuildMail(Player* player, const string& sender, const string& subject, const string& body, bool excludeSender) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(sender);
+		method.addAsciiParameter(subject);
+		method.addAsciiParameter(body);
+		method.addBooleanParameter(excludeSender);
+
+		method.executeWithVoidReturn();
+	} else
+		((GuildManagerImplementation*) _impl)->sendGuildMail(player, sender, subject, body, excludeSender);
+}
+
 /*
  *	GuildManagerAdapter
  */
@@ -533,6 +550,9 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case 33:
 		handleGuildTransferLeaderVerifyBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 34:
+		sendGuildMail((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendGuildMail__Player_string_string_string_bool_), inv->getAsciiParameter(_param2_sendGuildMail__Player_string_string_string_bool_), inv->getAsciiParameter(_param3_sendGuildMail__Player_string_string_string_bool_), inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -651,6 +671,10 @@ void GuildManagerAdapter::handleGuildTransferLeaderBox(unsigned int boxID, Playe
 
 void GuildManagerAdapter::handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player* player, unsigned int cancel) {
 	return ((GuildManagerImplementation*) impl)->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
+}
+
+void GuildManagerAdapter::sendGuildMail(Player* player, const string& sender, const string& subject, const string& body, bool excludeSender) {
+	return ((GuildManagerImplementation*) impl)->sendGuildMail(player, sender, subject, body, excludeSender);
 }
 
 /*
