@@ -63,6 +63,7 @@ ServerCore::ServerCore() : Core("core3.log"), Logger("Core") {
 	statusServer = NULL;
 	pingServer = NULL;
 	forumDatabase = NULL;
+	database = NULL;
 }
 
 void ServerCore::init() {
@@ -172,14 +173,17 @@ void ServerCore::shutdown() {
 		pingServer = NULL;
 	}
 
-	DistributedObjectBroker::finalize();
-
-	delete database;
+	if (database != NULL) {
+		delete database;
+		database = NULL;
+	}
 
 	if (forumDatabase != NULL) {
 		delete forumDatabase;
 		forumDatabase = NULL;
 	}
+
+	DistributedObjectBroker::finalize();
 
 	info("server closed");
 }

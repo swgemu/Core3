@@ -608,6 +608,9 @@ void PlayerImplementation::unload() {
 
 	// unload mount from world
 	if (mount != NULL) {
+		if (parent == mount)
+			parent = NULL;
+
 		MountCreature* mnt = mount;
 		mnt->wlock();
 
@@ -1008,9 +1011,9 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		return;
 
 	try {
-		zone->lock();
-
 		deaggro();
+
+		zone->lock();
 
 		info("inserting to zone");
 
@@ -1025,7 +1028,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		sendToOwner();
 
-		if (parent != NULL) {
+		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
 			insertToBuilding(building);
 			building->notifyInsertToZone(_this);
@@ -1053,7 +1056,7 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 
 		info("inserting to building");
 
-		((CellObject*)parent)->addChild(_this);
+		((CellObject*)parent.get())->addChild(_this);
 
 		building->insert(this);
 		building->inRange(this, 128);
@@ -1072,9 +1075,9 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 
 void PlayerImplementation::reinsertToZone(Zone* zone) {
 	try {
-		zone->lock();
-
 		deaggro();
+
+		zone->lock();
 
 		info("reinserting to zone");
 
@@ -1119,7 +1122,7 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 		zone->lock();
 
 		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*)parent;
+			CellObject* cell = (CellObject*)parent.get();
 
 			removeFromBuilding((BuildingObject*)cell->getParent());
 
@@ -1185,10 +1188,10 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 					}
 				}
 
-				((CellObject*) parent)->removeChild(_this);
+				((CellObject*) parent.get())->removeChild(_this);
 			}
 			parent = newParent;
-			((CellObject*) parent)->addChild(_this);
+			((CellObject*) parent.get())->addChild(_this);
 		}
 
 		BuildingObject* building = (BuildingObject*) parent->getParent();
@@ -1266,7 +1269,7 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		info("removing from zone");
 
 		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent;
+			CellObject* cell = (CellObject*) parent.get();
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 
 			removeFromBuilding(building);
@@ -1293,10 +1296,9 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 }
 
 void PlayerImplementation::deaggro() {
+	// pre this wlocked
+	// post this wlocked
 	try {
-
-		zone->unlock();
-
 		if (isInCombat()) {
 
 			SceneObject* scno;
@@ -1306,7 +1308,6 @@ void PlayerImplementation::deaggro() {
 			Player* aggroedPlayer;
 
 			for (int i = 0; i < getDefenderListSize(); ++i) {
-
 				scno = getDefender(i);
 
 				if (scno->isNonPlayerCreature()) {
@@ -1320,25 +1321,39 @@ void PlayerImplementation::deaggro() {
 
 						if (aggroedPlayer->getFirstName() == getFirstName()) {
 
-							defender->lock();
+							try {
+								if ((SceneObject*) defender != (SceneObject*) _this)
+									defender->wlock(_this);
 
-							defender->deagro();
-							removeDefender(scno);
+								defender->deagro();
+								removeDefender(scno);
 
-							defender->unlock();
+								if ((SceneObject*) defender != (SceneObject*) _this)
+									defender->unlock();
+							} catch (...) {
+								if ((SceneObject*) defender != (SceneObject*) _this)
+									defender->unlock();
+							}
 						}
 					}
 				}
-				if (scno->isPlayer()) {
 
+				if (scno->isPlayer()) {
 					aggroedPlayer = (Player*) scno;
 
-					defender->lock();
+					try {
+						if ((SceneObject*) defender != (SceneObject*) _this)
+							defender->wlock(_this);
 
-					aggroedPlayer->removeDefender(_this);
-					removeDefender(scno);
+						aggroedPlayer->removeDefender(_this);
+						removeDefender(scno);
 
-					defender->unlock();
+						if ((SceneObject*) defender != (SceneObject*) _this)
+							defender->unlock();
+					} catch (...) {
+						if ((SceneObject*) defender != (SceneObject*) _this)
+							defender->unlock();
+					}
 
 				}
 
@@ -1349,10 +1364,9 @@ void PlayerImplementation::deaggro() {
 				updateStates();
 			}
 		}
-		zone->lock();
 
 	} catch (...) {
-		zone->lock();
+		error("unreported exception caught in PlayerImplementation::deaggro()");
 	}
 }
 
@@ -1367,9 +1381,11 @@ void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doL
 
 		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
 
-		((CellObject*)parent)->removeChild(_this);
+		((CellObject*)parent.get())->removeChild(_this);
 
 		building->remove(this);
+
+		parent = NULL;
 
 		//building->unlock(doLock);
 	} catch (...) {
