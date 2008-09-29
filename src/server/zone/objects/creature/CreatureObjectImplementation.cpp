@@ -4007,7 +4007,7 @@ bool CreatureObjectImplementation::isInBuilding() {
 
 int CreatureObjectImplementation::getBuildingType() {
 	if (parent != NULL && parent->isCell()) {
-		CellObject* cell = (CellObject*) parent;
+		CellObject* cell = (CellObject*) parent.get();
 		BuildingObject* building = (BuildingObject*)parent->getParent();
 
 		return building->getBuildingType();
@@ -4031,7 +4031,7 @@ bool CreatureObjectImplementation::canGiveEntertainBuff() {
 
 SceneObject *CreatureObjectImplementation::getBuilding() {
 	if (parent != NULL && parent->isCell()) {
-		CellObject* cell = (CellObject*) parent;
+		CellObject* cell = (CellObject*) parent.get();
 		BuildingObject* building = (BuildingObject*)parent->getParent();
 
 		return building;

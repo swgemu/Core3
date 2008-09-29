@@ -834,7 +834,7 @@ void CreatureImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 		zone->lock();
 
 		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent;
+			CellObject* cell = (CellObject*) parent.get();
 
 			removeFromBuilding((BuildingObject*) cell->getParent());
 
@@ -897,10 +897,10 @@ void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate,
 					}
 				}
 
-				((CellObject*) parent)->removeChild(_this);
+				((CellObject*) parent.get())->removeChild(_this);
 			}
 			parent = newParent;
-			((CellObject*) parent)->addChild(_this);
+			((CellObject*) parent.get())->addChild(_this);
 		}
 
 		BuildingObject* building = (BuildingObject*) parent->getParent();

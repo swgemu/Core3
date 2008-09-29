@@ -104,6 +104,8 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
+	parent = NULL;
+
 	undeploy();
 }
 
@@ -292,7 +294,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 		info("inserting to building");
 
-		((CellObject*)parent)->addChild(_this);
+		((CellObject*)parent.get())->addChild(_this);
 
 		building->insert(this);
 		building->inRange(this, 128);
@@ -395,7 +397,7 @@ void SceneObjectImplementation::removeFromZone(bool doLock) {
 		zone->lock(doLock);
 
 		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent;
+			CellObject* cell = (CellObject*) parent.get();
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 
 			removeFromBuilding(building);
@@ -432,7 +434,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 
 		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
 
-		((CellObject*)parent)->removeChild(_this);
+		((CellObject*)parent.get())->removeChild(_this);
 
 		building->remove(this);
 
