@@ -39,17 +39,17 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-nyaxAttack1 = {
-	attackname = "nyaxAttack1",
+nymAttack1 = {
+	attackname = "nymAttack1",
 	animation = "combo_2d_medium",
 	
 	requiredWeaponType = CARBINE,
 
 	range = 25,
 
-	damageRatio = 8.5,
+	damageRatio = 4,3,
 
-	speedRatio = 2,
+	speedRatio = 1.2,
 	coneAngle = 30,
 
 	areaRange = 0,
@@ -58,10 +58,10 @@ nyaxAttack1 = {
 	knockdownChance = 0,
 	postureDownChance = 2,
 	postureUpChance = 0,
-	dizzyChance = 2,
+	dizzyChance = 0,
 	blindChance = 2,
 	stunChance = 2,
-	intimidateChance = 2,
+	intimidateChance = 1,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -70,16 +70,16 @@ nyaxAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack1)
-nyaxAttack2 = {
-	attackname = "nyaxAttack2",
+AddRandomPoolAttackTargetSkill(nymAttack1)
+nymAttack2 = {
+	attackname = "nymAttack2",
 	animation = "combo_4b_medium",
 	
 	requiredWeaponType = CARBINE,
 
 	range = 15,
 
-	damageRatio = 5,
+	damageRatio = 3,
 
 	speedRatio = 3,
 	coneAngle = 30,
@@ -92,8 +92,8 @@ nyaxAttack2 = {
 	postureUpChance = 0,
 	dizzyChance = 2,
 	blindChance = 2,
-	stunChance = 2,
-	intimidateChance = 2,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -102,10 +102,10 @@ nyaxAttack2 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack2)
+AddRandomPoolAttackTargetSkill(nymAttack2)
 
-nyaxAttack10 = { 
-	attackname = "nyaxAttack10",
+nymAttack10 = { 
+	attackname = "nymAttack10",
 	animation = "fire_area_medium",
 
 	requiredWeaponType = CARBINE,
@@ -142,12 +142,12 @@ nyaxAttack10 = {
 	CbtSpamMiss = "legshot_miss",
 }
 
-AddDotPoolAttackTargetSkill(nyaxAttack10)
+AddDotPoolAttackTargetSkill(nymAttack10)
 
 -----------------------------------------------------------------------
 
-nyaxAttack11 = { 
-	attackname = "nyaxAttack11",
+nymAttack11 = { 
+	attackname = "nymAttack11",
 	animation = "fire_7_single_medium_face",
 
 	requiredWeaponType = CARBINE,
@@ -173,13 +173,13 @@ nyaxAttack11 = {
 	CbtSpamMiss = "fullautoattack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack11)
+AddRandomPoolAttackTargetSkill(nymAttack11)
 
 -----------------------------------------------------------------------
 
 
-nyaxAttack12 = { 
-	attackname = "nyaxAttack12",
+nymAttack12 = { 
+	attackname = "nymAttack12",
 	animation = "fire_5_single_medium",
 
 	requiredWeaponType = CARBINE,
@@ -216,12 +216,12 @@ nyaxAttack12 = {
 	CbtSpamMiss = "scattershot_miss",
 }
 
-AddDirectPoolAttackTargetSkill(nyaxAttack12)
+AddDirectPoolAttackTargetSkill(nymAttack12)
 
 -----------------------------------------------------------------------
 
-nyaxAttack13 = { 
-	attackname = "nyaxAttack13",
+nymAttack13 = { 
+	attackname = "nymAttack13",
 	animation = "fire_7_single_medium",
 
 	requiredWeaponType = CARBINE,
@@ -247,12 +247,12 @@ nyaxAttack13 = {
 	CbtSpamMiss = "wildshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack13)
+AddRandomPoolAttackTargetSkill(nymAttack13)
 
 -----------------------------------------------------------------------
 
-nyaxAttack14 = { 
-	attackname = "nyaxAttack14",
+nymAttack14 = { 
+	attackname = "nymAttack14",
 	animation = "fire_5_single_medium",
 
 	requiredWeaponType = CARBINE,
@@ -289,12 +289,12 @@ nyaxAttack14 = {
 	CbtSpamMiss = "scattershot_miss",
 }
 
-AddDirectPoolAttackTargetSkill(nyaxAttack14)
+AddDirectPoolAttackTargetSkill(nymAttack14)
 
 -----------------------------------------------------------------------
 
-nyaxAttack15 = { 
-	attackname = "nyaxAttack15",
+nymAttack15 = { 
+	attackname = "nymAttack15",
 	animation = "fire_7_single_medium",
 
 	requiredWeaponType = CARBINE,
@@ -320,12 +320,12 @@ nyaxAttack15 = {
 	CbtSpamMiss = "wildshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack15)
+AddRandomPoolAttackTargetSkill(nymAttack15)
 
 -----------------------------------------------------------------------
 
-nyaxAttack16 = { 
-	attackname = "nyaxAttack16",
+nymAttack16 = { 
+	attackname = "nymAttack16",
 	animation = "test_homing",
 
 	requiredWeaponType = CARBINE,
@@ -361,12 +361,12 @@ nyaxAttack16 = {
 	CbtSpamMiss = "legshot_miss",
 }
 
-AddDirectPoolAttackTargetSkill(nyaxAttack16)
+AddDirectPoolAttackTargetSkill(nymAttack16)
 
 -----------------------------------------------------------------------
 
-nyaxAttack17 = { 
-	attackname = "nyaxAttack17",
+nymAttack17 = { 
+	attackname = "nymAttack17",
 	animation = "fire_3_single_medium_face",
 
 	requiredWeaponType = CARBINE,
@@ -392,12 +392,12 @@ nyaxAttack17 = {
 	CbtSpamMiss = "cripplingshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack17)
+AddRandomPoolAttackTargetSkill(nymAttack17)
 
 -----------------------------------------------------------------------
 
-nyaxAttack18 = { 
-	attackname = "nyaxAttack18",
+nymAttack18 = { 
+	attackname = "nymAttack18",
 	animation = "fire_7_single_medium",
 
 	requiredWeaponType = CARBINE,
@@ -423,12 +423,12 @@ nyaxAttack18 = {
 	CbtSpamMiss = "burstshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack18)
+AddRandomPoolAttackTargetSkill(nymAttack18)
 
 -----------------------------------------------------------------------
 
-nyaxAttack19 = { 
-	attackname = "nyaxAttack19",
+nymAttack19 = { 
+	attackname = "nymAttack19",
 	animation = "fire_7_single_medium",
 
 	requiredWeaponType = CARBINE,
@@ -454,12 +454,12 @@ nyaxAttack19 = {
 	CbtSpamMiss = "burstshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack19)
+AddRandomPoolAttackTargetSkill(nymAttack19)
 
 -----------------------------------------------------------------------
 
-nyaxAttack20 = { 
-	attackname = "nyaxAttack20",
+nymAttack20 = { 
+	attackname = "nymAttack20",
 	animation = "fire_area_medium",
 
 	requiredWeaponType = CARBINE,
@@ -485,12 +485,12 @@ nyaxAttack20 = {
 	CbtSpamMiss = "sup_fire_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack20)
+AddRandomPoolAttackTargetSkill(nymAttack20)
 
 -----------------------------------------------------------------------
 
-nyaxAttack21 = { 
-	attackname = "nyaxAttack21",
+nymAttack21 = { 
+	attackname = "nymAttack21",
 	animation = "fire_defender_posture_change_down",
 
 	requiredWeaponType = CARBINE,
@@ -516,12 +516,12 @@ nyaxAttack21 = {
 	CbtSpamMiss = "fullautoattack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack21)
+AddRandomPoolAttackTargetSkill(nymAttack21)
 
 -----------------------------------------------------------------------
 
-nyaxAttack22 = { 
-	attackname = "nyaxAttack22",
+nymAttack22 = { 
+	attackname = "nymAttack22",
 	animation = "charge",
 
 	requiredWeaponType = CARBINE,
@@ -547,12 +547,12 @@ nyaxAttack22 = {
 	CbtSpamMiss = "chargeshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack22)
+AddRandomPoolAttackTargetSkill(nymAttack22)
 
 -----------------------------------------------------------------------
 
-nyaxAttack23 = { 
-	attackname = "nyaxAttack23",
+nymAttack23 = { 
+	attackname = "nymAttack23",
 	animation = "fire_defender_posture_change_down",
 
 	requiredWeaponType = CARBINE,
@@ -578,12 +578,12 @@ nyaxAttack23 = {
 	CbtSpamMiss = "fullautoattack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(nyaxAttack23)
+AddRandomPoolAttackTargetSkill(nymAttack23)
 
 -----------------------------------------------------------------------
 
-nyaxAttack24 = { 
-	attackname = "nyaxAttack24",
+nymAttack24 = { 
+	attackname = "nymAttack24",
 	animation = "charge",
 
 	requiredWeaponType = CARBINE,
@@ -608,5 +608,4 @@ nyaxAttack24 = {
 	CbtSpamHit = "chargeshot_hit",
 	CbtSpamMiss = "chargeshot_miss",
 }
-
-AddRandomPoolAttackTargetSkill(nyaxAttack24)
+RandomPoolAttackTargetSkill(nymAttack24)

@@ -90,7 +90,7 @@ jabbaCompoundGuard = Creature:new {
       pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 1,
+      killer = 0,
       aggressive = 0,
       invincible = 0,
 
