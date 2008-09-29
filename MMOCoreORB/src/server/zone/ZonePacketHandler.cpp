@@ -618,7 +618,7 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 	try {
 		player->wlock();
 
-		FactionResponseMessage* frm = new FactionResponseMessage(player->getFactionRank(), player->getRebelPoints(), player->getImperialPoints());
+		FactionResponseMessage* frm = new FactionResponseMessage("", player->getFactionPoints("rebel"), player->getFactionPoints("imperial"));
 
 		//on live we would want to retrive factions for each player
 

@@ -40,25 +40,12 @@ void RecruiterCreature::sendConversationStartTo(SceneObject* obj) {
 		((RecruiterCreatureImplementation*) _impl)->sendConversationStartTo(obj);
 }
 
-void RecruiterCreature::sendFactions(Player* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((RecruiterCreatureImplementation*) _impl)->sendFactions(player);
-}
-
 void RecruiterCreature::selectConversationOption(int option, SceneObject* obj) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 7);
 		method.addSignedIntParameter(option);
 		method.addObjectParameter(obj);
 
@@ -82,9 +69,6 @@ Packet* RecruiterCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		sendFactions((Player*) inv->getObjectParameter());
-		break;
-	case 8:
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -96,10 +80,6 @@ Packet* RecruiterCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod*
 
 void RecruiterCreatureAdapter::sendConversationStartTo(SceneObject* obj) {
 	return ((RecruiterCreatureImplementation*) impl)->sendConversationStartTo(obj);
-}
-
-void RecruiterCreatureAdapter::sendFactions(Player* player) {
-	return ((RecruiterCreatureImplementation*) impl)->sendFactions(player);
 }
 
 void RecruiterCreatureAdapter::selectConversationOption(int option, SceneObject* obj) {

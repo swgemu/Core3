@@ -53,6 +53,8 @@ which carries forward this exception.
 
 #include "../../../packets.h"
 
+#include "../../../packets/object/StringList.h"
+
 RecruiterCreatureImplementation::RecruiterCreatureImplementation(uint64 oid) : RecruiterCreatureServant(oid) {
 	setType(CreatureImplementation::RECRUITER);
 
@@ -62,6 +64,8 @@ RecruiterCreatureImplementation::RecruiterCreatureImplementation(uint64 oid) : R
 	loggingname << "Recruiter = 0x" << oid;
 	setLoggingName(loggingname.str());
 
+	stfName = "mob/creature_names";
+
 	setLogging(false);
 	setGlobalLogging(true);
 }
@@ -69,27 +73,22 @@ RecruiterCreatureImplementation::RecruiterCreatureImplementation(uint64 oid) : R
 void RecruiterCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	Player* player = (Player*)obj;
 
+	if (player->getFaction() == enemyFactionCRC) {
+		greetEnemy();
+		return;
+	} else if (player->getFactionPoints(factionString) < -200) {
+		greetHated();
+		return;
+	}
+
 	StartNpcConversation* conv = new StartNpcConversation(player, objectID, "");
 	player->sendMessage(conv);
+	player->setLastNpcConvStr("recruiter");
 
-	unicode mes1 = "Please select the faction you want to join";
-	NpcConversationMessage* m1 = new NpcConversationMessage(player, mes1);
-	player->sendMessage(m1);
-
-	sendFactions(player);
-}
-
-void RecruiterCreatureImplementation::sendFactions(Player* player) {
-	StringList* slist = new StringList(player);
-
-	unicode rebel = "rebel";
-	unicode imperial = "imperial";
-	unicode neutral = "neutral";
-	slist->insertOption(rebel);
-	slist->insertOption(imperial);
-	slist->insertOption(neutral);
-
-	player->sendMessage(slist);
+	if (player->getFaction() == factionCRC)
+		sendMemberStart(player);
+	else
+		sendNeutralStart(player);
 }
 
 void RecruiterCreatureImplementation::selectConversationOption(int option, SceneObject* obj) {
@@ -98,19 +97,60 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 
 	Player* player = (Player*)obj;
 
-	if (player->isChangingFaction()) {
-		player->sendSystemMessage("You are already changing your faction.");
+	if(player->getLastNpcConvStr() != "recruiter") {
+		sendConversationStartTo(player);
 		return;
 	}
 
-	if (option == 0)
-		player->newChangeFactionEvent(String::hashCode("rebel"));
-	else if (option == 1)
-		player->newChangeFactionEvent(String::hashCode("imperial"));
-	else if (option == 2)
-		player->newChangeFactionEvent(0);
+	if (player->getLastNpcConvMessStr() == "neutral_start") {
+		switch (option) {
+		case 0:
+			if (player->getFactionPoints(factionString) < 200)
+				rejectJoinFaction(player);
+			else
+				confirmJoinFaction(player);
+			break;
+		}
+	} else if (player->getLastNpcConvMessStr() == "confirm_join_faction") {
+		switch (option) {
+		case 0:
+			addPlayerToFaction(player);
+			playerAcceptedJoin(player);
+			break;
+		case 1:
+			playerRejectedJoin(player);
+			break;
+		}
+	} else if (player->getLastNpcConvMessStr() == "member_start") {
+		switch (option) {
+		case 0:
+			confirmLeaveFaction(player);
+			break;
+		}
+	} else if (player->getLastNpcConvMessStr() == "confirm_leave_faction") {
+		switch (option) {
+		case 0:
+			removePlayerFromFaction(player);
+			playerAcceptedLeave(player);
+			break;
+		case 1:
+			playerRejectedLeave(player);
+			break;
+		}
+	} else {
+		player->sendMessage(new StopNpcConversation(player, getObjectID()));
+	}
 
-	player->sendSystemMessage("Your faction will be changed in 5 minutes.");
+}
 
-	sendFactions(player);
+void RecruiterCreatureImplementation::addPlayerToFaction(Player * player) {
+	player->setFaction(factionCRC);
+	player->setOvert();
+	player->makeCharacterMask();
+}
+
+void RecruiterCreatureImplementation::removePlayerFromFaction(Player * player) {
+	player->setFaction(0);
+	player->setCovert();
+	player->makeCharacterMask();
 }

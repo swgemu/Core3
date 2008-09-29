@@ -246,11 +246,6 @@ void PlayerImplementation::init() {
 	curMisoKeys = "";
 	finMisoKeys = "";
 
-	//temp
-	factionRank = "Sexy Tester";
-	rebelPoints = 0;
- 	imperialPoints = 0;
-
  	regionId = 31; //Ancorhead I think lols.
 
  	conversatingCreature = NULL;

@@ -437,8 +437,6 @@ public:
 
 	void setStartingLocation(string& loc);
 
-	void setFactionRank(string& fac);
-
 	void setItemShift(unsigned int shift);
 
 	void toggleCharacterBit(unsigned int bit);
@@ -524,12 +522,6 @@ public:
 	ZoneClientSession* getClient();
 
 	GroupObject* getGroupObject();
-
-	string& getFactionRank();
-
-	unsigned int getRebelPoints();
-
-	unsigned int getImperialPoints();
 
 	int getPvpRating();
 
@@ -705,6 +697,12 @@ public:
 
 	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient = false);
 
+	int getFactionPoints(const string& faction);
+
+	void addFactionPoints(const string& faction, unsigned int points);
+
+	void subtractFactionPoints(const string& faction, unsigned int points);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -712,7 +710,6 @@ protected:
 
 	string _return_getCertification;
 	string _return_getConsentEntry;
-	string _return_getFactionRank;
 	string _return_getFirstName;
 	string _return_getFirstNameProper;
 	string _return_getHairObject;
@@ -1111,8 +1108,6 @@ public:
 
 	void setStartingLocation(string& loc);
 
-	void setFactionRank(string& fac);
-
 	void setItemShift(unsigned int shift);
 
 	void toggleCharacterBit(unsigned int bit);
@@ -1198,12 +1193,6 @@ public:
 	ZoneClientSession* getClient();
 
 	GroupObject* getGroupObject();
-
-	string& getFactionRank();
-
-	unsigned int getRebelPoints();
-
-	unsigned int getImperialPoints();
 
 	int getPvpRating();
 
@@ -1379,6 +1368,12 @@ public:
 
 	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient);
 
+	int getFactionPoints(const string& faction);
+
+	void addFactionPoints(const string& faction, unsigned int points);
+
+	void subtractFactionPoints(const string& faction, unsigned int points);
+
 protected:
 	string _param0_queueFlourish__string_long_int_;
 	string _param4_queueAction__Player_long_int_int_string_;
@@ -1407,7 +1402,6 @@ protected:
 	string _param0_setHairObject__string_;
 	string _param0_setRaceFileName__string_;
 	string _param0_setStartingLocation__string_;
-	string _param0_setFactionRank__string_;
 	string _param0_checkCertification__string_;
 	string _param0_addToCurMisoKeys__string_;
 	string _param0_isOnCurMisoKey__string_;
@@ -1430,6 +1424,9 @@ protected:
 	string _param0_setLastNpcConvStr__string_;
 	string _param0_setLastNpcConvMessStr__string_;
 	string _param0_setInputBoxReturnBuffer__string_;
+	string _param0_getFactionPoints__string_;
+	string _param0_addFactionPoints__string_int_;
+	string _param0_subtractFactionPoints__string_int_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

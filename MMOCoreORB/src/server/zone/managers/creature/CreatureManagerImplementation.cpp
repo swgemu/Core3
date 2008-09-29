@@ -55,6 +55,8 @@ which carries forward this exception.
 
 #include "../../objects/creature/trainer/TrainerCreature.h"
 #include "../../objects/creature/recruiter/RecruiterCreature.h"
+#include "../../objects/creature/recruiter/imperial/ImperialRecruiterCreature.h"
+#include "../../objects/creature/recruiter/rebel/RebelRecruiterCreature.h"
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
 #include "../../objects/creature/action/ActionCreature.h"
 #include "../../objects/creature/action/Action.h"
@@ -189,12 +191,9 @@ void CreatureManagerImplementation::stop() {
 }
 
 void CreatureManagerImplementation::loadRecruiters() {
-	if (zone->getZoneID() == 8) {
-		RecruiterCreature* recruiter1 = spawnRecruiter("", "Recruiter", 0x8C73B91, 36, -5336);
-		RecruiterCreature* recruiter2 = spawnRecruiter("", "Recruiter", 0x8C73B91, -1130, -3902);
-	} else if (zone->getZoneID() == 5) {
-		RecruiterCreature* recruiter3 = spawnRecruiter("", "Recruiter", 0xAFE6BE84, -4936, 4231);
-		RecruiterCreature* recruiter4 = spawnRecruiter("", "Recruiter", 0xBCDF9016, -4928, 4231);
+	if (zone->getZoneID() == 5) {
+		spawnRecruiter(-4936, 4231, 1, 0.053, 1, 0);
+		spawnRecruiter(-4928, 4231, 1, 0.053, 2, 0);
 	}
 }
 
@@ -457,26 +456,29 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 	}
 }
 
-RecruiterCreature* CreatureManagerImplementation::spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
+RecruiterCreature* CreatureManagerImplementation::spawnRecruiter(float x, float y, float oY, float oW, uint8 type, uint64 cellid, bool doLock) {
 	try {
 		lock(doLock);
+		RecruiterCreature* recruiter;
 
-		RecruiterCreature* recruiter = new RecruiterCreature(getNextCreatureID());
+		if (type == RecruiterCreatureImplementation::IMPERIAL)
+			recruiter = new ImperialRecruiterCreature(getNextCreatureID());
+		else if (type == RecruiterCreatureImplementation::REBEL)
+			recruiter = new RebelRecruiterCreature(getNextCreatureID());
+		else {
+			error("INVALID RECRUITER TYPE!");
+			return NULL;
+		}
+
 		recruiter->deploy();
-
-		if (!stfname.empty())
-			recruiter->setSpeciesName(stfname);
-		else
-			recruiter->setCharacterName(unicode(name));
-
-		recruiter->setObjectFileName("");
-		recruiter->setObjectCRC(objCrc);
 
 		recruiter->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
 
 		recruiter->setHeight(1.0f);
 		recruiter->initializePosition(x, 0, y);
+		recruiter->setDirection(0,0,oY,oW);
 		recruiter->setPvpStatusBitmask(0);
+		recruiter->setParent(zone->lookupObject(cellid));
 
 		load(recruiter);
 

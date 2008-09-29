@@ -73,6 +73,8 @@ which carries forward this exception.
 
 #include "../tangible/Inventory.h"
 
+#include "faction/FactionPointsMap.h"
+
 class PlayerManager;
 class ItemManager;
 class ProfessionManager;
@@ -144,9 +146,7 @@ class PlayerImplementation : public PlayerServant {
 	bool immune;
 
 	// Faction Stuff
-	string factionRank;
-	uint32 rebelPoints;
-	uint32 imperialPoints;
+	FactionPointsMap factionPointsMap;
 
 	// Profession stuff
 	SkillBoxMap skillBoxes;
@@ -874,10 +874,6 @@ public:
 
 	void setItemSkillMod(int type, int value);
 
-	void setFactionRank(string fac) {
-		factionRank = fac;
-	}
-
 	// Profession Methods
 	void saveProfessions();
 	void loadProfessions();
@@ -1302,18 +1298,6 @@ public:
 		return getSkillMod("jedi_force_power_max");
 	}
 
-	inline string& getFactionRank() {
-		return factionRank;
-	}
-
-	inline uint32 getRebelPoints() {
-		return rebelPoints;
-	}
-
-	inline uint32 getImperialPoints() {
-		return imperialPoints;
-	}
-
 	inline int getSkillPoints() {
 		return skillPoints;
 	}
@@ -1554,6 +1538,28 @@ public:
 
 	inline uint64 getCurrentStructureID(){
 		return currentStructureID;
+	}
+
+	inline int16 getFactionPoints(const string& faction) {
+		return factionPointsMap.getFactionPoints(faction);
+	}
+
+	inline void addFactionPoints(string faction, uint16 points) {
+		factionPointsMap.addFactionPoints(faction, points);
+
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		param->addDI(points);
+		sendSystemMessage("base_player", "prose_award_faction", param);
+	}
+
+	inline void subtractFactionPoints(string faction, uint16 points) {
+		factionPointsMap.subtractFactionPoints(faction, points);
+
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		param->addDI(points);
+		sendSystemMessage("base_player", "prose_lose_faction", param);
 	}
 
 	friend class PlayerManager;

@@ -386,8 +386,6 @@ interface Player implements CreatureObject {
 	void setRaceID(unsigned char id);
 	void setStartingLocation(string loc);
 
-	void setFactionRank(string fac);
-
 	void setItemShift(unsigned int shift);
 
 	void toggleCharacterBit(unsigned int bit);
@@ -469,12 +467,6 @@ interface Player implements CreatureObject {
 	ZoneClientSession getClient();
 
 	GroupObject getGroupObject();
-
-	string getFactionRank();
-
-	unsigned int getRebelPoints();
-
-	unsigned int getImperialPoints();
 
 	int getPvpRating();
 	void setPvpRating(int value);
@@ -602,5 +594,9 @@ interface Player implements CreatureObject {
 	boolean setGuildPermissionsBit(unsigned int bit, boolean updateClient = false);	
 	void toggleGuildPermissionsBit(unsigned int bit);	
 	boolean clearGuildPermissionsBit(unsigned int bit, boolean updateClient = false);
+	
+	int getFactionPoints(const string faction);
+	void addFactionPoints(const string faction, unsigned int points);
+	void subtractFactionPoints(const string faction, unsigned int points);
 	
 }

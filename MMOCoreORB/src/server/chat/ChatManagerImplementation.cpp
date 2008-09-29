@@ -251,7 +251,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const s
 					}
 				}
 			}
-
+			delete param;
 			zone->unlock();
 		} catch (...) {
 
