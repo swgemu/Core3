@@ -39,19 +39,20 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 kraytAttack1 = {
 	attackname = "kraytAttack1",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 15,
 
 	damageRatio = 720,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 15,
 	accuracyBonus = 300,
 		
 	knockdownChance = 50,
@@ -79,13 +80,13 @@ kraytAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 15,
 
 	damageRatio = 720,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 15,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -113,13 +114,13 @@ kraytAttack3 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 15,
 
 	damageRatio = 760,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 15,
 	accuracyBonus = 300,
 		
 	knockdownChance = 0,
@@ -147,13 +148,13 @@ kraytAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 15,
 
 	damageRatio = 800,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 15,
 	accuracyBonus = 300,
 		
 	knockdownChance = 0,
@@ -181,13 +182,13 @@ kraytAttack5 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 15,
 
 	damageRatio = 740,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 15,
 	accuracyBonus = 300,
 		
 	knockdownChance = 10,
@@ -215,13 +216,13 @@ kraytAttack6 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 15,
 
 	damageRatio = 840,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 15,
 	accuracyBonus = 300,
 		
 	knockdownChance = 80,
@@ -249,13 +250,13 @@ kraytAttack7 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 15,
 
 	damageRatio = 840,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 15,
 	accuracyBonus = 300,
 		
 	knockdownChance = 0,

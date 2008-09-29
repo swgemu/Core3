@@ -67,7 +67,7 @@ mokkTribesman = Creature:new {
       stamina = 0,
 
       mindMax = 6100,
-      mindMax = 5000,
+      mindMin = 5000,
       focus = 0,
       willpower = 0,
 
