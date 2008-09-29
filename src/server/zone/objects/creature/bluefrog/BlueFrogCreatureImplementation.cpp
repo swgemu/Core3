@@ -131,12 +131,14 @@ void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 	unicode option3 = unicode("Which items can I get?");
 	unicode option4 = unicode("I want to test wounds.");
 	unicode option5 = unicode("I want to test states.");
+	unicode option6 = unicode("I want to earn some faction points.");
 
 	slist->insertOption(option1);
 	//slist->insertOption(option2);
 	slist->insertOption(option3);
 	slist->insertOption(option4);
 	slist->insertOption(option5);
+	slist->insertOption(option6);
 
 	player->setLastNpcConvMessStr("blue_frog_m1");
 	player->sendMessage(slist);
@@ -231,6 +233,25 @@ void BlueFrogCreatureImplementation::sendStateTerminalMessage(Player * player) {
 	player->sendMessage(sui->generateMessage());
 }
 
+void BlueFrogCreatureImplementation::sendFactionPointTerminalMessage(Player * player) {
+	stringstream mes1;
+	mes1 << "Which Faction would you like to earn points for?";
+	unicode message = unicode(mes1.str());
+
+	NpcConversationMessage* m1 = new NpcConversationMessage(player, message);
+	player->sendMessage(m1);
+
+	unicode option1 = unicode("The Empire");
+	unicode option2 = unicode("The Rebellion");
+	unicode restart = unicode("I'd like to start over.");
+
+	StringList* slist = new StringList(player);
+	slist->insertOption(option1);
+	slist->insertOption(option2);
+	slist->insertOption(restart);
+
+	player->sendMessage(slist);
+}
 
 void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneObject* obj) {
 	if (!obj->isPlayer())
@@ -269,6 +290,25 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			sendStateTerminalMessage(player);
 			sendMessage1(player);
 			break;
+		case 4:
+			player->setLastNpcConvMessStr("blue_frog_fp");
+			sendFactionPointTerminalMessage(player);
+			break;
+		}
+	} else if (lastMessage.find("blue_frog_fp") != string::npos) {
+		switch (option) {
+		case 0:
+			player->addFactionPoints("imperial", 500);
+			player->subtractFactionPoints("rebel", 500);
+			sendMessage1(player);
+			break;
+		case 1:
+			player->addFactionPoints("rebel", 500);
+			player->subtractFactionPoints("imperial", 500);
+			sendMessage1(player);
+			break;
+		case 2:
+			sendMessage1(player);
 		}
 	} else if (lastMessage.find("blue_frog_prof") != string::npos) {
 		string group = lastMessage.substr(15, lastMessage.length() - 15);

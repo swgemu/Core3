@@ -62,6 +62,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogCreature.idl \
 				server/zone/objects/creature/bluefrog/BlueFrogVector.idl \
 				server/zone/objects/creature/recruiter/RecruiterCreature.idl \
+				server/zone/objects/creature/recruiter/imperial/ImperialRecruiterCreature.idl \
+				server/zone/objects/creature/recruiter/rebel/RebelRecruiterCreature.idl \
 				server/zone/objects/creature/mount/MountCreature.idl \
 				server/zone/objects/player/Player.idl \
 				server/zone/objects/player/FriendsList.idl \

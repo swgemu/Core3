@@ -63,7 +63,7 @@ public:
 
 	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, unsigned long long cellid, float x, float y, float z, int tax = 0, bool starport = false, bool doLock = true);
 
-	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock = true);
+	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, unsigned char type = 1, unsigned long long cellid = 0, bool doLock = true);
 
 	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock = true);
 
@@ -127,7 +127,7 @@ public:
 
 	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, unsigned long long cellid, float x, float y, float z, int tax, bool starport, bool doLock);
 
-	RecruiterCreature* spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock);
+	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, unsigned char type, unsigned long long cellid, bool doLock);
 
 	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock);
 
@@ -154,8 +154,6 @@ protected:
 	string _param2_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_;
 	string _param0_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_;
 	string _param1_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_;
-	string _param0_spawnRecruiter__string_string_int_float_float_bool_;
-	string _param1_spawnRecruiter__string_string_int_float_float_bool_;
 	string _param0_spawnLair__string_float_float_float_bool_;
 	string _param0_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
 	string _param1_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;

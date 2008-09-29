@@ -52,16 +52,41 @@ which carries forward this exception.
 class Player;
 class SceneObject;
 
+
+
 class RecruiterCreatureImplementation : public RecruiterCreatureServant {
+public:
+	static const uint8 IMPERIAL = 0x01;
+	static const uint8 REBEL = 0x02;
+
+protected:
+	uint64 factionCRC;
+	uint64 enemyFactionCRC;
+	uint8 recruiterType;
+	string factionString;
+
+	virtual void greetEnemy() { };
+	virtual void greetHated() { };
+	virtual void sendMemberStart(Player * player) { };
+	virtual void sendNeutralStart(Player * player) { };
+	virtual void rejectJoinFaction(Player * player) { };
+	virtual void confirmJoinFaction(Player * player) { };
+	virtual void playerAcceptedJoin(Player * player) { };
+	virtual void playerRejectedJoin(Player * player) { };
+	virtual void confirmLeaveFaction(Player * player) { };
+	virtual void playerAcceptedLeave(Player * player) { };
+	virtual void playerRejectedLeave(Player * player) { };
+
+private:
+	void addPlayerToFaction(Player * player);
+	void removePlayerFromFaction(Player * player);
+
 public:
 	RecruiterCreatureImplementation(uint64 oid);
 
 	void sendConversationStartTo(SceneObject* obj);
 
-	void sendFactions(Player* player);
-
 	void selectConversationOption(int option, SceneObject* obj);
-
 };
 
 #endif /*RECRUITERCREATUREIMPLEMENTATIO_H_*/

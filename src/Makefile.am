@@ -75,6 +75,8 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
+		server/zone/objects/creature/recruiter/imperial/ImperialRecruiterCreature.cpp \
+		server/zone/objects/creature/recruiter/rebel/RebelRecruiterCreature.cpp \
 		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/player/Player.cpp \
 		server/zone/objects/player/FriendsList.cpp \
@@ -261,6 +263,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp \
+		server/zone/objects/creature/recruiter/imperial/ImperialRecruiterCreatureImplementation.cpp \
+		server/zone/objects/creature/recruiter/rebel/RebelRecruiterCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
 		server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \

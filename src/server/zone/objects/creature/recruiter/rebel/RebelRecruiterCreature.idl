@@ -42,17 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../Creature";
+import "../RecruiterCreature";
 
-import "../../scene/SceneObject";
-import "../../player/Player";
-
-interface RecruiterCreature implements Creature {
-	RecruiterCreature(unsigned long oid) {
+interface RebelRecruiterCreature implements RecruiterCreature {
+	RebelRecruiterCreature(unsigned long oid) {
 		super(oid);
 	}
-	
-	void sendConversationStartTo(SceneObject obj);
-
-	void selectConversationOption(int option, SceneObject obj);
 }

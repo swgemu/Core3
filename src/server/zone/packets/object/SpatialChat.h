@@ -111,8 +111,6 @@ public:
 		insertByte(0);
 		insertShort(0);
 
-		delete params;
-
 		setCompression(true);
 	}
 

@@ -86,7 +86,7 @@ interface CreatureManager {
 	Creature spawnCreature(unsigned int objcrc, unsigned long cellid, float x, float y, int bitmask = 0, boolean baby = false, boolean doLock = true, float height = 1);
 	TrainerCreature spawnTrainer(const string profession, const string stfname, const string name, int objCrc, unsigned long cell, float x, float y, float z, float oy, float ow, boolean doLock = true);
 	ShuttleCreature spawnShuttle(const string Planet, const string City, Coordinate playerSpawnPoint, unsigned long cellid, float x, float y, float z, int tax = 0, boolean starport = false, boolean doLock = true);
-	RecruiterCreature spawnRecruiter(const string stfname, const string name, int objCrc, float x, float y, boolean doLock = true);
+	RecruiterCreature spawnRecruiter(float x, float y, float oY, float oW, unsigned char type = 1, unsigned long cellid = 0, boolean doLock = true);
 	LairObject spawnLair(const string type, float x, float y, float z, boolean doLock = true);
 	ActionCreature spawnActionCreature(string name, string stfname, unsigned int objCrc, string misoKey, float x, float y, float oY, float oW, unsigned long cellid = 0, boolean doLock = true);
 	//CreatureGroup spawnCreatureGroup(int count, const string stfname, const string name, int objCrc, float x, float y, int bitmask = 0x00, int layout = 1);
