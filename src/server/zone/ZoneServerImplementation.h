@@ -97,7 +97,7 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	LootTableManager* lootTableManager;
 
 	MissionManager* missionManager;
-	
+
 	BazaarManager* bazaarManager;
 	BankManager* bankManager;
 
@@ -111,7 +111,7 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 
 	uint64 nextCreatureID;
 	uint64 nextCellID;
-	
+
 	string name;
 
 public:
@@ -227,7 +227,11 @@ public:
 	inline MissionManager* getMissionManager() {
 		return missionManager;
 	}
-	
+
+	inline CreatureManager* getCreatureManager(int zone) {
+		return (zones.get(zone))->getCreatureManager();
+	}
+
 	inline Zone* getZone(int index) {
 		return zones.get(index);
 	}

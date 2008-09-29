@@ -173,9 +173,12 @@ void LootManager::showLoot(Player* player, Creature* creature) {
 		lootCredits(player, creature);
 
 		Container* lootContainer = creature->getLootContainer();
-		lootContainer->sendTo(player);
 
-		lootContainer->openTo(player);
+		if (lootContainer != NULL) {
+			lootContainer->sendTo(player);
+
+			lootContainer->openTo(player);
+		}
 
 		creature->unlock();
 	} catch (...) {
@@ -958,43 +961,43 @@ void LootManager::createJunkLoot(Creature* creature) {
 				"object/tangible/loot/tool/shared_viewscreen_broken_s2.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 1 :
-		item = new TangibleObject(creature, 0x1E84585F, unicode("Binoculars (broken)"), 
+		item = new TangibleObject(creature, 0x1E84585F, unicode("Binoculars (broken)"),
 				"object/tangible/loot/tool/shared_binoculars_broken_s1.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 2 :
-		item = new TangibleObject(creature, 0x25B24532, unicode("a Human Skull"), 
+		item = new TangibleObject(creature, 0x25B24532, unicode("a Human Skull"),
 				"object/tangible/loot/misc/shared_loot_skull_human.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 3 :
-		item = new TangibleObject(creature, 0x2D13F714, unicode("an Impulse Detector (broken)"), 
+		item = new TangibleObject(creature, 0x2D13F714, unicode("an Impulse Detector (broken)"),
 				"/tangible/loot/tool/shared_impulse_detector_broken_s3.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 4 :
-		item = new TangibleObject(creature, 0x3238DD4A, unicode("a Cage"), 
+		item = new TangibleObject(creature, 0x3238DD4A, unicode("a Cage"),
 				"object/tangible/loot/misc/shared_cage_s01.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 5 :
-		item = new TangibleObject(creature, 0x3393694D, unicode("a Rare Artifact"), 
+		item = new TangibleObject(creature, 0x3393694D, unicode("a Rare Artifact"),
 				"object/tangible/loot/misc/shared_artifact_rare_s01.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 6 :
-		item = new TangibleObject(creature, 0x3CEA7897, unicode("Holocron Splinters"), 
+		item = new TangibleObject(creature, 0x3CEA7897, unicode("Holocron Splinters"),
 				"object/tangible/loot/misc/shared_holocron_splinters_sith_s01.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 7 :
-		item = new TangibleObject(creature, 0x5289E0D9, unicode("a Calibrator (broken)"), 
+		item = new TangibleObject(creature, 0x5289E0D9, unicode("a Calibrator (broken)"),
 				"object/tangible/loot/tool/shared_calibrator_broken.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 8 :
-		item = new TangibleObject(creature, 0x5F4B8D76, unicode("a Corrupt Datadisk"), 
+		item = new TangibleObject(creature, 0x5F4B8D76, unicode("a Corrupt Datadisk"),
 				"object/tangible/loot/misc/shared_datadisk_corrupt.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 9 :
-		item = new TangibleObject(creature, 0x619F4DFD, unicode("Jawa Beads"), 
+		item = new TangibleObject(creature, 0x619F4DFD, unicode("Jawa Beads"),
 				"object/tangible/loot/misc/shared_jawa_beads.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 10 :
-		item = new TangibleObject(creature, 0x6C34F325, unicode("a Briefcase"), 
+		item = new TangibleObject(creature, 0x6C34F325, unicode("a Briefcase"),
 				"object/tangible/loot/misc/shared_briefcase_s01.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 11 :

@@ -380,6 +380,9 @@ void CreatureImplementation::scheduleDespawnCreature(int time) {
 	if (creatureRemoveEvent == NULL)
 		creatureRemoveEvent = new CreatureRemoveEvent(_this);
 
+	if (server == NULL)
+		return;
+
 	if (creatureRemoveEvent->isQueued())
 		server->removeEvent(creatureRemoveEvent);
 

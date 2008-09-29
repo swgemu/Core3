@@ -184,6 +184,10 @@ public:
 		return creatureMap->get(oid);
 	}
 
+	inline void addCreature(Creature* creature) {
+		creatureMap->put(creature->getObjectID(), creature);
+	}
+
 	inline Zone* getZone() {
 		return zone;
 	}

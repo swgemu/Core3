@@ -51,6 +51,8 @@ public:
 
 	void loadMissionCreatures();
 
+	void load(Creature* creature);
+
 	void unloadCreature(Creature* creature);
 
 	bool verifyCreatureSpawn(string& name);
@@ -78,6 +80,8 @@ public:
 	void loadCreatureFile();
 
 	Creature* getCreature(unsigned long long oid);
+
+	void addCreature(Creature* creature);
 
 protected:
 	CreatureManager(DummyConstructorParameter* param);
@@ -111,6 +115,8 @@ public:
 
 	void loadMissionCreatures();
 
+	void load(Creature* creature);
+
 	void unloadCreature(Creature* creature);
 
 	bool verifyCreatureSpawn(string& name);
@@ -138,6 +144,8 @@ public:
 	void loadCreatureFile();
 
 	Creature* getCreature(unsigned long long oid);
+
+	void addCreature(Creature* creature);
 
 protected:
 	string _param0_verifyCreatureSpawn__string_;

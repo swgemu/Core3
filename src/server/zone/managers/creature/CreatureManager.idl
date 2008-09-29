@@ -77,7 +77,7 @@ interface CreatureManager {
 	void loadBlueFrogs();
 	void loadMissionCreatures();
 
-	//void load(Creature creature);
+	void load(Creature creature);
 	void unloadCreature(Creature creature);
 	
 	// creation methods
@@ -103,4 +103,5 @@ interface CreatureManager {
 
 	// setters and getters
 	Creature getCreature(unsigned long oid);
+	void addCreature(Creature creature);
 }

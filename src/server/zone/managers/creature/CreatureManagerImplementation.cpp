@@ -123,9 +123,8 @@ void CreatureManagerImplementation::init() {
 
 	instance = this;
 
-	if(spawnInfoMap == NULL){
+	if (spawnInfoMap == NULL)
 		spawnInfoMap = new SpawnInfoMap();
-	}
 
 	// Scripting
 	Lua::init();
@@ -359,6 +358,7 @@ ActionCreature* CreatureManagerImplementation::spawnActionCreature(string& name,
 		actCr->setParent(getZone()->lookupObject(cellid));
 		actCr->setDirection(0, 0, oY, oW);
 		actCr->setPvpStatusBitmask(0);
+		actCr->setZoneProcessServer(server);
 
 		load(actCr);
 
@@ -391,6 +391,7 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 		bluefrog->setPvpStatusBitmask(0);//0x01 + 0x02 + 0x20;
 		bluefrog->setBFType(type);
 		bluefrog->setType(CreatureImplementation::TRAINER);
+		bluefrog->setZoneProcessServer(server);
 
 		load(bluefrog);
 
@@ -579,7 +580,9 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 	Creature* creature = new Creature(getNextCreatureID());
 
 	try {
+		creature->wlock();
 
+		creature->setZoneProcessServer(server);
 		creature->setObjectCRC(objcrc);
 
 		// Load creature from lua
@@ -592,6 +595,8 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 			stringstream ss;
 			ss << "Unknown object CRC " << objcrc;
 			info(ss.str());
+			creature->unlock();
+			creature->finalize();
 			unlock(doLock);
 			return NULL;
 		}
@@ -638,10 +643,15 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 		float oW = 0;
 
 		creature->setRespawnTimer(0);
-		creature->setParent(getZone()->lookupObject(cellid));
+
+		SceneObject* object = getZone()->lookupObject(cellid);
+
+		if (object != NULL && object->isCell())
+			creature->setParent(object);
+
 		creature->setDirection(0, 0, oY, oW);
 
-		if(height != 1)
+		if (height != 1)
 			creature->setHeight(height);
 
 		result.pop(); // remove table from stack
@@ -653,7 +663,9 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		creatureMap->put(creature->getObjectID(), creature);
 
+		creature->unlock();
 	} catch (...) {
+		creature->unlock();
 		unlock(doLock);
 		return NULL;
 	}
@@ -831,7 +843,7 @@ void CreatureManagerImplementation::respawnCreature(Creature* creature) {
 }
 
 LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x, float y, float z, bool doLock) {
-	LairObject* lair;
+	LairObject* lair = NULL;
 
 	lock(doLock);
 
@@ -854,6 +866,7 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 		cout << "CRC = " << objectCRC << endl;
 
 		lair = new LairObject(objectCRC, getNextCreatureID());
+		lair->setZoneProcessServer(server);
 
 		//string objectName = result.getStringField("objectName");
 		string stfname = result.getStringField("stfName");
@@ -866,6 +879,7 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 			info("Lair spawned to wrong planet");
 			return NULL;
 		}
+
 		lair->deploy();
 
 		int maxCondition = result.getIntField("maxCondition");
@@ -891,12 +905,19 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 		lair->insertToZone(getZone());
 		lairMap->put(lair->getObjectID(), lair);
 
-		lair->spawnCreatures();
+		//lair->wlock();
+
+		lair->spawnCreatures(); //we need to lock lair to call this?
+
+		//lair->unlock();
 
 		unlock(doLock);
 		return  lair;
 	} catch (...) {
 		error("unreported Exception caught on spawnLair()");
+
+		if (lair != NULL)
+			lair->unlock();
 
 		unlock(doLock);
 		return NULL;
