@@ -1322,16 +1322,20 @@ void PlayerImplementation::deaggro() {
 						if (aggroedPlayer->getFirstName() == getFirstName()) {
 
 							try {
-								if ((SceneObject*) defender != (SceneObject*) _this)
-									defender->wlock(_this);
+								if ((SceneObject*) defender
+										!= (SceneObject*) _this)
 
+								defender->wlock(_this);
 								defender->deagro();
+								defender->removeFromDamageMap(aggroedCreature);
 								removeDefender(scno);
 
-								if ((SceneObject*) defender != (SceneObject*) _this)
+								if ((SceneObject*) defender
+										!= (SceneObject*) _this)
 									defender->unlock();
 							} catch (...) {
-								if ((SceneObject*) defender != (SceneObject*) _this)
+								if ((SceneObject*) defender
+										!= (SceneObject*) _this)
 									defender->unlock();
 							}
 						}
@@ -1359,10 +1363,9 @@ void PlayerImplementation::deaggro() {
 
 			}
 
-			if (setState(PEACE_STATE)) {
-				postureState = UPRIGHT_POSTURE;
-				updateStates();
-			}
+			postureState = UPRIGHT_POSTURE;
+			updateStates();
+
 		}
 
 	} catch (...) {
