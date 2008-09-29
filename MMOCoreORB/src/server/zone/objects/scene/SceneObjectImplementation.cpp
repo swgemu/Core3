@@ -263,11 +263,12 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 		zone->registerObject(_this);
 
-		if (parent != NULL) {
+		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 
 			insertToBuilding(building);
 
+			// TODO - FIXME: building can be NULL
 			building->notifyInsertToZone(_this);
 		} else {
 			zone->insert(this);

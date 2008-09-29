@@ -578,10 +578,12 @@ void PlayerManagerImplementation::updateGuildStatus(Player* player) {
 				uint64 defGuild = 0;
 
 				Guild * guild = player->getGuild();
-				ChatRoom* room = guild->getGuildChat();
+				if (guild != NULL) {
+					ChatRoom* room = guild->getGuildChat();
 
-				if (room != NULL)
-					room->removePlayer(player, false);
+					if (room != NULL)
+						room->removePlayer(player, false);
+				}
 
 				player->setGuild(defGuild);
 				player->updateGuild(defGuild);

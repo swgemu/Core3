@@ -1116,27 +1116,31 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 }
 
 void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
-
+	// this method should be renamed to loadPlayerDatapadItems
 	try {
 		stringstream query;
 		query << "Select * from datapad where character_id = " << player->getCharacterID() << ";";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
-		int a = 0;
-		MountCreature* land[128];
+		//int a = 0;
+		//MountCreature* land[128]; ?
+		MountCreature* land = NULL;
 
 		while (res->next()) {
-			land[a] = new MountCreature(player, res->getString(2), "monster_name",
+			land = new MountCreature(player, res->getString(2), "monster_name",
 					res->getLong(3), res->getLong(4), player->getNewItemID());
 
-			land[a]->addToDatapad();
-
+			land->addToDatapad();
 		}
-		a++;
+
+		delete res;
+		//a++; ??
+	} catch (DatabaseException& e) {
+		player->error("Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
+		player->error(e.getMessage());
 	} catch (...) {
-		cout << "Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)" << endl;
-		player->info("Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
+		player->error("Load Datapad unknown exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
 	}
 
 

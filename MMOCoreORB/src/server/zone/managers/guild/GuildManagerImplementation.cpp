@@ -788,88 +788,86 @@ void GuildManagerImplementation::handleGuildSponsor(uint32 boxID, Player* player
 	VerifyBoxSponsorTargetforGuildMembership(otherPlayer, name, player->getGuildName());
 }
 
-
-bool GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname) {
-	player->info("Entering GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname)");
-
-	uint32 othersGuild = 1;
-	string toSponsor = "";
-	Player* otherPlayer;
-
-	Zone* zone = player->getZone();
-
-	if (zone == NULL) {
-		player->info("Clean exit from GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname)");
-		return false;
-	}
-
+Player* GuildManagerImplementation::checkInRange(Player* player, const string& proband, const string& selfname) {
+	Zone* zone = NULL;
 
 	try {
-		zone->lock();
-
 		player->wlock();
+
+		zone = player->getZone();
+
+		if (zone == NULL) {
+			player->unlock();
+			return NULL;
+		}
+
+		zone->lock();
 
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
 			SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
 
 			if (obj->isPlayer()) {
-				otherPlayer = (Player*) obj;
-
-				if (otherPlayer != player)
-					otherPlayer->wlock(player);
+				Player* otherPlayer = (Player*) obj;
 
 				string otherName = otherPlayer->getFirstName();
 				String::toLower(otherName);
 
 				if (otherName != selfname && otherName == proband && (player->isInRange(otherPlayer, 8))) {
 					player->sendSystemMessage("You sponsor " + otherName + " for membership in <" + (player->getGuild()->getGuildTag()) + ">.");
-					toSponsor = otherName;
-					othersGuild = otherPlayer->getGuildID();
 
-					if (otherPlayer != player)
-						otherPlayer->unlock();
+					zone->unlock();
 
-					break;
+					player->unlock();
+
+					return otherPlayer;
 				}
 
-				if (otherPlayer != player)
-					otherPlayer->unlock();
 			}
 		}
 
-		player->unlock();
-
 		zone->unlock();
 
-		if ( toSponsor == "") {
-			ErrorMessage* errMsg = new ErrorMessage("@base_player:swg", "@guild:sponsor_not_found", 0);
-			player->sendMessage(errMsg);
-
-			player->info("Clean exit from GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname)");
-
-			return false;
-		}
-
+		player->unlock();
 	} catch (...) {
-		otherPlayer->unlock();
-		player->unlock();
 		zone->unlock();
+		player->unlock();
 
-		return false;
+		return NULL;
 	}
 
+	return NULL;
+}
 
-	if ( othersGuild != 0) {
-		ErrorMessage* errMsg = new ErrorMessage("Guild:", toSponsor + " is already in a guild.", 0);
+
+bool GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname) {
+	player->info("Entering GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname)");
+
+	Player* otherPlayer = checkInRange(player, proband, selfname);
+
+	if (otherPlayer == NULL) {
+		ErrorMessage* errMsg = new ErrorMessage("@base_player:swg", "@guild:sponsor_not_found", 0);
 		player->sendMessage(errMsg);
-		player->info("Clean exit from GuildManager::handleGuildSponsor(uint32 boxID, Player* player, string returnString)");
+
+		player->info("Clean exit from GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname)");
 
 		return false;
 	}
-
 
 	try {
 		otherPlayer->wlock();
+
+		uint32 othersGuild = otherPlayer->getGuildID();
+		string toSponsor = otherPlayer->getFirstName();
+		String::toLower(toSponsor);
+
+		if (othersGuild != 0) {
+			ErrorMessage* errMsg = new ErrorMessage("Guild:", toSponsor + " is already in a guild.", 0);
+			player->sendMessage(errMsg);
+
+			otherPlayer->unlock();
+
+			return false;
+		}
 
 		otherPlayer->setInputBoxReturnBuffer(selfname);
 

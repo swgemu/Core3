@@ -29,6 +29,8 @@ class BankManager;
 
 class MissionManager;
 
+class CreatureManager;
+
 class ChatManager;
 
 class Zone;
@@ -102,6 +104,8 @@ public:
 	BankManager* getBankManager();
 
 	MissionManager* getMissionManager();
+
+	CreatureManager* getCreatureManager(int zone);
 
 	Zone* getZone(int index);
 
@@ -204,6 +208,8 @@ public:
 	BankManager* getBankManager();
 
 	MissionManager* getMissionManager();
+
+	CreatureManager* getCreatureManager(int zone);
 
 	Zone* getZone(int index);
 
