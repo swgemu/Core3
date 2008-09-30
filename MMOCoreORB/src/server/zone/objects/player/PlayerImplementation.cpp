@@ -3312,6 +3312,8 @@ void PlayerImplementation::setOvert() {
 
 	characterMask &= ~COVERT;
 
+	factionStatus = 2;
+
 	uint32 pvpBitmask = pvpStatusBitmask;
 
 	try {
@@ -3338,6 +3340,8 @@ void PlayerImplementation::setCovert() {
 		pvpStatusBitmask -= OVERT_FLAG;
 
 	characterMask |= COVERT;
+
+	factionStatus = 1;
 
 	try {
 		zone->lock();
