@@ -2395,8 +2395,18 @@ void CreatureObjectImplementation::calculateHAMregen() {
 }
 
 void CreatureObjectImplementation::activateBurstRun() {
-	if (isMounted())
+	//TODO: Burst run had HAM costs - but i can't find any documentation HOW MUCH...
+
+	if (isMounted() ||
+			isDizzied() ||
+			isKnockedDown() ||
+			isMeditating() ||
+			postureState != UPRIGHT_POSTURE	) {
+
+		sendSystemMessage("@combat_effects:burst_run_no");
+
 		return;
+	}
 
 	if (!burstRunCooldown.isPast() && isPlayer()) {
 		int left = -(burstRunCooldown.miliDifference() / 1000);
@@ -2414,9 +2424,6 @@ void CreatureObjectImplementation::activateBurstRun() {
 
 		return;
 	}
-
-	if (isDizzied() || postureState == PRONE_POSTURE)
-		return;
 
 	speed = 8.0f;
 	acceleration = 0.922938f;

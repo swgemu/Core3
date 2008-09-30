@@ -1144,21 +1144,37 @@ void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player * player) 
 }
 
 void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player * player) {
-	float range = tokenizer.getFloatToken();
-	ChatManager * chatManager = player->getZone()->getChatManager();
+	uint32 range;
 
-	stringstream message;
-	message << "System Message from " << player->getFirstName() << ": ";
+	try {
+		if (tokenizer.hasMoreTokens())
+			float range = tokenizer.getFloatToken();
+		else
+			range = 0;
 
-	while (tokenizer.hasMoreTokens()) {
-		tokenizer.getStringToken(message);
-		message << " ";
+		if (!tokenizer.hasMoreTokens()) {
+			player->sendSystemMessage("Error sending systemMessage - Usage: systemMessage RANGE TEXT");
+			return;
+		}
+
+		ChatManager * chatManager = player->getZone()->getChatManager();
+
+		stringstream message;
+		message << "System Message from " << player->getFirstName() << ": ";
+
+		while (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(message);
+			message << " ";
+		}
+
+		if (range == 0)
+			chatManager->broadcastMessage(message.str());
+		else
+			chatManager->broadcastMessageRange(player, message.str(), range);
+
+	} catch (...) {
+		player->sendSystemMessage("Error sending systemMessage - Usage: systemMessage RANGE TEXT");
 	}
-
-	if (range == 0)
-		chatManager->broadcastMessage(message.str());
-	else
-		chatManager->broadcastMessageRange(player, message.str(), range);
 }
 
 void GameCommandHandler::setForce(StringTokenizer tokenizer, Player * player) {

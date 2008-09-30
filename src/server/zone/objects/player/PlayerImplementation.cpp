@@ -825,7 +825,7 @@ void PlayerImplementation::createItems() {
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadDefaultPlayerItems(_this);
-	itemManager->loadDefaultPlayerDatapadItems(_this);
+	itemManager->loadPlayerDatapadItems(_this);
 
 	if (!hairObject.empty()) {
 		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
@@ -4138,14 +4138,11 @@ void PlayerImplementation::saveDatapad(Player* player) {
 							itnoCRC = mountCreature->getObjectCRC();
 					}
 
-					//Schematic
-					//ToDO
+					//ToDO Datapad Load/save Schematics
 
-					//Droid
-					//ToDo
+					//ToDo Datapad Load/save Droids
 
-					//Pet
-					//ToDo
+					//ToDo Datapad Load/save Pets
 
 					if (itnoCRC != 0 ) {
 						query.str("");

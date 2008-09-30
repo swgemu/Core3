@@ -187,7 +187,7 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		missionManager->finalize();
 		missionManager = NULL;
 	}
-	
+
 	for (int i = 0; i < 50; ++i) {
 		Zone* zone = zones.get(i);
 		zone->finalize();
@@ -237,7 +237,7 @@ void ZoneServerImplementation::startManagers() {
 	userManager = new UserManager(_this);
 	userManager->deploy("UserManager");
 
-	itemManager = new ItemManager(_this);
+	itemManager = new ItemManager(_this, processor);
 	itemManager->deploy("ItemManager");
 
 	playerManager = new PlayerManager(itemManager, processor);
@@ -266,7 +266,7 @@ void ZoneServerImplementation::startManagers() {
 
 	bankManager = new BankManager(_this, processor);
 	bankManager->deploy("BankManager");
-	
+
 	missionManager = new MissionManager(_this, processor);
 	missionManager->deploy("MissionManager");
 }
@@ -318,7 +318,7 @@ void ZoneServerImplementation::stopManagers() {
 
 	if(missionManager != NULL)
 		missionManager->unloadManager();
-	
+
 	if (resourceManager != NULL)
 		resourceManager->stop();
 
@@ -591,20 +591,20 @@ uint64 ZoneServerImplementation::getNextCreatureID(bool doLock) {
 
 uint64 ZoneServerImplementation::getNextID(bool doLock) {
 	lock(doLock);
-	
+
 	uint64 nextID = (nextCreatureID += 0x01);
-	
+
 	unlock(doLock);
-	
+
 	return nextID;
 }
 
 uint64 ZoneServerImplementation::getNextCellID(bool doLock) {
 	lock(doLock);
-	
+
 	uint64 nextID = (nextCellID += 0x1);
-	
+
 	unlock(doLock);
-	
+
 	return nextID;
 }
