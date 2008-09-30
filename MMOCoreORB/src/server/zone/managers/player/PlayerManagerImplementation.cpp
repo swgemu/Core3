@@ -451,8 +451,6 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 	player->setItemShift(character->getUnsignedInt(34));
 
-	player->setHeight(character->getFloat(23));
-
 	string bio = character->getString(24);
 	player->setBiography(bio);
 
@@ -578,12 +576,14 @@ void PlayerManagerImplementation::updateGuildStatus(Player* player) {
 				uint64 defGuild = 0;
 
 				Guild * guild = player->getGuild();
+
 				if (guild != NULL) {
 					ChatRoom* room = guild->getGuildChat();
 
 					if (room != NULL)
 						room->removePlayer(player, false);
-				}
+				} else
+					cout << "DEFAULT guild in table GUILDS (DB) is not ID 0 ! Edit table and set DEFAULT GUILD to ID 0!\n";
 
 				player->setGuild(defGuild);
 				player->updateGuild(defGuild);

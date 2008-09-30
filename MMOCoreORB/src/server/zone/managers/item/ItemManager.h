@@ -9,6 +9,10 @@
 
 class ZoneServer;
 
+class Zone;
+
+#include "server/zone/ZoneProcessServerImplementation.h"
+
 class TangibleObject;
 
 class Weapon;
@@ -23,7 +27,7 @@ class Player;
 
 class ItemManager : public DistributedObjectStub {
 public:
-	ItemManager(ZoneServer* server);
+	ItemManager(ZoneServer* server, ZoneProcessServerImplementation* pServer);
 
 	void loadStaticWorldObjects();
 
@@ -33,7 +37,7 @@ public:
 
 	void loadDefaultPlayerItems(Player* player);
 
-	void loadDefaultPlayerDatapadItems(Player* player);
+	void loadPlayerDatapadItems(Player* player);
 
 	void unloadPlayerItems(Player* player);
 
@@ -87,7 +91,7 @@ public:
 
 	void loadDefaultPlayerItems(Player* player);
 
-	void loadDefaultPlayerDatapadItems(Player* player);
+	void loadPlayerDatapadItems(Player* player);
 
 	void unloadPlayerItems(Player* player);
 

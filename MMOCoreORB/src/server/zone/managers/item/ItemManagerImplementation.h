@@ -47,6 +47,9 @@
 
 #include "engine/engine.h"
 
+#include "../../Zone.h"
+#include "../../ZoneServer.h"
+
 #include "../../../db/ServerDatabase.h"
 
 #include "../../objects/player/Player.h"
@@ -60,6 +63,7 @@
 #include "../../objects/creature/bluefrog/BlueFrogProfessionSet.h"
 
 class ZoneServer;
+class ZoneProcessServerImplementation;
 
 class TangibleObject;
 
@@ -69,6 +73,7 @@ class ResourceContainer;
 
 class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	ZoneServer* server;
+	ZoneProcessServerImplementation* pServer;
 
 	uint64 nextStaticItemID;
 
@@ -93,7 +98,7 @@ class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	}
 
 public:
-	ItemManagerImplementation(ZoneServer* serv);
+	ItemManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* pServ);
 	~ItemManagerImplementation();
 
 	void loadStaticWorldObjects();
@@ -103,7 +108,7 @@ public:
 	void loadDefaultPlayerItems(Player* player);
 	void loadDefaultDatapadItems(Player* player);
 
-	void loadDefaultPlayerDatapadItems(Player* player);
+	void loadPlayerDatapadItems(Player* player);
 
 	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
 
@@ -128,7 +133,7 @@ public:
 	void createPlayerItem(Player* player, TangibleObject* item);
 
 	void createPlayerDeed(Player* player, DeedObject* item);
-	
+
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
 
 	void savePlayerItem(Player* player, TangibleObject* item);

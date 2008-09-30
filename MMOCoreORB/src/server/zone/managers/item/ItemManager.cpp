@@ -8,6 +8,8 @@
 
 #include "server/zone/ZoneServer.h"
 
+#include "server/zone/Zone.h"
+
 #include "../../objects/tangible/TangibleObject.h"
 
 #include "../../objects/tangible/weapons/Weapon.h"
@@ -24,8 +26,8 @@
  *	ItemManagerStub
  */
 
-ItemManager::ItemManager(ZoneServer* server) {
-	_impl = new ItemManagerImplementation(server);
+ItemManager::ItemManager(ZoneServer* server, ZoneProcessServerImplementation* pServer) {
+	_impl = new ItemManagerImplementation(server, pServer);
 	_impl->_setStub(this);
 }
 
@@ -88,7 +90,7 @@ void ItemManager::loadDefaultPlayerItems(Player* player) {
 		((ItemManagerImplementation*) _impl)->loadDefaultPlayerItems(player);
 }
 
-void ItemManager::loadDefaultPlayerDatapadItems(Player* player) {
+void ItemManager::loadPlayerDatapadItems(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -98,7 +100,7 @@ void ItemManager::loadDefaultPlayerDatapadItems(Player* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ItemManagerImplementation*) _impl)->loadDefaultPlayerDatapadItems(player);
+		((ItemManagerImplementation*) _impl)->loadPlayerDatapadItems(player);
 }
 
 void ItemManager::unloadPlayerItems(Player* player) {
@@ -303,7 +305,7 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		loadDefaultPlayerItems((Player*) inv->getObjectParameter());
 		break;
 	case 10:
-		loadDefaultPlayerDatapadItems((Player*) inv->getObjectParameter());
+		loadPlayerDatapadItems((Player*) inv->getObjectParameter());
 		break;
 	case 11:
 		unloadPlayerItems((Player*) inv->getObjectParameter());
@@ -367,8 +369,8 @@ void ItemManagerAdapter::loadDefaultPlayerItems(Player* player) {
 	return ((ItemManagerImplementation*) impl)->loadDefaultPlayerItems(player);
 }
 
-void ItemManagerAdapter::loadDefaultPlayerDatapadItems(Player* player) {
-	return ((ItemManagerImplementation*) impl)->loadDefaultPlayerDatapadItems(player);
+void ItemManagerAdapter::loadPlayerDatapadItems(Player* player) {
+	return ((ItemManagerImplementation*) impl)->loadPlayerDatapadItems(player);
 }
 
 void ItemManagerAdapter::unloadPlayerItems(Player* player) {

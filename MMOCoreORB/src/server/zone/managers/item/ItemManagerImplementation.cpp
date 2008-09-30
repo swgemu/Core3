@@ -48,6 +48,7 @@ which carries forward this exception.
 
 #include "../../Zone.h"
 #include "../../ZoneServer.h"
+#include "../../ZoneProcessServerImplementation.h"
 
 #include "../player/PlayerManager.h"
 #include "../creature/CreatureManager.h"
@@ -59,9 +60,10 @@ BlueFrogItemSet * ItemManagerImplementation::bfItemSet = NULL;
 BlueFrogProfessionSet * ItemManagerImplementation::bfProfSet = NULL;
 bool ItemManagerImplementation::bfEnabled = false;
 
-ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
+ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* pServ) :
 	ItemManagerServant(), Lua() {
 	server = serv;
+	pServer = pServ;
 
 	nextStaticItemID = 0x90000000;
 
@@ -119,7 +121,7 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 			createPlayerObject(player, res);
 		}
 
-		loadDefaultPlayerDatapadItems(player);
+		loadPlayerDatapadItems(player);
 
 		delete res;
 	} catch (DatabaseException& e) {
@@ -1115,28 +1117,25 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 
 }
 
-void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
-	// this method should be renamed to loadPlayerDatapadItems
+void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 	try {
 		stringstream query;
 		query << "Select * from datapad where character_id = " << player->getCharacterID() << ";";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
-		//int a = 0;
-		//MountCreature* land[128]; ?
 		MountCreature* land = NULL;
 
 		while (res->next()) {
 			land = new MountCreature(player, res->getString(2), "monster_name",
 					res->getLong(3), res->getLong(4), player->getNewItemID());
-			//land->setZoneProcessServer(processServer); TODO: pass processServer to itemManager
 
+			land->setZoneProcessServer(pServer);
 			land->addToDatapad();
 		}
 
 		delete res;
-		//a++; ??
+
 	} catch (DatabaseException& e) {
 		player->error("Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
 		player->error(e.getMessage());
