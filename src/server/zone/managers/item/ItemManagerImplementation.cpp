@@ -1130,6 +1130,7 @@ void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
 		while (res->next()) {
 			land = new MountCreature(player, res->getString(2), "monster_name",
 					res->getLong(3), res->getLong(4), player->getNewItemID());
+			//land->setZoneProcessServer(processServer); TODO: pass processServer to itemManager
 
 			land->addToDatapad();
 		}
