@@ -4150,6 +4150,31 @@ void Player::subtractFactionPoints(const string& faction, unsigned int points) {
 		((PlayerImplementation*) _impl)->subtractFactionPoints(faction, points);
 }
 
+int Player::getFactionStatus() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 326);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getFactionStatus();
+}
+
+void Player::setFactionStatus(int status) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 327);
+		method.addSignedIntParameter(status);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setFactionStatus(status);
+}
+
 /*
  *	PlayerAdapter
  */
@@ -5120,6 +5145,12 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 325:
 		subtractFactionPoints(inv->getAsciiParameter(_param0_subtractFactionPoints__string_int_), inv->getUnsignedIntParameter());
+		break;
+	case 326:
+		resp->insertSignedInt(getFactionStatus());
+		break;
+	case 327:
+		setFactionStatus(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -6406,6 +6437,14 @@ void PlayerAdapter::addFactionPoints(const string& faction, unsigned int points)
 
 void PlayerAdapter::subtractFactionPoints(const string& faction, unsigned int points) {
 	return ((PlayerImplementation*) impl)->subtractFactionPoints(faction, points);
+}
+
+int PlayerAdapter::getFactionStatus() {
+	return ((PlayerImplementation*) impl)->getFactionStatus();
+}
+
+void PlayerAdapter::setFactionStatus(int status) {
+	return ((PlayerImplementation*) impl)->setFactionStatus(status);
 }
 
 /*

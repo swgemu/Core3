@@ -703,6 +703,10 @@ public:
 
 	void subtractFactionPoints(const string& faction, unsigned int points);
 
+	int getFactionStatus();
+
+	void setFactionStatus(int status);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -1373,6 +1377,10 @@ public:
 	void addFactionPoints(const string& faction, unsigned int points);
 
 	void subtractFactionPoints(const string& faction, unsigned int points);
+
+	int getFactionStatus();
+
+	void setFactionStatus(int status);
 
 protected:
 	string _param0_queueFlourish__string_long_int_;

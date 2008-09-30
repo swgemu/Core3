@@ -599,4 +599,7 @@ interface Player implements CreatureObject {
 	void addFactionPoints(const string faction, unsigned int points);
 	void subtractFactionPoints(const string faction, unsigned int points);
 	
+	int getFactionStatus();
+	void setFactionStatus(int status);
+	
 }

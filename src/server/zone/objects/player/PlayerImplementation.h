@@ -148,6 +148,8 @@ class PlayerImplementation : public PlayerServant {
 	// Faction Stuff
 	FactionPointsMap factionPointsMap;
 
+	int factionStatus;
+
 	// Profession stuff
 	SkillBoxMap skillBoxes;
 	SortedVector<SkillBox*> skillBoxesToSave;
@@ -1560,6 +1562,14 @@ public:
 		param->addTO(faction);
 		param->addDI(points);
 		sendSystemMessage("base_player", "prose_lose_faction", param);
+	}
+
+	inline int getFactionStatus() {
+		return factionStatus;
+	}
+
+	inline void setFactionStatus(int status) {
+		factionStatus = status;
 	}
 
 	friend class PlayerManager;

@@ -1108,7 +1108,7 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 void ObjectControllerMessage::parseCharacterSheetInfoRequest(Player* player, Message* pack) {
 	uint64 objectid = pack->parseLong();
 
-	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(objectid);
+	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(player);
 	player->sendMessage(csrm);
 }
 
