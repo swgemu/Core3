@@ -603,9 +603,6 @@ void PlayerImplementation::unload() {
 
 	// unload mount from world
 	if (mount != NULL) {
-		if (parent == mount)
-			parent = NULL;
-
 		MountCreature* mnt = mount;
 		mnt->wlock();
 
@@ -1006,8 +1003,6 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		return;
 
 	try {
-		deaggro();
-
 		zone->lock();
 
 		info("inserting to zone");
@@ -1070,8 +1065,6 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 
 void PlayerImplementation::reinsertToZone(Zone* zone) {
 	try {
-		deaggro();
-
 		zone->lock();
 
 		info("reinserting to zone");
@@ -1291,16 +1284,18 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 }
 
 void PlayerImplementation::deaggro() {
+	// TODO: FIX: this will deadlock if its called with a player from this defender list locked: eg: command handler @summon
+	// Temporarly moved to ::load and ::reload till we figure a better solution
 	// pre this wlocked
 	// post this wlocked
 	try {
 		if (isInCombat()) {
 
-			SceneObject* scno;
-			Creature* defender;
+			SceneObject* scno = NULL;
+			Creature* defender = NULL;
 
-			CreatureObject* aggroedCreature;
-			Player* aggroedPlayer;
+			CreatureObject* aggroedCreature = NULL;
+			Player* aggroedPlayer = NULL;
 
 			for (int i = 0; i < getDefenderListSize(); ++i) {
 				scno = getDefender(i);
@@ -1341,17 +1336,17 @@ void PlayerImplementation::deaggro() {
 					aggroedPlayer = (Player*) scno;
 
 					try {
-						if ((SceneObject*) defender != (SceneObject*) _this)
-							defender->wlock(_this);
+						if ((SceneObject*) aggroedPlayer != (SceneObject*) _this)
+							aggroedPlayer->wlock(_this);
 
 						aggroedPlayer->removeDefender(_this);
 						removeDefender(scno);
 
-						if ((SceneObject*) defender != (SceneObject*) _this)
-							defender->unlock();
+						if ((SceneObject*) aggroedPlayer != (SceneObject*) _this)
+							aggroedPlayer->unlock();
 					} catch (...) {
-						if ((SceneObject*) defender != (SceneObject*) _this)
-							defender->unlock();
+						if ((SceneObject*) aggroedPlayer != (SceneObject*) _this)
+							aggroedPlayer->unlock();
 					}
 
 				}
@@ -1382,8 +1377,6 @@ void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doL
 		((CellObject*)parent.get())->removeChild(_this);
 
 		building->remove(this);
-
-		parent = NULL;
 
 		//building->unlock(doLock);
 	} catch (...) {
@@ -2501,6 +2494,9 @@ void PlayerImplementation::lootCorpse(bool lootAll) {
 
 	Creature* target = (Creature*) targetObject.get();
 
+	if (target->isMount())
+		return;
+
 	if (!isIncapacitated() && !isDead() && isInRange(target, 20)) {
 		LootManager* lootManager = server->getLootManager();
 
@@ -2512,6 +2508,9 @@ void PlayerImplementation::lootCorpse(bool lootAll) {
 }
 
 void PlayerImplementation::lootObject(Creature* creature, SceneObject* object) {
+	if (creature->isMount())
+		return;
+
 	LootManager* lootManager = server->getLootManager();
 
 	lootManager->lootObject(_this, creature, object->getObjectID());

@@ -342,11 +342,13 @@ public:
 
 	inline void wasLooted(){
 		looted = true;
-		if(playerCanHarvest.size() == 0){
+		if (playerCanHarvest.size() == 0) {
 
-			server->removeEvent(creatureRemoveEvent);
+			if (server != NULL && creatureRemoveEvent->isQueued()) {
+				server->removeEvent(creatureRemoveEvent);
 
-			scheduleDespawnCreature(500);
+				scheduleDespawnCreature(500);
+			}
 
 		}
 	}
