@@ -3142,7 +3142,7 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 	} catch (...) {
 		player->unlock();
 
-		return newLeaderName;
+		return "";
 	}
 
 
@@ -3178,14 +3178,14 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 		otherPlayer->unlock();
 		zone->unlock();
 
-		return newLeaderName;
+		return "";
 	}
 
 	if (newLeaderName == "") {
 		player->sendSystemMessage("That person is not loaded or is too far away.");
 		player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
 
-		return newLeaderName;
+		return "";
 	}
 
 
@@ -3202,7 +3202,7 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 			otherPlayer->unlock();
 			player->unlock();
 
-			return newLeaderName;
+			return "";
 		}
 
 		otherPlayer->unlock();
