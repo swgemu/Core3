@@ -2364,9 +2364,12 @@ void PlayerImplementation::doPowerboost() {
 	string txt1 = "combat_unarmed_master";
 
 	if (hasSkillBox(txt1))
-		//ToDo: Hmm...Master duration modifier is missing in the packet? TKM should have 10 Minutes powerboost but the !client! fires only 5 minute powerboost at master as well
+		// ToDo: Master duration modifier is missing in the packet?
+		// TKM should have 10 Minutes powerboost but the client sends only 5 minute powerboost at master as well
 		//duration = 600000;
+
 		duration = 300000;
+
 	else if (hasSkillBox(txt0))
 		duration = 300000;
 

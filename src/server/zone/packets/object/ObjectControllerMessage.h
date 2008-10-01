@@ -133,7 +133,7 @@ public:
     static void parseMissionListRequest(Player* player, Message* pack);
     static void parseMissionAccept(Player* player, Message* pack);
     static void parseMissionAbort(Player* player, Message* pack);
-    
+
     // group
     static void parseGroupInvite(Player* player, Message* pack, GroupManager* groupManager);
     static void parseGroupUninvite(Player* player, Message* pack);
@@ -153,7 +153,7 @@ public:
 
 	//Structures
 	static void parsePlaceStructure(Player* player, Message* pack);
-	
+
 	// Schematics
 	static void parseRequestDraftSlotsBatch(Player* player, Message* pack);
 	static void parseRequestResourceWeightsBatch(Player* player, Message* pack);
@@ -191,10 +191,8 @@ public:
 
 	static void handleRemoveFromGuild(Player* player, Message* pack, ZoneProcessServerImplementation* serv);
 
+	static void parseMeditation(Player* player);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/
-
-
-
 

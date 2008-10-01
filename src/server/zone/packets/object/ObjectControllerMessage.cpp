@@ -333,9 +333,12 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 
 	player->setActionCounter(actioncntr);
 
-	/*stringstream msg;
-	 msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
-	 player->info(msg.str());*/
+	/*
+	stringstream msg;
+	msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
+	player->info(msg.str());
+	cout << msg.str() << endl;
+	*/
 
 	ChatManager* chatManager;
 	CombatManager* combatManager = serv->getCombatManager();
@@ -348,14 +351,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		player->clearQueueAction(actioncntr);
 		handleRemoveFromGuild(player, pack, serv);
 		break;
-
 	case (0x124629F2): // Meditating
-		if (player->getMeditate()) {
-			player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
-		} else {
-			player->sendSystemMessage("teraskasi", "med_begin");
-			player->queueAction(player, target, actionCRC, actioncntr, "");
-		}
+		parseMeditation(player);
+		player->queueAction(player, target, actionCRC, actioncntr, "");
 		break;
 	case (0x8C2221CB): // Powerboost
 		if (!player->hasSkill(actionCRC)) {
@@ -367,7 +365,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			unicode option = unicode("");
 			string actionModifier = "";
 
-			//ToDo: Duration modifier for Master TK is not in this pack...hmmm
+			//TODO: Duration modifier for Master TK is not in this pack?
 			pack->parseUnicode(option);
 			actionModifier = option.c_str();
 
@@ -766,9 +764,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		parseHarvestOrganics(player, pack);
 		break;
 	default:
-
-		//Bobius, the changes you made in  584 were breaking the CommandQueue's default player->queueAction !
-
 		target = pack->parseLong();
 		string actionModifier = "";
 
@@ -3466,7 +3461,7 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 }
 
 void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
-	//player is prelocked from ZonePacketHandler
+	//player is prelocked
 	uint64 objectid = pack->parseLong();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3488,3 +3483,22 @@ void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pac
 	player->wlock();
 }
 
+void ObjectControllerMessage::parseMeditation(Player* player) {
+
+	if (player->isMounted() ||
+		player->isDizzied() ||
+		player->isInCombat() ||
+		player->isKnockedDown() ) {
+
+		player->sendSystemMessage("@teraskasi:med_fail");
+
+		return;
+	}
+
+
+	if (player->getMeditate()) {
+		player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
+	} else {
+		player->sendSystemMessage("teraskasi", "med_begin");
+	}
+}
