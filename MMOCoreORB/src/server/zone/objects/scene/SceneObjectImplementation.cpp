@@ -270,7 +270,6 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 			insertToBuilding(building);
 
-			// TODO - FIXME: building can be NULL
 			building->notifyInsertToZone(_this);
 		} else {
 			zone->insert(this);

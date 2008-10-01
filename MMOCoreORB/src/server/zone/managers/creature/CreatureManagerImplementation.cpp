@@ -884,6 +884,8 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 
 		lair->deploy();
 
+		lair->wlock();
+
 		int maxCondition = result.getIntField("maxCondition");
 
 		lair->setMaxCondition(maxCondition);
@@ -907,11 +909,9 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 		lair->insertToZone(getZone());
 		lairMap->put(lair->getObjectID(), lair);
 
-		//lair->wlock();
+		lair->spawnCreatures(false); //we need to lock lair to call this?
 
-		lair->spawnCreatures(); //we need to lock lair to call this?
-
-		//lair->unlock();
+		lair->unlock();
 
 		unlock(doLock);
 		return  lair;
@@ -1083,31 +1083,39 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 	LairObject* lair = new LairObject(objectCRC, instance->getNextCreatureID());
 	lair->deploy();
 
-	float x = object.getFloatField("positionX");
-	float y = object.getFloatField("positionY");
-	float z = object.getFloatField("positionZ");
-	int maxCondition = object.getIntField("maxCondition");
+	try {
+		lair->wlock();
 
-	lair->setMaxCondition(maxCondition);
+		float x = object.getFloatField("positionX");
+		float y = object.getFloatField("positionY");
+		float z = object.getFloatField("positionZ");
+		int maxCondition = object.getIntField("maxCondition");
 
-	string stfName = object.getStringField("stfName");
+		lair->setMaxCondition(maxCondition);
 
-	lair->setTemplateName(stfName);
+		string stfName = object.getStringField("stfName");
 
-	uint32 creatureCRC = object.getIntField("creatureCRC");
-	int	spawnSize = object.getIntField("spawnSize");
-	int babiesPerMillion = object.getIntField("babiesPerMillion");
+		lair->setTemplateName(stfName);
 
-	object.pop();
+		uint32 creatureCRC = object.getIntField("creatureCRC");
+		int	spawnSize = object.getIntField("spawnSize");
+		int babiesPerMillion = object.getIntField("babiesPerMillion");
 
-	lair->setCreatureCRC(creatureCRC);
-	lair->setSpawnSize(spawnSize);
-	lair->setBabiesPerMillion(babiesPerMillion);
+		object.pop();
 
-	lair->initializePosition(x, z, y);
+		lair->setCreatureCRC(creatureCRC);
+		lair->setSpawnSize(spawnSize);
+		lair->setBabiesPerMillion(babiesPerMillion);
 
-	lair->insertToZone(instance->getZone());
-	lair->spawnCreatures();
+		lair->initializePosition(x, z, y);
+
+		lair->insertToZone(instance->getZone());
+		lair->spawnCreatures(false);
+
+		lair->unlock();
+	} catch (...) {
+		lair->unlock();
+	}
 
 	instance->lairMap->put(lair->getObjectID(), lair);
 

@@ -377,6 +377,9 @@ void CreatureImplementation::unload() {
 }
 
 void CreatureImplementation::scheduleDespawnCreature(int time) {
+	if (isMount())
+		return;
+
 	if (creatureRemoveEvent == NULL)
 		creatureRemoveEvent = new CreatureRemoveEvent(_this);
 
@@ -1327,6 +1330,9 @@ bool CreatureImplementation::doMovement() {
 }
 
 void CreatureImplementation::doIncapacitate() {
+	if (isMount())
+		return;
+
 	deagro();
 	setPosture(DEAD_POSTURE);
 
