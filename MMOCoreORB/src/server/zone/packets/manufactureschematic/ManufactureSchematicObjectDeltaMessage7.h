@@ -100,7 +100,7 @@ public:
 	}
 
 	void updateForAssembly(DraftSchematic* draftSchematic){
-		update9(draftSchematic);
+		update9(draftSchematic, true);
 		update0B(draftSchematic);
 		update0C(draftSchematic);
 		update12(draftSchematic);
@@ -273,14 +273,14 @@ public:
 	}
 
 	// This should send the experimental values shown in the Screen after hitting assemble
-	void update9(DraftSchematic* draftSchematic) {
+	void update9(DraftSchematic* draftSchematic, bool initial) {
 		startUpdate(9);
 
 		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 		int count, linenum;
 		string title, subtitle;
 		float value;
-		VectorMap<string, int> updatedLines;
+		VectorMap<int, string> updatedLines;
 
 		for (int i = 0; i < craftingValues->getValuesToSendSize(); ++i) {
 
@@ -290,16 +290,24 @@ public:
 
 			linenum = craftingValues->getTitleLine(title);
 
-			if(!updatedLines.contains(title) && linenum != -1)
-				updatedLines.put(title, linenum);
+			if(linenum != -1 && !updatedLines.contains(linenum))
+				updatedLines.put(linenum, title);
 		}
 
-		startList(updatedLines.size(), draftSchematic->getExpCounter());
+		if(initial)
+			count = updatedLines.size() * 2;
+		else
+			count = draftSchematic->getExpCounter() + (craftingValues->getExperimentalPropertyTitleSize() - 1);
+
+		startList(updatedLines.size(), count);
 
 		for (int i = 0; i < updatedLines.size(); ++i) {
-			value = craftingValues->getCurrentPercentageAverage(updatedLines.get(i));
 
-			removeListFloatElement(updatedLines.get(i), value);
+			linenum = updatedLines.elementAt(i)->getKey();
+
+			value = craftingValues->getCurrentPercentageAverage(linenum);
+
+			removeListFloatElement(linenum, value);
 
 		}
 
@@ -314,7 +322,7 @@ public:
 
 		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 
-		startList(titleCount, draftSchematic->getExpCounter());
+		startList(titleCount, titleCount * 2);
 
 		for (int i = 0; i < titleCount; i++) {
 			removeListFloatElement(i, 1.0f);
@@ -329,7 +337,7 @@ public:
 
 		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 
-		startList(titleCount, draftSchematic->getExpCounter());
+		startList(titleCount, titleCount * 2);
 
 		for (int i = 0; i < titleCount; i++) {
 			removeListFloatElement(i, 1.0f);
@@ -344,7 +352,7 @@ public:
 
 		int titleCount = craftingValues->getExperimentalPropertyTitleSize();
 
-		startList(titleCount, draftSchematic->getExpCounter());
+		startList(titleCount, titleCount * 2);
 
 		float value;
 

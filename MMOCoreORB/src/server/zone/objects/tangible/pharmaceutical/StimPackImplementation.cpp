@@ -72,6 +72,28 @@ int StimPackImplementation::useObject(Player* player) {
 	return 0;
 }
 
+void StimPackImplementation::updateCraftingValues(
+		DraftSchematic* draftSchematic) {
+
+	string name;
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+	//craftingValues->toString();
+
+	name = "effectiveness";
+	effectiveness = craftingValues->getCurrentValue("power");
+	itemAttributes->setFloatAttribute(name, effectiveness);
+
+	name = "medicineUseRequired";
+	medicineUseRequired = (int)craftingValues->getCurrentValue("medicineUseRequired");
+	itemAttributes->setIntAttribute(name, medicineUseRequired);
+
+	name = "usesRemaining";
+	usesRemaining = (int)(floor(craftingValues->getCurrentValue("charges") + .5f));
+	itemAttributes->setFloatAttribute(name, usesRemaining);
+
+}
+
 void StimPackImplementation::initialize() {
 	setEffectiveness(0.0f);
 }
@@ -87,9 +109,9 @@ void StimPackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
 	string attr = "examine_heal_damage_health";
-	alm->insertAttribute(attr, getEffectiveness());
+	alm->insertAttribute(attr, getPrecision(getEffectiveness(), 0));
 	attr = "examine_heal_damage_action";
-	alm->insertAttribute(attr, getEffectiveness());
+	alm->insertAttribute(attr, getPrecision(getEffectiveness(), 0));
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

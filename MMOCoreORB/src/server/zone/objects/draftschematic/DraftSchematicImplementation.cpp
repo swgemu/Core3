@@ -302,6 +302,7 @@ void DraftSchematicImplementation::sendExperimentalPropertiesToPlayer(Player* pl
 
 		// Send all the experimental property data
 		for (int i = 0; i < listSize; i++) {
+
 			DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
 			// OLD dsEpg->sendToPlayer(msg);
 			dsEpg->sendToPlayer(msg, count);

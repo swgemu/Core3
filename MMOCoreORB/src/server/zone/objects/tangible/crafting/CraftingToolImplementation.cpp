@@ -262,7 +262,7 @@ void CraftingToolImplementation::updateCraftingValues(DraftSchematic* draftSchem
 	//craftingValues->toString();
 
 	name = "effectiveness";
-	effectiveness = craftingValues->getCurrentValue("quality");
+	effectiveness = craftingValues->getCurrentValue("useModifier");
 	itemAttributes->setFloatAttribute(name, effectiveness);
 
 }

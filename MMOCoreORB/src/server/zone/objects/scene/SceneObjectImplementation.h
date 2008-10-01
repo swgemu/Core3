@@ -447,7 +447,7 @@ public:
 
 	inline float getPrecision(float num, int digits) {
 		float power = pow(10, digits);
-		return floor(num * power + .05f) / power;
+		return float(floor(num * power + .05f) / power);
 	}
 
 	inline uint64 getAssociatedArea() {

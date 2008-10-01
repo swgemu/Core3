@@ -40,46 +40,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-genericCraftingTool = Object:new {
+foodChemicalCraftingTool = Object:new {
 
-   objectName = "Generic Crafting Tool", -- name of the lua Object
-   stfName = "generic_tool_name", 
-   objectCRC = 2914524854, 
-   groupName = "craftArtisanSurveyGroupA", 
+   objectName = "Food  Chemical Crafting Tool", -- name of the lua Object
+   stfName = "food_tool_name", 
+   objectCRC = 1492600411, 
+   groupName = "craftMedicineComponentGroupA", 
 
    craftingToolTab = 4096, 
    complexity = 10, 
    size = 2, 
 
    xpType = "crafting_general", 
-   xp = 25, 
+   xp = 74, 
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
 
-   ingredientTemplateNames = "craft_item_ingredients_n, craft_droid_ingredients_n, craft_item_ingredients_n",
-   ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
+   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_droid_ingredients_n",
+   ingredientTitleNames = "electronic_control_unit, assembly_enclosure, thermal_shielding",
    ingredientOptionals = "0, 0, 0",
-   resourceTypes = "metal, mineral, chemical",
-   resourceQuantities = "12, 4, 4",
+   resourceTypes = "chemical, metal, mineral",
+   resourceQuantities = "10, 16, 8",
    combineTypes = "1, 1, 1",
 
 
    numberExperimentalProperties = "1, 1, 1, 1",
-   experimentalProperties = "XX, XX, DR, CD",
+   experimentalProperties = "XX, XX, XX, CD",
    experimentalWeights = "1, 1, 1, 1",
-   experimentalGroupTitles = "exp_durability, exp_effectiveness",
+   experimentalGroupTitles = "exp_effectiveness",
    experimentalSubGroupCount = "1, 1",
-   experimentalSubGroupTitles = "decayRate, useModifier",
+   experimentalSubGroupTitles = "useModifier",
 
-   tanoAttributes = "objecttype=32769:objectcrc=1055200365:objecttemp=generic_tool_name:templatetype=crafting:",
+   tanoAttributes = "objecttype=32769:objectcrc=2849609519:objecttemp=food_tool_name:templatetype=crafting:",
 
 
-   attributesToSet = "decayRate, useModifier",
-   attributeExperimentalProperties = "exp_durability, exp_effectiveness",
-   attributePrecision = "0, 2",
-   attributesMinMax = "1, 1000, -15, 15"
+   attributesToSet = "useModifier",
+   attributeExperimentalProperties = "exp_effectiveness",
+   attributePrecision = "2",
+   attributesMinMax = "-15, 15"
 
 }
 
-DraftSchematics:addDraftSchematic(genericCraftingTool, 2914524854)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(foodChemicalCraftingTool, 1492600411)--- Add to global DraftSchematics table

@@ -77,8 +77,7 @@ public:
 
 				if (inventory->getObjectCount() < 80) {
 
-					unicode mess = unicode("A protoype object is finshed being created and has been placed in your inventory.");
-					ChatSystemMessage* sysMessage = new ChatSystemMessage(mess);
+					ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "prototype_transferred");
 					player->sendMessage(sysMessage);
 
 					player->addInventoryItem(tano);
@@ -89,8 +88,7 @@ public:
 
 				} else {
 
-					unicode mess = unicode("Inventory full, prototype placed in hopper");
-					ChatSystemMessage* sysMessage = new ChatSystemMessage(mess);
+					ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "prototype_not_transferred");
 					player->sendMessage(sysMessage);
 
 					Container * hopper = ct->getHopper(player);

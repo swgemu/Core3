@@ -51,6 +51,8 @@ public:
 
 	float getCurrentPercentageAverage(const int index);
 
+	float getCurrentPercentageAverage(const string& title);
+
 	float getMaxPercentage(const string& attribute);
 
 	float getMaxPercentage(const int index);
@@ -130,6 +132,8 @@ public:
 
 	float getCurrentPercentageAverage(const int index);
 
+	float getCurrentPercentageAverage(const string& title);
+
 	float getMaxPercentage(const string& attribute);
 
 	float getMaxPercentage(const int index);
@@ -165,6 +169,7 @@ protected:
 	string _param0_setMaxPercentage__string_float_;
 	string _param0_getCurrentValue__string_;
 	string _param0_getCurrentPercentage__string_;
+	string _param0_getCurrentPercentageAverage__string_;
 	string _param0_getMaxPercentage__string_;
 	string _param0_getTitleLine__string_;
 	string _param1_getAttributeAndValue__DraftSchematic_string_int_;
