@@ -272,6 +272,10 @@ void GameCommandHandler::init() {
 			"Let you leave the guild you temporarily joined for support actions.",
 			"Usage: @endGuildAdmin",
 			&endGuildAdmin);
+	gmCommands->addCommand("factionSet", PRIVILEGED,
+			"Let you change a players faction. Will be applied IMMEDIATLY!",
+			"Usage: @factionSet overt | covert | rebel | imperial | neutral",
+			&factionSet);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -2109,4 +2113,66 @@ void GameCommandHandler::endGuildAdmin(StringTokenizer tokenizer, Player * playe
 	} catch (...) {
 		return;
 	}
+}
+
+void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) {
+	string tag;
+	uint64 faction;
+	Player* targetPlayer;
+
+	if (!tokenizer.hasMoreTokens()) {
+		player->sendSystemMessage("Usage: @factionSet overt | covert | rebel | imperial | neutral");
+		return;
+	} else
+		tokenizer.getStringToken(tag);
+
+
+	try {
+		SceneObject* obj = player->getTarget();
+
+		if (obj != NULL && obj->isPlayer()) {
+			targetPlayer = (Player*) obj;
+
+			if (targetPlayer != player)
+				targetPlayer->wlock(player);
+
+
+			if (tag == "rebel")
+				faction = String::hashCode("rebel");
+			else if (tag == "imperial")
+				faction = String::hashCode("imperial");
+			else if (tag == "neutral")
+				faction = 0;
+			else if (tag == "covert")
+				faction = targetPlayer->getFaction();
+			else if (tag == "overt")
+				faction = targetPlayer->getFaction();
+			else {
+				player->sendSystemMessage("Usage: @factionSet overt | covert | rebel | imperial | neutral");
+				return;
+			}
+
+
+			targetPlayer->setFaction(faction);
+
+			if (tag == "covert" || tag == "neutral")
+				targetPlayer->setCovert();
+			else
+				targetPlayer->setOvert();
+
+			stringstream msg;
+			msg << "You change " << targetPlayer->getFirstNameProper() << "'s GWC state to '" << tag << "'.";
+			player->sendSystemMessage(msg.str());
+
+			targetPlayer->makeCharacterMask();
+
+			if (targetPlayer != player)
+				targetPlayer->unlock();
+		}
+
+	} catch (...) {
+		if (targetPlayer != player)
+			targetPlayer->unlock();
+	}
+
 }
