@@ -62,16 +62,17 @@ void LairObject::setBabiesPerMillion(int babies) {
 		((LairObjectImplementation*) _impl)->setBabiesPerMillion(babies);
 }
 
-void LairObject::spawnCreatures() {
+void LairObject::spawnCreatures(bool lockCreatureManager) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addBooleanParameter(lockCreatureManager);
 
 		method.executeWithVoidReturn();
 	} else
-		((LairObjectImplementation*) _impl)->spawnCreatures();
+		((LairObjectImplementation*) _impl)->spawnCreatures(lockCreatureManager);
 }
 
 /*
@@ -95,7 +96,7 @@ Packet* LairObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setBabiesPerMillion(inv->getSignedIntParameter());
 		break;
 	case 9:
-		spawnCreatures();
+		spawnCreatures(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -116,8 +117,8 @@ void LairObjectAdapter::setBabiesPerMillion(int babies) {
 	return ((LairObjectImplementation*) impl)->setBabiesPerMillion(babies);
 }
 
-void LairObjectAdapter::spawnCreatures() {
-	return ((LairObjectImplementation*) impl)->spawnCreatures();
+void LairObjectAdapter::spawnCreatures(bool lockCreatureManager) {
+	return ((LairObjectImplementation*) impl)->spawnCreatures(lockCreatureManager);
 }
 
 /*

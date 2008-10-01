@@ -707,6 +707,8 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 				adminsAccountName = res->getString(1);
 			}
 
+			delete res;
+
 			if (offendersAccountId == -1 || adminsAccountId == -1
 					|| offendersAccountName == "" || adminsAccountName == "") {
 				player->sendSystemMessage("Error getting account info");
@@ -733,6 +735,8 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 			}
 
+			delete res;
+
 			query3  << "SELECT "
 				    << ForumsDatabase::userTable() << ".userid, "
 				    << ForumsDatabase::userTable() << ".usergroupid, "
@@ -753,6 +757,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 				string usergroupid = res->getString(1);
 
 				if(usergroupid != ForumsDatabase::standardGroup()){
+					delete res;
 					player->sendSystemMessage("You can only ban standard users with this command");
 					player->wlock();
 					return;
@@ -796,6 +801,8 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 			}
 
+			delete res;
+
 			player->sendSystemMessage("player \'" + name
 					+ "\' is banned (Forum Account = " + offendersAccountName + ")");
 
@@ -824,7 +831,7 @@ void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player)
 
 	string name;
 
-	Player* targetPlayer;
+	Player* targetPlayer = NULL;
 
 	if (tokenizer.hasMoreTokens()) {
 
@@ -843,12 +850,9 @@ void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player)
 
 	}
 
-	player->unlock();
-
 	if (ForumsDatabase::instance() != NULL) {
-
 		try {
-			stringstream query, query2, query3, query4, query5;
+			stringstream query;
 
 			query   << "SELECT account.account_id, account.username FROM account "
 					<< "INNER JOIN characters ON "
@@ -865,19 +869,15 @@ void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player)
 				offendersAccountName = res->getString(1);
 			}
 
+			delete res;
+
 			player->sendSystemMessage("Forum account name: " + offendersAccountName);
-
 		} catch (...) {
-
 			player->sendSystemMessage("unable to get forum account info");
-
 		}
 	} else  {
-
 		player->sendSystemMessage("Unable to get forum account for " + name);
-
 	}
-	player->wlock();
 }
 
 void GameCommandHandler::mutePlayer(StringTokenizer tokenizer, Player * player) {
@@ -970,10 +970,10 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 			if (targetPlayer != player)
 				targetPlayer->unlock();
 		}
-	} else if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter()) {
+	} else if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter() && !creature->isMount()) {
 
 		try {
-			creature->wlock();
+			creature->wlock(player);
 
 			creature->explode(2, false);
 			uint damage = 100000000;

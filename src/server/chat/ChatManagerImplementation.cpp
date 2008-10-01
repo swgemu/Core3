@@ -720,8 +720,17 @@ void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* p
 	string adminmsg = message.c_str();
 
 	if (adminmsg[0] == '@') {
-		handleGameCommand(sender, adminmsg.c_str());
-		return;
+		try {
+			sender->wlock();
+
+			handleGameCommand(sender, adminmsg.c_str());
+
+			sender->unlock();
+			return;
+		} catch (...) {
+			sender->error("error while executing gameCommand in ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* pack)");
+			sender->unlock();
+		}
 	}
 
 	pack->shiftOffset(4);

@@ -148,6 +148,8 @@ void ServerCore::shutdown() {
 	info("shutting down server..");
 
 	if (statusServer != NULL) {
+		statusServer->stop();
+
 		delete statusServer;
 		statusServer = NULL;
 	}

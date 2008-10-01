@@ -51,6 +51,10 @@ StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 	zoneServer = server;
 	configManager = conf;
 
+	statusInterval = configManager->getStatusInterval();
+
+	doRun = true;
+
 	setLogging(false);
 }
 
@@ -102,7 +106,7 @@ bool StatusServer::testZone() {
 	if (zoneServer == NULL)
 		return false;
 
-	if (time(NULL) - timestamp < configManager->getStatusInterval()) {
+	if (time(NULL) - timestamp < statusInterval) {
 		return lastStatus;
 	}
 
@@ -136,7 +140,7 @@ void StatusServer::run() {
 
 	info("initialized", true);
 
-	while (true) {
+	while (doRun) {
 		try {
 			Socket* s = socket->accept();
 			Packet* pack = getStatusXMLPacket();
@@ -155,5 +159,10 @@ void StatusServer::run() {
 		}
 
 		Thread::sleep(1);
+	}
+
+	if (socket != NULL) {
+		socket->close();
+		delete socket;
 	}
 }
