@@ -2965,7 +2965,8 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 		} else if (craftingTool->isFinished()) {
 
-			player->sendSystemMessage("Cannot start crafting session with item in hopper");
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "crafting_tool_full");
+			player->sendMessage(sysMessage);
 
 		} else {
 

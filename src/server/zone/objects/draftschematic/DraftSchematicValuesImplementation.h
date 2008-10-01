@@ -91,6 +91,7 @@ public:
 	float getCurrentPercentage(const int i);
 
 	float getCurrentPercentageAverage(const int i);
+	float getCurrentPercentageAverage(const string title);
 
 	void setMaxPercentage(const string& attribute, const float value);
 

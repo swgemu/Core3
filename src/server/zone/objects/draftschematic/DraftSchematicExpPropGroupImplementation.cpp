@@ -151,9 +151,11 @@ void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const str
 
 	------------------------------- */
 
-void DraftSchematicExpPropGroupImplementation::sendToPlayer(ObjectControllerMessage* msg, int count) {
+void DraftSchematicExpPropGroupImplementation::sendToPlayer(
+		ObjectControllerMessage* msg, int count) {
 	if (getTypeAndWeight(0) == 0) {
 		msg->insertByte(0);
+		//msg->insertByte(0x00);
 	} else {
 		msg->insertByte(expPropGroupListSize);
 

@@ -40,46 +40,45 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-genericCraftingTool = Object:new {
+smallStimpackA = Object:new {
 
-   objectName = "Generic Crafting Tool", -- name of the lua Object
-   stfName = "generic_tool_name", 
-   objectCRC = 2914524854, 
-   groupName = "craftArtisanSurveyGroupA", 
+   objectName = "Small Stimpack  A", -- name of the lua Object
+   stfName = "stimpack_sm_s1_a", 
+   objectCRC = 3757704336, 
+   groupName = "craftMedicineStimpackGroupA", 
 
-   craftingToolTab = 4096, 
+   craftingToolTab = 64, 
    complexity = 10, 
-   size = 2, 
+   size = 3, 
 
-   xpType = "crafting_general", 
-   xp = 25, 
+   xpType = "crafting_medicine_general", 
+   xp = 30, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
 
-   ingredientTemplateNames = "craft_item_ingredients_n, craft_droid_ingredients_n, craft_item_ingredients_n",
-   ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
-   ingredientOptionals = "0, 0, 0",
-   resourceTypes = "metal, mineral, chemical",
-   resourceQuantities = "12, 4, 4",
-   combineTypes = "1, 1, 1",
-
-
-   numberExperimentalProperties = "1, 1, 1, 1",
-   experimentalProperties = "XX, XX, DR, CD",
-   experimentalWeights = "1, 1, 1, 1",
-   experimentalGroupTitles = "exp_durability, exp_effectiveness",
+   ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n",
+   ingredientTitleNames = "organic_element, inorganic_element",
+   ingredientOptionals = "0, 0",
+   resourceTypes = "organic, inorganic",
+   resourceQuantities = "8, 8",
+   combineTypes = "1, 1",
+   
+   numberExperimentalProperties = "1, 1, 2, 2",
+   experimentalProperties = "XX, XX, OQ, PE, OQ, UT",
+   experimentalWeights = "1, 1, 2, 1, 2, 1",
+   experimentalGroupTitles = "exp_effectiveness, exp_charges",
    experimentalSubGroupCount = "1, 1",
-   experimentalSubGroupTitles = "decayRate, useModifier",
+   experimentalSubGroupTitles = "power, charges",
 
-   tanoAttributes = "objecttype=32769:objectcrc=1055200365:objecttemp=generic_tool_name:templatetype=crafting:",
+   tanoAttributes = "objecttype=8205:objectcrc=2421139465:objecttemp=stimpack_sm_s1_a:templatetype=medicine_name:",
 
 
-   attributesToSet = "decayRate, useModifier",
-   attributeExperimentalProperties = "exp_durability, exp_effectiveness",
-   attributePrecision = "0, 2",
-   attributesMinMax = "1, 1000, -15, 15"
+   attributesToSet = "power, charges, medicineUseRequired",
+   attributeExperimentalProperties = "exp_effectiveness, exp_charges, exp_charges",
+   attributePrecision = "0, 0, 0",
+   attributesMinMax = "1, 75, 1, 14, 5, 5"
 
 }
 
-DraftSchematics:addDraftSchematic(genericCraftingTool, 2914524854)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(smallStimpackA, 3757704336)--- Add to global DraftSchematics table

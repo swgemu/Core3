@@ -68,12 +68,9 @@ dlt20Rifle = Object:new {
 
   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2",
   experimentalProperties = "XX, XX, OQ, CD, OQ, CD, OQ, CD, OQ, CD, XX, OQ, CD, XX, XX, XX, OQ, CD, OQ, CD, OQ, CD, OQ, CD",
-  experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
-
+  experimentalWeights = "0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1",
   experimentalGroupTitles = "expdamage, expdurability, expeffeciency, exprange",
-
   experimentalSubGroupCount = "4, 1, 3, 1",
-
   experimentalSubGroupTitles = "speed, maxDamage, minDamage, wound, decay, actionCost, healthCost, mindCost, range",
 
   tanoAttributes = "objecttype=131084:objectcrc=2200111432:objecttemp=rifle_blaster_dlt20a:templatetype=obj_n:",

@@ -76,4 +76,15 @@ RunDraftSchematicFile("objects/draftschematics/artisan/floraSurveyTool.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/dlt20Rifle.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterPowerHandler.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterRifleBarrel.lua")
+
+-- MEDIC
+
+-- Novice Medic
+RunDraftSchematicFile("objects/draftschematics/medic/novice/biologicalEffectController.lua")
+RunDraftSchematicFile("objects/draftschematics/medic/novice/smallStimpackA.lua")
+RunDraftSchematicFile("objects/draftschematics/medic/novice/liquidSuspension.lua")
+RunDraftSchematicFile("objects/draftschematics/medic/novice/foodChemicalCraftingTool.lua")
+
+-- Organic Chemistry 4
+--RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry4/advLiquidSuspension.lua")
  

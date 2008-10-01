@@ -40,46 +40,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-genericCraftingTool = Object:new {
+advLiquidSuspension = Object:new {
 
-   objectName = "Generic Crafting Tool", -- name of the lua Object
-   stfName = "generic_tool_name", 
-   objectCRC = 2914524854, 
-   groupName = "craftArtisanSurveyGroupA", 
+   objectName = "Adv Liquid Suspension", -- name of the lua Object
+   stfName = "liquid_suspension_advanced", 
+   objectCRC = 3383554373, 
+   groupName = "craftMedicineComponentGroupD", 
 
-   craftingToolTab = 4096, 
-   complexity = 10, 
+   craftingToolTab = 64, 
+   complexity = 18, 
    size = 2, 
 
-   xpType = "crafting_general", 
-   xp = 25, 
+   xpType = "crafting_medicine_general", 
+   xp = 35, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
 
-   ingredientTemplateNames = "craft_item_ingredients_n, craft_droid_ingredients_n, craft_item_ingredients_n",
-   ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
-   ingredientOptionals = "0, 0, 0",
-   resourceTypes = "metal, mineral, chemical",
-   resourceQuantities = "12, 4, 4",
-   combineTypes = "1, 1, 1",
+   ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n",
+   ingredientTitleNames = "purified_organic_suspension, suspension_base",
+   ingredientOptionals = "0, 0",
+   resourceTypes = "fruit_berries_dantooine, water_vapor_talus",
+   resourceQuantities = "6, 6",
+   combineTypes = "1, 1",
 
 
-   numberExperimentalProperties = "1, 1, 1, 1",
-   experimentalProperties = "XX, XX, DR, CD",
-   experimentalWeights = "1, 1, 1, 1",
+   numberExperimentalProperties = "1, 2",
+   experimentalProperties = "XX, OQ, PE",
+   experimentalWeights = "0, 1, 2",
    experimentalGroupTitles = "exp_durability, exp_effectiveness",
-   experimentalSubGroupCount = "1, 1",
-   experimentalSubGroupTitles = "decayRate, useModifier",
+   experimentalSubGroupCount = "1",
+   experimentalSubGroupTitles = "power",
 
-   tanoAttributes = "objecttype=32769:objectcrc=1055200365:objecttemp=generic_tool_name:templatetype=crafting:",
+   tanoAttributes = "objecttype=262144:objectcrc=1862978449:objecttemp=liquid_suspension_advanced:templatetype=craft_chemical_ingredients_n:",
 
 
-   attributesToSet = "decayRate, useModifier",
-   attributeExperimentalProperties = "exp_durability, exp_effectiveness",
-   attributePrecision = "0, 2",
-   attributesMinMax = "1, 1000, -15, 15"
+   attributesToSet = "power",
+   attributeExperimentalProperties = "exp_effectiveness",
+   attributePrecision = "0",
+   attributesMinMax = "50, 200"
 
 }
 
-DraftSchematics:addDraftSchematic(genericCraftingTool, 2914524854)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(advLiquidSuspension, 3383554373)--- Add to global DraftSchematics table
