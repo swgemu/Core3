@@ -62,6 +62,7 @@ class GMCommand {
 	int requiredAdminLevel;
     void (*gmCommandFunc)(StringTokenizer tokenizer, Player * player);
 
+
 public:
 	GMCommand(string cmd, int reqAdminLevel, string desc, string use, void (*func)(StringTokenizer tokenizer, Player * player)) {
 		command = cmd;
@@ -181,6 +182,7 @@ private:
 	static void addNoBuildArea(StringTokenizer tokenizer, Player * player);
 	static void guildAdmin(StringTokenizer tokenizer, Player * player);
 	static void endGuildAdmin(StringTokenizer tokenizer, Player * player);
+	static void factionSet(StringTokenizer tokenizer, Player * player);
 
 	void init();
 
