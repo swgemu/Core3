@@ -66,19 +66,19 @@ genericCraftingTool = Object:new {
 
 
    numberExperimentalProperties = "1, 1, 1, 1",
-   experimentalProperties = "XX, XX, DR, CD",
+   experimentalProperties = "XX, XX, XX, CD",
    experimentalWeights = "1, 1, 1, 1",
-   experimentalGroupTitles = "exp_durability, exp_effectiveness",
-   experimentalSubGroupCount = "1, 1",
-   experimentalSubGroupTitles = "decayRate, useModifier",
+   experimentalGroupTitles = "exp_effectiveness",
+   experimentalSubGroupCount = "1",
+   experimentalSubGroupTitles = "useModifier",
 
    tanoAttributes = "objecttype=32769:objectcrc=1055200365:objecttemp=generic_tool_name:templatetype=crafting:",
 
 
-   attributesToSet = "decayRate, useModifier",
-   attributeExperimentalProperties = "exp_durability, exp_effectiveness",
-   attributePrecision = "0, 2",
-   attributesMinMax = "1, 1000, -15, 15"
+   attributesToSet = "useModifier",
+   attributeExperimentalProperties = "exp_effectiveness",
+   attributePrecision = "2",
+   attributesMinMax = "-15, 15"
 
 }
 

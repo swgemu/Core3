@@ -90,6 +90,9 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	missionTerminalMap = new MissionTerminalMap(100);
 	craftingStationMap.setNullValue(NULL);
 	craftingStationMap.setInsertPlan(SortedVector<VectorMapEntry<uint64, CraftingStation*>*>::NO_DUPLICATE);
+	staticTangibleObjectMap.setNullValue(NULL);
+	staticTangibleObjectMap.setInsertPlan(SortedVector<VectorMapEntry<uint64, TangibleObject*>*>::NO_DUPLICATE);
+
 	areaMap = new AreaMap(16000, 16000, 500, 500);
 
 	creatureManager = planet->getCreatureManager();
@@ -154,6 +157,7 @@ void PlanetManagerImplementation::stop() {
 	clearTicketCollectors();
 	clearTravelTerminals();
 	clearCraftingStations();
+	clearStaticTangibleObjects();
 
 	unlock();
 }
@@ -329,6 +333,56 @@ void PlanetManagerImplementation::loadPlayerStructures() {
 	unlock();
 }
 
+void PlanetManagerImplementation::loadStaticTangibleObjects() {
+	lock();
+
+	int planetid = zone->getZoneID();
+
+	stringstream query;
+	query << "SELECT * FROM statictangibleobjects WHERE zoneid = " << planetid << ";";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	while (result->next()) {
+		uint64 parentId = result->getUnsignedLong(2);
+
+		string name = result->getString(3);
+
+		string file = result->getString(4);
+
+		int type = result->getInt(5);
+
+		string templatename = result->getString(6);
+
+		float oX = result->getFloat(7);
+		float oY = result->getFloat(8);
+		float oZ = result->getFloat(9);
+		float oW = result->getFloat(10);
+
+		float x = result->getFloat(11);
+		float z = result->getFloat(12);
+		float y = result->getFloat(13);
+
+		TangibleObject* tano = new TangibleObject(getNextStaticObjectID(false));
+
+		tano->setName(name);
+		tano->setParent(zone->lookupObject(parentId));
+		tano->setObjectCRC(String::hashCode(file));
+		tano->initializePosition(x, z, y);
+		tano->setDirection(oX, oZ, oY, oW);
+		tano->setObjectSubType(type);
+		tano->setZoneProcessServer(server);
+		tano->insertToZone(zone);
+
+		staticTangibleObjectMap.put(tano->getObjectID(), tano);
+	}
+
+	delete result;
+
+	unlock();
+}
+
+
 
 void PlanetManagerImplementation::clearShuttles() {
 	if (shuttleTakeOffEvent->isQueued())
@@ -422,12 +476,29 @@ void PlanetManagerImplementation::clearCraftingStations() {
 	info("cleared craftingStations");
 }
 
+void PlanetManagerImplementation::clearStaticTangibleObjects() {
+	for (int i = 0; i < staticTangibleObjectMap.size(); ++i) {
+		TangibleObject* tano = staticTangibleObjectMap.get(i);
+
+		tano->removeFromZone();
+
+		tano->removeUndeploymentEvent();
+
+		tano->finalize();
+	}
+
+	staticTangibleObjectMap.removeAll();
+
+	info("cleared staticTangibleObjectMap");
+}
+
 void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadShuttles();
 	loadGuildTerminals();
 	//loadVendorTerminals();
 	loadCraftingStations();
 	loadMissionTerminals();
+	loadStaticTangibleObjects();
 }
 
 void PlanetManagerImplementation::loadShuttles() {

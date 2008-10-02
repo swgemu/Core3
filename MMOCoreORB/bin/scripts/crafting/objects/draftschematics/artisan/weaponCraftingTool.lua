@@ -71,11 +71,11 @@ weaponCraftingTool = Object:new {
   experimentalWeights = "0, 0, 0, 1",
   experimentalGroupTitles = "exp_effectiveness",
   experimentalSubGroupCount = "1",
-  experimentalSubGroupTitles = "quality",
+  experimentalSubGroupTitles = "useModifier",
 
   tanoAttributes = "objecttype=32769:objectcrc=1693896753:objecttemp=weapon_tool_name:templatetype=crafting:",
 
-  attributesToSet = "quality",
+  attributesToSet = "useModifier",
   attributeExperimentalProperties = "exp_effectiveness",
   attributePrecision = "2",
   attributesMinMax = "-15, 15"

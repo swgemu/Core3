@@ -106,6 +106,7 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	TempInstallationSpawnEvent* tempInstallationSpawnEvent;
 	TempInstallationDespawnEvent* tempInstallationDespawnEvent;
 
+	VectorMap<uint64, TangibleObject*> staticTangibleObjectMap;
 
 	CreatureManager* creatureManager;
 
@@ -136,6 +137,7 @@ public:
 
 private:
 	void loadStaticPlanetObjects();
+	void loadStaticTangibleObjects();
 	void loadShuttles();
 	void loadTrainers();
 	int guessBuildingType(uint64 oid, string file);
@@ -158,7 +160,7 @@ private:
 	void clearTravelTerminals();
 	void clearMissionTerminals();
 	void clearCraftingStations();
-
+	void clearStaticTangibleObjects();
 
 
 public:
