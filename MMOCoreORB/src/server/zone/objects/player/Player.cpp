@@ -20,6 +20,8 @@
 
 #include "PlayerObject.h"
 
+#include "faction/FactionPointList.h"
+
 #include "../tangible/weapons/Weapon.h"
 
 #include "../tangible/wearables/Armor.h"
@@ -4175,6 +4177,18 @@ void Player::setFactionStatus(int status) {
 		((PlayerImplementation*) _impl)->setFactionStatus(status);
 }
 
+FactionPointList* Player::getFactionList() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 328);
+
+		return (FactionPointList*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getFactionList();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -5151,6 +5165,9 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 327:
 		setFactionStatus(inv->getSignedIntParameter());
+		break;
+	case 328:
+		resp->insertLong(getFactionList()->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -6445,6 +6462,10 @@ int PlayerAdapter::getFactionStatus() {
 
 void PlayerAdapter::setFactionStatus(int status) {
 	return ((PlayerImplementation*) impl)->setFactionStatus(status);
+}
+
+FactionPointList* PlayerAdapter::getFactionList() {
+	return ((PlayerImplementation*) impl)->getFactionList();
 }
 
 /*

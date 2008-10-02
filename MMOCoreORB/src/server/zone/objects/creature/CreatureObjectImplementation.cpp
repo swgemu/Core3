@@ -242,6 +242,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	// misc
 	pvpStatusBitmask = 0x10;
 	faction = 0;
+	factionRank = 0;
 
 	// combat
 	fireDotType = 0;

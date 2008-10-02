@@ -77,6 +77,8 @@ class PlayerManagerImplementation : public PlayerManagerServant {
 private:
 	void loadFromDatabase(Player* player);
 	void loadWaypoints(Player* player);
+	void loadFactionPoints(Player * player);
+	void saveFactionPoints(Player * player);
 
 public:
 	PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv);

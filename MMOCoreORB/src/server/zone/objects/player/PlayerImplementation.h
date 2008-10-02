@@ -74,6 +74,8 @@ which carries forward this exception.
 #include "../tangible/Inventory.h"
 
 #include "faction/FactionPointsMap.h"
+#include "faction/FactionRankTable.h"
+#include "faction/FactionPointList.h"
 
 class PlayerManager;
 class ItemManager;
@@ -1513,6 +1515,10 @@ public:
 		entertainerEvent = NULL;
 	}
 
+	inline FactionPointList * getFactionList() {
+		return factionPointsMap.getFactionList();
+	}
+
 
 	// Entertainer tick
 	void setEntertainerEvent();
@@ -1546,23 +1552,15 @@ public:
 		return factionPointsMap.getFactionPoints(faction);
 	}
 
-	inline void addFactionPoints(string faction, uint16 points) {
-		factionPointsMap.addFactionPoints(faction, points);
-
-		StfParameter * param = new StfParameter();
-		param->addTO(faction);
-		param->addDI(points);
-		sendSystemMessage("base_player", "prose_award_faction", param);
+	inline uint32 getMaxFactionPoints(string faction) {
+		if (faction == "imperial" || faction == "rebel")
+			return FactionRankTable::getFPCap(getFactionRank());
+		else
+			return 5000;
 	}
 
-	inline void subtractFactionPoints(string faction, uint16 points) {
-		factionPointsMap.subtractFactionPoints(faction, points);
-
-		StfParameter * param = new StfParameter();
-		param->addTO(faction);
-		param->addDI(points);
-		sendSystemMessage("base_player", "prose_lose_faction", param);
-	}
+	void addFactionPoints(string faction, uint32 points);
+	void subtractFactionPoints(string faction, uint32 points);
 
 	inline int getFactionStatus() {
 		return factionStatus;

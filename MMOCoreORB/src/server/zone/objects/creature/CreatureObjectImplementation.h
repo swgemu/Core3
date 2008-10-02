@@ -49,6 +49,8 @@ which carries forward this exception.
 
 //#include "../../packets.h"
 
+#include "../../packets/creature/CreatureObjectDeltaMessage3.h"
+
 #include "../scene/SceneObject.h"
 #include "../scene/SceneObjectImplementation.h"
 
@@ -296,6 +298,7 @@ protected:
 	// misc
 	uint32 pvpStatusBitmask;
 	uint32 faction;
+	uint8 factionRank;
 
 	// combat
 	int fireDotType;
@@ -1197,6 +1200,17 @@ public:
 		pvpStatusBitmask = mask;
 	}
 
+	inline void setFactionRank(uint8 rank, bool updateClient = true) {
+		factionRank = rank;
+
+		if (updateClient) {
+			CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3((CreatureObject*) _this);
+			dcreo3->updateFactionRank();
+			dcreo3->close();
+			this->broadcastMessage(dcreo3);
+		}
+	}
+
 	void updateHAMBars();
 
 	void updateBaseStats();
@@ -1907,6 +1921,10 @@ public:
 
 	inline uint32 getPvpStatusBitmask() {
 		return pvpStatusBitmask;
+	}
+
+	inline uint8 getFactionRank() {
+		return factionRank;
 	}
 
 	inline void setCreatureBitmask(uint32 bit) {

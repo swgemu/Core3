@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "RebelRecruiterCreature.h"
 
 #include "../../../player/Player.h"
+#include "../../../player/faction/FactionRankTable.h"
 #include "../../../../packets.h"
 
 
@@ -75,6 +76,10 @@ public:
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_466"));
 
 		StringList * slist = new StringList(player);
+
+		if(qualifiesForPromotion(player))
+			slist->insertOption("conversation/faction_recruiter_rebel", "s_468");
+
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_538");
 		player->sendMessage(slist);
 	}
@@ -130,6 +135,28 @@ public:
 
 	void playerRejectedLeave(Player * player) {
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_548"));
+	}
+
+	void confirmPromotion(Player * player) {
+		player->setLastNpcConvMessStr("confirm_promotion");
+
+		StfParameter * param = new StfParameter();
+		param->addTO("faction_recruiter", FactionRankTable::getRankName(player->getFactionRank() + 1));
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_470", param));
+		delete param;
+
+		StringList * slist = new StringList(player);
+		slist->insertOption("conversation/faction_recruiter_rebel", "s_472");
+		slist->insertOption("conversation/faction_recruiter_rebel", "s_476");
+		player->sendMessage(slist);
+	}
+
+	void playerAcceptedPromotion(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_474"));
+	}
+
+	void playerRejectedPromotion(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_478"));
 	}
 };
 

@@ -496,9 +496,12 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setPvpRating(character->getInt(54));
 	player->setAdminLevel(character->getInt(55));
 
+	player->setFactionStatus(character->getInt(58));
+	player->setFactionRank(character->getInt(59));
+
 	//Load consent list from database
 	loadConsentList(player);
-
+	loadFactionPoints(player);
 	delete character;
 }
 
@@ -684,6 +687,8 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< ",AdminLevel=" << player->getAdminLevel()
 	<< ",PvpRating=" << player->getPvpRating()
 	<< ",guildpermission=" << player->getGuildPermissions()
+	<< ",factionStatus=" << (int) player->getFactionStatus()
+	<< ",factionRank=" << (int)player->getFactionRank()
 	<< " WHERE character_id=" << player->getCharacterID() << ";";
 	try {
 		ServerDatabase::instance()->executeStatement(query);
@@ -693,9 +698,58 @@ void PlayerManagerImplementation::save(Player* player) {
 	}
 
 	player->saveProfessions();
+	saveFactionPoints(player);
 
 	//Update the database with the consentlist info
 	updateConsentList(player);
+}
+
+void PlayerManagerImplementation::loadFactionPoints(Player* player) {
+	stringstream query;
+	query << "SELECT * FROM character_faction_points WHERE character_id = " << player->getCharacterID() << ";";
+	try {
+		ResultSet * res = ServerDatabase::instance()->executeQuery(query);
+
+		while (res->next()) {
+			string faction = res->getString(1);
+			int points = res->getInt(2);
+
+			if (points >= 0)
+				player->addFactionPoints(faction, points);
+			else
+				player->subtractFactionPoints(faction, abs(points));
+		}
+
+		delete res;
+	} catch(DatabaseException& e) {
+		cerr << "Failed to load FactionPoints: " << player->getFirstName() << endl;
+		cout << e.getMessage() << endl;
+	}
+}
+
+void PlayerManagerImplementation::saveFactionPoints(Player* player) {
+
+	FactionPointList * list = player->getFactionList();
+
+	try {
+		for (int i = 0; i < list->size(); i++) {
+			string faction = list->get(i);
+			int points = player->getFactionPoints(faction);
+			stringstream hash;
+			hash << faction << player->getCharacterID();
+			stringstream query;
+			query << "INSERT INTO character_faction_points VALUES(";
+			query << player->getCharacterID() << ", '";
+			query << faction << "', " << points << ", MD5('";
+			query << hash.str() << "')) ON DUPLICATE KEY UPDATE faction_points = " << points;
+
+			ServerDatabase::instance()->executeStatement(query);
+		}
+
+	} catch(DatabaseException& e) {
+		cerr << "Failed to save FactionPoints: " << player->getFirstName() << endl;
+		cout << e.getMessage() << endl;
+	}
 }
 
 void PlayerManagerImplementation::handleAbortTradeMessage(Player* player, bool doLock) {

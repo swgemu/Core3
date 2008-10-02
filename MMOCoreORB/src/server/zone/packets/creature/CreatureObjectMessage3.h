@@ -79,7 +79,7 @@ public:
 
 		insertByte(1);
 		insertByte(creo->getPosture());
-		insertByte(0x00); // faction rank
+		insertByte(creo->getFactionRank()); // faction rank
 
 		insertLong(creo->getCreatureLinkID()); // creature link id/ mount
 

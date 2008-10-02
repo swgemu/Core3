@@ -58,6 +58,8 @@ import "../tangible/TangibleObject";
 
 import "PlayerObject";
 
+import "faction/FactionPointList";
+
 import "../tangible/weapons/Weapon";
 import "../tangible/wearables/Armor";
 
@@ -601,5 +603,6 @@ interface Player implements CreatureObject {
 	
 	int getFactionStatus();
 	void setFactionStatus(int status);
+	FactionPointList getFactionList();
 	
 }
