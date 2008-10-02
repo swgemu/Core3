@@ -48,16 +48,18 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "RecruiterCreature.h"
+#include "../../player/faction/FactionRankTable.h"
+#include "../../player/Player.h"
 
-class Player;
 class SceneObject;
 
 
 
 class RecruiterCreatureImplementation : public RecruiterCreatureServant {
 public:
-	static const uint8 IMPERIAL = 0x01;
-	static const uint8 REBEL = 0x02;
+	static const uint8 IMPERIAL = 1;
+	static const uint8 REBEL = 2;
+	static const uint8 MINFACTIONSTANDING = 200;
 
 protected:
 	uint64 factionCRC;
@@ -76,10 +78,28 @@ protected:
 	virtual void confirmLeaveFaction(Player * player) { };
 	virtual void playerAcceptedLeave(Player * player) { };
 	virtual void playerRejectedLeave(Player * player) { };
+	virtual void confirmPromotion(Player * player) { };
+	virtual void playerAcceptedPromotion(Player * player) { };
+	virtual void playerRejectedPromotion(Player * player) { };
 
 private:
 	void addPlayerToFaction(Player * player);
 	void removePlayerFromFaction(Player * player);
+	void promotePlayer(Player * player);
+
+protected:
+	inline bool isHighestRank(Player * player) {
+		return !FactionRankTable::rankExists(player->getFactionRank() + 1);
+	}
+
+	inline bool qualifiesForPromotion(Player * player) {
+		if (isHighestRank(player))
+			return false;
+
+		uint32 requiredPoints = FactionRankTable::getRequiredPoints(player->getFactionRank() + 1) + MINFACTIONSTANDING;
+
+		return (player->getFactionPoints(factionString) >= requiredPoints);
+	}
 
 public:
 	RecruiterCreatureImplementation(uint64 oid);

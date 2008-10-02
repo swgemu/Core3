@@ -452,6 +452,8 @@ interface CreatureObject implements SceneObject {
 	
 	unsigned int getPvpStatusBitmask();
 	
+	unsigned char getFactionRank();
+	
 	unsigned int getBankCredits();
 	unsigned int getCashCredits();
 	
@@ -691,6 +693,8 @@ interface CreatureObject implements SceneObject {
 	void setPosture(unsigned char state, boolean overrideDizzy = false, boolean objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 
 	void setPvpStatusBitmask(unsigned int mask);
+	
+	void setFactionRank(unsigned char rank, boolean updateClient = true);
 
 	void setDizziedState();
 	void setStunnedState();

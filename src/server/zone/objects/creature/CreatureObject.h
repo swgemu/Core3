@@ -547,6 +547,8 @@ public:
 
 	unsigned int getPvpStatusBitmask();
 
+	unsigned char getFactionRank();
+
 	unsigned int getBankCredits();
 
 	unsigned int getCashCredits();
@@ -920,6 +922,8 @@ public:
 	void setPosture(unsigned char state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 
 	void setPvpStatusBitmask(unsigned int mask);
+
+	void setFactionRank(unsigned char rank, bool updateClient = true);
 
 	void setDizziedState();
 
@@ -1608,6 +1612,8 @@ public:
 
 	unsigned int getPvpStatusBitmask();
 
+	unsigned char getFactionRank();
+
 	unsigned int getBankCredits();
 
 	unsigned int getCashCredits();
@@ -1981,6 +1987,8 @@ public:
 	void setPosture(unsigned char state, bool overrideDizzy, bool objectInteraction, float objX, float objY, float objZ);
 
 	void setPvpStatusBitmask(unsigned int mask);
+
+	void setFactionRank(unsigned char rank, bool updateClient);
 
 	void setDizziedState();
 

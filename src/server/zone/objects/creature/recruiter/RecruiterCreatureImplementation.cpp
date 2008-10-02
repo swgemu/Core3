@@ -122,6 +122,14 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 			break;
 		}
 	} else if (player->getLastNpcConvMessStr() == "member_start") {
+		if (qualifiesForPromotion(player)) {
+			if (option == 0) {
+				confirmPromotion(player);
+				return;
+			} else
+				option -= 1;
+		}
+
 		switch (option) {
 		case 0:
 			confirmLeaveFaction(player);
@@ -137,6 +145,16 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 			playerRejectedLeave(player);
 			break;
 		}
+	} else if (player->getLastNpcConvMessStr() == "confirm_promotion") {
+			switch (option) {
+			case 0:
+				promotePlayer(player);
+				playerAcceptedPromotion(player);
+				break;
+			case 1:
+				playerRejectedPromotion(player);
+				break;
+			}
 	} else {
 		player->sendMessage(new StopNpcConversation(player, getObjectID()));
 	}
@@ -153,4 +171,11 @@ void RecruiterCreatureImplementation::removePlayerFromFaction(Player * player) {
 	player->setFaction(0);
 	player->setCovert();
 	player->makeCharacterMask();
+	player->setFactionRank(0);
+}
+
+void RecruiterCreatureImplementation::promotePlayer(Player * player) {
+	uint8 rank = player->getFactionRank() + 1;
+	player->setFactionRank(rank);
+	player->subtractFactionPoints(factionString, FactionRankTable::getRequiredPoints(rank));
 }

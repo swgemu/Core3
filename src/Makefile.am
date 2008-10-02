@@ -82,6 +82,7 @@ core3_IDLS = server/zone/Zone.cpp \
 		server/zone/objects/player/FriendsList.cpp \
 		server/zone/objects/player/IgnoreList.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
+		server/zone/objects/player/faction/FactionPointList.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
@@ -263,8 +264,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp \
-		server/zone/objects/creature/recruiter/imperial/ImperialRecruiterCreatureImplementation.cpp \
-		server/zone/objects/creature/recruiter/rebel/RebelRecruiterCreatureImplementation.cpp \
 		server/zone/objects/creature/buffs/Buff.cpp \
 		server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \

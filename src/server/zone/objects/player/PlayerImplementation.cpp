@@ -222,6 +222,7 @@ void PlayerImplementation::init() {
 	deathCount = 0;
 	pvpRating = PVPRATING_DEFAULT; //New players start with pvpRating of 1200
 	duelList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
+	factionStatus = 0;
 
 	// profession
 	skillPoints = 0;
@@ -4164,5 +4165,60 @@ void PlayerImplementation::saveDatapad(Player* player) {
 	} catch (...) {
 		player->info("Unreported Exception in PlayerImplementation::saveDatapad(Player* player)");
 
+	}
+}
+
+void PlayerImplementation::addFactionPoints(string faction, uint32 points) {
+	int currentPoints = factionPointsMap.getFactionPoints(faction);
+	uint32 maxPoints = getMaxFactionPoints(faction);
+	uint32 pointsToAdd;
+
+	if (currentPoints + (int) points > maxPoints)
+		pointsToAdd = (int) maxPoints - currentPoints;
+	else
+		pointsToAdd = points;
+
+	if (pointsToAdd > 0) {
+		factionPointsMap.addFactionPoints(faction, pointsToAdd);
+
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		param->addDI(pointsToAdd);
+		sendSystemMessage("base_player", "prose_award_faction", param);
+		delete param;
+	}
+
+	if (pointsToAdd != points) {
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		sendSystemMessage("base_player", "prose_max_faction", param);
+		delete param;
+	}
+}
+
+void PlayerImplementation::subtractFactionPoints(string faction, uint32 points) {
+	int currentPoints = factionPointsMap.getFactionPoints(faction);
+	uint32 pointsToAdd;
+
+	if ((currentPoints - (int) points) < -5000)
+		pointsToAdd = currentPoints - -5000;
+	else
+		pointsToAdd = points;
+
+	if (pointsToAdd > 0) {
+		factionPointsMap.subtractFactionPoints(faction, pointsToAdd);
+
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		param->addDI(pointsToAdd);
+		sendSystemMessage("base_player", "prose_lose_faction", param);
+		delete param;
+	}
+
+	if (pointsToAdd != points) {
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		sendSystemMessage("base_player", "prose_min_faction", param);
+		delete param;
 	}
 }

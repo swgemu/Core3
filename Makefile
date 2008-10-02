@@ -69,6 +69,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/FriendsList.idl \
 				server/zone/objects/player/IgnoreList.idl \
 				server/zone/objects/player/PlayerObject.idl \
+				server/zone/objects/player/faction/FactionPointList.idl \
 				server/zone/objects/player/sui/SuiBox.idl \
 				server/zone/objects/player/sui/listbox/SuiListBox.idl \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.idl \

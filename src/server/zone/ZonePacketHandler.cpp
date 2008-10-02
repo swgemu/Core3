@@ -617,15 +617,23 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 
 	try {
 		player->wlock();
+		FactionPointList * list = player->getFactionList();
 
 		FactionResponseMessage* frm = new FactionResponseMessage("", player->getFactionPoints("rebel"), player->getFactionPoints("imperial"));
 
-		//on live we would want to retrive factions for each player
+		frm->addFactionCount(list->size());
+		for (int i=0; i < list->size(); i++) {
+			string faction = list->get(i);
+			frm->addFactionName(faction);
+		}
 
-		frm->addFactionCount(0x01);
-		frm->addFactionName("SWGEmu");
-		frm->addFactionCount(0x01);
-		frm->addFactionPoint(2007.0f);
+		frm->addFactionCount(list->size());
+		for (int i=0; i < list->size(); i++) {
+			string faction = list->get(i);
+			int points = player->getFactionPoints(faction);
+			frm->addFactionPoint(points);
+		}
+		frm->insertInt(0); //Client crashes with more than one faction if this isn't included
 
 		player->sendMessage(frm);
 

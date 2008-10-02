@@ -27,6 +27,8 @@ class TangibleObject;
 
 class PlayerObject;
 
+class FactionPointList;
+
 class Weapon;
 
 class Armor;
@@ -707,6 +709,8 @@ public:
 
 	void setFactionStatus(int status);
 
+	FactionPointList* getFactionList();
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -1381,6 +1385,8 @@ public:
 	int getFactionStatus();
 
 	void setFactionStatus(int status);
+
+	FactionPointList* getFactionList();
 
 protected:
 	string _param0_queueFlourish__string_long_int_;
