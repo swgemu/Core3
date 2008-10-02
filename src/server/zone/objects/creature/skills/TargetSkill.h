@@ -89,7 +89,7 @@ public:
 
 	virtual bool calculateCost(CreatureObject* creature) = 0;
 
-	virtual float calculateSpeed(CreatureObject* creature) = 0;
+	virtual float getSpeed() = 0;
 
 	void setSecondaryAnim(const string& name) {
 		secondaryAnim = name;

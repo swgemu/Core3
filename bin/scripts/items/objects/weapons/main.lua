@@ -53,3 +53,6 @@ RunItemLUAFile("objects/weapons/vibrolance.lua");
 RunItemLUAFile("objects/weapons/ee3_carbine.lua");
 RunItemLUAFile("objects/weapons/fwg5_pistol.lua");
 RunItemLUAFile("objects/weapons/bowcaster.lua");
+RunItemLUAFile("objects/weapons/polearm_lightsaber.lua");
+RunItemLUAFile("objects/weapons/onehanded_lightsaber.lua");
+RunItemLUAFile("objects/weapons/twohanded_lightsaber.lua");

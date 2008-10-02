@@ -100,7 +100,7 @@ public:
 		doAnimations(creature);
 	}
 	
-	float calculateSpeed(CreatureObject* creature) {
+	float getSpeed() {
 		return 1.0;
 	}
 	

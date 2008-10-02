@@ -40,34 +40,22 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RandPoolAtt = { 
-	attackname = "attack",
-	animation = "",
+-----------------------------------------------------------------------
 
-	requiredWeaponType = NONE,
-	
-	range = 0,
-	damageRatio = 1,
-	speedRatio = 1,
-	areaRange = 0,
-	accuracyBonus = 0,
-	
-	hamCostMultiplier = 0,
-	forceCostMultiplier = 0,
-	
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss"
+AvSelfSkill = {
+
+	 skillname = "avoidincapacitation",
+	 effectname = "clienteffect/pl_force_avoid_incap_self.cef",
+	 
+	 forceCost = 750,
+	 
+	 speed = -2.624,
+	 acceleration = -.55,
+	 slope = 0,
+	 duration = 30
+	 
 }
 
-AddRandomPoolAttackTargetSkill(RandPoolAtt)
+AddAISelfSkill(AvSelfSkill)
+
+-----------------------------------------------------------------------

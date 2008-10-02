@@ -134,11 +134,12 @@ bool CommandQueueAction::validate() {
 
 					int range;
 
-					if (weapon != NULL)
-						//TODO: This will break lunge as weapon range is less than lunge range
-						range = MIN((int)skill->getRange(), weapon->getMaxRange());
+					if (skill->getRange() != 0)
+						range = (int)skill->getRange();
+					else if (weapon != NULL)
+						range = weapon->getMaxRange();
 					else
-						range = 10;
+						range = 5;
 
 					if (!creature->isInRange(target->getPositionX(), target->getPositionY(), range)) {
 						target->unlock();
@@ -148,7 +149,7 @@ bool CommandQueueAction::validate() {
 
 					if (target->getParent() != creature->getParent()) {
 						clearError(0);
-						
+
 						creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
 
 						target->unlock();
@@ -263,7 +264,8 @@ bool CommandQueueAction::checkWeapon() {
 		weapon = creature->getWeapon();
 
 		if (weapon != NULL) {
-			if (requiredWeapon == 0x10 || requiredWeapon == 0x20) {
+			if (requiredWeapon == 0x10 || requiredWeapon == 0x20 ||
+					requiredWeapon == 0x30) {
 				if (weapon->getCategory() != requiredWeapon) {
 					clearError(0);
 					if (player != NULL)

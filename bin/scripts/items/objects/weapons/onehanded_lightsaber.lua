@@ -13,13 +13,13 @@ onehanded_lightsaber = Weapon:new{
 	armorPiercing = WEAPON_MEDIUM,
 	
 	attackSpeed = 2.0,
-	
+		
 	minDamage = 355,
 
 	maxDamage = 470,
 	
-	forceCost = 14,
+	forceCost = 20,
 	
-	certification = "cert_onehand_lightsaber_gen1"
+	certification = "cert_onehandlightsaber_gen1"
 
 }

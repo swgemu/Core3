@@ -116,7 +116,7 @@ public:
 			creature->showFlyText("combat_effects", finishFlyText, 255, 0, 0);
 	}
 		
-	float calculateSpeed(CreatureObject* creature) {
+	float getSpeed() {
 		return speed;
 	}
 

@@ -56,6 +56,8 @@ class CombatManager;
 class AttackTargetSkill : public TargetSkill {
 protected:
 	float damageRatio;
+	float hamCostMultiplier;
+	float forceCostMultiplier;
 
 	int healthPoolAttackChance;
 	int strengthPoolAttackChance;
@@ -107,6 +109,9 @@ public:
 		willpowerPoolAttackChance = 0;
 
 		damageRatio = 1.0f;
+		
+		hamCostMultiplier = 1;
+		forceCostMultiplier = 0;
 
 		areaRangeDamage = 0;
 
@@ -129,8 +134,7 @@ public:
 	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) = 0;
 
 	virtual bool calculateCost(CreatureObject* creature) {
-		float specialMultiplier = 1.0;
-		return server->getCombatManager()->calculateCost(creature, specialMultiplier);
+		return server->getCombatManager()->calculateCost(creature, hamCostMultiplier, forceCostMultiplier);
 	}
 
 	void doAnimations(CreatureObject* creature, SceneObject* target, bool doAnimations = true) {
@@ -141,59 +145,6 @@ public:
 			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
 
 		target->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
-	}
-
-	float calculateSpeed(CreatureObject* creature) {
-		Weapon* weapon = creature->getWeapon();
-		float weaponSpeed;
-
-		int speedMod = 0;
-
-		if (creature->isPlayer())
-			if (weapon == NULL)
-				speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
-			else switch (weapon->getObjectSubType()) {
-			case TangibleObjectImplementation::MELEEWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
-				break;
-			case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("onehandmelee_speed");
-				break;
-			case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("twohandmelee_speed");
-				break;
-			case TangibleObjectImplementation::POLEARM:
-				speedMod = ((Player*)creature)->getSkillMod("polearm_speed");
-				break;
-			case TangibleObjectImplementation::PISTOL:
-				speedMod = ((Player*)creature)->getSkillMod("pistol_speed");
-				break;
-			case TangibleObjectImplementation::CARBINE:
-				speedMod = ((Player*)creature)->getSkillMod("carbine_speed");
-				break;
-			case TangibleObjectImplementation::RIFLE:
-				speedMod = ((Player*)creature)->getSkillMod("rifle_speed");
-				break;
-			case TangibleObjectImplementation::HEAVYWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("heavyweapon_speed");
-				break;
-			case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
-				if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
-					speedMod = ((Player*)creature)->getSkillMod("heavy_flame_thrower_speed");
-
-				else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
-					speedMod = ((Player*)creature)->getSkillMod("heavy_rifle_lightning_speed");
-
-				speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
-				break;
-			}
-
-		if (weapon != NULL) {
-			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * speedRatio * weapon->getAttackSpeed();
-		} else
-			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * 1;
-
-		return MAX(weaponSpeed, 1.0f);
 	}
 
 	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature) {
@@ -376,6 +327,10 @@ public:
 		//return server->getCombatManager()->getHitChance(creature, targetCreature, accuracyBonus);
 		// Always hit
 		return 100;
+	}
+
+	virtual inline float getSpeed() {
+		return 1.0f;
 	}
 
 	float getWeaponAccuracy(float currentRange, Weapon* weapon) {
@@ -589,6 +544,14 @@ public:
 		damageRatio = ratio;
 	}
 
+	inline void setHAMCostMultiplier(float mult) {
+		hamCostMultiplier = mult;
+	}
+	
+	inline void setForceCostMultiplier(float mult) {
+		forceCostMultiplier = mult;
+	}
+	
 	inline void setHealthPoolAttackRatio(int ratio) {
 		healthPoolAttackChance = ratio;
 	}

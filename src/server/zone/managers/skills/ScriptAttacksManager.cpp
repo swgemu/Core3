@@ -235,6 +235,8 @@ int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamHit = skill.getStringField("CbtSpamHit");
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
+	float hamCostMultiplier = skill.getFloatField("hamCostMultiplier");
+	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
 	attack = new RandomPoolAttackTargetSkill(attackname, animation, server);
 
@@ -259,6 +261,9 @@ int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
 	attack->setCbtSpamEvade(CbtSpamEvade);
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setHAMCostMultiplier(hamCostMultiplier);
+	attack->setForceCostMultiplier(forceCostMultiplier);
 
 	CombatActions->put(attack);
 	return 0;
@@ -309,6 +314,8 @@ int ScriptAttacksManager::AddDirectPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamHit = skill.getStringField("CbtSpamHit");
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
+	float hamCostMultiplier = skill.getFloatField("hamCostMultiplier");
+	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
 	attack = new DirectPoolAttackTargetSkill(attackname, animation, server);
 
@@ -344,6 +351,9 @@ int ScriptAttacksManager::AddDirectPoolAttackTargetSkill(lua_State *L) {
 	attack->setCbtSpamEvade(CbtSpamEvade);
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setHAMCostMultiplier(hamCostMultiplier);
+	attack->setForceCostMultiplier(forceCostMultiplier);
 
 	CombatActions->put(attack);
 	return 0;
@@ -397,6 +407,9 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamHit = skill.getStringField("CbtSpamHit");
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
+	float hamCostMultiplier = skill.getFloatField("hamCostMultiplier");
+	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
+
 
 	attack = new DotPoolAttackTargetSkill(attackname, animation, server);
 
@@ -435,6 +448,9 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	attack->setCbtSpamEvade(CbtSpamEvade);
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setHAMCostMultiplier(hamCostMultiplier);
+	attack->setForceCostMultiplier(forceCostMultiplier);
 
 	CombatActions->put(attack);
 	return 0;
@@ -1160,6 +1176,8 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamHit = skill.getStringField("CbtSpamHit");
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
+	float hamCostMultiplier = skill.getFloatField("hamCostMultiplier");
+	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
 	attack = new WoundsDirectPoolAttackTargetSkill(attackname, animation, server);
 
@@ -1187,6 +1205,9 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	attack->setCbtSpamEvade(CbtSpamEvade);
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setHAMCostMultiplier(hamCostMultiplier);
+	attack->setForceCostMultiplier(forceCostMultiplier);
 
 	CombatActions->put(attack);
 	return 0;

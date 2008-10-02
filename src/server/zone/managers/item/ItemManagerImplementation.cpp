@@ -881,7 +881,8 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		int instType = itemconfig.getIntField("instrumentType");
 
 		((Instrument*) item)->setInstrumentType(instType);
-	} else if (type & TangibleObjectImplementation::WEAPON) {
+	} else if (type & TangibleObjectImplementation::WEAPON ||
+			type & TangibleObjectImplementation::LIGHTSABER) {
 		int damageType = itemconfig.getIntField("damageType");
 		int ap = itemconfig.getIntField("armorPiercing");
 		string cert = itemconfig.getStringField("certification");
@@ -889,12 +890,18 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		float mindmg = itemconfig.getFloatField("minDamage");
 		float maxdmg = itemconfig.getFloatField("maxDamage");
 
+
 		Weapon* weapon = (Weapon*) item;
 		weapon->setDamageType(damageType);
 		weapon->setArmorPiercing(ap);
 		weapon->setAttackSpeed(as);
 		weapon->setMinDamage(mindmg);
 		weapon->setMaxDamage(maxdmg);
+
+		if (type & TangibleObjectImplementation::LIGHTSABER) {
+			int forceCost = itemconfig.getIntField("forceCost");
+			weapon->setForceCost(forceCost);
+		}
 
 		if (!cert.empty())
 			weapon->setCert(cert);

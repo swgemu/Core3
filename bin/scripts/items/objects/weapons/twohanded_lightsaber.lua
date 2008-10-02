@@ -40,5 +40,29 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("objects/jedi/onehanded_lightsaber.lua");
-RunItemLUAFile("objects/jedi/polearm_lightsaber.lua");
+twohanded_lightsaber = Weapon:new{
+	
+	objectName = "Two Handed Lightsaber",
+
+	templateName = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_gen4.iff",
+
+	objectType = TWOHANDSABER,
+	
+	objectCRC = 722054148,
+	
+	damageType = WEAPON_LIGHTSABER,
+	
+	armorPiercing = WEAPON_MEDIUM,
+	
+	attackSpeed = 3.5, --4.6,
+	
+	forceCost = 30,
+	
+	--I know the dmg stats seem a bit low, but we will be using the stats from http://home.cfl.rr.com/vigilance/jedi_Guide.html when we are ready for official testing
+	
+	minDamage = 145, --191,
+	maxDamage = 355, --292,
+	
+	certification = "cert_twohandlightsaber_gen1"
+	
+}

@@ -74,7 +74,7 @@ public:
 			creature->sendSystemMessage("performance", "effect_perform_ventriloquism");
 	}
 	
-	float calculateSpeed(CreatureObject* creature) {
+	float getSpeed() {
 		return 1.0;
 	}
 	

@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-jedi_items = {onehanded_lightsaber, polearm_lightsaber}
+jedi_items = {onehanded_lightsaber, polearm_lightsaber, twohanded_lightsaber}
 
 addBFItemSet("Jedi items" , jedi_items);

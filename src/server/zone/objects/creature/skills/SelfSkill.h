@@ -74,7 +74,7 @@ public:
 		return true;
 	}
 	
-	virtual float calculateSpeed(CreatureObject* creature) = 0;
+	virtual float getSpeed() = 0;
 	
 	virtual bool calculateCost(CreatureObject* creature) = 0;
 	

@@ -165,6 +165,8 @@ public:
 
 	void setMindAttackCost(int mindCost);
 
+	void setForceCost(int forceCost);
+
 	void setWoundsRatio(float woundsRat);
 
 	void setArmorPiercing(int armorPierce);
@@ -384,6 +386,8 @@ public:
 	void setActionAttackCost(int actionCost);
 
 	void setMindAttackCost(int mindCost);
+
+	void setForceCost(int forceCost);
 
 	void setWoundsRatio(float woundsRat);
 

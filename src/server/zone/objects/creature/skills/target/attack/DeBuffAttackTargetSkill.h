@@ -121,7 +121,7 @@ public:
 			creature->playEffect(selfEffect, "");
 	}
 
-	float calculateSpeed(CreatureObject* creature) {
+	float getSpeed() {
 		return speed;
 	}
 

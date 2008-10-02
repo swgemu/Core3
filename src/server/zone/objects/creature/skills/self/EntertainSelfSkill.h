@@ -80,7 +80,7 @@ public:
 		return true;
 	}
 	
-	float calculateSpeed(CreatureObject* creature) {
+	float getSpeed() {
 		return 1.0;
 	}
 	

@@ -40,34 +40,29 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RandPoolAtt = { 
-	attackname = "attack",
-	animation = "",
+polearm_lightsaber = Weapon:new{
+	
+	objectName = "Polearm Lightsaber",
 
-	requiredWeaponType = NONE,
+	templateName = "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff",
+
+	objectType = POLEARMSABER,
 	
-	range = 0,
-	damageRatio = 1,
-	speedRatio = 1,
-	areaRange = 0,
-	accuracyBonus = 0,
+	objectCRC = 1459631692,
+
+	damageType = WEAPON_LIGHTSABER,
 	
-	hamCostMultiplier = 0,
-	forceCostMultiplier = 0,
+	armorPiercing = WEAPON_MEDIUM,
 	
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
+	attackSpeed = 3.5, --4.9,
 	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss"
+	forceCost = 40,
+	
+	--I know the dmg stats seem a bit low, but we will be using the stats from http://home.cfl.rr.com/vigilance/jedi_Guide.html when we are ready for official testing
+	
+	minDamage = 155, --231,
+	maxDamage = 399, --319,
+	
+	certification = "cert_polearmlightsaber_gen1"
+
 }
-
-AddRandomPoolAttackTargetSkill(RandPoolAtt)

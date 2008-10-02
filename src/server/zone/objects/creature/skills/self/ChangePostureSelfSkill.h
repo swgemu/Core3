@@ -73,7 +73,7 @@ public:
 			creature->doAnimation(anim);
 	}
 		
-	float calculateSpeed(CreatureObject* creature) {
+	float getSpeed() {
 		
 		return speed;
 	}
