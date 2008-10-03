@@ -40,87 +40,87 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-moJediMaster = Creature:new {
-      objectName = "moJediMaster",  -- Lua Object Name
+deathWatchWraithDWB = Creature:new {
+      objectName = "deathWatchWraithDWB",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "sith",
+      faction = "Death Watch",
       gender = "",
 
-      stfName = "Dark Jedi Master",
-      objectCRC = 2005105485, 
-      socialGroup = "sith",
-      named = TRUE, 
+      name = "Death Watch Wraith",
+      objectCRC = 3553170937, 
+      socialGroup = "Death Watch",
+      named = FALSE, 
 
-      level = 400,
-      xp = 28549,
+      level = 178,
+      xp = 16794,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 444000,
-      healthMin = 440000,
-      strength = 50000,
-      constitution = 50000,
+      healthMax = 144000,
+      healthMin = 118000,
+      strength = 20000,
+      constitution = 20000,
 
-      actionMax = 444000,
-      actionMin = 440000,
-      quickness = 50000,
-      stamina = 50000,
+      actionMax = 144000,
+      actionMin = 118000,
+      quickness = 20000,
+      stamina = 20000,
 
-      mindMax = 444000,
-      mindMin = 440000,
-      focus = 50000,
-      willpower = 50000,
+      mindMax = 144000,
+      mindMin = 118000,
+      focus = 20000,
+      willpower = 20000,
 
       height = 1, -- Size of creature
-      armor = 3, -- Just a guess
-      kinetic = 90,
-      energy = 90,
-	  electricity = 90,
-      stun = 90,
- 	  blast = 90,
- 	  heat = 90,
- 	  cold = 90,
- 	  acid = 90,
- 	  lightSaber = 0, 
+      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      kinetic = 75,
+      energy = 75,
+      electricity = 45,
+      stun = 70,
+      blast = 90,
+      heat = 80,
+      cold = 45,
+      acid = 100,
+      lightsaber = 0,
 
-      accuracy = 500,
+      accuracy = 300,
 
       healer = 0,
 
-      pack = 1,
+      pack = 0,
       herd = 0,
       stalker = 0,
       killer = 1,
-      aggressive = 0,
-      invincible = 1,
+      aggressive = 1,
+      invincible = 0,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "a Dxr6_Disruptor", -- Name ex. 'a Vibrolance'
+      weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 950,
-      weaponMaxDamage = 1200,
-      weaponAttackSpeed = 1,
-      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+      weaponMinDamage = 800,
+      weaponMaxDamage = 900,
+      weaponAttackSpeed = 3,
+      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_s9_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "Master Saber", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 950,
-      alternateWeaponMaxDamage = 1200,
-      alternateWeaponAttackSpeed = 1,
-      alternateWeaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      alternateWeaponEquipped = 0,
+      alternateWeaponMinDamage = 0,
+      alternateWeaponMaxDamage = 0,
+      alternateWeaponAttackSpeed = 0,
+      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39,40,49,49,50", -- Group it belongs to for loot
+      lootGroup = "46,47", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,10 +135,10 @@ moJediMaster = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "jediAttack1", "jediAttack2", "jediAttack3", "jediAttack4", "jediAttack5", "jediAttack6", "jediAttack7", "jediAttack8" },
-      respawnTimer = 43420,
+      skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
+      respawnTimer = 600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(moJediMaster, 2005105485) --  Add to Global Table
+Creatures:addCreature(deathWatchWraithDWB, 3553170937) --  Add to Global Table

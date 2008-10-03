@@ -100,7 +100,7 @@ palpatine = Creature:new {
       weaponName = "Palpatine Saber", -- Name ex. 'a Vibrolance'
       weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
+      weaponEquipped = 0,
       weaponMinDamage = 1500,
       weaponMaxDamage = 2200,
       weaponAttackSpeed = 0.5,
@@ -120,7 +120,7 @@ palpatine = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39,40,49,47,49,50", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,21,33,34,39,40,49,49,50", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,8 +135,8 @@ palpatine = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4", "darthAttack5", "darthAttack6", "darthAttack7", "darthAttack8" },
-      respawnTimer = 3600,
+      skills = { "palpatineAttack1", "palpatineAttack2", "palpatineAttack3", "palpatineAttack4", "palpatineAttack5", "palpatineAttack6", "palpatineAttack7", "palpatineAttack8" },
+      respawnTimer = 43200,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

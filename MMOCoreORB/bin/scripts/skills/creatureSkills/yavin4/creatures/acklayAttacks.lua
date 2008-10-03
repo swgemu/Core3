@@ -314,18 +314,18 @@ AddRandomPoolAttackTargetSkill(acklayAttack8)
 
 acklayAttack9 = {
 	attackname = "acklayAttack9",
-	animation = "creature_attack_light",
+	animation = "creature_attack_ranged_medium",
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 64,
 
 	damageRatio = 512,
 
 	speedRatio = 4,
 
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 50,
 
 	healthAttackChance = 0,
 	actionAttackChance = 100,
@@ -346,8 +346,8 @@ acklayAttack9 = {
 	diseaseStrength = 0,
 	diseaseType = 0,
 		
-	knockdownChance = 0,
-	postureDownChance = 0,
+	knockdownChance = 85,
+	postureDownChance = 85,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,

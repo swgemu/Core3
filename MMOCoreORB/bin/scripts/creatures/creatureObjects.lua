@@ -145,6 +145,9 @@ RunCreatureFile("objects/npcs/moJediMaster.lua")
 RunCreatureFile("objects/npcs/jediMaster.lua")
 RunCreatureFile("objects/npcs/jediKnight.lua")
 
-
+RunCreatureFile("objects/npcs/oldMan.lua")
+RunCreatureFile("objects/npcs/luke.lua")
+RunCreatureFile("objects/npcs/honSolo.lua")
+RunCreatureFile("objects/npcs/chewbacca.lua")
 
 ----------------------------------------------------------------------------------------------------

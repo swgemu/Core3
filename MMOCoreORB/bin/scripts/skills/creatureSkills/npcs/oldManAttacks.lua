@@ -40,8 +40,8 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-darthAttack1 = {
-	attackname = "darthAttack1",
+oldManAttack1 = {
+	attackname = "oldManAttack1",
 	animation = "combo_jedi_2_light",
 	
 	requiredWeaponType = JEDI,
@@ -71,12 +71,12 @@ darthAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack1)
+AddRandomPoolAttackTargetSkill(oldManAttack1)
 
 -----------------------------------------------
 
-darthAttack2 = {
-	attackname = "darthAttack2",
+oldManAttack2 = {
+	attackname = "oldManAttack2",
 	animation = "force_intimidate_chain",
 	
 	requiredWeaponType = JEDI,
@@ -106,11 +106,11 @@ darthAttack2 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack2)
+AddRandomPoolAttackTargetSkill(oldManAttack2)
 
 -----------------------------------------------
-darthAttack3 = {
-attackname = "darthAttack3",
+oldManAttack3 = {
+attackname = "oldManAttack3",
 animation = "force_knockdown_1_arc_particle_level_1",
 
 	requiredWeaponType = JEDI,
@@ -136,12 +136,12 @@ animation = "force_knockdown_1_arc_particle_level_1",
 	CbtSpamMiss = "melee_miss",
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack3)
+AddRandomPoolAttackTargetSkill(oldManAttack3)
 
 -----------------------------------------------
 
-darthAttack4 = {
-	attackname = "darthAttack4",
+oldManAttack4 = {
+	attackname = "oldManAttack4",
 	animation = "combo_jedi_2_light",
 
 	requiredWeaponType = JEDI,
@@ -166,12 +166,12 @@ darthAttack4 = {
 	CbtSpamMiss = "saberpolearmdervish2_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack4)
+AddRandomPoolAttackTargetSkill(oldManAttack4)
 
 -----------------------------------------------------------------------
 
-darthAttack5 = {
-	attackname = "darthAttack5",
+oldManAttack5 = {
+	attackname = "oldManAttack5",
 	animation = "saberthrow_posture_change",
 
 	requiredWeaponType = JEDI,
@@ -196,12 +196,12 @@ darthAttack5 = {
 	CbtSpamMiss = "saberthrow3_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack5)
+AddRandomPoolAttackTargetSkill(oldManAttack5)
 
 -----------------------------------------------------------------------
 
-darthAttack6 = { 
-	attackname = "darthAttack6",
+oldManAttack6 = { 
+	attackname = "oldManAttack6",
 	animation = "combo_2d_light",
 
 	requiredWeaponType = JEDI,
@@ -239,12 +239,12 @@ darthAttack6 = {
 	CbtSpamMiss = "saberslash2_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack6)
+AddDotPoolAttackTargetSkill(oldManAttack6)
 
 -----------------------------------------------------------------------
 
-darthAttack7 = { 
-	attackname = "darthAttack7",
+oldManAttack7 = { 
+	attackname = "oldManAttack7",
 	animation = "force_choke_1_particle_level_1_medium",
 
 	requiredWeaponType = JEDI,
@@ -269,12 +269,12 @@ darthAttack7 = {
     CbtSpamMiss = "forcechoke_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack7)
+AddDotPoolAttackTargetSkill(oldManAttack7)
 
 -----------------------------------------------------------------------
 
-darthAttack8 = { 
-	attackname = "darthAttack8",	
+oldManAttack8 = { 
+	attackname = "oldManAttack8",	
 	animation = "saberthrow_posture_change",
 
 	requiredWeaponType = JEDI,
@@ -299,6 +299,6 @@ darthAttack8 = {
 	CbtSpamMiss = "saberthrow3_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack8)
+AddDotPoolAttackTargetSkill(oldManAttack8)
 
 -----------------------------------------------------------------------

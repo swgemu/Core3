@@ -74,7 +74,7 @@ RunCreatureFile("spawns/endor/staticSpawns.lua")
 RunCreatureFile("spawns/endor/jindaCave.lua")
 RunCreatureFile("spawns/endor/korgaCave.lua")
 RunCreatureFile("spawns/endor/marauderStronghold.lua")
---RunCreatureFile("spawns/endor/deathWatchBunker.lua")
+-- RunCreatureFile("spawns/endor/deathWatchBunker.lua")
 end
 
 --Lok

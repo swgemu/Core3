@@ -39,14 +39,38 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+honAttack1 = {
+	attackname = "honAttack1",
+	animation = "creature_attack_ranged_light",
+	
+	requiredWeaponType = NONE,
 
---global clusters
+	range = 64,
 
-spawnCreatureInCell(acklay, 9, 118.583, -33.9403, -319.481, 1627823)
+	damageRatio = 70,
 
-spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
+	speedRatio = 5,
+	coneAngle = 0,
 
-spawnCreatureInCell(oldMan, 9, 21.7251, 70.2637, -24.1, 8525426)
-spawnCreatureInCell(luke, 9, 21.7251, 70.2637, -24.1, 8525441)
-spawnCreatureInCell(honSolo, 9, -47.6507, -24.3373, -22.05, 8525423)
-spawnCreatureInCell(chewbacca, 9, -47.2221, 24.1381, -22.05, 8525420)
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 1,
+	postureDownChance = 1,
+	postureUpChance = 0,
+	dizzyChance = 1,
+	blindChance = 1,
+	stunChance = 1,
+	intimidateChance = 1,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(honAttack1)
+
+-----------------------------------------------
+
