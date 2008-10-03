@@ -46,7 +46,7 @@ oldMan = Creature:new {
       faction = "Imperial",
       gender = "",
 
-      stfName = "Emperor Palpatine",
+      stfName = "Obi-Wan Kenobi",
       objectCRC = 2513398694, 
       socialGroup = "Imperial",
       named = TRUE, 

@@ -72,7 +72,7 @@ superBattleDroidDWB = Creature:new {
       focus = 50000,
       willpower = 50000,
 
-      height = 1, -- Size of creature
+      height = 1.5, -- Size of creature
       armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 
       kinetic = 85,

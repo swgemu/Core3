@@ -46,7 +46,7 @@ battleDroidDWB = Creature:new {
       faction = "Corsec [aggro]",
       gender = "",
 
-      name = "Battle Droid",
+      stfName = "Battle Droid",
       objectCRC = 2042392243, 
       socialGroup = "Corsec [aggro]",
       named = FALSE, 
