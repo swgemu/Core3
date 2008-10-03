@@ -127,7 +127,15 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 				confirmPromotion(player);
 				return;
 			} else
-				option -= 1;
+				option--;
+		}
+
+		if (canOfferBribe(player)) {
+			if (option == 0) {
+				confirmBribe(player);
+				return;
+			} else
+				option--;
 		}
 
 		switch (option) {
@@ -146,15 +154,26 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 			break;
 		}
 	} else if (player->getLastNpcConvMessStr() == "confirm_promotion") {
-			switch (option) {
-			case 0:
-				promotePlayer(player);
-				playerAcceptedPromotion(player);
-				break;
-			case 1:
-				playerRejectedPromotion(player);
-				break;
-			}
+		switch (option) {
+		case 0:
+			promotePlayer(player);
+			playerAcceptedPromotion(player);
+			break;
+		case 1:
+			playerRejectedPromotion(player);
+			break;
+		}
+	} else if (player->getLastNpcConvMessStr() == "confirm_bribe") {
+		playerAcceptedBribe(player);
+
+		switch (option) {
+		case 0:
+			grantBribe(player, 20000, 250);
+			break;
+		case 1:
+			grantBribe(player, 100000, 1250);
+			break;
+		}
 	} else {
 		player->sendMessage(new StopNpcConversation(player, getObjectID()));
 	}
@@ -178,4 +197,12 @@ void RecruiterCreatureImplementation::promotePlayer(Player * player) {
 	uint8 rank = player->getFactionRank() + 1;
 	player->setFactionRank(rank);
 	player->subtractFactionPoints(factionString, FactionRankTable::getRequiredPoints(rank));
+}
+
+void RecruiterCreatureImplementation::grantBribe(Player * player, uint32 cost, uint32 fp) {
+	if (player->getCashCredits() < cost)
+		return;
+
+	player->subtractCashCredits(cost);
+	player->addFactionPoints(factionString, fp);
 }

@@ -1553,9 +1553,12 @@ public:
 	}
 
 	inline uint32 getMaxFactionPoints(string faction) {
-		if (faction == "imperial" || faction == "rebel")
-			return FactionRankTable::getFPCap(getFactionRank());
-		else
+		if (faction == "imperial" || faction == "rebel") {
+			if (getFaction() == String::hashCode(faction) || getFaction() == 0)
+				return FactionRankTable::getFPCap(getFactionRank());
+			else
+				return 500;
+		} else
 			return 5000;
 	}
 
@@ -1568,6 +1571,26 @@ public:
 
 	inline void setFactionStatus(int status) {
 		factionStatus = status;
+	}
+
+	inline void delFactionPoints(Player * player, uint32 amount) {
+		if (player == NULL)
+			return;
+
+		uint32 charge = (uint32) ceil(amount * FactionRankTable::getDelegateRatio(getFactionRank()));
+		string faction;
+		if (getFaction() == String::hashCode("imperial"))
+			faction = "imperial";
+		else if (getFaction() == String::hashCode("rebel"))
+			faction = "rebel";
+		else
+			return;
+
+		if (getFactionPoints(faction) < charge + 200)
+			return;
+
+		subtractFactionPoints(faction, charge);
+		player->addFactionPoints(faction, amount);
 	}
 
 	friend class PlayerManager;

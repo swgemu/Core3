@@ -483,6 +483,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		}
 		parseNpcStopConversation(player, pack);
 		break;
+	case (0x0F13C662): //delegatefactionpoints
+		parseDelFactionPoints(player, pack);
+		break;
 	case (0x887B5461): //requestcharactersheetinfo
 		parseCharacterSheetInfoRequest(player, pack);
 		break;
@@ -3502,4 +3505,51 @@ void ObjectControllerMessage::parseMeditation(Player* player) {
 	} else {
 		player->sendSystemMessage("teraskasi", "med_begin");
 	}
+}
+
+void ObjectControllerMessage::parseDelFactionPoints(Player* player, Message* pack) {
+	uint64 tipToId = pack->parseLong();
+
+	unicode tipParams;
+	pack->parseUnicode(tipParams);
+
+	StringTokenizer tokenizer(tipParams.c_str());
+	tokenizer.setDelimeter(" ");
+
+	if (!tokenizer.hasMoreTokens())
+		return;
+
+	uint32 tipAmount;
+
+	if (tipToId == 0)
+		return;
+
+	//The player has SOMETHING targetted.
+	//Lets first check if its a player, cause if it is we can skip some stuff.
+	SceneObject* object = player->getZone()->lookupObject(tipToId);
+
+	if (object == NULL || !object->isPlayer() || object == player)
+		return;
+
+	//Ok so we know its a player.
+	//If its a player in range, the client will omit any text referencing the name.
+	//So the next param SHOULD be the tip amount.
+	if (!tokenizer.hasMoreTokens())
+		return;
+
+	tipAmount = tokenizer.getIntToken();
+
+	//Quick cast of the object to a Player.
+	Player* tipTo = (Player*) object;
+
+	//They didnt type in a number, or typed in 0.
+	if (tipAmount == 0)
+		return;
+
+	if (tokenizer.hasMoreTokens())
+		return;
+
+	player->delFactionPoints(tipTo, tipAmount);
+
+
 }

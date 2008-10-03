@@ -604,5 +604,7 @@ interface Player implements CreatureObject {
 	int getFactionStatus();
 	void setFactionStatus(int status);
 	FactionPointList getFactionList();
+	unsigned int getMaxFactionPoints(string faction);
 	
+	void delFactionPoints(Player player, unsigned int amount);
 }

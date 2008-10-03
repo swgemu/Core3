@@ -81,15 +81,26 @@ protected:
 	virtual void confirmPromotion(Player * player) { };
 	virtual void playerAcceptedPromotion(Player * player) { };
 	virtual void playerRejectedPromotion(Player * player) { };
+	virtual void confirmBribe(Player * player) { };
+	virtual void playerAcceptedBribe(Player * player) { };
 
 private:
 	void addPlayerToFaction(Player * player);
 	void removePlayerFromFaction(Player * player);
 	void promotePlayer(Player * player);
+	void grantBribe(Player * player, uint32 cost, uint32 fp);
 
 protected:
 	inline bool isHighestRank(Player * player) {
 		return !FactionRankTable::rankExists(player->getFactionRank() + 1);
+	}
+
+	inline bool canOfferBribe(Player * player) {
+		string requiredSkill = "combat_smuggler_underworld_04";
+
+		return player->hasSkillBox(requiredSkill) &&
+			(player->getCashCredits() >= 20000) &&
+			(player->getMaxFactionPoints(factionString) >= player->getFactionPoints(factionString) + 250);
 	}
 
 	inline bool qualifiesForPromotion(Player * player) {
