@@ -58,7 +58,7 @@ public:
 	RebelRecruiterCreatureImplementation(uint64 oid) : RebelRecruiterCreatureServant(oid) {
 		objectCRC = 0xB39C9594;
 		factionCRC = String::hashCode("rebel");
-		enemyFactionCRC = String::hashCode("imperial");
+		enemyFactionCRC = String::hashCode("rebel");
 		factionString = "rebel";
 		speciesName = "rebel_recruiter";
 	}
@@ -79,6 +79,9 @@ public:
 
 		if(qualifiesForPromotion(player))
 			slist->insertOption("conversation/faction_recruiter_rebel", "s_468");
+
+		if(canOfferBribe(player))
+			slist->insertOption("conversation/faction_recruiter_rebel", "s_568");
 
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_538");
 		player->sendMessage(slist);
@@ -157,6 +160,25 @@ public:
 
 	void playerRejectedPromotion(Player * player) {
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_478"));
+	}
+
+	void confirmBribe(Player * player) {
+		player->setLastNpcConvMessStr("confirm_bribe");
+
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_570"));
+
+		StringList * slist = new StringList(player);
+		slist->insertOption("conversation/faction_recruiter_rebel", "s_572");
+
+		if (player->getCashCredits() >= 100000 &&
+		   (player->getMaxFactionPoints(factionString) >= player->getFactionPoints(factionString) + 1250))
+			slist->insertOption("conversation/faction_recruiter_rebel", "s_576");
+
+		player->sendMessage(slist);
+	}
+
+	void playerAcceptedBribe(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_574"));
 	}
 };
 

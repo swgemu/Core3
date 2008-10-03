@@ -78,6 +78,9 @@ public:
 		if (qualifiesForPromotion(player))
 			slist->insertOption("conversation/faction_recruiter_imperial", "s_312");
 
+		if(canOfferBribe(player))
+			slist->insertOption("conversation/faction_recruiter_imperial", "s_398");
+
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_386");
 		player->sendMessage(slist);
 	}
@@ -155,6 +158,25 @@ public:
 
 	void playerRejectedPromotion(Player * player) {
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_322"));
+	}
+
+	void confirmBribe(Player * player) {
+		player->setLastNpcConvMessStr("confirm_bribe");
+
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_400"));
+
+		StringList * slist = new StringList(player);
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_402");
+
+		if (player->getCashCredits() >= 100000 &&
+		   (player->getMaxFactionPoints(factionString) >= player->getFactionPoints(factionString) + 1250))
+			slist->insertOption("conversation/faction_recruiter_imperial", "s_406");
+
+		player->sendMessage(slist);
+	}
+
+	void playerAcceptedBribe(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_408"));
 	}
 };
 

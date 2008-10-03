@@ -4189,6 +4189,33 @@ FactionPointList* Player::getFactionList() {
 		return ((PlayerImplementation*) _impl)->getFactionList();
 }
 
+unsigned int Player::getMaxFactionPoints(string& faction) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 329);
+		method.addAsciiParameter(faction);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getMaxFactionPoints(faction);
+}
+
+void Player::delFactionPoints(Player* player, unsigned int amount) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 330);
+		method.addObjectParameter(player);
+		method.addUnsignedIntParameter(amount);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->delFactionPoints(player, amount);
+}
+
 /*
  *	PlayerAdapter
  */
@@ -5168,6 +5195,12 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 328:
 		resp->insertLong(getFactionList()->_getObjectID());
+		break;
+	case 329:
+		resp->insertInt(getMaxFactionPoints(inv->getAsciiParameter(_param0_getMaxFactionPoints__string_)));
+		break;
+	case 330:
+		delFactionPoints((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -6466,6 +6499,14 @@ void PlayerAdapter::setFactionStatus(int status) {
 
 FactionPointList* PlayerAdapter::getFactionList() {
 	return ((PlayerImplementation*) impl)->getFactionList();
+}
+
+unsigned int PlayerAdapter::getMaxFactionPoints(string& faction) {
+	return ((PlayerImplementation*) impl)->getMaxFactionPoints(faction);
+}
+
+void PlayerAdapter::delFactionPoints(Player* player, unsigned int amount) {
+	return ((PlayerImplementation*) impl)->delFactionPoints(player, amount);
 }
 
 /*

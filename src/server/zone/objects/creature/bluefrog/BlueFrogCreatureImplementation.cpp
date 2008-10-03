@@ -131,14 +131,14 @@ void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 	unicode option3 = unicode("Which items can I get?");
 	unicode option4 = unicode("I want to test wounds.");
 	unicode option5 = unicode("I want to test states.");
-	unicode option6 = unicode("I want to earn some faction points.");
+	//unicode option6 = unicode("I want to earn some faction points.");
 
 	slist->insertOption(option1);
 	//slist->insertOption(option2);
 	slist->insertOption(option3);
 	slist->insertOption(option4);
 	slist->insertOption(option5);
-	slist->insertOption(option6);
+	//slist->insertOption(option6);
 
 	player->setLastNpcConvMessStr("blue_frog_m1");
 	player->sendMessage(slist);
@@ -290,10 +290,10 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			sendStateTerminalMessage(player);
 			sendMessage1(player);
 			break;
-		case 4:
+	/*	case 4:
 			player->setLastNpcConvMessStr("blue_frog_fp");
 			sendFactionPointTerminalMessage(player);
-			break;
+			break; */
 		}
 	} else if (lastMessage.find("blue_frog_fp") != string::npos) {
 		switch (option) {
