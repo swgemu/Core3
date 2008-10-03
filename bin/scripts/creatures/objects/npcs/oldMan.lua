@@ -40,48 +40,48 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-moJediMaster = Creature:new {
-      objectName = "moJediMaster",  -- Lua Object Name
+oldMan = Creature:new {
+      objectName = "oldMan",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "sith",
+      faction = "Imperial",
       gender = "",
 
-      stfName = "Dark Jedi Master",
-      objectCRC = 2005105485, 
-      socialGroup = "sith",
+      stfName = "Emperor Palpatine",
+      objectCRC = 2513398694, 
+      socialGroup = "Imperial",
       named = TRUE, 
 
-      level = 400,
+      level = 700,
       xp = 28549,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 444000,
-      healthMin = 440000,
-      strength = 50000,
-      constitution = 50000,
+      healthMax = 1200000,
+      healthMin = 1000000,
+      strength = 620000,
+      constitution = 620000,
 
-      actionMax = 444000,
-      actionMin = 440000,
-      quickness = 50000,
-      stamina = 50000,
+      actionMax = 1200000,
+      actionMin = 1000000,
+      quickness = 620000,
+      stamina = 620000,
 
-      mindMax = 444000,
-      mindMin = 440000,
-      focus = 50000,
-      willpower = 50000,
+      mindMax = 1200000,
+      mindMin = 620000,
+      focus = 620000,
+      willpower = 620000,
 
       height = 1, -- Size of creature
       armor = 3, -- Just a guess
-      kinetic = 90,
-      energy = 90,
-	  electricity = 90,
-      stun = 90,
- 	  blast = 90,
- 	  heat = 90,
- 	  cold = 90,
- 	  acid = 90,
- 	  lightSaber = 0, 
+      kinetic = 98,
+      energy = 98,
+	  electricity = 98,
+      stun = 98,
+ 	  blast = 98,
+ 	  heat = 98,
+ 	  cold = 98,
+ 	  acid = 98,
+ 	  lightSaber = 98, 
 
       accuracy = 500,
 
@@ -97,30 +97,30 @@ moJediMaster = Creature:new {
       attackCreatureOnSight = "", -- Enter socialGroups 
 
       weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
+      weaponName = "Palpatine Saber", -- Name ex. 'a Vibrolance'
       weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 950,
-      weaponMaxDamage = 1200,
-      weaponAttackSpeed = 1,
+      weaponMinDamage = 1500,
+      weaponMaxDamage = 2200,
+      weaponAttackSpeed = 0.5,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_s9_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "Master Saber", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 950,
-      alternateWeaponMaxDamage = 1200,
-      alternateWeaponAttackSpeed = 1,
-      alternateWeaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      alternateWeaponEquipped = 0,
+      alternateWeaponMinDamage = 0,
+      alternateWeaponMaxDamage = 0,
+      alternateWeaponAttackSpeed = 0,
+      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39,40,49,49,50", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,21,33,34,39,40,49,47,49,50", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,10 +135,10 @@ moJediMaster = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "jediAttack1", "jediAttack2", "jediAttack3", "jediAttack4", "jediAttack5", "jediAttack6", "jediAttack7", "jediAttack8" },
-      respawnTimer = 43420,
+      skills = { "oldManAttack1", "oldManAttack2", "oldManAttack3", "oldManAttack4", "oldManAttack5", "oldManAttack6", "oldManAttack7", "oldManAttack8" },
+      respawnTimer = 43200,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(moJediMaster, 2005105485) --  Add to Global Table
+Creatures:addCreature(oldMan, 2513398694) --  Add to Global Table

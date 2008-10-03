@@ -40,21 +40,21 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-darthAttack1 = {
-	attackname = "darthAttack1",
-	animation = "combo_jedi_2_light",
+palpatineAttack1 = {
+	attackname = "palpatineAttack1",
+	animation = "force_lightning_1_particle_level_1_light",
 	
-	requiredWeaponType = JEDI,
+	requiredWeaponType = RANGED,
 
-	range = 11,
+	range = 64,
 
 	damageRatio = 50,
 
 	speedRatio = 1,
-	coneAngle = 0,
+	coneAngle = 30,
 
 	areaRange = 0,
-	accuracyBonus = 50,
+	accuracyBonus = 100,
 		
 	knockdownChance = 50,
 	postureDownChance = 10,
@@ -71,25 +71,25 @@ darthAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack1)
+AddRandomPoolAttackTargetSkill(palpatineAttack1)
 
 -----------------------------------------------
 
-darthAttack2 = {
-	attackname = "darthAttack2",
+palpatineAttack2 = {
+	attackname = "palpatineAttack2",
 	animation = "force_intimidate_chain",
 	
-	requiredWeaponType = JEDI,
+	requiredWeaponType = RANGED,
 
-	range = 32,
+	range = 64,
 
 	damageRatio = 50,
 
 	speedRatio = 1,
-	coneAngle = 80,
+	coneAngle = 0,
 
-	areaRange = 0,
-	accuracyBonus = 0,
+	areaRange = 32,
+	accuracyBonus = 100,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -97,120 +97,131 @@ darthAttack2 = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 95,
+	intimidateChance = 80,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
 	CbtSpamEvade = "attack_evade",
 	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
+	CbtSpamMiss = "attack_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack2)
+AddRandomPoolAttackTargetSkill(palpatineAttack2)
 
 -----------------------------------------------
-darthAttack3 = {
-attackname = "darthAttack3",
-animation = "force_knockdown_1_arc_particle_level_1",
+palpatineAttack3 = {
+attackname = "palpatineAttack3",
+animation = "force_lightning_1_particle_level_2_light",
 
-	requiredWeaponType = JEDI,
+	requiredWeaponType = RANGED,
 	
-	range = 65,
+	range = 64,
 	damageRatio = 50,
 	speedRatio = 1,
-	areaRange = 0,
-	accuracyBonus = 50,
+	areaRange = 32,
+	accuracyBonus = 0,
 		
-	knockdownChance = 95,
-	postureDownChance = 95,
+	knockdownChance = 0,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 50,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack3)
+AddRandomPoolAttackTargetSkill(palpatineAttack3)
 
 -----------------------------------------------
 
-darthAttack4 = {
-	attackname = "darthAttack4",
-	animation = "combo_jedi_2_light",
-
-	requiredWeaponType = JEDI,
-
-	range = 11,
-	coneAngle = 40,
-	damageRatio = 50,
-	speedRatio = 1.5,
-	accuracyBonus = 0,
+palpatineAttack4 = {
+	attackname = "palpatineAttack4",
+	animation = "force_weaken_1_particle_level_1_medium",
 	
-	knockdownChance = 0,
-	postureDownChance = 0,
-	dizzyChance = 70,
-	blindChance = 65,
-	stunChance = 60,
-	intimidateChance = 0,
-
-	CbtSpamBlock = "saberpolearmdervish2_block",
-	CbtSpamCounter = "saberpolearmdervish2_counter",
-	CbtSpamEvade = "saberpolearmdervish2_evade",
-	CbtSpamHit = "saberpolearmdervish2_hit",
-	CbtSpamMiss = "saberpolearmdervish2_miss"
-}
-
-AddRandomPoolAttackTargetSkill(darthAttack4)
-
------------------------------------------------------------------------
-
-darthAttack5 = {
-	attackname = "darthAttack5",
-	animation = "saberthrow_posture_change",
-
-	requiredWeaponType = JEDI,
+	requiredWeaponType = RANGED,
 
 	range = 64,
-	damageRatio = 50,
-	speedRatio = 1.0,
-	coneAngle = 40,
-	accuracyBonus = 50,
-	
-	knockdownChance = 70,
-	postureDownChance = 70,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
 
-	CbtSpamBlock = "saberthrow3_block",
-	CbtSpamCounter = "saberthrow3_counter",
-	CbtSpamEvade = "saberthrow3_evade",
-	CbtSpamHit = "saberthrow3_hit",
-	CbtSpamMiss = "saberthrow3_miss"
+	damageRatio = 50,
+
+	speedRatio = 1,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 100,
+		
+	knockdownChance = 50,
+	postureDownChance = 10,
+	postureUpChance = 0,
+	dizzyChance = 50,
+	blindChance = 50,
+	stunChance = 50,
+	intimidateChance = 50,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack5)
+AddRandomPoolAttackTargetSkill(palpatineAttack4)
 
 -----------------------------------------------------------------------
 
-darthAttack6 = { 
-	attackname = "darthAttack6",
-	animation = "combo_2d_light",
-
-	requiredWeaponType = JEDI,
+palpatineAttack5 = {
+	attackname = "palpatineAttack5",
+	animation = "force_lightning_1_particle_level_3_medium",
 	
-	range = 11,
+	requiredWeaponType = RANGED,
+
+	range = 64,
+
+	damageRatio = 50,
+
+	speedRatio = 1,
+	coneAngle = 30,
+
+	areaRange = 0,
+	accuracyBonus = 100,
+		
+	knockdownChance = 50,
+	postureDownChance = 10,
+	postureUpChance = 0,
+	dizzyChance = 50,
+	blindChance = 50,
+	stunChance = 50,
+	intimidateChance = 50,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss"
+}
+
+AddRandomPoolAttackTargetSkill(palpatineAttack5)
+
+-----------------------------------------------------------------------
+
+palpatineAttack6 = { 
+	attackname = "palpatineAttack6",
+	animation = "force_weaken_1_particle_level_1_medium",
+
+	requiredWeaponType = RANGED,
+	
+	range = 64,
 	damageRatio = 40,
 	speedRatio = 2.0,
-	areaRange = 0,
-	accuracyBonus = 0,
+	areaRange = 32,
+	accuracyBonus = 50,
+	
 	postureDownChance = 20,
 		
 	healthAttackChance = 90,
@@ -232,73 +243,75 @@ darthAttack6 = {
 	diseaseStrength = 0,
 	diseaseType = 0,
 	
-	CbtSpamBlock = "saberslash2_block",
-	CbtSpamCounter = "saberslash2_counter",
-	CbtSpamEvade = "saberslash2_evade",
-	CbtSpamHit = "saberslash2_hit",
-	CbtSpamMiss = "saberslash2_miss"
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack6)
+AddDotPoolAttackTargetSkill(palpatineAttack6)
 
 -----------------------------------------------------------------------
 
-darthAttack7 = { 
-	attackname = "darthAttack7",
-	animation = "force_choke_1_particle_level_1_medium",
+palpatineAttack7 = { 
+	attackname = "palpatineAttack7",
+	animation = "force_lightning_1_arc_particle_level_5_medium",
 
-	requiredWeaponType = JEDI,
+	requiredWeaponType = RANGED,
 	
 	range = 64,
 	damageRatio = 50,
 	speedRatio = 1.0,
-	coneAngle = 0,
-	accuracyBonus = 50,
+	coneAngle = 80,
+	areaRange = 32,
+	accuracyBonus = 100,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
 	dizzyChance = 95,
-	blindChance = 50,
-	stunChance = 50,
-	intimidateChance = 10,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
 	
-	CbtSpamBlock = "forcechoke_block",
-	CbtSpamCounter = "forcechoke_counter",
-    CbtSpamEvade = "forcechoke_evade",
-    CbtSpamHit = "forcechoke_hit",
-    CbtSpamMiss = "forcechoke_miss"
+	CbtSpamBlock = "forcelightningcone2_block",
+	CbtSpamCounter = "forcelightningcone2_counter",
+    CbtSpamEvade = "forcelightningcone2_evade",
+    CbtSpamHit = "forcelightningcone2_hit",
+    CbtSpamMiss = "forcelightningcone2_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack7)
+AddDotPoolAttackTargetSkill(palpatineAttack7)
 
 -----------------------------------------------------------------------
 
-darthAttack8 = { 
-	attackname = "darthAttack8",	
-	animation = "saberthrow_posture_change",
+palpatineAttack8 = { 
+	attackname = "palpatineAttack8",
+	animation = "force_knockdown_1_arc_particle_level_1",
 
-	requiredWeaponType = JEDI,
-
+	requiredWeaponType = RANGED,
+	
 	range = 64,
 	damageRatio = 50,
 	speedRatio = 1.0,
-	coneAngle = 0,
-	accuracyBonus = 50,
+	coneAngle = 50,
+	areaRange = 32,
+	accuracyBonus = 100,
 	
-	knockdownChance = 70,
+	knockdownChance = 95,
 	postureDownChance = 70,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
-
-	CbtSpamBlock = "saberthrow3_block",
-	CbtSpamCounter = "saberthrow3_counter",
-	CbtSpamEvade = "saberthrow3_evade",
-	CbtSpamHit = "saberthrow3_hit",
-	CbtSpamMiss = "saberthrow3_miss"
+	
+	CbtSpamBlock = "forceknockdown3_block",
+	CbtSpamCounter = "forceknockdown3_counter",
+	CbtSpamEvade = "forceknockdown3_evade",
+	CbtSpamHit = "forceknockdown3_hit",
+	CbtSpamMiss = "forceknockdown3_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack8)
+AddDotPoolAttackTargetSkill(palpatineAttack8)
 
 -----------------------------------------------------------------------

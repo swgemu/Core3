@@ -40,8 +40,8 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-darthAttack1 = {
-	attackname = "darthAttack1",
+lukeAttack1 = {
+	attackname = "lukeAttack1",
 	animation = "combo_jedi_2_light",
 	
 	requiredWeaponType = JEDI,
@@ -71,12 +71,12 @@ darthAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack1)
+AddRandomPoolAttackTargetSkill(lukeAttack1)
 
 -----------------------------------------------
 
-darthAttack2 = {
-	attackname = "darthAttack2",
+lukeAttack2 = {
+	attackname = "lukeAttack2",
 	animation = "force_intimidate_chain",
 	
 	requiredWeaponType = JEDI,
@@ -106,11 +106,11 @@ darthAttack2 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack2)
+AddRandomPoolAttackTargetSkill(lukeAttack2)
 
 -----------------------------------------------
-darthAttack3 = {
-attackname = "darthAttack3",
+lukeAttack3 = {
+attackname = "lukeAttack3",
 animation = "force_knockdown_1_arc_particle_level_1",
 
 	requiredWeaponType = JEDI,
@@ -136,12 +136,12 @@ animation = "force_knockdown_1_arc_particle_level_1",
 	CbtSpamMiss = "melee_miss",
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack3)
+AddRandomPoolAttackTargetSkill(lukeAttack3)
 
 -----------------------------------------------
 
-darthAttack4 = {
-	attackname = "darthAttack4",
+lukeAttack4 = {
+	attackname = "lukeAttack4",
 	animation = "combo_jedi_2_light",
 
 	requiredWeaponType = JEDI,
@@ -166,12 +166,12 @@ darthAttack4 = {
 	CbtSpamMiss = "saberpolearmdervish2_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack4)
+AddRandomPoolAttackTargetSkill(lukeAttack4)
 
 -----------------------------------------------------------------------
 
-darthAttack5 = {
-	attackname = "darthAttack5",
+lukeAttack5 = {
+	attackname = "lukeAttack5",
 	animation = "saberthrow_posture_change",
 
 	requiredWeaponType = JEDI,
@@ -196,12 +196,12 @@ darthAttack5 = {
 	CbtSpamMiss = "saberthrow3_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack5)
+AddRandomPoolAttackTargetSkill(lukeAttack5)
 
 -----------------------------------------------------------------------
 
-darthAttack6 = { 
-	attackname = "darthAttack6",
+lukeAttack6 = { 
+	attackname = "lukeAttack6",
 	animation = "combo_2d_light",
 
 	requiredWeaponType = JEDI,
@@ -239,12 +239,12 @@ darthAttack6 = {
 	CbtSpamMiss = "saberslash2_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack6)
+AddDotPoolAttackTargetSkill(lukeAttack6)
 
 -----------------------------------------------------------------------
 
-darthAttack7 = { 
-	attackname = "darthAttack7",
+lukeAttack7 = { 
+	attackname = "lukeAttack7",
 	animation = "force_choke_1_particle_level_1_medium",
 
 	requiredWeaponType = JEDI,
@@ -269,12 +269,12 @@ darthAttack7 = {
     CbtSpamMiss = "forcechoke_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack7)
+AddDotPoolAttackTargetSkill(lukeAttack7)
 
 -----------------------------------------------------------------------
 
-darthAttack8 = { 
-	attackname = "darthAttack8",	
+lukeAttack8 = { 
+	attackname = "lukeAttack8",	
 	animation = "saberthrow_posture_change",
 
 	requiredWeaponType = JEDI,
@@ -299,6 +299,6 @@ darthAttack8 = {
 	CbtSpamMiss = "saberthrow3_miss"
 }
 
-AddDotPoolAttackTargetSkill(darthAttack8)
+AddDotPoolAttackTargetSkill(lukeAttack8)
 
 -----------------------------------------------------------------------
