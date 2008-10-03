@@ -276,6 +276,10 @@ void GameCommandHandler::init() {
 			"Let you change a players faction. Will be applied IMMEDIATLY!",
 			"Usage: @factionSet overt | covert | rebel | imperial | neutral",
 			&factionSet);
+	gmCommands->addCommand("getCredits", PRIVILEGED,
+			"Gives you cash credits",
+			"Usage: @getCredits [amount]",
+			&getCredits);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -2175,4 +2179,15 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 			targetPlayer->unlock();
 	}
 
+}
+
+void GameCommandHandler::getCredits(StringTokenizer tokenizer, Player * player) {
+	uint32 credits;
+
+	if (tokenizer.hasMoreTokens())
+		credits = tokenizer.getIntToken();
+	else
+		credits = 100000;
+
+	player->addCashCredits(credits);
 }

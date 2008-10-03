@@ -183,6 +183,7 @@ private:
 	static void guildAdmin(StringTokenizer tokenizer, Player * player);
 	static void endGuildAdmin(StringTokenizer tokenizer, Player * player);
 	static void factionSet(StringTokenizer tokenizer, Player * player);
+	static void getCredits(StringTokenizer tokenizer, Player * player);
 
 	void init();
 
