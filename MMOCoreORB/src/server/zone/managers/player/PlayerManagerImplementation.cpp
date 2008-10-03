@@ -1018,6 +1018,9 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 	}
 
 	ItemManager* itemManager = server->getItemManager();
+	
+	 if (item->isInstrument() && sender->isPlayingMusic())
+        sender->stopPlayingMusic();
 
 	item->setEquipped(false);
 	sender->removeInventoryItem(item->getObjectID());

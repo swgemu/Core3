@@ -2574,7 +2574,10 @@ void CreatureObjectImplementation::equipItem(TangibleObject* item) {
 
 void CreatureObjectImplementation::unequipItem(TangibleObject* item) {
 	if (!item->isEquipped())
-		return;
+		return;		
+		
+     if (item->isInstrument() && isPlayingMusic())
+        stopPlayingMusic();
 
 	item->setEquipped(false);
 	item->setContainer(inventory, 0xFFFFFFFF);
@@ -3320,6 +3323,8 @@ void CreatureObjectImplementation::startPlayingMusic(const string& modifier, boo
 	}
 }
 void CreatureObjectImplementation::stopDancing() {
+	if (!isDancing())
+        return;
 	sendSystemMessage("performance", "dance_stop_self");
 
 	info("stopped dancing");
@@ -3353,6 +3358,8 @@ void CreatureObjectImplementation::stopDancing() {
 }
 
 void CreatureObjectImplementation::stopPlayingMusic() {
+    if (!isPlayingMusic())
+        return;
 	sendSystemMessage("performance", "music_stop_self");
 
 	info("stopped playing music");
