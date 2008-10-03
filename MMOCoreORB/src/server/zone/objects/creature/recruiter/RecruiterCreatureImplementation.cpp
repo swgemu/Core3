@@ -74,9 +74,11 @@ void RecruiterCreatureImplementation::sendConversationStartTo(SceneObject* obj) 
 	Player* player = (Player*)obj;
 
 	if (player->getFaction() == enemyFactionCRC) {
+		updateTarget(player);
 		greetEnemy();
 		return;
 	} else if (player->getFactionPoints(factionString) < -200) {
+		updateTarget(player);
 		greetHated();
 		return;
 	}

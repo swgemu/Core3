@@ -83,8 +83,8 @@ Colonel (Cost:6,000) 120,000 (Delegate Costs 118 to send 100)
 
 static const string rankNames[16] = { "", "private",
 		"lance_corporal", "corporal", "staff_corporal", "sergeant",
-		"staff_sergeant", "master_sergeant", "warrent_officer_2",
-		"warrent_officer_1", "second_lieutenant", "lieutenant", "captain",
+		"staff_sergeant", "master_sergeant", "warrant_officer_2",
+		"warrant_officer_1", "second_lieutenant", "lieutenant", "captain",
 		"major", "lieutenant_colonel", "colonel" };
 
 static const uint16 points[16] = { 0, 10, 400, 800, 1200, 1600,
