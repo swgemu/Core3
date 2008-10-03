@@ -43,12 +43,12 @@
 luke = Creature:new {
       objectName = "luke",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "Rebel",
       gender = "",
 
       stfName = "Luke Skywalker",
-      objectCRC = 2517357014, 
-      socialGroup = "Imperial",
+      objectCRC = 196428947, 
+      socialGroup = "Rebel",
       named = TRUE, 
 
       level = 500,
@@ -96,13 +96,13 @@ luke = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Luke Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_one_handed_s10", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 1200,
-      weaponMaxDamage = 1500,
+      weaponMinDamage = 550,
+      weaponMaxDamage = 850,
       weaponAttackSpeed = 1.0,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -120,7 +120,7 @@ luke = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39,40,49,47,49,50", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for loott belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -141,4 +141,4 @@ luke = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(luke, 2517357014) --  Add to Global Table
+Creatures:addCreature(luke, 196428947) --  Add to Global Table

@@ -3878,6 +3878,10 @@ void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
 }
 
 void PlayerImplementation::setEntertainerEvent() {
+	if (entertainerEvent != NULL) {
+		server->removeEvent(entertainerEvent);
+	}
+
 	entertainerEvent = new EntertainerEvent(_this);
 
 	SkillManager* skillManager = server->getSkillManager();

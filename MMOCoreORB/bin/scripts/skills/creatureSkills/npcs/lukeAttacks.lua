@@ -115,7 +115,7 @@ animation = "force_knockdown_1_arc_particle_level_1",
 
 	requiredWeaponType = JEDI,
 	
-	range = 65,
+	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
 	areaRange = 0,

@@ -120,7 +120,7 @@ tuskenWitchDoctor = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,15,23,27,33,34,39,40", -- Group it belongs to for lootr loot
+      lootGroup = "0,11,15,23,27,33,39,40", -- Group it belongs to for lootr lootr lootr loot
 
       tame = 0,  -- Likely hood to be tamed
 

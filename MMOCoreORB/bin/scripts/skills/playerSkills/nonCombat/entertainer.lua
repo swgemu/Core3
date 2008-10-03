@@ -210,6 +210,16 @@ startdanceLyricalSkill = {
 }
 AddEntertainSkill(startdanceLyricalSkill)
 
+startdanceBreakdanceSkill = {
+	skillname = "startdance+breakdance",
+}
+AddEntertainSkill(startdanceBreakdanceSkill)
+
+startdanceBreakdance2Skill = {
+	skillname = "startdance+breakdance2",
+}
+AddEntertainSkill(startdanceBreakdance2Skill)
+
 startdanceExoticSkill = {
 	skillname = "startdance+exotic",
 }
@@ -243,7 +253,17 @@ AddEntertainSkill(startdanceTheatricalSkill)
 startdanceTheatrical2Skill = {
 	skillname = "startdance+theatrical2"
 }
-AddEntertainSkill(startdanceTheatrical2Skill)	
+AddEntertainSkill(startdanceTheatrical2Skill)
+
+startdanceTumbleSkill = {
+    skillname = "startdance+tumble",
+}
+AddEntertainSkill(startdanceTumbleSkill)
+
+startdanceTumble2Skill = {
+    skillname = "startdance+tumble2",
+}
+AddEntertainSkill(startdanceTumble2Skill)
 
 -- Music Songs
 
