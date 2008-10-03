@@ -42,10 +42,6 @@
 
 --global clusters
 
--- Starport Guards
-spawnCreature(stormTrooper, 5, -4852.37, 4175.86)
-spawnCreature(stormTrooper, 5, -4848.24, 4172.5)
-
 -- Forest Creatures
 -- spawnCreatures(nightspider, 5, -5052.52, 3905.86, 200, 15)
 -- spawnCreatures(diseasedNuna, 5, -5052.52, 3905.86, 200, 20)
