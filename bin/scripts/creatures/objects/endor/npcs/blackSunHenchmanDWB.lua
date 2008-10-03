@@ -136,7 +136,7 @@ blackSunHenchmanDWB = Creature:new {
       meatMax = 0,
 
       skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51" },
-      respawnTimer = 600,
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

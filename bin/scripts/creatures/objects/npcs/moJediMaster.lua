@@ -97,7 +97,7 @@ moJediMaster = Creature:new {
       attackCreatureOnSight = "", -- Enter socialGroups 
 
       weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
+      weaponName = "Master Saber", -- Name ex. 'a Vibrolance'
       weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
@@ -136,7 +136,7 @@ moJediMaster = Creature:new {
       meatMax = 0,
 
       skills = { "jediAttack1", "jediAttack2", "jediAttack3", "jediAttack4", "jediAttack5", "jediAttack6", "jediAttack7", "jediAttack8" },
-      respawnTimer = 43420,
+      respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

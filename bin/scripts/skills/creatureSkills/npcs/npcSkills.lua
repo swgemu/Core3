@@ -48,7 +48,7 @@ RunSkillsFile("creatureSkills/npcs/jediAttacks.lua")
 
 RunSkillsFile("creatureSkills/npcs/oldManAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/lukeAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/honAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/hanAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/chewbaccaAttacks.lua")
 
 RunSkillsFile("creatureSkills/npcs/rebelAttacks.lua")

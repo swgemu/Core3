@@ -72,3 +72,6 @@
   RunCreatureFile("objects/tatooine/creatures/malignantSquill.lua")
   RunCreatureFile("objects/tatooine/creatures/mountainSquillGuardian.lua")
   RunCreatureFile("objects/tatooine/creatures/femaleMountainSquill.lua")
+-- Sennex Cave
+  RunCreatureFile("objects/tatooine/creatures/caveBeetle.lua")
+  RunCreatureFile("objects/tatooine/creatures/duneBeetle.lua")

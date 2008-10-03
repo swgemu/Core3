@@ -140,7 +140,7 @@ superBattleDroidDWB = Creature:new {
 
       skills = { "dwbSBDAttack40", "dwbSBDAttack41", "dwbSBDAttack42", "dwbSBDAttack43", "dwbSBDAttack44", "dwbSBDAttack45", "dwbSBDAttack46", "dwbSBDAttack47", "dwbSBDAttack48", "dwbSBDAttack49", "dwbSBDAttack50", "dwbSBDAttack51"  },
 
-      respawnTimer = 600,
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

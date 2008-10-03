@@ -65,6 +65,5 @@
  RunCreatureFile("objects/tatooine/npcs/sennexSlaver.lua")
  RunCreatureFile("objects/tatooine/npcs/sennexGuard.lua")
  RunCreatureFile("objects/tatooine/npcs/sennexWarder.lua")
- RunCreatureFile("objects/tatooine/creatures/caveBeetle.lua")
- RunCreatureFile("objects/tatooine/creatures/duneBeetle.lua")
+ 
 
