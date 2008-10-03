@@ -43,12 +43,12 @@
 oldMan = Creature:new {
       objectName = "oldMan",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "Rebel",
       gender = "",
 
       stfName = "Obi-Wan Kenobi",
       objectCRC = 2513398694, 
-      socialGroup = "Imperial",
+      socialGroup = "Rebel",
       named = TRUE, 
 
       level = 700,

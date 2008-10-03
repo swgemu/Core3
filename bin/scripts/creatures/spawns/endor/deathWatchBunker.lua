@@ -115,8 +115,6 @@ spawnCreatureInCell(battleDroidDWB, 3, 40.0776, -64, -155.552, 5996347)
 spawnCreatureInCell(battleDroidDWB, 3, 39.8998, -64, -147.522, 5996347)
 spawnCreatureInCell(blackSunThugDWB, 3, -82.716, -20, -25.6264, 5996322)
 
-spawnCreatures(twilekSlave, 3, 0, 0, 150, 120)
-
 spawnCreatureInCell(deathWatchWraithDWB, 3, -2.18177, -60, -172.48, 5996352)
 spawnCreatureInCell(minerDWB, 3, -22.3651, -60.0316, -187.469, 5996352)
 spawnCreatureInCell(minerDWB, 3, -28.9105, -59.865, -176.715, 5996352)
