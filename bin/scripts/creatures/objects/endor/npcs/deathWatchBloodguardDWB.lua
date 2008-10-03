@@ -90,7 +90,7 @@ deathWatchBloodguardDWB = Creature:new {
       pack = 0,
       herd = 0,
       stalker = 0,
-      killer = 1,
+      killer = 0,
       aggressive = 1,
       invincible = 0,
 
