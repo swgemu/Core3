@@ -141,6 +141,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->setBankCredits(creditsBank);
 
 	string bio = player->getBiography().c_str();
+	MySqlDatabase::escapeString(bio);
 	string info = "";
 
 	string appearance;

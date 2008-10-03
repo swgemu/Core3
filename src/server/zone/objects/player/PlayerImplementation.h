@@ -1573,25 +1573,7 @@ public:
 		factionStatus = status;
 	}
 
-	inline void delFactionPoints(Player * player, uint32 amount) {
-		if (player == NULL)
-			return;
-
-		uint32 charge = (uint32) ceil(amount * FactionRankTable::getDelegateRatio(getFactionRank()));
-		string faction;
-		if (getFaction() == String::hashCode("imperial"))
-			faction = "imperial";
-		else if (getFaction() == String::hashCode("rebel"))
-			faction = "rebel";
-		else
-			return;
-
-		if (getFactionPoints(faction) < charge + 200)
-			return;
-
-		subtractFactionPoints(faction, charge);
-		player->addFactionPoints(faction, amount);
-	}
+	void delFactionPoints(Player * player, uint32 amount);
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

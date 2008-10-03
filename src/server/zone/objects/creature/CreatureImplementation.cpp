@@ -99,6 +99,13 @@ CreatureImplementation::~CreatureImplementation() {
 	}
 
 	playerCanHarvest.removeAll();
+
+	while (damageMap.size() > 0) {
+		CreatureObject* object = damageMap.elementAt(0)->getKey();
+		damageMap.drop(object);
+
+		object->release();
+	}
 }
 
 void CreatureImplementation::init() {
@@ -359,6 +366,13 @@ void CreatureImplementation::unload() {
 	resetPatrolPoints(false);
 
 	playerCanHarvest.removeAll();
+
+	while (damageMap.size() > 0) {
+		CreatureObject* object = damageMap.elementAt(0)->getKey();
+		damageMap.drop(object);
+
+		object->release();
+	}
 
 	if (zone != NULL && isInQuadTree())
 		removeFromZone(true);
