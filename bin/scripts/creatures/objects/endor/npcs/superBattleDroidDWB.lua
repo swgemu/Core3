@@ -93,7 +93,7 @@ superBattleDroidDWB = Creature:new {
       pack = 0,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 1,
       invincible = 0,
 
@@ -123,7 +123,7 @@ superBattleDroidDWB = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

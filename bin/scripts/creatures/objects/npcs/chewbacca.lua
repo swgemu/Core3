@@ -51,7 +51,7 @@ chewbacca = Creature:new {
       socialGroup = "Rebel",
       named = TRUE, 
 
-      level = 350,
+      level = 250,
       xp = 28549,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
@@ -101,11 +101,11 @@ chewbacca = Creature:new {
       weaponTemp = "rifle_bowcaster", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 525,
-      weaponMaxDamage = 850,
+      weaponMinDamage = 350,
+      weaponMaxDamage = 550,
       weaponAttackSpeed = 1.0,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ chewbacca = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39,40,49,47,49,50", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for loott belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

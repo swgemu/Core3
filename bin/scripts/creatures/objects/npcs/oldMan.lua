@@ -96,16 +96,16 @@ oldMan = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Palpatine Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Old Man Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_one_handed_s10_gen4", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 1500,
-      weaponMaxDamage = 2200,
+      weaponMinDamage = 850,
+      weaponMaxDamage = 1024,
       weaponAttackSpeed = 0.5,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ oldMan = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39,40,49,47,49,50", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for loott belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

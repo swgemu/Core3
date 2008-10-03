@@ -120,7 +120,7 @@ singingMtnClanSlave = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,19,21,30,31,33,34,39,40", -- Group it belongs to for loot
+      lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot for loot
 
       tame = 0,  -- Likely hood to be tamed
 
