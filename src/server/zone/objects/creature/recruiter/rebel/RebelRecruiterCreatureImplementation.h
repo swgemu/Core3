@@ -58,7 +58,7 @@ public:
 	RebelRecruiterCreatureImplementation(uint64 oid) : RebelRecruiterCreatureServant(oid) {
 		objectCRC = 0xB39C9594;
 		factionCRC = String::hashCode("rebel");
-		enemyFactionCRC = String::hashCode("rebel");
+		enemyFactionCRC = String::hashCode("imperial");
 		factionString = "rebel";
 		speciesName = "rebel_recruiter";
 	}

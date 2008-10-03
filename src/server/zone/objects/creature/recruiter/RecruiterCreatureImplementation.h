@@ -59,7 +59,7 @@ class RecruiterCreatureImplementation : public RecruiterCreatureServant {
 public:
 	static const uint8 IMPERIAL = 1;
 	static const uint8 REBEL = 2;
-	static const uint8 MINFACTIONSTANDING = 200;
+	static const uint8 MINFACTIONSTANDING = 0; //TEMPORARY!!!
 
 protected:
 	uint64 factionCRC;
