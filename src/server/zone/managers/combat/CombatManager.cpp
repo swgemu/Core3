@@ -208,7 +208,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 
 			Player* playerTarget = (Player*) targetObject;
 
-			if (targetObject->isPlayer() && (playerTarget->isIncapacitated() || playerTarget->isDead()))
+			if (targetObject->isPlayer() && (playerTarget->isIncapacitated() || playerTarget->isDead() || playerTarget->isImmune()))
 				continue;
 
 
