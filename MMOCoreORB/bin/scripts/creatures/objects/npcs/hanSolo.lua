@@ -134,7 +134,7 @@ hanSolo = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "honAttack1" },
+      skills = { "hanAttack1" },
       respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object

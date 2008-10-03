@@ -136,7 +136,7 @@ deathWatchBloodguardDWB = Creature:new {
       meatMax = 0,
 
       skills = { "dwbMeleeAttack40", "dwbMeleeAttack41", "dwbMeleeAttack42", "dwbMeleeAttack43", "dwbMeleeAttack44", "dwbMeleeAttack45", "dwbMeleeAttack46", "dwbMeleeAttack47", "dwbMeleeAttack48", "dwbMeleeAttack49", "dwbMeleeAttack50", "dwbMeleeAttack51"  },
-      respawnTimer = 600,
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
