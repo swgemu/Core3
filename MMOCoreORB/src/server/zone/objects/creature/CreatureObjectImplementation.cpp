@@ -4557,7 +4557,9 @@ CreatureObject* CreatureObjectImplementation::getLootOwner() {
 }
 
 void CreatureObjectImplementation::removeFromDamageMap(CreatureObject* target) {
-	damageMap.drop(target);
+	if (damageMap.drop(target)) {
+		target->release();
+	}
 }
 
 void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 damage) {
