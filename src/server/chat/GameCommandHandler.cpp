@@ -240,7 +240,7 @@ void GameCommandHandler::init() {
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
 			&giveItemTemp);
-	gmCommands->addCommand("clientEffect", PRIVILEGED,
+	gmCommands->addCommand("clientEffect", CSREVENTS,
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
@@ -248,7 +248,7 @@ void GameCommandHandler::init() {
 			"Revives a player.",
 			"Usage: @revive <player>",
 			&revive);
-	gmCommands->addCommand("immune", PRIVILEGED | LEADQA,
+	gmCommands->addCommand("immune", CSREVENTS | LEADQA,
 			"Toggles immunity.",
 			"Usage: @immune",
 			&immune);
@@ -256,7 +256,7 @@ void GameCommandHandler::init() {
 			"Hot Loads schematic tables.",
 			"Usage: @reloadSchematics",
 			&reloadSchematics);
-	gmCommands->addCommand("spawn", DEVELOPER,
+	gmCommands->addCommand("spawn", CSREVENTS,
 			"Spawn a creature.",
 			"Usage: @spawn <creaturetype> <cellid> <x> <y> <bitmask> <baby>",
 			&spawn);
@@ -272,7 +272,7 @@ void GameCommandHandler::init() {
 			"Let you leave the guild you temporarily joined for support actions.",
 			"Usage: @endGuildAdmin",
 			&endGuildAdmin);
-	gmCommands->addCommand("factionSet", PRIVILEGED,
+	gmCommands->addCommand("factionSet", CSREVENTS,
 			"Let you change a players faction. Will be applied IMMEDIATLY!",
 			"Usage: @factionSet overt | covert | rebel | imperial | neutral",
 			&factionSet);
