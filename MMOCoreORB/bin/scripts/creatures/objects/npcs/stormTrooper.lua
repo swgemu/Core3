@@ -43,7 +43,7 @@
 stormTrooper = Creature:new {
       objectName = "stormTrooper",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "imperial",
       gender = "",
 
       name = "stormTrooper",
@@ -54,7 +54,7 @@ stormTrooper = Creature:new {
       level = 80,
       xp = 10000,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 8800,
       healthMin = 7200,

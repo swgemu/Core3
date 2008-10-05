@@ -459,18 +459,19 @@ void CreatureObjectImplementation::sendItemsTo(Player* player) {
 		hairObj->sendTo(player);
 }
 
+//NOTE: This function is about to get completely revamped
 void CreatureObjectImplementation::sendFactionStatusTo(Player* player, bool doTwoWay) {
-	if (pvpStatusBitmask & OVERT_FLAG) {
+	if (this->isRebel() || this->isImperial()) {
 		uint32 pvpBitmask = pvpStatusBitmask;
 		uint32 playerPvp = player->getPvpStatusBitmask();
 
 		if (player->isOvert() && (player->getFaction() != faction)) {
 			if (doTwoWay && isPlayer()) {
-				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp + ATTACKABLE_FLAG + AGGRESSIVE_FLAG);
+				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp + ATTACKABLE_FLAG + AGGRESSIVE_FLAG + ENEMY_FLAG);
 				((PlayerImplementation*) this)->sendMessage(pvpstat);
 			}
 
-			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpBitmask + ATTACKABLE_FLAG + AGGRESSIVE_FLAG);
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpBitmask + ATTACKABLE_FLAG + AGGRESSIVE_FLAG + ENEMY_FLAG);
 			player->sendMessage(pvpstat2);
 		} else {
 			BaseMessage* pvpstat3 = new UpdatePVPStatusMessage(_this, pvpBitmask);
@@ -2574,8 +2575,8 @@ void CreatureObjectImplementation::equipItem(TangibleObject* item) {
 
 void CreatureObjectImplementation::unequipItem(TangibleObject* item) {
 	if (!item->isEquipped())
-		return;		
-		
+		return;
+
      if (item->isInstrument() && isPlayingMusic())
         stopPlayingMusic();
 
@@ -4713,4 +4714,15 @@ int CreatureObjectImplementation::getMedicalFacilityRating() {
 		return 100;
 
 	return 65;
+}
+
+//This is a temp function.  I'm going to add a faction table in creature manager soon
+bool CreatureObjectImplementation::hatesFaction(uint faction) {
+	if (this->getFaction() == String::hashCode("imperial") && faction == String::hashCode("rebel"))
+		return true;
+
+	if (this->getFaction() == String::hashCode("rebel") && faction == String::hashCode("imperial"))
+		return true;
+
+	return false;
 }

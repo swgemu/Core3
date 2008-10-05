@@ -990,49 +990,73 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			return;
 		}
 
-		Player* player;
 
-		switch (scno->getObjectType()) {
-		case SceneObjectImplementation::PLAYER:
-			player = (Player*) scno;
 
-			if (isAgressive() && !isDead() && !player->isIncapacitated()
-					&& !player->isDead() && !player->isImmune()) {
 
-				if ((parent == NULL && isInRange(player, 24)) || ((parent
-						!= NULL) && (getParentID() == player->getParentID())
-						&& isInRange(player, 10))) {
 
-					info("aggroing " + player->getFirstName());
+		if (this->shouldAgro(scno)) {
 
-					aggroedCreature = player;
+			if ((parent == NULL && isInRange(scno, 24)) || ((parent != NULL)
+					&& (getParentID() == scno->getParentID()) && isInRange(
+					scno, 10))) {
 
-					if (isQueued())
-						creatureManager->dequeueActivity(this);
+				info("aggroing " + scno->_getName());
 
-					creatureManager->queueActivity(this, 10);
+				aggroedCreature = (CreatureObject *) scno;
 
-				}
-			} else if ((parent == NULL) && !doRandomMovement
-					&& patrolPoints.isEmpty() && System::random(200) < 1) {
-				doRandomMovement = true;
+				if (isQueued())
+					creatureManager->dequeueActivity(this);
 
-				positionZ = obj->getPositionZ();
+				creatureManager->queueActivity(this, 10);
 
-				//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
-
-				if (!isQueued())
-					creatureManager->queueActivity(this, System::random(30000)
-							+ 1000);
 			}
+		} else if ((parent == NULL) && !doRandomMovement
+				&& patrolPoints.isEmpty() && System::random(200) < 1) {
+			doRandomMovement = true;
 
-			break;
+			positionZ = obj->getPositionZ();
+
+			//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
+
+			if (!isQueued())
+				creatureManager->queueActivity(this, System::random(30000)
+						+ 1000);
 		}
+
+
+
 
 	} catch (...) {
 		error(
 				"Unreported exception caught in void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj)\n");
 	}
+}
+
+bool CreatureImplementation::shouldAgro(SceneObject * target) {
+	if (this->isDead() || this->isIncapacitated())
+		return false;
+
+	if (!target->isPlayer() && !target->isNonPlayerCreature())
+		return false;
+
+	CreatureObject * creature = (CreatureObject *) target;
+
+	if (creature->isDead() || creature->isIncapacitated())
+		return false;
+
+	if (target->isPlayer()) {
+		Player * player = (Player *) target;
+		if (player->isImmune())
+			return false;
+
+		if (this->isAgressive())
+			return true;
+	}
+
+	if (this->hatesFaction(creature->getFaction()))
+		return true;
+
+	return false;
 }
 
 bool CreatureImplementation::activate() {
@@ -1418,7 +1442,7 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 bool CreatureImplementation::attack(CreatureObject* target) {
 	info("attacking target");
 
-	if (target == NULL || target == _this || !target->isPlayer())
+	if (target == NULL || target == _this || (!target->isPlayer() && !target->isNonPlayerCreature()))
 		return false;
 
 	if (target->isIncapacitated() || target->isDead()) {

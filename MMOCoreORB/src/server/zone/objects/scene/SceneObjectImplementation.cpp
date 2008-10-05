@@ -274,6 +274,14 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 		} else {
 			zone->insert(this);
 			zone->inRange(this, 128);
+
+			for (int i = 0; i < inRangeObjectCount(); ++i) {
+				QuadTreeEntry* obj = getInRangeObject(i);
+				SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
+
+				obj->notifyPositionUpdate(this);
+				this->notifyPositionUpdate(obj);
+			}
 		}
 
 		zone->unlock();

@@ -3328,6 +3328,9 @@ void PlayerImplementation::setOvert() {
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 				sendFactionStatusTo(player, true);
+			} else if (object->isNonPlayerCreature()) {
+				CreatureObjectImplementation * npc = (CreatureObjectImplementation *) object->_getImplementation();
+				npc->sendFactionStatusTo(_this);
 			}
 		}
 
@@ -3355,6 +3358,9 @@ void PlayerImplementation::setCovert() {
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 				sendFactionStatusTo(player, true);
+			} else if (object->isNonPlayerCreature()) {
+				CreatureObjectImplementation * npc = (CreatureObjectImplementation *) object->_getImplementation();
+				npc->sendFactionStatusTo(_this);
 			}
 		}
 

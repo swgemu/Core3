@@ -628,7 +628,10 @@ public:
 	}
 
 	inline bool isAttackableBy(CreatureObject* attacker) {
-		return !(creatureBitmask & 0x100);
+		if (attacker->hatesFaction(this->getFaction()))
+			return true;
+
+		return (pvpStatusBitmask & ATTACKABLE_FLAG);
 	}
 
 	bool hasAttackDelay() {
@@ -1043,6 +1046,8 @@ public:
 		}
 		return false;
 	}
+
+	bool hatesFaction(uint32 faction);
 
 	bool hasSkillModBonus(const string& name) {
 		return creatureSkillModBonus.containsKey(name);

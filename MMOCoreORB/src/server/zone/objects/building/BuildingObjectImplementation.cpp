@@ -212,7 +212,7 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 
 		//if (objImpl->isPlayer() || objImpl->isNonPlayerCreature()) {
 			creoImpl->addInRangeObject(obj, false);
-			obj->addInRangeObject(creoImpl, false);
+			obj->addInRangeObject(creoImpl, true);
 		//}
 	}
 }

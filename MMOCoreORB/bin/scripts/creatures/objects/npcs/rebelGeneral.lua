@@ -43,7 +43,7 @@
 rebelGeneral = Creature:new {
       objectName = "rebelGeneral",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Rebel",
+      faction = "rebel",
       gender = "",
 
       name = "Rebel General",
@@ -54,7 +54,7 @@ rebelGeneral = Creature:new {
       level = 28,
       xp = 2914,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 10000,
       healthMin = 8200,

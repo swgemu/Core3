@@ -42,7 +42,7 @@
 atSt = Creature:new {
 	objectName = "atSt", -- name of the lua Object
 	creatureType = "NPC",
-    faction = "Imperial",
+    faction = "imperial",
     gender = "",
 	
 	stfName = "an AT-ST",
@@ -53,7 +53,7 @@ atSt = Creature:new {
 	level = 100,	
 	xp = 10000,
 	
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = 0,
 	
 	healthMax = 55000,
     healthMin = 50000,

@@ -43,7 +43,7 @@
 imperialSurfaceMarshal = Creature:new {
       objectName = "imperialSurfaceMarshal",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "imperial",
       gender = "",
 
       name = "Imperial surface Marshall",
@@ -54,7 +54,7 @@ imperialSurfaceMarshal = Creature:new {
       level = 30,
       xp = 3097,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 10200,
       healthMin = 8400,

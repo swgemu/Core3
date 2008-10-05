@@ -43,7 +43,7 @@
 oldMan = Creature:new {
       objectName = "oldMan",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Rebel",
+      faction = "rebel",
       gender = "",
 
       stfName = "Obi-Wan Kenobi",
@@ -54,7 +54,7 @@ oldMan = Creature:new {
       level = 700,
       xp = 28549,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 1200000,
       healthMin = 1000000,

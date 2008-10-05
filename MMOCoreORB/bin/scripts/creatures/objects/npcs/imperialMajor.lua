@@ -43,7 +43,7 @@
 imperialMajor = Creature:new {
       objectName = "imperialMajor",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "imperial",
       gender = "",
 
       name = "Imperial Major",
@@ -54,7 +54,7 @@ imperialMajor = Creature:new {
       level = 21,
       xp = 2006,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 6600,
       healthMin = 5400,

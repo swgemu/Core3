@@ -610,6 +610,10 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 			stfname += " baby";
 		string name = result.getStringField("name");
 
+		string faction = result.getStringField("faction");
+
+		creature->setFaction(String::hashCode(faction));
+
 		if (!stfname.empty())
 			creature->setCharacterName(stfname);
 		else if (objcrc == 0xBA7F23CD)
@@ -1030,10 +1034,11 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 
 	//creature->setTerrainName(Terrain::getTerrainName(zone->get));
 
+	string faction = creatureConfig.getStringField("faction");
+	creature->setFaction(String::hashCode(faction));
 
 	try {
-		string dummy = creatureConfig.getStringField("faction");
-		dummy = creatureConfig.getStringField("gender");
+		string dummy = creatureConfig.getStringField("gender");
 		dummy = creatureConfig.getStringField("boneType");
 		dummy = creatureConfig.getStringField("hideType");
 		dummy = creatureConfig.getStringField("meatType");

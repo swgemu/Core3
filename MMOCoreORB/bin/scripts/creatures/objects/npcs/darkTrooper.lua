@@ -43,7 +43,7 @@
 darkTrooper = Creature:new {
       objectName = "darkTrooper",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "imperial",
       gender = "",
 
       name = "Crackdown Dark Trooper",
@@ -54,7 +54,7 @@ darkTrooper = Creature:new {
       level = 95,
       xp = 45,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 10500,
       healthMin = 8600,
