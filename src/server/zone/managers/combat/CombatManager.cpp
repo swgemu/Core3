@@ -478,19 +478,11 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 				0x306887EB
 	};
 
-	if (weapon == NULL) {
-		int choice = System::random(8);
-		return defaultAttacks[choice];
-	}
-
-	//TODO: Have a selection of different default attacks randomly chosen
-	switch (weapon->getCategory()) {
-		case (WeaponImplementation::MELEE):
-		case (WeaponImplementation::JEDI):
+	if (weapon->getCategory() == WeaponImplementation::RANGED)
+		return 0x506E9D4C;
+	else {
 			int choice = System::random(8);
 			return defaultAttacks[choice];
-		case (WeaponImplementation::RANGED):
-			return 0x506E9D4C;
 	}
 
 	return 0;

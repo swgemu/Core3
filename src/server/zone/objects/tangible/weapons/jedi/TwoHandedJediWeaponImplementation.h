@@ -94,7 +94,7 @@ public:
 
 		setForceCost(6);
 	}
-
+/*
 	void TwoHandedJediWeaponImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 		if (player->getInventoryItem(getObjectID()) != NULL) {
 			omr->addRadialItem(0, 65, 3, "Change Blade Color");
@@ -104,7 +104,7 @@ public:
 			player->sendMessage(omr);
 		}
 	}
-
+*/
 };
 
 
