@@ -43,7 +43,7 @@
 palpatine = Creature:new {
       objectName = "palpatine",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "imperial",
       gender = "",
 
       stfName = "Emperor Palpatine",
@@ -54,7 +54,7 @@ palpatine = Creature:new {
       level = 700,
       xp = 28549,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 1200000,
       healthMin = 1000000,

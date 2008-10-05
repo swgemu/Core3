@@ -189,6 +189,8 @@ public:
 
 	void queueRespawn();
 
+	bool shouldAgro(SceneObject * target);
+
 	void doIncapAnimation();
 
 	CreatureObject* getAggroedCreature() {

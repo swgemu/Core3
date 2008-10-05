@@ -42,7 +42,7 @@
 hanSolo = Creature:new {
       objectName = "hanSolo",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Rebel",
+      faction = "rebel",
       gender = "male",
 
       stfName = "Han Solo",
@@ -53,7 +53,7 @@ hanSolo = Creature:new {
       level = 250,
       xp = 28549,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 650000,
       healthMin = 620000,

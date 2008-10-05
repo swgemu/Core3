@@ -113,6 +113,8 @@ public:
 
 	bool isMeditating();
 
+	bool hatesFaction(unsigned int faction);
+
 	void updateKnockdownRecovery();
 
 	void updateMood(const string& md);
@@ -1179,6 +1181,8 @@ public:
 	bool isRidingCreature();
 
 	bool isMeditating();
+
+	bool hatesFaction(unsigned int faction);
 
 	void updateKnockdownRecovery();
 

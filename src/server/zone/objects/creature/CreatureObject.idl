@@ -122,6 +122,8 @@ interface CreatureObject implements SceneObject {
 	boolean isRidingCreature();
 	boolean isMeditating();
 	
+	boolean hatesFaction(unsigned int faction);
+	
 	void updateKnockdownRecovery();
 	
 	void updateMood(const string md);

@@ -43,7 +43,7 @@
 rebelSurfaceMarshal = Creature:new {
       objectName = "rebelSurfaceMarshal",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Rebel",
+      faction = "rebel",
       gender = "",
 
       name = "Rebel surface Marshall",
@@ -54,7 +54,7 @@ rebelSurfaceMarshal = Creature:new {
       level = 30,
       xp = 3097,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 10200,
       healthMin = 8400,

@@ -43,7 +43,7 @@
 imperialColonel = Creature:new {
       objectName = "imperialColonel",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "imperial",
       gender = "",
 
       name = "Crackdown Imperial Colonel",
@@ -54,7 +54,7 @@ imperialColonel = Creature:new {
       level = 1,
       xp = 45,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 7700,
       healthMin = 6300,
