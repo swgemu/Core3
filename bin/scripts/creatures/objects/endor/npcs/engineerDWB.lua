@@ -45,10 +45,10 @@ engineerDWB = Creature:new {
 	faction = "Corsec",
 	gender = "",
 	
-	name = "an engineer",
+	stfName = "an engineer",
 	objectCRC = 1121654046,
 	socialGroup = "deathwatch",
-	named = TRUE,
+	named = FALSE,
 
 	level = 230,
 	xp = 24600,
@@ -100,8 +100,8 @@ engineerDWB = Creature:new {
       	weaponTemp = "carbine_elite", -- Weapon Template ex. 'lance_vibrolance'
       	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       	weaponEquipped = 1,
-      	weaponMinDamage = 400,
-      	weaponMaxDamage = 600,
+      	weaponMinDamage = 500,
+      	weaponMaxDamage = 700,
       	weaponAttackSpeed = 3,
       	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -135,7 +135,7 @@ engineerDWB = Creature:new {
       	meatMax = 0,
 
 	skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
-	respawnTimer = 300,
+	respawnTimer = 120,
 	
 	behaviorScript = "", -- Link to the behavior script for this object
 }

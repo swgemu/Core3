@@ -48,7 +48,7 @@ imperialSurfaceMarshal = Creature:new {
 
       name = "Imperial surface Marshall",
       objectCRC = 3498321727, 
-      socialGroup = "Imperial",
+      socialGroup = "imperial",
       named = FALSE, 
 
       level = 30,

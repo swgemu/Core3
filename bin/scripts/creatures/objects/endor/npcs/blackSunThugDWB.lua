@@ -58,18 +58,18 @@ blackSunThugDWB = Creature:new {
 
       healthMax = 16000,
       healthMin = 13000,
-      strength = 1000,
-      constitution = 1000,
+      strength = 8000,
+      constitution = 8000,
 
       actionMax = 16000,
       actionMin = 13000,
-      quickness = 1000,
-      stamina = 1000,
+      quickness = 8000,
+      stamina = 8000,
 
       mindMax = 16000,
       mindMin = 13000,
-      focus = 1000,
-      willpower = 1000,
+      focus = 8000,
+      willpower = 8000,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -90,7 +90,7 @@ blackSunThugDWB = Creature:new {
       pack = 0,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 1,
       invincible = 0,
 
@@ -101,9 +101,9 @@ blackSunThugDWB = Creature:new {
       weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 400,
-      weaponMaxDamage = 600,
-      weaponAttackSpeed = 5,
+      weaponMinDamage = 600,
+      weaponMaxDamage = 800,
+      weaponAttackSpeed = 1.5,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -136,7 +136,7 @@ blackSunThugDWB = Creature:new {
       meatMax = 0,
 
       skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
-      respawnTimer = 300,
+      respawnTimer = 120,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

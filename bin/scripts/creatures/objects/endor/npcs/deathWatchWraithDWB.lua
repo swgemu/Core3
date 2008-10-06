@@ -58,18 +58,18 @@ deathWatchWraithDWB = Creature:new {
 
       healthMax = 144000,
       healthMin = 118000,
-      strength = 20000,
-      constitution = 20000,
+      strength = 50000,
+      constitution = 50000,
 
       actionMax = 144000,
       actionMin = 118000,
-      quickness = 20000,
-      stamina = 20000,
+      quickness = 50000,
+      stamina = 50000,
 
       mindMax = 144000,
       mindMin = 118000,
-      focus = 20000,
-      willpower = 20000,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -101,9 +101,9 @@ deathWatchWraithDWB = Creature:new {
       weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 800,
-      weaponMaxDamage = 900,
-      weaponAttackSpeed = 3,
+      weaponMinDamage = 900,
+      weaponMaxDamage = 1000,
+      weaponAttackSpeed = 1.5,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -136,7 +136,7 @@ deathWatchWraithDWB = Creature:new {
       meatMax = 0,
 
       skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
-      respawnTimer = 600,
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

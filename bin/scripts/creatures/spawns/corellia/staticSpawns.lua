@@ -322,6 +322,6 @@ spawnCreatures(imperialColonel, 0, 4660, -5785, 200, 5)
 spawnCreatures(imperialSurfaceMarshal, 0, 4660, -5785, 200, 5)
 spawnCreatures(imperialMajor, 0, 4660, -5785, 200, 5)
 -- spawnCreatures(darkTrooper, 0, 4660, -5785, 200, 15)
--- spawnCreatures(stormTrooper, 0, 4660, -5785, 200, 50)
+spawnCreatures(stormTrooper, 0, 4660, -5785, 200, 50)
 spawnCreatures(atSt, 0, 4660, -5785, 50, 4)
 

@@ -47,7 +47,7 @@ atSt = Creature:new {
 	
 	stfName = "an AT-ST",
 	objectCRC = 2128352281,
-	socialGroup = "Imperial",
+	socialGroup = "imperial",
 	named = TRUE, 
 	
 	level = 100,	

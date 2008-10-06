@@ -48,7 +48,7 @@ rebelGeneral = Creature:new {
 
       name = "Rebel General",
       objectCRC = 354934529, 
-      socialGroup = "Rebel",
+      socialGroup = "rebel",
       named = FALSE, 
 
       level = 28,

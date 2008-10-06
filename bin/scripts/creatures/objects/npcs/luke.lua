@@ -48,7 +48,7 @@ luke = Creature:new {
 
       stfName = "Luke Skywalker",
       objectCRC = 196428947, 
-      socialGroup = "Rebel",
+      socialGroup = "rebel",
       named = TRUE, 
 
       level = 500,

@@ -48,7 +48,7 @@ darkTrooper = Creature:new {
 
       name = "Crackdown Dark Trooper",
       objectCRC = 1312348723, 
-      socialGroup = "Imperial",
+      socialGroup = "imperial",
       named = FALSE, 
 
       level = 95,

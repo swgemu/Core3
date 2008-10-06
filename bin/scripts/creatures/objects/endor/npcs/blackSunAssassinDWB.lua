@@ -58,18 +58,18 @@ blackSunAssassinDWB = Creature:new {
 
       healthMax = 36000,
       healthMin = 29000,
-      strength = 5000,
-      constitution = 5000,
+      strength = 9000,
+      constitution = 9000,
 
       actionMax = 36000,
       actionMin = 29000,
-      quickness = 5000,
-      stamina = 5000,
+      quickness = 9000,
+      stamina = 9000,
 
       mindMax = 36000,
       mindMin = 29000,
-      focus = 5000,
-      willpower = 5000,
+      focus = 9000,
+      willpower = 9000,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -90,7 +90,7 @@ blackSunAssassinDWB = Creature:new {
       pack = 0,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 1,
       invincible = 0,
 
@@ -101,9 +101,9 @@ blackSunAssassinDWB = Creature:new {
       weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 400,
-      weaponMaxDamage = 600,
-      weaponAttackSpeed = 5,
+      weaponMinDamage = 600,
+      weaponMaxDamage = 800,
+      weaponAttackSpeed = 1.5,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -136,7 +136,7 @@ blackSunAssassinDWB = Creature:new {
       meatMax = 0,
 
       skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
-      respawnTimer = 300,
+      respawnTimer = 120,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

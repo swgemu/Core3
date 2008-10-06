@@ -47,7 +47,7 @@ hanSolo = Creature:new {
 
       stfName = "Han Solo",
       objectCRC = 4209483922, 
-      socialGroup = "Rebel",
+      socialGroup = "rebel",
       named = TRUE, 
 
       level = 250,

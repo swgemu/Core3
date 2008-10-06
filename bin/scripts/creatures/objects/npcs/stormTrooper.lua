@@ -48,7 +48,7 @@ stormTrooper = Creature:new {
 
       name = "stormTrooper",
       objectCRC = 3128894413, 
-      socialGroup = "Imperial",
+      socialGroup = "imperial",
       named = FALSE, 
 
       level = 80,

@@ -45,10 +45,10 @@ minerDWB = Creature:new {
 	faction = "Corsec",
 	gender = "",
 	
-	name = "a miner",
+	stfName = "a miner",
 	objectCRC = 3926753656,
 	socialGroup = "deathwatch",
-	named = TRUE,
+	named = FALSE,
 
 	level = 230,
 	xp = 26000,
@@ -135,7 +135,7 @@ minerDWB = Creature:new {
       	meatMax = 0,
 
 	skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
-	respawnTimer = 300,
+	respawnTimer = 120,
 	
 	behaviorScript = "", -- Link to the behavior script for this object
 	
