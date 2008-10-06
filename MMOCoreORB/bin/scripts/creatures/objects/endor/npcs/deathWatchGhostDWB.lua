@@ -58,18 +58,18 @@ deathWatchGhostDWB = Creature:new {
 
       healthMax = 99000,
       healthMin = 81000,
-      strength = 5000,
-      constitution = 5000,
+      strength = 20000,
+      constitution = 20000,
 
       actionMax = 99000,
       actionMin = 81000,
-      quickness = 5000,
-      stamina = 5000,
+      quickness = 20000,
+      stamina = 20000,
 
       mindMax = 99000,
       mindMin = 81000,
-      focus = 5000,
-      willpower = 5000,
+      focus = 20000,
+      willpower = 20000,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -90,7 +90,7 @@ deathWatchGhostDWB = Creature:new {
       pack = 0,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 1,
       invincible = 0,
 
@@ -101,9 +101,9 @@ deathWatchGhostDWB = Creature:new {
       weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 600,
-      weaponMaxDamage = 900,
-      weaponAttackSpeed = 3,
+      weaponMinDamage = 700,
+      weaponMaxDamage = 1200,
+      weaponAttackSpeed = 1.5,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

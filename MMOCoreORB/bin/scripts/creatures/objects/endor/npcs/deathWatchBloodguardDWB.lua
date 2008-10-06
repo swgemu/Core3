@@ -58,18 +58,18 @@ deathWatchBloodguardDWB = Creature:new {
 
       healthMax = 54000,
       healthMin = 44000,
-      strength = 1000,
-      constitution = 1000,
+      strength = 15000,
+      constitution = 15000,
 
       actionMax = 54000,
       actionMin = 44000,
-      quickness = 1000,
-      stamina = 1000,
+      quickness = 15000,
+      stamina = 15000,
 
       mindMax = 54000,
       mindMin = 44000,
-      focus = 1000,
-      willpower = 1000,
+      focus = 15000,
+      willpower = 15000,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -90,7 +90,7 @@ deathWatchBloodguardDWB = Creature:new {
       pack = 0,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 1,
       invincible = 0,
 
@@ -101,9 +101,9 @@ deathWatchBloodguardDWB = Creature:new {
       weaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 540,
-      weaponMaxDamage = 700,
-      weaponAttackSpeed = 2.5,
+      weaponMinDamage = 640,
+      weaponMaxDamage = 950,
+      weaponAttackSpeed = 1.5,
       weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -136,7 +136,7 @@ deathWatchBloodguardDWB = Creature:new {
       meatMax = 0,
 
       skills = { "dwbMeleeAttack40", "dwbMeleeAttack41", "dwbMeleeAttack42", "dwbMeleeAttack43", "dwbMeleeAttack44", "dwbMeleeAttack45", "dwbMeleeAttack46", "dwbMeleeAttack47", "dwbMeleeAttack48", "dwbMeleeAttack49", "dwbMeleeAttack50", "dwbMeleeAttack51"  },
-      respawnTimer = 300,
+      respawnTimer = 120,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

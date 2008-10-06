@@ -50,6 +50,7 @@ dwbSBDAttack40 = {
 	range = 30,
 	damageRatio = 4.5,
 	speedRatio = 1.25,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -81,6 +82,7 @@ dwbSBDAttack41 = {
 	range = 30,
 	damageRatio = 4.5,
 	speedRatio = 1.25,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -112,6 +114,7 @@ dwbSBDAttack42 = {
 	range = 30,
 	damageRatio = 4.0,
 	speedRatio = 1.8,
+	coneAngle = 7,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -143,6 +146,7 @@ dwbSBDAttack43 = {
 	range = 30,
 	damageRatio = 4.2,
 	speedRatio = 1.25,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -175,6 +179,7 @@ dwbSBDAttack44 = {
 	range = 30,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -217,6 +222,7 @@ dwbSBDAttack45 = {
 	range = 30,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -249,6 +255,7 @@ dwbSBDAttack46 = {
 	range = 30,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -291,6 +298,7 @@ dwbSBDAttack47 = {
 	range = 30,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -333,6 +341,7 @@ dwbSBDAttack48 = {
 	range = 30,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -375,6 +384,7 @@ dwbSBDAttack49 = {
 	range = 30,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -406,6 +416,7 @@ dwbSBDAttack50 = {
 	range = 30,
 	damageRatio = 4.55,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -437,6 +448,7 @@ dwbSBDAttack51 = {
 	range = 30,
 	damageRatio = 4.5,
 	speedRatio = 1.25,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -470,6 +482,7 @@ dwbSBDAttack52 = {
 	range = 30,
 	damageRatio = 4.15,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -511,6 +524,7 @@ dwbSBDAttack53 = {
 	range = 30,
 	damageRatio = 3.15,
 	speedRatio = 1.45,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -555,7 +569,7 @@ dwbSBDRangedAttack1 = {
 	damageRatio = 10,
 
 	speedRatio = 4,
-	coneAngle = 0,
+	coneAngle = 7,
 
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -587,7 +601,7 @@ dwbSBDRangedAttack2 = {
 	damageRatio = 15,
 
 	speedRatio = 4,
-	coneAngle = 0,
+	coneAngle = 7,
 
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -649,6 +663,7 @@ dwbSBDRangedAttack4 = {
 	range = 64,
 	damageRatio = 7.5,
 	speedRatio = 7,
+	coneAngle = 7,
 	areaRange = 0,
 	accuracyBonus = 0,
 

@@ -45,11 +45,11 @@ technicianDWB = Creature:new {
 	faction = "Corsec",
 	gender = "",
 	
-	name = "a technician",
+	stfName = "a technician",
 	
 	objectCRC = 3584504744,
 	socialGroup = "deathwatch",
-	named = TRUE,
+	named = FALSE,
 
 	level = 230,
 	xp = 24600,
@@ -104,7 +104,7 @@ technicianDWB = Creature:new {
       	weaponEquipped = 1,
       	weaponMinDamage = 400,
       	weaponMaxDamage = 600,
-      	weaponAttackSpeed = 3,
+      	weaponAttackSpeed = 2,
       	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -137,7 +137,7 @@ technicianDWB = Creature:new {
       	meatMax = 0,
 
 	skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
-	respawnTimer = 300,
+	respawnTimer = 120,
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 

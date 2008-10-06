@@ -3331,8 +3331,8 @@ void CreatureObjectImplementation::stopDancing() {
 	info("stopped dancing");
 
 	setDancing(false);
-	setPerformanceName("");
-	sendEntertainingUpdate(0x3F4D70A4, "", 0, 0);
+	sendEntertainingUpdate(0x3F4D70A4, getPerformanceAnimation(), 0, 0);
+	setPerformanceName("");	
 
 	while (!watchers.isEmpty()) {
 		ManagedReference<CreatureObject> creo = watchers.get(0);
@@ -3366,10 +3366,9 @@ void CreatureObjectImplementation::stopPlayingMusic() {
 	info("stopped playing music");
 
 	setPlayingMusic(false);
+	sendEntertainingUpdate(0x3F4D70A4, getPerformanceAnimation(), 0, 0); 
 	setPerformanceName("");
-	setListenID(0);
-
-	sendEntertainingUpdate(0x3F4D70A4, "", 0, 0);
+	setListenID(0);	
 
 	while (!listeners.isEmpty()) {
 		ManagedReference<CreatureObject> creo = listeners.get(0);

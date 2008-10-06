@@ -59,18 +59,18 @@ superBattleDroidDWB = Creature:new {
 
       healthMax = 254000,
       healthMin = 208000,
-      strength = 50000,
-      constitution = 50000,
+      strength = 80000,
+      constitution = 80000,
 
       actionMax = 254000,
       actionMin = 208000,
-      quickness = 50000,
-      stamina = 50000,
+      quickness = 80000,
+      stamina = 80000,
 
       mindMax = 254000,
       mindMin = 208000,
-      focus = 50000,
-      willpower = 50000,
+      focus = 80000,
+      willpower = 80000,
 
       height = 1.5, -- Size of creature
       armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -104,11 +104,11 @@ superBattleDroidDWB = Creature:new {
       weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 600,
-      weaponMaxDamage = 900,
-      weaponAttackSpeed = 2,
+      weaponMinDamage = 800,
+      weaponMaxDamage = 1200,
+      weaponAttackSpeed = 1.5,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAV
+      weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAV
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,7 +140,7 @@ superBattleDroidDWB = Creature:new {
 
       skills = { "dwbSBDAttack40", "dwbSBDAttack41", "dwbSBDAttack42", "dwbSBDAttack43", "dwbSBDAttack44", "dwbSBDAttack45", "dwbSBDAttack46", "dwbSBDAttack47", "dwbSBDAttack48", "dwbSBDAttack49", "dwbSBDAttack50", "dwbSBDAttack51"  },
 
-      respawnTimer = 300,
+      respawnTimer = 120,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

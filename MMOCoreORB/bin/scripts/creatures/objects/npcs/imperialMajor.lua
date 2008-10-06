@@ -48,7 +48,7 @@ imperialMajor = Creature:new {
 
       name = "Imperial Major",
       objectCRC = 1953999744, 
-      socialGroup = "Imperial",
+      socialGroup = "imperial",
       named = FALSE, 
 
       level = 21,

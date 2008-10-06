@@ -58,18 +58,18 @@ battleDroidDWB = Creature:new {
 
       healthMax = 54000,
       healthMin = 44000,
-      strength = 5000,
-      constitution = 5000,
+      strength = 12000,
+      constitution = 12000,
 
       actionMax = 54000,
       actionMin = 44000,
-      quickness = 5000,
-      stamina = 5000,
+      quickness = 12000,
+      stamina = 12000,
 
       mindMax = 54000,
       mindMin = 44000,
-      focus = 5000,
-      willpower = 5000,
+      focus = 12000,
+      willpower = 12000,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -90,7 +90,7 @@ battleDroidDWB = Creature:new {
       pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 1,
       invincible = 0,
 
@@ -101,9 +101,9 @@ battleDroidDWB = Creature:new {
       weaponTemp = "carbine_elite", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 500,
-      weaponMaxDamage = 700,
-      weaponAttackSpeed = 3,
+      weaponMinDamage = 600,
+      weaponMaxDamage = 900,
+      weaponAttackSpeed = 1.5,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -136,7 +136,7 @@ battleDroidDWB = Creature:new {
       meatMax = 0,
 
       skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51" },
-      respawnTimer = 300,
+      respawnTimer = 120,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -46,7 +46,6 @@
 RunSkillsFile("creatureSkills/endor/npcs/dwbAttacks.lua")
 RunSkillsFile("creatureSkills/endor/npcs/dwbSBDAttacks.lua")
 RunSkillsFile("creatureSkills/endor/npcs/dwbMeleeAttacks.lua")
-RunSkillsFile("creatureSkills/endor/npcs/superBattleDroidAttacks.lua")
 RunSkillsFile("creatureSkills/endor/npcs/jindaAttacks.lua")
 RunSkillsFile("creatureSkills/endor/npcs/korgaAttacks.lua")
 RunSkillsFile("creatureSkills/endor/npcs/marauderAttacks.lua")

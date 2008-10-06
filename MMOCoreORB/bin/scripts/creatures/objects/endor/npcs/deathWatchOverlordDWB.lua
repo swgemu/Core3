@@ -58,18 +58,18 @@ deathWatchOverlordDWB = Creature:new {
 
       healthMax = 242000,
       healthMin = 198000,
-      strength = 10000,
-      constitution = 10000,
+      strength = 50000,
+      constitution = 50000,
 
       actionMax = 242000,
       actionMin = 198000,
-      quickness = 10000,
-      stamina = 10000,
+      quickness = 50000,
+      stamina = 50000,
 
       mindMax = 242000,
       mindMin = 198000,
-      focus = 10000,
-      willpower = 10000,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -101,9 +101,9 @@ deathWatchOverlordDWB = Creature:new {
       weaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 1950,
-      weaponMaxDamage = 2350,
-      weaponAttackSpeed = 3,
+      weaponMinDamage = 2150,
+      weaponMaxDamage = 2550,
+      weaponAttackSpeed = 1.5,
       weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -136,7 +136,7 @@ deathWatchOverlordDWB = Creature:new {
       meatMax = 0,
 
         skills = { "dwbMeleeAttack40", "dwbMeleeAttack41", "dwbMeleeAttack42", "dwbMeleeAttack43", "dwbMeleeAttack44", "dwbMeleeAttack45", "dwbMeleeAttack46", "dwbMeleeAttack47", "dwbMeleeAttack48", "dwbMeleeAttack49", "dwbMeleeAttack50", "dwbMeleeAttack51"  },
-        respawnTimer = 600,
+        respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

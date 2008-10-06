@@ -48,7 +48,7 @@ imperialColonel = Creature:new {
 
       name = "Crackdown Imperial Colonel",
       objectCRC = 2701430666, 
-      socialGroup = "Imperial",
+      socialGroup = "imperial",
       named = FALSE, 
 
       level = 1,

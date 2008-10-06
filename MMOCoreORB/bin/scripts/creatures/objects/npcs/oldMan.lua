@@ -48,7 +48,7 @@ oldMan = Creature:new {
 
       stfName = "Obi-Wan Kenobi",
       objectCRC = 2513398694, 
-      socialGroup = "Rebel",
+      socialGroup = "rebel",
       named = TRUE, 
 
       level = 700,

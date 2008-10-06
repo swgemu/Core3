@@ -48,7 +48,7 @@ rebelSurfaceMarshal = Creature:new {
 
       name = "Rebel surface Marshall",
       objectCRC = 7469172, 
-      socialGroup = "Rebel",
+      socialGroup = "rebel",
       named = FALSE, 
 
       level = 30,

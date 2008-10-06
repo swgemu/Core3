@@ -48,7 +48,7 @@ darthVader = Creature:new {
 
       stfName = "Darth Vader",
       objectCRC = 147261716, 
-      socialGroup = "Imperial",
+      socialGroup = "imperial",
       named = TRUE, 
 
       level = 500,
