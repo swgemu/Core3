@@ -44,7 +44,7 @@ polearm_lightsaber = Weapon:new{
 	
 	objectName = "Polearm Lightsaber",
 
-	templateName = "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff",
+	templateName = "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s1_gen1.iff",
 
 	objectType = POLEARMSABER,
 	

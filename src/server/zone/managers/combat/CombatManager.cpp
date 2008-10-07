@@ -807,7 +807,7 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 		return 0;
 
 	float playerAccuracy = creature->getAccuracy();
-	float weaponAccuracy = getWeaponAccuracy(creature->getDistanceTo(targetCreature), playerWeapon);
+	float weaponAccuracy = getWeaponRangeMod(creature->getDistanceTo(targetCreature), playerWeapon);
 
 	weaponAccuracy += calculatePostureMods(creature, targetCreature);
 
@@ -902,48 +902,53 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	int hitChance = 0;
 	Weapon* weapon = creature->getWeapon();
 
-	float weaponAccuracy = getWeaponAccuracy(creature->getDistanceTo(targetCreature), weapon);
+	// Get the weapon mods for range and add the mods for stance
+	float weaponAccuracy = getWeaponRangeMod(creature->getDistanceTo(targetCreature), weapon);
 	weaponAccuracy += calculatePostureMods(creature, targetCreature);
 
 	// TODO: add Aim mod
+	float aimMod = 0.0;
 
-	float playerAccuracy = creature->getAccuracy();
+	float attackerAccuracy = creature->getAccuracy();
 
-	if (playerAccuracy > 250.f)
-		playerAccuracy = 250.f;
+	if (attackerAccuracy > 250.f)
+		attackerAccuracy = 250.f;
 
-	uint32 targetDefense = getTargetDefense(creature, targetCreature, weapon);
+	int targetDefense = getTargetDefense(creature, targetCreature, weapon);
 
-	float defTotal = powf((float)(targetDefense << 1), 2);
-	float accTotal = 0;
+	// Calculation based on the DPS calculation spreadsheet
+	float accTotal = 66.0; // Base chance
 
-	int blindState = 0;
-
+	float blindState = 0;
 	if (creature->isBlinded())
 		blindState = 50;
+	float stunBonus =0;
+	if (targetCreature->isStunned())
+		stunBonus = 50;
 
-	if ((playerAccuracy + weaponAccuracy - blindState) < 0)
+	float ability = 50.0; // Don't know what this is taken from spreadsheet
+
+	/*
+	if (creature->isPlayer())
+		cout << "AA = " << attackerAccuracy << " TD = " << targetDefense
+		<< " mods = " << (weaponAccuracy + aimMod + stunBonus - blindState) << endl;
+	*/
+	accTotal += (attackerAccuracy + weaponAccuracy + aimMod + ability  + stunBonus
+			- targetDefense - blindState) / 2.0;
+
+	if (accTotal > 100)
+		accTotal = 100.0;
+	else if (accTotal < 0)
 		accTotal = 0;
-	else
-		accTotal = powf((playerAccuracy * 1.5 + weaponAccuracy - blindState), 2);
 
-	defTotal -= (defTotal * targetCreature->calculateBFRatio());
+	hitChance = (int)(accTotal + 0.5);
 
-	float primaryDef = defTotal / (defTotal + accTotal);
-
-	if (creature->isStunned())
-		primaryDef *= 0.33;
-
-	//cout << "primaryDef:[" << primaryDef << "] accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
-
-	hitChance = (int)round(((1 - primaryDef) * 100));
-
-	//cout << "hitChance:[" << (int)hitChance << "]\n";
+	//cout << "hitChance:[" << hitChance << "]" << endl;
 
 	return hitChance;
 }
 
-float CombatManager::getWeaponAccuracy(float currentRange, Weapon* weapon) {
+float CombatManager::getWeaponRangeMod(float currentRange, Weapon* weapon) {
 	float accuracy;
 
 	float smallRange = 0;
@@ -983,24 +988,24 @@ int CombatManager::calculatePostureMods(CreatureObject* creature, CreatureObject
 	Weapon* weapon = creature->getWeapon();
 
 	if (targetCreature->isKneeled()) {
-		if (weapon == NULL || weapon->isMelee())
+		if (weapon == NULL || weapon->isMelee() || weapon->isJedi())
 			accuracy += 16;
 		else
 			accuracy -= 16;
 	} else if (targetCreature->isProne()) {
-		if (weapon == NULL || weapon->isMelee())
+		if (weapon == NULL || weapon->isMelee() || weapon->isJedi())
 			accuracy += 25;
 		else
 			accuracy -= 25;
 	}
 
 	if (creature->isKneeled()) {
-		if (weapon == NULL || weapon->isMelee())
+		if (weapon == NULL || weapon->isMelee() || weapon->isJedi())
 			accuracy -= 16;
 		else
 			accuracy += 16;
 	} else if (creature->isProne()) {
-		if (weapon == NULL || weapon->isMelee())
+		if (weapon == NULL || weapon->isMelee() || weapon->isJedi())
 			accuracy -= 50;
 		else
 			accuracy += 50;
@@ -1013,8 +1018,16 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 	uint32 defense = 0;
 	uint32 targetPosture = targetCreature->getPosture();
 
+	// TODO: Add defenses into creature luas.
+	if (!targetCreature->isPlayer()) {
+		defense = (int)(targetCreature->getLevel() * 1.25);
+		if (defense > 250)
+			defense = 250;
+		return defense;
+	}
+
 	if (weapon != NULL) {
-		if (weapon->isMelee()) {
+		if (weapon->isMelee() || weapon->isJedi()) {
 			uint32 melee = targetCreature->getSkillMod("melee_defense");
 			defense += melee;
 		} else if (weapon->isRanged()) {
@@ -1026,10 +1039,11 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 		defense += melee;
 	}
 
-	//defense += targetCreature->getDefenseBonus();
 
 	if (defense > 125)
 		defense = 125;
+
+	//defense += targetCreature->getDefenseBonus();
 
 	return defense - (uint32)(defense * targetCreature->calculateBFRatio());
 }
@@ -1180,7 +1194,8 @@ bool CombatManager::calculateCost(CreatureObject* creature, float hamMultiplier,
 		if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost, -mindAttackCost))
 			return false;
 
-		player->changeForcePowerBar(-forceCost);
+		if (forceCost > 0)
+			player->changeForcePowerBar(-forceCost);
 	}
 
 	return true;
@@ -1239,15 +1254,15 @@ float CombatManager::calculateAttackSpeed(CreatureObject* creature, TargetSkill*
 
 	// TODO: Is this really right any speedMod over 100 gives 1 sec speed.
 	if (weapon != NULL) {
-		weaponSpeed = (float)((100.0f - (float)speedMod) / 100.0f) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
+		weaponSpeed = (float)((125.0f - (float)speedMod) / 125.0f) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
 	} else
-		weaponSpeed = (float)((100.0f - (float)speedMod) / 100.0f) * tskill->getSpeedRatio();
+		weaponSpeed = (float)((125.0f - (float)speedMod) / 125.0f) * tskill->getSpeedRatio() * 2;
 
 		return MAX(weaponSpeed, 1.0f);
 }
 
 	float CombatManager::calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill) {
-		// Heals use an event for the timings.  However the combat queu needs timing for next action
+		// Heals use an event for the timings.  However the combat queue needs timing for next action
 		float speed = tskill->getSpeed();
 		return speed;
 	}

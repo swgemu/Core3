@@ -2953,17 +2953,17 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 			accuracy += getSkillMod("heavyweapon_accuracy");
 			break;
 
-		/*case Weapon::ONEHANDSABER:
-			accuracy = SkillMods.get("");
+		case WeaponImplementation::ONEHANDSABER:
+			accuracy = getSkillMod("onehandlightsaber_accuracy");
 			break;
 
-		case Weapon::TWOHANDSABER:
-			accuracy = SkillMods.get("");
+		case WeaponImplementation::TWOHANDSABER:
+			accuracy = getSkillMod("twohandlightsaber_accuracy");
 			break;
 
-		case Weapon::POLEARMSABER:
-			accuracy = SkillMods.get("");
-			break;*/
+		case WeaponImplementation::POLEARMSABER:
+			accuracy = getSkillMod("polearmlightsaber_accuracy");
+			break;
 	}
 	setItemSkillMod(weapon->getSkillMod0Type(), weapon->getSkillMod0Value());
 	setItemSkillMod(weapon->getSkillMod1Type(), weapon->getSkillMod1Value());

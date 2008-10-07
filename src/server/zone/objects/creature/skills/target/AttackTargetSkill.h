@@ -109,7 +109,7 @@ public:
 		willpowerPoolAttackChance = 0;
 
 		damageRatio = 1.0f;
-		
+
 		hamCostMultiplier = 1;
 		forceCostMultiplier = 0;
 
@@ -323,18 +323,11 @@ public:
 	}
 
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature) {
-		// TODO: reintroduce for later testing
-		//return server->getCombatManager()->getHitChance(creature, targetCreature, accuracyBonus);
-		// Always hit
-		return 100;
+		return server->getCombatManager()->getHitChance(creature, targetCreature, accuracyBonus);
 	}
 
 	virtual inline float getSpeed() {
 		return 1.0f;
-	}
-
-	float getWeaponAccuracy(float currentRange, Weapon* weapon) {
-		return server->getCombatManager()->getWeaponAccuracy(currentRange, weapon);
 	}
 
 	float getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon) {
@@ -547,11 +540,11 @@ public:
 	inline void setHAMCostMultiplier(float mult) {
 		hamCostMultiplier = mult;
 	}
-	
+
 	inline void setForceCostMultiplier(float mult) {
 		forceCostMultiplier = mult;
 	}
-	
+
 	inline void setHealthPoolAttackRatio(int ratio) {
 		healthPoolAttackChance = ratio;
 	}

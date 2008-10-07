@@ -110,7 +110,7 @@ public:
 	void checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, float& minDamage, float& maxDamage);
 	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature);
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, int accuracyBonus);
-	float getWeaponAccuracy(float currentRange, Weapon* weapon);
+	float getWeaponRangeMod(float currentRange, Weapon* weapon);
 	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon);
 	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part);
 	bool calculateCost(CreatureObject* creature, float hamMultiplier = 1,  float forceMultiplier = 0);
