@@ -1982,19 +1982,29 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 		Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
 				0, false, true, height);
 
-		if (creature != NULL) {
+		Zone* zone;
+
+		if (creature != NULL && ((zone = creature->getZone()) != NULL)) {
 			creature->setRespawnTimer(0);
 			creature->setHeight(height);
 			CreatureImplementation * creoImpl = (CreatureImplementation *) creature->_getImplementation();
 
-			for (int i = 0; i < creoImpl->inRangeObjectCount(); ++i) {
-				SceneObjectImplementation * obj = (SceneObjectImplementation *) creoImpl->getInRangeObject(i);
+			try {
+				zone->lock();
 
-				if(!(obj->isPlayer() || obj->isNonPlayerCreature()) || !creoImpl->isInRange((SceneObject *) obj->_getStub(), 24))
-					continue;
+				for (int i = 0; i < creoImpl->inRangeObjectCount(); ++i) {
+					SceneObjectImplementation * obj = (SceneObjectImplementation *) creoImpl->getInRangeObject(i);
 
-				obj->notifyPositionUpdate(creoImpl);
-				creoImpl->notifyPositionUpdate(obj);
+					if(!(obj->isPlayer() || obj->isNonPlayerCreature()) || !creoImpl->isInRange((SceneObject *) obj->_getStub(), 24))
+						continue;
+
+					obj->notifyPositionUpdate(creoImpl);
+					creoImpl->notifyPositionUpdate(obj);
+				}
+
+				zone->unlock();
+			} catch (...) {
+				zone->unlock();
 			}
 		}
 
@@ -2164,6 +2174,8 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 				faction = targetPlayer->getFaction();
 			else {
 				player->sendSystemMessage("Usage: @factionSet overt | covert | rebel | imperial | neutral");
+				if (targetPlayer != player)
+					targetPlayer->unlock();
 				return;
 			}
 

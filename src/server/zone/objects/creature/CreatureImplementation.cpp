@@ -990,12 +990,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			return;
 		}
 
-
-
-
-
 		if (this->shouldAgro(scno)) {
-
 			if ((parent == NULL && isInRange(scno, 24)) || ((parent != NULL)
 					&& (getParentID() == scno->getParentID()) && isInRange(
 					scno, 10))) {
@@ -1008,10 +1003,8 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 					creatureManager->dequeueActivity(this);
 
 				creatureManager->queueActivity(this, 10);
-
 			}
-		} else if ((parent == NULL) && !doRandomMovement
-				&& patrolPoints.isEmpty() && System::random(200) < 1) {
+		} else if ((parent == NULL) && !doRandomMovement && patrolPoints.isEmpty() && System::random(200) < 1 && scno->isPlayer()) {
 			doRandomMovement = true;
 
 			positionZ = obj->getPositionZ();
@@ -1022,10 +1015,6 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 				creatureManager->queueActivity(this, System::random(30000)
 						+ 1000);
 		}
-
-
-
-
 	} catch (...) {
 		error(
 				"Unreported exception caught in void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj)\n");
