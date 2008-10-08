@@ -4122,9 +4122,10 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		if (datapad == NULL)
 			return;
 
-		string name, detailName;
+		string name, detailName, appearance, mountApp;
 		stringstream query;
 		uint32 objCRC, itnoCRC;
+		uint64 objID;
 
 		query.str("");
 		query << "DELETE FROM datapad where character_id = " << player->getCharacterID() << ";";
@@ -4133,12 +4134,15 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		for (int i = 0; i < datapad->objectsSize(); ++i) {
 			name = "";
 			detailName = "";
+			appearance = "";
+			mountApp = "";
 			objCRC = 0;
+			objID = 0;
 			itnoCRC = 0;
 
 			SceneObject* item = datapad->getObject(i);
 
-			if (item != NULL) {
+			if (item != NULL && item->isIntangible()) {
 				IntangibleObject* itno = (IntangibleObject*) item;
 
 				if (itno != NULL) {
@@ -4149,20 +4153,32 @@ void PlayerImplementation::saveDatapad(Player* player) {
 
 						MountCreature* mountCreature = (MountCreature*) itno->getWorldObject();
 
-						if (mountCreature != NULL)
+						if (mountCreature != NULL) {
+							Creature* creaMount = (Creature*) mountCreature;
+
 							itnoCRC = mountCreature->getObjectCRC();
+							objID = mountCreature->getObjectID();
+
+							mountCreature->getCharacterAppearance(mountApp);
+
+							if (mountApp != "") {
+								BinaryData cust(mountApp);
+								cust.encode(appearance);
+							}
+						}
 					}
 
-					//ToDO Datapad Load/save Schematics
-
-					//ToDo Datapad Load/save Droids
-
-					//ToDo Datapad Load/save Pets
+					//TODO: Datapad Load/save Schematics
+					//TODO: Datapad Load/save Droids
+					//TODO: Datapad Load/save Pets
 
 					if (itnoCRC != 0 ) {
 						query.str("");
+
 						query << "Insert into datapad set character_id = " << player->getCharacterID()
-						<< ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = " << itnoCRC << ",itemMask = 65535;";
+						<< ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = " << itnoCRC
+						<< ",itemMask = 65535, appearance = '" << appearance.substr(0, appearance.size() - 1)
+						<< "',obj_id = " << objID << ";";
 
 						ServerDatabase::instance()->executeStatement(query);
 					}

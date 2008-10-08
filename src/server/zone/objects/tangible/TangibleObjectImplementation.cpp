@@ -138,7 +138,7 @@ void TangibleObjectImplementation::initialize() {
 	conditionDamage = 0;
 	maxCondition = 6000;
 
-	objectType = SceneObjectImplementation::TANGIBLE;
+	objectType = TANGIBLE;
 
 	equipped = false;
 
