@@ -1985,6 +1985,19 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 		if (creature != NULL) {
 			creature->setRespawnTimer(0);
 			creature->setHeight(height);
+			CreatureImplementation * creoImpl = (CreatureImplementation *) creature->_getImplementation();
+			cout << "Not NUll" << endl;
+
+			for (int i = 0; i < creoImpl->inRangeObjectCount(); ++i) {
+				cout << "notified creature" << endl;
+				SceneObjectImplementation * obj = (SceneObjectImplementation *) creoImpl->getInRangeObject(i);
+
+				if(!(obj->isPlayer() || obj->isNonPlayerCreature()) || !creoImpl->isInRange((SceneObject *) obj->_getStub(), 24))
+					continue;
+
+				obj->notifyPositionUpdate(creoImpl);
+				creoImpl->notifyPositionUpdate(obj);
+			}
 		}
 
 	} else

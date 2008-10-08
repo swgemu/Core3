@@ -1036,7 +1036,7 @@ bool CreatureImplementation::shouldAgro(SceneObject * target) {
 	if (this->isDead() || this->isIncapacitated())
 		return false;
 
-	if (!target->isPlayer()/* && !target->isNonPlayerCreature()*/)
+	if (!target->isPlayer() && !target->isNonPlayerCreature())
 		return false;
 
 	CreatureObject * creature = (CreatureObject *) target;
