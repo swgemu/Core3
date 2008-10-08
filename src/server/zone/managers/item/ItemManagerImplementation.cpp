@@ -1127,10 +1127,12 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
+		MountCreature* land = NULL;
+
 		while (res->next()) {
 			string appearance = res->getString(7);
 
-			MountCreature* land = new MountCreature(player, res->getString(2), "monster_name",
+			land = new MountCreature(player, res->getString(2), "monster_name",
 					res->getLong(3), res->getLong(4), res->getUnsignedLong(9));
 
 			land->setZoneProcessServer(pServer);
