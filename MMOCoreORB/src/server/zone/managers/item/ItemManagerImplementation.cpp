@@ -1120,18 +1120,31 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 	try {
 		stringstream query;
-		query << "Select * from datapad where character_id = " << player->getCharacterID() << ";";
+
+		query << "SELECT datapad.inx, datapad.character_id, datapad.name, datapad.itnocrc, datapad.item_crc, "
+			<< "datapad.file_name, datapad.attributes, datapad.appearance, datapad.itemMask, datapad.obj_id "
+			<< "FROM datapad where character_id = " << player->getCharacterID() << ";";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
-		MountCreature* land = NULL;
-
 		while (res->next()) {
-			land = new MountCreature(player, res->getString(2), "monster_name",
-					res->getLong(3), res->getLong(4), player->getNewItemID());
+			string appearance = res->getString(7);
+
+			MountCreature* land = new MountCreature(player, res->getString(2), "monster_name",
+					res->getLong(3), res->getLong(4), res->getUnsignedLong(9));
 
 			land->setZoneProcessServer(pServer);
+
+			if (appearance != "") {
+				BinaryData cust(appearance);
+				string custStr;
+				cust.decode(custStr);
+
+				land->setCharacterAppearance(custStr);
+			}
+
 			land->addToDatapad();
+
 		}
 
 		delete res;
@@ -1140,6 +1153,7 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 		player->error("Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
 		player->error(e.getMessage());
 	} catch (...) {
+		cout << "Exception in ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)\n";
 		player->error("Load Datapad unknown exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
 	}
 

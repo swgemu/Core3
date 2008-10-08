@@ -51,29 +51,29 @@ which carries forward this exception.
 
 class ItemAttributes {
 	AttributeMap* attributes;
-	
+
 	string attributeString;
 	string returnString;
-	
+
 public:
 	ItemAttributes() {
 		attributes = new AttributeMap(50);
 	}
-	
+
 	~ItemAttributes() {
 		delete attributes;
 	}
-	
+
 	bool attributeExists(string& name) {
 		return attributes->containsKey(name);
 	}
-	
+
 	void setStringAttribute(string& name, string& value) {
 		attributes->put(name, value);
 	}
-	
+
 	string& getStringAttribute(string& name) {
-		
+
 		if (attributes->containsKey(name))
 			return attributes->get(name);
 		else {
@@ -81,13 +81,13 @@ public:
 			return returnString;
 		}
 	}
-	
+
 	void setIntAttribute(string& name, int value) {
 		stringstream val;
 		val << value;
 		attributes->put(name, val.str());
 	}
-	
+
 	int getIntAttribute(string& name) {
 		if (attributes->containsKey(name)) {
 			string value = attributes->get(name);
@@ -96,13 +96,13 @@ public:
 			return 0;
 		}
 	}
-	
+
 	void setUnsignedLongAttribute(string& name, uint64 value) {
 		stringstream val;
 		val << value;
 		attributes->put(name, val.str());
 	}
-	
+
 	uint64  getUnsignedLongAttribute(string& name) {
 		if (attributes->containsKey(name)) {
 			string value = attributes->get(name);
@@ -111,14 +111,14 @@ public:
 			return 0L;
 		}
 	}
-	
+
 	void setBooleanAttribute(string& name, bool value) {
 		if (value)
 			attributes->put(name, "true");
 		else
 			attributes->put(name, "false");
 	}
-	
+
 	bool getBooleanAttribute(string& name) {
 		if (attributes->containsKey(name)) {
 			if (attributes->get(name) == "true")
@@ -129,13 +129,13 @@ public:
 			return false;
 		}
 	}
-	
+
 	void setFloatAttribute(string& name, float value) {
 		stringstream val;
 		val << value;
 		attributes->put(name, val.str());
 	}
-	
+
 	float getFloatAttribute(string& name) {
 		if (attributes->containsKey(name)) {
 			string value = attributes->get(name);
@@ -144,7 +144,7 @@ public:
 			return 0.0f;
 		}
 	}
-		
+
 	unicode* getUnicodeAttribute(string& name) {
 		if (attributes->containsKey(name)) {
 			unicode* uni = new unicode(attributes->get(name));
@@ -153,36 +153,34 @@ public:
 			return new unicode("");
 		}
 	}
-	
+
 	// String format is "name1=value1:name2=value2:name3=value3:"
 	void setAttributes(string& attributestring) {
-		int index1 = 0; 
+		int index1 = 0;
 		int index2;
 		int index3;
-		
-		while ((index2 = attributestring.find(":", index1)) != string::npos) {
 
+		while ((index2 = attributestring.find(":", index1)) != string::npos) {
 			string attrPair = attributestring.substr(index1, index2-index1);
 
 			if ((index3 = attrPair.find("=", 0)) != string::npos) {
-				
 				string key = attrPair.substr(0, index3);
+
 				string value = attrPair.substr(index3 + 1, attrPair.length() - index3);
 
 				attributes->put(key, value);
 			}
-			
 			index1 = index2 + 1;
 		}
 	}
-	
+
 	void getAttributeString(string& attrstring) {
 		attributeString.clear();
 		//attributeString = "";
 		stringstream attrs;
 
 		attributes->resetIterator();
-		
+
 		while (attributes->hasNext()) {
 			string key;
 			string value;
@@ -191,13 +189,13 @@ public:
 			//attributeString += key.c_str() + "=" + value.c_str() + ":";
 			attrs << key.c_str() << "=" << value.c_str() << ":";
 		}
-		
+
 		attributeString = attrs.str().c_str();
-		
+
 		attrstring = attributeString;
-		
+
 	}
-	
+
 	// Special cases
 	int getMaxCondition() {
 		int index;
@@ -205,46 +203,46 @@ public:
 
 		string key = "condition";
 		string value = attributes->get(key);
-		
+
 		if ((index = value.find("/", 0)) != string::npos) {
 			max = value.substr(index + 1, value.length() - index);
 		}
 		return atoi(max.c_str());
 	}
-	
+
 	int getCurrentCondition() {
 		string current;
 		int index;
 
 		string key = "condition";
 		string value = attributes->get(key);
-		
+
 		if ((index = value.find("/", 0)) != string::npos) {
 			current = value.substr(0, index);
 		}
-		
+
 		return atoi(current.c_str());
 	}
-	
+
 	void setCondition(int current, int max) {
 		stringstream value;
-		
+
 		value << current << "/" << max;
 		string key = "condition";
-		
+
 		attributes->put(key, value.str());
 	}
-	
+
 	//void setMaxCondition(int maxcondition);
 	//void setCurrentCondition(int condition);
-	
+
 };
 
 #endif /*ITEMATTRIBUTES_H_*/
 
-/* 
+/*
  * character_items database structure
- * 
+ *
  * item_id 			BIGINT
  * character_id 	BIGINT
  * name 			TEXT
@@ -255,5 +253,5 @@ public:
  * equipped			TINYINT
  * deleted			TINYINT
  * attributes		TEXT
- * 
+ *
  */
