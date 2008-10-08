@@ -850,6 +850,18 @@ public:
 			activateDigest();
 	}
 
+	virtual bool isAttackableBy(CreatureObject* creature) {
+		if (creature->isPlayer()) {
+			if (isInDuelWith((Player*)creature, false))
+				return true;
+		}
+
+		if (creature->hatesFaction(this->getFaction()))
+			return true;
+
+		return (pvpStatusBitmask & ATTACKABLE_FLAG);
+	}
+
 	// faction methods
 	void setOvert();
 	void setCovert();

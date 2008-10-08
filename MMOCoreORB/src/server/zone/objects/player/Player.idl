@@ -358,6 +358,7 @@ interface Player implements CreatureObject {
 	void setDrinkFilling(int fill, boolean updateClient = true);
 	void changeFoodFilling(int fill, boolean updateClient = true);
 	void changeDrinkFilling(int fill, boolean updateClient = true);
+	boolean isAttackableBy(CreatureObject attacker);
 	int getFoodFilling();
 	int getDrinkFilling();
 	void activateDigest();

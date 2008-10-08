@@ -156,7 +156,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 			float lastPosX = player->getLastTestPositionX();
 			float lastPosY = player->getLastTestPositionY();
 
-			float dist = sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
+			float dist = Math::sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
 					- lastPosY) * (y - lastPosY)));
 
 			float speed = dist * 1000 / (float)deltaStamp;
@@ -265,7 +265,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 			float lastPosX = player->getLastTestPositionX();
 			float lastPosY = player->getLastTestPositionY();
 
-			float dist = sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
+			float dist = Math::sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
 					- lastPosY) * (y - lastPosY)));
 
 			float speed = dist * 1000 / (float)deltaStamp;
@@ -3290,8 +3290,8 @@ void ObjectControllerMessage::parseRotateItem(Player* player, Message* pack) {
 		object->wlock(player);
 
 		object->setDirection(object->getDirectionX(), (object->getDirectionZ()
-				+ sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
-						+ sqrt(.5)));
+				+ Math::sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
+						+ Math::sqrt(.5)));
 
 		object->unlock();
 	} catch (...) {

@@ -349,12 +349,12 @@ void ChatManagerImplementation::broadcastMessageRange(Player* player, const stri
 void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
 	try {
 		pack->parseLong();
-		string msg;
+		unicode msg;
 
 		unicode text;
 		pack->parseUnicode(text);
 
-		StringTokenizer tokenizer(text.c_str());
+		UnicodeTokenizer tokenizer(text);
 
 		uint64 targetid = tokenizer.getLongToken();
 		uint32 mood2 = tokenizer.getIntToken();
@@ -369,14 +369,12 @@ void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
 		} else {
 			if(isMute()) {
 				if(player->getAdminLevel() & PlayerImplementation::ADMIN) {
-					unicode mess = msg;
-					broadcastMessage(player, mess, targetid, moodid, mood2);
+					broadcastMessage(player, msg, targetid, moodid, mood2);
 				} else {
 					((CreatureObject*) player)->sendSystemMessage("Chat has been muted by the admins");
 				}
 			} else {
-				unicode mess = msg;
-				broadcastMessage(player, mess, targetid, moodid, mood2);
+				broadcastMessage(player, msg, targetid, moodid, mood2);
 			}
 		}
 	} catch (PacketIndexOutOfBoundsException& e) {

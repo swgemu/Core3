@@ -48,6 +48,7 @@ which carries forward this exception.
 
 DraftSchematicValuesImplementation::DraftSchematicValuesImplementation() : DraftSchematicValuesServant() {
 	EMPTY = "";
+	experimentalValuesMap.setNullValue(NULL);
 }
 
 DraftSchematicValuesImplementation::~DraftSchematicValuesImplementation() {

@@ -4022,7 +4022,7 @@ bool CreatureObjectImplementation::isInBuilding() {
 
 int CreatureObjectImplementation::getBuildingType() {
 	if (parent != NULL && parent->isCell()) {
-		CellObject* cell = (CellObject*) parent.get();
+		CellObject* cell = (CellObject*) parent;
 		BuildingObject* building = (BuildingObject*)parent->getParent();
 
 		return building->getBuildingType();
@@ -4046,7 +4046,7 @@ bool CreatureObjectImplementation::canGiveEntertainBuff() {
 
 SceneObject *CreatureObjectImplementation::getBuilding() {
 	if (parent != NULL && parent->isCell()) {
-		CellObject* cell = (CellObject*) parent.get();
+		CellObject* cell = (CellObject*) parent;
 		BuildingObject* building = (BuildingObject*)parent->getParent();
 
 		return building;
@@ -4217,22 +4217,26 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 	UpdateContainmentMessage* msg = new UpdateContainmentMessage(objectID, 0, 0xFFFFFFFF);
 	broadcastMessage(msg);
 
+	MountCreature* mnt = mount;
+
 	try {
 		if (lockMount)
-			mount->wlock(_this);
+			mnt->wlock(_this);
 
-		mount->clearState(MOUNTEDCREATURE_STATE);
-		mount->updateStates();
+		if (mount != NULL) {
+			mount->clearState(MOUNTEDCREATURE_STATE);
+			mount->updateStates();
+		}
 
 		updateSpeed(5.376f, 1.549f);
 		clearState(RIDINGMOUNT_STATE);
 		updateStates();
 
 		if (lockMount)
-			mount->unlock();
+			mnt->unlock();
 	} catch (...) {
 		if (lockMount)
-			mount->unlock();
+			mnt->unlock();
 	}
 
 	parent = NULL;

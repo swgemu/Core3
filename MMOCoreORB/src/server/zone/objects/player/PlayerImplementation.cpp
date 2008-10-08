@@ -1047,7 +1047,7 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 
 		info("inserting to building");
 
-		((CellObject*)parent.get())->addChild(_this);
+		((CellObject*)parent)->addChild(_this);
 
 		building->insert(this);
 		building->inRange(this, 128);
@@ -1111,7 +1111,7 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 		zone->lock();
 
 		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*)parent.get();
+			CellObject* cell = (CellObject*)parent;
 
 			removeFromBuilding((BuildingObject*)cell->getParent());
 
@@ -1177,10 +1177,10 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 					}
 				}
 
-				((CellObject*) parent.get())->removeChild(_this);
+				((CellObject*) parent)->removeChild(_this);
 			}
 			parent = newParent;
-			((CellObject*) parent.get())->addChild(_this);
+			((CellObject*) parent)->addChild(_this);
 		}
 
 		BuildingObject* building = (BuildingObject*) parent->getParent();
@@ -1258,7 +1258,7 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 		info("removing from zone");
 
 		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent.get();
+			CellObject* cell = (CellObject*) parent;
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 
 			removeFromBuilding(building);
@@ -1375,7 +1375,7 @@ void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doL
 
 		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
 
-		((CellObject*)parent.get())->removeChild(_this);
+		((CellObject*)parent)->removeChild(_this);
 
 		building->remove(this);
 

@@ -851,7 +851,7 @@ void CreatureImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 		zone->lock();
 
 		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent.get();
+			CellObject* cell = (CellObject*) parent;
 
 			removeFromBuilding((BuildingObject*) cell->getParent());
 
@@ -914,10 +914,10 @@ void CreatureImplementation::updateZoneWithParent(uint64 par, bool lightUpdate,
 					}
 				}
 
-				((CellObject*) parent.get())->removeChild(_this);
+				((CellObject*) parent)->removeChild(_this);
 			}
 			parent = newParent;
-			((CellObject*) parent.get())->addChild(_this);
+			((CellObject*) parent)->addChild(_this);
 		}
 
 		BuildingObject* building = (BuildingObject*) parent->getParent();
@@ -1036,7 +1036,7 @@ bool CreatureImplementation::shouldAgro(SceneObject * target) {
 	if (this->isDead() || this->isIncapacitated())
 		return false;
 
-	if (!target->isPlayer() && !target->isNonPlayerCreature())
+	if (!target->isPlayer()/* && !target->isNonPlayerCreature()*/)
 		return false;
 
 	CreatureObject * creature = (CreatureObject *) target;
