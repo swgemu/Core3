@@ -275,13 +275,13 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 			zone->insert(this);
 			zone->inRange(this, 128);
 
-			for (int i = 0; i < inRangeObjectCount(); ++i) {
+			/*for (int i = 0; i < inRangeObjectCount(); ++i) {  // eats all the cpu
 				QuadTreeEntry* obj = getInRangeObject(i);
 				SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
 
 				obj->notifyPositionUpdate(this);
 				this->notifyPositionUpdate(obj);
-			}
+			}*/
 		}
 
 		zone->unlock();
@@ -301,7 +301,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 		info("inserting to building");
 
-		((CellObject*)parent.get())->addChild(_this);
+		((CellObject*)parent)->addChild(_this);
 
 		building->insert(this);
 		building->inRange(this, 128);
@@ -404,7 +404,7 @@ void SceneObjectImplementation::removeFromZone(bool doLock) {
 		zone->lock(doLock);
 
 		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent.get();
+			CellObject* cell = (CellObject*) parent;
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 
 			removeFromBuilding(building);
@@ -441,7 +441,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 
 		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
 
-		((CellObject*)parent.get())->removeChild(_this);
+		((CellObject*)parent)->removeChild(_this);
 
 		building->remove(this);
 

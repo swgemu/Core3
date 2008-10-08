@@ -627,8 +627,8 @@ public:
 		setPosture(DEAD_POSTURE);
 	}
 
-	inline bool isAttackableBy(CreatureObject* attacker) {
-		if (attacker->hatesFaction(this->getFaction()))
+	bool isAttackableBy(CreatureObject* creature) {
+		if (creature->hatesFaction(this->getFaction()))
 			return true;
 
 		return (pvpStatusBitmask & ATTACKABLE_FLAG);

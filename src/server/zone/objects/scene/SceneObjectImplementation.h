@@ -89,7 +89,7 @@ protected:
 
 	uint8 directionAngle;
 
-	ManagedReference<SceneObject> parent;
+	SceneObject* parent;
 
 	uint32 linkType;
 

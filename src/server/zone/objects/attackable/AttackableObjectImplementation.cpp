@@ -88,7 +88,7 @@ void AttackableObjectImplementation::removeFromZone(bool dolock) {
 		zone->lock(dolock);
 
 		if (parent != NULL && parent->isCell()) {
-			CellObject* cell = (CellObject*) parent.get();
+			CellObject* cell = (CellObject*) parent;
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 
 			// removeFromBuilding(building);

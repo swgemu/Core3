@@ -403,6 +403,8 @@ public:
 
 	void changeDrinkFilling(int fill, bool updateClient = true);
 
+	bool isAttackableBy(CreatureObject* attacker);
+
 	int getFoodFilling();
 
 	int getDrinkFilling();
@@ -1083,6 +1085,8 @@ public:
 	void changeFoodFilling(int fill, bool updateClient);
 
 	void changeDrinkFilling(int fill, bool updateClient);
+
+	bool isAttackableBy(CreatureObject* attacker);
 
 	int getFoodFilling();
 

@@ -1018,9 +1018,13 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 	}
 
 	ItemManager* itemManager = server->getItemManager();
-	
-	 if (item->isInstrument() && sender->isPlayingMusic())
-        sender->stopPlayingMusic();
+
+	if (item->isInstrument() && sender->isPlayingMusic()) {
+		receiver->sendSystemMessage("Your target cant do this right now");
+		sender->sendSystemMessage("You cant do this while playing music");
+
+		return;
+	}
 
 	item->setEquipped(false);
 	sender->removeInventoryItem(item->getObjectID());
