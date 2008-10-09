@@ -203,3 +203,5 @@ spawnCreature(juvenileCanyonKrayt, 8, 7273, 4317)
 -------
 
 spawnCreatureInCell(dewback, 8, -24.4, -30.0, -22.2, 7125561)
+spawnCreatureInCell(bobaFett, 8, -1.20873, 3, 30.5849, 1177487)
+spawnCreatureInCell(jabbaHutt, 8, -15.0684, 2, 44.2862, 1177487)

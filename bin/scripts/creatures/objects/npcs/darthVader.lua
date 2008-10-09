@@ -96,10 +96,10 @@ darthVader = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/melee/sword/shared_sword_lightsaber_vader.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponTemp = "sword_lightsaber_vader", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
       weaponMinDamage = 1200,
       weaponMaxDamage = 1500,

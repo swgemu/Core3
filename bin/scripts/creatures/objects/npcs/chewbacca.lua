@@ -101,8 +101,8 @@ chewbacca = Creature:new {
       weaponTemp = "rifle_bowcaster", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 550,
+      weaponMinDamage = 150,
+      weaponMaxDamage = 350,
       weaponAttackSpeed = 1.0,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -135,8 +135,8 @@ chewbacca = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "chewbaccaAttack1" },
-      respawnTimer = 3600,
+      skills = { "chewbaccaAttack1", "chewbaccaAttack2", "chewbaccaAttack3", "chewbaccaAttack4", "chewbaccaAttack5", "chewbaccaAttack6", "chewbaccaAttack7", "chewbaccaAttack8", "chewbaccaAttack9", "chewbaccaAttack10", "chewbaccaAttack11", "chewbaccaAttack12", },
+      respawnTimer = 42300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

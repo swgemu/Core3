@@ -268,4 +268,4 @@ marauderRangedAttack4 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddDotPoolAttackTargetSkill(dwbRangedAttack4)
+AddDotPoolAttackTargetSkill(marauderRangedAttack4)

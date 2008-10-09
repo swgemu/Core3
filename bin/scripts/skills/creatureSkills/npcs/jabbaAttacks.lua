@@ -39,29 +39,29 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-corsecAttack1 = {
-	attackname = "corsecAttack1",
+jabbaAttack1 = {
+	attackname = "jabbaAttack1",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = PISTOL,
+	requiredWeaponType = NONE,
 
 	range = 64,
 
-	damageRatio = 5.1,
+	damageRatio = 70,
 
-	speedRatio = 4,
+	speedRatio = 5,
 	coneAngle = 0,
 
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 0,
-	postureDownChance = 0,
+	knockdownChance = 1,
+	postureDownChance = 1,
 	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 10,
+	dizzyChance = 1,
+	blindChance = 1,
+	stunChance = 1,
+	intimidateChance = 1,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -70,68 +70,7 @@ corsecAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(corsecAttack1)
-corsecAttack2 = {
-	attackname = "corsecAttack2",
-	animation = "creature_attack_ranged_light",
-	
-	requiredWeaponType = PISTOL,
+AddRandomPoolAttackTargetSkill(jabbaAttack1)
 
-	range = 64,
+-----------------------------------------------
 
-	damageRatio = 5.8,
-
-	speedRatio = 4,
-	coneAngle = 0,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 20,
-	blindChance = 30,
-	stunChance = 30,
-	intimidateChance = 10,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(corsecAttack2)
-corsecAttack3 = {
-	attackname = "corsecAttack3",
-	animation = "creature_attack_ranged_light",
-	
-	requiredWeaponType = PISTOL,
-
-	range = 64,
-
-	damageRatio = 5.5,
-
-	speedRatio = 4,
-	coneAngle = 60,
-
-	areaRange = 30,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 30,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(corsecAttack3)

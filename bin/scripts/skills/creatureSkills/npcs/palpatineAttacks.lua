@@ -44,7 +44,7 @@ palpatineAttack1 = {
 	attackname = "palpatineAttack1",
 	animation = "force_lightning_1_particle_level_1_light",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = JEDI,
 
 	range = 64,
 
@@ -79,7 +79,7 @@ palpatineAttack2 = {
 	attackname = "palpatineAttack2",
 	animation = "force_intimidate_chain",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = JEDI,
 
 	range = 64,
 
@@ -113,7 +113,7 @@ palpatineAttack3 = {
 attackname = "palpatineAttack3",
 animation = "force_lightning_1_particle_level_2_light",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = JEDI,
 	
 	range = 64,
 	damageRatio = 50,
@@ -144,7 +144,7 @@ palpatineAttack4 = {
 	attackname = "palpatineAttack4",
 	animation = "force_weaken_1_particle_level_1_medium",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = JEDI,
 
 	range = 64,
 
@@ -179,7 +179,7 @@ palpatineAttack5 = {
 	attackname = "palpatineAttack5",
 	animation = "force_lightning_1_particle_level_3_medium",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = JEDI,
 
 	range = 64,
 
@@ -214,7 +214,7 @@ palpatineAttack6 = {
 	attackname = "palpatineAttack6",
 	animation = "force_weaken_1_particle_level_1_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = JEDI,
 	
 	range = 64,
 	damageRatio = 40,
@@ -258,7 +258,7 @@ palpatineAttack7 = {
 	attackname = "palpatineAttack7",
 	animation = "force_lightning_1_arc_particle_level_5_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = JEDI,
 	
 	range = 64,
 	damageRatio = 50,
@@ -289,7 +289,7 @@ palpatineAttack8 = {
 	attackname = "palpatineAttack8",
 	animation = "force_knockdown_1_arc_particle_level_1",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = JEDI,
 	
 	range = 64,
 	damageRatio = 50,

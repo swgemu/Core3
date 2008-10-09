@@ -39,14 +39,14 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-chewbaccaAttack1 = {
-	attackname = "chewbaccaAttack1",
-	animation = "fire_5_special_single_medium",
+atAttack1 = {
+	attackname = "atAttack1",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -66,19 +66,19 @@ chewbaccaAttack1 = {
 	CbtSpamMiss = "strafeshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack1)
+AddRandomPoolAttackTargetSkill(atAttack1)
 
 -----------------------------------------------
 
 
-chewbaccaAttack2 = {
-	attackname = "chewbaccaAttack2",
-	animation = "fire_1_special_single_medium_face",
+atAttack2 = {
+	attackname = "atAttack2",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -109,18 +109,18 @@ chewbaccaAttack2 = {
 	CbtSpamMiss = "headshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack2)
+AddRandomPoolAttackTargetSkill(atAttack2)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack3 = {
-	attackname = "chewbaccaAttack3",
-	animation = "fire_1_special_single_medium_face",
+atAttack3 = {
+	attackname = "atAttack3",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -151,18 +151,18 @@ chewbaccaAttack3 = {
 	CbtSpamMiss = "masterheadshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack3)
+AddRandomPoolAttackTargetSkill(atAttack3)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack4 = {
-	attackname = "chewbaccaAttack4",
-	animation = "fire_1_special_single_medium",
+atAttack4 = {
+	attackname = "atAttack4",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -182,18 +182,18 @@ chewbaccaAttack4 = {
 	CbtSpamMiss = "snipershot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack4)
+AddRandomPoolAttackTargetSkill(atAttack4)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack5 = {
-	attackname = "chewbaccaAttack5",
-	animation = "fire_1_special_single_medium",
+atAttack5 = {
+	attackname = "atAttack5",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -213,18 +213,18 @@ chewbaccaAttack5 = {
 	CbtSpamMiss = "concealedshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack5)
+AddRandomPoolAttackTargetSkill(atAttack5)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack6 = {
-	attackname = "chewbaccaAttack6",
-	animation = "fire_3_special_single_medium",
+atAttack6 = {
+	attackname = "atAttack6",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -244,18 +244,18 @@ chewbaccaAttack6 = {
 	CbtSpamMiss = "flushingshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack6)
+AddRandomPoolAttackTargetSkill(atAttack6)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack7 = {
-	attackname = "chewbaccaAttack7",
-	animation = "fire_defender_posture_change_up",
+atAttack7 = {
+	attackname = "atAttack7",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -275,18 +275,18 @@ chewbaccaAttack7 = {
 	CbtSpamMiss = "startleshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack7)
+AddRandomPoolAttackTargetSkill(atAttack7)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack8 = {
-	attackname = "chewbaccaAttack8",
-	animation = "fire_area_medium",
+atAttack8 = {
+	attackname = "atAttack8",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -306,18 +306,18 @@ chewbaccaAttack8 = {
 	CbtSpamMiss = "flushingvolley_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack8)
+AddRandomPoolAttackTargetSkill(atAttack8)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack9 = {
-	attackname = "chewbaccaAttack9",
-	animation = "fire_defender_posture_change_up",
+atAttack9 = {
+	attackname = "atAttack9",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -337,18 +337,18 @@ chewbaccaAttack9 = {
 	CbtSpamMiss = "startleshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack9)
+AddRandomPoolAttackTargetSkill(atAttack9)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack10 = {
-	attackname = "chewbaccaAttack10",
-	animation = "fire_5_special_single_medium_face",
+atAttack10 = {
+	attackname = "atAttack10",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -368,18 +368,18 @@ chewbaccaAttack10 = {
 	CbtSpamMiss = "flurryshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack10)
+AddRandomPoolAttackTargetSkill(atAttack10)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack11 = {
-	attackname = "chewbaccaAttack11",
-	animation = "fire_area_medium",
+atAttack11 = {
+	attackname = "atAttack11",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -399,18 +399,18 @@ chewbaccaAttack11 = {
 	CbtSpamMiss = "flurry_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack11)
+AddRandomPoolAttackTargetSkill(atAttack11)
 
 -----------------------------------------------------------------------
 
-chewbaccaAttack12 = {
-	attackname = "chewbaccaAttack12",
-	animation = "fire_area_medium",
+atAttack12 = {
+	attackname = "atAttack12",
+	animation = "droid_attack_medium",
 
-	requiredWeaponType = RIFLE,
+	requiredWeaponType = RANGED,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 12,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -430,5 +430,5 @@ chewbaccaAttack12 = {
 	CbtSpamMiss = "advancedstrafe_miss",
 }
 
-AddRandomPoolAttackTargetSkill(chewbaccaAttack12)
+AddRandomPoolAttackTargetSkill(atAttack12)
 

@@ -96,9 +96,9 @@ oldMan = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s10_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/melee/sword/shared_sword_lightsaber_anakin.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "Old Man Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_one_handed_s10_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      weaponTemp = "sword_lightsaber_anakin", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
       weaponMinDamage = 850,

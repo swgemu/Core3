@@ -41,36 +41,408 @@
 --which carries forward this exception.
 hanAttack1 = {
 	attackname = "hanAttack1",
-	animation = "creature_attack_ranged_light",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
 	
-	requiredWeaponType = NONE,
-
-	range = 64,
-
+	range = 65,
 	damageRatio = 70,
-
-	speedRatio = 5,
-	coneAngle = 0,
-
+	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
-		
-	knockdownChance = 1,
-	postureDownChance = 1,
-	postureUpChance = 0,
-	dizzyChance = 1,
-	blindChance = 1,
-	stunChance = 1,
-	intimidateChance = 1,
+
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
+
+	dotChance = 60,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
 	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
+	CbtSpamBlock = "sapblast_block",
+	CbtSpamCounter = "sapblast_counter",
+	CbtSpamEvade = "sapblast_evade",
+	CbtSpamHit = "sapblast_hit",
+	CbtSpamMiss = "sapblast_miss",
 }
 
 AddRandomPoolAttackTargetSkill(hanAttack1)
 
 -----------------------------------------------
+hanAttack2 = {
+	attackname = "hanAttack2",
+	animation = "fire_5_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "pointblankblast_block",
+	CbtSpamCounter = "pointblankblast_counter",
+	CbtSpamEvade = "pointblankblast_evade",
+	CbtSpamHit = "pointblankblast_hit",
+	CbtSpamMiss = "pointblankblast_miss",
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack2)
+
+
+-----------------------------------------------------------------------
+
+hanAttack3 = {
+	attackname = "hanAttack3",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "bodyshot_block",
+	CbtSpamCounter = "bodyshot_counter",
+	CbtSpamEvade = "bodyshot_evade",
+	CbtSpamHit = "bodyshot_hit",
+	CbtSpamMiss = "bodyshot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack3)
+
+-----------------------------------------------------------------------
+
+hanAttack4 = {
+	attackname = "hanAttack4",
+	animation = "fire_area_no_trails_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	coneAngle = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "areashot_block",
+	CbtSpamCounter = "areashot_counter",
+	CbtSpamEvade = "areashot_evade",
+	CbtSpamHit = "areashot_hit",
+	CbtSpamMiss = "areashot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack4)
+
+-----------------------------------------------------------------------
+
+hanAttack5 = {
+	attackname = "hanAttack5",
+	animation = "fire_3_single_light_face",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "disarmshot_block",
+	CbtSpamCounter = "disarmshot_counter",
+	CbtSpamEvade = "disarmshot_evade",
+	CbtSpamHit = "disarmshot_hit",
+	CbtSpamMiss = "disarmshot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack5)
+
+-----------------------------------------------------------------------
+
+hanAttack6 = {
+	attackname = "hanAttack6",
+	animation = "fire_7_single_light_face",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+	
+	healthAttackChance = 75,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+	
+	actionAttackChance = 75,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 10,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,	
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "doubletap_block",
+	CbtSpamCounter = "doubletap_counter",
+	CbtSpamEvade = "doubletap_evade",
+	CbtSpamHit = "doubletap_hit",
+	CbtSpamMiss = "doubletap_miss",
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack6)
+
+-----------------------------------------------------------------------
+
+hanAttack7 = {
+	attackname = "hanAttack7",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "stoppingshot_block",
+	CbtSpamCounter = "stoppingshot_counter",
+	CbtSpamEvade = "stoppingshot_evade",
+	CbtSpamHit = "stoppingshot_hit",
+	CbtSpamMiss = "stoppingshot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack7)
+
+-----------------------------------------------------------------------
+
+hanAttack8 = {
+	attackname = "hanAttack8",
+	animation = "fire_area_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	coneAngle = 60,	
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 20,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "fanshot_block",
+	CbtSpamCounter = "fanshot_counter",
+	CbtSpamEvade = "fanshot_evade",
+	CbtSpamHit = "fanshot_hit",
+	CbtSpamMiss = "fanshot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack8)
+
+-----------------------------------------------------------------------
+
+hanAttack9 = {
+	attackname = "hanAttack9",
+	animation = "ranged_melee_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 5,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 10,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "pistolwhip_block",
+	CbtSpamCounter = "pistolwhip_counter",
+	CbtSpamEvade = "pistolwhip_evade",
+	CbtSpamHit = "pistolwhip_hit",
+	CbtSpamMiss = "pistolwhip_miss",
+
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack9)
+
+-----------------------------------------------------------------------
+
+hanAttack10 = {
+	attackname = "hanAttack10",
+	animation = "ranged_melee_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 5,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 30,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "pistolsmash_block",
+	CbtSpamCounter = "pistolsmash_counter",
+	CbtSpamEvade = "pistolsmash_evade",
+	CbtSpamHit = "pistolsmash_hit",
+	CbtSpamMiss = "pistolsmash_miss",
+
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack10)
+
+-----------------------------------------------------------------------
+
+hanAttack11 = {
+	attackname = "hanAttack11",
+	animation = "fire_5_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	coneAngle = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "pistolmultishot_block",
+	CbtSpamCounter = "pistolmultishot_counter",
+	CbtSpamEvade = "pistolmultishot_evade",
+	CbtSpamHit = "pistolmultishot_hit",
+	CbtSpamMiss = "pistolmultishot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack11)
+
+-----------------------------------------------------------------------
+
+hanAttack12= {
+	attackname = "hanAttack12",
+	animation = "fire_3_single_light_face",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 2.5,
+	areaRange = 0,
+	accuracyBonus = 0,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "disarmblast_block",
+	CbtSpamCounter = "disarmblast_counter",
+	CbtSpamEvade = "disarmblast_evade",
+	CbtSpamHit = "disarmblast_hit",
+	CbtSpamMiss = "disarmblast_miss",
+}
+
+AddRandomPoolAttackTargetSkill(hanAttack12)
 

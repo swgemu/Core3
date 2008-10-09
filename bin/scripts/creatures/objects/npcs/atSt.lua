@@ -97,11 +97,11 @@ atSt = Creature:new {
 	weapon = "object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "Imperial Cannon", -- Name ex. 'a Vibrolance'
 	weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 350,
 	weaponMaxDamage = 500,
-	weaponAttackSpeed = 1.0,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -133,7 +133,7 @@ atSt = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "stormTrooperAttack2" },
+	skills = { "atAttack1", "atAttack2", "atAttack3", "atAttack4", "atAttack5", "atAttack6", "atAttack7", "atAttack8", "atAttack9", "atAttack10", "atAttack12" },
 	respawnTimer = 1800, 
 	
 	behaviorScript = "", -- Link to the behavior script for this object

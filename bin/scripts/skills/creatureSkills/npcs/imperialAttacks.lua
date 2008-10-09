@@ -75,7 +75,7 @@ stormTrooperAttack2 = {
 	attackname = "stormTrooperAttack2",
 	animation = "fire_turret",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 
 	range = 64,
 
