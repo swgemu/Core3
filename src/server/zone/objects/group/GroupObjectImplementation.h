@@ -68,7 +68,7 @@ class GroupObjectImplementation : public GroupObjectServant {
 	ChatRoom* groupChannel;
 
 public:
-	GroupObjectImplementation(uint64 oid, Player* Leader,bool mode);
+	GroupObjectImplementation(uint64 oid, Player* Leader);
 
 	void sendTo(Player* player, bool doClose = true);
 	void broadcastMessage(BaseMessage* msg);
@@ -121,9 +121,6 @@ public:
 	friend class GroupObjectMessage6;
 
 	friend class GroupObjectDeltaMessage6;
-
-	bool modus;
-
 };
 
 #endif /*GROUPOBJECTIMPLEMENTATION_H_*/

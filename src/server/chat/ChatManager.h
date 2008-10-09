@@ -87,7 +87,9 @@ public:
 
 	void sendRoomList(Player* player);
 
-	ChatRoom* createGroupRoom(unsigned int groupID, Player* creator, bool mode);
+	ChatRoom* createGroupRoom(unsigned int groupID, Player* creator);
+
+	void sendGuildChat(Player* player);
 
 	ChatRoom* createRoomByFullPath(const string& path);
 
@@ -189,7 +191,9 @@ public:
 
 	void sendRoomList(Player* player);
 
-	ChatRoom* createGroupRoom(unsigned int groupID, Player* creator, bool mode);
+	ChatRoom* createGroupRoom(unsigned int groupID, Player* creator);
+
+	void sendGuildChat(Player* player);
 
 	ChatRoom* createRoomByFullPath(const string& path);
 

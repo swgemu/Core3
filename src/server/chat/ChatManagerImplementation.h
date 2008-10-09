@@ -147,7 +147,9 @@ public:
 
 	void sendRoomList(Player* player);
 
-	ChatRoom* createGroupRoom(uint32 groupID, Player* creator, bool mode);
+	void sendGuildChat(Player* player);
+
+	ChatRoom* createGroupRoom(uint32 groupID, Player* creator);
 
 	ChatRoom* createRoomByFullPath(const string& path);
 
