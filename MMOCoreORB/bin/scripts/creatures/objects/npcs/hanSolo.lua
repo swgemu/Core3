@@ -100,8 +100,8 @@ hanSolo = Creature:new {
       weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 550,
+      weaponMinDamage = 150,
+      weaponMaxDamage = 350,
       weaponAttackSpeed = 1.0,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -134,8 +134,8 @@ hanSolo = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "hanAttack1" },
-      respawnTimer = 3600,
+      skills = { "hanAttack1", "hanAttack2", "hanAttack3", "hanAttack4", "hanAttack5", "hanAttack6", "hanAttack7", "hanAttack8", "hanAttack9", "hanAttack10", "hanAttack12" },
+      respawnTimer = 42300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

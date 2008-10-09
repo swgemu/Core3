@@ -149,5 +149,7 @@ RunCreatureFile("objects/npcs/oldMan.lua")
 RunCreatureFile("objects/npcs/luke.lua")
 RunCreatureFile("objects/npcs/hanSolo.lua")
 RunCreatureFile("objects/npcs/chewbacca.lua")
+RunCreatureFile("objects/npcs/bobaFett.lua")
+RunCreatureFile("objects/npcs/jabbaHutt.lua")
 
 ----------------------------------------------------------------------------------------------------

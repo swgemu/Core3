@@ -77,71 +77,6 @@ AddRandomPoolAttackTargetSkill(lukeAttack1)
 
 lukeAttack2 = {
 	attackname = "lukeAttack2",
-	animation = "force_intimidate_chain",
-	
-	requiredWeaponType = JEDI,
-
-	range = 32,
-
-	damageRatio = 50,
-
-	speedRatio = 1,
-	coneAngle = 80,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 95,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(lukeAttack2)
-
------------------------------------------------
-lukeAttack3 = {
-attackname = "lukeAttack3",
-animation = "force_knockdown_1_arc_particle_level_1",
-
-	requiredWeaponType = JEDI,
-	
-	range = 8,
-	damageRatio = 50,
-	speedRatio = 1,
-	areaRange = 0,
-	accuracyBonus = 50,
-		
-	knockdownChance = 95,
-	postureDownChance = 95,
-	postureUpChance = 0,
-	dizzyChance = 50,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
-}
-
-AddRandomPoolAttackTargetSkill(lukeAttack3)
-
------------------------------------------------
-
-lukeAttack4 = {
-	attackname = "lukeAttack4",
 	animation = "combo_jedi_2_light",
 
 	requiredWeaponType = JEDI,
@@ -166,12 +101,12 @@ lukeAttack4 = {
 	CbtSpamMiss = "saberpolearmdervish2_miss"
 }
 
-AddRandomPoolAttackTargetSkill(lukeAttack4)
+AddRandomPoolAttackTargetSkill(lukeAttack2)
 
 -----------------------------------------------------------------------
 
-lukeAttack5 = {
-	attackname = "lukeAttack5",
+lukeAttack3 = {
+	attackname = "lukeAttack3",
 	animation = "saberthrow_posture_change",
 
 	requiredWeaponType = JEDI,
@@ -196,12 +131,12 @@ lukeAttack5 = {
 	CbtSpamMiss = "saberthrow3_miss"
 }
 
-AddRandomPoolAttackTargetSkill(lukeAttack5)
+AddRandomPoolAttackTargetSkill(lukeAttack3)
 
 -----------------------------------------------------------------------
 
-lukeAttack6 = { 
-	attackname = "lukeAttack6",
+lukeAttack4 = { 
+	attackname = "lukeAttack4",
 	animation = "combo_2d_light",
 
 	requiredWeaponType = JEDI,
@@ -239,42 +174,12 @@ lukeAttack6 = {
 	CbtSpamMiss = "saberslash2_miss"
 }
 
-AddDotPoolAttackTargetSkill(lukeAttack6)
+AddDotPoolAttackTargetSkill(lukeAttack4)
 
 -----------------------------------------------------------------------
 
-lukeAttack7 = { 
-	attackname = "lukeAttack7",
-	animation = "force_choke_1_particle_level_1_medium",
-
-	requiredWeaponType = JEDI,
-	
-	range = 64,
-	damageRatio = 50,
-	speedRatio = 1.0,
-	coneAngle = 0,
-	accuracyBonus = 50,
-	
-	knockdownChance = 0,
-	postureDownChance = 0,
-	dizzyChance = 95,
-	blindChance = 50,
-	stunChance = 50,
-	intimidateChance = 10,
-	
-	CbtSpamBlock = "forcechoke_block",
-	CbtSpamCounter = "forcechoke_counter",
-    CbtSpamEvade = "forcechoke_evade",
-    CbtSpamHit = "forcechoke_hit",
-    CbtSpamMiss = "forcechoke_miss"
-}
-
-AddDotPoolAttackTargetSkill(lukeAttack7)
-
------------------------------------------------------------------------
-
-lukeAttack8 = { 
-	attackname = "lukeAttack8",	
+lukeAttack5 = { 
+	attackname = "lukeAttack5",	
 	animation = "saberthrow_posture_change",
 
 	requiredWeaponType = JEDI,
@@ -299,6 +204,6 @@ lukeAttack8 = {
 	CbtSpamMiss = "saberthrow3_miss"
 }
 
-AddDotPoolAttackTargetSkill(lukeAttack8)
+AddDotPoolAttackTargetSkill(lukeAttack5)
 
 -----------------------------------------------------------------------

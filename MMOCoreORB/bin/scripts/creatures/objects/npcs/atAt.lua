@@ -99,11 +99,11 @@ atAt = Creature:new {
 	weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 450,
-	weaponMaxDamage = 600,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 450,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -133,7 +133,7 @@ atAt = Creature:new {
     meatType = "",
     meatMax = 0,
 
-	skills = { "stormTrooperAttack2" },
+	skills = { "atAttack1", "atAttack2", "atAttack3", "atAttack4", "atAttack5", "atAttack6", "atAttack7", "atAttack8", "atAttack9", "atAttack10", "atAttack12" },
 	respawnTimer = 3600, 
 	
 	behaviorScript = "", -- Link to the behavior script for this object

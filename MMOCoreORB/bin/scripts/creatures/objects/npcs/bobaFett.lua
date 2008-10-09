@@ -1,8 +1,6 @@
 --Copyright (C) 2008 <SWGEmu>
 
-
 --This File is part of Core3.
-
 --This program is free software; you can redistribute 
 --it and/or modify it under the terms of the GNU Lesser 
 --General Public License as published by the Free Software
@@ -40,18 +38,19 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-luke = Creature:new {
-      objectName = "luke",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "rebel",
-      gender = "",
 
-      stfName = "Luke Skywalker",
-      objectCRC = 196428947, 
-      socialGroup = "rebel",
+bobaFett = Creature:new {
+      objectName = "bobaFett",  -- Lua Object Name
+      creatureType = "NPC",
+      faction = "imperial",
+      gender = "male",
+
+      stfName = "Boba Fett",
+      objectCRC = 2908233289, 
+      socialGroup = "imperial",
       named = TRUE, 
 
-      level = 500,
+      level = 250,
       xp = 28549,
 
       combatFlags = 0,
@@ -96,16 +95,16 @@ luke = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/shared_sword_lightsaber_anakin.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Luke Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_anakin", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/ranged/carbine/shared_carbine_ee3.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Boba Carbine", -- Name ex. 'a Vibrolance'
+      weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 550,
-      weaponMaxDamage = 850,
+      weaponMinDamage = 150,
+      weaponMaxDamage = 350,
       weaponAttackSpeed = 1.0,
-      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -135,10 +134,10 @@ luke = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "lukeAttack1", "lukeAttack2", "lukeAttack3", "lukeAttack4", "lukeAttack5" },
+      skills = { "bobaAttack1", "bobaAttack2", "bobaAttack3", "bobaAttack4", "bobaAttack5", "bobaAttack6", "bobaAttack7", "bobaAttack8", "bobaAttack9", "bobaAttack10", "bobaAttack11", "bobaAttack12", "bobaAttack13", "bobaAttack14", "bobaAttack15",  },
       respawnTimer = 42300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(luke, 196428947) --  Add to Global Table
+Creatures:addCreature(bobaFett, 2908233289) --  Add to Global Table

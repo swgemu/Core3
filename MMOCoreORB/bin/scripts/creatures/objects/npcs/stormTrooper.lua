@@ -135,7 +135,7 @@ stormTrooper = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "stormTrooperAttack1" },
+      skills = { "stormAttack1", "stormAttack2", "stormAttack3", "stormAttack4", "stormAttack5", "stormAttack6", "stormAttack7", "stormAttack8", "stormAttack9", "stormAttack10", "stormAttack11", "stormAttack12", "stormAttack13", "stormAttack14", "stormAttack15",  },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

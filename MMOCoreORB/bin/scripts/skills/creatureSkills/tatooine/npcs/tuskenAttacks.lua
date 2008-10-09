@@ -548,7 +548,7 @@ tuskenRangedAttack1 = {
 	attackname = "tuskenRangedAttack1",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 
 	range = 64,
 
@@ -580,7 +580,7 @@ tuskenRangedAttack2 = {
 	attackname = "tuskenRangedAttack2",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 
 	range = 64,
 
@@ -612,7 +612,7 @@ tuskenRangedAttack3 = {
 	attackname = "tuskenRangedAttack3",
 	animation = "creature_attack_ranged_light",
 	
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 
 	range = 64,
 
@@ -644,7 +644,7 @@ tuskenRangedAttack4 = {
 	attackname = "tuskenRangedAttack4",
 	animation = "creature_attack_ranged_light",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
 	range = 64,
 	damageRatio = 7.5,
