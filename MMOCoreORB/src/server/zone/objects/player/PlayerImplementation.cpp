@@ -1592,12 +1592,12 @@ void PlayerImplementation::notifySceneReady() {
 }
 
 void PlayerImplementation::loadGuildChat() {
-	GroupManager* groupManager = server->getGroupManager();
+	ChatManager* chatManager = server->getChatManager();
 
-	if (groupManager)
-		groupManager->joinGuildGroup(_this);
+	if (chatManager)
+		chatManager->sendGuildChat(_this);
 	else
-		error("Error: PlayerManagerImplementation::loadGuildChat() groupManager is null ");
+		error("Error: PlayerManagerImplementation::loadGuildChat() chatManager is null ");
 }
 
 void PlayerImplementation::sendSystemMessage(const string& message) {

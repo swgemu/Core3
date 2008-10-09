@@ -180,7 +180,7 @@ GroupObject* GroupManager::createGroup(Player* leader) {
 
 	ZoneServer* server = leader->getZone()->getZoneServer();
 
-	GroupObject* group = new GroupObject(server->getNextCreatureID(), leader, false);
+	GroupObject* group = new GroupObject(server->getNextCreatureID(), leader);
 
 	group->setZone(leader->getZone());
 
@@ -192,42 +192,6 @@ GroupObject* GroupManager::createGroup(Player* leader) {
 
 	if (leader->getGroupInviterID() != 0)
 		leader->updateGroupInviterId(0);
-
-	return group;
-}
-
-void GroupManager::joinGuildGroup(Player* player) {
-	//Pre: player locked
-	//Post: player locked
-
-	if (player->getGuildID() == 0)
-		return;
-
-	Guild* playerGuild = player->getGuild();
-	//No Null Check: Player has always a guild (Default guild (unguilded) is 0 )
-
-	playerGuild->wlock();
-
-	ChatRoom* guildchat = playerGuild->getGuildChat();
-
-	playerGuild->unlock();
-
-	if (guildchat == 0) {
-		GroupObject* group = createGuildGroup(player);
-	} else {
-		guildchat->sendTo(player);
-		guildchat->addPlayer(player, false);
-	}
-}
-
-GroupObject* GroupManager::createGuildGroup(Player* play) {
-	// Pre: play locked
-	// Post: GroupObject is a new group with play, play locked.
-
-	ZoneServer* server = play->getZone()->getZoneServer();
-
-	GroupObject* group = new GroupObject(server->getNextCreatureID(), play, true);
-	group->setZone(play->getZone());
 
 	return group;
 }

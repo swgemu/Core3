@@ -59,8 +59,6 @@ public:
 	void inviteToGroup(Player* leader, Player* player);
 	void joinGroup(Player* player);
 
-	void joinGuildGroup(Player* player);
-
 	void kickFromGroup(GroupObject* group, Player* player, Player* playerToKick);
 	void leaveGroup(GroupObject* group, Player* player);
 	void makeLeader(GroupObject* group, Player* player, Player* newLeader);
@@ -68,7 +66,6 @@ public:
 	void disbandGroup(GroupObject* group, Player* player);
 
 	GroupObject* createGroup(Player* leader);
-	GroupObject* createGuildGroup(Player* leader);
 
 };
 

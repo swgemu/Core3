@@ -101,7 +101,6 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 	gameCommandHandler = new GameCommandHandler();
 
 	initiateRooms();
-
 }
 
 ChatManagerImplementation::~ChatManagerImplementation() {
@@ -997,6 +996,29 @@ void ChatManagerImplementation::sendRoomList(Player* player) {
  	player->sendMessage(crl);
 }
 
+void ChatManagerImplementation::sendGuildChat(Player* player) {
+	if (player->getGuildID() == 0)
+		return;
+
+	Guild* playerGuild = player->getGuild();
+	//No Null Check: Player has always a guild (Default guild (unguilded) is 0 )
+
+	playerGuild->wlock();
+
+	ChatRoom* guildchat = playerGuild->getGuildChat();
+
+	playerGuild->unlock();
+
+	if (guildchat == NULL) {
+		uint32 guildid = player->getGuildID();
+
+		initGuildChannel(player,guildid);
+	} else {
+		guildchat->sendTo(player);
+		guildchat->addPlayer(player, false);
+	}
+}
+
 
 void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
 	if (channel->isPublic())
@@ -1069,7 +1091,7 @@ ChatRoom* ChatManagerImplementation::getGameRoom(const string& game) {
 	return gameRooms.get(game);
 }
 
-ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* creator,bool mode) {
+ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* creator) {
 	// Pre: creator locked;
 	// Post: creator locked.
 
@@ -1092,18 +1114,11 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* cre
 	groupChatRoom->setTitle(name.str());
 	groupChatRoom->setPrivate();
 
-	if (!mode) { //Standard group
-		groupChatRoom->sendTo(creator);
-		groupChatRoom->addPlayer(creator, false);
-	}
+	groupChatRoom->sendTo(creator);
+	groupChatRoom->addPlayer(creator, false);
 
 	newGroupRoom->addSubRoom(groupChatRoom);
 	addRoom(groupChatRoom);
-
-	if (mode) {
-		uint32 guildid = creator->getGuildID();
-		initGuildChannel(creator,guildid);
-	}
 
 	return groupChatRoom;
 }

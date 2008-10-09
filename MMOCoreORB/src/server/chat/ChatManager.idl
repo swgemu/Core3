@@ -98,12 +98,14 @@ interface ChatManager {
 	void handleChatRemoveAvatarFromRoom(Player player, Message pack);
 
 	ChatRoom getChatRoom(unsigned int id);
-	
+
 	void addRoom(ChatRoom channel);
 	void removeRoom(ChatRoom channel);
 
 	void sendRoomList(Player player);
-	ChatRoom createGroupRoom(unsigned int groupID, Player creator, boolean mode);
+	ChatRoom createGroupRoom(unsigned int groupID, Player creator);
+
+	void sendGuildChat(Player player);
 
 	ChatRoom createRoomByFullPath(const string path);
 
