@@ -1528,13 +1528,7 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 
 	parent = NULL;
 
-	//positionX = x;
-	//positionY = y;
-	//positionZ = zone->getHeight(x, y);;
-	//Spawning-in-the-air-fix: If player is not in a ship or building, we override Z-Axis with Zero. Client is always overrding Z-Axis with TerrainMinHeight
-
-	if (parent == NULL)
-		setPosition(x, 0, y);
+	setPosition(x, 0, y);
 
 	if (parentID != 0) {
 		SceneObject* newParent = zone->lookupObject(parentID);
@@ -2232,9 +2226,9 @@ void PlayerImplementation::doClone() {
 	switch (zoneID) {
 	case 0:	// Corellia
 		if (faction == String::hashCode("rebel"))
-			doWarp(-326.0f, -4640.0f, 0, true);				// shuttle 1
+			doWarp(-326.0f, -4640.0f);				// shuttle 1
 		else
-			doWarp(-28.0f, -4438.0f);						// shuttle 2
+			doWarp(-28.0f, -4438.0f);				// shuttle 2
 
 		break;
 	case 1:	// Dantooine
@@ -2246,7 +2240,7 @@ void PlayerImplementation::doClone() {
  		break;
 	case 2: // Dathomir
 		if (faction == String::hashCode("rebel"))			// science outpost
-			doWarp(-76.0f, -1627.0f, 0, true);
+			doWarp(-76.0f, -1627.0f);
 		else
 			doWarp(618.0f, 3054.0f);						// trade outpost
 
@@ -2295,9 +2289,9 @@ void PlayerImplementation::doClone() {
  		break;
 	default:
 		if (faction == String::hashCode("rebel"))
-			doWarp(-130.0f, -5300.0f, 0, true);
+			doWarp(-130.0f, -5300.0f);
 		else if (faction == String::hashCode("imperial"))
-			//doWarp(10.0f, -5480.0f, 0, true);
+     		//doWarp(10.0f, -5480.0f, 0, true);
 			doWarp(-2.8f, 0.1f, -4.8f, 0, 3565798);
 		else
 			doWarp(0.5f, 1.5f, 0.3f, 0, 1590892); // ah cloning facility

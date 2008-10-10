@@ -608,50 +608,66 @@ void PlayerManagerImplementation::updateGuildStatus(Player* player) {
 
 
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
-	//still crashing here
-	/*player->info("Entering PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
+	//TA: Another try with some changes in locks and removed object NULLING...lets see if this works now
 
-	string loggingInName = player->getFirstName();
-	String::toLower(loggingInName);
+	Player* playerToInform;
+	PlayerObject* toInformObject;
 
-	playerMap->resetIterator();
+	try {
+		player->info("Entering PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
 
-	while (playerMap->hasNext()) {
-		Player* playerToInform = playerMap->next();
+		string loggingInName = player->getFirstName();
+		String::toLower(loggingInName);
 
-		if (playerToInform != player) {
-			playerToInform->wlock(player);
+		playerMap->resetIterator();
 
-			PlayerObject* toInformObject = playerToInform->getPlayerObject();
+		while (playerMap->hasNext()) {
+			playerToInform = playerMap->next();
 
-			if (toInformObject != NULL) {
-				toInformObject->wlock();
+			if (playerToInform != player) {
+				playerToInform->wlock(player);
 
-				for (int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i){
-					if(toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
+				toInformObject = playerToInform->getPlayerObject();
 
-						if (playerToInform->isOnline()) {
+				if ( playerToInform != player && toInformObject != NULL) {
+					toInformObject->wlock();
 
-							FriendStatusChangeMessage* notifyStatus =
-								new FriendStatusChangeMessage(loggingInName, "Core3", status);
+					for (int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i) {
+						if(toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
 
-							playerToInform->sendMessage(notifyStatus);
+							if (playerToInform->isOnline()) {
+								FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(loggingInName, "Core3", status);
+								playerToInform->sendMessage(notifyStatus);
+								break;
+							}
+
 						}
 					}
+
+					if ( playerToInform != player && toInformObject != NULL)
+						toInformObject->unlock();
 				}
-				toInformObject->unlock();
+
+				if (playerToInform != player)
+					playerToInform->unlock();
 			}
-
-			if (playerToInform != player)
-				playerToInform->unlock();
-
-			playerToInform = NULL;
-			toInformObject = NULL;
 		}
+
+	} catch (...) {
+		if (playerToInform != player)
+			playerToInform->unlock();
+
+		if (playerToInform != player)
+			playerToInform->unlock();
+
+		player->info("Unreported exception in PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
+		cout << "Unreported exception in PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)\n";
+
+		return;
 	}
 
 	player->info("Clean exit from PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
-	player = NULL;*/
+
 }
 
 void PlayerManagerImplementation::unload(Player* player) {

@@ -317,18 +317,68 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	uint64 target;
 	unicode name;
 
-	//TODO: This needs to be revisted, certain skills can be done while dead or incapacitated:
-	// Like /activateClone, /consent, /unconsent, /haveconsent
-	if ((player->isIncapacitated() || player->isDead()) && (actionCRC
-			!= 0xEA69C1BD && actionCRC != 0x3F8F3496 && actionCRC != 0xA2DF082A
-			&& actionCRC != 0xB93A3853)) {
-		player->clearQueueAction(actioncntr, 0.0f, 1, 19);
-		return;
-	}
 
 	if (actionCRC == 0) {
 		player->clearQueueAction(actioncntr, 0.0f, 0, 0);
 		return;
+	}
+
+	// DO NOT FORGET TO ADD EVERYTHING WHICH IS ALLOWED WHILE BEING INCAP/DEAD TO THIS SWITCH HERE AS WELL
+	switch (actionCRC) {
+		case (0x68851C4F): // groupchat
+		case (0x0315D6D9): // g
+		case (0x3CDFF0CC): // gsay
+		case (0xEA69C1BD): // activateClone
+		case (0x3F8F3496): // consent
+		case (0xA2DF082A): // unconsent
+		case (0xB93A3853): // haveconsent
+		case (0x1E0B1E43): // guildremove
+		case (0x03B65950): // Logout
+		case (0x887B5461): // requestcharactersheetinfo
+		case (0xCA604B86): // requestbadges
+		case (0x7AFCA539): // requeststatmigrationdata
+		case (0x1BAD8FFC): // requestbiography
+		case (0xFBE911E4): // setbiography
+		case (0x164550EF): // getattributesbatch
+		case (0xDB555329): // setcurrentskilltitle
+		case (0xA6F95839): // showpvprating
+		case (0x9B9FE4A8): // toggleawayfromkeyboard
+		case (0x3AD396A5): // lfg
+		case (0x441F4A3E): // newbiehelper
+		case (0x32871193): // roleplay
+		case (0x665C7C03): // display faction rank
+		case (0xD40D5142): // anon
+		case (0x4982E17B): // requestwaypointatposition
+		case (0x8A19D7E1): // requestcharactermatch
+		case (0x640543FE): // waypoint (/way)
+		case (0x398F891A): // setwaypointname
+		case (0xC3EDA6B6): // setwaypointactivestatus
+		case (0x88505D58): // invite
+		case (0x2E26A47F): // uninvite
+		case (0x43E1F84F): // decline
+		case (0xA99E6807): // join
+		case (0x5061D654): // leavegroup
+		case (0x2F50053B): // dismissgroupmember
+		case (0x46D22D3A): // disband
+		case (0x939AD584): // makeleader
+		case (0x79DEB176): // guild (chat)
+		case (0x47948A6D): // guildsay
+		case (0xC64D8CB0): // tip
+		case (0x4178FD6A): // peace
+		case (0xEF3CBEDB): // loot
+		case (0x3CD5C98D): // lootall
+		case (0x2A2357ED): // Add Friend
+		case (0x929AD345): // Add Ignore
+		case (0x3629157F): // Remove Ignore
+		case (0x30BE6EE9): // Find Friend
+		case (0x8E9091D7): // Remove Friend
+		case (0x029D0CC5): // Harvest
+			break;
+		default:
+			if ( player->isIncapacitated() || player->isDead() ) {
+				player->clearQueueAction(actioncntr, 0.0f, 1, 19);
+				return;
+			}
 	}
 
 	player->setActionCounter(actioncntr);
@@ -343,8 +393,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	ChatManager* chatManager;
 	CombatManager* combatManager = serv->getCombatManager();
 	GuildManager* pGuild = serv->getGuildManager();
-
-	// CommandQueueAction* action; - not used anymore?
 
 	switch (actionCRC) {
 	case (0x1E0B1E43): //guildremove

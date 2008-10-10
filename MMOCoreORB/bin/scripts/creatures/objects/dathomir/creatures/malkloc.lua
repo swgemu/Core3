@@ -54,7 +54,7 @@ malkloc = Creature:new {
       level = 22,
       xp = 2006,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG,
 
       healthMax = 6600,
       healthMin = 5400,
