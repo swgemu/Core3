@@ -416,7 +416,6 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 			waypoint = waypointList.get(i);
 
 			if (waypoint->getInternalNote() == name) {
-				//string wpName = waypoint->getName();
 				returnWP = waypoint;
 				break;
 			}
@@ -432,7 +431,6 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 			String::toLower(wpName);
 
 			if (wpName == sName) {
-				//string wpName = waypoint->getName();
 				returnWP = waypoint;
 				break;
 			}
@@ -442,5 +440,3 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 	unlock();
 	return returnWP;
 }
-
-

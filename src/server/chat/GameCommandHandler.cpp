@@ -468,11 +468,8 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 }
 
 void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player * player) {
-	int i = 0;
 	float x,y;
 	string wpName;
-
-	//PlayerObjectImplementation* playOI = (PlayerObjectImplementation*)player->getPlayerObject();
 
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(wpName);
@@ -486,12 +483,40 @@ void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player * player) {
 	if (waypoint != NULL) {
 		x = waypoint->getPositionX();
 		y = waypoint->getPositionY();
+
+		string planetName = waypoint->getPlanetName();
+		int planet = player->getZoneIndex();
+
+		if (planetName == "corellia")
+			planet = 0;
+		else if (planetName == "dantooine")
+			planet = 1;
+		else if (planetName == "dathomir")
+			planet = 2;
+		else if (planetName == "endor")
+			planet = 3;
+		else if (planetName == "lok")
+			planet = 4;
+		else if (planetName == "naboo")
+			planet = 5;
+		else if (planetName == "rori")
+			planet = 6;
+		else if (planetName == "talus")
+			planet = 7;
+		else if (planetName == "tatooine")
+			planet = 8;
+		else if (planetName == "yavin4")
+			planet = 9;
+
+		if (planet != player->getZoneIndex())
+			player->switchMap(planet);
+
+		player->doWarp(x, y);
+
 	} else {
 		player->sendSystemMessage("Waypoint not found ?! Make sure the spelling is correct.\n");
 		return;
 	}
-
-	player->doWarp(x, y);
 }
 
 void GameCommandHandler::summon(StringTokenizer tokenizer, Player * player) {
