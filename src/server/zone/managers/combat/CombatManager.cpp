@@ -67,10 +67,12 @@ CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
 float CombatManager::handleAction(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
 
-	if (creature != NULL && creature->isPlayer() && ((Player*)creature)->isImmune()) {
-		((Player*)creature)->sendSystemMessage("You cannot attack while Immune.");
-		return 0.0f;
-	}
+	if (creature != NULL && creature->isPlayer())
+		if (((Player*)creature)->isImmune()) {
+			((Player*)creature)->sendSystemMessage("You cannot attack while Immune.");
+			return 0.0f;
+		}
+		// TODO: Check for armour if using Jedi skill and disallow
 
 	Skill* skill = action->getSkill();
 
@@ -478,7 +480,7 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 				0x306887EB
 	};
 
-	if (weapon->getCategory() == WeaponImplementation::RANGED)
+	if ((weapon != NULL) && (weapon->getCategory() == WeaponImplementation::RANGED))
 		return 0x506E9D4C;
 	else {
 			int choice = System::random(8);
@@ -911,9 +913,6 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	float attackerAccuracy = creature->getAccuracy();
 
-	if (attackerAccuracy > 250.f)
-		attackerAccuracy = 250.f;
-
 	int targetDefense = getTargetDefense(creature, targetCreature, weapon);
 
 	// Calculation based on the DPS calculation spreadsheet
@@ -1198,67 +1197,72 @@ bool CombatManager::calculateCost(CreatureObject* creature, float hamMultiplier,
 			player->changeForcePowerBar(-forceCost);
 	}
 
+	// TODO: Add HAM costs for unarmed
+
 	return true;
 }
 
 float CombatManager::calculateAttackSpeed(CreatureObject* creature, TargetSkill* tskill) {
 	Weapon* weapon = creature->getWeapon();
 	float weaponSpeed;
-		int speedMod = 0;
+	int speedMod = 0;
 
-		if (creature->isPlayer())
-			if (weapon == NULL)
+	if (creature->isPlayer())
+		if (weapon == NULL)
+			speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
+		else switch (weapon->getObjectSubType()) {
+			case TangibleObjectImplementation::MELEEWEAPON:
 				speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
-			else switch (weapon->getObjectSubType()) {
-				case TangibleObjectImplementation::MELEEWEAPON:
-					speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
+				break;
+			case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
+				speedMod = ((Player*)creature)->getSkillMod("onehandmelee_speed");
+				break;
+			case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
+				speedMod = ((Player*)creature)->getSkillMod("twohandmelee_speed");
+				break;
+			case TangibleObjectImplementation::POLEARM:
+				speedMod = ((Player*)creature)->getSkillMod("polearm_speed");
+				break;
+			case TangibleObjectImplementation::PISTOL:
+				speedMod = ((Player*)creature)->getSkillMod("pistol_speed");
+				break;
+			case TangibleObjectImplementation::CARBINE:
+				speedMod = ((Player*)creature)->getSkillMod("carbine_speed");
+				break;
+			case TangibleObjectImplementation::RIFLE:
+				speedMod = ((Player*)creature)->getSkillMod("rifle_speed");
+				break;
+			case TangibleObjectImplementation::HEAVYWEAPON:
+				speedMod = ((Player*)creature)->getSkillMod("heavyweapon_speed");
+				break;
+			case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
+				if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
+					speedMod = ((Player*)creature)->getSkillMod("heavy_flame_thrower_speed");
+				else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
+					speedMod = ((Player*)creature)->getSkillMod("heavy_rifle_lightning_speed");
+					speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
 					break;
-				case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
-					speedMod = ((Player*)creature)->getSkillMod("onehandmelee_speed");
-					break;
-				case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
-					speedMod = ((Player*)creature)->getSkillMod("twohandmelee_speed");
-					break;
-				case TangibleObjectImplementation::POLEARM:
-					speedMod = ((Player*)creature)->getSkillMod("polearm_speed");
-					break;
-				case TangibleObjectImplementation::PISTOL:
-					speedMod = ((Player*)creature)->getSkillMod("pistol_speed");
-					break;
-				case TangibleObjectImplementation::CARBINE:
-					speedMod = ((Player*)creature)->getSkillMod("carbine_speed");
-					break;
-				case TangibleObjectImplementation::RIFLE:
-					speedMod = ((Player*)creature)->getSkillMod("rifle_speed");
-					break;
-				case TangibleObjectImplementation::HEAVYWEAPON:
-					speedMod = ((Player*)creature)->getSkillMod("heavyweapon_speed");
-					break;
-				case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
-					if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
-						speedMod = ((Player*)creature)->getSkillMod("heavy_flame_thrower_speed");
-					else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
-						speedMod = ((Player*)creature)->getSkillMod("heavy_rifle_lightning_speed");
-						speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
-						break;
-				case TangibleObjectImplementation::ONEHANDSABER:
-					speedMod = ((Player*)creature)->getSkillMod("onehandlightsaber_speed");
-					break;
-				case TangibleObjectImplementation::TWOHANDSABER:
-					speedMod = ((Player*)creature)->getSkillMod("twohandlightsaber_speed");
-					break;
-				case TangibleObjectImplementation::POLEARMSABER:
-					speedMod = ((Player*)creature)->getSkillMod("polearmlightsaber_speed");
-					break;
-			}
+			case TangibleObjectImplementation::ONEHANDSABER:
+				speedMod = ((Player*)creature)->getSkillMod("onehandlightsaber_speed");
+				break;
+			case TangibleObjectImplementation::TWOHANDSABER:
+				speedMod = ((Player*)creature)->getSkillMod("twohandlightsaber_speed");
+				break;
+			case TangibleObjectImplementation::POLEARMSABER:
+				speedMod = ((Player*)creature)->getSkillMod("polearmlightsaber_speed");
+				break;
+		}
 
-	// TODO: Is this really right any speedMod over 100 gives 1 sec speed.
-	if (weapon != NULL) {
-		weaponSpeed = (float)((125.0f - (float)speedMod) / 125.0f) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
-	} else
-		weaponSpeed = (float)((125.0f - (float)speedMod) / 125.0f) * tskill->getSpeedRatio() * 2;
+	if (weapon != NULL)
+		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / (12500.0f * tskill->getSpeedRatio()))) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
+	else
+		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / (12500.0f * tskill->getSpeedRatio()))) * tskill->getSpeedRatio() * 2.0f;
 
-		return MAX(weaponSpeed, 1.0f);
+	/*
+	if (creature->isPlayer())
+		cout << "Weapon speed = " << MAX(weaponSpeed, 1.0f) << endl;
+	 */
+	return MAX(weaponSpeed, 1.0f);
 }
 
 	float CombatManager::calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill) {
