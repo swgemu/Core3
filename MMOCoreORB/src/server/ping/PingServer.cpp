@@ -124,7 +124,7 @@ void PingServer::handleMessage(ServiceClient* client, Packet* message) {
 		if (lclient->isAvailable() && (message->size() == 4)) {
 			lclient->updateNetStatus();
 
-			lclient->send(message);
+			((DatagramServiceClient*)lclient)->send(message);
 		}
 
 	} catch (PacketIndexOutOfBoundsException& e) {

@@ -2102,6 +2102,7 @@ void GuildManagerImplementation::handleGuildInformationMembersBox(uint32 boxID, 
 				oFirstname = playerGuild->getSponsoredMap(index);
 			} else {
 				playerGuild->unlock();
+				player->unlock();
 				player->info("Out of SponsoredMap boundary - Clean exit from GuildManagerImplementation::handleGuildInformationMembersBox(uint32 boxID, Player* player, uint32 cancel, int index)");
 
 				return;

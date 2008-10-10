@@ -56,6 +56,7 @@ which carries forward this exception.
 
 #include "../../objects/player/Races.h"
 #include "../../objects/tangible/CustomizationVariables.h"
+#include "../../objects/group/GroupObject.h"
 
 #include "skills/Skill.h"
 #include "../../managers/skills/SkillManager.h"
@@ -80,7 +81,6 @@ class Weapon;
 class Armor;
 class Instrument;
 
-class GroupObject;
 class MountCreature;
 class DizzyFallDownEvent;
 class WoundTreatmentOverEvent;
@@ -346,7 +346,7 @@ protected:
 	uint64 groupInviteCount;
 	uint64 groupInviterID;
 
-	GroupObject* group;
+	ManagedReference<GroupObject> group;
 
 	// Entertainer stuff
 	string performanceAnimation;
