@@ -156,7 +156,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 			float lastPosX = player->getLastTestPositionX();
 			float lastPosY = player->getLastTestPositionY();
 
-			float dist = Math::sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
+			float dist = sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
 					- lastPosY) * (y - lastPosY)));
 
 			float speed = dist * 1000 / (float)deltaStamp;
@@ -265,7 +265,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 			float lastPosX = player->getLastTestPositionX();
 			float lastPosY = player->getLastTestPositionY();
 
-			float dist = Math::sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
+			float dist = sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
 					- lastPosY) * (y - lastPosY)));
 
 			float speed = dist * 1000 / (float)deltaStamp;
@@ -2391,21 +2391,21 @@ void ObjectControllerMessage::parseGroupUninvite(Player* player, Message* pack) 
 
 void ObjectControllerMessage::parseGroupLeave(Player* player, Message* pack,
 		GroupManager* groupManager) {
-	GroupObject* group = player->getGroupObject();
+	ManagedReference<GroupObject> group = player->getGroupObject();
 
 	if (group == NULL)
 		return;
 
-	groupManager->leaveGroup(group, player);
+	groupManager->leaveGroup(group.get(), player);
 }
 
 void ObjectControllerMessage::parseGroupDisband(Player* player, Message* pack,
 		GroupManager* groupManager) {
-	GroupObject* group = player->getGroupObject();
+	ManagedReference<GroupObject> group = player->getGroupObject();
 	if (group == NULL)
 		return;
 
-	groupManager->disbandGroup(group, player);
+	groupManager->disbandGroup(group.get(), player);
 }
 
 void ObjectControllerMessage::parseGroupKick(Player* player, Message* pack,
@@ -2418,11 +2418,11 @@ void ObjectControllerMessage::parseGroupKick(Player* player, Message* pack,
 
 	Player* targetObject = (Player*) object;
 
-	GroupObject* group = player->getGroupObject();
+	ManagedReference<GroupObject> group = player->getGroupObject();
 	if (group == NULL)
 		return;
 
-	groupManager->kickFromGroup(group, player, targetObject);
+	groupManager->kickFromGroup(group.get(), player, targetObject);
 }
 
 void ObjectControllerMessage::parseGroupMakeLeader(Player* player,
@@ -3290,8 +3290,8 @@ void ObjectControllerMessage::parseRotateItem(Player* player, Message* pack) {
 		object->wlock(player);
 
 		object->setDirection(object->getDirectionX(), (object->getDirectionZ()
-				+ Math::sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
-						+ Math::sqrt(.5)));
+				+ sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
+						+ sqrt(.5)));
 
 		object->unlock();
 	} catch (...) {
