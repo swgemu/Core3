@@ -369,13 +369,30 @@ void GameCommandHandler::warpTo(StringTokenizer tokenizer, Player * player) {
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
 
-	string name;
+	string name, myName;
 	tokenizer.getStringToken(name);
 
 	Player* target = chatManager->getPlayer(name);
 
-	if (target != NULL)
-		player->doWarp(target->getPositionX(), target->getPositionY(), 0, 5, target->getParentID());
+	if (target == NULL || target == player)
+		return;
+
+	try {
+		target->wlock(player);
+
+		if (name != player->getFirstName()) {
+			if (target->getZoneIndex() != player->getZoneIndex()) {
+				player->switchMap(target->getZoneIndex());
+				player->doWarp(target->getPositionX(), target->getPositionY(), 0, 5, target->getParentID());
+			}
+		}
+
+		target->unlock();
+
+	} catch (...) {
+		target->unlock();
+		player->sendSystemMessage("Error in @warpTo - please submit a detailed ticket on the support site, tnx :)");
+	}
 }
 
 void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) {
@@ -383,7 +400,6 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 	Player* targetPlayer = NULL;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
-
 
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(name);
@@ -500,6 +516,7 @@ void GameCommandHandler::summon(StringTokenizer tokenizer, Player * player) {
 		}
 	}
 
+	//I don't think targetPlayer can be NULL here anymore.. ?
 	if (targetPlayer == NULL || targetPlayer == player)
 		return;
 
@@ -1001,15 +1018,14 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 	string name = player->getFirstName();
 	//Default
-	int meter = 32;
-	//..as you wish my master
-	if (!tokenizer.hasMoreTokens())
-		return;
+	int meter;
 
-	meter = tokenizer.getIntToken();
+	if (tokenizer.hasMoreTokens())
+		meter = tokenizer.getIntToken();
+	else
+		meter = 32;
 
 	Zone* zone = player->getZone();
-
 	if (zone == NULL)
 		return;
 
@@ -1058,8 +1074,6 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 
 				if (!creature->isTrainer() && !creature->isRecruiter()) {
 					zone->unlock();
-
-
 
 					try {
 						uint damage = 100000000;
@@ -1122,6 +1136,7 @@ void GameCommandHandler::setWeather(StringTokenizer tokenizer, Player * player) 
 void GameCommandHandler::ticketPurchase(StringTokenizer tokenizer, Player * player) {
 	string planet;
 	tokenizer.getStringToken(planet);
+
 	string city;
 	tokenizer.getStringToken(city);
 
@@ -1919,11 +1934,10 @@ void GameCommandHandler::reloadSchematics(StringTokenizer tokenizer,
 
 	}
 }
-void GameCommandHandler::spawn(StringTokenizer tokenizer,
-		Player* player) {
-
+void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	Zone* zone = player->getZone();
 	CreatureManager* creatureManager = zone->getCreatureManager();
+
 	string name;
 	uint64 cellid;
 	uint32 objcrc;
@@ -2010,7 +2024,6 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer,
 
 	} else
 		player->sendSystemMessage("Cannot spawn creature");
-
 
 }
 void GameCommandHandler::addNoBuildArea(StringTokenizer tokenizer, Player* player) {
@@ -2102,7 +2115,7 @@ void GameCommandHandler::guildAdmin(StringTokenizer tokenizer, Player * player) 
 
 		stringstream message;
 
-		message << "You have become part and temporarely co-leader of the guild '" << playerGuild->getGuildName() << "'.\n"
+		message << "You have become part and temporarily co-leader of the guild '" << playerGuild->getGuildName() << "'.\n"
 			<< "Please make sure, after you finished support actions, to leave the guild by typing @endGuildAdmin.";
 
 		player->sendSystemMessage(message.str());
@@ -2132,6 +2145,8 @@ void GameCommandHandler::endGuildAdmin(StringTokenizer tokenizer, Player * playe
 			player->updateGuild(defGuild);
 			player->setGuildLeader(false);
 			player->setGuildPermissions(0);
+
+			player->sendSystemMessage("You left the guild.");
 
 		}
 
