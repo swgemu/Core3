@@ -520,6 +520,9 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		playerManager->updateOtherFriendlists(_this, true);
 		playerManager->updateGuildStatus(_this);
 
+		if (isMounted())
+			dismount(true, true);
+
 		//resetArmorEncumbrance();
 
 		activateRecovery();
@@ -1518,6 +1521,9 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 	if (zone == NULL)
 		return;
 
+	if (isMounted())
+		dismount(true, true);
+
 	removeFromZone();
 
 	parent = NULL;
@@ -1526,9 +1532,9 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 	//positionY = y;
 	//positionZ = zone->getHeight(x, y);;
 	//Spawning-in-the-air-fix: If player is not in a ship or building, we override Z-Axis with Zero. Client is always overrding Z-Axis with TerrainMinHeight
+
 	if (parent == NULL)
 		setPosition(x, 0, y);
-
 
 	if (parentID != 0) {
 		SceneObject* newParent = zone->lookupObject(parentID);
