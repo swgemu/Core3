@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-write-strings
+AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-write-strings -march=i486
 
 ENGINE3_PATH=../../../../MMOEngine
 
@@ -55,251 +55,251 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3
 
-core3_IDLS = server/zone/Zone.cpp \
-		server/zone/ZoneClientSession.cpp \
-		server/zone/ZoneServer.cpp \
-		server/zone/objects/area/Area.cpp \
+core3_IDLS = 	server/chat/ChatManager.cpp \
+		server/chat/GameCommandHandler.cpp \
+		server/chat/room/ChatRoom.cpp \
+		server/zone/managers/bank/BankManager.cpp \
+		server/zone/managers/bazaar/BazaarManager.cpp \
+		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
+		server/zone/managers/crafting/CraftingManager.cpp \
+		server/zone/managers/creature/CreatureManager.cpp \
+		server/zone/managers/guild/GuildManager.cpp \
+		server/zone/managers/guild/GuildMap.cpp \
+		server/zone/managers/item/ItemManager.cpp \
+		server/zone/managers/loot/LootManager.cpp \
+		server/zone/managers/loot/LootTableManager.cpp \
+		server/zone/managers/mission/MissionManager.cpp \
+		server/zone/managers/planet/PlanetManager.cpp \
+		server/zone/managers/player/PlayerManager.cpp \
+		server/zone/managers/player/PlayerMap.cpp \
+		server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/user/UserManager.cpp \
 		server/zone/objects/area/ActiveArea.cpp \
+		server/zone/objects/area/Area.cpp \
 		server/zone/objects/area/BaseArea.cpp \
 		server/zone/objects/area/NoBuildArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
+		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
-		server/zone/objects/scene/SceneObject.cpp \
-		server/zone/objects/creature/CreatureObject.cpp \
-		server/zone/objects/creature/Creature.cpp \
-		server/zone/objects/creature/CreatureGroup.cpp \
-		server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
-		server/zone/objects/creature/trainer/TrainerCreature.cpp \
-		server/zone/objects/creature/action/ActionCreature.cpp \
+		server/zone/objects/building/BuildingObject.cpp \
+		server/zone/objects/building/cell/CellObject.cpp \
 		server/zone/objects/creature/action/Action.cpp \
+		server/zone/objects/creature/action/ActionCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogVector.cpp \
-		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
+		server/zone/objects/creature/Creature.cpp \
+		server/zone/objects/creature/CreatureGroup.cpp \
+		server/zone/objects/creature/CreatureObject.cpp \
+		server/zone/objects/creature/mount/MountCreature.cpp \
 		server/zone/objects/creature/recruiter/imperial/ImperialRecruiterCreature.cpp \
 		server/zone/objects/creature/recruiter/rebel/RebelRecruiterCreature.cpp \
-		server/zone/objects/creature/mount/MountCreature.cpp \
-		server/zone/objects/player/Player.cpp \
-		server/zone/objects/player/FriendsList.cpp \
-		server/zone/objects/player/IgnoreList.cpp \
-		server/zone/objects/player/PlayerObject.cpp \
-		server/zone/objects/player/faction/FactionPointList.cpp \
-		server/zone/objects/player/sui/SuiBox.cpp \
-		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
-		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
-		server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
-		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
-		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
-		server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp \
-		server/zone/objects/tangible/TangibleObject.cpp \
-		server/zone/objects/tangible/Container.cpp \
-		server/zone/objects/tangible/Inventory.cpp \
-		server/zone/objects/tangible/Datapad.cpp \
-		server/zone/objects/tangible/Bank.cpp \
-		server/zone/objects/tangible/MissionBag.cpp \
-		server/zone/objects/tangible/weapons/Weapon.cpp \
-		server/zone/objects/tangible/weapons/JediWeapon.cpp \
-		server/zone/objects/tangible/weapons/RangedWeapon.cpp \
-		server/zone/objects/tangible/weapons/MeleeWeapon.cpp \
-		server/zone/objects/tangible/weapons/ranged/CarbineRangedWeapon.cpp \
-		server/zone/objects/tangible/weapons/ranged/RifleRangedWeapon.cpp \
-		server/zone/objects/tangible/weapons/ranged/PistolRangedWeapon.cpp \
-		server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.cpp \
-		server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp \
-		server/zone/objects/tangible/weapons/melee/OneHandedMeleeWeapon.cpp \
-		server/zone/objects/tangible/weapons/melee/TwoHandedMeleeWeapon.cpp \
-		server/zone/objects/tangible/weapons/melee/UnarmedMeleeWeapon.cpp \
-		server/zone/objects/tangible/weapons/melee/PolearmMeleeWeapon.cpp \
-		server/zone/objects/tangible/weapons/jedi/OneHandedJediWeapon.cpp \
-		server/zone/objects/tangible/weapons/jedi/TwoHandedJediWeapon.cpp \
-		server/zone/objects/tangible/weapons/jedi/PolearmJediWeapon.cpp \
-		server/zone/objects/tangible/appearance/HairObject.cpp \
-		server/zone/objects/tangible/wearables/Wearable.cpp \
-		server/zone/objects/tangible/wearables/Armor.cpp \
-		server/zone/objects/tangible/ticket/Ticket.cpp \
-		server/zone/objects/tangible/terminal/Terminal.cpp \
-		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
-		server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
-		server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
-		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
-		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
-		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
-		server/zone/objects/tangible/instrument/Instrument.cpp \
-		server/zone/objects/tangible/pharmaceutical/Pharmaceutical.cpp \
-		server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
-		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
-		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
-		server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
-		server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
-		server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
-		server/zone/objects/attackable/lair/LairObject.cpp \
-		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
-		server/zone/objects/tangible/crafting/CraftingTool.cpp \
-		server/zone/objects/tangible/crafting/component/Component.cpp \
-		server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp \
-		server/zone/objects/tangible/crafting/CraftingStation.cpp \
-		server/zone/objects/tangible/resource/ResourceContainer.cpp \
-		server/zone/objects/tangible/attachment/Attachment.cpp \
-		server/zone/objects/tangible/powerup/Powerup.cpp \
-		server/zone/objects/tangible/deed/DeedObject.cpp \
-		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.cpp \
-		server/zone/objects/tangible/deed/factorydeed/FactoryDeed.cpp \
-		server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.cpp \
-		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
-		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.cpp \
-		server/zone/objects/tangible/holocron/Holocron.cpp \
-		server/zone/objects/tangible/firework/Firework.cpp \
-		server/zone/objects/installation/InstallationObject.cpp \
-		server/zone/objects/installation/harvester/HarvesterObject.cpp \
-		server/zone/objects/tangible/inventory/CreatureInventory.cpp \
-		server/zone/objects/intangible/IntangibleObject.cpp \
-		server/zone/objects/static/StaticObject.cpp \
-		server/zone/objects/static/firework/FireworkWorld.cpp \
-		server/zone/objects/group/GroupObject.cpp \
-		server/zone/objects/guild/Guild.cpp \
-		server/zone/objects/building/cell/CellObject.cpp \
-		server/zone/objects/building/BuildingObject.cpp \
+		server/zone/objects/creature/recruiter/RecruiterCreature.cpp \
+		server/zone/objects/creature/shuttle/ShuttleCreature.cpp \
+		server/zone/objects/creature/trainer/TrainerCreature.cpp \
+		server/zone/objects/draftschematic/DraftSchematicAttribute.cpp \
 		server/zone/objects/draftschematic/DraftSchematic.cpp \
+		server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp \
 		server/zone/objects/draftschematic/DraftSchematicGroup.cpp \
 		server/zone/objects/draftschematic/DraftSchematicIngredient.cpp \
-		server/zone/objects/draftschematic/DraftSchematicExpPropGroup.cpp \
-		server/zone/objects/draftschematic/DraftSchematicAttribute.cpp \
 		server/zone/objects/draftschematic/DraftSchematicValues.cpp \
+		server/zone/objects/group/GroupObject.cpp \
+		server/zone/objects/guild/Guild.cpp \
+		server/zone/objects/installation/harvester/HarvesterObject.cpp \
+		server/zone/objects/installation/InstallationObject.cpp \
+		server/zone/objects/intangible/IntangibleObject.cpp \
 		server/zone/objects/manufacture/ManufactureSchematic.cpp \
 		server/zone/objects/mission/MissionObject.cpp \
-		server/zone/objects/waypoint/WaypointObject.cpp \
-		server/zone/objects/tangible/component/ShipComponent.cpp \
+		server/zone/objects/player/faction/FactionPointList.cpp \
+		server/zone/objects/player/FriendsList.cpp \
+		server/zone/objects/player/IgnoreList.cpp \
+		server/zone/objects/player/Player.cpp \
+		server/zone/objects/player/PlayerObject.cpp \
+		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
+		server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp \
+		server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
+		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
+		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
+		server/zone/objects/player/sui/SuiBox.cpp \
+		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
+		server/zone/objects/scene/SceneObject.cpp \
 		server/zone/objects/ship/ShipObject.cpp \
-		server/zone/managers/guild/GuildMap.cpp \
-		server/zone/managers/guild/GuildManager.cpp \
-		server/zone/managers/player/PlayerMap.cpp \
-		server/zone/managers/player/PlayerManager.cpp \
-		server/zone/managers/crafting/CraftingManager.cpp \
-		server/zone/managers/creature/CreatureManager.cpp \
-		server/zone/managers/item/ItemManager.cpp \
-		server/zone/managers/user/UserManager.cpp \
-		server/zone/managers/planet/PlanetManager.cpp \
-		server/zone/managers/resource/ResourceManager.cpp \
-		server/zone/managers/loot/LootTableManager.cpp \
-		server/zone/managers/loot/LootManager.cpp \
-		server/zone/managers/bazaar/BazaarManager.cpp \
-		server/zone/managers/bazaar/BazaarPlanetManager.cpp \
-		server/zone/managers/bank/BankManager.cpp \
-		server/zone/managers/mission/MissionManager.cpp \
-		server/chat/room/ChatRoom.cpp \
-		server/chat/ChatManager.cpp \
-		server/chat/GameCommandHandler.cpp
+		server/zone/objects/static/firework/FireworkWorld.cpp \
+		server/zone/objects/static/StaticObject.cpp \
+		server/zone/objects/tangible/appearance/HairObject.cpp \
+		server/zone/objects/tangible/attachment/Attachment.cpp \
+		server/zone/objects/tangible/Bank.cpp \
+		server/zone/objects/tangible/component/ShipComponent.cpp \
+		server/zone/objects/tangible/Container.cpp \
+		server/zone/objects/tangible/crafting/component/Component.cpp \
+		server/zone/objects/tangible/crafting/CraftingStation.cpp \
+		server/zone/objects/tangible/crafting/CraftingTool.cpp \
+		server/zone/objects/tangible/crafting/factorycrate/FactoryCrate.cpp \
+		server/zone/objects/tangible/Datapad.cpp \
+		server/zone/objects/tangible/deed/DeedObject.cpp \
+		server/zone/objects/tangible/deed/factorydeed/FactoryDeed.cpp \
+		server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.cpp \
+		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.cpp \
+		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.cpp \
+		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
+		server/zone/objects/tangible/firework/Firework.cpp \
+		server/zone/objects/tangible/holocron/Holocron.cpp \
+		server/zone/objects/tangible/instrument/Instrument.cpp \
+		server/zone/objects/tangible/Inventory.cpp \
+		server/zone/objects/tangible/inventory/CreatureInventory.cpp \
+		server/zone/objects/tangible/MissionBag.cpp \
+		server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
+		server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
+		server/zone/objects/tangible/pharmaceutical/Pharmaceutical.cpp \
+		server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
+		server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
+		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
+		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
+		server/zone/objects/tangible/powerup/Powerup.cpp \
+		server/zone/objects/tangible/resource/ResourceContainer.cpp \
+		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
+		server/zone/objects/tangible/TangibleObject.cpp \
+		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
+		server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
+		server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
+		server/zone/objects/tangible/terminal/Terminal.cpp \
+		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
+		server/zone/objects/tangible/terminal/vendor/VendorTerminal.cpp \
+		server/zone/objects/tangible/ticketcollector/TicketCollector.cpp \
+		server/zone/objects/tangible/ticket/Ticket.cpp \
+		server/zone/objects/tangible/weapons/jedi/OneHandedJediWeapon.cpp \
+		server/zone/objects/tangible/weapons/jedi/PolearmJediWeapon.cpp \
+		server/zone/objects/tangible/weapons/jedi/TwoHandedJediWeapon.cpp \
+		server/zone/objects/tangible/weapons/JediWeapon.cpp \
+		server/zone/objects/tangible/weapons/melee/OneHandedMeleeWeapon.cpp \
+		server/zone/objects/tangible/weapons/melee/PolearmMeleeWeapon.cpp \
+		server/zone/objects/tangible/weapons/melee/TwoHandedMeleeWeapon.cpp \
+		server/zone/objects/tangible/weapons/melee/UnarmedMeleeWeapon.cpp \
+		server/zone/objects/tangible/weapons/MeleeWeapon.cpp \
+		server/zone/objects/tangible/weapons/ranged/CarbineRangedWeapon.cpp \
+		server/zone/objects/tangible/weapons/ranged/HeavyRangedWeapon.cpp \
+		server/zone/objects/tangible/weapons/ranged/PistolRangedWeapon.cpp \
+		server/zone/objects/tangible/weapons/ranged/RifleRangedWeapon.cpp \
+		server/zone/objects/tangible/weapons/ranged/SpecialHeavyRangedWeapon.cpp \
+		server/zone/objects/tangible/weapons/RangedWeapon.cpp \
+		server/zone/objects/tangible/weapons/Weapon.cpp \
+		server/zone/objects/tangible/wearables/Armor.cpp \
+		server/zone/objects/tangible/wearables/Wearable.cpp \
+		server/zone/objects/waypoint/WaypointObject.cpp \
+		server/zone/ZoneClientSession.cpp \
+		server/zone/Zone.cpp \
+		server/zone/ZoneServer.cpp
 
 core3_SOURCES =	$(core3_IDLS) \
-		server/ServerCore.cpp \
+		server/chat/ChatManagerImplementation.cpp \
+		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \
+	        server/db/ForumsDatabase.cpp \
 		server/db/ServerDatabase.cpp \
-        server/db/ForumsDatabase.cpp \
-		server/login/LoginServer.cpp \
-		server/login/LoginPacketHandler.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
-		server/status/StatusServer.cpp \
+		server/login/LoginPacketHandler.cpp \
+		server/login/LoginServer.cpp \
 		server/ping/PingServer.cpp \
-		server/zone/ZoneImplementation.cpp \
-		server/zone/ZoneClientSessionImplementation.cpp \
-		server/zone/ZoneServerImplementation.cpp \
-		server/zone/ZonePacketHandler.cpp \
-		server/zone/ZoneProcessServerImplementation.cpp \
-		server/zone/ZoneMessageProcessorThread.cpp \
-		server/zone/objects/installation/InstallationObjectImplementation.cpp \
-		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
+		server/proxy/LoginProxyServer.cpp \
+		server/ServerCore.cpp \
+		server/status/StatusServer.cpp \
+		server/zone/managers/bank/BankManagerImplementation.cpp \
+		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
+		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
+		server/zone/managers/combat/CombatManager.cpp \
+		server/zone/managers/combat/CommandQueueAction.cpp \
+		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
+		server/zone/managers/creature/CreatureManagerImplementation.cpp \
+		server/zone/managers/group/GroupManager.cpp \
+		server/zone/managers/guild/GuildManagerImplementation.cpp \
+		server/zone/managers/item/ItemManagerImplementation.cpp \
+		server/zone/managers/loot/LootTableManagerImplementation.cpp \
+		server/zone/managers/mission/MissionManagerImplementation.cpp \
+		server/zone/managers/name/NameManager.cpp \
+		server/zone/managers/object/ObjectManager.cpp \
+		server/zone/managers/planet/HeightMap.cpp \
+		server/zone/managers/planet/PlanetManagerImplementation.cpp \
+		server/zone/managers/player/PlayerManagerImplementation.cpp \
+		server/zone/managers/player/ProfessionManager.cpp \
+		server/zone/managers/radial/RadialManager.cpp \
+		server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/skills/imagedesign/CustomizationManager.cpp \
+		server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp \
+		server/zone/managers/skills/performance/PerformanceManager.cpp \
+		server/zone/managers/skills/ScriptAttacksManager.cpp \
+		server/zone/managers/skills/SkillManager.cpp \
+		server/zone/managers/sui/SuiManager.cpp \
+		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
+		server/zone/objects/attackable/lair/LairObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \
 		server/zone/objects/building/cell/CellObjectImplementation.cpp \
-		server/zone/objects/guild/GuildImplementation.cpp \
-		server/zone/objects/group/GroupObjectImplementation.cpp \
-		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
-		server/zone/objects/tangible/ContainerImplementation.cpp \
-		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
-		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
-		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
-		server/zone/objects/attackable/lair/LairObjectImplementation.cpp \
-		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
-		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
-		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
-		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
-		server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp \
-		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
-		server/zone/objects/tangible/pharmaceutical/PharmaceuticalImplementation.cpp \
-		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \
-		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
-		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
-		server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp \
-		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
-		server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp \
-		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
-		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
-		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
-		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
-    	server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
-		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/factorydeed/FactoryDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/generatordeed/GeneratorDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
-		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
-		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
-		server/zone/objects/mission/MissionObjectImplementation.cpp \
-		server/zone/objects/static/StaticObjectImplementation.cpp \
-		server/zone/objects/player/PlayerImplementation.cpp \
-		server/zone/objects/player/PlayerObjectImplementation.cpp \
-		server/zone/objects/player/FriendListImplementation.cpp \
-		server/zone/objects/player/IgnoreListImplementation.cpp \
-		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
-		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
-		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
-		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
-		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
-		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
-		server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp \
-		server/zone/objects/creature/CreatureImplementation.cpp \
-		server/zone/objects/creature/CreatureObjectImplementation.cpp \
-		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
 		server/zone/objects/creature/action/ActionCreatureImplementation.cpp \
 		server/zone/objects/creature/action/ActionImplementation.cpp \
-		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreatureImplementation.cpp \
+		server/zone/objects/creature/buffs/Buff.cpp \
+		server/zone/objects/creature/CreatureImplementation.cpp \
+		server/zone/objects/creature/CreatureObjectImplementation.cpp \
 		server/zone/objects/creature/mount/MountCreatureImplementation.cpp \
 		server/zone/objects/creature/recruiter/RecruiterCreatureImplementation.cpp \
-		server/zone/objects/creature/buffs/Buff.cpp \
+		server/zone/objects/creature/shuttle/ShuttleCreatureImplementation.cpp \
+		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicExpPropGroupImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicIngredientImplementation.cpp \
 		server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp \
+		server/zone/objects/group/GroupObjectImplementation.cpp \
+		server/zone/objects/guild/GuildImplementation.cpp \
+		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
+		server/zone/objects/installation/InstallationObjectImplementation.cpp \
+		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
+		server/zone/objects/mission/MissionObjectImplementation.cpp \
+		server/zone/objects/player/FriendListImplementation.cpp \
+		server/zone/objects/player/IgnoreListImplementation.cpp \
+		server/zone/objects/player/PlayerImplementation.cpp \
+		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
+		server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp \
+		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
+		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
+		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
+		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
+		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
 		server/zone/objects/scene/SceneObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
-		server/zone/managers/object/ObjectManager.cpp \
-		server/zone/managers/guild/GuildManagerImplementation.cpp \
-		server/zone/managers/player/PlayerManagerImplementation.cpp \
-		server/zone/managers/player/ProfessionManager.cpp \
-		server/zone/managers/skills/SkillManager.cpp \
-		server/zone/managers/skills/ScriptAttacksManager.cpp \
-		server/zone/managers/skills/performance/PerformanceManager.cpp \
-		server/zone/managers/skills/imagedesign/CustomizationManager.cpp \
-		server/zone/managers/skills/imagedesign/ImageDesignCustomization.cpp \
-		server/zone/managers/item/ItemManagerImplementation.cpp \
-		server/zone/managers/user/UserManagerImplementation.cpp \
-		server/zone/managers/radial/RadialManager.cpp \
-		server/zone/managers/group/GroupManager.cpp \
-		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
-		server/zone/managers/combat/CombatManager.cpp \
-		server/zone/managers/combat/CommandQueueAction.cpp \
-		server/zone/managers/creature/CreatureManagerImplementation.cpp \
-		server/zone/managers/planet/PlanetManagerImplementation.cpp \
-		server/zone/managers/planet/HeightMap.cpp \
-		server/zone/managers/resource/ResourceManagerImplementation.cpp \
-		server/zone/managers/loot/LootTableManagerImplementation.cpp \
-		server/zone/managers/bazaar/BazaarManagerImplementation.cpp \
-		server/zone/managers/bazaar/BazaarPlanetManagerImplementation.cpp \
-		server/zone/managers/bank/BankManagerImplementation.cpp \
-		server/zone/managers/sui/SuiManager.cpp \
-		server/zone/managers/name/NameManager.cpp \
-		server/zone/managers/mission/MissionManagerImplementation.cpp \
-		server/chat/room/ChatRoomImplementation.cpp \
-		server/chat/ChatManagerImplementation.cpp \
+		server/zone/objects/static/StaticObjectImplementation.cpp \
+		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
+		server/zone/objects/tangible/ContainerImplementation.cpp \
+		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
+		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
+		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
+		server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp \
+    		server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
+		server/zone/objects/tangible/deed/factorydeed/FactoryDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/generatordeed/GeneratorDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
+		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/PharmaceuticalImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
+		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
+		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
+		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \
+		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
+		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
+		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
+		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
+		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
-		server/proxy/LoginProxyServer.cpp \
+		server/zone/ZoneClientSessionImplementation.cpp \
+		server/zone/ZoneImplementation.cpp \
+		server/zone/ZoneMessageProcessorThread.cpp \
+		server/zone/ZonePacketHandler.cpp \
+		server/zone/ZoneProcessServerImplementation.cpp \
+		server/zone/ZoneServerImplementation.cpp \
 		main.cpp
