@@ -1254,15 +1254,14 @@ float CombatManager::calculateAttackSpeed(CreatureObject* creature, TargetSkill*
 		}
 
 	if (weapon != NULL)
-		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / (12500.0f * tskill->getSpeedRatio()))) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
+		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / (10000.0f * tskill->getSpeedRatio()))) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
 	else
-		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / (12500.0f * tskill->getSpeedRatio()))) * tskill->getSpeedRatio() * 2.0f;
+		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / (10000.0f * tskill->getSpeedRatio()))) * tskill->getSpeedRatio() * 2.0f;
 
-	/*
 	if (creature->isPlayer())
-		cout << "Weapon speed = " << MAX(weaponSpeed, 1.0f) << endl;
-	 */
-	return MAX(weaponSpeed, 1.0f);
+		cout << "Weapon speed = " << MAX(weaponSpeed, 0.1f) << endl;
+
+	return MAX(weaponSpeed, 0.1f);
 }
 
 	float CombatManager::calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill) {
