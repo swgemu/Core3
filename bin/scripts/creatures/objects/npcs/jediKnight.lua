@@ -107,16 +107,16 @@ jediKnight = Creature:new {
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "Knight Saber", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "sword_lightsaber_polearm_s2_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "PolearmJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 850,
-      alternateWeaponMaxDamage = 1000,
-      alternateWeaponAttackSpeed = 1,
-      alternateWeaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      alternateWeaponEquipped = 0,
+      alternateWeaponMinDamage = 0,
+      alternateWeaponMaxDamage = 0,
+      alternateWeaponAttackSpeed = 0,
+      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
@@ -135,7 +135,7 @@ jediKnight = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "jediAttack1", "jediAttack2", "jediAttack3", "jediAttack4", "jediAttack5", "jediAttack6", "jediAttack7", "jediAttack8" },
+      skills = { "twoHandedJediAttack1", "twoHandedJediAttack4", "twoHandedJediAttack5", "twoHandedJediAttack6", "twoHandedJediAttack7", "twoHandedJediAttack2", "twoHandedJediAttack8", "twoHandedJediAttack9", "twoHandedJediAttack10", "twoHandedJediAttack11", "twoHandedJediAttack12", "twoHandedJediAttack3", "twoHandedJediAttack13", "twoHandedJediAttack14", "twoHandedJediAttack15", "twoHandedJediAttack16" },
       respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object

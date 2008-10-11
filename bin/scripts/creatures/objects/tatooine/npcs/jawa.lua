@@ -40,34 +40,34 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-jindaElder = Creature:new {
-      objectName = "jindaElder",  -- Lua Object Name
+jawa = Creature:new {
+      objectName = "jawa",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Jinda Tribe",
+      faction = "Jawa",
       gender = "",
 
-      name = "Jinda elder",
-      objectCRC = 2886364858, 
-      socialGroup = "Jinda Tribe",
+      name = "Jawa",
+      objectCRC = 3444186231, 
+      socialGroup = "Jawa",
       named = FALSE, 
 
-      level = 15,
-      xp = 831,
+      level = 6,
+      xp = 147,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 3000,
-      healthMin = 2400,
+      healthMax = 220,
+      healthMin = 180,
       strength = 0,
       constitution = 0,
 
-      actionMax = 3000,
-      actionMin = 2400,
+      actionMax = 220,
+      actionMin = 180,
       quickness = 0,
       stamina = 0,
 
-      mindMax = 3000,
-      mindMin = 2400,
+      mindMax = 220,
+      mindMin = 180,
       focus = 0,
       willpower = 0,
 
@@ -76,36 +76,36 @@ jindaElder = Creature:new {
       kinetic = 0,
       energy = 0,
       electricity = 0,
-      stun = 0,
+      stun = -1,
       blast = 0,
       heat = 0,
       cold = 0,
       acid = 0,
       lightsaber = 0,
 
-      accuracy = 200,
+      accuracy = 0,
 
       healer = 0,
 
       pack = 1,
       herd = 0,
-      stalker = 0,
+      stalker = 1,
       killer = 0,
       aggressive = 0,
       invincible = 0,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weapon = "object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "a Jawa Ion Rifle", -- Name ex. 'a Vibrolance'
+      weaponTemp = "rifle_jawa_ion", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 1,
+      weaponMinDamage = 100,
+      weaponMaxDamage = 250,
+      weaponAttackSpeed = 4,
+      weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ jindaElder = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,34", -- Group it belongs to for loot
+      lootGroup = 0, -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,10 +135,10 @@ jindaElder = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "jindaAttack01", "jindaAttack02", "jindaAttack03", "jindaAttack04", "jindaAttack05", "jindaAttack06", "jindaAttack07", "jindaAttack08", "jindaAttack09" },
-      respawnTimer = 300,
+      skills = { "jawaRangedAttack1", "jawaRangedAttack2", "jawaRangedAttack3", "jawaRangedAttack4", "jawaRangedAttack5", "jawaRangedAttack6", "jawaRangedAttack7", "jawaRangedAttack8", "jawaRangedAttack9", "jawaRangedAttack10", "jawaRangedAttack11", "jawaRangedAttack12" },
+      -- respawnTimer = 180,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(jindaElder, 2886364858) --  Add to Global Table
+Creatures:addCreature(jawa, 3444186231) --  Add to Global Table

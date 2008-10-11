@@ -99,11 +99,11 @@ atAt = Creature:new {
 	weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 450,
+	weaponMinDamage = 450,
+	weaponMaxDamage = 850,
 	weaponAttackSpeed = 1,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

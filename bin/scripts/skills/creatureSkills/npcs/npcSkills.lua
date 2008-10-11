@@ -44,7 +44,13 @@
 -- Npcs
 RunSkillsFile("creatureSkills/npcs/palpatineAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/darthAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/jediAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/oneHandedJediAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/twoHandedJediAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/polearmJediAttacks.lua")
+
+RunSkillsFile("creatureSkills/npcs/imperialAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/stormAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/atAttacks.lua")
 
 RunSkillsFile("creatureSkills/npcs/oldManAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/lukeAttacks.lua")
@@ -54,8 +60,3 @@ RunSkillsFile("creatureSkills/npcs/bobaAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/jabbaHuttAttacks.lua")
 
 RunSkillsFile("creatureSkills/npcs/rebelAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/imperialAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/stormAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/atAttacks.lua")
-
-RunSkillsFile("creatureSkills/npcs/rangedAttacks.lua")

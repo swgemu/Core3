@@ -135,7 +135,7 @@ oldMan = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "oldManAttack1", "oldManAttack2", "oldManAttack3", "oldManAttack4", "oldManAttack5", "oldManAttack6", "oldManAttack7", "oldManAttack8" },
+      skills = { "oldManAttack1", "oldManAttack4", "oldManAttack5", "oldManAttack6", "oldManAttack7", "oldManAttack8", "oldManAttack2", "oldManAttack9", "oldManAttack10", "oldManAttack11", "oldManAttack12", "oldManAttack13", "oldManAttack14", "oldManAttack3", "oldManAttack15", "oldManAttack16", "oldManAttack17" },
       respawnTimer = 43200,
 
       behaviorScript = "", -- Link to the behavior script for this object

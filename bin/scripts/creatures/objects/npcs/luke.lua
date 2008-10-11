@@ -135,7 +135,7 @@ luke = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "lukeAttack1", "lukeAttack2", "lukeAttack3", "lukeAttack4", "lukeAttack5" },
+      skills = { "lukeAttack1", "lukeAttack4", "lukeAttack5", "lukeAttack6", "lukeAttack7", "lukeAttack8", "lukeAttack2", "lukeAttack9", "lukeAttack10", "lukeAttack11", "lukeAttack12", "lukeAttack13", "lukeAttack14", "lukeAttack3", "lukeAttack15", "lukeAttack16", "lukeAttack17" },
       respawnTimer = 42300,
 
       behaviorScript = "", -- Link to the behavior script for this object

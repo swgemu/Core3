@@ -96,14 +96,14 @@ palpatine = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/carbine/shared_carbine_ee3.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "Palpatine Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 0,
-      weaponMinDamage = 1500,
-      weaponMaxDamage = 2200,
-      weaponAttackSpeed = 0.5,
+      weaponMinDamage = 1000,
+      weaponMaxDamage = 1500,
+      weaponAttackSpeed = 2,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -135,7 +135,7 @@ palpatine = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "palpatineAttack1", "palpatineAttack2", "palpatineAttack3", "palpatineAttack4", "palpatineAttack5", "palpatineAttack6", "palpatineAttack7", "palpatineAttack8" },
+      skills = { "palpatineAttack1", "palpatineAttack3", "palpatineAttack9", "palpatineAttack2", "palpatineAttack8", "palpatineAttack7", "palpatineAttack6", "palpatineAttack5", "palpatineAttack4", "palpatineAttack10" },
       respawnTimer = 43200,
 
       behaviorScript = "", -- Link to the behavior script for this object

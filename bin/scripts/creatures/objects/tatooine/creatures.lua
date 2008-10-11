@@ -42,6 +42,7 @@
 
 
  RunCreatureFile("objects/tatooine/creatures/bantha.lua")
+ RunCreatureFile("objects/tatooine/creatures/tuskenBantha.lua")
  RunCreatureFile("objects/tatooine/creatures/bocatt.lua")
  RunCreatureFile("objects/tatooine/creatures/bocattDiseased.lua")
  RunCreatureFile("objects/tatooine/creatures/bullBantha.lua")

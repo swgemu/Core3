@@ -40,72 +40,72 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-jindaElder = Creature:new {
-      objectName = "jindaElder",  -- Lua Object Name
+darkJawa = Creature:new {
+      objectName = "darkJawa",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Jinda Tribe",
+      faction = "Jawa",
       gender = "",
 
-      name = "Jinda elder",
-      objectCRC = 2886364858, 
-      socialGroup = "Jinda Tribe",
+      stfName = "Dark Jawa",
+      objectCRC = 3444186231, 
+      socialGroup = "Jawa",
       named = FALSE, 
 
-      level = 15,
-      xp = 831,
+      level = 6,
+      xp = 147,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 3000,
-      healthMin = 2400,
-      strength = 0,
-      constitution = 0,
+      healthMax = 500000,
+      healthMin = 480000,
+      strength = 80000,
+      constitution = 80000,
 
-      actionMax = 3000,
-      actionMin = 2400,
-      quickness = 0,
-      stamina = 0,
+      actionMax = 500000,
+      actionMin = 480000,
+      quickness = 80000,
+      stamina = 80000,
 
-      mindMax = 3000,
-      mindMin = 2400,
-      focus = 0,
-      willpower = 0,
+      mindMax = 500000,
+      mindMin = 480000,
+      focus = 80000,
+      willpower = 80000,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = 0,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      kinetic = 85,
+      energy = 85,
+      electricity = 85,
+      stun = -1,
+      blast = 85,
+      heat = 85,
+      cold = 85,
+      acid = 85,
+      lightsaber = 85,
 
-      accuracy = 200,
+      accuracy = 0,
 
       healer = 0,
 
       pack = 1,
       herd = 0,
-      stalker = 0,
-      killer = 0,
+      stalker = 1,
+      killer = 1,
       aggressive = 0,
       invincible = 0,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weapon = "object/weapon/melee/sword/shared_sword_lightsaber_mace.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Jawa Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_mace", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 1,
+      weaponMinDamage = 650,
+      weaponMaxDamage = 950,
+      weaponAttackSpeed = 1,
+      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ jindaElder = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,34", -- Group it belongs to for loot
+      lootGroup = 0, -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,10 +135,10 @@ jindaElder = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "jindaAttack01", "jindaAttack02", "jindaAttack03", "jindaAttack04", "jindaAttack05", "jindaAttack06", "jindaAttack07", "jindaAttack08", "jindaAttack09" },
-      respawnTimer = 300,
+      skills = { "twoHandedJediAttack4" },
+      respawnTimer = 42300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(jindaElder, 2886364858) --  Add to Global Table
+Creatures:addCreature(darkJawa, 3444186231) --  Add to Global Table
