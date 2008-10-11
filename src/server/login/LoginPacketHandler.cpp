@@ -180,7 +180,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		ServerDatabase::instance()->executeStatement(query);
 
 		query.str(""); // clear stream
-		query << "DELETE FROM character_faction WHERE character_id = '" << charId <<"';";
+		query << "DELETE FROM character_faction_points WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
 		query.str(""); // clear stream
