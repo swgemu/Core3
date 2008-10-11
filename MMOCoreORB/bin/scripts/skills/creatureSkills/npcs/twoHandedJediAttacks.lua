@@ -40,8 +40,8 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-darthAttack1 = {
-	attackname = "darthAttack1",
+twoHandedJediAttack1 = {
+	attackname = "twoHandedJediAttack1",
 	animation = "saberthrow_posture_change",
 	
 	requiredWeaponType = JEDI,
@@ -50,7 +50,7 @@ darthAttack1 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	coneAngle = 40,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -68,12 +68,12 @@ darthAttack1 = {
 	CbtSpamMiss = "saberthrow1_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack1)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack1)
 
 -----------------------------------------------------------------------
 
-darthAttack2 = {
-	attackname = "darthAttack2",
+twoHandedJediAttack2 = {
+	attackname = "twoHandedJediAttack2",
 	animation = "saberthrow_posture_change",
 	
 	requiredWeaponType = JEDI,
@@ -82,7 +82,7 @@ darthAttack2 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	coneAngle = 40,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 35,
 	postureDownChance = 0,
@@ -98,12 +98,12 @@ darthAttack2 = {
 	CbtSpamMiss = "saberthrow2_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack2)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack2)
 
 -----------------------------------------------------------------------
 
-darthAttack3 = {
-	attackname = "darthAttack3",
+twoHandedJediAttack3 = {
+	attackname = "twoHandedJediAttack3",
 	animation = "saberthrow_posture_change",
 
 	requiredWeaponType = JEDI,
@@ -112,7 +112,7 @@ darthAttack3 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	coneAngle = 40,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 40,
 	postureDownChance = 0,
@@ -130,12 +130,12 @@ darthAttack3 = {
 	CbtSpamMiss = "saberthrow3_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack3)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack3)
 
 -----------------------------------------------------------------------
 
-darthAttack4 = {
-	attackname = "darthAttack4",
+twoHandedJediAttack4 = {
+	attackname = "twoHandedJediAttack4",
 	animation = "combo_2d_light",
 
 	requiredWeaponType = JEDI,
@@ -144,7 +144,7 @@ darthAttack4 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	postureDownChance = 10,
 		
 	healthAttackChance = 50,
@@ -173,12 +173,12 @@ darthAttack4 = {
 	CbtSpamMiss = "saberslash1_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack4)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack4)
 
 -----------------------------------------------------------------------
 
-darthAttack5 = {
-	attackname = "darthAttack5",
+twoHandedJediAttack5 = {
+	attackname = "twoHandedJediAttack5",
 	animation = "combo_2d_light",
 
 	requiredWeaponType = JEDI,
@@ -187,7 +187,7 @@ darthAttack5 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	postureDownChance = 20,
 		
 	healthAttackChance = 50,
@@ -216,12 +216,12 @@ darthAttack5 = {
 	CbtSpamMiss = "saberslash2_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack5)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack5)
 
 ----------------------------------------------------------------------
 
-darthAttack6 = {
-	attackname = "darthAttack6",
+twoHandedJediAttack6 = {
+	attackname = "twoHandedJediAttack6",
 	animation = "combo_jedi_2_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -230,7 +230,7 @@ darthAttack6 = {
 	coneAngel = 40,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -247,11 +247,11 @@ darthAttack6 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack6)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack6)
 -----------------------------------------------------------------------
 
-darthAttack7 = {
-	attackname = "darthAttack7",
+twoHandedJediAttack7 = {
+	attackname = "twoHandedJediAttack7",
 	animation = "combo_3a_medium",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -287,12 +287,12 @@ darthAttack7 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack7)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack7)
 
 -----------------------------------------------------------------------
 
-darthAttack8 = {
-	attackname = "darthAttack8",
+twoHandedJediAttack8 = {
+	attackname = "twoHandedJediAttack8",
 	animation = "combo_3b_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -328,12 +328,12 @@ darthAttack8 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack8)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack8)
 	
 -----------------------------------------------------------------------
 
-darthAttack9 = {
-	attackname = "darthAttack9",
+twoHandedJediAttack9 = {
+	attackname = "twoHandedJediAttack9",
 	animation = "showoff_3_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -369,12 +369,12 @@ darthAttack9 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack9)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack9)
 
 -----------------------------------------------------------------------
 
-darthAttack10 = {
-	attackname = "darthAttack10",
+twoHandedJediAttack10 = {
+	attackname = "twoHandedJediAttack10",
 	animation = "combo_2a_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -382,7 +382,7 @@ darthAttack10 = {
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 15,
@@ -395,12 +395,12 @@ darthAttack10 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack10)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack10)
 
 -----------------------------------------------------------------------
 
-darthAttack11 = {
-	attackname = "darthAttack11",
+twoHandedJediAttack11 = {
+	attackname = "twoHandedJediAttack11",
 	animation = "combo_3d_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -408,7 +408,7 @@ darthAttack11 = {
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 30,
@@ -421,12 +421,12 @@ darthAttack11 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack11)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack11)
 
 -----------------------------------------------------------------------
 
-darthAttack12 = {
-	attackname = "darthAttack12",
+twoHandedJediAttack12 = {
+	attackname = "twoHandedJediAttack12",
 	animation = "showoff_2_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -434,7 +434,7 @@ darthAttack12 = {
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 45,
@@ -447,12 +447,12 @@ darthAttack12 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack12)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack12)
 
 -----------------------------------------------------------------------
 
-darthAttack13 = {
-	attackname = "darthAttack13",
+twoHandedJediAttack13 = {
+	attackname = "twoHandedJediAttack13",
 	animation = "combo_2a_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -460,7 +460,7 @@ darthAttack13 = {
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -473,12 +473,12 @@ darthAttack13 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack13)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack13)
 
 -----------------------------------------------------------------------
 
-darthAttack14 = {
-	attackname = "darthAttack14",
+twoHandedJediAttack14 = {
+	attackname = "twoHandedJediAttack14",
 	animation = "combo_2b_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -486,7 +486,7 @@ darthAttack14 = {
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -499,12 +499,12 @@ darthAttack14 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack14)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack14)
 
 -----------------------------------------------------------------------
 
-darthAttack15 = {
-	attackname = "darthAttack15",
+twoHandedJediAttack15 = {
+	attackname = "twoHandedJediAttack15",
 	animation = "showoff_2_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -512,7 +512,7 @@ darthAttack15 = {
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -525,12 +525,12 @@ darthAttack15 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack15)
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack15)
 
 -----------------------------------------------------------------------
 
-darthAttack16 = {
-	attackname = "darthAttack16",
+twoHandedJediAttack16 = {
+	attackname = "twoHandedJediAttack16",
 	animation = "showoff_2_light",
 
 	requiredWeaponType = TWOHANDSABER,
@@ -539,7 +539,7 @@ darthAttack16 = {
 	coneAngle = 360,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -555,33 +555,4 @@ darthAttack16 = {
 	CbtSpamMiss = "saber2hfrenzy_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack16)
-
------------------------------------------------------------------------
-
-darthAttack17 = {
-	attackname = "darthAttack17",
-	animation = "force_choke_1_particle_level_1_medium",
-	
-	
-	requiredWeaponType = JEDI,
-	
-	range = 32,
-	damageRatio = 50,
-	speedRatio = 1,
-	accuracyBonus = 0,
-	
-	knockdownChance = 0,
-	postureDownChance = 0,
-	
-	CbtSpamBlock = "forcechoke_block",
-	CbtSpamCounter = "forcechoke_counter",
-	CbtSpamEvade = "forcechoke_evade",
-	CbtSpamHit = "forcechoke_hit",
-	CbtSpamMiss = "forcechoke_miss"
-	
-}
-
-AddRandomPoolAttackTargetSkill(darthAttack17)
-
------------------------------------------------------------------------
+AddRandomPoolAttackTargetSkill(twoHandedJediAttack16)

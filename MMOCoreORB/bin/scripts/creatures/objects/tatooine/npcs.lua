@@ -40,6 +40,18 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+--Jawas
+RunCreatureFile("objects/tatooine/npcs/jawaEngineer.lua")
+RunCreatureFile("objects/tatooine/npcs/jawaHealer.lua")
+RunCreatureFile("objects/tatooine/npcs/jawaWarlord.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa.lua")
+RunCreatureFile("objects/tatooine/npcs/jawaAvenger.lua")
+RunCreatureFile("objects/tatooine/npcs/jawaHenchman.lua")
+RunCreatureFile("objects/tatooine/npcs/jawaLeader.lua")
+RunCreatureFile("objects/tatooine/npcs/jawaProtector.lua")
+RunCreatureFile("objects/tatooine/npcs/jawaSmuggler.lua")
+RunCreatureFile("objects/tatooine/npcs/jawaThief.lua")
+
 --Fort Tusken / Tusken Bunker
  RunCreatureFile("objects/tatooine/npcs/tuskenCaptain.lua")
  RunCreatureFile("objects/tatooine/npcs/tuskenEliteGuard.lua")

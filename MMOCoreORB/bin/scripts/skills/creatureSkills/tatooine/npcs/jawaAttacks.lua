@@ -39,14 +39,14 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-atAttack1 = {
-	attackname = "atAttack1",
-	animation = "droid_attack_medium",
+jawaRangedAttack1 = {
+	attackname = "jawaRangedAttack1",
+	animation = "fire_5_special_single_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -66,19 +66,19 @@ atAttack1 = {
 	CbtSpamMiss = "strafeshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack1)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack1)
 
 -----------------------------------------------
 
 
-atAttack2 = {
-	attackname = "atAttack2",
-	animation = "droid_attack_medium",
+jawaRangedAttack2 = {
+	attackname = "jawaRangedAttack2",
+	animation = "fire_1_special_single_medium_face",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -109,18 +109,18 @@ atAttack2 = {
 	CbtSpamMiss = "headshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack2)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack2)
 
 -----------------------------------------------------------------------
 
-atAttack3 = {
-	attackname = "atAttack3",
-	animation = "droid_attack_medium",
+jawaRangedAttack3 = {
+	attackname = "jawaRangedAttack3",
+	animation = "fire_1_special_single_medium_face",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -151,18 +151,18 @@ atAttack3 = {
 	CbtSpamMiss = "masterheadshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack3)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack3)
 
 -----------------------------------------------------------------------
 
-atAttack4 = {
-	attackname = "atAttack4",
-	animation = "droid_attack_medium",
+jawaRangedAttack4 = {
+	attackname = "jawaRangedAttack4",
+	animation = "fire_1_special_single_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -182,18 +182,18 @@ atAttack4 = {
 	CbtSpamMiss = "snipershot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack4)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack4)
 
 -----------------------------------------------------------------------
 
-atAttack5 = {
-	attackname = "atAttack5",
-	animation = "droid_attack_medium",
+jawaRangedAttack5 = {
+	attackname = "jawaRangedAttack5",
+	animation = "fire_1_special_single_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -213,18 +213,18 @@ atAttack5 = {
 	CbtSpamMiss = "concealedshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack5)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack5)
 
 -----------------------------------------------------------------------
 
-atAttack6 = {
-	attackname = "atAttack6",
-	animation = "droid_attack_medium",
+jawaRangedAttack6 = {
+	attackname = "jawaRangedAttack6",
+	animation = "fire_3_special_single_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -244,18 +244,18 @@ atAttack6 = {
 	CbtSpamMiss = "flushingshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack6)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack6)
 
 -----------------------------------------------------------------------
 
-atAttack7 = {
-	attackname = "atAttack7",
-	animation = "droid_attack_medium",
+jawaRangedAttack7 = {
+	attackname = "jawaRangedAttack7",
+	animation = "fire_defender_posture_change_up",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -275,18 +275,18 @@ atAttack7 = {
 	CbtSpamMiss = "startleshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack7)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack7)
 
 -----------------------------------------------------------------------
 
-atAttack8 = {
-	attackname = "atAttack8",
-	animation = "droid_attack_medium",
+jawaRangedAttack8 = {
+	attackname = "jawaRangedAttack8",
+	animation = "fire_area_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -306,18 +306,18 @@ atAttack8 = {
 	CbtSpamMiss = "flushingvolley_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack8)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack8)
 
 -----------------------------------------------------------------------
 
-atAttack9 = {
-	attackname = "atAttack9",
-	animation = "droid_attack_medium",
+jawaRangedAttack9 = {
+	attackname = "jawaRangedAttack9",
+	animation = "fire_defender_posture_change_up",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -337,18 +337,18 @@ atAttack9 = {
 	CbtSpamMiss = "startleshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack9)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack9)
 
 -----------------------------------------------------------------------
 
-atAttack10 = {
-	attackname = "atAttack10",
-	animation = "droid_attack_medium",
+jawaRangedAttack10 = {
+	attackname = "jawaRangedAttack10",
+	animation = "fire_5_special_single_medium_face",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -368,18 +368,18 @@ atAttack10 = {
 	CbtSpamMiss = "flurryshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack10)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack10)
 
 -----------------------------------------------------------------------
 
-atAttack11 = {
-	attackname = "atAttack11",
-	animation = "droid_attack_medium",
+jawaRangedAttack11 = {
+	attackname = "jawaRangedAttack11",
+	animation = "fire_area_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -399,18 +399,18 @@ atAttack11 = {
 	CbtSpamMiss = "flurry_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack11)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack11)
 
 -----------------------------------------------------------------------
 
-atAttack12 = {
-	attackname = "atAttack12",
-	animation = "droid_attack_medium",
+jawaRangedAttack12 = {
+	attackname = "jawaRangedAttack12",
+	animation = "fire_area_medium",
 
-	requiredWeaponType = RANGED,
+	requiredWeaponType = RIFLE,
 	
-	range = 75,
-	damageRatio = 18,
+	range = 64,
+	damageRatio = 9,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -430,5 +430,170 @@ atAttack12 = {
 	CbtSpamMiss = "advancedstrafe_miss",
 }
 
-AddRandomPoolAttackTargetSkill(atAttack12)
+AddRandomPoolAttackTargetSkill(jawaRangedAttack12)
 
+-----------------------1HANDED----------------------------------------
+
+jawaMeleeAttack1 = { 
+	attackname = "jawaMeleeAttack1",
+	animation = "lower_posture_1hmelee_1",
+
+	requiredWeaponType = ONEHANDED,
+	
+	range = 10,
+	damageRatio = 9.0,
+	speedRatio = 1.25,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 10,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "sword1_sweep_block",
+	CbtSpamCounter = "sword1_sweep_counter",
+	CbtSpamEvade = "sword1_sweep_evade",
+	CbtSpamHit = "sword1_sweep_hit",
+	CbtSpamMiss = "sword1_sweep_miss",
+}
+
+AddRandomPoolAttackTargetSkill(jawaMeleeAttack1)
+
+-----------------------1HANDED----------------------------------------
+
+jawaMeleeAttack2 = { 
+	attackname = "jawaMeleeAttack2",
+	animation = "counter_high_center_light",
+
+	requiredWeaponType = ONEHANDED,
+	
+	range = 5,
+	damageRatio = 9.5,
+	speedRatio = 1.45,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "chomai_block",
+	CbtSpamCounter = "chomai_counter",
+	CbtSpamEvade = "chomai_evade",
+	CbtSpamHit = "chomai_hit",
+	CbtSpamMiss = "chomai_miss",
+}
+
+AddRandomPoolAttackTargetSkill(jawaMeleeAttack2)
+
+-----------------------------------------------------------------------
+
+jawaMeleeAttack3 = { 
+	attackname = "jawaMeleeAttack3",
+	animation = "counter_high_right_light",
+
+	requiredWeaponType = ONEHANDED,
+	
+	range = 5,
+	damageRatio = 9.5,
+	speedRatio = 1.45,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthAttackChance = 100,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "saimai_block",
+	CbtSpamCounter = "saimai_counter",
+	CbtSpamEvade = "saimai_evade",
+	CbtSpamHit = "saimai_hit",
+	CbtSpamMiss = "saimai_miss",
+}
+
+AddDirectPoolAttackTargetSkill(jawaMeleeAttack3)
+
+-----------------------------------------------------------------------
+
+jawaMeleeAttack4 = { 
+	attackname = "jawaMeleeAttack4",
+	animation = "combo_2b_medium",
+
+	requiredWeaponType = ONEHANDED,
+	
+	range = 5,
+	damageRatio = 9.0,
+	speedRatio = 1.45,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 10,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "sword1_dizzy_block",
+	CbtSpamCounter = "sword1_dizzy_counter",
+	CbtSpamEvade = "sword1_dizzy_evade",
+	CbtSpamHit = "sword1_dizzy_hit",
+	CbtSpamMiss = "sword1_dizzy_miss",
+}
+
+AddRandomPoolAttackTargetSkill(jawaMeleeAttack4)
+
+-----------------------------------------------------------------------
+
+jawaMeleeAttack5 = { 
+	attackname = "jawaMeleeAttack5",
+	animation = "attack_high_right_medium_2",
+
+	requiredWeaponType = ONEHANDED,
+	
+	range = 5,
+	damageRatio = 9.0,
+	speedRatio = 1.45,
+	areaRange = 7,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "slashspin_block",
+	CbtSpamCounter = "slashspin_counter",
+	CbtSpamEvade = "slashspin_evade",
+	CbtSpamHit = "slashspin_hit",
+	CbtSpamMiss = "slashspin_miss",
+}
+
+AddRandomPoolAttackTargetSkill(jawaMeleeAttack5)

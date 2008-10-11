@@ -140,16 +140,19 @@ RunCreatureFile("objects/npcs/rebelSurfaceMarshal.lua")
 --Misc
 RunCreatureFile("objects/npcs/palpatine.lua")
 RunCreatureFile("objects/npcs/darthVader.lua")
-RunCreatureFile("objects/npcs/mellichae.lua")
-RunCreatureFile("objects/npcs/moJediMaster.lua")
-RunCreatureFile("objects/npcs/jediMaster.lua")
-RunCreatureFile("objects/npcs/jediKnight.lua")
+RunCreatureFile("objects/npcs/bobaFett.lua")
 
 RunCreatureFile("objects/npcs/oldMan.lua")
 RunCreatureFile("objects/npcs/luke.lua")
 RunCreatureFile("objects/npcs/hanSolo.lua")
 RunCreatureFile("objects/npcs/chewbacca.lua")
-RunCreatureFile("objects/npcs/bobaFett.lua")
+
+RunCreatureFile("objects/npcs/mellichae.lua")
+RunCreatureFile("objects/npcs/moJediMaster.lua")
+RunCreatureFile("objects/npcs/jediMaster.lua")
+RunCreatureFile("objects/npcs/jediKnight.lua")
+
 RunCreatureFile("objects/npcs/jabbaHutt.lua")
+RunCreatureFile("objects/npcs/darkJawa.lua")
 
 ----------------------------------------------------------------------------------------------------

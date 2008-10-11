@@ -155,6 +155,23 @@ spawnCreatures(worrt, 8, 227, -5349, 30, 1)
 
 --------------------------------------------------------------------------------------------
 
+--Tusken Bantha / Jawas
+
+spawnCreatures(jawaHealer, 8, 5752, 4016, 50, 5, 180)
+spawnCreatures(jawaWarlord, 8, 5747, 4016, 50, 5, 180)
+spawnCreatures(jawa, 8, 5749, 4016, 50, 5, 180)
+spawnCreatures(jawaAvenger, 8, 5742, 4016, 50, 5, 180)
+spawnCreatures(jawaEngineer, 8, 5757, 4016, 50, 5, 180)
+spawnCreatures(jawaHenchman, 8, 5763, 4016, 50, 5, 180)
+spawnCreatures(jawaLeader, 8, 5739, 4016, 50, 5, 180)
+spawnCreatures(jawaProtector, 8, 5768, 4016, 50, 5, 180)
+spawnCreatures(jawaSmuggler, 8, 5732, 4016, 50, 5, 180)
+spawnCreatures(jawaThief, 8, 5780, 4016, 50, 5, 180)
+
+spawnCreatures(tuskenBantha, 8, -3965, 6380, 50, 10, 180)
+
+--------------------------------------------------------------------------------------------
+
 -- Ancient Krayt Dragon Skeleton (POI)
 
 spawnCreature(kraytDragonAncient, 8, -4643, -4359)
@@ -205,3 +222,5 @@ spawnCreature(juvenileCanyonKrayt, 8, 7273, 4317)
 spawnCreatureInCell(dewback, 8, -24.4, -30.0, -22.2, 7125561)
 spawnCreatureInCell(bobaFett, 8, -1.20873, 3, 30.5849, 1177487)
 spawnCreatureInCell(jabbaHutt, 8, -15.0684, 2, 44.2862, 1177487)
+spawnCreature(darkJawa, 8, 7042, 7038)
+

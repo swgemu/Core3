@@ -135,7 +135,7 @@ darthVader = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4", "darthAttack5", "darthAttack6", "darthAttack7", "darthAttack8" },
+      skills = { "darthAttack17", "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4", "darthAttack5", "darthAttack6", "darthAttack7", "darthAttack17", "darthAttack8", "darthAttack9", "darthAttack10", "darthAttack11", "darthAttack12", "darthAttack17", "darthAttack13", "darthAttack14", "darthAttack15", "darthAttack16", "darthAttack17" },
       respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object

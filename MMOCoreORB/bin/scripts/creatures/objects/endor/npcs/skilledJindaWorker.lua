@@ -47,7 +47,7 @@ skilledJindaWorker = Creature:new {
       gender = "",
 
       name = "skilled Jinda worker",
-      objectCRC = 2368719642, 
+      objectCRC = 2886364858, 
       socialGroup = "Jinda Tribe",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ skilledJindaWorker = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(skilledJindaWorker, 2368719642) --  Add to Global Table
+Creatures:addCreature(skilledJindaWorker, 2886364858) --  Add to Global Table

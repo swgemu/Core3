@@ -40,170 +40,149 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-palpatineAttack1 = {
+
+palpatineAttack1 = { 
 	attackname = "palpatineAttack1",
-	animation = "force_lightning_1_particle_level_1_light",
+	animation = "force_mind_blast_1_particle_level_1_light",
+	
+	--forceCost = 68,
 	
 	requiredWeaponType = JEDI,
-
-	range = 64,
-
-	damageRatio = 50,
-
-	speedRatio = 1,
-	coneAngle = 30,
-
-	areaRange = 0,
-	accuracyBonus = 100,
-		
-	knockdownChance = 50,
-	postureDownChance = 10,
-	postureUpChance = 0,
-	dizzyChance = 50,
-	blindChance = 50,
-	stunChance = 50,
-	intimidateChance = 50,
 	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
+	range = 32,
+	damageRatio = 50,
+	speedRatio = 2.5,
+	accuracyBonus = 500,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 50,
+	stunChance = 50,
+	
+	CbtSpamBlock = "mindblast1_block",
+	CbtSpamCounter = "mindblast1_counter",
+	CbtSpamEvade = "mindblast1_evade",
+	CbtSpamHit = "mindblast1_hit",
+	CbtSpamMiss = "mindblast1_miss"
+	
 }
 
 AddRandomPoolAttackTargetSkill(palpatineAttack1)
 
------------------------------------------------
+-----------------------------------------------------------------------
 
-palpatineAttack2 = {
+palpatineAttack2 = { 
 	attackname = "palpatineAttack2",
-	animation = "force_intimidate_chain",
+	animation = "force_mind_blast_1_particle_level_1_medium",
+	
+	--forceCost = 160,
 	
 	requiredWeaponType = JEDI,
-
-	range = 64,
-
+	
+	range = 32,
 	damageRatio = 50,
-
-	speedRatio = 1,
-	coneAngle = 0,
-
-	areaRange = 32,
-	accuracyBonus = 100,
-		
+	speedRatio = 2.5,
+	accuracyBonus = 500,
+	
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 80,
+	dizzyChance = 50,
+	stunChance = 50,
 	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss"
+	CbtSpamBlock = "mindblast2_block",
+	CbtSpamCounter = "mindblast2_counter",
+	CbtSpamEvade = "mindblast2_evade",
+	CbtSpamHit = "mindblast2_hit",
+	CbtSpamMiss = "mindblast2_miss"
+	
 }
 
 AddRandomPoolAttackTargetSkill(palpatineAttack2)
 
------------------------------------------------
-palpatineAttack3 = {
-attackname = "palpatineAttack3",
-animation = "force_lightning_1_particle_level_2_light",
+-----------------------------------------------------------------------
 
+palpatineAttack3 = { 
+	attackname = "palpatineAttack3",
+	animation = "force_lightning_1_arc_particle_level_5_light",
+	
+	--forceCost = 125,
+	
 	requiredWeaponType = JEDI,
 	
-	range = 64,
+	range = 32,
+	coneAngle = 60,
 	damageRatio = 50,
-	speedRatio = 1,
-	areaRange = 32,
-	accuracyBonus = 0,
-		
+	speedRatio = 2.5,
+	accuracyBonus = 500,
+	
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 0,
 	dizzyChance = 50,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
 	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss"
+	CbtSpamBlock = "forcelightningcone1_block",
+	CbtSpamCounter = "forcelightningcone1_counter",
+	CbtSpamEvade = "forcelightningcone1_evade",
+	CbtSpamHit = "forcelightningcone1_hit",
+	CbtSpamMiss = "forcelightningcone1_miss"
+	
 }
 
 AddRandomPoolAttackTargetSkill(palpatineAttack3)
 
------------------------------------------------
+-----------------------------------------------------------------------
 
-palpatineAttack4 = {
+palpatineAttack4 = { 
 	attackname = "palpatineAttack4",
-	animation = "force_weaken_1_particle_level_1_medium",
+	animation = "force_lightning_1_arc_particle_level_5_medium",
+	
+	--forceCost = 250,
 	
 	requiredWeaponType = JEDI,
-
-	range = 64,
-
-	damageRatio = 50,
-
-	speedRatio = 1,
-	coneAngle = 30,
-
-	areaRange = 0,
-	accuracyBonus = 100,
-		
-	knockdownChance = 50,
-	postureDownChance = 10,
-	postureUpChance = 0,
-	dizzyChance = 50,
-	blindChance = 50,
-	stunChance = 50,
-	intimidateChance = 50,
 	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss"
+	range = 32,
+	coneAngle = 70,
+	damageRatio = 50,
+	speedRatio = 2.5,
+	accuracyBonus = 500,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 50,
+	
+	CbtSpamBlock = "forcelightningcone2_block",
+	CbtSpamCounter = "forcelightningcone2_counter",
+	CbtSpamEvade = "forcelightningcone2_evade",
+	CbtSpamHit = "forcelightningcone2_hit",
+	CbtSpamMiss = "forcelightningcone2_miss"
+	
 }
 
 AddRandomPoolAttackTargetSkill(palpatineAttack4)
 
 -----------------------------------------------------------------------
 
-palpatineAttack5 = {
+palpatineAttack5 = { 
 	attackname = "palpatineAttack5",
-	animation = "force_lightning_1_particle_level_3_medium",
+	animation = "force_lightning_1_particle_level_5_light",
+	
+	--forceCost = 75,
 	
 	requiredWeaponType = JEDI,
-
-	range = 64,
-
-	damageRatio = 50,
-
-	speedRatio = 1,
-	coneAngle = 30,
-
-	areaRange = 0,
-	accuracyBonus = 100,
-		
-	knockdownChance = 50,
-	postureDownChance = 10,
-	postureUpChance = 0,
-	dizzyChance = 50,
-	blindChance = 50,
-	stunChance = 50,
-	intimidateChance = 50,
 	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss"
+	range = 32,
+	coneAngle = 0,
+	damageRatio = 50,
+	speedRatio = 2.5,
+	accuracyBonus = 500,
+	
+	dizzyChance = 50,
+	
+	CbtSpamBlock = "forcelightningsingle1_block",
+	CbtSpamCounter = "forcelightningsingle1_counter",
+	CbtSpamEvade = "forcelightningsingle1_evade",
+	CbtSpamHit = "forcelightningsingle1_hit",
+	CbtSpamMiss = "forcelightningsingle1_miss"
+	
 }
 
 AddRandomPoolAttackTargetSkill(palpatineAttack5)
@@ -212,106 +191,141 @@ AddRandomPoolAttackTargetSkill(palpatineAttack5)
 
 palpatineAttack6 = { 
 	attackname = "palpatineAttack6",
-	animation = "force_weaken_1_particle_level_1_medium",
-
+	animation = "force_lightning_1_particle_level_5_medium",
+	
+	--forceCost = 150,
+	
 	requiredWeaponType = JEDI,
 	
-	range = 64,
-	damageRatio = 40,
-	speedRatio = 2.0,
-	areaRange = 32,
-	accuracyBonus = 50,
+	range = 32,
+	coneAngle = 0,
+	damageRatio = 50,
+	speedRatio = 2.5,
+	accuracyBonus = 500,
 	
-	postureDownChance = 20,
-		
-	healthAttackChance = 90,
-	actionAttackChance = 70,
-	mindAttackChance = 50,
-
-	dotChance = 50,
-	tickStrengthOfHit = 10,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 0,
-	bleedingType = HEALTH,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
+	dizzyChance = 50,
 	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss"
+	CbtSpamBlock = "forcelightningsingle2_block",
+	CbtSpamCounter = "forcelightningsingle2_counter",
+	CbtSpamEvade = "forcelightningsingle2_evade",
+	CbtSpamHit = "forcelightningsingle2_hit",
+	CbtSpamMiss = "forcelightningsingle2_miss"
+	
 }
 
-AddDotPoolAttackTargetSkill(palpatineAttack6)
+AddRandomPoolAttackTargetSkill(palpatineAttack6)
 
 -----------------------------------------------------------------------
 
 palpatineAttack7 = { 
 	attackname = "palpatineAttack7",
-	animation = "force_lightning_1_arc_particle_level_5_medium",
-
+	animation = "force_knockdown_1_particle_level_1",
+	
+	--forceCost = 75,
+	
 	requiredWeaponType = JEDI,
 	
-	range = 64,
+	range = 32,
+	coneAngle = 70,
 	damageRatio = 50,
-	speedRatio = 1.0,
-	coneAngle = 80,
-	areaRange = 32,
-	accuracyBonus = 100,
+	speedRatio = 2.5,
+	accuracyBonus = 500,
 	
-	knockdownChance = 0,
+	knockdownChance = 50,
 	postureDownChance = 0,
-	dizzyChance = 95,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
 	
-	CbtSpamBlock = "forcelightningcone2_block",
-	CbtSpamCounter = "forcelightningcone2_counter",
-    CbtSpamEvade = "forcelightningcone2_evade",
-    CbtSpamHit = "forcelightningcone2_hit",
-    CbtSpamMiss = "forcelightningcone2_miss"
+	CbtSpamBlock = "forceknockdown1_block",
+	CbtSpamCounter = "forceknockdown1_counter",
+	CbtSpamEvade = "forceknockdown1_evade",
+	CbtSpamHit = "forceknockdown1_hit",
+	CbtSpamMiss = "forceknockdown1_miss"
+	
 }
 
-AddDotPoolAttackTargetSkill(palpatineAttack7)
+AddRandomPoolAttackTargetSkill(palpatineAttack7)
 
 -----------------------------------------------------------------------
 
 palpatineAttack8 = { 
 	attackname = "palpatineAttack8",
-	animation = "force_knockdown_1_arc_particle_level_1",
-
+	animation = "force_knockdown_1_particle_level_1",
+	
+	--forceCost = 100,
+	
 	requiredWeaponType = JEDI,
 	
-	range = 64,
+	range = 32,
+	coneAngle = 70,
 	damageRatio = 50,
-	speedRatio = 1.0,
-	coneAngle = 50,
-	areaRange = 32,
-	accuracyBonus = 100,
+	speedRatio = 2.5,
+	accuracyBonus = 500,
 	
-	knockdownChance = 95,
-	postureDownChance = 70,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
+	knockdownChance = 50,
+	postureDownChance = 0,
+	
+	CbtSpamBlock = "forceknockdown2_block",
+	CbtSpamCounter = "forceknockdown2_counter",
+	CbtSpamEvade = "forceknockdown2_evade",
+	CbtSpamHit = "forceknockdown2_hit",
+	CbtSpamMiss = "forceknockdown2_miss"
+	
+}
+
+AddRandomPoolAttackTargetSkill(palpatineAttack8)
+
+-----------------------------------------------------------------------
+
+palpatineAttack9 = { 
+	attackname = "palpatineAttack9",
+	animation = "force_knockdown_1_arc_particle_level_1",
+	
+	--forceCost = 200,
+	
+	requiredWeaponType = JEDI,
+	
+	range = 32,
+	coneAngle = 70,
+	damageRatio = 50,
+	speedRatio = 2.5,
+	accuracyBonus = 500,
+	
+	knockdownChance = 50,
+	postureDownChance = 0,
 	
 	CbtSpamBlock = "forceknockdown3_block",
 	CbtSpamCounter = "forceknockdown3_counter",
 	CbtSpamEvade = "forceknockdown3_evade",
 	CbtSpamHit = "forceknockdown3_hit",
 	CbtSpamMiss = "forceknockdown3_miss"
+	
 }
 
-AddDotPoolAttackTargetSkill(palpatineAttack8)
+AddRandomPoolAttackTargetSkill(palpatineAttack9)
 
 -----------------------------------------------------------------------
+
+palpatineAttack10 = { 
+	attackname = "palpatineAttack10",
+	animation = "force_choke_1_particle_level_1_medium",
+	
+	--forceCost = 400,
+	
+	requiredWeaponType = JEDI,
+	
+	range = 32,
+	damageRatio = 50,
+	speedRatio = 2.5,
+	accuracyBonus = 500,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	
+	CbtSpamBlock = "forcechoke_block",
+	CbtSpamCounter = "forcechoke_counter",
+	CbtSpamEvade = "forcechoke_evade",
+	CbtSpamHit = "forcechoke_hit",
+	CbtSpamMiss = "forcechoke_miss"
+	
+}
+
+AddRandomPoolAttackTargetSkill(palpatineAttack10)

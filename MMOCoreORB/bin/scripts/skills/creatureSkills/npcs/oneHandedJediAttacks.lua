@@ -40,8 +40,8 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-darthAttack1 = {
-	attackname = "darthAttack1",
+oneHandedJediAttack1 = {
+	attackname = "oneHandedJediAttack1",
 	animation = "saberthrow_posture_change",
 	
 	requiredWeaponType = JEDI,
@@ -50,7 +50,7 @@ darthAttack1 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	coneAngle = 40,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -68,12 +68,12 @@ darthAttack1 = {
 	CbtSpamMiss = "saberthrow1_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack1)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack1)
 
 -----------------------------------------------------------------------
 
-darthAttack2 = {
-	attackname = "darthAttack2",
+oneHandedJediAttack2 = {
+	attackname = "oneHandedJediAttack2",
 	animation = "saberthrow_posture_change",
 	
 	requiredWeaponType = JEDI,
@@ -82,7 +82,7 @@ darthAttack2 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	coneAngle = 40,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 35,
 	postureDownChance = 0,
@@ -98,12 +98,12 @@ darthAttack2 = {
 	CbtSpamMiss = "saberthrow2_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack2)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack2)
 
 -----------------------------------------------------------------------
 
-darthAttack3 = {
-	attackname = "darthAttack3",
+oneHandedJediAttack3 = {
+	attackname = "oneHandedJediAttack3",
 	animation = "saberthrow_posture_change",
 
 	requiredWeaponType = JEDI,
@@ -112,7 +112,7 @@ darthAttack3 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	coneAngle = 40,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 40,
 	postureDownChance = 0,
@@ -130,12 +130,12 @@ darthAttack3 = {
 	CbtSpamMiss = "saberthrow3_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack3)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack3)
 
 -----------------------------------------------------------------------
 
-darthAttack4 = {
-	attackname = "darthAttack4",
+oneHandedJediAttack4 = {
+	attackname = "oneHandedJediAttack4",
 	animation = "combo_2d_light",
 
 	requiredWeaponType = JEDI,
@@ -144,7 +144,7 @@ darthAttack4 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	postureDownChance = 10,
 		
 	healthAttackChance = 50,
@@ -173,12 +173,12 @@ darthAttack4 = {
 	CbtSpamMiss = "saberslash1_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack4)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack4)
 
 -----------------------------------------------------------------------
 
-darthAttack5 = {
-	attackname = "darthAttack5",
+oneHandedJediAttack5 = {
+	attackname = "oneHandedJediAttack5",
 	animation = "combo_2d_light",
 
 	requiredWeaponType = JEDI,
@@ -187,7 +187,7 @@ darthAttack5 = {
 	damageRatio = 50,
 	speedRatio = 1,
 	areaRange = 0,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	postureDownChance = 20,
 		
 	healthAttackChance = 50,
@@ -216,12 +216,72 @@ darthAttack5 = {
 	CbtSpamMiss = "saberslash2_miss"
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack5)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack5)
 
-----------------------------------------------------------------------
+-----------------------------------------------------------------------
 
-darthAttack6 = {
-	attackname = "darthAttack6",
+oneHandedJediAttack6 = {
+	attackname = "oneHandedJediAttack6",
+	animation = "showoff_2_light",
+	
+	requiredWeaponType = ONEHANDSABER,
+	
+	range = 8,
+	coneAngel = 40,
+	damageRatio = 50,
+	speedRatio = 1,
+	accuracyBonus = 300,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 30,
+	blindChance = 25,
+	stunChance = 20,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "saber1hflurry_block",
+	CbtSpamCounter = "saber1hflurry_counter",
+	CbtSpamEvade = "saber1hflurry_evade",
+	CbtSpamHit = "saber1hflurry_hit",
+	CbtSpamMiss = "saber1hflurry_miss"
+}
+	
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack6)
+
+-----------------------------------------------------------------------
+
+oneHandedJediAttack7 = {
+	attackname = "oneHandedJediAttack7",
+	animation = "combo_jedi_4_light",
+	
+	requiredWeaponType = ONEHANDSABER,
+	
+	range = 8,
+	coneAngel = 40,
+	damageRatio = 50,
+	speedRatio = 1,
+	accuracyBonus = 300,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 50,
+	blindChance = 45,
+	stunChance = 40,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "saber1hflurry2_block",
+	CbtSpamCounter = "saber1hflurry2_counter",
+	CbtSpamEvade = "saber1hflurry2_evade",
+	CbtSpamHit = "saber1hflurry2_hit",
+	CbtSpamMiss = "saber1hflurry2_miss"
+}
+	
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack7)
+
+-----------------------------------------------------------------------
+
+oneHandedJediAttack8 = {
+	attackname = "oneHandedJediAttack8",
 	animation = "combo_jedi_2_light",
 	
 	requiredWeaponType = TWOHANDSABER,
@@ -230,7 +290,7 @@ darthAttack6 = {
 	coneAngel = 40,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -247,20 +307,19 @@ darthAttack6 = {
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack6)
------------------------------------------------------------------------
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack8)
 
-darthAttack7 = {
-	attackname = "darthAttack7",
-	animation = "combo_3a_medium",
+oneHandedJediAttack9 = {
+	attackname = "oneHandedJediAttack9",
+	animation = "combo_2b_light",
 	
-	requiredWeaponType = TWOHANDSABER,
+	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
 	
-	healthAttackChance = 40,
+	healthAttackChance = 0,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
@@ -268,7 +327,7 @@ darthAttack7 = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 	
-	mindAttackChance = 0,
+	mindAttackChance = 25,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -279,29 +338,29 @@ darthAttack7 = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "saber2hbodyhit1_block",
-	CbtSpamCounter = "saber2hbodyhit1_counter",
-	CbtSpamEvade = "saber2hbodyhit1_evade",
-	CbtSpamHit = "saber2hbodyhit1_hit",
-	CbtSpamMiss = "saber2hbodyhit1_miss"
+	CbtSpamBlock = "saber1hheadhit1_block",
+	CbtSpamCounter = "saber1hheadhit1_counter",
+	CbtSpamEvade = "saber1hheadhit1_evade",
+	CbtSpamHit = "saber1hheadhit1_hit",
+	CbtSpamMiss = "saber1hheadhit1_miss"
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack7)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack9)
 
 -----------------------------------------------------------------------
 
-darthAttack8 = {
-	attackname = "darthAttack8",
-	animation = "combo_3b_light",
+oneHandedJediAttack10 = {
+	attackname = "oneHandedJediAttack10",
+	animation = "combo_3a_light",
 	
-	requiredWeaponType = TWOHANDSABER,
+	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
 	
-	healthAttackChance = 50,
+	healthAttackChance = 0,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
@@ -309,40 +368,40 @@ darthAttack8 = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 	
-	mindAttackChance = 0,
+	mindAttackChance = 50,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 0, --20, --why is 20 here -.-
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "saber2hbodyhit2_block",
-	CbtSpamCounter = "saber2hbodyhit2_counter",
-	CbtSpamEvade = "saber2hbodyhit2_evade",
-	CbtSpamHit = "saber2hbodyhit2_hit",
-	CbtSpamMiss = "saber2hbodyhit2_miss"
+	CbtSpamBlock = "saber1hheadhit2_block",
+	CbtSpamCounter = "saber1hheadhit2_counter",
+	CbtSpamEvade = "saber1hheadhit2_evade",
+	CbtSpamHit = "saber1hheadhit2_hit",
+	CbtSpamMiss = "saber1hheadhit2_miss"
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack8)
-	
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack10)
+
 -----------------------------------------------------------------------
 
-darthAttack9 = {
-	attackname = "darthAttack9",
-	animation = "showoff_3_light",
+oneHandedJediAttack11 = {
+	attackname = "oneHandedJediAttack11",
+	animation = "combo_5a_light",
 	
-	requiredWeaponType = TWOHANDSABER,
+	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
 	
-	healthAttackChance = 80,
+	healthAttackChance = 0,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
@@ -350,238 +409,181 @@ darthAttack9 = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 	
-	mindAttackChance = 0,
+	mindAttackChance = 75,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 0, --40, who put 40 here -.-
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "saber2hbodyhit3_block",
-	CbtSpamCounter = "saber2hbodyhit3_counter",
-	CbtSpamEvade = "saber2hbodyhit3_evade",
-	CbtSpamHit = "saber2hbodyhit3_hit",
-	CbtSpamMiss = "saber2hbodyhit3_miss"
+	CbtSpamBlock = "saber1hheadhit3_block",
+	CbtSpamCounter = "saber1hheadhit3_counter",
+	CbtSpamEvade = "saber1hheadhit3_evade",
+	CbtSpamHit = "saber1hheadhit3_hit",
+	CbtSpamMiss = "saber1hheadhit3_miss"
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack9)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack11)
 
 -----------------------------------------------------------------------
 
-darthAttack10 = {
-	attackname = "darthAttack10",
+oneHandedJediAttack12 = {
+	attackname = "oneHandedJediAttack12",
 	animation = "combo_2a_light",
 	
-	requiredWeaponType = TWOHANDSABER,
+	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 15,
 	
-	CbtSpamBlock = "saber2hsweep1_block",
-	CbtSpamCounter = "saber2hsweep1_counter",
-	CbtSpamEvade = "saber2hsweep1_evade",
-	CbtSpamHit = "saber2hsweep1_hit",
-	CbtSpamMiss = "saber2hsweep1_miss"
+	CbtSpamBlock = "saber1hcombohit1_block",
+	CbtSpamCounter = "saber1hcombohit1_counter",
+	CbtSpamEvade = "saber1hcombohit1_evade",
+	CbtSpamHit = "saber1hcombohit1_hit",
+	CbtSpamMiss = "saber1hcombohit1_miss"
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack10)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack12)
 
 -----------------------------------------------------------------------
 
-darthAttack11 = {
-	attackname = "darthAttack11",
-	animation = "combo_3d_light",
+oneHandedJediAttack13 = {
+	attackname = "oneHandedJediAttack13",
+	animation = "combo_3c_lightt",
 	
-	requiredWeaponType = TWOHANDSABER,
+	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
-	postureDownChance = 30,
+	postureDownChance = 25,
 	
-	CbtSpamBlock = "saber2hsweep2_block",
-	CbtSpamCounter = "saber2hsweep2_counter",
-	CbtSpamEvade = "saber2hsweep2_evade",
-	CbtSpamHit = "saber2hsweep2_hit",
-	CbtSpamMiss = "saber2hsweep2_miss"
+	CbtSpamBlock = "saber1hcombohit2_block",
+	CbtSpamCounter = "saber1hcombohit2_counter",
+	CbtSpamEvade = "saber1hcombohit2_evade",
+	CbtSpamHit = "saber1hcombohit2_hit",
+	CbtSpamMiss = "saber1hcombohit2_miss"
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack11)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack13)
 
 -----------------------------------------------------------------------
 
-darthAttack12 = {
-	attackname = "darthAttack12",
-	animation = "showoff_2_light",
+oneHandedJediAttack14 = {
+	attackname = "oneHandedJediAttack14",
+	animation = "combo_4a_light",
 	
-	requiredWeaponType = TWOHANDSABER,
+	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
-	postureDownChance = 45,
+	postureDownChance = 40,
 	
-	CbtSpamBlock = "saber2hsweep3_block",
-	CbtSpamCounter = "saber2hsweep3_counter",
-	CbtSpamEvade = "saber2hsweep3_evade",
-	CbtSpamHit = "saber2hsweep3_hit",
-	CbtSpamMiss = "saber2hsweep3_miss"
+	CbtSpamBlock = "saber1hcombohit3_block",
+	CbtSpamCounter = "saber1hcombohit3_counter",
+	CbtSpamEvade = "saber1hcombohit3_evade",
+	CbtSpamHit = "saber1hcombohit3_hit",
+	CbtSpamMiss = "saber1hcombohit3_miss"
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack12)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack14)
 
 -----------------------------------------------------------------------
 
-darthAttack13 = {
-	attackname = "darthAttack13",
-	animation = "combo_2a_light",
+oneHandedJediAttack15 = {
+	attackname = "oneHandedJediAttack15",
+	animation = "combo_3a_light",
 	
-	requiredWeaponType = TWOHANDSABER,
+	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
 	
-	CbtSpamBlock = "saber2hhit1_block",
-	CbtSpamCounter = "saber2hhit1_counter",
-	CbtSpamEvade = "saber2hhit1_evade",
-	CbtSpamHit = "saber2hhit1_hit",
-	CbtSpamMiss = "saber2hhit1_miss"
+	CbtSpamBlock = "saber1hhit1_block",
+	CbtSpamCounter = "saber1hhit1_counter",
+	CbtSpamEvade = "saber1hhit1_evade",
+	CbtSpamHit = "saber1hhit1_hit",
+	CbtSpamMiss = "saber1hhit1_miss"
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack13)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack15)
 
 -----------------------------------------------------------------------
 
-darthAttack14 = {
-	attackname = "darthAttack14",
-	animation = "combo_2b_light",
+oneHandedJediAttack16 = {
+	attackname = "oneHandedJediAttack16",
+	animation = "combo_3a_light",
 	
-	requiredWeaponType = TWOHANDSABER,
+	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
+	blindChance = 30,
 	
-	CbtSpamBlock = "saber2hhit2_block",
-	CbtSpamCounter = "saber2hhit2_counter",
-	CbtSpamEvade = "saber2hhit2_evade",
-	CbtSpamHit = "saber2hhit2_hit",
-	CbtSpamMiss = "saber2hhit2_miss"
+	CbtSpamBlock = "saber1hhit2_block",
+	CbtSpamCounter = "saber1hhit2_counter",
+	CbtSpamEvade = "saber1hhit2_evade",
+	CbtSpamHit = "saber1hhit2_hit",
+	CbtSpamMiss = "saber1hhit2_miss"
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack14)
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack16)
 
 -----------------------------------------------------------------------
 
-darthAttack15 = {
-	attackname = "darthAttack15",
-	animation = "showoff_2_light",
+oneHandedJediAttack17 = {
+	attackname = "oneHandedJediAttack17",
+	animation = "combo_3a_light",
 	
-	requiredWeaponType = TWOHANDSABER,
+	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
 	damageRatio = 50,
 	speedRatio = 1,
-	accuracyBonus = 0,
+	accuracyBonus = 300,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
+	blindChance = 30,
 	
-	CbtSpamBlock = "saber2hhit3_block",
-	CbtSpamCounter = "saber2hhit3_counter",
-	CbtSpamEvade = "saber2hhit3_evade",
-	CbtSpamHit = "saber2hhit3_hit",
-	CbtSpamMiss = "saber2hhit3_miss"
-	
-}
-
-AddRandomPoolAttackTargetSkill(darthAttack15)
-
------------------------------------------------------------------------
-
-darthAttack16 = {
-	attackname = "darthAttack16",
-	animation = "showoff_2_light",
-
-	requiredWeaponType = TWOHANDSABER,
-
-	range = 8,
-	coneAngle = 360,
-	damageRatio = 50,
-	speedRatio = 1,
-	accuracyBonus = 0,
-	
-	knockdownChance = 0,
-	postureDownChance = 0,
-	dizzyChance = 25,
-	blindChance = 25,
-	stunChance = 25,
-	intimidateChance = 0,
-
-	CbtSpamBlock = "saber2hfrenzy_block",
-	CbtSpamCounter = "saber2hfrenzy_counter",
-	CbtSpamEvade = "saber2hfrenzy_evade",
-	CbtSpamHit = "saber2hfrenzy_hit",
-	CbtSpamMiss = "saber2hfrenzy_miss"
-}
-
-AddRandomPoolAttackTargetSkill(darthAttack16)
-
------------------------------------------------------------------------
-
-darthAttack17 = {
-	attackname = "darthAttack17",
-	animation = "force_choke_1_particle_level_1_medium",
-	
-	
-	requiredWeaponType = JEDI,
-	
-	range = 32,
-	damageRatio = 50,
-	speedRatio = 1,
-	accuracyBonus = 0,
-	
-	knockdownChance = 0,
-	postureDownChance = 0,
-	
-	CbtSpamBlock = "forcechoke_block",
-	CbtSpamCounter = "forcechoke_counter",
-	CbtSpamEvade = "forcechoke_evade",
-	CbtSpamHit = "forcechoke_hit",
-	CbtSpamMiss = "forcechoke_miss"
+	CbtSpamBlock = "saber1hhit3_block",
+	CbtSpamCounter = "saber1hhit3_counter",
+	CbtSpamEvade = "saber1hhit3_evade",
+	CbtSpamHit = "saber1hhit3_hit",
+	CbtSpamMiss = "saber1hhit3_miss"
 	
 }
 
-AddRandomPoolAttackTargetSkill(darthAttack17)
-
------------------------------------------------------------------------
+AddRandomPoolAttackTargetSkill(oneHandedJediAttack17)

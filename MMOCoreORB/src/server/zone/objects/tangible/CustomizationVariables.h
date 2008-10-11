@@ -168,7 +168,9 @@ public:
 
 class CustomizationVariables : private VectorMap<uint8, uint8> {
 	uint8 unknown;
+	bool unknown2;
 	bool female;
+	Vector<uint8> keyIndex;
 
 public:
 	CustomizationVariables() : VectorMap<uint8, uint8>() {
@@ -176,9 +178,12 @@ public:
 		removeAll();
 		
 		unknown = 1;
+		unknown2 = false;
 
 		female = false;
 		setNullValue(0);
+
+		keyIndex.removeAll();
 
 		setInsertPlan(SortedVector<uint8>::NO_DUPLICATE);
 	}
@@ -212,8 +217,11 @@ public:
 					female = true;
 					// Not sure about the sometimes shown 0xFF
 					// seems to work if we ignore it
-					if((uint8)custString.at(offset+1) == 0xFF)
+					// on second thought, account for it in case it is valuable.
+					if((uint8)custString.at(offset+1) == 0xFF) {
+                        unknown2 = true;
 						offset++;
+					}
 					i--;
 					continue;
 				}
@@ -230,7 +238,7 @@ public:
 				else
 					value = value1;
 
-				setVariable(type, value);
+                setVariable(type, value);
 			}
 		} catch (...) {
 			removeAll();
@@ -241,6 +249,8 @@ public:
 	}
 
 	void setVariable(uint8 type, uint8 value) {
+	    if (!contains(type))
+            keyIndex.add(type);
 		drop(type);
 		put(type, value);
 		//cout << "inserted type:[" << hex << type << "] value:[" << hex << value << "]\n";
@@ -502,22 +512,24 @@ public:
 
 		if(female)
 			ascii.push_back(0xAB);
+		if (unknown2)
+			ascii.push_back(0xFF);
 
-		for (int i = 0; i < size(); ++i) {
-			VectorMapEntry<uint8, uint8>* entry = SortedVector<VectorMapEntry<uint8, uint8>*>::get(i);
+		for (int i = 0; i < keyIndex.size(); ++i) {
+		   	uint8 key = keyIndex.get(i);
+			uint8 val = get(key);
+			ascii.push_back(key);
 
-			ascii.push_back(entry->getKey());
-
-			if(entry->getValue() == 0x00) // 0
+			if(val == 0x00)
 			{
 				ascii.push_back(0xFF);
 				ascii.push_back(0x01);
-			} else if(entry->getValue() == 0xFF) // 255
+			} else if(val == 0xFF)
 			{
 				ascii.push_back(0xFF);
 				ascii.push_back(0x02);
 			} else
-				ascii.push_back(entry->getValue());
+				ascii.push_back(val);
 		}
 
 		ascii.push_back(0xFF);
