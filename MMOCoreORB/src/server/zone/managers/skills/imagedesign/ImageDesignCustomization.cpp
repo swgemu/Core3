@@ -231,6 +231,8 @@ void ImageDesignCustomization::updateCustomization(string customizationName, uin
 	} else if(type == "hslider")
 	{
 		// this happens for some index type variables
+		updateCustomization(customizationName, (float)value);
+		return;
 			
 	} else
 	{

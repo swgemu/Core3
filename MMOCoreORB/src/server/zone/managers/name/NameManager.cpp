@@ -196,9 +196,9 @@ int NameManager::validateName(const string& name, const string& species) {
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
 	if (name.find("'") != string::npos || name.find("-") != string::npos) {
-		if(species != "human" && species != "twilek" && species != "moncalamari")
+		if(species != "human" && species != "twilek" && species != "moncal")
 			return NameManagerResult::DECLINED_RACE_INAPP;
-		if(species == "moncalamari" && name.find("-") != string::npos)
+		if(species == "moncal" && name.find("-") != string::npos)
 			return NameManagerResult::DECLINED_RACE_INAPP;
 
 		if(fname.find("'") != fname.rfind("'") || fname.find("-") != fname.rfind("-") ||
