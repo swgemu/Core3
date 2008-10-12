@@ -62,9 +62,9 @@ DotPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
@@ -106,9 +106,9 @@ DotPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
@@ -150,9 +150,9 @@ DotPoolAtt = {
 	stunChance = 0,
 	intimidateChance = 0,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,
@@ -195,9 +195,9 @@ DotPoolAtt = {
 	intimidateChance = 0,
 	rezChance = 100,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+	healthAttackChance = 34,
+	actionAttackChance = 33,
+	mindAttackChance = 33,
 
 	dotChance = 100,
 	tickStrengthOfHit = 1,

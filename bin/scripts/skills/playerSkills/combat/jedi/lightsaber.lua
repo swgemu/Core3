@@ -164,7 +164,7 @@ DotPoolAtt = {
 	hamCostMultiplier = 1,
 	forceCostMultiplier = 1,
 
-	dotChance = 25,
+	dotChance = 45,
 	tickStrengthOfHit = 3, --1,
 
 	fireStrength = 0,

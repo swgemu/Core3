@@ -316,7 +316,7 @@ DirectPoolAtt = {
 	postureDownChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 25,
+	stunChance = 0,
 	
 	CbtSpamBlock = "kneecapshot_block",
 	CbtSpamCounter = "kneecapshot_counter",
@@ -336,7 +336,7 @@ RandPoolAtt = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5.0,
+	damageRatio = 7.0,
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
