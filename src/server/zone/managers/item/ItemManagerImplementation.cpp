@@ -1247,13 +1247,16 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 		BinaryData cust(itemApp);
 		cust.encode(appearance);
 
+		string attr = item->getAttributes();
+		MySqlDatabase::escapeString(attr);
+
 		stringstream query;
 		query << "INSERT INTO `character_items` "
 		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`, `itemMask`)"
 		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
 		<< ",'\\" << itemname << "',"
 		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
-		<< item->isEquipped() << ",'" << item->getAttributes()
+		<< item->isEquipped() << ",'" << attr
 		<< "','" << appearance.substr(0, appearance.size() - 1) << "', " << item->getPlayerUseMask() << ")";
 
 		ServerDatabase::instance()->executeStatement(query);
@@ -1276,10 +1279,13 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		BinaryData cust(itemApp);
 		cust.encode(appearance);
 
+		string attr = item->getAttributes();
+		MySqlDatabase::escapeString(attr);
+
 		stringstream query;
 		query << "update `character_items` set equipped = " << item->isEquipped();
 		query << ", character_id = " << player->getCharacterID() << " ";
-		query << ", attributes = '" << item->getAttributes() << "' ";
+		query << ", attributes = '" << attr << "' ";
 		query << ", appearance = '" << appearance.substr(0, appearance.size() - 1) << "' ";
 		query << ", itemMask = " << item->getPlayerUseMask() << " ";
 		query << "where item_id = " << item->getObjectID();

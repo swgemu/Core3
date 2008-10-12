@@ -169,15 +169,18 @@ void GroupObjectImplementation::disband() {
 		}
 	}
 
-	ChatRoom* room = groupChannel->getParent();
-	ChatRoom* parent = room->getParent();
 
-	ChatManager* chatManager = getZone()->getChatManager();
+	if (groupChannel != NULL) {
+		ChatRoom* room = groupChannel->getParent();
+		ChatRoom* parent = room->getParent();
 
-	chatManager->destroyRoom(groupChannel);
-	chatManager->destroyRoom(room);
+		ChatManager* chatManager = getZone()->getChatManager();
 
-	groupChannel = NULL;
+		chatManager->destroyRoom(groupChannel);
+		chatManager->destroyRoom(room);
+
+		groupChannel = NULL;
+	}
 
 	groupMembers.removeAll();
 }
