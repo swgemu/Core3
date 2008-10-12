@@ -72,7 +72,7 @@ public:
 		templateTypeName = "wearables_name";
 		templateName = tempn;
 
-		if (equipped = eqp)
+		if ((equipped = eqp))
 			setContainer(creature, 0x04);
 		else
 			setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
@@ -87,7 +87,7 @@ public:
 		templateTypeName = "wearables_name";
 		templateName = tempn;
 
-		if (equipped = eqp)
+		if ((equipped = eqp))
 			setContainer(creature, 0x04);
 		else
 			setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);

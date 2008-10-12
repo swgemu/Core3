@@ -157,7 +157,7 @@ public:
 		return medpackType == REVIVEPACK;
 	}
 
-	static const int getPoolFromName(const string& pool) {
+	static int getPoolFromName(const string& pool) {
 		if (pool == "health") {
 			return HEALTH;
 		} else if (pool == "action") {
@@ -216,7 +216,7 @@ public:
 		}
 	}
 
-	static const int getStateFromName(const string& state) {
+	static int getStateFromName(const string& state) {
 		if (state == "intimidated") {
 			return CreatureObjectImplementation::INTIMIDATED_STATE;
 		} else if (state == "dizzy") {
@@ -250,7 +250,7 @@ public:
 		}
 	}
 
-	static const int getConditionFromName(const string& condition) {
+	static int getConditionFromName(const string& condition) {
 		if (condition == "poisoned") {
 			return CreatureObjectImplementation::POISONED_STATE;
 		} else if (condition == "diseased") {
