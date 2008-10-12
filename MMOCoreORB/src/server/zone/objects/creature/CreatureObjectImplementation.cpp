@@ -3332,7 +3332,7 @@ void CreatureObjectImplementation::stopDancing() {
 
 	setDancing(false);
 	sendEntertainingUpdate(0x3F4D70A4, getPerformanceAnimation(), 0, 0);
-	setPerformanceName("");	
+	setPerformanceName("");
 
 	while (!watchers.isEmpty()) {
 		ManagedReference<CreatureObject> creo = watchers.get(0);
@@ -3366,9 +3366,9 @@ void CreatureObjectImplementation::stopPlayingMusic() {
 	info("stopped playing music");
 
 	setPlayingMusic(false);
-	sendEntertainingUpdate(0x3F4D70A4, getPerformanceAnimation(), 0, 0); 
+	sendEntertainingUpdate(0x3F4D70A4, getPerformanceAnimation(), 0, 0);
 	setPerformanceName("");
-	setListenID(0);	
+	setListenID(0);
 
 	while (!listeners.isEmpty()) {
 		ManagedReference<CreatureObject> creo = listeners.get(0);
@@ -4186,7 +4186,13 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 
 	try {
 		if (lockMount)
-			mount->wlock(_this);
+			mnt->wlock(_this);
+
+		if (mount == NULL) {
+			if (lockMount)
+				mnt->unlock();
+			return;
+		}
 
 		mount->setState(MOUNTEDCREATURE_STATE);
 		mount->updateStates();
@@ -4196,10 +4202,10 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 		updateStates();
 
 		if (lockMount)
-			mount->unlock();
+			mnt->unlock();
 	} catch (...) {
 		if (lockMount)
-			mount->unlock();
+			mnt->unlock();
 	}
 }
 

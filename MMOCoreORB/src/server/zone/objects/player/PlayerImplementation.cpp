@@ -517,7 +517,6 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerObject->updateAllFriends(playerObject);
-		playerManager->updateOtherFriendlists(_this, true);
 		playerManager->updateGuildStatus(_this);
 
 		if (isMounted())
@@ -530,6 +529,8 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		//reset mission vars:
 		misoRFC = 0x01;
 		misoBSB = 0;
+
+		playerManager->updateOtherFriendlists(_this, true);
 
 		unlock();
 	} catch (Exception& e) {

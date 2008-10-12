@@ -208,11 +208,13 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 		group->wlock(player);
 
 		ChatRoom* groupChannel = group->getGroupChannel();
-		groupChannel->removePlayer(player, false);
-		groupChannel->sendDestroyTo(player);
+		if (groupChannel != NULL) {
+			groupChannel->removePlayer(player, false);
+			groupChannel->sendDestroyTo(player);
 
-		ChatRoom* room = groupChannel->getParent();
-		room->sendDestroyTo(player);
+			ChatRoom* room = groupChannel->getParent();
+			room->sendDestroyTo(player);
+		}
 
 		player->setGroup(NULL);
 		player->updateGroupId(0);
