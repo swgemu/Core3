@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -49,32 +49,32 @@ which carries forward this exception.
 
 #include "WeaponImplementation.h"
 
-WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat) 
+WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat)
 		: WeaponServant(objid, tempCRC, n, tempn, WEAPON) {
 	type = tp;
 	setCategory(cat);
-		
+
 	equipped = eqp;
 
 	initialize();
 }
 
-WeaponImplementation::WeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat) 
+WeaponImplementation::WeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat)
 		: WeaponServant(creature->getNewItemID(), WEAPON) {
 	objectCRC = String::hashCode(temp);
 
 	name = n;
-		
+
 	type = tp;
 	setCategory(cat);
-		
+
 	templateName = tempn;
 
-	if (equipped = eqp)
+	if ((equipped = eqp))
 		setContainer(creature, 0x04);
 	else
 		setContainer(creature->getInventory(), 0xFFFFFFFF);
-		
+
 	initialize();
 }
 
@@ -82,51 +82,51 @@ void WeaponImplementation::initialize() {
 	templateTypeName = "weapon_name";
 	cert = "";
 	certified = true;
-	
+
 	usesRemaining = -1;
-	
+
 	setMaxCondition(750);
 	setConditionDamage(0);
 
 	skillMod0Type = 0;
 	skillMod0Value = 0;
-	
+
 	skillMod1Type = 0;
 	skillMod1Value = 0;
-	
+
 	skillMod2Type = 0;
 	skillMod2Value = 0;
-	
+
 	setDamageType(KINETIC);
 	setMinDamage(50);
 	setMaxDamage(100);
-	
+
 	setAttackSpeed(1.0f);
-	
+
 	setHealthAttackCost(15);
 	setActionAttackCost(10);
 	setMindAttackCost(5);
-	
+
 	setPointBlankRange(0);
 	setPointBlankAccuracy(0);
-	
+
 	setIdealRange(2);
 	setIdealAccuracy(15);
-			
+
 	setMaxRange(5);
 	setMaxRangeAccuracy(0);
-	
+
 	setWoundsRatio(10);
-	
+
 	setArmorPiercing(NONE);
-	
+
 	dot0Type = 0;
 	dot0Attribute = 0;
 	dot0Strength = 0;
 	dot0Duration = 0;
 	dot0Potency = 0;
 	dot0Uses = 0;
-	
+
 	dot1Type = 0;
 	dot1Attribute = 0;
 	dot1Strength = 0;
@@ -140,9 +140,9 @@ void WeaponImplementation::initialize() {
 	dot2Duration = 0;
 	dot2Potency = 0;
 	dot2Uses = 0;
-	
+
 	powerupUses = 0;
-	
+
 	bonusMinDamage = 0;
 	bonusMaxDamage = 0;
 	bonusAttackSpeed = 0;
@@ -156,13 +156,13 @@ void WeaponImplementation::initialize() {
 	bonusMaxRange = 0;
 	bonusMaxRangeAccuracy = 0;
 	bonusWoundsRatio = 0;
-	
+
 	sliced = false;
 
 	stringstream loggingname;
 	loggingname << "Weapon = 0x" << objectID;
 	setLoggingName(loggingname.str());
-	
+
 	setLogging(false);
 	setGlobalLogging(true);
 }
@@ -171,16 +171,16 @@ void WeaponImplementation::parseItemAttributes() {
 
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
-	
+
 	string name = "type";
 	type = itemAttributes->getIntAttribute(name);
-	
+
 	name = "category";
 	category = itemAttributes->getIntAttribute(name);
 
 	name = "usesRemaining";
 	usesRemaining = itemAttributes->getIntAttribute(name);
-	
+
 	name = "skillMod0Type";
 	skillMod0Type = itemAttributes->getIntAttribute(name);
 	name = "skillMod0Value";
@@ -190,18 +190,18 @@ void WeaponImplementation::parseItemAttributes() {
 	skillMod1Type = itemAttributes->getIntAttribute(name);
 	name = "skillMod1Value";
 	skillMod1Value = itemAttributes->getIntAttribute(name);
-	
+
 	name = "skillMod2Type";
 	skillMod2Type = itemAttributes->getIntAttribute(name);
 	name = "skillMod2Value";
 	skillMod2Value = itemAttributes->getIntAttribute(name);
-	
+
 	name = "damageType";
 	damageType = itemAttributes->getIntAttribute(name);
-	
+
 	name = "attackSpeed";
 	attackSpeed = itemAttributes->getFloatAttribute(name);
-	
+
 	name = "healthCost";
 	healthAttackCost = itemAttributes->getIntAttribute(name);
 	name = "actionCost";
@@ -213,28 +213,28 @@ void WeaponImplementation::parseItemAttributes() {
 	minDamage = itemAttributes->getFloatAttribute(name);
 	name = "maxDamage";
 	maxDamage = itemAttributes->getFloatAttribute(name);
-	
+
 	name = "pointBlankRange";
 	pointBlankRange = itemAttributes->getIntAttribute(name);
 	name = "pointBlankAccuracy";
 	pointBlankAccuracy = itemAttributes->getIntAttribute(name);
-	
+
 	name = "idealRange";
 	idealRange = itemAttributes->getIntAttribute(name);
 	name = "idealAccuracy";
 	idealAccuracy = itemAttributes->getIntAttribute(name);
-			
+
 	name = "maxRange";
 	maxRange = itemAttributes->getIntAttribute(name);
 	name = "maxRangeAccuracy";
 	maxRangeAccuracy = itemAttributes->getIntAttribute(name);
-	
+
 	name = "woundsRatio";
 	woundsRatio = itemAttributes->getFloatAttribute(name);
-	
+
 	name = "armorPiercing";
 	armorPiercing = itemAttributes->getIntAttribute(name);
-	
+
 	name = "dot0Type";
 	dot0Type = itemAttributes->getIntAttribute(name);
 	name = "dot0Attribute";
@@ -276,13 +276,13 @@ void WeaponImplementation::parseItemAttributes() {
 
 	name = "sliced";
 	sliced = itemAttributes->getBooleanAttribute(name);
-		
+
 	name = "powerupUses";
 	powerupUses = itemAttributes->getIntAttribute(name);
-	
+
 	name = "bonusAttackSpeed";
 	bonusAttackSpeed = itemAttributes->getFloatAttribute(name);
-	
+
 	name = "bonusHealthAttackCost";
 	bonusHealthAttackCost = itemAttributes->getIntAttribute(name);
 	name = "bonusActionAttackCost";
@@ -294,23 +294,23 @@ void WeaponImplementation::parseItemAttributes() {
 	bonusMinDamage = itemAttributes->getFloatAttribute(name);
 	name = "bonusMaxDamage";
 	bonusMaxDamage = itemAttributes->getFloatAttribute(name);
-	
+
 	name = "bonusPointBlankRange";
 	bonusPointBlankRange = itemAttributes->getIntAttribute(name);
 	name = "bonusPointBlankAccuracy";
 	bonusPointBlankAccuracy = itemAttributes->getIntAttribute(name);
-	
+
 	name = "bonusIdealRange";
 	bonusIdealRange = itemAttributes->getIntAttribute(name);
 	name = "bonusIdealAccuracy";
 	bonusIdealAccuracy = itemAttributes->getIntAttribute(name);
-			
+
 	name = "bonusMaxRange";
 	bonusMaxRange = itemAttributes->getIntAttribute(name);
-	
+
 	name = "bonusMaxRangeAccuracy";
 	bonusMaxRangeAccuracy = itemAttributes->getIntAttribute(name);
-	
+
 	name = "bonusWoundsRatio";
 	bonusWoundsRatio = itemAttributes->getFloatAttribute(name);
 
@@ -324,16 +324,16 @@ void WeaponImplementation::sendTo(Player* player, bool doClose) {
 		return;
 
 	SceneObjectImplementation::create(client);
-	
+
 	if (container != NULL)
 		link(client, container);
-	
+
 	BaseMessage* weao3 = new WeaponObjectMessage3((Weapon*) _this);
 	client->sendMessage(weao3);
 
 	/*Message* weao6 = new WeaponObjectMessage6(this);
 	client->sendMessage(weao6);*/
-	
+
 	if (doClose)
 		SceneObjectImplementation::close(client);
 }
@@ -358,16 +358,16 @@ void WeaponImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 void WeaponImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
-		
+
 	Player* player = (Player*) obj;
-	
+
 	AttributeListMessage* alm = new AttributeListMessage((Weapon*) _this);
-	
+
 	if (player->checkCertification(cert))
 		alm->insertAttribute("weapon_cert_status", "Yes");
 	else
 		alm->insertAttribute("weapon_cert_status", "No");
-	
+
 	addAttributes(alm);
 	player->sendMessage(alm);
 }
@@ -375,7 +375,7 @@ void WeaponImplementation::generateAttributes(SceneObject* obj) {
 void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 	if (dot0Uses != 0) {
 		//Sends the information along for the first DOT, if it exists
-		
+
 		switch (dot0Type) {
 		case BLEED:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Bleed");
@@ -390,7 +390,7 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", "Poison");
 			break;
 		}
-		
+
 		switch (dot0Attribute) {
 		case HEALTH:
 			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", "Health");
@@ -421,21 +421,21 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 			break;
 		}
 		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_strength", dot0Strength);
-		
+
 		stringstream dur;
 		dur << dot0Duration << "s";
 		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_duration", dur);
-		
+
 		stringstream pot;
 		pot << dot0Potency << "%";
 		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_potency", pot);
-		
+
 		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_uses", dot0Uses);
 	}
 
 	if (dot1Uses != 0) {
 		//Sends the information for the second DOT, if it exists
-		
+
 		switch (dot1Type) {
 		case BLEED:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Bleed");
@@ -450,7 +450,7 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_type", "Poison");
 			break;
 		}
-		
+
 		switch (dot1Attribute) {
 		case HEALTH:
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Health");
@@ -480,23 +480,23 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 			alm->insertAttribute("cat_wpn_dot_01.wpn_dot_attrib", "Willpower");
 			break;
 		}
-		
+
 		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_strength", dot1Strength);
 
 		stringstream dur;
 		dur << dot1Duration << "s";
 		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_duration", dur);
-		
+
 		stringstream pot;
 		pot << dot1Potency << "%";
 		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_potency", pot);
-		
+
 		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_uses", dot1Uses);
 	}
-	
+
 	if (dot2Uses != 0) {
 		//The third DOT, if it exists
-		
+
 		switch (dot2Type) {
 		case BLEED:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Bleed");
@@ -511,7 +511,7 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_type", "Poison");
 			break;
 		}
-		
+
 		switch (dot2Attribute) {
 		case HEALTH:
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Health");
@@ -541,17 +541,17 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 			alm->insertAttribute("cat_wpn_dot_02.wpn_dot_attrib", "Willpower");
 			break;
 		}
-		
+
 		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_strength", dot2Strength);
-		
+
 		stringstream dur;
 		dur << dot2Duration << "s";
 		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_duration", dur);
-		
+
 		stringstream pot;
 		pot << dot2Potency << "%";
 		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_potency", pot);
-		
+
 		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_uses", dot2Uses);
 	}
 }
@@ -562,7 +562,7 @@ void WeaponImplementation::decayWeapon(int decayRate) {
 
 	if (conditionDamage > maxCondition)
 		setConditionDamage(maxCondition);
-	
+
 	if (maxCondition != 0) {
 		float ratio = ((float) conditionDamage) / ((float) maxCondition);
 
@@ -578,47 +578,47 @@ void WeaponImplementation::decayWeapon(int decayRate) {
 			setAttackSpeed(attackSpeed + (attackSpeed * decayRate / 100));
 		}
 	}
-	
+
 	updated = true;
-	
+
 }
 
 void WeaponImplementation::repairWeapon(Player* player) {
 	int roll = System::random(100);
-	
+
 	int decayRate = 0;
-	
+
 	stringstream txt;
-	
+
 	if (roll < 10) {
 		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
 		decayWeapon(100);
-		
+
 		updated = true;
-		
+
 		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
 		dtano3->updateConditionDamage();
 		dtano3->updateMaxCondition();
 		dtano3->close();
 		player->broadcastMessage(dtano3);
-		
+
 		generateAttributes(player);
-		
+
 		return;
 	} else if (roll < 75) {
 		txt << "You have repaired the item, however the items maximum condition has been reduced.";
 		decayRate = 20;
 	} else {
-		txt << "You have completely repaired the item.";				
+		txt << "You have completely repaired the item.";
 	}
-	
+
 	player->sendSystemMessage(txt.str());
 
 	setMaxCondition(maxCondition - (maxCondition / 100 * decayRate));
 	setConditionDamage(0);
-	
+
 	updated = true;
-		
+
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
 	dtano3->updateConditionDamage();
 	dtano3->updateMaxCondition();
@@ -628,37 +628,37 @@ void WeaponImplementation::repairWeapon(Player* player) {
 
 void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
-	
+
 	int maxLevel = 120;
-	
+
 	if(modifier > maxLevel){
 		int diff = System::random(modifier - maxLevel);
 		modifier = maxLevel;
 		modifier += diff;
 	}
-	
+
 	int luck = (System::random(100)) + (modifier/4);
-	
-	if (System::random(1000) == 7) 
-		luck = luck * 2; 
-	
-	if (System::random(50000) == 77) 
-		luck = luck * 5; 
-		
-	if (System::random(1000000) == 777) 
-		luck = luck * 10; 
-	
-	if (System::random(100) == 6) 
+
+	if (System::random(1000) == 7)
+		luck = luck * 2;
+
+	if (System::random(50000) == 77)
+		luck = luck * 5;
+
+	if (System::random(1000000) == 777)
+		luck = luck * 10;
+
+	if (System::random(100) == 6)
 		luck = 0;
-		
+
 	modifier = modifier + System::random(10);
-	
+
 	int playerRoll = System::random(1000) * modifier * luck / 1000;
 	if (playerRoll > 200000) {
 		modifier = modifier + 100;
 		luck = luck + 150;
 		setMaxDamage(maxDamage * 1.5);
-		
+
 		stringstream itemText;
 		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
 		name = unicode(itemText.str());
@@ -667,7 +667,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		luck = luck + 100;
 
 		stringstream itemText;
-		itemText << "\\#ffff00" << name.c_str() << " (Exceptional)";	
+		itemText << "\\#ffff00" << name.c_str() << " (Exceptional)";
 		name = unicode(itemText.str());
 	} else if (playerRoll > 12500) {
 		modifier = modifier + 25;
@@ -677,16 +677,16 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		itemText << "\\#ffff00" << name.c_str();
 		name = unicode(itemText.str());
 	}
-	
+
 	if (luck * System::random(100) > 1750) {
 		setMinDamage(minDamage + (minDamage * luck / 162.93f));
 		setMaxDamage(maxDamage + (maxDamage * luck / 163.11f));
 	}
-	
-	if (luck * System::random(100) > 1750) {	
+
+	if (luck * System::random(100) > 1750) {
 		setAttackSpeed(attackSpeed - (attackSpeed * luck / 377.69f));
 	}
-	
+
 	if (luck * System::random(100) > 1750) {
 		setHealthAttackCost(healthAttackCost - (healthAttackCost * luck / 359));
 		setActionAttackCost(actionAttackCost - (actionAttackCost * luck / 359));
@@ -695,7 +695,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 
 	if (luck * System::random(100) > 1750)
 		setWoundsRatio(woundsRatio + (woundsRatio * luck / 173));
-	
+
 	if (playerRoll > 12500 && System::random(3) == 1) {
 		setSkillMod0Type(System::random(30) + 1);
 		setSkillMod0Value(luck / (System::random(3) + 10));
@@ -708,7 +708,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		setSkillMod2Type(System::random(30) + 1);
 		setSkillMod2Value(luck / (System::random(3) + 10));
 	}
-	
+
 	if (playerRoll > 13500 && System::random(1) == 1)	{
 		switch (System::random(4)) {
 		case 1:
@@ -745,41 +745,41 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			break;
 		}
 	}
-	
-	if (attackSpeed < 1) 
+
+	if (attackSpeed < 1)
 		setAttackSpeed(1.0f);
-	
-	if (healthAttackCost < 0) 
+
+	if (healthAttackCost < 0)
 		setHealthAttackCost(0);
-	
-	if (actionAttackCost < 0) 
+
+	if (actionAttackCost < 0)
 		setActionAttackCost(0);
-	
-	if (mindAttackCost < 0) 
+
+	if (mindAttackCost < 0)
 		setMindAttackCost(0);
-	
+
 	if (objectSubType == TangibleObjectImplementation::HEAVYWEAPON) {
 		if (maxDamage > 5000)
 			setMaxDamage(4500 + System::random(500));
 	}
-	
+
 	else if (objectSubType == TangibleObjectImplementation::SPECIALHEAVYWEAPON) {
 		if (maxDamage > 1100)
 			setMaxDamage(1050 + System::random(50));
 	}
-	
+
 	else if (objectSubType == TangibleObjectImplementation::MELEEWEAPON && maxDamage > 500)
 		setMaxDamage(450 + System::random(50));
 
 	else if (maxDamage > 900)
 		setMaxDamage(850 + System::random(50));
-	
+
 	if (dot1Strength > 300)
 		setDot1Strength(250 + System::random(50));
-	
-	if (minDamage > maxDamage) 
+
+	if (minDamage > maxDamage)
 		setMinDamage(round(0.8 * maxDamage));
-	
+
 	if (skillMod0Value > 25)
 		setSkillMod0Value(25);
 
@@ -788,30 +788,30 @@ void WeaponImplementation::setWeaponStats(int modifier){
 
 	if (skillMod2Value > 25)
 		setSkillMod2Value(25);
-	
+
 	if (skillMod2Type == skillMod1Type || skillMod2Type == skillMod0Type) {
 		setSkillMod2Type(0);
 		setSkillMod2Value(0);
 	}
-	
+
 	if (skillMod1Type == skillMod0Type || skillMod1Type == skillMod2Type) {
 		setSkillMod1Type(0);
 		setSkillMod1Value(0);
 	}
-	
+
 	equipped = false;
-	
+
 	persistent = false;
 	updated = true;
-	
+
 	unlock();
 }
 
 void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
-	
+
 	if (powerupUses != 0) {
 		alm->insertAttribute("cat_pup.pup_uses", powerupUses);
-		
+
 		if (bonusMinDamage != 0) {
 			stringstream txt;
 			txt << "+" << round(bonusMinDamage);
@@ -823,16 +823,16 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 			alm->insertAttribute("cat_pup.pup_wpn_damage_max", txt.str());
 		}
 		if (bonusAttackSpeed != 0) {
-			
+
 			float spd = bonusAttackSpeed;
-			
+
 			stringstream spdtxt;
-			
+
 			spdtxt << round(10 * spd)/10;
-			
+
 			if ((int(round(spd * 10)) % 10) == 0)
 				spdtxt << ".0";
-			
+
 			stringstream txt;
 			txt << round(10*bonusAttackSpeed)/10;
 			alm->insertAttribute("cat_pup.pup_wpn_attack_speed", spdtxt.str());
@@ -842,10 +842,10 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 
 		if (bonusActionAttackCost != 0)
 			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", bonusActionAttackCost);
-			
+
 		if (bonusMindAttackCost != 0)
 			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", bonusMindAttackCost);
-		
+
 		if (bonusPointBlankAccuracy != 0) {
 			stringstream txt;
 			txt << "+" << bonusPointBlankAccuracy;
@@ -853,7 +853,7 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 		}
 		if (bonusIdealRange != 0)
 			alm->insertAttribute("cat_pup.pup_wpn_range_mid", bonusIdealRange);
-			
+
 		if (bonusIdealAccuracy != 0) {
 			stringstream txt;
 			txt << "+" << bonusIdealAccuracy;
@@ -866,10 +866,10 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 		}
 		if (bonusWoundsRatio != 0) {
 			stringstream txt;
-			
+
 			float wnd = round(10 * bonusWoundsRatio) / 10.0f;
 			txt << "+" << wnd << "%";
-			
+
 			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", txt.str());
 		}
 	}
@@ -878,18 +878,18 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 void WeaponImplementation::sliceWeapon(Player* player){
 	bool sliceType = System::random(1);
 	int slicePercent;
-	
+
 	int min = 0;
 	int max = 0;
 	int modifier = 0;
-	
+
 	stringstream msg;
 
 	try {
 		wlock();
 
 		if (!isSliced()) {
-			
+
 			int sliceSkill = player->getSlicingAbility();
 			switch (sliceSkill) {
 			case 2 :
@@ -898,7 +898,7 @@ void WeaponImplementation::sliceWeapon(Player* player){
 				max = 25;
 				modifier = System::random(max - min + sliceSkill) + min;
 				if (modifier > max)
-					modifier = max;				
+					modifier = max;
 				break;
 			case 4 :
 				min = 10;
@@ -917,7 +917,7 @@ void WeaponImplementation::sliceWeapon(Player* player){
 			default :
 				break;
 			}
-			
+
 			removePowerup(player, false);
 			switch (sliceType) {
 			case 0:
@@ -929,7 +929,7 @@ void WeaponImplementation::sliceWeapon(Player* player){
 				msg << "Weapon speed decreased by " << modifier << "%";
 				break;
 			}
-			
+
 			generateAttributes(player);
 
 		} else
@@ -944,29 +944,29 @@ void WeaponImplementation::sliceWeapon(Player* player){
 }
 
 void WeaponImplementation::sliceWeaponDamage(int modifier){
-	if (sliced) 
+	if (sliced)
 		return;
-	
+
 	setMinDamage((minDamage * modifier / 100) + minDamage);
 	setMaxDamage((maxDamage * modifier / 100) + maxDamage);
-	
+
 	setSliced(true);
 	updated = true;
 
 }
 
 void WeaponImplementation::sliceWeaponSpeed(int modifier){
-	if (sliced) 
+	if (sliced)
 		return;
-	
+
 	setAttackSpeed(attackSpeed - (attackSpeed * modifier / 100));
-	
-	if (attackSpeed < 1) 
+
+	if (attackSpeed < 1)
 		setAttackSpeed(1.0f);
-	
+
 	setSliced(true);
 	updated = true;
-	
+
 }
 
 void WeaponImplementation::powerupMinDamage(float powerupValue) {
@@ -1009,7 +1009,7 @@ void WeaponImplementation::powerupPointBlankAccuracy(float powerupValue) {
 
 void WeaponImplementation::powerupIdealRange(float powerupValue) {
 	int idealRang = int((float)-idealRange * powerupValue / 100.0f);
-		
+
 	setBonusIdealRange(idealRang);
 }
 
@@ -1029,7 +1029,7 @@ void WeaponImplementation::powerupMaxRangeAccuracy(float powerupValue) {
 
 void WeaponImplementation::removePowerup(Player* player, bool notify) {
 	setPowerupUses(0);
-	
+
 	setBonusMinDamage(0);
 	setBonusMaxDamage(0);
 	setBonusAttackSpeed(0);
@@ -1043,13 +1043,13 @@ void WeaponImplementation::removePowerup(Player* player, bool notify) {
 	setBonusMaxRange(0);
 	setBonusMaxRangeAccuracy(0);
 	setBonusWoundsRatio(0);
-	
+
 	if (notify) {
 		stringstream txt;
 		txt << "The powerup on your " << name.c_str() << " has expired.";
 		player->sendSystemMessage(txt.str());
 	}
-	
+
 	generateAttributes(player);
 }
 
@@ -1057,25 +1057,25 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 
 	stringstream cond;
 	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
-	
+
 	alm->insertAttribute("condition", cond);
-	
+
 	alm->insertAttribute("volume", "1");
-	
+
 	if (usesRemaining > 0)
 		alm->insertAttribute("count", usesRemaining);
-	
+
 	if (skillMod0Type > 0)
 		generateSkillMods(alm, skillMod0Type, skillMod0Value);
-	
+
 	if (skillMod1Type > 0)
 		generateSkillMods(alm, skillMod1Type, skillMod1Value);
-	
+
 	if (skillMod2Type > 0)
 		generateSkillMods(alm, skillMod2Type, skillMod2Value);
 
 	string ap;
-	
+
 	switch (armorPiercing) {
 	case NONE:
 		ap = "None";
@@ -1093,20 +1093,20 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 		ap = "Unknown";
 		break;
 	}
-	
+
 	alm->insertAttribute("wpn_armor_pierce_rating", ap);
-	
+
 	float speed = round(10 * getAttackSpeed()) / 10;
-	
+
 	stringstream spdtxt;
-	
+
 	spdtxt << speed;
-	
+
 	if ((int(round(speed * 10)) % 10) == 0)
 		spdtxt << ".0";
-	
+
 	alm->insertAttribute("wpn_attack_speed", spdtxt.str());
-	
+
 	//Damage Information
 	stringstream dmgtxt;
 
@@ -1139,59 +1139,59 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 		dmgtxt << "Lightsaber";
 		break;
 	}
-	
+
 	alm->insertAttribute("damage.wpn_damage_type", dmgtxt);
 
 	float minDmg = round(getMinDamage());
 	float maxDmg = round(getMaxDamage());
-	
+
 	alm->insertAttribute("damage.wpn_damage_min", minDmg);
 
 	alm->insertAttribute("damage.wpn_damage_max", maxDmg);
-	
+
 	stringstream woundsratio;
-	
+
 	float wnd = round(10 * getWoundsRatio()) / 10.0f;
-	
+
 	woundsratio << wnd << "%";
-	
+
 	alm->insertAttribute("damage.wpn_wound_chance", woundsratio);
-	
+
 	//Accuracy Modifiers
 	stringstream pblank;
 	if (getPointBlankAccuracy() >= 0)
 		pblank << "+";
-		
+
 	pblank << getPointBlankAccuracy() << " @ " << getPointBlankRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_zero", pblank);
-	
+
 	stringstream ideal;
 	if (getIdealAccuracy() >= 0)
 		ideal << "+";
-		
+
 	ideal << getIdealAccuracy() << " @ " << getIdealRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_mid", ideal);
-	
+
 	stringstream maxrange;
 	if (getMaxRangeAccuracy() >= 0)
 		maxrange << "+";
-		
+
 	maxrange << getMaxRangeAccuracy() << " @ " << getMaxRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_max", maxrange);
-	
+
 	//Special Attack Costs
 	alm->insertAttribute("cat_wpn_attack_cost.health", getHealthAttackCost());
-	
+
 	alm->insertAttribute("cat_wpn_attack_cost.action", getActionAttackCost());
-	
+
 	alm->insertAttribute("cat_wpn_attack_cost.mind", getMindAttackCost());
-	
+
 	if (dot0Uses !=0 || dot1Uses != 0 || dot2Uses != 0)
 		generateDotAttributes(alm);
-	
-	if (sliced == 1) 
+
+	if (sliced == 1)
 		alm->insertAttribute("hacked1", "");
-	
+
 	generatePowerup(alm);
-	
+
 }

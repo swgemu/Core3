@@ -393,7 +393,7 @@ public:
 
 		int speedMod = 0;
 
-		if (creature->isPlayer())
+		if (creature->isPlayer()) {
 			if (weapon == NULL)
 				speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
 			else switch (weapon->getObjectSubType()) {
@@ -431,6 +431,7 @@ public:
 				speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
 				break;
 			}
+		}
 
 		if (weapon != NULL) {
 			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * speedRatio * weapon->getAttackSpeed();

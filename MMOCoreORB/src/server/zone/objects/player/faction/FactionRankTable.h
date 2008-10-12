@@ -104,28 +104,28 @@ public:
 		return rank < 16;
 	}
 
-	inline static const string getRankName(uint8 rank) {
+	inline static string getRankName(uint8 rank) {
 		if (!rankExists(rank))
 			return "";
 
 		return rankNames[rank];
 	}
 
-	inline static const uint16 getRequiredPoints(uint8 rank) {
+	inline static uint16 getRequiredPoints(uint8 rank) {
 		if (!rankExists(rank))
 			return 0;
 
 		return points[rank];
 	}
 
-	inline static const float getDelegateRatio(uint8 rank) {
+	inline static float getDelegateRatio(uint8 rank) {
 		if (!rankExists(rank))
 			return 0;
 
 		return ratio[rank];
 	}
 
-	inline static const uint32 getFPCap(uint8 rank) {
+	inline static uint32 getFPCap(uint8 rank) {
 		if (!rankExists(rank))
 			return 0;
 

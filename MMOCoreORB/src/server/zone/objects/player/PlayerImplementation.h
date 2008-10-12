@@ -352,87 +352,87 @@ public:
 
 	//Attribute Limits
 
-	inline const uint32 getMinHealth() {
+	inline uint32 getMinHealth() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[0];
 	}
 
-	inline const uint32 getMaxHealth() {
+	inline uint32 getMaxHealth() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[1];
 	}
 
-	inline const uint32 getMinStrength() {
+	inline uint32 getMinStrength() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[2];
 	}
 
-	inline const uint32 getMaxStrength() {
+	inline uint32 getMaxStrength() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[3];
 	}
 
-	inline const uint32 getMinConstitution() {
+	inline uint32 getMinConstitution() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[4];
 	}
 
-	inline const uint32 getMaxConstitution() {
+	inline uint32 getMaxConstitution() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[5];
 	}
 
-	inline const uint32 getMinAction() {
+	inline uint32 getMinAction() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[6];
 	}
 
-	inline const uint32 getMaxAction() {
+	inline uint32 getMaxAction() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[7];
 	}
 
-	inline const uint32 getMinQuickness() {
+	inline uint32 getMinQuickness() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[8];
 	}
 
-	inline const uint32 getMaxQuickness() {
+	inline uint32 getMaxQuickness() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[9];
 	}
 
-	inline const uint32 getMinStamina() {
+	inline uint32 getMinStamina() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[10];
 	}
 
-	inline const uint32 getMaxStamina() {
+	inline uint32 getMaxStamina() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[11];
 	}
 
-	inline const uint32 getMinMind() {
+	inline uint32 getMinMind() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[12];
 	}
 
-	inline const uint32 getMaxMind() {
+	inline uint32 getMaxMind() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[13];
 	}
 
-	inline const uint32 getMinFocus() {
+	inline uint32 getMinFocus() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[14];
 	}
 
-	inline const uint32 getMaxFocus() {
+	inline uint32 getMaxFocus() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[15];
 	}
 
-	inline const uint32 getMinWillpower() {
+	inline uint32 getMinWillpower() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[16];
 	}
