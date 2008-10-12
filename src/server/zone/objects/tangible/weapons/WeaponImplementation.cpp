@@ -70,7 +70,7 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const strin
 
 	templateName = tempn;
 
-	if (equipped = eqp)
+	if ((equipped = eqp))
 		setContainer(creature, 0x04);
 	else
 		setContainer(creature->getInventory(), 0xFFFFFFFF);

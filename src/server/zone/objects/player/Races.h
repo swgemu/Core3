@@ -139,7 +139,7 @@ const static char* CCRaceStrs[] = {
     "object/creature/player/ithorian_female.iff"  // DA E7   -   ithorian female
 };
 
-const static uint32 SharedRace[] = {
+static uint32 SharedRace[] = {
     0xAF1DC1A1,
     0x50C45B8F,
     0xF280E27B,
@@ -354,7 +354,7 @@ const static char* MoodStr[]= {
 
 };
 
-const static unsigned int attributeLimits[10][19] = {
+static unsigned int attributeLimits[10][19] = {
 		{400, 1100,	400, 1100,  400, 1100, 400, 1100, 400, 1100, 400, 1100,	400, 1100, 400,	1100, 400, 1100, 5400},
 		{550, 1250,	600,  800,	700,  800, 300,	1000, 300,  450, 300,  400,	300, 1000, 300,	 500, 300,	600, 5550},
 		{300, 1000,	300,  500,	550,  650, 550,	1250, 600,	750, 300,  400,	400, 1100, 300,	 500, 300,	500, 5400},
@@ -385,11 +385,11 @@ public:
 		return Gender[raceid];
 	}
 
-	inline const static uint32 getRaceCRC(int raceid) {
+	inline static uint32 getRaceCRC(int raceid) {
 		return SharedRace[raceid];
 	}
 
-	inline const static int getRaceID(const string& name) {
+	inline static int getRaceID(const string& name) {
     	for (int i = 0; i < 20; i++) {
         	if (strcmp(name.c_str(), CCRaceStrs[i]) == 0)
             	return i;
@@ -398,7 +398,7 @@ public:
     	return 0;
 	}
 
-	inline const static int getMoodID(const string& name) {
+	inline static int getMoodID(const string& name) {
     	for (int i = 0; i < 188; i++) {
         	if (strcmp(name.c_str(), MoodStr[i]) == 0)
             	return i;
@@ -407,7 +407,7 @@ public:
     	return 0;
 	}
 
-	inline const static unsigned int * getAttribLimits(int raceid) {
+	inline static unsigned int * getAttribLimits(int raceid) {
 		return attributeLimits[raceid % 10];
 	}
 

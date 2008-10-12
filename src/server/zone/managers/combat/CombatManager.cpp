@@ -474,11 +474,13 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 
 	Weapon* weapon = creature->getWeapon();
 
+	/*
 	uint32 defaultAttacks[] = {
 				0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
 				0x43C4FFD0, 0x56D7CC78, 0x4B41CAFB, 0x2257D06B,
 				0x306887EB
 	};
+	 */
 
 	if ((weapon != NULL) && (weapon->getCategory() == WeaponImplementation::RANGED))
 		return 0x506E9D4C;
@@ -1207,7 +1209,7 @@ float CombatManager::calculateAttackSpeed(CreatureObject* creature, TargetSkill*
 	float weaponSpeed;
 	int speedMod = 0;
 
-	if (creature->isPlayer())
+	if (creature->isPlayer()) {
 		if (weapon == NULL)
 			speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
 		else switch (weapon->getObjectSubType()) {
@@ -1252,6 +1254,7 @@ float CombatManager::calculateAttackSpeed(CreatureObject* creature, TargetSkill*
 				speedMod = ((Player*)creature)->getSkillMod("polearmlightsaber_speed");
 				break;
 		}
+	}
 
 	if (weapon != NULL)
 		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / 17500.0f)) * tskill->getSpeedRatio() * weapon->getAttackSpeed();

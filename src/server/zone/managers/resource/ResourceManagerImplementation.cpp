@@ -967,7 +967,7 @@ void ResourceManagerImplementation::getResourceContainerName(const string& resou
 
 	ResourceTemplate* resTemp = resourceMap->get(resource);
 
-	if (resTemp != NULL)
+	if (resTemp != NULL) {
 		if ( resTemp->getClass6() != "" && resTemp->getClass6() != "JTL")
 			name = resTemp->getClass6();
 		else if ( resTemp->getClass5() != "" && resTemp->getClass5() != "JTL")
@@ -980,6 +980,7 @@ void ResourceManagerImplementation::getResourceContainerName(const string& resou
 			name = resTemp->getClass2();
 		else if ( resTemp->getClass1() != "" && resTemp->getClass1() != "JTL")
 			name = resTemp->getClass1();
+	}
 
 	unlock(doLock);
 }

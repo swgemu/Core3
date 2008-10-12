@@ -61,6 +61,12 @@ class CombatAction;
 
 class CommandQueueAction;
 
+static uint32 defaultAttacks[] = {
+			0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
+			0x43C4FFD0, 0x56D7CC78, 0x4B41CAFB, 0x2257D06B,
+			0x306887EB
+};
+
 class CombatManager {
 	ZoneProcessServerImplementation* server;
 
