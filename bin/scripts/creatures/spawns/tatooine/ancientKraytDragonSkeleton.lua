@@ -40,11 +40,18 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---global clusters
+-- Ancient Krayt Dragon Skeleton (POI)
 
-spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
+spawnCreature(kraytDragonAncient, 8, -4643, -4359)
 
-spawnCreatureInCell(oldMan, 9, 0.0838334, -22.05, -50.2549, 8525426)
-spawnCreatureInCell(luke, 9, 21.8313, -24.1, 69.1277, 8525441)
-spawnCreatureInCell(hanSolo, 9, -47.9307, -22.05, -24.7138, 8525423)
-spawnCreatureInCell(chewbacca, 9, -45.3687, -22.05, 23.3004, 8525420)
+spawnCreature(canyonKraytDragon, 8, -4627, -4369)
+spawnCreature(canyonKraytDragon, 8, -4666, -4347)
+
+spawnCreature(juvenileCanyonKrayt, 8, -4633, -4329)
+spawnCreature(juvenileCanyonKrayt, 8, -4618, -4335)
+spawnCreature(juvenileCanyonKrayt, 8, -4585, -4374)
+spawnCreature(juvenileCanyonKrayt, 8, -4585, -4416)
+spawnCreature(juvenileCanyonKrayt, 8, -4669, -4432)
+spawnCreature(juvenileCanyonKrayt, 8, -4752, -4401)
+spawnCreature(juvenileCanyonKrayt, 8, -4740, -4303)
+spawnCreature(juvenileCanyonKrayt, 8, -4673, -4290)

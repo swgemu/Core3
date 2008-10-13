@@ -40,11 +40,28 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---global clusters
+-- Imperial Prision
 
-spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
+spawnCreatures(imperialStormTrooper, 2, -6134, 911, 100, 2)
+spawnCreatures(imperialStormTrooper, 2, -6207, 808, 100, 2)
+spawnCreatures(imperialStormTrooper, 2, -6233, 650, 100, 2)
+spawnCreatures(imperialStormTrooper, 2, -6418, 712, 100, 8)
+spawnCreatures(imperialStormTrooper, 2, -6190, 851, 100, 8)
+spawnCreatures(imperialStormTrooper, 2, -6122, 1082, 100, 8)
+spawnCreatures(imperialStormTrooper, 2, -6274, 712, 300, 15)
+spawnCreatures(imperialStormTrooper, 2, -6381, 712, 300, 15)
+spawnCreatures(imperialStormTrooper, 2, -6385, 938, 100, 15)
+spawnCreatures(imperialStormTrooper, 2, -6429, 968, 100, 15)
 
-spawnCreatureInCell(oldMan, 9, 0.0838334, -22.05, -50.2549, 8525426)
-spawnCreatureInCell(luke, 9, 21.8313, -24.1, 69.1277, 8525441)
-spawnCreatureInCell(hanSolo, 9, -47.9307, -22.05, -24.7138, 8525423)
-spawnCreatureInCell(chewbacca, 9, -45.3687, -22.05, 23.3004, 8525420)
+spawnCreature(imperialAtSt, 2, -6418, 712)
+spawnCreature(imperialAtSt, 2, -6190, 851)
+spawnCreature(imperialAtSt, 2, -6122, 1082)
+spawnCreature(imperialAtSt, 2, -6274, 712)
+spawnCreature(imperialAtSt, 2, -6381, 712)
+spawnCreature(imperialAtSt, 2, -6164, 972)
+
+spawnCreature(imperialAtAt, 2, -6134, 911)
+spawnCreature(imperialAtAt, 2, -6207, 808)
+spawnCreature(imperialAtAt, 2, -6233, 650)
+
+spawnCreature(darthVader, 2, -6300, 930)

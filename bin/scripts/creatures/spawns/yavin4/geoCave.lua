@@ -40,5 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- spawnLair(dewbackLair, 8, 10, -5420, 30)
--- spawnLair(wompRatLair, 8, 27, -5430, 30)
+--global clusters
+
+spawnCreatureInCell(acklay, 9, 118.583, -33.9403, -319.481, 1627823)

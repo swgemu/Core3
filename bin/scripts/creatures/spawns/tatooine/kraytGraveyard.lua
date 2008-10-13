@@ -40,11 +40,30 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---global clusters
 
-spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
+--Krayt Graveyard
 
-spawnCreatureInCell(oldMan, 9, 0.0838334, -22.05, -50.2549, 8525426)
-spawnCreatureInCell(luke, 9, 21.8313, -24.1, 69.1277, 8525441)
-spawnCreatureInCell(hanSolo, 9, -47.9307, -22.05, -24.7138, 8525423)
-spawnCreatureInCell(chewbacca, 9, -45.3687, -22.05, 23.3004, 8525420)
+spawnCreature(kraytDragonAncient, 8, 6739, 4288)
+
+spawnCreature(canyonKraytDragon, 8, 7456, 4449)
+spawnCreature(canyonKraytDragon, 8, 7561, 4562)
+spawnCreature(canyonKraytDragon, 8, 7461, 4659)
+spawnCreature(canyonKraytDragon, 8, 6998, 4362)
+spawnCreature(canyonKraytDragon, 8, 7528, 4822)
+spawnCreature(canyonKraytDragon, 8, 6814, 4339)
+spawnCreature(canyonKraytDragon, 8, 6738, 4481)
+spawnCreature(kraytDragonAncient, 8, 6828, 4066)
+spawnCreature(kraytDragonAncient, 8, 7054, 4194)
+
+spawnCreature(juvenileCanyonKrayt, 8, 7426, 4621)
+spawnCreature(juvenileCanyonKrayt, 8, 7413, 4515)
+spawnCreature(juvenileCanyonKrayt, 8, 7475, 4446)
+spawnCreature(juvenileCanyonKrayt, 8, 7266, 4597)
+spawnCreature(juvenileCanyonKrayt, 8, 7128, 4554)
+spawnCreature(juvenileCanyonKrayt, 8, 6875, 4499)
+spawnCreature(juvenileCanyonKrayt, 8, 6707, 4461)
+spawnCreature(juvenileCanyonKrayt, 8, 6515, 4445)
+spawnCreature(juvenileCanyonKrayt, 8, 6543, 4283)
+spawnCreature(juvenileCanyonKrayt, 8, 6865, 4093)
+spawnCreature(juvenileCanyonKrayt, 8, 7044, 4203)
+spawnCreature(juvenileCanyonKrayt, 8, 7273, 4317)

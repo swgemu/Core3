@@ -153,71 +153,9 @@ spawnCreatures(wompRat, 8, 227, -5349, 30, 2)
 spawnCreatures(rill, 8, 227, -5349, 30, 2)
 spawnCreatures(worrt, 8, 227, -5349, 30, 1)
 
---------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 
---Tusken Bantha / Jawas
-
-spawnCreatures(jawaHealer, 8, 5752, 4016, 50, 5, 180)
-spawnCreatures(jawaWarlord, 8, 5747, 4016, 50, 5, 180)
-spawnCreatures(jawa, 8, 5749, 4016, 50, 5, 180)
-spawnCreatures(jawaAvenger, 8, 5742, 4016, 50, 5, 180)
-spawnCreatures(jawaEngineer, 8, 5757, 4016, 50, 5, 180)
-spawnCreatures(jawaHenchman, 8, 5763, 4016, 50, 5, 180)
-spawnCreatures(jawaLeader, 8, 5739, 4016, 50, 5, 180)
-spawnCreatures(jawaProtector, 8, 5768, 4016, 50, 5, 180)
-spawnCreatures(jawaSmuggler, 8, 5732, 4016, 50, 5, 180)
-spawnCreatures(jawaThief, 8, 5780, 4016, 50, 5, 180)
-
-spawnCreatures(tuskenBantha, 8, -3965, 6380, 50, 10, 180)
-
---------------------------------------------------------------------------------------------
-
--- Ancient Krayt Dragon Skeleton (POI)
-
-spawnCreature(kraytDragonAncient, 8, -4643, -4359)
-
-spawnCreature(canyonKraytDragon, 8, -4627, -4369)
-spawnCreature(canyonKraytDragon, 8, -4666, -4347)
-
-spawnCreature(juvenileCanyonKrayt, 8, -4633, -4329)
-spawnCreature(juvenileCanyonKrayt, 8, -4618, -4335)
-spawnCreature(juvenileCanyonKrayt, 8, -4585, -4374)
-spawnCreature(juvenileCanyonKrayt, 8, -4585, -4416)
-spawnCreature(juvenileCanyonKrayt, 8, -4669, -4432)
-spawnCreature(juvenileCanyonKrayt, 8, -4752, -4401)
-spawnCreature(juvenileCanyonKrayt, 8, -4740, -4303)
-spawnCreature(juvenileCanyonKrayt, 8, -4673, -4290)
-
-----------------------------------------------------------------------------------------------------------
-
---Krayt Graveyard
-
-spawnCreature(kraytDragonAncient, 8, 6739, 4288)
-
-spawnCreature(canyonKraytDragon, 8, 7456, 4449)
-spawnCreature(canyonKraytDragon, 8, 7561, 4562)
-spawnCreature(canyonKraytDragon, 8, 7461, 4659)
-spawnCreature(canyonKraytDragon, 8, 6998, 4362)
-spawnCreature(canyonKraytDragon, 8, 7528, 4822)
-spawnCreature(canyonKraytDragon, 8, 6814, 4339)
-spawnCreature(canyonKraytDragon, 8, 6738, 4481)
-spawnCreature(kraytDragonAncient, 8, 6828, 4066)
-spawnCreature(kraytDragonAncient, 8, 7054, 4194)
-
-spawnCreature(juvenileCanyonKrayt, 8, 7426, 4621)
-spawnCreature(juvenileCanyonKrayt, 8, 7413, 4515)
-spawnCreature(juvenileCanyonKrayt, 8, 7475, 4446)
-spawnCreature(juvenileCanyonKrayt, 8, 7266, 4597)
-spawnCreature(juvenileCanyonKrayt, 8, 7128, 4554)
-spawnCreature(juvenileCanyonKrayt, 8, 6875, 4499)
-spawnCreature(juvenileCanyonKrayt, 8, 6707, 4461)
-spawnCreature(juvenileCanyonKrayt, 8, 6515, 4445)
-spawnCreature(juvenileCanyonKrayt, 8, 6543, 4283)
-spawnCreature(juvenileCanyonKrayt, 8, 6865, 4093)
-spawnCreature(juvenileCanyonKrayt, 8, 7044, 4203)
-spawnCreature(juvenileCanyonKrayt, 8, 7273, 4317)
-
--------
+--Misc
 
 spawnCreatureInCell(dewback, 8, -24.4, -30.0, -22.2, 7125561)
 spawnCreatureInCell(bobaFett, 8, -1.20873, 3, 30.5849, 1177487)

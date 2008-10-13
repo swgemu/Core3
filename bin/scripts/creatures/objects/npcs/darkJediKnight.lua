@@ -40,72 +40,72 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-darkTrooper = Creature:new {
-      objectName = "darkTrooper",  -- Lua Object Name
+darkJediKnight = Creature:new {
+      objectName = "darkJediKnight",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "imperial",
+      faction = "sith",
       gender = "",
 
-      name = "Crackdown Dark Trooper",
-      objectCRC = 1312348723, 
-      socialGroup = "imperial",
-      named = FALSE, 
+      stfName = "Dark Jedi Knight",
+      objectCRC = 1570698968, 
+      socialGroup = "sith",
+      named = TRUE, 
 
-      level = 95,
-      xp = 45,
+      level = 350,
+      xp = 28549,
 
-      combatFlags = 0,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 10500,
-      healthMin = 8600,
-      strength = 500,
-      constitution = 500,
+      healthMax = 311000,
+      healthMin = 300000,
+      strength = 50000,
+      constitution = 50000,
 
-      actionMax = 10500,
-      actionMin = 8600,
-      quickness = 500,
-      stamina = 500,
+      actionMax = 311000,
+      actionMin = 300000,
+      quickness = 50000,
+      stamina = 50000,
 
-      mindMax = 10500,
-      mindMin = 8600,
-      focus = 500,
-      willpower = 500,
+      mindMax = 311000,
+      mindMin = 300000,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 40,
-      energy = 0,
-      electricity = 50,
-      stun = -1,
-      blast = 0,
-      heat = 50,
-      cold = 50,
-      acid = 50,
-      lightsaber = 0,
+      armor = 3, -- Just a guess
+      kinetic = 90,
+      energy = 90,
+	  electricity = 90,
+      stun = 90,
+ 	  blast = 90,
+ 	  heat = 90,
+ 	  cold = 90,
+ 	  acid = 90,
+ 	  lightSaber = 0, 
 
-      accuracy = 300,
+      accuracy = 500,
 
       healer = 0,
 
       pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 1,
+      killer = 0,
       aggressive = 0,
-      invincible = 0,
+      invincible = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/rifle/shared_rifle_t21.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Teh Pwn", -- Name ex. 'a Vibrolance'
-      weaponTemp = "rifle_t21", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_s9_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Knight Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 400,
-      weaponAttackSpeed = 4,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponMinDamage = 850,
+      weaponMaxDamage = 1000,
+      weaponAttackSpeed = 1,
+      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ darkTrooper = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,42", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for lootelongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,10 +135,10 @@ darkTrooper = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
-       respawnTimer = 60,
+      skills = { "twoHandedJediAttack1", "twoHandedJediAttack4", "twoHandedJediAttack5", "twoHandedJediAttack6", "twoHandedJediAttack7", "twoHandedJediAttack2", "twoHandedJediAttack8", "twoHandedJediAttack9", "twoHandedJediAttack10", "twoHandedJediAttack11", "twoHandedJediAttack12", "twoHandedJediAttack3", "twoHandedJediAttack13", "twoHandedJediAttack14", "twoHandedJediAttack15", "twoHandedJediAttack16" },
+      respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(darkTrooper, 1312348723) --  Add to Global Table
+Creatures:addCreature(darkJediKnight, 1570698968) --  Add to Global Table

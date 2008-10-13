@@ -40,21 +40,21 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-jediKnight = Creature:new {
-      objectName = "jediKnight",  -- Lua Object Name
+rebelJediKnight = Creature:new {
+      objectName = "rebelJediKnight",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "sith",
+      faction = "rebel",
       gender = "",
 
-      stfName = "Dark Jedi Knight",
+      stfName = "Jedi Knight",
       objectCRC = 1570698968, 
-      socialGroup = "sith",
+      socialGroup = "rebel",
       named = TRUE, 
 
       level = 350,
       xp = 28549,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
       healthMax = 311000,
       healthMin = 300000,
@@ -141,4 +141,4 @@ jediKnight = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(jediKnight, 1570698968) --  Add to Global Table
+Creatures:addCreature(rebelJediKnight, 1570698968) --  Add to Global Table

@@ -40,48 +40,48 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-darthVader = Creature:new {
-      objectName = "darthVader",  -- Lua Object Name
+imperialJediKnight = Creature:new {
+      objectName = "imperialJediKnight",  -- Lua Object Name
       creatureType = "NPC",
       faction = "imperial",
       gender = "",
 
-      stfName = "Darth Vader",
-      objectCRC = 147261716, 
+      stfName = "Jedi Knight",
+      objectCRC = 1570698968, 
       socialGroup = "imperial",
       named = TRUE, 
 
-      level = 500,
+      level = 350,
       xp = 28549,
 
       combatFlags = 0,
 
-      healthMax = 650000,
-      healthMin = 620000,
-      strength = 80000,
-      constitution = 80000,
+      healthMax = 311000,
+      healthMin = 300000,
+      strength = 50000,
+      constitution = 50000,
 
-      actionMax = 650000,
-      actionMin = 620000,
-      quickness = 80000,
-      stamina = 80000,
+      actionMax = 311000,
+      actionMin = 300000,
+      quickness = 50000,
+      stamina = 50000,
 
-      mindMax = 650000,
-      mindMin = 620000,
-      focus = 80000,
-      willpower = 80000,
+      mindMax = 311000,
+      mindMin = 300000,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1, -- Size of creature
       armor = 3, -- Just a guess
-      kinetic = 95,
-      energy = 95,
-	  electricity = 95,
-      stun = 95,
- 	  blast = 95,
- 	  heat = 95,
- 	  cold = 95,
- 	  acid = 95,
- 	  lightSaber = 95, 
+      kinetic = 90,
+      energy = 90,
+	  electricity = 90,
+      stun = 90,
+ 	  blast = 90,
+ 	  heat = 90,
+ 	  cold = 90,
+ 	  acid = 90,
+ 	  lightSaber = 0, 
 
       accuracy = 500,
 
@@ -96,14 +96,14 @@ darthVader = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/shared_sword_lightsaber_vader.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_vader", -- Weapon Template ex. 'lance_vibrolance'
+      weapon = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_s9_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Knight Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 1200,
-      weaponMaxDamage = 1500,
-      weaponAttackSpeed = 1.0,
+      weaponMinDamage = 850,
+      weaponMaxDamage = 1000,
+      weaponAttackSpeed = 1,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -135,10 +135,10 @@ darthVader = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "darthAttack17", "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4", "darthAttack5", "darthAttack6", "darthAttack7", "darthAttack17", "darthAttack8", "darthAttack9", "darthAttack10", "darthAttack11", "darthAttack12", "darthAttack17", "darthAttack13", "darthAttack14", "darthAttack15", "darthAttack16", "darthAttack17" },
+      skills = { "twoHandedJediAttack1", "twoHandedJediAttack4", "twoHandedJediAttack5", "twoHandedJediAttack6", "twoHandedJediAttack7", "twoHandedJediAttack2", "twoHandedJediAttack8", "twoHandedJediAttack9", "twoHandedJediAttack10", "twoHandedJediAttack11", "twoHandedJediAttack12", "twoHandedJediAttack3", "twoHandedJediAttack13", "twoHandedJediAttack14", "twoHandedJediAttack15", "twoHandedJediAttack16" },
       respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(darthVader, 147261716) --  Add to Global Table
+Creatures:addCreature(imperialJediKnight, 1570698968) --  Add to Global Table

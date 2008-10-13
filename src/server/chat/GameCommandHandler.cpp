@@ -64,18 +64,19 @@ GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
 void GameCommandHandler::init() {
 	/* Admin Levels */
-	const int DEVELOPER = PlayerImplementation::DEVELOPER;
-	const int CSR = PlayerImplementation::CSR;
-	const int EC = PlayerImplementation::EC;
-	const int LEADQA = PlayerImplementation::LEADQA;
-	const int QA = PlayerImplementation::QA;
-	const int NORMAL = PlayerImplementation::NORMAL;
+	const int DEVELOPER = PlayerImplementation::DEVELOPER; 						/* Admin/Dev  */
+	const int CSR = PlayerImplementation::CSR;									/* CSR */
+	const int EC = PlayerImplementation::EC;									/* Event Coordinator */
+	const int LEADQA = PlayerImplementation::LEADQA;							/* Lead - Quality Assurance */
+	const int QA = PlayerImplementation::QA;									/* Quality Assurance */
+	const int EMUSTAFF = PlayerImplementation::EMUSTAFF;						/* Misc Emu Staff */
+	const int NORMAL = PlayerImplementation::NORMAL;							/* Normal Player */
 
 	/* Admin Groups */
-	const int ALL = DEVELOPER | CSR | EC | LEADQA | QA | NORMAL;
-	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA;
-	const int PRIVILEGED = DEVELOPER | CSR;
-	const int CSREVENTS = DEVELOPER | CSR | EC;
+	const int ALL = DEVELOPER | CSR | EC | LEADQA | QA | EMUSTAFF | NORMAL;		/* All Staff/Players */
+	const int STAFF = DEVELOPER | CSR | EC | LEADQA | QA | EMUSTAFF;			/* EMU Staff Only */
+	const int PRIVILEGED = DEVELOPER | CSR;										/* Admin,Dev/CSR */
+	const int CSREVENTS = DEVELOPER | CSR | EC;									/* Admin,Dev/CSR/Event Coordinator */
 
 	gmCommands = new GMCommandMap();
 
@@ -276,7 +277,7 @@ void GameCommandHandler::init() {
 			"Let you change a players faction. Will be applied IMMEDIATLY!",
 			"Usage: @factionSet overt | covert | rebel | imperial | neutral",
 			&factionSet);
-	gmCommands->addCommand("getCredits", PRIVILEGED,
+	gmCommands->addCommand("getCredits", CSREVENTS,
 			"Gives you cash credits",
 			"Usage: @getCredits [amount]",
 			&getCredits);

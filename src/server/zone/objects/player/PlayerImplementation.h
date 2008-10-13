@@ -272,6 +272,7 @@ public:
 	static const int QA = 8;
 	static const int EC = 16;
 	static const int LEADQA = 32;
+	static const int EMUSTAFF = 64;
 
 	static const int PVPRATING_MIN = 800;
 	static const int PVPRATING_DEFAULT = 1200;

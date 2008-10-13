@@ -40,11 +40,28 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---global clusters
+-- Reasearch Outpost
+spawnLair(barkMiteLair, 3, 3311.98, -3364.94, 30.6706)
+spawnLair(bloomingJaxLair, 3, 3259.74, -3359.12, 28.0234)
+spawnLair(blurggLair, 3, 3207.24, -3369.97, 21.731)
+spawnLair(blushingJaxLair, 3, 3163.21, -3388.7, 14.9082)
+spawnLair(boarWolfLair, 3, 3129.19, -3437.73, 15.6293)
+spawnLair(bolmaLair, 3, 3123.08, -3485.48, 17.6032)
+spawnLair(bordokFoalLair, 3, 3140.66, -3531.97, 19.778)
+spawnLair(bordokLair, 3, 3176.47, -3564.91, 23.2231)
+spawnLair(gurreckLair, 3, 3224.45, -3575.71, 26.319)
+spawnLair(lanternBirdLair, 3, 3287.51, -3565.68, 23.637)
+spawnLair(swirlProngLair, 3, 3325.79, -3547.92, 24.7652)
 
-spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
-
-spawnCreatureInCell(oldMan, 9, 0.0838334, -22.05, -50.2549, 8525426)
-spawnCreatureInCell(luke, 9, 21.8313, -24.1, 69.1277, 8525441)
-spawnCreatureInCell(hanSolo, 9, -47.9307, -22.05, -24.7138, 8525423)
-spawnCreatureInCell(chewbacca, 9, -45.3687, -22.05, 23.3004, 8525420)
+-- Smugglers Outpost
+spawnLair(barkMiteLair, 3, -737.353, 1517.69, 59.6158)
+spawnLair(bloomingJaxLair, 3, -772.308, 1565.26, 63.8064)
+spawnLair(blurggLair, 3, -792.028, 1607.48, 70.2829)
+spawnLair(blushingJaxLair, 3, -819.329, 1648.86, 73.1152)
+spawnLair(boarWolfLair, 3, -859.966, 1676.31, 68.785)
+spawnLair(bolmaLair, 3, -905.18, 1694.24, 74.8086)
+spawnLair(bordokFoalLair, 3, -937.492, 1699.92, 83.1811)
+spawnLair(bordokLair, 3, -992.451, 1676.58, 84.979)
+spawnLair(gurreckLair, 3, -1016.95, 1631.44, 87.2541)
+spawnLair(lanternBirdLair, 3, -1026.27, 1579.78, 75.2528)
+spawnLair(swirlProngLair, 3, -1028.67, 1531.3, 68.7426)

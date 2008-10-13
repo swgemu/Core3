@@ -41,14 +41,11 @@
 --which carries forward this exception.
 
 
--- spawnLair(bileDrenchedQuenkerLair, 1, -535.401, 2539.25, 3.77832)
--- spawnLair(bolLair, 1, -564.187, 2564.61, 10.144)
--- spawnLair(grasslandVoritorLair, 1, -617.611, 2590.84, 2.18789)    ToDo Fix Error
--- spawnLair(graulMaulerLair, 1, -646.035, 2592.55, 11.7493)   
--- spawnLair(huurtonLair, 1, -696.076, 2563.96, 13.9462)
--- spawnLair(picketPlainsWalkerLair, 1, -722.778, 2518.16, 5.23858)
--- spawnLair(piketLair, 1, -729.57, 2473.55, 4.40576)
--- spawnLair(quenkerLair, 1, -702.763, 2435.04, 10.1868)
--- spawnLair(thuneLair, 1, -669.226, 2397.61, 3.41802)
--- spawnLair(voritorDasherLair, 1, -626.369, 2389.14, 12.4393)
--- spawnLair(graulLair, 1, -569.491, 2438.67, 12.5941) Graul/Mauler Use same CRC Cant do same Creature
+-- Imperial Stronghold 4660 -5785
+spawnCreatures(imperialMajorGeneral, 0, 4660, -5785, 200, 5)
+spawnCreatures(imperialColonel, 0, 4660, -5785, 200, 5)
+spawnCreatures(imperialSurfaceMarshal, 0, 4660, -5785, 200, 5)
+spawnCreatures(imperialMajor, 0, 4660, -5785, 200, 5)
+-- spawnCreatures(imperialDarkTrooper, 0, 4660, -5785, 200, 15)
+-- spawnCreatures(imperialStormTrooper, 0, 4660, -5785, 200, 50)
+-- spawnCreatures(imperialAtSt, 0, 4660, -5785, 50, 4)

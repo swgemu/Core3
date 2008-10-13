@@ -47,6 +47,9 @@ if (PLANET_ID == 0) then
  RunCreatureFile("spawns/corellia/drallCave.lua")
  RunCreatureFile("spawns/corellia/lordNyaxCult.lua")
  RunCreatureFile("spawns/corellia/rogueCorsec.lua")
+ RunCreatureFile("spawns/corellia/rebelHideout.lua")
+ RunCreatureFile("spawns/corellia/imperialStronghold.lua") 
+ RunCreatureFile("spawns/corellia/citys/coronet.lua")  
 end
 
 --Dantooine
@@ -65,6 +68,9 @@ if (PLANET_ID == 2) then
  RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
  RunCreatureFile("spawns/dathomir/rancorCave.lua")
  RunCreatureFile("spawns/dathomir/nightsisterCave.lua")
+ RunCreatureFile("spawns/dathomir/nsVsSmcPoi.lua")
+ RunCreatureFile("spawns/dathomir/imperialPrison.lua") 
+ RunCreatureFile("spawns/dathomir/sarlaacPit.lua")  
 end
 
 
@@ -79,19 +85,23 @@ end
 
 --Lok
 if (PLANET_ID == 4) then
+RunCreatureFile("spawns/lok/staticSpawns.lua")
 end
 
 --Naboo
 if (PLANET_ID == 5) then
  RunCreatureFile("spawns/naboo/staticSpawns.lua")
+ RunCreatureFile("spawns/naboo/citys/theed.lua") 
 end
 
 --Rori
 if (PLANET_ID == 6) then
+RunCreatureFile("spawns/rori/staticSpawns.lua")
 end
 
 --Talus
 if (PLANET_ID == 7) then
+RunCreatureFile("spawns/talus/staticSpawns.lua")
 end
 
 --Tatooine
@@ -102,9 +112,13 @@ if (PLANET_ID == 8) then
  RunCreatureFile("spawns/tatooine/hutthideout.lua")
  RunCreatureFile("spawns/tatooine/tuskenBunker.lua")
  RunCreatureFile("spawns/tatooine/beetlecave.lua")
+ RunCreatureFile("spawns/tatooine/ancientKraytDragonSkeleton.lua")
+ RunCreatureFile("spawns/tatooine/kraytGraveyard.lua")
+ RunCreatureFile("spawns/tatooine/wreckedSandCrawler.lua")
 end
 
 --Yavin 4
 if (PLANET_ID == 9) then
 RunCreatureFile("spawns/yavin4/staticSpawns.lua")
+RunCreatureFile("spawns/yavin4/geoCave.lua")
 end

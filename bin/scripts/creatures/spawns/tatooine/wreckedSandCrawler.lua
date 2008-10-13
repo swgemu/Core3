@@ -40,11 +40,17 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---global clusters
+--Tusken Bantha / Jawas
 
-spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
+spawnCreatures(jawaHealer, 8, 5752, 4016, 50, 5, 180)
+spawnCreatures(jawaWarlord, 8, 5747, 4016, 50, 5, 180)
+spawnCreatures(jawa, 8, 5749, 4016, 50, 5, 180)
+spawnCreatures(jawaAvenger, 8, 5742, 4016, 50, 5, 180)
+spawnCreatures(jawaEngineer, 8, 5757, 4016, 50, 5, 180)
+spawnCreatures(jawaHenchman, 8, 5763, 4016, 50, 5, 180)
+spawnCreatures(jawaLeader, 8, 5739, 4016, 50, 5, 180)
+spawnCreatures(jawaProtector, 8, 5768, 4016, 50, 5, 180)
+spawnCreatures(jawaSmuggler, 8, 5732, 4016, 50, 5, 180)
+spawnCreatures(jawaThief, 8, 5780, 4016, 50, 5, 180)
 
-spawnCreatureInCell(oldMan, 9, 0.0838334, -22.05, -50.2549, 8525426)
-spawnCreatureInCell(luke, 9, 21.8313, -24.1, 69.1277, 8525441)
-spawnCreatureInCell(hanSolo, 9, -47.9307, -22.05, -24.7138, 8525423)
-spawnCreatureInCell(chewbacca, 9, -45.3687, -22.05, 23.3004, 8525420)
+spawnCreatures(tuskenBantha, 8, -3965, 6380, 50, 10, 180)

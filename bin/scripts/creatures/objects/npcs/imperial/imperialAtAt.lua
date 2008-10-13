@@ -39,8 +39,9 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-atAt = Creature:new {
-	objectName = "atAt", -- name of the lua Object
+
+imperialAtAt = Creature:new {
+	objectName = "imperialAtAt", -- name of the lua Object
 	creatureType = "NPC",
     faction = "imperial",
     gender = "",
@@ -139,4 +140,4 @@ atAt = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(atAt, 4274898142) --- Add to global creature table
+Creatures:addCreature(imperialAtAt, 4274898142) --- Add to global creature table

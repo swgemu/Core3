@@ -42,51 +42,51 @@
 
 -- Corellia
 if PLANET_ID == 0 then
- RunObjectFile("spawns/corellia/creatureSpawns.lua")
+ RunObjectFile("spawns/corellia/creatureLairSpawns.lua")
 end
 
 -- Dantooine
 if PLANET_ID == 1 then
- -- RunObjectFile("spawns/dantooine/creatureSpawns.lua")
+ -- RunObjectFile("spawns/dantooine/creatureLairSpawns.lua")
 end
 
 -- Dathomir
 if PLANET_ID == 2 then
- -- RunObjectFile("spawns/dathomir/creatureSpawns.lua")
+ -- RunObjectFile("spawns/dathomir/creatureLairSpawns.lua")
 end
 
 -- Endor
 if PLANET_ID == 3 then
- -- RunObjectFile("spawns/endor/creatureSpawns.lua")
+ -- RunObjectFile("spawns/endor/creatureLairSpawns.lua")
 end
 
 -- Lok
 if PLANET_ID == 4 then
- -- RunObjectFile("spawns/lok/creatureSpawns.lua")
+ -- RunObjectFile("spawns/lok/creatureLairSpawns.lua")
 end
 
 -- Naboo
 if PLANET_ID == 5 then
- -- RunObjectFile("spawns/naboo/creatureSpawns.lua")
+ -- RunObjectFile("spawns/naboo/creatureLairSpawns.lua")
 end
 
 -- Rori
 if PLANET_ID == 6 then
- -- RunObjectFile("spawns/rori/creatureSpawns.lua")
+ -- RunObjectFile("spawns/rori/creatureLairSpawns.lua")
 end
 
 -- Talus
 if PLANET_ID == 7 then
- -- RunObjectFile("spawns/talus/creatureSpawns.lua")
+ -- RunObjectFile("spawns/talus/creatureLairSpawns.lua")
 end
 
 --Tatooine
 if PLANET_ID == 8 then
- -- RunObjectFile("spawns/tatooine/creatureSpawns.lua")
+ -- RunObjectFile("spawns/tatooine/creatureLairSpawns.lua")
 end
 
 -- Yavin4
 if PLANET_ID == 9 then
- -- RunObjectFile("spawns/yavin4/creatureSpawns.lua")
+ -- RunObjectFile("spawns/yavin4/creatureLairSpawns.lua")
 end
 

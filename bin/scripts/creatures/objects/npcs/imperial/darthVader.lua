@@ -40,48 +40,49 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-jediMaster = Creature:new {
-      objectName = "jediMaster",  -- Lua Object Name
+
+darthVader = Creature:new {
+      objectName = "darthVader",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "sith",
+      faction = "imperial",
       gender = "",
 
-      stfName = "Dark Jedi Master",
-      objectCRC = 2005105485, 
-      socialGroup = "sith",
+      stfName = "Darth Vader",
+      objectCRC = 147261716, 
+      socialGroup = "imperial",
       named = TRUE, 
 
-      level = 400,
+      level = 500,
       xp = 28549,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = 0,
 
-      healthMax = 444000,
-      healthMin = 440000,
-      strength = 50000,
-      constitution = 50000,
+      healthMax = 650000,
+      healthMin = 620000,
+      strength = 80000,
+      constitution = 80000,
 
-      actionMax = 444000,
-      actionMin = 440000,
-      quickness = 50000,
-      stamina = 50000,
+      actionMax = 650000,
+      actionMin = 620000,
+      quickness = 80000,
+      stamina = 80000,
 
-      mindMax = 444000,
-      mindMin = 440000,
-      focus = 50000,
-      willpower = 50000,
+      mindMax = 650000,
+      mindMin = 620000,
+      focus = 80000,
+      willpower = 80000,
 
       height = 1, -- Size of creature
       armor = 3, -- Just a guess
-      kinetic = 90,
-      energy = 90,
-	  electricity = 90,
-      stun = 90,
- 	  blast = 90,
- 	  heat = 90,
- 	  cold = 90,
- 	  acid = 90,
- 	  lightSaber = 0, 
+      kinetic = 95,
+      energy = 95,
+	  electricity = 95,
+      stun = 95,
+ 	  blast = 95,
+ 	  heat = 95,
+ 	  cold = 95,
+ 	  acid = 95,
+ 	  lightSaber = 95, 
 
       accuracy = 500,
 
@@ -96,14 +97,14 @@ jediMaster = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Master Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_polearm_s2_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "PolearmJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/melee/sword/shared_sword_lightsaber_vader.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Darth Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_vader", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 950,
-      weaponMaxDamage = 1200,
-      weaponAttackSpeed = 1,
+      weaponMinDamage = 1200,
+      weaponMaxDamage = 1500,
+      weaponAttackSpeed = 1.0,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -135,10 +136,10 @@ jediMaster = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "polearmJediAttack1", "polearmJediAttack2", "polearmJediAttack3", "polearmJediAttack4", "polearmJediAttack5", "polearmJediAttack6", "polearmJediAttack7", "polearmJediAttack8", "polearmJediAttack9", "polearmJediAttack10", "polearmJediAttack11", "polearmJediAttack12", "polearmJediAttack13", "polearmJediAttack14", "polearmJediAttack15", "polearmJediAttack16" },
+      skills = { "darthAttack17", "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4", "darthAttack5", "darthAttack6", "darthAttack7", "darthAttack17", "darthAttack8", "darthAttack9", "darthAttack10", "darthAttack11", "darthAttack12", "darthAttack17", "darthAttack13", "darthAttack14", "darthAttack15", "darthAttack16", "darthAttack17" },
       respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(jediMaster, 2005105485) --  Add to Global Table
+Creatures:addCreature(darthVader, 147261716) --  Add to Global Table
