@@ -161,7 +161,8 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 	LoginClient* client = (LoginClient*) pack->getClient();
 
 	uint32 ServerId = pack->parseInt();
-    uint64 charId = pack->parseLong();
+	pack->shiftOffset(4);
+    uint64 charId = pack->parseInt();
     int dbDelete;
     string firstName;
 

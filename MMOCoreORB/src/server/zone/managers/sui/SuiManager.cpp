@@ -1101,10 +1101,10 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 			}
 
 			if (var != 1) {
-				SuiColorPicker* sui = new SuiColorPicker(player, colorPicker->getObjectID(), "private/index_color_2", 0xBABB);
+				SuiColorPicker* sui2 = new SuiColorPicker(player, colorPicker->getObjectID(), "private/index_color_2", 0xBABB);
 
-				player->addSuiBox(sui);
-				player->sendMessage(sui->generateMessage());
+				player->addSuiBox(sui2);
+				player->sendMessage(sui2->generateMessage());
 			}
 		}
 
