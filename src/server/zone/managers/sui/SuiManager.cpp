@@ -167,7 +167,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleTicketCollectorRespones(boxID, player, cancel, atoi(value.c_str()));
 		break;
 	case 0xBABE:
-		handleColorPicker(boxID, player, cancel, value);
+		handleColorPicker(boxID, player, cancel, value, 2);
+		break;
+	case 0xBABB:
+		handleColorPicker(boxID, player, cancel, value, 1);
 		break;
 	case 0xD65E:
 		handleBankTransfer(boxID, player, atoi(value.c_str()), atoi(value2.c_str()));
@@ -1058,7 +1061,7 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 	}
 }
 
-void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value) {
+void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value, int var) {
 	try {
 		player->wlock();
 
@@ -1084,7 +1087,7 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 
 					tano->wlock();
 
-					tano->setCustomizationVariable(2, val);
+					tano->setCustomizationVariable(var, val);
 					tano->setUpdated(true);
 
 					TangibleObjectDeltaMessage3* delta = new TangibleObjectDeltaMessage3(tano);
@@ -1095,6 +1098,13 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 
 					player->broadcastMessage(delta);
 				}
+			}
+
+			if (var != 1) {
+				SuiColorPicker* sui = new SuiColorPicker(player, colorPicker->getObjectID(), "private/index_color_2", 0xBABB);
+
+				player->addSuiBox(sui);
+				player->sendMessage(sui->generateMessage());
 			}
 		}
 

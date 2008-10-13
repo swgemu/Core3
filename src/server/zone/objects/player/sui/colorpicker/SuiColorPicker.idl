@@ -52,6 +52,10 @@ interface SuiColorPicker implements SuiBox {
 		super(player, boxtype, unsigned int typeId);
 	}
 	
+	SuiColorPicker(Player player, unsigned long objectId, const string var, unsigned int boxtype) {
+		super(player, boxtype, unsigned int typeId);
+	}
+	
 	unsigned long getObjectID();
 	
 	BaseMessage generateMessage();

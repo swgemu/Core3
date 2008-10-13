@@ -19,6 +19,8 @@ class SuiColorPicker : public SuiBox {
 public:
 	SuiColorPicker(Player* player, unsigned long long objectId, unsigned int boxtype);
 
+	SuiColorPicker(Player* player, unsigned long long objectId, const string& var, unsigned int boxtype);
+
 	unsigned long long getObjectID();
 
 	BaseMessage* generateMessage();
