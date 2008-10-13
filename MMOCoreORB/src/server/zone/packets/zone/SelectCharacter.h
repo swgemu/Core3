@@ -57,7 +57,8 @@ public:
 	}
 
 	static uint64 parse(Packet* pack) {
-		return pack->parseLong(6);
+		pack->shiftOffset(4);
+		return pack->parseInt();
 	}
 
 };
