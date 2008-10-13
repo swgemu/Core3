@@ -42,8 +42,7 @@
 dewbackLair = Lair:new {
 	objectName = "dewbackLair",
 
-	stfName = "rock_shelter",
-	-- objectCRC = 3671637094,
+	stfName = "rock_shelter",	
 	objectCRC = 4005767247,
 	maxCondition = 10000,
 

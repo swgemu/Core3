@@ -285,43 +285,22 @@ spawnCreatures(rebelGeneral, 0, 5000, -5000, 3000, 100)
 spawnCreatures(rebelGeneral, 0, -5000, 5000, 3000, 100)
 
 -- Imperials
-spawnCreatures(stormTrooper, 0, 0, 0, 3000, 100)
-spawnCreatures(stormTrooper, 0, -5000, 0, 3000, 100)
-spawnCreatures(stormTrooper, 0, 5000, 0, 3000, 100)
-spawnCreatures(stormTrooper, 0, 0, 5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, 0, -5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, -5000, -5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, 5000, 5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, 5000, -5000, 3000, 100)
-spawnCreatures(stormTrooper, 0, -5000, 5000, 3000, 100)
+spawnCreatures(imperialStormTrooper, 0, 0, 0, 3000, 100)
+spawnCreatures(imperialStormTrooper, 0, -5000, 0, 3000, 100)
+spawnCreatures(imperialStormTrooper, 0, 5000, 0, 3000, 100)
+spawnCreatures(imperialStormTrooper, 0, 0, 5000, 3000, 100)
+spawnCreatures(imperialStormTrooper, 0, 0, -5000, 3000, 100)
+spawnCreatures(imperialStormTrooper, 0, -5000, -5000, 3000, 100)
+spawnCreatures(imperialStormTrooper, 0, 5000, 5000, 3000, 100)
+spawnCreatures(imperialStormTrooper, 0, 5000, -5000, 3000, 100)
+spawnCreatures(imperialStormTrooper, 0, -5000, 5000, 3000, 100)
 
-spawnCreatures(atSt, 0, 0, 0, 3000, 20)
-spawnCreatures(atSt, 0, -5000, 0, 3000, 20)
-spawnCreatures(atSt, 0, 5000, 0, 3000, 20)
-spawnCreatures(atSt, 0, 0, 5000, 3000, 20)
-spawnCreatures(atSt, 0, 0, -5000, 3000, 20)
-spawnCreatures(atSt, 0, -5000, -5000, 3000, 20)
-spawnCreatures(atSt, 0, 5000, 5000, 3000, 20)
-spawnCreatures(atSt, 0, 5000, -5000, 3000, 20)
-spawnCreatures(atSt, 0, -5000, 5000, 3000, 20)
-
--- Coronet
-spawnCreatures(stormTrooper, 0, -210, 4460, 800, 200)
-spawnCreatures(atSt, 0, -210, 4460, 800, 50)
-
-
-
-
--- Rebel Hideout -6500 6000
-spawnCreatures(rebelSurfaceMarshal, 0, -6500, 6000, 300, 30)
-spawnCreatures(rebelGeneral, 0, -6500, 6000, 400, 60)
-
--- Imperial Stronghold 4660 -5785
-spawnCreatures(imperialMajorGeneral, 0, 4660, -5785, 200, 5)
-spawnCreatures(imperialColonel, 0, 4660, -5785, 200, 5)
-spawnCreatures(imperialSurfaceMarshal, 0, 4660, -5785, 200, 5)
-spawnCreatures(imperialMajor, 0, 4660, -5785, 200, 5)
--- spawnCreatures(darkTrooper, 0, 4660, -5785, 200, 15)
-spawnCreatures(stormTrooper, 0, 4660, -5785, 200, 50)
-spawnCreatures(atSt, 0, 4660, -5785, 50, 4)
-
+spawnCreatures(imperialAtSt, 0, 0, 0, 3000, 20)
+spawnCreatures(imperialAtSt, 0, -5000, 0, 3000, 20)
+spawnCreatures(imperialAtSt, 0, 5000, 0, 3000, 20)
+spawnCreatures(imperialAtSt, 0, 0, 5000, 3000, 20)
+spawnCreatures(imperialAtSt, 0, 0, -5000, 3000, 20)
+spawnCreatures(imperialAtSt, 0, -5000, -5000, 3000, 20)
+spawnCreatures(imperialAtSt, 0, 5000, 5000, 3000, 20)
+spawnCreatures(imperialAtSt, 0, 5000, -5000, 3000, 20)
+spawnCreatures(imperialAtSt, 0, -5000, 5000, 3000, 20)

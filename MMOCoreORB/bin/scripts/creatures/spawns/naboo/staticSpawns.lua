@@ -49,8 +49,8 @@
 -- spawnCreatures(fleshEatingChuba, 5, -5052.52, 3905.86, 200, 20)
 -- spawnCreatures(shaupaut, 5, -5052.52, 3905.86, 40, 200, 10)
 
-spawnCreature(stormTrooper, 5, -4852.37, 4175.86)
-spawnCreature(stormTrooper, 5, -4848.24, 4172.5)
+spawnCreature(imperialStormTrooper, 5, -4852.37, 4175.86)
+spawnCreature(imperialStormTrooper, 5, -4848.24, 4172.5)
 
 spawnCreatures(nightspider, 5, -4857.24, 3972.12, 40, 5)
 spawnCreatures(nightspider, 5, -4864.8, 3923.57, 40, 5)

@@ -40,11 +40,15 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---global clusters
 
-spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
-
-spawnCreatureInCell(oldMan, 9, 0.0838334, -22.05, -50.2549, 8525426)
-spawnCreatureInCell(luke, 9, 21.8313, -24.1, 69.1277, 8525441)
-spawnCreatureInCell(hanSolo, 9, -47.9307, -22.05, -24.7138, 8525423)
-spawnCreatureInCell(chewbacca, 9, -45.3687, -22.05, 23.3004, 8525420)
+spawnLair(bileDrenchedQuenkerLair, 1, -535.401, 2539.25, 3.77832)
+spawnLair(bolLair, 1, -564.187, 2564.61, 10.144)
+spawnLair(grasslandVoritorLair, 1, -617.611, 2590.84, 2.18789)    --ToDo Fix Error
+spawnLair(graulMaulerLair, 1, -646.035, 2592.55, 11.7493)   
+spawnLair(huurtonLair, 1, -696.076, 2563.96, 13.9462)
+spawnLair(picketPlainsWalkerLair, 1, -722.778, 2518.16, 5.23858)
+spawnLair(piketLair, 1, -729.57, 2473.55, 4.40576)
+spawnLair(quenkerLair, 1, -702.763, 2435.04, 10.1868)
+spawnLair(thuneLair, 1, -669.226, 2397.61, 3.41802)
+spawnLair(voritorDasherLair, 1, -626.369, 2389.14, 12.4393)
+spawnLair(graulLair, 1, -569.491, 2438.67, 12.5941) --Graul/Mauler Use same CRC Cant do same Creature

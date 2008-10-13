@@ -40,11 +40,8 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---global clusters
+spawnCreature(imperialStormTrooper, 5, -4852.37, 4175.86)
+spawnCreature(imperialStormTrooper, 5, -4848.24, 4172.5)
 
-spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
-
-spawnCreatureInCell(oldMan, 9, 0.0838334, -22.05, -50.2549, 8525426)
-spawnCreatureInCell(luke, 9, 21.8313, -24.1, 69.1277, 8525441)
-spawnCreatureInCell(hanSolo, 9, -47.9307, -22.05, -24.7138, 8525423)
-spawnCreatureInCell(chewbacca, 9, -45.3687, -22.05, 23.3004, 8525420)
+-- Epic theed Spawn
+spawnCreatureInCell(mellichae, 5, 0.429564, 27, -120.732, 1688865)

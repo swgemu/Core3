@@ -40,50 +40,50 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-stormTrooper = Creature:new {
-      objectName = "stormTrooper",  -- Lua Object Name
+moDarkJediMaster = Creature:new {
+      objectName = "moDarkJediMaster",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "imperial",
+      faction = "sith",
       gender = "",
 
-      name = "stormTrooper",
-      objectCRC = 3128894413, 
-      socialGroup = "imperial",
-      named = FALSE, 
+      stfName = "Dark Jedi Master",
+      objectCRC = 2005105485, 
+      socialGroup = "sith",
+      named = TRUE, 
 
-      level = 80,
-      xp = 10000,
+      level = 400,
+      xp = 28549,
 
-      combatFlags = 0,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 8800,
-      healthMin = 7200,
-      strength = 500,
-      constitution = 500,
+      healthMax = 444000,
+      healthMin = 440000,
+      strength = 50000,
+      constitution = 50000,
 
-      actionMax = 8800,
-      actionMin = 7200,
-      quickness = 500,
-      stamina = 500,
+      actionMax = 444000,
+      actionMin = 440000,
+      quickness = 50000,
+      stamina = 50000,
 
-      mindMax = 8800,
-      mindMin = 7200,
-      focus = 500,
-      willpower = 500,
+      mindMax = 444000,
+      mindMin = 440000,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1, -- Size of creature
-      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 30,
-      energy = 30,
-      electricity = 30,
-      stun = 0,
-      blast = 30,
-      heat = 0,
-      cold = 30,
-      acid = 0,
-      lightsaber = 0,
+      armor = 3, -- Just a guess
+      kinetic = 90,
+      energy = 90,
+	  electricity = 90,
+      stun = 90,
+ 	  blast = 90,
+ 	  heat = 90,
+ 	  cold = 90,
+ 	  acid = 90,
+ 	  lightSaber = 0, 
 
-      accuracy = 300,
+      accuracy = 500,
 
       healer = 0,
 
@@ -92,35 +92,35 @@ stormTrooper = Creature:new {
       stalker = 0,
       killer = 0,
       aggressive = 0,
-      invincible = 0,
+      invincible = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
-      weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Master Saber", -- Name ex. 'a Vibrolance'
+      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 400,
-      weaponAttackSpeed = 2,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponMinDamage = 950,
+      weaponMaxDamage = 1200,
+      weaponAttackSpeed = 1,
+      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      alternateWeapon = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_s9_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeaponName = "Master Saber", -- Name ex. 'a Vibrolance'
+      alternateWeaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
+      alternateWeaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      alternateWeaponEquipped = 1,
+      alternateWeaponMinDamage = 950,
+      alternateWeaponMaxDamage = 1200,
+      alternateWeaponAttackSpeed = 1,
+      alternateWeaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+      alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,34,42", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for lootelongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,10 +135,10 @@ stormTrooper = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "stormAttack1", "stormAttack2", "stormAttack3", "stormAttack4", "stormAttack5", "stormAttack6", "stormAttack7", "stormAttack8", "stormAttack9", "stormAttack10", "stormAttack11", "stormAttack12", "stormAttack13", "stormAttack14", "stormAttack15",  },
-      respawnTimer = 60,
+      skills = { "jediAttack1", "jediAttack2", "jediAttack3", "jediAttack4", "jediAttack5", "jediAttack6", "jediAttack7", "jediAttack8" },
+      respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(stormTrooper, 3128894413) --  Add to Global Table
+Creatures:addCreature(moDarkJediMaster, 2005105485) --  Add to Global Table

@@ -40,11 +40,33 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---global clusters
+spawnLair(bazNitchLair, 2, -54.2157, -1477.98, 13.7102)
+spawnLair(bolmaLair, 2, -83.4288, -1480.04, 18.771)
+spawnLair(brackasetLair, 2, -113.256, -1485.31, 28.052)
+spawnLair(bullRancorLair, 2, -142.024, -1496.59, 34.7339)
+spawnLair(gapingSpiderLair, 2, -170.133, -1532.77, 27.4413)
+spawnLair(giantBazNitchLair, 2, -187.545, -1569.08, 23.0465)
+spawnLair(kwiLair, 2, -192.962, -1608.63, 26.102)
+spawnLair(malklocLair, 2, -187.257, -1635.41, 26.237)
+spawnLair(purboleLair, 2, -169.701, -1657.5, 21.5189)
+spawnLair(rancorLair, 2, -147.784, -1674.58, 15.5123)
+spawnLair(reptilianFlyerLair, 2, -126.32, -1689.85, 14.7676)
+spawnLair(shearMiteLair, 2, -103.42, -1701.17, 18.9237)
+spawnLair(verneBullLair, 2, -79.8556, -1705.97, 21.6917)
+spawnLair(verneLair, 2, -55.1306, -1701.49, 25.2369)
 
-spawnCreatureInCell(palpatine, 9, -0.0130447, -43.2978, -153.352, 3435642)
-
-spawnCreatureInCell(oldMan, 9, 0.0838334, -22.05, -50.2549, 8525426)
-spawnCreatureInCell(luke, 9, 21.8313, -24.1, 69.1277, 8525441)
-spawnCreatureInCell(hanSolo, 9, -47.9307, -22.05, -24.7138, 8525423)
-spawnCreatureInCell(chewbacca, 9, -45.3687, -22.05, 23.3004, 8525420)
+-- Trade Outpost
+spawnLair(bazNitchLair, 2, -32.7141, -1691.13, 27.1611)
+spawnLair(bolmaLair, 2, 683.929, 3114.04, 24.9072)
+spawnLair(brackasetLair, 2, 705.788, 3056.29, 25.4571)
+spawnLair(bullRancorLair, 2, 696.403, 3022.07, 26.8371)
+spawnLair(gapingSpiderLair, 2, 670.633, 2967.76, 26.7084)
+spawnLair(giantBazNitchLair, 2, 651.815, 2935.84, 22.8719)
+spawnLair(kwiLair, 2, 613.233, 2893.71, 13.5182)
+spawnLair(malklocLair, 2, 568.947, 2913.54, 25.0847)
+spawnLair(purboleLair, 2, 534.746, 2939.16, 31.6752)
+spawnLair(rancorLair, 2, 481.564, 2942.51, 35.8821)
+spawnLair(reptilianFlyerLair, 2, 438.158, 2943.32, 31.7022)
+spawnLair(shearMiteLair, 2, 374.624, 2944.91, 26.9569)
+spawnLair(verneBullLair, 2, 341.819, 2957.79, 33.0278)
+spawnLair(verneLair, 2, 285.618, 2998.39, 26.0501)
