@@ -63,7 +63,8 @@ public:
 	  
 	    	insertInt(characters->getCharacterRaceCRC()); //Player Race CRC - 0x060E51D5
     		//insertInt(0x060E51D5); //Player Race CRC - 0x060E51D5
-	    	insertLong(characters->getCharacterID()); //Player ID
+    		insertInt(0x15); //magic 0x15 that makes the login screen work
+	    	insertInt(characters->getCharacterID()); //Player ID
 	    	
 	    	insertInt(characters->getGalaxyID()); //Server ID That Character Is On
 	    	insertInt(0x00000001);
