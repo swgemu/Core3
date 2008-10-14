@@ -191,9 +191,29 @@ void CreatureManagerImplementation::stop() {
 }
 
 void CreatureManagerImplementation::loadRecruiters() {
-	if (zone->getZoneID() == 5) {
-		spawnRecruiter(-4936, 4231, 1, 0.053, 1, 0);
-		spawnRecruiter(-4928, 4231, 1, 0.053, 2, 0);
+	stringstream query;
+	query << "SELECT x,y,oY,oW,cell_id,type FROM recruiters WHERE ";
+	query << "planet_id = " << zone->getZoneID() << ";";
+
+	try {
+		ResultSet * res = ServerDatabase::instance()->executeQuery(query);
+
+		while (res->next()) {
+			float x = res->getFloat(0);
+			float y = res->getFloat(1);
+			float oY = res->getFloat(2);
+			float oW = res->getFloat(3);
+			uint64 cellId = res->getUnsignedLong(4);
+			int type = res->getInt(5);
+
+			spawnRecruiter(x, y, oY, oW, type, cellId);
+		}
+
+		delete res;
+	} catch (Exception& e) {
+		error("Exception caught in CreatureManagerImplementation::loadRecruiters" + e.getMessage());
+	} catch (...) {
+		error("unreported Exception caught in CreatureManagerImplementation::loadRecruiters");
 	}
 }
 
