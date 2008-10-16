@@ -343,6 +343,10 @@ public:
 
 	void removeXp(string& xpType, int xp, bool updateClient);
 
+	void loadXp(const string& xpStr);
+
+	string& saveXp();
+
 	void removeFromDuelList(Player* targetPlayer);
 
 	void addToDuelList(Player* targetPlayer);
@@ -734,6 +738,7 @@ protected:
 	string _return_getNextSkillBox;
 	string _return_getRaceFileName;
 	string _return_getStartingProfession;
+	string _return_saveXp;
 
 	unicode _return_getBiography;
 
@@ -1025,6 +1030,10 @@ public:
 	void addXp(string& xpType, int xp, bool updateClient);
 
 	void removeXp(string& xpType, int xp, bool updateClient);
+
+	void loadXp(const string& xpStr);
+
+	string& saveXp();
 
 	void removeFromDuelList(Player* targetPlayer);
 
@@ -1413,6 +1422,7 @@ protected:
 	string _param2_queueHeal__TangibleObject_int_string_;
 	string _param0_addXp__string_int_bool_;
 	string _param0_removeXp__string_int_bool_;
+	string _param0_loadXp__string_;
 	string _param0_sendSystemMessage__string_;
 	unicode _param0_sendSystemMessage__unicode_;
 	string _param0_sendSystemMessage__string_string_long_;

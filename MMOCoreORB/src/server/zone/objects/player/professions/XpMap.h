@@ -49,6 +49,8 @@ which carries forward this exception.
 
 class XpMap : public HashTable<string, int> , public HashTableIterator<string, int> {
 	
+public:
+		
 	int hash(const string& key) {
         return String::hashCode(key);
 	}
@@ -56,7 +58,8 @@ class XpMap : public HashTable<string, int> , public HashTableIterator<string, i
 public:
 	XpMap() : HashTable<string, int>(2000) , HashTableIterator<string, int>(this) {
 		setNullValue(0);
-	}	
+	}
+	
 }; 
 
 #endif /*XPMAP_H_*/

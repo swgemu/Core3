@@ -1054,6 +1054,12 @@ public:
 	void removeXp(const string& xpType, int xp, bool updateClient) {
 		playerObject->removeExperience(xpType, xp, updateClient);
 	}
+	void loadXp(const string& xpStr) {
+		playerObject->loadExperience(xpStr);
+	}
+	string& saveXp() {
+		return playerObject->saveExperience();
+	}
 
 	void addSkillBox(SkillBox* skillBox, bool updateClient = false);
 	void removeSkillBox(SkillBox* skillBox, bool updateClient = false);

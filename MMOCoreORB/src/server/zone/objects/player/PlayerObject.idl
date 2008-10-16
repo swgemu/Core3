@@ -66,6 +66,8 @@ interface PlayerObject implements SceneObject {
 
 	void addExperience(const string xpType, int xp, boolean updateClient);
 	void removeExperience(const string xpType, int xp, boolean updateClient);
+	void loadExperience(const string xpStr);
+	string saveExperience();
 
 	boolean setCharacterBit(unsigned int bit, boolean updateClient = false);
 	boolean clearCharacterBit(unsigned int bit, boolean updateClient = false);

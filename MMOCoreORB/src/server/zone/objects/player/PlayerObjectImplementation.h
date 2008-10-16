@@ -76,6 +76,7 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 	uint32 jediState;
 	XpMap experienceList;
 	uint32 experienceListCount;
+	string experienceData;
 	uint32 waypointListCount;
 	VectorMap<uint64, WaypointObject*> waypointList;
 
@@ -132,6 +133,8 @@ public:
 
 	void addExperience(const string& xpType, int xp, bool updateClient);
 	void removeExperience(const string& xpType, int xp, bool updateClient);
+	void loadExperience(const string& xpStr);
+	string& saveExperience();
 
 	void setCurrentTitle(string& nTitle, bool updateClient);
 
