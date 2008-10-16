@@ -337,6 +337,8 @@ public:
 
 	SceneObject* getInventoryItem(unsigned long long oid);
 
+	TangibleObject* getMissionItem(string& tma);
+
 	void removeInventoryItem(unsigned long long oid);
 
 	SceneObject* getLootItem(unsigned long long oid);
@@ -1410,6 +1412,8 @@ public:
 
 	SceneObject* getInventoryItem(unsigned long long oid);
 
+	TangibleObject* getMissionItem(string& tma);
+
 	void removeInventoryItem(unsigned long long oid);
 
 	SceneObject* getLootItem(unsigned long long oid);
@@ -2162,6 +2166,7 @@ protected:
 	string _param3_sendCombatSpam__CreatureObject_TangibleObject_int_string_bool_;
 	string _param0_getMitigation__string_;
 	string _param0_updateMood__string_;
+	string _param0_getMissionItem__string_;
 	string _param0_addSkillMod__string_int_bool_;
 	string _param0_getSkillMod__string_;
 	string _param0_hasSkillMod__string_;

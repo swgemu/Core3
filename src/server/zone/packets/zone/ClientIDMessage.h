@@ -57,12 +57,23 @@ public:
 	}
 
 	static uint32 parse(Packet* pack) {
+		//Shift past opcode:
 		pack->shiftOffset(4);
 
+		//Get session key + accountId size:
 		uint32 dataLen = pack->parseInt();
-		pack->shiftOffset(dataLen - 4);
+		
+		//Get session key
+		uint32 sessionKey = pack->parseInt();
+		
+		//Shift to end of session key, beginning of accountId:
+		//pack->shiftOffset(dataLen - 4);
+		
+		//Get accountId
+		uint32 accountId = pack->parseInt();
 
-		return pack->parseInt();
+		//Return the accountId:
+		return accountId;
 	}
 
 };

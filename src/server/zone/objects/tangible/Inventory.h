@@ -17,6 +17,8 @@ class Inventory : public Container {
 public:
 	Inventory(CreatureObject* creature);
 
+	TangibleObject* getMissionItem(string& misKey);
+
 	int getUnequippedItemCount();
 
 	bool isFull();
@@ -37,10 +39,14 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	TangibleObject* getMissionItem(string& misKey);
+
 	int getUnequippedItemCount();
 
 	bool isFull();
 
+protected:
+	string _param0_getMissionItem__string_;
 };
 
 class InventoryHelper : public DistributedObjectClassHelper, public Singleton<InventoryHelper> {

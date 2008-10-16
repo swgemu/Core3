@@ -45,6 +45,8 @@ public:
 
 	void removeMisoFromPool(MissionObject* miso, bool doLock = true);
 
+	unsigned int getMissionItemCrc(string& tKey, bool doLock = true);
+
 	void loadMissionScripts();
 
 	void registerFunctions();
@@ -91,6 +93,8 @@ public:
 
 	void removeMisoFromPool(MissionObject* miso, bool doLock);
 
+	unsigned int getMissionItemCrc(string& tKey, bool doLock);
+
 	void loadMissionScripts();
 
 	void registerFunctions();
@@ -106,6 +110,7 @@ protected:
 	string _param1_sendMission__Player_string_bool_;
 	string _param1_doMissionComplete__Player_string_;
 	string _param1_doMissionAbort__Player_string_bool_;
+	string _param0_getMissionItemCrc__string_bool_;
 };
 
 class MissionManagerHelper : public DistributedObjectClassHelper, public Singleton<MissionManagerHelper> {

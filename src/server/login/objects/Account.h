@@ -270,8 +270,12 @@ public:
 
 	void login(LoginClient* client) {
 		if (accountID > 0) {
-			Message* lct = new LoginClientToken(username, accountID, stationID);
+			//uint32 sessionKey = System::random();
+			uint32 sessionKey = 0; //temp until we store the session key in the db and check on zone server
+			Message* lct = new LoginClientToken(username, sessionKey, accountID, stationID);
 			client->sendMessage(lct);
+			
+			//send the sessionkey to the DB here
 
 			loadGalaxies(client);
 

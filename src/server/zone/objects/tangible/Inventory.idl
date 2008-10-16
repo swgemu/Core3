@@ -50,6 +50,8 @@ interface Inventory implements Container {
 	Inventory(CreatureObject creature) {
 		super(unsigned long oid);
 	}
+	
+	TangibleObject getMissionItem(string misKey);
 
 	int getUnequippedItemCount();
 

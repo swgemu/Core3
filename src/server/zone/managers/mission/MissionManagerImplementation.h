@@ -102,6 +102,8 @@ public:
 	
 	//Completely remove the mission from the server:
 	void removeMisoFromPool(MissionObject* miso, bool doLock = true);
+	
+	uint32 getMissionItemCrc(string& tKey, bool doLock = true);
 
 	//script methods
 	void loadMissionScripts();

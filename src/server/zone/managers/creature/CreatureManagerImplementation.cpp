@@ -142,7 +142,7 @@ void CreatureManagerImplementation::loadCreatures() {
 	loadRecruiters();
 	loadStaticCreatures();
 	loadBlueFrogs();
-	loadMissionCreatures();
+	//loadMissionCreatures();
 }
 
 void CreatureManagerImplementation::run() {
@@ -277,14 +277,13 @@ void CreatureManagerImplementation::loadTrainers() {
 
 void CreatureManagerImplementation::loadMissionCreatures() {
 	//temporary to work with hardcode missions
-	/*
 	if (zone->getZoneID() == 5) {
 		string name = "MAN O' ACTION";
 		string stf = "";
 		ActionCreature* tac;
 		tac = spawnActionCreature(name, stf, 0x8C73B91, "testM27", -4844.0f, 4155.0f, -.0339502, .999424);
 
-		int actmsk;
+		int actmsk = 0;
 		actmsk |= ActionImplementation::TYPE_CONVERSE;
 		Action* act = new Action((SceneObject*)tac, actmsk, 0);
 		string scrnId = "0";
@@ -319,7 +318,7 @@ void CreatureManagerImplementation::loadMissionCreatures() {
 
 		actionKey = "finm27";
 		tac->addAction(actionKey, act2);
-	}*/
+	}
 }
 
 void CreatureManagerImplementation::loadStaticCreatures() {

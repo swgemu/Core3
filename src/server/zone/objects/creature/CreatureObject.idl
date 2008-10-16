@@ -281,6 +281,7 @@ interface CreatureObject implements SceneObject {
 	void updateServerMovementStamp();
 
 	SceneObject getInventoryItem(unsigned long oid);
+	TangibleObject getMissionItem(string tma);
 	void removeInventoryItem(unsigned long oid);
 
 	SceneObject getLootItem(unsigned long oid);
