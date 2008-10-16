@@ -139,6 +139,8 @@ void CreatureImplementation::init() {
 
 	randomizeRespawn = false;
 
+	hasRandomMovement = true;
+
 	actualSpeed = 0.f;
 
 	movementCounter = 0;
@@ -1004,7 +1006,8 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 				creatureManager->queueActivity(this, 10);
 			}
-		} else if ((parent == NULL) && !doRandomMovement && patrolPoints.isEmpty() && System::random(200) < 1 && scno->isPlayer()) {
+		} else if ((parent == NULL) && scno->isPlayer() && !doRandomMovement && hasRandomMovement
+				&& patrolPoints.isEmpty() && System::random(200) < 1) {
 			doRandomMovement = true;
 
 			positionZ = obj->getPositionZ();

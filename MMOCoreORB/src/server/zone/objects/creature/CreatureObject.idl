@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -79,9 +79,9 @@ interface CreatureObject implements SceneObject {
 	CreatureObject(unsigned long oid) {
 		super(oid, int type);
 	}
-	
+
 	void info(const string message, boolean forcedLog = false);
-	
+
 	void sendItemsTo(Player player);
 	void sendTo(Player player, boolean doClose = true);
 
@@ -93,17 +93,17 @@ interface CreatureObject implements SceneObject {
 	void playEffect(const string file, const string aux);
 	void showFlyText(const string file, const string aux, unsigned char red, unsigned char green, unsigned char blue);
 	void sendCombatSpam(CreatureObject defender, TangibleObject item, unsigned int damage, const string skill, boolean areaSpam = true);
-	
+
 	void addDamage(CreatureObject creature, unsigned int damage);
-	
+
 	unsigned int getDamage(CreatureObject creature);
 	void removeFromDamageMap(CreatureObject target);
-	
+
 	boolean isLootOwner(CreatureObject creature);
 	CreatureObject getLootOwner();
-	
+
 	unsigned int getMitigation(const string mit);
-	
+
 	boolean isIncapacitated();
 	boolean isDead();
 	boolean isKnockedDown();
@@ -121,21 +121,21 @@ interface CreatureObject implements SceneObject {
 	boolean isMounted();
 	boolean isRidingCreature();
 	boolean isMeditating();
-	
+
 	boolean hatesFaction(unsigned int faction);
-	
+
 	void updateKnockdownRecovery();
-	
+
 	void updateMood(const string md);
-	
+
 	boolean checkKnockdownRecovery();
-	
+
 	void updatePostureDownRecovery();
-	
+
 	void updatePostureUpRecovery();
-	
+
 	boolean checkPostureDownRecovery();
-	
+
 	boolean checkPostureUpRecovery();
 
 	boolean setState(unsigned long state);
@@ -146,13 +146,13 @@ interface CreatureObject implements SceneObject {
 
 	// HAM methods
 	void resetHAMBars(boolean doUpdateClient);
-	
+
 	boolean changeHAMBars(int hp, int ap, int mp, boolean forcedChange = false);
 	boolean changeHAMWounds(int hpwnd, int apwnd, int mpwnd, boolean forcedChange = false);
 	void changeMaxHAMBars(int hp, int ap, int mp);
-	
+
 	boolean takeHealthDamage(int damage); // Instead of having to pass negative damage values
-	boolean takeActionDamage(int damage); // we can now pass damage to a damage function 
+	boolean takeActionDamage(int damage); // we can now pass damage to a damage function
 	boolean takeMindDamage(int damage);   // using positive values for damage
 
 	// Change Current HAM
@@ -189,7 +189,7 @@ interface CreatureObject implements SceneObject {
 	boolean changeWillpowerWoundsBar(int wounds, boolean forcedChange = false);
 
 	void changeShockWounds(int bf);
-	
+
 	// Set Current HAM
 	void setHealthBar(unsigned int hp);
 	void setStrengthBar(unsigned int st);
@@ -204,10 +204,10 @@ interface CreatureObject implements SceneObject {
 	// Set Base HAM
 	void setBaseHealthBar(unsigned int hp, boolean updateClient = true);
 	void setBaseStrengthBar(unsigned int st, boolean updateClient = true);
-	void setBaseConstitutionBar(unsigned int cst, boolean updateClient = true);	
+	void setBaseConstitutionBar(unsigned int cst, boolean updateClient = true);
 	void setBaseActionBar(unsigned int ap, boolean updateClient = true);
 	void setBaseQuicknessBar(unsigned int qck, boolean updateClient = true);
-	void setBaseStaminaBar(unsigned int sta, boolean updateClient = true);	
+	void setBaseStaminaBar(unsigned int sta, boolean updateClient = true);
 	void setBaseMindBar(unsigned int mp, boolean updateClient = true);
 	void setBaseFocusBar(unsigned int fc, boolean updateClient = true);
 	void setBaseWillpowerBar(unsigned int will, boolean updateClient = true);
@@ -215,14 +215,14 @@ interface CreatureObject implements SceneObject {
 	// Set Max HAM
 	void setMaxHealthBar(unsigned int hp, boolean updateClient = true);
 	void setMaxStrengthBar(unsigned int st, boolean updateClient = true);
-	void setMaxConstitutionBar(unsigned int cst, boolean updateClient = true);	
+	void setMaxConstitutionBar(unsigned int cst, boolean updateClient = true);
 	void setMaxActionBar(unsigned int ap, boolean updateClient = true);
 	void setMaxQuicknessBar(unsigned int qck, boolean updateClient = true);
-	void setMaxStaminaBar(unsigned int sta, boolean updateClient = true);	
+	void setMaxStaminaBar(unsigned int sta, boolean updateClient = true);
 	void setMaxMindBar(unsigned int mp, boolean updateClient = true);
 	void setMaxFocusBar(unsigned int fc, boolean updateClient = true);
 	void setMaxWillpowerBar(unsigned int will, boolean updateClient = true);
-	
+
 	// Set HAM Wounds
 	void setHealthWoundsBar(unsigned int  wnds);
 	void setStrengthWoundsBar(unsigned int  wnds);
@@ -235,162 +235,162 @@ interface CreatureObject implements SceneObject {
 	void setWillpowerWoundsBar(unsigned int  wnds);
 
 	void handleDeath();
-	
+
 	boolean hasAttackDelay();
 	void clearAttackDelay();
-	
+
 	void activateBurstRun();
-	
+
 	boolean hasQueuedState(unsigned int skillCRC);
 	boolean removeQueuedState(unsigned int skillCRC);
 	boolean addQueuedState(unsigned int skillCRC);
-	
+
 	void setMeditateState();
 
 	boolean isGuilded();
-	
+
 	void removeGroup();
-	
+
 	boolean isInAGroup();
-	
+
 	void setGroupID(unsigned long gid);
-	
+
 	void updateGroupId(unsigned long id);
 	void updateGroupInviterId(unsigned long id);
 
 	void setDefenderID(long did);
-	
+
 	void updateTarget(unsigned long targ);
 	void updateTarget(SceneObject targ);
-	
+
 	void setActionCounter(unsigned int actioncntr);
-	
+
 	void setWeapon(Weapon wep);
-	
+
 	void setCreatureLinkID(unsigned long creatureID);
-	
+
 	void setAccuracy(int acc);
 	void setDamageBonus(int bonus);
 	void setDefenseBonus(int bonus);
-	
+
 	void setLastMovementUpdateStamp(unsigned int tme);
 	void setIgnoreMovementTests(int times);
-	
+
 	void setLevel(unsigned int lvl);
 
 	void updateServerMovementStamp();
-	
+
 	SceneObject getInventoryItem(unsigned long oid);
 	void removeInventoryItem(unsigned long oid);
 
 	SceneObject getLootItem(unsigned long oid);
 	void removeLootItem(unsigned long oid);
-			
+
 	Inventory getInventory();
 
 	Container getLootContainer();
-	
+
 	unsigned long getNewItemID(); // should be virtual
-	
+
 	Weapon getWeapon();
-	
+
 	Armor getArmor(int type);
-	
+
 	local void addSkill(Skill skill);
-	
+
 	void addSkillMod(const string name, int mod, boolean updateClient = false);
-	
+
 	int getSkillMod(const string name);
-	
+
 	boolean hasSkillMod(const string name);
 
 	int getSkillModBonus(const string name);
-	
+
 	boolean hasSkillModBonus(const string name);
-	
+
 	int getAccuracy();
 	int getDefenseBonus();
 	int getDamageBonus();
-	
+
 	int getConditionDamage();
 	int getMaxCondition();
 	int getCondition();
 	MountCreature getMount();
 
 	unsigned long getLastServerMovementStamp();
-	
+
 	unsigned long getCreatureLinkID();
-	
+
 	float getDistanceTo(CreatureObject targetCreature); // temp
 	float getHeight();
-	
+
 	unsigned int getCreatureSkillsCount();
 	unsigned int getNewCreatureSkillsCount(int cnt);
-	
+
 	unsigned int getLastMovementUpdateStamp();
 	int getIgnoreMovementTests();
-	
+
 	unsigned int getLevel();
-	
+
 	int getCenteredBonus();
-	
+
 	void sendSystemMessage(const string message);
 	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
 	void updateSpeed(float speed, float acceleration);
-	
+
 	void addInventoryItem(TangibleObject item);
 	void addInventoryResource(ResourceContainer rcno);
-	
+
 	void addLootItem(TangibleObject item);
-	
+
 	// Ent methods
 	void startDancing(const string anim, boolean changeDance = false);
 	void startPlayingMusic(const string anim, boolean changeDance = false);
-	
+
 	void startWatch(unsigned long entid);
 	void startListen(unsigned long entid);
-	
+
 	void stopWatch(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true);
 	void stopListen(unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true);
-	
+
 	boolean isPlayingMusic();
 	boolean isDancing();
-	
+
 	void stopDancing();
 	void stopPlayingMusic();
-	
+
 	void addListener(CreatureObject creature);
 	void addWatcher(CreatureObject creature);
-	
+
 	void removeListener(CreatureObject creature);
 	void removeWatcher(CreatureObject creature);
-	
+
 	void doFlourish(const string modifier);
 	/*void doHealShockWounds();
 	void doHealMindWounds();*/
 	void doPerformanceAction();
-	
-	void doEntertainerPatronEffects(boolean healShock = false, boolean healWounds = false, boolean addBuff = false);	
+
+	void doEntertainerPatronEffects(boolean healShock = false, boolean healWounds = false, boolean addBuff = false);
 	void addEntertainerFlourishBuff();
 
 	void addEntertainerBuffDuration(int performanceType, float duration);
 	void setEntertainerBuffDuration(int performanceType, float duration);
 	float getEntertainerBuffDuration(int performanceType);
-	
+
 	void setEntertainerBuffStrength(int performanceType, float strength);
 	float getEntertainerBuffStrength(int performanceType);
-	
+
 	void activateRecovery();
-	
+
 	// Skill methods
 	int getCreatureSkillsSize();
 	string getSkill(int idx);
 	boolean hasSkill(unsigned int skillCRC);
-	
+
 	// mount methods
 	void mountCreature(MountCreature mnt, boolean lockMount = true);
 	void dismount(boolean lockMount = true, boolean ignoreCooldown = true);
-	
+
 	//tip methods
 	void addCashCredits(unsigned int credits);
 	void addBankCredits(unsigned int credits);
@@ -398,18 +398,18 @@ interface CreatureObject implements SceneObject {
 	void updateBankCredits(unsigned int credits);
 	void subtractCashCredits(unsigned int credits);
 	void subtractBankCredits(unsigned int credits);
-	
+
 	void setCashCredits(int credits);
 	void setBankCredits(int credits);
-	
+
 	// Buff method
 	void addBuff(int buffCRC, float duration);
 	void applyBuff(BuffObject buff);
-	
+
 	void removeBuff(const unsigned int buffCRC, boolean remove = true);
-	
+
 	boolean hasSpice();
-	
+
 	boolean verifyCashCredits(unsigned int creditsToRemove);
 	boolean verifyBankCredits(unsigned int creditsToRemove);
 
@@ -417,54 +417,54 @@ interface CreatureObject implements SceneObject {
 	boolean isOnFullHealth();
 	boolean hasStates();
 	boolean hasState(unsigned long state);
-	
+
 	boolean hasWounds();
 	boolean hasShockWounds();
 
 	boolean isAttackable();
 	boolean isAttackableBy(CreatureObject attacker);
-	
+
 	boolean isListening();
 	boolean isWatching();
 
 	unicode getCharacterName();
-	
+
 	string getStfName();
 	string getSpeciesName();
 	string getRaceName();
 	string getGender();
-	
+
 	string getTerrainName();
 
 	void getCharacterAppearance(string appearance);
 	void getHairAppearance(string appearance);
-	
+
 	boolean isOvert();
-	
+
 	unsigned long getStateBitmask();
-	
+
 	unsigned int getCreatureBitmask();
-	
+
 	unsigned char getPosture();
-	
+
 	unsigned int getFaction();
 	boolean isRebel();
 	boolean isNeutral();
 	boolean isImperial();
-	
+
 	unsigned int getPvpStatusBitmask();
-	
+
 	unsigned char getFactionRank();
-	
+
 	unsigned int getBankCredits();
 	unsigned int getCashCredits();
-	
+
 	unsigned int getWoundsUpdateCounter();
 	unsigned int getNewWoundsUpdateCounter(int upd);
-	
+
 	void updateHAMBars();
 	void updateBaseStats();
-	
+
 	unsigned int getBaseHealth();
 	unsigned int getBaseStrength();
 	unsigned int getBaseConstitution();
@@ -494,10 +494,10 @@ interface CreatureObject implements SceneObject {
 	unsigned int getMindMax();
 	unsigned int getFocusMax();
 	unsigned int getWillpowerMax();
-	
+
 	unsigned int getArmor();
 	float getArmorResist(int resistType);
-	
+
 	unsigned int getHealthWounds();
 	unsigned int getStrengthWounds();
 	unsigned int getConstitutionWounds();
@@ -509,7 +509,7 @@ interface CreatureObject implements SceneObject {
 	unsigned int getWillpowerWounds();
 
 	unsigned int getShockWounds();
-	
+
 	unsigned int getHAMUpdateCounter();
 	unsigned int getNewHAMUpdateCounter(int cnt);
 	unsigned int getHAMMaxUpdateCounter();
@@ -518,58 +518,58 @@ interface CreatureObject implements SceneObject {
 	unsigned int getNewHAMBaseUpdateCounter(int cnt);
 	unsigned int getHAMEncumbUpdateCounter();
 	unsigned int getNewHAMEncumbUpdateCounter(int cnt);
-	
+
 	unsigned int getHealthEncumbrance();
 	unsigned int getActionEncumbrance();
 	unsigned int getMindEncumbrance();
-	
+
 	unsigned long getTargetID();
-	
+
 	SceneObject getTarget();
-	
+
 	unsigned long getWeaponID();
-	
+
 	unsigned long getGroupID();
 	unsigned long getGuildID();
 	Guild getGuild();
 
 	unsigned float getSpeed();
 	unsigned float getAcceleration();
-	
+
 	unsigned long getDefenderID();
 	unsigned int getDefenderUpdateCounter();
 	unsigned int getNewDefenderUpdateCounter(int cnt);
-	
+
 
 	string getPerformanceAnimation();
 	unsigned int getPerformanceCounter();
-	
+
 	unsigned int getInstrumentID();
-	
+
 	string getPerformanceName();
-	
+
 	string getMood();
 	unsigned char getMoodID();
-	
+
 	unsigned long getGroupInviterID();
 	unsigned long getGroupInviteCounter();
 	unsigned long getNewGroupInviteCounter();
 
 	unsigned long getWatchID();
 	unsigned long getListenID();
-	
+
 	boolean isInBuilding();
 	int getBuildingType();
 	SceneObject getBuilding();
 
 	string getGuildName();
-	
+
 	int getWeaponSpeedModifier();
-	
+
 	unsigned int getSkillBoxesUpdateCounter();
 	unsigned int getSkillModsCounter();
 	unsigned int getNewSkillModsCounter(int cnt);
-	
+
 	string getHideType();
 	string getBoneType();
 	string getMeatType();
@@ -579,20 +579,20 @@ interface CreatureObject implements SceneObject {
 	int getMeatMax();
 	int getMilk();
 	boolean hasOrganics();
-	
+
 	int getXP();
-	
-	int isHealer();	
-	int isPack();	
-	int isHerd();	
-	int isStalker();	
-	int isKiller();	
-	int isAggressive();	
-	
-	string getBehaviorScript();	
-		
+
+	int isHealer();
+	int isPack();
+	int isHerd();
+	int isStalker();
+	int isKiller();
+	int isAggressive();
+
+	string getBehaviorScript();
+
 	string getCreatureFaction();
-	
+
 	string getCreatureWeapon();
 	string getCreatureWeaponName();
 	string getCreatureWeaponTemp();
@@ -602,12 +602,12 @@ interface CreatureObject implements SceneObject {
 	int getCreatureWeaponMaxDamage();
 	float getCreatureWeaponAttackSpeed();
 	string getCreatureWeaponDamageType();
-	string getCreatureWeaponArmorPiercing();	
-	
+	string getCreatureWeaponArmorPiercing();
+
 	float getInternalNPCDamageModifier();
-	
+
 	float getTame();
-	
+
 	string getLootGroup();
 
 	// setters
@@ -620,7 +620,7 @@ interface CreatureObject implements SceneObject {
 	void setBaseMind(unsigned int mind);
 	void setBaseFocus(unsigned int focus);
 	void setBaseWillpower(unsigned int willpower);
-	
+
 	void setHealth(unsigned int health);
 	void setStrength(unsigned int strength);
 	void setConstitution(unsigned int constituition);
@@ -656,7 +656,7 @@ interface CreatureObject implements SceneObject {
 	void setShockWounds(unsigned int wounds);
 
 	void setWoundsUpdateCounter(unsigned int count);
-	
+
 	void changeHealthMax(int health);
 	void changeStrengthMax(int strength);
 	void changeConstitutionMax(int constituition);
@@ -666,7 +666,7 @@ interface CreatureObject implements SceneObject {
 	void changeMindMax(int mind);
 	void changeFocusMax(int focus);
 	void changeWillpowerMax(int willpower);
-	
+
 	void changeHealth(int health);
 	void changeStrength(int strength);
 	void changeConstitution(int constituition);
@@ -691,119 +691,122 @@ interface CreatureObject implements SceneObject {
 	void setLightSaber(float lig);
 
 	void changeConditionDamage(int amount);
-	
+
 	void setPosture(unsigned char state, boolean overrideDizzy = false, boolean objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 
 	void setPvpStatusBitmask(unsigned int mask);
-	
+
 	void setFactionRank(unsigned char rank, boolean updateClient = true);
 
 	void setDizziedState();
 	void setStunnedState();
 	void setBlindedState();
 	void setIntimidatedState();
-	
+
 	void setPoisonedState(int str, int type, int duration);
 	void setBleedingState(int str, int type, int duration);
 	void setDiseasedState(int str, int type, int duration);
 	void setOnFireState(int str, int type, int duration);
-	
+
+	void setCreatureBitmask(unsigned int bitmask);
+
 	boolean setNextAttackDelay(int del);
-	
+
 	void setCharacterName(const string name);
 	void setCharacterName(const unicode name);
-	
+
 	void setTerrainName(const string name);
 
 	void setCharacterAppearance(string cust);
 	void setAppearanceAttribute(unsigned char type, unsigned char value);
 	void setAppearanceAttribute(string type, unsigned char value);
 	void updateCharacterAppearance();
-	
+
 	void setHairAppearance(string cust);
 	void setHairAppearanceAttribute(unsigned char type, unsigned char value);
 	void setHairAppearanceAttribute(string type, unsigned char value);
-	
+
 	void setRaceName(const string name);
 	void setSpeciesName(const string name);
+	void setStfName(const string name);
 	void setGender(const string name);
-	
+
 	void setFaction(unsigned int fac);
-	
+
 	void setHeight(float h);
-	
+
 	void setMood(unsigned char mdid);
-	
+
 	void setMood(const string m);
-	
+
 	void setGroup(GroupObject Group);
-	
+
 	void setMount(MountCreature mount);
-	
+
 	void explode(int level = 1, boolean destroy = true);
-	
+
 	BuffObject getBuffObject(const unsigned int buffCRC);
-	
+
 	boolean hasBuff(const unsigned int buffCRC);
-	
+
 	/*
 	 Clean up later
 	*/
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();
-	
+
 	void deactivateInjuryTreatment();
 	void activateInjuryTreatment();
-	
+
 	void deactivateStateTreatment();
 	void activateStateTreatment();
-	
+
 	void deactivateConditionTreatment();
 	void activateConditionTreatment();
-	
+
 	boolean canTreatWounds();
 	boolean canTreatInjuries();
 	boolean canTreatStates();
 	boolean canTreatConditions();
-	
+
 	int getMedicalFacilityRating();
-	
+
 	void setBoneType(const string bone);
-	
+
 	void setBoneMax(int bonemax);
-	
+
 	void setHideType(const string hide);
 	void setHideMax(int hidemax);
-	
+
 	void setMeatType(const string meat);
 	void setMeatMax(int meatmax);
-	
+
 	void setMilk(int milkamt);
-	
+
 	void setXP(int xp);
-	
+
 	void setHealer(int heale);
-	
+
 	void setPack(int pack);
-	
+
 	void setHerd(int herd);
-	
+
 	void setStalker(int stalker);
-	
+
 	void setKiller(int killer);
-	
+
 	void setAggressive(int aggressive);
-	
+
 	void setBehaviorScript(const string behaviorScript);
-	
+
 	void setLootGroup(const string lootgroup);
-	
+
 	void setTame(float tme);
-	
+
 	void setCreatureFaction(const string cfac);
-	
+
 	void setInternalNPCDamageModifier(float indm);
-	
+
 	// NPC weapons
 	void setCreatureWeapon(const string wpon);
 	void setCreatureWeaponName(const string weaponname);
@@ -814,8 +817,8 @@ interface CreatureObject implements SceneObject {
 	void setCreatureWeaponMaxDamage(int weaponmaxdam);
 	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
 	void setCreatureWeaponDamageType(const string weapondamtype);
-	void setCreatureWeaponArmorPiercing(const string weaponarmorpiercing);	
-	
+	void setCreatureWeaponArmorPiercing(const string weaponarmorpiercing);
+
 	void say(unicode message, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void say(const string file, const string str, StfParameter param, unsigned int moodid = 0, unsigned int mood2 = 0);
