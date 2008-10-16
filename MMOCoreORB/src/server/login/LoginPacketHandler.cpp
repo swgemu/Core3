@@ -162,7 +162,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 
 	uint32 ServerId = pack->parseInt();
 	pack->shiftOffset(4);
-    uint64 charId = pack->parseInt();
+    uint32 charId = pack->parseInt();
     int dbDelete;
     string firstName;
 
