@@ -188,12 +188,11 @@ void MissionManagerImplementation::setupHardcodeMissions() {
 	uint32 typeCrc = 0xE5C27EC6; //0xC6, 0x7E, 0xC2, 0xE5, //crc("deliver");
 	
 	//Deliver Item:
-	//TangibleObject* delItem = new TangibleObject();
-	//set stats etc
+	TangibleObject* dvli = new TangibleObject(getNextMissionID(), 0x9BA06548, unicode("Secret Box"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
 	
 	poolMission(dbKey, tmask, typeStr, descKey, titleKey, diffLv, destX, destY, destPlanetCrc,
 			creatorName, rewardAmount, targetX, targetY, targetPlanetCrc, depictedObjCrc, 
-			descriptionStf, titleStf, typeCrc, NULL, true);
+			descriptionStf, titleStf, typeCrc, dvli, true);
 	
 	//test 2nd mission:
 	dbKey = "testM28";
@@ -353,16 +352,15 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 		
 		//Create Mission Waypoint here
 		
-		/*if(miso->getTypeStr() == "mission_deliver") {
-			//Give "miso->getDeliverItem()" to player
+		//Give deliver item to player:
+		if(miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
 			TangibleObject* itemTemp = miso->getDeliverItem();
-			TangibleObject* playerItem = new TangibleObject(player->getNewItemID());
-			<-Transfer stats etc->
+			TangibleObject* playerItem = new TangibleObject(player->getNewItemID(), itemTemp->getObjectCRC(), itemTemp->getName(), itemTemp->getTemplateName());
 
+			playerItem->setMisoAsocKey(miso->getDBKey());
 			player->addInventoryItem(playerItem);
-
 			playerItem->sendTo(player);
-		}*/
+		}
 	
 		unlock(doLock);
 	} catch (...) {
@@ -534,10 +532,12 @@ void MissionManagerImplementation::removeMisoFromPool(MissionObject* miso, bool 
 }
 
 void MissionManagerImplementation::removeMisoFromPlayer(Player* player, string& tKey, bool doLock) {
+	MissionObject* miso = NULL;
+	
 	try {
 		lock(doLock);
 	
-		MissionObject* miso = misoMap->get(tKey);
+		miso = misoMap->get(tKey);
 		
 		if(miso != NULL) {
 			miso->sendDestroyTo(player);
@@ -551,13 +551,29 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, string& 
 
 		unlock(doLock);
 	}
+	
+	if(miso == NULL)
+		return;
+	
+	if(miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
+		TangibleObject* tmpi = (TangibleObject*)player->getMissionItem(miso->getDBKey());
+		if(tmpi == NULL) {
+			return;
+		}
+
+		player->removeInventoryItem(tmpi->getObjectID());
+		tmpi->sendDestroyTo(player);
+		tmpi->finalize();
+	}
 }
 
 void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& oid, bool doLock) {
+	MissionObject* miso = NULL;
+	
 	try {
 		lock(doLock);
 	
-		MissionObject* miso = misoMap->get(oid);
+		miso = misoMap->get(oid);
 		
 		if(miso != NULL) {
 			miso->sendDestroyTo(player);
@@ -571,9 +587,34 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& 
 
 		unlock(doLock);
 	}
+	
+	if(miso == NULL)
+		return;
+	
+	if(miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
+		TangibleObject* tmpi = (TangibleObject*)player->getMissionItem(miso->getDBKey());
+		if(tmpi == NULL) {
+			return;
+		}
+
+		player->removeInventoryItem(tmpi->getObjectID());
+		tmpi->sendDestroyTo(player);
+		tmpi->finalize();
+	}
 }
 
 void MissionManagerImplementation::removeMisoFromPlayer(MissionObject* miso, Player* player) {
+	if(miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
+		TangibleObject* tmpi = (TangibleObject*)player->getMissionItem(miso->getDBKey());
+		if(tmpi == NULL) {
+			return;
+		}
+
+		player->removeInventoryItem(tmpi->getObjectID());
+		tmpi->sendDestroyTo(player);
+		tmpi->finalize();
+	}
+	
 	miso->sendDestroyTo(player);
 }
 
@@ -584,6 +625,22 @@ void MissionManagerImplementation::removeMissions() {
 	}
 	
 	misoMap->removeAll();
+}
+
+uint32 MissionManagerImplementation::getMissionItemCrc(string& tKey, bool doLock) {
+	uint32 crc = 0;
+	
+	try {
+		lock(doLock);
+		MissionObject* miso = misoMap->get(tKey);
+		TangibleObject* ttano = miso->getDeliverItem();
+		crc = ttano->getObjectCRC();
+		unlock(doLock);
+	} catch (...) {
+		error("unreported Exception caught on removeMisoFromPlayer() (objid)"); 
+		unlock(doLock);
+	}
+	return crc;
 }
 
 //Script Functions:

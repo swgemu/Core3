@@ -665,12 +665,25 @@ void TangibleObject::addAttributes(AttributeListMessage* alm) {
 		((TangibleObjectImplementation*) _impl)->addAttributes(alm);
 }
 
-void TangibleObject::setName(const string& n) {
+string& TangibleObject::getMisoAsocKey() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 56);
+
+		method.executeWithAsciiReturn(_return_getMisoAsocKey);
+		return _return_getMisoAsocKey;
+	} else
+		return ((TangibleObjectImplementation*) _impl)->getMisoAsocKey();
+}
+
+void TangibleObject::setName(const string& n) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 57);
 		method.addAsciiParameter(n);
 
 		method.executeWithVoidReturn();
@@ -683,7 +696,7 @@ void TangibleObject::setName(const unicode& n) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 58);
 		method.addUnicodeParameter(n);
 
 		method.executeWithVoidReturn();
@@ -696,7 +709,7 @@ void TangibleObject::setTemplateName(const string& tempName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 59);
 		method.addAsciiParameter(tempName);
 
 		method.executeWithVoidReturn();
@@ -709,7 +722,7 @@ void TangibleObject::setTemplateTypeName(const string& tempTypeName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 60);
 		method.addAsciiParameter(tempTypeName);
 
 		method.executeWithVoidReturn();
@@ -722,7 +735,7 @@ void TangibleObject::setObjectSubType(const int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 61);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -735,7 +748,7 @@ void TangibleObject::setPersistent(bool pers) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 62);
 		method.addBooleanParameter(pers);
 
 		method.executeWithVoidReturn();
@@ -748,7 +761,7 @@ void TangibleObject::setUpdated(bool upd) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 63);
 		method.addBooleanParameter(upd);
 
 		method.executeWithVoidReturn();
@@ -761,7 +774,7 @@ void TangibleObject::setConditionDamage(int damage) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 64);
 		method.addSignedIntParameter(damage);
 
 		method.executeWithVoidReturn();
@@ -774,7 +787,7 @@ void TangibleObject::setCustomizationString(string& cust) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 65);
 		method.addAsciiParameter(cust);
 
 		method.executeWithVoidReturn();
@@ -787,7 +800,7 @@ void TangibleObject::setCustomizationVariable(const string& type, unsigned int v
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 66);
 		method.addAsciiParameter(type);
 		method.addUnsignedIntParameter(value);
 
@@ -801,7 +814,7 @@ void TangibleObject::setCustomizationVariable(unsigned char type, unsigned int v
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 67);
 		method.addUnsignedCharParameter(type);
 		method.addUnsignedIntParameter(value);
 
@@ -815,12 +828,25 @@ void TangibleObject::setObjectCount(const int count) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 68);
 		method.addSignedIntParameter(count);
 
 		method.executeWithVoidReturn();
 	} else
 		((TangibleObjectImplementation*) _impl)->setObjectCount(count);
+}
+
+void TangibleObject::setMisoAsocKey(const string& tma) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 69);
+		method.addAsciiParameter(tma);
+
+		method.executeWithVoidReturn();
+	} else
+		((TangibleObjectImplementation*) _impl)->setMisoAsocKey(tma);
 }
 
 /*
@@ -985,40 +1011,46 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		addAttributes((AttributeListMessage*) inv->getObjectParameter());
 		break;
 	case 56:
-		setName(inv->getAsciiParameter(_param0_setName__string_));
+		resp->insertAscii(getMisoAsocKey());
 		break;
 	case 57:
-		setName(inv->getUnicodeParameter(_param0_setName__unicode_));
+		setName(inv->getAsciiParameter(_param0_setName__string_));
 		break;
 	case 58:
-		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__string_));
+		setName(inv->getUnicodeParameter(_param0_setName__unicode_));
 		break;
 	case 59:
-		setTemplateTypeName(inv->getAsciiParameter(_param0_setTemplateTypeName__string_));
+		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__string_));
 		break;
 	case 60:
-		setObjectSubType(inv->getSignedIntParameter());
+		setTemplateTypeName(inv->getAsciiParameter(_param0_setTemplateTypeName__string_));
 		break;
 	case 61:
-		setPersistent(inv->getBooleanParameter());
+		setObjectSubType(inv->getSignedIntParameter());
 		break;
 	case 62:
-		setUpdated(inv->getBooleanParameter());
+		setPersistent(inv->getBooleanParameter());
 		break;
 	case 63:
-		setConditionDamage(inv->getSignedIntParameter());
+		setUpdated(inv->getBooleanParameter());
 		break;
 	case 64:
-		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__string_));
+		setConditionDamage(inv->getSignedIntParameter());
 		break;
 	case 65:
-		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__string_int_), inv->getUnsignedIntParameter());
+		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__string_));
 		break;
 	case 66:
-		setCustomizationVariable(inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
+		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__string_int_), inv->getUnsignedIntParameter());
 		break;
 	case 67:
+		setCustomizationVariable(inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 68:
 		setObjectCount(inv->getSignedIntParameter());
+		break;
+	case 69:
+		setMisoAsocKey(inv->getAsciiParameter(_param0_setMisoAsocKey__string_));
 		break;
 	default:
 		return NULL;
@@ -1227,6 +1259,10 @@ void TangibleObjectAdapter::addAttributes(AttributeListMessage* alm) {
 	return ((TangibleObjectImplementation*) impl)->addAttributes(alm);
 }
 
+string& TangibleObjectAdapter::getMisoAsocKey() {
+	return ((TangibleObjectImplementation*) impl)->getMisoAsocKey();
+}
+
 void TangibleObjectAdapter::setName(const string& n) {
 	return ((TangibleObjectImplementation*) impl)->setName(n);
 }
@@ -1273,6 +1309,10 @@ void TangibleObjectAdapter::setCustomizationVariable(unsigned char type, unsigne
 
 void TangibleObjectAdapter::setObjectCount(const int count) {
 	return ((TangibleObjectImplementation*) impl)->setObjectCount(count);
+}
+
+void TangibleObjectAdapter::setMisoAsocKey(const string& tma) {
+	return ((TangibleObjectImplementation*) impl)->setMisoAsocKey(tma);
 }
 
 /*

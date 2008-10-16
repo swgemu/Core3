@@ -25,12 +25,25 @@ Inventory::Inventory(DummyConstructorParameter* param) : Container(param) {
 Inventory::~Inventory() {
 }
 
-int Inventory::getUnequippedItemCount() {
+TangibleObject* Inventory::getMissionItem(string& misKey) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addAsciiParameter(misKey);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((InventoryImplementation*) _impl)->getMissionItem(misKey);
+}
+
+int Inventory::getUnequippedItemCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -42,7 +55,7 @@ bool Inventory::isFull() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -61,9 +74,12 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertSignedInt(getUnequippedItemCount());
+		resp->insertLong(getMissionItem(inv->getAsciiParameter(_param0_getMissionItem__string_))->_getObjectID());
 		break;
 	case 7:
+		resp->insertSignedInt(getUnequippedItemCount());
+		break;
+	case 8:
 		resp->insertBoolean(isFull());
 		break;
 	default:
@@ -71,6 +87,10 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
+}
+
+TangibleObject* InventoryAdapter::getMissionItem(string& misKey) {
+	return ((InventoryImplementation*) impl)->getMissionItem(misKey);
 }
 
 int InventoryAdapter::getUnequippedItemCount() {

@@ -49,12 +49,15 @@ which carries forward this exception.
 
 class LoginClientToken : public BaseMessage {
 public:
-	LoginClientToken(string& username, uint32 accountid, uint32 stationid) : BaseMessage(100) {
+	LoginClientToken(string& username, uint32 sessionKey, uint32 accountid, uint32 stationid) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0xAAB296C6);
 		
-	    insertInt(0x00000038 + 4);
+	    /* BaseMessage(100)
+	     
+	    insertInt(0x00000038 + 4); //size
 
+	    //session key:
 	    insertInt(0x00000020);
 	    insertInt(0x00000015);
 	    insertInt(0xDE93D60E);
@@ -69,8 +72,13 @@ public:
 	    insertInt(0xFAA172A1);
 	    insertInt(0x9FFF968F);
 	    insertInt(0x295A62A5);
+	    insertInt(accountid); //Account ID*/
+		
+		insertInt(0x00000008); //size
+		
+		insertInt(sessionKey);
+		insertInt(accountid); //Account ID
 	    
-	    insertInt(accountid); //Account ID
 	    insertInt(stationid); //Station ID
 	    insertAscii(username); //Station Account Name
 

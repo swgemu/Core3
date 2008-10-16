@@ -98,6 +98,8 @@ protected:
 	uint16 playerUseMask;
 
 	ItemAttributes* itemAttributes;
+	
+	string misoAsocKey; //Mission association key
 
 	string craftersName;
 	string craftedSerial;
@@ -485,6 +487,14 @@ public:
 
 	inline int getObjectSubType() {
 		return objectSubType;
+	}
+	
+	inline string& getMisoAsocKey() {
+		return misoAsocKey;
+	}
+	
+	inline void setMisoAsocKey(const string& tma) {
+		misoAsocKey = tma;
 	}
 
 	inline bool isWeapon() {

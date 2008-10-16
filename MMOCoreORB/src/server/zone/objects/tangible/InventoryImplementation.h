@@ -70,6 +70,30 @@ public:
 	virtual ~InventoryImplementation() {
 		setContainer(NULL);
 	}
+	
+	TangibleObject* getMissionItem(string& misKey) {
+		TangibleObject* retTano = NULL;
+		TangibleObject* tano = NULL;
+		
+		for (int i = 0; i < items.size(); ++i) {
+			SceneObject* obj = items.get(i);
+			if (obj->isTangible()) {
+				tano = (TangibleObject*)obj;
+				
+				if((tano->getMisoAsocKey() == misKey) && (!tano->isEquipped())) {
+					break;
+				}
+				
+				tano = NULL;
+			}
+		}
+		
+		if(tano != NULL) {
+			retTano = tano;
+		}
+		
+		return retTano;
+	}
 
 	int getUnequippedItemCount() {
 		int count = 0;
