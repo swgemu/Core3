@@ -202,23 +202,27 @@ void PlayerObjectImplementation::removeExperience(const string& xpType, int xp, 
 void PlayerObjectImplementation::loadExperience(const string& xpStr) {
 	StringTokenizer xptokens(xpStr.c_str());
 	xptokens.setDelimeter(":");
-	
+
 	while (xptokens.hasMoreTokens()) {
 		string xptype, xpvalue;
 		int xpamount;
-		
+
 		xptokens.getStringToken(xptype);
+
+		if (!xptokens.hasMoreTokens()) // TA: it was causing exceptions here
+			return;
+
 		xpamount = xptokens.getIntToken();
 
 		addExperience(xptype, xpamount, false);
 	}
-	
+
 }
 
 string& PlayerObjectImplementation::saveExperience() {
 	stringstream xpstr;
 	experienceList.resetIterator();
-	
+
 	while (experienceList.hasNext()) {
 		string key;
 		int value;
@@ -227,7 +231,7 @@ string& PlayerObjectImplementation::saveExperience() {
 	}
 
 	experienceData = xpstr.str();
-	
+
 	return experienceData;
 }
 
