@@ -27,15 +27,8 @@ public:
 	FactoryDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
 	~FactoryDeedImplementation();
 
-	void init();
-
-	//int useObject(Player* player);
-
-	//inline FactoryDeed* deploy() {
-	//	return (FactoryDeed*) SceneObjectImplementation::deploy();
-	//}
 private:
-
+	void init();
 };
 
 #endif /*FACTORYDEEDIMPLEMENTATION_H_*/

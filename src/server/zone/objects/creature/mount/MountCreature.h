@@ -49,6 +49,8 @@ public:
 
 	bool isInWorld();
 
+	unsigned int getItnocrc();
+
 protected:
 	MountCreature(DummyConstructorParameter* param);
 
@@ -92,6 +94,8 @@ public:
 	void setInstantMount(bool val);
 
 	bool isInWorld();
+
+	unsigned int getItnocrc();
 
 };
 

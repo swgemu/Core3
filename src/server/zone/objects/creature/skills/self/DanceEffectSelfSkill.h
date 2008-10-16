@@ -72,7 +72,7 @@ public:
 			creature->sendSystemMessage("performance", "effect_perform_smoke_bomb");
 	}
 	
-	float getSpeed() {
+	float calculateSpeed(CreatureObject* creature) {
 		return 1.0;
 	}
 	

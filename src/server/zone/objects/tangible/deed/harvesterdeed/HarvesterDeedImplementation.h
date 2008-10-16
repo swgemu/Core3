@@ -25,22 +25,16 @@ public:
 	static const int SMALL = 1;
 	static const int MEDIUM = 2;
 	static const int LARGE = 3;
-public:
 
 	HarvesterDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn);
 	HarvesterDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
 	~HarvesterDeedImplementation();
 
-	void init();
-
 	void getType();
-
 	void getSize();
 
-	//inline HarvesterDeed* deploy() {
-	//	return (HarvesterDeed*) SceneObjectImplementation::deploy();
-	//}
 private:
+	void init();
 
 };
 

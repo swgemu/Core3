@@ -58,11 +58,15 @@ class StatusServer: public Thread, public Logger {
 
 	ConfigManager* configManager;
 
+	unsigned int statusInterval;
+
 	time_t timestamp;
 	bool lastStatus;
 
 	Attachment* obj; //zone test object
 	uint64 oid;
+
+	bool doRun;
 
 public:
 
@@ -77,6 +81,10 @@ public:
 	Packet* getStatusXMLPacket();
 
 	bool testZone();
+
+	void stop() {
+		doRun = false;
+	}
 };
 
 #endif /* STATUSSERVER_H_ */

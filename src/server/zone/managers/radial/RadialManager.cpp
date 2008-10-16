@@ -177,6 +177,8 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 8: // TRADE
 		handleTrade(player, obj);
 		break;
+	case 13: // DROP
+		break;
 	case 14: // DESTROY
 		break;
 	case 20: // ITEM_USE

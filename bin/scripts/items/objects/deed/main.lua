@@ -45,7 +45,6 @@ RunItemLUAFile("objects/deed/harvesters/oreS2HarvesterDeed.lua");
 RunItemLUAFile("objects/deed/generators/fusionGeneratorDeed.lua");
 RunItemLUAFile("objects/deed/factories/structureFactoryDeed.lua");
 
-
 -- Vehicles
 RunItemLUAFile("objects/deed/vehicles/jetpackVehicleDeed.lua");
 RunItemLUAFile("objects/deed/vehicles/landspeederAV21VehicleDeed.lua");

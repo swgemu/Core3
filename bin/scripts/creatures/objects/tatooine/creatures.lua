@@ -42,6 +42,7 @@
 
 
  RunCreatureFile("objects/tatooine/creatures/bantha.lua")
+ RunCreatureFile("objects/tatooine/creatures/tuskenBantha.lua")
  RunCreatureFile("objects/tatooine/creatures/bocatt.lua")
  RunCreatureFile("objects/tatooine/creatures/bocattDiseased.lua")
  RunCreatureFile("objects/tatooine/creatures/bullBantha.lua")
@@ -72,3 +73,6 @@
   RunCreatureFile("objects/tatooine/creatures/malignantSquill.lua")
   RunCreatureFile("objects/tatooine/creatures/mountainSquillGuardian.lua")
   RunCreatureFile("objects/tatooine/creatures/femaleMountainSquill.lua")
+-- Sennex Cave
+  RunCreatureFile("objects/tatooine/creatures/caveBeetle.lua")
+  RunCreatureFile("objects/tatooine/creatures/duneBeetle.lua")

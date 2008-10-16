@@ -242,6 +242,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	// misc
 	pvpStatusBitmask = 0x10;
 	faction = 0;
+	factionRank = 0;
 
 	// combat
 	fireDotType = 0;
@@ -458,18 +459,19 @@ void CreatureObjectImplementation::sendItemsTo(Player* player) {
 		hairObj->sendTo(player);
 }
 
+//NOTE: This function is about to get completely revamped
 void CreatureObjectImplementation::sendFactionStatusTo(Player* player, bool doTwoWay) {
-	if (pvpStatusBitmask & OVERT_FLAG) {
+	if (this->isRebel() || this->isImperial()) {
 		uint32 pvpBitmask = pvpStatusBitmask;
 		uint32 playerPvp = player->getPvpStatusBitmask();
 
 		if (player->isOvert() && (player->getFaction() != faction)) {
 			if (doTwoWay && isPlayer()) {
-				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp + ATTACKABLE_FLAG + AGGRESSIVE_FLAG);
+				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp + ATTACKABLE_FLAG + AGGRESSIVE_FLAG + ENEMY_FLAG);
 				((PlayerImplementation*) this)->sendMessage(pvpstat);
 			}
 
-			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpBitmask + ATTACKABLE_FLAG + AGGRESSIVE_FLAG);
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpBitmask + ATTACKABLE_FLAG + AGGRESSIVE_FLAG + ENEMY_FLAG);
 			player->sendMessage(pvpstat2);
 		} else {
 			BaseMessage* pvpstat3 = new UpdatePVPStatusMessage(_this, pvpBitmask);
@@ -2395,8 +2397,18 @@ void CreatureObjectImplementation::calculateHAMregen() {
 }
 
 void CreatureObjectImplementation::activateBurstRun() {
-	if (isMounted())
+	//TODO: Burst run had HAM costs - but i can't find any documentation HOW MUCH...
+
+	if (isMounted() ||
+			isDizzied() ||
+			isKnockedDown() ||
+			isMeditating() ||
+			postureState != UPRIGHT_POSTURE	) {
+
+		sendSystemMessage("@combat_effects:burst_run_no");
+
 		return;
+	}
 
 	if (!burstRunCooldown.isPast() && isPlayer()) {
 		int left = -(burstRunCooldown.miliDifference() / 1000);
@@ -2414,9 +2426,6 @@ void CreatureObjectImplementation::activateBurstRun() {
 
 		return;
 	}
-
-	if (isDizzied() || postureState == PRONE_POSTURE)
-		return;
 
 	speed = 8.0f;
 	acceleration = 0.922938f;
@@ -2567,6 +2576,9 @@ void CreatureObjectImplementation::equipItem(TangibleObject* item) {
 void CreatureObjectImplementation::unequipItem(TangibleObject* item) {
 	if (!item->isEquipped())
 		return;
+
+     if (item->isInstrument() && isPlayingMusic())
+        stopPlayingMusic();
 
 	item->setEquipped(false);
 	item->setContainer(inventory, 0xFFFFFFFF);
@@ -3312,13 +3324,15 @@ void CreatureObjectImplementation::startPlayingMusic(const string& modifier, boo
 	}
 }
 void CreatureObjectImplementation::stopDancing() {
+	if (!isDancing())
+        return;
 	sendSystemMessage("performance", "dance_stop_self");
 
 	info("stopped dancing");
 
 	setDancing(false);
+	sendEntertainingUpdate(0x3F4D70A4, getPerformanceAnimation(), 0, 0);
 	setPerformanceName("");
-	sendEntertainingUpdate(0x3F4D70A4, "", 0, 0);
 
 	while (!watchers.isEmpty()) {
 		ManagedReference<CreatureObject> creo = watchers.get(0);
@@ -3345,15 +3359,16 @@ void CreatureObjectImplementation::stopDancing() {
 }
 
 void CreatureObjectImplementation::stopPlayingMusic() {
+    if (!isPlayingMusic())
+        return;
 	sendSystemMessage("performance", "music_stop_self");
 
 	info("stopped playing music");
 
 	setPlayingMusic(false);
+	sendEntertainingUpdate(0x3F4D70A4, getPerformanceAnimation(), 0, 0);
 	setPerformanceName("");
 	setListenID(0);
-
-	sendEntertainingUpdate(0x3F4D70A4, "", 0, 0);
 
 	while (!listeners.isEmpty()) {
 		ManagedReference<CreatureObject> creo = listeners.get(0);
@@ -4171,7 +4186,13 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 
 	try {
 		if (lockMount)
-			mount->wlock(_this);
+			mnt->wlock(_this);
+
+		if (mount == NULL) {
+			if (lockMount)
+				mnt->unlock();
+			return;
+		}
 
 		mount->setState(MOUNTEDCREATURE_STATE);
 		mount->updateStates();
@@ -4181,10 +4202,10 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 		updateStates();
 
 		if (lockMount)
-			mount->unlock();
+			mnt->unlock();
 	} catch (...) {
 		if (lockMount)
-			mount->unlock();
+			mnt->unlock();
 	}
 }
 
@@ -4202,22 +4223,26 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 	UpdateContainmentMessage* msg = new UpdateContainmentMessage(objectID, 0, 0xFFFFFFFF);
 	broadcastMessage(msg);
 
+	MountCreature* mnt = mount;
+
 	try {
 		if (lockMount)
-			mount->wlock(_this);
+			mnt->wlock(_this);
 
-		mount->clearState(MOUNTEDCREATURE_STATE);
-		mount->updateStates();
+		if (mount != NULL) {
+			mount->clearState(MOUNTEDCREATURE_STATE);
+			mount->updateStates();
+		}
 
 		updateSpeed(5.376f, 1.549f);
 		clearState(RIDINGMOUNT_STATE);
 		updateStates();
 
 		if (lockMount)
-			mount->unlock();
+			mnt->unlock();
 	} catch (...) {
 		if (lockMount)
-			mount->unlock();
+			mnt->unlock();
 	}
 
 	parent = NULL;
@@ -4549,7 +4574,9 @@ CreatureObject* CreatureObjectImplementation::getLootOwner() {
 }
 
 void CreatureObjectImplementation::removeFromDamageMap(CreatureObject* target) {
-	damageMap.drop(target);
+	if (damageMap.drop(target)) {
+		target->release();
+	}
 }
 
 void CreatureObjectImplementation::addDamage(CreatureObject* creature, uint32 damage) {
@@ -4696,4 +4723,15 @@ int CreatureObjectImplementation::getMedicalFacilityRating() {
 		return 100;
 
 	return 65;
+}
+
+//This is a temp function.  I'm going to add a faction table in creature manager soon
+bool CreatureObjectImplementation::hatesFaction(uint faction) {
+	if (this->getFaction() == String::hashCode("imperial") && faction == String::hashCode("rebel"))
+		return true;
+
+	if (this->getFaction() == String::hashCode("rebel") && faction == String::hashCode("imperial"))
+		return true;
+
+	return false;
 }

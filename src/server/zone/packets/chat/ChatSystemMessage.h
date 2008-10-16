@@ -148,7 +148,6 @@ public:
 			insertByte(0);
 
 		insertInt(0);
-
 	}
 
 	ChatSystemMessage(const string& file, const string& str, string& var, int quantity

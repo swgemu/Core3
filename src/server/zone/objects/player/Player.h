@@ -11,6 +11,8 @@
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
 
+#include "../../packets/object/StfParameter.h"
+
 class ZoneClientSession;
 
 class Zone;
@@ -24,6 +26,8 @@ class Creature;
 class TangibleObject;
 
 class PlayerObject;
+
+class FactionPointList;
 
 class Weapon;
 
@@ -299,6 +303,8 @@ public:
 
 	void equipPlayerItem(TangibleObject* item);
 
+	void saveDatapad(Player* player);
+
 	void saveProfessions();
 
 	void loadProfessions();
@@ -337,6 +343,10 @@ public:
 
 	void removeXp(string& xpType, int xp, bool updateClient);
 
+	void loadXp(const string& xpStr);
+
+	string& saveXp();
+
 	void removeFromDuelList(Player* targetPlayer);
 
 	void addToDuelList(Player* targetPlayer);
@@ -369,6 +379,8 @@ public:
 
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
 
+	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
+
 	void setConversatingCreature(CreatureObject* conversator);
 
 	void setFirstName(const string& name);
@@ -394,6 +406,8 @@ public:
 	void changeFoodFilling(int fill, bool updateClient = true);
 
 	void changeDrinkFilling(int fill, bool updateClient = true);
+
+	bool isAttackableBy(CreatureObject* attacker);
 
 	int getFoodFilling();
 
@@ -430,8 +444,6 @@ public:
 	void setRaceID(unsigned char id);
 
 	void setStartingLocation(string& loc);
-
-	void setFactionRank(string& fac);
 
 	void setItemShift(unsigned int shift);
 
@@ -518,12 +530,6 @@ public:
 	ZoneClientSession* getClient();
 
 	GroupObject* getGroupObject();
-
-	string& getFactionRank();
-
-	unsigned int getRebelPoints();
-
-	unsigned int getImperialPoints();
 
 	int getPvpRating();
 
@@ -699,6 +705,22 @@ public:
 
 	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient = false);
 
+	int getFactionPoints(const string& faction);
+
+	void addFactionPoints(const string& faction, unsigned int points);
+
+	void subtractFactionPoints(const string& faction, unsigned int points);
+
+	int getFactionStatus();
+
+	void setFactionStatus(int status);
+
+	FactionPointList* getFactionList();
+
+	unsigned int getMaxFactionPoints(string& faction);
+
+	void delFactionPoints(Player* player, unsigned int amount);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -706,7 +728,6 @@ protected:
 
 	string _return_getCertification;
 	string _return_getConsentEntry;
-	string _return_getFactionRank;
 	string _return_getFirstName;
 	string _return_getFirstNameProper;
 	string _return_getHairObject;
@@ -717,6 +738,7 @@ protected:
 	string _return_getNextSkillBox;
 	string _return_getRaceFileName;
 	string _return_getStartingProfession;
+	string _return_saveXp;
 
 	unicode _return_getBiography;
 
@@ -969,6 +991,8 @@ public:
 
 	void equipPlayerItem(TangibleObject* item);
 
+	void saveDatapad(Player* player);
+
 	void saveProfessions();
 
 	void loadProfessions();
@@ -1007,6 +1031,10 @@ public:
 
 	void removeXp(string& xpType, int xp, bool updateClient);
 
+	void loadXp(const string& xpStr);
+
+	string& saveXp();
+
 	void removeFromDuelList(Player* targetPlayer);
 
 	void addToDuelList(Player* targetPlayer);
@@ -1039,6 +1067,8 @@ public:
 
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
 
+	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
+
 	void setConversatingCreature(CreatureObject* conversator);
 
 	void setFirstName(const string& name);
@@ -1064,6 +1094,8 @@ public:
 	void changeFoodFilling(int fill, bool updateClient);
 
 	void changeDrinkFilling(int fill, bool updateClient);
+
+	bool isAttackableBy(CreatureObject* attacker);
 
 	int getFoodFilling();
 
@@ -1100,8 +1132,6 @@ public:
 	void setRaceID(unsigned char id);
 
 	void setStartingLocation(string& loc);
-
-	void setFactionRank(string& fac);
 
 	void setItemShift(unsigned int shift);
 
@@ -1188,12 +1218,6 @@ public:
 	ZoneClientSession* getClient();
 
 	GroupObject* getGroupObject();
-
-	string& getFactionRank();
-
-	unsigned int getRebelPoints();
-
-	unsigned int getImperialPoints();
 
 	int getPvpRating();
 
@@ -1369,6 +1393,22 @@ public:
 
 	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient);
 
+	int getFactionPoints(const string& faction);
+
+	void addFactionPoints(const string& faction, unsigned int points);
+
+	void subtractFactionPoints(const string& faction, unsigned int points);
+
+	int getFactionStatus();
+
+	void setFactionStatus(int status);
+
+	FactionPointList* getFactionList();
+
+	unsigned int getMaxFactionPoints(string& faction);
+
+	void delFactionPoints(Player* player, unsigned int amount);
+
 protected:
 	string _param0_queueFlourish__string_long_int_;
 	string _param4_queueAction__Player_long_int_int_string_;
@@ -1382,10 +1422,13 @@ protected:
 	string _param2_queueHeal__TangibleObject_int_string_;
 	string _param0_addXp__string_int_bool_;
 	string _param0_removeXp__string_int_bool_;
+	string _param0_loadXp__string_;
 	string _param0_sendSystemMessage__string_;
 	unicode _param0_sendSystemMessage__unicode_;
 	string _param0_sendSystemMessage__string_string_long_;
 	string _param1_sendSystemMessage__string_string_long_;
+	string _param0_sendSystemMessage__string_string_StfParameter_;
+	string _param1_sendSystemMessage__string_string_StfParameter_;
 	string _param0_setFirstName__string_;
 	string _param0_setLastName__string_;
 	string _param0_setFirstNameProper__string_;
@@ -1395,7 +1438,6 @@ protected:
 	string _param0_setHairObject__string_;
 	string _param0_setRaceFileName__string_;
 	string _param0_setStartingLocation__string_;
-	string _param0_setFactionRank__string_;
 	string _param0_checkCertification__string_;
 	string _param0_addToCurMisoKeys__string_;
 	string _param0_isOnCurMisoKey__string_;
@@ -1418,6 +1460,10 @@ protected:
 	string _param0_setLastNpcConvStr__string_;
 	string _param0_setLastNpcConvMessStr__string_;
 	string _param0_setInputBoxReturnBuffer__string_;
+	string _param0_getFactionPoints__string_;
+	string _param0_addFactionPoints__string_int_;
+	string _param0_subtractFactionPoints__string_int_;
+	string _param0_getMaxFactionPoints__string_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

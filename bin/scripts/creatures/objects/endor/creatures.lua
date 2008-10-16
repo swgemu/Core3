@@ -49,5 +49,5 @@ RunCreatureFile("objects/endor/creatures/bordokMare.lua")
 RunCreatureFile("objects/endor/creatures/gurreck.lua")
 RunCreatureFile("objects/endor/creatures/lanternBird.lua")
 RunCreatureFile("objects/endor/creatures/swirlProng.lua")
-
+RunCreatureFile("objects/endor/creatures/mineRatDWB.lua")
 RunCreatureFile("objects/endor/creatures/gorax.lua")

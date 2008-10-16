@@ -330,7 +330,7 @@ public:
 		player->sendSystemMessage(msgExperience.str());
 	}
 
-	float getSpeed() {
+	float calculateSpeed(CreatureObject* creature) {
 		return speed;
 	}
 

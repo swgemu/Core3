@@ -141,6 +141,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->setBankCredits(creditsBank);
 
 	string bio = player->getBiography().c_str();
+	MySqlDatabase::escapeString(bio);
 	string info = "";
 
 	string appearance;
@@ -171,7 +172,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		<< "`health`,`strength`,`constitution`,"
 		<< "`action`,`quickness`,`stamina`,"
 		<< "`mind`,`focus`,`willpower`,"
-		<< "`PvpRating`, adminLevel"
+		<< "`PvpRating`, adminLevel, `experience`"
 		<< ") VALUES ("
 		<< accountID << "," << galaxyID << ",'"
 		<< player->getFirstName() << "','" << player->getLastName() << "','"
@@ -186,7 +187,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		<< player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << ","
 		<< player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << ","
 		<< player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << ","
-		<< player->getPvpRating() << "," << player->getAdminLevel() << ")";
+		<< player->getPvpRating() << "," << player->getAdminLevel() << ",'" << player->saveXp() << "')";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -429,7 +430,9 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	string hData;
 	hair.decode(hData);
 	player->setHairAppearance(hData);
-
+	
+	player->loadXp(character->getString(60));
+	
 	int raceID = character->getInt(7);
 
 	player->setRaceID(raceID);
@@ -450,8 +453,6 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setStartingProfession(character->getString(6));
 
 	player->setItemShift(character->getUnsignedInt(34));
-
-	player->setHeight(character->getFloat(23));
 
 	string bio = character->getString(24);
 	player->setBiography(bio);
@@ -500,9 +501,12 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setPvpRating(character->getInt(54));
 	player->setAdminLevel(character->getInt(55));
 
+	player->setFactionStatus(character->getInt(58));
+	player->setFactionRank(character->getInt(59));
+
 	//Load consent list from database
 	loadConsentList(player);
-
+	loadFactionPoints(player);
 	delete character;
 }
 
@@ -580,10 +584,14 @@ void PlayerManagerImplementation::updateGuildStatus(Player* player) {
 				uint64 defGuild = 0;
 
 				Guild * guild = player->getGuild();
-				ChatRoom* room = guild->getGuildChat();
 
-				if (room != NULL)
-					room->removePlayer(player, false);
+				if (guild != NULL) {
+					ChatRoom* room = guild->getGuildChat();
+
+					if (room != NULL)
+						room->removePlayer(player, false);
+				} else
+					cout << "DEFAULT guild in table GUILDS (DB) is not ID 0 ! Edit table and set DEFAULT GUILD to ID 0!\n";
 
 				player->setGuild(defGuild);
 				player->updateGuild(defGuild);
@@ -604,50 +612,63 @@ void PlayerManagerImplementation::updateGuildStatus(Player* player) {
 
 
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
-	//still crashing here
-	/*player->info("Entering PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
+	/*player->unlock();
 
-	string loggingInName = player->getFirstName();
-	String::toLower(loggingInName);
+	Player* playerToInform = NULL;
+	PlayerObject* toInformObject = NULL;
 
-	playerMap->resetIterator();
+	try {
+		player->info("Entering PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
 
-	while (playerMap->hasNext()) {
-		Player* playerToInform = playerMap->next();
+		string loggingInName = player->getFirstName();
+		String::toLower(loggingInName);
 
-		if (playerToInform != player) {
-			playerToInform->wlock(player);
+		playerMap->lock();
 
-			PlayerObject* toInformObject = playerToInform->getPlayerObject();
+		playerMap->resetIterator(false);
 
-			if (toInformObject != NULL) {
-				toInformObject->wlock();
+		while (playerMap->hasNext(false)) {
+			playerToInform = playerMap->next(false);
 
-				for (int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i){
-					if(toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
+			if (playerToInform == player)
+				continue;
 
-						if (playerToInform->isOnline()) {
+			try {
+				playerToInform->wlock(playerMap);
 
-							FriendStatusChangeMessage* notifyStatus =
-								new FriendStatusChangeMessage(loggingInName, "Core3", status);
+				toInformObject = playerToInform->getPlayerObject();
 
-							playerToInform->sendMessage(notifyStatus);
+				if (toInformObject != NULL) {
+					for (int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i) {
+						if (toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
+
+							if (playerToInform->isOnline()) {
+								FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(loggingInName, "Core3", status);
+								playerToInform->sendMessage(notifyStatus);
+								break;
+							}
+
 						}
 					}
 				}
-				toInformObject->unlock();
+
+				playerToInform->unlock();
+			} catch (...) {
+				playerToInform->error("unreported exception caught in PlayerManagerImplementation::updateOtherFriendlists");
+				playerToInform->unlock();
 			}
 
-			if (playerToInform != player)
-				playerToInform->unlock();
-
-			playerToInform = NULL;
-			toInformObject = NULL;
 		}
+
+		playerMap->unlock();
+	} catch (...) {
+		player->error("Unreported exception in PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
+
+		playerMap->unlock();
 	}
 
 	player->info("Clean exit from PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
-	player = NULL;*/
+	player->wlock();*/
 }
 
 void PlayerManagerImplementation::unload(Player* player) {
@@ -684,6 +705,9 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< ",AdminLevel=" << player->getAdminLevel()
 	<< ",PvpRating=" << player->getPvpRating()
 	<< ",guildpermission=" << player->getGuildPermissions()
+	<< ",factionStatus=" << (int) player->getFactionStatus()
+	<< ",factionRank=" << (int)player->getFactionRank()
+	<< ",experience=" << "'" << player->saveXp() << "'"
 	<< " WHERE character_id=" << player->getCharacterID() << ";";
 	try {
 		ServerDatabase::instance()->executeStatement(query);
@@ -693,9 +717,58 @@ void PlayerManagerImplementation::save(Player* player) {
 	}
 
 	player->saveProfessions();
+	saveFactionPoints(player);
 
 	//Update the database with the consentlist info
 	updateConsentList(player);
+}
+
+void PlayerManagerImplementation::loadFactionPoints(Player* player) {
+	stringstream query;
+	query << "SELECT * FROM character_faction_points WHERE character_id = " << player->getCharacterID() << ";";
+	try {
+		ResultSet * res = ServerDatabase::instance()->executeQuery(query);
+
+		while (res->next()) {
+			string faction = res->getString(1);
+			int points = res->getInt(2);
+
+			if (points >= 0)
+				player->addFactionPoints(faction, points);
+			else
+				player->subtractFactionPoints(faction, abs(points));
+		}
+
+		delete res;
+	} catch(DatabaseException& e) {
+		cerr << "Failed to load FactionPoints: " << player->getFirstName() << endl;
+		cout << e.getMessage() << endl;
+	}
+}
+
+void PlayerManagerImplementation::saveFactionPoints(Player* player) {
+
+	FactionPointList * list = player->getFactionList();
+
+	try {
+		for (int i = 0; i < list->size(); i++) {
+			string faction = list->get(i);
+			int points = player->getFactionPoints(faction);
+			stringstream hash;
+			hash << faction << player->getCharacterID();
+			stringstream query;
+			query << "INSERT INTO character_faction_points VALUES(";
+			query << player->getCharacterID() << ", '";
+			query << faction << "', " << points << ", MD5('";
+			query << hash.str() << "')) ON DUPLICATE KEY UPDATE faction_points = " << points;
+
+			ServerDatabase::instance()->executeStatement(query);
+		}
+
+	} catch(DatabaseException& e) {
+		cerr << "Failed to save FactionPoints: " << player->getFirstName() << endl;
+		cout << e.getMessage() << endl;
+	}
 }
 
 void PlayerManagerImplementation::handleAbortTradeMessage(Player* player, bool doLock) {
@@ -963,6 +1036,13 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 	}
 
 	ItemManager* itemManager = server->getItemManager();
+
+	if (item->isInstrument() && sender->isPlayingMusic()) {
+		receiver->sendSystemMessage("Your target cant do this right now");
+		sender->sendSystemMessage("You cant do this while playing music");
+
+		return;
+	}
 
 	item->setEquipped(false);
 	sender->removeInventoryItem(item->getObjectID());

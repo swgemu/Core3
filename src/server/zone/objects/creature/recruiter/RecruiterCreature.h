@@ -21,8 +21,6 @@ public:
 
 	void sendConversationStartTo(SceneObject* obj);
 
-	void sendFactions(Player* player);
-
 	void selectConversationOption(int option, SceneObject* obj);
 
 protected:
@@ -42,8 +40,6 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void sendConversationStartTo(SceneObject* obj);
-
-	void sendFactions(Player* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
 

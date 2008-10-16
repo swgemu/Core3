@@ -140,10 +140,10 @@ public:
 
 	void close(ZoneClientSession* client);
 
-	void insertToZone(Zone * zone);
-	void insertToBuilding(BuildingObject * building);
-	void removeFromZone(bool doLock = true);
-	void removeFromBuilding(BuildingObject* building);
+	virtual void insertToZone(Zone * zone);
+	virtual void insertToBuilding(BuildingObject * building);
+	virtual void removeFromZone(bool doLock = true);
+	virtual void removeFromBuilding(BuildingObject* building);
 
 	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
 	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
@@ -343,8 +343,10 @@ public:
 
 	// setters
 	inline void setParent(SceneObject* par, uint32 linktype = 0x04) {
-		parent = par;
-		linkType = linktype;
+		if (par != _this) {
+			parent = par;
+			linkType = linktype;
+		}
 	}
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* serv) {
@@ -445,7 +447,7 @@ public:
 
 	inline float getPrecision(float num, int digits) {
 		float power = pow(10, digits);
-		return floor(num * power + .05f) / power;
+		return float(floor(num * power + .05f) / power);
 	}
 
 	inline uint64 getAssociatedArea() {

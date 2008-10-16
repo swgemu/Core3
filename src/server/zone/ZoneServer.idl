@@ -56,6 +56,7 @@ import "managers/loot/LootTableManager";
 import "managers/bazaar/BazaarManager";
 import "managers/bank/BankManager";
 import "managers/mission/MissionManager";
+import "managers/creature/CreatureManager";
 
 import "../chat/ChatManager";
 
@@ -120,6 +121,7 @@ interface ZoneServer {
 	BazaarManager getBazaarManager();
 	BankManager getBankManager();
 	MissionManager getMissionManager();
+	CreatureManager getCreatureManager(int zone);
 	
 	Zone getZone(int index);
 	

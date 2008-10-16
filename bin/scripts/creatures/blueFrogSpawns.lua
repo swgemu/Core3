@@ -55,4 +55,5 @@ if (PLANET_ID == 5) then
  spawnBlueFrog(-4879, 4185, 1, 0, GUNGAN, 0);
  spawnBlueFrog(17.6233, 11.2728, 1, 0, GUNGAN, 1697360);
  spawnBlueFrog(2.2, -2.5, 1, 0, BARTENDER, 91);
+ spawnBlueFrog(-4933, 4234, 1, .1, GUNGAN, 0);
 end

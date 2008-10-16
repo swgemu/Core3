@@ -104,6 +104,8 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
+	parent = NULL;
+
 	undeploy();
 }
 
@@ -263,7 +265,7 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 		zone->registerObject(_this);
 
-		if (parent != NULL) {
+		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*)parent->getParent();
 
 			insertToBuilding(building);
@@ -272,6 +274,14 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 		} else {
 			zone->insert(this);
 			zone->inRange(this, 128);
+
+			/*for (int i = 0; i < inRangeObjectCount(); ++i) {  // eats all the cpu
+				QuadTreeEntry* obj = getInRangeObject(i);
+				SceneObjectImplementation* objImpl = (SceneObjectImplementation*) obj;
+
+				obj->notifyPositionUpdate(this);
+				this->notifyPositionUpdate(obj);
+			}*/
 		}
 
 		zone->unlock();
@@ -352,7 +362,7 @@ void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int
 	}
 
 	try {
-		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		//cout << "SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
 		zone->lock(doLock);
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
@@ -374,19 +384,21 @@ void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int
 		zone->unlock(doLock);
 
 	} catch (...) {
-		error("exception SceneObject::broadcastMessage(Message* msg, int range, bool doLock)");
+		error("exception SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)");
 
 		zone->unlock(doLock);
 	}
 
-	//cout << "finished SceneObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+	//cout << "finished SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
 }
 
 void SceneObjectImplementation::removeFromZone(bool doLock) {
 	try {
+		//cout << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
 		if (zone == NULL || !isInQuadTree())
 			return;
 
+		//cout << "SceneObjectImplementation::removeFromZone(bool doLock) After Zone/QuadTree check" << endl;
 		//deagro();
 
 		zone->lock(doLock);
@@ -412,7 +424,7 @@ void SceneObjectImplementation::removeFromZone(bool doLock) {
 
 		zone->unlock(doLock);
 	} catch (...) {
-		cout << "exception CreatureImplementation::removeFromZone(bool doLock)\n";
+		cout << "exception SceneObjectImplementation::removeFromZone(bool doLock)\n";
 
 		zone->unlock(doLock);
 	}

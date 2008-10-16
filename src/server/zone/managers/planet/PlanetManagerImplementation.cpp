@@ -90,6 +90,9 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	missionTerminalMap = new MissionTerminalMap(100);
 	craftingStationMap.setNullValue(NULL);
 	craftingStationMap.setInsertPlan(SortedVector<VectorMapEntry<uint64, CraftingStation*>*>::NO_DUPLICATE);
+	staticTangibleObjectMap.setNullValue(NULL);
+	staticTangibleObjectMap.setInsertPlan(SortedVector<VectorMapEntry<uint64, TangibleObject*>*>::NO_DUPLICATE);
+
 	areaMap = new AreaMap(16000, 16000, 500, 500);
 
 	creatureManager = planet->getCreatureManager();
@@ -154,6 +157,7 @@ void PlanetManagerImplementation::stop() {
 	clearTicketCollectors();
 	clearTravelTerminals();
 	clearCraftingStations();
+	clearStaticTangibleObjects();
 
 	unlock();
 }
@@ -329,6 +333,56 @@ void PlanetManagerImplementation::loadPlayerStructures() {
 	unlock();
 }
 
+void PlanetManagerImplementation::loadStaticTangibleObjects() {
+	lock();
+
+	int planetid = zone->getZoneID();
+
+	stringstream query;
+	query << "SELECT * FROM statictangibleobjects WHERE zoneid = " << planetid << ";";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	while (result->next()) {
+		uint64 parentId = result->getUnsignedLong(2);
+
+		string name = result->getString(3);
+
+		string file = result->getString(4);
+
+		int type = result->getInt(5);
+
+		string templatename = result->getString(6);
+
+		float oX = result->getFloat(7);
+		float oY = result->getFloat(8);
+		float oZ = result->getFloat(9);
+		float oW = result->getFloat(10);
+
+		float x = result->getFloat(11);
+		float z = result->getFloat(12);
+		float y = result->getFloat(13);
+
+		TangibleObject* tano = new TangibleObject(getNextStaticObjectID(false));
+
+		tano->setName(name);
+		tano->setParent(zone->lookupObject(parentId));
+		tano->setObjectCRC(String::hashCode(file));
+		tano->initializePosition(x, z, y);
+		tano->setDirection(oX, oZ, oY, oW);
+		tano->setObjectSubType(type);
+		tano->setZoneProcessServer(server);
+		tano->insertToZone(zone);
+
+		staticTangibleObjectMap.put(tano->getObjectID(), tano);
+	}
+
+	delete result;
+
+	unlock();
+}
+
+
 
 void PlanetManagerImplementation::clearShuttles() {
 	if (shuttleTakeOffEvent->isQueued())
@@ -422,12 +476,29 @@ void PlanetManagerImplementation::clearCraftingStations() {
 	info("cleared craftingStations");
 }
 
+void PlanetManagerImplementation::clearStaticTangibleObjects() {
+	for (int i = 0; i < staticTangibleObjectMap.size(); ++i) {
+		TangibleObject* tano = staticTangibleObjectMap.get(i);
+
+		tano->removeFromZone();
+
+		tano->removeUndeploymentEvent();
+
+		tano->finalize();
+	}
+
+	staticTangibleObjectMap.removeAll();
+
+	info("cleared staticTangibleObjectMap");
+}
+
 void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadShuttles();
 	loadGuildTerminals();
 	//loadVendorTerminals();
 	loadCraftingStations();
 	loadMissionTerminals();
+	loadStaticTangibleObjects();
 }
 
 void PlanetManagerImplementation::loadShuttles() {
@@ -1076,28 +1147,6 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 		}
 
 		spawnTempStructure(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
-
-		//cout << "Deed is = " << deed->getDeedSubType() << endl;
-		switch(deed->getDeedSubType()) {
-			case DeedObjectImplementation::HARVESTER:
-
-				spawnHarvester(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
-				break;
-
-			case DeedObjectImplementation::GENERATOR:
-			case DeedObjectImplementation::FACTORY:
-
-				spawnInstallation(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
-				break;
-
-			case DeedObjectImplementation::BUILDING:
-
-				spawnBuilding(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
-				break;
-
-			default:
-				break;
-		}
 	}
 	catch(...) {
 		cout << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
@@ -1108,30 +1157,37 @@ void PlanetManagerImplementation::spawnTempStructure(Player * player,
 		DeedObject * deed, float x, float z, float y, float oX, float oZ,
 		float oY, float oW) {
 
-	InstallationObject* inso = new InstallationObject(player->getNewItemID(), deed);
+	cout << "PlanetManagerImplementation::spawnTempStructure" << endl;
+	InstallationObject* inso = new InstallationObject(player->getNewItemID());
 
 	//inso->setObjectID(player->getNewItemID());
 	inso->setObjectCRC(String::hashCode(deed->getTargetTempFile()));
-	inso->setObjectSubType(0);
+	inso->setName(deed->getTargetName());
+	inso->setTemplateName(deed->getTargetTemplate());
+
+	//inso->setObjectSubType(0);
 	inso->initializePosition(x, z, y);
 	inso->setDirection(oX, oZ, oY, oW);
 	inso->setOwner(player->getFirstName());
 	inso->setZoneProcessServer(server);
 
-	tempInstallationSpawnEvent = new TempInstallationSpawnEvent(player, inso);
-	tempInstallationDespawnEvent = new TempInstallationDespawnEvent(inso);
 
-	//server->addEvent(tempInstallationSpawnEvent, 20);
-	//server->addEvent(tempInstallationDespawnEvent, 5000);
+	tempInstallationSpawnEvent = new TempInstallationSpawnEvent(inso, player->getZone());
+	tempInstallationDespawnEvent = new TempInstallationDespawnEvent(inso, player, deed, x, z, y, oX, oZ, oY, oW);
+
+	server->addEvent(tempInstallationSpawnEvent, 100);
+	server->addEvent(tempInstallationDespawnEvent, 10000);
+	cout << "PlanetManagerImplementation::spawnTempStructure Completed" << endl;
 }
 void PlanetManagerImplementation::spawnInstallation(Player * player,
 		DeedObject * deed, float x, float z, float y, float oX, float oZ,
 		float oY, float oW) {
 
+	cout << "PlanetManagerImplementation::spawnInstallation" << endl;
 	InstallationObject* inso = new InstallationObject(player->getNewItemID(), deed);
 
 	//inso->setObjectID(player->getNewItemID());
-	inso->setObjectCRC(String::hashCode(deed->getTargetFile()));
+	//inso->setObjectCRC(String::hashCode(deed->getTargetFile()));
 	inso->initializePosition(x, z, y);
 	inso->setDirection(oX, oZ, oY, oW);
 	inso->setOwner(player->getFirstName());
@@ -1139,7 +1195,7 @@ void PlanetManagerImplementation::spawnInstallation(Player * player,
 
 	installationSpawnEvent = new InstallationSpawnEvent(player, inso);
 
-	server->addEvent(installationSpawnEvent, 5500);
+	server->addEvent(installationSpawnEvent, 100);
 }
 
 void PlanetManagerImplementation::spawnHarvester(Player * player,
@@ -1150,7 +1206,7 @@ void PlanetManagerImplementation::spawnHarvester(Player * player,
 	HarvesterObject*  hino = new HarvesterObject(player->getNewItemID(), deed);
 
 	//hino->setObjectID(player->getNewItemID());
-	hino->setObjectCRC(String::hashCode(deed->getTargetFile()));
+	//hino->setObjectCRC(String::hashCode(deed->getTargetFile()));
 	hino->initializePosition(x, z, y);
 	hino->setDirection(oX, oZ, oY, oW);
 	hino->setOwner(player->getFirstName());
@@ -1159,7 +1215,7 @@ void PlanetManagerImplementation::spawnHarvester(Player * player,
 	cout << "PlanetManagerImplementation::spawnHarvester, creating event" << endl;
 	harvesterSpawnEvent = new HarvesterSpawnEvent(player, hino);
 
-	server->addEvent(harvesterSpawnEvent, 5500);
+	server->addEvent(harvesterSpawnEvent, 100);
 	cout << "PlanetManagerImplementation::did spawnHarvester, creating event" << endl;
 }
 

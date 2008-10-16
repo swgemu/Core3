@@ -64,9 +64,7 @@ InstallationObjectImplementation::InstallationObjectImplementation(uint64 oid) :
 	cout << "InstallationObjectImplementation Constructor" << endl;
 	objectID = oid;
 
-	initialize();
-
-	pvpStatusBitmask = 0;
+	init();
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation(uint64 oid, DeedObject * deed) : InstallationObjectServant(oid, INSTALLATION) {
@@ -74,24 +72,23 @@ InstallationObjectImplementation::InstallationObjectImplementation(uint64 oid, D
 	cout << "InstallationObjectImplementation Constructor" << endl;
 	objectID = oid;
 
+	objectCRC = String::hashCode(deed->getTargetFile());
+
 	name = deed->getTargetName();
 
 	file = deed->getTargetFile();
 
 	templateName = deed->getTargetTemplate();
 
-	initialize();
-
-	pvpStatusBitmask = 0;
+	init();
+	cout << "InstallationObjectImplementation Constructor Completed" << endl;
 }
 
 InstallationObjectImplementation::~InstallationObjectImplementation(){
 
 }
 
-void InstallationObjectImplementation::initialize() {
-
-
+void InstallationObjectImplementation::init() {
 	container = NULL;
 	zone = NULL;
 
@@ -123,17 +120,14 @@ void InstallationObjectImplementation::initialize() {
 	pvpStatusBitmask = 0;
 }
 
-void InstallationObjectImplementation::insertToZone(Zone* zone) {
+/*void InstallationObjectImplementation::insertToZone(Zone* zone) {
 	InstallationObjectImplementation::zone = zone;
+	zoneID = zone->getZoneID();
 
-	/*if (container != NULL) {
-		if (container->isCell())
-			building = (BuildingObject*) container->getParent();
-	}*/
-
-try {
+	try {
 		zone->lock();
 
+		cout << "InstallationObjectImplementation::insertToZone" << endl;
 		zone->registerObject((InstallationObject*) _this);
 
 		zone->insert(this);
@@ -145,7 +139,8 @@ try {
 
 		zone->unlock();
 	}
-}
+}*/
+
 void InstallationObjectImplementation::sendTo(Player* player, bool doClose) {
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)

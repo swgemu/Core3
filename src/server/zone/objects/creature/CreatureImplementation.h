@@ -78,6 +78,8 @@ class CreatureImplementation : public CreatureServant, public Event {
 
 	bool doRandomMovement;
 
+	bool hasRandomMovement;
+
 	// misc
 	CreatureGroup* creatureGroup;
 
@@ -189,7 +191,13 @@ public:
 
 	void queueRespawn();
 
+	bool shouldAgro(SceneObject * target);
+
 	void doIncapAnimation();
+
+	CreatureObject* getAggroedCreature() {
+		return aggroedCreature;
+	}
 
 	// waypoint methods
 	void setPatrolPoint(PatrolPoint* cord, bool doLock = true );
@@ -242,6 +250,10 @@ public:
 
 	inline void setLootCreated(bool value) {
 		lootCreated = value;
+	}
+
+	inline void setRandomMovement(bool val) {
+		hasRandomMovement = val;
 	}
 
 	void setSpawnPosition(float posX, float posZ, float posY, uint64 cellid = 0) {
@@ -338,11 +350,13 @@ public:
 
 	inline void wasLooted(){
 		looted = true;
-		if(playerCanHarvest.size() == 0){
+		if (playerCanHarvest.size() == 0) {
 
-			server->removeEvent(creatureRemoveEvent);
+			if (server != NULL && creatureRemoveEvent->isQueued()) {
+				server->removeEvent(creatureRemoveEvent);
 
-			scheduleDespawnCreature(500);
+				scheduleDespawnCreature(500);
+			}
 
 		}
 	}

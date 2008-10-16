@@ -882,7 +882,7 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player,
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
-	string itemName, subtitle;
+	string itemName, subtitle, title;
 
 	float value, maxPercentage, currentPercentage, weightedSum;
 	DraftSchematicExpPropGroup* dsepg;
@@ -947,6 +947,31 @@ void CraftingManagerImplementation::setInitialCraftingValues(Player* player,
 		}
 
 	}
+
+	DraftSchematicAttribute* attrib;
+
+	for(int i = subtitleCounter; i < draftSchematic->getAttributesToSetListSize(); ++i) {
+
+		attrib = draftSchematic->getAttributeToSet(i);
+
+		subtitle = attrib->getAttributeName();
+
+		title = attrib->getAttributeExperimentalProperty();
+
+		// This is the formula for max experimenting percentages
+		maxPercentage = 1.0f;
+
+		// Based on the weighted sum, we can get the initial %
+		currentPercentage = craftingValues->getCurrentPercentageAverage(title);
+
+		craftingValues->addExperimentalPropertySubtitle(title, subtitle);
+
+		craftingValues->setMaxPercentage(subtitle, maxPercentage);
+		craftingValues->setCurrentPercentage(subtitle, currentPercentage);
+
+	}
+
+	attrib = NULL;
 
 	craftingValues->recalculateValues(draftSchematic);
 
@@ -1170,7 +1195,7 @@ void CraftingManagerImplementation::handleExperimenting(Player* player,
 	ManufactureSchematicObjectDeltaMessage7
 			* dMsco7 =
 					new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
-	dMsco7->update9(draftSchematic);
+	dMsco7->update9(draftSchematic, false);
 	dMsco7->close();
 
 	player->sendMessage(dMsco7);
@@ -1231,6 +1256,7 @@ void CraftingManagerImplementation::experimentRow(
 				newValue = craftingValues->getMaxPercentage(subtitle);
 
 			craftingValues->setCurrentPercentage(subtitle, newValue);
+
 		}
 	}
 }
@@ -1564,23 +1590,23 @@ void CraftingManagerImplementation::calculateAssemblySuccess(Player* player,
 
 			result = 1;
 
-		} else if (preresult > 90) {
+		} else if (preresult > 80) {
 
 			result = 2;
 
-		} else if (preresult > 70) {
+		} else if (preresult > 60) {
 
 			result = 3;
 
-		} else if (preresult > 60) {
+		} else if (preresult > 50) {
 
 			result = 4;
 
-		} else if (preresult > 50) {
+		} else if (preresult > 40) {
 
 			result = 5;
 
-		} else if (preresult > 35) {
+		} else if (preresult > 30) {
 
 			result = 6;
 
@@ -1638,15 +1664,15 @@ void CraftingManagerImplementation::calculateExperimentationSuccess(
 
 			result = 1;
 
-		} else if (preresult > 80) {
+		} else if (preresult > 60) {
 
 			result = 2;
 
-		} else if (preresult > 70) {
+		} else if (preresult > 50) {
 
 			result = 3;
 
-		} else if (preresult > 50) {
+		} else if (preresult > 40) {
 
 			result = 4;
 
@@ -1850,7 +1876,8 @@ float CraftingManagerImplementation::getWeightedValue(Player* player,
 		}
 	}
 
-	weightedAverage /= float(nsum);
+	if(weightedAverage != 0)
+		weightedAverage /= float(nsum);
 
 	return weightedAverage;
 }

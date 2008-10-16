@@ -46,8 +46,8 @@ korgaSpiritmaster = Creature:new {
       faction = "Korga Tribe",
       gender = "",
 
-      name = "Korga spiri/master",
-      objectCRC = 4186110670, 
+      name = "Korga spiritmaster",
+      objectCRC = 2350961206, 
       socialGroup = "Korga Tribe",
       named = FALSE, 
 
@@ -141,4 +141,4 @@ korgaSpiritmaster = Creature:new {
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(korgaSpiritmaster, 4186110670) --  Add to Global Table
+Creatures:addCreature(korgaSpiritmaster, 2350961206) --  Add to Global Table

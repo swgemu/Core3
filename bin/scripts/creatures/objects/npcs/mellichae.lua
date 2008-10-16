@@ -120,7 +120,7 @@ mellichae = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39,40,49,47,49,50", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for lootelongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -135,7 +135,7 @@ mellichae = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "darthAttack1", "darthAttack2", "darthAttack3", "darthAttack4", "darthAttack5", "darthAttack6", "darthAttack7", "darthAttack8" },
+      skills = { "polearmJediAttack1", "polearmJediAttack2", "polearmJediAttack3", "polearmJediAttack4", "polearmJediAttack5", "polearmJediAttack6", "polearmJediAttack7", "polearmJediAttack8", "polearmJediAttack9", "polearmJediAttack10", "polearmJediAttack11", "polearmJediAttack12", "polearmJediAttack13", "polearmJediAttack14", "polearmJediAttack15", "polearmJediAttack16" },
       respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object

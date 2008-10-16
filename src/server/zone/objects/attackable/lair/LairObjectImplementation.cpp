@@ -101,7 +101,7 @@ void LairObjectImplementation::doDamage(int damage, SceneObject* attacker) {
 	}
 }
 
-void LairObjectImplementation::spawnCreatures() {
+void LairObjectImplementation::spawnCreatures(bool lockCreatureManager) {
 	if (zone == NULL) {
 		cout << "Zone is NULL" << endl;
 		return;
@@ -121,7 +121,7 @@ void LairObjectImplementation::spawnCreatures() {
 		float x = positionX + (30.0f - System::random(600) / 10.0f);
 		float y = positionY + (30.0f - System::random(600) / 10.0f);
 
-		Creature* creature = creatureManager->spawnCreature(creatureCRC, 0, x, y, bitmask, baby, false);
+		Creature* creature = creatureManager->spawnCreature(creatureCRC, 0, x, y, bitmask, baby, lockCreatureManager);
 		creatures.add(creature);
 
 		try {

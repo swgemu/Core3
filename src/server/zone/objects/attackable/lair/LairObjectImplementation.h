@@ -76,7 +76,7 @@ public:
 
 	void addDefender(SceneObject* defender);
 	void doDamage(int damage, SceneObject* attacker);
-	void spawnCreatures();
+	void spawnCreatures(bool lockCreatureManager = true);
 	void doDestroyed(SceneObject* attacker);
 
 	inline void setMaxCondition(int cond) {

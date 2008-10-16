@@ -90,7 +90,7 @@ jabbaCompoundGuard = Creature:new {
       pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 1,
+      killer = 0,
       aggressive = 0,
       invincible = 0,
 
@@ -120,7 +120,7 @@ jabbaCompoundGuard = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,21,33,39", -- Group it belongs to for lootr loot
 
       tame = 0,  -- Likely hood to be tamed
 

@@ -135,21 +135,27 @@ public:
 
 	//TODO: Fix this after feature freeze. It doesn't take into account all possible base areas
 	void addArea(Area * area) {
-		BaseArea * ba = getBaseArea(area->getMaxX(), area->getMaxY());
-		BaseArea * ba2 = getBaseArea(area->getMinX(), area->getMaxY());
-		BaseArea * ba3 = getBaseArea(area->getMinX(), area->getMinY());
-		BaseArea * ba4 = getBaseArea(area->getMaxX(), area->getMinY());
+		BaseArea * ba = getBaseArea(area->getMinX(), area->getMaxY());
 
 		ba->addArea(area);
 
-		if(ba2 != ba)
-			ba2->addArea(area);
+		BaseArea * baX = ba;
+		BaseArea * baY = ba;
 
-		if(ba3 != ba && ba3 != ba2)
-			ba3->addArea(area);
+		while (!baX->contains(area->getMaxX(), area->getMaxY()) &&
+			   !baY->contains(area->getMaxX(), area->getMinY())) {
+			baY = baX;
+			while (area->getMinY() < baY->getMinY()) {
+				baY = getBaseArea(baY->getMinX(), baY->getMinY() - 1);
+				baY->addArea(area);
+			}
 
-		if(ba4 != ba && ba4 != ba2 && ba4 != ba3)
-			ba4->addArea(area);
+			if (baX->contains(area->getMaxX(), area->getMaxY()))
+				continue;
+
+			baX = getBaseArea(baX->getMaxX() + 1, baX->getMaxY());
+			baX->addArea(area);
+		}
 	}
 };
 #endif /* AREAMAP_H_ */

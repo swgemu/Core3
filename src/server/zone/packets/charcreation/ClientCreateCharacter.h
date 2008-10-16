@@ -127,7 +127,7 @@ public:
 		pack->shiftOffset(1); //move past some unknown byte
 
 		float height = pack->parseFloat();
-		if (height < 0.8 || height > 1.5)
+		if (height < 0.7 || height > 1.5)
 			height = 1;
 
 		player->setHeight(height);

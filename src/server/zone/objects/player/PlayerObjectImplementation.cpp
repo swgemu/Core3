@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "../../packets.h"
 #include "../../objects.h"
 #include "../../ZoneClientSession.h"
+#include "system/lang.h"
 
 #include "../scene/SceneObject.h"
 
@@ -196,6 +197,42 @@ void PlayerObjectImplementation::removeExperience(const string& xpType, int xp, 
 
 		player->sendMessage(dplay8);
 	}
+}
+
+void PlayerObjectImplementation::loadExperience(const string& xpStr) {
+	StringTokenizer xptokens(xpStr.c_str());
+	xptokens.setDelimeter(":");
+
+	while (xptokens.hasMoreTokens()) {
+		string xptype, xpvalue;
+		int xpamount;
+
+		xptokens.getStringToken(xptype);
+
+		if (!xptokens.hasMoreTokens()) // TA: it was causing exceptions here
+			return;
+
+		xpamount = xptokens.getIntToken();
+
+		addExperience(xptype, xpamount, false);
+	}
+
+}
+
+string& PlayerObjectImplementation::saveExperience() {
+	stringstream xpstr;
+	experienceList.resetIterator();
+
+	while (experienceList.hasNext()) {
+		string key;
+		int value;
+		experienceList.getNextKeyAndValue(key, value);
+		xpstr << key << ":" << value << ":";
+	}
+
+	experienceData = xpstr.str();
+
+	return experienceData;
 }
 
 bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool updateClient) {
@@ -416,7 +453,6 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 			waypoint = waypointList.get(i);
 
 			if (waypoint->getInternalNote() == name) {
-				//string wpName = waypoint->getName();
 				returnWP = waypoint;
 				break;
 			}
@@ -432,7 +468,6 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 			String::toLower(wpName);
 
 			if (wpName == sName) {
-				//string wpName = waypoint->getName();
 				returnWP = waypoint;
 				break;
 			}

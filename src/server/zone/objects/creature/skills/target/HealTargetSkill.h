@@ -154,7 +154,6 @@ public:
 		targetCreature->updateStates();
 	}
 
-
 	virtual bool calculateCost(CreatureObject* creature) {
 		return creature->changeMindBar(-50);
 	}

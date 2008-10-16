@@ -95,7 +95,7 @@ const static char* planetNames[] = {
 		"watertabletest"
 };
 
-const static int planetCrcs[] = {
+static int planetCrcs[] = {
 		0x63556843, //corellia
 		0x2748F9D7, //dantooine
 		0x63E75AED, //dathomir

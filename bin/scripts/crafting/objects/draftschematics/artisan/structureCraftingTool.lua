@@ -77,11 +77,11 @@ structureCraftingTool = Object:new {
 
   experimentalSubGroupCount = "1",
 
-  experimentalSubGroupTitles = "quality",
+  experimentalSubGroupTitles = "useModifier",
 
   tanoAttributes = "objecttype=32769:objectcrc=4275700789:objecttemp=structure_tool_name:templatetype=crafting:",
   
-  attributesToSet = "quality",
+  attributesToSet = "useModifier",
   attributeExperimentalProperties = "exp_effectiveness",
   attributePrecision = "2",
   attributesMinMax = "-15, 15"

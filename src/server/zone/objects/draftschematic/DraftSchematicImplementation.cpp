@@ -123,7 +123,7 @@ DraftSchematicImplementation::DraftSchematicImplementation(DraftSchematic* draft
 }
 
 DraftSchematicImplementation::~DraftSchematicImplementation(){
-	while (dsExpPropGroups.size() > 0)
+	/*while (dsExpPropGroups.size() > 0)
 		dsExpPropGroups.remove(0)->finalize();
 
 	while (attributesToSet.size() > 0)
@@ -135,7 +135,7 @@ DraftSchematicImplementation::~DraftSchematicImplementation(){
 	experimentalProperties.removeAll();
 
 	craftingValues->finalize();
-	craftingValues = NULL;
+	craftingValues = NULL;*/
 }
 
 DraftSchematic* DraftSchematicImplementation::dsClone(DraftSchematic* draftSchematic) {
@@ -302,6 +302,7 @@ void DraftSchematicImplementation::sendExperimentalPropertiesToPlayer(Player* pl
 
 		// Send all the experimental property data
 		for (int i = 0; i < listSize; i++) {
+
 			DraftSchematicExpPropGroup* dsEpg = dsExpPropGroups.get(i);
 			// OLD dsEpg->sendToPlayer(msg);
 			dsEpg->sendToPlayer(msg, count);

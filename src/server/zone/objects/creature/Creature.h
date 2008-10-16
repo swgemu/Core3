@@ -51,6 +51,8 @@ public:
 
 	bool attack(CreatureObject* target);
 
+	void deagro();
+
 	void activateRecovery();
 
 	bool doRecovery();
@@ -83,6 +85,8 @@ public:
 
 	Zone* getZone();
 
+	CreatureObject* getAggroedCreature();
+
 	unsigned long long getNewItemID();
 
 	unsigned int getRespawnTimer();
@@ -112,6 +116,8 @@ public:
 	void wasLooted();
 
 	void setLootCreated(bool value);
+
+	void setRandomMovement(bool value);
 
 protected:
 	Creature(DummyConstructorParameter* param);
@@ -155,6 +161,8 @@ public:
 
 	bool attack(CreatureObject* target);
 
+	void deagro();
+
 	void activateRecovery();
 
 	bool doRecovery();
@@ -187,6 +195,8 @@ public:
 
 	Zone* getZone();
 
+	CreatureObject* getAggroedCreature();
+
 	unsigned long long getNewItemID();
 
 	unsigned int getRespawnTimer();
@@ -214,6 +224,8 @@ public:
 	void wasLooted();
 
 	void setLootCreated(bool value);
+
+	void setRandomMovement(bool value);
 
 protected:
 	string _param0_setObjectFileName__string_;

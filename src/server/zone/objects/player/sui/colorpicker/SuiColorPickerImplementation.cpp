@@ -48,8 +48,18 @@ which carries forward this exception.
 
 SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint64 objectId, uint32 boxType) :
 	SuiColorPickerServant(player, boxType, COLORPICKER) {
-	
+
 	objectID = objectId;
+
+	variable = "private/index_color_1";
+}
+
+SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint64 objectId, const string& var, uint32 boxType) :
+	SuiColorPickerServant(player, boxType, COLORPICKER) {
+
+	objectID = objectId;
+
+	variable = var;
 }
 
 void SuiColorPickerImplementation::generateHeader(BaseMessage* msg) {
@@ -73,18 +83,18 @@ void SuiColorPickerImplementation::generateHeader(BaseMessage* msg) {
 BaseMessage* SuiColorPickerImplementation::generateMessage() {
 	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID);
 	generateHeader(msg);
-	
+
 	stringstream id;
 	id << objectID;
 
 	msg->insertOption(3, id.str().c_str(), "ColorPicker", "TargetNetworkId");
-	msg->insertOption(3, "private/index_color_1", "ColorPicker", "TargetVariable");
+	msg->insertOption(3, variable.c_str(), "ColorPicker", "TargetVariable");
 	msg->insertOption(3, "500", "ColorPicker", "TargetRangeMax");
 	msg->insertOption(3, "@base_player:swg", "bg.caption.lblTitle", "Text");
-	
+
 	msg->insertLong(0);
 	msg->insertInt(0);
 	msg->insertLong(0);
-	
+
 	return msg;
 }

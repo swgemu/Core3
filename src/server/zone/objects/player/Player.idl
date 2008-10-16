@@ -44,6 +44,7 @@ which carries forward this exception.
 
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
+include "../../packets/object/StfParameter";
 
 import "../../ZoneClientSession";
 import "../../Zone";
@@ -56,6 +57,8 @@ import "../creature/Creature";
 import "../tangible/TangibleObject";
 
 import "PlayerObject";
+
+import "faction/FactionPointList";
 
 import "../tangible/weapons/Weapon";
 import "../tangible/wearables/Armor";
@@ -271,6 +274,8 @@ interface Player implements CreatureObject {
 	void addInventoryItem(TangibleObject item);
 	void addInventoryResource(ResourceContainer item);
 	void equipPlayerItem(TangibleObject item);
+	
+	void saveDatapad(Player player);
 
 	// Profession
 	void saveProfessions();
@@ -302,6 +307,8 @@ interface Player implements CreatureObject {
 	// Experience
 	void addXp(string xpType, int xp, boolean updateClient);
 	void removeXp(string xpType, int xp, boolean updateClient);
+	void loadXp(const string xpStr);
+	string saveXp();
 
 	//DuelList manipulation methods
 	void removeFromDuelList(Player targetPlayer);
@@ -331,7 +338,8 @@ interface Player implements CreatureObject {
 	void sendSystemMessage(unicode msg);
 
 	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
-
+	void sendSystemMessage(const string file, const string str, StfParameter param);
+	
 	// setters
 	void setConversatingCreature(CreatureObject conversator);
 	void setFirstName(const string name);
@@ -352,6 +360,7 @@ interface Player implements CreatureObject {
 	void setDrinkFilling(int fill, boolean updateClient = true);
 	void changeFoodFilling(int fill, boolean updateClient = true);
 	void changeDrinkFilling(int fill, boolean updateClient = true);
+	boolean isAttackableBy(CreatureObject attacker);
 	int getFoodFilling();
 	int getDrinkFilling();
 	void activateDigest();
@@ -381,8 +390,6 @@ interface Player implements CreatureObject {
 	void setRaceFileName(string name);
 	void setRaceID(unsigned char id);
 	void setStartingLocation(string loc);
-
-	void setFactionRank(string fac);
 
 	void setItemShift(unsigned int shift);
 
@@ -465,12 +472,6 @@ interface Player implements CreatureObject {
 	ZoneClientSession getClient();
 
 	GroupObject getGroupObject();
-
-	string getFactionRank();
-
-	unsigned int getRebelPoints();
-
-	unsigned int getImperialPoints();
 
 	int getPvpRating();
 	void setPvpRating(int value);
@@ -599,4 +600,14 @@ interface Player implements CreatureObject {
 	void toggleGuildPermissionsBit(unsigned int bit);	
 	boolean clearGuildPermissionsBit(unsigned int bit, boolean updateClient = false);
 	
+	int getFactionPoints(const string faction);
+	void addFactionPoints(const string faction, unsigned int points);
+	void subtractFactionPoints(const string faction, unsigned int points);
+	
+	int getFactionStatus();
+	void setFactionStatus(int status);
+	FactionPointList getFactionList();
+	unsigned int getMaxFactionPoints(string faction);
+	
+	void delFactionPoints(Player player, unsigned int amount);
 }

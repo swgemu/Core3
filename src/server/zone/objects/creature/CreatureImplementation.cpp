@@ -99,6 +99,13 @@ CreatureImplementation::~CreatureImplementation() {
 	}
 
 	playerCanHarvest.removeAll();
+
+	while (damageMap.size() > 0) {
+		CreatureObject* object = damageMap.elementAt(0)->getKey();
+		damageMap.drop(object);
+
+		object->release();
+	}
 }
 
 void CreatureImplementation::init() {
@@ -131,6 +138,8 @@ void CreatureImplementation::init() {
 	spawnPosition = new PatrolPoint();
 
 	randomizeRespawn = false;
+
+	hasRandomMovement = true;
 
 	actualSpeed = 0.f;
 
@@ -360,6 +369,13 @@ void CreatureImplementation::unload() {
 
 	playerCanHarvest.removeAll();
 
+	while (damageMap.size() > 0) {
+		CreatureObject* object = damageMap.elementAt(0)->getKey();
+		damageMap.drop(object);
+
+		object->release();
+	}
+
 	if (zone != NULL && isInQuadTree())
 		removeFromZone(true);
 
@@ -377,8 +393,14 @@ void CreatureImplementation::unload() {
 }
 
 void CreatureImplementation::scheduleDespawnCreature(int time) {
+	if (isMount())
+		return;
+
 	if (creatureRemoveEvent == NULL)
 		creatureRemoveEvent = new CreatureRemoveEvent(_this);
+
+	if (server == NULL)
+		return;
 
 	if (creatureRemoveEvent->isQueued())
 		server->removeEvent(creatureRemoveEvent);
@@ -970,49 +992,63 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 			return;
 		}
 
-		Player* player;
+		if (this->shouldAgro(scno)) {
+			if ((parent == NULL && isInRange(scno, 24)) || ((parent != NULL)
+					&& (getParentID() == scno->getParentID()) && isInRange(
+					scno, 10))) {
 
-		switch (scno->getObjectType()) {
-		case SceneObjectImplementation::PLAYER:
-			player = (Player*) scno;
+				info("aggroing " + scno->_getName());
 
-			if (isAgressive() && !isDead() && !player->isIncapacitated()
-					&& !player->isDead() && !player->isImmune()) {
+				aggroedCreature = (CreatureObject *) scno;
 
-				if ((parent == NULL && isInRange(player, 24)) || ((parent
-						!= NULL) && (getParentID() == player->getParentID())
-						&& isInRange(player, 10))) {
+				if (isQueued())
+					creatureManager->dequeueActivity(this);
 
-					info("aggroing " + player->getFirstName());
-
-					aggroedCreature = player;
-
-					if (isQueued())
-						creatureManager->dequeueActivity(this);
-
-					creatureManager->queueActivity(this, 10);
-
-				}
-			} else if ((parent == NULL) && !doRandomMovement
-					&& patrolPoints.isEmpty() && System::random(200) < 1) {
-				doRandomMovement = true;
-
-				positionZ = obj->getPositionZ();
-
-				//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
-
-				if (!isQueued())
-					creatureManager->queueActivity(this, System::random(30000)
-							+ 1000);
+				creatureManager->queueActivity(this, 10);
 			}
+		} else if ((parent == NULL) && scno->isPlayer() && !doRandomMovement && hasRandomMovement
+				&& patrolPoints.isEmpty() && System::random(200) < 1) {
+			doRandomMovement = true;
 
-			break;
+			positionZ = obj->getPositionZ();
+
+			//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
+
+			if (!isQueued())
+				creatureManager->queueActivity(this, System::random(30000)
+						+ 1000);
 		}
-
 	} catch (...) {
 		error(
 				"Unreported exception caught in void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj)\n");
 	}
+}
+
+bool CreatureImplementation::shouldAgro(SceneObject * target) {
+	if (this->isDead() || this->isIncapacitated())
+		return false;
+
+	if (!target->isPlayer() && !target->isNonPlayerCreature())
+		return false;
+
+	CreatureObject * creature = (CreatureObject *) target;
+
+	if (creature->isDead() || creature->isIncapacitated())
+		return false;
+
+	if (target->isPlayer()) {
+		Player * player = (Player *) target;
+		if (player->isImmune())
+			return false;
+
+		if (this->isAgressive())
+			return true;
+	}
+
+	if (this->hatesFaction(creature->getFaction()))
+		return true;
+
+	return false;
 }
 
 bool CreatureImplementation::activate() {
@@ -1324,6 +1360,9 @@ bool CreatureImplementation::doMovement() {
 }
 
 void CreatureImplementation::doIncapacitate() {
+	if (isMount())
+		return;
+
 	deagro();
 	setPosture(DEAD_POSTURE);
 
@@ -1395,7 +1434,7 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 bool CreatureImplementation::attack(CreatureObject* target) {
 	info("attacking target");
 
-	if (target == NULL || target == _this || !target->isPlayer())
+	if (target == NULL || target == _this || (!target->isPlayer() && !target->isNonPlayerCreature()))
 		return false;
 
 	if (target->isIncapacitated() || target->isDead()) {
@@ -1497,6 +1536,8 @@ void CreatureImplementation::deagro() {
 			aggroedCreature->handleDeath();
 			removeFromDamageMap(aggroedCreature);
 		}
+
+		removeDefender(aggroedCreature);
 
 		try {
 			zone->lock();

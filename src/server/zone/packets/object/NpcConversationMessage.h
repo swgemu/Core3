@@ -182,8 +182,6 @@ public:
 			insertByte(0);
 
 		insertInt(0);
-
-		delete params;
 	}
 
 };

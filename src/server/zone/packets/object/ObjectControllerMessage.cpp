@@ -317,45 +317,91 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	uint64 target;
 	unicode name;
 
-	//TODO: This needs to be revisted, certain skills can be done while dead or incapacitated:
-	// Like /activateClone, /consent, /unconsent, /haveconsent
-	if ((player->isIncapacitated() || player->isDead()) && (actionCRC
-			!= 0xEA69C1BD && actionCRC != 0x3F8F3496 && actionCRC != 0xA2DF082A
-			&& actionCRC != 0xB93A3853)) {
-		player->clearQueueAction(actioncntr, 0.0f, 1, 19);
-		return;
-	}
 
 	if (actionCRC == 0) {
 		player->clearQueueAction(actioncntr, 0.0f, 0, 0);
 		return;
 	}
 
+	// DO NOT FORGET TO ADD EVERYTHING WHICH IS ALLOWED WHILE BEING INCAP/DEAD TO THIS SWITCH HERE AS WELL
+	switch (actionCRC) {
+		case (0x68851C4F): // groupchat
+		case (0x0315D6D9): // g
+		case (0x3CDFF0CC): // gsay
+		case (0xEA69C1BD): // activateClone
+		case (0x3F8F3496): // consent
+		case (0xA2DF082A): // unconsent
+		case (0xB93A3853): // haveconsent
+		case (0x1E0B1E43): // guildremove
+		case (0x03B65950): // Logout
+		case (0x887B5461): // requestcharactersheetinfo
+		case (0xCA604B86): // requestbadges
+		case (0x7AFCA539): // requeststatmigrationdata
+		case (0x1BAD8FFC): // requestbiography
+		case (0xFBE911E4): // setbiography
+		case (0x164550EF): // getattributesbatch
+		case (0xDB555329): // setcurrentskilltitle
+		case (0xA6F95839): // showpvprating
+		case (0x9B9FE4A8): // toggleawayfromkeyboard
+		case (0x3AD396A5): // lfg
+		case (0x441F4A3E): // newbiehelper
+		case (0x32871193): // roleplay
+		case (0x665C7C03): // display faction rank
+		case (0xD40D5142): // anon
+		case (0x4982E17B): // requestwaypointatposition
+		case (0x8A19D7E1): // requestcharactermatch
+		case (0x640543FE): // waypoint (/way)
+		case (0x398F891A): // setwaypointname
+		case (0xC3EDA6B6): // setwaypointactivestatus
+		case (0x88505D58): // invite
+		case (0x2E26A47F): // uninvite
+		case (0x43E1F84F): // decline
+		case (0xA99E6807): // join
+		case (0x5061D654): // leavegroup
+		case (0x2F50053B): // dismissgroupmember
+		case (0x46D22D3A): // disband
+		case (0x939AD584): // makeleader
+		case (0x79DEB176): // guild (chat)
+		case (0x47948A6D): // guildsay
+		case (0xC64D8CB0): // tip
+		case (0x4178FD6A): // peace
+		case (0xEF3CBEDB): // loot
+		case (0x3CD5C98D): // lootall
+		case (0x2A2357ED): // Add Friend
+		case (0x929AD345): // Add Ignore
+		case (0x3629157F): // Remove Ignore
+		case (0x30BE6EE9): // Find Friend
+		case (0x8E9091D7): // Remove Friend
+		case (0x029D0CC5): // Harvest
+			break;
+		default:
+			if ( player->isIncapacitated() || player->isDead() ) {
+				player->clearQueueAction(actioncntr, 0.0f, 1, 19);
+				return;
+			}
+	}
+
 	player->setActionCounter(actioncntr);
 
-	/*stringstream msg;
-	 msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
-	 player->info(msg.str());*/
+	/*
+	stringstream msg;
+	msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
+	player->info(msg.str());
+	cout << msg.str() << endl;
+	*/
 
 	ChatManager* chatManager;
 	CombatManager* combatManager = serv->getCombatManager();
 	GuildManager* pGuild = serv->getGuildManager();
-
-	// CommandQueueAction* action; - not used anymore?
 
 	switch (actionCRC) {
 	case (0x1E0B1E43): //guildremove
 		player->clearQueueAction(actioncntr);
 		handleRemoveFromGuild(player, pack, serv);
 		break;
-
 	case (0x124629F2): // Meditating
-		if (player->getMeditate()) {
-			player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
-		} else {
-			player->sendSystemMessage("teraskasi", "med_begin");
-			player->queueAction(player, target, actionCRC, actioncntr, "");
-		}
+		parseMeditation(player);
+		player->queueAction(player, target, actionCRC, actioncntr, "");
 		break;
 	case (0x8C2221CB): // Powerboost
 		if (!player->hasSkill(actionCRC)) {
@@ -367,7 +413,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			unicode option = unicode("");
 			string actionModifier = "";
 
-			//ToDo: Duration modifier for Master TK is not in this pack...hmmm
+			//TODO: Duration modifier for Master TK is not in this pack?
 			pack->parseUnicode(option);
 			actionModifier = option.c_str();
 
@@ -484,6 +530,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			return;
 		}
 		parseNpcStopConversation(player, pack);
+		break;
+	case (0x0F13C662): //delegatefactionpoints
+		parseDelFactionPoints(player, pack);
 		break;
 	case (0x887B5461): //requestcharactersheetinfo
 		parseCharacterSheetInfoRequest(player, pack);
@@ -766,9 +815,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		parseHarvestOrganics(player, pack);
 		break;
 	default:
-
-		//Bobius, the changes you made in  584 were breaking the CommandQueue's default player->queueAction !
-
 		target = pack->parseLong();
 		string actionModifier = "";
 
@@ -1108,7 +1154,7 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 void ObjectControllerMessage::parseCharacterSheetInfoRequest(Player* player, Message* pack) {
 	uint64 objectid = pack->parseLong();
 
-	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(objectid);
+	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(player);
 	player->sendMessage(csrm);
 }
 
@@ -2393,21 +2439,21 @@ void ObjectControllerMessage::parseGroupUninvite(Player* player, Message* pack) 
 
 void ObjectControllerMessage::parseGroupLeave(Player* player, Message* pack,
 		GroupManager* groupManager) {
-	GroupObject* group = player->getGroupObject();
+	ManagedReference<GroupObject> group = player->getGroupObject();
 
 	if (group == NULL)
 		return;
 
-	groupManager->leaveGroup(group, player);
+	groupManager->leaveGroup(group.get(), player);
 }
 
 void ObjectControllerMessage::parseGroupDisband(Player* player, Message* pack,
 		GroupManager* groupManager) {
-	GroupObject* group = player->getGroupObject();
+	ManagedReference<GroupObject> group = player->getGroupObject();
 	if (group == NULL)
 		return;
 
-	groupManager->disbandGroup(group, player);
+	groupManager->disbandGroup(group.get(), player);
 }
 
 void ObjectControllerMessage::parseGroupKick(Player* player, Message* pack,
@@ -2420,11 +2466,11 @@ void ObjectControllerMessage::parseGroupKick(Player* player, Message* pack,
 
 	Player* targetObject = (Player*) object;
 
-	GroupObject* group = player->getGroupObject();
+	ManagedReference<GroupObject> group = player->getGroupObject();
 	if (group == NULL)
 		return;
 
-	groupManager->kickFromGroup(group, player, targetObject);
+	groupManager->kickFromGroup(group.get(), player, targetObject);
 }
 
 void ObjectControllerMessage::parseGroupMakeLeader(Player* player,
@@ -2970,7 +3016,8 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 		} else if (craftingTool->isFinished()) {
 
-			player->sendSystemMessage("Cannot start crafting session with item in hopper");
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "crafting_tool_full");
+			player->sendMessage(sysMessage);
 
 		} else {
 
@@ -3466,7 +3513,7 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 }
 
 void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
-	//player is prelocked from ZonePacketHandler
+	//player is prelocked
 	uint64 objectid = pack->parseLong();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3488,3 +3535,69 @@ void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pac
 	player->wlock();
 }
 
+void ObjectControllerMessage::parseMeditation(Player* player) {
+
+	if (player->isMounted() ||
+		player->isDizzied() ||
+		player->isInCombat() ||
+		player->isKnockedDown() ) {
+
+		player->sendSystemMessage("@teraskasi:med_fail");
+
+		return;
+	}
+
+
+	if (player->getMeditate()) {
+		player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
+	} else {
+		player->sendSystemMessage("teraskasi", "med_begin");
+	}
+}
+
+void ObjectControllerMessage::parseDelFactionPoints(Player* player, Message* pack) {
+	uint64 tipToId = pack->parseLong();
+
+	unicode tipParams;
+	pack->parseUnicode(tipParams);
+
+	StringTokenizer tokenizer(tipParams.c_str());
+	tokenizer.setDelimeter(" ");
+
+	if (!tokenizer.hasMoreTokens())
+		return;
+
+	uint32 tipAmount;
+
+	if (tipToId == 0)
+		return;
+
+	//The player has SOMETHING targetted.
+	//Lets first check if its a player, cause if it is we can skip some stuff.
+	SceneObject* object = player->getZone()->lookupObject(tipToId);
+
+	if (object == NULL || !object->isPlayer() || object == player)
+		return;
+
+	//Ok so we know its a player.
+	//If its a player in range, the client will omit any text referencing the name.
+	//So the next param SHOULD be the tip amount.
+	if (!tokenizer.hasMoreTokens())
+		return;
+
+	tipAmount = tokenizer.getIntToken();
+
+	//Quick cast of the object to a Player.
+	Player* tipTo = (Player*) object;
+
+	//They didnt type in a number, or typed in 0.
+	if (tipAmount == 0)
+		return;
+
+	if (tokenizer.hasMoreTokens())
+		return;
+
+	player->delFactionPoints(tipTo, tipAmount);
+
+
+}

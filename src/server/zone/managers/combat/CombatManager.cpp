@@ -145,7 +145,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 
 	creature->broadcastMessage(actionMessage);
 
-	return calculateAttackSpeed(creature, tskill);
+	return calculateWeaponAttackSpeed(creature, tskill);
 }
 
 float CombatManager::doSelfSkill(CommandQueueAction* action) {
@@ -210,7 +210,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 
 			Player* playerTarget = (Player*) targetObject;
 
-			if (targetObject->isPlayer() && (playerTarget->isIncapacitated() || playerTarget->isDead()))
+			if (targetObject->isPlayer() && (playerTarget->isIncapacitated() || playerTarget->isDead() || playerTarget->isImmune()))
 				continue;
 
 
@@ -473,14 +473,6 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 	//Pre: creature wlocked
 
 	Weapon* weapon = creature->getWeapon();
-
-	/*
-	uint32 defaultAttacks[] = {
-				0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
-				0x43C4FFD0, 0x56D7CC78, 0x4B41CAFB, 0x2257D06B,
-				0x306887EB
-	};
-	 */
 
 	if ((weapon != NULL) && (weapon->getCategory() == WeaponImplementation::RANGED))
 		return 0x506E9D4C;
@@ -1169,42 +1161,55 @@ bool CombatManager::calculateCost(CreatureObject* creature, float hamMultiplier,
 	Player* player = (Player*)creature;
 	Weapon* weapon = creature->getWeapon();
 
+	int wpnHealth;
+	int wpnAction;
+	int wpnMind;
+	int forceCost;
+
 	if (weapon != NULL) {
+		wpnHealth = (int)(weapon->getHealthAttackCost() * hamMultiplier);
+		wpnAction = (int)(weapon->getActionAttackCost() * hamMultiplier);
+		wpnMind = (int)(weapon->getMindAttackCost() * hamMultiplier);
+		forceCost = (int)(weapon->getForceCost() * forceMultiplier);
 
-		int wpnHealth = (int)(weapon->getHealthAttackCost() * hamMultiplier);
-		int wpnAction = (int)(weapon->getActionAttackCost() * hamMultiplier);
-		int wpnMind = (int)(weapon->getMindAttackCost() * hamMultiplier);
-		int forceCost = (int)(weapon->getForceCost() * forceMultiplier);
-
-		int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength() / 1500);
-		int actionAttackCost = wpnAction - (wpnAction * creature->getQuickness() / 1500);
-		int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
-
-		if (healthAttackCost < 0)
-			healthAttackCost = 0;
-
-		if (actionAttackCost < 0)
-			actionAttackCost = 0;
-
-		if (mindAttackCost < 0)
-			mindAttackCost = 0;
-
-		if (forceCost < 0)
-			forceCost = 0;
-
-		if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost, -mindAttackCost))
-			return false;
-
-		if (forceCost > 0)
-			player->changeForcePowerBar(-forceCost);
+	} else {
+		// TODO: Find the real TK unarmed HAM costs
+		wpnHealth = 10;
+		wpnAction = 25;
+		wpnMind = 15;
+		forceCost = 0;  // This will have a value for Powers attacks
 	}
 
-	// TODO: Add HAM costs for unarmed
+	int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength() / 1500);
+	int actionAttackCost = wpnAction - (wpnAction * creature->getQuickness() / 1500);
+	int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
+
+	if (healthAttackCost < 0)
+		healthAttackCost = 0;
+
+	if (actionAttackCost < 0)
+		actionAttackCost = 0;
+
+	if (mindAttackCost < 0)
+		mindAttackCost = 0;
+
+	if (forceCost < 0)
+		forceCost = 0;
+
+	if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost, -mindAttackCost))
+		return false;
+
+	if (forceCost > 0) {
+		if (forceCost > player->getForcePower())
+			return false;
+		else
+			player->changeForcePowerBar(-forceCost);
+	}
 
 	return true;
 }
 
-float CombatManager::calculateAttackSpeed(CreatureObject* creature, TargetSkill* tskill) {
+float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill) {
 	Weapon* weapon = creature->getWeapon();
 	float weaponSpeed;
 	int speedMod = 0;
@@ -1256,10 +1261,19 @@ float CombatManager::calculateAttackSpeed(CreatureObject* creature, TargetSkill*
 		}
 	}
 
+	// Classic speed equation
+	if (weapon != NULL)
+		weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
+	else
+		weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * tskill->getSpeedRatio() * 2.0f;
+
+	// New exponential equation
+	/*
 	if (weapon != NULL)
 		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / 17500.0f)) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
 	else
 		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / 17500.0f)) * tskill->getSpeedRatio() * 2.0f;
+	*/
 
 	if (creature->isPlayer())
 		cout << "Weapon speed = " << MAX(weaponSpeed, 1.0f) << endl;

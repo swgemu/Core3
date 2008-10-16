@@ -47,8 +47,8 @@ which carries forward this exception.
 
 class StfParameter;
 
-class StfPointerParameter : public Packet {
-	StfPointerParameter(uint64 p) {
+class StfPointerParameter : public Message {
+	StfPointerParameter(uint64 p) : Message() {
 		insertLong(p);
 		insertAscii("");
 		insertInt(0);
@@ -59,8 +59,8 @@ class StfPointerParameter : public Packet {
 	friend class StfParameter;
 };
 
-class StfFileParameter : public Packet {
-	StfFileParameter(const string& file, const string& str) {
+class StfFileParameter : public Message {
+	StfFileParameter(const string& file, const string& str) : Message() {
 		insertLong(0);
 		insertAscii(file);
 		insertInt(0);
@@ -71,8 +71,8 @@ class StfFileParameter : public Packet {
 	friend class StfParameter;
 };
 
-class StfUnicodeParameter : public Packet {
-	StfUnicodeParameter(const unicode& str) {
+class StfUnicodeParameter : public Message {
+	StfUnicodeParameter(const unicode& str) : Message() {
 		insertLong(0);
 		insertAscii("");
 		insertInt(0);
@@ -84,7 +84,7 @@ class StfUnicodeParameter : public Packet {
 };
 
 
-class StfParameter : public Packet {
+class StfParameter : public Message {
 	Stream * toParam;
 	Stream * tuParam;
 	Stream * ttParam;
@@ -92,7 +92,7 @@ class StfParameter : public Packet {
 	float df;
 
 public:
-	StfParameter() {
+	StfParameter() : Message() {
 		toParam = new StfPointerParameter(0);
 		tuParam = new StfPointerParameter(0);
 		ttParam = new StfPointerParameter(0);
@@ -175,9 +175,6 @@ public:
 	}
 
 	void generate() {
-		clear();
-		reset();
-
 		insertStream(tuParam);
 		insertStream(ttParam);
 		insertStream(toParam);

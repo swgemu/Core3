@@ -53,8 +53,6 @@ interface RecruiterCreature implements Creature {
 	}
 	
 	void sendConversationStartTo(SceneObject obj);
-	
-	void sendFactions(Player player);
 
 	void selectConversationOption(int option, SceneObject obj);
 }

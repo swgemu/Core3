@@ -79,7 +79,7 @@ nyaxAttack2 = {
 
 	range = 15,
 
-	damageRatio = 9.6,
+	damageRatio = 5,
 
 	speedRatio = 3,
 	coneAngle = 30,
@@ -111,7 +111,7 @@ nyaxAttack10 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 9.2,
+	damageRatio = 4.9,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -153,7 +153,7 @@ nyaxAttack11 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 8.35,
+	damageRatio = 5.6,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -227,7 +227,7 @@ nyaxAttack13 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 7.50,
+	damageRatio = 4.6,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -300,7 +300,7 @@ nyaxAttack15 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 8.50,
+	damageRatio = 4.50,
 	speedRatio = 1.15,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -331,7 +331,7 @@ nyaxAttack16 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 8.40,
+	damageRatio = 4.40,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -372,7 +372,7 @@ nyaxAttack17 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 7.50,
+	damageRatio = 3.50,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -403,7 +403,7 @@ nyaxAttack18 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 9.10,
+	damageRatio = 5.10,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -434,7 +434,7 @@ nyaxAttack19 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 9.0,
+	damageRatio = 5.0,
 	speedRatio = 1.15,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -465,7 +465,7 @@ nyaxAttack20 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 8.15,
+	damageRatio = 4.15,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -496,7 +496,7 @@ nyaxAttack21 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 8.15,
+	damageRatio = 4.15,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -527,7 +527,7 @@ nyaxAttack22 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 7.15,
+	damageRatio = 4.15,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -558,7 +558,7 @@ nyaxAttack23 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 8.15,
+	damageRatio = 3.15,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -589,7 +589,7 @@ nyaxAttack24 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 7.15,
+	damageRatio = 5.15,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,

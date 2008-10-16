@@ -11,6 +11,8 @@
 
 #include "engine/service/proto/StandaloneBaseMessage.h"
 
+#include "../../packets/object/StfParameter.h"
+
 class SceneObject;
 
 class Inventory;
@@ -110,6 +112,8 @@ public:
 	bool isRidingCreature();
 
 	bool isMeditating();
+
+	bool hatesFaction(unsigned int faction);
 
 	void updateKnockdownRecovery();
 
@@ -545,6 +549,8 @@ public:
 
 	unsigned int getPvpStatusBitmask();
 
+	unsigned char getFactionRank();
+
 	unsigned int getBankCredits();
 
 	unsigned int getCashCredits();
@@ -919,6 +925,8 @@ public:
 
 	void setPvpStatusBitmask(unsigned int mask);
 
+	void setFactionRank(unsigned char rank, bool updateClient = true);
+
 	void setDizziedState();
 
 	void setStunnedState();
@@ -934,6 +942,8 @@ public:
 	void setDiseasedState(int str, int type, int duration);
 
 	void setOnFireState(int str, int type, int duration);
+
+	void setCreatureBitmask(unsigned int bitmask);
 
 	bool setNextAttackDelay(int del);
 
@@ -960,6 +970,8 @@ public:
 	void setRaceName(const string& name);
 
 	void setSpeciesName(const string& name);
+
+	void setStfName(const string& name);
 
 	void setGender(const string& name);
 
@@ -1065,6 +1077,10 @@ public:
 
 	void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing);
 
+	void say(unicode& message, unsigned int moodid = 0, unsigned int mood2 = 0);
+
+	void say(const string& file, const string& str, StfParameter* param, unsigned int moodid = 0, unsigned int mood2 = 0);
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -1169,6 +1185,8 @@ public:
 	bool isRidingCreature();
 
 	bool isMeditating();
+
+	bool hatesFaction(unsigned int faction);
 
 	void updateKnockdownRecovery();
 
@@ -1602,6 +1620,8 @@ public:
 
 	unsigned int getPvpStatusBitmask();
 
+	unsigned char getFactionRank();
+
 	unsigned int getBankCredits();
 
 	unsigned int getCashCredits();
@@ -1976,6 +1996,8 @@ public:
 
 	void setPvpStatusBitmask(unsigned int mask);
 
+	void setFactionRank(unsigned char rank, bool updateClient);
+
 	void setDizziedState();
 
 	void setStunnedState();
@@ -1991,6 +2013,8 @@ public:
 	void setDiseasedState(int str, int type, int duration);
 
 	void setOnFireState(int str, int type, int duration);
+
+	void setCreatureBitmask(unsigned int bitmask);
 
 	bool setNextAttackDelay(int del);
 
@@ -2017,6 +2041,8 @@ public:
 	void setRaceName(const string& name);
 
 	void setSpeciesName(const string& name);
+
+	void setStfName(const string& name);
 
 	void setGender(const string& name);
 
@@ -2122,6 +2148,10 @@ public:
 
 	void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing);
 
+	void say(unicode& message, unsigned int moodid, unsigned int mood2);
+
+	void say(const string& file, const string& str, StfParameter* param, unsigned int moodid, unsigned int mood2);
+
 protected:
 	string _param0_info__string_bool_;
 	string _param0_doAnimation__string_;
@@ -2154,6 +2184,7 @@ protected:
 	string _param0_setHairAppearanceAttribute__string_char_;
 	string _param0_setRaceName__string_;
 	string _param0_setSpeciesName__string_;
+	string _param0_setStfName__string_;
 	string _param0_setGender__string_;
 	string _param0_setMood__string_;
 	string _param0_setBoneType__string_;
@@ -2168,6 +2199,9 @@ protected:
 	string _param0_setCreatureWeaponClass__string_;
 	string _param0_setCreatureWeaponDamageType__string_;
 	string _param0_setCreatureWeaponArmorPiercing__string_;
+	unicode _param0_say__unicode_int_int_;
+	string _param0_say__string_string_StfParameter_int_int_;
+	string _param1_say__string_string_StfParameter_int_int_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

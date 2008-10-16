@@ -75,6 +75,7 @@ public:
 	void sendSelectItemMessage(Player* player);
 	void sendWoundTerminalMessage(Player* player);
 	void sendStateTerminalMessage(Player* player);
+	void sendFactionPointTerminalMessage(Player * player);
 
 	void selectConversationOption(int option, SceneObject* obj);
 

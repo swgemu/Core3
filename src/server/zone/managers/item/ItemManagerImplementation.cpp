@@ -48,6 +48,7 @@ which carries forward this exception.
 
 #include "../../Zone.h"
 #include "../../ZoneServer.h"
+#include "../../ZoneProcessServerImplementation.h"
 
 #include "../player/PlayerManager.h"
 #include "../creature/CreatureManager.h"
@@ -59,9 +60,10 @@ BlueFrogItemSet * ItemManagerImplementation::bfItemSet = NULL;
 BlueFrogProfessionSet * ItemManagerImplementation::bfProfSet = NULL;
 bool ItemManagerImplementation::bfEnabled = false;
 
-ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv) :
+ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv, ZoneProcessServerImplementation* pServ) :
 	ItemManagerServant(), Lua() {
 	server = serv;
+	pServer = pServ;
 
 	nextStaticItemID = 0x90000000;
 
@@ -119,7 +121,7 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 			createPlayerObject(player, res);
 		}
 
-		loadDefaultPlayerDatapadItems(player);
+		loadPlayerDatapadItems(player);
 
 		delete res;
 	} catch (DatabaseException& e) {
@@ -890,7 +892,6 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		float mindmg = itemconfig.getFloatField("minDamage");
 		float maxdmg = itemconfig.getFloatField("maxDamage");
 
-
 		Weapon* weapon = (Weapon*) item;
 		weapon->setDamageType(damageType);
 		weapon->setArmorPiercing(ap);
@@ -1122,14 +1123,50 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 
 }
 
-void ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player) {
+void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
+	try {
+		stringstream query;
 
-	// Leave in the x34 incase something goes wrong with deeds
-	// x34
-	MountCreature* land3 = new MountCreature(player, "landspeeder_x34", "monster_name",
-			String::hashCode("object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"), 0x4EC3780C, player->getNewItemID());
-	land3->addToDatapad();
+		query << "SELECT datapad.inx, datapad.character_id, datapad.name, datapad.itnocrc, datapad.item_crc, "
+			<< "datapad.file_name, datapad.attributes, datapad.appearance, datapad.itemMask, datapad.obj_id "
+			<< "FROM datapad where character_id = " << player->getCharacterID() << ";";
 
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+		MountCreature* land = NULL;
+
+		while (res->next()) {
+			string appearance = res->getString(7);
+
+			land = new MountCreature(player, res->getString(2), "monster_name",
+					res->getLong(3), res->getLong(4), res->getUnsignedLong(9));
+
+			land->setZoneProcessServer(pServer);
+
+			if (appearance != "") {
+				BinaryData cust(appearance);
+				string custStr;
+				cust.decode(custStr);
+
+				land->setCharacterAppearance(custStr);
+			}
+
+			land->addToDatapad();
+
+		}
+
+		delete res;
+
+	} catch (DatabaseException& e) {
+		player->error("Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
+		player->error(e.getMessage());
+	} catch (...) {
+		cout << "Exception in ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)\n";
+		player->error("Load Datapad unknown exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
+	}
+
+
+	//ToDO: If the datapad load is working fine for a while, delete this commented stuff here
 	/*
 	// SWOOP
 	MountCreature* swoop = new MountCreature(player, "speederbike_swoop", "monster_name",
@@ -1216,13 +1253,16 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 		BinaryData cust(itemApp);
 		cust.encode(appearance);
 
+		string attr = item->getAttributes();
+		MySqlDatabase::escapeString(attr);
+
 		stringstream query;
 		query << "INSERT INTO `character_items` "
 		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`, `itemMask`)"
 		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
 		<< ",'\\" << itemname << "',"
 		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
-		<< item->isEquipped() << ",'" << item->getAttributes()
+		<< item->isEquipped() << ",'" << attr
 		<< "','" << appearance.substr(0, appearance.size() - 1) << "', " << item->getPlayerUseMask() << ")";
 
 		ServerDatabase::instance()->executeStatement(query);
@@ -1245,10 +1285,13 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		BinaryData cust(itemApp);
 		cust.encode(appearance);
 
+		string attr = item->getAttributes();
+		MySqlDatabase::escapeString(attr);
+
 		stringstream query;
 		query << "update `character_items` set equipped = " << item->isEquipped();
 		query << ", character_id = " << player->getCharacterID() << " ";
-		query << ", attributes = '" << item->getAttributes() << "' ";
+		query << ", attributes = '" << attr << "' ";
 		query << ", appearance = '" << appearance.substr(0, appearance.size() - 1) << "' ";
 		query << ", itemMask = " << item->getPlayerUseMask() << " ";
 		query << "where item_id = " << item->getObjectID();

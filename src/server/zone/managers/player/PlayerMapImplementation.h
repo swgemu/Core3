@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "system/lang.h"
 
-class Player;
-
 #include "PlayerMap.h"
+
+#include "../../objects/player/Player.h"
 
 class PlayerMapImplementation : public PlayerMapServant, private HashTable<string, Player*>, private HashTableIterator<string, Player*>, public Mutex {
 	int hash(const string& key) {
@@ -68,6 +68,9 @@ public:
 		lock(doLock);
 
 		play = HashTable<string, Player*>::put(name, player);
+
+		if (play == NULL)
+			player->acquire();
 
 		unlock(doLock);
 
@@ -94,6 +97,9 @@ public:
 		lock(doLock);
 
 		player = HashTable<string, Player*>::remove(name);
+
+		if (player != NULL)
+			player->release();
 
 		unlock(doLock);
 

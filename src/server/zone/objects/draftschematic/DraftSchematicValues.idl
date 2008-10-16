@@ -70,6 +70,7 @@ interface DraftSchematicValues implements ManagedObject {
 	float getCurrentPercentage(const string& attribute);
 	float getCurrentPercentage(const int index);
 	float getCurrentPercentageAverage(const int index);
+	float getCurrentPercentageAverage(const string title);
 
 	float getMaxPercentage(const string& attribute);
 	float getMaxPercentage(const int index);

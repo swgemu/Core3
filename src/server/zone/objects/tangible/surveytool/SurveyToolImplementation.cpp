@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -51,32 +51,32 @@ which carries forward this exception.
 
 #include "../../../managers/resource/ResourceManager.h"
 
-SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn) 
+SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn)
 		: SurveyToolServant(object_id, tempCRC, n, tempn, SURVEYTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
-	
+
 	templateName = tempn;
-	
+
 	name = n;
-	
+
 	init();
 }
 
-SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn) 
+SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
 		: SurveyToolServant(creature, tempCRC, n, tempn, SURVEYTOOL) {
 	objectCRC = tempCRC;
-	
+
 	templateTypeName = "obj_n";
 	templateName = tempn;
-	
+
 	name = n;
-	
+
 	init();
 }
 
 SurveyToolImplementation::~SurveyToolImplementation() {
-	
+
 }
 
 void SurveyToolImplementation::init() {
@@ -97,24 +97,24 @@ void SurveyToolImplementation::init() {
 	} else if (templateName == "survey_tool_wind") {
 		surveyToolType = WIND;
 	}
-	
+
 	setSurveyToolRange(0);
 }
 
 int SurveyToolImplementation::useObject(Player* player) {
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
-	
+
 	string skillBox = "crafting_artisan_novice";
 	if (player->getParent() != NULL && player->getParent()->isCell()) {
 		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
 		return 0;
 	}
-	
+
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 		// Added to set a default range.  Remove this to disable feature.
 		if (getSurveyToolRange() == 0)
 			setSurveyToolRange(64);
-		
+
 		if (getSurveyToolRange() > 0) {
 			if (resourceManager->sendSurveyResources(player, getSurveyToolType())) {
 				player->setSurveyTool(_this);
@@ -126,58 +126,77 @@ int SurveyToolImplementation::useObject(Player* player) {
 	} else {
 		player->sendSystemMessage("You do not have sufficient abilities to open " + getName().c_str() + ".");
 	}
-	
+
 	return 0;
 }
 
 void SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
-	omr->addRadialItem(4, 137, 3, "@sui:survey_range");
+
+	try {
+		SceneObject* parent = player->getParent();
+
+		if (parent != NULL) {
+			if (parent->isCell()) {
+				omr->addRadialItem(5, 137, 3, "@sui:survey_range");
+			} else { //is this even possible? Parent not NULL but no cell?
+				omr->addRadialItem(4, 137, 3, "@sui:survey_range");
+			}
+		} else {
+			omr->addRadialItem(4, 137, 3, "@sui:survey_range");
+		}
+
+	} catch (...) {
+		cout << "Unreported exception in SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr\n";
+	}
+
 	omr->finish();
 
 	player->sendMessage(omr);
+
+	//TODO: Delta for updating the tool's range
 }
 
 void SurveyToolImplementation::generateAttributes(SceneObject* obj) {
 
 	if (!obj->isPlayer())
 		return;
-		
+
 	Player* player = (Player*) obj;
-	
+
 	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
-	
+
 	addAttributes(alm);
-	
+
 	player->sendMessage(alm);
-	
+
 }
 
 void SurveyToolImplementation::addAttributes(AttributeListMessage* alm) {
-	
+
 	alm->insertAttribute("volume", "1");
-	
-	if(craftersName != ""){ 
-		
+
+	if(craftersName != ""){
+
 		alm->insertAttribute("crafter", craftersName);
 	}
 	if(craftedSerial != ""){
-		
+
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
-	
+
 	alm->insertAttribute("range", surveyToolRange);
-	
+
 }
 
 void SurveyToolImplementation::parseItemAttributes() {
 
 	string temp = "craftersname";
 	craftersName = itemAttributes->getStringAttribute(temp);
-	
+
 	temp = "craftedserial";
 	craftedSerial = itemAttributes->getStringAttribute(temp);
-	
+
 	temp = "range";
 	surveyToolRange = itemAttributes->getIntAttribute(temp);
 
@@ -185,9 +204,9 @@ void SurveyToolImplementation::parseItemAttributes() {
 
 void SurveyToolImplementation::sendSurveyEffect(Player* player) {
 	PlayClientEffectLoc* effect;
-	
+
 	stringstream file;
-	
+
 	switch (getSurveyToolType()) {
 	case 1: // Solar
 		file << "clienteffect/survey_tool_moisture.cef";
@@ -214,17 +233,17 @@ void SurveyToolImplementation::sendSurveyEffect(Player* player) {
 		file << "clienteffect/survey_tool_gas.cef";
 		break;
 	}
-	
+
 	effect = new PlayClientEffectLoc(file.str(), player->getZoneIndex(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
-	
+
 	player->broadcastMessage(effect);
 }
 
 void SurveyToolImplementation::sendSampleEffect(Player* player) {
 	PlayClientEffectLoc* effect;
-	
+
 	stringstream file;
-	
+
 	switch (getSurveyToolType()) {
 	case 1: // Solar
 		file << "clienteffect/survey_sample_moisture.cef";
@@ -251,9 +270,9 @@ void SurveyToolImplementation::sendSampleEffect(Player* player) {
 		file << "clienteffect/survey_sample_gas.cef";
 		break;
 	}
-	
+
 	effect = new PlayClientEffectLoc(file.str(), player->getZoneIndex(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
-	
+
 	player->broadcastMessage(effect);
 }
 
@@ -262,7 +281,7 @@ void SurveyToolImplementation::surveyRequest(Player* player, string resourceName
 		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
 		return;
 	}
-	
+
 	if (player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
 		if (!player->getCanSample() && !player->getCancelSample()) {
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","survey_sample");
@@ -283,7 +302,7 @@ void SurveyToolImplementation::sampleRequest(Player* player, string resourceName
 		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
 		return;
 	}
-	
+
 	if (player->getZone()->getZoneServer()->getResourceManager()->checkResource(player, resourceName, getSurveyToolType())) {
 		if (!player->getCanSurvey()) {
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_survey");

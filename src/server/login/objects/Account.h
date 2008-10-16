@@ -188,13 +188,13 @@ public:
 			      << " WHERE userid = (SELECT "
 			      << ForumsDatabase::userTable() << ".userid "
 			      << "FROM " << ForumsDatabase::userTable()
-			      << " WHERE username = \'" << username << "\') ) as banned, "
+			      << " WHERE username = \'" << username << "\' LIMIT 1 ) LIMIT 1 ) as banned, "
 				  << "(SELECT userid FROM "
 				  << ForumsDatabase::newActivationTable()
 			      << " WHERE userid = (SELECT "
 			      << ForumsDatabase::userTable() << ".userid "
 			      << "FROM " << ForumsDatabase::userTable()
-			      << " WHERE username = \'" << username << "\') ) as newuser "
+			      << " WHERE username = \'" << username << "\' LIMIT 1 ) LIMIT 1 ) as newuser "
 				  << " FROM " << ForumsDatabase::userTable()
 			      << " WHERE "
 			      << ForumsDatabase::userTable() << ".username = \'" << username << "\'";

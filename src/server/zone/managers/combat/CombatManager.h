@@ -120,7 +120,7 @@ public:
 	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon);
 	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part);
 	bool calculateCost(CreatureObject* creature, float hamMultiplier = 1,  float forceMultiplier = 0);
-	float calculateAttackSpeed(CreatureObject* creature, TargetSkill* tskill);
+	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill);
 	float calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill);
 };
 

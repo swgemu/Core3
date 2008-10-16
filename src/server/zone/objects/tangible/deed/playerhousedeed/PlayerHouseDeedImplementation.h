@@ -14,22 +14,16 @@ class SceneObject;
 class PlayerHouseDeedImplementation : public PlayerHouseDeedServant {
 protected:
 	int type, cellCount;
-public:
 
 public:
-
 	PlayerHouseDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn);
 	PlayerHouseDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
 	~PlayerHouseDeedImplementation();
 
-	//int useObject(Player* player);
-
-	//inline PlayerHouseDeed* deploy() {
-	//	return (PlayerHouseDeed*) SceneObjectImplementation::deploy();
-	//}
-	inline int getCellCount(){
+	inline int getCellCount() {
 		return cellCount;
 	}
+
 private:
 	void init();
 };

@@ -138,7 +138,7 @@ void CreatureManager::loadMissionCreatures() {
 		((CreatureManagerImplementation*) _impl)->loadMissionCreatures();
 }
 
-void CreatureManager::unloadCreature(Creature* creature) {
+void CreatureManager::load(Creature* creature) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -148,7 +148,33 @@ void CreatureManager::unloadCreature(Creature* creature) {
 
 		method.executeWithVoidReturn();
 	} else
+		((CreatureManagerImplementation*) _impl)->load(creature);
+}
+
+void CreatureManager::unloadCreature(Creature* creature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
 		((CreatureManagerImplementation*) _impl)->unloadCreature(creature);
+}
+
+bool CreatureManager::verifyCreatureSpawn(string& name) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+		method.addAsciiParameter(name);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureManagerImplementation*) _impl)->verifyCreatureSpawn(name);
 }
 
 Creature* CreatureManager::spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock, float height) {
@@ -156,7 +182,7 @@ Creature* CreatureManager::spawnCreature(unsigned int objcrc, unsigned long long
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 17);
 		method.addUnsignedIntParameter(objcrc);
 		method.addUnsignedLongParameter(cellid);
 		method.addFloatParameter(x);
@@ -176,7 +202,7 @@ TrainerCreature* CreatureManager::spawnTrainer(const string& profession, const s
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 		method.addAsciiParameter(profession);
 		method.addAsciiParameter(stfname);
 		method.addAsciiParameter(name);
@@ -199,7 +225,7 @@ ShuttleCreature* CreatureManager::spawnShuttle(const string& Planet, const strin
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 		method.addAsciiParameter(Planet);
 		method.addAsciiParameter(City);
 		method.addObjectParameter(playerSpawnPoint);
@@ -216,22 +242,23 @@ ShuttleCreature* CreatureManager::spawnShuttle(const string& Planet, const strin
 		return ((CreatureManagerImplementation*) _impl)->spawnShuttle(Planet, City, playerSpawnPoint, cellid, x, y, z, tax, starport, doLock);
 }
 
-RecruiterCreature* CreatureManager::spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
+RecruiterCreature* CreatureManager::spawnRecruiter(float x, float y, float oY, float oW, unsigned char type, unsigned long long cellid, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
-		method.addAsciiParameter(stfname);
-		method.addAsciiParameter(name);
-		method.addSignedIntParameter(objCrc);
+		DistributedMethod method(this, 20);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
+		method.addFloatParameter(oY);
+		method.addFloatParameter(oW);
+		method.addUnsignedCharParameter(type);
+		method.addUnsignedLongParameter(cellid);
 		method.addBooleanParameter(doLock);
 
 		return (RecruiterCreature*) method.executeWithObjectReturn();
 	} else
-		return ((CreatureManagerImplementation*) _impl)->spawnRecruiter(stfname, name, objCrc, x, y, doLock);
+		return ((CreatureManagerImplementation*) _impl)->spawnRecruiter(x, y, oY, oW, type, cellid, doLock);
 }
 
 LairObject* CreatureManager::spawnLair(const string& type, float x, float y, float z, bool doLock) {
@@ -239,7 +266,7 @@ LairObject* CreatureManager::spawnLair(const string& type, float x, float y, flo
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 21);
 		method.addAsciiParameter(type);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
@@ -256,7 +283,7 @@ ActionCreature* CreatureManager::spawnActionCreature(string& name, string& stfna
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 22);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(stfname);
 		method.addUnsignedIntParameter(objCrc);
@@ -278,7 +305,7 @@ unsigned int CreatureManager::getCreatureCrc(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 		method.addAsciiParameter(name);
 
 		return method.executeWithUnsignedIntReturn();
@@ -291,7 +318,7 @@ bool CreatureManager::hotLoadCreature(string& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 24);
 		method.addAsciiParameter(name);
 
 		return method.executeWithBooleanReturn();
@@ -304,7 +331,7 @@ void CreatureManager::registerFunctions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 25);
 
 		method.executeWithVoidReturn();
 	} else
@@ -316,7 +343,7 @@ void CreatureManager::registerGlobals() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 26);
 
 		method.executeWithVoidReturn();
 	} else
@@ -328,7 +355,7 @@ void CreatureManager::loadCreatureFile() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 27);
 
 		method.executeWithVoidReturn();
 	} else
@@ -340,12 +367,25 @@ Creature* CreatureManager::getCreature(unsigned long long oid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 28);
 		method.addUnsignedLongParameter(oid);
 
 		return (Creature*) method.executeWithObjectReturn();
 	} else
 		return ((CreatureManagerImplementation*) _impl)->getCreature(oid);
+}
+
+void CreatureManager::addCreature(Creature* creature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureManagerImplementation*) _impl)->addCreature(creature);
 }
 
 /*
@@ -384,43 +424,52 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		loadMissionCreatures();
 		break;
 	case 14:
-		unloadCreature((Creature*) inv->getObjectParameter());
+		load((Creature*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getFloatParameter())->_getObjectID());
+		unloadCreature((Creature*) inv->getObjectParameter());
 		break;
 	case 16:
-		resp->insertLong(spawnTrainer(inv->getAsciiParameter(_param0_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param1_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param2_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertBoolean(verifyCreatureSpawn(inv->getAsciiParameter(_param0_verifyCreatureSpawn__string_)));
 		break;
 	case 17:
-		resp->insertLong(spawnShuttle(inv->getAsciiParameter(_param0_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_), inv->getAsciiParameter(_param1_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_), (Coordinate*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(spawnCreature(inv->getUnsignedIntParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
 	case 18:
-		resp->insertLong(spawnRecruiter(inv->getAsciiParameter(_param0_spawnRecruiter__string_string_int_float_float_bool_), inv->getAsciiParameter(_param1_spawnRecruiter__string_string_int_float_float_bool_), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(spawnTrainer(inv->getAsciiParameter(_param0_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param1_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getAsciiParameter(_param2_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_), inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 19:
-		resp->insertLong(spawnLair(inv->getAsciiParameter(_param0_spawnLair__string_float_float_float_bool_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(spawnShuttle(inv->getAsciiParameter(_param0_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_), inv->getAsciiParameter(_param1_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_), (Coordinate*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 20:
-		resp->insertLong(spawnActionCreature(inv->getAsciiParameter(_param0_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_), inv->getAsciiParameter(_param1_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(spawnRecruiter(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 21:
-		resp->insertInt(getCreatureCrc(inv->getAsciiParameter(_param0_getCreatureCrc__string_)));
+		resp->insertLong(spawnLair(inv->getAsciiParameter(_param0_spawnLair__string_float_float_float_bool_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 22:
-		resp->insertBoolean(hotLoadCreature(inv->getAsciiParameter(_param0_hotLoadCreature__string_)));
+		resp->insertLong(spawnActionCreature(inv->getAsciiParameter(_param0_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_), inv->getAsciiParameter(_param1_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 23:
-		registerFunctions();
+		resp->insertInt(getCreatureCrc(inv->getAsciiParameter(_param0_getCreatureCrc__string_)));
 		break;
 	case 24:
-		registerGlobals();
+		resp->insertBoolean(hotLoadCreature(inv->getAsciiParameter(_param0_hotLoadCreature__string_)));
 		break;
 	case 25:
-		loadCreatureFile();
+		registerFunctions();
 		break;
 	case 26:
+		registerGlobals();
+		break;
+	case 27:
+		loadCreatureFile();
+		break;
+	case 28:
 		resp->insertLong(getCreature(inv->getUnsignedLongParameter())->_getObjectID());
+		break;
+	case 29:
+		addCreature((Creature*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -461,8 +510,16 @@ void CreatureManagerAdapter::loadMissionCreatures() {
 	return ((CreatureManagerImplementation*) impl)->loadMissionCreatures();
 }
 
+void CreatureManagerAdapter::load(Creature* creature) {
+	return ((CreatureManagerImplementation*) impl)->load(creature);
+}
+
 void CreatureManagerAdapter::unloadCreature(Creature* creature) {
 	return ((CreatureManagerImplementation*) impl)->unloadCreature(creature);
+}
+
+bool CreatureManagerAdapter::verifyCreatureSpawn(string& name) {
+	return ((CreatureManagerImplementation*) impl)->verifyCreatureSpawn(name);
 }
 
 Creature* CreatureManagerAdapter::spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock, float height) {
@@ -477,8 +534,8 @@ ShuttleCreature* CreatureManagerAdapter::spawnShuttle(const string& Planet, cons
 	return ((CreatureManagerImplementation*) impl)->spawnShuttle(Planet, City, playerSpawnPoint, cellid, x, y, z, tax, starport, doLock);
 }
 
-RecruiterCreature* CreatureManagerAdapter::spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
-	return ((CreatureManagerImplementation*) impl)->spawnRecruiter(stfname, name, objCrc, x, y, doLock);
+RecruiterCreature* CreatureManagerAdapter::spawnRecruiter(float x, float y, float oY, float oW, unsigned char type, unsigned long long cellid, bool doLock) {
+	return ((CreatureManagerImplementation*) impl)->spawnRecruiter(x, y, oY, oW, type, cellid, doLock);
 }
 
 LairObject* CreatureManagerAdapter::spawnLair(const string& type, float x, float y, float z, bool doLock) {
@@ -511,6 +568,10 @@ void CreatureManagerAdapter::loadCreatureFile() {
 
 Creature* CreatureManagerAdapter::getCreature(unsigned long long oid) {
 	return ((CreatureManagerImplementation*) impl)->getCreature(oid);
+}
+
+void CreatureManagerAdapter::addCreature(Creature* creature) {
+	return ((CreatureManagerImplementation*) impl)->addCreature(creature);
 }
 
 /*

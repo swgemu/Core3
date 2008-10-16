@@ -21,6 +21,7 @@ protected:
 
 public:
 	static const int HARVESTER = 1;
+	static const int FACTORY = 2;
 
 public:
 
@@ -28,17 +29,10 @@ public:
 	InstallationObjectImplementation(uint64 oid, DeedObject* theDeed);
 	~InstallationObjectImplementation();
 
+	void init();
 
-	void initialize();
-
-	void insertToZone(Zone* zone);
-
+	//void insertToZone(Zone* zone);
 	void sendTo(Player* player, bool doClose = true);
-
-
-	//inline InstallationObject* deploy() {
-	//	return (InstallationObject*) SceneObjectImplementation::deploy();
-	//}
 
 	void handleStructureRedeed(Player * player);
 	void handleStructureRedeedConfirm(Player * player);

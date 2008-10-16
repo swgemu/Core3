@@ -54,16 +54,12 @@ interface DeedObject implements TangibleObject {
 	DeedObject(unsigned long oid, int tempCRC, const unicode n, const string tempn)  {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
-	
-	int getDeedSubType();
 
 	unicode getTargetName();
 
 	string getTargetFile();
 
 	string getTargetTemplate();
-
-	void setDeedSubType(int tp);
 
 	void setTargetFile(string path);
 	

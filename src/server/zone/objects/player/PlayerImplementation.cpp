@@ -222,6 +222,7 @@ void PlayerImplementation::init() {
 	deathCount = 0;
 	pvpRating = PVPRATING_DEFAULT; //New players start with pvpRating of 1200
 	duelList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
+	factionStatus = 0;
 
 	// profession
 	skillPoints = 0;
@@ -245,11 +246,6 @@ void PlayerImplementation::init() {
 	misoBSB = 0;
 	curMisoKeys = "";
 	finMisoKeys = "";
-
-	//temp
-	factionRank = "Sexy Tester";
-	rebelPoints = 0;
- 	imperialPoints = 0;
 
  	regionId = 31; //Ancorhead I think lols.
 
@@ -521,8 +517,10 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerObject->updateAllFriends(playerObject);
-		playerManager->updateOtherFriendlists(_this, true);
 		playerManager->updateGuildStatus(_this);
+
+		if (isMounted())
+			dismount(true, true);
 
 		//resetArmorEncumbrance();
 
@@ -531,6 +529,8 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		//reset mission vars:
 		misoRFC = 0x01;
 		misoBSB = 0;
+
+		playerManager->updateOtherFriendlists(_this, true);
 
 		unlock();
 	} catch (Exception& e) {
@@ -671,6 +671,8 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 	info("saving player state");
 
 	saveWaypoints(_this);
+
+	saveDatapad(_this);
 
 	playerObject->saveFriends();
 	playerObject->saveIgnore();
@@ -828,7 +830,7 @@ void PlayerImplementation::createItems() {
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadDefaultPlayerItems(_this);
-	itemManager->loadDefaultPlayerDatapadItems(_this);
+	itemManager->loadPlayerDatapadItems(_this);
 
 	if (!hairObject.empty()) {
 		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
@@ -1021,7 +1023,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		sendToOwner();
 
-		if (parent != NULL) {
+		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
 			insertToBuilding(building);
 			building->notifyInsertToZone(_this);
@@ -1286,6 +1288,86 @@ void PlayerImplementation::removeFromZone(bool doLock) {
 	}
 }
 
+void PlayerImplementation::deaggro() {
+	// TODO: FIX: this will deadlock if its called with a player from this defender list locked: eg: command handler @summon
+	// Temporarly moved to ::load and ::reload till we figure a better solution
+	// pre this wlocked
+	// post this wlocked
+	try {
+		if (isInCombat()) {
+
+			SceneObject* scno = NULL;
+			Creature* defender = NULL;
+
+			CreatureObject* aggroedCreature = NULL;
+			Player* aggroedPlayer = NULL;
+
+			for (int i = 0; i < getDefenderListSize(); ++i) {
+				scno = getDefender(i);
+
+				if (scno->isNonPlayerCreature()) {
+
+					defender = (Creature*) scno;
+					aggroedCreature = defender->getAggroedCreature();
+
+					if (aggroedCreature != NULL && aggroedCreature->isPlayer()) {
+
+						aggroedPlayer = (Player*) aggroedCreature;
+
+						if (aggroedPlayer->getFirstName() == getFirstName()) {
+
+							try {
+								if ((SceneObject*) defender
+										!= (SceneObject*) _this)
+
+								defender->wlock(_this);
+								defender->deagro();
+								defender->removeFromDamageMap(aggroedCreature);
+								removeDefender(scno);
+
+								if ((SceneObject*) defender
+										!= (SceneObject*) _this)
+									defender->unlock();
+							} catch (...) {
+								if ((SceneObject*) defender
+										!= (SceneObject*) _this)
+									defender->unlock();
+							}
+						}
+					}
+				}
+
+				if (scno->isPlayer()) {
+					aggroedPlayer = (Player*) scno;
+
+					try {
+						if ((SceneObject*) aggroedPlayer != (SceneObject*) _this)
+							aggroedPlayer->wlock(_this);
+
+						aggroedPlayer->removeDefender(_this);
+						removeDefender(scno);
+
+						if ((SceneObject*) aggroedPlayer != (SceneObject*) _this)
+							aggroedPlayer->unlock();
+					} catch (...) {
+						if ((SceneObject*) aggroedPlayer != (SceneObject*) _this)
+							aggroedPlayer->unlock();
+					}
+
+				}
+
+			}
+
+			postureState = UPRIGHT_POSTURE;
+			updateStates();
+
+		}
+
+	} catch (...) {
+		error("unreported exception caught in PlayerImplementation::deaggro()");
+	}
+}
+
 void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doLock) {
 	if (building == NULL || !isInQuadTree() || !parent->isCell())
 		return;
@@ -1369,6 +1451,8 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 }
 
 void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
+	//cout << "PlayerImplementation::notifyDissapear" << endl;
+
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
 	Player* player;
@@ -1438,17 +1522,14 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 	if (zone == NULL)
 		return;
 
+	if (isMounted())
+		dismount(true, true);
+
 	removeFromZone();
 
 	parent = NULL;
 
-	//positionX = x;
-	//positionY = y;
-	//positionZ = zone->getHeight(x, y);;
-	//Spawning-in-the-air-fix: If player is not in a ship or building, we override Z-Axis with Zero. Client is always overrding Z-Axis with TerrainMinHeight
-	if (parent == NULL)
-		setPosition(x, 0, y);
-
+	setPosition(x, 0, y);
 
 	if (parentID != 0) {
 		SceneObject* newParent = zone->lookupObject(parentID);
@@ -1512,12 +1593,12 @@ void PlayerImplementation::notifySceneReady() {
 }
 
 void PlayerImplementation::loadGuildChat() {
-	GroupManager* groupManager = server->getGroupManager();
+	ChatManager* chatManager = server->getChatManager();
 
-	if (groupManager)
-		groupManager->joinGuildGroup(_this);
+	if (chatManager)
+		chatManager->sendGuildChat(_this);
 	else
-		error("Error: PlayerManagerImplementation::loadGuildChat() groupManager is null ");
+		error("Error: PlayerManagerImplementation::loadGuildChat() chatManager is null ");
 }
 
 void PlayerImplementation::sendSystemMessage(const string& message) {
@@ -1527,6 +1608,11 @@ void PlayerImplementation::sendSystemMessage(const string& message) {
 
 void PlayerImplementation::sendSystemMessage(const string& file, const string& str, uint64 targetid) {
 	ChatSystemMessage* msg = new ChatSystemMessage(file, str, targetid);
+	sendMessage(msg);
+}
+
+void PlayerImplementation::sendSystemMessage(const string& file, const string& str,StfParameter * param) {
+	ChatSystemMessage* msg = new ChatSystemMessage(file, str, param);
 	sendMessage(msg);
 }
 
@@ -2141,9 +2227,9 @@ void PlayerImplementation::doClone() {
 	switch (zoneID) {
 	case 0:	// Corellia
 		if (faction == String::hashCode("rebel"))
-			doWarp(-326.0f, -4640.0f, 0, true);				// shuttle 1
+			doWarp(-326.0f, -4640.0f);				// shuttle 1
 		else
-			doWarp(-28.0f, -4438.0f);						// shuttle 2
+			doWarp(-28.0f, -4438.0f);				// shuttle 2
 
 		break;
 	case 1:	// Dantooine
@@ -2155,7 +2241,7 @@ void PlayerImplementation::doClone() {
  		break;
 	case 2: // Dathomir
 		if (faction == String::hashCode("rebel"))			// science outpost
-			doWarp(-76.0f, -1627.0f, 0, true);
+			doWarp(-76.0f, -1627.0f);
 		else
 			doWarp(618.0f, 3054.0f);						// trade outpost
 
@@ -2204,9 +2290,9 @@ void PlayerImplementation::doClone() {
  		break;
 	default:
 		if (faction == String::hashCode("rebel"))
-			doWarp(-130.0f, -5300.0f, 0, true);
+			doWarp(-130.0f, -5300.0f);
 		else if (faction == String::hashCode("imperial"))
-			//doWarp(10.0f, -5480.0f, 0, true);
+     		//doWarp(10.0f, -5480.0f, 0, true);
 			doWarp(-2.8f, 0.1f, -4.8f, 0, 3565798);
 		else
 			doWarp(0.5f, 1.5f, 0.3f, 0, 1590892); // ah cloning facility
@@ -2280,9 +2366,12 @@ void PlayerImplementation::doPowerboost() {
 	string txt1 = "combat_unarmed_master";
 
 	if (hasSkillBox(txt1))
-		//ToDo: Hmm...Master duration modifier is missing in the packet? TKM should have 10 Minutes powerboost but the !client! fires only 5 minute powerboost at master as well
+		// ToDo: Master duration modifier is missing in the packet?
+		// TKM should have 10 Minutes powerboost but the client sends only 5 minute powerboost at master as well
 		//duration = 600000;
+
 		duration = 300000;
+
 	else if (hasSkillBox(txt0))
 		duration = 300000;
 
@@ -2410,6 +2499,9 @@ void PlayerImplementation::lootCorpse(bool lootAll) {
 
 	Creature* target = (Creature*) targetObject.get();
 
+	if (target->isMount())
+		return;
+
 	if (!isIncapacitated() && !isDead() && isInRange(target, 20)) {
 		LootManager* lootManager = server->getLootManager();
 
@@ -2421,6 +2513,9 @@ void PlayerImplementation::lootCorpse(bool lootAll) {
 }
 
 void PlayerImplementation::lootObject(Creature* creature, SceneObject* object) {
+	if (creature->isMount())
+		return;
+
 	LootManager* lootManager = server->getLootManager();
 
 	lootManager->lootObject(_this, creature, object->getObjectID());
@@ -3221,6 +3316,8 @@ void PlayerImplementation::setOvert() {
 
 	characterMask &= ~COVERT;
 
+	factionStatus = 2;
+
 	uint32 pvpBitmask = pvpStatusBitmask;
 
 	try {
@@ -3232,6 +3329,9 @@ void PlayerImplementation::setOvert() {
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 				sendFactionStatusTo(player, true);
+			} else if (object->isNonPlayerCreature()) {
+				CreatureObjectImplementation * npc = (CreatureObjectImplementation *) object->_getImplementation();
+				npc->sendFactionStatusTo(_this);
 			}
 		}
 
@@ -3248,6 +3348,8 @@ void PlayerImplementation::setCovert() {
 
 	characterMask |= COVERT;
 
+	factionStatus = 1;
+
 	try {
 		zone->lock();
 
@@ -3257,6 +3359,9 @@ void PlayerImplementation::setCovert() {
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 				sendFactionStatusTo(player, true);
+			} else if (object->isNonPlayerCreature()) {
+				CreatureObjectImplementation * npc = (CreatureObjectImplementation *) object->_getImplementation();
+				npc->sendFactionStatusTo(_this);
 			}
 		}
 
@@ -3780,6 +3885,10 @@ void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
 }
 
 void PlayerImplementation::setEntertainerEvent() {
+	if (entertainerEvent != NULL) {
+		server->removeEvent(entertainerEvent);
+	}
+
 	entertainerEvent = new EntertainerEvent(_this);
 
 	SkillManager* skillManager = server->getSkillManager();
@@ -3816,7 +3925,8 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 	}
 
 	if (getParent() != NULL && getParent()->isCell()) {
-		sendSystemMessage("You cannot perform survey-related actions inside a structure.");
+		ChatSystemMessage* sysMessage = new ChatSystemMessage("error_message","survey_in_structure");
+		sendMessage(sysMessage);
 		return;
 	} else if (isInCombat()) {
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_cancel_attack");
@@ -4008,3 +4118,165 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 	player->sendMessage(omr);
 }
 
+void PlayerImplementation::saveDatapad(Player* player) {
+	try {
+		Datapad* datapad = player->getDatapad();
+		if (datapad == NULL)
+			return;
+
+		string name, detailName, appearance, mountApp;
+		stringstream query;
+		uint32 objCRC, itnoCRC;
+		uint64 objID;
+
+		query.str("");
+		query << "DELETE FROM datapad where character_id = " << player->getCharacterID() << ";";
+		ServerDatabase::instance()->executeStatement(query);
+
+		for (int i = 0; i < datapad->objectsSize(); ++i) {
+			name = "";
+			detailName = "";
+			appearance = "";
+			mountApp = "";
+			objCRC = 0;
+			objID = 0;
+			itnoCRC = 0;
+
+			SceneObject* item = datapad->getObject(i);
+
+			if (item != NULL && item->isIntangible()) {
+				IntangibleObject* itno = (IntangibleObject*) item;
+
+				if (itno != NULL) {
+					if (item->getObjectType() == 7 ) { //Vehicle (MountCreature)
+						name = itno->getName();
+						detailName = itno->getDetailName();
+						objCRC = item->getObjectCRC();
+
+						MountCreature* mountCreature = (MountCreature*) itno->getWorldObject();
+
+						if (mountCreature != NULL) {
+							Creature* creaMount = (Creature*) mountCreature;
+
+							itnoCRC = mountCreature->getObjectCRC();
+							objID = mountCreature->getObjectID();
+
+							mountCreature->getCharacterAppearance(mountApp);
+
+							if (mountApp != "") {
+								BinaryData cust(mountApp);
+								cust.encode(appearance);
+							}
+						}
+					}
+
+					//TODO: Datapad Load/save Schematics
+					//TODO: Datapad Load/save Droids
+					//TODO: Datapad Load/save Pets
+
+					if (itnoCRC != 0 ) {
+						query.str("");
+
+						query << "Insert into datapad set character_id = " << player->getCharacterID()
+						<< ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = " << itnoCRC
+						<< ",itemMask = 65535, appearance = '" << appearance.substr(0, appearance.size() - 1)
+						<< "',obj_id = " << objID << ";";
+
+						ServerDatabase::instance()->executeStatement(query);
+					}
+				}
+			}
+		}
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << "\n";
+		player->info("DB Exception in PlayerImplementation::saveDatapad(Player* player)");
+	} catch (...) {
+		player->info("Unreported Exception in PlayerImplementation::saveDatapad(Player* player)");
+
+	}
+}
+
+void PlayerImplementation::addFactionPoints(string faction, uint32 points) {
+	int currentPoints = factionPointsMap.getFactionPoints(faction);
+	uint32 maxPoints = getMaxFactionPoints(faction);
+	uint32 pointsToAdd;
+
+	if (currentPoints + (int) points > maxPoints)
+		pointsToAdd = (int) maxPoints - currentPoints;
+	else
+		pointsToAdd = points;
+
+	if (pointsToAdd > 0) {
+		factionPointsMap.addFactionPoints(faction, pointsToAdd);
+
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		param->addDI(pointsToAdd);
+		sendSystemMessage("base_player", "prose_award_faction", param);
+		delete param;
+	}
+
+	if (pointsToAdd != points) {
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		sendSystemMessage("base_player", "prose_max_faction", param);
+		delete param;
+	}
+}
+
+void PlayerImplementation::subtractFactionPoints(string faction, uint32 points) {
+	int currentPoints = factionPointsMap.getFactionPoints(faction);
+	uint32 pointsToAdd;
+
+	if ((currentPoints - (int) points) < -5000)
+		pointsToAdd = currentPoints - -5000;
+	else
+		pointsToAdd = points;
+
+	if (pointsToAdd > 0) {
+		factionPointsMap.subtractFactionPoints(faction, pointsToAdd);
+
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		param->addDI(pointsToAdd);
+		sendSystemMessage("base_player", "prose_lose_faction", param);
+		delete param;
+	}
+
+	if (pointsToAdd != points) {
+		StfParameter * param = new StfParameter();
+		param->addTO(faction);
+		sendSystemMessage("base_player", "prose_min_faction", param);
+		delete param;
+	}
+}
+
+void PlayerImplementation::delFactionPoints(Player * player, uint32 amount) {
+	if (player == NULL)
+		return;
+
+	uint32 charge = (uint32) ceil(amount * FactionRankTable::getDelegateRatio(getFactionRank()));
+	string faction;
+	if (getFaction() == String::hashCode("imperial"))
+		faction = "imperial";
+	else if (getFaction() == String::hashCode("rebel"))
+		faction = "rebel";
+	else
+		return;
+
+	if (getFactionPoints(faction) < charge + 200)
+		return;
+
+	subtractFactionPoints(faction, charge);
+
+	try {
+		player->wlock(_this);
+
+		player->addFactionPoints(faction, amount);
+
+		player->unlock();
+	} catch (...) {
+		error("unreported exception caught in PlayerImplementation::delFactionPoints(Player * player, uint32 amount)");
+		player->unlock();
+	}
+}

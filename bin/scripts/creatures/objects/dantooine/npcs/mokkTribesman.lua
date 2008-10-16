@@ -67,7 +67,7 @@ mokkTribesman = Creature:new {
       stamina = 0,
 
       mindMax = 6100,
-      mindMax = 5000,
+      mindMin = 5000,
       focus = 0,
       willpower = 0,
 
@@ -120,7 +120,7 @@ mokkTribesman = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33", -- Group it belongs to for lootootoot
 
       tame = 0,  -- Likely hood to be tamed
 

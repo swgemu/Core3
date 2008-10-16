@@ -76,12 +76,12 @@ public:
 	void handleCodeForRedeed(uint32 boxID, Player* player, uint32 cancel, const string& extra);
 	void handleRedeedStructure(uint32 boxID, Player* player, uint32 cancel, const int extra);
 	void handleRefreshStatusListBox(uint32 boxID, Player* player, uint32 cancel, const int extra);
-	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const string& name); 
+	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const string& name);
 	void handleAddMaintenance(uint32 boxID, Player* player,uint32 cancel, const string& name);
 	void handleAddEnergy(uint32 boxID, Player* player,uint32 cancel, const string& name);
 
-	
-	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value);
+
+	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value, int var);
 
 	void handleBankTransfer(uint32 boxID, Player* player, int cash, int bank);
 

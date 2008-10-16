@@ -145,7 +145,9 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 			return;
 		case ACCOUNTNOTACTIVE:
 			errtype = "Inactive Account";
-			errmsg = "You have not responded to your activation email, and will not be allowed to log on until you do.";
+			errmsg = "Your forum account is not active.  Please respond to your activation email.  "
+					"If you have already responded to the email, it can take up to 24 hours for "
+					"your game account to activate";
 			ver = new ErrorMessage(errtype, errmsg, 0x00);
 			client->sendMessage(ver);
 			return;
@@ -159,7 +161,8 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 	LoginClient* client = (LoginClient*) pack->getClient();
 
 	uint32 ServerId = pack->parseInt();
-    uint64 charId = pack->parseLong();
+	pack->shiftOffset(4);
+    uint32 charId = pack->parseInt();
     int dbDelete;
     string firstName;
 
@@ -178,7 +181,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		ServerDatabase::instance()->executeStatement(query);
 
 		query.str(""); // clear stream
-		query << "DELETE FROM character_faction WHERE character_id = '" << charId <<"';";
+		query << "DELETE FROM character_faction_points WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
 		query.str(""); // clear stream

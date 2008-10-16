@@ -21,7 +21,7 @@ public:
 
 	void setBabiesPerMillion(int babies);
 
-	void spawnCreatures();
+	void spawnCreatures(bool lockCreatureManager = true);
 
 protected:
 	LairObject(DummyConstructorParameter* param);
@@ -45,7 +45,7 @@ public:
 
 	void setBabiesPerMillion(int babies);
 
-	void spawnCreatures();
+	void spawnCreatures(bool lockCreatureManager);
 
 };
 

@@ -43,5 +43,5 @@
 
 -- Lok
 
-
+RunSkillsFile("creatureSkills/lok/npcs/nymAttacks.lua")
 

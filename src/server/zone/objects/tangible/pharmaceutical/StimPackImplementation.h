@@ -63,6 +63,8 @@ public:
 
 	int useObject(Player* player);
 
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
 	void generateAttributes(SceneObject* obj);
 
 	void parseItemAttributes();

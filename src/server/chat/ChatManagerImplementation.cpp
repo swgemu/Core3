@@ -101,7 +101,6 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 	gameCommandHandler = new GameCommandHandler();
 
 	initiateRooms();
-
 }
 
 ChatManagerImplementation::~ChatManagerImplementation() {
@@ -211,8 +210,59 @@ void ChatManagerImplementation::sendSystemMessage(Player* player, unicode& messa
 	player->sendMessage(smsg);
 }
 
-void ChatManagerImplementation::broadcastMessage(Player* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2) {
-	if ( !player->isChatMuted() ) {
+void ChatManagerImplementation::sendSystemMessage(Player* player, const string& file, const string& str, StfParameter * param) {
+	ChatSystemMessage* smsg = new ChatSystemMessage(file, str, param);
+	player->sendMessage(smsg);
+}
+
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter * param, uint64 target, uint32 moodid, uint32 mood2) {
+	if ( !player->isPlayer() || !((Player *)player)->isChatMuted() ) {
+		Zone* zone = player->getZone();
+
+		/*if (message.c_str() == "LAG") {
+			ZoneClientSession* client = player->getClient();
+
+			client->reportStats(true);
+
+			Logger::slog("Client (" + client->getAddress() + ") is experiencing lag", true);
+			return;
+		} else if (message.c_str() == "QUEUE") {
+			ZoneClientSession* client = player->getClient();
+
+			client->reportStats(true);
+
+			Logger::slog("Client (" + client->getAddress() + ") is experiencing queue lag", true);
+			return;
+		}*/
+
+		try {
+			zone->lock();
+
+			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+				SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+
+				if (object->isPlayer()) {
+					Player* creature = (Player*) object;
+
+					if (player->isInRange(creature, 128)) {
+						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), file, str, param, target, moodid, mood2);
+						creature->sendMessage(cmsg);
+					}
+				}
+			}
+			delete param;
+			zone->unlock();
+		} catch (...) {
+
+			zone->unlock();
+
+			cout << "exception ChatManagerImplementation::broadcastMessage(Player* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2)\n";
+		}
+	}
+}
+
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, unicode& message,  uint64 target, uint32 moodid, uint32 mood2) {
+	if ( !player->isPlayer() || !((Player *)player)->isChatMuted() ) {
 		Zone* zone = player->getZone();
 
 		/*if (message.c_str() == "LAG") {
@@ -298,12 +348,12 @@ void ChatManagerImplementation::broadcastMessageRange(Player* player, const stri
 void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
 	try {
 		pack->parseLong();
-		string msg;
+		unicode msg;
 
 		unicode text;
 		pack->parseUnicode(text);
 
-		StringTokenizer tokenizer(text.c_str());
+		UnicodeTokenizer tokenizer(text);
 
 		uint64 targetid = tokenizer.getLongToken();
 		uint32 mood2 = tokenizer.getIntToken();
@@ -318,14 +368,12 @@ void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
 		} else {
 			if(isMute()) {
 				if(player->getAdminLevel() & PlayerImplementation::ADMIN) {
-					unicode mess = msg;
-					broadcastMessage(player, mess, targetid, moodid, mood2);
+					broadcastMessage(player, msg, targetid, moodid, mood2);
 				} else {
 					((CreatureObject*) player)->sendSystemMessage("Chat has been muted by the admins");
 				}
 			} else {
-				unicode mess = msg;
-				broadcastMessage(player, mess, targetid, moodid, mood2);
+				broadcastMessage(player, msg, targetid, moodid, mood2);
 			}
 		}
 	} catch (PacketIndexOutOfBoundsException& e) {
@@ -669,8 +717,17 @@ void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* p
 	string adminmsg = message.c_str();
 
 	if (adminmsg[0] == '@') {
-		handleGameCommand(sender, adminmsg.c_str());
-		return;
+		try {
+			sender->wlock();
+
+			handleGameCommand(sender, adminmsg.c_str());
+
+			sender->unlock();
+			return;
+		} catch (...) {
+			sender->error("error while executing gameCommand in ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* pack)");
+			sender->unlock();
+		}
 	}
 
 	pack->shiftOffset(4);
@@ -939,6 +996,29 @@ void ChatManagerImplementation::sendRoomList(Player* player) {
  	player->sendMessage(crl);
 }
 
+void ChatManagerImplementation::sendGuildChat(Player* player) {
+	if (player->getGuildID() == 0)
+		return;
+
+	Guild* playerGuild = player->getGuild();
+	//No Null Check: Player has always a guild (Default guild (unguilded) is 0 )
+
+	playerGuild->wlock();
+
+	ChatRoom* guildchat = playerGuild->getGuildChat();
+
+	playerGuild->unlock();
+
+	if (guildchat == NULL) {
+		uint32 guildid = player->getGuildID();
+
+		initGuildChannel(player,guildid);
+	} else {
+		guildchat->sendTo(player);
+		guildchat->addPlayer(player, false);
+	}
+}
+
 
 void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg) {
 	if (channel->isPublic())
@@ -1011,7 +1091,7 @@ ChatRoom* ChatManagerImplementation::getGameRoom(const string& game) {
 	return gameRooms.get(game);
 }
 
-ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* creator,bool mode) {
+ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* creator) {
 	// Pre: creator locked;
 	// Post: creator locked.
 
@@ -1034,18 +1114,11 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint32 groupID, Player* cre
 	groupChatRoom->setTitle(name.str());
 	groupChatRoom->setPrivate();
 
-	if (!mode) { //Standard group
-		groupChatRoom->sendTo(creator);
-		groupChatRoom->addPlayer(creator, false);
-	}
+	groupChatRoom->sendTo(creator);
+	groupChatRoom->addPlayer(creator, false);
 
 	newGroupRoom->addSubRoom(groupChatRoom);
 	addRoom(groupChatRoom);
-
-	if (mode) {
-		uint32 guildid = creator->getGuildID();
-		initGuildChannel(creator,guildid);
-	}
 
 	return groupChatRoom;
 }

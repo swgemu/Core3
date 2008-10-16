@@ -155,10 +155,6 @@ public:
 		return 0;
 	}
 
-	float getSpeed() {
-		return speed;
-	}
-
 	virtual bool calculateCost(CreatureObject* creature) {
 		return creature->changeMindBar(mindCost);
 	}
@@ -171,7 +167,11 @@ public:
 		effectName = name;
 	}
 
-	virtual inline void setMindCost(int cost) {
+	inline float getSpeed() {
+		return speed;
+	}
+
+	inline void setMindCost(int cost) {
 		mindCost = cost;
 	}
 

@@ -52,7 +52,7 @@ which carries forward this exception.
 
 
 IntangibleObjectImplementation::IntangibleObjectImplementation(SceneObject* container, uint32 objCRC, uint64 id) : IntangibleObjectServant(id, INTANGIBLE) {
-	objectType = SceneObjectImplementation::INTANGIBLE;
+	objectType = INTANGIBLE;
 	objectCRC = objCRC;
 
 	linkType = 0xFFFFFFFF;
@@ -61,6 +61,12 @@ IntangibleObjectImplementation::IntangibleObjectImplementation(SceneObject* cont
 	worldObject = NULL;
 
 	status = 0;
+
+	initialize();
+}
+
+void IntangibleObjectImplementation::initialize() {
+
 }
 
 IntangibleObjectImplementation::~IntangibleObjectImplementation() {

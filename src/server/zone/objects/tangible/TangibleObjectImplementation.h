@@ -422,6 +422,10 @@ public:
 		name = n;
 	}
 
+	inline void setName(const unicode& n) {
+		name = n;
+	}
+
 	inline unicode& getName() {
 		return name;
 	}

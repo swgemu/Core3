@@ -77,4 +77,6 @@ interface MountCreature implements Creature {
 	
 	
 	boolean isInWorld();
+	
+	unsigned int getItnocrc();
 }

@@ -178,6 +178,9 @@ public:
 
 	bool swapLeaderInDB(uint64 playerID, uint64 olPlayerID, uint32 guildID);
 
+private:
+	Player* checkInRange(Player* player, const string& proband, const string& selfname);
+
 };
 
 #endif /*GUILDMANAGERIMPLEMENTATION_H_*/

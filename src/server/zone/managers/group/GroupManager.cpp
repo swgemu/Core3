@@ -180,7 +180,7 @@ GroupObject* GroupManager::createGroup(Player* leader) {
 
 	ZoneServer* server = leader->getZone()->getZoneServer();
 
-	GroupObject* group = new GroupObject(server->getNextCreatureID(), leader, false);
+	GroupObject* group = new GroupObject(server->getNextCreatureID(), leader);
 
 	group->setZone(leader->getZone());
 
@@ -196,42 +196,6 @@ GroupObject* GroupManager::createGroup(Player* leader) {
 	return group;
 }
 
-void GroupManager::joinGuildGroup(Player* player) {
-	//Pre: player locked
-	//Post: player locked
-
-	if (player->getGuildID() == 0)
-		return;
-
-	Guild* playerGuild = player->getGuild();
-	//No Null Check: Player has always a guild (Default guild (unguilded) is 0 )
-
-	playerGuild->wlock();
-
-	ChatRoom* guildchat = playerGuild->getGuildChat();
-
-	playerGuild->unlock();
-
-	if (guildchat == 0) {
-		GroupObject* group = createGuildGroup(player);
-	} else {
-		guildchat->sendTo(player);
-		guildchat->addPlayer(player, false);
-	}
-}
-
-GroupObject* GroupManager::createGuildGroup(Player* play) {
-	// Pre: play locked
-	// Post: GroupObject is a new group with play, play locked.
-
-	ZoneServer* server = play->getZone()->getZoneServer();
-
-	GroupObject* group = new GroupObject(server->getNextCreatureID(), play, true);
-	group->setZone(play->getZone());
-
-	return group;
-}
-
 void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 	// Pre: player locked
 	// Post: player locked
@@ -240,23 +204,25 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 
 	bool destroyGroup = false;
 
-	ChatRoom* groupChannel = group->getGroupChannel();
-	groupChannel->removePlayer(player, false);
-	groupChannel->sendDestroyTo(player);
-
-	ChatRoom* room = groupChannel->getParent();
-	room->sendDestroyTo(player);
-
-	player->setGroup(NULL);
-	player->updateGroupId(0);
-
-	if (player != NULL && player->isOnline() && !player->isLoggingOut())
-		player->sendSystemMessage("group", "removed");
-
-	player->unlock();
-
 	try {
-		group->wlock();
+		group->wlock(player);
+
+		ChatRoom* groupChannel = group->getGroupChannel();
+		if (groupChannel != NULL) {
+			groupChannel->removePlayer(player, false);
+			groupChannel->sendDestroyTo(player);
+
+			ChatRoom* room = groupChannel->getParent();
+			room->sendDestroyTo(player);
+		}
+
+		player->setGroup(NULL);
+		player->updateGroupId(0);
+
+		if (player != NULL && player->isOnline() && !player->isLoggingOut())
+			player->sendSystemMessage("group", "removed");
+
+		player->unlock();
 
 		group->removePlayer(player);
 
@@ -276,10 +242,10 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 		cout << "Exception in GroupManager::leaveGroup(GroupObject* group, Player* player)\n";
 	}
 
-	player->wlock();
-
 	if (destroyGroup)
 		group->finalize();
+
+	player->wlock();
 }
 
 void GroupManager::disbandGroup(GroupObject* group, Player* player) {

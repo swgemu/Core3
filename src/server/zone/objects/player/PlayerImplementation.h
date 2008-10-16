@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../ZoneClientSession.h"
 
+#include "../../packets/object/StfParameter.h"
+
 #include "PlayerObject.h"
 
 #include "professions/SkillBoxMap.h"
@@ -70,6 +72,10 @@ which carries forward this exception.
 #include "engine/service/Message.h"
 
 #include "../tangible/Inventory.h"
+
+#include "faction/FactionPointsMap.h"
+#include "faction/FactionRankTable.h"
+#include "faction/FactionPointList.h"
 
 class PlayerManager;
 class ItemManager;
@@ -142,9 +148,9 @@ class PlayerImplementation : public PlayerServant {
 	bool immune;
 
 	// Faction Stuff
-	string factionRank;
-	uint32 rebelPoints;
-	uint32 imperialPoints;
+	FactionPointsMap factionPointsMap;
+
+	int factionStatus;
 
 	// Profession stuff
 	SkillBoxMap skillBoxes;
@@ -266,6 +272,7 @@ public:
 	static const int QA = 8;
 	static const int EC = 16;
 	static const int LEADQA = 32;
+	static const int EMUSTAFF = 64;
 
 	static const int PVPRATING_MIN = 800;
 	static const int PVPRATING_DEFAULT = 1200;
@@ -328,6 +335,8 @@ public:
 
 	void createItems();
 	void loadItems();
+
+	void saveDatapad(Player* player);
 
 	void updateHair();
 
@@ -472,6 +481,7 @@ public:
 
 	void sendSystemMessage(const string& message);
 	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
+	void sendSystemMessage(const string& file, const string& str, StfParameter * param);
 	void sendSystemMessage(unicode& message);
 
 	//item methods
@@ -667,6 +677,8 @@ public:
 
 	void doPeace();
 
+	void deaggro();
+
 	void lootCorpse(bool lootAll = false);
 	void lootObject(Creature* creature, SceneObject* object);
 
@@ -839,6 +851,18 @@ public:
 			activateDigest();
 	}
 
+	virtual bool isAttackableBy(CreatureObject* creature) {
+		if (creature->isPlayer()) {
+			if (isInDuelWith((Player*)creature, false))
+				return true;
+		}
+
+		if (creature->hatesFaction(this->getFaction()))
+			return true;
+
+		return (pvpStatusBitmask & ATTACKABLE_FLAG);
+	}
+
 	// faction methods
 	void setOvert();
 	void setCovert();
@@ -866,10 +890,6 @@ public:
 	void applyPowerup(uint64 powerupID, uint64 targetID);
 
 	void setItemSkillMod(int type, int value);
-
-	void setFactionRank(string fac) {
-		factionRank = fac;
-	}
 
 	// Profession Methods
 	void saveProfessions();
@@ -1033,6 +1053,12 @@ public:
 	}
 	void removeXp(const string& xpType, int xp, bool updateClient) {
 		playerObject->removeExperience(xpType, xp, updateClient);
+	}
+	void loadXp(const string& xpStr) {
+		playerObject->loadExperience(xpStr);
+	}
+	string& saveXp() {
+		return playerObject->saveExperience();
 	}
 
 	void addSkillBox(SkillBox* skillBox, bool updateClient = false);
@@ -1295,18 +1321,6 @@ public:
 		return getSkillMod("jedi_force_power_max");
 	}
 
-	inline string& getFactionRank() {
-		return factionRank;
-	}
-
-	inline uint32 getRebelPoints() {
-		return rebelPoints;
-	}
-
-	inline uint32 getImperialPoints() {
-		return imperialPoints;
-	}
-
 	inline int getSkillPoints() {
 		return skillPoints;
 	}
@@ -1520,6 +1534,10 @@ public:
 		entertainerEvent = NULL;
 	}
 
+	inline FactionPointList * getFactionList() {
+		return factionPointsMap.getFactionList();
+	}
+
 
 	// Entertainer tick
 	void setEntertainerEvent();
@@ -1548,6 +1566,33 @@ public:
 	inline uint64 getCurrentStructureID(){
 		return currentStructureID;
 	}
+
+	inline int16 getFactionPoints(const string& faction) {
+		return factionPointsMap.getFactionPoints(faction);
+	}
+
+	inline uint32 getMaxFactionPoints(string faction) {
+		if (faction == "imperial" || faction == "rebel") {
+			if (getFaction() == String::hashCode(faction) || getFaction() == 0)
+				return FactionRankTable::getFPCap(getFactionRank());
+			else
+				return 500;
+		} else
+			return 5000;
+	}
+
+	void addFactionPoints(string faction, uint32 points);
+	void subtractFactionPoints(string faction, uint32 points);
+
+	inline int getFactionStatus() {
+		return factionStatus;
+	}
+
+	inline void setFactionStatus(int status) {
+		factionStatus = status;
+	}
+
+	void delFactionPoints(Player * player, uint32 amount);
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

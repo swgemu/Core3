@@ -55,7 +55,7 @@ wompRatLair = Lair:new {
 
 	creatureCRC = 3337882429,
 	creatureName = "wompRat",
-	creaturestfName = "a WompRat",
+	creaturestfName = "a Womprat",
 	spawnSize = 5,
 
 	babiesPerMillion = 500000

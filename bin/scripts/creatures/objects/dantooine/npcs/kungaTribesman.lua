@@ -90,7 +90,7 @@ kungaTribesman = Creature:new {
       pack = 1,
       herd = 1,
       stalker = 0,
-      killer = 1,
+      killer = 0,
       aggressive = 0,
       invincible = 0,
 
@@ -121,7 +121,7 @@ kungaTribesman = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33", -- Group it belongs to for lootoot
 
       tame = 0,  -- Likely hood to be tamed
 

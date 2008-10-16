@@ -7,18 +7,20 @@
 #include "../DeedObjectImplementation.h"
 
 GeneratorDeedImplementation::GeneratorDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn)
-	: GeneratorDeedServant(creature->getNewItemID(), tempcrc, n, tempn, INSTALLATIONDEED) {
+	: GeneratorDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectCRC = tempcrc;
 	name = n;
 	templateName = tempn;
+
 	init();
 }
 GeneratorDeedImplementation::GeneratorDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn)
-	: GeneratorDeedServant(objid, tempcrc, n, tempn, INSTALLATIONDEED) {
+	: GeneratorDeedServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectID = objid;
 	objectCRC = tempcrc;
 	name = n;
 	templateName = tempn;
+
 	init();
 }
 GeneratorDeedImplementation::~GeneratorDeedImplementation() {
@@ -26,29 +28,30 @@ GeneratorDeedImplementation::~GeneratorDeedImplementation() {
 }
 
 void GeneratorDeedImplementation::init() {
+	objectSubType = TangibleObjectImplementation::INSTALLATIONDEED;
 
-	deedSubType = GENERATOR;
+	targetTempFile = "object/installation/base/shared_construction_installation_base.iff";
 
 	if ((templateName.find("fusion") != string::npos)){
-		targetTemplate = "power_generator_fusion_style_1";
-		// = "object/installation/mining_organic/shared_mining_organic_flora_farm_medium.iff";
-		targetFile
-			= "object/installation/generators/shared_power_generator_fusion_style_1.iff";
-		targetName = unicode("Fusion Power Generator");
+		type = FUSION;
+		targetTemplate = "fusion_generator";
+		targetFile = "object/installation/generators/shared_power_generator_fusion_style_1.iff";
+		targetName = string("Fusion Power Generator");
 	} else if ((templateName.find("photo") != string::npos)){
-		targetTemplate = "power_generator_photo_bio_style_1";
-		targetFile
-			= "object/installation/generators/shared_power_generator_photo_bio_style_1.iff";
-		targetName = unicode("Photo Power Generator");
+		type = PHOTOBIO;
+		targetTemplate = "photobio_generator";
+		targetFile = "object/installation/generators/shared_power_generator_photo_bio_style_1.iff";
+		targetName = string("Photo Power Generator");
 	} else if ((templateName.find("solar") != string::npos)){
-		targetTemplate = "power_generator_solar_style_1";
-		targetFile
-			= "object/installation/generators/shared_power_generator_solar_style_1.iff";
-		targetName = unicode("Solar Power Generator");
+		type = SOLAR;
+		targetTemplate = "solar_generator";
+		targetFile = "object/installation/generators/shared_power_generator_solar_style_1.iff";
+		targetName = string("Solar Power Generator");
 	} else if ((templateName.find("wind") != string::npos)){
+		type = WIND;
+		targetTempFile = "object/installation/base/shared_construction_installation_base.iff";
 		targetTemplate = "wind_generator";
-		targetFile
-			= "object/installation/generators/shared_power_generator_wind_style_1.iff";
-		targetName = unicode("Wind Power Generator");
+		targetFile = "object/installation/generators/shared_power_generator_wind_style_1.iff";
+		targetName = string("Wind Power Generator");
 	}
 }

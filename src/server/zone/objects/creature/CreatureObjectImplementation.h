@@ -49,11 +49,14 @@ which carries forward this exception.
 
 //#include "../../packets.h"
 
+#include "../../packets/creature/CreatureObjectDeltaMessage3.h"
+
 #include "../scene/SceneObject.h"
 #include "../scene/SceneObjectImplementation.h"
 
 #include "../../objects/player/Races.h"
 #include "../../objects/tangible/CustomizationVariables.h"
+#include "../../objects/group/GroupObject.h"
 
 #include "skills/Skill.h"
 #include "../../managers/skills/SkillManager.h"
@@ -63,6 +66,8 @@ which carries forward this exception.
 #include "buffs/BuffObject.h"
 
 #include "../guild/Guild.h"
+
+#include "../../../chat/ChatManager.h"
 
 class CombatManager;
 
@@ -76,7 +81,6 @@ class Weapon;
 class Armor;
 class Instrument;
 
-class GroupObject;
 class MountCreature;
 class DizzyFallDownEvent;
 class WoundTreatmentOverEvent;
@@ -294,6 +298,7 @@ protected:
 	// misc
 	uint32 pvpStatusBitmask;
 	uint32 faction;
+	uint8 factionRank;
 
 	// combat
 	int fireDotType;
@@ -341,7 +346,7 @@ protected:
 	uint64 groupInviteCount;
 	uint64 groupInviterID;
 
-	GroupObject* group;
+	ManagedReference<GroupObject> group;
 
 	// Entertainer stuff
 	string performanceAnimation;
@@ -622,8 +627,11 @@ public:
 		setPosture(DEAD_POSTURE);
 	}
 
-	inline bool isAttackableBy(CreatureObject* attacker) {
-		return !(creatureBitmask & 0x100);
+	bool isAttackableBy(CreatureObject* creature) {
+		if (creature->hatesFaction(this->getFaction()))
+			return true;
+
+		return (pvpStatusBitmask & ATTACKABLE_FLAG);
 	}
 
 	bool hasAttackDelay() {
@@ -1039,6 +1047,8 @@ public:
 		return false;
 	}
 
+	bool hatesFaction(uint32 faction);
+
 	bool hasSkillModBonus(const string& name) {
 		return creatureSkillModBonus.containsKey(name);
 	}
@@ -1170,6 +1180,10 @@ public:
 		speciesName = name;
 	}
 
+	inline void setStfName(const string& name) {
+		stfName = name;
+	}
+
 	inline void setGender(const string& gend) {
 		gender = gend;
 	}
@@ -1193,6 +1207,17 @@ public:
 
 	inline void setPvpStatusBitmask(uint32 mask) {
 		pvpStatusBitmask = mask;
+	}
+
+	inline void setFactionRank(uint8 rank, bool updateClient = true) {
+		factionRank = rank;
+
+		if (updateClient) {
+			CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3((CreatureObject*) _this);
+			dcreo3->updateFactionRank();
+			dcreo3->close();
+			this->broadcastMessage(dcreo3);
+		}
 	}
 
 	void updateHAMBars();
@@ -1907,6 +1932,10 @@ public:
 		return pvpStatusBitmask;
 	}
 
+	inline uint8 getFactionRank() {
+		return factionRank;
+	}
+
 	inline void setCreatureBitmask(uint32 bit) {
 		creatureBitmask = bit;
 	}
@@ -2501,6 +2530,16 @@ public:
 	}
 
 	int getMedicalFacilityRating();
+
+	inline void say(unicode& message, uint32 moodid = 0, uint32 mood2 = 0) {
+		ChatManager * chatManager = this->getZone()->getChatManager();
+		chatManager->broadcastMessage(_this, message, this->getTargetID(),moodid, mood2);
+	}
+
+	inline void say(const string& file, const string& str, StfParameter * param, uint32 moodid = 0, uint32 mood2 = 0) {
+		ChatManager * chatManager = this->getZone()->getChatManager();
+		chatManager->broadcastMessage(_this, file, str, param, this->getTargetID(),moodid, mood2);
+	}
 
 	friend class CombatManager;
 	friend class SkillManager;

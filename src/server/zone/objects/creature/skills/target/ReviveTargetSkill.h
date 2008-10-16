@@ -378,7 +378,7 @@ public:
 		}
 	}
 
-	float getSpeed() {
+	float calculateSpeed(CreatureObject* creature) {
 		return 0.0f; //Handled by event
 	}
 

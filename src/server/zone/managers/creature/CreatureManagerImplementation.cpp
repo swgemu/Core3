@@ -55,6 +55,8 @@ which carries forward this exception.
 
 #include "../../objects/creature/trainer/TrainerCreature.h"
 #include "../../objects/creature/recruiter/RecruiterCreature.h"
+#include "../../objects/creature/recruiter/imperial/ImperialRecruiterCreature.h"
+#include "../../objects/creature/recruiter/rebel/RebelRecruiterCreature.h"
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
 #include "../../objects/creature/action/ActionCreature.h"
 #include "../../objects/creature/action/Action.h"
@@ -123,9 +125,8 @@ void CreatureManagerImplementation::init() {
 
 	instance = this;
 
-	if(spawnInfoMap == NULL){
+	if (spawnInfoMap == NULL)
 		spawnInfoMap = new SpawnInfoMap();
-	}
 
 	// Scripting
 	Lua::init();
@@ -190,12 +191,29 @@ void CreatureManagerImplementation::stop() {
 }
 
 void CreatureManagerImplementation::loadRecruiters() {
-	if (zone->getZoneID() == 8) {
-		RecruiterCreature* recruiter1 = spawnRecruiter("", "Recruiter", 0x8C73B91, 36, -5336);
-		RecruiterCreature* recruiter2 = spawnRecruiter("", "Recruiter", 0x8C73B91, -1130, -3902);
-	} else if (zone->getZoneID() == 5) {
-		RecruiterCreature* recruiter3 = spawnRecruiter("", "Recruiter", 0xAFE6BE84, -4936, 4231);
-		RecruiterCreature* recruiter4 = spawnRecruiter("", "Recruiter", 0xBCDF9016, -4928, 4231);
+	stringstream query;
+	query << "SELECT x,y,oY,oW,cell_id,type FROM recruiters WHERE ";
+	query << "planet_id = " << zone->getZoneID() << ";";
+
+	try {
+		ResultSet * res = ServerDatabase::instance()->executeQuery(query);
+
+		while (res->next()) {
+			float x = res->getFloat(0);
+			float y = res->getFloat(1);
+			float oY = res->getFloat(2);
+			float oW = res->getFloat(3);
+			uint64 cellId = res->getUnsignedLong(4);
+			int type = res->getInt(5);
+
+			spawnRecruiter(x, y, oY, oW, type, cellId);
+		}
+
+		delete res;
+	} catch (Exception& e) {
+		error("Exception caught in CreatureManagerImplementation::loadRecruiters" + e.getMessage());
+	} catch (...) {
+		error("unreported Exception caught in CreatureManagerImplementation::loadRecruiters");
 	}
 }
 
@@ -359,6 +377,7 @@ ActionCreature* CreatureManagerImplementation::spawnActionCreature(string& name,
 		actCr->setParent(getZone()->lookupObject(cellid));
 		actCr->setDirection(0, 0, oY, oW);
 		actCr->setPvpStatusBitmask(0);
+		actCr->setZoneProcessServer(server);
 
 		load(actCr);
 
@@ -391,6 +410,7 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 		bluefrog->setPvpStatusBitmask(0);//0x01 + 0x02 + 0x20;
 		bluefrog->setBFType(type);
 		bluefrog->setType(CreatureImplementation::TRAINER);
+		bluefrog->setZoneProcessServer(server);
 
 		load(bluefrog);
 
@@ -456,26 +476,29 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 	}
 }
 
-RecruiterCreature* CreatureManagerImplementation::spawnRecruiter(const string& stfname, const string& name, int objCrc, float x, float y, bool doLock) {
+RecruiterCreature* CreatureManagerImplementation::spawnRecruiter(float x, float y, float oY, float oW, uint8 type, uint64 cellid, bool doLock) {
 	try {
 		lock(doLock);
+		RecruiterCreature* recruiter;
 
-		RecruiterCreature* recruiter = new RecruiterCreature(getNextCreatureID());
+		if (type == RecruiterCreatureImplementation::IMPERIAL)
+			recruiter = new ImperialRecruiterCreature(getNextCreatureID());
+		else if (type == RecruiterCreatureImplementation::REBEL)
+			recruiter = new RebelRecruiterCreature(getNextCreatureID());
+		else {
+			error("INVALID RECRUITER TYPE!");
+			return NULL;
+		}
+
 		recruiter->deploy();
-
-		if (!stfname.empty())
-			recruiter->setSpeciesName(stfname);
-		else
-			recruiter->setCharacterName(unicode(name));
-
-		recruiter->setObjectFileName("");
-		recruiter->setObjectCRC(objCrc);
 
 		recruiter->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
 
 		recruiter->setHeight(1.0f);
 		recruiter->initializePosition(x, 0, y);
+		recruiter->setDirection(0,0,oY,oW);
 		recruiter->setPvpStatusBitmask(0);
+		recruiter->setParent(zone->lookupObject(cellid));
 
 		load(recruiter);
 
@@ -523,12 +546,65 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Plane
 	}
 }
 
+bool CreatureManagerImplementation::verifyCreatureSpawn(string objname) {
+
+	try {
+		lock();
+
+		hotLoadCreature(objname);
+
+		SpawnInfo* spawnInfo = spawnInfoMap->get(objname);
+
+		if(spawnInfo == NULL) {
+
+			spawnInfo = spawnInfoMap->get(objname);
+
+			if(spawnInfo == NULL) {
+				unlock();
+				return false;
+			}
+		}
+
+		uint32 objcrc = spawnInfo->getCRC();
+
+		// Load creature from lua
+		LuaFunction getCreature(getLuaState(), "getCreature", 1);
+		getCreature << objcrc; // push first argument
+		callFunction(&getCreature);
+
+		LuaObject result(getLuaState());
+		if (!result.isValidTable()) {
+			stringstream ss;
+			ss << "Unknown object CRC " << objcrc;
+			info(ss.str());
+			unlock();
+			return false;
+		}
+
+		string objectName = result.getStringField("objectName");
+
+		unlock();
+
+		if(objectName == spawnInfo->getName())
+			return true;
+		else
+			return false;
+
+
+	} catch (...) {
+		unlock();
+		return false;
+	}
+
+}
 Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock, float height) {
 	lock(doLock);
 	Creature* creature = new Creature(getNextCreatureID());
 
 	try {
+		creature->wlock();
 
+		creature->setZoneProcessServer(server);
 		creature->setObjectCRC(objcrc);
 
 		// Load creature from lua
@@ -541,6 +617,8 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 			stringstream ss;
 			ss << "Unknown object CRC " << objcrc;
 			info(ss.str());
+			creature->unlock();
+			creature->finalize();
 			unlock(doLock);
 			return NULL;
 		}
@@ -551,6 +629,10 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 		if (baby)
 			stfname += " baby";
 		string name = result.getStringField("name");
+
+		string faction = result.getStringField("faction");
+
+		creature->setFaction(String::hashCode(faction));
 
 		if (!stfname.empty())
 			creature->setCharacterName(stfname);
@@ -587,10 +669,15 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 		float oW = 0;
 
 		creature->setRespawnTimer(0);
-		creature->setParent(getZone()->lookupObject(cellid));
+
+		SceneObject* object = getZone()->lookupObject(cellid);
+
+		if (object != NULL && object->isCell())
+			creature->setParent(object);
+
 		creature->setDirection(0, 0, oY, oW);
 
-		if(height != 1)
+		if (height != 1)
 			creature->setHeight(height);
 
 		result.pop(); // remove table from stack
@@ -602,7 +689,9 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		creatureMap->put(creature->getObjectID(), creature);
 
+		creature->unlock();
 	} catch (...) {
+		creature->unlock();
 		unlock(doLock);
 		return NULL;
 	}
@@ -780,7 +869,7 @@ void CreatureManagerImplementation::respawnCreature(Creature* creature) {
 }
 
 LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x, float y, float z, bool doLock) {
-	LairObject* lair;
+	LairObject* lair = NULL;
 
 	lock(doLock);
 
@@ -803,6 +892,7 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 		cout << "CRC = " << objectCRC << endl;
 
 		lair = new LairObject(objectCRC, getNextCreatureID());
+		lair->setZoneProcessServer(server);
 
 		//string objectName = result.getStringField("objectName");
 		string stfname = result.getStringField("stfName");
@@ -815,7 +905,10 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 			info("Lair spawned to wrong planet");
 			return NULL;
 		}
+
 		lair->deploy();
+
+		lair->wlock();
 
 		int maxCondition = result.getIntField("maxCondition");
 
@@ -840,12 +933,17 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 		lair->insertToZone(getZone());
 		lairMap->put(lair->getObjectID(), lair);
 
-		lair->spawnCreatures();
+		lair->spawnCreatures(false); //we need to lock lair to call this?
+
+		lair->unlock();
 
 		unlock(doLock);
 		return  lair;
 	} catch (...) {
 		error("unreported Exception caught on spawnLair()");
+
+		if (lair != NULL)
+			lair->unlock();
 
 		unlock(doLock);
 		return NULL;
@@ -937,12 +1035,17 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	string stfname = creatureConfig.getStringField("stfName");
 	string name = creatureConfig.getStringField("name");
 
+	string speciesName = creatureConfig.getStringField("speciesName");
+
 
 	creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
 
 	spawnInfoMap->addCRC(objectName, creatureConfig.getIntField("objectCRC"));
 
-	if (!stfname.empty())
+	if (!stfname.empty() && !speciesName.empty()) {
+		creature->setStfName(stfname);
+		creature->setSpeciesName(speciesName);
+	} else if (!stfname.empty())
 		creature->setCharacterName(stfname);
 	else
 		if (creature->getObjectCRC() == 0xBA7F23CD)
@@ -956,10 +1059,11 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 
 	//creature->setTerrainName(Terrain::getTerrainName(zone->get));
 
+	string faction = creatureConfig.getStringField("faction");
+	creature->setFaction(String::hashCode(faction));
 
 	try {
-		string dummy = creatureConfig.getStringField("faction");
-		dummy = creatureConfig.getStringField("gender");
+		string dummy = creatureConfig.getStringField("gender");
 		dummy = creatureConfig.getStringField("boneType");
 		dummy = creatureConfig.getStringField("hideType");
 		dummy = creatureConfig.getStringField("meatType");
@@ -978,7 +1082,22 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	float y = creatureConfig.getFloatField("positionY");
 	float z = creatureConfig.getFloatField("positionZ");
 
+	float oY = creatureConfig.getFloatField("directionY");
+	float oX = creatureConfig.getFloatField("directionX");
+	float oW = creatureConfig.getFloatField("directionW");
+	float oZ = creatureConfig.getFloatField("directionZ");
+
+	uint8 randMovement = creatureConfig.getByteField("randomMovement");
+
+	creature->setRandomMovement(randMovement);
+
 	creature->initializePosition(x, z, y);
+
+	creature->setDirection(oX, oZ, oY, oW);
+
+	uint32 creatureBitmask = creatureConfig.getIntField("creatureBitmask");
+	if (creatureBitmask != 0)
+		creature->setCreatureBitmask(creatureBitmask);
 
 	creature->setSpawnPosition(x, z, y, cellID);
 
@@ -1009,31 +1128,39 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 	LairObject* lair = new LairObject(objectCRC, instance->getNextCreatureID());
 	lair->deploy();
 
-	float x = object.getFloatField("positionX");
-	float y = object.getFloatField("positionY");
-	float z = object.getFloatField("positionZ");
-	int maxCondition = object.getIntField("maxCondition");
+	try {
+		lair->wlock();
 
-	lair->setMaxCondition(maxCondition);
+		float x = object.getFloatField("positionX");
+		float y = object.getFloatField("positionY");
+		float z = object.getFloatField("positionZ");
+		int maxCondition = object.getIntField("maxCondition");
 
-	string stfName = object.getStringField("stfName");
+		lair->setMaxCondition(maxCondition);
 
-	lair->setTemplateName(stfName);
+		string stfName = object.getStringField("stfName");
 
-	uint32 creatureCRC = object.getIntField("creatureCRC");
-	int	spawnSize = object.getIntField("spawnSize");
-	int babiesPerMillion = object.getIntField("babiesPerMillion");
+		lair->setTemplateName(stfName);
 
-	object.pop();
+		uint32 creatureCRC = object.getIntField("creatureCRC");
+		int	spawnSize = object.getIntField("spawnSize");
+		int babiesPerMillion = object.getIntField("babiesPerMillion");
 
-	lair->setCreatureCRC(creatureCRC);
-	lair->setSpawnSize(spawnSize);
-	lair->setBabiesPerMillion(babiesPerMillion);
+		object.pop();
 
-	lair->initializePosition(x, z, y);
+		lair->setCreatureCRC(creatureCRC);
+		lair->setSpawnSize(spawnSize);
+		lair->setBabiesPerMillion(babiesPerMillion);
 
-	lair->insertToZone(instance->getZone());
-	lair->spawnCreatures();
+		lair->initializePosition(x, z, y);
+
+		lair->insertToZone(instance->getZone());
+		lair->spawnCreatures(false);
+
+		lair->unlock();
+	} catch (...) {
+		lair->unlock();
+	}
 
 	instance->lairMap->put(lair->getObjectID(), lair);
 
@@ -1192,7 +1319,7 @@ string CreatureManagerImplementation::makeDarkTrooperName() {
 uint32 CreatureManagerImplementation::getCreatureCrc(string name) {
 	SpawnInfo* spawnInfo = spawnInfoMap->get(name);
 	if(spawnInfo == NULL)
-		return -1;
+		return 0;
 
 	return spawnInfo->getCRC();
 }
