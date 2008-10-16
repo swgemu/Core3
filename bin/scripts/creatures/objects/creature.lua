@@ -45,20 +45,33 @@ Creature = Object:new {
 	objectName = "Creature", -- name of the lua Object
 	
 	stfName = "",
+	speciesName = "",
 	name = "",
 	level = 15,
 	objectCRC = 0,
 	planet = 0,
+	
+	faction = "",
+	gender = "",
+	boneType = "",
+	hideType = "",
+	meatType = "",
+	lootGroup = "",
+	
+	healthMax = 1,
+    healthMin = 0,
+    strength = 0,
+    constitution = 0,
 
-	health = 0,
-	strength = 0,
-	constitution = 0,
-	action = 0,
-	quickness = 0,
-	stamina = 0,
-	mind = 0,
-	focus = 0,
-	willpower = 0,
+    actionMax = 0,
+    actionMin = 0,
+    quickness = 0,
+    stamina = 0,
+
+    mindMax = 0,
+    mindMin = 0,
+    focus = 0,
+    willpower = 0,
 	
 	armor = 0,
 
@@ -82,7 +95,15 @@ Creature = Object:new {
 	positionY = 0,
 	positionZ = 0,
 	
+	
+	directionX = 0,
+	directionZ = 0,
+	directionY = 0,
+	directionW = 0,
+	
 	accuracy = 200,
+	
+	creatureBitmask = 0,
 	
 	speed = 5.76,
 	acceleration = 1.549,
@@ -91,7 +112,9 @@ Creature = Object:new {
 
 	skills = { },
 
-	cellID = 0, 
+	cellID = 0,
+	
+	randomMovement = 1,
 
 	randomizeRespawnPoint = false
 }

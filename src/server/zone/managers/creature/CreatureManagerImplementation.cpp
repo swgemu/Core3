@@ -1035,12 +1035,17 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	string stfname = creatureConfig.getStringField("stfName");
 	string name = creatureConfig.getStringField("name");
 
+	string speciesName = creatureConfig.getStringField("speciesName");
+
 
 	creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
 
 	spawnInfoMap->addCRC(objectName, creatureConfig.getIntField("objectCRC"));
 
-	if (!stfname.empty())
+	if (!stfname.empty() && !speciesName.empty()) {
+		creature->setStfName(stfname);
+		creature->setSpeciesName(speciesName);
+	} else if (!stfname.empty())
 		creature->setCharacterName(stfname);
 	else
 		if (creature->getObjectCRC() == 0xBA7F23CD)
@@ -1077,7 +1082,22 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	float y = creatureConfig.getFloatField("positionY");
 	float z = creatureConfig.getFloatField("positionZ");
 
+	float oY = creatureConfig.getFloatField("directionY");
+	float oX = creatureConfig.getFloatField("directionX");
+	float oW = creatureConfig.getFloatField("directionW");
+	float oZ = creatureConfig.getFloatField("directionZ");
+
+	uint8 randMovement = creatureConfig.getByteField("randomMovement");
+
+	creature->setRandomMovement(randMovement);
+
 	creature->initializePosition(x, z, y);
+
+	creature->setDirection(oX, oZ, oY, oW);
+
+	uint32 creatureBitmask = creatureConfig.getIntField("creatureBitmask");
+	if (creatureBitmask != 0)
+		creature->setCreatureBitmask(creatureBitmask);
 
 	creature->setSpawnPosition(x, z, y, cellID);
 

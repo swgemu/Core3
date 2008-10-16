@@ -117,6 +117,8 @@ public:
 
 	void setLootCreated(bool value);
 
+	void setRandomMovement(bool value);
+
 protected:
 	Creature(DummyConstructorParameter* param);
 
@@ -222,6 +224,8 @@ public:
 	void wasLooted();
 
 	void setLootCreated(bool value);
+
+	void setRandomMovement(bool value);
 
 protected:
 	string _param0_setObjectFileName__string_;

@@ -78,6 +78,8 @@ class CreatureImplementation : public CreatureServant, public Event {
 
 	bool doRandomMovement;
 
+	bool hasRandomMovement;
+
 	// misc
 	CreatureGroup* creatureGroup;
 
@@ -248,6 +250,10 @@ public:
 
 	inline void setLootCreated(bool value) {
 		lootCreated = value;
+	}
+
+	inline void setRandomMovement(bool val) {
+		hasRandomMovement = val;
 	}
 
 	void setSpawnPosition(float posX, float posZ, float posY, uint64 cellid = 0) {

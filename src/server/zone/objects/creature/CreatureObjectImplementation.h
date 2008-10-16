@@ -1180,6 +1180,10 @@ public:
 		speciesName = name;
 	}
 
+	inline void setStfName(const string& name) {
+		stfName = name;
+	}
+
 	inline void setGender(const string& gend) {
 		gender = gend;
 	}

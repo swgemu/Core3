@@ -592,6 +592,19 @@ void Creature::setLootCreated(bool value) {
 		((CreatureImplementation*) _impl)->setLootCreated(value);
 }
 
+void Creature::setRandomMovement(bool value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 50);
+		method.addBooleanParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureImplementation*) _impl)->setRandomMovement(value);
+}
+
 /*
  *	CreatureAdapter
  */
@@ -734,6 +747,9 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 49:
 		setLootCreated(inv->getBooleanParameter());
+		break;
+	case 50:
+		setRandomMovement(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -916,6 +932,10 @@ void CreatureAdapter::wasLooted() {
 
 void CreatureAdapter::setLootCreated(bool value) {
 	return ((CreatureImplementation*) impl)->setLootCreated(value);
+}
+
+void CreatureAdapter::setRandomMovement(bool value) {
+	return ((CreatureImplementation*) impl)->setRandomMovement(value);
 }
 
 /*

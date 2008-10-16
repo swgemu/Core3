@@ -943,6 +943,8 @@ public:
 
 	void setOnFireState(int str, int type, int duration);
 
+	void setCreatureBitmask(unsigned int bitmask);
+
 	bool setNextAttackDelay(int del);
 
 	void setCharacterName(const string& name);
@@ -968,6 +970,8 @@ public:
 	void setRaceName(const string& name);
 
 	void setSpeciesName(const string& name);
+
+	void setStfName(const string& name);
 
 	void setGender(const string& name);
 
@@ -2010,6 +2014,8 @@ public:
 
 	void setOnFireState(int str, int type, int duration);
 
+	void setCreatureBitmask(unsigned int bitmask);
+
 	bool setNextAttackDelay(int del);
 
 	void setCharacterName(const string& name);
@@ -2035,6 +2041,8 @@ public:
 	void setRaceName(const string& name);
 
 	void setSpeciesName(const string& name);
+
+	void setStfName(const string& name);
 
 	void setGender(const string& name);
 
@@ -2176,6 +2184,7 @@ protected:
 	string _param0_setHairAppearanceAttribute__string_char_;
 	string _param0_setRaceName__string_;
 	string _param0_setSpeciesName__string_;
+	string _param0_setStfName__string_;
 	string _param0_setGender__string_;
 	string _param0_setMood__string_;
 	string _param0_setBoneType__string_;
