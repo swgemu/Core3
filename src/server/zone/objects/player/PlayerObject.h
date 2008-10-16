@@ -35,6 +35,10 @@ public:
 
 	void removeExperience(const string& xpType, int xp, bool updateClient);
 
+	void loadExperience(const string& xpStr);
+
+	string& saveExperience();
+
 	bool setCharacterBit(unsigned int bit, bool updateClient = false);
 
 	bool clearCharacterBit(unsigned int bit, bool updateClient = false);
@@ -149,6 +153,7 @@ protected:
 	virtual ~PlayerObject();
 
 	string _return_getCurrentTitle;
+	string _return_saveExperience;
 
 	friend class PlayerObjectHelper;
 };
@@ -168,6 +173,10 @@ public:
 	void addExperience(const string& xpType, int xp, bool updateClient);
 
 	void removeExperience(const string& xpType, int xp, bool updateClient);
+
+	void loadExperience(const string& xpStr);
+
+	string& saveExperience();
 
 	bool setCharacterBit(unsigned int bit, bool updateClient);
 
@@ -280,6 +289,7 @@ public:
 protected:
 	string _param0_addExperience__string_int_bool_;
 	string _param0_removeExperience__string_int_bool_;
+	string _param0_loadExperience__string_;
 	string _param0_setCurrentTitle__string_bool_;
 	string _param0_setTitle__string_;
 	string _param0_addFriend__string_string_;

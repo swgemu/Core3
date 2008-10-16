@@ -430,7 +430,9 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	string hData;
 	hair.decode(hData);
 	player->setHairAppearance(hData);
-
+	
+	player->loadXp(character->getString(60));
+	
 	int raceID = character->getInt(7);
 
 	player->setRaceID(raceID);
@@ -703,6 +705,7 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< ",guildpermission=" << player->getGuildPermissions()
 	<< ",factionStatus=" << (int) player->getFactionStatus()
 	<< ",factionRank=" << (int)player->getFactionRank()
+	<< ",experience=" << "'" << player->saveXp() << "'"
 	<< " WHERE character_id=" << player->getCharacterID() << ";";
 	try {
 		ServerDatabase::instance()->executeStatement(query);
