@@ -172,7 +172,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		<< "`health`,`strength`,`constitution`,"
 		<< "`action`,`quickness`,`stamina`,"
 		<< "`mind`,`focus`,`willpower`,"
-		<< "`PvpRating`, adminLevel"
+		<< "`PvpRating`, adminLevel, `experience`"
 		<< ") VALUES ("
 		<< accountID << "," << galaxyID << ",'"
 		<< player->getFirstName() << "','" << player->getLastName() << "','"
@@ -187,7 +187,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		<< player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << ","
 		<< player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << ","
 		<< player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << ","
-		<< player->getPvpRating() << "," << player->getAdminLevel() << ")";
+		<< player->getPvpRating() << "," << player->getAdminLevel() << ",'" << player->saveXp() << "')";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 

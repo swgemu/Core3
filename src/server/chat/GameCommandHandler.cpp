@@ -281,6 +281,10 @@ void GameCommandHandler::init() {
 			"Gives you cash credits",
 			"Usage: @getCredits [amount]",
 			&getCredits);
+	gmCommands->addCommand("getXP", DEVELOPER,
+			"Gives you specified type of experience",
+			"USAGE: @getXP [type] [amount]",
+			&getXP);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -2255,3 +2259,24 @@ void GameCommandHandler::getCredits(StringTokenizer tokenizer, Player * player) 
 
 	player->addCashCredits(credits);
 }
+
+void GameCommandHandler::getXP(StringTokenizer tokenizer, Player * player) {
+	int xpamount;
+	string xptype;
+
+	if (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(xptype);
+		if (tokenizer.hasMoreTokens())
+			xpamount = tokenizer.getIntToken();
+		else {
+			player->sendSystemMessage("Usage: @getXP [xptype] [xpamount]");
+			return;
+		}
+	} else {
+		player->sendSystemMessage("Usage: @getXP [xptype] [xpamount]");
+		return;
+	}
+
+	player->addXp(xptype, xpamount, true);
+}
+
