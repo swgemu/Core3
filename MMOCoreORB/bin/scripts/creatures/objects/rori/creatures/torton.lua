@@ -135,7 +135,7 @@ torton = Creature:new {
       meatType = "meat_carnivore_rori",
       meatMax = 1300,
 
-      skills = { "tortonAttack1" }
+      skills = { "tortonAttack1" },
 	  -- skills = { " Dizzy attack", " Knockdown attack", "" }
        respawnTimer = 60,
 
