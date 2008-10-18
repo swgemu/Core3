@@ -704,6 +704,8 @@ void CreatureManagerImplementation::setCreatureAttributes(Creature* creature, Lu
 	creature->setCreatureFaction(creatureConfig->getStringField("faction"));
 	creature->setGender(creatureConfig->getStringField("gender"));
 
+	creature->setMood(creatureConfig->getStringField("mood"));
+
 	creature->setXP(creatureConfig->getIntField("xp"));
 
 	creature->setHealer(creatureConfig->getIntField("healer"));

@@ -116,7 +116,9 @@ Creature = Object:new {
 	
 	randomMovement = 1,
 
-	randomizeRespawnPoint = false
+	randomizeRespawnPoint = false,
+	
+	mood = ""
 }
 
 -- setters
