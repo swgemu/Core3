@@ -40,50 +40,8 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
---Copyright (C) 2008 <SWGEmu>
-
---This File is part of Core3.
-
---This program is free software; you can redistribute
---it and/or modify it under the terms of the GNU Lesser
---General Public License as published by the Free Software
---Foundation; either version 2 of the License,
---or (at your option) any later version.
-
---This program is distributed in the hope that it will be useful,
---but WITHOUT ANY WARRANTY; without even the implied warranty of
---MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
---See the GNU Lesser General Public License for
---more details.
-
---You should have received a copy of the GNU Lesser General
---Public License along with this program; if not, write to
---the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
---Linking Engine3 statically or dynamically with other modules
---is making a combined work based on Engine3.
---Thus, the terms and conditions of the GNU Lesser General Public License
---cover the whole combination.
-
---In addition, as a special exception, the copyright holders of Engine3
---give you permission to combine Engine3 program with free software
---programs or libraries that are released under the GNU LGPL and with
---code included in the standard release of Core3 under the GNU LGPL
---license (or modified versions of such code, with unchanged license).
---You may copy and distribute such a system following the terms of the
---GNU LGPL for Engine3 and the licenses of the other code concerned,
---provided that you include the source code of that other code when
---and as the GNU LGPL requires distribution of source code.
-
---Note that people who make modified versions of Engine3 are not obligated
---to grant this special exception for their modified versions;
---it is their choice whether to do so. The GNU Lesser General Public License
---gives permission to release a modified version without this exception;
---this exception also makes it possible to release a modified version
---which carries forward this exception.
-
-staticNpcTheed1 = Creature:new {
-	objectName = "staticNpcTheed1",
+staticTheedNpc1 = Creature:new {
+	objectName = "staticTheedNpc1",
 	creatureType = NPC,
 
 	speciesName = "comm_operator",
@@ -103,8 +61,8 @@ staticNpcTheed1 = Creature:new {
 	cellID = 1697365
 }
 
-staticNpcTheed2 = Creature:new {
-	objectName = "staticNpcTheed2",
+staticTheedNpc2 = Creature:new {
+	objectName = "staticTheedNpc2",
 	creatureType = NPC,
 
 	speciesName = "pilot",
@@ -124,8 +82,8 @@ staticNpcTheed2 = Creature:new {
 	cellID = 1697365
 }
 
-staticNpcTheed3 = Creature:new {
-	objectName = "staticNpcTheed3",
+staticTheedNpc3 = Creature:new {
+	objectName = "staticTheedNpc3",
 	creatureType = NPC,
 
 	speciesName = "surgical_droid_21b",
@@ -145,8 +103,8 @@ staticNpcTheed3 = Creature:new {
 	cellID = 1697364
 }
 
-staticNpcTheed4 = Creature:new {
-	objectName = "staticNpcTheed4",
+staticTheedNpc4 = Creature:new {
+	objectName = "staticTheedNpc4",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -166,8 +124,8 @@ staticNpcTheed4 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed5 = Creature:new {
-	objectName = "staticNpcTheed5",
+staticTheedNpc5 = Creature:new {
+	objectName = "staticTheedNpc5",
 	creatureType = NPC,
 
 	speciesName = "technician",
@@ -187,29 +145,8 @@ staticNpcTheed5 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed6 = Creature:new {
-	objectName = "staticNpcTheed6",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2217269591,
-	positionX = -5086.83,
-	positionY = 4142.32,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.683696,
-	directionW = 0.729767,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed7 = Creature:new {
-	objectName = "staticNpcTheed7",
+staticTheedNpc6 = Creature:new {
+	objectName = "staticTheedNpc6",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -229,8 +166,8 @@ staticNpcTheed7 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed8 = Creature:new {
-	objectName = "staticNpcTheed8",
+staticTheedNpc7 = Creature:new {
+	objectName = "staticTheedNpc7",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -250,8 +187,8 @@ staticNpcTheed8 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed9 = Creature:new {
-	objectName = "staticNpcTheed9",
+staticTheedNpc8 = Creature:new {
+	objectName = "staticTheedNpc8",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -271,8 +208,8 @@ staticNpcTheed9 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed10 = Creature:new {
-	objectName = "staticNpcTheed10",
+staticTheedNpc9 = Creature:new {
+	objectName = "staticTheedNpc9",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -292,8 +229,8 @@ staticNpcTheed10 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed11 = Creature:new {
-	objectName = "staticNpcTheed11",
+staticTheedNpc10 = Creature:new {
+	objectName = "staticTheedNpc10",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -313,8 +250,8 @@ staticNpcTheed11 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed12 = Creature:new {
-	objectName = "staticNpcTheed12",
+staticTheedNpc11 = Creature:new {
+	objectName = "staticTheedNpc11",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -334,8 +271,8 @@ staticNpcTheed12 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed13 = Creature:new {
-	objectName = "staticNpcTheed13",
+staticTheedNpc12 = Creature:new {
+	objectName = "staticTheedNpc12",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -355,8 +292,8 @@ staticNpcTheed13 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed14 = Creature:new {
-	objectName = "staticNpcTheed14",
+staticTheedNpc13 = Creature:new {
+	objectName = "staticTheedNpc13",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -376,8 +313,8 @@ staticNpcTheed14 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed15 = Creature:new {
-	objectName = "staticNpcTheed15",
+staticTheedNpc14 = Creature:new {
+	objectName = "staticTheedNpc14",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -397,8 +334,8 @@ staticNpcTheed15 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed16 = Creature:new {
-	objectName = "staticNpcTheed16",
+staticTheedNpc15 = Creature:new {
+	objectName = "staticTheedNpc15",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -418,8 +355,8 @@ staticNpcTheed16 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed17 = Creature:new {
-	objectName = "staticNpcTheed17",
+staticTheedNpc16 = Creature:new {
+	objectName = "staticTheedNpc16",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -439,8 +376,8 @@ staticNpcTheed17 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed18 = Creature:new {
-	objectName = "staticNpcTheed18",
+staticTheedNpc17 = Creature:new {
+	objectName = "staticTheedNpc17",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -460,8 +397,8 @@ staticNpcTheed18 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed19 = Creature:new {
-	objectName = "staticNpcTheed19",
+staticTheedNpc18 = Creature:new {
+	objectName = "staticTheedNpc18",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -481,8 +418,8 @@ staticNpcTheed19 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed20 = Creature:new {
-	objectName = "staticNpcTheed20",
+staticTheedNpc19 = Creature:new {
+	objectName = "staticTheedNpc19",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -502,8 +439,8 @@ staticNpcTheed20 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed21 = Creature:new {
-	objectName = "staticNpcTheed21",
+staticTheedNpc20 = Creature:new {
+	objectName = "staticTheedNpc20",
 	creatureType = NPC,
 
 	speciesName = "naboo_police",
@@ -523,8 +460,8 @@ staticNpcTheed21 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed22 = Creature:new {
-	objectName = "staticNpcTheed22",
+staticTheedNpc21 = Creature:new {
+	objectName = "staticTheedNpc21",
 	creatureType = NPC,
 
 	speciesName = "gungan_hunter",
@@ -544,8 +481,8 @@ staticNpcTheed22 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed23 = Creature:new {
-	objectName = "staticNpcTheed23",
+staticTheedNpc22 = Creature:new {
+	objectName = "staticTheedNpc22",
 	creatureType = NPC,
 
 	speciesName = "artisan",
@@ -565,8 +502,8 @@ staticNpcTheed23 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed24 = Creature:new {
-	objectName = "staticNpcTheed24",
+staticTheedNpc23 = Creature:new {
+	objectName = "staticTheedNpc23",
 	creatureType = NPC,
 
 	speciesName = "entertainer",
@@ -586,8 +523,8 @@ staticNpcTheed24 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed25 = Creature:new {
-	objectName = "staticNpcTheed25",
+staticTheedNpc24 = Creature:new {
+	objectName = "staticTheedNpc24",
 	creatureType = NPC,
 
 	speciesName = "mountain_villager",
@@ -607,8 +544,8 @@ staticNpcTheed25 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed26 = Creature:new {
-	objectName = "staticNpcTheed26",
+staticTheedNpc25 = Creature:new {
+	objectName = "staticTheedNpc25",
 	creatureType = NPC,
 
 	speciesName = "noble",
@@ -628,8 +565,8 @@ staticNpcTheed26 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed27 = Creature:new {
-	objectName = "staticNpcTheed27",
+staticTheedNpc26 = Creature:new {
+	objectName = "staticTheedNpc26",
 	creatureType = NPC,
 
 	speciesName = "farmer_rancher",
@@ -649,8 +586,8 @@ staticNpcTheed27 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed28 = Creature:new {
-	objectName = "staticNpcTheed28",
+staticTheedNpc27 = Creature:new {
+	objectName = "staticTheedNpc27",
 	creatureType = NPC,
 
 	speciesName = "bounty_hunter",
@@ -670,8 +607,8 @@ staticNpcTheed28 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed29 = Creature:new {
-	objectName = "staticNpcTheed29",
+staticTheedNpc28 = Creature:new {
+	objectName = "staticTheedNpc28",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -691,8 +628,8 @@ staticNpcTheed29 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed30 = Creature:new {
-	objectName = "staticNpcTheed30",
+staticTheedNpc29 = Creature:new {
+	objectName = "staticTheedNpc29",
 	creatureType = NPC,
 
 	speciesName = "scout_trooper",
@@ -712,8 +649,8 @@ staticNpcTheed30 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed31 = Creature:new {
-	objectName = "staticNpcTheed31",
+staticTheedNpc30 = Creature:new {
+	objectName = "staticTheedNpc30",
 	creatureType = NPC,
 
 	speciesName = "pilot",
@@ -733,8 +670,8 @@ staticNpcTheed31 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed32 = Creature:new {
-	objectName = "staticNpcTheed32",
+staticTheedNpc31 = Creature:new {
+	objectName = "staticTheedNpc31",
 	creatureType = NPC,
 
 	speciesName = "farmer_rancher",
@@ -754,8 +691,8 @@ staticNpcTheed32 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed33 = Creature:new {
-	objectName = "staticNpcTheed33",
+staticTheedNpc32 = Creature:new {
+	objectName = "staticTheedNpc32",
 	creatureType = NPC,
 
 	speciesName = "stormtrooper",
@@ -775,29 +712,8 @@ staticNpcTheed33 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed34 = Creature:new {
-	objectName = "staticNpcTheed34",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1733413280,
-	positionX = -4999.46,
-	positionY = 4120.26,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.699889,
-	directionW = 0.714252,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed35 = Creature:new {
-	objectName = "staticNpcTheed35",
+staticTheedNpc33 = Creature:new {
+	objectName = "staticTheedNpc33",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -817,8 +733,8 @@ staticNpcTheed35 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed36 = Creature:new {
-	objectName = "staticNpcTheed36",
+staticTheedNpc34 = Creature:new {
+	objectName = "staticTheedNpc34",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -838,8 +754,8 @@ staticNpcTheed36 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed37 = Creature:new {
-	objectName = "staticNpcTheed37",
+staticTheedNpc35 = Creature:new {
+	objectName = "staticTheedNpc35",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -859,8 +775,8 @@ staticNpcTheed37 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed38 = Creature:new {
-	objectName = "staticNpcTheed38",
+staticTheedNpc36 = Creature:new {
+	objectName = "staticTheedNpc36",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -880,8 +796,8 @@ staticNpcTheed38 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed39 = Creature:new {
-	objectName = "staticNpcTheed39",
+staticTheedNpc37 = Creature:new {
+	objectName = "staticTheedNpc37",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -901,8 +817,8 @@ staticNpcTheed39 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed40 = Creature:new {
-	objectName = "staticNpcTheed40",
+staticTheedNpc38 = Creature:new {
+	objectName = "staticTheedNpc38",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -922,8 +838,8 @@ staticNpcTheed40 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed41 = Creature:new {
-	objectName = "staticNpcTheed41",
+staticTheedNpc39 = Creature:new {
+	objectName = "staticTheedNpc39",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -943,8 +859,8 @@ staticNpcTheed41 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed42 = Creature:new {
-	objectName = "staticNpcTheed42",
+staticTheedNpc40 = Creature:new {
+	objectName = "staticTheedNpc40",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -964,8 +880,8 @@ staticNpcTheed42 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed43 = Creature:new {
-	objectName = "staticNpcTheed43",
+staticTheedNpc41 = Creature:new {
+	objectName = "staticTheedNpc41",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -985,8 +901,8 @@ staticNpcTheed43 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed44 = Creature:new {
-	objectName = "staticNpcTheed44",
+staticTheedNpc42 = Creature:new {
+	objectName = "staticTheedNpc42",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -1006,50 +922,8 @@ staticNpcTheed44 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed45 = Creature:new {
-	objectName = "staticNpcTheed45",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 372381261,
-	positionX = -5147.84,
-	positionY = 4158.55,
-	positionZ = 6.52214,
-
-	directionX = 1.06974e-07,
-	directionZ = -1.29983e-07,
-	directionY = 0.445664,
-	directionW = 0.8952,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed46 = Creature:new {
-	objectName = "staticNpcTheed46",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 777825837,
-	positionX = -5114.57,
-	positionY = 4161.22,
-	positionZ = 6.52214,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.153665,
-	directionW = 0.988123,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed47 = Creature:new {
-	objectName = "staticNpcTheed47",
+staticTheedNpc43 = Creature:new {
+	objectName = "staticTheedNpc43",
 	creatureType = NPC,
 
 	speciesName = "official",
@@ -1069,8 +943,8 @@ staticNpcTheed47 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed48 = Creature:new {
-	objectName = "staticNpcTheed48",
+staticTheedNpc44 = Creature:new {
+	objectName = "staticTheedNpc44",
 	creatureType = NPC,
 
 	speciesName = "miner",
@@ -1090,8 +964,8 @@ staticNpcTheed48 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed49 = Creature:new {
-	objectName = "staticNpcTheed49",
+staticTheedNpc45 = Creature:new {
+	objectName = "staticTheedNpc45",
 	creatureType = NPC,
 
 	speciesName = "gungan_outcast",
@@ -1111,8 +985,8 @@ staticNpcTheed49 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed50 = Creature:new {
-	objectName = "staticNpcTheed50",
+staticTheedNpc46 = Creature:new {
+	objectName = "staticTheedNpc46",
 	creatureType = NPC,
 
 	speciesName = "brawler",
@@ -1132,29 +1006,8 @@ staticNpcTheed50 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed51 = Creature:new {
-	objectName = "staticNpcTheed51",
-	creatureType = NPC,
-
-	speciesName = "naboo_loruna_scathe",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 722182243,
-	positionX = -5149.33,
-	positionY = 4286.48,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.984642,
-	directionW = 0.174587,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed52 = Creature:new {
-	objectName = "staticNpcTheed52",
+staticTheedNpc47 = Creature:new {
+	objectName = "staticTheedNpc47",
 	creatureType = NPC,
 
 	speciesName = "fbase_elite_sand_trooper_hard",
@@ -1174,8 +1027,8 @@ staticNpcTheed52 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed53 = Creature:new {
-	objectName = "staticNpcTheed53",
+staticTheedNpc48 = Creature:new {
+	objectName = "staticTheedNpc48",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -1195,8 +1048,8 @@ staticNpcTheed53 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed54 = Creature:new {
-	objectName = "staticNpcTheed54",
+staticTheedNpc49 = Creature:new {
+	objectName = "staticTheedNpc49",
 	creatureType = NPC,
 
 	speciesName = "crackdown_comm_operator",
@@ -1216,8 +1069,8 @@ staticNpcTheed54 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed55 = Creature:new {
-	objectName = "staticNpcTheed55",
+staticTheedNpc50 = Creature:new {
+	objectName = "staticTheedNpc50",
 	creatureType = NPC,
 
 	speciesName = "philosopher",
@@ -1237,8 +1090,8 @@ staticNpcTheed55 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed56 = Creature:new {
-	objectName = "staticNpcTheed56",
+staticTheedNpc51 = Creature:new {
+	objectName = "staticTheedNpc51",
 	creatureType = NPC,
 
 	speciesName = "gungan_guard",
@@ -1258,8 +1111,8 @@ staticNpcTheed56 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed57 = Creature:new {
-	objectName = "staticNpcTheed57",
+staticTheedNpc52 = Creature:new {
+	objectName = "staticTheedNpc52",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -1279,8 +1132,8 @@ staticNpcTheed57 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed58 = Creature:new {
-	objectName = "staticNpcTheed58",
+staticTheedNpc53 = Creature:new {
+	objectName = "staticTheedNpc53",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -1300,8 +1153,8 @@ staticNpcTheed58 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed59 = Creature:new {
-	objectName = "staticNpcTheed59",
+staticTheedNpc54 = Creature:new {
+	objectName = "staticTheedNpc54",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_rifleman",
@@ -1321,8 +1174,8 @@ staticNpcTheed59 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed60 = Creature:new {
-	objectName = "staticNpcTheed60",
+staticTheedNpc55 = Creature:new {
+	objectName = "staticTheedNpc55",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -1342,8 +1195,8 @@ staticNpcTheed60 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed61 = Creature:new {
-	objectName = "staticNpcTheed61",
+staticTheedNpc56 = Creature:new {
+	objectName = "staticTheedNpc56",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -1363,8 +1216,8 @@ staticNpcTheed61 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed62 = Creature:new {
-	objectName = "staticNpcTheed62",
+staticTheedNpc57 = Creature:new {
+	objectName = "staticTheedNpc57",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -1384,29 +1237,8 @@ staticNpcTheed62 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed63 = Creature:new {
-	objectName = "staticNpcTheed63",
-	creatureType = NPC,
-
-	speciesName = "naboo_theed_lt_khartoor",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2672361399,
-	positionX = -4887.71,
-	positionY = 4187.64,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.969479,
-	directionW = -0.245174,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed64 = Creature:new {
-	objectName = "staticNpcTheed64",
+staticTheedNpc58 = Creature:new {
+	objectName = "staticTheedNpc58",
 	creatureType = NPC,
 
 	speciesName = "explorer",
@@ -1426,8 +1258,8 @@ staticNpcTheed64 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed65 = Creature:new {
-	objectName = "staticNpcTheed65",
+staticTheedNpc59 = Creature:new {
+	objectName = "staticTheedNpc59",
 	creatureType = NPC,
 
 	speciesName = "pilot",
@@ -1447,8 +1279,8 @@ staticNpcTheed65 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed66 = Creature:new {
-	objectName = "staticNpcTheed66",
+staticTheedNpc60 = Creature:new {
+	objectName = "staticTheedNpc60",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_captain",
@@ -1468,8 +1300,8 @@ staticNpcTheed66 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed67 = Creature:new {
-	objectName = "staticNpcTheed67",
+staticTheedNpc61 = Creature:new {
+	objectName = "staticTheedNpc61",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -1489,8 +1321,8 @@ staticNpcTheed67 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed68 = Creature:new {
-	objectName = "staticNpcTheed68",
+staticTheedNpc62 = Creature:new {
+	objectName = "staticTheedNpc62",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -1510,8 +1342,8 @@ staticNpcTheed68 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed69 = Creature:new {
-	objectName = "staticNpcTheed69",
+staticTheedNpc63 = Creature:new {
+	objectName = "staticTheedNpc63",
 	creatureType = NPC,
 
 	speciesName = "j1_po",
@@ -1531,8 +1363,8 @@ staticNpcTheed69 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed70 = Creature:new {
-	objectName = "staticNpcTheed70",
+staticTheedNpc64 = Creature:new {
+	objectName = "staticTheedNpc64",
 	creatureType = NPC,
 
 	speciesName = "official",
@@ -1552,8 +1384,8 @@ staticNpcTheed70 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed71 = Creature:new {
-	objectName = "staticNpcTheed71",
+staticTheedNpc65 = Creature:new {
+	objectName = "staticTheedNpc65",
 	creatureType = NPC,
 
 	speciesName = "twilek_base_female",
@@ -1573,8 +1405,8 @@ staticNpcTheed71 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed72 = Creature:new {
-	objectName = "staticNpcTheed72",
+staticTheedNpc66 = Creature:new {
+	objectName = "staticTheedNpc66",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_rifleman",
@@ -1594,8 +1426,8 @@ staticNpcTheed72 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed73 = Creature:new {
-	objectName = "staticNpcTheed73",
+staticTheedNpc67 = Creature:new {
+	objectName = "staticTheedNpc67",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -1615,8 +1447,8 @@ staticNpcTheed73 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed74 = Creature:new {
-	objectName = "staticNpcTheed74",
+staticTheedNpc68 = Creature:new {
+	objectName = "staticTheedNpc68",
 	creatureType = NPC,
 
 	speciesName = "kultin_woodle",
@@ -1636,8 +1468,8 @@ staticNpcTheed74 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed75 = Creature:new {
-	objectName = "staticNpcTheed75",
+staticTheedNpc69 = Creature:new {
+	objectName = "staticTheedNpc69",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_rifleman",
@@ -1657,8 +1489,8 @@ staticNpcTheed75 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed76 = Creature:new {
-	objectName = "staticNpcTheed76",
+staticTheedNpc70 = Creature:new {
+	objectName = "staticTheedNpc70",
 	creatureType = NPC,
 
 	speciesName = "rsf_security_guard",
@@ -1678,8 +1510,8 @@ staticNpcTheed76 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed77 = Creature:new {
-	objectName = "staticNpcTheed77",
+staticTheedNpc71 = Creature:new {
+	objectName = "staticTheedNpc71",
 	creatureType = NPC,
 
 	speciesName = "human_base_male",
@@ -1699,8 +1531,8 @@ staticNpcTheed77 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed78 = Creature:new {
-	objectName = "staticNpcTheed78",
+staticTheedNpc72 = Creature:new {
+	objectName = "staticTheedNpc72",
 	creatureType = NPC,
 
 	speciesName = "naboo_police",
@@ -1720,8 +1552,8 @@ staticNpcTheed78 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed79 = Creature:new {
-	objectName = "staticNpcTheed79",
+staticTheedNpc73 = Creature:new {
+	objectName = "staticTheedNpc73",
 	creatureType = NPC,
 
 	speciesName = "crackdown_dark_trooper",
@@ -1741,8 +1573,8 @@ staticNpcTheed79 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed80 = Creature:new {
-	objectName = "staticNpcTheed80",
+staticTheedNpc74 = Creature:new {
+	objectName = "staticTheedNpc74",
 	creatureType = NPC,
 
 	speciesName = "pilot",
@@ -1762,8 +1594,8 @@ staticNpcTheed80 = Creature:new {
 	cellID = 1692104
 }
 
-staticNpcTheed81 = Creature:new {
-	objectName = "staticNpcTheed81",
+staticTheedNpc75 = Creature:new {
+	objectName = "staticTheedNpc75",
 	creatureType = NPC,
 
 	speciesName = "bodyguard",
@@ -1783,29 +1615,8 @@ staticNpcTheed81 = Creature:new {
 	cellID = 1692104
 }
 
-staticNpcTheed82 = Creature:new {
-	objectName = "staticNpcTheed82",
-	creatureType = NPC,
-
-	speciesName = "nexus_travel_01",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4187783762,
-	positionX = 37.2,
-	positionY = 15.4,
-	positionZ = 7.9418,
-
-	directionX = 1.42553e-07,
-	directionZ = -2.60067e-08,
-	directionY = 0.881528,
-	directionW = -0.472131,
-	randomMovement = 0,
-	cellID = 1692104
-}
-
-staticNpcTheed83 = Creature:new {
-	objectName = "staticNpcTheed83",
+staticTheedNpc76 = Creature:new {
+	objectName = "staticTheedNpc76",
 	creatureType = NPC,
 
 	speciesName = "bodyguard",
@@ -1825,8 +1636,8 @@ staticNpcTheed83 = Creature:new {
 	cellID = 1692104
 }
 
-staticNpcTheed84 = Creature:new {
-	objectName = "staticNpcTheed84",
+staticTheedNpc77 = Creature:new {
+	objectName = "staticTheedNpc77",
 	creatureType = NPC,
 
 	speciesName = "swamp_villager",
@@ -1846,29 +1657,8 @@ staticNpcTheed84 = Creature:new {
 	cellID = 1692104
 }
 
-staticNpcTheed85 = Creature:new {
-	objectName = "staticNpcTheed85",
-	creatureType = NPC,
-
-	speciesName = "naboo_theed_sgt_brunser",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2007023339,
-	positionX = 46.2646,
-	positionY = -28.8639,
-	positionZ = 7.95945,
-
-	directionX = -0.00383554,
-	directionZ = -0.00254601,
-	directionY = 0.827731,
-	directionW = -0.561106,
-	randomMovement = 0,
-	cellID = 1692104
-}
-
-staticNpcTheed86 = Creature:new {
-	objectName = "staticNpcTheed86",
+staticTheedNpc78 = Creature:new {
+	objectName = "staticTheedNpc78",
 	creatureType = NPC,
 
 	speciesName = "businessman",
@@ -1888,8 +1678,8 @@ staticNpcTheed86 = Creature:new {
 	cellID = 1692103
 }
 
-staticNpcTheed87 = Creature:new {
-	objectName = "staticNpcTheed87",
+staticTheedNpc79 = Creature:new {
+	objectName = "staticTheedNpc79",
 	creatureType = NPC,
 
 	speciesName = "businessman",
@@ -1909,8 +1699,8 @@ staticNpcTheed87 = Creature:new {
 	cellID = 1692103
 }
 
-staticNpcTheed88 = Creature:new {
-	objectName = "staticNpcTheed88",
+staticTheedNpc80 = Creature:new {
+	objectName = "staticTheedNpc80",
 	creatureType = NPC,
 
 	speciesName = "slicer",
@@ -1930,8 +1720,8 @@ staticNpcTheed88 = Creature:new {
 	cellID = 1692102
 }
 
-staticNpcTheed89 = Creature:new {
-	objectName = "staticNpcTheed89",
+staticTheedNpc81 = Creature:new {
+	objectName = "staticTheedNpc81",
 	creatureType = NPC,
 
 	speciesName = "scoundrel",
@@ -1951,8 +1741,8 @@ staticNpcTheed89 = Creature:new {
 	cellID = 1692102
 }
 
-staticNpcTheed90 = Creature:new {
-	objectName = "staticNpcTheed90",
+staticTheedNpc82 = Creature:new {
+	objectName = "staticTheedNpc82",
 	creatureType = NPC,
 
 	speciesName = "gungan_mercenary",
@@ -1972,8 +1762,8 @@ staticNpcTheed90 = Creature:new {
 	cellID = 1692102
 }
 
-staticNpcTheed91 = Creature:new {
-	objectName = "staticNpcTheed91",
+staticTheedNpc83 = Creature:new {
+	objectName = "staticTheedNpc83",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -1993,8 +1783,8 @@ staticNpcTheed91 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed92 = Creature:new {
-	objectName = "staticNpcTheed92",
+staticTheedNpc84 = Creature:new {
+	objectName = "staticTheedNpc84",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -2014,8 +1804,8 @@ staticNpcTheed92 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed93 = Creature:new {
-	objectName = "staticNpcTheed93",
+staticTheedNpc85 = Creature:new {
+	objectName = "staticTheedNpc85",
 	creatureType = NPC,
 
 	speciesName = "swamp_villager",
@@ -2035,8 +1825,8 @@ staticNpcTheed93 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed94 = Creature:new {
-	objectName = "staticNpcTheed94",
+staticTheedNpc86 = Creature:new {
+	objectName = "staticTheedNpc86",
 	creatureType = NPC,
 
 	speciesName = "mercenary",
@@ -2056,29 +1846,8 @@ staticNpcTheed94 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed95 = Creature:new {
-	objectName = "staticNpcTheed95",
-	creatureType = NPC,
-
-	speciesName = "respec_seller",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 698129189,
-	positionX = -4821.03,
-	positionY = 4139.96,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.764283,
-	directionW = -0.644881,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed96 = Creature:new {
-	objectName = "staticNpcTheed96",
+staticTheedNpc87 = Creature:new {
+	objectName = "staticTheedNpc87",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -2098,8 +1867,8 @@ staticNpcTheed96 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed97 = Creature:new {
-	objectName = "staticNpcTheed97",
+staticTheedNpc88 = Creature:new {
+	objectName = "staticTheedNpc88",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -2119,8 +1888,8 @@ staticNpcTheed97 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed98 = Creature:new {
-	objectName = "staticNpcTheed98",
+staticTheedNpc89 = Creature:new {
+	objectName = "staticTheedNpc89",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -2140,8 +1909,8 @@ staticNpcTheed98 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed99 = Creature:new {
-	objectName = "staticNpcTheed99",
+staticTheedNpc90 = Creature:new {
+	objectName = "staticTheedNpc90",
 	creatureType = NPC,
 
 	speciesName = "pilot",
@@ -2161,8 +1930,8 @@ staticNpcTheed99 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed100 = Creature:new {
-	objectName = "staticNpcTheed100",
+staticTheedNpc91 = Creature:new {
+	objectName = "staticTheedNpc91",
 	creatureType = NPC,
 
 	speciesName = "medic",
@@ -2182,8 +1951,8 @@ staticNpcTheed100 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed101 = Creature:new {
-	objectName = "staticNpcTheed101",
+staticTheedNpc92 = Creature:new {
+	objectName = "staticTheedNpc92",
 	creatureType = NPC,
 
 	speciesName = "naboo_theed_toff_henrou",
@@ -2203,8 +1972,8 @@ staticNpcTheed101 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed102 = Creature:new {
-	objectName = "staticNpcTheed102",
+staticTheedNpc93 = Creature:new {
+	objectName = "staticTheedNpc93",
 	creatureType = NPC,
 
 	speciesName = "stormtrooper_novatrooper_elite",
@@ -2224,8 +1993,8 @@ staticNpcTheed102 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed103 = Creature:new {
-	objectName = "staticNpcTheed103",
+staticTheedNpc94 = Creature:new {
+	objectName = "staticTheedNpc94",
 	creatureType = NPC,
 
 	speciesName = "stormtrooper_novatrooper_squad_leader",
@@ -2245,8 +2014,8 @@ staticNpcTheed103 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed104 = Creature:new {
-	objectName = "staticNpcTheed104",
+staticTheedNpc95 = Creature:new {
+	objectName = "staticTheedNpc95",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -2266,8 +2035,8 @@ staticNpcTheed104 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed105 = Creature:new {
-	objectName = "staticNpcTheed105",
+staticTheedNpc96 = Creature:new {
+	objectName = "staticTheedNpc96",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -2287,29 +2056,8 @@ staticNpcTheed105 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed106 = Creature:new {
-	objectName = "staticNpcTheed106",
-	creatureType = NPC,
-
-	speciesName = "surgical_droid_base",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "droid_name",
-	objectCRC = 3280882042,
-	positionX = -5,
-	positionY = 1.8,
-	positionZ = 0.0814226,
-
-	directionX = 0.0139699,
-	directionZ = -0.0255892,
-	directionY = 0.373582,
-	directionW = 0.927139,
-	randomMovement = 0,
-	cellID = 1697352
-}
-
-staticNpcTheed107 = Creature:new {
-	objectName = "staticNpcTheed107",
+staticTheedNpc97 = Creature:new {
+	objectName = "staticTheedNpc97",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -2329,29 +2077,8 @@ staticNpcTheed107 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed108 = Creature:new {
-	objectName = "staticNpcTheed108",
-	creatureType = NPC,
-
-	speciesName = "trainer_beast_master",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1277073565,
-	positionX = -5019,
-	positionY = 4012,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.56066,
-	directionW = 0.828046,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed109 = Creature:new {
-	objectName = "staticNpcTheed109",
+staticTheedNpc98 = Creature:new {
+	objectName = "staticTheedNpc98",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -2371,8 +2098,8 @@ staticNpcTheed109 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed110 = Creature:new {
-	objectName = "staticNpcTheed110",
+staticTheedNpc99 = Creature:new {
+	objectName = "staticTheedNpc99",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_rifleman",
@@ -2392,8 +2119,8 @@ staticNpcTheed110 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed111 = Creature:new {
-	objectName = "staticNpcTheed111",
+staticTheedNpc100 = Creature:new {
+	objectName = "staticTheedNpc100",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_sniper",
@@ -2413,8 +2140,8 @@ staticNpcTheed111 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed112 = Creature:new {
-	objectName = "staticNpcTheed112",
+staticTheedNpc101 = Creature:new {
+	objectName = "staticTheedNpc101",
 	creatureType = NPC,
 
 	speciesName = "crackdown_imperial_army_captain",
@@ -2434,8 +2161,8 @@ staticNpcTheed112 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed113 = Creature:new {
-	objectName = "staticNpcTheed113",
+staticTheedNpc102 = Creature:new {
+	objectName = "staticTheedNpc102",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -2455,8 +2182,8 @@ staticNpcTheed113 = Creature:new {
 	cellID = 1697383
 }
 
-staticNpcTheed114 = Creature:new {
-	objectName = "staticNpcTheed114",
+staticTheedNpc103 = Creature:new {
+	objectName = "staticTheedNpc103",
 	creatureType = NPC,
 
 	speciesName = "swamp_villager",
@@ -2476,8 +2203,8 @@ staticNpcTheed114 = Creature:new {
 	cellID = 1697383
 }
 
-staticNpcTheed115 = Creature:new {
-	objectName = "staticNpcTheed115",
+staticTheedNpc104 = Creature:new {
+	objectName = "staticTheedNpc104",
 	creatureType = NPC,
 
 	speciesName = "explorer",
@@ -2497,8 +2224,8 @@ staticNpcTheed115 = Creature:new {
 	cellID = 1697383
 }
 
-staticNpcTheed116 = Creature:new {
-	objectName = "staticNpcTheed116",
+staticTheedNpc105 = Creature:new {
+	objectName = "staticTheedNpc105",
 	creatureType = NPC,
 
 	speciesName = "explorer",
@@ -2518,8 +2245,8 @@ staticNpcTheed116 = Creature:new {
 	cellID = 1697381
 }
 
-staticNpcTheed117 = Creature:new {
-	objectName = "staticNpcTheed117",
+staticTheedNpc106 = Creature:new {
+	objectName = "staticTheedNpc106",
 	creatureType = NPC,
 
 	speciesName = "miner",
@@ -2539,8 +2266,8 @@ staticNpcTheed117 = Creature:new {
 	cellID = 1697381
 }
 
-staticNpcTheed118 = Creature:new {
-	objectName = "staticNpcTheed118",
+staticTheedNpc107 = Creature:new {
+	objectName = "staticTheedNpc107",
 	creatureType = NPC,
 
 	speciesName = "naboo_monk",
@@ -2560,8 +2287,8 @@ staticNpcTheed118 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed119 = Creature:new {
-	objectName = "staticNpcTheed119",
+staticTheedNpc108 = Creature:new {
+	objectName = "staticTheedNpc108",
 	creatureType = NPC,
 
 	speciesName = "mountain_villager",
@@ -2581,8 +2308,8 @@ staticNpcTheed119 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed120 = Creature:new {
-	objectName = "staticNpcTheed120",
+staticTheedNpc109 = Creature:new {
+	objectName = "staticTheedNpc109",
 	creatureType = NPC,
 
 	speciesName = "swamp_villager",
@@ -2602,8 +2329,8 @@ staticNpcTheed120 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed121 = Creature:new {
-	objectName = "staticNpcTheed121",
+staticTheedNpc110 = Creature:new {
+	objectName = "staticTheedNpc110",
 	creatureType = NPC,
 
 	speciesName = "farmer_agriculturalist",
@@ -2623,8 +2350,8 @@ staticNpcTheed121 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed122 = Creature:new {
-	objectName = "staticNpcTheed122",
+staticTheedNpc111 = Creature:new {
+	objectName = "staticTheedNpc111",
 	creatureType = NPC,
 
 	speciesName = "bothan_information_broker",
@@ -2644,8 +2371,8 @@ staticNpcTheed122 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed123 = Creature:new {
-	objectName = "staticNpcTheed123",
+staticTheedNpc112 = Creature:new {
+	objectName = "staticTheedNpc112",
 	creatureType = NPC,
 
 	speciesName = "businessman",
@@ -2665,8 +2392,8 @@ staticNpcTheed123 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed124 = Creature:new {
-	objectName = "staticNpcTheed124",
+staticTheedNpc113 = Creature:new {
+	objectName = "staticTheedNpc113",
 	creatureType = NPC,
 
 	speciesName = "rsf_pilot",
@@ -2686,8 +2413,8 @@ staticNpcTheed124 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed125 = Creature:new {
-	objectName = "staticNpcTheed125",
+staticTheedNpc114 = Creature:new {
+	objectName = "staticTheedNpc114",
 	creatureType = NPC,
 
 	speciesName = "bothan_diplomat",
@@ -2707,8 +2434,8 @@ staticNpcTheed125 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed126 = Creature:new {
-	objectName = "staticNpcTheed126",
+staticTheedNpc115 = Creature:new {
+	objectName = "staticTheedNpc115",
 	creatureType = NPC,
 
 	speciesName = "plainsfolk",
@@ -2728,8 +2455,8 @@ staticNpcTheed126 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed127 = Creature:new {
-	objectName = "staticNpcTheed127",
+staticTheedNpc116 = Creature:new {
+	objectName = "staticTheedNpc116",
 	creatureType = NPC,
 
 	speciesName = "bothan_diplomat",
@@ -2749,8 +2476,8 @@ staticNpcTheed127 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed128 = Creature:new {
-	objectName = "staticNpcTheed128",
+staticTheedNpc117 = Creature:new {
+	objectName = "staticTheedNpc117",
 	creatureType = NPC,
 
 	speciesName = "hunter",
@@ -2770,8 +2497,8 @@ staticNpcTheed128 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed129 = Creature:new {
-	objectName = "staticNpcTheed129",
+staticTheedNpc118 = Creature:new {
+	objectName = "staticTheedNpc118",
 	creatureType = NPC,
 
 	speciesName = "moncal_base_female",
@@ -2791,8 +2518,8 @@ staticNpcTheed129 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed130 = Creature:new {
-	objectName = "staticNpcTheed130",
+staticTheedNpc119 = Creature:new {
+	objectName = "staticTheedNpc119",
 	creatureType = NPC,
 
 	speciesName = "mercenary",
@@ -2812,8 +2539,8 @@ staticNpcTheed130 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed131 = Creature:new {
-	objectName = "staticNpcTheed131",
+staticTheedNpc120 = Creature:new {
+	objectName = "staticTheedNpc120",
 	creatureType = NPC,
 
 	speciesName = "plainsfolk",
@@ -2833,8 +2560,8 @@ staticNpcTheed131 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed132 = Creature:new {
-	objectName = "staticNpcTheed132",
+staticTheedNpc121 = Creature:new {
+	objectName = "staticTheedNpc121",
 	creatureType = NPC,
 
 	speciesName = "mountain_villager",
@@ -2854,8 +2581,8 @@ staticNpcTheed132 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed133 = Creature:new {
-	objectName = "staticNpcTheed133",
+staticTheedNpc122 = Creature:new {
+	objectName = "staticTheedNpc122",
 	creatureType = NPC,
 
 	speciesName = "scientist",
@@ -2875,8 +2602,8 @@ staticNpcTheed133 = Creature:new {
 	cellID = 1697378
 }
 
-staticNpcTheed134 = Creature:new {
-	objectName = "staticNpcTheed134",
+staticTheedNpc123 = Creature:new {
+	objectName = "staticTheedNpc123",
 	creatureType = NPC,
 
 	speciesName = "technician",
@@ -2896,8 +2623,8 @@ staticNpcTheed134 = Creature:new {
 	cellID = 1697377
 }
 
-staticNpcTheed135 = Creature:new {
-	objectName = "staticNpcTheed135",
+staticTheedNpc124 = Creature:new {
+	objectName = "staticTheedNpc124",
 	creatureType = NPC,
 
 	speciesName = "gungan_hermit",
@@ -2917,8 +2644,8 @@ staticNpcTheed135 = Creature:new {
 	cellID = 1697377
 }
 
-staticNpcTheed136 = Creature:new {
-	objectName = "staticNpcTheed136",
+staticTheedNpc125 = Creature:new {
+	objectName = "staticTheedNpc125",
 	creatureType = NPC,
 
 	speciesName = "gungan_outcast",
@@ -2938,8 +2665,8 @@ staticNpcTheed136 = Creature:new {
 	cellID = 1697377
 }
 
-staticNpcTheed137 = Creature:new {
-	objectName = "staticNpcTheed137",
+staticTheedNpc126 = Creature:new {
+	objectName = "staticTheedNpc126",
 	creatureType = NPC,
 
 	speciesName = "hunter",
@@ -2959,8 +2686,8 @@ staticNpcTheed137 = Creature:new {
 	cellID = 1697377
 }
 
-staticNpcTheed138 = Creature:new {
-	objectName = "staticNpcTheed138",
+staticTheedNpc127 = Creature:new {
+	objectName = "staticTheedNpc127",
 	creatureType = NPC,
 
 	speciesName = "otolla_gungan",
@@ -2980,8 +2707,8 @@ staticNpcTheed138 = Creature:new {
 	cellID = 1697377
 }
 
-staticNpcTheed139 = Creature:new {
-	objectName = "staticNpcTheed139",
+staticTheedNpc128 = Creature:new {
+	objectName = "staticTheedNpc128",
 	creatureType = NPC,
 
 	speciesName = "scoundrel",
@@ -3001,8 +2728,8 @@ staticNpcTheed139 = Creature:new {
 	cellID = 1697377
 }
 
-staticNpcTheed140 = Creature:new {
-	objectName = "staticNpcTheed140",
+staticTheedNpc129 = Creature:new {
+	objectName = "staticTheedNpc129",
 	creatureType = NPC,
 
 	speciesName = "businessman",
@@ -3022,8 +2749,8 @@ staticNpcTheed140 = Creature:new {
 	cellID = 1697377
 }
 
-staticNpcTheed141 = Creature:new {
-	objectName = "staticNpcTheed141",
+staticTheedNpc130 = Creature:new {
+	objectName = "staticTheedNpc130",
 	creatureType = NPC,
 
 	speciesName = "philosopher",
@@ -3043,8 +2770,8 @@ staticNpcTheed141 = Creature:new {
 	cellID = 1697379
 }
 
-staticNpcTheed142 = Creature:new {
-	objectName = "staticNpcTheed142",
+staticTheedNpc131 = Creature:new {
+	objectName = "staticTheedNpc131",
 	creatureType = NPC,
 
 	speciesName = "explorer",
@@ -3064,8 +2791,8 @@ staticNpcTheed142 = Creature:new {
 	cellID = 1697379
 }
 
-staticNpcTheed143 = Creature:new {
-	objectName = "staticNpcTheed143",
+staticTheedNpc132 = Creature:new {
+	objectName = "staticTheedNpc132",
 	creatureType = NPC,
 
 	speciesName = "otolla_gungan",
@@ -3085,8 +2812,8 @@ staticNpcTheed143 = Creature:new {
 	cellID = 1697379
 }
 
-staticNpcTheed144 = Creature:new {
-	objectName = "staticNpcTheed144",
+staticTheedNpc133 = Creature:new {
+	objectName = "staticTheedNpc133",
 	creatureType = NPC,
 
 	speciesName = "gungan_scout",
@@ -3106,8 +2833,8 @@ staticNpcTheed144 = Creature:new {
 	cellID = 1697379
 }
 
-staticNpcTheed145 = Creature:new {
-	objectName = "staticNpcTheed145",
+staticTheedNpc134 = Creature:new {
+	objectName = "staticTheedNpc134",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3127,8 +2854,8 @@ staticNpcTheed145 = Creature:new {
 	cellID = 1697379
 }
 
-staticNpcTheed146 = Creature:new {
-	objectName = "staticNpcTheed146",
+staticTheedNpc135 = Creature:new {
+	objectName = "staticTheedNpc135",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3148,8 +2875,8 @@ staticNpcTheed146 = Creature:new {
 	cellID = 1697379
 }
 
-staticNpcTheed147 = Creature:new {
-	objectName = "staticNpcTheed147",
+staticTheedNpc136 = Creature:new {
+	objectName = "staticTheedNpc136",
 	creatureType = NPC,
 
 	speciesName = "r4",
@@ -3169,8 +2896,8 @@ staticNpcTheed147 = Creature:new {
 	cellID = 1697379
 }
 
-staticNpcTheed148 = Creature:new {
-	objectName = "staticNpcTheed148",
+staticTheedNpc137 = Creature:new {
+	objectName = "staticTheedNpc137",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_squad_leader",
@@ -3190,8 +2917,8 @@ staticNpcTheed148 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed149 = Creature:new {
-	objectName = "staticNpcTheed149",
+staticTheedNpc138 = Creature:new {
+	objectName = "staticTheedNpc138",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -3211,8 +2938,8 @@ staticNpcTheed149 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed150 = Creature:new {
-	objectName = "staticNpcTheed150",
+staticTheedNpc139 = Creature:new {
+	objectName = "staticTheedNpc139",
 	creatureType = NPC,
 
 	speciesName = "crackdown_imperial_sharpshooter",
@@ -3232,8 +2959,8 @@ staticNpcTheed150 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed151 = Creature:new {
-	objectName = "staticNpcTheed151",
+staticTheedNpc140 = Creature:new {
+	objectName = "staticTheedNpc140",
 	creatureType = NPC,
 
 	speciesName = "commoner_rodian_male",
@@ -3253,8 +2980,8 @@ staticNpcTheed151 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed152 = Creature:new {
-	objectName = "staticNpcTheed152",
+staticTheedNpc141 = Creature:new {
+	objectName = "staticTheedNpc141",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3274,8 +3001,8 @@ staticNpcTheed152 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed153 = Creature:new {
-	objectName = "staticNpcTheed153",
+staticTheedNpc142 = Creature:new {
+	objectName = "staticTheedNpc142",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3295,8 +3022,8 @@ staticNpcTheed153 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed154 = Creature:new {
-	objectName = "staticNpcTheed154",
+staticTheedNpc143 = Creature:new {
+	objectName = "staticTheedNpc143",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3316,8 +3043,8 @@ staticNpcTheed154 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed155 = Creature:new {
-	objectName = "staticNpcTheed155",
+staticTheedNpc144 = Creature:new {
+	objectName = "staticTheedNpc144",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -3337,8 +3064,8 @@ staticNpcTheed155 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed156 = Creature:new {
-	objectName = "staticNpcTheed156",
+staticTheedNpc145 = Creature:new {
+	objectName = "staticTheedNpc145",
 	creatureType = NPC,
 
 	speciesName = "fbase_imperial_army_captain_hard",
@@ -3358,8 +3085,8 @@ staticNpcTheed156 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed157 = Creature:new {
-	objectName = "staticNpcTheed157",
+staticTheedNpc146 = Creature:new {
+	objectName = "staticTheedNpc146",
 	creatureType = NPC,
 
 	speciesName = "fbase_stormtrooper_rifleman_hard",
@@ -3379,8 +3106,8 @@ staticNpcTheed157 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed158 = Creature:new {
-	objectName = "staticNpcTheed158",
+staticTheedNpc147 = Creature:new {
+	objectName = "staticTheedNpc147",
 	creatureType = NPC,
 
 	speciesName = "fbase_stormtrooper_medic_hard",
@@ -3400,8 +3127,8 @@ staticNpcTheed158 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed159 = Creature:new {
-	objectName = "staticNpcTheed159",
+staticTheedNpc148 = Creature:new {
+	objectName = "staticTheedNpc148",
 	creatureType = NPC,
 
 	speciesName = "explorer",
@@ -3421,8 +3148,8 @@ staticNpcTheed159 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed160 = Creature:new {
-	objectName = "staticNpcTheed160",
+staticTheedNpc149 = Creature:new {
+	objectName = "staticTheedNpc149",
 	creatureType = NPC,
 
 	speciesName = "scout_trooper",
@@ -3442,29 +3169,8 @@ staticNpcTheed160 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed161 = Creature:new {
-	objectName = "staticNpcTheed161",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2217269591,
-	positionX = -5222.78,
-	positionY = 4217.68,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.970482,
-	directionW = -0.241174,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed162 = Creature:new {
-	objectName = "staticNpcTheed162",
+staticTheedNpc150 = Creature:new {
+	objectName = "staticTheedNpc150",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3484,50 +3190,8 @@ staticNpcTheed162 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed163 = Creature:new {
-	objectName = "staticNpcTheed163",
-	creatureType = NPC,
-
-	speciesName = "naboo_theed_sgt_bragg",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 606025792,
-	positionX = -6.79871,
-	positionY = 20.9505,
-	positionZ = -0.894998,
-
-	directionX = -3.72469e-07,
-	directionZ = -7.86168e-07,
-	directionY = 0.99424,
-	directionW = -0.107172,
-	randomMovement = 0,
-	cellID = 97
-}
-
-staticNpcTheed164 = Creature:new {
-	objectName = "staticNpcTheed164",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 372381261,
-	positionX = -5.59174,
-	positionY = -20.4189,
-	positionZ = -0.894991,
-
-	directionX = 3.01182e-06,
-	directionZ = 3.03903e-06,
-	directionY = -0.0464394,
-	directionW = 0.998921,
-	randomMovement = 0,
-	cellID = 96
-}
-
-staticNpcTheed165 = Creature:new {
-	objectName = "staticNpcTheed165",
+staticTheedNpc151 = Creature:new {
+	objectName = "staticTheedNpc151",
 	creatureType = NPC,
 
 	speciesName = "bartender",
@@ -3547,8 +3211,8 @@ staticNpcTheed165 = Creature:new {
 	cellID = 91
 }
 
-staticNpcTheed166 = Creature:new {
-	objectName = "staticNpcTheed166",
+staticTheedNpc152 = Creature:new {
+	objectName = "staticTheedNpc152",
 	creatureType = NPC,
 
 	speciesName = "commoner_human_female",
@@ -3568,8 +3232,8 @@ staticNpcTheed166 = Creature:new {
 	cellID = 91
 }
 
-staticNpcTheed167 = Creature:new {
-	objectName = "staticNpcTheed167",
+staticTheedNpc153 = Creature:new {
+	objectName = "staticTheedNpc153",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3589,8 +3253,8 @@ staticNpcTheed167 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed168 = Creature:new {
-	objectName = "staticNpcTheed168",
+staticTheedNpc154 = Creature:new {
+	objectName = "staticTheedNpc154",
 	creatureType = NPC,
 
 	speciesName = "crackdown_scout_trooper",
@@ -3610,8 +3274,8 @@ staticNpcTheed168 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed169 = Creature:new {
-	objectName = "staticNpcTheed169",
+staticTheedNpc155 = Creature:new {
+	objectName = "staticTheedNpc155",
 	creatureType = NPC,
 
 	speciesName = "naboo_police",
@@ -3631,8 +3295,8 @@ staticNpcTheed169 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed170 = Creature:new {
-	objectName = "staticNpcTheed170",
+staticTheedNpc156 = Creature:new {
+	objectName = "staticTheedNpc156",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3652,8 +3316,8 @@ staticNpcTheed170 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed171 = Creature:new {
-	objectName = "staticNpcTheed171",
+staticTheedNpc157 = Creature:new {
+	objectName = "staticTheedNpc157",
 	creatureType = NPC,
 
 	speciesName = "fbase_stormtrooper_sniper_extreme",
@@ -3673,8 +3337,8 @@ staticNpcTheed171 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed172 = Creature:new {
-	objectName = "staticNpcTheed172",
+staticTheedNpc158 = Creature:new {
+	objectName = "staticTheedNpc158",
 	creatureType = NPC,
 
 	speciesName = "fbase_dark_trooper_extreme",
@@ -3694,8 +3358,8 @@ staticNpcTheed172 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed173 = Creature:new {
-	objectName = "staticNpcTheed173",
+staticTheedNpc159 = Creature:new {
+	objectName = "staticTheedNpc159",
 	creatureType = NPC,
 
 	speciesName = "fbase_elite_dark_trooper_extreme",
@@ -3715,8 +3379,8 @@ staticNpcTheed173 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed174 = Creature:new {
-	objectName = "staticNpcTheed174",
+staticTheedNpc160 = Creature:new {
+	objectName = "staticTheedNpc160",
 	creatureType = NPC,
 
 	speciesName = "farmer",
@@ -3736,8 +3400,8 @@ staticNpcTheed174 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed175 = Creature:new {
-	objectName = "staticNpcTheed175",
+staticTheedNpc161 = Creature:new {
+	objectName = "staticTheedNpc161",
 	creatureType = NPC,
 
 	speciesName = "bodyguard",
@@ -3757,8 +3421,8 @@ staticNpcTheed175 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed176 = Creature:new {
-	objectName = "staticNpcTheed176",
+staticTheedNpc162 = Creature:new {
+	objectName = "staticTheedNpc162",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3778,8 +3442,8 @@ staticNpcTheed176 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed177 = Creature:new {
-	objectName = "staticNpcTheed177",
+staticTheedNpc163 = Creature:new {
+	objectName = "staticTheedNpc163",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3799,8 +3463,8 @@ staticNpcTheed177 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed178 = Creature:new {
-	objectName = "staticNpcTheed178",
+staticTheedNpc164 = Creature:new {
+	objectName = "staticTheedNpc164",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3820,8 +3484,8 @@ staticNpcTheed178 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed179 = Creature:new {
-	objectName = "staticNpcTheed179",
+staticTheedNpc165 = Creature:new {
+	objectName = "staticTheedNpc165",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3841,8 +3505,8 @@ staticNpcTheed179 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed180 = Creature:new {
-	objectName = "staticNpcTheed180",
+staticTheedNpc166 = Creature:new {
+	objectName = "staticTheedNpc166",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3862,8 +3526,8 @@ staticNpcTheed180 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed181 = Creature:new {
-	objectName = "staticNpcTheed181",
+staticTheedNpc167 = Creature:new {
+	objectName = "staticTheedNpc167",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3883,8 +3547,8 @@ staticNpcTheed181 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed182 = Creature:new {
-	objectName = "staticNpcTheed182",
+staticTheedNpc168 = Creature:new {
+	objectName = "staticTheedNpc168",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3904,8 +3568,8 @@ staticNpcTheed182 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed183 = Creature:new {
-	objectName = "staticNpcTheed183",
+staticTheedNpc169 = Creature:new {
+	objectName = "staticTheedNpc169",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3925,8 +3589,8 @@ staticNpcTheed183 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed184 = Creature:new {
-	objectName = "staticNpcTheed184",
+staticTheedNpc170 = Creature:new {
+	objectName = "staticTheedNpc170",
 	creatureType = NPC,
 
 	speciesName = "smuggler_patrol_thief_3",
@@ -3946,8 +3610,8 @@ staticNpcTheed184 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed185 = Creature:new {
-	objectName = "staticNpcTheed185",
+staticTheedNpc171 = Creature:new {
+	objectName = "staticTheedNpc171",
 	creatureType = NPC,
 
 	speciesName = "crackdown_elite_dark_trooper",
@@ -3967,8 +3631,8 @@ staticNpcTheed185 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed186 = Creature:new {
-	objectName = "staticNpcTheed186",
+staticTheedNpc172 = Creature:new {
+	objectName = "staticTheedNpc172",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -3988,29 +3652,8 @@ staticNpcTheed186 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed187 = Creature:new {
-	objectName = "staticNpcTheed187",
-	creatureType = NPC,
-
-	speciesName = "smuggler_fence_colten",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2302258597,
-	positionX = -5312.14,
-	positionY = 4415.56,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.975088,
-	directionW = -0.221816,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed188 = Creature:new {
-	objectName = "staticNpcTheed188",
+staticTheedNpc173 = Creature:new {
+	objectName = "staticTheedNpc173",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4030,8 +3673,8 @@ staticNpcTheed188 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed189 = Creature:new {
-	objectName = "staticNpcTheed189",
+staticTheedNpc174 = Creature:new {
+	objectName = "staticTheedNpc174",
 	creatureType = NPC,
 
 	speciesName = "smuggler_patrol_thief_3",
@@ -4051,8 +3694,8 @@ staticNpcTheed189 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed190 = Creature:new {
-	objectName = "staticNpcTheed190",
+staticTheedNpc175 = Creature:new {
+	objectName = "staticTheedNpc175",
 	creatureType = NPC,
 
 	speciesName = "smuggler_patrol_thief_3",
@@ -4072,8 +3715,8 @@ staticNpcTheed190 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed191 = Creature:new {
-	objectName = "staticNpcTheed191",
+staticTheedNpc176 = Creature:new {
+	objectName = "staticTheedNpc176",
 	creatureType = NPC,
 
 	speciesName = "smuggler_patrol_thief_3",
@@ -4093,8 +3736,8 @@ staticNpcTheed191 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed192 = Creature:new {
-	objectName = "staticNpcTheed192",
+staticTheedNpc177 = Creature:new {
+	objectName = "staticTheedNpc177",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4114,8 +3757,8 @@ staticNpcTheed192 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed193 = Creature:new {
-	objectName = "staticNpcTheed193",
+staticTheedNpc178 = Creature:new {
+	objectName = "staticTheedNpc178",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4135,8 +3778,8 @@ staticNpcTheed193 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed194 = Creature:new {
-	objectName = "staticNpcTheed194",
+staticTheedNpc179 = Creature:new {
+	objectName = "staticTheedNpc179",
 	creatureType = NPC,
 
 	speciesName = "fbase_stormtrooper_captain_extreme",
@@ -4156,8 +3799,8 @@ staticNpcTheed194 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed195 = Creature:new {
-	objectName = "staticNpcTheed195",
+staticTheedNpc180 = Creature:new {
+	objectName = "staticTheedNpc180",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4177,8 +3820,8 @@ staticNpcTheed195 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed196 = Creature:new {
-	objectName = "staticNpcTheed196",
+staticTheedNpc181 = Creature:new {
+	objectName = "staticTheedNpc181",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4198,8 +3841,8 @@ staticNpcTheed196 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed197 = Creature:new {
-	objectName = "staticNpcTheed197",
+staticTheedNpc182 = Creature:new {
+	objectName = "staticTheedNpc182",
 	creatureType = NPC,
 
 	speciesName = "technician",
@@ -4219,8 +3862,8 @@ staticNpcTheed197 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed198 = Creature:new {
-	objectName = "staticNpcTheed198",
+staticTheedNpc183 = Creature:new {
+	objectName = "staticTheedNpc183",
 	creatureType = NPC,
 
 	speciesName = "scoundrel",
@@ -4240,8 +3883,8 @@ staticNpcTheed198 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed199 = Creature:new {
-	objectName = "staticNpcTheed199",
+staticTheedNpc184 = Creature:new {
+	objectName = "staticTheedNpc184",
 	creatureType = NPC,
 
 	speciesName = "philosopher",
@@ -4261,8 +3904,8 @@ staticNpcTheed199 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed200 = Creature:new {
-	objectName = "staticNpcTheed200",
+staticTheedNpc185 = Creature:new {
+	objectName = "staticTheedNpc185",
 	creatureType = NPC,
 
 	speciesName = "plainsfolk",
@@ -4282,8 +3925,8 @@ staticNpcTheed200 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed201 = Creature:new {
-	objectName = "staticNpcTheed201",
+staticTheedNpc186 = Creature:new {
+	objectName = "staticTheedNpc186",
 	creatureType = NPC,
 
 	speciesName = "fringer",
@@ -4303,8 +3946,8 @@ staticNpcTheed201 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed202 = Creature:new {
-	objectName = "staticNpcTheed202",
+staticTheedNpc187 = Creature:new {
+	objectName = "staticTheedNpc187",
 	creatureType = NPC,
 
 	speciesName = "naboo_police",
@@ -4324,8 +3967,8 @@ staticNpcTheed202 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed203 = Creature:new {
-	objectName = "staticNpcTheed203",
+staticTheedNpc188 = Creature:new {
+	objectName = "staticTheedNpc188",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4345,8 +3988,8 @@ staticNpcTheed203 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed204 = Creature:new {
-	objectName = "staticNpcTheed204",
+staticTheedNpc189 = Creature:new {
+	objectName = "staticTheedNpc189",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4366,8 +4009,8 @@ staticNpcTheed204 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed205 = Creature:new {
-	objectName = "staticNpcTheed205",
+staticTheedNpc190 = Creature:new {
+	objectName = "staticTheedNpc190",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -4387,8 +4030,8 @@ staticNpcTheed205 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed206 = Creature:new {
-	objectName = "staticNpcTheed206",
+staticTheedNpc191 = Creature:new {
+	objectName = "staticTheedNpc191",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4408,8 +4051,8 @@ staticNpcTheed206 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed207 = Creature:new {
-	objectName = "staticNpcTheed207",
+staticTheedNpc192 = Creature:new {
+	objectName = "staticTheedNpc192",
 	creatureType = NPC,
 
 	speciesName = "rsf_security_guard",
@@ -4429,8 +4072,8 @@ staticNpcTheed207 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed208 = Creature:new {
-	objectName = "staticNpcTheed208",
+staticTheedNpc193 = Creature:new {
+	objectName = "staticTheedNpc193",
 	creatureType = NPC,
 
 	speciesName = "rsf_security_officer",
@@ -4450,8 +4093,8 @@ staticNpcTheed208 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed209 = Creature:new {
-	objectName = "staticNpcTheed209",
+staticTheedNpc194 = Creature:new {
+	objectName = "staticTheedNpc194",
 	creatureType = NPC,
 
 	speciesName = "artisan",
@@ -4471,8 +4114,8 @@ staticNpcTheed209 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed210 = Creature:new {
-	objectName = "staticNpcTheed210",
+staticTheedNpc195 = Creature:new {
+	objectName = "staticTheedNpc195",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4492,8 +4135,8 @@ staticNpcTheed210 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed211 = Creature:new {
-	objectName = "staticNpcTheed211",
+staticTheedNpc196 = Creature:new {
+	objectName = "staticTheedNpc196",
 	creatureType = NPC,
 
 	speciesName = "itp_emperor_queen_security_tech",
@@ -4513,8 +4156,8 @@ staticNpcTheed211 = Creature:new {
 	cellID = 1688880
 }
 
-staticNpcTheed212 = Creature:new {
-	objectName = "staticNpcTheed212",
+staticTheedNpc197 = Creature:new {
+	objectName = "staticTheedNpc197",
 	creatureType = NPC,
 
 	speciesName = "itp_emperor_queen_security_tech",
@@ -4534,8 +4177,8 @@ staticNpcTheed212 = Creature:new {
 	cellID = 1688880
 }
 
-staticNpcTheed213 = Creature:new {
-	objectName = "staticNpcTheed213",
+staticTheedNpc198 = Creature:new {
+	objectName = "staticTheedNpc198",
 	creatureType = NPC,
 
 	speciesName = "itp_emperor_queen_security_tech",
@@ -4555,8 +4198,8 @@ staticNpcTheed213 = Creature:new {
 	cellID = 1688879
 }
 
-staticNpcTheed214 = Creature:new {
-	objectName = "staticNpcTheed214",
+staticTheedNpc199 = Creature:new {
+	objectName = "staticTheedNpc199",
 	creatureType = NPC,
 
 	speciesName = "itp_emperor_queen_security_tech",
@@ -4576,8 +4219,8 @@ staticNpcTheed214 = Creature:new {
 	cellID = 1688879
 }
 
-staticNpcTheed215 = Creature:new {
-	objectName = "staticNpcTheed215",
+staticTheedNpc200 = Creature:new {
+	objectName = "staticTheedNpc200",
 	creatureType = NPC,
 
 	speciesName = "diness_imler",
@@ -4597,29 +4240,8 @@ staticNpcTheed215 = Creature:new {
 	cellID = 1688873
 }
 
-staticNpcTheed216 = Creature:new {
-	objectName = "staticNpcTheed216",
-	creatureType = NPC,
-
-	speciesName = "naboo_theed_lt_dunnels",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3344749409,
-	positionX = 43.0375,
-	positionY = -120.749,
-	positionZ = 33,
-
-	directionX = 1.4365e-07,
-	directionZ = -1.86328e-07,
-	directionY = -0.610568,
-	directionW = 0.791963,
-	randomMovement = 0,
-	cellID = 1688869
-}
-
-staticNpcTheed217 = Creature:new {
-	objectName = "staticNpcTheed217",
+staticTheedNpc201 = Creature:new {
+	objectName = "staticTheedNpc201",
 	creatureType = NPC,
 
 	speciesName = "dulios",
@@ -4639,8 +4261,8 @@ staticNpcTheed217 = Creature:new {
 	cellID = 1688867
 }
 
-staticNpcTheed218 = Creature:new {
-	objectName = "staticNpcTheed218",
+staticTheedNpc202 = Creature:new {
+	objectName = "staticTheedNpc202",
 	creatureType = NPC,
 
 	speciesName = "trivia_librarian",
@@ -4660,8 +4282,8 @@ staticNpcTheed218 = Creature:new {
 	cellID = 1688867
 }
 
-staticNpcTheed219 = Creature:new {
-	objectName = "staticNpcTheed219",
+staticTheedNpc203 = Creature:new {
+	objectName = "staticTheedNpc203",
 	creatureType = NPC,
 
 	speciesName = "tk_9h4",
@@ -4681,8 +4303,8 @@ staticNpcTheed219 = Creature:new {
 	cellID = 1688861
 }
 
-staticNpcTheed220 = Creature:new {
-	objectName = "staticNpcTheed220",
+staticTheedNpc204 = Creature:new {
+	objectName = "staticTheedNpc204",
 	creatureType = NPC,
 
 	speciesName = "tk_8h2",
@@ -4702,8 +4324,8 @@ staticNpcTheed220 = Creature:new {
 	cellID = 1688861
 }
 
-staticNpcTheed221 = Creature:new {
-	objectName = "staticNpcTheed221",
+staticTheedNpc205 = Creature:new {
+	objectName = "staticTheedNpc205",
 	creatureType = NPC,
 
 	speciesName = "nial_declann",
@@ -4723,8 +4345,8 @@ staticNpcTheed221 = Creature:new {
 	cellID = 1688861
 }
 
-staticNpcTheed222 = Creature:new {
-	objectName = "staticNpcTheed222",
+staticTheedNpc206 = Creature:new {
+	objectName = "staticTheedNpc206",
 	creatureType = NPC,
 
 	speciesName = "kaydine",
@@ -4744,8 +4366,8 @@ staticNpcTheed222 = Creature:new {
 	cellID = 1688860
 }
 
-staticNpcTheed223 = Creature:new {
-	objectName = "staticNpcTheed223",
+staticTheedNpc207 = Creature:new {
+	objectName = "staticTheedNpc207",
 	creatureType = NPC,
 
 	speciesName = "dinge",
@@ -4765,29 +4387,8 @@ staticNpcTheed223 = Creature:new {
 	cellID = 1688859
 }
 
-staticNpcTheed224 = Creature:new {
-	objectName = "staticNpcTheed224",
-	creatureType = NPC,
-
-	speciesName = "legacy_hugo_eckener",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4007196961,
-	positionX = -22.3323,
-	positionY = 79.7884,
-	positionZ = 12,
-
-	directionX = 3.12676e-07,
-	directionZ = -3.12931e-07,
-	directionY = 0.558074,
-	directionW = 0.829791,
-	randomMovement = 0,
-	cellID = 1688854
-}
-
-staticNpcTheed225 = Creature:new {
-	objectName = "staticNpcTheed225",
+staticTheedNpc208 = Creature:new {
+	objectName = "staticTheedNpc208",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4807,8 +4408,8 @@ staticNpcTheed225 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed226 = Creature:new {
-	objectName = "staticNpcTheed226",
+staticTheedNpc209 = Creature:new {
+	objectName = "staticTheedNpc209",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4828,8 +4429,8 @@ staticNpcTheed226 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed227 = Creature:new {
-	objectName = "staticNpcTheed227",
+staticTheedNpc210 = Creature:new {
+	objectName = "staticTheedNpc210",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4849,8 +4450,8 @@ staticNpcTheed227 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed228 = Creature:new {
-	objectName = "staticNpcTheed228",
+staticTheedNpc211 = Creature:new {
+	objectName = "staticTheedNpc211",
 	creatureType = NPC,
 
 	speciesName = "rsf_security_officer",
@@ -4870,8 +4471,8 @@ staticNpcTheed228 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed229 = Creature:new {
-	objectName = "staticNpcTheed229",
+staticTheedNpc212 = Creature:new {
+	objectName = "staticTheedNpc212",
 	creatureType = NPC,
 
 	speciesName = "explorer",
@@ -4891,8 +4492,8 @@ staticNpcTheed229 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed230 = Creature:new {
-	objectName = "staticNpcTheed230",
+staticTheedNpc213 = Creature:new {
+	objectName = "staticTheedNpc213",
 	creatureType = NPC,
 
 	speciesName = "gungan_hunter",
@@ -4912,8 +4513,8 @@ staticNpcTheed230 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed231 = Creature:new {
-	objectName = "staticNpcTheed231",
+staticTheedNpc214 = Creature:new {
+	objectName = "staticTheedNpc214",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4933,8 +4534,8 @@ staticNpcTheed231 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed232 = Creature:new {
-	objectName = "staticNpcTheed232",
+staticTheedNpc215 = Creature:new {
+	objectName = "staticTheedNpc215",
 	creatureType = NPC,
 
 	speciesName = "fbase_stormtrooper_captain_extreme",
@@ -4954,8 +4555,8 @@ staticNpcTheed232 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed233 = Creature:new {
-	objectName = "staticNpcTheed233",
+staticTheedNpc216 = Creature:new {
+	objectName = "staticTheedNpc216",
 	creatureType = NPC,
 
 	speciesName = "fbase_stormtrooper_squad_leader_extreme",
@@ -4975,8 +4576,8 @@ staticNpcTheed233 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed234 = Creature:new {
-	objectName = "staticNpcTheed234",
+staticTheedNpc217 = Creature:new {
+	objectName = "staticTheedNpc217",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -4996,8 +4597,8 @@ staticNpcTheed234 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed235 = Creature:new {
-	objectName = "staticNpcTheed235",
+staticTheedNpc218 = Creature:new {
+	objectName = "staticTheedNpc218",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5017,8 +4618,8 @@ staticNpcTheed235 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed236 = Creature:new {
-	objectName = "staticNpcTheed236",
+staticTheedNpc219 = Creature:new {
+	objectName = "staticTheedNpc219",
 	creatureType = NPC,
 
 	speciesName = "twilek_base_female",
@@ -5038,8 +4639,8 @@ staticNpcTheed236 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed237 = Creature:new {
-	objectName = "staticNpcTheed237",
+staticTheedNpc220 = Creature:new {
+	objectName = "staticTheedNpc220",
 	creatureType = NPC,
 
 	speciesName = "crackdown_imperial_sergeant",
@@ -5059,8 +4660,8 @@ staticNpcTheed237 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed238 = Creature:new {
-	objectName = "staticNpcTheed238",
+staticTheedNpc221 = Creature:new {
+	objectName = "staticTheedNpc221",
 	creatureType = NPC,
 
 	speciesName = "crackdown_imperial_corporal",
@@ -5080,8 +4681,8 @@ staticNpcTheed238 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed239 = Creature:new {
-	objectName = "staticNpcTheed239",
+staticTheedNpc222 = Creature:new {
+	objectName = "staticTheedNpc222",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -5101,8 +4702,8 @@ staticNpcTheed239 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed240 = Creature:new {
-	objectName = "staticNpcTheed240",
+staticTheedNpc223 = Creature:new {
+	objectName = "staticTheedNpc223",
 	creatureType = NPC,
 
 	speciesName = "crackdown_scout_trooper",
@@ -5122,8 +4723,8 @@ staticNpcTheed240 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed241 = Creature:new {
-	objectName = "staticNpcTheed241",
+staticTheedNpc224 = Creature:new {
+	objectName = "staticTheedNpc224",
 	creatureType = NPC,
 
 	speciesName = "crackdown_scout_trooper",
@@ -5143,8 +4744,8 @@ staticNpcTheed241 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed242 = Creature:new {
-	objectName = "staticNpcTheed242",
+staticTheedNpc225 = Creature:new {
+	objectName = "staticTheedNpc225",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5164,8 +4765,8 @@ staticNpcTheed242 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed243 = Creature:new {
-	objectName = "staticNpcTheed243",
+staticTheedNpc226 = Creature:new {
+	objectName = "staticTheedNpc226",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5185,8 +4786,8 @@ staticNpcTheed243 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed244 = Creature:new {
-	objectName = "staticNpcTheed244",
+staticTheedNpc227 = Creature:new {
+	objectName = "staticTheedNpc227",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5206,8 +4807,8 @@ staticNpcTheed244 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed245 = Creature:new {
-	objectName = "staticNpcTheed245",
+staticTheedNpc228 = Creature:new {
+	objectName = "staticTheedNpc228",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5227,8 +4828,8 @@ staticNpcTheed245 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed246 = Creature:new {
-	objectName = "staticNpcTheed246",
+staticTheedNpc229 = Creature:new {
+	objectName = "staticTheedNpc229",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5248,8 +4849,8 @@ staticNpcTheed246 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed247 = Creature:new {
-	objectName = "staticNpcTheed247",
+staticTheedNpc230 = Creature:new {
+	objectName = "staticTheedNpc230",
 	creatureType = NPC,
 
 	speciesName = "crackdown_imperial_sergeant",
@@ -5269,8 +4870,8 @@ staticNpcTheed247 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed248 = Creature:new {
-	objectName = "staticNpcTheed248",
+staticTheedNpc231 = Creature:new {
+	objectName = "staticTheedNpc231",
 	creatureType = NPC,
 
 	speciesName = "naboo_herald_01",
@@ -5290,8 +4891,8 @@ staticNpcTheed248 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed249 = Creature:new {
-	objectName = "staticNpcTheed249",
+staticTheedNpc232 = Creature:new {
+	objectName = "staticTheedNpc232",
 	creatureType = NPC,
 
 	speciesName = "swamp_villager",
@@ -5311,8 +4912,8 @@ staticNpcTheed249 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed250 = Creature:new {
-	objectName = "staticNpcTheed250",
+staticTheedNpc233 = Creature:new {
+	objectName = "staticTheedNpc233",
 	creatureType = NPC,
 
 	speciesName = "patron_human_male_04",
@@ -5332,8 +4933,8 @@ staticNpcTheed250 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed251 = Creature:new {
-	objectName = "staticNpcTheed251",
+staticTheedNpc234 = Creature:new {
+	objectName = "staticTheedNpc234",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5353,8 +4954,8 @@ staticNpcTheed251 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed252 = Creature:new {
-	objectName = "staticNpcTheed252",
+staticTheedNpc235 = Creature:new {
+	objectName = "staticTheedNpc235",
 	creatureType = NPC,
 
 	speciesName = "landau",
@@ -5374,8 +4975,8 @@ staticNpcTheed252 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed253 = Creature:new {
-	objectName = "staticNpcTheed253",
+staticTheedNpc236 = Creature:new {
+	objectName = "staticTheedNpc236",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5395,8 +4996,8 @@ staticNpcTheed253 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed254 = Creature:new {
-	objectName = "staticNpcTheed254",
+staticTheedNpc237 = Creature:new {
+	objectName = "staticTheedNpc237",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5416,8 +5017,8 @@ staticNpcTheed254 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed255 = Creature:new {
-	objectName = "staticNpcTheed255",
+staticTheedNpc238 = Creature:new {
+	objectName = "staticTheedNpc238",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -5437,8 +5038,8 @@ staticNpcTheed255 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed256 = Creature:new {
-	objectName = "staticNpcTheed256",
+staticTheedNpc239 = Creature:new {
+	objectName = "staticTheedNpc239",
 	creatureType = NPC,
 
 	speciesName = "naboo_police",
@@ -5458,8 +5059,8 @@ staticNpcTheed256 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed257 = Creature:new {
-	objectName = "staticNpcTheed257",
+staticTheedNpc240 = Creature:new {
+	objectName = "staticTheedNpc240",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5479,8 +5080,8 @@ staticNpcTheed257 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed258 = Creature:new {
-	objectName = "staticNpcTheed258",
+staticTheedNpc241 = Creature:new {
+	objectName = "staticTheedNpc241",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5500,8 +5101,8 @@ staticNpcTheed258 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed259 = Creature:new {
-	objectName = "staticNpcTheed259",
+staticTheedNpc242 = Creature:new {
+	objectName = "staticTheedNpc242",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5521,8 +5122,8 @@ staticNpcTheed259 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed260 = Creature:new {
-	objectName = "staticNpcTheed260",
+staticTheedNpc243 = Creature:new {
+	objectName = "staticTheedNpc243",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5542,8 +5143,8 @@ staticNpcTheed260 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed261 = Creature:new {
-	objectName = "staticNpcTheed261",
+staticTheedNpc244 = Creature:new {
+	objectName = "staticTheedNpc244",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5563,8 +5164,8 @@ staticNpcTheed261 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed262 = Creature:new {
-	objectName = "staticNpcTheed262",
+staticTheedNpc245 = Creature:new {
+	objectName = "staticTheedNpc245",
 	creatureType = NPC,
 
 	speciesName = "vendor",
@@ -5584,8 +5185,8 @@ staticNpcTheed262 = Creature:new {
 	cellID = 1305893
 }
 
-staticNpcTheed263 = Creature:new {
-	objectName = "staticNpcTheed263",
+staticTheedNpc246 = Creature:new {
+	objectName = "staticTheedNpc246",
 	creatureType = NPC,
 
 	speciesName = "gungan_mercenary",
@@ -5605,8 +5206,8 @@ staticNpcTheed263 = Creature:new {
 	cellID = 1305893
 }
 
-staticNpcTheed264 = Creature:new {
-	objectName = "staticNpcTheed264",
+staticTheedNpc247 = Creature:new {
+	objectName = "staticTheedNpc247",
 	creatureType = NPC,
 
 	speciesName = "swamp_villager",
@@ -5626,8 +5227,8 @@ staticNpcTheed264 = Creature:new {
 	cellID = 1305893
 }
 
-staticNpcTheed265 = Creature:new {
-	objectName = "staticNpcTheed265",
+staticTheedNpc248 = Creature:new {
+	objectName = "staticTheedNpc248",
 	creatureType = NPC,
 
 	speciesName = "gungan_mercenary",
@@ -5647,8 +5248,8 @@ staticNpcTheed265 = Creature:new {
 	cellID = 1305892
 }
 
-staticNpcTheed266 = Creature:new {
-	objectName = "staticNpcTheed266",
+staticTheedNpc249 = Creature:new {
+	objectName = "staticTheedNpc249",
 	creatureType = NPC,
 
 	speciesName = "bodyguard",
@@ -5668,8 +5269,8 @@ staticNpcTheed266 = Creature:new {
 	cellID = 1305892
 }
 
-staticNpcTheed267 = Creature:new {
-	objectName = "staticNpcTheed267",
+staticTheedNpc250 = Creature:new {
+	objectName = "staticTheedNpc250",
 	creatureType = NPC,
 
 	speciesName = "twilek_base_female",
@@ -5689,8 +5290,8 @@ staticNpcTheed267 = Creature:new {
 	cellID = 1305892
 }
 
-staticNpcTheed268 = Creature:new {
-	objectName = "staticNpcTheed268",
+staticTheedNpc251 = Creature:new {
+	objectName = "staticTheedNpc251",
 	creatureType = NPC,
 
 	speciesName = "gambler",
@@ -5710,8 +5311,8 @@ staticNpcTheed268 = Creature:new {
 	cellID = 1305892
 }
 
-staticNpcTheed269 = Creature:new {
-	objectName = "staticNpcTheed269",
+staticTheedNpc252 = Creature:new {
+	objectName = "staticTheedNpc252",
 	creatureType = NPC,
 
 	speciesName = "plainsfolk",
@@ -5731,8 +5332,8 @@ staticNpcTheed269 = Creature:new {
 	cellID = 1305892
 }
 
-staticNpcTheed270 = Creature:new {
-	objectName = "staticNpcTheed270",
+staticTheedNpc253 = Creature:new {
+	objectName = "staticTheedNpc253",
 	creatureType = NPC,
 
 	speciesName = "farmer_agriculturalist",
@@ -5752,8 +5353,8 @@ staticNpcTheed270 = Creature:new {
 	cellID = 1305892
 }
 
-staticNpcTheed271 = Creature:new {
-	objectName = "staticNpcTheed271",
+staticTheedNpc254 = Creature:new {
+	objectName = "staticTheedNpc254",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5773,8 +5374,8 @@ staticNpcTheed271 = Creature:new {
 	cellID = 1305888
 }
 
-staticNpcTheed272 = Creature:new {
-	objectName = "staticNpcTheed272",
+staticTheedNpc255 = Creature:new {
+	objectName = "staticTheedNpc255",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5794,8 +5395,8 @@ staticNpcTheed272 = Creature:new {
 	cellID = 1305888
 }
 
-staticNpcTheed273 = Creature:new {
-	objectName = "staticNpcTheed273",
+staticTheedNpc256 = Creature:new {
+	objectName = "staticTheedNpc256",
 	creatureType = NPC,
 
 	speciesName = "r2",
@@ -5815,8 +5416,8 @@ staticNpcTheed273 = Creature:new {
 	cellID = 1305888
 }
 
-staticNpcTheed274 = Creature:new {
-	objectName = "staticNpcTheed274",
+staticTheedNpc257 = Creature:new {
+	objectName = "staticTheedNpc257",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5836,8 +5437,8 @@ staticNpcTheed274 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed275 = Creature:new {
-	objectName = "staticNpcTheed275",
+staticTheedNpc258 = Creature:new {
+	objectName = "staticTheedNpc258",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5857,8 +5458,8 @@ staticNpcTheed275 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed276 = Creature:new {
-	objectName = "staticNpcTheed276",
+staticTheedNpc259 = Creature:new {
+	objectName = "staticTheedNpc259",
 	creatureType = NPC,
 
 	speciesName = "coa2_imperial_coordinator",
@@ -5878,8 +5479,8 @@ staticNpcTheed276 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed277 = Creature:new {
-	objectName = "staticNpcTheed277",
+staticTheedNpc260 = Creature:new {
+	objectName = "staticTheedNpc260",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5899,8 +5500,8 @@ staticNpcTheed277 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed278 = Creature:new {
-	objectName = "staticNpcTheed278",
+staticTheedNpc261 = Creature:new {
+	objectName = "staticTheedNpc261",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5920,8 +5521,8 @@ staticNpcTheed278 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed279 = Creature:new {
-	objectName = "staticNpcTheed279",
+staticTheedNpc262 = Creature:new {
+	objectName = "staticTheedNpc262",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5941,8 +5542,8 @@ staticNpcTheed279 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed280 = Creature:new {
-	objectName = "staticNpcTheed280",
+staticTheedNpc263 = Creature:new {
+	objectName = "staticTheedNpc263",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5962,8 +5563,8 @@ staticNpcTheed280 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed281 = Creature:new {
-	objectName = "staticNpcTheed281",
+staticTheedNpc264 = Creature:new {
+	objectName = "staticTheedNpc264",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -5983,8 +5584,8 @@ staticNpcTheed281 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed282 = Creature:new {
-	objectName = "staticNpcTheed282",
+staticTheedNpc265 = Creature:new {
+	objectName = "staticTheedNpc265",
 	creatureType = NPC,
 
 	speciesName = "fbase_dark_trooper_extreme",
@@ -6004,8 +5605,8 @@ staticNpcTheed282 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed283 = Creature:new {
-	objectName = "staticNpcTheed283",
+staticTheedNpc266 = Creature:new {
+	objectName = "staticTheedNpc266",
 	creatureType = NPC,
 
 	speciesName = "fbase_dark_trooper_extreme",
@@ -6025,8 +5626,8 @@ staticNpcTheed283 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed284 = Creature:new {
-	objectName = "staticNpcTheed284",
+staticTheedNpc267 = Creature:new {
+	objectName = "staticTheedNpc267",
 	creatureType = NPC,
 
 	speciesName = "bothan_base_male",
@@ -6046,8 +5647,8 @@ staticNpcTheed284 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed285 = Creature:new {
-	objectName = "staticNpcTheed285",
+staticTheedNpc268 = Creature:new {
+	objectName = "staticTheedNpc268",
 	creatureType = NPC,
 
 	speciesName = "explorer",
@@ -6067,8 +5668,8 @@ staticNpcTheed285 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed286 = Creature:new {
-	objectName = "staticNpcTheed286",
+staticTheedNpc269 = Creature:new {
+	objectName = "staticTheedNpc269",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6088,8 +5689,8 @@ staticNpcTheed286 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed287 = Creature:new {
-	objectName = "staticNpcTheed287",
+staticTheedNpc270 = Creature:new {
+	objectName = "staticTheedNpc270",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -6109,8 +5710,8 @@ staticNpcTheed287 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed288 = Creature:new {
-	objectName = "staticNpcTheed288",
+staticTheedNpc271 = Creature:new {
+	objectName = "staticTheedNpc271",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6130,8 +5731,8 @@ staticNpcTheed288 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed289 = Creature:new {
-	objectName = "staticNpcTheed289",
+staticTheedNpc272 = Creature:new {
+	objectName = "staticTheedNpc272",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -6151,8 +5752,8 @@ staticNpcTheed289 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed290 = Creature:new {
-	objectName = "staticNpcTheed290",
+staticTheedNpc273 = Creature:new {
+	objectName = "staticTheedNpc273",
 	creatureType = NPC,
 
 	speciesName = "crackdown_dark_trooper",
@@ -6172,8 +5773,8 @@ staticNpcTheed290 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed291 = Creature:new {
-	objectName = "staticNpcTheed291",
+staticTheedNpc274 = Creature:new {
+	objectName = "staticTheedNpc274",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -6193,8 +5794,8 @@ staticNpcTheed291 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed292 = Creature:new {
-	objectName = "staticNpcTheed292",
+staticTheedNpc275 = Creature:new {
+	objectName = "staticTheedNpc275",
 	creatureType = NPC,
 
 	speciesName = "pooja_naberrie",
@@ -6214,8 +5815,8 @@ staticNpcTheed292 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed293 = Creature:new {
-	objectName = "staticNpcTheed293",
+staticTheedNpc276 = Creature:new {
+	objectName = "staticTheedNpc276",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -6235,8 +5836,8 @@ staticNpcTheed293 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed294 = Creature:new {
-	objectName = "staticNpcTheed294",
+staticTheedNpc277 = Creature:new {
+	objectName = "staticTheedNpc277",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_rifleman",
@@ -6256,8 +5857,8 @@ staticNpcTheed294 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed295 = Creature:new {
-	objectName = "staticNpcTheed295",
+staticTheedNpc278 = Creature:new {
+	objectName = "staticTheedNpc278",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6277,8 +5878,8 @@ staticNpcTheed295 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed296 = Creature:new {
-	objectName = "staticNpcTheed296",
+staticTheedNpc279 = Creature:new {
+	objectName = "staticTheedNpc279",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6298,8 +5899,8 @@ staticNpcTheed296 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed297 = Creature:new {
-	objectName = "staticNpcTheed297",
+staticTheedNpc280 = Creature:new {
+	objectName = "staticTheedNpc280",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6319,8 +5920,8 @@ staticNpcTheed297 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed298 = Creature:new {
-	objectName = "staticNpcTheed298",
+staticTheedNpc281 = Creature:new {
+	objectName = "staticTheedNpc281",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6340,8 +5941,8 @@ staticNpcTheed298 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed299 = Creature:new {
-	objectName = "staticNpcTheed299",
+staticTheedNpc282 = Creature:new {
+	objectName = "staticTheedNpc282",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6361,8 +5962,8 @@ staticNpcTheed299 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed300 = Creature:new {
-	objectName = "staticNpcTheed300",
+staticTheedNpc283 = Creature:new {
+	objectName = "staticTheedNpc283",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6382,8 +5983,8 @@ staticNpcTheed300 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed301 = Creature:new {
-	objectName = "staticNpcTheed301",
+staticTheedNpc284 = Creature:new {
+	objectName = "staticTheedNpc284",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6403,8 +6004,8 @@ staticNpcTheed301 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed302 = Creature:new {
-	objectName = "staticNpcTheed302",
+staticTheedNpc285 = Creature:new {
+	objectName = "staticTheedNpc285",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6424,8 +6025,8 @@ staticNpcTheed302 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed303 = Creature:new {
-	objectName = "staticNpcTheed303",
+staticTheedNpc286 = Creature:new {
+	objectName = "staticTheedNpc286",
 	creatureType = NPC,
 
 	speciesName = "fbase_imperial_colonel_extreme",
@@ -6445,8 +6046,8 @@ staticNpcTheed303 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed304 = Creature:new {
-	objectName = "staticNpcTheed304",
+staticTheedNpc287 = Creature:new {
+	objectName = "staticTheedNpc287",
 	creatureType = NPC,
 
 	speciesName = "fbase_dark_trooper_extreme",
@@ -6466,8 +6067,8 @@ staticNpcTheed304 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed305 = Creature:new {
-	objectName = "staticNpcTheed305",
+staticTheedNpc288 = Creature:new {
+	objectName = "staticTheedNpc288",
 	creatureType = NPC,
 
 	speciesName = "fbase_stormtrooper_medic_extreme",
@@ -6487,8 +6088,8 @@ staticNpcTheed305 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed306 = Creature:new {
-	objectName = "staticNpcTheed306",
+staticTheedNpc289 = Creature:new {
+	objectName = "staticTheedNpc289",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6508,8 +6109,8 @@ staticNpcTheed306 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed307 = Creature:new {
-	objectName = "staticNpcTheed307",
+staticTheedNpc290 = Creature:new {
+	objectName = "staticTheedNpc290",
 	creatureType = NPC,
 
 	speciesName = "zabrak_base_male",
@@ -6529,8 +6130,8 @@ staticNpcTheed307 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed308 = Creature:new {
-	objectName = "staticNpcTheed308",
+staticTheedNpc291 = Creature:new {
+	objectName = "staticTheedNpc291",
 	creatureType = NPC,
 
 	speciesName = "philosopher",
@@ -6550,8 +6151,8 @@ staticNpcTheed308 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed309 = Creature:new {
-	objectName = "staticNpcTheed309",
+staticTheedNpc292 = Creature:new {
+	objectName = "staticTheedNpc292",
 	creatureType = NPC,
 
 	speciesName = "naboo_police",
@@ -6571,8 +6172,8 @@ staticNpcTheed309 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed310 = Creature:new {
-	objectName = "staticNpcTheed310",
+staticTheedNpc293 = Creature:new {
+	objectName = "staticTheedNpc293",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6592,8 +6193,8 @@ staticNpcTheed310 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed311 = Creature:new {
-	objectName = "staticNpcTheed311",
+staticTheedNpc294 = Creature:new {
+	objectName = "staticTheedNpc294",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6613,8 +6214,8 @@ staticNpcTheed311 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed312 = Creature:new {
-	objectName = "staticNpcTheed312",
+staticTheedNpc295 = Creature:new {
+	objectName = "staticTheedNpc295",
 	creatureType = NPC,
 
 	speciesName = "gungan_hunter",
@@ -6634,8 +6235,8 @@ staticNpcTheed312 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed313 = Creature:new {
-	objectName = "staticNpcTheed313",
+staticTheedNpc296 = Creature:new {
+	objectName = "staticTheedNpc296",
 	creatureType = NPC,
 
 	speciesName = "noble",
@@ -6655,8 +6256,8 @@ staticNpcTheed313 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed314 = Creature:new {
-	objectName = "staticNpcTheed314",
+staticTheedNpc297 = Creature:new {
+	objectName = "staticTheedNpc297",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -6676,8 +6277,8 @@ staticNpcTheed314 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed315 = Creature:new {
-	objectName = "staticNpcTheed315",
+staticTheedNpc298 = Creature:new {
+	objectName = "staticTheedNpc298",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6697,29 +6298,8 @@ staticNpcTheed315 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed316 = Creature:new {
-	objectName = "staticNpcTheed316",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 372381261,
-	positionX = -5693.9,
-	positionY = 4182.96,
-	positionZ = 6.52214,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.753192,
-	directionW = -0.657801,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed317 = Creature:new {
-	objectName = "staticNpcTheed317",
+staticTheedNpc299 = Creature:new {
+	objectName = "staticTheedNpc299",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6739,8 +6319,8 @@ staticNpcTheed317 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed318 = Creature:new {
-	objectName = "staticNpcTheed318",
+staticTheedNpc300 = Creature:new {
+	objectName = "staticTheedNpc300",
 	creatureType = NPC,
 
 	speciesName = "fbase_elite_dark_trooper",
@@ -6760,8 +6340,8 @@ staticNpcTheed318 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed319 = Creature:new {
-	objectName = "staticNpcTheed319",
+staticTheedNpc301 = Creature:new {
+	objectName = "staticTheedNpc301",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -6781,50 +6361,8 @@ staticNpcTheed319 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed320 = Creature:new {
-	objectName = "staticNpcTheed320",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3158729015,
-	positionX = -5762.59,
-	positionY = 4234.66,
-	positionZ = 6.6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.379866,
-	directionW = 0.925041,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed321 = Creature:new {
-	objectName = "staticNpcTheed321",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3158729015,
-	positionX = -5717.5,
-	positionY = 4159.36,
-	positionZ = 6.52214,
-
-	directionX = 9.60922e-08,
-	directionZ = -8.66967e-08,
-	directionY = 0.0986209,
-	directionW = 0.995125,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed322 = Creature:new {
-	objectName = "staticNpcTheed322",
+staticTheedNpc302 = Creature:new {
+	objectName = "staticTheedNpc302",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6844,8 +6382,8 @@ staticNpcTheed322 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed323 = Creature:new {
-	objectName = "staticNpcTheed323",
+staticTheedNpc303 = Creature:new {
+	objectName = "staticTheedNpc303",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6865,8 +6403,8 @@ staticNpcTheed323 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed324 = Creature:new {
-	objectName = "staticNpcTheed324",
+staticTheedNpc304 = Creature:new {
+	objectName = "staticTheedNpc304",
 	creatureType = NPC,
 
 	speciesName = "naboo_holy_man",
@@ -6886,8 +6424,8 @@ staticNpcTheed324 = Creature:new {
 	cellID = 1677400
 }
 
-staticNpcTheed325 = Creature:new {
-	objectName = "staticNpcTheed325",
+staticTheedNpc305 = Creature:new {
+	objectName = "staticTheedNpc305",
 	creatureType = NPC,
 
 	speciesName = "gungan_hermit",
@@ -6907,8 +6445,8 @@ staticNpcTheed325 = Creature:new {
 	cellID = 1677400
 }
 
-staticNpcTheed326 = Creature:new {
-	objectName = "staticNpcTheed326",
+staticTheedNpc306 = Creature:new {
+	objectName = "staticTheedNpc306",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -6928,8 +6466,8 @@ staticNpcTheed326 = Creature:new {
 	cellID = 1677400
 }
 
-staticNpcTheed327 = Creature:new {
-	objectName = "staticNpcTheed327",
+staticTheedNpc307 = Creature:new {
+	objectName = "staticTheedNpc307",
 	creatureType = NPC,
 
 	speciesName = "gambler",
@@ -6949,8 +6487,8 @@ staticNpcTheed327 = Creature:new {
 	cellID = 1677399
 }
 
-staticNpcTheed328 = Creature:new {
-	objectName = "staticNpcTheed328",
+staticTheedNpc308 = Creature:new {
+	objectName = "staticTheedNpc308",
 	creatureType = NPC,
 
 	speciesName = "philosopher",
@@ -6970,8 +6508,8 @@ staticNpcTheed328 = Creature:new {
 	cellID = 1677399
 }
 
-staticNpcTheed329 = Creature:new {
-	objectName = "staticNpcTheed329",
+staticTheedNpc309 = Creature:new {
+	objectName = "staticTheedNpc309",
 	creatureType = NPC,
 
 	speciesName = "naboo_nomad",
@@ -6991,8 +6529,8 @@ staticNpcTheed329 = Creature:new {
 	cellID = 1677395
 }
 
-staticNpcTheed330 = Creature:new {
-	objectName = "staticNpcTheed330",
+staticTheedNpc310 = Creature:new {
+	objectName = "staticTheedNpc310",
 	creatureType = NPC,
 
 	speciesName = "scout_trooper",
@@ -7012,8 +6550,8 @@ staticNpcTheed330 = Creature:new {
 	cellID = 1677395
 }
 
-staticNpcTheed331 = Creature:new {
-	objectName = "staticNpcTheed331",
+staticTheedNpc311 = Creature:new {
+	objectName = "staticTheedNpc311",
 	creatureType = NPC,
 
 	speciesName = "businessman",
@@ -7033,8 +6571,8 @@ staticNpcTheed331 = Creature:new {
 	cellID = 1677395
 }
 
-staticNpcTheed332 = Creature:new {
-	objectName = "staticNpcTheed332",
+staticTheedNpc312 = Creature:new {
+	objectName = "staticTheedNpc312",
 	creatureType = NPC,
 
 	speciesName = "gambler",
@@ -7054,8 +6592,8 @@ staticNpcTheed332 = Creature:new {
 	cellID = 1677394
 }
 
-staticNpcTheed333 = Creature:new {
-	objectName = "staticNpcTheed333",
+staticTheedNpc313 = Creature:new {
+	objectName = "staticTheedNpc313",
 	creatureType = NPC,
 
 	speciesName = "twilek_base_female",
@@ -7075,8 +6613,8 @@ staticNpcTheed333 = Creature:new {
 	cellID = 1677394
 }
 
-staticNpcTheed334 = Creature:new {
-	objectName = "staticNpcTheed334",
+staticTheedNpc314 = Creature:new {
+	objectName = "staticTheedNpc314",
 	creatureType = NPC,
 
 	speciesName = "scoundrel",
@@ -7096,8 +6634,8 @@ staticNpcTheed334 = Creature:new {
 	cellID = 1677394
 }
 
-staticNpcTheed335 = Creature:new {
-	objectName = "staticNpcTheed335",
+staticTheedNpc315 = Creature:new {
+	objectName = "staticTheedNpc315",
 	creatureType = NPC,
 
 	speciesName = "businessman",
@@ -7117,8 +6655,8 @@ staticNpcTheed335 = Creature:new {
 	cellID = 1677394
 }
 
-staticNpcTheed336 = Creature:new {
-	objectName = "staticNpcTheed336",
+staticTheedNpc316 = Creature:new {
+	objectName = "staticTheedNpc316",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -7138,8 +6676,8 @@ staticNpcTheed336 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed337 = Creature:new {
-	objectName = "staticNpcTheed337",
+staticTheedNpc317 = Creature:new {
+	objectName = "staticTheedNpc317",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -7159,8 +6697,8 @@ staticNpcTheed337 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed338 = Creature:new {
-	objectName = "staticNpcTheed338",
+staticTheedNpc318 = Creature:new {
+	objectName = "staticTheedNpc318",
 	creatureType = NPC,
 
 	speciesName = "naboo_police",
@@ -7180,8 +6718,8 @@ staticNpcTheed338 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed339 = Creature:new {
-	objectName = "staticNpcTheed339",
+staticTheedNpc319 = Creature:new {
+	objectName = "staticTheedNpc319",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -7201,8 +6739,8 @@ staticNpcTheed339 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed340 = Creature:new {
-	objectName = "staticNpcTheed340",
+staticTheedNpc320 = Creature:new {
+	objectName = "staticTheedNpc320",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -7222,8 +6760,8 @@ staticNpcTheed340 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed341 = Creature:new {
-	objectName = "staticNpcTheed341",
+staticTheedNpc321 = Creature:new {
+	objectName = "staticTheedNpc321",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_rifleman",
@@ -7243,8 +6781,8 @@ staticNpcTheed341 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed342 = Creature:new {
-	objectName = "staticNpcTheed342",
+staticTheedNpc322 = Creature:new {
+	objectName = "staticTheedNpc322",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -7264,8 +6802,8 @@ staticNpcTheed342 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed343 = Creature:new {
-	objectName = "staticNpcTheed343",
+staticTheedNpc323 = Creature:new {
+	objectName = "staticTheedNpc323",
 	creatureType = NPC,
 
 	speciesName = "stormtrooper_novatrooper_squad_leader",
@@ -7285,8 +6823,8 @@ staticNpcTheed343 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed344 = Creature:new {
-	objectName = "staticNpcTheed344",
+staticTheedNpc324 = Creature:new {
+	objectName = "staticTheedNpc324",
 	creatureType = NPC,
 
 	speciesName = "stormtrooper_novatrooper_elite",
@@ -7306,8 +6844,8 @@ staticNpcTheed344 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed345 = Creature:new {
-	objectName = "staticNpcTheed345",
+staticTheedNpc325 = Creature:new {
+	objectName = "staticTheedNpc325",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -7327,8 +6865,8 @@ staticNpcTheed345 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed346 = Creature:new {
-	objectName = "staticNpcTheed346",
+staticTheedNpc326 = Creature:new {
+	objectName = "staticTheedNpc326",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -7348,8 +6886,8 @@ staticNpcTheed346 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed347 = Creature:new {
-	objectName = "staticNpcTheed347",
+staticTheedNpc327 = Creature:new {
+	objectName = "staticTheedNpc327",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -7369,8 +6907,8 @@ staticNpcTheed347 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed348 = Creature:new {
-	objectName = "staticNpcTheed348",
+staticTheedNpc328 = Creature:new {
+	objectName = "staticTheedNpc328",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -7390,8 +6928,8 @@ staticNpcTheed348 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed349 = Creature:new {
-	objectName = "staticNpcTheed349",
+staticTheedNpc329 = Creature:new {
+	objectName = "staticTheedNpc329",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper",
@@ -7411,8 +6949,8 @@ staticNpcTheed349 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed350 = Creature:new {
-	objectName = "staticNpcTheed350",
+staticTheedNpc330 = Creature:new {
+	objectName = "staticTheedNpc330",
 	creatureType = NPC,
 
 	speciesName = "crackdown_scout_trooper",
@@ -7432,8 +6970,8 @@ staticNpcTheed350 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed351 = Creature:new {
-	objectName = "staticNpcTheed351",
+staticTheedNpc331 = Creature:new {
+	objectName = "staticTheedNpc331",
 	creatureType = NPC,
 
 	speciesName = "fringer",
@@ -7453,8 +6991,8 @@ staticNpcTheed351 = Creature:new {
 	cellID = 5475487
 }
 
-staticNpcTheed352 = Creature:new {
-	objectName = "staticNpcTheed352",
+staticTheedNpc332 = Creature:new {
+	objectName = "staticTheedNpc332",
 	creatureType = NPC,
 
 	speciesName = "explorer",
@@ -7474,8 +7012,8 @@ staticNpcTheed352 = Creature:new {
 	cellID = 5475487
 }
 
-staticNpcTheed353 = Creature:new {
-	objectName = "staticNpcTheed353",
+staticTheedNpc333 = Creature:new {
+	objectName = "staticTheedNpc333",
 	creatureType = NPC,
 
 	speciesName = "medic",
@@ -7495,8 +7033,8 @@ staticNpcTheed353 = Creature:new {
 	cellID = 5475487
 }
 
-staticNpcTheed354 = Creature:new {
-	objectName = "staticNpcTheed354",
+staticTheedNpc334 = Creature:new {
+	objectName = "staticTheedNpc334",
 	creatureType = NPC,
 
 	speciesName = "vendor",
@@ -7516,8 +7054,8 @@ staticNpcTheed354 = Creature:new {
 	cellID = 5475487
 }
 
-staticNpcTheed355 = Creature:new {
-	objectName = "staticNpcTheed355",
+staticTheedNpc335 = Creature:new {
+	objectName = "staticTheedNpc335",
 	creatureType = NPC,
 
 	speciesName = "noble",
@@ -7537,8 +7075,8 @@ staticNpcTheed355 = Creature:new {
 	cellID = 5475487
 }
 
-staticNpcTheed356 = Creature:new {
-	objectName = "staticNpcTheed356",
+staticTheedNpc336 = Creature:new {
+	objectName = "staticTheedNpc336",
 	creatureType = NPC,
 
 	speciesName = "quest_crowd_pleaser_theater_manager",
@@ -7558,8 +7096,8 @@ staticNpcTheed356 = Creature:new {
 	cellID = 5475487
 }
 
-staticNpcTheed357 = Creature:new {
-	objectName = "staticNpcTheed357",
+staticTheedNpc337 = Creature:new {
+	objectName = "staticTheedNpc337",
 	creatureType = NPC,
 
 	speciesName = "noble",
@@ -7579,8 +7117,8 @@ staticNpcTheed357 = Creature:new {
 	cellID = 5475486
 }
 
-staticNpcTheed358 = Creature:new {
-	objectName = "staticNpcTheed358",
+staticTheedNpc338 = Creature:new {
+	objectName = "staticTheedNpc338",
 	creatureType = NPC,
 
 	speciesName = "rsf_pilot",
@@ -7600,8 +7138,8 @@ staticNpcTheed358 = Creature:new {
 	cellID = 5475485
 }
 
-staticNpcTheed359 = Creature:new {
-	objectName = "staticNpcTheed359",
+staticTheedNpc339 = Creature:new {
+	objectName = "staticTheedNpc339",
 	creatureType = NPC,
 
 	speciesName = "noble",
@@ -7621,8 +7159,8 @@ staticNpcTheed359 = Creature:new {
 	cellID = 5475485
 }
 
-staticNpcTheed360 = Creature:new {
-	objectName = "staticNpcTheed360",
+staticTheedNpc340 = Creature:new {
+	objectName = "staticTheedNpc340",
 	creatureType = NPC,
 
 	speciesName = "brawler",
@@ -7642,8 +7180,8 @@ staticNpcTheed360 = Creature:new {
 	cellID = 5475485
 }
 
-staticNpcTheed361 = Creature:new {
-	objectName = "staticNpcTheed361",
+staticTheedNpc341 = Creature:new {
+	objectName = "staticTheedNpc341",
 	creatureType = NPC,
 
 	speciesName = "entertainer",
@@ -7663,8 +7201,8 @@ staticNpcTheed361 = Creature:new {
 	cellID = 5475485
 }
 
-staticNpcTheed362 = Creature:new {
-	objectName = "staticNpcTheed362",
+staticTheedNpc342 = Creature:new {
+	objectName = "staticTheedNpc342",
 	creatureType = NPC,
 
 	speciesName = "rsf_palace_guard",
@@ -7684,8 +7222,8 @@ staticNpcTheed362 = Creature:new {
 	cellID = 5475485
 }
 
-staticNpcTheed363 = Creature:new {
-	objectName = "staticNpcTheed363",
+staticTheedNpc343 = Creature:new {
+	objectName = "staticTheedNpc343",
 	creatureType = NPC,
 
 	speciesName = "gungan_guard",
@@ -7705,8 +7243,8 @@ staticNpcTheed363 = Creature:new {
 	cellID = 5475485
 }
 
-staticNpcTheed364 = Creature:new {
-	objectName = "staticNpcTheed364",
+staticTheedNpc344 = Creature:new {
+	objectName = "staticTheedNpc344",
 	creatureType = NPC,
 
 	speciesName = "bothan_base_male",
@@ -7726,8 +7264,8 @@ staticNpcTheed364 = Creature:new {
 	cellID = 5475485
 }
 
-staticNpcTheed365 = Creature:new {
-	objectName = "staticNpcTheed365",
+staticTheedNpc345 = Creature:new {
+	objectName = "staticTheedNpc345",
 	creatureType = NPC,
 
 	speciesName = "technician",
@@ -7747,8 +7285,8 @@ staticNpcTheed365 = Creature:new {
 	cellID = 5475485
 }
 
-staticNpcTheed366 = Creature:new {
-	objectName = "staticNpcTheed366",
+staticTheedNpc346 = Creature:new {
+	objectName = "staticTheedNpc346",
 	creatureType = NPC,
 
 	speciesName = "rsf_pilot",
@@ -7768,8 +7306,8 @@ staticNpcTheed366 = Creature:new {
 	cellID = 5475485
 }
 
-staticNpcTheed367 = Creature:new {
-	objectName = "staticNpcTheed367",
+staticTheedNpc347 = Creature:new {
+	objectName = "staticTheedNpc347",
 	creatureType = NPC,
 
 	speciesName = "mercenary",
@@ -7789,8 +7327,8 @@ staticNpcTheed367 = Creature:new {
 	cellID = 5475480
 }
 
-staticNpcTheed368 = Creature:new {
-	objectName = "staticNpcTheed368",
+staticTheedNpc348 = Creature:new {
+	objectName = "staticTheedNpc348",
 	creatureType = NPC,
 
 	speciesName = "rsf_palace_guard",
@@ -7810,29 +7348,8 @@ staticNpcTheed368 = Creature:new {
 	cellID = 5475480
 }
 
-staticNpcTheed369 = Creature:new {
-	objectName = "staticNpcTheed369",
-	creatureType = NPC,
-
-	speciesName = "storyteller_vendor",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2034102137,
-	positionX = 6.6,
-	positionY = -3.5,
-	positionZ = 0.6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999962,
-	directionW = -0.00872653,
-	randomMovement = 0,
-	cellID = 5475480
-}
-
-staticNpcTheed370 = Creature:new {
-	objectName = "staticNpcTheed370",
+staticTheedNpc349 = Creature:new {
+	objectName = "staticTheedNpc349",
 	creatureType = NPC,
 
 	speciesName = "gungan_outcast",
@@ -7852,8 +7369,8 @@ staticNpcTheed370 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed371 = Creature:new {
-	objectName = "staticNpcTheed371",
+staticTheedNpc350 = Creature:new {
+	objectName = "staticTheedNpc350",
 	creatureType = NPC,
 
 	speciesName = "farmer_agriculturalist",
@@ -7873,8 +7390,8 @@ staticNpcTheed371 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed372 = Creature:new {
-	objectName = "staticNpcTheed372",
+staticTheedNpc351 = Creature:new {
+	objectName = "staticTheedNpc351",
 	creatureType = NPC,
 
 	speciesName = "naboo_captain_broma_lak",
@@ -7894,8 +7411,8 @@ staticNpcTheed372 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed373 = Creature:new {
-	objectName = "staticNpcTheed373",
+staticTheedNpc352 = Creature:new {
+	objectName = "staticTheedNpc352",
 	creatureType = NPC,
 
 	speciesName = "crackdown_elite_dark_trooper",
@@ -7915,8 +7432,8 @@ staticNpcTheed373 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed374 = Creature:new {
-	objectName = "staticNpcTheed374",
+staticTheedNpc353 = Creature:new {
+	objectName = "staticTheedNpc353",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -7936,8 +7453,8 @@ staticNpcTheed374 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed375 = Creature:new {
-	objectName = "staticNpcTheed375",
+staticTheedNpc354 = Creature:new {
+	objectName = "staticTheedNpc354",
 	creatureType = NPC,
 
 	speciesName = "crackdown_storm_commando",
@@ -7957,8 +7474,8 @@ staticNpcTheed375 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed376 = Creature:new {
-	objectName = "staticNpcTheed376",
+staticTheedNpc355 = Creature:new {
+	objectName = "staticTheedNpc355",
 	creatureType = NPC,
 
 	speciesName = "crackdown_imperial_corporal",
@@ -7978,8 +7495,8 @@ staticNpcTheed376 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed377 = Creature:new {
-	objectName = "staticNpcTheed377",
+staticTheedNpc356 = Creature:new {
+	objectName = "staticTheedNpc356",
 	creatureType = NPC,
 
 	speciesName = "crackdown_stormtrooper_bombardier",
@@ -7999,29 +7516,8 @@ staticNpcTheed377 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed378 = Creature:new {
-	objectName = "staticNpcTheed378",
-	creatureType = NPC,
-
-	speciesName = "junk_dealer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3158729015,
-	positionX = -5884.3,
-	positionY = 4214.3,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.603627,
-	directionW = 0.797267,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed379 = Creature:new {
-	objectName = "staticNpcTheed379",
+staticTheedNpc357 = Creature:new {
+	objectName = "staticTheedNpc357",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8041,8 +7537,8 @@ staticNpcTheed379 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed380 = Creature:new {
-	objectName = "staticNpcTheed380",
+staticTheedNpc358 = Creature:new {
+	objectName = "staticTheedNpc358",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8062,8 +7558,8 @@ staticNpcTheed380 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed381 = Creature:new {
-	objectName = "staticNpcTheed381",
+staticTheedNpc359 = Creature:new {
+	objectName = "staticTheedNpc359",
 	creatureType = NPC,
 
 	speciesName = "crackdown_imperial_warrant_officer_ii",
@@ -8083,8 +7579,8 @@ staticNpcTheed381 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed382 = Creature:new {
-	objectName = "staticNpcTheed382",
+staticTheedNpc360 = Creature:new {
+	objectName = "staticTheedNpc360",
 	creatureType = NPC,
 
 	speciesName = "crackdown_imperial_colonel",
@@ -8104,8 +7600,8 @@ staticNpcTheed382 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed383 = Creature:new {
-	objectName = "staticNpcTheed383",
+staticTheedNpc361 = Creature:new {
+	objectName = "staticTheedNpc361",
 	creatureType = NPC,
 
 	speciesName = "crackdown_imperial_medic",
@@ -8125,8 +7621,8 @@ staticNpcTheed383 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed384 = Creature:new {
-	objectName = "staticNpcTheed384",
+staticTheedNpc362 = Creature:new {
+	objectName = "staticTheedNpc362",
 	creatureType = NPC,
 
 	speciesName = "crackdown_command_security_guard",
@@ -8146,8 +7642,8 @@ staticNpcTheed384 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed385 = Creature:new {
-	objectName = "staticNpcTheed385",
+staticTheedNpc363 = Creature:new {
+	objectName = "staticTheedNpc363",
 	creatureType = NPC,
 
 	speciesName = "crackdown_scout_trooper",
@@ -8167,8 +7663,8 @@ staticNpcTheed385 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed386 = Creature:new {
-	objectName = "staticNpcTheed386",
+staticTheedNpc364 = Creature:new {
+	objectName = "staticTheedNpc364",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8188,8 +7684,8 @@ staticNpcTheed386 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed387 = Creature:new {
-	objectName = "staticNpcTheed387",
+staticTheedNpc365 = Creature:new {
+	objectName = "staticTheedNpc365",
 	creatureType = NPC,
 
 	speciesName = "",
@@ -8209,8 +7705,8 @@ staticNpcTheed387 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed388 = Creature:new {
-	objectName = "staticNpcTheed388",
+staticTheedNpc366 = Creature:new {
+	objectName = "staticTheedNpc366",
 	creatureType = NPC,
 
 	speciesName = "fbase_stormtrooper_squad_leader_hard",
@@ -8230,8 +7726,8 @@ staticNpcTheed388 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed389 = Creature:new {
-	objectName = "staticNpcTheed389",
+staticTheedNpc367 = Creature:new {
+	objectName = "staticTheedNpc367",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8251,8 +7747,8 @@ staticNpcTheed389 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed390 = Creature:new {
-	objectName = "staticNpcTheed390",
+staticTheedNpc368 = Creature:new {
+	objectName = "staticTheedNpc368",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8272,8 +7768,8 @@ staticNpcTheed390 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed391 = Creature:new {
-	objectName = "staticNpcTheed391",
+staticTheedNpc369 = Creature:new {
+	objectName = "staticTheedNpc369",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8293,8 +7789,8 @@ staticNpcTheed391 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed392 = Creature:new {
-	objectName = "staticNpcTheed392",
+staticTheedNpc370 = Creature:new {
+	objectName = "staticTheedNpc370",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8314,8 +7810,8 @@ staticNpcTheed392 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed393 = Creature:new {
-	objectName = "staticNpcTheed393",
+staticTheedNpc371 = Creature:new {
+	objectName = "staticTheedNpc371",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8335,8 +7831,8 @@ staticNpcTheed393 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed394 = Creature:new {
-	objectName = "staticNpcTheed394",
+staticTheedNpc372 = Creature:new {
+	objectName = "staticTheedNpc372",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8356,8 +7852,8 @@ staticNpcTheed394 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed395 = Creature:new {
-	objectName = "staticNpcTheed395",
+staticTheedNpc373 = Creature:new {
+	objectName = "staticTheedNpc373",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8377,8 +7873,8 @@ staticNpcTheed395 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed396 = Creature:new {
-	objectName = "staticNpcTheed396",
+staticTheedNpc374 = Creature:new {
+	objectName = "staticTheedNpc374",
 	creatureType = NPC,
 
 	speciesName = "official",
@@ -8398,8 +7894,8 @@ staticNpcTheed396 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed397 = Creature:new {
-	objectName = "staticNpcTheed397",
+staticTheedNpc375 = Creature:new {
+	objectName = "staticTheedNpc375",
 	creatureType = NPC,
 
 	speciesName = "miner",
@@ -8419,29 +7915,8 @@ staticNpcTheed397 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed398 = Creature:new {
-	objectName = "staticNpcTheed398",
-	creatureType = NPC,
-
-	speciesName = "naboo_theed_kermollus_preen",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1170280295,
-	positionX = -6097.73,
-	positionY = 4284.81,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.878144,
-	directionW = 0.478396,
-	randomMovement = 0,
-	cellID = 0
-}
-
-staticNpcTheed399 = Creature:new {
-	objectName = "staticNpcTheed399",
+staticTheedNpc376 = Creature:new {
+	objectName = "staticTheedNpc376",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8461,29 +7936,8 @@ staticNpcTheed399 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed400 = Creature:new {
-	objectName = "staticNpcTheed400",
-	creatureType = NPC,
-
-	speciesName = "surgical_droid_base",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "droid_name",
-	objectCRC = 3280882042,
-	positionX = -5,
-	positionY = 1.8,
-	positionZ = 0.0814226,
-
-	directionX = 0,
-	directionZ = -0,
-	directionY = 0.707107,
-	directionW = 0.707107,
-	randomMovement = 0,
-	cellID = 474325
-}
-
-staticNpcTheed401 = Creature:new {
-	objectName = "staticNpcTheed401",
+staticTheedNpc377 = Creature:new {
+	objectName = "staticTheedNpc377",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8503,8 +7957,8 @@ staticNpcTheed401 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed402 = Creature:new {
-	objectName = "staticNpcTheed402",
+staticTheedNpc378 = Creature:new {
+	objectName = "staticTheedNpc378",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8524,8 +7978,8 @@ staticNpcTheed402 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed403 = Creature:new {
-	objectName = "staticNpcTheed403",
+staticTheedNpc379 = Creature:new {
+	objectName = "staticTheedNpc379",
 	creatureType = NPC,
 
 	speciesName = "crackdown_scout_trooper",
@@ -8545,8 +7999,8 @@ staticNpcTheed403 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed404 = Creature:new {
-	objectName = "staticNpcTheed404",
+staticTheedNpc380 = Creature:new {
+	objectName = "staticTheedNpc380",
 	creatureType = NPC,
 
 	speciesName = "fbase_stormtrooper_rifleman_extreme",
@@ -8566,8 +8020,8 @@ staticNpcTheed404 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed405 = Creature:new {
-	objectName = "staticNpcTheed405",
+staticTheedNpc381 = Creature:new {
+	objectName = "staticTheedNpc381",
 	creatureType = NPC,
 
 	speciesName = "fbase_elite_dark_trooper_hard",
@@ -8587,8 +8041,8 @@ staticNpcTheed405 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed406 = Creature:new {
-	objectName = "staticNpcTheed406",
+staticTheedNpc382 = Creature:new {
+	objectName = "staticTheedNpc382",
 	creatureType = NPC,
 
 	speciesName = "commoner",
@@ -8608,8 +8062,8 @@ staticNpcTheed406 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed407 = Creature:new {
-	objectName = "staticNpcTheed407",
+staticTheedNpc383 = Creature:new {
+	objectName = "staticTheedNpc383",
 	creatureType = NPC,
 
 	speciesName = "fbase_imperial_colonel_hard",
@@ -8629,8 +8083,8 @@ staticNpcTheed407 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed408 = Creature:new {
-	objectName = "staticNpcTheed408",
+staticTheedNpc384 = Creature:new {
+	objectName = "staticTheedNpc384",
 	creatureType = NPC,
 
 	speciesName = "fbase_storm_commando_hard",
@@ -8650,8 +8104,8 @@ staticNpcTheed408 = Creature:new {
 	cellID = 0
 }
 
-staticNpcTheed409 = Creature:new {
-	objectName = "staticNpcTheed409",
+staticTheedNpc385 = Creature:new {
+	objectName = "staticTheedNpc385",
 	creatureType = NPC,
 
 	speciesName = "fbase_storm_commando_hard",
@@ -8670,4 +8124,3 @@ staticNpcTheed409 = Creature:new {
 	randomMovement = 0,
 	cellID = 0
 }
-
