@@ -58,6 +58,7 @@ staticTheedNpc1 = Creature:new {
 	directionY = -0.58655,
 	directionW = 0.809913,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697365
 }
 
@@ -79,6 +80,7 @@ staticTheedNpc2 = Creature:new {
 	directionY = 0.689521,
 	directionW = 0.724265,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697365
 }
 
@@ -100,6 +102,7 @@ staticTheedNpc3 = Creature:new {
 	directionY = -0.27352,
 	directionW = 0.961866,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 1697364
 }
 
@@ -121,6 +124,7 @@ staticTheedNpc4 = Creature:new {
 	directionY = 2.20161e-08,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -142,6 +146,7 @@ staticTheedNpc5 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -163,6 +168,7 @@ staticTheedNpc6 = Creature:new {
 	directionY = 0.0347596,
 	directionW = 0.999396,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -184,6 +190,7 @@ staticTheedNpc7 = Creature:new {
 	directionY = 0.997381,
 	directionW = -0.0723317,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -205,6 +212,7 @@ staticTheedNpc8 = Creature:new {
 	directionY = 0.716251,
 	directionW = -0.697843,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -226,6 +234,7 @@ staticTheedNpc9 = Creature:new {
 	directionY = 0.336208,
 	directionW = 0.941788,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -247,6 +256,7 @@ staticTheedNpc10 = Creature:new {
 	directionY = -0.649984,
 	directionW = 0.759947,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -268,6 +278,7 @@ staticTheedNpc11 = Creature:new {
 	directionY = -0.466024,
 	directionW = 0.884772,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -289,6 +300,7 @@ staticTheedNpc12 = Creature:new {
 	directionY = 0.776624,
 	directionW = -0.629964,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -310,6 +322,7 @@ staticTheedNpc13 = Creature:new {
 	directionY = 0.879044,
 	directionW = -0.47674,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -331,6 +344,7 @@ staticTheedNpc14 = Creature:new {
 	directionY = -0.301631,
 	directionW = 0.953425,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -352,6 +366,7 @@ staticTheedNpc15 = Creature:new {
 	directionY = 0.403464,
 	directionW = 0.914995,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -373,6 +388,7 @@ staticTheedNpc16 = Creature:new {
 	directionY = 1,
 	directionW = 0.000170187,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -394,6 +410,7 @@ staticTheedNpc17 = Creature:new {
 	directionY = -0.0446273,
 	directionW = 0.999004,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -415,6 +432,7 @@ staticTheedNpc18 = Creature:new {
 	directionY = 0.97946,
 	directionW = 0.20164,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -436,6 +454,7 @@ staticTheedNpc19 = Creature:new {
 	directionY = 0.120344,
 	directionW = 0.992732,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -457,6 +476,7 @@ staticTheedNpc20 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -478,6 +498,7 @@ staticTheedNpc21 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -499,6 +520,7 @@ staticTheedNpc22 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -520,6 +542,7 @@ staticTheedNpc23 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -541,6 +564,7 @@ staticTheedNpc24 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -562,6 +586,7 @@ staticTheedNpc25 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -583,6 +608,7 @@ staticTheedNpc26 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -604,6 +630,7 @@ staticTheedNpc27 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -625,6 +652,7 @@ staticTheedNpc28 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -646,6 +674,7 @@ staticTheedNpc29 = Creature:new {
 	directionY = 1,
 	directionW = -0,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -667,6 +696,7 @@ staticTheedNpc30 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -688,6 +718,7 @@ staticTheedNpc31 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -709,6 +740,7 @@ staticTheedNpc32 = Creature:new {
 	directionY = 0.281047,
 	directionW = 0.959694,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -730,6 +762,7 @@ staticTheedNpc33 = Creature:new {
 	directionY = -0.0361604,
 	directionW = 0.999346,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -751,6 +784,7 @@ staticTheedNpc34 = Creature:new {
 	directionY = 0.982478,
 	directionW = 0.186377,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -772,6 +806,7 @@ staticTheedNpc35 = Creature:new {
 	directionY = 0.456406,
 	directionW = 0.889772,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -793,6 +828,7 @@ staticTheedNpc36 = Creature:new {
 	directionY = 0.476775,
 	directionW = 0.879025,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -814,6 +850,7 @@ staticTheedNpc37 = Creature:new {
 	directionY = 0.921552,
 	directionW = -0.388256,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -835,6 +872,7 @@ staticTheedNpc38 = Creature:new {
 	directionY = 0.246318,
 	directionW = 0.969189,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -856,6 +894,7 @@ staticTheedNpc39 = Creature:new {
 	directionY = 0.322684,
 	directionW = 0.946507,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -877,6 +916,7 @@ staticTheedNpc40 = Creature:new {
 	directionY = 0.460187,
 	directionW = 0.887822,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -898,6 +938,7 @@ staticTheedNpc41 = Creature:new {
 	directionY = 0.989054,
 	directionW = 0.147556,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -919,6 +960,7 @@ staticTheedNpc42 = Creature:new {
 	directionY = 0.801384,
 	directionW = 0.598151,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -940,6 +982,7 @@ staticTheedNpc43 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -961,6 +1004,7 @@ staticTheedNpc44 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -982,6 +1026,7 @@ staticTheedNpc45 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1003,6 +1048,7 @@ staticTheedNpc46 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1024,6 +1070,7 @@ staticTheedNpc47 = Creature:new {
 	directionY = -0.368186,
 	directionW = 0.929751,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1045,6 +1092,7 @@ staticTheedNpc48 = Creature:new {
 	directionY = 0.907051,
 	directionW = 0.42102,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1066,6 +1114,7 @@ staticTheedNpc49 = Creature:new {
 	directionY = 0.971901,
 	directionW = 0.235387,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1087,6 +1136,7 @@ staticTheedNpc50 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1108,6 +1158,7 @@ staticTheedNpc51 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1129,6 +1180,7 @@ staticTheedNpc52 = Creature:new {
 	directionY = 0.999341,
 	directionW = -0.036286,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1150,6 +1202,7 @@ staticTheedNpc53 = Creature:new {
 	directionY = 0.378046,
 	directionW = 0.925787,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1171,6 +1224,7 @@ staticTheedNpc54 = Creature:new {
 	directionY = 0.94889,
 	directionW = -0.315608,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1192,6 +1246,7 @@ staticTheedNpc55 = Creature:new {
 	directionY = 0.989247,
 	directionW = 0.146252,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1213,6 +1268,7 @@ staticTheedNpc56 = Creature:new {
 	directionY = 0.580333,
 	directionW = 0.814379,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1234,6 +1290,7 @@ staticTheedNpc57 = Creature:new {
 	directionY = -0.0625354,
 	directionW = 0.998043,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1255,6 +1312,7 @@ staticTheedNpc58 = Creature:new {
 	directionY = -0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1276,6 +1334,7 @@ staticTheedNpc59 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1297,6 +1356,7 @@ staticTheedNpc60 = Creature:new {
 	directionY = 0.932204,
 	directionW = -0.361934,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1318,6 +1378,7 @@ staticTheedNpc61 = Creature:new {
 	directionY = -0.115606,
 	directionW = 0.993295,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1339,6 +1400,7 @@ staticTheedNpc62 = Creature:new {
 	directionY = -0.0808775,
 	directionW = 0.996724,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1360,6 +1422,7 @@ staticTheedNpc63 = Creature:new {
 	directionY = -0.217548,
 	directionW = 0.97605,
 	randomMovement = 0,
+	mood = "neutral",
 	cellID = 0
 }
 
@@ -1381,6 +1444,7 @@ staticTheedNpc64 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1402,6 +1466,7 @@ staticTheedNpc65 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1423,6 +1488,7 @@ staticTheedNpc66 = Creature:new {
 	directionY = -0.382683,
 	directionW = 0.92388,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1444,6 +1510,7 @@ staticTheedNpc67 = Creature:new {
 	directionY = 0.932204,
 	directionW = -0.361934,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1465,6 +1532,7 @@ staticTheedNpc68 = Creature:new {
 	directionY = -0.381574,
 	directionW = 0.924338,
 	randomMovement = 0,
+	mood = "neutral",
 	cellID = 0
 }
 
@@ -1486,6 +1554,7 @@ staticTheedNpc69 = Creature:new {
 	directionY = 0.932204,
 	directionW = -0.361934,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1507,6 +1576,7 @@ staticTheedNpc70 = Creature:new {
 	directionY = 0.980885,
 	directionW = 0.19459,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1528,6 +1598,7 @@ staticTheedNpc71 = Creature:new {
 	directionY = 0.982354,
 	directionW = 0.18703,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1549,6 +1620,7 @@ staticTheedNpc72 = Creature:new {
 	directionY = 0.897951,
 	directionW = 0.440096,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1570,6 +1642,7 @@ staticTheedNpc73 = Creature:new {
 	directionY = 0.897951,
 	directionW = 0.440096,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1591,6 +1664,7 @@ staticTheedNpc74 = Creature:new {
 	directionY = 7.28135e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1692104
 }
 
@@ -1612,6 +1686,7 @@ staticTheedNpc75 = Creature:new {
 	directionY = 1,
 	directionW = -2.4301e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1692104
 }
 
@@ -1633,6 +1708,7 @@ staticTheedNpc76 = Creature:new {
 	directionY = 1.90712e-06,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1692104
 }
 
@@ -1654,6 +1730,7 @@ staticTheedNpc77 = Creature:new {
 	directionY = 1,
 	directionW = -7.63053e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1692104
 }
 
@@ -1675,6 +1752,7 @@ staticTheedNpc78 = Creature:new {
 	directionY = -7.10809e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1692103
 }
 
@@ -1696,6 +1774,7 @@ staticTheedNpc79 = Creature:new {
 	directionY = 1,
 	directionW = 9.12262e-07,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1692103
 }
 
@@ -1717,6 +1796,7 @@ staticTheedNpc80 = Creature:new {
 	directionY = 2.34382e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1692102
 }
 
@@ -1738,6 +1818,7 @@ staticTheedNpc81 = Creature:new {
 	directionY = 1,
 	directionW = 9.53557e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1692102
 }
 
@@ -1759,6 +1840,7 @@ staticTheedNpc82 = Creature:new {
 	directionY = 0.923858,
 	directionW = 0.382734,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1692102
 }
 
@@ -1780,6 +1862,7 @@ staticTheedNpc83 = Creature:new {
 	directionY = 0.902919,
 	directionW = -0.42981,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1801,6 +1884,7 @@ staticTheedNpc84 = Creature:new {
 	directionY = 0.910219,
 	directionW = 0.414127,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1822,6 +1906,7 @@ staticTheedNpc85 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1843,6 +1928,7 @@ staticTheedNpc86 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1864,6 +1950,7 @@ staticTheedNpc87 = Creature:new {
 	directionY = -0.302813,
 	directionW = 0.95305,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1885,6 +1972,7 @@ staticTheedNpc88 = Creature:new {
 	directionY = 0.870755,
 	directionW = 0.491717,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -1906,6 +1994,7 @@ staticTheedNpc89 = Creature:new {
 	directionY = 0.832901,
 	directionW = 0.553422,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1927,6 +2016,7 @@ staticTheedNpc90 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1948,6 +2038,7 @@ staticTheedNpc91 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -1969,6 +2060,7 @@ staticTheedNpc92 = Creature:new {
 	directionY = 0.719169,
 	directionW = 0.694835,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -1990,6 +2082,7 @@ staticTheedNpc93 = Creature:new {
 	directionY = -0.0977094,
 	directionW = 0.995215,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -2011,6 +2104,7 @@ staticTheedNpc94 = Creature:new {
 	directionY = -0.0977148,
 	directionW = 0.995208,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -2032,6 +2126,7 @@ staticTheedNpc95 = Creature:new {
 	directionY = -0.0355576,
 	directionW = 0.999368,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -2053,6 +2148,7 @@ staticTheedNpc96 = Creature:new {
 	directionY = -0.602714,
 	directionW = 0.797957,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -2074,6 +2170,7 @@ staticTheedNpc97 = Creature:new {
 	directionY = 0.830785,
 	directionW = 0.556593,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -2095,6 +2192,7 @@ staticTheedNpc98 = Creature:new {
 	directionY = 0.126872,
 	directionW = 0.991919,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -2116,6 +2214,7 @@ staticTheedNpc99 = Creature:new {
 	directionY = 0.739468,
 	directionW = 0.673192,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -2137,6 +2236,7 @@ staticTheedNpc100 = Creature:new {
 	directionY = 0.739461,
 	directionW = 0.673199,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -2158,6 +2258,7 @@ staticTheedNpc101 = Creature:new {
 	directionY = 0.737349,
 	directionW = 0.673235,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -2179,6 +2280,7 @@ staticTheedNpc102 = Creature:new {
 	directionY = 0.628537,
 	directionW = 0.777779,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 1697383
 }
 
@@ -2200,6 +2302,7 @@ staticTheedNpc103 = Creature:new {
 	directionY = -7.53393e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697383
 }
 
@@ -2221,6 +2324,7 @@ staticTheedNpc104 = Creature:new {
 	directionY = 1,
 	directionW = -0.000152594,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697383
 }
 
@@ -2242,6 +2346,7 @@ staticTheedNpc105 = Creature:new {
 	directionY = -6.54381e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697381
 }
 
@@ -2263,6 +2368,7 @@ staticTheedNpc106 = Creature:new {
 	directionY = 1,
 	directionW = 0.000150166,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697381
 }
 
@@ -2284,6 +2390,7 @@ staticTheedNpc107 = Creature:new {
 	directionY = 6.06799e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2305,6 +2412,7 @@ staticTheedNpc108 = Creature:new {
 	directionY = 1,
 	directionW = -3.64278e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2326,6 +2434,7 @@ staticTheedNpc109 = Creature:new {
 	directionY = 0.923895,
 	directionW = 0.382645,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2347,6 +2456,7 @@ staticTheedNpc110 = Creature:new {
 	directionY = -9.36907e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2368,6 +2478,7 @@ staticTheedNpc111 = Creature:new {
 	directionY = 1,
 	directionW = -2.16272e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2389,6 +2500,7 @@ staticTheedNpc112 = Creature:new {
 	directionY = -8.68971e-06,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2410,6 +2522,7 @@ staticTheedNpc113 = Creature:new {
 	directionY = 1,
 	directionW = 6.32511e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2431,6 +2544,7 @@ staticTheedNpc114 = Creature:new {
 	directionY = 7.80241e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2452,6 +2566,7 @@ staticTheedNpc115 = Creature:new {
 	directionY = 1,
 	directionW = -1.90052e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2473,6 +2588,7 @@ staticTheedNpc116 = Creature:new {
 	directionY = -9.27402e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2494,6 +2610,7 @@ staticTheedNpc117 = Creature:new {
 	directionY = 1,
 	directionW = 0.000122259,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2515,6 +2632,7 @@ staticTheedNpc118 = Creature:new {
 	directionY = 0.923856,
 	directionW = 0.38274,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2536,6 +2654,7 @@ staticTheedNpc119 = Creature:new {
 	directionY = -3.29384e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2557,6 +2676,7 @@ staticTheedNpc120 = Creature:new {
 	directionY = 1,
 	directionW = 1.38664e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2578,6 +2698,7 @@ staticTheedNpc121 = Creature:new {
 	directionY = 1.62157e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2599,6 +2720,7 @@ staticTheedNpc122 = Creature:new {
 	directionY = 1,
 	directionW = -6.10247e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697378
 }
 
@@ -2620,6 +2742,7 @@ staticTheedNpc123 = Creature:new {
 	directionY = -9.8857e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697377
 }
 
@@ -2641,6 +2764,7 @@ staticTheedNpc124 = Creature:new {
 	directionY = 1,
 	directionW = 4.48145e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697377
 }
 
@@ -2662,6 +2786,7 @@ staticTheedNpc125 = Creature:new {
 	directionY = 2.66732e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697377
 }
 
@@ -2683,6 +2808,7 @@ staticTheedNpc126 = Creature:new {
 	directionY = 1,
 	directionW = -7.05395e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697377
 }
 
@@ -2704,6 +2830,7 @@ staticTheedNpc127 = Creature:new {
 	directionY = 2.61854e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697377
 }
 
@@ -2725,6 +2852,7 @@ staticTheedNpc128 = Creature:new {
 	directionY = 1,
 	directionW = -7.08447e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697377
 }
 
@@ -2746,6 +2874,7 @@ staticTheedNpc129 = Creature:new {
 	directionY = 0.923905,
 	directionW = 0.382622,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697377
 }
 
@@ -2767,6 +2896,7 @@ staticTheedNpc130 = Creature:new {
 	directionY = 3.20732e-05,
 	directionW = 0.999999,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697379
 }
 
@@ -2788,6 +2918,7 @@ staticTheedNpc131 = Creature:new {
 	directionY = 0.999999,
 	directionW = -6.13952e-06,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697379
 }
 
@@ -2809,6 +2940,7 @@ staticTheedNpc132 = Creature:new {
 	directionY = 0.923884,
 	directionW = 0.382665,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697379
 }
 
@@ -2830,6 +2962,7 @@ staticTheedNpc133 = Creature:new {
 	directionY = 0.382648,
 	directionW = 0.92389,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697379
 }
 
@@ -2851,6 +2984,7 @@ staticTheedNpc134 = Creature:new {
 	directionY = 0.707134,
 	directionW = -0.70708,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697379
 }
 
@@ -2872,6 +3006,7 @@ staticTheedNpc135 = Creature:new {
 	directionY = 0.707102,
 	directionW = 0.707112,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1697379
 }
 
@@ -2893,6 +3028,7 @@ staticTheedNpc136 = Creature:new {
 	directionY = 0.0568791,
 	directionW = 0.998381,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 1697379
 }
 
@@ -2914,6 +3050,7 @@ staticTheedNpc137 = Creature:new {
 	directionY = 0.717939,
 	directionW = -0.696057,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -2935,6 +3072,7 @@ staticTheedNpc138 = Creature:new {
 	directionY = -0.367209,
 	directionW = 0.930122,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -2956,6 +3094,7 @@ staticTheedNpc139 = Creature:new {
 	directionY = -0.367045,
 	directionW = 0.930186,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -2977,6 +3116,7 @@ staticTheedNpc140 = Creature:new {
 	directionY = 0.916757,
 	directionW = -0.399446,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -2998,6 +3138,7 @@ staticTheedNpc141 = Creature:new {
 	directionY = 0.703071,
 	directionW = 0.71112,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3019,6 +3160,7 @@ staticTheedNpc142 = Creature:new {
 	directionY = 0.913216,
 	directionW = -0.407475,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3040,6 +3182,7 @@ staticTheedNpc143 = Creature:new {
 	directionY = 0.0326735,
 	directionW = 0.999466,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3061,6 +3204,7 @@ staticTheedNpc144 = Creature:new {
 	directionY = -0.0920839,
 	directionW = 0.995751,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3082,6 +3226,7 @@ staticTheedNpc145 = Creature:new {
 	directionY = 0.858427,
 	directionW = 0.512935,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3103,6 +3248,7 @@ staticTheedNpc146 = Creature:new {
 	directionY = 0.858428,
 	directionW = 0.512933,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3124,6 +3270,7 @@ staticTheedNpc147 = Creature:new {
 	directionY = 0.858432,
 	directionW = 0.512915,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3145,6 +3292,7 @@ staticTheedNpc148 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -3166,6 +3314,7 @@ staticTheedNpc149 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3187,6 +3336,7 @@ staticTheedNpc150 = Creature:new {
 	directionY = 0.92357,
 	directionW = -0.383429,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3208,6 +3358,7 @@ staticTheedNpc151 = Creature:new {
 	directionY = 0.957755,
 	directionW = -0.287585,
 	randomMovement = 0,
+	mood = "neutral",
 	cellID = 91
 }
 
@@ -3229,6 +3380,7 @@ staticTheedNpc152 = Creature:new {
 	directionY = 0.683263,
 	directionW = 0.730172,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 91
 }
 
@@ -3250,6 +3402,7 @@ staticTheedNpc153 = Creature:new {
 	directionY = 0.96076,
 	directionW = -0.277383,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3271,6 +3424,7 @@ staticTheedNpc154 = Creature:new {
 	directionY = -0.46926,
 	directionW = 0.88306,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3292,6 +3446,7 @@ staticTheedNpc155 = Creature:new {
 	directionY = -0.46926,
 	directionW = 0.88306,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3313,6 +3468,7 @@ staticTheedNpc156 = Creature:new {
 	directionY = 0.400391,
 	directionW = 0.916345,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3334,6 +3490,7 @@ staticTheedNpc157 = Creature:new {
 	directionY = 0.950417,
 	directionW = -0.310979,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3355,6 +3512,7 @@ staticTheedNpc158 = Creature:new {
 	directionY = 0.950473,
 	directionW = -0.310809,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -3376,6 +3534,7 @@ staticTheedNpc159 = Creature:new {
 	directionY = 0.950512,
 	directionW = -0.310688,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -3397,6 +3556,7 @@ staticTheedNpc160 = Creature:new {
 	directionY = -1.51303e-09,
 	directionW = 0.990893,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -3418,6 +3578,7 @@ staticTheedNpc161 = Creature:new {
 	directionY = 0.990893,
 	directionW = 9.20728e-10,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -3439,6 +3600,7 @@ staticTheedNpc162 = Creature:new {
 	directionY = 0.918312,
 	directionW = -0.395856,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3460,6 +3622,7 @@ staticTheedNpc163 = Creature:new {
 	directionY = -0.648143,
 	directionW = 0.761519,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3481,6 +3644,7 @@ staticTheedNpc164 = Creature:new {
 	directionY = 0.624284,
 	directionW = 0.781198,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3502,6 +3666,7 @@ staticTheedNpc165 = Creature:new {
 	directionY = 0.632104,
 	directionW = 0.774884,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3523,6 +3688,7 @@ staticTheedNpc166 = Creature:new {
 	directionY = -0.598059,
 	directionW = 0.801452,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3544,6 +3710,7 @@ staticTheedNpc167 = Creature:new {
 	directionY = 0.996673,
 	directionW = 0.0815025,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3565,6 +3732,7 @@ staticTheedNpc168 = Creature:new {
 	directionY = 0.999369,
 	directionW = 0.0355255,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3586,6 +3754,7 @@ staticTheedNpc169 = Creature:new {
 	directionY = 0.84915,
 	directionW = -0.528152,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3607,6 +3776,7 @@ staticTheedNpc170 = Creature:new {
 	directionY = 0.999996,
 	directionW = -0.00291691,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3628,6 +3798,7 @@ staticTheedNpc171 = Creature:new {
 	directionY = 0.0105657,
 	directionW = 0.999944,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3649,6 +3820,7 @@ staticTheedNpc172 = Creature:new {
 	directionY = -0.320653,
 	directionW = 0.947197,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3670,6 +3842,7 @@ staticTheedNpc173 = Creature:new {
 	directionY = 0.481277,
 	directionW = 0.876568,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3691,6 +3864,7 @@ staticTheedNpc174 = Creature:new {
 	directionY = 0.99946,
 	directionW = 0.0328714,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3712,6 +3886,7 @@ staticTheedNpc175 = Creature:new {
 	directionY = 0.999986,
 	directionW = 0.00516904,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3733,6 +3908,7 @@ staticTheedNpc176 = Creature:new {
 	directionY = 0.999987,
 	directionW = 0.00517444,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3754,6 +3930,7 @@ staticTheedNpc177 = Creature:new {
 	directionY = 0.967046,
 	directionW = 0.2546,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3775,6 +3952,7 @@ staticTheedNpc178 = Creature:new {
 	directionY = 0.582041,
 	directionW = 0.81316,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3796,6 +3974,7 @@ staticTheedNpc179 = Creature:new {
 	directionY = 0.950238,
 	directionW = -0.311525,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -3817,6 +3996,7 @@ staticTheedNpc180 = Creature:new {
 	directionY = 0.977414,
 	directionW = 0.211333,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3838,6 +4018,7 @@ staticTheedNpc181 = Creature:new {
 	directionY = 0.602428,
 	directionW = 0.798173,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -3859,6 +4040,7 @@ staticTheedNpc182 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -3880,6 +4062,7 @@ staticTheedNpc183 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -3901,6 +4084,7 @@ staticTheedNpc184 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -3922,6 +4106,7 @@ staticTheedNpc185 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -3943,6 +4128,7 @@ staticTheedNpc186 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -3964,6 +4150,7 @@ staticTheedNpc187 = Creature:new {
 	directionY = 0.92388,
 	directionW = 0.382683,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -3985,6 +4172,7 @@ staticTheedNpc188 = Creature:new {
 	directionY = 0.998595,
 	directionW = 0.0529818,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4006,6 +4194,7 @@ staticTheedNpc189 = Creature:new {
 	directionY = 0.43559,
 	directionW = 0.900145,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4027,6 +4216,7 @@ staticTheedNpc190 = Creature:new {
 	directionY = -0.0518278,
 	directionW = 0.998656,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -4048,6 +4238,7 @@ staticTheedNpc191 = Creature:new {
 	directionY = 0.98319,
 	directionW = 0.182583,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4069,6 +4260,7 @@ staticTheedNpc192 = Creature:new {
 	directionY = 1.37176e-08,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -4090,6 +4282,7 @@ staticTheedNpc193 = Creature:new {
 	directionY = 1,
 	directionW = 1.38106e-08,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -4111,6 +4304,7 @@ staticTheedNpc194 = Creature:new {
 	directionY = 0.92388,
 	directionW = 0.382683,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -4132,6 +4326,7 @@ staticTheedNpc195 = Creature:new {
 	directionY = 0.985622,
 	directionW = -0.168964,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4153,6 +4348,7 @@ staticTheedNpc196 = Creature:new {
 	directionY = 0.885646,
 	directionW = -0.464361,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 1688880
 }
 
@@ -4174,6 +4370,7 @@ staticTheedNpc197 = Creature:new {
 	directionY = -0.639051,
 	directionW = 0.769164,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 1688880
 }
 
@@ -4195,6 +4392,7 @@ staticTheedNpc198 = Creature:new {
 	directionY = -0.191836,
 	directionW = 0.981427,
 	randomMovement = 0,
+	mood = "",
 	cellID = 1688879
 }
 
@@ -4216,6 +4414,7 @@ staticTheedNpc199 = Creature:new {
 	directionY = -0.0349939,
 	directionW = 0.999388,
 	randomMovement = 0,
+	mood = "",
 	cellID = 1688879
 }
 
@@ -4237,6 +4436,7 @@ staticTheedNpc200 = Creature:new {
 	directionY = 0.717722,
 	directionW = 0.69633,
 	randomMovement = 0,
+	mood = "neutral",
 	cellID = 1688873
 }
 
@@ -4258,6 +4458,7 @@ staticTheedNpc201 = Creature:new {
 	directionY = 0.732149,
 	directionW = -0.681145,
 	randomMovement = 0,
+	mood = "neutral",
 	cellID = 1688867
 }
 
@@ -4279,6 +4480,7 @@ staticTheedNpc202 = Creature:new {
 	directionY = 0.455482,
 	directionW = 0.890245,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 1688867
 }
 
@@ -4300,6 +4502,7 @@ staticTheedNpc203 = Creature:new {
 	directionY = -0.367949,
 	directionW = 0.929846,
 	randomMovement = 0,
+	mood = "",
 	cellID = 1688861
 }
 
@@ -4321,6 +4524,7 @@ staticTheedNpc204 = Creature:new {
 	directionY = 0.770406,
 	directionW = -0.637554,
 	randomMovement = 0,
+	mood = "",
 	cellID = 1688861
 }
 
@@ -4342,6 +4546,7 @@ staticTheedNpc205 = Creature:new {
 	directionY = 0.726339,
 	directionW = -0.687336,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 1688861
 }
 
@@ -4363,6 +4568,7 @@ staticTheedNpc206 = Creature:new {
 	directionY = -0.00195927,
 	directionW = 0.999998,
 	randomMovement = 0,
+	mood = "neutral",
 	cellID = 1688860
 }
 
@@ -4384,6 +4590,7 @@ staticTheedNpc207 = Creature:new {
 	directionY = -0.00550703,
 	directionW = 0.999985,
 	randomMovement = 0,
+	mood = "neutral",
 	cellID = 1688859
 }
 
@@ -4405,6 +4612,7 @@ staticTheedNpc208 = Creature:new {
 	directionY = -0.392196,
 	directionW = 0.919882,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4426,6 +4634,7 @@ staticTheedNpc209 = Creature:new {
 	directionY = 0.906751,
 	directionW = 0.421667,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4447,6 +4656,7 @@ staticTheedNpc210 = Creature:new {
 	directionY = 0.737971,
 	directionW = -0.674833,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4468,6 +4678,7 @@ staticTheedNpc211 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -4489,6 +4700,7 @@ staticTheedNpc212 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -4510,6 +4722,7 @@ staticTheedNpc213 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -4531,6 +4744,7 @@ staticTheedNpc214 = Creature:new {
 	directionY = 0.646945,
 	directionW = 0.762536,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4552,6 +4766,7 @@ staticTheedNpc215 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -4573,6 +4788,7 @@ staticTheedNpc216 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -4594,6 +4810,7 @@ staticTheedNpc217 = Creature:new {
 	directionY = 0.811348,
 	directionW = -0.584563,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4615,6 +4832,7 @@ staticTheedNpc218 = Creature:new {
 	directionY = 0.735754,
 	directionW = 0.677249,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4636,6 +4854,7 @@ staticTheedNpc219 = Creature:new {
 	directionY = -0.590315,
 	directionW = 0.807173,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4657,6 +4876,7 @@ staticTheedNpc220 = Creature:new {
 	directionY = 0.961626,
 	directionW = -0.274363,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -4678,6 +4898,7 @@ staticTheedNpc221 = Creature:new {
 	directionY = 0.961619,
 	directionW = -0.274387,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -4699,6 +4920,7 @@ staticTheedNpc222 = Creature:new {
 	directionY = 0.961596,
 	directionW = -0.274469,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -4720,6 +4942,7 @@ staticTheedNpc223 = Creature:new {
 	directionY = 0.961645,
 	directionW = -0.274298,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -4741,6 +4964,7 @@ staticTheedNpc224 = Creature:new {
 	directionY = 0.961629,
 	directionW = -0.274355,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -4762,6 +4986,7 @@ staticTheedNpc225 = Creature:new {
 	directionY = 0.0782832,
 	directionW = 0.996931,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4783,6 +5008,7 @@ staticTheedNpc226 = Creature:new {
 	directionY = -0.254587,
 	directionW = 0.96705,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4804,6 +5030,7 @@ staticTheedNpc227 = Creature:new {
 	directionY = -0.606345,
 	directionW = 0.795202,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4825,6 +5052,7 @@ staticTheedNpc228 = Creature:new {
 	directionY = 0.909694,
 	directionW = -0.41528,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4846,6 +5074,7 @@ staticTheedNpc229 = Creature:new {
 	directionY = 0.849301,
 	directionW = -0.527909,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4867,6 +5096,7 @@ staticTheedNpc230 = Creature:new {
 	directionY = 0.707105,
 	directionW = 0.707106,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -4888,6 +5118,7 @@ staticTheedNpc231 = Creature:new {
 	directionY = -0.42905,
 	directionW = 0.903281,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4909,6 +5140,7 @@ staticTheedNpc232 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -4930,6 +5162,7 @@ staticTheedNpc233 = Creature:new {
 	directionY = 0.783757,
 	directionW = 0.621067,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4951,6 +5184,7 @@ staticTheedNpc234 = Creature:new {
 	directionY = 0.504322,
 	directionW = 0.863516,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -4972,6 +5206,7 @@ staticTheedNpc235 = Creature:new {
 	directionY = 0.645084,
 	directionW = 0.764111,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -4993,6 +5228,7 @@ staticTheedNpc236 = Creature:new {
 	directionY = 0.785204,
 	directionW = -0.619237,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5014,6 +5250,7 @@ staticTheedNpc237 = Creature:new {
 	directionY = -0.120892,
 	directionW = 0.992666,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5035,6 +5272,7 @@ staticTheedNpc238 = Creature:new {
 	directionY = 0.683544,
 	directionW = 0.729909,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5056,6 +5294,7 @@ staticTheedNpc239 = Creature:new {
 	directionY = 0.954511,
 	directionW = -0.298175,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5077,6 +5316,7 @@ staticTheedNpc240 = Creature:new {
 	directionY = 0.872407,
 	directionW = -0.48878,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5098,6 +5338,7 @@ staticTheedNpc241 = Creature:new {
 	directionY = 0.976595,
 	directionW = 0.215087,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5119,6 +5360,7 @@ staticTheedNpc242 = Creature:new {
 	directionY = 0.111024,
 	directionW = 0.993818,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5140,6 +5382,7 @@ staticTheedNpc243 = Creature:new {
 	directionY = 0.7195,
 	directionW = -0.694492,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5161,6 +5404,7 @@ staticTheedNpc244 = Creature:new {
 	directionY = -0.508383,
 	directionW = 0.861131,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5182,6 +5426,7 @@ staticTheedNpc245 = Creature:new {
 	directionY = -5.26222e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305893
 }
 
@@ -5203,6 +5448,7 @@ staticTheedNpc246 = Creature:new {
 	directionY = 1,
 	directionW = 1.49771e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305893
 }
 
@@ -5224,6 +5470,7 @@ staticTheedNpc247 = Creature:new {
 	directionY = 0.923857,
 	directionW = 0.382739,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305893
 }
 
@@ -5245,6 +5492,7 @@ staticTheedNpc248 = Creature:new {
 	directionY = -3.81235e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305892
 }
 
@@ -5266,6 +5514,7 @@ staticTheedNpc249 = Creature:new {
 	directionY = 1,
 	directionW = 3.16654e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305892
 }
 
@@ -5287,6 +5536,7 @@ staticTheedNpc250 = Creature:new {
 	directionY = 0.000104455,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305892
 }
 
@@ -5308,6 +5558,7 @@ staticTheedNpc251 = Creature:new {
 	directionY = 1,
 	directionW = -4.77222e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305892
 }
 
@@ -5329,6 +5580,7 @@ staticTheedNpc252 = Creature:new {
 	directionY = 0.923896,
 	directionW = 0.382645,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305892
 }
 
@@ -5350,6 +5602,7 @@ staticTheedNpc253 = Creature:new {
 	directionY = 0.382714,
 	directionW = 0.923867,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305892
 }
 
@@ -5371,6 +5624,7 @@ staticTheedNpc254 = Creature:new {
 	directionY = 0.70714,
 	directionW = -0.707074,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305888
 }
 
@@ -5392,6 +5646,7 @@ staticTheedNpc255 = Creature:new {
 	directionY = 0.707123,
 	directionW = 0.707091,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1305888
 }
 
@@ -5413,6 +5668,7 @@ staticTheedNpc256 = Creature:new {
 	directionY = 0.992327,
 	directionW = -0.123638,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 1305888
 }
 
@@ -5434,6 +5690,7 @@ staticTheedNpc257 = Creature:new {
 	directionY = 0.525487,
 	directionW = 0.850801,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5455,6 +5712,7 @@ staticTheedNpc258 = Creature:new {
 	directionY = 0.903264,
 	directionW = 0.429085,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5476,6 +5734,7 @@ staticTheedNpc259 = Creature:new {
 	directionY = 0.95509,
 	directionW = 0.296316,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -5497,6 +5756,7 @@ staticTheedNpc260 = Creature:new {
 	directionY = -0.137006,
 	directionW = 0.99057,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5518,6 +5778,7 @@ staticTheedNpc261 = Creature:new {
 	directionY = -0.289949,
 	directionW = 0.957042,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5539,6 +5800,7 @@ staticTheedNpc262 = Creature:new {
 	directionY = 0.188674,
 	directionW = 0.98204,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5560,6 +5822,7 @@ staticTheedNpc263 = Creature:new {
 	directionY = 0.860058,
 	directionW = -0.510196,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5581,6 +5844,7 @@ staticTheedNpc264 = Creature:new {
 	directionY = 0.993172,
 	directionW = 0.116661,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5602,6 +5866,7 @@ staticTheedNpc265 = Creature:new {
 	directionY = 0.999996,
 	directionW = -0.00236567,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5623,6 +5888,7 @@ staticTheedNpc266 = Creature:new {
 	directionY = 0.999997,
 	directionW = -0.00237131,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5644,6 +5910,7 @@ staticTheedNpc267 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -5665,6 +5932,7 @@ staticTheedNpc268 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -5686,6 +5954,7 @@ staticTheedNpc269 = Creature:new {
 	directionY = 0.804403,
 	directionW = -0.594084,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5707,6 +5976,7 @@ staticTheedNpc270 = Creature:new {
 	directionY = -0.390505,
 	directionW = 0.920541,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5728,6 +5998,7 @@ staticTheedNpc271 = Creature:new {
 	directionY = 0.283728,
 	directionW = 0.958905,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5749,6 +6020,7 @@ staticTheedNpc272 = Creature:new {
 	directionY = -0.359195,
 	directionW = 0.933257,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5770,6 +6042,7 @@ staticTheedNpc273 = Creature:new {
 	directionY = 0.105643,
 	directionW = 0.994374,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5791,6 +6064,7 @@ staticTheedNpc274 = Creature:new {
 	directionY = 0.039846,
 	directionW = 0.999199,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5812,6 +6086,7 @@ staticTheedNpc275 = Creature:new {
 	directionY = 0.890602,
 	directionW = -0.454784,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5833,6 +6108,7 @@ staticTheedNpc276 = Creature:new {
 	directionY = -0.00494587,
 	directionW = 0.999907,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5854,6 +6130,7 @@ staticTheedNpc277 = Creature:new {
 	directionY = -0.0818693,
 	directionW = 0.996608,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -5875,6 +6152,7 @@ staticTheedNpc278 = Creature:new {
 	directionY = -0.500816,
 	directionW = 0.865553,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5896,6 +6174,7 @@ staticTheedNpc279 = Creature:new {
 	directionY = 0.875684,
 	directionW = 0.482884,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5917,6 +6196,7 @@ staticTheedNpc280 = Creature:new {
 	directionY = 0.224515,
 	directionW = 0.974471,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5938,6 +6218,7 @@ staticTheedNpc281 = Creature:new {
 	directionY = 0.959168,
 	directionW = -0.282838,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5959,6 +6240,7 @@ staticTheedNpc282 = Creature:new {
 	directionY = -0.448353,
 	directionW = 0.893856,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -5980,6 +6262,7 @@ staticTheedNpc283 = Creature:new {
 	directionY = -0.301584,
 	directionW = 0.95344,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6001,6 +6284,7 @@ staticTheedNpc284 = Creature:new {
 	directionY = 0.996117,
 	directionW = 0.0880355,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6022,6 +6306,7 @@ staticTheedNpc285 = Creature:new {
 	directionY = 0.537389,
 	directionW = 0.843334,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6043,6 +6328,7 @@ staticTheedNpc286 = Creature:new {
 	directionY = 0.160362,
 	directionW = 0.987058,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -6064,6 +6350,7 @@ staticTheedNpc287 = Creature:new {
 	directionY = 0.160363,
 	directionW = 0.987058,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -6085,6 +6372,7 @@ staticTheedNpc288 = Creature:new {
 	directionY = 0.987058,
 	directionW = -0.160362,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6106,6 +6394,7 @@ staticTheedNpc289 = Creature:new {
 	directionY = -0.468772,
 	directionW = 0.883319,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6127,6 +6416,7 @@ staticTheedNpc290 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -6148,6 +6438,7 @@ staticTheedNpc291 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -6169,6 +6460,7 @@ staticTheedNpc292 = Creature:new {
 	directionY = 0.77048,
 	directionW = -0.637464,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6190,6 +6482,7 @@ staticTheedNpc293 = Creature:new {
 	directionY = 0.993284,
 	directionW = -0.115698,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6211,6 +6504,7 @@ staticTheedNpc294 = Creature:new {
 	directionY = -0.153269,
 	directionW = 0.988185,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6232,6 +6526,7 @@ staticTheedNpc295 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -6253,6 +6548,7 @@ staticTheedNpc296 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -6274,6 +6570,7 @@ staticTheedNpc297 = Creature:new {
 	directionY = -0.0293226,
 	directionW = 0.99957,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6295,6 +6592,7 @@ staticTheedNpc298 = Creature:new {
 	directionY = 0.918792,
 	directionW = 0.394743,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6316,6 +6614,7 @@ staticTheedNpc299 = Creature:new {
 	directionY = 0.889618,
 	directionW = 0.456704,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6337,6 +6636,7 @@ staticTheedNpc300 = Creature:new {
 	directionY = 0.997081,
 	directionW = 0.0763518,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6358,6 +6658,7 @@ staticTheedNpc301 = Creature:new {
 	directionY = -0.371971,
 	directionW = 0.928244,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6379,6 +6680,7 @@ staticTheedNpc302 = Creature:new {
 	directionY = 0.294702,
 	directionW = 0.955589,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6400,6 +6702,7 @@ staticTheedNpc303 = Creature:new {
 	directionY = 0.871702,
 	directionW = 0.490036,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6421,6 +6724,7 @@ staticTheedNpc304 = Creature:new {
 	directionY = 8.41577e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677400
 }
 
@@ -6442,6 +6746,7 @@ staticTheedNpc305 = Creature:new {
 	directionY = 1,
 	directionW = 8.40561e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677400
 }
 
@@ -6463,6 +6768,7 @@ staticTheedNpc306 = Creature:new {
 	directionY = 0.86452,
 	directionW = -0.502599,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 1677400
 }
 
@@ -6484,6 +6790,7 @@ staticTheedNpc307 = Creature:new {
 	directionY = 3.76696e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677399
 }
 
@@ -6505,6 +6812,7 @@ staticTheedNpc308 = Creature:new {
 	directionY = 1,
 	directionW = 3.76706e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677399
 }
 
@@ -6526,6 +6834,7 @@ staticTheedNpc309 = Creature:new {
 	directionY = -1.73392e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677395
 }
 
@@ -6547,6 +6856,7 @@ staticTheedNpc310 = Creature:new {
 	directionY = 1,
 	directionW = -1.73223e-05,
 	randomMovement = 0,
+	mood = "",
 	cellID = 1677395
 }
 
@@ -6568,6 +6878,7 @@ staticTheedNpc311 = Creature:new {
 	directionY = 0.923882,
 	directionW = 0.382677,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677395
 }
 
@@ -6589,6 +6900,7 @@ staticTheedNpc312 = Creature:new {
 	directionY = -5.74291e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677394
 }
 
@@ -6610,6 +6922,7 @@ staticTheedNpc313 = Creature:new {
 	directionY = 1,
 	directionW = -5.74389e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677394
 }
 
@@ -6631,6 +6944,7 @@ staticTheedNpc314 = Creature:new {
 	directionY = 0.000104212,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677394
 }
 
@@ -6652,6 +6966,7 @@ staticTheedNpc315 = Creature:new {
 	directionY = 1,
 	directionW = 0.000104165,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 1677394
 }
 
@@ -6673,6 +6988,7 @@ staticTheedNpc316 = Creature:new {
 	directionY = 0.210717,
 	directionW = 0.977547,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6694,6 +7010,7 @@ staticTheedNpc317 = Creature:new {
 	directionY = -0.390912,
 	directionW = 0.920428,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6715,6 +7032,7 @@ staticTheedNpc318 = Creature:new {
 	directionY = 0.999806,
 	directionW = 0.0197027,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6736,6 +7054,7 @@ staticTheedNpc319 = Creature:new {
 	directionY = 0.509379,
 	directionW = 0.860543,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6757,6 +7076,7 @@ staticTheedNpc320 = Creature:new {
 	directionY = -0.46509,
 	directionW = 0.885264,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6778,6 +7098,7 @@ staticTheedNpc321 = Creature:new {
 	directionY = 0.734888,
 	directionW = 0.678188,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6799,6 +7120,7 @@ staticTheedNpc322 = Creature:new {
 	directionY = 0.947242,
 	directionW = -0.320518,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6820,6 +7142,7 @@ staticTheedNpc323 = Creature:new {
 	directionY = -0.70499,
 	directionW = 0.709213,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6841,6 +7164,7 @@ staticTheedNpc324 = Creature:new {
 	directionY = -0.704992,
 	directionW = 0.709208,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6862,6 +7186,7 @@ staticTheedNpc325 = Creature:new {
 	directionY = 0.463358,
 	directionW = 0.886171,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6883,6 +7208,7 @@ staticTheedNpc326 = Creature:new {
 	directionY = 0.999765,
 	directionW = 0.0216578,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6904,6 +7230,7 @@ staticTheedNpc327 = Creature:new {
 	directionY = 0.999391,
 	directionW = -0.034882,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6925,6 +7252,7 @@ staticTheedNpc328 = Creature:new {
 	directionY = 0.942393,
 	directionW = -0.334508,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -6946,6 +7274,7 @@ staticTheedNpc329 = Creature:new {
 	directionY = 0.0209341,
 	directionW = 0.999781,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6967,6 +7296,7 @@ staticTheedNpc330 = Creature:new {
 	directionY = 0.028081,
 	directionW = 0.999606,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -6988,6 +7318,7 @@ staticTheedNpc331 = Creature:new {
 	directionY = 4.3865e-06,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475487
 }
 
@@ -7009,6 +7340,7 @@ staticTheedNpc332 = Creature:new {
 	directionY = 1,
 	directionW = 4.33488e-06,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475487
 }
 
@@ -7030,6 +7362,7 @@ staticTheedNpc333 = Creature:new {
 	directionY = 8.44894e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475487
 }
 
@@ -7051,6 +7384,7 @@ staticTheedNpc334 = Creature:new {
 	directionY = 1,
 	directionW = 8.44588e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475487
 }
 
@@ -7072,6 +7406,7 @@ staticTheedNpc335 = Creature:new {
 	directionY = 0.731354,
 	directionW = -0.681998,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 5475487
 }
 
@@ -7093,6 +7428,7 @@ staticTheedNpc336 = Creature:new {
 	directionY = 0.531615,
 	directionW = 0.846986,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 5475487
 }
 
@@ -7114,6 +7450,7 @@ staticTheedNpc337 = Creature:new {
 	directionY = 0.93358,
 	directionW = -0.358368,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 5475486
 }
 
@@ -7135,6 +7472,7 @@ staticTheedNpc338 = Creature:new {
 	directionY = 5.9409e-05,
 	directionW = 0.998953,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475485
 }
 
@@ -7156,6 +7494,7 @@ staticTheedNpc339 = Creature:new {
 	directionY = 0.998954,
 	directionW = 5.94059e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475485
 }
 
@@ -7177,6 +7516,7 @@ staticTheedNpc340 = Creature:new {
 	directionY = -0.000105653,
 	directionW = 0.998954,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475485
 }
 
@@ -7198,6 +7538,7 @@ staticTheedNpc341 = Creature:new {
 	directionY = 0.998953,
 	directionW = -0.00011091,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475485
 }
 
@@ -7219,6 +7560,7 @@ staticTheedNpc342 = Creature:new {
 	directionY = 0.922597,
 	directionW = 0.384409,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475485
 }
 
@@ -7240,6 +7582,7 @@ staticTheedNpc343 = Creature:new {
 	directionY = 3.89059e-05,
 	directionW = 0.998954,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475485
 }
 
@@ -7261,6 +7604,7 @@ staticTheedNpc344 = Creature:new {
 	directionY = 0.998953,
 	directionW = 3.88434e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475485
 }
 
@@ -7282,6 +7626,7 @@ staticTheedNpc345 = Creature:new {
 	directionY = -9.31716e-05,
 	directionW = 0.998954,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475485
 }
 
@@ -7303,6 +7648,7 @@ staticTheedNpc346 = Creature:new {
 	directionY = 0.998953,
 	directionW = -9.31991e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475485
 }
 
@@ -7324,6 +7670,7 @@ staticTheedNpc347 = Creature:new {
 	directionY = -5.61635e-05,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475480
 }
 
@@ -7345,6 +7692,7 @@ staticTheedNpc348 = Creature:new {
 	directionY = 1,
 	directionW = -5.61145e-05,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 5475480
 }
 
@@ -7366,6 +7714,7 @@ staticTheedNpc349 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -7387,6 +7736,7 @@ staticTheedNpc350 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -7408,6 +7758,7 @@ staticTheedNpc351 = Creature:new {
 	directionY = -0.0108933,
 	directionW = 0.999941,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7429,6 +7780,7 @@ staticTheedNpc352 = Creature:new {
 	directionY = 0.994253,
 	directionW = 0.107054,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7450,6 +7802,7 @@ staticTheedNpc353 = Creature:new {
 	directionY = 0.999721,
 	directionW = 0.0236204,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7471,6 +7824,7 @@ staticTheedNpc354 = Creature:new {
 	directionY = 0.76096,
 	directionW = 0.648799,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7492,6 +7846,7 @@ staticTheedNpc355 = Creature:new {
 	directionY = 0.996306,
 	directionW = -0.0858185,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7513,6 +7868,7 @@ staticTheedNpc356 = Creature:new {
 	directionY = 0.99515,
 	directionW = -0.0983341,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7534,6 +7890,7 @@ staticTheedNpc357 = Creature:new {
 	directionY = 0.99669,
 	directionW = 0.0812975,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7555,6 +7912,7 @@ staticTheedNpc358 = Creature:new {
 	directionY = 0.475487,
 	directionW = 0.879722,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7576,6 +7934,7 @@ staticTheedNpc359 = Creature:new {
 	directionY = 0.981352,
 	directionW = 0.192217,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7597,6 +7956,7 @@ staticTheedNpc360 = Creature:new {
 	directionY = 0.981353,
 	directionW = 0.192215,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7618,6 +7978,7 @@ staticTheedNpc361 = Creature:new {
 	directionY = 0.981324,
 	directionW = 0.192363,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -7639,6 +8000,7 @@ staticTheedNpc362 = Creature:new {
 	directionY = 0.829174,
 	directionW = 0.558991,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7660,6 +8022,7 @@ staticTheedNpc363 = Creature:new {
 	directionY = 0.835535,
 	directionW = 0.549438,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7681,6 +8044,7 @@ staticTheedNpc364 = Creature:new {
 	directionY = 0.995486,
 	directionW = 0.0949121,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7702,6 +8066,7 @@ staticTheedNpc365 = Creature:new {
 	directionY = 0.998355,
 	directionW = 0.0573259,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7723,6 +8088,7 @@ staticTheedNpc366 = Creature:new {
 	directionY = 0.998355,
 	directionW = 0.0573266,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -7744,6 +8110,7 @@ staticTheedNpc367 = Creature:new {
 	directionY = 0.663925,
 	directionW = 0.747799,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7765,6 +8132,7 @@ staticTheedNpc368 = Creature:new {
 	directionY = -0.280313,
 	directionW = 0.959909,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7786,6 +8154,7 @@ staticTheedNpc369 = Creature:new {
 	directionY = -0.430919,
 	directionW = 0.90239,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7807,6 +8176,7 @@ staticTheedNpc370 = Creature:new {
 	directionY = -0.292757,
 	directionW = 0.956187,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7828,6 +8198,7 @@ staticTheedNpc371 = Creature:new {
 	directionY = 0.959396,
 	directionW = 0.282062,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7849,6 +8220,7 @@ staticTheedNpc372 = Creature:new {
 	directionY = 0.578044,
 	directionW = 0.816006,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7870,6 +8242,7 @@ staticTheedNpc373 = Creature:new {
 	directionY = 0.998394,
 	directionW = -0.0566497,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7891,6 +8264,7 @@ staticTheedNpc374 = Creature:new {
 	directionY = 0,
 	directionW = 1,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -7912,6 +8286,7 @@ staticTheedNpc375 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -7933,6 +8308,7 @@ staticTheedNpc376 = Creature:new {
 	directionY = 0.97863,
 	directionW = 0.205629,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7954,6 +8330,7 @@ staticTheedNpc377 = Creature:new {
 	directionY = 0.222704,
 	directionW = 0.974886,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -7975,6 +8352,7 @@ staticTheedNpc378 = Creature:new {
 	directionY = 1,
 	directionW = 0,
 	randomMovement = 0,
+	mood = "conversation",
 	cellID = 0
 }
 
@@ -7996,6 +8374,7 @@ staticTheedNpc379 = Creature:new {
 	directionY = 0.740666,
 	directionW = 0.671873,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -8017,6 +8396,7 @@ staticTheedNpc380 = Creature:new {
 	directionY = 0.943019,
 	directionW = -0.332739,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -8038,6 +8418,7 @@ staticTheedNpc381 = Creature:new {
 	directionY = 0.874862,
 	directionW = -0.484374,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -8059,6 +8440,7 @@ staticTheedNpc382 = Creature:new {
 	directionY = -0.524259,
 	directionW = 0.851559,
 	randomMovement = 0,
+	mood = "calm",
 	cellID = 0
 }
 
@@ -8080,6 +8462,7 @@ staticTheedNpc383 = Creature:new {
 	directionY = -0.054945,
 	directionW = 0.998489,
 	randomMovement = 0,
+	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -8101,6 +8484,7 @@ staticTheedNpc384 = Creature:new {
 	directionY = 0.291752,
 	directionW = 0.956494,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
 
@@ -8122,5 +8506,7 @@ staticTheedNpc385 = Creature:new {
 	directionY = 0.978881,
 	directionW = -0.204433,
 	randomMovement = 0,
+	mood = "",
 	cellID = 0
 }
+
