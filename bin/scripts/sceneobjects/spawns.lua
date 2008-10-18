@@ -42,7 +42,7 @@
 
 -- Corellia
 if PLANET_ID == 0 then
- RunObjectFile("spawns/corellia/creatureLairSpawns.lua")
+ -- RunObjectFile("spawns/corellia/creatureLairSpawns.lua")
 end
 
 -- Dantooine

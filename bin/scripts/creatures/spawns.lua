@@ -115,6 +115,7 @@ if (PLANET_ID == 8) then
  RunCreatureFile("spawns/tatooine/ancientKraytDragonSkeleton.lua")
  RunCreatureFile("spawns/tatooine/kraytGraveyard.lua")
  RunCreatureFile("spawns/tatooine/wreckedSandCrawler.lua")
+ RunCreatureFile("spawns/tatooine/jabbapalace.lua") 
 end
 
 --Yavin 4
