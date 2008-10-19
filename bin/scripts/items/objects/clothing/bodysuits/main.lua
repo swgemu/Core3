@@ -46,6 +46,7 @@ RunItemLUAFile("objects/clothing/bodysuits/bwing.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bwing_quest.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit1.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit6.lua");
+RunItemLUAFile("objects/clothing/bodysuits/bodysuit7.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit8.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit12.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit13.lua");

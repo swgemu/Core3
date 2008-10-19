@@ -49,8 +49,8 @@ tie_fighter = Clothing:new {
 	objectCRC = "19224104",
 
 	objectType = BODYSUIT,
+	
+	itemMask = HUMANOID_IMPERIALS,
 
-	equipped = "0",
-
-	itemMask = HUMANOID_IMPERIALS
+	equipped = "0"
 }

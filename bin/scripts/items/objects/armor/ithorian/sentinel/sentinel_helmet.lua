@@ -60,7 +60,5 @@ sentinel_helmet = Armor:new{
 
 	actionEncum = 60,
 
-	mindEncum = 300,
-
-	itemMask = ITHORIANS
+	mindEncum = 300
 }

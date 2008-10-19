@@ -41,18 +41,21 @@
 --which carries forward this exception.
 
 
-RunItemLUAFile("objects/weapons/cdef_pistol.lua");
-RunItemLUAFile("objects/weapons/cdef_carbine.lua");
-RunItemLUAFile("objects/weapons/cdef_rifle.lua");
-RunItemLUAFile("objects/weapons/survival_knife.lua");
-RunItemLUAFile("objects/weapons/gaderiffi_baton.lua");
+RunItemLUAFile("objects/weapons/survivalKnife.lua");
+RunItemLUAFile("objects/weapons/repub_blaster.lua");
+RunItemLUAFile("objects/weapons/sith_lance.lua");
+RunItemLUAFile("objects/weapons/vibroknuckler1.lua");
+RunItemLUAFile("objects/weapons/dxr6brifle.lua");
+RunItemLUAFile("objects/weapons/cleave_of_plageuis.lua");
+RunItemLUAFile("objects/weapons/stun_baton.lua");
 RunItemLUAFile("objects/weapons/vibroknuckler.lua");
-RunItemLUAFile("objects/weapons/t21.lua");
-RunItemLUAFile("objects/weapons/power_hammer.lua");
-RunItemLUAFile("objects/weapons/vibrolance.lua");
-RunItemLUAFile("objects/weapons/ee3_carbine.lua");
-RunItemLUAFile("objects/weapons/fwg5_pistol.lua");
-RunItemLUAFile("objects/weapons/bowcaster.lua");
-RunItemLUAFile("objects/weapons/polearm_lightsaber.lua");
-RunItemLUAFile("objects/weapons/onehanded_lightsaber.lua");
-RunItemLUAFile("objects/weapons/twohanded_lightsaber.lua");
+RunItemLUAFile("objects/weapons/acidBeam.lua");
+RunItemLUAFile("objects/weapons/flameThrower.lua");
+RunItemLUAFile("objects/weapons/carbines/main.lua");
+RunItemLUAFile("objects/weapons/pistols/main.lua");
+RunItemLUAFile("objects/weapons/rifles/main.lua");
+RunItemLUAFile("objects/weapons/1H/main.lua");
+RunItemLUAFile("objects/weapons/2H/main.lua");
+RunItemLUAFile("objects/weapons/polearm/main.lua");
+RunItemLUAFile("objects/weapons/sabers/main.lua");
+--RunItemLUAFile("objects/weapons/thrown/main.lua");

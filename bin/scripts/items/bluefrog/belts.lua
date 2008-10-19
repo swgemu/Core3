@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-belts = {aakuan_belt, belt1, belt2, belt3, belt4,belt5, belt5_quest, belt7, belt9, belt11,belt12, belt13, belt14, belt15, belt16,belt17, belt18, belt19, belt20}
+belts = {aakuan_belt, belt1, belt2, belt3, belt4, belt5, belt5_quest, belt7, belt9, belt11, belt12, belt13, belt14, belt15, belt16, belt17, belt18, belt19, belt20}
 
 addBFItemSet("Belts" , belts);

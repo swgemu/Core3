@@ -60,7 +60,5 @@ composite_boots = Armor:new{
 
 	actionEncum = 70,
 
-	mindEncum = 70,
-
-	itemMask = HUMANOID_FOOTWEAR
+	mindEncum = 70
 }

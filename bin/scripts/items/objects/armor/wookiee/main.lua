@@ -41,4 +41,7 @@
 --which carries forward this exception.
 
 
-RunItemLUAFile("objects/armor/wookiee/kashyyykian_hunting/main.lua");
+RunItemLUAFile("objects/armor/wookiee/kashyyykianHuntingChestPlate.lua");
+RunItemLUAFile("objects/armor/wookiee/kashyyykianHuntingLeggings.lua");
+RunItemLUAFile("objects/armor/wookiee/kashyyykianHuntingBracerL.lua");
+RunItemLUAFile("objects/armor/wookiee/kashyyykianHuntingBracerR.lua");

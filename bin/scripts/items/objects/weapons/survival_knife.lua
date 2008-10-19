@@ -55,5 +55,7 @@ survival_knife = Weapon:new{
 
 	minDamage = 25,
 
-	maxDamage = 55
+	maxDamage = 55,
+	
+	itemMask = HUMANOIDS,
 }

@@ -50,7 +50,5 @@ ithFadeDyedShirt = Clothing:new {
 
 	objectType = ITHOGARB,
 
-	equipped = "1",
-
-	itemMask = ITHORIANS
+	equipped = "1"
 }

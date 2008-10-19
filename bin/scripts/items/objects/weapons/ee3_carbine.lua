@@ -58,5 +58,7 @@ ee3_carbine = Weapon:new{
 
 	minDamage = 128,
 
-	maxDamage = 211
+	maxDamage = 211,
+	
+	itemMask = HUMANOIDS,
 }

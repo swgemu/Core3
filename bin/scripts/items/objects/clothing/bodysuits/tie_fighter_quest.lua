@@ -49,8 +49,8 @@ tie_fighter_quest = Clothing:new {
 	objectCRC = "184136204",
 
 	objectType = BODYSUIT,
+	
+	itemMask = HUMANOID_IMPERIALS,
 
-	equipped = "0",
-
-	itemMask = HUMANOID_IMPERIALS
+	equipped = "0"
 }

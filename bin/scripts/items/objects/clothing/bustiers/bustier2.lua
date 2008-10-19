@@ -49,8 +49,8 @@ bustier2 = Clothing:new {
 	objectCRC = "2092445354",
 
 	objectType = SHIRT,
+	
+	itemMask = HUMANOIDS,
 
-	equipped = "0",
-
-	itemMask = HUMANOID_FEMALES
+	equipped = "0"
 }

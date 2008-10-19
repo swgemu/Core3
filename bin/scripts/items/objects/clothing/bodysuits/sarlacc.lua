@@ -49,8 +49,8 @@ sarlacc = Clothing:new {
 	objectCRC = "2416523857",
 
 	objectType = BODYSUIT,
+	
+	itemMask = HUMANOIDS,
 
-	equipped = "0",
-
-	itemMask = HUMANOIDS
+	equipped = "0"
 }

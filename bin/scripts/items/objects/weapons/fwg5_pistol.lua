@@ -58,5 +58,7 @@ fwg5_pistol = Weapon:new{
 
 	minDamage = 88,
 
-	maxDamage = 242
+	maxDamage = 242,
+	
+	itemMask = HUMANOIDS,
 }

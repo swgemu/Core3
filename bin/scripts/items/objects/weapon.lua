@@ -41,6 +41,7 @@
 --which carries forward this exception.
 
 Weapon = Object:new {
+
 	objectName = "Weapon",
 
 	templateName = "",

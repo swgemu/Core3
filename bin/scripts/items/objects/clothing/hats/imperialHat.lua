@@ -49,8 +49,8 @@ imperialHat = Clothing:new {
 	objectCRC = "1674058111",
 
 	objectType = HEADWEAR,
+	
+	itemMask = HUMANOID_IMPERIALS,
 
-	equipped = "0",
-
-	itemMask = HUMANOID_IMPERIALS
+	equipped = "0"
 }

@@ -49,8 +49,8 @@ atat_quest = Clothing:new {
 	objectCRC = "2859919047",
 
 	objectType = BODYSUIT,
+	
+	itemMask = HUMANOID_IMPERIALS,
 
-	equipped = "0",
-
-	itemMask = HUMANOID_IMPERIALS
+	equipped = "0"
 }

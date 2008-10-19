@@ -61,5 +61,7 @@ power_hammer = Weapon:new{
 
 	minDamage = 138,
 
-	maxDamage = 470
+	maxDamage = 470,
+	
+	itemMask = HUMANOIDS,
 }

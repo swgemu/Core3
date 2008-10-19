@@ -60,7 +60,5 @@ composite_helmet = Armor:new{
 
 	actionEncum = 60,
 
-	mindEncum = 300,
-
-	itemMask = HUMANOIDS
+	mindEncum = 300
 }

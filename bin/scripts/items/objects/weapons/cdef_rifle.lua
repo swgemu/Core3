@@ -58,5 +58,7 @@ cdef_rifle = Weapon:new{
 
 	minDamage = 19,
 
-	maxDamage = 38
+	maxDamage = 38,
+	
+	itemMask = HUMANOIDS,
 }

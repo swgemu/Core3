@@ -60,7 +60,5 @@ kashyyykian_hunting_bracer_r = Armor:new{
 
 	actionEncum = 70,
 
-	mindEncum = 70,
-
-	itemMask = WOOKIEES
+	mindEncum = 70
 }

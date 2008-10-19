@@ -43,5 +43,20 @@
 
 RunItemLUAFile("objects/armor/wookiee/main.lua");
 RunItemLUAFile("objects/armor/ithorian/main.lua");
-
 RunItemLUAFile("objects/armor/composite/main.lua");
+RunItemLUAFile("objects/armor/mandalorian/main.lua");
+RunItemLUAFile("objects/armor/bone/main.lua");
+RunItemLUAFile("objects/armor/bountyHunter/main.lua");
+RunItemLUAFile("objects/armor/chitin/main.lua");
+RunItemLUAFile("objects/armor/padded/main.lua");
+RunItemLUAFile("objects/armor/stormTrooper/main.lua");
+RunItemLUAFile("objects/armor/ris/main.lua");
+RunItemLUAFile("objects/armor/ubese/main.lua");
+RunItemLUAFile("objects/armor/tantel/main.lua");
+RunItemLUAFile("objects/armor/singingMountain/main.lua");
+RunItemLUAFile("objects/armor/nightSister/main.lua");
+RunItemLUAFile("objects/armor/marine/main.lua");
+RunItemLUAFile("objects/armor/marauderS01/main.lua");
+RunItemLUAFile("objects/armor/marauderS02/main.lua");
+RunItemLUAFile("objects/armor/marauderS03/main.lua");
+RunItemLUAFile("objects/armor/zamWesell/main.lua");

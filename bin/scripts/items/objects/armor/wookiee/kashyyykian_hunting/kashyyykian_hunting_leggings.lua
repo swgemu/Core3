@@ -60,7 +60,5 @@ kashyyykian_hunting_leggings = Armor:new{
 
 	actionEncum = 190,
 
-	mindEncum = 70,
-
-	itemMask = WOOKIEES
+	mindEncum = 70
 }

@@ -49,8 +49,8 @@ atat = Clothing:new {
 	objectCRC = "2562125101",
 
 	objectType = BODYSUIT,
+	
+	itemMask = HUMANOID_IMPERIALS,
 
-	equipped = "0",
-
-	itemMask = HUMANOID_IMPERIALS
+	equipped = "0"
 }

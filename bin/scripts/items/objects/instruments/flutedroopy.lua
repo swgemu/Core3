@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-flute_droopy = Instrument:new{
+fluteDroopy = Instrument:new{
 
 	objectName = "a Flutedroopy",
 

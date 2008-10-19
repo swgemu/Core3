@@ -49,8 +49,8 @@ bikini3 = Clothing:new {
 	objectCRC = "3179691186",
 
 	objectType = SHIRT,
+	
+	itemMask = HUMANOIDS,
 
-	equipped = "0",
-
-	itemMask = HUMANOID_FEMALES
+	equipped = "0"
 }

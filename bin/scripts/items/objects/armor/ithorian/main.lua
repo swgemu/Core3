@@ -41,4 +41,12 @@
 --which carries forward this exception.
 
 
-RunItemLUAFile("objects/armor/ithorian/sentinel/main.lua");
+RunItemLUAFile("objects/armor/ithorian/sentinelChestPlate.lua");
+RunItemLUAFile("objects/armor/ithorian/sentinelLeggings.lua");
+RunItemLUAFile("objects/armor/ithorian/sentinelBoots.lua");
+RunItemLUAFile("objects/armor/ithorian/sentinelHelmet.lua");
+RunItemLUAFile("objects/armor/ithorian/sentinelGloves.lua");
+RunItemLUAFile("objects/armor/ithorian/sentinelBracerL.lua");
+RunItemLUAFile("objects/armor/ithorian/sentinelBracerR.lua");
+RunItemLUAFile("objects/armor/ithorian/sentinelBicepL.lua");
+RunItemLUAFile("objects/armor/ithorian/sentinelBicepR.lua");

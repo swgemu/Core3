@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-bodysuit = {atat, atat_quest, bodysuit1, bodysuit6, bodysuit8, bodysuit12, bodysuit13, bodysuit14, bodysuit15,bodysuit16, bwing, bwing_quest, sarlacc, tie_fighter,tie_fighter_quest}
+bodysuits = {atat, atat_quest, bwing, bwing_quest, bodysuit1, bodysuit6, bodysuit7, bodysuit8, bodysuit12, bodysuit13, bodysuit14, bodysuit15, bodysuit16, sarlacc, tie_fighter, tie_fighter_quest}
 
-addBFItemSet("Bodysuits" , bodysuit);
+addBFItemSet("Bodysuits" , bodysuits);

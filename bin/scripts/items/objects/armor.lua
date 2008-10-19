@@ -73,6 +73,8 @@ Armor = Object:new {
 	healthEncum = 0,
 
 	mindEncum = 0,
+	
+	itemMask = HUMANOIDS,
 
 	equipped = "0"
 }

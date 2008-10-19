@@ -60,7 +60,5 @@ sentinel_bicep_r = Armor:new{
 
 	actionEncum = 70,
 
-	mindEncum = 70,
-
-	itemMask = ITHORIANS
+	mindEncum = 70
 }

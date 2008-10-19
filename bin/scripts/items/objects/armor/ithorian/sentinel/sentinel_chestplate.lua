@@ -60,7 +60,5 @@ sentinel_chestplate = Armor:new{
 
 	actionEncum = 100,
 
-	mindEncum = 70,
-
-	itemMask = ITHORIANS
+	mindEncum = 70
 }

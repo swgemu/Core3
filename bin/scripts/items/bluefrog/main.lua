@@ -94,6 +94,6 @@ end
 if enable_blue_frogs == 1 then
 	SetBlueFrogsEnabled();
 	RunItemLUAFile("objects/main.lua");
-	RunItemLUAFile("bluefrog/itemsets.lua");
+	RunItemLUAFile("bluefrog/itemSets.lua");
 	RunItemLUAFile("bluefrog/professions.lua");
 end

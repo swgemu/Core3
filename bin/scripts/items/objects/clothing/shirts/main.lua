@@ -40,6 +40,9 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+RunItemLUAFile("objects/clothing/shirts/nightsisterShirt1.lua");
+RunItemLUAFile("objects/clothing/shirts/nightsisterShirt2.lua");
+RunItemLUAFile("objects/clothing/shirts/nightsisterShirt3.lua");
 RunItemLUAFile("objects/clothing/shirts/shirt3.lua");
 RunItemLUAFile("objects/clothing/shirts/shirt3Rebel.lua");
 RunItemLUAFile("objects/clothing/shirts/shirt4.lua");
@@ -64,3 +67,6 @@ RunItemLUAFile("objects/clothing/shirts/shirt34.lua");
 RunItemLUAFile("objects/clothing/shirts/shirt38.lua");
 RunItemLUAFile("objects/clothing/shirts/shirt42.lua");
 RunItemLUAFile("objects/clothing/shirts/shirtDera.lua");
+RunItemLUAFile("objects/clothing/shirts/smcShirt3.lua");
+RunItemLUAFile("objects/clothing/shirts/smcShirt2.lua");
+RunItemLUAFile("objects/clothing/shirts/smcShirt1.lua");

@@ -49,8 +49,8 @@ bwing_quest = Clothing:new {
 	objectCRC = "2675213661",
 
 	objectType = BODYSUIT,
+	
+	itemMask = HUMANOID_REBELS,
 
-	equipped = "0",
-
-	itemMask = HUMANOID_REBELS
+	equipped = "0"
 }

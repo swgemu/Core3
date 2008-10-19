@@ -59,5 +59,7 @@ vibroknuckler = Weapon:new{
 
 	minDamage = 51,
 
-	maxDamage = 199
+	maxDamage = 199,
+	
+	itemMask = HUMANOIDS,
 }

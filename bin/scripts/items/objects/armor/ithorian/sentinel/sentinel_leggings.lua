@@ -60,7 +60,5 @@ sentinel_leggings = Armor:new{
 
 	actionEncum = 190,
 
-	mindEncum = 70,
-
-	itemMask = ITHORIANS
+	mindEncum = 70
 }

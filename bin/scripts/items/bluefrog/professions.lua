@@ -70,3 +70,19 @@ addBFGroup("Non-Combatant Professions", "root");
 
 addBFGroup("Jedi Professions", "root");
  addBFProfession("Master LightSaber", "Jedi Professions", "force_discipline_light_saber_master");
+ addBFProfession("Master Powers", "Jedi Professions", "force_discipline_powers_master");
+ addBFProfession("Master Enhancer", "Jedi Professions", "force_discipline_enhancements_master");
+ addBFProfession("Master Defender", "Jedi Professions", "force_discipline_defender_master");
+ addBFProfession("Master Healer", "Jedi Professions", "force_discipline_healing_master");
+ addBFProfession("4000 Healer", "Jedi Professions", "force_discipline_healing_damage_04");
+ addBFProfession("0004 Healer", "Jedi Professions", "force_discipline_healing_states_04");
+ addBFProfession("Heightend Senses Master", "Jedi Professions", "force_sensitive_heightened_senses_master");
+ addBFProfession("Combat Prowess Master", "Jedi Professions", "force_sensitive_combat_prowess_master");
+ 
+ 
+
+addBFGroup("FRS", "root");
+ addBFProfession("Dark Jedi Overlord", "FRS", "force_rank_dark_master");
+ addBFProfession("Jedi Chancellor", "FRS", "force_rank_light_master");
+ addBFProfession("Dark Jedi Council", "FRS", "force_rank_dark_rank_10");
+ addBFProfession("Light Jedi Council", "FRS", "force_rank_light_rank_10");

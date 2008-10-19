@@ -49,6 +49,8 @@ Clothing = Object:new {
 	objectCRC = "",
 
 	objectType = CLOTHING,
+	
+	itemMask = HUMANOIDS,
 
 	equipped = 0
 }

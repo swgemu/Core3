@@ -61,5 +61,7 @@ t21 = Weapon:new{
 
 	minDamage = 175,
 
-	maxDamage = 408
+	maxDamage = 408,
+	
+	itemMask = HUMANOIDS,
 }

@@ -50,7 +50,5 @@ twilekHat3 = Clothing:new {
 
 	objectType = HEADWEAR,
 
-	equipped = "0",
-
-	itemMask = TWILEKS
+	equipped = "0"
 }

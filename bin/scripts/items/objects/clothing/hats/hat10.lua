@@ -49,8 +49,8 @@ hat10 = Clothing:new {
 	objectCRC = "2517925940",
 
 	objectType = HEADWEAR,
+	
+	itemMask = HUMANOIDS,
 
-	equipped = "0",
-
-	itemMask = HUMANOIDS
+	equipped = "0"
 }

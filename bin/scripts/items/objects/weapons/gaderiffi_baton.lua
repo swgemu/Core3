@@ -56,5 +56,7 @@ gaderiffi_baton = Weapon:new{
 	
 	minDamage = 180,
 
-	maxDamage = 320
+	maxDamage = 320,
+	
+	itemMask = HUMANOIDS,
 }

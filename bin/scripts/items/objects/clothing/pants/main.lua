@@ -41,7 +41,8 @@
 --which carries forward this exception.
 
 
-
+RunItemLUAFile("objects/clothing/pants/nightsisterPants1.lua");
+RunItemLUAFile("objects/clothing/pants/nightsisterPants2.lua");
 RunItemLUAFile("objects/clothing/pants/pants1.lua");
 RunItemLUAFile("objects/clothing/pants/pants2.lua");
 RunItemLUAFile("objects/clothing/pants/pants4.lua");

@@ -42,7 +42,7 @@
 
 stimPackSmallC = Object:new {
 
-	objectName = "Small Stimpack - c",
+	objectName = "Small Stimpack - C",
 
 	templateName = "object/tangible/medicine/crafted/shared_medpack_damage_c.iff",
 

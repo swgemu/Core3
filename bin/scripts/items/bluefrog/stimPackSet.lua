@@ -41,4 +41,5 @@
 --which carries forward this exception.
 
 stimPackSet = {stimPackSmallA, stimPackSmallB, stimPackSmallC, stimPackSmallD, stimPackSmallE}
+
 addBFItemSet("StimPack Set", stimPackSet);

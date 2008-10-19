@@ -60,7 +60,5 @@ composite_chestplate = Armor:new{
 
 	actionEncum = 100,
 
-	mindEncum = 70,
-
-	itemMask = HUMANOIDS
+	mindEncum = 70
 }

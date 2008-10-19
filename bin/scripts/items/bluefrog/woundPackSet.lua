@@ -41,4 +41,5 @@
 --which carries forward this exception.
 
 woundPackSet = {woundPackHealthA, woundPackConstitutionA, woundPackStrengthA, woundPackActionA, woundPackQuicknessA, woundPackStaminaA}
-addBFItemSet("Woundpack Set", woundPackSet);
+
+addBFItemSet("Wound Pack Set", woundPackSet);

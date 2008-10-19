@@ -58,5 +58,7 @@ cdef_carbine = Weapon:new {
 
 	minDamage = 16,
 
-	maxDamage = 30
+	maxDamage = 30,
+	
+	itemMask = HUMANOIDS,
 }

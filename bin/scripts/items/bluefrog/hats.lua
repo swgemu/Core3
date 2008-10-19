@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-hats = {hat2, hat4, hat10, hat12, hat13, hat14, imperialHat, nightsisterHat1, nightsisterHat2, smcHat1, smcHat2, smcMask}
+hats = {endorhelmet, hat2, hat4, hat10, hat12, hat13, hat14, imperialHat, nightsisterHat1, nightsisterHat2, smcHat1, smcHat2, smcMask}
 
 addBFItemSet("Hats" , hats);

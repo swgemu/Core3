@@ -49,8 +49,8 @@ bwing = Clothing:new {
 	objectCRC = "2920765612",
 
 	objectType = BODYSUIT,
+	
+	itemMask = HUMANOID_REBELS,
 
-	equipped = "0",
-
-	itemMask = HUMANOID_REBELS
+	equipped = "0"
 }

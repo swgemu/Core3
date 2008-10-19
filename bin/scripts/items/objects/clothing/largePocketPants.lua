@@ -49,8 +49,8 @@ largePocketPants = Clothing:new {
 	objectCRC = "1504671772",
 
 	objectType = PANTS,
-	
-	itemMask = HUMANOIDS,
 
+	itemMask = HUMANOIDS,
+	
 	equipped = "1"
 }

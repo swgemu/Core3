@@ -41,12 +41,12 @@
 --which carries forward this exception.
 
 
-RunItemLUAFile("objects/armor/composite/composite_chestplate.lua");
-RunItemLUAFile("objects/armor/composite/composite_leggings.lua");
-RunItemLUAFile("objects/armor/composite/composite_boots.lua");
-RunItemLUAFile("objects/armor/composite/composite_helmet.lua");
-RunItemLUAFile("objects/armor/composite/composite_gloves.lua");
-RunItemLUAFile("objects/armor/composite/composite_bracer_l.lua");
-RunItemLUAFile("objects/armor/composite/composite_bracer_r.lua");
-RunItemLUAFile("objects/armor/composite/composite_bicep_l.lua");
-RunItemLUAFile("objects/armor/composite/composite_bicep_r.lua");
+RunItemLUAFile("objects/armor/composite/compositeChestplate.lua");
+RunItemLUAFile("objects/armor/composite/compositeLeggings.lua");
+RunItemLUAFile("objects/armor/composite/compositeBoots.lua");
+RunItemLUAFile("objects/armor/composite/compositeHelmet.lua");
+RunItemLUAFile("objects/armor/composite/compositeGloves.lua");
+RunItemLUAFile("objects/armor/composite/compositeBracerL.lua");
+RunItemLUAFile("objects/armor/composite/compositeBracerR.lua");
+RunItemLUAFile("objects/armor/composite/compositeBicepL.lua");
+RunItemLUAFile("objects/armor/composite/compositeBicepR.lua");

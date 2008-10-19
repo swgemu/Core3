@@ -50,7 +50,5 @@ wookieeSkirt4 = Clothing:new {
 
 	objectType = WOOKIEGARB,
 
-	equipped = "0",
-
-	itemMask = WOOKIEES
+	equipped = "0"
 }

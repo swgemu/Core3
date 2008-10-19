@@ -50,7 +50,7 @@ paneledBoots = Clothing:new {
 
 	objectType = FOOTWEAR,
 	
-	itemMask = HUMANOID_FOOTWEAR,
+	itemMask = HUMANOIDS,
 
 	equipped = "1"
 }
