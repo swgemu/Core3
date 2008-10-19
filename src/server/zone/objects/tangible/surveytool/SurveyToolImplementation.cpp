@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "SurveyToolImplementation.h"
 
 #include "../../../managers/resource/ResourceManager.h"
+#include "../../../managers/resource/ResourceHarvestType.h"
 
 SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn)
 		: SurveyToolServant(object_id, tempCRC, n, tempn, SURVEYTOOL) {
@@ -81,21 +82,21 @@ SurveyToolImplementation::~SurveyToolImplementation() {
 
 void SurveyToolImplementation::init() {
 	if (templateName == "survey_tool_mineral") {
-		surveyToolType = MINERAL;
+		surveyToolType = ResourceHarvestType::MINERAL;
 	} else if (templateName == "survey_tool_solar") {
-		surveyToolType = SOLAR;
+		surveyToolType = ResourceHarvestType::SOLAR;
 	} else if (templateName == "survey_tool_chemical") {
-		surveyToolType = CHEMICAL;
+		surveyToolType = ResourceHarvestType::CHEMICAL;
 	} else if (templateName == "survey_tool_flora") {
-		surveyToolType = FLORA;
+		surveyToolType = ResourceHarvestType::FLORA;
 	} else if (templateName == "survey_tool_gas") {
-		surveyToolType = GAS;
+		surveyToolType = ResourceHarvestType::GAS;
 	} else if (templateName == "survey_tool_geothermal") {
-		surveyToolType = GEOTHERMAL;
+		surveyToolType = ResourceHarvestType::GEOTHERMAL;
 	} else if (templateName == "survey_tool_water") {
-		surveyToolType = WATER;
+		surveyToolType = ResourceHarvestType::WATER;
 	} else if (templateName == "survey_tool_wind") {
-		surveyToolType = WIND;
+		surveyToolType = ResourceHarvestType::WIND;
 	}
 
 	setSurveyToolRange(0);
@@ -208,28 +209,28 @@ void SurveyToolImplementation::sendSurveyEffect(Player* player) {
 	stringstream file;
 
 	switch (getSurveyToolType()) {
-	case 1: // Solar
+	case ResourceHarvestType::SOLAR: // Solar
 		file << "clienteffect/survey_tool_moisture.cef";
 		break;
-	case 2: // Chemical
+	case ResourceHarvestType::CHEMICAL: // Chemical
 		file << "clienteffect/survey_tool_moisture.cef";
 		break;
-	case 3: // Flora
+	case ResourceHarvestType::FLORA: // Flora
 		file << "clienteffect/survey_tool_lumber.cef";
 		break;
-	case 4: // Gas
+	case ResourceHarvestType::GAS: // Gas
 		file << "clienteffect/survey_tool_gas.cef";
 		break;
-	case 5: // Geothermal
+	case ResourceHarvestType::GEOTHERMAL: // Geothermal
 		file << "clienteffect/survey_tool_liquid.cef";
 		break;
-	case 6: // Mineral
+	case ResourceHarvestType::MINERAL: // Mineral
 		file << "clienteffect/survey_tool_mineral.cef";
 		break;
-	case 7: // Water
+	case ResourceHarvestType::WATER: // Water
 		file << "clienteffect/survey_tool_liquid.cef";
 		break;
-	case 8: // Wind
+	case ResourceHarvestType::WIND: // Wind
 		file << "clienteffect/survey_tool_gas.cef";
 		break;
 	}
@@ -307,7 +308,7 @@ void SurveyToolImplementation::sampleRequest(Player* player, string resourceName
 		if (!player->getCanSurvey()) {
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_survey");
 			player->sendMessage(sysMessage);
-		} else if (getSurveyToolType() == SOLAR || getSurveyToolType() == WIND) {
+		} else if (getSurveyToolType() == ResourceHarvestType::SOLAR || getSurveyToolType() == ResourceHarvestType::WIND) {
 			player->sendSystemMessage("Unable to sample this resource type.");
 		} else if (player->getCanSample()) {
 			if(!player->isKneeled()) {

@@ -48,7 +48,7 @@ RunItemLUAFile("objects/tool.lua");
 RunItemLUAFile("objects/clothing.lua");
 RunItemLUAFile("objects/food.lua");
 RunItemLUAFile("objects/pharmaceutical.lua");
-RunItemLUAFile("objects/deed.lua");
+--RunItemLUAFile("objects/deed.lua");
 
 RunItemLUAFile("objects/weapons/main.lua");
 RunItemLUAFile("objects/armor/main.lua");

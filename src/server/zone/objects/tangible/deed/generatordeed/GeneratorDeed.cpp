@@ -36,6 +36,118 @@ GeneratorDeed::GeneratorDeed(DummyConstructorParameter* param) : DeedObject(para
 GeneratorDeed::~GeneratorDeed() {
 }
 
+void GeneratorDeed::parseItemAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((GeneratorDeedImplementation*) _impl)->parseItemAttributes();
+}
+
+void GeneratorDeed::setSurplusMaintenance(int maint) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addSignedIntParameter(maint);
+
+		method.executeWithVoidReturn();
+	} else
+		((GeneratorDeedImplementation*) _impl)->setSurplusMaintenance(maint);
+}
+
+void GeneratorDeed::setMaintenanceRate(float rate) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addFloatParameter(rate);
+
+		method.executeWithVoidReturn();
+	} else
+		((GeneratorDeedImplementation*) _impl)->setMaintenanceRate(rate);
+}
+
+void GeneratorDeed::setExtractionRate(float rate) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addFloatParameter(rate);
+
+		method.executeWithVoidReturn();
+	} else
+		((GeneratorDeedImplementation*) _impl)->setExtractionRate(rate);
+}
+
+void GeneratorDeed::setHopperSize(float size) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addFloatParameter(size);
+
+		method.executeWithVoidReturn();
+	} else
+		((GeneratorDeedImplementation*) _impl)->setHopperSize(size);
+}
+
+int GeneratorDeed::getSurplusMaintenance() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((GeneratorDeedImplementation*) _impl)->getSurplusMaintenance();
+}
+
+float GeneratorDeed::getMaintenanceRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((GeneratorDeedImplementation*) _impl)->getMaintenanceRate();
+}
+
+float GeneratorDeed::getExtractionRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((GeneratorDeedImplementation*) _impl)->getExtractionRate();
+}
+
+float GeneratorDeed::getHopperSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((GeneratorDeedImplementation*) _impl)->getHopperSize();
+}
+
 /*
  *	GeneratorDeedAdapter
  */
@@ -47,11 +159,74 @@ Packet* GeneratorDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		parseItemAttributes();
+		break;
+	case 7:
+		setSurplusMaintenance(inv->getSignedIntParameter());
+		break;
+	case 8:
+		setMaintenanceRate(inv->getFloatParameter());
+		break;
+	case 9:
+		setExtractionRate(inv->getFloatParameter());
+		break;
+	case 10:
+		setHopperSize(inv->getFloatParameter());
+		break;
+	case 11:
+		resp->insertSignedInt(getSurplusMaintenance());
+		break;
+	case 12:
+		resp->insertFloat(getMaintenanceRate());
+		break;
+	case 13:
+		resp->insertFloat(getExtractionRate());
+		break;
+	case 14:
+		resp->insertFloat(getHopperSize());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void GeneratorDeedAdapter::parseItemAttributes() {
+	return ((GeneratorDeedImplementation*) impl)->parseItemAttributes();
+}
+
+void GeneratorDeedAdapter::setSurplusMaintenance(int maint) {
+	return ((GeneratorDeedImplementation*) impl)->setSurplusMaintenance(maint);
+}
+
+void GeneratorDeedAdapter::setMaintenanceRate(float rate) {
+	return ((GeneratorDeedImplementation*) impl)->setMaintenanceRate(rate);
+}
+
+void GeneratorDeedAdapter::setExtractionRate(float rate) {
+	return ((GeneratorDeedImplementation*) impl)->setExtractionRate(rate);
+}
+
+void GeneratorDeedAdapter::setHopperSize(float size) {
+	return ((GeneratorDeedImplementation*) impl)->setHopperSize(size);
+}
+
+int GeneratorDeedAdapter::getSurplusMaintenance() {
+	return ((GeneratorDeedImplementation*) impl)->getSurplusMaintenance();
+}
+
+float GeneratorDeedAdapter::getMaintenanceRate() {
+	return ((GeneratorDeedImplementation*) impl)->getMaintenanceRate();
+}
+
+float GeneratorDeedAdapter::getExtractionRate() {
+	return ((GeneratorDeedImplementation*) impl)->getExtractionRate();
+}
+
+float GeneratorDeedAdapter::getHopperSize() {
+	return ((GeneratorDeedImplementation*) impl)->getHopperSize();
 }
 
 /*

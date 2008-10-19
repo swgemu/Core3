@@ -14,6 +14,8 @@
 
 #include "../../tangible/deed/DeedObject.h"
 
+#include "../../tangible/deed/harvesterdeed/HarvesterDeed.h"
+
 #include "../InstallationObject.h"
 
 #include "../../../Zone.h"
@@ -27,7 +29,7 @@ HarvesterObject::HarvesterObject(unsigned long long oid) : InstallationObject(Du
 	_impl->_setStub(this);
 }
 
-HarvesterObject::HarvesterObject(unsigned long long oid, DeedObject* theDeed) : InstallationObject(DummyConstructorParameter::instance()) {
+HarvesterObject::HarvesterObject(unsigned long long oid, HarvesterDeed* theDeed) : InstallationObject(DummyConstructorParameter::instance()) {
 	_impl = new HarvesterObjectImplementation(oid, theDeed);
 	_impl->_setStub(this);
 }
@@ -38,152 +40,41 @@ HarvesterObject::HarvesterObject(DummyConstructorParameter* param) : Installatio
 HarvesterObject::~HarvesterObject() {
 }
 
-void HarvesterObject::insertToZone(Zone* zone) {
+int HarvesterObject::getHarvesterType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
-		method.addObjectParameter(zone);
 
-		method.executeWithVoidReturn();
+		return method.executeWithSignedIntReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->insertToZone(zone);
+		return ((HarvesterObjectImplementation*) _impl)->getHarvesterType();
 }
 
-void HarvesterObject::sendTo(Player* player, bool doClose) {
+void HarvesterObject::setActiveResourceID(unsigned long long oid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addObjectParameter(player);
-		method.addBooleanParameter(doClose);
+		method.addUnsignedLongParameter(oid);
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->sendTo(player, doClose);
+		((HarvesterObjectImplementation*) _impl)->setActiveResourceID(oid);
 }
 
-unsigned long long HarvesterObject::getActiveResourceID() {
+void HarvesterObject::updateOperatorsAddBlankActiveRescource() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
 
-		return method.executeWithUnsignedLongReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getActiveResourceID();
-}
-
-bool HarvesterObject::isOperating() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->isOperating();
-}
-
-float HarvesterObject::getCapacity() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getCapacity();
-}
-
-float HarvesterObject::getSpecRate() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getSpecRate();
-}
-
-float HarvesterObject::getActualRate() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getActualRate();
-}
-
-float HarvesterObject::getTotalHopperQuantity() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getTotalHopperQuantity();
-}
-
-int HarvesterObject::getHopperSize() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 14);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getHopperSize();
-}
-
-void HarvesterObject::setOwner(const string& owner) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addAsciiParameter(owner);
-
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->setOwner(owner);
-}
-
-void HarvesterObject::update() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 16);
-
-		method.executeWithVoidReturn();
-	} else
-		((HarvesterObjectImplementation*) _impl)->update();
-}
-
-int HarvesterObject::getAvailableResourcesCount() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((HarvesterObjectImplementation*) _impl)->getAvailableResourcesCount();
+		((HarvesterObjectImplementation*) _impl)->updateOperatorsAddBlankActiveRescource();
 }
 
 /*
@@ -198,40 +89,13 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case 6:
-		insertToZone((Zone*) inv->getObjectParameter());
+		resp->insertSignedInt(getHarvesterType());
 		break;
 	case 7:
-		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
+		setActiveResourceID(inv->getUnsignedLongParameter());
 		break;
 	case 8:
-		resp->insertLong(getActiveResourceID());
-		break;
-	case 9:
-		resp->insertBoolean(isOperating());
-		break;
-	case 10:
-		resp->insertFloat(getCapacity());
-		break;
-	case 11:
-		resp->insertFloat(getSpecRate());
-		break;
-	case 12:
-		resp->insertFloat(getActualRate());
-		break;
-	case 13:
-		resp->insertFloat(getTotalHopperQuantity());
-		break;
-	case 14:
-		resp->insertSignedInt(getHopperSize());
-		break;
-	case 15:
-		setOwner(inv->getAsciiParameter(_param0_setOwner__string_));
-		break;
-	case 16:
-		update();
-		break;
-	case 17:
-		resp->insertSignedInt(getAvailableResourcesCount());
+		updateOperatorsAddBlankActiveRescource();
 		break;
 	default:
 		return NULL;
@@ -240,52 +104,16 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	return resp;
 }
 
-void HarvesterObjectAdapter::insertToZone(Zone* zone) {
-	return ((HarvesterObjectImplementation*) impl)->insertToZone(zone);
+int HarvesterObjectAdapter::getHarvesterType() {
+	return ((HarvesterObjectImplementation*) impl)->getHarvesterType();
 }
 
-void HarvesterObjectAdapter::sendTo(Player* player, bool doClose) {
-	return ((HarvesterObjectImplementation*) impl)->sendTo(player, doClose);
+void HarvesterObjectAdapter::setActiveResourceID(unsigned long long oid) {
+	return ((HarvesterObjectImplementation*) impl)->setActiveResourceID(oid);
 }
 
-unsigned long long HarvesterObjectAdapter::getActiveResourceID() {
-	return ((HarvesterObjectImplementation*) impl)->getActiveResourceID();
-}
-
-bool HarvesterObjectAdapter::isOperating() {
-	return ((HarvesterObjectImplementation*) impl)->isOperating();
-}
-
-float HarvesterObjectAdapter::getCapacity() {
-	return ((HarvesterObjectImplementation*) impl)->getCapacity();
-}
-
-float HarvesterObjectAdapter::getSpecRate() {
-	return ((HarvesterObjectImplementation*) impl)->getSpecRate();
-}
-
-float HarvesterObjectAdapter::getActualRate() {
-	return ((HarvesterObjectImplementation*) impl)->getActualRate();
-}
-
-float HarvesterObjectAdapter::getTotalHopperQuantity() {
-	return ((HarvesterObjectImplementation*) impl)->getTotalHopperQuantity();
-}
-
-int HarvesterObjectAdapter::getHopperSize() {
-	return ((HarvesterObjectImplementation*) impl)->getHopperSize();
-}
-
-void HarvesterObjectAdapter::setOwner(const string& owner) {
-	return ((HarvesterObjectImplementation*) impl)->setOwner(owner);
-}
-
-void HarvesterObjectAdapter::update() {
-	return ((HarvesterObjectImplementation*) impl)->update();
-}
-
-int HarvesterObjectAdapter::getAvailableResourcesCount() {
-	return ((HarvesterObjectImplementation*) impl)->getAvailableResourcesCount();
+void HarvesterObjectAdapter::updateOperatorsAddBlankActiveRescource() {
+	return ((HarvesterObjectImplementation*) impl)->updateOperatorsAddBlankActiveRescource();
 }
 
 /*
@@ -327,7 +155,7 @@ HarvesterObjectServant::HarvesterObjectServant(unsigned long long oid) : Install
 	_classHelper = HarvesterObjectHelper::instance();
 }
 
-HarvesterObjectServant::HarvesterObjectServant(unsigned long long oid, DeedObject* theDeed) : InstallationObjectImplementation(oid, theDeed) {
+HarvesterObjectServant::HarvesterObjectServant(unsigned long long oid, HarvesterDeed* theDeed) : InstallationObjectImplementation(oid, theDeed) {
 	_classHelper = HarvesterObjectHelper::instance();
 }
 

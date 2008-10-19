@@ -4,6 +4,7 @@
 #include "DeedObject.h"
 #include "DeedObjectImplementation.h"
 
+#include "../../../managers/resource/ResourceHarvestType.h"
 
 DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempname)
 	: DeedObjectServant(oid, tempCRC, n, tempname, DEED) {
@@ -52,7 +53,7 @@ DeedObjectImplementation::~DeedObjectImplementation(){
 }
 
 void DeedObjectImplementation::init(){
-	objectSubType = INSTALLATIONDEED;
+	objectSubType = getSubType(objectCRC);
 }
 
 int DeedObjectImplementation::useObject(Player* player) {
@@ -61,11 +62,107 @@ int DeedObjectImplementation::useObject(Player* player) {
 		return 1;
 	}
 
-	cout << "Enter Placement Mode.  Target File: " << targetFile << endl;
+	//cout << "Enter Placement Mode.  Target File: " << targetFile << endl;
 	EnterStructurePlacementModeMessage * espmm = new EnterStructurePlacementModeMessage(objectID, targetFile);
 	player->sendMessage(espmm);
 
 	return 1;
+}
+
+
+
+void DeedObjectImplementation::generateAttributes(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
+
+	addAttributes(alm);
+
+	player->sendMessage(alm);
+}
+
+void DeedObjectImplementation::parseItemAttributes() {
+
+
+}
+
+void DeedObjectImplementation::addHeaderAttributes(AttributeListMessage* alm) {
+	alm->insertAttribute("volume", "1");
+
+	if(craftersName != ""){
+		alm->insertAttribute("crafter", craftersName);
+	}
+
+	if(craftedSerial != ""){
+		alm->insertAttribute("serial_number", craftedSerial);
+	}
+}
+
+void DeedObjectImplementation::addFooterAttributes(AttributeListMessage* alm) {
+	//alm->insertAttribute("healing_ability", getMedicineUseRequired());
+}
+
+void DeedObjectImplementation::addAttributes(AttributeListMessage* alm) {
+	addHeaderAttributes(alm);
+	addFooterAttributes(alm);
+}
+
+
+
+/*
+ *
+ * 	static const int ENERGYGAS = 0x400001;
+	static const int ENERGYLIQUID = 0x400002;
+	static const int ENERGYRADIOACTIVE = 0x400003;
+	static const int ENERGYSOLID = 0x400004;
+	static const int INORGANICCHEMICAL = 0x400005;
+	static const int INORGANICGAS = 0x400006;
+	static const int INORGANICMINERAL = 0x400007;
+	static const int WATER = 0x400008;
+	static const int ORGANICFOOD = 0x400009;
+	static const int ORGANICHIDE = 0x40000A;
+	static const int ORGANICSTRUCTURAL = 0x40000B;
+ *
+ * */
+
+int DeedObjectImplementation::getHarvesterType() {
+
+	switch(objectCRC) {
+		case 0xE296E887: //object/tangible/deed/harvester_deed/shared_harvester_creature_deed.iff
+			return 0;
+		case 0xA9557114: //object/tangible/deed/harvester_deed/shared_harvester_flora_deed.iff
+		case 0xEEC52333: //object/tangible/deed/harvester_deed/shared_harvester_flora_deed_heavy.iff
+		case 0x522BE74D: //object/tangible/deed/harvester_deed/shared_harvester_flora_deed_medium.iff
+			return ResourceHarvestType::FLORA;
+		case 0x85020A19: //object/tangible/deed/harvester_deed/shared_harvester_gas_deed.iff
+		case 0x1090794C: //object/tangible/deed/harvester_deed/shared_harvester_gas_deed_heavy.iff
+		case 0xB247C54E: //object/tangible/deed/harvester_deed/shared_harvester_gas_deed_medium.iff
+			return ResourceHarvestType::GAS;
+		case 0xC6CF0E82: //object/tangible/deed/harvester_deed/shared_harvester_liquid_deed.iff
+		case 0x4FA6CDD8: //object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_heavy.iff
+		case 0xC42B47F4: //object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_medium.iff
+			return ResourceHarvestType::CHEMICAL;
+		case 0x5E1B48A7: //object/tangible/deed/harvester_deed/shared_harvester_moisture_deed.iff
+		case 0x0147A463: //object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_heavy.iff
+		case 0x2D4A2C89: //object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_medium.iff
+			return ResourceHarvestType::WATER;
+		case 0xC02EBAB3: //object/tangible/deed/harvester_deed/shared_harvester_ore_heavy_deed.iff
+		case 0x7EB8541F: //object/tangible/deed/harvester_deed/shared_harvester_ore_s1_deed.iff
+		case 0xFBC8A901: //object/tangible/deed/harvester_deed/shared_harvester_ore_s2_deed.iff
+			return ResourceHarvestType::MINERAL;
+		case 0xE5A0F395: //object/tangible/deed/generator_deed/shared_generator_fusion_deed.iff
+			return ResourceHarvestType::FUSION;
+		case 0x26D63643: //object/tangible/deed/generator_deed/shared_generator_photo_bio_deed.iff
+			return 0;
+		case 0x4669B528: //object/tangible/deed/generator_deed/shared_generator_solar_deed.iff
+			return ResourceHarvestType::SOLAR;
+		case 0xE6C711A7: //object/tangible/deed/generator_deed/shared_generator_wind_deed.iff
+			return ResourceHarvestType::WIND;
+		default:
+			return 0;
+	}
 }
 
 int DeedObjectImplementation::getSubType(uint32 objCRC) {
@@ -76,7 +173,7 @@ int DeedObjectImplementation::getSubType(uint32 objCRC) {
 		case 0xCFEC24E5: //object/tangible/deed/factory_deed/shared_factory_food_deed.iff
 		case 0xFD1EF87A: //object/tangible/deed/factory_deed/shared_factory_item_deed.iff
 		case 0x8E331C08: //object/tangible/deed/factory_deed/shared_factory_structure_deed.iff
-			return FACTORY;
+			return TangibleObjectImplementation::FACTORY;
 
 		case 0xE296E887: //object/tangible/deed/harvester_deed/shared_harvester_creature_deed.iff
 		case 0xA9557114: //object/tangible/deed/harvester_deed/shared_harvester_flora_deed.iff
@@ -94,13 +191,13 @@ int DeedObjectImplementation::getSubType(uint32 objCRC) {
 		case 0xC02EBAB3: //object/tangible/deed/harvester_deed/shared_harvester_ore_heavy_deed.iff
 		case 0x7EB8541F: //object/tangible/deed/harvester_deed/shared_harvester_ore_s1_deed.iff
 		case 0xFBC8A901: //object/tangible/deed/harvester_deed/shared_harvester_ore_s2_deed.iff
-			return HARVESTER;
+			return TangibleObjectImplementation::HARVESTER;
 
 		case 0xE5A0F395: //object/tangible/deed/generator_deed/shared_generator_fusion_deed.iff
 		case 0x26D63643: //object/tangible/deed/generator_deed/shared_generator_photo_bio_deed.iff
 		case 0x4669B528: //object/tangible/deed/generator_deed/shared_generator_solar_deed.iff
 		case 0xE6C711A7: //object/tangible/deed/generator_deed/shared_generator_wind_deed.iff
-			return GENERATOR;
+			return TangibleObjectImplementation::GENERATOR;
 
 
 		case 0x6C7A1232: //object/tangible/deed/faction_perk/turret/base/shared_faction_turret_deed.iff
@@ -116,10 +213,10 @@ int DeedObjectImplementation::getSubType(uint32 objCRC) {
 		case 0x2775B687: //object/tangible/deed/turret_deed/shared_turret_block_large_deed.iff
 		case 0xE0C40914: //object/tangible/deed/turret_deed/shared_turret_block_medium_deed.iff
 		case 0x67F3B024: //object/tangible/deed/turret_deed/shared_turret_block_small_deed.iff
-			return TURRET;
+			return TangibleObjectImplementation::TURRET;
 
 		case 0x5D30CDF7: //object/tangible/deed/faction_perk/minefield/shared_field_1x1_deed.iff
-			return MINEFIELD;
+			return TangibleObjectImplementation::MINEFIELD;
 
 
 		case 0xBFBC4835: //object/tangible/deed/base/shared_deed_base.iff
@@ -322,7 +419,7 @@ int DeedObjectImplementation::getSubType(uint32 objCRC) {
 		case 0xA29F71A0: //object/tangible/deed/faction_perk/hq/shared_hq_s03.iff
 		case 0x597C5AB4: //object/tangible/deed/faction_perk/hq/shared_hq_s04.iff
 		case 0x10713D39: //object/tangible/deed/faction_perk/hq/shared_hq_s05.iff
-			return 0; // SF bases
+			return BUILDING; // SF bases
 
 
 
@@ -368,7 +465,7 @@ int DeedObjectImplementation::getSubType(uint32 objCRC) {
 		case 0xF5186B43: //object/tangible/deed/player_house_deed/shared_tatooine_house_medium_deed.iff
 		case 0x467A8EED: //object/tangible/deed/player_house_deed/shared_tatooine_house_small_deed.iff
 		case 0x83190387: //object/tangible/deed/player_house_deed/shared_tatooine_house_small_style_02_deed.iff
-			return 0; // Player House
+			return BUILDING; // Player House
 
 		case 0xC43635AD: //object/intangible/pet/shared_pet_deed.iff
 		case 0x95396146: //object/tangible/deed/base/shared_pet_deed_base.iff

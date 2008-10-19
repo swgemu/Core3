@@ -225,12 +225,12 @@ public:
 
 
 	// INSTALLATIONS
-	static const int INSTALLATION = 4096;
-	static const int FACTORY = 4097;
-	static const int GENERATOR = 4098;
-	static const int HARVESTER = 4099;
-	static const int TURRET = 4010;
-	static const int MINEFIELD = 4011;
+	static const int INSTALLATION = 0x1000;
+	static const int FACTORY = 0x1001;
+	static const int GENERATOR = 0x1002;
+	static const int HARVESTER = 0x1003;
+	static const int TURRET = 0x1004;
+	static const int MINEFIELD = 0x1005;
 
 	// DEEDS
 	static const int DEED = 0x800000;

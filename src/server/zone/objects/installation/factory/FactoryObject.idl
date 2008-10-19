@@ -1,0 +1,20 @@
+import "../../tangible/TangibleObject";
+import "../../creature/CreatureObject";
+import "../../player/Player";
+import "../../tangible/deed/factorydeed/FactoryDeed";
+import "../InstallationObject";
+
+import "../../../Zone";
+
+include "engine/service/Message";
+
+interface FactoryObject implements InstallationObject {
+
+	FactoryObject(unsigned long oid) {
+		super (oid);
+	}
+	
+	FactoryObject(unsigned long oid, FactoryDeed theDeed) {
+		super (oid, theDeed);
+	}
+}

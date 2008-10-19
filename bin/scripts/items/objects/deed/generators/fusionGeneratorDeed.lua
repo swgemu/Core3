@@ -47,5 +47,10 @@ fusionGeneratorDeed = Deed:new {
 
 	objectCRC = 3852530581,
 
-	objectType = INSTALLATIONDEED	
+	objectType = INSTALLATIONDEED,
+
+	surplusMaintenance = 10000,
+	maintenanceRate = 60,
+	
+	hopperSize = 59000
 }

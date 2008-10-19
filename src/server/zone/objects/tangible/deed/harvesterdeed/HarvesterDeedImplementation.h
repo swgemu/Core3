@@ -14,6 +14,9 @@ class SceneObject;
 class HarvesterDeedImplementation : public HarvesterDeedServant {
 protected:
 	int type, size;
+
+	float maintenanceRate, extractionRate, hopperSize;
+	uint32 surplusMaintenance, surplusPower;
 public:
 	static const int ORE = 1;
 	static const int MOISTURE = 2;
@@ -32,6 +35,53 @@ public:
 
 	void getType();
 	void getSize();
+
+	void parseItemAttributes();
+	void addAttributes(AttributeListMessage* alm);
+
+	// Attribute Setters
+	inline void setSurplusMaintenance(uint32 maint) {
+		surplusMaintenance = maint;
+		string attr("surplusMaintenance");
+		itemAttributes->setIntAttribute(attr, (int)surplusMaintenance);
+	}
+	inline void setMaintenanceRate(float rate) {
+		 maintenanceRate = rate;
+		 string attr("maintenanceRate");
+		 itemAttributes->setFloatAttribute(attr, (float)maintenanceRate);
+	}
+	inline void setSurplusPower(uint32 pow) {
+		surplusPower = pow;
+		string attr("surplusPower");
+		itemAttributes->setIntAttribute(attr, (int)surplusPower);
+	}
+	inline void setExtractionRate(float rate) {
+		extractionRate = rate;
+		string attr("extractionRate");
+		itemAttributes->setFloatAttribute(attr, (float)extractionRate);
+	}
+	inline void setHopperSize(float size) {
+		hopperSize = size;
+		string attr("hopperSize");
+		itemAttributes->setFloatAttribute(attr, (float)hopperSize);
+	}
+
+	// Attribute Getters
+	inline uint32 getSurplusMaintenance() {
+		return surplusMaintenance;
+	}
+	inline float getMaintenanceRate() {
+		return maintenanceRate;
+	}
+	inline uint32 getSurplusPower() {
+		return surplusPower;
+	}
+	inline float getExtractionRate() {
+		return extractionRate;
+	}
+	inline float getHopperSize() {
+		return hopperSize;
+	}
 
 private:
 	void init();

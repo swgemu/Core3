@@ -115,6 +115,9 @@ public:
 	static const int WAYPOINT = 13;
 	static const int MANUFACTURESCHEMATIC = 14;
 
+	static const int NONATTACKABLE_BITMASK = 0x1000;
+	static const int CREO_BITMASK = 0x80;
+
 public:
 	SceneObjectImplementation();
 	SceneObjectImplementation(uint64 oid, int type);

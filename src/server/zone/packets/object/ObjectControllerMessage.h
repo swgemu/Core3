@@ -121,6 +121,14 @@ public:
 
     static void handleDeathblow(Player* player, Message* packet, CombatManager* combatManager);
 
+    static void parseSynchronizedUIListen(Player *player, Message *pack);
+    static void parseSynchronizedUIStopListening(Player *player, Message *pack);
+    static void parseHarvesterActivate(Player *player, Message *pack);
+    static void parseHarvesterDeActivate(Player *player, Message *pack);
+    static void parseHarvesterDiscardHopper(Player *player, Message *pack);
+    static void parseHarvesterGetResourceData(Player* player, Message* pack);
+    static void parseHarvesterSelectResource(Player* player, Message* pack);
+
     static void parseSurveySlashRequest(Player* player, Message* pack);
     static void parseSampleSlashRequest(Player* player, Message* pack);
     static void parseSurveyRequest(Player* player, Message* pack);
@@ -128,6 +136,8 @@ public:
 
     static void parseResourceContainerSplit(Player* player, Message* pack);
     static void parseResourceContainerTransfer(Player* player, Message* pack);
+
+    static void parseResourceEmptyHopper(Player* player, Message* pack);
 
     // mission
     static void parseMissionListRequest(Player* player, Message* pack);

@@ -76,10 +76,12 @@ ZonePacketHandler::ZonePacketHandler(const string& s, ZoneProcessServerImplement
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {
-	/*info("parsing " + pack->toString());*/
+	info("parsing " + pack->toString());
 
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
+
+	//cout << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
 
 	switch (opcount) {
 	case 1:
@@ -420,9 +422,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	uint32 header1 = pack->parseInt();
 	uint32 header2 = pack->parseInt();
 
-	/*stringstream msg;
+	stringstream msg;
 	msg << "ObjectControllerMessage(0x" << hex << header1 << ", 0x" << header2 << dec << ")";
-	player->info(msg.str()); */
+	player->info(msg.str());
 
 	try {
 		player->wlock();
@@ -495,6 +497,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			break;
 		case 0x83:
 			switch (header2) {
+			case 0xED:
+				ObjectControllerMessage::parseResourceEmptyHopper(player, pack);
+				break;
 			case 0xF5:
 				ObjectControllerMessage::parseMissionListRequest(player, pack);
 				break;

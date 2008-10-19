@@ -64,7 +64,7 @@ public:
 		addAsciiUpdate(4, appearance);
 	}
 
-	void update06Operand(uint32 value) {
+	void updateCreatureBitmask(uint32 value) {
 		addIntUpdate(0x06, value);
 	}
 
@@ -85,7 +85,7 @@ public:
 	}
 
 	void updateCreatureBitmask() {
-		addIntUpdate(6, creo->getCreatureBitmask());
+		addIntUpdate(0x06, creo->getCreatureBitmask());
 	}
 
 	void updateConditionDamage() {

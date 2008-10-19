@@ -14,6 +14,8 @@
 
 #include "../../creature/CreatureObject.h"
 
+#include "../../scene/SceneObject.h"
+
 /*
  *	DeedObjectStub
  */
@@ -112,6 +114,31 @@ int DeedObject::useObject(Player* player) {
 		return ((DeedObjectImplementation*) _impl)->useObject(player);
 }
 
+void DeedObject::generateAttributes(SceneObject* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((DeedObjectImplementation*) _impl)->generateAttributes(obj);
+}
+
+int DeedObject::getHarvesterType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->getHarvesterType();
+}
+
 /*
  *	DeedObjectAdapter
  */
@@ -140,6 +167,12 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 11:
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
+		break;
+	case 12:
+		generateAttributes((SceneObject*) inv->getObjectParameter());
+		break;
+	case 13:
+		resp->insertSignedInt(getHarvesterType());
 		break;
 	default:
 		return NULL;
@@ -170,6 +203,14 @@ string& DeedObjectAdapter::getTargetTempFile() {
 
 int DeedObjectAdapter::useObject(Player* player) {
 	return ((DeedObjectImplementation*) impl)->useObject(player);
+}
+
+void DeedObjectAdapter::generateAttributes(SceneObject* obj) {
+	return ((DeedObjectImplementation*) impl)->generateAttributes(obj);
+}
+
+int DeedObjectAdapter::getHarvesterType() {
+	return ((DeedObjectImplementation*) impl)->getHarvesterType();
 }
 
 /*

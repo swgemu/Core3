@@ -41,9 +41,9 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
-
 import "../tangible/TangibleObject";
 import "../creature/CreatureObject";
+import "../scene/SceneObject";
 import "../player/Player";
 import "../tangible/deed/DeedObject";
 
@@ -75,10 +75,40 @@ interface InstallationObject implements TangibleObject {
 	void setOwner(const string owner);
 	
 	int getDestroyCode();
+	
+	unsigned int getNewDefenderUpdateCounter(unsigned int cnt);
 
 	void addMaintenance(unsigned long maint);
-	void addEnergy(unsigned long pow);
-
 	unsigned long getMaintenance();
+	float getMaintenanceRate();
+
+	void addEnergy(unsigned long pow);
 	unsigned long getEnergy();
+	float getEnergyRate();	
+
+	void updateOperators();
+	int getOperatorListSize();
+	SceneObject getOperator(int idx);
+	void addOperator(SceneObject op);
+	void removeOperator(SceneObject op);
+	void activateSync();
+	
+	boolean isOperating();
+	void setOperating(boolean state);
+
+	float getSpecRate();
+	float getActualRate();
+	unsigned long getActiveResourceID();
+
+	float getHopperSize();
+	float getHopperSizeMax();	
+	void updateHopper();
+	void setHopperUpdateCounter(int counter);
+	int getNewHopperUpdateCounter(int counter);
+	int getHopperUpdateCounter();
+	int getHopperItemCount();
+	unsigned long getHopperItemID(int index);
+	float getHopperItemQuantity(int index);
+	float getHopperItemQuantity(unsigned long rid);
+	float removeHopperItem(unsigned long rid, int quantity);
 }

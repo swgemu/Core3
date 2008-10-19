@@ -47,5 +47,12 @@ oreS2HarvesterDeed = Deed:new {
 
 	objectCRC = 4224231681,
 
-	objectType = INSTALLATIONDEED
+	objectType = INSTALLATIONDEED,
+	
+	surplusMaintenance = 10000,
+	maintenanceRate = 60,
+
+	surplusPower = 10000,
+	hopperSize = 59000,
+	extractionRate = 10.0
 }

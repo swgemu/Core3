@@ -86,7 +86,7 @@ public:
 	void handleRemovePowerup(Player* player, SceneObject* obj);
 
 	// Installation radial handling
-	void sendRadialResponseForHarvesters(Player* player, HarvesterObject* hino, ObjectMenuResponse* omr);
+	void handleManageHarvester(Player* player, SceneObject* obj);
 	void handleStructureStatus(Player* player, SceneObject* obj);
 	void handleStructureDestroy(Player* player, SceneObject* obj);
 	void handleSetName(Player* player, SceneObject* obj);

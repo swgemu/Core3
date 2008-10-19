@@ -53,42 +53,42 @@ class CreatureObjectMessage3 : public BaseLineMessage {
 public:
 	CreatureObjectMessage3(CreatureObject* creo)
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 3, 0x12) {
-		insertFloat(10);
+		insertFloat(10); // Complexity
 
 		insertAscii(creo->getStfName());
-		insertInt(0);
+		insertInt(0); // Nothing
 		insertAscii(creo->getSpeciesName());
 
 		insertUnicode(creo->getCharacterName());
 
-		insertInt(0x0085E5CA);
+		insertInt(0x0085E5CA); // Volume
 
 		string appearance;
 		creo->getCharacterAppearance(appearance);
 		insertAscii(appearance);
 
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); // list size
+		insertInt(0); // update counter
 
 		insertInt(creo->getCreatureBitmask());
 
-		insertInt(0);
+		insertInt(0); // incap timer
 
 		insertInt(creo->getConditionDamage());
 		insertInt(creo->getMaxCondition());
 
-		insertByte(1);
+		insertByte(1); // nothing
 		insertByte(creo->getPosture());
 		insertByte(creo->getFactionRank()); // faction rank
 
 		insertLong(creo->getCreatureLinkID()); // creature link id/ mount
 
 		insertFloat(creo->getHeight());
-		insertInt(creo->getShockWounds());
+		insertInt(creo->getShockWounds()); // BF
 
 		insertLong(creo->getStateBitmask());
 
-		insertInt(9);
+		insertInt(9); // List Size
 		insertInt(creo->getWoundsUpdateCounter());
 		insertInt(creo->getHealthWounds());
 		insertInt(creo->getStrengthWounds());

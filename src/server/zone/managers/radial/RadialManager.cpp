@@ -46,6 +46,7 @@ which carries forward this exception.
 
 #include "../../packets/object/ObjectMenuResponse.h"
 #include "../../packets/trade/BeginTradeMessage.h"
+#include "../../packets/installation/ResourceHarvesterActivatePageMessage.h"
 
 #include "../../Zone.h"
 #include "../../objects.h"
@@ -224,6 +225,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		handleStructureAddEnergy(player, obj);
 		break;
 	case 82: // Manage Harvester
+		handleManageHarvester(player, obj);
 		break;
 	case 108: // Harvest Meat
 		handleHarvest(player, obj, 1);
@@ -474,21 +476,6 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 	}
 }
 
-void RadialManager::sendRadialResponseForHarvesters(Player* player, HarvesterObject* hino, ObjectMenuResponse* omr) {
-	omr->addRadialItem(0, 122, 1, "@player_structure:management");
-
-	omr->addRadialItem(2, 132, 3, "@player_structure:permission_destroy");
-	omr->addRadialItem(2, 128, 3, "@player_structure:management_status");
-	omr->addRadialItem(2, 131, 3, "Set Name"); //"@player_structure:set_name"
-	omr->addRadialItem(2, 133, 3, "@player_structure:management_pay");
-	omr->addRadialItem(2, 82, 3, "@harvester:manage");
-	omr->addRadialItem(2, 77, 3, "@player_structure:management_power");
-
-	omr->finish();
-
-	player->sendMessage(omr);
-}
-
 
 void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
@@ -512,6 +499,36 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
 }
+
+void RadialManager::handleManageHarvester(Player* player, SceneObject* obj) {
+	try{
+
+		cout << "RadialManager::handleManageHarvester() entered" << endl;
+		if (!obj->isTangible())
+			return;
+
+		TangibleObject* tano = (TangibleObject*) obj;
+
+		if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+			return;
+
+		InstallationObject* inso = (InstallationObject*) tano;
+
+		// Update Hopper
+		inso->updateHopper();
+
+		ResourceHarvesterActivatePageMessage* rhapm = new ResourceHarvesterActivatePageMessage(obj->getObjectID());
+		player->sendMessage(rhapm);
+
+
+	}
+	catch(...){
+		cout << "Unreported exception in RadialManager::handleManageHarvester\n";
+	}
+	cout << "RadialManager::handleManageHarvester() completed" << endl;
+}
+
+
 
 void RadialManager::handleStructureDestroy(Player* player, SceneObject* obj) {
 	try{
