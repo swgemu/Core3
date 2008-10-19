@@ -14,7 +14,7 @@ hostname = jul-dellxp
 uname -m = i686
 uname -r = 1.5.25(0.156/4/2)
 uname -s = CYGWIN_NT-5.1
-uname -v = 2008-04-17 12:11
+uname -v = 2008-06-12 19:34
 
 /usr/bin/uname -p = unknown
 /bin/uname -X     = unknown
@@ -172,6 +172,7 @@ on jul-dellxp
 config.status:659: creating Makefile
 config.status:659: creating src/Makefile
 config.status:659: creating config.h
+config.status:868: config.h is unchanged
 config.status:915: executing depfiles commands
 
 ## ---------------- ##

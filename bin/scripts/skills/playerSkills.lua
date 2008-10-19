@@ -69,3 +69,5 @@ RunSkillsFile("playerSkills/nonCombat/musician.lua")
 
 --Jedi
 RunSkillsFile("playerSkills/combat/jedi/lightsaber.lua")
+RunSkillsFile("playerSkills/combat/jedi/powers.lua")
+

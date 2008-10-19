@@ -79,6 +79,8 @@ interface MissionManager {
 	
 	//Completely remove the mission from the server:
 	void removeMisoFromPool(MissionObject miso, boolean doLock = true);
+	
+	unsigned int getMissionItemCrc(string tKey, boolean doLock = true);
 
 	//script methods
 	void loadMissionScripts();

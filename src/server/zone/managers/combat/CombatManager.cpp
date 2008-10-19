@@ -145,7 +145,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 
 	creature->broadcastMessage(actionMessage);
 
-	return calculateWeaponAttackSpeed(creature, tskill);
+	return tskill->calculateSpeed(creature);
 }
 
 float CombatManager::doSelfSkill(CommandQueueAction* action) {
@@ -1275,14 +1275,10 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / 17500.0f)) * tskill->getSpeedRatio() * 2.0f;
 	*/
 
-	if (creature->isPlayer())
-		cout << "Weapon speed = " << MAX(weaponSpeed, 1.0f) << endl;
-
 	return MAX(weaponSpeed, 1.0f);
 }
 
 	float CombatManager::calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill) {
 		// Heals use an event for the timings.  However the combat queue needs timing for next action
-		float speed = tskill->getSpeed();
-		return speed;
+		return tskill->calculateSpeed(creature);
 	}

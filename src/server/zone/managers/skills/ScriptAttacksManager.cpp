@@ -72,9 +72,9 @@ void ScriptAttacksManager::registerFunctions() {
 	//AddSkills
 	lua_register(getLuaState(), "AddRandomPoolAttackTargetSkill", AddRandomPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddDirectPoolAttackTargetSkill", AddDirectPoolAttackTargetSkill);
-	//lua_register(getLuaState(), "AddForceRandomPoolAttackTargetSkill", AddForceRandomPoolAttackTargetSkill);
-	//lua_register(getLuaState(), "AddForceHealSelfSkill", AddForceHealSelfSkill);
-	//lua_register(getLuaState(), "AddForceDotPoolAttackTargetSkill", AddForceDotPoolAttackTargetSkill);
+	lua_register(getLuaState(), "AddForcePowersPoolAttackTargetSkill", AddForcePowersPoolAttackTargetSkill);
+	//lua_register(getLuaState(), "AddForceHealSelfSkill", AddWeaponlessForceHealSelfSkill);
+	lua_register(getLuaState(), "AddWeaponlessDotPoolAttackTargetSkill", AddWeaponlessDotPoolAttackSkill);
 	lua_register(getLuaState(), "AddHealSelfSkill", AddHealSelfSkill);
 	lua_register(getLuaState(), "AddHealTargetSkill", AddHealTargetSkill);
 	lua_register(getLuaState(), "AddHealEnhanceTargetSkill", AddHealEnhanceTargetSkill);
@@ -189,6 +189,13 @@ void ScriptAttacksManager::registerGlobals() {
 
 	setGlobalInt("NONE", 0xFF);
 
+	// Jedi Power attack types
+	setGlobalInt("FORCETHROW", 0);
+	setGlobalInt("FORCELIGHTNING", 1);
+	setGlobalInt("MINDBLAST", 2);
+	setGlobalInt("FORCEKNOCKDOWN", 3);
+	setGlobalInt("FORCECHOKE", 4);
+
 	// misc
 	setGlobalInt("HEALTH", 1);
 	setGlobalInt("STRENGTH", 2);
@@ -237,6 +244,9 @@ int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
 
 	float hamCostMultiplier = skill.getFloatField("hamCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
+
+	// For force powers
+	int forceCost = skill.getIntField("forceCost");
 
 	attack = new RandomPoolAttackTargetSkill(attackname, animation, server);
 
@@ -456,20 +466,21 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	return 0;
 }
 
-/*
-
-int ScriptAttacksManager::AddForceDotPoolAttackTargetSkill(lua_State *L) {
+int ScriptAttacksManager::AddWeaponlessDotPoolAttackSkill(lua_State *L) {
 	LuaObject skill(L);
 
 	if (!skill.isValidTable())
 		return 0;
 
-	ForceDotPoolAttackTargetSkill* attack;
+	WeaponlessDotPoolAttackSkill* attack;
 
 	string attackname = skill.getStringField("attackname");
 	string animation = skill.getStringField("animation");
 
 	int weaponType = skill.getIntField("requiredWeaponType");
+
+	int forceCost = skill.getIntField("forceCost");
+	int mindCost = skill.getIntField("mindCost");
 
 	int range = skill.getIntField("range");
 	float DamageRatio = skill.getFloatField("damageRatio");
@@ -505,7 +516,7 @@ int ScriptAttacksManager::AddForceDotPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 
-	attack = new ForceDotPoolAttackTargetSkill(attackname, animation, server);
+	attack = new WeaponlessDotPoolAttackSkill(attackname, animation, server);
 
 	attack->setRequiredWeaponType(weaponType);
 	attack->setRange(range);
@@ -545,24 +556,27 @@ int ScriptAttacksManager::AddForceDotPoolAttackTargetSkill(lua_State *L) {
 	return 0;
 }
 
-int ScriptAttacksManager::AddForceRandomPoolAttackTargetSkill(lua_State *L) {
+int ScriptAttacksManager::AddForcePowersPoolAttackTargetSkill(lua_State *L) {
 	LuaObject skill(L);
 
 	if (!skill.isValidTable())
 		return 0;
 
-	ForceRandomPoolAttackTargetSkill* frpattack;
+	ForcePowersPoolAttackTargetSkill* attack;
 
 	string attackname = skill.getStringField("attackname");
 	string animation = skill.getStringField("animation");
 
-	int weaponType = skill.getIntField("requiredWeaponType");
+	int attackType = skill.getIntField("attackType");
+	int forceCost = skill.getIntField("forceCost");
+
+	float minDamage = skill.getFloatField("minDamage");
+	float maxDamage = skill.getFloatField("maxDamage");
+
+	float speed = skill.getFloatField("speed");
 
 	int range = skill.getIntField("range");
-	float DamageRatio = skill.getFloatField("damageRatio");
-	float SpeedRatio = skill.getFloatField("speedRatio");
 	int areaRangeDamage = skill.getIntField("areaRange");
-	int accuracyBonus = skill.getIntField("accuracyBonus");
 	int cone = skill.getIntField("coneAngle");
 
 	int knockdownStateChance = skill.getIntField("knockdownChance");
@@ -579,33 +593,39 @@ int ScriptAttacksManager::AddForceRandomPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 
-	frpattack = new ForceRandomPoolAttackTargetSkill(attackname, animation, server);
-	frpattack->setRequiredWeaponType(weaponType);
-	frpattack->setRange(range);
-	frpattack->setAreaRangeDamage(areaRangeDamage);
-	frpattack->setConeAngle(cone);
-	frpattack->setDamageRatio(DamageRatio);
-	frpattack->setSpeedRatio(SpeedRatio);
-	frpattack->setAccuracyBonus(accuracyBonus);
+	attack = new ForcePowersPoolAttackTargetSkill(attackname, animation, server);
+	attack->setForceCost(forceCost);
 
-	frpattack->setKnockdownChance(knockdownStateChance);
-	frpattack->setPostureDownChance(postureDownStateChance);
-	frpattack->setDizzyChance(dizzyStateChance);
-	frpattack->setBlindChance(blindStateChance);
-	frpattack->setStunChance(stunStateChance);
-	frpattack->setIntimidateChance(intimidateStateChance);
+	attack->setMinDamage(minDamage);
+	attack->setMaxDamage(maxDamage);
 
-	frpattack->setCbtSpamHit(CbtSpamHit);
-	frpattack->setCbtSpamMiss(CbtSpamMiss);
-	frpattack->setCbtSpamEvade(CbtSpamEvade);
-	frpattack->setCbtSpamCounter(CbtSpamCounter);
-	frpattack->setCbtSpamBlock(CbtSpamBlock);
+	attack->setRange(range);
+	attack->setAreaRangeDamage(areaRangeDamage);
+	attack->setConeAngle(cone);
 
-	CombatActions->put(frpattack);
+	if (speed < 1.0f)
+		speed = 4.0f;
+
+	attack->setSpeed(speed);
+
+	attack->setKnockdownChance(knockdownStateChance);
+	attack->setPostureDownChance(postureDownStateChance);
+	attack->setDizzyChance(dizzyStateChance);
+	attack->setBlindChance(blindStateChance);
+	attack->setStunChance(stunStateChance);
+	attack->setIntimidateChance(intimidateStateChance);
+
+	attack->setCbtSpamHit(CbtSpamHit);
+	attack->setCbtSpamMiss(CbtSpamMiss);
+	attack->setCbtSpamEvade(CbtSpamEvade);
+	attack->setCbtSpamCounter(CbtSpamCounter);
+	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	CombatActions->put(attack);
 	return 0;
 }
 
-
+/*
 int ScriptAttacksManager::AddForceHealSelfSkill(lua_State *L) {
 	LuaObject skill(L);
 
@@ -992,7 +1012,7 @@ int ScriptAttacksManager::AddDeBuffAttackTargetSkill(lua_State* L) {
 	if (!skill.isValidTable())
 		return 0;
 
-	DeBuffAttackTargetSkill* Skill;
+	DeBuffAttackTargetSkill* attSkill;
 
 	string skillname = skill.getStringField("skillname");
 	string animation = skill.getStringField("animation");
@@ -1004,6 +1024,8 @@ int ScriptAttacksManager::AddDeBuffAttackTargetSkill(lua_State* L) {
 	float duration = skill.getFloatField("duration");
 
 	float speed = skill.getFloatField("speedRatio");
+
+	float forceCost = skill.getFloatField("forceCost");
 
 	int meleeDamagePenalty = skill.getIntField("meleeDamagePenalty");
 	int meleeAccuracyPenalty = skill.getIntField("meleeAccuracyPenalty");
@@ -1025,35 +1047,37 @@ int ScriptAttacksManager::AddDeBuffAttackTargetSkill(lua_State* L) {
 
 	string flytext = skill.getStringField("FlyText");
 
-	Skill = new DeBuffAttackTargetSkill(skillname, animation, server);
+	attSkill = new DeBuffAttackTargetSkill(skillname, animation, server);
 
-	Skill->setSpeed(speed);
-	Skill->setRange(range);
-	Skill->setAreaRangeDamage(areaRange);
-	Skill->setConeAngle(cone);
-	Skill->setDuration(duration);
+	attSkill->setSpeed(speed);
+	attSkill->setRange(range);
+	attSkill->setAreaRangeDamage(areaRange);
+	attSkill->setConeAngle(cone);
+	attSkill->setDuration(duration);
 
-	Skill->setMeleeDamagePenalty(meleeDamagePenalty);
-	Skill->setMeleeAccuracyPenalty(meleeAccuracyPenalty);
+	attSkill->setForceCost(forceCost);
 
-	Skill->setRangedDamagePenalty(rangedDamagePenalty);
-	Skill->setRangedAccuracyPenalty(rangedAccuracyPenalty);
+	attSkill->setMeleeDamagePenalty(meleeDamagePenalty);
+	attSkill->setMeleeAccuracyPenalty(meleeAccuracyPenalty);
 
-	Skill->setDefensePenalty(DefensePenalty);
-	Skill->setSpeedPenalty(SpeedPenalty);
+	attSkill->setRangedDamagePenalty(rangedDamagePenalty);
+	attSkill->setRangedAccuracyPenalty(rangedAccuracyPenalty);
 
-	Skill->setDizzyChance(dizzyStateChance);
-	Skill->setBlindChance(blindStateChance);
-	Skill->setStunChance(stunStateChance);
-	Skill->setIntimidateChance(intimidateStateChance);
+	attSkill->setDefensePenalty(DefensePenalty);
+	attSkill->setSpeedPenalty(SpeedPenalty);
 
-	Skill->setNextAttackDelay(nextAttackDelay);
+	attSkill->setDizzyChance(dizzyStateChance);
+	attSkill->setBlindChance(blindStateChance);
+	attSkill->setStunChance(stunStateChance);
+	attSkill->setIntimidateChance(intimidateStateChance);
 
-	Skill->setSelfEffect(selfeffect);
+	attSkill->setNextAttackDelay(nextAttackDelay);
 
-	Skill->setFlyText(flytext);
+	attSkill->setSelfEffect(selfeffect);
 
-	CombatActions->put(Skill);
+	attSkill->setFlyText(flytext);
+
+	CombatActions->put(attSkill);
 
 	return 0;
 }

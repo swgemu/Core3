@@ -78,4 +78,8 @@ RunCreatureFile("objects/tatooine/npcs/jawaThief.lua")
  RunCreatureFile("objects/tatooine/npcs/sennexGuard.lua")
  RunCreatureFile("objects/tatooine/npcs/sennexWarder.lua")
  
+ -- Jabba's Palace
+ RunCreatureFile("objects/tatooine/npcs/jabbapalace.lua")
+ 
+ 
 

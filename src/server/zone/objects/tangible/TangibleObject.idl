@@ -148,6 +148,8 @@ interface TangibleObject implements SceneObject {
 	string getAttributes();
 	
 	void addAttributes(AttributeListMessage alm);
+	
+	string getMisoAsocKey();
 
 	// setters
 	void setName(const string n);
@@ -170,4 +172,6 @@ interface TangibleObject implements SceneObject {
 	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void setObjectCount(const int count);
+	
+	void setMisoAsocKey(const string tma);
 }

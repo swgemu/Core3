@@ -41,18 +41,18 @@
 --which carries forward this exception.
 
 
-RunItemLUAFile("objects/clothing/skirt/smcSkirt1.lua");
-RunItemLUAFile("objects/clothing/skirt/smcSkirt2.lua");
-RunItemLUAFile("objects/clothing/skirt/smcSkirt3.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt3.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt4.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt5.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt6.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt7.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt8.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt9.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt10.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt11.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt12.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt13.lua");
-RunItemLUAFile("objects/clothing/skirt/skirt14.lua");
+RunItemLUAFile("objects/clothing/skirts/smcSkirt1.lua");
+RunItemLUAFile("objects/clothing/skirts/smcSkirt2.lua");
+RunItemLUAFile("objects/clothing/skirts/smcSkirt3.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt3.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt4.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt5.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt6.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt7.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt8.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt9.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt10.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt11.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt12.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt13.lua");
+RunItemLUAFile("objects/clothing/skirts/skirt14.lua");

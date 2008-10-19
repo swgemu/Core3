@@ -213,12 +213,26 @@ void MissionManager::removeMisoFromPool(MissionObject* miso, bool doLock) {
 		((MissionManagerImplementation*) _impl)->removeMisoFromPool(miso, doLock);
 }
 
-void MissionManager::loadMissionScripts() {
+unsigned int MissionManager::getMissionItemCrc(string& tKey, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
+		method.addAsciiParameter(tKey);
+		method.addBooleanParameter(doLock);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((MissionManagerImplementation*) _impl)->getMissionItemCrc(tKey, doLock);
+}
+
+void MissionManager::loadMissionScripts() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
 
 		method.executeWithVoidReturn();
 	} else
@@ -230,7 +244,7 @@ void MissionManager::registerFunctions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		method.executeWithVoidReturn();
 	} else
@@ -242,7 +256,7 @@ void MissionManager::registerGlobals() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		method.executeWithVoidReturn();
 	} else
@@ -297,12 +311,15 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		removeMisoFromPool((MissionObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 18:
-		loadMissionScripts();
+		resp->insertInt(getMissionItemCrc(inv->getAsciiParameter(_param0_getMissionItemCrc__string_bool_), inv->getBooleanParameter()));
 		break;
 	case 19:
-		registerFunctions();
+		loadMissionScripts();
 		break;
 	case 20:
+		registerFunctions();
+		break;
+	case 21:
 		registerGlobals();
 		break;
 	default:
@@ -358,6 +375,10 @@ void MissionManagerAdapter::doMissionAbort(Player* player, string& tKey, bool do
 
 void MissionManagerAdapter::removeMisoFromPool(MissionObject* miso, bool doLock) {
 	return ((MissionManagerImplementation*) impl)->removeMisoFromPool(miso, doLock);
+}
+
+unsigned int MissionManagerAdapter::getMissionItemCrc(string& tKey, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->getMissionItemCrc(tKey, doLock);
 }
 
 void MissionManagerAdapter::loadMissionScripts() {

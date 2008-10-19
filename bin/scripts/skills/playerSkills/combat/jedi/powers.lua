@@ -46,13 +46,15 @@ CmbtEnhaceSkill = {
 	skillname = "forcethrow1",
 	animation = "force_throw_1_particle_level_1_light",
 	
-	--forceCost = 28,
+	attackType = FORCETHROW,
+
+	forceCost = 28,
 
 	range = 30,
 
 	duration = 30.0,
 	
-	speedRatio = 3.0,
+	speed = 3.0,
 
 	meleeDamagePenalty = 0,
 	rangedDamagePenalty = 0,
@@ -82,14 +84,18 @@ AddDeBuffAttackTargetSkill(CmbtEnhaceSkill)
 CmbtEnhaceSkill = {
 	skillname = "forcethrow2",
 	animation = "force_throw_1_particle_level_1_medium",
+
+	attackType = FORCETHROW,
+	minDamage = 500;
+	maxDamage = 550;
 	
-	--forceCost = 56,
+	forceCost = 56,
 
 	range = 30,
 
 	duration = 30.0,
 	
-	speedRatio = 3.0,
+	speed = 3.0,
 
 	meleeDamagePenalty = 0,
 	rangedDamagePenalty = 0,
@@ -120,13 +126,15 @@ CmbtEnhaceSkill = {
 	skillname = "forceweaken1",
 	animation = "force_weaken_1_particle_level_1_light",
 	
-	--forceCost = 400,
+	attackType = FORCEWEAKEN,
+
+	forceCost = 400,
 
 	range = 30,
 
 	duration = 100.0,
 	
-	speedRatio = 3.0,
+	speed = 3.0,
 
 	meleeDamagePenalty = 0,
 	rangedDamagePenalty = 0,
@@ -156,14 +164,16 @@ AddDeBuffAttackTargetSkill(CmbtEnhaceSkill)
 CmbtEnhaceSkill = {
 	skillname = "forceweaken2",
 	animation = "force_weaken_1_particle_level_1_light",
+
+	attackType = FORCEWEAKEN,
 	
-	--forceCost = 400,
+	forceCost = 400,
 
 	range = 30,
 
 	duration = 100.0,
 	
-	speedRatio = 3.0,
+	speed = 3.0,
 
 	meleeDamagePenalty = 0,
 	rangedDamagePenalty = 0,
@@ -194,13 +204,15 @@ CmbtEnhaceSkill = {
 	skillname = "forceintimidate1",
 	animation = "force_intimidate_chain",
 	
-	--forceCost = 300,
+	attackType = FORCEINTIMIDATE,
+
+	forceCost = 300,
 
 	range = 30,
 
 	duration = 100.0,
 	
-	speedRatio = 1.5,
+	speed = 1.5,
 
 	meleeDamagePenalty = 0,
 	rangedDamagePenalty = 0,
@@ -231,13 +243,15 @@ CmbtEnhaceSkill = {
 	skillname = "forceintimidate2",
 	animation = "force_intimidate",
 	
-	--forceCost = 500,
+	attackType = FORCEINTIMIDATE,
+
+	forceCost = 500,
 
 	range = 30,
 
 	duration = 100.0,
 	
-	speedRatio = 1.5,
+	speed = 1.5,
 
 	meleeDamagePenalty = 0,
 	rangedDamagePenalty = 0,
@@ -264,17 +278,17 @@ AddDeBuffAttackTargetSkill(CmbtEnhaceSkill)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "mindblast1",
 	animation = "force_mind_blast_1_particle_level_1_light",
 	
-	--forceCost = 68,
+	forceCost = 68,
 	
-	requiredWeaponType = JEDI,
+	attackType = MINDBLAST,
 	
 	range = 32,
 	damageRatio = 2.5,	--We dont know the real value yet
-	speedRatio = 3.0,
+	speed = 3.0,
 	accuracyBonus = 0,
 	
 	knockdownChance = 0,
@@ -290,21 +304,21 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "mindblast2",
 	animation = "force_mind_blast_1_particle_level_1_medium",
 	
-	--forceCost = 160,
+	forceCost = 160,
 	
-	requiredWeaponType = JEDI,
+	attackType = MINDBLAST,
 	
 	range = 32,
 	damageRatio = 4.0,	--We dont know the real value yet
-	speedRatio = 4.0,
+	speed = 4.0,
 	accuracyBonus = 0,
 	
 	knockdownChance = 0,
@@ -320,23 +334,24 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "forcelightningcone1",
 	animation = "force_lightning_1_arc_particle_level_5_light",
 	
-	--forceCost = 125,
+	forceCost = 125,
 	
-	requiredWeaponType = JEDI,
+	minDamage = 750;
+	maxDamage = 800;
+	attackType = FORCELIGHTNING,
+	
+	speed = 4.0,
 	
 	range = 32,
 	coneAngle = 60,
-	damageRatio = 1.0,	--We dont know the real value yet
-	speedRatio = 1.5,
-	accuracyBonus = 0,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -350,23 +365,24 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "forcelightningcone2",
 	animation = "force_lightning_1_arc_particle_level_5_medium",
 	
-	--forceCost = 250,
+	forceCost = 250,
 	
-	requiredWeaponType = JEDI,
+	minDamage = 1000;
+	maxDamage = 1100;
+	attackType = FORCELIGHTNING,
+	
+	speed = 4.0,
 	
 	range = 32,
 	coneAngle = 70,
-	damageRatio = 2.0,	--We dont know the real value yet
-	speedRatio = 1.5,
-	accuracyBonus = 0,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -380,23 +396,26 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "forcelightningsingle1",
 	animation = "force_lightning_1_particle_level_5_light",
 	
-	--forceCost = 75,
+	forceCost = 75,
 	
-	requiredWeaponType = JEDI,
+	attackType = FORCELIGHTNING,
+	
+	minamage = 1000,
+	maxDamage = 1100,
+	damageType = ELECTRICITY,
+	
+	speed = 3.0,
 	
 	range = 32,
 	coneAngle = 0,
-	damageRatio = 2.5,	--We dont know the real value yet
-	speedRatio = 4.0,
-	accuracyBonus = 0,
 	
 	dizzyChance = 25,
 	
@@ -408,23 +427,24 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "forcelightningsingle2",
 	animation = "force_lightning_1_particle_level_5_medium",
 	
-	--forceCost = 150,
+	forceCost = 150;
 	
-	requiredWeaponType = JEDI,
+	minDamage = 1500;
+	maxDamage = 1600;
+	attackType = FORCELIGHTNING,
+	
+	speed = 4.0,
 	
 	range = 32,
 	coneAngle = 0,
-	damageRatio = 3.5,	--We dont know the real value yet
-	speedRatio = 4.0,
-	accuracyBonus = 0,
 	
 	dizzyChance = 35,
 	
@@ -436,22 +456,22 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "forceknockdown1",
 	animation = "force_knockdown_1_particle_level_1",
 	
-	--forceCost = 75,
+	forceCost = 75,
 	
-	requiredWeaponType = JEDI,
+	attackType = FORCEKNOCKDOWN,
 	
 	range = 32,
 	coneAngle = 70,
 	damageRatio = 1.0,	--We dont know the real value yet
-	speedRatio = 3.5,
+	speed = 3.5,
 	accuracyBonus = 0,
 	
 	knockdownChance = 1,
@@ -465,22 +485,22 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "forceknockdown2",
 	animation = "force_knockdown_1_particle_level_1",
 	
-	--forceCost = 100,
+	forceCost = 100,
 	
-	requiredWeaponType = JEDI,
+	attackType = FORCEKNOCKDOWN,
 	
 	range = 32,
 	coneAngle = 70,
 	damageRatio = 2.0,	--We dont know the real value yet
-	speedRatio = 3.0,
+	speed = 3.0,
 	accuracyBonus = 0,
 	
 	knockdownChance = 1,
@@ -494,22 +514,22 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "forceknockdown3",
 	animation = "force_knockdown_1_arc_particle_level_1",
 	
-	--forceCost = 200,
+	forceCost = 200,
 	
-	requiredWeaponType = JEDI,
+	attackType = FORCEKNOCKDOWN,
 	
 	range = 32,
 	coneAngle = 70,
 	damageRatio = 3.0,	--We dont know the real value yet
-	speedRatio = 2.5,
+	speed = 2.5,
 	accuracyBonus = 0,
 	
 	knockdownChance = 1,
@@ -523,21 +543,21 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------
 
-ForceRandomPoolAtt = {
+RandomPoolAtt = {
 	attackname = "forcechoke",
 	animation = "force_choke_1_particle_level_1_medium",
 	
-	--forceCost = 400,
+	forceCost = 400,
 	
-	requiredWeaponType = JEDI,
+	attackType = FORCECHOKE,
 	
 	range = 32,
 	damageRatio = 2.0,	--We dont know the real value yet
-	speedRatio = 2.5,
+	speed = 5.0,
 	accuracyBonus = 0,
 	
 	knockdownChance = 0,
@@ -551,6 +571,6 @@ ForceRandomPoolAtt = {
 	
 }
 
-AddForceRandomPoolAttackTargetSkill(ForceRandomPoolAtt)
+AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 -----------------------------------------------------------------------

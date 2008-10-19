@@ -88,6 +88,8 @@ protected:
 
 	int requiredWeaponType;
 
+	int forceCost;
+
 	string CbtSpamBlock;
 	string CbtSpamCounter;
 	string CbtSpamEvade;
@@ -109,6 +111,8 @@ public:
 		willpowerPoolAttackChance = 0;
 
 		damageRatio = 1.0f;
+
+		forceCost = 0;
 
 		hamCostMultiplier = 1;
 		forceCostMultiplier = 0;
@@ -322,7 +326,7 @@ public:
 		return 0;
 	}
 
-	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature) {
+	virtual inline int getHitChance(CreatureObject* creature, CreatureObject* targetCreature) {
 		return server->getCombatManager()->getHitChance(creature, targetCreature, accuracyBonus);
 	}
 
@@ -694,6 +698,10 @@ public:
 
 	int getRequiredWeaponType() {
 		return requiredWeaponType;
+	}
+
+	virtual float calculateSpeed(CreatureObject* creature) {
+		return server->getCombatManager()->calculateWeaponAttackSpeed(creature, this);
 	}
 
 	friend class CombatManager;

@@ -2728,6 +2728,10 @@ SceneObject* CreatureObjectImplementation::getInventoryItem(uint64 oid) {
 	return (TangibleObject*) inventory->getObject(oid);
 }
 
+TangibleObject* CreatureObjectImplementation::getMissionItem(string& tma) {
+	return inventory->getMissionItem(tma);
+}
+
 void CreatureObjectImplementation::removeInventoryItem(SceneObject* item) {
 	inventory->removeObject(item->getObjectID());
 }

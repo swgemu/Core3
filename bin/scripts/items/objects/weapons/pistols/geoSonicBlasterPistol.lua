@@ -61,7 +61,7 @@ geoSonicBlasterPistol = Weapon:new{
 
 	minDamage = 300,
 
-	maxDamage = 470,,
+	maxDamage = 470,
 	
 	itemMask = HUMANOIDS,
 }

@@ -47,7 +47,6 @@ RunItemLUAFile("objects/deed/factories/structureFactoryDeed.lua");
 
 -- Vehicles
 RunItemLUAFile("objects/deed/vehicles/jetpackVehicleDeed.lua");
-RunItemLUAFile("objects/deed/vehicles/landspeederAV21VehicleDeed.lua");
 RunItemLUAFile("objects/deed/vehicles/landspeederX31VehicleDeed.lua");
 RunItemLUAFile("objects/deed/vehicles/landspeederX34VehicleDeed.lua");
 

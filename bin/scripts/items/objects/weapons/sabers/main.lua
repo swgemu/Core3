@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("objects/weapons/sabers/onehanded_lightsaber.lua");
-RunItemLUAFile("objects/weapons/sabers/twohanded_lightsaber.lua");
-RunItemLUAFile("objects/weapons/sabers/polearm_lightsaber");
+RunItemLUAFile("objects/weapons/sabers/onehandedLightsaber.lua");
+RunItemLUAFile("objects/weapons/sabers/twohandedLightsaber.lua");
+RunItemLUAFile("objects/weapons/sabers/polearmLightsaber.lua");

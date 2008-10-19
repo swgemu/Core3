@@ -89,7 +89,7 @@ public:
 
 	virtual bool calculateCost(CreatureObject* creature) = 0;
 
-	virtual float getSpeed() {
+	virtual float calculateSpeed(CreatureObject* creature) {
 		return 1.0f;
 	}
 

@@ -82,14 +82,8 @@ void ActionImplementation::execAction(Player* player) {
 	}
 	
 	if((actionMask & TYPE_TAKEITEM)) {
-	}
-
-	if((actionMask & TYPE_GIVEMISSION)) {
-	}
-
-	if((actionMask & TYPE_COMPMISSION)) {
 		string misoKey;
-		MissionManager* mMgr;
+		TangibleObject* pItem;
 		
 		if(parentObject->isNonPlayerCreature()) {
 			ActionCreature* parentCreature = (ActionCreature*)parentObject;
@@ -100,6 +94,41 @@ void ActionImplementation::execAction(Player* player) {
 				return;
 			
 			misoKey = parentCreature->getMissionKey();
+			
+			pItem = player->getMissionItem(misoKey);
+			if(pItem == NULL) {
+				//Elaborate with NPC dialogue later.
+				StopNpcConversation* scv = new StopNpcConversation(player, parentCreature->getObjectID());
+				player->sendMessage(scv);
+				player->setLastNpcConvStr("");
+				player->setLastNpcConvMessStr("");
+				return;
+			}
+			
+		} else {
+		}
+	}
+
+	if((actionMask & TYPE_GIVEMISSION)) {
+	}
+
+	if((actionMask & TYPE_COMPMISSION)) {
+		string misoKey;
+		MissionManager* mMgr;
+		
+		printf("comp mission 1\n");
+		
+		if(parentObject->isNonPlayerCreature()) {
+			ActionCreature* parentCreature = (ActionCreature*)parentObject;
+			if(parentCreature->getType() != CreatureImplementation::ACTION)
+				return;
+			
+			if(!parentCreature->isMissionNpc())
+				return;
+			
+			printf("comp mission 2\n");
+			
+			misoKey = parentCreature->getMissionKey();
 			mMgr = parentCreature->getMisoMgr();
 			
 			if(mMgr == NULL) {
@@ -107,7 +136,10 @@ void ActionImplementation::execAction(Player* player) {
 				return;
 			}
 			
+			printf("comp mission 3\n");
+			
 			mMgr->doMissionComplete(player, misoKey);
+			printf("comp mission 4\n");
 		} /*else if(parentObject->isAttackableObject()) {
 			//For lairs
 		}*/ else {

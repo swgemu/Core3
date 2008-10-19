@@ -158,7 +158,7 @@ spawnCreatures(worrt, 8, 227, -5349, 30, 1)
 --Misc
 
 spawnCreatureInCell(dewback, 8, -24.4, -30.0, -22.2, 7125561)
-spawnCreatureInCell(bobaFett, 8, -1.20873, 3, 30.5849, 1177487)
-spawnCreatureInCell(jabbaHutt, 8, -15.0684, 2, 44.2862, 1177487)
+-- spawnCreatureInCell(bobaFett, 8, -1.20873, 3, 30.5849, 1177487)
+-- spawnCreatureInCell(jabbaHutt, 8, -17.0154, 2.81087, 45, 1177487)
 spawnCreature(darkJawa, 8, 7042, 7038)
 

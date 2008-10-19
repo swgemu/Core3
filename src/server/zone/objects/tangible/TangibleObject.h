@@ -131,6 +131,8 @@ public:
 
 	void addAttributes(AttributeListMessage* alm);
 
+	string& getMisoAsocKey();
+
 	void setName(const string& n);
 
 	void setName(const unicode& n);
@@ -155,6 +157,8 @@ public:
 
 	void setObjectCount(const int count);
 
+	void setMisoAsocKey(const string& tma);
+
 protected:
 	TangibleObject(DummyConstructorParameter* param);
 
@@ -163,6 +167,7 @@ protected:
 	string _return_getAttributes;
 	string _return_getCraftedSerial;
 	string _return_getCraftersName;
+	string _return_getMisoAsocKey;
 	string _return_getTemplateName;
 	string _return_getTemplateTypeName;
 
@@ -279,6 +284,8 @@ public:
 
 	void addAttributes(AttributeListMessage* alm);
 
+	string& getMisoAsocKey();
+
 	void setName(const string& n);
 
 	void setName(const unicode& n);
@@ -303,6 +310,8 @@ public:
 
 	void setObjectCount(const int count);
 
+	void setMisoAsocKey(const string& tma);
+
 protected:
 	string _param0_setCraftersName__string_;
 	string _param0_setCraftedSerial__string_;
@@ -314,6 +323,7 @@ protected:
 	string _param0_setTemplateTypeName__string_;
 	string _param0_setCustomizationString__string_;
 	string _param0_setCustomizationVariable__string_int_;
+	string _param0_setMisoAsocKey__string_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {
