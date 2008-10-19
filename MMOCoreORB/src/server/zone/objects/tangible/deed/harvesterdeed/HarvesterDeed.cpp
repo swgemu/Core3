@@ -36,6 +36,143 @@ HarvesterDeed::HarvesterDeed(DummyConstructorParameter* param) : DeedObject(para
 HarvesterDeed::~HarvesterDeed() {
 }
 
+void HarvesterDeed::parseItemAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterDeedImplementation*) _impl)->parseItemAttributes();
+}
+
+void HarvesterDeed::setSurplusMaintenance(int maint) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addSignedIntParameter(maint);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterDeedImplementation*) _impl)->setSurplusMaintenance(maint);
+}
+
+void HarvesterDeed::setMaintenanceRate(float rate) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addFloatParameter(rate);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterDeedImplementation*) _impl)->setMaintenanceRate(rate);
+}
+
+void HarvesterDeed::setSurplusPower(int pow) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addSignedIntParameter(pow);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterDeedImplementation*) _impl)->setSurplusPower(pow);
+}
+
+void HarvesterDeed::setExtractionRate(float rate) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addFloatParameter(rate);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterDeedImplementation*) _impl)->setExtractionRate(rate);
+}
+
+void HarvesterDeed::setHopperSize(float size) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addFloatParameter(size);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterDeedImplementation*) _impl)->setHopperSize(size);
+}
+
+int HarvesterDeed::getSurplusMaintenance() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((HarvesterDeedImplementation*) _impl)->getSurplusMaintenance();
+}
+
+float HarvesterDeed::getMaintenanceRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((HarvesterDeedImplementation*) _impl)->getMaintenanceRate();
+}
+
+int HarvesterDeed::getSurplusPower() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((HarvesterDeedImplementation*) _impl)->getSurplusPower();
+}
+
+float HarvesterDeed::getExtractionRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((HarvesterDeedImplementation*) _impl)->getExtractionRate();
+}
+
+float HarvesterDeed::getHopperSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((HarvesterDeedImplementation*) _impl)->getHopperSize();
+}
+
 /*
  *	HarvesterDeedAdapter
  */
@@ -47,11 +184,88 @@ Packet* HarvesterDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		parseItemAttributes();
+		break;
+	case 7:
+		setSurplusMaintenance(inv->getSignedIntParameter());
+		break;
+	case 8:
+		setMaintenanceRate(inv->getFloatParameter());
+		break;
+	case 9:
+		setSurplusPower(inv->getSignedIntParameter());
+		break;
+	case 10:
+		setExtractionRate(inv->getFloatParameter());
+		break;
+	case 11:
+		setHopperSize(inv->getFloatParameter());
+		break;
+	case 12:
+		resp->insertSignedInt(getSurplusMaintenance());
+		break;
+	case 13:
+		resp->insertFloat(getMaintenanceRate());
+		break;
+	case 14:
+		resp->insertSignedInt(getSurplusPower());
+		break;
+	case 15:
+		resp->insertFloat(getExtractionRate());
+		break;
+	case 16:
+		resp->insertFloat(getHopperSize());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void HarvesterDeedAdapter::parseItemAttributes() {
+	return ((HarvesterDeedImplementation*) impl)->parseItemAttributes();
+}
+
+void HarvesterDeedAdapter::setSurplusMaintenance(int maint) {
+	return ((HarvesterDeedImplementation*) impl)->setSurplusMaintenance(maint);
+}
+
+void HarvesterDeedAdapter::setMaintenanceRate(float rate) {
+	return ((HarvesterDeedImplementation*) impl)->setMaintenanceRate(rate);
+}
+
+void HarvesterDeedAdapter::setSurplusPower(int pow) {
+	return ((HarvesterDeedImplementation*) impl)->setSurplusPower(pow);
+}
+
+void HarvesterDeedAdapter::setExtractionRate(float rate) {
+	return ((HarvesterDeedImplementation*) impl)->setExtractionRate(rate);
+}
+
+void HarvesterDeedAdapter::setHopperSize(float size) {
+	return ((HarvesterDeedImplementation*) impl)->setHopperSize(size);
+}
+
+int HarvesterDeedAdapter::getSurplusMaintenance() {
+	return ((HarvesterDeedImplementation*) impl)->getSurplusMaintenance();
+}
+
+float HarvesterDeedAdapter::getMaintenanceRate() {
+	return ((HarvesterDeedImplementation*) impl)->getMaintenanceRate();
+}
+
+int HarvesterDeedAdapter::getSurplusPower() {
+	return ((HarvesterDeedImplementation*) impl)->getSurplusPower();
+}
+
+float HarvesterDeedAdapter::getExtractionRate() {
+	return ((HarvesterDeedImplementation*) impl)->getExtractionRate();
+}
+
+float HarvesterDeedAdapter::getHopperSize() {
+	return ((HarvesterDeedImplementation*) impl)->getHopperSize();
 }
 
 /*

@@ -25,6 +25,24 @@ public:
 
 	GeneratorDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
 
+	void parseItemAttributes();
+
+	void setSurplusMaintenance(int maint);
+
+	void setMaintenanceRate(float rate);
+
+	void setExtractionRate(float rate);
+
+	void setHopperSize(float size);
+
+	int getSurplusMaintenance();
+
+	float getMaintenanceRate();
+
+	float getExtractionRate();
+
+	float getHopperSize();
+
 protected:
 	GeneratorDeed(DummyConstructorParameter* param);
 
@@ -40,6 +58,24 @@ public:
 	GeneratorDeedAdapter(GeneratorDeedImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void parseItemAttributes();
+
+	void setSurplusMaintenance(int maint);
+
+	void setMaintenanceRate(float rate);
+
+	void setExtractionRate(float rate);
+
+	void setHopperSize(float size);
+
+	int getSurplusMaintenance();
+
+	float getMaintenanceRate();
+
+	float getExtractionRate();
+
+	float getHopperSize();
 
 };
 

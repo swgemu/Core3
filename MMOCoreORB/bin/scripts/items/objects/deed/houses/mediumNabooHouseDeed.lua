@@ -47,5 +47,8 @@ mediumNabooHouseDeed = Deed:new {
 
 	objectCRC = 2797619055,
 
-	objectType = BUILDINGDEED
+	objectType = BUILDINGDEED,
+	
+	surplusMaintenance = 10000,
+	maintenanceRate = 60
 }

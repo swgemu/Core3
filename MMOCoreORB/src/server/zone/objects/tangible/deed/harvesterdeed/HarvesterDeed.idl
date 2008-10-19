@@ -12,5 +12,19 @@ interface HarvesterDeed implements DeedObject {
 	HarvesterDeed(unsigned long oid, int tempCRC, const unicode n, const string tempn) {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
+
+	void parseItemAttributes();
+	
+	void setSurplusMaintenance(int maint);
+	void setMaintenanceRate(float rate);
+	void setSurplusPower(int pow);
+	void setExtractionRate(float rate);
+	void setHopperSize(float size);
+	
+	int getSurplusMaintenance();
+	float getMaintenanceRate();
+	int getSurplusPower();
+	float getExtractionRate();
+	float getHopperSize();
 }
 

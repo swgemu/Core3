@@ -25,6 +25,24 @@ public:
 
 	FactoryDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
 
+	void parseItemAttributes();
+
+	void setSurplusMaintenance(int maint);
+
+	void setMaintenanceRate(float rate);
+
+	void setSurplusPower(int pow);
+
+	void setHopperSize(float size);
+
+	int getSurplusMaintenance();
+
+	float getMaintenanceRate();
+
+	int getSurplusPower();
+
+	float getHopperSize();
+
 protected:
 	FactoryDeed(DummyConstructorParameter* param);
 
@@ -40,6 +58,24 @@ public:
 	FactoryDeedAdapter(FactoryDeedImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void parseItemAttributes();
+
+	void setSurplusMaintenance(int maint);
+
+	void setMaintenanceRate(float rate);
+
+	void setSurplusPower(int pow);
+
+	void setHopperSize(float size);
+
+	int getSurplusMaintenance();
+
+	float getMaintenanceRate();
+
+	int getSurplusPower();
+
+	float getHopperSize();
 
 };
 

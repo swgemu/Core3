@@ -189,6 +189,37 @@ void HarvesterDeedImplementation::init() {
 	}
 }
 
+void HarvesterDeedImplementation::parseItemAttributes() {
+	DeedObjectImplementation::parseItemAttributes();
+
+	string attr = "surplusMaintenance";
+	setSurplusMaintenance(itemAttributes->getIntAttribute(attr));
+
+	attr = "surplusPower";
+	setSurplusPower(itemAttributes->getIntAttribute(attr));
+
+	attr = "maintenanceRate";
+	setMaintenanceRate(itemAttributes->getFloatAttribute(attr));
+
+	attr = "extractionRate";
+	setExtractionRate(itemAttributes->getFloatAttribute(attr));
+
+	attr = "hopperSize";
+	setHopperSize(itemAttributes->getFloatAttribute(attr));
+}
+
+void HarvesterDeedImplementation::addAttributes(AttributeListMessage* alm) {
+	addHeaderAttributes(alm);
+
+	alm->insertAttribute("examine_maintenance", (int)getSurplusMaintenance());
+	alm->insertAttribute("examine_maintenance_rate", (float)getMaintenanceRate());
+	alm->insertAttribute("examine_power", (int)getSurplusPower());
+	alm->insertAttribute("examine_extractionrate", (float)getExtractionRate());
+	alm->insertAttribute("examine_hoppersize", (float)getHopperSize());
+
+	addFooterAttributes(alm);
+}
+
 void HarvesterDeedImplementation::getType(){
 	if ((templateName.find("ore") != string::npos))
 		type = ORE;

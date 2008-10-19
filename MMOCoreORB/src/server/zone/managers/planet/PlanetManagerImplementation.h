@@ -100,7 +100,6 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	ShuttleLandingEvent* shuttleLandingEvent;
 	ShuttleTakeOffEvent* shuttleTakeOffEvent;
 
-	HarvesterSpawnEvent* harvesterSpawnEvent;
 	InstallationSpawnEvent* installationSpawnEvent;
 
 	TempInstallationSpawnEvent* tempInstallationSpawnEvent;

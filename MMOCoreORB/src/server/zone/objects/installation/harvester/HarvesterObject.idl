@@ -2,6 +2,7 @@ import "../../tangible/TangibleObject";
 import "../../creature/CreatureObject";
 import "../../player/Player";
 import "../../tangible/deed/DeedObject";
+import "../../tangible/deed/harvesterdeed/HarvesterDeed";
 import "../InstallationObject";
 
 import "../../../Zone";
@@ -14,25 +15,11 @@ interface HarvesterObject implements InstallationObject {
 		super (oid);
 	}
 	
-	HarvesterObject(unsigned long oid, DeedObject theDeed) {
+	HarvesterObject(unsigned long oid, HarvesterDeed theDeed) {
 		super (oid, theDeed);
 	}
 
-	void insertToZone(Zone zone);
-
-	void sendTo(Player player, boolean doClose = true);
-
-	unsigned long getActiveResourceID();
-	boolean isOperating();
-	float getCapacity();
-	float getSpecRate();
-	float getActualRate();
-	float getTotalHopperQuantity();
-	int getHopperSize();
-	
-	void setOwner(const string owner);
-
-	void update();
-	int getAvailableResourcesCount();
-
+	int getHarvesterType();
+	void setActiveResourceID(unsigned long oid);
+	void updateOperatorsAddBlankActiveRescource();
 }

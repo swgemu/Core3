@@ -11,7 +11,6 @@ protected:
 	string targetTemplate;
 	string targetTempFile;
 	unicode targetName;
-
 public:
 	// Sub Types
 
@@ -20,8 +19,6 @@ public:
 	static const int HARVESTER = 1;
 	static const int FACTORY = 2;
 	static const int GENERATOR = 3;
-
-	// Not Implemented
 	static const int TURRET = 4;
 	static const int MINEFIELD = 5;
 
@@ -48,11 +45,21 @@ public:
 
 	int useObject(Player * player);
 
+	void generateAttributes(SceneObject* obj);
+
+	virtual void parseItemAttributes();
+	virtual void addAttributes(AttributeListMessage* alm);
+	void addHeaderAttributes(AttributeListMessage* alm);
+	void addFooterAttributes(AttributeListMessage* alm);
+
 	static int getSubType(uint32 objCRC);
+	int getHarvesterType();
 
 	//inline DeedObject* deploy() {
 	//	return (DeedObject*) SceneObjectImplementation::deploy();
 	//}
+
+
 
 	inline unicode& getTargetName() {
 		return targetName;

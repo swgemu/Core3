@@ -12,6 +12,8 @@
 
 #include "../../objects/creature/Creature.h"
 
+#include "ResourceList.h"
+
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/ZoneProcessServerImplementation.h"
@@ -111,17 +113,18 @@ void ResourceManager::sendSampleMessage(Player* player, string& resourcename) {
 		((ResourceManagerImplementation*) _impl)->sendSampleMessage(player, resourcename);
 }
 
-void ResourceManager::setResourceData(ResourceContainer* resContainer) {
+void ResourceManager::setResourceData(ResourceContainer* resContainer, bool lock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
 		method.addObjectParameter(resContainer);
+		method.addBooleanParameter(lock);
 
 		method.executeWithVoidReturn();
 	} else
-		((ResourceManagerImplementation*) _impl)->setResourceData(resContainer);
+		((ResourceManagerImplementation*) _impl)->setResourceData(resContainer, lock);
 }
 
 bool ResourceManager::sendSurveyResources(Player* player, int SurveyToolType) {
@@ -194,6 +197,36 @@ void ResourceManager::harvestOrganics(Player* player, Creature* creature, int ty
 		((ResourceManagerImplementation*) _impl)->harvestOrganics(player, creature, type);
 }
 
+ResourceList* ResourceManager::getResourceListAtLocation(int zone, float x, float y, int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addSignedIntParameter(zone);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addSignedIntParameter(type);
+
+		return (ResourceList*) method.executeWithObjectReturn();
+	} else
+		return ((ResourceManagerImplementation*) _impl)->getResourceListAtLocation(zone, x, y, type);
+}
+
+string& ResourceManager::getResourceNameByID(unsigned long long rID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addUnsignedLongParameter(rID);
+
+		method.executeWithAsciiReturn(_return_getResourceNameByID);
+		return _return_getResourceNameByID;
+	} else
+		return ((ResourceManagerImplementation*) _impl)->getResourceNameByID(rID);
+}
+
 /*
  *	ResourceManagerAdapter
  */
@@ -224,7 +257,7 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		sendSampleMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleMessage__Player_string_));
 		break;
 	case 12:
-		setResourceData((ResourceContainer*) inv->getObjectParameter());
+		setResourceData((ResourceContainer*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 13:
 		resp->insertBoolean(sendSurveyResources((Player*) inv->getObjectParameter(), inv->getSignedIntParameter()));
@@ -240,6 +273,12 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 17:
 		harvestOrganics((Player*) inv->getObjectParameter(), (Creature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		break;
+	case 18:
+		resp->insertLong(getResourceListAtLocation(inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 19:
+		resp->insertAscii(getResourceNameByID(inv->getUnsignedLongParameter()));
 		break;
 	default:
 		return NULL;
@@ -272,8 +311,8 @@ void ResourceManagerAdapter::sendSampleMessage(Player* player, string& resourcen
 	return ((ResourceManagerImplementation*) impl)->sendSampleMessage(player, resourcename);
 }
 
-void ResourceManagerAdapter::setResourceData(ResourceContainer* resContainer) {
-	return ((ResourceManagerImplementation*) impl)->setResourceData(resContainer);
+void ResourceManagerAdapter::setResourceData(ResourceContainer* resContainer, bool lock) {
+	return ((ResourceManagerImplementation*) impl)->setResourceData(resContainer, lock);
 }
 
 bool ResourceManagerAdapter::sendSurveyResources(Player* player, int SurveyToolType) {
@@ -294,6 +333,14 @@ void ResourceManagerAdapter::printResource(string& resname) {
 
 void ResourceManagerAdapter::harvestOrganics(Player* player, Creature* creature, int type) {
 	return ((ResourceManagerImplementation*) impl)->harvestOrganics(player, creature, type);
+}
+
+ResourceList* ResourceManagerAdapter::getResourceListAtLocation(int zone, float x, float y, int type) {
+	return ((ResourceManagerImplementation*) impl)->getResourceListAtLocation(zone, x, y, type);
+}
+
+string& ResourceManagerAdapter::getResourceNameByID(unsigned long long rID) {
+	return ((ResourceManagerImplementation*) impl)->getResourceNameByID(rID);
 }
 
 /*

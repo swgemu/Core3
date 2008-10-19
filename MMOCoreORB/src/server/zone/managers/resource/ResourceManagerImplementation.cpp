@@ -1,7 +1,8 @@
 /*
 Copyright (C) 2007 <SWGEmu>
 
-This File is part of Core3.
+This File is part of Core3.ta
+
 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
@@ -51,6 +52,9 @@ which carries forward this exception.
 
 #include "ResourceManager.h"
 #include "ResourceManagerImplementation.h"
+#include "ResourceHarvestType.h"
+#include "ResourceList.h"
+#include "ResourceItem.h"
 
 #include "../name/NameManager.h"
 
@@ -103,6 +107,10 @@ ResourceManagerImplementation::~ResourceManagerImplementation() {
 		delete resourceMap;
 		resourceMap = NULL;
 	}
+	if (resourceIDNameMap != NULL) {
+		delete resourceIDNameMap;
+		resourceIDNameMap = NULL;
+	}
 }
 
 void ResourceManagerImplementation::init() {
@@ -110,6 +118,10 @@ void ResourceManagerImplementation::init() {
 
 	resourceMap = new VectorMap<string, ResourceTemplate*>();
 	resourceMap->setNullValue(NULL);
+
+	resourceIDNameMap = new VectorMap<uint64, string>();
+	//resourceIDNameMap->setNullValue(NULL);
+
 
 	info("Initializing Resource Manager");
 
@@ -170,7 +182,11 @@ void ResourceManagerImplementation::stop() {
 	for (int i = 0; i < resourceMap->size(); ++i)
 		delete resourceMap->get(i);
 
-	resourceMap->removeAll();
+	if(resourceMap != NULL)
+		resourceMap->removeAll();
+
+	if(resourceIDNameMap != NULL)
+		resourceIDNameMap->removeAll();
 
 	unlock();
 }
@@ -518,6 +534,80 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 	}
 }
 
+ResourceList* ResourceManagerImplementation::getResourceListAtLocation(int zone, float x, float y, int type) {
+
+	//lock(doLock);
+
+	string class2, class2re = "";
+	switch(type) {
+	case ResourceHarvestType::SOLAR:
+		class2 = "Solar Energy";
+		break;
+	case ResourceHarvestType::CHEMICAL:
+		class2 = "Chemical";
+		break;
+	case ResourceHarvestType::FLORA:
+		class2 = "Flora";
+		break;
+	case ResourceHarvestType::GAS:
+		class2 = "Gas";
+		break;
+	case ResourceHarvestType::GEOTHERMAL:
+		class2 = "Geothermal Energy";
+		break;
+	case ResourceHarvestType::MINERAL:
+		class2 = "Mineral";
+		class2re = "Radioactive Energy";
+		break;
+	case ResourceHarvestType::WATER:
+		class2 = "Water";
+		break;
+	case ResourceHarvestType::WIND:
+		class2 = "Wind Energy";
+		break;
+	case ResourceHarvestType::FUSION:
+		class2 = "Radioactive Energy";
+		break;
+	default:
+		//unlock(doLock);
+		return NULL;
+	}
+
+	ResourceList *list = new ResourceList();
+
+	ResourceTemplate* resource;
+
+	for (int i = resourceMap->size() - 1; i > 0; i--) {
+		resource = resourceMap->get(i);
+		if (resource->getSpawnSize() > 0 && (strcmp(resource->getClass2().c_str(), class2.c_str()) == 0 || strcmp(resource->getClass2().c_str(), class2re.c_str()) == 0)) {
+			for(int i = resource->getSpawnSize() - 1; i >= 0; i--) {
+				SpawnLocation* sl = resource->getSpawn(i);
+				if (sl->getPlanet() == zone) {
+					if (!list->contains(resource->getName())) {
+
+						//list->put(resource->getName(), Resource());
+						float density = getDensity(zone, resource->getName(), x, y);
+						if(density >= .01)
+						{
+							ResourceItem* ri = new ResourceItem(resource->getResourceID(), sl->getID(), sl->getExpireTime(), resource->getName(), resource->getType(), (int) (density * 100) );
+
+							list->put(resource->getName(), ri);
+						}
+
+						//Resource *r = new Resource(resource->getResourceID(), resource->getName(), resource->getType(), 50);
+						// list->put(resource->getName(), r);
+					}
+				}
+			}
+		}
+	}
+
+
+//	unlock(doLock);
+
+	return list;
+}
+
 void ResourceManagerImplementation::harvestOrganics(Player* player,
 		Creature* creature, int type) {
 	lock();
@@ -707,8 +797,7 @@ string ResourceManagerImplementation::getCurrentNameFromType(string type){
 	return "";
 }
 
-void ResourceManagerImplementation::setResourceData(
-		ResourceContainer* resContainer, bool doLock) {
+void ResourceManagerImplementation::setResourceData(ResourceContainer* resContainer, bool doLock) {
 	// Added by Ritter
 	lock(doLock);
 
@@ -764,29 +853,29 @@ bool ResourceManagerImplementation::checkResource(Player* player, string& resour
 
 	string surveyType, class2, class2re = "";
 	switch(SurveyToolType) {
-	case SurveyToolImplementation::SOLAR:
+	case ResourceHarvestType::SOLAR:
 		class2 = "Solar Energy";
 		break;
-	case SurveyToolImplementation::CHEMICAL:
+	case ResourceHarvestType::CHEMICAL:
 		class2 = "Chemical";
 		break;
-	case SurveyToolImplementation::FLORA:
+	case ResourceHarvestType::FLORA:
 		class2 = "Flora";
 		break;
-	case SurveyToolImplementation::GAS:
+	case ResourceHarvestType::GAS:
 		class2 = "Gas";
 		break;
-	case SurveyToolImplementation::GEOTHERMAL:
+	case ResourceHarvestType::GEOTHERMAL:
 		class2 = "Geothermal Energy";
 		break;
-	case SurveyToolImplementation::MINERAL:
+	case ResourceHarvestType::MINERAL:
 		class2 = "Mineral";
 		class2re = "Radioactive Energy";
 		break;
-	case SurveyToolImplementation::WATER:
+	case ResourceHarvestType::WATER:
 		class2 = "Water";
 		break;
-	case SurveyToolImplementation::WIND:
+	case ResourceHarvestType::WIND:
 		class2 = "Wind Energy";
 		break;
 	default:
@@ -823,36 +912,36 @@ bool ResourceManagerImplementation::sendSurveyResources(Player* player, int Surv
 
 	string surveyType, class2, class2re = "";
 	switch(SurveyToolType) {
-	case SurveyToolImplementation::SOLAR:
+	case ResourceHarvestType::SOLAR:
 		class2 = "Solar Energy";
 		surveyType = "energy_renewable_unlimited_solar";
 		break;
-	case SurveyToolImplementation::CHEMICAL:
+	case ResourceHarvestType::CHEMICAL:
 		class2 = "Chemical";
 		surveyType = "chemical";
 		break;
-	case SurveyToolImplementation::FLORA:
+	case ResourceHarvestType::FLORA:
 		class2 = "Flora";
 		surveyType = "flora_resources";
 		break;
-	case SurveyToolImplementation::GAS:
+	case ResourceHarvestType::GAS:
 		class2 = "Gas";
 		surveyType = "gas";
 		break;
-	case SurveyToolImplementation::GEOTHERMAL:
+	case ResourceHarvestType::GEOTHERMAL:
 		class2 = "Geothermal Energy";
 		surveyType = "enegy_renewable_site_limited_geothermal";
 		break;
-	case SurveyToolImplementation::MINERAL:
+	case ResourceHarvestType::MINERAL:
 		class2 = "Mineral";
 		class2re = "Radioactive Energy";
 		surveyType = "mineral";
 		break;
-	case SurveyToolImplementation::WATER:
+	case ResourceHarvestType::WATER:
 		class2 = "Water";
 		surveyType = "water";
 		break;
-	case SurveyToolImplementation::WIND:
+	case ResourceHarvestType::WIND:
 		class2 = "Wind Energy";
 		surveyType = "enegy_renewable_unlimited_wind";
 		break;
@@ -1075,8 +1164,8 @@ void ResourceManagerImplementation::buildResourceMap() {
 
 					setObjectSubType(resTemp);
 
+					resourceIDNameMap->put(resTemp->getResourceID(), resname);
 					resourceMap->put(resname, resTemp);
-
 				} else {
 					resTemp = resourceMap->get(resname);
 				}
@@ -1084,10 +1173,11 @@ void ResourceManagerImplementation::buildResourceMap() {
 				try {
 
 					string pool = res->getString(33);
+					// SpawnLocation(uint64 id, int inPlanet, float inX, float inY, float inRadius, float inMax, string& inPool) {
 					sl
 							= new SpawnLocation(res->getUnsignedLong(25), res->getInt(
 									27), res->getFloat(28), res->getFloat(29), res->getFloat(
-									30), res->getFloat(31), pool);
+									30), res->getFloat(31), res->getUnsignedLong(32), pool);
 
 					resTemp->addSpawn(sl);
 
@@ -1612,6 +1702,7 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 		}
 	}
 
+	resourceIDNameMap->put(resource->getResourceID(), resource->getName());
 	resourceMap->put(resource->getName(), resource);
 }
 
@@ -2019,7 +2110,7 @@ void ResourceManagerImplementation::insertSpawn(ResourceTemplate* resource, int 
 
 		uint64 id = res->getLastAffectedRow();
 
-		SpawnLocation* sl = new SpawnLocation(id, planet_id, x, y, radius, max, pool);
+		SpawnLocation* sl = new SpawnLocation(id, planet_id, x, y, radius, max, despawn, pool);
 
 		resource->addSpawn(sl);
 
@@ -2181,6 +2272,15 @@ void ResourceManagerImplementation::setObjectSubType(ResourceTemplate* resImpl) 
 	info("Couldn't pick class for " + resImpl->getName());
 	//resImpl->toString();
 
+}
+
+string& ResourceManagerImplementation::getResourceNameByID(uint64 rID) {
+	if(resourceIDNameMap != NULL)
+		return resourceIDNameMap->get(rID);
+
+	string nullish("");
+
+	return nullish;
 }
 
 void ResourceManagerImplementation::printResource(string name){

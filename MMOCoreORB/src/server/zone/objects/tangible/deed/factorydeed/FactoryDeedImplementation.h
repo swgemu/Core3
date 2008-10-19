@@ -15,6 +15,9 @@ class SceneObject;
 class FactoryDeedImplementation : public FactoryDeedServant {
 protected:
 	int type;
+
+	float maintenanceRate, hopperSize;
+	uint32 surplusMaintenance, surplusPower;
 public:
 	static const int EQUIPMENT = 1;
 	static const int FOOD = 2;
@@ -27,6 +30,44 @@ public:
 	FactoryDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
 	~FactoryDeedImplementation();
 
+	void parseItemAttributes();
+	void addAttributes(AttributeListMessage* alm);
+
+	// Attribute Setters
+	inline void setSurplusMaintenance(uint32 maint) {
+		surplusMaintenance = maint;
+		string attr("surplusMaintenance");
+		itemAttributes->setIntAttribute(attr, (int)surplusMaintenance);
+	}
+	inline void setMaintenanceRate(float rate) {
+		 maintenanceRate = rate;
+		 string attr("maintenanceRate");
+		 itemAttributes->setFloatAttribute(attr, (float)maintenanceRate);
+	}
+	inline void setSurplusPower(uint32 pow) {
+		surplusPower = pow;
+		string attr("surplusPower");
+		itemAttributes->setIntAttribute(attr, (int)surplusPower);
+	}
+	inline void setHopperSize(float size) {
+		hopperSize = size;
+		string attr("hopperSize");
+		itemAttributes->setFloatAttribute(attr, (float)hopperSize);
+	}
+
+	// Attribute Getters
+	inline uint32 getSurplusMaintenance() {
+		return surplusMaintenance;
+	}
+	inline float getMaintenanceRate() {
+		return maintenanceRate;
+	}
+	inline uint32 getSurplusPower() {
+		return surplusPower;
+	}
+	inline float getHopperSize() {
+		return hopperSize;
+	}
 private:
 	void init();
 };

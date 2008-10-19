@@ -81,6 +81,7 @@ which carries forward this exception.
 #include "packets/object/Biography.h"
 #include "packets/object/Flourish.h"
 #include "packets/object/ImageDesignMessage.h"
+#include "packets/object/GenericResponse.h"
 #include "packets/object/SitOnObject.h"
 #include "packets/object/PlayersNearYou.h"
 #include "packets/object/DataTransform.h"
@@ -190,11 +191,14 @@ which carries forward this exception.
 #include "packets/cell/CellObjectMessage6.h"
 #include "packets/cell/UpdateCellPermissionsMessage.h"
 
-#include "packets/harvester/HarvesterObjectMessage3.h"
-#include "packets/harvester/HarvesterObjectMessage6.h"
-
 #include "packets/installation/InstallationObjectMessage3.h"
 #include "packets/installation/InstallationObjectMessage6.h"
+#include "packets/installation/InstallationObjectMessage7.h"
+#include "packets/installation/InstallationObjectDeltaMessage3.h"
+#include "packets/installation/InstallationObjectDeltaMessage6.h"
+#include "packets/installation/InstallationObjectDeltaMessage7.h"
+#include "packets/installation/ResourceHarvesterActivatePageMessage.h"
+#include "packets/installation/HarvesterResourceDataMessage.h"
 
 #include "packets/player/EnterStructurePlacementModeMessage.h"
 

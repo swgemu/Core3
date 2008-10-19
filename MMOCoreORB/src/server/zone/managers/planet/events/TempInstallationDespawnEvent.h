@@ -45,21 +45,23 @@ public:
 
 		PlanetManager *planetManager = player->getZone()->getPlanetManager();
 
-		cout << "TempInstallationDespawnEvent::activate() Deed type is = " << DeedObjectImplementation::getSubType(deed->getObjectCRC()) << endl;
-		switch(DeedObjectImplementation::getSubType(deed->getObjectCRC())) {
-			case DeedObjectImplementation::HARVESTER:
+		cout << "TempInstallationDespawnEvent::activate() Deed object type is = " << deed->getObjectType() << " sub object type = " << deed->getObjectType() << endl;
+		switch(deed->getObjectSubType()) {
+			case TangibleObjectImplementation::INSTALLATIONDEED:
 
-				planetManager->spawnHarvester(player, deed, x, z, y, oX, oZ, oY, oW);
+				switch(DeedObjectImplementation::getSubType(deed->getObjectCRC())){
+					case TangibleObjectImplementation::HARVESTER:
+						planetManager->spawnHarvester(player, (HarvesterDeed*)deed, x, z, y, oX, oZ, oY, oW);
+						break;
+					case TangibleObjectImplementation::FACTORY:
+					case TangibleObjectImplementation::GENERATOR:
+					case TangibleObjectImplementation::TURRET:
+					case TangibleObjectImplementation::MINEFIELD:
+						planetManager->spawnInstallation(player, deed, x, z, y, oX, oZ, oY, oW);
+						break;
+				}
 				break;
-
-			case DeedObjectImplementation::GENERATOR:
-			case DeedObjectImplementation::FACTORY:
-
-				planetManager->spawnInstallation(player, deed, x, z, y, oX, oZ, oY, oW);
-				break;
-
-			case DeedObjectImplementation::BUILDING:
-
+			case TangibleObjectImplementation::BUILDINGDEED:
 				planetManager->spawnBuilding(player, deed, x, z, y, oX, oZ, oY, oW);
 				break;
 

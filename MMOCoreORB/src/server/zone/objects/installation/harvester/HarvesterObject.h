@@ -15,6 +15,8 @@ class Player;
 
 class DeedObject;
 
+class HarvesterDeed;
+
 class InstallationObject;
 
 class Zone;
@@ -27,31 +29,13 @@ class HarvesterObject : public InstallationObject {
 public:
 	HarvesterObject(unsigned long long oid);
 
-	HarvesterObject(unsigned long long oid, DeedObject* theDeed);
+	HarvesterObject(unsigned long long oid, HarvesterDeed* theDeed);
 
-	void insertToZone(Zone* zone);
+	int getHarvesterType();
 
-	void sendTo(Player* player, bool doClose = true);
+	void setActiveResourceID(unsigned long long oid);
 
-	unsigned long long getActiveResourceID();
-
-	bool isOperating();
-
-	float getCapacity();
-
-	float getSpecRate();
-
-	float getActualRate();
-
-	float getTotalHopperQuantity();
-
-	int getHopperSize();
-
-	void setOwner(const string& owner);
-
-	void update();
-
-	int getAvailableResourcesCount();
+	void updateOperatorsAddBlankActiveRescource();
 
 protected:
 	HarvesterObject(DummyConstructorParameter* param);
@@ -69,32 +53,12 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void insertToZone(Zone* zone);
+	int getHarvesterType();
 
-	void sendTo(Player* player, bool doClose);
+	void setActiveResourceID(unsigned long long oid);
 
-	unsigned long long getActiveResourceID();
+	void updateOperatorsAddBlankActiveRescource();
 
-	bool isOperating();
-
-	float getCapacity();
-
-	float getSpecRate();
-
-	float getActualRate();
-
-	float getTotalHopperQuantity();
-
-	int getHopperSize();
-
-	void setOwner(const string& owner);
-
-	void update();
-
-	int getAvailableResourcesCount();
-
-protected:
-	string _param0_setOwner__string_;
 };
 
 class HarvesterObjectHelper : public DistributedObjectClassHelper, public Singleton<HarvesterObjectHelper> {
@@ -120,7 +84,7 @@ public:
 
 public:
 	HarvesterObjectServant(unsigned long long oid);
-	HarvesterObjectServant(unsigned long long oid, DeedObject* theDeed);
+	HarvesterObjectServant(unsigned long long oid, HarvesterDeed* theDeed);
 	virtual ~HarvesterObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -27,6 +27,34 @@ FactoryDeedImplementation::FactoryDeedImplementation(uint64 objid, uint32 tempcr
 FactoryDeedImplementation::~FactoryDeedImplementation() {
 
 }
+
+void FactoryDeedImplementation::parseItemAttributes() {
+	DeedObjectImplementation::parseItemAttributes();
+
+	string attr = "surplusMaintenance";
+	setSurplusMaintenance(itemAttributes->getIntAttribute(attr));
+
+	attr = "surplusPower";
+	setSurplusPower(itemAttributes->getIntAttribute(attr));
+
+	attr = "maintenanceRate";
+	setMaintenanceRate(itemAttributes->getFloatAttribute(attr));
+
+	attr = "hopperSize";
+	setHopperSize(itemAttributes->getFloatAttribute(attr));
+}
+
+void FactoryDeedImplementation::addAttributes(AttributeListMessage* alm) {
+	addHeaderAttributes(alm);
+
+	alm->insertAttribute("examine_maintenance", (int)getSurplusMaintenance());
+	alm->insertAttribute("examine_maintenance_rate", (float)getMaintenanceRate());
+	alm->insertAttribute("examine_power", (int)getSurplusPower());
+	alm->insertAttribute("examine_hoppersize", (float)getHopperSize());
+
+	addFooterAttributes(alm);
+}
+
 void FactoryDeedImplementation::init() {
 	objectSubType = TangibleObjectImplementation::INSTALLATIONDEED;
 

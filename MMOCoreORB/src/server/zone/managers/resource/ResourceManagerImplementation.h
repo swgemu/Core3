@@ -69,6 +69,8 @@ which carries forward this exception.
 
 #include "ResourceTemplate.h"
 
+#include "ResourceList.h"
+
 #include "SpawnLocation.h"
 
 class SpawnResourcesEvent;
@@ -83,6 +85,7 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Mute
 	Vector<string>* nativepool;
 
 	VectorMap<string, ResourceTemplate*>* resourceMap;
+	VectorMap<uint64, string>* resourceIDNameMap;
 
 	//  The following 4 variable are for testing, and provide no functionality
 	//  Used to help increase efficiency in code
@@ -131,6 +134,10 @@ public:
 	void printResource(string resname);
 
 	void harvestOrganics(Player* player, Creature* creature, int type);
+
+	ResourceList* getResourceListAtLocation(int zone, float x, float y, int type);
+
+	string& getResourceNameByID(uint64 rID);
 
 private:
 	void init();
@@ -201,6 +208,8 @@ private:
 	string getCurrentNameFromType(string type);
 
 	void getHarvestingType(CreatureObject* creatureObj, string& harvestType, int& harvestAmount, int type);
+
+
 
 };
 

@@ -337,22 +337,21 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		}
 	} else if (objecttype & TangibleObjectImplementation::DEED) {
 		switch (objecttype) {
-			case DeedObjectImplementation::INSTALLATIONDEED:
-
-				//item = new HarvesterDeed(objectid, objectcrc, objectname, objecttemp);
+			case TangibleObjectImplementation::INSTALLATIONDEED:
 				switch(DeedObjectImplementation::getSubType(objectcrc)){
-					case DeedObjectImplementation::HARVESTER:
+					case TangibleObjectImplementation::HARVESTER:
 						item = new HarvesterDeed(objectid, objectcrc, objectname, objecttemp);
+						cout << "ItemManagerImplementation::createPlayerObjectTemplate TangibleObjectImplementation::HARVESTER" << endl;
 						break;
-					case DeedObjectImplementation::FACTORY:
+					case TangibleObjectImplementation::FACTORY:
 						item = new FactoryDeed(objectid, objectcrc, objectname, objecttemp);
 						break;
-					case DeedObjectImplementation::GENERATOR:
+					case TangibleObjectImplementation::GENERATOR:
 						item = new GeneratorDeed(objectid, objectcrc, objectname, objecttemp);
 						break;
-					case DeedObjectImplementation::TURRET:
+					case TangibleObjectImplementation::TURRET:
 						break;
-					case DeedObjectImplementation::MINEFIELD:
+					case TangibleObjectImplementation::MINEFIELD:
 						break;
 				}
 				break;
@@ -368,6 +367,10 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			case TangibleObjectImplementation::VEHICLEDEED:
 				item = new VehicleDeed(objectid, objectcrc, objectname, objecttemp);
 				break;
+		}
+		if (makeStats && item != NULL) {
+			item->setAttributes(lootAttributes );
+			item->parseItemAttributes();
 		}
 	}
 	/*else {
@@ -900,6 +903,84 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 		if (!cert.empty())
 			weapon->setCert(cert);
+
+	} else if (type & TangibleObjectImplementation::DEED) {
+
+		cout << "type & TangibleObjectImplementation::DEED" << endl;
+
+		int surplusMaintenance = 0;
+		float maintenanceRate = 0;
+		int surplusPower = 0;
+		float extractionRate = 0;
+		float hopperSize = 0;
+
+
+		switch (type) {
+			case TangibleObjectImplementation::INSTALLATIONDEED:
+				switch(DeedObjectImplementation::getSubType(crc)){
+					case TangibleObjectImplementation::HARVESTER:
+					{
+						cout << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
+						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
+						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
+						surplusPower = itemconfig.getIntField("surplusPower");
+						extractionRate = itemconfig.getFloatField("extractionRate");
+						hopperSize = itemconfig.getFloatField("hopperSize");
+
+						cout << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
+
+						HarvesterDeed* harv = (HarvesterDeed*) item;
+						harv->setSurplusMaintenance(surplusMaintenance);
+						harv->setMaintenanceRate(maintenanceRate);
+						harv->setSurplusPower(surplusPower);
+						harv->setExtractionRate(extractionRate);
+						harv->setHopperSize(hopperSize);
+
+						break;
+					}
+					case TangibleObjectImplementation::FACTORY:
+					{
+						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
+						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
+						surplusPower = itemconfig.getIntField("surplusPower");
+						hopperSize = itemconfig.getFloatField("hopperSize");
+
+						FactoryDeed* fact = (FactoryDeed*) item;
+						fact->setSurplusMaintenance(surplusMaintenance);
+						fact->setMaintenanceRate(maintenanceRate);
+						fact->setSurplusPower(surplusPower);
+						fact->setHopperSize(hopperSize);
+						break;
+					}
+					case TangibleObjectImplementation::GENERATOR:
+					{
+						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
+						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
+						extractionRate = itemconfig.getFloatField("extractionRate");
+						hopperSize = itemconfig.getFloatField("hopperSize");
+
+						GeneratorDeed* gen = (GeneratorDeed*) item;
+						gen->setSurplusMaintenance(surplusMaintenance);
+						gen->setMaintenanceRate(maintenanceRate);
+						gen->setExtractionRate(extractionRate);
+						gen->setHopperSize(hopperSize);
+						break;
+					}
+					case TangibleObjectImplementation::TURRET:
+						break;
+					case TangibleObjectImplementation::MINEFIELD:
+						break;
+				}
+				break;
+			case TangibleObjectImplementation::BUILDINGDEED:
+				break;
+			case TangibleObjectImplementation::PETDEED:
+				break;
+			case TangibleObjectImplementation::DROIDDEED:
+				break;
+			case TangibleObjectImplementation::VEHICLEDEED:
+				break;
+		}
 	} else if (type == TangibleObjectImplementation::PHARMACEUTICAL) {
 		int medpackType = itemconfig.getIntField("medpackType");
 		int usesRemaining = itemconfig.getIntField("usesRemaining");

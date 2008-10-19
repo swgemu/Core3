@@ -15,6 +15,8 @@ class Player;
 
 class CreatureObject;
 
+class SceneObject;
+
 #include "../TangibleObject.h"
 
 class DeedObject : public TangibleObject {
@@ -34,6 +36,10 @@ public:
 	string& getTargetTempFile();
 
 	int useObject(Player* player);
+
+	void generateAttributes(SceneObject* obj);
+
+	int getHarvesterType();
 
 protected:
 	DeedObject(DummyConstructorParameter* param);
@@ -68,6 +74,10 @@ public:
 	string& getTargetTempFile();
 
 	int useObject(Player* player);
+
+	void generateAttributes(SceneObject* obj);
+
+	int getHarvesterType();
 
 protected:
 	string _param0_setTargetFile__string_;

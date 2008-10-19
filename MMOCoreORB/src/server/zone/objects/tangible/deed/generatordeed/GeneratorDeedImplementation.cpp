@@ -23,8 +23,36 @@ GeneratorDeedImplementation::GeneratorDeedImplementation(uint64 objid, uint32 te
 
 	init();
 }
+
 GeneratorDeedImplementation::~GeneratorDeedImplementation() {
 
+}
+
+void GeneratorDeedImplementation::parseItemAttributes() {
+	DeedObjectImplementation::parseItemAttributes();
+
+	string attr = "surplusMaintenance";
+	setSurplusMaintenance(itemAttributes->getIntAttribute(attr));
+
+	attr = "maintenanceRate";
+	setMaintenanceRate(itemAttributes->getFloatAttribute(attr));
+
+	attr = "extractionRate";
+	setExtractionRate(itemAttributes->getFloatAttribute(attr));
+
+	attr = "hopperSize";
+	setHopperSize(itemAttributes->getFloatAttribute(attr));
+}
+
+void GeneratorDeedImplementation::addAttributes(AttributeListMessage* alm) {
+	addHeaderAttributes(alm);
+
+	alm->insertAttribute("examine_maintenance", (int)getSurplusMaintenance());
+	alm->insertAttribute("examine_maintenance_rate", (float)getMaintenanceRate());
+	alm->insertAttribute("examine_extractionrate", (float)getExtractionRate());
+	alm->insertAttribute("examine_hoppersize", (float)getHopperSize());
+
+	addFooterAttributes(alm);
 }
 
 void GeneratorDeedImplementation::init() {
