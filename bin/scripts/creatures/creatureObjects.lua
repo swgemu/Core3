@@ -71,10 +71,10 @@ end
 
 --------------------------------------------------------------
 
--- Rori
+-- Lok
 if (PLANET_ID == 4) then
-RunCreatureFile("objects/rori/creatures.lua") 
-RunCreatureFile("objects/rori/npcs.lua")
+RunCreatureFile("objects/lok/creatures.lua") 
+RunCreatureFile("objects/lok/npcs.lua")
 end
 
 ---------------------------------------------------------------

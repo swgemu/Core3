@@ -106,3 +106,7 @@ RunCreatureFile("objects/endor/npcs/minerDWB.lua")
 RunCreatureFile("objects/endor/npcs/engineerDWB.lua")
 RunCreatureFile("objects/endor/npcs/deathWatchOverlordDWB.lua")
 RunCreatureFile("objects/endor/npcs/twilekSlave.lua")
+
+-- Citys
+RunCreatureFile("objects/endor/npcs/researchOutpost.lua")
+RunCreatureFile("objects/endor/npcs/smugglersOutpost.lua")

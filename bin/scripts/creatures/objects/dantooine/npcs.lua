@@ -85,3 +85,8 @@
  RunCreatureFile("objects/dantooine/npcs/mokkSoothsayer.lua")
  RunCreatureFile("objects/dantooine/npcs/mokkTribesman.lua")
  RunCreatureFile("objects/dantooine/npcs/mokkWarrior.lua")
+ 
+ -- Citys
+ RunCreatureFile("objects/dantooine/npcs/imperialOutpost.lua")
+ RunCreatureFile("objects/dantooine/npcs/miningOutpost.lua")
+ RunCreatureFile("objects/dantooine/npcs/pirateOutpost.lua")

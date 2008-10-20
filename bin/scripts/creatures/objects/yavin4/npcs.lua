@@ -40,3 +40,8 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+-- Citys
+RunCreatureFile("objects/yavin4/npcs/imperialFortress.lua")
+RunCreatureFile("objects/yavin4/npcs/laborOutpost.lua")
+RunCreatureFile("objects/yavin4/npcs/miningOutpost.lua")
+

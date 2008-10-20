@@ -81,5 +81,11 @@ RunCreatureFile("objects/tatooine/npcs/jawaThief.lua")
  -- Jabba's Palace
  RunCreatureFile("objects/tatooine/npcs/jabbapalace.lua")
  
+ -- Citys
+ RunCreatureFile("objects/tatooine/npcs/anchorhead.lua")
+ RunCreatureFile("objects/tatooine/npcs/bestine.lua")
+ RunCreatureFile("objects/tatooine/npcs/mosEisley.lua")
+ RunCreatureFile("objects/tatooine/npcs/mosEntha.lua")
+ RunCreatureFile("objects/tatooine/npcs/mosEspa.lua")
+ RunCreatureFile("objects/tatooine/npcs/wayfar.lua")
  
-

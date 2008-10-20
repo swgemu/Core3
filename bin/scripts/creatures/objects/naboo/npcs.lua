@@ -40,4 +40,9 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunCreatureFile("objects/naboo/npcs/staticNpcsTheed.lua")
+RunCreatureFile("objects/naboo/npcs/deejaPeak.lua")
+RunCreatureFile("objects/naboo/npcs/kaadara.lua")
+RunCreatureFile("objects/naboo/npcs/keren.lua")
+RunCreatureFile("objects/naboo/npcs/lakeRetreat.lua")
+RunCreatureFile("objects/naboo/npcs/moenia.lua")
+RunCreatureFile("objects/naboo/npcs/theed.lua")

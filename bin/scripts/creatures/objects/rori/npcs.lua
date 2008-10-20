@@ -40,3 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+
+-- Citys
+RunCreatureFile("objects/rori/npcs/narmale.lua")
+
