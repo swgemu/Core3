@@ -93,6 +93,9 @@ corellianButterflyWarrior = Creature:new {
       killer = 0,
       aggressive = 1,
       invincible = 0,
+	  
+	  meleeDefense = 1, 
+	  rangedDefense = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 

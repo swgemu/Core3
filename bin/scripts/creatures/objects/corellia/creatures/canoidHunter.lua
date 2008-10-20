@@ -94,6 +94,9 @@ canoidHunter = Creature:new {
       aggressive = 0,
       invincible = 0,
 
+	  meleeDefense = 1, 
+	  rangedDefense = 1,
+	  
       attackCreatureOnSight = "", -- Enter socialGroups 
 
       weapon = "", -- File path to weapon -> object\xxx\xxx\xx
