@@ -51,7 +51,9 @@ DotPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
@@ -95,7 +97,9 @@ DotPoolAtt = {
 	coneAngle = 30,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
@@ -139,7 +143,9 @@ DotPoolAtt = {
 	coneAngle = 0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
@@ -183,7 +189,9 @@ DotPoolAtt = {
 	coneAngle = 30,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
@@ -228,7 +236,9 @@ RandPoolAtt = {
 	coneAngle = 0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
@@ -262,7 +272,9 @@ RandPoolAtt = {
 	coneAngle = 30,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
@@ -296,7 +308,9 @@ RandPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
@@ -330,7 +344,9 @@ RandPoolAtt = {
 	coneAngle = 30,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,

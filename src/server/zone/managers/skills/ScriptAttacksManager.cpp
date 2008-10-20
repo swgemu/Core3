@@ -242,7 +242,9 @@ int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamHit = skill.getStringField("CbtSpamHit");
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
-	float hamCostMultiplier = skill.getFloatField("hamCostMultiplier");
+	float healthCostMultiplier = skill.getFloatField("healthCostMultiplier");
+	float actionCostMultiplier = skill.getFloatField("actionCostMultiplier");
+	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
 	// For force powers
@@ -272,7 +274,9 @@ int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
 
-	attack->setHAMCostMultiplier(hamCostMultiplier);
+	attack->setHealthCostMultiplier(healthCostMultiplier);
+	attack->setActionCostMultiplier(actionCostMultiplier);
+	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
 
 	CombatActions->put(attack);
@@ -324,7 +328,9 @@ int ScriptAttacksManager::AddDirectPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamHit = skill.getStringField("CbtSpamHit");
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
-	float hamCostMultiplier = skill.getFloatField("hamCostMultiplier");
+	float healthCostMultiplier = skill.getFloatField("healthCostMultiplier");
+	float actionCostMultiplier = skill.getFloatField("actionCostMultiplier");
+	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
 	attack = new DirectPoolAttackTargetSkill(attackname, animation, server);
@@ -362,7 +368,9 @@ int ScriptAttacksManager::AddDirectPoolAttackTargetSkill(lua_State *L) {
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
 
-	attack->setHAMCostMultiplier(hamCostMultiplier);
+	attack->setHealthCostMultiplier(healthCostMultiplier);
+	attack->setActionCostMultiplier(actionCostMultiplier);
+	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
 
 	CombatActions->put(attack);
@@ -417,7 +425,9 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamHit = skill.getStringField("CbtSpamHit");
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
-	float hamCostMultiplier = skill.getFloatField("hamCostMultiplier");
+	float healthCostMultiplier = skill.getFloatField("healthCostMultiplier");
+	float actionCostMultiplier = skill.getFloatField("actionCostMultiplier");
+	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
 
@@ -459,7 +469,9 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
 
-	attack->setHAMCostMultiplier(hamCostMultiplier);
+	attack->setHealthCostMultiplier(healthCostMultiplier);
+	attack->setActionCostMultiplier(actionCostMultiplier);
+	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
 
 	CombatActions->put(attack);
@@ -605,7 +617,6 @@ int ScriptAttacksManager::AddForcePowersPoolAttackTargetSkill(lua_State *L) {
 
 	if (speed < 1.0f)
 		speed = 4.0f;
-
 	attack->setSpeed(speed);
 
 	attack->setKnockdownChance(knockdownStateChance);
@@ -1025,7 +1036,7 @@ int ScriptAttacksManager::AddDeBuffAttackTargetSkill(lua_State* L) {
 
 	float speed = skill.getFloatField("speedRatio");
 
-	float forceCost = skill.getFloatField("forceCost");
+	int forceCost = skill.getIntField("forceCost");
 
 	int meleeDamagePenalty = skill.getIntField("meleeDamagePenalty");
 	int meleeAccuracyPenalty = skill.getIntField("meleeAccuracyPenalty");
@@ -1200,7 +1211,9 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	string CbtSpamHit = skill.getStringField("CbtSpamHit");
 	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
-	float hamCostMultiplier = skill.getFloatField("hamCostMultiplier");
+	float healthCostMultiplier = skill.getFloatField("healthCostMultiplier");
+	float actionCostMultiplier = skill.getFloatField("actionCostMultiplier");
+	float mindCostMultiplier = skill.getFloatField("mindCostMultiplier");
 	float forceCostMultiplier = skill.getFloatField("forceCostMultiplier");
 
 	attack = new WoundsDirectPoolAttackTargetSkill(attackname, animation, server);
@@ -1230,7 +1243,9 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	attack->setCbtSpamCounter(CbtSpamCounter);
 	attack->setCbtSpamBlock(CbtSpamBlock);
 
-	attack->setHAMCostMultiplier(hamCostMultiplier);
+	attack->setHealthCostMultiplier(healthCostMultiplier);
+	attack->setActionCostMultiplier(actionCostMultiplier);
+	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
 
 	CombatActions->put(attack);

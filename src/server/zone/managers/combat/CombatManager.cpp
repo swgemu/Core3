@@ -1154,35 +1154,35 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 	return reduction;
 }
 
-bool CombatManager::calculateCost(CreatureObject* creature, float hamMultiplier, float forceMultiplier) {
+bool CombatManager::calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier) {
 	if (!creature->isPlayer())
 		return true;
 
 	Player* player = (Player*)creature;
 	Weapon* weapon = creature->getWeapon();
 
-	int wpnHealth;
-	int wpnAction;
-	int wpnMind;
-	int forceCost;
+	float wpnHealth = healthMultiplier;
+	float wpnAction = actionMultiplier;
+	float wpnMind = mindMultiplier;
+	float forceCost = forceMultiplier;
 
 	if (weapon != NULL) {
-		wpnHealth = (int)(weapon->getHealthAttackCost() * hamMultiplier);
-		wpnAction = (int)(weapon->getActionAttackCost() * hamMultiplier);
-		wpnMind = (int)(weapon->getMindAttackCost() * hamMultiplier);
-		forceCost = (int)(weapon->getForceCost() * forceMultiplier);
+		wpnHealth *= weapon->getHealthAttackCost();
+		wpnAction *= weapon->getActionAttackCost();
+		wpnMind *= weapon->getMindAttackCost();
+		forceCost *= weapon->getForceCost();
 
 	} else {
 		// TODO: Find the real TK unarmed HAM costs
-		wpnHealth = 10;
-		wpnAction = 25;
-		wpnMind = 15;
-		forceCost = 0;  // This will have a value for Powers attacks
+		wpnHealth *= 10.0;
+		wpnAction *= 25.0;
+		wpnMind *= 15.0;
+		forceCost *= 0;
 	}
 
-	int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength() / 1500);
-	int actionAttackCost = wpnAction - (wpnAction * creature->getQuickness() / 1500);
-	int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
+	int healthAttackCost = (int)(wpnHealth * (1 - (float)creature->getStrength() / 1500.0));
+	int actionAttackCost = (int)(wpnAction * (1 - (float)creature->getQuickness() / 1500.0));
+	int mindAttackCost = (int)(wpnMind * (1 - (float)creature->getFocus() / 1500.0));
 
 	if (healthAttackCost < 0)
 		healthAttackCost = 0;
@@ -1203,7 +1203,7 @@ bool CombatManager::calculateCost(CreatureObject* creature, float hamMultiplier,
 		if (forceCost > player->getForcePower())
 			return false;
 		else
-			player->changeForcePowerBar(-forceCost);
+			player->changeForcePowerBar(-(int)forceCost);
 	}
 
 	return true;

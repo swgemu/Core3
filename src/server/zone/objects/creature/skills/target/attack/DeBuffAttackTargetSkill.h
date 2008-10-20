@@ -194,7 +194,7 @@ public:
 		speed = sp;
 	}
 
-	void setForceCost(float forcecost) {
+	void setForceCost(int forcecost) {
 		forceCost = forcecost;
 	}
 

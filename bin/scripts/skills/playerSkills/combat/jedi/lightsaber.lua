@@ -53,7 +53,9 @@ RandPoolAtt = {
 	coneAngle = 40,
 	accuracyBonus = 0,
 	
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -88,7 +90,9 @@ RandPoolAtt = {
 	coneAngle = 40,
 	accuracyBonus = 0,
 	
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 35,
@@ -121,7 +125,9 @@ RandPoolAtt = {
 	coneAngle = 40,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 
 	knockdownChance = 40,
@@ -161,7 +167,9 @@ DotPoolAtt = {
 	actionAttackChance = 35,
 	mindAttackChance = 15,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 
 	dotChance = 45,
@@ -203,7 +211,9 @@ DotPoolAtt = {
 	accuracyBonus = 0,
 	postureDownChance = 20,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	healthAttackChance = 50,
@@ -248,7 +258,9 @@ RandPoolAtt = {
 	speedRatio = 1.5,		--We dont know the real value yet
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -281,7 +293,9 @@ RandPoolAtt = {
 	speedRatio = 2.5,	--We dont know the real value yet
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -314,7 +328,9 @@ RandPoolAtt = {
 	speedRatio = 1.0,	--Just a guess, we dont know the real value yet
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -347,7 +363,9 @@ RandPoolAtt = {
 	speedRatio = 2.0,	--Just a guess, we dont know the real value yet
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -380,7 +398,9 @@ RandPoolAtt = {
 	speedRatio = 2.5,	--Just a guess, we dont know the real value yet
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -411,7 +431,9 @@ DirectPoolAtt = {
 	damageRatio = 0.55,		--We dont know the real value yet
 	speedRatio = 1.5,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	healthAttackChance = 40,
@@ -455,7 +477,9 @@ DirectPoolAtt = {
 	damageRatio = 1.0,		--We dont know the real value yet
 	speedRatio = 2.0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	healthAttackChance = 50,
@@ -499,7 +523,9 @@ DirectPoolAtt = {
 	damageRatio = 1.5,		--We dont know the real value yet
 	speedRatio = 2.5,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	healthAttackChance = 80,
@@ -544,7 +570,9 @@ RandPoolAtt = {
 	speedRatio = 1.5,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -573,7 +601,9 @@ RandPoolAtt = {
 	speedRatio = 2.5,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -602,7 +632,9 @@ RandPoolAtt = {
 	speedRatio = 3.5,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -631,7 +663,9 @@ RandPoolAtt = {
 	speedRatio = 1.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -660,7 +694,9 @@ RandPoolAtt = {
 	speedRatio = 2.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -689,7 +725,9 @@ RandPoolAtt = {
 	speedRatio = 3.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -717,7 +755,9 @@ DirectPoolAtt = {
 	damageRatio = 0.5,		--We dont know the real value yet
 	speedRatio = 1.5,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	healthAttackChance = 0,
@@ -761,7 +801,9 @@ DirectPoolAtt = {
 	damageRatio = 1.5,		--We dont know the real value yet
 	speedRatio = 2.0,
 	
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 
 	healthAttackChance = 0,
@@ -805,7 +847,9 @@ DirectPoolAtt = {
 	damageRatio = 3.5,		--We dont know the real value yet
 	speedRatio = 2.5,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	healthAttackChance = 0,
@@ -850,7 +894,9 @@ RandPoolAtt = {
 	speedRatio = 1.5,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -879,7 +925,9 @@ RandPoolAtt = {
 	speedRatio = 2.5,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -908,7 +956,9 @@ RandPoolAtt = {
 	speedRatio = 3.5,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -937,7 +987,9 @@ RandPoolAtt = {
 	speedRatio = 1.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -966,7 +1018,9 @@ RandPoolAtt = {
 	speedRatio = 2.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -996,7 +1050,9 @@ RandPoolAtt = {
 	speedRatio = 3.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -1027,7 +1083,9 @@ RandPoolAtt = {
 	speedRatio = 1.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -1061,7 +1119,9 @@ RandPoolAtt = {
 	speedRatio = 2.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -1094,7 +1154,9 @@ RandPoolAtt = {
 	speedRatio = 3.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -1129,7 +1191,9 @@ DirectPoolAtt = {
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 
 	--actionAttackChance = 95,
@@ -1170,7 +1234,9 @@ DirectPoolAtt = {
 	damageRatio = 1.5,		--We dont know the real value yet
 	speedRatio = 2.0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	healthAttackChance = 0,
@@ -1215,7 +1281,9 @@ DirectPoolAtt = {
 	damageRatio = 2.5,		--We dont know the real value yet
 	speedRatio = 2.5,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	healthAttackChance = 0,
@@ -1261,7 +1329,9 @@ RandPoolAtt = {
 	speedRatio = 1.5,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -1294,7 +1364,9 @@ RandPoolAtt = {
 	speedRatio = 2.5,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -1327,7 +1399,9 @@ RandPoolAtt = {
 	speedRatio = 3.5,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,
@@ -1360,7 +1434,9 @@ RandPoolAtt = {
 	speedRatio = 2.0,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 1,
 	
 	knockdownChance = 0,

@@ -52,7 +52,9 @@ RandPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 0,
 	
-	hamCostMultiplier = 0,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
 	forceCostMultiplier = 0,
 	
 	knockdownChance = 0,

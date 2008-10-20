@@ -52,7 +52,9 @@ RandPoolAtt = {
 	coneAngle = 45,
 	accuracyBonus = 0,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 
 	knockdownChance = 0,
@@ -86,7 +88,9 @@ RandPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 5,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 
 	knockdownChance = 30,
@@ -121,7 +125,9 @@ RandPoolAtt = {
 	areaRange = 0,
 	accuracyBonus = 10,
 
-	hamCostMultiplier = 1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
 	forceCostMultiplier = 0,
 
 	knockdownChance = 0,

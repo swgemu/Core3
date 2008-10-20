@@ -500,14 +500,14 @@ AddForcePowersPoolAttackTargetSkill(RandomPoolAtt)
 
 RandomPoolAtt = {
 	attackname = "forceknockdown2",
-	animation = "force_knockdown_1_particle_level_1",
+	animation = "force_knockdown_1_arc_particle_level_1",
 	
 	forceCost = 100,
 	
 	attackType = FORCEKNOCKDOWN,
 	
 	range = 32,
-	coneAngle = 70,  --knockdown 2 affects cone no damage
+	coneAngle = 40,  --knockdown 2 affects cone no damage
 	speed = 3.0,
 	accuracyBonus = 0,
 	

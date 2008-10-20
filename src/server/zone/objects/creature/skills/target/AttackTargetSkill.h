@@ -56,7 +56,9 @@ class CombatManager;
 class AttackTargetSkill : public TargetSkill {
 protected:
 	float damageRatio;
-	float hamCostMultiplier;
+	float healthCostMultiplier;
+	float actionCostMultiplier;
+	float mindCostMultiplier;
 	float forceCostMultiplier;
 
 	int healthPoolAttackChance;
@@ -114,7 +116,9 @@ public:
 
 		forceCost = 0;
 
-		hamCostMultiplier = 1;
+		healthCostMultiplier = 1;
+		actionCostMultiplier = 1;
+		mindCostMultiplier = 1;
 		forceCostMultiplier = 0;
 
 		areaRangeDamage = 0;
@@ -138,7 +142,10 @@ public:
 	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) = 0;
 
 	virtual bool calculateCost(CreatureObject* creature) {
-		return server->getCombatManager()->calculateCost(creature, hamCostMultiplier, forceCostMultiplier);
+
+		cout << healthCostMultiplier << "," << actionCostMultiplier << "," << mindCostMultiplier << endl;
+
+		return server->getCombatManager()->calculateCost(creature, healthCostMultiplier, actionCostMultiplier, mindCostMultiplier, forceCostMultiplier);
 	}
 
 	void doAnimations(CreatureObject* creature, SceneObject* target, bool doAnimations = true) {
@@ -541,8 +548,16 @@ public:
 		damageRatio = ratio;
 	}
 
-	inline void setHAMCostMultiplier(float mult) {
-		hamCostMultiplier = mult;
+	inline void setHealthCostMultiplier(float mult) {
+		healthCostMultiplier = mult;
+	}
+
+	inline void setActionCostMultiplier(float mult) {
+		actionCostMultiplier = mult;
+	}
+
+	inline void setMindCostMultiplier(float mult) {
+		mindCostMultiplier = mult;
 	}
 
 	inline void setForceCostMultiplier(float mult) {
