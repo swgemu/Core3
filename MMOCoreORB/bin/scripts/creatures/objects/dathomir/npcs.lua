@@ -63,3 +63,7 @@
  RunCreatureFile("objects/dathomir/npcs/singingMtnClanRancorTamer.lua")
  RunCreatureFile("objects/dathomir/npcs/singingMtnClanScout.lua")
  RunCreatureFile("objects/dathomir/npcs/singingMtnClanSlave.lua")
+ 
+ -- Citys
+ RunCreatureFile("objects/dathomir/npcs/scienceOutpost.lua")
+ RunCreatureFile("objects/dathomir/npcs/tradeOutpost.lua")

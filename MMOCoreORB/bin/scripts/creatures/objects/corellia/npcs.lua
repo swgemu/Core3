@@ -68,3 +68,13 @@
  RunCreatureFile("objects/corellia/npcs/corsecTraitor.lua")
  RunCreatureFile("objects/corellia/npcs/corsecTrooper1.lua")
  RunCreatureFile("objects/corellia/npcs/corsecTrooper.lua")
+ 
+ -- Citys
+ RunCreatureFile("objects/corellia/npcs/coronet.lua")
+ RunCreatureFile("objects/corellia/npcs/belaVista.lua")
+ RunCreatureFile("objects/corellia/npcs/doaba.lua")
+ RunCreatureFile("objects/corellia/npcs/korVella.lua")
+ RunCreatureFile("objects/corellia/npcs/tyrena.lua")
+ RunCreatureFile("objects/corellia/npcs/vreniIsland.lua")
+ 
+ 
