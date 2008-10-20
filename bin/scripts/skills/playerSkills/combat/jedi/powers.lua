@@ -47,7 +47,10 @@ CmbtEnhaceSkill = {
 	animation = "force_throw_1_particle_level_1_light",
 	
 	attackType = FORCETHROW,
-
+	minDamage = 500,  -- values added for testing will need confirming
+	maxDamage = 550,
+	damageType = KINETIC,
+	
 	forceCost = 28,
 
 	range = 30,
@@ -86,13 +89,15 @@ CmbtEnhaceSkill = {
 	animation = "force_throw_1_particle_level_1_medium",
 
 	attackType = FORCETHROW,
-	minDamage = 500;
-	maxDamage = 550;
+	minDamage = 1000, -- values added for testing will need confirming
+	maxDamage = 1200,
+	damageType = KINETIC,
 	
 	forceCost = 56,
 
 	range = 30,
-
+	coneAngle = 40, --needs to be confirmed
+	
 	duration = 30.0,
 	
 	speed = 3.0,
@@ -209,8 +214,9 @@ CmbtEnhaceSkill = {
 	forceCost = 300,
 
 	range = 30,
+	coneAngle = 40,  -- cone angle needs checking
 
-	duration = 100.0,
+	duration = 60.0,
 	
 	speed = 1.5,
 
@@ -247,9 +253,10 @@ CmbtEnhaceSkill = {
 
 	forceCost = 500,
 
-	range = 30,
+	range = 30, --seems a bit far
+	coneAngle = 360,  -- area affect
 
-	duration = 100.0,
+	duration = 90.0,
 	
 	speed = 1.5,
 
@@ -343,10 +350,11 @@ RandomPoolAtt = {
 	animation = "force_lightning_1_arc_particle_level_5_light",
 	
 	forceCost = 125,
-	
-	minDamage = 750;
-	maxDamage = 800;
 	attackType = FORCELIGHTNING,
+	
+	minDamage = 750,
+	maxDamage = 800,
+	damageType = ELECTRICITY,
 	
 	speed = 4.0,
 	
@@ -374,10 +382,11 @@ RandomPoolAtt = {
 	animation = "force_lightning_1_arc_particle_level_5_medium",
 	
 	forceCost = 250,
-	
-	minDamage = 1000;
-	maxDamage = 1100;
 	attackType = FORCELIGHTNING,
+	
+	minDamage = 1000,
+	maxDamage = 1100,
+	dmageType = ELECTRICITY,
 	
 	speed = 4.0,
 	
@@ -435,11 +444,12 @@ RandomPoolAtt = {
 	attackname = "forcelightningsingle2",
 	animation = "force_lightning_1_particle_level_5_medium",
 	
-	forceCost = 150;
-	
-	minDamage = 1500;
-	maxDamage = 1600;
+	forceCost = 150,
 	attackType = FORCELIGHTNING,
+	
+	minDamage = 1500,
+	maxDamage = 1600,
+	damageType = ELECTRICITY,
 	
 	speed = 4.0,
 	
@@ -469,8 +479,7 @@ RandomPoolAtt = {
 	attackType = FORCEKNOCKDOWN,
 	
 	range = 32,
-	coneAngle = 70,
-	damageRatio = 1.0,	--We dont know the real value yet
+	coneAngle = 0,  -- knockdown 1 attacks single target no damage
 	speed = 3.5,
 	accuracyBonus = 0,
 	
@@ -498,8 +507,7 @@ RandomPoolAtt = {
 	attackType = FORCEKNOCKDOWN,
 	
 	range = 32,
-	coneAngle = 70,
-	damageRatio = 2.0,	--We dont know the real value yet
+	coneAngle = 70,  --knockdown 2 affects cone no damage
 	speed = 3.0,
 	accuracyBonus = 0,
 	
@@ -526,9 +534,8 @@ RandomPoolAtt = {
 	
 	attackType = FORCEKNOCKDOWN,
 	
-	range = 32,
-	coneAngle = 70,
-	damageRatio = 3.0,	--We dont know the real value yet
+	range = 32,  --this sems rather large for area affect
+	coneAngle = 360,  --knockdown 3 area affect, no damage
 	speed = 2.5,
 	accuracyBonus = 0,
 	
