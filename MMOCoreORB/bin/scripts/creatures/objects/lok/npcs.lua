@@ -41,6 +41,5 @@
 --which carries forward this exception.
 
 -- Citys
-RunCreatureFile("objects/lok/npcs/nymsFortress.lua")
 RunCreatureFile("objects/lok/npcs/nymsStronghold.lua")
 

@@ -98,7 +98,6 @@ end
 --Lok
 if (PLANET_ID == 4) then
 RunCreatureFile("spawns/lok/staticSpawns.lua")
-RunCreatureFile("spawns/lok/citys/nymsFortress.lua")
 RunCreatureFile("spawns/lok/citys/nymsStronghold.lua")
 end
 
