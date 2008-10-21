@@ -142,9 +142,6 @@ public:
 	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) = 0;
 
 	virtual bool calculateCost(CreatureObject* creature) {
-
-		cout << healthCostMultiplier << "," << actionCostMultiplier << "," << mindCostMultiplier << endl;
-
 		return server->getCombatManager()->calculateCost(creature, healthCostMultiplier, actionCostMultiplier, mindCostMultiplier, forceCostMultiplier);
 	}
 
@@ -523,6 +520,9 @@ public:
 				break;
 			case WeaponImplementation::LIGHTSABER:
 				resist = armor->getLightSaber();
+				break;
+			case WeaponImplementation::FORCE:
+				resist = 0;
 				break;
 			}
 

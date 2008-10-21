@@ -503,6 +503,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	uint16 itemMask = result->getUnsignedInt(11);
 
+	if (itemMask == 0)
+		itemMask = TangibleObjectImplementation::ALL;
+
 	BinaryData cust(appearance);
 
 	string custStr;
@@ -845,6 +848,9 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	bool equipped = bool(itemconfig.getByteField("equipped"));
 	int type = itemconfig.getIntField("objectType");
 	uint16 itemMask = itemconfig.getIntField("itemMask");
+
+	if (itemMask == 0)
+		itemMask = TangibleObjectImplementation::ALL;
 
 	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, unicode(name), templ, equipped, false, "", 0);
 
