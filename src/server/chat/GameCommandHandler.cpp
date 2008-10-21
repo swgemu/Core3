@@ -285,6 +285,14 @@ void GameCommandHandler::init() {
 			"Gives you specified type of experience",
 			"USAGE: @getXP [type] [amount]",
 			&getXP);
+	gmCommands->addCommand("adminList", PRIVILEGED,
+			"Returns a list of players with a level higher than normal (4)",
+			"USAGE: @adminList",
+			&adminList);
+	gmCommands->addCommand("showChars", PRIVILEGED,
+			"Returns a list of characters a player has registrated with this server.",
+			"USAGE: @showChars <Forum Nickname>",
+			&showChars);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -386,10 +394,10 @@ void GameCommandHandler::warpTo(StringTokenizer tokenizer, Player * player) {
 		target->wlock(player);
 
 		if (name != player->getFirstName()) {
-			if (target->getZoneIndex() != player->getZoneIndex()) {
+			if (target->getZoneIndex() != player->getZoneIndex())
 				player->switchMap(target->getZoneIndex());
-				player->doWarp(target->getPositionX(), target->getPositionY(), 0, 5, target->getParentID());
-			}
+
+			player->doWarp(target->getPositionX(), target->getPositionY(), 0, 5, target->getParentID());
 		}
 
 		target->unlock();
@@ -2280,3 +2288,107 @@ void GameCommandHandler::getXP(StringTokenizer tokenizer, Player * player) {
 	player->addXp(xptype, xpamount, true);
 }
 
+void GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player) {
+	try {
+		stringstream query,msg, appendix;
+
+		query   << "SELECT character_id, firstname, surname,adminLevel from characters where adminLevel <> 4 order by character_id asc;";
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+		while (res->next()) {
+			msg.str("");
+			appendix.str("");
+
+			switch (res->getInt(3)) {
+			case (1):
+				appendix << "1 (CSR)";
+				break;
+			case (2):
+				appendix << "2 (DEV)";
+				break;
+			case (8):
+				appendix << "8 (QA)";
+				break;
+			case (16):
+				appendix << "16 (EC)";
+				break;
+			case (32):
+				appendix << "32 (LEAD QA)";
+				break;
+			case (64):
+				appendix << "64 (EMU STAFF)";
+				break;
+			default:
+				appendix << res->getInt(3) << "(UNKNOWN VALUE)";
+			}
+
+			msg << "Character ID: " << res->getUnsignedInt(0) << "    named: " << res->getString(1) << " "
+				<< res->getString(1) << "     with level: " << appendix.str();
+
+			player->sendSystemMessage(msg.str());
+
+		}
+		delete res;
+	} catch (...) {
+		player->info("Unreported Exception in GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player)");
+	}
+}
+
+void GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player) {
+	stringstream name, getToons, msg;
+	string stringName;
+
+	Player* targetPlayer;
+	ResultSet* res;
+
+	uint32 accountID = 0;
+
+	ChatManager * chatManager = player->getZone()->getChatManager();
+
+	try {
+		if (tokenizer.hasMoreTokens()) {
+
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(stringName);
+				name << stringName << " ";
+			}
+
+		} else {
+			player->sendSystemMessage("Usage: @showChars <Forum Nickname>");
+			return;
+		}
+
+		stringName = name.str();
+		String::toLower(stringName);
+
+		MySqlDatabase::escapeString(stringName);
+
+		getToons << "SELECT characters.character_id, characters.account_id, characters.firstname "
+			<< "FROM characters Inner Join account ON account.account_id = characters.account_id "
+			<< "WHERE LCASE(account.username) = '" << stringName << "' "
+			<< "ORDER BY characters.account_id ASC, characters.firstname ASC;";
+
+		res = ServerDatabase::instance()->executeQuery(getToons);
+
+		msg.str("");
+		msg << "The player " << stringName << "has registered the following characters: ";
+
+		player->sendSystemMessage(msg.str());
+
+		while (res->next()) {
+			msg.str("");
+			msg << "Character ID: " << res->getInt(0) << "    Charactername: " << res->getString(2);
+
+			player->sendSystemMessage(msg.str());
+		}
+
+		delete res;
+
+	} catch (DatabaseException& e) {
+		player->info("Database Exception in GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player:");
+		player->info(e.getMessage());
+		cout << e.getMessage() << endl;
+	} catch (...) {
+		player->info("Unreported Exception in GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player)");
+	}
+}
