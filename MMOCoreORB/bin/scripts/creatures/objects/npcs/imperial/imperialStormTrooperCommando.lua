@@ -40,60 +40,61 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-imperialStormTrooper = Creature:new {
-      objectName = "imperialStormTrooper",  -- Lua Object Name
+
+imperialStormTrooperCommando = Creature:new {
+      objectName = "imperialStormTrooperCommando",  -- Lua Object Name
       creatureType = "NPC",
       faction = "imperial",
       gender = "",
 
-      name = "imperialStormTrooper",
-      objectCRC = 3128894413, 
+      name = "StormTrooper Commando",
+      objectCRC = 3037629485, 
       socialGroup = "imperial",
       named = FALSE, 
 
-      level = 80,
-      xp = 10000,
+      level = 29,
+      xp = 3005,
 
       combatFlags = 0,
 
-      healthMax = 8800,
-      healthMin = 7200,
-      strength = 500,
-      constitution = 500,
+      healthMax = 9900,
+      healthMin = 8100,
+      strength = 0,
+      constitution = 0,
 
-      actionMax = 8800,
-      actionMin = 7200,
-      quickness = 500,
-      stamina = 500,
+      actionMax = 9900,
+      actionMin = 8100,
+      quickness = 0,
+      stamina = 0,
 
-      mindMax = 8800,
-      mindMin = 7200,
-      focus = 500,
-      willpower = 500,
+      mindMax = 9900,
+      mindMin = 8100,
+      focus = 0,
+      willpower = 0,
 
       height = 1, -- Size of creature
       armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 30,
-      energy = 65,
+      energy = 30,
       electricity = 30,
       stun = 0,
       blast = 30,
-      heat = 0,
+      heat = 65,
       cold = 30,
       acid = 0,
       lightsaber = 0,
 
-      accuracy = 300,
+      accuracy = 0,
 
       healer = 0,
 
       pack = 1,
       herd = 0,
-      stalker = 0,
-      killer = 0,
+      stalker = 1,
+      killer = 1,
       aggressive = 0,
-      invincible = 0, 
-
+      invincible = 0,
+	  
 	  meleeDefense = 1,  
 	  rangedDefense = 1,
 	  
@@ -101,15 +102,15 @@ imperialStormTrooper = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
-      weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Imperial Flame Thrower", -- Name ex. 'a Vibrolance'
+      weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "RIFLEFLAMETHROWER", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
       weaponMinDamage = 250,
-      weaponMaxDamage = 350,
-      weaponAttackSpeed = 2,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+      weaponMaxDamage = 400,
+      weaponAttackSpeed = 1.5,
+      weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
@@ -140,10 +141,10 @@ imperialStormTrooper = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "stormAttack1", "stormAttack2", "stormAttack3", "stormAttack4", "stormAttack5", "stormAttack6", "stormAttack7", "stormAttack8", "stormAttack9", "stormAttack10", "stormAttack11", "stormAttack12", "stormAttack13", "stormAttack14", "stormAttack15",  },
+      skills = { "imperialStormTrooperCommandoAttack1", "imperialStormTrooperCommandoAttack2", "imperialStormTrooperCommandoAttack3", "imperialStormTrooperCommandoAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(imperialStormTrooper, 3128894413) --  Add to Global Table
+Creatures:addCreature(imperialStormTrooperCommando, 3037629485) --  Add to Global Table
