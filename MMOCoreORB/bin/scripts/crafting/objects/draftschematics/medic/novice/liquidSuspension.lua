@@ -63,6 +63,7 @@ liquidSuspension = Object:new {
    resourceTypes = "organic, water",
    resourceQuantities = "6, 6",
    combineTypes = "1, 1",
+   contribution = "100, 100",
 
 
    numberExperimentalProperties = "1, 1, 2",

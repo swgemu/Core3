@@ -30,6 +30,11 @@ Component::Component(CreatureObject* creature, unsigned int tempCRC, const unico
 	_impl->_setStub(this);
 }
 
+Component::Component(Component* component, unsigned long long oid) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new ComponentImplementation(component, oid);
+	_impl->_setStub(this);
+}
+
 Component::Component(DummyConstructorParameter* param) : TangibleObject(param) {
 }
 
@@ -116,6 +121,88 @@ float Component::getAttributeValue(string& attributeName) {
 		return ((ComponentImplementation*) _impl)->getAttributeValue(attributeName);
 }
 
+int Component::getAttributePrecision(string& attributeName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addAsciiParameter(attributeName);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ComponentImplementation*) _impl)->getAttributePrecision(attributeName);
+}
+
+string& Component::getAttributeTitle(string& attributeName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addAsciiParameter(attributeName);
+
+		method.executeWithAsciiReturn(_return_getAttributeTitle);
+		return _return_getAttributeTitle;
+	} else
+		return ((ComponentImplementation*) _impl)->getAttributeTitle(attributeName);
+}
+
+bool Component::hasProperty(string& attributeName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addAsciiParameter(attributeName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ComponentImplementation*) _impl)->hasProperty(attributeName);
+}
+
+void Component::addProperty(string& attribute, float value, int precision, string& title) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+		method.addAsciiParameter(attribute);
+		method.addFloatParameter(value);
+		method.addSignedIntParameter(precision);
+		method.addAsciiParameter(title);
+
+		method.executeWithVoidReturn();
+	} else
+		((ComponentImplementation*) _impl)->addProperty(attribute, value, precision, title);
+}
+
+int Component::getPropertyCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ComponentImplementation*) _impl)->getPropertyCount();
+}
+
+string& Component::getProperty(const int j) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addSignedIntParameter(j);
+
+		method.executeWithAsciiReturn(_return_getProperty);
+		return _return_getProperty;
+	} else
+		return ((ComponentImplementation*) _impl)->getProperty(j);
+}
+
 /*
  *	ComponentAdapter
  */
@@ -144,6 +231,24 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 11:
 		resp->insertFloat(getAttributeValue(inv->getAsciiParameter(_param0_getAttributeValue__string_)));
+		break;
+	case 12:
+		resp->insertSignedInt(getAttributePrecision(inv->getAsciiParameter(_param0_getAttributePrecision__string_)));
+		break;
+	case 13:
+		resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(_param0_getAttributeTitle__string_)));
+		break;
+	case 14:
+		resp->insertBoolean(hasProperty(inv->getAsciiParameter(_param0_hasProperty__string_)));
+		break;
+	case 15:
+		addProperty(inv->getAsciiParameter(_param0_addProperty__string_float_int_string_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__string_float_int_string_));
+		break;
+	case 16:
+		resp->insertSignedInt(getPropertyCount());
+		break;
+	case 17:
+		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
 		break;
 	default:
 		return NULL;
@@ -174,6 +279,30 @@ Component* ComponentAdapter::cloneComponent(Component* component, unsigned long 
 
 float ComponentAdapter::getAttributeValue(string& attributeName) {
 	return ((ComponentImplementation*) impl)->getAttributeValue(attributeName);
+}
+
+int ComponentAdapter::getAttributePrecision(string& attributeName) {
+	return ((ComponentImplementation*) impl)->getAttributePrecision(attributeName);
+}
+
+string& ComponentAdapter::getAttributeTitle(string& attributeName) {
+	return ((ComponentImplementation*) impl)->getAttributeTitle(attributeName);
+}
+
+bool ComponentAdapter::hasProperty(string& attributeName) {
+	return ((ComponentImplementation*) impl)->hasProperty(attributeName);
+}
+
+void ComponentAdapter::addProperty(string& attribute, float value, int precision, string& title) {
+	return ((ComponentImplementation*) impl)->addProperty(attribute, value, precision, title);
+}
+
+int ComponentAdapter::getPropertyCount() {
+	return ((ComponentImplementation*) impl)->getPropertyCount();
+}
+
+string& ComponentAdapter::getProperty(const int j) {
+	return ((ComponentImplementation*) impl)->getProperty(j);
 }
 
 /*
@@ -216,6 +345,10 @@ ComponentServant::ComponentServant(unsigned long long oid, unsigned int tempCRC,
 }
 
 ComponentServant::ComponentServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
+	_classHelper = ComponentHelper::instance();
+}
+
+ComponentServant::ComponentServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
 	_classHelper = ComponentHelper::instance();
 }
 

@@ -11,7 +11,7 @@ class ObjectControllerMessage;
 
 class DraftSchematicExpPropGroup : public DistributedObjectStub {
 public:
-	DraftSchematicExpPropGroup();
+	DraftSchematicExpPropGroup(string& subtitle);
 
 	DraftSchematicExpPropGroup(DraftSchematicExpPropGroup* group);
 
@@ -51,6 +51,8 @@ public:
 
 	int getExpPropWeightPercentagesSize();
 
+	string& getSubtitle();
+
 protected:
 	DraftSchematicExpPropGroup(DummyConstructorParameter* param);
 
@@ -60,6 +62,7 @@ protected:
 	string _return_getExpPropWeightPercentagesKey;
 	string _return_getExpPropWeightsKey;
 	string _return_getKey;
+	string _return_getSubtitle;
 
 	friend class DraftSchematicExpPropGroupHelper;
 };
@@ -107,6 +110,8 @@ public:
 	float getExpPropWeightPercentagesValue(int i);
 
 	int getExpPropWeightPercentagesSize();
+
+	string& getSubtitle();
 
 protected:
 	string _param0_addExperimentalProperty__string_int_;

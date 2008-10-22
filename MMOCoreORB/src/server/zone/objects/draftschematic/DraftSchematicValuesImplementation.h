@@ -64,7 +64,8 @@ public:
 	DraftSchematicValuesImplementation();
 	~DraftSchematicValuesImplementation();
 	// Experimental Titles
-	void addExperimentalPropertySubtitle(const string& title, const string& subtitle);
+	void addExperimentalProperty(const string& title, const string& subtitle,
+			const float min, const float max, const int precision);
 
 	string& getExperimentalPropertyTitle(const string& subtitle);
 	string& getExperimentalPropertyTitle(const int i);
@@ -79,13 +80,20 @@ public:
 
 	int getExperimentalPropertySubtitleSize(const string title);
 
+	bool hasProperty(const string& attribute);
+
 	void setCurrentValue(const string& attribute, const float value);
+	void setCurrentValue(const string& attribute, const float value, const float min, const float max);
 
 	float getCurrentValue(const string& attribute);
 
 	float getCurrentValue(const int i);
 
+	void lockValue(const string& attribute);
+	void resetValue(const string& attribute);
+
 	void setCurrentPercentage(const string& subtitle, const float value);
+	void setCurrentPercentage(const string& subtitle, const float value, const float min, const float max);
 
 	float getCurrentPercentage(const string& attribute);
 	float getCurrentPercentage(const int i);
@@ -99,6 +107,15 @@ public:
 	float getMaxPercentage(const int i);
 
 	float getMaxPercentageAverage(const int i);
+
+	float getMinValue(const string& attribute);
+	float getMaxValue(const string& attribute);
+
+	void setMinValue(const string& attribute, const float value);
+	void setMaxValue(const string& attribute, const float value);
+
+	int getPrecision(const string& attribute);
+	void setPrecision(const string& attribute, const int precision);
 
 	void recalculateValues(DraftSchematic* draftSchematic);
 
@@ -137,15 +154,10 @@ public:
 
 	float getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i){
 
-		attribute = getExperimentalPropertySubtitle(i);
-		return getCurrentValue(attribute);
-
-	}
-
-	int getPrecision(DraftSchematic* draftSchematic, const int i){
-
 		DraftSchematicAttribute* attrib = draftSchematic->getAttributeToSet(i);
-		return attrib->getPrecision();
+
+		attribute = attrib->getAttributeName();
+		return getCurrentValue(attribute);
 
 	}
 

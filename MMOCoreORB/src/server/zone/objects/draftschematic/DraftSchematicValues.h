@@ -17,7 +17,7 @@ class DraftSchematicValues : public ManagedObject {
 public:
 	DraftSchematicValues();
 
-	void addExperimentalPropertySubtitle(const string& subtitle, const string& title);
+	void addExperimentalProperty(const string& subtitle, const string& title, float min, float max, const int precision);
 
 	string& getExperimentalPropertySubtitle(const int i);
 
@@ -35,11 +35,21 @@ public:
 
 	int getExperimentalPropertyTitleSize();
 
+	bool hasProperty(const string& attribute);
+
 	void setCurrentValue(const string& attribute, float value);
+
+	void setCurrentValue(const string& attribute, float value, float min, float max);
 
 	void setCurrentPercentage(const string& attribute, float value);
 
+	void setCurrentPercentage(const string& attribute, float value, float min, float max);
+
 	void setMaxPercentage(const string& attribute, float value);
+
+	void lockValue(const string& attribute);
+
+	void resetValue(const string& attribute);
 
 	float getCurrentValue(const string& attribute);
 
@@ -65,11 +75,21 @@ public:
 
 	string& getValuesToSend(const int i);
 
+	float getMinValue(const string& attribute);
+
+	float getMaxValue(const string& attribute);
+
+	void setMinValue(const string& attribute, float value);
+
+	void setMaxValue(const string& attribute, float value);
+
+	int getPrecision(const string& attribute);
+
+	void setPrecision(const string& attribute, const int precision);
+
 	void recalculateValues(DraftSchematic* draftSchematic);
 
 	float getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i);
-
-	int getPrecision(DraftSchematic* draftSchematic, const int i);
 
 	void clearAll();
 
@@ -98,7 +118,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void addExperimentalPropertySubtitle(const string& subtitle, const string& title);
+	void addExperimentalProperty(const string& subtitle, const string& title, float min, float max, const int precision);
 
 	string& getExperimentalPropertySubtitle(const int i);
 
@@ -116,11 +136,21 @@ public:
 
 	int getExperimentalPropertyTitleSize();
 
+	bool hasProperty(const string& attribute);
+
 	void setCurrentValue(const string& attribute, float value);
+
+	void setCurrentValue(const string& attribute, float value, float min, float max);
 
 	void setCurrentPercentage(const string& attribute, float value);
 
+	void setCurrentPercentage(const string& attribute, float value, float min, float max);
+
 	void setMaxPercentage(const string& attribute, float value);
+
+	void lockValue(const string& attribute);
+
+	void resetValue(const string& attribute);
 
 	float getCurrentValue(const string& attribute);
 
@@ -146,11 +176,21 @@ public:
 
 	string& getValuesToSend(const int i);
 
+	float getMinValue(const string& attribute);
+
+	float getMaxValue(const string& attribute);
+
+	void setMinValue(const string& attribute, float value);
+
+	void setMaxValue(const string& attribute, float value);
+
+	int getPrecision(const string& attribute);
+
+	void setPrecision(const string& attribute, const int precision);
+
 	void recalculateValues(DraftSchematic* draftSchematic);
 
 	float getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i);
-
-	int getPrecision(DraftSchematic* draftSchematic, const int i);
 
 	void clearAll();
 
@@ -159,19 +199,30 @@ public:
 	void toString();
 
 protected:
-	string _param0_addExperimentalPropertySubtitle__string_string_;
-	string _param1_addExperimentalPropertySubtitle__string_string_;
+	string _param0_addExperimentalProperty__string_string_float_float_int_;
+	string _param1_addExperimentalProperty__string_string_float_float_int_;
 	string _param0_getExperimentalPropertySubtitle__string_int_;
 	string _param0_getExperimentalPropertyTitle__string_;
 	string _param0_getExperimentalPropertySubtitleSize__string_;
+	string _param0_hasProperty__string_;
 	string _param0_setCurrentValue__string_float_;
+	string _param0_setCurrentValue__string_float_float_float_;
 	string _param0_setCurrentPercentage__string_float_;
+	string _param0_setCurrentPercentage__string_float_float_float_;
 	string _param0_setMaxPercentage__string_float_;
+	string _param0_lockValue__string_;
+	string _param0_resetValue__string_;
 	string _param0_getCurrentValue__string_;
 	string _param0_getCurrentPercentage__string_;
 	string _param0_getCurrentPercentageAverage__string_;
 	string _param0_getMaxPercentage__string_;
 	string _param0_getTitleLine__string_;
+	string _param0_getMinValue__string_;
+	string _param0_getMaxValue__string_;
+	string _param0_setMinValue__string_float_;
+	string _param0_setMaxValue__string_float_;
+	string _param0_getPrecision__string_;
+	string _param0_setPrecision__string_int_;
 	string _param1_getAttributeAndValue__DraftSchematic_string_int_;
 };
 

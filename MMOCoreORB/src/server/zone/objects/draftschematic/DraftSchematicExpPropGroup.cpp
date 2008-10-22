@@ -12,8 +12,8 @@
  *	DraftSchematicExpPropGroupStub
  */
 
-DraftSchematicExpPropGroup::DraftSchematicExpPropGroup() {
-	_impl = new DraftSchematicExpPropGroupImplementation();
+DraftSchematicExpPropGroup::DraftSchematicExpPropGroup(string& subtitle) {
+	_impl = new DraftSchematicExpPropGroupImplementation(subtitle);
 	_impl->_setStub(this);
 }
 
@@ -264,6 +264,19 @@ int DraftSchematicExpPropGroup::getExpPropWeightPercentagesSize() {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropWeightPercentagesSize();
 }
 
+string& DraftSchematicExpPropGroup::getSubtitle() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		method.executeWithAsciiReturn(_return_getSubtitle);
+		return _return_getSubtitle;
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getSubtitle();
+}
+
 /*
  *	DraftSchematicExpPropGroupAdapter
  */
@@ -328,6 +341,9 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 		break;
 	case 23:
 		resp->insertSignedInt(getExpPropWeightPercentagesSize());
+		break;
+	case 24:
+		resp->insertAscii(getSubtitle());
 		break;
 	default:
 		return NULL;
@@ -406,6 +422,10 @@ float DraftSchematicExpPropGroupAdapter::getExpPropWeightPercentagesValue(int i)
 
 int DraftSchematicExpPropGroupAdapter::getExpPropWeightPercentagesSize() {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightPercentagesSize();
+}
+
+string& DraftSchematicExpPropGroupAdapter::getSubtitle() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getSubtitle();
 }
 
 /*

@@ -66,6 +66,7 @@ blasterRifleBarrel = Object:new {
 resourceTypes = "metal, metal, metal, metal, metal",
   resourceQuantities = "12, 3, 3, 5, 10",
   combineTypes = "1, 1, 1, 1, 1",
+  contribution = "100, 100, 100, 100, 100",
 
   numberExperimentalProperties = "1, 1, 1, 2, 2, 2, 1, 2",
   experimentalProperties = "XX, XX, XX, CD, OQ, CD, OQ, CD, OQ, XX, CD, OQ",

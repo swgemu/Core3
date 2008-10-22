@@ -57,13 +57,17 @@ protected:
 
 	VectorMap<string, float> attributeMap;
 	VectorMap<string, int> precisionMap;
+	VectorMap<string, string> titleMap;
 	Vector<string> keyList;
 
 public:
 	ComponentImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
 	ComponentImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	ComponentImplementation(Component* component, uint64 oid);
 
 	~ComponentImplementation();
+
+	Component* cloneComponent(Component* component, uint64 oid);
 
 	void init();
 
@@ -74,20 +78,53 @@ public:
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	float getAttributeValue(string& attributeName);
+	int getAttributePrecision(string& attributeName);
+	string& getAttributeTitle(string& attributeName);
 
 	void savePrecisionList();
+	void saveTitleList();
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	int useObject(Player* player);
 
-	void sendTo(Player* player, bool doClose);
-
-	Component* cloneComponent(Component* oldComp, uint64 oid);
-
 	void parseAttributeString();
 	void parsePrecisionString();
+	void parseTitleString();
 
+	inline bool hasProperty(string& attributeName) {
+		return attributeMap.contains(attributeName);
+	}
+
+	inline void addProperty(string& attribute, float value, int precision, string& title) {
+		keyList.add(attribute);
+
+		itemAttributes->setFloatAttribute(attribute, value);
+
+		attributeMap.put(attribute, value);
+		precisionMap.put(attribute, precision);
+		titleMap.put(attribute, title);
+
+		savePrecisionList();
+		saveTitleList();
+	}
+
+	inline int getPropertyCount() {
+		return keyList.size();
+	}
+
+	inline string& getProperty(const int j){
+		return keyList.get(j);
+	}
+
+	inline bool hasKey(const string& key){
+
+		for(int i = 0; i < keyList.size(); ++i) {
+			if(keyList.get(i) == key)
+				return true;
+		}
+		return false;
+	}
 };
 
 #endif /*COMPONENTIMPLEMENTATION_H_*/

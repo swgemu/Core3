@@ -104,6 +104,8 @@ protected:
 	string craftersName;
 	string craftedSerial;
 
+	bool wasLooted;
+
 public:
 	static const int HAIR = 0x30000001;
 	static const int TERMINAL = 0x30000002;
@@ -326,7 +328,7 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void sendDeltas(Player* player);
+	virtual void sendDeltas(Player* player);
 
 	void close(Player* player);
 
@@ -388,6 +390,12 @@ public:
 		craftersName = n;
 		string temp = "craftersname";
 		itemAttributes->setStringAttribute(temp, n);
+	}
+
+	inline void setLoot(bool l){
+		wasLooted = l;
+		string temp = "looted";
+		itemAttributes->setBooleanAttribute(temp, l);
 	}
 
 	inline void setCraftedSerial(string& s){
@@ -499,6 +507,10 @@ public:
 
 	inline bool isWeapon() {
 		return (objectSubType & WEAPON || objectSubType & LIGHTSABER);
+	}
+
+	inline bool isLoot() {
+		return wasLooted;
 	}
 
 	inline bool isArmor() {

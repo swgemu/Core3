@@ -19,6 +19,8 @@ class CraftingTool;
 
 class CraftingStation;
 
+class Component;
+
 class ZoneServer;
 
 #include "server/zone/ZoneProcessServerImplementation.h"
@@ -35,7 +37,7 @@ public:
 
 	void removeIngredientFromSlot(Player* player, int slot, int counter);
 
-	void putComponentBackInInventory(Player* player, TangibleObject* tano);
+	void putComponentBackInInventory(Player* player, Component* component);
 
 	void nextCraftingStage(Player* player, string& test);
 
@@ -83,7 +85,7 @@ public:
 
 	void removeIngredientFromSlot(Player* player, int slot, int counter);
 
-	void putComponentBackInInventory(Player* player, TangibleObject* tano);
+	void putComponentBackInInventory(Player* player, Component* component);
 
 	void nextCraftingStage(Player* player, string& test);
 

@@ -61,15 +61,16 @@ DraftSchematicValuesImplementation::~DraftSchematicValuesImplementation() {
 	valuesToSend.removeAll();
 }
 
-void DraftSchematicValuesImplementation::addExperimentalPropertySubtitle(const string& title, const string& subtitle) {
+void DraftSchematicValuesImplementation::addExperimentalProperty(const string& title, const string& subtitle,
+		const float min, const float max, const int precision) {
 	Subclasses* subclasses;
 
 	if (experimentalValuesMap.contains(title)) {
 		subclasses = experimentalValuesMap.get(title);
 
-		subclasses->addSubtitle(subtitle);
+		subclasses->addSubtitle(subtitle, min, max, precision);
 	} else {
-		subclasses = new Subclasses(title, subtitle);
+		subclasses = new Subclasses(title, subtitle, min, max, precision);
 
 		experimentalValuesMap.put(title, subclasses);
 	}
@@ -183,6 +184,25 @@ int DraftSchematicValuesImplementation::getExperimentalPropertySubtitleSize(cons
 	return -1234;
 }
 
+bool DraftSchematicValuesImplementation::hasProperty(const string& attribute) {
+
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
 
 void DraftSchematicValuesImplementation::setCurrentValue(
 		const string& attribute, const float value) {
@@ -198,6 +218,31 @@ void DraftSchematicValuesImplementation::setCurrentValue(
 			values = subclasses->get(i);
 
 			if (values->getName() == attribute) {
+				values->setValue(value);
+				return;
+			}
+		}
+	}
+}
+
+void DraftSchematicValuesImplementation::setCurrentValue(const string& attribute,
+		const float value, const float min, const float max) {
+
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+
+				values->setMaxValue(max);
+				values->setMinValue(min);
+
 				values->setValue(value);
 				return;
 			}
@@ -248,6 +293,44 @@ float DraftSchematicValuesImplementation::getCurrentValue(const int i) {
 	return -1234;
 }
 
+void DraftSchematicValuesImplementation::lockValue(const string& attribute) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				values->lockValue();
+				return;
+			}
+		}
+	}
+}
+
+void DraftSchematicValuesImplementation::resetValue(const string& attribute) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				values->resetValue();
+				return;
+			}
+		}
+	}
+}
+
 void DraftSchematicValuesImplementation::setCurrentPercentage(
 		const string& subtitle, const float value) {
 
@@ -265,6 +348,35 @@ void DraftSchematicValuesImplementation::setCurrentPercentage(
 
 			if (values->getName() == subtitle) {
 				max = values->getMaxPercentage();
+
+				if (value > max)
+					values->setPercentage(max);
+				else
+					values->setPercentage(value);
+
+				return;
+			}
+		}
+	}
+}
+
+void DraftSchematicValuesImplementation::setCurrentPercentage(const string& subtitle,
+		const float value, const float min, const float max) {
+
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == subtitle) {
+
+				values->setMaxValue(max);
+				values->setMinValue(min);
 
 				if (value > max)
 					values->setPercentage(max);
@@ -330,14 +442,19 @@ float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const int 
 		return -1;
 
 	float average = 0;
+	float count = 0;
 
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		average += values->getPercentage();
+		if (values->getMaxPercentage() < 1.0f) {
+
+			average += values->getPercentage();
+			count++;
+		}
 	}
 
-	return (average / subclasses->size());
+	return (average / count);
 }
 
 float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const string title) {
@@ -350,14 +467,19 @@ float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const stri
 		return -1;
 
 	float average = 0;
+	float count = 0;
 
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		average += values->getPercentage();
+		if (values->getMaxPercentage() < 1.0f) {
+
+			average += values->getPercentage();
+			count++;
+		}
 	}
 
-	return (average / subclasses->size());
+	return (average / count);
 }
 
 void DraftSchematicValuesImplementation::setMaxPercentage(
@@ -433,14 +555,133 @@ float DraftSchematicValuesImplementation::getMaxPercentageAverage(const int i) {
 	subclasses = experimentalValuesMap.get(i);
 
 	float average = 0;
+	float count = 0;
 
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 
-		average += values->getMaxPercentage();
+		if (values->getMaxPercentage() < 1.0f) {
+
+			average += values->getMaxPercentage();
+			count++;
+		}
 	}
 
-	return (average / subclasses->size());
+	return (average / count);
+}
+
+float DraftSchematicValuesImplementation::getMaxValue(const string& attribute) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				return values->getMaxValue();
+			}
+		}
+	}
+
+	return -1234;
+}
+
+float DraftSchematicValuesImplementation::getMinValue(const string& attribute) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				return values->getMinValue();
+			}
+		}
+	}
+
+	return -1234;
+}
+
+void DraftSchematicValuesImplementation::setMinValue(const string& attribute, const float value) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				values->setMinValue(value);
+			}
+		}
+	}
+}
+
+void DraftSchematicValuesImplementation::setMaxValue(const string& attribute, const float value) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				values->setMaxValue(value);
+			}
+		}
+	}
+}
+
+int DraftSchematicValuesImplementation::getPrecision(const string& attribute) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				return values->getPrecision();
+			}
+		}
+	}
+
+	return -1234;
+}
+
+void DraftSchematicValuesImplementation::setPrecision(const string& attribute, const int value) {
+	Subclasses* subclasses;
+	Values* values;
+
+	for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+		subclasses = experimentalValuesMap.get(j);
+
+		for (int i = 0; i < subclasses->size(); ++i) {
+
+			values = subclasses->get(i);
+
+			if (values->getName() == attribute) {
+				values->setPrecision(value);
+			}
+		}
+	}
 }
 
 void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draftSchematic) {
@@ -460,9 +701,15 @@ void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draft
 		oldValue = getCurrentValue(attributeName);
 
 		if (experimentalPropTitle == "null") {
-			newValue = max;
+			if(max > min)
+				newValue = max;
+			else
+				newValue = min;
 		} else {
-			newValue = (percentage * (max - min)) + min;
+			if(max > min)
+				newValue = (percentage * (max - min)) + min;
+			else
+				newValue = (float(1.0f - percentage) * (min - max)) + max;
 		}
 
 		if (newValue != oldValue) {

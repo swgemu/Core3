@@ -48,9 +48,9 @@
 class CraftingToolImplementation;
 
 class CreateObjectEvent : public Event {
-	CraftingTool * ct;
-	Player * player;
-	TangibleObject * tano;
+	CraftingTool* ct;
+	Player* player;
+	TangibleObject* tano;
 	bool doCreate;
 
 public:
@@ -104,6 +104,8 @@ public:
 				}
 
 				tano->sendTo(player);
+
+				tano->sendDeltas(player);
 
 				tano->setPersistent(false);
 

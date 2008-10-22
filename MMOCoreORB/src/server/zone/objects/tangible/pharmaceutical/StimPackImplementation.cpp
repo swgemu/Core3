@@ -89,7 +89,7 @@ void StimPackImplementation::updateCraftingValues(
 	itemAttributes->setIntAttribute(name, medicineUseRequired);
 
 	name = "usesRemaining";
-	usesRemaining = (int)(floor(craftingValues->getCurrentValue("charges") + .5f));
+	setUsesRemaining((int)(floor(craftingValues->getCurrentValue("charges") + .5f)));
 	itemAttributes->setFloatAttribute(name, usesRemaining);
 
 }

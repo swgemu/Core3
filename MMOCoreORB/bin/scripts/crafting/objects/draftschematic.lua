@@ -63,6 +63,7 @@ DraftSchematic = Object:new {
   resourceTypes = "",
   resourceQuantities = "",
   combineTypes = "",
+  contribution = "",
 
   numberExperimentalProperties = "",
   experimentalProperties = "",

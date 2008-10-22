@@ -27,6 +27,8 @@ public:
 
 	Component(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
 
+	Component(Component* component, unsigned long long oid);
+
 	void sendTo(Player* player, bool doClose = true);
 
 	void generateAttributes(Player* player);
@@ -39,10 +41,25 @@ public:
 
 	float getAttributeValue(string& attributeName);
 
+	int getAttributePrecision(string& attributeName);
+
+	string& getAttributeTitle(string& attributeName);
+
+	bool hasProperty(string& attributeName);
+
+	void addProperty(string& attribute, float value, int precision, string& title);
+
+	int getPropertyCount();
+
+	string& getProperty(const int j);
+
 protected:
 	Component(DummyConstructorParameter* param);
 
 	virtual ~Component();
+
+	string _return_getAttributeTitle;
+	string _return_getProperty;
 
 	friend class ComponentHelper;
 };
@@ -67,8 +84,25 @@ public:
 
 	float getAttributeValue(string& attributeName);
 
+	int getAttributePrecision(string& attributeName);
+
+	string& getAttributeTitle(string& attributeName);
+
+	bool hasProperty(string& attributeName);
+
+	void addProperty(string& attribute, float value, int precision, string& title);
+
+	int getPropertyCount();
+
+	string& getProperty(const int j);
+
 protected:
 	string _param0_getAttributeValue__string_;
+	string _param0_getAttributePrecision__string_;
+	string _param0_getAttributeTitle__string_;
+	string _param0_hasProperty__string_;
+	string _param0_addProperty__string_float_int_string_;
+	string _param3_addProperty__string_float_int_string_;
 };
 
 class ComponentHelper : public DistributedObjectClassHelper, public Singleton<ComponentHelper> {
@@ -95,6 +129,7 @@ public:
 public:
 	ComponentServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
 	ComponentServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	ComponentServant(unsigned long long oid, int tp);
 	virtual ~ComponentServant();
 
 	void _setStub(DistributedObjectStub* stub);

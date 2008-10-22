@@ -65,6 +65,7 @@ bofaTreat = Object:new {
   resourceTypes = "metal, metal_ferrous, metal, object/tangible/component/weapon/shared_blaster_power_handler.iff, object/tangible/component/weapon/shared_blaster_rifle_barrel.iff",
   resourceQuantities = "35, 17, 9, 1, 1",
   combineTypes = "1, 1, 1, 2, 2",
+  contribution = "100, 100, 100, 100, 100",
 
   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 1, 2, 1",
 

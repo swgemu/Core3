@@ -273,13 +273,13 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 	DraftSchematic* draftSchematic;
 	float workingStationComplexity = 15;
 	int stationType = 0;
-	bool stationFound = false;
+	uint64 stationFound = 0;
 
 	// Get nearby crafting stations here
 
 	stationFound = findCraftingStation(player, workingStationComplexity);
 
-	if(stationFound)
+	if(stationFound != 0)
 
 		experimentingEnabled = true;
 
@@ -295,6 +295,7 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 
 	// DPlay9
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+	dplay9->setClosestCraftingStation(stationFound);
 	dplay9->setExperimentationPoints(0);
 	dplay9->setExperimentationEnabled(experimentingEnabled);
 	dplay9->setCraftingState(1);
@@ -378,7 +379,7 @@ void CraftingToolImplementation::getSchematicsForTool(Player* player, float work
 	}
 }
 
-bool CraftingToolImplementation::findCraftingStation(Player* player, float& workingStationComplexity){
+uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& workingStationComplexity){
 
 	QuadTreeEntry* entry;
 	TangibleObject* inRangeObject;
@@ -406,13 +407,13 @@ bool CraftingToolImplementation::findCraftingStation(Player* player, float& work
 						(_this->getToolType() == JEDI && station->getStationType() == WEAPON)){
 
 					workingStationComplexity = ((CraftingStation*)inRangeObject)->getEffectiveness();
-					return true;
+					return station->getObjectID();
 
 				}
 			}
 		}
 	}
-	return false;
+	return 0;
 }
 
 void CraftingToolImplementation::setWorkingTano(TangibleObject* tano){
@@ -523,10 +524,10 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 
 					}
 
-				} else {
+				} else if (tano->isComponent()){
 
-
-					cm->putComponentBackInInventory(player, tano);
+					Component* component = (Component*) tano;
+					cm->putComponentBackInInventory(player, component);
 
 				}
 			}

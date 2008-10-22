@@ -1273,6 +1273,7 @@ bool CreatureImplementation::doMovement() {
 		waypointZ = aggroedCreature->getPositionZ();
 		waypointY = aggroedCreature->getPositionY();
 		cellID = aggroedCreature->getParentID();
+		maxSpeed = aggroedCreature->getSpeed() + 0.75f;
 
 	} else if (!patrolPoints.isEmpty()) {
 		PatrolPoint* waypoint = patrolPoints.get(0);
@@ -1296,6 +1297,17 @@ bool CreatureImplementation::doMovement() {
 	float dy = waypointY - positionY;
 
 	float dist = sqrt(dx * dx + dy * dy);
+
+	try {
+		if (aggroedCreature != NULL && (dist > 250 || getZoneID()
+				!= aggroedCreature->getZoneID())) {
+			deagro();
+			return false;
+		}
+	} catch (...) {
+
+	}
+
 	float directionangle = atan2(dy, dx);
 
 	float maxDistance = 5;

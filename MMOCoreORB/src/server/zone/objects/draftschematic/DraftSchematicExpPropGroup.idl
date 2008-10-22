@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematicExpPropGroup {
-	DraftSchematicExpPropGroup();
+	DraftSchematicExpPropGroup(string subtitle);
 	DraftSchematicExpPropGroup(DraftSchematicExpPropGroup group);
 	
 	void addExperimentalProperty(const string experimentalPropertyType, unsigned int weight);
@@ -79,4 +79,6 @@ interface DraftSchematicExpPropGroup {
 	string getExpPropWeightPercentagesKey(int i);
 	float getExpPropWeightPercentagesValue(int i);
 	int getExpPropWeightPercentagesSize();
+
+	string getSubtitle();
 }

@@ -37,7 +37,7 @@ public:
 
 	void sendTo(Player* player);
 
-	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight);
+	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight, string& subtitle);
 
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
@@ -49,7 +49,7 @@ public:
 
 	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType);
+	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -80,6 +80,8 @@ public:
 	void setAssemblySkill(const string& ass);
 
 	void setFinished();
+
+	void setCrafter(Player* crafter);
 
 	int getAttributesToSetListSize();
 
@@ -128,6 +130,8 @@ public:
 	int getExpCounter();
 
 	float getExpFailure();
+
+	Player* getCrafter();
 
 	DraftSchematicValues* getCraftingValues();
 
@@ -165,7 +169,7 @@ public:
 
 	void sendTo(Player* player);
 
-	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight);
+	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight, string& subtitle);
 
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
@@ -177,7 +181,7 @@ public:
 
 	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType);
+	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -208,6 +212,8 @@ public:
 	void setAssemblySkill(const string& ass);
 
 	void setFinished();
+
+	void setCrafter(Player* crafter);
 
 	int getAttributesToSetListSize();
 
@@ -257,6 +263,8 @@ public:
 
 	float getExpFailure();
 
+	Player* getCrafter();
+
 	DraftSchematicValues* getCraftingValues();
 
 	bool isFinished();
@@ -264,10 +272,11 @@ public:
 	void toString();
 
 protected:
-	string _param1_addExperimentalProperty__int_string_int_;
-	string _param0_addIngredient__string_string_bool_string_int_int_;
-	string _param1_addIngredient__string_string_bool_string_int_int_;
-	string _param3_addIngredient__string_string_bool_string_int_int_;
+	string _param1_addExperimentalProperty__int_string_int_string_;
+	string _param3_addExperimentalProperty__int_string_int_string_;
+	string _param0_addIngredient__string_string_bool_string_int_int_int_;
+	string _param1_addIngredient__string_string_bool_string_int_int_int_;
+	string _param3_addIngredient__string_string_bool_string_int_int_int_;
 	string _param0_setTanoAttributes__string_;
 	string _param0_setXpType__string_;
 	string _param0_setExperimentingSkill__string_;

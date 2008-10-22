@@ -47,9 +47,9 @@ which carries forward this exception.
 #include "Component.h"
 #include "ComponentImplementation.h"
 #include "../../../../ZoneClientSession.h"
- 
-ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCRC, 
-		const unicode& n, const string& tempn) : ComponentServant(object_id, tempCRC, n, tempn, 
+
+ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCRC,
+		const unicode& n, const string& tempn) : ComponentServant(object_id, tempCRC, n, tempn,
 				COMPONENT) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -57,22 +57,72 @@ ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCR
 	name = n;
 	init();
 }
- 
-ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint32 tempCRC, 
-		const unicode& n, const string& tempn) : ComponentServant(creature, tempCRC, n, tempn, 
+
+ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint32 tempCRC,
+		const unicode& n, const string& tempn) : ComponentServant(creature, tempCRC, n, tempn,
 				COMPONENT) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
 	templateName = tempn;
 	name = n;
 	init();
+}
+
+ComponentImplementation::ComponentImplementation(Component* component, uint64 oid) :
+	ComponentServant(oid, COMPONENT) {
+
+	component->lock();
+
+	objectCRC = component->getObjectCRC();
+	templateTypeName = component->getTemplateTypeName();
+	templateName = component->getTemplateName();
+	name = component->getName();
+	objectCount = component->getObjectCount();
+
+	craftersName = component->getCraftersName();
+	string tempattribute = "craftersname";
+	itemAttributes->setStringAttribute(tempattribute, craftersName);
+
+	string tempattribute2 = "craftedserial";
+	craftedSerial = component->getCraftedSerial();
+	itemAttributes->setStringAttribute(tempattribute2, craftedSerial);
+
+	string property;
+
+	for(int i = 0; i < component->getPropertyCount(); ++i) {
+		property = component->getProperty(i);
+		float value = component->getAttributeValue(property);
+		int precision = component->getAttributePrecision(property);
+		string title = component->getAttributeTitle(property);
+		keyList.add(property);
+		attributeMap.put(property, value);
+		itemAttributes->setFloatAttribute(property, value);
+		precisionMap.put(property, precision);
+		titleMap.put(property, title);
+
+	}
+	savePrecisionList();
+	saveTitleList();
+
+	itemAttributes->getAttributeString(attributeString);
+
+	component->unlock();
 }
 
 
 ComponentImplementation::~ComponentImplementation(){
 	attributeMap.removeAll();
 	precisionMap.removeAll();
+	titleMap.removeAll();
 	keyList.removeAll();
+}
+
+Component* ComponentImplementation::cloneComponent(Component* component, uint64 oid) {
+	if (component != NULL) {
+		return new Component(component, oid);
+	} else {
+		return NULL;
+	}
 }
 
 void ComponentImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
@@ -85,37 +135,12 @@ void ComponentImplementation::init() {
 	objectSubType = TangibleObjectImplementation::COMPONENT;
 	parseAttributeString();
 	parsePrecisionString();
+	parseTitleString();
 }
 
 int ComponentImplementation::useObject(Player* player) {
 
 	return 0;
-}
-
-void ComponentImplementation::sendTo(Player* player, bool doClose) {
-	ZoneClientSession* client = player->getClient();
-	if (client == NULL)
-		return;
-
-	SceneObjectImplementation::create(client);
-
-	if (container != NULL)
-		link(client, container);
-
-	BaseMessage* fcty3 = new FactoryCrateObjectMessage3((TangibleObject*) _this);
-	client->sendMessage(fcty3);
-
-	BaseMessage* fcty6 = new FactoryCrateObjectMessage6((TangibleObject*) _this);
-	client->sendMessage(fcty6);
-
-	if (pvpStatusBitmask != 0) {
-		UpdatePVPStatusMessage* msg = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
-		client->sendMessage(msg);
-	}
-
-	if (doClose)
-		SceneObjectImplementation::close(client);
-
 }
 
 void ComponentImplementation::generateAttributes(SceneObject* obj) {
@@ -126,24 +151,44 @@ void ComponentImplementation::generateAttributes(SceneObject* obj) {
 	float value;
 	double power;
 	int precision;
+	string footer;
 
 	Player* player = (Player*) obj;
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 	alm->insertAttribute("volume", "1");
 
-	attribute = "craftersname";
-	alm->insertAttribute("crafter", craftersName);
+	if(craftersName != ""){
 
-	attribute = "craftedserial";
-	alm->insertAttribute("serial_number", craftedSerial);
+		alm->insertAttribute("crafter", craftersName);
+	}
+	if(craftedSerial != ""){
 
-	for(int i = 0; i < keyList.size(); ++i){
+		alm->insertAttribute("serial_number", craftedSerial);
+	}
+
+	for (int i = 0; i < keyList.size(); ++i) {
+
+		footer = "";
 
 		attribute = keyList.get(i);
 		value = attributeMap.get(attribute);
 		precision = precisionMap.get(attribute);
 
-		alm->insertAttribute(attribute, getPrecision(value, precision));
+		if (precision >= 0 && value != 0) {
+
+			if (precision >= 10) {
+				footer = "%";
+				precision -= 10;
+			}
+
+			stringstream displayvalue;
+
+			displayvalue << getPrecision(value, precision);
+
+			displayvalue << footer;
+
+			alm->insertAttribute(attribute, displayvalue.str());
+		}
 
 	}
 
@@ -154,6 +199,7 @@ void ComponentImplementation::parseItemAttributes(){
 
 	parseAttributeString();
 	parsePrecisionString();
+	parseTitleString();
 
 	string temp = "craftersname";
 	craftersName = itemAttributes->getStringAttribute(temp);
@@ -161,20 +207,8 @@ void ComponentImplementation::parseItemAttributes(){
 	temp = "craftedserial";
 	craftedSerial = itemAttributes->getStringAttribute(temp);
 
-}
-
-Component* ComponentImplementation::cloneComponent(Component* oldComp, uint64 oid) {
-
-	if (oldComp != NULL) {
-
-		uint32 newCRC = _this->getObjectCRC();
-		unicode newName = _this->getName();
-		string newTemplate = _this->getTemplateName();
-
-		return new Component(oid, newCRC, newName, newTemplate);
-	} else {
-		return NULL;
-	}
+	temp = "looted";
+	wasLooted = itemAttributes->getBooleanAttribute(temp);
 
 }
 
@@ -184,34 +218,63 @@ float ComponentImplementation::getAttributeValue(string& attributeName){
 
 }
 
+int ComponentImplementation::getAttributePrecision(string& attributeName){
+
+	return precisionMap.get(attributeName);
+
+}
+
+string& ComponentImplementation::getAttributeTitle(string& attributeName){
+
+	return titleMap.get(attributeName);
+
+}
+
 void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 	string attribute;
 	float value;
 	int precision;
+	string title;
 	attributeMap.removeAll();
 	precisionMap.removeAll();
+	titleMap.removeAll();
 	keyList.removeAll();
 
-	int start = draftSchematic->getAttributesToSetListSize() - 1;
-
-	for(int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i){
+	for(int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i) {
 
 		value = craftingValues->getAttributeAndValue(draftSchematic, attribute, i);
-		precision = craftingValues->getPrecision(draftSchematic, i);
-
 		keyList.add(attribute);
+
+	}
+
+	for(int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i){
+
+		attribute = craftingValues->getExperimentalPropertySubtitle(i);
+
+		//value = craftingValues->getAttributeAndValue(draftSchematic, attribute, i);
+		//precision = craftingValues->getPrecision(draftSchematic, i);
+		//title = craftingValues->getExperimentalPropertyTitle(attribute);
+
+		value = craftingValues->getCurrentValue(attribute);
+		precision = craftingValues->getPrecision(attribute);
+		title = craftingValues->getExperimentalPropertyTitle(attribute);
+
+		if(!hasKey(attribute))
+			keyList.add(attribute);
 
 		itemAttributes->setFloatAttribute(attribute, value);
 
 		attributeMap.put(attribute, value);
 		precisionMap.put(attribute, precision);
+		titleMap.put(attribute, title);
 
 	}
 
 	savePrecisionList();
-
+	saveTitleList();
+	setUpdated(true);
 }
 
 void ComponentImplementation::savePrecisionList(){
@@ -228,6 +291,26 @@ void ComponentImplementation::savePrecisionList(){
 	}
 
 	string attribute = "precision";
+	string value = ss.str();
+
+	itemAttributes->setStringAttribute(attribute, value);
+
+}
+
+void ComponentImplementation::saveTitleList(){
+
+	stringstream ss;
+	string element;
+
+	for(int i = 0; i < keyList.size(); ++i){
+
+		element = keyList.get(i);
+
+		ss << element << "=" << titleMap.get(element) << ";";
+
+	}
+
+	string attribute = "title";
 	string value = ss.str();
 
 	itemAttributes->setStringAttribute(attribute, value);
@@ -258,6 +341,35 @@ void ComponentImplementation::parsePrecisionString() {
 
 			precisionMap.put(key, atoi(value.c_str()));
 			keyList.add(key);
+
+		}
+
+		index1 = index2 + 1;
+	}
+}
+
+void ComponentImplementation::parseTitleString() {
+
+	int index1 = 0;
+	int index2;
+	int index3;
+	titleMap.removeAll();
+
+	string attribute = "title";
+	string titleString = itemAttributes->getStringAttribute(attribute);
+
+
+	while ((index2 = titleString.find(";", index1)) != string::npos) {
+
+		string attrPair = titleString.substr(index1, index2 - index1);
+
+		if ((index3 = attrPair.find("=", 0)) != string::npos) {
+
+			string key = attrPair.substr(0, index3);
+			string value = attrPair.substr(index3 + 1, attrPair.length()
+					- index3);
+
+			titleMap.put(key.c_str(), value.c_str());
 
 		}
 

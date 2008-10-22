@@ -118,6 +118,8 @@ interface TangibleObject implements SceneObject {
 	boolean isComponent();
 	
 	boolean isWeaponPowerup();
+	
+	boolean isLoot();
 
 	void setCraftersName(string n);
 	void setCraftedSerial(string s);
@@ -154,6 +156,8 @@ interface TangibleObject implements SceneObject {
 	// setters
 	void setName(const string n);
 	void setName(const unicode n);
+
+	void setLoot(boolean l);
 	
 	void setTemplateName(const string tempName);
 	void setTemplateTypeName(const string tempTypeName);	

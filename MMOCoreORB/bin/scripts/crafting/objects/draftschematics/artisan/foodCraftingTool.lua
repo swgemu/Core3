@@ -67,6 +67,7 @@ foodCraftingTool = Object:new {
   resourceTypes = "metal, mineral, chemical",
   resourceQuantities = "16, 8, 10",
   combineTypes = "1, 1, 1",
+  contribution = "100, 100, 100",
 
   numberExperimentalProperties = "1, 1, 1, 1",
 
