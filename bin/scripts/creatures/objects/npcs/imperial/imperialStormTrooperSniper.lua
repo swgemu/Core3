@@ -43,18 +43,18 @@
 stormtrooperSniper = Creature:new {
       objectName = "stormtrooperSniper",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Imperial",
+      faction = "imperial",
       gender = "",
 
       name = "Crackdown Stormtrooper Sniper",
       objectCRC = 2688076350, 
-      socialGroup = "Imperial",
+      socialGroup = "imperial",
       named = FALSE, 
 
       level = 1,
       xp = 45,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = 0,
 
       healthMax = 8300,
       healthMin = 6800,
@@ -123,7 +123,7 @@ stormtrooperSniper = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,34,42", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -139,7 +139,7 @@ stormtrooperSniper = Creature:new {
       meatMax = 0,
 
       skills = { "", "", "" }
-      -- respawnTimer = 180,
+      respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
