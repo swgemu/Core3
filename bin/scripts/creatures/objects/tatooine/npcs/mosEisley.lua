@@ -2812,28 +2812,6 @@ mosEisleyNpc126 = Creature:new {
 	cellID = 0
 }
 
-mosEisleyNpc127 = Creature:new {
-	objectName = "mosEisleyNpc127",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 3244.54,
-	positionY = -4532.02,
-	positionZ = 5,
-
-	directionX = 0.00472471,
-	directionZ = -0.00821274,
-	directionY = 0.994416,
-	directionW = 0.105108,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 mosEisleyNpc128 = Creature:new {
 	objectName = "mosEisleyNpc128",
 	creatureType = NPC,
@@ -5053,28 +5031,6 @@ mosEisleyNpc228 = Creature:new {
 	directionW = 1,
 	randomMovement = 0,
 	mood = "npc_accusing",
-	cellID = 1082877
-}
-
-mosEisleyNpc229 = Creature:new {
-	objectName = "mosEisleyNpc229",
-	creatureType = NPC,
-
-	speciesName = "stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 2.84,
-	positionY = -6.3,
-	positionZ = -0.894992,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.139173,
-	directionW = 0.990268,
-	randomMovement = 0,
-	mood = "npc_imperial",
 	cellID = 1082877
 }
 

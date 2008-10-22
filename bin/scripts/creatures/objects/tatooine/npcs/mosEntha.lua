@@ -854,28 +854,6 @@ mosEnthaNpc37 = Creature:new {
 	cellID = 0
 }
 
-mosEnthaNpc38 = Creature:new {
-	objectName = "mosEnthaNpc38",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 1399.4,
-	positionY = 3094.3,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.718454,
-	directionW = -0.695574,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 mosEnthaNpc39 = Creature:new {
 	objectName = "mosEnthaNpc39",
 	creatureType = NPC,
@@ -893,28 +871,6 @@ mosEnthaNpc39 = Creature:new {
 	directionZ = 0,
 	directionY = 0.859231,
 	directionW = -0.511588,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-mosEnthaNpc40 = Creature:new {
-	objectName = "mosEnthaNpc40",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 1401,
-	positionY = 3094.3,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.720921,
-	directionW = -0.693017,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -4550,28 +4506,6 @@ mosEnthaNpc205 = Creature:new {
 	cellID = 0
 }
 
-mosEnthaNpc206 = Creature:new {
-	objectName = "mosEnthaNpc206",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 1565.41,
-	positionY = 3235.35,
-	positionZ = 11,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.994821,
-	directionW = -0.101647,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 mosEnthaNpc207 = Creature:new {
 	objectName = "mosEnthaNpc207",
 	creatureType = NPC,
@@ -5364,28 +5298,6 @@ mosEnthaNpc242 = Creature:new {
 	cellID = 0
 }
 
-mosEnthaNpc243 = Creature:new {
-	objectName = "mosEnthaNpc243",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 1628.23,
-	positionY = 3512.41,
-	positionZ = 7.32035,
-
-	directionX = -0.0120807,
-	directionZ = -0.0111002,
-	directionY = 0.207094,
-	directionW = 0.978184,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 mosEnthaNpc244 = Creature:new {
 	objectName = "mosEnthaNpc244",
 	creatureType = NPC,
@@ -5425,28 +5337,6 @@ mosEnthaNpc245 = Creature:new {
 	directionZ = -0.0341041,
 	directionY = 0.359714,
 	directionW = 0.932437,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-mosEnthaNpc246 = Creature:new {
-	objectName = "mosEnthaNpc246",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 1623.03,
-	positionY = 3516.22,
-	positionZ = 7.45177,
-
-	directionX = -0.010805,
-	directionZ = -0.0102793,
-	directionY = 0.364125,
-	directionW = 0.931231,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0

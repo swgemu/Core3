@@ -502,28 +502,6 @@ tyrenaNpc21 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc22 = Creature:new {
-	objectName = "tyrenaNpc22",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5112.07,
-	positionY = -2248.89,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.751435,
-	directionW = 0.659807,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 tyrenaNpc23 = Creature:new {
 	objectName = "tyrenaNpc23",
 	creatureType = NPC,
@@ -541,28 +519,6 @@ tyrenaNpc23 = Creature:new {
 	directionZ = 0,
 	directionY = 0.907266,
 	directionW = 0.420558,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc24 = Creature:new {
-	objectName = "tyrenaNpc24",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5044.7,
-	positionY = -2303,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.984198,
-	directionW = -0.177073,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -942,50 +898,6 @@ tyrenaNpc41 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc42 = Creature:new {
-	objectName = "tyrenaNpc42",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5131.1,
-	positionY = -2417.7,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.052336,
-	directionW = 0.99863,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc43 = Creature:new {
-	objectName = "tyrenaNpc43",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5195.9,
-	positionY = -2253.9,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.207912,
-	directionW = 0.978148,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc44 = Creature:new {
 	objectName = "tyrenaNpc44",
 	creatureType = NPC,
@@ -1335,50 +1247,6 @@ tyrenaNpc59 = Creature:new {
 	directionW = 0.619731,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc60 = Creature:new {
-	objectName = "tyrenaNpc60",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5270.9,
-	positionY = -2360.7,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.91706,
-	directionW = 0.398749,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc61 = Creature:new {
-	objectName = "tyrenaNpc61",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5281.8,
-	positionY = -2349.8,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.390731,
-	directionW = 0.920505,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -1910,28 +1778,6 @@ tyrenaNpc85 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc86 = Creature:new {
-	objectName = "tyrenaNpc86",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5338.7,
-	positionY = -2427.9,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.430511,
-	directionW = 0.902585,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc87 = Creature:new {
 	objectName = "tyrenaNpc87",
 	creatureType = NPC,
@@ -2083,28 +1929,6 @@ tyrenaNpc93 = Creature:new {
 	directionW = 1,
 	randomMovement = 0,
 	mood = "npc_imperial",
-	cellID = 0
-}
-
-tyrenaNpc94 = Creature:new {
-	objectName = "tyrenaNpc94",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5343.5,
-	positionY = -2471.7,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.700909,
-	directionW = 0.71325,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -2284,28 +2108,6 @@ tyrenaNpc102 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc103 = Creature:new {
-	objectName = "tyrenaNpc103",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5306.8,
-	positionY = -2561.2,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.833886,
-	directionW = -0.551937,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc104 = Creature:new {
 	objectName = "tyrenaNpc104",
 	creatureType = NPC,
@@ -2372,28 +2174,6 @@ tyrenaNpc106 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc107 = Creature:new {
-	objectName = "tyrenaNpc107",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5301.8,
-	positionY = -2572,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.848048,
-	directionW = -0.529919,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc108 = Creature:new {
 	objectName = "tyrenaNpc108",
 	creatureType = NPC,
@@ -2416,28 +2196,6 @@ tyrenaNpc108 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc109 = Creature:new {
-	objectName = "tyrenaNpc109",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5399.6,
-	positionY = -2608.8,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.861629,
-	directionW = -0.507538,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc110 = Creature:new {
 	objectName = "tyrenaNpc110",
 	creatureType = NPC,
@@ -2455,28 +2213,6 @@ tyrenaNpc110 = Creature:new {
 	directionZ = 0,
 	directionY = 0.0745951,
 	directionW = 0.997214,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc111 = Creature:new {
-	objectName = "tyrenaNpc111",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5396.8,
-	positionY = -2614.9,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.814116,
-	directionW = -0.580703,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -2567,28 +2303,6 @@ tyrenaNpc115 = Creature:new {
 	directionW = 0.808045,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc116 = Creature:new {
-	objectName = "tyrenaNpc116",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5485.9,
-	positionY = -2585.8,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = -0,
-	directionY = 0.700909,
-	directionW = 0.71325,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -2920,28 +2634,6 @@ tyrenaNpc131 = Creature:new {
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 1935528
-}
-
-tyrenaNpc132 = Creature:new {
-	objectName = "tyrenaNpc132",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5556.4,
-	positionY = -2611.8,
-	positionZ = 21.6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.760406,
-	directionW = 0.649448,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
 }
 
 tyrenaNpc133 = Creature:new {
@@ -4022,28 +3714,6 @@ tyrenaNpc181 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc182 = Creature:new {
-	objectName = "tyrenaNpc182",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5633.8,
-	positionY = -2824.4,
-	positionZ = 20.9535,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.989016,
-	directionW = -0.147809,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc183 = Creature:new {
 	objectName = "tyrenaNpc183",
 	creatureType = NPC,
@@ -4393,28 +4063,6 @@ tyrenaNpc198 = Creature:new {
 	directionW = 0,
 	randomMovement = 0,
 	mood = "conversation",
-	cellID = 0
-}
-
-tyrenaNpc199 = Creature:new {
-	objectName = "tyrenaNpc199",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5565.5,
-	positionY = -2842.9,
-	positionZ = 20.9967,
-
-	directionX = -0.0858689,
-	directionZ = -0.0821518,
-	directionY = -0.117191,
-	directionW = 0.985974,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -4946,28 +4594,6 @@ tyrenaNpc223 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc224 = Creature:new {
-	objectName = "tyrenaNpc224",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5459.6,
-	positionY = -2841.6,
-	positionZ = 21.2742,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999048,
-	directionW = -0.0436193,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc225 = Creature:new {
 	objectName = "tyrenaNpc225",
 	creatureType = NPC,
@@ -5430,28 +5056,6 @@ tyrenaNpc245 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc246 = Creature:new {
-	objectName = "tyrenaNpc246",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5398.3,
-	positionY = -2761.7,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.956305,
-	directionW = 0.292372,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc247 = Creature:new {
 	objectName = "tyrenaNpc247",
 	creatureType = NPC,
@@ -5760,28 +5364,6 @@ tyrenaNpc260 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc261 = Creature:new {
-	objectName = "tyrenaNpc261",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5212.9,
-	positionY = -2650.9,
-	positionZ = 20.9913,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.992546,
-	directionW = -0.121869,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc262 = Creature:new {
 	objectName = "tyrenaNpc262",
 	creatureType = NPC,
@@ -5892,28 +5474,6 @@ tyrenaNpc266 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc267 = Creature:new {
-	objectName = "tyrenaNpc267",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5174.6,
-	positionY = -2656.7,
-	positionZ = 20.9876,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999048,
-	directionW = -0.0436194,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc268 = Creature:new {
 	objectName = "tyrenaNpc268",
 	creatureType = NPC,
@@ -6002,28 +5562,6 @@ tyrenaNpc271 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc272 = Creature:new {
-	objectName = "tyrenaNpc272",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5135.07,
-	positionY = -2659.19,
-	positionZ = 20.9878,
-
-	directionX = 0.0326174,
-	directionZ = -0.0648975,
-	directionY = 0.68406,
-	directionW = 0.7258,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc273 = Creature:new {
 	objectName = "tyrenaNpc273",
 	creatureType = NPC,
@@ -6041,28 +5579,6 @@ tyrenaNpc273 = Creature:new {
 	directionZ = -0.0413353,
 	directionY = 0.662536,
 	directionW = 0.74767,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc274 = Creature:new {
-	objectName = "tyrenaNpc274",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5092.3,
-	positionY = -2648.2,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999048,
-	directionW = 0.0436193,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -6131,28 +5647,6 @@ tyrenaNpc277 = Creature:new {
 	directionW = -0.13306,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc278 = Creature:new {
-	objectName = "tyrenaNpc278",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5031.2,
-	positionY = -2614.9,
-	positionZ = 21,
-
-	directionX = 0.000872107,
-	directionZ = -0.0120617,
-	directionY = -0.651214,
-	directionW = 0.758797,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -6552,28 +6046,6 @@ tyrenaNpc296 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc297 = Creature:new {
-	objectName = "tyrenaNpc297",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -4936.1,
-	positionY = -2486.2,
-	positionZ = 21,
-
-	directionX = 0.0298005,
-	directionZ = 0.00206773,
-	directionY = 0.987284,
-	directionW = -0.156133,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc298 = Creature:new {
 	objectName = "tyrenaNpc298",
 	creatureType = NPC,
@@ -6860,28 +6332,6 @@ tyrenaNpc310 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc311 = Creature:new {
-	objectName = "tyrenaNpc311",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -4942.5,
-	positionY = -2438.9,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.798636,
-	directionW = 0.601815,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 tyrenaNpc312 = Creature:new {
 	objectName = "tyrenaNpc312",
 	creatureType = NPC,
@@ -6921,50 +6371,6 @@ tyrenaNpc313 = Creature:new {
 	directionZ = 0,
 	directionY = 0.878817,
 	directionW = 0.477159,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc314 = Creature:new {
-	objectName = "tyrenaNpc314",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -4944.3,
-	positionY = -2387.8,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.782608,
-	directionW = -0.622515,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc315 = Creature:new {
-	objectName = "tyrenaNpc315",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -4945.7,
-	positionY = -2383.1,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.824126,
-	directionW = -0.566406,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -8464,27 +7870,5 @@ tyrenaNpc383 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 1935441
-}
-
-tyrenaNpc384 = Creature:new {
-	objectName = "tyrenaNpc384",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 48.13,
-	positionY = 2.47,
-	positionZ = 0.105,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.829071,
-	directionW = -0.559144,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 2625353
 }
 
