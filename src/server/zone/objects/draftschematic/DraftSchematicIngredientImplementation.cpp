@@ -47,13 +47,15 @@ which carries forward this exception.
 #include "../../packets/object/ObjectControllerMessage.h"
 
 DraftSchematicIngredientImplementation::DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
-		bool optional, const string& resourceType, uint32 resourceQuantity, uint32 combineType) : DraftSchematicIngredientServant() {
+		bool optional, const string& resourceType, uint32 resourceQuantity, uint32 combineType,
+		float contribution) : DraftSchematicIngredientServant() {
 	DraftSchematicIngredientImplementation::templateName = ingredientTemplateName;
 	DraftSchematicIngredientImplementation::titleName = ingredientTitleName;
 	DraftSchematicIngredientImplementation::optional = optional;
 	DraftSchematicIngredientImplementation::resourceType = resourceType;
 	DraftSchematicIngredientImplementation::resourceQuantity = resourceQuantity;
 	DraftSchematicIngredientImplementation::combineType = combineType;
+	DraftSchematicIngredientImplementation::contribution = contribution;
 }
 
 DraftSchematicIngredientImplementation::DraftSchematicIngredientImplementation(DraftSchematicIngredient* ingredient) : DraftSchematicIngredientServant() {

@@ -60,10 +60,12 @@ class DraftSchematicExpPropGroupImplementation: public DraftSchematicExpPropGrou
 
 	uint32 expPropGroupListSize;
 
+	string subtitle;
+
 public:
 	// When they allow passing of vectors, make this constructor take in a Vector of strings and a vector
 	// of uint32 for the types and weights
-	DraftSchematicExpPropGroupImplementation();
+	DraftSchematicExpPropGroupImplementation(string sub);
 
 	DraftSchematicExpPropGroupImplementation(DraftSchematicExpPropGroup* group);
 
@@ -143,6 +145,10 @@ public:
 
 	int getExpPropWeightPercentagesSize() {
 		return expPropWeightPercentages.size();
+	}
+
+	string& getSubtitle() {
+		return subtitle;
 	}
 
 private:

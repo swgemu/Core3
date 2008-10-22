@@ -561,7 +561,7 @@ s,@install_sh@,|#_!!_#|$(SHELL) /home/swgemu/workspace/MMOCoreORB/build/unix/con
 s,@STRIP@,|#_!!_#|,g
 s,@INSTALL_STRIP_PROGRAM@,|#_!!_#|$(install_sh) -c -s,g
 s,@mkdir_p@,|#_!!_#|/bin/mkdir -p,g
-s,@AWK@,|#_!!_#|gawk,g
+s,@AWK@,|#_!!_#|mawk,g
 s,@SET_MAKE@,|#_!!_#|,g
 s,@am__leading_dot@,|#_!!_#|.,g
 s,@AMTAR@,|#_!!_#|${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run tar,g

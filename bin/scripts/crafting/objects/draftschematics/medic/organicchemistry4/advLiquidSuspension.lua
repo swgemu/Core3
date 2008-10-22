@@ -63,7 +63,7 @@ advLiquidSuspension = Object:new {
    resourceTypes = "fruit_berries_dantooine, water_vapor_talus",
    resourceQuantities = "6, 6",
    combineTypes = "1, 1",
-
+   contribution = "100, 100",
 
    numberExperimentalProperties = "1, 2",
    experimentalProperties = "XX, OQ, PE",

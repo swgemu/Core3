@@ -18,6 +18,8 @@
 
 #include "../../objects/tangible/crafting/CraftingStation.h"
 
+#include "../../objects/tangible/crafting/component/Component.h"
+
 #include "server/zone/ZoneServer.h"
 
 /*
@@ -94,18 +96,18 @@ void CraftingManager::removeIngredientFromSlot(Player* player, int slot, int cou
 		((CraftingManagerImplementation*) _impl)->removeIngredientFromSlot(player, slot, counter);
 }
 
-void CraftingManager::putComponentBackInInventory(Player* player, TangibleObject* tano) {
+void CraftingManager::putComponentBackInInventory(Player* player, Component* component) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
-		method.addObjectParameter(tano);
+		method.addObjectParameter(component);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->putComponentBackInInventory(player, tano);
+		((CraftingManagerImplementation*) _impl)->putComponentBackInInventory(player, component);
 }
 
 void CraftingManager::nextCraftingStage(Player* player, string& test) {
@@ -288,7 +290,7 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		removeIngredientFromSlot((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 10:
-		putComponentBackInInventory((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		putComponentBackInInventory((Player*) inv->getObjectParameter(), (Component*) inv->getObjectParameter());
 		break;
 	case 11:
 		nextCraftingStage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_nextCraftingStage__Player_string_));
@@ -346,8 +348,8 @@ void CraftingManagerAdapter::removeIngredientFromSlot(Player* player, int slot, 
 	return ((CraftingManagerImplementation*) impl)->removeIngredientFromSlot(player, slot, counter);
 }
 
-void CraftingManagerAdapter::putComponentBackInInventory(Player* player, TangibleObject* tano) {
-	return ((CraftingManagerImplementation*) impl)->putComponentBackInInventory(player, tano);
+void CraftingManagerAdapter::putComponentBackInInventory(Player* player, Component* component) {
+	return ((CraftingManagerImplementation*) impl)->putComponentBackInInventory(player, component);
 }
 
 void CraftingManagerAdapter::nextCraftingStage(Player* player, string& test) {

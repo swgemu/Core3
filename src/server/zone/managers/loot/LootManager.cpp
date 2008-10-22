@@ -650,47 +650,47 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 		case 0 :
 			item = new Armor(creature, 0x7B476F26,
 					unicode("Composite Chestplate"), "armor_composite_chestplate", false);
-			item->setType(ArmorImplementation::CHEST);
+			item->setArmorPiece(ArmorImplementation::CHEST);
 			break;
 		case 1 :
 			item = new Armor(creature, 0x9AF51EAA,
 					unicode("Composite Helmet"), "armor_composite_helmet", false);
-			item->setType(ArmorImplementation::HEAD);
+			item->setArmorPiece(ArmorImplementation::HEAD);
 			break;
 		case 2 :
 			item = new Armor(creature, 0xDB91E9DB,
 					unicode("Composite Boots"), "armor_composite_boots", false);
-			item->setType(ArmorImplementation::FOOT);
+			item->setArmorPiece(ArmorImplementation::FOOT);
 			break;
 		case 3 :
 			item = new Armor(creature, 0x2C35FFA2,
 					unicode("Composite Gloves"), "armor_composite_gloves", false);
-			item->setType(ArmorImplementation::HAND);
+			item->setArmorPiece(ArmorImplementation::HAND);
 			break;
 		case 4 :
 			item = new Armor(creature, 0xC294C432,
 					unicode("Composite Leggings"), "armor_composite_pants", false);
-			item->setType(ArmorImplementation::LEG);
+			item->setArmorPiece(ArmorImplementation::LEG);
 			break;
 		case 5 :
 			item = new Armor(creature, 0x13A4DA11,
 					unicode("Composite Bicep"), "armor_composite_bicep_l", false);
-			item->setType(ArmorImplementation::BICEPL);
+			item->setArmorPiece(ArmorImplementation::BICEPL);
 			break;
 		case 6 :
 			item = new Armor(creature, 0x63719F82,
 					unicode("Composite Bicep"), "armor_composite_bicep_r", false);
-			item->setType(ArmorImplementation::BICEPR);
+			item->setArmorPiece(ArmorImplementation::BICEPR);
 			break;
 		case 7 :
 			item = new Armor(creature, 0x4DB0192D,
 					unicode("Composite Bracer"), "armor_composite_bracer_l", false);
-			item->setType(ArmorImplementation::BRACERL);
+			item->setArmorPiece(ArmorImplementation::BRACERL);
 			break;
 		case 8 :
 			item = new Armor(creature, 0x3D655CBE,
 					unicode("Composite Bracer"), "armor_composite_bracer_r", false);
-			item->setType(ArmorImplementation::BRACERR);
+			item->setArmorPiece(ArmorImplementation::BRACERR);
 			break;
 		}
 		break;
@@ -700,47 +700,47 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 			case 0 :
 				item = new Armor(creature, 0x4FD29AA3,
 						unicode("Bounty Hunter Chestplate"), "armor_bounty_hunter_chestplate", false);
-				item->setType(ArmorImplementation::CHEST);
+				item->setArmorPiece(ArmorImplementation::CHEST);
 				break;
 			case 1 :
 				item = new Armor(creature, 0x30DB6875,
 						unicode("Bounty Hunter Helmet"), "armor_bounty_hunter_helmet", false);
-				item->setType(ArmorImplementation::HEAD);
+				item->setArmorPiece(ArmorImplementation::HEAD);
 				break;
 			case 2 :
 				item = new Armor(creature, 0x219DF586,
 						unicode("Bounty Hunter Boots"), "armor_bounty_hunter_boots", false);
-				item->setType(ArmorImplementation::FOOT);
+				item->setArmorPiece(ArmorImplementation::FOOT);
 				break;
 			case 3 :
 				item = new Armor(creature, 0x861B897D,
 						unicode("Bounty Hunter Gloves"), "armor_bounty_hunter_gloves", false);
-				item->setType(ArmorImplementation::HAND);
+				item->setArmorPiece(ArmorImplementation::HAND);
 				break;
 			case 4 :
 				item = new Armor(creature, 0x9873E13B,
 						unicode("Bounty Hunter Leggings"), "armor_bounty_hunter_pants", false);
-				item->setType(ArmorImplementation::LEG);
+				item->setArmorPiece(ArmorImplementation::LEG);
 				break;
 			case 5 :
 				item = new Armor(creature, 0xE37785C9,
 						unicode("Bounty Hunter Bicep"), "armor_bounty_hunter_bicep_l", false);
-				item->setType(ArmorImplementation::BICEPL);
+				item->setArmorPiece(ArmorImplementation::BICEPL);
 				break;
 			case 6 :
 				item = new Armor(creature, 0x93A2C05A,
 						unicode("Bounty Hunter Bicep"), "armor_bounty_hunter_bicep_r", false);
-				item->setType(ArmorImplementation::BICEPR);
+				item->setArmorPiece(ArmorImplementation::BICEPR);
 				break;
 			case 7 :
 				item = new Armor(creature, 0x17573C24,
 						unicode("Bounty Hunter Bracer"), "armor_bounty_hunter_bracer_l", false);
-				item->setType(ArmorImplementation::BRACERL);
+				item->setArmorPiece(ArmorImplementation::BRACERL);
 				break;
 			case 8 :
 				item = new Armor(creature, 0x678279B7,
 						unicode("Bounty Hunter Bracer"), "armor_bounty_hunter_bracer_r", false);
-				item->setType(ArmorImplementation::BRACERR);
+				item->setArmorPiece(ArmorImplementation::BRACERR);
 				break;
 			}
 		}
@@ -752,47 +752,47 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 			case 0 :
 				item = new Armor(creature, 0x24525C1C,
 						unicode("Mandalorian Chestplate"), "armor_mandalorian_chest", false);
-				item->setType(ArmorImplementation::CHEST);
+				item->setArmorPiece(ArmorImplementation::CHEST);
 				break;
 			case 1 :
 				item = new Armor(creature, 0x37A4683E,
 						unicode("Mandalorian Helmet"), "armor_mandalorian_helmet", false);
-				item->setType(ArmorImplementation::HEAD);
+				item->setArmorPiece(ArmorImplementation::HEAD);
 				break;
 			case 2 :
 				item = new Armor(creature, 0x84AD5603,
 						unicode("Mandalorian Boots"), "armor_mandalorian_shoes", false);
-				item->setType(ArmorImplementation::FOOT);
+				item->setArmorPiece(ArmorImplementation::FOOT);
 				break;
 			case 3 :
 				item = new Armor(creature, 0x81648936,
 						unicode("Mandalorian Gloves"), "armor_mandalorian_gloves", false);
-				item->setType(ArmorImplementation::HAND);
+				item->setArmorPiece(ArmorImplementation::HAND);
 				break;
 			case 4 :
 				item = new Armor(creature, 0x770C3F1B,
 						unicode("Mandalorian Leggings"), "armor_mandalorian_pants", false);
-				item->setType(ArmorImplementation::LEG);
+				item->setArmorPiece(ArmorImplementation::LEG);
 				break;
 			case 5 :
 				item = new Armor(creature, 0x82309ECC,
 						unicode("Mandalorian Bicep"), "armor_mandalorian_bicep_l", false);
-				item->setType(ArmorImplementation::BICEPL);
+				item->setArmorPiece(ArmorImplementation::BICEPL);
 				break;
 			case 6 :
 				item = new Armor(creature, 0xF2E5DB5F,
 						unicode("Mandalorian Bicep"), "armor_mandalorian_bicep_r", false);
-				item->setType(ArmorImplementation::BICEPR);
+				item->setArmorPiece(ArmorImplementation::BICEPR);
 				break;
 			case 7 :
 				item = new Armor(creature, 0xF828E204,
 						unicode("Mandalorian Bracer"), "armor_mandalorian_bracer_l", false);
-				item->setType(ArmorImplementation::BRACERL);
+				item->setArmorPiece(ArmorImplementation::BRACERL);
 				break;
 			case 8 :
 				item = new Armor(creature, 0x88FDA797,
 						unicode("Mandalorian Bracer"), "armor_mandalorian_bracer_r", false);
-				item->setType(ArmorImplementation::BRACERR);
+				item->setArmorPiece(ArmorImplementation::BRACERR);
 				break;
 			}
 		}
@@ -804,47 +804,47 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 			case 0 :
 				item = new Armor(creature, 0xF22790E,
 						unicode("Stormtrooper Chestplate"), "armor_stormtrooper_chest", false);
-				item->setType(ArmorImplementation::CHEST);
+				item->setArmorPiece(ArmorImplementation::CHEST);
 				break;
 			case 1 :
 				item = new Armor(creature, 0xC499637D,
 						unicode("Stormtrooper Helmet"), "armor_stormtrooper_helmet", false);
-				item->setType(ArmorImplementation::HEAD);
+				item->setArmorPiece(ArmorImplementation::HEAD);
 				break;
 			case 2 :
 				item = new Armor(creature, 0x7833E9D6,
 						unicode("Stormtrooper Boots"), "armor_stormtrooper_boots", false);
-				item->setType(ArmorImplementation::FOOT);
+				item->setArmorPiece(ArmorImplementation::FOOT);
 				break;
 			case 3 :
 				item = new Armor(creature, 0x72598275,
 						unicode("Stormtrooper Gloves"), "armor_stormtrooper_gloves", false);
-				item->setType(ArmorImplementation::HAND);
+				item->setArmorPiece(ArmorImplementation::HAND);
 				break;
 			case 4 :
 				item = new Armor(creature, 0x1863926A,
 						unicode("Stormtrooper Leggings"), "armor_stormtrooper_pants", false);
-				item->setType(ArmorImplementation::LEG);
+				item->setArmorPiece(ArmorImplementation::LEG);
 				break;
 			case 5 :
 				item = new Armor(creature, 0x3BC0061C,
 						unicode("Stormtrooper Bicep"), "armor_stormtrooper_bicep_l", false);
-				item->setType(ArmorImplementation::BICEPL);
+				item->setArmorPiece(ArmorImplementation::BICEPL);
 				break;
 			case 6 :
 				item = new Armor(creature, 0x4B15438F,
 						unicode("Stormtrooper Bicep"), "armor_stormtrooper_bicep_r", false);
-				item->setType(ArmorImplementation::BICEPR);
+				item->setArmorPiece(ArmorImplementation::BICEPR);
 				break;
 			case 7 :
 				item = new Armor(creature, 0x97474F75,
 						unicode("Stormtrooper Bracer"), "armor_stormtrooper_bracer_l", false);
-				item->setType(ArmorImplementation::BRACERL);
+				item->setArmorPiece(ArmorImplementation::BRACERL);
 				break;
 			case 8 :
 				item = new Armor(creature, 0xE7920AE6,
 						unicode("Stormtrooper Bracer"), "armor_stormtrooper_bracer_r", false);
-				item->setType(ArmorImplementation::BRACERR);
+				item->setArmorPiece(ArmorImplementation::BRACERR);
 				break;
 			}
 		}
@@ -856,32 +856,32 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 			case 0 :
 				item = new Armor(creature, 0x98A41A65,
 						unicode("Marine Chestplate"), "armor_marine_chest", false);
-				item->setType(ArmorImplementation::CHEST);
+				item->setArmorPiece(ArmorImplementation::CHEST);
 				break;
 			case 1 :
 				item = new Armor(creature, 0x1890B6F4,
 						unicode("Marine Helmet"), "armor_marine_helmet", false);
-				item->setType(ArmorImplementation::HEAD);
+				item->setArmorPiece(ArmorImplementation::HEAD);
 				break;
 			case 2 :
 				item = new Armor(creature, 0xA06D625,
 						unicode("Marine Boots"), "armor_marine_boots", false);
-				item->setType(ArmorImplementation::FOOT);
+				item->setArmorPiece(ArmorImplementation::FOOT);
 				break;
 			case 3 :
 				item = new Armor(creature, 0xF3D42F59,
 						unicode("Marine Leggings"), "armor_marine_pants", false);
-				item->setType(ArmorImplementation::LEG);
+				item->setArmorPiece(ArmorImplementation::LEG);
 				break;
 			case 4 :
 				item = new Armor(creature, 0x16825F91,
 						unicode("Marine Bicep"), "armor_marine_bicep_l", false);
-				item->setType(ArmorImplementation::BICEPL);
+				item->setArmorPiece(ArmorImplementation::BICEPL);
 				break;
 			case 5 :
 				item = new Armor(creature, 0x66571A02,
 						unicode("Marine Bicep"), "armor_marine_bicep_r", false);
-				item->setType(ArmorImplementation::BICEPR);
+				item->setArmorPiece(ArmorImplementation::BICEPR);
 				break;
 			}
 		}
@@ -889,7 +889,7 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 	case 5:
 		if ((objectCRC == 0xF0663601 || objectCRC == 0xAA197516) && System::random(10) == 7) {
 			item = new Armor(creature, 0x2E943BD2, unicode("Nightsister Bicep"), "nightsister_bicep_r", false);
-			item->setType(ArmorImplementation::BICEPR);
+			item->setArmorPiece(ArmorImplementation::BICEPR);
 		break;
 		}
 	}
@@ -901,6 +901,10 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 
 		item->setArmorStats(creatureLevel);
 		item->setConditionDamage(System::random(item->getMaxCondition() * 3 / 4));
+
+		item->setCustomizationVariable(1, System::random(150));
+		item->setCustomizationVariable(2, System::random(150));
+		item->setCustomizationVariable(3, System::random(150));
 
 		creature->addLootItem(item);
 	}

@@ -61,6 +61,13 @@ end
 
 -- DraftSchematics objects
 
+-- Armorsmith
+RunDraftSchematicFile("objects/draftschematics/armorsmith/main.lua")
+
+
+--RunDraftSchematicFile("objects/draftschematics/weaponsmith/dlt20Rifle.lua")
+
+
 RunDraftSchematicFile("objects/draftschematics/artisan/genericCraftingTool.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/clothingCraftingTool.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/foodCraftingTool.lua")
@@ -73,7 +80,6 @@ RunDraftSchematicFile("objects/draftschematics/artisan/solarEnergySurveyTool.lua
 RunDraftSchematicFile("objects/draftschematics/artisan/mineralSurveyDevice.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/gasPocketSurveyDevice.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/floraSurveyTool.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/dlt20Rifle.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterPowerHandler.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterRifleBarrel.lua")
 
@@ -85,6 +91,17 @@ RunDraftSchematicFile("objects/draftschematics/medic/novice/smallStimpackA.lua")
 RunDraftSchematicFile("objects/draftschematics/medic/novice/liquidSuspension.lua")
 RunDraftSchematicFile("objects/draftschematics/medic/novice/foodChemicalCraftingTool.lua")
 
--- Organic Chemistry 4
+-- Organic Chemistry 1
+RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry1/actionWoundMedpackA.lua")
+RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry1/healthWoundMedpackA.lua")
+ 
+-- Organic Chemistry 2
+RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry2/solidDeliveryShell.lua")
+RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry2/smallStimpackB.lua")
+RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry2/chemicalReleaseDurationMechanism.lua") 
+
+-- Organic Chemistry 3
 --RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry4/advLiquidSuspension.lua")
  
+-- Organic Chemistry 4
+--RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry4/advLiquidSuspension.lua")

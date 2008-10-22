@@ -121,7 +121,7 @@ AMTAR = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --r
 AUTOCONF = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run automake-1.10
-AWK = gawk
+AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2

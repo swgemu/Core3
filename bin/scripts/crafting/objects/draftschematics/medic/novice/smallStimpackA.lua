@@ -63,6 +63,7 @@ smallStimpackA = Object:new {
    resourceTypes = "organic, inorganic",
    resourceQuantities = "8, 8",
    combineTypes = "1, 1",
+   contribution = "100, 100",
    
    numberExperimentalProperties = "1, 1, 2, 2",
    experimentalProperties = "XX, XX, OQ, PE, OQ, UT",

@@ -51,8 +51,10 @@ configure:2032: result: yes
 configure:2060: checking for a thread-safe mkdir -p
 configure:2099: result: /bin/mkdir -p
 configure:2112: checking for gawk
-configure:2128: found /usr/bin/gawk
-configure:2139: result: gawk
+configure:2142: result: no
+configure:2112: checking for mawk
+configure:2128: found /usr/bin/mawk
+configure:2139: result: mawk
 configure:2150: checking whether make sets $(MAKE)
 configure:2171: result: yes
 configure:2410: checking for gcc
@@ -200,7 +202,7 @@ ac_cv_host=i686-pc-linux-gnu
 ac_cv_objext=o
 ac_cv_path_install='/usr/bin/install -c'
 ac_cv_path_mkdir=/bin/mkdir
-ac_cv_prog_AWK=gawk
+ac_cv_prog_AWK=mawk
 ac_cv_prog_ac_ct_CC=gcc
 ac_cv_prog_ac_ct_CXX=g++
 ac_cv_prog_ac_ct_RANLIB=ranlib
@@ -224,7 +226,7 @@ AMTAR='${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --ru
 AUTOCONF='${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run autoconf'
 AUTOHEADER='${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run autoheader'
 AUTOMAKE='${SHELL} /home/swgemu/workspace/MMOCoreORB/build/unix/config/missing --run automake-1.10'
-AWK='gawk'
+AWK='mawk'
 CC='gcc'
 CCDEPMODE='depmode=gcc3'
 CFLAGS='-g -O2'

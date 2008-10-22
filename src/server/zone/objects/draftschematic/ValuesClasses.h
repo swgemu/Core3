@@ -50,10 +50,19 @@ which carries forward this exception.
 class Values {
 	VectorMap<string, float> values;
 	string name;
+	float min, max;
+	int precision;
+	bool locked;
 
 public:
-	Values(const string& n) {
+	Values(const string& n, const float tempmin, const float tempmax, const int prec) {
 		name = n;
+
+		min = tempmin;
+		max = tempmax;
+		precision = prec;
+
+		locked = false;
 
 		values.put("maxPercentage", 0.0f);
 		values.put("currentPercentage", 0.0f);
@@ -76,19 +85,71 @@ public:
 		return values.get("maxPercentage");
 	}
 
+	inline float getMinValue() {
+		return min;
+	}
+
+	inline float getMaxValue() {
+		return max;
+	}
+
+	inline int getPrecision() {
+		return precision;
+	}
+
 	inline string& getName() {
 		return name;
 	}
 
+	inline void lockValue() {
+		min = getValue();
+		max = getValue();
+		locked = true;
+	}
+
 	inline void setValue(const float value) {
+		if(locked)
+			return;
 		if (values.contains("currentValue")) {
 			values.drop("currentValue");
 		}
 
+		if (values.contains("currentPercentage")) {
+			values.drop("currentPercentage");
+		}
+
+		float newpercentage;
+
+		if(max > min)
+			newpercentage = (value - min) / (max - min);
+		else
+			newpercentage = 1 - ((value - max) / (min - max));
+
 		values.put("currentValue", value);
+		values.put("currentPercentage", newpercentage);
+	}
+
+	inline void setMinValue(const float value) {
+		if(locked)
+			return;
+		min = value;
+	}
+
+	inline void setMaxValue(const float value) {
+		if(locked)
+			return;
+		max = value;
+	}
+
+	inline void setPrecision(const int value) {
+		if(locked)
+			return;
+		precision = value;
 	}
 
 	inline void setMaxPercentage(const float value) {
+		if(locked)
+			return;
 		if (values.contains("maxPercentage")) {
 			values.drop("maxPercentage");
 		}
@@ -97,12 +158,26 @@ public:
 	}
 
 	inline void setPercentage(const float value) {
+		if(locked)
+			return;
 		if (values.contains("currentPercentage")) {
 			values.drop("currentPercentage");
 		}
 
 		values.put("currentPercentage", value);
 	}
+	inline void resetValue() {
+		float reset = (getMaxPercentage() * 10.0f) * (0.000015f * (getMaxPercentage() * 10.0f) + 0.015f);
+		setPercentage(reset);
+
+		float newvalue;
+		if(max > min)
+			newvalue = (reset * (max - min)) + min;
+		else
+			newvalue = ((1.0f - reset) * (min - max)) + max;
+		setValue(newvalue);
+	}
+
 };
 
 class Subclasses {
@@ -111,12 +186,14 @@ class Subclasses {
 	string name, className;
 
 public:
-	Subclasses(const string& title, const string& subtitle) {
+	Subclasses(const string& title, const string& subtitle, const float
+			min, const float max, const int precision) {
+
 		className = title;
 
 		name = subtitle;
 
-		Values* values = new Values(subtitle);
+		Values* values = new Values(subtitle ,min, max, precision);
 
 		valueList.put(subtitle, values);
 	}
@@ -128,10 +205,10 @@ public:
 		valueList.removeAll();
 	}
 
-	void addSubtitle(const string& s) {
+	void addSubtitle(const string& s, const float min, const float max, const int precision) {
 
 		if (!valueList.contains(s)) {
-			Values* values = new Values(s);
+			Values* values = new Values(s, min, max, precision);
 
 			valueList.put(s, values);
 		}
@@ -199,6 +276,7 @@ public:
 			cout << "Max % " << tempValues->getMaxPercentage() << endl;
 			cout << "Current % " << tempValues->getPercentage() << endl;
 			cout << "Current Value " << tempValues->getValue() << endl;
+			cout << "Min " << tempValues->getMinValue() << " max " << tempValues->getMaxValue() << endl;
 		}
 	}
 };

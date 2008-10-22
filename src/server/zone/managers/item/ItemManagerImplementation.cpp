@@ -869,7 +869,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		float kineticResist = itemconfig.getFloatField("kineticResist");
 		float lightSaberResist = itemconfig.getFloatField("lightSaberResist");
 
-		((Armor*) item)->setType(armorType);
+		((Armor*) item)->setArmorPiece(armorType);
 		((Armor*) item)->setActionEncumbrance(actionEncum);
 		((Armor*) item)->setMindEncumbrance(mindEncum);
 		((Armor*) item)->setHealthEncumbrance(healthEncum);

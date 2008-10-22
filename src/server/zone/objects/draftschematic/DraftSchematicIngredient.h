@@ -11,7 +11,7 @@ class ObjectControllerMessage;
 
 class DraftSchematicIngredient : public DistributedObjectStub {
 public:
-	DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType);
+	DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, float contribution);
 
 	DraftSchematicIngredient(DraftSchematicIngredient* ingredient);
 
@@ -28,6 +28,8 @@ public:
 	unsigned int getCombineType();
 
 	bool getOptional();
+
+	float getContribution();
 
 protected:
 	DraftSchematicIngredient(DummyConstructorParameter* param);
@@ -62,6 +64,8 @@ public:
 	unsigned int getCombineType();
 
 	bool getOptional();
+
+	float getContribution();
 
 };
 

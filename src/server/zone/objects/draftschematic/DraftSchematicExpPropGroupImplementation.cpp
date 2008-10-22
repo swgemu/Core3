@@ -46,8 +46,10 @@ which carries forward this exception.
 
 #include "../../packets/object/ObjectControllerMessage.h"
 
-DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation()
+DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(string sub)
 	: DraftSchematicExpPropGroupServant() {
+
+	subtitle = sub;
 
 	expPropGroupListSize = 0;
 }

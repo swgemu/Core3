@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "../ContainerImplementation.h"
 
 #include "engine/engine.h"
- 
+
 class CreatureObject;
 class SceneObject;
 class Player;
@@ -123,7 +123,7 @@ public:
 
 	void sendToolStart(Player* player);
 
-	bool findCraftingStation(Player* player, float& workingStationComplexity);
+	uint64 findCraftingStation(Player* player, float& workingStationComplexity);
 
 	void getSchematicsForTool(Player* player, float workingStationComplexity);
 

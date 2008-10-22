@@ -91,6 +91,8 @@ public:
 
 	bool isWeaponPowerup();
 
+	bool isLoot();
+
 	void setCraftersName(string& n);
 
 	void setCraftedSerial(string& s);
@@ -136,6 +138,8 @@ public:
 	void setName(const string& n);
 
 	void setName(const unicode& n);
+
+	void setLoot(bool l);
 
 	void setTemplateName(const string& tempName);
 
@@ -244,6 +248,8 @@ public:
 
 	bool isWeaponPowerup();
 
+	bool isLoot();
+
 	void setCraftersName(string& n);
 
 	void setCraftedSerial(string& s);
@@ -289,6 +295,8 @@ public:
 	void setName(const string& n);
 
 	void setName(const unicode& n);
+
+	void setLoot(bool l);
 
 	void setTemplateName(const string& tempName);
 

@@ -65,7 +65,7 @@ blasterPowerHandler = Object:new {
   resourceTypes = "petrochem_inert, copper, ore, metal, gas_reactive, object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff",  
   resourceQuantities = "12, 3, 3, 5, 10, 1",
   combineTypes = "1, 1, 1, 1, 1, 2",
-
+  contribution = "100, 100, 100, 100, 100, 100",
 
   numberExperimentalProperties = "1, 1, 2, 2, 2, 2",
   experimentalProperties =       "XX, XX, CD, OQ, CD, OQ, CD, OQ, CD, OQ",

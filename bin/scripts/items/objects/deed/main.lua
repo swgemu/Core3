@@ -53,3 +53,6 @@ RunItemLUAFile("objects/deed/vehicles/landspeederX34VehicleDeed.lua");
 RunItemLUAFile("objects/deed/vehicles/speederbikeVehicleDeed.lua");
 RunItemLUAFile("objects/deed/vehicles/speederbikeSwoopVehicleDeed.lua");
 RunItemLUAFile("objects/deed/vehicles/speederbikeFlashVehicleDeed.lua");
+
+-- Crate of Resources
+RunItemLUAFile("objects/deed/resources/resourceDeed.lua");

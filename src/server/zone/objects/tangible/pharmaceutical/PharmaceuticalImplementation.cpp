@@ -99,7 +99,10 @@ void PharmaceuticalImplementation::initialize() {
 
 void PharmaceuticalImplementation::sendDeltas(Player* player) {
 	TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3((TangibleObject*)_this);
-	dtano3->addIntUpdate(7, (getUsesRemaining() == 1) ? 0 : getUsesRemaining()); //Update the number of charges on the pack in inventory.
+	if(getUsesRemaining() == 1)
+		dtano3->addIntUpdate(7,  0);
+	else
+		dtano3->addIntUpdate(7, getUsesRemaining()); //Update the number of charges on the pack in inventory.
 	dtano3->close();
 	player->sendMessage(dtano3);
 }

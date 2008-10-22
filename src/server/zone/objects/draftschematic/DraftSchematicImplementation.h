@@ -150,6 +150,8 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 
 	bool finished;
 
+	Player* crafter;
+
 public:
 	DraftSchematicImplementation(uint32 schematicID, const string& objName,
 			const string& stringName, uint32 objCRC, const string& groupName,
@@ -171,7 +173,7 @@ public:
 	void addIngredient(const string& ingredientTemplateName,
 			const string& ingredientTitleName, bool optional,
 			const string& resourceType, uint32 resourceQuantity,
-			uint32 combineType);
+			uint32 combineType, uint32 contribution);
 
 	// THERE IS A BUG WHEN YOU LEAVE YOUR DATAPAD UP AND SURRENDER A SKILL, THE DRAFT SCHEMATICS
 	// STILL ARE IN YOUR DATAPAD, SO IF YOU CLICK THEM, IT WILL SAY SCHEMATIC NOT FOUND AND WILL
@@ -184,7 +186,7 @@ public:
 	// Experimental Property Methods
 	// UPDATE THIS METHOD WHEN WE CAN PASS VECTORS AROUND IN IDL
 	void addExperimentalProperty(uint32 groupNumber,
-			const string& experimentalProperty, uint32 weight);
+			const string& experimentalProperty, uint32 weight, string subtitle);
 
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
@@ -236,6 +238,10 @@ public:
 
 	inline void setAssemblySkill(const string& ass) {
 		assemblySkill = ass;
+	}
+
+	inline void setCrafter(Player* player) {
+		crafter = player;
 	}
 
 	inline void increaseComplexity() {
@@ -355,6 +361,10 @@ public:
 
 	int getIngredientListSize() {
 		return dsIngredients.size();
+	}
+
+	Player* getCrafter() {
+		return crafter;
 	}
 
 	DraftSchematicIngredient* getIngredient(int index) {

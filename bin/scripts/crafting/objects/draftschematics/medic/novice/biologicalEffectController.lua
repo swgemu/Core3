@@ -63,6 +63,7 @@ biologicalEffectController = Object:new {
    resourceTypes = "inorganic, organic",
    resourceQuantities = "6, 6",
    combineTypes = "1, 1",
+   contribution = "100, 100",
 
 
    numberExperimentalProperties = "1, 1, 2, 2",

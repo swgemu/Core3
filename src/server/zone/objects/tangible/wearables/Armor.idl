@@ -150,7 +150,7 @@ interface Armor implements Wearable {
 	int getSocket3Value();
 
 	// setters
-	void setType(int armorSlot);
+	void setArmorPiece(int armorSlot);
 	
 	void setHealthEncumbrance(int healthEnc);
 	void setActionEncumbrance(int actionEnc);

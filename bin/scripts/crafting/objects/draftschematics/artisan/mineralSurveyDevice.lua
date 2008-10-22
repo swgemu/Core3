@@ -64,26 +64,21 @@ mineralSurveyDevice = Object:new {
   resourceTypes = "metal, metal, metal, mineral",
   resourceQuantities = "8, 3, 8, 8",
   combineTypes = "1, 1, 1, 1",
+  contribution = "100, 100, 100, 100",
   
   numberExperimentalProperties = "1, 1, 1, 1",
-
   experimentalProperties = "XX, XX, XX, CD",
   experimentalWeights = "0, 0, 0, 1",
-
   experimentalGroupTitles = "exp_effectiveness",
-
   experimentalSubGroupCount = "1",
-
-  experimentalSubGroupTitles = "quality",
+  experimentalSubGroupTitles = "useModifier",
   
   tanoAttributes = "objecttype=32770:objectcrc=2862265132:objecttemp=survey_tool_mineral:templatetype=obj_n:",
    
-  attributesToSet = "hitPoints, useModifier",
-
-  attributeExperimentalProperties = "null, quality",
-
-  attributePrecision = "0, 2",
-  attributesMinMax = "1000, 1000, -15, 15"
+  attributesToSet = "useModifier",
+  attributeExperimentalProperties = "exp_effectiveness",
+  attributePrecision = "2",
+  attributesMinMax = "-15, 15"
 
 }
 
