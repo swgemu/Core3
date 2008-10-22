@@ -260,72 +260,6 @@ belavistNpc10 = Creature:new {
 	cellID = 0
 }
 
-belavistNpc11 = Creature:new {
-	objectName = "belavistNpc11",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6685.7,
-	positionY = -5943.3,
-	positionZ = 330,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.93358,
-	directionW = -0.358368,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-belavistNpc12 = Creature:new {
-	objectName = "belavistNpc12",
-	creatureType = NPC,
-
-	speciesName = "crackdown_dark_trooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1312348723,
-	positionX = 6718.1,
-	positionY = -5869.6,
-	positionZ = 328.537,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.99863,
-	directionW = -0.052336,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-belavistNpc13 = Creature:new {
-	objectName = "belavistNpc13",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6708,
-	positionY = -5869.7,
-	positionZ = 328.664,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.992546,
-	directionW = 0.121869,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 belavistNpc14 = Creature:new {
 	objectName = "belavistNpc14",
 	creatureType = NPC,
@@ -1008,50 +942,6 @@ belavistNpc44 = Creature:new {
 	cellID = 0
 }
 
-belavistNpc45 = Creature:new {
-	objectName = "belavistNpc45",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6852.9,
-	positionY = -5826.9,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.939693,
-	directionW = 0.34202,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-belavistNpc46 = Creature:new {
-	objectName = "belavistNpc46",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6837.4,
-	positionY = -5774,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.766044,
-	directionW = -0.642788,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 belavistNpc47 = Creature:new {
 	objectName = "belavistNpc47",
 	creatureType = NPC,
@@ -1159,28 +1049,6 @@ belavistNpc51 = Creature:new {
 	directionW = -0.539331,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-belavistNpc52 = Creature:new {
-	objectName = "belavistNpc52",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6819.9,
-	positionY = -5720.1,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.939693,
-	directionW = -0.34202,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -1426,28 +1294,6 @@ belavistNpc63 = Creature:new {
 	cellID = 0
 }
 
-belavistNpc64 = Creature:new {
-	objectName = "belavistNpc64",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6748.9,
-	positionY = -5665.2,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.649448,
-	directionW = 0.760406,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 belavistNpc65 = Creature:new {
 	objectName = "belavistNpc65",
 	creatureType = NPC,
@@ -1555,28 +1401,6 @@ belavistNpc69 = Creature:new {
 	directionW = 0.346824,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-belavistNpc70 = Creature:new {
-	objectName = "belavistNpc70",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6855,
-	positionY = -5609.3,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.642788,
-	directionW = 0.766044,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 

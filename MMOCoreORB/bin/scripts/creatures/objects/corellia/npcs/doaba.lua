@@ -766,28 +766,6 @@ doabaNpc33 = Creature:new {
 	cellID = 0
 }
 
-doabaNpc34 = Creature:new {
-	objectName = "doabaNpc34",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -8.45502,
-	positionY = -12.51,
-	positionZ = 0.184067,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0,
-	directionW = 1,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 4345355
-}
-
 doabaNpc35 = Creature:new {
 	objectName = "doabaNpc35",
 	creatureType = NPC,
@@ -1580,28 +1558,6 @@ doabaNpc70 = Creature:new {
 	cellID = 0
 }
 
-doabaNpc71 = Creature:new {
-	objectName = "doabaNpc71",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 3169.44,
-	positionY = 5102.07,
-	positionZ = 301.774,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = 0.551502,
-	directionW = 0.834174,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 doabaNpc72 = Creature:new {
 	objectName = "doabaNpc72",
 	creatureType = NPC,
@@ -1663,28 +1619,6 @@ doabaNpc74 = Creature:new {
 	directionZ = 0,
 	directionY = 0.994296,
 	directionW = 0.106654,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-doabaNpc75 = Creature:new {
-	objectName = "doabaNpc75",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 3197.73,
-	positionY = 5049.23,
-	positionZ = 290.877,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.994299,
-	directionW = 0.106629,
 	randomMovement = 0,
 	mood = "npc_imperial",
 	cellID = 0

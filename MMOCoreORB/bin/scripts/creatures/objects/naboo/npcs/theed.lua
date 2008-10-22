@@ -722,28 +722,6 @@ staticTheedNpc31 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc32 = Creature:new {
-	objectName = "staticTheedNpc32",
-	creatureType = NPC,
-
-	speciesName = "stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -4933.43,
-	positionY = 4233.84,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.281047,
-	directionW = 0.959694,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 staticTheedNpc33 = Creature:new {
 	objectName = "staticTheedNpc33",
 	creatureType = NPC,
@@ -1074,28 +1052,6 @@ staticTheedNpc47 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc48 = Creature:new {
-	objectName = "staticTheedNpc48",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5016.16,
-	positionY = 4107,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.907051,
-	directionW = 0.42102,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc49 = Creature:new {
 	objectName = "staticTheedNpc49",
 	creatureType = NPC,
@@ -1159,28 +1115,6 @@ staticTheedNpc51 = Creature:new {
 	directionW = 1,
 	randomMovement = 0,
 	mood = "conversation",
-	cellID = 0
-}
-
-staticTheedNpc52 = Creature:new {
-	objectName = "staticTheedNpc52",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5126.48,
-	positionY = 4130.79,
-	positionZ = 6.52214,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999341,
-	directionW = -0.036286,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -1487,28 +1421,6 @@ staticTheedNpc66 = Creature:new {
 	directionZ = 0,
 	directionY = -0.382683,
 	directionW = 0.92388,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-staticTheedNpc67 = Creature:new {
-	objectName = "staticTheedNpc67",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -4848.1,
-	positionY = 4172.25,
-	positionZ = 6.55806,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.932204,
-	directionW = -0.361934,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -1951,28 +1863,6 @@ staticTheedNpc87 = Creature:new {
 	directionW = 0.95305,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-staticTheedNpc88 = Creature:new {
-	objectName = "staticTheedNpc88",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -4788.57,
-	positionY = 4111.12,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.870755,
-	directionW = 0.491717,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -3054,28 +2944,6 @@ staticTheedNpc137 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc138 = Creature:new {
-	objectName = "staticTheedNpc138",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5161.69,
-	positionY = 4114.85,
-	positionZ = 6,
-
-	directionX = -0.00504116,
-	directionZ = -0.00218871,
-	directionY = -0.367209,
-	directionW = 0.930122,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc139 = Creature:new {
 	objectName = "staticTheedNpc139",
 	creatureType = NPC,
@@ -3183,28 +3051,6 @@ staticTheedNpc143 = Creature:new {
 	directionW = 0.999466,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-staticTheedNpc144 = Creature:new {
-	objectName = "staticTheedNpc144",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5206.32,
-	positionY = 4182.8,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0920839,
-	directionW = 0.995751,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -4198,28 +4044,6 @@ staticTheedNpc189 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc190 = Creature:new {
-	objectName = "staticTheedNpc190",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5419.06,
-	positionY = 4315.82,
-	positionZ = 6.6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0518278,
-	directionW = 0.998656,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc191 = Creature:new {
 	objectName = "staticTheedNpc191",
 	creatureType = NPC,
@@ -4902,28 +4726,6 @@ staticTheedNpc221 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc222 = Creature:new {
-	objectName = "staticTheedNpc222",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5487.94,
-	positionY = 4378.62,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.961596,
-	directionW = -0.274469,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc223 = Creature:new {
 	objectName = "staticTheedNpc223",
 	creatureType = NPC,
@@ -5251,28 +5053,6 @@ staticTheedNpc237 = Creature:new {
 	directionW = 0.992666,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-staticTheedNpc238 = Creature:new {
-	objectName = "staticTheedNpc238",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5464.75,
-	positionY = 4447.8,
-	positionZ = 14,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.683544,
-	directionW = 0.729909,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -5958,28 +5738,6 @@ staticTheedNpc269 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc270 = Creature:new {
-	objectName = "staticTheedNpc270",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5519.19,
-	positionY = 4428.98,
-	positionZ = 10,
-
-	directionX = -0.00364677,
-	directionZ = -0.00988032,
-	directionY = -0.390505,
-	directionW = 0.920541,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc271 = Creature:new {
 	objectName = "staticTheedNpc271",
 	creatureType = NPC,
@@ -6002,72 +5760,6 @@ staticTheedNpc271 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc272 = Creature:new {
-	objectName = "staticTheedNpc272",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5508.92,
-	positionY = 4432.61,
-	positionZ = 10,
-
-	directionX = -0.0020576,
-	directionZ = -0.00242611,
-	directionY = -0.359195,
-	directionW = 0.933257,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-staticTheedNpc273 = Creature:new {
-	objectName = "staticTheedNpc273",
-	creatureType = NPC,
-
-	speciesName = "crackdown_dark_trooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1312348723,
-	positionX = -5493.28,
-	positionY = 4450.34,
-	positionZ = 14,
-
-	directionX = -0.00186219,
-	directionZ = -0.00753536,
-	directionY = 0.105643,
-	directionW = 0.994374,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-staticTheedNpc274 = Creature:new {
-	objectName = "staticTheedNpc274",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5498.9,
-	positionY = 4450.34,
-	positionZ = 14,
-
-	directionX = -0.00106477,
-	directionZ = -0.00350883,
-	directionY = 0.039846,
-	directionW = 0.999199,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc275 = Creature:new {
 	objectName = "staticTheedNpc275",
 	creatureType = NPC,
@@ -6087,28 +5779,6 @@ staticTheedNpc275 = Creature:new {
 	directionW = -0.454784,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-staticTheedNpc276 = Creature:new {
-	objectName = "staticTheedNpc276",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5501.04,
-	positionY = 4470.3,
-	positionZ = 14,
-
-	directionX = -0.000738303,
-	directionZ = -0.0127262,
-	directionY = -0.00494587,
-	directionW = 0.999907,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -6552,28 +6222,6 @@ staticTheedNpc296 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc297 = Creature:new {
-	objectName = "staticTheedNpc297",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5710.12,
-	positionY = 4261.56,
-	positionZ = 6.99997,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0293226,
-	directionW = 0.99957,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc298 = Creature:new {
 	objectName = "staticTheedNpc298",
 	creatureType = NPC,
@@ -6635,28 +6283,6 @@ staticTheedNpc300 = Creature:new {
 	directionZ = 0,
 	directionY = 0.997081,
 	directionW = 0.0763518,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-staticTheedNpc301 = Creature:new {
-	objectName = "staticTheedNpc301",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5722.06,
-	positionY = 4185.15,
-	positionZ = 6.52214,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.371971,
-	directionW = 0.928244,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -7102,28 +6728,6 @@ staticTheedNpc321 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc322 = Creature:new {
-	objectName = "staticTheedNpc322",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5733.78,
-	positionY = 4111.28,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.947242,
-	directionW = -0.320518,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc323 = Creature:new {
 	objectName = "staticTheedNpc323",
 	creatureType = NPC,
@@ -7190,50 +6794,6 @@ staticTheedNpc325 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc326 = Creature:new {
-	objectName = "staticTheedNpc326",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5687.08,
-	positionY = 4038.4,
-	positionZ = 6.02308,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999765,
-	directionW = 0.0216578,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-staticTheedNpc327 = Creature:new {
-	objectName = "staticTheedNpc327",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5671.62,
-	positionY = 4038.61,
-	positionZ = 6.10195,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999391,
-	directionW = -0.034882,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc328 = Creature:new {
 	objectName = "staticTheedNpc328",
 	creatureType = NPC,
@@ -7253,28 +6813,6 @@ staticTheedNpc328 = Creature:new {
 	directionW = -0.334508,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-staticTheedNpc329 = Creature:new {
-	objectName = "staticTheedNpc329",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -5802.04,
-	positionY = 4095.09,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.0209341,
-	directionW = 0.999781,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 

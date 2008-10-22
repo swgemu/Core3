@@ -5606,50 +5606,6 @@ mosEspaNpc253 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc254 = Creature:new {
-	objectName = "mosEspaNpc254",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -3202.5,
-	positionY = 2091.42,
-	positionZ = 5,
-
-	directionX = -0.000121548,
-	directionZ = -0.000580634,
-	directionY = -0.00478319,
-	directionW = 0.999988,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-mosEspaNpc255 = Creature:new {
-	objectName = "mosEspaNpc255",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = -3207.39,
-	positionY = 2099.33,
-	positionZ = 5,
-
-	directionX = -0.000454965,
-	directionZ = -0.00284839,
-	directionY = -0.105463,
-	directionW = 0.994419,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 mosEspaNpc256 = Creature:new {
 	objectName = "mosEspaNpc256",
 	creatureType = NPC,

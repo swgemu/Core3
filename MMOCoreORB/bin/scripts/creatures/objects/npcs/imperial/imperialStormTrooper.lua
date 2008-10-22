@@ -96,6 +96,8 @@ imperialStormTrooper = Creature:new {
 
 	  meleeDefense = 1,  
 	  rangedDefense = 1,
+	  
+	  randomMovement = 0,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
