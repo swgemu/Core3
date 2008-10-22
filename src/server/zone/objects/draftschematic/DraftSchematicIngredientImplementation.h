@@ -67,9 +67,14 @@ class DraftSchematicIngredientImplementation : public DraftSchematicIngredientSe
 	// Math Type
 	uint32 combineType;
 
+	// Contribution level
+	float contribution;
+
+
 public:
 	DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
-			bool optional, const string& resourceType, uint32 resourceQuantity, uint32 combineType);
+			bool optional, const string& resourceType, uint32 resourceQuantity, uint32 combineType,
+			float contribution);
 
 	DraftSchematicIngredientImplementation(DraftSchematicIngredient* ingredient);
 
@@ -98,6 +103,10 @@ public:
 
 	inline bool getOptional() {
 		return optional;
+	}
+
+	inline float getContribution() {
+		return contribution;
 	}
 
 };

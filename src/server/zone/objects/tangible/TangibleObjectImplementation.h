@@ -104,6 +104,8 @@ protected:
 	string craftersName;
 	string craftedSerial;
 
+	bool wasLooted;
+
 public:
 	static const int HAIR = 0x30000001;
 	static const int TERMINAL = 0x30000002;
@@ -225,12 +227,12 @@ public:
 
 
 	// INSTALLATIONS
-	static const int INSTALLATION = 4096;
-	static const int FACTORY = 4097;
-	static const int GENERATOR = 4098;
-	static const int HARVESTER = 4099;
-	static const int TURRET = 4010;
-	static const int MINEFIELD = 4011;
+	static const int INSTALLATION = 0x1000;
+	static const int FACTORY = 0x1001;
+	static const int GENERATOR = 0x1002;
+	static const int HARVESTER = 0x1003;
+	static const int TURRET = 0x1004;
+	static const int MINEFIELD = 0x1005;
 
 	// DEEDS
 	static const int DEED = 0x800000;
@@ -326,7 +328,7 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void sendDeltas(Player* player);
+	virtual void sendDeltas(Player* player);
 
 	void close(Player* player);
 
@@ -388,6 +390,12 @@ public:
 		craftersName = n;
 		string temp = "craftersname";
 		itemAttributes->setStringAttribute(temp, n);
+	}
+
+	inline void setLoot(bool l){
+		wasLooted = l;
+		string temp = "looted";
+		itemAttributes->setBooleanAttribute(temp, l);
 	}
 
 	inline void setCraftedSerial(string& s){
@@ -499,6 +507,10 @@ public:
 
 	inline bool isWeapon() {
 		return (objectSubType & WEAPON || objectSubType & LIGHTSABER);
+	}
+
+	inline bool isLoot() {
+		return wasLooted;
 	}
 
 	inline bool isArmor() {

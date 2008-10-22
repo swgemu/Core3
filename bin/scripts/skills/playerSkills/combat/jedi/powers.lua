@@ -563,12 +563,28 @@ RandomPoolAtt = {
 	attackType = FORCECHOKE,
 	
 	range = 32,
-	damageRatio = 2.0,	--We dont know the real value yet
+	minDamage = 1200,	--We dont know the real value yet
+	maxDamage = 1500,
 	speed = 5.0,
 	accuracyBonus = 0,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,
+	
+	dotChance = 100,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = ACTION,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
 	
 	CbtSpamBlock = "forcechoke_block",
 	CbtSpamCounter = "forcechoke_counter",

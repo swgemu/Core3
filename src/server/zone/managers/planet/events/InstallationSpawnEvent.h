@@ -58,40 +58,113 @@ class InstallationSpawnEvent : public Event {
 
 	InstallationObject* inso;
 	Player * player;
+	Zone* z;
 
 public:
-	InstallationSpawnEvent(Player * play, InstallationObject * inInso) : Event() {
+	InstallationSpawnEvent(Player * play, InstallationObject * inInso, Zone* zn) : Event() {
 
 		inso = inInso;
 		player = play;
+		z = zn;
 
 		setKeeping(false);
 	}
 
 	bool activate() {
 
-		player->wlock();
+		try {
+			inso->wlock();
+			// need to lock inso
+			inso->insertToZone(z);
 
-		inso->insertToZone(player->getZone());
+			/*
+			try {
+				stringstream query;
+*/
+/*
+ *
+zoneid  	tinyint(4)  	 	  	No  	 	 	  Browse distinct values   	  Change   	  Drop   	  Primary   	  Unique   	  Index   	 Fulltext
+	objectid 	bigint(20) 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	parentid 	bigint(20) 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	owner_id 	mediumint(8) 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	name 	varchar(200) 	latin1_swedish_ci 		No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	template 	varchar(255) 	latin1_swedish_ci 		No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	crc 	bigint(20) 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	file 	varchar(200) 	latin1_swedish_ci 		No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	oX 	float 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	oY 	float 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	oZ 	float 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	oW 	float 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	X 	float 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	Z 	float 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	Y 	float 			No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	attributes 	text 	latin1_swedish_ci 		No 			Browse distinct values 	Change 	Drop 	Primary 	Unique 	Index 	Fulltext
+	noBuildArea
+ */
+/*
+				query << "INSERT into `character_structures` (zone_id, objectid, parent_id, owner_id, name, template, "
+				<< " crc, file, oX, oY, oZ, oW, X, Z, Y, attributes, noBuildArea) "
+				<< "VALUES (" << player->getZoneID() << ", " << inso->getObjectID() << ", 0, ", " << player->getCharacterID() << ", '\\" << inso->getName()
+				<< "','" << inso->getName << "',"
+				<< inso->getTemplateName() << "',"
+				<< inso->getObjectCRC() << ", '"
+				<< inso->getFileName() << "', "
+				<< inso->getooX(), ", "
+				<< inso->getooY(), ", "
+				<< inso->getooZ(), ", "
+				<< inso->getooW(), ", "
+				<< inso->getoX(), ", "
+				<< inso->getoZ(), ", "
+				<< inso->getoY(), ", "
 
-		string mailSender = "Structure Builder";
-		string charNameSender = player->getFirstName();
+				player->getCharacterID() << itemType << ","
+				<< player->getObjectID() << ",'" << playername << "'," << price << "," << auctionout << ",0,"
+				<< expire << "," << bazaarid << "," << planet << ",0,'');";
 
-		unicode subjectSender("Construction Complete");
-		unicode bodySender("Construction of your " + inso->getName().c_str() + " is now complete.  You have xx lots remaining.");
+				ServerDatabase::instance()->executeStatement(query2);
 
-		player->sendMail(mailSender, subjectSender, bodySender, charNameSender);
+				stringstream query3;
+				query3 << "UPDATE `character_items` SET character_id = 0 where item_id = " << objectid << ";";
 
-		// Create Waypoint to Structure
-		WaypointObject* waypoint =
-				new WaypointObject(player, player->getNewItemID());
-		waypoint->setName(inso->getName().c_str());
-		waypoint->setPosition(inso->getPositionX(), 0.0f, inso->getPositionY());
-		waypoint->changeStatus(true);
+				ServerDatabase::instance()->executeStatement(query3);
 
-		player->addWaypoint(waypoint);
+			} catch (DatabaseException& e) {
+				stringstream err;
+				err << "Can't add bazaar_item " << objectid;
+				error(err);
+				return;
+			}*/
 
-		player->unlock();
+
+			inso->unlock();
+		} catch (...) {
+			inso->unlock();
+		}
+
+		try {
+			player->wlock();
+
+			string mailSender = "Structure Builder";
+			string charNameSender = player->getFirstName();
+
+			unicode subjectSender("Construction Complete");
+			unicode bodySender("Construction of your " + inso->getName().c_str() + " is now complete.  You have xx lots remaining.");
+
+			player->sendMail(mailSender, subjectSender, bodySender, charNameSender);
+
+			// Create Waypoint to Structure
+			WaypointObject* waypoint =
+					new WaypointObject(player, player->getNewItemID());
+			waypoint->setName(inso->getName().c_str());
+			waypoint->setPosition(inso->getPositionX(), 0.0f, inso->getPositionY());
+			waypoint->changeStatus(true);
+
+			player->addWaypoint(waypoint);
+
+			player->unlock();
+		} catch (...) {
+			player->unlock();
+		}
 
 		return true;
 	}

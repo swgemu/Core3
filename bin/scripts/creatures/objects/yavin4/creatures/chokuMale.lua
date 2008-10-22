@@ -92,7 +92,10 @@ chokuMale = Creature:new {
       stalker = 1,
       killer = 0,
       aggressive = 1,
-      invincible = 0,
+      invincible = 0, 
+
+	  meleeDefense = 1,  
+	  rangedDefense = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 

@@ -51,7 +51,7 @@ class CellObjectMessage3 : public BaseLineMessage {
 public:
 	CellObjectMessage3(uint64 coId, uint32 cellID)
 			: BaseLineMessage(coId, 0x53434C54, 3, 0x05) {
-
+		//BaseLineMessage(uint64 oid, uint32 name, uint8 type, uint16 opcnt) {
 		insertInt(0);
 		insertShort(0); // STFName
 		insertInt(0);

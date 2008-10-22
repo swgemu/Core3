@@ -72,6 +72,32 @@ int WoundPackImplementation::useObject(Player* player) {
 	return 0;
 }
 
+void WoundPackImplementation::updateCraftingValues(
+		DraftSchematic* draftSchematic) {
+
+	string name;
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+	//craftingValues->toString();
+
+	name = "effectiveness";
+	effectiveness = craftingValues->getCurrentValue("power");
+	itemAttributes->setFloatAttribute(name, effectiveness);
+
+	name = "medicineUseRequired";
+	medicineUseRequired = (int)craftingValues->getCurrentValue("medicineUseRequired");
+	itemAttributes->setIntAttribute(name, medicineUseRequired);
+
+	name = "usesRemaining";
+	setUsesRemaining((int)(floor(craftingValues->getCurrentValue("charges") + .5f)));
+	itemAttributes->setFloatAttribute(name, usesRemaining);
+
+	name = "poolAffected";
+	poolAffected = (int)craftingValues->getCurrentValue("poolAffected");
+	itemAttributes->setIntAttribute(name, poolAffected);
+
+}
+
 void WoundPackImplementation::initialize() {
 	setEffectiveness(0.0f);
 	setPoolAffected(UNKNOWN);
@@ -91,7 +117,7 @@ void WoundPackImplementation::addAttributes(AttributeListMessage* alm) {
 
 	stringstream eff;
 	eff << "examine_heal_wound_" << getPoolName(getPoolAffected());
-	alm->insertAttribute(string(eff.str()), getEffectiveness());
+	alm->insertAttribute(string(eff.str()), getPrecision(getEffectiveness(), 0));
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

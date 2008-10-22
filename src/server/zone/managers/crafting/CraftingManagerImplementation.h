@@ -149,7 +149,7 @@ public:
 	void removeIngredientFromSlot(Player* player, int slot, int counter);
 
 	// Pretty Self explanitory
-	void putComponentBackInInventory(Player* player, TangibleObject* tano);
+	void putComponentBackInInventory(Player* player, Component* component);
 
 	// Crafting Methods
 	void nextCraftingStage(Player* player, string test);
@@ -191,18 +191,15 @@ private:
 			Player* player, Component* component, CraftingTool* craftingTool,
 			int& quantity);
 
-	// Cloning methods
-	Component* cloneComponent(Player* player, TangibleObject* tano);
-	Component* cloneComponent(Player* player, Component* component);
-
 	// Turn on Experimentation window
 	void enableExperimentation(Player* player, CraftingTool* craftingTool);
 
 	// Setting initial crafting values
 	void initialAssembly(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int counter, int stage);
+	bool addSubcomponentTraitsToNewTano(CraftingTool* craftingTool);
 	void setInitialCraftingValues(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
-	bool applyComponentLinearBoost(string subtitle, DraftSchematic* draftSchematic, CraftingTool* craftingTool);
-	float applyComponentPercentageBoost(string subtitle, DraftSchematic* draftSchematic, CraftingTool* craftingTool);
+	bool applyComponentBoost(DraftSchematic* draftSchematic, CraftingTool* craftingTool);
+	//float applyComponentPercentageBoost(string subtitle, DraftSchematic* draftSchematic, CraftingTool* craftingTool);
 
 	// Experimenting
 	void experimentRow(DraftSchematicValues* craftingValues,

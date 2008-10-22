@@ -48,6 +48,8 @@ import "../../objects/tangible/resource/ResourceContainer";
 
 import "../../objects/creature/Creature";
 
+import "ResourceList";
+
 import "server/zone/ZoneServer";
 
 import "server/zone/ZoneProcessServerImplementation";
@@ -66,7 +68,7 @@ interface ResourceManager {
 	void sendSurveyMessage(Player player, string resource_name);
 	void sendSampleMessage(Player player, string resource_name);
 	
-	void setResourceData(ResourceContainer resContainer);
+	void setResourceData(ResourceContainer resContainer, boolean lock = false);
 	
 	boolean sendSurveyResources(Player player, int SurveyToolType);
 	
@@ -76,4 +78,8 @@ interface ResourceManager {
 	void printResource(string resname);
 
 	void harvestOrganics(Player player, Creature creature, int type);
+	
+	ResourceList getResourceListAtLocation(int zone, float x, float y, int type);
+	
+	string getResourceNameByID(unsigned long rID);
 }

@@ -64,6 +64,8 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
 	void parseItemAttributes();
 
 	void addAttributes(AttributeListMessage* alm);

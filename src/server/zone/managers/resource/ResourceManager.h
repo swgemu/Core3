@@ -13,6 +13,8 @@ class ResourceContainer;
 
 class Creature;
 
+class ResourceList;
+
 class ZoneServer;
 
 class ZoneProcessServerImplementation;
@@ -33,7 +35,7 @@ public:
 
 	void sendSampleMessage(Player* player, string& resourcename);
 
-	void setResourceData(ResourceContainer* resContainer);
+	void setResourceData(ResourceContainer* resContainer, bool lock = false);
 
 	bool sendSurveyResources(Player* player, int SurveyToolType);
 
@@ -45,10 +47,16 @@ public:
 
 	void harvestOrganics(Player* player, Creature* creature, int type);
 
+	ResourceList* getResourceListAtLocation(int zone, float x, float y, int type);
+
+	string& getResourceNameByID(unsigned long long rID);
+
 protected:
 	ResourceManager(DummyConstructorParameter* param);
 
 	virtual ~ResourceManager();
+
+	string _return_getResourceNameByID;
 
 	friend class ResourceManagerHelper;
 };
@@ -73,7 +81,7 @@ public:
 
 	void sendSampleMessage(Player* player, string& resourcename);
 
-	void setResourceData(ResourceContainer* resContainer);
+	void setResourceData(ResourceContainer* resContainer, bool lock);
 
 	bool sendSurveyResources(Player* player, int SurveyToolType);
 
@@ -84,6 +92,10 @@ public:
 	void printResource(string& resname);
 
 	void harvestOrganics(Player* player, Creature* creature, int type);
+
+	ResourceList* getResourceListAtLocation(int zone, float x, float y, int type);
+
+	string& getResourceNameByID(unsigned long long rID);
 
 protected:
 	string _param1_checkResource__Player_string_int_;

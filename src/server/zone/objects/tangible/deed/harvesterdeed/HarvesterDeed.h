@@ -25,6 +25,28 @@ public:
 
 	HarvesterDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
 
+	void parseItemAttributes();
+
+	void setSurplusMaintenance(int maint);
+
+	void setMaintenanceRate(float rate);
+
+	void setSurplusPower(int pow);
+
+	void setExtractionRate(float rate);
+
+	void setHopperSize(float size);
+
+	int getSurplusMaintenance();
+
+	float getMaintenanceRate();
+
+	int getSurplusPower();
+
+	float getExtractionRate();
+
+	float getHopperSize();
+
 protected:
 	HarvesterDeed(DummyConstructorParameter* param);
 
@@ -40,6 +62,28 @@ public:
 	HarvesterDeedAdapter(HarvesterDeedImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void parseItemAttributes();
+
+	void setSurplusMaintenance(int maint);
+
+	void setMaintenanceRate(float rate);
+
+	void setSurplusPower(int pow);
+
+	void setExtractionRate(float rate);
+
+	void setHopperSize(float size);
+
+	int getSurplusMaintenance();
+
+	float getMaintenanceRate();
+
+	int getSurplusPower();
+
+	float getExtractionRate();
+
+	float getHopperSize();
 
 };
 

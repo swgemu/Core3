@@ -47,6 +47,11 @@ structureFactoryDeed = Deed:new {
 
 	objectCRC = 2385714184,
 
-	objectType = INSTALLATIONDEED	
+	objectType = INSTALLATIONDEED,
 
+	surplusMaintenance = 10000,
+	maintenanceRate = 60,
+	
+	surplusPower = 10000,
+	hopperSize = 59000
 }

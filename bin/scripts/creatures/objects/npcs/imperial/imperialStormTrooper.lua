@@ -92,7 +92,10 @@ imperialStormTrooper = Creature:new {
       stalker = 0,
       killer = 0,
       aggressive = 0,
-      invincible = 0,
+      invincible = 0, 
+
+	  meleeDefense = 1,  
+	  rangedDefense = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
@@ -101,8 +104,8 @@ imperialStormTrooper = Creature:new {
       weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 400,
+      weaponMinDamage = 250,
+      weaponMaxDamage = 350,
       weaponAttackSpeed = 2,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY

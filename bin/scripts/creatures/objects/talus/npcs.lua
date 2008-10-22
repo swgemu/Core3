@@ -39,3 +39,10 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
+
+-- Citys
+RunCreatureFile("objects/talus/npcs/dearic.lua")
+RunCreatureFile("objects/talus/npcs/narshal.lua")
+
+

@@ -46,7 +46,8 @@ import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematicIngredient {
 	DraftSchematicIngredient(const string ingredientTemplateName, const string ingredientTitleName,
-			boolean optional, const string resourceType, unsigned int resourceQuantity, unsigned int combineType);
+			boolean optional, const string resourceType, unsigned int resourceQuantity, 
+			unsigned int combineType, float contribution);
 	DraftSchematicIngredient(DraftSchematicIngredient ingredient);
 		
 	void helperSendToPlayer(ObjectControllerMessage msg);
@@ -63,4 +64,6 @@ interface DraftSchematicIngredient {
 	unsigned int getCombineType();
 	
 	boolean getOptional();
+
+	float getContribution();
 }

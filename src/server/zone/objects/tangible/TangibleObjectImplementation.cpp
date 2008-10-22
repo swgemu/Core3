@@ -142,9 +142,13 @@ void TangibleObjectImplementation::initialize() {
 
 	equipped = false;
 
+	wasLooted = false;
+
 	pvpStatusBitmask = 0;
 
 	itemAttributes = new ItemAttributes();
+
+	setLoot(false);
 
 }
 

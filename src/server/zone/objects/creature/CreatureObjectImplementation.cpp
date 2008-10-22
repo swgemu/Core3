@@ -626,7 +626,7 @@ void CreatureObjectImplementation::setCombatState() {
 			stateBitmask &= ~PEACE_STATE;
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
-		dcreo3->update06Operand(0x80);
+		dcreo3->updateCreatureBitmask(0x80);
 		dcreo3->updateState();
 		dcreo3->close();
 
@@ -771,7 +771,7 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 		stateBitmask &= ~COMBAT_STATE;
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
-		dcreo3->update06Operand(0x80);
+		dcreo3->updateCreatureBitmask(0x80);
 		dcreo3->updateState();
 		dcreo3->close();
 

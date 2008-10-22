@@ -77,8 +77,10 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
-				server/zone/objects/installation/InstallationObject.idl \
+				server/zone/objects/installation/factory/FactoryObject.idl \
+				server/zone/objects/installation/generator/GeneratorObject.idl \
 				server/zone/objects/installation/harvester/HarvesterObject.idl \
+				server/zone/objects/installation/InstallationObject.idl \
 				server/zone/objects/tangible/TangibleObject.idl \
 				server/zone/objects/tangible/Container.idl \
 				server/zone/objects/tangible/Inventory.idl \
@@ -170,6 +172,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/managers/creature/CreatureManager.idl \
 				server/zone/managers/planet/PlanetManager.idl \
 				server/zone/managers/resource/ResourceManager.idl \
+				server/zone/managers/resource/ResourceList.idl \
+				server/zone/managers/resource/ResourceItem.idl \
 				server/zone/managers/loot/LootTableManager.idl \
 				server/chat/room/ChatRoom.idl \
 				server/chat/ChatManager.idl

@@ -11,6 +11,8 @@ class TangibleObject;
 
 class CreatureObject;
 
+class SceneObject;
+
 class Player;
 
 class DeedObject;
@@ -45,13 +47,63 @@ public:
 
 	int getDestroyCode();
 
-	void addMaintenance(unsigned long long maint);
+	unsigned int getNewDefenderUpdateCounter(unsigned int cnt);
 
-	void addEnergy(unsigned long long pow);
+	void addMaintenance(unsigned long long maint);
 
 	unsigned long long getMaintenance();
 
+	float getMaintenanceRate();
+
+	void addEnergy(unsigned long long pow);
+
 	unsigned long long getEnergy();
+
+	float getEnergyRate();
+
+	void updateOperators();
+
+	int getOperatorListSize();
+
+	SceneObject* getOperator(int idx);
+
+	void addOperator(SceneObject* op);
+
+	void removeOperator(SceneObject* op);
+
+	void activateSync();
+
+	bool isOperating();
+
+	void setOperating(bool state);
+
+	float getSpecRate();
+
+	float getActualRate();
+
+	unsigned long long getActiveResourceID();
+
+	float getHopperSize();
+
+	float getHopperSizeMax();
+
+	void updateHopper();
+
+	void setHopperUpdateCounter(int counter);
+
+	int getNewHopperUpdateCounter(int counter);
+
+	int getHopperUpdateCounter();
+
+	int getHopperItemCount();
+
+	unsigned long long getHopperItemID(int index);
+
+	float getHopperItemQuantity(int index);
+
+	float getHopperItemQuantity(unsigned long long rid);
+
+	float removeHopperItem(unsigned long long rid, int quantity);
 
 protected:
 	InstallationObject(DummyConstructorParameter* param);
@@ -87,13 +139,63 @@ public:
 
 	int getDestroyCode();
 
-	void addMaintenance(unsigned long long maint);
+	unsigned int getNewDefenderUpdateCounter(unsigned int cnt);
 
-	void addEnergy(unsigned long long pow);
+	void addMaintenance(unsigned long long maint);
 
 	unsigned long long getMaintenance();
 
+	float getMaintenanceRate();
+
+	void addEnergy(unsigned long long pow);
+
 	unsigned long long getEnergy();
+
+	float getEnergyRate();
+
+	void updateOperators();
+
+	int getOperatorListSize();
+
+	SceneObject* getOperator(int idx);
+
+	void addOperator(SceneObject* op);
+
+	void removeOperator(SceneObject* op);
+
+	void activateSync();
+
+	bool isOperating();
+
+	void setOperating(bool state);
+
+	float getSpecRate();
+
+	float getActualRate();
+
+	unsigned long long getActiveResourceID();
+
+	float getHopperSize();
+
+	float getHopperSizeMax();
+
+	void updateHopper();
+
+	void setHopperUpdateCounter(int counter);
+
+	int getNewHopperUpdateCounter(int counter);
+
+	int getHopperUpdateCounter();
+
+	int getHopperItemCount();
+
+	unsigned long long getHopperItemID(int index);
+
+	float getHopperItemQuantity(int index);
+
+	float getHopperItemQuantity(unsigned long long rid);
+
+	float removeHopperItem(unsigned long long rid, int quantity);
 
 protected:
 	string _param0_setOwner__string_;

@@ -12,8 +12,8 @@
  *	DraftSchematicIngredientStub
  */
 
-DraftSchematicIngredient::DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType) {
-	_impl = new DraftSchematicIngredientImplementation(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity, combineType);
+DraftSchematicIngredient::DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, float contribution) {
+	_impl = new DraftSchematicIngredientImplementation(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity, combineType, contribution);
 	_impl->_setStub(this);
 }
 
@@ -117,6 +117,18 @@ bool DraftSchematicIngredient::getOptional() {
 		return ((DraftSchematicIngredientImplementation*) _impl)->getOptional();
 }
 
+float DraftSchematicIngredient::getContribution() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicIngredientImplementation*) _impl)->getContribution();
+}
+
 /*
  *	DraftSchematicIngredientAdapter
  */
@@ -148,6 +160,9 @@ Packet* DraftSchematicIngredientAdapter::invokeMethod(uint32 methid, Distributed
 		break;
 	case 12:
 		resp->insertBoolean(getOptional());
+		break;
+	case 13:
+		resp->insertFloat(getContribution());
 		break;
 	default:
 		return NULL;
@@ -182,6 +197,10 @@ unsigned int DraftSchematicIngredientAdapter::getCombineType() {
 
 bool DraftSchematicIngredientAdapter::getOptional() {
 	return ((DraftSchematicIngredientImplementation*) impl)->getOptional();
+}
+
+float DraftSchematicIngredientAdapter::getContribution() {
+	return ((DraftSchematicIngredientImplementation*) impl)->getContribution();
 }
 
 /*

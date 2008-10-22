@@ -46,6 +46,7 @@ import "../TangibleObject";
 import "../../../packets";
 import "../../player/Player";
 import "../../creature/CreatureObject";
+import "../../scene/SceneObject";
 	
 interface DeedObject implements TangibleObject {
 	DeedObject(CreatureObject creature, int tempCRC, const unicode n, const string tempn) {
@@ -66,5 +67,8 @@ interface DeedObject implements TangibleObject {
 	string getTargetTempFile();
 
 	int useObject(Player player);
+	void generateAttributes(SceneObject obj);
+		
+	int getHarvesterType();
 }
 

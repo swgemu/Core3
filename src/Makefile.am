@@ -73,6 +73,8 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/managers/player/PlayerManager.cpp \
 		server/zone/managers/player/PlayerMap.cpp \
 		server/zone/managers/resource/ResourceManager.cpp \
+		server/zone/managers/resource/ResourceList.cpp \
+		server/zone/managers/resource/ResourceItem.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/objects/area/ActiveArea.cpp \
 		server/zone/objects/area/Area.cpp \
@@ -104,6 +106,8 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/draftschematic/DraftSchematicValues.cpp \
 		server/zone/objects/group/GroupObject.cpp \
 		server/zone/objects/guild/Guild.cpp \
+		server/zone/objects/installation/factory/FactoryObject.cpp \
+		server/zone/objects/installation/generator/GeneratorObject.cpp \
 		server/zone/objects/installation/harvester/HarvesterObject.cpp \
 		server/zone/objects/installation/InstallationObject.cpp \
 		server/zone/objects/intangible/IntangibleObject.cpp \
@@ -193,7 +197,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \
-	        server/db/ForumsDatabase.cpp \
+		server/db/ForumsDatabase.cpp \
 		server/db/ServerDatabase.cpp \
 		server/login/LoginMessageProcessorThread.cpp \
 		server/login/LoginPacketHandler.cpp \
@@ -249,6 +253,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/draftschematic/DraftSchematicValuesImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/guild/GuildImplementation.cpp \
+		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
+		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
 		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
@@ -273,7 +279,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
 		server/zone/objects/tangible/crafting/factorycrate/FactoryCrateImplementation.cpp \
-    		server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
+		server/zone/objects/tangible/deed/DeedObjectImplementation.cpp \
 		server/zone/objects/tangible/deed/factorydeed/FactoryDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/generatordeed/GeneratorDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.cpp \

@@ -64,6 +64,7 @@ gasPocketSurveyDevice = Object:new {
   resourceTypes = "metal, metal, metal, mineral",
   resourceQuantities = "8, 8, 3, 8",
   combineTypes = "1, 1, 1, 1",
+  contribution = "100, 100, 100, 100",
   
   numberExperimentalProperties = "1, 1, 1, 1",
 

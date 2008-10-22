@@ -64,6 +64,7 @@ floraSurveyTool = Object:new {
   resourceTypes = "metal, metal, metal, mineral",
   resourceQuantities = "8, 8, 3, 8",
   combineTypes = "1, 1, 1, 1",
+  contribution = "100, 100, 100, 100",
   
   numberExperimentalProperties = "1, 1, 1, 1",
 
@@ -74,16 +75,16 @@ floraSurveyTool = Object:new {
 
   experimentalSubGroupCount = "1",
 
-  experimentalSubGroupTitles = "quality",
+  experimentalSubGroupTitles = "useModifier",
   
   tanoAttributes = "objecttype=32770:objectcrc=1329114448:objecttemp=survey_tool_flora:templatetype=obj_n:",
    
-  attributesToSet = "hitPoints, useModifier",
+  attributesToSet = "useModifier",
 
-  attributeExperimentalProperties = "null, quality",
+  attributeExperimentalProperties = "exp_effectiveness",
 
-  attributePrecision = "0, 2",
-  attributesMinMax = "1000, 1000, -15, 15"
+  attributePrecision = "2",
+  attributesMinMax = "-15, 15"
 
 }
 

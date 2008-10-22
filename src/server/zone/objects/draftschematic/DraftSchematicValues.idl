@@ -48,7 +48,8 @@ import "../tangible/crafting/CraftingTool";
 interface DraftSchematicValues implements ManagedObject {
 	DraftSchematicValues();
 
-	void addExperimentalPropertySubtitle(const string subtitle, const string title);
+	void addExperimentalProperty(const string subtitle, const string title, 
+             const float min, const float max, const int precision);
 	string getExperimentalPropertySubtitle(const int i);
 	string getExperimentalPropertySubtitle(const string title, const int i);
 	string getExperimentalPropertyTitle(const string subtitle);
@@ -60,9 +61,15 @@ interface DraftSchematicValues implements ManagedObject {
 	int getExperimentalPropertySubtitleSize(const string title);
 	int getExperimentalPropertyTitleSize();
 
+	boolean hasProperty(const string attribute);
+
 	void setCurrentValue(const string& attribute, const float value);
+	void setCurrentValue(const string& attribute, const float value, const float min, const float max);
 	void setCurrentPercentage(const string& attribute, const float value);
+        void setCurrentPercentage(const string& attribute, const float value, const float min, const float max);
 	void setMaxPercentage(const string& attribute, const float value);
+	void lockValue(const string& attribute);
+	void resetValue(const string& attribute);
 
 	float getCurrentValue(const string& attribute);
 	float getCurrentValue(const int index);
@@ -80,10 +87,18 @@ interface DraftSchematicValues implements ManagedObject {
 	int getTitleLine(string title);
 	string getValuesToSend(const int i);
 
+	float getMinValue(const string attribute);
+	float getMaxValue(const string attribute);
+
+	void setMinValue(const string attribute, const float value);
+	void setMaxValue(const string attribute, const float value);
+
+	int getPrecision(const string attribute);
+	void setPrecision(const string attribute, const int precision);
+
 	void recalculateValues(DraftSchematic draftSchematic);
 
 	float getAttributeAndValue(DraftSchematic draftSchematic, string& attribute, const int i);
-	int getPrecision(DraftSchematic draftSchematic, const int i);
 
 	void clearAll();
 	void clear();

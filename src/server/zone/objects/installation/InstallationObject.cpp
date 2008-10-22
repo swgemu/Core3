@@ -10,6 +10,8 @@
 
 #include "../creature/CreatureObject.h"
 
+#include "../scene/SceneObject.h"
+
 #include "../player/Player.h"
 
 #include "../tangible/deed/DeedObject.h"
@@ -153,30 +155,30 @@ int InstallationObject::getDestroyCode() {
 		return ((InstallationObjectImplementation*) _impl)->getDestroyCode();
 }
 
-void InstallationObject::addMaintenance(unsigned long long maint) {
+unsigned int InstallationObject::getNewDefenderUpdateCounter(unsigned int cnt) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 15);
-		method.addUnsignedLongParameter(maint);
+		method.addUnsignedIntParameter(cnt);
 
-		method.executeWithVoidReturn();
+		return method.executeWithUnsignedIntReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->addMaintenance(maint);
+		return ((InstallationObjectImplementation*) _impl)->getNewDefenderUpdateCounter(cnt);
 }
 
-void InstallationObject::addEnergy(unsigned long long pow) {
+void InstallationObject::addMaintenance(unsigned long long maint) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
-		method.addUnsignedLongParameter(pow);
+		method.addUnsignedLongParameter(maint);
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->addEnergy(pow);
+		((InstallationObjectImplementation*) _impl)->addMaintenance(maint);
 }
 
 unsigned long long InstallationObject::getMaintenance() {
@@ -191,16 +193,328 @@ unsigned long long InstallationObject::getMaintenance() {
 		return ((InstallationObjectImplementation*) _impl)->getMaintenance();
 }
 
-unsigned long long InstallationObject::getEnergy() {
+float InstallationObject::getMaintenanceRate() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 18);
 
+		return method.executeWithFloatReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getMaintenanceRate();
+}
+
+void InstallationObject::addEnergy(unsigned long long pow) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addUnsignedLongParameter(pow);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->addEnergy(pow);
+}
+
+unsigned long long InstallationObject::getEnergy() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
 		return method.executeWithUnsignedLongReturn();
 	} else
 		return ((InstallationObjectImplementation*) _impl)->getEnergy();
+}
+
+float InstallationObject::getEnergyRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getEnergyRate();
+}
+
+void InstallationObject::updateOperators() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->updateOperators();
+}
+
+int InstallationObject::getOperatorListSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getOperatorListSize();
+}
+
+SceneObject* InstallationObject::getOperator(int idx) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addSignedIntParameter(idx);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getOperator(idx);
+}
+
+void InstallationObject::addOperator(SceneObject* op) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addObjectParameter(op);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->addOperator(op);
+}
+
+void InstallationObject::removeOperator(SceneObject* op) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addObjectParameter(op);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->removeOperator(op);
+}
+
+void InstallationObject::activateSync() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->activateSync();
+}
+
+bool InstallationObject::isOperating() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->isOperating();
+}
+
+void InstallationObject::setOperating(bool state) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addBooleanParameter(state);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->setOperating(state);
+}
+
+float InstallationObject::getSpecRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getSpecRate();
+}
+
+float InstallationObject::getActualRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getActualRate();
+}
+
+unsigned long long InstallationObject::getActiveResourceID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getActiveResourceID();
+}
+
+float InstallationObject::getHopperSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getHopperSize();
+}
+
+float InstallationObject::getHopperSizeMax() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getHopperSizeMax();
+}
+
+void InstallationObject::updateHopper() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->updateHopper();
+}
+
+void InstallationObject::setHopperUpdateCounter(int counter) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 36);
+		method.addSignedIntParameter(counter);
+
+		method.executeWithVoidReturn();
+	} else
+		((InstallationObjectImplementation*) _impl)->setHopperUpdateCounter(counter);
+}
+
+int InstallationObject::getNewHopperUpdateCounter(int counter) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
+		method.addSignedIntParameter(counter);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getNewHopperUpdateCounter(counter);
+}
+
+int InstallationObject::getHopperUpdateCounter() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getHopperUpdateCounter();
+}
+
+int InstallationObject::getHopperItemCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 39);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getHopperItemCount();
+}
+
+unsigned long long InstallationObject::getHopperItemID(int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 40);
+		method.addSignedIntParameter(index);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getHopperItemID(index);
+}
+
+float InstallationObject::getHopperItemQuantity(int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 41);
+		method.addSignedIntParameter(index);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getHopperItemQuantity(index);
+}
+
+float InstallationObject::getHopperItemQuantity(unsigned long long rid) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 42);
+		method.addUnsignedLongParameter(rid);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getHopperItemQuantity(rid);
+}
+
+float InstallationObject::removeHopperItem(unsigned long long rid, int quantity) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 43);
+		method.addUnsignedLongParameter(rid);
+		method.addSignedIntParameter(quantity);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->removeHopperItem(rid, quantity);
 }
 
 /*
@@ -242,16 +556,91 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertSignedInt(getDestroyCode());
 		break;
 	case 15:
-		addMaintenance(inv->getUnsignedLongParameter());
+		resp->insertInt(getNewDefenderUpdateCounter(inv->getUnsignedIntParameter()));
 		break;
 	case 16:
-		addEnergy(inv->getUnsignedLongParameter());
+		addMaintenance(inv->getUnsignedLongParameter());
 		break;
 	case 17:
 		resp->insertLong(getMaintenance());
 		break;
 	case 18:
+		resp->insertFloat(getMaintenanceRate());
+		break;
+	case 19:
+		addEnergy(inv->getUnsignedLongParameter());
+		break;
+	case 20:
 		resp->insertLong(getEnergy());
+		break;
+	case 21:
+		resp->insertFloat(getEnergyRate());
+		break;
+	case 22:
+		updateOperators();
+		break;
+	case 23:
+		resp->insertSignedInt(getOperatorListSize());
+		break;
+	case 24:
+		resp->insertLong(getOperator(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case 25:
+		addOperator((SceneObject*) inv->getObjectParameter());
+		break;
+	case 26:
+		removeOperator((SceneObject*) inv->getObjectParameter());
+		break;
+	case 27:
+		activateSync();
+		break;
+	case 28:
+		resp->insertBoolean(isOperating());
+		break;
+	case 29:
+		setOperating(inv->getBooleanParameter());
+		break;
+	case 30:
+		resp->insertFloat(getSpecRate());
+		break;
+	case 31:
+		resp->insertFloat(getActualRate());
+		break;
+	case 32:
+		resp->insertLong(getActiveResourceID());
+		break;
+	case 33:
+		resp->insertFloat(getHopperSize());
+		break;
+	case 34:
+		resp->insertFloat(getHopperSizeMax());
+		break;
+	case 35:
+		updateHopper();
+		break;
+	case 36:
+		setHopperUpdateCounter(inv->getSignedIntParameter());
+		break;
+	case 37:
+		resp->insertSignedInt(getNewHopperUpdateCounter(inv->getSignedIntParameter()));
+		break;
+	case 38:
+		resp->insertSignedInt(getHopperUpdateCounter());
+		break;
+	case 39:
+		resp->insertSignedInt(getHopperItemCount());
+		break;
+	case 40:
+		resp->insertLong(getHopperItemID(inv->getSignedIntParameter()));
+		break;
+	case 41:
+		resp->insertFloat(getHopperItemQuantity(inv->getSignedIntParameter()));
+		break;
+	case 42:
+		resp->insertFloat(getHopperItemQuantity(inv->getUnsignedLongParameter()));
+		break;
+	case 43:
+		resp->insertFloat(removeHopperItem(inv->getUnsignedLongParameter(), inv->getSignedIntParameter()));
 		break;
 	default:
 		return NULL;
@@ -296,20 +685,120 @@ int InstallationObjectAdapter::getDestroyCode() {
 	return ((InstallationObjectImplementation*) impl)->getDestroyCode();
 }
 
-void InstallationObjectAdapter::addMaintenance(unsigned long long maint) {
-	return ((InstallationObjectImplementation*) impl)->addMaintenance(maint);
+unsigned int InstallationObjectAdapter::getNewDefenderUpdateCounter(unsigned int cnt) {
+	return ((InstallationObjectImplementation*) impl)->getNewDefenderUpdateCounter(cnt);
 }
 
-void InstallationObjectAdapter::addEnergy(unsigned long long pow) {
-	return ((InstallationObjectImplementation*) impl)->addEnergy(pow);
+void InstallationObjectAdapter::addMaintenance(unsigned long long maint) {
+	return ((InstallationObjectImplementation*) impl)->addMaintenance(maint);
 }
 
 unsigned long long InstallationObjectAdapter::getMaintenance() {
 	return ((InstallationObjectImplementation*) impl)->getMaintenance();
 }
 
+float InstallationObjectAdapter::getMaintenanceRate() {
+	return ((InstallationObjectImplementation*) impl)->getMaintenanceRate();
+}
+
+void InstallationObjectAdapter::addEnergy(unsigned long long pow) {
+	return ((InstallationObjectImplementation*) impl)->addEnergy(pow);
+}
+
 unsigned long long InstallationObjectAdapter::getEnergy() {
 	return ((InstallationObjectImplementation*) impl)->getEnergy();
+}
+
+float InstallationObjectAdapter::getEnergyRate() {
+	return ((InstallationObjectImplementation*) impl)->getEnergyRate();
+}
+
+void InstallationObjectAdapter::updateOperators() {
+	return ((InstallationObjectImplementation*) impl)->updateOperators();
+}
+
+int InstallationObjectAdapter::getOperatorListSize() {
+	return ((InstallationObjectImplementation*) impl)->getOperatorListSize();
+}
+
+SceneObject* InstallationObjectAdapter::getOperator(int idx) {
+	return ((InstallationObjectImplementation*) impl)->getOperator(idx);
+}
+
+void InstallationObjectAdapter::addOperator(SceneObject* op) {
+	return ((InstallationObjectImplementation*) impl)->addOperator(op);
+}
+
+void InstallationObjectAdapter::removeOperator(SceneObject* op) {
+	return ((InstallationObjectImplementation*) impl)->removeOperator(op);
+}
+
+void InstallationObjectAdapter::activateSync() {
+	return ((InstallationObjectImplementation*) impl)->activateSync();
+}
+
+bool InstallationObjectAdapter::isOperating() {
+	return ((InstallationObjectImplementation*) impl)->isOperating();
+}
+
+void InstallationObjectAdapter::setOperating(bool state) {
+	return ((InstallationObjectImplementation*) impl)->setOperating(state);
+}
+
+float InstallationObjectAdapter::getSpecRate() {
+	return ((InstallationObjectImplementation*) impl)->getSpecRate();
+}
+
+float InstallationObjectAdapter::getActualRate() {
+	return ((InstallationObjectImplementation*) impl)->getActualRate();
+}
+
+unsigned long long InstallationObjectAdapter::getActiveResourceID() {
+	return ((InstallationObjectImplementation*) impl)->getActiveResourceID();
+}
+
+float InstallationObjectAdapter::getHopperSize() {
+	return ((InstallationObjectImplementation*) impl)->getHopperSize();
+}
+
+float InstallationObjectAdapter::getHopperSizeMax() {
+	return ((InstallationObjectImplementation*) impl)->getHopperSizeMax();
+}
+
+void InstallationObjectAdapter::updateHopper() {
+	return ((InstallationObjectImplementation*) impl)->updateHopper();
+}
+
+void InstallationObjectAdapter::setHopperUpdateCounter(int counter) {
+	return ((InstallationObjectImplementation*) impl)->setHopperUpdateCounter(counter);
+}
+
+int InstallationObjectAdapter::getNewHopperUpdateCounter(int counter) {
+	return ((InstallationObjectImplementation*) impl)->getNewHopperUpdateCounter(counter);
+}
+
+int InstallationObjectAdapter::getHopperUpdateCounter() {
+	return ((InstallationObjectImplementation*) impl)->getHopperUpdateCounter();
+}
+
+int InstallationObjectAdapter::getHopperItemCount() {
+	return ((InstallationObjectImplementation*) impl)->getHopperItemCount();
+}
+
+unsigned long long InstallationObjectAdapter::getHopperItemID(int index) {
+	return ((InstallationObjectImplementation*) impl)->getHopperItemID(index);
+}
+
+float InstallationObjectAdapter::getHopperItemQuantity(int index) {
+	return ((InstallationObjectImplementation*) impl)->getHopperItemQuantity(index);
+}
+
+float InstallationObjectAdapter::getHopperItemQuantity(unsigned long long rid) {
+	return ((InstallationObjectImplementation*) impl)->getHopperItemQuantity(rid);
+}
+
+float InstallationObjectAdapter::removeHopperItem(unsigned long long rid, int quantity) {
+	return ((InstallationObjectImplementation*) impl)->removeHopperItem(rid, quantity);
 }
 
 /*

@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "events/ShuttleLandingEvent.h"
 #include "events/ShuttleTakeOffEvent.h"
 
-#include "events/HarvesterSpawnEvent.h"
+//#include "events/HarvesterSpawnEvent.h"
 #include "events/InstallationSpawnEvent.h"
 #include "events/TempInstallationSpawnEvent.h"
 #include "events/TempInstallationDespawnEvent.h"
@@ -251,6 +251,7 @@ NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float m
 void PlanetManagerImplementation::loadPlayerStructures() {
 	lock();
 
+	/*
 	int planetid = zone->getZoneID();
 
 	stringstream query;
@@ -325,11 +326,12 @@ void PlanetManagerImplementation::loadPlayerStructures() {
 			hiso->insertToZone(zone);
 
 			zone->registerObject(hiso);*/
+/*
 		}
 	}
 
 	delete result;
-
+*/
 	unlock();
 }
 
@@ -1156,8 +1158,6 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 void PlanetManagerImplementation::spawnTempStructure(Player * player,
 		DeedObject * deed, float x, float z, float y, float oX, float oZ,
 		float oY, float oW) {
-
-	cout << "PlanetManagerImplementation::spawnTempStructure" << endl;
 	InstallationObject* inso = new InstallationObject(player->getNewItemID());
 
 	//inso->setObjectID(player->getNewItemID());
@@ -1177,13 +1177,11 @@ void PlanetManagerImplementation::spawnTempStructure(Player * player,
 
 	server->addEvent(tempInstallationSpawnEvent, 100);
 	server->addEvent(tempInstallationDespawnEvent, 10000);
-	cout << "PlanetManagerImplementation::spawnTempStructure Completed" << endl;
 }
+
 void PlanetManagerImplementation::spawnInstallation(Player * player,
 		DeedObject * deed, float x, float z, float y, float oX, float oZ,
 		float oY, float oW) {
-
-	cout << "PlanetManagerImplementation::spawnInstallation" << endl;
 	InstallationObject* inso = new InstallationObject(player->getNewItemID(), deed);
 
 	//inso->setObjectID(player->getNewItemID());
@@ -1193,7 +1191,7 @@ void PlanetManagerImplementation::spawnInstallation(Player * player,
 	inso->setOwner(player->getFirstName());
 	inso->setZoneProcessServer(server);
 
-	installationSpawnEvent = new InstallationSpawnEvent(player, inso);
+	installationSpawnEvent = new InstallationSpawnEvent(player, inso, player->getZone());
 
 	server->addEvent(installationSpawnEvent, 100);
 }
@@ -1201,9 +1199,7 @@ void PlanetManagerImplementation::spawnInstallation(Player * player,
 void PlanetManagerImplementation::spawnHarvester(Player * player,
 		DeedObject * deed, float x, float z, float y, float oX, float oZ,
 		float oY, float oW) {
-
-	cout << "PlanetManagerImplementation::spawnHarvester" << endl;
-	HarvesterObject*  hino = new HarvesterObject(player->getNewItemID(), deed);
+	HarvesterObject*  hino = new HarvesterObject(player->getNewItemID(), (HarvesterDeed*)deed);
 
 	//hino->setObjectID(player->getNewItemID());
 	//hino->setObjectCRC(String::hashCode(deed->getTargetFile()));
@@ -1212,21 +1208,15 @@ void PlanetManagerImplementation::spawnHarvester(Player * player,
 	hino->setOwner(player->getFirstName());
 	hino->setZoneProcessServer(server);
 
-	cout << "PlanetManagerImplementation::spawnHarvester, creating event" << endl;
-	harvesterSpawnEvent = new HarvesterSpawnEvent(player, hino);
+	installationSpawnEvent = new InstallationSpawnEvent(player, hino, player->getZone());
 
-	server->addEvent(harvesterSpawnEvent, 100);
-	cout << "PlanetManagerImplementation::did spawnHarvester, creating event" << endl;
+	server->addEvent(installationSpawnEvent, 100);
 }
 
 void PlanetManagerImplementation::spawnBuilding(Player * player,
 		DeedObject * thedeed, float x, float z, float y, float oX, float oZ,
 		float oY, float oW) {
 	PlayerHouseDeed * deed = (PlayerHouseDeed *) thedeed;
-
-	cout << "spawning building" << endl;
-
-
 	BuildingObject* buio = new BuildingObject(player->getNewItemID(), false);
 	buio->setZoneProcessServer(server);
 
@@ -1235,10 +1225,6 @@ void PlanetManagerImplementation::spawnBuilding(Player * player,
 	buio->setDirection(oX, oZ, oY, oW);
 
 	//zone->registerObject(buio);
-
-
-
-	cout << "adding player cells: " << deed->getCellCount() << endl;
 	addPlayerCells(player, buio, deed->getCellCount());
 
 	//return;
@@ -1252,7 +1238,6 @@ void PlanetManagerImplementation::addPlayerCells(Player * player, BuildingObject
 
 	for(int i = 1; i <= cellCount; ++i){
 		// Get new cell object ID
-		cout << "adding cell" << endl;
 		uint64 oid = player->getNewItemID();
 
 		CellObject* cell = new CellObject(oid, buio, i); // server->getZoneServer()->getNextCellID()
@@ -1321,7 +1306,6 @@ void PlanetManagerImplementation::sendPlanetTravelPointListResponse(Player* play
 	lock();
 
 	TravelListResponseMessage* msg = new TravelListResponseMessage(Planet::getPlanetName(zone->getZoneID()));
-	//cout << "Requested travel list for:" << Planet::getPlanetName(zone->getZoneID()) << "\n";
 
 	shuttleMap->resetIterator();
 

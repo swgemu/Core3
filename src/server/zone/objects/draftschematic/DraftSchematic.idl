@@ -70,7 +70,7 @@ interface DraftSchematic implements ManagedObject {
 
 	
 	void addExperimentalProperty(unsigned int groupNumber,  
-		const string experimentalProperty, unsigned int weight);
+		const string experimentalProperty, unsigned int weight, string subtitle);
 	
 	void sendExperimentalPropertiesToPlayer(Player player);
 
@@ -86,7 +86,7 @@ interface DraftSchematic implements ManagedObject {
 
 	void addIngredient(const string ingredientTemplateName, const string ingredientTitleName,
 		boolean optional, const string resourceType, unsigned int resourceQuantity, 
-		unsigned int combineType);
+		unsigned int combineType, unsigned int contribution);
 
 	DraftSchematicIngredient getIngredient(int index);
 
@@ -118,6 +118,8 @@ interface DraftSchematic implements ManagedObject {
 	void setAssemblySkill(const string ass);
 
 	void setFinished();
+
+	void setCrafter(Player crafter);
 
 	//getters
 
@@ -169,6 +171,8 @@ interface DraftSchematic implements ManagedObject {
 	int getExpCounter();
 
 	float getExpFailure();
+
+	Player getCrafter();
 
 	DraftSchematicValues getCraftingValues();
 

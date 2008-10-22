@@ -63,7 +63,7 @@ genericCraftingTool = Object:new {
    resourceTypes = "metal, mineral, chemical",
    resourceQuantities = "12, 4, 4",
    combineTypes = "1, 1, 1",
-
+   contribution = "100, 100, 100",
 
    numberExperimentalProperties = "1, 1, 1, 1",
    experimentalProperties = "XX, XX, XX, CD",

@@ -645,7 +645,7 @@ int Armor::getSocket3Value() {
 		return ((ArmorImplementation*) _impl)->getSocket3Value();
 }
 
-void Armor::setType(int armorSlot) {
+void Armor::setArmorPiece(int armorSlot) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -655,7 +655,7 @@ void Armor::setType(int armorSlot) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorImplementation*) _impl)->setType(armorSlot);
+		((ArmorImplementation*) _impl)->setArmorPiece(armorSlot);
 }
 
 void Armor::setHealthEncumbrance(int healthEnc) {
@@ -1108,7 +1108,7 @@ Packet* ArmorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(getSocket3Value());
 		break;
 	case 56:
-		setType(inv->getSignedIntParameter());
+		setArmorPiece(inv->getSignedIntParameter());
 		break;
 	case 57:
 		setHealthEncumbrance(inv->getSignedIntParameter());
@@ -1383,8 +1383,8 @@ int ArmorAdapter::getSocket3Value() {
 	return ((ArmorImplementation*) impl)->getSocket3Value();
 }
 
-void ArmorAdapter::setType(int armorSlot) {
-	return ((ArmorImplementation*) impl)->setType(armorSlot);
+void ArmorAdapter::setArmorPiece(int armorSlot) {
+	return ((ArmorImplementation*) impl)->setArmorPiece(armorSlot);
 }
 
 void ArmorAdapter::setHealthEncumbrance(int healthEnc) {

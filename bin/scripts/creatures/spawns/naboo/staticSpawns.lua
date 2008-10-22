@@ -49,9 +49,6 @@
 -- spawnCreatures(fleshEatingChuba, 5, -5052.52, 3905.86, 200, 20)
 -- spawnCreatures(shaupaut, 5, -5052.52, 3905.86, 40, 200, 10)
 
-spawnCreature(imperialStormTrooper, 5, -4852.37, 4175.86)
-spawnCreature(imperialStormTrooper, 5, -4848.24, 4172.5)
-
 spawnCreatures(nightspider, 5, -4857.24, 3972.12, 40, 5)
 spawnCreatures(nightspider, 5, -4864.8, 3923.57, 40, 5)
 spawnCreatures(fleshEatingChuba, 5, -4864.8, 3923.57, 40, 5)
@@ -143,6 +140,3 @@ spawnCreatures(capperSpineflap, 5, -5060.8, 3806.97, 40, 5)
 spawnCreatures(fleshEatingChuba, 5, -5060.8, 3806.97, 40, 5)
 spawnCreatures(nightspider, 5, -5060.8, 3806.97, 40, 5)
 spawnCreatures(shaupaut, 5, -5060.8, 3806.97, 40, 5)
-
--- Epic theed Spawn
-spawnCreatureInCell(mellichae, 5, 0.429564, 27, -120.732, 1688865)

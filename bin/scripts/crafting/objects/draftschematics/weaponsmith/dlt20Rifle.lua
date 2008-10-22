@@ -52,7 +52,7 @@ dlt20Rifle = Object:new {
   craftingToolTab = 1,
   complexity = 21,
   size = 3, 
-
+  
   xpType = "crafting_weapons_general",
   xp = 42,
 
@@ -62,25 +62,26 @@ dlt20Rifle = Object:new {
   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly, powerhandler, barrel",
   ingredientOptionals = "0, 0, 0, 0, 0",
-  resourceTypes = "metal, metal_ferrous, metal, object/tangible/component/weapon/shared_blaster_power_handler.iff, object/tangible/component/weapon/shared_blaster_rifle_barrel.iff",
+  --resourceTypes = "metal, metal_ferrous, metal, object/tangible/component/weapon/shared_blaster_power_handler.iff, object/tangible/component/weapon/shared_blaster_rifle_barrel.iff",
+ resourceTypes = "metal, metal, metal, metal, metal",
+
   resourceQuantities = "35, 17, 9, 1, 1",
-  combineTypes = "1, 1, 1, 2, 2",
+  combineTypes = "1, 1, 1, 1, 1",
+  contribution = "100, 100, 100, 100, 100",
 
   numberExperimentalProperties = "1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2",
   experimentalProperties = "XX, XX, OQ, CD, OQ, CD, OQ, CD, OQ, CD, XX, OQ, CD, XX, XX, XX, OQ, CD, OQ, CD, OQ, CD, OQ, CD",
-  experimentalWeights = "0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1",
+  experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
   experimentalGroupTitles = "expdamage, expdurability, expeffeciency, exprange",
   experimentalSubGroupCount = "4, 1, 3, 1",
   experimentalSubGroupTitles = "speed, maxDamage, minDamage, wound, decay, actionCost, healthCost, mindCost, range",
 
-  tanoAttributes = "objecttype=131084:objectcrc=2200111432:objecttemp=rifle_blaster_dlt20a:templatetype=obj_n:",
-
+  tanoAttributes = "objecttype=131084:objectcrc=2200111432:objecttemp=rifle_blaster_dlt20a:",
+  
   attributesToSet = "speed, maxDamage, minDamage, wound, hitPoints, useModifier",
-
   attributeExperimentalProperties = "expdamage, expdamage, expdamage, expdamage, expdurability, expeffeciency, expeffeciency, expeffeciency, exprange",
-
-  attributePrecision = "1, 1, 1, 1, 1, 1, 1, 1, 1",
-  attributesMinMax = "4.5, 7.5, 150, 230, 55, 130, 5, 20, 0, 1000, 10, 40, 15, 45, 15, 43, 50, 65"
+  attributePrecision = "0, 0, 0, 0, 0, 0, 0, 0, 0",
+  attributesMinMax = "4.5, 7.5, 150, 230, 55, 130, 5, 20, 0, 1000, 10, 40, 15, 45, 15, 43, 50, 65",
 
 }
 

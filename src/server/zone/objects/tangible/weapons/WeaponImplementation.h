@@ -207,6 +207,7 @@ public:
 	static const int COLD = 7;
 	static const int ACID = 8;
 	static const int LIGHTSABER = 9;
+	static const int FORCE = 10; // Added to allow for Force choke
 
 public:
 	WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat);

@@ -64,26 +64,22 @@ windCurrentSurveyingDevice = Object:new {
   resourceTypes = "metal, metal, metal",
   resourceQuantities = "5, 3, 8",
   combineTypes = "1, 1, 1",
+  contribution = "100, 100, 100",
   
   numberExperimentalProperties = "1, 1, 1, 1",
 
   experimentalProperties = "XX, XX, XX, CD",
   experimentalWeights = "0, 0, 0, 1",
-
   experimentalGroupTitles = "exp_effectiveness",
-
   experimentalSubGroupCount = "1",
-
   experimentalSubGroupTitles = "quality",
   
   tanoAttributes = "objecttype=32770:objectcrc=566467536:objecttemp=survey_tool_wind:templatetype=obj_n:",
    
-  attributesToSet = "hitPoints, useModifier",
-
-  attributeExperimentalProperties = "null, quality",
-
-  attributePrecision = "0, 2",
-  attributesMinMax = "1000, 1000, -15, 15"
+  attributesToSet = "quality",
+  attributeExperimentalProperties = "exp_effectiveness",
+  attributePrecision = "2",
+  attributesMinMax = "-15, 15"
 
 }
 
