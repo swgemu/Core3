@@ -40,24 +40,30 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("objects/object.lua");
 
-RunItemLUAFile("objects/armor.lua");
-RunItemLUAFile("objects/clothing.lua");
-RunItemLUAFile("objects/deed.lua");
-RunItemLUAFile("objects/food.lua");
-RunItemLUAFile("objects/instrument.lua");
-RunItemLUAFile("objects/pharmaceutical.lua");
-RunItemLUAFile("objects/tool.lua");
-RunItemLUAFile("objects/weapon.lua");
+--Rebel
 
-RunItemLUAFile("objects/armor/main.lua");
-RunItemLUAFile("objects/clothing/main.lua");
-RunItemLUAFile("objects/deed/main.lua");
-RunItemLUAFile("objects/food/main.lua");
-RunItemLUAFile("objects/instruments/main.lua");
-RunItemLUAFile("objects/pharmaceutical/main.lua");
-RunItemLUAFile("objects/tools/main.lua");
-RunItemLUAFile("objects/weapons/main.lua");
+-- RunCreatureFile("objects/npcs/rebel/rebelColonel.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelCommando.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelCorporal.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelFirstLieutenant.lua")
+RunCreatureFile("objects/npcs/rebel/rebelGeneral.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelHighGeneral.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelLanceCorporal.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelLieutenantColonel.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelMajor.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelMajorGeneral.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelMedic.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelScout.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelSecondLieutenant.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelSergeant.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelSpecforceCaptain.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelStaffCorporal.lua")
+RunCreatureFile("objects/npcs/rebel/rebelSurfaceMarshal.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelTrooper.lua")
+-- RunCreatureFile("objects/npcs/rebel/rebelWarrantOfficerI.lua")
 
-
+RunCreatureFile("objects/npcs/rebel/oldMan.lua")
+RunCreatureFile("objects/npcs/rebel/luke.lua")
+RunCreatureFile("objects/npcs/rebel/hanSolo.lua")
+RunCreatureFile("objects/npcs/rebel/chewbacca.lua")

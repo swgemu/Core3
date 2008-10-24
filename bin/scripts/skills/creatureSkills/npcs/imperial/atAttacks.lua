@@ -39,29 +39,25 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-jabbaHuttAttack1 = {
-	attackname = "jabbaHuttAttack1",
-	animation = "combo_3e_medium",
+atAttack1 = {
+	attackname = "atAttack1",
+	animation = "droid_attack_medium",
+
+	requiredWeaponType = RANGED,
 	
-	requiredWeaponType = NONE,
-
 	range = 64,
-
-	damageRatio = 70,
-
-	speedRatio = 5,
-	coneAngle = 0,
-
-	areaRange = 0,
+	damageRatio = 18,
+	speedRatio = 1,
+	coneAngle = 32,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
-	postureDownChance = 1,
+	knockdownChance = 5,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 1,
-	blindChance = 1,
+	blindChance = 0,
 	stunChance = 1,
-	intimidateChance = 1,
+	intimidateChance = 60,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -70,7 +66,4 @@ jabbaHuttAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(jabbaHuttAttack1)
-
------------------------------------------------
-
+AddRandomPoolAttackTargetSkill(atAttack1)

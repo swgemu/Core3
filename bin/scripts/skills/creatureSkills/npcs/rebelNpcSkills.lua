@@ -39,24 +39,34 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Load files
 
 -- Npcs
-RunSkillsFile("creatureSkills/npcs/palpatineAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/darthAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/oneHandedJediAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/twoHandedJediAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/polearmJediAttacks.lua")
 
-RunSkillsFile("creatureSkills/npcs/imperialAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/stormAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/atAttacks.lua")
+-- Rebel Attacks
+RunSkillsFile("creatureSkills/npcs/rebel/rebelAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelColonelAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelCommandoAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelCorporalAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelFirstLieutenantAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelGeneralAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelHighGeneralAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelLanceCorporalAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelLieutenantColonelAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorGeneralAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelMedicAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelScoutAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelSecondLieutenantAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantMajorAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelSpecforceCaptainAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelStaffCorporalAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelSurfaceMarshalAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelTrooperAttacks.lua")
+-- RunSkillsFile("creatureSkills/npcs/rebel/rebelWarrantOfficerIAttacks.lua")
 
-RunSkillsFile("creatureSkills/npcs/oldManAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/lukeAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/hanAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/chewbaccaAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/bobaAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/jabbaHuttAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/rebel/hanSoloAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/rebel/chewbaccaAttacks.lua")
 
-RunSkillsFile("creatureSkills/npcs/rebelAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/rebel/oldManAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/rebel/lukeAttacks.lua")

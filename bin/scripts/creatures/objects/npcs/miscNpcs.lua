@@ -39,38 +39,14 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-jabbaAttack1 = {
-	attackname = "jabbaAttack1",
-	animation = "creature_attack_ranged_light",
-	
-	requiredWeaponType = NONE,
 
-	range = 64,
 
-	damageRatio = 70,
 
-	speedRatio = 5,
-	coneAngle = 0,
+--Misc
+RunCreatureFile("objects/npcs/jedi/mellichae.lua")
+RunCreatureFile("objects/npcs/jedi/moDarkJediMaster.lua")
+RunCreatureFile("objects/npcs/jedi/darkJediMaster.lua")
+RunCreatureFile("objects/npcs/jedi/darkJediKnight.lua")
+RunCreatureFile("objects/npcs/jedi/darkJawa.lua")
 
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 1,
-	postureDownChance = 1,
-	postureUpChance = 0,
-	dizzyChance = 1,
-	blindChance = 1,
-	stunChance = 1,
-	intimidateChance = 1,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(jabbaAttack1)
-
------------------------------------------------
-
+----------------------------------------------------------------------------------------------------

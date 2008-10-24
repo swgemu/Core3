@@ -104,7 +104,7 @@ imperialAtAt = Creature:new {
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 450,
-	weaponMaxDamage = 850,
+	weaponMaxDamage = 650,
 	weaponAttackSpeed = 1,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -137,7 +137,7 @@ imperialAtAt = Creature:new {
     meatType = "",
     meatMax = 0,
 
-	skills = { "atAttack1", "atAttack2", "atAttack3", "atAttack4", "atAttack5", "atAttack6", "atAttack7", "atAttack8", "atAttack9", "atAttack10", "atAttack12" },
+	skills = { "atAttack1" },
 	respawnTimer = 3600, 
 	
 	behaviorScript = "", -- Link to the behavior script for this object
