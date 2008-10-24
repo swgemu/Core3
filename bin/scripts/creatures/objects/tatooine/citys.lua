@@ -40,16 +40,17 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-
-RunItemLUAFile("objects/weapons/cdefPistol.lua");
-RunItemLUAFile("objects/weapons/cdefCarbine.lua");
-RunItemLUAFile("objects/weapons/cdefRifle.lua");
-RunItemLUAFile("objects/weapons/survivalKnife.lua");
-RunItemLUAFile("objects/weapons/gaderiffiBaton.lua");
-RunItemLUAFile("objects/weapons/vibroknuckler.lua");
-RunItemLUAFile("objects/weapons/t21.lua");
-RunItemLUAFile("objects/weapons/powerHammer.lua");
-RunItemLUAFile("objects/weapons/vibrolance.lua");
-RunItemLUAFile("objects/weapons/ee3Carbine.lua");
-RunItemLUAFile("objects/weapons/fwg5Pistol.lua");
-RunItemLUAFile("objects/weapons/bowcaster.lua");
+ 
+ -- Citys
+ RunCreatureFile("objects/tatooine/citys/anchorhead.lua")
+ RunCreatureFile("objects/tatooine/citys/bestine.lua")
+ RunCreatureFile("objects/tatooine/citys/mosEisley.lua")
+ RunCreatureFile("objects/tatooine/citys/mosEntha.lua")
+ RunCreatureFile("objects/tatooine/citys/mosEspa.lua")
+ RunCreatureFile("objects/tatooine/citys/wayfar.lua")
+ 
+ 
+ -- Jabba's Palace
+ RunCreatureFile("objects/tatooine/citys/jabbapalace.lua")
+ 
+ 

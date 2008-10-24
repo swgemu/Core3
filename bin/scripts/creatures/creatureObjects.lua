@@ -44,6 +44,7 @@
 if (PLANET_ID == 0) then
 RunCreatureFile("objects/corellia/creatures.lua") 
 RunCreatureFile("objects/corellia/npcs.lua") 
+RunCreatureFile("objects/corellia/citys.lua") 
 end
 
 ----------------------------------------------------
@@ -52,6 +53,7 @@ end
 if (PLANET_ID == 1) then
 RunCreatureFile("objects/dantooine/creatures.lua") 
 RunCreatureFile("objects/dantooine/npcs.lua")
+RunCreatureFile("objects/dantooine/citys.lua")
 end
 
 -------------------------------------------------------
@@ -60,6 +62,7 @@ end
 if (PLANET_ID == 2) then
 RunCreatureFile("objects/dathomir/creatures.lua") 
 RunCreatureFile("objects/dathomir/npcs.lua")
+RunCreatureFile("objects/dathomir/citys.lua")
 end
 -------------------------------------------------------------
 
@@ -67,6 +70,7 @@ end
 if (PLANET_ID == 3) then
 RunCreatureFile("objects/endor/creatures.lua") 
 RunCreatureFile("objects/endor/npcs.lua")
+RunCreatureFile("objects/endor/citys.lua")
 end
 
 --------------------------------------------------------------
@@ -75,6 +79,7 @@ end
 if (PLANET_ID == 4) then
 RunCreatureFile("objects/lok/creatures.lua") 
 RunCreatureFile("objects/lok/npcs.lua")
+RunCreatureFile("objects/lok/citys.lua")
 end
 
 ---------------------------------------------------------------
@@ -83,6 +88,7 @@ end
 if (PLANET_ID == 5) then
 RunCreatureFile("objects/naboo/creatures.lua") 
 RunCreatureFile("objects/naboo/npcs.lua") 
+RunCreatureFile("objects/naboo/citys.lua") 
 end
 
 --------------------------------------------------------------------
@@ -91,6 +97,7 @@ end
 if (PLANET_ID == 6) then
 RunCreatureFile("objects/rori/creatures.lua") 
 RunCreatureFile("objects/rori/npcs.lua") 
+RunCreatureFile("objects/rori/citys.lua") 
 end
 
 --------------------------------------------------------------------
@@ -99,6 +106,7 @@ end
 if (PLANET_ID == 7) then
 RunCreatureFile("objects/talus/creatures.lua") 
 RunCreatureFile("objects/talus/npcs.lua") 
+RunCreatureFile("objects/talus/citys.lua")
 end
 
 --------------------------------------------------------------------
@@ -107,6 +115,7 @@ end
 if (PLANET_ID == 8) then
 RunCreatureFile("objects/tatooine/creatures.lua") 
 RunCreatureFile("objects/tatooine/npcs.lua")
+RunCreatureFile("objects/tatooine/citys.lua")
 end
 --------------------------------------------------------
 
@@ -114,6 +123,7 @@ end
 if (PLANET_ID == 9) then
 RunCreatureFile("objects/yavin4/creatures.lua") 
 RunCreatureFile("objects/yavin4/npcs.lua")
+RunCreatureFile("objects/yavin4/citys.lua")
 end
 --------------------------------------------------------
 

@@ -40,13 +40,13 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("objects/clothing/belts/aakuan_belt.lua");
+RunItemLUAFile("objects/clothing/belts/aakuanBelt.lua");
 RunItemLUAFile("objects/clothing/belts/belt1.lua");
 RunItemLUAFile("objects/clothing/belts/belt2.lua");
 RunItemLUAFile("objects/clothing/belts/belt3.lua");
 RunItemLUAFile("objects/clothing/belts/belt4.lua");
 RunItemLUAFile("objects/clothing/belts/belt5.lua");
-RunItemLUAFile("objects/clothing/belts/belt5_quest.lua");
+RunItemLUAFile("objects/clothing/belts/belt5Quest.lua");
 RunItemLUAFile("objects/clothing/belts/belt7.lua");
 RunItemLUAFile("objects/clothing/belts/belt9.lua");
 RunItemLUAFile("objects/clothing/belts/belt11.lua");

@@ -41,9 +41,9 @@
 --which carries forward this exception.
 
 RunItemLUAFile("objects/clothing/bodysuits/atat.lua");
-RunItemLUAFile("objects/clothing/bodysuits/atat_quest.lua");
+RunItemLUAFile("objects/clothing/bodysuits/atatQuest.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bwing.lua");
-RunItemLUAFile("objects/clothing/bodysuits/bwing_quest.lua");
+RunItemLUAFile("objects/clothing/bodysuits/bwingQuest.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit1.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit6.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit8.lua");
@@ -53,5 +53,5 @@ RunItemLUAFile("objects/clothing/bodysuits/bodysuit14.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit15.lua");
 RunItemLUAFile("objects/clothing/bodysuits/bodysuit16.lua");
 RunItemLUAFile("objects/clothing/bodysuits/sarlacc.lua");
-RunItemLUAFile("objects/clothing/bodysuits/tie_fighter.lua");
-RunItemLUAFile("objects/clothing/bodysuits/tie_fighter_quest.lua");
+RunItemLUAFile("objects/clothing/bodysuits/tieFighter.lua");
+RunItemLUAFile("objects/clothing/bodysuits/tieFighterQuest.lua");
