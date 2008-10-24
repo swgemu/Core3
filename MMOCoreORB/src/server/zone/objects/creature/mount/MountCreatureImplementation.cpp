@@ -58,6 +58,7 @@ which carries forward this exception.
 
 #include "../../../ZoneClientSession.h"
 
+
 MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCreature, const string& name,
 		const string& stf, uint32 itnocrc, uint32 objCRC, uint64 oid) : MountCreatureServant(oid) {
 	creatureLinkID = linkCreature->getObjectID();
@@ -74,7 +75,7 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 	setType(CreatureImplementation::MOUNT);
 
 	creatureBitmask = 0x1080;
-	pvpStatusBitmask = 0;
+	pvpStatusBitmask = 0x01;
 
 	speed = 21.9f;
 	acceleration = 10.95f;
