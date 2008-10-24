@@ -39,25 +39,31 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+droidekaAttack1 = {
+	attackname = "droidekaAttack1",
+	animation = "droid_attack_medium",
 
-RunItemLUAFile("objects/object.lua");
+	requiredWeaponType = RANGED,
+	
+	range = 64,
+	damageRatio = 10,
+	speedRatio = 1,
+	coneAngle = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 10,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
 
-RunItemLUAFile("objects/armor.lua");
-RunItemLUAFile("objects/clothing.lua");
-RunItemLUAFile("objects/deed.lua");
-RunItemLUAFile("objects/food.lua");
-RunItemLUAFile("objects/instrument.lua");
-RunItemLUAFile("objects/pharmaceutical.lua");
-RunItemLUAFile("objects/tool.lua");
-RunItemLUAFile("objects/weapon.lua");
-
-RunItemLUAFile("objects/armor/main.lua");
-RunItemLUAFile("objects/clothing/main.lua");
-RunItemLUAFile("objects/deed/main.lua");
-RunItemLUAFile("objects/food/main.lua");
-RunItemLUAFile("objects/instruments/main.lua");
-RunItemLUAFile("objects/pharmaceutical/main.lua");
-RunItemLUAFile("objects/tools/main.lua");
-RunItemLUAFile("objects/weapons/main.lua");
-
-
+AddRandomPoolAttackTargetSkill(droidekaAttack1)

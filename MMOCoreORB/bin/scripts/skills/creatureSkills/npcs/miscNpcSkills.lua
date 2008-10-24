@@ -40,24 +40,10 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("objects/object.lua");
-
-RunItemLUAFile("objects/armor.lua");
-RunItemLUAFile("objects/clothing.lua");
-RunItemLUAFile("objects/deed.lua");
-RunItemLUAFile("objects/food.lua");
-RunItemLUAFile("objects/instrument.lua");
-RunItemLUAFile("objects/pharmaceutical.lua");
-RunItemLUAFile("objects/tool.lua");
-RunItemLUAFile("objects/weapon.lua");
-
-RunItemLUAFile("objects/armor/main.lua");
-RunItemLUAFile("objects/clothing/main.lua");
-RunItemLUAFile("objects/deed/main.lua");
-RunItemLUAFile("objects/food/main.lua");
-RunItemLUAFile("objects/instruments/main.lua");
-RunItemLUAFile("objects/pharmaceutical/main.lua");
-RunItemLUAFile("objects/tools/main.lua");
-RunItemLUAFile("objects/weapons/main.lua");
+-- Npcs
 
 
+-- Misc Jedi Attacks
+RunSkillsFile("creatureSkills/npcs/jedi/oneHandedJediAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/jedi/twoHandedJediAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/jedi/polearmJediAttacks.lua")

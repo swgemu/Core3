@@ -115,42 +115,11 @@ if (PLANET_ID == 9) then
 RunCreatureFile("objects/yavin4/creatures.lua") 
 RunCreatureFile("objects/yavin4/npcs.lua")
 end
+--------------------------------------------------------
 
---------------------------------------------------------------------
+-- Misc Multiplanet etc..
+RunCreatureFile("objects/npcs/imperialNpcs.lua") 
+RunCreatureFile("objects/npcs/rebelNpcs.lua") 
+RunCreatureFile("objects/npcs/miscNpcs.lua") 
 
---Faction NPCs (All Planets) 
 
---Imperial
-RunCreatureFile("objects/npcs/imperial/imperialAtSt.lua")
-RunCreatureFile("objects/npcs/imperial/imperialAtAt.lua")
-
-RunCreatureFile("objects/npcs/imperial/imperialDarkTrooper.lua")
-RunCreatureFile("objects/npcs/imperial/imperialColonel.lua")
-RunCreatureFile("objects/npcs/imperial/imperialMajor.lua")
-RunCreatureFile("objects/npcs/imperial/imperialMajorGeneral.lua")
-RunCreatureFile("objects/npcs/imperial/imperialSurfaceMarshal.lua")
-RunCreatureFile("objects/npcs/imperial/imperialStormTrooper.lua")
-
-RunCreatureFile("objects/npcs/imperial/palpatine.lua")
-RunCreatureFile("objects/npcs/imperial/darthVader.lua")
-RunCreatureFile("objects/npcs/imperial/bobaFett.lua")
-
---Rebel
-RunCreatureFile("objects/npcs/rebel/rebelGeneral.lua")
-RunCreatureFile("objects/npcs/rebel/rebelSurfaceMarshal.lua")
-
-RunCreatureFile("objects/npcs/rebel/oldMan.lua")
-RunCreatureFile("objects/npcs/rebel/luke.lua")
-RunCreatureFile("objects/npcs/rebel/hanSolo.lua")
-RunCreatureFile("objects/npcs/rebel/chewbacca.lua")
-
---Misc
-RunCreatureFile("objects/npcs/mellichae.lua")
-RunCreatureFile("objects/npcs/moDarkJediMaster.lua")
-RunCreatureFile("objects/npcs/darkJediMaster.lua")
-RunCreatureFile("objects/npcs/darkJediKnight.lua")
-
-RunCreatureFile("objects/npcs/jabbaHutt.lua")
-RunCreatureFile("objects/npcs/darkJawa.lua")
-
-----------------------------------------------------------------------------------------------------

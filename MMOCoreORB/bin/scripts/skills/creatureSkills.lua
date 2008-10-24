@@ -64,7 +64,9 @@ RunSkillsFile("creatureSkills/naboo/creatureSkills.lua")
 RunSkillsFile("creatureSkills/naboo/npcSkills.lua")
 
 -- Npcs
-RunSkillsFile("creatureSkills/npcs/npcSkills.lua")
+RunSkillsFile("creatureSkills/npcs/imperialNpcSkills.lua")
+RunSkillsFile("creatureSkills/npcs/rebelNpcSkills.lua")
+RunSkillsFile("creatureSkills/npcs/miscNpcSkills.lua")
 
 -- Tatooine
 RunSkillsFile("creatureSkills/tatooine/creatureSkills.lua")

@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-deed_set = {mediumNabooHouseDeed, oreS2HarvesterDeed, fusionGeneratorDeed, structureFactoryDeed, jetpackVehicleDeed, landspeederAV21VehicleDeed}
+deed_set = {mediumNabooHouseDeed, oreS2HarvesterDeed, fusionGeneratorDeed, structureFactoryDeed}
 
 addBFItemSet("Deed Set" , deed_set);
 
