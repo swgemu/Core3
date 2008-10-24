@@ -41,15 +41,7 @@
 --which carries forward this exception.
 
 
-RunItemLUAFile("objects/weapons/cdefPistol.lua");
-RunItemLUAFile("objects/weapons/cdefCarbine.lua");
-RunItemLUAFile("objects/weapons/cdefRifle.lua");
-RunItemLUAFile("objects/weapons/survivalKnife.lua");
-RunItemLUAFile("objects/weapons/gaderiffiBaton.lua");
-RunItemLUAFile("objects/weapons/vibroknuckler.lua");
-RunItemLUAFile("objects/weapons/t21.lua");
-RunItemLUAFile("objects/weapons/powerHammer.lua");
-RunItemLUAFile("objects/weapons/vibrolance.lua");
-RunItemLUAFile("objects/weapons/ee3Carbine.lua");
-RunItemLUAFile("objects/weapons/fwg5Pistol.lua");
-RunItemLUAFile("objects/weapons/bowcaster.lua");
+ 
+ -- Citys
+ RunCreatureFile("objects/dathomir/citys/scienceOutpost.lua")
+ RunCreatureFile("objects/dathomir/citys/tradeOutpost.lua")

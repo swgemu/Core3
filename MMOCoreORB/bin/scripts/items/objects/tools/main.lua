@@ -41,11 +41,11 @@
 --which carries forward this exception.
 
 
-RunItemLUAFile("objects/tools/chemical_tool.lua");
-RunItemLUAFile("objects/tools/flora_tool.lua");
-RunItemLUAFile("objects/tools/gas_tool.lua");
-RunItemLUAFile("objects/tools/generic_tool.lua");
-RunItemLUAFile("objects/tools/mineral_tool.lua");
-RunItemLUAFile("objects/tools/solar_tool.lua");
-RunItemLUAFile("objects/tools/water_tool.lua");
-RunItemLUAFile("objects/tools/wind_tool.lua");
+RunItemLUAFile("objects/tools/chemicalTool.lua");
+RunItemLUAFile("objects/tools/floraTool.lua");
+RunItemLUAFile("objects/tools/gasTool.lua");
+RunItemLUAFile("objects/tools/genericTool.lua");
+RunItemLUAFile("objects/tools/mineralTool.lua");
+RunItemLUAFile("objects/tools/solarTool.lua");
+RunItemLUAFile("objects/tools/waterTool.lua");
+RunItemLUAFile("objects/tools/windTool.lua");

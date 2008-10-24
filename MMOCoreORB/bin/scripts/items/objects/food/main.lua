@@ -40,4 +40,4 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("objects/food/maroj_melon.lua");
+RunItemLUAFile("objects/food/marojMelon.lua");
