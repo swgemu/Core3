@@ -51,6 +51,6 @@
  
  
  -- Jabba's Palace
- RunCreatureFile("objects/tatooine/citys/jabbapalace.lua")
+ RunCreatureFile("objects/tatooine/citys/jabbaPalace.lua")
  
  
