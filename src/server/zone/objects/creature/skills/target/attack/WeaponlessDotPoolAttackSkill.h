@@ -141,11 +141,11 @@ public:
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
 
-		float globalMultiplier = 1.0;
+		float globalMultiplier = CombatManager::GLOBAL_MULTIPLIER;
 		if (creature->isPlayer() && !target->isPlayer())
-			globalMultiplier = CombatManager::PVE_MULTIPLIER;
+			globalMultiplier *= CombatManager::PVE_MULTIPLIER;
 		else if (creature->isPlayer() && target->isPlayer())
-			globalMultiplier = CombatManager::PVP_MULTIPLIER;
+			globalMultiplier *= CombatManager::PVP_MULTIPLIER;
 
 		if (targetCreature != NULL) {
 

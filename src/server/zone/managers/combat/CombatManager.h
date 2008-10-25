@@ -76,7 +76,8 @@ private:
 	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 
 public:
-	static const float PVE_MULTIPLIER = 1.5;
+	static const float GLOBAL_MULTIPLIER = 1.5;
+	static const float PVE_MULTIPLIER = 1.0;
 	static const float PVP_MULTIPLIER = 0.25;
 
 	CombatManager(ZoneProcessServerImplementation* srv);
