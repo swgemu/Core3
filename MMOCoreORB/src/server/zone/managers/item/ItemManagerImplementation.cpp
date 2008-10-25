@@ -906,7 +906,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 	} else if (type & TangibleObjectImplementation::DEED) {
 
-		cout << "type & TangibleObjectImplementation::DEED" << endl;
+		//cout << "type & TangibleObjectImplementation::DEED" << endl;
 
 		int surplusMaintenance = 0;
 		float maintenanceRate = 0;
@@ -920,14 +920,14 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 				switch(DeedObjectImplementation::getSubType(crc)){
 					case TangibleObjectImplementation::HARVESTER:
 					{
-						cout << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
+					//	cout << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
 						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
 						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
 						surplusPower = itemconfig.getIntField("surplusPower");
 						extractionRate = itemconfig.getFloatField("extractionRate");
 						hopperSize = itemconfig.getFloatField("hopperSize");
 
-						cout << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
+					//	cout << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
 
 						HarvesterDeed* harv = (HarvesterDeed*) item;
 						harv->setSurplusMaintenance(surplusMaintenance);

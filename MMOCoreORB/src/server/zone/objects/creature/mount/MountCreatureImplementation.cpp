@@ -218,6 +218,8 @@ void MountCreatureImplementation::call() {
 			itno->unlock();
 		}
 
+		setFaction(linkedCreature->getFaction());
+
 		insertToZone(zone);
 
 		if (instantMount) {
