@@ -48,6 +48,7 @@ which carries forward this exception.
 class ForcePowersPoolAttackTargetSkill : public AttackTargetSkill {
 private:
 	int attackType;
+	int damageType;
 	float minDamage;
 	float maxDamage;
 	float speed;
@@ -70,6 +71,10 @@ public:
 		maxDamage = 0;
 	}
 
+	/*
+	 * doSkill:
+	 *     returns damage (-1 for miss)
+	 */
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
 
@@ -84,6 +89,10 @@ public:
 		return damage;
 	}
 
+	/*
+	 * calculateDamage:
+	 *     returns damage
+	 */
 	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) {
 
 		CreatureObject* targetCreature = NULL;
@@ -135,7 +144,7 @@ public:
 					return 0;
 			} else {
 				doMiss(creature, targetCreature, (int32) damage);
-				return 0;
+				return -1;
 			}
 
 			if (hasCbtSpamHit())
@@ -150,7 +159,67 @@ public:
 	}
 
 	inline int getHitChance(CreatureObject* creature, CreatureObject* targetCreature) {
-		return 100;
+		int accuracy = 0;
+		int hitChance = 0;
+
+		if (creature->isPlayer()) {
+			Player* player = (Player*)creature;
+			switch (attackType) {
+			case 1: // Force throw
+				accuracy = player->getSkillMod("forcethrow_accuracy");
+				break;
+			case 2: // Force Lightning
+				accuracy = player->getSkillMod("forcelightning_accuracy");
+				break;
+			case 3: // Mindblast
+				accuracy = player->getSkillMod("mindblast_accuracy");
+				break;
+			case 4: // Force knockdown
+				accuracy = player->getSkillMod("forcethrow_accuracy");
+				break;
+			case 5:  // Force choke
+				accuracy = 0;
+				break;
+			default:
+				cout << "Unknown force power type " << attackType << endl;
+				break;
+			}
+		}
+		else {
+			accuracy = creature->getAccuracy();
+		}
+
+		int targetDefense = server->getCombatManager()->getTargetDefense(creature,
+				targetCreature, creature->getWeapon(), true);
+
+		// Calculation based on the DPS calculation spreadsheet
+		float accTotal = 66.0; // Base chance
+
+		float blindState = 0;
+		if (creature->isBlinded())
+			blindState = 50;
+		float stunBonus =0;
+		if (targetCreature->isStunned())
+			stunBonus = 50;
+
+		float ability = 50.0; // Don't know what this is taken from spreadsheet
+
+		accTotal += (accuracy + ability + stunBonus - targetDefense - blindState) / 2.0;
+
+		if (accTotal > 100)
+			accTotal = 100.0;
+		else if (accTotal < 0)
+			accTotal = 0;
+
+		hitChance = (int)(accTotal + 0.5);
+
+		cout << "hitChance:[" << hitChance << "]" << endl;
+
+		return hitChance;
+	}
+
+	inline void setDamageType(int dmg) {
+		damageType = dmg;
 	}
 
 	inline void setMinDamage(float mindamage) {

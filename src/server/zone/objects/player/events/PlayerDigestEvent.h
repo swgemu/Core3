@@ -45,13 +45,13 @@ which carries forward this exception.
 #ifndef PLAYERDIGESTEVENT_H_
 #define PLAYERDIGESTEVENT_H_
 
-#include "../PlayerImplementation.h"
+#include "../Player.h"
 
 class PlayerDigestEvent : public Event {
-	PlayerImplementation* player;
+	ManagedReference<Player> player;
 
 public:
-	PlayerDigestEvent(PlayerImplementation* pl) : Event(18000) {
+	PlayerDigestEvent(Player* pl) : Event(18000) {
 		player = pl;
 
 		setKeeping(true);
@@ -71,6 +71,10 @@ public:
 		}
 
 		return true;
+	}
+
+	void setPlayer(Player* pl) {
+		player = pl;
 	}
 
 };

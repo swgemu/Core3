@@ -190,11 +190,17 @@ void ScriptAttacksManager::registerGlobals() {
 	setGlobalInt("NONE", 0xFF);
 
 	// Jedi Power attack types
-	setGlobalInt("FORCETHROW", 0);
-	setGlobalInt("FORCELIGHTNING", 1);
-	setGlobalInt("MINDBLAST", 2);
-	setGlobalInt("FORCEKNOCKDOWN", 3);
-	setGlobalInt("FORCECHOKE", 4);
+	setGlobalInt("FORCETHROW", 1);
+	setGlobalInt("FORCELIGHTNING", 2);
+	setGlobalInt("MINDBLAST", 3);
+	setGlobalInt("FORCEKNOCKDOWN", 4);
+	setGlobalInt("FORCECHOKE", 5);
+	setGlobalInt("FORCEWEAKEN", 6);
+	setGlobalInt("FORCEINTIMIDATE", 7);
+
+	// Damage type for powers
+	setGlobalInt("KINETIC", WeaponImplementation::KINETIC);
+	setGlobalInt("ELECTRICITY", WeaponImplementation::ELECTRICITY);
 
 	// misc
 	setGlobalInt("HEALTH", 1);
@@ -582,6 +588,7 @@ int ScriptAttacksManager::AddForcePowersPoolAttackTargetSkill(lua_State *L) {
 	int attackType = skill.getIntField("attackType");
 	int forceCost = skill.getIntField("forceCost");
 
+	int damageType = skill.getIntField("damageType");
 	float minDamage = skill.getFloatField("minDamage");
 	float maxDamage = skill.getFloatField("maxDamage");
 
@@ -608,6 +615,8 @@ int ScriptAttacksManager::AddForcePowersPoolAttackTargetSkill(lua_State *L) {
 	attack = new ForcePowersPoolAttackTargetSkill(attackname, animation, server);
 	attack->setForceCost(forceCost);
 
+	attack->setAttackType(attackType);
+	attack->setDamageType(damageType);
 	attack->setMinDamage(minDamage);
 	attack->setMaxDamage(maxDamage);
 

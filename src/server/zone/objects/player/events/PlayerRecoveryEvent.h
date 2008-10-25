@@ -45,13 +45,13 @@ which carries forward this exception.
 #ifndef PLAYERRECOVERYEVENT_H_
 #define PLAYERRECOVERYEVENT_H_
 
-#include "../PlayerImplementation.h"
+#include "../Player.h"
 
 class PlayerRecoveryEvent : public Event {
-	PlayerImplementation* player;
+	ManagedReference<Player> player;
 
 public:
-	PlayerRecoveryEvent(PlayerImplementation* pl) : Event(2000) {
+	PlayerRecoveryEvent(Player* pl) : Event(2000) {
 		player = pl;
 
 		setKeeping(true);
@@ -71,6 +71,10 @@ public:
 		}
 
 		return true;
+	}
+
+	void setPlayer(Player* pl) {
+		player = pl;
 	}
 
 };

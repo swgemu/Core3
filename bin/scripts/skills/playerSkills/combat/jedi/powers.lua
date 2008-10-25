@@ -234,7 +234,7 @@ CmbtEnhaceSkill = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 25,
+	intimidateChance = 100,
 
 	selfEffect = "",
 
@@ -274,7 +274,7 @@ CmbtEnhaceSkill = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 50,
+	intimidateChance = 100,
 
 	selfEffect = "",
 

@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-surveyingKit = {mineralTool, solarTool, chemicalTool, floraTool, gasTool, waterTool, windTool, genericTool, foodTool}
+surveying_kit = {mineral_tool, solar_tool, chemical_tool, flora_tool, gas_tool, water_tool, wind_tool, generic_tool}
 
-addBFItemSet("Crafting & Surveying Kit" , surveyingKit);
+addBFItemSet("Crafting & Surveying Kit" , surveying_kit);

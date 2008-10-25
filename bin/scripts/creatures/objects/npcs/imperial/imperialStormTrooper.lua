@@ -74,7 +74,7 @@ imperialStormTrooper = Creature:new {
       height = 1, -- Size of creature
       armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 30,
-      energy = 30,
+      energy = 65,
       electricity = 30,
       stun = 0,
       blast = 30,
@@ -96,6 +96,8 @@ imperialStormTrooper = Creature:new {
 
 	  meleeDefense = 1,  
 	  rangedDefense = 1,
+	  
+	  randomMovement = 0,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 

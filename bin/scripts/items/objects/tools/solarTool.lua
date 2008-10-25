@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-solarTool = Tool:new {
+solar_tool = Tool:new {
 
 	objectName = "Solar Survey Tool",
 

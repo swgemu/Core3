@@ -40,6 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-bandoliers = {bandolier1, bandolier2, bandolier2_quest, bandolier3, bandolier4,bandolier4_quest, bandolier5, bandolier6, bandolier7, bandolier8,bandolier9, bandolierTR1, bandolierTR2, bandolierTR3, double_bandolier,ith_double_bandolier, ith_mercenary_bandolier, ith_multipocket_bandolier, mercenary_bandolier, multipocket_bandolier}
+--bandoliers = {bandolier1, bandolier2, bandolier2_quest, bandolier3, bandolier4,bandolier4_quest, bandolier5, bandolier6, bandolier7, bandolier8,bandolier9, bandolierTR1, bandolierTR2, bandolierTR3, double_bandolier,ith_double_bandolier, ith_mercenary_bandolier, ith_multipocket_bandolier, mercenary_bandolier, multipocket_bandolier}
+bandoliers = {bandolier1, bandolier2, bandolier2_quest, bandolier3, bandolier4,bandolier4_quest, bandolier5, bandolier6, bandolier7, bandolier8,bandolier9, bandolierTR1, bandolierTR2, bandolierTR3}
 
 addBFItemSet("Bandoliers" , bandoliers);

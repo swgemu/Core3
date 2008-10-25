@@ -49,6 +49,8 @@ which carries forward this exception.
 #include "../../../tangible/pharmaceutical/PharmaceuticalImplementation.h"
 #include "../../../tangible/pharmaceutical/StimPackImplementation.h"
 
+#include "../../Attribute.h"
+
 #include "../../../../managers/player/PlayerManager.h"
 
 class HealDamageTargetSkill : public TargetSkill {
@@ -73,6 +75,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
+	//TODO: Needs refactoring
 	StimPack* findMedpack(CreatureObject* creature, const string& modifier) {
 		StimPack* stimPack = NULL;
 		int medicineUse = creature->getSkillMod("healing_ability");
@@ -120,101 +123,83 @@ public:
 		return NULL; //Never found a stimPack
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
-		CreatureObject* creatureTarget;
-		StimPack* stimPack = NULL;
-
-		int healthDamage = 0;
-		int actionDamage = 0;
-		int stimPower = 0;
-		int battleFatigue = 0;
-
-		stimPack = findMedpack(creature, modifier);
-
-		if (target->isPlayer() || target->isNonPlayerCreature()) {
-			creatureTarget = (CreatureObject*) target;
-		} else {
-			creature->sendSystemMessage("healing_response", "healing_response_62"); //Target must be a player or a creature pet in order to heal damage.
-			return 0;
-		}
-
-		if (creatureTarget != creature
-				&& (creatureTarget->isDead()
-						|| creatureTarget->isRidingCreature()
-						|| creatureTarget->isMounted())) {
-			//If the target is dead or mounted, then make self the target.
-			creatureTarget = creature;
-		}
-
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack) {
 		if (!creature->canTreatInjuries()) {
 			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
-			return 0;
+			return false;
 		}
 
 		if (stimPack == NULL) {
 			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
-			return 0;
+			return false;
 		}
 
 		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You can not Heal Enhance while meditating.");
-			return 0;
+			creature->sendSystemMessage("You cannot do that while meditating.");
+			return false;
 		}
 
 		if (creature->isRidingCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return 0;
+			return false;
 		}
 
 		if (creature->isMounted()) {
 			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return 0;
+			return false;
 		}
 
 		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
 			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
-			return 0;
+			return false;
 		}
 
-		if (creature->getMind() < abs(mindCost)) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
-			return 0;
-		}
-
-		battleFatigue = creatureTarget->getShockWounds();
-
-		stimPower = calculatePower(creature, creatureTarget, stimPack, battleFatigue);
-
-		if (stimPower <= 0) {
-			//The stim's effectiveness is 0 or has been nullified.
-			return 0;
-		}
-
-		calculateHeal(creatureTarget, healthDamage, actionDamage, stimPower);
-
-		if (healthDamage <= 0 && actionDamage <= 0) {
+		if (!creatureTarget->hasHealthDamage() && !creatureTarget->hasActionDamage()) {
 			if (creatureTarget == creature) {
 				creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
 			} else {
 				creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
 			}
+			return false;
+		}
+
+		if (creature->getMind() < abs(mindCost)) {
+			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			return false;
+		}
+
+		return true;
+	}
+
+	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
+			creature->sendSystemMessage("healing_response", "healing_response_62"); //Target must be a player or a creature pet in order to heal damage.
 			return 0;
 		}
 
-		sendBFMessage(creature, creatureTarget, battleFatigue);
+		StimPack* stimPack = findMedpack(creature, modifier);
+		CreatureObject* creatureTarget = (CreatureObject*) target;
 
-		if (healthDamage > 0)
-			creatureTarget->changeHealthBar(healthDamage);
-		if (actionDamage > 0)
-			creatureTarget->changeActionBar(actionDamage);
-
-		if (creatureTarget->isIncapacitated()) {
-			//Bring incapped players back from incap.
-			if (creatureTarget->getHealth() > 0 && creatureTarget->getAction() > 0 && creatureTarget->getMind() > 0)
-				((Player*)creatureTarget)->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted()) {
+			cout << "Target is dead, ridingcreature, or mounted." << endl;
+			creatureTarget = creature;
 		}
 
-		sendHealMessage(creature, creatureTarget, healthDamage, actionDamage);
+		if (!canPerformSkill(creature, creatureTarget, stimPack))
+			return 0;
+
+		//Checks completed
+
+		int stimPower = stimPack->calculatePower(creature);
+
+		int healthHealed = creature->healDamage(creatureTarget, stimPower, Attribute::HEALTH);
+		int actionHealed = creature->healDamage(creatureTarget, stimPower, Attribute::ACTION);
+
+		if (creature->isPlayer())
+			((Player*)creature)->sendBFMessage(creatureTarget);
+
+		//sendBFMessage(creature, creatureTarget);
+		sendHealMessage(creature, creatureTarget, healthHealed, actionHealed);
 
 		creature->changeMindBar(mindCost);
 
@@ -224,33 +209,11 @@ public:
 			stimPack->useCharge((Player*) creature);
 
 		if (creatureTarget != creature)
-			awardXp(creature, "medical", (healthDamage + actionDamage)); //No experience for healing yourself.
+			awardXp(creature, "medical", (healthHealed + healthHealed)); //No experience for healing yourself.
 
 		doAnimations(creature, creatureTarget);
 
 		return 0;
-	}
-
-	void calculateHeal(CreatureObject* creatureTarget, int& healthDamage, int& actionDamage, int stimPower) {
-		healthDamage = creatureTarget->getHealthMax() - creatureTarget->getHealth() - creatureTarget->getHealthWounds();
-		actionDamage = creatureTarget->getActionMax() - creatureTarget->getAction() - creatureTarget->getActionWounds();
-
-		healthDamage = (healthDamage > stimPower) ? stimPower : healthDamage;
-		actionDamage = (actionDamage > stimPower) ? stimPower : actionDamage;
-	}
-
-	int calculatePower(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack, int battleFatigue) {
-		float modSkill = (float)creature->getSkillMod("healing_injury_treatment");
-
-		int power = (int)round((100.0f + modSkill) / 100.0f * stimPack->getEffectiveness());
-
-		if (battleFatigue >= 1000) {
-			power = 0; //Will cancel the action.
-		} else if (battleFatigue >= 250) {
-			power -= (int)round((float)power * (((float)battleFatigue - 250.0f) / 1000.0f));
-		}
-
-		return power;
 	}
 
 	void awardXp(CreatureObject* creature, string type, int power) {
@@ -271,9 +234,11 @@ public:
 		player->sendSystemMessage(msgExperience.str());
 	}
 
-	void sendBFMessage(CreatureObject* creature, CreatureObject* creatureTarget, int battleFatigue) {
+	void sendBFMessage(CreatureObject* creature, CreatureObject* creatureTarget) {
 		string targetName = ((Player*)creatureTarget)->getFirstNameProper();
 		stringstream msgPlayer, msgTarget;
+
+		int battleFatigue = creatureTarget->getShockWounds();
 
 		if (battleFatigue >= 1000) {
 			msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";

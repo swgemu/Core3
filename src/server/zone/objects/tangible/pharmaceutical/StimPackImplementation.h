@@ -71,6 +71,11 @@ public:
 
 	void addAttributes(AttributeListMessage* alm);
 
+	inline int calculatePower(CreatureObject* creature) {
+		float modSkill = (float) creature->getSkillMod("healing_injury_treatment");
+		return (int) round((100.0f + modSkill) / 100.0f * getEffectiveness());
+	}
+
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
 		string attr = "effectiveness";

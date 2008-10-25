@@ -52,7 +52,7 @@ RunItemLUAFile("objects/clothing/shirts/main.lua");
 RunItemLUAFile("objects/clothing/bikinis/main.lua");
 RunItemLUAFile("objects/clothing/bustiers/main.lua");
 RunItemLUAFile("objects/clothing/skirts/main.lua");
-RunItemLUAFile("objects/clothing/bandoliers/main.lua");
+--RunItemLUAFile("objects/clothing/bandoliers/main.lua");
 RunItemLUAFile("objects/clothing/belts/main.lua");
 RunItemLUAFile("objects/clothing/bodysuits/main.lua");
 RunItemLUAFile("objects/clothing/dresses/main.lua");

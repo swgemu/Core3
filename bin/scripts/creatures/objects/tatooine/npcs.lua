@@ -41,51 +41,40 @@
 --which carries forward this exception.
 
 --Jawas
-RunCreatureFile("objects/tatooine/npcs/jawaEngineer.lua")
-RunCreatureFile("objects/tatooine/npcs/jawaHealer.lua")
-RunCreatureFile("objects/tatooine/npcs/jawaWarlord.lua")
-RunCreatureFile("objects/tatooine/npcs/jawa.lua")
-RunCreatureFile("objects/tatooine/npcs/jawaAvenger.lua")
-RunCreatureFile("objects/tatooine/npcs/jawaHenchman.lua")
-RunCreatureFile("objects/tatooine/npcs/jawaLeader.lua")
-RunCreatureFile("objects/tatooine/npcs/jawaProtector.lua")
-RunCreatureFile("objects/tatooine/npcs/jawaSmuggler.lua")
-RunCreatureFile("objects/tatooine/npcs/jawaThief.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawaEngineer.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawaHealer.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawaWarlord.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawa.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawaAvenger.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawaHenchman.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawaLeader.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawaProtector.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawaSmuggler.lua")
+RunCreatureFile("objects/tatooine/npcs/jawa/jawaThief.lua")
 
 --Fort Tusken / Tusken Bunker
- RunCreatureFile("objects/tatooine/npcs/tuskenCaptain.lua")
- RunCreatureFile("objects/tatooine/npcs/tuskenEliteGuard.lua")
- RunCreatureFile("objects/tatooine/npcs/tuskenExecutioner.lua")
- RunCreatureFile("objects/tatooine/npcs/tuskenKing.lua")
- RunCreatureFile("objects/tatooine/npcs/tuskenObserver.lua")
- RunCreatureFile("objects/tatooine/npcs/tuskenRaider.lua")
- RunCreatureFile("objects/tatooine/npcs/tuskenSniper.lua")
- RunCreatureFile("objects/tatooine/npcs/tuskenWarlord.lua")
- RunCreatureFile("objects/tatooine/npcs/tuskenWarMaster.lua")
- RunCreatureFile("objects/tatooine/npcs/tuskenWitchDoctor.lua") 
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenCaptain.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenEliteGuard.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenExecutioner.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenKing.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenObserver.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenRaider.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenSniper.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWarlord.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWarMaster.lua")
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWitchDoctor.lua") 
  
  --Hutt Hideout
- RunCreatureFile("objects/tatooine/npcs/jabbaEnforcer.lua")
- RunCreatureFile("objects/tatooine/npcs/jabbasSwooper.lua")
- RunCreatureFile("objects/tatooine/npcs/jabbaCompoundGuard.lua") 
+ RunCreatureFile("objects/tatooine/npcs/jabba/jabbaEnforcer.lua")
+ RunCreatureFile("objects/tatooine/npcs/jabba/jabbasSwooper.lua")
+ RunCreatureFile("objects/tatooine/npcs/jabba/jabbaCompoundGuard.lua") 
 
 
  --Sennex Cave
- RunCreatureFile("objects/tatooine/npcs/sennexHunter.lua")
- RunCreatureFile("objects/tatooine/npcs/sennexSlavemaster.lua")
- RunCreatureFile("objects/tatooine/npcs/sennexLookout.lua")
- RunCreatureFile("objects/tatooine/npcs/sennexSlaver.lua")
- RunCreatureFile("objects/tatooine/npcs/sennexGuard.lua")
- RunCreatureFile("objects/tatooine/npcs/sennexWarder.lua")
- 
- -- Jabba's Palace
- RunCreatureFile("objects/tatooine/npcs/jabbapalace.lua")
- 
- -- Citys
- RunCreatureFile("objects/tatooine/npcs/anchorhead.lua")
- RunCreatureFile("objects/tatooine/npcs/bestine.lua")
- RunCreatureFile("objects/tatooine/npcs/mosEisley.lua")
- RunCreatureFile("objects/tatooine/npcs/mosEntha.lua")
- RunCreatureFile("objects/tatooine/npcs/mosEspa.lua")
- RunCreatureFile("objects/tatooine/npcs/wayfar.lua")
+ RunCreatureFile("objects/tatooine/npcs/sennex/sennexHunter.lua")
+ RunCreatureFile("objects/tatooine/npcs/sennex/sennexSlavemaster.lua")
+ RunCreatureFile("objects/tatooine/npcs/sennex/sennexLookout.lua")
+ RunCreatureFile("objects/tatooine/npcs/sennex/sennexSlaver.lua")
+ RunCreatureFile("objects/tatooine/npcs/sennex/sennexGuard.lua")
+ RunCreatureFile("objects/tatooine/npcs/sennex/sennexWarder.lua")
  

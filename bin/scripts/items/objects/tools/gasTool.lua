@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-gasTool = Tool:new {
+gas_tool = Tool:new {
 
 	objectName = "Gas Survey Tool",
 

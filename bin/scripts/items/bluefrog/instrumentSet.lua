@@ -40,6 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-instrumentSet = {fizz, fanfar, klooHorn, mandoviol, traz, bandfill, fluteDroopy, slitherhorn}
+instrument_set = {fizz, fanfar, kloo_horn, mandoviol, traz, bandfill, flute_droopy, slitherhorn}
 
-addBFItemSet("Instrument Set" , instrumentSet);
+addBFItemSet("Instrument Set" , instrument_set);

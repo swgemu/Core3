@@ -49,12 +49,25 @@ void StimPack::generateAttributes(SceneObject* obj) {
 		((StimPackImplementation*) _impl)->generateAttributes(obj);
 }
 
-void StimPack::setEffectiveness(float eff) {
+int StimPack::calculatePower(CreatureObject* creature) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(creature);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((StimPackImplementation*) _impl)->calculatePower(creature);
+}
+
+void StimPack::setEffectiveness(float eff) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addFloatParameter(eff);
 
 		method.executeWithVoidReturn();
@@ -67,7 +80,7 @@ float StimPack::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -89,9 +102,12 @@ Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		setEffectiveness(inv->getFloatParameter());
+		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 8:
+		setEffectiveness(inv->getFloatParameter());
+		break;
+	case 9:
 		resp->insertFloat(getEffectiveness());
 		break;
 	default:
@@ -103,6 +119,10 @@ Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void StimPackAdapter::generateAttributes(SceneObject* obj) {
 	return ((StimPackImplementation*) impl)->generateAttributes(obj);
+}
+
+int StimPackAdapter::calculatePower(CreatureObject* creature) {
+	return ((StimPackImplementation*) impl)->calculatePower(creature);
 }
 
 void StimPackAdapter::setEffectiveness(float eff) {

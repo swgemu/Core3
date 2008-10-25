@@ -147,13 +147,28 @@ bool CommandQueueAction::validate() {
 						return false;
 					}
 
-					if (target->getParent() != creature->getParent()) {
-						clearError(0);
 
-						creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
+					SceneObject* sco = target;
 
-						target->unlock();
-						return false;
+					if (sco->isPlayer()) {
+						Player* targetPlayer = (Player*) sco;
+
+						if (targetPlayer->isInBuilding() && target->getParent() != creature->getParent()) {
+								clearError(0);
+								creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
+
+								target->unlock();
+								return false;
+						}
+
+					} else {
+						if (target->getParent() != creature->getParent()) {
+							clearError(0);
+							creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
+
+							target->unlock();
+							return false;
+						}
 					}
 
 					if (!target->isAttackableBy(creature)) {

@@ -156,150 +156,8 @@ public:
 	}
 
 	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature) {
-		if (hasStateChance) {
-			checkKnockDown(creature, targetCreature);
-			checkPostureDown(creature, targetCreature);
-			checkPostureUp(creature, targetCreature);
-
-			if (dizzyStateChance != 0) {
-				int targetDefense = targetCreature->getSkillMod("dizzy_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
-
-				int rand = System::random(100);
-
-				if ((5 > rand) || (rand > targetDefense))
-					targetCreature->setDizziedState();
-			}
-
-			if (blindStateChance != 0) {
-				int targetDefense = targetCreature->getSkillMod("blind_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
-
-				int rand = System::random(100);
-
-				if ((5 > rand) || (rand > targetDefense))
-					targetCreature->setBlindedState();
-			}
-
-			if (stunStateChance != 0) {
-				int targetDefense = targetCreature->getSkillMod("stun_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
-
-				int rand = System::random(100);
-
-				if ((5 > rand) || (rand > targetDefense))
-					targetCreature->setStunnedState();
-			}
-
-			if (intimidateStateChance != 0) {
-				int targetDefense = targetCreature->getSkillMod("intimidate_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
-
-				int rand = System::random(10);
-
-				//if ((5 > rand) || (rand > targetDefense))
-				if (5 >= rand)
-					targetCreature->setIntimidatedState();
-			}
-
-			targetCreature->updateStates();
-		}
-	}
-
-	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature) {
-		if (knockdownStateChance != 0) {
-			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
-				if (80 > System::random(100))
-					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
-				return;
-			}
-
-			if (targetCreature->checkKnockdownRecovery()) {
-				int targetDefense = targetCreature->getSkillMod("knockdown_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
-				int rand = System::random(100);
-
-				if ((5 > rand) || (rand > targetDefense)) {
-					if (targetCreature->isMounted())
-						targetCreature->dismount();
-
-					targetCreature->setPosture(CreatureObjectImplementation::KNOCKEDDOWN_POSTURE);
-					targetCreature->updateKnockdownRecovery();
-					targetCreature->sendSystemMessage("cbt_spam", "posture_knocked_down");
-
-					int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
-
-					if (combatEquil > 100)
-						combatEquil = 100;
-
-					if ((combatEquil >> 1) > (int) System::random(100))
-						targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
-				}
-			} else
-				creature->sendSystemMessage("cbt_spam", "knockdown_fail");
-		}
-	}
-
-	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature) {
-		if (postureDownStateChance != 0) {
-			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
-				if (80 > System::random(100))
-					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
-				return;
-			}
-
-			if (targetCreature->checkPostureDownRecovery()) {
-				int targetDefense = targetCreature->getSkillMod("posture_change_down_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
-
-				int rand = System::random(100);
-
-				if ((5 > rand) || (rand > targetDefense)) {
-					if (targetCreature->isMounted())
-						targetCreature->dismount();
-
-					if (targetCreature->getPosture() == CreatureObjectImplementation::UPRIGHT_POSTURE)
-						targetCreature->setPosture(CreatureObjectImplementation::CROUCHED_POSTURE);
-					else
-						targetCreature->setPosture(CreatureObjectImplementation::PRONE_POSTURE);
-
-					targetCreature->updatePostureDownRecovery();
-					targetCreature->sendSystemMessage("cbt_spam", "posture_down");
-
-					int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
-
-					if (combatEquil > 100)
-						combatEquil = 100;
-
-					if ((combatEquil >> 1) > (int) System::random(100))
-						targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
-				}
-			} else
-				creature->sendSystemMessage("cbt_spam", "posture_change_fail");
-		}
-	}
-
-	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature) {
-		if (postureUpStateChance != 0 && targetCreature->checkPostureUpRecovery()) {
-			int targetDefense = targetCreature->getSkillMod("posture_change_up_defense");
-			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
-
-			int rand = System::random(100);
-
-			if ((5 > rand) || (rand > targetDefense)) {
-				if (targetCreature->isMounted())
-					targetCreature->dismount();
-
-				if (targetCreature->getPosture() == CreatureObjectImplementation::PRONE_POSTURE) {
-					targetCreature->setPosture(CreatureObjectImplementation::CROUCHED_POSTURE);
-					targetCreature->updatePostureUpRecovery();
-				} else if (targetCreature->getPosture() ==  CreatureObjectImplementation::CROUCHED_POSTURE) {
-					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
-					targetCreature->updatePostureUpRecovery();
-				}
-			}
-		} else if (!targetCreature->checkPostureUpRecovery())
-			creature->sendSystemMessage("cbt_spam", "posture_change_fail");
+		if (hasStateChance)
+			server->getCombatManager()->calculateStates(creature, targetCreature, this);
 	}
 
 	void calculateDamageReduction(CreatureObject* creature, CreatureObject* targetCreature, float& damage) {
@@ -347,110 +205,7 @@ public:
 	}
 
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit) {
-		Weapon* weapon = creature->getWeapon();
-
-		int resist = 0;
-
-		if (weapon != NULL) {
-			if (weapon->getDot0Uses() != 0) {
-				switch (weapon->getDot0Type()) {
-				case 1:
-					resist = targetCreature->getSkillMod("resistance_bleeding");
-
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-						targetCreature->setBleedingState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
-					break;
-				case 2:
-					resist = targetCreature->getSkillMod("resistance_disease");
-
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-					targetCreature->setDiseasedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
-					break;
-				case 3:
-					resist = targetCreature->getSkillMod("resistance_fire");
-
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-					targetCreature->setOnFireState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
-					break;
-				case 4:
-					resist = targetCreature->getSkillMod("resistance_poison");
-
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-					targetCreature->setPoisonedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
-					break;
-				}
-
-				if (areaHit == 0 && weapon->decreaseDot0Uses()) {
-					weapon->setUpdated(true);
-				}
-			}
-
-			if (weapon->getDot1Uses() != 0) {
-				switch (weapon->getDot1Type()) {
-				case 1:
-					resist = targetCreature->getSkillMod("resistance_bleeding");
-
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-						targetCreature->setBleedingState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
-					break;
-				case 2:
-					resist = targetCreature->getSkillMod("resistance_disease");
-
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-					targetCreature->setDiseasedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
-					break;
-				case 3:
-					resist = targetCreature->getSkillMod("resistance_fire");
-
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-					targetCreature->setOnFireState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
-					break;
-				case 4:
-					resist = targetCreature->getSkillMod("resistance_poison");
-
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-					targetCreature->setPoisonedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
-					break;
-				}
-
-				if (areaHit == 0 && weapon->decreaseDot1Uses()) {
-					weapon->setUpdated(true);
-				}
-			}
-
-			if (weapon->getDot2Uses() != 0) {
-				switch (weapon->getDot2Type()) {
-				case 1:
-					resist = targetCreature->getSkillMod("resistance_bleeding");
-
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-						targetCreature->setBleedingState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
-					break;
-				case 2:
-					resist = targetCreature->getSkillMod("resistance_disease");
-
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-					targetCreature->setDiseasedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
-					break;
-				case 3:
-					resist = targetCreature->getSkillMod("resistance_fire");
-
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-					targetCreature->setOnFireState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
-					break;
-				case 4:
-					resist = targetCreature->getSkillMod("resistance_poison");
-
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-					targetCreature->setPoisonedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
-					break;
-				}
-
-				if (areaHit == 0 && weapon->decreaseDot2Uses()) {
-					weapon->setUpdated(true);
-				}
-			}
-		}
+		server->getCombatManager()->doDotWeaponAttack(creature, targetCreature, areaHit);
 	}
 
 	// The following function adjusts incoming damage for Armor Piercing and Armor Rating.
@@ -605,9 +360,17 @@ public:
 		hasStateChance = true;
 	}
 
+	inline int getKnockdownChance(){
+		return knockdownStateChance;
+	}
+
 	inline void setPostureDownChance (int chance) {
 		postureDownStateChance = chance;
 		hasStateChance = true;
+	}
+
+	inline int getPostureDownChance() {
+		return postureDownStateChance;
 	}
 
 	inline void setPostureUpChance (int chance) {
@@ -615,9 +378,17 @@ public:
 		hasStateChance = true;
 	}
 
+	inline int getPostureUpChance() {
+		return postureUpStateChance;
+	}
+
 	inline void setDizzyChance(int chance) {
 		dizzyStateChance = chance;
 		hasStateChance = true;
+	}
+
+	inline int getDizzyChance() {
+		return dizzyStateChance;
 	}
 
 	inline void setBlindChance(int chance) {
@@ -625,14 +396,26 @@ public:
 		hasStateChance = true;
 	}
 
+	inline int getBlindChance() {
+		return blindStateChance;
+	}
+
 	inline void setStunChance(int chance) {
 		stunStateChance = chance;
 		hasStateChance = true;
 	}
 
+	inline int getStunChance() {
+		return stunStateChance;
+	}
+
 	inline void setIntimidateChance(int chance) {
 		intimidateStateChance = chance;
 		hasStateChance = true;
+	}
+
+	inline int getIntimidateChance() {
+		return intimidateStateChance;
 	}
 
 	inline void setAreaRangeDamage(int area) {

@@ -56,6 +56,7 @@ class MountCreature;
 class Weapon;
 
 class TargetSkill;
+class AttackTargetSkill;
 class ZoneProcessServerImplementation;
 class CombatAction;
 
@@ -117,11 +118,16 @@ public:
 	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature);
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, int accuracyBonus);
 	float getWeaponRangeMod(float currentRange, Weapon* weapon);
-	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon);
+	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, bool forceAttack = false);
 	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part);
 	bool calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier);
 	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill);
 	float calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill);
+	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill);
+	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
 };
 
 #endif /*COMBATMANAGER_H_*/

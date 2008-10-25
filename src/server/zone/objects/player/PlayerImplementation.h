@@ -312,7 +312,7 @@ public:
 
 	virtual ~PlayerImplementation();
 
-	void init();
+	void initialize();
 
 	void create(ZoneClientSession* client);
 
@@ -328,6 +328,9 @@ public:
 	void userLogout(int msgCounter = 3);
 
 	void disconnect(bool closeClient = true, bool doLock = true);
+
+	void initializeEvents();
+	void removeEvents();
 
 	void clearLogoutEvent() {
 		logoutEvent = NULL;
@@ -483,6 +486,10 @@ public:
 	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
 	void sendSystemMessage(const string& file, const string& str, StfParameter * param);
 	void sendSystemMessage(unicode& message);
+
+	//Medic & Doctor System Messages
+	void sendBFMessage(CreatureObject* target);
+	void sendHealMessage(CreatureObject* target, int h, int a, int m);
 
 	//item methods
 	void addDatapadItem(SceneObject* item);
@@ -684,7 +691,7 @@ public:
 
 	void kill();
 	void deathblow(Player* player);
-	void revive();
+	void resurrect();
 
 	void activateClone();
 	void doClone();
@@ -1211,10 +1218,6 @@ public:
 
 	inline GroupObject* getGroupObject() {
 		return group;
-	}
-
-	inline bool isRevivable() {
-		return !reviveTimeout.isPast();
 	}
 
 	inline bool isOnline() {

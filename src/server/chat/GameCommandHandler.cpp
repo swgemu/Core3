@@ -133,9 +133,13 @@ void GameCommandHandler::init() {
 			"Usage: @mutePlayer <player>",
 			&mutePlayer);
 	gmCommands->addCommand("kill", PRIVILEGED,
-			"Kills a player.",
-			"Usage: @kill <player>",
+			"Kills a creature.",
+			"Usage: @kill <player name or current-target>",
 			&kill);
+	gmCommands->addCommand("ecKill", CSREVENTS,
+			"Kills a creature. EC version of the kill command.",
+			"Usage: @ecKill <current-target>",
+			&ecKill);
 	gmCommands->addCommand("killArea", DEVELOPER,
 			"Kills all players within a certain range.",
 			"Usage: @killArea [distance]",
@@ -245,10 +249,10 @@ void GameCommandHandler::init() {
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
-	gmCommands->addCommand("revive", PRIVILEGED | LEADQA,
-			"Revives a player.",
-			"Usage: @revive <player>",
-			&revive);
+	gmCommands->addCommand("rez", PRIVILEGED | LEADQA,
+			"Resurrects a player.",
+			"Usage: @rez <player>",
+			&rez);
 	gmCommands->addCommand("immune", CSREVENTS | LEADQA,
 			"Toggles immunity.",
 			"Usage: @immune",
@@ -1033,7 +1037,8 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 			if (targetPlayer != player)
 				targetPlayer->unlock();
 		}
-	} else if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter() && !creature->isMount()) {
+	//} else if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter() && !creature->isMount()) {
+	} else if (creature != NULL && creature->getCreatureBitmask() != 0x108 && creature->getCreatureBitmask() != 0x1080) {
 
 		try {
 			creature->wlock(player);
@@ -1050,6 +1055,39 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 			creature->unlock();
 		}
 
+	}
+}
+
+void GameCommandHandler::ecKill(StringTokenizer tokenizer, Player * player) {
+	Creature* creature = NULL;
+
+	SceneObject* obj = player->getTarget();
+
+	string name;
+
+	if (obj != NULL && obj->isNonPlayerCreature()) {
+		creature = (Creature*) obj;
+		name = creature->getName();
+	} else {
+		return;
+	}
+
+	//if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter() && !creature->isMount()) {
+	if (creature != NULL && creature->getCreatureBitmask() != 0x108 && creature->getCreatureBitmask() != 0x1080) {
+		try {
+			creature->wlock(player);
+
+			creature->explode(2, false);
+			uint damage = 100000000;
+
+			creature->addDamage(player, damage);
+			creature->takeHealthDamage(damage);
+
+			creature->unlock();
+
+		} catch (...) {
+			creature->unlock();
+		}
 	}
 }
 
@@ -1110,7 +1148,8 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 
 				Creature* creature = (Creature*) obj;
 
-				if (!creature->isTrainer() && !creature->isRecruiter()) {
+				//if (creature->isInRange(creature, meter) && !creature->isTrainer() && !creature->isRecruiter()) {
+				if (player->isInRange(creature, meter) && creature->getCreatureBitmask() != 0x108 && creature->getCreatureBitmask() != 0x1080) {
 					zone->unlock();
 
 					try {
@@ -1897,7 +1936,7 @@ void GameCommandHandler::clientEffect(StringTokenizer tokenizer, Player * player
 }
 
 
-void GameCommandHandler::revive(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::rez(StringTokenizer tokenizer, Player * player) {
 	string name;
 	Player* targetPlayer;
 
@@ -1927,10 +1966,10 @@ void GameCommandHandler::revive(StringTokenizer tokenizer, Player * player) {
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
 
-		targetPlayer->revive();
+		targetPlayer->resurrect();
 
-		targetPlayer->sendSystemMessage("Your character has been revived by \'" + player->getFirstName() + "\'.");
-		player->sendSystemMessage("You revived the character \'" + name + "\'.");
+		targetPlayer->sendSystemMessage("Your character has been resuscitated by \'" + player->getFirstName() + "\'.");
+		player->sendSystemMessage("You resuscitate the character \'" + name + "\'.");
 
 		if (targetPlayer != player)
 			targetPlayer->unlock();

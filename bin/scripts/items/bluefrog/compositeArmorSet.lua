@@ -41,6 +41,6 @@
 --which carries forward this exception.
 
 
-compositeSet = {compositeChestplate, compositeBoots, compositeGloves, compositeLeggings, compositeHelmet, compositeBracerR, compositeBracerL, compositeBicepL, compositeBicepR}
+composite_set = {composite_chestplate, composite_boots, composite_gloves, composite_leggings, composite_helmet, composite_bracer_r, composite_bracer_l, composite_bicep_l, composite_bicep_r}
 
-addBFItemSet("Composite Armor Set" , compositeSet);
+addBFItemSet("Composite Armor Set" , composite_set);

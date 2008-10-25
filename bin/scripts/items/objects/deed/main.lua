@@ -40,13 +40,14 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-RunItemLUAFile("objects/deed/houses/mediumNabooHouseDeed.lua");
-RunItemLUAFile("objects/deed/harvesters/oreS2HarvesterDeed.lua");
-RunItemLUAFile("objects/deed/generators/fusionGeneratorDeed.lua");
-RunItemLUAFile("objects/deed/factories/structureFactoryDeed.lua");
+-- RunItemLUAFile("objects/deed/houses/mediumNabooHouseDeed.lua");
+-- RunItemLUAFile("objects/deed/harvesters/oreS2HarvesterDeed.lua");
+-- RunItemLUAFile("objects/deed/generators/fusionGeneratorDeed.lua");
+-- RunItemLUAFile("objects/deed/factories/structureFactoryDeed.lua");
 
 -- Vehicles
-RunItemLUAFile("objects/deed/vehicles/jetpackVehicleDeed.lua");
+-- RunItemLUAFile("objects/deed/vehicles/jetpackVehicleDeed.lua");
+-- RunItemLUAFile("objects/deed/vehicles/landspeederAV21VehicleDeed.lua");
 RunItemLUAFile("objects/deed/vehicles/landspeederX31VehicleDeed.lua");
 RunItemLUAFile("objects/deed/vehicles/landspeederX34VehicleDeed.lua");
 

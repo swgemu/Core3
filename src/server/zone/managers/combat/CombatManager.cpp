@@ -64,6 +64,9 @@ CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
 	server = srv;
 }
 
+/* handleAction :
+ *     returns the time taken by the action
+ */
 float CombatManager::handleAction(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
 
@@ -84,6 +87,9 @@ float CombatManager::handleAction(CommandQueueAction* action) {
 	return 0.0f;
 }
 
+/* doTargetSkill:
+ *     returns time taken by action
+ */
 float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
 	SceneObject* target = action->getTarget();
@@ -314,7 +320,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 		int damage = skill->doSkill(attacker, target, modifier, false);
 
 		if (actionMessage != NULL && targetCreature != NULL) //disabled untill we figure out how to make it work for more defenders
-			actionMessage->addDefender(targetCreature, damage > 0);
+			actionMessage->addDefender(targetCreature, damage >= 0);
 
 		if (targetCreature != NULL) {
 			if (targetCreature->isIncapacitated()) {
@@ -792,6 +798,10 @@ void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* ta
 	}
 }
 
+/*
+ * checkSecondaryDefenses:
+ *     returns 0 - hit, 1 - block, 2 - dodge, 3 - counter-attack
+ */
 int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature) {
 	if (targetCreature->isIntimidated())
 		return 0;
@@ -890,6 +900,8 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 			return 3;
 		}
 	}
+
+	// TODO: TKM secondary defenses also saberblock
 
 	return 0;
 }
@@ -1007,35 +1019,40 @@ int CombatManager::calculatePostureMods(CreatureObject* creature, CreatureObject
 	return accuracy;
 }
 
-uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon) {
+uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, bool forceAttack) {
 	uint32 defense = 0;
 	uint32 targetPosture = targetCreature->getPosture();
 
-	// TODO: Add defenses into creature luas.
-	if (!targetCreature->isPlayer()) {
-		defense = (int)(targetCreature->getLevel() * 1.25);
-		if (defense > 250)
-			defense = 250;
-		return defense;
-	}
-
-	if (weapon != NULL) {
-		if (weapon->isMelee() || weapon->isJedi()) {
-			uint32 melee = targetCreature->getSkillMod("melee_defense");
-			defense += melee;
-		} else if (weapon->isRanged()) {
-			uint32 ranged = targetCreature->getSkillMod("ranged_defense");
-			defense += ranged;
-		}
+	if (forceAttack) {
+		uint32 force = targetCreature->getSkillMod("force_defense");
+		defense = force;
 	} else {
-		uint32 melee = targetCreature->getSkillMod("melee_defense");
-		defense += melee;
+
+		// TODO: Add defenses into creature luas.
+		if (!targetCreature->isPlayer()) {
+			defense = (int)(targetCreature->getLevel() * 1.25);
+			if (defense > 250)
+				defense = 250;
+			return defense;
+		}
+
+		if (weapon != NULL) {
+			if (weapon->isMelee() || weapon->isJedi()) {
+				uint32 melee = targetCreature->getSkillMod("melee_defense");
+				defense = melee;
+			} else if (weapon->isRanged()) {
+				uint32 ranged = targetCreature->getSkillMod("ranged_defense");
+				defense = ranged;
+			}
+		} else {
+			uint32 melee = targetCreature->getSkillMod("melee_defense");
+			defense = melee;
+		}
 	}
-
-
+/*
 	if (defense > 125)
 		defense = 125;
-
+*/
 	//defense += targetCreature->getDefenseBonus();
 
 	return defense - (uint32)(defense * targetCreature->calculateBFRatio());
@@ -1281,4 +1298,252 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 	float CombatManager::calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill) {
 		// Heals use an event for the timings.  However the combat queue needs timing for next action
 		return tskill->calculateSpeed(creature);
+	}
+
+	void CombatManager::calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill) {
+		// TODO: None of these equations seem correct except intimidate
+		int chance = 0;
+		if ((chance = tskill->getKnockdownChance()) > 0)
+			checkKnockDown(creature, targetCreature, chance);
+		if ((chance = tskill->getPostureDownChance()) > 0)
+			checkPostureDown(creature, targetCreature, chance);
+		if ((chance = tskill->getPostureUpChance()) > 0)
+			checkPostureUp(creature, targetCreature, chance);
+
+		if (tskill->getDizzyChance() != 0) {
+			int targetDefense = targetCreature->getSkillMod("dizzy_defense");
+			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+
+			int rand = System::random(100);
+
+			if ((5 > rand) || (rand > targetDefense))
+				targetCreature->setDizziedState();
+		}
+
+		if (tskill->getBlindChance() != 0) {
+			int targetDefense = targetCreature->getSkillMod("blind_defense");
+			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+
+			int rand = System::random(100);
+
+			if ((5 > rand) || (rand > targetDefense))
+				targetCreature->setBlindedState();
+		}
+
+		if (tskill->getStunChance() != 0) {
+			int targetDefense = targetCreature->getSkillMod("stun_defense");
+			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+
+			int rand = System::random(100);
+
+			if ((5 > rand) || (rand > targetDefense))
+				targetCreature->setStunnedState();
+		}
+
+		if ((chance = tskill->getIntimidateChance()) > 0) {
+			int rand = System::random(100);
+
+			if (rand <= chance)
+				targetCreature->setIntimidatedState();
+		}
+
+		targetCreature->updateStates();
+	}
+
+	void CombatManager::checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
+		if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
+			if (80 > System::random(100))
+				targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+			return;
+		}
+
+		if (targetCreature->checkKnockdownRecovery()) {
+			int targetDefense = targetCreature->getSkillMod("knockdown_defense");
+			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+			int rand = System::random(100);
+
+			if ((5 > rand) || (rand > targetDefense)) {
+				if (targetCreature->isMounted())
+					targetCreature->dismount();
+				targetCreature->setPosture(CreatureObjectImplementation::KNOCKEDDOWN_POSTURE);
+				targetCreature->updateKnockdownRecovery();
+				targetCreature->sendSystemMessage("cbt_spam", "posture_knocked_down");
+
+				int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
+
+				if (combatEquil > 100)
+					combatEquil = 100;
+
+				if ((combatEquil >> 1) > (int) System::random(100))
+					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+			}
+		} else
+			creature->sendSystemMessage("cbt_spam", "knockdown_fail");
+	}
+
+	void CombatManager::checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
+			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
+				if (80 > System::random(100))
+					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+				return;
+			}
+
+			if (targetCreature->checkPostureDownRecovery()) {
+				int targetDefense = targetCreature->getSkillMod("posture_change_down_defense");
+				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+
+				int rand = System::random(100);
+
+				if ((5 > rand) || (rand > targetDefense)) {
+					if (targetCreature->isMounted())
+						targetCreature->dismount();
+
+					if (targetCreature->getPosture() == CreatureObjectImplementation::UPRIGHT_POSTURE)
+						targetCreature->setPosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+					else
+						targetCreature->setPosture(CreatureObjectImplementation::PRONE_POSTURE);
+
+					targetCreature->updatePostureDownRecovery();
+					targetCreature->sendSystemMessage("cbt_spam", "posture_down");
+
+					int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
+
+					if (combatEquil > 100)
+						combatEquil = 100;
+
+					if ((combatEquil >> 1) > (int) System::random(100))
+						targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+				}
+			} else
+				creature->sendSystemMessage("cbt_spam", "posture_change_fail");
+	}
+
+	void CombatManager::checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
+		if (targetCreature->checkPostureUpRecovery()) {
+			int targetDefense = targetCreature->getSkillMod("posture_change_up_defense");
+			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+
+			int rand = System::random(100);
+
+			if ((5 > rand) || (rand > targetDefense)) {
+				if (targetCreature->isMounted())
+					targetCreature->dismount();
+
+				if (targetCreature->getPosture() == CreatureObjectImplementation::PRONE_POSTURE) {
+					targetCreature->setPosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+					targetCreature->updatePostureUpRecovery();
+				} else if (targetCreature->getPosture() ==  CreatureObjectImplementation::CROUCHED_POSTURE) {
+					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+					targetCreature->updatePostureUpRecovery();
+				}
+			}
+		} else if (!targetCreature->checkPostureUpRecovery())
+			creature->sendSystemMessage("cbt_spam", "posture_change_fail");
+	}
+
+	void CombatManager::doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit) {
+		Weapon* weapon = creature->getWeapon();
+
+		int resist = 0;
+
+		if (weapon != NULL) {
+			if (weapon->getDot0Uses() != 0) {
+				switch (weapon->getDot0Type()) {
+				case 1:
+					resist = targetCreature->getSkillMod("resistance_bleeding");
+
+					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
+						targetCreature->setBleedingState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
+					break;
+				case 2:
+					resist = targetCreature->getSkillMod("resistance_disease");
+
+					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
+					targetCreature->setDiseasedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
+					break;
+				case 3:
+					resist = targetCreature->getSkillMod("resistance_fire");
+
+					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
+					targetCreature->setOnFireState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
+					break;
+				case 4:
+					resist = targetCreature->getSkillMod("resistance_poison");
+
+					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
+					targetCreature->setPoisonedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
+					break;
+				}
+
+				if (areaHit == 0 && weapon->decreaseDot0Uses()) {
+					weapon->setUpdated(true);
+				}
+			}
+
+			if (weapon->getDot1Uses() != 0) {
+				switch (weapon->getDot1Type()) {
+				case 1:
+					resist = targetCreature->getSkillMod("resistance_bleeding");
+
+					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
+						targetCreature->setBleedingState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
+					break;
+				case 2:
+					resist = targetCreature->getSkillMod("resistance_disease");
+
+					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
+					targetCreature->setDiseasedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
+					break;
+				case 3:
+					resist = targetCreature->getSkillMod("resistance_fire");
+
+					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
+					targetCreature->setOnFireState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
+					break;
+				case 4:
+					resist = targetCreature->getSkillMod("resistance_poison");
+
+					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
+					targetCreature->setPoisonedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
+					break;
+				}
+
+				if (areaHit == 0 && weapon->decreaseDot1Uses()) {
+					weapon->setUpdated(true);
+				}
+			}
+
+			if (weapon->getDot2Uses() != 0) {
+				switch (weapon->getDot2Type()) {
+				case 1:
+					resist = targetCreature->getSkillMod("resistance_bleeding");
+
+					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
+						targetCreature->setBleedingState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
+					break;
+				case 2:
+					resist = targetCreature->getSkillMod("resistance_disease");
+
+					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
+					targetCreature->setDiseasedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
+					break;
+				case 3:
+					resist = targetCreature->getSkillMod("resistance_fire");
+
+					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
+					targetCreature->setOnFireState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
+					break;
+				case 4:
+					resist = targetCreature->getSkillMod("resistance_poison");
+
+					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
+					targetCreature->setPoisonedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
+					break;
+				}
+
+				if (areaHit == 0 && weapon->decreaseDot2Uses()) {
+					weapon->setUpdated(true);
+				}
+			}
+		}
 	}

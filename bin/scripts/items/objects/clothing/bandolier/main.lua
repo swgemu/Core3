@@ -43,10 +43,10 @@
 
 RunItemLUAFile("objects/clothing/bandolier/bandolier1.lua");
 RunItemLUAFile("objects/clothing/bandolier/bandolier2.lua");
-RunItemLUAFile("objects/clothing/bandolier/bandolier2_quest.lua");
+RunItemLUAFile("objects/clothing/bandolier/bandolier2Quest.lua");
 RunItemLUAFile("objects/clothing/bandolier/bandolier3.lua");
 RunItemLUAFile("objects/clothing/bandolier/bandolier4.lua");
-RunItemLUAFile("objects/clothing/bandolier/bandolier4_quest.lua");
+RunItemLUAFile("objects/clothing/bandolier/bandolier4Quest.lua");
 RunItemLUAFile("objects/clothing/bandolier/bandolier5.lua");
 RunItemLUAFile("objects/clothing/bandolier/bandolier6.lua");
 RunItemLUAFile("objects/clothing/bandolier/bandolier7.lua");
@@ -55,9 +55,9 @@ RunItemLUAFile("objects/clothing/bandolier/bandolier9.lua");
 RunItemLUAFile("objects/clothing/bandolier/bandolierTR1.lua");
 RunItemLUAFile("objects/clothing/bandolier/bandolierTR2.lua");
 RunItemLUAFile("objects/clothing/bandolier/bandolierTR3.lua");
-RunItemLUAFile("objects/clothing/bandolier/double_bandolier.lua");
-RunItemLUAFile("objects/clothing/bandolier/ith_double_bandolier.lua");
-RunItemLUAFile("objects/clothing/bandolier/ith_mercenary_bandolier.lua");
-RunItemLUAFile("objects/clothing/bandolier/ith_multipocket_bandolier.lua");
-RunItemLUAFile("objects/clothing/bandolier/mercenary_bandolier.lua");
-RunItemLUAFile("objects/clothing/bandolier/multipocket_bandolier.lua");
+RunItemLUAFile("objects/clothing/bandolier/doubleBandolier.lua");
+RunItemLUAFile("objects/clothing/bandolier/ithDoubleBandolier.lua");
+RunItemLUAFile("objects/clothing/bandolier/ithMercenaryBandolier.lua");
+RunItemLUAFile("objects/clothing/bandolier/ithMultipocketBandolier.lua");
+RunItemLUAFile("objects/clothing/bandolier/mercenaryBandolier.lua");
+RunItemLUAFile("objects/clothing/bandolier/multipocketBandolier.lua");

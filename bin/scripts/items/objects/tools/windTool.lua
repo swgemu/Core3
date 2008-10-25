@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-windTool = Tool:new {
+wind_tool = Tool:new {
 
 	objectName = "Wind Survey Tool",
 
