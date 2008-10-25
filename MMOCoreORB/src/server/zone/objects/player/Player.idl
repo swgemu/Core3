@@ -392,8 +392,13 @@ interface Player implements CreatureObject {
 
 	void setOvert();
 	void setCovert();
+	void setOnLeave();
+	
+	boolean isOvert();
+	boolean isCovert();
+	boolean isOnLeave();
 
-	void newChangeFactionEvent(unsigned int faction);
+	void newChangeFactionStatusEvent(unsigned char status, unsigned int timer);
 
 	void setRaceFileName(string name);
 	void setRaceID(unsigned char id);
@@ -544,7 +549,7 @@ interface Player implements CreatureObject {
 	// Get by index
 	DraftSchematic getDraftSchematic(int index);
 
-	boolean isChangingFaction();
+	boolean isChangingFactionStatus();
 
 	Datapad getDatapad();
 

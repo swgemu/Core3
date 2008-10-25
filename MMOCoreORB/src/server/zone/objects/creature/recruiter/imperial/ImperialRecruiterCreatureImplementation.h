@@ -70,9 +70,17 @@ public:
 		say("conversation/faction_recruiter_imperial", "s_308", new StfParameter());
 	}
 
+	void greetChangingStatusMember() {
+		say("conversation/faction_recruiter_imperial", "s_444", new StfParameter());
+	}
+
+	void greetMember(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_310"));
+		sendMemberStart(player);
+	}
+
 	void sendMemberStart(Player * player) {
 		player->setLastNpcConvMessStr("member_start");
-		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_310"));
 
 		StringList * slist = new StringList(player);
 		if (qualifiesForPromotion(player))
@@ -81,6 +89,8 @@ public:
 		if(canOfferBribe(player))
 			slist->insertOption("conversation/faction_recruiter_imperial", "s_398");
 
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_352");
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_374");
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_386");
 		player->sendMessage(slist);
 	}
@@ -91,6 +101,90 @@ public:
 		StringList * slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_428");
 		player->sendMessage(slist);
+	}
+
+
+	void sendOnLeaveStart(Player * player) {
+		player->setLastNpcConvMessStr("onLeave_start");
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_80"));
+		StringList * slist = new StringList(player);
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_294");
+		player->sendMessage(slist);
+	}
+
+	void confirmGoCovert(Player * player) {
+		player->setLastNpcConvMessStr("confirm_go_covert");
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_354"));
+
+		StringList * slist = new StringList(player);
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_356");
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_360");
+		player->sendMessage(slist);
+	}
+
+	void playerAcceptedGoCovert(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_358"));
+	}
+
+	void playerRejectedGoCovert(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_362"));
+		sendMemberStart(player);
+	}
+
+	void confirmGoOvert(Player * player) {
+		player->setLastNpcConvMessStr("confirm_go_overt");
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_364"));
+
+		StringList * slist = new StringList(player);
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_366");
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_370");
+		player->sendMessage(slist);
+	}
+
+	void playerAcceptedGoOvert(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_368"));
+	}
+
+	void playerRejectedGoOvert(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_372"));
+		sendMemberStart(player);
+	}
+
+	void confirmGoOnLeave(Player * player) {
+		player->setLastNpcConvMessStr("confirm_go_on_leave");
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_376"));
+
+		StringList * slist = new StringList(player);
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_378");
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_382");
+		player->sendMessage(slist);
+	}
+
+	void playerAcceptedGoOnLeave(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_380"));
+	}
+
+	void playerRejectedGoOnLeave(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_384"));
+		sendMemberStart(player);
+	}
+
+	void confirmGoActive(Player * player) {
+		player->setLastNpcConvMessStr("confirm_go_active");
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_296"));
+
+		StringList * slist = new StringList(player);
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_298");
+		slist->insertOption("conversation/faction_recruiter_imperial", "s_302");
+		player->sendMessage(slist);
+	}
+
+	void playerAcceptedGoActive(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_300"));
+	}
+
+	void playerRejectedGoActive(Player * player) {
+		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_304"));
 	}
 
 	void rejectJoinFaction(Player * player) {

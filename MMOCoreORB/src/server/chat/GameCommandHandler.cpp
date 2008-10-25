@@ -2243,7 +2243,7 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 	Player* targetPlayer;
 
 	if (!tokenizer.hasMoreTokens()) {
-		player->sendSystemMessage("Usage: @factionSet overt | covert | rebel | imperial | neutral");
+		player->sendSystemMessage("Usage: @factionSet overt | covert | onLeave | rebel | imperial | neutral");
 		return;
 	} else
 		tokenizer.getStringToken(tag);
@@ -2251,6 +2251,9 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 
 	try {
 		SceneObject* obj = player->getTarget();
+
+		if(obj == NULL)
+			obj = player;
 
 		if (obj != NULL && obj->isPlayer()) {
 			targetPlayer = (Player*) obj;
@@ -2269,8 +2272,10 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 				faction = targetPlayer->getFaction();
 			else if (tag == "overt")
 				faction = targetPlayer->getFaction();
+			else if (tag == "onLeave")
+				faction = targetPlayer->getFaction();
 			else {
-				player->sendSystemMessage("Usage: @factionSet overt | covert | rebel | imperial | neutral");
+				player->sendSystemMessage("Usage: @factionSet overt | covert | onLeave | rebel | imperial | neutral");
 				if (targetPlayer != player)
 					targetPlayer->unlock();
 				return;
@@ -2279,7 +2284,9 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 
 			targetPlayer->setFaction(faction);
 
-			if (tag == "covert" || tag == "neutral")
+			if (tag == "onLeave" || tag == "neutral")
+				targetPlayer->setOnLeave();
+			else if (tag == "covert")
 				targetPlayer->setCovert();
 			else
 				targetPlayer->setOvert();

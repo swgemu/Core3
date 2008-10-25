@@ -81,7 +81,7 @@ which carries forward this exception.
 #include "events/PlayerRecoveryEvent.h"
 #include "events/PlayerDigestEvent.h"
 #include "events/CommandQueueActionEvent.h"
-#include "events/ChangeFactionEvent.h"
+#include "events/ChangeFactionStatusEvent.h"
 #include "events/CenterOfBeingEvent.h"
 #include "events/PowerboostEventWane.h"
 #include "events/PowerboostEventEnd.h"
@@ -330,7 +330,7 @@ void PlayerImplementation::makeCharacterMask() {
 	else
 		characterMask |= NEUTRAL;
 
-	if(!this->isOvert())
+	if(this->isOnLeave())
 		characterMask |= COVERT;
 
 	switch (raceID) {
@@ -2397,8 +2397,8 @@ void PlayerImplementation::doClone() {
 
 	changeForcePowerBar(0);
 
-	setNeutral();
-	setCovert();
+	if (isOvert())
+		setCovert();
 
 	setPosture(UPRIGHT_POSTURE);
 
@@ -2752,7 +2752,7 @@ bool PlayerImplementation::hasItemPermission(TangibleObject * item) {
 	if (maskRes == 0)
 		return true;
 	else if (maskRes == COVERT) {
-		this->sendSystemMessage("You must be declared overt to use this item.");
+		this->sendSystemMessage("You can not use this item while on leave.");
 		return false;
 	} else if (maskRes & (COVERT | REBEL | IMPERIAL | NEUTRAL)) {
 		this->sendSystemMessage("You are not the proper faction to use this item.");
@@ -3403,11 +3403,16 @@ void PlayerImplementation::setOvert() {
 	if (!(pvpStatusBitmask & OVERT_FLAG))
 		pvpStatusBitmask |= OVERT_FLAG;
 
+	if (pvpStatusBitmask & CHANGEFACTIONSTATUS_FLAG)
+		pvpStatusBitmask -= CHANGEFACTIONSTATUS_FLAG;
+
 	characterMask &= ~COVERT;
 
 	factionStatus = 2;
 
 	uint32 pvpBitmask = pvpStatusBitmask;
+
+	sendSystemMessage("faction_recruiter", "overt_complete");
 
 	try {
 		zone->lock();
@@ -3435,9 +3440,14 @@ void PlayerImplementation::setCovert() {
 	if (pvpStatusBitmask & OVERT_FLAG)
 		pvpStatusBitmask -= OVERT_FLAG;
 
+	if (pvpStatusBitmask & CHANGEFACTIONSTATUS_FLAG)
+		pvpStatusBitmask -= CHANGEFACTIONSTATUS_FLAG;
+
 	characterMask |= COVERT;
 
 	factionStatus = 1;
+
+	sendSystemMessage("faction_recruiter", "covert_complete");
 
 	try {
 		zone->lock();
@@ -3456,7 +3466,44 @@ void PlayerImplementation::setCovert() {
 
 		zone->unlock();
 	} catch (...) {
-		error("exception PlayerImplementation::setOvert()");
+		error("exception PlayerImplementation::setCovert()");
+		zone->unlock();
+	}
+}
+
+void PlayerImplementation::setOnLeave() {
+	if (pvpStatusBitmask & OVERT_FLAG)
+		pvpStatusBitmask -= OVERT_FLAG;
+
+	if (pvpStatusBitmask & CHANGEFACTIONSTATUS_FLAG)
+		pvpStatusBitmask -= CHANGEFACTIONSTATUS_FLAG;
+
+	if (faction != 0)
+		characterMask |= COVERT;
+
+	factionStatus = 0;
+
+	if (faction != 0)
+		sendSystemMessage("faction_recruiter", "on_leave_complete");
+
+	try {
+		zone->lock();
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
+
+			if (object->isPlayer()) {
+				Player* player = (Player*) object;
+				sendFactionStatusTo(player, true);
+			} else if (object->isNonPlayerCreature()) {
+				CreatureObjectImplementation * npc = (CreatureObjectImplementation *) object->_getImplementation();
+				npc->sendFactionStatusTo(_this);
+			}
+		}
+
+		zone->unlock();
+	} catch (...) {
+		error("exception PlayerImplementation::setOnLeave()");
 		zone->unlock();
 	}
 }
@@ -3968,9 +4015,29 @@ void PlayerImplementation::surrenderSkillBox(const string& name) {
 	return professionManager->surrenderSkillBox(name, this);
 }
 
-void PlayerImplementation::newChangeFactionEvent(uint32 faction) {
-	changeFactionEvent = new ChangeFactionEvent(this, faction);
+void PlayerImplementation::newChangeFactionStatusEvent(uint8 stat, uint32 timer) {
+	pvpStatusBitmask |= CHANGEFACTIONSTATUS_FLAG;
+
+	changeFactionEvent = new ChangeFactionStatusEvent(this, stat, timer);
 	server->addEvent(changeFactionEvent);
+
+	try {
+		zone->lock();
+
+		for (int i = 0; i < inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
+
+			if (object->isPlayer()) {
+				Player* player = (Player*) object;
+				sendFactionStatusTo(player, true);
+			}
+		}
+
+		zone->unlock();
+	} catch (...) {
+		error("exception PlayerImplementation::newChangeFactionStatusEvent()");
+		zone->unlock();
+	}
 }
 
 void PlayerImplementation::setEntertainerEvent() {

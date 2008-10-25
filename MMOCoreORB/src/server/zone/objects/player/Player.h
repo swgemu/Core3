@@ -445,7 +445,15 @@ public:
 
 	void setCovert();
 
-	void newChangeFactionEvent(unsigned int faction);
+	void setOnLeave();
+
+	bool isOvert();
+
+	bool isCovert();
+
+	bool isOnLeave();
+
+	void newChangeFactionStatusEvent(unsigned char status, unsigned int timer);
 
 	void setRaceFileName(string& name);
 
@@ -623,7 +631,7 @@ public:
 
 	DraftSchematic* getDraftSchematic(int index);
 
-	bool isChangingFaction();
+	bool isChangingFactionStatus();
 
 	Datapad* getDatapad();
 
@@ -1153,7 +1161,15 @@ public:
 
 	void setCovert();
 
-	void newChangeFactionEvent(unsigned int faction);
+	void setOnLeave();
+
+	bool isOvert();
+
+	bool isCovert();
+
+	bool isOnLeave();
+
+	void newChangeFactionStatusEvent(unsigned char status, unsigned int timer);
 
 	void setRaceFileName(string& name);
 
@@ -1331,7 +1347,7 @@ public:
 
 	DraftSchematic* getDraftSchematic(int index);
 
-	bool isChangingFaction();
+	bool isChangingFactionStatus();
 
 	Datapad* getDatapad();
 

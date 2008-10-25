@@ -49,8 +49,6 @@ which carries forward this exception.
 #include "../../player/Player.h"
 #include "../../player/PlayerImplementation.h"
 
-#include "../../player/events/ChangeFactionEvent.h"
-
 #include "../../../packets.h"
 
 #include "../../../packets/object/StringList.h"
@@ -81,15 +79,22 @@ void RecruiterCreatureImplementation::sendConversationStartTo(SceneObject* obj) 
 		updateTarget(player);
 		greetHated();
 		return;
+	} else if (player->isChangingFactionStatus()) {
+		updateTarget(player);
+		greetChangingStatusMember();
+		return;
 	}
 
 	StartNpcConversation* conv = new StartNpcConversation(player, objectID, "");
 	player->sendMessage(conv);
 	player->setLastNpcConvStr("recruiter");
 
-	if (player->getFaction() == factionCRC)
-		sendMemberStart(player);
-	else
+	if (player->getFaction() == factionCRC) {
+		if (player->isOnLeave())
+			sendOnLeaveStart(player);
+		else
+			greetMember(player);
+	} else
 		sendNeutralStart(player);
 }
 
@@ -123,6 +128,52 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 			playerRejectedJoin(player);
 			break;
 		}
+	} else if (player->getLastNpcConvMessStr() == "onLeave_start") {
+		switch (option) {
+		case 0:
+			confirmGoActive(player);
+			break;
+		}
+	} else if (player->getLastNpcConvMessStr() == "confirm_go_active") {
+		switch (option) {
+		case 0:
+			setPlayerCovert(player, 30000);
+			playerAcceptedGoActive(player);
+			break;
+		case 1:
+			playerRejectedGoActive(player);
+			break;
+		}
+	} else if (player->getLastNpcConvMessStr() == "confirm_go_covert") {
+		switch (option) {
+		case 0:
+			setPlayerCovert(player, 300000);
+			playerAcceptedGoCovert(player);
+			break;
+		case 1:
+			playerRejectedGoCovert(player);
+			break;
+		}
+	} else if (player->getLastNpcConvMessStr() == "confirm_go_overt") {
+		switch (option) {
+		case 0:
+			setPlayerOvert(player, 30000);
+			playerAcceptedGoOvert(player);
+			break;
+		case 1:
+			playerRejectedGoOvert(player);
+			break;
+		}
+	} else if (player->getLastNpcConvMessStr() == "confirm_go_on_leave") {
+		switch (option) {
+		case 0:
+			setPlayerOnLeave(player, 300000);
+			playerAcceptedGoOnLeave(player);
+			break;
+		case 1:
+			playerRejectedGoOnLeave(player);
+			break;
+		}
 	} else if (player->getLastNpcConvMessStr() == "member_start") {
 		if (qualifiesForPromotion(player)) {
 			if (option == 0) {
@@ -142,6 +193,15 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 
 		switch (option) {
 		case 0:
+			if (player->isCovert())
+				confirmGoOvert(player);
+			else
+				confirmGoCovert(player);
+			break;
+		case 1:
+			confirmGoOnLeave(player);
+			break;
+		case 2:
 			confirmLeaveFaction(player);
 			break;
 		}
@@ -184,15 +244,27 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 
 void RecruiterCreatureImplementation::addPlayerToFaction(Player * player) {
 	player->setFaction(factionCRC);
-	player->setOvert();
+	player->setCovert();
 	player->makeCharacterMask();
 }
 
 void RecruiterCreatureImplementation::removePlayerFromFaction(Player * player) {
 	player->setFaction(0);
-	player->setCovert();
+	player->setOnLeave();
 	player->makeCharacterMask();
 	player->setFactionRank(0);
+}
+
+void RecruiterCreatureImplementation::setPlayerOnLeave(Player * player, uint32 timer) {
+	player->newChangeFactionStatusEvent(0, timer);
+}
+
+void RecruiterCreatureImplementation::setPlayerCovert(Player * player, uint32 timer) {
+	player->newChangeFactionStatusEvent(1, timer);
+}
+
+void RecruiterCreatureImplementation::setPlayerOvert(Player * player, uint32 timer) {
+	player->newChangeFactionStatusEvent(2, timer);
 }
 
 void RecruiterCreatureImplementation::promotePlayer(Player * player) {
