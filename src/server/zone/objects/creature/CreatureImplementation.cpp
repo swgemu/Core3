@@ -1280,7 +1280,6 @@ bool CreatureImplementation::doMovement() {
 		waypointZ = aggroedCreature->getPositionZ();
 		waypointY = aggroedCreature->getPositionY();
 		cellID = aggroedCreature->getParentID();
-		maxSpeed = aggroedCreature->getSpeed() + 0.75f;
 
 	} else if (!patrolPoints.isEmpty()) {
 		PatrolPoint* waypoint = patrolPoints.get(0);
