@@ -470,7 +470,8 @@ public:
 	static const uint32 TEF_FLAG = 0x08;
 	static const uint32 PLAYER_FLAG = 0x10;
 	static const uint32 ENEMY_FLAG = 0x20;
-	static const uint32 DUEL_FLAG = 0x40;
+	static const uint32 CHANGEFACTIONSTATUS_FLAG = 0x40;
+	static const uint32 BLINK_GREEN_FLAG = 0x80;
 
 public:
 	CreatureObjectImplementation(uint64 oid);
@@ -627,12 +628,7 @@ public:
 		setPosture(DEAD_POSTURE);
 	}
 
-	bool isAttackableBy(CreatureObject* creature) {
-		if (creature->hatesFaction(this->getFaction()))
-			return true;
-
-		return (pvpStatusBitmask & ATTACKABLE_FLAG);
-	}
+	bool isAttackableBy(CreatureObject* creature);
 
 	bool hasAttackDelay() {
 		return !nextAttackDelay.isPast();

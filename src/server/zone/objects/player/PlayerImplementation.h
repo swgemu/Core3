@@ -876,8 +876,21 @@ public:
 	// faction methods
 	void setOvert();
 	void setCovert();
+	void setOnLeave();
 
-	void newChangeFactionEvent(uint32 faction);
+	inline bool isOvert() {
+		return (factionStatus == 2);
+	}
+
+	inline bool isCovert() {
+		return (factionStatus == 1);
+	}
+
+	inline bool isOnLeave() {
+		return (factionStatus == 0);
+	}
+
+	void newChangeFactionStatusEvent(uint8 status, uint32 timer);
 
 	bool isInDuelWith(Player* targetPlayer, bool doLock = true);
 
@@ -1375,7 +1388,7 @@ public:
 		guildLeader = value;
 	}
 
-	inline void setChangeFactionEvent(Event* eve) {
+	inline void setChangeFactionStatusEvent(Event* eve) {
 		changeFactionEvent = eve;
 	}
 
@@ -1383,7 +1396,7 @@ public:
 		return meditating;
 	}
 
-	inline bool isChangingFaction() {
+	inline bool isChangingFactionStatus() {
 		return changeFactionEvent != NULL;
 	}
 

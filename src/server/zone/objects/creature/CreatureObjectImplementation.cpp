@@ -461,37 +461,30 @@ void CreatureObjectImplementation::sendItemsTo(Player* player) {
 
 //NOTE: This function is about to get completely revamped
 void CreatureObjectImplementation::sendFactionStatusTo(Player* player, bool doTwoWay) {
+	const uint32 AGRO_FLAGS = ATTACKABLE_FLAG + AGGRESSIVE_FLAG + ENEMY_FLAG;
+
 	if (this->isRebel() || this->isImperial()) {
-		uint32 pvpBitmask = pvpStatusBitmask;
-		uint32 playerPvp = player->getPvpStatusBitmask();
+		if (this->isNonPlayerCreature()) {
+			if (this->isAttackableBy(player))
+				player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask + AGRO_FLAGS));
+			else
+				player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask));
+		} else if (this->isPlayer()) {
+			PlayerImplementation * thisPlayer = (PlayerImplementation *) this;
 
-		if (player->isOvert() && (player->getFaction() != faction)) {
-			if (doTwoWay && isPlayer()) {
-				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp + ATTACKABLE_FLAG + AGGRESSIVE_FLAG + ENEMY_FLAG);
-				((PlayerImplementation*) this)->sendMessage(pvpstat);
-			}
+			if (thisPlayer->hatesFaction(player->getFaction()) && thisPlayer->isOvert() && player->isOvert())
+				player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask + AGRO_FLAGS));
+			else
+				player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask));
+		} else //Don't know what other option there is, but just in case
+			player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask));
 
-			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpBitmask + ATTACKABLE_FLAG + AGGRESSIVE_FLAG + ENEMY_FLAG);
-			player->sendMessage(pvpstat2);
-		} else {
-			BaseMessage* pvpstat3 = new UpdatePVPStatusMessage(_this, pvpBitmask);
-			player->sendMessage(pvpstat3);
-
-			if (doTwoWay && isPlayer()) {
-				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp);
-				((PlayerImplementation*) this)->sendMessage(pvpstat);
-			}
-		}
 	} else {
-		uint32 playerPvp = player->getPvpStatusBitmask();
+		player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask));
+	}
 
-		if (doTwoWay && isPlayer()) {
-			BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp);
-			((PlayerImplementation*) this)->sendMessage(pvpstat);
-		}
-
-		BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
-		player->sendMessage(pvpstat2);
+	if (doTwoWay && isPlayer()) {
+		((PlayerImplementation *) player->_getImplementation())->sendFactionStatusTo((Player *) _this, false);
 	}
 }
 
@@ -4926,8 +4919,19 @@ bool CreatureObjectImplementation::hatesFaction(uint faction) {
 }
 
 bool CreatureObjectImplementation::isAttackable() {
-		if (isNonPlayerCreature() && ((Creature *) _this)->isMount())
-			return !((MountCreature *) _this)->isDisabled();
+	if (isNonPlayerCreature() && ((Creature *) _this)->isMount())
+		return !((MountCreature *) _this)->isDisabled();
+	else
+		return !isIncapacitated() && !isDead();
+}
+
+bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature) {
+	if (creature->hatesFaction(this->getFaction())) {
+		if (creature->isPlayer() && ((Player *) creature)->isOnLeave())
+			return false;
 		else
-			return !isIncapacitated() && !isDead();
+			return true;
+	}
+
+	return (pvpStatusBitmask & ATTACKABLE_FLAG);
 }

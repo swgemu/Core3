@@ -1052,8 +1052,12 @@ bool CreatureImplementation::shouldAgro(SceneObject * target) {
 			return true;
 	}
 
-	if (this->hatesFaction(creature->getFaction()))
-		return true;
+	if (this->hatesFaction(creature->getFaction())) {
+		if (creature->isPlayer() && ((Player *) creature)->isOnLeave())
+			return false;
+		else
+			return true;
+	}
 
 	return false;
 }

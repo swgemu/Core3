@@ -45,16 +45,16 @@ which carries forward this exception.
 #ifndef CHANGEFACTIONEVENT_H_
 #define CHANGEFACTIONEVENT_H_
 
-#include "../PlayerImplementation.h"
+#include "../Player.h"
 
-class ChangeFactionEvent : public Event {
-	PlayerImplementation* player;
-	uint32 faction;
+class ChangeFactionStatusEvent : public Event {
+	PlayerImplementation * player;
+	uint8 status;
 
 public:
-	ChangeFactionEvent(PlayerImplementation* pl, uint32 Faction) : Event(300000) {
+	ChangeFactionStatusEvent(PlayerImplementation * pl, uint8 st, uint32 timer) : Event(timer) {
 		player = pl;
-		faction = Faction;
+		status = st;
 	}
 
 	bool activate() {
@@ -62,19 +62,24 @@ public:
 			player->wlock();
 
 			if (player->isOnline()) {
-				player->info("changing faction");
+				player->info("changing faction status");
 
-				player->setFaction(faction);
-
-				if (faction != 0)
-					player->setOvert();
-				else
+				switch (status) {
+				case 0:
+					player->setOnLeave();
+					break;
+				case 1:
 					player->setCovert();
+					break;
+				case 2:
+					player->setOvert();
+					break;
+				}
 
 				player->makeCharacterMask();
 			}
 
-			player->setChangeFactionEvent(NULL);
+			player->setChangeFactionStatusEvent(NULL);
 
 			player->unlock();
 		} catch (...) {
