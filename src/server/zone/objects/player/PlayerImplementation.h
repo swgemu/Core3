@@ -233,6 +233,9 @@ class PlayerImplementation : public PlayerServant {
 	VectorMap<uint32, SuiBox*> suiBoxes;
 	uint32 suiBoxNextID;
 	string inputBoxReturnBuffer;
+	SuiListBoxVector* suiChoicesList;
+
+	uint64 resourceDeedID;
 
 	uint64 currentStructureID;
 
@@ -1383,6 +1386,20 @@ public:
 	inline bool isChangingFaction() {
 		return changeFactionEvent != NULL;
 	}
+
+	void setResourceDeedID(uint64 objectID);
+
+	uint64 getResourceDeedID();
+
+	void addSuiBoxChoice(string& choice);
+
+	void removeLastSuiBoxChoice();
+
+	void setSuiBoxChoices(SuiListBoxVector* choicesList);
+
+	SuiListBoxVector* getSuiBoxChoices();
+
+	void clearSuiBoxChoices();
 
 	inline bool hasSuiBox(uint32 boxID) {
 		return suiBoxes.contains(boxID);

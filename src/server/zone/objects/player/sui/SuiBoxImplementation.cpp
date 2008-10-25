@@ -58,6 +58,8 @@ SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 typeID, uint32 b
 	boxTypeID = typeID;
 
 	cancelButton = false;
+
+	backButton = false;
 }
 
 //This will return the packet to close the UI page on the client.

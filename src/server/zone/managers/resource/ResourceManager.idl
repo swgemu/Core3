@@ -54,6 +54,9 @@ import "server/zone/ZoneServer";
 
 import "server/zone/ZoneProcessServerImplementation";
 
+import "../../objects/player/sui/listbox/SuiListBox";
+import "../../objects/player/sui/listbox/SuiListBoxVector";
+
 interface ResourceManager {
 	ResourceManager(ZoneServer server, ZoneProcessServerImplementation processor) {
 		super(server, processor);
@@ -82,4 +85,10 @@ interface ResourceManager {
 	ResourceList getResourceListAtLocation(int zone, float x, float y, int type);
 	
 	string getResourceNameByID(unsigned long rID);
+	
+	void generateSUI(Player player, SuiListBox sui);
+	
+	boolean giveResource(Player player, string resourceName, int amount);
+
+	boolean containsResource(string resourceName);
 }

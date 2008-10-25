@@ -42,123 +42,43 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SUIBOXIMPLEMENTATION_H_
-#define SUIBOXIMPLEMENTATION_H_
+#ifndef SUILISTBOXVECTORIMPLEMENTATION_H_
+#define SUILISTBOXVECTORIMPLEMENTATION_H_
 
-#include "SuiBox.h"
 #include "engine/engine.h"
 
-#include "SuiBoxImplementation.h"
-
-class Player;
-
-class SuiBoxImplementation : public SuiBoxServant {
-protected:
-	Player* player;
-
-	uint32 boxID;
-
-	uint64 usingObjectID;
-
-	bool cancelButton;
-
-	bool backButton;
-
-	string promptTitle;
-	string promptText;
-
-	int boxType;
-
-	uint32 boxTypeID;
+class SuiListBoxVectorImplementation : public SuiListBoxVectorServant {
+	Vector<string> * vector;
 
 public:
-	const static int INPUTBOX = 0;
-	const static int LISTBOX = 1;
-	const static int MESSAGEBOX = 2;
-	const static int TRANSFERBOX = 3;
-	const static int COLORPICKER = 4;
-	const static int BANKTRANSFERBOX = 5;
-
-public:
-	SuiBoxImplementation(Player* play, uint32 typeID, uint32 boxtype);
-
-	virtual ~SuiBoxImplementation();
-
-	virtual BaseMessage* generateMessage() = 0;
-
-	BaseMessage* generateCloseMessage();
-
-	int compareTo(SuiBox* obj) {
-		uint32 id = obj->getBoxID();
-
-		if (boxID < id)
-			return 1;
-		else if (boxID > id)
-			return -1;
-		else
-			return 0;
+	SuiListBoxVectorImplementation() : SuiListBoxVectorServant() {
+		vector = new Vector<string>();
 	}
 
-	inline void setPromptTitle(const string name) {
-		promptTitle = name;
+	~SuiListBoxVectorImplementation() {
+		delete vector;
 	}
 
-	inline void setPromptText(const string name) {
-		promptText = name;
+	inline int size() {
+		return vector->size();
 	}
 
-	inline void setUsingObjectID(uint64 oid) {
-		usingObjectID = oid;
+	inline void add(string item) {
+		vector->add(item);
 	}
 
-	inline bool isInputBox() {
-		return boxType == INPUTBOX;
+	inline string& get(unsigned int index) {
+		return vector->get(index);
 	}
 
-	inline bool isListBox() {
-		return boxType == LISTBOX;
+	inline void removeAll(){
+		vector->removeAll();
 	}
 
-	inline bool isMessageBox() {
-		return boxType == MESSAGEBOX;
-	}
-
-	inline bool isTransferBox() {
-		return boxType == TRANSFERBOX;
-	}
-
-	inline bool isBankTransferBox() {
-		return boxType == BANKTRANSFERBOX;
-	}
-
-	inline bool isColorPicker() {
-		return boxType == COLORPICKER;
-	}
-
-	inline void setCancelButton(bool value) {
-		cancelButton = value;
-	}
-
-	inline void setBackButton(bool value) {
-		backButton = value;
-	}
-
-	inline uint64 getUsingObjectID() {
-		return usingObjectID;
-	}
-
-	inline Player* getPlayer() {
-		return player;
-	}
-
-	inline uint32 getBoxID() {
-		return boxID;
-	}
-
-	inline int getBoxTypeID() {
-		return boxTypeID;
+	inline void removeLastElement(){
+		vector->removeElementAt(vector->size()-1);
 	}
 
 };
 
-#endif /*SuiBoxIMPLEMENTATON_H_*/
+#endif /*SUILISTBOXVECTORIMPLEMENTATION_H_*/

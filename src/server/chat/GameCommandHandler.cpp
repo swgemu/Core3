@@ -1856,6 +1856,11 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player
 
 			item->sendTo(player);
 
+	} else if (itemType == "ResourceDeed") {
+			ResourceDeed * item = new ResourceDeed(player, 0x7D28DE23, unicode("A Crate of Free Resources"), "resourceDeed");
+			player->addInventoryItem(item);
+
+			item->sendTo(player);
 	} else if (itemType == "Firework") {
 		if (tokenizer.hasMoreTokens()) {
 			int fwAniType = tokenizer.getIntToken();

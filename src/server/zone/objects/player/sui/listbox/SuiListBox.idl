@@ -54,8 +54,20 @@ interface SuiListBox implements SuiBox {
 
 	void addMenuItem(const string item, unsigned long objectID = 0);
 	
+	string getMenuItemName(int index);
+	
+	void removeAllMenuItems();
+	
 	int getMenuSize();
 	unsigned long getMenuObjectID(int idx);
 
 	BaseMessage generateMessage();
+	
+	void setNextBox(unsigned long boxID);
+	
+	void setPreviousBox(unsigned long boxID);
+	
+	unsigned long getNextBox();
+	
+	unsigned long getPreviousBox();
 }

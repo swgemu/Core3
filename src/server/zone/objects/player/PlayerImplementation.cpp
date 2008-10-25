@@ -233,6 +233,8 @@ void PlayerImplementation::initialize() {
 	//Crafting
 	currentCraftingTool = NULL;
 
+	resourceDeedID = 0;
+
 	//GM Flags
 	chatMuted = false;
 	immune = false;
@@ -291,6 +293,8 @@ void PlayerImplementation::initialize() {
 
 	suiBoxes.setInsertPlan(SortedVector<SuiBox*>::NO_DUPLICATE);
 	suiBoxes.setNullValue(NULL);
+
+	suiChoicesList = new SuiListBoxVector();
 
 	suiBoxNextID = 0;
 
@@ -4364,4 +4368,33 @@ void PlayerImplementation::delFactionPoints(Player * player, uint32 amount) {
 		error("unreported exception caught in PlayerImplementation::delFactionPoints(Player * player, uint32 amount)");
 		player->unlock();
 	}
+}
+
+void PlayerImplementation::addSuiBoxChoice(string& choice){
+	suiChoicesList->add(choice);
+}
+
+void PlayerImplementation::removeLastSuiBoxChoice(){
+	suiChoicesList->removeLastElement();
+}
+
+void PlayerImplementation::setSuiBoxChoices(SuiListBoxVector* choicesList){
+	suiChoicesList->removeAll();
+	suiChoicesList = choicesList;
+}
+
+SuiListBoxVector* PlayerImplementation::getSuiBoxChoices(){
+	return suiChoicesList;
+}
+
+void PlayerImplementation::clearSuiBoxChoices(){
+	suiChoicesList->removeAll();
+}
+
+void PlayerImplementation::setResourceDeedID(uint64 objectID){
+	resourceDeedID = objectID;
+}
+
+uint64 PlayerImplementation::getResourceDeedID(){
+	return resourceDeedID;
 }

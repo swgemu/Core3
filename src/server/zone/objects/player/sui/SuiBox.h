@@ -21,6 +21,8 @@ public:
 
 	void setCancelButton(bool value);
 
+	void setBackButton(bool value);
+
 	void setUsingObjectID(unsigned long long oid);
 
 	bool isInputBox();
@@ -66,6 +68,8 @@ public:
 	void setPromptText(const string& name);
 
 	void setCancelButton(bool value);
+
+	void setBackButton(bool value);
 
 	void setUsingObjectID(unsigned long long oid);
 

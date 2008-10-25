@@ -21,16 +21,30 @@ public:
 
 	void addMenuItem(const string& item, unsigned long long objectID = 0);
 
+	string& getMenuItemName(int index);
+
+	void removeAllMenuItems();
+
 	int getMenuSize();
 
 	unsigned long long getMenuObjectID(int idx);
 
 	BaseMessage* generateMessage();
 
+	void setNextBox(unsigned long long boxID);
+
+	void setPreviousBox(unsigned long long boxID);
+
+	unsigned long long getNextBox();
+
+	unsigned long long getPreviousBox();
+
 protected:
 	SuiListBox(DummyConstructorParameter* param);
 
 	virtual ~SuiListBox();
+
+	string _return_getMenuItemName;
 
 	friend class SuiListBoxHelper;
 };
@@ -45,11 +59,23 @@ public:
 
 	void addMenuItem(const string& item, unsigned long long objectID);
 
+	string& getMenuItemName(int index);
+
+	void removeAllMenuItems();
+
 	int getMenuSize();
 
 	unsigned long long getMenuObjectID(int idx);
 
 	BaseMessage* generateMessage();
+
+	void setNextBox(unsigned long long boxID);
+
+	void setPreviousBox(unsigned long long boxID);
+
+	unsigned long long getNextBox();
+
+	unsigned long long getPreviousBox();
 
 protected:
 	string _param0_addMenuItem__string_long_;
