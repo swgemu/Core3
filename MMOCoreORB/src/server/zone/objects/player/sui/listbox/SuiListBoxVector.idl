@@ -42,29 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../Player";
 
-include "engine/service/proto/BaseMessage";
-
-interface SuiBox {
-
-	BaseMessage generateCloseMessage();
+interface SuiListBoxVector {
+	SuiListBoxVector();
 	
-	void setPromptTitle(const string name);
-	void setPromptText(const string name);
-	void setCancelButton(boolean value);
-	void setBackButton(boolean value);
-	void setUsingObjectID(unsigned long oid);
-
-	boolean isInputBox();
-	boolean isListBox();
-	boolean isMessageBox();
-	boolean isTransferBox();
-	boolean isColorPicker();
-	boolean isBankTransferBox();
-
-	unsigned long getBoxID();
-	int getBoxTypeID();
-	unsigned long getUsingObjectID();
-	Player getPlayer();
+	unsigned int size();
+	void add(string item);
+	string get(unsigned int index);
+	void removeAll();
+	void removeLastElement();
 }

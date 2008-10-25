@@ -39,12 +39,38 @@ void SuiListBox::addMenuItem(const string& item, unsigned long long objectID) {
 		((SuiListBoxImplementation*) _impl)->addMenuItem(item, objectID);
 }
 
-int SuiListBox::getMenuSize() {
+string& SuiListBox::getMenuItemName(int index) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addSignedIntParameter(index);
+
+		method.executeWithAsciiReturn(_return_getMenuItemName);
+		return _return_getMenuItemName;
+	} else
+		return ((SuiListBoxImplementation*) _impl)->getMenuItemName(index);
+}
+
+void SuiListBox::removeAllMenuItems() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		method.executeWithVoidReturn();
+	} else
+		((SuiListBoxImplementation*) _impl)->removeAllMenuItems();
+}
+
+int SuiListBox::getMenuSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -56,7 +82,7 @@ unsigned long long SuiListBox::getMenuObjectID(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addSignedIntParameter(idx);
 
 		return method.executeWithUnsignedLongReturn();
@@ -69,11 +95,61 @@ BaseMessage* SuiListBox::generateMessage() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 
 		return (BaseMessage*) method.executeWithObjectReturn();
 	} else
 		return ((SuiListBoxImplementation*) _impl)->generateMessage();
+}
+
+void SuiListBox::setNextBox(unsigned long long boxID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addUnsignedLongParameter(boxID);
+
+		method.executeWithVoidReturn();
+	} else
+		((SuiListBoxImplementation*) _impl)->setNextBox(boxID);
+}
+
+void SuiListBox::setPreviousBox(unsigned long long boxID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addUnsignedLongParameter(boxID);
+
+		method.executeWithVoidReturn();
+	} else
+		((SuiListBoxImplementation*) _impl)->setPreviousBox(boxID);
+}
+
+unsigned long long SuiListBox::getNextBox() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((SuiListBoxImplementation*) _impl)->getNextBox();
+}
+
+unsigned long long SuiListBox::getPreviousBox() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((SuiListBoxImplementation*) _impl)->getPreviousBox();
 }
 
 /*
@@ -91,13 +167,31 @@ Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		addMenuItem(inv->getAsciiParameter(_param0_addMenuItem__string_long_), inv->getUnsignedLongParameter());
 		break;
 	case 7:
-		resp->insertSignedInt(getMenuSize());
+		resp->insertAscii(getMenuItemName(inv->getSignedIntParameter()));
 		break;
 	case 8:
-		resp->insertLong(getMenuObjectID(inv->getSignedIntParameter()));
+		removeAllMenuItems();
 		break;
 	case 9:
+		resp->insertSignedInt(getMenuSize());
+		break;
+	case 10:
+		resp->insertLong(getMenuObjectID(inv->getSignedIntParameter()));
+		break;
+	case 11:
 		resp->insertLong(generateMessage()->_getObjectID());
+		break;
+	case 12:
+		setNextBox(inv->getUnsignedLongParameter());
+		break;
+	case 13:
+		setPreviousBox(inv->getUnsignedLongParameter());
+		break;
+	case 14:
+		resp->insertLong(getNextBox());
+		break;
+	case 15:
+		resp->insertLong(getPreviousBox());
 		break;
 	default:
 		return NULL;
@@ -110,6 +204,14 @@ void SuiListBoxAdapter::addMenuItem(const string& item, unsigned long long objec
 	return ((SuiListBoxImplementation*) impl)->addMenuItem(item, objectID);
 }
 
+string& SuiListBoxAdapter::getMenuItemName(int index) {
+	return ((SuiListBoxImplementation*) impl)->getMenuItemName(index);
+}
+
+void SuiListBoxAdapter::removeAllMenuItems() {
+	return ((SuiListBoxImplementation*) impl)->removeAllMenuItems();
+}
+
 int SuiListBoxAdapter::getMenuSize() {
 	return ((SuiListBoxImplementation*) impl)->getMenuSize();
 }
@@ -120,6 +222,22 @@ unsigned long long SuiListBoxAdapter::getMenuObjectID(int idx) {
 
 BaseMessage* SuiListBoxAdapter::generateMessage() {
 	return ((SuiListBoxImplementation*) impl)->generateMessage();
+}
+
+void SuiListBoxAdapter::setNextBox(unsigned long long boxID) {
+	return ((SuiListBoxImplementation*) impl)->setNextBox(boxID);
+}
+
+void SuiListBoxAdapter::setPreviousBox(unsigned long long boxID) {
+	return ((SuiListBoxImplementation*) impl)->setPreviousBox(boxID);
+}
+
+unsigned long long SuiListBoxAdapter::getNextBox() {
+	return ((SuiListBoxImplementation*) impl)->getNextBox();
+}
+
+unsigned long long SuiListBoxAdapter::getPreviousBox() {
+	return ((SuiListBoxImplementation*) impl)->getPreviousBox();
 }
 
 /*

@@ -71,16 +71,41 @@ void CraftingStation::setEffectiveness(float eff) {
 		((CraftingStationImplementation*) _impl)->setEffectiveness(eff);
 }
 
-float CraftingStation::getEffectiveness() {
+void CraftingStation::setComplexityLevel(float comp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addFloatParameter(comp);
+
+		method.executeWithVoidReturn();
+	} else
+		((CraftingStationImplementation*) _impl)->setComplexityLevel(comp);
+}
+
+float CraftingStation::getEffectiveness() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		return method.executeWithFloatReturn();
 	} else
 		return ((CraftingStationImplementation*) _impl)->getEffectiveness();
+}
+
+float CraftingStation::getComplexityLevel() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((CraftingStationImplementation*) _impl)->getComplexityLevel();
 }
 
 int CraftingStation::getStationType() {
@@ -88,7 +113,7 @@ int CraftingStation::getStationType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -116,9 +141,15 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		setEffectiveness(inv->getFloatParameter());
 		break;
 	case 9:
-		resp->insertFloat(getEffectiveness());
+		setComplexityLevel(inv->getFloatParameter());
 		break;
 	case 10:
+		resp->insertFloat(getEffectiveness());
+		break;
+	case 11:
+		resp->insertFloat(getComplexityLevel());
+		break;
+	case 12:
 		resp->insertSignedInt(getStationType());
 		break;
 	default:
@@ -140,8 +171,16 @@ void CraftingStationAdapter::setEffectiveness(float eff) {
 	return ((CraftingStationImplementation*) impl)->setEffectiveness(eff);
 }
 
+void CraftingStationAdapter::setComplexityLevel(float comp) {
+	return ((CraftingStationImplementation*) impl)->setComplexityLevel(comp);
+}
+
 float CraftingStationAdapter::getEffectiveness() {
 	return ((CraftingStationImplementation*) impl)->getEffectiveness();
+}
+
+float CraftingStationAdapter::getComplexityLevel() {
+	return ((CraftingStationImplementation*) impl)->getComplexityLevel();
 }
 
 int CraftingStationAdapter::getStationType() {

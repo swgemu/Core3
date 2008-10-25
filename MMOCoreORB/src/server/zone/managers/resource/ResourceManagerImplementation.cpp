@@ -60,6 +60,7 @@ which carries forward this exception.
 
 #include "../../objects/tangible/resource/ResourceContainerImplementation.h"
 #include "../../objects/tangible/surveytool/SurveyToolImplementation.h"
+#include "../../objects/tangible/InventoryImplementation.h"
 
 #include "../../packets.h"
 
@@ -111,6 +112,16 @@ ResourceManagerImplementation::~ResourceManagerImplementation() {
 		delete resourceIDNameMap;
 		resourceIDNameMap = NULL;
 	}
+
+	if (resourceTree != NULL) {
+		delete resourceTree;
+		resourceTree = NULL;
+	}
+
+	if (itemStrings != NULL) {
+		delete itemStrings;
+		itemStrings = NULL;
+	}
 }
 
 void ResourceManagerImplementation::init() {
@@ -144,6 +155,7 @@ void ResourceManagerImplementation::init() {
 		info("Error in resource config file");
 	}
 
+	makeResourceTree();
 	makeMinimumPoolVector();
 	makeFixedPoolVector();
 	makeNativePoolVector();
@@ -780,6 +792,49 @@ void ResourceManagerImplementation::getHarvestingType(CreatureObject* creatureOb
 
 		loop++;
 	}
+}
+
+void ResourceManagerImplementation::generateSUI(Player* player, SuiListBox* sui){
+
+	SuiListBoxVector* choicesList = player->getSuiBoxChoices();
+	Vector<string>* menuList = resourceTree->getSuiMenuList(choicesList);
+
+	if(choicesList->size() > 0 && !resourceMap->contains(choicesList->get(choicesList->size()-1)) && resourceTree->classContainsResources(choicesList))
+		sui->setPromptText("Choose resource type from " + choicesList->get(choicesList->size()-1));
+	for(int i=0; i<menuList->size(); i++){
+		sui->addMenuItem(menuList->get(i));
+	}
+}
+
+bool ResourceManagerImplementation::giveResource(Player* player, string& resourceName, int amount){
+	Inventory* inventory = player->getInventory();
+
+	if (inventory->getUnequippedItemCount() + 1
+			>= InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
+
+		player->sendSystemMessage("You don't have enough space in your inventory");
+		return true;
+	}
+
+	if(!resourceMap->contains(resourceName)){
+		player->sendSystemMessage("No such resource.");
+		return false;
+	}
+	ResourceTemplate* resTemp = resourceMap->get(resourceName);
+	//ResourceTemplate* resTemp = resourceTree->getResource(choicesList);
+	ResourceContainer* resource = new ResourceContainer(player->getNewItemID());
+	resource->setResourceName(resTemp->getName());
+	resource->setContents(amount);
+	setResourceData(resource);
+	player->addInventoryItem(resource);
+
+
+	resource->sendTo(player);
+	return true;
+}
+
+bool ResourceManagerImplementation::containsResource(string& resourceName){
+	return resourceMap->contains(resourceName);
 }
 
 string ResourceManagerImplementation::getCurrentNameFromType(string type){
@@ -1704,6 +1759,7 @@ void ResourceManagerImplementation::createResource(string restype, string pool, 
 
 	resourceIDNameMap->put(resource->getResourceID(), resource->getName());
 	resourceMap->put(resource->getName(), resource);
+	addToResourceTree(resource);
 }
 
 void ResourceManagerImplementation::generateResourceStats(ResourceTemplate* resource) {
@@ -1889,6 +1945,43 @@ void ResourceManagerImplementation::setAttStat(ResourceTemplate* resource, strin
 
 	if (statTitle != "")
 		info("Something screwed up in finding stats to set in setAttStat: |" + statTitle + "| doesn't match");
+}
+
+void ResourceManagerImplementation::makeResourceTree() {
+	numFunctions++;
+
+	try {
+		resourceTree = new ClassMap();
+		string root = "root";
+		resourceTree->setClassName(root);
+
+		for(int i=0; i<resourceMap->size(); i++){
+			ResourceTemplate* resTemp = resourceMap->get(i);
+
+			resourceTree->addResource(resTemp);
+		}
+
+		//string class1 = "Inorganic";
+		//Vector<string>* classes = resourceTree->getResourcesFromClass(class1);
+		//for(int i=0; i<classes->size(); i++){
+		//	cout << classes->get(i) << endl;
+		//}
+
+	} catch (...) {
+		cout << "unreported exception caught in ResourceManagerImplementation::makeResourceTree()\n";
+	}
+}
+
+void ResourceManagerImplementation::addToResourceTree(ResourceTemplate* resource){
+	numFunctions++;
+
+	try{
+
+		resourceTree->addResource(resource);
+
+	} catch (...){
+		cout << "unreported exception caught in ResourceManagerImplementation::addToResourceTree()\n";
+	}
 }
 
 void ResourceManagerImplementation::makeMinimumPoolVector() {

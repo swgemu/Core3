@@ -79,6 +79,7 @@ import "../waypoint/WaypointObject";
 import "../../../chat/room/ChatRoom";
 
 import "sui/SuiBox";
+import "sui/listbox/SuiListBoxVector";
 
 import "../draftschematic/DraftSchematic";
 import "../tangible/crafting/CraftingTool";
@@ -617,4 +618,19 @@ interface Player implements CreatureObject {
 	unsigned int getMaxFactionPoints(string faction);
 	
 	void delFactionPoints(Player player, unsigned int amount);
+
+	void addSuiBoxChoice(string choice);
+	
+	void removeLastSuiBoxChoice();
+	
+	void setSuiBoxChoices(SuiListBoxVector choicesList);
+	
+	SuiListBoxVector getSuiBoxChoices();
+	
+	void clearSuiBoxChoices();
+	
+	void setResourceDeedID(unsigned long objectID);
+	
+	unsigned long getResourceDeedID();
+	
 }

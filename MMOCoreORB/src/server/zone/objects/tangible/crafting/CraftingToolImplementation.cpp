@@ -406,7 +406,7 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 				if (_this->getToolType() == station->getStationType() ||
 						(_this->getToolType() == JEDI && station->getStationType() == WEAPON)){
 
-					workingStationComplexity = ((CraftingStation*)inRangeObject)->getEffectiveness();
+					workingStationComplexity = ((CraftingStation*)inRangeObject)->getComplexityLevel();
 					return station->getObjectID();
 
 				}

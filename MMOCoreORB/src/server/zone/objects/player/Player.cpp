@@ -44,6 +44,8 @@
 
 #include "sui/SuiBox.h"
 
+#include "sui/listbox/SuiListBoxVector.h"
+
 #include "../draftschematic/DraftSchematic.h"
 
 #include "../tangible/crafting/CraftingTool.h"
@@ -4296,6 +4298,93 @@ void Player::delFactionPoints(Player* player, unsigned int amount) {
 		((PlayerImplementation*) _impl)->delFactionPoints(player, amount);
 }
 
+void Player::addSuiBoxChoice(string& choice) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 335);
+		method.addAsciiParameter(choice);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->addSuiBoxChoice(choice);
+}
+
+void Player::removeLastSuiBoxChoice() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 336);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->removeLastSuiBoxChoice();
+}
+
+void Player::setSuiBoxChoices(SuiListBoxVector* choicesList) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 337);
+		method.addObjectParameter(choicesList);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setSuiBoxChoices(choicesList);
+}
+
+SuiListBoxVector* Player::getSuiBoxChoices() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 338);
+
+		return (SuiListBoxVector*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getSuiBoxChoices();
+}
+
+void Player::clearSuiBoxChoices() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 339);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->clearSuiBoxChoices();
+}
+
+void Player::setResourceDeedID(unsigned long long objectID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 340);
+		method.addUnsignedLongParameter(objectID);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setResourceDeedID(objectID);
+}
+
+unsigned long long Player::getResourceDeedID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 341);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getResourceDeedID();
+}
+
 /*
  *	PlayerAdapter
  */
@@ -5299,6 +5388,27 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 336:
 		delFactionPoints((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 335:
+		addSuiBoxChoice(inv->getAsciiParameter(_param0_addSuiBoxChoice__string_));
+		break;
+	case 336:
+		removeLastSuiBoxChoice();
+		break;
+	case 337:
+		setSuiBoxChoices((SuiListBoxVector*) inv->getObjectParameter());
+		break;
+	case 338:
+		resp->insertLong(getSuiBoxChoices()->_getObjectID());
+		break;
+	case 339:
+		clearSuiBoxChoices();
+		break;
+	case 340:
+		setResourceDeedID(inv->getUnsignedLongParameter());
+		break;
+	case 341:
+		resp->insertLong(getResourceDeedID());
 		break;
 	default:
 		return NULL;
@@ -6629,6 +6739,34 @@ unsigned int PlayerAdapter::getMaxFactionPoints(string& faction) {
 
 void PlayerAdapter::delFactionPoints(Player* player, unsigned int amount) {
 	return ((PlayerImplementation*) impl)->delFactionPoints(player, amount);
+}
+
+void PlayerAdapter::addSuiBoxChoice(string& choice) {
+	return ((PlayerImplementation*) impl)->addSuiBoxChoice(choice);
+}
+
+void PlayerAdapter::removeLastSuiBoxChoice() {
+	return ((PlayerImplementation*) impl)->removeLastSuiBoxChoice();
+}
+
+void PlayerAdapter::setSuiBoxChoices(SuiListBoxVector* choicesList) {
+	return ((PlayerImplementation*) impl)->setSuiBoxChoices(choicesList);
+}
+
+SuiListBoxVector* PlayerAdapter::getSuiBoxChoices() {
+	return ((PlayerImplementation*) impl)->getSuiBoxChoices();
+}
+
+void PlayerAdapter::clearSuiBoxChoices() {
+	return ((PlayerImplementation*) impl)->clearSuiBoxChoices();
+}
+
+void PlayerAdapter::setResourceDeedID(unsigned long long objectID) {
+	return ((PlayerImplementation*) impl)->setResourceDeedID(objectID);
+}
+
+unsigned long long PlayerAdapter::getResourceDeedID() {
+	return ((PlayerImplementation*) impl)->getResourceDeedID();
 }
 
 /*

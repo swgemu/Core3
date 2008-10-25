@@ -19,6 +19,10 @@ class ZoneServer;
 
 class ZoneProcessServerImplementation;
 
+class SuiListBox;
+
+class SuiListBoxVector;
+
 class ResourceManager : public DistributedObjectStub {
 public:
 	ResourceManager(ZoneServer* server, ZoneProcessServerImplementation* processor);
@@ -50,6 +54,12 @@ public:
 	ResourceList* getResourceListAtLocation(int zone, float x, float y, int type);
 
 	string& getResourceNameByID(unsigned long long rID);
+
+	void generateSUI(Player* player, SuiListBox* sui);
+
+	bool giveResource(Player* player, string& resourceName, int amount);
+
+	bool containsResource(string& resourceName);
 
 protected:
 	ResourceManager(DummyConstructorParameter* param);
@@ -97,6 +107,12 @@ public:
 
 	string& getResourceNameByID(unsigned long long rID);
 
+	void generateSUI(Player* player, SuiListBox* sui);
+
+	bool giveResource(Player* player, string& resourceName, int amount);
+
+	bool containsResource(string& resourceName);
+
 protected:
 	string _param1_checkResource__Player_string_int_;
 	string _param1_sendSurveyMessage__Player_string_;
@@ -106,6 +122,8 @@ protected:
 	string _param0_getResourceContainerName__string_string_;
 	string _param1_getResourceContainerName__string_string_;
 	string _param0_printResource__string_;
+	string _param1_giveResource__Player_string_int_;
+	string _param0_containsResource__string_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

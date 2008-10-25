@@ -122,6 +122,7 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
+		server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
@@ -145,6 +146,7 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.cpp \
 		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.cpp \
 		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
+		server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
@@ -285,6 +287,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \

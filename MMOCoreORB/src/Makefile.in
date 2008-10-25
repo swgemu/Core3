@@ -122,17 +122,18 @@ am__objects_1 = ChatManager.$(OBJEXT) GameCommandHandler.$(OBJEXT) \
 	IgnoreList.$(OBJEXT) Player.$(OBJEXT) PlayerObject.$(OBJEXT) \
 	SuiBankTransferBox.$(OBJEXT) SuiColorPicker.$(OBJEXT) \
 	SuiInputBox.$(OBJEXT) SuiListBox.$(OBJEXT) \
-	SuiMessageBox.$(OBJEXT) SuiBox.$(OBJEXT) \
-	SuiTransferBox.$(OBJEXT) SceneObject.$(OBJEXT) \
-	ShipObject.$(OBJEXT) FireworkWorld.$(OBJEXT) \
-	StaticObject.$(OBJEXT) HairObject.$(OBJEXT) \
-	Attachment.$(OBJEXT) Bank.$(OBJEXT) ShipComponent.$(OBJEXT) \
-	Container.$(OBJEXT) Component.$(OBJEXT) \
-	CraftingStation.$(OBJEXT) CraftingTool.$(OBJEXT) \
-	FactoryCrate.$(OBJEXT) Datapad.$(OBJEXT) DeedObject.$(OBJEXT) \
-	FactoryDeed.$(OBJEXT) GeneratorDeed.$(OBJEXT) \
-	HarvesterDeed.$(OBJEXT) PlayerHouseDeed.$(OBJEXT) \
-	VehicleDeed.$(OBJEXT) Firework.$(OBJEXT) Holocron.$(OBJEXT) \
+	SuiListBoxVector.$(OBJEXT) SuiMessageBox.$(OBJEXT) \
+	SuiBox.$(OBJEXT) SuiTransferBox.$(OBJEXT) \
+	SceneObject.$(OBJEXT) ShipObject.$(OBJEXT) \
+	FireworkWorld.$(OBJEXT) StaticObject.$(OBJEXT) \
+	HairObject.$(OBJEXT) Attachment.$(OBJEXT) Bank.$(OBJEXT) \
+	ShipComponent.$(OBJEXT) Container.$(OBJEXT) \
+	Component.$(OBJEXT) CraftingStation.$(OBJEXT) \
+	CraftingTool.$(OBJEXT) FactoryCrate.$(OBJEXT) \
+	Datapad.$(OBJEXT) DeedObject.$(OBJEXT) FactoryDeed.$(OBJEXT) \
+	GeneratorDeed.$(OBJEXT) HarvesterDeed.$(OBJEXT) \
+	PlayerHouseDeed.$(OBJEXT) VehicleDeed.$(OBJEXT) \
+	ResourceDeed.$(OBJEXT) Firework.$(OBJEXT) Holocron.$(OBJEXT) \
 	Instrument.$(OBJEXT) Inventory.$(OBJEXT) \
 	CreatureInventory.$(OBJEXT) MissionBag.$(OBJEXT) \
 	CurePack.$(OBJEXT) EnhancePack.$(OBJEXT) \
@@ -234,6 +235,7 @@ am_core3_OBJECTS = $(am__objects_1) \
 	HarvesterDeedImplementation.$(OBJEXT) \
 	PlayerHouseDeedImplementation.$(OBJEXT) \
 	VehicleDeedImplementation.$(OBJEXT) \
+	ResourceDeedImplementation.$(OBJEXT) \
 	CreatureInventoryImplementation.$(OBJEXT) \
 	CurePackImplementation.$(OBJEXT) \
 	EnhancePackImplementation.$(OBJEXT) \
@@ -450,6 +452,7 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
+		server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
@@ -473,6 +476,7 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.cpp \
 		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeed.cpp \
 		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
+		server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
@@ -613,6 +617,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \
@@ -879,6 +884,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RegionBazaar.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceContainerImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceDeed.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceDeedImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceItem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceList.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ResourceManager.Po@am__quote@
@@ -915,6 +922,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiInputBoxImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiListBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiListBoxImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiListBoxVector.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiMessageBox.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SuiMessageBoxImplementation.Po@am__quote@
@@ -1909,6 +1917,20 @@ SuiListBox.obj: server/zone/objects/player/sui/listbox/SuiListBox.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiListBox.obj `if test -f 'server/zone/objects/player/sui/listbox/SuiListBox.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/listbox/SuiListBox.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/listbox/SuiListBox.cpp'; fi`
 
+SuiListBoxVector.o: server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiListBoxVector.o -MD -MP -MF $(DEPDIR)/SuiListBoxVector.Tpo -c -o SuiListBoxVector.o `test -f 'server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiListBoxVector.Tpo $(DEPDIR)/SuiListBoxVector.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp' object='SuiListBoxVector.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiListBoxVector.o `test -f 'server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp
+
+SuiListBoxVector.obj: server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiListBoxVector.obj -MD -MP -MF $(DEPDIR)/SuiListBoxVector.Tpo -c -o SuiListBoxVector.obj `if test -f 'server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiListBoxVector.Tpo $(DEPDIR)/SuiListBoxVector.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp' object='SuiListBoxVector.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o SuiListBoxVector.obj `if test -f 'server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/sui/listbox/SuiListBoxVector.cpp'; fi`
+
 SuiMessageBox.o: server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiMessageBox.o -MD -MP -MF $(DEPDIR)/SuiMessageBox.Tpo -c -o SuiMessageBox.o `test -f 'server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/SuiMessageBox.Tpo $(DEPDIR)/SuiMessageBox.Po
@@ -2230,6 +2252,20 @@ VehicleDeed.obj: server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp' object='VehicleDeed.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o VehicleDeed.obj `if test -f 'server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp'; fi`
+
+ResourceDeed.o: server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceDeed.o -MD -MP -MF $(DEPDIR)/ResourceDeed.Tpo -c -o ResourceDeed.o `test -f 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceDeed.Tpo $(DEPDIR)/ResourceDeed.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp' object='ResourceDeed.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceDeed.o `test -f 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp
+
+ResourceDeed.obj: server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceDeed.obj -MD -MP -MF $(DEPDIR)/ResourceDeed.Tpo -c -o ResourceDeed.obj `if test -f 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceDeed.Tpo $(DEPDIR)/ResourceDeed.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp' object='ResourceDeed.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceDeed.obj `if test -f 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp'; fi`
 
 Firework.o: server/zone/objects/tangible/firework/Firework.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Firework.o -MD -MP -MF $(DEPDIR)/Firework.Tpo -c -o Firework.o `test -f 'server/zone/objects/tangible/firework/Firework.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/firework/Firework.cpp
@@ -4162,6 +4198,20 @@ VehicleDeedImplementation.obj: server/zone/objects/tangible/deed/vehicledeed/Veh
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp' object='VehicleDeedImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o VehicleDeedImplementation.obj `if test -f 'server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp'; fi`
+
+ResourceDeedImplementation.o: server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceDeedImplementation.o -MD -MP -MF $(DEPDIR)/ResourceDeedImplementation.Tpo -c -o ResourceDeedImplementation.o `test -f 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceDeedImplementation.Tpo $(DEPDIR)/ResourceDeedImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp' object='ResourceDeedImplementation.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceDeedImplementation.o `test -f 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp
+
+ResourceDeedImplementation.obj: server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ResourceDeedImplementation.obj -MD -MP -MF $(DEPDIR)/ResourceDeedImplementation.Tpo -c -o ResourceDeedImplementation.obj `if test -f 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ResourceDeedImplementation.Tpo $(DEPDIR)/ResourceDeedImplementation.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp' object='ResourceDeedImplementation.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ResourceDeedImplementation.obj `if test -f 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp'; fi`
 
 CreatureInventoryImplementation.o: server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT CreatureInventoryImplementation.o -MD -MP -MF $(DEPDIR)/CreatureInventoryImplementation.Tpo -c -o CreatureInventoryImplementation.o `test -f 'server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp

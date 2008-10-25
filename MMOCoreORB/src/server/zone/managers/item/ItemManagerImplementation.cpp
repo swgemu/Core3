@@ -367,6 +367,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			case TangibleObjectImplementation::VEHICLEDEED:
 				item = new VehicleDeed(objectid, objectcrc, objectname, objecttemp);
 				break;
+			case TangibleObjectImplementation::RESOURCEDEED:
+				item = new ResourceDeed(objectid, objectcrc, objectname, objecttemp);
+				break;
 		}
 		if (makeStats && item != NULL) {
 			item->setAttributes(lootAttributes );
@@ -709,6 +712,7 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("PETDEED", TangibleObjectImplementation::PETDEED);
 	setGlobalInt("DROIDDEED", TangibleObjectImplementation::DROIDDEED);
 	setGlobalInt("VEHICLEDEED", TangibleObjectImplementation::VEHICLEDEED);
+	setGlobalInt("RESOURCEDEED", TangibleObjectImplementation::RESOURCEDEED);
 	setGlobalInt("CLOTHING", TangibleObjectImplementation::CLOTHING);
 	setGlobalInt("BANDOLIER", TangibleObjectImplementation::BANDOLIER);
 	setGlobalInt("BELT", TangibleObjectImplementation::BELT);
@@ -920,14 +924,16 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 				switch(DeedObjectImplementation::getSubType(crc)){
 					case TangibleObjectImplementation::HARVESTER:
 					{
-					//	cout << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
+						//cout << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
+
 						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
 						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
 						surplusPower = itemconfig.getIntField("surplusPower");
 						extractionRate = itemconfig.getFloatField("extractionRate");
 						hopperSize = itemconfig.getFloatField("hopperSize");
 
-					//	cout << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
+						//cout << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
+
 
 						HarvesterDeed* harv = (HarvesterDeed*) item;
 						harv->setSurplusMaintenance(surplusMaintenance);

@@ -133,6 +133,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \
 				server/zone/objects/tangible/firework/Firework.idl \
+				server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.idl \
 				server/zone/objects/tangible/deed/factorydeed/FactoryDeed.idl \
 				server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.idl \
 				server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.idl \
