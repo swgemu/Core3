@@ -81,6 +81,8 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 
 	setLogging(false);
 	setGlobalLogging(true);
+
+	EMPTY = "";
 }
 
 ResourceManagerImplementation::~ResourceManagerImplementation() {
@@ -2371,9 +2373,7 @@ string& ResourceManagerImplementation::getResourceNameByID(uint64 rID) {
 	if(resourceIDNameMap != NULL)
 		return resourceIDNameMap->get(rID);
 
-	string nullish("");
-
-	return nullish;
+	return EMPTY;
 }
 
 void ResourceManagerImplementation::printResource(string name){

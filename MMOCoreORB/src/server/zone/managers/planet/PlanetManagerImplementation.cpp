@@ -313,7 +313,7 @@ void PlanetManagerImplementation::loadPlayerStructures() {
 			cellMap->put(oid, cell);
 		} else if ((int)file.find("object/installation/") >= 0) {
 			// Need to load player installations from DB here
-			/*uint64 newId = getNextStaticObjectID(true);
+			uint64 newId = getNextStaticObjectID(true);
 
 			HarvesterObjectImplementation* hisoImpl =
 				new HarvesterObjectImplementation(newId, tempname);
