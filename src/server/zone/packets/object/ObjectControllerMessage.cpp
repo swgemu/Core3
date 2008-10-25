@@ -2411,7 +2411,7 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 
 	bool makeNewResource = true;
 
-	quantity = inso->removeHopperItem(rId, quantity);
+	quantity = (uint32)inso->removeHopperItem(rId, quantity);
 	if(quantity >= 1)
 	{
 		ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());

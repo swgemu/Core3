@@ -108,6 +108,8 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Mute
 
 	float spawnThrottling;
 
+	string EMPTY;
+
 	//int tempOver, tempUnder;
 public:
 
