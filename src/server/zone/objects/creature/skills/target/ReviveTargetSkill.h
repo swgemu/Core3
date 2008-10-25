@@ -217,7 +217,7 @@ public:
 		sendHealMessage((Player*)creature, playerTarget, healthHealed, actionHealed, mindHealed);
 		sendWoundMessage((Player*)creature, playerTarget, healthWoundHealed, actionWoundHealed, mindWoundHealed);
 
-		playerTarget->revive();
+		playerTarget->resurrect();
 
 		creature->changeMindBar(-mindCost);
 

@@ -27,6 +27,8 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
+	int calculatePower(CreatureObject* creature);
+
 	void setEffectiveness(float eff);
 
 	void setPoolAffected(int pool);
@@ -52,6 +54,8 @@ public:
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void generateAttributes(SceneObject* obj);
+
+	int calculatePower(CreatureObject* creature);
 
 	void setEffectiveness(float eff);
 

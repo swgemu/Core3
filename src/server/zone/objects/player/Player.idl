@@ -200,9 +200,10 @@ interface Player implements CreatureObject {
 
 	void doPeace();
 
+	//Incapacitation, Death, Cloning
 	void kill();
 	void deathblow(Player player);
-	void revive();
+	void resurrect();
 	void handleDeath();
 
 	void doClone();
@@ -221,8 +222,6 @@ interface Player implements CreatureObject {
 	string getConsentEntry(int index);
 
 	void sendConsentBox();
-
-	boolean isRevivable();
 
 	void addBuff(unsigned int buffcrc, float time);
 
@@ -339,6 +338,10 @@ interface Player implements CreatureObject {
 
 	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
 	void sendSystemMessage(const string file, const string str, StfParameter param);
+	
+	//Medic & Doctor System Messages
+	void sendBFMessage(CreatureObject target);
+	void sendHealMessage(CreatureObject target, int h, int a, int m);
 	
 	// setters
 	void setConversatingCreature(CreatureObject conversator);

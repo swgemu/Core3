@@ -42,49 +42,95 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef STIMPACKIMPLEMENTATION_H_
-#define STIMPACKIMPLEMENTATION_H_
+#ifndef ATTRIBUTE_H_
+#define ATTRIBUTE_H_
 
-#include "../../creature/CreatureObject.h"
+#include "engine/engine.h"
 
-#include "StimPack.h"
-
-class StimPackImplementation : public StimPackServant {
-protected:
-	float effectiveness;
-
+class Attribute {
 public:
-	StimPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	StimPackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	static const uint8 UNKNOWN = 0;
+	static const uint8 HEALTH = 1;
+	static const uint8 STRENGTH = 2;
+	static const uint8 CONSTITUTION = 3;
+	static const uint8 ACTION = 4;
+	static const uint8 QUICKNESS = 5;
+	static const uint8 STAMINA = 6;
+	static const uint8 MIND = 7;
+	static const uint8 FOCUS = 8;
+	static const uint8 WILLPOWER = 9;
 
-	//~EnhancePackImplementation();
-
-	void initialize();
-
-	int useObject(Player* player);
-
-	void updateCraftingValues(DraftSchematic* draftSchematic);
-
-	void generateAttributes(SceneObject* obj);
-
-	void parseItemAttributes();
-
-	void addAttributes(AttributeListMessage* alm);
-
-	inline int calculatePower(CreatureObject* creature) {
-		float modSkill = (float) creature->getSkillMod("healing_injury_treatment");
-		return (int) round((100.0f + modSkill) / 100.0f * getEffectiveness());
+	static bool isHAMAttribute(uint8 attribute) {
+		return (attribute == HEALTH || attribute == ACTION || attribute == MIND);
 	}
 
-	inline void setEffectiveness(float eff) {
-		effectiveness = eff;
-		string attr = "effectiveness";
-		itemAttributes->setFloatAttribute(attr, effectiveness);
+	static uint8 getAttribute(string attribute) {
+		String::toLower(attribute);
+
+		if (attribute == "health")
+			return HEALTH;
+		else if (attribute == "action")
+			return ACTION;
+		else if (attribute == "mind")
+			return MIND;
+		else if (attribute == "strength")
+			return STRENGTH;
+		else if (attribute == "constitution")
+			return CONSTITUTION;
+		else if (attribute == "quickness")
+			return QUICKNESS;
+		else if (attribute == "stamina")
+			return STAMINA;
+		else if (attribute == "focus")
+			return FOCUS;
+		else if (attribute == "willpower")
+			return WILLPOWER;
+		else
+			return UNKNOWN;
 	}
 
-	inline float getEffectiveness() {
-		return effectiveness;
+	static string getName(uint8 attribute, bool initialCap = false) {
+		string name = "";
+
+		switch (attribute) {
+		case HEALTH:
+			name = "health";
+			break;
+		case ACTION:
+			name = "action";
+			break;
+		case MIND:
+			name = "mind";
+			break;
+		case STRENGTH:
+			name = "strength";
+			break;
+		case CONSTITUTION:
+			name = "constitution";
+			break;
+		case QUICKNESS:
+			name = "quickness";
+			break;
+		case STAMINA:
+			name = "stamina";
+			break;
+		case FOCUS:
+			name = "focus";
+			break;
+		case WILLPOWER:
+			name = "willpower";
+			break;
+		default:
+			name = "unknown";
+			break;
+		}
+
+		if (initialCap)
+			name[0] = toupper(name[0]);
+
+		return name;
 	}
 };
 
-#endif /* STIMPACKIMPLEMENTATION_H_ */
+
+#endif /* ATTRIBUTE_H_ */

@@ -65,6 +65,8 @@ which carries forward this exception.
 #include "buffs/BuffList.h"
 #include "buffs/BuffObject.h"
 
+#include "Attribute.h"
+
 #include "../guild/Guild.h"
 
 #include "../../../chat/ChatManager.h"
@@ -254,15 +256,15 @@ protected:
 	uint32 focus;
 	uint32 willpower;
 
-	int healthMax;
-	int strengthMax;
-	int constitutionMax;
-	int actionMax;
-	int quicknessMax;
-	int staminaMax;
-	int mindMax;
-	int focusMax;
-	int willpowerMax;
+	uint32 healthMax;
+	uint32 strengthMax;
+	uint32 constitutionMax;
+	uint32 actionMax;
+	uint32 quicknessMax;
+	uint32 staminaMax;
+	uint32 mindMax;
+	uint32 focusMax;
+	uint32 willpowerMax;
 
 	uint32 healthEncumbrance;
 	uint32 actionEncumbrance;
@@ -1799,6 +1801,18 @@ public:
 		return willpowerWounds;
 	}
 
+	inline uint32 getHealthDamage() {
+		return healthMax - health;
+	}
+
+	inline uint32 getActionDamage() {
+		return actionMax - action;
+	}
+
+	inline uint32 getMindDamage() {
+		return mindMax - mind;
+	}
+
 	inline uint32 getShockWounds() {
 		return shockWounds;
 	}
@@ -1869,6 +1883,56 @@ public:
 
 	inline bool hasWounds() {
 		return (healthWounds > 0 || actionWounds > 0 || mindWounds > 0);
+	}
+
+	inline bool hasWound(uint8 attribute) {
+		switch (attribute) {
+		case Attribute::HEALTH:
+			return (getHealthWounds() > 0);
+		case Attribute::ACTION:
+			return (getActionWounds() > 0);
+		case Attribute::MIND:
+			return (getMindWounds() > 0);
+		case Attribute::STRENGTH:
+			return (getStrengthWounds() > 0);
+		case Attribute::CONSTITUTION:
+			return (getConstitutionWounds() > 0);
+		case Attribute::QUICKNESS:
+			return (getQuicknessWounds() > 0);
+		case Attribute::STAMINA:
+			return (getStaminaWounds() > 0);
+		case Attribute::FOCUS:
+			return (getFocusWounds() > 0);
+		case Attribute::WILLPOWER:
+			return (getWillpowerWounds() > 0);
+		default:
+			return false;
+		}
+	}
+
+	inline bool isRevivable() {
+		return (health > 0 && action > 0 && mind > 0);
+	}
+
+	inline bool isResurrectable() {
+		//TODO: check to see if resurrect timer has expired
+		return true;
+	}
+
+	inline bool hasHealthDamage() {
+		return (healthMax - health > 0);
+	}
+
+	inline bool hasActionDamage() {
+		return (actionMax - action > 0);
+	}
+
+	inline bool hasMindDamage() {
+		return (mindMax - mind > 0);
+	}
+
+	inline bool hasDamage() {
+		return (hasHealthDamage() || hasActionDamage() || hasMindDamage());
 	}
 
 	inline bool hasShockWounds() {
@@ -2497,9 +2561,13 @@ public:
 
 	void explode(int level = 1, bool destroy = true);
 
-	/*
-	 Clean up later
-	*/
+	// Medic & Doctor
+	int healDamage(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue = true);
+	int healWound(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue = true);
+	bool healState(CreatureObject* target, uint64 state);
+	bool revive(CreatureObject* target, bool forcedChange = false);
+	bool resurrect(CreatureObject* target);
+
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();
 
