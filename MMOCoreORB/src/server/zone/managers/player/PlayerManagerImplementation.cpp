@@ -359,6 +359,8 @@ bool PlayerManagerImplementation::validateName(const string& cname) {
 
 Player* PlayerManagerImplementation::load(uint64 charid) {
 	Player* player = new Player(charid);
+	player->initialize();
+
 	player->setZoneProcessServer(server);
 
 	loadFromDatabase(player);
@@ -430,9 +432,9 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	string hData;
 	hair.decode(hData);
 	player->setHairAppearance(hData);
-	
+
 	player->loadXp(character->getString(60));
-	
+
 	int raceID = character->getInt(7);
 
 	player->setRaceID(raceID);

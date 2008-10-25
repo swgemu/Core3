@@ -65,6 +65,8 @@ public:
 
 	Player(unsigned long long oid);
 
+	void initialize();
+
 	void create(ZoneClientSession* client);
 
 	void refuseCreate(ZoneClientSession* client);
@@ -222,6 +224,8 @@ public:
 	void activateClone();
 
 	void doRecovery();
+
+	void doDigest();
 
 	void activateReviveCountdown();
 
@@ -755,6 +759,8 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initialize();
+
 	void create(ZoneClientSession* client);
 
 	void refuseCreate(ZoneClientSession* client);
@@ -912,6 +918,8 @@ public:
 	void activateClone();
 
 	void doRecovery();
+
+	void doDigest();
 
 	void activateReviveCountdown();
 

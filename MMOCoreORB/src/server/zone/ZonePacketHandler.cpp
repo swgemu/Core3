@@ -76,7 +76,7 @@ ZonePacketHandler::ZonePacketHandler(const string& s, ZoneProcessServerImplement
 }
 
 void ZonePacketHandler::handleMessage(Message* pack) {
-	info("parsing " + pack->toString());
+	//info("parsing " + pack->toString());
 
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
@@ -355,6 +355,8 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
 
 	Player* player = new Player();
+	player->initialize();
+
 	player->setZoneProcessServer(processServer);
 
 	ClientCreateCharacter::parse(pack, player);

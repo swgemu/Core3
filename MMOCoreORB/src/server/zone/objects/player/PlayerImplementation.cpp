@@ -98,8 +98,6 @@ which carries forward this exception.
 #include "../../managers/skills/SkillManager.h"
 
 PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
-	init();
-
 	zoneID = 1;
 	//zoneID = 8;
 
@@ -107,8 +105,6 @@ PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 }
 
 PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = cid << 32) {
-	init();
-
 	characterID = cid;
 }
 
@@ -187,7 +183,7 @@ PlayerImplementation::~PlayerImplementation() {
 	info("undeploying player");
 }
 
-void PlayerImplementation::init() {
+void PlayerImplementation::initialize() {
 	objectType = PLAYER;
 
 	owner = NULL;
@@ -203,8 +199,8 @@ void PlayerImplementation::init() {
 
 	playerSaveStateEvent = NULL;
 
-	recoveryEvent = new PlayerRecoveryEvent(this);
-	digestEvent = new PlayerDigestEvent(this);
+	recoveryEvent = NULL;
+	digestEvent = NULL;
 
 	changeFactionEvent = NULL;
 
@@ -433,10 +429,7 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 		insertToZone(zone);
 
-		if (playerSaveStateEvent == NULL)
-			playerSaveStateEvent = new PlayerSaveStateEvent(_this);
-		else
-			playerSaveStateEvent->setPlayer(_this);
+		initializeEvents();
 
 		server->addEvent(playerSaveStateEvent, 300000);
 
@@ -501,10 +494,7 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 
 		setLoggingIn();
 
-		if (playerSaveStateEvent == NULL)
-			playerSaveStateEvent = new PlayerSaveStateEvent(_this);
-		else
-			playerSaveStateEvent->setPlayer(_this);
+		initializeEvents();
 
 		server->addEvent(playerSaveStateEvent, 300000);
 
@@ -558,41 +548,10 @@ void PlayerImplementation::unload() {
 
 	clearCombatState(); // remove the defenders
 
+	removeEvents();
+
 	PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 	playerManager->updateOtherFriendlists(_this, false);
-
-	/*
-	if (reviveCountdownEvent != NULL) {
-		if (reviveCountdownEvent->isQueued())
-			server->removeEvent(reviveCountdownEvent);
-
-		delete reviveCountdownEvent;
-		reviveCountdownEvent = NULL;
-	}*/
-
-	if (firstSampleEvent != NULL) {
-		if (firstSampleEvent->isQueued())
-			server->removeEvent(firstSampleEvent);
-
-		delete firstSampleEvent;
-		firstSampleEvent = NULL;
-	}
-
-	if (sampleEvent != NULL) {
-		if (sampleEvent->isQueued())
-			server->removeEvent(sampleEvent);
-
-		delete sampleEvent;
-		sampleEvent = NULL;
-	}
-
-	if (entertainerEvent != NULL) {
-		if (entertainerEvent->isQueued())
-			server->removeEvent(entertainerEvent);
-
-		delete entertainerEvent;
-		entertainerEvent = NULL;
-	}
 
 	// remove from group
 	if (group != NULL && zone != NULL) {
@@ -637,27 +596,6 @@ void PlayerImplementation::unload() {
 
 			if (isListening())
 				stopListen(listenID);
-
-			if (dizzyFallDownEvent != NULL && dizzyFallDownEvent->isQueued()) {
-				server->removeEvent(dizzyFallDownEvent);
-
-				delete dizzyFallDownEvent;
-				dizzyFallDownEvent = NULL;
-			}
-
-			/*if (reviveCountdownEvent != NULL && reviveCountdownEvent->isQueued()) {
-				server->removeEvent(reviveCountdownEvent);
-
-				delete reviveCountdownEvent;
-				reviveCountdownEvent = NULL;
-			}*/
-
-			if (changeFactionEvent != NULL) {
-				server->removeEvent(changeFactionEvent);
-				delete changeFactionEvent;
-
-				changeFactionEvent = NULL;
-			}
 
 			clearTarget();
 
@@ -820,6 +758,85 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 
 		clearDisconnectEvent();
 		unlock(doLock);
+	}
+}
+
+void PlayerImplementation::initializeEvents() {
+	if (playerSaveStateEvent == NULL)
+		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
+	else
+		playerSaveStateEvent->setPlayer(_this);
+
+	if (recoveryEvent == NULL)
+		recoveryEvent = new PlayerRecoveryEvent(_this);
+	else
+		recoveryEvent->setPlayer(_this);
+
+	if (digestEvent == NULL)
+		digestEvent = new PlayerDigestEvent(_this);
+	else
+		digestEvent->setPlayer(_this);
+
+	if (dizzyFallDownEvent == NULL)
+		dizzyFallDownEvent = new DizzyFallDownEvent(this);
+}
+
+void PlayerImplementation::removeEvents() {
+	/*
+	if (reviveCountdownEvent != NULL) {
+		if (reviveCountdownEvent->isQueued())
+			server->removeEvent(reviveCountdownEvent);
+
+		delete reviveCountdownEvent;
+		reviveCountdownEvent = NULL;
+	}*/
+
+	if (firstSampleEvent != NULL) {
+		if (firstSampleEvent->isQueued())
+			server->removeEvent(firstSampleEvent);
+
+		delete firstSampleEvent;
+		firstSampleEvent = NULL;
+	}
+
+	if (sampleEvent != NULL) {
+		if (sampleEvent->isQueued())
+			server->removeEvent(sampleEvent);
+
+		delete sampleEvent;
+		sampleEvent = NULL;
+	}
+
+	if (entertainerEvent != NULL) {
+		if (entertainerEvent->isQueued())
+			server->removeEvent(entertainerEvent);
+
+		delete entertainerEvent;
+		entertainerEvent = NULL;
+	}
+
+	if (isInQuadTree()) {
+		if (dizzyFallDownEvent != NULL ) {
+			if (dizzyFallDownEvent->isQueued())
+				server->removeEvent(dizzyFallDownEvent);
+
+			delete dizzyFallDownEvent;
+			dizzyFallDownEvent = NULL;
+		}
+
+		/*if (reviveCountdownEvent != NULL && reviveCountdownEvent->isQueued()) {
+			server->removeEvent(reviveCountdownEvent);
+
+			delete reviveCountdownEvent;
+			reviveCountdownEvent = NULL;
+		}*/
+
+		if (changeFactionEvent != NULL) {
+			server->removeEvent(changeFactionEvent);
+
+			delete changeFactionEvent;
+			changeFactionEvent = NULL;
+		}
 	}
 }
 

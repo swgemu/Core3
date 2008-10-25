@@ -93,6 +93,8 @@ interface Player implements CreatureObject {
 		super(oid);
 	}
 
+	void initialize();
+
 	void create(ZoneClientSession client);
 
 	void refuseCreate(ZoneClientSession client);
@@ -210,6 +212,8 @@ interface Player implements CreatureObject {
 	void activateClone();
 
 	void doRecovery();
+
+	void doDigest();
 
 	void activateReviveCountdown();
 	void clearReviveCountdown();

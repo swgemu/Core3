@@ -446,7 +446,7 @@ void BazaarManagerImplementation::checkAuctions() {
 					del1 << "DELETE from `bazaar_items` WHERE objectid = " << objectId << ";";
 
 					stringstream del2;
-					del2 << "DELETE from `character_items` WHERE objectid = " << objectId << ";";
+					del2 << "DELETE from `character_items` WHERE item_id = " << objectId << ";";
 
 					try {
 						ServerDatabase::instance()->executeStatement(del1);
