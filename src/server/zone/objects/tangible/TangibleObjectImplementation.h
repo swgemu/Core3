@@ -98,7 +98,7 @@ protected:
 	uint16 playerUseMask;
 
 	ItemAttributes* itemAttributes;
-	
+
 	string misoAsocKey; //Mission association key
 
 	string craftersName;
@@ -241,6 +241,7 @@ public:
 	static const int PETDEED = 0x800003;
 	static const int DROIDDEED = 0x800004;
 	static const int VEHICLEDEED = 0x800005;
+	static const int RESOURCEDEED = 0x800006;
 
 	static const int CLOTHING = 0x1000000;
 	static const int BANDOLIER = 0x1000001;
@@ -496,11 +497,11 @@ public:
 	inline int getObjectSubType() {
 		return objectSubType;
 	}
-	
+
 	inline string& getMisoAsocKey() {
 		return misoAsocKey;
 	}
-	
+
 	inline void setMisoAsocKey(const string& tma) {
 		misoAsocKey = tma;
 	}
