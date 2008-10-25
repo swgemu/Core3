@@ -4739,3 +4739,10 @@ bool CreatureObjectImplementation::hatesFaction(uint faction) {
 
 	return false;
 }
+
+bool CreatureObjectImplementation::isAttackable() {
+		if (isNonPlayerCreature() && ((Creature *) _this)->isMount())
+			return !((MountCreature *) _this)->isDisabled();
+		else
+			return !isIncapacitated() && !isDead();
+}

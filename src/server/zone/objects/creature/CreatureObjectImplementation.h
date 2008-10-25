@@ -619,9 +619,7 @@ public:
 	bool isLootOwner(CreatureObject* creature);
 	CreatureObject* getLootOwner();
 
-	virtual bool isAttackable() {
-		return !isIncapacitated() && !isDead();
-	}
+	virtual bool isAttackable();
 
 	virtual void handleDeath() {
 		setPosture(DEAD_POSTURE);

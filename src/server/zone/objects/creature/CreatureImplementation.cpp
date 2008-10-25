@@ -1045,6 +1045,13 @@ bool CreatureImplementation::shouldAgro(SceneObject * target) {
 			return true;
 	}
 
+	if (target->isNonPlayerCreature()) {
+		Creature * npc = (Creature *) target;
+
+		if (npc->isMount() && this->isAgressive())
+			return true;
+	}
+
 	if (this->hatesFaction(creature->getFaction()))
 		return true;
 
@@ -1519,6 +1526,12 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		return false;
 	}
 
+	if (target->isNonPlayerCreature() && ((Creature *)target)->isMount() && ((MountCreature *) target)->isDisabled()) {
+		deagro();
+
+		return false;
+	}
+
 	lastCombatAction.update();
 
 	float delay = skill->getSpeedRatio();
@@ -1546,8 +1559,10 @@ void CreatureImplementation::deagro() {
 				&& aggroedCreature->isPlayer()) {
 
 			aggroedCreature->handleDeath();
-			removeFromDamageMap(aggroedCreature);
 		}
+
+		if (aggroedCreature->isDead())
+			removeFromDamageMap(aggroedCreature);
 
 		removeDefender(aggroedCreature);
 
