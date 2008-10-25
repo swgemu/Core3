@@ -312,7 +312,7 @@ public:
 
 	virtual ~PlayerImplementation();
 
-	void init();
+	void initialize();
 
 	void create(ZoneClientSession* client);
 
@@ -328,6 +328,9 @@ public:
 	void userLogout(int msgCounter = 3);
 
 	void disconnect(bool closeClient = true, bool doLock = true);
+
+	void initializeEvents();
+	void removeEvents();
 
 	void clearLogoutEvent() {
 		logoutEvent = NULL;
