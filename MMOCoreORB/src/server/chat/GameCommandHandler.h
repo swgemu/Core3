@@ -175,7 +175,7 @@ private:
 	static void getCords(StringTokenizer tokenizer, Player * player);
 	static void giveItemTemp(StringTokenizer tokenizer, Player * player);
 	static void clientEffect(StringTokenizer tokenizer, Player * player);
-	static void revive(StringTokenizer tokenizer, Player * player);
+	static void rez(StringTokenizer tokenizer, Player * player);
 	static void immune(StringTokenizer tokenizer, Player * player);
 	static void reloadSchematics(StringTokenizer tokenizer, Player * player);
 	static void spawn(StringTokenizer tokenizer, Player * player);

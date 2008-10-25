@@ -4632,10 +4632,195 @@ void CreatureObjectImplementation::explode(int level, bool destroy) {
 }
 
 
-/*
- Clean up later
-*/
+//Medic & Doctor
+int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue) {
+	if (!Attribute::isHAMAttribute(attribute))
+		return 0;
 
+	if (!target->hasDamage())
+		return 0;
+
+	int healableDamage = 0;
+
+	switch (attribute) {
+	case Attribute::HEALTH:
+		healableDamage = (damage > target->getHealthDamage()) ? target->getHealthDamage() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (!target->changeHealthBar(healableDamage))
+			healableDamage = 0;
+
+		break;
+	case Attribute::ACTION:
+		healableDamage = (damage > target->getActionDamage()) ? target->getActionDamage() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (!target->changeActionBar(healableDamage))
+			return healableDamage = 0;
+
+		break;
+	case Attribute::MIND:
+		healableDamage = (damage > target->getMindDamage()) ? target->getMindDamage() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (!target->changeMindBar(healableDamage))
+			return healableDamage = 0;
+
+		break;
+	}
+
+	revive(target);
+
+	return healableDamage;
+}
+
+int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue) {
+	if (!target->hasWounds())
+		return 0;
+
+	int healableDamage = 0;
+
+	switch (attribute) {
+	case Attribute::HEALTH:
+		healableDamage = (damage > target->getHealthWounds()) ? target->getHealthWounds() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (target->changeHealthWoundsBar(-healableDamage))
+			return healableDamage;
+
+		break;
+	case Attribute::ACTION:
+		healableDamage = (damage > target->getActionWounds()) ? target->getActionWounds() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (target->changeActionWoundsBar(-healableDamage))
+			return healableDamage;
+
+		break;
+	case Attribute::MIND:
+		healableDamage = (damage > target->getMindWounds()) ? target->getMindWounds() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (target->changeMindWoundsBar(-healableDamage))
+			return healableDamage;
+
+		break;
+	case Attribute::STRENGTH:
+		healableDamage = (damage > target->getStrengthWounds()) ? target->getStrengthWounds() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (target->changeStrengthWoundsBar(-healableDamage))
+			return healableDamage;
+
+		break;
+	case Attribute::CONSTITUTION:
+		healableDamage = (damage > target->getConstitutionWounds()) ? target->getConstitutionWounds() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (target->changeConstitutionWoundsBar(-healableDamage))
+			return healableDamage;
+
+		break;
+	case Attribute::QUICKNESS:
+		healableDamage = (damage > target->getQuicknessWounds()) ? target->getQuicknessWounds() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (target->changeQuicknessWoundsBar(-healableDamage))
+			return healableDamage;
+
+		break;
+	case Attribute::STAMINA:
+		healableDamage = (damage > target->getStaminaWounds()) ? target->getStaminaWounds() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (target->changeStaminaWoundsBar(-healableDamage))
+			return healableDamage;
+
+		break;
+	case Attribute::FOCUS:
+		healableDamage = (damage > target->getFocusWounds()) ? target->getFocusWounds() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (target->changeFocusWoundsBar(-healableDamage))
+			return healableDamage;
+
+		break;
+	case Attribute::WILLPOWER:
+		healableDamage = (damage > target->getWillpowerWounds()) ? target->getWillpowerWounds() : damage;
+
+		if (doBattleFatigue)
+			healableDamage -= (int)round((float)healableDamage * target->calculateBFRatio());
+
+		if (target->changeWillpowerWoundsBar(-healableDamage))
+			return healableDamage;
+
+		break;
+	}
+
+	return 0;
+}
+
+bool CreatureObjectImplementation::healState(CreatureObject* target, uint64 state) {
+	if (!target->hasState(state))
+		return false;
+
+	if (target->clearState(state)) {
+		target->updateStates();
+		return true;
+	}
+
+	return false;
+}
+
+bool CreatureObjectImplementation::revive(CreatureObject* target, bool forcedChange) {
+	//This method is used to bring a player out of Incapacitation
+	if (!target->isIncapacitated())
+		return false;
+
+	if (!target->isRevivable() && !forcedChange)
+		return false;
+
+	if (target->isPlayer())
+		((Player*)target)->changePosture(UPRIGHT_POSTURE);
+	else
+		target->setPosture(UPRIGHT_POSTURE, (forcedChange ? true : false));
+
+	return true;
+}
+
+bool CreatureObjectImplementation::resurrect(CreatureObject* target) {
+	if (!target->isDead())
+		return false;
+
+	if (!target->isResurrectable())
+		return false;
+
+	//TODO: Resurrect player or creature.
+
+	return true;
+}
 
 void CreatureObjectImplementation::deactivateWoundTreatment() {
 	float modSkill = (float)getSkillMod("healing_wound_speed");

@@ -249,10 +249,10 @@ void GameCommandHandler::init() {
 			"Plays a client effect animation around your character.",
 			"Usage: @clientEffect <effect>",
 			&clientEffect);
-	gmCommands->addCommand("revive", PRIVILEGED | LEADQA,
-			"Revives a player.",
-			"Usage: @revive <player>",
-			&revive);
+	gmCommands->addCommand("rez", PRIVILEGED | LEADQA,
+			"Resurrects a player.",
+			"Usage: @rez <player>",
+			&rez);
 	gmCommands->addCommand("immune", CSREVENTS | LEADQA,
 			"Toggles immunity.",
 			"Usage: @immune",
@@ -1936,7 +1936,7 @@ void GameCommandHandler::clientEffect(StringTokenizer tokenizer, Player * player
 }
 
 
-void GameCommandHandler::revive(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::rez(StringTokenizer tokenizer, Player * player) {
 	string name;
 	Player* targetPlayer;
 
@@ -1966,10 +1966,10 @@ void GameCommandHandler::revive(StringTokenizer tokenizer, Player * player) {
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
 
-		targetPlayer->revive();
+		targetPlayer->resurrect();
 
-		targetPlayer->sendSystemMessage("Your character has been revived by \'" + player->getFirstName() + "\'.");
-		player->sendSystemMessage("You revived the character \'" + name + "\'.");
+		targetPlayer->sendSystemMessage("Your character has been resuscitated by \'" + player->getFirstName() + "\'.");
+		player->sendSystemMessage("You resuscitate the character \'" + name + "\'.");
 
 		if (targetPlayer != player)
 			targetPlayer->unlock();

@@ -1629,6 +1629,74 @@ void PlayerImplementation::sendSystemMessage(unicode& message) {
 	sendMessage(smsg);
 }
 
+void PlayerImplementation::sendBFMessage(CreatureObject* target) {
+	uint32 battleFatigue = target->getShockWounds();
+
+	string targetName = target->getCharacterName().c_str();
+
+	stringstream msgPlayer, msgTarget;
+
+	if (battleFatigue < 250) {
+		return;
+	} else if (battleFatigue < 500) {
+		msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
+		msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine.";
+	} else if (battleFatigue < 750) {
+		msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
+		msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
+	} else if (battleFatigue < 1000) {
+		msgPlayer << targetName << "'s battle fatgiue is greatly reducing the effectiveness of the medicine.";
+		msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
+	} else {
+		msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
+		msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
+	}
+
+	target->sendSystemMessage(msgTarget.str());
+	if (_this != target)
+		sendSystemMessage(msgPlayer.str());
+}
+
+void PlayerImplementation::sendHealMessage(CreatureObject* target, int h, int a, int m) {
+	//TODO: Revisit this once Stf Concatenation is figured out.
+
+	/*
+	StfParameter* stfp = new StfParameter();
+	string msgPlayer, msgTarget;
+
+	if (h > 0 && a > 0 && m > 0 ) {
+		msgPlayer = "";
+		msgTarget = "";
+	} else if (h > 0 && a > 0) {
+		msgPlayer = "";
+		msgTarget = "";
+	} else if (h > 0 && m > 0) {
+		msgPlayer = "";
+		msgTarget = "";
+	} else if (a > 0 && m > 0) {
+		msgPlayer = "";
+		msgTarget = "";
+	} else if (h > 0) {
+		msgPlayer = "";
+		msgTarget = "";
+	} else if (a > 0) {
+		msgPlayer = "";
+		msgTarget = "";
+	} else if (m > 0) {
+		msgPlayer = "";
+		msgTarget = "";
+	} else {
+		return;
+	}
+
+	target->sendSystemMessage("healing_response", msgTarget.str());
+	if (_this != target)
+		sendSystemMessage("healing_response", msgPlayer.str(), stfp);
+	*/
+
+	return;
+}
+
 void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, uint32 actionCntr) {
 	//TODO: Refactor this part later somehow?
 	if (!isPlayer())
@@ -2035,7 +2103,7 @@ void PlayerImplementation::doRecovery() {
 }
 
 
-void PlayerImplementation::revive() {
+void PlayerImplementation::resurrect() {
 	uint32 boxID = getSuiBoxFromType(0xC103); //Activate Clone SuiBox
 
 	if (hasSuiBox(boxID)) {

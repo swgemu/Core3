@@ -505,7 +505,21 @@ public:
 
 	bool hasState(unsigned long long state);
 
+	bool isRevivable();
+
+	bool isResurrectable();
+
+	bool hasHealthDamage();
+
+	bool hasActionDamage();
+
+	bool hasMindDamage();
+
+	bool hasDamage();
+
 	bool hasWounds();
+
+	bool hasWound(unsigned char attribute);
 
 	bool hasShockWounds();
 
@@ -640,6 +654,12 @@ public:
 	unsigned int getFocusWounds();
 
 	unsigned int getWillpowerWounds();
+
+	unsigned int getHealthDamage();
+
+	unsigned int getActionDamage();
+
+	unsigned int getMindDamage();
 
 	unsigned int getShockWounds();
 
@@ -994,6 +1014,16 @@ public:
 	BuffObject* getBuffObject(const unsigned int buffCRC);
 
 	bool hasBuff(const unsigned int buffCRC);
+
+	int healDamage(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue = true);
+
+	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue = true);
+
+	bool healState(CreatureObject* target, unsigned long long state);
+
+	bool revive(CreatureObject* target, bool forcedChange = false);
+
+	bool resurrect(CreatureObject* target);
 
 	void deactivateWoundTreatment();
 
@@ -1578,7 +1608,21 @@ public:
 
 	bool hasState(unsigned long long state);
 
+	bool isRevivable();
+
+	bool isResurrectable();
+
+	bool hasHealthDamage();
+
+	bool hasActionDamage();
+
+	bool hasMindDamage();
+
+	bool hasDamage();
+
 	bool hasWounds();
+
+	bool hasWound(unsigned char attribute);
 
 	bool hasShockWounds();
 
@@ -1713,6 +1757,12 @@ public:
 	unsigned int getFocusWounds();
 
 	unsigned int getWillpowerWounds();
+
+	unsigned int getHealthDamage();
+
+	unsigned int getActionDamage();
+
+	unsigned int getMindDamage();
 
 	unsigned int getShockWounds();
 
@@ -2067,6 +2117,16 @@ public:
 	BuffObject* getBuffObject(const unsigned int buffCRC);
 
 	bool hasBuff(const unsigned int buffCRC);
+
+	int healDamage(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue);
+
+	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue);
+
+	bool healState(CreatureObject* target, unsigned long long state);
+
+	bool revive(CreatureObject* target, bool forcedChange);
+
+	bool resurrect(CreatureObject* target);
 
 	void deactivateWoundTreatment();
 

@@ -49,12 +49,25 @@ void WoundPack::generateAttributes(SceneObject* obj) {
 		((WoundPackImplementation*) _impl)->generateAttributes(obj);
 }
 
-void WoundPack::setEffectiveness(float eff) {
+int WoundPack::calculatePower(CreatureObject* creature) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addObjectParameter(creature);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WoundPackImplementation*) _impl)->calculatePower(creature);
+}
+
+void WoundPack::setEffectiveness(float eff) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addFloatParameter(eff);
 
 		method.executeWithVoidReturn();
@@ -67,7 +80,7 @@ void WoundPack::setPoolAffected(int pool) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(pool);
 
 		method.executeWithVoidReturn();
@@ -80,7 +93,7 @@ float WoundPack::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -92,7 +105,7 @@ int WoundPack::getPoolAffected() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -114,15 +127,18 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		setEffectiveness(inv->getFloatParameter());
+		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 8:
-		setPoolAffected(inv->getSignedIntParameter());
+		setEffectiveness(inv->getFloatParameter());
 		break;
 	case 9:
-		resp->insertFloat(getEffectiveness());
+		setPoolAffected(inv->getSignedIntParameter());
 		break;
 	case 10:
+		resp->insertFloat(getEffectiveness());
+		break;
+	case 11:
 		resp->insertSignedInt(getPoolAffected());
 		break;
 	default:
@@ -134,6 +150,10 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void WoundPackAdapter::generateAttributes(SceneObject* obj) {
 	return ((WoundPackImplementation*) impl)->generateAttributes(obj);
+}
+
+int WoundPackAdapter::calculatePower(CreatureObject* creature) {
+	return ((WoundPackImplementation*) impl)->calculatePower(creature);
 }
 
 void WoundPackAdapter::setEffectiveness(float eff) {

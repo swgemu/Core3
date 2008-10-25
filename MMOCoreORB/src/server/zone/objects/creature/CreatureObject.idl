@@ -419,7 +419,16 @@ interface CreatureObject implements SceneObject {
 	boolean hasStates();
 	boolean hasState(unsigned long state);
 
+	boolean isRevivable();
+	boolean isResurrectable();
+
+	boolean hasHealthDamage();
+	boolean hasActionDamage();
+	boolean hasMindDamage();
+	boolean hasDamage();
+
 	boolean hasWounds();
+	boolean hasWound(unsigned char attribute);
 	boolean hasShockWounds();
 
 	boolean isAttackable();
@@ -508,6 +517,10 @@ interface CreatureObject implements SceneObject {
 	unsigned int getMindWounds();
 	unsigned int getFocusWounds();
 	unsigned int getWillpowerWounds();
+	
+	unsigned int getHealthDamage();
+	unsigned int getActionDamage();
+	unsigned int getMindDamage();
 
 	unsigned int getShockWounds();
 
@@ -750,9 +763,13 @@ interface CreatureObject implements SceneObject {
 
 	boolean hasBuff(const unsigned int buffCRC);
 
-	/*
-	 Clean up later
-	*/
+	// Medic & Doctor
+	int healDamage(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
+	int healWound(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
+	boolean healState(CreatureObject target, unsigned long state);
+	boolean revive(CreatureObject target, boolean forcedChange = false);
+	boolean resurrect(CreatureObject target);
+	
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();
 

@@ -20,6 +20,8 @@ interface StimPack implements Pharmaceutical {
 	
 	void generateAttributes(SceneObject obj);
 	
+	int calculatePower(CreatureObject creature);
+	
 	void setEffectiveness(float eff);
 	float getEffectiveness();
 }

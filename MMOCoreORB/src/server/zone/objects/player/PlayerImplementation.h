@@ -484,6 +484,10 @@ public:
 	void sendSystemMessage(const string& file, const string& str, StfParameter * param);
 	void sendSystemMessage(unicode& message);
 
+	//Medic & Doctor System Messages
+	void sendBFMessage(CreatureObject* target);
+	void sendHealMessage(CreatureObject* target, int h, int a, int m);
+
 	//item methods
 	void addDatapadItem(SceneObject* item);
 	SceneObject* getDatapadItem(uint64 oid);
@@ -684,7 +688,7 @@ public:
 
 	void kill();
 	void deathblow(Player* player);
-	void revive();
+	void resurrect();
 
 	void activateClone();
 	void doClone();
@@ -1211,10 +1215,6 @@ public:
 
 	inline GroupObject* getGroupObject() {
 		return group;
-	}
-
-	inline bool isRevivable() {
-		return !reviveTimeout.isPast();
 	}
 
 	inline bool isOnline() {

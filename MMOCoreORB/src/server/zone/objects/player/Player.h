@@ -213,7 +213,7 @@ public:
 
 	void deathblow(Player* player);
 
-	void revive();
+	void resurrect();
 
 	void handleDeath();
 
@@ -240,8 +240,6 @@ public:
 	string& getConsentEntry(int index);
 
 	void sendConsentBox();
-
-	bool isRevivable();
 
 	void addBuff(unsigned int buffcrc, float time);
 
@@ -380,6 +378,10 @@ public:
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
 
 	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
+
+	void sendBFMessage(CreatureObject* target);
+
+	void sendHealMessage(CreatureObject* target, int h, int a, int m);
 
 	void setConversatingCreature(CreatureObject* conversator);
 
@@ -901,7 +903,7 @@ public:
 
 	void deathblow(Player* player);
 
-	void revive();
+	void resurrect();
 
 	void handleDeath();
 
@@ -928,8 +930,6 @@ public:
 	string& getConsentEntry(int index);
 
 	void sendConsentBox();
-
-	bool isRevivable();
 
 	void addBuff(unsigned int buffcrc, float time);
 
@@ -1068,6 +1068,10 @@ public:
 	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
 
 	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
+
+	void sendBFMessage(CreatureObject* target);
+
+	void sendHealMessage(CreatureObject* target, int h, int a, int m);
 
 	void setConversatingCreature(CreatureObject* conversator);
 
