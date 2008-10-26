@@ -43,7 +43,8 @@
 rebelCommando = Creature:new {
       objectName = "rebelCommando",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Rebel",
+      faction = "rebel", 
+	  factionPoints = 20,
       gender = "",
 
       name = "Crackdown Rebel Commando",

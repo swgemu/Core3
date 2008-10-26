@@ -52,6 +52,7 @@ Creature = Object:new {
 	planet = 0,
 	
 	faction = "",
+	factionPoints = 0,
 	gender = "",
 	boneType = "",
 	hideType = "",

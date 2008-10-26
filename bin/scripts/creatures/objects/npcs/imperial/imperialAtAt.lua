@@ -43,7 +43,8 @@
 imperialAtAt = Creature:new {
 	objectName = "imperialAtAt", -- name of the lua Object
 	creatureType = "NPC",
-    faction = "imperial",
+    faction = "imperial", 
+	  factionPoints = 20,
     gender = "",
 	
 	stfName = "an AT-AT",

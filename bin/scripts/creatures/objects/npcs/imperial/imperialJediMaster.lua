@@ -43,7 +43,8 @@
 imperialJediMaster = Creature:new {
       objectName = "imperialJediMaster",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "imperial",
+      faction = "imperial", 
+	  factionPoints = 20,
       gender = "",
 
       stfName = "Jedi Master",

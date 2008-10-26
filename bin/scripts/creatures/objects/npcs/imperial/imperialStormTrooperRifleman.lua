@@ -43,7 +43,8 @@
 stormtrooperRifleman = Creature:new {
       objectName = "stormtrooperRifleman",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "imperial",
+      faction = "imperial", 
+	  factionPoints = 20,
       gender = "",
 
       name = "Crackdown Stormtrooper Rifleman",
