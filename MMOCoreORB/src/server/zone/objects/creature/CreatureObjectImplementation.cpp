@@ -4779,7 +4779,7 @@ int CreatureObjectImplementation::healEnhance(CreatureObject* target, int amount
 	Buff* buff = new Buff(BuffCRC::TEST_FIRST);
 
 	if (doBattleFatigue)
-		amount -= amount * target->calculateBFRatio();
+		amount -= (int) round((float)amount * target->calculateBFRatio());
 
 	switch (attribute) {
 	case CreatureAttribute::HEALTH:
@@ -4819,6 +4819,45 @@ int CreatureObjectImplementation::healEnhance(CreatureObject* target, int amount
 	return amount;
 }
 
+bool CreatureObjectImplementation::curePoison(CreatureObject* target, float effectiveness) {
+	//TODO: Add in effectiveness once DoT's are restructured
+	if (!target->isPoisoned())
+		return false;
+
+	if (target->clearState(CreatureState::POISONED)) {
+		target->updateStates();
+		return true;
+	}
+
+	return false;
+}
+
+bool CreatureObjectImplementation::cureDisease(CreatureObject* target, float effectiveness) {
+	//TODO: Add in effectiveness once DoT's are restructured
+	if (!target->isDiseased())
+		return false;
+
+	if (target->clearState(CreatureState::DISEASED)) {
+		target->updateStates();
+		return true;
+	}
+
+	return false;
+}
+
+bool CreatureObjectImplementation::extinguishFire(CreatureObject* target, float effectiveness) {
+	//TODO: Add in effectiveness once DoT's are restructured
+	if (!target->isOnFire())
+		return false;
+
+	if (target->clearState(CreatureState::ONFIRE)) {
+		target->updateStates();
+		return true;
+	}
+
+	return false;
+}
+
 bool CreatureObjectImplementation::healState(CreatureObject* target, uint64 state) {
 	if (!target->hasState(state))
 		return false;
@@ -4854,7 +4893,7 @@ bool CreatureObjectImplementation::resurrect(CreatureObject* target) {
 	if (!target->isResurrectable())
 		return false;
 
-	//TODO: Resurrect player or creature.
+	revive(target, true);
 
 	return true;
 }

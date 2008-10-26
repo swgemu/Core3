@@ -73,59 +73,89 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	RevivePack* findMedpack(CreatureObject* creature, const string& modifier) {
-		RevivePack* revivePack = NULL;
+	bool canPerformSkill(CreatureObject* creature, Player* playerTarget, RevivePack* revivePack) {
+		if (!playerTarget->isDead()) {
+			creature->sendSystemMessage("healing_response", "healing_response_a4"); //Your target does not require resuscitation!
+			return 0;
+		}
+
+		if (revivePack == NULL) {
+			creature->sendSystemMessage("healing_response", "cannot_resuscitate_kit"); //You cannot resuscitate someone without a resuscitation kit!
+			return false;
+		}
+
+		if (!playerTarget->isResurrectable()) {
+			creature->sendSystemMessage("healing_response", "too_dead_to_resuscitate"); //Your target has been dead too long. There is no hope of resuscitation.
+			return false;
+		}
+
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You cannot do that while Meditating.");
+			return false;
+		}
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+			return false;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return false;
+		}
+
+		if (playerTarget->isOvert() && playerTarget->getFaction() != creature->getFaction()) {
+			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+			return false;
+		}
+
+		if (!creature->isInGroupWith((CreatureObject*) playerTarget) && !playerTarget->hasConsent(((Player*)creature)->getFirstName())) {
+			creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
+			return false;
+		}
+
+		if (creature->getMind() < abs(mindCost)) {
+			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			return false;
+		}
+
+		return true;
+	}
+
+	void parseModifier(const string& modifier, uint64& objectId) {
+		if (!modifier.empty())
+			objectId = atoll(modifier.c_str());
+		else
+			objectId = 0;
+	}
+
+	RevivePack* findRevivePack(CreatureObject* creature) {
+		Inventory* inventory = creature->getInventory();
 		int medicineUse = creature->getSkillMod("healing_ability");
 
-		if (!modifier.empty()) {
-			StringTokenizer tokenizer(modifier);
-			uint64 objectid = 0;
+		if (inventory != NULL) {
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
-			if (tokenizer.hasMoreTokens())
-				objectid = tokenizer.getLongToken();
+				if (item->isPharmaceutical()) {
+					Pharmaceutical* pharma = (Pharmaceutical*) item;
 
-			if (objectid > 0) {
-				revivePack = (RevivePack*) creature->getInventoryItem(objectid);
+					if (pharma->isRevivePack()) {
+						RevivePack* revivePack = (RevivePack*) pharma;
 
-				if (revivePack != NULL && revivePack->isRevivePack() && revivePack->getMedicineUseRequired() <= medicineUse) {
-					return revivePack;
+						if (revivePack->getMedicineUseRequired() <= medicineUse)
+							return revivePack;
+					}
 				}
 			}
 		}
 
-		Inventory* inventory = creature->getInventory();
-
-		for (int i=0; i<inventory->objectsSize(); i++) {
-			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-			if (item != NULL && item->isPharmaceutical()) {
-				revivePack = (RevivePack*) item;
-
-				if (revivePack->isRevivePack() && revivePack->getMedicineUseRequired() <= medicineUse)
-					return revivePack;
-			}
-		}
-
-		return NULL; //Never found a revivePack
+		return NULL;
 	}
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
-		Player* playerTarget;
-		RevivePack* revivePack = NULL;
-
-		int healthWoundHealed = 0;
-		int healthHealed = 0;
-		int actionWoundHealed = 0;
-		int actionHealed = 0;
-		int mindWoundHealed = 0;
-		int mindHealed = 0;
-
-		int battleFatigue = 0;
-
-		revivePack = findMedpack(creature, modifier);
-
-		if (revivePack == NULL) {
-			creature->sendSystemMessage("healing_response", "cannot_resuscitate_kit"); //You cannot resuscitate someone without a resuscitation kit!
+		if (!target->isPlayer()) {
+			creature->sendSystemMessage("healing_response", "healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
 			return 0;
 		}
 
@@ -134,128 +164,54 @@ public:
 			return 0;
 		}
 
-		if (!target->isPlayer()) {
-			creature->sendSystemMessage("healing_response", "healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
+		uint64 objectId = 0;
+
+		parseModifier(modifier, objectId);
+
+		RevivePack* revivePack = (RevivePack*) creature->getInventoryItem(objectId);
+
+		if (revivePack == NULL)
+			revivePack = findRevivePack(creature);
+
+		Player* playerTarget = (Player*) target;
+
+		if (!canPerformSkill(creature, playerTarget, revivePack))
 			return 0;
-		}
 
-		playerTarget = (Player*) target;
+		int healedHealth = creature->healDamage((CreatureObject*) playerTarget, (int) round(revivePack->getHealthHealed()), CreatureAttribute::HEALTH);
+		int healedAction = creature->healDamage((CreatureObject*) playerTarget, (int) round(revivePack->getActionHealed()), CreatureAttribute::ACTION);
+		int healedMind = creature->healDamage((CreatureObject*) playerTarget, (int) round(revivePack->getMindHealed()), CreatureAttribute::MIND);
 
-		if (!playerTarget->isDead()) {
-			creature->sendSystemMessage("healing_response", "healing_response_a4"); //Your target does not require resuscitation!
+		int healedHealthWounds = creature->healWound((CreatureObject*) playerTarget, (int) round(revivePack->getHealthWoundHealed()), CreatureAttribute::HEALTH);
+		int healedActionWounds = creature->healWound((CreatureObject*) playerTarget, (int) round(revivePack->getActionWoundHealed()), CreatureAttribute::ACTION);
+		int healedMindWounds = creature->healWound((CreatureObject*) playerTarget, (int) round(revivePack->getMindWoundHealed()), CreatureAttribute::MIND);
+
+		((Player*)creature)->sendBattleFatigueMessage((CreatureObject*) playerTarget);
+
+		if (!creature->resurrect((CreatureObject*) playerTarget))
 			return 0;
-		}
 
-		/*
-		if (!playerTarget->isRevivable()) {
-			creature->sendSystemMessage("healing_response", "too_dead_to_resuscitate"); //Your target has been dead too long. There is no hope of resuscitation.
-			return 0;
-		}*/
+		stringstream msgPlayer, msgTarget;
+		msgPlayer << "You resuscitate " << playerTarget->getCharacterName().c_str() << ".";
+		msgTarget << creature->getCharacterName().c_str() << " resuscitates you.";
 
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You can not Heal Enhance while meditating.");
-			return 0;
-		}
+		creature->sendSystemMessage(msgPlayer.str());
+		playerTarget->sendSystemMessage(msgTarget.str());
 
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return 0;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return 0;
-		}
-
-		if (playerTarget->isOvert() && playerTarget->getFaction() != creature->getFaction()) {
-			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
-			return 0;
-		}
-
-		if (!(creature->isInAGroup() && creature->getGroupID() == playerTarget->getGroupID()) && !playerTarget->hasConsent(((Player*)creature)->getFirstName())) {
-			creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
-			return 0;
-		}
-
-		if (creature->getMind() < abs(mindCost)) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
-			return 0;
-		}
-
-		battleFatigue = playerTarget->getShockWounds();
-
-		calculateWound(creature, revivePack->getHealthWoundHealed(), battleFatigue, healthWoundHealed);
-		calculateHeal(creature, revivePack->getHealthHealed(), battleFatigue, healthHealed);
-		calculateWound(creature, revivePack->getActionWoundHealed(), battleFatigue, actionWoundHealed);
-		calculateHeal(creature, revivePack->getActionHealed(), battleFatigue, actionHealed);
-		calculateWound(creature, revivePack->getMindWoundHealed(), battleFatigue, mindWoundHealed);
-		calculateHeal(creature, revivePack->getMindHealed(), battleFatigue, mindHealed);
-
-		sendBFMessage(creature, playerTarget, battleFatigue);
-
-		if (healthWoundHealed > 0)
-			playerTarget->changeHealthWoundsBar(-healthWoundHealed);
-		if (healthHealed > 0)
-			playerTarget->changeHealthBar(healthHealed);
-
-		if (actionWoundHealed > 0)
-			playerTarget->changeActionWoundsBar(-actionWoundHealed);
-		if (actionHealed > 0)
-			playerTarget->changeActionBar(actionHealed);
-
-		if (mindWoundHealed > 0)
-			playerTarget->changeMindWoundsBar(-mindWoundHealed);
-		if (mindHealed > 0)
-			playerTarget->changeMindBar(mindHealed);
-
-		stringstream playerMsg, targetMsg;
-		playerMsg << "You resuscitate " << playerTarget->getFirstNameProper() << ".";
-		((Player*)creature)->sendSystemMessage(playerMsg.str());
-		targetMsg << ((Player*)creature)->getFirstNameProper() << " resuscitates you.";
-		playerTarget->sendSystemMessage(targetMsg.str());
-
-		sendHealMessage((Player*)creature, playerTarget, healthHealed, actionHealed, mindHealed);
-		sendWoundMessage((Player*)creature, playerTarget, healthWoundHealed, actionWoundHealed, mindWoundHealed);
-
-		playerTarget->resurrect();
+		sendHealMessage((Player*) creature, playerTarget, healedHealth, healedAction, healedMind);
+		sendWoundMessage((Player*) creature, playerTarget, healedHealthWounds, healedActionWounds, healedMindWounds);
 
 		creature->changeMindBar(-mindCost);
 
 		if (revivePack != NULL)
 			revivePack->useCharge((Player*) creature);
 
-		int xpAmount = healthWoundHealed + healthHealed + actionWoundHealed + actionHealed + mindWoundHealed + mindHealed + 250;
+		int xpAmount = healedHealth + healedAction + healedMind + healedHealthWounds + healedActionWounds + healedMindWounds + 250;
 		awardXp(creature, "medical", xpAmount);
 
 		doAnimations(creature, (CreatureObject*) playerTarget);
 
 		return 0;
-	}
-
-	void calculateHeal(CreatureObject* creature, float basePower, int battleFatigue, int& damageHealed) {
-		float modSkill = (float)creature->getSkillMod("healing_injury_treatment");
-		int power = (int)round((100.0f + modSkill) / 100.0f * basePower);
-
-		if (battleFatigue >= 1000) {
-			power = 1; //Needs to at least be 1 so they are alive!
-		} else if (battleFatigue >= 250) {
-			power -= (int)round((float)power * (((float)battleFatigue - 250.0f) / 1000.0f));
-		}
-
-		damageHealed = power;
-	}
-
-	void calculateWound(CreatureObject* creature, float basePower, int battleFatigue, int& damageHealed) {
-		float modSkill = (float)creature->getSkillMod("healing_wound_treatment");
-		int power = (int)round((100.0f + modSkill) / 100.0f * basePower);
-
-		if (battleFatigue >= 1000) {
-			power = 1; //Needs to at least be 1 so they are alive!
-		} else if (battleFatigue >= 250) {
-			power -= power * ((battleFatigue - 250) / 1000);
-		}
-
-		damageHealed = power;
 	}
 
 	void awardXp(CreatureObject* creature, string type, int power) {
@@ -274,30 +230,6 @@ public:
 		stringstream msgExperience;
 		msgExperience << "You receive " << amount << " points of " << type << " experience.";
 		player->sendSystemMessage(msgExperience.str());
-	}
-
-	void sendBFMessage(CreatureObject* creature, CreatureObject* creatureTarget, int battleFatigue) {
-		string targetName = ((Player*)creatureTarget)->getFirstNameProper();
-		stringstream msgPlayer, msgTarget;
-
-		if (battleFatigue >= 1000) {
-			msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
-			msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
-		} else if (battleFatigue >= 750) {
-			msgPlayer << targetName << "'s battle fatgiue is greatly reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
-		} else if (battleFatigue >= 500) {
-			msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
-		} else if (battleFatigue >= 250) {
-			msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine.";
-		}
-
-		creatureTarget->sendSystemMessage(msgTarget.str());
-		if (creatureTarget != creature) {
-			creature->sendSystemMessage(msgPlayer.str());
-		}
 	}
 
 	void sendHealMessage(Player* player, Player* playerTarget, int health, int action, int mind) {
