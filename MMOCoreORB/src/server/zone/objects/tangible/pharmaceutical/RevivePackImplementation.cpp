@@ -61,7 +61,7 @@ RevivePackImplementation::RevivePackImplementation(CreatureObject* creature, uin
 }
 
 int RevivePackImplementation::useObject(Player* player) {
-	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
+	if (player->getSkillMod("healing_ability") < medicineUseRequired) {
 		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
 		return 0;
 	}

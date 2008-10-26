@@ -4627,7 +4627,7 @@ void CreatureObjectImplementation::explode(int level, bool destroy) {
 
 //Medic & Doctor
 int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue) {
-	if (!Attribute::isHAMAttribute(attribute))
+	if (!CreatureAttribute::isHAM(attribute))
 		return 0;
 
 	if (!target->hasDamage())
@@ -4636,7 +4636,7 @@ int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage,
 	int healableDamage = 0;
 
 	switch (attribute) {
-	case Attribute::HEALTH:
+	case CreatureAttribute::HEALTH:
 		healableDamage = (damage > target->getHealthDamage()) ? target->getHealthDamage() : damage;
 
 		if (doBattleFatigue)
@@ -4646,7 +4646,7 @@ int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage,
 			healableDamage = 0;
 
 		break;
-	case Attribute::ACTION:
+	case CreatureAttribute::ACTION:
 		healableDamage = (damage > target->getActionDamage()) ? target->getActionDamage() : damage;
 
 		if (doBattleFatigue)
@@ -4656,7 +4656,7 @@ int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage,
 			return healableDamage = 0;
 
 		break;
-	case Attribute::MIND:
+	case CreatureAttribute::MIND:
 		healableDamage = (damage > target->getMindDamage()) ? target->getMindDamage() : damage;
 
 		if (doBattleFatigue)
@@ -4680,7 +4680,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 	int healableDamage = 0;
 
 	switch (attribute) {
-	case Attribute::HEALTH:
+	case CreatureAttribute::HEALTH:
 		healableDamage = (damage > target->getHealthWounds()) ? target->getHealthWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4690,7 +4690,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::ACTION:
+	case CreatureAttribute::ACTION:
 		healableDamage = (damage > target->getActionWounds()) ? target->getActionWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4700,7 +4700,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::MIND:
+	case CreatureAttribute::MIND:
 		healableDamage = (damage > target->getMindWounds()) ? target->getMindWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4710,7 +4710,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::STRENGTH:
+	case CreatureAttribute::STRENGTH:
 		healableDamage = (damage > target->getStrengthWounds()) ? target->getStrengthWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4720,7 +4720,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::CONSTITUTION:
+	case CreatureAttribute::CONSTITUTION:
 		healableDamage = (damage > target->getConstitutionWounds()) ? target->getConstitutionWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4730,7 +4730,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::QUICKNESS:
+	case CreatureAttribute::QUICKNESS:
 		healableDamage = (damage > target->getQuicknessWounds()) ? target->getQuicknessWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4740,7 +4740,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::STAMINA:
+	case CreatureAttribute::STAMINA:
 		healableDamage = (damage > target->getStaminaWounds()) ? target->getStaminaWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4750,7 +4750,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::FOCUS:
+	case CreatureAttribute::FOCUS:
 		healableDamage = (damage > target->getFocusWounds()) ? target->getFocusWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4760,7 +4760,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::WILLPOWER:
+	case CreatureAttribute::WILLPOWER:
 		healableDamage = (damage > target->getWillpowerWounds()) ? target->getWillpowerWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4773,6 +4773,50 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 	}
 
 	return 0;
+}
+
+int CreatureObjectImplementation::healEnhance(CreatureObject* target, int amount, float duration, uint8 attribute, bool doBattleFatigue) {
+	Buff* buff = new Buff(BuffCRC::TEST_FIRST);
+
+	if (doBattleFatigue)
+		amount -= amount * target->calculateBFRatio();
+
+	switch (attribute) {
+	case CreatureAttribute::HEALTH:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_HEALTH);
+		buff->setHealthBuff(amount);
+		break;
+	case CreatureAttribute::ACTION:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_ACTION);
+		buff->setActionBuff(amount);
+		break;
+	case CreatureAttribute::STRENGTH:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_STRENGTH);
+		buff->setStrengthBuff(amount);
+		break;
+	case CreatureAttribute::CONSTITUTION:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION);
+		buff->setConstitutionBuff(amount);
+		break;
+	case CreatureAttribute::QUICKNESS:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_QUICKNESS);
+		buff->setQuicknessBuff(amount);
+		break;
+	case CreatureAttribute::STAMINA:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_STAMINA);
+		buff->setStaminaBuff(amount);
+		break;
+	default:
+		return 0;
+	}
+
+	buff->setBuffDuration(duration);
+
+	BuffObject* bo = new BuffObject(buff);
+
+	target->applyBuff(bo);
+
+	return amount;
 }
 
 bool CreatureObjectImplementation::healState(CreatureObject* target, uint64 state) {

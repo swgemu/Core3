@@ -73,174 +73,148 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	EnhancePack* findMedpack(CreatureObject* creature, const string& modifier, int& poolAffected, bool& canUse) {
-		EnhancePack* enhancePack = NULL;
-		int medicineUse = creature->getSkillMod("healing_ability");
-
-		if (!modifier.empty()) {
-			StringTokenizer tokenizer(modifier);
-			string poolName;
-			uint64 objectid = 0;
-
-			tokenizer.setDelimeter("|");
-
-			tokenizer.getStringToken(poolName);
-
-			poolAffected = PharmaceuticalImplementation::getPoolFromName(poolName);
-
-			if (tokenizer.hasMoreTokens())
-				objectid = tokenizer.getLongToken();
-
-			if (objectid > 0) {
-				SceneObject* invObj = creature->getInventoryItem(objectid);
-
-				if (invObj != NULL && invObj->isTangible()) {
-					TangibleObject* tano = (TangibleObject*) invObj;
-
-					if (tano->isPharmaceutical()) {
-						Pharmaceutical* pharm = (Pharmaceutical*) tano;
-
-						if (pharm->isEnhancePack()) {
-							enhancePack = (EnhancePack*) pharm;
-
-							if (enhancePack->getMedicineUseRequired() <= medicineUse) {
-								canUse = true;
-								return enhancePack;
-							}
-						}
-					}
-				}
-			}
-
-		} else {
-			poolAffected = PharmaceuticalImplementation::UNKNOWN;
-			return NULL;
-		}
-
-		Inventory* inventory = creature->getInventory();
-
-		for (int i=0; i<inventory->objectsSize(); i++) {
-			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-			if (item != NULL && item->isPharmaceutical()) {
-				enhancePack = (EnhancePack*) item;
-
-				if (enhancePack->isEnhancePack()
-						&& enhancePack->getMedicineUseRequired() <= medicineUse
-						&& enhancePack->getPoolAffected() == poolAffected) {
-					canUse = true;
-					return enhancePack;
-				}
-			}
-		}
-
-		return NULL; //Never found a stimpack
-	}
-
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
-		CreatureObject* creatureTarget;
-		EnhancePack* enhancePack = NULL;
-
-		int poolAffected = 0;
-		int buffPower = 0;
-		int currentPower = 0;
-		int amountBuffed = 0;
-		int battleFatigue = 0;
-		int modEnvironment = creature->getMedicalFacilityRating();
-		bool canUse = false;
-
-		enhancePack = findMedpack(creature, modifier, poolAffected, canUse);
-
-		if (target->isPlayer() || target->isNonPlayerCreature()) {
-			creatureTarget = (CreatureObject*) target;
-		} else {
-			creature->sendSystemMessage("healing_response", "healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
-			return 0;
-		}
-
-		if (creatureTarget != creature
-				&& (creatureTarget->isDead()
-						|| creatureTarget->isRidingCreature()
-						|| creatureTarget->isMounted())) {
-			//If the target is dead or mounted, then make self the target.
-			creatureTarget = creature;
-		}
-
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, EnhancePack* enhancePack) {
 		if (!creature->canTreatWounds()) {
 			creature->sendSystemMessage("healing_response", "enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
-			return 0;
-		}
-
-		if (poolAffected == PharmaceuticalImplementation::UNKNOWN) {
-			creature->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
-			return 0;
-		}
-
-		if (!canUse) {
-			creature->sendSystemMessage("You do not have the skill to use this item.");
-			return 0;
+			return false;
 		}
 
 		if (enhancePack == NULL) {
 			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
-			return 0;
+			return false;
 		}
 
-		if (modEnvironment <= 0) {
+		if (creature->getMedicalFacilityRating() <= 0) {
 			creature->sendSystemMessage("healing_response", "must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
-			return 0;
+			return false;
 		}
 
 		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You can not Heal Enhance while meditating.");
-			return 0;
+			creature->sendSystemMessage("You cannot do that while Meditating.");
+			return false;
 		}
 
 		if (creature->isRidingCreature()) {
 			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return 0;
+			return false;
 		}
 
 		if (creature->isMounted()) {
 			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return 0;
+			return false;
 		}
 
 		if (creature->isInCombat()) {
 			creature->sendSystemMessage("You cannot do that while in Combat.");
-			return 0;
+			return false;
 		}
 
 		if (creatureTarget->isInCombat()) {
 			creature->sendSystemMessage("You cannot do that while your target is in Combat.");
-			return 0;
+			return false;
 		}
 
 		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
 			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
-			return 0;
+			return false;
 		}
 
 		if (creature->getMind() < abs(mindCost)) {
 			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
-			return 0;
+			return false;
 		}
 
-		currentPower = calculateCurrentPower(creatureTarget, enhancePack);
+		return true;
+	}
 
-		battleFatigue = creatureTarget->getShockWounds();
+	void parseModifier(const string& modifier, uint8& attribute, uint64& objectId) {
+		if (!modifier.empty()) {
+			StringTokenizer tokenizer(modifier);
+			tokenizer.setDelimeter("|");
+			string attributeName;
 
-		buffPower = calculatePower(creature, creatureTarget, enhancePack, modEnvironment, battleFatigue);
+			tokenizer.getStringToken(attributeName);
+			attribute = CreatureAttribute::getAttribute(attributeName);
 
-		if (buffPower <= 0) {
-			if (battleFatigue >= 1000) {
-				sendBFMessage(creature, creatureTarget, battleFatigue);
+			if (tokenizer.hasMoreTokens())
+				objectId = tokenizer.getLongToken();
+		} else {
+			attribute = CreatureAttribute::UNKNOWN;
+			objectId = 0;
+		}
+	}
+
+	EnhancePack* findEnhancePack(CreatureObject* creature, uint8 attribute) {
+		Inventory* inventory = creature->getInventory();
+		int medicineUse = creature->getSkillMod("healing_ability");
+
+		if (inventory != NULL) {
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+				if (item->isPharmaceutical()) {
+					Pharmaceutical* pharma = (Pharmaceutical*) item;
+
+					if (pharma->isEnhancePack()) {
+						EnhancePack* enhancePack = (EnhancePack*) pharma;
+
+						if (enhancePack->getMedicineUseRequired() <= medicineUse && enhancePack->getAttribute() == attribute)
+							return enhancePack;
+					}
+				}
 			}
-			//The pack's effectiveness is 0 or has been nullified by battleFatigue.
+		}
+
+		return NULL;
+	}
+
+	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
+			creature->sendSystemMessage("healing_response", "healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
 			return 0;
 		}
 
-		if (currentPower > buffPower) {
+		uint8 attribute = CreatureAttribute::UNKNOWN;
+		uint64 objectId = 0;
+
+		parseModifier(modifier, attribute, objectId);
+
+		if (attribute == CreatureAttribute::UNKNOWN) {
+			creature->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
+			return 0;
+		}
+
+		EnhancePack* enhancePack = (EnhancePack*) creature->getInventoryItem(objectId);
+
+		if (enhancePack == NULL)
+			enhancePack = findEnhancePack(creature, attribute);
+
+		CreatureObject* creatureTarget = (CreatureObject*) target;
+
+		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
+			creatureTarget = creature;
+
+		if (!canPerformSkill(creature, creatureTarget, enhancePack))
+			return 0;
+
+
+		//Calculate current buff
+		int currentPower = 0;
+		uint32 currentBuffCRC = enhancePack->getBuffCRC();
+
+		if (creature->hasBuff(currentBuffCRC)) {
+			BuffObject* currentBuffObj = creature->getBuffObject(currentBuffCRC);
+			Buff* currentBuff = currentBuffObj->getBuff();
+
+			currentPower = getBuffPower(currentBuff, currentBuffCRC);
+
+			currentBuffObj->finalize();
+		}
+
+		int buffPower = enhancePack->calculatePower(creature);
+		int predictedPower = buffPower - (int)round(((float)buffPower * creatureTarget->calculateBFRatio()));
+
+		if (currentPower > predictedPower) {
 			if (creatureTarget == creature) {
 				creature->sendSystemMessage("Your current enhancements are of greater power and cannot be replaced.");
 			} else {
@@ -249,15 +223,12 @@ public:
 			return 0;
 		}
 
-		amountBuffed = calculateHeal(currentPower, buffPower);
+		int buffApplied = creature->healEnhance(creatureTarget, buffPower, enhancePack->getDuration(), attribute);
 
-		Buff* buff = getBuff(buffPower, enhancePack->getDuration(), poolAffected);
-		BuffObject* bo = new BuffObject(buff);
+		if (creature->isPlayer())
+			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
 
-		creatureTarget->applyBuff(bo);
-
-		sendBFMessage(creature, creatureTarget, battleFatigue);
-		sendEnhanceMessage(creature, creatureTarget, poolAffected, amountBuffed);
+		sendEnhanceMessage(creature, creatureTarget, attribute, buffApplied);
 
 		creature->changeMindBar(mindCost);
 
@@ -267,47 +238,11 @@ public:
 			enhancePack->useCharge((Player*) creature);
 
 		if (creatureTarget != creature)
-			awardXp(creature, "medical", amountBuffed); //No experience for healing yourself.
+			awardXp(creature, "medical", buffApplied); //No experience for healing yourself.
 
 		doAnimations(creature, creatureTarget);
 
 		return 0;
-	}
-
-	int calculateCurrentPower(CreatureObject* creature, EnhancePack* enhancePack) {
-		uint32 buffCRC = enhancePack->getBuffCRC();
-
-		if (creature->hasBuff(buffCRC)) {
-			BuffObject* bo = creature->getBuffObject(buffCRC);
-			Buff* b = bo->getBuff();
-
-			bo->finalize();
-
-			return getBuffPower(b, buffCRC);
-		}
-
-		return 0;
-	}
-
-	int calculateHeal(int currentPower, int buffPower) {
-		int amountBuffed = buffPower - currentPower;
-
-		return amountBuffed;
-	}
-
-	int calculatePower(CreatureObject* creature, CreatureObject* creatureTarget, EnhancePack* enhancePack, int modEnvironment, int battleFatigue) {
-		float modSkill = (float)creature->getSkillMod("healing_wound_treatment");
-		float modCityBonus = 1.0f; //TODO: If in Medical City, then 1.1f bonus
-
-		int power = (int)round(enhancePack->getEffectiveness() * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f); //TODO: Add in medical city bonus
-
-		if (battleFatigue >= 1000) {
-			power = 0; //Will cancel the action.
-		} else if (battleFatigue >= 250) {
-			power -= (int)round((float)power * (((float)battleFatigue - 250.0f) / 1000.0f));
-		}
-
-		return power;
 	}
 
 	void awardXp(CreatureObject* creature, string type, int power) {
@@ -328,48 +263,21 @@ public:
 		player->sendSystemMessage(msgExperience.str());
 	}
 
-	void sendBFMessage(CreatureObject* creature, CreatureObject* creatureTarget, int battleFatigue) {
-		string targetName = ((Player*)creatureTarget)->getFirstNameProper();
-		stringstream msgPlayer, msgTarget;
-
-		if (battleFatigue >= 1000) {
-			msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
-			msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
-		} else if (battleFatigue >= 750) {
-			msgPlayer << targetName << "'s battle fatgiue is greatly reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
-		} else if (battleFatigue >= 500) {
-			msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
-		} else if (battleFatigue >= 250) {
-			msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine.";
-		}
-
-		creatureTarget->sendSystemMessage(msgTarget.str());
-		if (creatureTarget != creature) {
-			creature->sendSystemMessage(msgPlayer.str());
-		}
-	}
-
-	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* creatureTarget, int poolAffected, int amountBuffed) {
-		string creatureName = ((Player*)creature)->getFirstNameProper();
-		string creatureTargetName = ((Player*)creatureTarget)->getFirstNameProper();
-		string poolName = PharmaceuticalImplementation::getPoolName(poolAffected);
-
-		//Initial Capitalize the Proper names.
-		poolName[0] = toupper(poolName[0]);
+	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint8 attribute, int buffApplied) {
+		string creatureName = creature->getCharacterName().c_str();
+		string creatureTargetName = creature->getCharacterName().c_str();
+		string attributeName = CreatureAttribute::getName(attribute, true);
 
 		stringstream msgPlayer, msgTarget, msgBuff;
 
-		if (amountBuffed == 0) {
+		if (buffApplied == 0) {
 			if (creature == creatureTarget) {
 				msgPlayer << "You re-apply your ";
 			} else {
 				msgPlayer << "You re-apply " << creatureTargetName << "'s ";
 				msgTarget << creatureName << " re-applies your ";
 			}
-			msgBuff << poolName << " enhancement.";
+			msgBuff << attributeName << " enhancement.";
 		} else {
 			if (creature == creatureTarget) {
 				msgPlayer << "You enhance your ";
@@ -377,7 +285,7 @@ public:
 				msgPlayer << "You enhance " << creatureTargetName << "'s ";
 				msgTarget << creatureName << " enhances your ";
 			}
-			msgBuff << poolName << " by " << amountBuffed << ".";
+			msgBuff << attributeName << " by " << buffApplied << ".";
 		}
 
 		msgPlayer << msgBuff.str();
@@ -411,38 +319,6 @@ public:
 			return buff->getHealthBuff();
 			break;
 		}
-	}
-
-	Buff* getBuff(int buffPower, float duration, int poolAffected) {
-		Buff* buff;
-		switch (poolAffected) {
-		case PharmaceuticalImplementation::ACTION:
-			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_ACTION, BuffType::MEDICAL, duration);
-			buff->setActionBuff(buffPower);
-			break;
-		case PharmaceuticalImplementation::CONSTITUTION:
-			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION, BuffType::MEDICAL, duration);
-			buff->setConstitutionBuff(buffPower);
-			break;
-		case PharmaceuticalImplementation::STRENGTH:
-			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STRENGTH, BuffType::MEDICAL, duration);
-			buff->setStrengthBuff(buffPower);
-			break;
-		case PharmaceuticalImplementation::QUICKNESS:
-			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_QUICKNESS, BuffType::MEDICAL, duration);
-			buff->setQuicknessBuff(buffPower);
-			break;
-		case PharmaceuticalImplementation::STAMINA:
-			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STAMINA, BuffType::MEDICAL, duration);
-			buff->setStaminaBuff(buffPower);
-			break;
-		case PharmaceuticalImplementation::HEALTH:
-		default:
-			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_HEALTH, BuffType::MEDICAL, duration);
-			buff->setHealthBuff(buffPower);
-			break;
-		}
-		return buff;
 	}
 
 	float calculateSpeed(CreatureObject* creature) {

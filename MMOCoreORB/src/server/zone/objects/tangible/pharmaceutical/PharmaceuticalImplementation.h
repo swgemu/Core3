@@ -58,8 +58,6 @@ protected:
 	int medicineUseRequired;
 
 public:
-	static const int UNKNOWN = 0;
-
 	//Medical Pack Types
 	static const int ENHANCEPACK = 1;
 	static const int WOUNDPACK = 2;
@@ -67,17 +65,6 @@ public:
 	static const int STIMPACK = 4;
 	static const int STATEPACK = 5;
 	static const int REVIVEPACK = 6;
-
-	//Affected Stat Pools
-	static const int HEALTH = 1;
-	static const int STRENGTH = 2;
-	static const int CONSTITUTION = 3;
-	static const int ACTION = 4;
-	static const int QUICKNESS = 5;
-	static const int STAMINA = 6;
-	static const int MIND = 7;
-	static const int FOCUS = 8;
-	static const int WILLPOWER = 9;
 
 public:
 
@@ -97,8 +84,6 @@ public:
 	virtual void addAttributes(AttributeListMessage* alm);
 	void addHeaderAttributes(AttributeListMessage* alm);
 	void addFooterAttributes(AttributeListMessage* alm);
-
-	string stringify(const int x);
 
 	void useCharge(Player* player);
 
@@ -155,126 +140,6 @@ public:
 
 	inline bool isRevivePack() {
 		return medpackType == REVIVEPACK;
-	}
-
-	static int getPoolFromName(const string& pool) {
-		if (pool == "health") {
-			return HEALTH;
-		} else if (pool == "action") {
-			return ACTION;
-		} else if (pool == "mind") {
-			return MIND;
-		} else if (pool == "constitution") {
-			return CONSTITUTION;
-		} else if (pool == "strength") {
-			return STRENGTH;
-		} else if (pool == "stamina") {
-			return STAMINA;
-		} else if (pool == "quickness") {
-			return QUICKNESS;
-		} else if (pool == "focus") {
-			return FOCUS;
-		} else if (pool == "willpower") {
-			return WILLPOWER;
-		} else if (pool == "health") {
-			return HEALTH;
-		} else {
-			return UNKNOWN;
-		}
-	}
-
-	static string getPoolName(int pool) {
-		switch (pool) {
-		case ACTION:
-			return "action";
-			break;
-		case MIND:
-			return "mind";
-			break;
-		case STRENGTH:
-			return "strength";
-			break;
-		case CONSTITUTION:
-			return "constitution";
-			break;
-		case QUICKNESS:
-			return "quickness";
-			break;
-		case STAMINA:
-			return "stamina";
-			break;
-		case FOCUS:
-			return "focus";
-			break;
-		case WILLPOWER:
-			return "willpower";
-			break;
-		case HEALTH:
-		default:
-			return "health";
-			break;
-		}
-	}
-
-	static int getStateFromName(const string& state) {
-		if (state == "intimidated") {
-			return CreatureObjectImplementation::INTIMIDATED_STATE;
-		} else if (state == "dizzy") {
-			return CreatureObjectImplementation::DIZZY_STATE;
-		} else if (state == "blinded") {
-			return CreatureObjectImplementation::BLINDED_STATE;
-		} else if (state == "stunned") {
-			return CreatureObjectImplementation::STUNNED_STATE;
-		} else {
-			return UNKNOWN;
-		}
-	}
-
-	static string getStateName(uint64 state) {
-		switch (state) {
-		case CreatureObjectImplementation::BLINDED_STATE:
-			return "blinded";
-			break;
-		case CreatureObjectImplementation::STUNNED_STATE:
-			return "stunned";
-			break;
-		case CreatureObjectImplementation::DIZZY_STATE:
-			return "dizzy";
-			break;
-		case CreatureObjectImplementation::INTIMIDATED_STATE:
-			return "intimidated";
-			break;
-		default:
-			return "unknown";
-			break;
-		}
-	}
-
-	static int getConditionFromName(const string& condition) {
-		if (condition == "poisoned") {
-			return CreatureObjectImplementation::POISONED_STATE;
-		} else if (condition == "diseased") {
-			return CreatureObjectImplementation::DISEASED_STATE;
-		} else if (condition == "onfire") {
-			return CreatureObjectImplementation::ONFIRE_STATE;
-		} else {
-			return UNKNOWN;
-		}
-	}
-
-	static string getConditionName(int condition) {
-		switch (condition) {
-		case CreatureObjectImplementation::POISONED_STATE:
-			return "poison";
-			break;
-		case CreatureObjectImplementation::DISEASED_STATE:
-			return "disease";
-			break;
-		case CreatureObjectImplementation::ONFIRE_STATE:
-		default:
-			return "fire";
-			break;
-		}
 	}
 };
 

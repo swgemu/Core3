@@ -42,50 +42,95 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CUREPACKIMPLEMENTATION_H_
-#define CUREPACKIMPLEMENTATION_H_
+#ifndef CREATUREATTRIBUTE_H_
+#define CREATUREATTRIBUTE_H_
 
-#include "../../creature/CreatureObject.h"
+#include "engine/engine.h"
 
-#include "CurePack.h"
-
-class CurePackImplementation : public CurePackServant {
-protected:
-	float effectiveness;
-	uint64 state;
-
+class CreatureAttribute {
 public:
-	CurePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	CurePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	static const uint8 UNKNOWN = 0;
+	static const uint8 HEALTH = 1;
+	static const uint8 STRENGTH = 2;
+	static const uint8 CONSTITUTION = 3;
+	static const uint8 ACTION = 4;
+	static const uint8 QUICKNESS = 5;
+	static const uint8 STAMINA = 6;
+	static const uint8 MIND = 7;
+	static const uint8 FOCUS = 8;
+	static const uint8 WILLPOWER = 9;
 
-	void initialize();
-
-	int useObject(Player* player);
-
-	void generateAttributes(SceneObject* obj);
-
-	void parseItemAttributes();
-
-	void addAttributes(AttributeListMessage* alm);
-
-	inline void setEffectiveness(float eff) {
-		effectiveness = eff;
-		string attr = "effectiveness";
-		itemAttributes->setFloatAttribute(attr, effectiveness);
-	}
-	inline void setState(uint64 value) {
-		state = value;
-		string attr = "state";
-		itemAttributes->setUnsignedLongAttribute(attr, state);
+	static bool isHAM(uint8 attribute) {
+		return (attribute == HEALTH || attribute == ACTION || attribute == MIND);
 	}
 
-	inline float getEffectiveness() {
-		return effectiveness;
+	static uint8 getAttribute(string attribute) {
+		String::toLower(attribute);
+
+		if (attribute == "health")
+			return HEALTH;
+		else if (attribute == "action")
+			return ACTION;
+		else if (attribute == "mind")
+			return MIND;
+		else if (attribute == "strength")
+			return STRENGTH;
+		else if (attribute == "constitution")
+			return CONSTITUTION;
+		else if (attribute == "quickness")
+			return QUICKNESS;
+		else if (attribute == "stamina")
+			return STAMINA;
+		else if (attribute == "focus")
+			return FOCUS;
+		else if (attribute == "willpower")
+			return WILLPOWER;
+		else
+			return UNKNOWN;
 	}
 
-	inline uint64 getState() {
-		return state;
+	static string getName(const uint8 attribute, bool initialCap = false) {
+		string name = "";
+
+		switch (attribute) {
+		case HEALTH:
+			name = "health";
+			break;
+		case ACTION:
+			name = "action";
+			break;
+		case MIND:
+			name = "mind";
+			break;
+		case STRENGTH:
+			name = "strength";
+			break;
+		case CONSTITUTION:
+			name = "constitution";
+			break;
+		case QUICKNESS:
+			name = "quickness";
+			break;
+		case STAMINA:
+			name = "stamina";
+			break;
+		case FOCUS:
+			name = "focus";
+			break;
+		case WILLPOWER:
+			name = "willpower";
+			break;
+		default:
+			name = "unknown";
+			break;
+		}
+
+		if (initialCap)
+			name[0] = toupper(name[0]);
+
+		return name;
 	}
 };
 
-#endif /* CUREPACKIMPLEMENTATION_H_ */
+
+#endif /* CREATUREATTRIBUTE_H_ */

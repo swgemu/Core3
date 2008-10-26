@@ -61,20 +61,18 @@ WoundPackImplementation::WoundPackImplementation(CreatureObject* creature, uint3
 }
 
 int WoundPackImplementation::useObject(Player* player) {
-	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
+	if (player->getSkillMod("healing_ability") < medicineUseRequired) {
 		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
 		return 0;
 	}
 
 	uint32 actionCRC = 0x2087CE04; //healwound
-	player->queueHeal((TangibleObject*)_this, actionCRC, getPoolName(poolAffected));
+	player->queueHeal((TangibleObject*)_this, actionCRC, CreatureAttribute::getName(attribute));
 
 	return 0;
 }
 
-void WoundPackImplementation::updateCraftingValues(
-		DraftSchematic* draftSchematic) {
-
+void WoundPackImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
 	string name;
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
@@ -92,15 +90,15 @@ void WoundPackImplementation::updateCraftingValues(
 	setUsesRemaining((int)(floor(craftingValues->getCurrentValue("charges") + .5f)));
 	itemAttributes->setFloatAttribute(name, usesRemaining);
 
-	name = "poolAffected";
-	poolAffected = (int)craftingValues->getCurrentValue("poolAffected");
-	itemAttributes->setIntAttribute(name, poolAffected);
+	name = "attribute";
+	attribute = (int)craftingValues->getCurrentValue("poolAffected");
+	itemAttributes->setIntAttribute(name, attribute);
 
 }
 
 void WoundPackImplementation::initialize() {
 	setEffectiveness(0.0f);
-	setPoolAffected(UNKNOWN);
+	setAttribute(CreatureAttribute::UNKNOWN);
 }
 
 void WoundPackImplementation::parseItemAttributes() {
@@ -108,16 +106,16 @@ void WoundPackImplementation::parseItemAttributes() {
 
 	string attr = "effectiveness";
 	setEffectiveness(itemAttributes->getFloatAttribute(attr));
-	attr = "poolAffected";
-	setPoolAffected(itemAttributes->getIntAttribute(attr));
+	attr = "attribute";
+	setAttribute(itemAttributes->getIntAttribute(attr));
 }
 
 void WoundPackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
 	stringstream eff;
-	eff << "examine_heal_wound_" << getPoolName(getPoolAffected());
-	alm->insertAttribute(string(eff.str()), getPrecision(getEffectiveness(), 0));
+	eff << "examine_heal_wound_" << CreatureAttribute::getName(attribute);
+	alm->insertAttribute(string(eff.str()), getPrecision(effectiveness, 0));
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

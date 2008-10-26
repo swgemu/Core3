@@ -31,11 +31,11 @@ public:
 
 	void setEffectiveness(float eff);
 
-	void setPoolAffected(int pool);
+	void setAttribute(unsigned char value);
 
 	float getEffectiveness();
 
-	int getPoolAffected();
+	unsigned char getAttribute();
 
 protected:
 	WoundPack(DummyConstructorParameter* param);
@@ -59,11 +59,11 @@ public:
 
 	void setEffectiveness(float eff);
 
-	void setPoolAffected(int pool);
+	void setAttribute(unsigned char value);
 
 	float getEffectiveness();
 
-	int getPoolAffected();
+	unsigned char getAttribute();
 
 };
 

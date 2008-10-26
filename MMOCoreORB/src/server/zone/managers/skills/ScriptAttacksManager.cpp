@@ -839,7 +839,7 @@ int ScriptAttacksManager::AddCureTargetSkill(lua_State* L) {
 	heal = new CureTargetSkill(skillname, effect.c_str(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
-	heal->setConditionCured(conditionCured);
+	heal->setState(conditionCured);
 	heal->setRange(range);
 
 	CombatActions->put(heal);

@@ -29,11 +29,11 @@ public:
 
 	void setEffectiveness(float eff);
 
-	void setConditionCured(int condition);
+	void setState(unsigned long long condition);
 
 	float getEffectiveness();
 
-	int getConditionCured();
+	unsigned long long getState();
 
 protected:
 	CurePack(DummyConstructorParameter* param);
@@ -55,11 +55,11 @@ public:
 
 	void setEffectiveness(float eff);
 
-	void setConditionCured(int condition);
+	void setState(unsigned long long condition);
 
 	float getEffectiveness();
 
-	int getConditionCured();
+	unsigned long long getState();
 
 };
 

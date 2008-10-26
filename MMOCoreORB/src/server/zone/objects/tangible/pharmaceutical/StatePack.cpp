@@ -49,29 +49,29 @@ void StatePack::generateAttributes(SceneObject* obj) {
 		((StatePackImplementation*) _impl)->generateAttributes(obj);
 }
 
-void StatePack::setStateAffected(int state) {
+void StatePack::setState(unsigned long long value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addSignedIntParameter(state);
+		method.addUnsignedLongParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
-		((StatePackImplementation*) _impl)->setStateAffected(state);
+		((StatePackImplementation*) _impl)->setState(value);
 }
 
-int StatePack::getStateAffected() {
+unsigned long long StatePack::getState() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((StatePackImplementation*) _impl)->getStateAffected();
+		return ((StatePackImplementation*) _impl)->getState();
 }
 
 /*
@@ -89,10 +89,10 @@ Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	case 7:
-		setStateAffected(inv->getSignedIntParameter());
+		setState(inv->getUnsignedLongParameter());
 		break;
 	case 8:
-		resp->insertSignedInt(getStateAffected());
+		resp->insertLong(getState());
 		break;
 	default:
 		return NULL;
@@ -105,12 +105,12 @@ void StatePackAdapter::generateAttributes(SceneObject* obj) {
 	return ((StatePackImplementation*) impl)->generateAttributes(obj);
 }
 
-void StatePackAdapter::setStateAffected(int state) {
-	return ((StatePackImplementation*) impl)->setStateAffected(state);
+void StatePackAdapter::setState(unsigned long long value) {
+	return ((StatePackImplementation*) impl)->setState(value);
 }
 
-int StatePackAdapter::getStateAffected() {
-	return ((StatePackImplementation*) impl)->getStateAffected();
+unsigned long long StatePackAdapter::getState() {
+	return ((StatePackImplementation*) impl)->getState();
 }
 
 /*

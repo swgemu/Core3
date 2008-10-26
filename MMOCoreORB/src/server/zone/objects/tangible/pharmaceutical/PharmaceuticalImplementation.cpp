@@ -177,12 +177,3 @@ void PharmaceuticalImplementation::useCharge(Player* player) {
 		sendDeltas(player);
 	}
 }
-
-inline string PharmaceuticalImplementation::stringify(const int x) {
-	ostringstream o;
-
-	if (!(o << x))
-		return "";
-	else
-		return o.str();
-}

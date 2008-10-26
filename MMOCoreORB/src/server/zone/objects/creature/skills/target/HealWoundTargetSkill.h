@@ -134,12 +134,12 @@ public:
 			string attributeName;
 
 			tokenizer.getStringToken(attributeName);
-			attribute = Attribute::getAttribute(attributeName);
+			attribute = CreatureAttribute::getAttribute(attributeName);
 
 			if (tokenizer.hasMoreTokens())
 				objectId = tokenizer.getLongToken();
 		} else {
-			attribute = Attribute::UNKNOWN;
+			attribute = CreatureAttribute::UNKNOWN;
 			objectId = 0;
 		}
 	}
@@ -158,7 +158,7 @@ public:
 					if (pharma->isWoundPack()) {
 						WoundPack* woundPack = (WoundPack*) pharma;
 
-						if (woundPack->getMedicineUseRequired() <= medicineUse && woundPack->getPoolAffected() == attribute)
+						if (woundPack->getMedicineUseRequired() <= medicineUse && woundPack->getAttribute() == attribute)
 							return woundPack;
 					}
 				}
@@ -174,12 +174,12 @@ public:
 			return 0;
 		}
 
-		uint8 attribute = 0;
+		uint8 attribute = CreatureAttribute::UNKNOWN;
 		uint64 objectId = 0;
 
 		parseModifier(modifier, attribute, objectId);
 
-		if (attribute == Attribute::UNKNOWN) {
+		if (attribute == CreatureAttribute::UNKNOWN) {
 			creature->sendSystemMessage("healing_response", "healing_response_75"); //You must specify a valid attribute.
 			return 0;
 		}
@@ -187,7 +187,7 @@ public:
 		WoundPack* woundPack = (WoundPack*) creature->getInventoryItem(objectId);
 
 		if (woundPack == NULL)
-			woundPack = (WoundPack*) findWoundPack(creature, attribute);
+			woundPack = findWoundPack(creature, attribute);
 
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
@@ -196,8 +196,6 @@ public:
 
 		if (!canPerformSkill(creature, creatureTarget, woundPack))
 			return 0;
-
-		//Checks passed.
 
 		if (!creatureTarget->hasWound(attribute)) {
 			if (creatureTarget == creature) {
@@ -216,9 +214,8 @@ public:
 		int woundHealed = creature->healWound(creatureTarget, woundPower, attribute);
 
 		if (creature->isPlayer())
-			((Player*)creature)->sendBFMessage(creatureTarget);
+			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
 
-		//sendBFMessage(creature, creatureTarget);
 		sendWoundMessage(creature, creatureTarget, attribute, woundHealed);
 
 		creature->changeMindBar(mindCost);
@@ -254,36 +251,10 @@ public:
 		player->sendSystemMessage(msgExperience.str());
 	}
 
-	void sendBFMessage(CreatureObject* creature, CreatureObject* creatureTarget) {
-		string targetName = ((Player*)creatureTarget)->getFirstNameProper();
-		stringstream msgPlayer, msgTarget;
-
-		int battleFatigue = creatureTarget->getShockWounds();
-
-		if (battleFatigue >= 1000) {
-			msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
-			msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
-		} else if (battleFatigue >= 750) {
-			msgPlayer << targetName << "'s battle fatgiue is greatly reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
-		} else if (battleFatigue >= 500) {
-			msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
-		} else if (battleFatigue >= 250) {
-			msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine.";
-		}
-
-		creatureTarget->sendSystemMessage(msgTarget.str());
-		if (creatureTarget != creature) {
-			creature->sendSystemMessage(msgPlayer.str());
-		}
-	}
-
 	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint8 attribute, int woundsHealed) {
 		string creatureName = creature->getCharacterName().c_str();
 		string creatureTargetName = creatureTarget->getCharacterName().c_str();
-		string poolName = Attribute::getName(attribute);
+		string poolName = CreatureAttribute::getName(attribute);
 
 		stringstream msgPlayer, msgTarget, msgTail;
 

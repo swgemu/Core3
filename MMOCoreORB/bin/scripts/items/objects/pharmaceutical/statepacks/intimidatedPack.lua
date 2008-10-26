@@ -56,5 +56,5 @@ intimidatedPack = Object:new {
 	
 	medicineUse = 5,
 	
-	stateAffected = INTIMIDATED_STATE
+	stateAffected = INTIMIDATED
 }

@@ -345,7 +345,7 @@ interface Player implements CreatureObject {
 	void sendSystemMessage(const string file, const string str, StfParameter param);
 	
 	//Medic & Doctor System Messages
-	void sendBFMessage(CreatureObject target);
+	void sendBattleFatigueMessage(CreatureObject target);
 	void sendHealMessage(CreatureObject target, int h, int a, int m);
 	
 	// setters

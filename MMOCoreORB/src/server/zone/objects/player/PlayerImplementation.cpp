@@ -1650,7 +1650,7 @@ void PlayerImplementation::sendSystemMessage(unicode& message) {
 	sendMessage(smsg);
 }
 
-void PlayerImplementation::sendBFMessage(CreatureObject* target) {
+void PlayerImplementation::sendBattleFatigueMessage(CreatureObject* target) {
 	uint32 battleFatigue = target->getShockWounds();
 
 	string targetName = target->getCharacterName().c_str();
@@ -1661,12 +1661,12 @@ void PlayerImplementation::sendBFMessage(CreatureObject* target) {
 		return;
 	} else if (battleFatigue < 500) {
 		msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine.";
+		msgTarget << "Your battle fatigue is reducing the effectiveness of the medicine.";
 	} else if (battleFatigue < 750) {
 		msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
 		msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
 	} else if (battleFatigue < 1000) {
-		msgPlayer << targetName << "'s battle fatgiue is greatly reducing the effectiveness of the medicine.";
+		msgPlayer << targetName << "'s battle fatigue is greatly reducing the effectiveness of the medicine.";
 		msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
 	} else {
 		msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";

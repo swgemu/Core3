@@ -61,33 +61,33 @@ StatePackImplementation::StatePackImplementation(CreatureObject* creature, uint3
 }
 
 int StatePackImplementation::useObject(Player* player) {
-	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
+	if (player->getSkillMod("healing_ability") < medicineUseRequired) {
 		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
 		return 0;
 	}
 
 	uint32 actionCRC = 0x4A386BD5; //healstate
-	player->queueHeal((TangibleObject*)_this, actionCRC, getStateName(stateAffected));
+	player->queueHeal((TangibleObject*)_this, actionCRC, CreatureState::getName(state));
 
 	return 0;
 }
 
 void StatePackImplementation::initialize() {
-	setStateAffected(UNKNOWN);
+	setState(CreatureState::INVALID);
 }
 
 void StatePackImplementation::parseItemAttributes() {
 	PharmaceuticalImplementation::parseItemAttributes();
 
-	string attr = "stateAffected";
-	setStateAffected(itemAttributes->getUnsignedLongAttribute(attr));
+	string attr = "state";
+	setState(itemAttributes->getUnsignedLongAttribute(attr));
 }
 
 void StatePackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
 	stringstream eff;
-	eff << "@obj_attr_n:state_type_" << getStateName(getStateAffected());
+	eff << "@obj_attr_n:state_type_" << CreatureState::getName(state);
 	alm->insertAttribute("examine_heal_state", eff.str());
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);

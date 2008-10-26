@@ -1019,6 +1019,8 @@ public:
 
 	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue = true);
 
+	int healEnhance(CreatureObject* target, int amount, float duration, unsigned char attribute, bool doBattleFatigue = true);
+
 	bool healState(CreatureObject* target, unsigned long long state);
 
 	bool revive(CreatureObject* target, bool forcedChange = false);
@@ -2121,6 +2123,8 @@ public:
 	int healDamage(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue);
 
 	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue);
+
+	int healEnhance(CreatureObject* target, int amount, float duration, unsigned char attribute, bool doBattleFatigue);
 
 	bool healState(CreatureObject* target, unsigned long long state);
 

@@ -56,5 +56,5 @@ blindedPack = Object:new {
 	
 	medicineUse = 5,
 	
-	stateAffected = BLINDED_STATE
+	stateAffected = BLINDED
 }
