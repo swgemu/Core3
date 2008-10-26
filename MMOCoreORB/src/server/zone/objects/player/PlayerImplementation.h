@@ -870,7 +870,7 @@ public:
 		if (creature->hatesFaction(this->getFaction()))
 			return true;
 
-		return (pvpStatusBitmask & ATTACKABLE_FLAG);
+		return (pvpStatusBitmask & CreatureFlag::ATTACKABLE);
 	}
 
 	// faction methods

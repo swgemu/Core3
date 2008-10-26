@@ -312,7 +312,7 @@ void SurveyToolImplementation::sampleRequest(Player* player, string resourceName
 			player->sendSystemMessage("Unable to sample this resource type.");
 		} else if (player->getCanSample()) {
 			if(!player->isKneeled()) {
-				player->changePosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+				player->changePosture(CreaturePosture::CROUCHED);
 			}
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_sampling",resourceName,0,false);
 			player->sendMessage(sysMessage);

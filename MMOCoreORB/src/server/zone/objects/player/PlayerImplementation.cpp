@@ -666,7 +666,7 @@ void PlayerImplementation::userLogout(int msgCounter) {
 		msgCounter = 3;
 
 	if (!isSitting()) {
-		changePosture(CreatureObjectImplementation::SITTING_POSTURE);
+		changePosture(CreaturePosture::SITTING);
 	}
 
 	if (!isInCombat() && isSitting()) {
@@ -985,7 +985,7 @@ void PlayerImplementation::resetArmorEncumbrance() {
 
 void PlayerImplementation::sendToOwner() {
 	if (faction != 0)
-		pvpStatusBitmask |= OVERT_FLAG;
+		pvpStatusBitmask |= CreatureFlag::OVERT;
 
 	CreatureObjectImplementation::sendToOwner(_this, false);
 
@@ -1379,7 +1379,7 @@ void PlayerImplementation::deaggro() {
 
 			}
 
-			postureState = UPRIGHT_POSTURE;
+			postureState = CreaturePosture::UPRIGHT;
 			updateStates();
 
 		}
@@ -1916,7 +1916,7 @@ void PlayerImplementation::doIncapacitate() {
 		sendMessage(incap);
 
 		clearStates();
-		setPosture(INCAPACITATED_POSTURE);
+		setPosture(CreaturePosture::INCAPACITATED);
 
 		rescheduleRecovery(8000);
 	} else
@@ -1994,14 +1994,14 @@ void PlayerImplementation::throttlePvpRating(Player* player) {
 }*/
 
 void PlayerImplementation::handleDeath() {
-	setPosture(DEAD_POSTURE);
+	setPosture(CreaturePosture::DEAD);
 	deathCount = 0;
 	rescheduleRecovery(3000);
 }
 
 void PlayerImplementation::changePosture(int post) {
 	if (logoutEvent != NULL) {
-		if (post == SITTING_POSTURE) {
+		if (post == CreaturePosture::SITTING) {
 			clearQueueAction(actionCounter);
 			return;
 		}
@@ -2052,18 +2052,18 @@ void PlayerImplementation::changePosture(int post) {
 		sendSystemMessage("teraskasi", "med_end");
 	}
 
-	if (isInCombat() && post == SITTING_POSTURE) {
+	if (isInCombat() && post == CreaturePosture::SITTING) {
 		clearQueueAction(actionCounter);
 		return;
 	}
 
-	if (isDizzied() && post == CreatureObjectImplementation::UPRIGHT_POSTURE) {
+	if (isDizzied() && post == CreaturePosture::UPRIGHT) {
 		if ((getSkillMod("combat_equillibrium") >> 1) > System::random(100)) {
 			if (!dizzyFallDownEvent->isQueued())
 				server->addEvent(dizzyFallDownEvent, 100);
 			setPosture(post, true);
 		} else {
-			setPosture(CreatureObjectImplementation::KNOCKEDDOWN_POSTURE, true);
+			setPosture(CreaturePosture::KNOCKEDDOWN, true);
 			sendSystemMessage("cbt_spam", "dizzy_fall_down_single");
 		}
 	} else
@@ -2104,7 +2104,7 @@ void PlayerImplementation::doRecovery() {
 	if (isIncapacitated()) {
 		speed = 5.376;
 
-		setPosture(UPRIGHT_POSTURE);
+		setPosture(CreaturePosture::UPRIGHT);
 	} else if (isDead()) {
 		activateClone();
 		//activateReviveCountdown(); TODO: Fix the revive countdown timer issue.
@@ -2116,7 +2116,7 @@ void PlayerImplementation::doRecovery() {
 		return;
 	} else if (lastCombatAction.miliDifference() > 15000) {
 		clearCombatState();
-	} else if (isInCombat() && targetObject != NULL && !hasState(PEACE_STATE)
+	} else if (isInCombat() && targetObject != NULL && !hasState(CreatureState::PEACE)
 			&& (commandQueue.size() == 0)) {
 		queueAction(_this, getTargetID(), 0xA8FEF90A, ++actionCounter, "");
 	}
@@ -2143,7 +2143,7 @@ void PlayerImplementation::resurrect() {
 		removeSuiBox(boxID);
 		sui->finalize();
 	}
-	changePosture(UPRIGHT_POSTURE);
+	changePosture(CreaturePosture::UPRIGHT);
 }
 
 void PlayerImplementation::clearReviveCountdown() {
@@ -2212,38 +2212,38 @@ void PlayerImplementation::countdownRevive(int counter) {
 
 void PlayerImplementation::doStateRecovery() {
 	if (isDizzied() && dizzyRecoveryTime.isPast())
-		clearState(DIZZY_STATE);
+		clearState(CreatureState::DIZZY);
 
 	if (isBlinded() && blindRecoveryTime.isPast())
-		clearState(BLINDED_STATE);
+		clearState(CreatureState::BLINDED);
 
 	if (isStunned() && stunRecoveryTime.isPast())
-		clearState(STUNNED_STATE);
+		clearState(CreatureState::STUNNED);
 
 	if (isIntimidated() && intimidateRecoveryTime.isPast())
-		clearState(INTIMIDATED_STATE);
+		clearState(CreatureState::INTIMIDATED);
 
 	if (isPoisoned()) {
 		if (poisonRecoveryTime.isPast())
-			clearState(POISONED_STATE);
+			clearState(CreatureState::POISONED);
 		else doPoisonTick();
 	}
 
 	if (isDiseased()) {
 		if (diseasedRecoveryTime.isPast())
-			clearState(DISEASED_STATE);
+			clearState(CreatureState::DISEASED);
 		else doDiseaseTick();
 	}
 
 	if (isOnFire()) {
 		if (fireRecoveryTime.isPast())
-			clearState(ONFIRE_STATE);
+			clearState(CreatureState::ONFIRE);
 		else doFireTick();
 	}
 
 	if (isBleeding()) {
 		if (bleedingRecoveryTime.isPast())
-			clearState(BLEEDING_STATE);
+			clearState(CreatureState::BLEEDING);
 		else doBleedingTick();
 	}
 
@@ -2410,7 +2410,7 @@ void PlayerImplementation::doClone() {
 	if (isOvert())
 		setCovert();
 
-	setPosture(UPRIGHT_POSTURE);
+	setPosture(CreaturePosture::UPRIGHT);
 
 	rescheduleRecovery();
 }
@@ -2585,7 +2585,7 @@ void PlayerImplementation::doPeace() {
 	if (defenderList.size() != 0) {
 		//info("defenderList not empty, trying to set Peace State");
 
-		if (setState(PEACE_STATE))
+		if (setState(CreatureState::PEACE))
 			updateStates();
 	}
 
@@ -2622,7 +2622,7 @@ void PlayerImplementation::lootObject(Creature* creature, SceneObject* object) {
 
 void PlayerImplementation::calculateForceRegen() {
 	if (isJedi() && !playerObject->isOnFullForce()) {
-		if (getPosture() == SITTING_POSTURE)
+		if (getPosture() == CreaturePosture::SITTING)
 			changeForcePowerBar(playerObject->getForceRegen()); // probably shouldn't be here *shrug*
 		else // 3 second tick do a full regen every 10 secs ish
 			changeForcePowerBar( (int)((playerObject->getForceRegen() / 3.0) + .5));
@@ -2711,7 +2711,7 @@ void PlayerImplementation::toggleImmune() {
 		setPvpStatusBitmask(0);
 		sendSystemMessage("You are now immune to attacks.");
 	} else {
-		setPvpStatusBitmask(PLAYER_FLAG);
+		setPvpStatusBitmask(CreatureFlag::PLAYER);
 		sendSystemMessage("You are no longer immune to attacks.");
 	}
 
@@ -3410,11 +3410,11 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 }
 
 void PlayerImplementation::setOvert() {
-	if (!(pvpStatusBitmask & OVERT_FLAG))
-		pvpStatusBitmask |= OVERT_FLAG;
+	if (!(pvpStatusBitmask & CreatureFlag::OVERT))
+		pvpStatusBitmask |= CreatureFlag::OVERT;
 
-	if (pvpStatusBitmask & CHANGEFACTIONSTATUS_FLAG)
-		pvpStatusBitmask -= CHANGEFACTIONSTATUS_FLAG;
+	if (pvpStatusBitmask & CreatureFlag::CHANGEFACTIONSTATUS)
+		pvpStatusBitmask -= CreatureFlag::CHANGEFACTIONSTATUS;
 
 	characterMask &= ~COVERT;
 
@@ -3447,11 +3447,11 @@ void PlayerImplementation::setOvert() {
 }
 
 void PlayerImplementation::setCovert() {
-	if (pvpStatusBitmask & OVERT_FLAG)
-		pvpStatusBitmask -= OVERT_FLAG;
+	if (pvpStatusBitmask & CreatureFlag::OVERT)
+		pvpStatusBitmask -= CreatureFlag::OVERT;
 
-	if (pvpStatusBitmask & CHANGEFACTIONSTATUS_FLAG)
-		pvpStatusBitmask -= CHANGEFACTIONSTATUS_FLAG;
+	if (pvpStatusBitmask & CreatureFlag::CHANGEFACTIONSTATUS)
+		pvpStatusBitmask -= CreatureFlag::CHANGEFACTIONSTATUS;
 
 	characterMask |= COVERT;
 
@@ -3482,11 +3482,11 @@ void PlayerImplementation::setCovert() {
 }
 
 void PlayerImplementation::setOnLeave() {
-	if (pvpStatusBitmask & OVERT_FLAG)
-		pvpStatusBitmask -= OVERT_FLAG;
+	if (pvpStatusBitmask & CreatureFlag::OVERT)
+		pvpStatusBitmask -= CreatureFlag::OVERT;
 
-	if (pvpStatusBitmask & CHANGEFACTIONSTATUS_FLAG)
-		pvpStatusBitmask -= CHANGEFACTIONSTATUS_FLAG;
+	if (pvpStatusBitmask & CreatureFlag::CHANGEFACTIONSTATUS)
+		pvpStatusBitmask -= CreatureFlag::CHANGEFACTIONSTATUS;
 
 	if (faction != 0)
 		characterMask |= COVERT;
@@ -4026,7 +4026,7 @@ void PlayerImplementation::surrenderSkillBox(const string& name) {
 }
 
 void PlayerImplementation::newChangeFactionStatusEvent(uint8 stat, uint32 timer) {
-	pvpStatusBitmask |= CHANGEFACTIONSTATUS_FLAG;
+	pvpStatusBitmask |= CreatureFlag::CHANGEFACTIONSTATUS;
 
 	changeFactionEvent = new ChangeFactionStatusEvent(this, stat, timer);
 	server->addEvent(changeFactionEvent);
@@ -4105,7 +4105,7 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 		ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","sample_gone");
 		sendMessage(sysMessage);
 		return;
-	} else if (getPosture() != CreatureObjectImplementation::CROUCHED_POSTURE) {
+	} else if (getPosture() != CreaturePosture::CROUCHED) {
 		return;
 	}
 
@@ -4131,7 +4131,7 @@ void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) 
 			server->addEvent(sampleEvent, 20000);
 		} else {
 			sendSystemMessage("You do not have enough action to do that.");
-			changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+			changePosture(CreaturePosture::UPRIGHT);
 		}
 	}
 }
@@ -4182,7 +4182,7 @@ void PlayerImplementation::launchFirework(int animationType) {
 	firework->setZoneProcessServer(server);
 	firework->setDirection(0, 0, -0.64, 0.76);
 
-	setPosture(CROUCHED_POSTURE);
+	setPosture(CreaturePosture::CROUCHED);
 
 	try {
 		zone->lock();

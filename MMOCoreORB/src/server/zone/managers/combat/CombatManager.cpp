@@ -306,7 +306,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 				attacker->setDefender(target);
 
 			target->addDefender(attacker);
-			attacker->clearState(CreatureObjectImplementation::PEACE_STATE);
+			attacker->clearState(CreatureState::PEACE);
 		}
 
 		int damage = skill->doSkill(attacker, target, modifier, false);
@@ -533,13 +533,13 @@ void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
 		player->addToDuelList(targetPlayer);
 
 		if (targetPlayer->requestedDuelTo(player)) {
-			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureObjectImplementation::ATTACKABLE_FLAG + CreatureObjectImplementation::AGGRESSIVE_FLAG);
+			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
 			player->sendMessage(pvpstat);
 
 			ChatSystemMessage* csm = new ChatSystemMessage("duel", "accept_self", targetPlayer->getObjectID());
 			player->sendMessage(csm);
 
-			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureObjectImplementation::ATTACKABLE_FLAG + CreatureObjectImplementation::AGGRESSIVE_FLAG);
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
 			targetPlayer->sendMessage(pvpstat2);
 
 			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "accept_target", player->getObjectID());

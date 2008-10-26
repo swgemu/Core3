@@ -228,7 +228,7 @@ public:
 		if (creature->isPlayer())
 			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
 
-		sendEnhanceMessage(creature, creatureTarget, attribute, buffApplied);
+		sendEnhanceMessage(creature, creatureTarget, attribute, buffApplied, currentPower);
 
 		creature->changeMindBar(mindCost);
 
@@ -263,14 +263,14 @@ public:
 		player->sendSystemMessage(msgExperience.str());
 	}
 
-	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint8 attribute, int buffApplied) {
+	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint8 attribute, int buffApplied, int currentPower) {
 		string creatureName = creature->getCharacterName().c_str();
-		string creatureTargetName = creature->getCharacterName().c_str();
+		string creatureTargetName = creatureTarget->getCharacterName().c_str();
 		string attributeName = CreatureAttribute::getName(attribute, true);
 
 		stringstream msgPlayer, msgTarget, msgBuff;
 
-		if (buffApplied == 0) {
+		if (buffApplied == currentPower) {
 			if (creature == creatureTarget) {
 				msgPlayer << "You re-apply your ";
 			} else {

@@ -485,7 +485,7 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 
 			player->sendMessage(sysMessage);
 
-			player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+			player->changePosture(CreaturePosture::UPRIGHT);
 		} else {
 			if (player->getSampleTool() == NULL) {
 				unlock(doLock);
