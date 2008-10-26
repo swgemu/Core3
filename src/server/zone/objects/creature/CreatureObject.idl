@@ -252,6 +252,8 @@ interface CreatureObject implements SceneObject {
 	void removeGroup();
 
 	boolean isInAGroup();
+	
+	boolean isInGroupWith(CreatureObject creature);
 
 	void setGroupID(unsigned long gid);
 
@@ -430,6 +432,8 @@ interface CreatureObject implements SceneObject {
 	boolean hasWounds();
 	boolean hasWound(unsigned char attribute);
 	boolean hasShockWounds();
+	
+	unsigned int getWounds(unsigned char attribute);
 
 	boolean isAttackable();
 	boolean isAttackableBy(CreatureObject attacker);
@@ -767,6 +771,9 @@ interface CreatureObject implements SceneObject {
 	int healDamage(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
 	int healWound(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
 	int healEnhance(CreatureObject target, int amount, float duration, unsigned char attribute, boolean doBattleFatigue = true);
+	boolean curePoison(CreatureObject target, float effectiveness);
+	boolean cureDisease(CreatureObject target, float effectiveness);
+	boolean extinguishFire(CreatureObject target, float effectiveness);
 	boolean healState(CreatureObject target, unsigned long state);
 	boolean revive(CreatureObject target, boolean forcedChange = false);
 	boolean resurrect(CreatureObject target);

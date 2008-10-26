@@ -725,20 +725,24 @@ public:
 	virtual void doIncapacitate() {
 	}
 
-	bool isOnFullHealth() {
+	inline bool isOnFullHealth() {
 		return (getHealth() == getHealthMax() - getHealthWounds()) && (getAction() == getActionMax() - getActionWounds()) && (getMind() == getMindMax() - getMindWounds());
 	}
 
-	void setGroup(GroupObject* Group) {
+	inline void setGroup(GroupObject* Group) {
 		group = Group;
 	}
 
-	void removeGroup() {
+	inline void removeGroup() {
 		group = NULL;
 	}
 
-	bool isInAGroup() {
+	inline bool isInAGroup() {
 		return group != NULL;
+	}
+
+	inline bool isInGroupWith(CreatureObject* creature) {
+		return (creature->getGroupID() == groupId);
 	}
 
 	inline uint64 getGroupID() {
@@ -1909,6 +1913,31 @@ public:
 		}
 	}
 
+	inline uint32 getWounds(uint8 attribute) {
+		switch (attribute) {
+		case CreatureAttribute::HEALTH:
+			return getHealthWounds();
+		case CreatureAttribute::ACTION:
+			return getActionWounds();
+		case CreatureAttribute::MIND:
+			return getMindWounds();
+		case CreatureAttribute::STRENGTH:
+			return getStrengthWounds();
+		case CreatureAttribute::CONSTITUTION:
+			return getConstitutionWounds();
+		case CreatureAttribute::QUICKNESS:
+			return getQuicknessWounds();
+		case CreatureAttribute::STAMINA:
+			return getStaminaWounds();
+		case CreatureAttribute::FOCUS:
+			return getFocusWounds();
+		case CreatureAttribute::WILLPOWER:
+			return getWillpowerWounds();
+		default:
+			return 0;
+		}
+	}
+
 	inline bool isRevivable() {
 		return (health > 0 && action > 0 && mind > 0);
 	}
@@ -2564,6 +2593,9 @@ public:
 	int healDamage(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue = true);
 	int healWound(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue = true);
 	int healEnhance(CreatureObject* target, int amount, float duration, uint8 attribute, bool doBattleFatigue = true);
+	bool curePoison(CreatureObject* target, float effectiveness);
+	bool cureDisease(CreatureObject* target, float effectiveness);
+	bool extinguishFire(CreatureObject* target, float effectiveness);
 	bool healState(CreatureObject* target, uint64 state);
 	bool revive(CreatureObject* target, bool forcedChange = false);
 	bool resurrect(CreatureObject* target);

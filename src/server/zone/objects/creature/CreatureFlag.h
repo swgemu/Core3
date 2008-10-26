@@ -56,7 +56,8 @@ public:
 	static const uint32 TEF = 0x08;
 	static const uint32 PLAYER = 0x10;
 	static const uint32 ENEMY = 0x20;
-	static const uint32 DUEL = 0x40;
+	static const uint32 CHANGEFACTIONSTATUS = 0x40;
+	static const uint32 BLINK_GREEN = 0x80;
 };
 
 

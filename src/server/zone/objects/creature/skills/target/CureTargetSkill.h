@@ -75,6 +75,36 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, CurePack* curePack) {
+		switch (state) {
+		case CreatureState::POISONED:
+			if (!creatureTarget->isPoisoned()) {
+				if (creature == creatureTarget)
+					creature->sendSystemMessage("healing_response", "healing_response_82"); //You are not poisoned.
+				else
+					creature->sendSystemMessage("healing_response", "healing_response_84", creatureTarget->getObjectID()); //%NT is not poisoned.
+				return false;
+			}
+			break;
+		case CreatureState::DISEASED:
+			if (!creatureTarget->isDiseased()) {
+				if (creature == creatureTarget)
+					creature->sendSystemMessage("healing_response", "healing_response_90"); //You are not diseased.
+				else
+					creature->sendSystemMessage("healing_response", "healing_response_92", creatureTarget->getObjectID()); //%NT is not diseased.
+				return false;
+			}
+			break;
+		case CreatureState::ONFIRE:
+			if (!creatureTarget->isOnFire()) {
+				if (creature == creatureTarget)
+					creature->sendSystemMessage("healing_response", "healing_response_86"); //You are not on fire.
+				else
+					creature->sendSystemMessage("healing_response", "healing_response_88", creatureTarget->getObjectID()); //%NT is not on fire.
+				return false;
+			}
+			break;
+		}
+
 		if (!creature->canTreatConditions()) {
 			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
 			return false;
@@ -183,9 +213,24 @@ public:
 		if (!canPerformSkill(creature, creatureTarget, curePack))
 			return 0;
 
-		if (!cureCondition(creature, creatureTarget)) {
+		switch (state) {
+		case CreatureState::DISEASED:
+			if (!creature->cureDisease(creatureTarget, curePack->getEffectiveness()))
+				return 0;
+			break;
+		case CreatureState::POISONED:
+			if (!creature->curePoison(creatureTarget, curePack->getEffectiveness()))
+				return 0;
+			break;
+		case CreatureState::ONFIRE:
+			if (!creature->extinguishFire(creatureTarget, curePack->getEffectiveness()))
+				return 0;
+			break;
+		default:
 			return 0;
 		}
+
+		sendCureMessage(creature, creatureTarget);
 
 		creature->changeMindBar(mindCost);
 		creature->deactivateConditionTreatment();
@@ -201,85 +246,35 @@ public:
 		return 0;
 	}
 
-
-	//TODO: This needs restructuring bad!
-	bool cureCondition(CreatureObject* creature, CreatureObject* creatureTarget) {
+	void sendCureMessage(CreatureObject* creature, CreatureObject* creatureTarget) {
+		stringstream msgTarget, msgPlayer;
+		string msgSelf;
 		switch (state) {
-			case CreatureState::POISONED:
-			{
-				if (creatureTarget->isPoisoned()) {
-					creatureTarget->clearState(CreatureState::POISONED);
-					if (creature == creatureTarget) {
-						creature->sendSystemMessage("healing_response", "poison_antidote_self"); //You apply poison antidote to yourself.
-					} else {
-						stringstream msgTarget, msgPlayer;
-						msgTarget << "You apply poison antidote to " << creatureTarget->getCharacterName().c_str() << ".";
-						creature->sendSystemMessage(msgTarget.str());
-						msgPlayer << creature->getCharacterName().c_str() << " applies poison antidote to you.";
-						creatureTarget->sendSystemMessage(msgPlayer.str());
-					}
-					creatureTarget->updateStates();
-					return true;
-				} else {
-					if (creature == creatureTarget)
-						creature->sendSystemMessage("healing_response", "healing_response_82"); //You are not poisoned.
-					else
-						creature->sendSystemMessage("healing_response", "healing_response_84", creatureTarget->getObjectID()); //%NT is not poisoned.
-				}
-				break;
-			}
-			case CreatureState::DISEASED:
-			{
-				if (creatureTarget->isDiseased()) {
-					creatureTarget->clearState(CreatureState::DISEASED);
-					if (creature == creatureTarget) {
-						creature->sendSystemMessage("healing_response", "disease_antidote_self"); //You apply disease antidote to yourself.
-					} else {
-						stringstream msgTarget, msgPlayer;
-						msgTarget << "You apply disease antidote to " << creatureTarget->getCharacterName().c_str() << ".";
-						creature->sendSystemMessage(msgTarget.str());
-						msgPlayer << creature->getCharacterName().c_str() << " applies disease antidote to you.";
-						creatureTarget->sendSystemMessage(msgPlayer.str());
-					}
-					creatureTarget->updateStates();
-					return true;
-				} else {
-					if (creature == creatureTarget)
-						creature->sendSystemMessage("healing_response", "healing_response_90"); //You are not diseased.
-					else
-						creature->sendSystemMessage("healing_response", "healing_response_92", creatureTarget->getObjectID()); //%NT is not diseased.
-				}
-				break;
-			}
-			case CreatureState::ONFIRE:
-			{
-				if (creatureTarget->isOnFire()) {
-					creatureTarget->clearState(CreatureState::ONFIRE);
-					if (creature == creatureTarget) {
-						creature->sendSystemMessage("healing_response", "blanket"); //You cover yourself in a suppressive blanket.
-					} else {
-						stringstream msgTarget, msgPlayer;
-						msgTarget << "You attempt to suppress the flames on " << creatureTarget->getCharacterName().c_str() << ".";
-						creature->sendSystemMessage(msgTarget.str());
-						msgPlayer << creature->getCharacterName().c_str() << " covers you in a suppressive blanket.";
-						creatureTarget->sendSystemMessage(msgPlayer.str());
-					}
-					creatureTarget->updateStates();
-					return true;
-				} else {
-					if (creature == creatureTarget)
-						creature->sendSystemMessage("healing_response", "healing_response_86"); //You are not on fire.
-					else
-						creature->sendSystemMessage("healing_response", "healing_response_88", creatureTarget->getObjectID()); //%NT is not on fire.
-				}
-				break;
-			}
-			case CreatureState::INVALID:
-			default:
-				return false;
-			}
+		case CreatureState::POISONED:
+			msgPlayer << "You apply poison antidote to " << creatureTarget->getCharacterName().c_str() << ".";
+			msgTarget << creature->getCharacterName().c_str() << " applies poison antidote to you.";
+			msgSelf = "poison_antidote_self";
+			break;
+		case CreatureState::DISEASED:
+			msgPlayer << "You apply disease antidote to " << creatureTarget->getCharacterName().c_str() << ".";
+			msgTarget << creature->getCharacterName().c_str() << " applies disease antidote to you.";
+			msgSelf = "disease_antidote_self";
+			break;
+		case CreatureState::ONFIRE:
+			msgPlayer << "You attempt to suppress the flames on " << creatureTarget->getCharacterName().c_str() << ".";
+			msgTarget << creature->getCharacterName().c_str() << " covers you in a suppressive blanket.";
+			msgSelf = "blanket";
+			break;
+		default:
+			return;
+		}
 
-		return false;
+		if (creature != creatureTarget) {
+			creature->sendSystemMessage(msgPlayer.str());
+			creatureTarget->sendSystemMessage(msgTarget.str());
+		} else {
+			creature->sendSystemMessage("healing_response", msgSelf);
+		}
 	}
 
 	void awardXp(CreatureObject* creature, string type, int power) {
