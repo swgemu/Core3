@@ -43,7 +43,8 @@
 probot = Creature:new {
       objectName = "probot",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "imperial",
+      faction = "imperial", 
+	  factionPoints = 20,
       gender = "",
 
       stfName = "Imperial Probot droid",

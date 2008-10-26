@@ -43,7 +43,8 @@
 imperialColonel = Creature:new {
       objectName = "imperialColonel",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "imperial",
+      faction = "imperial", 
+	  factionPoints = 20,
       gender = "",
 
       name = "Crackdown Imperial Colonel",

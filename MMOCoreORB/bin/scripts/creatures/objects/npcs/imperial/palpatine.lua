@@ -43,7 +43,8 @@
 palpatine = Creature:new {
       objectName = "palpatine",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "imperial",
+      faction = "imperial", 
+	  factionPoints = 20, 	  
       gender = "",
 
       stfName = "Emperor Palpatine",
