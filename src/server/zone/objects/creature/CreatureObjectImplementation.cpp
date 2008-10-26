@@ -918,11 +918,11 @@ void CreatureObjectImplementation::setDiseasedState(int str, int type, int durat
 void CreatureObjectImplementation::doPoisonTick() {
 	if (nextPoisonTick.isPast()) {
 		if (poisonDotType == 1)
-			changeHealthBar(-poisonDotStrength);
+			changeHealthBar(-poisonDotStrength, true);
 		else if (poisonDotType == 4)
-			changeActionBar(-poisonDotStrength);
+			changeActionBar(-poisonDotStrength, true);
 		else
-			changeMindBar(-poisonDotStrength);
+			changeMindBar(-poisonDotStrength, true);
 
 		playEffect("clienteffect/dot_poisoned.cef");
 
@@ -934,11 +934,11 @@ void CreatureObjectImplementation::doPoisonTick() {
 void CreatureObjectImplementation::doBleedingTick() {
 	if (nextBleedingTick.isPast()) {
 		if (bleedingDotType == 1)
-			changeHealthBar(-bleedingDotStrength);
+			changeHealthBar(-bleedingDotStrength, true);
 		else if (bleedingDotType == 4)
-			changeActionBar(-bleedingDotStrength);
+			changeActionBar(-bleedingDotStrength, true);
 		else
-			changeMindBar(-bleedingDotStrength);
+			changeMindBar(-bleedingDotStrength, true);
 
 		playEffect("clienteffect/dot_bleeding.cef");
 
@@ -975,13 +975,13 @@ void CreatureObjectImplementation::doFireTick() {
 	if (nextFireTick.isPast()) {
 		if (fireDotType == 1){
 			changeHealthWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
-			changeHealthBar(-fireDotStrength);
+			changeHealthBar(-fireDotStrength, true);
 		} else if (fireDotType == 4) {
 			changeActionWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
-			changeActionBar(-fireDotStrength);
+			changeActionBar(-fireDotStrength, true);
 		} else {
 			changeMindWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
-			changeMindBar(-fireDotStrength);
+			changeMindBar(-fireDotStrength, true);
 		}
 
 		changeShockWounds(1 + (shockWounds * fireDotStrength / 5000));
