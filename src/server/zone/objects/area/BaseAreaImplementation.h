@@ -96,6 +96,18 @@ public:
 		}
 	}
 
+	void removeArea(Area * ar) {
+		if (!this->contains(ar))
+			return;
+
+		switch (ar->getType()) {
+		case ACTIVE:
+			activeAreas.removeElement((ActiveArea *) ar);
+		case NOBUILD:
+			noBuildAreas.removeElement((NoBuildArea *) ar);
+		}
+	}
+
 	NoBuildArea * getNoBuildArea(float x, float y) {
 		for (uint32 i = 0; i < noBuildAreas.size(); i++) {
 			NoBuildArea * temp = noBuildAreas.get(i);

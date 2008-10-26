@@ -73,6 +73,8 @@ public:
 
 	void addNoBuildArea(NoBuildArea* area);
 
+	void deleteNoBuildArea(NoBuildArea* area);
+
 	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason = 0);
 
 protected:
@@ -132,6 +134,8 @@ public:
 	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason);
 
 	void addNoBuildArea(NoBuildArea* area);
+
+	void deleteNoBuildArea(NoBuildArea* area);
 
 	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason);
 

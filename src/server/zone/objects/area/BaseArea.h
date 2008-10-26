@@ -31,6 +31,8 @@ public:
 
 	void addArea(Area* ar);
 
+	void removeArea(Area* ar);
+
 	NoBuildArea* getNoBuildArea(float x, float y);
 
 	ActiveArea* getNoActiveArea(float x, float y);
@@ -58,6 +60,8 @@ public:
 	bool containsNoBuildAreas();
 
 	void addArea(Area* ar);
+
+	void removeArea(Area* ar);
 
 	NoBuildArea* getNoBuildArea(float x, float y);
 

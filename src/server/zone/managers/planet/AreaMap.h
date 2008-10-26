@@ -133,7 +133,6 @@ public:
 		return baseAreas[index.xIndex][index.yIndex];
 	}
 
-	//TODO: Fix this after feature freeze. It doesn't take into account all possible base areas
 	void addArea(Area * area) {
 		BaseArea * ba = getBaseArea(area->getMinX(), area->getMaxY());
 
@@ -157,5 +156,31 @@ public:
 			baX->addArea(area);
 		}
 	}
+
+	void removeArea(Area * area) {
+		BaseArea * ba = getBaseArea(area->getMinX(), area->getMaxY());
+
+		ba->removeArea(area);
+
+		BaseArea * baX = ba;
+		BaseArea * baY = ba;
+
+		while (!baX->contains(area->getMaxX(), area->getMaxY()) &&
+			   !baY->contains(area->getMaxX(), area->getMinY())) {
+			baY = baX;
+			while (area->getMinY() < baY->getMinY()) {
+				baY = getBaseArea(baY->getMinX(), baY->getMinY() - 1);
+				baY->removeArea(area);
+			}
+
+			if (baX->contains(area->getMaxX(), area->getMaxY()))
+				continue;
+
+			baX = getBaseArea(baX->getMaxX() + 1, baX->getMaxY());
+			baX->removeArea(area);
+		}
+	}
+
+
 };
 #endif /* AREAMAP_H_ */
