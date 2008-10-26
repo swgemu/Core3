@@ -119,6 +119,10 @@ public:
 
 	void setRandomMovement(bool value);
 
+	unsigned int getFPValue();
+
+	void setFPValue(unsigned int value);
+
 protected:
 	Creature(DummyConstructorParameter* param);
 
@@ -226,6 +230,10 @@ public:
 	void setLootCreated(bool value);
 
 	void setRandomMovement(bool value);
+
+	unsigned int getFPValue();
+
+	void setFPValue(unsigned int value);
 
 protected:
 	string _param0_setObjectFileName__string_;

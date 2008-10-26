@@ -633,6 +633,8 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		creature->setFaction(String::hashCode(faction));
 
+		creature->setFPValue(result.getIntField("factionPoints"));
+
 		if (!stfname.empty())
 			creature->setCharacterName(stfname);
 		else if (objcrc == 0xBA7F23CD)

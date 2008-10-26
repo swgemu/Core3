@@ -1932,6 +1932,16 @@ void PlayerImplementation::deathblow(Player* killer) {
 	float currentRating = (float)getPvpRating();
 	float opponentRating = (float)killer->getPvpRating();
 
+	string mfaction = (faction == String::hashCode("imperial")) ? "imperial" : "rebel";
+	string kfaction = (killer->getFaction() == String::hashCode("imperial")) ? "imperial" : "rebel";
+
+
+	if (!isInDuelWith(killer) && hatesFaction(killer->getFaction())) {
+		subtractFactionPoints(mfaction, 30);
+		killer->subtractFactionPoints(mfaction, 45);
+		killer->addFactionPoints(kfaction, 45);
+	}
+
 	//Using the formula: N = P1 - ( (1/5) * (P1 - P2 + 100) ), where P1 - P2 + 100 >= 0
 	int pointsLost = (int)round((1.0f/5.0f) * (currentRating - opponentRating + 100.0f));
 
