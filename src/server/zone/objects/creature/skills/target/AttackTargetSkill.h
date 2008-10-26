@@ -496,7 +496,7 @@ public:
 		if (knockdownStateChance != 0) {
 			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
 				if (80 > System::random(100))
-					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+					targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 				return;
 			}
 
@@ -509,7 +509,7 @@ public:
 					if (targetCreature->isMounted())
 						targetCreature->dismount();
 
-					targetCreature->setPosture(CreatureObjectImplementation::KNOCKEDDOWN_POSTURE);
+					targetCreature->setPosture(CreaturePosture::KNOCKEDDOWN);
 					targetCreature->updateKnockdownRecovery();
 					targetCreature->sendSystemMessage("cbt_spam", "posture_knocked_down");
 
@@ -519,7 +519,7 @@ public:
 						combatEquil = 100;
 
 					if ((combatEquil >> 1) > (int) System::random(100))
-						targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+						targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 				}
 			} else
 				creature->sendSystemMessage("cbt_spam", "knockdown_fail");
@@ -530,7 +530,7 @@ public:
 		if (postureDownStateChance != 0) {
 			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
 				if (80 > System::random(100))
-					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+					targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 				return;
 			}
 
@@ -544,10 +544,10 @@ public:
 					if (targetCreature->isMounted())
 						targetCreature->dismount();
 
-					if (targetCreature->getPosture() == CreatureObjectImplementation::UPRIGHT_POSTURE)
-						targetCreature->setPosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+					if (targetCreature->getPosture() == CreaturePosture::UPRIGHT)
+						targetCreature->setPosture(CreaturePosture::CROUCHED);
 					else
-						targetCreature->setPosture(CreatureObjectImplementation::PRONE_POSTURE);
+						targetCreature->setPosture(CreaturePosture::PRONE);
 
 					targetCreature->updatePostureDownRecovery();
 					targetCreature->sendSystemMessage("cbt_spam", "posture_down");
@@ -558,7 +558,7 @@ public:
 						combatEquil = 100;
 
 					if ((combatEquil >> 1) > (int) System::random(100))
-						targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+						targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 				}
 			} else
 				creature->sendSystemMessage("cbt_spam", "posture_change_fail");
@@ -576,11 +576,11 @@ public:
 				if (targetCreature->isMounted())
 					targetCreature->dismount();
 
-				if (targetCreature->getPosture() == CreatureObjectImplementation::PRONE_POSTURE) {
-					targetCreature->setPosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+				if (targetCreature->getPosture() == CreaturePosture::PRONE) {
+					targetCreature->setPosture(CreaturePosture::CROUCHED);
 					targetCreature->updatePostureUpRecovery();
-				} else if (targetCreature->getPosture() ==  CreatureObjectImplementation::CROUCHED_POSTURE) {
-					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+				} else if (targetCreature->getPosture() ==  CreaturePosture::CROUCHED) {
+					targetCreature->setPosture(CreaturePosture::UPRIGHT);
 					targetCreature->updatePostureUpRecovery();
 				}
 			}

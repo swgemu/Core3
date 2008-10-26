@@ -1165,7 +1165,7 @@ void CreatureImplementation::resetState() {
 	zone = creatureManager->getZone();
 
 	creatureState = ACTIVE;
-	postureState = UPRIGHT_POSTURE;
+	postureState = CreaturePosture::UPRIGHT;
 
 	health = healthMax;
 	action = actionMax;
@@ -1386,7 +1386,7 @@ void CreatureImplementation::doIncapacitate() {
 		return;
 
 	deagro();
-	setPosture(DEAD_POSTURE);
+	setPosture(CreaturePosture::DEAD);
 
 	if((isImperial() || isRebel()) && getLootOwner()->isPlayer()) {
 		Player * lootOwner = (Player *) getLootOwner();
@@ -1434,7 +1434,7 @@ void CreatureImplementation::createHarvestList() {
 }
 
 void CreatureImplementation::doStandUp() {
-	setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+	setPosture(CreaturePosture::UPRIGHT, true);
 }
 
 void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
@@ -1663,41 +1663,41 @@ void CreatureImplementation::doStatesRecovery() {
 		doStandUp();
 
 	if (isDizzied() && dizzyRecoveryTime.isPast())
-		clearState(DIZZY_STATE);
+		clearState(CreatureState::DIZZY);
 
 	if (isBlinded() && blindRecoveryTime.isPast())
-		clearState(BLINDED_STATE);
+		clearState(CreatureState::BLINDED);
 
 	if (isStunned() && stunRecoveryTime.isPast())
-		clearState(STUNNED_STATE);
+		clearState(CreatureState::STUNNED);
 
 	if (isIntimidated() && intimidateRecoveryTime.isPast())
-		clearState(INTIMIDATED_STATE);
+		clearState(CreatureState::INTIMIDATED);
 
 	if (isPoisoned()) {
 		if (poisonRecoveryTime.isPast())
-			clearState(POISONED_STATE);
+			clearState(CreatureState::POISONED);
 		else
 			doPoisonTick();
 	}
 
 	if (isDiseased()) {
 		if (diseasedRecoveryTime.isPast())
-			clearState(DISEASED_STATE);
+			clearState(CreatureState::DISEASED);
 		else
 			doDiseaseTick();
 	}
 
 	if (isOnFire()) {
 		if (fireRecoveryTime.isPast())
-			clearState(ONFIRE_STATE);
+			clearState(CreatureState::ONFIRE);
 		else
 			doFireTick();
 	}
 
 	if (isBleeding()) {
 		if (bleedingRecoveryTime.isPast())
-			clearState(BLEEDING_STATE);
+			clearState(CreatureState::BLEEDING);
 		else
 			doBleedingTick();
 	}

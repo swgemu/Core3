@@ -527,6 +527,8 @@ public:
 
 	unsigned int getWounds(unsigned char attribute);
 
+	unsigned char getNextWoundedAttribute(bool h = true, bool a = true, bool m = false);
+
 	bool isAttackable();
 
 	bool isAttackableBy(CreatureObject* attacker);
@@ -1641,6 +1643,8 @@ public:
 	bool hasShockWounds();
 
 	unsigned int getWounds(unsigned char attribute);
+
+	unsigned char getNextWoundedAttribute(bool h, bool a, bool m);
 
 	bool isAttackable();
 

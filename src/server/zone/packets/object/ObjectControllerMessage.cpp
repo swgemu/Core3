@@ -466,7 +466,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		player->changePosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+		player->changePosture(CreaturePosture::CROUCHED);
 		break;
 	case 0x335676c7: // equip, change weapon.
 		target = pack->parseLong();
@@ -486,7 +486,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		player->changePosture(CreatureObjectImplementation::PRONE_POSTURE);
+		player->changePosture(CreaturePosture::PRONE);
 		break;
 	case (0xB719FA26):
 		if (player->isMounted()) {
@@ -503,7 +503,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			player->clearQueueAction(actioncntr, 0, 1, 16);
 			return;
 		}
-		player->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+		player->changePosture(CreaturePosture::UPRIGHT);
 		return;
 	case (0x468B3802):
 		target = pack->parseLong();
@@ -2046,7 +2046,7 @@ void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {
 	pack->parseUnicode(waypoint);
 
 	if (waypoint.size() == 0) {
-		player->changePosture(CreatureObjectImplementation::SITTING_POSTURE);
+		player->changePosture(CreaturePosture::SITTING);
 	} else {
 		Zone* zone = player->getZone();
 
@@ -2073,7 +2073,7 @@ void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {
 			if (z < -8192 || z> 8192)
 			z = 0;
 
-			player->setPosture(CreatureObjectImplementation::SITTING_POSTURE, false, true, x, y, z);
+			player->setPosture(CreaturePosture::SITTING, false, true, x, y, z);
 		} catch (...) {
 			cout << "Unreported exception in ObjectControllerMessage::parseServerSit\n";
 		}

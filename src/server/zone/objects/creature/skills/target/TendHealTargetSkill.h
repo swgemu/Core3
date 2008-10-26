@@ -102,9 +102,9 @@ public:
 			return 0;
 		}
 
-		uint8 attribute = CreatureAttribute::getAttribute(modifier);
-
 		CreatureObject* creatureTarget = (CreatureObject*) target;
+
+		uint8 attribute = creatureTarget->getNextWoundedAttribute();
 
 		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
 			creatureTarget = creature;
@@ -226,9 +226,10 @@ public:
 			msgPlayer << "You heal yourself for " << msgBody.str() << msgTail.str();
 			player->sendSystemMessage(msgPlayer.str());
 		} else {
-			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.str() << msgTail.str();
+			msgPlayer << "You heal " << playerTarget->getCharacterName().c_str() << " for " << msgBody.str() << msgTail.str();
+			msgTarget << player->getCharacterName().c_str() << " heals you for " << msgBody.str() << msgTail.str();
+
 			player->sendSystemMessage(msgPlayer.str());
-			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.str() << msgTail.str();
 			playerTarget->sendSystemMessage(msgTarget.str());
 		}
 	}

@@ -413,69 +413,6 @@ public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCELERATION = 1.549f;
 
-	static const uint8 INVALID_POSTURE = 0xFF;
-	static const uint8 UPRIGHT_POSTURE = 0;
-	static const uint8 CROUCHED_POSTURE = 1;
-	static const uint8 PRONE_POSTURE = 2;
-	static const uint8 SNEAKING_POSTURE = 3;
-	static const uint8 BLOCKING_POSTURE = 4;
-	static const uint8 CLIMBING_POSTURE = 5;
-	static const uint8 FLYING_POSTURE = 6;
-	static const uint8 LYINGDOWN_POSTURE = 7;
-	static const uint8 SITTING_POSTURE = 8;
-	static const uint8 SKILLANIMATING_POSTURE = 9;
-	static const uint8 DRIVINGVEHICLE_POSTURE = 10;
-	static const uint8 RIDINGCREATURE_POSTURE = 11;
-	static const uint8 KNOCKEDDOWN_POSTURE = 12;
-	static const uint8 INCAPACITATED_POSTURE = 13;
-	static const uint8 DEAD_POSTURE = 14;
-
-	static const uint64 INVALID_STATE = 0x00;
-	static const uint64 COVER_STATE = 0x01;
-	static const uint64 COMBAT_STATE = 0x02;
-	static const uint64 PEACE_STATE = 0x04;
-	static const uint64 AIMING_STATE = 0x08;
-	static const uint64 ALERT_STATE = 0x10;
-	static const uint64 BERSERK_STATE = 0x20;
-	static const uint64 FEIGNDEATH_STATE = 0x40;
-	static const uint64 COMBATATTITUDEEVASIVE_STATE = 0x80;
-	static const uint64 COMBATATTITUDENORMAL_STATE = 0x100;
-	static const uint64 COMBATATTITUDEAGGRESSIVE_STATE = 0x200;
-	static const uint64 TUMBLING_STATE = 0x400;
-	static const uint64 RALLIED_STATE = 0x800;
-	static const uint64 STUNNED_STATE = 0x1000;
-	static const uint64 BLINDED_STATE = 0x2000;
-	static const uint64 DIZZY_STATE = 0x4000;
-	static const uint64 INTIMIDATED_STATE = 0x8000;
-	static const uint64 IMMOBILIZED_STATE = 0x10000;
-	static const uint64 FROZEN_STATE = 0x20000;
-	static const uint64 SWIMMING_STATE = 0x40000;
-	static const uint64 SITTINGONCHAIR_STATE = 0x80000;
-	static const uint64 CRAFTING_STATE = 0x100000;
-	static const uint64 GLOWINGJEDI_STATE = 0x200000;
-	static const uint64 MASKSCENT_STATE = 0x400000;
-	static const uint64 POISONED_STATE = 0x800000;
-	static const uint64 BLEEDING_STATE = 0x1000000;
-	static const uint64 DISEASED_STATE = 0x2000000;
-	static const uint64 ONFIRE_STATE = 0x4000000;
-	static const uint64 RIDINGMOUNT_STATE = 0x8000000;
-	static const uint64 MOUNTEDCREATURE_STATE = 0x10000000;
-	static const uint64 PILOTSHIP_STATE = 0x20000000;
-	static const uint64 SHIPOPERATIONS_STATE = 0x40000000;
-	static const uint64 SHIPGUNNER_STATE = 0x80000000;
-	//static const uint64 SHIPINTERIOR_STATE = 0x100000000;
-	//static const uint64 PILOTINGPOBSHIP_STATE = 0x200000000;
-
-	static const uint32 NULL_FLAG = 0x00;
-	static const uint32 ATTACKABLE_FLAG = 0x01;
-	static const uint32 AGGRESSIVE_FLAG = 0x02;
-	static const uint32 OVERT_FLAG = 0x04;
-	static const uint32 TEF_FLAG = 0x08;
-	static const uint32 PLAYER_FLAG = 0x10;
-	static const uint32 ENEMY_FLAG = 0x20;
-	static const uint32 CHANGEFACTIONSTATUS_FLAG = 0x40;
-	static const uint32 BLINK_GREEN_FLAG = 0x80;
-
 public:
 	CreatureObjectImplementation(uint64 oid);
 
@@ -628,7 +565,7 @@ public:
 	virtual bool isAttackable();
 
 	virtual void handleDeath() {
-		setPosture(DEAD_POSTURE);
+		setPosture(CreaturePosture::DEAD);
 	}
 
 	bool isAttackableBy(CreatureObject* creature);
@@ -742,7 +679,7 @@ public:
 	}
 
 	inline bool isInGroupWith(CreatureObject* creature) {
-		return (creature->getGroupID() == groupId);
+		return (group != NULL && creature->getGroupID() == groupId);
 	}
 
 	inline uint64 getGroupID() {
@@ -754,75 +691,75 @@ public:
 	}
 
 	inline bool isIncapacitated() {
-		return postureState == INCAPACITATED_POSTURE;
+		return postureState == CreaturePosture::INCAPACITATED;
 	}
 
 	inline bool isDead() {
-		return postureState == DEAD_POSTURE;
+		return postureState == CreaturePosture::DEAD;
 	}
 
 	inline bool isKnockedDown() {
-		return postureState == KNOCKEDDOWN_POSTURE;
+		return postureState == CreaturePosture::KNOCKEDDOWN;
 	}
 
 	inline bool isKneeled() {
-		return postureState == CROUCHED_POSTURE;
+		return postureState == CreaturePosture::CROUCHED;
 	}
 
 	inline bool isProne() {
-		return postureState == PRONE_POSTURE;
+		return postureState == CreaturePosture::PRONE;
 	}
 
 	inline bool isSitting() {
-		return postureState == SITTING_POSTURE;
+		return postureState == CreaturePosture::SITTING;
 	}
 
 	inline bool isInCombat() {
-		return stateBitmask & COMBAT_STATE;
+		return stateBitmask & CreatureState::COMBAT;
 	}
 
 	inline bool isDizzied() {
-		return stateBitmask & DIZZY_STATE;
+		return stateBitmask & CreatureState::DIZZY;
 	}
 
 	inline bool isStunned() {
-		return stateBitmask & STUNNED_STATE;
+		return stateBitmask & CreatureState::STUNNED;
 	}
 
 	inline bool isBlinded() {
-		return stateBitmask & BLINDED_STATE;
+		return stateBitmask & CreatureState::BLINDED;
 	}
 
 	inline bool isIntimidated() {
-		return stateBitmask & INTIMIDATED_STATE;
+		return stateBitmask & CreatureState::INTIMIDATED;
 	}
 
 	inline bool isDiseased() {
-		return stateBitmask & DISEASED_STATE;
+		return stateBitmask & CreatureState::DISEASED;
 	}
 
 	inline bool isPoisoned() {
-		return stateBitmask & POISONED_STATE;
+		return stateBitmask & CreatureState::POISONED;
 	}
 
 	inline bool isBleeding() {
-		return stateBitmask & BLEEDING_STATE;
+		return stateBitmask & CreatureState::BLEEDING;
 	}
 
 	inline bool isOnFire() {
-		return stateBitmask & ONFIRE_STATE;
+		return stateBitmask & CreatureState::ONFIRE;
 	}
 
 	inline bool isMounted() {
-		return stateBitmask & RIDINGMOUNT_STATE;
+		return stateBitmask & CreatureState::RIDINGMOUNT;
 	}
 
 	inline bool isRidingCreature() {
-		return stateBitmask & MOUNTEDCREATURE_STATE;
+		return stateBitmask & CreatureState::MOUNTEDCREATURE;
 	}
 
 	inline bool isPeaced() {
-		return stateBitmask & PEACE_STATE;
+		return stateBitmask & CreatureState::PEACE;
 	}
 
 	inline bool isMeditating() {
@@ -1805,15 +1742,15 @@ public:
 	}
 
 	inline uint32 getHealthDamage() {
-		return healthMax - health;
+		return healthMax - healthWounds - health;
 	}
 
 	inline uint32 getActionDamage() {
-		return actionMax - action;
+		return actionMax - actionWounds - action;
 	}
 
 	inline uint32 getMindDamage() {
-		return mindMax - mind;
+		return mindMax - mindWounds - mind;
 	}
 
 	inline uint32 getShockWounds() {
@@ -1938,6 +1875,37 @@ public:
 		}
 	}
 
+	inline uint8 getNextWoundedAttribute(bool h = true, bool a = true, bool m = false) {
+		if (h) {
+			if (healthWounds > 0)
+				return CreatureAttribute::HEALTH;
+			else if (strengthWounds > 0)
+				return CreatureAttribute::STRENGTH;
+			else if (constitutionWounds > 0)
+				return CreatureAttribute::CONSTITUTION;
+		}
+
+		if (a) {
+			if (actionWounds > 0)
+				return CreatureAttribute::ACTION;
+			else if (quicknessWounds > 0)
+				return CreatureAttribute::QUICKNESS;
+			else if (staminaWounds > 0)
+				return CreatureAttribute::STAMINA;
+		}
+
+		if (m) {
+			if (mindWounds > 0)
+				return CreatureAttribute::MIND;
+			else if (focusWounds > 0)
+				return CreatureAttribute::FOCUS;
+			else if (willpowerWounds > 0)
+				return CreatureAttribute::WILLPOWER;
+		}
+
+		return CreatureAttribute::UNKNOWN;
+	}
+
 	inline bool isRevivable() {
 		return (health > 0 && action > 0 && mind > 0);
 	}
@@ -1948,15 +1916,15 @@ public:
 	}
 
 	inline bool hasHealthDamage() {
-		return (healthMax - health > 0);
+		return (healthMax - healthWounds - health > 0);
 	}
 
 	inline bool hasActionDamage() {
-		return (actionMax - action > 0);
+		return (actionMax - actionWounds - action > 0);
 	}
 
 	inline bool hasMindDamage() {
-		return (mindMax - mind > 0);
+		return (mindMax - mindWounds - mind > 0);
 	}
 
 	inline bool hasDamage() {
@@ -1984,23 +1952,23 @@ public:
 	}
 
 	inline bool isOvert() {
-		return pvpStatusBitmask & OVERT_FLAG;
+		return pvpStatusBitmask & CreatureFlag::OVERT;
 	}
 
 	inline bool isAgressive() {
-		return pvpStatusBitmask & AGGRESSIVE_FLAG;
+		return pvpStatusBitmask & CreatureFlag::AGGRESSIVE;
 	}
 
 	inline bool isTEF() {
-		return pvpStatusBitmask & TEF_FLAG;
+		return pvpStatusBitmask & CreatureFlag::TEF;
 	}
 
 	inline bool isPlayerFlag() {
-		return pvpStatusBitmask & PLAYER_FLAG;
+		return pvpStatusBitmask & CreatureFlag::PLAYER;
 	}
 
 	inline bool isEnemy() {
-		return pvpStatusBitmask & ENEMY_FLAG;
+		return pvpStatusBitmask & CreatureFlag::ENEMY;
 	}
 
 	inline uint32 getFaction() {

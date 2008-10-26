@@ -434,6 +434,7 @@ interface CreatureObject implements SceneObject {
 	boolean hasShockWounds();
 	
 	unsigned int getWounds(unsigned char attribute);
+	unsigned char getNextWoundedAttribute(boolean h = true, boolean a = true, boolean m = false);
 
 	boolean isAttackable();
 	boolean isAttackableBy(CreatureObject attacker);
