@@ -85,6 +85,12 @@ public:
 
 	void setPosition(float x, float z, float y);
 
+	void setPositionX(float x);
+
+	void setPositionZ(float z);
+
+	void setPositionY(float y);
+
 	void setDirection(float x, float z, float y, float w);
 
 	void generateAttributes(Player* player);
@@ -290,6 +296,12 @@ public:
 	void initializePosition(float x, float z, float y);
 
 	void setPosition(float x, float z, float y);
+
+	void setPositionX(float x);
+
+	void setPositionZ(float z);
+
+	void setPositionY(float y);
 
 	void setDirection(float x, float z, float y, float w);
 

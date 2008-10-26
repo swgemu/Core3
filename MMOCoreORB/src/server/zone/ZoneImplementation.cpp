@@ -91,8 +91,8 @@ void ZoneImplementation::startManagers() {
 
 	creatureManager->start();
 
-	/*if (zoneID == 8)
-		heightMap.load("planets/tatooine/tatooine.hmap");*/
+	if (zoneID == 8)
+		heightMap.load("planets/tatooine/tatooine.hmap");
 }
 
 void ZoneImplementation::stopManagers() {
@@ -135,10 +135,10 @@ SceneObject* ZoneImplementation::deleteCachedObject(SceneObject* obj) {
 }
 
 float ZoneImplementation::getHeight(float x, float y) {
-	//if (zoneID != 8)
+	if (zoneID != 8)
 		return 0.0f;
 
-	//return heightMap.getHeight(x, y);
+	return heightMap.getHeight(x, y);
 }
 
 ChatManager* ZoneImplementation::getChatManager() {
