@@ -318,7 +318,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 	}
 }
 
-void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
+void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bool doLock, bool sendSelf) {
 	if (zone == NULL) {
 		delete msg;
 		return;
@@ -335,7 +335,12 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 
-				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+                if (range == 128 || isInRange(player, range) || player->getParent() != NULL) { 
+                    if (this->isPlayer()) { 
+                        Player* sender = (Player*) this->_getStub(); 
+            			if (!sendSelf && (player == sender)) 
+                			continue; 
+                    }
 					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
 					player->sendMessage(msg->clone());
 				}

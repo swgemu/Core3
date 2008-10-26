@@ -1,0 +1,31 @@
+import "../../scene/SceneObject";
+
+import "../../creature/CreatureObject";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+interface GenericItem implements TangibleObject {
+
+
+	GenericItem(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int gitype) {
+		super(oid, int tp);
+	}
+
+	GenericItem(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int gitype) {
+		super(oid, int tp);
+	}
+
+	GenericItem(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn, int gitype) {
+		super(unsigned long oid, int tp);
+	}
+
+	void generateAttributes(SceneObject obj);
+
+	void setGenericItemType(int gitype);
+
+	int getGenericItemType();
+
+	boolean isDice();
+}
