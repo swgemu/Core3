@@ -81,12 +81,25 @@ void BaseArea::addArea(Area* ar) {
 		((BaseAreaImplementation*) _impl)->addArea(ar);
 }
 
-NoBuildArea* BaseArea::getNoBuildArea(float x, float y) {
+void BaseArea::removeArea(Area* ar) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addObjectParameter(ar);
+
+		method.executeWithVoidReturn();
+	} else
+		((BaseAreaImplementation*) _impl)->removeArea(ar);
+}
+
+NoBuildArea* BaseArea::getNoBuildArea(float x, float y) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -100,7 +113,7 @@ ActiveArea* BaseArea::getNoActiveArea(float x, float y) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
@@ -133,9 +146,12 @@ Packet* BaseAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		addArea((Area*) inv->getObjectParameter());
 		break;
 	case 10:
-		resp->insertLong(getNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		removeArea((Area*) inv->getObjectParameter());
 		break;
 	case 11:
+		resp->insertLong(getNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		break;
+	case 12:
 		resp->insertLong(getNoActiveArea(inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
 	default:
@@ -159,6 +175,10 @@ bool BaseAreaAdapter::containsNoBuildAreas() {
 
 void BaseAreaAdapter::addArea(Area* ar) {
 	return ((BaseAreaImplementation*) impl)->addArea(ar);
+}
+
+void BaseAreaAdapter::removeArea(Area* ar) {
+	return ((BaseAreaImplementation*) impl)->removeArea(ar);
 }
 
 NoBuildArea* BaseAreaAdapter::getNoBuildArea(float x, float y) {

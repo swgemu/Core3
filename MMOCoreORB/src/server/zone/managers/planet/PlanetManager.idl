@@ -97,5 +97,6 @@ interface PlanetManager {
 	boolean isNoBuildArea(boolean x, boolean y);
 	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long uid, unsigned char reason = 0);
 	void addNoBuildArea(NoBuildArea area);
+	void deleteNoBuildArea(NoBuildArea area);
 	NoBuildArea createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason = 0);
 }
