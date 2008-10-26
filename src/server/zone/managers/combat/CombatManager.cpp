@@ -437,7 +437,7 @@ bool CombatManager::canAttack(Player* player, Player* targetPlayer) {
 	if (!player->isInDuelWith(targetPlayer, false)) {
 		if (!player->isOvert() || !targetPlayer->isOvert()) {
 			return false;
-		} else if (player->getFaction() == targetPlayer->getFaction()) {
+		} else if (!player->hatesFaction(targetPlayer->getFaction())) {
 			return false;
 		}
 	}

@@ -150,4 +150,8 @@ interface Creature implements CreatureObject {
 	void setLootCreated(boolean value);
 
 	void setRandomMovement(boolean value);
+	
+	unsigned int getFPValue();
+	
+	void setFPValue(unsigned int value);
 }

@@ -1388,6 +1388,15 @@ void CreatureImplementation::doIncapacitate() {
 	deagro();
 	setPosture(DEAD_POSTURE);
 
+	if((isImperial() || isRebel()) && getLootOwner()->isPlayer()) {
+		Player * lootOwner = (Player *) getLootOwner();
+		string pfaction = (lootOwner->getFaction() == String::hashCode("imperial")) ? "imperial" : "rebel";
+		string myfaction = (faction == String::hashCode("imperial")) ? "imperial" : "rebel";
+
+		lootOwner->addFactionPoints(pfaction, fpValue);
+		lootOwner->subtractFactionPoints(myfaction, fpValue);
+	}
+
 	createHarvestList();
 
 	scheduleDespawnCreature(180000);
