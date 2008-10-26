@@ -148,7 +148,7 @@ public:
 	virtual void removeFromZone(bool doLock = true);
 	virtual void removeFromBuilding(BuildingObject* building);
 
-	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true, bool sendSelf = true);
 	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 
 	virtual void sendTo(Player* player, bool doClose = true) {

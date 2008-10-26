@@ -148,6 +148,8 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
 		server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
+        server/zone/objects/tangible/generic/GenericItem.cpp \ 
+        server/zone/objects/tangible/generic/Dice.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
 		server/zone/objects/tangible/Inventory.cpp \
@@ -288,6 +290,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp \
+        server/zone/objects/tangible/generic/GenericItemImplementation.cpp \ 
+        server/zone/objects/tangible/generic/DiceImplementation.cpp \ 
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \

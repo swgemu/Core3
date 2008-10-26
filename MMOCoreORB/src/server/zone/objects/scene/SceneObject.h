@@ -119,7 +119,7 @@ public:
 
 	void removeFromBuilding(BuildingObject* building);
 
-	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true);
+	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true, bool sendSelf = true);
 
 	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);
 
@@ -323,7 +323,7 @@ public:
 
 	void removeFromBuilding(BuildingObject* building);
 
-	void broadcastMessage(BaseMessage* msg, int range, bool doLock);
+	void broadcastMessage(BaseMessage* msg, int range, bool doLock, bool sendSelf);
 
 	void broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock);
 
