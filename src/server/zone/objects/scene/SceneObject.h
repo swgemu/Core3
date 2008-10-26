@@ -23,6 +23,8 @@ class ZoneClientSession;
 
 class Player;
 
+class Weapon;
+
 class CreatureObject;
 
 class BuildingObject;
@@ -216,6 +218,14 @@ public:
 	bool isAttackableBy(CreatureObject* creature);
 
 	bool isInANoBuildArea();
+
+	void addDamageDone(CreatureObject* creature, int damage);
+
+	void dropDamageDone(CreatureObject* creature);
+
+	int getTotalDamage();
+
+	void disseminateXp(int levels);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -420,6 +430,14 @@ public:
 	bool isAttackableBy(CreatureObject* creature);
 
 	bool isInANoBuildArea();
+
+	void addDamageDone(CreatureObject* creature, int damage);
+
+	void dropDamageDone(CreatureObject* creature);
+
+	int getTotalDamage();
+
+	void disseminateXp(int levels);
 
 protected:
 	string _param0_info__string_bool_;

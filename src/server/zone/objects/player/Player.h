@@ -351,6 +351,16 @@ public:
 
 	string& saveXp();
 
+	int getXpTypeCap(string& xptype);
+
+	void loadXpTypeCap();
+
+	void getXpTypeProse(string& xptype, string& prosetype);
+
+	void setPlayerLevel();
+
+	int getPlayerLevel();
+
 	void removeFromDuelList(Player* targetPlayer);
 
 	void addToDuelList(Player* targetPlayer);
@@ -1067,6 +1077,16 @@ public:
 
 	string& saveXp();
 
+	int getXpTypeCap(string& xptype);
+
+	void loadXpTypeCap();
+
+	void getXpTypeProse(string& xptype, string& prosetype);
+
+	void setPlayerLevel();
+
+	int getPlayerLevel();
+
 	void removeFromDuelList(Player* targetPlayer);
 
 	void addToDuelList(Player* targetPlayer);
@@ -1481,6 +1501,9 @@ protected:
 	string _param0_addXp__string_int_bool_;
 	string _param0_removeXp__string_int_bool_;
 	string _param0_loadXp__string_;
+	string _param0_getXpTypeCap__string_;
+	string _param0_getXpTypeProse__string_string_;
+	string _param1_getXpTypeProse__string_string_;
 	string _param0_sendSystemMessage__string_;
 	unicode _param0_sendSystemMessage__unicode_;
 	string _param0_sendSystemMessage__string_string_long_;

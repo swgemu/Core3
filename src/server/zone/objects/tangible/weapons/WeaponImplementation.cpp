@@ -160,6 +160,8 @@ void WeaponImplementation::initialize() {
 
 	sliced = false;
 
+	setXpType();
+
 	stringstream loggingname;
 	loggingname << "Weapon = 0x" << objectID;
 	setLoggingName(loggingname.str());
@@ -1201,4 +1203,58 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 
 	generatePowerup(alm);
 
+}
+
+void WeaponImplementation::setXpType() {
+	switch (getType()) {
+	case UNARMED:
+		xpType = "combat_meleespecialize_unarmed";
+		break;
+	case ONEHANDED:
+		xpType = "combat_meleespecialize_onehand";
+		break;
+	case TWOHANDED:
+		xpType = "combat_meleespecialize_twohand";
+		break;
+	case POLEARM:
+		xpType = "combat_meleespecialize_polearm";
+		break;
+	case PISTOL:
+		xpType = "combat_rangedspecialize_pistol";
+		break;
+	case CARBINE:
+		xpType = "combat_rangedspecialize_carbine";
+		break;
+	case RIFLE:
+		xpType = "combat_rangedspecialize_rifle";
+		break;
+	case ONEHANDSABER:
+		xpType = "combat_meleespecialize_onehandlightsaber";
+		break;
+	case TWOHANDSABER:
+		xpType = "combat_meleespecialize_twohandlightsaber";
+		break;
+	case POLEARMSABER:
+		xpType = "combat_meleespecialize_polearmlightsaber";
+		break;
+	case RIFLEBEAM:
+	case RIFLEFLAMETHROWER:
+	case RIFLELIGHTNING:
+	case RIFLEACIDBEAM:
+	case HEAVYACIDBEAM:
+	case HEAVYLIGHTNINGBEAM:
+	case HEAVYPARTICLEBEAM:
+	case HEAVYROCKETLAUNCHER:
+	case HEAVYLAUNCHER:
+		xpType = "combat_rangedspecialize_heavy";
+		break;
+	case GRENADE:
+		xpType = "combat_general";
+		break;
+	default:
+		xpType = "";
+		return;
+	};
+
+	return;
 }

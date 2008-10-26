@@ -51,12 +51,12 @@ class OneHandedMeleeWeaponImplementation : public OneHandedMeleeWeaponServant {
 
 public:
 	OneHandedMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: OneHandedMeleeWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::ONEHANDMELEEWEAPON, eqp) {
+			: OneHandedMeleeWeaponServant(objid, tempcrc, n, tempn, ONEHANDED, eqp) {
 		initialize();
 	}
 
 	OneHandedMeleeWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: OneHandedMeleeWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::ONEHANDMELEEWEAPON, eqp) {
+			: OneHandedMeleeWeaponServant(creature, temp, n, tempn, ONEHANDED, eqp) {
 		initialize();
 	}
 

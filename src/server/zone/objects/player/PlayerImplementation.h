@@ -156,7 +156,9 @@ class PlayerImplementation : public PlayerServant {
 	SkillBoxMap skillBoxes;
 	SortedVector<SkillBox*> skillBoxesToSave;
 	VectorMap<string, Certification*> certificationList;
+	VectorMap<string, int> xpCapList;
 	int skillPoints;
+	int playerLevel;
 
 	// Draft Schematics
 	uint32 draftSchematicUpdateCount;
@@ -1082,6 +1084,15 @@ public:
 	}
 	string& saveXp() {
 		return playerObject->saveExperience();
+	}
+	int getXpTypeCap(string xptype);
+	void loadXpTypeCap();
+	void setPlayerLevel();
+	void getXpTypeProse(string xptype, string& prosetype) {
+		prosetype = server->getProfessionManager()->getSkillXpTypeProse(xptype);
+	}
+	int getPlayerLevel() {
+		return playerLevel;
 	}
 
 	void addSkillBox(SkillBox* skillBox, bool updateClient = false);

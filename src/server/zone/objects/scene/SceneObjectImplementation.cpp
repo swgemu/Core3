@@ -52,6 +52,8 @@ which carries forward this exception.
 
 #include "../../packets.h"
 
+#include "../tangible/weapons/WeaponImplementation.h"
+
 #include "SceneObjectImplementation.h"
 
 #include "engine/core/ManagedObjectImplementation.h"
@@ -69,6 +71,10 @@ SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), Q
 	directionX = directionZ = directionY = 0;
 
 	parent = NULL;
+	
+	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
+	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 
 	linkType = 0x04;
 
@@ -94,6 +100,10 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 	directionZ = directionX = directionW = 0;
 
 	parent = NULL;
+	
+	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
+	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 
 	linkType = 0x04;
 
@@ -455,5 +465,177 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 		error("exception SceneObjectImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
 
 		//building->unlock(doLock);
+	}
+}
+
+void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int damage) {
+	//Weapon *weap = creature->getWeapon();
+	uint64 weapid;
+	if (creature->getWeapon() == NULL)
+		weapid = creature->getObjectID();
+	else
+		weapid = creature->getWeapon()->getObjectID();
+			
+	if (weaponDamageList.contains(weapid)) {
+		int newdamage = weaponDamageList.get(weapid);
+		newdamage += damage;
+		weaponDamageList.drop(weapid);
+		weaponDamageList.put(weapid, newdamage);
+		
+		// shouldn't happen
+		if (!weaponCreatureList.contains(weapid) || weaponCreatureList.get(weapid) != creature)
+			weaponCreatureList.put(weapid, creature);
+	} else {
+		weaponDamageList.put(weapid, damage);
+		weaponCreatureList.put(weapid, creature);
+	}
+	
+	if (creature->isInAGroup() && creature->isPlayer()) {
+		Player *player = (Player*)creature;
+		GroupObject *group = player->getGroupObject();
+		if (groupDamageList.contains(group)) {
+			int groupdamage = groupDamageList.get(group);
+			groupdamage += damage;
+			groupDamageList.drop(group);
+			groupDamageList.put(group, groupdamage);
+		} else {
+			groupDamageList.put(group, damage);
+		}
+	}
+}
+
+void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
+	int damage = 0;
+	//Weapon *weap = creature->getWeapon();
+	uint64 weapid;
+	if (creature->getWeapon() == NULL)
+		weapid = creature->getObjectID();
+	else
+		weapid = creature->getWeapon()->getObjectID();
+	
+	for (int i = 0; i < weaponCreatureList.size(); i++) {
+		VectorMapEntry<uint64, CreatureObject*> *entry = weaponCreatureList.SortedVector<VectorMapEntry<uint64, CreatureObject*>*>::get(i);
+		if (entry->getValue() == creature) {
+			damage += weaponDamageList.get(weapid);
+			weaponCreatureList.drop(entry->getKey());
+			weaponDamageList.drop(entry->getKey());
+		}
+	}
+	
+	if (creature->isInAGroup() && creature->isPlayer()) {
+		Player *player = (Player*)creature;
+		GroupObject *group = player->getGroupObject();
+		
+		if (groupDamageList.contains(group)) {
+			int groupdamage = groupDamageList.get(group);
+			groupdamage -= damage;
+			groupDamageList.drop(group);
+			groupDamageList.put(group, groupdamage);
+		}
+	}	
+
+}
+
+int SceneObjectImplementation::getTotalDamage() {
+	int damage = 0;
+	
+	for (int i = 0; i < weaponDamageList.size(); i++) {
+		damage += weaponDamageList.get(i);
+	}
+	
+	return damage;
+}
+
+void SceneObjectImplementation::disseminateXp(int levels) {
+	VectorMap<Player*, int> playerxp;
+	playerxp.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	int total = getTotalDamage();
+	
+	for (int i = 0; i < weaponDamageList.size(); i++) {
+		VectorMapEntry<uint64, int> *entry = weaponDamageList.SortedVector<VectorMapEntry<uint64, int>*>::get(i);
+		CreatureObject *creature = weaponCreatureList.get(entry->getKey());
+		
+		// don't do any of this if this isn't a player
+		if (!creature->isPlayer())
+			continue;
+		
+		Player* player = (Player*)creature;
+			
+		int totaldamage = 0;
+		for (int k = 0; k < weaponCreatureList.size(); k++) {
+			if (weaponCreatureList.get(k) == creature) {
+				VectorMapEntry<uint64, CreatureObject*> *crentry = weaponCreatureList.SortedVector<VectorMapEntry<uint64, CreatureObject*>*>::get(k);
+				totaldamage += weaponDamageList.get(crentry->getKey());
+			}
+		}
+		
+		SceneObject* sco = zone->lookupObject(entry->getKey());
+		Weapon* weap;
+		
+		if (sco == NULL)
+			sco = player->getPlayerItem(entry->getKey());
+			
+		if (sco == NULL)
+			continue;
+		
+		if ( sco->isTangible() ) {
+			TangibleObject *tano = (TangibleObject*)sco;
+			if (tano->isWeapon()) {
+				weap = (Weapon*)tano;
+			}
+		} else if ( sco->isPlayer() ) {
+			weap = NULL;
+		} else
+			continue;
+			
+		string xptype;
+		if (weap == NULL)
+			xptype = "combat_meleespecialize_unarmed";
+		else
+			xptype =(weap->getXpType());
+		int damage = entry->getValue();
+		int xpadd = 0;
+		
+		int playerlevel = player->getPlayerLevel();
+		int multiplier = 1;
+		if (playerlevel > 10) 
+			multiplier = playerlevel / 10;
+		
+		if (player->isInAGroup()) { // use group calculation
+			GroupObject *group = player->getGroupObject();
+			if (isNonPlayerCreature()) {
+				xpadd = (int)ceil((1-(total-groupDamageList.get(group))/total)*(1-(totaldamage-damage)/totaldamage)*40*(levels)*(multiplier)*(1+(group->getGroupSize()+5)*.01));
+				if (levels > 25)
+					xpadd += (playerlevel - levels) * 60;
+				if (player->isJedi())
+					xpadd /= 3;
+			}
+		} else { // use solo calculation
+			if (isNonPlayerCreature()) {
+				xpadd = (int)ceil((1-(total-damage)/total)*40*(levels)*(multiplier));
+				if (levels > 25)
+					xpadd += (playerlevel - levels) * 60;
+				if (player->isJedi())
+					xpadd /= 3;
+			}
+		}
+		
+		player->addXp(xptype, xpadd, true);
+		
+		if (playerxp.contains(player)) {
+			int xptemp = playerxp.get(player);
+			playerxp.drop(player);
+			playerxp.put(player, xptemp);
+		} else
+			playerxp.put(player, xpadd);
+	}
+	
+	for (int j = 0; j < playerxp.size(); j++) {
+		VectorMapEntry<Player*, int> *entry = playerxp.SortedVector<VectorMapEntry<Player*, int>*>::get(j);
+		Player *player = entry->getKey();
+		int xp = entry->getValue();
+		string combatxp("combat_general");
+		
+		player->addXp(combatxp, xp/10, true);
 	}
 }

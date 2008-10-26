@@ -51,12 +51,12 @@ class SpecialHeavyRangedWeaponImplementation : public SpecialHeavyRangedWeaponSe
 	
 public:
 	SpecialHeavyRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: SpecialHeavyRangedWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::SPECIALHEAVYWEAPON, eqp) {
+			: SpecialHeavyRangedWeaponServant(objid, tempcrc, n, tempn, RIFLEFLAMETHROWER, eqp) {
 		initialize();
 	}
 
 	SpecialHeavyRangedWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: SpecialHeavyRangedWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::SPECIALHEAVYWEAPON, eqp) {
+			: SpecialHeavyRangedWeaponServant(creature, temp, n, tempn, RIFLEFLAMETHROWER, eqp) {
 		initialize();
 	}
 

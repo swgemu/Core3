@@ -51,12 +51,12 @@ class PolearmMeleeWeaponImplementation : public PolearmMeleeWeaponServant {
 
 public:
 	PolearmMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
-			: PolearmMeleeWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::POLEARM, eqp) {
+			: PolearmMeleeWeaponServant(objid, tempcrc, n, tempn, POLEARM, eqp) {
 		initialize();
 	}
 
 	PolearmMeleeWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
-			: PolearmMeleeWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::POLEARM, eqp) {
+			: PolearmMeleeWeaponServant(creature, temp, n, tempn, POLEARM, eqp) {
 		initialize();
 	}
 

@@ -1385,6 +1385,7 @@ void CreatureImplementation::doIncapacitate() {
 	if (isMount())
 		return;
 
+	disseminateXp(getLevel());
 	deagro();
 	setPosture(CreaturePosture::DEAD);
 

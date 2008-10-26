@@ -71,6 +71,7 @@ class SkillBox {
 	SortedVector<SkillBox*> requiredSkills;
 	Vector<string> skillPreclusions;
 	string skillXpType;
+	string skillXpTypeProse;
 
 	int skillXpCost;
 	int skillXpCap;
@@ -185,6 +186,10 @@ public:
 		skillXpType = skill;
 	}
 
+	void setSkillXpTypeProse(const string& skill) {
+		skillXpTypeProse = skill;
+	}
+
 	void setSkillXpCost(int xp) {
 		skillXpCost = xp;
 	}
@@ -241,8 +246,16 @@ public:
 		return skillXpType;
 	}
 
+	inline string& getSkillXpTypeProse() {
+		return skillXpTypeProse;
+	}
+
 	inline int getSkillXpCost() {
 		return skillXpCost;
+	}
+
+	inline int getSkillXpCap() {
+		return skillXpCap;
 	}
 
 	int getRequiredSkillsSize() {

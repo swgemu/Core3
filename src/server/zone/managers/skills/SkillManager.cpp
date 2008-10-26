@@ -91,8 +91,8 @@ void SkillManager::loadSkillBox(SkillBox* skillBox, PlayerImplementation* player
 	player->addSkillBox(skillBox, updateClient);
 	player->addSkillPoints(skillBox->getSkillPointsRequired());
 	
-	if (skillBox->getSkillXpType().size() > 1)
-		player->addXp(skillBox->getSkillXpType(), skillBox->getSkillXpCost(), updateClient);
+	//if (skillBox->getSkillXpType().size() > 1)
+	//	player->addXp(skillBox->getSkillXpType(), skillBox->getSkillXpCost(), updateClient);
 	
 	loadSkillCommands(skillBox, player, updateClient);
 	loadSkillCertifications(skillBox, player, updateClient);
@@ -159,8 +159,8 @@ void SkillManager::removeSkillBox(SkillBox* skillBox, PlayerImplementation* play
 	player->removeSkillBox(skillBox, updateClient);
 	player->removeSkillPoints(skillBox->getSkillPointsRequired());
 	
-	if (skillBox->getSkillXpType().size() > 1)
-		player->addXp(skillBox->getSkillXpType(), -skillBox->getSkillXpCost(), updateClient);
+	//if (skillBox->getSkillXpType().size() > 1)
+	//	player->addXp(skillBox->getSkillXpType(), -skillBox->getSkillXpCost(), updateClient);
 		
 	removeSkillCommands(skillBox, player, false);
 	removeSkillCertifications(skillBox, player, updateClient);

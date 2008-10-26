@@ -151,6 +151,8 @@ protected:
 
 	bool sliced;
 
+	string xpType;
+
 public:
 
 	static const int MELEE = 0x10;
@@ -226,6 +228,8 @@ public:
 	void generateDotAttributes(class AttributeListMessage* alm);
 
 	void generatePowerup(class AttributeListMessage* alm);
+
+	void setXpType();
 
 	void setWeaponStats(int modifier);
 
@@ -871,6 +875,10 @@ public:
 
 	inline string& getCert() {
 		return cert;
+	}
+
+	inline string& getXpType() {
+		return xpType;
 	}
 
 	friend class CombatManager;

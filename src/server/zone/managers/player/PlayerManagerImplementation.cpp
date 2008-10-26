@@ -489,6 +489,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->resetHAMBars(false);
 
 	player->loadProfessions();
+	player->loadXp(character->getString(60)); // put this here to avoid cap confusions
 
 	player->setForcePowerBar(player->getForcePowerMax());
 

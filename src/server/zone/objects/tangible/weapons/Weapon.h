@@ -149,6 +149,8 @@ public:
 
 	string& getCert();
 
+	string& getXpType();
+
 	void setType(int type);
 
 	void setDamageType(int type);
@@ -229,12 +231,15 @@ public:
 
 	void setCertified(bool crt);
 
+	void setXpType();
+
 protected:
 	Weapon(DummyConstructorParameter* param);
 
 	virtual ~Weapon();
 
 	string _return_getCert;
+	string _return_getXpType;
 
 	friend class WeaponHelper;
 };
@@ -371,6 +376,8 @@ public:
 
 	string& getCert();
 
+	string& getXpType();
+
 	void setType(int type);
 
 	void setDamageType(int type);
@@ -450,6 +457,8 @@ public:
 	void setCert(string& certification);
 
 	void setCertified(bool crt);
+
+	void setXpType();
 
 protected:
 	string _param0_setCert__string_;

@@ -57,6 +57,8 @@ import "../../ZoneClientSession";
 
 import "../player/Player";
 
+import "../tangible/weapons/Weapon";
+
 import "../creature/CreatureObject";
 
 import "../building/BuildingObject";
@@ -242,4 +244,10 @@ interface SceneObject implements ManagedObject {
 	boolean isAttackableBy(CreatureObject creature);
 
 	boolean isInANoBuildArea();
+
+	// experience functions
+	void addDamageDone(CreatureObject creature, int damage);
+	void dropDamageDone(CreatureObject creature);
+	int getTotalDamage();
+	void disseminateXp(int levels);
 }

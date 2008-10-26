@@ -313,6 +313,11 @@ interface Player implements CreatureObject {
 	void removeXp(string xpType, int xp, boolean updateClient);
 	void loadXp(const string xpStr);
 	string saveXp();
+	int getXpTypeCap(string xptype);
+	void loadXpTypeCap();
+	void getXpTypeProse(string xptype, string& prosetype);
+	void setPlayerLevel();
+	int getPlayerLevel();
 
 	//DuelList manipulation methods
 	void removeFromDuelList(Player targetPlayer);

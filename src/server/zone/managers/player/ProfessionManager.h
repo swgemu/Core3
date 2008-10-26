@@ -63,6 +63,8 @@ class ProfessionManager : public Mutex {
 	VectorMap<string, SkillBox*> skillBoxMap;
 	VectorMap<string, Certification*> certificationMap;
 
+	VectorMap<string, string> xpTypeList;
+
 	ProfessionMap professionMap;
 
 private:
@@ -76,6 +78,7 @@ private:
 	void loadSkillCommands(SkillBox* skillBox, string& skillCommands);
 	void loadSkillMods(SkillBox* skillBox, string& skillMods);
 	void loadDraftSchematics(SkillBox* skillBox, string& grantedDraftSchematics);
+	void loadXpTypes();
 
 public:
 
@@ -103,6 +106,10 @@ public:
 
 	inline SkillBox* getSkillBox(string prof) {
 		return skillBoxMap.get(prof);
+	}
+
+	inline string getSkillXpTypeProse(string xptype) {
+		return xpTypeList.get(xptype);
 	}
 
 	friend class SkillManager;

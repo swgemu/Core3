@@ -68,6 +68,8 @@ ProfessionManager::ProfessionManager(ZoneProcessServerImplementation* serv)
 	skillBoxMap.setNullValue(NULL);
 	certificationMap.setNullValue(NULL);
 
+	loadXpTypes();
+
 	loadProfessionsFromDatabase();
 }
 
@@ -379,6 +381,7 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 	loadSkillPreclusions(skillBox, skillPreclusions);
 
 	skillBox->setSkillXpType(result->getString(13));
+	skillBox->setSkillXpTypeProse(xpTypeList.get(skillBox->getSkillXpType()));
 	skillBox->setSkillXpCost(result->getInt(14));
 	skillBox->setSkillXpCap(result->getInt(15));
 
@@ -507,4 +510,53 @@ void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, string& grantedD
 			skillBox->addGrantedSchematic(draftSchematic);
 		}
 	}
+}
+
+void ProfessionManager::loadXpTypes() {
+	xpTypeList.put("imagedesigner", "Image Designer");
+	xpTypeList.put("music", "Musician");
+	xpTypeList.put("dance", "Dancing");
+	xpTypeList.put("entertainer_healing", "Entertainer Healing");
+	xpTypeList.put("scout", "Scouting");
+	xpTypeList.put("trapping", "Trapping");
+	xpTypeList.put("camp", "Wilderness Survival");
+	xpTypeList.put("medical", "Medical");
+	xpTypeList.put("crafting_medicine_general", "Medicine Crafting");
+	xpTypeList.put("crafting_general", "General Crafting");
+	xpTypeList.put("resource_harvesting_inorganic", "Surveying");
+	xpTypeList.put("combat_meleespecialize_unarmed", "Unarmed Combat");
+	xpTypeList.put("combat_meleespecialize_onehand", "Onehanded Weapons");
+	xpTypeList.put("combat_meleespecialize_twohand", "Twohanded Weapons");
+	xpTypeList.put("combat_meleespecialize_polearm", "Polearm Weapons");
+	xpTypeList.put("combat_rangedspecialize_rifle", "Rifle Weapons");
+	xpTypeList.put("combat_rangedspecialize_pistol", "Pistol Weapons");
+	xpTypeList.put("combat_rangedspecialize_carbine", "Carbine Weapons");
+	xpTypeList.put("combat_general", "Combat");
+	xpTypeList.put("creaturehandler", "Creature Handling");
+	xpTypeList.put("crafting_bio_engineer_creature", "Bio-Engineer Crafting");
+	xpTypeList.put("bio_engineer_dna_harvesting", "DNA Sampling");
+	xpTypeList.put("crafting_clothing_armor", "Armor Crafting");
+	xpTypeList.put("crafting_weapons_general", "Weapon Crafting");
+	xpTypeList.put("crafting_food_general", "Food Crafting");
+	xpTypeList.put("crafting_clothing_general", "Tailoring");
+	xpTypeList.put("crafting_structure_general", "Structure Crafting");
+	xpTypeList.put("crafting_droid_general", "Droid Crafting");
+	xpTypeList.put("merchant", "Merchant");
+	xpTypeList.put("slicing", "Slicing");
+	xpTypeList.put("crafting_spice", "Spice Crafting");
+	xpTypeList.put("bountyhunter", "Bounty Hunter");
+	xpTypeList.put("combat_rangedspecialize_heavy", "Heavy Weapons");
+	xpTypeList.put("squadleader", "Squad Leadership");
+	xpTypeList.put("political", "Political");
+	xpTypeList.put("jedi_general", "Jedi");
+	xpTypeList.put("combat_meleespecialize_onehandlightsaber", "Onehanded Lightsaber");
+	xpTypeList.put("combat_meleespecialize_twohandlightsaber", "Twohanded Lightsaber");
+	xpTypeList.put("combat_meleespecialize_polearmlightsaber", "Polearm Lightsaber");
+	xpTypeList.put("fs_combat", "Force-sensitive Combat");
+	xpTypeList.put("fs_reflex", "Force-sensitive Reflex");
+	xpTypeList.put("fs_crafting", "Force-sensitive Crafting");
+	xpTypeList.put("fs_senses", "Force-sensitive Senses");
+	xpTypeList.put("force_rank_xp", "Force Rank");
+	xpTypeList.put("shipwright", "Shipwright");
+	xpTypeList.put("space_combat_general", "Starship Combat");
 }
