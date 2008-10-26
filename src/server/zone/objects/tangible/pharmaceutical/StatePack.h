@@ -27,9 +27,9 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	void setStateAffected(int state);
+	void setState(unsigned long long value);
 
-	int getStateAffected();
+	unsigned long long getState();
 
 protected:
 	StatePack(DummyConstructorParameter* param);
@@ -49,9 +49,9 @@ public:
 
 	void generateAttributes(SceneObject* obj);
 
-	void setStateAffected(int state);
+	void setState(unsigned long long value);
 
-	int getStateAffected();
+	unsigned long long getState();
 
 };
 

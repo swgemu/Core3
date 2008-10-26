@@ -491,7 +491,7 @@ public:
 	void sendSystemMessage(unicode& message);
 
 	//Medic & Doctor System Messages
-	void sendBFMessage(CreatureObject* target);
+	void sendBattleFatigueMessage(CreatureObject* target);
 	void sendHealMessage(CreatureObject* target, int h, int a, int m);
 
 	//item methods

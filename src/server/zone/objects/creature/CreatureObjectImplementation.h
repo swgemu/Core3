@@ -65,7 +65,10 @@ which carries forward this exception.
 #include "buffs/BuffList.h"
 #include "buffs/BuffObject.h"
 
-#include "Attribute.h"
+#include "CreatureAttribute.h"
+#include "CreatureState.h"
+#include "CreaturePosture.h"
+#include "CreatureFlag.h"
 
 #include "../guild/Guild.h"
 
@@ -1883,23 +1886,23 @@ public:
 
 	inline bool hasWound(uint8 attribute) {
 		switch (attribute) {
-		case Attribute::HEALTH:
+		case CreatureAttribute::HEALTH:
 			return (getHealthWounds() > 0);
-		case Attribute::ACTION:
+		case CreatureAttribute::ACTION:
 			return (getActionWounds() > 0);
-		case Attribute::MIND:
+		case CreatureAttribute::MIND:
 			return (getMindWounds() > 0);
-		case Attribute::STRENGTH:
+		case CreatureAttribute::STRENGTH:
 			return (getStrengthWounds() > 0);
-		case Attribute::CONSTITUTION:
+		case CreatureAttribute::CONSTITUTION:
 			return (getConstitutionWounds() > 0);
-		case Attribute::QUICKNESS:
+		case CreatureAttribute::QUICKNESS:
 			return (getQuicknessWounds() > 0);
-		case Attribute::STAMINA:
+		case CreatureAttribute::STAMINA:
 			return (getStaminaWounds() > 0);
-		case Attribute::FOCUS:
+		case CreatureAttribute::FOCUS:
 			return (getFocusWounds() > 0);
-		case Attribute::WILLPOWER:
+		case CreatureAttribute::WILLPOWER:
 			return (getWillpowerWounds() > 0);
 		default:
 			return false;
@@ -2560,6 +2563,7 @@ public:
 	// Medic & Doctor
 	int healDamage(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue = true);
 	int healWound(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue = true);
+	int healEnhance(CreatureObject* target, int amount, float duration, uint8 attribute, bool doBattleFatigue = true);
 	bool healState(CreatureObject* target, uint64 state);
 	bool revive(CreatureObject* target, bool forcedChange = false);
 	bool resurrect(CreatureObject* target);

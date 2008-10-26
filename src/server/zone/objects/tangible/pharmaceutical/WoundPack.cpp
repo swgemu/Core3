@@ -75,17 +75,17 @@ void WoundPack::setEffectiveness(float eff) {
 		((WoundPackImplementation*) _impl)->setEffectiveness(eff);
 }
 
-void WoundPack::setPoolAffected(int pool) {
+void WoundPack::setAttribute(unsigned char value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
-		method.addSignedIntParameter(pool);
+		method.addUnsignedCharParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
-		((WoundPackImplementation*) _impl)->setPoolAffected(pool);
+		((WoundPackImplementation*) _impl)->setAttribute(value);
 }
 
 float WoundPack::getEffectiveness() {
@@ -100,16 +100,16 @@ float WoundPack::getEffectiveness() {
 		return ((WoundPackImplementation*) _impl)->getEffectiveness();
 }
 
-int WoundPack::getPoolAffected() {
+unsigned char WoundPack::getAttribute() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedCharReturn();
 	} else
-		return ((WoundPackImplementation*) _impl)->getPoolAffected();
+		return ((WoundPackImplementation*) _impl)->getAttribute();
 }
 
 /*
@@ -133,13 +133,13 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setEffectiveness(inv->getFloatParameter());
 		break;
 	case 9:
-		setPoolAffected(inv->getSignedIntParameter());
+		setAttribute(inv->getUnsignedCharParameter());
 		break;
 	case 10:
 		resp->insertFloat(getEffectiveness());
 		break;
 	case 11:
-		resp->insertSignedInt(getPoolAffected());
+		resp->insertByte(getAttribute());
 		break;
 	default:
 		return NULL;
@@ -160,16 +160,16 @@ void WoundPackAdapter::setEffectiveness(float eff) {
 	return ((WoundPackImplementation*) impl)->setEffectiveness(eff);
 }
 
-void WoundPackAdapter::setPoolAffected(int pool) {
-	return ((WoundPackImplementation*) impl)->setPoolAffected(pool);
+void WoundPackAdapter::setAttribute(unsigned char value) {
+	return ((WoundPackImplementation*) impl)->setAttribute(value);
 }
 
 float WoundPackAdapter::getEffectiveness() {
 	return ((WoundPackImplementation*) impl)->getEffectiveness();
 }
 
-int WoundPackAdapter::getPoolAffected() {
-	return ((WoundPackImplementation*) impl)->getPoolAffected();
+unsigned char WoundPackAdapter::getAttribute() {
+	return ((WoundPackImplementation*) impl)->getAttribute();
 }
 
 /*

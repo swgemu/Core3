@@ -50,6 +50,7 @@ which carries forward this exception.
 
 class ChatSystemMessage : public BaseMessage {
 public:
+
 	ChatSystemMessage(unicode& message) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x6D2A6413);  // CRC
@@ -59,6 +60,40 @@ public:
 		insertUnicode(message);
 
 		insertInt(0x00);
+	}
+
+	ChatSystemMessage(unicode& message, StfParameter * params) : BaseMessage() {
+		params->generate();
+
+		insertShort(0x08);
+		insertInt(0x6D2A6413);
+
+		insertByte(0);
+		insertUnicode(message); // unicode
+
+		int size = 0x15 + params->size();
+		bool odd = (size & 1);
+
+		if (odd)
+			insertInt((size + 1) / 2);
+		else
+			insertInt(size / 2);
+
+		insertShort(0);
+		insertByte(1);
+		insertInt(0xFFFFFFFF);
+
+		insertAscii("");
+		insertInt(0);
+
+		insertAscii("");
+
+		insertStream(params);
+
+		if (odd)
+			insertByte(0);
+
+		insertInt(0);
 	}
 
 	ChatSystemMessage(const string& file, const string& str, uint64 targetid = 0) : BaseMessage() {

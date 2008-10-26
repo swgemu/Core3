@@ -61,21 +61,21 @@ CurePackImplementation::CurePackImplementation(CreatureObject* creature, uint32 
 }
 
 int CurePackImplementation::useObject(Player* player) {
-	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
+	if (player->getSkillMod("healing_ability") < medicineUseRequired) {
 		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
 		return 0;
 	}
 
 	uint32 actionCRC = 0;
 
-	switch (getConditionCured()) {
-	case CreatureObjectImplementation::POISONED_STATE:
+	switch (state) {
+	case CreatureState::POISONED:
 		actionCRC = 0x1754A3E5; //curepoison
 		break;
-	case CreatureObjectImplementation::DISEASED_STATE:
+	case CreatureState::DISEASED:
 		actionCRC = 0xE994DE9C; //curedisease
 		break;
-	case CreatureObjectImplementation::ONFIRE_STATE:
+	case CreatureState::ONFIRE:
 	default:
 		actionCRC = 0xDF49EA58; //extinguishfire
 		break;
@@ -88,7 +88,7 @@ int CurePackImplementation::useObject(Player* player) {
 
 void CurePackImplementation::initialize() {
 	setEffectiveness(0.0f);
-	setConditionCured(UNKNOWN);
+	setState(CreatureState::INVALID);
 }
 
 void CurePackImplementation::parseItemAttributes() {
@@ -97,18 +97,18 @@ void CurePackImplementation::parseItemAttributes() {
 	string attr = "effectiveness";
 	setEffectiveness(itemAttributes->getFloatAttribute(attr));
 
-	attr = "conditionCured";
-	setConditionCured(itemAttributes->getUnsignedLongAttribute(attr));
+	attr = "state";
+	setState(itemAttributes->getUnsignedLongAttribute(attr));
 }
 
 void CurePackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
 	stringstream eff;
-	eff << "@obj_attr_n:dot_type_" << getConditionName(getConditionCured());
+	eff << "@obj_attr_n:dot_type_" << CreatureState::getSpecialName(state);
 	alm->insertAttribute("examine_dot_cure", eff.str());
 
-	alm->insertAttribute("examine_dot_cure_power", getEffectiveness());
+	alm->insertAttribute("examine_dot_cure_power", effectiveness);
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

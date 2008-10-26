@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class StatePackImplementation : public StatePackServant {
 protected:
-	uint64 stateAffected;
+	uint64 state;
 
 public:
 	StatePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
@@ -68,14 +68,14 @@ public:
 	void addAttributes(AttributeListMessage* alm);
 
 
-	inline void setStateAffected(uint64 state) {
-		stateAffected = state;
-		string attr = "stateAffected";
-		itemAttributes->setUnsignedLongAttribute(attr, stateAffected);
+	inline void setState(uint64 value) {
+		state = value;
+		string attr = "state";
+		itemAttributes->setUnsignedLongAttribute(attr, state);
 	}
 
-	inline uint64 getStateAffected() {
-		return stateAffected;
+	inline uint64 getState() {
+		return state;
 	}
 };
 

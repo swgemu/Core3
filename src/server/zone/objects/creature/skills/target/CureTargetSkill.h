@@ -54,13 +54,13 @@ which carries forward this exception.
 class CureTargetSkill : public TargetSkill {
 protected:
 	string effectName;
-	uint64 conditionCured;
+	uint64 state;
 	int mindCost;
 
 public:
 	CureTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		setEffectName(aname);
-		setConditionCured(0);
+		setState(CreatureState::INVALID);
 		setMindCost(0);
 	}
 
@@ -74,81 +74,90 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	CurePack* findMedpack(CreatureObject* creature, const string& modifier) {
-		CurePack* curePack = NULL;
-		uint64 conditionCured = getConditionCured();
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, CurePack* curePack) {
+		if (!creature->canTreatConditions()) {
+			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
+			return false;
+		}
+
+		if (curePack == NULL) {
+			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+			return false;
+		}
+
+		if (creature->isMeditating()) {
+			creature->sendSystemMessage("You cannot do that while Meditating.");
+			return false;
+		}
+
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+			return false;
+		}
+
+		if (creature->isMounted()) {
+			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+			return false;
+		}
+
+		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
+			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
+			return false;
+		}
+
+		if (creature->getMind() < abs(mindCost)) {
+			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
+			return false;
+		}
+
+		return true;
+	}
+
+	void parseModifier(const string& modifier, uint64& objectId) {
+		if (!modifier.empty())
+			objectId = atoll(modifier.c_str());
+		else
+			objectId = 0;
+	}
+
+	CurePack* findCurePack(CreatureObject* creature) {
+		Inventory* inventory = creature->getInventory();
 		int medicineUse = creature->getSkillMod("healing_ability");
 
-		if (!modifier.empty()) {
-			StringTokenizer tokenizer(modifier);
-			uint64 objectid = 0;
+		if (inventory != NULL) {
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
 
-			tokenizer.setDelimeter("|");
+				if (item->isPharmaceutical()) {
+					Pharmaceutical* pharma = (Pharmaceutical*) item;
 
-			if (tokenizer.hasMoreTokens())
-				objectid = tokenizer.getLongToken();
+					if (pharma->isCurePack()) {
+						CurePack* curePack = (CurePack*) pharma;
 
-			if (objectid > 0) {
-				SceneObject* invObj = creature->getInventoryItem(objectid);
-
-				if (invObj != NULL && invObj->isTangible()) {
-					TangibleObject* tano = (TangibleObject*) invObj;
-
-					if (tano->isPharmaceutical()) {
-						Pharmaceutical* pharm = (Pharmaceutical*) tano;
-
-						if (pharm->isCurePack()) {
-							curePack = (CurePack*) pharm;
-
-							if (curePack->getMedicineUseRequired() <= medicineUse && curePack->getConditionCured() == conditionCured)
-								return curePack;
-						}
+						if (curePack->getMedicineUseRequired() <= medicineUse && curePack->getState() == state)
+							return curePack;
 					}
 				}
 			}
 		}
 
-		Inventory* inventory = creature->getInventory();
-
-		for (int i=0; i<inventory->objectsSize(); i++) {
-			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-			if (item != NULL && item->isPharmaceutical()) {
-				curePack = (CurePack*) item;
-
-				if (curePack->isCurePack()
-						&& curePack->getMedicineUseRequired() <= medicineUse
-						&& curePack->getConditionCured() == conditionCured)
-					return curePack;
-			}
-		}
-
-		return NULL; //Never found a curepack
+		return NULL;
 	}
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
-		CurePack* curePack = findMedpack(creature, modifier);
-		uint64 conditionCured = getConditionCured();
-
-		//Check that the condition cured is a valid condition
-		if (conditionCured <= 0) {
-			creature->sendSystemMessage("You must specify a valid condition."); //NOTE: This should never happen unless a LUA file is setup wrong.
-			return 0;
-		}
-
 		//Validate our target is a Player or CreatureObject
 		//TODO: Should check that is a Player or CreaturePet instead.
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
-			switch (getConditionCured()) {
-				case CreatureObjectImplementation::POISONED_STATE:
+			switch (state) {
+				case CreatureState::POISONED:
 					creature->sendSystemMessage("healing_response", "healing_response_83"); //Target must be a player or a creature pet in order to cure poison.
 					break;
 
-				case CreatureObjectImplementation::DISEASED_STATE:
+				case CreatureState::DISEASED:
 					creature->sendSystemMessage("healing_response", "healing_response_91"); //Target must be a player or a creature pet in order cure disease.
 					break;
 
-				case CreatureObjectImplementation::ONFIRE_STATE:
+				case CreatureState::ONFIRE:
 				default:
 					creature->sendSystemMessage("healing_response", "healing_response_87"); //Target must be a player or a creature pet in order to quench flames.
 					break;
@@ -157,46 +166,22 @@ public:
 			return 0;
 		}
 
+		uint64 objectId = 0;
+
+		parseModifier(modifier, objectId);
+
+		CurePack* curePack = (CurePack*) creature->getInventoryItem(objectId);
+
+		if (curePack == NULL)
+			curePack = findCurePack(creature);
+
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
-		//If the target is in an unhealable state, then we set target to self.
 		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
 			creatureTarget = creature;
 
-		if (!creature->canTreatConditions()) {
-			creature->sendSystemMessage("healing_response", "healing_must_wait"); //You must wait before you can do that.
+		if (!canPerformSkill(creature, creatureTarget, curePack))
 			return 0;
-		}
-
-		if (curePack == NULL) {
-			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
-			return 0;
-		}
-
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You can not Heal Enhance while meditating.");
-			return 0;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return 0;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return 0;
-		}
-
-		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
-			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
-			return 0;
-		}
-
-		if (creature->getMind() < abs(mindCost)) {
-			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
-			return 0;
-		}
 
 		if (!cureCondition(creature, creatureTarget)) {
 			return 0;
@@ -219,13 +204,11 @@ public:
 
 	//TODO: This needs restructuring bad!
 	bool cureCondition(CreatureObject* creature, CreatureObject* creatureTarget) {
-		int conditionCured = getConditionCured();
-
-		switch (conditionCured) {
-			case CreatureObjectImplementation::POISONED_STATE:
+		switch (state) {
+			case CreatureState::POISONED:
 			{
 				if (creatureTarget->isPoisoned()) {
-					creatureTarget->clearState(CreatureObjectImplementation::POISONED_STATE);
+					creatureTarget->clearState(CreatureState::POISONED);
 					if (creature == creatureTarget) {
 						creature->sendSystemMessage("healing_response", "poison_antidote_self"); //You apply poison antidote to yourself.
 					} else {
@@ -245,10 +228,10 @@ public:
 				}
 				break;
 			}
-			case CreatureObjectImplementation::DISEASED_STATE:
+			case CreatureState::DISEASED:
 			{
 				if (creatureTarget->isDiseased()) {
-					creatureTarget->clearState(CreatureObjectImplementation::DISEASED_STATE);
+					creatureTarget->clearState(CreatureState::DISEASED);
 					if (creature == creatureTarget) {
 						creature->sendSystemMessage("healing_response", "disease_antidote_self"); //You apply disease antidote to yourself.
 					} else {
@@ -268,10 +251,10 @@ public:
 				}
 				break;
 			}
-			case CreatureObjectImplementation::ONFIRE_STATE:
+			case CreatureState::ONFIRE:
 			{
 				if (creatureTarget->isOnFire()) {
-					creatureTarget->clearState(CreatureObjectImplementation::ONFIRE_STATE);
+					creatureTarget->clearState(CreatureState::ONFIRE);
 					if (creature == creatureTarget) {
 						creature->sendSystemMessage("healing_response", "blanket"); //You cover yourself in a suppressive blanket.
 					} else {
@@ -291,7 +274,7 @@ public:
 				}
 				break;
 			}
-			case PharmaceuticalImplementation::UNKNOWN:
+			case CreatureState::INVALID:
 			default:
 				return false;
 			}
@@ -329,16 +312,12 @@ public:
 		effectName = name;
 	}
 
-	void setConditionCured(uint64 condition) {
-		conditionCured = condition;
+	void setState(uint64 value) {
+		state = value;
 	}
 
 	void setMindCost(int cost) {
 		mindCost = cost;
-	}
-
-	uint64 getConditionCured() {
-		return conditionCured;
 	}
 };
 

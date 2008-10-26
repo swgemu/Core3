@@ -53,7 +53,7 @@ class EnhancePackImplementation : public EnhancePackServant {
 protected:
 	float effectiveness;
 	float duration;
-	int poolAffected;
+	uint8 attribute;
 
 public:
 	EnhancePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
@@ -73,6 +73,14 @@ public:
 
 	uint32 getBuffCRC();
 
+	inline int calculatePower(CreatureObject* creature) {
+		//TODO: Add in medical city bonus
+		float modEnvironment = (float) creature->getMedicalFacilityRating();
+		float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
+		float modCityBonus = 1.0f;
+		return (int) round(effectiveness * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
+	}
+
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
 		string attr = "effectiveness";
@@ -85,10 +93,10 @@ public:
 		itemAttributes->setFloatAttribute(attr, duration);
 	}
 
-	inline void setPoolAffected(int pool) {
-		poolAffected = pool;
-		string attr = "poolAffected";
-		itemAttributes->setIntAttribute(attr, poolAffected);
+	inline void setAttribute(uint8 value) {
+		attribute = value;
+		string attr = "attribute";
+		itemAttributes->setIntAttribute(attr, attribute);
 	}
 
 	inline float getEffectiveness() {
@@ -99,8 +107,8 @@ public:
 		return duration;
 	}
 
-	inline int getPoolAffected() {
-		return poolAffected;
+	inline uint8 getAttribute() {
+		return attribute;
 	}
 };
 

@@ -385,7 +385,7 @@ public:
 
 	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
 
-	void sendBFMessage(CreatureObject* target);
+	void sendBattleFatigueMessage(CreatureObject* target);
 
 	void sendHealMessage(CreatureObject* target, int h, int a, int m);
 
@@ -1101,7 +1101,7 @@ public:
 
 	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
 
-	void sendBFMessage(CreatureObject* target);
+	void sendBattleFatigueMessage(CreatureObject* target);
 
 	void sendHealMessage(CreatureObject* target, int h, int a, int m);
 

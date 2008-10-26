@@ -783,24 +783,24 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("STIMPACK", PharmaceuticalImplementation::STIMPACK);
 	setGlobalInt("REVIVEPACK", PharmaceuticalImplementation::REVIVEPACK);
 
-	setGlobalInt("HEALTH", PharmaceuticalImplementation::HEALTH);
-	setGlobalInt("ACTION", PharmaceuticalImplementation::ACTION);
-	setGlobalInt("MIND", PharmaceuticalImplementation::MIND);
-	setGlobalInt("CONSTITUTION", PharmaceuticalImplementation::CONSTITUTION);
-	setGlobalInt("STRENGTH", PharmaceuticalImplementation::STRENGTH);
-	setGlobalInt("QUICKNESS", PharmaceuticalImplementation::QUICKNESS);
-	setGlobalInt("STAMINA", PharmaceuticalImplementation::STAMINA);
-	setGlobalInt("FOCUS", PharmaceuticalImplementation::FOCUS);
-	setGlobalInt("WILLPOWER", PharmaceuticalImplementation::WILLPOWER);
+	setGlobalInt("HEALTH", CreatureAttribute::HEALTH);
+	setGlobalInt("ACTION", CreatureAttribute::ACTION);
+	setGlobalInt("MIND", CreatureAttribute::MIND);
+	setGlobalInt("CONSTITUTION", CreatureAttribute::CONSTITUTION);
+	setGlobalInt("STRENGTH", CreatureAttribute::STRENGTH);
+	setGlobalInt("QUICKNESS", CreatureAttribute::QUICKNESS);
+	setGlobalInt("STAMINA", CreatureAttribute::STAMINA);
+	setGlobalInt("FOCUS", CreatureAttribute::FOCUS);
+	setGlobalInt("WILLPOWER", CreatureAttribute::WILLPOWER);
 
-	setGlobalInt("INTIMIDATED_STATE", CreatureObjectImplementation::INTIMIDATED_STATE);
-	setGlobalInt("STUNNED_STATE", CreatureObjectImplementation::STUNNED_STATE);
-	setGlobalInt("DIZZY_STATE", CreatureObjectImplementation::DIZZY_STATE);
-	setGlobalInt("BLINDED_STATE", CreatureObjectImplementation::BLINDED_STATE);
+	setGlobalInt("INTIMIDATED", CreatureState::INTIMIDATED);
+	setGlobalInt("STUNNED", CreatureState::STUNNED);
+	setGlobalInt("DIZZY", CreatureState::DIZZY);
+	setGlobalInt("BLINDED", CreatureState::BLINDED);
 
-	setGlobalInt("ONFIRE_STATE", CreatureObjectImplementation::ONFIRE_STATE);
-	setGlobalInt("DISEASED_STATE", CreatureObjectImplementation::DISEASED_STATE);
-	setGlobalInt("POISONED_STATE", CreatureObjectImplementation::POISONED_STATE);
+	setGlobalInt("ONFIRE", CreatureState::ONFIRE);
+	setGlobalInt("DISEASED", CreatureState::DISEASED);
+	setGlobalInt("POISONED", CreatureState::POISONED);
 
 	//ItemMasks
 	setGlobalShort("MALE", TangibleObjectImplementation::MALE);
@@ -1007,7 +1007,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			EnhancePack* enhance = (EnhancePack*) item;
 			enhance->setEffectiveness(eff);
 			enhance->setDuration(dur);
-			enhance->setPoolAffected(pool);
+			enhance->setAttribute(pool);
 			break;
 		}
 		case PharmaceuticalImplementation::WOUNDPACK:
@@ -1017,7 +1017,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 			WoundPack* wound = (WoundPack*) item;
 			wound->setEffectiveness(eff);
-			wound->setPoolAffected(pool);
+			wound->setAttribute(pool);
 			break;
 		}
 		case PharmaceuticalImplementation::CUREPACK:
@@ -1027,7 +1027,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 			CurePack* curepack = (CurePack*) item;
 			curepack->setEffectiveness(eff);
-			curepack->setConditionCured(condition);
+			curepack->setState(condition);
 			break;
 		}
 		case PharmaceuticalImplementation::STATEPACK:
@@ -1035,7 +1035,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			uint64 state = itemconfig.getLongField("stateAffected");
 
 			StatePack* statepack = (StatePack*) item;
-			statepack->setStateAffected(state);
+			statepack->setState(state);
 			break;
 		}
 		case PharmaceuticalImplementation::REVIVEPACK:

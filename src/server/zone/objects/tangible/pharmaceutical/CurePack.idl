@@ -21,8 +21,8 @@ interface CurePack implements Pharmaceutical {
 	void generateAttributes(SceneObject obj);
 
 	void setEffectiveness(float eff);
-	void setConditionCured(int condition);
+	void setState(unsigned long condition);
 
 	float getEffectiveness();
-	int getConditionCured();
+	unsigned long getState();
 }

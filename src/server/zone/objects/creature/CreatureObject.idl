@@ -766,6 +766,7 @@ interface CreatureObject implements SceneObject {
 	// Medic & Doctor
 	int healDamage(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
 	int healWound(CreatureObject target, int damage, unsigned char attribute, boolean doBattleFatigue = true);
+	int healEnhance(CreatureObject target, int amount, float duration, unsigned char attribute, boolean doBattleFatigue = true);
 	boolean healState(CreatureObject target, unsigned long state);
 	boolean revive(CreatureObject target, boolean forcedChange = false);
 	boolean resurrect(CreatureObject target);

@@ -2105,7 +2105,7 @@ void Player::sendSystemMessage(const string& file, const string& str, StfParamet
 		((PlayerImplementation*) _impl)->sendSystemMessage(file, str, param);
 }
 
-void Player::sendBFMessage(CreatureObject* target) {
+void Player::sendBattleFatigueMessage(CreatureObject* target) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2115,7 +2115,7 @@ void Player::sendBFMessage(CreatureObject* target) {
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->sendBFMessage(target);
+		((PlayerImplementation*) _impl)->sendBattleFatigueMessage(target);
 }
 
 void Player::sendHealMessage(CreatureObject* target, int h, int a, int m) {
@@ -4923,7 +4923,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_StfParameter_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_StfParameter_), (StfParameter*) inv->getObjectParameter());
 		break;
 	case 165:
-		sendBFMessage((CreatureObject*) inv->getObjectParameter());
+		sendBattleFatigueMessage((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 166:
 		sendHealMessage((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
@@ -6114,8 +6114,8 @@ void PlayerAdapter::sendSystemMessage(const string& file, const string& str, Stf
 	return ((PlayerImplementation*) impl)->sendSystemMessage(file, str, param);
 }
 
-void PlayerAdapter::sendBFMessage(CreatureObject* target) {
-	return ((PlayerImplementation*) impl)->sendBFMessage(target);
+void PlayerAdapter::sendBattleFatigueMessage(CreatureObject* target) {
+	return ((PlayerImplementation*) impl)->sendBattleFatigueMessage(target);
 }
 
 void PlayerAdapter::sendHealMessage(CreatureObject* target, int h, int a, int m) {

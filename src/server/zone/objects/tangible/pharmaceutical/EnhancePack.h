@@ -29,17 +29,19 @@ public:
 
 	unsigned int getBuffCRC();
 
+	int calculatePower(CreatureObject* creature);
+
 	void setEffectiveness(float eff);
 
 	void setDuration(float dur);
 
-	void setPoolAffected(int pool);
+	void setAttribute(unsigned char value);
 
 	float getEffectiveness();
 
 	float getDuration();
 
-	int getPoolAffected();
+	unsigned char getAttribute();
 
 protected:
 	EnhancePack(DummyConstructorParameter* param);
@@ -61,17 +63,19 @@ public:
 
 	unsigned int getBuffCRC();
 
+	int calculatePower(CreatureObject* creature);
+
 	void setEffectiveness(float eff);
 
 	void setDuration(float dur);
 
-	void setPoolAffected(int pool);
+	void setAttribute(unsigned char value);
 
 	float getEffectiveness();
 
 	float getDuration();
 
-	int getPoolAffected();
+	unsigned char getAttribute();
 
 };
 

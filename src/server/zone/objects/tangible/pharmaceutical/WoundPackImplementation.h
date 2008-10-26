@@ -52,7 +52,7 @@ which carries forward this exception.
 class WoundPackImplementation : public WoundPackServant {
 protected:
 	float effectiveness;
-	int poolAffected;
+	uint8 attribute;
 
 public:
 	WoundPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
@@ -75,7 +75,7 @@ public:
 		float modEnvironment = (float) creature->getMedicalFacilityRating();
 		float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
 		float modCityBonus = 1.0f;
-		return (int) round(getEffectiveness() * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
+		return (int) round(effectiveness * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
 	}
 
 	inline void setEffectiveness(float eff) {
@@ -84,18 +84,18 @@ public:
 		itemAttributes->setFloatAttribute(attr, effectiveness);
 	}
 
-	inline void setPoolAffected(int pool) {
-		poolAffected = pool;
-		string attr = "poolAffected";
-		itemAttributes->setIntAttribute(attr, poolAffected);
+	inline void setAttribute(uint8 value) {
+		attribute = value;
+		string attr = "attribute";
+		itemAttributes->setIntAttribute(attr, attribute);
 	}
 
 	inline float getEffectiveness() {
 		return effectiveness;
 	}
 
-	inline int getPoolAffected() {
-		return poolAffected;
+	inline uint8 getAttribute() {
+		return attribute;
 	}
 };
 

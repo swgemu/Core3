@@ -59,7 +59,7 @@ protected:
 	int actionHealed;
 	int mindHealed;
 
-	int woundPool;
+	uint8 woundPool;
 	int woundsHealed;
 
 	bool tendDamage;
@@ -105,7 +105,7 @@ public:
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
 		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
-			creatureTarget = creature;	//If our target is dead, riding a creature, or mounted, then we make ourself target.
+			creatureTarget = creature;
 
 
 		if (creature->isMeditating()) {
@@ -210,22 +210,22 @@ public:
 	int calculateWoundHeal(CreatureObject* creature, int woundPower, int poolAffected) {
 		int woundsHealed = 0;
 		switch (poolAffected) {
-			case PharmaceuticalImplementation::ACTION:
+			case CreatureAttribute::ACTION:
 				woundsHealed = creature->getActionWounds();
 				break;
-			case PharmaceuticalImplementation::STRENGTH:
+			case CreatureAttribute::STRENGTH:
 				woundsHealed = creature->getStrengthWounds();
 				break;
-			case PharmaceuticalImplementation::CONSTITUTION:
+			case CreatureAttribute::CONSTITUTION:
 				woundsHealed = creature->getConstitutionWounds();
 				break;
-			case PharmaceuticalImplementation::QUICKNESS:
+			case CreatureAttribute::QUICKNESS:
 				woundsHealed = creature->getQuicknessWounds();
 				break;
-			case PharmaceuticalImplementation::STAMINA:
+			case CreatureAttribute::STAMINA:
 				woundsHealed = creature->getStaminaWounds();
 				break;
-			case PharmaceuticalImplementation::HEALTH:
+			case CreatureAttribute::HEALTH:
 			default:
 				woundsHealed = creature->getHealthWounds();
 				break;
@@ -236,22 +236,22 @@ public:
 
 	void applyWoundHeal(CreatureObject* creature, int woundsHealed, int poolAffected) {
 		switch (poolAffected) {
-			case PharmaceuticalImplementation::ACTION:
+			case CreatureAttribute::ACTION:
 				creature->changeActionWoundsBar(-woundsHealed);
 				break;
-			case PharmaceuticalImplementation::STRENGTH:
+			case CreatureAttribute::STRENGTH:
 				creature->changeStrengthWoundsBar(-woundsHealed);
 				break;
-			case PharmaceuticalImplementation::CONSTITUTION:
+			case CreatureAttribute::CONSTITUTION:
 				creature->changeConstitutionWoundsBar(-woundsHealed);
 				break;
-			case PharmaceuticalImplementation::QUICKNESS:
+			case CreatureAttribute::QUICKNESS:
 				creature->changeQuicknessWoundsBar(-woundsHealed);
 				break;
-			case PharmaceuticalImplementation::STAMINA:
+			case CreatureAttribute::STAMINA:
 				creature->changeStaminaWoundsBar(-woundsHealed);
 				break;
-			case PharmaceuticalImplementation::HEALTH:
+			case CreatureAttribute::HEALTH:
 			default:
 				creature->changeHealthWoundsBar(-woundsHealed);
 				break;
@@ -290,7 +290,7 @@ public:
 	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, int poolAffected, int woundsHealed) {
 		string creatureName = creature->getCharacterName().c_str();
 		string creatureTargetName = creatureTarget->getCharacterName().c_str();
-		string poolName = PharmaceuticalImplementation::getPoolName(poolAffected);
+		string poolName = CreatureAttribute::getName(poolAffected);
 
 		stringstream msgPlayer, msgTarget, msgTail;
 
@@ -362,7 +362,7 @@ public:
 		mindHealed = mind;
 	}
 
-	void setWoundPool(int pool) {
+	void setWoundPool(uint8 pool) {
 		woundPool = pool;
 	}
 
