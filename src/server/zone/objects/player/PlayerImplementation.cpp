@@ -1122,10 +1122,10 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 
 	bool insert = false;
 
-	/*if (zone->getZoneID() == 8) {
+	if (zone->getZoneID() == 8) {
 		float height = zone->getHeight(positionX, positionY);
 		cout << "(" << positionX << "," << height << "," << positionY << "\n";
-	}*/
+	}
 
 	if (isMounted())
 		updateMountPosition();
@@ -1536,6 +1536,8 @@ void PlayerImplementation::switchMap(int planetid) {
 	misoRFC = 0x01;
 	misoBSB = 0;
 
+	setPositionZ(zone->getHeight(positionX, positionY));
+
 	insertToZone(zone);
 }
 
@@ -1550,7 +1552,7 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 
 	parent = NULL;
 
-	setPosition(x, 0, y);
+	setPosition(x, zone->getHeight(x, y), y);
 
 	if (parentID != 0) {
 		SceneObject* newParent = zone->lookupObject(parentID);

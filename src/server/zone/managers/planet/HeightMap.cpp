@@ -27,13 +27,21 @@ HeightMap::~HeightMap() {
 }
 
 void HeightMap::load(const string& path) {
-	reader = new FileReader(new File(path));
+	File* file = new File(path);
+
+	if (file->exists())
+		reader = new FileReader(file);
+	else
+		reader = NULL;
 }
 
 float HeightMap::getHeight(float x, float y) {
-	//return getHeightFrom(reader, x, y);
+	if (reader != NULL)
+		return getHeightFrom(reader, x, y);
+	else
+		return 0;
 
-	int planePosition = getPlanePosition(x, y);
+	/*int planePosition = getPlanePosition(x, y);
 
 	HeightMapPlane* plane = planes[planePosition];
 	if (plane == NULL)
@@ -48,7 +56,7 @@ float HeightMap::getHeight(float x, float y) {
 	if (height < 0)
 		height = PLANEWIDTH + height;
 
-	return plane->getHeight(width, height);
+	return plane->getHeight(width, height);*/
 }
 
 float HeightMap::getHeightFrom(Reader* file, float x, float y) {

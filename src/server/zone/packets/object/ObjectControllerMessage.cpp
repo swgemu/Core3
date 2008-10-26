@@ -2404,16 +2404,14 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	if (zone == NULL)
 		return;
 
-
 	ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
-	if(resourceManager == NULL)
+	if (resourceManager == NULL)
 		return;
 
 	bool makeNewResource = true;
 
-	quantity = (uint32)inso->removeHopperItem(rId, quantity);
-	if(quantity >= 1)
-	{
+	quantity = (uint32) inso->removeHopperItem(rId, quantity);
+	if (quantity >= 1) {
 		ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
 		string resourceName = resourceManager->getResourceNameByID(rId);
 		newRcno->setResourceName(resourceName);
@@ -2421,8 +2419,8 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 		resourceManager->setResourceData(newRcno, false);
 		player->addInventoryResource(newRcno);
 	}
-	// need to send to anyone looking
 
+	// need to send to anyone looking
 	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateHopper();
 	dinso7->updateHopperItem(rId);
