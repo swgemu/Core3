@@ -56,5 +56,5 @@ dizzyPack = Object:new {
 	
 	medicineUse = 5,
 	
-	stateAffected = DIZZY_STATE
+	stateAffected = DIZZY
 }

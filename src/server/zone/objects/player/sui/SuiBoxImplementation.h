@@ -62,6 +62,8 @@ protected:
 
 	bool cancelButton;
 
+	bool backButton;
+
 	string promptTitle;
 	string promptText;
 
@@ -135,6 +137,10 @@ public:
 
 	inline void setCancelButton(bool value) {
 		cancelButton = value;
+	}
+
+	inline void setBackButton(bool value) {
+		backButton = value;
 	}
 
 	inline uint64 getUsingObjectID() {

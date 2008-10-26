@@ -112,7 +112,7 @@ public:
 		}
 
 		if (creatureTarget->isBleeding()) {
-			if (creatureTarget->clearState(CreatureObjectImplementation::BLEEDING_STATE)) {
+			if (creatureTarget->clearState(CreatureState::BLEEDING)) {
 				creatureTarget->updateStates();
 
 				if (creatureTarget != creature) {

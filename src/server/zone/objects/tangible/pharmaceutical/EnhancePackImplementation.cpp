@@ -61,35 +61,35 @@ EnhancePackImplementation::EnhancePackImplementation(CreatureObject* creature, u
 }
 
 int EnhancePackImplementation::useObject(Player* player) {
-	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
+	if (player->getSkillMod("healing_ability") < medicineUseRequired) {
 		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
 		return 0;
 	}
 
 	uint32 actionCRC = 0xEEE029CF; //healenhance
-	player->queueHeal((TangibleObject*)_this, actionCRC, getPoolName(poolAffected));
+	player->queueHeal((TangibleObject*)_this, actionCRC, CreatureAttribute::getName(attribute));
 
 	return 0;
 }
 
 uint32 EnhancePackImplementation::getBuffCRC() {
-	switch (getPoolAffected()) {
-	case ACTION:
+	switch (attribute) {
+	case CreatureAttribute::ACTION:
 		return BuffCRC::MEDICAL_ENHANCE_ACTION;
 		break;
-	case CONSTITUTION:
+	case CreatureAttribute::CONSTITUTION:
 		return BuffCRC::MEDICAL_ENHANCE_CONSTITUTION;
 		break;
-	case STRENGTH:
+	case CreatureAttribute::STRENGTH:
 		return BuffCRC::MEDICAL_ENHANCE_STRENGTH;
 		break;
-	case QUICKNESS:
+	case CreatureAttribute::QUICKNESS:
 		return BuffCRC::MEDICAL_ENHANCE_QUICKNESS;
 		break;
-	case STAMINA:
+	case CreatureAttribute::STAMINA:
 		return BuffCRC::MEDICAL_ENHANCE_STAMINA;
 		break;
-	case HEALTH:
+	case CreatureAttribute::HEALTH:
 	default:
 		return BuffCRC::MEDICAL_ENHANCE_HEALTH;
 		break;
@@ -99,7 +99,7 @@ uint32 EnhancePackImplementation::getBuffCRC() {
 void EnhancePackImplementation::initialize() {
 	setEffectiveness(0.0f);
 	setDuration(0.0f);
-	setPoolAffected(UNKNOWN);
+	setAttribute(CreatureAttribute::UNKNOWN);
 }
 
 void EnhancePackImplementation::parseItemAttributes() {
@@ -109,20 +109,22 @@ void EnhancePackImplementation::parseItemAttributes() {
 	setEffectiveness(itemAttributes->getFloatAttribute(attr));
 	attr = "duration";
 	setDuration(itemAttributes->getFloatAttribute(attr));
-	attr = "poolAffected";
-	setPoolAffected(itemAttributes->getIntAttribute(attr));
+	attr = "attribute";
+	setAttribute(itemAttributes->getIntAttribute(attr));
 }
 
 void EnhancePackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
+	string attributeName = CreatureAttribute::getName(attribute);
+
 	stringstream eff;
-	eff << "examine_enhance_" << getPoolName(getPoolAffected());
-	alm->insertAttribute(string(eff.str()), getEffectiveness());
+	eff << "examine_enhance_" << attributeName;
+	alm->insertAttribute(string(eff.str()), effectiveness);
 
 	stringstream dur;
-	dur << "examine_duration_" << getPoolName(getPoolAffected());
-	alm->insertAttribute(string(dur.str()), getDuration());
+	dur << "examine_duration_" << attributeName;
+	alm->insertAttribute(string(dur.str()), duration);
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

@@ -51,6 +51,8 @@ class ChatRoom;
 
 class SuiBox;
 
+class SuiListBoxVector;
+
 class DraftSchematic;
 
 class CraftingTool;
@@ -383,7 +385,7 @@ public:
 
 	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
 
-	void sendBFMessage(CreatureObject* target);
+	void sendBattleFatigueMessage(CreatureObject* target);
 
 	void sendHealMessage(CreatureObject* target, int h, int a, int m);
 
@@ -443,7 +445,15 @@ public:
 
 	void setCovert();
 
-	void newChangeFactionEvent(unsigned int faction);
+	void setOnLeave();
+
+	bool isOvert();
+
+	bool isCovert();
+
+	bool isOnLeave();
+
+	void newChangeFactionStatusEvent(unsigned char status, unsigned int timer);
 
 	void setRaceFileName(string& name);
 
@@ -621,7 +631,7 @@ public:
 
 	DraftSchematic* getDraftSchematic(int index);
 
-	bool isChangingFaction();
+	bool isChangingFactionStatus();
 
 	Datapad* getDatapad();
 
@@ -726,6 +736,20 @@ public:
 	unsigned int getMaxFactionPoints(string& faction);
 
 	void delFactionPoints(Player* player, unsigned int amount);
+
+	void addSuiBoxChoice(string& choice);
+
+	void removeLastSuiBoxChoice();
+
+	void setSuiBoxChoices(SuiListBoxVector* choicesList);
+
+	SuiListBoxVector* getSuiBoxChoices();
+
+	void clearSuiBoxChoices();
+
+	void setResourceDeedID(unsigned long long objectID);
+
+	unsigned long long getResourceDeedID();
 
 protected:
 	Player(DummyConstructorParameter* param);
@@ -1077,7 +1101,7 @@ public:
 
 	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
 
-	void sendBFMessage(CreatureObject* target);
+	void sendBattleFatigueMessage(CreatureObject* target);
 
 	void sendHealMessage(CreatureObject* target, int h, int a, int m);
 
@@ -1137,7 +1161,15 @@ public:
 
 	void setCovert();
 
-	void newChangeFactionEvent(unsigned int faction);
+	void setOnLeave();
+
+	bool isOvert();
+
+	bool isCovert();
+
+	bool isOnLeave();
+
+	void newChangeFactionStatusEvent(unsigned char status, unsigned int timer);
 
 	void setRaceFileName(string& name);
 
@@ -1315,7 +1347,7 @@ public:
 
 	DraftSchematic* getDraftSchematic(int index);
 
-	bool isChangingFaction();
+	bool isChangingFactionStatus();
 
 	Datapad* getDatapad();
 
@@ -1421,6 +1453,20 @@ public:
 
 	void delFactionPoints(Player* player, unsigned int amount);
 
+	void addSuiBoxChoice(string& choice);
+
+	void removeLastSuiBoxChoice();
+
+	void setSuiBoxChoices(SuiListBoxVector* choicesList);
+
+	SuiListBoxVector* getSuiBoxChoices();
+
+	void clearSuiBoxChoices();
+
+	void setResourceDeedID(unsigned long long objectID);
+
+	unsigned long long getResourceDeedID();
+
 protected:
 	string _param0_queueFlourish__string_long_int_;
 	string _param4_queueAction__Player_long_int_int_string_;
@@ -1476,6 +1522,7 @@ protected:
 	string _param0_addFactionPoints__string_int_;
 	string _param0_subtractFactionPoints__string_int_;
 	string _param0_getMaxFactionPoints__string_;
+	string _param0_addSuiBoxChoice__string_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

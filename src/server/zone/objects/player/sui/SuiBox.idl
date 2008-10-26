@@ -53,6 +53,7 @@ interface SuiBox {
 	void setPromptTitle(const string name);
 	void setPromptText(const string name);
 	void setCancelButton(boolean value);
+	void setBackButton(boolean value);
 	void setUsingObjectID(unsigned long oid);
 
 	boolean isInputBox();

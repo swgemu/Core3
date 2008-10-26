@@ -42,7 +42,8 @@
 hanSolo = Creature:new {
       objectName = "hanSolo",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "rebel",
+      faction = "rebel", 
+	  factionPoints = 20,
       gender = "male",
 
       stfName = "Han Solo",

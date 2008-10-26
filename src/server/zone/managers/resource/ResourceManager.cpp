@@ -18,6 +18,10 @@
 
 #include "server/zone/ZoneProcessServerImplementation.h"
 
+#include "../../objects/player/sui/listbox/SuiListBox.h"
+
+#include "../../objects/player/sui/listbox/SuiListBoxVector.h"
+
 /*
  *	ResourceManagerStub
  */
@@ -227,6 +231,48 @@ string& ResourceManager::getResourceNameByID(unsigned long long rID) {
 		return ((ResourceManagerImplementation*) _impl)->getResourceNameByID(rID);
 }
 
+void ResourceManager::generateSUI(Player* player, SuiListBox* sui) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addObjectParameter(player);
+		method.addObjectParameter(sui);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->generateSUI(player, sui);
+}
+
+bool ResourceManager::giveResource(Player* player, string& resourceName, int amount) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(resourceName);
+		method.addSignedIntParameter(amount);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ResourceManagerImplementation*) _impl)->giveResource(player, resourceName, amount);
+}
+
+bool ResourceManager::containsResource(string& resourceName) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addAsciiParameter(resourceName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ResourceManagerImplementation*) _impl)->containsResource(resourceName);
+}
+
 /*
  *	ResourceManagerAdapter
  */
@@ -279,6 +325,15 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 19:
 		resp->insertAscii(getResourceNameByID(inv->getUnsignedLongParameter()));
+		break;
+	case 20:
+		generateSUI((Player*) inv->getObjectParameter(), (SuiListBox*) inv->getObjectParameter());
+		break;
+	case 21:
+		resp->insertBoolean(giveResource((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_giveResource__Player_string_int_), inv->getSignedIntParameter()));
+		break;
+	case 22:
+		resp->insertBoolean(containsResource(inv->getAsciiParameter(_param0_containsResource__string_)));
 		break;
 	default:
 		return NULL;
@@ -341,6 +396,18 @@ ResourceList* ResourceManagerAdapter::getResourceListAtLocation(int zone, float 
 
 string& ResourceManagerAdapter::getResourceNameByID(unsigned long long rID) {
 	return ((ResourceManagerImplementation*) impl)->getResourceNameByID(rID);
+}
+
+void ResourceManagerAdapter::generateSUI(Player* player, SuiListBox* sui) {
+	return ((ResourceManagerImplementation*) impl)->generateSUI(player, sui);
+}
+
+bool ResourceManagerAdapter::giveResource(Player* player, string& resourceName, int amount) {
+	return ((ResourceManagerImplementation*) impl)->giveResource(player, resourceName, amount);
+}
+
+bool ResourceManagerAdapter::containsResource(string& resourceName) {
+	return ((ResourceManagerImplementation*) impl)->containsResource(resourceName);
 }
 
 /*

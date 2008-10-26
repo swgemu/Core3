@@ -73,8 +73,12 @@ interface CraftingStation implements TangibleObject {
 	//setters
 	void setEffectiveness(float eff);
 
+	void setComplexityLevel(float comp);
+
 	//getters
 	float getEffectiveness();
+
+	float getComplexityLevel();
 
 	int getStationType();
 }

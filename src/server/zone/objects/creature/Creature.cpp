@@ -605,6 +605,31 @@ void Creature::setRandomMovement(bool value) {
 		((CreatureImplementation*) _impl)->setRandomMovement(value);
 }
 
+unsigned int Creature::getFPValue() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 51);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((CreatureImplementation*) _impl)->getFPValue();
+}
+
+void Creature::setFPValue(unsigned int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 52);
+		method.addUnsignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureImplementation*) _impl)->setFPValue(value);
+}
+
 /*
  *	CreatureAdapter
  */
@@ -750,6 +775,12 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 50:
 		setRandomMovement(inv->getBooleanParameter());
+		break;
+	case 51:
+		resp->insertInt(getFPValue());
+		break;
+	case 52:
+		setFPValue(inv->getUnsignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -936,6 +967,14 @@ void CreatureAdapter::setLootCreated(bool value) {
 
 void CreatureAdapter::setRandomMovement(bool value) {
 	return ((CreatureImplementation*) impl)->setRandomMovement(value);
+}
+
+unsigned int CreatureAdapter::getFPValue() {
+	return ((CreatureImplementation*) impl)->getFPValue();
+}
+
+void CreatureAdapter::setFPValue(unsigned int value) {
+	return ((CreatureImplementation*) impl)->setFPValue(value);
 }
 
 /*

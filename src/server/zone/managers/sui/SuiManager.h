@@ -90,6 +90,8 @@ public:
 	void handleStateTerminalRequest(uint32 boxID, Player* player, uint32 cancel, int itemIndex);
 
 	void handleDiagnose(uint32 boxID, Player* player);
+	void handleFreeResource(uint32 boxID, Player* player, uint32 cancel, int index);
+	void handleGiveFreeResource(uint32 boxID, Player* player, uint32 cancel, int index);
 
 	void handleCloneRequest(uint32 boxID, Player* player, uint32 cancel, int value);
 	void handleConsentBox(uint32 boxID, Player* player, uint32 cancel, int value);

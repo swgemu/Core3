@@ -122,7 +122,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	bankCredits = 25000;
 
 	// CREO3 operands
-	postureState = UPRIGHT_POSTURE;
+	postureState = CreaturePosture::UPRIGHT;
 	stateBitmask = oldStateBitmask = 0;
 	creatureBitmask = 0x80;
 
@@ -461,37 +461,30 @@ void CreatureObjectImplementation::sendItemsTo(Player* player) {
 
 //NOTE: This function is about to get completely revamped
 void CreatureObjectImplementation::sendFactionStatusTo(Player* player, bool doTwoWay) {
+	const uint32 AGRO_FLAGS = CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE + CreatureFlag::ENEMY;
+
 	if (this->isRebel() || this->isImperial()) {
-		uint32 pvpBitmask = pvpStatusBitmask;
-		uint32 playerPvp = player->getPvpStatusBitmask();
+		if (this->isNonPlayerCreature()) {
+			if (this->isAttackableBy(player))
+				player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask + AGRO_FLAGS));
+			else
+				player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask));
+		} else if (this->isPlayer()) {
+			PlayerImplementation * thisPlayer = (PlayerImplementation *) this;
 
-		if (player->isOvert() && (player->getFaction() != faction)) {
-			if (doTwoWay && isPlayer()) {
-				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp + ATTACKABLE_FLAG + AGGRESSIVE_FLAG + ENEMY_FLAG);
-				((PlayerImplementation*) this)->sendMessage(pvpstat);
-			}
+			if (thisPlayer->hatesFaction(player->getFaction()) && thisPlayer->isOvert() && player->isOvert())
+				player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask + AGRO_FLAGS));
+			else
+				player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask));
+		} else //Don't know what other option there is, but just in case
+			player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask));
 
-			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpBitmask + ATTACKABLE_FLAG + AGGRESSIVE_FLAG + ENEMY_FLAG);
-			player->sendMessage(pvpstat2);
-		} else {
-			BaseMessage* pvpstat3 = new UpdatePVPStatusMessage(_this, pvpBitmask);
-			player->sendMessage(pvpstat3);
-
-			if (doTwoWay && isPlayer()) {
-				BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp);
-				((PlayerImplementation*) this)->sendMessage(pvpstat);
-			}
-		}
 	} else {
-		uint32 playerPvp = player->getPvpStatusBitmask();
+		player->sendMessage(new UpdatePVPStatusMessage(_this, pvpStatusBitmask));
+	}
 
-		if (doTwoWay && isPlayer()) {
-			BaseMessage* pvpstat = new UpdatePVPStatusMessage(player, playerPvp);
-			((PlayerImplementation*) this)->sendMessage(pvpstat);
-		}
-
-		BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(_this, pvpStatusBitmask);
-		player->sendMessage(pvpstat2);
+	if (doTwoWay && isPlayer()) {
+		((PlayerImplementation *) player->_getImplementation())->sendFactionStatusTo((Player *) _this, false);
 	}
 }
 
@@ -564,8 +557,8 @@ void CreatureObjectImplementation::sendCombatSpam(CreatureObject* defender, Tang
 }
 
 void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, bool objectInteraction, float objX, float objY, float objZ) {
-	if (!overrideDizzy && isDizzied() && (postureState != UPRIGHT_POSTURE))
-		state = KNOCKEDDOWN_POSTURE;
+	if (!overrideDizzy && isDizzied() && (postureState != CreaturePosture::UPRIGHT))
+		state = CreaturePosture::KNOCKEDDOWN;
 
 	if (state != postureState) {
 		postureState = state;
@@ -576,7 +569,7 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 		else if (doPlayingMusic)
 			stopPlayingMusic();
 
-		if (meditating && postureState != SITTING_POSTURE)
+		if (meditating && postureState != CreaturePosture::SITTING)
 			meditating = false;
 
 		Vector<BaseMessage*> msgs;
@@ -590,7 +583,7 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 			//Now we need to check if they are sitting on a chair
 			if (isSittingOnObject()) {
 				setSittingOnObject(false);
-				clearState(SITTINGONCHAIR_STATE);
+				clearState(CreatureState::SITTINGONCHAIR);
 
 				dcreo3->updateState();
 			 }
@@ -598,7 +591,7 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 			SitOnObject* soo = new SitOnObject(_this, objX, objY, objZ);
 			msgs.add(soo);
 
-			setState(SITTINGONCHAIR_STATE);
+			setState(CreatureState::SITTINGONCHAIR);
 			setSittingOnObject(true);
 
 			dcreo3->updateState();
@@ -609,9 +602,9 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 
 		broadcastMessages(msgs);
 
-		if (postureState == PRONE_POSTURE)
+		if (postureState == CreaturePosture::PRONE)
 			updateSpeed(2.688, 0.7745);
-		else if (postureState == UPRIGHT_POSTURE)
+		else if (postureState == CreaturePosture::UPRIGHT)
 			updateSpeed(5.376, 1.549f);
 	}
 }
@@ -619,11 +612,11 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 void CreatureObjectImplementation::setCombatState() {
 	lastCombatAction.update();
 
-	if (!(stateBitmask & COMBAT_STATE)) {
-		stateBitmask |= COMBAT_STATE;
+	if (!(stateBitmask & CreatureState::COMBAT)) {
+		stateBitmask |= CreatureState::COMBAT;
 
-		if (stateBitmask & PEACE_STATE)
-			stateBitmask &= ~PEACE_STATE;
+		if (stateBitmask & CreatureState::PEACE)
+			stateBitmask &= ~CreatureState::PEACE;
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 		dcreo3->updateCreatureBitmask(0x80);
@@ -632,8 +625,8 @@ void CreatureObjectImplementation::setCombatState() {
 
 		broadcastMessage(dcreo3);
 
-		if (postureState == SITTING_POSTURE)
-			setPosture(UPRIGHT_POSTURE);
+		if (postureState == CreaturePosture::SITTING)
+			setPosture(CreaturePosture::UPRIGHT);
 	}
 }
 
@@ -764,11 +757,11 @@ bool CreatureObjectImplementation::hasDefender(SceneObject* defender) {
 
 void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 	//info("trying to clear CombatState");
-	if (stateBitmask & COMBAT_STATE) {
-		if (stateBitmask & PEACE_STATE)
-			stateBitmask &= ~PEACE_STATE;
+	if (stateBitmask & CreatureState::COMBAT) {
+		if (stateBitmask & CreatureState::PEACE)
+			stateBitmask &= ~CreatureState::PEACE;
 
-		stateBitmask &= ~COMBAT_STATE;
+		stateBitmask &= ~CreatureState::COMBAT;
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 		dcreo3->updateCreatureBitmask(0x80);
@@ -789,7 +782,7 @@ void CreatureObjectImplementation::setDizziedState() {
 	if (dizzyRecoveryTime.miliDifference() > -(1000 + System::random(3000)))
 		return;
 
-	if (setState(DIZZY_STATE)) {
+	if (setState(CreatureState::DIZZY)) {
 		playEffect("clienteffect/combat_special_defender_dizzy.cef");
 		showFlyText("combat_effects", "go_dizzy", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "go_dizzy_single");
@@ -804,7 +797,7 @@ void CreatureObjectImplementation::setStunnedState() {
 	if (stunRecoveryTime.miliDifference() > -(1000 + System::random(5000)))
 		return;
 
-	if (setState(STUNNED_STATE)) {
+	if (setState(CreatureState::STUNNED)) {
 		playEffect("clienteffect/combat_special_defender_stun.cef");
 		showFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "go_stunned_single");
@@ -819,7 +812,7 @@ void CreatureObjectImplementation::setBlindedState() {
 	if (stunRecoveryTime.miliDifference() > -(1000 + System::random(1000)))
 		return;
 
-	if (setState(BLINDED_STATE)) {
+	if (setState(CreatureState::BLINDED)) {
 		playEffect("clienteffect/combat_special_defender_blind.cef");
 		showFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "go_blind_single");
@@ -830,7 +823,7 @@ void CreatureObjectImplementation::setBlindedState() {
 }
 
 void CreatureObjectImplementation::setIntimidatedState() {
-	if (setState(INTIMIDATED_STATE)) {
+	if (setState(CreatureState::INTIMIDATED)) {
 		playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 
@@ -863,13 +856,13 @@ void CreatureObjectImplementation::setMeditateState() {
 		return;
 
 	updateMood("meditating");
-	setPosture(SITTING_POSTURE);
+	setPosture(CreaturePosture::SITTING);
 
 	meditating = true;
 }
 
 void CreatureObjectImplementation::setPoisonedState(int str, int type, int duration) {
-	if (setState(POISONED_STATE)) {
+	if (setState(CreatureState::POISONED)) {
 		playEffect("clienteffect/dot_apply_poison.cef");
 		sendSystemMessage("dot_message", "start_poisoned");
 
@@ -882,7 +875,7 @@ void CreatureObjectImplementation::setPoisonedState(int str, int type, int durat
 }
 
 void CreatureObjectImplementation::setOnFireState(int str, int type, int duration) {
-	if (setState(ONFIRE_STATE)) {
+	if (setState(CreatureState::ONFIRE)) {
 		playEffect("clienteffect/dot_apply_fire.cef");
 		sendSystemMessage("dot_message", "start_fire");
 
@@ -895,7 +888,7 @@ void CreatureObjectImplementation::setOnFireState(int str, int type, int duratio
 }
 
 void CreatureObjectImplementation::setBleedingState(int str, int type, int duration) {
-	if (setState(BLEEDING_STATE)) {
+	if (setState(CreatureState::BLEEDING)) {
 		playEffect("clienteffect/dot_apply_bleeding.cef");
 		sendSystemMessage("dot_message", "start_bleeding");
 
@@ -910,7 +903,7 @@ void CreatureObjectImplementation::setBleedingState(int str, int type, int durat
 }
 
 void CreatureObjectImplementation::setDiseasedState(int str, int type, int duration) {
-	if (setState(DISEASED_STATE)) {
+	if (setState(CreatureState::DISEASED)) {
 		playEffect("clienteffect/dot_apply_disease.cef");
 		sendSystemMessage("dot_message", "start_diseased");
 
@@ -974,8 +967,8 @@ void CreatureObjectImplementation::doDiseaseTick() {
 }
 
 void CreatureObjectImplementation::doFireTick() {
-	if (isOnFire() && hasState(SWIMMING_STATE)) {
-		clearState(ONFIRE_STATE);
+	if (isOnFire() && hasState(CreatureState::SWIMMING)) {
+		clearState(CreatureState::ONFIRE);
 		return;
 	}
 
@@ -1011,31 +1004,31 @@ bool CreatureObjectImplementation::setState(uint64 state) {
 bool CreatureObjectImplementation::clearState(uint64 state) {
 	if (stateBitmask & state) {
 		switch (state) {
-		case STUNNED_STATE:
+		case CreatureState::STUNNED:
 			sendSystemMessage("cbt_spam", "no_stunned_single");
 			showFlyText("combat_effects", "no_stunned", 0xFF, 0, 0);
 			break;
-		case BLINDED_STATE:
+		case CreatureState::BLINDED:
 			sendSystemMessage("cbt_spam", "no_blind_single");
 			showFlyText("combat_effects", "no_blind", 0xFF, 0, 0);
 			break;
-		case DIZZY_STATE:
+		case CreatureState::DIZZY:
 			sendSystemMessage("cbt_spam", "no_dizzy_single");
 			showFlyText("combat_effects", "no_dizzy", 0xFF, 0, 0);
 			break;
-		case POISONED_STATE:
+		case CreatureState::POISONED:
 			sendSystemMessage("dot_message", "stop_poisoned");
 			break;
-		case DISEASED_STATE:
+		case CreatureState::DISEASED:
 			sendSystemMessage("dot_message", "stop_diseased");
 			break;
-		case ONFIRE_STATE:
+		case CreatureState::ONFIRE:
 			sendSystemMessage("dot_message", "stop_fire");
 			break;
-		case BLEEDING_STATE:
+		case CreatureState::BLEEDING:
 			sendSystemMessage("dot_message", "stop_bleeding");
 			break;
-		case INTIMIDATED_STATE:
+		case CreatureState::INTIMIDATED:
 			showFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
 			break;
 		default:
@@ -1128,13 +1121,13 @@ bool CreatureObjectImplementation::changeHAMBars(int32 hp, int32 ap, int32 mp, b
 
 	if (isIncapacitated()) {
 		if ((health == 0) && (newHealth > 0) && (action > 0) && (mind > 0))
-			setPosture(UPRIGHT_POSTURE);
+			setPosture(CreaturePosture::UPRIGHT);
 
 		if ((action == 0) && (newAction > 0) && (health > 0) && (mind > 0))
-			setPosture(UPRIGHT_POSTURE);
+			setPosture(CreaturePosture::UPRIGHT);
 
 		if ((mind == 0) && (newMind > 0) && (action > 0) && (health > 0))
-			setPosture(UPRIGHT_POSTURE);
+			setPosture(CreaturePosture::UPRIGHT);
 	}
 
 	if (newHealth <= 0 || newAction <= 0 || newMind <= 0) {
@@ -2379,9 +2372,9 @@ void CreatureObjectImplementation::calculateHAMregen() {
 			diseasedRecoveryTime.update();
 	}
 
-	if (postureState == SITTING_POSTURE) {
+	if (postureState == CreaturePosture::SITTING) {
 		bool change = changeHAMBars((int)newHealth, (int)newAction, (int)newMind);
-	} else if (postureState == CROUCHED_POSTURE) {
+	} else if (postureState == CreaturePosture::CROUCHED) {
 		newHealth = newHealth * 5 / 7;
 		newAction = newAction  * 5 / 7;
 		newMind = newMind * 5 / 7;
@@ -2403,7 +2396,7 @@ void CreatureObjectImplementation::activateBurstRun() {
 			isDizzied() ||
 			isKnockedDown() ||
 			isMeditating() ||
-			postureState != UPRIGHT_POSTURE	) {
+			postureState != CreaturePosture::UPRIGHT	) {
 
 		sendSystemMessage("@combat_effects:burst_run_no");
 
@@ -3099,7 +3092,7 @@ void CreatureObjectImplementation::startDancing(const string& modifier, bool cha
 
 	info("started dancing");
 
-	setPosture(CreatureObjectImplementation::SKILLANIMATING_POSTURE);
+	setPosture(CreaturePosture::SKILLANIMATING);
 	setPerformanceName(isdigit(anim[0]) ? availableDances.get(atoi(anim.c_str())) : anim);
 	setDancing(true);
 
@@ -3313,7 +3306,7 @@ void CreatureObjectImplementation::startPlayingMusic(const string& modifier, boo
 
 	sendSystemMessage("performance", "music_start_self");
 
-	setPosture(CreatureObjectImplementation::SKILLANIMATING_POSTURE);
+	setPosture(CreaturePosture::SKILLANIMATING);
 	setPerformanceName(isdigit(music[0]) ? availableSongs.get(atoi(music.c_str())) : music);
 	setPlayingMusic(true);
 
@@ -4182,7 +4175,7 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 	mountCooldown.update();
 	mountCooldown.addMiliTime(3000);
 
-	setPosture(UPRIGHT_POSTURE);
+	setPosture(CreaturePosture::UPRIGHT);
 
 	parent = mount;
 	linkType = 4;
@@ -4198,11 +4191,11 @@ void CreatureObjectImplementation::mountCreature(MountCreature* mnt, bool lockMo
 			return;
 		}
 
-		mount->setState(MOUNTEDCREATURE_STATE);
+		mount->setState(CreatureState::MOUNTEDCREATURE);
 		mount->updateStates();
 
 		updateSpeed(mount->getSpeed(), mount->getAcceleration());
-		setState(RIDINGMOUNT_STATE);
+		setState(CreatureState::RIDINGMOUNT);
 		updateStates();
 
 		if (lockMount)
@@ -4234,12 +4227,12 @@ void CreatureObjectImplementation::dismount(bool lockMount, bool ignoreCooldown)
 			mnt->wlock(_this);
 
 		if (mount != NULL) {
-			mount->clearState(MOUNTEDCREATURE_STATE);
+			mount->clearState(CreatureState::MOUNTEDCREATURE);
 			mount->updateStates();
 		}
 
 		updateSpeed(5.376f, 1.549f);
-		clearState(RIDINGMOUNT_STATE);
+		clearState(CreatureState::RIDINGMOUNT);
 		updateStates();
 
 		if (lockMount)
@@ -4634,7 +4627,7 @@ void CreatureObjectImplementation::explode(int level, bool destroy) {
 
 //Medic & Doctor
 int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage, uint8 attribute, bool doBattleFatigue) {
-	if (!Attribute::isHAMAttribute(attribute))
+	if (!CreatureAttribute::isHAM(attribute))
 		return 0;
 
 	if (!target->hasDamage())
@@ -4643,7 +4636,7 @@ int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage,
 	int healableDamage = 0;
 
 	switch (attribute) {
-	case Attribute::HEALTH:
+	case CreatureAttribute::HEALTH:
 		healableDamage = (damage > target->getHealthDamage()) ? target->getHealthDamage() : damage;
 
 		if (doBattleFatigue)
@@ -4653,7 +4646,7 @@ int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage,
 			healableDamage = 0;
 
 		break;
-	case Attribute::ACTION:
+	case CreatureAttribute::ACTION:
 		healableDamage = (damage > target->getActionDamage()) ? target->getActionDamage() : damage;
 
 		if (doBattleFatigue)
@@ -4663,7 +4656,7 @@ int CreatureObjectImplementation::healDamage(CreatureObject* target, int damage,
 			return healableDamage = 0;
 
 		break;
-	case Attribute::MIND:
+	case CreatureAttribute::MIND:
 		healableDamage = (damage > target->getMindDamage()) ? target->getMindDamage() : damage;
 
 		if (doBattleFatigue)
@@ -4687,7 +4680,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 	int healableDamage = 0;
 
 	switch (attribute) {
-	case Attribute::HEALTH:
+	case CreatureAttribute::HEALTH:
 		healableDamage = (damage > target->getHealthWounds()) ? target->getHealthWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4697,7 +4690,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::ACTION:
+	case CreatureAttribute::ACTION:
 		healableDamage = (damage > target->getActionWounds()) ? target->getActionWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4707,7 +4700,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::MIND:
+	case CreatureAttribute::MIND:
 		healableDamage = (damage > target->getMindWounds()) ? target->getMindWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4717,7 +4710,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::STRENGTH:
+	case CreatureAttribute::STRENGTH:
 		healableDamage = (damage > target->getStrengthWounds()) ? target->getStrengthWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4727,7 +4720,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::CONSTITUTION:
+	case CreatureAttribute::CONSTITUTION:
 		healableDamage = (damage > target->getConstitutionWounds()) ? target->getConstitutionWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4737,7 +4730,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::QUICKNESS:
+	case CreatureAttribute::QUICKNESS:
 		healableDamage = (damage > target->getQuicknessWounds()) ? target->getQuicknessWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4747,7 +4740,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::STAMINA:
+	case CreatureAttribute::STAMINA:
 		healableDamage = (damage > target->getStaminaWounds()) ? target->getStaminaWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4757,7 +4750,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::FOCUS:
+	case CreatureAttribute::FOCUS:
 		healableDamage = (damage > target->getFocusWounds()) ? target->getFocusWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4767,7 +4760,7 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 			return healableDamage;
 
 		break;
-	case Attribute::WILLPOWER:
+	case CreatureAttribute::WILLPOWER:
 		healableDamage = (damage > target->getWillpowerWounds()) ? target->getWillpowerWounds() : damage;
 
 		if (doBattleFatigue)
@@ -4780,6 +4773,89 @@ int CreatureObjectImplementation::healWound(CreatureObject* target, int damage, 
 	}
 
 	return 0;
+}
+
+int CreatureObjectImplementation::healEnhance(CreatureObject* target, int amount, float duration, uint8 attribute, bool doBattleFatigue) {
+	Buff* buff = new Buff(BuffCRC::TEST_FIRST);
+
+	if (doBattleFatigue)
+		amount -= (int) round((float)amount * target->calculateBFRatio());
+
+	switch (attribute) {
+	case CreatureAttribute::HEALTH:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_HEALTH);
+		buff->setHealthBuff(amount);
+		break;
+	case CreatureAttribute::ACTION:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_ACTION);
+		buff->setActionBuff(amount);
+		break;
+	case CreatureAttribute::STRENGTH:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_STRENGTH);
+		buff->setStrengthBuff(amount);
+		break;
+	case CreatureAttribute::CONSTITUTION:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION);
+		buff->setConstitutionBuff(amount);
+		break;
+	case CreatureAttribute::QUICKNESS:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_QUICKNESS);
+		buff->setQuicknessBuff(amount);
+		break;
+	case CreatureAttribute::STAMINA:
+		buff->setBuffCRC(BuffCRC::MEDICAL_ENHANCE_STAMINA);
+		buff->setStaminaBuff(amount);
+		break;
+	default:
+		return 0;
+	}
+
+	buff->setBuffDuration(duration);
+
+	BuffObject* bo = new BuffObject(buff);
+
+	target->applyBuff(bo);
+
+	return amount;
+}
+
+bool CreatureObjectImplementation::curePoison(CreatureObject* target, float effectiveness) {
+	//TODO: Add in effectiveness once DoT's are restructured
+	if (!target->isPoisoned())
+		return false;
+
+	if (target->clearState(CreatureState::POISONED)) {
+		target->updateStates();
+		return true;
+	}
+
+	return false;
+}
+
+bool CreatureObjectImplementation::cureDisease(CreatureObject* target, float effectiveness) {
+	//TODO: Add in effectiveness once DoT's are restructured
+	if (!target->isDiseased())
+		return false;
+
+	if (target->clearState(CreatureState::DISEASED)) {
+		target->updateStates();
+		return true;
+	}
+
+	return false;
+}
+
+bool CreatureObjectImplementation::extinguishFire(CreatureObject* target, float effectiveness) {
+	//TODO: Add in effectiveness once DoT's are restructured
+	if (!target->isOnFire())
+		return false;
+
+	if (target->clearState(CreatureState::ONFIRE)) {
+		target->updateStates();
+		return true;
+	}
+
+	return false;
 }
 
 bool CreatureObjectImplementation::healState(CreatureObject* target, uint64 state) {
@@ -4796,16 +4872,16 @@ bool CreatureObjectImplementation::healState(CreatureObject* target, uint64 stat
 
 bool CreatureObjectImplementation::revive(CreatureObject* target, bool forcedChange) {
 	//This method is used to bring a player out of Incapacitation
-	if (!target->isIncapacitated())
+	if (!target->isIncapacitated() && !target->isDead())
 		return false;
 
 	if (!target->isRevivable() && !forcedChange)
 		return false;
 
 	if (target->isPlayer())
-		((Player*)target)->changePosture(UPRIGHT_POSTURE);
+		((Player*)target)->changePosture(CreaturePosture::UPRIGHT);
 	else
-		target->setPosture(UPRIGHT_POSTURE, (forcedChange ? true : false));
+		target->setPosture(CreaturePosture::UPRIGHT, (forcedChange ? true : false));
 
 	return true;
 }
@@ -4817,7 +4893,22 @@ bool CreatureObjectImplementation::resurrect(CreatureObject* target) {
 	if (!target->isResurrectable())
 		return false;
 
-	//TODO: Resurrect player or creature.
+	if (isPlayer()) {
+		//Remove the clone window if it exists
+		Player* player = (Player*) _this;
+
+		uint32 boxID = player->getSuiBoxFromType(0xC103); //Activate Clone SuiBox
+
+		if (player->hasSuiBox(boxID)) {
+			SuiBox* sui = player->getSuiBox(boxID);
+			player->sendMessage(sui->generateCloseMessage());
+			player->removeSuiBox(boxID);
+			sui->finalize();
+		}
+	}
+
+	if (!revive(target, true))
+		return false;
 
 	return true;
 }
@@ -4926,8 +5017,19 @@ bool CreatureObjectImplementation::hatesFaction(uint faction) {
 }
 
 bool CreatureObjectImplementation::isAttackable() {
-		if (isNonPlayerCreature() && ((Creature *) _this)->isMount())
-			return !((MountCreature *) _this)->isDisabled();
+	if (isNonPlayerCreature() && ((Creature *) _this)->isMount())
+		return !((MountCreature *) _this)->isDisabled();
+	else
+		return !isIncapacitated() && !isDead();
+}
+
+bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature) {
+	if (creature->hatesFaction(this->getFaction())) {
+		if (creature->isPlayer() && ((Player *) creature)->isOnLeave())
+			return false;
 		else
-			return !isIncapacitated() && !isDead();
+			return true;
+	}
+
+	return (pvpStatusBitmask & CreatureFlag::ATTACKABLE);
 }

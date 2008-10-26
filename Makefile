@@ -114,6 +114,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl \
 				server/zone/objects/tangible/terminal/bazaar/RegionBazaar.idl \
 				server/zone/objects/tangible/ticketcollector/TicketCollector.idl \
+				server/zone/objects/tangible/generic/GenericItem.idl \
+				server/zone/objects/tangible/generic/Dice.idl \
 				server/zone/objects/tangible/instrument/Instrument.idl \
 				server/zone/objects/attackable/lair/LairObject.idl \
 				server/zone/objects/tangible/surveytool/SurveyTool.idl \
@@ -133,6 +135,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \
 				server/zone/objects/tangible/firework/Firework.idl \
+				server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.idl \
 				server/zone/objects/tangible/deed/factorydeed/FactoryDeed.idl \
 				server/zone/objects/tangible/deed/generatordeed/GeneratorDeed.idl \
 				server/zone/objects/tangible/deed/harvesterdeed/HarvesterDeed.idl \

@@ -79,6 +79,8 @@ public:
 
 	bool isPharmaceutical();
 
+	bool isGenericItem();
+
 	bool isLair();
 
 	bool isDeed();
@@ -235,6 +237,8 @@ public:
 	bool isSurveyTool();
 
 	bool isPharmaceutical();
+
+	bool isGenericItem();
 
 	bool isLair();
 

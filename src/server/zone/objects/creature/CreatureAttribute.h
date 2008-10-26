@@ -42,49 +42,95 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CHANGEFACTIONEVENT_H_
-#define CHANGEFACTIONEVENT_H_
+#ifndef CREATUREATTRIBUTE_H_
+#define CREATUREATTRIBUTE_H_
 
-#include "../PlayerImplementation.h"
+#include "engine/engine.h"
 
-class ChangeFactionEvent : public Event {
-	PlayerImplementation* player;
-	uint32 faction;
-
+class CreatureAttribute {
 public:
-	ChangeFactionEvent(PlayerImplementation* pl, uint32 Faction) : Event(300000) {
-		player = pl;
-		faction = Faction;
+	static const uint8 UNKNOWN = 0;
+	static const uint8 HEALTH = 1;
+	static const uint8 STRENGTH = 2;
+	static const uint8 CONSTITUTION = 3;
+	static const uint8 ACTION = 4;
+	static const uint8 QUICKNESS = 5;
+	static const uint8 STAMINA = 6;
+	static const uint8 MIND = 7;
+	static const uint8 FOCUS = 8;
+	static const uint8 WILLPOWER = 9;
+
+	static bool isHAM(uint8 attribute) {
+		return (attribute == HEALTH || attribute == ACTION || attribute == MIND);
 	}
 
-	bool activate() {
-		try {
-			player->wlock();
+	static uint8 getAttribute(string attribute) {
+		String::toLower(attribute);
 
-			if (player->isOnline()) {
-				player->info("changing faction");
+		if (attribute == "health")
+			return HEALTH;
+		else if (attribute == "action")
+			return ACTION;
+		else if (attribute == "mind")
+			return MIND;
+		else if (attribute == "strength")
+			return STRENGTH;
+		else if (attribute == "constitution")
+			return CONSTITUTION;
+		else if (attribute == "quickness")
+			return QUICKNESS;
+		else if (attribute == "stamina")
+			return STAMINA;
+		else if (attribute == "focus")
+			return FOCUS;
+		else if (attribute == "willpower")
+			return WILLPOWER;
+		else
+			return UNKNOWN;
+	}
 
-				player->setFaction(faction);
+	static string getName(const uint8 attribute, bool initialCap = false) {
+		string name = "";
 
-				if (faction != 0)
-					player->setOvert();
-				else
-					player->setCovert();
-
-				player->makeCharacterMask();
-			}
-
-			player->setChangeFactionEvent(NULL);
-
-			player->unlock();
-		} catch (...) {
-			player->error("unreported exception caught in ChangeFactionEvent::activate");
-			player->unlock();
+		switch (attribute) {
+		case HEALTH:
+			name = "health";
+			break;
+		case ACTION:
+			name = "action";
+			break;
+		case MIND:
+			name = "mind";
+			break;
+		case STRENGTH:
+			name = "strength";
+			break;
+		case CONSTITUTION:
+			name = "constitution";
+			break;
+		case QUICKNESS:
+			name = "quickness";
+			break;
+		case STAMINA:
+			name = "stamina";
+			break;
+		case FOCUS:
+			name = "focus";
+			break;
+		case WILLPOWER:
+			name = "willpower";
+			break;
+		default:
+			name = "unknown";
+			break;
 		}
 
-		return true;
-	}
+		if (initialCap)
+			name[0] = toupper(name[0]);
 
+		return name;
+	}
 };
 
-#endif /*CHANGEFACTIONEVENT_H_*/
+
+#endif /* CREATUREATTRIBUTE_H_ */

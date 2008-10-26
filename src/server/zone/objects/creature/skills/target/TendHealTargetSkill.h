@@ -59,7 +59,7 @@ protected:
 	int actionHealed;
 	int mindHealed;
 
-	int woundPool;
+	uint8 woundPool;
 	int woundsHealed;
 
 	bool tendDamage;
@@ -104,12 +104,14 @@ public:
 
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
+		uint8 attribute = creatureTarget->getNextWoundedAttribute();
+
 		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
-			creatureTarget = creature;	//If our target is dead, riding a creature, or mounted, then we make ourself target.
+			creatureTarget = creature;
 
 
 		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You can not Heal Enhance while meditating.");
+			creature->sendSystemMessage("You cannot do that while Meditating.");
 			return 0;
 		}
 
@@ -133,129 +135,73 @@ public:
 			return 0;
 		}
 
+
+
 		if (tendDamage) {
-			int healthDamage = 0, actionDamage = 0;
-
-			calculateHeal(creatureTarget, healthDamage, actionDamage, healthHealed, actionHealed);
-
-			if (healthDamage <= 0 && actionDamage <= 0) {
-				if (creatureTarget == creature) {
+			if (!creatureTarget->hasHealthDamage() && !creatureTarget->hasActionDamage()) {
+				if (creatureTarget == creature)
 					creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
-				} else {
+				else
 					creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
-				}
 				return 0;
 			}
 
-			if (healthDamage > 0)
-				creatureTarget->changeHealthBar(healthDamage);
-			if (actionDamage > 0)
-				creatureTarget->changeActionBar(actionDamage);
+			float modSkill = (float) creature->getSkillMod("healing_injury_treatment");
+			float effectiveness = 150.0f;
 
-			if (creatureTarget->isIncapacitated()) {
-				//Bring incapped players back from incap.
-				if (creatureTarget->getHealth() > 0 && creatureTarget->getAction() > 0 && creatureTarget->getMind() > 0)
-					((Player*)creatureTarget)->changePosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
-			}
+			int healPower = (int) round((100.0f + modSkill) / 100.0f * effectiveness);
 
-			sendHealMessage(creature, creatureTarget, healthDamage, actionDamage);
+			int healedHealth = creature->healDamage(creatureTarget, healPower, CreatureAttribute::HEALTH);
+			int healedAction = creature->healDamage(creatureTarget, healPower, CreatureAttribute::ACTION);
 
-			creature->changeMindBar(-mindCost);
-			creature->changeFocusWoundsBar(mindWoundCost);
-			creature->changeWillpowerWoundsBar(mindWoundCost);
+			if (creature->isPlayer())
+				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
 
-			if (creatureTarget != creature)
-				awardXp(creature, "medical", 100); //No experience for healing yourself.
-
-			doAnimations(creature, creatureTarget);
+			sendHealMessage(creature, creatureTarget, healedHealth, healedAction);
 		}
+
+
 
 		if (tendWound) {
-			int woundsHealed = calculateWoundHeal(creatureTarget, 25, woundPool);
-
-			if (woundsHealed <= 0) {
-				if (creatureTarget == creature) {
+			if (!creatureTarget->hasWound(attribute)) {
+				if (creatureTarget == creature)
 					creature->sendSystemMessage("healing_response", "healing_response_67");
-				} else {
-					creature->sendSystemMessage(((Player*)creatureTarget)->getFirstNameProper() + " has no wounds of that type to heal.");
-				}
+				else
+					creature->sendSystemMessage(creatureTarget->getCharacterName().c_str() + " has no wounds of that type to heal.");
+
 				return 0;
 			}
 
-			applyWoundHeal(creatureTarget, woundsHealed, woundPool);
-			sendWoundMessage(creature, creatureTarget, woundPool, woundsHealed);
+			//TODO: Add in medical city bonus
+			float modEnvironment = (float) creature->getMedicalFacilityRating();
+			float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
+			float modCityBonus = 1.0f;
+			float effectiveness = 150.0f;
 
-			creature->changeMindBar(-mindCost);
-			creature->changeFocusWoundsBar(mindWoundCost);
-			creature->changeWillpowerWoundsBar(mindWoundCost);
+			//Since this skill can be used anywhere, we need to check that modEnvironment is not 0.
+			modEnvironment = modEnvironment > 0.0f ? modEnvironment : 1.0f;
 
-			if (creatureTarget != creature)
-				awardXp(creature, "medical", 100); //No experience for healing yourself.
+			int healPower = (int) round(effectiveness * modCityBonus * modEnvironment * (100.0f + modSkill) / 10000.0f);
 
-			doAnimations(creature, creatureTarget);
+			int healedWounds = creature->healWound(creatureTarget, healPower, attribute);
 
+			if (creature->isPlayer())
+				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
+
+			sendWoundMessage(creature, creatureTarget, attribute, healedWounds);
 		}
+
+		creature->changeMindBar(-mindCost);
+
+		creature->changeFocusWoundsBar(mindWoundCost);
+		creature->changeWillpowerWoundsBar(mindWoundCost);
+
+		if (creatureTarget != creature)
+			awardXp(creature, "medical", 100);
+
+		doAnimations(creature, creatureTarget);
 
 		return 0;
-	}
-
-	void calculateHeal(CreatureObject* creatureTarget, int& healthDamage, int& actionDamage, int healthPower, int actionPower) {
-		healthDamage = creatureTarget->getHealthMax() - creatureTarget->getHealth() - creatureTarget->getHealthWounds();
-		actionDamage = creatureTarget->getActionMax() - creatureTarget->getAction() - creatureTarget->getActionWounds();
-
-		healthDamage = (healthDamage > healthPower) ? healthPower : healthDamage;
-		actionDamage = (actionDamage > actionPower) ? actionPower : actionDamage;
-	}
-
-	int calculateWoundHeal(CreatureObject* creature, int woundPower, int poolAffected) {
-		int woundsHealed = 0;
-		switch (poolAffected) {
-			case PharmaceuticalImplementation::ACTION:
-				woundsHealed = creature->getActionWounds();
-				break;
-			case PharmaceuticalImplementation::STRENGTH:
-				woundsHealed = creature->getStrengthWounds();
-				break;
-			case PharmaceuticalImplementation::CONSTITUTION:
-				woundsHealed = creature->getConstitutionWounds();
-				break;
-			case PharmaceuticalImplementation::QUICKNESS:
-				woundsHealed = creature->getQuicknessWounds();
-				break;
-			case PharmaceuticalImplementation::STAMINA:
-				woundsHealed = creature->getStaminaWounds();
-				break;
-			case PharmaceuticalImplementation::HEALTH:
-			default:
-				woundsHealed = creature->getHealthWounds();
-				break;
-		}
-
-		return (woundsHealed > woundPower) ? woundPower : woundsHealed;
-	}
-
-	void applyWoundHeal(CreatureObject* creature, int woundsHealed, int poolAffected) {
-		switch (poolAffected) {
-			case PharmaceuticalImplementation::ACTION:
-				creature->changeActionWoundsBar(-woundsHealed);
-				break;
-			case PharmaceuticalImplementation::STRENGTH:
-				creature->changeStrengthWoundsBar(-woundsHealed);
-				break;
-			case PharmaceuticalImplementation::CONSTITUTION:
-				creature->changeConstitutionWoundsBar(-woundsHealed);
-				break;
-			case PharmaceuticalImplementation::QUICKNESS:
-				creature->changeQuicknessWoundsBar(-woundsHealed);
-				break;
-			case PharmaceuticalImplementation::STAMINA:
-				creature->changeStaminaWoundsBar(-woundsHealed);
-				break;
-			case PharmaceuticalImplementation::HEALTH:
-			default:
-				creature->changeHealthWoundsBar(-woundsHealed);
-				break;
-		}
 	}
 
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int healthDamage, int actionDamage) {
@@ -280,9 +226,10 @@ public:
 			msgPlayer << "You heal yourself for " << msgBody.str() << msgTail.str();
 			player->sendSystemMessage(msgPlayer.str());
 		} else {
-			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.str() << msgTail.str();
+			msgPlayer << "You heal " << playerTarget->getCharacterName().c_str() << " for " << msgBody.str() << msgTail.str();
+			msgTarget << player->getCharacterName().c_str() << " heals you for " << msgBody.str() << msgTail.str();
+
 			player->sendSystemMessage(msgPlayer.str());
-			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.str() << msgTail.str();
 			playerTarget->sendSystemMessage(msgTarget.str());
 		}
 	}
@@ -290,7 +237,7 @@ public:
 	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, int poolAffected, int woundsHealed) {
 		string creatureName = creature->getCharacterName().c_str();
 		string creatureTargetName = creatureTarget->getCharacterName().c_str();
-		string poolName = PharmaceuticalImplementation::getPoolName(poolAffected);
+		string poolName = CreatureAttribute::getName(poolAffected);
 
 		stringstream msgPlayer, msgTarget, msgTail;
 
@@ -362,7 +309,7 @@ public:
 		mindHealed = mind;
 	}
 
-	void setWoundPool(int pool) {
+	void setWoundPool(uint8 pool) {
 		woundPool = pool;
 	}
 

@@ -208,6 +208,29 @@ void PlanetManagerImplementation::addNoBuildArea(NoBuildArea * area) {
 	unlock();
 }
 
+void PlanetManagerImplementation::deleteNoBuildArea(NoBuildArea * area) {
+	lock();
+	try {
+		areaMap->addArea(area);
+
+		uint64 id = area->getUID();
+
+		area->finalize();
+
+		stringstream query;
+		query << "DELETE FROM no_build_areas WHERE uid = " << id << ";";
+
+		ServerDatabase::instance()->executeStatement(query);
+
+
+	} catch (Exception e) {
+		cout << "Exception Caught in PlanetManagerImplementation::deleteNoBuildArea: "  << e.getMessage() << endl;
+	} catch (...) {
+		cout << "Unspecified Exception Caught in PlanetManagerImplementation::deleteNoBuildArea" << endl;
+	}
+	unlock();
+}
+
 NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float maxX, float minY, float maxY, uint8 reason) {
 	NoBuildArea * area = NULL;
 
@@ -248,6 +271,7 @@ NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float m
 
 	return area;
 }
+
 void PlanetManagerImplementation::loadPlayerStructures() {
 	lock();
 

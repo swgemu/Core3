@@ -43,7 +43,8 @@
 chewbacca = Creature:new {
       objectName = "chewbacca",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "rebel",
+      faction = "rebel", 
+	  factionPoints = 20,
       gender = "male",
 
       stfName = "Chewbacca",

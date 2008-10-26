@@ -604,7 +604,7 @@ void SceneObject::removeFromBuilding(BuildingObject* building) {
 		((SceneObjectImplementation*) _impl)->removeFromBuilding(building);
 }
 
-void SceneObject::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
+void SceneObject::broadcastMessage(BaseMessage* msg, int range, bool doLock, bool sendSelf) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -613,10 +613,11 @@ void SceneObject::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
 		method.addObjectParameter(msg);
 		method.addSignedIntParameter(range);
 		method.addBooleanParameter(doLock);
+		method.addBooleanParameter(sendSelf);
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _impl)->broadcastMessage(msg, range, doLock);
+		((SceneObjectImplementation*) _impl)->broadcastMessage(msg, range, doLock, sendSelf);
 }
 
 void SceneObject::broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock) {
@@ -1347,7 +1348,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		removeFromBuilding((BuildingObject*) inv->getObjectParameter());
 		break;
 	case 49:
-		broadcastMessage((BaseMessage*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		broadcastMessage((BaseMessage*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
 	case 50:
 		broadcastMessage((StandaloneBaseMessage*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
@@ -1672,8 +1673,8 @@ void SceneObjectAdapter::removeFromBuilding(BuildingObject* building) {
 	return ((SceneObjectImplementation*) impl)->removeFromBuilding(building);
 }
 
-void SceneObjectAdapter::broadcastMessage(BaseMessage* msg, int range, bool doLock) {
-	return ((SceneObjectImplementation*) impl)->broadcastMessage(msg, range, doLock);
+void SceneObjectAdapter::broadcastMessage(BaseMessage* msg, int range, bool doLock, bool sendSelf) {
+	return ((SceneObjectImplementation*) impl)->broadcastMessage(msg, range, doLock, sendSelf);
 }
 
 void SceneObjectAdapter::broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock) {

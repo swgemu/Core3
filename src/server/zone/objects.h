@@ -128,6 +128,8 @@ which carries forward this exception.
 #include "objects/tangible/deed/vehicledeed/VehicleDeedImplementation.h"
 #include "objects/tangible/deed/playerhousedeed/PlayerHouseDeed.h"
 #include "objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.h"
+#include "objects/tangible/deed/resourcedeed/ResourceDeed.h"
+#include "objects/tangible/deed/resourcedeed/ResourceDeedImplementation.h"
 
 #include "objects/tangible/holocron/Holocron.h"
 #include "objects/tangible/holocron/HolocronImplementation.h"
@@ -194,6 +196,11 @@ which carries forward this exception.
 #include "objects/tangible/pharmaceutical/RevivePack.h"
 #include "objects/tangible/pharmaceutical/RevivePackImplementation.h"
 
+#include "objects/tangible/generic/GenericItem.h" 
+#include "objects/tangible/generic/GenericItemImplementation.h" 
+#include "objects/tangible/generic/Dice.h" 
+#include "objects/tangible/generic/DiceImplementation.h" 
+
 #include "objects/intangible/IntangibleObject.h"
 #include "objects/intangible/IntangibleObjectImplementation.h"
 
@@ -254,6 +261,7 @@ which carries forward this exception.
 #include "objects/player/sui/inputbox/SuiInputBox.h"
 #include "objects/player/sui/listbox/SuiListBoxImplementation.h"
 #include "objects/player/sui/listbox/SuiListBox.h"
+#include "objects/player/sui/listbox/SuiListBoxVector.h"
 #include "objects/player/sui/messagebox/SuiMessageBoxImplementation.h"
 #include "objects/player/sui/messagebox/SuiMessageBox.h"
 #include "objects/player/sui/transferbox/SuiTransferBoxImplementation.h"

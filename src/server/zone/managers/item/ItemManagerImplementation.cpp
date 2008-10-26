@@ -282,6 +282,14 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 				item->parseItemAttributes();
 			}
 			break;
+			
+        case TangibleObjectImplementation::GENERICITEM: 
+            item = createSubObject(objectid, objectcrc, objectname, objecttemp, equipped); 
+            if (makeStats) { 
+                item->setAttributes(lootAttributes); 
+                item->parseItemAttributes(); 
+            } 
+            break; 
 
 		default:
 			item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, objecttype);
@@ -366,6 +374,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 				break;
 			case TangibleObjectImplementation::VEHICLEDEED:
 				item = new VehicleDeed(objectid, objectcrc, objectname, objecttemp);
+				break;
+			case TangibleObjectImplementation::RESOURCEDEED:
+				item = new ResourceDeed(objectid, objectcrc, objectname, objecttemp);
 				break;
 		}
 		if (makeStats && item != NULL) {
@@ -485,6 +496,15 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0xC6F551AE: //fireblanket
 		item = new CurePack(objectid, objectcrc, objectname, objecttemp);
 		break;
+    case 0x221F0907: 
+    case 0x484AC6A6: 
+    case 0x821DB6E8: 
+    case 0xBF64B1E4: 
+    case 0xB5E34222: 
+    case 0x81B6977D: 
+    case 0xD474E5E7: //dice 
+        item = new Dice(objectid, objectcrc, objectname, objecttemp); 
+        break; 
 	default:
 		item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, TangibleObjectImplementation::MISC);
 		break;
@@ -712,6 +732,7 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("PETDEED", TangibleObjectImplementation::PETDEED);
 	setGlobalInt("DROIDDEED", TangibleObjectImplementation::DROIDDEED);
 	setGlobalInt("VEHICLEDEED", TangibleObjectImplementation::VEHICLEDEED);
+	setGlobalInt("RESOURCEDEED", TangibleObjectImplementation::RESOURCEDEED);
 	setGlobalInt("CLOTHING", TangibleObjectImplementation::CLOTHING);
 	setGlobalInt("BANDOLIER", TangibleObjectImplementation::BANDOLIER);
 	setGlobalInt("BELT", TangibleObjectImplementation::BELT);
@@ -782,24 +803,24 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("STIMPACK", PharmaceuticalImplementation::STIMPACK);
 	setGlobalInt("REVIVEPACK", PharmaceuticalImplementation::REVIVEPACK);
 
-	setGlobalInt("HEALTH", PharmaceuticalImplementation::HEALTH);
-	setGlobalInt("ACTION", PharmaceuticalImplementation::ACTION);
-	setGlobalInt("MIND", PharmaceuticalImplementation::MIND);
-	setGlobalInt("CONSTITUTION", PharmaceuticalImplementation::CONSTITUTION);
-	setGlobalInt("STRENGTH", PharmaceuticalImplementation::STRENGTH);
-	setGlobalInt("QUICKNESS", PharmaceuticalImplementation::QUICKNESS);
-	setGlobalInt("STAMINA", PharmaceuticalImplementation::STAMINA);
-	setGlobalInt("FOCUS", PharmaceuticalImplementation::FOCUS);
-	setGlobalInt("WILLPOWER", PharmaceuticalImplementation::WILLPOWER);
+	setGlobalInt("HEALTH", CreatureAttribute::HEALTH);
+	setGlobalInt("ACTION", CreatureAttribute::ACTION);
+	setGlobalInt("MIND", CreatureAttribute::MIND);
+	setGlobalInt("CONSTITUTION", CreatureAttribute::CONSTITUTION);
+	setGlobalInt("STRENGTH", CreatureAttribute::STRENGTH);
+	setGlobalInt("QUICKNESS", CreatureAttribute::QUICKNESS);
+	setGlobalInt("STAMINA", CreatureAttribute::STAMINA);
+	setGlobalInt("FOCUS", CreatureAttribute::FOCUS);
+	setGlobalInt("WILLPOWER", CreatureAttribute::WILLPOWER);
 
-	setGlobalInt("INTIMIDATED_STATE", CreatureObjectImplementation::INTIMIDATED_STATE);
-	setGlobalInt("STUNNED_STATE", CreatureObjectImplementation::STUNNED_STATE);
-	setGlobalInt("DIZZY_STATE", CreatureObjectImplementation::DIZZY_STATE);
-	setGlobalInt("BLINDED_STATE", CreatureObjectImplementation::BLINDED_STATE);
+	setGlobalInt("INTIMIDATED", CreatureState::INTIMIDATED);
+	setGlobalInt("STUNNED", CreatureState::STUNNED);
+	setGlobalInt("DIZZY", CreatureState::DIZZY);
+	setGlobalInt("BLINDED", CreatureState::BLINDED);
 
-	setGlobalInt("ONFIRE_STATE", CreatureObjectImplementation::ONFIRE_STATE);
-	setGlobalInt("DISEASED_STATE", CreatureObjectImplementation::DISEASED_STATE);
-	setGlobalInt("POISONED_STATE", CreatureObjectImplementation::POISONED_STATE);
+	setGlobalInt("ONFIRE", CreatureState::ONFIRE);
+	setGlobalInt("DISEASED", CreatureState::DISEASED);
+	setGlobalInt("POISONED", CreatureState::POISONED);
 
 	//ItemMasks
 	setGlobalShort("MALE", TangibleObjectImplementation::MALE);
@@ -932,14 +953,16 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 				switch(DeedObjectImplementation::getSubType(crc)){
 					case TangibleObjectImplementation::HARVESTER:
 					{
-					//	cout << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
+						//cout << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
+
 						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
 						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
 						surplusPower = itemconfig.getIntField("surplusPower");
 						extractionRate = itemconfig.getFloatField("extractionRate");
 						hopperSize = itemconfig.getFloatField("hopperSize");
 
-					//	cout << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
+						//cout << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
+
 
 						HarvesterDeed* harv = (HarvesterDeed*) item;
 						harv->setSurplusMaintenance(surplusMaintenance);
@@ -1013,7 +1036,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			EnhancePack* enhance = (EnhancePack*) item;
 			enhance->setEffectiveness(eff);
 			enhance->setDuration(dur);
-			enhance->setPoolAffected(pool);
+			enhance->setAttribute(pool);
 			break;
 		}
 		case PharmaceuticalImplementation::WOUNDPACK:
@@ -1023,7 +1046,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 			WoundPack* wound = (WoundPack*) item;
 			wound->setEffectiveness(eff);
-			wound->setPoolAffected(pool);
+			wound->setAttribute(pool);
 			break;
 		}
 		case PharmaceuticalImplementation::CUREPACK:
@@ -1033,7 +1056,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 			CurePack* curepack = (CurePack*) item;
 			curepack->setEffectiveness(eff);
-			curepack->setConditionCured(condition);
+			curepack->setState(condition);
 			break;
 		}
 		case PharmaceuticalImplementation::STATEPACK:
@@ -1041,7 +1064,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 			uint64 state = itemconfig.getLongField("stateAffected");
 
 			StatePack* statepack = (StatePack*) item;
-			statepack->setStateAffected(state);
+			statepack->setState(state);
 			break;
 		}
 		case PharmaceuticalImplementation::REVIVEPACK:

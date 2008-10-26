@@ -29,7 +29,11 @@ public:
 
 	void setEffectiveness(float eff);
 
+	void setComplexityLevel(float comp);
+
 	float getEffectiveness();
+
+	float getComplexityLevel();
 
 	int getStationType();
 
@@ -55,7 +59,11 @@ public:
 
 	void setEffectiveness(float eff);
 
+	void setComplexityLevel(float comp);
+
 	float getEffectiveness();
+
+	float getComplexityLevel();
 
 	int getStationType();
 

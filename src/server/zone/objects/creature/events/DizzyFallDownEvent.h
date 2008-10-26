@@ -70,9 +70,9 @@ public:
 					combatEquil = 100;
 
 				if ((combatEquil >> 1) > System::random(100))
-					creature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+					creature->setPosture(CreaturePosture::UPRIGHT, true);
 				else {
-					creature->setPosture(CreatureObjectImplementation::KNOCKEDDOWN_POSTURE, true);
+					creature->setPosture(CreaturePosture::KNOCKEDDOWN, true);
 					if (creature->isPlayer())
 						creature->sendSystemMessage("cbt_spam", "dizzy_fall_down_single");
 				}

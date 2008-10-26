@@ -61,7 +61,7 @@ StimPackImplementation::StimPackImplementation(CreatureObject* creature, uint32 
 }
 
 int StimPackImplementation::useObject(Player* player) {
-	if (player->getSkillMod("healing_ability") < getMedicineUseRequired()) {
+	if (player->getSkillMod("healing_ability") < medicineUseRequired) {
 		player->sendSystemMessage("error_message", "insufficient_skill"); //You lack the skill to use this item.
 		return 0;
 	}
@@ -72,9 +72,7 @@ int StimPackImplementation::useObject(Player* player) {
 	return 0;
 }
 
-void StimPackImplementation::updateCraftingValues(
-		DraftSchematic* draftSchematic) {
-
+void StimPackImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
 	string name;
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
@@ -109,9 +107,9 @@ void StimPackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
 	string attr = "examine_heal_damage_health";
-	alm->insertAttribute(attr, getPrecision(getEffectiveness(), 0));
+	alm->insertAttribute(attr, getPrecision(effectiveness, 0));
 	attr = "examine_heal_damage_action";
-	alm->insertAttribute(attr, getPrecision(getEffectiveness(), 0));
+	alm->insertAttribute(attr, getPrecision(effectiveness, 0));
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

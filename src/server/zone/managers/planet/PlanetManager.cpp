@@ -342,12 +342,25 @@ void PlanetManager::addNoBuildArea(NoBuildArea* area) {
 		((PlanetManagerImplementation*) _impl)->addNoBuildArea(area);
 }
 
-NoBuildArea* PlanetManager::createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason) {
+void PlanetManager::deleteNoBuildArea(NoBuildArea* area) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 27);
+		method.addObjectParameter(area);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->deleteNoBuildArea(area);
+}
+
+NoBuildArea* PlanetManager::createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
 		method.addFloatParameter(minX);
 		method.addFloatParameter(maxX);
 		method.addFloatParameter(minY);
@@ -434,6 +447,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		addNoBuildArea((NoBuildArea*) inv->getObjectParameter());
 		break;
 	case 27:
+		deleteNoBuildArea((NoBuildArea*) inv->getObjectParameter());
+		break;
+	case 28:
 		resp->insertLong(createNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedCharParameter())->_getObjectID());
 		break;
 	default:
@@ -525,6 +541,10 @@ void PlanetManagerAdapter::addNoBuildArea(float minX, float maxX, float minY, fl
 
 void PlanetManagerAdapter::addNoBuildArea(NoBuildArea* area) {
 	return ((PlanetManagerImplementation*) impl)->addNoBuildArea(area);
+}
+
+void PlanetManagerAdapter::deleteNoBuildArea(NoBuildArea* area) {
+	return ((PlanetManagerImplementation*) impl)->deleteNoBuildArea(area);
 }
 
 NoBuildArea* PlanetManagerAdapter::createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason) {

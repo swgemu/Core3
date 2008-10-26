@@ -69,12 +69,27 @@ protected:
 
 	virtual void greetEnemy() { };
 	virtual void greetHated() { };
+	virtual void greetChangingStatusMember() { };
+	virtual void greetMember(Player * player) { };
 	virtual void sendMemberStart(Player * player) { };
 	virtual void sendNeutralStart(Player * player) { };
+	virtual void sendOnLeaveStart(Player * player) { };
 	virtual void rejectJoinFaction(Player * player) { };
 	virtual void confirmJoinFaction(Player * player) { };
 	virtual void playerAcceptedJoin(Player * player) { };
 	virtual void playerRejectedJoin(Player * player) { };
+	virtual void confirmGoCovert(Player * player) { };
+	virtual void playerAcceptedGoCovert(Player * player) { };
+	virtual void playerRejectedGoCovert(Player * player) { };
+	virtual void confirmGoOvert(Player * player) { };
+	virtual void playerAcceptedGoOvert(Player * player) { };
+	virtual void playerRejectedGoOvert(Player * player) { };
+	virtual void confirmGoOnLeave(Player * player) { };
+	virtual void playerAcceptedGoOnLeave(Player * player) { };
+	virtual void playerRejectedGoOnLeave(Player * player) { };
+	virtual void confirmGoActive(Player * player) { };
+	virtual void playerAcceptedGoActive(Player * player) { };
+	virtual void playerRejectedGoActive(Player * player) { };
 	virtual void confirmLeaveFaction(Player * player) { };
 	virtual void playerAcceptedLeave(Player * player) { };
 	virtual void playerRejectedLeave(Player * player) { };
@@ -87,6 +102,9 @@ protected:
 private:
 	void addPlayerToFaction(Player * player);
 	void removePlayerFromFaction(Player * player);
+	void setPlayerOnLeave(Player * player, uint32 timer);
+	void setPlayerCovert(Player * player, uint32 timer);
+	void setPlayerOvert(Player * player, uint32 timer);
 	void promotePlayer(Player * player);
 	void grantBribe(Player * player, uint32 cost, uint32 fp);
 

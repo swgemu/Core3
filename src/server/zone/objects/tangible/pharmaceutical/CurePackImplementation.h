@@ -52,7 +52,7 @@ which carries forward this exception.
 class CurePackImplementation : public CurePackServant {
 protected:
 	float effectiveness;
-	uint64 conditionCured;
+	uint64 state;
 
 public:
 	CurePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
@@ -73,18 +73,18 @@ public:
 		string attr = "effectiveness";
 		itemAttributes->setFloatAttribute(attr, effectiveness);
 	}
-	inline void setConditionCured(uint64 condition) {
-		conditionCured = condition;
-		string attr = "conditionCured";
-		itemAttributes->setUnsignedLongAttribute(attr, conditionCured);
+	inline void setState(uint64 value) {
+		state = value;
+		string attr = "state";
+		itemAttributes->setUnsignedLongAttribute(attr, state);
 	}
 
 	inline float getEffectiveness() {
 		return effectiveness;
 	}
 
-	inline uint64 getConditionCured() {
-		return conditionCured;
+	inline uint64 getState() {
+		return state;
 	}
 };
 

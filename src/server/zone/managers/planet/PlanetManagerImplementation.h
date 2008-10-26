@@ -132,6 +132,7 @@ public:
 	bool isNoBuildArea(float x, float y);
 	void addNoBuildArea(float minX, float maxX, float minY, float maxY, uint64 uid, uint8 reason = 0);
 	void addNoBuildArea(NoBuildArea * area);
+	void deleteNoBuildArea(NoBuildArea * area);
 	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, uint8 reason = 0);
 
 private:

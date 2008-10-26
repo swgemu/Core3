@@ -56,5 +56,5 @@ stunnedPack = Object:new {
 	
 	medicineUse = 5,
 	
-	stateAffected = STUNNED_STATE
+	stateAffected = STUNNED
 }

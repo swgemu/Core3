@@ -233,6 +233,9 @@ class PlayerImplementation : public PlayerServant {
 	VectorMap<uint32, SuiBox*> suiBoxes;
 	uint32 suiBoxNextID;
 	string inputBoxReturnBuffer;
+	SuiListBoxVector* suiChoicesList;
+
+	uint64 resourceDeedID;
 
 	uint64 currentStructureID;
 
@@ -488,7 +491,7 @@ public:
 	void sendSystemMessage(unicode& message);
 
 	//Medic & Doctor System Messages
-	void sendBFMessage(CreatureObject* target);
+	void sendBattleFatigueMessage(CreatureObject* target);
 	void sendHealMessage(CreatureObject* target, int h, int a, int m);
 
 	//item methods
@@ -867,14 +870,27 @@ public:
 		if (creature->hatesFaction(this->getFaction()))
 			return true;
 
-		return (pvpStatusBitmask & ATTACKABLE_FLAG);
+		return (pvpStatusBitmask & CreatureFlag::ATTACKABLE);
 	}
 
 	// faction methods
 	void setOvert();
 	void setCovert();
+	void setOnLeave();
 
-	void newChangeFactionEvent(uint32 faction);
+	inline bool isOvert() {
+		return (factionStatus == 2);
+	}
+
+	inline bool isCovert() {
+		return (factionStatus == 1);
+	}
+
+	inline bool isOnLeave() {
+		return (factionStatus == 0);
+	}
+
+	void newChangeFactionStatusEvent(uint8 status, uint32 timer);
 
 	bool isInDuelWith(Player* targetPlayer, bool doLock = true);
 
@@ -1372,7 +1388,7 @@ public:
 		guildLeader = value;
 	}
 
-	inline void setChangeFactionEvent(Event* eve) {
+	inline void setChangeFactionStatusEvent(Event* eve) {
 		changeFactionEvent = eve;
 	}
 
@@ -1380,9 +1396,23 @@ public:
 		return meditating;
 	}
 
-	inline bool isChangingFaction() {
+	inline bool isChangingFactionStatus() {
 		return changeFactionEvent != NULL;
 	}
+
+	void setResourceDeedID(uint64 objectID);
+
+	uint64 getResourceDeedID();
+
+	void addSuiBoxChoice(string& choice);
+
+	void removeLastSuiBoxChoice();
+
+	void setSuiBoxChoices(SuiListBoxVector* choicesList);
+
+	SuiListBoxVector* getSuiBoxChoices();
+
+	void clearSuiBoxChoices();
 
 	inline bool hasSuiBox(uint32 boxID) {
 		return suiBoxes.contains(boxID);

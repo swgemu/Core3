@@ -314,7 +314,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 				attacker->setDefender(target);
 
 			target->addDefender(attacker);
-			attacker->clearState(CreatureObjectImplementation::PEACE_STATE);
+			attacker->clearState(CreatureState::PEACE);
 		}
 
 		int damage = skill->doSkill(attacker, target, modifier, false);
@@ -445,7 +445,7 @@ bool CombatManager::canAttack(Player* player, Player* targetPlayer) {
 	if (!player->isInDuelWith(targetPlayer, false)) {
 		if (!player->isOvert() || !targetPlayer->isOvert()) {
 			return false;
-		} else if (player->getFaction() == targetPlayer->getFaction()) {
+		} else if (!player->hatesFaction(targetPlayer->getFaction())) {
 			return false;
 		}
 	}
@@ -538,13 +538,13 @@ void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
 		player->addToDuelList(targetPlayer);
 
 		if (targetPlayer->requestedDuelTo(player)) {
-			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureObjectImplementation::ATTACKABLE_FLAG + CreatureObjectImplementation::AGGRESSIVE_FLAG);
+			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
 			player->sendMessage(pvpstat);
 
 			ChatSystemMessage* csm = new ChatSystemMessage("duel", "accept_self", targetPlayer->getObjectID());
 			player->sendMessage(csm);
 
-			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureObjectImplementation::ATTACKABLE_FLAG + CreatureObjectImplementation::AGGRESSIVE_FLAG);
+			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
 			targetPlayer->sendMessage(pvpstat2);
 
 			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "accept_target", player->getObjectID());
@@ -1353,7 +1353,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 	void CombatManager::checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
 		if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
 			if (80 > System::random(100))
-				targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+				targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 			return;
 		}
 
@@ -1365,7 +1365,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 			if ((5 > rand) || (rand > targetDefense)) {
 				if (targetCreature->isMounted())
 					targetCreature->dismount();
-				targetCreature->setPosture(CreatureObjectImplementation::KNOCKEDDOWN_POSTURE);
+				targetCreature->setPosture(CreaturePosture::KNOCKEDDOWN);
 				targetCreature->updateKnockdownRecovery();
 				targetCreature->sendSystemMessage("cbt_spam", "posture_knocked_down");
 
@@ -1375,7 +1375,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 					combatEquil = 100;
 
 				if ((combatEquil >> 1) > (int) System::random(100))
-					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+					targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 			}
 		} else
 			creature->sendSystemMessage("cbt_spam", "knockdown_fail");
@@ -1384,7 +1384,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 	void CombatManager::checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance) {
 			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
 				if (80 > System::random(100))
-					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+					targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 				return;
 			}
 
@@ -1398,10 +1398,10 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 					if (targetCreature->isMounted())
 						targetCreature->dismount();
 
-					if (targetCreature->getPosture() == CreatureObjectImplementation::UPRIGHT_POSTURE)
-						targetCreature->setPosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+					if (targetCreature->getPosture() == CreaturePosture::UPRIGHT)
+						targetCreature->setPosture(CreaturePosture::CROUCHED);
 					else
-						targetCreature->setPosture(CreatureObjectImplementation::PRONE_POSTURE);
+						targetCreature->setPosture(CreaturePosture::PRONE);
 
 					targetCreature->updatePostureDownRecovery();
 					targetCreature->sendSystemMessage("cbt_spam", "posture_down");
@@ -1412,7 +1412,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 						combatEquil = 100;
 
 					if ((combatEquil >> 1) > (int) System::random(100))
-						targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE, true);
+						targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 				}
 			} else
 				creature->sendSystemMessage("cbt_spam", "posture_change_fail");
@@ -1429,11 +1429,11 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 				if (targetCreature->isMounted())
 					targetCreature->dismount();
 
-				if (targetCreature->getPosture() == CreatureObjectImplementation::PRONE_POSTURE) {
-					targetCreature->setPosture(CreatureObjectImplementation::CROUCHED_POSTURE);
+				if (targetCreature->getPosture() == CreaturePosture::PRONE) {
+					targetCreature->setPosture(CreaturePosture::CROUCHED);
 					targetCreature->updatePostureUpRecovery();
-				} else if (targetCreature->getPosture() ==  CreatureObjectImplementation::CROUCHED_POSTURE) {
-					targetCreature->setPosture(CreatureObjectImplementation::UPRIGHT_POSTURE);
+				} else if (targetCreature->getPosture() ==  CreaturePosture::CROUCHED) {
+					targetCreature->setPosture(CreaturePosture::UPRIGHT);
 					targetCreature->updatePostureUpRecovery();
 				}
 			}

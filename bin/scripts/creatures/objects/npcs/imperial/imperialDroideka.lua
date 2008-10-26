@@ -43,7 +43,8 @@
 droideka = Creature:new {
       objectName = "droideka",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "imperial",
+      faction = "imperial", 
+	  factionPoints = 20,
       gender = "",
 
       stfName = "Droideka",

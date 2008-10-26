@@ -303,6 +303,8 @@ public:
 
 	bool isInAGroup();
 
+	bool isInGroupWith(CreatureObject* creature);
+
 	void setGroupID(unsigned long long gid);
 
 	void updateGroupId(unsigned long long id);
@@ -522,6 +524,10 @@ public:
 	bool hasWound(unsigned char attribute);
 
 	bool hasShockWounds();
+
+	unsigned int getWounds(unsigned char attribute);
+
+	unsigned char getNextWoundedAttribute(bool h = true, bool a = true, bool m = false);
 
 	bool isAttackable();
 
@@ -1019,6 +1025,14 @@ public:
 
 	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue = true);
 
+	int healEnhance(CreatureObject* target, int amount, float duration, unsigned char attribute, bool doBattleFatigue = true);
+
+	bool curePoison(CreatureObject* target, float effectiveness);
+
+	bool cureDisease(CreatureObject* target, float effectiveness);
+
+	bool extinguishFire(CreatureObject* target, float effectiveness);
+
 	bool healState(CreatureObject* target, unsigned long long state);
 
 	bool revive(CreatureObject* target, bool forcedChange = false);
@@ -1408,6 +1422,8 @@ public:
 
 	bool isInAGroup();
 
+	bool isInGroupWith(CreatureObject* creature);
+
 	void setGroupID(unsigned long long gid);
 
 	void updateGroupId(unsigned long long id);
@@ -1625,6 +1641,10 @@ public:
 	bool hasWound(unsigned char attribute);
 
 	bool hasShockWounds();
+
+	unsigned int getWounds(unsigned char attribute);
+
+	unsigned char getNextWoundedAttribute(bool h, bool a, bool m);
 
 	bool isAttackable();
 
@@ -2121,6 +2141,14 @@ public:
 	int healDamage(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue);
 
 	int healWound(CreatureObject* target, int damage, unsigned char attribute, bool doBattleFatigue);
+
+	int healEnhance(CreatureObject* target, int amount, float duration, unsigned char attribute, bool doBattleFatigue);
+
+	bool curePoison(CreatureObject* target, float effectiveness);
+
+	bool cureDisease(CreatureObject* target, float effectiveness);
+
+	bool extinguishFire(CreatureObject* target, float effectiveness);
 
 	bool healState(CreatureObject* target, unsigned long long state);
 

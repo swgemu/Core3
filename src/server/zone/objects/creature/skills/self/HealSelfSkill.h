@@ -121,28 +121,28 @@ public:
 		}
 
 		if (healDizzy && creature->isDizzied())
-			creature->clearState(CreatureObjectImplementation::DIZZY_STATE);
+			creature->clearState(CreatureState::DIZZY);
 
 		if (healBlind && creature->isBlinded())
-			creature->clearState(CreatureObjectImplementation::BLINDED_STATE);
+			creature->clearState(CreatureState::BLINDED);
 
 		if (healStun && creature->isStunned())
-			creature->clearState(CreatureObjectImplementation::STUNNED_STATE);
+			creature->clearState(CreatureState::STUNNED);
 	
 		if (healPoison && creature->isPoisoned())
-			creature->clearState(CreatureObjectImplementation::POISONED_STATE);
+			creature->clearState(CreatureState::POISONED);
 			
 		if (healFire && creature->isOnFire())
-			creature->clearState(CreatureObjectImplementation::ONFIRE_STATE);
+			creature->clearState(CreatureState::ONFIRE);
 			
 		if (healBleeding && creature->isBleeding())
-			creature->clearState(CreatureObjectImplementation::BLEEDING_STATE);
+			creature->clearState(CreatureState::BLEEDING);
 		
 		if (healDisease && creature->isDiseased())
-			creature->clearState(CreatureObjectImplementation::DISEASED_STATE);
+			creature->clearState(CreatureState::DISEASED);
 			
 		if (healIntimidate && creature->isIntimidated())
-			creature->clearState(CreatureObjectImplementation::INTIMIDATED_STATE);
+			creature->clearState(CreatureState::INTIMIDATED);
 		
 		creature->updateStates();
 		

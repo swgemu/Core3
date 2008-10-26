@@ -150,7 +150,7 @@ interface SceneObject implements ManagedObject {
 	void removeFromZone(boolean doLock = true);
 	void removeFromBuilding(BuildingObject building);
 
-	void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true);
+	void broadcastMessage(BaseMessage msg, int range = 128, boolean doLock = true, boolean sendSelf = true);
 	void broadcastMessage(StandaloneBaseMessage msg, int range = 128, boolean doLock = true);
 
 	boolean isUndeploymentScheduled();

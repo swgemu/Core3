@@ -114,6 +114,8 @@ class CreatureImplementation : public CreatureServant, public Event {
 
 	bool looted;
 
+	uint32 fpValue;
+
 private:
 	void broadcastNextPositionUpdate(PatrolPoint* point = NULL);
 	void setNextPosition();
@@ -388,6 +390,14 @@ public:
 
 	inline bool isMoving() {
 		return actualSpeed != 0;
+	}
+
+	inline void setFPValue(uint32 value) {
+		fpValue = value;
+	}
+
+	inline uint32 getFPValue() {
+		return fpValue;
 	}
 
 	friend class CreatureManagerImplementation;

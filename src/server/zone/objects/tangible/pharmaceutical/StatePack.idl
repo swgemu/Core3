@@ -20,7 +20,7 @@ interface StatePack implements Pharmaceutical {
 	
 	void generateAttributes(SceneObject obj);
 	
-	void setStateAffected(int state);
+	void setState(unsigned long value);
 	
-	int getStateAffected();
+	unsigned long getState();
 }

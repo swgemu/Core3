@@ -62,17 +62,17 @@ void CurePack::setEffectiveness(float eff) {
 		((CurePackImplementation*) _impl)->setEffectiveness(eff);
 }
 
-void CurePack::setConditionCured(int condition) {
+void CurePack::setState(unsigned long long condition) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
-		method.addSignedIntParameter(condition);
+		method.addUnsignedLongParameter(condition);
 
 		method.executeWithVoidReturn();
 	} else
-		((CurePackImplementation*) _impl)->setConditionCured(condition);
+		((CurePackImplementation*) _impl)->setState(condition);
 }
 
 float CurePack::getEffectiveness() {
@@ -87,16 +87,16 @@ float CurePack::getEffectiveness() {
 		return ((CurePackImplementation*) _impl)->getEffectiveness();
 }
 
-int CurePack::getConditionCured() {
+unsigned long long CurePack::getState() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((CurePackImplementation*) _impl)->getConditionCured();
+		return ((CurePackImplementation*) _impl)->getState();
 }
 
 /*
@@ -117,13 +117,13 @@ Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setEffectiveness(inv->getFloatParameter());
 		break;
 	case 8:
-		setConditionCured(inv->getSignedIntParameter());
+		setState(inv->getUnsignedLongParameter());
 		break;
 	case 9:
 		resp->insertFloat(getEffectiveness());
 		break;
 	case 10:
-		resp->insertSignedInt(getConditionCured());
+		resp->insertLong(getState());
 		break;
 	default:
 		return NULL;
@@ -140,16 +140,16 @@ void CurePackAdapter::setEffectiveness(float eff) {
 	return ((CurePackImplementation*) impl)->setEffectiveness(eff);
 }
 
-void CurePackAdapter::setConditionCured(int condition) {
-	return ((CurePackImplementation*) impl)->setConditionCured(condition);
+void CurePackAdapter::setState(unsigned long long condition) {
+	return ((CurePackImplementation*) impl)->setState(condition);
 }
 
 float CurePackAdapter::getEffectiveness() {
 	return ((CurePackImplementation*) impl)->getEffectiveness();
 }
 
-int CurePackAdapter::getConditionCured() {
-	return ((CurePackImplementation*) impl)->getConditionCured();
+unsigned long long CurePackAdapter::getState() {
+	return ((CurePackImplementation*) impl)->getState();
 }
 
 /*

@@ -61,12 +61,25 @@ unsigned int EnhancePack::getBuffCRC() {
 		return ((EnhancePackImplementation*) _impl)->getBuffCRC();
 }
 
-void EnhancePack::setEffectiveness(float eff) {
+int EnhancePack::calculatePower(CreatureObject* creature) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(creature);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((EnhancePackImplementation*) _impl)->calculatePower(creature);
+}
+
+void EnhancePack::setEffectiveness(float eff) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addFloatParameter(eff);
 
 		method.executeWithVoidReturn();
@@ -79,7 +92,7 @@ void EnhancePack::setDuration(float dur) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addFloatParameter(dur);
 
 		method.executeWithVoidReturn();
@@ -87,17 +100,17 @@ void EnhancePack::setDuration(float dur) {
 		((EnhancePackImplementation*) _impl)->setDuration(dur);
 }
 
-void EnhancePack::setPoolAffected(int pool) {
+void EnhancePack::setAttribute(unsigned char value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
-		method.addSignedIntParameter(pool);
+		DistributedMethod method(this, 11);
+		method.addUnsignedCharParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
-		((EnhancePackImplementation*) _impl)->setPoolAffected(pool);
+		((EnhancePackImplementation*) _impl)->setAttribute(value);
 }
 
 float EnhancePack::getEffectiveness() {
@@ -105,7 +118,7 @@ float EnhancePack::getEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -117,23 +130,23 @@ float EnhancePack::getDuration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithFloatReturn();
 	} else
 		return ((EnhancePackImplementation*) _impl)->getDuration();
 }
 
-int EnhancePack::getPoolAffected() {
+unsigned char EnhancePack::getAttribute() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedCharReturn();
 	} else
-		return ((EnhancePackImplementation*) _impl)->getPoolAffected();
+		return ((EnhancePackImplementation*) _impl)->getAttribute();
 }
 
 /*
@@ -154,22 +167,25 @@ Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertInt(getBuffCRC());
 		break;
 	case 8:
-		setEffectiveness(inv->getFloatParameter());
+		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 9:
-		setDuration(inv->getFloatParameter());
+		setEffectiveness(inv->getFloatParameter());
 		break;
 	case 10:
-		setPoolAffected(inv->getSignedIntParameter());
+		setDuration(inv->getFloatParameter());
 		break;
 	case 11:
-		resp->insertFloat(getEffectiveness());
+		setAttribute(inv->getUnsignedCharParameter());
 		break;
 	case 12:
-		resp->insertFloat(getDuration());
+		resp->insertFloat(getEffectiveness());
 		break;
 	case 13:
-		resp->insertSignedInt(getPoolAffected());
+		resp->insertFloat(getDuration());
+		break;
+	case 14:
+		resp->insertByte(getAttribute());
 		break;
 	default:
 		return NULL;
@@ -186,6 +202,10 @@ unsigned int EnhancePackAdapter::getBuffCRC() {
 	return ((EnhancePackImplementation*) impl)->getBuffCRC();
 }
 
+int EnhancePackAdapter::calculatePower(CreatureObject* creature) {
+	return ((EnhancePackImplementation*) impl)->calculatePower(creature);
+}
+
 void EnhancePackAdapter::setEffectiveness(float eff) {
 	return ((EnhancePackImplementation*) impl)->setEffectiveness(eff);
 }
@@ -194,8 +214,8 @@ void EnhancePackAdapter::setDuration(float dur) {
 	return ((EnhancePackImplementation*) impl)->setDuration(dur);
 }
 
-void EnhancePackAdapter::setPoolAffected(int pool) {
-	return ((EnhancePackImplementation*) impl)->setPoolAffected(pool);
+void EnhancePackAdapter::setAttribute(unsigned char value) {
+	return ((EnhancePackImplementation*) impl)->setAttribute(value);
 }
 
 float EnhancePackAdapter::getEffectiveness() {
@@ -206,8 +226,8 @@ float EnhancePackAdapter::getDuration() {
 	return ((EnhancePackImplementation*) impl)->getDuration();
 }
 
-int EnhancePackAdapter::getPoolAffected() {
-	return ((EnhancePackImplementation*) impl)->getPoolAffected();
+unsigned char EnhancePackAdapter::getAttribute() {
+	return ((EnhancePackImplementation*) impl)->getAttribute();
 }
 
 /*

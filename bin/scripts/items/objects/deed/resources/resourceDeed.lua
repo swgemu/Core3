@@ -47,5 +47,5 @@ resourceDeed = Deed:new {
 
 	objectCRC = 2099830307,
 
-	objectType = DEED
+	objectType = RESOURCEDEED
 }

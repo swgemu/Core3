@@ -49,8 +49,6 @@ which carries forward this exception.
 #include "../../../tangible/pharmaceutical/PharmaceuticalImplementation.h"
 #include "../../../tangible/pharmaceutical/StimPackImplementation.h"
 
-#include "../../Attribute.h"
-
 #include "../../../../managers/player/PlayerManager.h"
 
 class HealDamageTargetSkill : public TargetSkill {
@@ -73,54 +71,6 @@ public:
 			creature->doAnimation("heal_self");
 		else
 			creature->doAnimation("heal_other");
-	}
-
-	//TODO: Needs refactoring
-	StimPack* findMedpack(CreatureObject* creature, const string& modifier) {
-		StimPack* stimPack = NULL;
-		int medicineUse = creature->getSkillMod("healing_ability");
-
-		if (!modifier.empty()) {
-			StringTokenizer tokenizer(modifier);
-			uint64 objectid = 0;
-
-			if (tokenizer.hasMoreTokens())
-				objectid = tokenizer.getLongToken();
-
-			if (objectid > 0) {
-				SceneObject* invObj = creature->getInventoryItem(objectid);
-
-				if (invObj != NULL && invObj->isTangible()) {
-					TangibleObject* tano = (TangibleObject*) invObj;
-
-					if (tano->isPharmaceutical()) {
-						Pharmaceutical* pharm = (Pharmaceutical*) tano;
-
-						if (pharm->isStimPack()) {
-							stimPack = (StimPack*) pharm;
-
-							if (stimPack->getMedicineUseRequired() <= medicineUse)
-								return stimPack;
-						}
-					}
-				}
-			}
-		}
-
-		Inventory* inventory = creature->getInventory();
-
-		for (int i=0; i<inventory->objectsSize(); i++) {
-			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-			if (item != NULL && item->isPharmaceutical()) {
-				stimPack = (StimPack*) item;
-
-				if (stimPack->isStimPack() && stimPack->getMedicineUseRequired() <= medicineUse)
-					return stimPack;
-			}
-		}
-
-		return NULL; //Never found a stimPack
 	}
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack) {
@@ -171,34 +121,68 @@ public:
 		return true;
 	}
 
+	void parseModifier(const string& modifier, uint64& objectId) {
+		if (!modifier.empty())
+			objectId = atoll(modifier.c_str());
+		else
+			objectId = 0;
+	}
+
+	StimPack* findStimPack(CreatureObject* creature) {
+		Inventory* inventory = creature->getInventory();
+		int medicineUse = creature->getSkillMod("healing_ability");
+
+		if (inventory != NULL) {
+			for (int i = 0; i < inventory->objectsSize(); i++) {
+				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+				if (item->isPharmaceutical()) {
+					Pharmaceutical* pharma = (Pharmaceutical*) item;
+
+					if (pharma->isStimPack()) {
+						StimPack* stimPack = (StimPack*) pharma;
+
+						if (stimPack->getMedicineUseRequired() <= medicineUse)
+							return stimPack;
+					}
+				}
+			}
+		}
+
+		return NULL;
+	}
+
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "healing_response_62"); //Target must be a player or a creature pet in order to heal damage.
 			return 0;
 		}
 
-		StimPack* stimPack = findMedpack(creature, modifier);
+		uint64 objectId = 0;
+
+		parseModifier(modifier, objectId);
+
+		StimPack* stimPack = (StimPack*) creature->getInventoryItem(objectId);
+
+		if (stimPack == NULL)
+			stimPack = findStimPack(creature);
+
 		CreatureObject* creatureTarget = (CreatureObject*) target;
 
-		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted()) {
-			cout << "Target is dead, ridingcreature, or mounted." << endl;
+		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
 			creatureTarget = creature;
-		}
 
 		if (!canPerformSkill(creature, creatureTarget, stimPack))
 			return 0;
 
-		//Checks completed
-
 		int stimPower = stimPack->calculatePower(creature);
 
-		int healthHealed = creature->healDamage(creatureTarget, stimPower, Attribute::HEALTH);
-		int actionHealed = creature->healDamage(creatureTarget, stimPower, Attribute::ACTION);
+		int healthHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::HEALTH);
+		int actionHealed = creature->healDamage(creatureTarget, stimPower, CreatureAttribute::ACTION);
 
 		if (creature->isPlayer())
-			((Player*)creature)->sendBFMessage(creatureTarget);
+			((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
 
-		//sendBFMessage(creature, creatureTarget);
 		sendHealMessage(creature, creatureTarget, healthHealed, actionHealed);
 
 		creature->changeMindBar(mindCost);
@@ -232,32 +216,6 @@ public:
 		stringstream msgExperience;
 		msgExperience << "You receive " << amount << " points of " << type << " experience.";
 		player->sendSystemMessage(msgExperience.str());
-	}
-
-	void sendBFMessage(CreatureObject* creature, CreatureObject* creatureTarget) {
-		string targetName = ((Player*)creatureTarget)->getFirstNameProper();
-		stringstream msgPlayer, msgTarget;
-
-		int battleFatigue = creatureTarget->getShockWounds();
-
-		if (battleFatigue >= 1000) {
-			msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
-			msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
-		} else if (battleFatigue >= 750) {
-			msgPlayer << targetName << "'s battle fatgiue is greatly reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
-		} else if (battleFatigue >= 500) {
-			msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
-		} else if (battleFatigue >= 250) {
-			msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
-			msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine.";
-		}
-
-		creatureTarget->sendSystemMessage(msgTarget.str());
-		if (creatureTarget != creature) {
-			creature->sendSystemMessage(msgPlayer.str());
-		}
 	}
 
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int healthDamage, int actionDamage) {

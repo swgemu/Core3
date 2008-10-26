@@ -57,8 +57,6 @@ public:
 	StimPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
 	StimPackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
 
-	//~EnhancePackImplementation();
-
 	void initialize();
 
 	int useObject(Player* player);
@@ -73,7 +71,7 @@ public:
 
 	inline int calculatePower(CreatureObject* creature) {
 		float modSkill = (float) creature->getSkillMod("healing_injury_treatment");
-		return (int) round((100.0f + modSkill) / 100.0f * getEffectiveness());
+		return (int) round((100.0f + modSkill) / 100.0f * effectiveness);
 	}
 
 	inline void setEffectiveness(float eff) {
