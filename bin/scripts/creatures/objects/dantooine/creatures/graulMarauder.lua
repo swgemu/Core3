@@ -52,7 +52,7 @@ graulMarauder = Creature:new {
       named = FALSE, 
 
       level = 173,
-      xp = 16411,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -52,7 +52,7 @@ giantDecayMiteRoyalGuardian = Creature:new {
       named = FALSE, 
 
       level = 24,
-      xp = 2443,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

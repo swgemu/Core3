@@ -52,7 +52,7 @@ geonosianEnhancedKwi = Creature:new {
       named = FALSE, 
 
       level = 106,
-      xp = 10081,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

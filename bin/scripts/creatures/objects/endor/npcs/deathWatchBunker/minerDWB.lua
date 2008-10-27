@@ -51,7 +51,7 @@ minerDWB = Creature:new {
 	named = FALSE,
 
 	level = 230,
-	xp = 26000,
+	
 	
 	combatFlags = ATTACKABLE_FLAG,
 

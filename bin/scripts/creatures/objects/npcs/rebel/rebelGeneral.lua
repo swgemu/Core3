@@ -53,7 +53,7 @@ rebelGeneral = Creature:new {
       named = FALSE, 
 
       level = 28,
-      xp = 2914,
+      
 
       combatFlags = 0,
 

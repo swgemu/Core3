@@ -52,7 +52,7 @@ pekoPekoAlbatross = Creature:new {
       named = FALSE, 
 
       level = 155,
-      xp = 14694,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

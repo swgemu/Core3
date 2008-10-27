@@ -52,7 +52,7 @@ mutantBarkMiteHatchling = Creature:new {
       named = FALSE, 
 
       level = 10,
-      xp = 430,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

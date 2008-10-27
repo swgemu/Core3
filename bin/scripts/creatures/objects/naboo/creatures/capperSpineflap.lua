@@ -52,7 +52,7 @@ capperSpineflap = Creature:new {
       named = FALSE, 
 
       level = 6,
-      xp = 147,
+      
 
       combatFlags = ATTACKABLE_FLAG,
 

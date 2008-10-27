@@ -53,7 +53,7 @@ imperialSecondLieutenant = Creature:new {
       named = FALSE, 
 
       level = 20,
-      xp = 1803,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

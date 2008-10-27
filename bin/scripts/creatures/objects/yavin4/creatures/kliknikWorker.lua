@@ -52,7 +52,7 @@ kliknikWorker = Creature:new {
       named = FALSE, 
 
       level = 23,
-      xp = 2219,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

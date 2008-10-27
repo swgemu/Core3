@@ -52,7 +52,7 @@ boarWolf = Creature:new {
       named = FALSE, 
 
       level = 25,
-      xp = 2543,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

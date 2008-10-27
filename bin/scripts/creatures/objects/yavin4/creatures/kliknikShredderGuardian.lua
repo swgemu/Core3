@@ -52,7 +52,7 @@ kliknikShredderGuardian = Creature:new {
       named = FALSE, 
 
       level = 30,
-      xp = 3097,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

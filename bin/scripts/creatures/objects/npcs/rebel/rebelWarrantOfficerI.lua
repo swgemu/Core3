@@ -53,7 +53,7 @@ rebelWarrantOfficerI = Creature:new {
       named = FALSE, 
 
       level = 18,
-      xp = 1426,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

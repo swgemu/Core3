@@ -53,7 +53,7 @@ tuskenObserver = Creature:new {
       named = FALSE, 
 
       level = 227,
-      xp = 21630,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

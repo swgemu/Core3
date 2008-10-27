@@ -52,7 +52,7 @@ mokkSoothsayer = Creature:new {
       named = FALSE, 
 
       level = 43,
-      xp = 4188,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -52,7 +52,7 @@ deathWatchWraithDWB = Creature:new {
       named = FALSE, 
 
       level = 178,
-      xp = 16794,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

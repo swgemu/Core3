@@ -52,7 +52,7 @@ geonosianSecurityProbot = Creature:new {
       named = FALSE, 
 
       level = 63,
-      xp = 6105,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

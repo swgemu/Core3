@@ -52,7 +52,7 @@ domesticFalumpaset = Creature:new {
       named = FALSE, 
 
       level = 10,
-      xp = 292,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

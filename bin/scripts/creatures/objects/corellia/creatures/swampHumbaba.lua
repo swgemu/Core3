@@ -52,7 +52,7 @@ swampHumbaba = Creature:new {
       named = FALSE, 
 
       level = 19,
-      xp = 1426,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -52,7 +52,7 @@ warrenCyborgHuurton = Creature:new {
       named = FALSE, 
 
       level = 32,
-      xp = 3188,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

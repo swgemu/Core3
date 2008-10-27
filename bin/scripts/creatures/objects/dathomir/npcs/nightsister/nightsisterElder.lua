@@ -52,7 +52,7 @@ nightsisterElder = Creature:new {
       named = FALSE, 
 
       level = 278,
-      xp = 26654,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

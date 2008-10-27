@@ -52,7 +52,7 @@ sennexGuard = Creature:new {
       named = FALSE, 
 
       level = 62,
-      xp = 3279,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

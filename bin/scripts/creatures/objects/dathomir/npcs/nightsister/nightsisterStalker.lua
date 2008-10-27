@@ -52,7 +52,7 @@ nightsisterStalker = Creature:new {
       named = FALSE, 
 
       level = 96,
-      xp = 9150,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

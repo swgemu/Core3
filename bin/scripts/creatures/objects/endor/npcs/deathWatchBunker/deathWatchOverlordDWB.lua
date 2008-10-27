@@ -52,7 +52,7 @@ deathWatchOverlordDWB = Creature:new {
       named = FALSE, 
 
       level = 221,
-      xp = 20948,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

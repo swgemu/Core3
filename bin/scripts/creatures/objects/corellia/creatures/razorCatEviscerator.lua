@@ -52,7 +52,7 @@ razorCatEviscerator = Creature:new {
       named = FALSE, 
 
       level = 24,
-      xp = 2543,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

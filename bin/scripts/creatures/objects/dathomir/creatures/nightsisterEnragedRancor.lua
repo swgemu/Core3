@@ -52,7 +52,7 @@ nightsisterEnragedRancor = Creature:new {
       named = FALSE, 
 
       level = 80,
-      xp = 7668,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

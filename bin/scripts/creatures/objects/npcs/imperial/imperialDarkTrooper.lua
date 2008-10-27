@@ -47,41 +47,41 @@ imperialDarkTrooper = Creature:new {
 	  factionPoints = 20,
       gender = "",
 
-      name = "Crackdown Dark Trooper",
+      name = "Dark Trooper",
       objectCRC = 1312348723, 
       socialGroup = "imperial",
       named = FALSE, 
 
       level = 95,
-      xp = 45,
+      
 
       combatFlags = 0,
 
-      healthMax = 10500,
-      healthMin = 8600,
-      strength = 500,
-      constitution = 500,
+      healthMax = 250000,
+      healthMin = 240000,
+      strength = 50000,
+      constitution = 50000,
 
-      actionMax = 10500,
-      actionMin = 8600,
-      quickness = 500,
-      stamina = 500,
+      actionMax = 250000,
+      actionMin = 240000,
+      quickness = 50000,
+      stamina = 50000,
 
-      mindMax = 10500,
-      mindMin = 8600,
-      focus = 500,
-      willpower = 500,
+      mindMax = 250000,
+      mindMin = 240000,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1, -- Size of creature
       armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 40,
-      energy = 0,
-      electricity = 50,
-      stun = 100,
-      blast = 0,
-      heat = 50,
-      cold = 50,
-      acid = 50,
+      kinetic = 85,
+      energy = 95,
+      electricity = 10,
+      stun = 45,
+      blast = 80,
+      heat = 30,
+      cold = 10,
+      acid = 30,
       lightsaber = 0,
 
       accuracy = 300,
@@ -102,16 +102,16 @@ imperialDarkTrooper = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/rifle/shared_rifle_t21.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Teh Pwn", -- Name ex. 'a Vibrolance'
-      weaponTemp = "rifle_t21", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
+      weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
       weaponMinDamage = 350,
-      weaponMaxDamage = 400,
-      weaponAttackSpeed = 4,
+      weaponMaxDamage = 550,
+      weaponAttackSpeed = 1,
       weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -126,7 +126,7 @@ imperialDarkTrooper = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,42", -- Group it belongs to for loot
+      lootGroup = "0,2,11,15,19,21,33,34,42", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

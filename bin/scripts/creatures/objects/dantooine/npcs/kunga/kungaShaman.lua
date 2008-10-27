@@ -52,7 +52,7 @@ kungaShaman = Creature:new {
       named = FALSE, 
 
       level = 67,
-      xp = 5555,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

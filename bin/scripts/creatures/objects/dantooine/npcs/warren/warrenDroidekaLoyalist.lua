@@ -52,7 +52,7 @@ warrenDroidekaLoyalist = Creature:new {
       named = FALSE, 
 
       level = 60,
-      xp = 5738,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -52,7 +52,7 @@ huurtonBloodhunter = Creature:new {
       named = FALSE, 
 
       level = 28,
-      xp = 2914,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

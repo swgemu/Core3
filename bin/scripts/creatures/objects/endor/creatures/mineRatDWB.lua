@@ -49,7 +49,7 @@ mineRatDWB = Creature:new {
 	objectCRC = 3273659222,
 
 	level = 100,
-	xp = 10000,
+	
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
  

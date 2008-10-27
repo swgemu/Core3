@@ -52,7 +52,7 @@ sliceHound = Creature:new {
       named = FALSE, 
 
       level = 9,
-      xp = 292,
+      
 
       combatFlags = ATTACKABLE_FLAG,
 

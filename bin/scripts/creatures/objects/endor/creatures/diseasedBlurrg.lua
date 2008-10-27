@@ -52,7 +52,7 @@ diseasedBlurrg = Creature:new {
       named = FALSE, 
 
       level = 37,
-      xp = 3551,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -53,7 +53,7 @@ imperialMajor = Creature:new {
       named = FALSE, 
 
       level = 21,
-      xp = 2006,
+      
 
       combatFlags = 0,
 

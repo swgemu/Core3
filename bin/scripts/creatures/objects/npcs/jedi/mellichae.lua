@@ -52,7 +52,7 @@ mellichae = Creature:new {
       named = TRUE, 
 
       level = 350,
-      xp = 28549,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

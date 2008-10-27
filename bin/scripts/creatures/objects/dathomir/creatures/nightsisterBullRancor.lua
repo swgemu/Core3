@@ -52,7 +52,7 @@ nightsisterBullRancor = Creature:new {
       named = FALSE, 
 
       level = 65,
-      xp = 6288,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

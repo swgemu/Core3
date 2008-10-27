@@ -52,7 +52,7 @@ nightsisterSpellWeaver = Creature:new {
       named = FALSE, 
 
       level = 107,
-      xp = 10174,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

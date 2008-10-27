@@ -52,7 +52,7 @@ fathHray = Creature:new {
       named = FALSE, 
 
       level = 21,
-      xp = 1609,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

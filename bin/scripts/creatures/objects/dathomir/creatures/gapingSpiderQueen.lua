@@ -52,7 +52,7 @@ gapingSpiderQueen = Creature:new {
       named = FALSE, 
 
       level = 47,
-      xp = 4643,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

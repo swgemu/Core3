@@ -52,7 +52,7 @@ sicklyDecayMiteQueen = Creature:new {
       named = FALSE, 
 
       level = 20,
-      xp = 1609,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

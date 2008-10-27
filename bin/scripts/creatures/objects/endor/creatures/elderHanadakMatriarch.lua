@@ -52,7 +52,7 @@ elderHanadakMatriarch = Creature:new {
       named = FALSE, 
 
       level = 35,
-      xp = 3551,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

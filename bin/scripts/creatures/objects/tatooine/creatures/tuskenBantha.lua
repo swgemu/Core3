@@ -52,7 +52,7 @@ tuskenBantha = Creature:new {
       named = FALSE, 
 
       level = 15,
-      xp = 714,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -52,7 +52,7 @@ nightsisterSentinal = Creature:new {
       named = FALSE, 
 
       level = 88,
-      xp = 8408,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

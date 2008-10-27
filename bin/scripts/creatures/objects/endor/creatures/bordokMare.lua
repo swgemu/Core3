@@ -52,7 +52,7 @@ bordokMare = Creature:new {
       named = FALSE, 
 
       level = 34,
-      xp = 3460,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

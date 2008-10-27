@@ -52,7 +52,7 @@ warrenThune = Creature:new {
       named = FALSE, 
 
       level = 26,
-      xp = 2637,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

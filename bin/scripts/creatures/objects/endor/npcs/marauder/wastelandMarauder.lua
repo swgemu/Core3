@@ -52,7 +52,7 @@ wastelandMarauder = Creature:new {
       named = FALSE, 
 
       level = 55,
-      xp = 5373,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

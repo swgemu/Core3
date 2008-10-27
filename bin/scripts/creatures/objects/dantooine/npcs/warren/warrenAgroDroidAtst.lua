@@ -52,7 +52,7 @@ warrenAgroDroidAtst = Creature:new {
       named = FALSE, 
 
       level = 86,
-      xp = 8223,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

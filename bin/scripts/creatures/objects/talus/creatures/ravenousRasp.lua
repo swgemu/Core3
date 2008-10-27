@@ -52,7 +52,7 @@ ravenousRasp = Creature:new {
       named = FALSE, 
 
       level = 31,
-      xp = 3188,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

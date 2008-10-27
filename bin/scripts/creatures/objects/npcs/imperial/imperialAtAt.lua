@@ -53,7 +53,7 @@ imperialAtAt = Creature:new {
 	named = TRUE, 
 	
 	level = 500,
-	xp = 10000,
+	
 	
 	combatFlags = 0,
 	

@@ -53,7 +53,7 @@ droideka = Creature:new {
       named = FALSE, 
 
       level = 39,
-      xp = 3824,
+      
 
       combatFlags = 0,
 

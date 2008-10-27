@@ -52,7 +52,7 @@ tuskenCaptain = Creature:new {
       named = FALSE, 
 
       level = 75,
-      xp = 4006,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

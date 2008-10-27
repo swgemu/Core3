@@ -53,7 +53,7 @@ imperialSurfaceMarshal = Creature:new {
       named = FALSE, 
 
       level = 30,
-      xp = 3097,
+      
 
       combatFlags = 0,
 

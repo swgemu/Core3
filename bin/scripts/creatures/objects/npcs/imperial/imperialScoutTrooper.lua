@@ -53,7 +53,7 @@ scoutTrooper = Creature:new {
       named = FALSE, 
 
       level = 1,
-      xp = 30,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

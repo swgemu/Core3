@@ -53,7 +53,7 @@ stormtrooperSquadLeader = Creature:new {
       named = FALSE, 
 
       level = 1,
-      xp = 45,
+      
 
       combatFlags = 0,
 

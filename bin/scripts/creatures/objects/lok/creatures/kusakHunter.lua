@@ -52,7 +52,7 @@ kusakHunter = Creature:new {
       named = FALSE, 
 
       level = 73,
-      xp = 7023,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

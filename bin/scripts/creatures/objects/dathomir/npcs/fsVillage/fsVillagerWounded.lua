@@ -52,7 +52,7 @@ fsVillagerWounded = Creature:new {
       named = FALSE, 
 
       level = 12,
-      xp = 430,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

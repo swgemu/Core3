@@ -53,7 +53,7 @@ probot = Creature:new {
       named = FALSE, 
 
       level = 19,
-      xp = 1257,
+      
 
       combatFlags = 0,
 
