@@ -688,6 +688,8 @@ void PlayerImplementation::userLogout(int msgCounter) {
 		case 0:  // Disconnect!!!
 			info("Safe Logout");
 
+			setLoggingOut();
+
 			ClientLogout* packet = new ClientLogout();
 			sendMessage(packet);
 

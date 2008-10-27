@@ -98,7 +98,10 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	} else if (player != NULL) {
 		unlock();
 
-		player->logout();
+		if (player->isLoggingOut())
+			player->logout();
+		else
+			player->setLinkDead();
 
 		lock();
 	}
