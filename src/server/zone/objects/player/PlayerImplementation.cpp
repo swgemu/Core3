@@ -2854,9 +2854,8 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 
 			setWeaponSkillMods(weapon);
 
-			setPlayerLevel();
-
 		}
+		
 	} else if (((TangibleObject*)obj)->isInstrument()){
 
 		Instrument* device = (Instrument*) obj;
@@ -2960,6 +2959,8 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		else
 			equipItem(item);
 	}
+	
+	setPlayerLevel();
 }
 
 void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
@@ -4544,7 +4545,8 @@ void PlayerImplementation::setPlayerLevel() {
 	resetSkillBoxesIterator();
 	playerLevel = 0;
 	
-	if (isJedi()) {
+	// TODO: reapply this when isJedi() doesn't always return true
+	/*if (isJedi()) {
 		playerLevel = 10;
 		int skillnum = 0;
 		while (hasNextSkillBox()) {
@@ -4562,7 +4564,7 @@ void PlayerImplementation::setPlayerLevel() {
 		if (playerLevel > 25)
 			playerLevel = 25; 
 		return;
-	}
+	}*/
 	
 	Weapon *weap = getWeapon();
 	int wtype;
@@ -4576,7 +4578,11 @@ void PlayerImplementation::setPlayerLevel() {
 		SkillBox *skillbox = skillBoxes.getNextValue();
 		switch (wtype) {
 		case WeaponImplementation::UNARMED:
-			if (skillbox->getName() == "combat_brawler_novice")
+			if (skillbox->getName() == "combat_unarmed_master") {
+				playerLevel = 25;
+				break;
+			}
+			else if (skillbox->getName() == "combat_brawler_novice")
 				playerLevel += 5;
 			else if (skillbox->getName() == "combat_brawler_master")
 				playerLevel += 6;
@@ -4588,6 +4594,10 @@ void PlayerImplementation::setPlayerLevel() {
 				playerLevel += 2;
 			break;
 		case WeaponImplementation::ONEHANDED:
+			if (skillbox->getName() == "combat_1hsword_master") {
+				playerLevel = 25;
+				break;
+			}
 			if (skillbox->getName() == "combat_brawler_novice")
 				playerLevel += 5;
 			else if (skillbox->getName() == "combat_brawler_master")
@@ -4600,6 +4610,10 @@ void PlayerImplementation::setPlayerLevel() {
 				playerLevel += 2;
 			break;
 		case WeaponImplementation::TWOHANDED:
+			if (skillbox->getName() == "combat_2hsword_master") {
+				playerLevel = 25;
+				break;
+			}
 			if (skillbox->getName() == "combat_brawler_novice")
 				playerLevel += 5;
 			else if (skillbox->getName() == "combat_brawler_master")
@@ -4612,6 +4626,10 @@ void PlayerImplementation::setPlayerLevel() {
 				playerLevel += 2;
 			break;
 		case WeaponImplementation::POLEARM:
+			if (skillbox->getName() == "combat_polearm_master") {
+				playerLevel = 25;
+				break;
+			}
 			if (skillbox->getName() == "combat_brawler_novice")
 				playerLevel += 5;
 			else if (skillbox->getName() == "combat_brawler_master")
@@ -4624,6 +4642,10 @@ void PlayerImplementation::setPlayerLevel() {
 				playerLevel += 2;
 			break;
 		case WeaponImplementation::PISTOL:
+			if (skillbox->getName() == "combat_pistol_master") {
+				playerLevel = 25;
+				break;
+			}
 			if (skillbox->getName() == "combat_marksman_novice")
 				playerLevel += 5;
 			else if (skillbox->getName() == "combat_marksman_master")
@@ -4636,6 +4658,10 @@ void PlayerImplementation::setPlayerLevel() {
 				playerLevel += 2;
 			break;
 		case WeaponImplementation::CARBINE:
+			if (skillbox->getName() == "combat_carbine_master") {
+				playerLevel = 25;
+				break;
+			}
 			if (skillbox->getName() == "combat_marksman_novice")
 				playerLevel += 5;
 			else if (skillbox->getName() == "combat_marksman_master")
@@ -4648,6 +4674,10 @@ void PlayerImplementation::setPlayerLevel() {
 				playerLevel += 2;
 			break;
 		case WeaponImplementation::RIFLE:
+			if (skillbox->getName() == "combat_rifleman_master") {
+				playerLevel = 25;
+				break;
+			}
 			if (skillbox->getName() == "combat_marksman_novice")
 				playerLevel += 5;
 			else if (skillbox->getName() == "combat_marksman_master")
@@ -4672,7 +4702,11 @@ void PlayerImplementation::setPlayerLevel() {
 		case WeaponImplementation::HEAVYPARTICLEBEAM:
 		case WeaponImplementation::HEAVYROCKETLAUNCHER:
 		case WeaponImplementation::HEAVYLAUNCHER:
-			if (skillbox->getName() == "combat_commando_novice" || skillbox->getName() == "combat_bountyhunter_novice")
+			if (skillbox->getName() == "combat_commando_master" || skillbox->getName() == "combat_bountyhunter_master") {
+				playerLevel = 25;
+				break;
+			}
+			else if (skillbox->getName() == "combat_commando_novice" || skillbox->getName() == "combat_bountyhunter_novice")
 				playerLevel += 17;
 			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_heavy" )
 				playerLevel += 2;

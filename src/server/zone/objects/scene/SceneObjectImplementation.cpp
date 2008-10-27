@@ -594,40 +594,57 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 		else
 			xptype =(weap->getXpType());
 		int damage = entry->getValue();
-		int xpadd = 0;
+		float xpadd = 0.0f;
 		
 		int playerlevel = player->getPlayerLevel();
-		int multiplier = 1;
-		if (playerlevel > 10) 
-			multiplier = playerlevel / 10;
+		cout << playerlevel << endl;
+		//int multiplier = 1;
+		//if (playerlevel > 10) 
+		//	multiplier = playerlevel / 10;
+		float multiplier = levels / 10.0f;
+		if (multiplier > 2.5f)
+			multiplier = 2.5f;
+		else if (multiplier < 1.0f)
+			multiplier = 1.0f;
+			
 		
+		
+		//40xpl(cl/25)(pl/10)
+		//40*(cl) * (cl/10)
 		if (player->isInAGroup()) { // use group calculation
 			GroupObject *group = player->getGroupObject();
 			if (isNonPlayerCreature()) {
-				xpadd = (int)ceil((1-(total-groupDamageList.get(group))/total)*(1-(totaldamage-damage)/totaldamage)*40*(levels)*(multiplier)*(1+(group->getGroupSize()+5)*.01));
+				xpadd = ceil((1-(total-groupDamageList.get(group))/total)*(1-(totaldamage-damage)/totaldamage)*40*(levels)*(multiplier)*(1+(group->getGroupSize()+5)*.01));
 				if (levels > 25)
 					xpadd += (playerlevel - levels) * 60;
-				if (player->isJedi())
-					xpadd /= 3;
+				else if (playerlevel > levels)
+					xpadd += (levels - playerlevel) * 4.5;
+				if (xptype == "jedi_general" || xptype == "combat_meleespecialize_onehandlightsaber" || xptype == "combat_meleespecialize_twohandlightsaber" || xptype == "combat_meleespecialize_polearmlightsaber")
+					xpadd /= 3.4f;
 			}
 		} else { // use solo calculation
 			if (isNonPlayerCreature()) {
-				xpadd = (int)ceil((1-(total-damage)/total)*40*(levels)*(multiplier));
+				xpadd = ceil((1-(total-damage)/total)*40*(levels)*(multiplier));
 				if (levels > 25)
 					xpadd += (playerlevel - levels) * 60;
-				if (player->isJedi())
-					xpadd /= 3;
+				else if (playerlevel > levels)
+					xpadd += (levels - playerlevel) * 4.5;
+				if (xptype == "jedi_general" || xptype == "combat_meleespecialize_onehandlightsaber" || xptype == "combat_meleespecialize_twohandlightsaber" || xptype == "combat_meleespecialize_polearmlightsaber")
+					xpadd /= 3.4f;
 			}
 		}
 		
-		player->addXp(xptype, xpadd, true);
+		if (xpadd < 1)
+			xpadd = 1;
+		
+		player->addXp(xptype, (int)xpadd, true);
 		
 		if (playerxp.contains(player)) {
 			int xptemp = playerxp.get(player);
 			playerxp.drop(player);
 			playerxp.put(player, xptemp);
 		} else
-			playerxp.put(player, xpadd);
+			playerxp.put(player, (int)xpadd);
 	}
 	
 	for (int j = 0; j < playerxp.size(); j++) {
