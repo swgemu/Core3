@@ -52,7 +52,7 @@ punyTancMite = Creature:new {
       named = FALSE, 
 
       level = 2,
-      xp = 45,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

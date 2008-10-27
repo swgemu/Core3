@@ -52,7 +52,7 @@ tatooineMynock = Creature:new {
       named = FALSE, 
 
       level = 3,
-      xp = 45,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

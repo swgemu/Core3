@@ -52,7 +52,7 @@ technicianDWB = Creature:new {
 	named = FALSE,
 
 	level = 230,
-	xp = 24600,
+	
 	
 	combatFlags = ATTACKABLE_FLAG,
 

@@ -53,7 +53,7 @@ rebelMajor = Creature:new {
       named = FALSE, 
 
       level = 22,
-      xp = 2219,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

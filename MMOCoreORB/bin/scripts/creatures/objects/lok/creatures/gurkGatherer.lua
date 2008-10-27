@@ -52,7 +52,7 @@ gurkGatherer = Creature:new {
       named = FALSE, 
 
       level = 30,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

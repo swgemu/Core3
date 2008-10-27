@@ -52,7 +52,7 @@ lordNyax = Creature:new {
       named = TRUE, 
 
       level = 250,
-      xp = 12235,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

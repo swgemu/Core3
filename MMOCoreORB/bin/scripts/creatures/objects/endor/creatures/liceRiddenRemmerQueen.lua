@@ -52,7 +52,7 @@ liceRiddenRemmerQueen = Creature:new {
       named = FALSE, 
 
       level = 37,
-      xp = 3642,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -52,7 +52,7 @@ juvenileCanyonKrayt = Creature:new {
       named = FALSE, 
 
       level = 122,
-      xp = 11577,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

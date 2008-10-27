@@ -52,7 +52,7 @@ piketEnragedDefender = Creature:new {
       named = FALSE, 
 
       level = 49,
-      xp = 4734,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

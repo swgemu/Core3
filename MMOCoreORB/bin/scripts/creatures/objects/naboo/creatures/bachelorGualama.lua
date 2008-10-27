@@ -52,7 +52,7 @@ bachelorGualama = Creature:new {
       named = FALSE, 
 
       level = 13,
-      xp = 514,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

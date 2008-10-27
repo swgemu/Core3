@@ -52,7 +52,7 @@ kliknikDarkQueen = Creature:new {
       named = FALSE, 
 
       level = 40,
-      xp = 3915,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -52,7 +52,7 @@ piketLonghornFemale = Creature:new {
       named = FALSE, 
 
       level = 30,
-      xp = 2914,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

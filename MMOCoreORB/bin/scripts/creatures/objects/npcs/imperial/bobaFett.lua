@@ -52,7 +52,7 @@ bobaFett = Creature:new {
       named = TRUE, 
 
       level = 250,
-      xp = 28549,
+      
 
       combatFlags = 0,
 

@@ -52,7 +52,7 @@ proficientJindaWorker = Creature:new {
       named = FALSE, 
 
       level = 28,
-      xp = 2822,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

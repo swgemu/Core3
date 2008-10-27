@@ -52,7 +52,7 @@ domesticatedSnorbal = Creature:new {
       named = FALSE, 
 
       level = 31,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

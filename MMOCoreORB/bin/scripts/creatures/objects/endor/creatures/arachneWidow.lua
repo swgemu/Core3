@@ -52,7 +52,7 @@ arachneWidow = Creature:new {
       named = FALSE, 
 
       level = 58,
-      xp = 5647,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

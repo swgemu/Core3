@@ -52,7 +52,7 @@ nightsisterOutcast = Creature:new {
       named = FALSE, 
 
       level = 81,
-      xp = 7761,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

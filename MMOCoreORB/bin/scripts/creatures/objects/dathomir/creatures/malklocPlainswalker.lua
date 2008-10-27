@@ -52,7 +52,7 @@ malklocPlainswalker = Creature:new {
       named = FALSE, 
 
       level = 84,
-      xp = 7945,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

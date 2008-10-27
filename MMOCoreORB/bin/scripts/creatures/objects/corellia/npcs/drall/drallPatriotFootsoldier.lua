@@ -52,7 +52,7 @@ drallPatriotFootsoldier = Creature:new {
       named = FALSE, 
 
       level = 13,
-      xp = 714,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

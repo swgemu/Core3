@@ -52,7 +52,7 @@ acklay = Creature:new {
       named = FALSE, 
 
       level = 157,
-      xp = 28549,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

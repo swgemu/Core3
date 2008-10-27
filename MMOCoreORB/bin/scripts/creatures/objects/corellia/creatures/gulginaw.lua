@@ -52,7 +52,7 @@ gulginaw = Creature:new {
       named = FALSE, 
 
       level = 13,
-      xp = 609,
+      
 
       combatFlags = ATTACKABLE_FLAG,
 

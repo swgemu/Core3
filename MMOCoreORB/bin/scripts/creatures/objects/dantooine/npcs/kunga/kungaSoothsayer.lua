@@ -52,7 +52,7 @@ kungaSoothsayer = Creature:new {
       named = FALSE, 
 
       level = 77,
-      xp = 2730,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

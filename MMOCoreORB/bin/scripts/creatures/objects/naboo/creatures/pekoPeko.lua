@@ -52,7 +52,7 @@ pekoPeko = Creature:new {
       named = FALSE, 
 
       level = 14,
-      xp = 609,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

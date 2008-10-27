@@ -52,7 +52,7 @@ singingMtnClanCouncilwoman = Creature:new {
       named = FALSE, 
 
       level = 253,
-      xp = 24180,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

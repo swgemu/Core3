@@ -52,7 +52,7 @@ derangedMantigrue = Creature:new {
       named = FALSE, 
 
       level = 45,
-      xp = 4279,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

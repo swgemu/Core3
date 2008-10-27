@@ -52,7 +52,7 @@ madAngler = Creature:new {
       named = FALSE, 
 
       level = 95,
-      xp = 9057,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

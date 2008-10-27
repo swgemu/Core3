@@ -52,7 +52,7 @@ kungaLoreweaver = Creature:new {
       named = FALSE, 
 
       level = 51,
-      xp = 5007,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

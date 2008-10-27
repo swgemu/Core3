@@ -52,7 +52,7 @@ slinkingVoritorHunter = Creature:new {
       named = FALSE, 
 
       level = 57,
-      xp = 5555,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

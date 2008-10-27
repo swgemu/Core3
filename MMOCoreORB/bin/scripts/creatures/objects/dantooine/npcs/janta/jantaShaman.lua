@@ -52,7 +52,7 @@ jantaShaman = Creature:new {
       named = FALSE, 
 
       level = 60,
-      xp = 5830,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -52,7 +52,7 @@ geonosianKliknikForceWeak = Creature:new {
       named = FALSE, 
 
       level = 109,
-      xp = 10360,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

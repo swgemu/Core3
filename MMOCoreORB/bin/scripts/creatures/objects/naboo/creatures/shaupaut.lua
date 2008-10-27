@@ -52,7 +52,7 @@ shaupaut = Creature:new {
       named = FALSE, 
 
       level = 7,
-      xp = 187,
+      
 
       combatFlags = ATTACKABLE_FLAG,
 

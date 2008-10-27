@@ -52,7 +52,7 @@ huurtonReaper = Creature:new {
       named = FALSE, 
 
       level = 84,
-      xp = 8038,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

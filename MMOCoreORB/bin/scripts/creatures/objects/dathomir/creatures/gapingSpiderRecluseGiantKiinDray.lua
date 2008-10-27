@@ -52,7 +52,7 @@ gapingSpiderRecluseGiantKiinDray = Creature:new {
       named = FALSE, 
 
       level = 126,
-      xp = 11953,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -52,7 +52,7 @@ pudgyNudfuh = Creature:new {
       named = FALSE, 
 
       level = 9,
-      xp = 235,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

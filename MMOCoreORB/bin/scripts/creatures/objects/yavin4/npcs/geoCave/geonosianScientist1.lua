@@ -52,7 +52,7 @@ geonosianScientist = Creature:new {
       named = FALSE, 
 
       level = 48,
-      xp = 4643,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

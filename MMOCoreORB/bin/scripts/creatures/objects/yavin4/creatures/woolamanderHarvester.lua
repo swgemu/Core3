@@ -52,7 +52,7 @@ woolamanderHarvester = Creature:new {
       named = FALSE, 
 
       level = 38,
-      xp = 3733,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

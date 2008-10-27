@@ -52,7 +52,7 @@ greatPlainsStalker = Creature:new {
       named = FALSE, 
 
       level = 51,
-      xp = 4916,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

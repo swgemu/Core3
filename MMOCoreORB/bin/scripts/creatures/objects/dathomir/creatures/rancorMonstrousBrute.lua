@@ -52,7 +52,7 @@ rancorMonstrousBrute = Creature:new {
       named = FALSE, 
 
       level = 87,
-      xp = 8315,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

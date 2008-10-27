@@ -52,7 +52,7 @@ stintarilProwler = Creature:new {
       named = FALSE, 
 
       level = 83,
-      xp = 7945,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

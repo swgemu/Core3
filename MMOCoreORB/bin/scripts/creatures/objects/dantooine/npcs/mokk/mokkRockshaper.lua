@@ -52,7 +52,7 @@ mokkRockshaper = Creature:new {
       named = FALSE, 
 
       level = 71,
-      xp = 6747,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

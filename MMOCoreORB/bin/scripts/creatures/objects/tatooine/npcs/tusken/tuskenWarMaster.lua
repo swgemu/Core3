@@ -52,7 +52,7 @@ tuskenWarMaster = Creature:new {
       named = FALSE, 
 
       level = 80,
-      xp = 5190,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -52,7 +52,7 @@ grasslandSliceHound = Creature:new {
       named = FALSE, 
 
       level = 14,
-      xp = 831,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

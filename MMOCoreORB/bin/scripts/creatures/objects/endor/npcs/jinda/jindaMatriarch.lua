@@ -52,7 +52,7 @@ jindaMatriarch = Creature:new {
       named = FALSE, 
 
       level = 41,
-      xp = 4006,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

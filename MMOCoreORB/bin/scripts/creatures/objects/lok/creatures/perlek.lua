@@ -52,7 +52,7 @@ perlek = Creature:new {
       named = FALSE, 
 
       level = 14,
-      xp = 714,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

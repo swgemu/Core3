@@ -52,7 +52,7 @@ youngRoba = Creature:new {
       named = FALSE, 
 
       level = 50,
-      xp = 4825,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

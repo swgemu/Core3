@@ -54,7 +54,7 @@ imperialStormTrooperCommando = Creature:new {
       named = FALSE, 
 
       level = 29,
-      xp = 3005,
+      
 
       combatFlags = 0,
 

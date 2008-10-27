@@ -52,7 +52,7 @@ maleSnorbalCalf = Creature:new {
       named = FALSE, 
 
       level = 22,
-      xp = 1803,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

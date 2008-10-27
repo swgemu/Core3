@@ -53,7 +53,7 @@ imperialSergeant = Creature:new {
       named = FALSE, 
 
       level = 1,
-      xp = 40,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

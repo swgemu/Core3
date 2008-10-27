@@ -52,7 +52,7 @@ narglatch = Creature:new {
       named = FALSE, 
 
       level = 22,
-      xp = 2006,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

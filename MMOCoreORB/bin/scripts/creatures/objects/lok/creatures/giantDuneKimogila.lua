@@ -52,7 +52,7 @@ giantDuneKimogila = Creature:new {
       named = FALSE, 
 
       level = 153,
-      xp = 14504,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -52,7 +52,7 @@ tortonPygmyMatriarch = Creature:new {
       named = FALSE, 
 
       level = 26,
-      xp = 2730,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

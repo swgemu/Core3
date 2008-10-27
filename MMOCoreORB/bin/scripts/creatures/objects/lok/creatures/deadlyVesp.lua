@@ -52,7 +52,7 @@ deadlyVesp = Creature:new {
       named = FALSE, 
 
       level = 93,
-      xp = 8871,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

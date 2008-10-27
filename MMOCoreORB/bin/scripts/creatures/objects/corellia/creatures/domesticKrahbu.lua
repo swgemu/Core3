@@ -52,7 +52,7 @@ domesticKrahbu = Creature:new {
       named = FALSE, 
 
       level = 7,
-      xp = 147,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

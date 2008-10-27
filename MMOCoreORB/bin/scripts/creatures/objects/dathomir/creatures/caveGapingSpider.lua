@@ -52,7 +52,7 @@ caveGapingSpider = Creature:new {
       named = FALSE, 
 
       level = 27,
-      xp = 2822,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

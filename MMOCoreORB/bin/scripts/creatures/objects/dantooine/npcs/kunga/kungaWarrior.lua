@@ -52,7 +52,7 @@ kungaWarrior = Creature:new {
       named = FALSE, 
 
       level = 70,
-      xp = 6655,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

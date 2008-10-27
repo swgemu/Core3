@@ -52,7 +52,7 @@ geonosianImperialObserver = Creature:new {
       named = FALSE, 
 
       level = 53,
-      xp = 5190,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

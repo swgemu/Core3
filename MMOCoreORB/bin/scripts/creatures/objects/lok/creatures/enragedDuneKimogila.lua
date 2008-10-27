@@ -52,7 +52,7 @@ enragedDuneKimogila = Creature:new {
       named = FALSE, 
 
       level = 148,
-      xp = 14030,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

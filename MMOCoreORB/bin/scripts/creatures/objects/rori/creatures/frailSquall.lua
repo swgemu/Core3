@@ -52,7 +52,7 @@ frailSquall = Creature:new {
       named = FALSE, 
 
       level = 6,
-      xp = 113,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

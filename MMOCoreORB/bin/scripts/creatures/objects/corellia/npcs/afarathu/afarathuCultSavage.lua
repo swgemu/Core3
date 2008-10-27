@@ -52,7 +52,7 @@ afarathuCultSavage = Creature:new {
       named = FALSE, 
 
       level = 7,
-      xp = 187,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

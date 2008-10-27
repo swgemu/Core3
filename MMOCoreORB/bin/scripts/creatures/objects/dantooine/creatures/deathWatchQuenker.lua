@@ -52,7 +52,7 @@ deathWatchQuenker = Creature:new {
       named = FALSE, 
 
       level = 102,
-      xp = 9708,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

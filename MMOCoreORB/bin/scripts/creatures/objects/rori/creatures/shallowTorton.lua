@@ -52,7 +52,7 @@ shallowTorton = Creature:new {
       named = FALSE, 
 
       level = 19,
-      xp = 1257,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

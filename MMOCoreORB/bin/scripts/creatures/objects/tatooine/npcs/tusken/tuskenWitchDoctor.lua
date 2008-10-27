@@ -52,7 +52,7 @@ tuskenWitchDoctor = Creature:new {
       named = FALSE, 
 
       level = 202,
-      xp = 19201,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

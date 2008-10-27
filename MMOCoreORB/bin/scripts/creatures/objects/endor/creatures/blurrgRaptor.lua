@@ -52,7 +52,7 @@ blurrgRaptor = Creature:new {
       named = FALSE, 
 
       level = 141,
-      xp = 13367,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

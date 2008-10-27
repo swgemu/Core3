@@ -52,7 +52,7 @@ kaaduAggrivatedTrampler = Creature:new {
       named = FALSE, 
 
       level = 17,
-      xp = 1102,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

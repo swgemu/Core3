@@ -52,7 +52,7 @@ caveGapingSpiderRecluseQueen = Creature:new {
       named = FALSE, 
 
       level = 70,
-      xp = 6747,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

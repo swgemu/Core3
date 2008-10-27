@@ -52,7 +52,7 @@ hornedVoritorJungleLizard = Creature:new {
       named = FALSE, 
 
       level = 53,
-      xp = 5099,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

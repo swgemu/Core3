@@ -52,7 +52,7 @@ bolleBolHerdLeader = Creature:new {
       named = FALSE, 
 
       level = 35,
-      xp = 3460,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

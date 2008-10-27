@@ -53,7 +53,7 @@ imperialJediMaster = Creature:new {
       named = TRUE, 
 
       level = 400,
-      xp = 28549,
+      
 
       combatFlags = 0,
 

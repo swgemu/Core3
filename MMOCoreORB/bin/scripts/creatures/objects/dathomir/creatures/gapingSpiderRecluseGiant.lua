@@ -52,7 +52,7 @@ gapingSpiderRecluseGiant = Creature:new {
       named = FALSE, 
 
       level = 115,
-      xp = 10921,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

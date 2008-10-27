@@ -53,7 +53,7 @@ rebelJediKnight = Creature:new {
       named = TRUE, 
 
       level = 350,
-      xp = 28549,
+      
 
       combatFlags = 0,
 

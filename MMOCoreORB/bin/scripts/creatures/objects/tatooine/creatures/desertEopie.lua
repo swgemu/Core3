@@ -52,7 +52,7 @@ desertEopie = Creature:new {
       named = FALSE, 
 
       level = 16,
-      xp = 831,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

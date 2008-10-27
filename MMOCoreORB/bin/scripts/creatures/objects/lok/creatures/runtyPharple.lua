@@ -52,7 +52,7 @@ runtyPharple = Creature:new {
       named = FALSE, 
 
       level = 3,
-      xp = 62,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

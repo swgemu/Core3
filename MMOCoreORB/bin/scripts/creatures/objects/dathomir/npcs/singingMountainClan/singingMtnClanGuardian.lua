@@ -52,7 +52,7 @@ singingMtnClanGuardian = Creature:new {
       named = FALSE, 
 
       level = 156,
-      xp = 14789,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

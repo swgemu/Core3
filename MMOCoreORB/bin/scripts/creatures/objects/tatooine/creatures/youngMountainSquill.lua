@@ -52,7 +52,7 @@ youngMountainSquill = Creature:new {
       named = FALSE, 
 
       level = 10,
-      xp = 356,
+      
 
       combatFlags = ATTACKABLE_FLAG,
 

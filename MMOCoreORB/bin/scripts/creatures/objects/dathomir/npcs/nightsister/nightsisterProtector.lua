@@ -52,7 +52,7 @@ nightsisterProtector = Creature:new {
       named = FALSE, 
 
       level = 131,
-      xp = 12424,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

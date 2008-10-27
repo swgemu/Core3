@@ -52,7 +52,7 @@ jantaHunter = Creature:new {
       named = FALSE, 
 
       level = 50,
-      xp = 4916,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

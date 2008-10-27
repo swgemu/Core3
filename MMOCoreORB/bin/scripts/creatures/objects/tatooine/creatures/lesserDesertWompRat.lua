@@ -52,7 +52,7 @@ lesserDesertWompRat = Creature:new {
       named = FALSE, 
 
       level = 5,
-      xp = 85,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

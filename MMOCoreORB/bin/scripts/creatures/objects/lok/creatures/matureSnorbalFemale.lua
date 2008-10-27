@@ -52,7 +52,7 @@ matureSnorbalFemale = Creature:new {
       named = FALSE, 
 
       level = 31,
-      xp = 3097,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -52,7 +52,7 @@ jabbaEnforcer = Creature:new {
       named = FALSE, 
 
       level = 46,
-      xp = 960,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

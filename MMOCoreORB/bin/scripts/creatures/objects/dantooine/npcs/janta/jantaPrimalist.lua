@@ -52,7 +52,7 @@ jantaPrimalist = Creature:new {
       named = FALSE, 
 
       level = 42,
-      xp = 4097,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

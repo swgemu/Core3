@@ -52,7 +52,7 @@ snorbalMatriarch = Creature:new {
       named = FALSE, 
 
       level = 45,
-      xp = 4370,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

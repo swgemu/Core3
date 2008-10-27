@@ -52,7 +52,7 @@ screamingKaiTok = Creature:new {
       named = FALSE, 
 
       level = 21,
-      xp = 1803,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

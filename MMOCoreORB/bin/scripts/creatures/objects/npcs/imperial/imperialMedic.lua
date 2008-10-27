@@ -53,7 +53,7 @@ imperialMedic = Creature:new {
       named = FALSE, 
 
       level = 16,
-      xp = 960,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
