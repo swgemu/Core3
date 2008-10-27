@@ -282,14 +282,14 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 				item->parseItemAttributes();
 			}
 			break;
-			
-        case TangibleObjectImplementation::GENERICITEM: 
-            item = createSubObject(objectid, objectcrc, objectname, objecttemp, equipped); 
-            if (makeStats) { 
-                item->setAttributes(lootAttributes); 
-                item->parseItemAttributes(); 
-            } 
-            break; 
+
+        case TangibleObjectImplementation::GENERICITEM:
+            item = createSubObject(objectid, objectcrc, objectname, objecttemp, equipped);
+            if (makeStats) {
+                item->setAttributes(lootAttributes);
+                item->parseItemAttributes();
+            }
+            break;
 
 		default:
 			item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, objecttype);
@@ -496,15 +496,15 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
 	case 0xC6F551AE: //fireblanket
 		item = new CurePack(objectid, objectcrc, objectname, objecttemp);
 		break;
-    case 0x221F0907: 
-    case 0x484AC6A6: 
-    case 0x821DB6E8: 
-    case 0xBF64B1E4: 
-    case 0xB5E34222: 
-    case 0x81B6977D: 
-    case 0xD474E5E7: //dice 
-        item = new Dice(objectid, objectcrc, objectname, objecttemp); 
-        break; 
+    case 0x221F0907:
+    case 0x484AC6A6:
+    case 0x821DB6E8:
+    case 0xBF64B1E4:
+    case 0xB5E34222:
+    case 0x81B6977D:
+    case 0xD474E5E7: //dice
+        item = new Dice(objectid, objectcrc, objectname, objecttemp);
+        break;
 	default:
 		item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, TangibleObjectImplementation::MISC);
 		break;
@@ -1248,6 +1248,11 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 
 				land->setCharacterAppearance(custStr);
 			}
+
+			string attributes = res->getString(6);
+
+			land->setAttributes(attributes );
+			land->parseItemAttributes();
 
 			land->addToDatapad();
 

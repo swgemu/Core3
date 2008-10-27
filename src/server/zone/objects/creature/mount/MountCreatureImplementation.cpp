@@ -83,6 +83,8 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 	conditionDamage = 0;
 	maxCondition = 20000;
 
+	itemAttributes = new ItemAttributes();
+
 	itno = NULL;
 	itnoCRC = itnocrc;
 
@@ -94,6 +96,14 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 
 	setLogging(false);
 	setGlobalLogging(true);
+
+}
+
+MountCreatureImplementation::~MountCreatureImplementation() {
+
+	delete itemAttributes;
+
+	itemAttributes = NULL;
 }
 
 void MountCreatureImplementation::addToDatapad() {
@@ -136,16 +146,74 @@ void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
 		close(client);
 }
 
+void MountCreatureImplementation::repair() {
+	if (linkedCreature == NULL || !linkedCreature->isPlayer())
+		return;
+
+	Player* linkedPlayer = (Player*)linkedCreature;
+
+	ZoneClientSession* client = linkedPlayer->getClient();
+	if (client == NULL)
+		return;
+
+	conditionDamage = 0;
+	stringstream cond;
+
+	cond << (maxCondition-conditionDamage) << "/" << maxCondition << ":";
+
+	string attr = cond.str();
+	setAttributes(attr);
+
+	BaseMessage* creo3 = new CreatureObjectMessage3(_this);
+	client->sendMessage(creo3);
+
+	try {
+		zone->lock();
+
+		for (int i = 0; i < linkedPlayer->inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) linkedPlayer->getInRangeObject(i))->_getStub());
+
+			if (object->isPlayer()) {
+				Player* player = (Player*) object;
+
+				if (player != linkedPlayer && linkedPlayer->isInRange(player, 128)) {
+					ZoneClientSession* playerClient = player->getClient();
+
+					if (playerClient != NULL) {
+						BaseMessage* creo3 = new CreatureObjectMessage3(_this);
+						playerClient->sendMessage(creo3);
+					}
+				}
+			}
+		}
+
+		zone->unlock();
+
+	} catch (...) {
+		zone->unlock();
+	}
+}
+
 void MountCreatureImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if (player->getMount() == _this) {
 		omr->addRadialItem(0, 205, 1, "@pet/pet_menu:menu_enter_exit");
 		omr->addRadialItem(0, 61, 3);
+
+		//TODO:Remove this when garages are functionally
+		omr->addRadialItem(0, 62, 3, "Repair");
 	}
 
 	omr->finish();
 
 	player->sendMessage(omr);
 }
+
+
+void MountCreatureImplementation::parseItemAttributes() {
+	maxCondition = itemAttributes->getMaxCondition();
+	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
+}
+
 
 void MountCreatureImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
@@ -164,7 +232,16 @@ void MountCreatureImplementation::generateAttributes(SceneObject* obj) {
 		alm->insertAttribute("@obj_attr_n:crystal_owner", strname); //Owner: Name
 	}
 
+	addAttributes(alm);
+
 	player->sendMessage(alm);
+}
+
+void MountCreatureImplementation::addAttributes(AttributeListMessage* alm) {
+	stringstream cond;
+	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
+
+	alm->insertAttribute("condition", cond);
 }
 
 void MountCreatureImplementation::call() {

@@ -73,10 +73,16 @@ interface MountCreature implements Creature {
 	
 	void addToDatapad();
 	
-	void setInstantMount(boolean val);
-	
+	void setInstantMount(boolean val);	
 	
 	boolean isInWorld();
 	
 	unsigned int getItnocrc();
+	
+	void parseItemAttributes();
+	void setAttributes(string attributestring);
+	string getAttributes();
+	
+	void repair();
+	
 }

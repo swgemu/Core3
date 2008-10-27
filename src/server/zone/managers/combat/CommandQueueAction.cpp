@@ -153,11 +153,11 @@ bool CommandQueueAction::validate() {
 						Player* targetPlayer = (Player*) sco;
 
 						if (targetPlayer->isInBuilding() && target->getParent() != creature->getParent()) {
-								clearError(0);
-								creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
+							clearError(0);
+							creature->sendSystemMessage("cbt_spam", "los_recycle"); // You cannot see your target
 
-								target->unlock();
-								return false;
+							target->unlock();
+							return false;
 						}
 
 					} else {
