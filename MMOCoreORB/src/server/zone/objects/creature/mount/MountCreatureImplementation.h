@@ -51,6 +51,8 @@ class CreatureObject;
 class Creature;
 
 #include "MountCreature.h"
+#include "../../tangible/ItemAttributes.h"
+#include "../../../packets/scene/AttributeListMessage.h"
 
 class MountCreatureImplementation : public MountCreatureServant {
 	int mountType;
@@ -60,6 +62,11 @@ class MountCreatureImplementation : public MountCreatureServant {
 	uint32 itnoCRC;
 
 	bool instantMount;
+
+protected:
+	string attributeString;
+
+	ItemAttributes* itemAttributes;
 
 public:
 
@@ -71,17 +78,33 @@ public:
 	MountCreatureImplementation(CreatureObject* linkCreature, const string& name,
 			const string& stf, uint32 itnocrc, uint32 objCRC, uint64 oid);
 
+	~MountCreatureImplementation();
+
 	void addToDatapad();
 
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+
+	void parseItemAttributes();
 	void generateAttributes(SceneObject* obj);
+	void addAttributes(AttributeListMessage* alm);
 
 	void call();
 	void store(bool doLock = true);
 
 	// setters and getters
+	inline void setAttributes(string& attributestring) {
+		itemAttributes->setAttributes(attributestring);
+	}
+
+	inline string& getAttributes() {
+		itemAttributes->getAttributeString(attributeString);
+		return attributeString;
+	}
+
+	void repair();
+
 	inline void setMountType(int type) {
 		mountType = type;
 	}

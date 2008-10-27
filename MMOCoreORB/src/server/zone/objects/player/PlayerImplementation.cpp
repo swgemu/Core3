@@ -4294,7 +4294,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		if (datapad == NULL)
 			return;
 
-		string name, detailName, appearance, mountApp;
+		string name, detailName, appearance, mountApp, attr;
 		stringstream query;
 		uint32 objCRC, itnoCRC;
 		uint64 objID;
@@ -4303,10 +4303,13 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		query << "DELETE FROM datapad where character_id = " << player->getCharacterID() << ";";
 		ServerDatabase::instance()->executeStatement(query);
 
+
+
 		for (int i = 0; i < datapad->objectsSize(); ++i) {
 			name = "";
 			detailName = "";
 			appearance = "";
+			attr = "";
 			mountApp = "";
 			objCRC = 0;
 			objID = 0;
@@ -4333,6 +4336,9 @@ void PlayerImplementation::saveDatapad(Player* player) {
 
 							mountCreature->getCharacterAppearance(mountApp);
 
+							attr = mountCreature->getAttributes();
+							MySqlDatabase::escapeString(attr);
+
 							if (mountApp != "") {
 								BinaryData cust(mountApp);
 								cust.encode(appearance);
@@ -4350,7 +4356,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 						query << "Insert into datapad set character_id = " << player->getCharacterID()
 						<< ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = " << itnoCRC
 						<< ",itemMask = 65535, appearance = '" << appearance.substr(0, appearance.size() - 1)
-						<< "',obj_id = " << objID << ";";
+						<< "',attributes = '" << attr << "',obj_id = " << objID << ";";
 
 						ServerDatabase::instance()->executeStatement(query);
 					}

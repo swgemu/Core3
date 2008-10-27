@@ -927,8 +927,8 @@ void GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(
 			return;
 		}
 	} else {
-		//TODO: fix this when name was empty
 		otherPlayer->info("Inviter player NULL - Clean exit from GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(uint32 boxID, Player* otherPlayer, uint32 cancel)");
+		otherPlayer->sendSystemMessage("Sponsoring canceled (InvN_NULL)! Please sponsor the player again.");
 		return;
 	}
 
