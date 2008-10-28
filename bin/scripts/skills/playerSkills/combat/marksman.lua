@@ -48,7 +48,7 @@ RandPoolAtt = {
 	requiredWeaponType = RANGED,
 	
 	range = 65,
-	damageRatio = 5.0,
+	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -83,7 +83,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 65,
+	range = 10,
 	damageRatio = 1.5,
 	speedRatio = 1.05,
 	coneAngle = 60,
@@ -119,7 +119,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RANGED,
 	
-	range = 65,
+	range = 10,
 	damageRatio = 1.75,
 	speedRatio = 1.05,
 	areaRange = 0,

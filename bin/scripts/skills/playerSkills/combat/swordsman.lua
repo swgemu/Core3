@@ -47,7 +47,7 @@ RandPoolAtt = {
 	
 	range = 5,
 	damageRatio = 3.0,
-	speedRatio = 2.25,
+	speedRatio = 2.3,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -451,7 +451,7 @@ RandPoolAtt = {
 	
 	range = 5,
 	damageRatio = 4.0,
-	speedRatio = 3.25,
+	speedRatio = 3.3,
 	areaRange = 0,
 	accuracyBonus = 0,
 

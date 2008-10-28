@@ -395,7 +395,7 @@ RandPoolAtt = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 1.5,
+	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,

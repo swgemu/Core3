@@ -492,7 +492,7 @@ RandPoolAtt = {
 	requiredWeaponType = UNARMED,
 	
 	range = 6,
-	damageRatio = 4.5,
+	damageRatio = 4.0,
 	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,

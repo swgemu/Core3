@@ -82,7 +82,7 @@ DirectPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 2.25,
+	damageRatio = 3.0,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -130,7 +130,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 2.5,
+	damageRatio = 3.5,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -262,7 +262,7 @@ RandPoolAtt = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 3.5,
+	damageRatio = 3.0,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
