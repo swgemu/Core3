@@ -509,6 +509,10 @@ public:
 
 	bool isRevivable();
 
+	unsigned long long getResurrectionExpires();
+
+	void setResurrectionExpires(unsigned long long msecs);
+
 	bool isResurrectable();
 
 	bool hasHealthDamage();
@@ -1037,7 +1041,7 @@ public:
 
 	bool revive(CreatureObject* target, bool forcedChange = false);
 
-	bool resurrect(CreatureObject* target);
+	bool resurrect(CreatureObject* target, bool forcedChange = false);
 
 	void deactivateWoundTreatment();
 
@@ -1626,6 +1630,10 @@ public:
 
 	bool isRevivable();
 
+	unsigned long long getResurrectionExpires();
+
+	void setResurrectionExpires(unsigned long long msecs);
+
 	bool isResurrectable();
 
 	bool hasHealthDamage();
@@ -2154,7 +2162,7 @@ public:
 
 	bool revive(CreatureObject* target, bool forcedChange);
 
-	bool resurrect(CreatureObject* target);
+	bool resurrect(CreatureObject* target, bool forcedChange);
 
 	void deactivateWoundTreatment();
 

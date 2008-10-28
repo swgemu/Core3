@@ -1971,7 +1971,7 @@ void GameCommandHandler::rez(StringTokenizer tokenizer, Player * player) {
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
 
-		targetPlayer->resurrect();
+		((CreatureObject*)player)->resurrect(targetPlayer, true);
 
 		targetPlayer->sendSystemMessage("Your character has been resuscitated by \'" + player->getFirstName() + "\'.");
 		player->sendSystemMessage("You resuscitate the character \'" + name + "\'.");

@@ -569,8 +569,10 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 		else if (doPlayingMusic)
 			stopPlayingMusic();
 
-		if (meditating && postureState != CreaturePosture::SITTING)
+		if (meditating && postureState != CreaturePosture::SITTING) {
+			clearState(CreatureState::ALERT);
 			meditating = false;
+		}
 
 		Vector<BaseMessage*> msgs;
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
@@ -857,6 +859,7 @@ void CreatureObjectImplementation::setMeditateState() {
 
 	updateMood("meditating");
 	setPosture(CreaturePosture::SITTING);
+	setState(CreatureState::ALERT);
 
 	meditating = true;
 }
@@ -4886,29 +4889,19 @@ bool CreatureObjectImplementation::revive(CreatureObject* target, bool forcedCha
 	return true;
 }
 
-bool CreatureObjectImplementation::resurrect(CreatureObject* target) {
+bool CreatureObjectImplementation::resurrect(CreatureObject* target, bool forcedChange) {
 	if (!target->isDead())
 		return false;
 
-	if (!target->isResurrectable())
+	if (!target->isResurrectable() && !forcedChange)
 		return false;
 
-	if (isPlayer()) {
-		//Remove the clone window if it exists
-		Player* player = (Player*) _this;
-
-		uint32 boxID = player->getSuiBoxFromType(0xC103); //Activate Clone SuiBox
-
-		if (player->hasSuiBox(boxID)) {
-			SuiBox* sui = player->getSuiBox(boxID);
-			player->sendMessage(sui->generateCloseMessage());
-			player->removeSuiBox(boxID);
-			sui->finalize();
-		}
+	if (target->isPlayer()) {
+		((Player*)target)->resurrect();
+	} else {
+		if (!revive(target, true))
+			return false;
 	}
-
-	if (!revive(target, true))
-		return false;
 
 	return true;
 }

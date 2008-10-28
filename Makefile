@@ -130,6 +130,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/pharmaceutical/StimPack.idl \
 				server/zone/objects/tangible/pharmaceutical/StatePack.idl \
 				server/zone/objects/tangible/pharmaceutical/CurePack.idl \
+				server/zone/objects/tangible/pharmaceutical/CureAreaPack.idl \
 				server/zone/objects/tangible/pharmaceutical/RevivePack.idl \
 				server/zone/objects/tangible/attachment/Attachment.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \

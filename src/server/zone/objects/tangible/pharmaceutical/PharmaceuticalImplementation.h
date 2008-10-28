@@ -65,6 +65,7 @@ public:
 	static const int STIMPACK = 4;
 	static const int STATEPACK = 5;
 	static const int REVIVEPACK = 6;
+	static const int CUREAREAPACK = 7;
 
 public:
 
@@ -140,6 +141,10 @@ public:
 
 	inline bool isRevivePack() {
 		return medpackType == REVIVEPACK;
+	}
+
+	inline bool isCureAreaPack() {
+		return medpackType == CUREAREAPACK;
 	}
 };
 

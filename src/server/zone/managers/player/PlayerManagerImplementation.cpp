@@ -504,9 +504,19 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setFactionStatus(character->getInt(58));
 	player->setFactionRank(character->getInt(59));
 
+	//Posture
+	player->changePosture(character->getInt(61));
+
+	if (player->isDead()) {
+		uint64 rezExpires = ((uint64) character->getUnsignedInt(62)) * 1000;
+		player->setResurrectionExpires(rezExpires);
+	}
+
 	//Load consent list from database
 	loadConsentList(player);
 	loadFactionPoints(player);
+
+
 	delete character;
 }
 
@@ -706,8 +716,10 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< ",PvpRating=" << player->getPvpRating()
 	<< ",guildpermission=" << player->getGuildPermissions()
 	<< ",factionStatus=" << (int) player->getFactionStatus()
-	<< ",factionRank=" << (int)player->getFactionRank()
+	<< ",factionRank=" << (int) player->getFactionRank()
 	<< ",experience=" << "'" << player->saveXp() << "'"
+	<< ",posture=" << (int) player->getPosture()
+	<< ",rezExpires=" << (int) floor(((float)(player->getResurrectionExpires()) / 1000.0f))
 	<< " WHERE character_id=" << player->getCharacterID() << ";";
 	try {
 		ServerDatabase::instance()->executeStatement(query);
