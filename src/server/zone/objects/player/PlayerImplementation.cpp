@@ -493,6 +493,12 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 			info("reloading player from Cache");
 		}
 
+		if (isLinkDead()) {
+			info("clearing link dead status");
+			if (playerObject != NULL)
+				playerObject->clearCharacterBit(PlayerObjectImplementation::LD, true);
+		}
+
 		owner = client;
 		client->setPlayer(_this);
 
