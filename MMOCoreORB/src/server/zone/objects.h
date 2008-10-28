@@ -195,11 +195,13 @@ which carries forward this exception.
 #include "objects/tangible/pharmaceutical/CurePackImplementation.h"
 #include "objects/tangible/pharmaceutical/RevivePack.h"
 #include "objects/tangible/pharmaceutical/RevivePackImplementation.h"
+#include "objects/tangible/pharmaceutical/CureAreaPack.h"
+#include "objects/tangible/pharmaceutical/CureAreaPackImplementation.h"
 
-#include "objects/tangible/generic/GenericItem.h" 
-#include "objects/tangible/generic/GenericItemImplementation.h" 
-#include "objects/tangible/generic/Dice.h" 
-#include "objects/tangible/generic/DiceImplementation.h" 
+#include "objects/tangible/generic/GenericItem.h"
+#include "objects/tangible/generic/GenericItemImplementation.h"
+#include "objects/tangible/generic/Dice.h"
+#include "objects/tangible/generic/DiceImplementation.h"
 
 #include "objects/intangible/IntangibleObject.h"
 #include "objects/intangible/IntangibleObjectImplementation.h"

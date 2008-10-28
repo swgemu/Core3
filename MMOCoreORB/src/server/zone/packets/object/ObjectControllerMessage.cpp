@@ -3720,8 +3720,12 @@ void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* p
 		}
 
 		if (player->giveConsent(playerTarget->getFirstName())) {
-			player->sendSystemMessage("base_player", "prose_consent", playerTarget->getObjectID()); //You give your consent to %TO.
-			playerTarget->sendSystemMessage("base_player", "prose_got_consent", player->getObjectID()); //%TO consents you.
+			StfParameter* param = new StfParameter();
+			param->addTO(playerTarget->getCharacterName().c_str());
+			player->sendSystemMessage("base_player", "prose_consent", param); //You give your consent to %TO.
+			param->addTO(player->getCharacterName().c_str());
+			playerTarget->sendSystemMessage("base_player", "prose_got_consent", param); //%TO consents you.
+			delete param;
 		} else {
 			player->sendSystemMessage("You have already given them your consent.");
 		}
@@ -3757,11 +3761,15 @@ void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message*
 	Player* playerTarget = playerManager->getPlayer(consentName);
 
 	if (player->revokeConsent(consentName)) {
-		player->sendSystemMessage("You revoke your consent from " + consentName + ".");
+		StfParameter* param = new StfParameter();
+		param->addTO(playerTarget->getCharacterName().c_str());
+		player->sendSystemMessage("base_player", "prose_unconsent", param); //You revoke your consent from %TO.
 
 		if (playerTarget != NULL) {
-			playerTarget->sendSystemMessage(player->getFirstNameProper() + " revokes your consent.");
+			param->addTO(player->getCharacterName().c_str());
+			playerTarget->sendSystemMessage("base_player", "prose_lost_consent", param); //%TO no longer consents you.
 		}
+		delete param;
 	} else {
 		player->sendSystemMessage("Your target for unconsent is offline or does note exist.");
 	}

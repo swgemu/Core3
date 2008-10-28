@@ -1195,7 +1195,8 @@ void SuiManager::handleCloneRequest(uint32 boxID, Player* player, uint32 cancel,
 				player->doClone();
 			}
 		} else {
-			player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
+			if (player->isDead())
+				player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
 		}
 
 		player->unlock();

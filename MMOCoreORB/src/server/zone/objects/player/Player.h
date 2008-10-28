@@ -87,7 +87,11 @@ public:
 
 	void userLogout(int msgCounter = 3);
 
+	void resurrectCountdown(int counter = 6);
+
 	void clearLogoutEvent();
+
+	void clearResurrectEvent();
 
 	void makeCharacterMask();
 
@@ -221,6 +225,8 @@ public:
 
 	void handleDeath();
 
+	void throttlePvpRating(Player* player);
+
 	void doClone();
 
 	void activateClone();
@@ -228,12 +234,6 @@ public:
 	void doRecovery();
 
 	void doDigest();
-
-	void activateReviveCountdown();
-
-	void clearReviveCountdown();
-
-	void countdownRevive(int counter);
 
 	bool hasConsent(string& charID);
 
@@ -803,7 +803,11 @@ public:
 
 	void userLogout(int msgCounter);
 
+	void resurrectCountdown(int counter);
+
 	void clearLogoutEvent();
+
+	void clearResurrectEvent();
 
 	void makeCharacterMask();
 
@@ -937,6 +941,8 @@ public:
 
 	void handleDeath();
 
+	void throttlePvpRating(Player* player);
+
 	void doClone();
 
 	void activateClone();
@@ -944,12 +950,6 @@ public:
 	void doRecovery();
 
 	void doDigest();
-
-	void activateReviveCountdown();
-
-	void clearReviveCountdown();
-
-	void countdownRevive(int counter);
 
 	bool hasConsent(string& charID);
 

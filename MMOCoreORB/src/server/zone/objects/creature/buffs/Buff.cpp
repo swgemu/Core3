@@ -42,8 +42,6 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "../../../ZoneProcessServerImplementation.h"
-
 #include "Buff.h"
 
 #include "../../player/Player.h"

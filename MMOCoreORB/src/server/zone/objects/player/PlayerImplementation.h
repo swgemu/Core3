@@ -89,7 +89,6 @@ class PlayerDigestEvent;
 class CenterOfBeingEvent;
 class PowerboostEventWane;
 class PowerboostEventEnd;
-class ReviveCountdownEvent;
 
 class Datapad;
 
@@ -130,6 +129,7 @@ class PlayerImplementation : public PlayerServant {
 
 	Event* disconnectEvent;
 	Event* logoutEvent;
+	Event* resurrectEvent;
 
 	PlayerSaveStateEvent* playerSaveStateEvent;
 
@@ -139,7 +139,7 @@ class PlayerImplementation : public PlayerServant {
 
 	int itemShift;
 
-	int deathCount;
+	uint8 incapacitationCount;
 	Time firstIncapacitationTime;
 	int pvpRating;
 
@@ -254,9 +254,6 @@ class PlayerImplementation : public PlayerServant {
 	uint32 targetFocus;
 	uint32 targetWillpower;
 
-	Time reviveTimeout;
-	ReviveCountdownEvent* reviveCountdownEvent;
-
 	Vector<string> consentList;
 
 	uint16 characterMask;
@@ -330,6 +327,8 @@ public:
 	void logout(bool doLock = true);
 	void userLogout(int msgCounter = 3);
 
+	void resurrectCountdown(int counter = 6);
+
 	void disconnect(bool closeClient = true, bool doLock = true);
 
 	void initializeEvents();
@@ -337,6 +336,10 @@ public:
 
 	void clearLogoutEvent() {
 		logoutEvent = NULL;
+	}
+
+	void clearResurrectEvent() {
+		resurrectEvent = NULL;
 	}
 
 	void createItems();
@@ -696,12 +699,10 @@ public:
 	void deathblow(Player* player);
 	void resurrect();
 
+	void throttlePvpRating(Player* player);
+
 	void activateClone();
 	void doClone();
-
-	void activateReviveCountdown();
-	void clearReviveCountdown();
-	void countdownRevive(int counter);
 
 	void handleDeath();
 

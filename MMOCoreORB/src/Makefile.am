@@ -156,6 +156,7 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventory.cpp \
 		server/zone/objects/tangible/MissionBag.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
+		server/zone/objects/tangible/pharmaceutical/CureAreaPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/Pharmaceutical.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
@@ -294,6 +295,7 @@ core3_SOURCES =	$(core3_IDLS) \
         server/zone/objects/tangible/generic/DiceImplementation.cpp \ 
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/CureAreaPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/EnhancePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/PharmaceuticalImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/RevivePackImplementation.cpp \
