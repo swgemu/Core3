@@ -743,32 +743,34 @@ void PlayerImplementation::userLogout(int msgCounter) {
 		uint8 timeLeft = duration; //How much time is remaining.
 
 		switch (msgCounter) {
-		case 1:
-			timeLeft -= 10;
-		case 2:
-			timeLeft -= 15;
-		case 3:
+			case 0: { // Disconnect!!!
+				sendSystemMessage("logout", "safe_to_log_out"); //You may now logout safely.
 
-			StfParameter* stfp = new StfParameter();
-			stfp->addDI(timeLeft);
-			sendSystemMessage("logout", "time_left", stfp); //You have %DI seconds before you may logout safely.
-			delete stfp;
+				info("Safe Logout");
 
-			server->addEvent(logoutEvent, multiplier * msgCounter * 1000);
-			break;
-		case 0:  // Disconnect!!!
-			sendSystemMessage("logout", "safe_to_log_out"); //You may now logout safely.
+				setLoggingOut();
 
-			info("Safe Logout");
+				ClientLogout * packet = new ClientLogout();
+				sendMessage(packet);
 
-			setLoggingOut();
+				delete logoutEvent;
+				logoutEvent = NULL;
+				break;
+			}
+			case 1:
+				timeLeft -= 10;
+			case 2:
+				timeLeft -= 15;
+			case 3: {
 
-			ClientLogout* packet = new ClientLogout();
-			sendMessage(packet);
+				StfParameter* stfp = new StfParameter();
+				stfp->addDI(timeLeft);
+				sendSystemMessage("logout", "time_left", stfp); //You have %DI seconds before you may logout safely.
+				delete stfp;
 
-			delete logoutEvent;
-			logoutEvent = NULL;
-			break;
+				server->addEvent(logoutEvent, multiplier * msgCounter * 1000);
+				break;
+			}
 		}
 	} else {
 		if (logoutEvent != NULL) { // we better dont delete the event from where

@@ -3574,33 +3574,60 @@ void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {
 void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 		Message* pack) {
 	uint64 target = pack->parseLong();
+	unicode data;
+	pack->parseUnicode(data);
 
-	SceneObject* object = player->getPlayerItem(target);
+	StringTokenizer tokenizer(data.c_str());
+	tokenizer.setDelimeter(" ");
 
-	if (object != NULL) {
+	uint64 destinationID = tokenizer.getLongToken();
+	int unknown = tokenizer.getIntToken(); // I've seen -1 usually.. 4 when equipping most clothes
+	float x = tokenizer.getFloatToken();
+	float z = tokenizer.getFloatToken();
+	float y = tokenizer.getFloatToken();
+
+	if (destinationID == player->getObjectID())  { //equip item to player
 		player->changeCloth(target);
-		return;
-	}
+	} else if (destinationID == player->getObjectID() + 1) { //player's inventory object id, evidentaly (This one probably will need to be expanded
 
-	SceneObject* targetObject = player->getTarget();
-
-	if (targetObject != NULL && targetObject != player
-			&& targetObject->isNonPlayerCreature()) {
-		Creature* creature = (Creature*) targetObject;
-
-		try {
-			creature->wlock(player);
-
-			object = creature->getLootItem(target);
-
-			creature->unlock();
-		} catch (...) {
-			creature->unlock();
+		if (player->getInventoryItem(target) != NULL) {
+			//Means player already has this item, so it must be equipped
+			//or most likely in another container, so when we add bags to inventory, we need
+			//to change this.
+			player->changeCloth(target);
+			return;
 		}
 
-		if (object != NULL)
-			player->lootObject(creature, object);
+		SceneObject* targetObject = player->getTarget();
+
+		if (targetObject != NULL && targetObject != player
+				&& targetObject->isNonPlayerCreature()) {
+			Creature* creature = (Creature*) targetObject;
+			SceneObject * object;
+
+			try {
+				creature->wlock(player);
+
+				object = creature->getLootItem(target);
+
+				creature->unlock();
+			} catch (...) {
+				creature->unlock();
+			}
+
+			if (object != NULL)
+				player->lootObject(creature, object);
+		}
+	} else { //another container
+		/*
+		 * This is where we'd have to handle transfering items to one container to another.. like a cell
+		 * We might be able to write one generic function that handles, looting, equipping, dropping ect..
+		 * At least this fixes the bug for now.
+		 *
+		 * Don't forget to use the x y z coordinates!
+		 */
 	}
+
 }
 void ObjectControllerMessage::parseAddFriend(Player* player, Message* pack) {
 	//ToDO: Split the token based on dots for game (SWG), server (eg. sunrunner) and name (SWG.sunrunner.john)
