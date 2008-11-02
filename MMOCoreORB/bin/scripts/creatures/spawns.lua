@@ -60,6 +60,7 @@ end
 --Dantooine
 if (PLANET_ID == 1) then
  RunCreatureFile("spawns/dantooine/staticSpawns.lua")
+RunCreatureFile("spawns/dantooine/jediSpawns.lua") 
  RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
  RunCreatureFile("spawns/dantooine/jantaCave.lua")
  RunCreatureFile("spawns/dantooine/kungaCave.lua")

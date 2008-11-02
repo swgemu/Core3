@@ -52,7 +52,7 @@ tuskenSniper = Creature:new {
       named = FALSE, 
 
       level = 75,
-      
+      xp = 2219,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -83,14 +83,14 @@ tuskenSniper = Creature:new {
       acid = -1,
       lightsaber = 0,
 
-      accuracy = 300,
+      accuracy = 370,
 
       healer = 0,
 
       pack = 1,
       herd = 0,
       stalker = 1,
-      killer = 1,
+      killer = 0,
       aggressive = 1,
       invincible = 0, 
 
@@ -104,10 +104,10 @@ tuskenSniper = Creature:new {
       weaponTemp = "rifle_tusken", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 175,
-      weaponMaxDamage = 200,
-      weaponAttackSpeed = 2.5,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+      weaponMinDamage = 350,
+      weaponMaxDamage = 500,
+      weaponAttackSpeed = 1.6,
+      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
@@ -123,7 +123,7 @@ tuskenSniper = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,23,25,27,33,39,40", -- Group it belongs to for loot
+      lootGroup = "0,3,11,15,23,24,33", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,7 @@ tuskenSniper = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3" },
+      skills = { "tuskenRangedAttack1", "tuskenRangedAttack2", "tuskenRangedAttack3", "tuskenRangedAttack4" },
       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object

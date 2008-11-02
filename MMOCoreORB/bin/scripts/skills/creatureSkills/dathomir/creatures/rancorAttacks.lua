@@ -68,8 +68,8 @@ rancorAttack1 = {
 	CbtSpamHit = "attack_hit",
 	CbtSpamMiss = "attack_miss",
 }
-
 AddRandomPoolAttackTargetSkill(rancorAttack1)
+
 rancorAttack2 = {
 	attackname = "rancorAttack2",
 	animation = "creature_attack_light",

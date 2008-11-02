@@ -123,7 +123,7 @@ sennexGuard = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,39", -- Group it belongs to for lootr loot
+      lootGroup = "0,11,15,19,33,39", -- Group it belongs to for lootr lootootr loot
 
       tame = 0,  -- Likely hood to be tamed
 

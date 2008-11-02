@@ -90,7 +90,7 @@ darkJediMaster = Creature:new {
       pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 0,
       invincible = 0, 
 
@@ -123,7 +123,7 @@ darkJediMaster = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for lootelongs to for loot
+      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for lootelongs to for lootootelongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

@@ -42,27 +42,16 @@
 
 --global clusters
 
---Mining outpost
-spawnCreature(moDarkJediMaster, 1, -741, 2102)
+spawnCreatures(bol, 1, 0, 0, 8000, 700)
+spawnCreatures(piket, 1, 0, 0, 8000, 700)
+spawnCreatures(huurton, 1, 0, 0, 8000, 700)
+spawnCreatures(thune, 1, 0, 0, 8000, 700)
+spawnCreatures(quenker, 1, 0, 0, 8000, 700)
+spawnCreatures(graul, 1, 0, 0, 8000, 700)
 
---Random
-spawnCreatures(darkJediMaster, 1, 886, 4387, 5000, 1)
-spawnCreatures(darkJediKnight, 1, 1750, 4154, 5000, 1)
-spawnCreatures(darkJediMaster, 1, 2894, 3384, 5000, 1)
-spawnCreatures(darkJediKnight, 1, 1423, 3430, 5000, 1)
-spawnCreatures(darkJediMaster, 1, -1050, 4037, 5000, 1)
-spawnCreatures(darkJediKnight, 1, -2987, 5157, 5000, 1)
-spawnCreatures(darkJediMaster, 1, -2777, 3804, 5000, 1)
-spawnCreatures(darkJediKnight, 1, -554, 2021, 5000, 1)
-spawnCreatures(darkJediMaster, 1, 5718, 3967, 5000, 1)
-spawnCreatures(darkJediKnight, 1, -723, 6021, 5000, 1)
-spawnCreatures(darkJediMaster, 1, -6044, 3407, 5000, 1)
-spawnCreatures(darkJediKnight, 1, -5274, 4994, 5000, 1)
-spawnCreatures(darkJediMaster, 1, -3967, 3594, 5000, 1)
-spawnCreatures(darkJediKnight, 1, 5157, 3384, 5000, 1)
-spawnCreatures(darkJediMaster, 1, 2800, -2403, 5000, 1)
-spawnCreatures(darkJediKnight, 1, -4831, -3360, 5000, 1)
-spawnCreatures(darkJediMaster, 1, -1517, -6021, 5000, 1)
-spawnCreatures(darkJediKnight, 1, 4574, -6908, 5000, 1)
-spawnCreatures(darkJediMaster, 1, 3920, -6815, 5000, 1)
-spawnCreatures(darkJediKnight, 1, 5064, 1213, 5000, 1)
+spawnCreatures(graulMarauder, 1, 0, 0, 3000, 2)
+spawnCreatures(graulMarauder, 1, 5000, -5000, 3000, 2)
+
+
+
+

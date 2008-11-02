@@ -63,6 +63,9 @@ RunCreatureFile("objects/tatooine/npcs/jawa/jawaThief.lua")
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWarlord.lua")
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWarMaster.lua")
  RunCreatureFile("objects/tatooine/npcs/tusken/tuskenWitchDoctor.lua") 
+
+--Random Executioner
+ RunCreatureFile("objects/tatooine/npcs/tusken/tuskenExecutionerRandom.lua")
  
  --Hutt Hideout
  RunCreatureFile("objects/tatooine/npcs/jabba/jabbaEnforcer.lua")

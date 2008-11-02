@@ -1514,28 +1514,6 @@ mosEisleyNpc67 = Creature:new {
 	cellID = 0
 }
 
-mosEisleyNpc68 = Creature:new {
-	objectName = "mosEisleyNpc68",
-	creatureType = NPC,
-
-	speciesName = "lt_harburik",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 1571582723,
-	positionX = 3485.35,
-	positionY = -4740.37,
-	positionZ = 4.93096,
-
-	directionX = -0.065004,
-	directionZ = -0.00652826,
-	directionY = 0.885103,
-	directionW = -0.460787,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEisleyNpc69 = Creature:new {
 	objectName = "mosEisleyNpc69",
 	creatureType = NPC,

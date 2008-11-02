@@ -52,7 +52,7 @@ tuskenWarlord = Creature:new {
       named = FALSE, 
 
       level = 85,
-      
+      xp = 6013,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -83,7 +83,7 @@ tuskenWarlord = Creature:new {
       acid = -1,
       lightsaber = 0,
 
-      accuracy = 300,
+      accuracy = 370,
 
       healer = 0,
 
@@ -104,11 +104,11 @@ tuskenWarlord = Creature:new {
       weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 175,
-      weaponMaxDamage = 200,
-      weaponAttackSpeed = 1.5,
+      weaponMinDamage = 275,
+      weaponMaxDamage = 480,
+      weaponAttackSpeed = 1.55,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -123,8 +123,7 @@ tuskenWarlord = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,23,27,33,39,40", -- Group it belongs to for lootr lootr lootr lootr lootr loot
-
+      lootGroup = "0,2,3,11,15,23,24,33,99", -- Group it belongs to for loot
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
@@ -138,7 +137,7 @@ tuskenWarlord = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51" },
+      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44",  "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack50" },
       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object

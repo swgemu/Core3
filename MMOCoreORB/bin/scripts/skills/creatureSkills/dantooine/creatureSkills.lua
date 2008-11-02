@@ -45,6 +45,7 @@
 -- Dantooine
 RunSkillsFile("creatureSkills/dantooine/creatures/bolAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/graulAttacks.lua")
+RunSkillsFile("creatureSkills/dantooine/creatures/graulMarauderAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/huurtonAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/picketAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/quenkerAttacks.lua")

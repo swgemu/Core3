@@ -52,38 +52,38 @@ tuskenExecutioner = Creature:new {
       named = FALSE, 
 
       level = 263,
-      
+      xp = 25167,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 320000,
-      healthMin = 261000,
-      strength = 500,
-      constitution = 500,
+      healthMin = 270000,
+      strength = 50000,
+      constitution = 50000,
 
       actionMax = 320000,
-      actionMin = 261000,
-      quickness = 500,
-      stamina = 500,
+      actionMin = 270000,
+      quickness = 50000,
+      stamina = 50000,
 
       mindMax = 320000,
-      mindMin = 261000,
-      focus = 500,
-      willpower = 500,
+      mindMin = 270000,
+      focus = 50000,
+      willpower = 50000,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 85,
       energy = 80,
       electricity = 30,
       stun = 80,
-      blast = 35,
+      blast = 45,
       heat = 100,
       cold = 0,
       acid = 45,
       lightsaber = 0,
 
-      accuracy = 300,
+      accuracy = 450,
 
       healer = 0,
 
@@ -94,8 +94,10 @@ tuskenExecutioner = Creature:new {
       aggressive = 1,
       invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	  
+      meleeDefense = 1,  
+	  
+      rangedDefense = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
@@ -104,11 +106,11 @@ tuskenExecutioner = Creature:new {
       weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 175,
-      weaponMaxDamage = 200,
-      weaponAttackSpeed = 1.5,
+      weaponMinDamage = 1200,
+      weaponMaxDamage = 3350,
+      weaponAttackSpeed = 1.6,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -123,7 +125,7 @@ tuskenExecutioner = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,23,27,33,39,40", -- Group it belongs to for lootr lootr lootr lootr lootr loot
+      lootGroup = "0,11,15,24,25,33,99", -- Group it belongs to for loott
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,8 +140,8 @@ tuskenExecutioner = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "tuskenAttack40", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack52", "tuskenAttack53" },
-      respawnTimer = 300,
+      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43",  "tuskenAttack44", "tuskenAttack45",  "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack50", "tuskenAttack53" },
+      respawnTimer = 36000,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

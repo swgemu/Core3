@@ -46,7 +46,7 @@ tuskenBantha = Creature:new {
       faction = "tusken",
       gender = "",
 
-      name = "a Bantha",
+      stfName = "Tusken Bantha",
       objectCRC = 1901766605, 
       socialGroup = "tusken",
       named = FALSE, 
@@ -58,18 +58,18 @@ tuskenBantha = Creature:new {
 
       healthMax = 2400,
       healthMin = 2000,
-      strength = 0,
-      constitution = 0,
+      strength = 500,
+      constitution = 500,
 
       actionMax = 2400,
       actionMin = 2000,
-      quickness = 0,
-      stamina = 0,
+      quickness = 500,
+      stamina = 500,
 
       mindMax = 2400,
       mindMin = 2000,
-      focus = 0,
-      willpower = 0,
+      focus = 500,
+      willpower = 500,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy

@@ -1448,28 +1448,6 @@ kadaaraNpc64 = Creature:new {
 	cellID = 0
 }
 
-kadaaraNpc65 = Creature:new {
-	objectName = "kadaaraNpc65",
-	creatureType = NPC,
-
-	speciesName = "huff_zinga",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 702008669,
-	positionX = 5156.44,
-	positionY = 6634.54,
-	positionZ = -192,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0785667,
-	directionW = 0.996909,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 kadaaraNpc66 = Creature:new {
 	objectName = "kadaaraNpc66",
 	creatureType = NPC,
