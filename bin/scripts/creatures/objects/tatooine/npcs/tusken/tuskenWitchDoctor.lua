@@ -52,29 +52,29 @@ tuskenWitchDoctor = Creature:new {
       named = FALSE, 
 
       level = 202,
-      
+      xp = 19201,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 195000,
       healthMin = 160000,
-      strength = 500,
-      constitution = 500,
+      strength = 20000,
+      constitution = 20000,
 
       actionMax = 195000,
       actionMin = 160000,
-      quickness = 500,
-      stamina = 500,
+      quickness = 20000,
+      stamina = 20000,
 
       mindMax = 195000,
       mindMin = 160000,
-      focus = 500,
-      willpower = 500,
+      focus = 20000,
+      willpower = 20000,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 65,
-      energy = 95,
+      energy = 85,
       electricity = 30,
       stun = 80,
       blast = 35,
@@ -83,9 +83,9 @@ tuskenWitchDoctor = Creature:new {
       acid = 45,
       lightsaber = 0,
 
-      accuracy = 300,
+      accuracy = 420,
 
-      healer = 1,
+      healer = 0,
 
       pack = 1,
       herd = 0,
@@ -94,8 +94,10 @@ tuskenWitchDoctor = Creature:new {
       aggressive = 1,
       invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	  
+      meleeDefense = 1,  
+	  
+      rangedDefense = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
@@ -104,11 +106,11 @@ tuskenWitchDoctor = Creature:new {
       weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 175,
-      weaponMaxDamage = 200,
-      weaponAttackSpeed = 1.5,
+      weaponMinDamage = 850,
+      weaponMaxDamage = 1800,
+      weaponAttackSpeed = 1.6,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -123,8 +125,8 @@ tuskenWitchDoctor = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,23,27,33,39,40", -- Group it belongs to for lootr lootr lootr loot
-
+      lootGroup = "11,15,19,24,25,33,99", -- Group it belongs to for loot
+      
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
@@ -138,8 +140,8 @@ tuskenWitchDoctor = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51" },
-      respawnTimer = 300,
+      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44",  "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack50" },
+      respawnTimer = 1800,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

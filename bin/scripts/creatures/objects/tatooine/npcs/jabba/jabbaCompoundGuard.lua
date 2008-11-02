@@ -123,7 +123,7 @@ jabbaCompoundGuard = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,39", -- Group it belongs to for lootr loot
+      lootGroup = "0,11,15,19,33,39", -- Group it belongs to for lootr loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,7 @@ jabbaCompoundGuard = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51" },
+      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack45",  "tuskenAttack46", "tuskenAttack49", "tuskenAttack50" },
       respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object

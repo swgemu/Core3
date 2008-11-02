@@ -91,7 +91,7 @@ palpatine = Creature:new {
       pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 0,
       invincible = 0, 
 
@@ -105,8 +105,8 @@ palpatine = Creature:new {
       weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 0,
-      weaponMinDamage = 1000,
-      weaponMaxDamage = 1500,
+      weaponMinDamage = 850,
+      weaponMaxDamage = 1200,
       weaponAttackSpeed = 2,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -124,7 +124,7 @@ palpatine = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for lootelongs to for loot
+      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for lootelongs to for lootootelongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

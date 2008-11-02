@@ -45,5 +45,6 @@
 
 RunSkillsFile("creatureSkills/tatooine/npcs/sennexAttacks.lua")
 RunSkillsFile("creatureSkills/tatooine/npcs/tuskenAttacks.lua")
+RunSkillsFile("creatureSkills/tatooine/npcs/tuskenRangedAttacks.lua")
 RunSkillsFile("creatureSkills/tatooine/npcs/jabbaAttacks.lua")
 RunSkillsFile("creatureSkills/tatooine/npcs/jawaAttacks.lua")

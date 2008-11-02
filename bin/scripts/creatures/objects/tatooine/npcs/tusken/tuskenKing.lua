@@ -52,38 +52,38 @@ tuskenKing = Creature:new {
       named = FALSE, 
 
       level = 100,
-      
+      xp = 9522,
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 30000,
       healthMin = 24000,
-      strength = 500,
-      constitution = 500,
+      strength = 5000,
+      constitution = 5000,
 
       actionMax = 30000,
       actionMin = 24000,
-      quickness = 500,
-      stamina = 500,
+      quickness = 5000,
+      stamina = 5000,
 
       mindMax = 30000,
       mindMin = 24000,
-      focus = 500,
-      willpower = 500,
+      focus = 5000,
+      willpower = 5000,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
+      kinetic = 45,
+      energy = 30,
       electricity = 50,
       stun = 0,
-      blast = 0,
-      heat = 50,
-      cold = -1,
-      acid = -1,
+      blast = 20,
+      heat = 80,
+      cold = 0,
+      acid = 45,
       lightsaber = 0,
 
-      accuracy = 300,
+      accuracy = 370,
 
       healer = 0,
 
@@ -104,11 +104,11 @@ tuskenKing = Creature:new {
       weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 175,
-      weaponMaxDamage = 200,
-      weaponAttackSpeed = 1.5,
+      weaponMinDamage = 350,
+      weaponMaxDamage = 675,
+      weaponAttackSpeed = 1.55,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -123,7 +123,7 @@ tuskenKing = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,23,27,33,39,40", -- Group it belongs to for lootr lootr lootr lootr lootr loot
+      lootGroup = "3,11,15,23,24,33,99", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,7 @@ tuskenKing = Creature:new {
       meatType = "",
       meatMax = 0,
 
-      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack48", "tuskenAttack49", "tuskenAttack50", "tuskenAttack51" },
+      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43",  "tuskenAttack44", "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack50" },
       respawnTimer = 300 ,
 
       behaviorScript = "", -- Link to the behavior script for this object

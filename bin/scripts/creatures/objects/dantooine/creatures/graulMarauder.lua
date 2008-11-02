@@ -46,33 +46,32 @@ graulMarauder = Creature:new {
       faction = "Graul",
       gender = "",
 
-      name = "a Graul Marauder",
-      objectCRC = 3456488947, 
+      stfName = "a Graul Marauder",
+      objectCRC = 4126395623, 
       socialGroup = "Graul",
       named = FALSE, 
 
-      level = 173,
-      
+      level = 173,      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 125000,
       healthMin = 102000,
-      strength = 0,
-      constitution = 0,
+      strength = 10000,
+      constitution = 10000,
 
       actionMax = 125000,
       actionMin = 102000,
-      quickness = 0,
-      stamina = 0,
+      quickness = 10000,
+      stamina = 10000,
 
       mindMax = 125000,
       mindMin = 102000,
-      focus = 0,
-      willpower = 0,
+      focus = 10000,
+      willpower = 10000,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      height = 2.5, -- Size of creature
+      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 75,
       energy = 55,
       electricity = 55,
@@ -83,7 +82,7 @@ graulMarauder = Creature:new {
       acid = 55,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 200,
 
       healer = 0,
 
@@ -99,16 +98,16 @@ graulMarauder = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Creature Weapon", -- Name ex. 'a Vibrolance'
+      weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponMinDamage = 350,
+      weaponMaxDamage = 600,
+      weaponAttackSpeed = 1,
+      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -138,10 +137,11 @@ graulMarauder = Creature:new {
       meatType = "meat_carnivore_dantooine",
       meatMax = 1100,
 
-      skills = { " Area attack (bleeds)", " Stun attack", "" }
-      respawnTimer = 60,
+      skills = { "graulMarauderAttack1", "graulMarauderAttack2" },
+	  -- skills = { " Area attack (bleeds)", " Stun attack", "" }
+      respawnTimer = 3600,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(graulMarauder, 3456488947) --  Add to Global Table
+Creatures:addCreature(graulMarauder, 4126395623) --  Add to Global Table

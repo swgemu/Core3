@@ -91,7 +91,7 @@ luke = Creature:new {
       pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 0,
       invincible = 0, 
 
@@ -109,7 +109,7 @@ luke = Creature:new {
       weaponMaxDamage = 850,
       weaponAttackSpeed = 1.0,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -124,7 +124,7 @@ luke = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for loott belongs to for loot
+      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for lootelongs to for lootoott belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

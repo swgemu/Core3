@@ -52,5 +52,3 @@ spawnCreatures(jawaLeader, 8, 5739, 4016, 50, 5, 180)
 spawnCreatures(jawaProtector, 8, 5768, 4016, 50, 5, 180)
 spawnCreatures(jawaSmuggler, 8, 5732, 4016, 50, 5, 180)
 spawnCreatures(jawaThief, 8, 5780, 4016, 50, 5, 180)
-
-spawnCreatures(tuskenBantha, 8, -3965, 6380, 50, 10, 180)

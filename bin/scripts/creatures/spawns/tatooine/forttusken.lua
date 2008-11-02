@@ -40,9 +40,11 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+-- Random Observer
+spawnCreatures(tuskenObserver, 8, -3951, 6245, 750, 1)
+
 -- Fort
 spawnCreatureInCell(tuskenWitchDoctor, 8, -4.5, 37.9, -3.3, 1189188)
-spawnCreatureInCell(tuskenObserver, 8, -1.6, 43.7, -4.0, 1189188)
 spawnCreatureInCell(tuskenWarlord, 8, -6.2, 42.3, -0.7, 1189188)
 spawnCreatureInCell(tuskenEliteGuard, 8, 27.4, 37.0, 0.1, 1189194)
 spawnCreatureInCell(tuskenSniper, 8, 15.3, 37.9, -1.3, 1189195)
@@ -63,7 +65,6 @@ spawnCreatureInCell(tuskenWitchDoctor, 8, 27.7, 44.0, -28.9, 1189193)
 spawnCreatureInCell(tuskenKing, 8, 24.3, 37.0, 4.0, 1189194)
 spawnCreatureInCell(tuskenEliteGuard, 8, 20.5, 37.0, 0.1, 1189194)
 
-
 spawnCreature(tuskenSniper, 8, -3983, 6251, 200)
 spawnCreature(tuskenEliteGuard, 8, -3971, 6248, 200)
 spawnCreature(tuskenSniper, 8, -3951, 6245, 200)
@@ -71,7 +72,6 @@ spawnCreature(tuskenEliteGuard, 8, -3962, 6282, 200)
 spawnCreature(tuskenSniper, 8, -3997, 6288, 200)
 spawnCreature(tuskenEliteGuard, 8, -4011, 6244, 200)
 spawnCreature(tuskenSniper, 8, -3977, 6264, 200)
-
 
 -- Beneath Tusken
 
@@ -97,9 +97,9 @@ spawnCreatureInCell(tuskenEliteGuard, 8, 1.4, 8.3, -33.4, 1189178)
 spawnCreatureInCell(tuskenExecutioner, 8, 10.8, 8.0, -37.4, 1189178)
 spawnCreatureInCell(tuskenKing, 8, 1.1, 8.1, -19.0, 1189178)
 spawnCreatureInCell(tuskenWarlord, 8, -16.2, 6.1, -16.4, 1189177)
-spawnCreatureInCell(tuskenObserver, 8, -29.7, 3.2, 4.3, 1189176)
 spawnCreatureInCell(tuskenWarlord, 8, -24.7, 3.3, 5.7, 1189176)
-spawnCreatureInCell(tuskenObserver, 8, -20.1, 4.2, 12.7, 1189176)
 spawnCreatureInCell(tuskenWarlord, 8, -13.9, 2.9, 9.2, 1189176)
-spawnCreatureInCell(tuskenWarlord, 8, -75, 2.0, -6.5, 1189175)
+spawnCreatureInCell(tuskenWarlord, 8, -8.8, 1.7, -3.4, 1189175)
 spawnCreatureInCell(tuskenKing, 8, 0.8, 1.7, -6.3, 1189175)
+
+spawnCreatures(tuskenBantha, 8, -3965, 6380, 50, 250, 180)
