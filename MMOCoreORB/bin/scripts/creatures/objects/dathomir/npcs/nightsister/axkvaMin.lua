@@ -123,7 +123,7 @@ axkvaMin = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,19,21,29,30,31,33,39,40", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,30,33,37,39,40,51,52,53,54,55,56,57,58,59,60", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

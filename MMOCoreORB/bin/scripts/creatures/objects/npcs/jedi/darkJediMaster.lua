@@ -123,7 +123,7 @@ darkJediMaster = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for lootelongs to for lootootelongs to for loot
+      lootGroup = "0,11,15,19,33,39,40,100", -- Group it belongs to for lootelongs to for lootootelongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -139,7 +139,7 @@ darkJediMaster = Creature:new {
       meatMax = 0,
 
       skills = { "polearmJediAttack1", "polearmJediAttack2", "polearmJediAttack3", "polearmJediAttack4", "polearmJediAttack5", "polearmJediAttack6", "polearmJediAttack7", "polearmJediAttack8", "polearmJediAttack9", "polearmJediAttack10", "polearmJediAttack11", "polearmJediAttack12", "polearmJediAttack13", "polearmJediAttack14", "polearmJediAttack15", "polearmJediAttack16" },
-      respawnTimer = 3600,
+      respawnTimer = 7200,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

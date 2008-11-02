@@ -123,7 +123,7 @@ blackSunHenchmanDWB = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,49,50", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33,49,50,102", -- Group it belongs to for lootoot
 
       tame = 0,  -- Likely hood to be tamed
 
