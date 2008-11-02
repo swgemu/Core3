@@ -123,7 +123,7 @@ darkJediKnight = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for lootelongs to for lootootelongs to for loot
+      lootGroup = "0,11,15,19,33,39,40,100", -- Group it belongs to for lootelongs to for lootootelongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -139,7 +139,7 @@ darkJediKnight = Creature:new {
       meatMax = 0,
 
       skills = { "twoHandedJediAttack1", "twoHandedJediAttack4", "twoHandedJediAttack5", "twoHandedJediAttack6", "twoHandedJediAttack7", "twoHandedJediAttack2", "twoHandedJediAttack8", "twoHandedJediAttack9", "twoHandedJediAttack10", "twoHandedJediAttack11", "twoHandedJediAttack12", "twoHandedJediAttack3", "twoHandedJediAttack13", "twoHandedJediAttack14", "twoHandedJediAttack15", "twoHandedJediAttack16" },
-      respawnTimer = 3600,
+      respawnTimer = 7200,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
