@@ -57,7 +57,7 @@ public:
 
 	void generateSUI(Player* player, SuiListBox* sui);
 
-	bool giveResource(Player* player, string& resourceName, int amount);
+	bool useResourceDeed(Player* player, string& resourceName, int resourceQuantity);
 
 	bool containsResource(string& resourceName);
 
@@ -109,7 +109,7 @@ public:
 
 	void generateSUI(Player* player, SuiListBox* sui);
 
-	bool giveResource(Player* player, string& resourceName, int amount);
+	bool useResourceDeed(Player* player, string& resourceName, int resourceQuantity);
 
 	bool containsResource(string& resourceName);
 
@@ -122,7 +122,7 @@ protected:
 	string _param0_getResourceContainerName__string_string_;
 	string _param1_getResourceContainerName__string_string_;
 	string _param0_printResource__string_;
-	string _param1_giveResource__Player_string_int_;
+	string _param1_useResourceDeed__Player_string_int_;
 	string _param0_containsResource__string_;
 };
 

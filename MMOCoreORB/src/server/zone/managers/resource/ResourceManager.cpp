@@ -245,7 +245,7 @@ void ResourceManager::generateSUI(Player* player, SuiListBox* sui) {
 		((ResourceManagerImplementation*) _impl)->generateSUI(player, sui);
 }
 
-bool ResourceManager::giveResource(Player* player, string& resourceName, int amount) {
+bool ResourceManager::useResourceDeed(Player* player, string& resourceName, int resourceQuantity) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -253,11 +253,11 @@ bool ResourceManager::giveResource(Player* player, string& resourceName, int amo
 		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(resourceName);
-		method.addSignedIntParameter(amount);
+		method.addSignedIntParameter(resourceQuantity);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((ResourceManagerImplementation*) _impl)->giveResource(player, resourceName, amount);
+		return ((ResourceManagerImplementation*) _impl)->useResourceDeed(player, resourceName, resourceQuantity);
 }
 
 bool ResourceManager::containsResource(string& resourceName) {
@@ -330,7 +330,7 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		generateSUI((Player*) inv->getObjectParameter(), (SuiListBox*) inv->getObjectParameter());
 		break;
 	case 21:
-		resp->insertBoolean(giveResource((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_giveResource__Player_string_int_), inv->getSignedIntParameter()));
+		resp->insertBoolean(useResourceDeed((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_useResourceDeed__Player_string_int_), inv->getSignedIntParameter()));
 		break;
 	case 22:
 		resp->insertBoolean(containsResource(inv->getAsciiParameter(_param0_containsResource__string_)));
@@ -402,8 +402,8 @@ void ResourceManagerAdapter::generateSUI(Player* player, SuiListBox* sui) {
 	return ((ResourceManagerImplementation*) impl)->generateSUI(player, sui);
 }
 
-bool ResourceManagerAdapter::giveResource(Player* player, string& resourceName, int amount) {
-	return ((ResourceManagerImplementation*) impl)->giveResource(player, resourceName, amount);
+bool ResourceManagerAdapter::useResourceDeed(Player* player, string& resourceName, int resourceQuantity) {
+	return ((ResourceManagerImplementation*) impl)->useResourceDeed(player, resourceName, resourceQuantity);
 }
 
 bool ResourceManagerAdapter::containsResource(string& resourceName) {

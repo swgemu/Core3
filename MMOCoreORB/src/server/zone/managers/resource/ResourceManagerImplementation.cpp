@@ -510,16 +510,13 @@ void ResourceManagerImplementation::sendSampleMessage(Player* player,
 				ChatSystemMessage* sysMessage = new ChatSystemMessage("survey", "sample_located", resourceName, resQuantity, false);
 				player->sendMessage(sysMessage);
 
-				bool makeNewResource = true;
+				ResourceContainer* newRcno = createNewResourceContainer(player, resourceName, resQuantity);
 
-				ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
-
-				newRcno->setResourceName(resourceName);
-
-				newRcno->setContents(resQuantity);
-
-				setResourceData(newRcno, false);
-
+				if ( newRcno == NULL ) {
+					unlock(doLock);
+					return;
+				}
+				
 				if (newRcno->getObjectSubType() == TangibleObjectImplementation::ENERGYRADIOACTIVE) {
 					int wound = int((sampleRate / 70) - System::random(9));
 
@@ -808,35 +805,23 @@ void ResourceManagerImplementation::generateSUI(Player* player, SuiListBox* sui)
 	}
 }
 
-bool ResourceManagerImplementation::giveResource(Player* player, string& resourceName, int amount){
+bool ResourceManagerImplementation::useResourceDeed(Player* player, string& resourceName, int resourceQuantity) {
 	Inventory* inventory = player->getInventory();
-
-	if (inventory->getUnequippedItemCount() + 1
-			>= InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
-
+	
+	if (inventory->getUnequippedItemCount() + 1 > InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
 		player->sendSystemMessage("You don't have enough space in your inventory");
-		return true;
-	}
-
-	if(!resourceMap->contains(resourceName)){
-		player->sendSystemMessage("No such resource.");
 		return false;
 	}
-	ResourceTemplate* resTemp = resourceMap->get(resourceName);
-	//ResourceTemplate* resTemp = resourceTree->getResource(choicesList);
-	ResourceContainer* resource = new ResourceContainer(player->getNewItemID());
-	resource->setResourceName(resTemp->getName());
-	resource->setContents(amount);
-	setResourceData(resource);
-	player->addInventoryItem(resource);
-
-
-	resource->sendTo(player);
+	
+	ResourceContainer* newRcno = createNewResourceContainer(player, resourceName, resourceQuantity);
+	
+	if ( newRcno == NULL ) {
+		return false;
+	}
+	
+	player->addInventoryItem(newRcno);
+	newRcno->sendTo(player);
 	return true;
-}
-
-bool ResourceManagerImplementation::containsResource(string& resourceName){
-	return resourceMap->contains(resourceName);
 }
 
 string ResourceManagerImplementation::getCurrentNameFromType(string type){
@@ -852,6 +837,24 @@ string ResourceManagerImplementation::getCurrentNameFromType(string type){
 	}
 
 	return "";
+}
+
+ResourceContainer* ResourceManagerImplementation::createNewResourceContainer(CreatureObject* creature, string& resourceName, int resourceQuantity) {
+	if ( !containsResource(resourceName) ) {
+		info("Attempt to create invalid resource.");
+		return NULL;
+	}
+	
+	ResourceContainer* newRcno = new ResourceContainer(creature->getNewItemID());
+	newRcno->setResourceName(resourceName);
+	newRcno->setContents(resourceQuantity);
+	setResourceData(newRcno, false);
+	
+	return newRcno;
+}
+
+bool ResourceManagerImplementation::containsResource(string& resourceName) {
+	return resourceMap->contains(resourceName);
 }
 
 void ResourceManagerImplementation::setResourceData(ResourceContainer* resContainer, bool doLock) {
