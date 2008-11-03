@@ -2702,7 +2702,7 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 
 	if (makeNewResource) {
 		// NOTE: Figure out how to get max inventory size...
-		if (inventory->getObjectCount() >= 80) {
+		if (inventory->getUnequippedItemCount() + 1 > InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
 			ChatSystemMessage* sysMessage =
 					new ChatSystemMessage("survey", "no_inv_spc");
 			player->sendMessage(sysMessage);

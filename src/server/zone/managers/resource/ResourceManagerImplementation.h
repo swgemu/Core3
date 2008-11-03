@@ -129,7 +129,9 @@ public:
 
 	void sendSurveyMessage(Player* player, string& resourceName, bool doLock = true);
 	void sendSampleMessage(Player* player, string& resourceName, bool doLock = true);
-
+	
+	bool useResourceDeed(Player* player, string& resourceName, int resourceQuantity);
+	
 	void setResourceData(ResourceContainer* resContainer, bool doLock = true);
 
 	bool sendSurveyResources(Player* player, int SurveyToolType, bool doLock = true);
@@ -149,8 +151,6 @@ public:
 
 	void generateSUI(Player* player, SuiListBox* sui);
 
-	bool giveResource(Player* player, string& resourceName, int amount);
-
 	bool containsResource(string& resourceName);
 
 private:
@@ -165,6 +165,8 @@ private:
 
 	void countResources();
 
+	ResourceContainer* createNewResourceContainer(CreatureObject* creature, string& resourceName, int resourceQuantity);
+	
 	void buildResourceMap();
 
 	void checkMinimumPool();

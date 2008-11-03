@@ -1380,7 +1380,7 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 			SuiListBox* listBox = (SuiListBox*)sui;
 			if(cancel!=1){//give the resources to the player then remove all listboxes
 				SuiListBoxVector* choicesList = player->getSuiBoxChoices();
-				resManager->giveResource(player, choicesList->get(choicesList->size()-1), ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
+				resManager->useResourceDeed(player, choicesList->get(choicesList->size()-1), ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
 				player->clearSuiBoxChoices();
 				player->sendSystemMessage("You received 30k of resources.");
 
