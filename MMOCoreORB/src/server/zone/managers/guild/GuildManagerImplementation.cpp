@@ -3162,12 +3162,12 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 				if (obj->isPlayer()) {
 					otherPlayer = (Player*) obj;
 
-					otherPlayer->wlock();
+
 
 					otherName = otherPlayer->getFirstName();
 					String::toLower(otherName);
 
-					otherPlayer->unlock();
+
 
 					if (otherName != name && otherName == proband && (player->isInRange(otherPlayer, 8))) {
 						newLeaderName = otherName;
@@ -3180,7 +3180,7 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 		}
 
 	} catch (...) {
-		otherPlayer->unlock();
+
 		zone->unlock();
 
 		return "";
