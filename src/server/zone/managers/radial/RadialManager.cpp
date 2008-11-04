@@ -110,8 +110,6 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 }
 
 void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
-	SceneObject* obj = NULL;
-
 	try {
 		player->wlock();
 
@@ -126,7 +124,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		}
 
 		//cout << "Radial ID = " << dec << radialID << endl;
-		obj = zone->lookupObject(objectID);
+		SceneObject* obj = zone->lookupObject(objectID);
 
 		//TODO: Get a bazaar object to pass to the next functions
 		BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();

@@ -1188,10 +1188,10 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 
 	bool insert = false;
 
-	if (zone->getZoneID() == 8) {
+	/*if (zone->getZoneID() == 8) {
 		float height = zone->getHeight(positionX, positionY);
 		cout << "(" << positionX << "," << height << "," << positionY << "\n";
-	}
+	}*/
 
 	if (isMounted())
 		updateMountPosition();
@@ -2159,6 +2159,9 @@ void PlayerImplementation::changePosture(int post) {
 }
 
 void PlayerImplementation::activateRecovery() {
+	if (recoveryEvent == NULL)
+		recoveryEvent = new PlayerRecoveryEvent(_this);
+
 	if (!recoveryEvent->isQueued())
 		server->addEvent(recoveryEvent, 3000);
 }
