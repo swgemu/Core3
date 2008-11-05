@@ -52,8 +52,7 @@ tuskenEliteGuard = Creature:new {
       named = FALSE, 
 
       level = 44,
-      xp = 4370,
-
+      
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 11800,
@@ -125,7 +124,7 @@ tuskenEliteGuard = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,23,33", -- Group it belongs to for loott
+      lootGroup = "0,11,15,23,33", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

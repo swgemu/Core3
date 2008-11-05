@@ -123,7 +123,7 @@ majesticPlumedRasp = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -133,7 +133,7 @@ majesticPlumedRasp = Creature:new {
       boneMax = 4,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_corellia",
       meatMax = 5,

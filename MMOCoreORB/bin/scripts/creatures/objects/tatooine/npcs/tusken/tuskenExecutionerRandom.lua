@@ -52,8 +52,7 @@ tuskenExecutionerRandom = Creature:new {
       named = FALSE, 
 
       level = 283,
-      xp = 25167,
-
+      
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 320000,

@@ -123,7 +123,7 @@ warrenHuurtonHostile = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -133,10 +133,10 @@ warrenHuurtonHostile = Creature:new {
       boneMax = 15,
 
       hideType = "hide_wooly_dantooine",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "", "", "" }
       respawnTimer = 60,

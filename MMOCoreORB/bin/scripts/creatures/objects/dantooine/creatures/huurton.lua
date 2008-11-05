@@ -133,7 +133,7 @@ huurton = Creature:new {
       boneMax = 15,
 
       hideType = "hide_wooly_dantooine",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_wild_dantooine",
       meatMax = 15,

@@ -123,7 +123,7 @@ rabidSquall = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -136,7 +136,7 @@ rabidSquall = Creature:new {
       hideMax = 12,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { " Disease attack (mild)", "", "" }
       respawnTimer = 60,

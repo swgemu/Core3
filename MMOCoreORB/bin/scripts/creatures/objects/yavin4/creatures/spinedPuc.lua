@@ -130,7 +130,7 @@ spinedPuc = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_yavin4",
       hideMax = 6,

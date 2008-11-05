@@ -123,7 +123,7 @@ warrenHuurtonSavage = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -133,10 +133,10 @@ warrenHuurtonSavage = Creature:new {
       boneMax = 35,
 
       hideType = "hide_wooly_dantooine",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { " Intimidation attack", " Stun attack", "" }
       respawnTimer = 60,

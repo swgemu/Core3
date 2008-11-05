@@ -123,7 +123,7 @@ fierceBorgle = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,7 +136,7 @@ fierceBorgle = Creature:new {
       hideMax = 5,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { " Blind attack", "", "" }
       respawnTimer = 60,

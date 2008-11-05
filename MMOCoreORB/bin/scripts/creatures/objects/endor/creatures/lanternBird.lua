@@ -136,7 +136,7 @@ lanternBird = Creature:new {
       hideMax = 41,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "lanternBirdAttack1" },
        respawnTimer = 60,

@@ -130,13 +130,13 @@ gurreck = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_wooly_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "gurreckAttack1" },
 	  -- skills = { " Intimidation attack", " Posture down attack", "" },

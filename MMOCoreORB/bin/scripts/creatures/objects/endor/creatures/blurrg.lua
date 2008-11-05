@@ -130,13 +130,13 @@ blurrg = Creature:new {
       milk = 0,
 
       boneType = "bone_avian_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "blurrgAttack1" },
 	  -- skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }

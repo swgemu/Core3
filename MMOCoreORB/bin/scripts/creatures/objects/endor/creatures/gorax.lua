@@ -130,13 +130,13 @@ gorax = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "goraxAttack1", "goraxAttack2", "goraxAttack3", "goraxAttack4" },
       respawnTimer = 43200,

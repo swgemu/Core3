@@ -133,7 +133,7 @@ hornedRasp = Creature:new {
       boneMax = 1,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_rori",
       meatMax = 8,

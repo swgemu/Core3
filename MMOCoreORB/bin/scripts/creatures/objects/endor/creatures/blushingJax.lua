@@ -136,7 +136,7 @@ blushingJax = Creature:new {
       hideMax = 35,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "JaxAttack1" },
 	  -- skills = { " Blind attack", " Dizzy attack", "" }

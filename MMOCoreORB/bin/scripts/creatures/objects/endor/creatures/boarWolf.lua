@@ -130,13 +130,13 @@ boarWolf = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "boarWolfAttack1" },
 	  -- skills = { " Stun attack", "", "" },
