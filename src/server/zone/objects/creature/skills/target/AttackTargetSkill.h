@@ -298,6 +298,10 @@ public:
 	bool isCone() {
 		return false;
 	}
+	
+	bool isForce() {
+		return forceCost > 0;
+	}
 
 	inline void setDamageRatio(float ratio) {
 		damageRatio = ratio;

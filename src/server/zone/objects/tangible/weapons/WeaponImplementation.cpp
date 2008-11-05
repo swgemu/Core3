@@ -1252,9 +1252,7 @@ void WeaponImplementation::setXpType() {
 		xpType = "combat_general";
 		break;
 	default:
-		xpType = "";
+		xpType = "combat_meleespecialize_unarmed";
 		return;
 	};
-
-	return;
 }

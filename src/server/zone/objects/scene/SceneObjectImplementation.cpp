@@ -60,6 +60,8 @@ which carries forward this exception.
 
 #include "../building/cell/CellObject.h"
 
+#include "../creature/skills/target/AttackTargetSkill.h"
+
 SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), QuadTreeEntry(), Logger() {
 	objectID = 0;
 	objectType = 0;
@@ -75,6 +77,7 @@ SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), Q
 	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
 
 	linkType = 0x04;
 
@@ -104,6 +107,7 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
 
 	linkType = 0x04;
 
@@ -468,27 +472,39 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 	}
 }
 
-void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int damage) {
-	//Weapon *weap = creature->getWeapon();
-	uint64 weapid;
-	if (creature->getWeapon() == NULL)
-		weapid = creature->getObjectID();
-	else
-		weapid = creature->getWeapon()->getObjectID();
-			
-	if (weaponDamageList.contains(weapid)) {
-		int newdamage = weaponDamageList.get(weapid);
-		newdamage += damage;
-		weaponDamageList.drop(weapid);
-		weaponDamageList.put(weapid, newdamage);
+void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int damage, string skillname) {
+	string xptype;
+	
+	AttackTargetSkill *askill;
+	Skill *skill = server->getSkillManager()->getSkill(skillname);
+	if (skill->isAttackSkill())
+		askill = (AttackTargetSkill*)skill;
 		
-		// shouldn't happen
-		if (!weaponCreatureList.contains(weapid) || weaponCreatureList.get(weapid) != creature)
-			weaponCreatureList.put(weapid, creature);
-	} else {
-		weaponDamageList.put(weapid, damage);
-		weaponCreatureList.put(weapid, creature);
+	
+	if (askill->getRequiredWeaponType() == 0xFF && askill->isForce()) {
+		xptype = string("jedi_general");
+	} else if (creature->getWeapon() == NULL) {
+		xptype = string("combat_meleespecialize_unarmed");
+	} else 
+		xptype = creature->getWeapon()->getXpType();
+
+	if (xptype == "")
+		xptype = "none";
+	
+	DamageDone *dmg;
+	if (!playerDamageList.contains(creature)) {	
+		dmg = new DamageDone;
+	} else
+		dmg = playerDamageList.get(creature);
+	
+	if (!creature->isPlayer())
+		dmg->addDamage(xptype, damage, 0);
+	else {
+		Player* player = (Player*)creature;
+		dmg->addDamage(xptype, damage, player->calcPlayerLevel(xptype));
 	}
+	
+	playerDamageList.put(creature, dmg);
 	
 	if (creature->isInAGroup() && creature->isPlayer()) {
 		Player *player = (Player*)creature;
@@ -505,23 +521,13 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 }
 
 void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
-	int damage = 0;
-	//Weapon *weap = creature->getWeapon();
-	uint64 weapid;
-	if (creature->getWeapon() == NULL)
-		weapid = creature->getObjectID();
-	else
-		weapid = creature->getWeapon()->getObjectID();
+	int damage = playerDamageList.get(creature)->getTotalDamage();
+	DamageDone *dmg = playerDamageList.get(creature);
+
+	delete dmg;
 	
-	for (int i = 0; i < weaponCreatureList.size(); i++) {
-		VectorMapEntry<uint64, CreatureObject*> *entry = weaponCreatureList.SortedVector<VectorMapEntry<uint64, CreatureObject*>*>::get(i);
-		if (entry->getValue() == creature) {
-			damage += weaponDamageList.get(weapid);
-			weaponCreatureList.drop(entry->getKey());
-			weaponDamageList.drop(entry->getKey());
-		}
-	}
-	
+	playerDamageList.drop(creature);
+
 	if (creature->isInAGroup() && creature->isPlayer()) {
 		Player *player = (Player*)creature;
 		GroupObject *group = player->getGroupObject();
@@ -533,126 +539,85 @@ void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
 			groupDamageList.put(group, groupdamage);
 		}
 	}	
-
 }
 
 int SceneObjectImplementation::getTotalDamage() {
 	int damage = 0;
 	
-	for (int i = 0; i < weaponDamageList.size(); i++) {
-		damage += weaponDamageList.get(i);
+	for (int i = 0; i < playerDamageList.size(); i++) {
+		damage += playerDamageList.get(i)->getTotalDamage();
 	}
 	
 	return damage;
 }
 
 void SceneObjectImplementation::disseminateXp(int levels) {
-	VectorMap<Player*, int> playerxp;
-	playerxp.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
-	int total = getTotalDamage();
+	float total = (float)getTotalDamage();
 	
-	for (int i = 0; i < weaponDamageList.size(); i++) {
-		VectorMapEntry<uint64, int> *entry = weaponDamageList.SortedVector<VectorMapEntry<uint64, int>*>::get(i);
-		CreatureObject *creature = weaponCreatureList.get(entry->getKey());
+	for (int i = 0; i < playerDamageList.size(); i++) {
+		VectorMapEntry<CreatureObject*, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<CreatureObject*, DamageDone*>*>::get(i);
+		CreatureObject *creature = entry->getKey();
+		DamageDone *dmg = entry->getValue();
 		
 		// don't do any of this if this isn't a player
-		if (!creature->isPlayer())
+		if (!creature->isPlayer()) {
+			delete dmg;
 			continue;
-		
-		Player* player = (Player*)creature;
-			
-		int totaldamage = 0;
-		for (int k = 0; k < weaponCreatureList.size(); k++) {
-			if (weaponCreatureList.get(k) == creature) {
-				VectorMapEntry<uint64, CreatureObject*> *crentry = weaponCreatureList.SortedVector<VectorMapEntry<uint64, CreatureObject*>*>::get(k);
-				totaldamage += weaponDamageList.get(crentry->getKey());
-			}
 		}
 		
-		SceneObject* sco = zone->lookupObject(entry->getKey());
-		Weapon* weap;
-		
-		if (sco == NULL)
-			sco = player->getPlayerItem(entry->getKey());
-			
-		if (sco == NULL)
-			continue;
-		
-		if ( sco->isTangible() ) {
-			TangibleObject *tano = (TangibleObject*)sco;
-			if (tano->isWeapon()) {
-				weap = (Weapon*)tano;
-			}
-		} else if ( sco->isPlayer() ) {
-			weap = NULL;
-		} else
-			continue;
-			
-		string xptype;
-		if (weap == NULL)
-			xptype = "combat_meleespecialize_unarmed";
-		else
-			xptype =(weap->getXpType());
-		int damage = entry->getValue();
+		Player* player = (Player*)creature;
 		float xpadd = 0.0f;
+			
+		float totaldamage = (float)dmg->getTotalDamage();
 		
-		int playerlevel = player->getPlayerLevel();
-		cout << playerlevel << endl;
-		//int multiplier = 1;
-		//if (playerlevel > 10) 
-		//	multiplier = playerlevel / 10;
 		float multiplier = levels / 10.0f;
 		if (multiplier > 2.5f)
 			multiplier = 2.5f;
 		else if (multiplier < 1.0f)
 			multiplier = 1.0f;
 			
+		for ( int j = 0; j < dmg->getSize(); j++) {
+			float damage = (float)dmg->getDamage(j);
+			float playerlevel = (float)dmg->getLevel(j);
+			string xptype = dmg->getXpType(j);
+			float xpaddsingle = 0.0f;
 		
-		
-		//40xpl(cl/25)(pl/10)
-		//40*(cl) * (cl/10)
-		if (player->isInAGroup()) { // use group calculation
-			GroupObject *group = player->getGroupObject();
-			if (isNonPlayerCreature()) {
-				xpadd = ceil((1-(total-groupDamageList.get(group))/total)*(1-(totaldamage-damage)/totaldamage)*40*(levels)*(multiplier)*(1+(group->getGroupSize()+5)*.01));
-				if (levels > 25)
-					xpadd += (playerlevel - levels) * 60;
-				else if (playerlevel > levels)
-					xpadd += (levels - playerlevel) * 4.5;
-				if (xptype == "jedi_general" || xptype == "combat_meleespecialize_onehandlightsaber" || xptype == "combat_meleespecialize_twohandlightsaber" || xptype == "combat_meleespecialize_polearmlightsaber")
-					xpadd /= 3.4f;
+			//40xpl(cl/25)(pl/10)
+			//40*(cl) * (cl/10)
+			if (player->isInAGroup()) { // use group calculation
+				GroupObject *group = player->getGroupObject();
+				if (isNonPlayerCreature()) {
+					xpaddsingle = (groupDamageList.get(group)/total)*(damage/totaldamage)*40.0f*((float)levels)*(multiplier)*(1.0f+(group->getGroupSize()+5.0f)*.01f);
+					if (levels > 25)
+						xpaddsingle += (playerlevel - levels) * 60.0f;
+					else if (playerlevel > levels)
+						xpaddsingle += (levels - playerlevel) * 4.5f;
+					if (xptype == "jedi_general")
+						xpaddsingle /= 3.4f;
+				}
+			} else { // use solo calculation
+				if (isNonPlayerCreature()) {
+					xpaddsingle = (damage/total)*40.0f*((float)levels)*(multiplier);
+					if (levels > 25)
+						xpaddsingle += (playerlevel - levels) * 60.0f;
+					else if (playerlevel > levels)
+						xpaddsingle += (levels - playerlevel) * 4.5f;
+					if (xptype == "jedi_general")
+						xpaddsingle /= 3.4f;
+				}
 			}
-		} else { // use solo calculation
-			if (isNonPlayerCreature()) {
-				xpadd = ceil((1-(total-damage)/total)*40*(levels)*(multiplier));
-				if (levels > 25)
-					xpadd += (playerlevel - levels) * 60;
-				else if (playerlevel > levels)
-					xpadd += (levels - playerlevel) * 4.5;
-				if (xptype == "jedi_general" || xptype == "combat_meleespecialize_onehandlightsaber" || xptype == "combat_meleespecialize_twohandlightsaber" || xptype == "combat_meleespecialize_polearmlightsaber")
-					xpadd /= 3.4f;
-			}
+			
+			if (xpaddsingle < 1.0f) 
+				xpaddsingle = 1.0f;
+			
+			player->addXp(xptype, (int)xpaddsingle, true);
+			if (xptype != "jedi_general")
+				xpadd += xpaddsingle;
 		}
-		
-		if (xpadd < 1)
-			xpadd = 1;
-		
-		player->addXp(xptype, (int)xpadd, true);
-		
-		if (playerxp.contains(player)) {
-			int xptemp = playerxp.get(player);
-			playerxp.drop(player);
-			playerxp.put(player, xptemp);
-		} else
-			playerxp.put(player, (int)xpadd);
-	}
-	
-	for (int j = 0; j < playerxp.size(); j++) {
-		VectorMapEntry<Player*, int> *entry = playerxp.SortedVector<VectorMapEntry<Player*, int>*>::get(j);
-		Player *player = entry->getKey();
-		int xp = entry->getValue();
-		string combatxp("combat_general");
-		
-		player->addXp(combatxp, xp/10, true);
+				
+		string xptype = string("combat_general");
+		player->addXp(xptype, (int)floor(xpadd/10.0f), true);
+
+		delete dmg;
 	}
 }

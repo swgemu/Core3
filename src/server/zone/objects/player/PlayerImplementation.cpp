@@ -2959,8 +2959,6 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 		else
 			equipItem(item);
 	}
-	
-	setPlayerLevel();
 }
 
 void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
@@ -3803,7 +3801,6 @@ void PlayerImplementation::sendMessage(StandaloneBaseMessage* msg) {
 void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 	skillBoxes.put(skillBox->getName(), skillBox);
 	loadXpTypeCap();
-	setPlayerLevel();
 
 	if (updateClient) {
 		CreatureObjectDeltaMessage1* dcreo1;
@@ -3820,7 +3817,6 @@ void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 void PlayerImplementation::removeSkillBox(SkillBox* skillBox, bool updateClient) {
 	skillBoxes.remove(skillBox->getName());
 	loadXpTypeCap();
-	setPlayerLevel();
 
 	if (updateClient) {
 		CreatureObjectDeltaMessage1* dcreo1;
@@ -4541,12 +4537,11 @@ void PlayerImplementation::loadXpTypeCap() {
 	}
 }
 
-void PlayerImplementation::setPlayerLevel() {
+int PlayerImplementation::calcPlayerLevel(string xptype) {
 	resetSkillBoxesIterator();
 	playerLevel = 0;
 	
-	// TODO: reapply this when isJedi() doesn't always return true
-	/*if (isJedi()) {
+	if (xptype == "jedi_general") {
 		playerLevel = 10;
 		int skillnum = 0;
 		while (hasNextSkillBox()) {
@@ -4563,8 +4558,8 @@ void PlayerImplementation::setPlayerLevel() {
 		playerLevel += 5*skillnum;
 		if (playerLevel > 25)
 			playerLevel = 25; 
-		return;
-	}*/
+		return playerLevel;
+	}
 	
 	Weapon *weap = getWeapon();
 	int wtype;
@@ -4692,6 +4687,7 @@ void PlayerImplementation::setPlayerLevel() {
 		case WeaponImplementation::ONEHANDSABER:
 		case WeaponImplementation::TWOHANDSABER:
 		case WeaponImplementation::POLEARMSABER:
+			return calcPlayerLevel(string("jedi_general"));
 			break;
 		case WeaponImplementation::RIFLEBEAM:
 		case WeaponImplementation::RIFLEFLAMETHROWER:
@@ -4721,4 +4717,6 @@ void PlayerImplementation::setPlayerLevel() {
 		playerLevel = 5;
 	else if (playerLevel > 25)
 		playerLevel = 25;
+		
+	return playerLevel;
 }

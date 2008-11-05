@@ -1087,12 +1087,9 @@ public:
 	}
 	int getXpTypeCap(string xptype);
 	void loadXpTypeCap();
-	void setPlayerLevel();
+	int calcPlayerLevel(string xptype);
 	void getXpTypeProse(string xptype, string& prosetype) {
 		prosetype = server->getProfessionManager()->getSkillXpTypeProse(xptype);
-	}
-	int getPlayerLevel() {
-		return playerLevel;
 	}
 
 	void addSkillBox(SkillBox* skillBox, bool updateClient = false);

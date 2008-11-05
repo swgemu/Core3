@@ -316,8 +316,7 @@ interface Player implements CreatureObject {
 	int getXpTypeCap(string xptype);
 	void loadXpTypeCap();
 	void getXpTypeProse(string xptype, string& prosetype);
-	void setPlayerLevel();
-	int getPlayerLevel();
+	int calcPlayerLevel(string xptype);
 
 	//DuelList manipulation methods
 	void removeFromDuelList(Player targetPlayer);

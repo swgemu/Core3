@@ -343,7 +343,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 					Creature* creature = (Creature*) targetCreature;
 					if (!creature->isMount())
 						creature->doAttack(attacker, damage);
-						creature->addDamageDone(attacker, damage);
+						creature->addDamageDone(attacker, damage, askill->getSkillName());
 				}
 
 				targetCreature->activateRecovery();

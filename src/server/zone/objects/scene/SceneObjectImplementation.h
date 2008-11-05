@@ -61,6 +61,8 @@ which carries forward this exception.
 
 #include "../../Zone.h"
 
+#include "DamageDone.h"
+
 class Zone;
 class ZoneClientSession;
 class Player;
@@ -105,6 +107,7 @@ protected:
 	VectorMap<uint64, CreatureObject*> weaponCreatureList;
 	VectorMap<uint64, int> weaponDamageList;
 	VectorMap<GroupObject*, int> groupDamageList;
+	VectorMap<CreatureObject*, DamageDone*> playerDamageList;
 
 public:
 	static const int NONPLAYERCREATURE = 1;
@@ -156,7 +159,7 @@ public:
 	virtual void removeFromBuilding(BuildingObject* building);
 
 	// experience functions
-	void addDamageDone(CreatureObject* creature, int damage);
+	void addDamageDone(CreatureObject* creature, int damage, string skillname);
 	void dropDamageDone(CreatureObject* creature);
 	int getTotalDamage();
 	void disseminateXp(int levels); 

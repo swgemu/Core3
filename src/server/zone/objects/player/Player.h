@@ -357,9 +357,7 @@ public:
 
 	void getXpTypeProse(string& xptype, string& prosetype);
 
-	void setPlayerLevel();
-
-	int getPlayerLevel();
+	int calcPlayerLevel(string& xptype);
 
 	void removeFromDuelList(Player* targetPlayer);
 
@@ -1083,9 +1081,7 @@ public:
 
 	void getXpTypeProse(string& xptype, string& prosetype);
 
-	void setPlayerLevel();
-
-	int getPlayerLevel();
+	int calcPlayerLevel(string& xptype);
 
 	void removeFromDuelList(Player* targetPlayer);
 
@@ -1504,6 +1500,7 @@ protected:
 	string _param0_getXpTypeCap__string_;
 	string _param0_getXpTypeProse__string_string_;
 	string _param1_getXpTypeProse__string_string_;
+	string _param0_calcPlayerLevel__string_;
 	string _param0_sendSystemMessage__string_;
 	unicode _param0_sendSystemMessage__unicode_;
 	string _param0_sendSystemMessage__string_string_long_;

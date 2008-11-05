@@ -20,6 +20,8 @@
 
 #include "../building/BuildingObject.h"
 
+#include "../creature/skills/target/AttackTargetSkill.h"
+
 /*
  *	SceneObjectStub
  */
@@ -1209,7 +1211,7 @@ bool SceneObject::isInANoBuildArea() {
 		return ((SceneObjectImplementation*) _impl)->isInANoBuildArea();
 }
 
-void SceneObject::addDamageDone(CreatureObject* creature, int damage) {
+void SceneObject::addDamageDone(CreatureObject* creature, int damage, string& skillname) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1217,10 +1219,11 @@ void SceneObject::addDamageDone(CreatureObject* creature, int damage) {
 		DistributedMethod method(this, 98);
 		method.addObjectParameter(creature);
 		method.addSignedIntParameter(damage);
+		method.addAsciiParameter(skillname);
 
 		method.executeWithVoidReturn();
 	} else
-		((SceneObjectImplementation*) _impl)->addDamageDone(creature, damage);
+		((SceneObjectImplementation*) _impl)->addDamageDone(creature, damage, skillname);
 }
 
 void SceneObject::dropDamageDone(CreatureObject* creature) {
@@ -1549,7 +1552,7 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(isInANoBuildArea());
 		break;
 	case 98:
-		addDamageDone((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
+		addDamageDone((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_addDamageDone__CreatureObject_int_string_));
 		break;
 	case 99:
 		dropDamageDone((CreatureObject*) inv->getObjectParameter());
@@ -1935,8 +1938,8 @@ bool SceneObjectAdapter::isInANoBuildArea() {
 	return ((SceneObjectImplementation*) impl)->isInANoBuildArea();
 }
 
-void SceneObjectAdapter::addDamageDone(CreatureObject* creature, int damage) {
-	return ((SceneObjectImplementation*) impl)->addDamageDone(creature, damage);
+void SceneObjectAdapter::addDamageDone(CreatureObject* creature, int damage, string& skillname) {
+	return ((SceneObjectImplementation*) impl)->addDamageDone(creature, damage, skillname);
 }
 
 void SceneObjectAdapter::dropDamageDone(CreatureObject* creature) {

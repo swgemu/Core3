@@ -29,6 +29,8 @@ class CreatureObject;
 
 class BuildingObject;
 
+class AttackTargetSkill;
+
 #include "engine/core/ManagedObject.h"
 
 class SceneObject : public ManagedObject {
@@ -219,7 +221,7 @@ public:
 
 	bool isInANoBuildArea();
 
-	void addDamageDone(CreatureObject* creature, int damage);
+	void addDamageDone(CreatureObject* creature, int damage, string& skillname);
 
 	void dropDamageDone(CreatureObject* creature);
 
@@ -431,7 +433,7 @@ public:
 
 	bool isInANoBuildArea();
 
-	void addDamageDone(CreatureObject* creature, int damage);
+	void addDamageDone(CreatureObject* creature, int damage, string& skillname);
 
 	void dropDamageDone(CreatureObject* creature);
 
@@ -442,6 +444,7 @@ public:
 protected:
 	string _param0_info__string_bool_;
 	string _param0_error__string_;
+	string _param2_addDamageDone__CreatureObject_int_string_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {
