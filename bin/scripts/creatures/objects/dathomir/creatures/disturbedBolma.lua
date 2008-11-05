@@ -123,7 +123,7 @@ disturbedBolma = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,7 +136,7 @@ disturbedBolma = Creature:new {
       hideMax = 160,
 
       meatType = "meat_wild_dathomir",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { " Posture down attack", " Knockdown attack", "" }
       respawnTimer = 60,

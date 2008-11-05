@@ -133,10 +133,10 @@ fliteRasp = Creature:new {
       boneMax = 3,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_talus",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "fliteRaspAttack1" },
        respawnTimer = 60,

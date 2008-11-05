@@ -136,7 +136,7 @@ bol = Creature:new {
       hideMax = 300,
 
       meatType = "meat_herbivore_dantooine",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "bolAttack1" },
 	  -- skills = { " Knockdown attack", " Intimidation attack", "" },

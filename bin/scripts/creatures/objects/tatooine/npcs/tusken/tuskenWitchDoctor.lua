@@ -51,8 +51,7 @@ tuskenWitchDoctor = Creature:new {
       socialGroup = "Tusken Raider",
       named = FALSE, 
 
-      level = 202,
-      xp = 19201,
+      level = 202,      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -106,8 +105,8 @@ tuskenWitchDoctor = Creature:new {
       weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 850,
-      weaponMaxDamage = 1800,
+      weaponMinDamage = 650,
+      weaponMaxDamage = 850,
       weaponAttackSpeed = 1.6,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY

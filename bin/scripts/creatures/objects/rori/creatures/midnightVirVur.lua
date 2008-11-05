@@ -123,7 +123,7 @@ midnightVirVur = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -133,7 +133,7 @@ midnightVirVur = Creature:new {
       boneMax = 2,
 
       hideType = "hide_wooly_rori",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_rori",
       meatMax = 10,

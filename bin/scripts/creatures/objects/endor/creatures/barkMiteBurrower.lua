@@ -130,13 +130,13 @@ barkMiteBurrower = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_insect_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "barkMiteAttack1" },
 	  -- skills = { " Area attack (bleeds)", " Disease attack (strong)", "" },

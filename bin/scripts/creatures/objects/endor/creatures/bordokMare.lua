@@ -130,13 +130,13 @@ bordokMare = Creature:new {
       milk = 0,
 
       boneType = "bone_mammal_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "bordokAttack1" },
 	  -- skills = { " Stun attack", " Area attack (knockdown)", "" },

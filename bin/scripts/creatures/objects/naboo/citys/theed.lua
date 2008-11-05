@@ -7146,28 +7146,6 @@ staticTheedNpc350 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc351 = Creature:new {
-	objectName = "staticTheedNpc351",
-	creatureType = NPC,
-
-	speciesName = "naboo_captain_broma_lak",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1865005075,
-	positionX = -5832.93,
-	positionY = 4121.96,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0108933,
-	directionW = 0.999941,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 staticTheedNpc352 = Creature:new {
 	objectName = "staticTheedNpc352",
 	creatureType = NPC,

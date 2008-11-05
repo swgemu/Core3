@@ -52,8 +52,7 @@ tuskenWarlord = Creature:new {
       named = FALSE, 
 
       level = 85,
-      xp = 6013,
-
+      
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
       healthMax = 14000,

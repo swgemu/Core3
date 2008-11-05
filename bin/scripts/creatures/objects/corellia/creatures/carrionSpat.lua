@@ -133,7 +133,7 @@ carrionSpat = Creature:new {
       boneMax = 180,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_corellia",
       meatMax = 260,

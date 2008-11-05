@@ -123,20 +123,20 @@ merekDeathsHead = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.005,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
       hideMax = 45,
 
       meatType = "meat_wild_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { " Poison attack (strong)", " Disease attack (strong)", "" }
       respawnTimer = 60,

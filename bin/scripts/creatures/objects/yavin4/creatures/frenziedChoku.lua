@@ -133,7 +133,7 @@ frenziedChoku = Creature:new {
       boneMax = 8,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_yavin4",
       meatMax = 10,

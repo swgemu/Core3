@@ -123,7 +123,7 @@ bolleBolFemale = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,7 +136,7 @@ bolleBolFemale = Creature:new {
       hideMax = 300,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { " Posture down attack", " Dizzy attack", "" }
       respawnTimer = 60,

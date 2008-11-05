@@ -136,7 +136,7 @@ bolma = Creature:new {
       hideMax = 160,
 
       meatType = "meat_wild_dathomir",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "bolmaAttack1" },
 	  -- skills = { " Dizzy attack", " Posture down attack", "" },
