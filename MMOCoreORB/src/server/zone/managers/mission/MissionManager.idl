@@ -45,6 +45,8 @@ which carries forward this exception.
 import "../../objects/player/Player";
 import "../../objects/mission/MissionObject";
 import "../../objects/tangible/TangibleObject";
+import "../../objects/creature/action/ActionCreature";
+import "../../objects/creature/action/Action";
 
 import "server/zone/ZoneServer";
 include "server/zone/ZoneProcessServerImplementation";
@@ -72,7 +74,7 @@ interface MissionManager {
 	
 	//events
 	void doMissionAccept(Player player, unsigned long oid, boolean doLock = true);
-	void doMissionComplete(Player player, string tKey);
+	void doMissionComplete(Player player, string tKey, boolean doLock = true);
 	void doMissionAbort(Player player, unsigned long oid, boolean doLock = true);
 	void doMissionAbort(Player player, string tKey, boolean doLock = true);
 	

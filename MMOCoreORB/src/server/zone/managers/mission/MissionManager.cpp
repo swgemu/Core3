@@ -12,6 +12,10 @@
 
 #include "../../objects/tangible/TangibleObject.h"
 
+#include "../../objects/creature/action/ActionCreature.h"
+
+#include "../../objects/creature/action/Action.h"
+
 #include "server/zone/ZoneServer.h"
 
 /*
@@ -155,7 +159,7 @@ void MissionManager::doMissionAccept(Player* player, unsigned long long oid, boo
 		((MissionManagerImplementation*) _impl)->doMissionAccept(player, oid, doLock);
 }
 
-void MissionManager::doMissionComplete(Player* player, string& tKey) {
+void MissionManager::doMissionComplete(Player* player, string& tKey, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -163,10 +167,11 @@ void MissionManager::doMissionComplete(Player* player, string& tKey) {
 		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(tKey);
+		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
 	} else
-		((MissionManagerImplementation*) _impl)->doMissionComplete(player, tKey);
+		((MissionManagerImplementation*) _impl)->doMissionComplete(player, tKey, doLock);
 }
 
 void MissionManager::doMissionAbort(Player* player, unsigned long long oid, bool doLock) {
@@ -299,7 +304,7 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		doMissionAccept((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 14:
-		doMissionComplete((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionComplete__Player_string_));
+		doMissionComplete((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionComplete__Player_string_bool_), inv->getBooleanParameter());
 		break;
 	case 15:
 		doMissionAbort((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter());
@@ -361,8 +366,8 @@ void MissionManagerAdapter::doMissionAccept(Player* player, unsigned long long o
 	return ((MissionManagerImplementation*) impl)->doMissionAccept(player, oid, doLock);
 }
 
-void MissionManagerAdapter::doMissionComplete(Player* player, string& tKey) {
-	return ((MissionManagerImplementation*) impl)->doMissionComplete(player, tKey);
+void MissionManagerAdapter::doMissionComplete(Player* player, string& tKey, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->doMissionComplete(player, tKey, doLock);
 }
 
 void MissionManagerAdapter::doMissionAbort(Player* player, unsigned long long oid, bool doLock) {

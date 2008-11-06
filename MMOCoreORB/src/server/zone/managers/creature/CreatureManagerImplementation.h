@@ -60,8 +60,6 @@ which carries forward this exception.
 #include "../../objects/creature/bluefrog/BlueFrogCreatureImplementation.h"
 #include "../../objects/creature/action/ActionCreature.h"
 #include "../../objects/creature/action/ActionCreatureImplementation.h"
-#include "../../objects/creature/action/Action.h"
-#include "../../objects/creature/action/ActionImplementation.h"
 
 #include "CreatureMap.h"
 #include "LairMap.h"
@@ -109,7 +107,6 @@ public:
 	void loadRecruiters();
 	void loadStaticCreatures();
 	void loadBlueFrogs();
-	void loadMissionCreatures();
 
 	void load(Creature* creature);
 	void unloadCreature(Creature* creature);
@@ -124,7 +121,7 @@ public:
 	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 cellid,float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
 	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, uint8 type = 1, uint64 cellid = 0, bool doLock = true);
 	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, int type = 0, uint64 cellid = 0, bool doLock = true);
-	ActionCreature* spawnActionCreature(string& name, string& stfname, uint32 objCrc, string misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);
+	ActionCreature* spawnActionCreature(string& name, string& stfname, uint32 objCrc, const string misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);
 	//CreatureGroup* spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
 	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock = true);
 	void despawnCreature(Creature* creature);

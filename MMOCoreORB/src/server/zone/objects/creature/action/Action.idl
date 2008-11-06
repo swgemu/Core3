@@ -44,7 +44,7 @@ which carries forward this exception.
 
 import "ActionCreature";
 
-import "../../../managers/mission/MissionManager";
+import "../../../managers/mission/MissionManagerImplementation";
 
 import "../../scene/SceneObject";
 

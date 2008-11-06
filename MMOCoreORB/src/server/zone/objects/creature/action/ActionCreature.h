@@ -9,7 +9,7 @@
 
 class Action;
 
-class MissionManager;
+class MissionManagerImplementation;
 
 class SceneObject;
 
@@ -21,7 +21,7 @@ class Creature;
 
 class ActionCreature : public Creature {
 public:
-	ActionCreature(unsigned long long oid, unsigned int objCrc, string& creName, string& stf, string& missionKey, MissionManager* mMgr = NULL);
+	ActionCreature(unsigned long long oid, unsigned int objCrc, string& creName, string& stf, string& missionKey);
 
 	void addAction(string& key, Action* act);
 
@@ -39,7 +39,9 @@ public:
 
 	string& getMissionKey();
 
-	MissionManager* getMisoMgr();
+	MissionManagerImplementation* getMisoMgr();
+
+	void setMisoMgr(MissionManagerImplementation* tmgr);
 
 	void sendConversationStartTo(SceneObject* obj);
 
@@ -78,8 +80,6 @@ public:
 	bool isMissionNpc();
 
 	string& getMissionKey();
-
-	MissionManager* getMisoMgr();
 
 	void sendConversationStartTo(SceneObject* obj);
 

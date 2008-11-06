@@ -65,18 +65,15 @@ public:
 			: BaseLineMessage(mi->getObjectID(), 0x4D49534F, 3, 0x11) {
 		
 		insertFloat(1.0f);
-
-		if(mi->getTitleKey() != 0) {
-			insertAscii("mission/mission_object");
-		} else {
-			insertAscii(mi->getTitleStf());
-		}
-		insertInt(0);
 		
 		if(mi->getTitleKey() != 0) {
+			insertAscii("mission/mission_object");
+			insertInt(0);
 			insertAscii(mi->getTypeStr());
 		} else {
 			insertAscii("");
+			insertInt(0);
+			insertAscii(mi->getTitleStf());
 		}
 		
 		//4

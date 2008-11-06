@@ -117,16 +117,30 @@ public:
 		insertInt(miso->getDepictedObjCrc());
 	}
 	
-	void updateDescriptionStf() {
+	void updateDescriptionStf(bool isStf) {
 		startUpdate(0x0B);
-		
-		insertAscii(miso->getDescriptionStf());
+
+		if (!isStf) {
+			insertShort(0); //No stf string
+			insertInt(0);
+			insertAscii(miso->getDescriptionStf());
+		} else {
+			insertAscii(miso->getDescriptionStf());
+			insertInt(0);
+		}
 	}
 	
-	void updateTitleStf() {
+	void updateTitleStf(bool isStf) {
 		startUpdate(0x0C);
-		
-		insertAscii(miso->getTitleStf());
+
+		if (!isStf) {
+			insertShort(0); //No stf string
+			insertInt(0);
+			insertAscii(miso->getTitleStf());
+		} else {
+			insertAscii(miso->getTitleStf());
+			insertInt(0);
+		}
 	}
 	
 	void updateRefreshCount(uint32 trc) {

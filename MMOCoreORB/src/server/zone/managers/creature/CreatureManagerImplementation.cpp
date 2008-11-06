@@ -59,7 +59,6 @@ which carries forward this exception.
 #include "../../objects/creature/recruiter/rebel/RebelRecruiterCreature.h"
 #include "../../objects/creature/shuttle/ShuttleCreature.h"
 #include "../../objects/creature/action/ActionCreature.h"
-#include "../../objects/creature/action/Action.h"
 
 #include "../../objects/creature/CreatureGroup.h"
 
@@ -142,7 +141,6 @@ void CreatureManagerImplementation::loadCreatures() {
 	loadRecruiters();
 	loadStaticCreatures();
 	loadBlueFrogs();
-	//loadMissionCreatures();
 }
 
 void CreatureManagerImplementation::run() {
@@ -275,52 +273,6 @@ void CreatureManagerImplementation::loadTrainers() {
 	}
 }
 
-void CreatureManagerImplementation::loadMissionCreatures() {
-	//temporary to work with hardcode missions
-	if (zone->getZoneID() == 5) {
-		string name = "MAN O' ACTION";
-		string stf = "";
-		ActionCreature* tac;
-		tac = spawnActionCreature(name, stf, 0x8C73B91, "testM27", -4844.0f, 4155.0f, -.0339502, .999424);
-
-		int actmsk = 0;
-		actmsk |= ActionImplementation::TYPE_CONVERSE;
-		Action* act = new Action((SceneObject*)tac, actmsk, 0);
-		string scrnId = "0";
-		string leftBox = "Do you have...it?";
-		string Options = "Yes, here.|The weather is quite nice!|No, sorry I forgot."; //separate by |
-		string optLink = "1,none|2,none|ENDCNV,none"; //separate by | (nextScreenID,actionKey)
-		act->addConvoScreen(scrnId, leftBox, 3, Options, optLink);
-
-		//Converstaion window in response to Yes, Here:
-		scrnId = "1";
-		leftBox = "Cool you have it? Give it to me!";
-		Options = "Here|No, bye.";
-		optLink = "EXECACTION,finm27|ENDCNV,none";
-		act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
-
-		//Conversation window in response to weather:
-		scrnId = "2";
-		leftBox = "Yea the weather is pretty nice..";
-		Options = "Bye.";
-		optLink = "ENDCNV,none";
-		act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
-
-		string actionKey = "KEYA";
-		tac->addAction(actionKey, act);
-		tac->onConverse(actionKey); //link onConverse to action "KEYA"
-
-		//Complete Mission Key:
-		actmsk = 0;
-		actmsk |= ActionImplementation::TYPE_TAKEITEM;
-		actmsk |= ActionImplementation::TYPE_COMPMISSION;
-		Action* act2 = new Action((SceneObject*)tac, actmsk, 0);
-
-		actionKey = "finm27";
-		tac->addAction(actionKey, act2);
-	}
-}
-
 void CreatureManagerImplementation::loadStaticCreatures() {
 }
 
@@ -367,7 +319,7 @@ ActionCreature* CreatureManagerImplementation::spawnActionCreature(string& name,
 	try {
 		lock(doLock);
 
-		ActionCreature* actCr = new ActionCreature(getNextCreatureID(), objCrc, name, stfname, misoKey, server->getMissionManager());
+		ActionCreature* actCr = new ActionCreature(getNextCreatureID(), objCrc, name, stfname, misoKey);
 
 		actCr->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
 

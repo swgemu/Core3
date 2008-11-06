@@ -23,8 +23,6 @@ class LairObject;
 
 class ActionCreature;
 
-class Action;
-
 class TrainerCreature;
 
 class RecruiterCreature;
@@ -49,8 +47,6 @@ public:
 
 	void loadBlueFrogs();
 
-	void loadMissionCreatures();
-
 	void load(Creature* creature);
 
 	void unloadCreature(Creature* creature);
@@ -67,7 +63,7 @@ public:
 
 	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock = true);
 
-	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid = 0, bool doLock = true);
+	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, const string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid = 0, bool doLock = true);
 
 	unsigned int getCreatureCrc(string& name);
 
@@ -113,8 +109,6 @@ public:
 
 	void loadBlueFrogs();
 
-	void loadMissionCreatures();
-
 	void load(Creature* creature);
 
 	void unloadCreature(Creature* creature);
@@ -131,7 +125,7 @@ public:
 
 	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock);
 
-	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid, bool doLock);
+	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, const string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid, bool doLock);
 
 	unsigned int getCreatureCrc(string& name);
 

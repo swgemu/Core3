@@ -48,14 +48,14 @@ which carries forward this exception.
 #include "../CreatureImplementation.h"
 #include "../../player/Player.h"
 
-#include "../../../managers/mission/MissionManager.h"
+#include "../../../managers/mission/MissionManagerImplementation.h"
 
 #include "../../../packets.h"
 
 #include "../../../../ServerCore.h"
 
 ActionCreatureImplementation::ActionCreatureImplementation(uint64 oid, uint32 objCrc, string& creName, string& stf, 
-		string& missionKey, MissionManager* mMgr) : ActionCreatureServant(oid) {
+		string& missionKey) : ActionCreatureServant(oid) {
 	
 	// General NPC:
 	characterName = unicode(creName);
@@ -74,7 +74,6 @@ ActionCreatureImplementation::ActionCreatureImplementation(uint64 oid, uint32 ob
 	
 	// Mission:
 	misoKey = missionKey;
-	misoMgr = mMgr;
 	
 	stringstream loggingname;
 	loggingname << "ActionCreature = 0x" << oid;
@@ -183,10 +182,4 @@ bool ActionCreatureImplementation::isMissionNpc() {
 	}
 }
 
-MissionManager* ActionCreatureImplementation::getMisoMgr() {
-	if(misoMgr == NULL) {
-		misoMgr = server->getMissionManager();
-	}
-	return misoMgr;
-}
 

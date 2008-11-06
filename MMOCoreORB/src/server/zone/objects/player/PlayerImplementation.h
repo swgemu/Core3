@@ -774,7 +774,7 @@ public:
 	void addToCurMisoKeys(string& tck) {
 		curMisoKeys += (tck + ",");
 	}
-	bool isOnCurMisoKey(string& tmk); //player is currently on the mission key
+	bool isOnCurMisoKey(string tmk); //player is currently on the mission key
 	void removeFromCurMisoKeys(string tck);
 
 	void addToFinMisoKeys(string& tmp) {
