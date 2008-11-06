@@ -124,9 +124,18 @@ void MissionObjectImplementation::sendDeltaTo(Player* player) {
 		return;
 
 	MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3((MissionObject*) _this);
-
-	dmiso3->updateDescriptionStf(); //11 (0B)
-	dmiso3->updateDescKey(); //4
+	size_t posD;
+	size_t posT;
+	
+	posD = descriptionStf.find("mission/");
+	posT = titleStf.find("mission/");
+	
+	if(posD == string::npos) {
+		dmiso3->updateDescriptionStf(false); //11 (0B)
+	} else {
+		dmiso3->updateDescriptionStf(true); //11 (0B)
+		dmiso3->updateDescKey(); //4
+	}
 	dmiso3->updateDifficultyLv(); //5
 	dmiso3->updateDestination(); //6
 	dmiso3->updateCreator(); //7
@@ -134,8 +143,12 @@ void MissionObjectImplementation::sendDeltaTo(Player* player) {
 	dmiso3->updateReward(); //8
 	dmiso3->updateTarget(); //9
 	dmiso3->updateDepictedObject(); //10 (0A)
-	dmiso3->updateTitleStf(); //12 (0C)
-	dmiso3->updateTitleKey(); //4
+	if(posD == string::npos) {
+		dmiso3->updateTitleStf(false); //12 (0C)
+	} else {
+		dmiso3->updateTitleStf(true); //12 (0C)
+		dmiso3->updateTitleKey(); //4
+	}
 	dmiso3->updateRefreshCount(player->nextMisoRFC()); //13 (0D)
 
 	dmiso3->close();

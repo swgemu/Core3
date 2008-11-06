@@ -3627,7 +3627,7 @@ void PlayerImplementation::clearDuelList() {
 
 // Mission Functions
 
-bool PlayerImplementation::isOnCurMisoKey(string& tmk) {
+bool PlayerImplementation::isOnCurMisoKey(string tmk) {
 	tmk += ",";
 
 	size_t pos;

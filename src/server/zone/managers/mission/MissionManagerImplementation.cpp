@@ -47,6 +47,8 @@ which carries forward this exception.
 #include "../../objects/terrain/PlanetNames.h"
 
 #include "../../objects/player/Player.h"
+#include "../../objects/creature/action/ActionCreature.h"
+#include "../../objects/creature/action/Action.h"
 
 #include "../../packets.h"
 #include "../../objects.h"
@@ -157,8 +159,8 @@ MissionObject* MissionManagerImplementation::poolMission(string& dbKey, int term
 }
 
 void MissionManagerImplementation::setupHardcodeMissions() {
-	/*
-	string dbKey = "testM27";
+	string dbKey = "";
+	dbKey = "testM27";
 	int tmask = TMASK_GENERAL; //terminal mask (GENERAL)
 	string typeStr = "mission_deliver"; 
 	
@@ -169,20 +171,20 @@ void MissionManagerImplementation::setupHardcodeMissions() {
 	uint32 titleKey = 0;
 	
 	uint32 diffLv = 1; 
-	float destX = 1337.0f; 
-	float destY = 1337.0f; 
+	float destX = -5049.0f;
+	float destY = 4225.0f; 
 	uint32 destPlanetCrc = Planet::getPlanetCRC("naboo");
 	string creatorName = "Ramsey";
 	uint32 rewardAmount = 50;
-	float targetX = 1234.0f; 
-	float targetY = 1234.0f; 
+	float targetX = -4844.0f; 
+	float targetY = 4155.0f; 
 	uint32 targetPlanetCrc = Planet::getPlanetCRC("naboo");
-	uint32 depictedObjCrc = 0x2D589F5B; //0x5B, 0x9F, 0x58, 0x2D, butterfly
+	uint32 depictedObjCrc = 0x9BA06548; //holocron/secret box crc
 	
 	//string descriptionStf = "mission/mission_deliver_neutral_easy"; 
 	//string titleStf = "mission/mission_deliver_neutral_easy"; 
 	//For custom missions:
-	string descriptionStf = "Deliver this secret box to MAN O' Action.";
+	string descriptionStf = "Deliver this secret box to MAN O' Action. The last time I checked he was at -5049, 4225.";
 	string titleStf = "The Box";
 	
 	uint32 typeCrc = 0xE5C27EC6; //0xC6, 0x7E, 0xC2, 0xE5, //crc("deliver");
@@ -194,14 +196,50 @@ void MissionManagerImplementation::setupHardcodeMissions() {
 			creatorName, rewardAmount, targetX, targetY, targetPlanetCrc, depictedObjCrc, 
 			descriptionStf, titleStf, typeCrc, dvli, true);
 	
-	//test 2nd mission:
-	dbKey = "testM28";
-	titleStf = "The Box 2";
+	//Setup NPC:
+	CreatureManager* cm = zoneServer->getCreatureManager(5);
 	
-	poolMission(dbKey, tmask, typeStr, descKey, titleKey, diffLv, destX, destY, destPlanetCrc,
-			creatorName, rewardAmount, targetX, targetY, targetPlanetCrc, depictedObjCrc, 
-			descriptionStf, titleStf, typeCrc, NULL, true);
-	*/
+	string name = "MAN O' ACTION";
+	string stf = "";
+	ActionCreature* tac;
+	tac = cm->spawnActionCreature(name, stf, 0x8C73B91, "testM27", -5049.0f, 4225.0f, -0.0339502f, 0.999424f);
+	tac->setMisoMgr(this);
+	
+	int actmsk = 0;
+	actmsk |= ActionImplementation::TYPE_CONVERSE;
+	Action* act = new Action((SceneObject*)tac, actmsk, 0);
+	string scrnId = "0";
+	string leftBox = "Do you have...it?";
+	string Options = "Yes, here.|The weather is quite nice!|No, sorry I forgot."; //separate by |
+	string optLink = "1,none|2,none|ENDCNV,none"; //separate by | (nextScreenID,actionKey)
+	act->addConvoScreen(scrnId, leftBox, 3, Options, optLink);
+
+	//Converstaion window in response to Yes, Here:
+	scrnId = "1";
+	leftBox = "Cool you have it? Give it to me!";
+	Options = "Here|No, bye.";
+	optLink = "EXECACTION,finm27|ENDCNV,none";
+	act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
+
+	//Conversation window in response to weather:
+	scrnId = "2";
+	leftBox = "Yea the weather is pretty nice..";
+	Options = "Bye.";
+	optLink = "ENDCNV,none";
+	act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
+
+	string actionKey = "KEYA";
+	tac->addAction(actionKey, act);
+	tac->onConverse(actionKey); //link onConverse to action "KEYA"
+
+	//Complete Mission Key:
+	actmsk = 0;
+	actmsk |= ActionImplementation::TYPE_TAKEITEM;
+	actmsk |= ActionImplementation::TYPE_COMPMISSION;
+	Action* act2 = new Action((SceneObject*)tac, actmsk, 0);
+
+	actionKey = "finm27";
+	tac->addAction(actionKey, act2);
 }
 
 //terminal
@@ -338,7 +376,7 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 		
 		//Check if player is already on mission:
 		if(player->isOnCurMisoKey(miso->getDBKey())) {
-			error("Player is already on mission!");
+			//error("Player is already on mission!");
 			return;
 		}
 		
@@ -370,17 +408,25 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 	}
 }
 
-void MissionManagerImplementation::doMissionComplete(Player* player, string& tKey) {
-	//system msg: "Mission Complete. You have been awarded: <rewards>"
-	player->sendSystemMessage("Mission Complete.");
-	
-	PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
-	player->sendMessage(pmm);
-	
-	removeMisoFromPlayer(player, tKey, true);
-	
-	player->addToFinMisoKeys(tKey);
-	player->removeFromCurMisoKeys(tKey);
+void MissionManagerImplementation::doMissionComplete(Player* player, string& tKey, bool doLock) {
+	try {
+		lock(doLock);
+		
+		removeMisoFromPlayer(player, tKey, false);
+		
+		//system msg: "Mission Complete. You have been awarded: <rewards>"
+		player->sendSystemMessage("Mission Complete.");
+		//PlayMusicMessage* pmm = new PlayMusicMessage("sound/music_mission_complete.snd");
+		//player->sendMessage(pmm);
+		player->addToFinMisoKeys(tKey);
+		player->removeFromCurMisoKeys(tKey);
+		
+		unlock(doLock);
+	} catch (...) {
+		error("unreported Exception caught on doMissionComplete()\n"); 
+
+		unlock(doLock);
+	}
 }
 
 void MissionManagerImplementation::doMissionAbort(Player* player, uint64& oid, bool doLock) {
@@ -532,11 +578,11 @@ void MissionManagerImplementation::removeMisoFromPool(MissionObject* miso, bool 
 }
 
 void MissionManagerImplementation::removeMisoFromPlayer(Player* player, string& tKey, bool doLock) {
-	MissionObject* miso = NULL;
+	MissionObject* miso;
 	
 	try {
 		lock(doLock);
-	
+		
 		miso = misoMap->get(tKey);
 		
 		if(miso != NULL) {
@@ -568,7 +614,7 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, string& 
 }
 
 void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& oid, bool doLock) {
-	MissionObject* miso = NULL;
+	MissionObject* miso;
 	
 	try {
 		lock(doLock);
@@ -604,18 +650,17 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& 
 }
 
 void MissionManagerImplementation::removeMisoFromPlayer(MissionObject* miso, Player* player) {
+	miso->sendDestroyTo(player);
+	
 	if(miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
 		TangibleObject* tmpi = (TangibleObject*)player->getMissionItem(miso->getDBKey());
 		if(tmpi == NULL) {
 			return;
 		}
-
 		player->removeInventoryItem(tmpi->getObjectID());
 		tmpi->sendDestroyTo(player);
 		tmpi->finalize();
 	}
-	
-	miso->sendDestroyTo(player);
 }
 
 void MissionManagerImplementation::removeMissions() {

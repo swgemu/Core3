@@ -9,7 +9,7 @@
 
 class ActionCreature;
 
-class MissionManager;
+class MissionManagerImplementation;
 
 class SceneObject;
 

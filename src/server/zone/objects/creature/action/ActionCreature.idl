@@ -44,7 +44,7 @@ which carries forward this exception.
 
 import "Action";
 
-import "../../../managers/mission/MissionManager";
+import "../../../managers/mission/MissionManagerImplementation";
 
 import "../../scene/SceneObject";
 
@@ -54,7 +54,7 @@ import "../Creature";
 
 interface ActionCreature implements Creature {
 
-	ActionCreature(unsigned long oid, unsigned int objCrc, string creName, string stf, string missionKey, MissionManager mMgr = NULL) {
+	ActionCreature(unsigned long oid, unsigned int objCrc, string creName, string stf, string missionKey) {
 		super(oid);
 	}
 	
@@ -71,7 +71,8 @@ interface ActionCreature implements Creature {
 	//Mission Specific:
 	boolean isMissionNpc(); //Returns true if NPC has a mission assigned to it.
 	string getMissionKey();
-	MissionManager getMisoMgr();
+	local MissionManagerImplementation getMisoMgr();
+	local void setMisoMgr(MissionManagerImplementation tmgr);
 	
 	//Conversation Specific:
 	void sendConversationStartTo(SceneObject obj);

@@ -60,6 +60,11 @@ which carries forward this exception.
 #include "../../objects/tangible/TangibleObject.h"
 #include "../../objects/tangible/TangibleObjectImplementation.h"
 
+#include "../../objects/creature/action/ActionCreature.h"
+#include "../../objects/creature/action/ActionCreatureImplementation.h"
+#include "../../objects/creature/action/Action.h"
+#include "../../objects/creature/action/ActionImplementation.h"
+
 #include "MissionMap.h"
 
 #include "MissionManager.h"
@@ -96,7 +101,7 @@ public:
 	
 	//events
 	void doMissionAccept(Player* player, uint64& oid, bool doLock = true);
-	void doMissionComplete(Player* player, string& tKey);
+	void doMissionComplete(Player* player, string& tKey, bool doLock = true);
 	void doMissionAbort(Player* player, uint64& oid, bool doLock = true);
 	void doMissionAbort(Player* player, string& tKey, bool doLock = true);
 	

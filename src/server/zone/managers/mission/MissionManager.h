@@ -13,6 +13,10 @@ class MissionObject;
 
 class TangibleObject;
 
+class ActionCreature;
+
+class Action;
+
 class ZoneServer;
 
 #include "server/zone/ZoneProcessServerImplementation.h"
@@ -37,7 +41,7 @@ public:
 
 	void doMissionAccept(Player* player, unsigned long long oid, bool doLock = true);
 
-	void doMissionComplete(Player* player, string& tKey);
+	void doMissionComplete(Player* player, string& tKey, bool doLock = true);
 
 	void doMissionAbort(Player* player, unsigned long long oid, bool doLock = true);
 
@@ -85,7 +89,7 @@ public:
 
 	void doMissionAccept(Player* player, unsigned long long oid, bool doLock);
 
-	void doMissionComplete(Player* player, string& tKey);
+	void doMissionComplete(Player* player, string& tKey, bool doLock);
 
 	void doMissionAbort(Player* player, unsigned long long oid, bool doLock);
 
@@ -108,7 +112,7 @@ protected:
 	string _param15_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_;
 	string _param16_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_;
 	string _param1_sendMission__Player_string_bool_;
-	string _param1_doMissionComplete__Player_string_;
+	string _param1_doMissionComplete__Player_string_bool_;
 	string _param1_doMissionAbort__Player_string_bool_;
 	string _param0_getMissionItemCrc__string_bool_;
 };

@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "Action.h"
 #include "ActionImplementation.h"
 
-#include "../../../managers/mission/MissionManager.h"
+#include "../../../managers/mission/MissionManagerImplementation.h"
 
 #include "../../../packets.h"
 
@@ -65,7 +65,7 @@ ActionImplementation::~ActionImplementation() {
 void ActionImplementation::execAction(Player* player) {
 	if(!prereqCheck(player))
 		return;
-
+	
 	if((actionMask & TYPE_MOVE)) {
 	}
 	
@@ -96,12 +96,10 @@ void ActionImplementation::execAction(Player* player) {
 			misoKey = parentCreature->getMissionKey();
 			
 			pItem = player->getMissionItem(misoKey);
+			
 			if(pItem == NULL) {
 				//Elaborate with NPC dialogue later.
-				StopNpcConversation* scv = new StopNpcConversation(player, parentCreature->getObjectID());
-				player->sendMessage(scv);
-				player->setLastNpcConvStr("");
-				player->setLastNpcConvMessStr("");
+				//printf("Cannot get mission item from player, it is NULL\n");
 				return;
 			}
 			
@@ -114,9 +112,7 @@ void ActionImplementation::execAction(Player* player) {
 
 	if((actionMask & TYPE_COMPMISSION)) {
 		string misoKey;
-		MissionManager* mMgr;
-		
-		printf("comp mission 1\n");
+		MissionManagerImplementation* mMgr;
 		
 		if(parentObject->isNonPlayerCreature()) {
 			ActionCreature* parentCreature = (ActionCreature*)parentObject;
@@ -126,20 +122,19 @@ void ActionImplementation::execAction(Player* player) {
 			if(!parentCreature->isMissionNpc())
 				return;
 			
-			printf("comp mission 2\n");
-			
 			misoKey = parentCreature->getMissionKey();
 			mMgr = parentCreature->getMisoMgr();
 			
 			if(mMgr == NULL) {
-				//printf("Cannot complete mission, mission manager is null in parent creature\n");
+				printf("Cannot complete mission, mission manager is null in parent creature\n");
 				return;
 			}
 			
-			printf("comp mission 3\n");
+			if(misoKey.size() == 0) {
+				return;
+			}
 			
-			mMgr->doMissionComplete(player, misoKey);
-			printf("comp mission 4\n");
+			mMgr->doMissionComplete(player, misoKey, false);
 		} /*else if(parentObject->isAttackableObject()) {
 			//For lairs
 		}*/ else {
@@ -148,7 +143,7 @@ void ActionImplementation::execAction(Player* player) {
 	
 	if((actionMask & TYPE_FAILMISSION)) {
 		string misoKey;
-		MissionManager* mMgr;
+		MissionManagerImplementation* mMgr;
 		
 		if(parentObject->isNonPlayerCreature()) {
 			ActionCreature* parentCreature = (ActionCreature*)parentObject;
@@ -161,7 +156,12 @@ void ActionImplementation::execAction(Player* player) {
 			misoKey = parentCreature->getMissionKey();
 			mMgr = parentCreature->getMisoMgr();
 			
-			mMgr->doMissionAbort(player, misoKey);
+			if(mMgr == NULL) {
+				//printf("Cannot abort mission, mission manager is null in parent creature\n");
+				return;
+			}
+			
+			mMgr->doMissionAbort(player, misoKey, false);
 			
 		} /*else if(parentObject->isAttackableObject()) {
 			//For lairs
@@ -226,9 +226,7 @@ void ActionImplementation::carryConversation(Player* player) {
 			//printf("carryConversation() : No such Conversation Option link found in map.");
 			return;
 		}
-		
-		//printf("Got screen/Option pair: %s . Used convMessStr: %s \n", tns.c_str(), player->getLastNpcConvMessStr().c_str());
-		
+				
 		string newScreenID;
 		string actKey;
 		StringTokenizer token2(tns);
@@ -311,7 +309,6 @@ bool ActionImplementation::prereqCheck(Player* player) {
 			return player->isOnCurMisoKey(misoKey);
 		}
 	}
-	//
 	
 	return false;
 }

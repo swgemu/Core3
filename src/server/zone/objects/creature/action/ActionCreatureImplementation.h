@@ -45,8 +45,12 @@ which carries forward this exception.
 #ifndef ACTIONCREATUREIMPLEMENTATION_H_
 #define ACTIONCREATUREIMPLEMENTATION_H_
 
+class MissionManagerImplementation;
+
 class Player;
 class SceneObject;
+
+#include "engine/engine.h"
 
 #include "ActionCreature.h"
 #include "Action.h"
@@ -56,7 +60,7 @@ class ActionCreatureImplementation : public ActionCreatureServant {
 	VectorMap<string, Action*> actionList; //<action key, action>
 	
 	string misoKey; //Mission Key
-	MissionManager* misoMgr;
+	MissionManagerImplementation* misoMgr;
 	
 	//Trigger Action Keys:
 	string converseKeys;
@@ -65,8 +69,7 @@ class ActionCreatureImplementation : public ActionCreatureServant {
 	string deathKeys;
 	
 public:
-	ActionCreatureImplementation(uint64 oid, uint32 objCrc, string& creName, string& stf, 
-			string& missionKey, MissionManager* mMgr = NULL);
+	ActionCreatureImplementation(uint64 oid, uint32 objCrc, string& creName, string& stf, string& missionKey);
 	~ActionCreatureImplementation();
 	
 	//Action List Manip
@@ -91,7 +94,14 @@ public:
 		return misoKey;
 	}
 	
-	MissionManager* getMisoMgr();
+	//Mission Manager:
+	inline MissionManagerImplementation* getMisoMgr() {
+		return misoMgr;
+	}
+	
+	inline void setMisoMgr(MissionManagerImplementation* tmgr) {
+		misoMgr = tmgr;
+	}
 	
 	//Conversation Specific:
 	void sendConversationStartTo(SceneObject* obj);
@@ -107,6 +117,8 @@ private:
 	void clearActions() {
 		actionList.removeAll();
 	}
+	
+	friend class MissionManagerImplementation;
 
 };
 
