@@ -159,7 +159,7 @@ void MountCreatureImplementation::repair() {
 	conditionDamage = 0;
 	stringstream cond;
 
-	cond << (maxCondition-conditionDamage) << "/" << maxCondition << ":";
+	cond << "condition=" << (maxCondition-conditionDamage) << "/" << maxCondition << ":";
 
 	string attr = cond.str();
 	setAttributes(attr);
@@ -296,6 +296,22 @@ void MountCreatureImplementation::call() {
 		}
 
 		setFaction(linkedCreature->getFaction());
+
+		if(getObjectCRC()==0xAF6D9F4F)//swoop
+			changeConditionDamage(25);
+		else if(getObjectCRC()==0x729517EF)//speederbike
+			changeConditionDamage(12);
+		else if(getObjectCRC()==0x4EC3780C)//x34 landspeeder
+			changeConditionDamage(7);
+		else
+			changeConditionDamage(25);
+
+		stringstream cond;
+
+		cond << "condition=" << (maxCondition-conditionDamage) << "/" << maxCondition << ":";
+
+		string attr = cond.str();
+		setAttributes(attr);
 
 		insertToZone(zone);
 

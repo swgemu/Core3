@@ -953,6 +953,8 @@ public:
 
 	void changeConditionDamage(int amount);
 
+	void setMaxCondition(int condition);
+
 	void setPosture(unsigned char state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 
 	void setPvpStatusBitmask(unsigned int mask);
@@ -2073,6 +2075,8 @@ public:
 	void setLightSaber(float lig);
 
 	void changeConditionDamage(int amount);
+
+	void setMaxCondition(int condition);
 
 	void setPosture(unsigned char state, bool overrideDizzy, bool objectInteraction, float objX, float objY, float objZ);
 

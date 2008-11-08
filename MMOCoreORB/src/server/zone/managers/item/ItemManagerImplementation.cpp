@@ -1237,6 +1237,7 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 
 			land = new MountCreature(player, res->getString(2), "monster_name",
 					res->getLong(3), res->getLong(4), res->getUnsignedLong(9));
+			land->setObjectFileName(res->getString(5));
 
 			land->setZoneProcessServer(pServer);
 

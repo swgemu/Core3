@@ -39,7 +39,24 @@ VehicleDeedImplementation::~VehicleDeedImplementation() {
 void VehicleDeedImplementation::init() {
 	objectSubType = VEHICLEDEED;
 
-	if(templateName == "speederbike_swoop_deed") {
+	setHitPoints(1000);
+
+	if(templateName == "speederbike_swoop") {
+		targetName = unicode("speederbike_swoop");
+		targetFile = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff";
+		vehicleFile = "object/mobile/vehicle/shared_speederbike_swoop.iff";
+
+	} else if(templateName == "speederbike") {
+		targetName = unicode("speederbike");
+		targetFile = "object/intangible/vehicle/shared_speederbike_pcd.iff";
+		vehicleFile = "object/mobile/vehicle/shared_speederbike.iff";
+
+	} else if(templateName == "landspeeder_x34"){
+		targetName = unicode("landspeeder_x34");
+		targetFile = "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff";
+		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x34.iff";
+
+	} else if(templateName == "speederbike_swoop_deed") {
 		targetName = unicode("speederbike_swoop");
 		targetFile = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_swoop.iff";
@@ -85,6 +102,29 @@ void VehicleDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 	player->sendMessage(omr);
 }
 
+void VehicleDeedImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	int hitPoints = (int)craftingValues->getCurrentValue("hitPoints");
+	setHitPoints(hitPoints);
+}
+
+void VehicleDeedImplementation::addAttributes(AttributeListMessage* alm) {
+	addHeaderAttributes(alm);
+
+	alm->insertAttribute("hit_points", getHitPoints());
+
+	addFooterAttributes(alm);
+}
+
+void VehicleDeedImplementation::parseItemAttributes(){
+
+	string temp = "hit_points";
+	hitPoints = itemAttributes->getIntAttribute(temp);
+
+}
+
 int VehicleDeedImplementation::useObject(Player* player) {
 	Datapad * datapad = player->getDatapad();
 
@@ -94,6 +134,8 @@ int VehicleDeedImplementation::useObject(Player* player) {
 			player->getNewItemID());
 
 	try {
+		vehicle->setMaxCondition(getHitPoints());
+		vehicle->setObjectFileName(vehicleFile);
 		vehicle->addToDatapad();
 
 		vehicle->getITNO()->sendTo(player, true);
@@ -120,7 +162,7 @@ int VehicleDeedImplementation::useObject(Player* player) {
 
 			if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
 				player->removeInventoryItem(objectID);
-				itemManager->deletePlayerItem(player, _this, true);
+				itemManager->deletePlayerItem(player, _this, false);
 				finalize();
 			}
 		}
