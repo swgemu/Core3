@@ -46,7 +46,7 @@ flitHarasser = Creature:new {
       faction = "Flit",
       gender = "",
 
-      name = "a Flit Harasser",
+      stfName = "a Flit Harasser",
       objectCRC = 878848245, 
       socialGroup = "Flit",
       named = FALSE, 
@@ -138,7 +138,8 @@ flitHarasser = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 9,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "flitAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

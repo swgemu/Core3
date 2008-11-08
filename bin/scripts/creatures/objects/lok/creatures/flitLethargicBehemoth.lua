@@ -46,8 +46,9 @@ flitLethargicBehemoth = Creature:new {
       faction = "Flit",
       gender = "",
 
-      name = "a Flit Lethargic Behemoth",
-      objectCRC = 1138484659, 
+      stfName = "a Flit Lethargic Behemoth",
+      --objectCRC = 1138484659,
+      objectCRC = 4002066866,
       socialGroup = "Flit",
       named = FALSE, 
 
@@ -138,10 +139,11 @@ flitLethargicBehemoth = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 11,
 
-      skills = { " Stun attack", " Knockdown attack", "" }
+      --skills = { " Stun attack", " Knockdown attack", "" }
+      skills = { "flitAttack1", "flitAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(flitLethargicBehemoth, 1138484659) --  Add to Global Table
+Creatures:addCreature(flitLethargicBehemoth, 4002066866) --  Add to Global Table

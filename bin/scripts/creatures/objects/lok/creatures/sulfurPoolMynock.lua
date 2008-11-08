@@ -46,7 +46,7 @@ sulfurPoolMynock = Creature:new {
       faction = "Mynock",
       gender = "",
 
-      name = "a Sulfur Pool Mynock",
+      stfName = "a Sulfur Pool Mynock",
       objectCRC = 2246027732, 
       socialGroup = "Mynock",
       named = FALSE, 
@@ -138,7 +138,8 @@ sulfurPoolMynock = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 57,
 
-      skills = { " Knockdown attack", " Intimidation attack", "" }
+      --skills = { " Knockdown attack", " Intimidation attack", "" }
+      skills = { "mynockAttack4", "mynockAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

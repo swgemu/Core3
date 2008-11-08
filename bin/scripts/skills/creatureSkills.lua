@@ -59,6 +59,10 @@ RunSkillsFile("creatureSkills/dathomir/npcSkills.lua")
 RunSkillsFile("creatureSkills/endor/creatureSkills.lua")
 RunSkillsFile("creatureSkills/endor/npcSkills.lua")
 
+-- Lok
+RunSkillsFile("creatureSkills/lok/creatureSkills.lua")
+--RunSkillsFile("creatureSkills/lok/npcSkills.lua")
+
 -- Naboo
 RunSkillsFile("creatureSkills/naboo/creatureSkills.lua")
 RunSkillsFile("creatureSkills/naboo/npcSkills.lua")

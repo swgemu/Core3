@@ -46,7 +46,7 @@ enragedKimogila = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      name = "a Enraged Kimogila",
+      stfName = "a Enraged Kimogila",
       objectCRC = 533451918, 
       socialGroup = "Kimogila",
       named = FALSE, 
@@ -138,7 +138,8 @@ enragedKimogila = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 1500,
 
-      skills = { " Knockdown attack", " Dizzy attack", "" }
+      --skills = { " Knockdown attack", " Dizzy attack", "" }
+      skills = { "kimogilaAttack5", "kimogilaAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

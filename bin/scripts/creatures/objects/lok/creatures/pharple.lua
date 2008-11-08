@@ -46,7 +46,7 @@ pharple = Creature:new {
       faction = "Pharple",
       gender = "",
 
-      name = "a Pharple",
+      stfName = "a Pharple",
       objectCRC = 1469572833, 
       socialGroup = "Pharple",
       named = FALSE, 
@@ -138,7 +138,7 @@ pharple = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 18,
 
-      skills = { "", "", "" }
+      --skills = { "", "", "" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

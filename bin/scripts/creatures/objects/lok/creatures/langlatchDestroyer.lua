@@ -40,47 +40,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-duneKimogilla = Creature:new {
-      objectName = "duneKimogilla",  -- Lua Object Name
+langlatchDestroyer = Creature:new {
+      objectName = "langlatchDestroyer",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "Kimogila",
+      faction = "Langlatch",
       gender = "",
 
-      name = "a Dune Kimogilla",
-      objectCRC = 533451918, 
-      socialGroup = "Kimogila",
+      stfName = "a Langlatch Destroyer",
+      objectCRC = 2513300255, 
+      socialGroup = "Langlatch",
       named = FALSE, 
 
-      level = 123,
+      level = 20,
       
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 65000,
-      healthMin = 53000,
+      healthMax = 3000,
+      healthMin = 2400,
       strength = 0,
       constitution = 0,
 
-      actionMax = 65000,
-      actionMin = 53000,
+      actionMax = 3000,
+      actionMin = 2400,
       quickness = 0,
       stamina = 0,
 
-      mindMax = 65000,
-      mindMin = 53000,
+      mindMax = 3000,
+      mindMin = 2400,
       focus = 0,
       willpower = 0,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 40,
-      energy = 65,
-      electricity = 0,
+      kinetic = 20,
+      energy = 0,
+      electricity = 45,
       stun = -1,
       blast = 0,
-      heat = 100,
-      cold = -1,
-      acid = 100,
+      heat = 15,
+      cold = 15,
+      acid = 45,
       lightsaber = 0,
 
       accuracy = 0,
@@ -88,8 +88,8 @@ duneKimogilla = Creature:new {
       healer = 0,
 
       pack = 1,
-      herd = 0,
-      stalker = 0,
+      herd = 1,
+      stalker = 1,
       killer = 1,
       aggressive = 1,
       invincible = 0, 
@@ -125,23 +125,24 @@ duneKimogilla = Creature:new {
 
       lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+      tame = 0.25,  -- Likely hood to be tamed
 
       milk = 0,
 
-      boneType = "",
-      boneMax = 20,
+      boneType = "bone_mammal_lok",
+      boneMax = 10,
 
-      hideType = "hide_leathery_lok",
-      hideMax = 1350,
+      hideType = "hide_wooly_lok",
+      hideMax = 10,
 
       meatType = "meat_carnivore_lok",
-      meatMax = 1450,
+      meatMax = 18,
 
-      skills = { " Intimidation attack", " Area attack (combo)", "" }
+      --skills = { " Stun attack", " Knockdown attack", "" }
+      skills = { "langlatchAttack1", "langlatchAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(duneKimogilla, 533451918) --  Add to Global Table
+Creatures:addCreature(langlatchDestroyer, 2513300255) --  Add to Global Table

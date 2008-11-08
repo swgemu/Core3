@@ -46,7 +46,7 @@ gurnaset = Creature:new {
       faction = "Gurnasel",
       gender = "",
 
-      name = "a Gurnaset",
+      stfName = "a Gurnaset",
       objectCRC = 526557680, 
       socialGroup = "Gurnasel",
       named = FALSE, 

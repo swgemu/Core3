@@ -46,7 +46,7 @@ kusak = Creature:new {
       faction = "Kusak",
       gender = "",
 
-      name = "a Kusak",
+      stfName = "a Kusak",
       objectCRC = 1518117227, 
       socialGroup = "Kusak",
       named = FALSE, 

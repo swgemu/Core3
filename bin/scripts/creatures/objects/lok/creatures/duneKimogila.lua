@@ -40,47 +40,47 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-elderSnorbalFemale = Creature:new {
-      objectName = "elderSnorbalFemale",  -- Lua Object Name
+duneKimogila = Creature:new {
+      objectName = "duneKimogila",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "Snorbal",
+      faction = "Kimogila",
       gender = "",
 
-      stfName = "a Elder Snorbal Female",
-      objectCRC = 2656910223, 
-      socialGroup = "Snorbal",
+      stfName = "a Dune Kimogilla",
+      objectCRC = 533451918, 
+      socialGroup = "Kimogila",
       named = FALSE, 
 
-      level = 34,
+      level = 123,
       
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 10800,
-      healthMin = 8800,
+      healthMax = 65000,
+      healthMin = 53000,
       strength = 0,
       constitution = 0,
 
-      actionMax = 10800,
-      actionMin = 8800,
+      actionMax = 65000,
+      actionMin = 53000,
       quickness = 0,
       stamina = 0,
 
-      mindMax = 10800,
-      mindMin = 8800,
+      mindMax = 65000,
+      mindMin = 53000,
       focus = 0,
       willpower = 0,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
+      kinetic = 40,
+      energy = 65,
       electricity = 0,
-      stun = 0,
+      stun = -1,
       blast = 0,
-      heat = -1,
-      cold = 0,
-      acid = 0,
+      heat = 100,
+      cold = -1,
+      acid = 100,
       lightsaber = 0,
 
       accuracy = 0,
@@ -88,10 +88,10 @@ elderSnorbalFemale = Creature:new {
       healer = 0,
 
       pack = 1,
-      herd = 1,
+      herd = 0,
       stalker = 0,
-      killer = 0,
-      aggressive = 0,
+      killer = 1,
+      aggressive = 1,
       invincible = 0, 
 
 	  meleeDefense = 1,  
@@ -127,22 +127,22 @@ elderSnorbalFemale = Creature:new {
 
       tame = 0,  -- Likely hood to be tamed
 
-      milk = 1,
+      milk = 0,
 
-      boneType = "bone_mammal_lok",
-      boneMax = 420,
+      boneType = "",
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
-      hideMax = 455,
+      hideMax = 1350,
 
-      meatType = "meat_herbivore_lok",
-      meatMax = 570,
+      meatType = "meat_carnivore_lok",
+      meatMax = 1450,
 
-      --skills = { " Dizzy attack", " Stun attack", "" }
-      skills = { "snorbalAttack1", "snorbalAttack2" },
+      --skills = { " Intimidation attack", " Area attack (combo)", "" }
+      skills = { "kimogilaAttack1", "kimogilaAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(elderSnorbalFemale, 2656910223) --  Add to Global Table
+Creatures:addCreature(duneKimogila, 533451918) --  Add to Global Table

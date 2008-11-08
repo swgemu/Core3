@@ -46,7 +46,7 @@ riversideSulfurMynock = Creature:new {
       faction = "Mynock",
       gender = "",
 
-      name = "a Riverside Sulfur Mynock",
+      stfName = "a Riverside Sulfur Mynock",
       objectCRC = 1599197632, 
       socialGroup = "Mynock",
       named = FALSE, 
@@ -138,7 +138,8 @@ riversideSulfurMynock = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 60,
 
-      skills = { " Disease attack (medium)", " Blind attack", "" }
+      --skills = { " Disease attack (medium)", " Blind attack", "" }
+      skills = { "mynockAttack2", "mynockAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

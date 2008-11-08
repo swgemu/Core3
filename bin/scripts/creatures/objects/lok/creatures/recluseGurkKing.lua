@@ -46,7 +46,7 @@ recluseGurkKing = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Recluse Gurk King",
+      stfName = "a Recluse Gurk King",
       objectCRC = 657461156, 
       socialGroup = "Gurk",
       named = FALSE, 
@@ -138,7 +138,8 @@ recluseGurkKing = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Blind attack", "" }
+      --skills = { " Posture down attack", " Blind attack", "" }
+      skills = { "gurkAttack5", "gurkAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

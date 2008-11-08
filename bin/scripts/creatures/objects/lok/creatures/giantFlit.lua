@@ -46,7 +46,7 @@ giantFlit = Creature:new {
       faction = "Flit",
       gender = "",
 
-      name = "a Giant Flit",
+      stfName = "a Giant Flit",
       objectCRC = 4002066866, 
       socialGroup = "Flit",
       named = FALSE, 
@@ -138,7 +138,8 @@ giantFlit = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 11,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "flitAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ gurnasetHatchling = Creature:new {
       faction = "Gurnasel",
       gender = "",
 
-      name = "a Gurnaset Hatchling",
+      stfName = "a Gurnaset Hatchling",
       objectCRC = 2388439199, 
       socialGroup = "Gurnasel",
       named = FALSE, 
@@ -138,7 +138,7 @@ gurnasetHatchling = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 351,
 
-      skills = { "", "", "" }
+      --skills = { "", "", "" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -40,13 +40,13 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-vespScavanger = Creature:new {
-      objectName = "vespScavanger",  -- Lua Object Name
+vespScavenger = Creature:new {
+      objectName = "vespScavenger",  -- Lua Object Name
       creatureType = "ANIMAL",
       faction = "Vesp",
       gender = "",
 
-      name = "a Vesp Scavanger",
+      stfName = "a Vesp Scavanger",
       objectCRC = 3698435149, 
       socialGroup = "Vesp",
       named = FALSE, 
@@ -138,10 +138,11 @@ vespScavanger = Creature:new {
       meatType = "meat_reptilian_lok",
       meatMax = 9,
 
-      skills = { " Ranged attack (spit)", " Dizzy attack", " Intimidation attack" }
+      --skills = { " Ranged attack (spit)", " Dizzy attack", " Intimidation attack" }
+      skills = { "vespAttack4", "vespAttack5", "vespAttack7" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(vespScavanger, 3698435149) --  Add to Global Table
+Creatures:addCreature(vespScavenger, 3698435149) --  Add to Global Table

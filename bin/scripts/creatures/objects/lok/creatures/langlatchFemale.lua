@@ -46,7 +46,7 @@ langlatchFemale = Creature:new {
       faction = "Langlatch",
       gender = "",
 
-      name = "a Langlatch Female",
+      stfName = "a Langlatch Female",
       objectCRC = 2513300255, 
       socialGroup = "Langlatch",
       named = FALSE, 
@@ -138,7 +138,8 @@ langlatchFemale = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 11,
 
-      skills = { " Blind attack", " Stun attack", "" }
+      --skills = { " Blind attack", " Stun attack", "" }
+      skills = { "langlatchAttack3", "langlatchAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

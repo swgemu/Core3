@@ -40,15 +40,15 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-perlekScavanger = Creature:new {
-      objectName = "perlekScavanger",  -- Lua Object Name
+langlatchHunter = Creature:new {
+      objectName = "langlatchHunter",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "Perlek",
+      faction = "Langlatch",
       gender = "",
 
-      name = "a Perlek Scavanger",
-      objectCRC = 4249958797, 
-      socialGroup = "Perlek",
+      stfName = "a Langlatch Hunter",
+      objectCRC = 2513300255, 
+      socialGroup = "Langlatch",
       named = FALSE, 
 
       level = 15,
@@ -75,12 +75,12 @@ perlekScavanger = Creature:new {
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 0,
       energy = 0,
-      electricity = -1,
+      electricity = 0,
       stun = -1,
       blast = 0,
-      heat = 30,
-      cold = 30,
-      acid = -1,
+      heat = 0,
+      cold = 0,
+      acid = 0,
       lightsaber = 0,
 
       accuracy = 0,
@@ -88,9 +88,9 @@ perlekScavanger = Creature:new {
       healer = 0,
 
       pack = 1,
-      herd = 0,
+      herd = 1,
       stalker = 1,
-      killer = 0,
+      killer = 1,
       aggressive = 1,
       invincible = 0, 
 
@@ -129,19 +129,20 @@ perlekScavanger = Creature:new {
 
       milk = 0,
 
-      boneType = "bone_avian_lok",
-      boneMax = 185,
+      boneType = "bone_mammal_lok",
+      boneMax = 15,
 
-      hideType = "hide_leathery_lok",
-      hideMax = 115,
+      hideType = "hide_wooly_lok",
+      hideMax = 15,
 
-      meatType = "meat_avian_lok",
-      meatMax = 275,
+      meatType = "meat_carnivore_lok",
+      meatMax = 15,
 
-      skills = { " Stun attack", " Ranged attack (spit)", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "langlatchAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(perlekScavanger, 4249958797) --  Add to Global Table
+Creatures:addCreature(langlatchHunter, 2513300255) --  Add to Global Table

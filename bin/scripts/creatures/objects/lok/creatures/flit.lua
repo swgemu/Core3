@@ -46,7 +46,7 @@ flit = Creature:new {
       faction = "Flit",
       gender = "",
 
-      name = "a Flit",
+      stfName = "a Flit",
       objectCRC = 878848245, 
       socialGroup = "Flit",
       named = FALSE, 
@@ -138,7 +138,8 @@ flit = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 9,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "flitAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

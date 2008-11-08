@@ -40,34 +40,34 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-elderSnorbalFemale = Creature:new {
-      objectName = "elderSnorbalFemale",  -- Lua Object Name
+perlekScavenger = Creature:new {
+      objectName = "perlekScavenger",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "Snorbal",
+      faction = "Perlek",
       gender = "",
 
-      stfName = "a Elder Snorbal Female",
-      objectCRC = 2656910223, 
-      socialGroup = "Snorbal",
+      stfName = "a Perlek Scavanger",
+      objectCRC = 4249958797, 
+      socialGroup = "Perlek",
       named = FALSE, 
 
-      level = 34,
+      level = 15,
       
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 10800,
-      healthMin = 8800,
+      healthMax = 3000,
+      healthMin = 2400,
       strength = 0,
       constitution = 0,
 
-      actionMax = 10800,
-      actionMin = 8800,
+      actionMax = 3000,
+      actionMin = 2400,
       quickness = 0,
       stamina = 0,
 
-      mindMax = 10800,
-      mindMin = 8800,
+      mindMax = 3000,
+      mindMin = 2400,
       focus = 0,
       willpower = 0,
 
@@ -75,12 +75,12 @@ elderSnorbalFemale = Creature:new {
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 0,
       energy = 0,
-      electricity = 0,
-      stun = 0,
+      electricity = -1,
+      stun = -1,
       blast = 0,
-      heat = -1,
-      cold = 0,
-      acid = 0,
+      heat = 30,
+      cold = 30,
+      acid = -1,
       lightsaber = 0,
 
       accuracy = 0,
@@ -88,10 +88,10 @@ elderSnorbalFemale = Creature:new {
       healer = 0,
 
       pack = 1,
-      herd = 1,
-      stalker = 0,
+      herd = 0,
+      stalker = 1,
       killer = 0,
-      aggressive = 0,
+      aggressive = 1,
       invincible = 0, 
 
 	  meleeDefense = 1,  
@@ -99,7 +99,7 @@ elderSnorbalFemale = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_spray_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -125,24 +125,24 @@ elderSnorbalFemale = Creature:new {
 
       lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+      tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 1,
+      milk = 0,
 
-      boneType = "bone_mammal_lok",
-      boneMax = 420,
+      boneType = "bone_avian_lok",
+      boneMax = 185,
 
       hideType = "hide_leathery_lok",
-      hideMax = 455,
+      hideMax = 115,
 
-      meatType = "meat_herbivore_lok",
-      meatMax = 570,
+      meatType = "meat_avian_lok",
+      meatMax = 275,
 
-      --skills = { " Dizzy attack", " Stun attack", "" }
-      skills = { "snorbalAttack1", "snorbalAttack2" },
+      --skills = { " Stun attack", " Ranged attack (spit)", "" }
+      skills = { "perlekAttack4", "perlekAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(elderSnorbalFemale, 2656910223) --  Add to Global Table
+Creatures:addCreature(perlekScavenger, 4249958797) --  Add to Global Table

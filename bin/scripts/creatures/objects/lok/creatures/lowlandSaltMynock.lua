@@ -46,7 +46,7 @@ lowlandSaltMynock = Creature:new {
       faction = "Mynock",
       gender = "",
 
-      name = "a Lowland Salt Mynock",
+      stfName = "a Lowland Salt Mynock",
       objectCRC = 2246027732, 
       socialGroup = "Mynock",
       named = FALSE, 
@@ -138,7 +138,8 @@ lowlandSaltMynock = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 55,
 
-      skills = { " Dizzy attack", " Disease attack (medium)", "" }
+      --skills = { " Dizzy attack", " Disease attack (medium)", "" }
+      skills = { "mynockAttack1", "mynockAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

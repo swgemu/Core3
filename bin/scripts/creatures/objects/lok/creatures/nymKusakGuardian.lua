@@ -46,7 +46,7 @@ nymKusakGuardian = Creature:new {
       faction = "Nym",
       gender = "",
 
-      name = "a Nym Kusak Guardian",
+      stfName = "a Nym Kusak Guardian",
       objectCRC = 1518117227, 
       socialGroup = "Nym",
       named = FALSE, 
@@ -138,7 +138,8 @@ nymKusakGuardian = Creature:new {
       meatType = "",
       meatMax = 35,
 
-      skills = { " Dizzy attack", " Stun attack", "" }
+      --skills = { " Dizzy attack", " Stun attack", "" }
+      skills = { "kusakAttack2", "kusakAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ sharptoothLanglatch = Creature:new {
       faction = "Langlatch",
       gender = "",
 
-      name = "a Sharptooth Langlatch",
+      stfName = "a Sharptooth Langlatch",
       objectCRC = 2513300255, 
       socialGroup = "Langlatch",
       named = FALSE, 
@@ -138,7 +138,8 @@ sharptoothLanglatch = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 16,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "langlatchAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

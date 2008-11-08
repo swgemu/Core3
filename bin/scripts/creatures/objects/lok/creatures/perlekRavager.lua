@@ -46,7 +46,7 @@ perlekRavager = Creature:new {
       faction = "Perlek",
       gender = "",
 
-      name = "a Perlek Ravager",
+      stfName = "a Perlek Ravager",
       objectCRC = 4249958797, 
       socialGroup = "Perlek",
       named = FALSE, 
@@ -99,7 +99,7 @@ perlekRavager = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_spray_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +138,8 @@ perlekRavager = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 275,
 
-      skills = { " Dizzy attack", " Stun attack", " Ranged attack (spit)" }
+      --skills = { " Dizzy attack", " Stun attack", " Ranged attack (spit)" }
+      skills = { "perlekAttack3", "perlekAttack4", "perlekAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
