@@ -1668,6 +1668,20 @@ void CreatureObjectImplementation::changeConditionDamage(int amount) {
 	broadcastMessage(dcreo3);
 }
 
+void CreatureObjectImplementation::setMaxCondition(int condition) {
+	maxCondition = condition;
+
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3((CreatureObject*) _this);
+	if (conditionDamage > maxCondition){
+		conditionDamage = maxCondition;
+		dcreo3->updateConditionDamage();
+	}
+	dcreo3->updateMaxCondition();
+	dcreo3->close();
+
+	broadcastMessage(dcreo3);
+}
+
 void CreatureObjectImplementation::resetHAMBars(bool doUpdateClient) {
 	setHealthMax(getBaseHealth());
 	setStrengthMax(getBaseStrength());

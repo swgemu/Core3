@@ -712,6 +712,7 @@ interface CreatureObject implements SceneObject {
 	void setLightSaber(float lig);
 
 	void changeConditionDamage(int amount);
+	void setMaxCondition(int condition);
 
 	void setPosture(unsigned char state, boolean overrideDizzy = false, boolean objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 

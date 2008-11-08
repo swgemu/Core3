@@ -103,6 +103,8 @@ public:
 
 	void setObjectFileName(const string& name);
 
+	string& getObjectFileName();
+
 	void setType(int tp);
 
 	void setRespawnTimer(unsigned int seconds);
@@ -129,6 +131,7 @@ protected:
 	virtual ~Creature();
 
 	string _return_getName;
+	string _return_getObjectFileName;
 
 	friend class CreatureHelper;
 };
@@ -214,6 +217,8 @@ public:
 	void setCreatureGroup(CreatureGroup* group);
 
 	void setObjectFileName(const string& name);
+
+	string& getObjectFileName();
 
 	void setType(int tp);
 

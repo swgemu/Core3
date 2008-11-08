@@ -484,6 +484,7 @@ public:
 	bool changeWillpowerWoundsBar(int32 wounds, bool forcedChange = false);
 
 	void changeConditionDamage(int amount);
+	void setMaxCondition(int condition);
 
 	void changeShockWounds(int bf);
 

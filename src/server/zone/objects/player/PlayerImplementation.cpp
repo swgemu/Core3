@@ -4339,7 +4339,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		if (datapad == NULL)
 			return;
 
-		string name, detailName, appearance, mountApp, attr;
+		string name, detailName, appearance, mountApp, attr, fileName;
 		stringstream query;
 		uint32 objCRC, itnoCRC;
 		uint64 objID;
@@ -4356,6 +4356,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 			appearance = "";
 			attr = "";
 			mountApp = "";
+			fileName = "";
 			objCRC = 0;
 			objID = 0;
 			itnoCRC = 0;
@@ -4381,6 +4382,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 
 							mountCreature->getCharacterAppearance(mountApp);
 
+							fileName = mountCreature->getObjectFileName();
 							attr = mountCreature->getAttributes();
 							MySqlDatabase::escapeString(attr);
 
@@ -4401,7 +4403,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 						query << "Insert into datapad set character_id = " << player->getCharacterID()
 						<< ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = " << itnoCRC
 						<< ",itemMask = 65535, appearance = '" << appearance.substr(0, appearance.size() - 1)
-						<< "',attributes = '" << attr << "',obj_id = " << objID << ";";
+						<< "',attributes = '" << attr << "',file_name = '" << fileName << "',obj_id = " << objID << ";";
 
 						ServerDatabase::instance()->executeStatement(query);
 					}

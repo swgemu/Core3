@@ -137,6 +137,8 @@ interface Creature implements CreatureObject {
 	void setCreatureGroup(CreatureGroup group);
 
 	void setObjectFileName(const string name);
+	
+	string getObjectFileName();
 
 	void setType(int tp);
 

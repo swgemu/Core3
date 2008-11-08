@@ -80,6 +80,9 @@ RunDraftSchematicFile("objects/draftschematics/artisan/solarEnergySurveyTool.lua
 RunDraftSchematicFile("objects/draftschematics/artisan/mineralSurveyDevice.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/gasPocketSurveyDevice.lua")
 RunDraftSchematicFile("objects/draftschematics/artisan/floraSurveyTool.lua")
+RunDraftSchematicFile("objects/draftschematics/artisan/swoop.lua")
+RunDraftSchematicFile("objects/draftschematics/artisan/speederbike.lua")
+RunDraftSchematicFile("objects/draftschematics/artisan/x34Landspeeder.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterPowerHandler.lua")
 RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterRifleBarrel.lua")
 

@@ -503,12 +503,25 @@ void Creature::setObjectFileName(const string& name) {
 		((CreatureImplementation*) _impl)->setObjectFileName(name);
 }
 
-void Creature::setType(int tp) {
+string& Creature::getObjectFileName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 43);
+
+		method.executeWithAsciiReturn(_return_getObjectFileName);
+		return _return_getObjectFileName;
+	} else
+		return ((CreatureImplementation*) _impl)->getObjectFileName();
+}
+
+void Creature::setType(int tp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 44);
 		method.addSignedIntParameter(tp);
 
 		method.executeWithVoidReturn();
@@ -521,7 +534,7 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 		method.addUnsignedIntParameter(seconds);
 
 		method.executeWithVoidReturn();
@@ -534,7 +547,7 @@ void Creature::removePlayerFromHarvestList(string& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 		method.addAsciiParameter(firstName);
 
 		method.executeWithVoidReturn();
@@ -547,7 +560,7 @@ bool Creature::canHarvest(string& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
@@ -560,7 +573,7 @@ bool Creature::beenLooted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -572,7 +585,7 @@ void Creature::wasLooted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 
 		method.executeWithVoidReturn();
 	} else
@@ -584,7 +597,7 @@ void Creature::setLootCreated(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -597,7 +610,7 @@ void Creature::setRandomMovement(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -610,7 +623,7 @@ unsigned int Creature::getFPValue() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -622,7 +635,7 @@ void Creature::setFPValue(unsigned int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 		method.addUnsignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -753,33 +766,36 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setObjectFileName(inv->getAsciiParameter(_param0_setObjectFileName__string_));
 		break;
 	case 43:
-		setType(inv->getSignedIntParameter());
+		resp->insertAscii(getObjectFileName());
 		break;
 	case 44:
-		setRespawnTimer(inv->getUnsignedIntParameter());
+		setType(inv->getSignedIntParameter());
 		break;
 	case 45:
-		removePlayerFromHarvestList(inv->getAsciiParameter(_param0_removePlayerFromHarvestList__string_));
+		setRespawnTimer(inv->getUnsignedIntParameter());
 		break;
 	case 46:
-		resp->insertBoolean(canHarvest(inv->getAsciiParameter(_param0_canHarvest__string_)));
+		removePlayerFromHarvestList(inv->getAsciiParameter(_param0_removePlayerFromHarvestList__string_));
 		break;
 	case 47:
-		resp->insertBoolean(beenLooted());
+		resp->insertBoolean(canHarvest(inv->getAsciiParameter(_param0_canHarvest__string_)));
 		break;
 	case 48:
-		wasLooted();
+		resp->insertBoolean(beenLooted());
 		break;
 	case 49:
-		setLootCreated(inv->getBooleanParameter());
+		wasLooted();
 		break;
 	case 50:
-		setRandomMovement(inv->getBooleanParameter());
+		setLootCreated(inv->getBooleanParameter());
 		break;
 	case 51:
-		resp->insertInt(getFPValue());
+		setRandomMovement(inv->getBooleanParameter());
 		break;
 	case 52:
+		resp->insertInt(getFPValue());
+		break;
+	case 53:
 		setFPValue(inv->getUnsignedIntParameter());
 		break;
 	default:
@@ -935,6 +951,10 @@ void CreatureAdapter::setCreatureGroup(CreatureGroup* group) {
 
 void CreatureAdapter::setObjectFileName(const string& name) {
 	return ((CreatureImplementation*) impl)->setObjectFileName(name);
+}
+
+string& CreatureAdapter::getObjectFileName() {
+	return ((CreatureImplementation*) impl)->getObjectFileName();
 }
 
 void CreatureAdapter::setType(int tp) {
