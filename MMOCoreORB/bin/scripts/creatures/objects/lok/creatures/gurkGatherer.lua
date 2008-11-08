@@ -46,7 +46,7 @@ gurkGatherer = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Gurk Gatherer",
+      stfName = "a Gurk Gatherer",
       objectCRC = 3464397925, 
       socialGroup = "Gurk",
       named = FALSE, 
@@ -138,7 +138,8 @@ gurkGatherer = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 350,
 
-      skills = { " Posture down attack", " Stun attack", "" }
+      --skills = { " Posture down attack", " Stun attack", "" }
+      skills = { "gurkAttack5", "gurkAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

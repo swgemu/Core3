@@ -46,7 +46,7 @@ langlatchHatchling = Creature:new {
       faction = "Langiatch",
       gender = "",
 
-      name = "a Langlatch Hatchling",
+      stfName = "a Langlatch Hatchling",
       objectCRC = 2513300255, 
       socialGroup = "Langiatch",
       named = FALSE, 
@@ -138,7 +138,8 @@ langlatchHatchling = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 5,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "langlatchAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

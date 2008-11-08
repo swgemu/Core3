@@ -46,7 +46,7 @@ kusakMauler = Creature:new {
       faction = "Kusak",
       gender = "",
 
-      name = "a Kusak Mauler",
+      stfName = "a Kusak Mauler",
       objectCRC = 1518117227, 
       socialGroup = "Kusak",
       named = FALSE, 
@@ -138,7 +138,8 @@ kusakMauler = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 21,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "kusakAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ snorbalTitanicDemolisher = Creature:new {
       faction = "Snorbal",
       gender = "",
 
-      name = "a Snorbal Titanic Demolisher",
+      stfName = "a Snorbal Titanic Demolisher",
       objectCRC = 581977565, 
       socialGroup = "Snorbal",
       named = FALSE, 
@@ -138,7 +138,8 @@ snorbalTitanicDemolisher = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 570,
 
-      skills = { " Intimidation attack", " Knockdown attack", "" }
+      --skills = { " Intimidation attack", " Knockdown attack", "" }
+      skills = { "snorbalAttack5", "snorbalAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

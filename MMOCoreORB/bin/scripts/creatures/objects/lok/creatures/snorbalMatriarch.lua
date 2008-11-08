@@ -46,7 +46,7 @@ snorbalMatriarch = Creature:new {
       faction = "Snorbal",
       gender = "",
 
-      name = "a Snorbal Matriarch",
+      stfName = "a Snorbal Matriarch",
       objectCRC = 2831973457, 
       socialGroup = "Snorbal",
       named = FALSE, 
@@ -138,7 +138,8 @@ snorbalMatriarch = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 600,
 
-      skills = { " Dizzy attack", " Posture down attack", "" }
+      --skills = { " Dizzy attack", " Posture down attack", "" }
+      skills = { "snorbalAttack1", "snorbalAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

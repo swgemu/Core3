@@ -46,7 +46,7 @@ kusakHunter = Creature:new {
       faction = "Kusak",
       gender = "",
 
-      name = "a Kusak Hunter",
+      stfName = "a Kusak Hunter",
       objectCRC = 1518117227, 
       socialGroup = "Kusak",
       named = FALSE, 
@@ -138,7 +138,8 @@ kusakHunter = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 20,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "kusakAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

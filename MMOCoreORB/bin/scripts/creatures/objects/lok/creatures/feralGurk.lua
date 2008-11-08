@@ -46,7 +46,7 @@ feralGurk = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Feral Gurk",
+      stfName = "a Feral Gurk",
       objectCRC = 3464397925, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +138,7 @@ feralGurk = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 350,
 
-      skills = { "gurkAttack1" },
+      skills = { "gurkAttack3", "gurkAttack4" },
 	  -- skills = { " Dizzy attack", " Stun attack", "" },
        respawnTimer = 60,
 

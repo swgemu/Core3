@@ -46,7 +46,7 @@ langlatchJuvenile = Creature:new {
       faction = "Langlatch",
       gender = "",
 
-      name = "a Langlatch Juvenile",
+      stfName = "a Langlatch Juvenile",
       objectCRC = 92206253, 
       socialGroup = "Langlatch",
       named = FALSE, 
@@ -138,7 +138,8 @@ langlatchJuvenile = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 7,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "langlatchAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

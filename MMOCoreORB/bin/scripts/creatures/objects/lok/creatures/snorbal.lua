@@ -46,7 +46,7 @@ snorbal = Creature:new {
       faction = "Snorbal",
       gender = "",
 
-      name = "a Snorbal",
+      stfName = "a Snorbal",
       objectCRC = 581977565, 
       socialGroup = "Snorbal",
       named = FALSE, 
@@ -138,7 +138,8 @@ snorbal = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 545,
 
-      skills = { " Stun attack", " Dizzy attack", "" }
+      --skills = { " Stun attack", " Dizzy attack", "" }
+      skills = { "snorbalAttack2", "snorbalAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

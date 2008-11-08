@@ -46,7 +46,7 @@ youngSpinedSnake = Creature:new {
       faction = "Spinesnake",
       gender = "",
 
-      name = "a Young Spined Snake",
+      stfName = "a Young Spined Snake",
       objectCRC = 729848387, 
       socialGroup = "Spinesnake",
       named = FALSE, 
@@ -138,7 +138,8 @@ youngSpinedSnake = Creature:new {
       meatType = "meat_reptilian_lok",
       meatMax = 7,
 
-      skills = { " Poison attack (mild)", "", "" }
+      --skills = { " Poison attack (mild)", "", "" }
+      skills = { "snakeAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

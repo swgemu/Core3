@@ -46,7 +46,7 @@ nymDomesticatedGurk = Creature:new {
       faction = "Nym",
       gender = "",
 
-      name = "a Nym Domesticated Gurk",
+      stfName = "a Nym Domesticated Gurk",
       objectCRC = 3464397925, 
       socialGroup = "Nym",
       named = FALSE, 
@@ -138,7 +138,8 @@ nymDomesticatedGurk = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 350,
 
-      skills = { " Dizzy attack", " Stun attack", "" }
+      --skills = { " Dizzy attack", " Stun attack", "" }
+      skills = { "gurkAttack3", "gurkAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

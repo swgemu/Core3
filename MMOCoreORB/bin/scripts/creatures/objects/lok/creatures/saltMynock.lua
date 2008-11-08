@@ -46,7 +46,7 @@ saltMynock = Creature:new {
       faction = "Mynock",
       gender = "",
 
-      name = "a Salt Mynock",
+      stfName = "a Salt Mynock",
       objectCRC = 1848263825, 
       socialGroup = "Mynock",
       named = FALSE, 
@@ -138,7 +138,8 @@ saltMynock = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 50,
 
-      skills = { " Blind attack", " Knockdown attack", "" }
+      --skills = { " Blind attack", " Knockdown attack", "" }
+      skills = { "mynockAttack3", "mynockAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ giantPharple = Creature:new {
       faction = "Pharple",
       gender = "",
 
-      name = "a Giant Pharple",
+      stfName = "a Giant Pharple",
       objectCRC = 4108418006, 
       socialGroup = "Pharple",
       named = FALSE, 
@@ -138,7 +138,7 @@ giantPharple = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 21,
 
-      skills = { "", "", "" }
+      --skills = { "", "", "" }
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

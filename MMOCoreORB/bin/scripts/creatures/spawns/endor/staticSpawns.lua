@@ -42,6 +42,4 @@
 
 --global clusters
 
-spawnCreature(gorax, 3, 4160, 5807)
-spawnCreature(gorax, 3, 5827, 4865)
-spawnCreature(gorax, 3, 3143, 5074)
+spawnCreatures(gorax, 3, 4965, 6853, 1500, 5)

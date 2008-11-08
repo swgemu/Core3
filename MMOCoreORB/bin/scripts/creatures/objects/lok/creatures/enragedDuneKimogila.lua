@@ -46,7 +46,7 @@ enragedDuneKimogila = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      name = "a Enraged Dune Kimogila",
+      stfName = "a Enraged Dune Kimogila",
       objectCRC = 533451918, 
       socialGroup = "Kimogila",
       named = FALSE, 
@@ -138,7 +138,8 @@ enragedDuneKimogila = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 1600,
 
-      skills = { " Area attack", " Blind attack", "" }
+      --skills = { " Area attack", " Blind attack", "" }
+      skills = { "kimogilaAttack3", "kimogilaAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

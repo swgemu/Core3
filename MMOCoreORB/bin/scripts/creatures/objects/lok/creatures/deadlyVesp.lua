@@ -46,7 +46,7 @@ deadlyVesp = Creature:new {
       faction = "Vesp",
       gender = "",
 
-      name = "a Deadly Vesp",
+      stfName = "a Deadly Vesp",
       objectCRC = 3698435149, 
       socialGroup = "Vesp",
       named = FALSE, 
@@ -138,7 +138,8 @@ deadlyVesp = Creature:new {
       meatType = "meat_reptilian_lok",
       meatMax = 15,
 
-      skills = { " Poison attack (strong)", " Stun attack", "" }
+      --skills = { " Poison attack (strong)", " Stun attack", "" }
+      skills = { "vespAttack1", "vespAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

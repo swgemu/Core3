@@ -46,7 +46,7 @@ kusakPup = Creature:new {
       faction = "Kusak",
       gender = "",
 
-      name = "a Kusak Pup",
+      stfName = "a Kusak Pup",
       objectCRC = 837351779, 
       socialGroup = "Kusak",
       named = FALSE, 
@@ -138,7 +138,8 @@ kusakPup = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 10,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { " Blind attack", "", "" }
+      skills = { "kusakAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

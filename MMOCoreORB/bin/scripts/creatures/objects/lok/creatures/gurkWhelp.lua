@@ -46,7 +46,7 @@ gurkWhelp = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Gurk Whelp",
+      stfName = "a Gurk Whelp",
       objectCRC = 3648622033, 
       socialGroup = "Gurk",
       named = FALSE, 
@@ -138,7 +138,8 @@ gurkWhelp = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 300,
 
-      skills = { " Blind attack", " Intimidation attack", "" }
+      --skills = { " Blind attack", " Intimidation attack", "" }
+      skills = { "gurkAttack6", "gurkAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ shaggyGurkYouth = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Shaggy Gurk Youth",
+      stfName = "a Shaggy Gurk Youth",
       objectCRC = 117230570, 
       socialGroup = "Gurk",
       named = FALSE, 
@@ -138,7 +138,8 @@ shaggyGurkYouth = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 35,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "gurkAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

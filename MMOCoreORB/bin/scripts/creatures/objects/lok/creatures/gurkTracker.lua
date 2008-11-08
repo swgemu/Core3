@@ -46,7 +46,7 @@ gurkTracker = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Gurk Tracker",
+      stfName = "a Gurk Tracker",
       objectCRC = 3464397925, 
       socialGroup = "Gurk",
       named = FALSE, 
@@ -138,7 +138,8 @@ gurkTracker = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 350,
 
-      skills = { " Blind attack", " Dizzy attack", "" }
+      --skills = { " Blind attack", " Dizzy attack", "" }
+      skills = { "gurkAttack6", "gurkAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

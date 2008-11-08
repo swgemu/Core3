@@ -46,7 +46,7 @@ gurkLoathsomeMangler = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Gurk Loathsome Mangler",
+      stfName = "a Gurk Loathsome Mangler",
       objectCRC = 3464397925, 
       socialGroup = "Gurk",
       named = FALSE, 
@@ -138,7 +138,8 @@ gurkLoathsomeMangler = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 350,
 
-      skills = { " Dizzy attack", " Intimidation attack", "" }
+      --skills = { " Dizzy attack", " Intimidation attack", "" }
+      skills = { "gurkAttack3", "gurkAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

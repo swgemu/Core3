@@ -46,7 +46,7 @@ elderSnorbalMale = Creature:new {
       faction = "Snorbalmale",
       gender = "",
 
-      name = "a Elder Snorbal Male",
+      stfName = "a Elder Snorbal Male",
       objectCRC = 2413744233, 
       socialGroup = "Snorbalmale",
       named = FALSE, 
@@ -138,7 +138,8 @@ elderSnorbalMale = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 570,
 
-      skills = { " Posture down attack", " Stun attack", "" }
+      --skills = { " Posture down attack", " Stun attack", "" }
+      skills = { "snorbalAttack3", "snorbalAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

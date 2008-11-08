@@ -46,7 +46,7 @@ giantDuneKimogila = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      name = "a Giant Dune Kimogila",
+      stfName = "a Giant Dune Kimogila",
       objectCRC = 1341282550, 
       socialGroup = "Kimogila",
       named = FALSE, 
@@ -138,7 +138,8 @@ giantDuneKimogila = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 1500,
 
-      skills = { " Area attack (combo)", " Area attack (disease)", "" }
+      --skills = { " Area attack (combo)", " Area attack (disease)", "" }
+      skills = { "kimogilaAttack2", "kimogilaAttack7" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ desertVesp = Creature:new {
       faction = "Vesp",
       gender = "",
 
-      name = "a Desert Vesp",
+      stfName = "a Desert Vesp",
       objectCRC = 3698435149, 
       socialGroup = "Vesp",
       named = FALSE, 
@@ -138,7 +138,7 @@ desertVesp = Creature:new {
       meatType = "meat_reptilian_lok",
       meatMax = 15,
 
-      skills = { "vespAttack1" },
+      skills = { "vespAttack1", "vespAttack2" },
 	  -- skills = { " Poison attack (strong)", " Stun attack", "" },
        respawnTimer = 60,
 

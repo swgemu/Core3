@@ -46,7 +46,7 @@ giantSpinedSnake = Creature:new {
       faction = "Spinesnake",
       gender = "",
 
-      name = "a Giant Spined Snake",
+      stfName = "a Giant Spined Snake",
       objectCRC = 928031214, 
       socialGroup = "Spinesnake",
       named = FALSE, 
@@ -138,7 +138,8 @@ giantSpinedSnake = Creature:new {
       meatType = "meat_reptilian_lok",
       meatMax = 15,
 
-      skills = { " Dizzy attack", " Poison attack (strong)", "" }
+      --skills = { " Dizzy attack", " Poison attack (strong)", "" }
+      skills = { "snakeAttack1", "snakeAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
