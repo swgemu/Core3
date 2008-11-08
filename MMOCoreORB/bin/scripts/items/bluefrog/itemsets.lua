@@ -55,7 +55,7 @@ RunItemLUAFile("bluefrog/clothingSets.lua");
 RunItemLUAFile("bluefrog/instrumentSet.lua");
 
 RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
-RunItemLUAFile("bluefrog/housingDeedSet.lua");
+--RunItemLUAFile("bluefrog/housingDeedSet.lua");
 
 RunItemLUAFile("bluefrog/weaponSet.lua");
 
