@@ -33,7 +33,7 @@ public:
 
 	int getHarvesterType();
 
-	void setActiveResourceID(unsigned long long oid);
+	void changeActiveResourceID(unsigned long long oid);
 
 	void updateOperatorsAddBlankActiveRescource();
 
@@ -55,7 +55,7 @@ public:
 
 	int getHarvesterType();
 
-	void setActiveResourceID(unsigned long long oid);
+	void changeActiveResourceID(unsigned long long oid);
 
 	void updateOperatorsAddBlankActiveRescource();
 

@@ -75,6 +75,7 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/managers/resource/ResourceManager.cpp \
 		server/zone/managers/resource/ResourceList.cpp \
 		server/zone/managers/resource/ResourceItem.cpp \
+		server/zone/managers/structure/StructureManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
 		server/zone/objects/area/ActiveArea.cpp \
 		server/zone/objects/area/Area.cpp \
@@ -148,7 +149,7 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/tangible/deed/vehicledeed/VehicleDeed.cpp \
 		server/zone/objects/tangible/deed/resourcedeed/ResourceDeed.cpp \
 		server/zone/objects/tangible/firework/Firework.cpp \
-        server/zone/objects/tangible/generic/GenericItem.cpp \ 
+        server/zone/objects/tangible/generic/GenericItem.cpp \
         server/zone/objects/tangible/generic/Dice.cpp \
 		server/zone/objects/tangible/holocron/Holocron.cpp \
 		server/zone/objects/tangible/instrument/Instrument.cpp \
@@ -236,6 +237,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/skills/performance/PerformanceManager.cpp \
 		server/zone/managers/skills/ScriptAttacksManager.cpp \
 		server/zone/managers/skills/SkillManager.cpp \
+		server/zone/managers/structure/StructureManagerImplementation.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/user/UserManagerImplementation.cpp \
 		server/zone/objects/attackable/AttackableObjectImplementation.cpp \
@@ -291,8 +293,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/playerhousedeed/PlayerHouseDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicledeed/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resourcedeed/ResourceDeedImplementation.cpp \
-        server/zone/objects/tangible/generic/GenericItemImplementation.cpp \ 
-        server/zone/objects/tangible/generic/DiceImplementation.cpp \ 
+        server/zone/objects/tangible/generic/GenericItemImplementation.cpp \
+        server/zone/objects/tangible/generic/DiceImplementation.cpp \
 		server/zone/objects/tangible/inventory/CreatureInventoryImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/CurePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/CureAreaPackImplementation.cpp \

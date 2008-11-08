@@ -580,10 +580,10 @@ public:
 
 	inline bool isPharmaceutical() {
 		return objectSubType == PHARMACEUTICAL;
-    } 
-	 
-    inline bool isGenericItem() { 
-        return objectSubType == GENERICITEM;		
+    }
+
+    inline bool isGenericItem() {
+        return objectSubType == GENERICITEM;
 	}
 
 	inline bool isWeaponPowerup() {

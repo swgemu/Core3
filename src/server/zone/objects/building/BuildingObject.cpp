@@ -94,30 +94,207 @@ void BuildingObject::setBuildingType(int type) {
 		((BuildingObjectImplementation*) _impl)->setBuildingType(type);
 }
 
-string& BuildingObject::getName() {
+int BuildingObject::getCellCount() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
 
-		method.executeWithAsciiReturn(_return_getName);
-		return _return_getName;
+		return method.executeWithSignedIntReturn();
 	} else
-		return ((BuildingObjectImplementation*) _impl)->getName();
+		return ((BuildingObjectImplementation*) _impl)->getCellCount();
 }
 
-void BuildingObject::setName(string& name) {
+CellObject* BuildingObject::getCell(int idx) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
-		method.addAsciiParameter(name);
+		method.addSignedIntParameter(idx);
+
+		return (CellObject*) method.executeWithObjectReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getCell(idx);
+}
+
+void BuildingObject::setPersistent(bool pers) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addBooleanParameter(pers);
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setName(name);
+		((BuildingObjectImplementation*) _impl)->setPersistent(pers);
+}
+
+void BuildingObject::setUpdated(bool up) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addBooleanParameter(up);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setUpdated(up);
+}
+
+bool BuildingObject::isPersistent() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isPersistent();
+}
+
+bool BuildingObject::isUpdated() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isUpdated();
+}
+
+void BuildingObject::setAttributes(string& attributestring) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addAsciiParameter(attributestring);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setAttributes(attributestring);
+}
+
+string& BuildingObject::getAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		method.executeWithAsciiReturn(_return_getAttributes);
+		return _return_getAttributes;
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getAttributes();
+}
+
+string& BuildingObject::getOwner() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		method.executeWithAsciiReturn(_return_getOwner);
+		return _return_getOwner;
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getOwner();
+}
+
+void BuildingObject::setOwner(const string& owner) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addAsciiParameter(owner);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setOwner(owner);
+}
+
+unsigned long long BuildingObject::getOwnerID() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getOwnerID();
+}
+
+void BuildingObject::setOwnerID(unsigned long long owner) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addUnsignedLongParameter(owner);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setOwnerID(owner);
+}
+
+void BuildingObject::parseItemAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->parseItemAttributes();
+}
+
+unicode& BuildingObject::getName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		method.executeWithUnicodeReturn(_return_getName);
+		return _return_getName;
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getName();
+}
+
+void BuildingObject::setName(const string& n) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addAsciiParameter(n);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setName(n);
+}
+
+void BuildingObject::setName(const unicode& n) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addUnicodeParameter(n);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setName(n);
 }
 
 string& BuildingObject::getDefaultName() {
@@ -125,7 +302,7 @@ string& BuildingObject::getDefaultName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 27);
 
 		method.executeWithAsciiReturn(_return_getDefaultName);
 		return _return_getDefaultName;
@@ -133,12 +310,25 @@ string& BuildingObject::getDefaultName() {
 		return ((BuildingObjectImplementation*) _impl)->getDefaultName();
 }
 
+string& BuildingObject::getTemplateName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		method.executeWithAsciiReturn(_return_getTemplateName);
+		return _return_getTemplateName;
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getTemplateName();
+}
+
 void BuildingObject::lock(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 29);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -151,7 +341,7 @@ void BuildingObject::unlock(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 30);
 		method.addBooleanParameter(doLock);
 
 		method.executeWithVoidReturn();
@@ -164,7 +354,7 @@ void BuildingObject::setSize(float minx, float miny, float maxx, float maxy) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 31);
 		method.addFloatParameter(minx);
 		method.addFloatParameter(miny);
 		method.addFloatParameter(maxx);
@@ -180,7 +370,7 @@ void BuildingObject::insert(QuadTreeEntry* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -193,7 +383,7 @@ void BuildingObject::remove(QuadTreeEntry* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 33);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -206,7 +396,7 @@ void BuildingObject::removeAll() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 34);
 
 		method.executeWithVoidReturn();
 	} else
@@ -218,7 +408,7 @@ bool BuildingObject::update(QuadTreeEntry* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 35);
 		method.addObjectParameter(obj);
 
 		return method.executeWithBooleanReturn();
@@ -231,7 +421,7 @@ void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(obj);
 		method.addFloatParameter(range);
 
@@ -267,36 +457,81 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setBuildingType(inv->getSignedIntParameter());
 		break;
 	case 11:
-		resp->insertAscii(getName());
+		resp->insertSignedInt(getCellCount());
 		break;
 	case 12:
-		setName(inv->getAsciiParameter(_param0_setName__string_));
+		resp->insertLong(getCell(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 13:
-		resp->insertAscii(getDefaultName());
+		setPersistent(inv->getBooleanParameter());
 		break;
 	case 14:
-		lock(inv->getBooleanParameter());
+		setUpdated(inv->getBooleanParameter());
 		break;
 	case 15:
-		unlock(inv->getBooleanParameter());
+		resp->insertBoolean(isPersistent());
 		break;
 	case 16:
-		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		resp->insertBoolean(isUpdated());
 		break;
 	case 17:
-		insert((QuadTreeEntry*) inv->getObjectParameter());
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__string_));
 		break;
 	case 18:
-		remove((QuadTreeEntry*) inv->getObjectParameter());
+		resp->insertAscii(getAttributes());
 		break;
 	case 19:
-		removeAll();
+		resp->insertAscii(getOwner());
 		break;
 	case 20:
-		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		setOwner(inv->getAsciiParameter(_param0_setOwner__string_));
 		break;
 	case 21:
+		resp->insertLong(getOwnerID());
+		break;
+	case 22:
+		setOwnerID(inv->getUnsignedLongParameter());
+		break;
+	case 23:
+		parseItemAttributes();
+		break;
+	case 24:
+		resp->insertUnicode(getName());
+		break;
+	case 25:
+		setName(inv->getAsciiParameter(_param0_setName__string_));
+		break;
+	case 26:
+		setName(inv->getUnicodeParameter(_param0_setName__unicode_));
+		break;
+	case 27:
+		resp->insertAscii(getDefaultName());
+		break;
+	case 28:
+		resp->insertAscii(getTemplateName());
+		break;
+	case 29:
+		lock(inv->getBooleanParameter());
+		break;
+	case 30:
+		unlock(inv->getBooleanParameter());
+		break;
+	case 31:
+		setSize(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		break;
+	case 32:
+		insert((QuadTreeEntry*) inv->getObjectParameter());
+		break;
+	case 33:
+		remove((QuadTreeEntry*) inv->getObjectParameter());
+		break;
+	case 34:
+		removeAll();
+		break;
+	case 35:
+		resp->insertBoolean(update((QuadTreeEntry*) inv->getObjectParameter()));
+		break;
+	case 36:
 		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
 		break;
 	default:
@@ -326,16 +561,76 @@ void BuildingObjectAdapter::setBuildingType(int type) {
 	return ((BuildingObjectImplementation*) impl)->setBuildingType(type);
 }
 
-string& BuildingObjectAdapter::getName() {
+int BuildingObjectAdapter::getCellCount() {
+	return ((BuildingObjectImplementation*) impl)->getCellCount();
+}
+
+CellObject* BuildingObjectAdapter::getCell(int idx) {
+	return ((BuildingObjectImplementation*) impl)->getCell(idx);
+}
+
+void BuildingObjectAdapter::setPersistent(bool pers) {
+	return ((BuildingObjectImplementation*) impl)->setPersistent(pers);
+}
+
+void BuildingObjectAdapter::setUpdated(bool up) {
+	return ((BuildingObjectImplementation*) impl)->setUpdated(up);
+}
+
+bool BuildingObjectAdapter::isPersistent() {
+	return ((BuildingObjectImplementation*) impl)->isPersistent();
+}
+
+bool BuildingObjectAdapter::isUpdated() {
+	return ((BuildingObjectImplementation*) impl)->isUpdated();
+}
+
+void BuildingObjectAdapter::setAttributes(string& attributestring) {
+	return ((BuildingObjectImplementation*) impl)->setAttributes(attributestring);
+}
+
+string& BuildingObjectAdapter::getAttributes() {
+	return ((BuildingObjectImplementation*) impl)->getAttributes();
+}
+
+string& BuildingObjectAdapter::getOwner() {
+	return ((BuildingObjectImplementation*) impl)->getOwner();
+}
+
+void BuildingObjectAdapter::setOwner(const string& owner) {
+	return ((BuildingObjectImplementation*) impl)->setOwner(owner);
+}
+
+unsigned long long BuildingObjectAdapter::getOwnerID() {
+	return ((BuildingObjectImplementation*) impl)->getOwnerID();
+}
+
+void BuildingObjectAdapter::setOwnerID(unsigned long long owner) {
+	return ((BuildingObjectImplementation*) impl)->setOwnerID(owner);
+}
+
+void BuildingObjectAdapter::parseItemAttributes() {
+	return ((BuildingObjectImplementation*) impl)->parseItemAttributes();
+}
+
+unicode& BuildingObjectAdapter::getName() {
 	return ((BuildingObjectImplementation*) impl)->getName();
 }
 
-void BuildingObjectAdapter::setName(string& name) {
-	return ((BuildingObjectImplementation*) impl)->setName(name);
+void BuildingObjectAdapter::setName(const string& n) {
+	return ((BuildingObjectImplementation*) impl)->setName(n);
+}
+
+void BuildingObjectAdapter::setName(const unicode& n) {
+	return ((BuildingObjectImplementation*) impl)->setName(n);
 }
 
 string& BuildingObjectAdapter::getDefaultName() {
 	return ((BuildingObjectImplementation*) impl)->getDefaultName();
+}
+
+string& BuildingObjectAdapter::getTemplateName() {
+	return ((BuildingObjectImplementation*) impl)->getTemplateName();
 }
 
 void BuildingObjectAdapter::lock(bool doLock) {

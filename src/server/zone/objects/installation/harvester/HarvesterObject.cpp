@@ -52,7 +52,7 @@ int HarvesterObject::getHarvesterType() {
 		return ((HarvesterObjectImplementation*) _impl)->getHarvesterType();
 }
 
-void HarvesterObject::setActiveResourceID(unsigned long long oid) {
+void HarvesterObject::changeActiveResourceID(unsigned long long oid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +62,7 @@ void HarvesterObject::setActiveResourceID(unsigned long long oid) {
 
 		method.executeWithVoidReturn();
 	} else
-		((HarvesterObjectImplementation*) _impl)->setActiveResourceID(oid);
+		((HarvesterObjectImplementation*) _impl)->changeActiveResourceID(oid);
 }
 
 void HarvesterObject::updateOperatorsAddBlankActiveRescource() {
@@ -92,7 +92,7 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertSignedInt(getHarvesterType());
 		break;
 	case 7:
-		setActiveResourceID(inv->getUnsignedLongParameter());
+		changeActiveResourceID(inv->getUnsignedLongParameter());
 		break;
 	case 8:
 		updateOperatorsAddBlankActiveRescource();
@@ -108,8 +108,8 @@ int HarvesterObjectAdapter::getHarvesterType() {
 	return ((HarvesterObjectImplementation*) impl)->getHarvesterType();
 }
 
-void HarvesterObjectAdapter::setActiveResourceID(unsigned long long oid) {
-	return ((HarvesterObjectImplementation*) impl)->setActiveResourceID(oid);
+void HarvesterObjectAdapter::changeActiveResourceID(unsigned long long oid) {
+	return ((HarvesterObjectImplementation*) impl)->changeActiveResourceID(oid);
 }
 
 void HarvesterObjectAdapter::updateOperatorsAddBlankActiveRescource() {

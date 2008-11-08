@@ -57,14 +57,20 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 
 	staticBuilding = staticBuild;
 
+	persistent = false;
+	updated = false;
+
 	buildingType = UNKNOWN; // default building Type
 	setDefaultName();
 
 	name = "";
+	owner = "";
 
 	objectType = SceneObjectImplementation::BUILDING;
 
 	cells.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
+
+	itemAttributes = new ItemAttributes();
 
 	stringstream name;
 	name << "Building = " << objectID;
@@ -77,13 +83,13 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 BuildingObjectImplementation::~BuildingObjectImplementation() {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
-
 		server->getZoneServer()->removeObject(cell);
-
 		cell->removeUndeploymentEvent();
-
 		cell->finalize();
 	}
+
+	delete itemAttributes;
+	itemAttributes = NULL;
 }
 
 void BuildingObjectImplementation::addCell(CellObject* cell) {
@@ -155,6 +161,8 @@ void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
 	//cout << "finished sending cells..." << endl;
 	SceneObjectImplementation::close(client);
 
+	//sendCellUpdates(player);
+
 }
 
 void BuildingObjectImplementation::sendCells(Player* player, bool doClose = true) {
@@ -180,7 +188,7 @@ void BuildingObjectImplementation::sendCells(Player* player, bool doClose = true
 		link = new UpdateContainmentMessage(cell->getObjectID(), _this->getObjectID(), 0xFFFFFFFF);
 		player->sendMessage(link);
 
-		cellMsg3 = new CellObjectMessage3(cell->getObjectID(), cell->getCellID()); //
+		cellMsg3 = new CellObjectMessage3(cell->getObjectID(), cell->getCellNumber()); //
 		player->sendMessage(cellMsg3);
 
 		cellMsg6 = new CellObjectMessage6(cell->getObjectID());
@@ -194,6 +202,26 @@ void BuildingObjectImplementation::sendCells(Player* player, bool doClose = true
 	}
 }
 
+
+void BuildingObjectImplementation::sendCellUpdates(Player* player) {
+	CellObjectDeltaMessage3* cdelta3;
+	CellObject *cell;
+
+	//cout << "sending cells, size: " << cells.size() << endl;
+	ZoneClientSession* client = player->getClient();
+	if (client == NULL)
+		return;
+
+	for (int i = 1; i <= cells.size(); ++i) {
+		//cout << "sending cell cell: " << i << endl;
+		cell = cells.get(i-1);
+
+		CellObjectDeltaMessage3* msg = new CellObjectDeltaMessage3(cell);
+		msg->updateCellNumber(i);
+		msg->close();
+		player->sendMessage(msg);
+	}
+}
 
 void BuildingObjectImplementation::sendDestroyTo(Player* player) {
 	//send destroy if not static
@@ -217,13 +245,52 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 	}
 }
 
+void BuildingObjectImplementation::parseItemAttributes() {
 
+}
 
 void BuildingObjectImplementation::setDefaultName()
 {
 	switch(getBuildingType())
 	{
-		case BuildingObjectImplementation::UNKNOWN:
+		case BuildingObjectImplementation::UNKNOWN: {
+			switch(objectCRC) {
+				case 0x90B33646: // object/building/player/shared_player_house_corellia_large_style_01.iff
+				case 0x4BA49ED1: //	object/building/player/shared_player_house_corellia_large_style_02.iff
+				case 0xFD0E9334: //	object/building/player/shared_player_house_corellia_medium_style_01.iff
+				case 0x26193BA3: //	object/building/player/shared_player_house_corellia_medium_style_02.iff
+				case 0xB09FC1F0: //	object/building/player/shared_player_house_corellia_small_style_01.iff
+				case 0xF489E568: //	object/building/player/shared_player_house_corellia_small_style_01_floorplan_02.iff
+				case 0x6B886967: //	object/building/player/shared_player_house_corellia_small_style_02.iff
+				case 0x73E08240: //	object/building/player/shared_player_house_corellia_small_style_02_floorplan_02.iff
+				case 0xB0D88CF3: //	object/building/player/shared_player_house_generic_large_style_01.iff
+				case 0x6BCF2464: //	object/building/player/shared_player_house_generic_large_style_02.iff
+				case 0x0E9790D4: //	object/building/player/shared_player_house_generic_medium_style_01.iff
+				case 0xD5803843: //	object/building/player/shared_player_house_generic_medium_style_02.iff
+				case 0x90F47B45: //	object/building/player/shared_player_house_generic_small_style_01.iff
+				case 0xEF5EC851: //	object/building/player/shared_player_house_generic_small_style_01_floorplan_02.iff
+				case 0x4BE3D3D2: //	object/building/player/shared_player_house_generic_small_style_02.iff
+				case 0x6837AF79: //	object/building/player/shared_player_house_generic_small_style_02_floorplan_02.iff
+				case 0x72CD9203: //	object/building/player/shared_player_house_naboo_large_style_01.iff
+					defaultName = "base_building";
+					break;
+				case 0x4F81CB23: //	object/building/player/shared_player_house_naboo_medium_style_01.iff
+					defaultName = "housing_naboo_medium";
+					break;
+				case 0x52E165B5: //	object/building/player/shared_player_house_naboo_small_style_01.iff
+				case 0x89F6CD22: //	object/building/player/shared_player_house_naboo_small_style_02.iff
+				case 0xB3EC8C88: //	object/building/player/shared_player_house_tatooine_large_style_01.iff
+				case 0x37D4CD0D: //	object/building/player/shared_player_house_tatooine_medium_style_01.iff
+				case 0x93C07B3E: //	object/building/player/shared_player_house_tatooine_small_style_01.iff
+				case 0x48D7D3A9: //	object/building/player/shared_player_house_tatooine_small_style_02.iff
+				case 0x9F3FA0EE: //	object/building/player/shared_player_merchant_tent_style_01.iff
+				case 0x44280879: //	object/building/player/shared_player_merchant_tent_style_02.iff
+				case 0x0D256FF4: //	object/building/player/shared_player_merchant_tent_style_03.iff
+				default:
+					defaultName = "base_building";
+			}
+		}
+
 		case BuildingObjectImplementation::BANK:
 		case BuildingObjectImplementation::CANTINA:
 		case BuildingObjectImplementation::CAPITOL:

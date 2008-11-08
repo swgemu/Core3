@@ -72,19 +72,23 @@ interface InstallationObject implements TangibleObject {
 	void handleStructureAddMaintenance(Player player);
 	void handleStructureAddEnergy(Player player);
 
+	string getOwner();
 	void setOwner(const string owner);
+	
+	unsigned long getOwnerID();
+	void setOwnerID(unsigned long owner);
 	
 	int getDestroyCode();
 	
 	unsigned int getNewDefenderUpdateCounter(unsigned int cnt);
 
 	void addMaintenance(unsigned long maint);
-	unsigned long getMaintenance();
+	unsigned long getSurplusMaintenance();
 	float getMaintenanceRate();
 
-	void addEnergy(unsigned long pow);
-	unsigned long getEnergy();
-	float getEnergyRate();	
+	void addPower(unsigned long pow);
+	unsigned long getSurplusPower();
+	float getPowerRate();	
 
 	void updateOperators();
 	int getOperatorListSize();
@@ -96,7 +100,7 @@ interface InstallationObject implements TangibleObject {
 	boolean isOperating();
 	void setOperating(boolean state);
 
-	float getSpecRate();
+	float getExtractionRate();
 	float getActualRate();
 	unsigned long getActiveResourceID();
 

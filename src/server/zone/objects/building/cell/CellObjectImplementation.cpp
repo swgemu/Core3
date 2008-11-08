@@ -57,7 +57,6 @@ which carries forward this exception.
 CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject* buio) : CellObjectServant(objID, CELL) {
 
 	parent = (SceneObject*) buio;
-
 	objectType = SceneObjectImplementation::CELL;
 
 	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
@@ -67,23 +66,32 @@ CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject*
 
 	setLogging(false);
 	setGlobalLogging(true);
+
+	cellNumber = 0;
+	itemAttributes = new ItemAttributes();
 }
 
-CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject* buio, uint64 cid) :
-	CellObjectServant(objID, CELL) {
-
-	cellID = cid;
-	//cout << "Cell Constructor objID: " << objID << " cellID: " << cid << endl;
+CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject* buio, int number) : CellObjectServant(objID, CELL) {
 
 	parent = (SceneObject*) buio;
-
 	objectType = SceneObjectImplementation::CELL;
 
 	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
+	stringstream name;
+	name << "Cell :" << objID;
+	setLoggingName(name.str());
+
+	setLogging(false);
+	setGlobalLogging(true);
+
+	cellNumber = number;
+	itemAttributes = new ItemAttributes();
 }
 
 
 CellObjectImplementation::~CellObjectImplementation() {
+	delete itemAttributes;
+	itemAttributes = NULL;
 }
 
 void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
@@ -97,6 +105,12 @@ void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 
 	unlock(doLock);
 }
+
+void CellObjectImplementation::parseItemAttributes() {
+	string attr = "cellNumber";
+	setCellNumber(itemAttributes->getIntAttribute(attr));
+}
+
 
 void CellObjectImplementation::removeChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);

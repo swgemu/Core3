@@ -20,6 +20,6 @@ interface HarvesterObject implements InstallationObject {
 	}
 
 	int getHarvesterType();
-	void setActiveResourceID(unsigned long oid);
+	void changeActiveResourceID(unsigned long oid);
 	void updateOperatorsAddBlankActiveRescource();
 }

@@ -53,16 +53,27 @@ class Zone;
 
 #include "BuildingObject.h"
 
+#include "../tangible/ItemAttributes.h"
+
 class BuildingObjectImplementation : public QuadTree, public BuildingObjectServant {
 	SortedVector<CellObject*> cells;
 
-	string name;
+	unicode name;
 	string defaultName;
+
+	string owner;
+	uint64 ownerID;
 
 	int buildingType;
 
+	bool persistent, updated;
+
 	bool staticBuilding;
 
+	string templateName;
+
+	ItemAttributes* itemAttributes;
+	string attributeString;
 public:
 	// Using the Building Types from Planet Map - comment out the non buildings :)
 	static const int UNKNOWN = 1;
@@ -154,20 +165,67 @@ public:
 
 public:
 	BuildingObjectImplementation(uint64 oid, bool staticBuild);
-
 	~BuildingObjectImplementation();
 
+
+	// Attribute Setters
+	inline void setOwner(const string own) {
+		setUpdated(true);
+		owner = own;
+		string attr("owner");
+		itemAttributes->setStringAttribute(attr, owner);
+	}
+	inline void setOwnerID(uint64 ownerid) {
+		setUpdated(true);
+		ownerID = ownerid;
+		string attr("ownerID");
+		itemAttributes->setUnsignedLongAttribute(attr, ownerID);
+	}
+	inline void setName(const string& n) {
+		name = n;
+	}
+
+	inline void setName(const unicode& n) {
+		name = n;
+	}
+
+	// Attribute Getters
+	inline string& getOwner() {
+		return owner;
+	}
+	inline uint64 getOwnerID() {
+		return ownerID;
+	}
+	inline unicode& getName() {
+		return name;
+	}
+	inline string& getTemplateName() {
+		templateName = "";
+		return templateName;
+	}
+
+	void parseItemAttributes();
 	void sendTo(Player* player, bool doClose = true);
 	void sendDestroyTo(Player* player);
 
 	void addCell(CellObject* cell);
 
 	void sendCells(Player* player, bool close);
+	void sendCellUpdates(Player* player);
 
 	void notifyInsert(QuadTreeEntry* obj);
 	void notifyDissapear(QuadTreeEntry* obj);
 
 	void notifyInsertToZone(SceneObject* object);
+
+	inline void setAttributes(string& attributestring) {
+		itemAttributes->setAttributes(attributestring);
+	}
+
+	inline string& getAttributes() {
+		itemAttributes->getAttributeString(attributeString);
+		return attributeString;
+	}
 
 	inline bool isStatic() {
 		return staticBuilding == true;
@@ -177,21 +235,36 @@ public:
 		return buildingType;
 	}
 
+	inline int getCellCount() {
+		return cells.size();
+	}
+
+	inline CellObject* getCell(int idx) {
+		return cells.get(idx);
+	}
+
 	inline void setBuildingType(const int type) {
 		buildingType = type;
 		setDefaultName();
 	}
 
+	inline void setPersistent(bool pers) {
+		persistent = pers;
+	}
+
+	inline void setUpdated(bool upd) {
+		updated = upd;
+	}
+
+	inline bool isPersistent() {
+		return persistent;
+	}
+
+	inline bool isUpdated() {
+		return updated;
+	}
+
 	void setDefaultName();
-
-
-	inline void setName(const string& Name) {
-		name = Name;
-	}
-
-	inline string& getName() {
-		return name;
-	}
 
 	inline string& getDefaultName() {
 		return defaultName;

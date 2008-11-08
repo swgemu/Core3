@@ -1,0 +1,32 @@
+
+import "server/zone/Zone";
+import "server/zone/ZoneProcessServerImplementation";
+
+import "../../objects/player/Player";
+
+import "../../objects/building/BuildingObject";
+import "../../objects/building/cell/CellObject";
+import "../../objects/tangible/deed/DeedObject";
+
+interface StructureManager {
+	StructureManager(Zone zone, ZoneProcessServerImplementation processor) {
+		super(zone, processor);
+	}	
+
+	void loadStructures();
+	void unloadStructures();
+	void saveStructures(boolean refresh);
+
+	BuildingObject findBuildingType(const string word, float targetX, float targetY);
+	
+	CellObject getCell(unsigned long id);
+	BuildingObject getBuilding(unsigned long id);
+
+	void spawnTempStructure(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+	void spawnInstallation(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+	void spawnHarvester(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);	
+	void spawnBuilding(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
+	void error(const string message);
+	void info(const string message);
+}

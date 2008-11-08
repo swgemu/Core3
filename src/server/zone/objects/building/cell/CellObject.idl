@@ -57,18 +57,23 @@ interface CellObject implements SceneObject {
 		super(oid, int type);
 	}
 
-	CellObject(unsigned long oid, BuildingObject buio, unsigned long cid) {
+	CellObject(unsigned long oid, BuildingObject buio, int number) {
 		super(oid, int type);
 	}
 	
+	int getChildrenSize();
 	void addChild(SceneObject object, boolean doLock = true);
 	void removeChild(SceneObject object, boolean doLock = true);
-	
 	SceneObject getChild(int idx);
 	
-	unsigned long getCellID();
-
-	int getChildrenSize();
+	void setCellNumber(int i);
+	int getCellNumber();
+	
+	void setAttributes(string attributestring);
+	string getAttributes();
+	void parseItemAttributes();
+	
+	string getTemplateName();
 	
 	//void sendTo(Player player);
 	//void sendDestroyTo(Player player);

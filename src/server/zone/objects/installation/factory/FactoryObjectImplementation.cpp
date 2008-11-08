@@ -35,11 +35,11 @@ FactoryObjectImplementation::FactoryObjectImplementation(uint64 oid, FactoryDeed
 	templateName = deed->getTargetTemplate();
 
 
-	maintenance = deed->getSurplusMaintenance();
-	maintenanceRate = deed->getMaintenanceRate();
-	energy = deed->getSurplusPower();
-	energyRate = maintenanceRate;
-	hopperSizeMax = deed->getHopperSize();
+	setSurplusMaintenance(deed->getSurplusMaintenance());
+	setMaintenanceRate(deed->getMaintenanceRate());
+	setSurplusPower(deed->getSurplusPower());
+	setPowerRate(getMaintenanceRate());
+	setHopperSizeMax(deed->getHopperSize());
 }
 
 FactoryObjectImplementation::~FactoryObjectImplementation(){

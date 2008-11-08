@@ -87,7 +87,9 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZonePro
 	creatureMap = new CreatureMap(20000);
 	lairMap = new LairMap(1000);
 
-	setLoggingName("CreatureManager" + zone->getZoneID());
+	stringstream loggingname;
+	loggingname << "CreatureManager " << zone->getZoneID();
+	setLoggingName(loggingname.str());
 
 	setLogging(false);
 	setGlobalLogging(true);

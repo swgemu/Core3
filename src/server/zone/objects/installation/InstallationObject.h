@@ -43,7 +43,13 @@ public:
 
 	void handleStructureAddEnergy(Player* player);
 
+	string& getOwner();
+
 	void setOwner(const string& owner);
+
+	unsigned long long getOwnerID();
+
+	void setOwnerID(unsigned long long owner);
 
 	int getDestroyCode();
 
@@ -51,15 +57,15 @@ public:
 
 	void addMaintenance(unsigned long long maint);
 
-	unsigned long long getMaintenance();
+	unsigned long long getSurplusMaintenance();
 
 	float getMaintenanceRate();
 
-	void addEnergy(unsigned long long pow);
+	void addPower(unsigned long long pow);
 
-	unsigned long long getEnergy();
+	unsigned long long getSurplusPower();
 
-	float getEnergyRate();
+	float getPowerRate();
 
 	void updateOperators();
 
@@ -77,7 +83,7 @@ public:
 
 	void setOperating(bool state);
 
-	float getSpecRate();
+	float getExtractionRate();
 
 	float getActualRate();
 
@@ -110,6 +116,8 @@ protected:
 
 	virtual ~InstallationObject();
 
+	string _return_getOwner;
+
 	friend class InstallationObjectHelper;
 };
 
@@ -135,7 +143,13 @@ public:
 
 	void handleStructureAddEnergy(Player* player);
 
+	string& getOwner();
+
 	void setOwner(const string& owner);
+
+	unsigned long long getOwnerID();
+
+	void setOwnerID(unsigned long long owner);
 
 	int getDestroyCode();
 
@@ -143,15 +157,15 @@ public:
 
 	void addMaintenance(unsigned long long maint);
 
-	unsigned long long getMaintenance();
+	unsigned long long getSurplusMaintenance();
 
 	float getMaintenanceRate();
 
-	void addEnergy(unsigned long long pow);
+	void addPower(unsigned long long pow);
 
-	unsigned long long getEnergy();
+	unsigned long long getSurplusPower();
 
-	float getEnergyRate();
+	float getPowerRate();
 
 	void updateOperators();
 
@@ -169,7 +183,7 @@ public:
 
 	void setOperating(bool state);
 
-	float getSpecRate();
+	float getExtractionRate();
 
 	float getActualRate();
 

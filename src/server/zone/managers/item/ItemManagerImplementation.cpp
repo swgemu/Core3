@@ -349,7 +349,6 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 				switch(DeedObjectImplementation::getSubType(objectcrc)){
 					case TangibleObjectImplementation::HARVESTER:
 						item = new HarvesterDeed(objectid, objectcrc, objectname, objecttemp);
-						cout << "ItemManagerImplementation::createPlayerObjectTemplate TangibleObjectImplementation::HARVESTER" << endl;
 						break;
 					case TangibleObjectImplementation::FACTORY:
 						item = new FactoryDeed(objectid, objectcrc, objectname, objecttemp);

@@ -533,7 +533,6 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 	}
 }
 
-
 void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
@@ -558,9 +557,7 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 }
 
 void RadialManager::handleManageHarvester(Player* player, SceneObject* obj) {
-	try{
-
-		cout << "RadialManager::handleManageHarvester() entered" << endl;
+	try {
 		if (!obj->isTangible())
 			return;
 
@@ -576,13 +573,10 @@ void RadialManager::handleManageHarvester(Player* player, SceneObject* obj) {
 
 		ResourceHarvesterActivatePageMessage* rhapm = new ResourceHarvesterActivatePageMessage(obj->getObjectID());
 		player->sendMessage(rhapm);
-
-
 	}
 	catch(...){
 		cout << "Unreported exception in RadialManager::handleManageHarvester\n";
 	}
-	cout << "RadialManager::handleManageHarvester() completed" << endl;
 }
 
 

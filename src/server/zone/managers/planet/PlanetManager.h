@@ -17,15 +17,11 @@ class Player;
 
 class ShuttleCreature;
 
-class BuildingObject;
-
-class CellObject;
-
-class DeedObject;
-
 class MissionTerminal;
 
 class NoBuildArea;
+
+class StructureManager;
 
 class PlanetManager : public DistributedObjectStub {
 public:
@@ -39,33 +35,23 @@ public:
 
 	unsigned long long getNextStaticObjectID(bool doLock = true);
 
+	StructureManager* getStructureManager();
+
 	void landShuttles();
 
 	void takeOffShuttles();
 
-	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
+	unsigned long long getLandingTime();
+
+	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
 
 	ShuttleCreature* getShuttle(const string& Shuttle);
 
 	void sendPlanetTravelPointListResponse(Player* player);
 
-	void spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	CellObject* getCell(unsigned long long id);
-
-	BuildingObject* getBuilding(unsigned long long id);
-
 	MissionTerminal* getMissionTerminal(unsigned long long oid);
 
-	unsigned long long getLandingTime();
-
 	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
-
-	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
 
 	bool isNoBuildArea(bool x, bool y);
 
@@ -101,33 +87,23 @@ public:
 
 	unsigned long long getNextStaticObjectID(bool doLock);
 
+	StructureManager* getStructureManager();
+
 	void landShuttles();
 
 	void takeOffShuttles();
 
-	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
+	unsigned long long getLandingTime();
+
+	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
 
 	ShuttleCreature* getShuttle(const string& Shuttle);
 
 	void sendPlanetTravelPointListResponse(Player* player);
 
-	void spawnInstallation(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	CellObject* getCell(unsigned long long id);
-
-	BuildingObject* getBuilding(unsigned long long id);
-
 	MissionTerminal* getMissionTerminal(unsigned long long oid);
 
-	unsigned long long getLandingTime();
-
 	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
-
-	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
 
 	bool isNoBuildArea(bool x, bool y);
 
@@ -140,10 +116,9 @@ public:
 	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason);
 
 protected:
-	string _param0_findBuildingType__string_float_float_;
-	string _param0_getShuttle__string_;
 	string _param0_getTravelFare__string_string_;
 	string _param1_getTravelFare__string_string_;
+	string _param0_getShuttle__string_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {
