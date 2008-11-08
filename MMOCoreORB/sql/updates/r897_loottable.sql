@@ -7,6 +7,8 @@ Target Database: swgemu
 Date: 10/27/2008 10:41:00 AM
 */
 
+DROP TABLE IF EXISTS `loottable`;
+
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for loottable

@@ -59,6 +59,7 @@ which carries forward this exception.
 
 #include "../zone/managers/guild/GuildManager.h"
 #include "../zone/managers/planet/PlanetManager.h"
+#include "../zone/managers/structure/StructureManager.h"
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
@@ -462,7 +463,13 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 					return;
 				}
 
-				BuildingObject* buiID = planetManager->findBuildingType(whereTo, targetX, targetY);
+				StructureManager* structureManager = planetManager->getStructureManager();
+				if (structureManager == NULL) {
+					targetPlayer->unlock();
+					return;
+				}
+
+				BuildingObject* buiID = structureManager->findBuildingType(whereTo, targetX, targetY);
 
 				if (buiID) {
 					targetPlayer->doWarp(buiID->getPositionX(), buiID->getPositionY(), 0, 0);

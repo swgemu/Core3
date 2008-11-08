@@ -45,11 +45,6 @@ which carries forward this exception.
 #include "events/ShuttleLandingEvent.h"
 #include "events/ShuttleTakeOffEvent.h"
 
-//#include "events/HarvesterSpawnEvent.h"
-#include "events/InstallationSpawnEvent.h"
-#include "events/TempInstallationSpawnEvent.h"
-#include "events/TempInstallationDespawnEvent.h"
-
 #include "PlanetManagerImplementation.h"
 
 #include "../../ZoneProcessServerImplementation.h"
@@ -82,8 +77,6 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	shuttleTakeOffEvent = new ShuttleTakeOffEvent(this);
 	shuttleLandingEvent = new ShuttleLandingEvent(this);
 
-	buildingMap = new BuildingMap(10000);
-	cellMap = new CellMap(10000);
 	shuttleMap = new ShuttleMap();
 	ticketCollectorMap = new TicketCollectorMap(2000);
 	travelTerminalMap = new TravelTerminalMap(2000);
@@ -96,6 +89,7 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	areaMap = new AreaMap(16000, 16000, 500, 500);
 
 	creatureManager = planet->getCreatureManager();
+	structureManager = new StructureManager(zone, server);
 
 	stringstream logName;
 	logName << "PlanetManager" << zone->getZoneID();
@@ -106,11 +100,13 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 }
 
 PlanetManagerImplementation::~PlanetManagerImplementation() {
-	delete cellMap;
-	cellMap = NULL;
 
-	delete buildingMap;
-	buildingMap = NULL;
+	if (structureManager != NULL) {
+		//structureManager->stop();
+
+		structureManager->finalize();
+		structureManager = NULL;
+	}
 
 	delete shuttleMap;
 	shuttleMap = NULL;
@@ -135,7 +131,7 @@ PlanetManagerImplementation::~PlanetManagerImplementation() {
 }
 
 void PlanetManagerImplementation::init() {
-	loadBuildings();
+	structureManager->loadStructures();
 }
 
 void PlanetManagerImplementation::start() {
@@ -144,15 +140,13 @@ void PlanetManagerImplementation::start() {
 	if (shuttleMap->size() > 0)
 		takeOffShuttles();
 
-	loadPlayerStructures();
-
 	loadNoBuildAreas();
 }
 
 void PlanetManagerImplementation::stop() {
 	lock();
 
-	clearBuildings();
+	structureManager->unloadStructures();
 	clearShuttles();
 	clearTicketCollectors();
 	clearTravelTerminals();
@@ -272,92 +266,6 @@ NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float m
 	return area;
 }
 
-void PlanetManagerImplementation::loadPlayerStructures() {
-	lock();
-
-	/*
-	int planetid = zone->getZoneID();
-
-	stringstream query;
-	query << "SELECT * FROM character_structures WHERE zoneid = " << planetid << ";";
-
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
-
-	while (result->next()) {
-		uint64 oid = result->getUnsignedLong(1);
-		uint64 parentId = result->getUnsignedLong(2);
-
-		string title = result->getString(3);
-
-		string tempname = result->getString(4);
-
-		uint64 crc = result->getUnsignedLong(5);
-
-		string file = result->getString(6);
-
-		float oX = result->getFloat(7);
-		float oY = result->getFloat(8);
-		float oZ = result->getFloat(9);
-		float oW = result->getFloat(10);
-
-		float x = result->getFloat(11);
-		float z = result->getFloat(12);
-		float y = result->getFloat(13);
-
-		float type = result->getFloat(14);
-
-		uint64 noBuildAreaUID = result->getUnsignedLong(15);
-
-		if ((int) file.find("object/building/") >= 0) {
-			BuildingObject* buio = new BuildingObject(oid, true);
-
-			buio->setObjectCRC(String::hashCode(file));
-			buio->initializePosition(x, z, y);
-			buio->setDirection(oX, oZ, oY, oW);
-			//buio->insertToZone(zone);
-			//zone->registerObject(buio);
-
-			buildingMap->put(oid, buio);
-		} else if ((int)file.find("object/cell/") >= 0) {
-			BuildingObject* buio = buildingMap->get(parentId);
-
-			if (buio == NULL)
-				buio = loadBuilding(parentId, planetid);
-
-			CellObject* cell = new CellObject(oid, buio);
-
-			cell->setObjectCRC(String::hashCode(file));
-			cell->initializePosition(x, z, y);
-			cell->setDirection(oX, oZ, oY, oW);
-			//cell->insertToZone(zone);
-			zone->registerObject(cell);
-
-			buio->addCell(cell);
-			buio->setAssociatedArea(noBuildAreaUID);
-			cellMap->put(oid, cell);
-		} else if ((int)file.find("object/installation/") >= 0) {
-			// Need to load player installations from DB here
-			uint64 newId = getNextStaticObjectID(true);
-
-			HarvesterObjectImplementation* hisoImpl =
-				new HarvesterObjectImplementation(newId, tempname);
-
-			hisoImpl->setObjectCRC(String::hashCode(file));
-			hisoImpl->initializePosition(x, 9, y);
-			hisoImpl->setDirection(oX, oZ, oY, oW);
-			hisoImpl->setAssociatedArea(noBuildAreaUID);
-			HarvesterObject* hiso = (HarvesterObject*) hisoImpl->deploy();
-			hiso->insertToZone(zone);
-
-			zone->registerObject(hiso);*/
-/*
-		}
-	}
-
-	delete result;
-*/
-	unlock();
-}
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {
 	lock();
@@ -420,22 +328,6 @@ void PlanetManagerImplementation::clearShuttles() {
 	shuttleMap->removeAll();
 }
 
-void PlanetManagerImplementation::clearBuildings() {
-	buildingMap->resetIterator();
-
-	while (buildingMap->hasNext()) {
-		BuildingObject* building = buildingMap->next();
-		building->removeFromZone();
-
-		building->removeUndeploymentEvent();
-
-		building->finalize();
-	}
-
-	buildingMap->removeAll();
-
-	info("cleared buildings");
-}
 
 void PlanetManagerImplementation::clearTicketCollectors() {
 	ticketCollectorMap->resetIterator();
@@ -727,160 +619,6 @@ void PlanetManagerImplementation::loadMissionTerminals() {
 	unlock();
 }
 
-void PlanetManagerImplementation::loadBuildings() {
-	int planetid = zone->getZoneID();
-
-	lock();
-
-	stringstream query;
-	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid << ";";
-
-	try {
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
-
-		while (result->next()) {
-			uint64 oid = result->getUnsignedLong(1);
-
-			uint64 parentId = result->getUnsignedLong(2);
-
-			string file = result->getString(3);
-
-			float oX = result->getFloat(4);
-			float oY = result->getFloat(5);
-			float oZ = result->getFloat(6);
-			float oW = result->getFloat(7);
-
-			float x = result->getFloat(8);
-			float z = result->getFloat(9);
-			float y = result->getFloat(10);
-
-			float type = result->getFloat(11);
-
-			if ((int) file.find("object/cell/") >= 0) {
-				BuildingObject* buio = buildingMap->get(parentId);
-
-				if (buio == NULL)
-					buio = loadBuilding(parentId, planetid);
-
-				CellObject* cell = new CellObject(oid, buio);
-
-				cell->setObjectCRC(String::hashCode(file));
-				cell->initializePosition(x, z, y);
-				cell->setDirection(oX, oZ, oY, oW);
-
-				cell->setZoneProcessServer(server);
-				zone->registerObject(cell);
-
-				buio->addCell(cell);
-
-				if (cellMap->put(oid, cell) != NULL) {
-					error("Error CELL/BUILDING already exists\n");
-					raise(SIGSEGV);
-				}
-			}
-		}
-
-		delete result;
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadBuildings()\n");
-	}
-
-	unlock();
-}
-
-
-BuildingObject* PlanetManagerImplementation::findBuildingType(const string& word, float targetX, float targetY) {
-	lock();
-
-	uint16 accumDistance, distance = 32768;
-	BuildingObject* buiID = 0;
-
-	buildingMap->resetIterator();
-
-	while (buildingMap->hasNext()) {
-		BuildingObject* building = buildingMap->next();
-
-		if (word == "starport" && building->getBuildingType() == BuildingObjectImplementation::STARPORT) {
-			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
-
-			if ( accumDistance < distance) {
-				distance = accumDistance;
-				buiID = building;
-			}
-		}
-
-		if (word == "cloner" && building->getBuildingType() == BuildingObjectImplementation::CLONING_FACILITY) {
-			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
-
-			if ( accumDistance < distance) {
-				distance = accumDistance;
-				buiID = building;
-			}
-		}
-
-		if (word == "shuttle" && building->getBuildingType() == BuildingObjectImplementation::SHUTTLEPORT) {
-			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
-
-			if ( accumDistance < distance) {
-				distance = accumDistance;
-				buiID = building;
-			}
-		}
-
-		if (word == "HOTEL" && building->getBuildingType() == BuildingObjectImplementation::HOTEL) {
-			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
-
-			if ( accumDistance < distance) {
-				distance = accumDistance;
-				buiID = building;
-			}
-		}
-
-		if (word == "bank" && building->getBuildingType() == BuildingObjectImplementation::BANK) {
-			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
-
-			if ( accumDistance < distance) {
-				distance = accumDistance;
-				buiID = building;
-			}
-		}
-
-		if (word == "garage" && building->getBuildingType() == BuildingObjectImplementation::GARAGE) {
-			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
-
-			if ( accumDistance < distance) {
-				distance = accumDistance;
-				buiID = building;
-			}
-		}
-
-		if (word == "medical" && building->getBuildingType() == BuildingObjectImplementation::MEDICAL_CENTER) {
-			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
-
-			if ( accumDistance < distance) {
-				distance = accumDistance;
-				buiID = building;
-			}
-		}
-
-		if (word == "salon" && building->getBuildingType() == BuildingObjectImplementation::SALON) {
-			accumDistance= static_cast<uint16>(fabs( (targetX - building->getPositionX() ) + (targetY - building->getPositionY()) ));
-
-			if ( accumDistance < distance) {
-				distance = accumDistance;
-				buiID = building;
-			}
-		}
-	}
-
-	unlock();
-
-	return buiID;
-}
-
-
 void PlanetManagerImplementation::loadCraftingStations() {
 	int planetid = zone->getZoneID();
 
@@ -966,167 +704,6 @@ string PlanetManagerImplementation::getStationName(uint64 crc){
 	return name;
 }
 
-int PlanetManagerImplementation::guessBuildingType(uint64 oid, string file) {
-	// Special buildings
-	switch (oid)
-	{
-	// Cantinas
-	case 1076941: // Tatooine	Mos Eisley	Cantina (Lucky Despot)
-		return BuildingObjectImplementation::CANTINA;
-	case 1153495: // Tatooine	Mos Entha	Cantina (The Fallen Star)
-		return BuildingObjectImplementation::CANTINA;
-	case 3355385: // Tatooine - Anchorhead Cantina
-		return BuildingObjectImplementation::CANTINA;
-	case 9925364: // Endor - Research Outpost Cantina
-		return BuildingObjectImplementation::CANTINA;
-	case 6645602: // Endor - Smuggler's Outpost Cantina
-		return BuildingObjectImplementation::CANTINA;
-	case 1028489: // Tatooine - Bestine Cantina
-		return BuildingObjectImplementation::CANTINA;
-	case 3035375: // Yavin IV - Labor Outpost Cantina
-		return BuildingObjectImplementation::CANTINA;
-	case 7925448: // Yavin IV - Mining Outpost Cantina
-		return BuildingObjectImplementation::CANTINA;
-
-		// Taverns
-	case 6205563: // Dantooine	Mining Outpost	Tavern
-		return BuildingObjectImplementation::TAVERN;
-	case 6205495: // Dantooine	Pirate Outpost	Tavern
-		return BuildingObjectImplementation::TAVERN;
-	case 1213343: // Tatooine	Anchorhead	Tavern
-		return BuildingObjectImplementation::TAVERN;
-	case 1154120: // Tatooine	Mos Taike	Tavern
-		return BuildingObjectImplementation::TAVERN;
-	case 6955366: // Dathomir	Trade Outpost	Tavern
-		return BuildingObjectImplementation::TAVERN;
-
-		// Medical Centers
-	case 1414856: // Endor	Smuggler's Outpost	Medical Center
-		return BuildingObjectImplementation::MEDICAL_CENTER;
-	case 1414867: // Endor	Research Outpost	Medical Center
-		return BuildingObjectImplementation::MEDICAL_CENTER;
-	case 2835549: // Dathomir	Science Outpost	Medical Center
-		return BuildingObjectImplementation::MEDICAL_CENTER;
-	case 3035371: // Yavin IV	Labor Outpost	Medical Center
-		return BuildingObjectImplementation::MEDICAL_CENTER;
-	case 7925474: // Yavin IV	Mining Outpost	Medical Center
-		return BuildingObjectImplementation::MEDICAL_CENTER;
-
-		// Museum
-	case 1028167: //Tatooine	Bestine	Museum
-		return BuildingObjectImplementation::MUSEUM;
-
-		// Junk Shop
-	case 1255995: // Tatooine	Mos Espa	Watto�s Junk Shop
-		return BuildingObjectImplementation::JUNKSHOP;
-	}
-
-	if ((int) file.find("_cantina_") >= 0)
-		return BuildingObjectImplementation::CANTINA;
-	if ((int) file.find("_cloning_") >= 0)
-		return BuildingObjectImplementation::CLONING_FACILITY;
-	if ((int) file.find("_starport_") >= 0)
-		return BuildingObjectImplementation::STARPORT;
-	if ((int) file.find("_shuttleport_") >= 0)
-		return BuildingObjectImplementation::SHUTTLEPORT;
-	if ((int) file.find("_hotel_") >= 0)
-		return BuildingObjectImplementation::HOTEL;
-	if ((int) file.find("_bank_") >= 0)
-		return BuildingObjectImplementation::BANK;
-	if ((int) file.find("_capitol_") >= 0)
-		return BuildingObjectImplementation::CAPITOL;
-	if ((int) file.find("_garage_") >= 0)
-		return BuildingObjectImplementation::GARAGE;
-	if ((int) file.find("_hospital_") >= 0)
-		return BuildingObjectImplementation::MEDICAL_CENTER;
-	if ((int) file.find("_guild_university_") >= 0)
-		return BuildingObjectImplementation::GUILD_UNIVERSITY;
-	if ((int) file.find("_guild_theater_") >= 0)
-		return BuildingObjectImplementation::GUILD_THEATER;
-	if ((int) file.find("_guild_combat_") >= 0)
-		return BuildingObjectImplementation::GUILD_COMBAT;
-	if ((int) file.find("_guild_commerce_") >= 0)
-		return BuildingObjectImplementation::GUILD_COMMERCE;
-	if ((int) file.find("_salon_") >= 0)
-		return BuildingObjectImplementation::SALON;
-	if ((int) file.find("_barracks_") >= 0)
-		return BuildingObjectImplementation::BARRACKS;
-
-
-	/*BuildingObjectImplementation::SF_REBEL_FORWARD_BASE;
-	BuildingObjectImplementation::SF_IMPERIAL_FORWARD_BASE;
-	BuildingObjectImplementation::SF_REBEL_MINOR_BASE;
-	BuildingObjectImplementation::SF_IMPERIAL_MINOR_BASE;
-	BuildingObjectImplementation::SF_REBEL_MAJOR_BASE;
-	BuildingObjectImplementation::SF_IMPERIAL_MAJOR_BASE;
-	BuildingObjectImplementation::SF_REBEL_HQ;
-	BuildingObjectImplementation::SF_IMPERIAL_HQ;
-	BuildingObjectImplementation::REBEL_FORWARD_BASE;
-	BuildingObjectImplementation::IMPERIAL_FORWARD_BASE;
-	BuildingObjectImplementation::REBEL_MINOR_BASE;
-	BuildingObjectImplementation::IMPERIAL_MINOR_BASE;
-	BuildingObjectImplementation::REBEL_MAJOR_BASE;
-	BuildingObjectImplementation::IMPERIAL_MAJOR_BASE;
-	BuildingObjectImplementation::REBEL_HQ;
-	BuildingObjectImplementation::IMPERIAL_HQ;*/
-
-	return BuildingObjectImplementation::UNKNOWN;
-}
-
-BuildingObject* PlanetManagerImplementation::loadBuilding(uint64 oid, int planet) {
-	BuildingObject* buio = NULL;
-
-	stringstream query;
-	query << "SELECT * FROM staticobjects WHERE zoneid = '" << planet << "' AND objectid = '" << oid << "';";
-
-	try {
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
-
-		if (result->next()) {
-			uint64 oid = result->getUnsignedLong(1);
-			uint64 parentId = result->getUnsignedLong(2);
-
-			string file = result->getString(3);
-
-			float oX = result->getFloat(4);
-			float oY = result->getFloat(5);
-			float oZ = result->getFloat(6);
-			float oW = result->getFloat(7);
-
-			float x = result->getFloat(8);
-			float z = result->getFloat(9);
-			float y = result->getFloat(10);
-
-			float type = result->getFloat(11);
-
-			buio = new BuildingObject(oid, true);
-			buio->setZoneProcessServer(server);
-
-			buio->setObjectCRC(String::hashCode(file));
-
-			buio->setBuildingType(guessBuildingType(oid, file));
-
-			buio->initializePosition(x, z, y);
-			buio->setDirection(oX, oZ, oY, oW);
-
-			buio->insertToZone(zone);
-
-			if (buildingMap->put(oid, buio) != NULL) {
-				error("Error CELL/BUILDING already exists\n");
-				raise(SIGSEGV);
-			}
-		}
-
-		delete result;
-	} catch (DatabaseException& e) {
-		error(e.getMessage());
-	} catch (...) {
-		error("unreported exception caught in PlanetManagerImplementation::loadBuilding");
-	}
-
-	return buio;
-}
-
 void PlanetManagerImplementation::placePlayerStructure(Player * player,
 		uint64 objectID, float x, float y, int orient) {
 	try {
@@ -1172,111 +749,14 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 				break;
 		}
 
-		spawnTempStructure(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
+		structureManager->spawnTempStructure(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
 	}
 	catch(...) {
 		cout << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
 	}
 }
 
-void PlanetManagerImplementation::spawnTempStructure(Player * player,
-		DeedObject * deed, float x, float z, float y, float oX, float oZ,
-		float oY, float oW) {
-	InstallationObject* inso = new InstallationObject(player->getNewItemID());
 
-	//inso->setObjectID(player->getNewItemID());
-	inso->setObjectCRC(String::hashCode(deed->getTargetTempFile()));
-	inso->setName(deed->getTargetName());
-	inso->setTemplateName(deed->getTargetTemplate());
-
-	//inso->setObjectSubType(0);
-	inso->initializePosition(x, z, y);
-	inso->setDirection(oX, oZ, oY, oW);
-	inso->setOwner(player->getFirstName());
-	inso->setZoneProcessServer(server);
-
-
-	tempInstallationSpawnEvent = new TempInstallationSpawnEvent(inso, player->getZone());
-	tempInstallationDespawnEvent = new TempInstallationDespawnEvent(inso, player, deed, x, z, y, oX, oZ, oY, oW);
-
-	server->addEvent(tempInstallationSpawnEvent, 100);
-	server->addEvent(tempInstallationDespawnEvent, 10000);
-}
-
-void PlanetManagerImplementation::spawnInstallation(Player * player,
-		DeedObject * deed, float x, float z, float y, float oX, float oZ,
-		float oY, float oW) {
-	InstallationObject* inso = new InstallationObject(player->getNewItemID(), deed);
-
-	//inso->setObjectID(player->getNewItemID());
-	//inso->setObjectCRC(String::hashCode(deed->getTargetFile()));
-	inso->initializePosition(x, z, y);
-	inso->setDirection(oX, oZ, oY, oW);
-	inso->setOwner(player->getFirstName());
-	inso->setZoneProcessServer(server);
-
-	installationSpawnEvent = new InstallationSpawnEvent(player, inso, player->getZone());
-
-	server->addEvent(installationSpawnEvent, 100);
-}
-
-void PlanetManagerImplementation::spawnHarvester(Player * player,
-		DeedObject * deed, float x, float z, float y, float oX, float oZ,
-		float oY, float oW) {
-	HarvesterObject*  hino = new HarvesterObject(player->getNewItemID(), (HarvesterDeed*)deed);
-
-	//hino->setObjectID(player->getNewItemID());
-	//hino->setObjectCRC(String::hashCode(deed->getTargetFile()));
-	hino->initializePosition(x, z, y);
-	hino->setDirection(oX, oZ, oY, oW);
-	hino->setOwner(player->getFirstName());
-	hino->setZoneProcessServer(server);
-
-	installationSpawnEvent = new InstallationSpawnEvent(player, hino, player->getZone());
-
-	server->addEvent(installationSpawnEvent, 100);
-}
-
-void PlanetManagerImplementation::spawnBuilding(Player * player,
-		DeedObject * thedeed, float x, float z, float y, float oX, float oZ,
-		float oY, float oW) {
-	PlayerHouseDeed * deed = (PlayerHouseDeed *) thedeed;
-	BuildingObject* buio = new BuildingObject(player->getNewItemID(), false);
-	buio->setZoneProcessServer(server);
-
-	buio->setObjectCRC(String::hashCode(deed->getTargetFile()));
-	buio->initializePosition(x, z, y);
-	buio->setDirection(oX, oZ, oY, oW);
-
-	//zone->registerObject(buio);
-	addPlayerCells(player, buio, deed->getCellCount());
-
-	//return;
-
-	buio->insertToZone(zone);
-
-
-	buildingMap->put(buio->getObjectID(), buio);
-}
-void PlanetManagerImplementation::addPlayerCells(Player * player, BuildingObject * buio, int cellCount) {
-
-	for(int i = 1; i <= cellCount; ++i){
-		// Get new cell object ID
-		uint64 oid = player->getNewItemID();
-
-		CellObject* cell = new CellObject(oid, buio, i); // server->getZoneServer()->getNextCellID()
-
-		cell->setObjectCRC(String::hashCode("object/cell/shared_cell.iff"));
-		cell->initializePosition(0, 0, 0);
-		cell->setDirection(0, 0, 1, 0); // void SceneObject::setDirection(float x, float z, float y, float w) {
-		//cell->insertToZone(zone);
-		zone->registerObject(cell);
-
-		buio->addCell(cell);
-		cellMap->put(oid, cell);
-	}
-
-}
 
 void PlanetManagerImplementation::landShuttles() {
 	lock();

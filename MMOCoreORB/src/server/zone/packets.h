@@ -190,6 +190,7 @@ which carries forward this exception.
 #include "packets/cell/CellObjectMessage3.h"
 #include "packets/cell/CellObjectMessage6.h"
 #include "packets/cell/UpdateCellPermissionsMessage.h"
+#include "packets/cell/CellObjectDeltaMessage3.h"
 
 #include "packets/installation/InstallationObjectMessage3.h"
 #include "packets/installation/InstallationObjectMessage6.h"

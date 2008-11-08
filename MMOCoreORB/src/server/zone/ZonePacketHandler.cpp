@@ -424,9 +424,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	uint32 header1 = pack->parseInt();
 	uint32 header2 = pack->parseInt();
 
-	stringstream msg;
+	/*stringstream msg;
 	msg << "ObjectControllerMessage(0x" << hex << header1 << ", 0x" << header2 << dec << ")";
-	player->info(msg.str());
+	player->info(msg.str());*/
 
 	try {
 		player->wlock();

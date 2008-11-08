@@ -105,6 +105,8 @@ public:
 
 	void setObjectCRC(unsigned int crc);
 
+	void setObjectType(int tp);
+
 	void setMovementCounter(unsigned int cntr);
 
 	void setZoneIndex(int id);
@@ -314,6 +316,8 @@ public:
 	void setObjectID(unsigned long long oid);
 
 	void setObjectCRC(unsigned int crc);
+
+	void setObjectType(int tp);
 
 	void setMovementCounter(unsigned int cntr);
 

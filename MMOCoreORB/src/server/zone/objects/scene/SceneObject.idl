@@ -132,6 +132,8 @@ interface SceneObject implements ManagedObject {
 	void setObjectID(unsigned long oid);
 
 	void setObjectCRC(unsigned int crc);
+	
+	void setObjectType(int tp);
 
 	void setMovementCounter(unsigned int cntr);
 	

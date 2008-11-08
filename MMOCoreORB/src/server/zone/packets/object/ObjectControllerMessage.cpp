@@ -204,6 +204,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 	player->setMovementCounter(pack->parseInt() + 1);
 
+	uint64 oldParent = player->getParentID();
 	uint64 parent = pack->parseLong();
 
 	Zone* zone = player->getZone();
@@ -289,6 +290,27 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
 	}
+
+
+	/*
+	// if we changed cell
+	if(oldParent != parent)
+	{
+		// Just entered building
+		if(oldParent != 0)
+		{
+			// Remove from old parent cell?
+
+		}
+		else // from outside
+		{
+			// Remove from quadtree? before entering?
+		}
+
+		// Add to cell
+		UpdateContainmentMessage* link = new UpdateContainmentMessage(player->getObjectID(), parent, 0x04);
+		player->broadcastMessage(link);
+	}*/
 
 	player->setDirection(dx, dz, dy, dw);
 	player->setPosition(x, z, y);
@@ -2370,12 +2392,10 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	uint64 hId = pack->parseLong();
 	uint64 rId = pack->parseLong();
 	uint32 quantity = pack->parseInt(); // need to verify the quantity exists in the hopper
-	uint8 byte1 = pack->parseByte();
-	uint8 byte2 = pack->parseByte();
+	uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
+	uint8 byte2 = pack->parseByte(); // checksum?
 
 	cout << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
-
-	cout << "ObjectControllerMessage::parseResourceEmptyHopper() entered" << endl;
 
 	SceneObject* object = player->getZone()->lookupObject(hId);
 
@@ -2410,14 +2430,17 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 
 	bool makeNewResource = true;
 
-	quantity = (uint32) inso->removeHopperItem(rId, quantity);
+	quantity = (uint32)inso->removeHopperItem(rId, quantity);
 	if (quantity >= 1) {
-		ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
-		string resourceName = resourceManager->getResourceNameByID(rId);
-		newRcno->setResourceName(resourceName);
-		newRcno->setContents(quantity);
-		resourceManager->setResourceData(newRcno, false);
-		player->addInventoryResource(newRcno);
+		if(byte1 == 0) // Retreive vs Discard
+		{
+			ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
+			string resourceName = resourceManager->getResourceNameByID(rId);
+			newRcno->setResourceName(resourceName);
+			newRcno->setContents(quantity);
+			resourceManager->setResourceData(newRcno, false);
+			player->addInventoryResource(newRcno);
+		}
 	}
 
 	// need to send to anyone looking
@@ -2429,7 +2452,7 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	player->sendMessage(dinso7);
 
 	GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
-	cout << "GenericResponse: " <<  gr->toString() << endl;
+	//cout << "GenericResponse: " <<  gr->toString() << endl;
 	player->sendMessage(gr);
 
 
@@ -2444,8 +2467,6 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	dinso7->close();
 	player->sendMessage(dinso7);
 */
-
-	cout << "ObjectControllerMessage::parseResourceEmptyHopper() completed" << endl;
 
 }
 
@@ -3017,6 +3038,7 @@ void ObjectControllerMessage::parseHarvesterActivate(Player *player, Message *pa
 
 	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateOperating(true);
+	dinso7->updateExtractionRate(inso->getActualRate());
 	dinso7->close();
 	player->sendMessage(dinso7);
 }
@@ -3051,6 +3073,99 @@ void ObjectControllerMessage::parseHarvesterDeActivate(Player *player, Message *
 }
 
 void ObjectControllerMessage::parseHarvesterDiscardHopper(Player *player, Message *pack) {
+	//skip objId + old size
+	pack->shiftOffset(12);
+
+	uint64 hId = pack->parseLong();
+	SceneObject* object = player->getZone()->lookupObject(hId);
+
+	if (object == NULL) {
+		player->error("ObjectControllerMessage::parseResourceEmptyHopper() bad object");
+		return;
+	}
+
+	if(!object->isTangible()) {
+		player->error("ObjectControllerMessage::parseResourceEmptyHopper() bad tano");
+		return;
+	}
+
+
+	TangibleObject* tano = (TangibleObject*) object;
+	if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+	{
+		player->error("ObjectControllerMessage::parseResourceEmptyHopper() bad harvester");
+		return;
+	}
+
+	InstallationObject* inso = (InstallationObject*) tano;
+
+	// Need to loop through and remove each item in hopper
+
+
+	//Grab the harvester object id
+	/*pack->shiftOffset(8); // skip passed player
+	uint64 hId = pack->parseLong();
+	uint64 rId = pack->parseLong();
+	uint32 quantity = pack->parseInt(); // need to verify the quantity exists in the hopper
+	uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
+	uint8 byte2 = pack->parseByte(); // checksum?
+
+	cout << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
+
+
+	InstallationObject* inso = (InstallationObject*) tano;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+
+	ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
+	if(resourceManager == NULL)
+		return;
+
+	bool makeNewResource = true;
+
+	quantity = inso->removeHopperItem(rId, quantity);
+	if(quantity >= 1)
+	{
+		if(byte1 == 0) // Retreive vs Discard
+		{
+			ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
+			string resourceName = resourceManager->getResourceNameByID(rId);
+			newRcno->setResourceName(resourceName);
+			newRcno->setContents(quantity);
+			resourceManager->setResourceData(newRcno, false);
+			player->addInventoryResource(newRcno);
+		}
+	}
+	// need to send to anyone looking
+
+
+	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	dinso7->updateHopper();
+	dinso7->updateHopperItem(rId);
+	dinso7->updateHopperSize();
+	dinso7->close();
+	player->sendMessage(dinso7);
+
+	GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
+	//cout << "GenericResponse: " <<  gr->toString() << endl;
+	player->sendMessage(gr);
+
+	*/
+
+/*
+	InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
+	dinso3->updateOperating(true);
+	dinso3->close();
+	player->sendMessage(dinso3);
+
+	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	dinso7->updateOperating(true);
+	dinso7->close();
+	player->sendMessage(dinso7);
+*/
 
 }
 
@@ -3085,6 +3200,7 @@ void ObjectControllerMessage::parseHarvesterSelectResource(Player *player, Messa
 	unicode resourceIDUnicode("");
 	pack->parseUnicode(resourceIDUnicode);
 	string sResourceID = resourceIDUnicode.c_str();
+	cout << "harvesterSelectResource: " << sResourceID.c_str() << endl;
 	uint64 resourceID = String::toUnsignedLong(sResourceID.c_str());
 
 	//return;
@@ -3103,6 +3219,7 @@ void ObjectControllerMessage::parseHarvesterSelectResource(Player *player, Messa
 
 	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateActiveResource(resourceID);
+	dinso7->updateExtractionRate(inso->getActualRate());
 	dinso7->close();
 	player->sendMessage(dinso7);
 }

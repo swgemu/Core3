@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class UpdateContainmentMessage : public BaseMessage {
 public:
-	UpdateContainmentMessage(SceneObject* container, SceneObject* object, uint32 type) : BaseMessage(30) {
+	UpdateContainmentMessage(SceneObject* object, SceneObject* container, uint32 type) : BaseMessage(30) {
 		insertShort(0x04);
 		insertInt(0x56CBDE9E);  // CRC
 		insertLong(object->getObjectID());  // ObjectID

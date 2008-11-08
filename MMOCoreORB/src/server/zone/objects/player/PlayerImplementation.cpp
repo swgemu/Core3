@@ -1146,7 +1146,8 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 		//building->unlock(doLock);
 
 		linkType = 0xFFFFFFFF;
-		broadcastMessage(link(parent), 128, false);
+		//linkType = 0x04;
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), 128, false);
 
 	} catch (...) {
 		error("exception PlayerImplementation::insertToBuilding(BuildingObject* building)");
@@ -1262,16 +1263,25 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 					BuildingObject* newBuilding = (BuildingObject*) newObj;
 
 					if (building != newBuilding) {
+						cout << "Does this actually ever happen when someone goes from one building to another?" << endl;
 						removeFromBuilding(building);
 
 						insert = true;
 					}
 				}
 
+				// remove from old cell
 				((CellObject*) parent)->removeChild(_this);
 			}
+
+			//cout << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
+			// add to new cell
 			parent = newParent;
 			((CellObject*) parent)->addChild(_this);
+
+			//linkType = 0x04;
+			broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), 128, false);
+
 		}
 
 		BuildingObject* building = (BuildingObject*) parent->getParent();
@@ -1464,7 +1474,8 @@ void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doL
 
 		info("removing from building");
 
-		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
+		//broadcastMessage(link(0, 0x04), 128, false);
+		broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), 128, false);
 
 		((CellObject*)parent)->removeChild(_this);
 

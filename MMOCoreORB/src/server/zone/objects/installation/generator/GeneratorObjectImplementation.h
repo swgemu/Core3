@@ -24,13 +24,32 @@ class GeneratorObjectImplementation : public GeneratorObjectServant {
 protected:
 
 	float hopperSizeMax;
-	float specRate;
+	float extractionRate; // BER
 
 public:
 	GeneratorObjectImplementation(uint64 oid);
 	GeneratorObjectImplementation(uint64 oid, GeneratorDeed *deed);
 	~GeneratorObjectImplementation();
 
+	// Attribute Setters
+	inline void setHopperSizeMax(float size) {
+		hopperSizeMax = size;
+		string attr("hopperSizeMax");
+		itemAttributes->setFloatAttribute(attr, (float)hopperSizeMax);
+	}
+	inline void setExtractionRate(float rate) {
+		extractionRate = rate;
+		string attr("extractionRate");
+		itemAttributes->setFloatAttribute(attr, (float)extractionRate);
+	}
+
+	// Attribute Getters
+	inline float getHopperSizeMax() {
+		return hopperSizeMax;
+	}
+	inline float getExtractionRate() {
+		return extractionRate;
+	}
 private:
 	void init();
 };

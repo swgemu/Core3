@@ -242,6 +242,10 @@ which carries forward this exception.
 #include "objects/installation/InstallationObjectImplementation.h"
 #include "objects/installation/harvester/HarvesterObject.h"
 #include "objects/installation/harvester/HarvesterObjectImplementation.h"
+#include "objects/installation/factory/FactoryObject.h"
+#include "objects/installation/factory/FactoryObjectImplementation.h"
+#include "objects/installation/generator/GeneratorObject.h"
+#include "objects/installation/generator/GeneratorObjectImplementation.h"
 
 #include "objects/mission/MissionObject.h"
 #include "objects/mission/MissionObjectImplementation.h"

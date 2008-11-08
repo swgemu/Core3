@@ -138,6 +138,7 @@ public:
 	void destroy(ZoneClientSession* client);
 
 	void link(ZoneClientSession* client, SceneObject* obj);
+	BaseMessage* link(SceneObject* obj, uint32 type);
 	BaseMessage* link(SceneObject* obj);
 	BaseMessage* link(uint64 container, uint32 type);
 
@@ -370,6 +371,10 @@ public:
 
 	inline void setObjectCRC(uint32 crc) {
 		objectCRC = crc;
+	}
+
+	inline void setObjectType(int tp) {
+		objectType = tp;
 	}
 
 	inline void setObjectKeeping(bool keeping) {

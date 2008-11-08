@@ -94,8 +94,8 @@ public:
 
 		insertByte(inso->isOperating());
 
-		insertInt((int)inso->getSpecRate()); // Extraction Rate Displayed
-		insertFloat(inso->getSpecRate()); // Extract Rate Max
+		insertInt((int)inso->getExtractionRate()); // Extraction Rate Displayed
+		insertFloat(inso->getExtractionRate()); // Extract Rate Max
 
 		insertFloat(inso->getActualRate()); // Current Extract Rate
 

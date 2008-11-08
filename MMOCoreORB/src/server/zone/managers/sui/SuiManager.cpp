@@ -486,14 +486,14 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 			InstallationObject * inso = (InstallationObject *) scno;
 
 			if(inso!= NULL)	{
-				uint energy = (inso->getEnergy() - atoi(newEnergyVal.c_str()));
+				uint energy = (inso->getSurplusPower() - atoi(newEnergyVal.c_str()));
 
-				inso->addEnergy(energy);
+				inso->addPower(energy);
 				//player->removeEnergy(energy);
 
 				stringstream report;
 				report << "You successfully deposit " << energy << " units of energy.\n"
-					<< "Energy reserves now at " << inso->getEnergy() << " units.";
+					<< "Energy reserves now at " << inso->getSurplusPower() << " units.";
 
 				player->sendSystemMessage(report.str());
 

@@ -51,11 +51,9 @@ import "../../objects/player/Player";
 
 import "../../objects/creature/shuttle/ShuttleCreature";
 
-import "../../objects/building/BuildingObject";
-import "../../objects/building/cell/CellObject";
-import "../../objects/tangible/deed/DeedObject";
 import "../../objects/tangible/terminal/mission/MissionTerminal";
 import "../../objects/area/NoBuildArea";
+import "../structure/StructureManager";
 
 interface PlanetManager {
 	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
@@ -65,35 +63,23 @@ interface PlanetManager {
 	void init();
 	
 	void start();
-	
 	void stop();
 		
 	unsigned long getNextStaticObjectID(boolean doLock = true);
 	
-	void landShuttles();
-	void takeOffShuttles();
-	
-	BuildingObject findBuildingType(const string word, float targetX, float targetY);
+	StructureManager getStructureManager();
 		
-	ShuttleCreature getShuttle(const string Shuttle);
-	
-	void sendPlanetTravelPointListResponse(Player player);
-	
-	void spawnInstallation(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-	void spawnHarvester(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);	
-	void spawnBuilding(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	
-	CellObject getCell(unsigned long id);
-	BuildingObject getBuilding(unsigned long id);
-	
-	MissionTerminal getMissionTerminal(unsigned long oid);
-	
+	void landShuttles();
+	void takeOffShuttles();	
 	unsigned long getLandingTime();
+	unsigned int getTravelFare(string departurePlanet, string arrivalPlanet);
+	ShuttleCreature getShuttle(const string Shuttle);	
+	void sendPlanetTravelPointListResponse(Player player);
+		
+	MissionTerminal getMissionTerminal(unsigned long oid);
 
 	void placePlayerStructure(Player player, unsigned long objectID, float x, float y, int orient);
-	unsigned int getTravelFare(string departurePlanet, string arrivalPlanet);
-
+		
 	boolean isNoBuildArea(boolean x, boolean y);
 	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long uid, unsigned char reason = 0);
 	void addNoBuildArea(NoBuildArea area);

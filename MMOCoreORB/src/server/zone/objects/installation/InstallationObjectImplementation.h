@@ -16,8 +16,10 @@ protected:
 	int installationType, destroyCode;
 	string file, temp, owner, structureStatus;
 
-	uint32 condition, maintenance, minimumMaintenance, energy;
-	float energyRate, maintenanceRate;
+	uint64 ownerID;
+
+	uint32 condition, surplusMaintenance, minimumMaintenance, surplusPower;
+	float powerRate, maintenanceRate;
 
 	Vector<ManagedReference<SceneObject> > operatorList; // track synchronizeduilisten and synchronizeduistoplistening to send packet updates
 
@@ -43,10 +45,96 @@ public:
 
 	void init();
 
-	//void insertToZone(Zone* zone);
+	// Attribute Setters
+	inline void setOperating(bool state) {
+		setUpdated(true);
+		operating = state;
+		string attr("operating");
+		itemAttributes->setBooleanAttribute(attr, operating);
+	}
+	inline void setOwner(const string own) {
+		setUpdated(true);
+		owner = own;
+		string attr("owner");
+		itemAttributes->setStringAttribute(attr, owner);
+	}
+	inline void setOwnerID(uint64 ownerid) {
+		setUpdated(true);
+		ownerID = ownerid;
+		string attr("ownerID");
+		itemAttributes->setUnsignedLongAttribute(attr, ownerID);
+	}
+	inline void setSurplusMaintenance(uint32 maint) {
+		setUpdated(true);
+		surplusMaintenance = maint;
+		string attr("surplusMaintenance");
+		itemAttributes->setIntAttribute(attr, (int)surplusMaintenance);
+	}
+	inline void setMaintenanceRate(float rate) {
+		setUpdated(true);
+		 maintenanceRate = rate;
+		 string attr("maintenanceRate");
+		 itemAttributes->setFloatAttribute(attr, (float)maintenanceRate);
+	}
+	inline void setSurplusPower(uint32 pow) {
+		setUpdated(true);
+		surplusPower = pow;
+		string attr("surplusPower");
+		itemAttributes->setIntAttribute(attr, (int)surplusPower);
+	}
+	inline void setPowerRate(float rate) {
+		setUpdated(true);
+		powerRate = rate;
+		string attr("powerRate");
+		itemAttributes->setFloatAttribute(attr, (float)powerRate);
+	}
+
+	// Attribute Getters
+	inline bool isOperating(){
+		return operating;
+	}
+	inline string& getOwner() {
+		return owner;
+	}
+	inline uint64 getOwnerID() {
+		return ownerID;
+	}
+	inline uint32 getSurplusMaintenance() {
+		return surplusMaintenance;
+	}
+	inline float getMaintenanceRate() {
+		return maintenanceRate;
+	}
+	inline uint32 getSurplusPower() {
+		return surplusPower;
+	}
+	inline float getPowerRate() {
+		return powerRate;
+	}
+	virtual float getExtractionRate() { // packets use it
+		return 0.0f;
+	}
+
+
+	// Attribute Modifiers
+	inline void addMaintenance(uint32 maint) {
+		setSurplusMaintenance(getSurplusMaintenance() + maint);
+	}
+	inline void addPower(uint32 powr) {
+		setSurplusPower(getSurplusPower() + powr);
+	}
+	inline void setStatusPublic() {
+		structureStatus = "public";
+	}
+	inline void setStatusPrivate() {
+		structureStatus = "private";
+	}
+
+	// Object Handlers
 	void sendTo(Player* player, bool doClose = true);
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
+	// Other Methods
 	void handleStructureRedeed(Player * player);
 	void handleStructureRedeedConfirm(Player * player);
 	void handleMakeDeed(Player * player);
@@ -54,6 +142,17 @@ public:
 	void handleStructureAddMaintenance(Player* player);
 	void handleStructureAddEnergy(Player* player);
 
+
+	// Object Attribute
+	void generateAttributes(SceneObject* obj);
+
+	virtual void parseItemAttributes();
+	virtual void addAttributes(AttributeListMessage* alm);
+	void addHeaderAttributes(AttributeListMessage* alm);
+	void addFooterAttributes(AttributeListMessage* alm);
+
+
+	// Handle Multiple Operators
 	virtual void updateOperators() {
 		// operatorList
 	}
@@ -87,14 +186,9 @@ public:
 		}
 	}
 
+
 	void activateSync();
 
-	inline bool isOperating(){
-		return operating;
-	}
-	inline void setOperating(bool state){
-		operating = state;
-	}
 	inline string& getFile(){
 		return file;
 	}
@@ -102,39 +196,10 @@ public:
 	inline void setObjectSubType(const int type) {
 		objectSubType = type;
 	}
-	inline string& getOwner() {
-		return owner;
-	}
-	inline void setOwner(const string own) {
-		owner = own;
-	}
-	inline void setStatusPublic() {
-		structureStatus = "public";
-	}
-	inline void setStatusPrivate() {
-		structureStatus = "private";
-	}
 	inline int getDestroyCode() {
 		return destroyCode;
 	}
-	inline void addMaintenance(uint32 maint) {
-		maintenance = maintenance + maint;
-	}
-	inline uint32 getMaintenance() {
-		return maintenance;
-	}
-	inline float getMaintenanceRate() {
-		return maintenanceRate;
-	}
-	inline void addEnergy(uint32 powr) {
-		energy = energy + powr;
-	}
-	inline uint32 getEnergy() {
-		return energy;
-	}
-	inline float getEnergyRate() {
-		return energyRate;
-	}
+
 
 
 	// Hopper Stuff
@@ -171,9 +236,6 @@ public:
 	}
 
 	// Harvester Stuff
-	virtual inline float getSpecRate() {
-		return 0.0f;
-	}
 	virtual inline float getActualRate() {
 		return 0.0f;
 	}

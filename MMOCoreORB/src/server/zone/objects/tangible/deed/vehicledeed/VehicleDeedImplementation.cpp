@@ -98,7 +98,7 @@ int VehicleDeedImplementation::useObject(Player* player) {
 
 		vehicle->getITNO()->sendTo(player, true);
 
-		UpdateContainmentMessage* ucm = new UpdateContainmentMessage(datapad, vehicle, 0xFFFFFFFF);
+		UpdateContainmentMessage* ucm = new UpdateContainmentMessage(vehicle, datapad, 0xFFFFFFFF);
 		player->sendMessage(ucm);
 
 		player->unlock();

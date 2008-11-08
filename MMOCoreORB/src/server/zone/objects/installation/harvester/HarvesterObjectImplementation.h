@@ -28,35 +28,103 @@ protected:
 	Time resourceHopperTimestamp;
 	VectorMap<uint64, float> resourceHopper; // ID + Size
 	uint32 hopperResourceUpdateCounter;
+
 	float hopperSizeMax;
-
-	float specRate; // BER
-
+	float extractionRate; // BER
 
 public:
 	HarvesterObjectImplementation(uint64 oid);
 	HarvesterObjectImplementation(uint64 oid, HarvesterDeed *deed);
 	~HarvesterObjectImplementation();
 
+	void parseItemAttributes();
+
+	// Attribute Setters
+	inline void setHopperSizeMax(float size) {
+		hopperSizeMax = size;
+		string attr("hopperSizeMax");
+		itemAttributes->setFloatAttribute(attr, (float)hopperSizeMax);
+	}
+	inline void setExtractionRate(float rate) {
+		extractionRate = rate;
+		string attr("extractionRate");
+		itemAttributes->setFloatAttribute(attr, (float)extractionRate);
+	}
+	inline void setActiveResourceID(uint64 rid) {
+		activeResourceID = rid;
+		string attr("activeResourceID");
+		itemAttributes->setUnsignedLongAttribute(attr, activeResourceID);
+	}
+	inline void setActiveSpawnID(uint64 sid) {
+		activeSpawnID = sid;
+		string attr("activeSpawnID");
+		itemAttributes->setUnsignedLongAttribute(attr, activeSpawnID);
+	}
+	inline void setSpawnExpireTimestamp(uint32 ts) {
+		Time stamp(ts);
+		spawnExpireTimestamp = stamp;
+		string attr("spawnExpireTimestamp");
+		itemAttributes->setUnsignedLongAttribute(attr, ts);
+	}
+	inline void setResourceHopperTimestamp(uint32 ts) {
+		Time stamp(ts);
+		resourceHopperTimestamp = stamp;
+		string attr("resourceHopperTimestamp");
+		itemAttributes->setUnsignedLongAttribute(attr, ts);
+	}
+	inline void setSpawnDensity(int dens) {
+		spawnDensity = dens;
+		string attr("spawnDensity");
+		itemAttributes->setIntAttribute(attr, dens);
+	}
+
+
+	// Attribute Getters
+	inline float getHopperSizeMax() {
+		return hopperSizeMax;
+	}
+	inline float getExtractionRate() {
+		return extractionRate;
+	}
+	inline uint64 getActiveResourceID(){
+		return activeResourceID;
+	}
+	inline uint64 getActiveSpawnID(){
+		return activeSpawnID;
+	}
+	inline uint32 getSpawnExpireTimestamp() {
+		return spawnExpireTimestamp.getTime();
+	}
+	inline uint32 getResourceHopperTimestamp() {
+		return resourceHopperTimestamp.getTime();
+	}
+	inline int getSpawnDensity() {
+		return spawnDensity;
+	}
+
+
+	// Updaters
+	void changeActiveResourceID(uint64 oid);
+
+	// Other Operational Methods
+	void serializeResourceHopper();
+	void unserializeResourceHopper(const string& hopper);
 	int getHarvesterType();
 	inline void setHarvesterType(int type) {
 		harvesterType = type;
 	}
 
 	void updateOperators();
+	void verifyOperators();
 
 	// Harvester Operation
+
 	void updateHopper();
 	void updateOperatorsAddBlankActiveRescource();
-	void setActiveResourceID(uint64 oid);
+	void updateOperatorsEmptyHopper();
 	float getActualRate();
 
-	inline float getSpecRate() {
-		return specRate;
-	}
-	inline uint64 getActiveResourceID(){
-		return activeResourceID;
-	}
+
 
 	// Harvester Hopper
 	inline float getHopperSize() {
@@ -68,12 +136,11 @@ public:
 
 		return hopperSize;
 	}
-	inline float getHopperSizeMax() {
-		return hopperSizeMax;
-	}
+
 	inline int getHopperItemCount() {
 		return resourceHopper.size();
 	}
+
 	inline uint64 getHopperItemID(int index) {
 		if(index < resourceHopper.size() && resourceHopper.size() >= 1) {
 			VectorMapEntry<uint64, float>* entry = ((SortedVector<VectorMapEntry<uint64, float>*>*)&resourceHopper)->get(index);

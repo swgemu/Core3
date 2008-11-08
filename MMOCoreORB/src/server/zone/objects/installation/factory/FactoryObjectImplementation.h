@@ -30,6 +30,17 @@ public:
 	FactoryObjectImplementation(uint64 oid, FactoryDeed *deed);
 	~FactoryObjectImplementation();
 
+	// Attribute Setters
+	inline void setHopperSizeMax(float size) {
+		hopperSizeMax = size;
+		string attr("hopperSizeMax");
+		itemAttributes->setFloatAttribute(attr, (float)hopperSizeMax);
+	}
+
+	// Attribute Getters
+	inline float getHopperSizeMax() {
+		return hopperSizeMax;
+	}
 	int getFactoryType();
 private:
 	void init();

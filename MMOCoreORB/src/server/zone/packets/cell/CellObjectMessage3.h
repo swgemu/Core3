@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class CellObjectMessage3 : public BaseLineMessage {
 public:
-	CellObjectMessage3(uint64 coId, uint32 cellID)
+	CellObjectMessage3(uint64 coId, int cellNumber)
 			: BaseLineMessage(coId, 0x53434C54, 3, 0x05) {
 		//BaseLineMessage(uint64 oid, uint32 name, uint8 type, uint16 opcnt) {
 		insertInt(0);
@@ -58,7 +58,7 @@ public:
 		insertShort(0); // STF
 		insertInt(0); // custom name
 		insertInt(0);
-		insertInt(cellID); //Cell Id, like 1,2,3,4 etc. NOT Object id.
+		insertInt(cellNumber); //Cell Number, like 1,2,3,4 etc. NOT Object id.
 
 		setSize();
 
