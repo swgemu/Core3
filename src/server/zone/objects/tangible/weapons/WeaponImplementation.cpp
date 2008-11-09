@@ -1229,13 +1229,9 @@ void WeaponImplementation::setXpType() {
 		xpType = "combat_rangedspecialize_rifle";
 		break;
 	case ONEHANDSABER:
-		xpType = "combat_meleespecialize_onehandlightsaber";
-		break;
 	case TWOHANDSABER:
-		xpType = "combat_meleespecialize_twohandlightsaber";
-		break;
 	case POLEARMSABER:
-		xpType = "combat_meleespecialize_polearmlightsaber";
+		xpType = "jedi_general";
 		break;
 	case RIFLEBEAM:
 	case RIFLEFLAMETHROWER:

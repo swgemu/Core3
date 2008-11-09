@@ -267,10 +267,10 @@ void CreatureManagerImplementation::loadTrainers() {
 		for (int i = 0; professionManager->professionMap.hasNext(); i++) {
 			Profession* prof = professionManager->professionMap.getNextValue();
 
-			if ((int)prof->getName().find("jedi") >= 0 || (int)prof->getName().find("force") >= 0)
-				continue;
+			//if ((int)prof->getName().find("jedi") >= 0 || (int)prof->getName().find("force") >= 0)
+			//	continue;
 
-			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, 0, -4967 - (i*1), 4043, 6, 0, 0);
+			TrainerCreature* trainer = spawnTrainer(prof->getName(), "trainer_unknown", prof->getName(), 0x8C73B91, 0, -4967 - (i*1), 4043, 6, 0, 0);
 		}
 	}
 }
@@ -444,7 +444,8 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 
 		if (!stfname.empty())
 			trainer->setSpeciesName(stfname);
-		else
+		//else
+		if (!name.empty())
 			trainer->setCharacterName(unicode(name));
 
 		trainer->setObjectCRC(objCrc);

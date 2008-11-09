@@ -343,6 +343,8 @@ public:
 
 	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const string& attribute);
 
+	int getXp(const string& xpType);
+
 	void addXp(string& xpType, int xp, bool updateClient);
 
 	void removeXp(string& xpType, int xp, bool updateClient);
@@ -713,6 +715,14 @@ public:
 
 	string& getLastNpcConvMessStr();
 
+	string& getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const string& option);
+
+	void clearLastNpcConvOptions();
+
+	int countLastNpcConvOptions();
+
 	void setInputBoxReturnBuffer(const string& message);
 
 	void setGuildLeader(bool guildLeader = true);
@@ -772,6 +782,7 @@ protected:
 	string _return_getInputBoxReturnBuffer;
 	string _return_getLastName;
 	string _return_getLastNpcConvMessStr;
+	string _return_getLastNpcConvOption;
 	string _return_getLastNpcConvStr;
 	string _return_getNextSkillBox;
 	string _return_getRaceFileName;
@@ -1066,6 +1077,8 @@ public:
 	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
 
 	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const string& attribute);
+
+	int getXp(const string& xpType);
 
 	void addXp(string& xpType, int xp, bool updateClient);
 
@@ -1437,6 +1450,14 @@ public:
 
 	string& getLastNpcConvMessStr();
 
+	string& getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const string& option);
+
+	void clearLastNpcConvOptions();
+
+	int countLastNpcConvOptions();
+
 	void setInputBoxReturnBuffer(const string& message);
 
 	void setGuildLeader(bool guildLeader);
@@ -1494,6 +1515,7 @@ protected:
 	string _param0_hasSkillBox__string_;
 	string _param1_searchWaypoint__Player_string_int_;
 	string _param2_queueHeal__TangibleObject_int_string_;
+	string _param0_getXp__string_;
 	string _param0_addXp__string_int_bool_;
 	string _param0_removeXp__string_int_bool_;
 	string _param0_loadXp__string_;
@@ -1537,6 +1559,7 @@ protected:
 	string _param3_sendMail__string_unicode_unicode_string_;
 	string _param0_setLastNpcConvStr__string_;
 	string _param0_setLastNpcConvMessStr__string_;
+	string _param0_addLastNpcConvOptions__string_;
 	string _param0_setInputBoxReturnBuffer__string_;
 	string _param0_getFactionPoints__string_;
 	string _param0_addFactionPoints__string_int_;

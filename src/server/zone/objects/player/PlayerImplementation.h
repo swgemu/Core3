@@ -244,6 +244,7 @@ class PlayerImplementation : public PlayerServant {
 	//npc conversation
 	string lastNpcConvoMessage;
 	string lastNpcConvo;
+	Vector<string> lastNpcConvoOptions;
 
 	// Stat Migration Targets
 	uint32 targetHealth;
@@ -1073,6 +1074,9 @@ public:
 		skillPoints -= sPoints;
 	}
 
+	int getXp(const string& xpType) {
+		return playerObject->getExperience(xpType);
+	}
 	void addXp(const string& xpType, int xp, bool updateClient) {
 		playerObject->addExperience(xpType, xp, updateClient);
 	}
@@ -1598,6 +1602,22 @@ public:
 
 	inline string& getLastNpcConvMessStr() {
 		return lastNpcConvoMessage;
+	}
+	
+	inline string& getLastNpcConvOption(int idx) {
+		return lastNpcConvoOptions.get(idx);
+	}
+	
+	inline void addLastNpcConvOptions(const string& option) {
+		lastNpcConvoOptions.add(option);
+	}
+
+	inline int countLastNpcConvOptions() {
+		return lastNpcConvoOptions.size();
+	}
+	
+	inline void clearLastNpcConvOptions() {
+		lastNpcConvoOptions.removeAll();
 	}
 
 	inline void setCurrentStructureID(uint64 oid){

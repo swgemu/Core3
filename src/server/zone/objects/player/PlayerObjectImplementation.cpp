@@ -179,21 +179,20 @@ void PlayerObjectImplementation::addExperience(const string& xpType, int xp, boo
 
 	experienceList.put(xpType, xp);
 
-	if (updateClient && gained > 0) {
+	if (updateClient) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
-		StfParameter *params = new StfParameter;
-			
-		params->addDI(gained);
-		string xptypeprose;
-		string xptype(xpType);
-		getPlayer()->getXpTypeProse(xptype, xptypeprose);
-		params->addTO(xptypeprose);
-		player->sendSystemMessage("base_player", "prose_grant_xp", params);
+		if (gained > 0) {
+			StfParameter *params = new StfParameter;
+		
+			params->addDI(gained);
+			params->addTO("exp_n",xpType);
+			player->sendSystemMessage("base_player", "prose_grant_xp", params);
 					
-		delete params;
+			delete params;
+		}
 
 		dplay8->startExperienceUpdate(1);
-		dplay8->addExperience(xpType, xp);
+		dplay8->addExperience(xpType, gained);
 		dplay8->close();
 
 		player->sendMessage(dplay8);

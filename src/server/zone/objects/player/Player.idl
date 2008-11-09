@@ -309,6 +309,7 @@ interface Player implements CreatureObject {
 
 
 	// Experience
+	int getXp(const string xpType);
 	void addXp(string xpType, int xp, boolean updateClient);
 	void removeXp(string xpType, int xp, boolean updateClient);
 	void loadXp(const string xpStr);
@@ -602,6 +603,11 @@ interface Player implements CreatureObject {
 
 	string getLastNpcConvStr();
 	string getLastNpcConvMessStr();
+
+	string getLastNpcConvOption(int idx);
+	void addLastNpcConvOptions(const string option);
+	void clearLastNpcConvOptions();
+	int countLastNpcConvOptions();
 	
 	void setInputBoxReturnBuffer(const string message);
 	

@@ -64,6 +64,7 @@ interface PlayerObject implements SceneObject {
 	void sendToOwner();
 	void sendTo(Player player, boolean doClose = true);
 
+	int getExperience(const string xpType);
 	void addExperience(const string xpType, int xp, boolean updateClient);
 	void removeExperience(const string xpType, int xp, boolean updateClient);
 	void loadExperience(const string xpStr);

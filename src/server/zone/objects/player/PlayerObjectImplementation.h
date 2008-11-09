@@ -131,6 +131,10 @@ public:
 	bool setCharacterBit(uint32 bit, bool updateClient = false);
 	bool clearCharacterBit(uint32 bit, bool updateClient = false);
 
+	int getExperience(const string& xpType) {
+		return experienceList.get(xpType);
+	}
+	
 	void addExperience(const string& xpType, int xp, bool updateClient);
 	void removeExperience(const string& xpType, int xp, bool updateClient);
 	void loadExperience(const string& xpStr);

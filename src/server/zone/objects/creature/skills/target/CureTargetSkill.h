@@ -287,12 +287,12 @@ public:
 
 		player->addXp(type, amount, true);
 
-		String::toLower(type);
+		/*String::toLower(type);
 		type[0] = toupper(type[0]); //Capitalize first letter.
 
 		stringstream msgExperience;
 		msgExperience << "You receive " << amount << " points of " << type << " experience.";
-		player->sendSystemMessage(msgExperience.str());
+		player->sendSystemMessage(msgExperience.str());*/
 	}
 
 	float getSpeed() {
