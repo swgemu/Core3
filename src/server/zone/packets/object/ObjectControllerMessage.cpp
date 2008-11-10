@@ -1415,6 +1415,8 @@ void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack,
 }
 
 void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
+	int xpval = 0;
+	
 	try {
 		/*player->sendSystemMessage("Image Designer Update");
 		player->info("Image Design Change - Original Packet");
@@ -1559,6 +1561,9 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					if(commitChanges)
 						customization->updateCustomization(attr, val);
 				}
+				
+				if (xpval < 300)
+					xpval = 300;
 			}
 
 			// Parse
@@ -1587,7 +1592,10 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					if(commitChanges)
 						customization->updateCustomization(attr, val);
 				}
-			}
+				
+				if (xpval < 100)
+					xpval = 100;
+			}	
 
 			if (target_object != NULL && player != target_object)
 				target_object->unlock();
@@ -1639,6 +1647,9 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					((Player *)target_object)->sendSystemMessage(msg.str());*/
 
 				}
+				
+				if (xpval < 100)
+					xpval = 100;
 			}
 
 			PlayerManager* playerManager = serv->getZoneServer()->getPlayerManager();
@@ -1674,6 +1685,24 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 
 				if(playerManager != NULL)
 					playerManager->updatePlayerBaseHAMToDatabase(player);
+					
+				xpval = 2000;
+			}
+			
+			// Add Experience
+			string xptype("imagedesigner");
+			if(designer == target) {
+				if (!player->getImagedesignXpGiven()) {
+					xpval /= 2;
+					player->addXp(xptype, xpval, true);
+					player->setImagedesignXpGiven(true);
+				} else
+					player->setImagedesignXpGiven(false);
+			} else if(player->getObjectID() == target) {
+				if (designer_object->isPlayer()) {
+					Player* designer_player = (Player*)designer_object;
+					designer_player->addXp(xptype, xpval, true);
+				}
 			}
 
 			if(customization != NULL)

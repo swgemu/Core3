@@ -597,6 +597,8 @@ interface Player implements CreatureObject {
 	
 	void setEntertainerEvent();
 	void clearEntertainerEvent();
+	void addEntertainerFlourishXp(int xp);
+	void addEntertainerHealingXp(int xp);
 
 	void setLastNpcConvStr(const string conv);
 	void setLastNpcConvMessStr(const string mess);
@@ -647,5 +649,8 @@ interface Player implements CreatureObject {
 	void setResourceDeedID(unsigned long objectID);
 	
 	unsigned long getResourceDeedID();
+
+	void setImagedesignXpGiven(boolean given);
+	boolean getImagedesignXpGiven();
 	
 }

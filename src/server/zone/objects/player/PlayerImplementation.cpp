@@ -105,10 +105,12 @@ PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 	//zoneID = 8;
 
 	setHeight(1.0f);
+	imagedesignXpGiven = false;
 }
 
 PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = cid << 32) {
 	characterID = cid;
+	imagedesignXpGiven = false;
 }
 
 PlayerImplementation::~PlayerImplementation() {
@@ -4085,6 +4087,18 @@ void PlayerImplementation::setEntertainerEvent() {
 	// I think the getLoopDuration is wrong now...thinking it should just be flat 10 seconds
 	//server->addEvent(entertainerEvent, (uint64) performance->getLoopDuration() * 1000);
 	server->addEvent(entertainerEvent, 10000);
+}
+
+void PlayerImplementation::addEntertainerFlourishXp(int xp) {
+	EntertainerEvent* entEvent = (EntertainerEvent*)entertainerEvent;
+	
+	entEvent->addFlourishXp(xp);
+}
+	
+void PlayerImplementation::addEntertainerHealingXp(int xp) {
+	EntertainerEvent* entEvent = (EntertainerEvent*)entertainerEvent;
+	
+	entEvent->addHealingXp(xp);
 }
 
 void PlayerImplementation::setSurveyEvent(string& resourceName) {

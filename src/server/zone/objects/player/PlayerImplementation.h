@@ -263,6 +263,8 @@ class PlayerImplementation : public PlayerServant {
 	Vector<string> consentList;
 
 	uint16 characterMask;
+	
+	bool imagedesignXpGiven;
 
 public:
 	static const int ONLINE = 1;
@@ -1586,6 +1588,8 @@ public:
 
 	// Entertainer tick
 	void setEntertainerEvent();
+	void addEntertainerFlourishXp(int xp);
+	void addEntertainerHealingXp(int xp);
 
 	//NPC Conversation Methods
 	inline void setLastNpcConvStr(const string& conv) {
@@ -1654,6 +1658,14 @@ public:
 	}
 
 	void delFactionPoints(Player * player, uint32 amount);
+	
+	inline void setImagedesignXpGiven(bool given) {
+		imagedesignXpGiven = given;
+	}
+	
+	inline bool getImagedesignXpGiven() {
+		return imagedesignXpGiven;
+	}
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

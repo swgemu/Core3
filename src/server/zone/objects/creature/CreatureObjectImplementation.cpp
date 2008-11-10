@@ -3736,6 +3736,13 @@ void CreatureObjectImplementation::doFlourish(const string& modifier) {
 			//sendSystemMessage("Flourish Buff");
 			addEntertainerFlourishBuff();
 		}
+		
+		// Grant Experience
+		if (isPlayer()) {
+			Player* player = (Player*)_this;
+			
+			player->addEntertainerFlourishXp(performance->getBaseXp() + performance->getFlourishXpMod());
+		}
 
 		sendSystemMessage("performance", "flourish_perform");
 	} else {
@@ -3813,6 +3820,7 @@ void CreatureObjectImplementation::addEntertainerFlourishBuff() {
 void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bool healWounds, bool addBuff) {
 	info("CreatureObjectImplementation::doEntertainerPatronEffects() begin");
 	ManagedSortedVector<CreatureObject>* patrons = NULL;
+	int healingXp = 0;
 
 	//cout << "CreatureObjectImplementation::doEntertainerPatronEffects()" << endl;
 	SkillManager* skillManager = server->getSkillManager();
@@ -3852,10 +3860,14 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 		changeMindWoundsBar(woundHeal, false);
 		changeFocusWoundsBar(woundHeal, false);
 		changeWillpowerWoundsBar(woundHeal, false);
+		
+		healingXp += -1 * woundHeal;
 	}
 
-	if (healShock)
+	if (healShock) {
 		changeShockWounds(shockHeal);
+		healingXp += -1 * shockHeal;
+	}
 
 
 	if (patrons != NULL && patrons->size() > 0) {
@@ -3884,10 +3896,15 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 						obj->changeMindWoundsBar(woundHeal, false);
 						obj->changeFocusWoundsBar(woundHeal, false);
 						obj->changeWillpowerWoundsBar(woundHeal, false);
+						
+						healingXp += -1 * woundHeal;
 					}
 
-					if (healShock)
+					if (healShock) {
 						obj->changeShockWounds(shockHeal);
+						
+						healingXp += -1 * woundHeal;
+					}
 
 					// Handle Passive Buff
 					if (addBuff && isInAGroup() && (getGroupID() == obj->getGroupID())) {
@@ -3922,6 +3939,13 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 		}
 	} /*else
 		cout << "no patrons";*/
+		
+	// Add Experience
+	if (healingXp > 0 && isPlayer()) {
+		Player* player = (Player*)_this;
+		
+		player->addEntertainerHealingXp(healingXp);
+	}
 
 	info("CreatureObjectImplementation::doEntertainerPatronEffects() end");
 }

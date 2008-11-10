@@ -707,6 +707,10 @@ public:
 
 	void clearEntertainerEvent();
 
+	void addEntertainerFlourishXp(int xp);
+
+	void addEntertainerHealingXp(int xp);
+
 	void setLastNpcConvStr(const string& conv);
 
 	void setLastNpcConvMessStr(const string& mess);
@@ -768,6 +772,10 @@ public:
 	void setResourceDeedID(unsigned long long objectID);
 
 	unsigned long long getResourceDeedID();
+
+	void setImagedesignXpGiven(bool given);
+
+	bool getImagedesignXpGiven();
 
 protected:
 	Player(DummyConstructorParameter* param);
@@ -1442,6 +1450,10 @@ public:
 
 	void clearEntertainerEvent();
 
+	void addEntertainerFlourishXp(int xp);
+
+	void addEntertainerHealingXp(int xp);
+
 	void setLastNpcConvStr(const string& conv);
 
 	void setLastNpcConvMessStr(const string& mess);
@@ -1503,6 +1515,10 @@ public:
 	void setResourceDeedID(unsigned long long objectID);
 
 	unsigned long long getResourceDeedID();
+
+	void setImagedesignXpGiven(bool given);
+
+	bool getImagedesignXpGiven();
 
 protected:
 	string _param0_queueFlourish__string_long_int_;

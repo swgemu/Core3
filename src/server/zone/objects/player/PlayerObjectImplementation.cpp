@@ -192,7 +192,7 @@ void PlayerObjectImplementation::addExperience(const string& xpType, int xp, boo
 		}
 
 		dplay8->startExperienceUpdate(1);
-		dplay8->addExperience(xpType, gained);
+		dplay8->addExperience(xpType, xp);
 		dplay8->close();
 
 		player->sendMessage(dplay8);
