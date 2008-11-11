@@ -47,11 +47,11 @@ which carries forward this exception.
 #include "../../packets/object/ObjectControllerMessage.h"
 
 DraftSchematicIngredientImplementation::DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
-		bool optional, const string& resourceType, uint32 resourceQuantity, uint32 combineType,
+		const int slotoption, const string& resourceType, uint32 resourceQuantity, uint32 combineType,
 		float contribution) : DraftSchematicIngredientServant() {
 	DraftSchematicIngredientImplementation::templateName = ingredientTemplateName;
 	DraftSchematicIngredientImplementation::titleName = ingredientTitleName;
-	DraftSchematicIngredientImplementation::optional = optional;
+	DraftSchematicIngredientImplementation::slotoption = slotoption;
 	DraftSchematicIngredientImplementation::resourceType = resourceType;
 	DraftSchematicIngredientImplementation::resourceQuantity = resourceQuantity;
 	DraftSchematicIngredientImplementation::combineType = combineType;
@@ -61,7 +61,7 @@ DraftSchematicIngredientImplementation::DraftSchematicIngredientImplementation(c
 DraftSchematicIngredientImplementation::DraftSchematicIngredientImplementation(DraftSchematicIngredient* ingredient) : DraftSchematicIngredientServant() {
 	this->templateName = ingredient->getTemplateName();
 	this->titleName = ingredient->getTitleName();
-	this->optional = ingredient->getOptional();
+	this->slotoption = ingredient->getSlotType();
 	this->resourceType = ingredient->getResourceType();
 	this->resourceQuantity = ingredient->getResourceQuantity();
 	this->combineType = ingredient->getCombineType();
@@ -72,7 +72,7 @@ void DraftSchematicIngredientImplementation::helperSendToPlayer(ObjectController
 	msg->insertInt(0);
 	msg->insertAscii(titleName); // ex: dried_fruit
 
-	if (optional)
+	if (slotoption == OPTIONALIDENTICALSLOT || slotoption == OPTIONALMIXEDSLOT)
 		msg->insertByte(1);  // ex: additive is optional so insertByte(1);
 	else
 		msg->insertByte(0);
@@ -85,10 +85,17 @@ void DraftSchematicIngredientImplementation::helperSendToPlayer(ObjectController
 	unicode uniResourceType(resourceType);
 	msg->insertUnicode(uniResourceType); // ex: organic
 
-	if (resourceType.compare(0,16, "object/tangible/") == 0)
+	if (slotoption == MIXEDSLOT || slotoption == OPTIONALMIXEDSLOT) {
 		msg->insertByte(5);  // Enables Components
-	else
+		msg->insertInt(resourceQuantity); // ex: 3
+	} else if (slotoption == IDENTICALSLOT || slotoption == OPTIONALIDENTICALSLOT) {
+		msg->insertByte(2);
+		msg->insertInt(resourceQuantity); // ex: 3
+		msg->insertShort(0);
+	} else if (slotoption == RESOURCESLOT) {
 		msg->insertByte(4);
+		msg->insertInt(resourceQuantity); // ex: 3
+	}
 
-	msg->insertInt(resourceQuantity); // ex: 3
+
 }

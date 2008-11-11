@@ -215,7 +215,6 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
 		item = new Wearable(objectid, objectcrc, objectname, objecttemp, equipped);
-		item->setObjectSubType(objecttype);
 		if (makeStats)
 			item->setConditionDamage(System::random(item->getMaxCondition() * 3 / 4));
 
@@ -548,6 +547,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	item->setAttributes(attributes);
 	item->parseItemAttributes();
 
+	item->setObjectSubType(objecttype);
+
 	item->setPlayerUseMask(itemMask);
 
 	item->setCustomizationString(custStr);
@@ -570,7 +571,7 @@ TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
 
 	unicode objectname(objectn);
 
-	TangibleObject * item = NULL;
+	TangibleObject* item = NULL;
 
 	item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
 			objectname.c_str(), objecttemp, equipped, false, "", 0);

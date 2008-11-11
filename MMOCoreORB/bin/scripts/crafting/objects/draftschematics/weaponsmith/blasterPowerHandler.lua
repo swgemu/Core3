@@ -61,7 +61,7 @@ blasterPowerHandler = Object:new {
 
   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
   ingredientTitleNames = "module_assembly, xciter_circuitry, circuitry_substrate, gas_containment_unit, reactant_source, blaster_power_handler_enhancement",
-  ingredientOptionals = "0, 0, 0, 0, 0, 1",
+  ingredientSlotType = "0, 0, 0, 0, 0, 1",
   resourceTypes = "petrochem_inert, copper, ore, metal, gas_reactive, object/tangible/component/weapon/shared_base_blaster_power_handler_enhancement.iff",  
   resourceQuantities = "12, 3, 3, 5, 10, 1",
   combineTypes = "1, 1, 1, 1, 1, 2",
@@ -74,8 +74,9 @@ blasterPowerHandler = Object:new {
   experimentalSubGroupCount = "3, 1",
   experimentalSubGroupTitles = "speed, maxDamage, minDamage, hitpoints",
 
-
   tanoAttributes = "objecttype=262144:objectcrc=3399297408:objecttemp=blaster_power_handler:templatetype=craft_weapon_ingredients_n:",
+  customizationOptions = "",
+   customizationDefaults = "",
   
   attributesToSet = "speed, maxDamage, minDamage, hitpoints",
   attributeExperimentalProperties = "expdamage, expdamage, expdamage, expdurability",

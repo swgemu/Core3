@@ -59,7 +59,7 @@ chemicalReleaseDurationMechanism = Object:new {
 
    ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n",
    ingredientTitleNames = "chemical_element, organic_element",
-   ingredientOptionals = "0, 0",
+   ingredientSlotType = "0, 0",
    resourceTypes = "chemical, organic",
    resourceQuantities = "8, 8",
    combineTypes = "1, 1",
@@ -73,7 +73,8 @@ chemicalReleaseDurationMechanism = Object:new {
    experimentalSubGroupTitles = "charges",
 
    tanoAttributes = "objecttype=262144:objectcrc=1870489005:objecttemp=release_mech_duration:templatetype=craft_chemical_ingredients_n:",
-
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "charges",
    attributeExperimentalProperties = "exp_charges",

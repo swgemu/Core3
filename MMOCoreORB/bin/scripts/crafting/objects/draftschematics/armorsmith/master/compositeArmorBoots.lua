@@ -59,21 +59,23 @@ compositeArmorBoots = Object:new {
 
    ingredientTemplateNames = "craft_clothing_ingredients_n, craft_chemical_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
    ingredientTitleNames = "auxiliary_coverage, body, liner, hardware_and_attachments, binding_and_reinforcement, padding, armor, load_bearing_harness, reinforcement",
-   ingredientOptionals = "0, 0, 0, 0, 0, 0, 0, 1, 1",
+   ingredientSlotType = "0, 0, 0, 0, 0, 0, 0, 1, 1",
    resourceTypes = "ore_intrusive, fuel_petrochem_solid_known, fiberplast_naboo, aluminum, copper_beyrllius, hide_wooly, object/tangible/component/armor/shared_armor_segment_composite.iff, object/tangible/component/clothing/shared_synthetic_cloth.iff, object/tangible/component/clothing/shared_reinforced_fiber_panels.iff",
    --resourceQuantities = "50, 50, 25, 30, 20, 20, 2, 1, 1",
    resourceQuantities = "50, 50, 25, 30, 20, 20, 1, 1, 1",
    combineTypes = "1, 1, 1, 1, 1, 1, 3, 3, 3",
    contribution = "100, 100, 100, 100, 100, 100, 100, 100, 100",
 
-   numberExperimentalProperties = "1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2",
-   experimentalProperties = "XX, XX, XX, OQ, SR, OQ, UT, OQ, MA, OQ, MA, OQ, MA, XX, XX, OQ, SR",
-   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
+   numberExperimentalProperties = "1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2",
+   experimentalProperties = "XX, XX, XX, XX, OQ, SR, OQ, UT, OQ, MA, OQ, MA, OQ, MA, XX, XX, OQ, SR",
+   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
    experimentalGroupTitles = "exp_resistance, exp_durability, exp_quality",
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "electricaleffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
    tanoAttributes = "objecttype=263:objectcrc=3683772891:objecttemp=armor_composite_boots:templatetype=wearables_name:",
+   customizationOptions = "",
+   customizationDefaults = "", 
     
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  electricaleffectiveness, specialeffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance, exp_resistance",

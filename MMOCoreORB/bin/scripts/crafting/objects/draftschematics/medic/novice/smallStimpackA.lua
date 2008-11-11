@@ -59,7 +59,7 @@ smallStimpackA = Object:new {
 
    ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n",
    ingredientTitleNames = "organic_element, inorganic_element",
-   ingredientOptionals = "0, 0",
+   ingredientSlotType = "0, 0",
    resourceTypes = "organic, inorganic",
    resourceQuantities = "8, 8",
    combineTypes = "1, 1",
@@ -73,7 +73,8 @@ smallStimpackA = Object:new {
    experimentalSubGroupTitles = "power, charges",
 
    tanoAttributes = "objecttype=8205:objectcrc=2421139465:objecttemp=stimpack_sm_s1_a:templatetype=medicine_name:",
-
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "power, charges, medicineUseRequired",
    attributeExperimentalProperties = "exp_effectiveness, exp_charges, exp_charges",

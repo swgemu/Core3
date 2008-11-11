@@ -61,7 +61,7 @@ dlt20Rifle = Object:new {
 
   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly, powerhandler, barrel",
-  ingredientOptionals = "0, 0, 0, 0, 0",
+  ingredientSlotType = "0, 0, 0, 0, 0",
   --resourceTypes = "metal, metal_ferrous, metal, object/tangible/component/weapon/shared_blaster_power_handler.iff, object/tangible/component/weapon/shared_blaster_rifle_barrel.iff",
  resourceTypes = "metal, metal, metal, metal, metal",
 
@@ -77,6 +77,8 @@ dlt20Rifle = Object:new {
   experimentalSubGroupTitles = "speed, maxDamage, minDamage, wound, decay, actionCost, healthCost, mindCost, range",
 
   tanoAttributes = "objecttype=131084:objectcrc=2200111432:objecttemp=rifle_blaster_dlt20a:",
+  customizationOptions = "",
+   customizationDefaults = "",
   
   attributesToSet = "speed, maxDamage, minDamage, wound, hitPoints, useModifier",
   attributeExperimentalProperties = "expdamage, expdamage, expdamage, expdamage, expdurability, expeffeciency, expeffeciency, expeffeciency, exprange",

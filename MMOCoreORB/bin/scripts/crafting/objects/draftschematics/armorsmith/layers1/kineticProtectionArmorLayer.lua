@@ -59,7 +59,7 @@ kineticProtectionArmorLayer = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "armor_layer_shock_casing, ablative_damage_absorbtion_medium, shockwave_repulsion_compound",
-   ingredientOptionals = "0, 0, 0",
+   ingredientSlotType = "0, 0, 0",
    --resourceTypes = "metal, petrochem_inert_polymer, gemstone_armophous",
    resourceTypes = "metal, metal, metal",
    resourceQuantities = "20, 8, 8",
@@ -73,7 +73,9 @@ kineticProtectionArmorLayer = Object:new {
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "kineticeffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
    
-   tanoAttributes = "objecttype=262144:objectcrc=2095312993:objecttemp=armor_layer_kinetic:templatetype=craft_armor_ingredients_n:",
+   tanoAttributes = "objecttype=262145:objectcrc=2095312993:objecttemp=armor_layer_kinetic:templatetype=craft_armor_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  kineticeffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",

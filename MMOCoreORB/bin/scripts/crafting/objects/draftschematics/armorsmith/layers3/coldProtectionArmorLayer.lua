@@ -59,7 +59,7 @@ coldProtectionArmorLayer = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "armor_layer_frame, defensive_layer_microlattice, insulation_medium",
-   ingredientOptionals = "0, 0, 0",
+   ingredientSlotType = "0, 0, 0",
    resourceTypes = "aluminum, petrochem_inert_polymer, ore_carbonate",
    resourceQuantities = "25, 10, 12",
    combineTypes = "1, 1, 1",
@@ -73,7 +73,9 @@ coldProtectionArmorLayer = Object:new {
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "coldeffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
-   tanoAttributes = "objecttype=262144:objectcrc=1118558688:objecttemp=armor_layer_cold:templatetype=craft_armor_ingredients_n:",
+   tanoAttributes = "objecttype=262145:objectcrc=1118558688:objecttemp=armor_layer_cold:templatetype=craft_armor_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  coldeffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",

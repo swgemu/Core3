@@ -59,7 +59,7 @@ blastProtectionArmorLayer = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "armor_layer_frame, defensive_layer_microlattice, shockwave_repulsion_compound, blast_harmonics_absorbtion_medium",
-   ingredientOptionals = "0, 0, 0, 0",
+   ingredientSlotType = "0, 0, 0, 0",
    resourceTypes = "metal_ferrous, petrochem_inert_polymer, gemstone_armophous, ore_intrusive",
    resourceQuantities = "25, 10, 8, 3",
    combineTypes = "1, 1, 1, 1",
@@ -73,7 +73,9 @@ blastProtectionArmorLayer = Object:new {
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "blasteffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
-   tanoAttributes = "objecttype=262144:objectcrc=3979633097:objecttemp=armor_layer_blast:templatetype=craft_armor_ingredients_n:",
+   tanoAttributes = "objecttype=262145:objectcrc=3979633097:objecttemp=armor_layer_blast:templatetype=craft_armor_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  blasteffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",

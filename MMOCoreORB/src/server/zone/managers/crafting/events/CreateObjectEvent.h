@@ -54,7 +54,7 @@ class CreateObjectEvent : public Event {
 	bool doCreate;
 
 public:
-	CreateObjectEvent(Player * pl, CraftingTool* tool, bool create) :
+	CreateObjectEvent(Player* pl, CraftingTool* tool, bool create) :
 		Event() {
 		ct = tool;
 		player = pl;
@@ -70,7 +70,7 @@ public:
 			player->wlock();
 			ct->wlock();
 
-			ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
+			ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
 			if(tano != NULL && doCreate) {
 				Inventory* inventory = player->getInventory();
@@ -82,7 +82,9 @@ public:
 
 					player->addInventoryItem(tano);
 
-					itemManager->savePlayerItem(player, tano);
+					//itemManager->createPlayerItem(player, tano);
+
+					tano->setPersistent(false);
 
 					ct->setStatusReady();
 
@@ -91,7 +93,7 @@ public:
 					ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "prototype_not_transferred");
 					player->sendMessage(sysMessage);
 
-					Container * hopper = ct->getHopper(player);
+					Container* hopper = ct->getHopper(player);
 
 					for(int i = 0; i < hopper->objectsSize(); i++){
 						hopper->removeObject(0);
@@ -105,14 +107,9 @@ public:
 
 				tano->sendTo(player);
 
-				tano->sendDeltas(player);
-
-				tano->setPersistent(false);
-
 			} else {
 
 				ct->setStatusReady();
-
 			}
 
 			ct->setWorkingTano(NULL);

@@ -59,7 +59,7 @@ electricalProtectionArmorLayer = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "armor_layer_frame, primary_insulator_micro_layer, secondary_insulator_microsheath",
-   ingredientOptionals = "0, 0, 0",
+   ingredientSlotType = "0, 0, 0",
    resourceTypes = "copper, petrochem_inert_polymer, ore_siliclastic",
    resourceQuantities = "25, 10, 12",
    combineTypes = "1, 1, 1",
@@ -73,7 +73,9 @@ electricalProtectionArmorLayer = Object:new {
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "electricaleffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
-   tanoAttributes = "objecttype=262144:objectcrc=2194125131:objecttemp=armor_layer_electrical:templatetype=craft_armor_ingredients_n:",
+   tanoAttributes = "objecttype=262145:objectcrc=2194125131:objecttemp=armor_layer_electrical:templatetype=craft_armor_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  electricaleffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",

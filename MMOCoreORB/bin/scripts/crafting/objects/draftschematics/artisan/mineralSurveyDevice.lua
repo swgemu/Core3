@@ -60,7 +60,7 @@ mineralSurveyDevice = Object:new {
   
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly, storage_unit",
-  ingredientOptionals = "0, 0, 0, 0",
+  ingredientSlotType = "0, 0, 0, 0",
   resourceTypes = "metal, metal, metal, mineral",
   resourceQuantities = "8, 3, 8, 8",
   combineTypes = "1, 1, 1, 1",
@@ -74,6 +74,8 @@ mineralSurveyDevice = Object:new {
   experimentalSubGroupTitles = "useModifier",
   
   tanoAttributes = "objecttype=32770:objectcrc=2862265132:objecttemp=survey_tool_mineral:templatetype=obj_n:",
+  customizationOptions = "",
+   customizationDefaults = "", 
    
   attributesToSet = "useModifier",
   attributeExperimentalProperties = "exp_effectiveness",

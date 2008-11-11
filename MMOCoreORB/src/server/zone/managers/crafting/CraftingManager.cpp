@@ -124,7 +124,7 @@ void CraftingManager::nextCraftingStage(Player* player, string& test) {
 		((CraftingManagerImplementation*) _impl)->nextCraftingStage(player, test);
 }
 
-void CraftingManager::craftingCustomization(Player* player, string& name, int condition) {
+void CraftingManager::craftingCustomization(Player* player, string& name, int condition, string& customizationstring) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,10 +133,11 @@ void CraftingManager::craftingCustomization(Player* player, string& name, int co
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(condition);
+		method.addAsciiParameter(customizationstring);
 
 		method.executeWithVoidReturn();
 	} else
-		((CraftingManagerImplementation*) _impl)->craftingCustomization(player, name, condition);
+		((CraftingManagerImplementation*) _impl)->craftingCustomization(player, name, condition, customizationstring);
 }
 
 void CraftingManager::handleExperimenting(Player* player, int counter, int numRowsAttempted, string& expstring) {
@@ -296,7 +297,7 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		nextCraftingStage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_nextCraftingStage__Player_string_));
 		break;
 	case 12:
-		craftingCustomization((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_craftingCustomization__Player_string_int_), inv->getSignedIntParameter());
+		craftingCustomization((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_craftingCustomization__Player_string_int_string_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_craftingCustomization__Player_string_int_string_));
 		break;
 	case 13:
 		handleExperimenting((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_handleExperimenting__Player_int_int_string_));
@@ -356,8 +357,8 @@ void CraftingManagerAdapter::nextCraftingStage(Player* player, string& test) {
 	return ((CraftingManagerImplementation*) impl)->nextCraftingStage(player, test);
 }
 
-void CraftingManagerAdapter::craftingCustomization(Player* player, string& name, int condition) {
-	return ((CraftingManagerImplementation*) impl)->craftingCustomization(player, name, condition);
+void CraftingManagerAdapter::craftingCustomization(Player* player, string& name, int condition, string& customizationstring) {
+	return ((CraftingManagerImplementation*) impl)->craftingCustomization(player, name, condition, customizationstring);
 }
 
 void CraftingManagerAdapter::handleExperimenting(Player* player, int counter, int numRowsAttempted, string& expstring) {

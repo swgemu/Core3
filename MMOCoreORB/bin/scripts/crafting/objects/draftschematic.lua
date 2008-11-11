@@ -59,7 +59,7 @@ DraftSchematic = Object:new {
 
   ingredientTemplateNames = "",
   ingredientTitleNames = "",
-  ingredientOptionals = "",
+  ingredientSlotType = "",
   resourceTypes = "",
   resourceQuantities = "",
   combineTypes = "",
@@ -73,6 +73,8 @@ DraftSchematic = Object:new {
   experimentalSubGroupTitles = "",
 
   tanoAttributes = "",
+  customizationOptions = "",
+   customizationDefaults = "",
 
   attributesToSet = "",
   attributeExperimentalProperties = "",

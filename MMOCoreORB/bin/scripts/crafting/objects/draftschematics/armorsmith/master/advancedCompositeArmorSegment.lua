@@ -59,7 +59,7 @@ advancedCompositeArmorSegment = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "segment_layer_assembly_plate, armor_layer_weld_tabs, segment_mounting_tabs, defensive_layer, defensive_layer_2, defensive_layer_3, segment_enhancement",
-   ingredientOptionals = "0, 0, 0, 1, 1, 1, 1, 1",
+   ingredientSlotType = "0, 0, 0, 1, 1, 1, 1, 1",
    --resourceTypes = "iron_colat, steel_kiirium, copper_polysteel, object/tangible/component/armor/shared_armor_layer, object/tangible/component/armor/shared_armor_layer, object/tangible/component/armor/shared_armor_layer, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
    resourceTypes = "metal, metal, metal, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
    resourceQuantities = "16, 8, 5, 1, 1, 1, 1",
@@ -73,7 +73,9 @@ advancedCompositeArmorSegment = Object:new {
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "electricaleffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
-   tanoAttributes = "objecttype=262144:objectcrc=2764212654:objecttemp=armor_segment_composite_advanced:templatetype=craft_clothing_ingredients_n:",
+   tanoAttributes = "objecttype=262145:objectcrc=2764212654:objecttemp=armor_segment_composite_advanced:templatetype=craft_clothing_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  electricaleffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",

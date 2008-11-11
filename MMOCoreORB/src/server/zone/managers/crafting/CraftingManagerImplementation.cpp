@@ -125,11 +125,6 @@ void CraftingManagerImplementation::createDraftSchematic(Player* player,
 
 	// Send the Baselines to the player
 	draftSchematic->sendTo(player);
-
-	// Setup crafting slots
-	craftingTool->initializeCraftingSlots(
-			draftSchematic->getIngredientListSize());
-
 }
 
 void CraftingManagerImplementation::createTangibleObject(Player* player,
@@ -175,9 +170,6 @@ void CraftingManagerImplementation::createTangibleObject(Player* player,
 
 	// Start the insert count so inserts and removals work
 	craftingTool->setInsertCount(1);
-
-	// Clear the tools slots in case anything lingers in the vectors
-	craftingTool->resetSlots();
 
 }
 
@@ -246,13 +238,13 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 		int quantity = dsi->getResourceQuantity();
 
 		// Get what, if anything, is in the designated slot
-		TangibleObject* ingredientInSlot = craftingTool->getIngredientInSlot(
-				slot);
+		TangibleObject* ingredientInSlot = craftingTool->getIngredientInSlot(slot);
+		int ingredientInSlotQuantity = craftingTool->getIngredientInSlotQuantity(slot);
 
 		// Send slot messages base on content, if needed
 		if (ingredientInSlot != NULL) {
 
-			if (slotIsFull(player, craftingTool, tano, ingredientInSlot, slot,
+			if (slotIsFull(player, craftingTool, tano, ingredientInSlot, ingredientInSlotQuantity, slot,
 					quantity, counter)) {
 
 				return;
@@ -260,13 +252,19 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 		}
 
 		// Set resource values appropriately
-		newTano = transferIngredientToSlot(player, tano, craftingTool, quantity);
+		newTano = transferIngredientToSlot(player, tano, craftingTool, (quantity - ingredientInSlotQuantity));
 
 		if (newTano == NULL) {
-
 			sendSlotMessage(player, counter, SLOTBADCRATE);
 			return;
 		}
+
+		// Add the resource to the "slots" in the crafting tool for tracking
+		if(!craftingTool->addIngredientToSlot(slot, newTano)) {
+			sendSlotMessage(player, counter, SLOTINVALIDINGREDIENT);
+			return;
+		}
+
 		// DMSCO6 ***************************************************
 		// Prepares the slot for insert
 		ManufactureSchematicObjectDeltaMessage6* dMsco6 =
@@ -288,13 +286,13 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 			// If it's the first resource inserted, we need to fully update all the slots
 			dMsco7->fullUpdate(draftSchematic,
 					draftSchematic->getIngredientListSize(), slot,
-					newTano->getObjectID(), quantity);
+					newTano->getObjectID(), quantity + ingredientInSlotQuantity);
 		} else {
 
 			// If it's not the first resources, slots are updates, and only insert needs done
 			dMsco7->partialUpdate(slot, draftSchematic->getIngredientListSize()
 					+ craftingTool->getInsertCount(), newTano->getObjectID(),
-					quantity);
+					quantity + ingredientInSlotQuantity);
 		}
 		dMsco7->close();
 
@@ -306,17 +304,14 @@ void CraftingManagerImplementation::addIngredientToSlot(Player* player,
 		// Increment the insert counter
 		craftingTool->increaseInsertCount();
 
-		// Add the resource to the "slots" in the crafting tool for tracking
-		craftingTool->addIngredientToSlot(slot, newTano);
-
 	} catch (...) {
 		info(
-				"Unreported exception caught in CraftingManagerImplementation::addResourceToCraft");
+				"Unreported exception caught in CraftingManagerImplementation::addIngredientToSlot");
 	}
 }
 bool CraftingManagerImplementation::slotIsFull(Player* player,
-		CraftingTool* craftingTool, TangibleObject* tano,
-		TangibleObject* ingredientInSlot, int slot, int quantity, int counter) {
+		CraftingTool* craftingTool, TangibleObject* tano, TangibleObject* ingredientInSlot,
+		int ingredientInSlotQuantity, int slot, int quantity, int counter) {
 
 	if (tano->isResource()) {
 
@@ -342,12 +337,6 @@ bool CraftingManagerImplementation::slotIsFull(Player* player,
 				// If Resource isn't the same, throw slot error
 				sendSlotMessage(player, counter, SLOTINVALIDINGREDIENT);
 				return true;
-
-			} else {
-
-				// If resource is the same add resource to incoming stack
-				rcno->setContents(rcno->getContents()
-						+ rcnoinSlot->getContents());
 
 			}
 		}
@@ -379,7 +368,7 @@ void CraftingManagerImplementation::sendSlotMessage(Player* player,
 
 TangibleObject* CraftingManagerImplementation::transferIngredientToSlot(
 		Player* player, TangibleObject* tano, CraftingTool* craftingTool,
-		int& quantity) {
+		int quantity) {
 
 	if (tano->isResource()) {
 
@@ -401,40 +390,40 @@ TangibleObject* CraftingManagerImplementation::transferIngredientToSlot(
 }
 
 TangibleObject* CraftingManagerImplementation::transferResourceToSlot(
-		Player* player, ResourceContainer* rcno, CraftingTool* craftingTool,
-		int& quantity) {
+		Player* player, ResourceContainer* incomingResource, CraftingTool* craftingTool,
+		int quantity) {
 
-	string name = rcno->getResourceName();
+	string name = incomingResource->getResourceName();
 
-	if (rcno->getContents() < quantity) {
+	if (incomingResource->getContents() < quantity) {
 
 		// If there are less resources in the stack
 		// then required, only use what is left
-		quantity = rcno->getContents();
+		quantity = incomingResource->getContents();
 
 	}
 
-	if (rcno->getContents() - quantity < 1) {
+	if (incomingResource->getContents() - quantity < 1) {
 
 		// If Stack is empty, remove it from inventory
-		player->removeInventoryItem(rcno->getObjectID());
+		player->removeInventoryItem(incomingResource->getObjectID());
 
 		// Destroy Container
-		rcno->sendDestroyTo(player);
-		rcno->finalize();
+		incomingResource->sendDestroyTo(player);
+		incomingResource->finalize();
 
 	} else {
 
 		try {
 			// Remove proper amount of resource from chosen Container
-			int newContents = rcno->getContents() - quantity;
-			rcno->setContents(newContents);
+			int newContents = incomingResource->getContents() - quantity;
+			incomingResource->setContents(newContents);
 
 			// Update the ResourceContainer
-			rcno->sendDeltas(player);
+			incomingResource->sendDeltas(player);
 
 			// Flag ResourceContainer for saving changes
-			rcno->setUpdated(true);
+			incomingResource->setUpdated(true);
 
 		} catch (...) {
 			info(
@@ -476,7 +465,7 @@ TangibleObject* CraftingManagerImplementation::transferResourceToSlot(
 
 TangibleObject* CraftingManagerImplementation::transferComponentToSlot(
 		Player* player, Component* component, CraftingTool* craftingTool,
-		int& quantity) {
+		int quantity) {
 
 	int objectCount = component->getObjectCount();
 
@@ -557,19 +546,16 @@ void CraftingManagerImplementation::removeIngredientFromSlot(Player* player,
 
 		sendSlotMessage(player, counter, SLOTNOTOOL);
 		return;
-
 	}
 
 	DraftSchematic* draftSchematic = craftingTool->getWorkingDraftSchematic();
 
 	if (draftSchematic == NULL) {
-
 		sendSlotMessage(player, counter, SLOTNOSCHEMATIC);
 		return;
 	}
 
 	try {
-
 		string name;
 
 		// Use the crafting tool to amount of resources in the slot
@@ -585,13 +571,19 @@ void CraftingManagerImplementation::removeIngredientFromSlot(Player* player,
 
 			ResourceContainer* rcno = (ResourceContainer*) tano;
 			player->addInventoryResource(rcno);
-
-		} else if (tano->isComponent()){
+		} else {
 
 			Component* component = (Component*) tano;
-			putComponentBackInInventory(player, component);
 
+			if (component == NULL) {
+				sendSlotMessage(player, counter, SLOTNOCOMPONENTTRANSFER);
+				return;
+			}
+			putComponentBackInInventory(player, component);
 		}
+
+		// Clears CraftingTool's resource slot
+		craftingTool->clearIngredientInSlot(slot);
 
 		// DMCSO7 ******************************************************
 		// Removes resource from client slot
@@ -610,8 +602,7 @@ void CraftingManagerImplementation::removeIngredientFromSlot(Player* player,
 
 		// Object Controller ********************************************
 		// Updates the screen with the resource removal
-		ObjectControllerMessage
-				* objMsg =
+		ObjectControllerMessage* objMsg =
 						new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 		objMsg->insertInt(0x108);
 		objMsg->insertInt(0);
@@ -621,9 +612,6 @@ void CraftingManagerImplementation::removeIngredientFromSlot(Player* player,
 		// End Object Controller *****************************************
 
 		tano = NULL;
-
-		// Updates CraftingTool's resource slot
-		craftingTool->addIngredientToSlot(slot, tano);
 
 		// Increases Insert Counter
 		craftingTool->increaseInsertCount();
@@ -670,7 +658,6 @@ void CraftingManagerImplementation::putComponentBackInInventory(Player* player,
 	newComponent->sendTo(player);
 
 	newComponent->setPersistent(true);
-
 
 	component->setContainer(NULL);
 
@@ -748,6 +735,10 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	string expskill = draftSchematic->getExperimentingSkill();
 	int exppoints = int(player->getSkillMod(expskill) / 10);
 
+	// Get the level of customization
+	string custskill = draftSchematic->getCustomizationSkill();
+	int custpoints = int(player->getSkillMod(custskill));
+
 	// The Experimenting counter always starts at numbers of exp titles + 1
 	draftSchematic->setExpCounter();
 	draftSchematic->setExpPoints(exppoints);
@@ -790,13 +781,15 @@ void CraftingManagerImplementation::initialAssembly(Player* player,
 	player->sendMessage(dMsco3);
 	// End DMSCO3 *************************************************************
 
-
 	// Start DMSCO7 ***********************************************************
 	// Sends the experimental properties and experimental percentages
 	ManufactureSchematicObjectDeltaMessage7
 			* dMsco7 =
 					new ManufactureSchematicObjectDeltaMessage7(draftSchematic->getObjectID());
 	dMsco7->updateForAssembly(draftSchematic);
+	if(custpoints > 0) {
+		dMsco7->updateCustomizationOptions(draftSchematic, custpoints);
+	}
 	dMsco7->close();
 
 	player->sendMessage(dMsco7);
@@ -1454,7 +1447,7 @@ void CraftingManagerImplementation::createSchematic(Player* player,
 	// Add Schematic to datapad here
 }
 void CraftingManagerImplementation::craftingCustomization(Player* player,
-		string name, int condition) {
+		string name, int condition, string customizationstring) {
 
 	CraftingTool* craftingTool = player->getCurrentCraftingTool();
 
@@ -1467,13 +1460,35 @@ void CraftingManagerImplementation::craftingCustomization(Player* player,
 	if (draftSchematic == NULL || tano == NULL)
 		return;
 
-	MySqlDatabase::escapeString(name);
+	StringTokenizer tokenizer(customizationstring);
+	int customizationnumber, customizationvalue;
+	string customization;
 
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(tano);
-	dtano3->updateName(name);
+	MySqlDatabase::escapeString(name);
 
 	tano->setName(name);
 
+	VectorMap<string, int> customizationMap;
+
+	while(tokenizer.hasMoreTokens()) {
+
+		customizationnumber = tokenizer.getIntToken();
+		customization = draftSchematic->getCustomizationOption(customizationnumber);
+
+		customizationvalue = tokenizer.getIntToken();
+
+		customizationMap.put(customization, customizationvalue);
+	}
+
+	for (int i = 0; i < customizationMap.size(); ++i) {
+		tano->setCustomizationVariable(customizationMap.elementAt(i)->getKey(), customizationMap.get(i));
+	}
+
+	tano->setUpdated(true);
+
+	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(tano);
+	dtano3->updateName(name);
+	dtano3->updateCustomizationString();
 	dtano3->close();
 
 	player->sendMessage(dtano3);
@@ -2271,9 +2286,9 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 		Vector<string> parsedIngredientTitleNames =
 				instance->parseStringsFromString(unparIngredientTitleNames);
 
-		// example: 1 for optional, 0 for mandatory
+		// example: 2 for identical, 1 for optional, 0 for mandatory
 		string unparOptionalFlags = schematic.getStringField(
-				"ingredientOptionals");
+				"ingredientSlotType");
 		Vector<uint32> parsedOptionalFlags =
 				instance->parseUnsignedInt32sFromString(unparOptionalFlags);
 
@@ -2306,7 +2321,7 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 		for (int i = 0; i < parsedIngredientTemplateNames.size(); i++) {
 			draftSchematic->addIngredient(parsedIngredientTemplateNames.get(i),
 					parsedIngredientTitleNames.get(i),
-					(bool) parsedOptionalFlags.get(i), parsedResourceTypes.get(
+					parsedOptionalFlags.get(i), parsedResourceTypes.get(
 							i), parsedResourceQuantities.get(i),
 					parsedCombineTypes.get(i), parsedContribution.get(i));
 		}
@@ -2373,6 +2388,23 @@ int CraftingManagerImplementation::addDraftSchematicToServer(lua_State *L) {
 		// Save schematics tano attributes
 		string tanoAttributes = schematic.getStringField("tanoAttributes");
 		draftSchematic->setTanoAttributes(tanoAttributes);
+
+		// Set Customization options
+		string unparCustomizationOptions = schematic.getStringField(
+				"customizationOptions");
+		Vector<string> parsedCustomizationOptions =
+				instance->parseStringsFromString(unparCustomizationOptions);
+
+		// Set Default Customization values
+		string unparCustomizationValues = schematic.getStringField(
+				"customizationDefaults");
+		Vector<uint32> parsedCustomizationValues =
+				instance->parseUnsignedInt32sFromString(unparCustomizationValues);
+
+		for(int i = 0; i < parsedCustomizationOptions.size(); ++i) {
+			draftSchematic->addCustomizationOption(parsedCustomizationOptions.get(i),
+					parsedCustomizationValues.get(i));
+		}
 
 		// Set ItemAttribute properties for values in crafting assembly/experimentation
 		string unparAttributesToSet = schematic.getStringField(

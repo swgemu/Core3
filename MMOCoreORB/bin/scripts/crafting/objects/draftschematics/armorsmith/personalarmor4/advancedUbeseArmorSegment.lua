@@ -59,7 +59,7 @@ advancedUbeseArmorSegment = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "segment_layer_assembly_plate, armor_layer_weld_tabs, segment_mounting_tabs, defensive_layer, segment_enhancement",
-   ingredientOptionals = "0, 0, 0, 1, 1",
+   ingredientSlotType = "0, 0, 0, 1, 1",
    --resourceTypes = "iron_axidite, steel_neutronium, fiberplast, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
    resourceTypes = "metal, metal, metal, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
    resourceQuantities = "25, 15, 10, 1, 1",
@@ -74,8 +74,10 @@ advancedUbeseArmorSegment = Object:new {
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "kineticeffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
-   tanoAttributes = "objecttype=262144:objectcrc=1032868484:objecttemp=armor_segment_ubese_advanced:templatetype=craft_clothing_ingredients_n:",
-
+   tanoAttributes = "objecttype=262145:objectcrc=1032868484:objecttemp=armor_segment_ubese_advanced:templatetype=craft_clothing_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
+   
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  kineticeffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",
    attributePrecision = "10, 0, 0, 0, 0, 10",

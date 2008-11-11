@@ -3508,7 +3508,14 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
 				* draftSchematic =
 						craftingTool->getCurrentDraftSchematic(indexOfSelectedSchematic);
 
-		if (draftSchematic != NULL) {
+		if (draftSchematic == NULL) {
+
+			parseCancelCraftingSession(player, packet);
+			craftingTool->sendToolStart(player);
+			draftSchematic = craftingTool->getCurrentDraftSchematic(indexOfSelectedSchematic);
+		}
+
+		if(draftSchematic != NULL) {
 
 			try {
 
@@ -3524,8 +3531,8 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
 				craftingTool->unlock();
 
 			}
-
 		}
+
 	} else {
 		// This eles should never execute
 		player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Link of this error.");
@@ -3597,7 +3604,27 @@ void ObjectControllerMessage::parseCraftCustomization(Player* player,
 
 	int condition = packet->parseInt();
 
-	player->craftingCustomization(name, condition);
+	int customizationcount = packet->parseByte();
+
+	int value, count;
+
+	stringstream ss;
+
+	for(int i = 0; i < customizationcount; ++i) {
+
+		count = packet->parseInt();
+
+		value = packet->parseInt();
+
+		ss << count << " " << value;
+
+		if(i < customizationcount - 1)
+			ss  << " ";
+	}
+
+	string customizationstring = ss.str();
+
+	player->craftingCustomization(name, condition, customizationstring);
 }
 void ObjectControllerMessage::parseCreatePrototype(Player* player,
 		Message* packet) {

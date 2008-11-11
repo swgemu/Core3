@@ -985,7 +985,7 @@ public:
 	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
 	void removeResourceFromCraft(uint64 resID, int slot, int counter);
 	void nextCraftingStage(string test);
-	void craftingCustomization(string name, int condition);
+	void craftingCustomization(string name, int condition, string customizationstring);
 	void createPrototype(string count);
 	void createSchematic(string count);
 	void handleExperimenting(int count, int numRowsAttempted, string expstring);

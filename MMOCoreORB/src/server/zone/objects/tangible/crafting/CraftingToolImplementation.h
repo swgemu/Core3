@@ -178,10 +178,13 @@ public:
 		tooltype = in;
 	}
 
-	inline void addIngredientToSlot(int slot, TangibleObject* tano){
+	inline bool addIngredientToSlot(int slot, TangibleObject* tano){
+		return craftingSlots->putIngredientInSlot(slot, tano);
+	}
 
-		craftingSlots->setIngredientInSlot(slot, tano);
+	inline void clearIngredientInSlot(int slot){
 
+		craftingSlots->clearIngredientInSlot(slot);
 	}
 
 	inline void addTempIngredient(TangibleObject* tano){
@@ -219,14 +222,20 @@ public:
 
 	}
 
-	inline void initializeCraftingSlots(const int size){
+	inline int getIngredientInSlotQuantity(int slot){
 
-		craftingSlots->init(size);
+		return craftingSlots->getIngredientCount(slot);
 
 	}
 
 	inline DraftSchematic* getCurrentDraftSchematic(int slot){
-		return  schematicsToSend.get(slot);
+		try {
+
+			return  schematicsToSend.get(slot);
+		}
+		catch(...) {
+			return NULL;
+		}
 	}
 
 	inline int getSlotCount(){

@@ -59,7 +59,7 @@ biologicalEffectController = Object:new {
 
    ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n",
    ingredientTitleNames = "inorganic_element, organic_element",
-   ingredientOptionals = "0, 0",
+   ingredientSlotType = "0, 0",
    resourceTypes = "inorganic, organic",
    resourceQuantities = "6, 6",
    combineTypes = "1, 1",
@@ -74,7 +74,8 @@ biologicalEffectController = Object:new {
    experimentalSubGroupTitles = "charges, power",
 
    tanoAttributes = "objecttype=262144:objectcrc=3704098001:objecttemp=bio_effect_controller:templatetype=craft_chemical_ingredients_n:",
-
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "charges, power",
    attributeExperimentalProperties = "exp_charges, exp_effectiveness",

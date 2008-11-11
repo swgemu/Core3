@@ -79,9 +79,10 @@ void StructureManagerImplementation::initializeEvents() {
 void StructureManagerImplementation::loadStructures() {
 	init();
 
-	cout << "Loading Structures for zone: " << zone->getZoneID() << endl;
+	info("Loading Structures for zone: " + zone->getZoneID());
 	loadStaticBuildings();
 	loadPlayerStructures(); // loads both buildings + installations
+
 }
 
 void StructureManagerImplementation::unloadStructures() {

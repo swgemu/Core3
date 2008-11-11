@@ -60,7 +60,7 @@ chemicalSurveyDevice = Object:new {
   
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly, storage_unit",
-  ingredientOptionals = "0, 0, 0, 0",
+  ingredientSlotType = "0, 0, 0, 0",
   resourceTypes = "metal, metal, metal, mineral",
   resourceQuantities = "8, 3, 8, 8",
   combineTypes = "1, 1, 1, 1",
@@ -74,7 +74,8 @@ chemicalSurveyDevice = Object:new {
   experimentalSubGroupTitles = "quality",
   
   tanoAttributes = "objecttype=32770:objectcrc=2242363434:objecttemp=survey_tool_chemical:templatetype=obj_n:",
-   
+  customizationOptions = "",
+   customizationDefaults = "", 
 
   attributesToSet = "quality",
   attributeExperimentalProperties = "exp_effectiveness",

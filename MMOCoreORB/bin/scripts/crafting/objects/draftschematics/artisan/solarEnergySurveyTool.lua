@@ -60,7 +60,7 @@ solarEnergySurveyTool = Object:new {
   
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly",
-  ingredientOptionals = "0, 0, 0",
+  ingredientSlotType = "0, 0, 0",
   resourceTypes = "metal, metal, metal",
   resourceQuantities = "8, 5, 3",
   combineTypes = "1, 1, 1",
@@ -74,6 +74,8 @@ solarEnergySurveyTool = Object:new {
   experimentalSubGroupTitles = "useModifier",
   
   tanoAttributes = "objecttype=32770:objectcrc=2341848205:objecttemp=survey_tool_solar:templatetype=obj_n:",
+  customizationOptions = "",
+   customizationDefaults = "",
    
   attributesToSet = "useModifier",
   attributeExperimentalProperties = "exp_effectiveness",

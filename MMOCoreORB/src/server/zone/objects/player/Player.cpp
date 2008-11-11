@@ -3509,7 +3509,7 @@ void Player::nextCraftingStage(string& test) {
 		((PlayerImplementation*) _impl)->nextCraftingStage(test);
 }
 
-void Player::craftingCustomization(string& name, int condition) {
+void Player::craftingCustomization(string& name, int condition, string& customizationstring) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3517,10 +3517,11 @@ void Player::craftingCustomization(string& name, int condition) {
 		DistributedMethod method(this, 275);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(condition);
+		method.addAsciiParameter(customizationstring);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->craftingCustomization(name, condition);
+		((PlayerImplementation*) _impl)->craftingCustomization(name, condition, customizationstring);
 }
 
 void Player::createPrototype(string& count) {
@@ -5254,7 +5255,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		nextCraftingStage(inv->getAsciiParameter(_param0_nextCraftingStage__string_));
 		break;
 	case 275:
-		craftingCustomization(inv->getAsciiParameter(_param0_craftingCustomization__string_int_), inv->getSignedIntParameter());
+		craftingCustomization(inv->getAsciiParameter(_param0_craftingCustomization__string_int_string_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_craftingCustomization__string_int_string_));
 		break;
 	case 276:
 		createPrototype(inv->getAsciiParameter(_param0_createPrototype__string_));
@@ -6555,8 +6556,8 @@ void PlayerAdapter::nextCraftingStage(string& test) {
 	return ((PlayerImplementation*) impl)->nextCraftingStage(test);
 }
 
-void PlayerAdapter::craftingCustomization(string& name, int condition) {
-	return ((PlayerImplementation*) impl)->craftingCustomization(name, condition);
+void PlayerAdapter::craftingCustomization(string& name, int condition, string& customizationstring) {
+	return ((PlayerImplementation*) impl)->craftingCustomization(name, condition, customizationstring);
 }
 
 void PlayerAdapter::createPrototype(string& count) {

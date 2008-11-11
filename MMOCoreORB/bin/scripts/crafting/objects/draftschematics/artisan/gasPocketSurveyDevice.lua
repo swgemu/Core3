@@ -60,7 +60,7 @@ gasPocketSurveyDevice = Object:new {
   
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly, storage_unit",
-  ingredientOptionals = "0, 0, 0, 0",
+  ingredientSlotType = "0, 0, 0, 0",
   resourceTypes = "metal, metal, metal, mineral",
   resourceQuantities = "8, 8, 3, 8",
   combineTypes = "1, 1, 1, 1",
@@ -78,6 +78,8 @@ gasPocketSurveyDevice = Object:new {
   experimentalSubGroupTitles = "quality",
   
   tanoAttributes = "objecttype=32770:objectcrc=1059021891:objecttemp=survey_tool_gas:templatetype=obj_n:",
+  customizationOptions = "",
+   customizationDefaults = "", 
    
   attributesToSet = "quality",
   attributeExperimentalProperties = "exp_effectiveness",

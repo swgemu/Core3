@@ -61,7 +61,7 @@ weaponCraftingTool = Object:new {
 
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
-  ingredientOptionals = "0, 0, 0",
+  ingredientSlotType = "0, 0, 0",
   resourceTypes = "metal, mineral, chemical",
   resourceQuantities = "16, 8, 10",
   combineTypes = "1, 1, 1",
@@ -75,6 +75,8 @@ weaponCraftingTool = Object:new {
   experimentalSubGroupTitles = "useModifier",
 
   tanoAttributes = "objecttype=32769:objectcrc=1693896753:objecttemp=weapon_tool_name:templatetype=crafting:",
+  customizationOptions = "",
+   customizationDefaults = "",
 
   attributesToSet = "useModifier",
   attributeExperimentalProperties = "exp_effectiveness",

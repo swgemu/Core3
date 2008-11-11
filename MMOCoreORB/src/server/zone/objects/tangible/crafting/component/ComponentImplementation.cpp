@@ -132,7 +132,6 @@ void ComponentImplementation::sendRadialResponseTo(Player* player, ObjectMenuRes
 }
 
 void ComponentImplementation::init() {
-	objectSubType = TangibleObjectImplementation::COMPONENT;
 	parseAttributeString();
 	parsePrecisionString();
 	parseTitleString();
@@ -174,7 +173,7 @@ void ComponentImplementation::generateAttributes(SceneObject* obj) {
 		value = attributeMap.get(attribute);
 		precision = precisionMap.get(attribute);
 
-		if (precision >= 0 && value != 0) {
+		if (precision >= 0) {
 
 			if (precision >= 10) {
 				footer = "%";
