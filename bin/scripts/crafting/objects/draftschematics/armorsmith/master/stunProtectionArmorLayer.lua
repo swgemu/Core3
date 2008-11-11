@@ -59,7 +59,7 @@ stunProtectionArmorLayer = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "armor_layer_frame, defensive_layer_microlattice, shockwave_repulsion_compound",
-   ingredientOptionals = "0, 0, 0",
+   ingredientSlotType = "0, 0, 0",
    resourceTypes = "metal_ferrous, crystalline_vertex, ore_siliclastic_crism",
    resourceQuantities = "25, 10, 12",
    combineTypes = "1, 1, 1",
@@ -73,7 +73,9 @@ stunProtectionArmorLayer = Object:new {
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "stuneffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
   
-   tanoAttributes = "objecttype=262144:objectcrc=203108001:objecttemp=armor_layer_stun:templatetype=craft_armor_ingredients_n:",
+   tanoAttributes = "objecttype=262145:objectcrc=203108001:objecttemp=armor_layer_stun:templatetype=craft_armor_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  stuneffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",

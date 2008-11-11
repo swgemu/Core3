@@ -41,7 +41,7 @@ public:
 
 	void nextCraftingStage(Player* player, string& test);
 
-	void craftingCustomization(Player* player, string& name, int condition);
+	void craftingCustomization(Player* player, string& name, int condition, string& customizationstring);
 
 	void handleExperimenting(Player* player, int counter, int numRowsAttempted, string& expstring);
 
@@ -89,7 +89,7 @@ public:
 
 	void nextCraftingStage(Player* player, string& test);
 
-	void craftingCustomization(Player* player, string& name, int condition);
+	void craftingCustomization(Player* player, string& name, int condition, string& customizationstring);
 
 	void handleExperimenting(Player* player, int counter, int numRowsAttempted, string& expstring);
 
@@ -111,7 +111,8 @@ public:
 
 protected:
 	string _param1_nextCraftingStage__Player_string_;
-	string _param1_craftingCustomization__Player_string_int_;
+	string _param1_craftingCustomization__Player_string_int_string_;
+	string _param3_craftingCustomization__Player_string_int_string_;
 	string _param3_handleExperimenting__Player_int_int_string_;
 	string _param1_createPrototype__Player_string_;
 	string _param1_createSchematic__Player_string_;

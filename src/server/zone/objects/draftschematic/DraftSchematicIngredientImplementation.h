@@ -61,8 +61,8 @@ class DraftSchematicIngredientImplementation : public DraftSchematicIngredientSe
 	// example: 3
 	uint32 resourceQuantity;
 
-	// example: true
-	bool optional;
+	// example: 2 = Identical items required, 1 = optional, 0 = standard
+	int slotoption;
 
 	// Math Type
 	uint32 combineType;
@@ -70,10 +70,17 @@ class DraftSchematicIngredientImplementation : public DraftSchematicIngredientSe
 	// Contribution level
 	float contribution;
 
+public:
+
+	static const int RESOURCESLOT = 0;
+	static const int IDENTICALSLOT = 1;
+	static const int MIXEDSLOT = 2;
+	static const int OPTIONALIDENTICALSLOT = 3;
+	static const int OPTIONALMIXEDSLOT = 4;
 
 public:
 	DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
-			bool optional, const string& resourceType, uint32 resourceQuantity, uint32 combineType,
+			const int slotoption, const string& resourceType, uint32 resourceQuantity, uint32 combineType,
 			float contribution);
 
 	DraftSchematicIngredientImplementation(DraftSchematicIngredient* ingredient);
@@ -101,8 +108,24 @@ public:
 		return combineType;
 	}
 
-	inline bool getOptional() {
-		return optional;
+	inline bool isOptionalSlot() {
+		return (slotoption == OPTIONALIDENTICALSLOT || slotoption == OPTIONALMIXEDSLOT);
+	}
+
+	inline bool isIdenticalSlot() {
+		return (slotoption == IDENTICALSLOT || slotoption == OPTIONALIDENTICALSLOT);
+	}
+
+	inline bool isMixedSlot() {
+		return slotoption == MIXEDSLOT;
+	}
+
+	inline bool isResourceSlot() {
+		return slotoption == RESOURCESLOT;
+	}
+
+	inline int getSlotType() {
+		return slotoption;
 	}
 
 	inline float getContribution() {

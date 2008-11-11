@@ -117,7 +117,9 @@ void BazaarPlanetManagerImplementation::addBazaar(BazaarTerminalDetails* termina
 		string region = terminal->getRegion();
 
 		bazaar = new RegionBazaar();
-		bazaar->deploy("RegionBazaar:" + region);
+		stringstream ss;
+		ss << "RegionBazaar:" << region << " " << vendorPlanet;
+		bazaar->deploy(ss.str());
 		bazaar->setRegion(region);
 		bazaar->setManager(_this);
 

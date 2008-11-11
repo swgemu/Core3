@@ -12,8 +12,8 @@
  *	DraftSchematicIngredientStub
  */
 
-DraftSchematicIngredient::DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, float contribution) {
-	_impl = new DraftSchematicIngredientImplementation(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity, combineType, contribution);
+DraftSchematicIngredient::DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, const int slotoption, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, float contribution) {
+	_impl = new DraftSchematicIngredientImplementation(ingredientTemplateName, ingredientTitleName, slotoption, resourceType, resourceQuantity, combineType, contribution);
 	_impl->_setStub(this);
 }
 
@@ -105,16 +105,64 @@ unsigned int DraftSchematicIngredient::getCombineType() {
 		return ((DraftSchematicIngredientImplementation*) _impl)->getCombineType();
 }
 
-bool DraftSchematicIngredient::getOptional() {
+int DraftSchematicIngredient::getSlotType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
 
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicIngredientImplementation*) _impl)->getSlotType();
+}
+
+bool DraftSchematicIngredient::isOptionalSlot() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
 		return method.executeWithBooleanReturn();
 	} else
-		return ((DraftSchematicIngredientImplementation*) _impl)->getOptional();
+		return ((DraftSchematicIngredientImplementation*) _impl)->isOptionalSlot();
+}
+
+bool DraftSchematicIngredient::isIdenticalSlot() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DraftSchematicIngredientImplementation*) _impl)->isIdenticalSlot();
+}
+
+bool DraftSchematicIngredient::isResourceSlot() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DraftSchematicIngredientImplementation*) _impl)->isResourceSlot();
+}
+
+bool DraftSchematicIngredient::isMixedSlot() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((DraftSchematicIngredientImplementation*) _impl)->isMixedSlot();
 }
 
 float DraftSchematicIngredient::getContribution() {
@@ -122,7 +170,7 @@ float DraftSchematicIngredient::getContribution() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -159,9 +207,21 @@ Packet* DraftSchematicIngredientAdapter::invokeMethod(uint32 methid, Distributed
 		resp->insertInt(getCombineType());
 		break;
 	case 12:
-		resp->insertBoolean(getOptional());
+		resp->insertSignedInt(getSlotType());
 		break;
 	case 13:
+		resp->insertBoolean(isOptionalSlot());
+		break;
+	case 14:
+		resp->insertBoolean(isIdenticalSlot());
+		break;
+	case 15:
+		resp->insertBoolean(isResourceSlot());
+		break;
+	case 16:
+		resp->insertBoolean(isMixedSlot());
+		break;
+	case 17:
 		resp->insertFloat(getContribution());
 		break;
 	default:
@@ -195,8 +255,24 @@ unsigned int DraftSchematicIngredientAdapter::getCombineType() {
 	return ((DraftSchematicIngredientImplementation*) impl)->getCombineType();
 }
 
-bool DraftSchematicIngredientAdapter::getOptional() {
-	return ((DraftSchematicIngredientImplementation*) impl)->getOptional();
+int DraftSchematicIngredientAdapter::getSlotType() {
+	return ((DraftSchematicIngredientImplementation*) impl)->getSlotType();
+}
+
+bool DraftSchematicIngredientAdapter::isOptionalSlot() {
+	return ((DraftSchematicIngredientImplementation*) impl)->isOptionalSlot();
+}
+
+bool DraftSchematicIngredientAdapter::isIdenticalSlot() {
+	return ((DraftSchematicIngredientImplementation*) impl)->isIdenticalSlot();
+}
+
+bool DraftSchematicIngredientAdapter::isResourceSlot() {
+	return ((DraftSchematicIngredientImplementation*) impl)->isResourceSlot();
+}
+
+bool DraftSchematicIngredientAdapter::isMixedSlot() {
+	return ((DraftSchematicIngredientImplementation*) impl)->isMixedSlot();
 }
 
 float DraftSchematicIngredientAdapter::getContribution() {

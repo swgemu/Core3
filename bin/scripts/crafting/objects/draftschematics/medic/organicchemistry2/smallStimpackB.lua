@@ -59,7 +59,7 @@ smallStimpackB = Object:new {
 
    ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n, craft_chemical_ingredients_n, craft_chemical_ingredients_n, craft_chemical_ingredients_n",
    ingredientTitleNames = "inorganic_element, organic_element, drug_strength_compound, drug_duration_compound, delivery_medium",
-   ingredientOptionals = "0, 0, 1, 1, 1",
+   ingredientSlotType = "0, 0, 1, 1, 1",
    resourceTypes = "inorganic, organic, object/tangible/component/chemistry/shared_biologic_effect_controller.iff, object/tangible/component/chemistry/shared_release_mechanism_duration.iff, object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff",
    resourceQuantities = "12, 12, 1, 1, 1",
    combineTypes = "1, 1, 3, 3, 3",
@@ -73,7 +73,8 @@ smallStimpackB = Object:new {
    experimentalSubGroupTitles = "power, charges",
 
    tanoAttributes = "objecttype=8205:objectcrc=1264058526:objecttemp=stimpack_sm_s1_b:templatetype=medicine_name:",
-
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "charges, power, medicineUseRequired",
    attributeExperimentalProperties = "exp_charges, exp_effectiveness, exp_effectiveness",

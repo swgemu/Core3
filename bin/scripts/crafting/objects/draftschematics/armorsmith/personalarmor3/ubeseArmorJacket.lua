@@ -59,7 +59,7 @@ ubeseArmorJacket = Object:new {
 
    ingredientTemplateNames = "craft_clothing_ingredients_n, craft_chemical_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
    ingredientTitleNames = "auxiliary_coverage, body, liner, hardware_and_attachments, binding_and_reinforcement, padding, armor, load_bearing_harness, reinforcement",
-   ingredientOptionals = "0, 0, 0, 0, 0, 0, 0, 1, 1",
+   ingredientSlotType = "0, 0, 0, 0, 0, 0, 0, 1, 1",
    --resourceTypes = "iron, steel, hide_leathery, steel_neutronium, petrochem_inert_polymer, hide_wooly, object/tangible/component/armor/shared_armor_segment_ubese.iff, object/tangible/component/clothing/shared_fiberplast_panel.iff, object/tangible/component/clothing/shared_reinforc",
    resourceTypes = "metal, metal, metal, metal, metal, metal, object/tangible/component/armor/shared_armor_segment_ubese.iff, object/tangible/component/clothing/shared_fiberplast_panel.iff, object/tangible/component/clothing/shared_reinforced_fiber_panels.iff",
    --resourceQuantities = "50, 50, 50, 30, 30, 30, 4, 1, 1",
@@ -68,14 +68,16 @@ ubeseArmorJacket = Object:new {
    contribution = "100, 100, 100, 100, 100, 100, 100, 100, 100",
 
 
-  numberExperimentalProperties = "1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2",
-   experimentalProperties = "XX, XX, XX, OQ, SR, OQ, UT, OQ, MA, OQ, MA, OQ, MA, XX, XX, OQ, SR",
-   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
+   numberExperimentalProperties = "1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2",
+   experimentalProperties = "XX, XX, XX, XX, OQ, SR, OQ, UT, OQ, MA, OQ, MA, OQ, MA, XX, XX, OQ, SR",
+   experimentalWeights = "1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1",
    experimentalGroupTitles = "exp_resistance, exp_durability, exp_quality",
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "kineticeffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
    tanoAttributes = "objecttype=257:objectcrc=3696152390:objecttemp=armor_ubese_jacket:templatetype=wearables_name:",
+   customizationOptions = "index_color_1",
+   customizationDefaults = "0",
 
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  kineticeffectiveness, specialeffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance, exp_resistance",

@@ -60,7 +60,7 @@ windCurrentSurveyingDevice = Object:new {
   
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, controller, scanner_assembly",
-  ingredientOptionals = "0, 0, 0",
+  ingredientSlotType = "0, 0, 0",
   resourceTypes = "metal, metal, metal",
   resourceQuantities = "5, 3, 8",
   combineTypes = "1, 1, 1",
@@ -75,6 +75,8 @@ windCurrentSurveyingDevice = Object:new {
   experimentalSubGroupTitles = "quality",
   
   tanoAttributes = "objecttype=32770:objectcrc=566467536:objecttemp=survey_tool_wind:templatetype=obj_n:",
+  customizationOptions = "",
+   customizationDefaults = "", 
    
   attributesToSet = "quality",
   attributeExperimentalProperties = "exp_effectiveness",

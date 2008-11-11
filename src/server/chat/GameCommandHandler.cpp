@@ -264,7 +264,7 @@ void GameCommandHandler::init() {
 			&reloadSchematics);
 	gmCommands->addCommand("spawn", CSREVENTS,
 			"Spawn a creature.",
-			"Usage: @spawn <creaturetype> <cellid> <x> <y> <bitmask> <baby>",
+			"Usage: @spawn <creaturetype> <moves (0,1)> <cellid> <x> <y> <bitmask> <baby>",
 			&spawn);
 	gmCommands->addCommand("addNoBuildArea", DEVELOPER,
 			"Adds a no build area to the map.",
@@ -2031,6 +2031,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	uint64 cellid;
 	uint32 objcrc;
 	float x, y;
+	bool stationary = false;
 
 	// spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock)
 
@@ -2051,6 +2052,10 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	x = player->getPositionX();
 	y = player->getPositionY();
 
+	if (tokenizer.hasMoreTokens()) {
+		stationary = (bool) tokenizer.getIntToken();
+	}
+
 	if (tokenizer.hasMoreTokens())
 		height = tokenizer.getFloatToken();
 
@@ -2061,6 +2066,8 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	if (tokenizer.hasMoreTokens()) {
 		y = tokenizer.getFloatToken();
 	}
+
+
 
 	if (height > 100)
 		height = 100;
@@ -2090,6 +2097,10 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 		if (creature != NULL && ((zone = creature->getZone()) != NULL)) {
 			creature->setRespawnTimer(0);
 			creature->setHeight(height);
+
+			if(stationary)
+				creature->setRandomMovement(false);
+
 			CreatureImplementation * creoImpl = (CreatureImplementation *) creature->_getImplementation();
 
 			try {

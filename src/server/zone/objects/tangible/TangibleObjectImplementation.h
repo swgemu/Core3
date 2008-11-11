@@ -198,6 +198,19 @@ public:
 	static const int RIFLE = 0x2000C;
 
 	static const int COMPONENT = 0x40000;
+	static const int ARMORCOMPONENT = 0x40001;
+	static const int CHEMISTRYCOMPONENT = 0x40002;
+	static const int CLOTHINGCOMPONENT = 0x40003;
+	static const int COMMUNITYCRAFTINGCOMPONENT = 0x40004;
+	static const int DROIDCOMPONENT = 0x40005;
+	static const int ELECTRONICSCOMPONENT = 0x40006;
+	static const int GENETICCOMPONENT = 0x40007;
+	static const int LIGHTSABERCRYSTAL = 0x40008;
+	static const int MELEEWEAPONCOMPONENT = 0x40009;
+	static const int MUNITIONCOMPONENT = 0x4000A;
+	static const int RANGEDWEAPONCOMPONENT = 0x4000B;
+	static const int STRUVTURECOMPONENT = 0x4000C;
+	static const int TISSUECOMPONENT = 0x4000D;
 
 	static const int RESOURCECONTAINER = 0x400000;
 	static const int ENERGYGAS = 0x400001;
@@ -575,7 +588,7 @@ public:
 	}
 
 	inline bool isComponent() {
-		return objectSubType == COMPONENT;
+		return (objectSubType & TangibleObjectImplementation::COMPONENT);
 	}
 
 	inline bool isPharmaceutical() {

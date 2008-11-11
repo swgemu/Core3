@@ -85,7 +85,7 @@ interface DraftSchematic implements ManagedObject {
 	void helperSendIngredientsToPlayer(ObjectControllerMessage objMsg);
 
 	void addIngredient(const string ingredientTemplateName, const string ingredientTitleName,
-		boolean optional, const string resourceType, unsigned int resourceQuantity, 
+		const int optional, const string resourceType, unsigned int resourceQuantity, 
 		unsigned int combineType, unsigned int contribution);
 
 	DraftSchematicIngredient getIngredient(int index);
@@ -114,6 +114,10 @@ interface DraftSchematic implements ManagedObject {
 	void setExpFailure(float rate);
 
 	void setExperimentingSkill(const string exp);
+
+	void setCustomizationSkill(const string cust);
+
+	void addCustomizationOption(const string cust, const int value);
 
 	void setAssemblySkill(const string ass);
 
@@ -163,6 +167,14 @@ interface DraftSchematic implements ManagedObject {
 	int getXp();
 
 	string getExperimentingSkill();
+
+	string getCustomizationSkill();
+
+	string getCustomizationOption(const int i);
+	
+	int getCustomizationDefaultValue(const int i);
+	
+	int getCustomizationOptionCount();
 
 	string getAssemblySkill();
 

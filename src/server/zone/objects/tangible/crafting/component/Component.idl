@@ -80,8 +80,8 @@ interface Component implements TangibleObject {
 
 	boolean hasProperty(string attributeName);
 
-        void addProperty(string attribute, float value, int precision, string title);
-	
+    void addProperty(string attribute, float value, int precision, string title);
+    
 	int getPropertyCount();
 	string getProperty(const int j);
 

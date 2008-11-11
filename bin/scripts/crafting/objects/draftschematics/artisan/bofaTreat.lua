@@ -61,7 +61,7 @@ bofaTreat = Object:new {
 
   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
   ingredientTitleNames = "frame_assembly, receiver_assembly, grip_assembly, powerhandler, blaster_rifle_barrel",
-  ingredientOptionals = "0, 0, 0, 0, 0",
+  ingredientSlotType = "0, 0, 0, 0, 0",
   resourceTypes = "metal, metal_ferrous, metal, object/tangible/component/weapon/shared_blaster_power_handler.iff, object/tangible/component/weapon/shared_blaster_rifle_barrel.iff",
   resourceQuantities = "35, 17, 9, 1, 1",
   combineTypes = "1, 1, 1, 2, 2",
@@ -75,6 +75,8 @@ bofaTreat = Object:new {
   experimentalGroupTitles = "exp_damage, exp_durability, exp_efficiency, exp_range",
 
   tanoAttributes = "objecttype=8202:objectcrc=2010692823:objecttemp=dessert_bofa_treat:templatetype=obj_n:",
+  customizationOptions = "",
+   customizationDefaults = "",
 
   attributesToSet = "hitPoints, useModifier",
 

@@ -660,7 +660,7 @@ void PlanetManagerImplementation::loadCraftingStations() {
 
 				CraftingStation* station = new CraftingStation(oid, crc, unicode(name), "public_crafting_station");
 
-				station->setEffectiveness(22);
+				station->setEffectiveness(50);
 
 				station->initializePosition(x, z, y);
 				station->setDirection(oX, oZ, oY, oW);

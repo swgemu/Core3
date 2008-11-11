@@ -3746,9 +3746,9 @@ void PlayerImplementation::nextCraftingStage(string test) {
 	craftingManager->nextCraftingStage(_this, test);
 }
 
-void PlayerImplementation::craftingCustomization(string name, int condition) {
+void PlayerImplementation::craftingCustomization(string name, int condition, string customizationstring) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->craftingCustomization(_this, name, condition);
+	craftingManager->craftingCustomization(_this, name, condition, customizationstring);
 }
 
 void PlayerImplementation::createPrototype(string count) {

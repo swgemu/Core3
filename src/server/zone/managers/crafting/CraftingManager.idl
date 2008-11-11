@@ -70,7 +70,7 @@ interface CraftingManager {
 	void putComponentBackInInventory(Player player, Component component);
 	
 	void nextCraftingStage(Player player, string test);
-	void craftingCustomization(Player player, string name, int condition);
+	void craftingCustomization(Player player, string name, int condition, string customizationstring);
 	void handleExperimenting(Player player, int counter, int numRowsAttempted, string expstring);
 	void createPrototype(Player player, string count);
 	void createSchematic(Player player, string count);

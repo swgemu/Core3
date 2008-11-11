@@ -59,7 +59,7 @@ solidDeliveryShell = Object:new {
 
    ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n",
    ingredientTitleNames = "shell_material_seed_matrix, purified_organic_element",
-   ingredientOptionals = "0, 0",
+   ingredientSlotType = "0, 0",
    resourceTypes = "metal, organic",
    resourceQuantities = "8, 8",
    combineTypes = "1, 1",
@@ -73,7 +73,8 @@ solidDeliveryShell = Object:new {
    experimentalSubGroupTitles = "power",
 
    tanoAttributes = "objecttype=262144:objectcrc=2203679790:objecttemp=solid_delivery_shell:templatetype=craft_chemical_ingredients_n:",
-
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "power",
    attributeExperimentalProperties = "exp_effectiveness",

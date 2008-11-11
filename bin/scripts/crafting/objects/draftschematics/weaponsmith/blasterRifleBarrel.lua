@@ -61,7 +61,7 @@ blasterRifleBarrel = Object:new {
 
   ingredientTemplateNames = "craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n, craft_weapon_ingredients_n",
   ingredientTitleNames = "module_assembly, xciter_circuitry, circuitry_substrate, gas_containment_unit, reactant_source",
-  ingredientOptionals = "0, 0, 0, 0, 0",
+  ingredientSlotType = "0, 0, 0, 0, 0",
   --resourceTypes = "petrochem_inert, copper, ore, metal, gas_reactive",
 resourceTypes = "metal, metal, metal, metal, metal",
   resourceQuantities = "12, 3, 3, 5, 10",
@@ -79,6 +79,8 @@ resourceTypes = "metal, metal, metal, metal, metal",
   experimentalSubGroupTitles = "speed, maxDamage, minDamage, hitpoints",
 
   tanoAttributes = "objecttype=262144:objectcrc=260681278:objecttemp=blaster_rifle_barrel:templatetype=obj_n:",
+  customizationOptions = "",
+   customizationDefaults = "",
 
   attributesToSet = "speed, maxDamage, minDamage, hitpoints",
 

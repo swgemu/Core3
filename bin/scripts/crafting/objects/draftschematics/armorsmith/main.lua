@@ -46,10 +46,13 @@
 
 -- Personal Armor 3
 RunDraftSchematicFile("objects/draftschematics/armorsmith/personalarmor3/ubeseArmorJacket.lua")
+RunDraftSchematicFile("objects/draftschematics/armorsmith/personalarmor3/advancedPaddedArmorSegment.lua")
 
 -- Personal Armor 4
 RunDraftSchematicFile("objects/draftschematics/armorsmith/personalarmor4/advancedUbeseArmorSegment.lua")
 RunDraftSchematicFile("objects/draftschematics/armorsmith/personalarmor4/compositeArmorSegment.lua")
+RunDraftSchematicFile("objects/draftschematics/armorsmith/personalarmor4/paddedArmorChestPlate.lua")
+RunDraftSchematicFile("objects/draftschematics/armorsmith/personalarmor4/kashyyykianHuntingArmorSegment.lua")
 
 -- Layers 1  
 RunDraftSchematicFile("objects/draftschematics/armorsmith/layers1/energyProtectionArmorLayer.lua")
@@ -71,3 +74,4 @@ RunDraftSchematicFile("objects/draftschematics/armorsmith/master/stunProtectionA
 RunDraftSchematicFile("objects/draftschematics/armorsmith/master/advancedCompositeArmorSegment.lua")
 RunDraftSchematicFile("objects/draftschematics/armorsmith/master/compositeArmorChestPlate.lua")
 RunDraftSchematicFile("objects/draftschematics/armorsmith/master/compositeArmorBoots.lua")
+RunDraftSchematicFile("objects/draftschematics/armorsmith/master/kashyyykianHuntingArmorChestPlate.lua")

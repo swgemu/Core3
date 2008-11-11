@@ -136,6 +136,12 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 
 	experimentingSkill = draftSchematic->getExperimentingSkill();
 	assemblySkill = draftSchematic->getAssemblySkill();
+	customizationSkill = draftSchematic->getCustomizationSkill();
+
+	for(int i = 0; i < draftSchematic->getCustomizationOptionCount(); ++i) {
+		customizationOptions.add(draftSchematic->getCustomizationOption(i));
+		customizationDefaults.add(draftSchematic->getCustomizationDefaultValue(i));
+	}
 
 	//toString();
 }
@@ -223,12 +229,12 @@ void DraftSchematicImplementation::sendTo(Player* player) {
 
 // Ingredient Methods
 void DraftSchematicImplementation::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
-		bool optional, const string& resourceType, uint32 resourceQuantity, uint32 combineType, uint32 contribution) {
+		const int slotoption, const string& resourceType, uint32 resourceQuantity, uint32 combineType, uint32 contribution) {
 
 	float contrib = float(contribution) / 100;
 
 	DraftSchematicIngredient* ingredient = new DraftSchematicIngredient(ingredientTemplateName,
-			ingredientTitleName, optional, resourceType, resourceQuantity, combineType, contrib);
+			ingredientTitleName, slotoption, resourceType, resourceQuantity, combineType, contrib);
 
 	dsIngredients.add(ingredient);
 }
@@ -341,7 +347,7 @@ int DraftSchematicImplementation::getRequiredIngredientCount() {
 	for (int i = 0; i < dsIngredients.size(); i++) {
 		dsi = dsIngredients.get(i);
 
-		if (!dsi->getOptional())
+		if (!dsi->isOptionalSlot())
 			count++;
 	}
 
@@ -375,7 +381,7 @@ void DraftSchematicImplementation::toString() {
 		cout << "Resource Type: " << ingredient->getResourceType() << endl;
 		cout << "Template Name: " << ingredient->getTemplateName() << endl;
 		cout << "Quantity: " << ingredient->getResourceQuantity() << endl;
-		cout << "Optional: " << ingredient->getOptional() << endl;
+		cout << "Slot Type: " << ingredient->getSlotType() << endl;
 		cout << "**************************" << endl;
 	}
 

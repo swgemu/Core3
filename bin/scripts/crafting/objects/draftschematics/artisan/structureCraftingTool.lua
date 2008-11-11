@@ -63,7 +63,7 @@ structureCraftingTool = Object:new {
 
   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
   ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
-  ingredientOptionals = "0, 0, 0",
+  ingredientSlotType = "0, 0, 0",
   resourceTypes = "metal, mineral, chemical",
   resourceQuantities = "16, 8, 10",
   combineTypes = "1, 1, 1",
@@ -81,6 +81,8 @@ structureCraftingTool = Object:new {
   experimentalSubGroupTitles = "useModifier",
 
   tanoAttributes = "objecttype=32769:objectcrc=4275700789:objecttemp=structure_tool_name:templatetype=crafting:",
+  customizationOptions = "",
+   customizationDefaults = "",
   
   attributesToSet = "useModifier",
   attributeExperimentalProperties = "exp_effectiveness",
