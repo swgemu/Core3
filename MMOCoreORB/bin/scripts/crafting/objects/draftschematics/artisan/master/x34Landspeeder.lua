@@ -40,29 +40,29 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-speederbike = Object:new {
+x34Landspeeder = Object:new {
 
-   objectName = "Speederbike", -- name of the lua Object
-   stfName = "speederbike", 
-   objectCRC = 3893680726, 
+   objectName = "X34 Landspeeder", -- name of the lua Object
+   stfName = "landspeeder_x34", 
+   objectCRC = 3178368929, 
    groupName = "craftArtisanVehicle", 
 
    craftingToolTab = 16, 
-   complexity = 20, 
+   complexity = 25, 
    size = 1, 
 
    xpType = "crafting_general", 
-   xp = 1500, 
+   xp = 1800, 
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
 
    ingredientTemplateNames = "craft_spaceship_ingredients_n, craft_spaceship_ingredients_n",
    ingredientTitleNames = "vehicle_body, structural_frame",
-   ingredientOptionals = "0, 0",
+   ingredientSlotType = "0, 0",
    resourceTypes = "metal_nonferrous, metal_ferrous",
-   --resourceQuantities = "1200, 4800",
-   resourceQuantities = "120, 480", --REMOVE THIS AFTER HARVESTERS ARE IMPLEMENTED
+   --resourceQuantities = "1125, 3125",
+   resourceQuantities = "112, 312", --REMOVE THIS AFTER HARVESTERS ARE IMPLEMENTED
    combineTypes = "1, 1",
    contribution = "100, 100",
 
@@ -73,15 +73,15 @@ speederbike = Object:new {
    experimentalSubGroupCount = "1",
    experimentalSubGroupTitles = "hitPoints",
 
-   tanoAttributes = "objecttype=8388613:objectcrc=4075476273:objecttemp=speederbike:templatetype=monster_name:",
-   customizationOptions = 0,
-
+   tanoAttributes = "objecttype=8388613:objectcrc=905926205:objecttemp=landspeeder_x34:templatetype=monster_name:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "hitPoints",
    attributeExperimentalProperties = "exp_durability",
    attributePrecision = "1",
-   attributesMinMax = "1000, 2500"
+   attributesMinMax = "1500, 3000"
 
 }
 
-DraftSchematics:addDraftSchematic(speederbike, 3893680726)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(x34Landspeeder, 3178368929)--- Add to global DraftSchematics table
