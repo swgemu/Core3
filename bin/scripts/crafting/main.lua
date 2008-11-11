@@ -70,27 +70,10 @@ RunDraftSchematicFile("objects/draftschematics/smuggler/main.lua")
 -- Medic
 RunDraftSchematicFile("objects/draftschematics/medic/main.lua")
 
+-- Artisan
+RunDraftSchematicFile("objects/draftschematics/artisan/main.lua")
 
+-- Weaponsmith
+RunDraftSchematicFile("objects/draftschematics/weaponsmith/main.lua")
 
-
-
-
-
---RunDraftSchematicFile("objects/draftschematics/weaponsmith/dlt20Rifle.lua")
-
-
-RunDraftSchematicFile("objects/draftschematics/artisan/genericCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/clothingCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/foodCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/structureCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/weaponCraftingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/waterSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/windCurrentSurveyingTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/chemicalSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/solarEnergySurveyTool.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/mineralSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/gasPocketSurveyDevice.lua")
-RunDraftSchematicFile("objects/draftschematics/artisan/floraSurveyTool.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterPowerHandler.lua")
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/blasterRifleBarrel.lua")
 

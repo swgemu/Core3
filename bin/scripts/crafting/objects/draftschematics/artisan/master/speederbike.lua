@@ -40,11 +40,11 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-swoop = Object:new {
+speederbike = Object:new {
 
-   objectName = "Swoop", -- name of the lua Object
-   stfName = "swoop", 
-   objectCRC = 4231876597, 
+   objectName = "Speederbike", -- name of the lua Object
+   stfName = "speederbike", 
+   objectCRC = 3893680726, 
    groupName = "craftArtisanVehicle", 
 
    craftingToolTab = 16, 
@@ -52,17 +52,17 @@ swoop = Object:new {
    size = 1, 
 
    xpType = "crafting_general", 
-   xp = 1600, 
+   xp = 1500, 
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
 
    ingredientTemplateNames = "craft_spaceship_ingredients_n, craft_spaceship_ingredients_n",
    ingredientTitleNames = "vehicle_body, structural_frame",
-   ingredientOptionals = "0, 0",
+   ingredientSlotType = "0, 0",
    resourceTypes = "metal_nonferrous, metal_ferrous",
-   --resourceQuantities = "1600, 6400",
-   resourceQuantities = "160, 640", --REMOVE THIS AFTER HARVESTERS ARE IMPLEMENTED
+   --resourceQuantities = "1200, 4800",
+   resourceQuantities = "120, 480", --REMOVE THIS AFTER HARVESTERS ARE IMPLEMENTED
    combineTypes = "1, 1",
    contribution = "100, 100",
 
@@ -73,13 +73,15 @@ swoop = Object:new {
    experimentalSubGroupCount = "1",
    experimentalSubGroupTitles = "hitPoints",
 
-   tanoAttributes = "objecttype=8388613:objectcrc=495473751:objecttemp=speederbike_swoop:templatetype=monster_name:",
+   tanoAttributes = "objecttype=8388613:objectcrc=4075476273:objecttemp=speederbike:templatetype=monster_name:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "hitPoints",
    attributeExperimentalProperties = "exp_durability",
-   attributePrecision = "0",
+   attributePrecision = "1",
    attributesMinMax = "1000, 2500"
 
 }
 
-DraftSchematics:addDraftSchematic(swoop, 4231876597)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(speederbike, 3893680726)--- Add to global DraftSchematics table

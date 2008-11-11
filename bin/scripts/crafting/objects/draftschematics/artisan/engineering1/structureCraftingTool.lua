@@ -70,19 +70,15 @@ structureCraftingTool = Object:new {
   contribution = "100, 100, 100",
 
   numberExperimentalProperties = "1, 1, 1, 1",
-
   experimentalProperties = "XX, XX, XX, CD",
-  experimentalWeights = "0, 0, 0, 1",
-
+  experimentalWeights = "1, 1, 1, 1",
   experimentalGroupTitles = "exp_effectiveness",
-
   experimentalSubGroupCount = "1",
-
   experimentalSubGroupTitles = "useModifier",
 
   tanoAttributes = "objecttype=32769:objectcrc=4275700789:objecttemp=structure_tool_name:templatetype=crafting:",
   customizationOptions = "",
-   customizationDefaults = "",
+  customizationDefaults = "",
   
   attributesToSet = "useModifier",
   attributeExperimentalProperties = "exp_effectiveness",
