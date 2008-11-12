@@ -69,9 +69,16 @@ class DamageDone {
 	
 	void addDamage( string xptype, int damage, int level ) {
 		totalDamage += damage;
-		damage += xpDamage.get(xptype);
+		
+		if (xpDamage.contains(xptype)) {
+			damage += xpDamage.get(xptype);
+			xpDamage.drop(xptype);
+		}
+
 		xpDamage.put(xptype, damage);
-		xpLevel.put(xptype, level);
+
+		if (!xpLevel.contains(xptype))
+			xpLevel.put(xptype, level);
 	}
 	
 	int getSize() {

@@ -174,6 +174,7 @@ void PlayerObjectImplementation::addExperience(const string& xpType, int xp, boo
 	string xptype = xpType;
 	Player* player = getPlayer();
 	if (player->getXpTypeCap(xptype) < xp) {
+		gained = gained - (xp - player->getXpTypeCap(xptype));
 		xp = player->getXpTypeCap(xptype);
 	}
 
