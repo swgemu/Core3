@@ -46,7 +46,7 @@ elderHanadakMatriarch = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      name = "a Elder Hanadak Matriarch",
+      stfName = "a Elder Hanadak Matriarch",
       objectCRC = 426628456, 
       socialGroup = "Hanadak",
       named = FALSE, 
@@ -138,7 +138,8 @@ elderHanadakMatriarch = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Intimidation attack", "" }
+      --skills = { " Posture down attack", " Intimidation attack", "" }
+      skills = { "hanadakAttack1", "hanadakAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

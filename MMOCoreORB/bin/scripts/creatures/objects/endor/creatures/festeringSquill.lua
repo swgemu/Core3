@@ -46,9 +46,9 @@ festeringSquill = Creature:new {
       faction = "Endot Squill",
       gender = "",
 
-      name = "a Festering Squill",
+      stfName = "a Festering Squill",
       objectCRC = 1824637824, 
-      socialGroup = "Endot Squill",
+      socialGroup = "Endor Squill",
       named = FALSE, 
 
       level = 31,
@@ -138,7 +138,8 @@ festeringSquill = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Blind attack", " Disease attack (medium)", "" }
+      --skills = { " Blind attack", " Disease attack (medium)", "" }
+      skills = { "squillAttack1", "squillAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

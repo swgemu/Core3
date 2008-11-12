@@ -138,7 +138,7 @@ runtyPharple = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 15,
 
-      --skills = { "", "", "" }
+      skills = { "pharpleAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

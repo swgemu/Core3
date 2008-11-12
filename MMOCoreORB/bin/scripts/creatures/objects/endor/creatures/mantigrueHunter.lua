@@ -46,7 +46,7 @@ mantigrueHunter = Creature:new {
       faction = "Mantigrue",
       gender = "",
 
-      name = "a Mantigrue Hunter",
+      stfName = "a Mantigrue Hunter",
       objectCRC = 1684536430, 
       socialGroup = "Mantigrue",
       named = FALSE, 
@@ -138,7 +138,8 @@ mantigrueHunter = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { "Blind attack" }
+      skills = { "mantigrueAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -138,7 +138,7 @@ bordokMare = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { "bordokAttack1" },
+      skills = { "bordokAttack2", "bordokAttack5" },
 	  -- skills = { " Stun attack", " Area attack (knockdown)", "" },
        respawnTimer = 60,
 

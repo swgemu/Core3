@@ -46,7 +46,7 @@ stormAttack1 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	areaRange = 0,
 	coneAngle = 0,
@@ -97,7 +97,7 @@ stormAttack2 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -128,7 +128,7 @@ stormAttack3 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -169,7 +169,7 @@ stormAttack4 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -199,7 +199,7 @@ stormAttack5 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -240,7 +240,7 @@ stormAttack6 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -270,7 +270,7 @@ stormAttack7 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -310,7 +310,7 @@ stormAttack8 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -340,7 +340,7 @@ stormAttack9 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -370,7 +370,7 @@ stormAttack10 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -400,7 +400,7 @@ stormAttack11 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -430,7 +430,7 @@ stormAttack12 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -460,7 +460,7 @@ stormAttack13 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -490,7 +490,7 @@ stormAttack14 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -520,7 +520,7 @@ stormAttack15 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 3.5,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,

@@ -46,7 +46,7 @@ bloodseekerMiteSanguineHierarch = Creature:new {
       faction = "Bloodseeker",
       gender = "",
 
-      name = "a Bloodseeker Mite Sanguine Hierarch",
+      stfName = "a Bloodseeker Mite Sanguine Hierarch",
       objectCRC = 4102628433, 
       socialGroup = "Bloodseeker",
       named = FALSE, 
@@ -138,7 +138,7 @@ bloodseekerMiteSanguineHierarch = Creature:new {
       meatType = "meat_insect_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "bloodseekerMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

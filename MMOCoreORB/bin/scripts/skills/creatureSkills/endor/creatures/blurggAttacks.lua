@@ -59,7 +59,7 @@ blurggAttack1 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 50,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
@@ -72,3 +72,211 @@ blurggAttack1 = {
 AddRandomPoolAttackTargetSkill(blurggAttack1)
 
 -----------------------------------------------
+
+blurggAttack2 = {
+	attackname = "blurggAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 9,
+
+	speedRatio = 2,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 50,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(blurggAttack2)
+
+-----------------------------------------------
+
+blurggAttack3 = {
+	attackname = "blurggAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 30,
+
+	damageRatio = 9,
+
+	speedRatio = 2,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 50,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(blurggAttack3)
+
+-----------------------------------------------
+
+blurggAttack4 = {
+	attackname = "blurggAttack4",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 9,
+
+	speedRatio = 2,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 50,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(blurggAttack4)
+
+-----------------------------------------------
+
+blurggAttack5 = {
+        attackname = "blurggAttack5",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
+
+        range = 10,
+
+        damageRatio = 15,
+
+        speedRatio = 4,
+
+        areaRange = 0,
+        accuracyBonus = 0,
+
+        healthAttackChance = 100,
+        actionAttackChance = 0,
+        mindAttackChance = 0,
+
+        dotChance = 50,
+        tickStrengthOfHit = 1,
+
+        fireStrength = 0,
+        fireType = 0,
+
+        bleedingStrength = 0,
+		bleedingType = 0,
+
+        poisonStrength = 0,
+        poisonType = 0,
+
+        diseaseStrength = 100,
+        diseaseType = HEALTH,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(blurggAttack5)
+
+--------------------------------------------------------------------------------------
+
+blurggAttack6 = {
+        attackname = "blurggAttack6",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
+
+        range = 10,
+
+        damageRatio = 15,
+
+        speedRatio = 4,
+
+        areaRange = 30,
+        accuracyBonus = 0,
+
+        healthAttackChance = 100,
+        actionAttackChance = 0,
+        mindAttackChance = 0,
+
+        dotChance = 50,
+        tickStrengthOfHit = 1,
+
+        fireStrength = 0,
+        fireType = 0,
+
+        bleedingStrength = 100,
+		bleedingType = HEALTH,
+
+        poisonStrength = 0,
+        poisonType = 0,
+
+        diseaseStrength = 0,
+        diseaseType = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(blurggAttack6)
+
+--------------------------------------------------------------------------------------

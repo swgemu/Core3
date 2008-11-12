@@ -46,7 +46,7 @@ rabidSquall = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Rabid Squall",
+      stfName = "a Rabid Squall",
       objectCRC = 536393830, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +138,8 @@ rabidSquall = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Disease attack (mild)", "", "" }
+      --skills = { " Disease attack (mild)", "", "" }
+      skills = { "squallAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

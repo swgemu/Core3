@@ -138,7 +138,7 @@ barkMiteBurrower = Creature:new {
       meatType = "meat_insect_endor",
       meatMax = 35,
 
-      skills = { "barkMiteAttack1" },
+      skills = { "barkMiteAttack1", "barkMiteAttack2" },
 	  -- skills = { " Area attack (bleeds)", " Disease attack (strong)", "" },
        respawnTimer = 60,
 

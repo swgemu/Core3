@@ -46,7 +46,7 @@ bloodStainedMerek = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a Blood Stained Merek",
+      stfName = "a Blood Stained Merek",
       objectCRC = 21982066, 
       socialGroup = "Merek",
       named = FALSE, 
@@ -99,7 +99,7 @@ bloodStainedMerek = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +138,8 @@ bloodStainedMerek = Creature:new {
       meatType = "meat_wild_endor",
       meatMax = 35,
 
-      skills = { " Knockdown attack", " Ranged attack (spit)", "" }
+      --skills = { " Knockdown attack", " Ranged attack (spit)", "" }
+      skills = { "merekAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

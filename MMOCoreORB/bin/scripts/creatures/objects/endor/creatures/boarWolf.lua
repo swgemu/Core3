@@ -138,8 +138,8 @@ boarWolf = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { "boarWolfAttack1" },
-	  -- skills = { " Stun attack", "", "" },
+      skills = { "boarWolfAttack3" },
+	  -- skills = { "Stun attack" },
        respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ bordokHerdMaster = Creature:new {
       faction = "Bordok",
       gender = "",
 
-      name = "a Bordok Herd Master",
+      stfName = "a Bordok Herd Master",
       objectCRC = 622383012, 
       socialGroup = "Bordok",
       named = FALSE, 
@@ -138,7 +138,8 @@ bordokHerdMaster = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { "Intimidation attack" }
+      skills = { "bordokAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

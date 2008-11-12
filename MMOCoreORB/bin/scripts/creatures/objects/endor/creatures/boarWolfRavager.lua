@@ -46,7 +46,7 @@ boarWolfRavager = Creature:new {
       faction = "Boar Wolf",
       gender = "",
 
-      name = "a Boar Wolf Ravager",
+      stfName = "a Boar Wolf Ravager",
       objectCRC = 1815686462, 
       socialGroup = "Boar Wolf",
       named = FALSE, 
@@ -138,7 +138,8 @@ boarWolfRavager = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Stun attack", " Blind attack", "" }
+      --skills = { " Stun attack", " Blind attack" }
+      skills = { "boarWolfAttack3", "boarWolfAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

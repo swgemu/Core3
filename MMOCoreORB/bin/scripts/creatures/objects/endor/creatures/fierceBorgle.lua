@@ -46,7 +46,7 @@ fierceBorgle = Creature:new {
       faction = "Borgle",
       gender = "",
 
-      name = "a Fierce Borgle",
+      stfName = "a Fierce Borgle",
       objectCRC = 715008896, 
       socialGroup = "Borgle",
       named = FALSE, 
@@ -138,7 +138,8 @@ fierceBorgle = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { " Blind attack", "", "" }
+      skills = { "borgleAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

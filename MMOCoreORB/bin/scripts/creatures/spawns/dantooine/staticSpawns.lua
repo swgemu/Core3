@@ -42,13 +42,6 @@
 
 --global clusters
 
-spawnCreatures(bol, 1, 0, 0, 8000, 700)
-spawnCreatures(piket, 1, 0, 0, 8000, 700)
-spawnCreatures(huurton, 1, 0, 0, 8000, 700)
-spawnCreatures(thune, 1, 0, 0, 8000, 700)
-spawnCreatures(quenker, 1, 0, 0, 8000, 700)
-spawnCreatures(graul, 1, 0, 0, 8000, 700)
-
 spawnCreatures(graulMarauder, 1, 0, 0, 3000, 2)
 spawnCreatures(graulMarauder, 1, 5000, -5000, 3000, 2)
 

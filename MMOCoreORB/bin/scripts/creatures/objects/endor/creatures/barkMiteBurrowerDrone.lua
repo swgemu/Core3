@@ -46,7 +46,7 @@ barkMiteBurrowerDrone = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Bark Mite Burrower Drone",
+      stfName = "a Bark Mite Burrower Drone",
       objectCRC = 2318119001, 
       socialGroup = "Bark Mite",
       named = FALSE, 
@@ -138,7 +138,7 @@ barkMiteBurrowerDrone = Creature:new {
       meatType = "meat_insect_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "barkMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

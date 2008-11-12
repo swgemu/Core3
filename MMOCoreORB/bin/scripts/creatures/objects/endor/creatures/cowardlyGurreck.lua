@@ -46,7 +46,7 @@ cowardlyGurreck = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      name = "a Cowardly Gurreck",
+      stfName = "a Cowardly Gurreck",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
       named = FALSE, 
@@ -138,7 +138,7 @@ cowardlyGurreck = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "gurreckAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

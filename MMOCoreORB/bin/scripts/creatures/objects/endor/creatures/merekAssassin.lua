@@ -46,7 +46,7 @@ merekAssassin = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a Merek Assassin",
+      stfName = "a Merek Assassin",
       objectCRC = 21982066, 
       socialGroup = "Merek",
       named = FALSE, 
@@ -138,7 +138,8 @@ merekAssassin = Creature:new {
       meatType = "meat_wild_endor",
       meatMax = 35,
 
-      skills = { " Dizzy attack", " Poison attack (strong)", "" }
+      --skills = { "Dizzy attack", "Poison attack (strong)" }
+      skills = { "merekAttack7", "merekAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

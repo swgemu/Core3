@@ -138,7 +138,7 @@ gurreck = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { "gurreckAttack1" },
+      skills = { "gurreckAttack4", "gurreckAttack5" },
 	  -- skills = { " Intimidation attack", " Posture down attack", "" },
        respawnTimer = 60,
 

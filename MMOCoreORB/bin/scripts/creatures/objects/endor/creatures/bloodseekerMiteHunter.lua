@@ -46,7 +46,7 @@ bloodseekerMiteHunter = Creature:new {
       faction = "Bloodseeker",
       gender = "",
 
-      name = "a Bloodseeker Mite Hunter",
+      stfName = "a Bloodseeker Mite Hunter",
       objectCRC = 4102628433, 
       socialGroup = "Bloodseeker",
       named = FALSE, 
@@ -138,7 +138,8 @@ bloodseekerMiteHunter = Creature:new {
       meatType = "meat_insect_endor",
       meatMax = 35,
 
-      skills = { " Dizzy attack", " Posture down attack", " Ranged attack (spit)" }
+      --skills = { " Dizzy attack", " Posture down attack", " Ranged attack (spit)" }
+      skills = { "bloodseekerMiteAttack1", "bloodseekerMiteAttack2", "bloodseekerMiteAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

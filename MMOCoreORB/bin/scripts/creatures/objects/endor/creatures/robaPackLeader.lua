@@ -46,7 +46,7 @@ robaPackLeader = Creature:new {
       faction = "Roba",
       gender = "",
 
-      name = "a Roba Pack Leader",
+      stfName = "a Roba Pack Leader",
       objectCRC = 1008127960, 
       socialGroup = "Roba",
       named = FALSE, 
@@ -138,7 +138,8 @@ robaPackLeader = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Blind attack", " Dizzy attack", "" }
+      --skills = { " Blind attack", " Dizzy attack", "" }
+      skills = { "robaAttack3", "robaAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

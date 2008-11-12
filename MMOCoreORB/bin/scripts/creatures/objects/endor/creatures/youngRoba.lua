@@ -46,7 +46,7 @@ youngRoba = Creature:new {
       faction = "Roba",
       gender = "",
 
-      name = "a Young Roba",
+      stfName = "a Young Roba",
       objectCRC = 2564251610, 
       socialGroup = "Roba",
       named = FALSE, 
@@ -138,7 +138,8 @@ youngRoba = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Stun attack", " Blind attack", "" }
+      --skills = { " Stun attack", " Blind attack", "" }
+      skills = { "robaAttack2", "robaAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

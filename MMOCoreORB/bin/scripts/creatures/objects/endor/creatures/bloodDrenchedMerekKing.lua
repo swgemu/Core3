@@ -46,7 +46,7 @@ bloodDrenchedMerekKing = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a Blood Drenched Merek King",
+      stfName = "a Blood Drenched Merek King",
       objectCRC = 21982066, 
       socialGroup = "Merek",
       named = FALSE, 
@@ -138,7 +138,8 @@ bloodDrenchedMerekKing = Creature:new {
       meatType = "meat_wild_endor",
       meatMax = 35,
 
-      skills = { " Stun attack", " Blind attack", "" }
+      --skills = { " Stun attack", " Blind attack", "" }
+      skills = { "merekAttack1", "merekAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ hilltopGurreckHunter = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      name = "a Hilltop Gurreck Hunter",
+      stfName = "a Hilltop Gurreck Hunter",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
       named = FALSE, 
@@ -138,7 +138,8 @@ hilltopGurreckHunter = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Stun attack", "" }
+      --skills = { "Posture down attack", "Stun attack" }
+      skills = { "gurreckAttack5", "gurreckAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

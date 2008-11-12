@@ -46,7 +46,7 @@ arachneWidow = Creature:new {
       faction = "Arachne",
       gender = "",
 
-      name = "a Arachne Widow",
+      stfName = "a Arachne Widow",
       objectCRC = 1157055229, 
       socialGroup = "Arachne",
       named = FALSE, 
@@ -138,7 +138,8 @@ arachneWidow = Creature:new {
       meatType = "meat_insect_endor",
       meatMax = 30,
 
-      skills = { " Stun attack", " Poison attack (strong)", "" }
+      --skills = { " Stun attack", " Poison attack (strong)", "" }
+      skills = { "arachneAttack8", "arachneAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

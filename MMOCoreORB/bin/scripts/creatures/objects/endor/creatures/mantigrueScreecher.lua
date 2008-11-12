@@ -46,7 +46,7 @@ mantigrueScreecher = Creature:new {
       faction = "Mantigrue",
       gender = "",
 
-      name = "a Mantigrue Screecher",
+      stfName = "a Mantigrue Screecher",
       objectCRC = 1684536430, 
       socialGroup = "Mantigrue",
       named = FALSE, 
@@ -138,7 +138,8 @@ mantigrueScreecher = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Intimidation attack", " Area attack (disease)", "" }
+      --skills = { "Intimidation attack", "Area attack (disease)" }
+      skills = { "mantigrueAttack5", "mantigrueAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

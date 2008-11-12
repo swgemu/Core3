@@ -46,7 +46,7 @@ bloodseekerMiteDrone = Creature:new {
       faction = "Bloodseeker",
       gender = "",
 
-      name = "a Bloodseeker Mite Drone",
+      stfName = "a Bloodseeker Mite Drone",
       objectCRC = 4102628433, 
       socialGroup = "Bloodseeker",
       named = FALSE, 
@@ -138,7 +138,7 @@ bloodseekerMiteDrone = Creature:new {
       meatType = "meat_insect_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "barkMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

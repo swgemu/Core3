@@ -138,7 +138,7 @@ gurnasetHatchling = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 351,
 
-      --skills = { "", "", "" },
+      skills = { "gurnasetAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ swirlProngPackLeader = Creature:new {
       faction = "Swirl Prong",
       gender = "",
 
-      name = "a Swirl Prong Pack Leader",
+      stfName = "a Swirl Prong Pack Leader",
       objectCRC = 4177314208, 
       socialGroup = "Swirl Prong",
       named = FALSE, 
@@ -138,7 +138,7 @@ swirlProngPackLeader = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "swirlProngAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ borgleDesertRunner = Creature:new {
       faction = "Borgle",
       gender = "",
 
-      name = "a Borgle Desert Runner",
+      stfName = "a Borgle Desert Runner",
       objectCRC = 715008896, 
       socialGroup = "Borgle",
       named = FALSE, 
@@ -138,7 +138,8 @@ borgleDesertRunner = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Intimidation attack", " Blind attack", "" }
+      --skills = { "Intimidation attack", "Blind attack" }
+      skills = { "borgleAttack1", "borgleAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

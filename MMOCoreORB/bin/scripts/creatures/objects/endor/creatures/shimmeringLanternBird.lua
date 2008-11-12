@@ -46,7 +46,7 @@ shimmeringLanternBird = Creature:new {
       faction = "Lantern",
       gender = "",
 
-      name = "a Shimmering Lantern Bird",
+      stfName = "a Shimmering Lantern Bird",
       objectCRC = 1183906554, 
       socialGroup = "Lantern",
       named = FALSE, 
@@ -138,7 +138,7 @@ shimmeringLanternBird = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "lanternBirdAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

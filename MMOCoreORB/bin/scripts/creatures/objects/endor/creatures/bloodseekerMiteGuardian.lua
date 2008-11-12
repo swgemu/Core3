@@ -46,7 +46,7 @@ bloodseekerMiteGuardian = Creature:new {
       faction = "Bioodseeker",
       gender = "",
 
-      name = "a Bloodseeker Mite Guardian",
+      stfName = "a Bloodseeker Mite Guardian",
       objectCRC = 4102628433, 
       socialGroup = "Bioodseeker",
       named = FALSE, 
@@ -99,7 +99,7 @@ bloodseekerMiteGuardian = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +138,8 @@ bloodseekerMiteGuardian = Creature:new {
       meatType = "meat_insect_endor",
       meatMax = 35,
 
-      skills = { " Stun attack", " Disease attack (strong)", " Ranged attack (spit)" }
+      --skills = { " Stun attack", " Disease attack (strong)", " Ranged attack (spit)" }
+      skills = { "bloodseekerMiteAttack4", "bloodseekerMiteAttack5", "bloodseekerMiteAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

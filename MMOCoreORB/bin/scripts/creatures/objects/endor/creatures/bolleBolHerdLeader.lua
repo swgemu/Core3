@@ -46,7 +46,7 @@ bolleBolHerdLeader = Creature:new {
       faction = "Bolle Bol",
       gender = "",
 
-      name = "a Bolle Bol Herd Leader",
+      stfName = "a Bolle Bol Herd Leader",
       objectCRC = 2905349573, 
       socialGroup = "Bolle Bol",
       named = FALSE, 
@@ -138,7 +138,8 @@ bolleBolHerdLeader = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Knockdown attack", " Intimidation attack", "" }
+      --skills = { " Knockdown attack", " Intimidation attack", "" }
+      skills = { "bolleBolAttack3", "bolleBolAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

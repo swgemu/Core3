@@ -5452,28 +5452,6 @@ mosEisleyNpc249 = Creature:new {
 	cellID = 0
 }
 
-mosEisleyNpc250 = Creature:new {
-	objectName = "mosEisleyNpc250",
-	creatureType = NPC,
-
-	speciesName = "crackdown_sand_trooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 440719956,
-	positionX = 3538.04,
-	positionY = -4806.46,
-	positionZ = 5.12541,
-
-	directionX = 0.0919041,
-	directionZ = 0.0409263,
-	directionY = -0.388232,
-	directionW = 0.916054,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 mosEisleyNpc251 = Creature:new {
 	objectName = "mosEisleyNpc251",
 	creatureType = NPC,

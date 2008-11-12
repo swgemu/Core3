@@ -46,7 +46,7 @@ queenMerekHarvester = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a Queen Merek Harvester",
+      stfName = "a Queen Merek Harvester",
       objectCRC = 1600142947, 
       socialGroup = "Merek",
       named = FALSE, 
@@ -138,7 +138,8 @@ queenMerekHarvester = Creature:new {
       meatType = "meat_wild_endor",
       meatMax = 35,
 
-      skills = { " Knockdown attack", " Area attack (bleeds)", "" }
+      --skills = { "Knockdown attack", "Area attack (bleeds)" }
+      skills = { "merekAttack3", "merekAttack11" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

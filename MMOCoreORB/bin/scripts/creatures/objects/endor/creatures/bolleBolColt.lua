@@ -46,7 +46,7 @@ bolleBolColt = Creature:new {
       faction = "Bolle Bol",
       gender = "",
 
-      name = "a Bolle Bol Colt",
+      stfName = "a Bolle Bol Colt",
       objectCRC = 2905349573, 
       socialGroup = "Bolle Bol",
       named = FALSE, 
@@ -138,7 +138,7 @@ bolleBolColt = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "bolleBolAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

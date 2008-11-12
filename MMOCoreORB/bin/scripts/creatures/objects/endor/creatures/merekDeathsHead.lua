@@ -46,7 +46,7 @@ merekDeathsHead = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a Merek Deaths Head",
+      stfName = "a Merek Deaths Head",
       objectCRC = 21982066, 
       socialGroup = "Merek",
       named = FALSE, 
@@ -138,7 +138,8 @@ merekDeathsHead = Creature:new {
       meatType = "meat_wild_endor",
       meatMax = 35,
 
-      skills = { " Poison attack (strong)", " Disease attack (strong)", "" }
+      --skills = { " Poison attack (strong)", " Disease attack (strong)", "" }
+      skills = { "merekAttack8", "merekAttack9" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

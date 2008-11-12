@@ -46,7 +46,7 @@ rancidRemmerWarrior = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      name = "a Rancid Remmer Warrior",
+      stfName = "a Rancid Remmer Warrior",
       objectCRC = 3273659222, 
       socialGroup = "Remmer",
       named = FALSE, 
@@ -138,7 +138,8 @@ rancidRemmerWarrior = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Stun attack", " Posture down attack", " Ranged attack (spit)" }
+      --skills = { " Stun attack", " Posture down attack", " Ranged attack (spit)" }
+      skills = { "remmerAttack5", "remmerAttack2", "remmerAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

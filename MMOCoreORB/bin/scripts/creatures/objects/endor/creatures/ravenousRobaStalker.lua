@@ -46,7 +46,7 @@ ravenousRobaStalker = Creature:new {
       faction = "Roba",
       gender = "",
 
-      name = "a Ravenous Roba Stalker",
+      stfName = "a Ravenous Roba Stalker",
       objectCRC = 1008127960, 
       socialGroup = "Roba",
       named = FALSE, 
@@ -138,7 +138,8 @@ ravenousRobaStalker = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Knockdown attack", "", "" }
+      --skills = { " Knockdown attack", "", "" }
+      skills = { "robaAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ bordokAncient = Creature:new {
       faction = "Bordok",
       gender = "",
 
-      name = "a Bordok Ancient",
+      stfName = "a Bordok Ancient",
       objectCRC = 622383012, 
       socialGroup = "Bordok",
       named = FALSE, 
@@ -138,7 +138,8 @@ bordokAncient = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Blind attack", " Stun attack", "" }
+      --skills = { "Blind attack", "Stun attack" }
+      skills = { "bordokAttack1", "bordokAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -138,7 +138,7 @@ swirlProng = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { "swirlProngAttack1" },
+      skills = { "swirlProngAttack3", "swirlProngAttack4" },
 	  -- skills = { " Stun attack", " Knockdown attack", "" },
        respawnTimer = 60,
 

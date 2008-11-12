@@ -46,7 +46,7 @@ bloodFrenziedBoarWolf = Creature:new {
       faction = "Boar Wolf",
       gender = "",
 
-      name = "a Blood Frenzied Boar Wolf",
+      stfName = "a Blood Frenzied Boar Wolf",
       objectCRC = 1815686462, 
       socialGroup = "Boar Wolf",
       named = FALSE, 
@@ -138,7 +138,8 @@ bloodFrenziedBoarWolf = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Area attack (bleeds)", " Blind attack", "" }
+      --skills = { " Area attack (bleeds)", " Blind attack", "" }
+      skills = { "boarWolfAttack1", "boarWolfAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

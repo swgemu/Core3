@@ -46,7 +46,7 @@ deliriousMerekAvenger = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a Delirious Merek Avenger",
+      stfName = "a Delirious Merek Avenger",
       objectCRC = 4057111915, 
       socialGroup = "Merek",
       named = FALSE, 
@@ -138,7 +138,8 @@ deliriousMerekAvenger = Creature:new {
       meatType = "meat_wild_endor",
       meatMax = 35,
 
-      skills = { " Intimidation attack", " Stun attack", " Ranged attack (spit)" }
+      --skills = { " Intimidation attack", " Stun attack", " Ranged attack (spit)" }
+      skills = { "merekAttack4", "merekAttack1", "merekAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

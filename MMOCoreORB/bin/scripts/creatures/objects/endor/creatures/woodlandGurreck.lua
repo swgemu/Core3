@@ -46,7 +46,7 @@ woodlandGurreck = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      name = "a Woodland Gurreck",
+      stfName = "a Woodland Gurreck",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
       named = FALSE, 
@@ -138,7 +138,8 @@ woodlandGurreck = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "gurreckAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
