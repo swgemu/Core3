@@ -46,7 +46,7 @@ merekCavernCreeper = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a Merek Cavern Creeper",
+      stfName = "a Merek Cavern Creeper",
       objectCRC = 696113680, 
       socialGroup = "Merek",
       named = FALSE, 
@@ -138,7 +138,8 @@ merekCavernCreeper = Creature:new {
       meatType = "meat_wild_endor",
       meatMax = 35,
 
-      skills = { " Blind attack", " Intimidation attack", " Ranged attack (spit)" }
+      --skills = { " Blind attack", " Intimidation attack", " Ranged attack (spit)" }
+      skills = { "merekAttack2", "merekAttack4", "merekAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

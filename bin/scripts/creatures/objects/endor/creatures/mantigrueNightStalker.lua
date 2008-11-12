@@ -46,7 +46,7 @@ mantigrueNightStalker = Creature:new {
       faction = "Mantigrue",
       gender = "",
 
-      name = "a Mantigrue Night Stalker",
+      stfName = "a Mantigrue Night Stalker",
       objectCRC = 1684536430, 
       socialGroup = "Mantigrue",
       named = FALSE, 
@@ -99,7 +99,7 @@ mantigrueNightStalker = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +138,8 @@ mantigrueNightStalker = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Ranged attack (spit)", "" }
+      --skills = { "Posture down attack", "Ranged attack (spit)" }
+      skills = { "mantigrueAttack3", "mantigrueAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ arachneHatchling = Creature:new {
       faction = "Arachne",
       gender = "",
 
-      name = "a Arachne Hatchling",
+      stfName = "a Arachne Hatchling",
       objectCRC = 1157055229, 
       socialGroup = "Arachne",
       named = FALSE, 
@@ -138,7 +138,8 @@ arachneHatchling = Creature:new {
       meatType = "meat_insect_endor",
       meatMax = 1,
 
-      skills = { " Disease attack (poison)", "", "" }
+      --skills = { " Disease attack (poison)", "", "" }
+      skills = { "arachneAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ minorGorax = Creature:new {
       faction = "Gorax",
       gender = "",
 
-      name = "a Minor Gorax",
+      stfName = "a Minor Gorax",
       objectCRC = 3371835636, 
       socialGroup = "Gorax",
       named = FALSE, 
@@ -138,7 +138,8 @@ minorGorax = Creature:new {
       meatType = "",
       meatMax = 35,
 
-      skills = { " Area attack", "", "" }
+      --skills = { " Area attack", "", "" }
+      skills = { "goraxAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

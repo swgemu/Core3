@@ -46,7 +46,7 @@ bloodseekerMiteQueen = Creature:new {
       faction = "Bioodseeker",
       gender = "",
 
-      name = "a Bloodseeker Mite Queen",
+      stfName = "a Bloodseeker Mite Queen",
       objectCRC = 706552459, 
       socialGroup = "Bioodseeker",
       named = FALSE, 
@@ -138,7 +138,8 @@ bloodseekerMiteQueen = Creature:new {
       meatType = "meat_insect_endor",
       meatMax = 35,
 
-      skills = { " Dizzy attack", " Disease attack (strong)", "" }
+      --skills = { " Dizzy attack", " Disease attack (strong)", "" }
+      skill = { "bloodseekerMiteAttack1", "bloodseekerMiteAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

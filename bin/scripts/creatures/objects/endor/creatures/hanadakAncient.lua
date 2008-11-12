@@ -46,7 +46,7 @@ hanadakAncient = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      name = "a Hanadak Ancient",
+      stfName = "a Hanadak Ancient",
       objectCRC = 737828942, 
       socialGroup = "Hanadak",
       named = FALSE, 
@@ -138,7 +138,8 @@ hanadakAncient = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 40,
 
-      skills = { " Blind attack", " Knockdown attack", "" }
+      --skills = { "Blind attack", "Knockdown attack" }
+      skills = { "hanadakAttack3", "hanadakAttack4" } ,
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

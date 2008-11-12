@@ -46,7 +46,7 @@ erraticSwirlProng = Creature:new {
       faction = "Swirl Prong",
       gender = "",
 
-      name = "a Erratic Swirl Prong",
+      stfName = "a Erratic Swirl Prong",
       objectCRC = 4177314208, 
       socialGroup = "Swirl Prong",
       named = FALSE, 
@@ -138,7 +138,8 @@ erraticSwirlProng = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Intimidation attack", "" }
+      --skills = { " Posture down attack", " Intimidation attack", "" }
+      skills = { "swirlProngAttack1", "swirlProngAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

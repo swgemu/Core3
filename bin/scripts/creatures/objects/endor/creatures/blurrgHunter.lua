@@ -46,7 +46,7 @@ blurrgHunter = Creature:new {
       faction = "Blurrg",
       gender = "",
 
-      name = "a Blurrg Hunter",
+      stfName = "a Blurrg Hunter",
       objectCRC = 2309529743, 
       socialGroup = "Blurrg",
       named = FALSE, 
@@ -99,7 +99,7 @@ blurrgHunter = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +138,8 @@ blurrgHunter = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Knockdown attack", " Ranged attack (spit)" }
+      --skills = { " Posture down attack", " Knockdown attack", " Ranged attack (spit)" }
+      skills = { "blurggAttack4", "blurggAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

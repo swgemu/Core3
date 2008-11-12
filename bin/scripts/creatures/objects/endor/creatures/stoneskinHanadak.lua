@@ -46,7 +46,7 @@ stoneskinHanadak = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      name = "a Stoneskin Hanadak",
+      stfName = "a Stoneskin Hanadak",
       objectCRC = 3722994435, 
       socialGroup = "Hanadak",
       named = FALSE, 
@@ -138,7 +138,8 @@ stoneskinHanadak = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 40,
 
-      skills = { " Blind attack", " Knockdown attack", "" }
+      --skills = { " Blind attack", " Knockdown attack", "" }
+      skills = { "hanadakAttack6", "hanadakAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

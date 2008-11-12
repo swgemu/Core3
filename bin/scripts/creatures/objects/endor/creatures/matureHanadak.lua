@@ -46,7 +46,7 @@ matureHanadak = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      name = "a Mature Hanadak",
+      stfName = "a Mature Hanadak",
       objectCRC = 737828942, 
       socialGroup = "Hanadak",
       named = FALSE, 
@@ -138,7 +138,8 @@ matureHanadak = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 20,
 
-      skills = { " Intimidation attack", " Dizzy attack", "" }
+      --skills = { "Intimidation attack", "Dizzy attack" }
+      skills = { "hanadakAttack2", "hanadakAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ boarWolfCub = Creature:new {
       faction = "Boar Wolf",
       gender = "",
 
-      name = "a Boar Wolf Cub",
+      stfName = "a Boar Wolf Cub",
       objectCRC = 2560245072, 
       socialGroup = "Boar Wolf",
       named = FALSE, 
@@ -138,7 +138,8 @@ boarWolfCub = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "boarWolfAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ radiantLanternBird = Creature:new {
       faction = "Lantern",
       gender = "",
 
-      name = "a Radiant Lantern Bird",
+      stfName = "a Radiant Lantern Bird",
       objectCRC = 1183906554, 
       socialGroup = "Lantern",
       named = FALSE, 
@@ -138,7 +138,8 @@ radiantLanternBird = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { " Blind attack", "", "" }
+      skills = { "lanternBirdAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

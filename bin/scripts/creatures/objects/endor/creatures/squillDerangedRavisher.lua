@@ -46,7 +46,7 @@ squillDerangedRavisher = Creature:new {
       faction = "Endor Squill",
       gender = "",
 
-      name = "a Squill Deranged Ravisher",
+      stfName = "a Squill Deranged Ravisher",
       objectCRC = 1824637824, 
       socialGroup = "Endor Squill",
       named = FALSE, 
@@ -138,7 +138,8 @@ squillDerangedRavisher = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Knockdown attack", " Disease attack (medium)", "" }
+      --skills = { " Knockdown attack", " Disease attack (medium)", "" }
+      skills = { "squillAttack4", "squillAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ putridBorgle = Creature:new {
       faction = "Borgie",
       gender = "",
 
-      name = "a Putrid Borgle",
+      stfName = "a Putrid Borgle",
       objectCRC = 715008896, 
       socialGroup = "Borgie",
       named = FALSE, 
@@ -138,7 +138,8 @@ putridBorgle = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Intimidation attack", " Disease attack (medium)", "" }
+      --skills = { "Intimidation attack", "Disease attack (medium)" }
+      skills = { "borgleAttack1", "borgleAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

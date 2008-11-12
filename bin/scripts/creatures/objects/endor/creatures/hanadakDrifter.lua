@@ -46,7 +46,7 @@ hanadakDrifter = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      name = "a Hanadak Drifter",
+      stfName = "a Hanadak Drifter",
       objectCRC = 737828942, 
       socialGroup = "Hanadak",
       named = FALSE, 
@@ -138,7 +138,8 @@ hanadakDrifter = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Dizzy attack", " Stun attack", "" }
+      --skills = { "Dizzy attack", "Stun attack" }
+      skills = { "hanadakAttack3", "hanadakAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

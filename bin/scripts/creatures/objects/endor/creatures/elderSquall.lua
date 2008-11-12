@@ -46,7 +46,7 @@ elderSquall = Creature:new {
       faction = "Squall",
       gender = "",
 
-      name = "a Elder Squall",
+      stfName = "a Elder Squall",
       objectCRC = 536393830, 
       socialGroup = "Squall",
       named = FALSE, 
@@ -138,7 +138,7 @@ elderSquall = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "squallAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

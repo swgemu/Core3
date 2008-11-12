@@ -46,7 +46,7 @@ robaRunt = Creature:new {
       faction = "Roba",
       gender = "",
 
-      name = "a Roba Runt",
+      stfName = "a Roba Runt",
       objectCRC = 2564251610, 
       socialGroup = "Roba",
       named = FALSE, 
@@ -138,7 +138,8 @@ robaRunt = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { " Blind attack", "", "" }
+      skills = { "robaAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

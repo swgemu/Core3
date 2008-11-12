@@ -138,7 +138,7 @@ bloomingJax = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { "JaxAttack1" },
+      skills = { "JaxAttack1", "JaxAttack2" },
 	  -- skills = { " Posture down attack", " Blind attack", "" },
        respawnTimer = 60,
 

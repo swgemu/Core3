@@ -46,7 +46,7 @@ blurrgRaptor = Creature:new {
       faction = "Blurrg",
       gender = "",
 
-      name = "a Blurrg Raptor",
+      stfName = "a Blurrg Raptor",
       objectCRC = 2309529743, 
       socialGroup = "Blurrg",
       named = FALSE, 
@@ -138,7 +138,8 @@ blurrgRaptor = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }
+      --skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }
+      skills = { "blurggAttack1", "blurggAttack2", "blurggAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

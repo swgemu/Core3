@@ -46,7 +46,7 @@ bordokFoal = Creature:new {
       faction = "Bordok",
       gender = "",
 
-      name = "a Bordok Foal",
+      stfName = "a Bordok Foal",
       objectCRC = 4179476385, 
       socialGroup = "Bordok",
       named = FALSE, 
@@ -138,7 +138,8 @@ bordokFoal = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Intimidation attack", " Dizzy attack", "" }
+      --skills = { "Intimidation attack", "Dizzy attack" }
+      skills = { "bordokAttack3", "bordokAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

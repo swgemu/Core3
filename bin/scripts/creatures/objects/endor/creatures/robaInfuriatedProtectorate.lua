@@ -46,7 +46,7 @@ robaInfuriatedProtectorate = Creature:new {
       faction = "Roba",
       gender = "",
 
-      name = "a Roba Infuriated Protectorate",
+      stfName = "a Roba Infuriated Protectorate",
       objectCRC = 1008127960, 
       socialGroup = "Roba",
       named = FALSE, 
@@ -138,7 +138,8 @@ robaInfuriatedProtectorate = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Stun attack", "" }
+      --skills = { " Posture down attack", " Stun attack", "" }
+      skills = { "robaAttack2", "robaAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

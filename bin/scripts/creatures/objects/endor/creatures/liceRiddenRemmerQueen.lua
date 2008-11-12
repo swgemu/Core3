@@ -46,7 +46,7 @@ liceRiddenRemmerQueen = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      name = "a Lice Ridden Remmer Queen",
+      stfName = "a Lice Ridden Remmer Queen",
       objectCRC = 1979857288, 
       socialGroup = "Remmer",
       named = FALSE, 
@@ -138,7 +138,8 @@ liceRiddenRemmerQueen = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Knockdown attack", " Disease attack (medium)", " Ranged attack (spit)" }
+      --skills = { "Knockdown attack", "Disease attack (medium)", "Ranged attack (spit)" }
+      skills = { "remmerAttack3", "remmerAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ swirlProngImpaler = Creature:new {
       faction = "Swirl Prong",
       gender = "",
 
-      name = "a Swirl Prong Impaler",
+      stfName = "a Swirl Prong Impaler",
       objectCRC = 4177314208, 
       socialGroup = "Swirl Prong",
       named = FALSE, 
@@ -138,7 +138,8 @@ swirlProngImpaler = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "swirlProngAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

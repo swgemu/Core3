@@ -46,7 +46,7 @@ crazedGurreck = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      name = "a Crazed Gurreck",
+      stfName = "a Crazed Gurreck",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
       named = FALSE, 
@@ -138,7 +138,8 @@ crazedGurreck = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Dizzy attack", " Stun attack", "" }
+      --skills = { "Dizzy attack", "Stun attack" }
+      skills = { "gurreckAttack1", "gurreckAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

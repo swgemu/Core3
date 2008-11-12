@@ -46,7 +46,7 @@ jaxBoundingDwarf = Creature:new {
       faction = "Jax",
       gender = "",
 
-      name = "a Jax Bounding Dwarf",
+      stfName = "a Jax Bounding Dwarf",
       objectCRC = 1187375621, 
       socialGroup = "Jax",
       named = FALSE, 
@@ -138,7 +138,7 @@ jaxBoundingDwarf = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "JaxAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

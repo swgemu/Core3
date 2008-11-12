@@ -46,7 +46,7 @@ domesticatedBlurrg = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Domesticated Blurrg",
+      stfName = "a Domesticated Blurrg",
       objectCRC = 2309529743, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +138,7 @@ domesticatedBlurrg = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "blurggAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

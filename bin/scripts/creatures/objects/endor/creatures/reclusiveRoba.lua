@@ -46,7 +46,7 @@ reclusiveRoba = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Reclusive Roba",
+      stfName = "a Reclusive Roba",
       objectCRC = 1008127960, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +138,8 @@ reclusiveRoba = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Stun attack", " Blind attack", "" }
+      --skills = { " Stun attack", " Blind attack", "" }
+      skills = { "robaAttack2", "robaAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

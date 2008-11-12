@@ -46,7 +46,7 @@ bolleBolFemale = Creature:new {
       faction = "Bolle Bol",
       gender = "",
 
-      name = "a Bolle Bol Female",
+      stfName = "a Bolle Bol Female",
       objectCRC = 2905349573, 
       socialGroup = "Bolle Bol",
       named = FALSE, 
@@ -138,7 +138,8 @@ bolleBolFemale = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Dizzy attack", "" }
+      --skills = { " Posture down attack", " Dizzy attack", "" }
+      skills = { "bolleBolAttack2", "bolleBolAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

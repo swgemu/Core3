@@ -42,16 +42,25 @@
 -- Load files
 
 -- Endor
+RunSkillsFile("creatureSkills/endor/creatures/arachneAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/barkMiteAttacks.lua")
+RunSkillsFile("creatureSkills/endor/creatures/bloodseekerMiteAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/blurggAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/boarWolfAttacks.lua")
+RunSkillsFile("creatureSkills/endor/creatures/bolleBolAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/bolmaAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/bordokAttacks.lua")
+RunSkillsFile("creatureSkills/endor/creatures/borgleAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/gurreckAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/goraxAttacks.lua")
+RunSkillsFile("creatureSkills/endor/creatures/hanadakAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/JaxAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/lanternBirdAttacks.lua")
+RunSkillsFile("creatureSkills/endor/creatures/mantigrueAttacks.lua")
+RunSkillsFile("creatureSkills/endor/creatures/merekAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/mineRatAttacks.lua")
+RunSkillsFile("creatureSkills/endor/creatures/remmerAttacks.lua")
+RunSkillsFile("creatureSkills/endor/creatures/robaAttacks.lua")
 RunSkillsFile("creatureSkills/endor/creatures/swirlProngAttacks.lua")
-
-
+RunSkillsFile("creatureSkills/endor/creatures/squallAttacks.lua")
+RunSkillsFile("creatureSkills/endor/creatures/squillAttacks.lua")

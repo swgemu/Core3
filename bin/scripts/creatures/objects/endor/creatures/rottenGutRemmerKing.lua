@@ -46,7 +46,7 @@ rottenGutRemmerKing = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      name = "a Rotten Gut Remmer King",
+      stfName = "a Rotten Gut Remmer King",
       objectCRC = 413618023, 
       socialGroup = "Remmer",
       named = FALSE, 
@@ -138,7 +138,8 @@ rottenGutRemmerKing = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Dizzy attack", "" }
+      --skills = { " Posture down attack", " Dizzy attack", "" }
+      skills = { "remmerAttack1", "remmerAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

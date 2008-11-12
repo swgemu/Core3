@@ -46,7 +46,7 @@ diseasedBlurrg = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Diseased Blurrg",
+      stfName = "a Diseased Blurrg",
       objectCRC = 2309529743, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +138,8 @@ diseasedBlurrg = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Disease attack (medium)", " Area attack (bleeds)", "" }
+      --skills = { " Disease attack (medium)", " Area attack (bleeds)", "" }
+      skills = { "blurggAttack1", "blurggAttack2" }, 
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

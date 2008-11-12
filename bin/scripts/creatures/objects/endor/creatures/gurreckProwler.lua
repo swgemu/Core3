@@ -46,7 +46,7 @@ gurreckProwler = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      name = "a Gurreck Prowler",
+      stfName = "a Gurreck Prowler",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
       named = FALSE, 
@@ -138,7 +138,8 @@ gurreckProwler = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Blind attack", " Posture down attack", "" }
+      --skills = { "Blind attack", "Posture down attack" }
+      skills = { "gurreckAttack3", "gurreckAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,7 @@ roamingBordokStud = Creature:new {
       faction = "Bordok",
       gender = "",
 
-      name = "a Roaming Bordok Stud",
+      stfName = "a Roaming Bordok Stud",
       objectCRC = 153161597, 
       socialGroup = "Bordok",
       named = FALSE, 
@@ -138,7 +138,8 @@ roamingBordokStud = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Dizzy attack", " Posture down attack", "" }
+      --skills = { " Dizzy attack", " Posture down attack", "" }
+      skills = { "bordokAttack4", "bordokAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

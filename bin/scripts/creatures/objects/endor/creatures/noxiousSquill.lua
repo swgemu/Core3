@@ -46,7 +46,7 @@ noxiousSquill = Creature:new {
       faction = "Endor Squill",
       gender = "",
 
-      name = "a Noxious Squill",
+      stfName = "a Noxious Squill",
       objectCRC = 1824637824, 
       socialGroup = "Endor Squill",
       named = FALSE, 
@@ -138,7 +138,8 @@ noxiousSquill = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Stun attack", " Disease attack (mild)", "" }
+      --skills = { "Stun attack", "Disease attack (mild)" }
+      skills = { "squillAttack3", "squillAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

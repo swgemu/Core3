@@ -46,7 +46,7 @@ boundingJax = Creature:new {
       faction = "Jax",
       gender = "",
 
-      name = "a Bounding Jax",
+      stfName = "a Bounding Jax",
       objectCRC = 2095266416, 
       socialGroup = "Jax",
       named = FALSE, 
@@ -138,7 +138,8 @@ boundingJax = Creature:new {
       meatType = "meat_herbivore_endor",
       meatMax = 35,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { "Dizzy attack" }
+      skills = { "JaxAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
