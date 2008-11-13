@@ -54,7 +54,7 @@ private:
 	float speed;
 
 public:
-	ForcePowersPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, serv) {
+	ForcePowersPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, FORCE, serv) {
 		healthPoolAttackChance = 50;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;

@@ -89,6 +89,7 @@ protected:
 	int intimidateStateChance;
 
 	int requiredWeaponType;
+	int skillType;
 
 	int forceCost;
 
@@ -99,7 +100,17 @@ protected:
 	string CbtSpamMiss;
 
 public:
-	AttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : TargetSkill(name, anim, ATTACK, serv) {
+	static const int DEBUFF = 1;
+	static const int DIRECT = 2;
+	static const int DOT = 3;
+	static const int FORCE = 4;
+	static const int RANDOM = 5;
+	static const int WEAPONLESS = 6;
+	static const int WOUNDS = 7;
+	static const int OTHER = 0;
+
+public:
+	AttackTargetSkill(const string& name, const string& anim, int tp, ZoneProcessServerImplementation* serv) : TargetSkill(name, anim, ATTACK, serv) {
 		healthPoolAttackChance = 0;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
@@ -136,6 +147,7 @@ public:
 		intimidateStateChance = 0;
 
 		requiredWeaponType = 0xFF; // NONE
+		skillType = tp;
 	}
 
 
@@ -201,7 +213,7 @@ public:
 	}
 
 	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part) {
-		return server->getCombatManager()->applyDamage(attacker, target, damage, part);
+		return server->getCombatManager()->applyDamage(attacker, target, damage, part, this);
 	}
 
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit) {
@@ -500,6 +512,10 @@ public:
 
 	int getRequiredWeaponType() {
 		return requiredWeaponType;
+	}
+	
+	int getSkillType() {
+		return skillType;
 	}
 
 	virtual float calculateSpeed(CreatureObject* creature) {

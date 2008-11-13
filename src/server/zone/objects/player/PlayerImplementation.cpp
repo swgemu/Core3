@@ -1331,6 +1331,7 @@ void PlayerImplementation::deaggro() {
 
 			for (int i = 0; i < getDefenderListSize(); ++i) {
 				scno = getDefender(i);
+				scno->dropDamageDone((CreatureObject*)this);
 
 				if (scno->isNonPlayerCreature()) {
 
@@ -4659,11 +4660,11 @@ int PlayerImplementation::calcPlayerLevel(string xptype) {
 				playerLevel += 5;
 			else if (skillbox->getName() == "combat_marksman_master")
 				playerLevel += 6;
-			else if (skillbox->getName() == "combat_pistol_novice")
+			else if (skillbox->getName() == "combat_pistol_novice" || skillbox->getName() == "combat_bountyhunter_novice")
 				playerLevel += 2;
 			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_pistol" && skillbox->getProfession()->getName() == "combat_marksman")
 				playerLevel += 1;
-			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_pistol" && skillbox->getProfession()->getName() == "combat_pistol")
+			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_pistol" && (skillbox->getProfession()->getName() == "combat_pistol" || skillbox->getProfession()->getName() == "combat_bountyhunter"))
 				playerLevel += 2;
 			break;
 		case WeaponImplementation::CARBINE:

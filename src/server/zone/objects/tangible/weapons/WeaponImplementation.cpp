@@ -1248,7 +1248,10 @@ void WeaponImplementation::setXpType() {
 		xpType = "combat_general";
 		break;
 	default:
-		xpType = "combat_meleespecialize_unarmed";
+		if (getDamageType() == FORCE || isJedi())
+			xpType = "jedi_general";
+		else
+			xpType = "combat_meleespecialize_unarmed";
 		return;
 	};
 }

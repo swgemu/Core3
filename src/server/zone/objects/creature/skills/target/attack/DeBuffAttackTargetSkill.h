@@ -71,7 +71,7 @@ protected:
 
 
 public:
-	DeBuffAttackTargetSkill(const string& Name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(Name, anim, serv) {
+	DeBuffAttackTargetSkill(const string& Name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(Name, anim, DEBUFF, serv) {
 
 		duration = 0;
 

@@ -343,7 +343,6 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 					Creature* creature = (Creature*) targetCreature;
 					if (!creature->isMount())
 						creature->doAttack(attacker, damage);
-						creature->addDamageDone(attacker, damage, askill->getSkillName());
 				}
 
 				targetCreature->activateRecovery();
@@ -1072,7 +1071,7 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
  * 			9 - Head
  * 		Returns the amount of damage absorbed by armour.
  */
-int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part) {
+int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill) {
 
 	Weapon* weapon = attacker->getWeapon();
 	Armor* armor = target->getArmor(part);
@@ -1099,6 +1098,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 	 */
 
 	target->addDamage(attacker, damage);
+	target->addDamageDone(attacker, damage, askill->getSkillName());
 
 	if (part < 7)
 		target->takeHealthDamage(damage);

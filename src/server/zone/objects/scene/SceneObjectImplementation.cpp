@@ -481,22 +481,43 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 		askill = (AttackTargetSkill*)skill;
 		
 	
-	if (askill->getRequiredWeaponType() == 0xFF && askill->isForce()) {
+	/*if (askill->getRequiredWeaponType() == 0xFF && askill->isForce()) {
 		xptype = string("jedi_general");
 	} else if (creature->getWeapon() == NULL) {
 		xptype = string("combat_meleespecialize_unarmed");
 	} else 
-		xptype = creature->getWeapon()->getXpType();
-
-	if (xptype == "")
+		xptype = creature->getWeapon()->getXpType();*/
+	switch (askill->getSkillType()) {
+	case AttackTargetSkill::DEBUFF:
+		return;
+		break;
+	case AttackTargetSkill::DIRECT:
+	case AttackTargetSkill::DOT:
+	case AttackTargetSkill::RANDOM:
+	case AttackTargetSkill::WOUNDS:
+	case AttackTargetSkill::OTHER:
+		if (creature->getWeapon() == NULL)
+			xptype = string("combat_meleespecialize_unarmed");
+		else 
+			xptype = creature->getWeapon()->getXpType();
+		break;
+	case AttackTargetSkill::WEAPONLESS:
+		xptype = "medical";
+		break;
+	case AttackTargetSkill::FORCE:
+		xptype = "jedi_general";
+		break;
+	default:
 		xptype = "none";
+		break;
+	};
 	
 	DamageDone *dmg;
 	if (!playerDamageList.contains(creature)) {	
 		dmg = new DamageDone;
 	} else
 		dmg = playerDamageList.get(creature);
-	
+
 	if (!creature->isPlayer())
 		dmg->addDamage(xptype, damage, 0);
 	else {

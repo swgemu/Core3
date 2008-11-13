@@ -120,7 +120,7 @@ public:
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, int accuracyBonus);
 	float getWeaponRangeMod(float currentRange, Weapon* weapon);
 	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, bool forceAttack = false);
-	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part);
+	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill);
 	bool calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier);
 	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill);
 	float calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill);

@@ -50,6 +50,7 @@ which carries forward this exception.
 class WoundsDirectPoolAttackTargetSkill : public DirectPoolAttackTargetSkill {
 public:
 	WoundsDirectPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : DirectPoolAttackTargetSkill(name, anim, serv) {
+		skillType = WOUNDS;
 	}
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
