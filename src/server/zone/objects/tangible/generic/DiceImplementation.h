@@ -57,13 +57,13 @@ protected:
 	int diceSides;
 
 public:
-	static const int CHANCECUBE 	= 0x221F0907;
-	static const int CONFIGURABLE 	= 0x484AC6A6;
-	static const int CENTIHEDRON	= 0x821DB6E8;
-	static const int HEXAHEDRON	= 0xBF64B1E4;
-	static const int DECAHEDRON	= 0xB5E34222;
-	static const int DODECAHEDRON	= 0x81B6977D;
-	static const int ICOSAHEDRON	= 0xD474E5E7;
+	static const unsigned int CHANCECUBE 	= 0x221F0907;
+	static const unsigned int CONFIGURABLE 	= 0x484AC6A6;
+	static const unsigned int CENTIHEDRON	= 0x821DB6E8;
+	static const unsigned int HEXAHEDRON		= 0xBF64B1E4;
+	static const unsigned int DECAHEDRON		= 0xB5E34222;
+	static const unsigned int DODECAHEDRON	= 0x81B6977D;
+	static const unsigned int ICOSAHEDRON	= 0xD474E5E7;
 
 public:
 

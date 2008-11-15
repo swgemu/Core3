@@ -64,8 +64,10 @@ CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
 	server = srv;
 }
 
-/* handleAction :
- *     returns the time taken by the action
+/*
+ * handleAction() :
+ *     Returns the time taken by the action.
+ *     This is the entry point for combat queue actions
  */
 float CombatManager::handleAction(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
@@ -87,8 +89,9 @@ float CombatManager::handleAction(CommandQueueAction* action) {
 	return 0.0f;
 }
 
-/* doTargetSkill:
- *     returns time taken by action
+/*
+ * doTargetSkill():
+ *     Returns time taken by action
  */
 float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
@@ -100,16 +103,14 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		return 0.0f;
 	}
 
-	string actionModifier = action->getActionModifier();
-
 	TargetSkill* tskill = (TargetSkill*)action->getSkill();
+	string actionModifier = action->getActionModifier();
 
 	if (creature->isWatching() && !tskill->isHealSkill())
 		creature->stopWatch(creature->getWatchID());
 
 	if (creature->isListening() && !tskill->isHealSkill())
 		creature->stopListen(creature->getListenID());
-
 
 	if (tskill->isHealSkill()) {
 		if (!tskill->calculateCost(creature))
@@ -136,7 +137,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 
 	uint32 animCRC = tskill->getAnimCRC();
 
-	if (animCRC == 0)
+	if (animCRC == 0)  // Default combat action
 			animCRC = getDefaultAttackAnimation(creature);
 
 	CombatAction* actionMessage = new CombatAction(creature, animCRC);
@@ -181,7 +182,6 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 	return selfskill->getSpeed();
 }
 
-
 void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* target, CommandQueueAction* action, CombatAction* actionMessage) {
 	TargetSkill* skill = (TargetSkill*) action->getSkill();
 
@@ -203,23 +203,25 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 			if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
 				continue;
 
-			SceneObject* targetObject = (SceneObject*) object;
+			SceneObject* targetObject = object;
 
 			if (targetObject == creature || targetObject == target)
 				continue;
 
+			// TODO: Need to have a check for creatures of the same type to not attack
 			if (!targetObject->isAttackableBy(creature))
 				continue;
 
-			if (!creature->isPlayer() && !targetObject->isPlayer())
+			CreatureObject* creatureTarget = (CreatureObject*) targetObject;
+
+			if (creatureTarget->isIncapacitated() || creatureTarget->isDead())
 				continue;
 
-			Player* playerTarget = (Player*) targetObject;
+			if (creatureTarget->isPlayer())
+				if (((Player*)creatureTarget)->isImmune())
+					continue;
 
-			if (targetObject->isPlayer() && (playerTarget->isIncapacitated() || playerTarget->isDead() || playerTarget->isImmune()))
-				continue;
-
-
+			// Check they are in the same cell
 			if (creature->getParent() != targetObject->getParent())
 				continue;
 
@@ -257,99 +259,88 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 		Creature* targetCreature = NULL;
 
-		if (target->isPlayer()) {
-			targetCreature = (Creature*) target;
-			Player* targetPlayer = (Player*) target;
-
-			if (attacker->isPlayer()) {
-				Player* player = (Player*) attacker;
-				if (!canAttack(player, targetPlayer)) {
-					targetCreature->unlock();
-					return false;
-				}
-			}
-
-			if (!targetPlayer->isOnline()) {
-				targetCreature->unlock();
-				return false;
-			}
-		}
-
-		if (target->isNonPlayerCreature()) {
+		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			targetCreature = (Creature*) target;
 
 			if (targetCreature->isIncapacitated() || targetCreature->isDead()) {
 				target->unlock();
 				return false;
-			}
+			} else if (targetCreature->isPlayingMusic())
+				targetCreature->stopPlayingMusic();
+			else if (targetCreature->isDancing())
+				targetCreature->stopDancing();
 
-			Creature* creature = (Creature*)targetCreature;
-			if (creature->isMount()) {
-				if (!skill->isAttackSkill()) {
-					targetCreature->unlock();
+			if (target->isPlayer()) {
+				if (((Player*)targetCreature)->isImmune()) {
+					target->unlock();
 					return false;
 				}
 
-				return handleMountDamage(attacker, (MountCreature*)creature);
-			}
-		} else if (target->isAttackableObject()) {
-			AttackableObject* targetObject = (AttackableObject*) target;
-			if (targetObject->isDestroyed()) {
-				target->unlock();
-				return false;
+				if (attacker->isPlayer())
+					if (!canAttack((Player*)attacker, (Player*)targetCreature)) {
+						targetCreature->unlock();
+						return false;
+					}
+
+				if (!((Player*)targetCreature)->isOnline()) {
+					targetCreature->unlock();
+					return false;
+				}
 			}
 		}
 
-		if (skill->isAttackSkill()) {
-			if (targetCreature != NULL) {
-				if (targetCreature->isPlayingMusic())
-					targetCreature->stopPlayingMusic();
-				else if (targetCreature->isDancing())
-					targetCreature->stopDancing();
-			}
+		if (skill->isArea())
+			attacker->addDefender(target);
+		else
+			attacker->setDefender(target);
 
-			if (skill->isArea())
-				attacker->addDefender(target);
-			else
-				attacker->setDefender(target);
-
-			target->addDefender(attacker);
-			attacker->clearState(CreatureState::PEACE);
-		}
+		target->addDefender(attacker);
+		attacker->clearState(CreatureState::PEACE);
 
 		int damage = skill->doSkill(attacker, target, modifier, false);
 
-		if (actionMessage != NULL && targetCreature != NULL) //disabled untill we figure out how to make it work for more defenders
+		if (actionMessage != NULL && targetCreature != NULL) //disabled until we figure out how to make it work for more defenders
 			actionMessage->addDefender(targetCreature, damage >= 0);
 
 		if (targetCreature != NULL) {
 			if (targetCreature->isIncapacitated()) {
 				attacker->sendSystemMessage("base_player", "prose_target_incap", targetCreature->getObjectID());
 
-				if (!skill->isArea())
+				if (!skill->isArea()) {
 					attacker->clearCombatState(true);
+					return false;
+				}
+
 			} else if (targetCreature->isDead()) {
 				attacker->sendSystemMessage("base_player", "prose_target_dead", targetCreature->getObjectID());
 
-				if (!skill->isArea())
+				if (!skill->isArea()) {
 					attacker->clearCombatState(true);
+					return false;
+				}
 			}
 
-			if (!targetCreature->isIncapacitated() && skill->isAttackSkill()) {
+			if (skill->isAttackSkill()) {
 				AttackTargetSkill* askill = (AttackTargetSkill*) skill;
 				askill->calculateStates(attacker, targetCreature);
 
 				if(targetCreature->isNonPlayerCreature()) {
-					Creature* creature = (Creature*) targetCreature;
-					if (!creature->isMount())
-						creature->doAttack(attacker, damage);
+					targetCreature->doAttack(attacker, damage);
+					targetCreature->addDamageDone(attacker, damage, askill->getSkillName());
 				}
 
+				// TODO: Should NPCs/Creatures recover?
 				targetCreature->activateRecovery();
 			}
 		}
 		else {
 			AttackableObject* targetObject = (AttackableObject*) target;
+			if (targetObject->isDestroyed())
+				if (!skill->isArea()) {
+					attacker->clearCombatState(true);
+					return false;
+				}
+
 			targetObject->doDamage(damage, attacker);
 		}
 
@@ -371,71 +362,6 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 	}
 
 	return true;
-}
-
-bool CombatManager::handleMountDamage(CreatureObject* attacker, MountCreature* mount) {
-	// Pre: targetCraeture && mount locked
-	// Post: mount unlocked
-	if (attacker->getMount() == mount) {
-		mount->unlock();
-		return false;
-	}
-
-	CreatureObject* owner = mount->getLinkedCreature();
-
-	if (mount->isDisabled()) {
-		mount->unlock();
-		return false;
-	}
-
-	if (!mount->isInWorld()) {
-		mount->unlock();
-		return false;
-	}
-
-	if (owner == attacker) {
-		mount->unlock();
-		return false;
-	}
-
-	if (owner->isPlayer() && attacker->isPlayer()) {
-		Player* player = (Player*) owner;
-
-		mount->unlock();
-
-		if (player == attacker)
-			return false;
-
-		player->wlock(attacker);
-
-		if (!canAttack((Player*)attacker, player)) {
-			player->unlock();
-			return false;
-		}
-
-		player->unlock();
-
-		mount->wlock(attacker);
-	}
-
-	mount->changeConditionDamage(System::random(20000));
-
-	if (mount->isDisabled()) {
-		CreatureObject* creature = mount->getLinkedCreature();
-		if (creature != NULL && creature->isMounted()) {
-			mount->unlock();
-
-			creature->wlock(attacker);
-			creature->dismount();
-			creature->unlock();
-
-			return true;
-		}
-	}
-
-	mount->unlock();
-	return true;
-
 }
 
 bool CombatManager::canAttack(Player* player, Player* targetPlayer) {
@@ -476,255 +402,13 @@ float CombatManager::getConeAngle(SceneObject* target, float CreatureVectorX, fl
 }
 
 uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
-	//Pre: creature wlocked
-
 	Weapon* weapon = creature->getWeapon();
 
 	if ((weapon != NULL) && (weapon->getCategory() == WeaponImplementation::RANGED))
 		return 0x506E9D4C;
 	else {
-			int choice = System::random(8);
-			return defaultAttacks[choice];
-	}
-
-	return 0;
-}
-
-void CombatManager::requestDuel(Player* player, uint64 targetID) {
-	if (targetID != 0) {
-		Zone* zone = player->getZone();
-
-		SceneObject* targetObject = zone->lookupObject(targetID);
-
-		if (targetObject != NULL && targetObject->isPlayer()) {
-			Player* targetPlayer = (Player*) targetObject;
-			if (targetPlayer != player && targetPlayer->isOnline())
-				requestDuel(player, targetPlayer);
-		}
-	}
-}
-
-void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
-	/* Pre: player != targetPlayer and not NULL; player is locked
-	 * Post: player requests duel to targetPlayer
-	 */
-
-	if (player->isListening())
-		player->stopListen(player->getListenID());
-
-	if (player->isWatching())
-		player->stopWatch(player->getWatchID());
-
-	try {
-		targetPlayer->wlock(player);
-
-		if (player->isOvert() && targetPlayer->isOvert()) {
-			if (player->getFaction() != targetPlayer->getFaction()) {
-				targetPlayer->unlock();
-				return;
-			}
-		}
-
-		if (player->requestedDuelTo(targetPlayer)) {
-			ChatSystemMessage* csm = new ChatSystemMessage("duel", "already_challenged", targetPlayer->getObjectID());
-			player->sendMessage(csm);
-
-			targetPlayer->unlock();
-			return;
-		}
-
-		player->info("requesting duel");
-
-		player->addToDuelList(targetPlayer);
-
-		if (targetPlayer->requestedDuelTo(player)) {
-			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
-			player->sendMessage(pvpstat);
-
-			ChatSystemMessage* csm = new ChatSystemMessage("duel", "accept_self", targetPlayer->getObjectID());
-			player->sendMessage(csm);
-
-			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
-			targetPlayer->sendMessage(pvpstat2);
-
-			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "accept_target", player->getObjectID());
-			targetPlayer->sendMessage(csm2);
-		} else {
-			ChatSystemMessage* csm = new ChatSystemMessage("duel", "challenge_self", targetPlayer->getObjectID());
-			player->sendMessage(csm);
-
-			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "challenge_target", player->getObjectID());
-			targetPlayer->sendMessage(csm2);
-		}
-
-		targetPlayer->unlock();
-	} catch (Exception& e) {
-		cout << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n" << e.getMessage() << "\n";
-	} catch (...) {
-		cout << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
-		targetPlayer->unlock();
-	}
-}
-
-void CombatManager::requestEndDuel(Player* player, uint64 targetID) {
-	if (targetID != 0) {
-		Zone* zone = player->getZone();
-
-		SceneObject* targetObject = zone->lookupObject(targetID);
-
-		if (targetObject != NULL && targetObject->isPlayer()) {
-			Player* targetPlayer = (Player*)targetObject;
-
-			if (targetPlayer != player)
-				requestEndDuel(player, targetPlayer);
-		}
-	} else {
-		freeDuelList(player);
-	}
-}
-
-void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
-	/* Pre: player != targetPlayer and not NULL; player is locked
-	 * Post: player requested to end the duel with targetPlayer
-	 */
-
-	if (player->isListening())
-		player->stopListen(player->getListenID());
-
-	if (player->isWatching())
-		player->stopWatch(player->getWatchID());
-
-	try {
-		targetPlayer->wlock(player);
-
-		if (!player->requestedDuelTo(targetPlayer)) {
-			ChatSystemMessage* csm = new ChatSystemMessage("duel", "not_dueling", targetPlayer->getObjectID());
-			player->sendMessage(csm);
-
-			targetPlayer->unlock();
-			return;
-		}
-
-		player->info("ending duel");
-
-		player->removeFromDuelList(targetPlayer);
-
-		if (targetPlayer->requestedDuelTo(player)) {
-			targetPlayer->removeFromDuelList(player);
-			BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());
-			player->sendMessage(pvpstat);
-
-			ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
-			player->sendMessage(csm);
-
-			BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
-			targetPlayer->sendMessage(pvpstat2);
-
-			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
-			targetPlayer->sendMessage(csm2);
-		}
-
-		targetPlayer->unlock();
-	} catch (...) {
-		targetPlayer->unlock();
-	}
-}
-
-void CombatManager::freeDuelList(Player* player) {
-	/* Pre: player not NULL and is locked
-	 * Post: player removed and warned all of the objects from its duel list
-	 */
-	if (player->isDuelListEmpty())
-		return;
-
-	if (player->isListening())
-		player->stopListen(player->getListenID());
-
-	if (player->isWatching())
-		player->stopWatch(player->getWatchID());
-
-	player->info("freeing duel list");
-
-	while (player->getDuelListSize() != 0) {
-		ManagedReference<Player> targetPlayer = player->getDuelListObject(0);
-
-		if (targetPlayer != NULL) {
-			try {
-				targetPlayer->wlock(player);
-
-				if (targetPlayer->requestedDuelTo(player)) {
-					targetPlayer->removeFromDuelList(player);
-
-					BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());
-					player->sendMessage(pvpstat);
-
-					ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
-					player->sendMessage(csm);
-
-					BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
-					targetPlayer->sendMessage(pvpstat2);
-
-					ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
-					targetPlayer->sendMessage(csm2);
-				}
-
-				player->removeFromDuelList(targetPlayer);
-
-				targetPlayer->unlock();
-			} catch (ObjectNotDeployedException& e) {
-				player->removeFromDuelList(targetPlayer);
-
-				cout << "Exception on CombatManager::freeDuelList()\n" << e.getMessage() << "\n";
-			} catch (...) {
-				targetPlayer->unlock();
-			}
-		}
-	}
-}
-
-void CombatManager::declineDuel(Player* player, uint64 targetID) {
-	if (targetID == 0)
-		return;
-
-	Zone* zone = player->getZone();
-
-	SceneObject* targetObject = zone->lookupObject(targetID);
-
-	if (targetObject != NULL && targetObject->isPlayer()) {
-		Player* targetPlayer = (Player*)targetObject;
-
-		if (targetPlayer != player)
-			declineDuel(player, targetPlayer);
-	}
-}
-
-void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
-	/* Pre: player != targetPlayer and not NULL; player is locked
-	 * Post: player declined Duel to targetPlayer
-	 */
-
-	if (player->isListening())
-		player->stopListen(player->getListenID());
-
-	if (player->isWatching())
-		player->stopWatch(player->getWatchID());
-
-	try {
-		targetPlayer->wlock(player);
-
-		if (targetPlayer->requestedDuelTo(player)) {
-			targetPlayer->removeFromDuelList(player);
-
-			ChatSystemMessage* csm = new ChatSystemMessage("duel", "cancel_self", targetPlayer->getObjectID());
-			player->sendMessage(csm);
-
-			ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "cancel_target", player->getObjectID());
-			targetPlayer->sendMessage(csm2);
-		}
-
-		targetPlayer->unlock();
-	} catch (...) {
-		targetPlayer->unlock();
+		int choice = System::random(8);
+		return defaultAttacks[choice];
 	}
 }
 
@@ -745,13 +429,7 @@ void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender) 
 
 // calc methods
 void CombatManager::calculateDamageReduction(CreatureObject* creature, CreatureObject* targetCreature, float& damage) {
-	//Armor piercing: figure difference in AP to AR, apply 25% increases or 50% decreases accordingly
-	// Source: http://www.nofuture.org.uk/swg/rifleman.php (and others)
 
-	// AP/AR calculations have been removed form this section. - Avengre
-
-
-	//Other factors
 	if (targetCreature->isKnockedDown())
 		damage *= 1.33f;
 
@@ -760,6 +438,7 @@ void CombatManager::calculateDamageReduction(CreatureObject* creature, CreatureO
 }
 
 void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, float& minDamage, float& maxDamage) {
+	// TODO:  Add in Jedi code
 	Weapon* weapon = creature->getWeapon();
 	Weapon* tarWeapon = targetCreature->getWeapon();
 
@@ -931,14 +610,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (targetCreature->isStunned())
 		stunBonus = 50;
 
-	float ability = 50.0; // Don't know what this is taken from spreadsheet
-
-	/*
-	if (creature->isPlayer())
-		cout << "AA = " << attackerAccuracy << " TD = " << targetDefense
-		<< " mods = " << (weaponAccuracy + aimMod + stunBonus - blindState) << endl;
-	*/
-	accTotal += (attackerAccuracy + weaponAccuracy + aimMod + ability  + stunBonus
+	accTotal += (attackerAccuracy + weaponAccuracy + aimMod + accuracyBonus  + stunBonus
 			- targetDefense - blindState) / 2.0;
 
 	if (accTotal > 100)
@@ -947,8 +619,6 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 		accTotal = 0;
 
 	hitChance = (int)(accTotal + 0.5);
-
-	//cout << "hitChance:[" << hitChance << "]" << endl;
 
 	return hitChance;
 }
@@ -982,8 +652,6 @@ float CombatManager::getWeaponRangeMod(float currentRange, Weapon* weapon) {
 	}
 
 	accuracy = smallMod + ((currentRange - smallRange)/(idealRange - smallRange) * (bigMod - smallMod));
-
-	//cout << "Weapon accuracy:[" << accuracy << "]\n";
 
 	return accuracy;
 }
@@ -1194,7 +862,7 @@ bool CombatManager::calculateCost(CreatureObject* creature, float healthMultipli
 		// TODO: Find the real TK unarmed HAM costs
 		wpnHealth *= 10.0;
 		wpnAction *= 25.0;
-		wpnMind *= 15.0;
+		wpnMind *= 10.0;
 		forceCost *= 0;
 	}
 
@@ -1546,5 +1214,370 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 					weapon->setUpdated(true);
 				}
 			}
+		}
+	}
+
+	int CombatManager::calculateDamage(CreatureObject* creature, SceneObject* target, AttackTargetSkill* skill, bool randompoolhit) {
+		Weapon* weapon = creature->getWeapon();
+
+		float minDamage = 0;
+		float maxDamage = 0;
+		float healthDamage = 0;
+		float actionDamage = 0;
+		float mindDamage = 0;
+		int reduction = 0;
+
+		if (weapon != NULL) {
+			if (weapon->isCertified()) {
+				minDamage = weapon->getMinDamage();
+				maxDamage = weapon->getMaxDamage();
+			}
+			else {
+				minDamage = weapon->getMinDamage() / 5;
+				maxDamage = weapon->getMaxDamage() / 5;
+			}
+		} else {
+			maxDamage = (float)creature->getSkillMod("unarmed_damage");
+			if (maxDamage < 25)
+				maxDamage = 25;
+			minDamage = maxDamage / 2;
+		}
+
+		CreatureObject* targetCreature = NULL;
+		if (target->isPlayer() || target->isNonPlayerCreature()) {
+			targetCreature = (CreatureObject*) target;
+			checkMitigation(creature, targetCreature, minDamage, maxDamage);
+		}
+
+		float damage = 0;
+		int average = 0;
+
+		int diff = (int)maxDamage - (int)minDamage;
+		if (diff >= 0)
+			average = System::random(diff) + (int)minDamage;
+
+		float globalMultiplier = GLOBAL_MULTIPLIER;
+		if (creature->isPlayer() && !target->isPlayer())
+			globalMultiplier *= PVE_MULTIPLIER;
+		else if (creature->isPlayer() && target->isPlayer())
+			globalMultiplier *= PVP_MULTIPLIER;
+
+		if (targetCreature != NULL) {
+
+			int rand = System::random(100);
+
+			if (getHitChance(creature, targetCreature, skill->getAccuracyBonus()) > rand) {
+				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
+
+				if (secondaryDefense < 2) {
+					if (secondaryDefense == 1)
+						damage = damage / 2;
+
+					//Work out the number of pools that may be affected
+					int poolsAffected = 0;
+					int totalPercentage = 0;  // Temporary fix until percentages in lua are corrected
+
+					if (skill->healthPoolAttackChance > 0) {
+						poolsAffected++;
+						totalPercentage += skill->healthPoolAttackChance;
+					}
+					if (skill->actionPoolAttackChance > 0) {
+						poolsAffected++;
+						totalPercentage += skill->actionPoolAttackChance;
+					}
+					if (skill->mindPoolAttackChance > 0) {
+						poolsAffected++;
+						totalPercentage += skill->mindPoolAttackChance;
+					}
+					if (randompoolhit)
+						poolsAffected = 1;  // Only one random pool hit
+
+					float damage = skill->damageRatio * average * globalMultiplier;
+					float individualDamage = damage / poolsAffected;
+
+					for (int i = 0; i < poolsAffected; i++) {
+						int pool = System::random(totalPercentage);
+
+						int bodyPart = 0;
+						if (pool < skill->healthPoolAttackChance) {
+							healthDamage = individualDamage;
+							bodyPart = System::random(5)+1;
+							calculateDamageReduction(creature, targetCreature, healthDamage);
+						}
+						else if (pool < skill->healthPoolAttackChance + skill->actionPoolAttackChance) {
+							actionDamage = individualDamage;
+							bodyPart = System::random(1)+7;
+							calculateDamageReduction(creature, targetCreature, actionDamage);
+						}
+						else {
+							mindDamage = individualDamage;
+							bodyPart = 9;
+							calculateDamageReduction(creature, targetCreature, mindDamage);
+						}
+
+						reduction += applyDamage(creature, targetCreature, (int32) individualDamage, bodyPart, skill);
+
+						if (skill->hasCbtSpamHit())
+							creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
+
+					}
+				}
+
+
+				if (weapon != NULL) {
+					doDotWeaponAttack(creature, targetCreature, 0);
+
+					if (weapon->decreasePowerupUses())
+						weapon->setUpdated(true);
+					else if (weapon->hasPowerup())
+						weapon->removePowerup((Player*)creature, true);
+				}
+
+			} else {
+				skill->doMiss(creature, targetCreature, (int32) damage);
+				return -1;
+			}
+		} else {
+			return (int32)skill->damageRatio * average;
+		}
+
+		return (int32)damage - reduction;
+	}
+
+	void CombatManager::requestDuel(Player* player, uint64 targetID) {
+		if (targetID != 0) {
+			Zone* zone = player->getZone();
+
+			SceneObject* targetObject = zone->lookupObject(targetID);
+
+			if (targetObject != NULL && targetObject->isPlayer()) {
+				Player* targetPlayer = (Player*) targetObject;
+				if (targetPlayer != player && targetPlayer->isOnline())
+					requestDuel(player, targetPlayer);
+			}
+		}
+	}
+
+	void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
+		/* Pre: player != targetPlayer and not NULL; player is locked
+		 * Post: player requests duel to targetPlayer
+		 */
+
+		if (player->isListening())
+			player->stopListen(player->getListenID());
+
+		if (player->isWatching())
+			player->stopWatch(player->getWatchID());
+
+		try {
+			targetPlayer->wlock(player);
+
+			if (player->isOvert() && targetPlayer->isOvert()) {
+				if (player->getFaction() != targetPlayer->getFaction()) {
+					targetPlayer->unlock();
+					return;
+				}
+			}
+
+			if (player->requestedDuelTo(targetPlayer)) {
+				ChatSystemMessage* csm = new ChatSystemMessage("duel", "already_challenged", targetPlayer->getObjectID());
+				player->sendMessage(csm);
+
+				targetPlayer->unlock();
+				return;
+			}
+
+			player->info("requesting duel");
+
+			player->addToDuelList(targetPlayer);
+
+			if (targetPlayer->requestedDuelTo(player)) {
+				BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
+				player->sendMessage(pvpstat);
+
+				ChatSystemMessage* csm = new ChatSystemMessage("duel", "accept_self", targetPlayer->getObjectID());
+				player->sendMessage(csm);
+
+				BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask() + CreatureFlag::ATTACKABLE + CreatureFlag::AGGRESSIVE);
+				targetPlayer->sendMessage(pvpstat2);
+
+				ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "accept_target", player->getObjectID());
+				targetPlayer->sendMessage(csm2);
+			} else {
+				ChatSystemMessage* csm = new ChatSystemMessage("duel", "challenge_self", targetPlayer->getObjectID());
+				player->sendMessage(csm);
+
+				ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "challenge_target", player->getObjectID());
+				targetPlayer->sendMessage(csm2);
+			}
+
+			targetPlayer->unlock();
+		} catch (Exception& e) {
+			cout << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n" << e.getMessage() << "\n";
+		} catch (...) {
+			cout << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
+			targetPlayer->unlock();
+		}
+	}
+
+	void CombatManager::requestEndDuel(Player* player, uint64 targetID) {
+		if (targetID != 0) {
+			Zone* zone = player->getZone();
+
+			SceneObject* targetObject = zone->lookupObject(targetID);
+
+			if (targetObject != NULL && targetObject->isPlayer()) {
+				Player* targetPlayer = (Player*)targetObject;
+
+				if (targetPlayer != player)
+					requestEndDuel(player, targetPlayer);
+			}
+		} else {
+			freeDuelList(player);
+		}
+	}
+
+	void CombatManager::requestEndDuel(Player* player, Player* targetPlayer) {
+		/* Pre: player != targetPlayer and not NULL; player is locked
+		 * Post: player requested to end the duel with targetPlayer
+		 */
+
+		if (player->isListening())
+			player->stopListen(player->getListenID());
+
+		if (player->isWatching())
+			player->stopWatch(player->getWatchID());
+
+		try {
+			targetPlayer->wlock(player);
+
+			if (!player->requestedDuelTo(targetPlayer)) {
+				ChatSystemMessage* csm = new ChatSystemMessage("duel", "not_dueling", targetPlayer->getObjectID());
+				player->sendMessage(csm);
+
+				targetPlayer->unlock();
+				return;
+			}
+
+			player->info("ending duel");
+
+			player->removeFromDuelList(targetPlayer);
+
+			if (targetPlayer->requestedDuelTo(player)) {
+				targetPlayer->removeFromDuelList(player);
+				BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());
+				player->sendMessage(pvpstat);
+
+				ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
+				player->sendMessage(csm);
+
+				BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
+				targetPlayer->sendMessage(pvpstat2);
+
+				ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
+				targetPlayer->sendMessage(csm2);
+			}
+
+			targetPlayer->unlock();
+		} catch (...) {
+			targetPlayer->unlock();
+		}
+	}
+
+	void CombatManager::freeDuelList(Player* player) {
+		/* Pre: player not NULL and is locked
+		 * Post: player removed and warned all of the objects from its duel list
+		 */
+		if (player->isDuelListEmpty())
+			return;
+
+		if (player->isListening())
+			player->stopListen(player->getListenID());
+
+		if (player->isWatching())
+			player->stopWatch(player->getWatchID());
+
+		player->info("freeing duel list");
+
+		while (player->getDuelListSize() != 0) {
+			ManagedReference<Player> targetPlayer = player->getDuelListObject(0);
+
+			if (targetPlayer != NULL) {
+				try {
+					targetPlayer->wlock(player);
+
+					if (targetPlayer->requestedDuelTo(player)) {
+						targetPlayer->removeFromDuelList(player);
+
+						BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer, targetPlayer->getPvpStatusBitmask());
+						player->sendMessage(pvpstat);
+
+						ChatSystemMessage* csm = new ChatSystemMessage("duel", "end_self", targetPlayer->getObjectID());
+						player->sendMessage(csm);
+
+						BaseMessage* pvpstat2 = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
+						targetPlayer->sendMessage(pvpstat2);
+
+						ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "end_target", player->getObjectID());
+						targetPlayer->sendMessage(csm2);
+					}
+
+					player->removeFromDuelList(targetPlayer);
+
+					targetPlayer->unlock();
+				} catch (ObjectNotDeployedException& e) {
+					player->removeFromDuelList(targetPlayer);
+
+					cout << "Exception on CombatManager::freeDuelList()\n" << e.getMessage() << "\n";
+				} catch (...) {
+					targetPlayer->unlock();
+				}
+			}
+		}
+	}
+
+	void CombatManager::declineDuel(Player* player, uint64 targetID) {
+		if (targetID == 0)
+			return;
+
+		Zone* zone = player->getZone();
+
+		SceneObject* targetObject = zone->lookupObject(targetID);
+
+		if (targetObject != NULL && targetObject->isPlayer()) {
+			Player* targetPlayer = (Player*)targetObject;
+
+			if (targetPlayer != player)
+				declineDuel(player, targetPlayer);
+		}
+	}
+
+	void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
+		/* Pre: player != targetPlayer and not NULL; player is locked
+		 * Post: player declined Duel to targetPlayer
+		 */
+
+		if (player->isListening())
+			player->stopListen(player->getListenID());
+
+		if (player->isWatching())
+			player->stopWatch(player->getWatchID());
+
+		try {
+			targetPlayer->wlock(player);
+
+			if (targetPlayer->requestedDuelTo(player)) {
+				targetPlayer->removeFromDuelList(player);
+
+				ChatSystemMessage* csm = new ChatSystemMessage("duel", "cancel_self", targetPlayer->getObjectID());
+				player->sendMessage(csm);
+
+				ChatSystemMessage* csm2 = new ChatSystemMessage("duel", "cancel_target", player->getObjectID());
+				targetPlayer->sendMessage(csm2);
+			}
+
+			targetPlayer->unlock();
+		} catch (...) {
+			targetPlayer->unlock();
 		}
 	}

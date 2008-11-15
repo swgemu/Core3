@@ -510,12 +510,16 @@ public:
 		return areaRangeDamage;
 	}
 
-	int getRequiredWeaponType() {
+	inline int getRequiredWeaponType() {
 		return requiredWeaponType;
 	}
 	
 	int getSkillType() {
 		return skillType;
+	}
+
+	inline int getAccuracyBonus() {
+		return accuracyBonus;
 	}
 
 	virtual float calculateSpeed(CreatureObject* creature) {

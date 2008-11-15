@@ -128,6 +128,7 @@ public:
 	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	int calculateDamage(CreatureObject* creature, SceneObject* target, AttackTargetSkill* skill, bool randompoolhit);
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
 };
 

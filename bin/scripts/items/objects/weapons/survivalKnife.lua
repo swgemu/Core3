@@ -51,7 +51,7 @@ survivalKnife = Weapon:new{
 
 	objectType = ONEHANDMELEEWEAPON,
 
-	attackSpeed = 1,
+	attackSpeed = 2.2,
 
 	minDamage = 25,
 
