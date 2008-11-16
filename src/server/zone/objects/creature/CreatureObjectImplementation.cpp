@@ -2336,8 +2336,13 @@ void CreatureObjectImplementation::setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp
 }
 
 void CreatureObjectImplementation::calculateHAMregen() {
+    // Why? None of these should ever be < 0
 	if ((int) getConstitution() < 0 || (int) getStamina() < 0 || (int) getWillpower() < 0)
 		return;
+
+	if (!(objectType == PLAYER) && isInCombat()) {  // Creatures don't regen HAM in combat
+		return;
+	}
 
 	float newHealth = (float)getConstitution() * 13 / 1200 * 3;
 	float newAction = (float)getStamina() * 13 / 1200 * 3;
@@ -3736,11 +3741,11 @@ void CreatureObjectImplementation::doFlourish(const string& modifier) {
 			//sendSystemMessage("Flourish Buff");
 			addEntertainerFlourishBuff();
 		}
-		
+
 		// Grant Experience
 		if (isPlayer()) {
 			Player* player = (Player*)_this;
-			
+
 			player->addEntertainerFlourishXp(performance->getBaseXp() + performance->getFlourishXpMod());
 		}
 
@@ -3860,7 +3865,7 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 		changeMindWoundsBar(woundHeal, false);
 		changeFocusWoundsBar(woundHeal, false);
 		changeWillpowerWoundsBar(woundHeal, false);
-		
+
 		healingXp += -1 * woundHeal;
 	}
 
@@ -3896,13 +3901,13 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 						obj->changeMindWoundsBar(woundHeal, false);
 						obj->changeFocusWoundsBar(woundHeal, false);
 						obj->changeWillpowerWoundsBar(woundHeal, false);
-						
+
 						healingXp += -1 * woundHeal;
 					}
 
 					if (healShock) {
 						obj->changeShockWounds(shockHeal);
-						
+
 						healingXp += -1 * woundHeal;
 					}
 
@@ -3939,11 +3944,11 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 		}
 	} /*else
 		cout << "no patrons";*/
-		
+
 	// Add Experience
 	if (healingXp > 0 && isPlayer()) {
 		Player* player = (Player*)_this;
-		
+
 		player->addEntertainerHealingXp(healingXp);
 	}
 

@@ -308,7 +308,6 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 				if (!skill->isArea()) {
 					attacker->clearCombatState(true);
-					return false;
 				}
 
 			} else if (targetCreature->isDead()) {
@@ -316,7 +315,6 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 				if (!skill->isArea()) {
 					attacker->clearCombatState(true);
-					return false;
 				}
 			}
 
@@ -698,7 +696,7 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 
 		// TODO: Add defenses into creature luas.
 		if (!targetCreature->isPlayer()) {
-			defense = (int)(targetCreature->getLevel() * 1.25);
+			defense = targetCreature->getLevel();
 			if (defense > 250)
 				defense = 250;
 			return defense;
@@ -1256,11 +1254,14 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
 
-		float globalMultiplier = GLOBAL_MULTIPLIER;
-		if (creature->isPlayer() && !target->isPlayer())
-			globalMultiplier *= PVE_MULTIPLIER;
-		else if (creature->isPlayer() && target->isPlayer())
-			globalMultiplier *= PVP_MULTIPLIER;
+		float globalMultiplier = 1.0f;
+		if (creature->isPlayer()) {
+			globalMultiplier = GLOBAL_MULTIPLIER;
+			if (!target->isPlayer())
+				globalMultiplier *= PVE_MULTIPLIER;
+			else if (target->isPlayer())
+				globalMultiplier *= PVP_MULTIPLIER;
+		}
 
 		if (targetCreature != NULL) {
 
