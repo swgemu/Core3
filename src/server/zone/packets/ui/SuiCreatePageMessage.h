@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "../object/StfParameter.h"
+
 class SuiCreatePageMessage : public BaseMessage {
 public:
    SuiCreatePageMessage(uint32 pageID) : BaseMessage() {
@@ -66,6 +68,43 @@ public:
 	   insertInt(2); // number of ASCIIS
 	   insertAscii(variable.c_str());
 	   insertAscii(type.c_str());
+   }
+   
+   void insertOption(uint8 option, const string& file, const string& str, const string& variable, const string& type, StfParameter* params) {
+   		insertByte(option);
+   		
+   		insertInt(1);
+   		/*****************/
+   	   	params->generate();
+
+		int size = 0x0F + file.size() + str.size() + params->size();
+		bool odd = (size & 1);
+
+		if (odd)
+			insertInt((size + 1) / 2);
+		else
+			insertInt(size / 2);
+
+		insertShort(0);
+		insertShort(0);
+		insertByte(1);
+		insertInt(0xFFFFFFFF);
+
+		insertAscii(file.c_str());
+		insertInt(0);
+		insertAscii(str.c_str());
+
+		insertStream(params);
+
+		if (odd)
+			insertByte(0);
+
+		insertInt(0);
+		/*****************/
+		
+		insertInt(2);
+		insertAscii(variable.c_str());
+		insertAscii(type.c_str());
    }
    
    /*void frogMenu() {

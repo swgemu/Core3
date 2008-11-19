@@ -513,6 +513,9 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 	};
 	
 	DamageDone *dmg;
+	if (creature->isIncapacitated() || creature->isDead())
+		return;
+	
 	if (!playerDamageList.contains(creature)) {	
 		dmg = new DamageDone;
 	} else
@@ -635,9 +638,10 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 			if (xptype != "jedi_general")
 				xpadd += xpaddsingle;
 		}
-				
+		
+		xpadd /= 10.0f;
 		string xptype = string("combat_general");
-		player->addXp(xptype, (int)floor(xpadd/10.0f), true);
+		player->addXp(xptype, (int)xpadd, true);
 
 		delete dmg;
 	}

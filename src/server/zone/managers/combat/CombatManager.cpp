@@ -324,7 +324,6 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 				if(targetCreature->isNonPlayerCreature()) {
 					targetCreature->doAttack(attacker, damage);
-					targetCreature->addDamageDone(attacker, damage, askill->getSkillName());
 				}
 
 				// TODO: Should NPCs/Creatures recover?

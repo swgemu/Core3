@@ -4601,6 +4601,134 @@ bool Player::getImagedesignXpGiven() {
 		return ((PlayerImplementation*) _impl)->getImagedesignXpGiven();
 }
 
+void Player::teachPlayer(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 361);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->teachPlayer(player);
+}
+
+void Player::setTeachingOffer(string& sBox) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 362);
+		method.addAsciiParameter(sBox);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setTeachingOffer(sBox);
+}
+
+void Player::setTeacher(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 363);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setTeacher(player);
+}
+
+void Player::setStudent(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 364);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setStudent(player);
+}
+
+string& Player::getTeachingOffer() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 365);
+
+		method.executeWithAsciiReturn(_return_getTeachingOffer);
+		return _return_getTeachingOffer;
+	} else
+		return ((PlayerImplementation*) _impl)->getTeachingOffer();
+}
+
+Player* Player::getTeacher() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 366);
+
+		return (Player*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getTeacher();
+}
+
+Player* Player::getStudent() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 367);
+
+		return (Player*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getStudent();
+}
+
+string& Player::getTeachingSkillOption(int idx) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 368);
+		method.addSignedIntParameter(idx);
+
+		method.executeWithAsciiReturn(_return_getTeachingSkillOption);
+		return _return_getTeachingSkillOption;
+	} else
+		return ((PlayerImplementation*) _impl)->getTeachingSkillOption(idx);
+}
+
+void Player::clearTeachingSkillOptions() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 369);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->clearTeachingSkillOptions();
+}
+
+void Player::teachSkill(string& skillname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 370);
+		method.addAsciiParameter(skillname);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->teachSkill(skillname);
+}
+
 /*
  *	PlayerAdapter
  */
@@ -5676,6 +5804,36 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 360:
 		resp->insertBoolean(getImagedesignXpGiven());
+		break;
+	case 361:
+		teachPlayer((Player*) inv->getObjectParameter());
+		break;
+	case 362:
+		setTeachingOffer(inv->getAsciiParameter(_param0_setTeachingOffer__string_));
+		break;
+	case 363:
+		setTeacher((Player*) inv->getObjectParameter());
+		break;
+	case 364:
+		setStudent((Player*) inv->getObjectParameter());
+		break;
+	case 365:
+		resp->insertAscii(getTeachingOffer());
+		break;
+	case 366:
+		resp->insertLong(getTeacher()->_getObjectID());
+		break;
+	case 367:
+		resp->insertLong(getStudent()->_getObjectID());
+		break;
+	case 368:
+		resp->insertAscii(getTeachingSkillOption(inv->getSignedIntParameter()));
+		break;
+	case 369:
+		clearTeachingSkillOptions();
+		break;
+	case 370:
+		teachSkill(inv->getAsciiParameter(_param0_teachSkill__string_));
 		break;
 	default:
 		return NULL;
@@ -7102,6 +7260,46 @@ void PlayerAdapter::setImagedesignXpGiven(bool given) {
 
 bool PlayerAdapter::getImagedesignXpGiven() {
 	return ((PlayerImplementation*) impl)->getImagedesignXpGiven();
+}
+
+void PlayerAdapter::teachPlayer(Player* player) {
+	return ((PlayerImplementation*) impl)->teachPlayer(player);
+}
+
+void PlayerAdapter::setTeachingOffer(string& sBox) {
+	return ((PlayerImplementation*) impl)->setTeachingOffer(sBox);
+}
+
+void PlayerAdapter::setTeacher(Player* player) {
+	return ((PlayerImplementation*) impl)->setTeacher(player);
+}
+
+void PlayerAdapter::setStudent(Player* player) {
+	return ((PlayerImplementation*) impl)->setStudent(player);
+}
+
+string& PlayerAdapter::getTeachingOffer() {
+	return ((PlayerImplementation*) impl)->getTeachingOffer();
+}
+
+Player* PlayerAdapter::getTeacher() {
+	return ((PlayerImplementation*) impl)->getTeacher();
+}
+
+Player* PlayerAdapter::getStudent() {
+	return ((PlayerImplementation*) impl)->getStudent();
+}
+
+string& PlayerAdapter::getTeachingSkillOption(int idx) {
+	return ((PlayerImplementation*) impl)->getTeachingSkillOption(idx);
+}
+
+void PlayerAdapter::clearTeachingSkillOptions() {
+	return ((PlayerImplementation*) impl)->clearTeachingSkillOptions();
+}
+
+void PlayerAdapter::teachSkill(string& skillname) {
+	return ((PlayerImplementation*) impl)->teachSkill(skillname);
 }
 
 /*

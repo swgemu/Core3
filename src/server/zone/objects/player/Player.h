@@ -13,6 +13,8 @@
 
 #include "../../packets/object/StfParameter.h"
 
+#include "professions/SkillBox.h"
+
 class ZoneClientSession;
 
 class Zone;
@@ -777,6 +779,26 @@ public:
 
 	bool getImagedesignXpGiven();
 
+	void teachPlayer(Player* player);
+
+	void setTeachingOffer(string& sBox);
+
+	void setTeacher(Player* player);
+
+	void setStudent(Player* player);
+
+	string& getTeachingOffer();
+
+	Player* getTeacher();
+
+	Player* getStudent();
+
+	string& getTeachingSkillOption(int idx);
+
+	void clearTeachingSkillOptions();
+
+	void teachSkill(string& skillname);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -795,6 +817,8 @@ protected:
 	string _return_getNextSkillBox;
 	string _return_getRaceFileName;
 	string _return_getStartingProfession;
+	string _return_getTeachingOffer;
+	string _return_getTeachingSkillOption;
 	string _return_saveXp;
 
 	unicode _return_getBiography;
@@ -1520,6 +1544,26 @@ public:
 
 	bool getImagedesignXpGiven();
 
+	void teachPlayer(Player* player);
+
+	void setTeachingOffer(string& sBox);
+
+	void setTeacher(Player* player);
+
+	void setStudent(Player* player);
+
+	string& getTeachingOffer();
+
+	Player* getTeacher();
+
+	Player* getStudent();
+
+	string& getTeachingSkillOption(int idx);
+
+	void clearTeachingSkillOptions();
+
+	void teachSkill(string& skillname);
+
 protected:
 	string _param0_queueFlourish__string_long_int_;
 	string _param4_queueAction__Player_long_int_int_string_;
@@ -1582,6 +1626,8 @@ protected:
 	string _param0_subtractFactionPoints__string_int_;
 	string _param0_getMaxFactionPoints__string_;
 	string _param0_addSuiBoxChoice__string_;
+	string _param0_setTeachingOffer__string_;
+	string _param0_teachSkill__string_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

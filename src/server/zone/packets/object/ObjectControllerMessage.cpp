@@ -842,6 +842,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x029D0CC5): // Harvest
 		parseHarvestOrganics(player, pack);
 		break;
+	case (0x5041F83A): // Teach
+		parseTeach(player, pack);
+		break; 
 	default:
 		target = pack->parseLong();
 		string actionModifier = "";
@@ -3854,6 +3857,64 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 
 	resourceManager->harvestOrganics(player, creature, type);
 
+}
+
+void ObjectControllerMessage::parseTeach(Player* player, Message* pack) {
+	Zone* zone = player->getZone();
+	if(zone == NULL)
+		return;
+	
+	uint64 targetid = pack->parseLong();
+	
+	SceneObject* object = zone->lookupObject(targetid);
+	if (object == NULL) {
+		player->sendSystemMessage("teaching","no_target");
+		return;
+	}
+	
+	Player* target = NULL;
+	if (object->isPlayer())
+		target = (Player*)object;
+	else {
+		player->sendSystemMessage("teaching","no_target");
+		return;
+	}
+	
+	StfParameter *params = new StfParameter();
+	params->addTT(target->getFirstNameProper());
+	
+	if (player == target) {
+		player->sendSystemMessage("teaching","no_teach_self");
+		delete params;
+		return;
+	} else if (target->isDead() || target->isIncapacitated()) {
+		player->sendSystemMessage("teaching","student_dead",params);
+		delete params;
+		return;
+	} else if (!player->isInRange(target, 128)) {
+		player->sendSystemMessage("teaching","student_too_far_target",params);
+		delete params;
+		return;
+	} else if (!player->isInAGroup() || !target->isInAGroup() || (player->getGroupObject() != target->getGroupObject())) {
+		player->sendSystemMessage("teaching","not_in_same_group");
+		delete params;
+		return;
+	} else if (target->getTeacher() != NULL) {
+		player->sendSystemMessage("teaching","student_has_offer_to_learn",params);
+		delete params;
+		return;
+	}
+	
+	delete params;
+	
+	unicode opts;
+	pack->parseUnicode(opts);
+	
+	string skillname = opts.c_str().c_str();
+	
+	if (skillname.size() <= 0) {
+		player->teachPlayer(target);
+	}
 }
 
 void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {

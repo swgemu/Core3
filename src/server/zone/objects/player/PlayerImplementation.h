@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "PlayerObject.h"
 
 #include "professions/SkillBoxMap.h"
+#include "professions/SkillBox.h"
 #include "professions/XpMap.h"
 
 #include "badges/Badges.h"
@@ -265,6 +266,11 @@ class PlayerImplementation : public PlayerServant {
 	uint16 characterMask;
 	
 	bool imagedesignXpGiven;
+	
+	Vector<SkillBox*> teachingSkillList;
+	Player* teachingTarget;
+	Player* teachingTrainer;
+	SkillBox* teachingOffer;
 
 public:
 	static const int ONLINE = 1;
@@ -1666,6 +1672,42 @@ public:
 	inline bool getImagedesignXpGiven() {
 		return imagedesignXpGiven;
 	}
+	
+	void teachPlayer(Player* player);
+	
+	void setTeachingOffer(string& sBox) {
+		teachingOffer = server->getProfessionManager()->getSkillBox(sBox);
+	}
+	
+	void setTeacher(Player* player) {
+		teachingTrainer = player;
+	}
+	
+	void setStudent(Player* player) {
+		teachingTarget = player;
+	}
+	
+	string& getTeachingOffer() {
+		return teachingOffer->getName();
+	}
+	
+	Player* getTeacher() {
+		return teachingTrainer;
+	}
+	
+	Player* getStudent() {
+		return teachingTarget;
+	}
+	
+	string& getTeachingSkillOption(int idx) {
+		return teachingSkillList.get(idx)->getName();
+	}
+	
+	void clearTeachingSkillOptions() {
+		teachingSkillList.removeAll();
+	}
+	
+	void teachSkill(string& skillname);
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

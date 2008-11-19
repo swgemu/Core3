@@ -84,12 +84,45 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 		
 	Player* player = (Player*)obj;
 	
-	// TODO test for qualifying prereq skills
 	StartNpcConversation* conv = new StartNpcConversation(player, objectID, "");
 	player->sendMessage(conv);
 	player->setLastNpcConvStr(getSpeciesName());
 
-	sendInitialMessage(player);
+	bool qual = true;
+
+	SkillBox* sBox = profession->getNoviceBox();
+	
+	player->setLastNpcConvMessStr("");
+
+	for (int i = 0; (qual == true) && (i < sBox->getRequiredSkillsSize()); i++) {
+		string skillname;
+		sBox->getRequiredSkill(skillname, i);
+		if(!player->hasSkillBox(skillname))
+			qual = false;
+	}
+
+	if (!qual) {
+		NpcConversationMessage *fail = new NpcConversationMessage(player, "skill_teacher", "no_qualify");
+		player->sendMessage(fail);
+		SuiListBox* suiBox = new SuiListBox(player, 0x7849);
+		suiBox->setPromptTitle("@skill_teacher:no_qualify_title");
+		suiBox->setPromptText("@skill_teacher:no_qualify_prompt");
+		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {
+			stringstream skillboxname;
+			skillboxname << "@skl_n:" << sBox->getRequiredSkill(j)->getName();
+			
+			suiBox->addMenuItem(skillboxname.str());
+		}
+
+		player->addSuiBox(suiBox);
+		player->sendMessage(suiBox->generateMessage());
+		player->setConversatingCreature(NULL);
+		player->sendMessage(new StringList(player));
+		player->sendMessage(new StopNpcConversation(player, getObjectID()));
+
+	} else if (qual) {
+		sendInitialMessage(player);
+	}
 }
 
 void TrainerCreatureImplementation::sendInitialMessage(Player* player) {
@@ -105,8 +138,8 @@ void TrainerCreatureImplementation::sendInitialChoices(Player* player) {
 
 	slist->insertOption("skill_teacher", "opt1_1");
 	slist->insertOption("skill_teacher", "opt1_2");
-	slist->insertOption("skill_teacher", "opt1_3");
-	slist->insertOption("skill_teacher", "opt1_4");
+	//slist->insertOption("skill_teacher", "opt1_3");
+	//slist->insertOption("skill_teacher", "opt1_4");
 	
 	player->setLastNpcConvMessStr("trainer_initial");
 
@@ -130,8 +163,8 @@ void TrainerCreatureImplementation::sendSkillBoxes(Player* player, bool checkXp)
 			qual = false;
 		}
 		
-		//if (checkXp && skillBox->getSkillXpCost() > player->getXp(skillBox->getSkillXpType()))
-		//	qual = false;
+		if (checkXp && (skillBox->getSkillXpCost() > player->getXp(skillBox->getSkillXpType())))
+			qual = false;
 
 		for (int j = 0; (qual == true) && (j < skillBox->getRequiredSkillsSize()); j++) {
 			string skillname;
@@ -277,6 +310,7 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 		SkillBox* sBox;
 		string optionmessage;
 		StfParameter* params = new StfParameter();
+		int money;
 
 		switch (option) {
 		case 0: //yes
@@ -288,11 +322,18 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 				}
 			}
 
-			if (sBox->getSkillXpCost() > player->getXp(sBox->getSkillXpType()))
+			money = sBox->getSkillMoneyRequired();
+			params->addDI(money);
+
+			if (sBox->getSkillXpCost() > player->getXp(sBox->getSkillXpType())) {
 				player->sendSystemMessage("skill_teacher", "prose_train_failed", params);
-			else {
+			} else if (!verifyCashCredits((uint32)money)) {
+				player->sendSystemMessage("skill_teacher", "prose_nsf", params);
+			} else {
 				train(sBox, player);
 				player->addXp(sBox->getSkillXpType(), (-1)*sBox->getSkillXpCost(), true);
+				player->subtractCashCredits((uint32)money);
+				player->sendSystemMessage("skill_teacher", "prose_pay", params);
 				player->sendSystemMessage("skill_teacher", "prose_skill_learned", params);
 			}
 			optionmessage = "msg_yes";
@@ -309,5 +350,5 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 		player->sendMessage(skillmsg);
 		sendInitialChoices(player);
 	} else
-		sendInitialMessage(player);
+		player->sendMessage(new StopNpcConversation(player, getObjectID()));
 }

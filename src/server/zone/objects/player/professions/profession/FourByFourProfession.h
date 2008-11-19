@@ -61,6 +61,7 @@ public:
 			throw new ArrayIndexOutOfBoundsException();
 		
 		branches[branch - 1][level - 1] = skillbox;
+		skillbox->setSkillTier(level);
 		skillBoxes.add(skillbox);
 	}
 

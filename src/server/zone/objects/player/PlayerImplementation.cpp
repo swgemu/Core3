@@ -308,6 +308,11 @@ void PlayerImplementation::initialize() {
 
 	setLogging(false);
 	setGlobalLogging(true);
+	
+	teachingTarget = NULL;
+	teachingTrainer = NULL;
+	teachingSkillList.removeAll();
+	teachingOffer = false;
 }
 
 void PlayerImplementation::create(ZoneClientSession* client) {
@@ -4301,6 +4306,10 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 		else
 			omr->addRadialItem(0, 50, 3, "Stop Watch");
 	}
+	
+	if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
+		omr->addRadialItem(0, 48, 3, "@cmd_n:teach");
+	}
 
 	omr->finish();
 
@@ -4734,4 +4743,101 @@ int PlayerImplementation::calcPlayerLevel(string xptype) {
 		playerLevel = 25;
 		
 	return playerLevel;
+}
+
+void PlayerImplementation::teachPlayer(Player* player) {
+	if (teachingSkillList.size() > 0)
+		return;
+	
+	Vector<SkillBox*> trainboxes;
+	resetSkillBoxesIterator();
+	
+	if (!hasNextSkillBox()) {
+		sendSystemMessage("teaching","no_skills");
+		return;
+	}
+	
+	while (hasNextSkillBox()) {
+		SkillBox* sBox = skillBoxes.getNextValue();
+		
+		if (sBox->isNoviceBox())
+			continue;
+		
+		if (sBox->getSkillXpType() == "jedi_general" || 
+			sBox->getSkillXpType() == "space_combat_general" ||
+			sBox->getSkillXpType() == "fs_crafting" ||
+			sBox->getSkillXpType() == "fs_combat" ||
+			sBox->getSkillXpType() == "fs_reflex" ||
+			sBox->getSkillXpType() == "fs_senses" ||
+			sBox->getSkillXpType() == "force_rank_xp")
+			continue;
+		
+		if (player->hasSkillBox(sBox->getName()))
+			continue;
+			
+		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {
+			if (player->hasSkillBox(sBox->getRequiredSkill(j)->getName()))
+				trainboxes.add(sBox);
+		}
+	}
+	
+	if (trainboxes.size() > 0) {
+		setStudent(player);
+		player->setTeacher(_this);
+		SuiListBox* sbox = new SuiListBox(player, 0x7848);
+		sbox->setPromptTitle("@sui:teach");
+		
+		for (int i = 0; i < trainboxes.size(); i++) {
+			stringstream skillboxname;
+			skillboxname << "@skl_n:" << trainboxes.get(i)->getName();
+			sbox->addMenuItem(skillboxname.str());
+			teachingSkillList.add(trainboxes.get(i));
+		}
+		
+		addSuiBox(sbox);
+		sendMessage(sbox->generateMessage());
+	} else {
+		StfParameter* params = new StfParameter();
+		params->addTT(player->getFirstNameProper());
+		sendSystemMessage("training","no_skills_for_student",params);
+		delete params;
+	}
+}
+
+void PlayerImplementation::teachSkill(string& skillname) {
+	SkillBox* sBox = server->getProfessionManager()->getSkillBox(skillname);
+	StfParameter* params = new StfParameter;
+	
+	params->addTO("skl_n",sBox->getName());
+	params->addTT(getTeacher()->getFirstNameProper());
+	
+	if (sBox->getSkillXpCost() > getXp(sBox->getSkillXpType())) {
+		sendSystemMessage("skill_teacher","prose_train_failed", params);
+	} else {
+		sendSystemMessage("teaching","student_skill_learned", params);
+		addXp(sBox->getSkillXpType(), (-1)*sBox->getSkillXpCost(), true);
+		trainSkillBox(sBox->getName());
+		
+		StfParameter* locparams = new StfParameter;
+		locparams->addTT(getFirstNameProper());
+		locparams->addTO("skl_n",sBox->getName());
+		
+		int xp = 0;
+		string xptype("apprenticeship");
+		if (sBox->isMasterBox())
+			xp = 60;
+		else 
+			xp = (sBox->getSkillTier() + 1) * 10;
+		locparams->addDI(xp);
+		
+		getTeacher()->sendSystemMessage("teaching","teacher_skill_learned", locparams);
+		getTeacher()->addXp(xptype, xp, true);
+		
+		delete locparams;
+	}
+	
+	delete params;
+		
+	getTeacher()->setStudent(NULL);
+	setTeacher(NULL);
 }

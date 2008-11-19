@@ -45,6 +45,7 @@ which carries forward this exception.
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
 include "../../packets/object/StfParameter";
+include "professions/SkillBox";
 
 import "../../ZoneClientSession";
 import "../../Zone";
@@ -652,5 +653,16 @@ interface Player implements CreatureObject {
 
 	void setImagedesignXpGiven(boolean given);
 	boolean getImagedesignXpGiven();
+
+	void teachPlayer(Player player);
+	void setTeachingOffer(string sBox);
+	void setTeacher(Player player);
+	void setStudent(Player player);
+	string getTeachingOffer();
+	Player getTeacher();
+	Player getStudent();
+	string getTeachingSkillOption(int idx);
+	void clearTeachingSkillOptions();
+	void teachSkill(string skillname);
 	
 }
