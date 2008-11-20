@@ -204,7 +204,14 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleTeachSkill(boxID, player, cancel);
 		break;
 	case 0x7848:
-		handleTeachPlayer(boxID, player, atoi(value.c_str()));
+		if (cancel != 1)
+			handleTeachPlayer(boxID, player, atoi(value.c_str()));
+		else {
+			player->getStudent()->setTeacher(NULL);
+			player->setStudent(NULL);
+			player->clearTeachingSkillOptions();
+		}
+			
 		break;
 	case 0x7849:
 		handleDenyTrainingList(boxID, player);
@@ -1581,8 +1588,12 @@ void SuiManager::handleTeachSkill(uint32 boxID, Player* player, uint32 cancel) {
 				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
 			} else 
 				player->teachSkill(player->getTeachingOffer());
-		} else
+		} else {
 			player->getTeacher()->sendSystemMessage("teaching","offer_refused",params);
+			player->getTeacher()->setStudent(NULL);
+			player->getTeacher()->clearTeachingSkillOptions();
+			player->setTeacher(NULL);
+		}
 		
 		delete params;
 		delete locparams;

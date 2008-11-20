@@ -66,8 +66,6 @@ class SkillBox {
 	int skillMoneyRequired;
 	int skillPointsRequired;
 	int skillRequirementsCount;
-	
-	int skillTier;
 
 	Vector<string> skillRequirements;
 	SortedVector<SkillBox*> requiredSkills;
@@ -270,14 +268,6 @@ public:
 
 	int getSkillMoneyRequired() {
 		return skillMoneyRequired;
-	}
-	
-	int getSkillTier() {
-		return skillTier;
-	}
-	
-	void setSkillTier(int tier) {
-		skillTier = tier;
 	}
 
 	friend class SkillManager;

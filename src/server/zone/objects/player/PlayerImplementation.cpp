@@ -4786,6 +4786,8 @@ void PlayerImplementation::teachPlayer(Player* player) {
 		player->setTeacher(_this);
 		SuiListBox* sbox = new SuiListBox(player, 0x7848);
 		sbox->setPromptTitle("@sui:teach");
+		sbox->setPromptText("What would you like to teach?");
+		sbox->setCancelButton(true);
 		
 		for (int i = 0; i < trainboxes.size(); i++) {
 			stringstream skillboxname;
@@ -4799,7 +4801,7 @@ void PlayerImplementation::teachPlayer(Player* player) {
 	} else {
 		StfParameter* params = new StfParameter();
 		params->addTT(player->getFirstNameProper());
-		sendSystemMessage("training","no_skills_for_student",params);
+		sendSystemMessage("teaching","no_skills_for_student",params);
 		delete params;
 	}
 }
@@ -4808,7 +4810,7 @@ void PlayerImplementation::teachSkill(string& skillname) {
 	SkillBox* sBox = server->getProfessionManager()->getSkillBox(skillname);
 	StfParameter* params = new StfParameter;
 	
-	params->addTO("skl_n",sBox->getName());
+	params->addTO("skl_n",skillname);
 	params->addTT(getTeacher()->getFirstNameProper());
 	
 	if (sBox->getSkillXpCost() > getXp(sBox->getSkillXpType())) {
@@ -4816,18 +4818,20 @@ void PlayerImplementation::teachSkill(string& skillname) {
 	} else {
 		sendSystemMessage("teaching","student_skill_learned", params);
 		addXp(sBox->getSkillXpType(), (-1)*sBox->getSkillXpCost(), true);
-		trainSkillBox(sBox->getName());
+		trainSkillBox(skillname);
 		
 		StfParameter* locparams = new StfParameter;
 		locparams->addTT(getFirstNameProper());
-		locparams->addTO("skl_n",sBox->getName());
+		locparams->addTO("skl_n",skillname);
 		
 		int xp = 0;
 		string xptype("apprenticeship");
 		if (sBox->isMasterBox())
 			xp = 60;
-		else 
-			xp = (sBox->getSkillTier() + 1) * 10;
+		else {
+			char tier = skillname.at(skillname.size()-1);
+			xp = ((tier-'0') + 1) * 10;
+		}
 		locparams->addDI(xp);
 		
 		getTeacher()->sendSystemMessage("teaching","teacher_skill_learned", locparams);
