@@ -66,6 +66,8 @@ class GroupObjectImplementation : public GroupObjectServant {
 	uint32 listCount;
 
 	ChatRoom* groupChannel;
+	
+	int groupLevel;
 
 public:
 	GroupObjectImplementation(uint64 oid, Player* Leader);
@@ -84,6 +86,12 @@ public:
 	void startChannel();
 
 	float getRangerBonusForHarvesting(Player* player);
+	
+	void calcGroupLevel();
+	
+	int getGroupLevel() {
+		return groupLevel;
+	}
 
 	ChatRoom* getGroupChannel() {
 		return groupChannel;

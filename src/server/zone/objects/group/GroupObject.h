@@ -55,6 +55,10 @@ public:
 
 	float getRangerBonusForHarvesting(Player* player);
 
+	void calcGroupLevel();
+
+	int getGroupLevel();
+
 protected:
 	GroupObject(DummyConstructorParameter* param);
 
@@ -104,6 +108,10 @@ public:
 	unsigned int getNewListCount(int cnt);
 
 	float getRangerBonusForHarvesting(Player* player);
+
+	void calcGroupLevel();
+
+	int getGroupLevel();
 
 };
 

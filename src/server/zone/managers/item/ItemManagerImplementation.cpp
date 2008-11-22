@@ -562,7 +562,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 		((CreatureObject*)player)->addInventoryItem(item);
 
 		if(item->isEquipped())
-			player->equipPlayerItem(item);
+			player->equipPlayerItem(item, false);
 	}
 
 	return item;

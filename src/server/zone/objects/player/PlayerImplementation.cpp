@@ -313,6 +313,18 @@ void PlayerImplementation::initialize() {
 	teachingTrainer = NULL;
 	teachingSkillList.removeAll();
 	teachingOffer = false;
+	
+	if (getWeapon() == NULL) {
+		int templevel = calcPlayerLevel("combat_meleespecialize_unarmed");
+		if (calcPlayerLevel("medical") > templevel)
+			templevel = calcPlayerLevel("medical");
+		setLevel(templevel);
+	} else {
+		int templevel = calcPlayerLevel(getWeapon()->getXpType());
+		if (calcPlayerLevel("medical") > templevel)
+			templevel = calcPlayerLevel("medical");
+		setLevel(templevel);
+	}
 }
 
 void PlayerImplementation::create(ZoneClientSession* client) {
@@ -2753,18 +2765,18 @@ void PlayerImplementation::addInventoryResource(ResourceContainer* item) {
 }
 
 
-void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
+void PlayerImplementation::equipPlayerItem(TangibleObject* item, bool doUpdate) {
 	if (item->isEquipped())
 		item->setEquipped(false);
 
 	if (item->isWeapon()) {
-		changeWeapon(item->getObjectID());
+		changeWeapon(item->getObjectID(), doUpdate);
 	} else if (item->isArmor()) {
 		changeArmor(item->getObjectID(), true);
 	} else if (item->isClothing()) {
 		changeCloth(item->getObjectID());
 	} else if (item->isInstrument()) {
-		changeWeapon(item->getObjectID());
+		changeWeapon(item->getObjectID(), doUpdate);
 	}
 }
 
@@ -2821,7 +2833,7 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 	}
 }
 
-void PlayerImplementation::changeWeapon(uint64 itemid) {
+void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
 	SceneObject* obj = inventory->getObject(itemid);
 
 	if (obj == NULL || !obj->isTangible())
@@ -2862,6 +2874,38 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 
 			setWeaponSkillMods(weapon);
 
+		}
+		
+		int playerlevel;
+		if (getWeapon() == NULL)
+			playerlevel = calcPlayerLevel("combat_meleespecialize_unarmed");
+		else
+			playerlevel = calcPlayerLevel(getWeapon()->getXpType());
+		
+		if (calcPlayerLevel("medical") > playerlevel)
+			setLevel(calcPlayerLevel("medical"));
+		else
+			setLevel(playerlevel);
+			
+		if (isInAGroup()) {
+			getGroupObject()->calcGroupLevel();
+			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(getGroupObject());
+			grp->updateLevel(getGroupObject()->getGroupLevel());
+			grp->close();
+
+			broadcastMessage(grp);
+		}
+		
+		if (doUpdate) {
+			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+			if (isInAGroup()) {
+				dcreo6->updateLevel(getGroupObject()->getGroupLevel());
+			} else {
+				dcreo6->updateLevel(getLevel());
+			}
+			dcreo6->close();
+			
+			broadcastMessage(dcreo6);
 		}
 		
 	} else if (((TangibleObject*)obj)->isInstrument()){

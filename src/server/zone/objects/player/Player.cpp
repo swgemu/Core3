@@ -1398,17 +1398,18 @@ void Player::changeCloth(unsigned long long itemid) {
 		((PlayerImplementation*) _impl)->changeCloth(itemid);
 }
 
-void Player::changeWeapon(unsigned long long itemid) {
+void Player::changeWeapon(unsigned long long itemid, bool doUpdate) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 111);
 		method.addUnsignedLongParameter(itemid);
+		method.addBooleanParameter(doUpdate);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->changeWeapon(itemid);
+		((PlayerImplementation*) _impl)->changeWeapon(itemid, doUpdate);
 }
 
 void Player::changeArmor(unsigned long long itemid, bool forced) {
@@ -1579,17 +1580,18 @@ void Player::addInventoryResource(ResourceContainer* item) {
 		((PlayerImplementation*) _impl)->addInventoryResource(item);
 }
 
-void Player::equipPlayerItem(TangibleObject* item) {
+void Player::equipPlayerItem(TangibleObject* item, bool doUpdate) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 125);
 		method.addObjectParameter(item);
+		method.addBooleanParameter(doUpdate);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->equipPlayerItem(item);
+		((PlayerImplementation*) _impl)->equipPlayerItem(item, doUpdate);
 }
 
 void Player::saveDatapad(Player* player) {
@@ -5056,7 +5058,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		changeCloth(inv->getUnsignedLongParameter());
 		break;
 	case 111:
-		changeWeapon(inv->getUnsignedLongParameter());
+		changeWeapon(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 112:
 		changeArmor(inv->getUnsignedLongParameter(), inv->getBooleanParameter());
@@ -5098,7 +5100,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		addInventoryResource((ResourceContainer*) inv->getObjectParameter());
 		break;
 	case 125:
-		equipPlayerItem((TangibleObject*) inv->getObjectParameter());
+		equipPlayerItem((TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 126:
 		saveDatapad((Player*) inv->getObjectParameter());
@@ -6262,8 +6264,8 @@ void PlayerAdapter::changeCloth(unsigned long long itemid) {
 	return ((PlayerImplementation*) impl)->changeCloth(itemid);
 }
 
-void PlayerAdapter::changeWeapon(unsigned long long itemid) {
-	return ((PlayerImplementation*) impl)->changeWeapon(itemid);
+void PlayerAdapter::changeWeapon(unsigned long long itemid, bool doUpdate) {
+	return ((PlayerImplementation*) impl)->changeWeapon(itemid, doUpdate);
 }
 
 void PlayerAdapter::changeArmor(unsigned long long itemid, bool forced) {
@@ -6318,8 +6320,8 @@ void PlayerAdapter::addInventoryResource(ResourceContainer* item) {
 	return ((PlayerImplementation*) impl)->addInventoryResource(item);
 }
 
-void PlayerAdapter::equipPlayerItem(TangibleObject* item) {
-	return ((PlayerImplementation*) impl)->equipPlayerItem(item);
+void PlayerAdapter::equipPlayerItem(TangibleObject* item, bool doUpdate) {
+	return ((PlayerImplementation*) impl)->equipPlayerItem(item, doUpdate);
 }
 
 void PlayerAdapter::saveDatapad(Player* player) {

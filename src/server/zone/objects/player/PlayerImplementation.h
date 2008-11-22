@@ -511,7 +511,7 @@ public:
 	void removeDatapadItem(uint64 oid);
 	void addInventoryItem(TangibleObject* item);
 	void addInventoryResource(ResourceContainer* item);
-	void equipPlayerItem(TangibleObject* item);
+	void equipPlayerItem(TangibleObject* item, bool doUpdate = true);
 	SceneObject* getPlayerItem(uint64 oid);
 	bool hasItemPermission(TangibleObject* item);
 
@@ -908,7 +908,7 @@ public:
 
 	// item methods
 	void changeCloth(uint64 itemid);
-	void changeWeapon(uint64 itemid);
+	void changeWeapon(uint64 itemid, bool doUpdate = true);
 	void changeArmor(uint64 itemid, bool forced);
 
 	void setWeaponSkillMods(Weapon* weapon);

@@ -470,7 +470,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case 0x335676c7: // equip, change weapon.
 		target = pack->parseLong();
-		player->changeWeapon(target);
+		player->changeWeapon(target, true);
 		break;
 	case 0x82f75977: // transferitemmisc
 		/*target = pack->parseLong();

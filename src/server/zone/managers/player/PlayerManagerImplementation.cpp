@@ -433,8 +433,6 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	hair.decode(hData);
 	player->setHairAppearance(hData);
 
-	player->loadXp(character->getString(60));
-
 	int raceID = character->getInt(7);
 
 	player->setRaceID(raceID);

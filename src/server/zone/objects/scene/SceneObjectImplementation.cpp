@@ -605,13 +605,11 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 			float playerlevel = (float)dmg->getLevel(j);
 			string xptype = dmg->getXpType(j);
 			float xpaddsingle = 0.0f;
-		
-			//40xpl(cl/25)(pl/10)
-			//40*(cl) * (cl/10)
+
 			if (player->isInAGroup()) { // use group calculation
 				GroupObject *group = player->getGroupObject();
 				if (isNonPlayerCreature()) {
-					xpaddsingle = (groupDamageList.get(group)/total)*(damage/totaldamage)*40.0f*((float)levels)*(multiplier)*(1.0f+(group->getGroupSize()+5.0f)*.01f);
+					xpaddsingle = (groupDamageList.get(group)/total)*(damage/totaldamage)*40.0f*((float)levels)*((multiplier)/(group->getGroupSize()))*(1.0f+(group->getGroupSize()+5.0f)*.01f);
 					if (levels > 25)
 						xpaddsingle += (playerlevel - levels) * 60.0f;
 					else if (playerlevel > levels)

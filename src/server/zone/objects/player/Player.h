@@ -279,7 +279,7 @@ public:
 
 	void changeCloth(unsigned long long itemid);
 
-	void changeWeapon(unsigned long long itemid);
+	void changeWeapon(unsigned long long itemid, bool doUpdate);
 
 	void changeArmor(unsigned long long itemid, bool forced);
 
@@ -307,7 +307,7 @@ public:
 
 	void addInventoryResource(ResourceContainer* item);
 
-	void equipPlayerItem(TangibleObject* item);
+	void equipPlayerItem(TangibleObject* item, bool doUpdate);
 
 	void saveDatapad(Player* player);
 
@@ -1044,7 +1044,7 @@ public:
 
 	void changeCloth(unsigned long long itemid);
 
-	void changeWeapon(unsigned long long itemid);
+	void changeWeapon(unsigned long long itemid, bool doUpdate);
 
 	void changeArmor(unsigned long long itemid, bool forced);
 
@@ -1072,7 +1072,7 @@ public:
 
 	void addInventoryResource(ResourceContainer* item);
 
-	void equipPlayerItem(TangibleObject* item);
+	void equipPlayerItem(TangibleObject* item, bool doUpdate);
 
 	void saveDatapad(Player* player);
 
