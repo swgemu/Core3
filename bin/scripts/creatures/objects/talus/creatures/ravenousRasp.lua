@@ -50,7 +50,7 @@ ravenousRasp = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 229802836, 
       socialGroup = "Rasp",
-      named = FALSE, 
+      
 
       level = 31,
       

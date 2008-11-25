@@ -50,7 +50,7 @@ fliteRaspLarge = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 1138484659, 
       socialGroup = "Rasp",
-      named = FALSE, 
+      
 
       level = 8,
       

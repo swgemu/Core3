@@ -50,7 +50,7 @@ viciousHufDun = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 3376666183, 
       socialGroup = "HufDun",
-      named = FALSE, 
+      
 
       level = 19,
       

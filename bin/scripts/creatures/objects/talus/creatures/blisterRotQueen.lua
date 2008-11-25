@@ -50,7 +50,7 @@ blisterRotQueen = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 2430922138, 
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 15,
       

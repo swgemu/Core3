@@ -50,7 +50,7 @@ oozingDungRoyalGuardian = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 382834958, 
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 17,
       

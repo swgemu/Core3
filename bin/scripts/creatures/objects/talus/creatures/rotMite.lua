@@ -50,7 +50,7 @@ rotMite = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 4167786528, 
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 11,
       

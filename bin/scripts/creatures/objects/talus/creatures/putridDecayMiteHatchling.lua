@@ -50,7 +50,7 @@ putridDecayMiteHatchling = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 2827279538, 
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 7,
       

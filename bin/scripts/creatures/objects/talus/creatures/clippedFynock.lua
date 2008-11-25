@@ -50,7 +50,7 @@ clippedFynock = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 768940720, 
       socialGroup = "Fynock",
-      named = FALSE, 
+      
 
       level = 9,
       

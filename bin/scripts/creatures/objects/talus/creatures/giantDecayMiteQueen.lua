@@ -50,7 +50,7 @@ giantDecayMiteQueen = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 3943467921, 
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 26,
       

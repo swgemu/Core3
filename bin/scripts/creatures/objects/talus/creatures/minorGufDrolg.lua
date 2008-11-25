@@ -50,7 +50,7 @@ minorGufDrolg = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 1297255033, 
       socialGroup = "Guf Drolg",
-      named = FALSE, 
+      
 
       level = 9,
       

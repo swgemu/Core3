@@ -50,7 +50,7 @@ rabidMutantKahmurra = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 3433057460, 
       socialGroup = "Kahmurra",
-      named = FALSE, 
+      
 
       level = 41,
       
