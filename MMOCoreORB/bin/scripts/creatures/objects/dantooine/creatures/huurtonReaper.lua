@@ -46,10 +46,11 @@ huurtonReaper = Creature:new {
       faction = "Huurton",
       gender = "",
 
-      name = "a Huurton Reaper",
+	  speciesName = "huurton_reaper",
+	  stfName = "mob/creature_names",
       objectCRC = 3338559238, 
       socialGroup = "Huurton",
-      named = FALSE, 
+      
 
       level = 84,
       

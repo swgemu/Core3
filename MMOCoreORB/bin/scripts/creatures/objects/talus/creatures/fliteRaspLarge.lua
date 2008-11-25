@@ -46,7 +46,8 @@ fliteRaspLarge = Creature:new {
       faction = "Rasp",
       gender = "",
 
-      name = "a Flite Rasp Large",
+      speciesName = "flite_rasp_large",
+      stfName = "mob/creature_names",
       objectCRC = 1138484659, 
       socialGroup = "Rasp",
       named = FALSE, 
@@ -138,7 +139,7 @@ fliteRaspLarge = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 19,
 
-      skills = { "", "", "" }
+      skills = { "fliteRaspAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

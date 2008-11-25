@@ -46,10 +46,11 @@ bordokAncient = Creature:new {
       faction = "Bordok",
       gender = "",
 
-      stfName = "a Bordok Ancient",
+	  speciesName = "bordok_ancient",
+	  stfName = "mob/creature_names",
       objectCRC = 622383012, 
       socialGroup = "Bordok",
-      named = FALSE, 
+      
 
       level = 45,
       

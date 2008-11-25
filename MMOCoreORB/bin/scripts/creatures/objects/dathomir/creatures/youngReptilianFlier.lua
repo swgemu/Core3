@@ -46,10 +46,11 @@ youngReptilianFlier = Creature:new {
       faction = "Reptilian Flier",
       gender = "",
 
-      name = "a Young Reptilian Flier",
+	  speciesName = "young_reptilian_flier",
+	  stfName = "mob/creature_names",
       objectCRC = 65705057, 
       socialGroup = "Reptilian Flier",
-      named = FALSE, 
+      
 
       level = 10,
       
@@ -138,7 +139,8 @@ youngReptilianFlier = Creature:new {
       meatType = "meat_avian_dathomir",
       meatMax = 120,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "reptilianFlierAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

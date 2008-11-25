@@ -46,10 +46,11 @@ reclusiveShearMite = Creature:new {
       faction = "Shearmite",
       gender = "",
 
-      name = "a Reclusive Shear Mite",
+	  speciesName = "reclusive_shear_mite",
+	  stfName = "mob/creature_names",
       objectCRC = 3399904934, 
       socialGroup = "Shearmite",
-      named = FALSE, 
+      
 
       level = 26,
       
@@ -97,7 +98,7 @@ reclusiveShearMite = Creature:new {
 	  meleeDefense = 1,  
 	  rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+      attackCreatureOnSight = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- Enter socialGroups 
 
       weapon = "", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
@@ -138,7 +139,8 @@ reclusiveShearMite = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 15,
 
-      skills = { " Blind attack", " Ranged attack (spit)", "" }
+      --skills = { " Blind attack", " Ranged attack (spit)", "" }
+      skills = { "shearMiteAttack3", "shearMiteAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

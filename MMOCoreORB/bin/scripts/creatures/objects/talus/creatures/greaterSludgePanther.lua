@@ -46,7 +46,8 @@ greaterSludgePanther = Creature:new {
       faction = "Sludge Panther",
       gender = "",
 
-      name = "a Greater Sludge Panther",
+      speciesName = "greater_sludge_panther",
+      stfName = "mob/creature_names",
       objectCRC = 2403761131, 
       socialGroup = "Sludge Panther",
       named = FALSE, 
@@ -138,7 +139,8 @@ greaterSludgePanther = Creature:new {
       meatType = "meat_carnivore_talus",
       meatMax = 80,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "sludgePantherAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

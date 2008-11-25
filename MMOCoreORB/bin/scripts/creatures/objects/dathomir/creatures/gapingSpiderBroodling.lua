@@ -46,10 +46,11 @@ gapingSpiderBroodling = Creature:new {
       faction = "Gaping",
       gender = "",
 
-      name = "a Gaping Spider Broodling",
+	  speciesName = "gaping_spider_broodling",
+	  stfName = "mob/creature_names",
       objectCRC = 670298183, 
       socialGroup = "Gaping",
-      named = FALSE, 
+      
 
       level = 8,
       
@@ -138,7 +139,8 @@ gapingSpiderBroodling = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 5,
 
-      skills = { " Poison attack (mild)", "", "" }
+      --skills = { " Poison attack (mild)", "", "" }
+      skills = { "gapingSpiderAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

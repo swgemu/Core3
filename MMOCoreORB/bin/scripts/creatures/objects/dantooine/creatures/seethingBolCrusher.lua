@@ -46,10 +46,11 @@ seethingBolCrusher = Creature:new {
       faction = "Bol",
       gender = "",
 
-      name = "a Seething Bol Crusher",
+	  speciesName = "seething_bol_crusher",
+	  stfName = "mob/creature_names",
       objectCRC = 3820992759, 
       socialGroup = "Bol",
-      named = FALSE, 
+      
 
       level = 44,
       

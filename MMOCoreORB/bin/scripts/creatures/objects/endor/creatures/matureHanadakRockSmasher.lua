@@ -46,10 +46,11 @@ matureHanadakRockSmasher = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      stfName = "a Mature Hanadak Rock Smasher",
+	  speciesName = "mature_hanadak_rock_smasher",
+	  stfName = "mob/creature_names",
       objectCRC = 3722994435, 
       socialGroup = "Hanadak",
-      named = FALSE, 
+      
 
       level = 35,
       

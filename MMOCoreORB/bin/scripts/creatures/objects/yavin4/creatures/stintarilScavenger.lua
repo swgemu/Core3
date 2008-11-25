@@ -46,10 +46,11 @@ stintarilScavenger = Creature:new {
       faction = "Stinaril",
       gender = "",
 
-      name = "a Stintaril Scavenger",
+	  speciesName = "stintaril_scavenger",
+	  stfName = "mob/creature_names",
       objectCRC = 3055227574, 
       socialGroup = "Stinaril",
-      named = FALSE, 
+      
 
       level = 11,
       
@@ -138,7 +139,8 @@ stintarilScavenger = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 5,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "stintarilAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ durniVehementWarrior = Creature:new {
       faction = "Durni",
       gender = "",
 
-      name = "a Durni Vehement Warrior",
+	  speciesName = "durni_vehement_warrior",
+	  stfName = "mob/creature_names",
       objectCRC = 138923017, 
       socialGroup = "Durni",
-      named = FALSE, 
+      
 
       level = 9,
       

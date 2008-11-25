@@ -41,6 +41,7 @@
 --which carries forward this exception.
 
 RunCreatureFile("objects/naboo/citys/deejaPeak.lua")
+RunCreatureFile("objects/naboo/citys/emperorRetreat.lua")
 RunCreatureFile("objects/naboo/citys/kaadara.lua")
 RunCreatureFile("objects/naboo/citys/keren.lua")
 RunCreatureFile("objects/naboo/citys/lakeRetreat.lua")

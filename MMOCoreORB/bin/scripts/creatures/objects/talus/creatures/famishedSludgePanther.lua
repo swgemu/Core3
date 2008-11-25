@@ -46,7 +46,8 @@ famishedSludgePanther = Creature:new {
       faction = "Sludge Panther",
       gender = "",
 
-      name = "a Famished Sludge Panther",
+      speciesName = "famished_sludge_panther",
+      stfName = "mob/creature_names",
       objectCRC = 2403761131, 
       socialGroup = "Sludge Panther",
       named = FALSE, 
@@ -138,7 +139,8 @@ famishedSludgePanther = Creature:new {
       meatType = "meat_carnivore_talus",
       meatMax = 40,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "sludgePantherAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

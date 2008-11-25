@@ -46,10 +46,11 @@ domesticBolMount = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Domestic Bol Mount",
+	  speciesName = "domestic_bol_mount",
+	  stfName = "mob/creature_names",
       objectCRC = 1195766949, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 30,
       

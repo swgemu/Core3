@@ -46,10 +46,11 @@ desertRazorback = Creature:new {
       faction = "Zucca Boar",
       gender = "",
 
-      name = "a Desert Razorback",
+	  speciesName = "desert_razorback",
+	  stfName = "mob/creature_names",
       objectCRC = 277596046, 
       socialGroup = "Zucca Boar",
-      named = FALSE, 
+      
 
       level = 24,
       

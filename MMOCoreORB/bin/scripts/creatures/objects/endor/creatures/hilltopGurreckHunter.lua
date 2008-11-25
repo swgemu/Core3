@@ -46,10 +46,11 @@ hilltopGurreckHunter = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      stfName = "a Hilltop Gurreck Hunter",
+	  speciesName = "hilltop_gurreck_hunter",
+	  stfName = "mob/creature_names",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
-      named = FALSE, 
+      
 
       level = 41,
       

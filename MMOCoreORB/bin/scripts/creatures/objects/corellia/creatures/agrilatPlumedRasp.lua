@@ -46,10 +46,11 @@ agrilatPlumedRasp = Creature:new {
       faction = "Rasp",
       gender = "",
 
-      name = "a Agrilat Plumed Rasp",
+	  speciesName = "agrilat_plumed_rasp",
+	  stfName = "mob/creature_names",	  
       objectCRC = 1235301079, 
       socialGroup = "Rasp",
-      named = FALSE, 
+      
 
       level = 8,
       

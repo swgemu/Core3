@@ -46,10 +46,11 @@ giantDuneKimogila = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      stfName = "a Giant Dune Kimogila",
+	  speciesName = "giant_dune_kimogila",
+	  stfName = "mob/creature_names",
       objectCRC = 1341282550, 
       socialGroup = "Kimogila",
-      named = FALSE, 
+      
 
       level = 153,
       

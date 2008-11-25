@@ -46,10 +46,11 @@ veermokHunter = Creature:new {
       faction = "Veermok",
       gender = "",
 
-      name = "a Veermok Hunter",
+	  speciesName = "veermok_hunter",
+	  stfName = "mob/creature_names",
       objectCRC = 798042116, 
       socialGroup = "Veermok",
-      named = FALSE, 
+      
 
       level = 17,
       

@@ -46,10 +46,11 @@ crazedDurni = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Crazed Durni",
+	  speciesName = "crazed_durni",
+	  stfName = "mob/creature_names",
       objectCRC = 138923017, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 10,
       

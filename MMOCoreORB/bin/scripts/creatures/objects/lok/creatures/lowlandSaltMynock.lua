@@ -46,10 +46,11 @@ lowlandSaltMynock = Creature:new {
       faction = "Mynock",
       gender = "",
 
-      stfName = "a Lowland Salt Mynock",
+	  speciesName = "lowland_salt_mynock",
+	  stfName = "mob/creature_names",
       objectCRC = 2246027732, 
       socialGroup = "Mynock",
-      named = FALSE, 
+      
 
       level = 26,
       

@@ -46,10 +46,11 @@ woolamanderHarvester = Creature:new {
       faction = "Woolamander",
       gender = "",
 
-      name = "a Woolamander Harvester",
+	  speciesName = "woolamander_harvester",
+	  stfName = "mob/creature_names",
       objectCRC = 23943354, 
       socialGroup = "Woolamander",
-      named = FALSE, 
+      
 
       level = 38,
       
@@ -138,7 +139,8 @@ woolamanderHarvester = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 35,
 
-      skills = { " Dizzy attack", " Area attack (knockdown)", "" }
+      --skills = { " Dizzy attack", " Area attack (knockdown)", "" }
+      skills = { "woolamanderAttack1", "woolamanderAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ bordokHerdMaster = Creature:new {
       faction = "Bordok",
       gender = "",
 
-      stfName = "a Bordok Herd Master",
+	  speciesName = "bordok_herd_master",
+	  stfName = "mob/creature_names",
       objectCRC = 622383012, 
       socialGroup = "Bordok",
-      named = FALSE, 
+      
 
       level = 40,
       

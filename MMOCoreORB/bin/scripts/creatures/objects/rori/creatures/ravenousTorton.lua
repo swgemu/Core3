@@ -46,10 +46,11 @@ ravenousTorton = Creature:new {
       faction = "Torton",
       gender = "",
 
-      name = "a Ravenous Torton",
+	  speciesName = "ravenous_torton",
+	  stfName = "mob/creature_names",
       objectCRC = 2343686181, 
       socialGroup = "Torton",
-      named = FALSE, 
+      
 
       level = 34,
       

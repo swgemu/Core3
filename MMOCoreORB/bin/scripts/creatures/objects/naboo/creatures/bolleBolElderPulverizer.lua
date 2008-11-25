@@ -46,10 +46,11 @@ bolleBolElderPulverizer = Creature:new {
       faction = "Bolle Bol",
       gender = "",
 
-      name = "a Bolle Bol Elder Pulverizer",
+	  speciesName = "bolle_bol_elder_pulverizer",
+	  stfName = "mob/creature_names",
       objectCRC = 2905349573, 
       socialGroup = "Bolle Bol",
-      named = FALSE, 
+      
 
       level = 30,
       

@@ -46,7 +46,8 @@ robaMale = Creature:new {
       faction = "Roba",
       gender = "",
 
-      name = "a Roba Male",
+      speciesName = "roba_male",
+      stfName = "mob/creature_names",
       objectCRC = 1008127960, 
       socialGroup = "Roba",
       named = FALSE, 
@@ -138,7 +139,7 @@ robaMale = Creature:new {
       meatType = "meat_carnivore_talus",
       meatMax = 11,
 
-      skills = { "robaAttack1" },
+      skills = { "robaAttack2" },
 	  -- skills = { " Dizzy attack", "", "" },
        respawnTimer = 60,
 

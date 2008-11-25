@@ -46,10 +46,11 @@ rillTempest = Creature:new {
       faction = "Rill",
       gender = "",
 
-      name = "a Rill Tempest",
+	  speciesName = "rill_tempest",
+	  stfName = "mob/creature_names",
       objectCRC = 813958609, 
       socialGroup = "Rill",
-      named = FALSE, 
+      
 
       level = 9,
       

@@ -46,10 +46,11 @@ brackasetMale = Creature:new {
       faction = "Brackaset",
       gender = "",
 
-      name = "a Brackaset Male",
+	  speciesName = "brackaset_male",
+	  stfName = "mob/creature_names",
       objectCRC = 437036395, 
       socialGroup = "Brackaset",
-      named = FALSE, 
+      
 
       level = 30,
       
@@ -138,7 +139,8 @@ brackasetMale = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 100,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "brackasetAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

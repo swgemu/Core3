@@ -46,7 +46,8 @@ minorSludgePanther = Creature:new {
       faction = "Sludge Panther",
       gender = "",
 
-      name = "a Minor Sludge Panther",
+      speciesName = "minor_sludge_panther",
+      stfName = "mob/creature_names",
       objectCRC = 2183424297, 
       socialGroup = "Sludge Panther",
       named = FALSE, 
@@ -138,7 +139,8 @@ minorSludgePanther = Creature:new {
       meatType = "meat_carnivore_talus",
       meatMax = 20,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "sludgePantherAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ frightenedYoungFlewt = Creature:new {
       faction = "Flewt",
       gender = "",
 
-      name = "a Frightened Young Flewt",
+	  speciesName = "frightened_young_flewt",
+	  stfName = "mob/creature_names",
       objectCRC = 1114917911, 
       socialGroup = "Flewt",
-      named = FALSE, 
+      
 
       level = 6,
       

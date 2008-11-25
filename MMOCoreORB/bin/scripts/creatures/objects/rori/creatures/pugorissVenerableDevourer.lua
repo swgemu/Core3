@@ -46,10 +46,11 @@ pugorissVenerableDevourer = Creature:new {
       faction = "Pugoriss",
       gender = "",
 
-      name = "a Pugoriss Venerable Devourer",
+	  speciesName = "pugoriss_venerable_devourer",
+	  stfName = "mob/creature_names",
       objectCRC = 751022420, 
       socialGroup = "Pugoriss",
-      named = FALSE, 
+      
 
       level = 20,
       

@@ -46,10 +46,11 @@ kusakHunter = Creature:new {
       faction = "Kusak",
       gender = "",
 
-      stfName = "a Kusak Hunter",
+	  speciesName = "kusak_hunter",
+	  stfName = "mob/creature_names",
       objectCRC = 1518117227, 
       socialGroup = "Kusak",
-      named = FALSE, 
+      
 
       level = 73,
       

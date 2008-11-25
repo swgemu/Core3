@@ -46,10 +46,11 @@ elderHanadakMatriarch = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      stfName = "a Elder Hanadak Matriarch",
+	  speciesName = "elder_hanadak_matriarch",
+	  stfName = "mob/creature_names",
       objectCRC = 426628456, 
       socialGroup = "Hanadak",
-      named = FALSE, 
+      
 
       level = 35,
       

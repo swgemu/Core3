@@ -46,7 +46,8 @@ woodlandKima = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Woodland Kima",
+      speciesName = "woodland_kima",
+      stfName = "mob/creature_names",
       objectCRC = 558452126, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +139,8 @@ woodlandKima = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 7,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "kimaAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

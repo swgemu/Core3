@@ -46,7 +46,8 @@ clippedFynock = Creature:new {
       faction = "Fynock",
       gender = "",
 
-      name = "a Clipped Fynock",
+      speciesName = "clipped_fynock",
+      stfName = "mob/creature_names",
       objectCRC = 768940720, 
       socialGroup = "Fynock",
       named = FALSE, 
@@ -138,7 +139,8 @@ clippedFynock = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 20,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "fynockAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

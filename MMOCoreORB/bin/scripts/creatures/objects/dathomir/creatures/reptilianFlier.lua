@@ -46,10 +46,11 @@ reptilianFlier = Creature:new {
       faction = "Reptilian Flier",
       gender = "",
 
-      stfName = "a Reptilian Flier",
+	  speciesName = "reptilian_flier",
+	  stfName = "mob/creature_names",
       objectCRC = 2270001055, 
       socialGroup = "Reptilian Flier",
-      named = FALSE, 
+      
 
       level = 16,
       
@@ -139,7 +140,7 @@ reptilianFlier = Creature:new {
       meatMax = 125,
 
       skills = { "reptilianFlierAttack1" },
-       respawnTimer = 60,
+      respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

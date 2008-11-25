@@ -46,7 +46,8 @@ gufDrolgFemale = Creature:new {
       faction = "Guf Drolg",
       gender = "",
 
-      name = "a Guf Drolg Female",
+      speciesName = "guf_drolg_female",
+      stfName = "mob/creature_names",
       objectCRC = 1297255033, 
       socialGroup = "Guf Drolg",
       named = FALSE, 
@@ -138,7 +139,8 @@ gufDrolgFemale = Creature:new {
       meatType = "meat_reptilian_talus",
       meatMax = 325,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "gufDrolgAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

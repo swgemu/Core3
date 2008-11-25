@@ -46,10 +46,11 @@ kamurithDefiler = Creature:new {
       faction = "Kamurhh",
       gender = "",
 
-      name = "a Kamurith Defiler",
+	  speciesName = "kamurith_defiler",
+	  stfName = "mob/creature_names",
       objectCRC = 1248104419, 
       socialGroup = "Kamurhh",
-      named = FALSE, 
+      
 
       level = 50,
       
@@ -138,7 +139,8 @@ kamurithDefiler = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 90,
 
-      skills = { " Disease attack (strong)", " Dizzy attack", "" }
+      --skills = { " Disease attack (strong)", " Dizzy attack", "" }
+      skills = { "kamurithAttack1", "kamurithAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -45,8 +45,8 @@ crazedRoba = Creature:new {
       creatureType = "ANIMAL",
       faction = "self",
       gender = "",
-
-      name = "a Crazed Roba",
+      speciesName = "crazed_roba",
+      stfName = "mob/creature_names",
       objectCRC = 1008127960, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +138,8 @@ crazedRoba = Creature:new {
       meatType = "meat_carnivore_talus",
       meatMax = 12,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "robaAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ bolmaPackMaster = Creature:new {
       faction = "Bolma",
       gender = "",
 
-      name = "a Bolma Pack Master",
+	  speciesName = "bolma_pack_master",
+	  stfName = "mob/creature_names",
       objectCRC = 4078228623, 
       socialGroup = "Bolma",
-      named = FALSE, 
+      
 
       level = 22,
       
@@ -138,7 +139,8 @@ bolmaPackMaster = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 35,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { " Blind attack", "", "" }
+      skills = { "bolmaAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

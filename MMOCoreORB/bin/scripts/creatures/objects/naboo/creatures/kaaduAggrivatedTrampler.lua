@@ -46,10 +46,11 @@ kaaduAggrivatedTrampler = Creature:new {
       faction = "Kaadu",
       gender = "",
 
-      name = "a Kaadu Aggrivated Trampler",
+	  speciesName = "kaadu_aggrivated_trampler",
+	  stfName = "mob/creature_names",
       objectCRC = 3798151898, 
       socialGroup = "Kaadu",
-      named = FALSE, 
+      
 
       level = 17,
       

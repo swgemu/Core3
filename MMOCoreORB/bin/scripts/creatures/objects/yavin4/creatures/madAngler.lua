@@ -46,10 +46,11 @@ madAngler = Creature:new {
       faction = "Angler",
       gender = "",
 
-      name = "a Mad Angler",
+	  speciesName = "mad_angler",
+	  stfName = "mob/creature_names",
       objectCRC = 3645434131, 
       socialGroup = "Angler",
-      named = FALSE, 
+      
 
       level = 95,
       
@@ -99,7 +100,7 @@ madAngler = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ madAngler = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 3,
 
-      skills = { " Poison attack (strong)", " Blind attack", " Ranged attack (spit)" }
+      --skills = { " Poison attack (strong)", " Blind attack", " Ranged attack (spit)" }
+      skills = { "anglerAttack1", "anglerAttack4", "anglerAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

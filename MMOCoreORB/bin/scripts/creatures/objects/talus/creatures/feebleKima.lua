@@ -46,7 +46,8 @@ feebleKima = Creature:new {
       faction = "Kima",
       gender = "",
 
-      name = "a Feeble Kima",
+      speciesName = "feeble_kima",
+      stfName = "mob/creature_names",
       objectCRC = 558452126, 
       socialGroup = "Kima",
       named = FALSE, 
@@ -138,7 +139,8 @@ feebleKima = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 5,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "kimaAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

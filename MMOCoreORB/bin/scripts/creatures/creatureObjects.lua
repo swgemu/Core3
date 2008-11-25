@@ -127,6 +127,12 @@ RunCreatureFile("objects/yavin4/citys.lua")
 end
 --------------------------------------------------------
 
+-- Corellian Corvette
+if (PLANET_ID == 31) then
+--RunCreatureFile("objects/space/npcs.lua")
+end
+--------------------------------------------------------
+
 -- Misc Multiplanet etc..
 RunCreatureFile("objects/npcs/imperialNpcs.lua") 
 RunCreatureFile("objects/npcs/rebelNpcs.lua") 

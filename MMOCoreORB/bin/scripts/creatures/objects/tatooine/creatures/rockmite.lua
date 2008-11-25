@@ -46,10 +46,11 @@ rockmite = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Rockmite",
+	  speciesName = "rockmite",
+	  stfName = "mob/creature_names",
       objectCRC = 1212835476, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 8,
       

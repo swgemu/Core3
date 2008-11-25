@@ -46,10 +46,11 @@ narglatchMatriarch = Creature:new {
       faction = "Narglatch",
       gender = "",
 
-      name = "a Narglatch Matriarch",
+	  speciesName = "narglatch_matriarch",
+	  stfName = "mob/creature_names",
       objectCRC = 3658600427, 
       socialGroup = "Narglatch",
-      named = FALSE, 
+      
 
       level = 27,
       

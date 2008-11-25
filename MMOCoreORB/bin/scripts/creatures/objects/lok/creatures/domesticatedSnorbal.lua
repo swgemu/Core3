@@ -46,10 +46,11 @@ domesticatedSnorbal = Creature:new {
       faction = "Snorbal",
       gender = "",
 
-      stfName = "a Domesticated Snorbal",
+	  speciesName = "domesticated_snorbal",
+	  stfName = "mob/creature_names",
       objectCRC = 581977565, 
       socialGroup = "Snorbal",
-      named = FALSE, 
+      
 
       level = 31,
       

@@ -46,10 +46,11 @@ mountainKrevol = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Mountain Krevol",
+	  speciesName = "mountain_krevol",
+	  stfName = "mob/creature_names",
       objectCRC = 1223392893, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 15,
       

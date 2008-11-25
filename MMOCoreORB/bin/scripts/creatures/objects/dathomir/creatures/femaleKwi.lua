@@ -46,10 +46,11 @@ femaleKwi = Creature:new {
       faction = "Kwi",
       gender = "",
 
-      name = "a Female Kwi",
+	  speciesName = "female_kwi",
+	  stfName = "mob/creature_names",
       objectCRC = 2111021739, 
       socialGroup = "Kwi",
-      named = FALSE, 
+      
 
       level = 11,
       
@@ -99,7 +100,7 @@ femaleKwi = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ femaleKwi = Creature:new {
       meatType = "meat_herbivore_dathomir",
       meatMax = 100,
 
-      skills = { " Intimidation attack", " Ranged attack (spit)", "" }
+      --skills = { " Intimidation attack", " Ranged attack (spit)", "" }
+      skills = { "kwiAttack1", "kwiAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

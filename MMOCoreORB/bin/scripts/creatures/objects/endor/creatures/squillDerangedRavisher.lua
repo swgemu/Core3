@@ -46,10 +46,11 @@ squillDerangedRavisher = Creature:new {
       faction = "Endor Squill",
       gender = "",
 
-      stfName = "a Squill Deranged Ravisher",
+	  speciesName = "squill_deranged_ravisher",
+	  stfName = "mob/creature_names",
       objectCRC = 1824637824, 
       socialGroup = "Endor Squill",
-      named = FALSE, 
+      
 
       level = 35,
       

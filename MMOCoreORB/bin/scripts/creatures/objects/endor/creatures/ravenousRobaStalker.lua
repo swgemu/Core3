@@ -46,10 +46,11 @@ ravenousRobaStalker = Creature:new {
       faction = "Roba",
       gender = "",
 
-      stfName = "a Ravenous Roba Stalker",
+	  speciesName = "ravenous_roba_stalker",
+	  stfName = "mob/creature_names",
       objectCRC = 1008127960, 
       socialGroup = "Roba",
-      named = FALSE, 
+      
 
       level = 40,
       

@@ -46,10 +46,11 @@ kliknikQueenHarvester = Creature:new {
       faction = "Kliknik",
       gender = "",
 
-      name = "a Kliknik Queen Harvester",
+	  speciesName = "kliknik_queen_harvester",
+	  stfName = "mob/creature_names",
       objectCRC = 965104200, 
       socialGroup = "Kliknik",
-      named = FALSE, 
+      
 
       level = 30,
       
@@ -99,7 +100,7 @@ kliknikQueenHarvester = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ kliknikQueenHarvester = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 15,
 
-      skills = { " Posture down attack", " Poison attack (mild)", " Ranged attack (spit)" }
+      --skills = { " Posture down attack", " Poison attack (mild)", " Ranged attack (spit)" }
+      skills = { "kliknikAttack6", "kliknikAttack4", "kliknikAttack10" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

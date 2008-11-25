@@ -46,10 +46,11 @@ merekCavernCreeper = Creature:new {
       faction = "Merek",
       gender = "",
 
-      stfName = "a Merek Cavern Creeper",
+	  speciesName = "merek_cavern_creeper",
+	  stfName = "mob/creature_names",
       objectCRC = 696113680, 
       socialGroup = "Merek",
-      named = FALSE, 
+      
 
       level = 40,
       

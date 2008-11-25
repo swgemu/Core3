@@ -46,10 +46,11 @@ shearMiteQueen = Creature:new {
       faction = "Shearmite",
       gender = "",
 
-      name = "a Shear Mite Queen",
+	  speciesName = "shear_mite_queen",
+	  stfName = "mob/creature_names",
       objectCRC = 3821753803, 
       socialGroup = "Shearmite",
-      named = FALSE, 
+      
 
       level = 39,
       
@@ -99,7 +100,7 @@ shearMiteQueen = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ shearMiteQueen = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 15,
 
-      skills = { " Ranged attack (spit)", " Poison attack (strong)", " Dizzy attack" }
+      --skills = { " Ranged attack (spit)", " Poison attack (strong)", " Dizzy attack" }
+      skills = { "shearMiteAttack2", "shearMiteAttack5", "shearMiteAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

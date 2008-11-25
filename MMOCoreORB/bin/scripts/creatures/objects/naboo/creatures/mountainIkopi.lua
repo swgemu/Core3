@@ -46,10 +46,11 @@ mountainIkopi = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Mountain Ikopi",
+	  speciesName = "mountain_ikopi",
+	  stfName = "mob/creature_names",
       objectCRC = 2370403426, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 17,
       

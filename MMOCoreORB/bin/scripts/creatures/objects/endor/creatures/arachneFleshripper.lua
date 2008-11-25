@@ -46,10 +46,11 @@ arachneFleshripper = Creature:new {
       faction = "Arachne",
       gender = "",
 
-      stfName = "a Arachne Fleshripper",
+	  speciesName = "arachne_fleshripper",
+	  stfName = "mob/creature_names",
       objectCRC = 1157055229, 
       socialGroup = "Arachne",
-      named = FALSE, 
+      
 
       level = 30,
       

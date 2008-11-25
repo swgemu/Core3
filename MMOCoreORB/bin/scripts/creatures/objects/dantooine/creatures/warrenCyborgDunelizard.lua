@@ -46,10 +46,11 @@ warrenCyborgDunelizard = Creature:new {
       faction = "Warren Cyborg",
       gender = "",
 
-      name = "a Warren Cyborg Dunelizard",
+	  speciesName = "warren_cyborg_dunelizard",
+	  stfName = "mob/creature_names",
       objectCRC = 1142940054, 
       socialGroup = "Warren Cyborg",
-      named = FALSE, 
+      
 
       level = 30,
       

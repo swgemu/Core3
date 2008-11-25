@@ -46,10 +46,11 @@ liceRiddenRemmerQueen = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      stfName = "a Lice Ridden Remmer Queen",
+	  speciesName = "lice_ridden_remmer_queen",
+	  stfName = "mob/creature_names",
       objectCRC = 1979857288, 
       socialGroup = "Remmer",
-      named = FALSE, 
+      
 
       level = 37,
       

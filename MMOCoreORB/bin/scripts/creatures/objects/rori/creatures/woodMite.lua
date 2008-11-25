@@ -46,10 +46,11 @@ woodMite = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Wood Mite",
+	  speciesName = "wood_mite",
+	  stfName = "mob/creature_names",
       objectCRC = 2933860928, 
       socialGroup = "Bark Mite",
-      named = FALSE, 
+      
 
       level = 12,
       

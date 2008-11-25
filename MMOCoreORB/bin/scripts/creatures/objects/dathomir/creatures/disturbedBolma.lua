@@ -46,10 +46,11 @@ disturbedBolma = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Disturbed Bolma",
+	  speciesName = "disturbed_bolma",
+	  stfName = "mob/creature_names",
       objectCRC = 4078228623, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 24,
       
@@ -138,7 +139,8 @@ disturbedBolma = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Knockdown attack", "" }
+      --skills = { " Posture down attack", " Knockdown attack", "" }
+      skills = { "bolmaAttack3", "bolmaAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

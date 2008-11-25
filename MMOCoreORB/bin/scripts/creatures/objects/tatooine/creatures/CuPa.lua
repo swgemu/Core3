@@ -46,10 +46,11 @@ CuPa = Creature:new {
       faction = "CuPa",
       gender = "",
 
-      name = "a Cu Pa",
+	  speciesName = "cu_pa",
+	  stfName = "mob/creature_names",
       objectCRC = 673552695, 
       socialGroup = "CuPa",
-      named = FALSE, 
+      
 
       level = 11,
       

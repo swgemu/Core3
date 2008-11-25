@@ -46,10 +46,11 @@ noxiousSquill = Creature:new {
       faction = "Endor Squill",
       gender = "",
 
-      stfName = "a Noxious Squill",
+	  speciesName = "noxious_squill",
+	  stfName = "mob/creature_names",
       objectCRC = 1824637824, 
       socialGroup = "Endor Squill",
-      named = FALSE, 
+      
 
       level = 19,
       

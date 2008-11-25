@@ -46,10 +46,11 @@ kliknikHatchling = Creature:new {
       faction = "Kliknik",
       gender = "",
 
-      name = "a Kliknik Hatchling",
+	  speciesName = "kliknik_hatchling",
+	  stfName = "mob/creature_names",
       objectCRC = 563836998, 
       socialGroup = "Kliknik",
-      named = FALSE, 
+      
 
       level = 22,
       
@@ -138,7 +139,7 @@ kliknikHatchling = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 1,
 
-      skills = { "", "", "" }
+      skills = { "kliknikAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

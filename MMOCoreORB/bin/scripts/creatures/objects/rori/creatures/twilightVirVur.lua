@@ -46,10 +46,11 @@ twilightVirVur = Creature:new {
       faction = "VirVur",
       gender = "",
 
-      name = "a Twilight Vir Vur",
+	  speciesName = "twilight_vir_vur",
+	  stfName = "mob/creature_names",
       objectCRC = 844441928, 
       socialGroup = "VirVur",
-      named = FALSE, 
+      
 
       level = 13,
       

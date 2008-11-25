@@ -46,10 +46,11 @@ radiantLanternBird = Creature:new {
       faction = "Lantern",
       gender = "",
 
-      stfName = "a Radiant Lantern Bird",
+	  speciesName = "radiant_lantern_bird",
+	  stfName = "mob/creature_names",
       objectCRC = 1183906554, 
       socialGroup = "Lantern",
-      named = FALSE, 
+      
 
       level = 40,
       

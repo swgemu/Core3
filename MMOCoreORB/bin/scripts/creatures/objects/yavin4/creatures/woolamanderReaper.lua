@@ -46,10 +46,11 @@ woolamanderReaper = Creature:new {
       faction = "Woolamander",
       gender = "",
 
-      name = "a Woolamander Reaper",
+	  speciesName = "woolamander_reaper",
+	  stfName = "mob/creature_names",
       objectCRC = 23943354, 
       socialGroup = "Woolamander",
-      named = FALSE, 
+      
 
       level = 47,
       
@@ -138,7 +139,8 @@ woolamanderReaper = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 35,
 
-      skills = { " Intimidation attack", " Area attack (disease)", "" }
+      --skills = { " Intimidation attack", " Area attack (disease)", "" }
+      skills = { "woolamanderAttack2", "woolamanderAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

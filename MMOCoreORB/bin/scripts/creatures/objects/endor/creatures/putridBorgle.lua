@@ -46,10 +46,11 @@ putridBorgle = Creature:new {
       faction = "Borgie",
       gender = "",
 
-      stfName = "a Putrid Borgle",
+	  speciesName = "putrid_borgle",
+	  stfName = "mob/creature_names",
       objectCRC = 715008896, 
       socialGroup = "Borgie",
-      named = FALSE, 
+      
 
       level = 19,
       

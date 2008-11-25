@@ -46,10 +46,11 @@ carrionSpatCorpsereaver = Creature:new {
       faction = "Carrion Spat",
       gender = "",
 
-      name = "a Carrion Spat Corpsereaver",
+	  speciesName = "carrion_spat_corpsereaver",
+	  stfName = "mob/creature_names",
       objectCRC = 3186677588, 
       socialGroup = "Carrion Spat",
-      named = FALSE, 
+      
 
       level = 13,
       

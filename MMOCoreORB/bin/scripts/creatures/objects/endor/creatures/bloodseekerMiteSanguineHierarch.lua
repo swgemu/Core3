@@ -46,10 +46,11 @@ bloodseekerMiteSanguineHierarch = Creature:new {
       faction = "Bloodseeker",
       gender = "",
 
-      stfName = "a Bloodseeker Mite Sanguine Hierarch",
+	  speciesName = "bloodseeker_mite_sanguine_hierarch",
+	  stfName = "mob/creature_names",
       objectCRC = 4102628433, 
       socialGroup = "Bloodseeker",
-      named = FALSE, 
+      
 
       level = 23,
       

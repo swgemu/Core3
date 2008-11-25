@@ -46,10 +46,11 @@ gurk = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      stfName = "a Gurk",
+	  speciesName = "gurk",
+	  stfName = "mob/creature_names",
       objectCRC = 3464397925, 
       socialGroup = "Gurk",
-      named = FALSE, 
+      
 
       level = 30,
       

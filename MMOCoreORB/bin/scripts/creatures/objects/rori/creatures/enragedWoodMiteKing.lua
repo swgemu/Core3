@@ -46,10 +46,11 @@ enragedWoodMiteKing = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Enraged Wood Mite King",
+	  speciesName = "enraged_wood_mite_king",
+	  stfName = "mob/creature_names",
       objectCRC = 3935706286, 
       socialGroup = "Bark Mite",
-      named = FALSE, 
+      
 
       level = 20,
       

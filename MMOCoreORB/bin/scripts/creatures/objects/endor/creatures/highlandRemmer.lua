@@ -46,10 +46,11 @@ highlandRemmer = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      stfName = "a Highland Remmer",
+	  speciesName = "highland_remmer",
+	  stfName = "mob/creature_names",
       objectCRC = 1979857288, 
       socialGroup = "Remmer",
-      named = FALSE, 
+      
 
       level = 26,
       

@@ -46,10 +46,11 @@ reclusiveRoba = Creature:new {
       faction = "self",
       gender = "",
 
-      stfName = "a Reclusive Roba",
+	  speciesName = "reclusive_roba",
+	  stfName = "mob/creature_names",
       objectCRC = 1008127960, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 30,
       

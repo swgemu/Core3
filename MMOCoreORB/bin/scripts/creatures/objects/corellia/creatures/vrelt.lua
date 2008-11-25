@@ -46,10 +46,11 @@ vrelt = Creature:new {
       faction = "Worrt",
       gender = "",
 
-      stfName = "a Vrelt",
+	  speciesName = "vrelt",
+	  stfName = "mob/creature_names",
       objectCRC = 2882436158, 
       socialGroup = "Worrt",
-      named = FALSE, 
+      
 
       level = 6,
       

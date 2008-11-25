@@ -46,10 +46,11 @@ shearMiteBroodling = Creature:new {
       faction = "Shearmite",
       gender = "",
 
-      name = "a Shear Mite Broodling",
+	  speciesName = "shear_mite_broodling",
+	  stfName = "mob/creature_names",
       objectCRC = 501606791, 
       socialGroup = "Shearmite",
-      named = FALSE, 
+      
 
       level = 8,
       
@@ -138,7 +139,8 @@ shearMiteBroodling = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 15,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "shearMiteAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

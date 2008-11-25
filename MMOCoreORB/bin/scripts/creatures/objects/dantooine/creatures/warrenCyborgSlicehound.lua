@@ -46,10 +46,11 @@ warrenCyborgSlicehound = Creature:new {
       faction = "Warren Cyborg",
       gender = "",
 
-      name = "a Warren Cyborg Slicehound",
+	  speciesName = "warren_cyborg_slicehound",
+	  stfName = "mob/creature_names",
       objectCRC = 3500363411, 
       socialGroup = "Warren Cyborg",
-      named = FALSE, 
+      
 
       level = 34,
       

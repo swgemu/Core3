@@ -46,10 +46,11 @@ brackasetFemale = Creature:new {
       faction = "Brackaset",
       gender = "",
 
-      name = "a Brackaset Female",
+	  speciesName = "brackaset_female",
+	  stfName = "mob/creature_names",
       objectCRC = 437036395, 
       socialGroup = "Brackaset",
-      named = FALSE, 
+      
 
       level = 29,
       
@@ -138,7 +139,8 @@ brackasetFemale = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 100,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "brackasetAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

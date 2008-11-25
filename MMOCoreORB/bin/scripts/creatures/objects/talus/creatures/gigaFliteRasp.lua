@@ -46,7 +46,8 @@ gigaFliteRasp = Creature:new {
       faction = "Rasp",
       gender = "",
 
-      name = "a Giga Flite Rasp",
+      speciesName = "giga_flite_rasp",
+      stfName = "mob/creature_names",
       objectCRC = 1138484659, 
       socialGroup = "Rasp",
       named = FALSE, 
@@ -138,7 +139,8 @@ gigaFliteRasp = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 20,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "fliteRaspAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

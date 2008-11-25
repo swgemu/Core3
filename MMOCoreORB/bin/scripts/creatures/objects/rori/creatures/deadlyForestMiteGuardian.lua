@@ -46,10 +46,11 @@ deadlyForestMiteGuardian = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Deadly Forest Mite Guardian",
+	  speciesName = "deadly_forest_mite_guardian",
+	  stfName = "mob/creature_names",
       objectCRC = 4253086890, 
       socialGroup = "Bark Mite",
-      named = FALSE, 
+      
 
       level = 16,
       

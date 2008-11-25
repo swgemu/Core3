@@ -46,10 +46,11 @@ tancMiteEviscerator = Creature:new {
       faction = "Tancmite",
       gender = "",
 
-      name = "a Tanc Mite Eviscerator",
+	  speciesName = "tanc_mite_eviscerator",
+	  stfName = "mob/creature_names",
       objectCRC = 3413073886, 
       socialGroup = "Tancmite",
-      named = FALSE, 
+      
 
       level = 13,
       
@@ -138,7 +139,8 @@ tancMiteEviscerator = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 4,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "tancMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

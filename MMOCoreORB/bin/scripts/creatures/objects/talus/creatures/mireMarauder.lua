@@ -46,7 +46,8 @@ mireMarauder = Creature:new {
       faction = "Sludge Panther",
       gender = "",
 
-      name = "a Mire Marauder",
+      speciesName = "mire_marauder",
+      stfName = "mob/creature_names",
       objectCRC = 197708576, 
       socialGroup = "Sludge Panther",
       named = FALSE, 
@@ -138,7 +139,8 @@ mireMarauder = Creature:new {
       meatType = "meat_carnivore_talus",
       meatMax = 150,
 
-      skills = { " Posture down attack", " Stun attack", "" }
+      --skills = { " Posture down attack", " Stun attack", "" }
+      skills = { "sludgePantherAttack2", "sludgePantherAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

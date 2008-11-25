@@ -46,10 +46,11 @@ gunganFalumpaset = Creature:new {
       faction = "Gungan",
       gender = "",
 
-      name = "a Gungan Falumpaset",
+	  speciesName = "gungan_falumpaset",
+	  stfName = "mob/creature_names",
       objectCRC = 891448142, 
       socialGroup = "Gungan",
-      named = FALSE, 
+      
 
       level = 26,
       

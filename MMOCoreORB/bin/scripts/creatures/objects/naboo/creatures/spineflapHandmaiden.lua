@@ -46,10 +46,11 @@ spineflapHandmaiden = Creature:new {
       faction = "Spineflap",
       gender = "",
 
-      name = "a Spineflap Handmaiden",
+	  speciesName = "spineflap_handmaiden",
+	  stfName = "mob/creature_names",
       objectCRC = 3797965860, 
       socialGroup = "Spineflap",
-      named = FALSE, 
+      
 
       level = 15,
       

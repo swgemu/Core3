@@ -46,10 +46,11 @@ giantCrystalSnake = Creature:new {
       faction = "Crystal Snake",
       gender = "",
 
-      name = "a Giant Crystal Snake",
+	  speciesName = "giant_crystal_snake",
+	  stfName = "mob/creature_names",
       objectCRC = 1918503337, 
       socialGroup = "Crystal Snake",
-      named = FALSE, 
+      
 
       level = 31,
       
@@ -99,7 +100,7 @@ giantCrystalSnake = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ giantCrystalSnake = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 7,
 
-      skills = { " Posture down attack", " Poison attack (strong)", " Ranged attack (spit)" }
+      --skills = { " Posture down attack", " Poison attack (strong)", " Ranged attack (spit)" }
+      skills = { "crystalSnakeAttack4", "crystalSnakeAttack1", "crystalSnakeAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

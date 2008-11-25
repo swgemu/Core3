@@ -46,10 +46,11 @@ virVur = Creature:new {
       faction = "VirVur",
       gender = "",
 
-      name = "a Vir Vur",
+	  speciesName = "vir_vur",
+	  stfName = "mob/creature_names",
       objectCRC = 844441928, 
       socialGroup = "VirVur",
-      named = FALSE, 
+      
 
       level = 10,
       

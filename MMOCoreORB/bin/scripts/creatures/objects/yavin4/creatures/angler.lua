@@ -46,10 +46,11 @@ angler = Creature:new {
       faction = "Angler",
       gender = "",
 
-      name = "a Angler",
+	  speciesName = "angler",
+	  stfName = "mob/creature_names",
       objectCRC = 3645434131, 
       socialGroup = "Angler",
-      named = FALSE, 
+      
 
       level = 22,
       
@@ -138,7 +139,7 @@ angler = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 4,
 
-      skills = { "anglerAttack1" },
+      skills = { "anglerAttack1", "anglerAttack2" },
 	  -- skills = { " Poison attack (strong)", " Intimidation attack", "" },
        respawnTimer = 60,
 

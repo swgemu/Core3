@@ -46,10 +46,11 @@ recluseGurkKing = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      stfName = "a Recluse Gurk King",
+	  speciesName = "recluse_gurk_king",
+	  stfName = "mob/creature_names",
       objectCRC = 657461156, 
       socialGroup = "Gurk",
-      named = FALSE, 
+      
 
       level = 45,
       

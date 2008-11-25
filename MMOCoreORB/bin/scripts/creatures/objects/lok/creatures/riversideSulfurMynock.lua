@@ -46,10 +46,11 @@ riversideSulfurMynock = Creature:new {
       faction = "Mynock",
       gender = "",
 
-      stfName = "a Riverside Sulfur Mynock",
+	  speciesName = "riverside_sulfur_mynock",
+	  stfName = "mob/creature_names",
       objectCRC = 1599197632, 
       socialGroup = "Mynock",
-      named = FALSE, 
+      
 
       level = 33,
       

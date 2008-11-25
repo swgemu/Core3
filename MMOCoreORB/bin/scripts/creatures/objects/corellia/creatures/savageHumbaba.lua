@@ -46,10 +46,11 @@ savageHumbaba = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Savage Humbaba",
+	  speciesName = "savage_humbaba",
+	  stfName = "mob/creature_names",
       objectCRC = 1217993661, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 24,
       

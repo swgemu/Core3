@@ -46,10 +46,11 @@ youngBazNitch = Creature:new {
       faction = "Baz Nitch",
       gender = "",
 
-      name = "a Young Baz Nitch",
+	  speciesName = "young_baz_nitch",
+	  stfName = "mob/creature_names",
       objectCRC = 2080130327, 
       socialGroup = "Baz Nitch",
-      named = FALSE, 
+      
 
       level = 18,
       
@@ -138,7 +139,7 @@ youngBazNitch = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 5,
 
-      skills = { "", "", "" }
+      skills = { "bazNitchAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

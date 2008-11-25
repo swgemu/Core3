@@ -46,10 +46,11 @@ merekDeathsHead = Creature:new {
       faction = "Merek",
       gender = "",
 
-      stfName = "a Merek Deaths Head",
+	  speciesName = "merek_deaths_head",
+	  stfName = "mob/creature_names",
       objectCRC = 21982066, 
       socialGroup = "Merek",
-      named = FALSE, 
+      
 
       level = 56,
       

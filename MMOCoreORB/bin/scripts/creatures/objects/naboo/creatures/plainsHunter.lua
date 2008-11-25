@@ -46,10 +46,11 @@ plainsHunter = Creature:new {
       faction = "Tusk Cat",
       gender = "",
 
-      name = "a Plains Hunter",
+	  speciesName = "plains_hunter",
+	  stfName = "mob/creature_names",
       objectCRC = 1884038525, 
       socialGroup = "Tusk Cat",
-      named = FALSE, 
+      
 
       level = 31,
       

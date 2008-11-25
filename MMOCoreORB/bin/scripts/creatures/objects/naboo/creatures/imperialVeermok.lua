@@ -46,10 +46,11 @@ imperialVeermok = Creature:new {
       faction = "Imperial",
       gender = "",
 
-      name = "a Imperial Veermok",
+	  speciesName = "imperial_veermok",
+	  stfName = "mob/creature_names",
       objectCRC = 798042116, 
       socialGroup = "Imperial",
-      named = FALSE, 
+      
 
       level = 27,
       

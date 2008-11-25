@@ -46,10 +46,11 @@ snorbalMatriarch = Creature:new {
       faction = "Snorbal",
       gender = "",
 
-      stfName = "a Snorbal Matriarch",
+	  speciesName = "snorbal_matriarch",
+	  stfName = "mob/creature_names",
       objectCRC = 2831973457, 
       socialGroup = "Snorbal",
-      named = FALSE, 
+      
 
       level = 45,
       

@@ -46,7 +46,8 @@ fliteRasp = Creature:new {
       faction = "Rasp",
       gender = "",
 
-      name = "a Flite Rasp",
+      speciesName = "flite_rasp",
+      stfName = "mob/creature_names",
       objectCRC = 1138484659, 
       socialGroup = "Rasp",
       named = FALSE, 

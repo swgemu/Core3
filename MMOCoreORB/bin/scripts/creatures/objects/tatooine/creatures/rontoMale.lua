@@ -46,10 +46,11 @@ rontoMale = Creature:new {
       faction = "Ronto",
       gender = "",
 
-      name = "a Ronto Male",
+	  speciesName = "ronto_male",
+	  stfName = "mob/creature_names",
       objectCRC = 4073846880, 
       socialGroup = "Ronto",
-      named = FALSE, 
+      
 
       level = 23,
       

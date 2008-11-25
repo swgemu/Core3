@@ -46,10 +46,11 @@ feralMutantGackleStalker = Creature:new {
       faction = "Gacklebat",
       gender = "",
 
-      name = "a Feral Mutant Gackle Stalker",
+	  speciesName = "feral_mutant_gackle_stalker",
+	  stfName = "mob/creature_names",
       objectCRC = 2791266544, 
       socialGroup = "Gacklebat",
-      named = FALSE, 
+      
 
       level = 15,
       
@@ -138,7 +139,8 @@ feralMutantGackleStalker = Creature:new {
       meatType = "meat_avian_yavin4",
       meatMax = 9,
 
-      skills = { " Stun attack", " Disease attack (mild)", "" }
+      --skills = { " Stun attack", " Disease attack (mild)", "" }
+      skills = { "gackleBatAttack3", "gackleBatAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

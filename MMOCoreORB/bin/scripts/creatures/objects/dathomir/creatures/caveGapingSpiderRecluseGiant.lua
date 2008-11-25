@@ -46,10 +46,11 @@ caveGapingSpiderRecluseGiant = Creature:new {
       faction = "Nightsister",
       gender = "",
 
-      name = "a Cave Gaping Spider Recluse Giant",
+	  speciesName = "cave_gaping_spider_recluse_giant",
+	  stfName = "mob/creature_names",
       objectCRC = 9986579, 
       socialGroup = "Nightsister",
-      named = FALSE, 
+      
 
       level = 116,
       
@@ -138,7 +139,8 @@ caveGapingSpiderRecluseGiant = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 80,
 
-      skills = { " Area attack (combo)", " Poison attack (strong)", "" }
+      --skills = { " Area attack (combo)", " Poison attack (strong)", "" }
+      skills = { "gapingSpiderAttack8", "gapingSpiderAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ chokuPackmaster = Creature:new {
       faction = "Choku",
       gender = "",
 
-      name = "a Choku Packmaster",
+	  speciesName = "choku_packmaster",
+	  stfName = "mob/creature_names",
       objectCRC = 2946461572, 
       socialGroup = "Choku",
-      named = FALSE, 
+      
 
       level = 21,
       
@@ -138,7 +139,8 @@ chokuPackmaster = Creature:new {
       meatType = "meat_avian_yavin4",
       meatMax = 10,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "chokuAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

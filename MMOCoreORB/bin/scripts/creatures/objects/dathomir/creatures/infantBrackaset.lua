@@ -46,10 +46,11 @@ infantBrackaset = Creature:new {
       faction = "Brackaset",
       gender = "",
 
-      name = "a Infant Brackaset",
+	  speciesName = "infant_brackaset",
+	  stfName = "mob/creature_names",
       objectCRC = 3489809286, 
       socialGroup = "Brackaset",
-      named = FALSE, 
+      
 
       level = 6,
       
@@ -138,7 +139,7 @@ infantBrackaset = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 75,
 
-      skills = { "", "", "" }
+      skills = { "brackasetAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

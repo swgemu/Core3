@@ -46,10 +46,11 @@ direCat = Creature:new {
       faction = "Dire Cat",
       gender = "",
 
-      stfName = "a Dire Cat",
+	  speciesName = "dire_cat",
+	  stfName = "mob/creature_names",
       objectCRC = 1616759912, 
       socialGroup = "Dire Cat",
-      named = FALSE, 
+      
 
       level = 14,
       

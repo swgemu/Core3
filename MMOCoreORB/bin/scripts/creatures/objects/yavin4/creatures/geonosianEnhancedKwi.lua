@@ -46,10 +46,11 @@ geonosianEnhancedKwi = Creature:new {
       faction = "Geon. Monster",
       gender = "",
 
-      name = "a Geonosian Enhanced Kwi",
+	  speciesName = "geonosian_enhanced_kwi",
+	  stfName = "mob/creature_names",
       objectCRC = 2111021739, 
       socialGroup = "Geon. Monster",
-      named = FALSE, 
+      
 
       level = 106,
       
@@ -138,7 +139,8 @@ geonosianEnhancedKwi = Creature:new {
       meatType = "meat_herbivore_yavin4",
       meatMax = 100,
 
-      skills = { " Stun attack", " Intimidation attack", "" }
+      --skills = { " Stun attack", " Intimidation attack", "" }
+      skills = { "kwiAttack1", "kwiAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ gubburBloated = Creature:new {
       faction = "Gubbur",
       gender = "",
 
-      name = "a Gubbur Bloated",
+	  speciesName = "gubbur_bloated",
+	  stfName = "mob/creature_names",
       objectCRC = 406952354, 
       socialGroup = "Gubbur",
-      named = FALSE, 
+      
 
       level = 6,
       

@@ -46,10 +46,11 @@ gulginaw = Creature:new {
       faction = "Gulginaw",
       gender = "",
 
-      stfName = "a Gulginaw",
+	  speciesName = "gulginaw",
+	  stfName = "mob/creature_names",
       objectCRC = 3577243781, 
       socialGroup = "Gulginaw",
-      named = FALSE, 
+      
 
       level = 13,
       

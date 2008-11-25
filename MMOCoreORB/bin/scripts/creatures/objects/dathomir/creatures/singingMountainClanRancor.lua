@@ -46,10 +46,11 @@ singingMountainClanRancor = Creature:new {
       faction = "Singing Mountain",
       gender = "",
 
-      name = "a Singing Mountain Clan Rancor",
+	  speciesName = "singing_mountain_clan_rancor",
+	  stfName = "mob/creature_names",
       objectCRC = 3516440142, 
       socialGroup = "Singing Mountain",
-      named = FALSE, 
+      
 
       level = 55,
       
@@ -138,7 +139,8 @@ singingMountainClanRancor = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 620,
 
-      skills = { " Intimidation attack", " Intimidation attack", "" }
+      --skills = { " Intimidation attack", " Intimidation attack", "" }
+      skills = { "rancorAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

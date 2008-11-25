@@ -46,10 +46,11 @@ bocattDiseased = Creature:new {
       faction = "Bocatt",
       gender = "",
 
-      name = "a Bocatt Diseased",
+	  speciesName = "bocatt_diseased",
+	  stfName = "mob/creature_names",
       objectCRC = 3725325606, 
       socialGroup = "Bocatt",
-      named = FALSE, 
+      
 
       level = 8,
       

@@ -60,7 +60,7 @@ end
 --Dantooine
 if (PLANET_ID == 1) then
  RunCreatureFile("spawns/dantooine/staticSpawns.lua")
-RunCreatureFile("spawns/dantooine/jediSpawns.lua") 
+ RunCreatureFile("spawns/dantooine/jediSpawns.lua") 
  RunCreatureFile("spawns/dantooine/forceCrystalHuntersCave.lua")
  RunCreatureFile("spawns/dantooine/jantaCave.lua")
  RunCreatureFile("spawns/dantooine/kungaCave.lua")
@@ -81,7 +81,7 @@ if (PLANET_ID == 2) then
  RunCreatureFile("spawns/dathomir/imperialPrison.lua") 
  RunCreatureFile("spawns/dathomir/sarlaacPit.lua")  
  RunCreatureFile("spawns/dathomir/citys/scienceOutpost.lua") 
- RunCreatureFile("spawns/dathomir/citys/tradeOutpost.lua") 
+ RunCreatureFile("spawns/dathomir/citys/tradeOutpost.lua")  
 end
 
 
@@ -106,11 +106,12 @@ end
 if (PLANET_ID == 5) then
  RunCreatureFile("spawns/naboo/staticSpawns.lua")
  RunCreatureFile("spawns/naboo/citys/deejaPeak.lua") 
+ RunCreatureFile("spawns/naboo/citys/emperorRetreat.lua")
  RunCreatureFile("spawns/naboo/citys/kaadara.lua") 
  RunCreatureFile("spawns/naboo/citys/keren.lua") 
  RunCreatureFile("spawns/naboo/citys/lakeRetreat.lua") 
  RunCreatureFile("spawns/naboo/citys/moenia.lua") 
- RunCreatureFile("spawns/naboo/citys/theed.lua") 
+ RunCreatureFile("spawns/naboo/citys/theed.lua")  
 end
 
 --Rori
@@ -153,4 +154,9 @@ RunCreatureFile("spawns/yavin4/geoCave.lua")
 RunCreatureFile("spawns/yavin4/citys/imperialFortress.lua")
 RunCreatureFile("spawns/yavin4/citys/laborOutpost.lua")
 RunCreatureFile("spawns/yavin4/citys/miningOutpost.lua")
+end
+
+--Corellian Corvette
+if (PLANET_ID == 31) then
+--RunCreatureFile("spawns/space/corellianCorvette/imperialCorellianCorvette.lua")
 end

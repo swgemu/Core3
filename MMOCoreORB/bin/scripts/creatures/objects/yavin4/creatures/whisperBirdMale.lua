@@ -46,10 +46,11 @@ whisperBirdMale = Creature:new {
       faction = "Whisperbird",
       gender = "",
 
-      name = "a Whisper Bird Male",
+	  speciesName = "whisper_bird_male",
+	  stfName = "mob/creature_names",
       objectCRC = 3229632721, 
       socialGroup = "Whisperbird",
-      named = FALSE, 
+      
 
       level = 16,
       
@@ -138,7 +139,7 @@ whisperBirdMale = Creature:new {
       meatType = "meat_avian_yavin4",
       meatMax = 65,
 
-      skills = { "whisperBirdAttack1" },
+      skills = { "whisperBirdAttack2" },
 	  -- skills = { " Stun attack", "", "" },
       respawnTimer = 60,
 

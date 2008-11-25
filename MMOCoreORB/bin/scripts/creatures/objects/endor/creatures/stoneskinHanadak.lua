@@ -46,10 +46,11 @@ stoneskinHanadak = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      stfName = "a Stoneskin Hanadak",
+	  speciesName = "stoneskin_hanadak",
+	  stfName = "mob/creature_names",
       objectCRC = 3722994435, 
       socialGroup = "Hanadak",
-      named = FALSE, 
+      
 
       level = 139,
       

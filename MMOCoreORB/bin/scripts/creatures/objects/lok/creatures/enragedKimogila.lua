@@ -46,10 +46,11 @@ enragedKimogila = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      stfName = "a Enraged Kimogila",
+	  speciesName = "enraged_kimogila",
+	  stfName = "mob/creature_names",
       objectCRC = 533451918, 
       socialGroup = "Kimogila",
-      named = FALSE, 
+      
 
       level = 135,
       

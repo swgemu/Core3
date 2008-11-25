@@ -46,10 +46,11 @@ fleshEatingChuba = Creature:new {
       faction = "self",
       gender = "",
 
-      stfName = "a Flesh Eating Chuba",
+	  speciesName = "flesh_eating_chuba",
+	  stfName = "mob/creature_names",
       objectCRC = 3308574907, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 6,
       

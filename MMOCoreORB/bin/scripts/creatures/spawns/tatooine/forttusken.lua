@@ -102,4 +102,4 @@ spawnCreatureInCell(tuskenWarlord, 8, -13.9, 2.9, 9.2, 1189176)
 spawnCreatureInCell(tuskenWarlord, 8, -8.8, 1.7, -3.4, 1189175)
 spawnCreatureInCell(tuskenKing, 8, 0.8, 1.7, -6.3, 1189175)
 
-spawnCreatures(tuskenBantha, 8, -3965, 6380, 50, 250, 180)
+spawnCreatures(tuskenBantha, 8, -3965, 6380, 100, 20)

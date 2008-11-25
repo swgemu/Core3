@@ -46,10 +46,11 @@ mountainVesp = Creature:new {
       faction = "Vesp",
       gender = "",
 
-      stfName = "a Mountain Vesp",
+	  speciesName = "mountain_vesp",
+	  stfName = "mob/creature_names",
       objectCRC = 3698435149, 
       socialGroup = "Vesp",
-      named = FALSE, 
+      
 
       level = 24,
       

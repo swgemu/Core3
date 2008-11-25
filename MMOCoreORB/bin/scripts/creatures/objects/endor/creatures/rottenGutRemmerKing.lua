@@ -46,10 +46,11 @@ rottenGutRemmerKing = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      stfName = "a Rotten Gut Remmer King",
+	  speciesName = "rotten_gut_remmer_king",
+	  stfName = "mob/creature_names",
       objectCRC = 413618023, 
       socialGroup = "Remmer",
-      named = FALSE, 
+      
 
       level = 37,
       

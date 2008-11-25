@@ -46,10 +46,11 @@ kaaduMotley = Creature:new {
       faction = "Kaadu",
       gender = "",
 
-      name = "a Kaadu Motley",
+	  speciesName = "kaadu_motley",
+	  stfName = "mob/creature_names",
       objectCRC = 3798151898, 
       socialGroup = "Kaadu",
-      named = FALSE, 
+      
 
       level = 8,
       

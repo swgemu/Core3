@@ -46,10 +46,11 @@ nymDomesticatedGurk = Creature:new {
       faction = "Nym",
       gender = "",
 
-      stfName = "a Nym Domesticated Gurk",
+	  speciesName = "nym_domesticated_gurk",
+	  stfName = "mob/creature_names",
       objectCRC = 3464397925, 
       socialGroup = "Nym",
-      named = FALSE, 
+      
 
       level = 26,
       

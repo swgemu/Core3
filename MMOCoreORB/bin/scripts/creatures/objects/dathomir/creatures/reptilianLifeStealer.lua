@@ -46,10 +46,11 @@ reptilianLifeStealer = Creature:new {
       faction = "Reptilian Flier",
       gender = "",
 
-      name = "a Reptilian Life Stealer",
+	  speciesName = "reptilian_life_stealer",
+	  stfName = "mob/creature_names",
       objectCRC = 2270001055, 
       socialGroup = "Reptilian Flier",
-      named = FALSE, 
+      
 
       level = 125,
       
@@ -138,7 +139,8 @@ reptilianLifeStealer = Creature:new {
       meatType = "meat_avian_dathomir",
       meatMax = 135,
 
-      skills = { " Blind attack", " Poison attack (strong)", "" }
+      --skills = { " Blind attack", " Poison attack (strong)", "" }
+      skills = { "reptilianFlierAttack1", "reptilianFlierAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

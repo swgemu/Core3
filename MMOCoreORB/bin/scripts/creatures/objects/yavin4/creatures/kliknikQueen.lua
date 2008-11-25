@@ -46,10 +46,11 @@ kliknikQueen = Creature:new {
       faction = "Kliknik",
       gender = "",
 
-      name = "a Kliknik Queen",
+	  speciesName = "kliknik_queen",
+	  stfName = "mob/creature_names",
       objectCRC = 1426582452, 
       socialGroup = "Kliknik",
-      named = FALSE, 
+      
 
       level = 37,
       
@@ -99,7 +100,7 @@ kliknikQueen = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ kliknikQueen = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 7,
 
-      skills = { " Dizzy attack", " Poison attack (mild)", " Ranged attack (spit)" }
+      --skills = { " Dizzy attack", " Poison attack (mild)", " Ranged attack (spit)" }
+      skills = { "kliknikAttack9", "kliknikAttack6", "kliknikAttack10" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

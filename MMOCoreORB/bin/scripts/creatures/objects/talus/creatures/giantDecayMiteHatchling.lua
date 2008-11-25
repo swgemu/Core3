@@ -46,7 +46,8 @@ giantDecayMiteHatchling = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Giant Decay Mite Hatchling",
+      speciesName = "giant_decay_mite_hatchling",
+      stfName = "mob/creature_names",
       objectCRC = 2827279538, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -138,7 +139,8 @@ giantDecayMiteHatchling = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 5,
 
-      skills = { " Disease attack (mild)", "", "" }
+      --skills = { " Disease attack (mild)", "", "" }
+      skills = { "decayMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

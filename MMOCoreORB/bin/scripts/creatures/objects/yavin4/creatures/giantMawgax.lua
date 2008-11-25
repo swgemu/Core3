@@ -46,10 +46,11 @@ giantMawgax = Creature:new {
       faction = "Mawgax",
       gender = "",
 
-      name = "a Giant Mawgax",
+	  speciesName = "giant_mawgax",
+	  stfName = "mob/creature_names",
       objectCRC = 2940660181, 
       socialGroup = "Mawgax",
-      named = FALSE, 
+      
 
       level = 32,
       
@@ -138,7 +139,8 @@ giantMawgax = Creature:new {
       meatType = "meat_domesticated_yavin4",
       meatMax = 130,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "mawgaxAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

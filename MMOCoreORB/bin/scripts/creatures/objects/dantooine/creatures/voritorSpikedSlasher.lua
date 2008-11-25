@@ -46,10 +46,11 @@ voritorSpikedSlasher = Creature:new {
       faction = "Voritor Lizard",
       gender = "",
 
-      name = "a Voritor Spiked Slasher",
+	  speciesName = "voritor_spiked_slasher",
+	  stfName = "mob/creature_names",
       objectCRC = 4014205794, 
       socialGroup = "Voritor Lizard",
-      named = FALSE, 
+      
 
       level = 58,
       

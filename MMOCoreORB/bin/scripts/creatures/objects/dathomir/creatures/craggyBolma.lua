@@ -46,10 +46,11 @@ craggyBolma = Creature:new {
       faction = "Bolma",
       gender = "",
 
-      name = "a Craggy Bolma",
+	  speciesName = "craggy_bolma",
+	  stfName = "mob/creature_names",
       objectCRC = 4078228623, 
       socialGroup = "Bolma",
-      named = FALSE, 
+      
 
       level = 47,
       
@@ -138,7 +139,7 @@ craggyBolma = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 500,
 
-      skills = { "", "", "" }
+      skills = { "bolmaAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

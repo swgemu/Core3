@@ -46,10 +46,11 @@ caveGapingSpiderBroodling = Creature:new {
       faction = "Nightsister",
       gender = "",
 
-      name = "a Cave Gaping Spider Broodling",
+	  speciesName = "cave_gaping_spider_broodling",
+	  stfName = "mob/creature_names",
       objectCRC = 670298183, 
       socialGroup = "Nightsister",
-      named = FALSE, 
+      
 
       level = 8,
       
@@ -138,7 +139,7 @@ caveGapingSpiderBroodling = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 15,
 
-      skills = { "", "", "" }
+      skills = { "gapingSpiderAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

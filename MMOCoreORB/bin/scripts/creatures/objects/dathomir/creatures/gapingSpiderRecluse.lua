@@ -46,10 +46,11 @@ gapingSpiderRecluse = Creature:new {
       faction = "Gaping",
       gender = "",
 
-      stfName = "a Gaping Spider Recluse",
+	  speciesName = "gaping_spider_recluse",
+	  stfName = "mob/creature_names",
       objectCRC = 2216583678, 
       socialGroup = "Gaping",
-      named = FALSE, 
+      
 
       level = 44,
       
@@ -99,7 +100,7 @@ gapingSpiderRecluse = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -137,7 +138,7 @@ gapingSpiderRecluse = Creature:new {
 
       meatType = "meat_insect_dathomir",
       meatMax = 11,
-	  skills = { "gapingSpiderAttack2" },
+	  skills = { "gapingSpiderAttack1", "gapingSpiderAttack5", "gapingSpiderAttack9" },
       --skills = { " Poison attack (strong)", " Ranged attack (spit)", " Area attack (poison)" }  future  area poisons...
        respawnTimer = 60,
 

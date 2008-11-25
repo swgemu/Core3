@@ -46,10 +46,11 @@ acklay = Creature:new {
       faction = "Acklay",
       gender = "male",
 
-      stfName = "Acklay",
+	  speciesName = "geonosian_acklay_bunker_boss",
+	  stfName = "mob/creature_names",
       objectCRC = 258679778, 
       socialGroup = "Acklay",
-      named = FALSE, 
+      
 
       level = 157,
       

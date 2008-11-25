@@ -46,10 +46,11 @@ gapingSpiderQueen = Creature:new {
       faction = "Gaping",
       gender = "",
 
-      name = "a Gaping Spider Queen",
+	  speciesName = "gaping_spider_queen",
+	  stfName = "mob/creature_names",
       objectCRC = 1435207717, 
       socialGroup = "Gaping",
-      named = FALSE, 
+      
 
       level = 47,
       
@@ -138,7 +139,8 @@ gapingSpiderQueen = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 12,
 
-      skills = { " Knockdown attack", " Disease attack (poison)", " Ranged attack (spit)" }
+      --skills = { " Knockdown attack", " Disease attack (poison)", " Ranged attack (spit)" }
+      skills = { "gapingSpiderAttack4", "gapingSpiderAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

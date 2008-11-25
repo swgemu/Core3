@@ -46,10 +46,11 @@ brackaset = Creature:new {
       faction = "Brackaset",
       gender = "",
 
-      stfName = "a Brackaset",
+	  speciesName = "brackaset",
+	  stfName = "mob/creature_names",
       objectCRC = 437036395, 
       socialGroup = "Brackaset",
-      named = FALSE, 
+      
 
       level = 26,
       

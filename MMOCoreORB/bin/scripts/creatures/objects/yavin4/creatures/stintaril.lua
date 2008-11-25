@@ -46,10 +46,11 @@ stintaril = Creature:new {
       faction = "Stinaril",
       gender = "",
 
-      name = "a Stintaril",
+	  speciesName = "stintaril",
+	  stfName = "mob/creature_names",
       objectCRC = 31126414, 
       socialGroup = "Stinaril",
-      named = FALSE, 
+      
 
       level = 14,
       
@@ -138,7 +139,7 @@ stintaril = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 5,
 
-      skills = { "stintarilAttack1" },
+      skills = { "stintarilAttack3" },
 	  -- skills = { " Posture down attack", "", "" },
        respawnTimer = 60,
 

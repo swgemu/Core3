@@ -46,10 +46,11 @@ gorax = Creature:new {
       faction = "Gorax",
       gender = "male",
 
-      stfName = "Gorax",
+	  speciesName = "gorax",
+	  stfName = "mob/creature_names",
       objectCRC = 3371835636, 
       socialGroup = "Gorax",
-      named = FALSE, 
+      
 
       level = 300,
       

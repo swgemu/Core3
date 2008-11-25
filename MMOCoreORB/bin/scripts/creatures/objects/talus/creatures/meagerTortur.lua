@@ -46,7 +46,8 @@ meagerTortur = Creature:new {
       faction = "Tortur",
       gender = "",
 
-      name = "a Meager Tortur",
+      speciesName = "meager_tortur",
+      stfName = "mob/creature_names",
       objectCRC = 2394031156, 
       socialGroup = "Tortur",
       named = FALSE, 
@@ -138,7 +139,8 @@ meagerTortur = Creature:new {
       meatType = "meat_carnivore_talus",
       meatMax = 650,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "torturAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ domesticatedMott = Creature:new {
       faction = "Naboo",
       gender = "",
 
-      name = "a Domesticated Mott",
+	  speciesName = "domesticated_mott",
+	  stfName = "mob/creature_names",
       objectCRC = 3313283529, 
       socialGroup = "Naboo",
-      named = FALSE, 
+      
 
       level = 5,
       

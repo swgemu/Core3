@@ -46,10 +46,11 @@ derangedWrix = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Deranged Wrix",
+	  speciesName = "deranged_wrix",
+	  stfName = "mob/creature_names",
       objectCRC = 3059258087, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 18,
       

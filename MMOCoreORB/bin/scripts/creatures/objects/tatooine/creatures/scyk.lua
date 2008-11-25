@@ -46,10 +46,11 @@ scyk = Creature:new {
       faction = "Scyk",
       gender = "",
 
-      stfName = "a Scyk",
+	  speciesName = "scyk",
+	  stfName = "mob/creature_names",
       objectCRC = 3164121956, 
       socialGroup = "Scyk",
-      named = FALSE, 
+      
 
       level = 12,
       

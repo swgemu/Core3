@@ -46,10 +46,11 @@ diseasedBlurrg = Creature:new {
       faction = "self",
       gender = "",
 
-      stfName = "a Diseased Blurrg",
+	  speciesName = "diseased_blurrg",
+	  stfName = "mob/creature_names",
       objectCRC = 2309529743, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 37,
       

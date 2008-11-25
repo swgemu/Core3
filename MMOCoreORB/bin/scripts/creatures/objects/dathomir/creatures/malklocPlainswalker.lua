@@ -46,10 +46,11 @@ malklocPlainswalker = Creature:new {
       faction = "Malkloc",
       gender = "",
 
-      name = "a Malkloc Plainswalker",
+	  speciesName = "malkloc_plainswalker",
+	  stfName = "mob/creature_names",
       objectCRC = 197708576, 
       socialGroup = "Malkloc",
-      named = FALSE, 
+      
 
       level = 84,
       
@@ -138,7 +139,8 @@ malklocPlainswalker = Creature:new {
       meatType = "meat_herbivore_dathomir",
       meatMax = 2400,
 
-      skills = { " Dizzy attack", " Area attack (knockdown)", "" }
+      --skills = { " Dizzy attack", " Area attack (knockdown)", "" }
+      skills = { "malklocAttack2", "malklocAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

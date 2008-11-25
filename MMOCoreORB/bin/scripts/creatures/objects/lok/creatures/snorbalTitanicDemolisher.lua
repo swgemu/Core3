@@ -46,10 +46,11 @@ snorbalTitanicDemolisher = Creature:new {
       faction = "Snorbal",
       gender = "",
 
-      stfName = "a Snorbal Titanic Demolisher",
+	  speciesName = "snorbal_titanic_demolisher",
+	  stfName = "mob/creature_names",
       objectCRC = 581977565, 
       socialGroup = "Snorbal",
-      named = FALSE, 
+      
 
       level = 40,
       

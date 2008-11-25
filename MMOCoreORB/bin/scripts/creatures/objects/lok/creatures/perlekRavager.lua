@@ -46,10 +46,11 @@ perlekRavager = Creature:new {
       faction = "Perlek",
       gender = "",
 
-      stfName = "a Perlek Ravager",
+	  speciesName = "perlek_ravager",
+	  stfName = "mob/creature_names",
       objectCRC = 4249958797, 
       socialGroup = "Perlek",
-      named = FALSE, 
+      
 
       level = 18,
       

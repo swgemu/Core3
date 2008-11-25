@@ -46,10 +46,11 @@ dewback = Creature:new {
       faction = "Dewback",
       gender = "",
 
-      stfName = "a Dewback",
+	  speciesName = "dewback",
+	  stfName = "mob/creature_names",
       objectCRC = 3499529322, 
       socialGroup = "Dewback",
-      named = FALSE, 
+      
 
       level = 19,
       

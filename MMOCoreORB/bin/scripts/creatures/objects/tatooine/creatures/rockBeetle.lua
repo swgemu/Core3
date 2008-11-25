@@ -46,10 +46,11 @@ rockBeetle = Creature:new {
       faction = "Rock Beetle",
       gender = "",
 
-      name = "a Rock Beetle",
+	  speciesName = "rock_beetle",
+	  stfName = "mob/creature_names",
       objectCRC = 1381990465, 
       socialGroup = "Rock Beetle",
-      named = FALSE, 
+      
 
       level = 13,
       

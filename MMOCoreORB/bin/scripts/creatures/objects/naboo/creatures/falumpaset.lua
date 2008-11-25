@@ -46,10 +46,11 @@ falumpaset = Creature:new {
       faction = "Falumpaset",
       gender = "",
 
-      name = "a Falumpaset",
+	  speciesName = "falumpaset",
+	  stfName = "mob/creature_names",
       objectCRC = 891448142, 
       socialGroup = "Falumpaset",
-      named = FALSE, 
+      
 
       level = 19,
       

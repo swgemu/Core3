@@ -46,10 +46,11 @@ kwi = Creature:new {
       faction = "Kwi",
       gender = "",
 
-      stfName = "a Kwi",
+	  speciesName = "kwi",
+	  stfName = "mob/creature_names",
       objectCRC = 2111021739, 
       socialGroup = "Kwi",
-      named = FALSE, 
+      
 
       level = 10,
       
@@ -139,7 +140,7 @@ kwi = Creature:new {
       meatMax = 100,
 
       skills = { "kwiAttack1" },
-       respawnTimer = 60,
+      respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

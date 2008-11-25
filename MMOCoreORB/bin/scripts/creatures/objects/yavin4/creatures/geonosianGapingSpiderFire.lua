@@ -46,10 +46,11 @@ geonosianGapingSpiderFire = Creature:new {
       faction = "Geon. Monster",
       gender = "",
 
-      name = "a Geonosian Gaping Spider Fire",
+	  speciesName = "geonosian_gaping_spider_fire",
+	  stfName = "mob/creature_names",
       objectCRC = 874176443, 
       socialGroup = "Geon. Monster",
-      named = FALSE, 
+      
 
       level = 108,
       
@@ -99,7 +100,7 @@ geonosianGapingSpiderFire = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_heavy_flame.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ geonosianGapingSpiderFire = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 50,
 
-      skills = { " Poison attack (strong)", " Stun attack", " Ranged attack (flame)" }
+      --skills = { " Poison attack (strong)", " Stun attack", " Ranged attack (flame)" }
+      skills = { "gapingSpiderAttack1", "gapingSpiderAttack2", "gapingSpiderAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

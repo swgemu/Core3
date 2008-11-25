@@ -46,10 +46,11 @@ rogueFambaa = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Rogue Fambaa",
+	  speciesName = "rogue_fambaa",
+	  stfName = "mob/creature_names",
       objectCRC = 2375688304, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 37,
       

@@ -46,10 +46,11 @@ tatooineMynock = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Tatooine Mynock",
+	  speciesName = "tatooine_mynock",
+	  stfName = "mob/creature_names",
       objectCRC = 2246027732, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 3,
       

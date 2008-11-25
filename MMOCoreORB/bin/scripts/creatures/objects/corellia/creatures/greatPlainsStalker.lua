@@ -46,10 +46,11 @@ greatPlainsStalker = Creature:new {
       faction = "Sand Panther",
       gender = "",
 
-      name = "a Great Plains Stalker",
+	  speciesName = "great_plains_stalker",
+	  stfName = "mob/creature_names",
       objectCRC = 2922712105, 
       socialGroup = "Sand Panther",
-      named = FALSE, 
+      
 
       level = 51,
       

@@ -46,10 +46,11 @@ quenkerTerrible = Creature:new {
       faction = "Quenker",
       gender = "",
 
-      name = "a Quenker Terrible",
+	  speciesName = "quenker_terrible",
+	  stfName = "mob/creature_names",
       objectCRC = 644720935, 
       socialGroup = "Quenker",
-      named = FALSE, 
+      
 
       level = 30,
       

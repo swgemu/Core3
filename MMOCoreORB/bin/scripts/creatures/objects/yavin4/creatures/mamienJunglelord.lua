@@ -46,10 +46,11 @@ mamienJunglelord = Creature:new {
       faction = "Marnien",
       gender = "",
 
-      name = "a Mamien Junglelord",
+	  speciesName = "mamien_junglelord",
+	  stfName = "mob/creature_names",
       objectCRC = 1795257005, 
       socialGroup = "Marnien",
-      named = FALSE, 
+      
 
       level = 24,
       
@@ -138,7 +139,8 @@ mamienJunglelord = Creature:new {
       meatType = "meat_wild_yavin4",
       meatMax = 18,
 
-      skills = { " Knockdown attack", " Dizzy attack", "" }
+      --skills = { " Knockdown attack", " Dizzy attack", "" }
+      skills = { "mamienAttack2", "mamienAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

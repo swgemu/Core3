@@ -46,10 +46,11 @@ kinadBazNitch = Creature:new {
       faction = "Baz Nitch",
       gender = "",
 
-      name = "a Kinad Baz Nitch",
+	  speciesName = "kinad_baz_nitch",
+	  stfName = "mob/creature_names",
       objectCRC = 252682001, 
       socialGroup = "Baz Nitch",
-      named = FALSE, 
+      
 
       level = 46,
       
@@ -138,7 +139,8 @@ kinadBazNitch = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 15,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "bazNitchAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

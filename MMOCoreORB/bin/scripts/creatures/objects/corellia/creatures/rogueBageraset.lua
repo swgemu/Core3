@@ -46,10 +46,11 @@ rogueBageraset = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Rogue Bageraset",
+	  speciesName = "rogue_bageraset",
+	  stfName = "mob/creature_names",
       objectCRC = 2017464107, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 13,
       

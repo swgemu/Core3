@@ -46,10 +46,11 @@ cystCoveredRotGuard = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Cyst Covered Rot Guard",
+	  speciesName = "cyst_covered_rot_guard",
+	  stfName = "mob/creature_names",
       objectCRC = 4167786528, 
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 13,
       

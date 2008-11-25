@@ -46,10 +46,11 @@ mott = Creature:new {
       faction = "Mott",
       gender = "",
 
-      name = "a Mott",
+	  speciesName = "mott",
+	  stfName = "mob/creature_names",
       objectCRC = 3313283529, 
       socialGroup = "Mott",
-      named = FALSE, 
+      
 
       level = 8,
       

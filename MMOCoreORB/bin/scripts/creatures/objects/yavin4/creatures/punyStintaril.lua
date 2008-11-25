@@ -46,10 +46,11 @@ punyStintaril = Creature:new {
       faction = "Stinaril",
       gender = "",
 
-      name = "a Puny Stintaril",
+	  speciesName = "puny_stintaril",
+	  stfName = "mob/creature_names",
       objectCRC = 3511490991, 
       socialGroup = "Stinaril",
-      named = FALSE, 
+      
 
       level = 9,
       
@@ -138,7 +139,8 @@ punyStintaril = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 2,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "stintarilAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ canoidPackLeader = Creature:new {
       faction = "Canoid",
       gender = "",
 
-      name = "a Canoid Pack Leader",
+	  speciesName = "canoid_pack_leader",
+	  stfName = "mob/creature_names",
       objectCRC = 1139580531, 
       socialGroup = "Canoid",
-      named = FALSE, 
+      
 
       level = 18,
       

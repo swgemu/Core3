@@ -46,7 +46,8 @@ savageGufDrolg = Creature:new {
       faction = "Guf Drolg",
       gender = "",
 
-      name = "a Savage Guf Drolg",
+      speciesName = "savage_guf_drolg",
+      stfName = "mob/creature_names",
       objectCRC = 2412635704, 
       socialGroup = "Guf Drolg",
       named = FALSE, 
@@ -138,7 +139,8 @@ savageGufDrolg = Creature:new {
       meatType = "meat_reptilian_talus",
       meatMax = 550,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "gufDrolgAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

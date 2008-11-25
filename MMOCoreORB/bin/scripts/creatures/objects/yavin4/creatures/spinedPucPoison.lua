@@ -46,10 +46,11 @@ spinedPucPoison = Creature:new {
       faction = "Spined Puc",
       gender = "",
 
-      name = "a Spined Puc Poison",
+	  speciesName = "spined_puc_poison",
+	  stfName = "mob/creature_names",
       objectCRC = 307007655, 
       socialGroup = "Spined Puc",
-      named = FALSE, 
+      
 
       level = 19,
       
@@ -138,7 +139,8 @@ spinedPucPoison = Creature:new {
       meatType = "meat_reptilian_yavin4",
       meatMax = 7,
 
-      skills = { " Poison attack (strong)", " Stun attack", "" }
+      --skills = { " Poison attack (strong)", " Stun attack", "" }
+      skills = { "spinedPucAttack2", "spinedPucAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

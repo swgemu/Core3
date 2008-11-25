@@ -46,10 +46,11 @@ skreegMale = Creature:new {
       faction = "Skreeg",
       gender = "",
 
-      name = "a Skreeg Male",
+	  speciesName = "skreeg_male",
+	  stfName = "mob/creature_names",
       objectCRC = 2391906030, 
       socialGroup = "Skreeg",
-      named = FALSE, 
+      
 
       level = 22,
       
@@ -138,7 +139,7 @@ skreegMale = Creature:new {
       meatType = "meat_herbivore_yavin4",
       meatMax = 5,
 
-      skills = { "skreegAttack1" },
+      skills = { "skreegAttack2" },
 	  -- skills = { " Stun attack", "", "" },
        respawnTimer = 60,
 

@@ -46,10 +46,11 @@ rhoaKwiPackLeader = Creature:new {
       faction = "Rhoa Kwi",
       gender = "",
 
-      name = "a Rhoa Kwi Pack Leader",
+	  speciesName = "rhoa_kwi_pack_leader",
+	  stfName = "mob/creature_names",
       objectCRC = 2111021739, 
       socialGroup = "Rhoa Kwi",
-      named = FALSE, 
+      
 
       level = 50,
       
@@ -138,7 +139,8 @@ rhoaKwiPackLeader = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 120,
 
-      skills = { " Dizzy attack", " Posture down attack", "" }
+      --skills = { " Dizzy attack", " Posture down attack", "" }
+      skills = { "kwiAttack5", "kwiAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ verne = Creature:new {
       faction = "Verne",
       gender = "",
 
-      stfName = "a Verne",
+	  speciesName = "verne",
+	  stfName = "mob/creature_names",
       objectCRC = 1915375945, 
       socialGroup = "Verne",
-      named = FALSE, 
+      
 
       level = 17,
       
@@ -139,7 +140,7 @@ verne = Creature:new {
       meatMax = 125,
 
       skills = { "verneAttack1" },
-       respawnTimer = 60,
+      respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

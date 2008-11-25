@@ -46,10 +46,11 @@ frenziedChoku = Creature:new {
       faction = "Choku",
       gender = "",
 
-      name = "a Frenzied Choku",
+	  speciesName = "frenzied_choku",
+	  stfName = "mob/creature_names",
       objectCRC = 2946461572, 
       socialGroup = "Choku",
-      named = FALSE, 
+      
 
       level = 21,
       

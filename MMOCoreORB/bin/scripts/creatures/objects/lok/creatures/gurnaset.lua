@@ -46,10 +46,11 @@ gurnaset = Creature:new {
       faction = "Gurnasel",
       gender = "",
 
-      stfName = "a Gurnaset",
+	  speciesName = "gurnaset",
+	  stfName = "mob/creature_names",
       objectCRC = 526557680, 
       socialGroup = "Gurnasel",
-      named = FALSE, 
+      
 
       level = 15,
       

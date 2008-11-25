@@ -46,10 +46,11 @@ enragedBullRancor = Creature:new {
       faction = "Rancor",
       gender = "",
 
-      stfName = "a Enraged Bull Rancor",
+	  speciesName = "enraged_bull_rancor",
+	  stfName = "mob/creature_names",
       objectCRC = 837719973, 
       socialGroup = "Rancor",
-      named = FALSE, 
+      
 
       level = 89,
       

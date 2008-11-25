@@ -46,10 +46,11 @@ boundingJax = Creature:new {
       faction = "Jax",
       gender = "",
 
-      stfName = "a Bounding Jax",
+	  speciesName = "bounding_jax",
+	  stfName = "mob/creature_names",
       objectCRC = 2095266416, 
       socialGroup = "Jax",
-      named = FALSE, 
+      
 
       level = 16,
       

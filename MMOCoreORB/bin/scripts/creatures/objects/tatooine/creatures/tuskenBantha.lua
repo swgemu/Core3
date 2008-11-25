@@ -46,10 +46,11 @@ tuskenBantha = Creature:new {
       faction = "tusken",
       gender = "",
 
-      stfName = "Tusken Bantha",
+	  speciesName = "tusken_bantha",
+	  stfName = "mob/creature_names",
       objectCRC = 1901766605, 
       socialGroup = "tusken",
-      named = FALSE, 
+      
 
       level = 15,
       

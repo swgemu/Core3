@@ -3472,28 +3472,6 @@ staticTheedNpc169 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc170 = Creature:new {
-	objectName = "staticTheedNpc170",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = -5331.17,
-	positionY = 4364.5,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999996,
-	directionW = -0.00291691,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 staticTheedNpc171 = Creature:new {
 	objectName = "staticTheedNpc171",
 	creatureType = NPC,
@@ -3555,72 +3533,6 @@ staticTheedNpc173 = Creature:new {
 	directionZ = 0,
 	directionY = 0.481277,
 	directionW = 0.876568,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-staticTheedNpc174 = Creature:new {
-	objectName = "staticTheedNpc174",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = -5330.97,
-	positionY = 4399.56,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.99946,
-	directionW = 0.0328714,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-staticTheedNpc175 = Creature:new {
-	objectName = "staticTheedNpc175",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = -5343.21,
-	positionY = 4377.8,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999986,
-	directionW = 0.00516904,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-staticTheedNpc176 = Creature:new {
-	objectName = "staticTheedNpc176",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = -5343.21,
-	positionY = 4377.8,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999987,
-	directionW = 0.00517444,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0

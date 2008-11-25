@@ -46,10 +46,11 @@ mamienMatriarch = Creature:new {
       faction = "Marnien",
       gender = "",
 
-      name = "a Mamien Matriarch",
+	  speciesName = "mamien_matriarch",
+	  stfName = "mob/creature_names",
       objectCRC = 1795257005, 
       socialGroup = "Marnien",
-      named = FALSE, 
+      
 
       level = 20,
       
@@ -138,7 +139,8 @@ mamienMatriarch = Creature:new {
       meatType = "meat_wild_yavin4",
       meatMax = 17,
 
-      skills = { " Knockdown attack", " Intimidation attack", "" }
+      --skills = { " Knockdown attack", " Intimidation attack", "" }
+      skills = { "mamienAttack2", "mamienAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

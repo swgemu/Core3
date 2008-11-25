@@ -46,10 +46,11 @@ juvenileCanyonKrayt = Creature:new {
       faction = "Krayt Dragon",
       gender = "",
 
-      stfName = "a Juvenile Canyon Krayt",
+	  speciesName = "juvenile_canyon_krayt",
+	  stfName = "mob/creature_names",
       objectCRC = 899113216, 
       socialGroup = "Krayt Dragon",
-      named = FALSE, 
+      
 
       level = 122,
       

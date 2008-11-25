@@ -46,10 +46,11 @@ femaleSwampTuskCat = Creature:new {
       faction = "Tusk Cat",
       gender = "",
 
-      name = "a Female Swamp Tusk Cat",
+	  speciesName = "female_swamp_tusk_cat",
+	  stfName = "mob/creature_names",
       objectCRC = 3651259209, 
       socialGroup = "Tusk Cat",
-      named = FALSE, 
+      
 
       level = 16,
       

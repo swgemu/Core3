@@ -59,7 +59,7 @@ robaAttack1 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 50,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
@@ -70,5 +70,38 @@ robaAttack1 = {
 }
 
 AddRandomPoolAttackTargetSkill(robaAttack1)
+
+-----------------------------------------------
+robaAttack2 = {
+	attackname = "robaAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 9,
+
+	speedRatio = 2,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 50,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(robaAttack2)
 
 -----------------------------------------------

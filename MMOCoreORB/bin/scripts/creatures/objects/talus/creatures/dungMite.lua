@@ -46,7 +46,8 @@ dungMite = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Dung Mite",
+      speciesName = "dung_mite",
+      stfName = "mob/creature_names",
       objectCRC = 382834958, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -138,7 +139,8 @@ dungMite = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 9,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "dungMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ woodedParalope = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Wooded Paralope",
+	  speciesName = "wooded_paralope",
+	  stfName = "mob/creature_names",
       objectCRC = 634611787, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 7,
       

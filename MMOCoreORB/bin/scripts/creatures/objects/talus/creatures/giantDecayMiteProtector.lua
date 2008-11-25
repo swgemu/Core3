@@ -46,7 +46,8 @@ giantDecayMiteProtector = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Giant Decay Mite Protector",
+      speciesName = "giant_decay_mite_protector",
+      stfName = "mob/creature_names",
       objectCRC = 3943467921, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -138,7 +139,8 @@ giantDecayMiteProtector = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 16,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "decayMiteAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

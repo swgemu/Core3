@@ -46,10 +46,11 @@ infantGraul = Creature:new {
       faction = "Graul",
       gender = "",
 
-      name = "a Infant Graul",
+	  speciesName = "infant_graul",
+	  stfName = "mob/creature_names",
       objectCRC = 1512283088, 
       socialGroup = "Graul",
-      named = FALSE, 
+      
 
       level = 27,
       

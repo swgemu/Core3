@@ -46,10 +46,11 @@ dragonetArmodragon = Creature:new {
       faction = "Dragonet",
       gender = "",
 
-      name = "a Dragonet Armodragon",
+	  speciesName = "dragonet_armodragon",
+	  stfName = "mob/creature_names",
       objectCRC = 3554679154, 
       socialGroup = "Dragonet",
-      named = FALSE, 
+      
 
       level = 34,
       

@@ -46,10 +46,11 @@ gackleBatVampiric = Creature:new {
       faction = "Gacklebat",
       gender = "",
 
-      name = "a Gackle Bat Vampiric",
+	  speciesName = "gackle_bat_vampiric",
+	  stfName = "mob/creature_names",
       objectCRC = 2273297352, 
       socialGroup = "Gacklebat",
-      named = FALSE, 
+      
 
       level = 13,
       
@@ -138,7 +139,8 @@ gackleBatVampiric = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 4,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "gackleBatAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

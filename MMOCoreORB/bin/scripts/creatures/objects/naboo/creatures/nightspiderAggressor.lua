@@ -46,10 +46,11 @@ nightspiderAggressor = Creature:new {
       faction = "Nightspider",
       gender = "",
 
-      name = "a Nightspider Aggressor",
+	  speciesName = "nightspider_aggressor",
+	  stfName = "mob/creature_names",
       objectCRC = 2881975821, 
       socialGroup = "Nightspider",
-      named = FALSE, 
+      
 
       level = 9,
       

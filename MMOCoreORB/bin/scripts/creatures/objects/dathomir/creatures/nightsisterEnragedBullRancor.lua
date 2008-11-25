@@ -46,10 +46,11 @@ nightsisterEnragedBullRancor = Creature:new {
       faction = "Nightsister",
       gender = "",
 
-      name = "a Nightsister Enraged Bull Rancor",
+	  speciesName = "nightsister_enraged_bull_rancor",
+	  stfName = "mob/creature_names",
       objectCRC = 837719973, 
       socialGroup = "Nightsister",
-      named = FALSE, 
+      
 
       level = 89,
       
@@ -138,7 +139,8 @@ nightsisterEnragedBullRancor = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 880,
 
-      skills = { " Knockdown attack", " Area attack (knockdown)", "" }
+      --skills = { " Knockdown attack", " Area attack (knockdown)", "" }
+      skills = { "rancorAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

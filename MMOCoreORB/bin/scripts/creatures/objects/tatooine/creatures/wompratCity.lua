@@ -46,10 +46,12 @@ wompratCity = Creature:new {
       faction = "WompRat",
       gender = "",
 
-      name = "a Womprat City",
+	  speciesName = "creature_name",
+	  stfName = "mob/creature_names",
+	  stfName = "a Womprat City",
       objectCRC = 1909480803, 
       socialGroup = "WompRat",
-      named = FALSE, 
+      
 
       level = 6,
       

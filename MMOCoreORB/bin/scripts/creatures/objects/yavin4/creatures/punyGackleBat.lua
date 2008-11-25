@@ -46,10 +46,11 @@ punyGackleBat = Creature:new {
       faction = "Gacklebat",
       gender = "",
 
-      name = "a Puny Gackle Bat",
+	  speciesName = "puny_gackle_bat",
+	  stfName = "mob/creature_names",
       objectCRC = 539898393, 
       socialGroup = "Gacklebat",
-      named = FALSE, 
+      
 
       level = 6,
       
@@ -138,7 +139,8 @@ punyGackleBat = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 2,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "gackleBatAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

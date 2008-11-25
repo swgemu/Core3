@@ -46,10 +46,11 @@ femaleKaiTok = Creature:new {
       faction = "KaiTok",
       gender = "",
 
-      name = "a Female Kai Tok",
+	  speciesName = "female_kai_tok",
+	  stfName = "mob/creature_names",
       objectCRC = 1823266132, 
       socialGroup = "KaiTok",
-      named = FALSE, 
+      
 
       level = 13,
       

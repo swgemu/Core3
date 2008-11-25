@@ -46,7 +46,8 @@ viciousHufDun = Creature:new {
       faction = "HufDun",
       gender = "",
 
-      name = "a Vicious Huf Dun",
+      speciesName = "vicious_huf_dun",
+      stfName = "mob/creature_names",
       objectCRC = 3376666183, 
       socialGroup = "HufDun",
       named = FALSE, 
@@ -138,7 +139,8 @@ viciousHufDun = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 850,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "hufDunAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

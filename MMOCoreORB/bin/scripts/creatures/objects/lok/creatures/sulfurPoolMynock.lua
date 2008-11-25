@@ -46,10 +46,11 @@ sulfurPoolMynock = Creature:new {
       faction = "Mynock",
       gender = "",
 
-      stfName = "a Sulfur Pool Mynock",
+	  speciesName = "sulfur_pool_mynock",
+	  stfName = "mob/creature_names",
       objectCRC = 2246027732, 
       socialGroup = "Mynock",
-      named = FALSE, 
+      
 
       level = 30,
       

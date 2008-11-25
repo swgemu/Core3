@@ -46,10 +46,11 @@ mantigrueHunter = Creature:new {
       faction = "Mantigrue",
       gender = "",
 
-      stfName = "a Mantigrue Hunter",
+	  speciesName = "mantigrue_hunter",
+	  stfName = "mob/creature_names",
       objectCRC = 1684536430, 
       socialGroup = "Mantigrue",
-      named = FALSE, 
+      
 
       level = 38,
       

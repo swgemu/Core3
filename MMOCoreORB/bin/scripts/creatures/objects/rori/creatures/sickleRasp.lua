@@ -46,10 +46,11 @@ sickleRasp = Creature:new {
       faction = "Rasp",
       gender = "",
 
-      name = "a Sickle Rasp",
+	  speciesName = "sickle_rasp",
+	  stfName = "mob/creature_names",
       objectCRC = 144116282, 
       socialGroup = "Rasp",
-      named = FALSE, 
+      
 
       level = 8,
       

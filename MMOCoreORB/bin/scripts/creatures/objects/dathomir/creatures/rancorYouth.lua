@@ -46,10 +46,11 @@ rancorYouth = Creature:new {
       faction = "Rancor",
       gender = "",
 
-      stfName = "a Rancor Youth",
+	  speciesName = "rancor_youth",
+	  stfName = "mob/creature_names",
       objectCRC = 2919713604, 
       socialGroup = "Rancor",
-      named = FALSE, 
+      
 
       level = 45,
       

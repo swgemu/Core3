@@ -46,10 +46,11 @@ mutatedKrevolClicker = Creature:new {
       faction = "Horned Ktevol",
       gender = "",
 
-      name = "a Mutated Krevol Clicker",
+	  speciesName = "mutated_krevol_clicker",
+	  stfName = "mob/creature_names",
       objectCRC = 1223392893, 
       socialGroup = "Horned Ktevol",
-      named = FALSE, 
+      
 
       level = 10,
       

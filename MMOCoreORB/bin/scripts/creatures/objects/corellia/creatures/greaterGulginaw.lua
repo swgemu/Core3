@@ -46,10 +46,11 @@ greaterGulginaw = Creature:new {
       faction = "Gulginaw",
       gender = "",
 
-      name = "a Greater Gulginaw",
+	  speciesName = "greater_gulginaw",
+	  stfName = "mob/creature_names",
       objectCRC = 2004591794, 
       socialGroup = "Gulginaw",
-      named = FALSE, 
+      
 
       level = 21,
       

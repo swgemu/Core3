@@ -46,10 +46,11 @@ malklocPlainswalkerYouth = Creature:new {
       faction = "Malkloc",
       gender = "",
 
-      name = "a Malkloc Plainswalker Youth",
+	  speciesName = "malkloc_plainswalker_youth",
+	  stfName = "mob/creature_names",
       objectCRC = 3978814666, 
       socialGroup = "Malkloc",
-      named = FALSE, 
+      
 
       level = 55,
       
@@ -138,7 +139,8 @@ malklocPlainswalkerYouth = Creature:new {
       meatType = "meat_herbivore_dathomir",
       meatMax = 1500,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "malklocAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

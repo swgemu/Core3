@@ -46,10 +46,11 @@ piketPlainsWalker = Creature:new {
       faction = "Piket",
       gender = "",
 
-      stfName = "a Piket Plains Walker",
+	  speciesName = "piket_plains_walker",
+	  stfName = "mob/creature_names",
       objectCRC = 487283564, 
       socialGroup = "Piket",
-      named = FALSE, 
+      
 
       level = 32,
       

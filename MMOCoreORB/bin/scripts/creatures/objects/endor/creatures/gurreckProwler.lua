@@ -46,10 +46,11 @@ gurreckProwler = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      stfName = "a Gurreck Prowler",
+	  speciesName = "gurreck_prowler",
+	  stfName = "mob/creature_names",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
-      named = FALSE, 
+      
 
       level = 45,
       

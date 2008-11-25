@@ -46,10 +46,11 @@ youngRoba = Creature:new {
       faction = "Roba",
       gender = "",
 
-      stfName = "a Young Roba",
+	  speciesName = "young_roba",
+	  stfName = "mob/creature_names",
       objectCRC = 2564251610, 
       socialGroup = "Roba",
-      named = FALSE, 
+      
 
       level = 50,
       

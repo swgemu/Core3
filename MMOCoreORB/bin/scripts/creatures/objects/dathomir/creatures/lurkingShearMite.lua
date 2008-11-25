@@ -46,10 +46,11 @@ lurkingShearMite = Creature:new {
       faction = "Shearmite",
       gender = "",
 
-      name = "a Lurking Shear Mite",
+	  speciesName = "lurking_shear_mite",
+	  stfName = "mob/creature_names",
       objectCRC = 3399904934, 
       socialGroup = "Shearmite",
-      named = FALSE, 
+      
 
       level = 15,
       
@@ -138,7 +139,8 @@ lurkingShearMite = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 15,
 
-      skills = { " Intimidation attack", " Ranged attack (spit)", "" }
+      --skills = { " Intimidation attack", " Ranged attack (spit)", "" }
+      skills = { "shearMiteAttack1", "shearMiteAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

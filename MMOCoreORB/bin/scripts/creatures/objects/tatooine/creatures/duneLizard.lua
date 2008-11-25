@@ -46,10 +46,11 @@ duneLizard = Creature:new {
       faction = "Dune Lizard",
       gender = "",
 
-      name = "a Dune Lizard",
+	  speciesName = "dune_lizard",
+	  stfName = "mob/creature_names",
       objectCRC = 3554679154, 
       socialGroup = "Dune Lizard",
-      named = FALSE, 
+      
 
       level = 18,
       

@@ -46,7 +46,8 @@ docileKahmurra = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Docile Kahmurra",
+      speciesName = "docile_kahmurra",
+      stfName = "mob/creature_names",
       objectCRC = 3433057460, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +139,7 @@ docileKahmurra = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 45,
 
-      skills = { "", "", "" }
+      skills = { "kahmurraAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

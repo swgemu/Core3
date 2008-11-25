@@ -46,10 +46,11 @@ injuredVerne = Creature:new {
       faction = "Verne",
       gender = "",
 
-      name = "a Injured Verne",
+	  speciesName = "injured_verne",
+	  stfName = "mob/creature_names",
       objectCRC = 1915375945, 
       socialGroup = "Verne",
-      named = FALSE, 
+      
 
       level = 6,
       
@@ -138,7 +139,7 @@ injuredVerne = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 30,
 
-      skills = { "", "", "" }
+      skills = { "verneAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

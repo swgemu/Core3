@@ -46,10 +46,11 @@ minorGorax = Creature:new {
       faction = "Gorax",
       gender = "",
 
-      stfName = "a Minor Gorax",
+	  speciesName = "minor_gorax",
+	  stfName = "mob/creature_names",
       objectCRC = 3371835636, 
       socialGroup = "Gorax",
-      named = FALSE, 
+      
 
       level = 131,
       

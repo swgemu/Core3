@@ -46,10 +46,11 @@ wompratPlague = Creature:new {
       faction = "WompRat",
       gender = "",
 
-      name = "a Womprat Plague",
+	  speciesName = "womprat_plague",
+	  stfName = "mob/creature_names",
       objectCRC = 995330799, 
       socialGroup = "WompRat",
-      named = FALSE, 
+      
 
       level = 12,
       

@@ -46,10 +46,11 @@ anglerBone = Creature:new {
       faction = "Angler",
       gender = "",
 
-      name = "a Angler Bone",
+	  speciesName = "angler_bone",
+	  stfName = "mob/creature_names",
       objectCRC = 3645434131, 
       socialGroup = "Angler",
-      named = FALSE, 
+      
 
       level = 27,
       
@@ -138,7 +139,8 @@ anglerBone = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 4,
 
-      skills = { " Poison attack (strong)", " Intimidation attack", "" }
+      --skills = { " Poison attack (strong)", " Intimidation attack", "" }
+      skills = { "anglerAttack1", "anglerAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

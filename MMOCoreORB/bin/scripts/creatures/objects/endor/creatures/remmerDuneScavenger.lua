@@ -46,10 +46,11 @@ remmerDuneScavenger = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      stfName = "a Remmer Dune Scavenger",
+	  speciesName = "remmer_dune_scavenger",
+	  stfName = "mob/creature_names",
       objectCRC = 3273659222, 
       socialGroup = "Remmer",
-      named = FALSE, 
+      
 
       level = 20,
       

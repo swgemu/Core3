@@ -46,10 +46,11 @@ queenMerekHarvester = Creature:new {
       faction = "Merek",
       gender = "",
 
-      stfName = "a Queen Merek Harvester",
+	  speciesName = "queen_merek_harvester",
+	  stfName = "mob/creature_names",
       objectCRC = 1600142947, 
       socialGroup = "Merek",
-      named = FALSE, 
+      
 
       level = 50,
       

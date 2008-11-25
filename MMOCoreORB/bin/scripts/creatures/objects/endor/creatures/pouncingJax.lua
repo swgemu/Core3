@@ -46,10 +46,11 @@ pouncingJax = Creature:new {
       faction = "Jax",
       gender = "",
 
-      stfName = "a Pouncing Jax",
+	  speciesName = "pouncing_jax",
+	  stfName = "mob/creature_names",
       objectCRC = 2095266416, 
       socialGroup = "Jax",
-      named = FALSE, 
+      
 
       level = 13,
       

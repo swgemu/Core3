@@ -46,10 +46,11 @@ kliknikDarkWorker = Creature:new {
       faction = "Kliknik",
       gender = "",
 
-      name = "a Kliknik Dark Worker",
+	  speciesName = "kliknik_dark_worker",
+	  stfName = "mob/creature_names",
       objectCRC = 965104200, 
       socialGroup = "Kliknik",
-      named = FALSE, 
+      
 
       level = 30,
       
@@ -138,7 +139,8 @@ kliknikDarkWorker = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 6,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "kliknikAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

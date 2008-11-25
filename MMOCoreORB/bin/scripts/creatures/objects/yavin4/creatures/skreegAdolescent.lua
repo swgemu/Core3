@@ -46,10 +46,11 @@ skreegAdolescent = Creature:new {
       faction = "Skreeg",
       gender = "",
 
-      name = "a Skreeg Adolescent",
+	  speciesName = "skreeg_adolescent",
+	  stfName = "mob/creature_names",
       objectCRC = 1067374229, 
       socialGroup = "Skreeg",
-      named = FALSE, 
+      
 
       level = 15,
       
@@ -138,7 +139,8 @@ skreegAdolescent = Creature:new {
       meatType = "meat_herbivore_yavin4",
       meatMax = 17,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "skreegAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

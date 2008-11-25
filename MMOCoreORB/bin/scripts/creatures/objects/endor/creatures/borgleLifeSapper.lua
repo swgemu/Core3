@@ -46,10 +46,11 @@ borgleLifeSapper = Creature:new {
       faction = "Borgle",
       gender = "",
 
-      stfName = "a Borgle Life Sapper",
+	  speciesName = "borgle_life_sapper",
+	  stfName = "mob/creature_names",
       objectCRC = 715008896, 
       socialGroup = "Borgle",
-      named = FALSE, 
+      
 
       level = 25,
       

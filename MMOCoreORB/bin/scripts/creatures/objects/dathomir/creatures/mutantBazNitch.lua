@@ -46,10 +46,11 @@ mutantBazNitch = Creature:new {
       faction = "Baz Nitch",
       gender = "",
 
-      name = "a Mutant Baz Nitch",
+	  speciesName = "mutant_baz_nitch",
+	  stfName = "mob/creature_names",
       objectCRC = 252682001, 
       socialGroup = "Baz Nitch",
-      named = FALSE, 
+      
 
       level = 30,
       
@@ -138,7 +139,7 @@ mutantBazNitch = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 5,
 
-      skills = { "", "", "" }
+      skills = { "bazNitchAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

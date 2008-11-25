@@ -46,10 +46,11 @@ kliknik = Creature:new {
       faction = "Kliknik",
       gender = "",
 
-      name = "a Kliknik",
-      objectCRC = 965104200, 
+	  speciesName = "kliknik",
+	  stfName = "mob/creature_names",
+      objectCRC = 2954898028, 
       socialGroup = "Kliknik",
-      named = FALSE, 
+      
 
       level = 18,
       
@@ -99,16 +100,16 @@ kliknik = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_large_yellow.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Creature Spit", -- Name ex. 'a Vibrolance'
+      weaponTemp = "creature_spit_large_yellow", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 1,
       weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weaponMaxDamage = 10,
+      weaponAttackSpeed = 1,
+      weaponDamageType = "ACID", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -138,11 +139,12 @@ kliknik = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 5,
 
-      skills = { "kliknikAttack1" },
+	  skills = { "kliknikAttack5" },
+	  -- skills = { "kliknikAttack4", "kliknikAttack5" },
 	  -- skills = { " Posture down attack", " Ranged attack (spit)", "" },
        respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(kliknik, 965104200) --  Add to Global Table
+Creatures:addCreature(kliknik, 2954898028) --  Add to Global Table

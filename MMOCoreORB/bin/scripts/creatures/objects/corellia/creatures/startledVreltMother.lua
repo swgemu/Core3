@@ -46,10 +46,11 @@ startledVreltMother = Creature:new {
       faction = "Vreit",
       gender = "",
 
-      name = "a Startled Vrelt Mother",
+	  speciesName = "startled_vrelt_mother",
+	  stfName = "mob/creature_names",
       objectCRC = 2882436158, 
       socialGroup = "Vreit",
-      named = FALSE, 
+      
 
       level = 14,
       

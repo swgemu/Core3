@@ -46,10 +46,11 @@ narglatchFemale = Creature:new {
       faction = "Narglatch",
       gender = "",
 
-      name = "a Narglatch Female",
+	  speciesName = "narglatch_female",
+	  stfName = "mob/creature_names",
       objectCRC = 793263804, 
       socialGroup = "Narglatch",
-      named = FALSE, 
+      
 
       level = 23,
       

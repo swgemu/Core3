@@ -46,10 +46,11 @@ bloodseekerMiteGuardian = Creature:new {
       faction = "Bioodseeker",
       gender = "",
 
-      stfName = "a Bloodseeker Mite Guardian",
+	  speciesName = "bloodseeker_mite_guardian",
+	  stfName = "mob/creature_names",
       objectCRC = 4102628433, 
       socialGroup = "Bioodseeker",
-      named = FALSE, 
+      
 
       level = 38,
       

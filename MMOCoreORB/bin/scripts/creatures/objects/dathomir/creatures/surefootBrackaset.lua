@@ -46,10 +46,11 @@ surefootBrackaset = Creature:new {
       faction = "Brackaset",
       gender = "",
 
-      name = "a Surefoot Brackaset",
+	  speciesName = "surefoot_brackaset",
+	  stfName = "mob/creature_names",
       objectCRC = 2038129742, 
       socialGroup = "Brackaset",
-      named = FALSE, 
+      
 
       level = 46,
       
@@ -138,7 +139,8 @@ surefootBrackaset = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 100,
 
-      skills = { " Posture down attack", " Stun attack", "" }
+      --skills = { " Posture down attack", " Stun attack", "" }
+      skills = { "brackasetAttack1", "brackasetAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

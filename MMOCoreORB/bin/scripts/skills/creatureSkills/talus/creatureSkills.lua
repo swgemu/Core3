@@ -42,9 +42,16 @@
 -- Load files
 
 -- Talus
+RunSkillsFile("creatureSkills/talus/creatures/decayMiteAttacks.lua")
+RunSkillsFile("creatureSkills/talus/creatures/dungMiteAttacks.lua")
 RunSkillsFile("creatureSkills/talus/creatures/fliteRaspAttacks.lua")
 RunSkillsFile("creatureSkills/talus/creatures/fynockAttacks.lua")
 RunSkillsFile("creatureSkills/talus/creatures/gufDrolgAttacks.lua")
 RunSkillsFile("creatureSkills/talus/creatures/hufDunAttacks.lua")
+RunSkillsFile("creatureSkills/talus/creatures/kahmurraAttacks.lua")
 RunSkillsFile("creatureSkills/talus/creatures/kimaAttacks.lua")
 RunSkillsFile("creatureSkills/talus/creatures/robaAttacks.lua")
+RunSkillsFile("creatureSkills/talus/creatures/rotMiteAttacks.lua")
+RunSkillsFile("creatureSkills/talus/creatures/sludgePantherAttacks.lua")
+RunSkillsFile("creatureSkills/talus/creatures/torturAttacks.lua")
+RunSkillsFile("creatureSkills/talus/creatures/vynockAttacks.lua")

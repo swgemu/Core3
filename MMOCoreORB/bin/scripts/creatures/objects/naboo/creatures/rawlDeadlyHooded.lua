@@ -46,10 +46,11 @@ rawlDeadlyHooded = Creature:new {
       faction = "Fanned Rawl",
       gender = "",
 
-      name = "a Rawl Deadly Hooded",
+	  speciesName = "rawl_deadly_hooded",
+	  stfName = "mob/creature_names",
       objectCRC = 304357171, 
       socialGroup = "Fanned Rawl",
-      named = FALSE, 
+      
 
       level = 12,
       

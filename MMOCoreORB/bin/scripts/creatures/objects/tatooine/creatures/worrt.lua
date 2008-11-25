@@ -46,10 +46,11 @@ worrt = Creature:new {
       faction = "Worrt",
       gender = "",
 
-      stfName = "a Worrt",
+	  speciesName = "worrt",
+	  stfName = "mob/creature_names",
       objectCRC = 1368967713, 
       socialGroup = "Worrt",
-      named = FALSE, 
+      
 
       level = 6,
       

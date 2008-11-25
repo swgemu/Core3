@@ -46,10 +46,11 @@ vespScavenger = Creature:new {
       faction = "Vesp",
       gender = "",
 
-      stfName = "a Vesp Scavanger",
+	  speciesName = "vesp_scavanger",
+	  stfName = "mob/creature_names",
       objectCRC = 3698435149, 
       socialGroup = "Vesp",
-      named = FALSE, 
+      
 
       level = 29,
       

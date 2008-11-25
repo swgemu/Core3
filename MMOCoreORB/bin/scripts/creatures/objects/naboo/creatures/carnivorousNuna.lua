@@ -46,10 +46,11 @@ carnivorousNuna = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Carnivorous Nuna",
+	  speciesName = "carnivorous_nuna",
+	  stfName = "mob/creature_names",
       objectCRC = 2432817562, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 13,
       

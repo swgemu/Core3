@@ -46,10 +46,11 @@ derangedSquall = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Deranged Squall",
+	  speciesName = "deranged_squall",
+	  stfName = "mob/creature_names",
       objectCRC = 536393830, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 15,
       

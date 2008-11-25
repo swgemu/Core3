@@ -46,7 +46,8 @@ songRasp = Creature:new {
       faction = "Rasp",
       gender = "",
 
-      name = "a Song Rasp",
+      speciesName = "song_rasp",
+      stfName = "mob/creature_names",
       objectCRC = 1138484659, 
       socialGroup = "Rasp",
       named = FALSE, 
@@ -138,7 +139,7 @@ songRasp = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 10,
 
-      skills = { "", "", "" }
+      skills = { "fliteRaspAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

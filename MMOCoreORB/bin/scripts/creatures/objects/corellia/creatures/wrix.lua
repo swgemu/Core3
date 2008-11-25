@@ -46,10 +46,11 @@ wrix = Creature:new {
       faction = "Wrix",
       gender = "",
 
-      name = "a Wrix",
+	  speciesName = "wrix",
+	  stfName = "mob/creature_names",
       objectCRC = 2441033354, 
       socialGroup = "Wrix",
-      named = FALSE, 
+      
 
       level = 12,
       

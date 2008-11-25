@@ -46,10 +46,11 @@ diseasedVreltMatriarch = Creature:new {
       faction = "Vrelt",
       gender = "",
 
-      name = "a Diseased Vrelt Matriarch",
+	  speciesName = "diseased_vrelt_matriarch",
+	  stfName = "mob/creature_names",
       objectCRC = 2882436158, 
       socialGroup = "Vrelt",
-      named = FALSE, 
+      
 
       level = 11,
       

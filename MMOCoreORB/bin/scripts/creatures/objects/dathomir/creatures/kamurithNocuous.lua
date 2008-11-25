@@ -46,10 +46,11 @@ kamurithNocuous = Creature:new {
       faction = "Kamurith",
       gender = "",
 
-      name = "a Kamurith Nocuous",
+	  speciesName = "kamurith_nocuous",
+	  stfName = "mob/creature_names",
       objectCRC = 1248104419, 
       socialGroup = "Kamurith",
-      named = FALSE, 
+      
 
       level = 46,
       
@@ -138,7 +139,8 @@ kamurithNocuous = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 90,
 
-      skills = { " Dizzy attack", " Poison attack (strong)", "" }
+      --skills = { " Dizzy attack", " Poison attack (strong)", "" }
+      skills = { "kamurithAttack2", "kamurithAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

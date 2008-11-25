@@ -46,10 +46,11 @@ spineflapGatherer = Creature:new {
       faction = "Spineflap",
       gender = "",
 
-      name = "a Spineflap Gatherer",
+	  speciesName = "spineflap_gatherer",
+	  stfName = "mob/creature_names",
       objectCRC = 1774004209, 
       socialGroup = "Spineflap",
-      named = FALSE, 
+      
 
       level = 9,
       

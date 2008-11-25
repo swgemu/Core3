@@ -46,10 +46,11 @@ sharnaff = Creature:new {
       faction = "Sharnaff",
       gender = "",
 
-      stfName = "a Sharnaff",
+	  speciesName = "sharnaff",
+	  stfName = "mob/creature_names",
       objectCRC = 4083067359, 
       socialGroup = "Sharnaff",
-      named = FALSE, 
+      
 
       level = 31,
       

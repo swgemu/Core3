@@ -46,10 +46,11 @@ domesticatedGurnaset = Creature:new {
       faction = "self",
       gender = "",
 
-      stfName = "a Domesticated Gurnaset",
+	  speciesName = "domesticated_gurnaset",
+	  stfName = "mob/creature_names",
       objectCRC = 526557680, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 13,
       

@@ -46,10 +46,11 @@ hostileThuneMother = Creature:new {
       faction = "Thune",
       gender = "",
 
-      name = "a Hostile Thune Mother",
+	  speciesName = "hostile_thune_mother",
+	  stfName = "mob/creature_names",
       objectCRC = 3588269792, 
       socialGroup = "Thune",
-      named = FALSE, 
+      
 
       level = 30,
       

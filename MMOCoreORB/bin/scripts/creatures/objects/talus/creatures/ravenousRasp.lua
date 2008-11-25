@@ -46,7 +46,8 @@ ravenousRasp = Creature:new {
       faction = "Rasp",
       gender = "",
 
-      name = "a Ravenous Rasp",
+      speciesName = "ravenous_rasp",
+      stfName = "mob/creature_names",
       objectCRC = 229802836, 
       socialGroup = "Rasp",
       named = FALSE, 
@@ -138,7 +139,8 @@ ravenousRasp = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 45,
 
-      skills = { " Poison attack (strong)", " Dizzy attack", "" }
+      --skills = { " Poison attack (strong)", " Dizzy attack", "" }
+      skills = { "fliteRaspAttack3", "fliteRaspAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

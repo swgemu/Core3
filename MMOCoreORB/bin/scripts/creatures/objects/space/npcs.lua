@@ -39,36 +39,6 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-enragedTybisAttack1 = {
-	attackname = "enragedTybisAttack1",
-	animation = "creature_attack_light",
-	
-	requiredWeaponType = NONE,
 
-	range = 10,
-
-	damageRatio = 9,
-
-	speedRatio = 2,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(enragedTybisAttack1)
-
------------------------------------------------
+-- Corellian Corvette
+ RunCreatureFile("objects/space/corellianCorvette/imperialCorelllianCorvette.lua")

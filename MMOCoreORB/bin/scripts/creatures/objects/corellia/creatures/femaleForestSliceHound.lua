@@ -46,10 +46,11 @@ femaleForestSliceHound = Creature:new {
       faction = "Slice Hound",
       gender = "",
 
-      name = "a Female Forest Slice Hound",
+	  speciesName = "female_forest_slice_hound",
+	  stfName = "mob/creature_names",
       objectCRC = 2917464836, 
       socialGroup = "Slice Hound",
-      named = FALSE, 
+      
 
       level = 10,
       

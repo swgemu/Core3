@@ -46,10 +46,11 @@ mamienAncient = Creature:new {
       faction = "Marnien",
       gender = "",
 
-      name = "a Mamien Ancient",
+	  speciesName = "mamien_ancient",
+	  stfName = "mob/creature_names",
       objectCRC = 1795257005, 
       socialGroup = "Marnien",
-      named = FALSE, 
+      
 
       level = 24,
       
@@ -138,7 +139,8 @@ mamienAncient = Creature:new {
       meatType = "meat_wild_yavin4",
       meatMax = 20,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "mamienAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

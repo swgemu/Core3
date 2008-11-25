@@ -46,10 +46,11 @@ injuredPurbole = Creature:new {
       faction = "Purbole",
       gender = "",
 
-      name = "a Injured Purbole",
+	  speciesName = "injured_purbole",
+	  stfName = "mob/creature_names",
       objectCRC = 1043838137, 
       socialGroup = "Purbole",
-      named = FALSE, 
+      
 
       level = 12,
       
@@ -138,7 +139,8 @@ injuredPurbole = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 15,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "purboleAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

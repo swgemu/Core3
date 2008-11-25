@@ -46,11 +46,12 @@ flitLethargicBehemoth = Creature:new {
       faction = "Flit",
       gender = "",
 
-      stfName = "a Flit Lethargic Behemoth",
+	  speciesName = "flit_lethargic_behemoth",
+	  stfName = "mob/creature_names",
       --objectCRC = 1138484659,
       objectCRC = 4002066866,
       socialGroup = "Flit",
-      named = FALSE, 
+      
 
       level = 23,
       

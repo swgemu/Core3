@@ -46,10 +46,11 @@ stintarilFleshstripper = Creature:new {
       faction = "Stinaril",
       gender = "",
 
-      name = "a Stintaril Fleshstripper",
+	  speciesName = "stintaril_fleshstripper",
+	  stfName = "mob/creature_names",
       objectCRC = 31126414, 
       socialGroup = "Stinaril",
-      named = FALSE, 
+      
 
       level = 16,
       
@@ -138,7 +139,8 @@ stintarilFleshstripper = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 5,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "stintarilAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
