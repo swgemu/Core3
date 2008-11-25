@@ -50,7 +50,7 @@ hufDunBull = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 3376666183, 
       socialGroup = "HufOun",
-      named = FALSE, 
+      
 
       level = 22,
       

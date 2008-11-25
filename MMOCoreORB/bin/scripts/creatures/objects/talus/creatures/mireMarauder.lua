@@ -50,7 +50,7 @@ mireMarauder = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 197708576, 
       socialGroup = "Sludge Panther",
-      named = FALSE, 
+      
 
       level = 56,
       

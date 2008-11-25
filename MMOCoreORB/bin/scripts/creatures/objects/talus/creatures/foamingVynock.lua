@@ -50,7 +50,7 @@ foamingVynock = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 942459622, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 14,
       

@@ -49,7 +49,7 @@ festeringDungQueen = Creature:new {
       speciesName = "festering_dung_queen",
       stfName = "mob/creature_names",
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 18,
       

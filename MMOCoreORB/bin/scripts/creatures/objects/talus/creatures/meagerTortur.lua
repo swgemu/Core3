@@ -50,7 +50,7 @@ meagerTortur = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 2394031156, 
       socialGroup = "Tortur",
-      named = FALSE, 
+      
 
       level = 14,
       

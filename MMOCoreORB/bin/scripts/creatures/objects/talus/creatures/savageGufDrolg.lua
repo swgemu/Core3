@@ -50,7 +50,7 @@ savageGufDrolg = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 2412635704, 
       socialGroup = "Guf Drolg",
-      named = FALSE, 
+      
 
       level = 15,
       

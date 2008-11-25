@@ -50,7 +50,7 @@ sludgePanther = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 347380569, 
       socialGroup = "Sludge Panther",
-      named = FALSE, 
+      
 
       level = 16,
       

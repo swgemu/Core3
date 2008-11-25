@@ -50,7 +50,7 @@ sicklyDecayMiteQueen = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 3821753803, 
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 20,
       

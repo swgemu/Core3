@@ -50,7 +50,7 @@ stuntedHufDun = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 3411571666, 
       socialGroup = "HufDun",
-      named = FALSE, 
+      
 
       level = 9,
       

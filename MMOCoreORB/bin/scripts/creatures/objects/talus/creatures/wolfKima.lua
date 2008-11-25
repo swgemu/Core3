@@ -50,7 +50,7 @@ wolfKima = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 558452126, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 19,
       

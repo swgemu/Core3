@@ -50,7 +50,7 @@ geneticallyEnhancedKahmurra = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 3723114695, 
       socialGroup = "Kahmurra",
-      named = FALSE, 
+      
 
       level = 30,
       

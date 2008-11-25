@@ -50,7 +50,7 @@ fearfulFynockYouth = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 2406226385, 
       socialGroup = "Fynock",
-      named = FALSE, 
+      
 
       level = 5,
       

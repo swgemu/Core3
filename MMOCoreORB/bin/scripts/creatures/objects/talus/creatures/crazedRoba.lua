@@ -49,7 +49,7 @@ crazedRoba = Creature:new {
       stfName = "mob/creature_names",
       objectCRC = 1008127960, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 12,
       
