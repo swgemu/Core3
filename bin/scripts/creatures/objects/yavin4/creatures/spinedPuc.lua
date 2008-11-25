@@ -46,10 +46,11 @@ spinedPuc = Creature:new {
       faction = "Spined Puc",
       gender = "",
 
-      name = "a Spined Puc",
+	  speciesName = "spined_puc",
+	  stfName = "mob/creature_names",
       objectCRC = 307007655, 
       socialGroup = "Spined Puc",
-      named = FALSE, 
+      
 
       level = 14,
       

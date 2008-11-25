@@ -46,10 +46,11 @@ jaxBoundingDwarf = Creature:new {
       faction = "Jax",
       gender = "",
 
-      stfName = "a Jax Bounding Dwarf",
+	  speciesName = "jax_bounding_dwarf",
+	  stfName = "mob/creature_names",
       objectCRC = 1187375621, 
       socialGroup = "Jax",
-      named = FALSE, 
+      
 
       level = 7,
       

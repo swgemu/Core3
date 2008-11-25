@@ -46,10 +46,11 @@ variegatedWompRat = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Variegated WompRat",
+	  speciesName = "variegated_womprat",
+	  stfName = "mob/creature_names",
       objectCRC = 1909480803, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 14,
       

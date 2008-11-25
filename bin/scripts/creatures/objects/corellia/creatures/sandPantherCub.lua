@@ -46,10 +46,11 @@ sandPantherCub = Creature:new {
       faction = "Sand Panther",
       gender = "",
 
-      name = "a Sand Panther Cub",
+	  speciesName = "sand_panther_cub",
+	  stfName = "mob/creature_names",
       objectCRC = 2441033354, 
       socialGroup = "Sand Panther",
-      named = FALSE, 
+      
 
       level = 10,
       

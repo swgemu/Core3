@@ -46,10 +46,11 @@ barkMiteHatchling = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Bark Mite Hatchling",
+	  speciesName = "bark_mite_hatchling",
+	  stfName = "mob/creature_names",
       objectCRC = 1684910254, 
       socialGroup = "Bark Mite",
-      named = FALSE, 
+      
 
       level = 9,
       

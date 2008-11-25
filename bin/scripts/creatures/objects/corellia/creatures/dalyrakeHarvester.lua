@@ -46,10 +46,11 @@ dalyrakeHarvester = Creature:new {
       faction = "Dalyrake",
       gender = "",
 
-      name = "a Dalyrake Harvester",
+	  speciesName = "dalyrake_harvester",
+	  stfName = "mob/creature_names",
       objectCRC = 3621894346, 
       socialGroup = "Dalyrake",
-      named = FALSE, 
+      
 
       level = 15,
       

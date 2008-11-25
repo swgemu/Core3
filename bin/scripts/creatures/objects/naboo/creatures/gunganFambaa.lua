@@ -46,10 +46,11 @@ gunganFambaa = Creature:new {
       faction = "Gungan",
       gender = "",
 
-      name = "a Gungan Fambaa",
+	  speciesName = "gungan_fambaa",
+	  stfName = "mob/creature_names",
       objectCRC = 2375688304, 
       socialGroup = "Gungan",
-      named = FALSE, 
+      
 
       level = 42,
       

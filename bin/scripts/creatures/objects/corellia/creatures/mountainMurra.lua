@@ -46,10 +46,11 @@ mountainMurra = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Mountain Murra",
+	  speciesName = "mountain_murra",
+	  stfName = "mob/creature_names",
       objectCRC = 1555554447, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 17,
       

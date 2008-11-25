@@ -46,10 +46,11 @@ scorchedKrevol = Creature:new {
       faction = "Krevol",
       gender = "",
 
-      name = "a Scorched Krevol",
+	  speciesName = "scorched_krevol",
+	  stfName = "mob/creature_names",
       objectCRC = 4151073468, 
       socialGroup = "Krevol",
-      named = FALSE, 
+      
 
       level = 8,
       

@@ -46,10 +46,11 @@ giantFlit = Creature:new {
       faction = "Flit",
       gender = "",
 
-      stfName = "a Giant Flit",
+	  speciesName = "giant_flit",
+	  stfName = "mob/creature_names",
       objectCRC = 4002066866, 
       socialGroup = "Flit",
-      named = FALSE, 
+      
 
       level = 19,
       

@@ -46,10 +46,11 @@ giantDalyrake = Creature:new {
       faction = "Dalyrake",
       gender = "",
 
-      name = "a Giant Dalyrake",
+	  speciesName = "giant_dalyrake",
+	  stfName = "mob/creature_names",
       objectCRC = 1561394973, 
       socialGroup = "Dalyrake",
-      named = FALSE, 
+      
 
       level = 18,
       

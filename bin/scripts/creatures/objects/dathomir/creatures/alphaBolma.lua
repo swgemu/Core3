@@ -46,10 +46,11 @@ alphaBolma = Creature:new {
       faction = "Bolma",
       gender = "",
 
-      name = "a Alpha Bolma",
+	  speciesName = "alpha_bolma",
+	  stfName = "mob/creature_names",
       objectCRC = 1079261977, 
       socialGroup = "Bolma",
-      named = FALSE, 
+      
 
       level = 33,
       
@@ -138,7 +139,8 @@ alphaBolma = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 500,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "bolmaAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

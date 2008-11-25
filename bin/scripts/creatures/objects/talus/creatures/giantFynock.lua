@@ -46,7 +46,8 @@ giantFynock = Creature:new {
       faction = "Fynock",
       gender = "",
 
-      name = "a Giant Fynock",
+      speciesName = "giant_fynock",
+      stfName = "mob/creature_names",
       objectCRC = 2677634246, 
       socialGroup = "Fynock",
       named = FALSE, 
@@ -99,7 +100,7 @@ giantFynock = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ giantFynock = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 70,
 
-      skills = { " Intimidation attack", " Area attack (knockdown)", " Ranged attack (spit)" }
+      --skills = { " Intimidation attack", " Area attack (knockdown)", " Ranged attack (spit)" }
+      skills = { "fynockAttack3", "fynockAttack4", "fynockAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

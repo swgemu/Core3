@@ -46,10 +46,11 @@ minorWorrt = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Minor Worrt",
+	  speciesName = "minor_worrt",
+	  stfName = "mob/creature_names",
       objectCRC = 1647415305, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 5,
       

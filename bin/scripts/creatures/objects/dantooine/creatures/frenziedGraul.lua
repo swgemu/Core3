@@ -46,10 +46,11 @@ frenziedGraul = Creature:new {
       faction = "Graul",
       gender = "",
 
-      name = "a Frenzied Graul",
+	  speciesName = "frenzied_graul",
+	  stfName = "mob/creature_names",
       objectCRC = 4126395623, 
       socialGroup = "Graul",
-      named = FALSE, 
+      
 
       level = 56,
       

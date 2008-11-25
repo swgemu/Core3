@@ -46,10 +46,11 @@ shallowTorton = Creature:new {
       faction = "Torton",
       gender = "",
 
-      name = "a Shallow Torton",
+	  speciesName = "shallow_torton",
+	  stfName = "mob/creature_names",
       objectCRC = 1970962787, 
       socialGroup = "Torton",
-      named = FALSE, 
+      
 
       level = 19,
       

@@ -46,10 +46,11 @@ dalyrakeMatriarch = Creature:new {
       faction = "Dalyrake",
       gender = "",
 
-      name = "a Dalyrake Matriarch",
+	  speciesName = "dalyrake_matriarch",
+	  stfName = "mob/creature_names",
       objectCRC = 3341021560, 
       socialGroup = "Dalyrake",
-      named = FALSE, 
+      
 
       level = 18,
       

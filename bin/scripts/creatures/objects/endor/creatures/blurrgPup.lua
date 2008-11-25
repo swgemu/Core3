@@ -46,10 +46,11 @@ blurrgPup = Creature:new {
       faction = "Blurrg",
       gender = "",
 
-      stfName = "a Blurrg Pup",
+	  speciesName = "blurrg_pup",
+	  stfName = "mob/creature_names",
       objectCRC = 1432306355, 
       socialGroup = "Blurrg",
-      named = FALSE, 
+      
 
       level = 15,
       

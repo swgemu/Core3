@@ -46,10 +46,11 @@ bolmaFemale = Creature:new {
       faction = "Bolma",
       gender = "",
 
-      name = "a Bolma Female",
+	  speciesName = "bolma_female",
+	  stfName = "mob/creature_names",
       objectCRC = 4078228623, 
       socialGroup = "Bolma",
-      named = FALSE, 
+      
 
       level = 26,
       
@@ -138,7 +139,7 @@ bolmaFemale = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 300,
 
-      skills = { "", "", "" }
+      skills = { "bolmaAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

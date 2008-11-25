@@ -46,10 +46,11 @@ verneCalf = Creature:new {
       faction = "Verne",
       gender = "",
 
-      name = "a Verne Calf",
+	  speciesName = "verne_calf",
+	  stfName = "mob/creature_names",
       objectCRC = 3137388613, 
       socialGroup = "Verne",
-      named = FALSE, 
+      
 
       level = 14,
       
@@ -138,7 +139,7 @@ verneCalf = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 18,
 
-      skills = { "", "", "" }
+      skills = { "verneAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

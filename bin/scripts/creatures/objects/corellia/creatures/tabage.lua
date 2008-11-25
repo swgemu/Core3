@@ -46,10 +46,11 @@ tabage = Creature:new {
       faction = "Tabage",
       gender = "",
 
-      name = "a Tabage",
+	  speciesName = "tabage",
+	  stfName = "mob/creature_names",
       objectCRC = 1588417694, 
       socialGroup = "Tabage",
-      named = FALSE, 
+      
 
       level = 11,
       

@@ -46,10 +46,11 @@ maleSnorbalCalf = Creature:new {
       faction = "Snorbal",
       gender = "",
 
-      stfName = "a Male Snorbal Calf",
+	  speciesName = "male_snorbal_calf",
+	  stfName = "mob/creature_names",
       objectCRC = 581977565, 
       socialGroup = "Snorbal",
-      named = FALSE, 
+      
 
       level = 22,
       

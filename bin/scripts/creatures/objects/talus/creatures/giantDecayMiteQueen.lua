@@ -46,7 +46,8 @@ giantDecayMiteQueen = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Giant Decay Mite Queen",
+      speciesName = "giant_decay_mite_queen",
+      stfName = "mob/creature_names",
       objectCRC = 3943467921, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -138,7 +139,8 @@ giantDecayMiteQueen = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 28,
 
-      skills = { " Disease attack (medium)", " Disease attack (poison)", "" }
+      --skills = { " Disease attack (medium)", " Disease attack (poison)", "" }
+      skills = { "decayMiteAttack1", "decayMiteAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

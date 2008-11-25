@@ -46,10 +46,11 @@ dwarfBantha = Creature:new {
       faction = "Bantha",
       gender = "",
 
-      name = "a Dwarf Bantha",
+	  speciesName = "dwarf_bantha",
+	  stfName = "mob/creature_names",
       objectCRC = 4229494825, 
       socialGroup = "Bantha",
-      named = FALSE, 
+      
 
       level = 11,
       

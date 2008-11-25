@@ -46,10 +46,11 @@ warrenHuurtonSavage = Creature:new {
       faction = "Warren Huurton",
       gender = "",
 
-      name = "a Warren Huurton Savage",
+	  speciesName = "warren_huurton_savage",
+	  stfName = "mob/creature_names",
       objectCRC = 3011024511, 
       socialGroup = "Warren Huurton",
-      named = FALSE, 
+      
 
       level = 26,
       

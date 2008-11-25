@@ -46,10 +46,11 @@ purboleYouth = Creature:new {
       faction = "Purbole",
       gender = "",
 
-      name = "a Purbole Youth",
+	  speciesName = "purbole_youth",
+	  stfName = "mob/creature_names",
       objectCRC = 2308440626, 
       socialGroup = "Purbole",
-      named = FALSE, 
+      
 
       level = 14,
       
@@ -138,7 +139,8 @@ purboleYouth = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 12,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "purboleAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

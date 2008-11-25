@@ -46,10 +46,11 @@ bullRancor = Creature:new {
       faction = "Rancor",
       gender = "",
 
-      stfName = "a Bull Rancor",
+	  speciesName = "bull_rancor",
+	  stfName = "mob/creature_names",
       objectCRC = 837719973, 
       socialGroup = "Rancor",
-      named = FALSE, 
+      
 
       level = 65,
       
@@ -138,7 +139,7 @@ bullRancor = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 1020,
 
-	  skills = { "rancorAttack1", "rancorAttack2", "rancorAttack3" },
+	  skills = { "rancorAttack1", "rancorAttack2" },
       --skills = { " Area attack (disease)", " Dizzy attack", "" }
       respawnTimer = 180,
 

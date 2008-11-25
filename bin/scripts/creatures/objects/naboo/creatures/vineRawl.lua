@@ -46,10 +46,11 @@ vineRawl = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Vine Rawl",
+	  speciesName = "vine_rawl",
+	  stfName = "mob/creature_names",
       objectCRC = 304357171, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 19,
       

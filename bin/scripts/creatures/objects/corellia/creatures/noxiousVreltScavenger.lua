@@ -46,10 +46,11 @@ noxiousVreltScavenger = Creature:new {
       faction = "Vrelt",
       gender = "",
 
-      name = "a Noxious Vrelt Scavenger",
+	  speciesName = "noxious_vrelt_scavenger",
+	  stfName = "mob/creature_names",
       objectCRC = 1273076283, 
       socialGroup = "Vrelt",
-      named = FALSE, 
+      
 
       level = 10,
       

@@ -46,7 +46,8 @@ tortur = Creature:new {
       faction = "Tortur",
       gender = "",
 
-      name = "a Tortur",
+      speciesName = "tortur",
+      stfName = "mob/creature_names",
       objectCRC = 2394031156, 
       socialGroup = "Tortur",
       named = FALSE, 
@@ -138,7 +139,8 @@ tortur = Creature:new {
       meatType = "meat_carnivore_talus",
       meatMax = 1300,
 
-      skills = { " Dizzy attack", " Knockdown attack", "" }
+      --skills = { " Dizzy attack", " Knockdown attack", "" }
+      skills = { "torturAttack2", "torturAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ woodlandGurreck = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      stfName = "a Woodland Gurreck",
+	  speciesName = "woodland_gurreck",
+	  stfName = "mob/creature_names",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
-      named = FALSE, 
+      
 
       level = 32,
       

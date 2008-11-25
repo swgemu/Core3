@@ -46,10 +46,11 @@ razorCatEviscerator = Creature:new {
       faction = "Sand Panther",
       gender = "",
 
-      name = "a Razor Cat Eviscerator",
+	  speciesName = "razor_cat_eviscerator",
+	  stfName = "mob/creature_names",
       objectCRC = 3021374410, 
       socialGroup = "Sand Panther",
-      named = FALSE, 
+      
 
       level = 24,
       

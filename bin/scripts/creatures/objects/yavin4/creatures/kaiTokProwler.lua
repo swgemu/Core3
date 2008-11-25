@@ -46,10 +46,11 @@ kaiTokProwler = Creature:new {
       faction = "KaiTok",
       gender = "",
 
-      name = "a Kai Tok Prowler",
+	  speciesName = "kai_tok_prowler",
+	  stfName = "mob/creature_names",
       objectCRC = 1823266132, 
       socialGroup = "KaiTok",
-      named = FALSE, 
+      
 
       level = 26,
       
@@ -99,7 +100,7 @@ kaiTokProwler = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ kaiTokProwler = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 35,
 
-      skills = { " Disease attack (poison)", " Posture down attack", " Ranged attack (spit)" }
+      --skills = { " Disease attack (poison)", " Posture down attack", " Ranged attack (spit)" }
+      skills = { "kaiTokAttack3", "kaiTokAttack4", "kaiTokAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

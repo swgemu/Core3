@@ -46,10 +46,11 @@ dalyrake = Creature:new {
       faction = "Dalyrake",
       gender = "",
 
-      stfName = "a Dalyrake",
+	  speciesName = "dalyrake",
+	  stfName = "mob/creature_names",
       objectCRC = 3621894346, 
       socialGroup = "Dalyrake",
-      named = FALSE, 
+      
 
       level = 9,
       

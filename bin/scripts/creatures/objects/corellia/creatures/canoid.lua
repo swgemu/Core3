@@ -46,10 +46,11 @@ canoid = Creature:new {
       faction = "Canoid",
       gender = "",
 
-      name = "a Canoid",
+	  speciesName = "canoid",
+	  stfName = "mob/creature_names",
       objectCRC = 1600355953, 
       socialGroup = "Canoid",
-      named = FALSE, 
+      
 
       level = 10,
       

@@ -46,10 +46,11 @@ pigmyPugoriss = Creature:new {
       faction = "Pugoriss",
       gender = "",
 
-      name = "a Pigmy Pugoriss",
+	  speciesName = "pigmy_pugoriss",
+	  stfName = "mob/creature_names",
       objectCRC = 2773934611, 
       socialGroup = "Pugoriss",
-      named = FALSE, 
+      
 
       level = 8,
       

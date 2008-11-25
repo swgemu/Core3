@@ -46,10 +46,11 @@ tancMite = Creature:new {
       faction = "Tancmite",
       gender = "",
 
-      name = "a Tanc Mite",
+	  speciesName = "tanc_mite",
+	  stfName = "mob/creature_names",
       objectCRC = 3413073886, 
       socialGroup = "Tancmite",
-      named = FALSE, 
+      
 
       level = 9,
       

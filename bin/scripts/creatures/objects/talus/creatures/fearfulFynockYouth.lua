@@ -46,7 +46,8 @@ fearfulFynockYouth = Creature:new {
       faction = "Fynock",
       gender = "",
 
-      name = "a Fearful Fynock Youth",
+      speciesName = "fearful_fynock_youth",
+      stfName = "mob/creature_names",
       objectCRC = 2406226385, 
       socialGroup = "Fynock",
       named = FALSE, 
@@ -138,7 +139,7 @@ fearfulFynockYouth = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 1,
 
-      skills = { "", "", "" }
+      skills = { "fynockAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

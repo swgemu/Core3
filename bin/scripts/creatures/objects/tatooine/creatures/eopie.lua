@@ -46,10 +46,11 @@ eopie = Creature:new {
       faction = "Eopie",
       gender = "",
 
-      name = "a Eopie",
+	  speciesName = "eopie",
+	  stfName = "mob/creature_names",
       objectCRC = 3289792361, 
       socialGroup = "Eopie",
-      named = FALSE, 
+      
 
       level = 7,
       

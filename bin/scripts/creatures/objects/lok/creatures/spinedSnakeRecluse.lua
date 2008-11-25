@@ -46,10 +46,11 @@ spinedSnakeRecluse = Creature:new {
       faction = "self",
       gender = "",
 
-      stfName = "a Spined Snake Recluse",
+	  speciesName = "spined_snake_recluse",
+	  stfName = "mob/creature_names",
       objectCRC = 271168429, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 14,
       

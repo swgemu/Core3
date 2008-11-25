@@ -46,10 +46,11 @@ savageQuenker = Creature:new {
       faction = "Quenker",
       gender = "",
 
-      name = "a Savage Quenker",
+	  speciesName = "savage_quenker",
+	  stfName = "mob/creature_names",
       objectCRC = 894437668, 
       socialGroup = "Quenker",
-      named = FALSE, 
+      
 
       level = 28,
       

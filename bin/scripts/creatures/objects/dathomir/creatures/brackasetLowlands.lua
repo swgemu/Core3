@@ -46,10 +46,11 @@ brackasetLowlands = Creature:new {
       faction = "Brackaset",
       gender = "",
 
-      name = "a Brackaset Lowlands",
+	  speciesName = "brackaset_lowlands",
+	  stfName = "mob/creature_names",
       objectCRC = 2038129742, 
       socialGroup = "Brackaset",
-      named = FALSE, 
+      
 
       level = 10,
       
@@ -138,7 +139,7 @@ brackasetLowlands = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 75,
 
-      skills = { "", "", "" }
+      skills = { "brackasetAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

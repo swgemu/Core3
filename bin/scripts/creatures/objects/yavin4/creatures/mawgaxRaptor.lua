@@ -46,10 +46,11 @@ mawgaxRaptor = Creature:new {
       faction = "Mawgax",
       gender = "",
 
-      name = "a Mawgax Raptor",
+	  speciesName = "mawgax_raptor",
+	  stfName = "mob/creature_names",
       objectCRC = 746705038, 
       socialGroup = "Mawgax",
-      named = FALSE, 
+      
 
       level = 30,
       
@@ -138,7 +139,8 @@ mawgaxRaptor = Creature:new {
       meatType = "meat_domesticated_yavin4",
       meatMax = 100,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "mawgaxAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

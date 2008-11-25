@@ -46,10 +46,11 @@ chuba = Creature:new {
       faction = "Chuba",
       gender = "",
 
-      name = "a Chuba",
+	  speciesName = "chuba",
+	  stfName = "mob/creature_names",
       objectCRC = 3129123954, 
       socialGroup = "Chuba",
-      named = FALSE, 
+      
 
       level = 5,
       

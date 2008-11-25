@@ -46,7 +46,8 @@ geneticallyEnhancedKahmurra = Creature:new {
       faction = "Kahmurra",
       gender = "",
 
-      name = "a Genetically Enhanced Kahmurra",
+      speciesName = "genetically_enhanced_kahmurra",
+      stfName = "mob/creature_names",
       objectCRC = 3723114695, 
       socialGroup = "Kahmurra",
       named = FALSE, 
@@ -138,7 +139,8 @@ geneticallyEnhancedKahmurra = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 50,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "kahmurraAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

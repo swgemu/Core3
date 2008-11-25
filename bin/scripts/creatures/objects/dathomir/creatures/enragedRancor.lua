@@ -46,10 +46,11 @@ enragedRancor = Creature:new {
       faction = "Rancor",
       gender = "",
 
-      stfName = "a Enraged Rancor",
+	  speciesName = "enraged_rancor",
+	  stfName = "mob/creature_names",
       objectCRC = 3516440142, 
       socialGroup = "Rancor",
-      named = FALSE, 
+      
 
       level = 80,
       
@@ -140,7 +141,7 @@ enragedRancor = Creature:new {
 
       skills = { "rancorAttack1", "rancorAttack2", "rancorAttack3" },
       
-	respawnTimer = 180,
+	  respawnTimer = 180,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

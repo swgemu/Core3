@@ -46,10 +46,11 @@ caveGapingSpiderRecluse = Creature:new {
       faction = "Nightsister",
       gender = "",
 
-      name = "a Cave Gaping Spider Recluse",
+	  speciesName = "cave_gaping_spider_recluse",
+	  stfName = "mob/creature_names",
       objectCRC = 2216583678, 
       socialGroup = "Nightsister",
-      named = FALSE, 
+      
 
       level = 46,
       
@@ -99,7 +100,7 @@ caveGapingSpiderRecluse = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ caveGapingSpiderRecluse = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 41,
 
-      skills = { " Area attack", " Poison attack (strong)", " Ranged attack (spit)" }
+      --skills = { " Area attack", " Poison attack (strong)", " Ranged attack (spit)" }
+      skills = { "gapingSpiderAttack7", "gapingSpiderAttack1", "gapingSpiderAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

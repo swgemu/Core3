@@ -46,10 +46,11 @@ warrenTuskcat = Creature:new {
       faction = "Tusk Cat",
       gender = "",
 
-      name = "a Warren Tuskcat",
+	  speciesName = "warren_tuskcat",
+	  stfName = "mob/creature_names",
       objectCRC = 3651259209, 
       socialGroup = "Tusk Cat",
-      named = FALSE, 
+      
 
       level = 16,
       

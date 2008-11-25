@@ -46,10 +46,11 @@ whisperBirdHatchling = Creature:new {
       faction = "Whisperbird",
       gender = "",
 
-      name = "a Whisper Bird Hatchling",
+	  speciesName = "whisper_bird_hatchling",
+	  stfName = "mob/creature_names",
       objectCRC = 453669455, 
       socialGroup = "Whisperbird",
-      named = FALSE, 
+      
 
       level = 7,
       
@@ -138,7 +139,7 @@ whisperBirdHatchling = Creature:new {
       meatType = "meat_avian_yavin4",
       meatMax = 55,
 
-      skills = { "", "", "" }
+      skills = { "whisperBirdAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

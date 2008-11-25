@@ -46,7 +46,8 @@ wolfKima = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Wolf Kima",
+      speciesName = "wolf_kima",
+      stfName = "mob/creature_names",
       objectCRC = 558452126, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +139,8 @@ wolfKima = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 10,
 
-      skills = { " Stun attack", " Blind attack", "" }
+      --skills = { " Stun attack", " Blind attack", "" }
+      skills = { "kimaAttack1", "kimaAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,8 @@ minorGufDrolg = Creature:new {
       faction = "Guf Drolg",
       gender = "",
 
-      name = "a Minor Guf Drolg",
+      speciesName = "minor_guf_drolg",
+      stfName = "mob/creature_names",
       objectCRC = 1297255033, 
       socialGroup = "Guf Drolg",
       named = FALSE, 
@@ -138,7 +139,8 @@ minorGufDrolg = Creature:new {
       meatType = "meat_reptilian_talus",
       meatMax = 300,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "gufDrolgAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

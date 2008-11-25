@@ -46,10 +46,11 @@ bloodDrenchedMerekKing = Creature:new {
       faction = "Merek",
       gender = "",
 
-      stfName = "a Blood Drenched Merek King",
+	  speciesName = "blood_drenched_merek_king",
+	  stfName = "mob/creature_names",
       objectCRC = 21982066, 
       socialGroup = "Merek",
-      named = FALSE, 
+      
 
       level = 56,
       

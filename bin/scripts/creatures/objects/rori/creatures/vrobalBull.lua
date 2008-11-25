@@ -46,10 +46,11 @@ vrobalBull = Creature:new {
       faction = "Vrobal",
       gender = "",
 
-      name = "a Vrobal Bull",
+	  speciesName = "vrobal_bull",
+	  stfName = "mob/creature_names",
       objectCRC = 1400935020, 
       socialGroup = "Vrobal",
-      named = FALSE, 
+      
 
       level = 19,
       

@@ -46,7 +46,8 @@ gapingSpiderChasmal = Creature:new {
       faction = "Gaping",
       gender = "",
 
-      name = "a Gaping Spider Chasmal",
+      speciesName = "gaping_spider_chasmal",
+	  stfName = "mob/creature_names",
       objectCRC = 874176443, 
       socialGroup = "Gaping",
       named = FALSE, 

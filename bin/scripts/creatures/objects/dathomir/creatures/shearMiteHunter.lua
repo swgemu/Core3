@@ -46,10 +46,11 @@ shearMiteHunter = Creature:new {
       faction = "Shearmite",
       gender = "",
 
-      name = "a Shear Mite Hunter",
+	  speciesName = "shear_mite_hunter",
+	  stfName = "mob/creature_names",
       objectCRC = 4216430900, 
       socialGroup = "Shearmite",
-      named = FALSE, 
+      
 
       level = 29,
       
@@ -138,7 +139,8 @@ shearMiteHunter = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 15,
 
-      skills = { " Posture down attack", " Poison attack (medium)", "" }
+      --skills = { " Posture down attack", " Poison attack (medium)", "" }
+      skills = { "shearMiteAttack4", "shearMiteAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

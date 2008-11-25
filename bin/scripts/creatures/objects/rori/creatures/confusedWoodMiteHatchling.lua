@@ -46,10 +46,11 @@ confusedWoodMiteHatchling = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Confused Wood Mite Hatchling",
+	  speciesName = "confused_wood_mite_hatchling",
+	  stfName = "mob/creature_names",
       objectCRC = 38180676, 
       socialGroup = "Bark Mite",
-      named = FALSE, 
+      
 
       level = 9,
       

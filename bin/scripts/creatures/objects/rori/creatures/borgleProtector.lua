@@ -46,10 +46,11 @@ borgleProtector = Creature:new {
       faction = "Borgle",
       gender = "",
 
-      name = "a Borgle Protector",
+	  speciesName = "borgle_protector",
+	  stfName = "mob/creature_names",
       objectCRC = 715008896, 
       socialGroup = "Borgle",
-      named = FALSE, 
+      
 
       level = 14,
       

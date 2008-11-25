@@ -46,10 +46,11 @@ sickeningDungMiteWorker = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Sickening Dung Mite Worker",
+	  speciesName = "sickening_dung_mite_worker",
+	  stfName = "mob/creature_names",
       objectCRC = 382834958, 
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 15,
       

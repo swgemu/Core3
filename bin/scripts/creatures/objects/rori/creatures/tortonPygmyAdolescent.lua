@@ -46,10 +46,11 @@ tortonPygmyAdolescent = Creature:new {
       faction = "Torton",
       gender = "",
 
-      name = "a Torton Pygmy Adolescent",
+	  speciesName = "torton_pygmy_adolescent",
+	  stfName = "mob/creature_names",
       objectCRC = 2343686181, 
       socialGroup = "Torton",
-      named = FALSE, 
+      
 
       level = 14,
       

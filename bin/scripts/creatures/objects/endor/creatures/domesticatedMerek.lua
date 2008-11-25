@@ -46,10 +46,11 @@ domesticatedMerek = Creature:new {
       faction = "self",
       gender = "",
 
-      stfName = "a Domesticated Merek",
+	  speciesName = "domesticated_merek",
+	  stfName = "mob/creature_names",
       objectCRC = 4057111915, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 49,
       

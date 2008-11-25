@@ -46,10 +46,11 @@ wastelandCuPa = Creature:new {
       faction = "CuPa",
       gender = "",
 
-      name = "a Wasteland Cu Pa",
+	  speciesName = "wasteland_cu_pa",
+	  stfName = "mob/creature_names",
       objectCRC = 1883442736, 
       socialGroup = "CuPa",
-      named = FALSE, 
+      
 
       level = 19,
       

@@ -46,10 +46,11 @@ shaggyGurkYouth = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      stfName = "a Shaggy Gurk Youth",
+	  speciesName = "shaggy_gurk_youth",
+	  stfName = "mob/creature_names",
       objectCRC = 117230570, 
       socialGroup = "Gurk",
-      named = FALSE, 
+      
 
       level = 30,
       

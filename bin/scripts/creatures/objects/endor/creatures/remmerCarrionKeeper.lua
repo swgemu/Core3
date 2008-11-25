@@ -46,10 +46,11 @@ remmerCarrionKeeper = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      stfName = "a Remmer Carrion Keeper",
+	  speciesName = "remmer_carrion_keeper",
+	  stfName = "mob/creature_names",
       objectCRC = 3186677588, 
       socialGroup = "Remmer",
-      named = FALSE, 
+      
 
       level = 24,
       

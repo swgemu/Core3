@@ -46,10 +46,11 @@ deliriousMerekAvenger = Creature:new {
       faction = "Merek",
       gender = "",
 
-      stfName = "a Delirious Merek Avenger",
+	  speciesName = "delirious_merek_avenger",
+	  stfName = "mob/creature_names",
       objectCRC = 4057111915, 
       socialGroup = "Merek",
-      named = FALSE, 
+      
 
       level = 40,
       

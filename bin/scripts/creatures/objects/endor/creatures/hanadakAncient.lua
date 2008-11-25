@@ -46,10 +46,11 @@ hanadakAncient = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      stfName = "a Hanadak Ancient",
+	  speciesName = "hanadak_ancient",
+	  stfName = "mob/creature_names",
       objectCRC = 737828942, 
       socialGroup = "Hanadak",
-      named = FALSE, 
+      
 
       level = 41,
       

@@ -46,10 +46,11 @@ youngMalkloc = Creature:new {
       faction = "Malkloc",
       gender = "",
 
-      name = "a Young Malkloc",
+	  speciesName = "young_malkloc",
+	  stfName = "mob/creature_names",
       objectCRC = 3978814666, 
       socialGroup = "Malkloc",
-      named = FALSE, 
+      
 
       level = 20,
       
@@ -138,7 +139,8 @@ youngMalkloc = Creature:new {
       meatType = "meat_herbivore_dathomir",
       meatMax = 850,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "malklocAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

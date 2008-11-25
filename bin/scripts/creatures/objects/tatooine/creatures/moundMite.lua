@@ -46,10 +46,11 @@ moundMite = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Mound Mite",
+	  speciesName = "mound_mite",
+	  stfName = "mob/creature_names",
       objectCRC = 4266026234, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 9,
       

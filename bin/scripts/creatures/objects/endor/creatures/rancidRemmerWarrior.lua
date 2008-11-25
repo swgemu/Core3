@@ -46,10 +46,11 @@ rancidRemmerWarrior = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      stfName = "a Rancid Remmer Warrior",
+	  speciesName = "rancid_remmer_warrior",
+	  stfName = "mob/creature_names",
       objectCRC = 3273659222, 
       socialGroup = "Remmer",
-      named = FALSE, 
+      
 
       level = 33,
       

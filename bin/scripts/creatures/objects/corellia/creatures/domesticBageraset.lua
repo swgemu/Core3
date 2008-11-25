@@ -46,10 +46,11 @@ domesticBageraset = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Domestic Bageraset",
+	  speciesName = "domestic_bageraset",
+	  stfName = "mob/creature_names",
       objectCRC = 2017464107, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 8,
       

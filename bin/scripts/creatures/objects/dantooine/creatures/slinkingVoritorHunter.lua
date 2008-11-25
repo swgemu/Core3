@@ -46,10 +46,11 @@ slinkingVoritorHunter = Creature:new {
       faction = "Voritor Lizard",
       gender = "",
 
-      name = "a Slinking Voritor Hunter",
+	  speciesName = "slinking_voritor_hunter",
+	  stfName = "mob/creature_names",
       objectCRC = 1248104419, 
       socialGroup = "Voritor Lizard",
-      named = FALSE, 
+      
 
       level = 57,
       

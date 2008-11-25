@@ -46,10 +46,11 @@ injuredKwi = Creature:new {
       faction = "Kwi",
       gender = "",
 
-      name = "a Injured Kwi",
+	  speciesName = "injured_kwi",
+	  stfName = "mob/creature_names",
       objectCRC = 2111021739, 
       socialGroup = "Kwi",
-      named = FALSE, 
+      
 
       level = 8,
       
@@ -138,7 +139,8 @@ injuredKwi = Creature:new {
       meatType = "meat_herbivore_dathomir",
       meatMax = 100,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "kwiAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

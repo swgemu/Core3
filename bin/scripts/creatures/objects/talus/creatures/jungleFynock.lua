@@ -46,7 +46,8 @@ jungleFynock = Creature:new {
       faction = "Fynock",
       gender = "",
 
-      name = "a Jungle Fynock",
+      speciesName = "jungle_fynock",
+      stfName = "mob/creature_names",
       objectCRC = 388899118, 
       socialGroup = "Fynock",
       named = FALSE, 
@@ -138,7 +139,8 @@ jungleFynock = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 28,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "fynockAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

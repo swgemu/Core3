@@ -46,10 +46,11 @@ maleGreatGrassPlainsTuskCat = Creature:new {
       faction = "Tusk Cat",
       gender = "",
 
-      name = "a Male Great Grass Plains Tusk Cat",
+	  speciesName = "male_great_grass_plains_tusk_cat",
+	  stfName = "mob/creature_names",
       objectCRC = 2922712105, 
       socialGroup = "Tusk Cat",
-      named = FALSE, 
+      
 
       level = 16,
       

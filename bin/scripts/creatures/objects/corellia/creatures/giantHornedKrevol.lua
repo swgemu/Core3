@@ -46,10 +46,11 @@ giantHornedKrevol = Creature:new {
       faction = "Horned Krevol",
       gender = "",
 
-      name = "a Giant Horned Krevol",
+	  speciesName = "giant_horned_krevol",
+	  stfName = "mob/creature_names",
       objectCRC = 135987033, 
       socialGroup = "Horned Krevol",
-      named = FALSE, 
+      
 
       level = 11,
       

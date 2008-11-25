@@ -46,10 +46,11 @@ gorgGlutton = Creature:new {
       faction = "Gorg",
       gender = "",
 
-      name = "a Gorg Glutton",
+	  speciesName = "gorg_glutton",
+	  stfName = "mob/creature_names",
       objectCRC = 2760269032, 
       socialGroup = "Gorg",
-      named = FALSE, 
+      
 
       level = 7,
       

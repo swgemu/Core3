@@ -140,7 +140,7 @@ tuskenExecutionerRandom = Creature:new {
       meatMax = 0,
 
       skills = { "tuskenRangedAttack4", "tuskenRangedAttack5", "tuskenRangedAttack6", "tuskenRangedAttack7",  "tuskenRangedAttack8", "tuskenRangedAttack9", "tuskenRangedAttack10", "tuskenRangedAttack11", "tuskenRangedAttack12",  "tuskenRangedAttack13" },
-      --respawnTimer = 36000,
+      respawnTimer = 36000,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

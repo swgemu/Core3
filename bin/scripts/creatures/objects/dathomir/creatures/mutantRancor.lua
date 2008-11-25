@@ -46,10 +46,11 @@ mutantRancor = Creature:new {
       faction = "Rancor",
       gender = "",
 
-      stfName = "a Mutant Rancor",
+	  speciesName = "mutant_rancor",
+	  stfName = "mob/creature_names",
       objectCRC = 976459327, 
       socialGroup = "Rancor",
-      named = FALSE, 
+      
 
       level = 75,
       
@@ -139,7 +140,7 @@ mutantRancor = Creature:new {
       meatMax = 1020,
 	  skills = { "rancorAttack2", "rancorAttack3" },
       -- skills = { " Area attack (bleeds)", " Dizzy attack", "" }
-       respawnTimer = 60,
+      respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

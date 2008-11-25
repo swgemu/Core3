@@ -46,10 +46,11 @@ roamingBordokStud = Creature:new {
       faction = "Bordok",
       gender = "",
 
-      stfName = "a Roaming Bordok Stud",
+	  speciesName = "roaming_bordok_stud",
+	  stfName = "mob/creature_names",
       objectCRC = 153161597, 
       socialGroup = "Bordok",
-      named = FALSE, 
+      
 
       level = 34,
       

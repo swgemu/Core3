@@ -46,10 +46,11 @@ flewtLeviathan = Creature:new {
       faction = "Rewt",
       gender = "",
 
-      name = "a Flewt Leviathan",
+	  speciesName = "flewt_leviathan",
+	  stfName = "mob/creature_names",
       objectCRC = 1436777570, 
       socialGroup = "Rewt",
-      named = FALSE, 
+      
 
       level = 9,
       

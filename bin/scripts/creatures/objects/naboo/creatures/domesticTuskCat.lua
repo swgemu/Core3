@@ -46,10 +46,11 @@ domesticTuskCat = Creature:new {
       faction = "Naboo",
       gender = "",
 
-      name = "a Domestic Tusk Cat",
+	  speciesName = "domestic_tusk_cat",
+	  stfName = "mob/creature_names",
       objectCRC = 4196368391, 
       socialGroup = "Naboo",
-      named = FALSE, 
+      
 
       level = 18,
       

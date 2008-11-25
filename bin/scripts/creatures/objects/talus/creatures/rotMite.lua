@@ -46,7 +46,8 @@ rotMite = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Rot Mite",
+      speciesName = "rot_mite",
+      stfName = "mob/creature_names",
       objectCRC = 4167786528, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -138,7 +139,8 @@ rotMite = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 3,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "rotMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

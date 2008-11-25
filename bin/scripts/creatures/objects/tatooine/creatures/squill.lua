@@ -46,10 +46,11 @@ squill = Creature:new {
       faction = "Squill",
       gender = "",
 
-      stfName = "a Squill",
+	  speciesName = "squill",
+	  stfName = "mob/creature_names",
       objectCRC = 1824637824, 
       socialGroup = "Squill",
-      named = FALSE, 
+      
 
       level = 18,
       

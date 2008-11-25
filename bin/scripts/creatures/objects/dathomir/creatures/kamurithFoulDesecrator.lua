@@ -46,10 +46,11 @@ kamurithFoulDesecrator = Creature:new {
       faction = "Kamurith",
       gender = "",
 
-      name = "a Kamurith Foul Desecrator",
+	  speciesName = "kamurith_foul_desecrator",
+	  stfName = "mob/creature_names",
       objectCRC = 1766827549, 
       socialGroup = "Kamurith",
-      named = FALSE, 
+      
 
       level = 60,
       
@@ -138,7 +139,8 @@ kamurithFoulDesecrator = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 90,
 
-      skills = { " Disease attack (strong)", " Area attack (disease)", "" }
+      --skills = { " Disease attack (strong)", " Area attack (disease)", "" }
+      skills = { "kamurithAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

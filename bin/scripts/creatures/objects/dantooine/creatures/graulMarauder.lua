@@ -46,10 +46,11 @@ graulMarauder = Creature:new {
       faction = "Graul",
       gender = "",
 
-      stfName = "a Graul Marauder",
+	  speciesName = "graul_marauder",
+	  stfName = "mob/creature_names",
       objectCRC = 4126395623, 
       socialGroup = "Graul",
-      named = FALSE, 
+      
 
       level = 173,      
 

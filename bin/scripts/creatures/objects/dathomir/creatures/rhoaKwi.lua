@@ -46,10 +46,11 @@ rhoaKwi = Creature:new {
       faction = "Rhoa Kwi",
       gender = "",
 
-      name = "a Rhoa Kwi",
+	  speciesName = "rhoa_kwi",
+	  stfName = "mob/creature_names",
       objectCRC = 2111021739, 
       socialGroup = "Rhoa Kwi",
-      named = FALSE, 
+      
 
       level = 35,
       
@@ -99,7 +100,7 @@ rhoaKwi = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ rhoaKwi = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 120,
 
-      skills = { " Ranged attack (spit)", " Intimidation attack", " Stun attack" }
+      --skills = { " Ranged attack (spit)", " Intimidation attack", " Stun attack" }
+      skills = { "kwiAttack2", "kwiAttack1", "kwiAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ domesticatedBrackaset = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Domesticated Brackaset",
+	  speciesName = "domesticated_brackaset",
+	  stfName = "mob/creature_names",
       objectCRC = 2038129742, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 23,
       
@@ -138,7 +139,8 @@ domesticatedBrackaset = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 100,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "brackasetAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

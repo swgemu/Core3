@@ -46,10 +46,11 @@ quenkerRelicReaper = Creature:new {
       faction = "Quenker",
       gender = "",
 
-      name = "a Quenker Relic Reaper",
+	  speciesName = "quenker_relic_reaper",
+	  stfName = "mob/creature_names",
       objectCRC = 3105108794, 
       socialGroup = "Quenker",
-      named = FALSE, 
+      
 
       level = 45,
       

@@ -46,7 +46,8 @@ hilltopKima = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Hilltop Kima",
+      speciesName = "hilltop_kima",
+      stfName = "mob/creature_names",
       objectCRC = 558452126, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +139,8 @@ hilltopKima = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 8,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

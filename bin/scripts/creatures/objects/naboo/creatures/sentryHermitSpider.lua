@@ -46,10 +46,11 @@ sentryHermitSpider = Creature:new {
       faction = "Hermit Spider",
       gender = "",
 
-      name = "a Sentry Hermit Spider",
+	  speciesName = "sentry_hermit_spider",
+	  stfName = "mob/creature_names",
       objectCRC = 894333200, 
       socialGroup = "Hermit Spider",
-      named = FALSE, 
+      
 
       level = 10,
       

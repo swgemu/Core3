@@ -46,10 +46,11 @@ zuccaBoarBlight = Creature:new {
       faction = "Zucca Boar",
       gender = "",
 
-      name = "a Zucca Boar Blight",
+	  speciesName = "zucca_boar_blight",
+	  stfName = "mob/creature_names",
       objectCRC = 1815686462, 
       socialGroup = "Zucca Boar",
-      named = FALSE, 
+      
 
       level = 12,
       

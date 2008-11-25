@@ -46,10 +46,11 @@ giantSandBeetleCave = Creature:new {
       faction = "Sand Beetle",
       gender = "",
 
-      name = "a Giant Sand Beetle Cave",
+	  speciesName = "giant_sand_beetle_cave",
+	  stfName = "mob/creature_names",
       objectCRC = 607873114, 
       socialGroup = "Sand Beetle",
-      named = FALSE, 
+      
 
       level = 30,
       

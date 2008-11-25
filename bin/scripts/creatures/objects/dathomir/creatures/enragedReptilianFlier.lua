@@ -46,10 +46,11 @@ enragedReptilianFlier = Creature:new {
       faction = "Reptilian Flier",
       gender = "",
 
-      name = "a Enraged Reptilian Flier",
+	  speciesName = "enraged_reptilian_flier",
+	  stfName = "mob/creature_names",
       objectCRC = 2270001055, 
       socialGroup = "Reptilian Flier",
-      named = FALSE, 
+      
 
       level = 27,
       
@@ -138,7 +139,8 @@ enragedReptilianFlier = Creature:new {
       meatType = "meat_avian_dathomir",
       meatMax = 135,
 
-      skills = { " Dizzy attack", " Blind attack", "" }
+      --skills = { " Dizzy attack", " Blind attack", "" }
+      skills = { "reptilianFlierAttack2", "reptilianFlierAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

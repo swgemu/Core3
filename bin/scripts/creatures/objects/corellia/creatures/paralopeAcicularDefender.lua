@@ -46,10 +46,11 @@ paralopeAcicularDefender = Creature:new {
       faction = "Paralope",
       gender = "",
 
-      name = "a Paralope Acicular Defender",
+	  speciesName = "paralope_acicular_defender",
+	  stfName = "mob/creature_names",
       objectCRC = 634611787, 
       socialGroup = "Paralope",
-      named = FALSE, 
+      
 
       level = 8,
       

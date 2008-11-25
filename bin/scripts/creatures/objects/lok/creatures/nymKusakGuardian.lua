@@ -46,10 +46,11 @@ nymKusakGuardian = Creature:new {
       faction = "Nym",
       gender = "",
 
-      stfName = "a Nym Kusak Guardian",
+	  speciesName = "nym_kusak_guardian",
+	  stfName = "mob/creature_names",
       objectCRC = 1518117227, 
       socialGroup = "Nym",
-      named = FALSE, 
+      
 
       level = 29,
       

@@ -46,10 +46,11 @@ giantBazNitch = Creature:new {
       faction = "Baz Nitch",
       gender = "",
 
-      stfName = "a Giant Baz Nitch",
+	  speciesName = "giant_baz_nitch",
+	  stfName = "mob/creature_names",
       objectCRC = 411959999, 
       socialGroup = "Baz Nitch",
-      named = FALSE, 
+      
 
       level = 35,
       
@@ -139,7 +140,7 @@ giantBazNitch = Creature:new {
       meatMax = 9,
 
       skills = { "bazNitchAttack1" },
-       respawnTimer = 60,
+      respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

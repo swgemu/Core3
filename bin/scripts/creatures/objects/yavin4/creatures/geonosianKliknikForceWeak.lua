@@ -46,10 +46,11 @@ geonosianKliknikForceWeak = Creature:new {
       faction = "Geon. Monster",
       gender = "",
 
-      name = "a Geonosian Kliknik Force Weak",
+	  speciesName = "geonosian_kliknik_force_weak",
+	  stfName = "mob/creature_names",
       objectCRC = 965104200, 
       socialGroup = "Geon. Monster",
-      named = FALSE, 
+      
 
       level = 109,
       
@@ -99,7 +100,7 @@ geonosianKliknikForceWeak = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_heavy_flame.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ geonosianKliknikForceWeak = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 45,
 
-      skills = { " Stun attack", " Area attack", " Ranged attack (flame)" }
+      --skills = { " Stun attack", " Area attack", " Ranged attack (flame)" }
+      skills = { "kliknikAttack1", "kliknikAttack2", "kliknikAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

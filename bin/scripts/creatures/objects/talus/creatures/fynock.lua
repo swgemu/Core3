@@ -46,7 +46,8 @@ fynock = Creature:new {
       faction = "Fynock",
       gender = "",
 
-      name = "a Fynock",
+      speciesName = "fynock",
+      stfName = "mob/creature_names",
       objectCRC = 388899118, 
       socialGroup = "Fynock",
       named = FALSE, 

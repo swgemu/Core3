@@ -46,10 +46,11 @@ festeringSquill = Creature:new {
       faction = "Endot Squill",
       gender = "",
 
-      stfName = "a Festering Squill",
+	  speciesName = "festering_squill",
+	  stfName = "mob/creature_names",
       objectCRC = 1824637824, 
       socialGroup = "Endor Squill",
-      named = FALSE, 
+      
 
       level = 31,
       

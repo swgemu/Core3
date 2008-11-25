@@ -46,10 +46,11 @@ enragedTybis = Creature:new {
       faction = "Tybis",
       gender = "",
 
-      name = "a Enraged Tybis",
+	  speciesName = "enraged_tybis",
+	  stfName = "mob/creature_names",
       objectCRC = 393124713, 
       socialGroup = "Tybis",
-      named = FALSE, 
+      
 
       level = 26,
       
@@ -138,8 +139,8 @@ enragedTybis = Creature:new {
       meatType = "meat_herbivore_yavin4",
       meatMax = 220,
 
-      skills = { "TybisAttack1" },
-       respawnTimer = 60,
+      skills = { "tybisAttack1" },
+      respawnTimer = 60,
 
       behaviorScript = "" -- Link to the behavior script for this object
 }

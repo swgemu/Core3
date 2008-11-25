@@ -46,10 +46,11 @@ purboleStalker = Creature:new {
       faction = "Purbole",
       gender = "",
 
-      name = "a Purbole Stalker",
+	  speciesName = "purbole_stalker",
+	  stfName = "mob/creature_names",
       objectCRC = 1043838137, 
       socialGroup = "Purbole",
-      named = FALSE, 
+      
 
       level = 19,
       
@@ -138,7 +139,8 @@ purboleStalker = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 15,
 
-      skills = { " Dizzy attack", " Poison attack (mild)", "" }
+      --skills = { " Dizzy attack", " Poison attack (mild)", "" }
+      skills = { "purboleAttack4", "purboleAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

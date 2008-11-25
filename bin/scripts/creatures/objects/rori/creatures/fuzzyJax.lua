@@ -46,10 +46,11 @@ fuzzyJax = Creature:new {
       faction = "Jax",
       gender = "",
 
-      name = "a Fuzzy Jax",
+	  speciesName = "fuzzy_jax",
+	  stfName = "mob/creature_names",
       objectCRC = 2095266416, 
       socialGroup = "Jax",
-      named = FALSE, 
+      
 
       level = 13,
       

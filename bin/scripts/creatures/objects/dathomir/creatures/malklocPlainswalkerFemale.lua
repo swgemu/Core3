@@ -46,10 +46,11 @@ malklocPlainswalkerFemale = Creature:new {
       faction = "Malkloc",
       gender = "",
 
-      name = "a Malkloc Plainswalker Female",
+	  speciesName = "a female malkloc plainswalker",
+	  stfName = "mob/creature_names",
       objectCRC = 197708576, 
       socialGroup = "Malkloc",
-      named = FALSE, 
+      
 
       level = 81,
       
@@ -138,7 +139,8 @@ malklocPlainswalkerFemale = Creature:new {
       meatType = "meat_herbivore_dathomir",
       meatMax = 2000,
 
-      skills = { " Stun attack", " Area attack (knockdown)", "" }
+      --skills = { " Stun attack", " Area attack (knockdown)", "" }
+      skills = { "malklocAttack2", "malklocAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

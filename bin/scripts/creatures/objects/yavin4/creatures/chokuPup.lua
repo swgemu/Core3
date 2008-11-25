@@ -46,10 +46,11 @@ chokuPup = Creature:new {
       faction = "Choku",
       gender = "",
 
-      name = "a Choku Pup",
+	  speciesName = "choku_pup",
+	  stfName = "mob/creature_names",
       objectCRC = 164314374, 
       socialGroup = "Choku",
-      named = FALSE, 
+      
 
       level = 8,
       
@@ -138,7 +139,7 @@ chokuPup = Creature:new {
       meatType = "meat_avian_yavin4",
       meatMax = 7,
 
-      skills = { "", "", "" }
+      skills = { "chokuAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

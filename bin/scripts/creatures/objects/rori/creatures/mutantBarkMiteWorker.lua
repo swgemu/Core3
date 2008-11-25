@@ -46,10 +46,11 @@ mutantBarkMiteWorker = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Mutant Bark Mite Worker",
+	  speciesName = "mutant_bark_mite_worker",
+	  stfName = "mob/creature_names",
       objectCRC = 2318119001, 
       socialGroup = "Bark Mite",
-      named = FALSE, 
+      
 
       level = 12,
       

@@ -46,10 +46,11 @@ violentKrahbu = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Violent Krahbu",
+	  speciesName = "violent_krahbu",
+	  stfName = "mob/creature_names",
       objectCRC = 3335337379, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 13,
       

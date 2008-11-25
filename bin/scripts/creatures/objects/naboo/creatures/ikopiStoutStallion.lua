@@ -46,10 +46,11 @@ ikopiStoutStallion = Creature:new {
       faction = "Ikopi",
       gender = "",
 
-      name = "a Ikopi Stout Stallion",
+	  speciesName = "ikopi_stout_stallion",
+	  stfName = "mob/creature_names",
       objectCRC = 2370403426, 
       socialGroup = "Ikopi",
-      named = FALSE, 
+      
 
       level = 9,
       

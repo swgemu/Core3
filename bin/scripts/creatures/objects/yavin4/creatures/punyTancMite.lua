@@ -46,10 +46,11 @@ punyTancMite = Creature:new {
       faction = "Tancmite",
       gender = "",
 
-      name = "a Puny Tanc Mite",
+	  speciesName = "puny_tanc_mite",
+	  stfName = "mob/creature_names",
       objectCRC = 469284351, 
       socialGroup = "Tancmite",
-      named = FALSE, 
+      
 
       level = 2,
       
@@ -138,7 +139,7 @@ punyTancMite = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 2,
 
-      skills = { "", "", "" }
+      skills = { "tancMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

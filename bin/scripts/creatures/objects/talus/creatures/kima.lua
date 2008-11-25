@@ -46,7 +46,8 @@ kima = Creature:new {
       faction = "Kima",
       gender = "",
 
-      name = "a Kima",
+      speciesName = "kima",
+      stfName = "mob/creature_names",
       objectCRC = 558452126, 
       socialGroup = "Kima",
       named = FALSE, 

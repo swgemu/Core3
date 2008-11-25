@@ -46,10 +46,11 @@ hermitSpider = Creature:new {
       faction = "Hermit Spider",
       gender = "",
 
-      name = "a Hermit Spider",
+	  speciesName = "hermit_spider",
+	  stfName = "mob/creature_names",
       objectCRC = 737828942, 
       socialGroup = "Hermit Spider",
-      named = FALSE, 
+      
 
       level = 7,
       

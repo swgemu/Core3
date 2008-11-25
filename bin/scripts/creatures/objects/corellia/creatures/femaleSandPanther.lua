@@ -46,10 +46,11 @@ femaleSandPanther = Creature:new {
       faction = "Sand Panther",
       gender = "",
 
-      name = "a Female Sand Panther",
+	  speciesName = "female_sand_panther ",
+	  stfName = "mob/creature_names",
       objectCRC = 705935397, 
       socialGroup = "Sand Panther",
-      named = FALSE, 
+      
 
       level = 22,
       

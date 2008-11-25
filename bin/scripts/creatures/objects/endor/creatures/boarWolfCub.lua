@@ -46,10 +46,11 @@ boarWolfCub = Creature:new {
       faction = "Boar Wolf",
       gender = "",
 
-      stfName = "a Boar Wolf Cub",
+	  speciesName = "boar_wolf_cub",
+	  stfName = "mob/creature_names",
       objectCRC = 2560245072, 
       socialGroup = "Boar Wolf",
-      named = FALSE, 
+      
 
       level = 18,
       

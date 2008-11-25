@@ -46,7 +46,8 @@ sicklyDecayMiteQueen = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Sickly Decay Mite Queen",
+      speciesName = "sickly_decay_mite_queen",
+      stfName = "mob/creature_names",
       objectCRC = 3821753803, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -99,7 +100,7 @@ sicklyDecayMiteQueen = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ sicklyDecayMiteQueen = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 15,
 
-      skills = { " Ranged attack (spit)", " Disease attack (medium)", " Blind attack" }
+      --skills = { " Ranged attack (spit)", " Disease attack (medium)", " Blind attack" }
+      skills = { "decayMiteAttack3", "decayMiteAttack1", "decayMiteAttack7" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

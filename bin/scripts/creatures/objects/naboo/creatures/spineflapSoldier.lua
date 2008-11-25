@@ -46,10 +46,11 @@ spineflapSoldier = Creature:new {
       faction = "Spineflap",
       gender = "",
 
-      name = "a Spineflap Soldier",
+	  speciesName = "spineflap_soldier",
+	  stfName = "mob/creature_names",
       objectCRC = 3797965860, 
       socialGroup = "Spineflap",
-      named = FALSE, 
+      
 
       level = 14,
       

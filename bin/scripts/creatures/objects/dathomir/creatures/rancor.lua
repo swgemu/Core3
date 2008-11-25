@@ -46,10 +46,11 @@ rancor = Creature:new {
       faction = "Rancor",
       gender = "",
 
-      stfName = "a Rancor",
+	  speciesName = "rancor",
+	  stfName = "mob/creature_names",
       objectCRC = 3516440142, 
       socialGroup = "Rancor",
-      named = FALSE, 
+      
 
       level = 50,
       
@@ -137,7 +138,7 @@ rancor = Creature:new {
 
       meatType = "meat_carnivore_dathomir",
       meatMax = 950,
-	skills = { "rancorAttack1", "rancorAttack2" },   
+	  skills = { "rancorAttack1", "rancorAttack2" },   
       respawnTimer = 180,
 
       behaviorScript = "", -- Link to the behavior script for this object

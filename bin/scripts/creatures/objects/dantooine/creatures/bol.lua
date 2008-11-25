@@ -46,10 +46,11 @@ bol = Creature:new {
       faction = "Bol",
       gender = "",
 
-      stfName = "a Bol",
+	  speciesName = "bol",
+	  stfName = "mob/creature_names",
       objectCRC = 1195766949, 
       socialGroup = "Bol",
-      named = FALSE, 
+      
 
       level = 29,
       

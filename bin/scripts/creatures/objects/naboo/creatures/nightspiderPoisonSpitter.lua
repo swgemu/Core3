@@ -46,10 +46,11 @@ nightspiderPoisonSpitter = Creature:new {
       faction = "Nightspider",
       gender = "",
 
-      name = "a Nightspider Poison Spitter",
+	  speciesName = "nightspider_poison_spitter",
+	  stfName = "mob/creature_names",
       objectCRC = 184069760, 
       socialGroup = "Nightspider",
-      named = FALSE, 
+      
 
       level = 11,
       

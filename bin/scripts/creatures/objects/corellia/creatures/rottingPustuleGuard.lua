@@ -46,10 +46,11 @@ rottingPustuleGuard = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Rotting Pustule Guard",
+	  speciesName = "rotting_pustule_guard",
+	  stfName = "mob/creature_names",
       objectCRC = 3943467921, 
       socialGroup = "Decay Mite",
-      named = FALSE, 
+      
 
       level = 13,
       

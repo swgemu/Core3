@@ -45,8 +45,9 @@ kimaFerineRazorfang = Creature:new {
       creatureType = "ANIMAL",
       faction = "Kima",
       gender = "",
-
-      name = "a Kima Ferine Razorfang",
+	  
+      speciesName = "kima_ferine_razorfang",
+      stfName = "mob/creature_names",
       objectCRC = 558452126, 
       socialGroup = "Kima",
       named = FALSE, 
@@ -138,7 +139,8 @@ kimaFerineRazorfang = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 7,
 
-      skills = { " Blind attack", " Intimidation attack", "" }
+      --skills = { " Blind attack", " Intimidation attack", "" }
+      skills = { "kimaAttack3", "kimaAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

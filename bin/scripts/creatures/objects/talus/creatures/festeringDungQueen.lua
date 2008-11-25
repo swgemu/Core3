@@ -46,8 +46,8 @@ festeringDungQueen = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Festering Dung Queen",
-      objectCRC = 382834958, 
+      speciesName = "festering_dung_queen",
+      stfName = "mob/creature_names",
       socialGroup = "Decay Mite",
       named = FALSE, 
 
@@ -138,7 +138,8 @@ festeringDungQueen = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 13,
 
-      skills = { " Dizzy attack", " Disease attack (mild)", "" }
+      --skills = { " Dizzy attack", " Disease attack (mild)", "" }
+      skills = { "dungMiteAttack2", "dungMiteAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,7 +46,8 @@ pussCoveredDecayMiteSoldier = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Puss Covered Decay Mite Soldier",
+      speciesName = "puss_covered_decay_mite_soldier",
+      stfName = "mob/creature_names",
       objectCRC = 3943467921, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -99,7 +100,7 @@ pussCoveredDecayMiteSoldier = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ pussCoveredDecayMiteSoldier = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 10,
 
-      skills = { " Blind attack", " Disease attack (mild)", " Ranged attack (spit)" }
+      --skills = { " Blind attack", " Disease attack (mild)", " Ranged attack (spit)" }
+      skills = { "decayMiteAttack7", "decayMiteAttack1", "decayMiteAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

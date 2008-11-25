@@ -46,10 +46,11 @@ kreetle = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Kreetle",
+	  speciesName = "kreetle",
+	  stfName = "mob/creature_names",
       objectCRC = 3267723937, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 3,
       

@@ -46,10 +46,11 @@ langlatchMarauder = Creature:new {
       faction = "Langiatch",
       gender = "",
 
-      stfName = "a Langlatch Marauder",
+	  speciesName = "langlatch_marauder",
+	  stfName = "mob/creature_names",
       objectCRC = 2513300255, 
       socialGroup = "Langiatch",
-      named = FALSE, 
+      
 
       level = 17,
       

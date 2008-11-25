@@ -46,10 +46,11 @@ stormtrooperDewback = Creature:new {
       faction = "Imperial",
       gender = "",
 
-      name = "a Stormtrooper Dewback",
+	  speciesName = "stormtrooper_dewback",
+	  stfName = "mob/creature_names",
       objectCRC = 720218946, 
       socialGroup = "Imperial",
-      named = FALSE, 
+      
 
       level = 29,
       

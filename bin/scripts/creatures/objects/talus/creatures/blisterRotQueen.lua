@@ -46,7 +46,8 @@ blisterRotQueen = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Blister Rot Queen",
+      speciesName = "blister_rot_queen",
+      stfName = "mob/creature_names",
       objectCRC = 2430922138, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -138,7 +139,8 @@ blisterRotQueen = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 10,
 
-      skills = { " Disease attack (medium)", " Stun attack", " Ranged attack (spit)" }
+      --skills = { " Disease attack (medium)", " Stun attack", " Ranged attack (spit)" }
+      skills = { "decayMiteAttack1", "decayMiteAttack2", "decayMiteAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ sapCoveredForestMiteQueen = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Sap Covered Forest Mite Queen",
+	  speciesName = "sap_covered_forest_mite_queen",
+	  stfName = "mob/creature_names",
       objectCRC = 4253086890, 
       socialGroup = "Bark Mite",
-      named = FALSE, 
+      
 
       level = 20,
       

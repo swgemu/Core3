@@ -46,10 +46,11 @@ rhoaKwiGuardian = Creature:new {
       faction = "Rhoa Kwi",
       gender = "",
 
-      name = "a Rhoa Kwi Guardian",
+	  speciesName = "rhoa_kwi_guardian",
+	  stfName = "mob/creature_names",
       objectCRC = 2111021739, 
       socialGroup = "Rhoa Kwi",
-      named = FALSE, 
+      
 
       level = 45,
       
@@ -138,7 +139,8 @@ rhoaKwiGuardian = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 120,
 
-      skills = { " Ranged attack (spit)", " Dizzy attack", " Posture down attack" }
+      --skills = { " Ranged attack (spit)", " Dizzy attack", " Posture down attack" }
+      skills = { "kwiAttack2", "kwiAttack5", "kwiAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

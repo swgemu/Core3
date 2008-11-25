@@ -46,10 +46,11 @@ nudfuh = Creature:new {
       faction = "Nudfuh",
       gender = "",
 
-      name = "a Nudfuh",
+	  speciesName = "nudfuh",
+	  stfName = "mob/creature_names",
       objectCRC = 598467155, 
       socialGroup = "Nudfuh",
-      named = FALSE, 
+      
 
       level = 13,
       

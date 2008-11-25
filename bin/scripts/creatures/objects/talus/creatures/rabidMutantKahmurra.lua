@@ -46,7 +46,8 @@ rabidMutantKahmurra = Creature:new {
       faction = "Kahmurra",
       gender = "",
 
-      name = "a Rabid Mutant Kahmurra",
+      speciesName = "rabid_mutant_kahmurra",
+      stfName = "mob/creature_names",
       objectCRC = 3433057460, 
       socialGroup = "Kahmurra",
       named = FALSE, 
@@ -138,7 +139,8 @@ rabidMutantKahmurra = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 50,
 
-      skills = { " Disease attack (strong)", " Stun attack", "" }
+      --skills = { " Disease attack (strong)", " Stun attack", "" }
+      skills = { "kahmurraAttack3", "kahmurraAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ maverickGualama = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Maverick Gualama",
+	  speciesName = "maverick_gualama",
+	  stfName = "mob/creature_names",
       objectCRC = 622698539, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 14,
       

@@ -46,7 +46,8 @@ giantDecayMiteHarvester = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Giant Decay Mite Harvester",
+      speciesName = "giant_decay_mite_harvester",
+      stfName = "mob/creature_names",
       objectCRC = 3943467921, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -138,7 +139,7 @@ giantDecayMiteHarvester = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 12,
 
-      skills = { "", "", "" }
+      skills = { "decayMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

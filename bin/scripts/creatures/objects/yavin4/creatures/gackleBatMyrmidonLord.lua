@@ -46,10 +46,11 @@ gackleBatMyrmidonLord = Creature:new {
       faction = "Gacklebat",
       gender = "",
 
-      name = "a Gackle Bat Myrmidon Lord",
+	  speciesName = "gackle_bat_myrmidon_lord",
+	  stfName = "mob/creature_names",
       objectCRC = 2791266544, 
       socialGroup = "Gacklebat",
-      named = FALSE, 
+      
 
       level = 20,
       
@@ -138,7 +139,8 @@ gackleBatMyrmidonLord = Creature:new {
       meatType = "meat_avian_yavin4",
       meatMax = 10,
 
-      skills = { " Stun attack", " Blind attack", "" }
+      --skills = { " Stun attack", " Blind attack", "" }
+      skills = { "gackleBatAttack3", "gackleBatAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

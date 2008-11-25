@@ -46,10 +46,11 @@ direCatFeralOrphan = Creature:new {
       faction = "Dire Cat",
       gender = "",
 
-      name = "a Dire Cat Feral Orphan",
+	  speciesName = "dire_cat_feral_orphan",
+	  stfName = "mob/creature_names",
       objectCRC = 1616759912, 
       socialGroup = "Dire Cat",
-      named = FALSE, 
+      
 
       level = 16,
       

@@ -46,10 +46,11 @@ angryBazNitchAvenger = Creature:new {
       faction = "Baz Nitch",
       gender = "",
 
-      name = "a Angry Baz Nitch Avenger",
+	  speciesName = "angry_baz_nitch_avenger",
+	  stfName = "mob/creature_names",
       objectCRC = 2941248391, 
       socialGroup = "Baz Nitch",
-      named = FALSE, 
+      
 
       level = 24,
       
@@ -99,7 +100,7 @@ angryBazNitchAvenger = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ angryBazNitchAvenger = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 5,
 
-      skills = { " Dizzy attack", " Ranged attack (spit)", "" }
+      --skills = { " Dizzy attack", " Ranged attack (spit)", "" }
+      skills = { "bazNitchAttack1", "bazNitchAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -72,6 +72,10 @@ RunSkillsFile("creatureSkills/npcs/imperialNpcSkills.lua")
 RunSkillsFile("creatureSkills/npcs/rebelNpcSkills.lua")
 RunSkillsFile("creatureSkills/npcs/miscNpcSkills.lua")
 
+-- Talus
+RunSkillsFile("creatureSkills/talus/creatureSkills.lua")
+RunSkillsFile("creatureSkills/talus/npcSkills.lua")
+
 -- Tatooine
 RunSkillsFile("creatureSkills/tatooine/creatureSkills.lua")
 RunSkillsFile("creatureSkills/tatooine/npcSkills.lua")

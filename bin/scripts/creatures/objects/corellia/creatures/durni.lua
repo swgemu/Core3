@@ -46,10 +46,11 @@ durni = Creature:new {
       faction = "Durni",
       gender = "",
 
-      stfName = "a Durni",
+	  speciesName = "durni",
+	  stfName = "mob/creature_names",
       objectCRC = 1181360289, 
       socialGroup = "Durni",
-      named = FALSE, 
+      
 
       level = 7,
       

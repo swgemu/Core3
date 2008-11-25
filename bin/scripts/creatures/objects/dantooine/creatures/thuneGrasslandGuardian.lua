@@ -46,10 +46,11 @@ thuneGrasslandGuardian = Creature:new {
       faction = "Thune",
       gender = "",
 
-      name = "a Thune Grassland Guardian",
+	  speciesName = "thune_grassland_guardian",
+	  stfName = "mob/creature_names",
       objectCRC = 2147765074, 
       socialGroup = "Thune",
-      named = FALSE, 
+      
 
       level = 40,
       

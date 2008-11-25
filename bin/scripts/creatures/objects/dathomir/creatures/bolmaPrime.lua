@@ -46,10 +46,11 @@ bolmaPrime = Creature:new {
       faction = "Bolma",
       gender = "",
 
-      name = "a Bolma Prime",
+	  speciesName = "bolma_prime",
+	  stfName = "mob/creature_names",
       objectCRC = 4078228623, 
       socialGroup = "Bolma",
-      named = FALSE, 
+      
 
       level = 37,
       
@@ -138,7 +139,8 @@ bolmaPrime = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 500,
 
-      skills = { " Intimidation attack", " Posture down attack", "" }
+      --skills = { " Intimidation attack", " Posture down attack", "" }
+      skills = { "bolmaAttack1", "bolmaAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

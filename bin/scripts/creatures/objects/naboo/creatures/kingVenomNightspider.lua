@@ -46,10 +46,11 @@ kingVenomNightspider = Creature:new {
       faction = "Nightspider",
       gender = "",
 
-      name = "a King Venom Nightspider",
+	  speciesName = "king_venom_nightspider",
+	  stfName = "mob/creature_names",
       objectCRC = 894333200, 
       socialGroup = "Nightspider",
-      named = FALSE, 
+      
 
       level = 14,
       

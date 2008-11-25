@@ -46,10 +46,11 @@ irateFlewtMatriarch = Creature:new {
       faction = "Rewt",
       gender = "",
 
-      name = "a Irate Flewt Matriarch",
+	  speciesName = "irate_flewt_matriarch",
+	  stfName = "mob/creature_names",
       objectCRC = 1979223286, 
       socialGroup = "Rewt",
-      named = FALSE, 
+      
 
       level = 8,
       

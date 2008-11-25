@@ -46,10 +46,11 @@ desertGurreckCharger = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      stfName = "a Desert Gurreck Charger",
+	  speciesName = "desert_gurreck_charger",
+	  stfName = "mob/creature_names",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
-      named = FALSE, 
+      
 
       level = 22,
       

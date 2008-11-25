@@ -46,10 +46,11 @@ deadlyVesp = Creature:new {
       faction = "Vesp",
       gender = "",
 
-      stfName = "a Deadly Vesp",
+	  speciesName = "deadly_vesp",
+	  stfName = "mob/creature_names",
       objectCRC = 3698435149, 
       socialGroup = "Vesp",
-      named = FALSE, 
+      
 
       level = 93,
       

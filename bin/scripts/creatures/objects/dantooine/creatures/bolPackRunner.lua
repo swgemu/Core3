@@ -46,10 +46,11 @@ bolPackRunner = Creature:new {
       faction = "Bol",
       gender = "",
 
-      name = "a Bol Pack Runner",
+	  speciesName = "bol_pack_runner",
+	  stfName = "mob/creature_names",
       objectCRC = 3745797903, 
       socialGroup = "Bol",
-      named = FALSE, 
+      
 
       level = 26,
       

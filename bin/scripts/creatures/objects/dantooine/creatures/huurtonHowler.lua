@@ -46,10 +46,11 @@ huurtonHowler = Creature:new {
       faction = "Huurton",
       gender = "",
 
-      name = "a Huurton Howler",
+	  speciesName = "huurton_howler",
+	  stfName = "mob/creature_names",
       objectCRC = 3338559238, 
       socialGroup = "Huurton",
-      named = FALSE, 
+      
 
       level = 25,
       

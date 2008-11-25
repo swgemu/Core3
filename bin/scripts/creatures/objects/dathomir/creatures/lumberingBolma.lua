@@ -40,45 +40,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-duneLizard = Creature:new {
-      objectName = "duneLizard",  -- Lua Object Name
+lumberingBolma = Creature:new {
+      objectName = "lumberingBolma",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "Dune Lizard",
+      faction = "Bolma",
       gender = "",
 
-      name = "a Dune Lizard",
-      objectCRC = 3554679154, 
-      socialGroup = "Dune Lizard",
-      named = FALSE, 
+	  speciesName = "lumbering_bolma",
+	  stfName = "mob/creature_names",
+      objectCRC = 4078228623, 
+      socialGroup = "Bolma",
+      
 
-      level = 19,
+      level = 25,
       
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 5000,
-      healthMin = 4100,
+      healthMax = 8800,
+      healthMin = 7200,
       strength = 0,
       constitution = 0,
 
-      actionMax = 5000,
-      actionMin = 4100,
+      actionMax = 8800,
+      actionMin = 7200,
       quickness = 0,
       stamina = 0,
 
-      mindMax = 5000,
-      mindMin = 4100,
+      mindMax = 8800,
+      mindMin = 7200,
       focus = 0,
       willpower = 0,
 
       height = 1, -- Size of creature
       armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 0,
-      energy = 20,
+      energy = 40,
       electricity = -1,
       stun = -1,
       blast = 0,
-      heat = 45,
+      heat = -1,
       cold = -1,
       acid = -1,
       lightsaber = 0,
@@ -90,7 +91,7 @@ duneLizard = Creature:new {
       pack = 1,
       herd = 1,
       stalker = 0,
-      killer = 1,
+      killer = 0,
       aggressive = 0,
       invincible = 0, 
 
@@ -129,19 +130,20 @@ duneLizard = Creature:new {
 
       milk = 0,
 
-      boneType = "bone_mammal_dantooine",
-      boneMax = 35,
+      boneType = "bone_mammal_dathomir",
+      boneMax = 150,
 
-      hideType = "hide_bristley_dantooine",
-      hideMax = 50,
+      hideType = "hide_leathery_dathomir",
+      hideMax = 160,
 
-      meatType = "meat_carnivore_dantooine",
-      meatMax = 85,
+      meatType = "meat_wild_dathomir",
+      meatMax = 35,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Intimidation attack", " Stun attack", "" }
+      skills = { "bolmaAttack1", "bolmaAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(duneLizard, 3554679154) --  Add to Global Table
+Creatures:addCreature(lumberingBolma, 4078228623) --  Add to Global Table

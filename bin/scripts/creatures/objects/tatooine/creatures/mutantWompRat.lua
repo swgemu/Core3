@@ -46,10 +46,11 @@ mutantWompRat = Creature:new {
       faction = "WompRat",
       gender = "",
 
-      name = "a Mutant WompRat",
+	  speciesName = "mutant_womprat",
+	  stfName = "mob/creature_names",
       objectCRC = 995330799, 
       socialGroup = "WompRat",
-      named = FALSE, 
+      
 
       level = 13,
       

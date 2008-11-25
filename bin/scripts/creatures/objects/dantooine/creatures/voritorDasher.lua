@@ -46,10 +46,11 @@ voritorDasher = Creature:new {
       faction = "Voritor Lizard",
       gender = "",
 
-      stfName = "a Voritor Dasher",
+	  speciesName = "voritor_dasher",
+	  stfName = "mob/creature_names",
       objectCRC = 2238343173, 
       socialGroup = "Voritor Lizard",
-      named = FALSE, 
+      
 
       level = 30,
       

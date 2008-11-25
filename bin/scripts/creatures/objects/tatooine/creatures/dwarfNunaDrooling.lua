@@ -46,10 +46,11 @@ dwarfNunaDrooling = Creature:new {
       faction = "Dwarf Nuna",
       gender = "",
 
-      name = "a Dwarf Nuna Drooling",
+	  speciesName = "dwarf_nuna_drooling",
+	  stfName = "mob/creature_names",
       objectCRC = 2763251553, 
       socialGroup = "Dwarf Nuna",
-      named = FALSE, 
+      
 
       level = 6,
       

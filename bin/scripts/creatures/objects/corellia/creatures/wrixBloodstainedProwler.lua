@@ -46,10 +46,11 @@ wrixBloodstainedProwler = Creature:new {
       faction = "Wrix",
       gender = "",
 
-      name = "a Wrix Bloodstained Prowler",
+	  speciesName = "wrix_bloodstained_prowler",
+	  stfName = "mob/creature_names",
       objectCRC = 2441033354, 
       socialGroup = "Wrix",
-      named = FALSE, 
+      
 
       level = 29,
       

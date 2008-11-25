@@ -46,7 +46,8 @@ oozingDungRoyalGuardian = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Oozing Dung Royal Guardian",
+      speciesName = "oozing_dung_royal_guardian",
+      stfName = "mob/creature_names",
       objectCRC = 382834958, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -99,7 +100,7 @@ oozingDungRoyalGuardian = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,8 @@ oozingDungRoyalGuardian = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 12,
 
-      skills = { " Disease attack (medium)", " Stun attack", " Ranged attack (spit)" }
+      --skills = { " Disease attack (medium)", " Stun attack", " Ranged attack (spit)" }
+      skills = { "dungMiteAttack3", "dungMiteAttack4", "dungMiteAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

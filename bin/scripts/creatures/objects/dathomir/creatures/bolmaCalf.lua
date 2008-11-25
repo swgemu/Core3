@@ -46,10 +46,11 @@ bolmaCalf = Creature:new {
       faction = "Bolma",
       gender = "",
 
-      name = "a Bolma Calf",
+	  speciesName = "bolma_calf",
+	  stfName = "mob/creature_names",
       objectCRC = 395403417, 
       socialGroup = "Bolma",
-      named = FALSE, 
+      
 
       level = 19,
       
@@ -138,7 +139,7 @@ bolmaCalf = Creature:new {
       meatType = "meat_wild_dathomir",
       meatMax = 175,
 
-      skills = { "", "", "" }
+      skills = { "bolmaAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

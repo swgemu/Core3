@@ -46,10 +46,11 @@ domesticBeardedJax = Creature:new {
       faction = "Jax",
       gender = "",
 
-      name = "a Domestic Bearded Jax",
+	  speciesName = "domestic_bearded_jax",
+	  stfName = "mob/creature_names",
       objectCRC = 2095266416, 
       socialGroup = "Jax",
-      named = FALSE, 
+      
 
       level = 5,
       

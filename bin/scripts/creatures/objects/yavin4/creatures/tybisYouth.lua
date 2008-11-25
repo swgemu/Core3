@@ -46,10 +46,11 @@ tybisYouth = Creature:new {
       faction = "Tybis",
       gender = "",
 
-      name = "a Tybis Youth",
+	  speciesName = "tybis_youth",
+	  stfName = "mob/creature_names",
       objectCRC = 641206826, 
       socialGroup = "Tybis",
-      named = FALSE, 
+      
 
       level = 18,
       
@@ -138,7 +139,7 @@ tybisYouth = Creature:new {
       meatType = "meat_herbivore_yavin4",
       meatMax = 200,
 
-      skills = { "", "", "" }
+      skills = { "tybisAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

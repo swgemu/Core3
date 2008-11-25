@@ -46,10 +46,11 @@ veermokGuardCave = Creature:new {
       faction = "Veermok",
       gender = "",
 
-      name = "a Veermok Guard Cave",
+	  speciesName = "veermok_guard_cave",
+	  stfName = "mob/creature_names",
       objectCRC = 798042116, 
       socialGroup = "Veermok",
-      named = FALSE, 
+      
 
       level = 18,
       

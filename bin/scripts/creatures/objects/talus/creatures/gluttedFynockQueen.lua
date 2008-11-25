@@ -46,7 +46,8 @@ gluttedFynockQueen = Creature:new {
       faction = "Fynock",
       gender = "",
 
-      name = "a Glutted Fynock Queen",
+      speciesName = "glutted_fynock_queen",
+      stfName = "mob/creature_names",
       objectCRC = 2677634246, 
       socialGroup = "Fynock",
       named = FALSE, 
@@ -138,7 +139,8 @@ gluttedFynockQueen = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 30,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "fynockAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

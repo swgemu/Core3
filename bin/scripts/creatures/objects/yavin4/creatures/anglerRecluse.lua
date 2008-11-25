@@ -46,10 +46,11 @@ anglerRecluse = Creature:new {
       faction = "Angler",
       gender = "",
 
-      name = "a Angler Recluse",
+	  speciesName = "angler_recluse",
+	  stfName = "mob/creature_names",
       objectCRC = 2216583678, 
       socialGroup = "Angler",
-      named = FALSE, 
+      
 
       level = 26,
       
@@ -138,7 +139,8 @@ anglerRecluse = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 2,
 
-      skills = { " Posture down attack", " Poison attack (strong)", "" }
+      --skills = { " Posture down attack", " Poison attack (strong)", "" }
+      skills = { "anglerAttack3", "anglerAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

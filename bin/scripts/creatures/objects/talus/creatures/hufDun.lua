@@ -46,7 +46,8 @@ hufDun = Creature:new {
       faction = "HufDun",
       gender = "",
 
-      name = "a Huf Dun",
+      speciesName = "huf_dun",
+      stfName = "mob/creature_names",
       objectCRC = 3376666183, 
       socialGroup = "HufDun",
       named = FALSE, 

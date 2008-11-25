@@ -46,10 +46,11 @@ malkloc = Creature:new {
       faction = "Malkloc",
       gender = "",
 
-      stfName = "a Malkloc",
+	  speciesName = "malkloc",
+	  stfName = "mob/creature_names",
       objectCRC = 197708576, 
       socialGroup = "Malkloc",
-      named = FALSE, 
+      
 
       level = 22,
       
@@ -139,7 +140,7 @@ malkloc = Creature:new {
       meatMax = 1100,
 
       skills = { "malklocAttack1" },
-       respawnTimer = 60,
+      respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

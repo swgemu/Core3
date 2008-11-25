@@ -46,7 +46,8 @@ percussiveRasp = Creature:new {
       faction = "Rasp",
       gender = "",
 
-      name = "a Percussive Rasp",
+      speciesName = "percussive_rasp",
+      stfName = "mob/creature_names",
       objectCRC = 229802836, 
       socialGroup = "Rasp",
       named = FALSE, 
@@ -138,7 +139,8 @@ percussiveRasp = Creature:new {
       meatType = "meat_avian_talus",
       meatMax = 12,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { " Intimidation attack", "", "" }
+      skills = { "fliteRaspAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

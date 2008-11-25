@@ -46,10 +46,11 @@ greaterDesertWompRat = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Greater Desert WompRat",
+	  speciesName = "greater_desert_womprat",
+	  stfName = "mob/creature_names",
       objectCRC = 3337882429, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 22,
       

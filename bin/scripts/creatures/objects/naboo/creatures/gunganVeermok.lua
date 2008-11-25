@@ -46,10 +46,11 @@ gunganVeermok = Creature:new {
       faction = "Gungan",
       gender = "",
 
-      name = "a Gungan Veermok",
+	  speciesName = "gungan_veermok",
+	  stfName = "mob/creature_names",
       objectCRC = 798042116, 
       socialGroup = "Gungan",
-      named = FALSE, 
+      
 
       level = 22,
       

@@ -46,10 +46,11 @@ bileDrenchedQuenker = Creature:new {
       faction = "Quenker",
       gender = "",
 
-      stfName = "a Bile Drenched Quenker",
+	  speciesName = "bile_drenched_quenker",
+	  stfName = "mob/creature_names",
       objectCRC = 644720935, 
       socialGroup = "Quenker",
-      named = FALSE, 
+      
 
       level = 34,
       

@@ -46,10 +46,11 @@ skreegWarrior = Creature:new {
       faction = "Skreeg",
       gender = "",
 
-      name = "a Skreeg Warrior",
+	  speciesName = "skreeg_warrior",
+	  stfName = "mob/creature_names",
       objectCRC = 2391906030, 
       socialGroup = "Skreeg",
-      named = FALSE, 
+      
 
       level = 28,
       
@@ -138,7 +139,8 @@ skreegWarrior = Creature:new {
       meatType = "meat_herbivore_yavin4",
       meatMax = 7,
 
-      skills = { " Stun attack", " Posture down attack", "" }
+      --skills = { " Stun attack", " Posture down attack", "" }
+      skills = { "skreegAttack2", "skreegAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

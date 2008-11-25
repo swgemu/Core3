@@ -46,10 +46,11 @@ kimogilaHatchling = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      stfName = "a Kimogila Hatchling",
+	  speciesName = "kimogila_hatchling",
+	  stfName = "mob/creature_names",
       objectCRC = 331807070, 
       socialGroup = "Kimogila",
-      named = FALSE, 
+      
 
       level = 22,
       

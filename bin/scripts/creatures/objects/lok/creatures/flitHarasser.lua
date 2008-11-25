@@ -46,10 +46,11 @@ flitHarasser = Creature:new {
       faction = "Flit",
       gender = "",
 
-      stfName = "a Flit Harasser",
+	  speciesName = "flit_harasser",
+	  stfName = "mob/creature_names",
       objectCRC = 878848245, 
       socialGroup = "Flit",
-      named = FALSE, 
+      
 
       level = 10,
       

@@ -45,7 +45,8 @@ mineRatDWB = Creature:new {
 	faction = "slaves",
 	gender = "",
 	
-	stfName = "a mine rat",
+	speciesName = "death_watch_quenker",
+	stfName = "mob/creature_names",
 	objectCRC = 3273659222,
 
 	level = 100,

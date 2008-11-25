@@ -46,10 +46,11 @@ scavengerRat = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Scavenger Rat",
+	  speciesName = "scavenger_rat",
+	  stfName = "mob/creature_names",
       objectCRC = 3337882429, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 8,
       

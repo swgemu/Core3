@@ -46,10 +46,11 @@ eopieHerdmaster = Creature:new {
       faction = "Eopie",
       gender = "",
 
-      name = "a Eopie Herdmaster",
+	  speciesName = "eopie_herdmaster",
+	  stfName = "mob/creature_names",
       objectCRC = 3289792361, 
       socialGroup = "Eopie",
-      named = FALSE, 
+      
 
       level = 9,
       

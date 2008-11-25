@@ -46,10 +46,11 @@ dappledGualama = Creature:new {
       faction = "Gualama",
       gender = "",
 
-      name = "a Dappled Gualama",
+	  speciesName = "dappled_gualama",
+	  stfName = "mob/creature_names",
       objectCRC = 2351012697, 
       socialGroup = "Gualama",
-      named = FALSE, 
+      
 
       level = 14,
       

@@ -46,10 +46,11 @@ poisonousKrevolQueen = Creature:new {
       faction = "Krevol",
       gender = "",
 
-      name = "a Poisonous Krevol Queen",
+	  speciesName = "poisonous_krevol_queen",
+	  stfName = "mob/creature_names",
       objectCRC = 1766345516, 
       socialGroup = "Krevol",
-      named = FALSE, 
+      
 
       level = 15,
       

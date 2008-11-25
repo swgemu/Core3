@@ -46,10 +46,11 @@ bloodseekerMiteDrone = Creature:new {
       faction = "Bloodseeker",
       gender = "",
 
-      stfName = "a Bloodseeker Mite Drone",
+	  speciesName = "bloodseeker_mite_drone",
+	  stfName = "mob/creature_names",
       objectCRC = 4102628433, 
       socialGroup = "Bloodseeker",
-      named = FALSE, 
+      
 
       level = 20,
       

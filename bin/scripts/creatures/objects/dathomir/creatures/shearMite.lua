@@ -46,10 +46,11 @@ shearMite = Creature:new {
       faction = "Shearmite",
       gender = "",
 
-      stfName = "a Shear Mite",
+	  speciesName = "shear_mite",
+	  stfName = "mob/creature_names",
       objectCRC = 3399904934, 
       socialGroup = "Shearmite",
-      named = FALSE, 
+      
 
       level = 16,
       
@@ -138,7 +139,7 @@ shearMite = Creature:new {
       meatType = "meat_insect_dathomir",
       meatMax = 15,
 
-      skills = { "shearMiteAttack1" },
+      skills = { "shearMiteAttack3" },
 	  -- skills = { " Blind attack", "", "" },
        respawnTimer = 60,
 

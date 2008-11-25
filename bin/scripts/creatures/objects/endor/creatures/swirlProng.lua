@@ -46,10 +46,11 @@ swirlProng = Creature:new {
       faction = "Swirl Prong",
       gender = "",
 
-      stfName = "a Swirl Prong",
+	  speciesName = "swirl_prong",
+	  stfName = "mob/creature_names",
       objectCRC = 4177314208, 
       socialGroup = "Swirl Prong",
-      named = FALSE, 
+      
 
       level = 19,
       

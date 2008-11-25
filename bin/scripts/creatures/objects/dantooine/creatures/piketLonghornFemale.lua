@@ -46,10 +46,11 @@ piketLonghornFemale = Creature:new {
       faction = "Piket",
       gender = "",
 
-      name = "a Piket Longhorn Female",
+	  speciesName = "piket_longhorn_female",
+	  stfName = "mob/creature_names",
       objectCRC = 3816463323, 
       socialGroup = "Piket",
-      named = FALSE, 
+      
 
       level = 30,
       

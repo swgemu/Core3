@@ -46,10 +46,11 @@ giantPekoPeko = Creature:new {
       faction = "Peko Peko",
       gender = "",
 
-      name = "a Giant Peko Peko",
+	  speciesName = "giant_peko_peko",
+	  stfName = "mob/creature_names",
       objectCRC = 1032288412, 
       socialGroup = "Peko Peko",
-      named = FALSE, 
+      
 
       level = 23,
       

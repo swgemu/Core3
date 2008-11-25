@@ -46,10 +46,11 @@ gronda = Creature:new {
       faction = "Gronda",
       gender = "",
 
-      stfName = "a Gronda",
+	  speciesName = "gronda",
+	  stfName = "mob/creature_names",
       objectCRC = 2380349390, 
       socialGroup = "Gronda",
-      named = FALSE, 
+      
 
       level = 19,
       

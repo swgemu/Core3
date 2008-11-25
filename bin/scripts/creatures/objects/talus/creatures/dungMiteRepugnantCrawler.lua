@@ -46,7 +46,8 @@ dungMiteRepugnantCrawler = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Dung Mite Repugnant Crawler",
+      speciesName = "dung_mite_repugnant_crawler",
+      stfName = "mob/creature_names",
       objectCRC = 382834958, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -138,7 +139,8 @@ dungMiteRepugnantCrawler = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 9,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "dungMiteAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

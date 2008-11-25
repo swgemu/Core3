@@ -46,10 +46,11 @@ giantSpinedPuc = Creature:new {
       faction = "Spined Puc",
       gender = "",
 
-      name = "a Giant Spined Puc",
+	  speciesName = "giant_spined_puc",
+	  stfName = "mob/creature_names",
       objectCRC = 1892971996, 
       socialGroup = "Spined Puc",
-      named = FALSE, 
+      
 
       level = 19,
       
@@ -138,7 +139,8 @@ giantSpinedPuc = Creature:new {
       meatType = "meat_reptilian_yavin4",
       meatMax = 7,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "spinedPucAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

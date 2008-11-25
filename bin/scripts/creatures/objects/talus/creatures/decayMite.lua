@@ -46,7 +46,8 @@ decayMite = Creature:new {
       faction = "Decay Mite",
       gender = "",
 
-      name = "a Decay Mite",
+      speciesName = "decay_mite",
+      stfName = "mob/creature_names",
       objectCRC = 3943467921, 
       socialGroup = "Decay Mite",
       named = FALSE, 
@@ -138,7 +139,8 @@ decayMite = Creature:new {
       meatType = "meat_insect_talus",
       meatMax = 4,
 
-      skills = { "Posture down attack", "", "" }
+      --skills = { "Posture down attack", "", "" }
+      skills = { "decayMiteAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

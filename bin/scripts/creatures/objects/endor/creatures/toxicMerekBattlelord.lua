@@ -46,10 +46,11 @@ toxicMerekBattlelord = Creature:new {
       faction = "Merek",
       gender = "",
 
-      stfName = "a Toxic Merek Battlelord",
+	  speciesName = "toxic_merek_battlelord",
+	  stfName = "mob/creature_names",
       objectCRC = 4057111915, 
       socialGroup = "Merek",
-      named = FALSE, 
+      
 
       level = 45,
       

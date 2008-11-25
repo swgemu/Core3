@@ -46,7 +46,8 @@ foamingVynock = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Foaming Vynock",
+      speciesName = "foaming_vynock",
+      stfName = "mob/creature_names",
       objectCRC = 942459622, 
       socialGroup = "self",
       named = FALSE, 
@@ -138,7 +139,8 @@ foamingVynock = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 50,
 
-      skills = { " Intimidation attack", " Disease attack (mild)", "" }
+      --skills = { " Intimidation attack", " Disease attack (mild)", "" }
+      skills = { "vynockAttack1", "vynockAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

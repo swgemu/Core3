@@ -46,10 +46,11 @@ gnarledRancor = Creature:new {
       faction = "Rancor",
       gender = "",
 
-      name = "a Gnarled Rancor",
+	  speciesName = "gnarled_rancor",
+	  stfName = "mob/creature_names",
       objectCRC = 976459327, 
       socialGroup = "Rancor",
-      named = FALSE, 
+      
 
       level = 46,
       
@@ -138,7 +139,8 @@ gnarledRancor = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 950,
 
-      skills = { " Knockdown attack", "", "" }
+      --skills = { " Knockdown attack", "", "" }
+      skills = { "rancorAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

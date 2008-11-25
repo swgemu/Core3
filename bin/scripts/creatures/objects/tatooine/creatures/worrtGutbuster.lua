@@ -46,10 +46,11 @@ worrtGutbuster = Creature:new {
       faction = "Worrt",
       gender = "",
 
-      name = "a Worrt Gutbuster",
+	  speciesName = "worrt_gutbuster",
+	  stfName = "mob/creature_names",
       objectCRC = 714826259, 
       socialGroup = "Worrt",
-      named = FALSE, 
+      
 
       level = 16,
       

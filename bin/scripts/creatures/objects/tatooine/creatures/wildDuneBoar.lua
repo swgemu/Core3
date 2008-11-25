@@ -46,10 +46,11 @@ wildDuneBoar = Creature:new {
       faction = "Zucca Boar",
       gender = "",
 
-      name = "a Wild Dune Boar",
+	  speciesName = "wild_dune_boar",
+	  stfName = "mob/creature_names",
       objectCRC = 277596046, 
       socialGroup = "Zucca Boar",
-      named = FALSE, 
+      
 
       level = 50,
       

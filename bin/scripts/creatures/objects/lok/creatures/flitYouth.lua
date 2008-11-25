@@ -46,10 +46,11 @@ flitYouth = Creature:new {
       faction = "Flit",
       gender = "",
 
-      stfName = "a Flit Youth",
+	  speciesName = "flit_youth",
+	  stfName = "mob/creature_names",
       objectCRC = 554215691, 
       socialGroup = "Flit",
-      named = FALSE, 
+      
 
       level = 6,
       

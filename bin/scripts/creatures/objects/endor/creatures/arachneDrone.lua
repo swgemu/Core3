@@ -46,10 +46,11 @@ arachneDrone = Creature:new {
       faction = "Arachne",
       gender = "",
 
-      stfName = "a Arachne Drone",
+	  speciesName = "arachne_drone",
+	  stfName = "mob/creature_names",
       objectCRC = 1157055229, 
       socialGroup = "Arachne",
-      named = FALSE, 
+      
 
       level = 27,
       

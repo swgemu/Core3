@@ -46,10 +46,11 @@ kraytDragonAncient = Creature:new {
       faction = "Krayt Dragon",
       gender = "",
 
-      stfName = "a Krayt Dragon Ancient",
+	  speciesName = "krayt_dragon_ancient",
+	  stfName = "mob/creature_names",
       objectCRC = 1238991743, 
       socialGroup = "Krayt Dragon",
-      named = FALSE, 
+      
 
       level = 336,
       

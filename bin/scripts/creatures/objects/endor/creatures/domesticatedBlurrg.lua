@@ -46,10 +46,11 @@ domesticatedBlurrg = Creature:new {
       faction = "self",
       gender = "",
 
-      stfName = "a Domesticated Blurrg",
+	  speciesName = "domesticated_blurrg",
+	  stfName = "mob/creature_names",
       objectCRC = 2309529743, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 20,
       

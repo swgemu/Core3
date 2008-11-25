@@ -46,10 +46,11 @@ purbole = Creature:new {
       faction = "Purbole",
       gender = "",
 
-      stfName = "a Purbole",
+	  speciesName = "purbole",
+	  stfName = "mob/creature_names",
       objectCRC = 1043838137, 
       socialGroup = "Purbole",
-      named = FALSE, 
+      
 
       level = 17,
       
@@ -139,7 +140,7 @@ purbole = Creature:new {
       meatMax = 12,
 
       skills = { "purboleAttack1" },
-       respawnTimer = 60,
+      respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

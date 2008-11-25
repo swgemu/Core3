@@ -46,10 +46,11 @@ sandySpinedSnake = Creature:new {
       faction = "Spinesnake",
       gender = "",
 
-      stfName = "a Sandy Spined Snake",
+	  speciesName = "sandy_spined_snake",
+	  stfName = "mob/creature_names",
       objectCRC = 271168429, 
       socialGroup = "Spinesnake",
-      named = FALSE, 
+      
 
       level = 13,
       

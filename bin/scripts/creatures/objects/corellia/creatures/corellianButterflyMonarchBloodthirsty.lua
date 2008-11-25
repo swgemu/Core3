@@ -46,10 +46,12 @@ corellianButterflyMonarchBloodthirsty = Creature:new {
       faction = "Cor. Butterfly",
       gender = "",
 
-      name = "a Corellian Butterfly Monarch Bloodthirsty",
+	  --speciesName = "creature_name",
+	  --stfName = "mob/creature_names",
+	  stfName = "a Corellian Butterfly Monarch Bloodthirsty",
       objectCRC = 2920594560, 
       socialGroup = "Cor. Butterfly",
-      named = FALSE, 
+      
 
       level = 20,
       

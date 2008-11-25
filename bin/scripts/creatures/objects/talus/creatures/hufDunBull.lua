@@ -46,7 +46,8 @@ hufDunBull = Creature:new {
       faction = "HufOun",
       gender = "",
 
-      name = "a Huf Dun Bull",
+      speciesName = "huf_dun_bull",
+      stfName = "mob/creature_names",
       objectCRC = 3376666183, 
       socialGroup = "HufOun",
       named = FALSE, 
@@ -138,7 +139,8 @@ hufDunBull = Creature:new {
       meatType = "meat_herbivore_talus",
       meatMax = 1350,
 
-      skills = { " Dizzy attack", " Stun attack", "" }
+      --skills = { " Dizzy attack", " Stun attack", "" }
+      skills = { "hufDunAttack1", "hufDunAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

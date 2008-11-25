@@ -46,10 +46,11 @@ matureReptilianFlier = Creature:new {
       faction = "Reptilian Flier",
       gender = "",
 
-      name = "a Mature Reptilian Flier",
+	  speciesName = "mature_reptilian_flier",
+	  stfName = "mob/creature_names",
       objectCRC = 2270001055, 
       socialGroup = "Reptilian Flier",
-      named = FALSE, 
+      
 
       level = 20,
       
@@ -138,7 +139,8 @@ matureReptilianFlier = Creature:new {
       meatType = "meat_avian_dathomir",
       meatMax = 130,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { " Blind attack", "", "" }
+      skills = { "reptilianFlierAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

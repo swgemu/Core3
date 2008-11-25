@@ -46,10 +46,11 @@ domesticFalumpaset = Creature:new {
       faction = "Naboo",
       gender = "",
 
-      name = "a Domestic Falumpaset",
+	  speciesName = "domestic_falumpaset",
+	  stfName = "mob/creature_names",
       objectCRC = 891448142, 
       socialGroup = "Naboo",
-      named = FALSE, 
+      
 
       level = 10,
       

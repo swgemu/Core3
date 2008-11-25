@@ -46,10 +46,11 @@ vynock = Creature:new {
       faction = "self",
       gender = "",
 
-      stfName = "a Vynock",
+	  speciesName = "vynock",
+	  stfName = "mob/creature_names",
       objectCRC = 942459622, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 9,
       

@@ -46,10 +46,11 @@ capperSpineflapDrone = Creature:new {
       faction = "Spineflap",
       gender = "",
 
-      name = "a Capper Spineflap Drone",
+	  speciesName = "capper_spineflap_drone",
+	  stfName = "mob/creature_names",
       objectCRC = 3797965860, 
       socialGroup = "Spineflap",
-      named = FALSE, 
+      
 
       level = 6,
       

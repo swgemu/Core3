@@ -46,10 +46,11 @@ grasslandVoritorTracker = Creature:new {
       faction = "Voritor Lizard",
       gender = "",
 
-      stfName = "a Grassland Voritor Tracker",
+	  speciesName = "grassland_voritor_tracker",
+	  stfName = "mob/creature_names",
       objectCRC = 727049275, 
       socialGroup = "Voritor Lizard",
-      named = FALSE, 
+      
 
       level = 45,
       

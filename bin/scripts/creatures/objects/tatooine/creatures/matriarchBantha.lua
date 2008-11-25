@@ -46,10 +46,11 @@ matriarchBantha = Creature:new {
       faction = "Bantha",
       gender = "",
 
-      name = "a Matriarch Bantha",
+	  speciesName = "matriarch_bantha",
+	  stfName = "mob/creature_names",
       objectCRC = 3918529401, 
       socialGroup = "Bantha",
-      named = FALSE, 
+      
 
       level = 25,
       

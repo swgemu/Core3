@@ -46,10 +46,11 @@ whisperBirdMajestic = Creature:new {
       faction = "Whisperbird",
       gender = "",
 
-      name = "a Whisper Bird Majestic",
+	  speciesName = "whisper_bird_majestic",
+	  stfName = "mob/creature_names",
       objectCRC = 3229632721, 
       socialGroup = "Whisperbird",
-      named = FALSE, 
+      
 
       level = 19,
       
@@ -138,7 +139,8 @@ whisperBirdMajestic = Creature:new {
       meatType = "meat_avian_yavin4",
       meatMax = 65,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "whisperBirdAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,10 +46,11 @@ enragedTabageMother = Creature:new {
       faction = "Tabage",
       gender = "",
 
-      name = "a Enraged Tabage Mother",
+	  speciesName = "enraged_tabage_mother",
+	  stfName = "mob/creature_names",
       objectCRC = 1588417694, 
       socialGroup = "Tabage",
-      named = FALSE, 
+      
 
       level = 17,
       

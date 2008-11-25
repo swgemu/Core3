@@ -46,10 +46,11 @@ pekoPeko = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Peko Peko",
+	  speciesName = "peko_peko",
+	  stfName = "mob/creature_names",
       objectCRC = 2319882660, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 14,
       

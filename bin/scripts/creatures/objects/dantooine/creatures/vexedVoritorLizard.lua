@@ -46,10 +46,11 @@ vexedVoritorLizard = Creature:new {
       faction = "Voritor Lizard",
       gender = "",
 
-      name = "a Vexed Voritor Lizard",
+	  speciesName = "vexed_voritor_lizard",
+	  stfName = "mob/creature_names",
       objectCRC = 4014205794, 
       socialGroup = "Voritor Lizard",
-      named = FALSE, 
+      
 
       level = 52,
       

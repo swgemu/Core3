@@ -46,10 +46,11 @@ anglerHatchling = Creature:new {
       faction = "Angler",
       gender = "",
 
-      name = "a Angler Hatchling",
+	  speciesName = "angler_hatchling",
+	  stfName = "mob/creature_names",
       objectCRC = 3561022171, 
       socialGroup = "Angler",
-      named = FALSE, 
+      
 
       level = 8,
       
@@ -138,7 +139,8 @@ anglerHatchling = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 2,
 
-      skills = { " Poison attack (mild)", " Posture down attack", "" }
+      --skills = { " Poison attack (mild)", " Posture down attack", "" }
+      skills = { "anglerAttack1", "anglerAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

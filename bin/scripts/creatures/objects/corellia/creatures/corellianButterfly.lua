@@ -46,10 +46,11 @@ corellianButterfly = Creature:new {
       faction = "Cor. Butterfly",
       gender = "",
 
-      stfName = "a Corellian Butterfly",
+	  speciesName = "corellian_butterfly",
+	  stfName = "mob/creature_names",
       objectCRC = 3636427705, 
       socialGroup = "Cor. Butterfly",
-      named = FALSE, 
+      
 
       level = 7,
       

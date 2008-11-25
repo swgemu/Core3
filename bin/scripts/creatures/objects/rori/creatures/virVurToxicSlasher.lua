@@ -46,10 +46,11 @@ virVurToxicSlasher = Creature:new {
       faction = "VirVur",
       gender = "",
 
-      name = "a Vir Vur Toxic Slasher",
+	  speciesName = "vir_vur_toxic_slasher",
+	  stfName = "mob/creature_names",
       objectCRC = 844441928, 
       socialGroup = "VirVur",
-      named = FALSE, 
+      
 
       level = 15,
       

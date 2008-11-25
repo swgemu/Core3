@@ -46,10 +46,11 @@ skreegOminous = Creature:new {
       faction = "Skreeg",
       gender = "",
 
-      name = "a Skreeg Ominous",
+	  speciesName = "skreeg_ominous",
+	  stfName = "mob/creature_names",
       objectCRC = 2391906030, 
       socialGroup = "Skreeg",
-      named = FALSE, 
+      
 
       level = 24,
       
@@ -138,7 +139,8 @@ skreegOminous = Creature:new {
       meatType = "meat_herbivore_yavin4",
       meatMax = 5,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "skreegAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

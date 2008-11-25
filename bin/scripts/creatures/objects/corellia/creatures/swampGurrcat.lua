@@ -46,10 +46,11 @@ swampGurrcat = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Swamp Gurrcat",
+	  speciesName = "swamp_gurrcat",
+	  stfName = "mob/creature_names",
       objectCRC = 4196368391, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 12,
       

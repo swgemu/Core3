@@ -46,10 +46,12 @@ grovo = Creature:new {
       faction = "Nightsister",
       gender = "",
 
-      name = "a Grovo",
+	  --speciesName = "creature_name",
+	  --stfName = "mob/creature_names",
+	  stfName = "a Grovo",
       objectCRC = 2646925455, 
       socialGroup = "Nightsister",
-      named = FALSE, 
+      
 
       level = 75,
       
@@ -138,7 +140,8 @@ grovo = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 1100,
 
-      skills = { " Area attack (bleeds)", " Area attack (combo)", "" }
+      --skills = { " Area attack (bleeds)", " Area attack (combo)", "" }
+      skills = { "grovoAttack1", "grovoAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

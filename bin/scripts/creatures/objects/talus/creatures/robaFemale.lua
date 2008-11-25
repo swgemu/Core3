@@ -46,7 +46,8 @@ robaFemale = Creature:new {
       faction = "Roba",
       gender = "",
 
-      name = "a Roba Female",
+      speciesName = "roba_female",
+      stfName = "mob/creature_names",
       objectCRC = 1008127960, 
       socialGroup = "Roba",
       named = FALSE, 
@@ -138,7 +139,8 @@ robaFemale = Creature:new {
       meatType = "meat_carnivore_talus",
       meatMax = 10,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "robaAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

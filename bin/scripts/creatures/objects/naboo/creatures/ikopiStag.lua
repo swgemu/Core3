@@ -46,10 +46,11 @@ ikopiStag = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Ikopi Stag",
+	  speciesName = "ikopi_stag",
+	  stfName = "mob/creature_names",
       objectCRC = 2370403426, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 30,
       

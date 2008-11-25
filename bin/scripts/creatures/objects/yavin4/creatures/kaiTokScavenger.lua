@@ -46,10 +46,11 @@ kaiTokScavenger = Creature:new {
       faction = "KaiTok",
       gender = "",
 
-      name = "a Kai Tok Scavenger",
+	  speciesName = "kai_tok_scavenger",
+	  stfName = "mob/creature_names",
       objectCRC = 1823266132, 
       socialGroup = "KaiTok",
-      named = FALSE, 
+      
 
       level = 31,
       
@@ -138,7 +139,8 @@ kaiTokScavenger = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 35,
 
-      skills = { " Dizzy attack", " Stun attack", "" }
+      --skills = { " Dizzy attack", " Stun attack", "" }
+      skills = { "kaiTokAttack1", "kaiTokAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

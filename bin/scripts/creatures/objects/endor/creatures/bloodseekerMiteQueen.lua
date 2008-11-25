@@ -46,10 +46,11 @@ bloodseekerMiteQueen = Creature:new {
       faction = "Bioodseeker",
       gender = "",
 
-      stfName = "a Bloodseeker Mite Queen",
+	  speciesName = "bloodseeker_mite_queen",
+	  stfName = "mob/creature_names",
       objectCRC = 706552459, 
       socialGroup = "Bioodseeker",
-      named = FALSE, 
+      
 
       level = 38,
       

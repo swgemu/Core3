@@ -46,10 +46,11 @@ mamienMale = Creature:new {
       faction = "Marnien",
       gender = "",
 
-      name = "a Mamien Male",
+	  speciesName = "mamien_male",
+	  stfName = "mob/creature_names",
       objectCRC = 1795257005, 
       socialGroup = "Marnien",
-      named = FALSE, 
+      
 
       level = 19,
       
@@ -138,7 +139,7 @@ mamienMale = Creature:new {
       meatType = "meat_wild_yavin4",
       meatMax = 45,
 
-      skills = { "mamienAttack1" },
+      skills = { "mamienAttack3" },
 	  -- skills = { " Stun attack", "", "" },
        respawnTimer = 60,
 

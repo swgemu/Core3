@@ -46,10 +46,11 @@ mawgaxYouth = Creature:new {
       faction = "Mawgax",
       gender = "",
 
-      name = "a Mawgax Youth",
+	  speciesName = "mawgax_youth",
+	  stfName = "mob/creature_names",
       objectCRC = 1390351063, 
       socialGroup = "Mawgax",
-      named = FALSE, 
+      
 
       level = 21,
       
@@ -138,7 +139,7 @@ mawgaxYouth = Creature:new {
       meatType = "meat_domesticated_yavin4",
       meatMax = 90,
 
-      skills = { "", "", "" }
+      skills = { "mawgaxAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

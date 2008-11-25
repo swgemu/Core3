@@ -46,10 +46,11 @@ greaterShaupaut = Creature:new {
       faction = "Shaupaut",
       gender = "",
 
-      name = "a Greater Shaupaut",
+	  speciesName = "greater_shaupaut",
+	  stfName = "mob/creature_names",
       objectCRC = 2822551779, 
       socialGroup = "Shaupaut",
-      named = FALSE, 
+      
 
       level = 14,
       

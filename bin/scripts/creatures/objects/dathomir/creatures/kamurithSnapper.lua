@@ -46,10 +46,11 @@ kamurithSnapper = Creature:new {
       faction = "Kamurith",
       gender = "",
 
-      name = "a Kamurith Snapper",
+	  speciesName = "kamurith_snapper",
+	  stfName = "mob/creature_names",
       objectCRC = 1248104419, 
       socialGroup = "Kamurith",
-      named = FALSE, 
+      
 
       level = 44,
       
@@ -138,7 +139,8 @@ kamurithSnapper = Creature:new {
       meatType = "meat_carnivore_dathomir",
       meatMax = 90,
 
-      skills = { " Dizzy attack", " Stun attack", "" }
+      --skills = { " Dizzy attack", " Stun attack", "" }
+      skills = { "kamurithAttack2", "kamurithAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

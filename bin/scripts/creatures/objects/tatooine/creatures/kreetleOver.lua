@@ -46,10 +46,11 @@ kreetleOver = Creature:new {
       faction = "Kreetle",
       gender = "",
 
-      name = "a Kreetle Over",
+	  speciesName = "kreetle_over",
+	  stfName = "mob/creature_names",
       objectCRC = 3267723937, 
       socialGroup = "Kreetle",
-      named = FALSE, 
+      
 
       level = 13,
       

@@ -46,10 +46,11 @@ langlatchHunter = Creature:new {
       faction = "Langlatch",
       gender = "",
 
-      stfName = "a Langlatch Hunter",
+	  speciesName = "langlatch_hunter",
+	  stfName = "mob/creature_names",
       objectCRC = 2513300255, 
       socialGroup = "Langlatch",
-      named = FALSE, 
+      
 
       level = 15,
       

@@ -46,10 +46,11 @@ sharnaffRecklessRavager = Creature:new {
       faction = "Sharnaff",
       gender = "",
 
-      name = "a Sharnaff Reckless Ravager",
+	  speciesName = "sharnaff_reckless_ravager",
+	  stfName = "mob/creature_names",
       objectCRC = 3709004378, 
       socialGroup = "Sharnaff",
-      named = FALSE, 
+      
 
       level = 34,
       

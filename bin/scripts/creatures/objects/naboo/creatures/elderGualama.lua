@@ -46,10 +46,11 @@ elderGualama = Creature:new {
       faction = "Gualama",
       gender = "",
 
-      name = "a Elder Gualama",
+	  speciesName = "elder_gualama",
+	  stfName = "mob/creature_names",
       objectCRC = 2511253817, 
       socialGroup = "Gualama",
-      named = FALSE, 
+      
 
       level = 18,
       

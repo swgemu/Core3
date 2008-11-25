@@ -46,10 +46,11 @@ robaInfuriatedProtectorate = Creature:new {
       faction = "Roba",
       gender = "",
 
-      stfName = "a Roba Infuriated Protectorate",
+	  speciesName = "roba_infuriated_protectorate",
+	  stfName = "mob/creature_names",
       objectCRC = 1008127960, 
       socialGroup = "Roba",
-      named = FALSE, 
+      
 
       level = 57,
       

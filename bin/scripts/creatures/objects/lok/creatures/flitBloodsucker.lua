@@ -46,10 +46,11 @@ flitBloodsucker = Creature:new {
       faction = "Flit",
       gender = "",
 
-      stfName = "a Flit Bloodsucker",
+	  speciesName = "flit_bloodsucker",
+	  stfName = "mob/creature_names",
       objectCRC = 878848245, 
       socialGroup = "Flit",
-      named = FALSE, 
+      
 
       level = 9,
       

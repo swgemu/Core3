@@ -46,10 +46,11 @@ woolamanderHarrower = Creature:new {
       faction = "Woolamander",
       gender = "",
 
-      name = "a Woolamander Harrower",
+	  speciesName = "woolamander_harrower",
+	  stfName = "mob/creature_names",
       objectCRC = 23943354, 
       socialGroup = "Woolamander",
-      named = FALSE, 
+      
 
       level = 51,
       
@@ -138,7 +139,8 @@ woolamanderHarrower = Creature:new {
       meatType = "meat_carnivore_yavin4",
       meatMax = 40,
 
-      skills = { " Area attack (poison)", " Knockdown attack", "" }
+      --skills = { " Area attack (poison)", " Knockdown attack", "" }
+      skills = { "woolamanderAttack4", "woolamanderAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

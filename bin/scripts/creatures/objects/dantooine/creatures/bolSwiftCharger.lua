@@ -46,10 +46,11 @@ bolSwiftCharger = Creature:new {
       faction = "Bol",
       gender = "",
 
-      name = "a Bol Swift Charger",
+	  speciesName = "bol_swift_charger",
+	  stfName = "mob/creature_names",
       objectCRC = 3745797903, 
       socialGroup = "Bol",
-      named = FALSE, 
+      
 
       level = 34,
       

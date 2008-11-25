@@ -46,10 +46,11 @@ pugoriss = Creature:new {
       faction = "Pugoriss",
       gender = "",
 
-      name = "a Pugoriss",
+	  speciesName = "pugoriss",
+	  stfName = "mob/creature_names",
       objectCRC = 2773934611, 
       socialGroup = "Pugoriss",
-      named = FALSE, 
+      
 
       level = 14,
       

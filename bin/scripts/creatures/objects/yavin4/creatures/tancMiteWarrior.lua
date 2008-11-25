@@ -46,10 +46,11 @@ tancMiteWarrior = Creature:new {
       faction = "Tancmite",
       gender = "",
 
-      name = "a Tanc Mite Warrior",
+	  speciesName = "tanc_mite_warrior",
+	  stfName = "mob/creature_names",
       objectCRC = 2091826918, 
       socialGroup = "Tancmite",
-      named = FALSE, 
+      
 
       level = 17,
       
@@ -99,7 +100,7 @@ tancMiteWarrior = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -138,7 +139,7 @@ tancMiteWarrior = Creature:new {
       meatType = "meat_insect_yavin4",
       meatMax = 1,
 
-      skills = { "tancMiteAttack1" },
+      skills = { "tancMiteAttack2", "tancMiteAttack3" },
 	  -- skills = { " Ranged attack (spit)", " Stun attack", "" },
        respawnTimer = 60,
 

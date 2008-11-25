@@ -46,10 +46,11 @@ rill = Creature:new {
       faction = "Rill",
       gender = "",
 
-      stfName = "a Rill",
+	  speciesName = "rill",
+	  stfName = "mob/creature_names",
       objectCRC = 813958609, 
       socialGroup = "Rill",
-      named = FALSE, 
+      
 
       level = 6,
       

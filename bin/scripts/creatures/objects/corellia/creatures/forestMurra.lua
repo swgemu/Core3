@@ -46,10 +46,11 @@ forestMurra = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Forest Murra",
+	  speciesName = "forest_murra",
+	  stfName = "mob/creature_names",
       objectCRC = 108259727, 
       socialGroup = "self",
-      named = FALSE, 
+      
 
       level = 12,
       

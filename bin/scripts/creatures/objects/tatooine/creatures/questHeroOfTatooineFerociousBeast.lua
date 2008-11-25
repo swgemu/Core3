@@ -46,10 +46,12 @@ questHeroOfTatooineFerociousBeast = Creature:new {
       faction = "Zucca Boar",
       gender = "",
 
-      name = "a Quest Hero Of Tatooine Ferocious Beast",
+	  speciesName = "creature_name",
+	  stfName = "mob/creature_names",
+	  stfName = "a Quest Hero Of Tatooine Ferocious Beast",
       objectCRC = 277596046, 
       socialGroup = "Zucca Boar",
-      named = FALSE, 
+      
 
       level = 39,
       

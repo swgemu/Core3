@@ -46,10 +46,11 @@ runtyPharple = Creature:new {
       faction = "Pharple",
       gender = "",
 
-      stfName = "a Runty Pharple",
+	  speciesName = "runty_pharple",
+	  stfName = "mob/creature_names",
       objectCRC = 1469572833, 
       socialGroup = "Pharple",
-      named = FALSE, 
+      
 
       level = 3,
       
