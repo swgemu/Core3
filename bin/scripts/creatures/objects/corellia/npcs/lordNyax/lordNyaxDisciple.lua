@@ -48,7 +48,6 @@ lordNyaxDisciple = Creature:new {
 
 	speciesName = "lord_nyax_disciple",
 	stfName = "mob/creature_names", 
-	name "Disciple of Lord Nyax",
 	objectCRC = 651266589, 
 	socialGroup = "Lord Nyax",
 	
