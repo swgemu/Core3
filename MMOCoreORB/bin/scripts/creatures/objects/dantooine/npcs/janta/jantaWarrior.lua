@@ -47,7 +47,7 @@ jantaWarrior = Creature:new {
 	gender = "",
 
 	speciesName = "janta_warrior",
-	stfName = "mob/creature_names", s
+	stfName = "mob/creature_names",
 	objectCRC = 4083847450, 
 	socialGroup = "Janta Tribe",
 	
