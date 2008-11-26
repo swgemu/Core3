@@ -40,112 +40,113 @@
 --which carries forward this exception.
 
 superBattleDroidDWB = Creature:new {
-      objectName = "superBattleDroidDWB",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Death Watch",
-      gender = "",
+	objectName = "superBattleDroidDWB",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Death Watch",
+	gender = "",
 
-      stfName = "Super Battle Droid",
-      objectCRC = 3793641800, 
-      socialGroup = "Death Watch",
-      named = FALSE, 
-
-
-      level = 228,
-      
+	speciesName = "mand_bunker_super_battle_droid",
+	stfName = "mob/creature_names",
+	objectCRC = 3793641800, 
+	socialGroup = "Death Watch",
+	
 
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
-
-      healthMax = 254000,
-      healthMin = 208000,
-      strength = 80000,
-      constitution = 80000,
-
-      actionMax = 254000,
-      actionMin = 208000,
-      quickness = 80000,
-      stamina = 80000,
-
-      mindMax = 254000,
-      mindMin = 208000,
-      focus = 80000,
-      willpower = 80000,
-
-      height = 1.5, -- Size of creature
-      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-
-      kinetic = 85,
-      energy = 95,
-      electricity = 25,
-      stun = 85,
-      blast = 60,
-      heat = 60,
-      cold = 100,
-      acid = 40,
-      lightsaber = 0,
+	level = 228,
+	
 
 
-      accuracy = 300,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healer = 0,
+	healthMax = 254000,
+	healthMin = 208000,
+	strength = 80000,
+	constitution = 80000,
 
-      pack = 0,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	actionMax = 254000,
+	actionMin = 208000,
+	quickness = 80000,
+	stamina = 80000,
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	mindMax = 254000,
+	mindMin = 208000,
+	focus = 80000,
+	willpower = 80000,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	height = 1.5, -- Size of creature
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 
-      weapon = "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Super Battle Droid blaster", -- Name ex. 'a Vibrolance'
-      weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 800,
-      weaponMaxDamage = 1200,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAV
+	kinetic = 85,
+	energy = 95,
+	electricity = 25,
+	stun = 85,
+	blast = 60,
+	heat = 60,
+	cold = 100,
+	acid = 40,
+	lightsaber = 0,
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	accuracy = 300,
 
-      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
+	healer = 0,
 
-      tame = 0,  -- Likely hood to be tamed
+	pack = 0,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-      milk = 0,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      boneType = "",
-      boneMax = 0,
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      hideType = "",
-      hideMax = 0,
+	weapon = "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Super Battle Droid blaster", -- Name ex. 'a Vibrolance'
+	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 800,
+	weaponMaxDamage = 1200,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAV
 
-      meatType = "",
-      meatMax = 0,
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      skills = { "dwbSBDAttack40", "dwbSBDAttack41", "dwbSBDAttack42", "dwbSBDAttack43", "dwbSBDAttack44", "dwbSBDAttack45", "dwbSBDAttack46", "dwbSBDAttack47", "dwbSBDAttack48", "dwbSBDAttack49", "dwbSBDAttack50", "dwbSBDAttack51"  },
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      respawnTimer = 120,
+	lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	tame = 0,  -- Likely hood to be tamed
+
+	milk = 0,
+
+	boneType = "",
+	boneMax = 0,
+
+	hideType = "",
+	hideMax = 0,
+
+	meatType = "",
+	meatMax = 0,
+
+	skills = { "dwbSBDAttack40", "dwbSBDAttack41", "dwbSBDAttack42", "dwbSBDAttack43", "dwbSBDAttack44", "dwbSBDAttack45", "dwbSBDAttack46", "dwbSBDAttack47", "dwbSBDAttack48", "dwbSBDAttack49", "dwbSBDAttack50", "dwbSBDAttack51"  },
+
+	respawnTimer = 120,
+
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(superBattleDroidDWB, 3793641800) --  Add to Global Table

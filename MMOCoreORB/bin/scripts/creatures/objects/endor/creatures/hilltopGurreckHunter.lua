@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 hilltopGurreckHunter = Creature:new {
-      objectName = "hilltopGurreckHunter",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Gurreck",
-      gender = "",
+	objectName = "hilltopGurreckHunter",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Gurreck",
+	gender = "",
 
-	  speciesName = "hilltop_gurreck_hunter",
-	  stfName = "mob/creature_names",
-      objectCRC = 1386599736, 
-      socialGroup = "Gurreck",
-      
+	speciesName = "hilltop_gurreck_hunter",
+	stfName = "mob/creature_names",
+	objectCRC = 1386599736, 
+	socialGroup = "Gurreck",
+	
 
-      level = 41,
-      
+	level = 41,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 10600,
-      healthMin = 8600,
-      strength = 0,
-      constitution = 0,
+	healthMax = 10600,
+	healthMin = 8600,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 10600,
-      actionMin = 8600,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 10600,
+	actionMin = 8600,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 10600,
-      mindMin = 8600,
-      focus = 0,
-      willpower = 0,
+	mindMax = 10600,
+	mindMin = 8600,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 50,
-      energy = 65,
-      electricity = 0,
-      stun = 0,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 50,
+	energy = 65,
+	electricity = 0,
+	stun = 0,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 0,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 0,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 1,
+	milk = 1,
 
-      boneType = "",
-      boneMax = 20,
+	boneType = "",
+	boneMax = 20,
 
-      hideType = "hide_wooly_endor",
-      hideMax = 20,
+	hideType = "hide_wooly_endor",
+	hideMax = 20,
 
-      meatType = "meat_carnivore_endor",
-      meatMax = 35,
+	meatType = "meat_carnivore_endor",
+	meatMax = 35,
 
-      --skills = { "Posture down attack", "Stun attack" }
-      skills = { "gurreckAttack5", "gurreckAttack2" },
-      respawnTimer = 60,
+	--skills = { "Posture down attack", "Stun attack" }
+	skills = { "gurreckAttack5", "gurreckAttack2" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(hilltopGurreckHunter, 1386599736) --  Add to Global Table

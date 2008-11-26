@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 tuskenWitchDoctor = Creature:new {
-      objectName = "tuskenWitchDoctor",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Tusken Raider",
-      gender = "",
+	objectName = "tuskenWitchDoctor",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Tusken Raider",
+	gender = "",
 
-      name = "Tusken Witch Doctor",
-      objectCRC = 3780705985, 
-      socialGroup = "Tusken Raider",
-      named = FALSE, 
+	speciesName = "tusken_witch_doctor",
+	stfName = "mob/creature_names", 
+	objectCRC = 3780705985, 
+	socialGroup = "Tusken Raider",
+	
 
-      level = 202,      
+	level = 202,	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 195000,
-      healthMin = 160000,
-      strength = 20000,
-      constitution = 20000,
+	healthMax = 195000,
+	healthMin = 160000,
+	strength = 20000,
+	constitution = 20000,
 
-      actionMax = 195000,
-      actionMin = 160000,
-      quickness = 20000,
-      stamina = 20000,
+	actionMax = 195000,
+	actionMin = 160000,
+	quickness = 20000,
+	stamina = 20000,
 
-      mindMax = 195000,
-      mindMin = 160000,
-      focus = 20000,
-      willpower = 20000,
+	mindMax = 195000,
+	mindMin = 160000,
+	focus = 20000,
+	willpower = 20000,
 
-      height = 1, -- Size of creature
-      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 65,
-      energy = 85,
-      electricity = 30,
-      stun = 80,
-      blast = 35,
-      heat = 100,
-      cold = 0,
-      acid = 45,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 65,
+	energy = 85,
+	electricity = 30,
+	stun = 80,
+	blast = 35,
+	heat = 100,
+	cold = 0,
+	acid = 45,
+	lightsaber = 0,
 
-      accuracy = 420,
+	accuracy = 420,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  
-      meleeDefense = 1,  
-	  
-      rangedDefense = 1,
+	
+	meleeDefense = 1,  
+	
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
-      weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 650,
-      weaponMaxDamage = 850,
-      weaponAttackSpeed = 1.6,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 650,
+	weaponMaxDamage = 850,
+	weaponAttackSpeed = 1.6,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "11,15,19,24,25,33,99", -- Group it belongs to for loot
-      
-      tame = 0,  -- Likely hood to be tamed
+	lootGroup = "11,15,19,24,25,33,99", -- Group it belongs to for loot
+	
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44",  "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack50" },
-      respawnTimer = 1800,
+	skills = { "tuskenAttack40", "tuskenAttack41", "tuskenAttack42", "tuskenAttack43", "tuskenAttack44",  "tuskenAttack45", "tuskenAttack46", "tuskenAttack47", "tuskenAttack49", "tuskenAttack50" },
+	respawnTimer = 1800,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(tuskenWitchDoctor, 3780705985) --  Add to Global Table

@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 giantCrystalSnake = Creature:new {
-      objectName = "giantCrystalSnake",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Crystal Snake",
-      gender = "",
+	objectName = "giantCrystalSnake",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Crystal Snake",
+	gender = "",
 
-	  speciesName = "giant_crystal_snake",
-	  stfName = "mob/creature_names",
-      objectCRC = 1918503337, 
-      socialGroup = "Crystal Snake",
-      
+	speciesName = "giant_crystal_snake",
+	stfName = "mob/creature_names",
+	objectCRC = 1918503337, 
+	socialGroup = "Crystal Snake",
+	
 
-      level = 31,
-      
+	level = 31,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 10100,
-      healthMin = 8300,
-      strength = 0,
-      constitution = 0,
+	healthMax = 10100,
+	healthMin = 8300,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 10100,
-      actionMin = 8300,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 10100,
+	actionMin = 8300,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 10100,
-      mindMin = 8300,
-      focus = 0,
-      willpower = 0,
+	mindMax = 10100,
+	mindMin = 8300,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = 0,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = 0,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 0,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 0,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.25,  -- Likely hood to be tamed
+	tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 20,
+	boneType = "",
+	boneMax = 20,
 
-      hideType = "hide_scaley_yavin4",
-      hideMax = 4,
+	hideType = "hide_scaley_yavin4",
+	hideMax = 4,
 
-      meatType = "meat_carnivore_yavin4",
-      meatMax = 7,
+	meatType = "meat_carnivore_yavin4",
+	meatMax = 7,
 
-      --skills = { " Posture down attack", " Poison attack (strong)", " Ranged attack (spit)" }
-      skills = { "crystalSnakeAttack4", "crystalSnakeAttack1", "crystalSnakeAttack3" },
-      respawnTimer = 60,
+	--skills = { " Posture down attack", " Poison attack (strong)", " Ranged attack (spit)" }
+	skills = { "crystalSnakeAttack4", "crystalSnakeAttack1", "crystalSnakeAttack3" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(giantCrystalSnake, 1918503337) --  Add to Global Table

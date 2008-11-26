@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 chewbacca = Creature:new {
-      objectName = "chewbacca",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "rebel", 
-	  factionPoints = 20,
-      gender = "male",
+	objectName = "chewbacca",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "rebel", 
+	factionPoints = 20,
+	gender = "male",
 
-      stfName = "Chewbacca",
-      objectCRC = 993210305, 
-      socialGroup = "rebel",
-      named = TRUE, 
+	speciesName = "chewbacca",
+	stfName = "mob/creature_names", 
+	objectCRC = 993210305, 
+	socialGroup = "rebel",
+	
 
-      level = 250,
-      
+	level = 250,
+	
 
-      combatFlags = 0,
+	combatFlags = 0,
 
-      healthMax = 650000,
-      healthMin = 620000,
-      strength = 80000,
-      constitution = 80000,
+	healthMax = 650000,
+	healthMin = 620000,
+	strength = 80000,
+	constitution = 80000,
 
-      actionMax = 650000,
-      actionMin = 620000,
-      quickness = 80000,
-      stamina = 80000,
+	actionMax = 650000,
+	actionMin = 620000,
+	quickness = 80000,
+	stamina = 80000,
 
-      mindMax = 650000,
-      mindMin = 620000,
-      focus = 80000,
-      willpower = 80000,
+	mindMax = 650000,
+	mindMin = 620000,
+	focus = 80000,
+	willpower = 80000,
 
-      height = 1, -- Size of creature
-      armor = 3, -- Just a guess
-      kinetic = 95,
-      energy = 95,
-	  electricity = 95,
-      stun = 95,
- 	  blast = 95,
- 	  heat = 95,
- 	  cold = 95,
- 	  acid = 95,
- 	  lightSaber = 95, 
+	height = 1, -- Size of creature
+	armor = 3, -- Just a guess
+	kinetic = 95,
+	energy = 95,
+	electricity = 95,
+	stun = 95,
+ 	blast = 95,
+ 	heat = 95,
+ 	cold = 95,
+ 	acid = 95,
+ 	lightSaber = 95, 
 
-      accuracy = 500,
+	accuracy = 500,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Chewie Gun", -- Name ex. 'a Vibrolance'
-      weaponTemp = "rifle_bowcaster", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 150,
-      weaponMaxDamage = 350,
-      weaponAttackSpeed = 1.0,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Chewie Gun", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_bowcaster", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 150,
+	weaponMaxDamage = 350,
+	weaponAttackSpeed = 1.0,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "chewbaccaAttack1", "chewbaccaAttack2", "chewbaccaAttack3", "chewbaccaAttack4", "chewbaccaAttack5", "chewbaccaAttack6", "chewbaccaAttack7", "chewbaccaAttack8", "chewbaccaAttack9", "chewbaccaAttack10", "chewbaccaAttack11", "chewbaccaAttack12", },
-      respawnTimer = 42300,
+	skills = { "chewbaccaAttack1", "chewbaccaAttack2", "chewbaccaAttack3", "chewbaccaAttack4", "chewbaccaAttack5", "chewbaccaAttack6", "chewbaccaAttack7", "chewbaccaAttack8", "chewbaccaAttack9", "chewbaccaAttack10", "chewbaccaAttack11", "chewbaccaAttack12", },
+	respawnTimer = 42300,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(chewbacca, 993210305) --  Add to Global Table

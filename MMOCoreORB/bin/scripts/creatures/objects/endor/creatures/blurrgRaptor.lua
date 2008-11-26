@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 blurrgRaptor = Creature:new {
-      objectName = "blurrgRaptor",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Blurrg",
-      gender = "",
+	objectName = "blurrgRaptor",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Blurrg",
+	gender = "",
 
-	  speciesName = "blurrg_raptor",
-	  stfName = "mob/creature_names",
-      objectCRC = 2309529743, 
-      socialGroup = "Blurrg",
-      
+	speciesName = "blurrg_raptor",
+	stfName = "mob/creature_names",
+	objectCRC = 2309529743, 
+	socialGroup = "Blurrg",
+	
 
-      level = 141,
-      
+	level = 141,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 75000,
-      healthMin = 62000,
-      strength = 0,
-      constitution = 0,
+	healthMax = 75000,
+	healthMin = 62000,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 75000,
-      actionMin = 62000,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 75000,
+	actionMin = 62000,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 75000,
-      mindMin = 62000,
-      focus = 0,
-      willpower = 0,
+	mindMax = 75000,
+	mindMin = 62000,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = 0,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = 0,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_avian_endor",
-      boneMax = 20,
+	boneType = "bone_avian_endor",
+	boneMax = 20,
 
-      hideType = "hide_leathery_endor",
-      hideMax = 20,
+	hideType = "hide_leathery_endor",
+	hideMax = 20,
 
-      meatType = "meat_carnivore_endor",
-      meatMax = 35,
+	meatType = "meat_carnivore_endor",
+	meatMax = 35,
 
-      --skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }
-      skills = { "blurggAttack1", "blurggAttack2", "blurggAttack3" },
-      respawnTimer = 60,
+	--skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }
+	skills = { "blurggAttack1", "blurggAttack2", "blurggAttack3" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(blurrgRaptor, 2309529743) --  Add to Global Table

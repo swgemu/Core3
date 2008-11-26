@@ -43,12 +43,12 @@ twilekSlave = Creature:new {
 	objectName = "twilekSlave", -- name of the lua Object
 	creatureType = "NPC",
 	faction = "slaves",
-	gender = "",
+	gender = "female",
 
-	stfName = "a Twi'lek Slave",
+	speciesName = "slave_twilek_female",
+	stfName = "mob/creature_names", 
 	objectCRC = 2673849471,
-	socialGroup = "slaves",
-	named = TRUE,
+	socialGroup = "slaves",	
 	
 	level = 600,
 	
@@ -95,49 +95,49 @@ twilekSlave = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      	attackCreatureOnSight = "", -- Enter socialGroups 
+		attackCreatureOnSight = "", -- Enter socialGroups 
 	
 	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      	weaponName = "", -- Name ex. 'a Vibrolance'
-      	weaponTemp = "carbine_elite", -- Weapon Template ex. 'lance_vibrolance'
-      	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      	weaponEquipped = 1,
-      	weaponMinDamage = 500,
-      	weaponMaxDamage = 700,
-      	weaponAttackSpeed = 3,
-      	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+		weaponName = "", -- Name ex. 'a Vibrolance'
+		weaponTemp = "carbine_elite", -- Weapon Template ex. 'lance_vibrolance'
+		weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+		weaponEquipped = 1,
+		weaponMinDamage = 500,
+		weaponMaxDamage = 700,
+		weaponAttackSpeed = 3,
+		weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+		weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
      	 alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      	alternateWeaponEquipped = 0,
-      	alternateWeaponMinDamage = 0,
-      	alternateWeaponMaxDamage = 0,
-      	alternateWeaponAttackSpeed = 0,
-      	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+		alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+		alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+		alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+		alternateWeaponEquipped = 0,
+		alternateWeaponMinDamage = 0,
+		alternateWeaponMaxDamage = 0,
+		alternateWeaponAttackSpeed = 0,
+		alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+		alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+		internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      	lootGroup = "0", -- Group it belongs to for loot
+		lootGroup = "0", -- Group it belongs to for loot
 
-      	tame = 0,  -- Likely hood to be tamed
+		tame = 0,  -- Likely hood to be tamed
 
-      	milk = 0,
+		milk = 0,
 
-      	boneType = "",
-      	boneMax = 0,
+		boneType = "",
+		boneMax = 0,
 
-      	hideType = "",
-      	hideMax = 0,
+		hideType = "",
+		hideMax = 0,
 
-      	meatType = "",
-      	meatMax = 0,
+		meatType = "",
+		meatMax = 0,
 
 	skills = { "dwbMeleeAttack40" },
 	respawnTimer = 180,

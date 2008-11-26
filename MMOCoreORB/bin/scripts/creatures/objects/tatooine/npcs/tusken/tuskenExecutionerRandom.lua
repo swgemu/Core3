@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 tuskenExecutionerRandom = Creature:new {
-      objectName = "tuskenExecutionerRandom",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Tusken Raider",
-      gender = "",
+	objectName = "tuskenExecutionerRandom",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Tusken Raider",
+	gender = "",
 
-      name = "Tusken Executioner",
-      objectCRC = 3780705985, 
-      socialGroup = "Tusken Raider",
-      named = FALSE, 
+	speciesName = "tusken_executioner",
+	stfName = "mob/creature_names", 
+	objectCRC = 3780705985, 
+	socialGroup = "Tusken Raider",
+	
 
-      level = 283,
-      
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	level = 283,
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 320000,
-      healthMin = 270000,
-      strength = 50000,
-      constitution = 50000,
+	healthMax = 320000,
+	healthMin = 270000,
+	strength = 50000,
+	constitution = 50000,
 
-      actionMax = 320000,
-      actionMin = 270000,
-      quickness = 50000,
-      stamina = 50000,
+	actionMax = 320000,
+	actionMin = 270000,
+	quickness = 50000,
+	stamina = 50000,
 
-      mindMax = 320000,
-      mindMin = 270000,
-      focus = 50000,
-      willpower = 50000,
+	mindMax = 320000,
+	mindMin = 270000,
+	focus = 50000,
+	willpower = 50000,
 
-      height = 1, -- Size of creature
-      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 85,
-      energy = 80,
-      electricity = 30,
-      stun = 80,
-      blast = 45,
-      heat = 100,
-      cold = 0,
-      acid = 45,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 85,
+	energy = 80,
+	electricity = 30,
+	stun = 80,
+	blast = 45,
+	heat = 100,
+	cold = 0,
+	acid = 45,
+	lightsaber = 0,
 
-      accuracy = 450,
+	accuracy = 450,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  
-      meleeDefense = 1,  
-	  
-      rangedDefense = 1,
+	
+	meleeDefense = 1,  
+	
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/rifle/shared_rifle_tusken.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Tusken Rifle", -- Name ex. 'a Vibrolance'
-      weaponTemp = "rifle_tusken", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 1400,
-      weaponMaxDamage = 3550,
-      weaponAttackSpeed = 1.63,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/rifle/shared_rifle_tusken.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Tusken Rifle", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_tusken", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 1400,
+	weaponMaxDamage = 3550,
+	weaponAttackSpeed = 1.63,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,25,33,99", -- Group it belongs to for loot
+	lootGroup = "0,11,15,25,33,99", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "tuskenRangedAttack4", "tuskenRangedAttack5", "tuskenRangedAttack6", "tuskenRangedAttack7",  "tuskenRangedAttack8", "tuskenRangedAttack9", "tuskenRangedAttack10", "tuskenRangedAttack11", "tuskenRangedAttack12",  "tuskenRangedAttack13" },
-      respawnTimer = 36000,
+	skills = { "tuskenRangedAttack4", "tuskenRangedAttack5", "tuskenRangedAttack6", "tuskenRangedAttack7",  "tuskenRangedAttack8", "tuskenRangedAttack9", "tuskenRangedAttack10", "tuskenRangedAttack11", "tuskenRangedAttack12",  "tuskenRangedAttack13" },
+	respawnTimer = 36000,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(tuskenExecutionerRandom, 3780705985) --  Add to Global Table

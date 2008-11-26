@@ -41,107 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 deathWatchWraithDWB = Creature:new {
-      objectName = "deathWatchWraithDWB",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Death Watch",
-      gender = "",
+	objectName = "deathWatchWraithDWB",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Death Watch",
+	gender = "",
 
-      name = "Death Watch Wraith",
-      objectCRC = 3553170937, 
-      socialGroup = "Death Watch",
-      named = FALSE, 
+	speciesName = "mand_bunker_dthwatch_silver",
+	stfName = "mob/creature_names", 
+	objectCRC = 3553170937, 
+	socialGroup = "Death Watch",
+	
 
-      level = 178,
-      
+	level = 178,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 144000,
-      healthMin = 118000,
-      strength = 50000,
-      constitution = 50000,
+	healthMax = 144000,
+	healthMin = 118000,
+	strength = 50000,
+	constitution = 50000,
 
-      actionMax = 144000,
-      actionMin = 118000,
-      quickness = 50000,
-      stamina = 50000,
+	actionMax = 144000,
+	actionMin = 118000,
+	quickness = 50000,
+	stamina = 50000,
 
-      mindMax = 144000,
-      mindMin = 118000,
-      focus = 50000,
-      willpower = 50000,
+	mindMax = 144000,
+	mindMin = 118000,
+	focus = 50000,
+	willpower = 50000,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 75,
-      energy = 75,
-      electricity = 45,
-      stun = 70,
-      blast = 90,
-      heat = 80,
-      cold = 45,
-      acid = 100,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 75,
+	energy = 75,
+	electricity = 45,
+	stun = 70,
+	blast = 90,
+	heat = 80,
+	cold = 45,
+	acid = 100,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 0,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 0,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Dxr6_Disruptor", -- Name ex. 'a Vibrolance'
-      weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 900,
-      weaponMaxDamage = 1000,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Dxr6_Disruptor", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 900,
+	weaponMaxDamage = 1000,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,46,47", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,46,47", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
-      respawnTimer = 300,
+	skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
+	respawnTimer = 300,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(deathWatchWraithDWB, 3553170937) --  Add to Global Table

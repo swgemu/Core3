@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 ikopiStoutStallion = Creature:new {
-      objectName = "ikopiStoutStallion",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Ikopi",
-      gender = "",
+	objectName = "ikopiStoutStallion",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Ikopi",
+	gender = "",
 
-	  speciesName = "ikopi_stout_stallion",
-	  stfName = "mob/creature_names",
-      objectCRC = 2370403426, 
-      socialGroup = "Ikopi",
-      
+	speciesName = "ikopi_stout_stallion",
+	stfName = "mob/creature_names",
+	objectCRC = 2370403426, 
+	socialGroup = "Ikopi",
+	
 
-      level = 9,
-      
+	level = 9,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 825,
-      healthMin = 675,
-      strength = 0,
-      constitution = 0,
+	healthMax = 825,
+	healthMin = 675,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 825,
-      actionMin = 675,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 825,
+	actionMin = 675,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 825,
-      mindMin = 675,
-      focus = 0,
-      willpower = 0,
+	mindMax = 825,
+	mindMin = 675,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 10,
-      energy = 0,
-      electricity = 0,
-      stun = 0,
-      blast = -1,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 10,
+	energy = 0,
+	electricity = 0,
+	stun = 0,
+	blast = -1,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 0,
-      killer = 0,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 1,
+	stalker = 0,
+	killer = 0,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.05,  -- Likely hood to be tamed
+	tame = 0.05,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_naboo",
-      boneMax = 45,
+	boneType = "bone_mammal_naboo",
+	boneMax = 45,
 
-      hideType = "hide_bristley_naboo",
-      hideMax = 60,
+	hideType = "hide_bristley_naboo",
+	hideMax = 60,
 
-      meatType = "meat_wild_naboo",
-      meatMax = 70,
+	meatType = "meat_wild_naboo",
+	meatMax = 70,
 
-      skills = { " Posture down attack", " Stun attack", "" }
-      respawnTimer = 60,
+	skills = { " Posture down attack", " Stun attack", "" }
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(ikopiStoutStallion, 2370403426) --  Add to Global Table

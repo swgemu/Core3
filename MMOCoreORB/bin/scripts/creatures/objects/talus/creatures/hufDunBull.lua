@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 hufDunBull = Creature:new {
-      objectName = "hufDunBull",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "HufOun",
-      gender = "",
+	objectName = "hufDunBull",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "HufOun",
+	gender = "",
 
-      speciesName = "huf_dun_bull",
-      stfName = "mob/creature_names",
-      objectCRC = 3376666183, 
-      socialGroup = "HufOun",
-      
+	speciesName = "huf_dun_bull",
+	stfName = "mob/creature_names",
+	objectCRC = 3376666183, 
+	socialGroup = "HufOun",
+	
 
-      level = 22,
-      
+	level = 22,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 8300,
-      healthMin = 6800,
-      strength = 0,
-      constitution = 0,
+	healthMax = 8300,
+	healthMin = 6800,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 8300,
-      actionMin = 6800,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 8300,
+	actionMin = 6800,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 8300,
-      mindMin = 6800,
-      focus = 0,
-      willpower = 0,
+	mindMax = 8300,
+	mindMin = 6800,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 15,
-      energy = 0,
-      electricity = -1,
-      stun = -1,
-      blast = 0,
-      heat = -1,
-      cold = -1,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 15,
+	energy = 0,
+	electricity = -1,
+	stun = -1,
+	blast = 0,
+	heat = -1,
+	cold = -1,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 0,
-      killer = 0,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 1,
+	stalker = 0,
+	killer = 0,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_talus",
-      boneMax = 1351,
+	boneType = "bone_mammal_talus",
+	boneMax = 1351,
 
-      hideType = "hide_leathery_talus",
-      hideMax = 1601,
+	hideType = "hide_leathery_talus",
+	hideMax = 1601,
 
-      meatType = "meat_herbivore_talus",
-      meatMax = 1350,
+	meatType = "meat_herbivore_talus",
+	meatMax = 1350,
 
-      --skills = { " Dizzy attack", " Stun attack", "" }
-      skills = { "hufDunAttack1", "hufDunAttack2" },
-      respawnTimer = 60,
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "hufDunAttack1", "hufDunAttack2" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(hufDunBull, 3376666183) --  Add to Global Table

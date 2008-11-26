@@ -44,13 +44,14 @@ imperialAtAt = Creature:new {
 	objectName = "imperialAtAt", -- name of the lua Object
 	creatureType = "NPC",
     faction = "imperial", 
-	  factionPoints = 20,
+	factionPoints = 20,
     gender = "",
 	
-	stfName = "an AT-AT",
+	speciesName = "at_at",
+	stfName = "mob/creature_names", 
 	objectCRC = 4274898142,
 	socialGroup = "imperial",
-	named = TRUE, 
+	
 	
 	level = 500,
 	
@@ -94,8 +95,8 @@ imperialAtAt = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 

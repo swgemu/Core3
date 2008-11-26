@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 oldMan = Creature:new {
-      objectName = "oldMan",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "rebel", 
-	  factionPoints = 20,
-      gender = "",
+	objectName = "oldMan",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "rebel", 
+	factionPoints = 20,
+	gender = "",
 
-      stfName = "Obi-Wan Kenobi",
-      objectCRC = 2513398694, 
-      socialGroup = "rebel",
-      named = TRUE, 
+	speciesName = "fs_intro_oldman",
+	stfName = "mob/creature_names", 
+	objectCRC = 2513398694, 
+	socialGroup = "rebel",
+	
 
-      level = 700,
-      
+	level = 700,
+	
 
-      combatFlags = 0,
+	combatFlags = 0,
 
-      healthMax = 1200000,
-      healthMin = 1000000,
-      strength = 620000,
-      constitution = 620000,
+	healthMax = 1200000,
+	healthMin = 1000000,
+	strength = 620000,
+	constitution = 620000,
 
-      actionMax = 1200000,
-      actionMin = 1000000,
-      quickness = 620000,
-      stamina = 620000,
+	actionMax = 1200000,
+	actionMin = 1000000,
+	quickness = 620000,
+	stamina = 620000,
 
-      mindMax = 1200000,
-      mindMin = 620000,
-      focus = 620000,
-      willpower = 620000,
+	mindMax = 1200000,
+	mindMin = 620000,
+	focus = 620000,
+	willpower = 620000,
 
-      height = 1, -- Size of creature
-      armor = 3, -- Just a guess
-      kinetic = 98,
-      energy = 98,
-	  electricity = 98,
-      stun = 98,
- 	  blast = 98,
- 	  heat = 98,
- 	  cold = 98,
- 	  acid = 98,
- 	  lightSaber = 98, 
+	height = 1, -- Size of creature
+	armor = 3, -- Just a guess
+	kinetic = 98,
+	energy = 98,
+	electricity = 98,
+	stun = 98,
+ 	blast = 98,
+ 	heat = 98,
+ 	cold = 98,
+ 	acid = 98,
+ 	lightSaber = 98, 
 
-      accuracy = 500,
+	accuracy = 500,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/shared_sword_lightsaber_anakin.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Old Man Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_anakin", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 850,
-      weaponMaxDamage = 1024,
-      weaponAttackSpeed = 0.5,
-      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/sword/shared_sword_lightsaber_anakin.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Old Man Saber", -- Name ex. 'a Vibrolance'
+	weaponTemp = "sword_lightsaber_anakin", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 850,
+	weaponMaxDamage = 1024,
+	weaponAttackSpeed = 0.5,
+	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "oldManAttack1", "oldManAttack4", "oldManAttack5", "oldManAttack6", "oldManAttack7", "oldManAttack8", "oldManAttack2", "oldManAttack9", "oldManAttack10", "oldManAttack11", "oldManAttack12", "oldManAttack13", "oldManAttack14", "oldManAttack3", "oldManAttack15", "oldManAttack16", "oldManAttack17" },
-      respawnTimer = 43200,
+	skills = { "oldManAttack1", "oldManAttack4", "oldManAttack5", "oldManAttack6", "oldManAttack7", "oldManAttack8", "oldManAttack2", "oldManAttack9", "oldManAttack10", "oldManAttack11", "oldManAttack12", "oldManAttack13", "oldManAttack14", "oldManAttack3", "oldManAttack15", "oldManAttack16", "oldManAttack17" },
+	respawnTimer = 43200,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(oldMan, 2513398694) --  Add to Global Table

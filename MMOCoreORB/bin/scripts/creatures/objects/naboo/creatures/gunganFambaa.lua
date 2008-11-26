@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 gunganFambaa = Creature:new {
-      objectName = "gunganFambaa",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Gungan",
-      gender = "",
+	objectName = "gunganFambaa",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Gungan",
+	gender = "",
 
-	  speciesName = "gungan_fambaa",
-	  stfName = "mob/creature_names",
-      objectCRC = 2375688304, 
-      socialGroup = "Gungan",
-      
+	speciesName = "gungan_fambaa",
+	stfName = "mob/creature_names",
+	objectCRC = 2375688304, 
+	socialGroup = "Gungan",
+	
 
-      level = 42,
-      
+	level = 42,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 11300,
-      healthMin = 9300,
-      strength = 0,
-      constitution = 0,
+	healthMax = 11300,
+	healthMin = 9300,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 11300,
-      actionMin = 9300,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 11300,
+	actionMin = 9300,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 11300,
-      mindMin = 9300,
-      focus = 0,
-      willpower = 0,
+	mindMax = 11300,
+	mindMin = 9300,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 40,
-      energy = 40,
-      electricity = 80,
-      stun = 0,
-      blast = 0,
-      heat = 0,
-      cold = 80,
-      acid = -1,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 40,
+	energy = 40,
+	electricity = 80,
+	stun = 0,
+	blast = 0,
+	heat = 0,
+	cold = 80,
+	acid = -1,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 0,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 0,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 1,
+	milk = 1,
 
-      boneType = "bone_mammal_naboo",
-      boneMax = 725,
+	boneType = "bone_mammal_naboo",
+	boneMax = 725,
 
-      hideType = "hide_leathery_naboo",
-      hideMax = 750,
+	hideType = "hide_leathery_naboo",
+	hideMax = 750,
 
-      meatType = "meat_reptilian_naboo",
-      meatMax = 1350,
+	meatType = "meat_reptilian_naboo",
+	meatMax = 1350,
 
-      skills = { " Intimidation attack", " Knockdown attack", "" }
-      respawnTimer = 60,
+	skills = { " Intimidation attack", " Knockdown attack", "" }
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(gunganFambaa, 2375688304) --  Add to Global Table

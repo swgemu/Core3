@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 bazNitch = Creature:new {
-      objectName = "bazNitch",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Baz Nitch",
-      gender = "",
+	objectName = "bazNitch",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Baz Nitch",
+	gender = "",
 
-	  speciesName = "baz_nitch",
-	  stfName = "mob/creature_names",
-      objectCRC = 2941248391, 
-      socialGroup = "Baz Nitch",
-      
+	speciesName = "baz_nitch",
+	stfName = "mob/creature_names",
+	objectCRC = 2941248391, 
+	socialGroup = "Baz Nitch",
+	
 
-      level = 22,
-      
+	level = 22,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 7200,
-      healthMin = 5900,
-      strength = 500,
-      constitution = 500,
+	healthMax = 7200,
+	healthMin = 5900,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 7200,
-      actionMin = 5900,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 7200,
+	actionMin = 5900,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 7200,
-      mindMin = 5900,
-      focus = 500,
-      willpower = 500,
+	mindMax = 7200,
+	mindMin = 5900,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 20,
-      energy = 0,
-      electricity = 0,
-      stun = 0,
-      blast = 0,
-      heat = -1,
-      cold = 0,
-      acid = -1,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 20,
+	energy = 0,
+	electricity = 0,
+	stun = 0,
+	blast = 0,
+	heat = -1,
+	cold = 0,
+	acid = -1,
+	lightsaber = 0,
 
-      accuracy = 200,
+	accuracy = 200,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 1,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.25,  -- Likely hood to be tamed
+	tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_dathomir",
-      boneMax = 2,
+	boneType = "bone_mammal_dathomir",
+	boneMax = 2,
 
-      hideType = "hide_leathery_dathomir",
-      hideMax = 2,
+	hideType = "hide_leathery_dathomir",
+	hideMax = 2,
 
-      meatType = "meat_wild_dathomir",
-      meatMax = 5,
+	meatType = "meat_wild_dathomir",
+	meatMax = 5,
 
-      skills = { "bazNitchAttack1" },
-       respawnTimer = 60,
+	skills = { "bazNitchAttack1" },
+	 respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(bazNitch, 2941248391) --  Add to Global Table

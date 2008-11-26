@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 palpatine = Creature:new {
-      objectName = "palpatine",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "imperial", 
-	  factionPoints = 20, 	  
-      gender = "",
+	objectName = "palpatine",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "imperial", 
+	factionPoints = 20, 	
+	gender = "",
 
-      stfName = "Emperor Palpatine",
-      objectCRC = 3254768126, 
-      socialGroup = "imperial",
-      named = TRUE, 
+	speciesName = "palpatine",
+	stfName = "mob/creature_names", 
+	objectCRC = 3254768126, 
+	socialGroup = "imperial",
+	
 
-      level = 700,
-      
+	level = 700,
+	
 
-      combatFlags = 0,
+	combatFlags = 0,
 
-      healthMax = 1200000,
-      healthMin = 1000000,
-      strength = 620000,
-      constitution = 620000,
+	healthMax = 1200000,
+	healthMin = 1000000,
+	strength = 620000,
+	constitution = 620000,
 
-      actionMax = 1200000,
-      actionMin = 1000000,
-      quickness = 620000,
-      stamina = 620000,
+	actionMax = 1200000,
+	actionMin = 1000000,
+	quickness = 620000,
+	stamina = 620000,
 
-      mindMax = 1200000,
-      mindMin = 620000,
-      focus = 620000,
-      willpower = 620000,
+	mindMax = 1200000,
+	mindMin = 620000,
+	focus = 620000,
+	willpower = 620000,
 
-      height = 1, -- Size of creature
-      armor = 3, -- Just a guess
-      kinetic = 98,
-      energy = 98,
-	  electricity = 98,
-      stun = 98,
- 	  blast = 98,
- 	  heat = 98,
- 	  cold = 98,
- 	  acid = 98,
- 	  lightSaber = 98, 
+	height = 1, -- Size of creature
+	armor = 3, -- Just a guess
+	kinetic = 98,
+	energy = 98,
+	electricity = 98,
+	stun = 98,
+ 	blast = 98,
+ 	heat = 98,
+ 	cold = 98,
+ 	acid = 98,
+ 	lightSaber = 98, 
 
-      accuracy = 500,
+	accuracy = 500,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/carbine/shared_carbine_ee3.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Palpatine Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 850,
-      weaponMaxDamage = 1200,
-      weaponAttackSpeed = 2,
-      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/carbine/shared_carbine_ee3.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Palpatine Saber", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 850,
+	weaponMaxDamage = 1200,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "palpatineAttack1", "palpatineAttack3", "palpatineAttack9", "palpatineAttack2", "palpatineAttack8", "palpatineAttack7", "palpatineAttack6", "palpatineAttack5", "palpatineAttack4", "palpatineAttack10" },
-      respawnTimer = 43200,
+	skills = { "palpatineAttack1", "palpatineAttack3", "palpatineAttack9", "palpatineAttack2", "palpatineAttack8", "palpatineAttack7", "palpatineAttack6", "palpatineAttack5", "palpatineAttack4", "palpatineAttack10" },
+	respawnTimer = 43200,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(palpatine, 3254768126) --  Add to Global Table

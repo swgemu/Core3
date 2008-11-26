@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 feralGurk = Creature:new {
-      objectName = "feralGurk",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "self",
-      gender = "",
+	objectName = "feralGurk",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "self",
+	gender = "",
 
-	  speciesName = "feral_gurk",
-	  stfName = "mob/creature_names",
-      objectCRC = 3464397925, 
-      socialGroup = "self",
-      
+	speciesName = "feral_gurk",
+	stfName = "mob/creature_names",
+	objectCRC = 3464397925, 
+	socialGroup = "self",
+	
 
-      level = 34,
-      
+	level = 34,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 10200,
-      healthMin = 8400,
-      strength = 0,
-      constitution = 0,
+	healthMax = 10200,
+	healthMin = 8400,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 10200,
-      actionMin = 8400,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 10200,
+	actionMin = 8400,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 10200,
-      mindMin = 8400,
-      focus = 0,
-      willpower = 0,
+	mindMax = 10200,
+	mindMin = 8400,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 35,
-      energy = 0,
-      electricity = -1,
-      stun = -1,
-      blast = 0,
-      heat = 0,
-      cold = 40,
-      acid = -1,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 35,
+	energy = 0,
+	electricity = -1,
+	stun = -1,
+	blast = 0,
+	heat = 0,
+	cold = 40,
+	acid = -1,
+	lightsaber = 0,
 
-      accuracy = 200,
+	accuracy = 200,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_lok",
-      boneMax = 300,
+	boneType = "bone_mammal_lok",
+	boneMax = 300,
 
-      hideType = "hide_leathery_lok",
-      hideMax = 275,
+	hideType = "hide_leathery_lok",
+	hideMax = 275,
 
-      meatType = "meat_herbivore_lok",
-      meatMax = 350,
+	meatType = "meat_herbivore_lok",
+	meatMax = 350,
 
-      skills = { "gurkAttack3", "gurkAttack4" },
-	  -- skills = { " Dizzy attack", " Stun attack", "" },
-       respawnTimer = 60,
+	skills = { "gurkAttack3", "gurkAttack4" },
+	-- skills = { " Dizzy attack", " Stun attack", "" },
+	 respawnTimer = 60,
 
-      behaviorScript = "" -- Link to the behavior script for this object
+	behaviorScript = "" -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(feralGurk, 3464397925) --  Add to Global Table

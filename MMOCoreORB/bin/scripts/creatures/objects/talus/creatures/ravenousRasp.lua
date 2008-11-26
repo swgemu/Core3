@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 ravenousRasp = Creature:new {
-      objectName = "ravenousRasp",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Rasp",
-      gender = "",
+	objectName = "ravenousRasp",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Rasp",
+	gender = "",
 
-      speciesName = "ravenous_rasp",
-      stfName = "mob/creature_names",
-      objectCRC = 229802836, 
-      socialGroup = "Rasp",
-      
+	speciesName = "ravenous_rasp",
+	stfName = "mob/creature_names",
+	objectCRC = 229802836, 
+	socialGroup = "Rasp",
+	
 
-      level = 31,
-      
+	level = 31,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 3000,
-      healthMin = 2400,
-      strength = 0,
-      constitution = 0,
+	healthMax = 3000,
+	healthMin = 2400,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 3000,
-      actionMin = 2400,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 3000,
+	actionMin = 2400,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 3000,
-      mindMin = 2400,
-      focus = 0,
-      willpower = 0,
+	mindMax = 3000,
+	mindMin = 2400,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = 0,
-      blast = -1,
-      heat = -1,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = 0,
+	blast = -1,
+	heat = -1,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 1,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 1,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_avian_talus",
-      boneMax = 15,
+	boneType = "bone_avian_talus",
+	boneMax = 15,
 
-      hideType = "",
-      hideMax = 20,
+	hideType = "",
+	hideMax = 20,
 
-      meatType = "meat_avian_talus",
-      meatMax = 45,
+	meatType = "meat_avian_talus",
+	meatMax = 45,
 
-      --skills = { " Poison attack (strong)", " Dizzy attack", "" }
-      skills = { "fliteRaspAttack3", "fliteRaspAttack4" },
-      respawnTimer = 60,
+	--skills = { " Poison attack (strong)", " Dizzy attack", "" }
+	skills = { "fliteRaspAttack3", "fliteRaspAttack4" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(ravenousRasp, 229802836) --  Add to Global Table

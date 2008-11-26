@@ -41,107 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 axkvaMin = Creature:new {
-      objectName = "axkvaMin",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Nightsister",
-      gender = "",
+	objectName = "axkvaMin",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Nightsister",
+	gender = "",
 
-      stfName = "Axkva Min",
-      objectCRC = 2853795094, 
-      socialGroup = "Nightsister",
-      named = TRUE, 
+	speciesName = "axkva_min",
+	stfName = "mob/creature_names", 
+	objectCRC = 2853795094, 
+	socialGroup = "Nightsister",
+	
 
-      level = 302,
-      
+	level = 302,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 471000,
-      healthMin = 385000,
-      strength = 0,
-      constitution = 0,
+	healthMax = 471000,
+	healthMin = 385000,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 471000,
-      actionMin = 385000,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 471000,
+	actionMin = 385000,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 471000,
-      mindMin = 385000,
-      focus = 0,
-      willpower = 0,
+	mindMax = 471000,
+	mindMin = 385000,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 100,
-      energy = 35,
-      electricity = 100,
-      stun = 100,
-      blast = 35,
-      heat = 100,
-      cold = 100,
-      acid = 100,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 100,
+	energy = 35,
+	electricity = 100,
+	stun = 100,
+	blast = 35,
+	heat = 100,
+	cold = 100,
+	acid = 100,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 1,
+	healer = 1,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
-      weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 800,
-      weaponMaxDamage = 1600,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+	weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 800,
+	weaponMaxDamage = 1600,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "shared_baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 900,
-      alternateWeaponMaxDamage = 1700,
-      alternateWeaponAttackSpeed = 1.5,
-      alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "shared_baton_stun", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 900,
+	alternateWeaponMaxDamage = 1700,
+	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,30,33,37,39,40,51,52,53,54,55,56,57,58,59,60", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,30,33,37,39,40,51,52,53,54,55,56,57,58,59,60", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
-      respawnTimer = 43200,
+	skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
+	respawnTimer = 43200,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(axkvaMin, 2853795094) --  Add to Global Table

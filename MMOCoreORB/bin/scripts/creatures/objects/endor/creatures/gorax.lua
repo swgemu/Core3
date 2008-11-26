@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 gorax = Creature:new {
-      objectName = "gorax",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Gorax",
-      gender = "male",
+	objectName = "gorax",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Gorax",
+	gender = "male",
 
-	  speciesName = "gorax",
-	  stfName = "mob/creature_names",
-      objectCRC = 3371835636, 
-      socialGroup = "Gorax",
-      
+	speciesName = "gorax",
+	stfName = "mob/creature_names",
+	objectCRC = 3371835636, 
+	socialGroup = "Gorax",
+	
 
-      level = 300,
-      
+	level = 300,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 400000,
-      healthMin = 390000,
-      strength = 50000,
-      constitution = 50000,
+	healthMax = 400000,
+	healthMin = 390000,
+	strength = 50000,
+	constitution = 50000,
 
-      actionMax = 400000,
-      actionMin = 390000,
-      quickness = 50000,
-      stamina = 50000,
+	actionMax = 400000,
+	actionMin = 390000,
+	quickness = 50000,
+	stamina = 50000,
 
-      mindMax = 400000,
-      mindMin = 390000,
-      focus = 50000,
-      willpower = 50000,
+	mindMax = 400000,
+	mindMin = 390000,
+	focus = 50000,
+	willpower = 50000,
 
-      height = 1.5, -- Size of creature
-      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 65,
-      energy = 45,
-      electricity = 35,
-      stun = 35,
-      blast = 35,
-      heat = 35,
-      cold = 35,
-      acid = 35,
-      lightsaber = 0,
+	height = 1.5, -- Size of creature
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 65,
+	energy = 45,
+	electricity = 35,
+	stun = 35,
+	blast = 35,
+	heat = 35,
+	cold = 35,
+	acid = 35,
+	lightsaber = 0,
 
-      accuracy = 580,
+	accuracy = 580,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 0,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 0,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 20,
+	boneType = "",
+	boneMax = 20,
 
-      hideType = "",
-      hideMax = 20,
+	hideType = "",
+	hideMax = 20,
 
-      meatType = "",
-      meatMax = 35,
+	meatType = "",
+	meatMax = 35,
 
-      skills = { "goraxAttack1", "goraxAttack2", "goraxAttack3", "goraxAttack4" },
-      respawnTimer = 43200,
+	skills = { "goraxAttack1", "goraxAttack2", "goraxAttack3", "goraxAttack4" },
+	respawnTimer = 43200,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(gorax, 3371835636) --  Add to Global Table

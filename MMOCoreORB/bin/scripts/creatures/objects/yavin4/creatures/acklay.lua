@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 acklay = Creature:new {
-      objectName = "acklay",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Acklay",
-      gender = "male",
+	objectName = "acklay",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Acklay",
+	gender = "male",
 
-	  speciesName = "geonosian_acklay_bunker_boss",
-	  stfName = "mob/creature_names",
-      objectCRC = 258679778, 
-      socialGroup = "Acklay",
-      
+	speciesName = "geonosian_acklay_bunker_boss",
+	stfName = "mob/creature_names",
+	objectCRC = 258679778, 
+	socialGroup = "Acklay",
+	
 
-      level = 157,
-      
+	level = 157,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 120000,
-      healthMin = 100000,
-      strength = 20000,
-      constitution = 20000,
+	healthMax = 120000,
+	healthMin = 100000,
+	strength = 20000,
+	constitution = 20000,
 
-      actionMax = 120000,
-      actionMin = 100000,
-      quickness = 20000,
-      stamina = 20000,
+	actionMax = 120000,
+	actionMin = 100000,
+	quickness = 20000,
+	stamina = 20000,
 
-      mindMax = 120000,
-      mindMin = 100000,
-      focus = 20000,
-      willpower = 20000,
+	mindMax = 120000,
+	mindMin = 100000,
+	focus = 20000,
+	willpower = 20000,
 
-      height = 1.5, -- Size of creature
-      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 30,
-      energy = 45,
-      electricity = 30,
-      stun = 30,
-      blast = 55,
-      heat = 55,
-      cold = 45,
-      acid = 30,
-      lightsaber = 0,
+	height = 1.5, -- Size of creature
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 30,
+	energy = 45,
+	electricity = 30,
+	stun = 30,
+	blast = 55,
+	heat = 55,
+	cold = 45,
+	acid = 30,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 0,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 0,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
-      weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 380,
-      weaponMaxDamage = 650,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+	weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 380,
+	weaponMaxDamage = 650,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_yavin4",
-      boneMax = 675,
+	boneType = "bone_mammal_yavin4",
+	boneMax = 675,
 
-      hideType = "hide_scaley_yavin4",
-      hideMax = 750,
+	hideType = "hide_scaley_yavin4",
+	hideMax = 750,
 
-      meatType = "meat_insect_yavin4",
-      meatMax = 1250,
+	meatType = "meat_insect_yavin4",
+	meatMax = 1250,
 
-      
-	  skills = { "acklayAttack1", "acklayAttack2", "acklayAttack3", "acklayAttack4", "acklayAttack5", "acklayAttack6", "acklayAttack7", "acklayAttack8", "acklayAttack9" },
-      respawnTimer = 43200,
+	
+	skills = { "acklayAttack1", "acklayAttack2", "acklayAttack3", "acklayAttack4", "acklayAttack5", "acklayAttack6", "acklayAttack7", "acklayAttack8", "acklayAttack9" },
+	respawnTimer = 43200,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(acklay, 258679778) --  Add to Global Table

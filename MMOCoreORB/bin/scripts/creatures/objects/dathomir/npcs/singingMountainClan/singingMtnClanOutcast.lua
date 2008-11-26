@@ -41,107 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 singingMtnClanOutcast = Creature:new {
-      objectName = "singingMtnClanOutcast",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Mtn.OanO",
-      gender = "",
+	objectName = "singingMtnClanOutcast",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Mtn.OanO",
+	gender = "",
 
-      name = "Singing Mountain clan outcast",
-      objectCRC = 3930207510, 
-      socialGroup = "Mtn.OanO",
-      named = FALSE, 
+	speciesName = "singing_mtn_clan_outcast",
+	stfName = "mob/creature_names", 
+	objectCRC = 3930207510, 
+	socialGroup = "Mtn.OanO",
+	
 
-      level = 75,
-      
+	level = 75,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 15000,
-      healthMin = 12000,
-      strength = 500,
-      constitution = 500,
+	healthMax = 15000,
+	healthMin = 12000,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 15000,
-      actionMin = 12000,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 15000,
+	actionMin = 12000,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 15000,
-      mindMin = 12000,
-      focus = 500,
-      willpower = 500,
+	mindMax = 15000,
+	mindMin = 12000,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 35,
-      energy = 35,
-      electricity = 100,
-      stun = 100,
-      blast = 75,
-      heat = 100,
-      cold = 75,
-      acid = 35,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 35,
+	energy = 35,
+	electricity = 100,
+	stun = 100,
+	blast = 75,
+	heat = 100,
+	cold = 75,
+	acid = 35,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
-      weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 175,
-      weaponMaxDamage = 200,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 175,
+	weaponMaxDamage = 200,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 175,
-      alternateWeaponMaxDamage = 250,
-      alternateWeaponAttackSpeed = 1.5,
-      alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 175,
+	alternateWeaponMaxDamage = 250,
+	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "singingMountainClanAttack20", "singingMountainClanAttack21", "singingMountainClanAttack22", "singingMountainClanAttack23", "singingMountainClanAttack24",  "singingMountainClanAttack25", "singingMountainClanAttack26", "singingMountainClanAttack27", "singingMountainClanAttack28", "singingMountainClanAttack29", "singingMountainClanAttack30", "singingMountainClanAttack31" },
-       respawnTimer = 300,
+	skills = { "singingMountainClanAttack20", "singingMountainClanAttack21", "singingMountainClanAttack22", "singingMountainClanAttack23", "singingMountainClanAttack24",  "singingMountainClanAttack25", "singingMountainClanAttack26", "singingMountainClanAttack27", "singingMountainClanAttack28", "singingMountainClanAttack29", "singingMountainClanAttack30", "singingMountainClanAttack31" },
+	 respawnTimer = 300,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(singingMtnClanOutcast, 3930207510) --  Add to Global Table

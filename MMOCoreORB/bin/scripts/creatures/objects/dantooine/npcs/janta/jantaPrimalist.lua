@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 jantaPrimalist = Creature:new {
-      objectName = "jantaPrimalist",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Janta Tribe",
-      gender = "",
+	objectName = "jantaPrimalist",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Janta Tribe",
+	gender = "",
 
-      name = "Janta primalist",
-      objectCRC = 4083847450, 
-      socialGroup = "Janta Tribe",
-      named = FALSE, 
+	speciesName = "janta_primalist",
+	stfName = "mob/creature_names", 
+	objectCRC = 4083847450, 
+	socialGroup = "Janta Tribe",
+	
 
-      level = 42,
-      
+	level = 42,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 11900,
-      healthMin = 9700,
-      strength = 500,
-      constitution = 500,
+	healthMax = 11900,
+	healthMin = 9700,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 11900,
-      actionMin = 9700,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 11900,
+	actionMin = 9700,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 11900,
-      mindMin = 9700,
-      focus = 500,
-      willpower = 500,
+	mindMax = 11900,
+	mindMin = 9700,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = -1,
-      energy = 0,
-      electricity = 60,
-      stun = -1,
-      blast = -1,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = -1,
+	energy = 0,
+	electricity = 60,
+	stun = -1,
+	blast = -1,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 0,
-      killer = 0,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 1,
+	stalker = 0,
+	killer = 0,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/polearm/shared_lance_staff_wood_s1.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Wooden Staff", -- Name ex. 'a Vibrolance'
-      weaponTemp = "lance_staff_wood_s1", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 50,
-      weaponMaxDamage = 500,
-      weaponAttackSpeed = 2,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/polearm/shared_lance_staff_wood_s1.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Wooden Staff", -- Name ex. 'a Vibrolance'
+	weaponTemp = "lance_staff_wood_s1", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 50,
+	weaponMaxDamage = 500,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 
-      alternateWeapon = "object/weapon/melee/knife/shared_knife_stone.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "a Stone Knife", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "knife_stone", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 20,
-      alternateWeaponMaxDamage = 250,
-      alternateWeaponAttackSpeed = 1,
-      alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/melee/knife/shared_knife_stone.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "a Stone Knife", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "knife_stone", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 20,
+	alternateWeaponMaxDamage = 250,
+	alternateWeaponAttackSpeed = 1,
+	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,65", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,65", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "kungaAttack01", "kungaAttack02", "kungaAttack03", "kungaAttack04", "kungaAttack05", "kungaAttack06", "kungaAttack07", "kungaAttack08" }, 
-      respawnTimer = 300, 
+	skills = { "kungaAttack01", "kungaAttack02", "kungaAttack03", "kungaAttack04", "kungaAttack05", "kungaAttack06", "kungaAttack07", "kungaAttack08" }, 
+	respawnTimer = 300, 
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(jantaPrimalist, 4083847450) --  Add to Global Table

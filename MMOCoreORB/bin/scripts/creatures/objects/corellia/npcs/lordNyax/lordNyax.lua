@@ -41,107 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 lordNyax = Creature:new {
-      objectName = "lordNyax",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Lord Nyax",
-      gender = "",
+	objectName = "lordNyax",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Lord Nyax",
+	gender = "",
 
-      stfName = "Lord Nyax",
-      objectCRC = 4219937413, 
-      socialGroup = "Lord Nyax",
-      named = TRUE, 
+	speciesName = "lord_nyax",
+	stfName = "mob/creature_names", 
+	objectCRC = 4219937413, 
+	socialGroup = "Lord Nyax",
+	
 
-      level = 250,
-      
+	level = 250,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 62000,
-      healthMin = 51000,
-      strength = 5000,
-      constitution = 5000,
+	healthMax = 62000,
+	healthMin = 51000,
+	strength = 5000,
+	constitution = 5000,
 
-      actionMax = 62000,
-      actionMin = 51000,
-      quickness = 5000,
-      stamina = 5000,
+	actionMax = 62000,
+	actionMin = 51000,
+	quickness = 5000,
+	stamina = 5000,
 
-      mindMax = 62000,
-      mindMin = 51000,
-      focus = 5000,
-      willpower = 5000,
+	mindMax = 62000,
+	mindMin = 51000,
+	focus = 5000,
+	willpower = 5000,
 
-      height = 1, -- Size of creature
-      armor = 2,	
-	  kinetic = 80,
-	  energy = 45,
-	  electricity = 100,
-	  stun = 15,
-	  blast = 40,
-	  heat = 20,
-	  cold = 50,
-	  acid = 10,
-	  lightSaber = 0,
+	height = 1, -- Size of creature
+	armor = 2,	
+	kinetic = 80,
+	energy = 45,
+	electricity = 100,
+	stun = 15,
+	blast = 40,
+	heat = 20,
+	cold = 50,
+	acid = 10,
+	lightSaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
-      weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 550,
-      weaponMaxDamage = 880,
-      weaponAttackSpeed = 1.6,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 550,
+	weaponMaxDamage = 880,
+	weaponAttackSpeed = 1.6,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39,40,51,52,53,54,55,56,57,58,59,60,61,62,64", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,39,40,51,52,53,54,55,56,57,58,59,60,61,62,64", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "nyaxAttack10", "nyaxAttack11", "nyaxAttack12", "nyaxAttack13", "nyaxAttack14", "nyaxAttack15", "nyaxAttack16", "nyaxAttack17", "nyaxAttack18", "nyaxAttack19", "nyaxAttack20", "nyaxAttack21", "nyaxAttack22", "nyaxAttack23", "nyaxAttack24"  },
-      respawnTimer = 1800,
+	skills = { "nyaxAttack10", "nyaxAttack11", "nyaxAttack12", "nyaxAttack13", "nyaxAttack14", "nyaxAttack15", "nyaxAttack16", "nyaxAttack17", "nyaxAttack18", "nyaxAttack19", "nyaxAttack20", "nyaxAttack21", "nyaxAttack22", "nyaxAttack23", "nyaxAttack24"  },
+	respawnTimer = 1800,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(lordNyax, 4219937413) --  Add to Global Table

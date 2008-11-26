@@ -45,10 +45,10 @@ minerDWB = Creature:new {
 	faction = "Corsec",
 	gender = "",
 	
-	stfName = "a miner",
+	speciesName = "death_watch_miner",
+	stfName = "mob/creature_names", 
 	objectCRC = 3926753656,
-	socialGroup = "deathwatch",
-	named = FALSE,
+	socialGroup = "deathwatch",	
 
 	level = 230,
 	
@@ -93,49 +93,49 @@ minerDWB = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      	attackCreatureOnSight = "", -- Enter socialGroups 
+		attackCreatureOnSight = "", -- Enter socialGroups 
 	
 	weapon = "object/weapon/ranged/pistol/shared_pistol_cdef.iff", -- File path to weapon -> object\xxx\xxx\xx
-      	weaponName = "S CDEF Pistol", -- Name ex. 'a Vibrolance'
-      	weaponTemp = "pistol_cdef", -- Weapon Template ex. 'lance_vibrolance'
-      	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      	weaponEquipped = 1,
-      	weaponMinDamage = 100,
-      	weaponMaxDamage = 170,
-      	weaponAttackSpeed = 3,
-      	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+		weaponName = "S CDEF Pistol", -- Name ex. 'a Vibrolance'
+		weaponTemp = "pistol_cdef", -- Weapon Template ex. 'lance_vibrolance'
+		weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+		weaponEquipped = 1,
+		weaponMinDamage = 100,
+		weaponMaxDamage = 170,
+		weaponAttackSpeed = 3,
+		weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+		weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
      	 alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      	alternateWeaponEquipped = 0,
-      	alternateWeaponMinDamage = 0,
-      	alternateWeaponMaxDamage = 0,
-      	alternateWeaponAttackSpeed = 0,
-      	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+		alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+		alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+		alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+		alternateWeaponEquipped = 0,
+		alternateWeaponMinDamage = 0,
+		alternateWeaponMaxDamage = 0,
+		alternateWeaponAttackSpeed = 0,
+		alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+		alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+		internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      	lootGroup = "0", -- Group it belongs to for loot
+		lootGroup = "0", -- Group it belongs to for loot
 
-      	tame = 0,  -- Likely hood to be tamed
+		tame = 0,  -- Likely hood to be tamed
 
-      	milk = 0,
+		milk = 0,
 
-      	boneType = "",
-      	boneMax = 0,
+		boneType = "",
+		boneMax = 0,
 
-      	hideType = "",
-      	hideMax = 0,
+		hideType = "",
+		hideMax = 0,
 
-      	meatType = "",
-      	meatMax = 0,
+		meatType = "",
+		meatMax = 0,
 
 	skills = { "dwbAttack40", "dwbAttack41", "dwbAttack42", "dwbAttack43", "dwbAttack44", "dwbAttack45", "dwbAttack46", "dwbAttack47", "dwbAttack48", "dwbAttack49", "dwbAttack50", "dwbAttack51"  },
 	respawnTimer = 120,

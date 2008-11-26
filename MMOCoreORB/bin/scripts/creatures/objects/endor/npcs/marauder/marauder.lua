@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 marauder = Creature:new {
-      objectName = "marauder",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Marauder",
-      gender = "",
+	objectName = "marauder",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Marauder",
+	gender = "",
 
-      name = "Marauder",
-      objectCRC = 2107662910, 
-      socialGroup = "Marauder",
-      named = FALSE, 
+	speciesName = "marauder",
+	stfName = "mob/creature_names", 
+	objectCRC = 2107662910, 
+	socialGroup = "Marauder",
+	
 
-      level = 44,
-      
+	level = 44,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 11900,
-      healthMin = 9700,
-      strength = 0,
-      constitution = 0,
+	healthMax = 11900,
+	healthMin = 9700,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 11900,
-      actionMin = 9700,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 11900,
+	actionMin = 9700,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 11900,
-      mindMin = 9700,
-      focus = 0,
-      willpower = 0,
+	mindMax = 11900,
+	mindMin = 9700,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = -1,
-      stun = 0,
-      blast = 0,
-      heat = 0,
-      cold = -1,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = -1,
+	stun = 0,
+	blast = 0,
+	heat = 0,
+	cold = -1,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Vibro Axe", -- Name ex. 'a Vibrolance'
-      weaponTemp = "polearm_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 150,
-      weaponMaxDamage = 350,
-      weaponAttackSpeed = 3,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Vibro Axe", -- Name ex. 'a Vibrolance'
+	weaponTemp = "polearm_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 150,
+	weaponMaxDamage = 350,
+	weaponAttackSpeed = 3,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/ranged/pistol/shared_pistol_dl44.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "DL44 Pistol", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 200,
-      alternateWeaponMaxDamage =400,
-      alternateWeaponAttackSpeed = 2,
-      alternateWeaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/ranged/pistol/shared_pistol_dl44.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "DL44 Pistol", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 200,
+	alternateWeaponMaxDamage =400,
+	alternateWeaponAttackSpeed = 2,
+	alternateWeaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "marauderAttack40", "marauderAttack41", "marauderAttack42", "marauderRangedAttack1", "marauderRangedAttack2", "marauderRangedAttack3" },
+	skills = { "marauderAttack40", "marauderAttack41", "marauderAttack42", "marauderRangedAttack1", "marauderRangedAttack2", "marauderRangedAttack3" },
 
-      respawnTimer = 300,
+	respawnTimer = 300,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(marauder, 2107662910) --  Add to Global Table

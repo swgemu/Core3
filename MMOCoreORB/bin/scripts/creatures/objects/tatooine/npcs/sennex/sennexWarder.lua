@@ -41,107 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 sennexWarder = Creature:new {
-      objectName = "sennexWarder",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Sennex",
-      gender = "",
+	objectName = "sennexWarder",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Sennex",
+	gender = "",
 
-      name = "Sennex warder",
-      objectCRC = 1772199470, 
-      socialGroup = "Sennex",
-      named = FALSE, 
+	speciesName = "sennex_warder",
+	stfName = "mob/creature_names", 
+	objectCRC = 1772199470, 
+	socialGroup = "Sennex",
+	
 
-      level = 50,
-      
+	level = 50,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 6100,
-      healthMin = 5000,
-      strength = 500,
-      constitution = 500,
+	healthMax = 6100,
+	healthMin = 5000,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 6100,
-      actionMin = 5000,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 6100,
+	actionMin = 5000,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 6100,
-      mindMin = 5000,
-      focus = 500,
-      willpower = 500,
+	mindMax = 6100,
+	mindMin = 5000,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 30,
-      stun = -1,
-      blast = 0,
-      heat = 30,
-      cold = -1,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 30,
+	stun = -1,
+	blast = 0,
+	heat = 30,
+	cold = -1,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Long Vibro Axe", -- Name ex. 'a Vibrolance'
-      weaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 250,
-      weaponMaxDamage = 450,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Long Vibro Axe", -- Name ex. 'a Vibrolance'
+	weaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 450,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/melee/axe/shared_axe_vibroaxe.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "a Vibro Axe", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "axe_vibro", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "TwoHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 200,
-      alternateWeaponMaxDamage = 400,
-      alternateWeaponAttackSpeed = 1.5,
-      alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/melee/axe/shared_axe_vibroaxe.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "a Vibro Axe", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "axe_vibro", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "TwoHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 200,
+	alternateWeaponMaxDamage = 400,
+	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,39", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "sennexattack1", "sennexattack2", "sennexattack3", "sennexattack4", "sennexattack5" },
-      respawnTimer = 300,
+	skills = { "sennexattack1", "sennexattack2", "sennexattack3", "sennexattack4", "sennexattack5" },
+	respawnTimer = 300,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(sennexWarder, 1772199470) --  Add to Global Table

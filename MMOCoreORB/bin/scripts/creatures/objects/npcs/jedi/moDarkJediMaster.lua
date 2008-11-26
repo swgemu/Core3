@@ -41,107 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 moDarkJediMaster = Creature:new {
-      objectName = "moDarkJediMaster",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "sith",
-      gender = "",
+	objectName = "moDarkJediMaster",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "sith",
+	gender = "",
 
-      stfName = "Dark Jedi Master",
-      objectCRC = 2005105485, 
-      socialGroup = "sith",
-      named = TRUE, 
+	speciesName = "dark_jedi_master",
+	stfName = "mob/creature_names", 
+	objectCRC = 2005105485, 
+	socialGroup = "sith",
+	
 
-      level = 400,
-      
+	level = 400,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 444000,
-      healthMin = 440000,
-      strength = 50000,
-      constitution = 50000,
+	healthMax = 444000,
+	healthMin = 440000,
+	strength = 50000,
+	constitution = 50000,
 
-      actionMax = 444000,
-      actionMin = 440000,
-      quickness = 50000,
-      stamina = 50000,
+	actionMax = 444000,
+	actionMin = 440000,
+	quickness = 50000,
+	stamina = 50000,
 
-      mindMax = 444000,
-      mindMin = 440000,
-      focus = 50000,
-      willpower = 50000,
+	mindMax = 444000,
+	mindMin = 440000,
+	focus = 50000,
+	willpower = 50000,
 
-      height = 1, -- Size of creature
-      armor = 3, -- Just a guess
-      kinetic = 90,
-      energy = 90,
-	  electricity = 90,
-      stun = 90,
- 	  blast = 90,
- 	  heat = 90,
- 	  cold = 90,
- 	  acid = 90,
- 	  lightSaber = 0, 
+	height = 1, -- Size of creature
+	armor = 3, -- Just a guess
+	kinetic = 90,
+	energy = 90,
+	electricity = 90,
+	stun = 90,
+ 	blast = 90,
+ 	heat = 90,
+ 	cold = 90,
+ 	acid = 90,
+ 	lightSaber = 0, 
 
-      accuracy = 500,
+	accuracy = 500,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Master Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 950,
-      weaponMaxDamage = 1200,
-      weaponAttackSpeed = 1,
-      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Master Saber", -- Name ex. 'a Vibrolance'
+	weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 950,
+	weaponMaxDamage = 1200,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_s9_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "Master Saber", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 950,
-      alternateWeaponMaxDamage = 1200,
-      alternateWeaponAttackSpeed = 1,
-      alternateWeaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_s9_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "Master Saber", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 950,
+	alternateWeaponMaxDamage = 1200,
+	alternateWeaponAttackSpeed = 1,
+	alternateWeaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39,40,100", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,39,40,100", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "jediAttack1", "jediAttack2", "jediAttack3", "jediAttack4", "jediAttack5", "jediAttack6", "jediAttack7", "jediAttack8" },
-      respawnTimer = 7200,
+	skills = { "jediAttack1", "jediAttack2", "jediAttack3", "jediAttack4", "jediAttack5", "jediAttack6", "jediAttack7", "jediAttack8" },
+	respawnTimer = 7200,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(moDarkJediMaster, 2005105485) --  Add to Global Table

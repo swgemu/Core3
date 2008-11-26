@@ -41,105 +41,106 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 droideka = Creature:new {
-      objectName = "droideka",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "imperial", 
-	  factionPoints = 20,
-      gender = "",
+	objectName = "droideka",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "imperial", 
+	factionPoints = 20,
+	gender = "",
 
-      stfName = "Droideka",
-      objectCRC = 2412922465, 
-      socialGroup = "imperial",
-      named = FALSE, 
+	speciesName = "droideka",
+	stfName = "mob/creature_names", 
+	objectCRC = 2412922465, 
+	socialGroup = "imperial",
+	
 
-      level = 39,
-      
+	level = 39,
+	
 
-      combatFlags = 0,
+	combatFlags = 0,
 
-      healthMax = 11300,
-      healthMin = 9300,
-      strength = 800,
-      constitution = 800,
+	healthMax = 11300,
+	healthMin = 9300,
+	strength = 800,
+	constitution = 800,
 
-      actionMax = 11300,
-      actionMin = 9300,
-      quickness = 800,
-      stamina = 800,
+	actionMax = 11300,
+	actionMin = 9300,
+	quickness = 800,
+	stamina = 800,
 
-      mindMax = 11300,
-      mindMin = 9300,
-      focus = 800,
-      willpower = 800,
+	mindMax = 11300,
+	mindMin = 9300,
+	focus = 800,
+	willpower = 800,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = -1,
-      stun = -1,
-      blast = 0,
-      heat = -1,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = -1,
+	stun = -1,
+	blast = 0,
+	heat = -1,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 0,
-      aggressive = 1,
-      invincible = 0,
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 0,
+	aggressive = 1,
+	invincible = 0,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Imperial Droideka", -- Name ex. 'a Vibrolance'
-      weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 200,
-      weaponMaxDamage = 300,
-      weaponAttackSpeed = 1,
-      weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Imperial Droideka", -- Name ex. 'a Vibrolance'
+	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 200,
+	weaponMaxDamage = 300,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "droidekaAttack1" },
-      respawnTimer = 180,
+	skills = { "droidekaAttack1" },
+	respawnTimer = 180,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(droideka, 2412922465) --  Add to Global Table

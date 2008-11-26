@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 reptilianLifeStealer = Creature:new {
-      objectName = "reptilianLifeStealer",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Reptilian Flier",
-      gender = "",
+	objectName = "reptilianLifeStealer",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Reptilian Flier",
+	gender = "",
 
-	  speciesName = "reptilian_life_stealer",
-	  stfName = "mob/creature_names",
-      objectCRC = 2270001055, 
-      socialGroup = "Reptilian Flier",
-      
+	speciesName = "reptilian_life_stealer",
+	stfName = "mob/creature_names",
+	objectCRC = 2270001055, 
+	socialGroup = "Reptilian Flier",
+	
 
-      level = 125,
-      
+	level = 125,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 42000,
-      healthMin = 34000,
-      strength = 0,
-      constitution = 0,
+	healthMax = 42000,
+	healthMin = 34000,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 42000,
-      actionMin = 34000,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 42000,
+	actionMin = 34000,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 42000,
-      mindMin = 34000,
-      focus = 0,
-      willpower = 0,
+	mindMax = 42000,
+	mindMin = 34000,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 25,
-      electricity = -1,
-      stun = 0,
-      blast = 5,
-      heat = 100,
-      cold = 100,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 25,
+	electricity = -1,
+	stun = 0,
+	blast = 5,
+	heat = 100,
+	cold = 100,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_avian_dathomir",
-      boneMax = 85,
+	boneType = "bone_avian_dathomir",
+	boneMax = 85,
 
-      hideType = "hide_leathery_dathomir",
-      hideMax = 90,
+	hideType = "hide_leathery_dathomir",
+	hideMax = 90,
 
-      meatType = "meat_avian_dathomir",
-      meatMax = 135,
+	meatType = "meat_avian_dathomir",
+	meatMax = 135,
 
-      --skills = { " Blind attack", " Poison attack (strong)", "" }
-      skills = { "reptilianFlierAttack1", "reptilianFlierAttack3" },
-      respawnTimer = 60,
+	--skills = { " Blind attack", " Poison attack (strong)", "" }
+	skills = { "reptilianFlierAttack1", "reptilianFlierAttack3" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(reptilianLifeStealer, 2270001055) --  Add to Global Table

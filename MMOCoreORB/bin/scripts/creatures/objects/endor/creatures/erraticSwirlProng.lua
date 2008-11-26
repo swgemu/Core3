@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 erraticSwirlProng = Creature:new {
-      objectName = "erraticSwirlProng",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Swirl Prong",
-      gender = "",
+	objectName = "erraticSwirlProng",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Swirl Prong",
+	gender = "",
 
-	  speciesName = "erratic_swirl_prong",
-	  stfName = "mob/creature_names",
-      objectCRC = 4177314208, 
-      socialGroup = "Swirl Prong",
-      
+	speciesName = "erratic_swirl_prong",
+	stfName = "mob/creature_names",
+	objectCRC = 4177314208, 
+	socialGroup = "Swirl Prong",
+	
 
-      level = 27,
-      
+	level = 27,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 8800,
-      healthMin = 7200,
-      strength = 0,
-      constitution = 0,
+	healthMax = 8800,
+	healthMin = 7200,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 8800,
-      actionMin = 7200,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 8800,
+	actionMin = 7200,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 8800,
-      mindMin = 7200,
-      focus = 0,
-      willpower = 0,
+	mindMax = 8800,
+	mindMin = 7200,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 25,
-      energy = 35,
-      electricity = -1,
-      stun = -1,
-      blast = 0,
-      heat = 50,
-      cold = 50,
-      acid = -1,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 25,
+	energy = 35,
+	electricity = -1,
+	stun = -1,
+	blast = 0,
+	heat = 50,
+	cold = 50,
+	acid = -1,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 0,
-      killer = 0,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 1,
+	stalker = 0,
+	killer = 0,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_endor",
-      boneMax = 20,
+	boneType = "bone_mammal_endor",
+	boneMax = 20,
 
-      hideType = "hide_leathery_endor",
-      hideMax = 20,
+	hideType = "hide_leathery_endor",
+	hideMax = 20,
 
-      meatType = "meat_herbivore_endor",
-      meatMax = 35,
+	meatType = "meat_herbivore_endor",
+	meatMax = 35,
 
-      --skills = { " Posture down attack", " Intimidation attack", "" }
-      skills = { "swirlProngAttack1", "swirlProngAttack2" },
-      respawnTimer = 60,
+	--skills = { " Posture down attack", " Intimidation attack", "" }
+	skills = { "swirlProngAttack1", "swirlProngAttack2" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(erraticSwirlProng, 4177314208) --  Add to Global Table
