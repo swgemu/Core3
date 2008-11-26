@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 corellianButterflyDefender = Creature:new {
-      objectName = "corellianButterflyDefender",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Cor. Butterfly",
-      gender = "",
+	objectName = "corellianButterflyDefender",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Cor. Butterfly",
+	gender = "",
 
-	  speciesName = "corellian_butterfly_defender",
-	  stfName = "mob/creature_names",
-      objectCRC = 1729513297, 
-      socialGroup = "Cor. Butterfly",
-      
+	speciesName = "corellian_butterfly_defender",
+	stfName = "mob/creature_names",
+	objectCRC = 1729513297, 
+	socialGroup = "Cor. Butterfly",
+	
 
-      level = 18,
-      
+	level = 18,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 2400,
-      healthMin = 2000,
-      strength = 0,
-      constitution = 0,
+	healthMax = 2400,
+	healthMin = 2000,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 2400,
-      actionMin = 2000,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 2400,
+	actionMin = 2000,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 2400,
-      mindMin = 2000,
-      focus = 0,
-      willpower = 0,
+	mindMax = 2400,
+	mindMin = 2000,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 15,
-      electricity = -1,
-      stun = -1,
-      blast = -1,
-      heat = -1,
-      cold = -1,
-      acid = -1,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 15,
+	electricity = -1,
+	stun = -1,
+	blast = -1,
+	heat = -1,
+	cold = -1,
+	acid = -1,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 0,
-      killer = 0,
-      aggressive = 1,
-      invincible = 0,
-	  
-	  meleeDefense = 1, 
-	  rangedDefense = 1,
+	pack = 1,
+	herd = 1,
+	stalker = 0,
+	killer = 0,
+	aggressive = 1,
+	invincible = 0,
+	
+	meleeDefense = 1, 
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.25,  -- Likely hood to be tamed
+	tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 20,
+	boneType = "",
+	boneMax = 20,
 
-      hideType = "hide_scaley_corellia",
-      hideMax = 16,
+	hideType = "hide_scaley_corellia",
+	hideMax = 16,
 
-      meatType = "meat_insect_corellia",
-      meatMax = 16,
+	meatType = "meat_insect_corellia",
+	meatMax = 16,
 
-      skills = { " Intimidation attack", " Ranged attack (spit)", "" }
-      respawnTimer = 60,
+	skills = { " Intimidation attack", " Ranged attack (spit)", "" }
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(corellianButterflyDefender, 1729513297) --  Add to Global Table

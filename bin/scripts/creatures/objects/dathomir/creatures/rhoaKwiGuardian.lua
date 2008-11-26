@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 rhoaKwiGuardian = Creature:new {
-      objectName = "rhoaKwiGuardian",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Rhoa Kwi",
-      gender = "",
+	objectName = "rhoaKwiGuardian",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Rhoa Kwi",
+	gender = "",
 
-	  speciesName = "rhoa_kwi_guardian",
-	  stfName = "mob/creature_names",
-      objectCRC = 2111021739, 
-      socialGroup = "Rhoa Kwi",
-      
+	speciesName = "rhoa_kwi_guardian",
+	stfName = "mob/creature_names",
+	objectCRC = 2111021739, 
+	socialGroup = "Rhoa Kwi",
+	
 
-      level = 45,
-      
+	level = 45,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 12000,
-      healthMin = 10000,
-      strength = 0,
-      constitution = 0,
+	healthMax = 12000,
+	healthMin = 10000,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 12000,
-      actionMin = 10000,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 12000,
+	actionMin = 10000,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 12000,
-      mindMin = 10000,
-      focus = 0,
-      willpower = 0,
+	mindMax = 12000,
+	mindMin = 10000,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 40,
-      energy = 65,
-      electricity = 0,
-      stun = 0,
-      blast = 0,
-      heat = 80,
-      cold = 0,
-      acid = 15,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 40,
+	energy = 65,
+	electricity = 0,
+	stun = 0,
+	blast = 0,
+	heat = 80,
+	cold = 0,
+	acid = 15,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.15,  -- Likely hood to be tamed
+	tame = 0.15,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_dathomir",
-      boneMax = 76,
+	boneType = "bone_mammal_dathomir",
+	boneMax = 76,
 
-      hideType = "hide_leathery_dathomir",
-      hideMax = 86,
+	hideType = "hide_leathery_dathomir",
+	hideMax = 86,
 
-      meatType = "meat_carnivore_dathomir",
-      meatMax = 120,
+	meatType = "meat_carnivore_dathomir",
+	meatMax = 120,
 
-      --skills = { " Ranged attack (spit)", " Dizzy attack", " Posture down attack" }
-      skills = { "kwiAttack2", "kwiAttack5", "kwiAttack3" },
-      respawnTimer = 60,
+	--skills = { " Ranged attack (spit)", " Dizzy attack", " Posture down attack" }
+	skills = { "kwiAttack2", "kwiAttack5", "kwiAttack3" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(rhoaKwiGuardian, 2111021739) --  Add to Global Table

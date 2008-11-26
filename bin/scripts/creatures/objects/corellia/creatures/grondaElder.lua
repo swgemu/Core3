@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 grondaElder = Creature:new {
-      objectName = "grondaElder",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Gronda",
-      gender = "",
+	objectName = "grondaElder",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Gronda",
+	gender = "",
 
-	  speciesName = "gronda_elder",
-	  stfName = "mob/creature_names",
-      objectCRC = 2380349390, 
-      socialGroup = "Gronda",
-      
+	speciesName = "gronda_elder",
+	stfName = "mob/creature_names",
+	objectCRC = 2380349390, 
+	socialGroup = "Gronda",
+	
 
-      level = 33,
-      
+	level = 33,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 10200,
-      healthMin = 8400,
-      strength = 0,
-      constitution = 0,
+	healthMax = 10200,
+	healthMin = 8400,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 10200,
-      actionMin = 8400,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 10200,
+	actionMin = 8400,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 10200,
-      mindMin = 8400,
-      focus = 0,
-      willpower = 0,
+	mindMax = 10200,
+	mindMin = 8400,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 60,
-      energy = 0,
-      electricity = 0,
-      stun = 25,
-      blast = 80,
-      heat = 0,
-      cold = 0,
-      acid = -1,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 60,
+	energy = 0,
+	electricity = 0,
+	stun = 25,
+	blast = 80,
+	heat = 0,
+	cold = 0,
+	acid = -1,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 1,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_corellia",
-      boneMax = 180,
+	boneType = "bone_mammal_corellia",
+	boneMax = 180,
 
-      hideType = "hide_leathery_corellia",
-      hideMax = 270,
+	hideType = "hide_leathery_corellia",
+	hideMax = 270,
 
-      meatType = "meat_carnivore_corellia",
-      meatMax = 360,
+	meatType = "meat_carnivore_corellia",
+	meatMax = 360,
 
-      skills = { " Stun attack", "", "" }
-      respawnTimer = 60,
+	skills = { " Stun attack", "", "" }
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(grondaElder, 2380349390) --  Add to Global Table

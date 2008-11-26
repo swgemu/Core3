@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 rebelSurfaceMarshal = Creature:new {
-      objectName = "rebelSurfaceMarshal",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "rebel", 
-	  factionPoints = 20,
-      gender = "",
+	objectName = "rebelSurfaceMarshal",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "rebel", 
+	factionPoints = 20,
+	gender = "",
 
-      name = "Rebel surface Marshall",
-      objectCRC = 7469172, 
-      socialGroup = "rebel",
-      named = FALSE, 
+	speciesName = "rebel_surface_marshal",
+	stfName = "mob/creature_names", 
+	objectCRC = 7469172, 
+	socialGroup = "rebel",
+	
 
-      level = 30,
-      
+	level = 30,
+	
 
-      combatFlags = 0,
+	combatFlags = 0,
 
-      healthMax = 10200,
-      healthMin = 8400,
-      strength = 500,
-      constitution = 500,
+	healthMax = 10200,
+	healthMin = 8400,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 10200,
-      actionMin = 8400,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 10200,
+	actionMin = 8400,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 10200,
-      mindMin = 8400,
-      focus = 500,
-      willpower = 500,
+	mindMax = 10200,
+	mindMin = 8400,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 40,
-      stun = -1,
-      blast = 0,
-      heat = 40,
-      cold = -1,
-      acid = -1,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 40,
+	stun = -1,
+	blast = 0,
+	heat = 40,
+	cold = -1,
+	acid = -1,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/polearm/shared_lance_vibrolance.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Vibrolance", -- Name ex. 'a Vibrolance'
-      weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 250,
-      weaponMaxDamage = 200,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/polearm/shared_lance_vibrolance.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Vibrolance", -- Name ex. 'a Vibrolance'
+	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 200,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "a Long Vibro Axe", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 250,
-      alternateWeaponMaxDamage = 450,
-      alternateWeaponAttackSpeed = 1.5,
-      alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "a Long Vibro Axe", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 250,
+	alternateWeaponMaxDamage = 450,
+	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,44,97", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,44,97", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "rebelAttack20", "rebelAttack21", "rebelAttack22", "rebelAttack23", "rebelAttack24",  "rebelAttack25", "rebelAttack26", "rebelAttack27", "rebelAttack28", "rebelAttack29", "rebelAttack30", "rebelAttack31" },
-       respawnTimer = 60,
+	skills = { "rebelAttack20", "rebelAttack21", "rebelAttack22", "rebelAttack23", "rebelAttack24",  "rebelAttack25", "rebelAttack26", "rebelAttack27", "rebelAttack28", "rebelAttack29", "rebelAttack30", "rebelAttack31" },
+	 respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(rebelSurfaceMarshal, 7469172) --  Add to Global Table

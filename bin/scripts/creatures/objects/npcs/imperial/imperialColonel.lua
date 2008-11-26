@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 imperialColonel = Creature:new {
-      objectName = "imperialColonel",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "imperial", 
-	  factionPoints = 20,
-      gender = "",
+	objectName = "imperialColonel",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "imperial", 
+	factionPoints = 20,
+	gender = "",
 
-      name = "Crackdown Imperial Colonel",
-      objectCRC = 2701430666, 
-      socialGroup = "imperial",
-      named = FALSE, 
+	speciesName = "an Imperial Colonel",
+	stfName = "mob/creature_names", 
+	objectCRC = 2701430666, 
+	socialGroup = "imperial",
+	
 
-      level = 1,
-      
+	level = 1,
+	
 
-      combatFlags = 0,
+	combatFlags = 0,
 
-      healthMax = 7700,
-      healthMin = 6300,
-      strength = 500,
-      constitution = 500,
+	healthMax = 7700,
+	healthMin = 6300,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 7700,
-      actionMin = 6300,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 7700,
+	actionMin = 6300,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 7700,
-      mindMin = 6300,
-      focus = 500,
-      willpower = 500,
+	mindMax = 7700,
+	mindMin = 6300,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = -1,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = -1,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/pistol/shared_pistol_dl44.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a DL-44 Pistol", -- Name ex. 'a Vibrolance'
-      weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 400,
-      weaponAttackSpeed = 2.5,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_dl44.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a DL-44 Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 350,
+	weaponMaxDamage = 400,
+	weaponAttackSpeed = 2.5,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
-       respawnTimer = 60,
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
+	 respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(imperialColonel, 2701430666) --  Add to Global Table

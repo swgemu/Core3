@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 canyonKraytDragon = Creature:new {
-      objectName = "canyonKraytDragon",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Krayt Dragon",
-      gender = "",
+	objectName = "canyonKraytDragon",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Krayt Dragon",
+	gender = "",
 
-	  speciesName = "canyon_krayt_dragon",
-	  stfName = "mob/creature_names",
-      objectCRC = 1238991743, 
-      socialGroup = "Krayt Dragon",
-      
+	speciesName = "canyon_krayt_dragon",
+	stfName = "mob/creature_names",
+	objectCRC = 1238991743, 
+	socialGroup = "Krayt Dragon",
+	
 
-      level = 275,
-      
+	level = 275,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 392000,
-      healthMin = 321000,
-      strength = 50000,
-      constitution =50000,
+	healthMax = 392000,
+	healthMin = 321000,
+	strength = 50000,
+	constitution =50000,
 
-      actionMax = 392000,
-      actionMin = 321000,
-      quickness = 50000,
-      stamina = 50000,
+	actionMax = 392000,
+	actionMin = 321000,
+	quickness = 50000,
+	stamina = 50000,
 
-      mindMax = 392000,
-      mindMin = 321000,
-      focus = 50000,
-      willpower = 50000,
+	mindMax = 392000,
+	mindMin = 321000,
+	focus = 50000,
+	willpower = 50000,
 
-      height = 2, -- Size of creature
-	  
-      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 60,
-      energy = 60,
-      electricity = 60,
-      stun = 60,
-      blast = 60,
-      heat = 60,
-      cold = 20,
-      acid = 60,
-      lightsaber = 0,
+	height = 2, -- Size of creature
+	
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 60,
+	energy = 60,
+	electricity = 60,
+	stun = 60,
+	blast = 60,
+	heat = 60,
+	cold = 20,
+	acid = 60,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39,40,51,52,96", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,39,40,51,52,96", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_tatooine",
-      boneMax = 675,
+	boneType = "bone_mammal_tatooine",
+	boneMax = 675,
 
-      hideType = "hide_bristley_tatooine",
-      hideMax = 750,
+	hideType = "hide_bristley_tatooine",
+	hideMax = 750,
 
-      meatType = "meat_carnivore_tatooine",
-      meatMax = 1250,
+	meatType = "meat_carnivore_tatooine",
+	meatMax = 1250,
 
-      skills = { "kraytAttack1", "kraytAttack4" },
-      respawnTimer = 1200,
+	skills = { "kraytAttack1", "kraytAttack4" },
+	respawnTimer = 1200,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(canyonKraytDragon, 1238991743) --  Add to Global Table

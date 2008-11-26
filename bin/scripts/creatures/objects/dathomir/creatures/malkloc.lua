@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 malkloc = Creature:new {
-      objectName = "malkloc",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Malkloc",
-      gender = "",
+	objectName = "malkloc",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Malkloc",
+	gender = "",
 
-	  speciesName = "malkloc",
-	  stfName = "mob/creature_names",
-      objectCRC = 197708576, 
-      socialGroup = "Malkloc",
-      
+	speciesName = "malkloc",
+	stfName = "mob/creature_names",
+	objectCRC = 197708576, 
+	socialGroup = "Malkloc",
+	
 
-      level = 22,
-      
+	level = 22,
+	
 
-      combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-      healthMax = 6600,
-      healthMin = 5400,
-      strength = 500,
-      constitution = 500,
+	healthMax = 6600,
+	healthMin = 5400,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 6600,
-      actionMin = 5400,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 6600,
+	actionMin = 5400,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 6600,
-      mindMin = 5400,
-      focus = 500,
-      willpower = 500,
+	mindMax = 6600,
+	mindMin = 5400,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 15,
-      energy = 20,
-      electricity = -1,
-      stun = 45,
-      blast = 0,
-      heat = -1,
-      cold = -1,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 15,
+	energy = 20,
+	electricity = -1,
+	stun = 45,
+	blast = 0,
+	heat = -1,
+	cold = -1,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 200,
+	accuracy = 200,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 0,
-      killer = 0,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 1,
+	stalker = 0,
+	killer = 0,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.25,  -- Likely hood to be tamed
+	tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_dathomir",
-      boneMax = 1000,
+	boneType = "bone_mammal_dathomir",
+	boneMax = 1000,
 
-      hideType = "hide_leathery_dathomir",
-      hideMax = 1200,
+	hideType = "hide_leathery_dathomir",
+	hideMax = 1200,
 
-      meatType = "meat_herbivore_dathomir",
-      meatMax = 1100,
+	meatType = "meat_herbivore_dathomir",
+	meatMax = 1100,
 
-      skills = { "malklocAttack1" },
-      respawnTimer = 60,
+	skills = { "malklocAttack1" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(malkloc, 197708576) --  Add to Global Table

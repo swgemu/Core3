@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 dalyrake = Creature:new {
-      objectName = "dalyrake",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Dalyrake",
-      gender = "",
+	objectName = "dalyrake",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Dalyrake",
+	gender = "",
 
-	  speciesName = "dalyrake",
-	  stfName = "mob/creature_names",
-      objectCRC = 3621894346, 
-      socialGroup = "Dalyrake",
-      
+	speciesName = "dalyrake",
+	stfName = "mob/creature_names",
+	objectCRC = 3621894346, 
+	socialGroup = "Dalyrake",
+	
 
-      level = 9,
-      
+	level = 9,
+	
 
-      combatFlags = ATTACKABLE_FLAG,
+	combatFlags = ATTACKABLE_FLAG,
 
-      healthMax = 825,
-      healthMin = 675,
-      strength = 500,
-      constitution = 500,
+	healthMax = 825,
+	healthMin = 675,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 825,
-      actionMin = 675,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 825,
+	actionMin = 675,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 825,
-      mindMin = 675,
-      focus = 500,
-      willpower = 500,
+	mindMax = 825,
+	mindMin = 675,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = -1,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = -1,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 100,
+	accuracy = 100,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 0,
-      aggressive = 0,
-      invincible = 0,
-	  
-	  meleeDefense = 1, 
-	  rangedDefense = 1,
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 0,
+	aggressive = 0,
+	invincible = 0,
+	
+	meleeDefense = 1, 
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.25,  -- Likely hood to be tamed
+	tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 20,
+	boneType = "",
+	boneMax = 20,
 
-      hideType = "hide_scaley_corellia",
-      hideMax = 45,
+	hideType = "hide_scaley_corellia",
+	hideMax = 45,
 
-      meatType = "meat_insect_corellia",
-      meatMax = 25,
+	meatType = "meat_insect_corellia",
+	meatMax = 25,
 
-      skills = { "dalyrakeAttack1" },
-       respawnTimer = 60,
+	skills = { "dalyrakeAttack1" },
+	 respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(dalyrake, 3621894346) --  Add to Global Table

@@ -41,105 +41,106 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 probot = Creature:new {
-      objectName = "probot",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "imperial", 
-	  factionPoints = 20,
-      gender = "",
+	objectName = "probot",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "imperial", 
+	factionPoints = 20,
+	gender = "",
 
-      stfName = "Imperial Probot droid",
-      objectCRC = 2028323765, 
-      socialGroup = "imperial",
-      named = FALSE, 
+	speciesName = "imperial_probot_drone",
+	stfName = "mob/creature_names", 
+	objectCRC = 2028323765, 
+	socialGroup = "imperial",
+	
 
-      level = 19,
-      
+	level = 19,
+	
 
-      combatFlags = 0,
+	combatFlags = 0,
 
-      healthMax = 3500,
-      healthMin = 2900,
-      strength = 500,
-      constitution = 500,
+	healthMax = 3500,
+	healthMin = 2900,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 3500,
-      actionMin = 2900,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 3500,
+	actionMin = 2900,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 3500,
-      mindMin = 2900,
-      focus = 500,
-      willpower = 500,
+	mindMax = 3500,
+	mindMin = 2900,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 10,
-      electricity = 0,
-      stun = 0,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 10,
+	electricity = 0,
+	stun = 0,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 0,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0,
+	pack = 0,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/droid/shared_droid_probot_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Imperial Probot", -- Name ex. 'a Vibrolance'
-      weaponTemp = "droid_probot_ranged", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 150,
-      weaponMaxDamage = 250,
-      weaponAttackSpeed = 1,
-      weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/droid/shared_droid_probot_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Imperial Probot", -- Name ex. 'a Vibrolance'
+	weaponTemp = "droid_probot_ranged", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 150,
+	weaponMaxDamage = 250,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "probotAttack1" },
-      respawnTimer = 180,
+	skills = { "probotAttack1" },
+	respawnTimer = 180,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(probot, 2028323765) --  Add to Global Table

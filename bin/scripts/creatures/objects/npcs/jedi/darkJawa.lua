@@ -41,107 +41,106 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 darkJawa = Creature:new {
-      objectName = "darkJawa",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Jawa",
-      gender = "",
+	objectName = "darkJawa",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Jawa",
+	gender = "",
 
-      stfName = "Dark Jawa",
-      objectCRC = 3444186231, 
-      socialGroup = "Jawa",
-      named = FALSE, 
+	stfName = "Dark Jawa",
+	objectCRC = 3444186231, 
+	socialGroup = "Jawa",	
 
-      level = 6,
-      
+	level = 6,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 500000,
-      healthMin = 480000,
-      strength = 80000,
-      constitution = 80000,
+	healthMax = 500000,
+	healthMin = 480000,
+	strength = 80000,
+	constitution = 80000,
 
-      actionMax = 500000,
-      actionMin = 480000,
-      quickness = 80000,
-      stamina = 80000,
+	actionMax = 500000,
+	actionMin = 480000,
+	quickness = 80000,
+	stamina = 80000,
 
-      mindMax = 500000,
-      mindMin = 480000,
-      focus = 80000,
-      willpower = 80000,
+	mindMax = 500000,
+	mindMin = 480000,
+	focus = 80000,
+	willpower = 80000,
 
-      height = 1, -- Size of creature
-      armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 85,
-      energy = 85,
-      electricity = 85,
-      stun = -1,
-      blast = 85,
-      heat = 85,
-      cold = 85,
-      acid = 85,
-      lightsaber = 85,
+	height = 1, -- Size of creature
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 85,
+	energy = 85,
+	electricity = 85,
+	stun = -1,
+	blast = 85,
+	heat = 85,
+	cold = 85,
+	acid = 85,
+	lightsaber = 85,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/sword/shared_sword_lightsaber_mace.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Jawa Saber", -- Name ex. 'a Vibrolance'
-      weaponTemp = "sword_lightsaber_mace", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 650,
-      weaponMaxDamage = 950,
-      weaponAttackSpeed = 1,
-      weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/sword/shared_sword_lightsaber_mace.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Jawa Saber", -- Name ex. 'a Vibrolance'
+	weaponTemp = "sword_lightsaber_mace", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 650,
+	weaponMaxDamage = 950,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "twoHandedJediAttack4" },
-      respawnTimer = 42300,
+	skills = { "twoHandedJediAttack4" },
+	respawnTimer = 42300,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(darkJawa, 3444186231) --  Add to Global Table

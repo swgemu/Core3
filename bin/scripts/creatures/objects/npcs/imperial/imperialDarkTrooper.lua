@@ -41,110 +41,111 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 imperialDarkTrooper = Creature:new {
-      objectName = "imperialDarkTrooper",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "imperial", 
-	  factionPoints = 20,
-      gender = "",
+	objectName = "imperialDarkTrooper",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "imperial", 
+	factionPoints = 20,
+	gender = "",
 
-      name = "Dark Trooper",
-      objectCRC = 1312348723, 
-      socialGroup = "imperial",
-      named = FALSE, 
+	speciesName = "dark_trooper",
+	stfName = "mob/creature_names", 
+	objectCRC = 1312348723, 
+	socialGroup = "imperial",
+	
 
-      level = 95,
-      
+	level = 95,
+	
 
-      combatFlags = 0,
+	combatFlags = 0,
 
-      healthMax = 250000,
-      healthMin = 240000,
-      strength = 50000,
-      constitution = 50000,
+	healthMax = 250000,
+	healthMin = 240000,
+	strength = 50000,
+	constitution = 50000,
 
-      actionMax = 250000,
-      actionMin = 240000,
-      quickness = 50000,
-      stamina = 50000,
+	actionMax = 250000,
+	actionMin = 240000,
+	quickness = 50000,
+	stamina = 50000,
 
-      mindMax = 250000,
-      mindMin = 240000,
-      focus = 50000,
-      willpower = 50000,
+	mindMax = 250000,
+	mindMin = 240000,
+	focus = 50000,
+	willpower = 50000,
 
-      height = 1, -- Size of creature
-      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 85,
-      energy = 95,
-      electricity = 10,
-      stun = 45,
-      blast = 80,
-      heat = 30,
-      cold = 10,
-      acid = 30,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 85,
+	energy = 95,
+	electricity = 10,
+	stun = 45,
+	blast = 80,
+	heat = 30,
+	cold = 10,
+	acid = 30,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
-	  
-	  randomMovement = 0,
+	meleeDefense = 1,  
+	rangedDefense = 1,
+	
+	randomMovement = 0,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
-      weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 550,
-      weaponAttackSpeed = 1,
-      weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 350,
+	weaponMaxDamage = 550,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,42,98", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,42,98", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
-      respawnTimer = 60,
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(imperialDarkTrooper, 1312348723) --  Add to Global Table

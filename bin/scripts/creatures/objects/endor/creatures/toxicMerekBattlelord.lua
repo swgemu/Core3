@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 toxicMerekBattlelord = Creature:new {
-      objectName = "toxicMerekBattlelord",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Merek",
-      gender = "",
+	objectName = "toxicMerekBattlelord",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Merek",
+	gender = "",
 
-	  speciesName = "toxic_merek_battlelord",
-	  stfName = "mob/creature_names",
-      objectCRC = 4057111915, 
-      socialGroup = "Merek",
-      
+	speciesName = "toxic_merek_battlelord",
+	stfName = "mob/creature_names",
+	objectCRC = 4057111915, 
+	socialGroup = "Merek",
+	
 
-      level = 45,
-      
+	level = 45,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 11900,
-      healthMin = 9700,
-      strength = 0,
-      constitution = 0,
+	healthMax = 11900,
+	healthMin = 9700,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 11900,
-      actionMin = 9700,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 11900,
+	actionMin = 9700,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 11900,
-      mindMin = 9700,
-      focus = 0,
-      willpower = 0,
+	mindMax = 11900,
+	mindMin = 9700,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 40,
-      energy = -1,
-      electricity = 60,
-      stun = 50,
-      blast = 60,
-      heat = 60,
-      cold = 50,
-      acid = 80,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 40,
+	energy = -1,
+	electricity = 60,
+	stun = 50,
+	blast = 60,
+	heat = 60,
+	cold = 50,
+	acid = 80,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 1,
-      stalker = 1,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 1,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.25,  -- Likely hood to be tamed
+	tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 20,
+	boneType = "",
+	boneMax = 20,
 
-      hideType = "hide_leathery_endor",
-      hideMax = 45,
+	hideType = "hide_leathery_endor",
+	hideMax = 45,
 
-      meatType = "meat_wild_endor",
-      meatMax = 35,
+	meatType = "meat_wild_endor",
+	meatMax = 35,
 
-      --skills = { " Blind attack", " Ranged attack (spit)", " Poison attack (strong)" }
-      skills = { "merekAttack2", "merekAttack3", "merekAttack6" },
-      respawnTimer = 60,
+	--skills = { " Blind attack", " Ranged attack (spit)", " Poison attack (strong)" }
+	skills = { "merekAttack2", "merekAttack3", "merekAttack6" },
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(toxicMerekBattlelord, 4057111915) --  Add to Global Table

@@ -41,107 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 jawaWarlord = Creature:new {
-      objectName = "jawaWarlord",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Jawa",
-      gender = "",
+	objectName = "jawaWarlord",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Jawa",
+	gender = "",
 
-      name = "Jawa warlord",
-      objectCRC = 3444186231, 
-      socialGroup = "Jawa",
-      named = FALSE, 
+	speciesName = "jawa_warlord",
+	stfName = "mob/creature_names", 
+	objectCRC = 3444186231, 
+	socialGroup = "Jawa",
+	
 
-      level = 12,
-      
+	level = 12,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 1400,
-      healthMin = 1200,
-      strength = 0,
-      constitution = 0,
+	healthMax = 1400,
+	healthMin = 1200,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 1400,
-      actionMin = 1200,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 1400,
+	actionMin = 1200,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 1400,
-      mindMin = 1200,
-      focus = 0,
-      willpower = 0,
+	mindMax = 1400,
+	mindMin = 1200,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = -1,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = -1,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Jawa Ion Rifle", -- Name ex. 'a Vibrolance'
-      weaponTemp = "rifle_jawa_ion", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 100,
-      weaponMaxDamage = 250,
-      weaponAttackSpeed = 4,
-      weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Jawa Ion Rifle", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_jawa_ion", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 100,
+	weaponMaxDamage = 250,
+	weaponAttackSpeed = 4,
+	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "jawaRangedAttack1", "jawaRangedAttack2", "jawaRangedAttack3", "jawaRangedAttack4", "jawaRangedAttack5", "jawaRangedAttack6", "jawaRangedAttack7", "jawaRangedAttack8", "jawaRangedAttack9", "jawaRangedAttack10", "jawaRangedAttack11", "jawaRangedAttack12" },
-      -- respawnTimer = 180,
+	skills = { "jawaRangedAttack1", "jawaRangedAttack2", "jawaRangedAttack3", "jawaRangedAttack4", "jawaRangedAttack5", "jawaRangedAttack6", "jawaRangedAttack7", "jawaRangedAttack8", "jawaRangedAttack9", "jawaRangedAttack10", "jawaRangedAttack11", "jawaRangedAttack12" },
+	-- respawnTimer = 180,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(jawaWarlord, 3444186231) --  Add to Global Table

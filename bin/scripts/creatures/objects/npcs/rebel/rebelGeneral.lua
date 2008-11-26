@@ -41,108 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 rebelGeneral = Creature:new {
-      objectName = "rebelGeneral",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "rebel", 
-	  factionPoints = 20,
-      gender = "",
+	objectName = "rebelGeneral",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "rebel", 
+	factionPoints = 20,
+	gender = "",
 
-      name = "Rebel General",
-      objectCRC = 354934529, 
-      socialGroup = "rebel",
-      named = FALSE, 
+	speciesName = "rebel_general",
+	stfName = "mob/creature_names", 
+	objectCRC = 354934529, 
+	socialGroup = "rebel",
+	
 
-      level = 28,
-      
+	level = 28,
+	
 
-      combatFlags = 0,
+	combatFlags = 0,
 
-      healthMax = 10000,
-      healthMin = 8200,
-      strength = 500,
-      constitution = 500,
+	healthMax = 10000,
+	healthMin = 8200,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 10000,
-      actionMin = 8200,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 10000,
+	actionMin = 8200,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 10000,
-      mindMin = 8200,
-      focus = 500,
-      willpower = 500,
+	mindMax = 10000,
+	mindMin = 8200,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 35,
-      stun = -1,
-      blast = 0,
-      heat = 35,
-      cold = -1,
-      acid = -1,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 35,
+	stun = -1,
+	blast = 0,
+	heat = 35,
+	cold = -1,
+	acid = -1,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
-      weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 175,
-      weaponMaxDamage = 200,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
+	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 175,
+	weaponMaxDamage = 200,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 1,
-      alternateWeaponMinDamage = 175,
-      alternateWeaponMaxDamage = 250,
-      alternateWeaponAttackSpeed = 1.5,
-      alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 175,
+	alternateWeaponMaxDamage = 250,
+	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,44", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,44", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "rebelAttack40", "rebelAttack41", "rebelAttack42", "rebelAttack43", "rebelAttack44", "rebelAttack45", "rebelAttack46", "rebelAttack47", "rebelAttack48", "rebelAttack49", "rebelAttack50", "rebelAttack51" },
-       respawnTimer = 60,
+	skills = { "rebelAttack40", "rebelAttack41", "rebelAttack42", "rebelAttack43", "rebelAttack44", "rebelAttack45", "rebelAttack46", "rebelAttack47", "rebelAttack48", "rebelAttack49", "rebelAttack50", "rebelAttack51" },
+	 respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(rebelGeneral, 354934529) --  Add to Global Table

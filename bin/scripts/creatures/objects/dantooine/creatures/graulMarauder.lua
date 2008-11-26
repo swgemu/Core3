@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 graulMarauder = Creature:new {
-      objectName = "graulMarauder",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Graul",
-      gender = "",
+	objectName = "graulMarauder",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Graul",
+	gender = "",
 
-	  speciesName = "graul_marauder",
-	  stfName = "mob/creature_names",
-      objectCRC = 4126395623, 
-      socialGroup = "Graul",
-      
+	speciesName = "graul_marauder",
+	stfName = "mob/creature_names",
+	objectCRC = 4126395623, 
+	socialGroup = "Graul",
+	
 
-      level = 173,      
+	level = 173,	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 125000,
-      healthMin = 102000,
-      strength = 10000,
-      constitution = 10000,
+	healthMax = 125000,
+	healthMin = 102000,
+	strength = 10000,
+	constitution = 10000,
 
-      actionMax = 125000,
-      actionMin = 102000,
-      quickness = 10000,
-      stamina = 10000,
+	actionMax = 125000,
+	actionMin = 102000,
+	quickness = 10000,
+	stamina = 10000,
 
-      mindMax = 125000,
-      mindMin = 102000,
-      focus = 10000,
-      willpower = 10000,
+	mindMax = 125000,
+	mindMin = 102000,
+	focus = 10000,
+	willpower = 10000,
 
-      height = 2.5, -- Size of creature
-      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 75,
-      energy = 55,
-      electricity = 55,
-      stun = 55,
-      blast = 90,
-      heat = 90,
-      cold = 90,
-      acid = 55,
-      lightsaber = 0,
+	height = 2.5, -- Size of creature
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 75,
+	energy = 55,
+	electricity = 55,
+	stun = 55,
+	blast = 90,
+	heat = 90,
+	cold = 90,
+	acid = 55,
+	lightsaber = 0,
 
-      accuracy = 200,
+	accuracy = 200,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "Creature Weapon", -- Name ex. 'a Vibrolance'
-      weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 600,
-      weaponAttackSpeed = 1,
-      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Weapon", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 350,
+	weaponMaxDamage = 600,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_dantooine",
-      boneMax = 950,
+	boneType = "bone_mammal_dantooine",
+	boneMax = 950,
 
-      hideType = "hide_leathery_dantooine",
-      hideMax = 1000,
+	hideType = "hide_leathery_dantooine",
+	hideMax = 1000,
 
-      meatType = "meat_carnivore_dantooine",
-      meatMax = 1100,
+	meatType = "meat_carnivore_dantooine",
+	meatMax = 1100,
 
-      skills = { "graulMarauderAttack1", "graulMarauderAttack2" },
-	  -- skills = { " Area attack (bleeds)", " Stun attack", "" }
-      respawnTimer = 3600,
+	skills = { "graulMarauderAttack1", "graulMarauderAttack2" },
+	-- skills = { " Area attack (bleeds)", " Stun attack", "" }
+	respawnTimer = 3600,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(graulMarauder, 4126395623) --  Add to Global Table

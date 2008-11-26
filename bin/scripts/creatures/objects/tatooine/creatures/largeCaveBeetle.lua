@@ -41,109 +41,109 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 largeCaveBeetle = Creature:new {
-      objectName = "largeCaveBeetle",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Rock Beetle",
-      gender = "",
+	objectName = "largeCaveBeetle",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Rock Beetle",
+	gender = "",
 
-	  speciesName = "large_cave_beetle",
-	  stfName = "mob/creature_names",
-      objectCRC = 607873114, 
-      socialGroup = "Rock Beetle",
-      
+	speciesName = "large_cave_beetle",
+	stfName = "mob/creature_names",
+	objectCRC = 607873114, 
+	socialGroup = "Rock Beetle",
+	
 
-      level = 23,
-      
+	level = 23,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 7200,
-      healthMin = 5900,
-      strength = 0,
-      constitution = 0,
+	healthMax = 7200,
+	healthMin = 5900,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 7200,
-      actionMin = 5900,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 7200,
+	actionMin = 5900,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 7200,
-      mindMin = 5900,
-      focus = 0,
-      willpower = 0,
+	mindMax = 7200,
+	mindMin = 5900,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 50,
-      energy = 0,
-      electricity = -1,
-      stun = -1,
-      blast = -1,
-      heat = -1,
-      cold = -1,
-      acid = -1,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 50,
+	energy = 0,
+	electricity = -1,
+	stun = -1,
+	blast = -1,
+	heat = -1,
+	cold = -1,
+	acid = -1,
+	lightsaber = 0,
 
-      accuracy = 0,
+	accuracy = 0,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0.25,  -- Likely hood to be tamed
+	tame = 0.25,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 20,
+	boneType = "",
+	boneMax = 20,
 
-      hideType = "hide_scaley_tatooine",
-      hideMax = 14,
+	hideType = "hide_scaley_tatooine",
+	hideMax = 14,
 
-      meatType = "meat_insect_tatooine",
-      meatMax = 10,
+	meatType = "meat_insect_tatooine",
+	meatMax = 10,
 
-	  skills = { "largeCaveBeetleAttack1" },
-      -- skills = { " Posture down attack", " Ranged attack (spit)", "" }
-      respawnTimer = 60,
+	skills = { "largeCaveBeetleAttack1" },
+	-- skills = { " Posture down attack", " Ranged attack (spit)", "" }
+	respawnTimer = 60,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(largeCaveBeetle, 607873114) --  Add to Global Table

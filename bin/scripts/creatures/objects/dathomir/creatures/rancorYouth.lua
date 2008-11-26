@@ -41,108 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 rancorYouth = Creature:new {
-      objectName = "rancorYouth",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "Rancor",
-      gender = "",
+	objectName = "rancorYouth",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	faction = "Rancor",
+	gender = "",
 
-	  speciesName = "rancor_youth",
-	  stfName = "mob/creature_names",
-      objectCRC = 2919713604, 
-      socialGroup = "Rancor",
-      
+	speciesName = "rancor_youth",
+	stfName = "mob/creature_names",
+	objectCRC = 2919713604, 
+	socialGroup = "Rancor",
+	
 
-      level = 45,
-      
+	level = 45,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 10900,
-      healthMin = 8900,
-      strength = 0,
-      constitution = 0,
+	healthMax = 10900,
+	healthMin = 8900,
+	strength = 0,
+	constitution = 0,
 
-      actionMax = 10900,
-      actionMin = 8900,
-      quickness = 0,
-      stamina = 0,
+	actionMax = 10900,
+	actionMin = 8900,
+	quickness = 0,
+	stamina = 0,
 
-      mindMax = 10900,
-      mindMin = 8900,
-      focus = 0,
-      willpower = 0,
+	mindMax = 10900,
+	mindMin = 8900,
+	focus = 0,
+	willpower = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 35,
-      energy = 60,
-      electricity = 100,
-      stun = 0,
-      blast = 0,
-      heat = 100,
-      cold = 100,
-      acid = 0,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 35,
+	energy = 60,
+	electricity = 100,
+	stun = 0,
+	blast = 0,
+	heat = 100,
+	cold = 100,
+	acid = 0,
+	lightsaber = 0,
 
-      accuracy = 200,
+	accuracy = 200,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 1,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 1,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "bone_mammal_dathomir",
-      boneMax = 653,
+	boneType = "bone_mammal_dathomir",
+	boneMax = 653,
 
-      hideType = "hide_leathery_dathomir",
-      hideMax = 753,
+	hideType = "hide_leathery_dathomir",
+	hideMax = 753,
 
-      meatType = "meat_carnivore_dathomir",
-      meatMax = 700,
+	meatType = "meat_carnivore_dathomir",
+	meatMax = 700,
 
-      skills = { "rancorAttack1", "rancorAttack2" },
-      respawnTimer = 180,
+	skills = { "rancorAttack1", "rancorAttack2" },
+	respawnTimer = 180,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(rancorYouth, 2919713604) --  Add to Global Table

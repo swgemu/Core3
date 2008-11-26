@@ -41,107 +41,108 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 darkForceCrystalHunter = Creature:new {
-      objectName = "darkForceCrystalHunter",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Remn. Of Kun",
-      gender = "",
+	objectName = "darkForceCrystalHunter",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Remn. Of Kun",
+	gender = "",
 
-      name = "Force crystal hunter",
-      objectCRC = 2005105485, 
-      socialGroup = "Remn. Of Kun",
-      named = FALSE, 
+	speciesName = "dark_force_crystal_hunter",
+	stfName = "mob/creature_names", 
+	objectCRC = 2005105485, 
+	socialGroup = "Remn. Of Kun",
+	
 
-      level = 115,
-      
+	level = 115,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 30000,
-      healthMin = 24000,
-      strength = 500,
-      constitution = 500,
+	healthMax = 30000,
+	healthMin = 24000,
+	strength = 500,
+	constitution = 500,
 
-      actionMax = 30000,
-      actionMin = 24000,
-      quickness = 500,
-      stamina = 500,
+	actionMax = 30000,
+	actionMin = 24000,
+	quickness = 500,
+	stamina = 500,
 
-      mindMax = 30000,
-      mindMin = 24000,
-      focus = 500,
-      willpower = 500,
+	mindMax = 30000,
+	mindMin = 24000,
+	focus = 500,
+	willpower = 500,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 80,
-      energy = 80,
-      electricity = 80,
-      stun = 80,
-      blast = 80,
-      heat = 80,
-      cold = 80,
-      acid = 80,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 80,
+	energy = 80,
+	electricity = 80,
+	stun = 80,
+	blast = 80,
+	heat = 80,
+	cold = 80,
+	acid = 80,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,39,40,99", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,39,40,99", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "forceCrystalHunterAttack20", "forceCrystalHunterAttack21", "forceCrystalHunterAttack22", "forceCrystalHunterAttack23", "forceCrystalHunterAttack24", "forceCrystalHunterAttack25", "forceCrystalHunterAttack26", "forceCrystalHunterAttack27" }, 
-      respawnTimer = 300, 
+	skills = { "forceCrystalHunterAttack20", "forceCrystalHunterAttack21", "forceCrystalHunterAttack22", "forceCrystalHunterAttack23", "forceCrystalHunterAttack24", "forceCrystalHunterAttack25", "forceCrystalHunterAttack26", "forceCrystalHunterAttack27" }, 
+	respawnTimer = 300, 
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(darkForceCrystalHunter, 2005105485) --  Add to Global Table

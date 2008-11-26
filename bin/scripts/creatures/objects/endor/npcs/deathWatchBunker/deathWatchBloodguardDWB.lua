@@ -41,107 +41,108 @@
 --which carries forward this exception.
 
 deathWatchBloodguardDWB = Creature:new {
-      objectName = "deathWatchBloodguardDWB",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Death Watch",
-      gender = "",
+	objectName = "deathWatchBloodguardDWB",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "Death Watch",
+	gender = "",
 
-      name = "Death Watch Bloodguard",
-      objectCRC = 3286146806, 
-      socialGroup = "Death Watch",
-      named = FALSE, 
+	speciesName = "mand_bunker_dthwatch_red",
+	stfName = "mob/creature_names", 
+	objectCRC = 3286146806, 
+	socialGroup = "Death Watch",
+	
 
-      level = 121,
-      
+	level = 121,
+	
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      healthMax = 54000,
-      healthMin = 44000,
-      strength = 15000,
-      constitution = 15000,
+	healthMax = 54000,
+	healthMin = 44000,
+	strength = 15000,
+	constitution = 15000,
 
-      actionMax = 54000,
-      actionMin = 44000,
-      quickness = 15000,
-      stamina = 15000,
+	actionMax = 54000,
+	actionMin = 44000,
+	quickness = 15000,
+	stamina = 15000,
 
-      mindMax = 54000,
-      mindMin = 44000,
-      focus = 15000,
-      willpower = 15000,
+	mindMax = 54000,
+	mindMin = 44000,
+	focus = 15000,
+	willpower = 15000,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 55,
-      energy = 55,
-      electricity = 30,
-      stun = 40,
-      blast = 70,
-      heat = 60,
-      cold = 30,
-      acid = 100,
-      lightsaber = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 55,
+	energy = 55,
+	electricity = 30,
+	stun = 40,
+	blast = 70,
+	heat = 60,
+	cold = 30,
+	acid = 100,
+	lightsaber = 0,
 
-      accuracy = 300,
+	accuracy = 300,
 
-      healer = 0,
+	healer = 0,
 
-      pack = 0,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	pack = 0,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
-      weaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 640,
-      weaponMaxDamage = 950,
-      weaponAttackSpeed = 1.5,
-      weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
+	weaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 640,
+	weaponMaxDamage = 950,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,46,47", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,46,47", -- Group it belongs to for loot
 
-      tame = 0,  -- Likely hood to be tamed
+	tame = 0,  -- Likely hood to be tamed
 
-      milk = 0,
+	milk = 0,
 
-      boneType = "",
-      boneMax = 0,
+	boneType = "",
+	boneMax = 0,
 
-      hideType = "",
-      hideMax = 0,
+	hideType = "",
+	hideMax = 0,
 
-      meatType = "",
-      meatMax = 0,
+	meatType = "",
+	meatMax = 0,
 
-      skills = { "dwbMeleeAttack40", "dwbMeleeAttack41", "dwbMeleeAttack42", "dwbMeleeAttack43", "dwbMeleeAttack44", "dwbMeleeAttack45", "dwbMeleeAttack46", "dwbMeleeAttack47", "dwbMeleeAttack48", "dwbMeleeAttack49", "dwbMeleeAttack50", "dwbMeleeAttack51"  },
-      respawnTimer = 120,
+	skills = { "dwbMeleeAttack40", "dwbMeleeAttack41", "dwbMeleeAttack42", "dwbMeleeAttack43", "dwbMeleeAttack44", "dwbMeleeAttack45", "dwbMeleeAttack46", "dwbMeleeAttack47", "dwbMeleeAttack48", "dwbMeleeAttack49", "dwbMeleeAttack50", "dwbMeleeAttack51"  },
+	respawnTimer = 120,
 
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(deathWatchBloodguardDWB, 3286146806) --  Add to Global Table
