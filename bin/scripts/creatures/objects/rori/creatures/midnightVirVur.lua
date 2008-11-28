@@ -139,7 +139,8 @@ midnightVirVur = Creature:new {
 	meatType = "meat_avian_rori",
 	meatMax = 10,
 
-	skills = { " Intimidation attack", "", "" }
+	--skills = { " Intimidation attack", "", "" }
+	skills = { "virVurAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

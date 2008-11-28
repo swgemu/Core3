@@ -139,7 +139,7 @@ frailSquallMeekAvenger = Creature:new {
 	meatType = "meat_herbivore_rori",
 	meatMax = 12,
 
-	skills = { "", "", "" }
+	skills = { "squallAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

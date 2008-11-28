@@ -139,7 +139,8 @@ nudfuh = Creature:new {
 	meatType = "meat_herbivore_rori",
 	meatMax = 1000,
 
-	skills = { " Intimidation attack", "", "" }
+	--skills = { " Intimidation attack", "", "" }
+	skills = { "nudfuhAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

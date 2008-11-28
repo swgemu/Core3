@@ -42,8 +42,15 @@
 -- Load files
 
 -- Rori
+RunSkillsFile("creatureSkills/rori/creatures/barkMiteAttacks.lua")
 RunSkillsFile("creatureSkills/rori/creatures/borgleBatAttacks.lua")
-RunSkillsFile("creatureSkills/rori/creatures/hornedRaspAttacks.lua")
-RunSkillsFile("creatureSkills/rori/creatures/ikopiAttacks.lua")
+RunSkillsFile("creatureSkills/rori/creatures/jaxAttacks.lua")
+RunSkillsFile("creatureSkills/rori/creatures/kaiTokAttacks.lua")
+RunSkillsFile("creatureSkills/rori/creatures/krevolAttacks.lua")
+RunSkillsFile("creatureSkills/rori/creatures/nudfuhAttacks.lua")
+RunSkillsFile("creatureSkills/rori/creatures/pugorissAttacks.lua")
+RunSkillsFile("creatureSkills/rori/creatures/raspAttacks.lua")
 RunSkillsFile("creatureSkills/rori/creatures/squallAttacks.lua")
 RunSkillsFile("creatureSkills/rori/creatures/tortonAttacks.lua")
+RunSkillsFile("creatureSkills/rori/creatures/virVurAttacks.lua")
+RunSkillsFile("creatureSkills/rori/creatures/vrobalAttacks.lua")

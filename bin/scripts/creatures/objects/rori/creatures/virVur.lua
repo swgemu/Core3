@@ -139,7 +139,7 @@ virVur = Creature:new {
 	meatType = "meat_avian_rori",
 	meatMax = 10,
 
-	skills = { "", "", "" }
+	skills = { "virVurAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
