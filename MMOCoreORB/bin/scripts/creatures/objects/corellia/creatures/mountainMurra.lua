@@ -139,7 +139,8 @@ mountainMurra = Creature:new {
 	meatType = "meat_herbivore_corellia",
 	meatMax = 75,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "murraAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

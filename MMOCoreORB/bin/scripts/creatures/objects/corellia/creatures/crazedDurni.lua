@@ -139,7 +139,8 @@ crazedDurni = Creature:new {
 	meatType = "meat_herbivore_corellia",
 	meatMax = 5,
 
-	skills = { " Posture down attack", "", "" }
+	--skills = { " Posture down attack", "", "" }
+	skills = { "durniAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

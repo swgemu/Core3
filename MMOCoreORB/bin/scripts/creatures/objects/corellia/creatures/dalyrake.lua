@@ -140,7 +140,7 @@ dalyrake = Creature:new {
 	meatMax = 25,
 
 	skills = { "dalyrakeAttack1" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

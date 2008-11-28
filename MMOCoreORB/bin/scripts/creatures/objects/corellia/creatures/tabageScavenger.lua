@@ -139,7 +139,8 @@ tabageScavenger = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 15,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "tabageAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

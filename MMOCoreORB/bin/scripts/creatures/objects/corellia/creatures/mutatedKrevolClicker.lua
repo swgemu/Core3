@@ -139,7 +139,8 @@ mutatedKrevolClicker = Creature:new {
 	meatType = "meat_insect_corellia",
 	meatMax = 10,
 
-	skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }
+	--skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }
+	skills = { "krevolAttack1", "krevolAttack3", "krevolAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

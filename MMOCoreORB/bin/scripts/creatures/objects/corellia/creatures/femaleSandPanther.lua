@@ -139,7 +139,8 @@ femaleSandPanther = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 65,
 
-	skills = { " Dizzy attack", " Blind attack", "" }
+	--skills = { " Dizzy attack", " Blind attack", "" }
+	skills = { "sandPantherAttack1", "sandPantherAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

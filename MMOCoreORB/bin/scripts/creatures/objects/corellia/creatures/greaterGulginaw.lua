@@ -100,7 +100,7 @@ greaterGulginaw = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "", -- Name ex. 'a Vibrolance'
 	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -139,7 +139,8 @@ greaterGulginaw = Creature:new {
 	meatType = "meat_avian_corellia",
 	meatMax = 97,
 
-	skills = { " Dizzy attack", " Stun attack", " Ranged attack (spit)" }
+	--skills = { " Dizzy attack", " Stun attack", " Ranged attack (spit)" }
+	skills = { "gulginawAttack1", "gulginawAttack3", "gulginawAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

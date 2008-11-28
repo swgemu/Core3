@@ -139,7 +139,8 @@ tabage = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 18,
 
-	skills = { " Posture down attack", "", "" }
+	--skills = { " Posture down attack", "", "" }
+	skills = { "tabageAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

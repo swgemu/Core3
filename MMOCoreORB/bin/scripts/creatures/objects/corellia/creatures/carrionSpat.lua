@@ -140,7 +140,7 @@ carrionSpat = Creature:new {
 	meatMax = 260,
 
 	skills = { "carrionSpatAttack1" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

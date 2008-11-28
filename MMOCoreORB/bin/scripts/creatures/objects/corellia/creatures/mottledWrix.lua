@@ -139,7 +139,8 @@ mottledWrix = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 65,
 
-	skills = { " Stun attack", " Disease attack (medium)", "" }
+	--skills = { " Stun attack", " Disease attack (medium)", "" }
+	skills = { "wrixAttack1", "wrixAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

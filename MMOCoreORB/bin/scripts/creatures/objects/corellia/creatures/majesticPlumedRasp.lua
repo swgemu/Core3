@@ -139,7 +139,8 @@ majesticPlumedRasp = Creature:new {
 	meatType = "meat_avian_corellia",
 	meatMax = 5,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "plumedRaspAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

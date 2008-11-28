@@ -139,7 +139,8 @@ razorCatEviscerator = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 65,
 
-	skills = { " Knockdown attack", " Intimidation attack", "" }
+	--skills = { " Knockdown attack", " Intimidation attack", "" }
+	skills = { "razorCatAttack1", "razorCatAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

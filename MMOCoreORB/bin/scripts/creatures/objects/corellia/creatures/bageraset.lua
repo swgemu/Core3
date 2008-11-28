@@ -140,7 +140,7 @@ bageraset = Creature:new {
 	meatMax = 230,
 	skills = { "bagerasetAttack1" },
 	--skills = { " Intimidation attack", " Ranged attack (spit)", "" }     kept spit for when ranged poisons are in.
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

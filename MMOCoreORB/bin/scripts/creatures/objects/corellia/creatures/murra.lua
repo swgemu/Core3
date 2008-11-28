@@ -140,7 +140,7 @@ murra = Creature:new {
 	meatMax = 55,
 
 	skills = { "murraAttack1" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
