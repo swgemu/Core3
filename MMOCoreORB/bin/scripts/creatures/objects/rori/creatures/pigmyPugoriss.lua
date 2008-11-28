@@ -139,7 +139,8 @@ pigmyPugoriss = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 300,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "pugorissAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

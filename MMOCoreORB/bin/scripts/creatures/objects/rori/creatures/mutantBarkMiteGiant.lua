@@ -139,7 +139,8 @@ mutantBarkMiteGiant = Creature:new {
 	meatType = "meat_insect_rori",
 	meatMax = 20,
 
-	skills = { " Area attack", " Intimidation attack", "" }
+	--skills = { " Area attack", " Intimidation attack", "" }
+	skills = { "barkMiteAttack8", "barkMiteAttack7" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

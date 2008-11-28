@@ -139,7 +139,8 @@ fuzzyJax = Creature:new {
 	meatType = "meat_herbivore_rori",
 	meatMax = 11,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "jaxAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

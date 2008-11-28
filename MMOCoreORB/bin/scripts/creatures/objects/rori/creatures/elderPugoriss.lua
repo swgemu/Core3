@@ -139,7 +139,8 @@ elderPugoriss = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 35,
 
-	skills = { " Blind attack", "", "" }
+	--skills = { " Blind attack", "", "" }
+	skills = { "pugorissAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,7 @@ crescentRasp = Creature:new {
 	meatType = "meat_avian_rori",
 	meatMax = 10,
 
-	skills = { "", "", "" }
+	skills = { "raspAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

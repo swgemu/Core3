@@ -141,7 +141,7 @@ borgle = Creature:new {
 
 	skills = { "borgleBatAttack1" },
 	-- skills = { " Posture down attack", "", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

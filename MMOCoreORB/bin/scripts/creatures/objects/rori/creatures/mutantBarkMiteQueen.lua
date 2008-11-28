@@ -139,7 +139,8 @@ mutantBarkMiteQueen = Creature:new {
 	meatType = "meat_insect_rori",
 	meatMax = 35,
 
-	skills = { " Poison attack (strong)", " Area attack (bleeds)", "" }
+	--skills = { " Poison attack (strong)", " Area attack (bleeds)", "" }
+	skills = { "barkMiteAttack9", "barkMiteAttack10" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

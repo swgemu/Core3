@@ -139,7 +139,8 @@ ravenousTorton = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 1300,
 
-	skills = { " Knockdown attack", " Dizzy attack", "" }
+	--skills = { " Knockdown attack", " Dizzy attack", "" }
+	skills = { "tortonAttack3", "tortonAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

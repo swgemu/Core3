@@ -139,7 +139,8 @@ tortonPygmyMature = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 700,
 
-	skills = { " Stun attack", " Dizzy attack", "" }
+	--skills = { " Stun attack", " Dizzy attack", "" }
+	skills = { "tortonAttack1", "tortonAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

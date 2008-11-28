@@ -139,7 +139,8 @@ tortonPygmyMatriarch = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 700,
 
-	skills = { " Dizzy attack", " Intimidation attack", "" }
+	--skills = { " Dizzy attack", " Intimidation attack", "" }
+	skills = { "tortonAttack1", "tortonAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

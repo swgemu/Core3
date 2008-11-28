@@ -139,7 +139,8 @@ greatBorgle = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 11,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "borgleBatAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

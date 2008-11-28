@@ -139,7 +139,8 @@ frightenedBorgle = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 5,
 
-	skills = { " Intimidation attack", "", "" }
+	--skills = { " Intimidation attack", "", "" }
+	skills = { "borgleBatAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

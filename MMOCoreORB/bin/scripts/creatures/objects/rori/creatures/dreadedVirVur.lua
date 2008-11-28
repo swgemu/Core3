@@ -40,8 +40,8 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-dreadedVirVir = Creature:new {
-	objectName = "dreadedVirVir",  -- Lua Object Name
+dreadedVirVur = Creature:new {
+	objectName = "dreadedVirVur",  -- Lua Object Name
 	creatureType = "ANIMAL",
 	faction = "VirVur",
 	gender = "",
@@ -139,10 +139,11 @@ dreadedVirVir = Creature:new {
 	meatType = "meat_avian_rori",
 	meatMax = 25,
 
-	skills = { " Intimidation attack", "", "" }
+	skills = { "virVurAttack2" },
+	-- skills = { " Intimidation attack", "", "" }
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(dreadedVirVir, 3503967296) --  Add to Global Table
+Creatures:addCreature(dreadedVirVur, 3503967296) --  Add to Global Table

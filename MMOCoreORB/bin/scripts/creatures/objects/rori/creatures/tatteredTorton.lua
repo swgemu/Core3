@@ -139,7 +139,8 @@ tatteredTorton = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 1200,
 
-	skills = { " Stun attack", " Dizzy attack", "" }
+	--skills = { " Stun attack", " Dizzy attack", "" }
+	skills = { "tortonAttack2", "tortonAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

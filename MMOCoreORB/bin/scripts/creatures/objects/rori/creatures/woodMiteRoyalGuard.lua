@@ -139,7 +139,8 @@ woodMiteRoyalGuard = Creature:new {
 	meatType = "meat_insect_rori",
 	meatMax = 15,
 
-	skills = { " Posture down attack", " Ranged attack (spit)", " Knockdown attack" }
+	--skills = { " Posture down attack", " Ranged attack (spit)", " Knockdown attack" }
+	skills = { "barkMiteAttack4", "barkMiteAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

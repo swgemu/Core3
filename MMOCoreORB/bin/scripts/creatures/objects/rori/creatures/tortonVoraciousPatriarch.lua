@@ -139,7 +139,8 @@ tortonVoraciousPatriarch = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 1300,
 
-	skills = { " Intimidation attack", " Knockdown attack", "" }
+	--skills = { " Intimidation attack", " Knockdown attack", "" }
+	skills = { "tortonAttack4", "tortonAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
