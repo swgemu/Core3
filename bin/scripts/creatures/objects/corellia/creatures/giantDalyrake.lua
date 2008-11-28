@@ -139,7 +139,8 @@ giantDalyrake = Creature:new {
 	meatType = "meat_insect_corellia",
 	meatMax = 60,
 
-	skills = { " Poison attack (mild)", " Dizzy attack", "" }
+	--skills = { " Poison attack (mild)", " Dizzy attack", "" }
+	skills = { "dalyrakeAttack2", "dalyrakeAttack5" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,8 @@ giantCarrionSpat = Creature:new {
 	meatType = "meat_avian_corellia",
 	meatMax = 350,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "carrionSpatAttack3", "carrionSpatAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

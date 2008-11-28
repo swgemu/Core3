@@ -139,7 +139,8 @@ femaleSliceHound = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 65,
 
-	skills = { " Intimidation attack", "", "" }
+	--skills = { " Intimidation attack", "", "" }
+	skills = { "sliceHoundAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

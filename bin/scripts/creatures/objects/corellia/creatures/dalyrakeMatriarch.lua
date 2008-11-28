@@ -139,7 +139,8 @@ dalyrakeMatriarch = Creature:new {
 	meatType = "meat_insect_corellia",
 	meatMax = 35,
 
-	skills = { " Poison attack (mild)", " Posture down attack", " Ranged attack (spit)" }
+	--skills = { " Poison attack (mild)", " Posture down attack", " Ranged attack (spit)" }
+	skills = { "dalyrakeAttack2", "dalyrakeAttack3", "dalyrakeAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

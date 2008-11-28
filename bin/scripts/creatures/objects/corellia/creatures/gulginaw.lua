@@ -140,7 +140,7 @@ gulginaw = Creature:new {
 	meatMax = 75,
 
 	skills = { "gulginawAttack1" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

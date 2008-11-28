@@ -139,7 +139,7 @@ scavengerRat = Creature:new {
 	meatType = "meat_wild_corellia",
 	meatMax = 4,
 
-	skills = { "", "", "" }
+	skills = { "scavengerRatAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

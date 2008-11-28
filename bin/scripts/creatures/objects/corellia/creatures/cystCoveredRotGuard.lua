@@ -139,7 +139,8 @@ cystCoveredRotGuard = Creature:new {
 	meatType = "meat_insect_corellia",
 	meatMax = 9,
 
-	skills = { " Disease attack (medium)", " Stun attack", "" }
+	--skills = { " Disease attack (medium)", " Stun attack", "" }
+	skills = { "decayMiteAttack1", "decayMiteAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,7 @@ minorGubbur = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 3,
 
-	skills = { "", "", "" }
+	skills = { "gubburAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

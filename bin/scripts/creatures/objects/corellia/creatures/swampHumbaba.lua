@@ -139,7 +139,8 @@ swampHumbaba = Creature:new {
 	meatType = "meat_domesticated_corellia",
 	meatMax = 250,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "humbabaAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

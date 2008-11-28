@@ -139,7 +139,8 @@ grondaJuggernaut = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 500,
 
-	skills = { " Dizzy attack", " Knockdown attack", "" }
+	--skills = { " Dizzy attack", " Knockdown attack", "" }
+	skills = { "grondaAttack2", "grondaAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

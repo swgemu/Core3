@@ -139,7 +139,8 @@ corellianButterflyWorker = Creature:new {
 	meatType = "meat_insect_corellia",
 	meatMax = 8,
 
-	skills = { " Intimidation attack", "", "" }
+	--skills = { " Intimidation attack", "", "" }
+	skills = { "corellianButterflyAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

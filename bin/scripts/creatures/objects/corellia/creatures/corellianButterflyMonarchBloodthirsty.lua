@@ -46,9 +46,8 @@ corellianButterflyMonarchBloodthirsty = Creature:new {
 	faction = "Cor. Butterfly",
 	gender = "",
 
-	--speciesName = "creature_name",
-	--stfName = "mob/creature_names",
-	stfName = "a Corellian Butterfly Monarch Bloodthirsty",
+	speciesName = "corellian_butterfly_monarch_bloodthirsty",
+	stfName = "mob/creature_names",
 	objectCRC = 2920594560, 
 	socialGroup = "Cor. Butterfly",
 	
@@ -140,7 +139,8 @@ corellianButterflyMonarchBloodthirsty = Creature:new {
 	meatType = "meat_insect_corellia",
 	meatMax = 27,
 
-	skills = { " Stun attack", " Intimidation attack", "" }
+	--skills = { " Stun attack", " Intimidation attack", "" }
+	skills = { "corellianButterflyAttack4", "corellianButterflyAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

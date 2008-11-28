@@ -139,7 +139,8 @@ dalyrakeHarvester = Creature:new {
 	meatType = "meat_insect_corellia",
 	meatMax = 25,
 
-	skills = { " Intimidation attack", "", "" }
+	--skills = { " Intimidation attack", "", "" }
+	skills = { "dalyrakeAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,8 @@ tabageProtector = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 14,
 
-	skills = { " Poison attack (mild)", " Stun attack", "" }
+	--skills = { " Poison attack (mild)", " Stun attack", "" }
+	skills = { "tabageAttack3", "tabageAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

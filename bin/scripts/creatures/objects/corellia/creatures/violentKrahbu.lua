@@ -139,7 +139,8 @@ violentKrahbu = Creature:new {
 	meatType = "meat_herbivore_corellia",
 	meatMax = 225,
 
-	skills = { " Intimidation attack", "", "" }
+	--skills = { " Intimidation attack", "", "" }
+	skills = { "krahbuAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,8 @@ rogueBageraset = Creature:new {
 	meatType = "meat_herbivore_corellia",
 	meatMax = 230,
 
-	skills = { " Ranged attack (spit)", " Stun attack", "" }
+	--skills = { " Ranged attack (spit)", " Stun attack", "" }
+	skills = { "bagerasetAttack2", "bagerasetAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
