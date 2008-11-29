@@ -139,7 +139,8 @@ femaleGreatGrassPlainsTuskCat = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 70,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "tuskCatAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

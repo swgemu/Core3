@@ -139,7 +139,8 @@ mountainKrevol = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 3,
 
-	skills = { " Posture down attack", "", "" }
+	--skills = { " Posture down attack", "", "" }
+	skills = { "krevolAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

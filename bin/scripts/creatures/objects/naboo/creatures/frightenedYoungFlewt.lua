@@ -139,7 +139,7 @@ frightenedYoungFlewt = Creature:new {
 	meatType = "meat_avian_naboo",
 	meatMax = 35,
 
-	skills = { "", "", "" }
+	skills = { "flewtAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

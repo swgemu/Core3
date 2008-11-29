@@ -139,7 +139,8 @@ gunganFambaa = Creature:new {
 	meatType = "meat_reptilian_naboo",
 	meatMax = 1350,
 
-	skills = { " Intimidation attack", " Knockdown attack", "" }
+	--skills = { " Intimidation attack", " Knockdown attack", "" }
+	skills = { "fambaaAttack3", "fambaaAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -39,42 +39,8 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-pekoPekoAttack1 = {
-	attackname = "pekoPekoAttack1",
-	animation = "creature_attack_light",
-	
-	requiredWeaponType = NONE,
-
-	range = 10,
-
-	damageRatio = 9,
-
-	speedRatio = 2,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 50,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(pekoPekoAttack1)
-
------------------------------------------------
-
-pekoPekoAttack2 = {
-	attackname = "pekoPekoAttack2",
+spineflapAttack1 = {
+	attackname = "spineflapAttack1",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -103,12 +69,80 @@ pekoPekoAttack2 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(pekoPekoAttack2)
+AddRandomPoolAttackTargetSkill(spineflapAttack1)
 
 -----------------------------------------------
 
-pekoPekoAttack3 = {
-	attackname = "pekoPekoAttack3",
+spineflapAttack2 = {
+	attackname = "spineflapAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 30,
+
+	damageRatio = 9,
+
+	speedRatio = 2,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 50,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(spineflapAttack2)
+
+-----------------------------------------------
+
+spineflapAttack3 = {
+	attackname = "spineflapAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 9,
+
+	speedRatio = 2,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 50,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(spineflapAttack3)
+
+-----------------------------------------------
+
+spineflapAttack4 = {
+	attackname = "spineflapAttack4",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -137,12 +171,12 @@ pekoPekoAttack3 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(pekoPekoAttack3)
+AddRandomPoolAttackTargetSkill(spineflapAttack4)
 
 -----------------------------------------------
 
-pekoPekoAttack4 = {
-	attackname = "pekoPekoAttack4",
+spineflapAttack5 = {
+	attackname = "spineflapAttack5",
 	animation = "creature_attack_light",
 	
 	requiredWeaponType = NONE,
@@ -153,41 +187,7 @@ pekoPekoAttack4 = {
 
 	speedRatio = 2,
 
-	areaRange = 30,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 40,
-	blindChance = 30,
-	stunChance = 0,
-	intimidateChance = 30,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(pekoPekoAttack4)
-
------------------------------------------------
-
-pekoPekoAttack5 = {
-	attackname = "pekoPekoAttack5",
-	animation = "creature_attack_light",
-	
-	requiredWeaponType = NONE,
-
-	range = 10,
-
-	damageRatio = 9,
-
-	speedRatio = 2,
-
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 50,
@@ -205,6 +205,59 @@ pekoPekoAttack5 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(pekoPekoAttack5)
+AddRandomPoolAttackTargetSkill(spineflapAttack5)
 
 -----------------------------------------------
+
+spineflapAttack6 = {
+        attackname = "spineflapAttack6",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
+
+        range = 10,
+
+        damageRatio = 15,
+
+        speedRatio = 4,
+
+        areaRange = 0,
+        accuracyBonus = 0,
+
+        healthAttackChance = 100,
+        actionAttackChance = 0,
+        mindAttackChance = 0,
+
+        dotChance = 50,
+        tickStrengthOfHit = 1,
+
+        fireStrength = 0,
+        fireType = 0,
+
+        bleedingStrength = 0,
+		bleedingType = 0,
+
+        poisonStrength = 0,
+        poisonType = 0,
+
+        diseaseStrength = 100,
+        diseaseType = HEALTH,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(spineflapAttack6)
+
+--------------------------------------------------------------------------------------

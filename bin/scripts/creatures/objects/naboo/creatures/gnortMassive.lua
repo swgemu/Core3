@@ -139,7 +139,7 @@ gnortMassive = Creature:new {
 	meatType = "meat_herbivore_naboo",
 	meatMax = 12,
 
-	skills = { "", "", "" }
+	skills = { "gnortAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

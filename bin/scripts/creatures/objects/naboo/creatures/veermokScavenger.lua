@@ -139,7 +139,8 @@ veermokScavenger = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 150,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "veermokAttack5" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

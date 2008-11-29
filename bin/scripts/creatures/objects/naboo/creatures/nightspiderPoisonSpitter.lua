@@ -139,7 +139,8 @@ nightspiderPoisonSpitter = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 7,
 
-	skills = { " Stun attack", " Poison attack (mild)", "" }
+	--skills = { " Stun attack", " Poison attack (mild)", "" }
+	skills = { "nightspiderAttack1", "nightspiderAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

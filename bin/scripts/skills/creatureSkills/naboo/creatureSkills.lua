@@ -42,19 +42,24 @@
 -- Load files
 
 -- Naboo
+RunSkillsFile("creatureSkills/naboo/creatures/bolleBolAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/chubaAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/falumpasetAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/fambaaAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/flewtAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/gnortAttacks.lua")
+RunSkillsFile("creatureSkills/naboo/creatures/gualamaAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/hermitSpiderAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/ikopiAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/kaaduAttacks.lua")
+RunSkillsFile("creatureSkills/naboo/creatures/krevolAttacks.lua")
+RunSkillsFile("creatureSkills/naboo/creatures/mottAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/narglatchAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/nightspiderAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/nunaAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/pekoPekoAttacks.lua")
+RunSkillsFile("creatureSkills/naboo/creatures/rawlAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/shaupautAttacks.lua")
-RunSkillsFile("creatureSkills/naboo/creatures/spineflaprAttacks.lua")
+RunSkillsFile("creatureSkills/naboo/creatures/spineflapAttacks.lua")
 RunSkillsFile("creatureSkills/naboo/creatures/tuskCatAttacks.lua")
-
+RunSkillsFile("creatureSkills/naboo/creatures/veermokAttacks.lua")

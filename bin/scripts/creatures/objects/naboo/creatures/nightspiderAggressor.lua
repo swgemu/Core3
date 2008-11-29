@@ -139,7 +139,8 @@ nightspiderAggressor = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 5,
 
-	skills = { " Posture down attack", " Poison attack (mild)", "" }
+	--skills = { " Posture down attack", " Poison attack (mild)", "" }
+	skills = { "nightspiderAttack4", "nightspiderAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

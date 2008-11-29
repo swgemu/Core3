@@ -139,7 +139,8 @@ rabidShaupaut = Creature:new {
 	meatType = "meat_wild_naboo",
 	meatMax = 4,
 
-	skills = { " Intimidation attack", " Disease attack (mild)", "" }
+	--skills = { " Intimidation attack", " Disease attack (mild)", "" }
+	skills = { "shaupautAttack3", "shaupautAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

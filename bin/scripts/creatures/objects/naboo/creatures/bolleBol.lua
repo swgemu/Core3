@@ -139,7 +139,8 @@ bolleBol = Creature:new {
 	meatType = "meat_herbivore_naboo",
 	meatMax = 450,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "bolleBolAttack1", "bolleBolAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

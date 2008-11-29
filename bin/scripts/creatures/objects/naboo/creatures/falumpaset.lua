@@ -139,8 +139,9 @@ falumpaset = Creature:new {
 	meatType = "meat_herbivore_naboo",
 	meatMax = 230,
 
-	skills = { " Posture down attack", "", "" }
-	 respawnTimer = 60,
+	--skills = { " Posture down attack", "", "" }
+	skills = { "falumpasetAttack3" },
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

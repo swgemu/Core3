@@ -139,7 +139,8 @@ maverickGualama = Creature:new {
 	meatType = "meat_wild_naboo",
 	meatMax = 200,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "gualamaAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
