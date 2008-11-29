@@ -139,7 +139,8 @@ savageFlewtQueen = Creature:new {
 	meatType = "meat_avian_naboo",
 	meatMax = 6,
 
-	skills = { " Poison attack (mild)", " Stun attack", "" }
+	--skills = { " Poison attack (mild)", " Stun attack", "" }
+	skills = { "flewtAttack2", "flewtAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

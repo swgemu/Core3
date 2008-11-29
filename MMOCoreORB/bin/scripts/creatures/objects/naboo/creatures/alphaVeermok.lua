@@ -139,7 +139,8 @@ alphaVeermok = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 150,
 
-	skills = { " Knockdown attack", " Dizzy attack", "" }
+	--skills = { " Knockdown attack", " Dizzy attack", "" }
+	skills = { "veermokAttack1", "veermokAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

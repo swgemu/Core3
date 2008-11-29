@@ -139,7 +139,8 @@ mott = Creature:new {
 	meatType = "meat_herbivore_naboo",
 	meatMax = 85,
 
-	skills = { " Posture down attack", "", "" }
+	--skills = { " Posture down attack", "", "" }
+	skills = { "mottAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

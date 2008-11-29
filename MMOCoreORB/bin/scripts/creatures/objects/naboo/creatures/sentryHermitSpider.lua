@@ -139,7 +139,8 @@ sentryHermitSpider = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 9,
 
-	skills = { " Poison attack (mild)", " Intimidation attack", "" }
+	--skills = { " Poison attack (mild)", " Intimidation attack", "" }
+	skills = { "hermitSpiderAttack2", "hermitSpiderAttack5" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

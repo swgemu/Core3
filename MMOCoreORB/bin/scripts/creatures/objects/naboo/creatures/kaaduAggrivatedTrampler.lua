@@ -139,7 +139,8 @@ kaaduAggrivatedTrampler = Creature:new {
 	meatType = "meat_avian_naboo",
 	meatMax = 120,
 
-	skills = { " Stun attack", " Posture down attack", "" }
+	--skills = { " Stun attack", " Posture down attack", "" }
+	skills = { "kaaduAttack1", "kaaduAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

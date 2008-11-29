@@ -139,7 +139,8 @@ vineRawl = Creature:new {
 	meatType = "meat_reptilian_naboo",
 	meatMax = 40,
 
-	skills = { " Disease attack (poison)", " Posture down attack", "" }
+	--skills = { " Disease attack (poison)", " Posture down attack", "" }
+	skills = { "rawlAttack5", "rawlAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

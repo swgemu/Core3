@@ -139,8 +139,8 @@ flewt = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 3,
 
-	skills = { "", "", "" }
-	 respawnTimer = 60,
+	skills = { "flewtAttack1" },
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

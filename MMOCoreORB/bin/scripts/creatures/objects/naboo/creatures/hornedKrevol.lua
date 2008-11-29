@@ -139,7 +139,8 @@ hornedKrevol = Creature:new {
 	meatType = "meat_reptilian_naboo",
 	meatMax = 3,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "krevolAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

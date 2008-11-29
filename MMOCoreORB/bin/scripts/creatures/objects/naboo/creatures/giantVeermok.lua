@@ -139,7 +139,8 @@ giantVeermok = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 250,
 
-	skills = { " Dizzy attack", " Intimidation attack", "" }
+	--skills = { " Dizzy attack", " Intimidation attack", "" }
+	skills = { "veermokAttack2", "veermokAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,8 @@ spikedKrevol = Creature:new {
 	meatType = "meat_reptilian_naboo",
 	meatMax = 25,
 
-	skills = { " Posture down attack", "", "" }
+	--skills = { " Posture down attack", "", "" }
+	skills = { "krevolAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

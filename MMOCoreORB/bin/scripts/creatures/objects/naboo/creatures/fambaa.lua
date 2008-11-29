@@ -139,7 +139,8 @@ fambaa = Creature:new {
 	meatType = "meat_reptilian_naboo",
 	meatMax = 1250,
 
-	skills = { " Dizzy attack", " Posture down attack", "" }
+	--skills = { " Dizzy attack", " Posture down attack", "" }
+	skills = { "fambaaAttack1", "fambaaAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

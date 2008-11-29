@@ -139,8 +139,9 @@ pekoPeko = Creature:new {
 	meatType = "meat_avian_naboo",
 	meatMax = 105,
 
-	skills = { " Intimidation attack", "", "" }
-	 respawnTimer = 60,
+	--skills = { " Intimidation attack", "", "" }
+	skills = { "pekoPekoAttack3" },
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

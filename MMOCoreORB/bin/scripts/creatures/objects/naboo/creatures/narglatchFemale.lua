@@ -139,7 +139,8 @@ narglatchFemale = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 65,
 
-	skills = { " Intimidation attack", " Stun attack", "" }
+	--skills = { " Intimidation attack", " Stun attack", "" }
+	skills = { "narglatchAttack3", "narglatchAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

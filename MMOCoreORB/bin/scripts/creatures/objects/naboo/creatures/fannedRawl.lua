@@ -139,7 +139,8 @@ fannedRawl = Creature:new {
 	meatType = "meat_reptilian_naboo",
 	meatMax = 25,
 
-	skills = { " Posture down attack", " Poison attack (mild)", "" }
+	--skills = { " Posture down attack", " Poison attack (mild)", "" }
+	skills = { "rawlAttack1", "rawlAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

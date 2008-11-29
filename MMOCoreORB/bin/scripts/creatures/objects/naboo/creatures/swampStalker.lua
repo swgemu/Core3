@@ -139,7 +139,8 @@ swampStalker = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 65,
 
-	skills = { " Stun attack", " Blind attack", "" }
+	--skills = { " Stun attack", " Blind attack", "" }
+	skills = { "tuskCatAttack2", "tuskCatAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

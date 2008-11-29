@@ -139,7 +139,8 @@ pekoPekoAlbatross = Creature:new {
 	meatType = "meat_avian_naboo",
 	meatMax = 400,
 
-	skills = { " Area attack (combo)", " Area attack (knockdown)", "" }
+	--skills = { " Area attack (combo)", " Area attack (knockdown)", "" }
+	skills = { "pekoPekoAttack4", "pekoPekoAttack5" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

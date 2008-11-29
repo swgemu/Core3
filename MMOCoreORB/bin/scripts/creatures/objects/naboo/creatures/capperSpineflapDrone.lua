@@ -139,7 +139,7 @@ capperSpineflapDrone = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 6,
 
-	skills = { "", "", "" }
+	skills = { "spineflapAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

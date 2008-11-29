@@ -139,7 +139,8 @@ spineflapHandmaiden = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 35,
 
-	skills = { " Ranged attack (spil", " Intimidation attack", "" }
+	--skills = { " Ranged attack (spit)", " Intimidation attack", "" }
+	skills = { "spineflapAttack2", "spineflapAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

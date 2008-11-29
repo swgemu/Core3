@@ -139,7 +139,8 @@ maulerVeermok = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 150,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "veermokAttack2", "veermokAttack5" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
