@@ -636,7 +636,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 
 	CreatureObject* creatureObj = (CreatureObject*) creature;
 
-	String skillBox = "outdoors_sSystem::out_novice";
+	String skillBox = "outdoors_scout_novice";
 
 	try {
 		creature->wlock(player);
@@ -729,7 +729,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 
 			creature->removePlayerFromHarvestList(player->getFirstName());
 
-			String xpType = "sSystem::out";
+			String xpType = "scout";
 			int xp = int(creatureObj->getXP() * .1f);
 
 			player->addXp(xpType, xp, true);

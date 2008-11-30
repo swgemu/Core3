@@ -254,7 +254,7 @@ public:
 		professions->put("entertainer", new StartingProfession());
 		professions->put("marksman", new StartingProfession());
 		professions->put("medic", new StartingProfession());
-		professions->put("sSystem::out", new StartingProfession());
+		professions->put("scout", new StartingProfession());
 	}
 };
 
