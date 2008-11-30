@@ -97,7 +97,7 @@ public:
 	static const int TRAINER = 19; //category
 	static const int trainer_brawler = 20;
 	static const int trainer_artisan = 21;
-	static const int trainer_sSystem::out = 22;
+	static const int trainer_scout = 22;
 	static const int trainer_marksman = 23;
 	static const int trainer_entertainer = 24;
 	static const int trainer_medic = 25;*/

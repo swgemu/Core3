@@ -993,7 +993,7 @@ void PlayerImplementation::createBaseStats() {
 		memcpy(hamValues, professionHams[3], sizeof(hamValues));
 	else if (startingProfession == "science_medic")
 		memcpy(hamValues, professionHams[4], sizeof(hamValues));
-	else if (startingProfession == "outdoors_sSystem::out")
+	else if (startingProfession == "outdoors_scout")
 		memcpy(hamValues, professionHams[5], sizeof(hamValues));
 	else
 		memcpy(hamValues, professionHams[6], sizeof(hamValues));

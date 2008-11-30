@@ -171,7 +171,7 @@ void CreatureImplementation::init() {
 void CreatureImplementation::sendRadialResponseTo(Player* player,
 		ObjectMenuResponse* omr) {
 
-	String skillBox = "outdoors_sSystem::out_novice";
+	String skillBox = "outdoors_scout_novice";
 
 	if (player->isInRange(getPositionX(), getPositionY(), 10.0f)
 			&& !player->isInCombat() && player->hasSkillBox(skillBox)
@@ -1411,7 +1411,7 @@ void CreatureImplementation::createHarvestList() {
 	GroupObject* group;
 	Player* owner = (Player*) getLootOwner();
 
-	String skillBox = "outdoors_sSystem::out_novice";
+	String skillBox = "outdoors_scout_novice";
 
 	if (owner == NULL || !hasOrganics())
 		return;
