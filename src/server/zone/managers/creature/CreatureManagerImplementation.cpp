@@ -1133,11 +1133,13 @@ int CreatureManagerImplementation::runCreatureFile(lua_State* L) {
 
 	if (filename.indexOf("objects/") != -1  &&
 			idx != filename.indexOf('/')) {
-		int size = (idx + 1) - filename.indexOf('.');
+		String templatename;
 
-		String templatename = filename.subString(idx + 1, idx + size);
-
-		templatename = templatename.subString(0, templatename.indexOf('.'));
+		int idx2 = filename.indexOf('.', idx);
+		if (idx2 != -1)
+			templatename = filename.subString(idx + 1, idx2);
+		else
+			templatename = filename.subString(idx + 1, filename.length());
 
 		SpawnInfo* spawnInfo = new SpawnInfo();
 		spawnInfo->setName(templatename);
