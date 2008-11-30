@@ -57,7 +57,7 @@ interface Powerup implements TangibleObject {
 		super(oid, int type);
 	}
 
-	Powerup(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+	Powerup(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, int type);
 	}
 

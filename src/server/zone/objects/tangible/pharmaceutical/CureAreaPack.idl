@@ -10,11 +10,11 @@ import "Pharmaceutical";
 
 interface CureAreaPack implements Pharmaceutical {
 
-	CureAreaPack(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+	CureAreaPack(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int mptype);
 	}
 
-	CureAreaPack(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+	CureAreaPack(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int mptype);
 	}
 

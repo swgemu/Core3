@@ -31,11 +31,11 @@ public:
 
 	IntangibleObject* getShipBody();
 
-	void setStfName(const string& Name);
+	void setStfName(const String& Name);
 
-	string& getStfName();
+	String& getStfName();
 
-	unicode& getOwnerName();
+	UnicodeString& getOwnerName();
 
 	int getComponentListSize();
 
@@ -104,9 +104,9 @@ protected:
 
 	virtual ~ShipObject();
 
-	string _return_getStfName;
+	String _return_getStfName;
 
-	unicode _return_getOwnerName;
+	UnicodeString _return_getOwnerName;
 
 	friend class ShipObjectHelper;
 };
@@ -129,11 +129,11 @@ public:
 
 	IntangibleObject* getShipBody();
 
-	void setStfName(const string& Name);
+	void setStfName(const String& Name);
 
-	string& getStfName();
+	String& getStfName();
 
-	unicode& getOwnerName();
+	UnicodeString& getOwnerName();
 
 	int getComponentListSize();
 
@@ -198,7 +198,7 @@ public:
 	float getBackshieldCur();
 
 protected:
-	string _param0_setStfName__string_;
+	String _param0_setStfName__String_;
 };
 
 class ShipObjectHelper : public DistributedObjectClassHelper, public Singleton<ShipObjectHelper> {

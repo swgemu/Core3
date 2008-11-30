@@ -77,7 +77,7 @@ public:
 	~LoginPacketHandler() {
 	}
 
-	LoginPacketHandler(string s, LoginServer* server, ConfigManager* configMan) : Logger(s) {
+	LoginPacketHandler(String s, LoginServer* server, ConfigManager* configMan) : Logger(s) {
 		LoginPacketHandler::server = server;
 		LoginPacketHandler::configManager = configMan;
 	}

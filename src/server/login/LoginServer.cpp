@@ -90,10 +90,10 @@ void LoginServer::init() {
 	processors = (LoginMessageProcessorThread**) malloc(procThreadCount * sizeof(LoginMessageProcessorThread*));
 
 	for (int i = 0; i < procThreadCount; ++i) {
-		stringstream name;
+		StringBuffer name;
 		name << "LoginProcessor" << i;
 
-		processors[i] = new LoginMessageProcessorThread(name.str(), phandler);
+		processors[i] = new LoginMessageProcessorThread(name.toString(), phandler);
 	}
 
 	return;
@@ -143,7 +143,7 @@ void LoginServer::handleMessage(ServiceClient* client, Packet* message) {
 			phand->handlePacket(lclient, message);
 
 	} catch (PacketIndexOutOfBoundsException& e) {
-		cout << e.getMessage();
+		System::out << e.getMessage();
 
 		error("incorrect packet - " + message->toString());
 	} catch (DatabaseException& e) {
@@ -151,7 +151,7 @@ void LoginServer::handleMessage(ServiceClient* client, Packet* message) {
 	} catch (ArrayIndexOutOfBoundsException& e) {
 		error(e.getMessage());
 	} catch (...) {
-		cout << "[LoginServer] unreported Exception caught\n";
+		System::out << "[LoginServer] unreported Exception caught\n";
 	}
 }
 
@@ -167,11 +167,11 @@ bool LoginServer::handleError(ServiceClient* client, Exception& e) {
 void LoginServer::printInfo() {
 	lock();
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, true);
 
-	stringstream msg2;
+	StringBuffer msg2;
 	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
 	info(msg2, true);
 

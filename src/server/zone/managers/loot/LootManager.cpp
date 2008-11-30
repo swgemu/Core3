@@ -37,43 +37,43 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 
 		/*
 		// DEBUG COUTS
-		cout << "Hide type is " << ((CreatureObject*)creature)->getHideType() << "\n";
-		cout << "Hide max is " << ((CreatureObject*)creature)->getHideMax() << "\n";
+		System::out << "Hide type is " << ((CreatureObject*)creature)->getHideType() << "\n";
+		System::out << "Hide max is " << ((CreatureObject*)creature)->getHideMax() << "\n";
 
-		cout << "Bone type is " << ((CreatureObject*)creature)->getBoneType() << "\n";
-		cout << "Bone max is " << ((CreatureObject*)creature)->getBoneMax() << "\n";
+		System::out << "Bone type is " << ((CreatureObject*)creature)->getBoneType() << "\n";
+		System::out << "Bone max is " << ((CreatureObject*)creature)->getBoneMax() << "\n";
 
-		cout << "Meat type is " << ((CreatureObject*)creature)->getMeatType() << "\n";
-		cout << "Meat max is " << ((CreatureObject*)creature)->getMeatMax() << "\n";
+		System::out << "Meat type is " << ((CreatureObject*)creature)->getMeatType() << "\n";
+		System::out << "Meat max is " << ((CreatureObject*)creature)->getMeatMax() << "\n";
 
-		cout << "Milk is " << ((CreatureObject*)creature)->getMilk() << "\n";
+		System::out << "Milk is " << ((CreatureObject*)creature)->getMilk() << "\n";
 
-		cout << "faction is " << ((CreatureObject*)creature)->getCreatureFaction() << "\n";
-		cout << "XP is " << ((CreatureObject*)creature)->getXP() << "\n";
-		cout << "healer " << ((CreatureObject*)creature)->isHealer() << "\n";
-		cout << "pack is " << ((CreatureObject*)creature)->isPack() << "\n";
-		cout << "herd is " << ((CreatureObject*)creature)->isHerd() << "\n";
-		cout << "Stalker is " << ((CreatureObject*)creature)->isStalker() << "\n";
-		cout << "Killer is " << ((CreatureObject*)creature)->isKiller() << "\n";
-		cout << "Aggressive is " << ((CreatureObject*)creature)->isAggressive() << "\n";
+		System::out << "faction is " << ((CreatureObject*)creature)->getCreatureFaction() << "\n";
+		System::out << "XP is " << ((CreatureObject*)creature)->getXP() << "\n";
+		System::out << "healer " << ((CreatureObject*)creature)->isHealer() << "\n";
+		System::out << "pack is " << ((CreatureObject*)creature)->isPack() << "\n";
+		System::out << "herd is " << ((CreatureObject*)creature)->isHerd() << "\n";
+		System::out << "Stalker is " << ((CreatureObject*)creature)->isStalker() << "\n";
+		System::out << "Killer is " << ((CreatureObject*)creature)->isKiller() << "\n";
+		System::out << "Aggressive is " << ((CreatureObject*)creature)->isAggressive() << "\n";
 
-		cout << "BehaviorScript is " << ((CreatureObject*)creature)->getBehaviorScript() << "\n";
+		System::out << "BehaviorScript is " << ((CreatureObject*)creature)->getBehaviorScript() << "\n";
 
-		cout << "Weapon is " << ((CreatureObject*)creature)->getCreatureWeapon() << "\n";
-		cout << "WeaponName is " << ((CreatureObject*)creature)->getCreatureWeaponName() << "\n";
-		cout << "WeaponTemp is " << ((CreatureObject*)creature)->getCreatureWeaponTemp() << "\n";
-		cout << "WeaponClass is " << ((CreatureObject*)creature)->getCreatureWeaponClass() << "\n";
-		cout << "WeaponEquipped is " << ((CreatureObject*)creature)->getCreatureWeaponEquipped() << "\n";
-		cout << "WeaponMinDamage is " << ((CreatureObject*)creature)->getCreatureWeaponMinDamage() << "\n";
-		cout << "WeaponMaxDamage is " << ((CreatureObject*)creature)->getCreatureWeaponMaxDamage() << "\n";
-		cout << "WeaponAttackSpeed is " << ((CreatureObject*)creature)->getCreatureWeaponAttackSpeed() << "\n";
-		cout << "WeaponDamageType is " << ((CreatureObject*)creature)->getCreatureWeaponDamageType() << "\n";
-		cout << "WeaponArmorPiercing is " << ((CreatureObject*)creature)->getCreatureWeaponArmorPiercing() << "\n";
+		System::out << "Weapon is " << ((CreatureObject*)creature)->getCreatureWeapon() << "\n";
+		System::out << "WeaponName is " << ((CreatureObject*)creature)->getCreatureWeaponName() << "\n";
+		System::out << "WeaponTemp is " << ((CreatureObject*)creature)->getCreatureWeaponTemp() << "\n";
+		System::out << "WeaponClass is " << ((CreatureObject*)creature)->getCreatureWeaponClass() << "\n";
+		System::out << "WeaponEquipped is " << ((CreatureObject*)creature)->getCreatureWeaponEquipped() << "\n";
+		System::out << "WeaponMinDamage is " << ((CreatureObject*)creature)->getCreatureWeaponMinDamage() << "\n";
+		System::out << "WeaponMaxDamage is " << ((CreatureObject*)creature)->getCreatureWeaponMaxDamage() << "\n";
+		System::out << "WeaponAttackSpeed is " << ((CreatureObject*)creature)->getCreatureWeaponAttackSpeed() << "\n";
+		System::out << "WeaponDamageType is " << ((CreatureObject*)creature)->getCreatureWeaponDamageType() << "\n";
+		System::out << "WeaponArmorPiercing is " << ((CreatureObject*)creature)->getCreatureWeaponArmorPiercing() << "\n";
 
-		cout << "Internal damage modifier " << ((CreatureObject*)creature)->getInternalNPCDamageModifier() << "\n";
+		System::out << "Internal damage modifier " << ((CreatureObject*)creature)->getInternalNPCDamageModifier() << "\n";
 
-		cout << "loot group is " << ((CreatureObject*)creature)->getLootGroup() << "\n";
-		cout << "Tame is " << ((CreatureObject*)creature)->getTame() << "\n";
+		System::out << "loot group is " << ((CreatureObject*)creature)->getLootGroup() << "\n";
+		System::out << "Tame is " << ((CreatureObject*)creature)->getTame() << "\n";
 		//end debug COUTS
 		*/
 
@@ -100,7 +100,7 @@ void LootManager::lootCorpse(Player* player, Creature* creature) {
 		creature->unlock();
 
 	} catch (...) {
-		cout << "Unreported exception caught in LootManager::lootCorpse(Player* player, Creature* creature)";
+		System::out << "Unreported exception caught in LootManager::lootCorpse(Player* player, Creature* creature)";
 		creature->unlock();
 	}
 }
@@ -121,10 +121,10 @@ void LootManager::moveObject(TangibleObject* object, Player* player, Creature* c
 	object->setPersistent(false);
 
 	if (player->getGroupObject() != NULL) {
-		stringstream grouptxt;
-		grouptxt << player->getCharacterName().c_str() << " looted " << object->getName().c_str() << "\\#ffffff from " << creature->getCharacterName().c_str();
+		StringBuffer grouptxt;
+		grouptxt << player->getCharacterName().toString() << " looted " << object->getName().toCharArray() << "\\#ffffff from " << creature->getCharacterName().toString();
 
-		unicode utxt = unicode(grouptxt.str());
+		UnicodeString utxt = UnicodeString(grouptxt.toString());
 		BaseMessage* packet = new ChatSystemMessage(utxt);
 
 		player->getGroupObject()->broadcastMessage(packet);
@@ -141,10 +141,10 @@ void LootManager::lootCredits(Player* player, Creature* creature) {
 
 		player->addCashCredits(credits);
 
-		stringstream creditText;
-		creditText << "You loot " << credits << " credits from corpse of " << creature->getCharacterName().c_str() << ".";
+		StringBuffer creditText;
+		creditText << "You loot " << credits << " credits from corpse of " << creature->getCharacterName().toString() << ".";
 
-		player->sendSystemMessage(creditText.str());
+		player->sendSystemMessage(creditText.toString());
 	}
 }
 
@@ -182,7 +182,7 @@ void LootManager::showLoot(Player* player, Creature* creature) {
 
 		creature->unlock();
 	} catch (...) {
-		cout << "Unreported exception caugh in void LootManager::showLoot(Player* player, Creature* creature)";
+		System::out << "Unreported exception caugh in void LootManager::showLoot(Player* player, Creature* creature)";
 		creature->unlock();
 	}
 }
@@ -218,7 +218,7 @@ void LootManager::lootObject(Player* player, Creature* creature, uint64 objectID
 
 		creature->unlock();
 	} catch (...) {
-		cout << "Unreported exception caugh in void LootManager::lootObject(Player* player, Creature* creature, uint64 objectID)";
+		System::out << "Unreported exception caugh in void LootManager::lootObject(Player* player, Creature* creature, uint64 objectID)";
 		creature->unlock();
 	}
 }
@@ -295,7 +295,7 @@ void LootManager::createLoot(Creature* creature, Player* player) {
 void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	Weapon* item = NULL;
 
-	string certification = "";
+	String certification = "";
 
 	uint32 objectCRC = creature->getObjectCRC();
 
@@ -305,89 +305,89 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	switch (System::random(23)) {
 	case 0 :	// UNARMED
 		item = new UnarmedMeleeWeapon(creature,
-				"object/weapon/melee/special/shared_vibroknuckler.iff",	unicode("Vibroknuckler"), "vibroknuckler", false);
+				"object/weapon/melee/special/shared_vibroknuckler.iff",	UnicodeString("Vibroknuckler"), "vibroknuckler", false);
 		item->setDamageType(WeaponImplementation::KINETIC);
 		item->setArmorPiercing(WeaponImplementation::LIGHT);
 		certification = "cert_vibroknuckler";
 		break;
 	case 1 :	// ONEHANDED
 		item = new OneHandedMeleeWeapon(creature,
-				"object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("Gaderiffi"), "baton_gaderiffi", false);
+				"object/weapon/melee/baton/shared_baton_gaderiffi.iff", UnicodeString("Gaderiffi"), "baton_gaderiffi", false);
 		item->setDamageType(WeaponImplementation::KINETIC);
 		item->setArmorPiercing(WeaponImplementation::NONE);
 		certification = "cert_baton_gaderiffi";
 		break;
 	case 2 :	// TWOHANDED
 		item = new TwoHandedMeleeWeapon(creature,
-				"object/weapon/melee/2h_sword/shared_2h_sword_maul.iff", unicode("Power Hammer"), "2h_sword_battleaxe", false);
+				"object/weapon/melee/2h_sword/shared_2h_sword_maul.iff", UnicodeString("Power Hammer"), "2h_sword_battleaxe", false);
 		item->setDamageType(WeaponImplementation::BLAST);
 		item->setArmorPiercing(WeaponImplementation::MEDIUM);
 		certification = "cert_sword_2h_maul";
 		break;
 	case 3 :	// POLEARM
 		item = new PolearmMeleeWeapon(creature,
-				"object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("Vibrolance"), "lance_vibrolance", false);
+				"object/weapon/melee/polearm/shared_lance_vibrolance.iff", UnicodeString("Vibrolance"), "lance_vibrolance", false);
 		item->setDamageType(WeaponImplementation::ELECTRICITY);
 		item->setArmorPiercing(WeaponImplementation::LIGHT);
 		certification = "cert_lance_vibrolance";
 		break;
 	case 4 :	// PISTOL
 		item = new PistolRangedWeapon(creature,
-				"object/weapon/ranged/pistol/shared_pistol_cdef.iff", unicode("CDEF Pistol"), "pistol_cdef", false);
+				"object/weapon/ranged/pistol/shared_pistol_cdef.iff", UnicodeString("CDEF Pistol"), "pistol_cdef", false);
 		item->setDamageType(WeaponImplementation::ENERGY);
 		item->setArmorPiercing(WeaponImplementation::NONE);
 		break;
 	case 5 :	// CARBINE
 		item = new CarbineRangedWeapon(creature,
-				"object/weapon/ranged/carbine/shared_carbine_cdef.iff", unicode("CDEF Carbine"), "carbine_cdef", false);
+				"object/weapon/ranged/carbine/shared_carbine_cdef.iff", UnicodeString("CDEF Carbine"), "carbine_cdef", false);
 		item->setDamageType(WeaponImplementation::ENERGY);
 		item->setArmorPiercing(WeaponImplementation::NONE);
 		break;
 	case 6 :	// RIFLE
 		item = new RifleRangedWeapon(creature,
-				"object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("T21 Rifle"), "rifle_t21", false);
+				"object/weapon/ranged/rifle/shared_rifle_t21.iff", UnicodeString("T21 Rifle"), "rifle_t21", false);
 		item->setDamageType(WeaponImplementation::ENERGY);
 		item->setArmorPiercing(WeaponImplementation::HEAVY);
 		certification = "cert_rifle_t21";
 		break;
 	case 7 :	// ONEHANDED
 		item = new OneHandedMeleeWeapon(creature,
-				"object/weapon/melee/baton/shared_baton_stun.iff", unicode("Stun Baton"), "baton_stun", false);
+				"object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("Stun Baton"), "baton_stun", false);
 		item->setDamageType(WeaponImplementation::STUN);
 		item->setArmorPiercing(WeaponImplementation::NONE);
 		certification = "cert_baton_stun";
 		break;
 	case 8 :	// TWOHANDED
 		item = new TwoHandedMeleeWeapon(creature,
-				"object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff", unicode("Scythe"), "2h_sword_scythe", false);
+				"object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff", UnicodeString("Scythe"), "2h_sword_scythe", false);
 		item->setDamageType(WeaponImplementation::KINETIC);
 		item->setArmorPiercing(WeaponImplementation::MEDIUM);
 		certification = "cert_sword_2h_scythe";
 		break;
 	case 9 :	// POLEARM
 		item = new PolearmMeleeWeapon(creature,
-				"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("Long Vibro Axe"), "lance_vibro_axe", false);
+				"object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", UnicodeString("Long Vibro Axe"), "lance_vibro_axe", false);
 		item->setDamageType(WeaponImplementation::KINETIC);
 		item->setArmorPiercing(WeaponImplementation::MEDIUM);
 		certification = "cert_lance_vibro_axe";
 		break;
 	case 10 :	// PISTOL
 		item = new PistolRangedWeapon(creature,
-				"object/weapon/ranged/pistol/shared_pistol_dx2.iff", unicode("DX2 Pistol"), "pistol_dx2", false);
+				"object/weapon/ranged/pistol/shared_pistol_dx2.iff", UnicodeString("DX2 Pistol"), "pistol_dx2", false);
 		item->setDamageType(WeaponImplementation::ACID);
 		item->setArmorPiercing(WeaponImplementation::LIGHT);
 		certification = "cert_pistol_dx2";
 		break;
 	case 11 :	// CARBINE
 		item = new CarbineRangedWeapon(creature,
-				"object/weapon/ranged/carbine/shared_carbine_dxr6.iff", unicode("DXR6 Carbine"), "carbine_dxr6", false);
+				"object/weapon/ranged/carbine/shared_carbine_dxr6.iff", UnicodeString("DXR6 Carbine"), "carbine_dxr6", false);
 		item->setDamageType(WeaponImplementation::ACID);
 		item->setArmorPiercing(WeaponImplementation::LIGHT);
 		certification = "cert_carbine_dxr6";
 		break;
 	case 12 :	// RIFLE
 		item = new RifleRangedWeapon(creature,
-				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("DXR-6b Disruptor Rifle"), "rifle_tenloss_dxr6", false);
+				"object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", UnicodeString("DXR-6b Disruptor Rifle"), "rifle_tenloss_dxr6", false);
 		item->setDamageType(WeaponImplementation::ACID);
 		item->setArmorPiercing(WeaponImplementation::MEDIUM);
 
@@ -418,7 +418,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 			objectCRC == 0x514A2CBF || objectCRC == 0x5861C6A3 || objectCRC == 0x889ADF8D ||
 			objectCRC == 0x44F934A9) {
 				item = new PolearmMeleeWeapon(creature,
-						"object/weapon/melee/polearm/shared_lance_controllerfp_nightsister.iff", unicode("Nightsister Lance"), "lance_controllerfp_nightsister", false);
+						"object/weapon/melee/polearm/shared_lance_controllerfp_nightsister.iff", UnicodeString("Nightsister Lance"), "lance_controllerfp_nightsister", false);
 				item->setDamageType(WeaponImplementation::KINETIC);
 				item->setArmorPiercing(WeaponImplementation::NONE);
 				item->setMinDamage(7);
@@ -435,7 +435,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	case 14 :	// PISTOL
 		if (creatureLevel > 150) {
 			item = new PistolRangedWeapon(creature,
-					"object/weapon/ranged/pistol/shared_pistol_geonosian_sonic_blaster_loot.iff", unicode("Genosian Sonic Blaster"), "pistol_sonic_blaster", false);
+					"object/weapon/ranged/pistol/shared_pistol_geonosian_sonic_blaster_loot.iff", UnicodeString("Genosian Sonic Blaster"), "pistol_sonic_blaster", false);
 			item->setDamageType(WeaponImplementation::STUN);
 			item->setArmorPiercing(WeaponImplementation::NONE);
 			item->setAttackSpeed(2.6);
@@ -454,7 +454,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 15 :	// FLAMETHROWER
 		item = new SpecialHeavyRangedWeapon(creature,
-				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", unicode("Flame Thrower"), "rifle_flame_thrower", false);
+				"object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", UnicodeString("Flame Thrower"), "rifle_flame_thrower", false);
 		item->setMinDamage(125);
 		item->setMaxDamage(377);
 		item->setWoundsRatio(36);
@@ -462,7 +462,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 16 :	// LAUNCHER PISTOL
 		item = new PistolRangedWeapon(creature,
-				"object/weapon/ranged/pistol/shared_pistol_launcher.iff", unicode("Launcher Pistol"), "pistol_launcher", false);
+				"object/weapon/ranged/pistol/shared_pistol_launcher.iff", UnicodeString("Launcher Pistol"), "pistol_launcher", false);
 		item->setDamageType(WeaponImplementation::BLAST);
 		item->setArmorPiercing(WeaponImplementation::NONE);
 
@@ -483,7 +483,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 17 :	// LASER CARBINE
 		item = new CarbineRangedWeapon(creature,
-				"object/weapon/ranged/carbine/shared_carbine_laser.iff", unicode("Laser Carbine"), "carbine_laser", false);
+				"object/weapon/ranged/carbine/shared_carbine_laser.iff", UnicodeString("Laser Carbine"), "carbine_laser", false);
 		item->setDamageType(WeaponImplementation::ENERGY);
 		item->setArmorPiercing(WeaponImplementation::MEDIUM);
 
@@ -503,7 +503,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 18 :	// JAWA ION RIFLE
 		item = new RifleRangedWeapon(creature,
-				"object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff", unicode("Jawa Ion Rifle"), "rifle_jawa_ion", false);
+				"object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff", UnicodeString("Jawa Ion Rifle"), "rifle_jawa_ion", false);
 		item->setDamageType(WeaponImplementation::STUN);
 		item->setArmorPiercing(WeaponImplementation::LIGHT);
 
@@ -523,7 +523,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 19 :	// VIBROBLADE
 		item = new OneHandedMeleeWeapon(creature,
-				"object/weapon/melee/knife/shared_knife_vibroblade.iff", unicode("A Vibroblade"), "knife_vibroblade", false);
+				"object/weapon/melee/knife/shared_knife_vibroblade.iff", UnicodeString("A Vibroblade"), "knife_vibroblade", false);
 		item->setArmorPiercing(WeaponImplementation::LIGHT);
 		item->setDamageType(WeaponImplementation::KINETIC);
 
@@ -550,7 +550,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	case 20 :	// DE-10 PISTOL
 		if (creatureLevel > 150) {
 			item = new PistolRangedWeapon(creature,
-					"object/weapon/ranged/pistol/shared_pistol_de_10.iff", unicode("DE-10 Pistol"), "pistol_de_10", false);
+					"object/weapon/ranged/pistol/shared_pistol_de_10.iff", UnicodeString("DE-10 Pistol"), "pistol_de_10", false);
 			item->setDamageType(WeaponImplementation::ENERGY);
 			item->setArmorPiercing(WeaponImplementation::LIGHT);
 			item->setAttackSpeed(5.6);
@@ -569,7 +569,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 21 :	// LIGHT LIGHTNING CANNON
 		item = new SpecialHeavyRangedWeapon(creature,
-				"object/weapon/ranged/rifle/shared_rifle_lightning.iff", unicode("Light Lightning Cannon"), "rifle_lightning", false);
+				"object/weapon/ranged/rifle/shared_rifle_lightning.iff", UnicodeString("Light Lightning Cannon"), "rifle_lightning", false);
 		item->setType(WeaponImplementation::RIFLELIGHTNING);
 		item->setDamageType(WeaponImplementation::ELECTRICITY);
 		item->setArmorPiercing(WeaponImplementation::LIGHT);
@@ -594,7 +594,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 		break;
 	case 22 :	// ROCKET LAUNCHER
 		item = new HeavyRangedWeapon(creature,
-				"object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff", unicode("Rocket Launcher"), "heavy_rocket_launcher", false);
+				"object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff", UnicodeString("Rocket Launcher"), "heavy_rocket_launcher", false);
 		item->setType(WeaponImplementation::HEAVYROCKETLAUNCHER);
 		item->setDamageType(WeaponImplementation::BLAST);
 		item->setArmorPiercing(WeaponImplementation::HEAVY);
@@ -622,7 +622,7 @@ void LootManager::createWeaponLoot(Creature* creature, int creatureLevel) {
 	case 23 :	// RIFLE
 		if ((objectCRC == 0xE158FEC1 ) && System::random(10) >= 7) {
 			item = new RifleRangedWeapon(creature,
-				 	"object/weapon/ranged/rifle/shared_rifle_tusken.iff", unicode("Tusken Rifle"), "rifle_tusken", false);
+				 	"object/weapon/ranged/rifle/shared_rifle_tusken.iff", UnicodeString("Tusken Rifle"), "rifle_tusken", false);
 			item->setDamageType(WeaponImplementation::ENERGY);
 			item->setArmorPiercing(WeaponImplementation::LIGHT);
 			certification = "cert_rifle_tusken";
@@ -649,47 +649,47 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 		switch (System::random(8)) {
 		case 0 :
 			item = new Armor(creature, 0x7B476F26,
-					unicode("Composite Chestplate"), "armor_composite_chestplate", false);
+					UnicodeString("Composite Chestplate"), "armor_composite_chestplate", false);
 			item->setArmorPiece(ArmorImplementation::CHEST);
 			break;
 		case 1 :
 			item = new Armor(creature, 0x9AF51EAA,
-					unicode("Composite Helmet"), "armor_composite_helmet", false);
+					UnicodeString("Composite Helmet"), "armor_composite_helmet", false);
 			item->setArmorPiece(ArmorImplementation::HEAD);
 			break;
 		case 2 :
 			item = new Armor(creature, 0xDB91E9DB,
-					unicode("Composite Boots"), "armor_composite_boots", false);
+					UnicodeString("Composite Boots"), "armor_composite_boots", false);
 			item->setArmorPiece(ArmorImplementation::FOOT);
 			break;
 		case 3 :
 			item = new Armor(creature, 0x2C35FFA2,
-					unicode("Composite Gloves"), "armor_composite_gloves", false);
+					UnicodeString("Composite Gloves"), "armor_composite_gloves", false);
 			item->setArmorPiece(ArmorImplementation::HAND);
 			break;
 		case 4 :
 			item = new Armor(creature, 0xC294C432,
-					unicode("Composite Leggings"), "armor_composite_pants", false);
+					UnicodeString("Composite Leggings"), "armor_composite_pants", false);
 			item->setArmorPiece(ArmorImplementation::LEG);
 			break;
 		case 5 :
 			item = new Armor(creature, 0x13A4DA11,
-					unicode("Composite Bicep"), "armor_composite_bicep_l", false);
+					UnicodeString("Composite Bicep"), "armor_composite_bicep_l", false);
 			item->setArmorPiece(ArmorImplementation::BICEPL);
 			break;
 		case 6 :
 			item = new Armor(creature, 0x63719F82,
-					unicode("Composite Bicep"), "armor_composite_bicep_r", false);
+					UnicodeString("Composite Bicep"), "armor_composite_bicep_r", false);
 			item->setArmorPiece(ArmorImplementation::BICEPR);
 			break;
 		case 7 :
 			item = new Armor(creature, 0x4DB0192D,
-					unicode("Composite Bracer"), "armor_composite_bracer_l", false);
+					UnicodeString("Composite Bracer"), "armor_composite_bracer_l", false);
 			item->setArmorPiece(ArmorImplementation::BRACERL);
 			break;
 		case 8 :
 			item = new Armor(creature, 0x3D655CBE,
-					unicode("Composite Bracer"), "armor_composite_bracer_r", false);
+					UnicodeString("Composite Bracer"), "armor_composite_bracer_r", false);
 			item->setArmorPiece(ArmorImplementation::BRACERR);
 			break;
 		}
@@ -699,47 +699,47 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 			switch (System::random(8)) {	// BH Armor
 			case 0 :
 				item = new Armor(creature, 0x4FD29AA3,
-						unicode("Bounty Hunter Chestplate"), "armor_bounty_hunter_chestplate", false);
+						UnicodeString("Bounty Hunter Chestplate"), "armor_bounty_hunter_chestplate", false);
 				item->setArmorPiece(ArmorImplementation::CHEST);
 				break;
 			case 1 :
 				item = new Armor(creature, 0x30DB6875,
-						unicode("Bounty Hunter Helmet"), "armor_bounty_hunter_helmet", false);
+						UnicodeString("Bounty Hunter Helmet"), "armor_bounty_hunter_helmet", false);
 				item->setArmorPiece(ArmorImplementation::HEAD);
 				break;
 			case 2 :
 				item = new Armor(creature, 0x219DF586,
-						unicode("Bounty Hunter Boots"), "armor_bounty_hunter_boots", false);
+						UnicodeString("Bounty Hunter Boots"), "armor_bounty_hunter_boots", false);
 				item->setArmorPiece(ArmorImplementation::FOOT);
 				break;
 			case 3 :
 				item = new Armor(creature, 0x861B897D,
-						unicode("Bounty Hunter Gloves"), "armor_bounty_hunter_gloves", false);
+						UnicodeString("Bounty Hunter Gloves"), "armor_bounty_hunter_gloves", false);
 				item->setArmorPiece(ArmorImplementation::HAND);
 				break;
 			case 4 :
 				item = new Armor(creature, 0x9873E13B,
-						unicode("Bounty Hunter Leggings"), "armor_bounty_hunter_pants", false);
+						UnicodeString("Bounty Hunter Leggings"), "armor_bounty_hunter_pants", false);
 				item->setArmorPiece(ArmorImplementation::LEG);
 				break;
 			case 5 :
 				item = new Armor(creature, 0xE37785C9,
-						unicode("Bounty Hunter Bicep"), "armor_bounty_hunter_bicep_l", false);
+						UnicodeString("Bounty Hunter Bicep"), "armor_bounty_hunter_bicep_l", false);
 				item->setArmorPiece(ArmorImplementation::BICEPL);
 				break;
 			case 6 :
 				item = new Armor(creature, 0x93A2C05A,
-						unicode("Bounty Hunter Bicep"), "armor_bounty_hunter_bicep_r", false);
+						UnicodeString("Bounty Hunter Bicep"), "armor_bounty_hunter_bicep_r", false);
 				item->setArmorPiece(ArmorImplementation::BICEPR);
 				break;
 			case 7 :
 				item = new Armor(creature, 0x17573C24,
-						unicode("Bounty Hunter Bracer"), "armor_bounty_hunter_bracer_l", false);
+						UnicodeString("Bounty Hunter Bracer"), "armor_bounty_hunter_bracer_l", false);
 				item->setArmorPiece(ArmorImplementation::BRACERL);
 				break;
 			case 8 :
 				item = new Armor(creature, 0x678279B7,
-						unicode("Bounty Hunter Bracer"), "armor_bounty_hunter_bracer_r", false);
+						UnicodeString("Bounty Hunter Bracer"), "armor_bounty_hunter_bracer_r", false);
 				item->setArmorPiece(ArmorImplementation::BRACERR);
 				break;
 			}
@@ -751,47 +751,47 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 			switch (System::random(8)) {	// Mando Armor
 			case 0 :
 				item = new Armor(creature, 0x24525C1C,
-						unicode("Mandalorian Chestplate"), "armor_mandalorian_chest", false);
+						UnicodeString("Mandalorian Chestplate"), "armor_mandalorian_chest", false);
 				item->setArmorPiece(ArmorImplementation::CHEST);
 				break;
 			case 1 :
 				item = new Armor(creature, 0x37A4683E,
-						unicode("Mandalorian Helmet"), "armor_mandalorian_helmet", false);
+						UnicodeString("Mandalorian Helmet"), "armor_mandalorian_helmet", false);
 				item->setArmorPiece(ArmorImplementation::HEAD);
 				break;
 			case 2 :
 				item = new Armor(creature, 0x84AD5603,
-						unicode("Mandalorian Boots"), "armor_mandalorian_shoes", false);
+						UnicodeString("Mandalorian Boots"), "armor_mandalorian_shoes", false);
 				item->setArmorPiece(ArmorImplementation::FOOT);
 				break;
 			case 3 :
 				item = new Armor(creature, 0x81648936,
-						unicode("Mandalorian Gloves"), "armor_mandalorian_gloves", false);
+						UnicodeString("Mandalorian Gloves"), "armor_mandalorian_gloves", false);
 				item->setArmorPiece(ArmorImplementation::HAND);
 				break;
 			case 4 :
 				item = new Armor(creature, 0x770C3F1B,
-						unicode("Mandalorian Leggings"), "armor_mandalorian_pants", false);
+						UnicodeString("Mandalorian Leggings"), "armor_mandalorian_pants", false);
 				item->setArmorPiece(ArmorImplementation::LEG);
 				break;
 			case 5 :
 				item = new Armor(creature, 0x82309ECC,
-						unicode("Mandalorian Bicep"), "armor_mandalorian_bicep_l", false);
+						UnicodeString("Mandalorian Bicep"), "armor_mandalorian_bicep_l", false);
 				item->setArmorPiece(ArmorImplementation::BICEPL);
 				break;
 			case 6 :
 				item = new Armor(creature, 0xF2E5DB5F,
-						unicode("Mandalorian Bicep"), "armor_mandalorian_bicep_r", false);
+						UnicodeString("Mandalorian Bicep"), "armor_mandalorian_bicep_r", false);
 				item->setArmorPiece(ArmorImplementation::BICEPR);
 				break;
 			case 7 :
 				item = new Armor(creature, 0xF828E204,
-						unicode("Mandalorian Bracer"), "armor_mandalorian_bracer_l", false);
+						UnicodeString("Mandalorian Bracer"), "armor_mandalorian_bracer_l", false);
 				item->setArmorPiece(ArmorImplementation::BRACERL);
 				break;
 			case 8 :
 				item = new Armor(creature, 0x88FDA797,
-						unicode("Mandalorian Bracer"), "armor_mandalorian_bracer_r", false);
+						UnicodeString("Mandalorian Bracer"), "armor_mandalorian_bracer_r", false);
 				item->setArmorPiece(ArmorImplementation::BRACERR);
 				break;
 			}
@@ -803,47 +803,47 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 			switch (System::random(8)) {
 			case 0 :
 				item = new Armor(creature, 0xF22790E,
-						unicode("Stormtrooper Chestplate"), "armor_stormtrooper_chest", false);
+						UnicodeString("Stormtrooper Chestplate"), "armor_stormtrooper_chest", false);
 				item->setArmorPiece(ArmorImplementation::CHEST);
 				break;
 			case 1 :
 				item = new Armor(creature, 0xC499637D,
-						unicode("Stormtrooper Helmet"), "armor_stormtrooper_helmet", false);
+						UnicodeString("Stormtrooper Helmet"), "armor_stormtrooper_helmet", false);
 				item->setArmorPiece(ArmorImplementation::HEAD);
 				break;
 			case 2 :
 				item = new Armor(creature, 0x7833E9D6,
-						unicode("Stormtrooper Boots"), "armor_stormtrooper_boots", false);
+						UnicodeString("Stormtrooper Boots"), "armor_stormtrooper_boots", false);
 				item->setArmorPiece(ArmorImplementation::FOOT);
 				break;
 			case 3 :
 				item = new Armor(creature, 0x72598275,
-						unicode("Stormtrooper Gloves"), "armor_stormtrooper_gloves", false);
+						UnicodeString("Stormtrooper Gloves"), "armor_stormtrooper_gloves", false);
 				item->setArmorPiece(ArmorImplementation::HAND);
 				break;
 			case 4 :
 				item = new Armor(creature, 0x1863926A,
-						unicode("Stormtrooper Leggings"), "armor_stormtrooper_pants", false);
+						UnicodeString("Stormtrooper Leggings"), "armor_stormtrooper_pants", false);
 				item->setArmorPiece(ArmorImplementation::LEG);
 				break;
 			case 5 :
 				item = new Armor(creature, 0x3BC0061C,
-						unicode("Stormtrooper Bicep"), "armor_stormtrooper_bicep_l", false);
+						UnicodeString("Stormtrooper Bicep"), "armor_stormtrooper_bicep_l", false);
 				item->setArmorPiece(ArmorImplementation::BICEPL);
 				break;
 			case 6 :
 				item = new Armor(creature, 0x4B15438F,
-						unicode("Stormtrooper Bicep"), "armor_stormtrooper_bicep_r", false);
+						UnicodeString("Stormtrooper Bicep"), "armor_stormtrooper_bicep_r", false);
 				item->setArmorPiece(ArmorImplementation::BICEPR);
 				break;
 			case 7 :
 				item = new Armor(creature, 0x97474F75,
-						unicode("Stormtrooper Bracer"), "armor_stormtrooper_bracer_l", false);
+						UnicodeString("Stormtrooper Bracer"), "armor_stormtrooper_bracer_l", false);
 				item->setArmorPiece(ArmorImplementation::BRACERL);
 				break;
 			case 8 :
 				item = new Armor(creature, 0xE7920AE6,
-						unicode("Stormtrooper Bracer"), "armor_stormtrooper_bracer_r", false);
+						UnicodeString("Stormtrooper Bracer"), "armor_stormtrooper_bracer_r", false);
 				item->setArmorPiece(ArmorImplementation::BRACERR);
 				break;
 			}
@@ -855,32 +855,32 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 			switch (System::random(5)) {
 			case 0 :
 				item = new Armor(creature, 0x98A41A65,
-						unicode("Marine Chestplate"), "armor_marine_chest", false);
+						UnicodeString("Marine Chestplate"), "armor_marine_chest", false);
 				item->setArmorPiece(ArmorImplementation::CHEST);
 				break;
 			case 1 :
 				item = new Armor(creature, 0x1890B6F4,
-						unicode("Marine Helmet"), "armor_marine_helmet", false);
+						UnicodeString("Marine Helmet"), "armor_marine_helmet", false);
 				item->setArmorPiece(ArmorImplementation::HEAD);
 				break;
 			case 2 :
 				item = new Armor(creature, 0xA06D625,
-						unicode("Marine Boots"), "armor_marine_boots", false);
+						UnicodeString("Marine Boots"), "armor_marine_boots", false);
 				item->setArmorPiece(ArmorImplementation::FOOT);
 				break;
 			case 3 :
 				item = new Armor(creature, 0xF3D42F59,
-						unicode("Marine Leggings"), "armor_marine_pants", false);
+						UnicodeString("Marine Leggings"), "armor_marine_pants", false);
 				item->setArmorPiece(ArmorImplementation::LEG);
 				break;
 			case 4 :
 				item = new Armor(creature, 0x16825F91,
-						unicode("Marine Bicep"), "armor_marine_bicep_l", false);
+						UnicodeString("Marine Bicep"), "armor_marine_bicep_l", false);
 				item->setArmorPiece(ArmorImplementation::BICEPL);
 				break;
 			case 5 :
 				item = new Armor(creature, 0x66571A02,
-						unicode("Marine Bicep"), "armor_marine_bicep_r", false);
+						UnicodeString("Marine Bicep"), "armor_marine_bicep_r", false);
 				item->setArmorPiece(ArmorImplementation::BICEPR);
 				break;
 			}
@@ -888,7 +888,7 @@ void LootManager::createArmorLoot(Creature* creature, int32 creatureLevel) {
 		break;
 	case 5:
 		if ((objectCRC == 0xF0663601 || objectCRC == 0xAA197516) && System::random(10) == 7) {
-			item = new Armor(creature, 0x2E943BD2, unicode("Nightsister Bicep"), "nightsister_bicep_r", false);
+			item = new Armor(creature, 0x2E943BD2, UnicodeString("Nightsister Bicep"), "nightsister_bicep_r", false);
 			item->setArmorPiece(ArmorImplementation::BICEPR);
 		break;
 		}
@@ -918,32 +918,32 @@ void LootManager::createClothingLoot(Creature* creature, int32 creatureLevel) {
 	switch (System::random(5)) {
 	case 0 :
 		item = new Wearable(creature, 0x29031E7D,
-				unicode("Tusken Boots"), "boots_tusken_raider", false);
+				UnicodeString("Tusken Boots"), "boots_tusken_raider", false);
 		item->setObjectSubType(TangibleObjectImplementation::FOOTWEAR);
 		break;
 	case 1 :
 		item = new Wearable(creature, 0x67A25943,
-				unicode("Tusken Gloves"), "gloves_tusken_raider", false);
+				UnicodeString("Tusken Gloves"), "gloves_tusken_raider", false);
 		item->setObjectSubType(TangibleObjectImplementation::HANDWEAR);
 		break;
 	case 2 :
 		item = new Wearable(creature, 0xF7B87D4B,
-				unicode("Tusken Helmet"), "helmet_tusken_raider", false);
+				UnicodeString("Tusken Helmet"), "helmet_tusken_raider", false);
 		item->setObjectSubType(TangibleObjectImplementation::HEADWEAR);
 		break;
 	case 3 :
 		item = new Wearable(creature, 0x50EF8B3E,
-				unicode("Tusken Robe"), "robe_tusken_raider", false);
+				UnicodeString("Tusken Robe"), "robe_tusken_raider", false);
 		item->setObjectSubType(TangibleObjectImplementation::ROBE);
 		break;
 	case 4 :
 		item = new Wearable(creature, 0xFC978255,
-				unicode("Chef Hat"), "hat_chef", false);
+				UnicodeString("Chef Hat"), "hat_chef", false);
 		item->setObjectSubType(TangibleObjectImplementation::HEADWEAR);
 		break;
 	case 5 :
 		item = new Wearable(creature, 0x6CE36E4C,
-				unicode("Aakuan Shirt"), "aakuan_shirt", false);
+				UnicodeString("Aakuan Shirt"), "aakuan_shirt", false);
 		item->setObjectSubType(TangibleObjectImplementation::SHIRT);
 		break;
 	}
@@ -961,56 +961,56 @@ void LootManager::createJunkLoot(Creature* creature) {
 
 	switch (System::random(10)) {
 	case 0 :
-		item = new TangibleObject(creature, 0xBC03F94, unicode("a Viewscreen (broken)"),
+		item = new TangibleObject(creature, 0xBC03F94, UnicodeString("a Viewscreen (broken)"),
 				"object/tangible/loot/tool/shared_viewscreen_broken_s2.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 1 :
-		item = new TangibleObject(creature, 0x1E84585F, unicode("Binoculars (broken)"),
+		item = new TangibleObject(creature, 0x1E84585F, UnicodeString("Binoculars (broken)"),
 				"object/tangible/loot/tool/shared_binoculars_broken_s1.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 2 :
-		item = new TangibleObject(creature, 0x25B24532, unicode("a Human Skull"),
+		item = new TangibleObject(creature, 0x25B24532, UnicodeString("a Human Skull"),
 				"object/tangible/loot/misc/shared_loot_skull_human.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 3 :
-		item = new TangibleObject(creature, 0x2D13F714, unicode("an Impulse Detector (broken)"),
+		item = new TangibleObject(creature, 0x2D13F714, UnicodeString("an Impulse Detector (broken)"),
 				"/tangible/loot/tool/shared_impulse_detector_broken_s3.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 4 :
-		item = new TangibleObject(creature, 0x3238DD4A, unicode("a Cage"),
+		item = new TangibleObject(creature, 0x3238DD4A, UnicodeString("a Cage"),
 				"object/tangible/loot/misc/shared_cage_s01.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 5 :
-		item = new TangibleObject(creature, 0x3393694D, unicode("a Rare Artifact"),
+		item = new TangibleObject(creature, 0x3393694D, UnicodeString("a Rare Artifact"),
 				"object/tangible/loot/misc/shared_artifact_rare_s01.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 6 :
-		item = new TangibleObject(creature, 0x3CEA7897, unicode("Holocron Splinters"),
+		item = new TangibleObject(creature, 0x3CEA7897, UnicodeString("Holocron Splinters"),
 				"object/tangible/loot/misc/shared_holocron_splinters_sith_s01.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 7 :
-		item = new TangibleObject(creature, 0x5289E0D9, unicode("a Calibrator (broken)"),
+		item = new TangibleObject(creature, 0x5289E0D9, UnicodeString("a Calibrator (broken)"),
 				"object/tangible/loot/tool/shared_calibrator_broken.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 8 :
-		item = new TangibleObject(creature, 0x5F4B8D76, unicode("a Corrupt Datadisk"),
+		item = new TangibleObject(creature, 0x5F4B8D76, UnicodeString("a Corrupt Datadisk"),
 				"object/tangible/loot/misc/shared_datadisk_corrupt.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 9 :
-		item = new TangibleObject(creature, 0x619F4DFD, unicode("Jawa Beads"),
+		item = new TangibleObject(creature, 0x619F4DFD, UnicodeString("Jawa Beads"),
 				"object/tangible/loot/misc/shared_jawa_beads.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 10 :
-		item = new TangibleObject(creature, 0x6C34F325, unicode("a Briefcase"),
+		item = new TangibleObject(creature, 0x6C34F325, UnicodeString("a Briefcase"),
 				"object/tangible/loot/misc/shared_briefcase_s01.iff", TangibleObjectImplementation::GENERICITEM);
 		break;
 	case 11 :
 		item = new Firework((Player*) creature, 0x7C540DEB,
-				unicode("a Firework"), "object/tangible/firework/shared_firework_s04.iff",1);
+				UnicodeString("a Firework"), "object/tangible/firework/shared_firework_s04.iff",1);
 		break;
 	case 12 :
 		item = new Holocron((Player*) creature, 0x9BA06548,
-				unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
+				UnicodeString("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
 		break;
 	}
 

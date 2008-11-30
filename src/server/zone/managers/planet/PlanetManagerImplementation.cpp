@@ -91,9 +91,9 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	creatureManager = planet->getCreatureManager();
 	structureManager = new StructureManager(zone, server);
 
-	stringstream logName;
+	StringBuffer logName;
 	logName << "PlanetManager" << zone->getZoneID();
-	setLoggingName(logName.str());
+	setLoggingName(logName.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -157,7 +157,7 @@ void PlanetManagerImplementation::stop() {
 }
 
 void PlanetManagerImplementation::loadNoBuildAreas() {
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM no_build_areas WHERE zoneid = " << zone->getZoneID() << ";";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
@@ -183,9 +183,9 @@ void PlanetManagerImplementation::addNoBuildArea(float minX, float maxX, float m
 		area->setUID(uid);
 		areaMap->addArea(area);
 	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::loadNoBuildAreas: "  << e.getMessage() << endl;
+		System::out << "Exception Caught in PlanetManagerImplementation::loadNoBuildAreas: "  << e.getMessage() << endl;
 	} catch (...) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::loadNoBuildAreas" << endl;
+		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::loadNoBuildAreas" << endl;
 	}
 	unlock();
 }
@@ -195,9 +195,9 @@ void PlanetManagerImplementation::addNoBuildArea(NoBuildArea * area) {
 	try {
 		areaMap->addArea(area);
 	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::addNoBuildArea: "  << e.getMessage() << endl;
+		System::out << "Exception Caught in PlanetManagerImplementation::addNoBuildArea: "  << e.getMessage() << endl;
 	} catch (...) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::addNoBuildArea" << endl;
+		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::addNoBuildArea" << endl;
 	}
 	unlock();
 }
@@ -211,16 +211,16 @@ void PlanetManagerImplementation::deleteNoBuildArea(NoBuildArea * area) {
 
 		area->finalize();
 
-		stringstream query;
+		StringBuffer query;
 		query << "DELETE FROM no_build_areas WHERE uid = " << id << ";";
 
 		ServerDatabase::instance()->executeStatement(query);
 
 
 	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::deleteNoBuildArea: "  << e.getMessage() << endl;
+		System::out << "Exception Caught in PlanetManagerImplementation::deleteNoBuildArea: "  << e.getMessage() << endl;
 	} catch (...) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::deleteNoBuildArea" << endl;
+		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::deleteNoBuildArea" << endl;
 	}
 	unlock();
 }
@@ -231,7 +231,7 @@ NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float m
 	try {
 		area = new NoBuildArea(minX, maxX, minY, maxY, reason);
 
-		stringstream statement;
+		StringBuffer statement;
 
 		statement << "INSERT INTO `no_build_areas` "
 		<< "(`zoneid`,`xMin`,`xMax`,`yMin`,`yMax`,`reason`)"
@@ -240,7 +240,7 @@ NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float m
 
 		ServerDatabase::instance()->executeStatement(statement);
 
-		stringstream query;
+		StringBuffer query;
 
 		query << "SELECT MAX(uid) FROM no_build_areas";
 
@@ -253,10 +253,10 @@ NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float m
 		delete rs;
 
 	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::createNoBuildArea: "  << e.getMessage() << endl;
+		System::out << "Exception Caught in PlanetManagerImplementation::createNoBuildArea: "  << e.getMessage() << endl;
 		return NULL;
 	} catch (...) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::createNoBuildArea" << endl;
+		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::createNoBuildArea" << endl;
 		return NULL;
 	}
 
@@ -272,7 +272,7 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 
 	int planetid = zone->getZoneID();
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM statictangibleobjects WHERE zoneid = " << planetid << ";";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
@@ -280,13 +280,13 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 	while (result->next()) {
 		uint64 parentId = result->getUnsignedLong(2);
 
-		string name = result->getString(3);
+		String name = result->getString(3);
 
-		string file = result->getString(4);
+		String file = result->getString(4);
 
 		int type = result->getInt(5);
 
-		string templatename = result->getString(6);
+		String templatename = result->getString(6);
 
 		float oX = result->getFloat(7);
 		float oY = result->getFloat(8);
@@ -301,7 +301,7 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 
 		tano->setName(name);
 		tano->setParent(zone->lookupObject(parentId));
-		tano->setObjectCRC(String::hashCode(file));
+		tano->setObjectCRC(file.hashCode());
 		tano->initializePosition(x, z, y);
 		tano->setDirection(oX, oZ, oY, oW);
 		tano->setObjectSubType(type);
@@ -421,18 +421,18 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 
 void PlanetManagerImplementation::loadShuttles() {
 	int planetid = zone->getZoneID();
-	string planetName = Planet::getPlanetName(zone->getZoneID());
+	String planetName = Planet::getPlanetName(zone->getZoneID());
 
 	lock();
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "SELECT * FROM transports WHERE planet_id = " << planetid << ";";
 
 		ResultSet* shut = ServerDatabase::instance()->executeQuery(query);
 
 		while (shut->next()) {
 			uint32 shuttleId = shut->getUnsignedInt(0);
-			string shuttleName = shut->getString(2);
+			String shuttleName = shut->getString(2);
 			uint64 shuttleParentId = shut->getUnsignedLong(3);
 			float shuttlePosX = shut->getFloat(4);
 			float shuttlePosY = shut->getFloat(5);
@@ -453,7 +453,7 @@ void PlanetManagerImplementation::loadShuttles() {
 			shuttle->setObjectCRC(shuttleCRC);
 			shuttleMap->put(shuttleName, shuttle);
 
-			stringstream query2;
+			StringBuffer query2;
 			query2 << "SELECT parent, pos_x, pos_y, pos_z, dir_y, dir_w FROM ticket_collectors WHERE transport_id = " << shuttleId << ";";
 
 			ResultSet* collectors = ServerDatabase::instance()->executeQuery(query2);
@@ -467,7 +467,7 @@ void PlanetManagerImplementation::loadShuttles() {
 				float collDirW = collectors->getFloat(5);
 
 				TicketCollector * colector = new TicketCollector(shuttle, getNextStaticObjectID(false),
-					unicode("Ticket Collector"), "ticket_travel", collPosX, collPosZ, collPosY);
+					UnicodeString("Ticket Collector"), "ticket_travel", collPosX, collPosZ, collPosY);
 				colector->setZoneProcessServer(server);
 				colector->setDirection(0, 0, collDirY, collDirW);
 				colector->setParent(zone->lookupObject(collCellId));
@@ -478,7 +478,7 @@ void PlanetManagerImplementation::loadShuttles() {
 
 			delete collectors;
 
-			stringstream query3;
+			StringBuffer query3;
 			query3 << "SELECT parent, pos_x, pos_y, pos_z, dir_y, dir_w FROM ticket_terminals WHERE transport_id = " << shuttleId << ";";
 
 			ResultSet* terminals = ServerDatabase::instance()->executeQuery(query3);
@@ -624,10 +624,10 @@ void PlanetManagerImplementation::loadCraftingStations() {
 
 	lock();
 
-	string name;
+	String name;
 	uint64 crc;
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid << ";";
 
 	try {
@@ -638,7 +638,7 @@ void PlanetManagerImplementation::loadCraftingStations() {
 
 			uint64 parentId = result->getUnsignedLong(2);
 
-			string file = result->getString(3);
+			String file = result->getString(3);
 
 			float oX = result->getFloat(4);
 			float oY = result->getFloat(5);
@@ -652,13 +652,12 @@ void PlanetManagerImplementation::loadCraftingStations() {
 
 			float type = result->getFloat(11);
 
-			if ((int) file.find("object/tangible/crafting/station/") >= 0) {
-
-				crc = String::hashCode(file);
+			if (file.indexOf("object/tangible/crafting/station/") != -1) {
+				crc = file.hashCode();
 
 				name = getStationName(crc);
 
-				CraftingStation* station = new CraftingStation(oid, crc, unicode(name), "public_crafting_station");
+				CraftingStation* station = new CraftingStation(oid, crc, UnicodeString(name), "public_crafting_station");
 
 				station->setEffectiveness(50);
 
@@ -683,22 +682,22 @@ void PlanetManagerImplementation::loadCraftingStations() {
 	unlock();
 }
 
-string PlanetManagerImplementation::getStationName(uint64 crc){
-	string name = "";
+String PlanetManagerImplementation::getStationName(uint64 crc){
+	String name = "";
 
-	if(crc == 0xAF09A3F0)
+	if (crc == 0xAF09A3F0)
 		name = "Clothing and Armor Public Crafting Station";
 
-	if(crc == 0x2FF7F78B)
+	if (crc == 0x2FF7F78B)
 		name = "Food and Chemical Public Crafting Station";
 
-	if(crc == 0x17929444)
+	if (crc == 0x17929444)
 		name = "Starship Public Crafting Station";
 
-	if(crc == 0x1BABCF4B)
+	if (crc == 0x1BABCF4B)
 		name = "Structure and Furniture Public Crafting Station";
 
-	if(crc == 0x72719FEA)
+	if (crc == 0x72719FEA)
 		name = "Weapon, Droid, and General Public Crafting Station";
 
 	return name;
@@ -752,7 +751,7 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 		structureManager->spawnTempStructure(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
 	}
 	catch(...) {
-		cout << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
+		System::out << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
 	}
 }
 
@@ -840,7 +839,7 @@ int64 PlanetManagerImplementation::getLandingTime() {
 	return landing.miliDifference();
 }
 
-ShuttleCreature* PlanetManagerImplementation::getShuttle(const string& Shuttle) {
+ShuttleCreature* PlanetManagerImplementation::getShuttle(const String& Shuttle) {
 	lock();
 
 	ShuttleCreature* shuttle = shuttleMap->get(Shuttle);
@@ -868,10 +867,10 @@ bool PlanetManagerImplementation::isNoBuildArea(float x, float y) {
 		BaseArea * area = areaMap->getBaseArea(x,y);
 		return (area->getNoBuildArea(x, y) != NULL);
 	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::isNoBuildArea: " << e.getMessage() << endl;
+		System::out << "Exception Caught in PlanetManagerImplementation::isNoBuildArea: " << e.getMessage() << endl;
 		return false;
 	} catch ( ... ) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::isNoBuildArea" << endl;
+		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::isNoBuildArea" << endl;
 		return false;
 	}
 }

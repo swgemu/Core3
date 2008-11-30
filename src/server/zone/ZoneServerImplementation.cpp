@@ -316,7 +316,7 @@ void ZoneServerImplementation::stopManagers() {
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 
-	if(missionManager != NULL)
+	if (missionManager != NULL)
 		missionManager->unloadManager();
 
 	if (resourceManager != NULL)
@@ -421,7 +421,7 @@ SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 
 		if (obj->isPlayer()) {
 			Player* player = (Player*) obj;
-			string& name = player->getFirstName();
+			String& name = player->getFirstName();
 
 			chatManager->removePlayer(name);
 
@@ -475,7 +475,7 @@ SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) 
 SceneObject* ZoneServerImplementation::removeCachedObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 
-	cout << "removeCachedObject OID = " << oid << endl;
+	System::out << "removeCachedObject OID = " << oid << endl;
 	try {
 		lock(doLock);
 
@@ -493,7 +493,7 @@ SceneObject* ZoneServerImplementation::removeCachedObject(SceneObject* obj, bool
 	return removeCachedObject(obj->getObjectID(), doLock);
 }
 
-bool ZoneServerImplementation::banUser(string& name, string& admin) {
+bool ZoneServerImplementation::banUser(String& name, String& admin) {
 	lock();
 
 	bool result = userManager->banUserByName(name, admin);
@@ -503,7 +503,7 @@ bool ZoneServerImplementation::banUser(string& name, string& admin) {
 	return result;
 }
 
-bool ZoneServerImplementation::kickUser(string& name, string& admin) {
+bool ZoneServerImplementation::kickUser(String& name, String& admin) {
 	lock();
 
 	bool result = userManager->kickUser(name, admin);
@@ -544,11 +544,11 @@ int ZoneServerImplementation::getConnectionCount() {
 void ZoneServerImplementation::printInfo(bool forcedLog) {
 	lock();
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, forcedLog);
 
-	stringstream msg2;
+	StringBuffer msg2;
 	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
 	info(msg2, forcedLog);
 
@@ -558,12 +558,12 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	else
 		packetloss = (100 * totalResentPackets) / (totalResentPackets + totalSentPackets);
 
-	stringstream msg3;
+	StringBuffer msg3;
 	msg3 << "sent packets = " << totalSentPackets << ", resent packets = "
 		<< totalResentPackets << " [" << packetloss << "%]";
 	info(msg3, forcedLog);
 
-	stringstream msg4;
+	StringBuffer msg4;
 	msg4 << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
 		 << totalDeletedPlayers << " deleted)";
 	info(msg4, forcedLog);

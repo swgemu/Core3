@@ -64,10 +64,10 @@ class LairObjectImplementation : public LairObjectServant {
 	bool spawn1;
 	bool spawn2;
 
-	string stfName;
+	String stfName;
 	uint32 creatureCRC;
-	string creatureName;
-	string creatureStfName;
+	String creatureName;
+	String creatureStfName;
 	int spawnSize;
 	int babiesPerMillion;
 
@@ -83,7 +83,7 @@ public:
 		maxCondition = cond;
 	}
 
-	inline void setSStfName(string& stfname) {
+	inline void setSStfName(String& stfname) {
 		stfName = stfname;
 	}
 

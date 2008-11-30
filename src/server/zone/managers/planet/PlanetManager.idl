@@ -72,8 +72,8 @@ interface PlanetManager {
 	void landShuttles();
 	void takeOffShuttles();	
 	unsigned long getLandingTime();
-	unsigned int getTravelFare(string departurePlanet, string arrivalPlanet);
-	ShuttleCreature getShuttle(const string Shuttle);	
+	unsigned int getTravelFare(String departurePlanet, String arrivalPlanet);
+	ShuttleCreature getShuttle(const String Shuttle);	
 	void sendPlanetTravelPointListResponse(Player player);
 		
 	MissionTerminal getMissionTerminal(unsigned long oid);

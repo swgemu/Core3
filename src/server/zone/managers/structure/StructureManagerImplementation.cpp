@@ -26,9 +26,9 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneP
 	cellMap = new CellMap(10000);
 	installationMap = new InstallationMap(1000);
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "StructureManager " << zone->getZoneID();
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -48,12 +48,12 @@ StructureManagerImplementation::~StructureManagerImplementation() {
 		installationMap = NULL;
 	}
 
-	if(cellMap != NULL) {
+	if (cellMap != NULL) {
 		delete cellMap;
 		cellMap = NULL;
 	}
 
-	if(buildingMap != NULL) {
+	if (buildingMap != NULL) {
 		delete buildingMap;
 		buildingMap = NULL;
 	}
@@ -115,7 +115,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 
 	//lock();
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid << ";";
 
 	try {
@@ -126,7 +126,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 
 			uint64 parentId = result->getUnsignedLong(2);
 
-			string file = result->getString(3);
+			String file = result->getString(3);
 
 			float oX = result->getFloat(4);
 			float oY = result->getFloat(5);
@@ -139,7 +139,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 
 			float type = result->getFloat(11);
 
-			if ((int) file.find("object/cell/") >= 0) {
+			if (file.indexOf("object/cell/") != -1) {
 				BuildingObject* buio = buildingMap->get(parentId);
 
 				if (buio == NULL)
@@ -147,7 +147,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 
 				CellObject* cell = new CellObject(oid, buio);
 
-				cell->setObjectCRC(String::hashCode(file));
+				cell->setObjectCRC(file.hashCode());
 				cell->initializePosition(x, z, y);
 				cell->setDirection(oX, oZ, oY, oW);
 
@@ -176,7 +176,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, int planet) {
 	BuildingObject* buio = NULL;
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM staticobjects WHERE zoneid = '" << planet << "' AND objectid = '" << oid << "';";
 
 	try {
@@ -186,7 +186,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 			uint64 oid = result->getUnsignedLong(1);
 			uint64 parentId = result->getUnsignedLong(2);
 
-			string file = result->getString(3);
+			String file = result->getString(3);
 
 			float oX = result->getFloat(4);
 			float oY = result->getFloat(5);
@@ -202,7 +202,7 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 			buio = new BuildingObject(oid, true);
 			buio->setZoneProcessServer(server);
 
-			buio->setObjectCRC(String::hashCode(file));
+			buio->setObjectCRC(file.hashCode());
 
 			buio->setBuildingType(guessBuildingType(oid, file));
 
@@ -235,9 +235,9 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	try {
 	int planetid = zone->getZoneID();
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT character_structures.*, characters.firstname, characters.surname FROM character_structures inner join characters on character_structures.owner_id = characters.character_id WHERE zoneid = " << planetid << " and deleted = 0 and parent_id = 0;";
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query.str());
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query.toString());
 
 /*	sqlInsertStructure << "INSERT into `character_structures` (zone_id, object_id, parent_id, owner_id, name, "
 	<< "`template_crc`,`template_type`,`template_subtype`,`template_name`, oX, oY, oZ, oW, X, Z, Y, deleted, attributes, noBuildArea) "*/
@@ -250,11 +250,11 @@ void StructureManagerImplementation::loadPlayerStructures() {
 		uint64 parentId = result->getUnsignedLong(2);
 		int cellNumber = result->getUnsignedLong(3);
 		uint64 ownerId = result->getUnsignedLong(4);
-		string name = result->getString(5);
+		String name = result->getString(5);
 		uint64 crc = result->getUnsignedLong(6);
 		uint64 type = result->getUnsignedLong(7);
 		uint64 subType = result->getUnsignedLong(8);
-		string tempname = result->getString(9);
+		String tempname = result->getString(9);
 
 		float oX = result->getFloat(10);
 		float oY = result->getFloat(11);
@@ -266,13 +266,13 @@ void StructureManagerImplementation::loadPlayerStructures() {
 		float y = result->getFloat(16);
 
 		// deleted (17)
-		string attributes = result->getString(18);
+		String attributes = result->getString(18);
 		uint64 noBuildAreaUID = result->getUnsignedLong(19);
 
-		string ownerFirstName = result->getString(20);
-		string ownerSurname = result->getString(21);
+		String ownerFirstName = result->getString(20);
+		String ownerSurname = result->getString(21);
 
-		string owner = ownerFirstName + " " + ownerSurname;
+		String owner = ownerFirstName + " " + ownerSurname;
 
 		switch(type) {
 			case SceneObjectImplementation::BUILDING: {
@@ -304,7 +304,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 			case SceneObjectImplementation::TANGIBLE: {
 
 				info("tangible");
-				if(!(subType & TangibleObjectImplementation::INSTALLATION))
+				if (!(subType & TangibleObjectImplementation::INSTALLATION))
 						break;
 
 				InstallationObject* inso;
@@ -375,7 +375,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 
 	delete result;
 	} catch (DatabaseException& e) {
-		stringstream err;
+		StringBuffer err;
 		err << "Loading Player Structures, exception: " << e.getMessage();
 		error(err);
 		return;
@@ -389,13 +389,13 @@ void StructureManagerImplementation::loadPlayerStructures() {
 
 void StructureManagerImplementation::createPlayerCells(Player * player, BuildingObject * buio, int cellCount) {
 
-	for(int i = 1; i <= cellCount; ++i){
+	for (int i = 1; i <= cellCount; ++i){
 		// Get new cell object ID
 		uint64 oid = player->getNewItemID();
 
 		CellObject* cell = new CellObject(oid, buio, i); // server->getZoneServer()->getNextCellID()
 
-		cell->setObjectCRC(String::hashCode("object/cell/shared_cell.iff"));
+		cell->setObjectCRC(String("object/cell/shared_cell.iff").hashCode());
 		cell->initializePosition(0, 0, 0);
 		cell->setDirection(0, 0, 0, 1); // void SceneObject::setDirection(float x, float z, float y, float w) {
 		cell->setCellNumber(i);
@@ -412,11 +412,11 @@ void StructureManagerImplementation::createPlayerCells(Player * player, Building
 void StructureManagerImplementation::loadPlayerCells(BuildingObject * buio) {
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "SELECT character_structures.*, characters.firstname, characters.surname FROM character_structures inner join characters on character_structures.owner_id = characters.character_id WHERE parent_id = " << buio->getObjectID() << " and deleted = 0 order by cell_number asc;";
 
-		info(query.str());
-		ResultSet* result = ServerDatabase::instance()->executeQuery(query.str());
+		info(query.toString());
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query.toString());
 
 		int i = 1;
 		while (result->next()) {
@@ -427,9 +427,9 @@ void StructureManagerImplementation::loadPlayerCells(BuildingObject * buio) {
 			uint64 parentId = result->getUnsignedLong(2);
 			int cellNumber = result->getUnsignedLong(3);
 			uint64 ownerId = result->getUnsignedLong(4);
-			string name = result->getString(5);
+			String name = result->getString(5);
 			uint64 crc = result->getUnsignedLong(6);
-			string tempname = result->getString(7);
+			String tempname = result->getString(7);
 
 			float oX = result->getFloat(8);
 			float oY = result->getFloat(9);
@@ -441,18 +441,18 @@ void StructureManagerImplementation::loadPlayerCells(BuildingObject * buio) {
 			float y = result->getFloat(14);
 
 			// deleted (15)
-			string attributes = result->getString(16);
+			String attributes = result->getString(16);
 			uint64 noBuildAreaUID = result->getUnsignedLong(17);
 
-			string ownerFirstName = result->getString(18);
-			string ownerSurname = result->getString(19);
+			String ownerFirstName = result->getString(18);
+			String ownerSurname = result->getString(19);
 
-			string owner = ownerFirstName + " " + ownerSurname;
+			String owner = ownerFirstName + " " + ownerSurname;
 
 			// Get new cell object ID
 			CellObject* cell = new CellObject(oid, buio, i); // server->getZoneServer()->getNextCellID()
 
-			cell->setObjectCRC(String::hashCode("object/cell/shared_cell.iff"));
+			cell->setObjectCRC(String("object/cell/shared_cell.iff").hashCode());
 			cell->initializePosition(0, 0, 0);
 			cell->setDirection(0, 0, 0, 1); // void SceneObject::setDirection(float x, float z, float y, float w) {
 			cell->setCellNumber(i);
@@ -469,7 +469,7 @@ void StructureManagerImplementation::loadPlayerCells(BuildingObject * buio) {
 		}
 		delete result;
 	} catch (DatabaseException& e) {
-		stringstream err;
+		StringBuffer err;
 		err << "Loading Cell Structures, exception: " << e.getMessage();
 		error(err);
 		return;
@@ -478,7 +478,7 @@ void StructureManagerImplementation::loadPlayerCells(BuildingObject * buio) {
 	}
 }
 
-BuildingObject* StructureManagerImplementation::findBuildingType(const string& word, float targetX, float targetY) {
+BuildingObject* StructureManagerImplementation::findBuildingType(const String& word, float targetX, float targetY) {
 	//lock();
 
 	uint16 accumDistance, distance = 32768;
@@ -568,7 +568,7 @@ BuildingObject* StructureManagerImplementation::findBuildingType(const string& w
 }
 
 
-int StructureManagerImplementation::guessBuildingType(uint64 oid, string file) {
+int StructureManagerImplementation::guessBuildingType(uint64 oid, String file) {
 	// Special buildings
 	switch (oid)
 	{
@@ -623,37 +623,36 @@ int StructureManagerImplementation::guessBuildingType(uint64 oid, string file) {
 		return BuildingObjectImplementation::JUNKSHOP;
 	}
 
-	if ((int) file.find("_cantina_") >= 0)
+	if (file.indexOf("_cantina_") != -1)
 		return BuildingObjectImplementation::CANTINA;
-	if ((int) file.find("_cloning_") >= 0)
+	if (file.indexOf("_cloning_") != -1)
 		return BuildingObjectImplementation::CLONING_FACILITY;
-	if ((int) file.find("_starport_") >= 0)
+	if (file.indexOf("_starport_") != -1)
 		return BuildingObjectImplementation::STARPORT;
-	if ((int) file.find("_shuttleport_") >= 0)
+	if (file.indexOf("_shuttleport_") != -1)
 		return BuildingObjectImplementation::SHUTTLEPORT;
-	if ((int) file.find("_hotel_") >= 0)
+	if (file.indexOf("_hotel_") != -1)
 		return BuildingObjectImplementation::HOTEL;
-	if ((int) file.find("_bank_") >= 0)
+	if (file.indexOf("_bank_") != -1)
 		return BuildingObjectImplementation::BANK;
-	if ((int) file.find("_capitol_") >= 0)
+	if (file.indexOf("_capitol_") != -1)
 		return BuildingObjectImplementation::CAPITOL;
-	if ((int) file.find("_garage_") >= 0)
+	if (file.indexOf("_garage_") != -1)
 		return BuildingObjectImplementation::GARAGE;
-	if ((int) file.find("_hospital_") >= 0)
+	if (file.indexOf("_hospital_") != -1)
 		return BuildingObjectImplementation::MEDICAL_CENTER;
-	if ((int) file.find("_guild_university_") >= 0)
+	if (file.indexOf("_guild_university_") != -1)
 		return BuildingObjectImplementation::GUILD_UNIVERSITY;
-	if ((int) file.find("_guild_theater_") >= 0)
+	if (file.indexOf("_guild_theater_") != -1)
 		return BuildingObjectImplementation::GUILD_THEATER;
-	if ((int) file.find("_guild_combat_") >= 0)
+	if (file.indexOf("_guild_combat_") != -1)
 		return BuildingObjectImplementation::GUILD_COMBAT;
-	if ((int) file.find("_guild_commerce_") >= 0)
+	if (file.indexOf("_guild_commerce_") != -1)
 		return BuildingObjectImplementation::GUILD_COMMERCE;
-	if ((int) file.find("_salon_") >= 0)
+	if (file.indexOf("_salon_") != -1)
 		return BuildingObjectImplementation::SALON;
-	if ((int) file.find("_barracks_") >= 0)
+	if (file.indexOf("_barracks_") != -1)
 		return BuildingObjectImplementation::BARRACKS;
-
 
 	/*BuildingObjectImplementation::SF_REBEL_FORWARD_BASE;
 	BuildingObjectImplementation::SF_IMPERIAL_FORWARD_BASE;
@@ -752,7 +751,7 @@ void StructureManagerImplementation::spawnTempStructure(Player * player,
  	                float oY, float oW) {
 	InstallationObject* inso = new InstallationObject(player->getNewItemID());
 
-	inso->setObjectCRC(String::hashCode(deed->getTargetTempFile()));
+	inso->setObjectCRC(deed->getTargetTempFile().hashCode());
 	inso->setName(deed->getTargetName());
 	inso->setTemplateName(deed->getTargetTemplate());
 
@@ -812,7 +811,7 @@ void StructureManagerImplementation::spawnBuilding(Player * player,
 	BuildingObject* buio = new BuildingObject(player->getNewItemID(), false);
 	buio->setZoneProcessServer(server);
 
-	buio->setObjectCRC(String::hashCode(deed->getTargetFile()));
+	buio->setObjectCRC(deed->getTargetFile().hashCode());
 	buio->initializePosition(x, z, y);
 	buio->setDirection(oX, oZ, oY, oW);
 	buio->setOwner(player->getFirstName());
@@ -829,11 +828,11 @@ void StructureManagerImplementation::spawnBuilding(Player * player,
 
 void StructureManagerImplementation::createInstallation(InstallationObject* inso) {
 	try {
-		stringstream sqlInsertStructure;
-		string itemname = inso->getName().c_str();
+		StringBuffer sqlInsertStructure;
+		String itemname = inso->getName().toCharArray();
 		MySqlDatabase::escapeString(itemname);
 
-		string attr = inso->getAttributes();
+		String attr = inso->getAttributes();
 		MySqlDatabase::escapeString(attr);
 
 		sqlInsertStructure << "INSERT into `character_structures` (zone_id, object_id, parent_id, owner_id, name, "
@@ -857,16 +856,16 @@ void StructureManagerImplementation::createInstallation(InstallationObject* inso
 		<< ", '" << attr << "'"
 		<< ", 0)";
 
-		//cout << "installation Insert SQL: " << sqlInsertStructure.str() << endl;
+		//System::out << "installation Insert SQL: " << sqlInsertStructure.toString() << endl;
 		ServerDatabase::instance()->executeStatement(sqlInsertStructure);
 
 		inso->setPersistent(true);
 		inso->setUpdated(false);
 
 	} catch (DatabaseException& e) {
-		stringstream err;
+		StringBuffer err;
 		err << "Can't add structure " << inso->getObjectID() << " exception: " << e.getMessage();
-		cout << err.str() << endl; // error(err);
+		System::out << err.toString() << endl; // error(err);
 		return;
 	}
 }
@@ -874,11 +873,11 @@ void StructureManagerImplementation::createInstallation(InstallationObject* inso
 
 void StructureManagerImplementation::saveInstallation(InstallationObject* inso) {
 	try {
-		stringstream sqlUpdateStructure;
-		string itemname = inso->getName().c_str();
+		StringBuffer sqlUpdateStructure;
+		String itemname = inso->getName().toCharArray();
 		MySqlDatabase::escapeString(itemname);
 
-		string attr = inso->getAttributes();
+		String attr = inso->getAttributes();
 		MySqlDatabase::escapeString(attr);
 
 		sqlUpdateStructure << "UPDATE `character_structures` SET "
@@ -901,39 +900,39 @@ void StructureManagerImplementation::saveInstallation(InstallationObject* inso) 
 		<< ", noBuildArea = 0"
 		<< " WHERE object_id = " << inso->getObjectID();
 
-		//cout << "installation Update SQL: " << sqlUpdateStructure.str() << endl;
+		//System::out << "installation Update SQL: " << sqlUpdateStructure.toString() << endl;
 		ServerDatabase::instance()->executeStatement(sqlUpdateStructure);
 
 		inso->setUpdated(false);
 
 	} catch (DatabaseException& e) {
-		stringstream err;
+		StringBuffer err;
 		err << "Can't add structure " << inso->getObjectID() << " exception: " << e.getMessage();
-		cout << err.str() << endl; // error(err);
+		System::out << err.toString() << endl; // error(err);
 		return;
 	}
 }
 
 void StructureManagerImplementation::deleteInstallation(InstallationObject *inso) {
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "update `character_structures` set deleted = " << 1 << " where object_id = " << inso->getObjectID();
 		ServerDatabase::instance()->executeStatement(query);
 
-		//cout << query.str() << endl;
+		//System::out << query.toString() << endl;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 }
 
 void StructureManagerImplementation::createBuilding(BuildingObject* buio) {
 
 	try {
-		stringstream sqlInsertStructure;
-		string itemname = buio->getName().c_str();
+		StringBuffer sqlInsertStructure;
+		String itemname = buio->getName().toCharArray();
 		MySqlDatabase::escapeString(itemname);
 
-		string attr = buio->getAttributes();
+		String attr = buio->getAttributes();
 		MySqlDatabase::escapeString(attr);
 
 		sqlInsertStructure << "INSERT into `character_structures` (zone_id, object_id, parent_id, owner_id, name, "
@@ -956,18 +955,18 @@ void StructureManagerImplementation::createBuilding(BuildingObject* buio) {
 		<< ", '" << attr << "'"
 		<< ", 0)";
 
-		cout << "building Insert SQL: " << sqlInsertStructure.str() << endl;
+		System::out << "building Insert SQL: " << sqlInsertStructure.toString() << endl;
 		ServerDatabase::instance()->executeStatement(sqlInsertStructure);
 
 		buio->setPersistent(true);
 		buio->setUpdated(false);
 
-		for(int i=0; i < buio->getCellCount(); i++) {
+		for (int i=0; i < buio->getCellCount(); i++) {
 			CellObject *cell = buio->getCell(i);
 			try {
-				stringstream sqlInsertStructure;
+				StringBuffer sqlInsertStructure;
 
-				string attr = cell->getAttributes();
+				String attr = cell->getAttributes();
 				MySqlDatabase::escapeString(attr);
 
 				sqlInsertStructure << "INSERT into `character_structures` (object_id, parent_id, cell_number, owner_id, "
@@ -988,21 +987,21 @@ void StructureManagerImplementation::createBuilding(BuildingObject* buio) {
 				<< ", '" << attr << "'"
 				<< ", 0)";
 
-				cout << "cell Insert SQL: " << sqlInsertStructure.str() << endl;
+				System::out << "cell Insert SQL: " << sqlInsertStructure.toString() << endl;
 				ServerDatabase::instance()->executeStatement(sqlInsertStructure);
 			} catch (DatabaseException& e) {
-				stringstream err;
+				StringBuffer err;
 				err << "Can't add cell " << cell->getObjectID() << " exception: " << e.getMessage();
-				cout << err.str() << endl; // error(err);
+				System::out << err.toString() << endl; // error(err);
 				return;
 			}
 
 		}
 
 	} catch (DatabaseException& e) {
-		stringstream err;
+		StringBuffer err;
 		err << "Can't add building " << buio->getObjectID() << " exception: " << e.getMessage();
-		cout << err.str() << endl; // error(err);
+		System::out << err.toString() << endl; // error(err);
 		return;
 	}
 
@@ -1013,11 +1012,11 @@ void StructureManagerImplementation::createBuilding(BuildingObject* buio) {
 void StructureManagerImplementation::saveBuilding(BuildingObject* buio) {
 /*
 	try {
-		stringstream sqlUpdateStructure;
-		string itemname = inso->getName().c_str();
+		StringBuffer sqlUpdateStructure;
+		String itemname = inso->getName().toCharArray();
 		MySqlDatabase::escapeString(itemname);
 
-		string attr = inso->getAttributes();
+		String attr = inso->getAttributes();
 		MySqlDatabase::escapeString(attr);
 
 		sqlUpdateStructure << "UPDATE `character_structures` SET "
@@ -1040,15 +1039,15 @@ void StructureManagerImplementation::saveBuilding(BuildingObject* buio) {
 		<< ", noBuildArea = 0"
 		<< " WHERE object_id = " << inso->getObjectID();
 
-		cout << "installation Update SQL: " << sqlUpdateStructure << endl;
+		System::out << "installation Update SQL: " << sqlUpdateStructure << endl;
 		ServerDatabase::instance()->executeStatement(sqlUpdateStructure);
 
 		inso->setUpdated(false);
 
 	} catch (DatabaseException& e) {
-		stringstream err;
+		StringBuffer err;
 		err << "Can't add structure " << inso->getObjectID() << " exception: " << e.getMessage();
-		cout << err.str() << endl; // error(err);
+		System::out << err.toString() << endl; // error(err);
 		return;
 	}
 	*/
@@ -1057,13 +1056,13 @@ void StructureManagerImplementation::saveBuilding(BuildingObject* buio) {
 void StructureManagerImplementation::deleteBuilding(BuildingObject *buio) {
 	/*
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "update `character_structures` set deleted = " << 1 << " where object_id = " << inso->getObjectID();
 		ServerDatabase::instance()->executeStatement(query);
 
-		//cout << query.str() << endl;
+		//System::out << query.toString() << endl;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 	*/
 }

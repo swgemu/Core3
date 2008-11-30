@@ -3,107 +3,104 @@
 
 #include "VehicleDeed.h"
 #include "VehicleDeedImplementation.h"
+
 #include "../DeedObject.h"
 #include "../DeedObjectImplementation.h"
+
 #include "../../../creature/mount/MountCreature.h"
 #include "../../../creature/mount/MountCreatureImplementation.h"
 
 #include "../../../creature/CreatureObjectImplementation.h"
+
 #include "../../../tangible/DatapadImplementation.h"
 
 #include "../../../../ZoneClientSessionImplementation.h"
 
 #include "../../../../managers/item/ItemManager.h"
 
-VehicleDeedImplementation::VehicleDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn)
-	: VehicleDeedServant(creature, tempcrc, n, tempn, VEHICLEDEED) {
-
+VehicleDeedImplementation::VehicleDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn)
+		: VehicleDeedServant(creature, tempcrc, n, tempn, VEHICLEDEED) {
 	objectID = creature->getNewItemID();
+
 	objectCRC = tempcrc;
+
 	name = n;
 	templateName = tempn;
+
 	init();
 }
-VehicleDeedImplementation::VehicleDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn)
-	: VehicleDeedServant(objid, tempcrc, n, tempn, VEHICLEDEED) {
 
+VehicleDeedImplementation::VehicleDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn)
+		: VehicleDeedServant(objid, tempcrc, n, tempn, VEHICLEDEED) {
 	objectID = objid;
+
 	objectCRC = tempcrc;
+
 	name = n;
 	templateName = tempn;
+
 	init();
 }
-VehicleDeedImplementation::~VehicleDeedImplementation() {
 
+VehicleDeedImplementation::~VehicleDeedImplementation() {
 }
+
 void VehicleDeedImplementation::init() {
 	objectSubType = VEHICLEDEED;
 
 	setHitPoints(1000);
 
-	if(templateName == "speederbike_swoop") {
-		targetName = unicode("speederbike_swoop");
+	if (templateName == "speederbike_swoop") {
+		targetName = UnicodeString("speederbike_swoop");
 		targetFile = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_swoop.iff";
-
-	} else if(templateName == "speederbike") {
-		targetName = unicode("speederbike");
+	} else if (templateName == "speederbike") {
+		targetName = UnicodeString("speederbike");
 		targetFile = "object/intangible/vehicle/shared_speederbike_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike.iff";
-
-	} else if(templateName == "landspeeder_x34"){
-		targetName = unicode("landspeeder_x34");
+	} else if (templateName == "landspeeder_x34"){
+		targetName = UnicodeString("landspeeder_x34");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x34.iff";
-
-	} else if(templateName == "speederbike_swoop_deed") {
-		targetName = unicode("speederbike_swoop");
+	} else if (templateName == "speederbike_swoop_deed") {
+		targetName = UnicodeString("speederbike_swoop");
 		targetFile = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_swoop.iff";
-
-	} else if(templateName == "jetpack_deed") {
-		targetName = unicode("jetpack");
+	} else if (templateName == "jetpack_deed") {
+		targetName = UnicodeString("jetpack");
 		targetFile = "object/intangible/vehicle/shared_jetpack_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_jetpack.iff";
-
-	} else if(templateName == "landspeeder_av21_deed") {
-		targetName = unicode("landspeeder_av21");
+	} else if (templateName == "landspeeder_av21_deed") {
+		targetName = UnicodeString("landspeeder_av21");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_av21_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_av21.iff";
-
-	} else if(templateName == "landspeeder_x31_deed") {
-		targetName = unicode("landspeeder_x31");
+	} else if (templateName == "landspeeder_x31_deed") {
+		targetName = UnicodeString("landspeeder_x31");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_x31_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x31.iff";
-
-	} else if(templateName == "landspeeder_x34_deed") {
-		targetName = unicode("landspeeder_x34");
+	} else if (templateName == "landspeeder_x34_deed") {
+		targetName = UnicodeString("landspeeder_x34");
 		targetFile = "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_landspeeder_x34.iff";
-
-	}else if(templateName == "speederbike_deed") {
-		targetName = unicode("speederbike");
+	} else if (templateName == "speederbike_deed") {
+		targetName = UnicodeString("speederbike");
 		targetFile = "object/intangible/vehicle/shared_speederbike_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike.iff";
-
-	} else if(templateName == "speederbike_flash_deed") {
-		targetName = unicode("speederbike_flash");
+	} else if (templateName == "speederbike_flash_deed") {
+		targetName = UnicodeString("speederbike_flash");
 		targetFile = "object/intangible/vehicle/shared_speederbike_flash_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_flash.iff";
 	}
 }
 
 void VehicleDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-
 	omr->addRadialItem(0, 20, 3, "@pet/pet_menu:menu_generate");
-
 	omr->finish();
 
 	player->sendMessage(omr);
 }
 
 void VehicleDeedImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
-
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 	int hitPoints = (int)craftingValues->getCurrentValue("hitPoints");
@@ -119,18 +116,16 @@ void VehicleDeedImplementation::addAttributes(AttributeListMessage* alm) {
 }
 
 void VehicleDeedImplementation::parseItemAttributes(){
-
-	string temp = "hit_points";
+	String temp = "hit_points";
 	hitPoints = itemAttributes->getIntAttribute(temp);
-
 }
 
 int VehicleDeedImplementation::useObject(Player* player) {
 	Datapad * datapad = player->getDatapad();
 
-	MountCreature * vehicle = new MountCreature(player, targetName.c_str(), "monster_name",
-			String::hashCode(targetFile),
-			String::hashCode(vehicleFile),
+	MountCreature* vehicle = new MountCreature(player, targetName.toCharArray(), "monster_name",
+			targetFile.hashCode(),
+			vehicleFile.hashCode(),
 			player->getNewItemID());
 
 	try {
@@ -144,6 +139,7 @@ int VehicleDeedImplementation::useObject(Player* player) {
 		player->sendMessage(ucm);
 
 		player->unlock();
+
 		vehicle->wlock();
 
 		vehicle->call();
@@ -168,11 +164,12 @@ int VehicleDeedImplementation::useObject(Player* player) {
 		}
 
 		return 1;
-	}
-	catch(...) {
+	} catch(...) {
 		vehicle->unlock();
+
 		player->wlock();
-		cout << "Unreported exception caught in VehicleDeedImplementation::useObject\n";
+
+		System::out << "Unreported exception caught in VehicleDeedImplementation::useObject\n";
 		return 0;
 	}
 }

@@ -74,8 +74,8 @@ interface ItemManager {
 	void createPlayerItem(Player player, TangibleObject item);
 
 	TangibleObject initializeTangibleForCrafting(int objecttype,
-			unsigned long objectid, unsigned long objectcrc, string objectn,
-			string objecttemp, boolean equipped);
+			unsigned long objectid, unsigned long objectcrc, String objectn,
+			String objecttemp, boolean equipped);
 
 	void savePlayerItem(Player player, TangibleObject item); 
 
@@ -92,9 +92,9 @@ interface ItemManager {
 
 	BlueFrogVector getBFItemList();
 	
-	BlueFrogVector getBFProfList(string group);
+	BlueFrogVector getBFProfList(String group);
 
-	string getBFProf(string key);
+	String getBFProf(String key);
 
-	void giveBFItemSet(Player player, string set);
+	void giveBFItemSet(Player player, String set);
 }

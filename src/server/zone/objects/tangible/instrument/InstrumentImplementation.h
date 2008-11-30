@@ -82,13 +82,13 @@ public:
 	static const int MANDOVIOL = 10;
 	
 public:
-	InstrumentImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, int insttype) 
+	InstrumentImplementation(Player* player, uint32 tempCRC, const UnicodeString& n, const String& tempn, int insttype) 
 			: InstrumentServant(player->getNewItemID(), INSTRUMENT) {
 		objectCRC = tempCRC;
 
 		instrumentType = insttype;
 		
-		string key = "instrumentType";
+		String key = "instrumentType";
 		itemAttributes->setIntAttribute(key, instrumentType);
 				
 		templateTypeName = "obj_n";
@@ -99,7 +99,7 @@ public:
 	    setContainer((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
 	}
 
-	InstrumentImplementation(uint64 objectid, uint32 tempCRC, const unicode& n, const string& tempn, bool equipd)
+	InstrumentImplementation(uint64 objectid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool equipd)
 		: InstrumentServant(objectid, INSTRUMENT) {
 		
 		objectCRC = tempCRC;
@@ -113,7 +113,7 @@ public:
 	}
 	
 	void parseItemAttributes() {
-		string key = "instrumentType";
+		String key = "instrumentType";
 		instrumentType = itemAttributes->getIntAttribute(key);
 	}
 	
@@ -128,7 +128,7 @@ public:
 	inline void setInstrumentType(const int type) {
 		instrumentType = type;
 		
-		string key = "instrumentType";
+		String key = "instrumentType";
 		itemAttributes->setIntAttribute(key, instrumentType);
 	}
 };

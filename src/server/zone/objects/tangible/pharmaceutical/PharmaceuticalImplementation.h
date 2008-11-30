@@ -69,9 +69,9 @@ public:
 
 public:
 
-	PharmaceuticalImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int mptype);
-	PharmaceuticalImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int mptype);
-	PharmaceuticalImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, int mptype);
+	PharmaceuticalImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int mptype);
+	PharmaceuticalImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int mptype);
+	PharmaceuticalImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 
 	~PharmaceuticalImplementation();
 
@@ -91,19 +91,19 @@ public:
 	inline void setUsesRemaining(int uses) {
 		usesRemaining = uses;
 		objectCount = uses;
-		string attr = "usesRemaining";
+		String attr = "usesRemaining";
 		itemAttributes->setIntAttribute(attr, usesRemaining);
 	}
 
 	inline void setMedicineUseRequired(int meduse) {
 		medicineUseRequired = meduse;
-		string attr = "medicineUseRequired";
+		String attr = "medicineUseRequired";
 		itemAttributes->setIntAttribute(attr, medicineUseRequired);
 	}
 
 	inline void setMedpackType(int mptype) {
 		medpackType = mptype;
-		string attr = "medpackType";
+		String attr = "medpackType";
 		itemAttributes->setIntAttribute(attr, medpackType);
 	}
 

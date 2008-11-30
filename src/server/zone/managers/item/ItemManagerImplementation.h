@@ -112,21 +112,21 @@ public:
 
 	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
 
-	static TangibleObject* createSubObject(uint64 objectid, uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped);
+	static TangibleObject* createSubObject(uint64 objectid, uint32 objectcrc, const UnicodeString& objectname, const String& objecttemp, bool equipped);
 
 	static TangibleObject* createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc,
-			const unicode& objectname, const string& objecttemp, bool equipped,
-			bool makeStats, string lootAttributes, int level);
+			const UnicodeString& objectname, const String& objecttemp, bool equipped,
+			bool makeStats, String lootAttributes, int level);
 
 	static TangibleObject* createTemplateFromLua(LuaObject item);
 
 	//TODO: remove this function when a global clone() function is available for all objects
 	TangibleObject* clonePlayerObjectTemplate(uint64 objectid, TangibleObject* templ);
 	TangibleObject* initializeTangibleForCrafting(int objecttype,
-			uint64 objectid, uint32 objectcrc, string objectn,
-			string objecttemp, bool equipped);
+			uint64 objectid, uint32 objectcrc, String objectn,
+			String objecttemp, bool equipped);
 
-	void giveBFItemSet(Player * player, string& set);
+	void giveBFItemSet(Player * player, String& set);
 
 	void unloadPlayerItems(Player* player);
 
@@ -156,11 +156,11 @@ public:
 		return bfItemSet->listContents();
 	}
 
-	inline BlueFrogVector * getBFProfList(string group = "root") {
+	inline BlueFrogVector * getBFProfList(String group = "root") {
 		return bfProfSet->listContents(group);
 	}
 
-	inline string& getBFProf(string& key) {
+	inline String& getBFProf(String& key) {
 		return bfProfSet->get(key);
 	}
 

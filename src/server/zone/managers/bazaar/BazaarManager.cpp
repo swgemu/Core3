@@ -60,7 +60,7 @@ bool BazaarManager::isBazaarTerminal(unsigned long long objectID) {
 		return ((BazaarManagerImplementation*) _impl)->isBazaarTerminal(objectID);
 }
 
-void BazaarManager::addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, unicode& description, int price, int duration, bool auction) {
+void BazaarManager::addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, UnicodeString& description, int price, int duration, bool auction) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -187,7 +187,7 @@ Packet* BazaarManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isBazaarTerminal(inv->getUnsignedLongParameter()));
 		break;
 	case 8:
-		addSaleItem((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param3_addSaleItem__Player_long_long_unicode_int_int_bool_), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		addSaleItem((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getUnicodeParameter(_param3_addSaleItem__Player_long_long_UnicodeString_int_int_bool_), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 9:
 		getBazaarData((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
@@ -222,7 +222,7 @@ bool BazaarManagerAdapter::isBazaarTerminal(unsigned long long objectID) {
 	return ((BazaarManagerImplementation*) impl)->isBazaarTerminal(objectID);
 }
 
-void BazaarManagerAdapter::addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, unicode& description, int price, int duration, bool auction) {
+void BazaarManagerAdapter::addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, UnicodeString& description, int price, int duration, bool auction) {
 	return ((BazaarManagerImplementation*) impl)->addSaleItem(player, objectid, bazaarid, description, price, duration, auction);
 }
 

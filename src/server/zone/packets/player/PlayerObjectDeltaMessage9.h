@@ -69,15 +69,15 @@ public:
 		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
 	}
 
-	void addSkill(const string& name) {
+	void addSkill(const String& name) {
 		insertByte(1);
 		insertShort(0);
-		insertAscii(name.c_str());
+		insertAscii(name.toCharArray());
 	}
 
 	void setExperimentationEnabled(bool experimenting) {
 		startUpdate(1);
-		if(experimenting){
+		if (experimenting){
 			insertInt(4);  // 3
 		}
 		else {
@@ -171,7 +171,7 @@ public:
 
 		insertShort(friendsList->getCount());
 
-		for(int i = 0; i < friendsList->getCount(); ++i){
+		for (int i = 0; i < friendsList->getCount(); ++i){
 			insertAscii(friendsList->getFriendsName(i));
 		}
 	}
@@ -188,7 +188,7 @@ public:
 
 		insertShort(ignoreList->getCount());
 
-		for(int i = 0; i < ignoreList->getCount(); ++i){
+		for (int i = 0; i < ignoreList->getCount(); ++i){
 			insertAscii(ignoreList->getIgnoreName(i));
 		}
 	}

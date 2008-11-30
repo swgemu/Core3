@@ -21,9 +21,9 @@ class Pharmaceutical;
 
 class CureAreaPack : public Pharmaceutical {
 public:
-	CureAreaPack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	CureAreaPack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	CureAreaPack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	CureAreaPack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -89,8 +89,8 @@ public:
 	CureAreaPack* _this;
 
 public:
-	CureAreaPackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
-	CureAreaPackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
+	CureAreaPackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
+	CureAreaPackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 	virtual ~CureAreaPackServant();
 
 	void _setStub(DistributedObjectStub* stub);

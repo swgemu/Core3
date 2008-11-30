@@ -73,13 +73,13 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 	uint32 schematicCRC;
 
 	// example: Bofa Treat
-	string objName;
+	String objName;
 
 	// example: @food_name:bofa_treat
-	string stringName;
+	String StringName;
 
 	// example: craftArtisanNewbieGroupA
-	string groupName;
+	String groupName;
 
 	// example: 3
 	uint32 complexity;
@@ -125,18 +125,18 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 	// Attributes that are sent in the packets
 	Vector<ManagedReference<DraftSchematicAttribute> > attributesToSet;
 
-	VectorMap<string, float> experimentalProperties;
+	VectorMap<String, float> experimentalProperties;
 
 	DraftSchematicValues* craftingValues;
 
 	// Tano Attributes
-	string tanoAttributes;
+	String tanoAttributes;
 
 	bool persistent;
 
 	SceneObject* parent;
 
-	string xpType;
+	String xpType;
 	int xp;
 
 	int expPointsUsed;
@@ -145,11 +145,11 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 
 	float experimentalFailureRate;
 
-	string experimentingSkill;
-	string assemblySkill;
-	string customizationSkill;
+	String experimentingSkill;
+	String assemblySkill;
+	String customizationSkill;
 
-	Vector<string> customizationOptions;
+	Vector<String> customizationOptions;
 	Vector<int> customizationDefaults;
 
 	bool finished;
@@ -157,8 +157,8 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 	Player* crafter;
 
 public:
-	DraftSchematicImplementation(uint32 schematicID, const string& objName,
-			const string& stringName, uint32 objCRC, const string& groupName,
+	DraftSchematicImplementation(uint32 schematicID, const String& objName,
+			const String& StringName, uint32 objCRC, const String& groupName,
 			uint32 complexity, uint32 schematicSize, int craftingToolTab);
 
 	DraftSchematicImplementation(DraftSchematic* draftSchematic);
@@ -174,9 +174,9 @@ public:
 	void sendTo(Player* player);
 
 	// Ingredient Methods
-	void addIngredient(const string& ingredientTemplateName,
-			const string& ingredientTitleName, const int slotoption,
-			const string& resourceType, uint32 resourceQuantity,
+	void addIngredient(const String& ingredientTemplateName,
+			const String& ingredientTitleName, const int slotoption,
+			const String& resourceType, uint32 resourceQuantity,
 			uint32 combineType, uint32 contribution);
 
 	// THERE IS A BUG WHEN YOU LEAVE YOUR DATAPAD UP AND SURRENDER A SKILL, THE DRAFT SCHEMATICS
@@ -190,7 +190,7 @@ public:
 	// Experimental Property Methods
 	// UPDATE THIS METHOD WHEN WE CAN PASS VECTORS AROUND IN IDL
 	void addExperimentalProperty(uint32 groupNumber,
-			const string& experimentalProperty, uint32 weight, string subtitle);
+			const String& experimentalProperty, uint32 weight, String subtitle);
 
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
@@ -204,7 +204,7 @@ public:
 		objectID = objID;
 	}
 
-	inline void setTanoAttributes(string attributes) {
+	inline void setTanoAttributes(String attributes) {
 		tanoAttributes = attributes;
 	}
 
@@ -212,7 +212,7 @@ public:
 		parent = obj;
 	}
 
-	inline void setXpType(string type) {
+	inline void setXpType(String type) {
 		xpType = type;
 	}
 
@@ -236,25 +236,25 @@ public:
 		experimentalFailureRate = rate;
 	}
 
-	inline void setExperimentingSkill(const string& exp) {
+	inline void setExperimentingSkill(const String& exp) {
 		experimentingSkill = exp;
 	}
 
-	inline void setCustomizationSkill(const string& cust) {
+	inline void setCustomizationSkill(const String& cust) {
 		customizationSkill = cust;
 	}
 
-	inline void addCustomizationOption(const string cust, const int value) {
+	inline void addCustomizationOption(const String cust, const int value) {
 		customizationOptions.add(cust);
 		customizationDefaults.add(value);
 	}
 
-	inline void setAssemblySkill(const string& ass) {
-		if ((int) ass.find("armor") >= 0)
+	inline void setAssemblySkill(const String& ass) {
+		if (ass.indexOf("armor") != -1)
 			customizationSkill = "armor_customization";
-		if ((int) ass.find("clothing") >= 0)
+		if (ass.indexOf("clothing") != -1)
 			customizationSkill = "clothing_customization";
-		if ((int) ass.find("droid") >= 0)
+		if (ass.indexOf("droid") != -1)
 			customizationSkill = "droid_customization";
 
 		assemblySkill = ass;
@@ -281,15 +281,15 @@ public:
 		return schematicCRC;
 	}
 
-	inline string& getName() {
+	inline String& getName() {
 		return objName;
 	}
 
-	inline string& getStringName() {
-		return stringName;
+	inline String& getStringName() {
+		return StringName;
 	}
 
-	inline string& getGroupName() {
+	inline String& getGroupName() {
 		return groupName;
 	}
 
@@ -305,7 +305,7 @@ public:
 		return objectID;
 	}
 
-	inline string& getTanoAttributes() {
+	inline String& getTanoAttributes() {
 		return tanoAttributes;
 	}
 
@@ -317,7 +317,7 @@ public:
 		return parent;
 	}
 
-	inline string& getXpType() {
+	inline String& getXpType() {
 		return xpType;
 	}
 
@@ -325,15 +325,15 @@ public:
 		return xp;
 	}
 
-	inline string& getExperimentingSkill() {
+	inline String& getExperimentingSkill() {
 		return experimentingSkill;
 	}
 
-	inline string& getCustomizationSkill() {
+	inline String& getCustomizationSkill() {
 		return customizationSkill;
 	}
 
-	inline string& getCustomizationOption(const int i) {
+	inline String& getCustomizationOption(const int i) {
 		return customizationOptions.get(i);
 	}
 
@@ -345,12 +345,12 @@ public:
 		return customizationOptions.size();
 	}
 
-	inline string& getAssemblySkill() {
+	inline String& getAssemblySkill() {
 		return assemblySkill;
 	}
 
-	inline void addAttributeToSet(const string& attribute, const float minVal,
-			const float maxVal, const string& attributeExpProp, int precision) {
+	inline void addAttributeToSet(const String& attribute, const float minVal,
+			const float maxVal, const String& attributeExpProp, int precision) {
 		DraftSchematicAttribute* attrib =
 						new DraftSchematicAttribute(attribute, minVal, maxVal, attributeExpProp, precision);
 		attributesToSet.add(attrib);
@@ -364,7 +364,7 @@ public:
 		return attributesToSet.size();
 	}
 
-	inline DraftSchematicAttribute* getAttributeToSet(const string& name) {
+	inline DraftSchematicAttribute* getAttributeToSet(const String& name) {
 
 		DraftSchematicAttribute* attrib;
 

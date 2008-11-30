@@ -20,17 +20,17 @@
  *	DiceStub
  */
 
-Dice::Dice(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : GenericItem(DummyConstructorParameter::instance()) {
+Dice::Dice(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : GenericItem(DummyConstructorParameter::instance()) {
 	_impl = new DiceImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-Dice::Dice(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : GenericItem(DummyConstructorParameter::instance()) {
+Dice::Dice(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : GenericItem(DummyConstructorParameter::instance()) {
 	_impl = new DiceImplementation(creature, oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-Dice::Dice(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : GenericItem(DummyConstructorParameter::instance()) {
+Dice::Dice(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : GenericItem(DummyConstructorParameter::instance()) {
 	_impl = new DiceImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -174,11 +174,11 @@ DistributedObjectAdapter* DiceHelper::createAdapter(DistributedObjectStub* obj) 
  *	DiceServant
  */
 
-DiceServant::DiceServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype) : GenericItemImplementation(oid, tempCRC, n, tempn, gitype) {
+DiceServant::DiceServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype) : GenericItemImplementation(oid, tempCRC, n, tempn, gitype) {
 	_classHelper = DiceHelper::instance();
 }
 
-DiceServant::DiceServant(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype) : GenericItemImplementation(creature, oid, tempCRC, n, tempn, gitype) {
+DiceServant::DiceServant(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype) : GenericItemImplementation(creature, oid, tempCRC, n, tempn, gitype) {
 	_classHelper = DiceHelper::instance();
 }
 

@@ -51,35 +51,35 @@ which carries forward this exception.
 #include "ResourceItem.h"
 
 
-class ResourceListImplementation : public ResourceListServant, public VectorMap<string, ResourceItem*> {
+class ResourceListImplementation : public ResourceListServant, public VectorMap<String, ResourceItem*> {
 
 public:
-	ResourceListImplementation() : ResourceListServant(), VectorMap<string, ResourceItem*>() {
+	ResourceListImplementation() : ResourceListServant(), VectorMap<String, ResourceItem*>() {
 
 	}
 
-	inline bool contains(const string& key) {
-		return VectorMap<string, ResourceItem*>::contains(key);
+	inline bool contains(const String& key) {
+		return VectorMap<String, ResourceItem*>::contains(key);
 	}
 
 	/*
-	inline int put(uint64 oid, const string& name, const string& type, int density) {
+	inline int put(uint64 oid, const String& name, const String& type, int density) {
 		ResourceItem* ri = new ResourceItem(oid, name, type, density);
-		return VectorMap<string, ResourceItem*>::put(name, ri);
+		return VectorMap<String, ResourceItem*>::put(name, ri);
 	}*/
 	inline int size() {
-		return VectorMap<string, ResourceItem*>::size();
+		return VectorMap<String, ResourceItem*>::size();
 	}
-	inline int put(const string& name, ResourceItem *ri) {
-		return VectorMap<string, ResourceItem*>::put(name, ri);
+	inline int put(const String& name, ResourceItem *ri) {
+		return VectorMap<String, ResourceItem*>::put(name, ri);
 	}
 	inline ResourceItem* get(int index) {
-		return VectorMap<string, ResourceItem*>::get(index);
+		return VectorMap<String, ResourceItem*>::get(index);
 	}
 	//	resource->getResourceID(), resource->getName(), resource->getType(), 50
-	/*inline int put(const string& key, Resource* rptr) {
+	/*inline int put(const String& key, Resource* rptr) {
 		Resource r = *rptr;
-		return (VectorMap<string, Resource>)this->put(key, r);
+		return (VectorMap<String, Resource>)this->put(key, r);
 	}*/
 };
 

@@ -15,9 +15,9 @@ class Player;
 
 class ChatRoom : public DistributedObjectStub {
 public:
-	ChatRoom(ZoneServer* server, const string& name, unsigned int cid);
+	ChatRoom(ZoneServer* server, const String& name, unsigned int cid);
 
-	ChatRoom(ZoneServer* server, ChatRoom* parent, const string& name, unsigned int cid);
+	ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned int cid);
 
 	void sendTo(Player* player);
 
@@ -29,19 +29,19 @@ public:
 
 	ChatRoom* getSubRoom(int i);
 
-	ChatRoom* getSubRoom(const string& name);
+	ChatRoom* getSubRoom(const String& name);
 
 	void addPlayer(Player* player, bool doLock = true);
 
 	void removePlayer(Player* player, bool doLock = true);
 
-	void removePlayer(const string& player);
+	void removePlayer(const String& player);
 
 	void broadcastMessage(BaseMessage* msg);
 
 	bool hasPlayer(Player* player);
 
-	bool hasPlayer(const string& name);
+	bool hasPlayer(const String& name);
 
 	void removeAllPlayers();
 
@@ -57,25 +57,25 @@ public:
 
 	int getPlayerSize();
 
-	void setName(const string& Name);
+	void setName(const String& Name);
 
-	string& getName();
+	String& getName();
 
-	string& getFullPath();
+	String& getFullPath();
 
-	string& getOwner();
+	String& getOwner();
 
-	string& getCreator();
+	String& getCreator();
 
-	unicode& getTitle();
+	UnicodeString& getTitle();
 
-	string& getServerName();
+	String& getServerName();
 
-	void setOwner(const string& Owner);
+	void setOwner(const String& Owner);
 
-	void setCreator(const string& Creator);
+	void setCreator(const String& Creator);
 
-	void setTitle(const string& Title);
+	void setTitle(const String& Title);
 
 	unsigned int getRoomID();
 
@@ -90,13 +90,13 @@ protected:
 
 	virtual ~ChatRoom();
 
-	string _return_getCreator;
-	string _return_getFullPath;
-	string _return_getName;
-	string _return_getOwner;
-	string _return_getServerName;
+	String _return_getCreator;
+	String _return_getFullPath;
+	String _return_getName;
+	String _return_getOwner;
+	String _return_getServerName;
 
-	unicode _return_getTitle;
+	UnicodeString _return_getTitle;
 
 	friend class ChatRoomHelper;
 };
@@ -119,19 +119,19 @@ public:
 
 	ChatRoom* getSubRoom(int i);
 
-	ChatRoom* getSubRoom(const string& name);
+	ChatRoom* getSubRoom(const String& name);
 
 	void addPlayer(Player* player, bool doLock);
 
 	void removePlayer(Player* player, bool doLock);
 
-	void removePlayer(const string& player);
+	void removePlayer(const String& player);
 
 	void broadcastMessage(BaseMessage* msg);
 
 	bool hasPlayer(Player* player);
 
-	bool hasPlayer(const string& name);
+	bool hasPlayer(const String& name);
 
 	void removeAllPlayers();
 
@@ -147,25 +147,25 @@ public:
 
 	int getPlayerSize();
 
-	void setName(const string& Name);
+	void setName(const String& Name);
 
-	string& getName();
+	String& getName();
 
-	string& getFullPath();
+	String& getFullPath();
 
-	string& getOwner();
+	String& getOwner();
 
-	string& getCreator();
+	String& getCreator();
 
-	unicode& getTitle();
+	UnicodeString& getTitle();
 
-	string& getServerName();
+	String& getServerName();
 
-	void setOwner(const string& Owner);
+	void setOwner(const String& Owner);
 
-	void setCreator(const string& Creator);
+	void setCreator(const String& Creator);
 
-	void setTitle(const string& Title);
+	void setTitle(const String& Title);
 
 	unsigned int getRoomID();
 
@@ -176,13 +176,13 @@ public:
 	int compareTo(ChatRoom* obj);
 
 protected:
-	string _param0_getSubRoom__string_;
-	string _param0_removePlayer__string_;
-	string _param0_hasPlayer__string_;
-	string _param0_setName__string_;
-	string _param0_setOwner__string_;
-	string _param0_setCreator__string_;
-	string _param0_setTitle__string_;
+	String _param0_getSubRoom__String_;
+	String _param0_removePlayer__String_;
+	String _param0_hasPlayer__String_;
+	String _param0_setName__String_;
+	String _param0_setOwner__String_;
+	String _param0_setCreator__String_;
+	String _param0_setTitle__String_;
 };
 
 class ChatRoomHelper : public DistributedObjectClassHelper, public Singleton<ChatRoomHelper> {

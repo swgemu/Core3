@@ -21,23 +21,23 @@ class Creature;
 
 class ActionCreature : public Creature {
 public:
-	ActionCreature(unsigned long long oid, unsigned int objCrc, string& creName, string& stf, string& missionKey);
+	ActionCreature(unsigned long long oid, unsigned int objCrc, String& creName, String& stf, String& missionKey);
 
-	void addAction(string& key, Action* act);
+	void addAction(String& key, Action* act);
 
-	Action* getAction(string& key);
+	Action* getAction(String& key);
 
-	void onConverse(string& tco, Player* player = NULL);
+	void onConverse(String& tco, Player* player = NULL);
 
-	void onTrade(string& ttr);
+	void onTrade(String& ttr);
 
-	void onAttack(string& tat);
+	void onAttack(String& tat);
 
-	void onDeath(string& tde);
+	void onDeath(String& tde);
 
 	bool isMissionNpc();
 
-	string& getMissionKey();
+	String& getMissionKey();
 
 	MissionManagerImplementation* getMisoMgr();
 
@@ -52,7 +52,7 @@ protected:
 
 	virtual ~ActionCreature();
 
-	string _return_getMissionKey;
+	String _return_getMissionKey;
 
 	friend class ActionCreatureHelper;
 };
@@ -65,33 +65,33 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void addAction(string& key, Action* act);
+	void addAction(String& key, Action* act);
 
-	Action* getAction(string& key);
+	Action* getAction(String& key);
 
-	void onConverse(string& tco, Player* player);
+	void onConverse(String& tco, Player* player);
 
-	void onTrade(string& ttr);
+	void onTrade(String& ttr);
 
-	void onAttack(string& tat);
+	void onAttack(String& tat);
 
-	void onDeath(string& tde);
+	void onDeath(String& tde);
 
 	bool isMissionNpc();
 
-	string& getMissionKey();
+	String& getMissionKey();
 
 	void sendConversationStartTo(SceneObject* obj);
 
 	void selectConversationOption(int option, SceneObject* obj);
 
 protected:
-	string _param0_addAction__string_Action_;
-	string _param0_getAction__string_;
-	string _param0_onConverse__string_Player_;
-	string _param0_onTrade__string_;
-	string _param0_onAttack__string_;
-	string _param0_onDeath__string_;
+	String _param0_addAction__String_Action_;
+	String _param0_getAction__String_;
+	String _param0_onConverse__String_Player_;
+	String _param0_onTrade__String_;
+	String _param0_onAttack__String_;
+	String _param0_onDeath__String_;
 };
 
 class ActionCreatureHelper : public DistributedObjectClassHelper, public Singleton<ActionCreatureHelper> {

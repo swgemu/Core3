@@ -7,13 +7,14 @@
 
 class DeedObjectImplementation : public DeedObjectServant {
 protected:
-	string targetFile;
-	string targetTemplate;
-	string targetTempFile;
-	unicode targetName;
+	String targetFile;
+	String targetTemplate;
+	String targetTempFile;
+
+	UnicodeString targetName;
+
 public:
 	// Sub Types
-
 
 	// Installation
 	static const int HARVESTER = 1;
@@ -33,11 +34,11 @@ public:
 	static const int GARAGE = 13;
 	static const int CLONING = 14;
 
-
-	DeedObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& name, const string& tempname);
-	DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& name, const string& tempname);
-	DeedObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& name, const string& tempname, int type);
-	DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& name, const string& tempname, int type);
+public:
+	DeedObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& name, const String& tempname);
+	DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& name, const String& tempname);
+	DeedObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& name, const String& tempname, int type);
+	DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& name, const String& tempname, int type);
 
 	~DeedObjectImplementation();
 
@@ -59,26 +60,30 @@ public:
 	//	return (DeedObject*) SceneObjectImplementation::deploy();
 	//}
 
-
-
-	inline unicode& getTargetName() {
+	inline UnicodeString& getTargetName() {
 		return targetName;
 	}
-	inline string& getTargetFile() {
+
+	inline String& getTargetFile() {
 		return targetFile;
 	}
-	inline string& getTargetTemplate() {
+
+	inline String& getTargetTemplate() {
 		return targetTemplate;
 	}
-	inline string& getTargetTempFile() {
+
+	inline String& getTargetTempFile() {
 		return targetTempFile;
 	}
-	inline void setTargetFile(string path) {
+
+	inline void setTargetFile(String path) {
 		targetFile = path;
 	}
-	inline void setTargetTemplate(string temp) {
+
+	inline void setTargetTemplate(String temp) {
 		targetTemplate = temp;
 	}
+
 private:
 
 };

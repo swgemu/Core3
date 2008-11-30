@@ -35,7 +35,7 @@ public:
 	static const int STOCK = 6;
 
 public:
-	PowerupImplementation(uint64 objID, uint32 tempCRC, const unicode& n, const string& tempn);
+	PowerupImplementation(uint64 objID, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	PowerupImplementation(uint64 objID);
 	
 	virtual ~PowerupImplementation();
@@ -58,55 +58,55 @@ public:
 
 	inline void setPowerupType(int value) {
 		type = value;
-		string name = "type";
+		String name = "type";
 		itemAttributes->setIntAttribute(name, value);
 	}
 	
 	inline void setPowerupSubType(int value) {
 		subType = value;
-		string name = "subType";
+		String name = "subType";
 		itemAttributes->setIntAttribute(name, value);
 	}
 	
 	inline void setPowerup0Type(int value) {
 		powerup0Type = value;
-		string name = "powerup0Type";
+		String name = "powerup0Type";
 		itemAttributes->setIntAttribute(name, value);
 	}
 	
 	inline void setPowerup1Type(int value) {
 		powerup1Type = value;
-		string name = "powerup1Type";
+		String name = "powerup1Type";
 		itemAttributes->setIntAttribute(name, value);
 	}
 	
 	inline void setPowerup2Type(int value) {
 		powerup2Type = value;
-		string name = "powerup2Type";
+		String name = "powerup2Type";
 		itemAttributes->setIntAttribute(name, value);
 	}
 	
 	inline void setPowerup0Value(float value) {
 		powerup0Value = value;
-		string name = "powerup0Value";
+		String name = "powerup0Value";
 		itemAttributes->setFloatAttribute(name, value);
 	}
 	
 	inline void setPowerup1Value(float value) {
 		powerup1Value = value;
-		string name = "powerup1Value";
+		String name = "powerup1Value";
 		itemAttributes->setFloatAttribute(name, value);
 	}
 	
 	inline void setPowerup2Value(float value) {
 		powerup2Value = value;
-		string name = "powerup2Value";
+		String name = "powerup2Value";
 		itemAttributes->setFloatAttribute(name, value);
 	}
 	
 	inline void setPowerupUses(int value) {
 		uses = value;
-		string name = "uses";
+		String name = "uses";
 		itemAttributes->setIntAttribute(name, value);
 	}
 	

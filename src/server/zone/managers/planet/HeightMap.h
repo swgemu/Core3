@@ -27,13 +27,13 @@ public:
 
 	~HeightMap();
 
-	void load(const string& path);
+	void load(const String& path);
 
 	float getHeight(float x, float y);
 
 	static float getHeightFrom(Reader* file, float x, float y);
 
-	static void convert(const string& path);
+	static void convert(const String& path);
 
 	static void readPlaneForConversion(Reader* file, float* buffer, int planeX, int planeY);
 

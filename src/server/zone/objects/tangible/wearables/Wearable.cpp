@@ -16,17 +16,17 @@
  *	WearableStub
  */
 
-Wearable::Wearable(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : TangibleObject(DummyConstructorParameter::instance()) {
+Wearable::Wearable(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WearableImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-Wearable::Wearable(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : TangibleObject(DummyConstructorParameter::instance()) {
+Wearable::Wearable(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WearableImplementation(creature, oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-Wearable::Wearable(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : TangibleObject(DummyConstructorParameter::instance()) {
+Wearable::Wearable(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WearableImplementation(creature, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }

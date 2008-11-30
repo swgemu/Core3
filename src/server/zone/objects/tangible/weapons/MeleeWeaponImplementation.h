@@ -51,12 +51,12 @@ class MeleeWeaponImplementation : public MeleeWeaponServant {
 	
 
 public:
-	MeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, int tp, bool eqp = false) 
+	MeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: MeleeWeaponServant(objid, tempcrc, n, tempn, eqp, tp, MELEE ) {
 		initialize();
 	}
 
-	MeleeWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp = false) 
+	MeleeWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: MeleeWeaponServant(creature, temp, n, tempn, eqp, tp, MELEE ) {
 		initialize();
 	}

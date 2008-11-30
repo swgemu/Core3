@@ -14,12 +14,12 @@
  *	PolearmMeleeWeaponStub
  */
 
-PolearmMeleeWeapon::PolearmMeleeWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
+PolearmMeleeWeapon::PolearmMeleeWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
 	_impl = new PolearmMeleeWeaponImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-PolearmMeleeWeapon::PolearmMeleeWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
+PolearmMeleeWeapon::PolearmMeleeWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
 	_impl = new PolearmMeleeWeaponImplementation(creature, temp, n, tempn, eqp);
 	_impl->_setStub(this);
 }
@@ -83,11 +83,11 @@ DistributedObjectAdapter* PolearmMeleeWeaponHelper::createAdapter(DistributedObj
  *	PolearmMeleeWeaponServant
  */
 
-PolearmMeleeWeaponServant::PolearmMeleeWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
+PolearmMeleeWeaponServant::PolearmMeleeWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp) : MeleeWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
 	_classHelper = PolearmMeleeWeaponHelper::instance();
 }
 
-PolearmMeleeWeaponServant::PolearmMeleeWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
+PolearmMeleeWeaponServant::PolearmMeleeWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp) : MeleeWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
 	_classHelper = PolearmMeleeWeaponHelper::instance();
 }
 

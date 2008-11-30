@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "../../tangible/ticket/Ticket.h"
 #include "../../terrain/PlanetNames.h"
 
-ShuttleCreatureImplementation::ShuttleCreatureImplementation(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 oid, uint32 tax, bool starport)
+ShuttleCreatureImplementation::ShuttleCreatureImplementation(const String& Planet, const String& City, Coordinate* playerSpawnPoint, uint64 oid, uint32 tax, bool starport)
 		: ShuttleCreatureServant(oid) {
 	planet = Planet;
 	city = City;
@@ -92,8 +92,8 @@ void ShuttleCreatureImplementation::doLanding() {
 }
 
 void ShuttleCreatureImplementation::sendPlayerTo(Player* player, Ticket* ticket) {
-	string planet = ticket->getArrivalPlanet();
-	string shuttle = ticket->getArrivalPoint();
+	String planet = ticket->getArrivalPlanet();
+	String shuttle = ticket->getArrivalPoint();
 
 	int id = Planet::getPlanetID(planet);
 	Zone* arrivalZone = server->getZoneServer()->getZone(id);

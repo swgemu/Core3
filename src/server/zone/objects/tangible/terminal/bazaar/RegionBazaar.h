@@ -25,7 +25,7 @@ public:
 
 	bool removeItem(unsigned long long objectid);
 
-	void setRegion(string& region);
+	void setRegion(String& region);
 
 	void setManager(BazaarPlanetManager* manager);
 
@@ -53,7 +53,7 @@ public:
 
 	bool removeItem(unsigned long long objectid);
 
-	void setRegion(string& region);
+	void setRegion(String& region);
 
 	void setManager(BazaarPlanetManager* manager);
 
@@ -62,7 +62,7 @@ public:
 	void getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, int category, int count, int offset);
 
 protected:
-	string _param0_setRegion__string_;
+	String _param0_setRegion__String_;
 };
 
 class RegionBazaarHelper : public DistributedObjectClassHelper, public Singleton<RegionBazaarHelper> {

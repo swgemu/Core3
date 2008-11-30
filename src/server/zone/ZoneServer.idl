@@ -91,9 +91,9 @@ interface ZoneServer {
 	SceneObject removeCachedObject(SceneObject obj, boolean doLock = true);
 
 	// administration methods
-	boolean banUser(string name, string admin);
+	boolean banUser(String name, String admin);
 	
-	boolean kickUser(string name, string admin);
+	boolean kickUser(String name, String admin);
 
 	void changeUserCap(int amount = 50);
 
@@ -125,7 +125,7 @@ interface ZoneServer {
 	
 	Zone getZone(int index);
 	
-	string getServerName();
+	String getServerName();
 	
 	int getConnectionCount();
 	int getTotalPlayers();

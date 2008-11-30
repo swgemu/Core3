@@ -52,13 +52,13 @@ BazaarPlanetManagerImplementation::BazaarPlanetManagerImplementation(int planet)
 	setLogging(false);
 	setGlobalLogging(true);
 
-	info("Starting BazaarPlanetManager for " + string(Planet::getPlanetName(planet)));
+	info("Starting BazaarPlanetManager for " + String(Planet::getPlanetName(planet)));
 	vendorPlanet = planet;
 
 	//processServer = srv;
 
 	bazaars.setNullValue(NULL);
-	bazaars.setInsertPlan(SortedVector<VectorMapEntry<string, RegionBazaar*>*>::NO_DUPLICATE);
+	bazaars.setInsertPlan(SortedVector<VectorMapEntry<String, RegionBazaar*>*>::NO_DUPLICATE);
 }
 
 BazaarPlanetManagerImplementation::~BazaarPlanetManagerImplementation() {
@@ -80,7 +80,7 @@ void BazaarPlanetManagerImplementation::addBazaarItem(AuctionItem* item) {
 	RegionBazaar* bazaar;
 
 	bazaar = bazaars.get(item->getLocation());
-	if(bazaar == NULL) {
+	if (bazaar == NULL) {
 		info("Bazaar not found " + item->getLocation());
 	} else {
 		bazaar->addItem(item);
@@ -100,7 +100,7 @@ void BazaarPlanetManagerImplementation::removeBazaarItem(uint64 objectid) {
 
 	bazaar = bazaars.get(item->getLocation());
 
-	if(bazaar == NULL) {
+	if (bazaar == NULL) {
 		return;
 	} else {
 		bazaar->removeItem(objectid);
@@ -114,12 +114,12 @@ void BazaarPlanetManagerImplementation::addBazaar(BazaarTerminalDetails* termina
 	if (bazaars.contains(terminal->getRegion())) {
 		bazaar = bazaars.get(terminal->getRegion());
 	} else {
-		string region = terminal->getRegion();
+		String region = terminal->getRegion();
 
 		bazaar = new RegionBazaar();
-		stringstream ss;
+		StringBuffer ss;
 		ss << "RegionBazaar:" << region << " " << vendorPlanet;
-		bazaar->deploy(ss.str());
+		bazaar->deploy(ss.toString());
 		bazaar->setRegion(region);
 		bazaar->setManager(_this);
 

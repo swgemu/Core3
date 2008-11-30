@@ -52,7 +52,7 @@ import "../Terminal";
 
 interface MissionTerminal implements Terminal {
 	MissionTerminal(unsigned long objid, float x, float z, float y, int pId, int tmsk) {
-		super(unsigned int objCRC, objid, const unicode n, const string tempn, x, z, y, int TerminalType); 
+		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int TerminalType); 
 	}
 	
 	int getPlanetId();

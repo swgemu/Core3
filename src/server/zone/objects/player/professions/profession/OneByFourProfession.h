@@ -53,7 +53,7 @@ protected:
 	SkillBox* branches[4];
 
 public:
-	OneByFourProfession(string& name) : Profession(name, ONEBYFOUR) {
+	OneByFourProfession(String& name) : Profession(name, ONEBYFOUR) {
 	}
 	
 	void setBox(int branch, SkillBox* skillbox) {

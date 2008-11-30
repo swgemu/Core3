@@ -23,7 +23,7 @@ ResourceList::ResourceList(DummyConstructorParameter* param) : ManagedObject(par
 ResourceList::~ResourceList() {
 }
 
-bool ResourceList::contains(string& key) {
+bool ResourceList::contains(String& key) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -48,7 +48,7 @@ int ResourceList::size() {
 		return ((ResourceListImplementation*) _impl)->size();
 }
 
-int ResourceList::put(string& key, ResourceItem* res) {
+int ResourceList::put(String& key, ResourceItem* res) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -87,13 +87,13 @@ Packet* ResourceListAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 	switch (methid) {
 	case 6:
-		resp->insertBoolean(contains(inv->getAsciiParameter(_param0_contains__string_)));
+		resp->insertBoolean(contains(inv->getAsciiParameter(_param0_contains__String_)));
 		break;
 	case 7:
 		resp->insertSignedInt(size());
 		break;
 	case 8:
-		resp->insertSignedInt(put(inv->getAsciiParameter(_param0_put__string_ResourceItem_), (ResourceItem*) inv->getObjectParameter()));
+		resp->insertSignedInt(put(inv->getAsciiParameter(_param0_put__String_ResourceItem_), (ResourceItem*) inv->getObjectParameter()));
 		break;
 	case 9:
 		resp->insertLong(get(inv->getSignedIntParameter())->_getObjectID());
@@ -105,7 +105,7 @@ Packet* ResourceListAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	return resp;
 }
 
-bool ResourceListAdapter::contains(string& key) {
+bool ResourceListAdapter::contains(String& key) {
 	return ((ResourceListImplementation*) impl)->contains(key);
 }
 
@@ -113,7 +113,7 @@ int ResourceListAdapter::size() {
 	return ((ResourceListImplementation*) impl)->size();
 }
 
-int ResourceListAdapter::put(string& key, ResourceItem* res) {
+int ResourceListAdapter::put(String& key, ResourceItem* res) {
 	return ((ResourceListImplementation*) impl)->put(key, res);
 }
 

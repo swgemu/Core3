@@ -63,5 +63,5 @@ interface Action {
 	
 	void execAction(Player player);
 	
-	void addConvoScreen(string screenID, string leftBoxText, int numOptions, string Options, string optLinks);
+	void addConvoScreen(String screenID, String leftBoxText, int numOptions, String Options, String optLinks);
 }

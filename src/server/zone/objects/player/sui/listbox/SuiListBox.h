@@ -19,9 +19,9 @@ class SuiListBox : public SuiBox {
 public:
 	SuiListBox(Player* player, unsigned int boxType, unsigned int listBoxType = 0);
 
-	void addMenuItem(const string& item, unsigned long long objectID = 0);
+	void addMenuItem(const String& item, unsigned long long objectID = 0);
 
-	string& getMenuItemName(int index);
+	String& getMenuItemName(int index);
 
 	void removeAllMenuItems();
 
@@ -44,7 +44,7 @@ protected:
 
 	virtual ~SuiListBox();
 
-	string _return_getMenuItemName;
+	String _return_getMenuItemName;
 
 	friend class SuiListBoxHelper;
 };
@@ -57,9 +57,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void addMenuItem(const string& item, unsigned long long objectID);
+	void addMenuItem(const String& item, unsigned long long objectID);
 
-	string& getMenuItemName(int index);
+	String& getMenuItemName(int index);
 
 	void removeAllMenuItems();
 
@@ -78,7 +78,7 @@ public:
 	unsigned long long getPreviousBox();
 
 protected:
-	string _param0_addMenuItem__string_long_;
+	String _param0_addMenuItem__String_long_;
 };
 
 class SuiListBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiListBoxHelper> {

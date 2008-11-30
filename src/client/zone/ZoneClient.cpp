@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "objects/player/Player.h"
 
-ZoneClient::ZoneClient(const string& addr, int port) : BaseClient(addr, port), Thread () {
+ZoneClient::ZoneClient(const String& addr, int port) : BaseClient(addr, port), Thread () {
 	setLogging(false);
 	setLoggingName("ZoneClient " + ip);
 
@@ -86,15 +86,15 @@ void ZoneClient::run() {
 				}
 			}
 		} catch (PacketIndexOutOfBoundsException& e) {
-			cout << e.getMessage();
+			System::out << e.getMessage();
 
 			error("incorrect packet - " + pack.toString());
 		} catch (ArrayIndexOutOfBoundsException& e) {
 			error(e.getMessage());
 		} catch (SocketException& e) {
-			cout << "socket exception\n";
+			System::out << "socket exception\n";
 		} catch (...) {
-			cout << "[ZoneClient] unreported Exception caught\n";
+			System::out << "[ZoneClient] unreported Exception caught\n";
 		}
 	}
 }

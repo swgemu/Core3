@@ -46,13 +46,13 @@ which carries forward this exception.
 
 #include "../../packets.h"
 
-DraftSchematicImplementation::DraftSchematicImplementation(uint32 schematicID, const string& objName,
-		const string& stringName, uint32 objCRC, const string& groupName, uint32 complexity,
+DraftSchematicImplementation::DraftSchematicImplementation(uint32 schematicID, const String& objName,
+		const String& StringName, uint32 objCRC, const String& groupName, uint32 complexity,
 		uint32 schematicSize, int craftingToolTab) :
 			DraftSchematicServant() {
 	DraftSchematicImplementation::schematicID = schematicID;
 	DraftSchematicImplementation::objName = objName;
-	DraftSchematicImplementation::stringName = stringName;
+	DraftSchematicImplementation::StringName = StringName;
 	DraftSchematicImplementation::schematicCRC = objCRC;
 	DraftSchematicImplementation::groupName = groupName;
 	DraftSchematicImplementation::complexity = complexity;
@@ -73,7 +73,7 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 
 	schematicID = draftSchematic->getSchematicID();
 	objName = draftSchematic->getName();
-	stringName = draftSchematic->getStringName();
+	StringName = draftSchematic->getStringName();
 	schematicCRC = draftSchematic->getSchematicCRC();
 	groupName = draftSchematic->getGroupName();
 	complexity = draftSchematic->getComplexity();
@@ -94,8 +94,8 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 		dsExpPropGroups.add(draftSchematic->getExpPropGroup(i));
 	}
 
-	string title;
-	string subtitle;
+	String title;
+	String subtitle;
 	DraftSchematicAttribute* attributeObject = NULL;
 
 	for (int i = 0; i < draftSchematic->getCraftingValues()->getExperimentalPropertyTitleSize(); ++i) {
@@ -115,7 +115,7 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 
 	float min, max;
 	int precision;
-	string attributeExpProp, attribute;
+	String attributeExpProp, attribute;
 
 	for (int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i) {
 		attributeObject = draftSchematic->getAttributeToSet(i);
@@ -138,7 +138,7 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 	assemblySkill = draftSchematic->getAssemblySkill();
 	customizationSkill = draftSchematic->getCustomizationSkill();
 
-	for(int i = 0; i < draftSchematic->getCustomizationOptionCount(); ++i) {
+	for (int i = 0; i < draftSchematic->getCustomizationOptionCount(); ++i) {
 		customizationOptions.add(draftSchematic->getCustomizationOption(i));
 		customizationDefaults.add(draftSchematic->getCustomizationDefaultValue(i));
 	}
@@ -200,7 +200,7 @@ void DraftSchematicImplementation::sendTo(Player* player) {
 	player->sendMessage(link);
 
 	// MSCO3
-	unicode& uniPlayerName = player->getCharacterName();
+	UnicodeString& uniPlayerName = player->getCharacterName();
 
 	ManufactureSchematicObjectMessage3* msco3 =
 		new ManufactureSchematicObjectMessage3(_this->getObjectID(), _this->getComplexity(), uniPlayerName);
@@ -228,8 +228,8 @@ void DraftSchematicImplementation::sendTo(Player* player) {
 }
 
 // Ingredient Methods
-void DraftSchematicImplementation::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName,
-		const int slotoption, const string& resourceType, uint32 resourceQuantity, uint32 combineType, uint32 contribution) {
+void DraftSchematicImplementation::addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName,
+		const int slotoption, const String& resourceType, uint32 resourceQuantity, uint32 combineType, uint32 contribution) {
 
 	float contrib = float(contribution) / 100;
 
@@ -268,9 +268,9 @@ void DraftSchematicImplementation::helperSendIngredientsToPlayer(ObjectControlle
 	}
 
 	/* for debugging
-		 stringstream ss;
+		 StringBuffer ss;
 		 ss << msg->toString();
-		 player->info(ss.str());*/
+		 player->info(ss.toString());*/
 
 	objMsg->insertShort(0);
 }
@@ -278,7 +278,7 @@ void DraftSchematicImplementation::helperSendIngredientsToPlayer(ObjectControlle
 // Experimental Property Methods
 // UPDATE THIS METHOD WHEN WE CAN PASS VECTORS AROUND IN IDL
 void DraftSchematicImplementation::addExperimentalProperty(uint32 groupNumber,
-		const string& experimentalProperty, uint32 weight, string subtitle) {
+		const String& experimentalProperty, uint32 weight, String subtitle) {
 	if (groupNumber < dsExpPropGroups.size()) {
 		dsExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty,	weight);
 	} else {
@@ -299,9 +299,9 @@ void DraftSchematicImplementation::sendExperimentalPropertiesToPlayer(Player* pl
 
 	/*uint32 padding = 0;
 		 if (draftSchematicIngredients.size() > 0) {
-		 string templateName = draftSchematicIngredients.get(0)->getTemplateName();
+		 String templateName = draftSchematicIngredients.get(0)->getTemplateName();
 
-		 if( templateName == "craft_chemical_ingredients_n" || templateName == "craft_droid_ingredients_n"
+		 if ( templateName == "craft_chemical_ingredients_n" || templateName == "craft_droid_ingredients_n"
 		 || templateName == "craft_munition_ingredients_n" || templateName == "craft_structure_ingredients_n"
 		 || templateName == "craft_tissue_ingredients_n" || templateName == "craft_vehicle_ingredients_n"
 		 || templateName == "craft_weapon_ingredients_n") {
@@ -355,69 +355,69 @@ int DraftSchematicImplementation::getRequiredIngredientCount() {
 }
 
 void DraftSchematicImplementation::toString() {
-	cout << "Name: " << objName;
-	cout << "\nSchematicID: " << schematicID;
-	cout << "\nobjectID: " << objectID;
-	cout << "\nschematicCRC: " << schematicCRC;
-	cout << "\ngroupName: " << groupName;
-	cout << "\ncomplexity: " << complexity;
-	cout << "\nschematicSize: " << schematicSize;
-	cout << "\ncraftingToolTab: " << craftingToolTab;
+	System::out << "Name: " << objName;
+	System::out << "\nSchematicID: " << schematicID;
+	System::out << "\nobjectID: " << objectID;
+	System::out << "\nschematicCRC: " << schematicCRC;
+	System::out << "\ngroupName: " << groupName;
+	System::out << "\ncomplexity: " << complexity;
+	System::out << "\nschematicSize: " << schematicSize;
+	System::out << "\ncraftingToolTab: " << craftingToolTab;
 
-	cout << "\nxpType: " << xpType;
-	cout << "\nxp: " << xp;
-	cout << "\ntanoAttributes: " << tanoAttributes;
+	System::out << "\nxpType: " << xpType;
+	System::out << "\nxp: " << xp;
+	System::out << "\ntanoAttributes: " << tanoAttributes;
 
-	cout << "\nAssembly Skill: " << assemblySkill;
-	cout << "\nExperimenting Skill: " << experimentingSkill;
+	System::out << "\nAssembly Skill: " << assemblySkill;
+	System::out << "\nExperimenting Skill: " << experimentingSkill;
 
 	DraftSchematicIngredient* ingredient;
 	for (int i = 0;i < dsIngredients.size(); ++i) {
 		ingredient = dsIngredients.get(i);
 
-		cout << "\n*************************" << endl;
-		cout << "Ingredient " << i << endl;
-		cout << "Title: " << ingredient->getTitleName() << endl;
-		cout << "Resource Type: " << ingredient->getResourceType() << endl;
-		cout << "Template Name: " << ingredient->getTemplateName() << endl;
-		cout << "Quantity: " << ingredient->getResourceQuantity() << endl;
-		cout << "Slot Type: " << ingredient->getSlotType() << endl;
-		cout << "**************************" << endl;
+		System::out << "\n*************************" << endl;
+		System::out << "Ingredient " << i << endl;
+		System::out << "Title: " << ingredient->getTitleName() << endl;
+		System::out << "Resource Type: " << ingredient->getResourceType() << endl;
+		System::out << "Template Name: " << ingredient->getTemplateName() << endl;
+		System::out << "Quantity: " << ingredient->getResourceQuantity() << endl;
+		System::out << "Slot Type: " << ingredient->getSlotType() << endl;
+		System::out << "**************************" << endl;
 	}
 
 	DraftSchematicExpPropGroup* tempGroup;
 	for (int i = 0;i < dsExpPropGroups.size(); ++i) {
 		tempGroup = dsExpPropGroups.get(i);
 
-		cout << "\n*************************" << endl;
-		cout << "Exp Property " << i << endl;
-		cout << "Type and Weight: " << tempGroup->getTypeAndWeight(i) << endl;
-		cout << "Percentage: " << tempGroup->getExpPropPercentage(i) << endl;
-		cout << "**************************" << endl;
+		System::out << "\n*************************" << endl;
+		System::out << "Exp Property " << i << endl;
+		System::out << "Type and Weight: " << tempGroup->getTypeAndWeight(i) << endl;
+		System::out << "Percentage: " << tempGroup->getExpPropPercentage(i) << endl;
+		System::out << "**************************" << endl;
 	}
 
 	DraftSchematicAttribute* tempAttribute;
 	for (int i = 0;i < attributesToSet.size(); ++i) {
 		tempAttribute = attributesToSet.get(i);
 
-		cout << "\n*************************" << endl;
-		cout << "Attribute " << i << endl;
-		cout << "Name: " << tempAttribute->getAttributeName() << endl;
-		cout << "Property: " << tempAttribute->getAttributeExperimentalProperty() << endl;
-		cout << "Min: " << tempAttribute->getMinValue() << endl;
-		cout << "Max: " << tempAttribute->getMaxValue() << endl;
-		cout << "Range: " << tempAttribute->getRange() << endl;
-		cout << "**************************" << endl;
+		System::out << "\n*************************" << endl;
+		System::out << "Attribute " << i << endl;
+		System::out << "Name: " << tempAttribute->getAttributeName() << endl;
+		System::out << "Property: " << tempAttribute->getAttributeExperimentalProperty() << endl;
+		System::out << "Min: " << tempAttribute->getMinValue() << endl;
+		System::out << "Max: " << tempAttribute->getMaxValue() << endl;
+		System::out << "Range: " << tempAttribute->getRange() << endl;
+		System::out << "**************************" << endl;
 	}
 
 	float tempProperty;
 	for (int i = 0;i < experimentalProperties.size(); ++i) {
 		tempProperty = experimentalProperties.get(i);
 
-		cout << "*************************" << endl;
-		cout << "Prop " << i << endl;
-		cout << "Prop: " << tempProperty << endl;
-		cout << "**************************" << endl;
+		System::out << "*************************" << endl;
+		System::out << "Prop " << i << endl;
+		System::out << "Prop: " << tempProperty << endl;
+		System::out << "**************************" << endl;
 	}
 
 	craftingValues->toString();

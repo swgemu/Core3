@@ -113,7 +113,7 @@ public:
 		e->setQueued(true);
 
 		#ifdef TRACE_EVENTS
-			stringstream s;
+			StringBuffer s;
 			s << "added event " << e->getTimeStamp().getMiliTime() << "(" << e << ")";
 			info(s);
 		#endif
@@ -154,7 +154,7 @@ public:
 				break;
 	
 			#ifdef TRACE_EVENTS
-				stringstream s;
+				StringBuffer s;
 				s << "scheduling " << e->toString();
 				info(s);
 			#endif
@@ -162,13 +162,13 @@ public:
 			int res = timedWait(condMutex, &time);
 	
 			#ifdef TRACE_EVENTS
-				stringstream s2;
+				StringBuffer s2;
 				s2 << "timedwait finished with (" << res << ")";
 				info(s2);
 			#endif
 			
 			if (res != 0 && res != ETIMEDOUT) {
-				stringstream msg;
+				StringBuffer msg;
 	
 				if (res == 22)
 					msg << "invalid condition parameters";
@@ -195,19 +195,19 @@ public:
 		e->setQueued(false);
 	
 		if (!blocked && e->getTimeStamp().isFuture()) {
-			stringstream msg;
+			StringBuffer msg;
 			msg << "future event happenend " << -e->getTimeStamp().getMiliTime() << " (" 
 				<< e->getTimeStamp().miliDifference() << ")";
 			error(msg);
 		} /*if (!blocked && e->getTimeStamp().miliDifference() > 250) {
-			stringstream msg;
+			StringBuffer msg;
 			msg << "WARNING too high delay " << e->getTimeStamp().getMiliTime() << " (" 
 				<< e->getTimeStamp().miliDifference() << ")";
 			error(msg);
 		}*/
 			
 		#ifdef TRACE_EVENTS
-			stringstream s;
+			StringBuffer s;
 			s << "got event " << e->getTimeStamp().getMiliTime() << " [" << size() << "]";
 			info(s);
 		#endif
@@ -232,7 +232,7 @@ public:
 		e->setQueued(false);
 	
 		#ifdef TRACE_EVENTS
-			stringstream s;
+			StringBuffer s;
 			s << "removed event " << e->getTimeStamp().getMiliTime() << " [" << size() << "]";
 			info(s);
 		#endif

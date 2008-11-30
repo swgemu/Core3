@@ -72,10 +72,10 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 
 	itemAttributes = new ItemAttributes();
 
-	stringstream name;
+	StringBuffer name;
 	name << "Building = " << objectID;
 
-	SceneObjectImplementation::setLoggingName(name.str());
+	SceneObjectImplementation::setLoggingName(name.toString());
 	SceneObjectImplementation::setLogging(false);
 	SceneObjectImplementation::setGlobalLogging(true);
 }
@@ -100,7 +100,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
 
 	if (scno->isPlayer() || scno->isNonPlayerCreature()) {
-		for(int i = 0; i < cells.size(); ++i) {
+		for (int i = 0; i < cells.size(); ++i) {
 			CellObject* cell = cells.get(i);
 
 			for (int j = 0; j < cell->getChildrenSize(); ++j) {
@@ -121,7 +121,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
 
-	for(int i = 0; i < cells.size(); ++i) {
+	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
 		for (int j = 0; j < cell->getChildrenSize(); ++j) {
@@ -149,7 +149,7 @@ void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	//cout << "generating building objects" << endl;
+	//System::out << "generating building objects" << endl;
 	BaseMessage* buio3 = new BuildingObjectMessage3((BuildingObject*) _this);
 	player->sendMessage(buio3);
 
@@ -158,7 +158,7 @@ void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	sendCells(player, true);
 
-	//cout << "finished sending cells..." << endl;
+	//System::out << "finished sending cells..." << endl;
 	SceneObjectImplementation::close(client);
 
 	//sendCellUpdates(player);
@@ -173,13 +173,13 @@ void BuildingObjectImplementation::sendCells(Player* player, bool doClose = true
 	UpdateCellPermissionsMessage* perm;
 	CellObject * cell;
 
-	//cout << "sending cells, size: " << cells.size() << endl;
+	//System::out << "sending cells, size: " << cells.size() << endl;
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
 	for (int i = 1; i <= cells.size(); ++i) {
-		//cout << "sending cell cell: " << i << endl;
+		//System::out << "sending cell cell: " << i << endl;
 		cell = cells.get(i-1);
 
 		BaseMessage* msg = new SceneObjectCreateMessage(cell);
@@ -207,13 +207,13 @@ void BuildingObjectImplementation::sendCellUpdates(Player* player) {
 	CellObjectDeltaMessage3* cdelta3;
 	CellObject *cell;
 
-	//cout << "sending cells, size: " << cells.size() << endl;
+	//System::out << "sending cells, size: " << cells.size() << endl;
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
 		return;
 
 	for (int i = 1; i <= cells.size(); ++i) {
-		//cout << "sending cell cell: " << i << endl;
+		//System::out << "sending cell cell: " << i << endl;
 		cell = cells.get(i-1);
 
 		CellObjectDeltaMessage3* msg = new CellObjectDeltaMessage3(cell);

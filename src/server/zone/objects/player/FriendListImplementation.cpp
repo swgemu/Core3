@@ -68,35 +68,36 @@ FriendsListImplementation::FriendsListImplementation(Player* pl): FriendsListSer
 	friendsMagicNumber = 0;
 }
 
-void FriendsListImplementation::addFriend(string& name, string& server) {
+void FriendsListImplementation::addFriend(String& name, String& server) {
 	PlayerObject* playerObject = player->getPlayerObject();
 	int magicnumber = friendsMagicNumber;
-	String::toLower(name);
+
+	name = name.toLowerCase();
 
 	for (int i = 0; i < friendName.size(); ++i) {
 		if (friendName.get(i) == name){
-			stringstream friendString;
+			StringBuffer friendString;
 			friendString << name << " is already your friend.";
 
-			unicode message = unicode(friendString.str());
+			UnicodeString message = UnicodeString(friendString.toString());
 			player->sendSystemMessage(message);
 			return;
 		}
 	}
 
 	try {
-		stringstream query;
-		string mysqlName = name;
+		StringBuffer query;
+		String mysqlName = name;
 		MySqlDatabase::escapeString(mysqlName);
 
 		query << "SELECT * from `characters` where lower(`firstname`) = '" << mysqlName << "';";
 		ResultSet* friends = ServerDatabase::instance()->executeQuery(query);
 
 		if (!friends->next()) {
-			stringstream friendString;
+			StringBuffer friendString;
 			friendString << name << " is not a valid friend name.";
 
-			unicode message = unicode(friendString.str());
+			UnicodeString message = UnicodeString(friendString.toString());
 			player->sendSystemMessage(message);
 
 			delete friends;
@@ -105,10 +106,10 @@ void FriendsListImplementation::addFriend(string& name, string& server) {
 
 		delete friends;
 	} catch (DatabaseException& e) {
-		cout << "exception at Friendlist::addFriend()\n" << e.getMessage();
+		System::out << "exception at Friendlist::addFriend()\n" << e.getMessage();
 		return;
 	} catch (...) {
-		cout << "unreported exception at Friendlist::addFriend()\n";
+		System::out << "unreported exception at Friendlist::addFriend()\n";
 		return;
 	}
 
@@ -135,9 +136,9 @@ void FriendsListImplementation::addFriend(string& name, string& server) {
 		}
 	}
 
-	stringstream friendString;
+	StringBuffer friendString;
 	friendString << name << " is now your friend.";
-	unicode message = unicode(friendString.str());
+	UnicodeString message = UnicodeString(friendString.toString());
 	player->sendSystemMessage(message);
 
 	FriendsListMessage* list = new FriendsListMessage(player);
@@ -149,16 +150,17 @@ void FriendsListImplementation::addFriend(string& name, string& server) {
 	player->sendMessage(dplay9);
 }
 
-void FriendsListImplementation::removeFriend(string& name) {
+void FriendsListImplementation::removeFriend(String& name) {
 	int i = 0;
 	int magicnumber = friendsMagicNumber;
-	String::toLower(name);
+
+	name = name.toLowerCase();
 
 	PlayerObject* playerObject = player->getPlayerObject();
 
 	for (int i = 0; i < friendName.size(); ++i) {
 		if (friendName.get(i) == name) {
-			string inServer = friendServer.get(i);
+			String inServer = friendServer.get(i);
 
 			friendName.remove(i);
 			friendServer.remove(i);
@@ -170,9 +172,9 @@ void FriendsListImplementation::removeFriend(string& name) {
 			AddFriendMessage* remove = new AddFriendMessage(player->getObjectID(),name, inServer, false);
 			player->sendMessage(remove);
 
-			stringstream friendString;
+			StringBuffer friendString;
 			friendString << name << " is no longer your friend.";
-			unicode message = unicode(friendString.str());
+			UnicodeString message = UnicodeString(friendString.toString());
 			player->sendSystemMessage(message);
 
 			FriendsListMessage* list = new FriendsListMessage(player);
@@ -188,8 +190,8 @@ void FriendsListImplementation::removeFriend(string& name) {
 	}
 }
 
-void FriendsListImplementation::findFriend(string& name, PlayerManager* playerManager) {
-	String::toLower(name);
+void FriendsListImplementation::findFriend(String& name, PlayerManager* playerManager) {
+	name = name.toLowerCase();
 
 	Player* targetPlayer;
 	PlayerObject* targetObject;
@@ -206,23 +208,22 @@ void FriendsListImplementation::findFriend(string& name, PlayerManager* playerMa
 		return;
 	}
 
-	string myName = player->getFirstName();
+	String myName = player->getFirstName();
 	int i = 0;
 
 	//Set wp->internalNote and check if we have a FindFriend-Wapoint for this buddy already
-	stringstream friendString;
-	friendString.str("");
-
+	StringBuffer friendString;
 	friendString << "FINDFRIEND:" << name;
 
-	WaypointObject* returnWP = player->searchWaypoint(player,friendString.str(),1);
+	WaypointObject* returnWP = player->searchWaypoint(player, friendString.toString(), 1);
 
-	for (int i = 0; i < targetObject->getFriendsList()->getCount(); ++i) {
-		if (targetObject->getFriendsList()->getFriendsName(i) == myName) {
+	FriendsList* friendsList = targetObject->getFriendsList();
+	for (int i = 0; i < friendsList->getCount(); ++i) {
+		if (friendsList->getFriendsName(i) == myName) {
 			float x = targetPlayer->getPositionX();
 			float y = targetPlayer->getPositionY();;
 
-			string targetPlanet = Planet::getPlanetName(targetPlayer->getZoneID());
+			String targetPlanet = Planet::getPlanetName(targetPlayer->getZoneID());
 
 			//If the friend is in a cell, we need world cords from the parent or even parent-parent object
 			SceneObject* plPar = targetPlayer->getParent();
@@ -244,27 +245,32 @@ void FriendsListImplementation::findFriend(string& name, PlayerManager* playerMa
 				returnWP->changeStatus(true);
 				player->updateWaypoint(returnWP);
 
-				stringstream friendString;
+				StringBuffer friendString;
 				friendString << "The friend waypoint has been updated to the location of " << name << ".";
-				unicode message = unicode(friendString.str());
+
+				UnicodeString message = UnicodeString(friendString.toString());
 				player->sendSystemMessage(message);
+
 				break;
 			} else {
 				WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
-				friendString.str("");
+
+				StringBuffer friendString;
 				friendString << "FINDFRIEND:" << name;
 
-				wp->setInternalNote(friendString.str());
+				wp->setInternalNote(friendString.toString());
 				wp->setName(name);
 				wp->setPlanetName(targetPlanet);
 				wp->setPosition(x, 0.0f, y);
 				wp->changeStatus(true);
 				player->addWaypoint(wp);
 
-				stringstream friendString;
+				friendString.deleteAll();
 				friendString << "A friend waypoint has been created for the location of " << name << ".";
-				unicode message = unicode(friendString.str());
+
+				UnicodeString message = UnicodeString(friendString.toString());
 				player->sendSystemMessage(message);
+
 				break;
 			}
 		}
@@ -272,11 +278,11 @@ void FriendsListImplementation::findFriend(string& name, PlayerManager* playerMa
 }
 
 void FriendsListImplementation::toString() {
-	cout << "Friend List for " << player->getFirstName() << endl;
-	cout << "Number of friends = " << friendName.size() << endl;
+	System::out << "Friend List for " << player->getFirstName() << endl;
+	System::out << "Number of friends = " << friendName.size() << endl;
 
 	for (int i = 0; i < friendName.size(); ++i) {
-		cout << friendName.get(i) << " on " << friendServer.get(i) << ". Current magicnumber is " << friendsMagicNumber << endl;
+		System::out << friendName.get(i) << " on " << friendServer.get(i) << ". Current magicnumber is " << friendsMagicNumber << endl;
 	}
 }
 
@@ -290,20 +296,18 @@ void FriendsListImplementation::loadFriends() {
 	friendServer.removeAll();
 
 	try {
-		stringstream loadQuery;
-
-		loadQuery.str("");
+		StringBuffer loadQuery;
 		loadQuery << "SELECT friendlist.character_id,friendlist.friend_id,friendlist.friend_galaxy,	characters.firstname "
-		<< "FROM friendlist Inner Join characters ON friendlist.friend_id = characters.character_id "
-		<< "WHERE friendlist.character_id = " << player->getCharacterID() << ";";
+				  << "FROM friendlist Inner Join characters ON friendlist.friend_id = characters.character_id "
+				  << "WHERE friendlist.character_id = " << player->getCharacterID() << ";";
+
 		ResultSet* friends = ServerDatabase::instance()->executeQuery(loadQuery);
 
 		while (friends->next()) {
 			magicnumber = friendsMagicNumber;
 
-			string server = friends->getString(2);
-			string name = friends->getString(3);
-			String::toLower(name);
+			String server = friends->getString(2);
+			String name = String(friends->getString(3)).toLowerCase();
 
 			friendName.add(name);
 			friendServer.add(friends->getString(2));
@@ -321,8 +325,8 @@ void FriendsListImplementation::loadFriends() {
 
 			Player* playerToAdd = player->getZone()->getZoneServer()->getPlayerManager()->getPlayer(name);
 
-			if(playerToAdd != NULL){
-				if(playerToAdd->isOnline()){
+			if (playerToAdd != NULL){
+				if (playerToAdd->isOnline()){
 					FriendStatusChangeMessage* notifyStatus =
 						new FriendStatusChangeMessage(name, server, true);
 					player->sendMessage(notifyStatus);
@@ -341,10 +345,10 @@ void FriendsListImplementation::loadFriends() {
 
 		delete friends;
 	} catch (DatabaseException& e) {
-		cout << "FriendlistImplementation void loadFriends -> Select DB Query exception! \n";
-		cout << e.getMessage() << endl;
+		System::out << "FriendlistImplementation void loadFriends -> Select DB Query exception! \n";
+		System::out << e.getMessage() << endl;
 	} catch (...) {
-		cout << "unreported exception caught in FriendsListImplementation::loadFriends()\n";
+		System::out << "unreported exception caught in FriendsListImplementation::loadFriends()\n";
 	}
 }
 
@@ -355,65 +359,66 @@ void FriendsListImplementation::updateAllFriends(PlayerObject* playerObject) {
 		return;
 
 	for (int i = 0; i < playerObject->getFriendsList()->getCount(); ++i) {
-		string name = playerObject->getFriendsList()->getFriendsName(i);
-		string server = playerObject->getFriendsList()->getFriendsServer(i);
+		String name = playerObject->getFriendsList()->getFriendsName(i);
+		String server = playerObject->getFriendsList()->getFriendsServer(i);
 
 		FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, server, false);
 		player->sendMessage(notifyStatus);
 	}
 
-	stringstream friendString;
-	friendString 	<< "The following friendlist status messages are caused by the client reloading without a complete shutdown. "
-	<< "These messages do not reflect the real activities of your buddies in this case.\n";
-	unicode message = unicode(friendString.str());
+	StringBuffer friendString;
+	friendString << "The following friendlist status messages are caused by the client reloading without a complete shutdown. "
+				 << "These messages do not reflect the real activities of your buddies in this case.\n";
+
+	UnicodeString message = UnicodeString(friendString.toString());
 	player->sendSystemMessage(message);
 }
 
 void FriendsListImplementation::saveFriends() {
 	int i = 0 ;
-	string lcaseName;
-	stringstream deleteQuery;
+
+	String lcaseName;
 
 	try {
-		deleteQuery.str("");
+		StringBuffer deleteQuery;
 		deleteQuery << "DELETE FROM friendlist WHERE character_id = " << player->getCharacterID();
+
 		ServerDatabase::instance()->executeStatement(deleteQuery);
 	} catch (DatabaseException& e) {
-		cout << "FriendlistImplementation void saveFriends -> Delete from friendlist Query exception! \n";
-		cout << e.getMessage() << endl;
-	} catch (...) {
-		cout << "unreported exception caught in FriendsListImplementation::saveFriends()\n";
-	}
+		System::out << "FriendlistImplementation void saveFriends -> Delete from friendlist Query exception! \n";
 
+		System::out << e.getMessage() << endl;
+	} catch (...) {
+		System::out << "unreported exception caught in FriendsListImplementation::saveFriends()\n";
+	}
 
 	for (int i = 0; i < friendName.size(); ++i){
 		try {
-			stringstream query;
-			string lcaseName = friendName.get(i);
-			String::toLower(lcaseName);
+			String lcaseName = friendName.get(i).toLowerCase();
 
-			query.str("");
+			StringBuffer query;
 			query << "SELECT * FROM characters WHERE lower(firstname) = \"" + lcaseName + "\"";
+
 			ResultSet* friends = ServerDatabase::instance()->executeQuery(query);
 
 			if (friends->next()) {
-				stringstream saveQuery;
-				saveQuery.str("");
+				StringBuffer saveQuery;
 				saveQuery << "INSERT INTO `friendlist` "
-				<< "(`character_id`,`friend_id`,`friend_galaxy`)"
-				<< " VALUES ('"
-				<< player->getCharacterID() << "','" << friends->getUnsignedInt(0) << "','"
-				<< friends->getUnsignedInt(2) << "');";
+						  << "(`character_id`,`friend_id`,`friend_galaxy`)"
+						  << " VALUES ('"
+						  << player->getCharacterID() << "','" << friends->getUnsignedInt(0) << "','"
+						  << friends->getUnsignedInt(2) << "');";
 
 				ServerDatabase::instance()->executeStatement(saveQuery);
 			}
 
 			delete friends;
 		} catch (DatabaseException& e) {
-			cout << "FriendlistImplementation void saveFriends -> Insert DB Query exception! \n";
-			cout << e.getMessage() << endl;
+			System::out << "FriendlistImplementation void saveFriends -> Insert DB Query exception! \n";
+
+			System::out << e.getMessage() << endl;
 		} catch (...) {
-			cout << "unreported exception caught in FriendlistImplementation::saveFriends()\n";
+			System::out << "unreported exception caught in FriendlistImplementation::saveFriends()\n";
 		}
 	}
 }

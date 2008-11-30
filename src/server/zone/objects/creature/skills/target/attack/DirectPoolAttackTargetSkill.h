@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class DirectPoolAttackTargetSkill : public AttackTargetSkill {
 public:
-	DirectPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, serv) {
+	DirectPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, serv) {
 		healthPoolAttackChance = 0;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
@@ -63,13 +63,13 @@ public:
 		willpowerPoolAttackChance = 0;
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
 
 		/*if (doAnimation) {
 			if (animCRC == 0 && creature->isPlayer()) {
 				Player* player = (Player*) creature;
-				string anim = Animations::getRandomAnimation();
+				String anim = Animations::getRandomAnimation();
 				uint32 animationCRC = String::hashCode(anim);
 				player->doCombatAnimation(targetCreature, animationCRC, 1);
 				creature->sendSystemMessage(anim);

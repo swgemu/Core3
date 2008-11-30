@@ -20,12 +20,12 @@
  *	EnhancePackStub
  */
 
-EnhancePack::EnhancePack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+EnhancePack::EnhancePack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new EnhancePackImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-EnhancePack::EnhancePack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+EnhancePack::EnhancePack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new EnhancePackImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -265,11 +265,11 @@ DistributedObjectAdapter* EnhancePackHelper::createAdapter(DistributedObjectStub
  *	EnhancePackServant
  */
 
-EnhancePackServant::EnhancePackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
+EnhancePackServant::EnhancePackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
 	_classHelper = EnhancePackHelper::instance();
 }
 
-EnhancePackServant::EnhancePackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
+EnhancePackServant::EnhancePackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
 	_classHelper = EnhancePackHelper::instance();
 }
 

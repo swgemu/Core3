@@ -51,19 +51,19 @@ which carries forward this exception.
 
 class ChatPersistentMessageToClient : public BaseMessage {
 public:
-	ChatPersistentMessageToClient(const string& sender, uint32 mailid, uint8 type, unicode& subject
-			, unicode& body, uint32 timestamp = 0, char status = 'N') : BaseMessage() {
+	ChatPersistentMessageToClient(const String& sender, uint32 mailid, uint8 type, UnicodeString& subject
+			, UnicodeString& body, uint32 timestamp = 0, char status = 'N') : BaseMessage() {
 		insertShort(0x02);
 		insertInt(0x08485E17);  // CRC
 
-		insertAscii(sender.c_str());
+		insertAscii(sender.toCharArray());
 		insertAscii("SWG");
 		insertAscii(""); //galaxy
 		insertInt(mailid);
 
 		insertByte(type);
 		
-		if(type == 0x00)
+		if (type == 0x00)
 			insertUnicode(body);
 		else
 			insertInt(0);

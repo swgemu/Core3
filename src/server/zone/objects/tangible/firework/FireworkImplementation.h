@@ -55,7 +55,7 @@ protected:
 	int animationType;
 	
 public:
-	FireworkImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, int anim) 
+	FireworkImplementation(Player* player, uint32 tempCRC, const UnicodeString& n, const String& tempn, int anim) 
 			: FireworkServant(player->getNewItemID(), FIREWORK) {
 		
 		objectCRC = tempCRC;

@@ -71,7 +71,7 @@ void StructureManager::saveStructures(bool refresh) {
 		((StructureManagerImplementation*) _impl)->saveStructures(refresh);
 }
 
-BuildingObject* StructureManager::findBuildingType(const string& word, float targetX, float targetY) {
+BuildingObject* StructureManager::findBuildingType(const String& word, float targetX, float targetY) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -196,7 +196,7 @@ void StructureManager::spawnBuilding(Player* player, DeedObject* deed, float x, 
 		((StructureManagerImplementation*) _impl)->spawnBuilding(player, deed, x, z, y, oX, oZ, oY, oW);
 }
 
-void StructureManager::error(const string& message) {
+void StructureManager::error(const String& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -209,7 +209,7 @@ void StructureManager::error(const string& message) {
 		((StructureManagerImplementation*) _impl)->error(message);
 }
 
-void StructureManager::info(const string& message) {
+void StructureManager::info(const String& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -243,7 +243,7 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		saveStructures(inv->getBooleanParameter());
 		break;
 	case 9:
-		resp->insertLong(findBuildingType(inv->getAsciiParameter(_param0_findBuildingType__string_float_float_), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		resp->insertLong(findBuildingType(inv->getAsciiParameter(_param0_findBuildingType__String_float_float_), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
 		break;
 	case 10:
 		resp->insertLong(getCell(inv->getUnsignedLongParameter())->_getObjectID());
@@ -264,10 +264,10 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		spawnBuilding((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 16:
-		error(inv->getAsciiParameter(_param0_error__string_));
+		error(inv->getAsciiParameter(_param0_error__String_));
 		break;
 	case 17:
-		info(inv->getAsciiParameter(_param0_info__string_));
+		info(inv->getAsciiParameter(_param0_info__String_));
 		break;
 	default:
 		return NULL;
@@ -288,7 +288,7 @@ void StructureManagerAdapter::saveStructures(bool refresh) {
 	return ((StructureManagerImplementation*) impl)->saveStructures(refresh);
 }
 
-BuildingObject* StructureManagerAdapter::findBuildingType(const string& word, float targetX, float targetY) {
+BuildingObject* StructureManagerAdapter::findBuildingType(const String& word, float targetX, float targetY) {
 	return ((StructureManagerImplementation*) impl)->findBuildingType(word, targetX, targetY);
 }
 
@@ -316,11 +316,11 @@ void StructureManagerAdapter::spawnBuilding(Player* player, DeedObject* deed, fl
 	return ((StructureManagerImplementation*) impl)->spawnBuilding(player, deed, x, z, y, oX, oZ, oY, oW);
 }
 
-void StructureManagerAdapter::error(const string& message) {
+void StructureManagerAdapter::error(const String& message) {
 	return ((StructureManagerImplementation*) impl)->error(message);
 }
 
-void StructureManagerAdapter::info(const string& message) {
+void StructureManagerAdapter::info(const String& message) {
 	return ((StructureManagerImplementation*) impl)->info(message);
 }
 

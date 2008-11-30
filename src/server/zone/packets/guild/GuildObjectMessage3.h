@@ -53,7 +53,7 @@ public:
 			: BaseLineMessage(goId, 0x47494C44, 3, 0x05) {
 		insertFloat(1);
 
-		insertAscii("string_id_table");
+		insertAscii("String_id_table");
 		insertLong(0);
 		insertInt(0);
 		insertShort(0);
@@ -72,14 +72,14 @@ public:
 		insertInt(off + 4, lstSz);
 	}
 	
-	void addListMember(int guildId, string name) {
+	void addListMember(int guildId, String name) {
 		char idStr[32];
 		sprintf(idStr, "%d", guildId);
 		
-		stringstream guildStr;
+		StringBuffer guildStr;
 		guildStr << idStr << ":" << name;
 
-		insertAscii(guildStr.str());
+		insertAscii(guildStr.toString());
 	}
 	
 	void finishGild() { //i think setSize isn't public so we need to call this after building the packet

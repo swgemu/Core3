@@ -33,40 +33,40 @@ public:
 
 	void clearResources();
 
-	bool checkResource(Player* player, string& resourcename, int SurveyToolType);
+	bool checkResource(Player* player, String& resourcename, int SurveyToolType);
 
-	void sendSurveyMessage(Player* player, string& resourcename);
+	void sendSurveyMessage(Player* player, String& resourcename);
 
-	void sendSampleMessage(Player* player, string& resourcename);
+	void sendSampleMessage(Player* player, String& resourcename);
 
 	void setResourceData(ResourceContainer* resContainer, bool lock = false);
 
 	bool sendSurveyResources(Player* player, int SurveyToolType);
 
-	void getClassSeven(const string& str, string& clas);
+	void getClassSeven(const String& str, String& clas);
 
-	void getResourceContainerName(const string& str, string& name);
+	void getResourceContainerName(const String& str, String& name);
 
-	void printResource(string& resname);
+	void printResource(String& resname);
 
 	void harvestOrganics(Player* player, Creature* creature, int type);
 
 	ResourceList* getResourceListAtLocation(int zone, float x, float y, int type);
 
-	string& getResourceNameByID(unsigned long long rID);
+	String& getResourceNameByID(unsigned long long rID);
 
 	void generateSUI(Player* player, SuiListBox* sui);
 
-	bool useResourceDeed(Player* player, string& resourceName, int resourceQuantity);
+	bool useResourceDeed(Player* player, String& resourceName, int resourceQuantity);
 
-	bool containsResource(string& resourceName);
+	bool containsResource(String& resourceName);
 
 protected:
 	ResourceManager(DummyConstructorParameter* param);
 
 	virtual ~ResourceManager();
 
-	string _return_getResourceNameByID;
+	String _return_getResourceNameByID;
 
 	friend class ResourceManagerHelper;
 };
@@ -85,45 +85,45 @@ public:
 
 	void clearResources();
 
-	bool checkResource(Player* player, string& resourcename, int SurveyToolType);
+	bool checkResource(Player* player, String& resourcename, int SurveyToolType);
 
-	void sendSurveyMessage(Player* player, string& resourcename);
+	void sendSurveyMessage(Player* player, String& resourcename);
 
-	void sendSampleMessage(Player* player, string& resourcename);
+	void sendSampleMessage(Player* player, String& resourcename);
 
 	void setResourceData(ResourceContainer* resContainer, bool lock);
 
 	bool sendSurveyResources(Player* player, int SurveyToolType);
 
-	void getClassSeven(const string& str, string& clas);
+	void getClassSeven(const String& str, String& clas);
 
-	void getResourceContainerName(const string& str, string& name);
+	void getResourceContainerName(const String& str, String& name);
 
-	void printResource(string& resname);
+	void printResource(String& resname);
 
 	void harvestOrganics(Player* player, Creature* creature, int type);
 
 	ResourceList* getResourceListAtLocation(int zone, float x, float y, int type);
 
-	string& getResourceNameByID(unsigned long long rID);
+	String& getResourceNameByID(unsigned long long rID);
 
 	void generateSUI(Player* player, SuiListBox* sui);
 
-	bool useResourceDeed(Player* player, string& resourceName, int resourceQuantity);
+	bool useResourceDeed(Player* player, String& resourceName, int resourceQuantity);
 
-	bool containsResource(string& resourceName);
+	bool containsResource(String& resourceName);
 
 protected:
-	string _param1_checkResource__Player_string_int_;
-	string _param1_sendSurveyMessage__Player_string_;
-	string _param1_sendSampleMessage__Player_string_;
-	string _param0_getClassSeven__string_string_;
-	string _param1_getClassSeven__string_string_;
-	string _param0_getResourceContainerName__string_string_;
-	string _param1_getResourceContainerName__string_string_;
-	string _param0_printResource__string_;
-	string _param1_useResourceDeed__Player_string_int_;
-	string _param0_containsResource__string_;
+	String _param1_checkResource__Player_String_int_;
+	String _param1_sendSurveyMessage__Player_String_;
+	String _param1_sendSampleMessage__Player_String_;
+	String _param0_getClassSeven__String_String_;
+	String _param1_getClassSeven__String_String_;
+	String _param0_getResourceContainerName__String_String_;
+	String _param1_getResourceContainerName__String_String_;
+	String _param0_printResource__String_;
+	String _param1_useResourceDeed__Player_String_int_;
+	String _param0_containsResource__String_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

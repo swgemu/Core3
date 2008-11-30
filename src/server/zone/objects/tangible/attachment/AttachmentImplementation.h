@@ -89,37 +89,37 @@ public:
 
 	inline void setSkillMod0Type(int skillModType) {
 		skillMod0Type = skillModType;
-		string name = "skillMod0Type";
+		String name = "skillMod0Type";
 		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
 	inline void setSkillMod1Type(int skillModType) {
 		skillMod1Type = skillModType;
-		string name = "skillMod1Type";
+		String name = "skillMod1Type";
 		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
 	inline void setSkillMod2Type(int skillModType) {
 		skillMod2Type = skillModType;
-		string name = "skillMod2Type";
+		String name = "skillMod2Type";
 		itemAttributes->setIntAttribute(name, skillModType);
 	}
 	
 	inline void setSkillMod0Value(int skillModValue) {
 		skillMod0Value = skillModValue;
-		string name = "skillMod0Value";
+		String name = "skillMod0Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 
 	inline void setSkillMod1Value(int skillModValue) {
 		skillMod1Value = skillModValue;
-		string name = "skillMod1Value";
+		String name = "skillMod1Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 	
 	inline void setSkillMod2Value(int skillModValue) {
 		skillMod2Value = skillModValue;
-		string name = "skillMod2Value";
+		String name = "skillMod2Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 	

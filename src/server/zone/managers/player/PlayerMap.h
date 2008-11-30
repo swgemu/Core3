@@ -13,11 +13,11 @@ class PlayerMap : public DistributedObjectStub {
 public:
 	PlayerMap(int initsize);
 
-	Player* put(string& name, Player* player, bool doLock = true);
+	Player* put(String& name, Player* player, bool doLock = true);
 
-	Player* get(string& name, bool doLock = true);
+	Player* get(String& name, bool doLock = true);
 
-	Player* remove(string& name, bool doLock = true);
+	Player* remove(String& name, bool doLock = true);
 
 	int size(bool doLock = true);
 
@@ -49,11 +49,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	Player* put(string& name, Player* player, bool doLock);
+	Player* put(String& name, Player* player, bool doLock);
 
-	Player* get(string& name, bool doLock);
+	Player* get(String& name, bool doLock);
 
-	Player* remove(string& name, bool doLock);
+	Player* remove(String& name, bool doLock);
 
 	int size(bool doLock);
 
@@ -70,9 +70,9 @@ public:
 	void unlock(bool doLock);
 
 protected:
-	string _param0_put__string_Player_bool_;
-	string _param0_get__string_bool_;
-	string _param0_remove__string_bool_;
+	String _param0_put__String_Player_bool_;
+	String _param0_get__String_bool_;
+	String _param0_remove__String_bool_;
 };
 
 class PlayerMapHelper : public DistributedObjectClassHelper, public Singleton<PlayerMapHelper> {

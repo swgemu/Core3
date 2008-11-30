@@ -50,10 +50,10 @@ which carries forward this exception.
 class MeditateSelfSkill : public SelfSkill {
 
 public:
-	MeditateSelfSkill(const string& name, const string& effect, ZoneProcessServerImplementation* serv) : SelfSkill(name, effect.c_str(), MEDITATE, serv) {
+	MeditateSelfSkill(const String& name, const String& effect, ZoneProcessServerImplementation* serv) : SelfSkill(name, effect.toCharArray(), MEDITATE, serv) {
 	}
 	
-	void doSkill(CreatureObject* creature, string& modifier) {
+	void doSkill(CreatureObject* creature, String& modifier) {
 		creature->setMeditateState();
 	}
 	

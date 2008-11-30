@@ -50,12 +50,12 @@ which carries forward this exception.
 class SpecialHeavyRangedWeaponImplementation : public SpecialHeavyRangedWeaponServant {
 	
 public:
-	SpecialHeavyRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
+	SpecialHeavyRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: SpecialHeavyRangedWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::SPECIALHEAVYWEAPON, eqp) {
 		initialize();
 	}
 
-	SpecialHeavyRangedWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
+	SpecialHeavyRangedWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: SpecialHeavyRangedWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::SPECIALHEAVYWEAPON, eqp) {
 		initialize();
 	}

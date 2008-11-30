@@ -59,7 +59,7 @@ public:
 	}
 
 	void updateCharacterAppearance() {
-		string appearance;
+		String appearance;
 		creo->getCharacterAppearance(appearance);
 		addAsciiUpdate(4, appearance);
 	}

@@ -100,7 +100,7 @@ DistributedObjectAdapter* TravelTerminalHelper::createAdapter(DistributedObjectS
  *	TravelTerminalServant
  */
 
-TravelTerminalServant::TravelTerminalServant(unsigned int objCRC, unsigned long long objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
+TravelTerminalServant::TravelTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) : TerminalImplementation(objCRC, objid, n, tempn, x, z, y, TerminalType) {
 	_classHelper = TravelTerminalHelper::instance();
 }
 

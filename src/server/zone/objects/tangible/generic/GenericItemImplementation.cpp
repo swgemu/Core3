@@ -48,7 +48,7 @@ which carries forward this exception.
 
 #include "../../../objects.h"
 
-GenericItemImplementation::GenericItemImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int gitype)
+GenericItemImplementation::GenericItemImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int gitype)
 		: GenericItemServant(oid, GENERICITEM) {
 
 	objectCRC = tempCRC;
@@ -59,7 +59,7 @@ GenericItemImplementation::GenericItemImplementation(uint64 oid, uint32 tempCRC,
 	setGenericItemType(gitype);
 }
 
-GenericItemImplementation::GenericItemImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int gitype)
+GenericItemImplementation::GenericItemImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int gitype)
 		: GenericItemServant(oid, GENERICITEM) {
 
 	objectCRC = tempCRC;
@@ -73,7 +73,7 @@ GenericItemImplementation::GenericItemImplementation(CreatureObject* creature, u
 }
 
 
-GenericItemImplementation::GenericItemImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, int gitype)
+GenericItemImplementation::GenericItemImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, int gitype)
 		: GenericItemServant(creature->getNewItemID(), GENERICITEM) {
 
 	objectCRC = tempCRC;
@@ -108,11 +108,11 @@ void GenericItemImplementation::generateAttributes(SceneObject* obj) {
 void GenericItemImplementation::addAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("volume", "1");
 
-	if(craftersName != ""){
+	if (craftersName != ""){
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	if(craftedSerial != ""){
+	if (craftedSerial != ""){
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
 }

@@ -23,11 +23,11 @@ public:
 
 	BaseMessage* getMessage();
 
-	void addOption(const string& itemText, const string& lblType, const string& itemType);
+	void addOption(const String& itemText, const String& lblType, const String& itemType);
 
-	void addFrom(const string& from, const string& startingFrom, const string& inputFrom, const string& rFrom);
+	void addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom);
 
-	void addTo(const string& to, const string& startingTo, const string& inputTo, const string& rTo);
+	void addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo);
 
 protected:
 	SuiTransferBox(DummyConstructorParameter* param);
@@ -49,24 +49,24 @@ public:
 
 	BaseMessage* getMessage();
 
-	void addOption(const string& itemText, const string& lblType, const string& itemType);
+	void addOption(const String& itemText, const String& lblType, const String& itemType);
 
-	void addFrom(const string& from, const string& startingFrom, const string& inputFrom, const string& rFrom);
+	void addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom);
 
-	void addTo(const string& to, const string& startingTo, const string& inputTo, const string& rTo);
+	void addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo);
 
 protected:
-	string _param0_addOption__string_string_string_;
-	string _param1_addOption__string_string_string_;
-	string _param2_addOption__string_string_string_;
-	string _param0_addFrom__string_string_string_string_;
-	string _param1_addFrom__string_string_string_string_;
-	string _param2_addFrom__string_string_string_string_;
-	string _param3_addFrom__string_string_string_string_;
-	string _param0_addTo__string_string_string_string_;
-	string _param1_addTo__string_string_string_string_;
-	string _param2_addTo__string_string_string_string_;
-	string _param3_addTo__string_string_string_string_;
+	String _param0_addOption__String_String_String_;
+	String _param1_addOption__String_String_String_;
+	String _param2_addOption__String_String_String_;
+	String _param0_addFrom__String_String_String_String_;
+	String _param1_addFrom__String_String_String_String_;
+	String _param2_addFrom__String_String_String_String_;
+	String _param3_addFrom__String_String_String_String_;
+	String _param0_addTo__String_String_String_String_;
+	String _param1_addTo__String_String_String_String_;
+	String _param2_addTo__String_String_String_String_;
+	String _param3_addTo__String_String_String_String_;
 };
 
 class SuiTransferBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiTransferBoxHelper> {

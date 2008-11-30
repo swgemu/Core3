@@ -60,7 +60,7 @@ bool PlayerManager::create(Player* player, unsigned int sessionkey) {
 		return ((PlayerManagerImplementation*) _impl)->create(player, sessionkey);
 }
 
-bool PlayerManager::validateName(string& name) {
+bool PlayerManager::validateName(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -73,7 +73,7 @@ bool PlayerManager::validateName(string& name) {
 		return ((PlayerManagerImplementation*) _impl)->validateName(name);
 }
 
-BaseMessage* PlayerManager::checkPlayerName(const string& name, const string& species) {
+BaseMessage* PlayerManager::checkPlayerName(const String& name, const String& species) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -267,7 +267,7 @@ void PlayerManager::doCashTip(Player* sender, Player* receiver, int tipAmount, b
 		((PlayerManagerImplementation*) _impl)->doCashTip(sender, receiver, tipAmount, updateTipTo);
 }
 
-bool PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int creditAmount) {
+bool PlayerManager::modifyOfflineBank(Player* sender, String& receiverName, int creditAmount) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -282,7 +282,7 @@ bool PlayerManager::modifyOfflineBank(Player* sender, string& receiverName, int 
 		return ((PlayerManagerImplementation*) _impl)->modifyOfflineBank(sender, receiverName, creditAmount);
 }
 
-bool PlayerManager::modifyRecipientOfflineBank(string& recipient, int creditAmount) {
+bool PlayerManager::modifyRecipientOfflineBank(String& recipient, int creditAmount) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -401,7 +401,7 @@ Player* PlayerManager::putPlayer(Player* player) {
 		return ((PlayerManagerImplementation*) _impl)->putPlayer(player);
 }
 
-Player* PlayerManager::getPlayer(string& name) {
+Player* PlayerManager::getPlayer(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -456,10 +456,10 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(create((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
 		break;
 	case 8:
-		resp->insertBoolean(validateName(inv->getAsciiParameter(_param0_validateName__string_)));
+		resp->insertBoolean(validateName(inv->getAsciiParameter(_param0_validateName__String_)));
 		break;
 	case 9:
-		resp->insertLong(checkPlayerName(inv->getAsciiParameter(_param0_checkPlayerName__string_string_), inv->getAsciiParameter(_param1_checkPlayerName__string_string_))->_getObjectID());
+		resp->insertLong(checkPlayerName(inv->getAsciiParameter(_param0_checkPlayerName__String_String_), inv->getAsciiParameter(_param1_checkPlayerName__String_String_))->_getObjectID());
 		break;
 	case 10:
 		resp->insertLong(attemptPlayerCreation((Player*) inv->getObjectParameter(), (ZoneClientSession*) inv->getObjectParameter())->_getObjectID());
@@ -501,10 +501,10 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		doCashTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 23:
-		resp->insertBoolean(modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_string_int_), inv->getSignedIntParameter()));
+		resp->insertBoolean(modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_String_int_), inv->getSignedIntParameter()));
 		break;
 	case 24:
-		resp->insertBoolean(modifyRecipientOfflineBank(inv->getAsciiParameter(_param0_modifyRecipientOfflineBank__string_int_), inv->getSignedIntParameter()));
+		resp->insertBoolean(modifyRecipientOfflineBank(inv->getAsciiParameter(_param0_modifyRecipientOfflineBank__String_int_), inv->getSignedIntParameter()));
 		break;
 	case 25:
 		updatePlayerCreditsFromDatabase((Player*) inv->getObjectParameter());
@@ -531,7 +531,7 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 33:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getObjectID());
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
 	case 34:
 		resp->insertLong(getGuildManager()->_getObjectID());
@@ -554,11 +554,11 @@ bool PlayerManagerAdapter::create(Player* player, unsigned int sessionkey) {
 	return ((PlayerManagerImplementation*) impl)->create(player, sessionkey);
 }
 
-bool PlayerManagerAdapter::validateName(string& name) {
+bool PlayerManagerAdapter::validateName(String& name) {
 	return ((PlayerManagerImplementation*) impl)->validateName(name);
 }
 
-BaseMessage* PlayerManagerAdapter::checkPlayerName(const string& name, const string& species) {
+BaseMessage* PlayerManagerAdapter::checkPlayerName(const String& name, const String& species) {
 	return ((PlayerManagerImplementation*) impl)->checkPlayerName(name, species);
 }
 
@@ -614,11 +614,11 @@ void PlayerManagerAdapter::doCashTip(Player* sender, Player* receiver, int tipAm
 	return ((PlayerManagerImplementation*) impl)->doCashTip(sender, receiver, tipAmount, updateTipTo);
 }
 
-bool PlayerManagerAdapter::modifyOfflineBank(Player* sender, string& receiverName, int creditAmount) {
+bool PlayerManagerAdapter::modifyOfflineBank(Player* sender, String& receiverName, int creditAmount) {
 	return ((PlayerManagerImplementation*) impl)->modifyOfflineBank(sender, receiverName, creditAmount);
 }
 
-bool PlayerManagerAdapter::modifyRecipientOfflineBank(string& recipient, int creditAmount) {
+bool PlayerManagerAdapter::modifyRecipientOfflineBank(String& recipient, int creditAmount) {
 	return ((PlayerManagerImplementation*) impl)->modifyRecipientOfflineBank(recipient, creditAmount);
 }
 
@@ -654,7 +654,7 @@ Player* PlayerManagerAdapter::putPlayer(Player* player) {
 	return ((PlayerManagerImplementation*) impl)->putPlayer(player);
 }
 
-Player* PlayerManagerAdapter::getPlayer(string& name) {
+Player* PlayerManagerAdapter::getPlayer(String& name) {
 	return ((PlayerManagerImplementation*) impl)->getPlayer(name);
 }
 

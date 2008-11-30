@@ -92,7 +92,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		return 0.0f;
 	}
 
-	string actionModifier = action->getActionModifier();
+	String actionModifier = action->getActionModifier();
 
 	TargetSkill* tskill = (TargetSkill*)action->getSkill();
 
@@ -151,7 +151,7 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 
 	SelfSkill* selfskill = (SelfSkill*) action->getSkill();
 
-	string actionModifier = action->getActionModifier();
+	String actionModifier = action->getActionModifier();
 
 	if (!selfskill->isUseful(creature))
 		return 0.0f;
@@ -183,7 +183,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 	float DirectionVectorX = target->getPositionX() - CreatureVectorX;
 	float DirectionVectorY = target->getPositionY() - CreatureVectorY;
 
-	string actionModifier = action->getActionModifier();
+	String actionModifier = action->getActionModifier();
 
 	Zone* zone = creature->getZone();
 	try {
@@ -239,11 +239,11 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 	} catch (...) {
 		zone->unlock();
 
-		cout << "Exception in CombatManager::handleAreaAction\n";
+		System::out << "Exception in CombatManager::handleAreaAction\n";
 	}
 }
 
-bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill,  string& modifier, CombatAction* actionMessage) {
+bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
 	try {
 		target->wlock(attacker);
 
@@ -331,7 +331,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 				AttackTargetSkill* askill = (AttackTargetSkill*) skill;
 				askill->calculateStates(attacker, targetCreature);
 
-				if(targetCreature->isNonPlayerCreature()) {
+				if (targetCreature->isNonPlayerCreature()) {
 					Creature* creature = (Creature*) targetCreature;
 					if (!creature->isMount())
 						creature->doAttack(attacker, damage);
@@ -347,7 +347,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 		target->unlock();
 	} catch (Exception& e) {
-		cout << "Exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)\n"
+		System::out << "Exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)\n"
 			 << e.getMessage() << "\n";
 		e.printStackTrace();
 
@@ -355,7 +355,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 		return false;
 	} catch (...) {
-		cout << "exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)";
+		System::out << "exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)";
 
 		target->unlock();
 
@@ -554,9 +554,9 @@ void CombatManager::requestDuel(Player* player, Player* targetPlayer) {
 
 		targetPlayer->unlock();
 	} catch (Exception& e) {
-		cout << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n" << e.getMessage() << "\n";
+		System::out << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n" << e.getMessage() << "\n";
 	} catch (...) {
-		cout << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
+		System::out << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
 		targetPlayer->unlock();
 	}
 }
@@ -669,7 +669,7 @@ void CombatManager::freeDuelList(Player* player) {
 			} catch (ObjectNotDeployedException& e) {
 				player->removeFromDuelList(targetPlayer);
 
-				cout << "Exception on CombatManager::freeDuelList()\n" << e.getMessage() << "\n";
+				System::out << "Exception on CombatManager::freeDuelList()\n" << e.getMessage() << "\n";
 			} catch (...) {
 				targetPlayer->unlock();
 			}
@@ -725,17 +725,17 @@ void CombatManager::declineDuel(Player* player, Player* targetPlayer) {
 
 void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender) {
 	creature->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
-	creature->doCombatAnimation(defender, String::hashCode("dodge"), 0);
+	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 }
 
 void CombatManager::doCounterAttack(CreatureObject* creature, CreatureObject* defender) {
 	creature->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
-	creature->doCombatAnimation(defender, String::hashCode("dodge"), 0);
+	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 }
 
 void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender) {
 	creature->showFlyText("combat_effects", "block", 0, 0xFF, 0);
-	creature->doCombatAnimation(defender, String::hashCode("dodge"), 0);
+	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 }
 
 // calc methods
@@ -838,8 +838,8 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 
 		int chance = (int)round(((defTotal / (defTotal + accTotal))) * 100);
 
-		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
-		cout << "chance:[" << chance << "]\n";*/
+		/*System::out << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
+		System::out << "chance:[" << chance << "]\n";*/
 
 		if (rand < chance) {
 			doBlock(targetCreature, creature);
@@ -862,8 +862,8 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 
 		int chance = (int)round(((defTotal / (defTotal + accTotal))) * 100);
 
-		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
-		cout << "chance:[" << chance << "]\n";*/
+		/*System::out << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
+		System::out << "chance:[" << chance << "]\n";*/
 
 		if (rand < chance) {
 			doDodge(targetCreature, creature);
@@ -886,8 +886,8 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 
 		int chance = (int)round(((defTotal / (defTotal + accTotal))) * 100);
 
-		/*cout << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
-		cout << "chance:[" << chance << "]\n";*/
+		/*System::out << "accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
+		System::out << "chance:[" << chance << "]\n";*/
 
 		if (rand < chance) {
 			doCounterAttack(targetCreature, creature);
@@ -934,11 +934,11 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (creature->isStunned())
 		primaryDef *= 0.33;
 
-	//cout << "primaryDef:[" << primaryDef << "] accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
+	//System::out << "primaryDef:[" << primaryDef << "] accTotal:[" << accTotal << "] defTotal:[" << defTotal << "]\n";
 
 	hitChance = (int)round(((1 - primaryDef) * 100));
 
-	//cout << "hitChance:[" << (int)hitChance << "]\n";
+	//System::out << "hitChance:[" << (int)hitChance << "]\n";
 
 	return hitChance;
 }
@@ -973,7 +973,7 @@ float CombatManager::getWeaponAccuracy(float currentRange, Weapon* weapon) {
 
 	accuracy = smallMod + ((currentRange - smallRange)/(idealRange - smallRange) * (bigMod - smallMod));
 
-	//cout << "Weapon accuracy:[" << accuracy << "]\n";
+	//System::out << "Weapon accuracy:[" << accuracy << "]\n";
 
 	return accuracy;
 }

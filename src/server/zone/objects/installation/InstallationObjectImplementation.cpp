@@ -75,7 +75,7 @@ InstallationObjectImplementation::InstallationObjectImplementation(uint64 oid, D
 	init();
 
 	objectID = oid;
-	objectCRC = String::hashCode(deed->getTargetFile());
+	objectCRC = deed->getTargetFile().hashCode();
 	objectSubType = getObjectSubType();
 	name = deed->getTargetName();
 	file = deed->getTargetFile();
@@ -172,7 +172,7 @@ void InstallationObjectImplementation::sendRadialResponseTo(Player* player, Obje
 	omr->addRadialItem(2, 128, 3, "@player_structure:management_status");
 	omr->addRadialItem(2, 131, 3, "Set Name"); //"@player_structure:set_name"
 	omr->addRadialItem(2, 133, 3, "@player_structure:management_pay");
-	if(objectSubType == TangibleObjectImplementation::HARVESTER)
+	if (objectSubType == TangibleObjectImplementation::HARVESTER)
 		omr->addRadialItem(2, 82, 3, "@harvester:manage");
 	omr->addRadialItem(2, 77, 3, "@player_structure:management_power");
 
@@ -187,10 +187,10 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 
 		player->setCurrentStructureID(this->getObjectID());
 
-		stringstream sscan, sscond, ssmain;
-		string willRedeed;
+		StringBuffer sscan, sscond, ssmain;
+		String willRedeed;
 
-		if((conditionDamage == 0) && (getSurplusMaintenance() >= (getMaintenanceRate() * 100))) {
+		if ((conditionDamage == 0) && (getSurplusMaintenance() >= (getMaintenanceRate() * 100))) {
 
 			sscan << "CAN REDEED: \\#32CD32YES\\#";
 			willRedeed = "\\#32CD32YES\\#";
@@ -204,7 +204,7 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 			sscan << "CAN REDEED: \\#FF6347NO\\#";
 			willRedeed = "\\#FF6347NO\\##";
 
-			if((conditionDamage == 0)) {
+			if ((conditionDamage == 0)) {
 
 				sscond << dec << "- CONDITION: \\#32CD32"<< maxCondition - conditionDamage << "/" << maxCondition << "\\#";
 				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << (getSurplusMaintenance() * 100) << "\\#";
@@ -220,7 +220,7 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 
 		SuiListBox* redeedBox = new SuiListBox(player, 0x7280, 0x02);
 
-		redeedBox->setPromptTitle(this->getName().c_str());
+		redeedBox->setPromptTitle(this->getName().toCharArray());
 
 		redeedBox->setPromptText("You have elected to destroy a structure.  Pertinent structure"
 				" data can be found in the list below.  Please complete the following steps"
@@ -228,24 +228,24 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 				" structure data must be \\#32CD32GREEN\\#       \\#93F5FFTo continue with structure deletion"
 				", click YES.  Otherwise, please click NO.\nWILL REDEED: " + willRedeed);
 
-		redeedBox->addMenuItem(sscan.str());
-		redeedBox->addMenuItem(sscond.str());
-		redeedBox->addMenuItem(ssmain.str());
+		redeedBox->addMenuItem(sscan.toString());
+		redeedBox->addMenuItem(sscond.toString());
+		redeedBox->addMenuItem(ssmain.toString());
 
 		player->addSuiBox(redeedBox);
 		player->sendMessage(redeedBox->generateMessage());
 
 	}
 	catch(...) {
-		cout << "unreported exception in InstallationObjectImplementation::handleStructureRedeed\n";
+		System::out << "unreported exception in InstallationObjectImplementation::handleStructureRedeed\n";
 	}
 }
 
 void InstallationObjectImplementation::handleStructureRedeedConfirm(
 		Player * player) {
 	try {
-		string status;
-		stringstream prompt;
+		String status;
+		StringBuffer prompt;
 
 		destroyCode = (System::random(999999) + 100000);
 
@@ -253,7 +253,7 @@ void InstallationObjectImplementation::handleStructureRedeedConfirm(
 
 		confirmRedeed->setPromptTitle("Confirm Structure Destruction");
 
-		if((conditionDamage == 0) && (getSurplusMaintenance() >= (getSurplusMaintenance() * 100))){
+		if ((conditionDamage == 0) && (getSurplusMaintenance() >= (getSurplusMaintenance() * 100))){
 			status = "\\#32CD32WILL\\#       \\#93F5FF";
 		}
 		else{
@@ -264,14 +264,14 @@ void InstallationObjectImplementation::handleStructureRedeedConfirm(
 		<< " to continue with destroying your structure, please enter the following code"
 		<<" into the input box.\n\nCode: " << destroyCode;
 
-		confirmRedeed->setPromptText(prompt.str());
+		confirmRedeed->setPromptText(prompt.toString());
 
 		player->addSuiBox(confirmRedeed);
 		player->sendMessage(confirmRedeed->generateMessage());
 
 	}
 	catch(...) {
-		cout << "unreported exception in InstallationObjectImplementation::handleStructureRedeedConfirm\n";
+		System::out << "unreported exception in InstallationObjectImplementation::handleStructureRedeedConfirm\n";
 	}
 
 }
@@ -283,44 +283,40 @@ void InstallationObjectImplementation::handleStructureStatus(Player* player) {
 	{
 		player->setCurrentStructureID(this->getObjectID());
 
-		stringstream sscond, ssmpool, ssmrate, ssppool, ssprate;
+		StringBuffer sscond, ssmpool, ssmrate, ssppool, ssprate;
 
 		SuiListBox* statusBox = new SuiListBox(player, 0x7282, 0x01);
 		statusBox->setPromptTitle("@player_structure:structure_status_t");
-		statusBox->setPromptText("Structure Name: " + this->getName().c_str());
+		statusBox->setPromptText("Structure Name: " + getName().toString());
 
 		statusBox->addMenuItem("Owner: " + owner);
 		statusBox->addMenuItem("This structure is " + structureStatus);
 
-		sscond << dec << "Condition: " << (static_cast<int>(((maxCondition - conditionDamage)/maxCondition) * 100)) << "%";
-		statusBox->addMenuItem(sscond.str());
+		sscond << dec << "Condition: " << ((int) (((maxCondition - conditionDamage) / maxCondition) * 100)) << "%";
+		statusBox->addMenuItem(sscond.toString());
 
-		ssmpool << dec << "Maintenance Pool: " << static_cast<int>(getSurplusMaintenance());
-		statusBox->addMenuItem(ssmpool.str());
+		ssmpool << dec << "Maintenance Pool: " << (int) getSurplusMaintenance();
+		statusBox->addMenuItem(ssmpool.toString());
 
-		ssmrate << dec << "Maintenance Rate: " << static_cast<int>(getMaintenanceRate()) << " cr/hr";
-		statusBox->addMenuItem(ssmrate.str());
+		ssmrate << dec << "Maintenance Rate: " << (int) getMaintenanceRate() << " cr/hr";
+		statusBox->addMenuItem(ssmrate.toString());
 
-		ssppool << dec << "Power Reserves: " << static_cast<int>(getSurplusPower());
-		statusBox->addMenuItem(ssppool.str());
+		ssppool << dec << "Power Reserves: " << (int) getSurplusPower();
+		statusBox->addMenuItem(ssppool.toString());
 
-		ssprate << dec << "Power Consumption " << static_cast<int>(getPowerRate()) << " units/hr";
-		statusBox->addMenuItem(ssprate.str());
+		ssprate << dec << "Power Consumption " << (int) getPowerRate() << " units/hr";
+		statusBox->addMenuItem(ssprate.toString());
 
 		player->addSuiBox(statusBox);
 		player->sendMessage(statusBox->generateMessage());
-
-	}
-	catch(...) {
-		cout << "unreported exception in InstallationObjectImplementation::handleStructureStatus\n";
+	} catch(...) {
+		System::out << "unreported exception in InstallationObjectImplementation::handleStructureStatus\n";
 	}
 }
 
-
 void InstallationObjectImplementation::handleStructureAddMaintenance(Player* player) {
-	try
-	{
-		stringstream sstext, sscash, ssmaintenance;
+	try {
+		StringBuffer sstext, sscash, ssmaintenance;
 
 		player->setCurrentStructureID(this->getObjectID());
 
@@ -328,27 +324,27 @@ void InstallationObjectImplementation::handleStructureAddMaintenance(Player* pla
 		maintenanceBox->setPromptTitle("Select Amount");
 
 		sstext << "Select the total amount you would like to pay the existing"
-			<<" maintenace pool.\n\nCurrent maintanence pool: " << getSurplusMaintenance() << "cr.";
-		maintenanceBox->setPromptText(sstext.str());
+			   <<" maintenace pool.\n\nCurrent maintanence pool: " << getSurplusMaintenance() << "cr.";
+		maintenanceBox->setPromptText(sstext.toString());
 
 		sscash << player->getCashCredits();
 		ssmaintenance << getSurplusMaintenance();
 
-		maintenanceBox->addFrom("@player_structure:total_funds", sscash.str(), sscash.str(), "1");
-		maintenanceBox->addTo("@player_structure:to_pay", ssmaintenance.str(), ssmaintenance.str(), "1");
+		maintenanceBox->addFrom("@player_structure:total_funds", sscash.toString(), sscash.toString(), "1");
+		maintenanceBox->addTo("@player_structure:to_pay", ssmaintenance.toString(), ssmaintenance.toString(), "1");
 
 		player->addSuiBox(maintenanceBox);
 		player->sendMessage(maintenanceBox->generateMessage());
 
 	}
 	catch(...) {
-		cout << "unreported exception in InstallationObjectImplementation::handleStructureAddMaintenance\n";
+		System::out << "unreported exception in InstallationObjectImplementation::handleStructureAddMaintenance\n";
 	}
 }
 void InstallationObjectImplementation::handleStructureAddEnergy(Player* player) {
 	try
 	{
-		stringstream ssTotalEnergy;
+		StringBuffer ssTotalEnergy;
 
 		player->setCurrentStructureID(this->getObjectID());
 
@@ -360,7 +356,7 @@ void InstallationObjectImplementation::handleStructureAddEnergy(Player* player) 
 
 		ssTotalEnergy << "100";
 
-		energyBox->addFrom("@player_structure:total_energy", ssTotalEnergy.str(), ssTotalEnergy.str(), "1");
+		energyBox->addFrom("@player_structure:total_energy", ssTotalEnergy.toString(), ssTotalEnergy.toString(), "1");
 		energyBox->addTo("@player_structure:to_deposit", "0", "0", "1");
 
 		player->addSuiBox(energyBox);
@@ -368,7 +364,7 @@ void InstallationObjectImplementation::handleStructureAddEnergy(Player* player) 
 
 	}
 	catch(...) {
-		cout << "unreported exception in InstallationObjectImplementation::handleStructureAddEnergy\n";
+		System::out << "unreported exception in InstallationObjectImplementation::handleStructureAddEnergy\n";
 	}
 }
 
@@ -690,7 +686,7 @@ void InstallationObjectImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void InstallationObjectImplementation::parseItemAttributes() {
-	string attr = "operating";
+	String attr = "operating";
 	setOperating(itemAttributes->getBooleanAttribute(attr));
 
 	attr = "owner";
@@ -715,11 +711,11 @@ void InstallationObjectImplementation::parseItemAttributes() {
 void InstallationObjectImplementation::addHeaderAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("volume", "1");
 
-	/*if(craftersName != ""){
+	/*if (craftersName != ""){
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	if(craftedSerial != ""){
+	if (craftedSerial != ""){
 		alm->insertAttribute("serial_number", craftedSerial);
 	}*/
 }

@@ -70,7 +70,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
 	playerUseMask = ALL;
 }
 
-TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempname, int tp)
+TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempname, int tp)
 		: TangibleObjectServant(oid, TANGIBLE) {
 	initialize();
 
@@ -87,7 +87,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 te
 	playerUseMask = ALL;
 }
 
-TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempname, int tp)
+TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempname, int tp)
 		: TangibleObjectServant() {
 	initialize();
 
@@ -117,9 +117,9 @@ TangibleObjectImplementation::~TangibleObjectImplementation() {
 }
 
 void TangibleObjectImplementation::initialize() {
-	stringstream name;
+	StringBuffer name;
 	name << "TangibleObject :" << objectID;
-	setLoggingName(name.str());
+	setLoggingName(name.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -264,7 +264,7 @@ void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	if(parent != NULL)
+	if (parent != NULL)
 		client->sendMessage(link(parent));
 
 	if (container != NULL)
@@ -323,7 +323,7 @@ void TangibleObjectImplementation::repairItem(Player* player) {
 
 	int decayRate = 100;
 
-	stringstream txt;
+	StringBuffer txt;
 
 	if (roll < 10) {
 		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
@@ -339,7 +339,7 @@ void TangibleObjectImplementation::repairItem(Player* player) {
 		decayRate = 0;
 	}
 
-	player->sendSystemMessage(txt.str());
+	player->sendSystemMessage(txt.toString());
 
 	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
 	conditionDamage = 0;
@@ -369,7 +369,7 @@ void TangibleObjectImplementation::setObjectName(Player * player) {
 
 	}
 	catch(...) {
-		cout << "Unreported exception in TangibleObjectImplementation::setObjectName\n";
+		System::out << "Unreported exception in TangibleObjectImplementation::setObjectName\n";
 		//player->unlock();
 	}
 }
@@ -384,7 +384,7 @@ void TangibleObjectImplementation::decay(int decayRate) {
 }
 
 void TangibleObjectImplementation::addAttributes(AttributeListMessage* alm) {
-	stringstream cond;
+	StringBuffer cond;
 	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
 
 	alm->insertAttribute("condition", cond);

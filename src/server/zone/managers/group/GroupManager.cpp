@@ -76,20 +76,22 @@ void GroupManager::inviteToGroup(Player* leader, Player* player) {
 
 		if (player->isInAGroup()) {
 			leader->sendSystemMessage("group", "already_grouped", player->getObjectID());
+
 			player->unlock();
 			return;
 		}
 
 		if (player->getGroupInviterID() == leader->getObjectID()) {
 			leader->sendSystemMessage("group", "considering_your_group", player->getObjectID());
+
 			player->unlock();
 			return;
 		} else if (player->getGroupInviterID() != 0) {
-			stringstream msg;
-			msg << player->getCharacterName().c_str() << " is considering joining another group.";
-			leader->sendSystemMessage(msg.str());
+			StringBuffer msg;
+			msg << player->getCharacterName().toString() << " is considering joining another group.";
+			leader->sendSystemMessage(msg.toString());
+
 			player->unlock();
-			msg.str("");
 			return;
 		}
 
@@ -100,7 +102,7 @@ void GroupManager::inviteToGroup(Player* leader, Player* player) {
 
 		player->unlock();
 	} catch (...) {
-		cout << "Exception in GroupManager::inviteToGroup(GroupObject* group, Player* player)\n";
+		System::out << "Exception in GroupManager::inviteToGroup(GroupObject* group, Player* player)\n";
 		player->unlock();
 	}
 }
@@ -134,7 +136,7 @@ void GroupManager::joinGroup(Player* player) {
 
 		return;
 	} catch (...) {
-		cout << "Exception in GroupManager::joinGroup(Player* player)\n";
+		System::out << "Exception in GroupManager::joinGroup(Player* player)\n";
 		inviter->unlock();
 
 		return;
@@ -170,7 +172,7 @@ void GroupManager::joinGroup(Player* player) {
 		group->unlock();
 	} catch (...) {
 		group->unlock();
-		cout << "Exception in GroupManager::joinGroup(Player* player)\n";
+		System::out << "Exception in GroupManager::joinGroup(Player* player)\n";
 	}
 }
 
@@ -239,7 +241,7 @@ void GroupManager::leaveGroup(GroupObject* group, Player* player) {
 		group->unlock();
 	} catch (...) {
 		group->unlock();
-		cout << "Exception in GroupManager::leaveGroup(GroupObject* group, Player* player)\n";
+		System::out << "Exception in GroupManager::leaveGroup(GroupObject* group, Player* player)\n";
 	}
 
 	if (destroyGroup)
@@ -276,7 +278,7 @@ void GroupManager::disbandGroup(GroupObject* group, Player* player) {
 		group->unlock();
 	} catch (...) {
 		group->unlock();
-		cout << "Exception in GroupManager::disbandGroup(GroupObject* group, Player* player)\n";
+		System::out << "Exception in GroupManager::disbandGroup(GroupObject* group, Player* player)\n";
 	}
 
 	player->wlock();
@@ -332,7 +334,7 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 		group->unlock();
 
 	} catch (...) {
-		cout << "Exception in GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick)\n";
+		System::out << "Exception in GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick)\n";
 		group->unlock();
 	}
 
@@ -356,7 +358,7 @@ void GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* pla
 
 			playerToKick->unlock();
 		} catch (...) {
-			cout << "Exception in GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick)\n";
+			System::out << "Exception in GroupManager::kickFromGroup(GroupObject* group, Player* player, Player* playerToKick)\n";
 			playerToKick->unlock();
 
 		}
@@ -389,26 +391,26 @@ void GroupManager::makeLeader(GroupObject* group, Player* player, Player* newLea
 
 		group->makeLeader(newLeader);
 
-		string firstNameLeader;
+		String firstNameLeader;
 		firstNameLeader = "[Offline player]";
 
 		if (newLeader != NULL && newLeader->isOnline() && !newLeader->isLoggingOut())
 			firstNameLeader= newLeader->getFirstName();
 
-		stringstream message;
+		StringBuffer message;
 		message << firstNameLeader << " is now the group leader.\n";
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 			Player* play = group->getGroupMember(i);
 
 			if (play != NULL && play->isOnline() && !play->isLoggingOut())
-				play->sendSystemMessage(message.str());
+				play->sendSystemMessage(message.toString());
 		}
 
 		group->unlock();
 	} catch (...) {
 		group->unlock();
-		cout << "Exception in GroupManager::makeLeader(GroupObject* group, Player* player, Player* newLeader)\n";
+		System::out << "Exception in GroupManager::makeLeader(GroupObject* group, Player* player, Player* newLeader)\n";
 	}
 	player->wlock();
 }

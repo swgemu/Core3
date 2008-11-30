@@ -75,11 +75,11 @@ void ServerCore::init() {
 
 		database = new ServerDatabase(&configManager);
 
-		if(configManager.getUseVBIngeration() == 1)
+		if (configManager.getUseVBIngeration() == 1)
 			forumDatabase = new ForumsDatabase(&configManager);
 
 		if (configManager.getMakeZone()) {
-			string& orbaddr = configManager.getORBNamingDirectoryAddress();
+			String& orbaddr = configManager.getORBNamingDirectoryAddress();
 			orb = DistributedObjectBroker::initialize(orbaddr);
 		}
 
@@ -193,12 +193,16 @@ void ServerCore::shutdown() {
 void ServerCore::handleCommands() {
 	while (true) {
 		try {
-			string command;
+			String command;
 
 			Thread::sleep(500);
 
-			cout << "> ";
-			cin >> command;
+			System::out << "> ";
+
+			char line[4096];
+			gets(line);
+
+			command = line;
 
 			if (command == "exit") {
 				return;
@@ -231,18 +235,18 @@ void ServerCore::handleCommands() {
 
 				zoneServer->fixScheduler();
 			} else if (command == "help") {
-				cout << "available commands:\n";
-				cout << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
+				System::out << "available commands:\n";
+				System::out << "\texit, logQuadTree, info, icap, dcap, fixQueue, crash, about.\n";
 			} else if (command == "about") {
-				cout << "Core3 Uber Edition. Ultyma pwns you.\n";
+				System::out << "Core3 Uber Edition. Ultyma pwns you.\n";
 			} else
-				cout << "unknown command (" << command << ")\n";
+				System::out << "unknown command (" << command << ")\n";
 		} catch (SocketException& e) {
-			cout << "[ServerCore] " << e.getMessage();
+			System::out << "[ServerCore] " << e.getMessage();
 		} catch (ArrayIndexOutOfBoundsException& e) {
-			cout << "[ServerCore] " << e.getMessage() << "\n";
+			System::out << "[ServerCore] " << e.getMessage() << "\n";
 		} catch (...) {
-			cout << "[ServerCore] unreported Exception caught\n";
+			System::out << "[ServerCore] unreported Exception caught\n";
 		}
 	}
 }

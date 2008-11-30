@@ -44,9 +44,9 @@ which carries forward this exception.
 interface FactionPointList {
 	FactionPointList();
 	
-	void add(string obj);
+	void add(String obj);
 	
-	string get(int index);
+	String get(int index);
 	
 	boolean isEmpty();
 	

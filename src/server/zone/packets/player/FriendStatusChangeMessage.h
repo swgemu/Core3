@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class FriendStatusChangeMessage : public BaseMessage {
 public:
-	FriendStatusChangeMessage(string name, string server, bool online) : BaseMessage() {
+	FriendStatusChangeMessage(String name, String server, bool online) : BaseMessage() {
 	
     	insertShort(0x03);
     	insertInt(0x6CD2FCD8);  // CRC

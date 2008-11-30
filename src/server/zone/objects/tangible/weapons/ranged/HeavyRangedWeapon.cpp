@@ -16,12 +16,12 @@
  *	HeavyRangedWeaponStub
  */
 
-HeavyRangedWeapon::HeavyRangedWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
+HeavyRangedWeapon::HeavyRangedWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
 	_impl = new HeavyRangedWeaponImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-HeavyRangedWeapon::HeavyRangedWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
+HeavyRangedWeapon::HeavyRangedWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
 	_impl = new HeavyRangedWeaponImplementation(creature, temp, n, tempn, eqp);
 	_impl->_setStub(this);
 }
@@ -105,11 +105,11 @@ DistributedObjectAdapter* HeavyRangedWeaponHelper::createAdapter(DistributedObje
  *	HeavyRangedWeaponServant
  */
 
-HeavyRangedWeaponServant::HeavyRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp) : RangedWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
+HeavyRangedWeaponServant::HeavyRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp) : RangedWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
 	_classHelper = HeavyRangedWeaponHelper::instance();
 }
 
-HeavyRangedWeaponServant::HeavyRangedWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : RangedWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
+HeavyRangedWeaponServant::HeavyRangedWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp) : RangedWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
 	_classHelper = HeavyRangedWeaponHelper::instance();
 }
 

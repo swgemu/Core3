@@ -50,21 +50,21 @@ which carries forward this exception.
 class LootTableFields {
 	uint64 lootItemID;
 	int lootItemGroup;
-	string lootItemName;
+	String lootItemName;
 	uint64 lootItemTemplateCRC;
 	uint64 lootItemTemplateType;
-	string lootItemTemplateName;
-	string lootItemAttributes;
-	string lootItemAppearance;
+	String lootItemTemplateName;
+	String lootItemAttributes;
+	String lootItemAppearance;
 	int lootItemLevel;
 	int lootItemChance;
-	string lootItemLastDropStamp;
-	string lootItemDontDropBefore;
+	String lootItemLastDropStamp;
+	String lootItemDontDropBefore;
 	int lootItemUnique;
 	int lootItemNoTrade;
-	string lootItemRace;
-	string lootItemDeveloperNote;
-	string lootItemType;
+	String lootItemRace;
+	String lootItemDeveloperNote;
+	String lootItemType;
 	
 public:
 
@@ -77,7 +77,7 @@ public:
 		lootItemGroup = lootitemgroup;
 	}
 	
-	void setLootItemName(string lootitemname) {
+	void setLootItemName(String lootitemname) {
 		lootItemName = lootitemname;
 	}	
 	
@@ -89,15 +89,15 @@ public:
 		lootItemTemplateType = lootitemtemplatetype;
 	}	
 	
-	void setLootItemTemplateName(string lootitemtemplatename) {
+	void setLootItemTemplateName(String lootitemtemplatename) {
 		lootItemTemplateName = lootitemtemplatename;
 	}
 	
-	void setLootItemAttributes(string lootitemattributes) {
+	void setLootItemAttributes(String lootitemattributes) {
 		lootItemAttributes = lootitemattributes;
 	}
 	
-	void setLootItemAppearance(string lootitemappearance) {
+	void setLootItemAppearance(String lootitemappearance) {
 		lootItemAppearance = lootitemappearance;
 	}	
 	
@@ -109,11 +109,11 @@ public:
 		lootItemChance = lootitemchance;
 	}
 	
-	void setLootItemLastDropStamp(string lootitemlastdropstamp) {
+	void setLootItemLastDropStamp(String lootitemlastdropstamp) {
 		lootItemLastDropStamp = lootitemlastdropstamp;
 	}	
 	
-	void setLootItemDontDropBefore(string lootitemdontdropbefore) {
+	void setLootItemDontDropBefore(String lootitemdontdropbefore) {
 		lootItemDontDropBefore = lootitemdontdropbefore;
 	}	
 	
@@ -125,11 +125,11 @@ public:
 		lootItemNoTrade = lootitemnotrade;
 	}	
 	
-	void setLootItemRace(string lootitemrace) {
+	void setLootItemRace(String lootitemrace) {
 		lootItemRace = lootitemrace;
 	}
 	
-	void setLootItemDeveloperNote(string lootitemdevelopernote) {
+	void setLootItemDeveloperNote(String lootitemdevelopernote) {
 		lootItemDeveloperNote = lootitemdevelopernote;
 	}
 
@@ -142,7 +142,7 @@ public:
 		return lootItemGroup;
 	}
 	
-	string getLootItemName() {
+	String getLootItemName() {
 		return lootItemName;
 	}	
 	
@@ -154,15 +154,15 @@ public:
 		return lootItemTemplateType;
 	}
 
-	string getLootItemTemplateName() {
+	String getLootItemTemplateName() {
 		return lootItemTemplateName;
 	}
 	
-	string getLootItemAttributes() {
+	String getLootItemAttributes() {
 		return lootItemAttributes;
 	}
 	
-	string getLootItemAppearance() {
+	String getLootItemAppearance() {
 		return lootItemAppearance;
 	}	
 	
@@ -174,11 +174,11 @@ public:
 		return lootItemChance;
 	}
 	
-	string getLootItemLastDropStamp() {
+	String getLootItemLastDropStamp() {
 		return lootItemLastDropStamp;
 	}	
 	
-	string getLootItemDontDropBefore() {
+	String getLootItemDontDropBefore() {
 		return lootItemDontDropBefore;
 	}	
 	
@@ -190,11 +190,11 @@ public:
 		return lootItemNoTrade;
 	}	
 	
-	string getLootItemRace() {
+	String getLootItemRace() {
 		return lootItemRace;
 	}
 	
-	string getLootItemDeveloperNote() {
+	String getLootItemDeveloperNote() {
 		return lootItemDeveloperNote;
 	}
 

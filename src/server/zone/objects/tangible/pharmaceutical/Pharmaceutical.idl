@@ -9,15 +9,15 @@ import "../TangibleObject";
 interface Pharmaceutical implements TangibleObject {
 	
 
-	Pharmaceutical(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int mptype) {
+	Pharmaceutical(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, int mptype) {
 		super(oid, int tp);
 	}
 
-	Pharmaceutical(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int mptype) {
+	Pharmaceutical(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, int mptype) {
 		super(oid, int tp);
 	}	
 
-	Pharmaceutical(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn, int mptype) {
+	Pharmaceutical(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn, int mptype) {
 		super(unsigned long oid, int tp);
 	}
 	

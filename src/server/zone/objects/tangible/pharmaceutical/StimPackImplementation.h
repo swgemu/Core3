@@ -54,8 +54,8 @@ protected:
 	float effectiveness;
 
 public:
-	StimPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	StimPackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	StimPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	StimPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	void initialize();
 
@@ -76,7 +76,7 @@ public:
 
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
-		string attr = "effectiveness";
+		String attr = "effectiveness";
 		itemAttributes->setFloatAttribute(attr, effectiveness);
 	}
 

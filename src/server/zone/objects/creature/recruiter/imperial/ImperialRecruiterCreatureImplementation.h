@@ -43,10 +43,13 @@ which carries forward this exception.
 */
 
 #include "engine/engine.h"
+
 #include "ImperialRecruiterCreature.h"
 
 #include "../../../player/Player.h"
+
 #include "../../../player/faction/FactionRankTable.h"
+
 #include "../../../../packets.h"
 
 #ifndef IMPERIALRECRUITERCREATUREIMPLEMENTATION_H_
@@ -56,8 +59,8 @@ class ImperialRecruiterCreatureImplementation : public ImperialRecruiterCreature
 public:
 	ImperialRecruiterCreatureImplementation(uint64 oid) : ImperialRecruiterCreatureServant(oid) {
 		objectCRC = 0xCC13B720;
-		factionCRC = String::hashCode("imperial");
-		enemyFactionCRC = String::hashCode("rebel");
+		factionCRC = String("imperial").hashCode();
+		enemyFactionCRC = String("rebel").hashCode();
 		factionString = "imperial";
 		speciesName = "imperial_recruiter";
 	}
@@ -86,7 +89,7 @@ public:
 		if (qualifiesForPromotion(player))
 			slist->insertOption("conversation/faction_recruiter_imperial", "s_312");
 
-		if(canOfferBribe(player))
+		if (canOfferBribe(player))
 			slist->insertOption("conversation/faction_recruiter_imperial", "s_398");
 
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_352");
@@ -97,8 +100,10 @@ public:
 
 	void sendNeutralStart(Player * player) {
 		player->setLastNpcConvMessStr("neutral_start");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_414"));
-		StringList * slist = new StringList(player);
+
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_428");
 		player->sendMessage(slist);
 	}
@@ -106,17 +111,20 @@ public:
 
 	void sendOnLeaveStart(Player * player) {
 		player->setLastNpcConvMessStr("onLeave_start");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_80"));
-		StringList * slist = new StringList(player);
+
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_294");
 		player->sendMessage(slist);
 	}
 
 	void confirmGoCovert(Player * player) {
 		player->setLastNpcConvMessStr("confirm_go_covert");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_354"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_356");
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_360");
 		player->sendMessage(slist);
@@ -133,9 +141,10 @@ public:
 
 	void confirmGoOvert(Player * player) {
 		player->setLastNpcConvMessStr("confirm_go_overt");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_364"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_366");
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_370");
 		player->sendMessage(slist);
@@ -152,9 +161,10 @@ public:
 
 	void confirmGoOnLeave(Player * player) {
 		player->setLastNpcConvMessStr("confirm_go_on_leave");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_376"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_378");
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_382");
 		player->sendMessage(slist);
@@ -171,9 +181,10 @@ public:
 
 	void confirmGoActive(Player * player) {
 		player->setLastNpcConvMessStr("confirm_go_active");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_296"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_298");
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_302");
 		player->sendMessage(slist);
@@ -193,9 +204,10 @@ public:
 
 	void confirmJoinFaction(Player * player) {
 		player->setLastNpcConvMessStr("confirm_join_faction");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_432"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_434");
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_440");
 		player->sendMessage(slist);
@@ -203,8 +215,10 @@ public:
 
 	void playerAcceptedJoin(Player * player) {
 		player->setLastNpcConvMessStr("player_accepted_join");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_436"));
-		StringList * slist = new StringList(player);
+
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_438");
 		player->sendMessage(slist);
 	}
@@ -215,9 +229,10 @@ public:
 
 	void confirmLeaveFaction(Player * player) {
 		player->setLastNpcConvMessStr("confirm_leave_faction");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_388"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_390");
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_394");
 		player->sendMessage(slist);
@@ -235,12 +250,12 @@ public:
 	void confirmPromotion(Player * player) {
 		player->setLastNpcConvMessStr("confirm_promotion");
 
-		StfParameter * param = new StfParameter();
+		StfParameter* param = new StfParameter();
 		param->addTO("faction_recruiter", FactionRankTable::getRankName(player->getFactionRank() + 1));
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_314", param));
 		delete param;
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_93");
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_320");
 		player->sendMessage(slist);
@@ -259,11 +274,11 @@ public:
 
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_imperial", "s_400"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_imperial", "s_402");
 
 		if (player->getCashCredits() >= 100000 &&
-		   (player->getMaxFactionPoints(factionString) >= player->getFactionPoints(factionString) + 1250))
+				(player->getMaxFactionPoints(factionString) >= player->getFactionPoints(factionString) + 1250))
 			slist->insertOption("conversation/faction_recruiter_imperial", "s_406");
 
 		player->sendMessage(slist);

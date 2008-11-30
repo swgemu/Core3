@@ -17,7 +17,7 @@ class TangibleObject;
 
 class ShipComponent : public TangibleObject {
 public:
-	ShipComponent(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn);
+	ShipComponent(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void erase();
 

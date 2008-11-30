@@ -22,7 +22,7 @@ FactionPointList::FactionPointList(DummyConstructorParameter* param) {
 FactionPointList::~FactionPointList() {
 }
 
-void FactionPointList::add(string& obj) {
+void FactionPointList::add(String& obj) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -35,7 +35,7 @@ void FactionPointList::add(string& obj) {
 		((FactionPointListImplementation*) _impl)->add(obj);
 }
 
-string& FactionPointList::get(int index) {
+String& FactionPointList::get(int index) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +85,7 @@ Packet* FactionPointListAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 
 	switch (methid) {
 	case 6:
-		add(inv->getAsciiParameter(_param0_add__string_));
+		add(inv->getAsciiParameter(_param0_add__String_));
 		break;
 	case 7:
 		resp->insertAscii(get(inv->getSignedIntParameter()));
@@ -103,11 +103,11 @@ Packet* FactionPointListAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	return resp;
 }
 
-void FactionPointListAdapter::add(string& obj) {
+void FactionPointListAdapter::add(String& obj) {
 	return ((FactionPointListImplementation*) impl)->add(obj);
 }
 
-string& FactionPointListAdapter::get(int index) {
+String& FactionPointListAdapter::get(int index) {
 	return ((FactionPointListImplementation*) impl)->get(index);
 }
 

@@ -113,7 +113,7 @@ interface Creature implements CreatureObject {
 	boolean isMount();
 	boolean isActionCreature();
 
-	string getName();
+	String getName();
 
 	int getZoneIndex();
 
@@ -136,16 +136,16 @@ interface Creature implements CreatureObject {
 
 	void setCreatureGroup(CreatureGroup group);
 
-	void setObjectFileName(const string name);
+	void setObjectFileName(const String name);
 	
-	string getObjectFileName();
+	String getObjectFileName();
 
 	void setType(int tp);
 
 	void setRespawnTimer(unsigned int seconds);
 
-	void removePlayerFromHarvestList(string firstName);
-	boolean canHarvest(string firstName);
+	void removePlayerFromHarvestList(String firstName);
+	boolean canHarvest(String firstName);
 	boolean beenLooted();
 	void wasLooted();
 

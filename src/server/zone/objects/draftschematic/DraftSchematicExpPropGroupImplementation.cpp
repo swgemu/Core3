@@ -46,7 +46,7 @@ which carries forward this exception.
 
 #include "../../packets/object/ObjectControllerMessage.h"
 
-DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(string sub)
+DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(String sub)
 	: DraftSchematicExpPropGroupServant() {
 
 	subtitle = sub;
@@ -56,19 +56,19 @@ DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementati
 DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(DraftSchematicExpPropGroup* group) : DraftSchematicExpPropGroupServant() {
 
 
-		for(int i = 0; i < group->getKeyCount(); ++i){
+		for (int i = 0; i < group->getKeyCount(); ++i){
 			keys.add(group->getKey(i));
 		}
 
-		for(int i = 0; i < group->getExpPropTypesSize(); ++i){
+		for (int i = 0; i < group->getExpPropTypesSize(); ++i){
 			expPropTypes.put(group->getExpPropTypesKey(i), group->getExpPropTypesValue(i));
 		}
 
-		for(int i = 0; i < group->getExpPropWeightsSize(); ++i){
+		for (int i = 0; i < group->getExpPropWeightsSize(); ++i){
 			expPropWeights.put(group->getExpPropWeightsKey(i), group->getExpPropWeightsValue(i));
 		}
 
-		for(int i = 0; i < group->getExpPropWeightPercentagesSize(); ++i){
+		for (int i = 0; i < group->getExpPropWeightPercentagesSize(); ++i){
 			expPropWeightPercentages.put(group->getExpPropWeightPercentagesKey(i),
 					group->getExpPropWeightPercentagesValue(i));
 		}
@@ -84,10 +84,10 @@ DraftSchematicExpPropGroupImplementation::~DraftSchematicExpPropGroupImplementat
 
 	}
 
-void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const string& experimentalPropertyType, uint32 weight) {
+void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const String& experimentalPropertyType, uint32 weight) {
 	uint8 expPropType = 0x00;
 
-	if(experimentalPropertyType == "PO") {
+	if (experimentalPropertyType == "PO") {
 		// nothing needs to be done
 	} else if (experimentalPropertyType == "CR") {
 		expPropType = 0x01;
@@ -114,7 +114,7 @@ void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const str
 	} else if (experimentalPropertyType == "XX"){
 		expPropType = 0x00;
 	} else {
-		cout << "Incorrect Experimental Property.  Experimental Property given was: " << experimentalPropertyType;
+		System::out << "Incorrect Experimental Property.  Experimental Property given was: " << experimentalPropertyType;
 		return;
 	}
 
@@ -195,7 +195,7 @@ void DraftSchematicExpPropGroupImplementation::RecalculatePercentages() {
 			expPropWeightPercentages.put(keys.get(i), weight / denominator);
 		}
 	} else {
-		cout << "\nError recalculating percentages for experimental properties.\n(Experimental Property types and weights lists"
+		System::out << "\nError recalculating percentages for experimental properties.\n(Experimental Property types and weights lists"
 		"are not the same size)\n";
 	}
 }

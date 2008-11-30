@@ -59,12 +59,12 @@ public:
 	}
 	
 	void updateCustomizationString() {
-		string app;
+		String app;
 		tano->getCustomizationString(app);
 		addAsciiUpdate(4, app);
 	}
 	
-	void updateName(string name) {
+	void updateName(String name) {
 		addUnicodeUpdate(2, name);
 	}
 	

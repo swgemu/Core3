@@ -60,8 +60,8 @@ interface MissionObject implements SceneObject {
 	void doLinkToPlayer(Player player);
 	void sendDestroyTo(Player player);
 	
-	void setDBKey(string tdbk);
-	string getDBKey();
+	void setDBKey(String tdbk);
+	String getDBKey();
 	
 	void applyTerminalMask(int tam);
 	int getTerminalMask();
@@ -69,8 +69,8 @@ interface MissionObject implements SceneObject {
 	void setDeliverItem(TangibleObject tdi);
 	TangibleObject getDeliverItem();
 	
-	void setTypeStr(const string tstr);
-	string getTypeStr();
+	void setTypeStr(const String tstr);
+	String getTypeStr();
 	
 	void setDescKey(int tdk);
 	unsigned int getDescKey();
@@ -88,8 +88,8 @@ interface MissionObject implements SceneObject {
 	void setDestPlanetCrc(unsigned int tpc);
 	unsigned int getDestPlanetCrc();
 	
-	void setCreatorName(const unicode tcn);
-	unicode getCreatorName();
+	void setCreatorName(const UnicodeString tcn);
+	UnicodeString getCreatorName();
 	
 	void setReward(unsigned int tr);
 	unsigned int getReward();
@@ -104,11 +104,11 @@ interface MissionObject implements SceneObject {
 	void setDepictedObjCrc(unsigned int tsdc);
 	unsigned int getDepictedObjCrc();
 	
-	void setDescriptionStf(const string tds);
-	string getDescriptionStf();
+	void setDescriptionStf(const String tds);
+	String getDescriptionStf();
 	
-	void setTitleStf(const string tts);
-	string getTitleStf();
+	void setTitleStf(const String tts);
+	String getTitleStf();
 	
 	void setRefreshCount(unsigned int trc);
 	unsigned int getRefreshCount();

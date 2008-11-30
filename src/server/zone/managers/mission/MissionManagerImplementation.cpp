@@ -99,9 +99,9 @@ void MissionManagerImplementation::unloadManager() {
 }
 
 //Standard Functions:
-MissionObject* MissionManagerImplementation::poolMission(string& dbKey, int termMask, const string& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX, float destY, uint32 destPlanetCrc,
-		const string& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc, uint32 depictedObjCrc, 
-		const string& descriptionStf, const string& titleStf, uint32 typeCrc, TangibleObject* deliverItem, bool doLock) {
+MissionObject* MissionManagerImplementation::poolMission(String& dbKey, int termMask, const String& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX, float destY, uint32 destPlanetCrc,
+		const String& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc, uint32 depictedObjCrc, 
+		const String& descriptionStf, const String& titleStf, uint32 typeCrc, TangibleObject* deliverItem, bool doLock) {
 	try {
 		lock(doLock);
 		
@@ -121,7 +121,7 @@ MissionObject* MissionManagerImplementation::poolMission(string& dbKey, int term
 		miso->setDestY(destY);
 		miso->setDestPlanetCrc(destPlanetCrc);
 		
-		miso->setCreatorName(unicode(creatorName));
+		miso->setCreatorName(UnicodeString(creatorName));
 		miso->setReward(rewardAmount);
 		
 		miso->setTargetX(targetX);
@@ -137,8 +137,8 @@ MissionObject* MissionManagerImplementation::poolMission(string& dbKey, int term
 
 		//load(miso);
 		
-		if(misoMap->get(dbKey) != NULL) {
-			string err = "Mission Key Collision with " + dbKey;
+		if (misoMap->get(dbKey) != NULL) {
+			String err = "Mission Key Collision with " + dbKey;
 			error(err);
 			
 			unlock(doLock);
@@ -159,10 +159,10 @@ MissionObject* MissionManagerImplementation::poolMission(string& dbKey, int term
 }
 
 void MissionManagerImplementation::setupHardcodeMissions() {
-	string dbKey = "";
+	String dbKey = "";
 	dbKey = "testM27";
 	int tmask = TMASK_GENERAL; //terminal mask (GENERAL)
-	string typeStr = "mission_deliver"; 
+	String typeStr = "mission_deliver"; 
 	
 	//uint32 descKey = htonl(atoi("m27d"));
 	//uint32 titleKey = htonl(atoi("m27t"));
@@ -174,23 +174,23 @@ void MissionManagerImplementation::setupHardcodeMissions() {
 	float destX = -5049.0f;
 	float destY = 4225.0f; 
 	uint32 destPlanetCrc = Planet::getPlanetCRC("naboo");
-	string creatorName = "Ramsey";
+	String creatorName = "Ramsey";
 	uint32 rewardAmount = 50;
 	float targetX = -4844.0f; 
 	float targetY = 4155.0f; 
 	uint32 targetPlanetCrc = Planet::getPlanetCRC("naboo");
 	uint32 depictedObjCrc = 0x9BA06548; //holocron/secret box crc
 	
-	//string descriptionStf = "mission/mission_deliver_neutral_easy"; 
-	//string titleStf = "mission/mission_deliver_neutral_easy"; 
+	//String descriptionStf = "mission/mission_deliver_neutral_easy"; 
+	//String titleStf = "mission/mission_deliver_neutral_easy"; 
 	//For custom missions:
-	string descriptionStf = "Deliver this secret box to MAN O' Action. The last time I checked he was at -5049, 4225.";
-	string titleStf = "The Box";
+	String descriptionStf = "Deliver this secret box to MAN O' Action. The last time I checked he was at -5049, 4225.";
+	String titleStf = "The Box";
 	
 	uint32 typeCrc = 0xE5C27EC6; //0xC6, 0x7E, 0xC2, 0xE5, //crc("deliver");
 	
 	//Deliver Item:
-	TangibleObject* dvli = new TangibleObject(getNextMissionID(), 0x9BA06548, unicode("Secret Box"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
+	TangibleObject* dvli = new TangibleObject(getNextMissionID(), 0x9BA06548, UnicodeString("Secret Box"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
 	
 	poolMission(dbKey, tmask, typeStr, descKey, titleKey, diffLv, destX, destY, destPlanetCrc,
 			creatorName, rewardAmount, targetX, targetY, targetPlanetCrc, depictedObjCrc, 
@@ -199,8 +199,8 @@ void MissionManagerImplementation::setupHardcodeMissions() {
 	//Setup NPC:
 	CreatureManager* cm = zoneServer->getCreatureManager(5);
 	
-	string name = "MAN O' ACTION";
-	string stf = "";
+	String name = "MAN O' ACTION";
+	String stf = "";
 	ActionCreature* tac;
 	tac = cm->spawnActionCreature(name, stf, 0x8C73B91, "testM27", -5049.0f, 4225.0f, -0.0339502f, 0.999424f);
 	tac->setMisoMgr(this);
@@ -208,10 +208,10 @@ void MissionManagerImplementation::setupHardcodeMissions() {
 	int actmsk = 0;
 	actmsk |= ActionImplementation::TYPE_CONVERSE;
 	Action* act = new Action((SceneObject*)tac, actmsk, 0);
-	string scrnId = "0";
-	string leftBox = "Do you have...it?";
-	string Options = "Yes, here.|The weather is quite nice!|No, sorry I forgot."; //separate by |
-	string optLink = "1,none|2,none|ENDCNV,none"; //separate by | (nextScreenID,actionKey)
+	String scrnId = "0";
+	String leftBox = "Do you have...it?";
+	String Options = "Yes, here.|The weather is quite nice!|No, sorry I forgot."; //separate by |
+	String optLink = "1,none|2,none|ENDCNV,none"; //separate by | (nextScreenID,actionKey)
 	act->addConvoScreen(scrnId, leftBox, 3, Options, optLink);
 
 	//Converstaion window in response to Yes, Here:
@@ -228,7 +228,7 @@ void MissionManagerImplementation::setupHardcodeMissions() {
 	optLink = "ENDCNV,none";
 	act->addConvoScreen(scrnId, leftBox, 1, Options, optLink);
 
-	string actionKey = "KEYA";
+	String actionKey = "KEYA";
 	tac->addAction(actionKey, act);
 	tac->onConverse(actionKey); //link onConverse to action "KEYA"
 
@@ -249,15 +249,15 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 		
 		int sentBases = 0;
 		
-		for(int i = 0; i < misoMap->size(); i++) {
+		for (int i = 0; i < misoMap->size(); i++) {
 			MissionObject* miso = misoMap->get(i);
-			if(miso == NULL)
+			if (miso == NULL)
 				continue;
 				
 			//Do planet mission check here using the current player class:
 			
 			//Check if player is already on mission:
-			if(player->isOnCurMisoKey(miso->getDBKey())) {
+			if (player->isOnCurMisoKey(miso->getDBKey())) {
 				//error("player is already on mission, continuing to next miso in list.");
 				continue;
 			}
@@ -265,7 +265,7 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 			//Make sure the terminal and mission in the misoMap are in the same category:
 				
 			if ((termBitmask & TMASK_GENERAL) && (miso->getTerminalMask() & TMASK_GENERAL)) {
-				if(!player->checkMisoBSB(TMASK_GENERAL)) {
+				if (!player->checkMisoBSB(TMASK_GENERAL)) {
 					sendMissionBase(player, miso);
 					sentBases |= TMASK_GENERAL;
 				}
@@ -274,7 +274,7 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 			}
 
 			if ((termBitmask & TMASK_ENTERTAINER) && (miso->getTerminalMask() & TMASK_ENTERTAINER)) {
-				if(!player->checkMisoBSB(TMASK_ENTERTAINER)) {
+				if (!player->checkMisoBSB(TMASK_ENTERTAINER)) {
 					sendMissionBase(player, miso);
 					sentBases |= TMASK_ENTERTAINER;
 				}
@@ -283,7 +283,7 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 			}
 
 			if ((termBitmask & TMASK_EXPLORER) && (miso->getTerminalMask() & TMASK_EXPLORER)) {
-				if(!player->checkMisoBSB(TMASK_EXPLORER)) {
+				if (!player->checkMisoBSB(TMASK_EXPLORER)) {
 					sendMissionBase(player, miso);
 					sentBases |= TMASK_EXPLORER;
 				}
@@ -292,7 +292,7 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 			}
 
 			if ((termBitmask & TMASK_BOUNTY) && (miso->getTerminalMask() & TMASK_BOUNTY)) {
-				if(!player->checkMisoBSB(TMASK_BOUNTY)) {
+				if (!player->checkMisoBSB(TMASK_BOUNTY)) {
 					sendMissionBase(player, miso);
 					sentBases |= TMASK_BOUNTY;
 				}
@@ -301,7 +301,7 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 			}
 
 			if ((termBitmask & TMASK_ARTISAN) && (miso->getTerminalMask() & TMASK_ARTISAN)) {
-				if(!player->checkMisoBSB(TMASK_ARTISAN)) {
+				if (!player->checkMisoBSB(TMASK_ARTISAN)) {
 					sendMissionBase(player, miso);
 					sentBases |= TMASK_ARTISAN;
 				}
@@ -310,7 +310,7 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 			}
 
 			if ((termBitmask & TMASK_REBEL) && (miso->getTerminalMask() & TMASK_REBEL)) {
-				if(!player->checkMisoBSB(TMASK_REBEL)) {
+				if (!player->checkMisoBSB(TMASK_REBEL)) {
 					sendMissionBase(player, miso);
 					sentBases |= TMASK_REBEL;
 				}
@@ -319,7 +319,7 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 			}
 
 			if ((termBitmask & TMASK_IMPERIAL) && (miso->getTerminalMask() & TMASK_IMPERIAL)) {
-				if(!player->checkMisoBSB(TMASK_IMPERIAL)) {
+				if (!player->checkMisoBSB(TMASK_IMPERIAL)) {
 					sendMissionBase(player, miso);
 					sentBases |= TMASK_IMPERIAL;
 				}
@@ -338,13 +338,13 @@ void MissionManagerImplementation::sendTerminalData(Player* player, int termBitm
 	}
 }
 
-void MissionManagerImplementation::sendMission(Player* player, string& tKey, bool doLock) {
+void MissionManagerImplementation::sendMission(Player* player, String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 		
 		MissionObject* miso = misoMap->get(tKey);
 		
-		if(miso == NULL) {
+		if (miso == NULL) {
 			error("miso object is NULL, exiting function: sendMission()");
 			unlock(doLock);
 			return;
@@ -368,14 +368,14 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 		lock(doLock);
 		
 		MissionObject* miso = misoMap->get(oid);
-		if(miso == NULL) {
+		if (miso == NULL) {
 			error("miso object is NULL, exiting function: doMissionAccept()");
 			unlock(doLock);
 			return;
 		}
 		
 		//Check if player is already on mission:
-		if(player->isOnCurMisoKey(miso->getDBKey())) {
+		if (player->isOnCurMisoKey(miso->getDBKey())) {
 			//error("Player is already on mission!");
 			return;
 		}
@@ -391,7 +391,7 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 		//Create Mission Waypoint here
 		
 		//Give deliver item to player:
-		if(miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
+		if (miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
 			TangibleObject* itemTemp = miso->getDeliverItem();
 			TangibleObject* playerItem = new TangibleObject(player->getNewItemID(), itemTemp->getObjectCRC(), itemTemp->getName(), itemTemp->getTemplateName());
 
@@ -408,7 +408,7 @@ void MissionManagerImplementation::doMissionAccept(Player* player, uint64& oid, 
 	}
 }
 
-void MissionManagerImplementation::doMissionComplete(Player* player, string& tKey, bool doLock) {
+void MissionManagerImplementation::doMissionComplete(Player* player, String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 		
@@ -434,7 +434,7 @@ void MissionManagerImplementation::doMissionAbort(Player* player, uint64& oid, b
 		lock(doLock);
 		
 		MissionObject* miso = misoMap->get(oid);
-		if(miso == NULL) {
+		if (miso == NULL) {
 			error("miso object is NULL, exiting function: doMissionAbort()");
 			unlock(doLock);
 			return;
@@ -452,12 +452,12 @@ void MissionManagerImplementation::doMissionAbort(Player* player, uint64& oid, b
 	}
 }
 
-void MissionManagerImplementation::doMissionAbort(Player* player, string& tKey, bool doLock) {
+void MissionManagerImplementation::doMissionAbort(Player* player, String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 		
 		MissionObject* miso = misoMap->get(tKey);
-		if(miso == NULL) {
+		if (miso == NULL) {
 			error("miso object is NULL, exiting function: doMissionAbort()");
 			unlock(doLock);
 			return;
@@ -475,13 +475,13 @@ void MissionManagerImplementation::doMissionAbort(Player* player, string& tKey, 
 	}
 }
 		
-void MissionManagerImplementation::sendMissionBase(Player* player, string& tKey, bool doLock) {
+void MissionManagerImplementation::sendMissionBase(Player* player, String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 		
 		MissionObject* miso = misoMap->get(tKey);
 		
-		if(miso != NULL) {
+		if (miso != NULL) {
 			miso->sendTo(player, true);
 		} else {
 			error("Invalid mission attempting to be sent. sendMissionBase (key)");
@@ -501,7 +501,7 @@ void MissionManagerImplementation::sendMissionBase(Player* player, uint64& oid, 
 		
 		MissionObject* miso = misoMap->get(oid);
 		
-		if(miso != NULL) {
+		if (miso != NULL) {
 			miso->sendTo(player, true);
 		} else {
 			error("Invalid mission attempting to be sent. sendMissionBase (id)");
@@ -519,13 +519,13 @@ void MissionManagerImplementation::sendMissionBase(Player* player, MissionObject
 	sMiso->sendTo(player, true);
 }
 
-void MissionManagerImplementation::sendMissionDelta(Player* player, string& tKey, bool doLock) {
+void MissionManagerImplementation::sendMissionDelta(Player* player, String& tKey, bool doLock) {
 	try {
 		lock(doLock);
 		
 		MissionObject* miso = misoMap->get(tKey);
 		
-		if(miso != NULL) {
+		if (miso != NULL) {
 			miso->sendDeltaTo(player);
 		} else {
 			error("Invalid mission attempting to be sent. sendMissionDelta (key)");
@@ -545,7 +545,7 @@ void MissionManagerImplementation::sendMissionDelta(Player* player, uint64& oid,
 		
 		MissionObject* miso = misoMap->get(oid);
 		
-		if(miso != NULL) {
+		if (miso != NULL) {
 			miso->sendDeltaTo(player);
 		} else {
 			error("Invalid mission attempting to be sent. sendMissionDelta (id)");
@@ -577,7 +577,7 @@ void MissionManagerImplementation::removeMisoFromPool(MissionObject* miso, bool 
 	}
 }
 
-void MissionManagerImplementation::removeMisoFromPlayer(Player* player, string& tKey, bool doLock) {
+void MissionManagerImplementation::removeMisoFromPlayer(Player* player, String& tKey, bool doLock) {
 	MissionObject* miso;
 	
 	try {
@@ -585,7 +585,7 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, string& 
 		
 		miso = misoMap->get(tKey);
 		
-		if(miso != NULL) {
+		if (miso != NULL) {
 			miso->sendDestroyTo(player);
 		} else {
 			error("Invalid mission attempting to be removed from player. removeMisoFromPlayer (key)");
@@ -598,12 +598,12 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, string& 
 		unlock(doLock);
 	}
 	
-	if(miso == NULL)
+	if (miso == NULL)
 		return;
 	
-	if(miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
+	if (miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
 		TangibleObject* tmpi = (TangibleObject*)player->getMissionItem(miso->getDBKey());
-		if(tmpi == NULL) {
+		if (tmpi == NULL) {
 			return;
 		}
 
@@ -621,7 +621,7 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& 
 	
 		miso = misoMap->get(oid);
 		
-		if(miso != NULL) {
+		if (miso != NULL) {
 			miso->sendDestroyTo(player);
 		} else {
 			error("Invalid mission attempting to be removed from player. removeMisoFromPlayer (id)");
@@ -634,12 +634,12 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& 
 		unlock(doLock);
 	}
 	
-	if(miso == NULL)
+	if (miso == NULL)
 		return;
 	
-	if(miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
+	if (miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
 		TangibleObject* tmpi = (TangibleObject*)player->getMissionItem(miso->getDBKey());
-		if(tmpi == NULL) {
+		if (tmpi == NULL) {
 			return;
 		}
 
@@ -652,9 +652,9 @@ void MissionManagerImplementation::removeMisoFromPlayer(Player* player, uint64& 
 void MissionManagerImplementation::removeMisoFromPlayer(MissionObject* miso, Player* player) {
 	miso->sendDestroyTo(player);
 	
-	if(miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
+	if (miso->getTypeStr() == "mission_deliver" && (miso->getDeliverItem() != NULL)) {
 		TangibleObject* tmpi = (TangibleObject*)player->getMissionItem(miso->getDBKey());
-		if(tmpi == NULL) {
+		if (tmpi == NULL) {
 			return;
 		}
 		player->removeInventoryItem(tmpi->getObjectID());
@@ -672,7 +672,7 @@ void MissionManagerImplementation::removeMissions() {
 	misoMap->removeAll();
 }
 
-uint32 MissionManagerImplementation::getMissionItemCrc(string& tKey, bool doLock) {
+uint32 MissionManagerImplementation::getMissionItemCrc(String& tKey, bool doLock) {
 	uint32 crc = 0;
 	
 	try {
@@ -703,7 +703,7 @@ void MissionManagerImplementation::loadMissionScripts() {
 }
 /*
 int MissionManagerImplementation::runMissionFile(lua_State* L) {
-	string filename = getStringParameter(L);
+	String filename = getStringParameter(L);
 	
 	runFile("scripts/mission/objects" + filename, L);
 	

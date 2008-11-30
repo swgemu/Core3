@@ -70,7 +70,7 @@ void MissionManager::removeMissions() {
 		((MissionManagerImplementation*) _impl)->removeMissions();
 }
 
-MissionObject* MissionManager::poolMission(string& dbKey, int termMask, const string& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const string& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const string& descriptionStf, const string& titleStf, unsigned int typeCrc, TangibleObject* deliverItem, bool doLock) {
+MissionObject* MissionManager::poolMission(String& dbKey, int termMask, const String& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const String& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const String& descriptionStf, const String& titleStf, unsigned int typeCrc, TangibleObject* deliverItem, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -129,7 +129,7 @@ void MissionManager::sendTerminalData(Player* player, int termBitmask, bool doLo
 		((MissionManagerImplementation*) _impl)->sendTerminalData(player, termBitmask, doLock);
 }
 
-void MissionManager::sendMission(Player* player, string& tKey, bool doLock) {
+void MissionManager::sendMission(Player* player, String& tKey, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -159,7 +159,7 @@ void MissionManager::doMissionAccept(Player* player, unsigned long long oid, boo
 		((MissionManagerImplementation*) _impl)->doMissionAccept(player, oid, doLock);
 }
 
-void MissionManager::doMissionComplete(Player* player, string& tKey, bool doLock) {
+void MissionManager::doMissionComplete(Player* player, String& tKey, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -189,7 +189,7 @@ void MissionManager::doMissionAbort(Player* player, unsigned long long oid, bool
 		((MissionManagerImplementation*) _impl)->doMissionAbort(player, oid, doLock);
 }
 
-void MissionManager::doMissionAbort(Player* player, string& tKey, bool doLock) {
+void MissionManager::doMissionAbort(Player* player, String& tKey, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -218,7 +218,7 @@ void MissionManager::removeMisoFromPool(MissionObject* miso, bool doLock) {
 		((MissionManagerImplementation*) _impl)->removeMisoFromPool(miso, doLock);
 }
 
-unsigned int MissionManager::getMissionItemCrc(string& tKey, bool doLock) {
+unsigned int MissionManager::getMissionItemCrc(String& tKey, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -289,7 +289,7 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		removeMissions();
 		break;
 	case 9:
-		resp->insertLong(poolMission(inv->getAsciiParameter(_param0_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param9_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param15_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_), inv->getAsciiParameter(_param16_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_), inv->getUnsignedIntParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(poolMission(inv->getAsciiParameter(_param0_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param9_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param15_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_), inv->getAsciiParameter(_param16_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_), inv->getUnsignedIntParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 10:
 		setupHardcodeMissions();
@@ -298,25 +298,25 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		sendTerminalData((Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 12:
-		sendMission((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendMission__Player_string_bool_), inv->getBooleanParameter());
+		sendMission((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendMission__Player_String_bool_), inv->getBooleanParameter());
 		break;
 	case 13:
 		doMissionAccept((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 14:
-		doMissionComplete((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionComplete__Player_string_bool_), inv->getBooleanParameter());
+		doMissionComplete((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionComplete__Player_String_bool_), inv->getBooleanParameter());
 		break;
 	case 15:
 		doMissionAbort((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 16:
-		doMissionAbort((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionAbort__Player_string_bool_), inv->getBooleanParameter());
+		doMissionAbort((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionAbort__Player_String_bool_), inv->getBooleanParameter());
 		break;
 	case 17:
 		removeMisoFromPool((MissionObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 18:
-		resp->insertInt(getMissionItemCrc(inv->getAsciiParameter(_param0_getMissionItemCrc__string_bool_), inv->getBooleanParameter()));
+		resp->insertInt(getMissionItemCrc(inv->getAsciiParameter(_param0_getMissionItemCrc__String_bool_), inv->getBooleanParameter()));
 		break;
 	case 19:
 		loadMissionScripts();
@@ -346,7 +346,7 @@ void MissionManagerAdapter::removeMissions() {
 	return ((MissionManagerImplementation*) impl)->removeMissions();
 }
 
-MissionObject* MissionManagerAdapter::poolMission(string& dbKey, int termMask, const string& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const string& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const string& descriptionStf, const string& titleStf, unsigned int typeCrc, TangibleObject* deliverItem, bool doLock) {
+MissionObject* MissionManagerAdapter::poolMission(String& dbKey, int termMask, const String& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const String& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const String& descriptionStf, const String& titleStf, unsigned int typeCrc, TangibleObject* deliverItem, bool doLock) {
 	return ((MissionManagerImplementation*) impl)->poolMission(dbKey, termMask, typeStr, descKey, titleKey, diffLv, destX, destY, destPlanetCrc, creatorName, rewardAmount, targetX, targetY, targetPlanetCrc, depictedObjCrc, descriptionStf, titleStf, typeCrc, deliverItem, doLock);
 }
 
@@ -358,7 +358,7 @@ void MissionManagerAdapter::sendTerminalData(Player* player, int termBitmask, bo
 	return ((MissionManagerImplementation*) impl)->sendTerminalData(player, termBitmask, doLock);
 }
 
-void MissionManagerAdapter::sendMission(Player* player, string& tKey, bool doLock) {
+void MissionManagerAdapter::sendMission(Player* player, String& tKey, bool doLock) {
 	return ((MissionManagerImplementation*) impl)->sendMission(player, tKey, doLock);
 }
 
@@ -366,7 +366,7 @@ void MissionManagerAdapter::doMissionAccept(Player* player, unsigned long long o
 	return ((MissionManagerImplementation*) impl)->doMissionAccept(player, oid, doLock);
 }
 
-void MissionManagerAdapter::doMissionComplete(Player* player, string& tKey, bool doLock) {
+void MissionManagerAdapter::doMissionComplete(Player* player, String& tKey, bool doLock) {
 	return ((MissionManagerImplementation*) impl)->doMissionComplete(player, tKey, doLock);
 }
 
@@ -374,7 +374,7 @@ void MissionManagerAdapter::doMissionAbort(Player* player, unsigned long long oi
 	return ((MissionManagerImplementation*) impl)->doMissionAbort(player, oid, doLock);
 }
 
-void MissionManagerAdapter::doMissionAbort(Player* player, string& tKey, bool doLock) {
+void MissionManagerAdapter::doMissionAbort(Player* player, String& tKey, bool doLock) {
 	return ((MissionManagerImplementation*) impl)->doMissionAbort(player, tKey, doLock);
 }
 
@@ -382,7 +382,7 @@ void MissionManagerAdapter::removeMisoFromPool(MissionObject* miso, bool doLock)
 	return ((MissionManagerImplementation*) impl)->removeMisoFromPool(miso, doLock);
 }
 
-unsigned int MissionManagerAdapter::getMissionItemCrc(string& tKey, bool doLock) {
+unsigned int MissionManagerAdapter::getMissionItemCrc(String& tKey, bool doLock) {
 	return ((MissionManagerImplementation*) impl)->getMissionItemCrc(tKey, doLock);
 }
 

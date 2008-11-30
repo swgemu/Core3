@@ -78,7 +78,7 @@ public:
 
 		int slotsize;
 
-		string name;
+		String name;
 
 		for (int i = 0; i < size; ++i) {
 
@@ -133,7 +133,7 @@ public:
 
 		CraftingSlot* theslot = slots.get(slot);
 
-		if(theslot != NULL)
+		if (theslot != NULL)
 			return theslot->add(tano);
 
 		return false;
@@ -143,7 +143,7 @@ public:
 
 		CraftingSlot* theslot = slots.get(slot);
 
-		if(theslot != NULL)
+		if (theslot != NULL)
 			theslot->clear();
 	}
 
@@ -151,7 +151,7 @@ public:
 
 		CraftingSlot* theslot = slots.get(slot);
 
-		if(theslot != NULL)
+		if (theslot != NULL)
 			return theslot->get();
 		else
 			return NULL;
@@ -161,7 +161,7 @@ public:
 
 		CraftingSlot* theslot = slots.get(slot);
 
-		if(theslot != NULL)
+		if (theslot != NULL)
 			return theslot->size();
 		else
 			return 0;
@@ -174,11 +174,11 @@ public:
 
 			tano = slots.get(i);
 
-			cout << "Slot " << i << " *******************" << endl;
+			System::out << "Slot " << i << " *******************" << endl;
 
 			if (tano == NULL) {
 
-				cout << "Slot is NULL" << endl;
+				System::out << "Slot is NULL" << endl;
 
 			} else {
 

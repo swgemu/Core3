@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class AccountVersionMessage {
 public:
-	static void parse(Packet* pack, string& username, string& password, string& version) {
+	static void parse(Packet* pack, String& username, String& password, String& version) {
 		pack->parseAscii(username);
 		pack->parseAscii(password);
 		

@@ -61,7 +61,7 @@ public:
 		addFloatUpdate(0, complexity);
 	}
 	
-	void updateName(string name) {
+	void updateName(String name) {
 		addUnicodeUpdate(2, name);
 	}
 	
@@ -73,7 +73,7 @@ public:
 		
 		DraftSchematicValues * craftingValues = draftSchematic->getCraftingValues();
 		
-		string name;
+		String name;
 		float value;
 		
 		int count = craftingValues->getValuesToSendSize();
@@ -82,7 +82,7 @@ public:
 		
 		startList(count, count);
 		
-		for(int i = 0; i < count; ++i){
+		for (int i = 0; i < count; ++i){
 		
 			insertByte(0);
 			insertAscii("crafting");

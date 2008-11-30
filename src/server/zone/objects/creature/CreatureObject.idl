@@ -80,7 +80,7 @@ interface CreatureObject implements SceneObject {
 		super(oid, int type);
 	}
 
-	void info(const string message, boolean forcedLog = false);
+	void info(const String message, boolean forcedLog = false);
 
 	void sendItemsTo(Player player);
 	void sendTo(Player player, boolean doClose = true);
@@ -89,10 +89,10 @@ interface CreatureObject implements SceneObject {
 
 	// combat
 	void doCombatAnimation(CreatureObject defender, unsigned int animcrc, boolean hit = false);
-	void doAnimation(const string anim);
-	void playEffect(const string file, const string aux);
-	void showFlyText(const string file, const string aux, unsigned char red, unsigned char green, unsigned char blue);
-	void sendCombatSpam(CreatureObject defender, TangibleObject item, unsigned int damage, const string skill, boolean areaSpam = true);
+	void doAnimation(const String anim);
+	void playEffect(const String file, const String aux);
+	void showFlyText(const String file, const String aux, unsigned char red, unsigned char green, unsigned char blue);
+	void sendCombatSpam(CreatureObject defender, TangibleObject item, unsigned int damage, const String skill, boolean areaSpam = true);
 
 	void addDamage(CreatureObject creature, unsigned int damage);
 
@@ -102,7 +102,7 @@ interface CreatureObject implements SceneObject {
 	boolean isLootOwner(CreatureObject creature);
 	CreatureObject getLootOwner();
 
-	unsigned int getMitigation(const string mit);
+	unsigned int getMitigation(const String mit);
 
 	boolean isIncapacitated();
 	boolean isDead();
@@ -126,7 +126,7 @@ interface CreatureObject implements SceneObject {
 
 	void updateKnockdownRecovery();
 
-	void updateMood(const string md);
+	void updateMood(const String md);
 
 	boolean checkKnockdownRecovery();
 
@@ -283,7 +283,7 @@ interface CreatureObject implements SceneObject {
 	void updateServerMovementStamp();
 
 	SceneObject getInventoryItem(unsigned long oid);
-	TangibleObject getMissionItem(string tma);
+	TangibleObject getMissionItem(String tma);
 	void removeInventoryItem(unsigned long oid);
 
 	SceneObject getLootItem(unsigned long oid);
@@ -301,15 +301,15 @@ interface CreatureObject implements SceneObject {
 
 	local void addSkill(Skill skill);
 
-	void addSkillMod(const string name, int mod, boolean updateClient = false);
+	void addSkillMod(const String name, int mod, boolean updateClient = false);
 
-	int getSkillMod(const string name);
+	int getSkillMod(const String name);
 
-	boolean hasSkillMod(const string name);
+	boolean hasSkillMod(const String name);
 
-	int getSkillModBonus(const string name);
+	int getSkillModBonus(const String name);
 
-	boolean hasSkillModBonus(const string name);
+	boolean hasSkillModBonus(const String name);
 
 	int getAccuracy();
 	int getDefenseBonus();
@@ -337,8 +337,8 @@ interface CreatureObject implements SceneObject {
 
 	int getCenteredBonus();
 
-	void sendSystemMessage(const string message);
-	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
+	void sendSystemMessage(const String message);
+	void sendSystemMessage(const String file, const String str, unsigned long targetid = 0);
 	void updateSpeed(float speed, float acceleration);
 
 	void addInventoryItem(TangibleObject item);
@@ -347,8 +347,8 @@ interface CreatureObject implements SceneObject {
 	void addLootItem(TangibleObject item);
 
 	// Ent methods
-	void startDancing(const string anim, boolean changeDance = false);
-	void startPlayingMusic(const string anim, boolean changeDance = false);
+	void startDancing(const String anim, boolean changeDance = false);
+	void startPlayingMusic(const String anim, boolean changeDance = false);
 
 	void startWatch(unsigned long entid);
 	void startListen(unsigned long entid);
@@ -368,7 +368,7 @@ interface CreatureObject implements SceneObject {
 	void removeListener(CreatureObject creature);
 	void removeWatcher(CreatureObject creature);
 
-	void doFlourish(const string modifier);
+	void doFlourish(const String modifier);
 	/*void doHealShockWounds();
 	void doHealMindWounds();*/
 	void doPerformanceAction();
@@ -387,7 +387,7 @@ interface CreatureObject implements SceneObject {
 
 	// Skill methods
 	int getCreatureSkillsSize();
-	string getSkill(int idx);
+	String getSkill(int idx);
 	boolean hasSkill(unsigned int skillCRC);
 
 	// mount methods
@@ -444,17 +444,17 @@ interface CreatureObject implements SceneObject {
 	boolean isListening();
 	boolean isWatching();
 
-	unicode getCharacterName();
+	UnicodeString getCharacterName();
 
-	string getStfName();
-	string getSpeciesName();
-	string getRaceName();
-	string getGender();
+	String getStfName();
+	String getSpeciesName();
+	String getRaceName();
+	String getGender();
 
-	string getTerrainName();
+	String getTerrainName();
 
-	void getCharacterAppearance(string appearance);
-	void getHairAppearance(string appearance);
+	void getCharacterAppearance(String appearance);
+	void getHairAppearance(String appearance);
 
 	boolean isOvert();
 
@@ -562,14 +562,14 @@ interface CreatureObject implements SceneObject {
 	unsigned int getNewDefenderUpdateCounter(int cnt);
 
 
-	string getPerformanceAnimation();
+	String getPerformanceAnimation();
 	unsigned int getPerformanceCounter();
 
 	unsigned int getInstrumentID();
 
-	string getPerformanceName();
+	String getPerformanceName();
 
-	string getMood();
+	String getMood();
 	unsigned char getMoodID();
 
 	unsigned long getGroupInviterID();
@@ -583,7 +583,7 @@ interface CreatureObject implements SceneObject {
 	int getBuildingType();
 	SceneObject getBuilding();
 
-	string getGuildName();
+	String getGuildName();
 
 	int getWeaponSpeedModifier();
 
@@ -591,9 +591,9 @@ interface CreatureObject implements SceneObject {
 	unsigned int getSkillModsCounter();
 	unsigned int getNewSkillModsCounter(int cnt);
 
-	string getHideType();
-	string getBoneType();
-	string getMeatType();
+	String getHideType();
+	String getBoneType();
+	String getMeatType();
 
 	int getBoneMax();
 	int getHideMax();
@@ -610,26 +610,26 @@ interface CreatureObject implements SceneObject {
 	int isKiller();
 	int isAggressive();
 
-	string getBehaviorScript();
+	String getBehaviorScript();
 
-	string getCreatureFaction();
+	String getCreatureFaction();
 
-	string getCreatureWeapon();
-	string getCreatureWeaponName();
-	string getCreatureWeaponTemp();
-	string getCreatureWeaponClass();
+	String getCreatureWeapon();
+	String getCreatureWeaponName();
+	String getCreatureWeaponTemp();
+	String getCreatureWeaponClass();
 	int getCreatureWeaponEquipped();
 	int getCreatureWeaponMinDamage();
 	int getCreatureWeaponMaxDamage();
 	float getCreatureWeaponAttackSpeed();
-	string getCreatureWeaponDamageType();
-	string getCreatureWeaponArmorPiercing();
+	String getCreatureWeaponDamageType();
+	String getCreatureWeaponArmorPiercing();
 
 	float getInternalNPCDamageModifier();
 
 	float getTame();
 
-	string getLootGroup();
+	String getLootGroup();
 
 	// setters
 	void setBaseHealth(unsigned int health);
@@ -734,24 +734,24 @@ interface CreatureObject implements SceneObject {
 
 	boolean setNextAttackDelay(int del);
 
-	void setCharacterName(const string name);
-	void setCharacterName(const unicode name);
+	void setCharacterName(const String name);
+	void setCharacterName(const UnicodeString name);
 
-	void setTerrainName(const string name);
+	void setTerrainName(const String name);
 
-	void setCharacterAppearance(string cust);
+	void setCharacterAppearance(String cust);
 	void setAppearanceAttribute(unsigned char type, unsigned char value);
-	void setAppearanceAttribute(string type, unsigned char value);
+	void setAppearanceAttribute(String type, unsigned char value);
 	void updateCharacterAppearance();
 
-	void setHairAppearance(string cust);
+	void setHairAppearance(String cust);
 	void setHairAppearanceAttribute(unsigned char type, unsigned char value);
-	void setHairAppearanceAttribute(string type, unsigned char value);
+	void setHairAppearanceAttribute(String type, unsigned char value);
 
-	void setRaceName(const string name);
-	void setSpeciesName(const string name);
-	void setStfName(const string name);
-	void setGender(const string name);
+	void setRaceName(const String name);
+	void setSpeciesName(const String name);
+	void setStfName(const String name);
+	void setGender(const String name);
 
 	void setFaction(unsigned int fac);
 
@@ -759,7 +759,7 @@ interface CreatureObject implements SceneObject {
 
 	void setMood(unsigned char mdid);
 
-	void setMood(const string m);
+	void setMood(const String m);
 
 	void setGroup(GroupObject Group);
 
@@ -801,14 +801,14 @@ interface CreatureObject implements SceneObject {
 
 	int getMedicalFacilityRating();
 
-	void setBoneType(const string bone);
+	void setBoneType(const String bone);
 
 	void setBoneMax(int bonemax);
 
-	void setHideType(const string hide);
+	void setHideType(const String hide);
 	void setHideMax(int hidemax);
 
-	void setMeatType(const string meat);
+	void setMeatType(const String meat);
 	void setMeatMax(int meatmax);
 
 	void setMilk(int milkamt);
@@ -827,29 +827,29 @@ interface CreatureObject implements SceneObject {
 
 	void setAggressive(int aggressive);
 
-	void setBehaviorScript(const string behaviorScript);
+	void setBehaviorScript(const String behaviorScript);
 
-	void setLootGroup(const string lootgroup);
+	void setLootGroup(const String lootgroup);
 
 	void setTame(float tme);
 
-	void setCreatureFaction(const string cfac);
+	void setCreatureFaction(const String cfac);
 
 	void setInternalNPCDamageModifier(float indm);
 
 	// NPC weapons
-	void setCreatureWeapon(const string wpon);
-	void setCreatureWeaponName(const string weaponname);
-	void setCreatureWeaponTemp(const string weapontemp);
-	void setCreatureWeaponClass(const string weaponclass);
+	void setCreatureWeapon(const String wpon);
+	void setCreatureWeaponName(const String weaponname);
+	void setCreatureWeaponTemp(const String weapontemp);
+	void setCreatureWeaponClass(const String weaponclass);
 	void setCreatureWeaponEquipped(int weaponequ);
 	void setCreatureWeaponMinDamage(int weaponmindam);
 	void setCreatureWeaponMaxDamage(int weaponmaxdam);
 	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
-	void setCreatureWeaponDamageType(const string weapondamtype);
-	void setCreatureWeaponArmorPiercing(const string weaponarmorpiercing);
+	void setCreatureWeaponDamageType(const String weapondamtype);
+	void setCreatureWeaponArmorPiercing(const String weaponarmorpiercing);
 
-	void say(unicode message, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void say(UnicodeString message, unsigned int moodid = 0, unsigned int mood2 = 0);
 
-	void say(const string file, const string str, StfParameter param, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void say(const String file, const String str, StfParameter param, unsigned int moodid = 0, unsigned int mood2 = 0);
 }

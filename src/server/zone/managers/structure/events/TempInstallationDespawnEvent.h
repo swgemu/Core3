@@ -34,7 +34,7 @@ public:
 
 	bool activate() {
 
-		//cout << "TempInstallationDespawnEvent::activate()" << endl;
+		//System::out << "TempInstallationDespawnEvent::activate()" << endl;
 
 
 
@@ -44,7 +44,7 @@ public:
 		PlanetManager *planetManager = player->getZone()->getPlanetManager();
 		StructureManager *structureManager = planetManager->getStructureManager();
 
-		//cout << "TempInstallationDespawnEvent::activate() Deed object type is = " << deed->getObjectType() << " sub object type = " << deed->getObjectType() << endl;
+		//System::out << "TempInstallationDespawnEvent::activate() Deed object type is = " << deed->getObjectType() << " sub object type = " << deed->getObjectType() << endl;
 		switch(deed->getObjectSubType()) {
 			case TangibleObjectImplementation::INSTALLATIONDEED:
 

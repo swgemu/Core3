@@ -73,9 +73,9 @@ class AreaMap {
 			uint64 uid = 0;
 
 			float yMin = -(mapHeight / 2);
-			for(int i = 0; i < yCells; i++) {
+			for (int i = 0; i < yCells; i++) {
 				float xMin = -(mapWidth / 2);
-				for(int j = 0; j < xCells; j++) {
+				for (int j = 0; j < xCells; j++) {
 					baseAreas[j][i] = new BaseArea(xMin, xMin + baseAreaWidth, yMin, yMin + baseAreaHeight);
 					baseAreas[j][i]->setUID(++uid);
 					xMin += baseAreaWidth;
@@ -83,9 +83,9 @@ class AreaMap {
 				yMin += baseAreaHeight;
 			}
 		} catch (Exception e) {
-			cout << "Exception caught in AreaMap: " << e.getMessage() << endl;
+			System::out << "Exception caught in AreaMap: " << e.getMessage() << endl;
 		} catch (...) {
-			cout << "Unspecified Exception caught in AreaMap" << endl;
+			System::out << "Unspecified Exception caught in AreaMap" << endl;
 		}
 	}
 
@@ -109,8 +109,8 @@ public:
 
 	  baseAreas = new BaseArea**[yCells];
 
-	  if(baseAreas != NULL) {
-		  for(uint8 i = 0; i < yCells; i++)
+	  if (baseAreas != NULL) {
+		  for (uint8 i = 0; i < yCells; i++)
 			  baseAreas[i] = new BaseArea*[xCells];
 	  }
 
@@ -118,7 +118,7 @@ public:
 	}
 
 	~AreaMap() {
-		for(int i = 0; i < yCells; i++) {
+		for (int i = 0; i < yCells; i++) {
 			for (int j=0; j<xCells; j++)
 				baseAreas[j][i]->finalize();
 		}

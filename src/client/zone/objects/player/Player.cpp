@@ -20,7 +20,7 @@ void Player::insertToZone(Zone* zone) {
 }
 
 void Player::activatePositionUpdate() {
-	/*cout << hex << "moving Player [" << objectID << "] to (" << dec << getPositionX() << ", "
+	/*System::out << hex << "moving Player [" << objectID << "] to (" << dec << getPositionX() << ", "
 		 << getPositionZ() << ", " << getPositionY() << ")\n";*/
 
 	/*ZoneClient * client = zone->getZoneClient ( );

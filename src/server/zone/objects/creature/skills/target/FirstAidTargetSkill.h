@@ -51,22 +51,21 @@ which carries forward this exception.
 
 class FirstAidTargetSkill : public TargetSkill {
 protected:
-	string effectName;
-	int mindCost;
+	String effectName;
 
+	int mindCost;
 	float speed;
 
 public:
-	FirstAidTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
+	FirstAidTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 		mindCost = 0;
 
 		speed = 0.0f;
-
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (effectName.size() != 0)
+		if (!effectName.isEmpty())
 			creatureTarget->playEffect(effectName, "");
 
 		if (creature == creatureTarget)
@@ -75,7 +74,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "healing_response_79"); //Target must be a player or a creature pet in order to apply first aid.
 			return 0;
@@ -116,17 +115,18 @@ public:
 				creatureTarget->updateStates();
 
 				if (creatureTarget != creature) {
-					stringstream message;
-					message << "You apply first aid to " << creatureTarget->getCharacterName().c_str().c_str() << ".";
-					creature->sendSystemMessage(message.str());
+					StringBuffer message;
+					message << "You apply first aid to " << creatureTarget->getCharacterName().toString() << ".";
+					creature->sendSystemMessage(message.toString());
 				} else {
 					creature->sendSystemMessage("healing_response","first_aid_self"); //You apply first aid to yourself.
 				}
+
 				creature->changeMindBar(mindCost);
+
 				doAnimations(creature, creatureTarget);
 			} else {
 				creature->error("Failed clearing bleeding state on player for unknown reason.");
-				cout << "Failed clearing bleeding state on player for unknown reason.";
 			}
 		} else {
 			if (creatureTarget != creature) {
@@ -147,7 +147,7 @@ public:
 		return true;
 	}
 
-	void setEffectName(const string& name) {
+	void setEffectName(const String& name) {
 		effectName = name;
 	}
 

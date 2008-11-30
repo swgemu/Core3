@@ -57,7 +57,7 @@ public:
 		bazaarLocations = new BazaarMap(200);
 
 		// Tatooine Anchorhead
-				string location = "anchorhead";
+				String location = "anchorhead";
 				bazaarLocations->put(3945353, new BazaarTerminalDetails(8, location, 60, -5350));
 				bazaarLocations->put(3945352, new BazaarTerminalDetails(8, location, 64, -5350));
 

@@ -52,12 +52,12 @@ class ObjectControllerMessage;
 class DraftSchematicIngredientImplementation : public DraftSchematicIngredientServant {
 
 	// example: craft_food_ingredients_n
-	string templateName;
+	String templateName;
 	// example: dried Fruit
-	string titleName;
+	String titleName;
 
 	// example: organic
-	string resourceType;
+	String resourceType;
 	// example: 3
 	uint32 resourceQuantity;
 
@@ -79,8 +79,8 @@ public:
 	static const int OPTIONALMIXEDSLOT = 4;
 
 public:
-	DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
-			const int slotoption, const string& resourceType, uint32 resourceQuantity, uint32 combineType,
+	DraftSchematicIngredientImplementation(const String& ingredientTemplateName, const String& ingredientTitleName,
+			const int slotoption, const String& resourceType, uint32 resourceQuantity, uint32 combineType,
 			float contribution);
 
 	DraftSchematicIngredientImplementation(DraftSchematicIngredient* ingredient);
@@ -88,15 +88,15 @@ public:
 	void helperSendToPlayer(ObjectControllerMessage* msg);
 
 	// getters
-	inline string& getTemplateName() {
+	inline String& getTemplateName() {
 		return templateName;
 	}
 
-	inline string& getTitleName() {
+	inline String& getTitleName() {
 		return titleName;
 	}
 
-	inline string& getResourceType() {
+	inline String& getResourceType() {
 		return resourceType;
 	}
 

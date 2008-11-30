@@ -49,7 +49,7 @@ class CreatureObject : public SceneObject {
 public:
 	CreatureObject(unsigned long long oid);
 
-	void info(const string& message, bool forcedLog = false);
+	void info(const String& message, bool forcedLog = false);
 
 	void sendItemsTo(Player* player);
 
@@ -59,13 +59,13 @@ public:
 
 	void doCombatAnimation(CreatureObject* defender, unsigned int animcrc, bool hit = false);
 
-	void doAnimation(const string& anim);
+	void doAnimation(const String& anim);
 
-	void playEffect(const string& file, const string& aux);
+	void playEffect(const String& file, const String& aux);
 
-	void showFlyText(const string& file, const string& aux, unsigned char red, unsigned char green, unsigned char blue);
+	void showFlyText(const String& file, const String& aux, unsigned char red, unsigned char green, unsigned char blue);
 
-	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill, bool areaSpam = true);
+	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const String& skill, bool areaSpam = true);
 
 	void addDamage(CreatureObject* creature, unsigned int damage);
 
@@ -77,7 +77,7 @@ public:
 
 	CreatureObject* getLootOwner();
 
-	unsigned int getMitigation(const string& mit);
+	unsigned int getMitigation(const String& mit);
 
 	bool isIncapacitated();
 
@@ -117,7 +117,7 @@ public:
 
 	void updateKnockdownRecovery();
 
-	void updateMood(const string& md);
+	void updateMood(const String& md);
 
 	bool checkKnockdownRecovery();
 
@@ -339,7 +339,7 @@ public:
 
 	SceneObject* getInventoryItem(unsigned long long oid);
 
-	TangibleObject* getMissionItem(string& tma);
+	TangibleObject* getMissionItem(String& tma);
 
 	void removeInventoryItem(unsigned long long oid);
 
@@ -359,15 +359,15 @@ public:
 
 	void addSkill(Skill* skill);
 
-	void addSkillMod(const string& name, int mod, bool updateClient = false);
+	void addSkillMod(const String& name, int mod, bool updateClient = false);
 
-	int getSkillMod(const string& name);
+	int getSkillMod(const String& name);
 
-	bool hasSkillMod(const string& name);
+	bool hasSkillMod(const String& name);
 
-	int getSkillModBonus(const string& name);
+	int getSkillModBonus(const String& name);
 
-	bool hasSkillModBonus(const string& name);
+	bool hasSkillModBonus(const String& name);
 
 	int getAccuracy();
 
@@ -403,9 +403,9 @@ public:
 
 	int getCenteredBonus();
 
-	void sendSystemMessage(const string& message);
+	void sendSystemMessage(const String& message);
 
-	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
+	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
 
 	void updateSpeed(float speed, float acceleration);
 
@@ -415,9 +415,9 @@ public:
 
 	void addLootItem(TangibleObject* item);
 
-	void startDancing(const string& anim, bool changeDance = false);
+	void startDancing(const String& anim, bool changeDance = false);
 
-	void startPlayingMusic(const string& anim, bool changeDance = false);
+	void startPlayingMusic(const String& anim, bool changeDance = false);
 
 	void startWatch(unsigned long long entid);
 
@@ -443,7 +443,7 @@ public:
 
 	void removeWatcher(CreatureObject* creature);
 
-	void doFlourish(const string& modifier);
+	void doFlourish(const String& modifier);
 
 	void doPerformanceAction();
 
@@ -465,7 +465,7 @@ public:
 
 	int getCreatureSkillsSize();
 
-	string& getSkill(int idx);
+	String& getSkill(int idx);
 
 	bool hasSkill(unsigned int skillCRC);
 
@@ -541,21 +541,21 @@ public:
 
 	bool isWatching();
 
-	unicode& getCharacterName();
+	UnicodeString& getCharacterName();
 
-	string& getStfName();
+	String& getStfName();
 
-	string& getSpeciesName();
+	String& getSpeciesName();
 
-	string& getRaceName();
+	String& getRaceName();
 
-	string& getGender();
+	String& getGender();
 
-	string& getTerrainName();
+	String& getTerrainName();
 
-	void getCharacterAppearance(string& appearance);
+	void getCharacterAppearance(String& appearance);
 
-	void getHairAppearance(string& appearance);
+	void getHairAppearance(String& appearance);
 
 	bool isOvert();
 
@@ -717,15 +717,15 @@ public:
 
 	unsigned int getNewDefenderUpdateCounter(int cnt);
 
-	string& getPerformanceAnimation();
+	String& getPerformanceAnimation();
 
 	unsigned int getPerformanceCounter();
 
 	unsigned int getInstrumentID();
 
-	string& getPerformanceName();
+	String& getPerformanceName();
 
-	string& getMood();
+	String& getMood();
 
 	unsigned char getMoodID();
 
@@ -745,7 +745,7 @@ public:
 
 	SceneObject* getBuilding();
 
-	string& getGuildName();
+	String& getGuildName();
 
 	int getWeaponSpeedModifier();
 
@@ -755,11 +755,11 @@ public:
 
 	unsigned int getNewSkillModsCounter(int cnt);
 
-	string& getHideType();
+	String& getHideType();
 
-	string& getBoneType();
+	String& getBoneType();
 
-	string& getMeatType();
+	String& getMeatType();
 
 	int getBoneMax();
 
@@ -785,17 +785,17 @@ public:
 
 	int isAggressive();
 
-	string& getBehaviorScript();
+	String& getBehaviorScript();
 
-	string& getCreatureFaction();
+	String& getCreatureFaction();
 
-	string& getCreatureWeapon();
+	String& getCreatureWeapon();
 
-	string& getCreatureWeaponName();
+	String& getCreatureWeaponName();
 
-	string& getCreatureWeaponTemp();
+	String& getCreatureWeaponTemp();
 
-	string& getCreatureWeaponClass();
+	String& getCreatureWeaponClass();
 
 	int getCreatureWeaponEquipped();
 
@@ -805,15 +805,15 @@ public:
 
 	float getCreatureWeaponAttackSpeed();
 
-	string& getCreatureWeaponDamageType();
+	String& getCreatureWeaponDamageType();
 
-	string& getCreatureWeaponArmorPiercing();
+	String& getCreatureWeaponArmorPiercing();
 
 	float getInternalNPCDamageModifier();
 
 	float getTame();
 
-	string& getLootGroup();
+	String& getLootGroup();
 
 	void setBaseHealth(unsigned int health);
 
@@ -981,33 +981,33 @@ public:
 
 	bool setNextAttackDelay(int del);
 
-	void setCharacterName(const string& name);
+	void setCharacterName(const String& name);
 
-	void setCharacterName(const unicode& name);
+	void setCharacterName(const UnicodeString& name);
 
-	void setTerrainName(const string& name);
+	void setTerrainName(const String& name);
 
-	void setCharacterAppearance(string& cust);
+	void setCharacterAppearance(String& cust);
 
 	void setAppearanceAttribute(unsigned char type, unsigned char value);
 
-	void setAppearanceAttribute(string& type, unsigned char value);
+	void setAppearanceAttribute(String& type, unsigned char value);
 
 	void updateCharacterAppearance();
 
-	void setHairAppearance(string& cust);
+	void setHairAppearance(String& cust);
 
 	void setHairAppearanceAttribute(unsigned char type, unsigned char value);
 
-	void setHairAppearanceAttribute(string& type, unsigned char value);
+	void setHairAppearanceAttribute(String& type, unsigned char value);
 
-	void setRaceName(const string& name);
+	void setRaceName(const String& name);
 
-	void setSpeciesName(const string& name);
+	void setSpeciesName(const String& name);
 
-	void setStfName(const string& name);
+	void setStfName(const String& name);
 
-	void setGender(const string& name);
+	void setGender(const String& name);
 
 	void setFaction(unsigned int fac);
 
@@ -1015,7 +1015,7 @@ public:
 
 	void setMood(unsigned char mdid);
 
-	void setMood(const string& m);
+	void setMood(const String& m);
 
 	void setGroup(GroupObject* Group);
 
@@ -1071,15 +1071,15 @@ public:
 
 	int getMedicalFacilityRating();
 
-	void setBoneType(const string& bone);
+	void setBoneType(const String& bone);
 
 	void setBoneMax(int bonemax);
 
-	void setHideType(const string& hide);
+	void setHideType(const String& hide);
 
 	void setHideMax(int hidemax);
 
-	void setMeatType(const string& meat);
+	void setMeatType(const String& meat);
 
 	void setMeatMax(int meatmax);
 
@@ -1099,23 +1099,23 @@ public:
 
 	void setAggressive(int aggressive);
 
-	void setBehaviorScript(const string& behaviorScript);
+	void setBehaviorScript(const String& behaviorScript);
 
-	void setLootGroup(const string& lootgroup);
+	void setLootGroup(const String& lootgroup);
 
 	void setTame(float tme);
 
-	void setCreatureFaction(const string& cfac);
+	void setCreatureFaction(const String& cfac);
 
 	void setInternalNPCDamageModifier(float indm);
 
-	void setCreatureWeapon(const string& wpon);
+	void setCreatureWeapon(const String& wpon);
 
-	void setCreatureWeaponName(const string& weaponname);
+	void setCreatureWeaponName(const String& weaponname);
 
-	void setCreatureWeaponTemp(const string& weapontemp);
+	void setCreatureWeaponTemp(const String& weapontemp);
 
-	void setCreatureWeaponClass(const string& weaponclass);
+	void setCreatureWeaponClass(const String& weaponclass);
 
 	void setCreatureWeaponEquipped(int weaponequ);
 
@@ -1125,43 +1125,43 @@ public:
 
 	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
 
-	void setCreatureWeaponDamageType(const string& weapondamtype);
+	void setCreatureWeaponDamageType(const String& weapondamtype);
 
-	void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing);
+	void setCreatureWeaponArmorPiercing(const String& weaponarmorpiercing);
 
-	void say(unicode& message, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void say(UnicodeString& message, unsigned int moodid = 0, unsigned int mood2 = 0);
 
-	void say(const string& file, const string& str, StfParameter* param, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void say(const String& file, const String& str, StfParameter* param, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
 	virtual ~CreatureObject();
 
-	string _return_getBehaviorScript;
-	string _return_getBoneType;
-	string _return_getCreatureFaction;
-	string _return_getCreatureWeapon;
-	string _return_getCreatureWeaponArmorPiercing;
-	string _return_getCreatureWeaponClass;
-	string _return_getCreatureWeaponDamageType;
-	string _return_getCreatureWeaponName;
-	string _return_getCreatureWeaponTemp;
-	string _return_getGender;
-	string _return_getGuildName;
-	string _return_getHideType;
-	string _return_getLootGroup;
-	string _return_getMeatType;
-	string _return_getMood;
-	string _return_getPerformanceAnimation;
-	string _return_getPerformanceName;
-	string _return_getRaceName;
-	string _return_getSkill;
-	string _return_getSpeciesName;
-	string _return_getStfName;
-	string _return_getTerrainName;
+	String _return_getBehaviorScript;
+	String _return_getBoneType;
+	String _return_getCreatureFaction;
+	String _return_getCreatureWeapon;
+	String _return_getCreatureWeaponArmorPiercing;
+	String _return_getCreatureWeaponClass;
+	String _return_getCreatureWeaponDamageType;
+	String _return_getCreatureWeaponName;
+	String _return_getCreatureWeaponTemp;
+	String _return_getGender;
+	String _return_getGuildName;
+	String _return_getHideType;
+	String _return_getLootGroup;
+	String _return_getMeatType;
+	String _return_getMood;
+	String _return_getPerformanceAnimation;
+	String _return_getPerformanceName;
+	String _return_getRaceName;
+	String _return_getSkill;
+	String _return_getSpeciesName;
+	String _return_getStfName;
+	String _return_getTerrainName;
 
-	unicode _return_getCharacterName;
+	UnicodeString _return_getCharacterName;
 
 	friend class CreatureObjectHelper;
 };
@@ -1174,7 +1174,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void info(const string& message, bool forcedLog);
+	void info(const String& message, bool forcedLog);
 
 	void sendItemsTo(Player* player);
 
@@ -1184,13 +1184,13 @@ public:
 
 	void doCombatAnimation(CreatureObject* defender, unsigned int animcrc, bool hit);
 
-	void doAnimation(const string& anim);
+	void doAnimation(const String& anim);
 
-	void playEffect(const string& file, const string& aux);
+	void playEffect(const String& file, const String& aux);
 
-	void showFlyText(const string& file, const string& aux, unsigned char red, unsigned char green, unsigned char blue);
+	void showFlyText(const String& file, const String& aux, unsigned char red, unsigned char green, unsigned char blue);
 
-	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill, bool areaSpam);
+	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const String& skill, bool areaSpam);
 
 	void addDamage(CreatureObject* creature, unsigned int damage);
 
@@ -1202,7 +1202,7 @@ public:
 
 	CreatureObject* getLootOwner();
 
-	unsigned int getMitigation(const string& mit);
+	unsigned int getMitigation(const String& mit);
 
 	bool isIncapacitated();
 
@@ -1242,7 +1242,7 @@ public:
 
 	void updateKnockdownRecovery();
 
-	void updateMood(const string& md);
+	void updateMood(const String& md);
 
 	bool checkKnockdownRecovery();
 
@@ -1464,7 +1464,7 @@ public:
 
 	SceneObject* getInventoryItem(unsigned long long oid);
 
-	TangibleObject* getMissionItem(string& tma);
+	TangibleObject* getMissionItem(String& tma);
 
 	void removeInventoryItem(unsigned long long oid);
 
@@ -1482,15 +1482,15 @@ public:
 
 	Armor* getArmor(int type);
 
-	void addSkillMod(const string& name, int mod, bool updateClient);
+	void addSkillMod(const String& name, int mod, bool updateClient);
 
-	int getSkillMod(const string& name);
+	int getSkillMod(const String& name);
 
-	bool hasSkillMod(const string& name);
+	bool hasSkillMod(const String& name);
 
-	int getSkillModBonus(const string& name);
+	int getSkillModBonus(const String& name);
 
-	bool hasSkillModBonus(const string& name);
+	bool hasSkillModBonus(const String& name);
 
 	int getAccuracy();
 
@@ -1526,9 +1526,9 @@ public:
 
 	int getCenteredBonus();
 
-	void sendSystemMessage(const string& message);
+	void sendSystemMessage(const String& message);
 
-	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
+	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid);
 
 	void updateSpeed(float speed, float acceleration);
 
@@ -1538,9 +1538,9 @@ public:
 
 	void addLootItem(TangibleObject* item);
 
-	void startDancing(const string& anim, bool changeDance);
+	void startDancing(const String& anim, bool changeDance);
 
-	void startPlayingMusic(const string& anim, bool changeDance);
+	void startPlayingMusic(const String& anim, bool changeDance);
 
 	void startWatch(unsigned long long entid);
 
@@ -1566,7 +1566,7 @@ public:
 
 	void removeWatcher(CreatureObject* creature);
 
-	void doFlourish(const string& modifier);
+	void doFlourish(const String& modifier);
 
 	void doPerformanceAction();
 
@@ -1588,7 +1588,7 @@ public:
 
 	int getCreatureSkillsSize();
 
-	string& getSkill(int idx);
+	String& getSkill(int idx);
 
 	bool hasSkill(unsigned int skillCRC);
 
@@ -1664,21 +1664,21 @@ public:
 
 	bool isWatching();
 
-	unicode& getCharacterName();
+	UnicodeString& getCharacterName();
 
-	string& getStfName();
+	String& getStfName();
 
-	string& getSpeciesName();
+	String& getSpeciesName();
 
-	string& getRaceName();
+	String& getRaceName();
 
-	string& getGender();
+	String& getGender();
 
-	string& getTerrainName();
+	String& getTerrainName();
 
-	void getCharacterAppearance(string& appearance);
+	void getCharacterAppearance(String& appearance);
 
-	void getHairAppearance(string& appearance);
+	void getHairAppearance(String& appearance);
 
 	bool isOvert();
 
@@ -1840,15 +1840,15 @@ public:
 
 	unsigned int getNewDefenderUpdateCounter(int cnt);
 
-	string& getPerformanceAnimation();
+	String& getPerformanceAnimation();
 
 	unsigned int getPerformanceCounter();
 
 	unsigned int getInstrumentID();
 
-	string& getPerformanceName();
+	String& getPerformanceName();
 
-	string& getMood();
+	String& getMood();
 
 	unsigned char getMoodID();
 
@@ -1868,7 +1868,7 @@ public:
 
 	SceneObject* getBuilding();
 
-	string& getGuildName();
+	String& getGuildName();
 
 	int getWeaponSpeedModifier();
 
@@ -1878,11 +1878,11 @@ public:
 
 	unsigned int getNewSkillModsCounter(int cnt);
 
-	string& getHideType();
+	String& getHideType();
 
-	string& getBoneType();
+	String& getBoneType();
 
-	string& getMeatType();
+	String& getMeatType();
 
 	int getBoneMax();
 
@@ -1908,17 +1908,17 @@ public:
 
 	int isAggressive();
 
-	string& getBehaviorScript();
+	String& getBehaviorScript();
 
-	string& getCreatureFaction();
+	String& getCreatureFaction();
 
-	string& getCreatureWeapon();
+	String& getCreatureWeapon();
 
-	string& getCreatureWeaponName();
+	String& getCreatureWeaponName();
 
-	string& getCreatureWeaponTemp();
+	String& getCreatureWeaponTemp();
 
-	string& getCreatureWeaponClass();
+	String& getCreatureWeaponClass();
 
 	int getCreatureWeaponEquipped();
 
@@ -1928,15 +1928,15 @@ public:
 
 	float getCreatureWeaponAttackSpeed();
 
-	string& getCreatureWeaponDamageType();
+	String& getCreatureWeaponDamageType();
 
-	string& getCreatureWeaponArmorPiercing();
+	String& getCreatureWeaponArmorPiercing();
 
 	float getInternalNPCDamageModifier();
 
 	float getTame();
 
-	string& getLootGroup();
+	String& getLootGroup();
 
 	void setBaseHealth(unsigned int health);
 
@@ -2104,33 +2104,33 @@ public:
 
 	bool setNextAttackDelay(int del);
 
-	void setCharacterName(const string& name);
+	void setCharacterName(const String& name);
 
-	void setCharacterName(const unicode& name);
+	void setCharacterName(const UnicodeString& name);
 
-	void setTerrainName(const string& name);
+	void setTerrainName(const String& name);
 
-	void setCharacterAppearance(string& cust);
+	void setCharacterAppearance(String& cust);
 
 	void setAppearanceAttribute(unsigned char type, unsigned char value);
 
-	void setAppearanceAttribute(string& type, unsigned char value);
+	void setAppearanceAttribute(String& type, unsigned char value);
 
 	void updateCharacterAppearance();
 
-	void setHairAppearance(string& cust);
+	void setHairAppearance(String& cust);
 
 	void setHairAppearanceAttribute(unsigned char type, unsigned char value);
 
-	void setHairAppearanceAttribute(string& type, unsigned char value);
+	void setHairAppearanceAttribute(String& type, unsigned char value);
 
-	void setRaceName(const string& name);
+	void setRaceName(const String& name);
 
-	void setSpeciesName(const string& name);
+	void setSpeciesName(const String& name);
 
-	void setStfName(const string& name);
+	void setStfName(const String& name);
 
-	void setGender(const string& name);
+	void setGender(const String& name);
 
 	void setFaction(unsigned int fac);
 
@@ -2138,7 +2138,7 @@ public:
 
 	void setMood(unsigned char mdid);
 
-	void setMood(const string& m);
+	void setMood(const String& m);
 
 	void setGroup(GroupObject* Group);
 
@@ -2194,15 +2194,15 @@ public:
 
 	int getMedicalFacilityRating();
 
-	void setBoneType(const string& bone);
+	void setBoneType(const String& bone);
 
 	void setBoneMax(int bonemax);
 
-	void setHideType(const string& hide);
+	void setHideType(const String& hide);
 
 	void setHideMax(int hidemax);
 
-	void setMeatType(const string& meat);
+	void setMeatType(const String& meat);
 
 	void setMeatMax(int meatmax);
 
@@ -2222,23 +2222,23 @@ public:
 
 	void setAggressive(int aggressive);
 
-	void setBehaviorScript(const string& behaviorScript);
+	void setBehaviorScript(const String& behaviorScript);
 
-	void setLootGroup(const string& lootgroup);
+	void setLootGroup(const String& lootgroup);
 
 	void setTame(float tme);
 
-	void setCreatureFaction(const string& cfac);
+	void setCreatureFaction(const String& cfac);
 
 	void setInternalNPCDamageModifier(float indm);
 
-	void setCreatureWeapon(const string& wpon);
+	void setCreatureWeapon(const String& wpon);
 
-	void setCreatureWeaponName(const string& weaponname);
+	void setCreatureWeaponName(const String& weaponname);
 
-	void setCreatureWeaponTemp(const string& weapontemp);
+	void setCreatureWeaponTemp(const String& weapontemp);
 
-	void setCreatureWeaponClass(const string& weaponclass);
+	void setCreatureWeaponClass(const String& weaponclass);
 
 	void setCreatureWeaponEquipped(int weaponequ);
 
@@ -2248,65 +2248,65 @@ public:
 
 	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
 
-	void setCreatureWeaponDamageType(const string& weapondamtype);
+	void setCreatureWeaponDamageType(const String& weapondamtype);
 
-	void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing);
+	void setCreatureWeaponArmorPiercing(const String& weaponarmorpiercing);
 
-	void say(unicode& message, unsigned int moodid, unsigned int mood2);
+	void say(UnicodeString& message, unsigned int moodid, unsigned int mood2);
 
-	void say(const string& file, const string& str, StfParameter* param, unsigned int moodid, unsigned int mood2);
+	void say(const String& file, const String& str, StfParameter* param, unsigned int moodid, unsigned int mood2);
 
 protected:
-	string _param0_info__string_bool_;
-	string _param0_doAnimation__string_;
-	string _param0_playEffect__string_string_;
-	string _param1_playEffect__string_string_;
-	string _param0_showFlyText__string_string_char_char_char_;
-	string _param1_showFlyText__string_string_char_char_char_;
-	string _param3_sendCombatSpam__CreatureObject_TangibleObject_int_string_bool_;
-	string _param0_getMitigation__string_;
-	string _param0_updateMood__string_;
-	string _param0_getMissionItem__string_;
-	string _param0_addSkillMod__string_int_bool_;
-	string _param0_getSkillMod__string_;
-	string _param0_hasSkillMod__string_;
-	string _param0_getSkillModBonus__string_;
-	string _param0_hasSkillModBonus__string_;
-	string _param0_sendSystemMessage__string_;
-	string _param0_sendSystemMessage__string_string_long_;
-	string _param1_sendSystemMessage__string_string_long_;
-	string _param0_startDancing__string_bool_;
-	string _param0_startPlayingMusic__string_bool_;
-	string _param0_doFlourish__string_;
-	string _param0_getCharacterAppearance__string_;
-	string _param0_getHairAppearance__string_;
-	string _param0_setCharacterName__string_;
-	unicode _param0_setCharacterName__unicode_;
-	string _param0_setTerrainName__string_;
-	string _param0_setCharacterAppearance__string_;
-	string _param0_setAppearanceAttribute__string_char_;
-	string _param0_setHairAppearance__string_;
-	string _param0_setHairAppearanceAttribute__string_char_;
-	string _param0_setRaceName__string_;
-	string _param0_setSpeciesName__string_;
-	string _param0_setStfName__string_;
-	string _param0_setGender__string_;
-	string _param0_setMood__string_;
-	string _param0_setBoneType__string_;
-	string _param0_setHideType__string_;
-	string _param0_setMeatType__string_;
-	string _param0_setBehaviorScript__string_;
-	string _param0_setLootGroup__string_;
-	string _param0_setCreatureFaction__string_;
-	string _param0_setCreatureWeapon__string_;
-	string _param0_setCreatureWeaponName__string_;
-	string _param0_setCreatureWeaponTemp__string_;
-	string _param0_setCreatureWeaponClass__string_;
-	string _param0_setCreatureWeaponDamageType__string_;
-	string _param0_setCreatureWeaponArmorPiercing__string_;
-	unicode _param0_say__unicode_int_int_;
-	string _param0_say__string_string_StfParameter_int_int_;
-	string _param1_say__string_string_StfParameter_int_int_;
+	String _param0_info__String_bool_;
+	String _param0_doAnimation__String_;
+	String _param0_playEffect__String_String_;
+	String _param1_playEffect__String_String_;
+	String _param0_showFlyText__String_String_char_char_char_;
+	String _param1_showFlyText__String_String_char_char_char_;
+	String _param3_sendCombatSpam__CreatureObject_TangibleObject_int_String_bool_;
+	String _param0_getMitigation__String_;
+	String _param0_updateMood__String_;
+	String _param0_getMissionItem__String_;
+	String _param0_addSkillMod__String_int_bool_;
+	String _param0_getSkillMod__String_;
+	String _param0_hasSkillMod__String_;
+	String _param0_getSkillModBonus__String_;
+	String _param0_hasSkillModBonus__String_;
+	String _param0_sendSystemMessage__String_;
+	String _param0_sendSystemMessage__String_String_long_;
+	String _param1_sendSystemMessage__String_String_long_;
+	String _param0_startDancing__String_bool_;
+	String _param0_startPlayingMusic__String_bool_;
+	String _param0_doFlourish__String_;
+	String _param0_getCharacterAppearance__String_;
+	String _param0_getHairAppearance__String_;
+	String _param0_setCharacterName__String_;
+	UnicodeString _param0_setCharacterName__UnicodeString_;
+	String _param0_setTerrainName__String_;
+	String _param0_setCharacterAppearance__String_;
+	String _param0_setAppearanceAttribute__String_char_;
+	String _param0_setHairAppearance__String_;
+	String _param0_setHairAppearanceAttribute__String_char_;
+	String _param0_setRaceName__String_;
+	String _param0_setSpeciesName__String_;
+	String _param0_setStfName__String_;
+	String _param0_setGender__String_;
+	String _param0_setMood__String_;
+	String _param0_setBoneType__String_;
+	String _param0_setHideType__String_;
+	String _param0_setMeatType__String_;
+	String _param0_setBehaviorScript__String_;
+	String _param0_setLootGroup__String_;
+	String _param0_setCreatureFaction__String_;
+	String _param0_setCreatureWeapon__String_;
+	String _param0_setCreatureWeaponName__String_;
+	String _param0_setCreatureWeaponTemp__String_;
+	String _param0_setCreatureWeaponClass__String_;
+	String _param0_setCreatureWeaponDamageType__String_;
+	String _param0_setCreatureWeaponArmorPiercing__String_;
+	UnicodeString _param0_say__UnicodeString_int_int_;
+	String _param0_say__String_String_StfParameter_int_int_;
+	String _param1_say__String_String_StfParameter_int_int_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

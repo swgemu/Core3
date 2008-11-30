@@ -68,7 +68,7 @@ public:
 			
 			creo->unlock();
 		} catch (...) {
-			cout << "Unreported exception caught on SelfEnhanceEvent\n";
+			System::out << "Unreported exception caught on SelfEnhanceEvent\n";
 			
 			creo->unlock();
 		}

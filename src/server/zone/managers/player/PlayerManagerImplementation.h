@@ -95,15 +95,15 @@ public:
 
 	void save(Player* player);
 
-	bool validateName(const string& cname);
+	bool validateName(const String& name);
 
-	BaseMessage* checkPlayerName(const string& name, const string& species);
+	BaseMessage* checkPlayerName(const String& name, const String& species);
 	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);
 
 	void doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
 	void doCashTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
-	bool modifyOfflineBank(Player* sender, string playerName, uint32 creditAmount);
-	bool modifyRecipientOfflineBank(string recipient, uint32 creditAmount);
+	bool modifyOfflineBank(Player* sender, String playerName, uint32 creditAmount);
+	bool modifyRecipientOfflineBank(String recipient, uint32 creditAmount);
 	void updatePlayerCreditsFromDatabase(Player* player);
 	void updatePlayerCreditsToDatabase(Player* player);
 
@@ -136,7 +136,7 @@ public:
 		return playerMap;
 	}
 
-	inline Player* getPlayer(string name) {
+	inline Player* getPlayer(String name) {
 		return playerMap->get(name);
 	}
 
@@ -144,7 +144,7 @@ public:
 		return playerMap->put(player->getFirstName(), player);
 	}
 
-	inline Player* removePlayer(string firstname) {
+	inline Player* removePlayer(String firstname) {
 		return playerMap->remove(firstname);
 	}
 

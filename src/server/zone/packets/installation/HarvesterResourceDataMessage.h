@@ -55,7 +55,7 @@ public:
 		insertLong(hino->getObjectID()); // Harvester Object
 
 		ResourceManager* resourceManager = hino->getZone()->getZoneServer()->getResourceManager();
-		if(resourceManager == NULL) {
+		if (resourceManager == NULL) {
 			insertInt(0);
 			return;
 		}
@@ -67,7 +67,7 @@ public:
 
 	void insertResourceList(ResourceList *list) {
 
-		//cout << "insertResourceList size(): " << list->size() << endl;
+		//System::out << "insertResourceList size(): " << list->size() << endl;
 		insertInt(list->size()); // list size
 
 /*		LONG:		Resource ID
@@ -78,7 +78,7 @@ public:
 		for (int x = 0; x < list->size(); x++)
 		{
 			ResourceItem *ri = list->get(x);
-			//cout << "insertResourceList() ObjectID: " << hex << ri->getObjectID() << endl;
+			//System::out << "insertResourceList() ObjectID: " << hex << ri->getObjectID() << endl;
 			insertLong(ri->getObjectID());
 			insertAscii(ri->getName());
 			insertAscii(ri->getType());
@@ -91,8 +91,8 @@ public:
 
 /*
 
-if(list == NULL)
-	cout << "list was null!" << endl;
+if (list == NULL)
+	System::out << "list was null!" << endl;
 */
 
 

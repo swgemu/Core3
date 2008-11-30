@@ -42,39 +42,39 @@ public:
 	// Attribute Setters
 	inline void setHopperSizeMax(float size) {
 		hopperSizeMax = size;
-		string attr("hopperSizeMax");
+		String attr("hopperSizeMax");
 		itemAttributes->setFloatAttribute(attr, (float)hopperSizeMax);
 	}
 	inline void setExtractionRate(float rate) {
 		extractionRate = rate;
-		string attr("extractionRate");
+		String attr("extractionRate");
 		itemAttributes->setFloatAttribute(attr, (float)extractionRate);
 	}
 	inline void setActiveResourceID(uint64 rid) {
 		activeResourceID = rid;
-		string attr("activeResourceID");
+		String attr("activeResourceID");
 		itemAttributes->setUnsignedLongAttribute(attr, activeResourceID);
 	}
 	inline void setActiveSpawnID(uint64 sid) {
 		activeSpawnID = sid;
-		string attr("activeSpawnID");
+		String attr("activeSpawnID");
 		itemAttributes->setUnsignedLongAttribute(attr, activeSpawnID);
 	}
 	inline void setSpawnExpireTimestamp(uint32 ts) {
 		Time stamp(ts);
 		spawnExpireTimestamp = stamp;
-		string attr("spawnExpireTimestamp");
+		String attr("spawnExpireTimestamp");
 		itemAttributes->setUnsignedLongAttribute(attr, ts);
 	}
 	inline void setResourceHopperTimestamp(uint32 ts) {
 		Time stamp(ts);
 		resourceHopperTimestamp = stamp;
-		string attr("resourceHopperTimestamp");
+		String attr("resourceHopperTimestamp");
 		itemAttributes->setUnsignedLongAttribute(attr, ts);
 	}
 	inline void setSpawnDensity(int dens) {
 		spawnDensity = dens;
-		string attr("spawnDensity");
+		String attr("spawnDensity");
 		itemAttributes->setIntAttribute(attr, dens);
 	}
 
@@ -108,7 +108,7 @@ public:
 
 	// Other Operational Methods
 	void serializeResourceHopper();
-	void unserializeResourceHopper(const string& hopper);
+	void unserializeResourceHopper(const String& hopper);
 	int getHarvesterType();
 	inline void setHarvesterType(int type) {
 		harvesterType = type;
@@ -142,7 +142,7 @@ public:
 	}
 
 	inline uint64 getHopperItemID(int index) {
-		if(index < resourceHopper.size() && resourceHopper.size() >= 1) {
+		if (index < resourceHopper.size() && resourceHopper.size() >= 1) {
 			VectorMapEntry<uint64, float>* entry = ((SortedVector<VectorMapEntry<uint64, float>*>*)&resourceHopper)->get(index);
 			return entry->getKey();
 		} else
@@ -151,7 +151,7 @@ public:
 		}
 	}
 	inline float getHopperItemQuantity(int index) {
-		if(index < resourceHopper.size() && resourceHopper.size() >= 1) {
+		if (index < resourceHopper.size() && resourceHopper.size() >= 1) {
 			VectorMapEntry<uint64, float>* entry = ((SortedVector<VectorMapEntry<uint64, float>*>*)&resourceHopper)->get(index);
 			return entry->getValue();
 		} else {
@@ -159,7 +159,7 @@ public:
 		}
 	}
 	inline float getHopperItemQuantity(uint64 rid) {
-		if(resourceHopper.contains(rid))
+		if (resourceHopper.contains(rid))
 			return resourceHopper.get(rid);
 		else
 			return 0.0f;
@@ -175,11 +175,11 @@ public:
 		return hopperResourceUpdateCounter;
 	}
 	inline float removeHopperItem(uint64 rid, uint32 quantity) {
-		if(!resourceHopper.contains(rid))
+		if (!resourceHopper.contains(rid))
 			return 0.0f;
 
 		float hopperQuantity = resourceHopper.get(rid);
-		if((int)hopperQuantity < quantity)
+		if ((int)hopperQuantity < quantity)
 			quantity = (int)hopperQuantity;
 
 		resourceHopper.drop(rid);

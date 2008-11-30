@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "WeaponImplementation.h"
 
-WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat)
+WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat)
 		: WeaponServant(objid, tempCRC, n, tempn, WEAPON) {
 	type = tp;
 	setCategory(cat);
@@ -59,9 +59,9 @@ WeaponImplementation::WeaponImplementation(uint64 objid, uint32 tempCRC, const u
 	initialize();
 }
 
-WeaponImplementation::WeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat)
+WeaponImplementation::WeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat)
 		: WeaponServant(creature->getNewItemID(), WEAPON) {
-	objectCRC = String::hashCode(temp);
+	objectCRC = temp.hashCode();
 
 	name = n;
 
@@ -159,9 +159,9 @@ void WeaponImplementation::initialize() {
 
 	sliced = false;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "Weapon = 0x" << objectID;
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -172,7 +172,7 @@ void WeaponImplementation::parseItemAttributes() {
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
 
-	string name = "type";
+	String name = "type";
 	type = itemAttributes->getIntAttribute(name);
 
 	name = "category";
@@ -422,11 +422,11 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 		}
 		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_strength", dot0Strength);
 
-		stringstream dur;
+		StringBuffer dur;
 		dur << dot0Duration << "s";
 		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_duration", dur);
 
-		stringstream pot;
+		StringBuffer pot;
 		pot << dot0Potency << "%";
 		alm->insertAttribute("cat_wpn_dot_00.wpn_dot_potency", pot);
 
@@ -483,11 +483,11 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 
 		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_strength", dot1Strength);
 
-		stringstream dur;
+		StringBuffer dur;
 		dur << dot1Duration << "s";
 		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_duration", dur);
 
-		stringstream pot;
+		StringBuffer pot;
 		pot << dot1Potency << "%";
 		alm->insertAttribute("cat_wpn_dot_01.wpn_dot_potency", pot);
 
@@ -544,11 +544,11 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 
 		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_strength", dot2Strength);
 
-		stringstream dur;
+		StringBuffer dur;
 		dur << dot2Duration << "s";
 		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_duration", dur);
 
-		stringstream pot;
+		StringBuffer pot;
 		pot << dot2Potency << "%";
 		alm->insertAttribute("cat_wpn_dot_02.wpn_dot_potency", pot);
 
@@ -588,7 +588,7 @@ void WeaponImplementation::repairWeapon(Player* player) {
 
 	int decayRate = 0;
 
-	stringstream txt;
+	StringBuffer txt;
 
 	if (roll < 10) {
 		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
@@ -612,7 +612,7 @@ void WeaponImplementation::repairWeapon(Player* player) {
 		txt << "You have completely repaired the item.";
 	}
 
-	player->sendSystemMessage(txt.str());
+	player->sendSystemMessage(txt.toString());
 
 	setMaxCondition(maxCondition - (maxCondition / 100 * decayRate));
 	setConditionDamage(0);
@@ -631,7 +631,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 
 	int maxLevel = 120;
 
-	if(modifier > maxLevel){
+	if (modifier > maxLevel){
 		int diff = System::random(modifier - maxLevel);
 		modifier = maxLevel;
 		modifier += diff;
@@ -659,23 +659,23 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		luck = luck + 150;
 		setMaxDamage(maxDamage * 1.5);
 
-		stringstream itemText;
-		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
-		name = unicode(itemText.str());
+		StringBuffer itemText;
+		itemText << "\\#ffff00" << name.toCharArray() << " (Legendary)";
+		name = UnicodeString(itemText.toString());
 	} else if (playerRoll > 65000) {
 		modifier = modifier + 50;
 		luck = luck + 100;
 
-		stringstream itemText;
-		itemText << "\\#ffff00" << name.c_str() << " (Exceptional)";
-		name = unicode(itemText.str());
+		StringBuffer itemText;
+		itemText << "\\#ffff00" << name.toCharArray() << " (Exceptional)";
+		name = UnicodeString(itemText.toString());
 	} else if (playerRoll > 12500) {
 		modifier = modifier + 25;
 		luck = luck + 50;
 
-		stringstream itemText;
-		itemText << "\\#ffff00" << name.c_str();
-		name = unicode(itemText.str());
+		StringBuffer itemText;
+		itemText << "\\#ffff00" << name.toCharArray();
+		name = UnicodeString(itemText.toString());
 	}
 
 	if (luck * System::random(100) > 1750) {
@@ -813,29 +813,29 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 		alm->insertAttribute("cat_pup.pup_uses", powerupUses);
 
 		if (bonusMinDamage != 0) {
-			stringstream txt;
+			StringBuffer txt;
 			txt << "+" << round(bonusMinDamage);
-			alm->insertAttribute("cat_pup.pup_wpn_damage_min", txt.str());
+			alm->insertAttribute("cat_pup.pup_wpn_damage_min", txt.toString());
 		}
 		if (bonusMaxDamage != 0) {
-			stringstream txt;
+			StringBuffer txt;
 			txt << "+" << round(bonusMaxDamage);
-			alm->insertAttribute("cat_pup.pup_wpn_damage_max", txt.str());
+			alm->insertAttribute("cat_pup.pup_wpn_damage_max", txt.toString());
 		}
 		if (bonusAttackSpeed != 0) {
 
 			float spd = bonusAttackSpeed;
 
-			stringstream spdtxt;
+			StringBuffer spdtxt;
 
 			spdtxt << round(10 * spd)/10;
 
 			if ((int(round(spd * 10)) % 10) == 0)
 				spdtxt << ".0";
 
-			stringstream txt;
+			StringBuffer txt;
 			txt << round(10*bonusAttackSpeed)/10;
-			alm->insertAttribute("cat_pup.pup_wpn_attack_speed", spdtxt.str());
+			alm->insertAttribute("cat_pup.pup_wpn_attack_speed", spdtxt.toString());
 		}
 		if (bonusHealthAttackCost != 0)
 			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", bonusHealthAttackCost);
@@ -847,30 +847,30 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", bonusMindAttackCost);
 
 		if (bonusPointBlankAccuracy != 0) {
-			stringstream txt;
+			StringBuffer txt;
 			txt << "+" << bonusPointBlankAccuracy;
-			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", txt.str());
+			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", txt.toString());
 		}
 		if (bonusIdealRange != 0)
 			alm->insertAttribute("cat_pup.pup_wpn_range_mid", bonusIdealRange);
 
 		if (bonusIdealAccuracy != 0) {
-			stringstream txt;
+			StringBuffer txt;
 			txt << "+" << bonusIdealAccuracy;
-			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", txt.str());
+			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", txt.toString());
 		}
 		if (bonusMaxRangeAccuracy != 0) {
-			stringstream txt;
+			StringBuffer txt;
 			txt << "+" << bonusMaxRangeAccuracy;
-			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", txt.str());
+			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", txt.toString());
 		}
 		if (bonusWoundsRatio != 0) {
-			stringstream txt;
+			StringBuffer txt;
 
 			float wnd = round(10 * bonusWoundsRatio) / 10.0f;
 			txt << "+" << wnd << "%";
 
-			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", txt.str());
+			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", txt.toString());
 		}
 	}
 }
@@ -883,7 +883,7 @@ void WeaponImplementation::sliceWeapon(Player* player){
 	int max = 0;
 	int modifier = 0;
 
-	stringstream msg;
+	StringBuffer msg;
 
 	try {
 		wlock();
@@ -940,7 +940,7 @@ void WeaponImplementation::sliceWeapon(Player* player){
 		unlock();
 	}
 
-	player->sendSystemMessage(msg.str());
+	player->sendSystemMessage(msg.toString());
 }
 
 void WeaponImplementation::sliceWeaponDamage(int modifier){
@@ -1045,9 +1045,9 @@ void WeaponImplementation::removePowerup(Player* player, bool notify) {
 	setBonusWoundsRatio(0);
 
 	if (notify) {
-		stringstream txt;
-		txt << "The powerup on your " << name.c_str() << " has expired.";
-		player->sendSystemMessage(txt.str());
+		StringBuffer txt;
+		txt << "The powerup on your " << name.toCharArray() << " has expired.";
+		player->sendSystemMessage(txt.toString());
 	}
 
 	generateAttributes(player);
@@ -1055,7 +1055,7 @@ void WeaponImplementation::removePowerup(Player* player, bool notify) {
 
 void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 
-	stringstream cond;
+	StringBuffer cond;
 	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
 
 	alm->insertAttribute("condition", cond);
@@ -1074,7 +1074,7 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 	if (skillMod2Type > 0)
 		generateSkillMods(alm, skillMod2Type, skillMod2Value);
 
-	string ap;
+	String ap;
 
 	switch (armorPiercing) {
 	case NONE:
@@ -1098,17 +1098,17 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 
 	float speed = round(10 * getAttackSpeed()) / 10;
 
-	stringstream spdtxt;
+	StringBuffer spdtxt;
 
 	spdtxt << speed;
 
 	if ((int(round(speed * 10)) % 10) == 0)
 		spdtxt << ".0";
 
-	alm->insertAttribute("wpn_attack_speed", spdtxt.str());
+	alm->insertAttribute("wpn_attack_speed", spdtxt.toString());
 
 	//Damage Information
-	stringstream dmgtxt;
+	StringBuffer dmgtxt;
 
 	switch (damageType) {
 	case KINETIC:
@@ -1149,7 +1149,7 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 
 	alm->insertAttribute("damage.wpn_damage_max", maxDmg);
 
-	stringstream woundsratio;
+	StringBuffer woundsratio;
 
 	float wnd = round(10 * getWoundsRatio()) / 10.0f;
 
@@ -1158,21 +1158,21 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("damage.wpn_wound_chance", woundsratio);
 
 	//Accuracy Modifiers
-	stringstream pblank;
+	StringBuffer pblank;
 	if (getPointBlankAccuracy() >= 0)
 		pblank << "+";
 
 	pblank << getPointBlankAccuracy() << " @ " << getPointBlankRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_zero", pblank);
 
-	stringstream ideal;
+	StringBuffer ideal;
 	if (getIdealAccuracy() >= 0)
 		ideal << "+";
 
 	ideal << getIdealAccuracy() << " @ " << getIdealRange() << "m";
 	alm->insertAttribute("cat_wpn_rangemods.wpn_range_mid", ideal);
 
-	stringstream maxrange;
+	StringBuffer maxrange;
 	if (getMaxRangeAccuracy() >= 0)
 		maxrange << "+";
 

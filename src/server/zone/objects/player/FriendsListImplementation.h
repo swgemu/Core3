@@ -53,8 +53,8 @@ class Player;
 class PlayerObject;
 
 class FriendsListImplementation : public FriendsListServant {
-	Vector<string> friendName;
-	Vector<string> friendServer;
+	Vector<String> friendName;
+	Vector<String> friendServer;
 
 	int friendsMagicNumber;
 	Player* player;
@@ -62,10 +62,10 @@ class FriendsListImplementation : public FriendsListServant {
 public:
 	FriendsListImplementation(Player* pl);
 
-	void addFriend(string& name, string& server);
+	void addFriend(String& name, String& server);
 
-	void removeFriend(string& name);
-	void findFriend(string& name, PlayerManager* playerManager);
+	void removeFriend(String& name);
+	void findFriend(String& name, PlayerManager* playerManager);
 
 	void toString();
 
@@ -82,11 +82,11 @@ public:
 		return friendsMagicNumber;
 	}
 
-	string& getFriendsName(const int i){
+	String& getFriendsName(const int i){
 		return friendName.get(i);
 	}
 
-	string& getFriendsServer(const int i){
+	String& getFriendsServer(const int i){
 		return friendServer.get(i);
 	}
 

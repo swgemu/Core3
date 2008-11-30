@@ -23,7 +23,7 @@ class Powerup : public TangibleObject {
 public:
 	Powerup(unsigned long long oid);
 
-	Powerup(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	Powerup(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void apply(Weapon* weapon);
 

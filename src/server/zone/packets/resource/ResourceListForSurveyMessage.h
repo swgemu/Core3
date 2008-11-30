@@ -57,11 +57,11 @@ public:
 		 * D5 B1 64 8A // Opcode
 		 * INT // Number of resources in list
 		 * {
-		 * SHORT // Size of string.
+		 * SHORT // Size of String.
 		 * Variable // A_STRING
 		 * LONG // Resource ObjectID
 		 * }
-		 * SHORT // Size of string
+		 * SHORT // Size of String
 		 * Variable // A_STRING of resource type (ex. "flora_resources")
 		 * LONG // PlayerID
 		 */
@@ -72,14 +72,14 @@ public:
 		listSize = 0;
 	} 
 	
-	void addResource(string& resourceName, string& resourceType, long resourceID) {
+	void addResource(String& resourceName, String& resourceType, long resourceID) {
 		insertAscii(resourceName);
 		insertLong(resourceID);
 		insertAscii(resourceType);
 		++listSize;
 	}
 	
-	void finish(string& resourceType, long playerID) {
+	void finish(String& resourceType, long playerID) {
 		insertAscii(resourceType);
 		insertLong(playerID);
 		insertInt(10,listSize);

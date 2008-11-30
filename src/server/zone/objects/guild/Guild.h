@@ -19,7 +19,7 @@ class PlayerMap;
 
 class Guild : public DistributedObjectStub {
 public:
-	Guild(unsigned int gid, const string& name, const string& tag);
+	Guild(unsigned int gid, const String& name, const String& tag);
 
 	void sendGuildListTo(Player* player, bool doLock = true);
 
@@ -35,23 +35,23 @@ public:
 
 	void setGuildChat(ChatRoom* guildchat);
 
-	string& getGuildName();
+	String& getGuildName();
 
 	void setGuildLeader(unsigned int guleader);
 
 	unsigned int getGuildLeader();
 
-	string& getGuildTag();
+	String& getGuildTag();
 
-	void setGuildName(const string& nom);
+	void setGuildName(const String& nom);
 
-	void setGuildTag(const string& nom);
+	void setGuildTag(const String& nom);
 
-	void putSponsoredMap(const string& nom);
+	void putSponsoredMap(const String& nom);
 
 	unsigned int getSponsoredMapSize();
 
-	string& getSponsoredMap(int i);
+	String& getSponsoredMap(int i);
 
 	void clearSponsoredMap();
 
@@ -60,9 +60,9 @@ protected:
 
 	virtual ~Guild();
 
-	string _return_getGuildName;
-	string _return_getGuildTag;
-	string _return_getSponsoredMap;
+	String _return_getGuildName;
+	String _return_getGuildTag;
+	String _return_getSponsoredMap;
 
 	friend class GuildHelper;
 };
@@ -89,30 +89,30 @@ public:
 
 	void setGuildChat(ChatRoom* guildchat);
 
-	string& getGuildName();
+	String& getGuildName();
 
 	void setGuildLeader(unsigned int guleader);
 
 	unsigned int getGuildLeader();
 
-	string& getGuildTag();
+	String& getGuildTag();
 
-	void setGuildName(const string& nom);
+	void setGuildName(const String& nom);
 
-	void setGuildTag(const string& nom);
+	void setGuildTag(const String& nom);
 
-	void putSponsoredMap(const string& nom);
+	void putSponsoredMap(const String& nom);
 
 	unsigned int getSponsoredMapSize();
 
-	string& getSponsoredMap(int i);
+	String& getSponsoredMap(int i);
 
 	void clearSponsoredMap();
 
 protected:
-	string _param0_setGuildName__string_;
-	string _param0_setGuildTag__string_;
-	string _param0_putSponsoredMap__string_;
+	String _param0_setGuildName__String_;
+	String _param0_setGuildTag__String_;
+	String _param0_putSponsoredMap__String_;
 };
 
 class GuildHelper : public DistributedObjectClassHelper, public Singleton<GuildHelper> {

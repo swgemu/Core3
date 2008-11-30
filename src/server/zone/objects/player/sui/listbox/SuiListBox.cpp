@@ -25,7 +25,7 @@ SuiListBox::SuiListBox(DummyConstructorParameter* param) : SuiBox(param) {
 SuiListBox::~SuiListBox() {
 }
 
-void SuiListBox::addMenuItem(const string& item, unsigned long long objectID) {
+void SuiListBox::addMenuItem(const String& item, unsigned long long objectID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -39,7 +39,7 @@ void SuiListBox::addMenuItem(const string& item, unsigned long long objectID) {
 		((SuiListBoxImplementation*) _impl)->addMenuItem(item, objectID);
 }
 
-string& SuiListBox::getMenuItemName(int index) {
+String& SuiListBox::getMenuItemName(int index) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -164,7 +164,7 @@ Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		addMenuItem(inv->getAsciiParameter(_param0_addMenuItem__string_long_), inv->getUnsignedLongParameter());
+		addMenuItem(inv->getAsciiParameter(_param0_addMenuItem__String_long_), inv->getUnsignedLongParameter());
 		break;
 	case 7:
 		resp->insertAscii(getMenuItemName(inv->getSignedIntParameter()));
@@ -200,11 +200,11 @@ Packet* SuiListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-void SuiListBoxAdapter::addMenuItem(const string& item, unsigned long long objectID) {
+void SuiListBoxAdapter::addMenuItem(const String& item, unsigned long long objectID) {
 	return ((SuiListBoxImplementation*) impl)->addMenuItem(item, objectID);
 }
 
-string& SuiListBoxAdapter::getMenuItemName(int index) {
+String& SuiListBoxAdapter::getMenuItemName(int index) {
 	return ((SuiListBoxImplementation*) impl)->getMenuItemName(index);
 }
 

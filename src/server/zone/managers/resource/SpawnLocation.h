@@ -53,10 +53,10 @@ private:
 	int planet;
 	float x, y, radius, max;
 	time_t expireTime;
-	string pool;
+	String pool;
 
 public:
-	SpawnLocation(uint64 id, int inPlanet, float inX, float inY, float inRadius, float inMax, uint64 et, string& inPool) {
+	SpawnLocation(uint64 id, int inPlanet, float inX, float inY, float inRadius, float inMax, uint64 et, String& inPool) {
 		sid = id;
 		planet = inPlanet;
 		x = inX;
@@ -95,7 +95,7 @@ public:
 		return expireTime;
 	}
 
-	string& getPool() {
+	String& getPool() {
 		return pool;
 	}
 };

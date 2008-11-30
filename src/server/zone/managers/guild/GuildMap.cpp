@@ -63,7 +63,7 @@ Guild* GuildMap::get(unsigned int gid) {
 		return ((GuildMapImplementation*) _impl)->get(gid);
 }
 
-Guild* GuildMap::get(string& tag) {
+Guild* GuildMap::get(String& tag) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -134,7 +134,7 @@ Packet* GuildMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(get(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
 	case 9:
-		resp->insertLong(get(inv->getAsciiParameter(_param0_get__string_))->_getObjectID());
+		resp->insertLong(get(inv->getAsciiParameter(_param0_get__String_))->_getObjectID());
 		break;
 	case 10:
 		remove(inv->getUnsignedIntParameter());
@@ -164,7 +164,7 @@ Guild* GuildMapAdapter::get(unsigned int gid) {
 	return ((GuildMapImplementation*) impl)->get(gid);
 }
 
-Guild* GuildMapAdapter::get(string& tag) {
+Guild* GuildMapAdapter::get(String& tag) {
 	return ((GuildMapImplementation*) impl)->get(tag);
 }
 

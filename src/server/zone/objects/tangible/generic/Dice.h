@@ -21,11 +21,11 @@ class GenericItem;
 
 class Dice : public GenericItem {
 public:
-	Dice(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	Dice(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	Dice(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	Dice(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	Dice(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	Dice(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -83,8 +83,8 @@ public:
 	Dice* _this;
 
 public:
-	DiceServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype);
-	DiceServant(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype);
+	DiceServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype);
+	DiceServant(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype);
 	virtual ~DiceServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -50,7 +50,7 @@ import "../../player/Player";
 import "../../intangible/IntangibleObject";
 
 interface MountCreature implements Creature {
-	MountCreature(CreatureObject linkCreature, const string name, const string stf, 
+	MountCreature(CreatureObject linkCreature, const String name, const String stf, 
 			unsigned int itnocrc, unsigned int objCRC, unsigned long oid) {
 		super(oid);
 	}
@@ -80,8 +80,8 @@ interface MountCreature implements Creature {
 	unsigned int getItnocrc();
 	
 	void parseItemAttributes();
-	void setAttributes(string attributestring);
-	string getAttributes();
+	void setAttributes(String attributeString);
+	String getAttributes();
 	
 	void repair();
 	

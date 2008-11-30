@@ -55,8 +55,8 @@ class TicketCollectorImplementation : public TicketCollectorServant {
 	ShuttleCreature* shuttle;
 	
 public:
-	TicketCollectorImplementation(ShuttleCreature* shutle, uint64 objid, const unicode& n, 
-			const string& tempn, float x, float z, float y);
+	TicketCollectorImplementation(ShuttleCreature* shutle, uint64 objid, const UnicodeString& n, 
+			const String& tempn, float x, float z, float y);
 	
 	int useObject(Player* player);
 	

@@ -53,11 +53,11 @@ import "../TangibleObject";
 import "../powerup/Powerup";
 
 interface Weapon implements TangibleObject {
-	Weapon(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp, int tp, int cat) {
+	Weapon(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, boolean eqp, int tp, int cat) {
 		super(oid, tempCRC, n, tempn, tp);
 	}
 	
-	Weapon(CreatureObject creature, const string temp, const unicode n, const string tempn, boolean eqp, int tp, int cat) {
+	Weapon(CreatureObject creature, const String temp, const UnicodeString n, const String tempn, boolean eqp, int tp, int cat) {
 		super(unsigned long oid, tp);
 	}
 
@@ -160,7 +160,7 @@ interface Weapon implements TangibleObject {
 	int getPowerupUses();
 	boolean hasPowerup();
 
-	string& getCert();
+	String& getCert();
 
 	// setters
 	void setType(int type);
@@ -209,6 +209,6 @@ interface Weapon implements TangibleObject {
 	void setPowerupUses(int uses);
 	void setUsesRemaining(int charges);
 
-	void setCert(string& certification);
+	void setCert(String& certification);
 	void setCertified(boolean crt);
 }

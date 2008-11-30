@@ -66,7 +66,7 @@ public:
 		
 		insertFloat(1.0f);
 		
-		if(mi->getTitleKey() != 0) {
+		if (mi->getTitleKey() != 0) {
 			insertAscii("mission/mission_object");
 			insertInt(0);
 			insertAscii(mi->getTypeStr());

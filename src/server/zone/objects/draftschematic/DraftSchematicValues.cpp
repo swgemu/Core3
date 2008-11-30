@@ -25,7 +25,7 @@ DraftSchematicValues::DraftSchematicValues(DummyConstructorParameter* param) : M
 DraftSchematicValues::~DraftSchematicValues() {
 }
 
-void DraftSchematicValues::addExperimentalProperty(const string& subtitle, const string& title, float min, float max, const int precision) {
+void DraftSchematicValues::addExperimentalProperty(const String& subtitle, const String& title, float min, float max, const int precision) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -42,7 +42,7 @@ void DraftSchematicValues::addExperimentalProperty(const string& subtitle, const
 		((DraftSchematicValuesImplementation*) _impl)->addExperimentalProperty(subtitle, title, min, max, precision);
 }
 
-string& DraftSchematicValues::getExperimentalPropertySubtitle(const int i) {
+String& DraftSchematicValues::getExperimentalPropertySubtitle(const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -56,7 +56,7 @@ string& DraftSchematicValues::getExperimentalPropertySubtitle(const int i) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertySubtitle(i);
 }
 
-string& DraftSchematicValues::getExperimentalPropertySubtitle(const string& title, const int i) {
+String& DraftSchematicValues::getExperimentalPropertySubtitle(const String& title, const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -71,7 +71,7 @@ string& DraftSchematicValues::getExperimentalPropertySubtitle(const string& titl
 		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertySubtitle(title, i);
 }
 
-string& DraftSchematicValues::getExperimentalPropertyTitle(const string& subtitle) {
+String& DraftSchematicValues::getExperimentalPropertyTitle(const String& subtitle) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +85,7 @@ string& DraftSchematicValues::getExperimentalPropertyTitle(const string& subtitl
 		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertyTitle(subtitle);
 }
 
-string& DraftSchematicValues::getExperimentalPropertyTitle(const int i) {
+String& DraftSchematicValues::getExperimentalPropertyTitle(const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -99,7 +99,7 @@ string& DraftSchematicValues::getExperimentalPropertyTitle(const int i) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertyTitle(i);
 }
 
-string& DraftSchematicValues::getExperimentalPropertySubtitleClass(const int i) {
+String& DraftSchematicValues::getExperimentalPropertySubtitleClass(const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -125,7 +125,7 @@ int DraftSchematicValues::getExperimentalPropertySubtitleSize() {
 		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertySubtitleSize();
 }
 
-int DraftSchematicValues::getExperimentalPropertySubtitleSize(const string& title) {
+int DraftSchematicValues::getExperimentalPropertySubtitleSize(const String& title) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -150,7 +150,7 @@ int DraftSchematicValues::getExperimentalPropertyTitleSize() {
 		return ((DraftSchematicValuesImplementation*) _impl)->getExperimentalPropertyTitleSize();
 }
 
-bool DraftSchematicValues::hasProperty(const string& attribute) {
+bool DraftSchematicValues::hasProperty(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -163,7 +163,7 @@ bool DraftSchematicValues::hasProperty(const string& attribute) {
 		return ((DraftSchematicValuesImplementation*) _impl)->hasProperty(attribute);
 }
 
-void DraftSchematicValues::setCurrentValue(const string& attribute, float value) {
+void DraftSchematicValues::setCurrentValue(const String& attribute, float value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -177,7 +177,7 @@ void DraftSchematicValues::setCurrentValue(const string& attribute, float value)
 		((DraftSchematicValuesImplementation*) _impl)->setCurrentValue(attribute, value);
 }
 
-void DraftSchematicValues::setCurrentValue(const string& attribute, float value, float min, float max) {
+void DraftSchematicValues::setCurrentValue(const String& attribute, float value, float min, float max) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -193,7 +193,7 @@ void DraftSchematicValues::setCurrentValue(const string& attribute, float value,
 		((DraftSchematicValuesImplementation*) _impl)->setCurrentValue(attribute, value, min, max);
 }
 
-void DraftSchematicValues::setCurrentPercentage(const string& attribute, float value) {
+void DraftSchematicValues::setCurrentPercentage(const String& attribute, float value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -207,7 +207,7 @@ void DraftSchematicValues::setCurrentPercentage(const string& attribute, float v
 		((DraftSchematicValuesImplementation*) _impl)->setCurrentPercentage(attribute, value);
 }
 
-void DraftSchematicValues::setCurrentPercentage(const string& attribute, float value, float min, float max) {
+void DraftSchematicValues::setCurrentPercentage(const String& attribute, float value, float min, float max) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -223,7 +223,7 @@ void DraftSchematicValues::setCurrentPercentage(const string& attribute, float v
 		((DraftSchematicValuesImplementation*) _impl)->setCurrentPercentage(attribute, value, min, max);
 }
 
-void DraftSchematicValues::setMaxPercentage(const string& attribute, float value) {
+void DraftSchematicValues::setMaxPercentage(const String& attribute, float value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -237,7 +237,7 @@ void DraftSchematicValues::setMaxPercentage(const string& attribute, float value
 		((DraftSchematicValuesImplementation*) _impl)->setMaxPercentage(attribute, value);
 }
 
-void DraftSchematicValues::lockValue(const string& attribute) {
+void DraftSchematicValues::lockValue(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -250,7 +250,7 @@ void DraftSchematicValues::lockValue(const string& attribute) {
 		((DraftSchematicValuesImplementation*) _impl)->lockValue(attribute);
 }
 
-void DraftSchematicValues::resetValue(const string& attribute) {
+void DraftSchematicValues::resetValue(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -263,7 +263,7 @@ void DraftSchematicValues::resetValue(const string& attribute) {
 		((DraftSchematicValuesImplementation*) _impl)->resetValue(attribute);
 }
 
-float DraftSchematicValues::getCurrentValue(const string& attribute) {
+float DraftSchematicValues::getCurrentValue(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -289,7 +289,7 @@ float DraftSchematicValues::getCurrentValue(const int index) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getCurrentValue(index);
 }
 
-float DraftSchematicValues::getCurrentPercentage(const string& attribute) {
+float DraftSchematicValues::getCurrentPercentage(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -328,7 +328,7 @@ float DraftSchematicValues::getCurrentPercentageAverage(const int index) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getCurrentPercentageAverage(index);
 }
 
-float DraftSchematicValues::getCurrentPercentageAverage(const string& title) {
+float DraftSchematicValues::getCurrentPercentageAverage(const String& title) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -341,7 +341,7 @@ float DraftSchematicValues::getCurrentPercentageAverage(const string& title) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getCurrentPercentageAverage(title);
 }
 
-float DraftSchematicValues::getMaxPercentage(const string& attribute) {
+float DraftSchematicValues::getMaxPercentage(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -392,7 +392,7 @@ int DraftSchematicValues::getValuesToSendSize() {
 		return ((DraftSchematicValuesImplementation*) _impl)->getValuesToSendSize();
 }
 
-int DraftSchematicValues::getTitleLine(string& title) {
+int DraftSchematicValues::getTitleLine(String& title) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -405,7 +405,7 @@ int DraftSchematicValues::getTitleLine(string& title) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getTitleLine(title);
 }
 
-string& DraftSchematicValues::getValuesToSend(const int i) {
+String& DraftSchematicValues::getValuesToSend(const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -419,7 +419,7 @@ string& DraftSchematicValues::getValuesToSend(const int i) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getValuesToSend(i);
 }
 
-float DraftSchematicValues::getMinValue(const string& attribute) {
+float DraftSchematicValues::getMinValue(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -432,7 +432,7 @@ float DraftSchematicValues::getMinValue(const string& attribute) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getMinValue(attribute);
 }
 
-float DraftSchematicValues::getMaxValue(const string& attribute) {
+float DraftSchematicValues::getMaxValue(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -445,7 +445,7 @@ float DraftSchematicValues::getMaxValue(const string& attribute) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getMaxValue(attribute);
 }
 
-void DraftSchematicValues::setMinValue(const string& attribute, float value) {
+void DraftSchematicValues::setMinValue(const String& attribute, float value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -459,7 +459,7 @@ void DraftSchematicValues::setMinValue(const string& attribute, float value) {
 		((DraftSchematicValuesImplementation*) _impl)->setMinValue(attribute, value);
 }
 
-void DraftSchematicValues::setMaxValue(const string& attribute, float value) {
+void DraftSchematicValues::setMaxValue(const String& attribute, float value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -473,7 +473,7 @@ void DraftSchematicValues::setMaxValue(const string& attribute, float value) {
 		((DraftSchematicValuesImplementation*) _impl)->setMaxValue(attribute, value);
 }
 
-int DraftSchematicValues::getPrecision(const string& attribute) {
+int DraftSchematicValues::getPrecision(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -486,7 +486,7 @@ int DraftSchematicValues::getPrecision(const string& attribute) {
 		return ((DraftSchematicValuesImplementation*) _impl)->getPrecision(attribute);
 }
 
-void DraftSchematicValues::setPrecision(const string& attribute, const int precision) {
+void DraftSchematicValues::setPrecision(const String& attribute, const int precision) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -513,7 +513,7 @@ void DraftSchematicValues::recalculateValues(DraftSchematic* draftSchematic) {
 		((DraftSchematicValuesImplementation*) _impl)->recalculateValues(draftSchematic);
 }
 
-float DraftSchematicValues::getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i) {
+float DraftSchematicValues::getAttributeAndValue(DraftSchematic* draftSchematic, String& attribute, const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -576,16 +576,16 @@ Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMeth
 
 	switch (methid) {
 	case 6:
-		addExperimentalProperty(inv->getAsciiParameter(_param0_addExperimentalProperty__string_string_float_float_int_), inv->getAsciiParameter(_param1_addExperimentalProperty__string_string_float_float_int_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
+		addExperimentalProperty(inv->getAsciiParameter(_param0_addExperimentalProperty__String_String_float_float_int_), inv->getAsciiParameter(_param1_addExperimentalProperty__String_String_float_float_int_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
 		break;
 	case 7:
 		resp->insertAscii(getExperimentalPropertySubtitle(inv->getSignedIntParameter()));
 		break;
 	case 8:
-		resp->insertAscii(getExperimentalPropertySubtitle(inv->getAsciiParameter(_param0_getExperimentalPropertySubtitle__string_int_), inv->getSignedIntParameter()));
+		resp->insertAscii(getExperimentalPropertySubtitle(inv->getAsciiParameter(_param0_getExperimentalPropertySubtitle__String_int_), inv->getSignedIntParameter()));
 		break;
 	case 9:
-		resp->insertAscii(getExperimentalPropertyTitle(inv->getAsciiParameter(_param0_getExperimentalPropertyTitle__string_)));
+		resp->insertAscii(getExperimentalPropertyTitle(inv->getAsciiParameter(_param0_getExperimentalPropertyTitle__String_)));
 		break;
 	case 10:
 		resp->insertAscii(getExperimentalPropertyTitle(inv->getSignedIntParameter()));
@@ -597,43 +597,43 @@ Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertSignedInt(getExperimentalPropertySubtitleSize());
 		break;
 	case 13:
-		resp->insertSignedInt(getExperimentalPropertySubtitleSize(inv->getAsciiParameter(_param0_getExperimentalPropertySubtitleSize__string_)));
+		resp->insertSignedInt(getExperimentalPropertySubtitleSize(inv->getAsciiParameter(_param0_getExperimentalPropertySubtitleSize__String_)));
 		break;
 	case 14:
 		resp->insertSignedInt(getExperimentalPropertyTitleSize());
 		break;
 	case 15:
-		resp->insertBoolean(hasProperty(inv->getAsciiParameter(_param0_hasProperty__string_)));
+		resp->insertBoolean(hasProperty(inv->getAsciiParameter(_param0_hasProperty__String_)));
 		break;
 	case 16:
-		setCurrentValue(inv->getAsciiParameter(_param0_setCurrentValue__string_float_), inv->getFloatParameter());
+		setCurrentValue(inv->getAsciiParameter(_param0_setCurrentValue__String_float_), inv->getFloatParameter());
 		break;
 	case 17:
-		setCurrentValue(inv->getAsciiParameter(_param0_setCurrentValue__string_float_float_float_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		setCurrentValue(inv->getAsciiParameter(_param0_setCurrentValue__String_float_float_float_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 18:
-		setCurrentPercentage(inv->getAsciiParameter(_param0_setCurrentPercentage__string_float_), inv->getFloatParameter());
+		setCurrentPercentage(inv->getAsciiParameter(_param0_setCurrentPercentage__String_float_), inv->getFloatParameter());
 		break;
 	case 19:
-		setCurrentPercentage(inv->getAsciiParameter(_param0_setCurrentPercentage__string_float_float_float_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		setCurrentPercentage(inv->getAsciiParameter(_param0_setCurrentPercentage__String_float_float_float_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 20:
-		setMaxPercentage(inv->getAsciiParameter(_param0_setMaxPercentage__string_float_), inv->getFloatParameter());
+		setMaxPercentage(inv->getAsciiParameter(_param0_setMaxPercentage__String_float_), inv->getFloatParameter());
 		break;
 	case 21:
-		lockValue(inv->getAsciiParameter(_param0_lockValue__string_));
+		lockValue(inv->getAsciiParameter(_param0_lockValue__String_));
 		break;
 	case 22:
-		resetValue(inv->getAsciiParameter(_param0_resetValue__string_));
+		resetValue(inv->getAsciiParameter(_param0_resetValue__String_));
 		break;
 	case 23:
-		resp->insertFloat(getCurrentValue(inv->getAsciiParameter(_param0_getCurrentValue__string_)));
+		resp->insertFloat(getCurrentValue(inv->getAsciiParameter(_param0_getCurrentValue__String_)));
 		break;
 	case 24:
 		resp->insertFloat(getCurrentValue(inv->getSignedIntParameter()));
 		break;
 	case 25:
-		resp->insertFloat(getCurrentPercentage(inv->getAsciiParameter(_param0_getCurrentPercentage__string_)));
+		resp->insertFloat(getCurrentPercentage(inv->getAsciiParameter(_param0_getCurrentPercentage__String_)));
 		break;
 	case 26:
 		resp->insertFloat(getCurrentPercentage(inv->getSignedIntParameter()));
@@ -642,10 +642,10 @@ Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertFloat(getCurrentPercentageAverage(inv->getSignedIntParameter()));
 		break;
 	case 28:
-		resp->insertFloat(getCurrentPercentageAverage(inv->getAsciiParameter(_param0_getCurrentPercentageAverage__string_)));
+		resp->insertFloat(getCurrentPercentageAverage(inv->getAsciiParameter(_param0_getCurrentPercentageAverage__String_)));
 		break;
 	case 29:
-		resp->insertFloat(getMaxPercentage(inv->getAsciiParameter(_param0_getMaxPercentage__string_)));
+		resp->insertFloat(getMaxPercentage(inv->getAsciiParameter(_param0_getMaxPercentage__String_)));
 		break;
 	case 30:
 		resp->insertFloat(getMaxPercentage(inv->getSignedIntParameter()));
@@ -657,34 +657,34 @@ Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMeth
 		resp->insertSignedInt(getValuesToSendSize());
 		break;
 	case 33:
-		resp->insertSignedInt(getTitleLine(inv->getAsciiParameter(_param0_getTitleLine__string_)));
+		resp->insertSignedInt(getTitleLine(inv->getAsciiParameter(_param0_getTitleLine__String_)));
 		break;
 	case 34:
 		resp->insertAscii(getValuesToSend(inv->getSignedIntParameter()));
 		break;
 	case 35:
-		resp->insertFloat(getMinValue(inv->getAsciiParameter(_param0_getMinValue__string_)));
+		resp->insertFloat(getMinValue(inv->getAsciiParameter(_param0_getMinValue__String_)));
 		break;
 	case 36:
-		resp->insertFloat(getMaxValue(inv->getAsciiParameter(_param0_getMaxValue__string_)));
+		resp->insertFloat(getMaxValue(inv->getAsciiParameter(_param0_getMaxValue__String_)));
 		break;
 	case 37:
-		setMinValue(inv->getAsciiParameter(_param0_setMinValue__string_float_), inv->getFloatParameter());
+		setMinValue(inv->getAsciiParameter(_param0_setMinValue__String_float_), inv->getFloatParameter());
 		break;
 	case 38:
-		setMaxValue(inv->getAsciiParameter(_param0_setMaxValue__string_float_), inv->getFloatParameter());
+		setMaxValue(inv->getAsciiParameter(_param0_setMaxValue__String_float_), inv->getFloatParameter());
 		break;
 	case 39:
-		resp->insertSignedInt(getPrecision(inv->getAsciiParameter(_param0_getPrecision__string_)));
+		resp->insertSignedInt(getPrecision(inv->getAsciiParameter(_param0_getPrecision__String_)));
 		break;
 	case 40:
-		setPrecision(inv->getAsciiParameter(_param0_setPrecision__string_int_), inv->getSignedIntParameter());
+		setPrecision(inv->getAsciiParameter(_param0_setPrecision__String_int_), inv->getSignedIntParameter());
 		break;
 	case 41:
 		recalculateValues((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 42:
-		resp->insertFloat(getAttributeAndValue((DraftSchematic*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getAttributeAndValue__DraftSchematic_string_int_), inv->getSignedIntParameter()));
+		resp->insertFloat(getAttributeAndValue((DraftSchematic*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getAttributeAndValue__DraftSchematic_String_int_), inv->getSignedIntParameter()));
 		break;
 	case 43:
 		clearAll();
@@ -702,27 +702,27 @@ Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMeth
 	return resp;
 }
 
-void DraftSchematicValuesAdapter::addExperimentalProperty(const string& subtitle, const string& title, float min, float max, const int precision) {
+void DraftSchematicValuesAdapter::addExperimentalProperty(const String& subtitle, const String& title, float min, float max, const int precision) {
 	return ((DraftSchematicValuesImplementation*) impl)->addExperimentalProperty(subtitle, title, min, max, precision);
 }
 
-string& DraftSchematicValuesAdapter::getExperimentalPropertySubtitle(const int i) {
+String& DraftSchematicValuesAdapter::getExperimentalPropertySubtitle(const int i) {
 	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitle(i);
 }
 
-string& DraftSchematicValuesAdapter::getExperimentalPropertySubtitle(const string& title, const int i) {
+String& DraftSchematicValuesAdapter::getExperimentalPropertySubtitle(const String& title, const int i) {
 	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitle(title, i);
 }
 
-string& DraftSchematicValuesAdapter::getExperimentalPropertyTitle(const string& subtitle) {
+String& DraftSchematicValuesAdapter::getExperimentalPropertyTitle(const String& subtitle) {
 	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertyTitle(subtitle);
 }
 
-string& DraftSchematicValuesAdapter::getExperimentalPropertyTitle(const int i) {
+String& DraftSchematicValuesAdapter::getExperimentalPropertyTitle(const int i) {
 	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertyTitle(i);
 }
 
-string& DraftSchematicValuesAdapter::getExperimentalPropertySubtitleClass(const int i) {
+String& DraftSchematicValuesAdapter::getExperimentalPropertySubtitleClass(const int i) {
 	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitleClass(i);
 }
 
@@ -730,7 +730,7 @@ int DraftSchematicValuesAdapter::getExperimentalPropertySubtitleSize() {
 	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitleSize();
 }
 
-int DraftSchematicValuesAdapter::getExperimentalPropertySubtitleSize(const string& title) {
+int DraftSchematicValuesAdapter::getExperimentalPropertySubtitleSize(const String& title) {
 	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertySubtitleSize(title);
 }
 
@@ -738,39 +738,39 @@ int DraftSchematicValuesAdapter::getExperimentalPropertyTitleSize() {
 	return ((DraftSchematicValuesImplementation*) impl)->getExperimentalPropertyTitleSize();
 }
 
-bool DraftSchematicValuesAdapter::hasProperty(const string& attribute) {
+bool DraftSchematicValuesAdapter::hasProperty(const String& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->hasProperty(attribute);
 }
 
-void DraftSchematicValuesAdapter::setCurrentValue(const string& attribute, float value) {
+void DraftSchematicValuesAdapter::setCurrentValue(const String& attribute, float value) {
 	return ((DraftSchematicValuesImplementation*) impl)->setCurrentValue(attribute, value);
 }
 
-void DraftSchematicValuesAdapter::setCurrentValue(const string& attribute, float value, float min, float max) {
+void DraftSchematicValuesAdapter::setCurrentValue(const String& attribute, float value, float min, float max) {
 	return ((DraftSchematicValuesImplementation*) impl)->setCurrentValue(attribute, value, min, max);
 }
 
-void DraftSchematicValuesAdapter::setCurrentPercentage(const string& attribute, float value) {
+void DraftSchematicValuesAdapter::setCurrentPercentage(const String& attribute, float value) {
 	return ((DraftSchematicValuesImplementation*) impl)->setCurrentPercentage(attribute, value);
 }
 
-void DraftSchematicValuesAdapter::setCurrentPercentage(const string& attribute, float value, float min, float max) {
+void DraftSchematicValuesAdapter::setCurrentPercentage(const String& attribute, float value, float min, float max) {
 	return ((DraftSchematicValuesImplementation*) impl)->setCurrentPercentage(attribute, value, min, max);
 }
 
-void DraftSchematicValuesAdapter::setMaxPercentage(const string& attribute, float value) {
+void DraftSchematicValuesAdapter::setMaxPercentage(const String& attribute, float value) {
 	return ((DraftSchematicValuesImplementation*) impl)->setMaxPercentage(attribute, value);
 }
 
-void DraftSchematicValuesAdapter::lockValue(const string& attribute) {
+void DraftSchematicValuesAdapter::lockValue(const String& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->lockValue(attribute);
 }
 
-void DraftSchematicValuesAdapter::resetValue(const string& attribute) {
+void DraftSchematicValuesAdapter::resetValue(const String& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->resetValue(attribute);
 }
 
-float DraftSchematicValuesAdapter::getCurrentValue(const string& attribute) {
+float DraftSchematicValuesAdapter::getCurrentValue(const String& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->getCurrentValue(attribute);
 }
 
@@ -778,7 +778,7 @@ float DraftSchematicValuesAdapter::getCurrentValue(const int index) {
 	return ((DraftSchematicValuesImplementation*) impl)->getCurrentValue(index);
 }
 
-float DraftSchematicValuesAdapter::getCurrentPercentage(const string& attribute) {
+float DraftSchematicValuesAdapter::getCurrentPercentage(const String& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->getCurrentPercentage(attribute);
 }
 
@@ -790,11 +790,11 @@ float DraftSchematicValuesAdapter::getCurrentPercentageAverage(const int index) 
 	return ((DraftSchematicValuesImplementation*) impl)->getCurrentPercentageAverage(index);
 }
 
-float DraftSchematicValuesAdapter::getCurrentPercentageAverage(const string& title) {
+float DraftSchematicValuesAdapter::getCurrentPercentageAverage(const String& title) {
 	return ((DraftSchematicValuesImplementation*) impl)->getCurrentPercentageAverage(title);
 }
 
-float DraftSchematicValuesAdapter::getMaxPercentage(const string& attribute) {
+float DraftSchematicValuesAdapter::getMaxPercentage(const String& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->getMaxPercentage(attribute);
 }
 
@@ -810,35 +810,35 @@ int DraftSchematicValuesAdapter::getValuesToSendSize() {
 	return ((DraftSchematicValuesImplementation*) impl)->getValuesToSendSize();
 }
 
-int DraftSchematicValuesAdapter::getTitleLine(string& title) {
+int DraftSchematicValuesAdapter::getTitleLine(String& title) {
 	return ((DraftSchematicValuesImplementation*) impl)->getTitleLine(title);
 }
 
-string& DraftSchematicValuesAdapter::getValuesToSend(const int i) {
+String& DraftSchematicValuesAdapter::getValuesToSend(const int i) {
 	return ((DraftSchematicValuesImplementation*) impl)->getValuesToSend(i);
 }
 
-float DraftSchematicValuesAdapter::getMinValue(const string& attribute) {
+float DraftSchematicValuesAdapter::getMinValue(const String& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->getMinValue(attribute);
 }
 
-float DraftSchematicValuesAdapter::getMaxValue(const string& attribute) {
+float DraftSchematicValuesAdapter::getMaxValue(const String& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->getMaxValue(attribute);
 }
 
-void DraftSchematicValuesAdapter::setMinValue(const string& attribute, float value) {
+void DraftSchematicValuesAdapter::setMinValue(const String& attribute, float value) {
 	return ((DraftSchematicValuesImplementation*) impl)->setMinValue(attribute, value);
 }
 
-void DraftSchematicValuesAdapter::setMaxValue(const string& attribute, float value) {
+void DraftSchematicValuesAdapter::setMaxValue(const String& attribute, float value) {
 	return ((DraftSchematicValuesImplementation*) impl)->setMaxValue(attribute, value);
 }
 
-int DraftSchematicValuesAdapter::getPrecision(const string& attribute) {
+int DraftSchematicValuesAdapter::getPrecision(const String& attribute) {
 	return ((DraftSchematicValuesImplementation*) impl)->getPrecision(attribute);
 }
 
-void DraftSchematicValuesAdapter::setPrecision(const string& attribute, const int precision) {
+void DraftSchematicValuesAdapter::setPrecision(const String& attribute, const int precision) {
 	return ((DraftSchematicValuesImplementation*) impl)->setPrecision(attribute, precision);
 }
 
@@ -846,7 +846,7 @@ void DraftSchematicValuesAdapter::recalculateValues(DraftSchematic* draftSchemat
 	return ((DraftSchematicValuesImplementation*) impl)->recalculateValues(draftSchematic);
 }
 
-float DraftSchematicValuesAdapter::getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i) {
+float DraftSchematicValuesAdapter::getAttributeAndValue(DraftSchematic* draftSchematic, String& attribute, const int i) {
 	return ((DraftSchematicValuesImplementation*) impl)->getAttributeAndValue(draftSchematic, attribute, i);
 }
 

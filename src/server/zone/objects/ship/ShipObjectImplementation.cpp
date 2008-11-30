@@ -111,7 +111,7 @@ void ShipObjectImplementation::sendToOwner(bool inSpace) {
 
 	create(client);
 
-	if(inSpace)
+	if (inSpace)
 		link(client, owner);
 
 	BaseMessage* ship3 = new ShipObjectMessage3((ShipObject*) _this);
@@ -136,7 +136,7 @@ void ShipObjectImplementation::sendTo(Player* targetPlayer, bool inSpace, bool d
 
 	create(client);
 
-	if(inSpace)
+	if (inSpace)
 		link(client, owner);
 
 	BaseMessage* ship3 = new ShipObjectMessage3((ShipObject*) _this);

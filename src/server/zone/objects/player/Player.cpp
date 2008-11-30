@@ -899,7 +899,7 @@ unsigned int Player::getTotalAttribPoints() {
 		return ((PlayerImplementation*) _impl)->getTotalAttribPoints();
 }
 
-void Player::queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr) {
+void Player::queueFlourish(const String& modifier, unsigned long long target, unsigned int actionCntr) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -930,7 +930,7 @@ void Player::clearQueueAction(unsigned int actioncntr, float timer, unsigned int
 		((PlayerImplementation*) _impl)->clearQueueAction(actioncntr, timer, tab1, tab2);
 }
 
-void Player::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier) {
+void Player::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const String& actionModifier) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1131,7 +1131,7 @@ void Player::doDigest() {
 		((PlayerImplementation*) _impl)->doDigest();
 }
 
-bool Player::hasConsent(string& charID) {
+bool Player::hasConsent(String& charID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1144,7 +1144,7 @@ bool Player::hasConsent(string& charID) {
 		return ((PlayerImplementation*) _impl)->hasConsent(charID);
 }
 
-bool Player::giveConsent(string& name) {
+bool Player::giveConsent(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1157,7 +1157,7 @@ bool Player::giveConsent(string& name) {
 		return ((PlayerImplementation*) _impl)->giveConsent(name);
 }
 
-bool Player::revokeConsent(string& name) {
+bool Player::revokeConsent(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1182,7 +1182,7 @@ int Player::getConsentSize() {
 		return ((PlayerImplementation*) _impl)->getConsentSize();
 }
 
-string& Player::getConsentEntry(int index) {
+String& Player::getConsentEntry(int index) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1642,7 +1642,7 @@ void Player::trainStartingProfession() {
 		((PlayerImplementation*) _impl)->trainStartingProfession();
 }
 
-bool Player::trainSkillBox(const string& name, bool updateClient) {
+bool Player::trainSkillBox(const String& name, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1656,7 +1656,7 @@ bool Player::trainSkillBox(const string& name, bool updateClient) {
 		return ((PlayerImplementation*) _impl)->trainSkillBox(name, updateClient);
 }
 
-void Player::surrenderSkillBox(const string& name) {
+void Player::surrenderSkillBox(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1693,7 +1693,7 @@ int Player::getSkillBoxesSize() {
 		return ((PlayerImplementation*) _impl)->getSkillBoxesSize();
 }
 
-string& Player::getNextSkillBox() {
+String& Player::getNextSkillBox() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1718,7 +1718,7 @@ bool Player::hasNextSkillBox() {
 		return ((PlayerImplementation*) _impl)->hasNextSkillBox();
 }
 
-bool Player::hasSkillBox(string& skillBox) {
+bool Player::hasSkillBox(String& skillBox) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1796,7 +1796,7 @@ void Player::saveWaypoints(Player* player) {
 		((PlayerImplementation*) _impl)->saveWaypoints(player);
 }
 
-WaypointObject* Player::searchWaypoint(Player* play, const string& name, int mode) {
+WaypointObject* Player::searchWaypoint(Player* play, const String& name, int mode) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1811,7 +1811,7 @@ WaypointObject* Player::searchWaypoint(Player* play, const string& name, int mod
 		return ((PlayerImplementation*) _impl)->searchWaypoint(play, name, mode);
 }
 
-void Player::queueHeal(TangibleObject* medpack, unsigned int actionCRC, const string& attribute) {
+void Player::queueHeal(TangibleObject* medpack, unsigned int actionCRC, const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1826,7 +1826,7 @@ void Player::queueHeal(TangibleObject* medpack, unsigned int actionCRC, const st
 		((PlayerImplementation*) _impl)->queueHeal(medpack, actionCRC, attribute);
 }
 
-void Player::addXp(string& xpType, int xp, bool updateClient) {
+void Player::addXp(String& xpType, int xp, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1841,7 +1841,7 @@ void Player::addXp(string& xpType, int xp, bool updateClient) {
 		((PlayerImplementation*) _impl)->addXp(xpType, xp, updateClient);
 }
 
-void Player::removeXp(string& xpType, int xp, bool updateClient) {
+void Player::removeXp(String& xpType, int xp, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1856,7 +1856,7 @@ void Player::removeXp(string& xpType, int xp, bool updateClient) {
 		((PlayerImplementation*) _impl)->removeXp(xpType, xp, updateClient);
 }
 
-void Player::loadXp(const string& xpStr) {
+void Player::loadXp(const String& xpStr) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1869,7 +1869,7 @@ void Player::loadXp(const string& xpStr) {
 		((PlayerImplementation*) _impl)->loadXp(xpStr);
 }
 
-string& Player::saveXp() {
+String& Player::saveXp() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2050,7 +2050,7 @@ void Player::removeChatRoom(ChatRoom* room) {
 		((PlayerImplementation*) _impl)->removeChatRoom(room);
 }
 
-void Player::sendSystemMessage(const string& msg) {
+void Player::sendSystemMessage(const String& msg) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2063,7 +2063,7 @@ void Player::sendSystemMessage(const string& msg) {
 		((PlayerImplementation*) _impl)->sendSystemMessage(msg);
 }
 
-void Player::sendSystemMessage(unicode& msg) {
+void Player::sendSystemMessage(UnicodeString& msg) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2076,7 +2076,7 @@ void Player::sendSystemMessage(unicode& msg) {
 		((PlayerImplementation*) _impl)->sendSystemMessage(msg);
 }
 
-void Player::sendSystemMessage(const string& file, const string& str, unsigned long long targetid) {
+void Player::sendSystemMessage(const String& file, const String& str, unsigned long long targetid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2091,7 +2091,7 @@ void Player::sendSystemMessage(const string& file, const string& str, unsigned l
 		((PlayerImplementation*) _impl)->sendSystemMessage(file, str, targetid);
 }
 
-void Player::sendSystemMessage(const string& file, const string& str, StfParameter* param) {
+void Player::sendSystemMessage(const String& file, const String& str, StfParameter* param) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2148,7 +2148,7 @@ void Player::setConversatingCreature(CreatureObject* conversator) {
 		((PlayerImplementation*) _impl)->setConversatingCreature(conversator);
 }
 
-void Player::setFirstName(const string& name) {
+void Player::setFirstName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2161,7 +2161,7 @@ void Player::setFirstName(const string& name) {
 		((PlayerImplementation*) _impl)->setFirstName(name);
 }
 
-void Player::setLastName(const string& name) {
+void Player::setLastName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2174,7 +2174,7 @@ void Player::setLastName(const string& name) {
 		((PlayerImplementation*) _impl)->setLastName(name);
 }
 
-void Player::setFirstNameProper(const string& name) {
+void Player::setFirstNameProper(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2187,7 +2187,7 @@ void Player::setFirstNameProper(const string& name) {
 		((PlayerImplementation*) _impl)->setFirstNameProper(name);
 }
 
-void Player::setBiography(const string& bio) {
+void Player::setBiography(const String& bio) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2200,7 +2200,7 @@ void Player::setBiography(const string& bio) {
 		((PlayerImplementation*) _impl)->setBiography(bio);
 }
 
-void Player::setBiography(unicode& bio) {
+void Player::setBiography(UnicodeString& bio) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2382,7 +2382,7 @@ void Player::setCharacterID(unsigned long long id) {
 		((PlayerImplementation*) _impl)->setCharacterID(id);
 }
 
-void Player::setStartingProfession(const string& prof) {
+void Player::setStartingProfession(const String& prof) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2395,7 +2395,7 @@ void Player::setStartingProfession(const string& prof) {
 		((PlayerImplementation*) _impl)->setStartingProfession(prof);
 }
 
-void Player::setHairObject(const string& hair) {
+void Player::setHairObject(const String& hair) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2556,7 +2556,7 @@ void Player::newChangeFactionStatusEvent(unsigned char status, unsigned int time
 		((PlayerImplementation*) _impl)->newChangeFactionStatusEvent(status, timer);
 }
 
-void Player::setRaceFileName(string& name) {
+void Player::setRaceFileName(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2582,7 +2582,7 @@ void Player::setRaceID(unsigned char id) {
 		((PlayerImplementation*) _impl)->setRaceID(id);
 }
 
-void Player::setStartingLocation(string& loc) {
+void Player::setStartingLocation(String& loc) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2984,7 +2984,7 @@ CreatureObject* Player::getConversatingCreature() {
 		return ((PlayerImplementation*) _impl)->getConversatingCreature();
 }
 
-string& Player::getFirstName() {
+String& Player::getFirstName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2997,7 +2997,7 @@ string& Player::getFirstName() {
 		return ((PlayerImplementation*) _impl)->getFirstName();
 }
 
-string& Player::getLastName() {
+String& Player::getLastName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3010,7 +3010,7 @@ string& Player::getLastName() {
 		return ((PlayerImplementation*) _impl)->getLastName();
 }
 
-string& Player::getFirstNameProper() {
+String& Player::getFirstNameProper() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3023,7 +3023,7 @@ string& Player::getFirstNameProper() {
 		return ((PlayerImplementation*) _impl)->getFirstNameProper();
 }
 
-string& Player::getRaceFileName() {
+String& Player::getRaceFileName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3048,7 +3048,7 @@ unsigned char Player::getRaceID() {
 		return ((PlayerImplementation*) _impl)->getRaceID();
 }
 
-unicode& Player::getBiography() {
+UnicodeString& Player::getBiography() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3073,7 +3073,7 @@ unsigned long long Player::getCharacterID() {
 		return ((PlayerImplementation*) _impl)->getCharacterID();
 }
 
-string& Player::getStartingProfession() {
+String& Player::getStartingProfession() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3098,7 +3098,7 @@ int Player::getZoneIndex() {
 		return ((PlayerImplementation*) _impl)->getZoneIndex();
 }
 
-string& Player::getHairObject() {
+String& Player::getHairObject() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3222,7 +3222,7 @@ int Player::getCertificationListSize() {
 		return ((PlayerImplementation*) _impl)->getCertificationListSize();
 }
 
-string& Player::getCertification(int idx) {
+String& Player::getCertification(int idx) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3236,7 +3236,7 @@ string& Player::getCertification(int idx) {
 		return ((PlayerImplementation*) _impl)->getCertification(idx);
 }
 
-bool Player::checkCertification(string& certification) {
+bool Player::checkCertification(String& certification) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3285,7 +3285,7 @@ bool Player::isImmune() {
 		return ((PlayerImplementation*) _impl)->isImmune();
 }
 
-string& Player::getInputBoxReturnBuffer() {
+String& Player::getInputBoxReturnBuffer() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3336,7 +3336,7 @@ void Player::setMisoBSB(int tms) {
 		((PlayerImplementation*) _impl)->setMisoBSB(tms);
 }
 
-void Player::addToCurMisoKeys(string& tck) {
+void Player::addToCurMisoKeys(String& tck) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3349,7 +3349,7 @@ void Player::addToCurMisoKeys(string& tck) {
 		((PlayerImplementation*) _impl)->addToCurMisoKeys(tck);
 }
 
-bool Player::isOnCurMisoKey(string& tmk) {
+bool Player::isOnCurMisoKey(String& tmk) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3362,7 +3362,7 @@ bool Player::isOnCurMisoKey(string& tmk) {
 		return ((PlayerImplementation*) _impl)->isOnCurMisoKey(tmk);
 }
 
-void Player::removeFromCurMisoKeys(string& tck) {
+void Player::removeFromCurMisoKeys(String& tck) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3375,7 +3375,7 @@ void Player::removeFromCurMisoKeys(string& tck) {
 		((PlayerImplementation*) _impl)->removeFromCurMisoKeys(tck);
 }
 
-void Player::addToFinMisoKeys(string& tmp) {
+void Player::addToFinMisoKeys(String& tmp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3388,7 +3388,7 @@ void Player::addToFinMisoKeys(string& tmp) {
 		((PlayerImplementation*) _impl)->addToFinMisoKeys(tmp);
 }
 
-bool Player::hasCompletedMisoKey(string& tmk) {
+bool Player::hasCompletedMisoKey(String& tmk) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3496,7 +3496,7 @@ void Player::removeResourceFromCraft(unsigned long long resID, int slot, int cou
 		((PlayerImplementation*) _impl)->removeResourceFromCraft(resID, slot, counter);
 }
 
-void Player::nextCraftingStage(string& test) {
+void Player::nextCraftingStage(String& test) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3509,7 +3509,7 @@ void Player::nextCraftingStage(string& test) {
 		((PlayerImplementation*) _impl)->nextCraftingStage(test);
 }
 
-void Player::craftingCustomization(string& name, int condition, string& customizationstring) {
+void Player::craftingCustomization(String& name, int condition, String& customizationString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3517,14 +3517,14 @@ void Player::craftingCustomization(string& name, int condition, string& customiz
 		DistributedMethod method(this, 275);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(condition);
-		method.addAsciiParameter(customizationstring);
+		method.addAsciiParameter(customizationString);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->craftingCustomization(name, condition, customizationstring);
+		((PlayerImplementation*) _impl)->craftingCustomization(name, condition, customizationString);
 }
 
-void Player::createPrototype(string& count) {
+void Player::createPrototype(String& count) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3537,7 +3537,7 @@ void Player::createPrototype(string& count) {
 		((PlayerImplementation*) _impl)->createPrototype(count);
 }
 
-void Player::createSchematic(string& count) {
+void Player::createSchematic(String& count) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3550,7 +3550,7 @@ void Player::createSchematic(string& count) {
 		((PlayerImplementation*) _impl)->createSchematic(count);
 }
 
-void Player::handleExperimenting(int count, int numRowsAttempted, string& expstring) {
+void Player::handleExperimenting(int count, int numRowsAttempted, String& expString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3558,11 +3558,11 @@ void Player::handleExperimenting(int count, int numRowsAttempted, string& expstr
 		DistributedMethod method(this, 278);
 		method.addSignedIntParameter(count);
 		method.addSignedIntParameter(numRowsAttempted);
-		method.addAsciiParameter(expstring);
+		method.addAsciiParameter(expString);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->handleExperimenting(count, numRowsAttempted, expstring);
+		((PlayerImplementation*) _impl)->handleExperimenting(count, numRowsAttempted, expString);
 }
 
 void Player::sendDraftSchematics() {
@@ -3577,7 +3577,7 @@ void Player::sendDraftSchematics() {
 		((PlayerImplementation*) _impl)->sendDraftSchematics();
 }
 
-void Player::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
+void Player::addDraftSchematicsFromGroupName(const String& schematicGroupName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3590,7 +3590,7 @@ void Player::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
 		((PlayerImplementation*) _impl)->addDraftSchematicsFromGroupName(schematicGroupName);
 }
 
-void Player::subtractDraftSchematicsFromGroupName(const string& schematicGroupName) {
+void Player::subtractDraftSchematicsFromGroupName(const String& schematicGroupName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3936,7 +3936,7 @@ void Player::setCanSample() {
 		((PlayerImplementation*) _impl)->setCanSample();
 }
 
-void Player::setSurveyEvent(string& resourcename) {
+void Player::setSurveyEvent(String& resourcename) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3949,7 +3949,7 @@ void Player::setSurveyEvent(string& resourcename) {
 		((PlayerImplementation*) _impl)->setSurveyEvent(resourcename);
 }
 
-void Player::setSampleEvent(string& resourcename, bool firstTime) {
+void Player::setSampleEvent(String& resourcename, bool firstTime) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4048,7 +4048,7 @@ bool Player::getSampleErrorMessage() {
 		return ((PlayerImplementation*) _impl)->getSampleErrorMessage();
 }
 
-void Player::sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender) {
+void Player::sendMail(String& mailsender, UnicodeString& subjectSender, UnicodeString& bodySender, String& charNameSender) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4088,7 +4088,7 @@ void Player::clearEntertainerEvent() {
 		((PlayerImplementation*) _impl)->clearEntertainerEvent();
 }
 
-void Player::setLastNpcConvStr(const string& conv) {
+void Player::setLastNpcConvStr(const String& conv) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4101,7 +4101,7 @@ void Player::setLastNpcConvStr(const string& conv) {
 		((PlayerImplementation*) _impl)->setLastNpcConvStr(conv);
 }
 
-void Player::setLastNpcConvMessStr(const string& mess) {
+void Player::setLastNpcConvMessStr(const String& mess) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4114,7 +4114,7 @@ void Player::setLastNpcConvMessStr(const string& mess) {
 		((PlayerImplementation*) _impl)->setLastNpcConvMessStr(mess);
 }
 
-string& Player::getLastNpcConvStr() {
+String& Player::getLastNpcConvStr() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4127,7 +4127,7 @@ string& Player::getLastNpcConvStr() {
 		return ((PlayerImplementation*) _impl)->getLastNpcConvStr();
 }
 
-string& Player::getLastNpcConvMessStr() {
+String& Player::getLastNpcConvMessStr() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4140,7 +4140,7 @@ string& Player::getLastNpcConvMessStr() {
 		return ((PlayerImplementation*) _impl)->getLastNpcConvMessStr();
 }
 
-void Player::setInputBoxReturnBuffer(const string& message) {
+void Player::setInputBoxReturnBuffer(const String& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4244,7 +4244,7 @@ bool Player::clearGuildPermissionsBit(unsigned int bit, bool updateClient) {
 		return ((PlayerImplementation*) _impl)->clearGuildPermissionsBit(bit, updateClient);
 }
 
-int Player::getFactionPoints(const string& faction) {
+int Player::getFactionPoints(const String& faction) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4257,7 +4257,7 @@ int Player::getFactionPoints(const string& faction) {
 		return ((PlayerImplementation*) _impl)->getFactionPoints(faction);
 }
 
-void Player::addFactionPoints(const string& faction, unsigned int points) {
+void Player::addFactionPoints(const String& faction, unsigned int points) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4271,7 +4271,7 @@ void Player::addFactionPoints(const string& faction, unsigned int points) {
 		((PlayerImplementation*) _impl)->addFactionPoints(faction, points);
 }
 
-void Player::subtractFactionPoints(const string& faction, unsigned int points) {
+void Player::subtractFactionPoints(const String& faction, unsigned int points) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4322,7 +4322,7 @@ FactionPointList* Player::getFactionList() {
 		return ((PlayerImplementation*) _impl)->getFactionList();
 }
 
-unsigned int Player::getMaxFactionPoints(string& faction) {
+unsigned int Player::getMaxFactionPoints(String& faction) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4349,7 +4349,7 @@ void Player::delFactionPoints(Player* player, unsigned int amount) {
 		((PlayerImplementation*) _impl)->delFactionPoints(player, amount);
 }
 
-void Player::addSuiBoxChoice(string& choice) {
+void Player::addSuiBoxChoice(String& choice) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4646,13 +4646,13 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertInt(getTotalAttribPoints());
 		break;
 	case 72:
-		queueFlourish(inv->getAsciiParameter(_param0_queueFlourish__string_long_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter());
+		queueFlourish(inv->getAsciiParameter(_param0_queueFlourish__String_long_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 73:
 		clearQueueAction(inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 74:
-		queueAction((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_queueAction__Player_long_int_int_string_));
+		queueAction((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param4_queueAction__Player_long_int_int_String_));
 		break;
 	case 75:
 		deleteQueueAction(inv->getUnsignedIntParameter());
@@ -4700,13 +4700,13 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		doDigest();
 		break;
 	case 90:
-		resp->insertBoolean(hasConsent(inv->getAsciiParameter(_param0_hasConsent__string_)));
+		resp->insertBoolean(hasConsent(inv->getAsciiParameter(_param0_hasConsent__String_)));
 		break;
 	case 91:
-		resp->insertBoolean(giveConsent(inv->getAsciiParameter(_param0_giveConsent__string_)));
+		resp->insertBoolean(giveConsent(inv->getAsciiParameter(_param0_giveConsent__String_)));
 		break;
 	case 92:
-		resp->insertBoolean(revokeConsent(inv->getAsciiParameter(_param0_revokeConsent__string_)));
+		resp->insertBoolean(revokeConsent(inv->getAsciiParameter(_param0_revokeConsent__String_)));
 		break;
 	case 93:
 		resp->insertSignedInt(getConsentSize());
@@ -4820,10 +4820,10 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		trainStartingProfession();
 		break;
 	case 130:
-		resp->insertBoolean(trainSkillBox(inv->getAsciiParameter(_param0_trainSkillBox__string_bool_), inv->getBooleanParameter()));
+		resp->insertBoolean(trainSkillBox(inv->getAsciiParameter(_param0_trainSkillBox__String_bool_), inv->getBooleanParameter()));
 		break;
 	case 131:
-		surrenderSkillBox(inv->getAsciiParameter(_param0_surrenderSkillBox__string_));
+		surrenderSkillBox(inv->getAsciiParameter(_param0_surrenderSkillBox__String_));
 		break;
 	case 132:
 		resetSkillBoxesIterator();
@@ -4838,7 +4838,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(hasNextSkillBox());
 		break;
 	case 136:
-		resp->insertBoolean(hasSkillBox(inv->getAsciiParameter(_param0_hasSkillBox__string_)));
+		resp->insertBoolean(hasSkillBox(inv->getAsciiParameter(_param0_hasSkillBox__String_)));
 		break;
 	case 137:
 		addWaypoint((WaypointObject*) inv->getObjectParameter());
@@ -4856,19 +4856,19 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		saveWaypoints((Player*) inv->getObjectParameter());
 		break;
 	case 142:
-		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_string_int_), inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_String_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 143:
-		queueHeal((TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param2_queueHeal__TangibleObject_int_string_));
+		queueHeal((TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param2_queueHeal__TangibleObject_int_String_));
 		break;
 	case 144:
-		addXp(inv->getAsciiParameter(_param0_addXp__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		addXp(inv->getAsciiParameter(_param0_addXp__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 145:
-		removeXp(inv->getAsciiParameter(_param0_removeXp__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		removeXp(inv->getAsciiParameter(_param0_removeXp__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 146:
-		loadXp(inv->getAsciiParameter(_param0_loadXp__string_));
+		loadXp(inv->getAsciiParameter(_param0_loadXp__String_));
 		break;
 	case 147:
 		resp->insertAscii(saveXp());
@@ -4913,16 +4913,16 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		removeChatRoom((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 161:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_));
 		break;
 	case 162:
-		sendSystemMessage(inv->getUnicodeParameter(_param0_sendSystemMessage__unicode_));
+		sendSystemMessage(inv->getUnicodeParameter(_param0_sendSystemMessage__UnicodeString_));
 		break;
 	case 163:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_String_long_), inv->getAsciiParameter(_param1_sendSystemMessage__String_String_long_), inv->getUnsignedLongParameter());
 		break;
 	case 164:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_StfParameter_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_StfParameter_), (StfParameter*) inv->getObjectParameter());
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_String_StfParameter_), inv->getAsciiParameter(_param1_sendSystemMessage__String_String_StfParameter_), (StfParameter*) inv->getObjectParameter());
 		break;
 	case 165:
 		sendBattleFatigueMessage((CreatureObject*) inv->getObjectParameter());
@@ -4934,19 +4934,19 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setConversatingCreature((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 168:
-		setFirstName(inv->getAsciiParameter(_param0_setFirstName__string_));
+		setFirstName(inv->getAsciiParameter(_param0_setFirstName__String_));
 		break;
 	case 169:
-		setLastName(inv->getAsciiParameter(_param0_setLastName__string_));
+		setLastName(inv->getAsciiParameter(_param0_setLastName__String_));
 		break;
 	case 170:
-		setFirstNameProper(inv->getAsciiParameter(_param0_setFirstNameProper__string_));
+		setFirstNameProper(inv->getAsciiParameter(_param0_setFirstNameProper__String_));
 		break;
 	case 171:
-		setBiography(inv->getAsciiParameter(_param0_setBiography__string_));
+		setBiography(inv->getAsciiParameter(_param0_setBiography__String_));
 		break;
 	case 172:
-		setBiography(inv->getUnicodeParameter(_param0_setBiography__unicode_));
+		setBiography(inv->getUnicodeParameter(_param0_setBiography__UnicodeString_));
 		break;
 	case 173:
 		resp->insertBoolean(changeForcePowerBar(inv->getSignedIntParameter()));
@@ -4988,10 +4988,10 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setCharacterID(inv->getUnsignedLongParameter());
 		break;
 	case 186:
-		setStartingProfession(inv->getAsciiParameter(_param0_setStartingProfession__string_));
+		setStartingProfession(inv->getAsciiParameter(_param0_setStartingProfession__String_));
 		break;
 	case 187:
-		setHairObject(inv->getAsciiParameter(_param0_setHairObject__string_));
+		setHairObject(inv->getAsciiParameter(_param0_setHairObject__String_));
 		break;
 	case 188:
 		updateHair();
@@ -5030,13 +5030,13 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		newChangeFactionStatusEvent(inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 200:
-		setRaceFileName(inv->getAsciiParameter(_param0_setRaceFileName__string_));
+		setRaceFileName(inv->getAsciiParameter(_param0_setRaceFileName__String_));
 		break;
 	case 201:
 		setRaceID(inv->getUnsignedCharParameter());
 		break;
 	case 202:
-		setStartingLocation(inv->getAsciiParameter(_param0_setStartingLocation__string_));
+		setStartingLocation(inv->getAsciiParameter(_param0_setStartingLocation__String_));
 		break;
 	case 203:
 		setItemShift(inv->getUnsignedIntParameter());
@@ -5192,7 +5192,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getCertification(inv->getSignedIntParameter()));
 		break;
 	case 254:
-		resp->insertBoolean(checkCertification(inv->getAsciiParameter(_param0_checkCertification__string_)));
+		resp->insertBoolean(checkCertification(inv->getAsciiParameter(_param0_checkCertification__String_)));
 		break;
 	case 255:
 		resp->insertSignedInt(getSlicingAbility());
@@ -5216,19 +5216,19 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setMisoBSB(inv->getSignedIntParameter());
 		break;
 	case 262:
-		addToCurMisoKeys(inv->getAsciiParameter(_param0_addToCurMisoKeys__string_));
+		addToCurMisoKeys(inv->getAsciiParameter(_param0_addToCurMisoKeys__String_));
 		break;
 	case 263:
-		resp->insertBoolean(isOnCurMisoKey(inv->getAsciiParameter(_param0_isOnCurMisoKey__string_)));
+		resp->insertBoolean(isOnCurMisoKey(inv->getAsciiParameter(_param0_isOnCurMisoKey__String_)));
 		break;
 	case 264:
-		removeFromCurMisoKeys(inv->getAsciiParameter(_param0_removeFromCurMisoKeys__string_));
+		removeFromCurMisoKeys(inv->getAsciiParameter(_param0_removeFromCurMisoKeys__String_));
 		break;
 	case 265:
-		addToFinMisoKeys(inv->getAsciiParameter(_param0_addToFinMisoKeys__string_));
+		addToFinMisoKeys(inv->getAsciiParameter(_param0_addToFinMisoKeys__String_));
 		break;
 	case 266:
-		resp->insertBoolean(hasCompletedMisoKey(inv->getAsciiParameter(_param0_hasCompletedMisoKey__string_)));
+		resp->insertBoolean(hasCompletedMisoKey(inv->getAsciiParameter(_param0_hasCompletedMisoKey__String_)));
 		break;
 	case 267:
 		resp->insertLong(getCurrentCraftingTool()->_getObjectID());
@@ -5252,28 +5252,28 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		removeResourceFromCraft(inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
 	case 274:
-		nextCraftingStage(inv->getAsciiParameter(_param0_nextCraftingStage__string_));
+		nextCraftingStage(inv->getAsciiParameter(_param0_nextCraftingStage__String_));
 		break;
 	case 275:
-		craftingCustomization(inv->getAsciiParameter(_param0_craftingCustomization__string_int_string_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_craftingCustomization__string_int_string_));
+		craftingCustomization(inv->getAsciiParameter(_param0_craftingCustomization__String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_craftingCustomization__String_int_String_));
 		break;
 	case 276:
-		createPrototype(inv->getAsciiParameter(_param0_createPrototype__string_));
+		createPrototype(inv->getAsciiParameter(_param0_createPrototype__String_));
 		break;
 	case 277:
-		createSchematic(inv->getAsciiParameter(_param0_createSchematic__string_));
+		createSchematic(inv->getAsciiParameter(_param0_createSchematic__String_));
 		break;
 	case 278:
-		handleExperimenting(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_handleExperimenting__int_int_string_));
+		handleExperimenting(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_handleExperimenting__int_int_String_));
 		break;
 	case 279:
 		sendDraftSchematics();
 		break;
 	case 280:
-		addDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_addDraftSchematicsFromGroupName__string_));
+		addDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_addDraftSchematicsFromGroupName__String_));
 		break;
 	case 281:
-		subtractDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_subtractDraftSchematicsFromGroupName__string_));
+		subtractDraftSchematicsFromGroupName(inv->getAsciiParameter(_param0_subtractDraftSchematicsFromGroupName__String_));
 		break;
 	case 282:
 		addDraftSchematic((DraftSchematic*) inv->getObjectParameter());
@@ -5357,10 +5357,10 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setCanSample();
 		break;
 	case 309:
-		setSurveyEvent(inv->getAsciiParameter(_param0_setSurveyEvent__string_));
+		setSurveyEvent(inv->getAsciiParameter(_param0_setSurveyEvent__String_));
 		break;
 	case 310:
-		setSampleEvent(inv->getAsciiParameter(_param0_setSampleEvent__string_bool_), inv->getBooleanParameter());
+		setSampleEvent(inv->getAsciiParameter(_param0_setSampleEvent__String_bool_), inv->getBooleanParameter());
 		break;
 	case 311:
 		setCancelSample(inv->getBooleanParameter());
@@ -5384,7 +5384,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(getSampleErrorMessage());
 		break;
 	case 318:
-		sendMail(inv->getAsciiParameter(_param0_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param1_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param2_sendMail__string_unicode_unicode_string_), inv->getAsciiParameter(_param3_sendMail__string_unicode_unicode_string_));
+		sendMail(inv->getAsciiParameter(_param0_sendMail__String_UnicodeString_UnicodeString_String_), inv->getUnicodeParameter(_param1_sendMail__String_UnicodeString_UnicodeString_String_), inv->getUnicodeParameter(_param2_sendMail__String_UnicodeString_UnicodeString_String_), inv->getAsciiParameter(_param3_sendMail__String_UnicodeString_UnicodeString_String_));
 		break;
 	case 319:
 		setEntertainerEvent();
@@ -5393,10 +5393,10 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		clearEntertainerEvent();
 		break;
 	case 321:
-		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__string_));
+		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__String_));
 		break;
 	case 322:
-		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__string_));
+		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__String_));
 		break;
 	case 323:
 		resp->insertAscii(getLastNpcConvStr());
@@ -5405,7 +5405,7 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getLastNpcConvMessStr());
 		break;
 	case 325:
-		setInputBoxReturnBuffer(inv->getAsciiParameter(_param0_setInputBoxReturnBuffer__string_));
+		setInputBoxReturnBuffer(inv->getAsciiParameter(_param0_setInputBoxReturnBuffer__String_));
 		break;
 	case 326:
 		setGuildLeader(inv->getBooleanParameter());
@@ -5429,13 +5429,13 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(clearGuildPermissionsBit(inv->getUnsignedIntParameter(), inv->getBooleanParameter()));
 		break;
 	case 333:
-		resp->insertSignedInt(getFactionPoints(inv->getAsciiParameter(_param0_getFactionPoints__string_)));
+		resp->insertSignedInt(getFactionPoints(inv->getAsciiParameter(_param0_getFactionPoints__String_)));
 		break;
 	case 334:
-		addFactionPoints(inv->getAsciiParameter(_param0_addFactionPoints__string_int_), inv->getUnsignedIntParameter());
+		addFactionPoints(inv->getAsciiParameter(_param0_addFactionPoints__String_int_), inv->getUnsignedIntParameter());
 		break;
 	case 335:
-		subtractFactionPoints(inv->getAsciiParameter(_param0_subtractFactionPoints__string_int_), inv->getUnsignedIntParameter());
+		subtractFactionPoints(inv->getAsciiParameter(_param0_subtractFactionPoints__String_int_), inv->getUnsignedIntParameter());
 		break;
 	case 336:
 		resp->insertSignedInt(getFactionStatus());
@@ -5447,13 +5447,13 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getFactionList()->_getObjectID());
 		break;
 	case 339:
-		resp->insertInt(getMaxFactionPoints(inv->getAsciiParameter(_param0_getMaxFactionPoints__string_)));
+		resp->insertInt(getMaxFactionPoints(inv->getAsciiParameter(_param0_getMaxFactionPoints__String_)));
 		break;
 	case 340:
 		delFactionPoints((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 341:
-		addSuiBoxChoice(inv->getAsciiParameter(_param0_addSuiBoxChoice__string_));
+		addSuiBoxChoice(inv->getAsciiParameter(_param0_addSuiBoxChoice__String_));
 		break;
 	case 342:
 		removeLastSuiBoxChoice();
@@ -5744,7 +5744,7 @@ unsigned int PlayerAdapter::getTotalAttribPoints() {
 	return ((PlayerImplementation*) impl)->getTotalAttribPoints();
 }
 
-void PlayerAdapter::queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr) {
+void PlayerAdapter::queueFlourish(const String& modifier, unsigned long long target, unsigned int actionCntr) {
 	return ((PlayerImplementation*) impl)->queueFlourish(modifier, target, actionCntr);
 }
 
@@ -5752,7 +5752,7 @@ void PlayerAdapter::clearQueueAction(unsigned int actioncntr, float timer, unsig
 	return ((PlayerImplementation*) impl)->clearQueueAction(actioncntr, timer, tab1, tab2);
 }
 
-void PlayerAdapter::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier) {
+void PlayerAdapter::queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const String& actionModifier) {
 	return ((PlayerImplementation*) impl)->queueAction(player, target, actionCRC, actionCntr, actionModifier);
 }
 
@@ -5816,15 +5816,15 @@ void PlayerAdapter::doDigest() {
 	return ((PlayerImplementation*) impl)->doDigest();
 }
 
-bool PlayerAdapter::hasConsent(string& charID) {
+bool PlayerAdapter::hasConsent(String& charID) {
 	return ((PlayerImplementation*) impl)->hasConsent(charID);
 }
 
-bool PlayerAdapter::giveConsent(string& name) {
+bool PlayerAdapter::giveConsent(String& name) {
 	return ((PlayerImplementation*) impl)->giveConsent(name);
 }
 
-bool PlayerAdapter::revokeConsent(string& name) {
+bool PlayerAdapter::revokeConsent(String& name) {
 	return ((PlayerImplementation*) impl)->revokeConsent(name);
 }
 
@@ -5832,7 +5832,7 @@ int PlayerAdapter::getConsentSize() {
 	return ((PlayerImplementation*) impl)->getConsentSize();
 }
 
-string& PlayerAdapter::getConsentEntry(int index) {
+String& PlayerAdapter::getConsentEntry(int index) {
 	return ((PlayerImplementation*) impl)->getConsentEntry(index);
 }
 
@@ -5976,11 +5976,11 @@ void PlayerAdapter::trainStartingProfession() {
 	return ((PlayerImplementation*) impl)->trainStartingProfession();
 }
 
-bool PlayerAdapter::trainSkillBox(const string& name, bool updateClient) {
+bool PlayerAdapter::trainSkillBox(const String& name, bool updateClient) {
 	return ((PlayerImplementation*) impl)->trainSkillBox(name, updateClient);
 }
 
-void PlayerAdapter::surrenderSkillBox(const string& name) {
+void PlayerAdapter::surrenderSkillBox(const String& name) {
 	return ((PlayerImplementation*) impl)->surrenderSkillBox(name);
 }
 
@@ -5992,7 +5992,7 @@ int PlayerAdapter::getSkillBoxesSize() {
 	return ((PlayerImplementation*) impl)->getSkillBoxesSize();
 }
 
-string& PlayerAdapter::getNextSkillBox() {
+String& PlayerAdapter::getNextSkillBox() {
 	return ((PlayerImplementation*) impl)->getNextSkillBox();
 }
 
@@ -6000,7 +6000,7 @@ bool PlayerAdapter::hasNextSkillBox() {
 	return ((PlayerImplementation*) impl)->hasNextSkillBox();
 }
 
-bool PlayerAdapter::hasSkillBox(string& skillBox) {
+bool PlayerAdapter::hasSkillBox(String& skillBox) {
 	return ((PlayerImplementation*) impl)->hasSkillBox(skillBox);
 }
 
@@ -6024,27 +6024,27 @@ void PlayerAdapter::saveWaypoints(Player* player) {
 	return ((PlayerImplementation*) impl)->saveWaypoints(player);
 }
 
-WaypointObject* PlayerAdapter::searchWaypoint(Player* play, const string& name, int mode) {
+WaypointObject* PlayerAdapter::searchWaypoint(Player* play, const String& name, int mode) {
 	return ((PlayerImplementation*) impl)->searchWaypoint(play, name, mode);
 }
 
-void PlayerAdapter::queueHeal(TangibleObject* medpack, unsigned int actionCRC, const string& attribute) {
+void PlayerAdapter::queueHeal(TangibleObject* medpack, unsigned int actionCRC, const String& attribute) {
 	return ((PlayerImplementation*) impl)->queueHeal(medpack, actionCRC, attribute);
 }
 
-void PlayerAdapter::addXp(string& xpType, int xp, bool updateClient) {
+void PlayerAdapter::addXp(String& xpType, int xp, bool updateClient) {
 	return ((PlayerImplementation*) impl)->addXp(xpType, xp, updateClient);
 }
 
-void PlayerAdapter::removeXp(string& xpType, int xp, bool updateClient) {
+void PlayerAdapter::removeXp(String& xpType, int xp, bool updateClient) {
 	return ((PlayerImplementation*) impl)->removeXp(xpType, xp, updateClient);
 }
 
-void PlayerAdapter::loadXp(const string& xpStr) {
+void PlayerAdapter::loadXp(const String& xpStr) {
 	return ((PlayerImplementation*) impl)->loadXp(xpStr);
 }
 
-string& PlayerAdapter::saveXp() {
+String& PlayerAdapter::saveXp() {
 	return ((PlayerImplementation*) impl)->saveXp();
 }
 
@@ -6100,19 +6100,19 @@ void PlayerAdapter::removeChatRoom(ChatRoom* room) {
 	return ((PlayerImplementation*) impl)->removeChatRoom(room);
 }
 
-void PlayerAdapter::sendSystemMessage(const string& msg) {
+void PlayerAdapter::sendSystemMessage(const String& msg) {
 	return ((PlayerImplementation*) impl)->sendSystemMessage(msg);
 }
 
-void PlayerAdapter::sendSystemMessage(unicode& msg) {
+void PlayerAdapter::sendSystemMessage(UnicodeString& msg) {
 	return ((PlayerImplementation*) impl)->sendSystemMessage(msg);
 }
 
-void PlayerAdapter::sendSystemMessage(const string& file, const string& str, unsigned long long targetid) {
+void PlayerAdapter::sendSystemMessage(const String& file, const String& str, unsigned long long targetid) {
 	return ((PlayerImplementation*) impl)->sendSystemMessage(file, str, targetid);
 }
 
-void PlayerAdapter::sendSystemMessage(const string& file, const string& str, StfParameter* param) {
+void PlayerAdapter::sendSystemMessage(const String& file, const String& str, StfParameter* param) {
 	return ((PlayerImplementation*) impl)->sendSystemMessage(file, str, param);
 }
 
@@ -6128,23 +6128,23 @@ void PlayerAdapter::setConversatingCreature(CreatureObject* conversator) {
 	return ((PlayerImplementation*) impl)->setConversatingCreature(conversator);
 }
 
-void PlayerAdapter::setFirstName(const string& name) {
+void PlayerAdapter::setFirstName(const String& name) {
 	return ((PlayerImplementation*) impl)->setFirstName(name);
 }
 
-void PlayerAdapter::setLastName(const string& name) {
+void PlayerAdapter::setLastName(const String& name) {
 	return ((PlayerImplementation*) impl)->setLastName(name);
 }
 
-void PlayerAdapter::setFirstNameProper(const string& name) {
+void PlayerAdapter::setFirstNameProper(const String& name) {
 	return ((PlayerImplementation*) impl)->setFirstNameProper(name);
 }
 
-void PlayerAdapter::setBiography(const string& bio) {
+void PlayerAdapter::setBiography(const String& bio) {
 	return ((PlayerImplementation*) impl)->setBiography(bio);
 }
 
-void PlayerAdapter::setBiography(unicode& bio) {
+void PlayerAdapter::setBiography(UnicodeString& bio) {
 	return ((PlayerImplementation*) impl)->setBiography(bio);
 }
 
@@ -6200,11 +6200,11 @@ void PlayerAdapter::setCharacterID(unsigned long long id) {
 	return ((PlayerImplementation*) impl)->setCharacterID(id);
 }
 
-void PlayerAdapter::setStartingProfession(const string& prof) {
+void PlayerAdapter::setStartingProfession(const String& prof) {
 	return ((PlayerImplementation*) impl)->setStartingProfession(prof);
 }
 
-void PlayerAdapter::setHairObject(const string& hair) {
+void PlayerAdapter::setHairObject(const String& hair) {
 	return ((PlayerImplementation*) impl)->setHairObject(hair);
 }
 
@@ -6256,7 +6256,7 @@ void PlayerAdapter::newChangeFactionStatusEvent(unsigned char status, unsigned i
 	return ((PlayerImplementation*) impl)->newChangeFactionStatusEvent(status, timer);
 }
 
-void PlayerAdapter::setRaceFileName(string& name) {
+void PlayerAdapter::setRaceFileName(String& name) {
 	return ((PlayerImplementation*) impl)->setRaceFileName(name);
 }
 
@@ -6264,7 +6264,7 @@ void PlayerAdapter::setRaceID(unsigned char id) {
 	return ((PlayerImplementation*) impl)->setRaceID(id);
 }
 
-void PlayerAdapter::setStartingLocation(string& loc) {
+void PlayerAdapter::setStartingLocation(String& loc) {
 	return ((PlayerImplementation*) impl)->setStartingLocation(loc);
 }
 
@@ -6392,19 +6392,19 @@ CreatureObject* PlayerAdapter::getConversatingCreature() {
 	return ((PlayerImplementation*) impl)->getConversatingCreature();
 }
 
-string& PlayerAdapter::getFirstName() {
+String& PlayerAdapter::getFirstName() {
 	return ((PlayerImplementation*) impl)->getFirstName();
 }
 
-string& PlayerAdapter::getLastName() {
+String& PlayerAdapter::getLastName() {
 	return ((PlayerImplementation*) impl)->getLastName();
 }
 
-string& PlayerAdapter::getFirstNameProper() {
+String& PlayerAdapter::getFirstNameProper() {
 	return ((PlayerImplementation*) impl)->getFirstNameProper();
 }
 
-string& PlayerAdapter::getRaceFileName() {
+String& PlayerAdapter::getRaceFileName() {
 	return ((PlayerImplementation*) impl)->getRaceFileName();
 }
 
@@ -6412,7 +6412,7 @@ unsigned char PlayerAdapter::getRaceID() {
 	return ((PlayerImplementation*) impl)->getRaceID();
 }
 
-unicode& PlayerAdapter::getBiography() {
+UnicodeString& PlayerAdapter::getBiography() {
 	return ((PlayerImplementation*) impl)->getBiography();
 }
 
@@ -6420,7 +6420,7 @@ unsigned long long PlayerAdapter::getCharacterID() {
 	return ((PlayerImplementation*) impl)->getCharacterID();
 }
 
-string& PlayerAdapter::getStartingProfession() {
+String& PlayerAdapter::getStartingProfession() {
 	return ((PlayerImplementation*) impl)->getStartingProfession();
 }
 
@@ -6428,7 +6428,7 @@ int PlayerAdapter::getZoneIndex() {
 	return ((PlayerImplementation*) impl)->getZoneIndex();
 }
 
-string& PlayerAdapter::getHairObject() {
+String& PlayerAdapter::getHairObject() {
 	return ((PlayerImplementation*) impl)->getHairObject();
 }
 
@@ -6468,11 +6468,11 @@ int PlayerAdapter::getCertificationListSize() {
 	return ((PlayerImplementation*) impl)->getCertificationListSize();
 }
 
-string& PlayerAdapter::getCertification(int idx) {
+String& PlayerAdapter::getCertification(int idx) {
 	return ((PlayerImplementation*) impl)->getCertification(idx);
 }
 
-bool PlayerAdapter::checkCertification(string& certification) {
+bool PlayerAdapter::checkCertification(String& certification) {
 	return ((PlayerImplementation*) impl)->checkCertification(certification);
 }
 
@@ -6488,7 +6488,7 @@ bool PlayerAdapter::isImmune() {
 	return ((PlayerImplementation*) impl)->isImmune();
 }
 
-string& PlayerAdapter::getInputBoxReturnBuffer() {
+String& PlayerAdapter::getInputBoxReturnBuffer() {
 	return ((PlayerImplementation*) impl)->getInputBoxReturnBuffer();
 }
 
@@ -6504,23 +6504,23 @@ void PlayerAdapter::setMisoBSB(int tms) {
 	return ((PlayerImplementation*) impl)->setMisoBSB(tms);
 }
 
-void PlayerAdapter::addToCurMisoKeys(string& tck) {
+void PlayerAdapter::addToCurMisoKeys(String& tck) {
 	return ((PlayerImplementation*) impl)->addToCurMisoKeys(tck);
 }
 
-bool PlayerAdapter::isOnCurMisoKey(string& tmk) {
+bool PlayerAdapter::isOnCurMisoKey(String& tmk) {
 	return ((PlayerImplementation*) impl)->isOnCurMisoKey(tmk);
 }
 
-void PlayerAdapter::removeFromCurMisoKeys(string& tck) {
+void PlayerAdapter::removeFromCurMisoKeys(String& tck) {
 	return ((PlayerImplementation*) impl)->removeFromCurMisoKeys(tck);
 }
 
-void PlayerAdapter::addToFinMisoKeys(string& tmp) {
+void PlayerAdapter::addToFinMisoKeys(String& tmp) {
 	return ((PlayerImplementation*) impl)->addToFinMisoKeys(tmp);
 }
 
-bool PlayerAdapter::hasCompletedMisoKey(string& tmk) {
+bool PlayerAdapter::hasCompletedMisoKey(String& tmk) {
 	return ((PlayerImplementation*) impl)->hasCompletedMisoKey(tmk);
 }
 
@@ -6552,35 +6552,35 @@ void PlayerAdapter::removeResourceFromCraft(unsigned long long resID, int slot, 
 	return ((PlayerImplementation*) impl)->removeResourceFromCraft(resID, slot, counter);
 }
 
-void PlayerAdapter::nextCraftingStage(string& test) {
+void PlayerAdapter::nextCraftingStage(String& test) {
 	return ((PlayerImplementation*) impl)->nextCraftingStage(test);
 }
 
-void PlayerAdapter::craftingCustomization(string& name, int condition, string& customizationstring) {
-	return ((PlayerImplementation*) impl)->craftingCustomization(name, condition, customizationstring);
+void PlayerAdapter::craftingCustomization(String& name, int condition, String& customizationString) {
+	return ((PlayerImplementation*) impl)->craftingCustomization(name, condition, customizationString);
 }
 
-void PlayerAdapter::createPrototype(string& count) {
+void PlayerAdapter::createPrototype(String& count) {
 	return ((PlayerImplementation*) impl)->createPrototype(count);
 }
 
-void PlayerAdapter::createSchematic(string& count) {
+void PlayerAdapter::createSchematic(String& count) {
 	return ((PlayerImplementation*) impl)->createSchematic(count);
 }
 
-void PlayerAdapter::handleExperimenting(int count, int numRowsAttempted, string& expstring) {
-	return ((PlayerImplementation*) impl)->handleExperimenting(count, numRowsAttempted, expstring);
+void PlayerAdapter::handleExperimenting(int count, int numRowsAttempted, String& expString) {
+	return ((PlayerImplementation*) impl)->handleExperimenting(count, numRowsAttempted, expString);
 }
 
 void PlayerAdapter::sendDraftSchematics() {
 	return ((PlayerImplementation*) impl)->sendDraftSchematics();
 }
 
-void PlayerAdapter::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
+void PlayerAdapter::addDraftSchematicsFromGroupName(const String& schematicGroupName) {
 	return ((PlayerImplementation*) impl)->addDraftSchematicsFromGroupName(schematicGroupName);
 }
 
-void PlayerAdapter::subtractDraftSchematicsFromGroupName(const string& schematicGroupName) {
+void PlayerAdapter::subtractDraftSchematicsFromGroupName(const String& schematicGroupName) {
 	return ((PlayerImplementation*) impl)->subtractDraftSchematicsFromGroupName(schematicGroupName);
 }
 
@@ -6692,11 +6692,11 @@ void PlayerAdapter::setCanSample() {
 	return ((PlayerImplementation*) impl)->setCanSample();
 }
 
-void PlayerAdapter::setSurveyEvent(string& resourcename) {
+void PlayerAdapter::setSurveyEvent(String& resourcename) {
 	return ((PlayerImplementation*) impl)->setSurveyEvent(resourcename);
 }
 
-void PlayerAdapter::setSampleEvent(string& resourcename, bool firstTime) {
+void PlayerAdapter::setSampleEvent(String& resourcename, bool firstTime) {
 	return ((PlayerImplementation*) impl)->setSampleEvent(resourcename, firstTime);
 }
 
@@ -6728,7 +6728,7 @@ bool PlayerAdapter::getSampleErrorMessage() {
 	return ((PlayerImplementation*) impl)->getSampleErrorMessage();
 }
 
-void PlayerAdapter::sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender) {
+void PlayerAdapter::sendMail(String& mailsender, UnicodeString& subjectSender, UnicodeString& bodySender, String& charNameSender) {
 	return ((PlayerImplementation*) impl)->sendMail(mailsender, subjectSender, bodySender, charNameSender);
 }
 
@@ -6740,23 +6740,23 @@ void PlayerAdapter::clearEntertainerEvent() {
 	return ((PlayerImplementation*) impl)->clearEntertainerEvent();
 }
 
-void PlayerAdapter::setLastNpcConvStr(const string& conv) {
+void PlayerAdapter::setLastNpcConvStr(const String& conv) {
 	return ((PlayerImplementation*) impl)->setLastNpcConvStr(conv);
 }
 
-void PlayerAdapter::setLastNpcConvMessStr(const string& mess) {
+void PlayerAdapter::setLastNpcConvMessStr(const String& mess) {
 	return ((PlayerImplementation*) impl)->setLastNpcConvMessStr(mess);
 }
 
-string& PlayerAdapter::getLastNpcConvStr() {
+String& PlayerAdapter::getLastNpcConvStr() {
 	return ((PlayerImplementation*) impl)->getLastNpcConvStr();
 }
 
-string& PlayerAdapter::getLastNpcConvMessStr() {
+String& PlayerAdapter::getLastNpcConvMessStr() {
 	return ((PlayerImplementation*) impl)->getLastNpcConvMessStr();
 }
 
-void PlayerAdapter::setInputBoxReturnBuffer(const string& message) {
+void PlayerAdapter::setInputBoxReturnBuffer(const String& message) {
 	return ((PlayerImplementation*) impl)->setInputBoxReturnBuffer(message);
 }
 
@@ -6788,15 +6788,15 @@ bool PlayerAdapter::clearGuildPermissionsBit(unsigned int bit, bool updateClient
 	return ((PlayerImplementation*) impl)->clearGuildPermissionsBit(bit, updateClient);
 }
 
-int PlayerAdapter::getFactionPoints(const string& faction) {
+int PlayerAdapter::getFactionPoints(const String& faction) {
 	return ((PlayerImplementation*) impl)->getFactionPoints(faction);
 }
 
-void PlayerAdapter::addFactionPoints(const string& faction, unsigned int points) {
+void PlayerAdapter::addFactionPoints(const String& faction, unsigned int points) {
 	return ((PlayerImplementation*) impl)->addFactionPoints(faction, points);
 }
 
-void PlayerAdapter::subtractFactionPoints(const string& faction, unsigned int points) {
+void PlayerAdapter::subtractFactionPoints(const String& faction, unsigned int points) {
 	return ((PlayerImplementation*) impl)->subtractFactionPoints(faction, points);
 }
 
@@ -6812,7 +6812,7 @@ FactionPointList* PlayerAdapter::getFactionList() {
 	return ((PlayerImplementation*) impl)->getFactionList();
 }
 
-unsigned int PlayerAdapter::getMaxFactionPoints(string& faction) {
+unsigned int PlayerAdapter::getMaxFactionPoints(String& faction) {
 	return ((PlayerImplementation*) impl)->getMaxFactionPoints(faction);
 }
 
@@ -6820,7 +6820,7 @@ void PlayerAdapter::delFactionPoints(Player* player, unsigned int amount) {
 	return ((PlayerImplementation*) impl)->delFactionPoints(player, amount);
 }
 
-void PlayerAdapter::addSuiBoxChoice(string& choice) {
+void PlayerAdapter::addSuiBoxChoice(String& choice) {
 	return ((PlayerImplementation*) impl)->addSuiBoxChoice(choice);
 }
 

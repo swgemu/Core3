@@ -18,7 +18,7 @@
  *	TicketCollectorStub
  */
 
-TicketCollector::TicketCollector(ShuttleCreature* shutle, unsigned long long oid, const unicode& n, const string& tempn, float x, float z, float y) : TangibleObject(DummyConstructorParameter::instance()) {
+TicketCollector::TicketCollector(ShuttleCreature* shutle, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new TicketCollectorImplementation(shutle, oid, n, tempn, x, z, y);
 	_impl->_setStub(this);
 }

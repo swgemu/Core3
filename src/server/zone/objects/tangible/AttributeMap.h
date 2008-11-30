@@ -47,16 +47,16 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-class AttributeMap : public HashTable<string, string> , public HashTableIterator<string, string> {
-	
-	int hash(const string& key) {
-        return String::hashCode(key);
+class AttributeMap : public HashTable<String, String> , public HashTableIterator<String, String> {
+
+	int hash(const String& key) {
+        return key.hashCode();
 	}
 
 public:
-	AttributeMap(int initsize) : HashTable<string, string>(initsize) , HashTableIterator<string, string>(this) {
-		setNullValue((string)"");
-	}	
-}; 
+	AttributeMap(int initsize) : HashTable<String, String>(initsize) , HashTableIterator<String, String>(this) {
+		setNullValue((String)"");
+	}
+};
 
 #endif /*ATTRIBUTEMAP_H_*/

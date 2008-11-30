@@ -48,9 +48,8 @@ which carries forward this exception.
 
 #include "../../../objects.h"
 
-DiceImplementation::DiceImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn)
+DiceImplementation::DiceImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: DiceServant(oid, tempCRC, n, tempn, DICE) {
-
 	name = n;
 	templateTypeName = "obj_n";
 	templateName = tempn;
@@ -60,18 +59,16 @@ DiceImplementation::DiceImplementation(uint64 oid, uint32 tempCRC, const unicode
 	initialize();
 }
 
-DiceImplementation::DiceImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn)
+DiceImplementation::DiceImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: DiceServant(creature, oid, tempCRC, n, tempn, DICE) {
-
 	diceType = objectCRC;
 	diceSides = 0;
 	initialize();
 }
 
 
-DiceImplementation::DiceImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
+DiceImplementation::DiceImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: DiceServant(creature, creature->getNewItemID(), tempCRC, n, tempn, DICE) {
-
 	diceType = objectCRC;
 	diceSides = 0;
 	initialize();
@@ -101,11 +98,11 @@ void DiceImplementation::parseItemAttributes() {
 void DiceImplementation::addHeaderAttributes(AttributeListMessage* alm) {
 	//alm->insertAttribute("volume", "1");
 
-	if(craftersName != ""){
+	if (craftersName != ""){
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	if(craftedSerial != ""){
+	if (craftedSerial != ""){
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
 }
@@ -121,6 +118,7 @@ void DiceImplementation::addAttributes(AttributeListMessage* alm) {
 void DiceImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if (player->getInventoryItem(getObjectID()) != NULL) {
 		omr->addRadialItem(0,40,3,"@dice/dice:dice_roll_single");
+
 		if (diceType != CHANCECUBE && diceType != CONFIGURABLE) {
 			omr->addRadialItem(3,41,3,"@dice/dice:dice_roll_one_single");
 			omr->addRadialItem(3,42,3,"@dice/dice:dice_roll_two_single");
@@ -146,7 +144,7 @@ void DiceImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse
 }
 
 void DiceImplementation::initialize() {
-	switch(diceType) {
+	switch (diceType) {
 	case CHANCECUBE:
 		diceSides = 2;
 		break;
@@ -181,10 +179,11 @@ void DiceImplementation::rollDice(Player* player, int dnum) {
 		return;
 	}
 
-	stringstream results;
-	string resultsstring, filename="dice/dice", selfstring, otherstring;
-	results.precision(0);
+	StringBuffer results;
+	//TODO: add this functinoality - results.precision(0);
 	results << " ";
+
+	String resultsString, filename = "dice/dice", selfString, otherString;
 
 	for (int i = 0; i < dnum; i++) {
 		if (i == dnum - 1) {
@@ -197,10 +196,10 @@ void DiceImplementation::rollDice(Player* player, int dnum) {
 			results << System::random(diceSides-1) + 1 << ", ";
 	}
 
-	resultsstring = results.str();
+	resultsString = results.toString();
 	StfParameter* stfparams = new StfParameter();
 
-	string dicesides;
+	String dicesides;
 	switch (diceSides) {
     case 2:
         dicesides = "two";
@@ -245,29 +244,29 @@ void DiceImplementation::rollDice(Player* player, int dnum) {
 	stfparams->addTU(player->getFirstNameProper());
 
 	if (dnum > 1) { // cannot have multiple chance cubes or configurable dice at once
-		selfstring = "roll_many_self";
-		otherstring = "roll_many_other";
+		selfString = "roll_many_self";
+		otherString = "roll_many_other";
 	} else if (dnum == 1) { // now have to check for chance cube, where the stf's are slightly different, and results aren't numbers
 		if (objectCRC == CHANCECUBE) {
 			stfparams->addTT(player->getFirstNameProper());
-			if (resultsstring == " 1")
-				resultsstring = "red";
-			else if (resultsstring == " 2")
-				resultsstring = "blue";
-			selfstring = "chance_cube_result_self";
-			otherstring = "chance_cube_result_other";
+			if (resultsString == " 1")
+				resultsString = "red";
+			else if (resultsString == " 2")
+				resultsString = "blue";
+			selfString = "chance_cube_result_self";
+			otherString = "chance_cube_result_other";
 		} else { // not a chance cube
-			selfstring = "roll_one_self";
-			otherstring = "roll_one_other";
+			selfString = "roll_one_self";
+			otherString = "roll_one_other";
 		}
 	}
 
-	stfparams->addTO(resultsstring);
+	stfparams->addTO(resultsString);
 
 	//output to player and those around them
-	ChatSystemMessage* msg = new ChatSystemMessage(filename, selfstring, stfparams);
+	ChatSystemMessage* msg = new ChatSystemMessage(filename, selfString, stfparams);
 	player->sendMessage(msg);
-	ChatSystemMessage* msg2 = new ChatSystemMessage(filename, otherstring, stfparams);
+	ChatSystemMessage* msg2 = new ChatSystemMessage(filename, otherString, stfparams);
 	player->broadcastMessage(msg2, 128, true, false);
 }
 

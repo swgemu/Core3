@@ -21,9 +21,9 @@ class Pharmaceutical;
 
 class StimPack : public Pharmaceutical {
 public:
-	StimPack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	StimPack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	StimPack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	StimPack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -81,8 +81,8 @@ public:
 	StimPack* _this;
 
 public:
-	StimPackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
-	StimPackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
+	StimPackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
+	StimPackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 	virtual ~StimPackServant();
 
 	void _setStub(DistributedObjectStub* stub);

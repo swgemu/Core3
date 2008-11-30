@@ -19,7 +19,7 @@ SuiColorPicker::SuiColorPicker(Player* player, unsigned long long objectId, unsi
 	_impl->_setStub(this);
 }
 
-SuiColorPicker::SuiColorPicker(Player* player, unsigned long long objectId, const string& var, unsigned int boxtype) : SuiBox(DummyConstructorParameter::instance()) {
+SuiColorPicker::SuiColorPicker(Player* player, unsigned long long objectId, const String& var, unsigned int boxtype) : SuiBox(DummyConstructorParameter::instance()) {
 	_impl = new SuiColorPickerImplementation(player, objectId, var, boxtype);
 	_impl->_setStub(this);
 }

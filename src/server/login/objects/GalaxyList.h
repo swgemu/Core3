@@ -52,7 +52,7 @@ class GalaxyList {
 
 public:
 	GalaxyList() {
-		stringstream query;
+		StringBuffer query;
 		query << "SELECT * FROM galaxy";
 
 		galaxies = ServerDatabase::instance()->executeQuery(query);
@@ -71,11 +71,11 @@ public:
 		return galaxies->getUnsignedInt(0);
 	}
 
-	void getGalaxyName(string& name) {
+	void getGalaxyName(String& name) {
 		name = galaxies->getString(1);
 	}
 
-	void getGalaxyAddress(string& address) {
+	void getGalaxyAddress(String& address) {
 		address = galaxies->getString(2);
 	}
 

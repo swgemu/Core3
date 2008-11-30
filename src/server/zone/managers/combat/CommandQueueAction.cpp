@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/tangible/weapons/Weapon.h"
 
-CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const string& amod) {
+CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const String& amod) {
 	actionCRC = acrc;
 	actionCounter = acntr;
 
@@ -203,7 +203,7 @@ bool CommandQueueAction::validate() {
 					}
 					target->unlock();
 				} catch (...) {
-					cout << "Unreported Exception in CommandQueueAction::validate()\n";
+					System::out << "Unreported Exception in CommandQueueAction::validate()\n";
 					target->unlock();
 				}
 			} else if (skill->isHealSkill()) {

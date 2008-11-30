@@ -9,15 +9,15 @@ import "../TangibleObject";
 interface GenericItem implements TangibleObject {
 
 
-	GenericItem(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int gitype) {
+	GenericItem(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, int gitype) {
 		super(oid, int tp);
 	}
 
-	GenericItem(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int gitype) {
+	GenericItem(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, int gitype) {
 		super(oid, int tp);
 	}
 
-	GenericItem(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn, int gitype) {
+	GenericItem(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn, int gitype) {
 		super(unsigned long oid, int tp);
 	}
 

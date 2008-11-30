@@ -66,10 +66,10 @@ class CellObjectImplementation : public CellObjectServant {
 	SortedVector<SceneObject*> children;
 	int cellNumber;
 
-	string templateName;
+	String templateName;
 
 	ItemAttributes* itemAttributes;
-	string attributeString;
+	String attributeString;
 public:
 	CellObjectImplementation(uint64 objID, BuildingObject* buio);
 	CellObjectImplementation(uint64 objID, BuildingObject* buio, int number);
@@ -78,11 +78,11 @@ public:
 	void addChild(SceneObject* obj, bool doLock = true);
 	void removeChild(SceneObject* obj, bool doLock = true);
 
-	inline void setAttributes(string& attributestring) {
-		itemAttributes->setAttributes(attributestring);
+	inline void setAttributes(String& attributeString) {
+		itemAttributes->setAttributes(attributeString);
 	}
 
-	inline string& getAttributes() {
+	inline String& getAttributes() {
 		itemAttributes->getAttributeString(attributeString);
 		return attributeString;
 	}
@@ -94,7 +94,7 @@ public:
 	}
 	inline void setCellNumber(int i) {
 		cellNumber = i;
-		string attr("cellNumber");
+		String attr("cellNumber");
 		itemAttributes->setIntAttribute(attr, i);
 	}
 
@@ -102,7 +102,7 @@ public:
 
 	}
 
-	inline string& getTemplateName() {
+	inline String& getTemplateName() {
 		templateName = "";
 		return templateName;
 	}

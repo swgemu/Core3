@@ -53,11 +53,11 @@ import "../../../creature/CreatureObject";
 import "../../TangibleObject";
  
 interface FactoryCrate implements TangibleObject {
-	FactoryCrate(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+	FactoryCrate(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
 	
-	FactoryCrate(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+	FactoryCrate(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int tp);
 	}
 

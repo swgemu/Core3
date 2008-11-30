@@ -54,7 +54,7 @@ class ZoneMessageProcessorThread : public ServiceProcessThread {
 	ZonePacketHandler* phandler;
 	
 public:
-	ZoneMessageProcessorThread(const string& s, ZonePacketHandler* phand) : ServiceProcessThread(s) {
+	ZoneMessageProcessorThread(const String& s, ZonePacketHandler* phand) : ServiceProcessThread(s) {
 		phandler = phand;
 		
 		setLogging(false);

@@ -80,24 +80,24 @@ interface BuildingObject implements SceneObject {
 	boolean isPersistent();
 	boolean isUpdated();
 
-	void setAttributes(string attributestring);
-	string getAttributes();
+	void setAttributes(String attributeString);
+	String getAttributes();
 	
-	string getOwner();
-	void setOwner(const string owner);
+	String getOwner();
+	void setOwner(const String owner);
 	
 	unsigned long getOwnerID();
 	void setOwnerID(unsigned long owner);
 
 	void parseItemAttributes();
 
-	unicode getName();
-	void setName(const string n);
-	void setName(const unicode n);
+	UnicodeString getName();
+	void setName(const String n);
+	void setName(const UnicodeString n);
 
-	string getDefaultName();
+	String getDefaultName();
 	
-	string getTemplateName();
+	String getTemplateName();
 	
 	void lock(boolean doLock = true);
 	void unlock(boolean doLock = true);

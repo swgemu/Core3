@@ -51,11 +51,11 @@ import "../../scene/SceneObject";
 import "Wearable";
 
 interface Armor implements Wearable {
-	Armor(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+	Armor(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, boolean eqp = false) {
 		super(oid, tempCRC, n, tempn, eqp);
 	}
 
-	Armor(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+	Armor(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn, boolean eqp = false) {
 		super(creature, tempCRC, n, tempn, eqp);
 	}
 

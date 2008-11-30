@@ -15,9 +15,9 @@ class Weapon;
 
 class JediWeapon : public Weapon {
 public:
-	JediWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp = false);
+	JediWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp = false);
 
-	JediWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp = false);
+	JediWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false);
 
 	int getForceCost();
 
@@ -67,8 +67,8 @@ public:
 	JediWeapon* _this;
 
 public:
-	JediWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
-	JediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
+	JediWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
+	JediWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
 	virtual ~JediWeaponServant();
 
 	void _setStub(DistributedObjectStub* stub);

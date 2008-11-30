@@ -49,13 +49,13 @@ public:
 
 	bool isUpdated();
 
-	void setAttributes(string& attributestring);
+	void setAttributes(String& attributeString);
 
-	string& getAttributes();
+	String& getAttributes();
 
-	string& getOwner();
+	String& getOwner();
 
-	void setOwner(const string& owner);
+	void setOwner(const String& owner);
 
 	unsigned long long getOwnerID();
 
@@ -63,15 +63,15 @@ public:
 
 	void parseItemAttributes();
 
-	unicode& getName();
+	UnicodeString& getName();
 
-	void setName(const string& n);
+	void setName(const String& n);
 
-	void setName(const unicode& n);
+	void setName(const UnicodeString& n);
 
-	string& getDefaultName();
+	String& getDefaultName();
 
-	string& getTemplateName();
+	String& getTemplateName();
 
 	void lock(bool doLock = true);
 
@@ -94,12 +94,12 @@ protected:
 
 	virtual ~BuildingObject();
 
-	string _return_getAttributes;
-	string _return_getDefaultName;
-	string _return_getOwner;
-	string _return_getTemplateName;
+	String _return_getAttributes;
+	String _return_getDefaultName;
+	String _return_getOwner;
+	String _return_getTemplateName;
 
-	unicode _return_getName;
+	UnicodeString _return_getName;
 
 	friend class BuildingObjectHelper;
 };
@@ -134,13 +134,13 @@ public:
 
 	bool isUpdated();
 
-	void setAttributes(string& attributestring);
+	void setAttributes(String& attributeString);
 
-	string& getAttributes();
+	String& getAttributes();
 
-	string& getOwner();
+	String& getOwner();
 
-	void setOwner(const string& owner);
+	void setOwner(const String& owner);
 
 	unsigned long long getOwnerID();
 
@@ -148,15 +148,15 @@ public:
 
 	void parseItemAttributes();
 
-	unicode& getName();
+	UnicodeString& getName();
 
-	void setName(const string& n);
+	void setName(const String& n);
 
-	void setName(const unicode& n);
+	void setName(const UnicodeString& n);
 
-	string& getDefaultName();
+	String& getDefaultName();
 
-	string& getTemplateName();
+	String& getTemplateName();
 
 	void lock(bool doLock);
 
@@ -175,10 +175,10 @@ public:
 	void inRange(QuadTreeEntry* obj, float range);
 
 protected:
-	string _param0_setAttributes__string_;
-	string _param0_setOwner__string_;
-	string _param0_setName__string_;
-	unicode _param0_setName__unicode_;
+	String _param0_setAttributes__String_;
+	String _param0_setOwner__String_;
+	String _param0_setName__String_;
+	UnicodeString _param0_setName__UnicodeString_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

@@ -53,14 +53,14 @@ class Player;
 class SuiColorPickerImplementation : public SuiColorPickerServant {
 	uint64 objectID;
 
-	string variable;
+	String variable;
 
 private:
 	void generateHeader(BaseMessage* msg);
 
 public:
 	SuiColorPickerImplementation(Player* player, uint64 objectId, uint32 boxType);
-	SuiColorPickerImplementation(Player* player, uint64 objectId, const string& var, uint32 boxType);
+	SuiColorPickerImplementation(Player* player, uint64 objectId, const String& var, uint32 boxType);
 
 	BaseMessage* generateMessage();
 

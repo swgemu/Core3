@@ -56,16 +56,16 @@ public:
 		insertInt(pageID);
    }
    
-   void insertOption(uint8 option, const string& value, const string& variable, const string& type) {
-	   insertByte(option); // 3 strings?
+   void insertOption(uint8 option, const String& value, const String& variable, const String& type) {
+	   insertByte(option); // 3 Strings?
 	   
 	   insertInt(1); // number of Unicodes
-	   unicode val = unicode(value);
+	   UnicodeString val = UnicodeString(value);
 	   insertUnicode(val);
 	   
 	   insertInt(2); // number of ASCIIS
-	   insertAscii(variable.c_str());
-	   insertAscii(type.c_str());
+	   insertAscii(variable.toCharArray());
+	   insertAscii(type.toCharArray());
    }
    
    /*void frogMenu() {
@@ -111,7 +111,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1); //I think this is a counter.
-	   unicode test = "Character Builder Terminal";
+	   UnicodeString test = "Character Builder Terminal";
 	   insertUnicode(test);
 
 	   insertInt(2); //Counter I think
@@ -121,7 +121,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1); //counter I think.
-	   unicode test2 = "Select the desired Roadmap option";
+	   UnicodeString test2 = "Select the desired Roadmap option";
 	   insertUnicode(test2);
 
 	   insertInt(2); //counter I think.
@@ -132,7 +132,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1); //counter I think
-	   unicode test99 = "true";
+	   UnicodeString test99 = "true";
 	   insertUnicode(test99);
 
 	   insertInt(2); //counter I think
@@ -143,7 +143,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1); //counter I think
-	   unicode test3 = "@refresh";
+	   UnicodeString test3 = "@refresh";
 	   insertUnicode(test3);
 
 	   insertInt(2); //counter I think
@@ -153,7 +153,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1); //counter I think
-	   unicode test4 = "@cancel";
+	   UnicodeString test4 = "@cancel";
 	   insertUnicode(test4);
 
 	   insertInt(2); //counter I think
@@ -163,7 +163,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1); //counter I think
-	   unicode test5 = "@ok";
+	   UnicodeString test5 = "@ok";
 	   insertUnicode(test5);
 
 	   insertInt(2); //counter I think
@@ -183,7 +183,7 @@ public:
 	   //---------------------------
 	   insertByte(4);
 	   insertInt(1);
-	   unicode test6 = "0";
+	   UnicodeString test6 = "0";
 	   insertUnicode(test6);
 	   insertInt(2); //counter I think
 	   insertAscii("List.dataList");
@@ -192,7 +192,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1);
-	   unicode test7 = "Select Roadmap";
+	   UnicodeString test7 = "Select Roadmap";
 	   insertUnicode(test7);
 	   insertInt(2); //counter I think
 	   insertAscii("List.dataList.0");
@@ -201,7 +201,7 @@ public:
 	   //---------------------------
 	   insertByte(4);
 	   insertInt(1);
-	   unicode test8 = "1";
+	   UnicodeString test8 = "1";
 	   insertUnicode(test8);
 	   insertInt(2); //counter I think
 	   insertAscii("List.dataList");
@@ -210,7 +210,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1);
-	   unicode test9 = "Earn Current Skill";
+	   UnicodeString test9 = "Earn Current Skill";
 	   insertUnicode(test9);
 	   insertInt(2); //counter I think
 	   insertAscii("List.dataList.1");
@@ -220,7 +220,7 @@ public:
 	   //---------------------------
 	   insertByte(4);
 	   insertInt(1);
-	   unicode test10 = "2";
+	   UnicodeString test10 = "2";
 	   insertUnicode(test10);
 	   insertInt(2); //counter I think
 	   insertAscii("List.dataList");
@@ -230,7 +230,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1);
-	   unicode test11 = "Set Combat Level";
+	   UnicodeString test11 = "Set Combat Level";
 	   insertUnicode(test11);
 	   insertInt(2); //counter I think
 	   insertAscii("List.dataList.2");
@@ -240,7 +240,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1);
-	   unicode test12 = "true";
+	   UnicodeString test12 = "true";
 	   insertUnicode(test12);
 	   insertInt(2); //counter I think
 	   insertAscii("btnOther");
@@ -250,7 +250,7 @@ public:
 	   //---------------------------
 	   insertByte(3);
 	   insertInt(1);
-	   unicode test13 = "Back";
+	   UnicodeString test13 = "Back";
 	   insertUnicode(test13);
 	   insertInt(2); //counter I think
 	   insertAscii("btnOther");

@@ -82,13 +82,13 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Mute
 
 	Event* spawnResourcesEvent;
 
-	Vector<string>* minimumpool;
-	Vector<string>* fixedpool;
-	Vector<string>* nativepool;
-	Vector<string>* itemStrings;
+	Vector<String>* minimumpool;
+	Vector<String>* fixedpool;
+	Vector<String>* nativepool;
+	Vector<String>* itemStrings;
 
-	VectorMap<string, ResourceTemplate*>* resourceMap;
-	VectorMap<uint64, string>* resourceIDNameMap;
+	VectorMap<String, ResourceTemplate*>* resourceMap;
+	VectorMap<uint64, String>* resourceIDNameMap;
 
 	ClassMap* resourceTree;
 
@@ -108,7 +108,7 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Mute
 
 	float spawnThrottling;
 
-	string EMPTY;
+	String EMPTY;
 
 	//int tempOver, tempUnder;
 public:
@@ -127,46 +127,46 @@ public:
 	void stop();
 	void clearResources();
 
-	void sendSurveyMessage(Player* player, string& resourceName, bool doLock = true);
-	void sendSampleMessage(Player* player, string& resourceName, bool doLock = true);
-	
-	bool useResourceDeed(Player* player, string& resourceName, int resourceQuantity);
-	
+	void sendSurveyMessage(Player* player, String& resourceName, bool doLock = true);
+	void sendSampleMessage(Player* player, String& resourceName, bool doLock = true);
+
+	bool useResourceDeed(Player* player, String& resourceName, int resourceQuantity);
+
 	void setResourceData(ResourceContainer* resContainer, bool doLock = true);
 
 	bool sendSurveyResources(Player* player, int SurveyToolType, bool doLock = true);
 
-	bool checkResource(Player* player, string& resourceName, int SurveyToolType, bool doLock = true);
+	bool checkResource(Player* player, String& resourceName, int SurveyToolType, bool doLock = true);
 
-	void getClassSeven(const string& resource, string& clas, bool doLock = true);
-	void getResourceContainerName(const string& resource, string& name, bool doLock = true);
+	void getClassSeven(const String& resource, String& clas, bool doLock = true);
+	void getResourceContainerName(const String& resource, String& name, bool doLock = true);
 
-	void printResource(string resname);
+	void printResource(String resname);
 
 	void harvestOrganics(Player* player, Creature* creature, int type);
 
 	ResourceList* getResourceListAtLocation(int zone, float x, float y, int type);
 
-	string& getResourceNameByID(uint64 rID);
+	String& getResourceNameByID(uint64 rID);
 
 	void generateSUI(Player* player, SuiListBox* sui);
 
-	bool containsResource(string& resourceName);
+	bool containsResource(String& resourceName);
 
 private:
 	void init();
 
-	float getDensity(int planet, string& resname, float inx, float iny);
+	float getDensity(int planet, String& resname, float inx, float iny);
 
 	float getDistanceFrom(float inx, float iny, float x, float y);
 
-	void sendSurveyResourceStats(Player* player, Vector<string>* rList);
-	bool isDuplicate(Vector<string>* rList, string& resource);
+	void sendSurveyResourceStats(Player* player, Vector<String>* rList);
+	bool isDuplicate(Vector<String>* rList, String& resource);
 
 	void countResources();
 
-	ResourceContainer* createNewResourceContainer(CreatureObject* creature, string& resourceName, int resourceQuantity);
-	
+	ResourceContainer* createNewResourceContainer(CreatureObject* creature, String& resourceName, int resourceQuantity);
+
 	void buildResourceMap();
 
 	void checkMinimumPool();
@@ -176,17 +176,17 @@ private:
 	int fixedPoolIron();
 	void checkNativePool();
 
-	void poolNeeds(Vector<string> * invector, string pool, Vector<string>* outvector);
+	void poolNeeds(Vector<String> * invector, String pool, Vector<String>* outvector);
 
-	void getFromRandomPool(Vector<string> * spawnMe, string pool);
+	void getFromRandomPool(Vector<String> * spawnMe, String pool);
 
 	void removeExpiredResources();
 
-	string getRandomResourceFromType(string restype, string exclusion);
+	String getRandomResourceFromType(String restype, String exclusion);
 
 	void insertResource(ResourceTemplate* resource);
 	void insertSpawn(ResourceTemplate* resource, int planet_id, float x,
-			float y, float radius, float max, string pool, bool& jtl);
+			float y, float radius, float max, String pool, bool& jtl);
 
 	void addToResourceTree(ResourceTemplate* resource);
 	void makeResourceTree();
@@ -194,38 +194,36 @@ private:
 	void makeFixedPoolVector();
 	void makeNativePoolVector();
 
-	bool isPlanetSpecific(string type);
-	int getPlanet(string type);
+	bool isPlanetSpecific(String type);
+	int getPlanet(String type);
 
-	void createResource(string restype, string pool, bool jtl);
+	void createResource(String restype, String pool, bool jtl);
 
 	int randomize(int min, int max);
 
 	void generateResourceStats(ResourceTemplate * resource);
 
-	void setAttStat(ResourceTemplate* resource, string statTitle, int stat);
+	void setAttStat(ResourceTemplate* resource, String statTitle, int stat);
 
-	bool isType(ResourceTemplate* resource, string type);
+	bool isType(ResourceTemplate* resource, String type);
 
-	string checkInsertCategory(string instring);
-	string checkInsertValue(int inval);
+	String checkInsertCategory(String inString);
+	String checkInsertValue(int inval);
 
-	bool checkResourceName(const string instring);
-	bool isDumbPhrase(const string inname);
+	bool checkResourceName(const String inString);
+	bool isDumbPhrase(const String inname);
 
 	// Resource Naming Scheme
-	void makeResourceName(string& resname, bool isOrganic);
-
-	string stringify(const int x);
+	void makeResourceName(String& resname, bool isOrganic);
 
 	void setObjectSubType(ResourceTemplate* resImpl);
 
 	void verifyResourceMap();
 	void verifyResourceData(int i, ResourceTemplate* resTemp);
 
-	string getCurrentNameFromType(string type);
+	String getCurrentNameFromType(String type);
 
-	void getHarvestingType(CreatureObject* creatureObj, string& harvestType, int& harvestAmount, int type);
+	void getHarvestingType(CreatureObject* creatureObj, String& harvestType, int& harvestAmount, int type);
 
 
 
@@ -237,28 +235,28 @@ class SuiListBoxVector;
 
 class ClassMap {
 private:
-	VectorMap<string, ClassMap*>* classTree;
-	VectorMap<string, ResourceTemplate*>* resTree;
-	Vector<string>* classList;
-	string className;
+	VectorMap<String, ClassMap*>* classTree;
+	VectorMap<String, ResourceTemplate*>* resTree;
+	Vector<String>* classList;
+	String className;
 	bool containsResources;
 	int searchNum;
 
 public:
 	ClassMap(){
-		classTree = new VectorMap<string, ClassMap*>();
-		resTree = new VectorMap<string, ResourceTemplate*>();
-		classList = new Vector<string>();
+		classTree = new VectorMap<String, ClassMap*>();
+		resTree = new VectorMap<String, ResourceTemplate*>();
+		classList = new Vector<String>();
 		className = "";
 		init();
 	}
 
 	~ClassMap(){
-		if(classTree!=NULL){
+		if (classTree!=NULL){
 			delete classTree;
 			classTree=NULL;
 		}
-		if(resTree!=NULL){
+		if (resTree!=NULL){
 			delete resTree;
 			resTree=NULL;
 		}
@@ -275,14 +273,14 @@ public:
 	/*
 	 * Returns the name of the class.
 	 */
-	void setClassName(string name){
+	void setClassName(String name){
 		className = name;
 	}
 
 	/*
 	 * Sets the name of the class.
 	 */
-	string getClassName(){
+	String getClassName(){
 		return className;
 	}
 
@@ -290,36 +288,36 @@ public:
 	 * Adds a resource and all of its subclasses to the tree
 	 */
 	void addResource(ResourceTemplate* resTemp){
-		string classToAdd = resTemp->getClass1();
+		String classToAdd = resTemp->getClass1();
 		ClassMap* temp = this;
 		temp = temp->addClass(classToAdd);
 
-		if(resTemp->getClass2()!=""){
+		if (resTemp->getClass2()!=""){
 			classToAdd = resTemp->getClass2();
 			temp = temp->addClass(classToAdd);
 		}
 
-		if(resTemp->getClass3()!=""){
+		if (resTemp->getClass3()!=""){
 			classToAdd = resTemp->getClass3();
 			temp = temp->addClass(classToAdd);
 		}
 
-		if(resTemp->getClass4()!=""){
+		if (resTemp->getClass4()!=""){
 			classToAdd = resTemp->getClass4();
 			temp = temp->addClass(classToAdd);
 		}
 
-		if(resTemp->getClass5()!=""){
+		if (resTemp->getClass5()!=""){
 			classToAdd = resTemp->getClass5();
 			temp = temp->addClass(classToAdd);
 		}
 
-		if(resTemp->getClass6()!=""){
+		if (resTemp->getClass6()!=""){
 			classToAdd = resTemp->getClass6();
 			temp = temp->addClass(classToAdd);
 		}
 
-		if(resTemp->getClass7()!=""){
+		if (resTemp->getClass7()!=""){
 			classToAdd = resTemp->getClass7();
 			temp = temp->addClass(classToAdd);
 		}
@@ -328,13 +326,13 @@ public:
 	}
 
 	/*
-	 * Returns the size of the contained Vector<string>
+	 * Returns the size of the contained Vector<String>
 	 * NO class should have a classTree AND resTree populated
 	 * So if this class contains classes, the size is of the classTree
 	 * if this class contains resources, the size is of the resTree
 	 */
 	int size(){
-		if(classTree->size()>0)
+		if (classTree->size()>0)
 			return classTree->size();
 		else
 			return resTree->size();
@@ -343,32 +341,32 @@ public:
 	/*
 	 * Gets the list of classes for the current ClassMap
 	 */
-	Vector<string>* getClassList(){
+	Vector<String>* getClassList(){
 		return classList;
 	}
 
 	/*
 	 * Tree traversal algorithm to return the class list of a passed in className
 	 * ex. resourceTree->getClassesFromClass("Flora");
-	 * returns a vector<string> with "Flora Food" and "Flora Structural"
+	 * returns a vector<String> with "Flora Food" and "Flora Structural"
 	 */
-	Vector<string>* getClassesFromClass(string className){
+	Vector<String>* getClassesFromClass(String className){
 		ClassMap* temp = this;
-		Vector<string>* classes = new Vector<string>();
+		Vector<String>* classes = new Vector<String>();
 		classes->removeAll();
-		if(getClassName()==className){
-			for(int i=0; i<classTree->size(); i++){
+		if (getClassName()==className){
+			for (int i=0; i<classTree->size(); i++){
 				classes->add(classTree->get(i)->getClassName());
 			}
 			return classes;
 		}
 		else{
-			if(searchNum < classTree->size()){
-				while(classes->size()==0){
+			if (searchNum < classTree->size()){
+				while (classes->size()==0){
 					temp = classTree->get(searchNum);
 					classes = temp->getClassesFromClass(className);
 					searchNum++;
-					if(searchNum >= classTree->size()){
+					if (searchNum >= classTree->size()){
 						searchNum=0;
 						return classes;
 					}
@@ -388,21 +386,21 @@ public:
 	 * Ex. resourceTree->getResourcesFromClass("Flora");
 	 * returns every ResourceTemplate that is of type "Flora"
 	 */
-	Vector<ResourceTemplate*>* getResourcesFromClass(string className){
+	Vector<ResourceTemplate*>* getResourcesFromClass(String className){
 		ClassMap* temp = this;
 		Vector<ResourceTemplate*>* resources = new Vector<ResourceTemplate*>();
 		resources->removeAll();
-		if(getClassName()==className){
+		if (getClassName()==className){
 			temp->findResourcesFromClass(resources, className);
 			return resources;
 		}
 		else{
-			if(searchNum < classTree->size()){
-				while(resources->size()==0){
+			if (searchNum < classTree->size()){
+				while (resources->size()==0){
 					temp = classTree->get(searchNum);
 					resources = temp->getResourcesFromClass(className);
 					searchNum++;
-					if(searchNum >= classTree->size()){
+					if (searchNum >= classTree->size()){
 						searchNum=0;
 						return resources;
 					}
@@ -420,13 +418,13 @@ public:
 	/*
 	 * Gets the menu of next classes for a given list of sui box choices by the player
 	 */
-	Vector<string>* getSuiMenuList(SuiListBoxVector* choicesList){
+	Vector<String>* getSuiMenuList(SuiListBoxVector* choicesList){
 		ClassMap* temp = this;
-		for(int i=0; i<choicesList->size(); i++){
-			if(temp->containsClass(choicesList->get(i)))
+		for (int i=0; i<choicesList->size(); i++){
+			if (temp->containsClass(choicesList->get(i)))
 				temp = temp->getClass(choicesList->get(i));
 			else{
-				if(temp->hasResource(choicesList->get(i)))
+				if (temp->hasResource(choicesList->get(i)))
 					return temp->getResourceStatsList(choicesList->get(i));
 				else
 					return NULL;
@@ -442,8 +440,8 @@ public:
 	 */
 	bool classContainsResources(SuiListBoxVector* choicesList){
 		ClassMap* temp = this;
-		for(int i=0; i<choicesList->size(); i++){
-			if(temp->containsClass(choicesList->get(i)))
+		for (int i=0; i<choicesList->size(); i++){
+			if (temp->containsClass(choicesList->get(i)))
 				temp = temp->getClass(choicesList->get(i));
 			else
 				return false;
@@ -458,16 +456,16 @@ private:
 	 * Starts at the class you specified as the "root"
 	 * and then adds all child resources based off of that root to a vector
 	 */
-	bool findResourcesFromClass(Vector<ResourceTemplate*>* resources, string className){
+	bool findResourcesFromClass(Vector<ResourceTemplate*>* resources, String className){
 		ClassMap* temp = this;
-		if(classTree->size()==0){
-			for(int i=0; i<resTree->size(); i++){
+		if (classTree->size()==0){
+			for (int i=0; i<resTree->size(); i++){
 				resources->add(resTree->get(i));
 			}
 			return true;
 		}
 		else{
-			while(searchNum < classTree->size()){
+			while (searchNum < classTree->size()){
 				temp = classTree->get(searchNum);
 				temp->findResourcesFromClass(resources, className);
 				searchNum++;
@@ -481,86 +479,86 @@ private:
 	 * Gets the stats of a resource and adds them to a vector to be
 	 * displayed in a SUI for the resourceDeed
 	 */
-	Vector<string>* getResourceStatsList(string& resourceName){
+	Vector<String>* getResourceStatsList(String& resourceName){
 		ResourceTemplate* resTemp = resTree->get(resourceName);
-		Vector<string>* resStats = new Vector<string>();
+		Vector<String>* resStats = new Vector<String>();
 		resStats->removeAll();
-		string temp = ("Resource Name = " + resTemp->getName());
+		String temp = ("Resource Name = " + resTemp->getName());
 		resStats->add(temp);
-		if(resTemp->getAtt1Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt1Stat()>0){
+			StringBuffer numstream;
 			numstream << "Decay Resistance = " << resTemp->getAtt1Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt2Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt2Stat()>0){
+			StringBuffer numstream;
 			numstream << "Overall Quality = " << resTemp->getAtt2Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt3Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt3Stat()>0){
+			StringBuffer numstream;
 			numstream << "Flavor = " << resTemp->getAtt3Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt4Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt4Stat()>0){
+			StringBuffer numstream;
 			numstream << "Potential Energy = " << resTemp->getAtt4Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt5Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt5Stat()>0){
+			StringBuffer numstream;
 			numstream << "Malleability = " << resTemp->getAtt5Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt6Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt6Stat()>0){
+			StringBuffer numstream;
 			numstream << "Unit Toughness = " << resTemp->getAtt6Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt7Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt7Stat()>0){
+			StringBuffer numstream;
 			numstream << "Shock Resistance = " << resTemp->getAtt7Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt8Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt8Stat()>0){
+			StringBuffer numstream;
 			numstream << "Cold Resistance = " << resTemp->getAtt8Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt9Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt9Stat()>0){
+			StringBuffer numstream;
 			numstream << "Heat Resistance = " << resTemp->getAtt9Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt10Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt10Stat()>0){
+			StringBuffer numstream;
 			numstream << "Conductivity = " << resTemp->getAtt10Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
-		if(resTemp->getAtt11Stat()>0){
-			stringstream numstream;
+		if (resTemp->getAtt11Stat()>0){
+			StringBuffer numstream;
 			numstream << "Entangle Resistance = " << resTemp->getAtt11Stat();
-			temp = numstream.str();
+			temp = numstream.toString();
 			resStats->add(temp);
 		}
 		return resStats;
 	}
 
-	ClassMap* getClass(string& name){
+	ClassMap* getClass(String& name){
 		return classTree->get(name);
 	}
 
-	ResourceTemplate* getResourceTemplate(string& name){
+	ResourceTemplate* getResourceTemplate(String& name){
 		return resTree->get(name);
 	}
 
@@ -568,11 +566,11 @@ private:
 		return containsResources;
 	}
 
-	bool hasResource(string& resourceName){
+	bool hasResource(String& resourceName){
 		return resTree->contains(resourceName);
 	}
 
-	bool containsClass(string& className){
+	bool containsClass(String& className){
 		return classTree->contains(className);
 	}
 
@@ -580,8 +578,8 @@ private:
 	 * this adds a class to the tree for
 	 * more classes or resource to be added to it
 	 */
-	ClassMap* addClass(string& classToAdd){
-		if(!classTree->contains(classToAdd)){
+	ClassMap* addClass(String& classToAdd){
+		if (!classTree->contains(classToAdd)){
 			ClassMap* temp = new ClassMap();
 			temp->setClassName(classToAdd);
 			classTree->put(classToAdd, temp);
@@ -596,7 +594,7 @@ private:
 	 * of the tree
 	 */
 	void addChildResource(ResourceTemplate* resTemp){
-		if(!resTree->contains(resTemp->getName())){
+		if (!resTree->contains(resTemp->getName())){
 			resTree->put(resTemp->getName(), resTemp);
 			classList->add(resTemp->getName());
 			containsResources=true;

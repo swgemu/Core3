@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "../../../objects.h"
 
-RevivePackImplementation::RevivePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn)
+RevivePackImplementation::RevivePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: RevivePackServant(oid, tempCRC, n, tempn, REVIVEPACK) {
 	initialize();
 }
-RevivePackImplementation::RevivePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
+RevivePackImplementation::RevivePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: RevivePackServant(creature, tempCRC, n, tempn, REVIVEPACK) {
 
 	name = n;
@@ -67,7 +67,7 @@ int RevivePackImplementation::useObject(Player* player) {
 	}
 
 	uint32 actionCRC = 0xC9759876; //reviveplayer
-	player->queueHeal((TangibleObject*)_this, actionCRC, string(""));
+	player->queueHeal((TangibleObject*)_this, actionCRC, String(""));
 
 	return 0;
 }
@@ -84,7 +84,7 @@ void RevivePackImplementation::initialize() {
 void RevivePackImplementation::parseItemAttributes() {
 	PharmaceuticalImplementation::parseItemAttributes();
 
-	string attr = "healthWoundHealed";
+	String attr = "healthWoundHealed";
 	setHealthWoundHealed(itemAttributes->getFloatAttribute(attr));
 	attr = "healthHealed";
 	setHealthHealed(itemAttributes->getFloatAttribute(attr));
@@ -103,7 +103,7 @@ void RevivePackImplementation::parseItemAttributes() {
 void RevivePackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
-	string attr = "examine_heal_wound_health";
+	String attr = "examine_heal_wound_health";
 	alm->insertAttribute(attr, getHealthWoundHealed());
 	attr = "examine_heal_damage_health";
 	alm->insertAttribute(attr, getHealthHealed());

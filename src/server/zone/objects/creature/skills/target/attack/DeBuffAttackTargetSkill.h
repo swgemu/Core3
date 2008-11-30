@@ -54,35 +54,35 @@ protected:
 
 	float duration;
 
-	int MeleeDamagePenalty;
-	int MeleeAccuracyPenalty;
+	int meleeDamagePenalty;
+	int meleeAccuracyPenalty;
 
-	int RangedDamagePenalty;
-	int RangedAccuracyPenalty;
+	int rangedDamagePenalty;
+	int rangedAccuracyPenalty;
 
-	int DefensePenalty;
-	int SpeedPenalty;
+	int defensePenalty;
+	int speedPenalty;
 
 	float nextAttackDelay;
 
-	string selfEffect;
+	String selfEffect;
 
-	string FlyText;
+	String flyText;
 
 
 public:
-	DeBuffAttackTargetSkill(const string& Name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(Name, anim, serv) {
+	DeBuffAttackTargetSkill(const String& Name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(Name, anim, serv) {
 
 		duration = 0;
 
-		MeleeDamagePenalty = 0;
-		MeleeAccuracyPenalty = 0;
+		meleeDamagePenalty = 0;
+		meleeAccuracyPenalty = 0;
 
-		RangedDamagePenalty = 0;
-		RangedAccuracyPenalty = 0;
+		rangedDamagePenalty = 0;
+		rangedAccuracyPenalty = 0;
 
-		DefensePenalty = 0;
-		SpeedPenalty = 0;
+		defensePenalty = 0;
+		speedPenalty = 0;
 
 		nextAttackDelay = 0;
 
@@ -90,13 +90,13 @@ public:
 
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
 
 		/*if (doAnimation) {
 			if (animCRC == 0 && creature->isPlayer()) {
 				Player* player = (Player*) creature;
-				string anim = Animations::getRandomAnimation();
+				String anim = Animations::getRandomAnimation();
 				uint32 animationCRC = String::hashCode(anim);
 				player->doCombatAnimation(targetCreature, animationCRC, 1);
 				creature->sendSystemMessage(anim);
@@ -104,7 +104,7 @@ public:
 				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
 		}*/
 
-		if(damage == 0)
+		if (damage == 0)
 			return 0;
 
 		doAnimations(creature, target);
@@ -114,10 +114,11 @@ public:
 
 	void doAnimations(CreatureObject* creature, SceneObject* target) {
 		CreatureObject* targetCreature = (CreatureObject*) target;
-		if (FlyText.size() != 0)
-			targetCreature->showFlyText("combat_effects", FlyText , 0, 255, 0);
 
-		if (selfEffect.size() != 0)
+		if (!flyText.isEmpty())
+			targetCreature->showFlyText("combat_effects", flyText , 0, 255, 0);
+
+		if (!selfEffect.isEmpty())
 			creature->playEffect(selfEffect, "");
 	}
 
@@ -145,13 +146,13 @@ public:
 
 		if (nextAttackDelay > 0) {
 			if (targetCreature->setNextAttackDelay((int)nextAttackDelay*1000)) {
-				stringstream msg;
-				msg << targetCreature->getCharacterName().c_str() << " has been delayed for " << (int)nextAttackDelay << " seconds";
-				creature->sendSystemMessage(msg.str());
+				StringBuffer msg;
+				msg << targetCreature->getCharacterName().toString() << " has been delayed for " << (int)nextAttackDelay << " seconds";
+				creature->sendSystemMessage(msg.toString());
 			} else {
-				stringstream msg;
-				msg << "You failed to delay " << targetCreature->getCharacterName().c_str();
-				creature->sendSystemMessage(msg.str());
+				StringBuffer msg;
+				msg << "You failed to delay " << targetCreature->getCharacterName().toString();
+				creature->sendSystemMessage(msg.toString());
 			}
 		}
 
@@ -159,35 +160,35 @@ public:
 	}
 
 	void setMeleeDamagePenalty(int dmg) {
-		MeleeDamagePenalty = dmg;
+		meleeDamagePenalty = dmg;
 	}
 
 	void setRangedDamagePenalty(int dmg) {
-		MeleeDamagePenalty = dmg;
+		meleeDamagePenalty = dmg;
 	}
 
 	void setMeleeAccuracyPenalty(int acc) {
-		MeleeAccuracyPenalty = acc;
+		meleeAccuracyPenalty = acc;
 	}
 
 	void setRangedAccuracyPenalty(int acc) {
-		RangedAccuracyPenalty = acc;
+		rangedAccuracyPenalty = acc;
 	}
 
 	void setDefensePenalty(int def) {
-		DefensePenalty = def;
+		defensePenalty = def;
 	}
 
 	void setSpeedPenalty(int speed) {
-		SpeedPenalty = speed;
+		speedPenalty = speed;
 	}
 
 	void setNextAttackDelay(float tm) {
 		nextAttackDelay = tm;
 	}
 
-	void setFlyText(const string& name) {
-		FlyText = name;
+	void setFlyText(const String& name) {
+		flyText = name;
 	}
 
 	void setSpeed(float sp) {
@@ -198,32 +199,32 @@ public:
 		duration = dur;
 	}
 
-	void setSelfEffect(const string& name) {
+	void setSelfEffect(const String& name) {
 		selfEffect = name;
 	}
 
 	inline int getMeleeDamagePenalty() {
-		return MeleeDamagePenalty;
+		return meleeDamagePenalty;
 	}
 
 	inline int getRangedDamagePenalty() {
-		return RangedDamagePenalty;
+		return rangedDamagePenalty;
 	}
 
 	inline int getMeleeAccuracyPenalty() {
-		return MeleeAccuracyPenalty;
+		return meleeAccuracyPenalty;
 	}
 
 	inline int getRangedAccuracyPenalty() {
-		return RangedAccuracyPenalty;
+		return rangedAccuracyPenalty;
 	}
 
 	inline int getdDefensePenalty() {
-		return DefensePenalty;
+		return defensePenalty;
 	}
 
 	inline int getSpeedPenalty() {
-		return SpeedPenalty;
+		return speedPenalty;
 	}
 
 };

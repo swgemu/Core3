@@ -60,28 +60,28 @@ ImageDesignCustomization::ImageDesignCustomization(ZoneProcessServerImplementati
 
 }
 
-void ImageDesignCustomization::updateCustomization(string customizationName, float value) {
-	if(value < 0 || value > 1 || creatureObject == NULL || server == NULL)
+void ImageDesignCustomization::updateCustomization(String customizationName, float value) {
+	if (value < 0 || value > 1 || creatureObject == NULL || server == NULL)
 		return; // valid values are a scale of 0-1
 		
 	SkillManager* skillManager = server->getSkillManager();
-	if(skillManager == NULL)
+	if (skillManager == NULL)
 		return;
 		
 	customization = skillManager->getCustomizationData(speciesGender, customizationName);
-	if(customization == NULL)
+	if (customization == NULL)
 		return;
 		
-	string variables = customization->getVariables();
-	string type = customization->getType();
+	String variables = customization->getVariables();
+	String type = customization->getType();
 	int choices = customization->getMaxChoices();
 	
-	if(type == "color") {
+	if (type == "color") {
 		// doh problem!	
-		creatureObject->sendSystemMessage("This isn't implemented - and frankly shouldn't have occured please report to McMahon repro steps - updateCustomization(string customizationName, uint32 value)");
-	} else if(type == "hslider") {
+		creatureObject->sendSystemMessage("This isn't implemented - and frankly shouldn't have occured please report to McMahon repro steps - updateCustomization(String customizationName, uint32 value)");
+	} else if (type == "hslider") {
 		
-		if(
+		if (
 			    customizationName == "brow" ||
 			    customizationName == "cheeks" ||
 			    customizationName == "chest" ||
@@ -113,31 +113,31 @@ void ImageDesignCustomization::updateCustomization(string customizationName, flo
 			    customizationName == "trunk_slope" ||
 			    customizationName == "weight"
 		) {
-			string token_1 = "";
-			string token_2 = "";
+			String token_1 = "";
+			String token_2 = "";
 			
-			StringTokenizer tokenizer(variables.c_str());
+			StringTokenizer tokenizer(variables.toCharArray());
 			tokenizer.setDelimeter(",");
 			
 			tokenizer.getStringToken(token_1);
-			if(tokenizer.hasMoreTokens())
+			if (tokenizer.hasMoreTokens())
 				tokenizer.getStringToken(token_2);
 			
-			//stringstream msg;
-			if(token_2 == "") {
+			//StringBuffer msg;
+			if (token_2 == "") {
 				//msg << "one token: " << token_1 << " => " << hex << (uint8)(value * 255) << dec << " (" << value << ")";
-				if(customization->getIsVarHairColor())
+				if (customization->getIsVarHairColor())
 					creatureObject->setHairAppearanceAttribute(token_1, (uint8)(value * 255) );
 				else
 					creatureObject->setAppearanceAttribute(token_1, (uint8)(value * 255) );
 			} else {
-				if(value == .5f) {
+				if (value == .5f) {
 					creatureObject->setAppearanceAttribute(token_1, (uint8) 0);
 					creatureObject->setAppearanceAttribute(token_2, (uint8) 0);
 					//msg << "two tokens == .5, token 1: " << token_1 << " => " << hex << 0 << dec << " (" << value << ")";
 					//msg << " token 2: " << token_2 << " => " << hex << 0 << dec << " (" << value << ")";
 
-				} else if(value > .5) {
+				} else if (value > .5) {
 					// take (.75 - .5) / .5 (50% * 255 = 128)
 					creatureObject->setAppearanceAttribute(token_1, (uint8) 0);
 					creatureObject->setAppearanceAttribute(token_2, (uint8) (((value-.5f)/.5f) * 255) );
@@ -153,15 +153,15 @@ void ImageDesignCustomization::updateCustomization(string customizationName, flo
 				}
 				
 			}
-			//creatureObject->info(msg.str());
-		} else if(customizationName == "height") {
+			//creatureObject->info(msg.toString());
+		} else if (customizationName == "height") {
 			
 			float minScale = customization->getMinScale();
 			float maxScale = customization->getMaxScale();
 			
 			creatureObject->setHeight(minScale + ((maxScale - minScale) * value));
 			// special mojo
-		} else if(
+		} else if (
 				
 				customizationName == "age" ||
 				customizationName == "beard" ||
@@ -175,60 +175,60 @@ void ImageDesignCustomization::updateCustomization(string customizationName, flo
 				customizationName == "tattoo_style"
 		){
 			
-			stringstream msg;
+			StringBuffer msg;
 			
-			StringTokenizer tokenizer(variables.c_str());
+			StringTokenizer tokenizer(variables.toCharArray());
 			tokenizer.setDelimeter(",");
 				
 			while (tokenizer.hasMoreTokens()) {
-				string attribute;
+				String attribute;
 				tokenizer.getStringToken(attribute);
 				msg << "customizationName: " << customizationName << "attribute: " << attribute << " => " << hex << (uint8) ((value/1.0f) * (choices-1)) << dec << " (" << value << ")" << dec << " choices (" << choices << ")";
 
-				if(customization->getIsVarHairColor())
+				if (customization->getIsVarHairColor())
 					creatureObject->setHairAppearanceAttribute(attribute, (uint8) ((value/1.0f) * (choices-1)) );
 				else
 					creatureObject->setAppearanceAttribute(attribute, (uint8) ((value/1.0f) * (choices-1)) );
 			}
-			creatureObject->info(msg.str());
+			creatureObject->info(msg.toString());
 		}
 	} else {
 		// danger will robinson!
-		creatureObject->sendSystemMessage("This shouldn't have happend.  Please report repro steps to McMahon - updateCustomization(string customizationName, uint32 value)");
+		creatureObject->sendSystemMessage("This shouldn't have happend.  Please report repro steps to McMahon - updateCustomization(String customizationName, uint32 value)");
 	}
 }
 
-void ImageDesignCustomization::updateCustomization(string customizationName, uint32 value) {
+void ImageDesignCustomization::updateCustomization(String customizationName, uint32 value) {
 	// bad value, 0-255 = good
-	if(value > 255 || creatureObject == NULL || server == NULL)
+	if (value > 255 || creatureObject == NULL || server == NULL)
 		return;
 	
 	SkillManager* skillManager = server->getSkillManager();
-	if(skillManager == NULL)
+	if (skillManager == NULL)
 		return;
 		
 	customization = skillManager->getCustomizationData(speciesGender, customizationName);
-	if(customization == NULL)
+	if (customization == NULL)
 		return;
 	
-	string variables = customization->getVariables();
-	string type = customization->getType();
+	String variables = customization->getVariables();
+	String type = customization->getType();
 	int choices = customization->getMaxChoices();
 		
-	if(type == "color") {
-		StringTokenizer tokenizer(variables.c_str());
+	if (type == "color") {
+		StringTokenizer tokenizer(variables.toCharArray());
 		tokenizer.setDelimeter(",");
 			
 		while (tokenizer.hasMoreTokens()) {
-			string attribute;
+			String attribute;
 			tokenizer.getStringToken(attribute);
 
-			if(customization->getIsVarHairColor())
+			if (customization->getIsVarHairColor())
 				creatureObject->setHairAppearanceAttribute(attribute, (uint8)value);
 			else
 				creatureObject->setAppearanceAttribute(attribute, (uint8)value);
 		}
-	} else if(type == "hslider")
+	} else if (type == "hslider")
 	{
 		// this happens for some index type variables
 		updateCustomization(customizationName, (float)value);
@@ -236,7 +236,7 @@ void ImageDesignCustomization::updateCustomization(string customizationName, uin
 			
 	} else
 	{
-		creatureObject->sendSystemMessage("This shouldn't have happend.  Please report repro steps to McMahon - updateCustomization(string customizationName, uint32 value)");
+		creatureObject->sendSystemMessage("This shouldn't have happend.  Please report repro steps to McMahon - updateCustomization(String customizationName, uint32 value)");
 	}
 }
 

@@ -81,11 +81,11 @@ protected:
 
 	BuildingObject* building;
 
-	unicode name;
-	string templateTypeName;
-	string templateName;
+	UnicodeString name;
+	String templateTypeName;
+	String templateName;
 
-	string attributeString;
+	String attributeString;
 
 	CustomizationVariables customizationVars;
 
@@ -99,10 +99,10 @@ protected:
 
 	ItemAttributes* itemAttributes;
 
-	string misoAsocKey; //Mission association key
+	String misoAsocKey; //Mission association key
 
-	string craftersName;
-	string craftedSerial;
+	String craftersName;
+	String craftedSerial;
 
 	bool wasLooted;
 
@@ -311,8 +311,8 @@ public:
 
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
-	TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& name, const string& tempname, int tp = 0);
-	TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& name, const string& tempname, int tp = 0);
+	TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& name, const String& tempname, int tp = 0);
+	TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& name, const String& tempname, int tp = 0);
 
 	~TangibleObjectImplementation();
 
@@ -372,7 +372,7 @@ public:
 		equipped = eqp;
 	}
 
-	inline void setCustomizationString(string& cust) {
+	inline void setCustomizationString(String& cust) {
 		customizationVars = cust;
 	}
 
@@ -396,25 +396,25 @@ public:
 		customizationVars.setVariable(type, value);
 	}
 
-	inline void setCustomizationVariable(const string type, uint8 value) {
+	inline void setCustomizationVariable(const String type, uint8 value) {
 		customizationVars.setVariable(type, value);
 	}
 
-	inline void setCraftersName(string& n){
+	inline void setCraftersName(String& n){
 		craftersName = n;
-		string temp = "craftersname";
+		String temp = "craftersname";
 		itemAttributes->setStringAttribute(temp, n);
 	}
 
 	inline void setLoot(bool l){
 		wasLooted = l;
-		string temp = "looted";
+		String temp = "looted";
 		itemAttributes->setBooleanAttribute(temp, l);
 	}
 
-	inline void setCraftedSerial(string& s){
+	inline void setCraftedSerial(String& s){
 		craftedSerial = s;
-		string temp = "craftedserial";
+		String temp = "craftedserial";
 		itemAttributes->setStringAttribute(temp, s);
 	}
 
@@ -442,15 +442,15 @@ public:
 		return container;
 	}
 
-	inline void setName(const string& n) {
+	inline void setName(const String& n) {
 		name = n;
 	}
 
-	inline void setName(const unicode& n) {
+	inline void setName(const UnicodeString& n) {
 		name = n;
 	}
 
-	inline unicode& getName() {
+	inline UnicodeString& getName() {
 		return name;
 	}
 
@@ -458,23 +458,23 @@ public:
 		return templateID;
 	}
 
-	inline void setTemplateName(const string& tempName) {
+	inline void setTemplateName(const String& tempName) {
 		templateName = tempName;
 	}
 
-	inline string& getTemplateName() {
+	inline String& getTemplateName() {
 		return templateName;
 	}
 
-	inline void getCustomizationString(string& appearance) {
+	inline void getCustomizationString(String& appearance) {
 		return customizationVars.toString(appearance);
 	}
 
-	inline void setTemplateTypeName(const string& tempTypeName) {
+	inline void setTemplateTypeName(const String& tempTypeName) {
 		templateTypeName = tempTypeName;
 	}
 
-	inline string& getTemplateTypeName() {
+	inline String& getTemplateTypeName() {
 		return templateTypeName;
 	}
 
@@ -486,11 +486,11 @@ public:
 		return equipped;
 	}
 
-	inline void setAttributes(string& attributestring) {
-		itemAttributes->setAttributes(attributestring);
+	inline void setAttributes(String& attributeString) {
+		itemAttributes->setAttributes(attributeString);
 	}
 
-	inline string& getAttributes() {
+	inline String& getAttributes() {
 		itemAttributes->getAttributeString(attributeString);
 		return attributeString;
 	}
@@ -499,11 +499,11 @@ public:
 		objectSubType = type;
 	}
 
-	inline string& getCraftersName(){
+	inline String& getCraftersName(){
 		return craftersName;
 	}
 
-	inline string& getCraftedSerial(){
+	inline String& getCraftedSerial(){
 		return craftedSerial;
 	}
 
@@ -511,11 +511,11 @@ public:
 		return objectSubType;
 	}
 
-	inline string& getMisoAsocKey() {
+	inline String& getMisoAsocKey() {
 		return misoAsocKey;
 	}
 
-	inline void setMisoAsocKey(const string& tma) {
+	inline void setMisoAsocKey(const String& tma) {
 		misoAsocKey = tma;
 	}
 

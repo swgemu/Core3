@@ -21,9 +21,9 @@ class CreatureObject;
 
 class PlayerHouseDeed : public DeedObject {
 public:
-	PlayerHouseDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn);
+	PlayerHouseDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
 
-	PlayerHouseDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
+	PlayerHouseDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
 	int getCellCount();
 
@@ -69,8 +69,8 @@ public:
 	PlayerHouseDeed* _this;
 
 public:
-	PlayerHouseDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp);
-	PlayerHouseDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp);
+	PlayerHouseDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	PlayerHouseDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~PlayerHouseDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

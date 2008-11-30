@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class ChatInstantMessageToClient : public BaseMessage {
 public:
-	ChatInstantMessageToClient(string& game, string& galaxy, string& name, unicode& message) : BaseMessage() {
+	ChatInstantMessageToClient(String& game, String& galaxy, String& name, UnicodeString& message) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x3C565CED);  // CRC
 

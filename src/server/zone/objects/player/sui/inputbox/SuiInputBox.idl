@@ -56,7 +56,7 @@ interface SuiInputBox implements SuiBox {
 	
 	void setMaxInputSize(int size);
 
-	void setDefaultInput(const string text);
+	void setDefaultInput(const String text);
 
 	boolean isFilterBox();
 }

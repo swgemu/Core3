@@ -63,9 +63,9 @@ GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader)
 
 	groupMembers.add(Leader);
 
-	stringstream name;
+	StringBuffer name;
 	name << "Group :" << oid;
-	setLoggingName(name.str());
+	setLoggingName(name.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -164,7 +164,7 @@ void GroupObjectImplementation::disband() {
 			play->unlock();
 
 		} catch (...) {
-			cout << "Exception in GroupObject::disband(Player* player)\n";
+			System::out << "Exception in GroupObject::disband(Player* player)\n";
 			play->unlock();
 		}
 	}
@@ -220,8 +220,8 @@ void GroupObjectImplementation::makeLeader(Player* player) {
 
 float GroupObjectImplementation::getRangerBonusForHarvesting(Player* player) {
 	Player* temp;
-	string skillBox = "outdoors_ranger_novice";
-	string skillBox2 = "outdoors_ranger_master";
+	String skillBox = "outdoors_ranger_novice";
+	String skillBox2 = "outdoors_ranger_master";
 
 	float bonus = .2f;
 	bool closeEnough = false;

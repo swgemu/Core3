@@ -130,7 +130,7 @@ void ItemManager::createPlayerItem(Player* player, TangibleObject* item) {
 		((ItemManagerImplementation*) _impl)->createPlayerItem(player, item);
 }
 
-TangibleObject* ItemManager::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, string& objectn, string& objecttemp, bool equipped) {
+TangibleObject* ItemManager::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -240,7 +240,7 @@ BlueFrogVector* ItemManager::getBFItemList() {
 		return ((ItemManagerImplementation*) _impl)->getBFItemList();
 }
 
-BlueFrogVector* ItemManager::getBFProfList(string& group) {
+BlueFrogVector* ItemManager::getBFProfList(String& group) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -253,7 +253,7 @@ BlueFrogVector* ItemManager::getBFProfList(string& group) {
 		return ((ItemManagerImplementation*) _impl)->getBFProfList(group);
 }
 
-string& ItemManager::getBFProf(string& key) {
+String& ItemManager::getBFProf(String& key) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -267,7 +267,7 @@ string& ItemManager::getBFProf(string& key) {
 		return ((ItemManagerImplementation*) _impl)->getBFProf(key);
 }
 
-void ItemManager::giveBFItemSet(Player* player, string& set) {
+void ItemManager::giveBFItemSet(Player* player, String& set) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -314,7 +314,7 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		createPlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertLong(initializeTangibleForCrafting(inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param3_initializeTangibleForCrafting__int_long_long_string_string_bool_), inv->getAsciiParameter(_param4_initializeTangibleForCrafting__int_long_long_string_string_bool_), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(initializeTangibleForCrafting(inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param3_initializeTangibleForCrafting__int_long_long_String_String_bool_), inv->getAsciiParameter(_param4_initializeTangibleForCrafting__int_long_long_String_String_bool_), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 14:
 		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
@@ -338,13 +338,13 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertLong(getBFItemList()->_getObjectID());
 		break;
 	case 21:
-		resp->insertLong(getBFProfList(inv->getAsciiParameter(_param0_getBFProfList__string_))->_getObjectID());
+		resp->insertLong(getBFProfList(inv->getAsciiParameter(_param0_getBFProfList__String_))->_getObjectID());
 		break;
 	case 22:
-		resp->insertAscii(getBFProf(inv->getAsciiParameter(_param0_getBFProf__string_)));
+		resp->insertAscii(getBFProf(inv->getAsciiParameter(_param0_getBFProf__String_)));
 		break;
 	case 23:
-		giveBFItemSet((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_giveBFItemSet__Player_string_));
+		giveBFItemSet((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_giveBFItemSet__Player_String_));
 		break;
 	default:
 		return NULL;
@@ -381,7 +381,7 @@ void ItemManagerAdapter::createPlayerItem(Player* player, TangibleObject* item) 
 	return ((ItemManagerImplementation*) impl)->createPlayerItem(player, item);
 }
 
-TangibleObject* ItemManagerAdapter::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, string& objectn, string& objecttemp, bool equipped) {
+TangibleObject* ItemManagerAdapter::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped) {
 	return ((ItemManagerImplementation*) impl)->initializeTangibleForCrafting(objecttype, objectid, objectcrc, objectn, objecttemp, equipped);
 }
 
@@ -413,15 +413,15 @@ BlueFrogVector* ItemManagerAdapter::getBFItemList() {
 	return ((ItemManagerImplementation*) impl)->getBFItemList();
 }
 
-BlueFrogVector* ItemManagerAdapter::getBFProfList(string& group) {
+BlueFrogVector* ItemManagerAdapter::getBFProfList(String& group) {
 	return ((ItemManagerImplementation*) impl)->getBFProfList(group);
 }
 
-string& ItemManagerAdapter::getBFProf(string& key) {
+String& ItemManagerAdapter::getBFProf(String& key) {
 	return ((ItemManagerImplementation*) impl)->getBFProf(key);
 }
 
-void ItemManagerAdapter::giveBFItemSet(Player* player, string& set) {
+void ItemManagerAdapter::giveBFItemSet(Player* player, String& set) {
 	return ((ItemManagerImplementation*) impl)->giveBFItemSet(player, set);
 }
 

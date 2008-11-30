@@ -49,11 +49,11 @@ import "../../zone/ZoneServer";
 import "../../zone/objects/player/Player";
 
 interface ChatRoom {
-	ChatRoom(ZoneServer server, const string name, unsigned int cid) {
+	ChatRoom(ZoneServer server, const String name, unsigned int cid) {
 		super(server, name, cid);
 	}
 	
-	ChatRoom(ZoneServer server, ChatRoom parent, const string name, unsigned int cid) {
+	ChatRoom(ZoneServer server, ChatRoom parent, const String name, unsigned int cid) {
 		super(server, parent, name, cid);
 	}
 
@@ -63,17 +63,17 @@ interface ChatRoom {
 	void addSubRoom(ChatRoom channel);
 	void removeSubRoom(ChatRoom channel);
 	ChatRoom getSubRoom(int i);
-	ChatRoom getSubRoom(const string name);
+	ChatRoom getSubRoom(const String name);
 	
 	void addPlayer(Player player, boolean doLock = true);
 	void removePlayer(Player player, boolean doLock = true);
-	void removePlayer(const string player);
+	void removePlayer(const String player);
 	
 	void broadcastMessage(BaseMessage msg);
 	//void broadcastMessage(Vector<Message> messages);
 	
 	boolean hasPlayer(Player player);
-	boolean hasPlayer(const string name);
+	boolean hasPlayer(const String name);
 	
 	void removeAllPlayers();
 	
@@ -89,25 +89,25 @@ interface ChatRoom {
 	
 	int getPlayerSize();
 	
-	void setName(const string Name);
+	void setName(const String Name);
 	
-	string getName();
+	String getName();
 	
-	string getFullPath();
+	String getFullPath();
 	
-	string getOwner();
+	String getOwner();
 	
-	string getCreator();
+	String getCreator();
 	
-	unicode getTitle();
+	UnicodeString getTitle();
 	
-	string getServerName();
+	String getServerName();
 	
-	void setOwner(const string Owner);
+	void setOwner(const String Owner);
 	
-	void setCreator(const string Creator);
+	void setCreator(const String Creator);
 	
-	void setTitle(const string Title);
+	void setTitle(const String Title);
 	
 	unsigned int getRoomID();
 	

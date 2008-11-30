@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "../../../objects.h"
 
-StimPackImplementation::StimPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn)
+StimPackImplementation::StimPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: StimPackServant(oid, tempCRC, n, tempn, STIMPACK) {
 	initialize();
 }
-StimPackImplementation::StimPackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
+StimPackImplementation::StimPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: StimPackServant(creature, tempCRC, n, tempn, STIMPACK) {
 
 	name = n;
@@ -67,13 +67,13 @@ int StimPackImplementation::useObject(Player* player) {
 	}
 
 	uint32 actionCRC = 0x0A9F00A0; //healdamage
-	player->queueHeal((TangibleObject*)_this, actionCRC, string(""));
+	player->queueHeal((TangibleObject*)_this, actionCRC, String(""));
 
 	return 0;
 }
 
 void StimPackImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
-	string name;
+	String name;
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 	//craftingValues->toString();
@@ -99,14 +99,14 @@ void StimPackImplementation::initialize() {
 void StimPackImplementation::parseItemAttributes() {
 	PharmaceuticalImplementation::parseItemAttributes();
 
-	string attr = "effectiveness";
+	String attr = "effectiveness";
 	setEffectiveness(itemAttributes->getFloatAttribute(attr));
 }
 
 void StimPackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
-	string attr = "examine_heal_damage_health";
+	String attr = "examine_heal_damage_health";
 	alm->insertAttribute(attr, getPrecision(effectiveness, 0));
 	attr = "examine_heal_damage_action";
 	alm->insertAttribute(attr, getPrecision(effectiveness, 0));

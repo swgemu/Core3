@@ -56,7 +56,7 @@ public:
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 3, 0x0B) {
 		insertFloat(1);
 
-		insertAscii("string_id_table");
+		insertAscii("String_id_table");
 		insertInt(0);
 		insertAscii("");
 

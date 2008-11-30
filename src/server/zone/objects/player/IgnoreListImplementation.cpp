@@ -66,35 +66,36 @@ IgnoreListImplementation::IgnoreListImplementation(Player* pl) : IgnoreListServa
 	ignoreMagicNumber = 0;
 }
 
-void IgnoreListImplementation::addIgnore(string& name, string& server) {
+void IgnoreListImplementation::addIgnore(String& name, String& server) {
 	PlayerObject* playerObject = player->getPlayerObject();
 	int magicnumber = ignoreMagicNumber;
-	String::toLower(name);
+
+	name = name.toLowerCase();
 
 	for (int i = 0; i < ignoreName.size(); ++i) {
 		if (ignoreName.get(i) == name) {
-			stringstream ignoreString;
+			StringBuffer ignoreString;
 			ignoreString << "You are already ignoring " << name << ".";
 
-			unicode message = unicode(ignoreString.str());
+			UnicodeString message = UnicodeString(ignoreString.toString());
 			player->sendSystemMessage(message);
 			return;
 		}
 	}
 
 	try {
-		stringstream query;
-		string mysqlName = name;
+		StringBuffer query;
+		String mysqlName = name;
 		MySqlDatabase::escapeString(mysqlName);
 
 		query << "SELECT * from `characters` where lower(`firstname`) = '" << mysqlName << "';";
 		ResultSet* ignore = ServerDatabase::instance()->executeQuery(query);
 
 		if (!ignore->next()) {
-			stringstream ignoreString;
+			StringBuffer ignoreString;
 			ignoreString << name << " is not a valid name.";
 
-			unicode message = unicode(ignoreString.str());
+			UnicodeString message = UnicodeString(ignoreString.toString());
 			player->sendSystemMessage(message);
 
 			delete ignore;
@@ -104,10 +105,10 @@ void IgnoreListImplementation::addIgnore(string& name, string& server) {
 		delete ignore;
 
 	} catch (DatabaseException& e) {
-		cout << "IgnorelistImplementation void addIgnore -> Select DB Query exception! \n";
+		System::out << "IgnorelistImplementation void addIgnore -> Select DB Query exception! \n";
 		return;
 	} catch (...) {
-		cout << "unreported exception caught in IgnoreListImplementation::addIgnore(string& name, string& server)\n";
+		System::out << "unreported exception caught in IgnoreListImplementation::addIgnore(String& name, String& server)\n";
 		return;
 	}
 
@@ -123,9 +124,9 @@ void IgnoreListImplementation::addIgnore(string& name, string& server) {
 
 	Player* playerToAdd = player->getZone()->getZoneServer()->getPlayerManager()->getPlayer(name);
 
-	stringstream ignoreString;
+	StringBuffer ignoreString;
 	ignoreString << name << " is now ignored.";
-	unicode message = unicode(ignoreString.str());
+	UnicodeString message = UnicodeString(ignoreString.toString());
 	player->sendSystemMessage(message);
 
 	IgnoreListMessage* list = new IgnoreListMessage(player);
@@ -137,16 +138,17 @@ void IgnoreListImplementation::addIgnore(string& name, string& server) {
 	player->sendMessage(dplay9);
 }
 
-void IgnoreListImplementation::removeIgnore(string& name) {
+void IgnoreListImplementation::removeIgnore(String& name) {
 	int i = 0;
 	int magicnumber = ignoreMagicNumber;
-	String::toLower(name);
+
+	name = name.toLowerCase();
 
 	PlayerObject* playerObject = player->getPlayerObject();
 
 	for (int i = 0; i < ignoreName.size(); ++i) {
 		if (ignoreName.get(i) == name) {
-			string inServer = ignoreServer.get(i);
+			String inServer = ignoreServer.get(i);
 
 			ignoreName.remove(i);
 			ignoreServer.remove(i);
@@ -158,9 +160,9 @@ void IgnoreListImplementation::removeIgnore(string& name) {
 			AddIgnoreMessage* remove = new AddIgnoreMessage(player->getObjectID(),name, inServer, false);
 			player->sendMessage(remove);
 
-			stringstream ignoreString;
+			StringBuffer ignoreString;
 			ignoreString << name << " is no longer ignored.";
-			unicode message = unicode(ignoreString.str());
+			UnicodeString message = UnicodeString(ignoreString.toString());
 			player->sendSystemMessage(message);
 
 			IgnoreListMessage* list = new IgnoreListMessage(player);
@@ -177,11 +179,11 @@ void IgnoreListImplementation::removeIgnore(string& name) {
 }
 
 void IgnoreListImplementation::toString() {
-	cout << "Ignore List for " << player->getFirstName() << endl;
-	cout << "Number of Ignores = " << ignoreName.size() << endl;
+	System::out << "Ignore List for " << player->getFirstName() << endl;
+	System::out << "Number of Ignores = " << ignoreName.size() << endl;
 
 	for (int i = 0; i < ignoreName.size(); ++i) {
-		cout << ignoreName.get(i) << " on " << ignoreServer.get(i) << ". Current magicnumber is " << ignoreMagicNumber << endl;
+		System::out << ignoreName.get(i) << " on " << ignoreServer.get(i) << ". Current magicnumber is " << ignoreMagicNumber << endl;
 	}
 }
 
@@ -195,22 +197,19 @@ void IgnoreListImplementation::loadIgnore() {
 	ignoreServer.removeAll();
 
 	try {
-		stringstream loadQuery;
-
-		loadQuery.str("");
+		StringBuffer loadQuery;
 		loadQuery << "SELECT ignorelist.character_id, ignorelist.ignore_id, ignorelist.ignore_galaxy, characters.firstname "
-		<< "FROM ignorelist "
-		<< "Inner Join characters ON ignorelist.ignore_id = characters.character_id "
-		<< "WHERE ignorelist.character_id = " << player->getCharacterID() << ";";
+				  << "FROM ignorelist "
+				  << "Inner Join characters ON ignorelist.ignore_id = characters.character_id "
+				  << "WHERE ignorelist.character_id = " << player->getCharacterID() << ";";
 
 		ResultSet* ignore = ServerDatabase::instance()->executeQuery(loadQuery);
 
 		while (ignore->next()) {
 			magicnumber = ignoreMagicNumber;
 
-			string server = ignore->getString(2);
-			string name = ignore->getString(3);
-			String::toLower(name);
+			String server = ignore->getString(2);
+			String name = String(ignore->getString(3)).toLowerCase();
 
 			ignoreName.add(name);
 			ignoreServer.add(server);
@@ -237,61 +236,57 @@ void IgnoreListImplementation::loadIgnore() {
 
 		delete ignore;
 	} catch (DatabaseException& e) {
-		cout << "IgnorelistImplementation void loadIgnore -> Select DB Query exception! \n";
-		cout << e.getMessage() << endl;
+		System::out << "IgnorelistImplementation void loadIgnore -> Select DB Query exception! \n";
+		System::out << e.getMessage() << endl;
 	} catch (...) {
-		cout << "unreported exception caught in IgnoreListImplementation::loadIgnore()\n";
+		System::out << "unreported exception caught in IgnoreListImplementation::loadIgnore()\n";
 	}
 }
 
 
 void IgnoreListImplementation::saveIgnore() {
-	int i = 0 ;
-	string lcaseName;
-	stringstream deleteQuery;
-
 	try {
-		deleteQuery.str("");
+		StringBuffer deleteQuery;
 		deleteQuery << "DELETE FROM ignorelist WHERE character_id = " << player->getCharacterID();
+
 		ServerDatabase::instance()->executeStatement(deleteQuery);
 	} catch (DatabaseException& e) {
-		cout << "IgnorelistImplementation void saveIgnore -> Delete from Ignorelist Query exception! \n";
-		cout << e.getMessage() << endl;
+		System::out << "IgnorelistImplementation void saveIgnore -> Delete from Ignorelist Query exception! \n";
+
+		System::out << e.getMessage() << endl;
 	} catch (...) {
-		cout << "IgnorelistImplementation void saveIgnore -> Delete from Ignorelist Query exception! \n";
+		System::out << "IgnorelistImplementation void saveIgnore -> Delete from Ignorelist Query exception! \n";
 	}
 
 	for (int i = 0; i < ignoreName.size(); ++i) {
 		try {
-			stringstream query;
-			string lcaseName = ignoreName.get(i);
-			String::toLower(lcaseName);
+			String lcaseName = ignoreName.get(i).toLowerCase();
 
-			string mysqlName = lcaseName;
+			String mysqlName = lcaseName;
 			MySqlDatabase::escapeString(mysqlName);
 
-			query.str("");
+			StringBuffer query;
 			query << "SELECT * FROM characters WHERE lower(firstname) = \"" + mysqlName + "\"";
+
 			ResultSet* ignore = ServerDatabase::instance()->executeQuery(query);
 
 			if (ignore->next()) {
-				stringstream saveQuery;
-				saveQuery.str("");
+				StringBuffer saveQuery;
 				saveQuery << "INSERT INTO `ignorelist` "
-				<< "(`character_id`,`ignore_id`,`ignore_galaxy`)"
-				<< " VALUES ('"
-				<< player->getCharacterID() << "','" << ignore->getUnsignedInt(0) << "','"
-				<< ignore->getUnsignedInt(2) << "');";
+						  << "(`character_id`,`ignore_id`,`ignore_galaxy`)"
+						  << " VALUES ('"
+						  << player->getCharacterID() << "','" << ignore->getUnsignedInt(0) << "','"
+						  << ignore->getUnsignedInt(2) << "');";
 
 				ServerDatabase::instance()->executeStatement(saveQuery);
 			}
 
 			delete ignore;
 		} catch (DatabaseException& e) {
-			cout << "IgnorelistImplementation void saveIgnores -> Insert DB Query exception! \n";
-			cout << e.getMessage() << endl;
+			System::out << "IgnorelistImplementation void saveIgnores -> Insert DB Query exception! \n";
+			System::out << e.getMessage() << endl;
 		} catch (...) {
-			cout << "unreported exception caught in IgnorelistImplementation void saveIgnores\n";
+			System::out << "unreported exception caught in IgnorelistImplementation void saveIgnores\n";
 		}
 	}
 }

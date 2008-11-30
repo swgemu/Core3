@@ -77,15 +77,15 @@ public:
 		00 00  // STFName
 		00 00 00 00  // something
 		00 00 // stf
-		00 00 00 00 // unicode custom name
+		00 00 00 00 // UnicodeString custom name
 		00 00 00 00 //something
 		01 // extra bit on live?
 		01 00 00 00 // Cell Number
 		*/
 
-		//stringstream msg;
+		//StringBuffer msg;
 		//msg << hex << "CellObjectMessage3 [Object = " << coId << "]" << " cellID to (" << cellID <<  ")\n";
-		//cout << msg.str();
+		//System::out << msg.toString();
 
 	}
 };

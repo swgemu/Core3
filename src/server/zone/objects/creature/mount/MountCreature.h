@@ -19,7 +19,7 @@ class IntangibleObject;
 
 class MountCreature : public Creature {
 public:
-	MountCreature(CreatureObject* linkCreature, const string& name, const string& stf, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid);
+	MountCreature(CreatureObject* linkCreature, const String& name, const String& stf, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid);
 
 	void setMountType(int type);
 
@@ -53,9 +53,9 @@ public:
 
 	void parseItemAttributes();
 
-	void setAttributes(string& attributestring);
+	void setAttributes(String& attributeString);
 
-	string& getAttributes();
+	String& getAttributes();
 
 	void repair();
 
@@ -64,7 +64,7 @@ protected:
 
 	virtual ~MountCreature();
 
-	string _return_getAttributes;
+	String _return_getAttributes;
 
 	friend class MountCreatureHelper;
 };
@@ -109,14 +109,14 @@ public:
 
 	void parseItemAttributes();
 
-	void setAttributes(string& attributestring);
+	void setAttributes(String& attributeString);
 
-	string& getAttributes();
+	String& getAttributes();
 
 	void repair();
 
 protected:
-	string _param0_setAttributes__string_;
+	String _param0_setAttributes__String_;
 };
 
 class MountCreatureHelper : public DistributedObjectClassHelper, public Singleton<MountCreatureHelper> {

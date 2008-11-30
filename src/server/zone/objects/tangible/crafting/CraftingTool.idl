@@ -58,11 +58,11 @@ import "../../draftschematic/DraftSchematic";
 import "CraftingStation";
  
 interface CraftingTool implements TangibleObject {
-	CraftingTool(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+	CraftingTool(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int type);
 	}
 	
-	CraftingTool(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+	CraftingTool(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int type);
 	}
  

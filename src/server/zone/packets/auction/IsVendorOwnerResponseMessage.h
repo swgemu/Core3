@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class IsVendorOwnerResponseMessage : public BaseMessage {
 public:
-    IsVendorOwnerResponseMessage(bool vendor, uint64 objectId, string& planet, string& header, int x, int z ) {
+    IsVendorOwnerResponseMessage(bool vendor, uint64 objectId, String& planet, String& header, int x, int z ) {
 		insertShort(3);
 		insertInt(0xCE04173E);
 		
@@ -64,7 +64,7 @@ public:
 		
 		insertLong(objectId);
 
-		stringstream title;
+		StringBuffer title;
 		title << planet << ".@";
 		
 		if (vendor)
@@ -74,7 +74,7 @@ public:
 		
 		title << "." << objectId << "#" << x << "," << z;
 		
-		insertAscii(title.str());
+		insertAscii(title.toString());
 		
 		insertShort(0x64);
 	}

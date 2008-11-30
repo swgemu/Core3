@@ -15,11 +15,11 @@ class ResourceList : public ManagedObject {
 public:
 	ResourceList();
 
-	bool contains(string& key);
+	bool contains(String& key);
 
 	int size();
 
-	int put(string& key, ResourceItem* res);
+	int put(String& key, ResourceItem* res);
 
 	ResourceItem* get(int index);
 
@@ -39,17 +39,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	bool contains(string& key);
+	bool contains(String& key);
 
 	int size();
 
-	int put(string& key, ResourceItem* res);
+	int put(String& key, ResourceItem* res);
 
 	ResourceItem* get(int index);
 
 protected:
-	string _param0_contains__string_;
-	string _param0_put__string_ResourceItem_;
+	String _param0_contains__String_;
+	String _param0_put__String_ResourceItem_;
 };
 
 class ResourceListHelper : public DistributedObjectClassHelper, public Singleton<ResourceListHelper> {

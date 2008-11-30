@@ -53,19 +53,19 @@ which carries forward this exception.
 
 class CureTargetSkill : public TargetSkill {
 protected:
-	string effectName;
+	String effectName;
 	uint64 state;
 	int mindCost;
 
 public:
-	CureTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
+	CureTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		setEffectName(aname);
 		setState(CreatureState::INVALID);
 		setMindCost(0);
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (effectName.size() != 0)
+		if (!effectName.isEmpty())
 			creatureTarget->playEffect(effectName, "");
 
 		if (creature == creatureTarget)
@@ -143,9 +143,9 @@ public:
 		return true;
 	}
 
-	void parseModifier(const string& modifier, uint64& objectId) {
-		if (!modifier.empty())
-			objectId = atoll(modifier.c_str());
+	void parseModifier(const String& modifier, uint64& objectId) {
+		if (!modifier.isEmpty())
+			objectId = Long::valueOf(modifier);
 		else
 			objectId = 0;
 	}
@@ -174,7 +174,7 @@ public:
 		return NULL;
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		//Validate our target is a Player or CreatureObject
 		//TODO: Should check that is a Player or CreaturePet instead.
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
@@ -247,22 +247,22 @@ public:
 	}
 
 	void sendCureMessage(CreatureObject* creature, CreatureObject* creatureTarget) {
-		stringstream msgTarget, msgPlayer;
-		string msgSelf;
+		StringBuffer msgTarget, msgPlayer;
+		String msgSelf;
 		switch (state) {
 		case CreatureState::POISONED:
-			msgPlayer << "You apply poison antidote to " << creatureTarget->getCharacterName().c_str() << ".";
-			msgTarget << creature->getCharacterName().c_str() << " applies poison antidote to you.";
+			msgPlayer << "You apply poison antidote to " << creatureTarget->getCharacterName().toString() << ".";
+			msgTarget << creature->getCharacterName().toString() << " applies poison antidote to you.";
 			msgSelf = "poison_antidote_self";
 			break;
 		case CreatureState::DISEASED:
-			msgPlayer << "You apply disease antidote to " << creatureTarget->getCharacterName().c_str() << ".";
-			msgTarget << creature->getCharacterName().c_str() << " applies disease antidote to you.";
+			msgPlayer << "You apply disease antidote to " << creatureTarget->getCharacterName().toString() << ".";
+			msgTarget << creature->getCharacterName().toString() << " applies disease antidote to you.";
 			msgSelf = "disease_antidote_self";
 			break;
 		case CreatureState::ONFIRE:
-			msgPlayer << "You attempt to suppress the flames on " << creatureTarget->getCharacterName().c_str() << ".";
-			msgTarget << creature->getCharacterName().c_str() << " covers you in a suppressive blanket.";
+			msgPlayer << "You attempt to suppress the flames on " << creatureTarget->getCharacterName().toString() << ".";
+			msgTarget << creature->getCharacterName().toString() << " covers you in a suppressive blanket.";
 			msgSelf = "blanket";
 			break;
 		default:
@@ -270,29 +270,30 @@ public:
 		}
 
 		if (creature != creatureTarget) {
-			creature->sendSystemMessage(msgPlayer.str());
-			creatureTarget->sendSystemMessage(msgTarget.str());
+			creature->sendSystemMessage(msgPlayer.toString());
+			creatureTarget->sendSystemMessage(msgTarget.toString());
 		} else {
 			creature->sendSystemMessage("healing_response", msgSelf);
 		}
 	}
 
-	void awardXp(CreatureObject* creature, string type, int power) {
+	void awardXp(CreatureObject* creature, String type, int power) {
 		Player* player = (Player*) creature;
 
-		int amount = (int)round((float)power * 1.0f);
+		int amount = (int) round((float) power * 1.0f);
 
 		if (amount <= 0)
 			return;
 
 		player->addXp(type, amount, true);
 
-		String::toLower(type);
-		type[0] = toupper(type[0]); //Capitalize first letter.
+		// Capitalize first letter.
+		type = Character::toUpperCase(type.charAt(0)) +
+			type.subString(1, type.length()).toLowerCase();
 
-		stringstream msgExperience;
+		StringBuffer msgExperience;
 		msgExperience << "You receive " << amount << " points of " << type << " experience.";
-		player->sendSystemMessage(msgExperience.str());
+		player->sendSystemMessage(msgExperience.toString());
 	}
 
 	float calculateSpeed(CreatureObject* creature) {
@@ -303,7 +304,7 @@ public:
 		return true;
 	}
 
-	void setEffectName(const string& name) {
+	void setEffectName(const String& name) {
 		effectName = name;
 	}
 

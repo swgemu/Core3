@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class MissionMap {
 	VectorMap<uint64, MissionObject*> missionMap;
-	VectorMap<string, MissionObject*> missionIKMap; //Internal Key
+	VectorMap<String, MissionObject*> missionIKMap; //Internal Key
 	
 public:
 	MissionMap() {
@@ -74,7 +74,7 @@ public:
 		return missionMap.get(oid);
 	}
 
-	MissionObject* get(string& ik) {
+	MissionObject* get(String& ik) {
 		return missionIKMap.get(ik);
 	}
 

@@ -59,12 +59,12 @@ public:
 		//close();
 	}
 
-	void setResourceName(unicode& resource_name) {
+	void setResourceName(UnicodeString& resource_name) {
 		startUpdate(0x06);
 		insertUnicode(resource_name);
 	}
 	
-	void setResourceType(string& resource_type) {
+	void setResourceType(String& resource_type) {
 		startUpdate(0x05);
 		insertAscii(resource_type);
 	}

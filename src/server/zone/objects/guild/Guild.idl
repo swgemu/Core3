@@ -50,7 +50,7 @@ import "../../managers/player/PlayerMap";
 
 
 interface Guild {
-	Guild(unsigned int gid, const string name, const string tag);
+	Guild(unsigned int gid, const String name, const String tag);
 	
 	void sendGuildListTo(Player player, boolean doLock = true);
 
@@ -65,20 +65,20 @@ interface Guild {
 	
 	void setGuildChat(ChatRoom guildchat);
 	
-	string getGuildName();
+	String getGuildName();
 	
 	void setGuildLeader(unsigned int guleader);
 	
 	unsigned int getGuildLeader();
 	
-	string getGuildTag();
+	String getGuildTag();
 	
-	void setGuildName(const string nom);
-	void setGuildTag(const string nom);	
+	void setGuildName(const String nom);
+	void setGuildTag(const String nom);	
 	
-	void putSponsoredMap(const string nom);	
+	void putSponsoredMap(const String nom);	
 	unsigned int getSponsoredMapSize();	
-	string getSponsoredMap(int i);	
+	String getSponsoredMap(int i);	
 	void clearSponsoredMap();
 	
 }

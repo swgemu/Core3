@@ -68,7 +68,7 @@ void GuildManager::load() {
 		((GuildManagerImplementation*) _impl)->load();
 }
 
-bool GuildManager::createGuild(Player* player, string& tag, string& name) {
+bool GuildManager::createGuild(Player* player, String& tag, String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -83,7 +83,7 @@ bool GuildManager::createGuild(Player* player, string& tag, string& name) {
 		return ((GuildManagerImplementation*) _impl)->createGuild(player, tag, name);
 }
 
-Guild* GuildManager::getGuild(string& tag, bool doLock) {
+Guild* GuildManager::getGuild(String& tag, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -123,7 +123,7 @@ GuildMap* GuildManager::getGuildMap() {
 		return ((GuildManagerImplementation*) _impl)->getGuildMap();
 }
 
-void GuildManager::handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManager::handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -139,7 +139,7 @@ void GuildManager::handleGuildTag(unsigned int boxID, Player* player, unsigned i
 		((GuildManagerImplementation*) _impl)->handleGuildTag(boxID, player, cancel, returnString);
 }
 
-void GuildManager::handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManager::handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -155,7 +155,7 @@ void GuildManager::handleGuildName(unsigned int boxID, Player* player, unsigned 
 		((GuildManagerImplementation*) _impl)->handleGuildName(boxID, player, cancel, returnString);
 }
 
-void GuildManager::handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManager::handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -247,7 +247,7 @@ void GuildManager::execRemoveFromGuild(unsigned int boxID, Player* player, unsig
 		((GuildManagerImplementation*) _impl)->execRemoveFromGuild(boxID, player, cancel);
 }
 
-void GuildManager::handleGuildDisbandBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManager::handleGuildDisbandBox(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -263,7 +263,7 @@ void GuildManager::handleGuildDisbandBox(unsigned int boxID, Player* player, uns
 		((GuildManagerImplementation*) _impl)->handleGuildDisbandBox(boxID, player, cancel, returnString);
 }
 
-void GuildManager::handleGuildNameChange(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManager::handleGuildNameChange(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -279,7 +279,7 @@ void GuildManager::handleGuildNameChange(unsigned int boxID, Player* player, uns
 		((GuildManagerImplementation*) _impl)->handleGuildNameChange(boxID, player, cancel, returnString);
 }
 
-void GuildManager::handleGuildNameChangeName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManager::handleGuildNameChangeName(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -408,7 +408,7 @@ void GuildManager::handleGuildTransferLeader(Player* player) {
 		((GuildManagerImplementation*) _impl)->handleGuildTransferLeader(player);
 }
 
-void GuildManager::handleGuildTransferLeaderBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManager::handleGuildTransferLeaderBox(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -439,7 +439,7 @@ void GuildManager::handleGuildTransferLeaderVerifyBox(unsigned int boxID, Player
 		((GuildManagerImplementation*) _impl)->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
 }
 
-void GuildManager::sendGuildMail(Player* player, const string& sender, const string& subject, const string& body, bool excludeSender) {
+void GuildManager::sendGuildMail(Player* player, const String& sender, const String& subject, const String& body, bool excludeSender) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -477,10 +477,10 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		load();
 		break;
 	case 9:
-		resp->insertBoolean(createGuild((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createGuild__Player_string_string_), inv->getAsciiParameter(_param2_createGuild__Player_string_string_)));
+		resp->insertBoolean(createGuild((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createGuild__Player_String_String_), inv->getAsciiParameter(_param2_createGuild__Player_String_String_)));
 		break;
 	case 10:
-		resp->insertLong(getGuild(inv->getAsciiParameter(_param0_getGuild__string_bool_), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(getGuild(inv->getAsciiParameter(_param0_getGuild__String_bool_), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 11:
 		resp->insertLong(getGuild(inv->getUnsignedIntParameter(), inv->getBooleanParameter())->_getObjectID());
@@ -489,13 +489,13 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(getGuildMap()->_getObjectID());
 		break;
 	case 13:
-		handleGuildTag(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildTag__int_Player_int_string_));
+		handleGuildTag(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildTag__int_Player_int_String_));
 		break;
 	case 14:
-		handleGuildName(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildName__int_Player_int_string_));
+		handleGuildName(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildName__int_Player_int_String_));
 		break;
 	case 15:
-		handleGuildSponsor(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildSponsor__int_Player_int_string_));
+		handleGuildSponsor(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildSponsor__int_Player_int_String_));
 		break;
 	case 16:
 		handleVerifyBoxSponsorTargetforGuildMembership(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
@@ -513,13 +513,13 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		execRemoveFromGuild(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 21:
-		handleGuildDisbandBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildDisbandBox__int_Player_int_string_));
+		handleGuildDisbandBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildDisbandBox__int_Player_int_String_));
 		break;
 	case 22:
-		handleGuildNameChange(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildNameChange__int_Player_int_string_));
+		handleGuildNameChange(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildNameChange__int_Player_int_String_));
 		break;
 	case 23:
-		handleGuildNameChangeName(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildNameChangeName__int_Player_int_string_));
+		handleGuildNameChangeName(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildNameChangeName__int_Player_int_String_));
 		break;
 	case 24:
 		handleGuildInformationMembers((Player*) inv->getObjectParameter());
@@ -546,13 +546,13 @@ Packet* GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		handleGuildTransferLeader((Player*) inv->getObjectParameter());
 		break;
 	case 32:
-		handleGuildTransferLeaderBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildTransferLeaderBox__int_Player_int_string_));
+		handleGuildTransferLeaderBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_handleGuildTransferLeaderBox__int_Player_int_String_));
 		break;
 	case 33:
 		handleGuildTransferLeaderVerifyBox(inv->getUnsignedIntParameter(), (Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 34:
-		sendGuildMail((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendGuildMail__Player_string_string_string_bool_), inv->getAsciiParameter(_param2_sendGuildMail__Player_string_string_string_bool_), inv->getAsciiParameter(_param3_sendGuildMail__Player_string_string_string_bool_), inv->getBooleanParameter());
+		sendGuildMail((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendGuildMail__Player_String_String_String_bool_), inv->getAsciiParameter(_param2_sendGuildMail__Player_String_String_String_bool_), inv->getAsciiParameter(_param3_sendGuildMail__Player_String_String_String_bool_), inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -573,11 +573,11 @@ void GuildManagerAdapter::load() {
 	return ((GuildManagerImplementation*) impl)->load();
 }
 
-bool GuildManagerAdapter::createGuild(Player* player, string& tag, string& name) {
+bool GuildManagerAdapter::createGuild(Player* player, String& tag, String& name) {
 	return ((GuildManagerImplementation*) impl)->createGuild(player, tag, name);
 }
 
-Guild* GuildManagerAdapter::getGuild(string& tag, bool doLock) {
+Guild* GuildManagerAdapter::getGuild(String& tag, bool doLock) {
 	return ((GuildManagerImplementation*) impl)->getGuild(tag, doLock);
 }
 
@@ -589,15 +589,15 @@ GuildMap* GuildManagerAdapter::getGuildMap() {
 	return ((GuildManagerImplementation*) impl)->getGuildMap();
 }
 
-void GuildManagerAdapter::handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManagerAdapter::handleGuildTag(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	return ((GuildManagerImplementation*) impl)->handleGuildTag(boxID, player, cancel, returnString);
 }
 
-void GuildManagerAdapter::handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManagerAdapter::handleGuildName(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	return ((GuildManagerImplementation*) impl)->handleGuildName(boxID, player, cancel, returnString);
 }
 
-void GuildManagerAdapter::handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManagerAdapter::handleGuildSponsor(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	return ((GuildManagerImplementation*) impl)->handleGuildSponsor(boxID, player, cancel, returnString);
 }
 
@@ -621,15 +621,15 @@ void GuildManagerAdapter::execRemoveFromGuild(unsigned int boxID, Player* player
 	return ((GuildManagerImplementation*) impl)->execRemoveFromGuild(boxID, player, cancel);
 }
 
-void GuildManagerAdapter::handleGuildDisbandBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManagerAdapter::handleGuildDisbandBox(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	return ((GuildManagerImplementation*) impl)->handleGuildDisbandBox(boxID, player, cancel, returnString);
 }
 
-void GuildManagerAdapter::handleGuildNameChange(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManagerAdapter::handleGuildNameChange(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	return ((GuildManagerImplementation*) impl)->handleGuildNameChange(boxID, player, cancel, returnString);
 }
 
-void GuildManagerAdapter::handleGuildNameChangeName(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManagerAdapter::handleGuildNameChangeName(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	return ((GuildManagerImplementation*) impl)->handleGuildNameChangeName(boxID, player, cancel, returnString);
 }
 
@@ -665,7 +665,7 @@ void GuildManagerAdapter::handleGuildTransferLeader(Player* player) {
 	return ((GuildManagerImplementation*) impl)->handleGuildTransferLeader(player);
 }
 
-void GuildManagerAdapter::handleGuildTransferLeaderBox(unsigned int boxID, Player* player, unsigned int cancel, string& returnString) {
+void GuildManagerAdapter::handleGuildTransferLeaderBox(unsigned int boxID, Player* player, unsigned int cancel, String& returnString) {
 	return ((GuildManagerImplementation*) impl)->handleGuildTransferLeaderBox(boxID, player, cancel, returnString);
 }
 
@@ -673,7 +673,7 @@ void GuildManagerAdapter::handleGuildTransferLeaderVerifyBox(unsigned int boxID,
 	return ((GuildManagerImplementation*) impl)->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
 }
 
-void GuildManagerAdapter::sendGuildMail(Player* player, const string& sender, const string& subject, const string& body, bool excludeSender) {
+void GuildManagerAdapter::sendGuildMail(Player* player, const String& sender, const String& subject, const String& body, bool excludeSender) {
 	return ((GuildManagerImplementation*) impl)->sendGuildMail(player, sender, subject, body, excludeSender);
 }
 

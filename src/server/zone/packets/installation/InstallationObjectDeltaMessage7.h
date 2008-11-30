@@ -69,12 +69,12 @@ public:
 
 	void updateActiveResource(uint64 oid) {
 
-		if(inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER && ((HarvesterObject*)inso)->getActiveResourceID() != oid)
+		if (inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER && ((HarvesterObject*)inso)->getActiveResourceID() != oid)
 			((HarvesterObject*)inso)->changeActiveResourceID(oid);
 
 		// Active Resource
 		addLongUpdate(0x05, oid);
-		//cout << "Adding 0x05 update for oid: " << hex << oid << endl;
+		//System::out << "Adding 0x05 update for oid: " << hex << oid << endl;
 
 	}
 

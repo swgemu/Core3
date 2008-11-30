@@ -11,9 +11,9 @@ class FactionPointList : public DistributedObjectStub {
 public:
 	FactionPointList();
 
-	void add(string& obj);
+	void add(String& obj);
 
-	string& get(int index);
+	String& get(int index);
 
 	bool isEmpty();
 
@@ -24,7 +24,7 @@ protected:
 
 	virtual ~FactionPointList();
 
-	string _return_get;
+	String _return_get;
 
 	friend class FactionPointListHelper;
 };
@@ -37,16 +37,16 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void add(string& obj);
+	void add(String& obj);
 
-	string& get(int index);
+	String& get(int index);
 
 	bool isEmpty();
 
 	int size();
 
 protected:
-	string _param0_add__string_;
+	String _param0_add__String_;
 };
 
 class FactionPointListHelper : public DistributedObjectClassHelper, public Singleton<FactionPointListHelper> {

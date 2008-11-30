@@ -55,11 +55,11 @@ interface ResourceContainer implements TangibleObject {
 		super(oid, int tp);
 	}
 	
-	ResourceContainer(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+	ResourceContainer(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
 	
-	ResourceContainer(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+	ResourceContainer(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int tp);
 	}
 
@@ -88,10 +88,10 @@ interface ResourceContainer implements TangibleObject {
 	void setHeatResistance(int i);
 	void setConductivity(int i);
 	void setEntangleResistance(int i);
-	void setClassSeven(string str);
-	void setResourceName(string str);
-	void setContainerFile(string tempn);
-	void setName(unicode n);
+	void setClassSeven(String str);
+	void setResourceName(String str);
+	void setContainerFile(String tempn);
+	void setName(UnicodeString n);
 	void setObjectCRC(int tempCRC);
 	void setResourceID(unsigned long rid);
 	void setObjectSubType(int subType);
@@ -108,8 +108,8 @@ interface ResourceContainer implements TangibleObject {
 	int getHeatResistance();
 	int getConductivity();
 	int getEntangleResistance();
-	string getClassSeven();
-	string getResourceName();
+	String getClassSeven();
+	String getResourceName();
 	unsigned long getResourceID();
 	
 	int getMaxContents();

@@ -58,7 +58,7 @@ public:
 		insertInt(galcnt); //Zone Server List Count
 	}
 
-	void addGalaxy(uint32 gid, string& address, uint16 port, uint16 pingport) {
+	void addGalaxy(uint32 gid, String& address, uint16 port, uint16 pingport) {
 	    insertInt(gid); //Zone Server ID
 		
     	insertAscii(address); //IP Address

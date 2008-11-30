@@ -34,12 +34,12 @@ public:
 	// Attribute Setters
 	inline void setHopperSizeMax(float size) {
 		hopperSizeMax = size;
-		string attr("hopperSizeMax");
+		String attr("hopperSizeMax");
 		itemAttributes->setFloatAttribute(attr, (float)hopperSizeMax);
 	}
 	inline void setExtractionRate(float rate) {
 		extractionRate = rate;
-		string attr("extractionRate");
+		String attr("extractionRate");
 		itemAttributes->setFloatAttribute(attr, (float)extractionRate);
 	}
 

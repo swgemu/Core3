@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class LoginClientToken : public BaseMessage {
 public:
-	LoginClientToken(string& username, uint32 sessionKey, uint32 accountid, uint32 stationid) : BaseMessage() {
+	LoginClientToken(String& username, uint32 sessionKey, uint32 accountid, uint32 stationid) : BaseMessage() {
 		insertShort(0x04);
 		insertInt(0xAAB296C6);
 		

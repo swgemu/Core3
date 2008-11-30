@@ -54,13 +54,13 @@ which carries forward this exception.
 
 class Skill {
 protected:
-	string skillName;
+	String skillName;
 	uint32 nameCRC;
 	int type;
 	int category;
 
 	uint32 animCRC;
-	string effectName;
+	String effectName;
 
 	float range;
 	float speedRatio;
@@ -84,10 +84,10 @@ public:
 	static const int SELF = 2;
 
 public:
-	Skill(const string& name, int tp, int cat, ZoneProcessServerImplementation* serv) {
+	Skill(const String& name, int tp, int cat, ZoneProcessServerImplementation* serv) {
 		server = serv;
 
-		nameCRC = String::hashCode(name);
+		nameCRC = name.hashCode();
 		skillName = name;
 		type = tp;
 		category = cat;
@@ -109,11 +109,11 @@ public:
 		return -1;
 	}
 
-	void setAnimation(const string& ename) {
-		animCRC = String::hashCode(ename);
+	void setAnimation(const String& ename) {
+		animCRC = ename.hashCode();
 	}
 
-	void setEffect(const string& ename) {
+	void setEffect(const String& ename) {
 		effectName = ename;
 	}
 
@@ -130,7 +130,7 @@ public:
 	}
 
 	bool hasEffect() {
-		return effectName.size() != 0;
+		return !effectName.isEmpty();
 	}
 
 	inline bool isAttackSkill() {
@@ -181,7 +181,7 @@ public:
 		return animCRC;
 	}
 
-	inline string& getEffectName() {
+	inline String& getEffectName() {
 		return effectName;
 	}
 
@@ -201,7 +201,7 @@ public:
 		return category == TARGET;
 	}
 
-	inline string& getSkillName() {
+	inline String& getSkillName() {
 		return skillName;
 	}
 

@@ -209,8 +209,8 @@ int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
 
 	AttackTargetSkill* attack;
 
-	string attackname = skill.getStringField("attackname");
-	string animation = skill.getStringField("animation");
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
 
 	int weaponType = skill.getIntField("requiredWeaponType");
 
@@ -229,11 +229,11 @@ int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {
 	int stunStateChance = skill.getIntField("stunChance");
 	int intimidateStateChance = skill.getIntField("intimidateChance");
 
-	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
-	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
-	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
-	string CbtSpamHit = skill.getStringField("CbtSpamHit");
-	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 
 	attack = new RandomPoolAttackTargetSkill(attackname, animation, server);
@@ -272,8 +272,8 @@ int ScriptAttacksManager::AddDirectPoolAttackTargetSkill(lua_State *L) {
 
 	AttackTargetSkill* attack;
 
-	string attackname = skill.getStringField("attackname");
-	string animation = skill.getStringField("animation");
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
 
 	int weaponType = skill.getIntField("requiredWeaponType");
 
@@ -303,11 +303,11 @@ int ScriptAttacksManager::AddDirectPoolAttackTargetSkill(lua_State *L) {
 	int stunStateChance = skill.getIntField("stunChance");
 	int intimidateStateChance = skill.getIntField("intimidateChance");
 
-	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
-	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
-	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
-	string CbtSpamHit = skill.getStringField("CbtSpamHit");
-	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 
 	attack = new DirectPoolAttackTargetSkill(attackname, animation, server);
@@ -357,8 +357,8 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 
 	DotPoolAttackTargetSkill* attack;
 
-	string attackname = skill.getStringField("attackname");
-	string animation = skill.getStringField("animation");
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
 
 	int weaponType = skill.getIntField("requiredWeaponType");
 
@@ -391,11 +391,11 @@ int ScriptAttacksManager::AddDotPoolAttackTargetSkill(lua_State *L) {
 	int diseaseStrength = skill.getIntField("diseaseStrength");
 	int diseaseType = skill.getIntField("diseaseType");
 
-	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
-	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
-	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
-	string CbtSpamHit = skill.getStringField("CbtSpamHit");
-	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 
 	attack = new DotPoolAttackTargetSkill(attackname, animation, server);
@@ -448,8 +448,8 @@ int ScriptAttacksManager::AddForceDotPoolAttackTargetSkill(lua_State *L) {
 
 	ForceDotPoolAttackTargetSkill* attack;
 
-	string attackname = skill.getStringField("attackname");
-	string animation = skill.getStringField("animation");
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
 
 	int weaponType = skill.getIntField("requiredWeaponType");
 
@@ -480,11 +480,11 @@ int ScriptAttacksManager::AddForceDotPoolAttackTargetSkill(lua_State *L) {
 	int diseaseStrength = skill.getIntField("diseaseStrength");
 	int diseaseType = skill.getIntField("diseaseType");
 
-	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
-	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
-	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
-	string CbtSpamHit = skill.getStringField("CbtSpamHit");
-	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 
 	attack = new ForceDotPoolAttackTargetSkill(attackname, animation, server);
@@ -535,8 +535,8 @@ int ScriptAttacksManager::AddForceRandomPoolAttackTargetSkill(lua_State *L) {
 
 	ForceRandomPoolAttackTargetSkill* frpattack;
 
-	string attackname = skill.getStringField("attackname");
-	string animation = skill.getStringField("animation");
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
 
 	int weaponType = skill.getIntField("requiredWeaponType");
 
@@ -554,11 +554,11 @@ int ScriptAttacksManager::AddForceRandomPoolAttackTargetSkill(lua_State *L) {
 	int stunStateChance = skill.getIntField("stunChance");
 	int intimidateStateChance = skill.getIntField("intimidateChance");
 
-	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
-	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
-	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
-	string CbtSpamHit = skill.getStringField("CbtSpamHit");
-	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 
 	frpattack = new ForceRandomPoolAttackTargetSkill(attackname, animation, server);
@@ -595,9 +595,9 @@ int ScriptAttacksManager::AddForceHealSelfSkill(lua_State *L) {
 
 	ForceHealSelfSkill* fheal;
 
-	string skillname = skill.getStringField("skillname");
-	//string animation = getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	//String animation = getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int forceCost = skill.getIntField("forceCost");
 	int healHealth = skill.getIntField("HealHealth");
@@ -616,7 +616,7 @@ int ScriptAttacksManager::AddForceHealSelfSkill(lua_State *L) {
 	bool healFire = skill.getIntField("healFire");
 	bool healBleeding = skill.getIntField("healBleeding");
 
-	fheal = new ForceHealSelfSkill(skillname, effect.c_str(), server);
+	fheal = new ForceHealSelfSkill(skillname, effect.toCharArray(), server);
 
 	fheal->setForceCost(forceCost);
 	fheal->setHealHealth(healHealth);
@@ -646,9 +646,9 @@ int ScriptAttacksManager::AddHealSelfSkill(lua_State* L) {
 
 	HealSelfSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int healHealth = skill.getIntField("healHealth");
 	int healAction = skill.getIntField("healAction");
@@ -666,7 +666,7 @@ int ScriptAttacksManager::AddHealSelfSkill(lua_State* L) {
 	bool healFire = skill.getIntField("healFire");
 	bool healBleeding = skill.getIntField("healBleeding");
 
-	heal = new HealSelfSkill(skillname, effect.c_str(), server);
+	heal = new HealSelfSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 
 	heal->setHealHealth(healHealth);
@@ -697,9 +697,9 @@ int ScriptAttacksManager::AddHealTargetSkill(lua_State* L) {
 
 	HealTargetSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int healHealth = skill.getIntField("healHealth");
 	int healAction = skill.getIntField("healAction");
@@ -719,7 +719,7 @@ int ScriptAttacksManager::AddHealTargetSkill(lua_State* L) {
 
 	int range = skill.getIntField("range");
 
-	heal = new HealTargetSkill(skillname, effect.c_str(), server);
+	heal = new HealTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 
 	heal->setRange(range);
@@ -753,14 +753,14 @@ int ScriptAttacksManager::AddHealEnhanceTargetSkill(lua_State* L) {
 
 	HealEnhanceTargetSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
-	heal = new HealEnhanceTargetSkill(skillname, effect.c_str(), server);
+	heal = new HealEnhanceTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
@@ -778,14 +778,14 @@ int ScriptAttacksManager::AddHealWoundTargetSkill(lua_State* L) {
 
 	HealWoundTargetSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
-	heal = new HealWoundTargetSkill(skillname, effect.c_str(), server);
+	heal = new HealWoundTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
@@ -802,15 +802,15 @@ int ScriptAttacksManager::AddFirstAidTargetSkill(lua_State* L) {
 
 	FirstAidTargetSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
 	float speed = skill.getFloatField("speed");
 	float range = skill.getFloatField("range");
 
-	heal = new FirstAidTargetSkill(skillname, effect.c_str(), server);
+	heal = new FirstAidTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setSpeed(speed);
@@ -828,15 +828,15 @@ int ScriptAttacksManager::AddCureTargetSkill(lua_State* L) {
 
 	CureTargetSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
 	uint64 conditionCured = skill.getLongField("conditionCured");
 	float range = skill.getFloatField("range");
 
-	heal = new CureTargetSkill(skillname, effect.c_str(), server);
+	heal = new CureTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setState(conditionCured);
@@ -854,14 +854,14 @@ int ScriptAttacksManager::AddHealStateTargetSkill(lua_State* L) {
 
 	HealStateTargetSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
-	heal = new HealStateTargetSkill(skillname, effect.c_str(), server);
+	heal = new HealStateTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
@@ -878,14 +878,14 @@ int ScriptAttacksManager::AddHealDamageTargetSkill(lua_State* L) {
 
 	HealDamageTargetSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
-	heal = new HealDamageTargetSkill(skillname, effect.c_str(), server);
+	heal = new HealDamageTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
@@ -903,14 +903,14 @@ int ScriptAttacksManager::AddReviveTargetSkill(lua_State* L) {
 
 	ReviveTargetSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
-	heal = new ReviveTargetSkill(skillname, effect.c_str(), server);
+	heal = new ReviveTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setRange(range);
@@ -927,9 +927,9 @@ int ScriptAttacksManager::AddTendHealTargetSkill(lua_State* L) {
 
 	TendHealTargetSkill* heal;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
 	int mindWoundCost = skill.getIntField("mindWoundCost");
@@ -946,7 +946,7 @@ int ScriptAttacksManager::AddTendHealTargetSkill(lua_State* L) {
 	bool tendDamage = skill.getIntField("tendDamage");
 	bool tendWound = skill.getIntField("tendWound");
 
-	heal = new TendHealTargetSkill(skillname, effect.c_str(), server);
+	heal = new TendHealTargetSkill(skillname, effect.toCharArray(), server);
 	heal->setSecondaryAnim(animation);
 	heal->setMindCost(mindCost);
 	heal->setMindWoundCost(mindWoundCost);
@@ -975,8 +975,8 @@ int ScriptAttacksManager::AddDeBuffAttackTargetSkill(lua_State* L) {
 
 	DeBuffAttackTargetSkill* Skill;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
 
 	int range = skill.getIntField("range");
 	int areaRange = skill.getIntField("areaRange");
@@ -1002,9 +1002,9 @@ int ScriptAttacksManager::AddDeBuffAttackTargetSkill(lua_State* L) {
 	int stunStateChance = skill.getIntField("stunChance");
 	int intimidateStateChance = skill.getIntField("intimidateChance");
 
-	string selfeffect = skill.getStringField("selfEffect");
+	String selfeffect = skill.getStringField("selfEffect");
 
-	string flytext = skill.getStringField("FlyText");
+	String flytext = skill.getStringField("FlyText");
 
 	Skill = new DeBuffAttackTargetSkill(skillname, animation, server);
 
@@ -1047,8 +1047,8 @@ int ScriptAttacksManager::AddEnhanceSelfSkill(lua_State* L) {
 
 	EnhanceSelfSkill* Skill;
 
-	string skillname = skill.getStringField("skillname");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String effect = skill.getStringField("effect");
 
 	int cone = skill.getIntField("coneAngle");
 
@@ -1068,10 +1068,10 @@ int ScriptAttacksManager::AddEnhanceSelfSkill(lua_State* L) {
 	int defenseBonus = skill.getIntField("defenseBonus");
 	int speedBonus = skill.getIntField("speedBonus");
 
-	string startflytext = skill.getStringField("StartFlyText");
-	string finishflytext = skill.getStringField("FinishFlyText");
+	String startflytext = skill.getStringField("StartFlyText");
+	String finishflytext = skill.getStringField("FinishFlyText");
 
-	Skill = new EnhanceSelfSkill(skillname, effect.c_str(), server);
+	Skill = new EnhanceSelfSkill(skillname, effect.toCharArray(), server);
 
 	Skill->setSpeed(speed);
 	Skill->setDuration(duration);
@@ -1103,8 +1103,8 @@ int ScriptAttacksManager::AddChangePostureSelfSkill(lua_State* L) {
 
 	ChangePostureSelfSkill* Skill;
 
-	string skillname = skill.getStringField("skillname");
-	string anim = skill.getStringField("animation");
+	String skillname = skill.getStringField("skillname");
+	String anim = skill.getStringField("animation");
 
 	float speed = skill.getFloatField("speed");
 
@@ -1128,8 +1128,8 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 
 	AttackTargetSkill* attack;
 
-	string attackname = skill.getStringField("attackname");
-	string animation = skill.getStringField("animation");
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
 
 	int weaponType = skill.getIntField("requiredWeaponType");
 
@@ -1151,11 +1151,11 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	int stunStateChance = skill.getIntField("stunChance");
 	int intimidateStateChance = skill.getIntField("intimidateChance");
 
-	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
-	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
-	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
-	string CbtSpamHit = skill.getStringField("CbtSpamHit");
-	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 
 	attack = new WoundsDirectPoolAttackTargetSkill(attackname, animation, server);
@@ -1190,7 +1190,7 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 }
 
 int ScriptAttacksManager::RunSkillsFile(lua_State* L) {
-	string filename;
+	String filename;
 
 	filename = getStringParameter(L);
 
@@ -1206,7 +1206,7 @@ int ScriptAttacksManager::AddPassiveSkill(lua_State* L) {
 
 	PassiveSkill* Skill;
 
-	string skillname = skill.getStringField("skillname");
+	String skillname = skill.getStringField("skillname");
 
 	int damageReduction = skill.getIntField("damageReduction");
 
@@ -1224,8 +1224,8 @@ int ScriptAttacksManager::AddMeditateSkill(lua_State* L) {
 		return 0;
 
 	MeditateSelfSkill* meditate;
-	string skillname = skill.getStringField("skillname");
-	string effect = skill.getStringField("effectname");
+	String skillname = skill.getStringField("skillname");
+	String effect = skill.getStringField("effectname");
 
 	meditate = new MeditateSelfSkill(skillname, effect, server);
 	CombatActions->put(meditate);
@@ -1239,7 +1239,7 @@ int ScriptAttacksManager::AddEntertainSkill(lua_State* L) {
 		return 0;
 
 	EntertainSelfSkill* entertain;
-	string skillname = skill.getStringField("skillname");
+	String skillname = skill.getStringField("skillname");
 
 	entertain = new EntertainSelfSkill(skillname, server);
 	CombatActions->put(entertain);
@@ -1254,9 +1254,9 @@ int ScriptAttacksManager::AddEntertainEffectSkill(lua_State* L) {
 		return 0;
 
 	EntertainEffectSelfSkill* entertain;
-	string skillname = skill.getStringField("skillname");
+	String skillname = skill.getStringField("skillname");
 
-	string effect_prefix = skill.getStringField("effect_prefix");
+	String effect_prefix = skill.getStringField("effect_prefix");
 
 	entertain = new EntertainEffectSelfSkill(skillname, effect_prefix, server);
 	CombatActions->put(entertain);
@@ -1270,9 +1270,9 @@ int ScriptAttacksManager::AddDanceEffectSkill(lua_State* L) {
 		return 0;
 
 	DanceEffectSelfSkill* dance;
-	string skillname = skill.getStringField("skillname");
+	String skillname = skill.getStringField("skillname");
 
-	string effect_prefix = skill.getStringField("effect_prefix");
+	String effect_prefix = skill.getStringField("effect_prefix");
 
 	dance = new DanceEffectSelfSkill(skillname, effect_prefix, server);
 	CombatActions->put(dance);
@@ -1286,9 +1286,9 @@ int ScriptAttacksManager::AddMusicEffectSkill(lua_State* L) {
 		return 0;
 
 	MusicEffectSelfSkill* music;
-	string skillname = skill.getStringField("skillname");
+	String skillname = skill.getStringField("skillname");
 
-	string effect_prefix = skill.getStringField("effect_prefix");
+	String effect_prefix = skill.getStringField("effect_prefix");
 
 	music = new MusicEffectSelfSkill(skillname, effect_prefix, server);
 	CombatActions->put(music);
@@ -1301,8 +1301,8 @@ int ScriptAttacksManager::AddForceRunSelfSkill(lua_State *L) {
 	if (!skill.isValidTable())
 		return 0;
 
-	string skillname = skill.getStringField("skillname");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String effect = skill.getStringField("effect");
 
 	int forceCost = skill.getIntField("forceCost");
 	float speed = skill.getFloatField("speed");
@@ -1327,14 +1327,14 @@ int ScriptAttacksManager::AddDiagnoseTargetSkill(lua_State* L) {
 
 	DiagnoseTargetSkill* diagnose;
 
-	string skillname = skill.getStringField("skillname");
-	string animation = skill.getStringField("animation");
-	string effect = skill.getStringField("effect");
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
 
 	int mindCost = skill.getIntField("mindCost");
 	float range = skill.getFloatField("range");
 
-	diagnose = new DiagnoseTargetSkill(skillname, effect.c_str(), server);
+	diagnose = new DiagnoseTargetSkill(skillname, effect.toCharArray(), server);
 	diagnose->setSecondaryAnim(animation);
 	diagnose->setMindCost(mindCost);
 	diagnose->setRange(range);

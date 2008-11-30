@@ -52,15 +52,15 @@ class Ticket;
 #include "ShuttleCreature.h"
 
 class ShuttleCreatureImplementation : public ShuttleCreatureServant {
-	string planet;
-	string city;
+	String planet;
+	String city;
 	uint32 tax;
 	bool starport;
 	
 	Coordinate* arrivalPoint; 
 	
 public:
-	ShuttleCreatureImplementation(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 oid, uint32 tax, bool starport);
+	ShuttleCreatureImplementation(const String& Planet, const String& City, Coordinate* playerSpawnPoint, uint64 oid, uint32 tax, bool starport);
 	
 	~ShuttleCreatureImplementation();
 	
@@ -69,11 +69,11 @@ public:
 	
 	void sendPlayerTo(Player* player, Ticket* ticket);
 	
-	inline string& getCity() {
+	inline String& getCity() {
 		return city;
 	}
 	
-	inline string& getPlanet() {
+	inline String& getPlanet() {
 		return planet;
 	}
 	

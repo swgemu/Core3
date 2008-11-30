@@ -60,10 +60,10 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramService
 
 	disconnecting = false;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "ZoneClientSession " << addr->getFullIPAddress();
 
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 	setLogging(false);
 }
 

@@ -64,8 +64,8 @@ protected:
 
 	bool backButton;
 
-	string promptTitle;
-	string promptText;
+	String promptTitle;
+	String promptText;
 
 	int boxType;
 
@@ -99,11 +99,11 @@ public:
 			return 0;
 	}
 
-	inline void setPromptTitle(const string name) {
+	inline void setPromptTitle(const String name) {
 		promptTitle = name;
 	}
 
-	inline void setPromptText(const string name) {
+	inline void setPromptText(const String name) {
 		promptText = name;
 	}
 

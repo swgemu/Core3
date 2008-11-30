@@ -17,13 +17,13 @@ class FriendsList : public DistributedObjectStub {
 public:
 	FriendsList(Player* player);
 
-	void addFriend(string& name, string& inServer);
+	void addFriend(String& name, String& inServer);
 
 	void friendsMagicNumberReset();
 
-	void removeFriend(string& name);
+	void removeFriend(String& name);
 
-	void findFriend(string& name, PlayerManager* playerManager);
+	void findFriend(String& name, PlayerManager* playerManager);
 
 	void saveFriends();
 
@@ -37,17 +37,17 @@ public:
 
 	int getMagicNumber();
 
-	string& getFriendsName(const int i);
+	String& getFriendsName(const int i);
 
-	string& getFriendsServer(const int i);
+	String& getFriendsServer(const int i);
 
 protected:
 	FriendsList(DummyConstructorParameter* param);
 
 	virtual ~FriendsList();
 
-	string _return_getFriendsName;
-	string _return_getFriendsServer;
+	String _return_getFriendsName;
+	String _return_getFriendsServer;
 
 	friend class FriendsListHelper;
 };
@@ -60,13 +60,13 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void addFriend(string& name, string& inServer);
+	void addFriend(String& name, String& inServer);
 
 	void friendsMagicNumberReset();
 
-	void removeFriend(string& name);
+	void removeFriend(String& name);
 
-	void findFriend(string& name, PlayerManager* playerManager);
+	void findFriend(String& name, PlayerManager* playerManager);
 
 	void saveFriends();
 
@@ -80,15 +80,15 @@ public:
 
 	int getMagicNumber();
 
-	string& getFriendsName(const int i);
+	String& getFriendsName(const int i);
 
-	string& getFriendsServer(const int i);
+	String& getFriendsServer(const int i);
 
 protected:
-	string _param0_addFriend__string_string_;
-	string _param1_addFriend__string_string_;
-	string _param0_removeFriend__string_;
-	string _param0_findFriend__string_PlayerManager_;
+	String _param0_addFriend__String_String_;
+	String _param1_addFriend__String_String_;
+	String _param0_removeFriend__String_;
+	String _param0_findFriend__String_PlayerManager_;
 };
 
 class FriendsListHelper : public DistributedObjectClassHelper, public Singleton<FriendsListHelper> {

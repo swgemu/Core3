@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "../../../objects.h"
 
-EnhancePackImplementation::EnhancePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn)
+EnhancePackImplementation::EnhancePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: EnhancePackServant(oid, tempCRC, n, tempn, ENHANCEPACK) {
 	initialize();
 }
-EnhancePackImplementation::EnhancePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
+EnhancePackImplementation::EnhancePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: EnhancePackServant(creature, tempCRC, n, tempn, ENHANCEPACK) {
 
 	name = n;
@@ -105,7 +105,7 @@ void EnhancePackImplementation::initialize() {
 void EnhancePackImplementation::parseItemAttributes() {
 	PharmaceuticalImplementation::parseItemAttributes();
 
-	string attr = "effectiveness";
+	String attr = "effectiveness";
 	setEffectiveness(itemAttributes->getFloatAttribute(attr));
 	attr = "duration";
 	setDuration(itemAttributes->getFloatAttribute(attr));
@@ -116,15 +116,15 @@ void EnhancePackImplementation::parseItemAttributes() {
 void EnhancePackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
-	string attributeName = CreatureAttribute::getName(attribute);
+	String attributeName = CreatureAttribute::getName(attribute);
 
-	stringstream eff;
+	StringBuffer eff;
 	eff << "examine_enhance_" << attributeName;
-	alm->insertAttribute(string(eff.str()), effectiveness);
+	alm->insertAttribute(String(eff.toString()), effectiveness);
 
-	stringstream dur;
+	StringBuffer dur;
 	dur << "examine_duration_" << attributeName;
-	alm->insertAttribute(string(dur.str()), duration);
+	alm->insertAttribute(String(dur.toString()), duration);
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

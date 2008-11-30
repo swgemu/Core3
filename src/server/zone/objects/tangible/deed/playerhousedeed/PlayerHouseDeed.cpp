@@ -20,12 +20,12 @@
  *	PlayerHouseDeedStub
  */
 
-PlayerHouseDeed::PlayerHouseDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+PlayerHouseDeed::PlayerHouseDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerHouseDeedImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-PlayerHouseDeed::PlayerHouseDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+PlayerHouseDeed::PlayerHouseDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new PlayerHouseDeedImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -108,11 +108,11 @@ DistributedObjectAdapter* PlayerHouseDeedHelper::createAdapter(DistributedObject
  *	PlayerHouseDeedServant
  */
 
-PlayerHouseDeedServant::PlayerHouseDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
+PlayerHouseDeedServant::PlayerHouseDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = PlayerHouseDeedHelper::instance();
 }
 
-PlayerHouseDeedServant::PlayerHouseDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
+PlayerHouseDeedServant::PlayerHouseDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = PlayerHouseDeedHelper::instance();
 }
 

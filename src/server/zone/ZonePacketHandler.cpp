@@ -69,7 +69,7 @@ which carries forward this exception.
 
 #include "ZonePacketHandler.h"
 
-ZonePacketHandler::ZonePacketHandler(const string& s, ZoneProcessServerImplementation* serv) : Logger(s) {
+ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 		processServer = serv;
 
 		server = processServer->getZoneServer();
@@ -81,7 +81,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
 
-	//cout << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
+	//System::out << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
 
 	switch (opcount) {
 	case 1:
@@ -318,7 +318,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 
 		clientimpl->setLockName("ZoneClientSession = " + player->getFirstName());
 	} catch (Exception& e) {
-		cout << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
+		System::out << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
 		e.printStackTrace();
 		server->unlock();
 	}
@@ -344,7 +344,7 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler::handleCmdSceneReady(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler::handleCmdSceneReady(Message* pack)\n";
 	}
 }
 
@@ -363,9 +363,9 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	player->create(client);
 
-	string species = player->getSpeciesName();
-	string firstName = player->getFirstName();
-	string name = player->getCharacterName().c_str();
+	String species = player->getSpeciesName();
+	String firstName = player->getFirstName();
+	String name = player->getCharacterName().toString();
 
 	player->info("attempting to create Player " + firstName);
 
@@ -407,9 +407,10 @@ void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
 
 	NameManager* nameManager = processServer->getNameManager();
 
-	string racefile;
+	String racefile;
 	pack->parseAscii(racefile);
-	bool notwook = (racefile.find("wookie") == string::npos);
+
+	bool notwook = (racefile.indexOf("wookie") == -1);
 
 	BaseMessage* msg = new ClientRandomNameReponse(racefile, nameManager->makeCreatureName(notwook));
 	client->sendMessage(msg);
@@ -417,6 +418,7 @@ void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
 
 void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
@@ -424,9 +426,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	uint32 header1 = pack->parseInt();
 	uint32 header2 = pack->parseInt();
 
-	/*stringstream msg;
+	/*StringBuffer msg;
 	msg << "ObjectControllerMessage(0x" << hex << header1 << ", 0x" << header2 << dec << ")";
-	player->info(msg.str());*/
+	player->info(msg.toString());*/
 
 	try {
 		player->wlock();
@@ -435,7 +437,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			return;
 		}
 
-		//cout << "Header 1 = " << hex <<  header1 << "  Header 2 = " << header2 << endl;
+		//System::out << "Header 1 = " << hex <<  header1 << "  Header 2 = " << header2 << endl;
 
 		uint64 parent;
 
@@ -538,12 +540,12 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	} catch (Exception& e) {
 		player->unlock();
 
-		cout << "exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
+		System::out << "exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
 		e.printStackTrace();
 	} catch (...) {
 		player->unlock();
 
-		cout << "unreported exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
 	}
 }
 
@@ -565,7 +567,7 @@ void ZonePacketHandler::handleTellMessage(Message* pack) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
 	}
 }
 
@@ -576,10 +578,10 @@ void ZonePacketHandler::handleSendMail(Message* pack) {
 	if (player == NULL)
 		return;
 
-	//cout << pack->toString() << "\n";
+	//System::out << pack->toString() << "\n";
 
-	unicode header, body;
-	string name;
+	UnicodeString header, body;
+	String name;
 
 	pack->parseUnicode(body);
 	pack->shiftOffset(8);
@@ -630,13 +632,13 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 
 		frm->addFactionCount(list->size());
 		for (int i=0; i < list->size(); i++) {
-			string faction = list->get(i);
+			String faction = list->get(i);
 			frm->addFactionName(faction);
 		}
 
 		frm->addFactionCount(list->size());
 		for (int i=0; i < list->size(); i++) {
-			string faction = list->get(i);
+			String faction = list->get(i);
 			int points = player->getFactionPoints(faction);
 			frm->addFactionPoint(points);
 		}
@@ -647,21 +649,21 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
 	}
 }
 
 void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-	string planet;
+	String planet;
     pack->parseAscii(planet);
 
 	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(planet);
 
 	try {
 		ResultSet* result;
-		stringstream query;
+		StringBuffer query;
 		query << "SELECT * FROM planetmap WHERE lower(planet) = '" << planet << "';";
 		result = ServerDatabase::instance()->executeQuery(query);
 
@@ -673,7 +675,7 @@ void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 		delete result;
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 
 		return;
 	}
@@ -730,7 +732,7 @@ void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler:::handleGuildRequest(Message* pack)\\\\\\\\n";
+		System::out << "unreported exception on ZonePacketHandler:::handleGuildRequest(Message* pack)\\\\\\\\n";
 	}
 }
 
@@ -750,7 +752,7 @@ void ZonePacketHandler::handlePlayerMoneyRequest(Message* pack) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler:::handlePlayerMoneyRequest(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler:::handlePlayerMoneyRequest(Message* pack)\n";
 	}
 }
 
@@ -764,7 +766,7 @@ void ZonePacketHandler::handleTravelListRequest(Message* pack) {
 
 	uint64 objectid;
 	objectid = pack->parseLong();
-	string planet;
+	String planet;
 	pack->parseAscii(planet);
 
 	int id = Planet::getPlanetID(planet);
@@ -865,15 +867,15 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	uint32 cancel = pack->parseInt();
 	uint32 unk1 = pack->parseInt();
 	uint32 unk2 = pack->parseInt();
-	unicode value;
-	unicode value2;
+	UnicodeString value;
+	UnicodeString value2;
 
 	if (unk2 != 0)
 		pack->parseUnicode(value);
 	if (unk2 > 1)
 		pack->parseUnicode(value2);
 
-	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.c_str(), value2.c_str());
+	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.toCharArray(), value2.toCharArray());
 }
 
 void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {
@@ -953,7 +955,7 @@ void ZonePacketHandler::handleBazaarAddItem(Message* pack, bool auction) {
    	uint32 price = pack->parseInt(); // Sale price
    	uint32 duration = pack->parseInt(); // How long to sell for in minutes
 
-   	unicode description;
+   	UnicodeString description;
    	pack->parseUnicode(description);
 
    	BazaarManager* bazaarManager = server->getBazaarManager();

@@ -58,9 +58,9 @@ public:
 		insertLong(container->getObjectID());  // ObjectID
 		insertInt(type);
 
-		/*stringstream msg;
+		/*StringBuffer msg;
 		msg << hex << "UpdateContainmentMessage [Object = " << object->getObjectID() << "]" << " container to (" << container->getObjectID() <<  ")\n";
-		cout << msg.str();*/
+		System::out << msg.toString();*/
 	}
 
 	UpdateContainmentMessage(uint64 object, uint64 container, uint32 type) : BaseMessage(30) {
@@ -70,9 +70,9 @@ public:
 		insertLong(container);  // ObjectID
 		insertInt(type);
 
-		/*stringstream msg;
+		/*StringBuffer msg;
 		msg << hex << "UpdateContainmentMessage [Object = " << object << "]" << " container to (" << container <<  ")\n";
-		cout << msg.str();*/
+		System::out << msg.toString();*/
 
 	}
 

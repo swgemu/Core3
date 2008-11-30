@@ -57,8 +57,8 @@ class FactoryCrateImplementation : public FactoryCrateServant {
 protected:
 
 public:
-	FactoryCrateImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
-	FactoryCrateImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	FactoryCrateImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	FactoryCrateImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	
 	~FactoryCrateImplementation();
  

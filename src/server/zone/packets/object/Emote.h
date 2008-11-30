@@ -56,7 +56,7 @@ public:
 		insertLong(target);
 		insertInt(emoteid);
 
-		if(showtext)
+		if (showtext)
 			insertByte(3);
 		else
 			insertByte(1);

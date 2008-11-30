@@ -11,17 +11,17 @@ class ObjectControllerMessage;
 
 class DraftSchematicIngredient : public DistributedObjectStub {
 public:
-	DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, const int slotoption, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, float contribution);
+	DraftSchematicIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int slotoption, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, float contribution);
 
 	DraftSchematicIngredient(DraftSchematicIngredient* ingredient);
 
 	void helperSendToPlayer(ObjectControllerMessage* msg);
 
-	string& getTemplateName();
+	String& getTemplateName();
 
-	string& getTitleName();
+	String& getTitleName();
 
-	string& getResourceType();
+	String& getResourceType();
 
 	unsigned int getResourceQuantity();
 
@@ -44,9 +44,9 @@ protected:
 
 	virtual ~DraftSchematicIngredient();
 
-	string _return_getResourceType;
-	string _return_getTemplateName;
-	string _return_getTitleName;
+	String _return_getResourceType;
+	String _return_getTemplateName;
+	String _return_getTitleName;
 
 	friend class DraftSchematicIngredientHelper;
 };
@@ -61,11 +61,11 @@ public:
 
 	void helperSendToPlayer(ObjectControllerMessage* msg);
 
-	string& getTemplateName();
+	String& getTemplateName();
 
-	string& getTitleName();
+	String& getTitleName();
 
-	string& getResourceType();
+	String& getResourceType();
 
 	unsigned int getResourceQuantity();
 

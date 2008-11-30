@@ -72,8 +72,8 @@ interface InstallationObject implements TangibleObject {
 	void handleStructureAddMaintenance(Player player);
 	void handleStructureAddEnergy(Player player);
 
-	string getOwner();
-	void setOwner(const string owner);
+	String getOwner();
+	void setOwner(const String owner);
 	
 	unsigned long getOwnerID();
 	void setOwnerID(unsigned long owner);

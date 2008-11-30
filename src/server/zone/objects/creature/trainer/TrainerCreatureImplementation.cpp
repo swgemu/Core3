@@ -63,9 +63,9 @@ TrainerCreatureImplementation::TrainerCreatureImplementation(uint64 oid, Profess
 	creatureBitmask = 0x108;
 	pvpStatusBitmask = 0;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "Trainer = 0x" << oid;
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 	
 	setLogging(false);
 	setGlobalLogging(true);
@@ -87,7 +87,7 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	StartNpcConversation* conv = new StartNpcConversation(player, objectID, "");
 	player->sendMessage(conv);
 	
-	unicode mes1 = "Please select the box you want to learn";
+	UnicodeString mes1 = "Please select the box you want to learn";
 	NpcConversationMessage* m1 = new NpcConversationMessage(player, mes1);
 	player->sendMessage(m1);
 	
@@ -118,9 +118,9 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 	if (sBox == NULL)
 		return;
 		
-	stringstream test;
+	StringBuffer test;
 	test << "Trying to train " << sBox->getName();
-	player->sendSystemMessage(test.str());
+	player->sendSystemMessage(test.toString());
 	
 	if (train(sBox, player))
 		player->sendSystemMessage("SkillBox trained");

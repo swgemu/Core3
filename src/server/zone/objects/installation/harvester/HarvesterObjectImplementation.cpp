@@ -22,11 +22,10 @@ HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid, Harvest
 	InstallationObjectImplementation::init();
 	init();
 
-	objectCRC = String::hashCode(deed->getTargetFile());
+	objectCRC = deed->getTargetFile().hashCode();
 	name = deed->getTargetName();
 	file = deed->getTargetFile();
 	templateName = deed->getTargetTemplate();
-
 
 	setSurplusMaintenance(deed->getSurplusMaintenance());
 	setMaintenanceRate(deed->getMaintenanceRate());
@@ -37,11 +36,10 @@ HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid, Harvest
 }
 
 void HarvesterObjectImplementation::parseItemAttributes() {
-
 	try {
 	InstallationObjectImplementation::parseItemAttributes();
 
-	string attr = "hopperSizeMax";
+	String attr = "hopperSizeMax";
 	setHopperSizeMax(itemAttributes->getFloatAttribute(attr));
 
 	attr = "extractionRate";
@@ -64,12 +62,12 @@ void HarvesterObjectImplementation::parseItemAttributes() {
 
 
 	attr = "resourceHopper";
-	string hopper = itemAttributes->getStringAttribute(attr);
+	String hopper = itemAttributes->getStringAttribute(attr);
 	unserializeResourceHopper(hopper);
 
 
 	} catch (Exception& e) {
-		cout << "HarvesterObjectImplementation::parseItemAttributes(): " << e.getMessage() << endl;
+		System::out << "HarvesterObjectImplementation::parseItemAttributes(): " << e.getMessage() << endl;
 		e.printStackTrace();
 		throw("HarvesterObjectImplementation::parseItemAttributes()!!!");
 	}
@@ -91,7 +89,6 @@ void HarvesterObjectImplementation::init() {
 	setExtractionRate(10.0f);
 	setOperating(false);
 	harvesterType = 0;
-
 }
 
 /*
@@ -112,14 +109,14 @@ void HarvesterObjectImplementation::sendRadialResponseTo(Player* player, ObjectM
 */
 
 void HarvesterObjectImplementation::verifyOperators() {
-	if(operatorList.size() <= 0)
+	if (operatorList.size() <= 0)
 		return;
 
 	// won't fully clean up at once because indexes would change once you remove one - but should clean up
-	for(int i = 0; i < operatorList.size(); i++)
+	for (int i = 0; i < operatorList.size(); i++)
 	{
 		SceneObject *obj = operatorList.get(i);
-		if(!obj->isPlayer() || (obj->isPlayer() && !((Player*)obj)->isOnline())) {
+		if (!obj->isPlayer() || (obj->isPlayer() && !((Player*)obj)->isOnline())) {
 			operatorList.remove(i);
 
 		}
@@ -128,21 +125,20 @@ void HarvesterObjectImplementation::verifyOperators() {
 }
 
 void HarvesterObjectImplementation::updateOperatorsAddBlankActiveRescource() {
-	if(operatorList.size() <= 0)
+	if (operatorList.size() <= 0)
 		return;
 
 	verifyOperators();
 
-	for(int i = 0; i < operatorList.size(); i++)
-	{
+	for (int i = 0; i < operatorList.size(); i++) {
 		SceneObject *obj = operatorList.get(i);
 
 		// Will get cleaned up next event
-		if(!obj->isPlayer())
+		if (!obj->isPlayer())
 			 continue;
-		Player *play = (Player*)obj;
 
-		if(!play->isOnline())
+		Player* play = (Player*) obj;
+		if (!play->isOnline())
 			continue;
 
 		InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7((InstallationObject*)_this);
@@ -155,20 +151,19 @@ void HarvesterObjectImplementation::updateOperatorsAddBlankActiveRescource() {
 }
 
 void HarvesterObjectImplementation::updateOperatorsEmptyHopper() {
-
-	if(operatorList.size() <= 0)
+	if (operatorList.size() <= 0)
 		return;
 
 	verifyOperators();
 
-	for(int i = 0; i < operatorList.size(); i++)
-	{
+	for (int i = 0; i < operatorList.size(); i++) {
 		SceneObject *obj = operatorList.get(i);
 
 		// Will get cleaned up next event
-		if(!obj->isPlayer())
+		if (!obj->isPlayer())
 			 continue;
-		Player *play = (Player*)obj;
+
+		Player* play = (Player*) obj;
 
 		InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7((InstallationObject*)_this);
 		dinso7->updateHopper();
@@ -176,30 +171,26 @@ void HarvesterObjectImplementation::updateOperatorsEmptyHopper() {
 		dinso7->updateHopperSize();
 		dinso7->close();
 		play->sendMessage(dinso7);
-
-
 	}
-
 }
 
 void HarvesterObjectImplementation::updateOperators() {
-	if(operatorList.size() <= 0)
+	if (operatorList.size() <= 0)
 		return;
 
 	verifyOperators();
 
-	for(int i = 0; i < operatorList.size(); i++)
-	{
+	for (int i = 0; i < operatorList.size(); i++) {
 		SceneObject *obj = operatorList.get(i);
 
 		// Will get cleaned up next event
-		if(!obj->isPlayer())
+		if (!obj->isPlayer())
 			 continue;
-		Player *play = (Player*)obj;
 
-		if(!play->isOnline())
+		Player* play = (Player*) obj;
+
+		if (!play->isOnline())
 			continue;
-
 
 		InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7((InstallationObject*)_this);
 		dinso7->updateHopper();
@@ -207,21 +198,17 @@ void HarvesterObjectImplementation::updateOperators() {
 		dinso7->updateHopperSize();
 		dinso7->close();
 		play->sendMessage(dinso7);
-
-
 	}
-
 }
 
 void HarvesterObjectImplementation::updateHopper() {
 	// Nothing to update if we're not operating
-	if(!isOperating())
+	if (!isOperating())
 		return;
 
 	// the spawn expired before we updated hopper last - don't update the hopper
-	if (spawnExpireTimestamp.compareTo(resourceHopperTimestamp) > 0)
-	{ // if (t1 < t2) return 1;
-		cout << "HarvesterObjectImplementation::updateHopper(" << hex << activeResourceID << dec << ") resource expired!! (why do we have expired resources in the list?) spawnExpireTimestamp: " << dec << spawnExpireTimestamp.getTime() << "  resourceHopperTimestamp: " << resourceHopperTimestamp.getTime() << endl;
+	if (spawnExpireTimestamp.compareTo(resourceHopperTimestamp) > 0) { // if (t1 < t2) return 1;
+		System::out << "HarvesterObjectImplementation::updateHopper(" << hex << activeResourceID << dec << ") resource expired!! (why do we have expired resources in the list?) spawnExpireTimestamp: " << dec << spawnExpireTimestamp.getTime() << "  resourceHopperTimestamp: " << resourceHopperTimestamp.getTime() << endl;
 		return;
 	}
 
@@ -236,7 +223,7 @@ void HarvesterObjectImplementation::updateHopper() {
 	int availableCapacity = (int)(getHopperSizeMax() - getHopperSize());
 	harvestAmount = harvestAmount > availableCapacity ? availableCapacity : harvestAmount;
 
-	if(resourceHopper.contains(activeResourceID)) {
+	if (resourceHopper.contains(activeResourceID)) {
 		float currentQuantity = resourceHopper.get(activeResourceID);
 		resourceHopper.drop(activeResourceID);
 		resourceHopper.put((uint64)activeResourceID, currentQuantity + harvestAmount);
@@ -260,8 +247,7 @@ void HarvesterObjectImplementation::changeActiveResourceID(uint64 rid) {
 	// 2) Get the spawn information & set the active resource id
 	// 3) If hopper size is zero for the resource + is operating, send a packet to the operators to add a zero element for delta packets
 
-	if(isOperating() && getActiveResourceID() != 0)
-	{
+	if (isOperating() && getActiveResourceID() != 0) {
 		updateHopper();
 	}
 
@@ -270,9 +256,8 @@ void HarvesterObjectImplementation::changeActiveResourceID(uint64 rid) {
 	setResourceHopperTimestamp(currentTime.getTime()); // ReInit
 
 	ResourceManager* resourceManager = getZone()->getZoneServer()->getResourceManager();
-	if(resourceManager == NULL)
-	{
-		cout << "resourceManager was NULL OMFG!" << endl;
+	if (resourceManager == NULL) {
+		System::out << "resourceManager was NULL OMFG!" << endl;
 		setActiveSpawnID(0);
 		setSpawnExpireTimestamp(getResourceHopperTimestamp());
 		setSpawnDensity(0);
@@ -280,34 +265,31 @@ void HarvesterObjectImplementation::changeActiveResourceID(uint64 rid) {
 	}
 
 	ResourceList* list = resourceManager->getResourceListAtLocation(getZone()->getZoneID(), getPositionX(), getPositionY(), getHarvesterType());
-	for (int x = 0; x < list->size(); x++)
-	{
+	for (int x = 0; x < list->size(); x++) {
 		ResourceItem *ri = list->get(x);
-		if(ri->getObjectID() == rid)
-		{
+		if (ri->getObjectID() == rid) {
 			setActiveSpawnID(ri->getSpawnID());
 			setSpawnExpireTimestamp((uint32)ri->getSpawnExpireTimestamp());
 			setSpawnDensity(ri->getDensity());
 		}
 	}
 
-	if(getHopperItemQuantity(getActiveResourceID()) == 0)
+	if (getHopperItemQuantity(getActiveResourceID()) == 0)
 		updateOperatorsAddBlankActiveRescource();
 }
 
 float HarvesterObjectImplementation::getActualRate() {
-	if(!isOperating())
+	if (!isOperating())
 		return 0.0f;
 
 	ResourceManager* resourceManager = getZone()->getZoneServer()->getResourceManager();
-	if(resourceManager == NULL)
+	if (resourceManager == NULL)
 		return 0.0f;
 
 	ResourceList* list = resourceManager->getResourceListAtLocation(getZone()->getZoneID(), getPositionX(), getPositionY(), getHarvesterType());
-	for (int x = 0; x < list->size(); x++)
-	{
+	for (int x = 0; x < list->size(); x++) {
 		ResourceItem *ri = list->get(x);
-		if(ri->getObjectID() == getActiveResourceID())
+		if (ri->getObjectID() == getActiveResourceID())
 			return getExtractionRate() * ((ri->getDensity() * 1.0f) / 100.0f);
 	}
 
@@ -316,29 +298,29 @@ float HarvesterObjectImplementation::getActualRate() {
 
 
 void HarvesterObjectImplementation::serializeResourceHopper() {
-	stringstream hopperstr;
+	StringBuffer hopperstr;
 
 	for (int i = 0; i < getHopperItemCount(); i++) {
 		hopperstr << getHopperItemID(i) << "|" << getHopperItemQuantity(i) << ";";
 	}
 
-	string attr("resourceHopper");
-	string val = hopperstr.str();
+	String attr("resourceHopper");
+	String val = hopperstr.toString();
 	itemAttributes->setStringAttribute(attr, val);
 }
 
-void HarvesterObjectImplementation::unserializeResourceHopper(const string& hopper) {
+void HarvesterObjectImplementation::unserializeResourceHopper(const String& hopper) {
 
-	if(hopper.empty())
+	if (hopper.isEmpty())
 		return;
 
 	StringTokenizer resources(hopper);
 	resources.setDelimeter(";");
 
-	while(resources.hasMoreTokens()) {
-		string item("");
+	while (resources.hasMoreTokens()) {
+		String item("");
 		resources.getStringToken(item);
-		if(item.empty())
+		if (item.isEmpty())
 			continue;
 
 		StringTokenizer pieces(item);
@@ -347,7 +329,7 @@ void HarvesterObjectImplementation::unserializeResourceHopper(const string& hopp
 		uint64 oid = pieces.getLongToken();
 		float quantity = pieces.getFloatToken();
 
-		if(!resourceHopper.contains(oid)) {
+		if (!resourceHopper.contains(oid)) {
 			resourceHopper.put((uint64)oid, quantity);
 		}
 

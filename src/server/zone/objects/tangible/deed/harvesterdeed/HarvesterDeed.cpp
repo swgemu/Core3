@@ -20,12 +20,12 @@
  *	HarvesterDeedStub
  */
 
-HarvesterDeed::HarvesterDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+HarvesterDeed::HarvesterDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new HarvesterDeedImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-HarvesterDeed::HarvesterDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+HarvesterDeed::HarvesterDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new HarvesterDeedImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -303,11 +303,11 @@ DistributedObjectAdapter* HarvesterDeedHelper::createAdapter(DistributedObjectSt
  *	HarvesterDeedServant
  */
 
-HarvesterDeedServant::HarvesterDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
+HarvesterDeedServant::HarvesterDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = HarvesterDeedHelper::instance();
 }
 
-HarvesterDeedServant::HarvesterDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
+HarvesterDeedServant::HarvesterDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = HarvesterDeedHelper::instance();
 }
 

@@ -22,12 +22,12 @@
  *	ResourceDeedStub
  */
 
-ResourceDeed::ResourceDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+ResourceDeed::ResourceDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new ResourceDeedImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-ResourceDeed::ResourceDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+ResourceDeed::ResourceDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new ResourceDeedImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -152,11 +152,11 @@ DistributedObjectAdapter* ResourceDeedHelper::createAdapter(DistributedObjectStu
  *	ResourceDeedServant
  */
 
-ResourceDeedServant::ResourceDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
+ResourceDeedServant::ResourceDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = ResourceDeedHelper::instance();
 }
 
-ResourceDeedServant::ResourceDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
+ResourceDeedServant::ResourceDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = ResourceDeedHelper::instance();
 }
 

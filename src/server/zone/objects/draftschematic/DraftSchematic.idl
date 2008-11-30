@@ -55,8 +55,8 @@ import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematic implements ManagedObject {
 
-	DraftSchematic(unsigned int schematicID, const string objName, const string stringName, 
-			unsigned int objCRC, const string groupName, unsigned int complexity, 
+	DraftSchematic(unsigned int schematicID, const String objName, const String StringName, 
+			unsigned int objCRC, const String groupName, unsigned int complexity, 
 			unsigned int schematicSize, int craftingToolTab);
 
 	DraftSchematic(DraftSchematic draftSchematic);
@@ -70,7 +70,7 @@ interface DraftSchematic implements ManagedObject {
 
 	
 	void addExperimentalProperty(unsigned int groupNumber,  
-		const string experimentalProperty, unsigned int weight, string subtitle);
+		const String experimentalProperty, unsigned int weight, String subtitle);
 	
 	void sendExperimentalPropertiesToPlayer(Player player);
 
@@ -84,8 +84,8 @@ interface DraftSchematic implements ManagedObject {
 
 	void helperSendIngredientsToPlayer(ObjectControllerMessage objMsg);
 
-	void addIngredient(const string ingredientTemplateName, const string ingredientTitleName,
-		const int optional, const string resourceType, unsigned int resourceQuantity, 
+	void addIngredient(const String ingredientTemplateName, const String ingredientTitleName,
+		const int optional, const String resourceType, unsigned int resourceQuantity, 
 		unsigned int combineType, unsigned int contribution);
 
 	DraftSchematicIngredient getIngredient(int index);
@@ -99,11 +99,11 @@ interface DraftSchematic implements ManagedObject {
 
 	void setObjectID(unsigned long objID);
 
-	void setTanoAttributes(string attributes);
+	void setTanoAttributes(String attributes);
 
 	void setContainer(SceneObject container);
 
-	void setXpType(string type);
+	void setXpType(String type);
 
 	void setXp(int x);
 
@@ -113,13 +113,13 @@ interface DraftSchematic implements ManagedObject {
 
 	void setExpFailure(float rate);
 
-	void setExperimentingSkill(const string exp);
+	void setExperimentingSkill(const String exp);
 
-	void setCustomizationSkill(const string cust);
+	void setCustomizationSkill(const String cust);
 
-	void addCustomizationOption(const string cust, const int value);
+	void addCustomizationOption(const String cust, const int value);
 
-	void setAssemblySkill(const string ass);
+	void setAssemblySkill(const String ass);
 
 	void setFinished();
 
@@ -131,10 +131,10 @@ interface DraftSchematic implements ManagedObject {
 
 	DraftSchematicAttribute getAttributeToSet(const int i);
 
-	DraftSchematicAttribute getAttributeToSet(const string name);
+	DraftSchematicAttribute getAttributeToSet(const String name);
 
-	void addAttributeToSet(const string attribute, const float minVal, const float maxVal, 
-		const string attributeExpProp, const int precision);
+	void addAttributeToSet(const String attribute, const float minVal, const float maxVal, 
+		const String attributeExpProp, const int precision);
 	
 	int getExpPropGroupListSize();
 
@@ -144,11 +144,11 @@ interface DraftSchematic implements ManagedObject {
 	
 	unsigned int getSchematicCRC();
 	
-	string getName();
+	String getName();
 
-	string getStringName();
+	String getStringName();
 	
-	string getGroupName();
+	String getGroupName();
 	
 	unsigned int getComplexity();
 	
@@ -156,27 +156,27 @@ interface DraftSchematic implements ManagedObject {
 
 	unsigned int getObjectID();
 
-	string getTanoAttributes();
+	String getTanoAttributes();
 	
 	int getCraftingToolTab();
 
 	SceneObject getContainer();
 
-	string getXpType();
+	String getXpType();
 
 	int getXp();
 
-	string getExperimentingSkill();
+	String getExperimentingSkill();
 
-	string getCustomizationSkill();
+	String getCustomizationSkill();
 
-	string getCustomizationOption(const int i);
+	String getCustomizationOption(const int i);
 	
 	int getCustomizationDefaultValue(const int i);
 	
 	int getCustomizationOptionCount();
 
-	string getAssemblySkill();
+	String getAssemblySkill();
 
 	int getExpPoints();
 

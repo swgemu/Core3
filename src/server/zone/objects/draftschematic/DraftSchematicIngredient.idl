@@ -45,19 +45,19 @@ which carries forward this exception.
 import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematicIngredient {
-	DraftSchematicIngredient(const string ingredientTemplateName, const string ingredientTitleName,
-			const int slotoption, const string resourceType, unsigned int resourceQuantity, 
+	DraftSchematicIngredient(const String ingredientTemplateName, const String ingredientTitleName,
+			const int slotoption, const String resourceType, unsigned int resourceQuantity, 
 			unsigned int combineType, float contribution);
 	DraftSchematicIngredient(DraftSchematicIngredient ingredient);
 		
 	void helperSendToPlayer(ObjectControllerMessage msg);
 	
 	// getters
-	string getTemplateName();
+	String getTemplateName();
 	
-	string getTitleName();
+	String getTitleName();
 	
-	string getResourceType();
+	String getResourceType();
 	
 	unsigned int getResourceQuantity();
 

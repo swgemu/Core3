@@ -55,8 +55,8 @@ protected:
 	uint64 state;
 
 public:
-	CurePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	CurePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	CurePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	CurePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	void initialize();
 
@@ -70,12 +70,12 @@ public:
 
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
-		string attr = "effectiveness";
+		String attr = "effectiveness";
 		itemAttributes->setFloatAttribute(attr, effectiveness);
 	}
 	inline void setState(uint64 value) {
 		state = value;
-		string attr = "state";
+		String attr = "state";
 		itemAttributes->setUnsignedLongAttribute(attr, state);
 	}
 

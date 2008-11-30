@@ -54,7 +54,7 @@ interface GuildMap {
 	Guild get(int index);
 	Guild get(unsigned int gid);
 
-	Guild get(string tag);
+	Guild get(String tag);
 
 	void remove(unsigned int gid);
 	

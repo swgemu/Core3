@@ -141,18 +141,18 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->setCashCredits(creditsCash);
 	player->setBankCredits(creditsBank);
 
-	string bio = player->getBiography().c_str();
+	String bio = player->getBiography().toCharArray();
 	MySqlDatabase::escapeString(bio);
-	string info = "";
+	String info = "";
 
-	string appearance;
-	string playApp;
+	String appearance;
+	String playApp;
 	player->getCharacterAppearance(playApp);
 	BinaryData cust(playApp);
 	cust.encode(appearance);
 
-	string hairdata;
-	string hairApp;
+	String hairdata;
+	String hairApp;
 	player->getHairAppearance(hairApp);
 	BinaryData hair(hairApp);
 	hair.encode(hairdata);
@@ -163,7 +163,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->resetHAMBars(false);
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "INSERT INTO `characters` "
 		<< "(`account_id`,`galaxy_id`,`firstname`,`surname`,"
 		<< "`appearance`,`professions`,`race`,`gender`,`lots`,"
@@ -177,14 +177,14 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		<< ") VALUES ("
 		<< accountID << "," << galaxyID << ",'"
 		<< player->getFirstName() << "','" << player->getLastName() << "','"
-		<< appearance.substr(0, appearance.size() - 1) << "','"
+		<< appearance.subString(0, appearance.length() - 1) << "','"
 		<< player->getStartingProfession() << "'," <<  race << "," << gender << ",10,"
 		<< creditsCash << "," << creditsBank << ",0,"
 		<< player->getPositionX() << "," << player->getPositionY() << ","
 		<< player->getPositionZ() << "," << player->getZoneIndex() << "," << 0//planetID
 		<< ",0,0,0,0,0," << player->getHeight() << ","
 		<< "'" << bio << "','" << info << "','"
-		<< player->getHairObject() << "','" << hairdata.substr(0, hairdata.size() - 1) << "','', '0','',"
+		<< player->getHairObject() << "','" << hairdata.subString(0, hairdata.length() - 1) << "','', '0','',"
 		<< player->getBaseHealth() << "," << player->getBaseStrength() << "," << player->getBaseConstitution() << ","
 		<< player->getBaseAction() << "," << player->getBaseQuickness() << "," << player->getBaseStamina() << ","
 		<< player->getBaseMind() << "," << player->getBaseFocus() << "," << player->getBaseWillpower() << ","
@@ -225,17 +225,17 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	return true;
 }
 
-BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, const string& species) {
+BaseMessage* PlayerManagerImplementation::checkPlayerName(const String& name, const String& species) {
 	NameManager * nm = server->getNameManager();
 	BaseMessage* msg = NULL;
 
-	string firstName;
-	int idx = name.find(" ");
+	String firstName;
 
-	if (idx != string::npos)
-		firstName = name.substr(0, idx);
+	int idx = name.indexOf(" ");
+	if (idx != -1)
+		firstName = name.subString(0, idx);
 	else
-		firstName = name.c_str();
+		firstName = name;
 
 	//Name passes filters, does it already exist?
 	if (!validateName(firstName))
@@ -324,28 +324,27 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, 
 
 		return msg; //return success or fail packet
 	} catch (Exception& e) {
-		stringstream err;
+		StringBuffer err;
 		err << "unreported exception on PlayerManagerImplementation::attemptPlayerCreation()\n" << e.getMessage() << "\n";
-		player->error(err.str());
+		player->error(err.toString());
 		player->unlock();
 		return new ClientCreateCharacterFailed("name_declined_internal_error"); //something went wrong
 	} catch (...) {
-		stringstream err;
+		StringBuffer err;
 		err << "unreported exception on PlayerManagerImplementation::attemptPlayerCreation()\n";
-		player->error(err.str());
+		player->error(err.toString());
 		player->unlock();
 		return new ClientCreateCharacterFailed("name_declined_internal_error"); //something went wrong
 	}
 }
 
-bool PlayerManagerImplementation::validateName(const string& cname) {
-	if (cname.size() < 1)
+bool PlayerManagerImplementation::validateName(const String& name) {
+	if (name.isEmpty())
 		return false;
 
-	string name = cname;
-	String::toLower(name);
 	try {
-		string query = "SELECT * FROM characters WHERE lower(firstname) = \"" + name + "\"";
+		String query = "SELECT * FROM characters WHERE lower(firstname) = \""
+					   + name.toLowerCase() + "\"";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 		bool nameExists = res->next();
@@ -375,43 +374,43 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	ResultSet* character;
 
 /*
-	string mcmahon_app;
-	string app;
-	stringstream appstream;
+	String mcmahon_app;
+	String app;
+	StringBuffer appstream;
 	appstream << 0x02 << 0x24 << 0x17 << 0xC2 << 0xA3 << 0x18 << 0xC3 << 0xBF << 0x01 << 0x1C << 0xC3 << 0xBF << 0x01 << 0x1B << 0xC3 << 0xBD << 0x05 << 0xC3 << 0xBF << 0x01 << 0x1A << 0xC2 << 0x8A << 0x19 << 0xC3 << 0xBF << 0x01 << 0x0D << 0xC3 << 0xA5 << 0x09 << 0xC3 << 0xBF << 0x01 << 0x12 << 0xC3 << 0xBF << 0x01 << 0x13 << 0x38 << 0x20 << 0x7A << 0x10 << 0x38 << 0x21 << 0xC3 << 0xBF << 0x01 << 0x0F << 0xC3 << 0xBF << 0x01 << 0x14 << 0x09 << 0x11 << 0xC3 << 0xBF << 0x01 << 0x0E << 0x42 << 0x03 << 0xC3 << 0x91 << 0x0B << 0x07 << 0x0C << 0xC3 << 0xBF << 0x01 << 0x06 << 0xC2 << 0x8F << 0x08 << 0xC3 << 0xBF << 0x01 << 0x15 << 0xC3 << 0xBF << 0x01 << 0x16 << 0x4C << 0x04 << 0xC3 << 0xBF << 0x02 << 0x07 << 0xC3 << 0xBF << 0x01 << 0x0A << 0xC3 << 0xBF << 0x02 << 0x23 << 0x07 << 0x25 << 0xC3 << 0xBF << 0x01 << 0x24 << 0xC3 << 0xBF << 0x01 << 0x2A << 0xC3 << 0xBF << 0x01 << 0x01 << 0x1D << 0x1D << 0xC3 << 0xBF << 0x01 << 0x1F << 0x0A << 0x1E << 0x01 << 0xC3 << 0xBF << 0x03;
-	app = appstream.str();
+	app = appstream.toString();
 	BinaryData myapp(app);
 	myapp.encode(mcmahon_app);
-	cout << "appearance string: \"" << mcmahon_app.substr(0, mcmahon_app.size() - 1) << "\"" << endl;
+	System::out << "appearance String: \"" << mcmahon_app.substr(0, mcmahon_app.size() - 1) << "\"" << endl;
 
 
-	string mcmahon_hair;
-	string hairsss;
-	stringstream hairstream;
+	String mcmahon_hair;
+	String hairsss;
+	StringBuffer hairstream;
 	hairstream << 0x02 << 0x01 << 0x02 << 0x0A << 0xC3 << 0xBF << 0x03;
-	hairsss = hairstream.str();
+	hairsss = hairstream.toString();
 	BinaryData myhair(hairsss);
 	myhair.encode(mcmahon_hair);
-	cout << "hair string: \"" << mcmahon_hair.substr(0, mcmahon_hair.size() - 1) << "\"" << endl;
+	System::out << "hair String: \"" << mcmahon_hair.substr(0, mcmahon_hair.size() - 1) << "\"" << endl;
 */
 
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM characters WHERE character_id = " << player->getCharacterID();
 
 	character = ServerDatabase::instance()->executeQuery(query);
 
 	if (!character->next()) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "unknown character ID" << player->getCharacterID();
 
-		throw Exception(msg.str());
+		throw Exception(msg.toString());
 	}
 
 	player->setFirstName(character->getString(3));
 	player->setLastName(character->getString(4));
 
-	string orbname = "Player " + player->getFirstName();
+	String orbname = "Player " + player->getFirstName();
 	player->deploy(orbname);
 
 	PlayerObject* playerObject = new PlayerObject(player);
@@ -424,7 +423,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 		player->setCharacterName(player->getFirstName());
 
 	player->setFirstNameProper(player->getFirstName());
-	String::toLower(player->getFirstName());
+
+	//TODO: why did we do this - String::toLower(player->getFirstName());
 
 	Zone* zne = server->getZoneServer()->getZone(character->getInt(16));
 
@@ -433,6 +433,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->initializePosition(character->getFloat(13), character->getFloat(15), character->getFloat(14));
 
 	server->lock();
+
 	Guild* guild = guildManager->getGuild(character->getUnsignedInt(12));
 	if (guild != NULL) {
 		player->setGuild(guild);
@@ -441,18 +442,18 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 		else
 			player->setGuildLeader(false);
 	}
+
 	server->unlock();
 
-
-	string appearance = character->getString(5);
+	String appearance = character->getString(5);
 	BinaryData cust(appearance);
-	string custStr;
+	String custStr;
 	cust.decode(custStr);
 	player->setCharacterAppearance(custStr);
 
-	string hairData = character->getString(28);
+	String hairData = character->getString(28);
 	BinaryData hair(hairData);
-	string hData;
+	String hData;
 	hair.decode(hData);
 	player->setHairAppearance(hData);
 
@@ -479,10 +480,10 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 	player->setItemShift(character->getUnsignedInt(34));
 
-	string bio = character->getString(24);
+	String bio = character->getString(24);
 	player->setBiography(bio);
 
-	string title = character->getString(32);
+	String title = character->getString(32);
 	player->getPlayerObject()->setTitle(title);
 
 	player->setBaseHealth(character->getInt(35));
@@ -540,12 +541,11 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	loadConsentList(player);
 	loadFactionPoints(player);
 
-
 	delete character;
 }
 
 void PlayerManagerImplementation::loadWaypoints(Player* player) {
-	stringstream query;
+	StringBuffer query;
 	ResultSet* result = NULL;
 
 	query << "SELECT * FROM waypoints WHERE owner_id = '" << player->getCharacterID() <<"';";
@@ -554,13 +554,13 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 		result = ServerDatabase::instance()->executeQuery(query);
 
 		while (result->next()) {
-			string wpName = result->getString(2);
+			String wpName = result->getString(2);
 
 			float x = result->getFloat(3);
 			float y = result->getFloat(4);
 
-			string planetName = result->getString(5);
-			string internalNote = result->getString(7);
+			String planetName = result->getString(5);
+			String internalNote = result->getString(7);
 			bool active = result->getInt(6);
 
 			WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
@@ -573,9 +573,9 @@ void PlayerManagerImplementation::loadWaypoints(Player* player) {
 			player->addWaypoint(wp);
 		}
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << endl;
+		System::out << e.getMessage() << endl;
 	} catch (...) {
-		cout << "unreported exception caught in PlayerManagerImplementation::loadWaypoints\n";
+		System::out << "unreported exception caught in PlayerManagerImplementation::loadWaypoints\n";
 	}
 
 	delete result;
@@ -588,7 +588,7 @@ void PlayerManagerImplementation::updateGuildStatus(Player* player) {
 	player->info("Entering PlayerManagerImplementation::updateGuildStatus(Player* player)");
 
 	ResultSet* character;
-	stringstream query;
+	StringBuffer query;
 
 	try {
 		query << "SELECT guild FROM characters WHERE character_id = " << player->getCharacterID();
@@ -596,13 +596,13 @@ void PlayerManagerImplementation::updateGuildStatus(Player* player) {
 		character = ServerDatabase::instance()->executeQuery(query);
 
 	} catch (DatabaseException& e) {
-		cout << "DB Exception in PlayerManagerImplementation::updateGuildStatus(Player* player):" << endl << e.getMessage() << endl;
+		System::out << "DB Exception in PlayerManagerImplementation::updateGuildStatus(Player* player):" << endl << e.getMessage() << endl;
 		player->info("DB ERROR: Catch #1 from PlayerManagerImplementation::updateGuildStatus(Player* player)");
 
 		return;
 
 	} catch (...) {
-		cout << "unreported exception caught in PlayerManagerImplementation::updateGuildStatus\n";
+		System::out << "unreported exception caught in PlayerManagerImplementation::updateGuildStatus\n";
 		player->info("ERROR: Exit via catch #2 from PlayerManagerImplementation::updateGuildStatus(Player* player)");
 
 		return;
@@ -625,7 +625,7 @@ void PlayerManagerImplementation::updateGuildStatus(Player* player) {
 					if (room != NULL)
 						room->removePlayer(player, false);
 				} else
-					cout << "DEFAULT guild in table GUILDS (DB) is not ID 0 ! Edit table and set DEFAULT GUILD to ID 0!\n";
+					System::out << "DEFAULT guild in table GUILDS (DB) is not ID 0 ! Edit table and set DEFAULT GUILD to ID 0!\n";
 
 				player->setGuild(defGuild);
 				player->updateGuild(defGuild);
@@ -654,8 +654,7 @@ void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool st
 	try {
 		player->info("Entering PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
 
-		string loggingInName = player->getFirstName();
-		String::toLower(loggingInName);
+		String loggingInName = player->getFirstName().toLowerCase();
 
 		playerMap->lock();
 
@@ -712,10 +711,10 @@ void PlayerManagerImplementation::unload(Player* player) {
 }
 
 void PlayerManagerImplementation::save(Player* player) {
-	string biography = player->getBiography().c_str();
+	String biography = player->getBiography().toCharArray();
 	MySqlDatabase::escapeString(biography);
 
-	stringstream query;
+	StringBuffer query;
 	query << "UPDATE characters SET x=" << player->getPositionX() << ",y=" << player->getPositionY()
 	<< ",z=" << player->getPositionZ()
 	<< ",zoneid=" << player->getZoneIndex()
@@ -748,8 +747,8 @@ void PlayerManagerImplementation::save(Player* player) {
 	try {
 		ServerDatabase::instance()->executeStatement(query);
 	} catch(DatabaseException& e) {
-		cerr << "Failed to unload character: " << player->getFirstName() << "\n";
-		cout << e.getMessage() << endl;
+		System::out << "Failed to unload character: " << player->getFirstName() << "\n";
+		System::out << e.getMessage() << endl;
 	}
 
 	player->saveProfessions();
@@ -760,13 +759,13 @@ void PlayerManagerImplementation::save(Player* player) {
 }
 
 void PlayerManagerImplementation::loadFactionPoints(Player* player) {
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM character_faction_points WHERE character_id = " << player->getCharacterID() << ";";
 	try {
 		ResultSet * res = ServerDatabase::instance()->executeQuery(query);
 
 		while (res->next()) {
-			string faction = res->getString(1);
+			String faction = res->getString(1);
 			int points = res->getInt(2);
 
 			if (points >= 0)
@@ -777,8 +776,8 @@ void PlayerManagerImplementation::loadFactionPoints(Player* player) {
 
 		delete res;
 	} catch(DatabaseException& e) {
-		cerr << "Failed to load FactionPoints: " << player->getFirstName() << endl;
-		cout << e.getMessage() << endl;
+		System::out << "Failed to load FactionPoints: " << player->getFirstName() << endl;
+		System::out << e.getMessage() << endl;
 	}
 }
 
@@ -788,22 +787,22 @@ void PlayerManagerImplementation::saveFactionPoints(Player* player) {
 
 	try {
 		for (int i = 0; i < list->size(); i++) {
-			string faction = list->get(i);
+			String faction = list->get(i);
 			int points = player->getFactionPoints(faction);
-			stringstream hash;
+			StringBuffer hash;
 			hash << faction << player->getCharacterID();
-			stringstream query;
+			StringBuffer query;
 			query << "INSERT INTO character_faction_points VALUES(";
 			query << player->getCharacterID() << ", '";
 			query << faction << "', " << points << ", MD5('";
-			query << hash.str() << "')) ON DUPLICATE KEY UPDATE faction_points = " << points;
+			query << hash.toString() << "')) ON DUPLICATE KEY UPDATE faction_points = " << points;
 
 			ServerDatabase::instance()->executeStatement(query);
 		}
 
 	} catch(DatabaseException& e) {
-		cerr << "Failed to save FactionPoints: " << player->getFirstName() << endl;
-		cout << e.getMessage() << endl;
+		System::out << "Failed to save FactionPoints: " << player->getFirstName() << endl;
+		System::out << e.getMessage() << endl;
 	}
 }
 
@@ -845,7 +844,7 @@ void PlayerManagerImplementation::handleAbortTradeMessage(Player* player, bool d
 		player->unlock(doLock);
 	} catch (...) {
 		player->unlock(doLock);
-		cout << "Unreported exception caught in PlayerManagerImplementation::handleAbortTradeMessage(Player* player)\n";
+		System::out << "Unreported exception caught in PlayerManagerImplementation::handleAbortTradeMessage(Player* player)\n";
 	}
 }
 
@@ -960,7 +959,7 @@ void PlayerManagerImplementation::handleAcceptTransactionMessage(Player* player)
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "Unreported exception caught in PlayerManagerImplementation::handleAcceptTransactionMessage(Player* player)\n";
+		System::out << "Unreported exception caught in PlayerManagerImplementation::handleAcceptTransactionMessage(Player* player)\n";
 	}
 }
 
@@ -983,7 +982,7 @@ void PlayerManagerImplementation::handleUnAcceptTransactionMessage(Player* playe
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "Unreported exception caught in PlayerManagerImplementation::handleUnAcceptTransactionMessage(Player* player)\n";
+		System::out << "Unreported exception caught in PlayerManagerImplementation::handleUnAcceptTransactionMessage(Player* player)\n";
 	}
 }
 
@@ -1048,7 +1047,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(Player* player) {
 
 				receiver->unlock();
 			} catch (...) {
-				cout << "Excepion in PlayerManagerImplementation::handleVerifyTradeMessage\n";
+				System::out << "Excepion in PlayerManagerImplementation::handleVerifyTradeMessage\n";
 				receiver->unlock();
 			}
 		}
@@ -1056,7 +1055,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(Player* player) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "Unreported exception caught in PlayerManagerImplementation::handleVerifyTradeMessage(Player* player)\n";
+		System::out << "Unreported exception caught in PlayerManagerImplementation::handleVerifyTradeMessage(Player* player)\n";
 	}
 }
 
@@ -1093,14 +1092,14 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 		itemManager->savePlayerItem(receiver, item);
 	}
 	/*
-	stringstream playertxt;
-	stringstream targettxt;
+	StringBuffer playertxt;
+	StringBuffer targettxt;
 
-	playertxt << "You gave a " << item->getName().c_str() << " to " << target->getFirstName() << ".";
-	targettxt << getFirstName() << " gave you a " << item->getName().c_str() << ".";
+	playertxt << "You gave a " << item->getName().toCharArray() << " to " << target->getFirstName() << ".";
+	targettxt << getFirstName() << " gave you a " << item->getName().toCharArray() << ".";
 
-	sendSystemMessage(playertxt.str());
-	target->sendSystemMessage(targettxt.str());*/
+	sendSystemMessage(playertxt.toString());
+	target->sendSystemMessage(targettxt.toString());*/
 }
 
 void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
@@ -1123,19 +1122,19 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 		//Now we send the tipper an email.
 
 		//This will be the same in both emails, so only declare it once.
-		string mailSender;
+		String mailSender;
 		mailSender = "System";
 
-		string charNameSender = sender->getFirstName();
+		String charNameSender = sender->getFirstName();
 
-		unicode subjectSender("RECIEPT FOR BANK TIP");
-		stringstream ss;
+		UnicodeString subjectSender("RECIEPT FOR BANK TIP");
+		StringBuffer ss;
 		ss << "You have sent a bank tip of " << tipAmount << " credits to " << receiver->getFirstName() << "." << endl;
 		ss << "The Following is a summary of your charges:" << endl << endl ;
 		ss << "Tip Amount: " << tipAmount << " credits" << endl;
 		ss << "Imperial Tax: " << (int) tax << " credits" << endl;
 		ss << endl << "Total Charges: " << (int) (tipAmount + tax) << " credits";
-		unicode bodySender(ss.str());
+		UnicodeString bodySender(ss.toString());
 
 		ChatManager* chatManager = server->getChatManager();
 		chatManager->sendMail(mailSender, subjectSender, bodySender, charNameSender);
@@ -1143,12 +1142,12 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 		if (updateTipTo == true) {
 			//This is where we notify the other player with mail + sys message.
 			//But we have to make sure they are online first. Passed in the method.
-			string charNameReceiver = receiver->getFirstName();
+			String charNameReceiver = receiver->getFirstName();
 
-			unicode subjectReceiver("BANK TIP RECEIVED");
-			stringstream ss2;
+			UnicodeString subjectReceiver("BANK TIP RECEIVED");
+			StringBuffer ss2;
 			ss2 << "You have received a bank tip of " << tipAmount << " credits from " << sender->getFirstName() << ".";
-			unicode bodyReceiver(ss2.str());
+			UnicodeString bodyReceiver(ss2.toString());
 
 			//Email the player you bank tipped.
 			chatManager->sendMail(mailSender, subjectReceiver, bodyReceiver, charNameReceiver);
@@ -1156,7 +1155,7 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 
 		receiver->unlock();
 	} catch (...) {
-		cout << "Unreported exception caught in PlayerManagerImplementation::doBankTip\n";
+		System::out << "Unreported exception caught in PlayerManagerImplementation::doBankTip\n";
 		receiver->unlock();
 	}
 }
@@ -1179,44 +1178,50 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, ui
 		if (updateTipTo == true) {
 			//This is where we notify the other player with mail + sys message.
 			//But we have to make sure they are online first. Passed in the method.
-			stringstream ss;
+			StringBuffer ss;
 			ss << "You have been tipped " << tipAmount << " credits by " << sender->getFirstName() << ".";
-			receiver->sendSystemMessage(ss.str());
+			receiver->sendSystemMessage(ss.toString());
 		}
 
 		receiver->unlock();
 	} catch (...) {
-		cout << "Unreported exception caught in PlayerManagerImplementation::doCashTip\n";
+		System::out << "Unreported exception caught in PlayerManagerImplementation::doCashTip\n";
 		receiver->unlock();
 	}
 }
 
-bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string receiverName, uint32 creditAmount) {
+bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, String receiverName, uint32 creditAmount) {
 	//First we need to get the current bank credits.
 	if (!sender->verifyBankCredits(creditAmount)) {
 		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
 		return false;
 	}
 
-	String::toLower(receiverName);
+	receiverName = receiverName.toLowerCase();
+
 	MySqlDatabase::escapeString(receiverName);
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM characters WHERE lower(firstname) = '" << receiverName << "'";
+
 	ResultSet* character;
 
 	try {
 		character = ServerDatabase::instance()->executeQuery(query);
 	} catch (DatabaseException& e) {
-		cout << "PlayerManagerImplementation::modifyOfflineBank: failed SQL query: " << query << "\n";
+		System::out << "PlayerManagerImplementation::modifyOfflineBank: failed SQL query: "
+					<< query.toString() << "\n";
+
 		return false;
 	}
 
 	if (!character->next()) {
 		delete character;
-		/*stringstream msg;
+
+		/*StringBuffer msg;
 		msg << "unknown character name" << receiverName;
-		throw Exception(msg.str());*/
+		throw Exception(msg.toString());*/
+
 		return false;
 	}
 
@@ -1230,14 +1235,15 @@ bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 	uint32 newBankCredits = currentBankCredits + creditAmount;
 
 	//Now we need to update the db.
-	stringstream query2;
+	StringBuffer query2;
 	query2 << "UPDATE characters SET credits_bank=" << newBankCredits
-	<< " WHERE lower(firstname)='" << receiverName << "';";
+		   << " WHERE lower(firstname)='" << receiverName << "';";
 
 	try {
 		ServerDatabase::instance()->executeStatement(query2);
 	} catch(DatabaseException& e) {
-		cout << "PlayerManagerImplementation::modifyOfflineBank: failed SQL UPDATE: " << query2 << "\n";
+		System::out << "PlayerManagerImplementation::modifyOfflineBank: failed SQL UPDATE: "
+					<< query2.toString() << "\n";
 		return false;
 	}
 
@@ -1247,9 +1253,10 @@ bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, string recei
 	return true;
 }
 
-bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, uint32 creditAmount) {
+bool PlayerManagerImplementation::modifyRecipientOfflineBank(String recipient, uint32 creditAmount) {
 	//First we need to get the current bank credits.
-	String::toLower(recipient);
+	recipient = recipient.toLowerCase();
+
 	MySqlDatabase::escapeString(recipient);
 
 	Player* play = getPlayer(recipient);
@@ -1260,22 +1267,27 @@ bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, u
 		return true;
 	}
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM characters WHERE lower(firstname) = '" << recipient << "'";
+
 	ResultSet* character;
 
 	try {
 		character = ServerDatabase::instance()->executeQuery(query);
 	} catch(DatabaseException& e) {
-		cout << "PlayerManagerImplementation::modifyRecipientOfflineBank. Failed SQL query: " << query << "\n";
+		System::out << "PlayerManagerImplementation::modifyRecipientOfflineBank. Failed SQL query: "
+					<< query.toString() << "\n";
+
 		return false;
 	}
 
 	if (!character->next()) {
 		delete character;
-		/*stringstream msg;
+
+		/*StringBuffer msg;
 		msg << "unknown character name (recipient)" << recipient;
-		throw Exception(msg.str());*/
+		throw Exception(msg.toString());*/
+
 		return false;
 	}
 
@@ -1289,15 +1301,18 @@ bool PlayerManagerImplementation::modifyRecipientOfflineBank(string recipient, u
 	uint32 newBankCredits = currentBankCredits + creditAmount;
 
 	//Now we need to update the db.
-	stringstream query2;
+	StringBuffer query2;
 	query2 << "UPDATE characters SET credits_bank='" << newBankCredits
-	<< "' WHERE lower(firstname)='" << recipient << "'";
+		   << "' WHERE lower(firstname)='" << recipient << "'";
 
 	try {
 		ServerDatabase::instance()->executeStatement(query2);
 	} catch (DatabaseException& e) {
-		cout << "PlayerManagerImplementation::modifyRecipientOfflineBank: failed SQL UPDATE: " << query2.str() << "\n";
-		cout << e.getMessage() << endl;
+		System::out << "PlayerManagerImplementation::modifyRecipientOfflineBank: failed SQL UPDATE: "
+					<< query2.toString() << "\n";
+
+		System::out << e.getMessage() << endl;
+
 		return false;
 	}
 
@@ -1308,7 +1323,7 @@ void PlayerManagerImplementation::loadConsentList(Player* player) {
 	if (player == NULL)
 		return;
 
-	stringstream query;
+	StringBuffer query;
 
 	query << "SELECT LOWER(B.firstname) AS targetName FROM consentlist A, characters B WHERE A.character_id = " << player->getCharacterID() << " AND B.character_id = A.target_id;";
 	ResultSet* targetlist;
@@ -1317,17 +1332,17 @@ void PlayerManagerImplementation::loadConsentList(Player* player) {
 		targetlist = ServerDatabase::instance()->executeQuery(query);
 
 		while (targetlist->next()) {
-			string targetName = targetlist->getString(0);
+			String targetName = targetlist->getString(0);
 			player->giveConsent(targetName);
 		}
 
 		delete targetlist;
 	} catch (DatabaseException& e) {
-		cout << "ServerDatabase error retrieving consentlist for character_id: " << player->getCharacterID() << endl;
-		cout << e.getMessage();
+		System::out << "ServerDatabase error retrieving consentlist for character_id: " << player->getCharacterID() << endl;
+		System::out << e.getMessage();
 		return;
 	} catch (...) {
-		cout << "unreported exception caught in PlayerManagerImplementation::loadConsentList" << endl;
+		System::out << "unreported exception caught in PlayerManagerImplementation::loadConsentList" << endl;
 		return;
 	}
 }
@@ -1337,33 +1352,32 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 		return;
 
 	//Remove all previous database entries for Consent List for this Player
-	stringstream query;
+	StringBuffer query;
 	query << "DELETE FROM consentlist WHERE character_id = " << player->getCharacterID() << ";";
+
 	ServerDatabase::instance()->executeStatement(query);
 
 	int size = player->getConsentSize();
-
 	if (size > 0) {
-		query.str("");
+		query.deleteAll();
 		query << "INSERT INTO consentlist (character_id, target_id) VALUES ";
 
-		stringstream insertSets;
+		StringBuffer insertSets;
 
 		for (int i=0; i < size; i++) {
 			insertSets << "(" << player->getCharacterID() << ",IFNULL((SELECT character_id FROM characters WHERE firstname = '" << player->getConsentEntry(i) << "'),0))";
+
 			if (i < size - 1)
 				insertSets << ",";
 		}
 
-		query << insertSets.str() << ";";
+		query << insertSets.toString() << ";";
 
 		try {
 			ServerDatabase::instance()->executeStatement(query);
 		} catch (DatabaseException& e) {
-			cout << e.getMessage() << endl;
 			player->error(e.getMessage());
 		} catch (...) {
-			cout << "Unhandled exception in PlayerManagerImplementation::updateConsentList()" << endl;
 			player->error("Unhandled exception in PlayerManagerImplementation::updateConsentList()");
 		}
 	}
@@ -1373,16 +1387,15 @@ void PlayerManagerImplementation::updatePlayerCreditsToDatabase(Player* player) 
 	if (player == NULL)
 		return;
 
-	stringstream query;
-
-	query << "UPDATE characters set credits_inv='" << player->getCashCredits() <<
-	"', credits_bank='" << player->getBankCredits() << "' WHERE character_id='" <<
-	player->getCharacterID() << "'";
+	StringBuffer query;
+	query << "UPDATE characters set credits_inv='" << player->getCashCredits()
+		  << "', credits_bank='" << player->getBankCredits() << "' WHERE character_id='"
+		  << player->getCharacterID() << "'";
 
 	try {
 		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException e) {
-		cout << "PlayerManagerImplementation::updatePlayerCreditsToDatabase: failed SQL update: " << query.str() << "\n";
+		System::out << "PlayerManagerImplementation::updatePlayerCreditsToDatabase: failed SQL update: " << query.toString() << "\n";
 	}
 }
 
@@ -1393,7 +1406,7 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 	try {
 		player->wlock();
 
-		stringstream query;
+		StringBuffer query;
 
 		query << "SELECT credits_inv,credits_bank FROM characters WHERE character_id = '" << player->getCharacterID() << "'";
 		ResultSet* rs = NULL;
@@ -1401,8 +1414,8 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 		try {
 			rs = ServerDatabase::instance()->executeQuery(query);
 		} catch(DatabaseException& e) {
-			cout << "PlayerManagerImplmentation::updatePlayerCredits: failed SQL query: " << query.str() << "\n";
-			cout << e.getMessage();
+			System::out << "PlayerManagerImplmentation::updatePlayerCredits: failed SQL query: " << query.toString() << "\n";
+			System::out << e.getMessage();
 			player->unlock();
 			return;
 		}
@@ -1427,7 +1440,7 @@ void PlayerManagerImplementation::updatePlayerCreditsFromDatabase(Player* player
 		delete rs;
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception caught in PlayerManager::updatePlayerCreditsFromDatabase\n";
+		System::out << "unreported exception caught in PlayerManager::updatePlayerCreditsFromDatabase\n";
 	}
 }
 
@@ -1435,30 +1448,32 @@ void PlayerManagerImplementation::updatePlayerAppearanceToDatabase(Player* playe
 	if (player == NULL)
 		return;
 
-	string appearance;
-	string playApp;
+	String appearance;
+	String playApp;
 	player->getCharacterAppearance(playApp);
 	BinaryData cust(playApp);
 	cust.encode(appearance);
 
-	string hairdata;
-	string hairApp;
+	String hairdata;
+	String hairApp;
 	player->getHairAppearance(hairApp);
 	BinaryData hair(hairApp);
 	hair.encode(hairdata);
 
-	stringstream query;
+	StringBuffer query;
 
-	query	<< "UPDATE characters set appearance='" << appearance.substr(0, appearance.size() - 1)
-	<< "', hair='" << player->getHairObject()
-	<< "', hairData='" << hairdata.substr(0, hairdata.size() - 1) << "' "
-	<< " WHERE character_id = " << player->getCharacterID();
+	query << "UPDATE characters set appearance='" << appearance.subString(0, appearance.length() - 1)
+		  << "', hair='" << player->getHairObject()
+		  << "', hairData='" << hairdata.subString(0, hairdata.length() - 1) << "' "
+		  << " WHERE character_id = " << player->getCharacterID();
 
 	try {
 		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException& e) {
-		cout << "PlayerManagerImplementation::updatePlayerAppearanceToDatabase: failed SQL update: " << query.str() << "\n";
-		cout << e.getMessage();
+		System::out << "PlayerManagerImplementation::updatePlayerAppearanceToDatabase: failed SQL update: "
+					<< query.toString() << "\n";
+
+		System::out << e.getMessage();
 	}
 }
 
@@ -1466,23 +1481,25 @@ void PlayerManagerImplementation::updatePlayerBaseHAMToDatabase(Player* player) 
 	if (player == NULL)
 		return;
 
-	stringstream query;
+	StringBuffer query;
+	query << "UPDATE characters set "
+		  << "`health` = " << player->getBaseHealth()
+		  << ",`strength` = " << player->getBaseStrength()
+		  << ",`constitution` = " << player->getBaseConstitution()
+		  << ",`action` = " << player->getBaseAction()
+		  << ",`quickness` = " << player->getBaseQuickness()
+		  << ",`stamina` = " << player->getBaseStamina()
+		  << ",`mind` = " << player->getBaseMind()
+		  << ",`focus` = " << player->getBaseFocus()
+		  << ",`willpower` = " << player->getBaseWillpower()
+		  << " WHERE character_id = " << player->getCharacterID();
 
-	query	<< "UPDATE characters set "
-	<< "`health` = " << player->getBaseHealth()
-	<< ",`strength` = " << player->getBaseStrength()
-	<< ",`constitution` = " << player->getBaseConstitution()
-	<< ",`action` = " << player->getBaseAction()
-	<< ",`quickness` = " << player->getBaseQuickness()
-	<< ",`stamina` = " << player->getBaseStamina()
-	<< ",`mind` = " << player->getBaseMind()
-	<< ",`focus` = " << player->getBaseFocus()
-	<< ",`willpower` = " << player->getBaseWillpower()
-	<< " WHERE character_id = " << player->getCharacterID();
 	try {
 		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException& e) {
-		cout << "PlayerManagerImplementation::updatePlayerBaseHAMToDatabase: failed SQL update: " << query.str() << "\n";
-		cout << e.getMessage();
+		System::out << "PlayerManagerImplementation::updatePlayerBaseHAMToDatabase: failed SQL update: "
+					<< query.toString() << "\n";
+
+		System::out << e.getMessage();
 	}
 }

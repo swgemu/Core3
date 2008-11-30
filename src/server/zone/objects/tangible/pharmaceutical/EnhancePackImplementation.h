@@ -56,8 +56,8 @@ protected:
 	uint8 attribute;
 
 public:
-	EnhancePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	EnhancePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	EnhancePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	EnhancePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	//~EnhancePackImplementation();
 
@@ -83,19 +83,19 @@ public:
 
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
-		string attr = "effectiveness";
+		String attr = "effectiveness";
 		itemAttributes->setFloatAttribute(attr, effectiveness);
 	}
 
 	inline void setDuration(float dur) {
 		duration = dur;
-		string attr = "duration";
+		String attr = "duration";
 		itemAttributes->setFloatAttribute(attr, duration);
 	}
 
 	inline void setAttribute(uint8 value) {
 		attribute = value;
-		string attr = "attribute";
+		String attr = "attribute";
 		itemAttributes->setIntAttribute(attr, attribute);
 	}
 

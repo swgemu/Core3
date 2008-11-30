@@ -49,11 +49,11 @@ import "../../player/Player";
 import "../TangibleObject";
 
 interface Instrument implements TangibleObject {
-	Instrument(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int insttype) {
+	Instrument(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, int insttype) {
 		super(oid, int tp);
 	}
 
-	Instrument(Player player, unsigned int tempCRC, const unicode n, const string tempn, int insttype) {
+	Instrument(Player player, unsigned int tempCRC, const UnicodeString n, const String tempn, int insttype) {
 		super(unsigned long oid, int tp);
 	}
 

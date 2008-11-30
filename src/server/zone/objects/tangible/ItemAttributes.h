@@ -52,8 +52,8 @@ which carries forward this exception.
 class ItemAttributes {
 	AttributeMap* attributes;
 
-	string attributeString;
-	string returnString;
+	String attributeString;
+	String returnString;
 
 public:
 	ItemAttributes() {
@@ -64,16 +64,15 @@ public:
 		delete attributes;
 	}
 
-	bool attributeExists(string& name) {
+	bool attributeExists(const String& name) {
 		return attributes->containsKey(name);
 	}
 
-	void setStringAttribute(string& name, string& value) {
+	void setStringAttribute(const String& name, String& value) {
 		attributes->put(name, value);
 	}
 
-	string& getStringAttribute(string& name) {
-
+	String& getStringAttribute(const String& name) {
 		if (attributes->containsKey(name))
 			return attributes->get(name);
 		else {
@@ -82,44 +81,41 @@ public:
 		}
 	}
 
-	void setIntAttribute(string& name, int value) {
-		stringstream val;
-		val << value;
-		attributes->put(name, val.str());
+	void setIntAttribute(String& name, int value) {
+		attributes->put(name, String::valueOf(value));
 	}
 
-	int getIntAttribute(string& name) {
+	int getIntAttribute(const String& name) {
 		if (attributes->containsKey(name)) {
-			string value = attributes->get(name);
-			return atoi(value.c_str());
-		} else {
+			String value = attributes->get(name);
+
+			return Integer::valueOf(value);
+		} else
 			return 0;
-		}
 	}
 
-	void setUnsignedLongAttribute(string& name, uint64 value) {
-		stringstream val;
-		val << value;
-		attributes->put(name, val.str());
+	void setUnsignedLongAttribute(const String& name, uint64 value) {
+		attributes->put(name, String::valueOf(value));
 	}
 
-	uint64  getUnsignedLongAttribute(string& name) {
+	uint64 getUnsignedLongAttribute(const String& name) {
 		if (attributes->containsKey(name)) {
-			string value = attributes->get(name);
-			return atoll(value.c_str());
+			String value = attributes->get(name);
+
+			return Long::unsignedvalueOf(value);
 		} else {
 			return 0L;
 		}
 	}
 
-	void setBooleanAttribute(string& name, bool value) {
+	void setBooleanAttribute(const String& name, bool value) {
 		if (value)
 			attributes->put(name, "true");
 		else
 			attributes->put(name, "false");
 	}
 
-	bool getBooleanAttribute(string& name) {
+	bool getBooleanAttribute(const String& name) {
 		if (attributes->containsKey(name)) {
 			if (attributes->get(name) == "true")
 				return true;
@@ -130,107 +126,103 @@ public:
 		}
 	}
 
-	void setFloatAttribute(string& name, float value) {
-		stringstream val;
-		val << value;
-		attributes->put(name, val.str());
+	void setFloatAttribute(const String& name, float value) {
+		attributes->put(name, String::valueOf(value));
 	}
 
-	float getFloatAttribute(string& name) {
+	float getFloatAttribute(const String& name) {
 		if (attributes->containsKey(name)) {
-			string value = attributes->get(name);
-			return atof(value.c_str());
+			String value = attributes->get(name);
+
+			return Float::valueOf(value);
 		} else {
 			return 0.0f;
 		}
 	}
 
-	unicode* getUnicodeAttribute(string& name) {
+	UnicodeString* getUnicodeAttribute(const String& name) {
 		if (attributes->containsKey(name)) {
-			unicode* uni = new unicode(attributes->get(name));
+			UnicodeString* uni = new UnicodeString(attributes->get(name));
 			return uni;
 		} else {
-			return new unicode("");
+			return new UnicodeString("");
 		}
 	}
 
 	// String format is "name1=value1:name2=value2:name3=value3:"
-	void setAttributes(string& attributestring) {
+	void setAttributes(const String& attributeString) {
 		int index1 = 0;
 		int index2;
 		int index3;
 
-		while ((index2 = attributestring.find(":", index1)) != string::npos) {
-			string attrPair = attributestring.substr(index1, index2-index1);
+		while ((index2 = attributeString.indexOf(":", index1)) != -1) {
+			String attrPair = attributeString.subString(index1, index2);
 
-			if ((index3 = attrPair.find("=", 0)) != string::npos) {
-				string key = attrPair.substr(0, index3);
+			if ((index3 = attrPair.indexOf("=", 0)) != -1) {
+				String key = attrPair.subString(0, index3);
 
-				string value = attrPair.substr(index3 + 1, attrPair.length() - index3);
+				String value = attrPair.subString(index3 + 1, attrPair.length());
 
 				attributes->put(key, value);
 			}
+
 			index1 = index2 + 1;
 		}
 	}
 
-	void getAttributeString(string& attrstring) {
-		attributeString.clear();
-		//attributeString = "";
-		stringstream attrs;
+	void getAttributeString(String& attrString) {
+		StringBuffer attrs;
 
 		attributes->resetIterator();
 
 		while (attributes->hasNext()) {
-			string key;
-			string value;
+			String key;
+			String value;
 
 			attributes->getNextKeyAndValue(key, value);
-			//attributeString += key.c_str() + "=" + value.c_str() + ":";
-			attrs << key.c_str() << "=" << value.c_str() << ":";
+			//attributeString += key.toCharArray() + "=" + value.toCharArray() + ":";
+
+			attrs << key << "=" << value << ":";
 		}
 
-		attributeString = attrs.str().c_str();
-
-		attrstring = attributeString;
-
+		attributeString = attrs.toString();
+		attrString = attributeString;
 	}
 
 	// Special cases
 	int getMaxCondition() {
 		int index;
-		string max;
+		String max;
 
-		string key = "condition";
-		string value = attributes->get(key);
+		String key = "condition";
+		String value = attributes->get(key);
 
-		if ((index = value.find("/", 0)) != string::npos) {
-			max = value.substr(index + 1, value.length() - index);
-		}
-		return atoi(max.c_str());
+		if ((index = value.indexOf("/", 0)) != -1)
+			max = value.subString(index + 1, value.length());
+
+		return Integer::valueOf(max);
 	}
 
 	int getCurrentCondition() {
-		string current;
+		String current;
 		int index;
 
-		string key = "condition";
-		string value = attributes->get(key);
+		String key = "condition";
+		String value = attributes->get(key);
 
-		if ((index = value.find("/", 0)) != string::npos) {
-			current = value.substr(0, index);
-		}
+		if ((index = value.indexOf("/", 0)) != -1)
+			current = value.subString(0, index);
 
-		return atoi(current.c_str());
+		return Integer::valueOf(current);
 	}
 
 	void setCondition(int current, int max) {
-		stringstream value;
-
+		StringBuffer value;
 		value << current << "/" << max;
-		string key = "condition";
 
-		attributes->put(key, value.str());
+		String key = "condition";
+
+		attributes->put(key, value.toString());
 	}
 
 	//void setMaxCondition(int maxcondition);

@@ -68,7 +68,7 @@ interface ZoneClientSession {
 	void resetPacketCheckupTime();
 	void balancePacketCheckupTime();
 
-	void info(const string msg, boolean foredLog = false);
+	void info(const String msg, boolean foredLog = false);
 
 	// setters and getters
 	void setPlayer(Player player);
@@ -77,7 +77,7 @@ interface ZoneClientSession {
 
 	boolean isAvailable();
 	
-	string getAddress();	
+	String getAddress();	
 
 	unsigned int getSessionKey();
 }

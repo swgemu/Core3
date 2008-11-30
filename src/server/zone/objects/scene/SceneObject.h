@@ -95,9 +95,9 @@ public:
 
 	void generateAttributes(Player* player);
 
-	void info(const string& message, bool forcedLog = false);
+	void info(const String& message, bool forcedLog = false);
 
-	void error(const string& message);
+	void error(const String& message);
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* processor);
 
@@ -157,7 +157,7 @@ public:
 
 	float getDirectionW();
 
-	string& getLoggingName();
+	String& getLoggingName();
 
 	unsigned long long getAssociatedArea();
 
@@ -232,7 +232,7 @@ protected:
 
 	bool _destroy();
 
-	string _return_getLoggingName;
+	String _return_getLoggingName;
 
 	friend class SceneObjectHelper;
 };
@@ -309,9 +309,9 @@ public:
 
 	void generateAttributes(Player* player);
 
-	void info(const string& message, bool forcedLog);
+	void info(const String& message, bool forcedLog);
 
-	void error(const string& message);
+	void error(const String& message);
 
 	void setObjectID(unsigned long long oid);
 
@@ -369,7 +369,7 @@ public:
 
 	float getDirectionW();
 
-	string& getLoggingName();
+	String& getLoggingName();
 
 	unsigned long long getAssociatedArea();
 
@@ -438,8 +438,8 @@ public:
 	bool isInANoBuildArea();
 
 protected:
-	string _param0_info__string_bool_;
-	string _param0_error__string_;
+	String _param0_info__String_bool_;
+	String _param0_error__String_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {

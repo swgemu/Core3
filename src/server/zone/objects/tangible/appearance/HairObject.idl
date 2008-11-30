@@ -47,8 +47,8 @@ import "../../creature/CreatureObject";
 import "../TangibleObject";
 
 interface HairObject implements TangibleObject {
-	HairObject(CreatureObject creature, unsigned int tempCRC, const unicode n, 
-			const string tempn, boolean eqp = true) {
+	HairObject(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, 
+			const String tempn, boolean eqp = true) {
 		super(unsigned long oid, int tp);
 	}
 }

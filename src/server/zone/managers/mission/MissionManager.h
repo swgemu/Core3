@@ -31,25 +31,25 @@ public:
 
 	void removeMissions();
 
-	MissionObject* poolMission(string& dbKey, int termMask, const string& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const string& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const string& descriptionStf, const string& titleStf, unsigned int typeCrc, TangibleObject* deliverItem = NULL, bool doLock = true);
+	MissionObject* poolMission(String& dbKey, int termMask, const String& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const String& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const String& descriptionStf, const String& titleStf, unsigned int typeCrc, TangibleObject* deliverItem = NULL, bool doLock = true);
 
 	void setupHardcodeMissions();
 
 	void sendTerminalData(Player* player, int termBitmask, bool doLock = true);
 
-	void sendMission(Player* player, string& tKey, bool doLock = true);
+	void sendMission(Player* player, String& tKey, bool doLock = true);
 
 	void doMissionAccept(Player* player, unsigned long long oid, bool doLock = true);
 
-	void doMissionComplete(Player* player, string& tKey, bool doLock = true);
+	void doMissionComplete(Player* player, String& tKey, bool doLock = true);
 
 	void doMissionAbort(Player* player, unsigned long long oid, bool doLock = true);
 
-	void doMissionAbort(Player* player, string& tKey, bool doLock = true);
+	void doMissionAbort(Player* player, String& tKey, bool doLock = true);
 
 	void removeMisoFromPool(MissionObject* miso, bool doLock = true);
 
-	unsigned int getMissionItemCrc(string& tKey, bool doLock = true);
+	unsigned int getMissionItemCrc(String& tKey, bool doLock = true);
 
 	void loadMissionScripts();
 
@@ -79,25 +79,25 @@ public:
 
 	void removeMissions();
 
-	MissionObject* poolMission(string& dbKey, int termMask, const string& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const string& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const string& descriptionStf, const string& titleStf, unsigned int typeCrc, TangibleObject* deliverItem, bool doLock);
+	MissionObject* poolMission(String& dbKey, int termMask, const String& typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, float destY, unsigned int destPlanetCrc, const String& creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, unsigned int depictedObjCrc, const String& descriptionStf, const String& titleStf, unsigned int typeCrc, TangibleObject* deliverItem, bool doLock);
 
 	void setupHardcodeMissions();
 
 	void sendTerminalData(Player* player, int termBitmask, bool doLock);
 
-	void sendMission(Player* player, string& tKey, bool doLock);
+	void sendMission(Player* player, String& tKey, bool doLock);
 
 	void doMissionAccept(Player* player, unsigned long long oid, bool doLock);
 
-	void doMissionComplete(Player* player, string& tKey, bool doLock);
+	void doMissionComplete(Player* player, String& tKey, bool doLock);
 
 	void doMissionAbort(Player* player, unsigned long long oid, bool doLock);
 
-	void doMissionAbort(Player* player, string& tKey, bool doLock);
+	void doMissionAbort(Player* player, String& tKey, bool doLock);
 
 	void removeMisoFromPool(MissionObject* miso, bool doLock);
 
-	unsigned int getMissionItemCrc(string& tKey, bool doLock);
+	unsigned int getMissionItemCrc(String& tKey, bool doLock);
 
 	void loadMissionScripts();
 
@@ -106,15 +106,15 @@ public:
 	void registerGlobals();
 
 protected:
-	string _param0_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_;
-	string _param2_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_;
-	string _param9_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_;
-	string _param15_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_;
-	string _param16_poolMission__string_int_string_int_int_int_float_float_int_string_int_float_float_int_int_string_string_int_TangibleObject_bool_;
-	string _param1_sendMission__Player_string_bool_;
-	string _param1_doMissionComplete__Player_string_bool_;
-	string _param1_doMissionAbort__Player_string_bool_;
-	string _param0_getMissionItemCrc__string_bool_;
+	String _param0_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_;
+	String _param2_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_;
+	String _param9_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_;
+	String _param15_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_;
+	String _param16_poolMission__String_int_String_int_int_int_float_float_int_String_int_float_float_int_int_String_String_int_TangibleObject_bool_;
+	String _param1_sendMission__Player_String_bool_;
+	String _param1_doMissionComplete__Player_String_bool_;
+	String _param1_doMissionAbort__Player_String_bool_;
+	String _param0_getMissionItemCrc__String_bool_;
 };
 
 class MissionManagerHelper : public DistributedObjectClassHelper, public Singleton<MissionManagerHelper> {

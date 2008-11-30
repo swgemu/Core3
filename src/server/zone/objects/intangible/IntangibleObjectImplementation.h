@@ -52,8 +52,8 @@ which carries forward this exception.
 class Player;
 
 class IntangibleObjectImplementation : public IntangibleObjectServant {
-	string name;
-	string detailName;
+	String name;
+	String detailName;
 
 	uint32 status;
 
@@ -71,11 +71,11 @@ public:
 
 	void updateStatus(uint32 stat);
 
-	inline string& getName() {
+	inline String& getName() {
 		return name;
 	}
 
-	inline string& getDetailName() {
+	inline String& getDetailName() {
 		return detailName;
 	}
 
@@ -91,11 +91,11 @@ public:
 		worldObject = obj;
 	}
 
-	inline void setName(const string& nme) {
+	inline void setName(const String& nme) {
 		name = nme;
 	}
 
-	inline void setDetailName(const string& detail) {
+	inline void setDetailName(const String& detail) {
 		detailName = detail;
 	}
 

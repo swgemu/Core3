@@ -59,7 +59,7 @@ which carries forward this exception.
 #include "../../../../packets/auction/IsVendorOwnerResponseMessage.h"
 
 class RegionBazaarImplementation : public AuctionController, public RegionBazaarServant  {
-	string bazaarRegion;
+	String bazaarRegion;
 	
 	BazaarPlanetManager* planetManager;
 	
@@ -71,7 +71,7 @@ public:
 	void newBazaarRequest(uint64 bazaarID, Player* player, int planet) {
 		BazaarTerminalDetails* location;
 		
-		string planetString = Planet::getPlanetName(planet);
+		String planetString = Planet::getPlanetName(planet);
 
 		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(false, bazaarID, planetString, bazaarRegion, 0, 0);
 		player->sendMessage(msg);
@@ -80,7 +80,7 @@ public:
 		player->sendMessage(msg2);
 	}
 
-	void setRegion(string region) {
+	void setRegion(String region) {
 		bazaarRegion = region;
 	}
 	

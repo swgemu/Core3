@@ -60,9 +60,9 @@ public:
 
 		setSize();
 
-		//stringstream msg;
+		//StringBuffer msg;
 		//msg << hex << "BuildingObjectMessage6 [Object = " << buio->getObjectID() << "]\n";
-		//cout << msg.str();
+		//System::out << msg.toString();
 	}
 };
 #endif /*BUILDINGOBJECTMESSAGE6_H_*/

@@ -112,20 +112,20 @@ int CellObject::getCellNumber() {
 		return ((CellObjectImplementation*) _impl)->getCellNumber();
 }
 
-void CellObject::setAttributes(string& attributestring) {
+void CellObject::setAttributes(String& attributeString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
-		method.addAsciiParameter(attributestring);
+		method.addAsciiParameter(attributeString);
 
 		method.executeWithVoidReturn();
 	} else
-		((CellObjectImplementation*) _impl)->setAttributes(attributestring);
+		((CellObjectImplementation*) _impl)->setAttributes(attributeString);
 }
 
-string& CellObject::getAttributes() {
+String& CellObject::getAttributes() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -150,7 +150,7 @@ void CellObject::parseItemAttributes() {
 		((CellObjectImplementation*) _impl)->parseItemAttributes();
 }
 
-string& CellObject::getTemplateName() {
+String& CellObject::getTemplateName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -193,7 +193,7 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(getCellNumber());
 		break;
 	case 12:
-		setAttributes(inv->getAsciiParameter(_param0_setAttributes__string_));
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_));
 		break;
 	case 13:
 		resp->insertAscii(getAttributes());
@@ -235,11 +235,11 @@ int CellObjectAdapter::getCellNumber() {
 	return ((CellObjectImplementation*) impl)->getCellNumber();
 }
 
-void CellObjectAdapter::setAttributes(string& attributestring) {
-	return ((CellObjectImplementation*) impl)->setAttributes(attributestring);
+void CellObjectAdapter::setAttributes(String& attributeString) {
+	return ((CellObjectImplementation*) impl)->setAttributes(attributeString);
 }
 
-string& CellObjectAdapter::getAttributes() {
+String& CellObjectAdapter::getAttributes() {
 	return ((CellObjectImplementation*) impl)->getAttributes();
 }
 
@@ -247,7 +247,7 @@ void CellObjectAdapter::parseItemAttributes() {
 	return ((CellObjectImplementation*) impl)->parseItemAttributes();
 }
 
-string& CellObjectAdapter::getTemplateName() {
+String& CellObjectAdapter::getTemplateName() {
 	return ((CellObjectImplementation*) impl)->getTemplateName();
 }
 

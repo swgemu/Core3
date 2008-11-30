@@ -29,7 +29,7 @@ public:
 
 	void saveStructures(bool refresh);
 
-	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
+	BuildingObject* findBuildingType(const String& word, float targetX, float targetY);
 
 	CellObject* getCell(unsigned long long id);
 
@@ -43,9 +43,9 @@ public:
 
 	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
-	void error(const string& message);
+	void error(const String& message);
 
-	void info(const string& message);
+	void info(const String& message);
 
 protected:
 	StructureManager(DummyConstructorParameter* param);
@@ -69,7 +69,7 @@ public:
 
 	void saveStructures(bool refresh);
 
-	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
+	BuildingObject* findBuildingType(const String& word, float targetX, float targetY);
 
 	CellObject* getCell(unsigned long long id);
 
@@ -83,14 +83,14 @@ public:
 
 	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
-	void error(const string& message);
+	void error(const String& message);
 
-	void info(const string& message);
+	void info(const String& message);
 
 protected:
-	string _param0_findBuildingType__string_float_float_;
-	string _param0_error__string_;
-	string _param0_info__string_;
+	String _param0_findBuildingType__String_float_float_;
+	String _param0_error__String_;
+	String _param0_info__String_;
 };
 
 class StructureManagerHelper : public DistributedObjectClassHelper, public Singleton<StructureManagerHelper> {

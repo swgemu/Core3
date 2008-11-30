@@ -85,8 +85,8 @@ public:
 	//static const uint64 SHIPINTERIOR = 0x100000000;
 	//static const uint64 PILOTINGPOBSHIP = 0x200000000;
 
-	static uint64 getState(string state) {
-		String::toLower(state);
+	static uint64 getState(String state) {
+		state = state.toLowerCase();
 
 		if (state == "cover")
 			return COVER;
@@ -156,9 +156,9 @@ public:
 			return INVALID;
 	}
 
-	static string getSpecialName(const uint64 state, bool initialCap = false) {
-		//This method is used for string building to match up with the tre's
-		string name = "";
+	static String getSpecialName(const uint64 state, bool initialCap = false) {
+		//This method is used for String building to match up with the tre's
+		String name = "";
 
 		switch (state) {
 		case POISONED:
@@ -178,8 +178,8 @@ public:
 		return name;
 	}
 
-	static string getName(const uint64 state, bool initialCap = false) {
-		string name = "";
+	static String getName(const uint64 state, bool initialCap = false) {
+		String name = "";
 
 		switch (state) {
 		case COVER:

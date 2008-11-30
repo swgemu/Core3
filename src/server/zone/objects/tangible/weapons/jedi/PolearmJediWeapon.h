@@ -15,9 +15,9 @@ class JediWeapon;
 
 class PolearmJediWeapon : public JediWeapon {
 public:
-	PolearmJediWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	PolearmJediWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
-	PolearmJediWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false);
+	PolearmJediWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false);
 
 protected:
 	PolearmJediWeapon(DummyConstructorParameter* param);
@@ -59,8 +59,8 @@ public:
 	PolearmJediWeapon* _this;
 
 public:
-	PolearmJediWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp);
-	PolearmJediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp);
+	PolearmJediWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp);
+	PolearmJediWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp);
 	virtual ~PolearmJediWeaponServant();
 
 	void _setStub(DistributedObjectStub* stub);

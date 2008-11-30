@@ -63,14 +63,14 @@ public:
 		startList(skillBoxesToUpdate, creo->skillBoxesUpdateCounter += skillBoxesToUpdate);
 	}
 	
-	void addSkillBox(const string& name) {
+	void addSkillBox(const String& name) {
 		insertByte(0x01);
-		insertAscii(name.c_str());
+		insertAscii(name.toCharArray());
 	}
 
-	void removeSkillBox(const string& name) {
+	void removeSkillBox(const String& name) {
 		insertByte(0x00);
-		insertAscii(name.c_str());
+		insertAscii(name.toCharArray());
 	}
 	
 	void updateBankCredits() {

@@ -60,8 +60,8 @@ class ProfessionManager : public Mutex {
 
 	SkillManager* skillManager;
 
-	VectorMap<string, SkillBox*> skillBoxMap;
-	VectorMap<string, Certification*> certificationMap;
+	VectorMap<String, SkillBox*> skillBoxMap;
+	VectorMap<String, Certification*> certificationMap;
 
 	ProfessionMap professionMap;
 
@@ -70,12 +70,12 @@ private:
 	void loadProfessionsFromDatabase();
 	Profession* loadProfession(ResultSet* result);
 	SkillBox* loadSkillBox(ResultSet* result, Profession* profession);
-	void loadSkillRequirements(SkillBox* skillBox, string& skillRequirements);
-	void loadSkillPreclusions(SkillBox* skillBox, string& skillPreclusions);
-	void loadSkillSpeciesRequired(SkillBox* skillBox, string& skillSpeciesRequired);
-	void loadSkillCommands(SkillBox* skillBox, string& skillCommands);
-	void loadSkillMods(SkillBox* skillBox, string& skillMods);
-	void loadDraftSchematics(SkillBox* skillBox, string& grantedDraftSchematics);
+	void loadSkillRequirements(SkillBox* skillBox, String& skillRequirements);
+	void loadSkillPreclusions(SkillBox* skillBox, String& skillPreclusions);
+	void loadSkillSpeciesRequired(SkillBox* skillBox, String& skillSpeciesRequired);
+	void loadSkillCommands(SkillBox* skillBox, String& skillCommands);
+	void loadSkillMods(SkillBox* skillBox, String& skillMods);
+	void loadDraftSchematics(SkillBox* skillBox, String& grantedDraftSchematics);
 
 public:
 
@@ -89,9 +89,9 @@ public:
 	void loadDefaultSkills(PlayerImplementation* player);
 
 	bool trainSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
-	bool trainSkillBox(const string& skillBox, PlayerImplementation* player, bool updateClient = true);
+	bool trainSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);
 	void surrenderSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = true);
-	void surrenderSkillBox(const string& skillBox, PlayerImplementation* player, bool updateClient = true);
+	void surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient = true);
 
 	inline SkillManager* getSkillManager() {
 		return skillManager;
@@ -101,7 +101,7 @@ public:
 		return server;
 	}
 
-	inline SkillBox* getSkillBox(string prof) {
+	inline SkillBox* getSkillBox(String prof) {
 		return skillBoxMap.get(prof);
 	}
 

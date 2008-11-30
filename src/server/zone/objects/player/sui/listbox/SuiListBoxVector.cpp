@@ -30,7 +30,7 @@ unsigned int SuiListBoxVector::size() {
 		return ((SuiListBoxVectorImplementation*) _impl)->size();
 }
 
-void SuiListBoxVector::add(string& item) {
+void SuiListBoxVector::add(String& item) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -43,7 +43,7 @@ void SuiListBoxVector::add(string& item) {
 		((SuiListBoxVectorImplementation*) _impl)->add(item);
 }
 
-string& SuiListBoxVector::get(unsigned int index) {
+String& SuiListBoxVector::get(unsigned int index) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -96,7 +96,7 @@ Packet* SuiListBoxVectorAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		resp->insertInt(size());
 		break;
 	case 7:
-		add(inv->getAsciiParameter(_param0_add__string_));
+		add(inv->getAsciiParameter(_param0_add__String_));
 		break;
 	case 8:
 		resp->insertAscii(get(inv->getUnsignedIntParameter()));
@@ -118,11 +118,11 @@ unsigned int SuiListBoxVectorAdapter::size() {
 	return ((SuiListBoxVectorImplementation*) impl)->size();
 }
 
-void SuiListBoxVectorAdapter::add(string& item) {
+void SuiListBoxVectorAdapter::add(String& item) {
 	return ((SuiListBoxVectorImplementation*) impl)->add(item);
 }
 
-string& SuiListBoxVectorAdapter::get(unsigned int index) {
+String& SuiListBoxVectorAdapter::get(unsigned int index) {
 	return ((SuiListBoxVectorImplementation*) impl)->get(index);
 }
 

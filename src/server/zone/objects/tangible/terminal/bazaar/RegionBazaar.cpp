@@ -55,7 +55,7 @@ bool RegionBazaar::removeItem(unsigned long long objectid) {
 		return ((RegionBazaarImplementation*) _impl)->removeItem(objectid);
 }
 
-void RegionBazaar::setRegion(string& region) {
+void RegionBazaar::setRegion(String& region) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,7 +133,7 @@ Packet* RegionBazaarAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertBoolean(removeItem(inv->getUnsignedLongParameter()));
 		break;
 	case 8:
-		setRegion(inv->getAsciiParameter(_param0_setRegion__string_));
+		setRegion(inv->getAsciiParameter(_param0_setRegion__String_));
 		break;
 	case 9:
 		setManager((BazaarPlanetManager*) inv->getObjectParameter());
@@ -159,7 +159,7 @@ bool RegionBazaarAdapter::removeItem(unsigned long long objectid) {
 	return ((RegionBazaarImplementation*) impl)->removeItem(objectid);
 }
 
-void RegionBazaarAdapter::setRegion(string& region) {
+void RegionBazaarAdapter::setRegion(String& region) {
 	return ((RegionBazaarImplementation*) impl)->setRegion(region);
 }
 

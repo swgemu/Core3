@@ -53,7 +53,7 @@ which carries forward this exception.
 
 class GuildMapImplementation : public GuildMapServant {
 	VectorMap<uint32, Guild*> guildMap;
-	VectorMap<string, Guild*> guildTagMap;
+	VectorMap<String, Guild*> guildTagMap;
 
 public:
 	GuildMapImplementation() : GuildMapServant() {
@@ -76,7 +76,7 @@ public:
 		return guildMap.get(gid);
 	}
 
-	Guild* get(string& tag) {
+	Guild* get(String& tag) {
 		return guildTagMap.get(tag);
 	}
 

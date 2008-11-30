@@ -49,8 +49,8 @@ which carries forward this exception.
 
 class SpawnInfo {
 
-	string name;
-	string filename;
+	String name;
+	String filename;
 	uint32 crc;
 
 public:
@@ -60,19 +60,19 @@ public:
 		crc = 0;
 	}
 
-	void setName(string n){
+	void setName(String n){
 		name = n;
 	}
-	void setFileName(string n){
+	void setFileName(String n){
 		filename = n;
 	}
 	void setCRC(uint32 n){
 		crc = n;
 	}
-	string getName(){
+	String getName(){
 		return name;
 	}
-	string getFileName(){
+	String getFileName(){
 		return filename;
 	}
 	uint32 getCRC(){
@@ -80,33 +80,33 @@ public:
 	}
 	void toString() {
 
-		cout << "Name: " << name << "  filename = " << filename << "  crc = " << crc << endl;
+		System::out << "Name: " << name << "  filename = " << filename << "  crc = " << crc << endl;
 
 	}
 };
 
 class SpawnInfoMap {
 
-	VectorMap<string, SpawnInfo*> spawnInfoMap;
+	VectorMap<String, SpawnInfo*> spawnInfoMap;
 
 public:
 	SpawnInfoMap() {
 		spawnInfoMap.setNullValue(NULL);
 	}
 
-	void put(string name, SpawnInfo* spawnInfo) {
-		if(!spawnInfoMap.contains(name))
+	void put(String name, SpawnInfo* spawnInfo) {
+		if (!spawnInfoMap.contains(name))
 			spawnInfoMap.put(name, spawnInfo);
 	}
 
-	SpawnInfo* get(string name) {
+	SpawnInfo* get(String name) {
 		return spawnInfoMap.get(name);
 	}
 
-	bool addCRC(string objectname, uint32 crc){
+	bool addCRC(String objectname, uint32 crc){
 		SpawnInfo* spawnInfo = spawnInfoMap.get(objectname);
 
-		if(spawnInfo == NULL)
+		if (spawnInfo == NULL)
 			return false;
 
 		if (spawnInfo->getCRC() == 0) {
@@ -118,10 +118,10 @@ public:
 
 	void printBadSpawns(){
 		SpawnInfo* spawnInfo;
-		for(int i = 0; i < spawnInfoMap.size(); ++i) {
+		for (int i = 0; i < spawnInfoMap.size(); ++i) {
 
 			spawnInfo = spawnInfoMap.get(i);
-			if(spawnInfo->getCRC() == 0){
+			if (spawnInfo->getCRC() == 0){
 
 				//spawnInfo->toString();
 

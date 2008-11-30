@@ -8,7 +8,7 @@ ZonePacketHandler::ZonePacketHandler() : Logger() {
 	zone = NULL;
 }
 
-ZonePacketHandler::ZonePacketHandler(const string& s, Zone * z) : Logger(s) {
+ZonePacketHandler::ZonePacketHandler(const String& s, Zone * z) : Logger(s) {
 	zone = z;
 }
 
@@ -67,12 +67,12 @@ void ZonePacketHandler::handleSceneObjectCreateMessage(Message* pack) {
 	SceneObjectCreateMessage::parseMessage(pack, player);
 
 	zone->insertPlayer(player);
-	cout << "SceneObject [" << hex << playerID << "] created\n";*/
+	System::out << "SceneObject [" << hex << playerID << "] created\n";*/
 }
 
 void ZonePacketHandler::handleCharacterCreateSucessMessage(Message* pack) {
 	/*uint64 charid = pack->parseLong();
-	cout << "Character succesfully created - ID = " << hex << charid << "\n";
+	System::out << "Character succesfully created - ID = " << hex << charid << "\n";
 
 	zone->setCharacterID(charid);*/
 }

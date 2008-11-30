@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "FactionPointList.h"
 
-class FactionPointsMap : public HashTable<string, int> {
+class FactionPointsMap : public HashTable<String, int> {
 	FactionPointList * fpList;
 
 public:
@@ -60,19 +60,19 @@ public:
 		fpList->finalize();
 	}
 
-	int hash(const string& key){
-		return String::hashCode(key);
+	int hash(const String& key){
+		return key.hashCode();
 	}
 
 
-	int16 getFactionPoints(string faction) {
-		if(!containsKey(faction))
+	int16 getFactionPoints(String faction) {
+		if (!containsKey(faction))
 			return 0;
 		else
 			return get(faction);
 	}
 
-	void addFactionPoints(string faction, uint32 points) {
+	void addFactionPoints(String faction, uint32 points) {
 		int currentpoints = 0;
 
 		if (containsKey(faction))
@@ -83,7 +83,7 @@ public:
 		put(faction, currentpoints + (int) points);
 	}
 
-	void subtractFactionPoints(string faction, uint32 points) {
+	void subtractFactionPoints(String faction, uint32 points) {
 		int currentpoints = 0;
 
 		if (containsKey(faction))
@@ -94,7 +94,7 @@ public:
 		put(faction, MAX(currentpoints - (int) points, -5000));
 	}
 
-	inline FactionPointList * getFactionList() {
+	inline FactionPointList* getFactionList() {
 		return fpList;
 	}
 };

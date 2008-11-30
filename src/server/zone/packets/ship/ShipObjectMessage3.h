@@ -107,10 +107,10 @@ public:
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextCurArmorUpdateCnt());
 		
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertFloat(tsc->getCurArmor());
@@ -123,10 +123,10 @@ public:
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextMaxArmorUpdateCnt());
 		
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertFloat(tsc->getMaxArmor());
@@ -139,10 +139,10 @@ public:
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextCurHitpointsUpdateCnt());
 		
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertFloat(tsc->getCurHitpoints());
@@ -155,10 +155,10 @@ public:
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextMaxHitpointsUpdateCnt());
 		
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertFloat(tsc->getMaxHitpoints());
@@ -172,10 +172,10 @@ public:
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextUnkShip3UpdateCnt());
 		
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertInt(0x02);

@@ -130,7 +130,7 @@ void InstallationObject::handleStructureAddEnergy(Player* player) {
 		((InstallationObjectImplementation*) _impl)->handleStructureAddEnergy(player);
 }
 
-string& InstallationObject::getOwner() {
+String& InstallationObject::getOwner() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -143,7 +143,7 @@ string& InstallationObject::getOwner() {
 		return ((InstallationObjectImplementation*) _impl)->getOwner();
 }
 
-void InstallationObject::setOwner(const string& owner) {
+void InstallationObject::setOwner(const String& owner) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -591,7 +591,7 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertAscii(getOwner());
 		break;
 	case 14:
-		setOwner(inv->getAsciiParameter(_param0_setOwner__string_));
+		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
 		break;
 	case 15:
 		resp->insertLong(getOwnerID());
@@ -724,11 +724,11 @@ void InstallationObjectAdapter::handleStructureAddEnergy(Player* player) {
 	return ((InstallationObjectImplementation*) impl)->handleStructureAddEnergy(player);
 }
 
-string& InstallationObjectAdapter::getOwner() {
+String& InstallationObjectAdapter::getOwner() {
 	return ((InstallationObjectImplementation*) impl)->getOwner();
 }
 
-void InstallationObjectAdapter::setOwner(const string& owner) {
+void InstallationObjectAdapter::setOwner(const String& owner) {
 	return ((InstallationObjectImplementation*) impl)->setOwner(owner);
 }
 

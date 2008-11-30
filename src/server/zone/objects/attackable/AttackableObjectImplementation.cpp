@@ -273,7 +273,7 @@ void AttackableObjectImplementation::broadcastMessage(BaseMessage* msg, int rang
 				Player* player = (Player*) object;
 
 				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
-					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
+					//System::out << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
 					player->sendMessage(msg->clone());
 				}
 			}

@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class ChatInstantMessageToCharacter : public BaseMessage {
 public:
-	static uint32 parse(Message* pack, string& game, string& galaxy, string& name, unicode& message) {
+	static uint32 parse(Message* pack, String& game, String& galaxy, String& name, UnicodeString& message) {
 		pack->parseAscii(game);
 		pack->parseAscii(galaxy);
 

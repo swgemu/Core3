@@ -58,7 +58,7 @@ protected:
 	int damageReduction;
 	
 public:
-	PassiveSkill(const string& name, ZoneProcessServerImplementation* serv) : Skill(name, PASSIVE, OTHER, serv) {
+	PassiveSkill(const String& name, ZoneProcessServerImplementation* serv) : Skill(name, PASSIVE, OTHER, serv) {
 		damageReduction = 0;
 	}
 	

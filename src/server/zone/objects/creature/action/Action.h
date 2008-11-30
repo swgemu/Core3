@@ -27,7 +27,7 @@ public:
 
 	void execAction(Player* player);
 
-	void addConvoScreen(string& screenID, string& leftBoxText, int numOptions, string& Options, string& optLinks);
+	void addConvoScreen(String& screenID, String& leftBoxText, int numOptions, String& Options, String& optLinks);
 
 protected:
 	Action(DummyConstructorParameter* param);
@@ -51,13 +51,13 @@ public:
 
 	void execAction(Player* player);
 
-	void addConvoScreen(string& screenID, string& leftBoxText, int numOptions, string& Options, string& optLinks);
+	void addConvoScreen(String& screenID, String& leftBoxText, int numOptions, String& Options, String& optLinks);
 
 protected:
-	string _param0_addConvoScreen__string_string_int_string_string_;
-	string _param1_addConvoScreen__string_string_int_string_string_;
-	string _param3_addConvoScreen__string_string_int_string_string_;
-	string _param4_addConvoScreen__string_string_int_string_string_;
+	String _param0_addConvoScreen__String_String_int_String_String_;
+	String _param1_addConvoScreen__String_String_int_String_String_;
+	String _param3_addConvoScreen__String_String_int_String_String_;
+	String _param4_addConvoScreen__String_String_int_String_String_;
 };
 
 class ActionHelper : public DistributedObjectClassHelper, public Singleton<ActionHelper> {

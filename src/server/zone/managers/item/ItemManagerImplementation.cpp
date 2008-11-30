@@ -98,7 +98,7 @@ void ItemManagerImplementation::loadStaticWorldObjects() {
 
 void ItemManagerImplementation::loadPlayerItems(Player* player) {
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `deleted` = 0";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -111,7 +111,7 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 			if (!equipped && (++i > InventoryImplementation::MAXUNEQUIPPEDCOUNT)) {
 				uint64 objectID = res->getUnsignedLong(0);
 
-				stringstream query;
+				StringBuffer query;
 				query << "DELETE FROM character_items WHERE item_id = '" << objectID <<"';";
 
 				ServerDatabase::instance()->executeStatement(query);
@@ -125,9 +125,9 @@ void ItemManagerImplementation::loadPlayerItems(Player* player) {
 
 		delete res;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	} catch (...) {
-		cout << "unreported exception caught in ItemManagerImplementation::loadPlayerItems(Player* player)\n";
+		System::out << "unreported exception caught in ItemManagerImplementation::loadPlayerItems(Player* player)\n";
 	}
 }
 
@@ -142,7 +142,7 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 		return (TangibleObject*) item;
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "select * from `character_items` where `item_id` = " << objectid;
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -154,16 +154,16 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 		delete res;
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	} catch (...) {
-		cout << "unreported exception caught in TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 objectid)\n";
+		System::out << "unreported exception caught in TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 objectid)\n";
 	}
 
 	return tano;
 }
 
 TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int objecttype, uint64 objectid,
-		uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped, bool makeStats, string lootAttributes, int level) {
+		uint32 objectcrc, const UnicodeString& objectname, const String& objecttemp, bool equipped, bool makeStats, String lootAttributes, int level) {
 	TangibleObject* item = NULL;
 
 	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {
@@ -389,7 +389,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 	return item;
 }
 
-TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped) {
+TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint32 objectcrc, const UnicodeString& objectname, const String& objecttemp, bool equipped) {
 	TangibleObject* item = NULL;
 
 	switch (objectcrc) {
@@ -517,16 +517,16 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	int objecttype = result->getInt(4);
 	uint32 objectcrc = result->getUnsignedInt(3);
 
-	string objectname = result->getString(2);
+	String objectname = result->getString(2);
 	char* objecttemp = result->getString(5); // template_name
 
-	string appearance = result->getString(10);
+	String appearance = result->getString(10);
 
 	uint16 itemMask = result->getUnsignedInt(11);
 
 	BinaryData cust(appearance);
 
-	string custStr;
+	String custStr;
 	cust.decode(custStr);
 
 	bool equipped = result->getBoolean(7);
@@ -534,13 +534,13 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	if (result->getBoolean(8) != 0) // deleted
 		return NULL;
 
-	string attributes = result->getString(9);
+	String attributes = result->getString(9);
 
 	TangibleObject* item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
-			unicode(objectname), objecttemp, equipped, false, "", 0);
+			UnicodeString(objectname), objecttemp, equipped, false, "", 0);
 
 	if (item == NULL) {
-		//cout << "NULL ITEM objectType:[" << objecttype << "] objectname[" << objectname << "]" << endl;
+		//System::out << "NULL ITEM objectType:[" << objecttype << "] objectname[" << objectname << "]" << endl;
 		return NULL;
 	}
 
@@ -558,7 +558,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	if (player != NULL) {
 		((CreatureObject*)player)->addInventoryItem(item);
 
-		if(item->isEquipped())
+		if (item->isEquipped())
 			player->equipPlayerItem(item);
 	}
 
@@ -566,18 +566,18 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 }
 
 TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
-		int objecttype, uint64 objectid, uint32 objectcrc, string objectn,
-		string objecttemp, bool equipped){
+		int objecttype, uint64 objectid, uint32 objectcrc, String objectn,
+		String objecttemp, bool equipped){
 
-	unicode objectname(objectn);
+	UnicodeString objectname(objectn);
 
 	TangibleObject* item = NULL;
 
 	item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
-			objectname.c_str(), objecttemp, equipped, false, "", 0);
+			objectname.toCharArray(), objecttemp, equipped, false, "", 0);
 
 	/*if (item == NULL) {
-		cout << "NULL ITEM" << endl;
+		System::out << "NULL ITEM" << endl;
 		return NULL;
 
 	}*/
@@ -589,14 +589,14 @@ TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
 //TODO: remove this function when a global clone() method is implemented for all objects
 TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 objectid, TangibleObject* templ) {
 
-	if(templ == NULL)
+	if (templ == NULL)
 	{
 		return NULL;
 	}
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
 	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(),
-			objectid, templ->getObjectCRC(), unicode(templ->getName().c_str()),
-			(char *) templ->getTemplateName().c_str(), templ->isEquipped(), false, "", 0);
+			objectid, templ->getObjectCRC(), UnicodeString(templ->getName().toCharArray()),
+			(char *) templ->getTemplateName().toCharArray(), templ->isEquipped(), false, "", 0);
 
 	newTempl->setAttributes(templ->getAttributes());
 	newTempl->parseItemAttributes();
@@ -854,7 +854,7 @@ void ItemManagerImplementation::registerGlobals() {
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
-	string filename = getStringParameter(L);
+	String filename = getStringParameter(L);
 
 	runFile("scripts/items/" + filename, L);
 
@@ -864,13 +864,13 @@ int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
 TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemconfig) {
 
 	int crc = itemconfig.getIntField("objectCRC");
-	string name = itemconfig.getStringField("objectName");
-	string templ = itemconfig.getStringField("templateName");
+	String name = itemconfig.getStringField("objectName");
+	String templ = itemconfig.getStringField("templateName");
 	bool equipped = bool(itemconfig.getByteField("equipped"));
 	int type = itemconfig.getIntField("objectType");
 	uint16 itemMask = itemconfig.getIntField("itemMask");
 
-	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, unicode(name), templ, equipped, false, "", 0);
+	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, UnicodeString(name), templ, equipped, false, "", 0);
 
 	item->setObjectSubType(type);
 	item->setPlayerUseMask(itemMask);
@@ -910,7 +910,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	} else if (type & TangibleObjectImplementation::WEAPON) {
 		int damageType = itemconfig.getIntField("damageType");
 		int ap = itemconfig.getIntField("armorPiercing");
-		string cert = itemconfig.getStringField("certification");
+		String cert = itemconfig.getStringField("certification");
 		float as = itemconfig.getFloatField("attackSpeed");
 		float mindmg = itemconfig.getFloatField("minDamage");
 		float maxdmg = itemconfig.getFloatField("maxDamage");
@@ -922,12 +922,12 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		weapon->setMinDamage(mindmg);
 		weapon->setMaxDamage(maxdmg);
 
-		if (!cert.empty())
+		if (!cert.isEmpty())
 			weapon->setCert(cert);
 
 	} else if (type & TangibleObjectImplementation::DEED) {
 
-		//cout << "type & TangibleObjectImplementation::DEED" << endl;
+		//System::out << "type & TangibleObjectImplementation::DEED" << endl;
 
 		int surplusMaintenance = 0;
 		float maintenanceRate = 0;
@@ -941,7 +941,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 				switch(DeedObjectImplementation::getSubType(crc)){
 					case TangibleObjectImplementation::HARVESTER:
 					{
-						//cout << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
+						//System::out << "type & TangibleObjectImplementation::DEED & harvester!!!!" << endl;
 
 						surplusMaintenance = itemconfig.getIntField("surplusMaintenance");
 						maintenanceRate = itemconfig.getFloatField("maintenanceRate");
@@ -949,7 +949,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 						extractionRate = itemconfig.getFloatField("extractionRate");
 						hopperSize = itemconfig.getFloatField("hopperSize");
 
-						//cout << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
+						//System::out << "surplusMaintenance: " << surplusMaintenance << ", maintainanceRate: " << maintenanceRate << ", surplusPower: " << surplusPower << ", extractionRate: " << extractionRate << ", hopperSize: " << hopperSize << endl;
 
 
 						HarvesterDeed* harv = (HarvesterDeed*) item;
@@ -1091,9 +1091,9 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 int ItemManagerImplementation::addPlayerItem(lua_State * l) {
 	LuaObject itemwrapper(l);
 
-	string species = itemwrapper.getStringField("species");
-	string sex = itemwrapper.getStringField("sex");
-	string profession = itemwrapper.getStringField("profession");
+	String species = itemwrapper.getStringField("species");
+	String sex = itemwrapper.getStringField("sex");
+	String profession = itemwrapper.getStringField("profession");
 
 	LuaObject itemconfig(itemwrapper.getObjectField("item"));
 
@@ -1107,7 +1107,7 @@ int ItemManagerImplementation::addPlayerItem(lua_State * l) {
 int ItemManagerImplementation::addBFItem(lua_State * l) {
 	LuaObject itemwrapper(l);
 
-	string name = itemwrapper.getStringField("name");
+	String name = itemwrapper.getStringField("name");
 
 	LuaObject itemconfig(itemwrapper.getObjectField("item"));
 
@@ -1122,11 +1122,11 @@ int ItemManagerImplementation::addBFProf(lua_State * l) {
 
 	LuaObject itemwrapper(l);
 
-	string name = itemwrapper.getStringField("name");
+	String name = itemwrapper.getStringField("name");
 
-	string prof = itemwrapper.getStringField("prof");
+	String prof = itemwrapper.getStringField("prof");
 
-	string group = itemwrapper.getStringField("group");
+	String group = itemwrapper.getStringField("group");
 
 	bfProfSet->addProfession(name, group, prof);
 
@@ -1136,16 +1136,16 @@ int ItemManagerImplementation::addBFProf(lua_State * l) {
 int ItemManagerImplementation::addBFGroup(lua_State * l) {
 	LuaObject itemwrapper(l);
 
-	string name = itemwrapper.getStringField("name");
+	String name = itemwrapper.getStringField("name");
 
-	string parent = itemwrapper.getStringField("parent");
+	String parent = itemwrapper.getStringField("parent");
 
 	bfProfSet->addGroup(name, parent);
 
 	return 0;
 }
 
-void ItemManagerImplementation::giveBFItemSet(Player * player, string& set) {
+void ItemManagerImplementation::giveBFItemSet(Player * player, String& set) {
 	Inventory* inventory = player->getInventory();
 	Vector<TangibleObject*>* itemSet = bfItemSet->get(set);
 
@@ -1159,8 +1159,8 @@ void ItemManagerImplementation::giveBFItemSet(Player * player, string& set) {
 	for (int i = 0; i < itemSet->size(); i++) {
 		TangibleObject* item = clonePlayerObjectTemplate(player->getNewItemID(), itemSet->get(i));
 		//item->setObjectID(player->getNewItemID());
-		if(item == NULL) {
-			cout << "ItemManagerImplementation::giveBFItemSet(...), item == NULL!, set = " << set << endl;
+		if (item == NULL) {
+			System::out << "ItemManagerImplementation::giveBFItemSet(...), item == NULL!, set = " << set << endl;
 		} else {
 			player->addInventoryItem(item);
 
@@ -1171,19 +1171,19 @@ void ItemManagerImplementation::giveBFItemSet(Player * player, string& set) {
 
 //TODO: Modify this function when a global clone() function is available for all objects
 void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
-	string prof = player->getStartingProfession();
-	prof = prof.substr(prof.find_first_of("_") + 1);
+	String prof = player->getStartingProfession();
+	prof = prof.subString(prof.indexOf('_') + 1);
 
-	string race = player->getRaceFileName();
-	int ls = race.find_last_of("/");
-	int fu = race.find_first_of("_");
-	int dot = race.find_last_of(".");
+	String race = player->getRaceFileName();
+	int ls = race.lastIndexOf('/');
+	int fu = race.indexOf('_');
+	int dot = race.lastIndexOf('.');
 
-	string species = race.substr(ls + 1, fu - ls - 1);
-	string sex = race.substr(fu + 1, dot - fu -1);
+	String species = race.subString(ls + 1, fu);
+	String sex = race.subString(fu + 1, dot);
 
-	string gen = "general";
-	string all = "all";
+	String gen = "general";
+	String all = "all";
 
 	Vector<TangibleObject*>* items;
 
@@ -1223,7 +1223,7 @@ void ItemManagerImplementation::loadDefaultPlayerItems(Player* player) {
 
 void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 	try {
-		stringstream query;
+		StringBuffer query;
 
 		query << "SELECT datapad.inx, datapad.character_id, datapad.name, datapad.itnocrc, datapad.item_crc, "
 			<< "datapad.file_name, datapad.attributes, datapad.appearance, datapad.itemMask, datapad.obj_id "
@@ -1234,7 +1234,7 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 		MountCreature* land = NULL;
 
 		while (res->next()) {
-			string appearance = res->getString(7);
+			String appearance = res->getString(7);
 
 			land = new MountCreature(player, res->getString(2), "monster_name",
 					res->getLong(3), res->getLong(4), res->getUnsignedLong(9));
@@ -1244,13 +1244,13 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 
 			if (appearance != "") {
 				BinaryData cust(appearance);
-				string custStr;
+				String custStr;
 				cust.decode(custStr);
 
 				land->setCharacterAppearance(custStr);
 			}
 
-			string attributes = res->getString(6);
+			String attributes = res->getString(6);
 
 			land->setAttributes(attributes );
 			land->parseItemAttributes();
@@ -1265,7 +1265,7 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 		player->error("Load Datapad exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
 		player->error(e.getMessage());
 	} catch (...) {
-		cout << "Exception in ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)\n";
+		System::out << "Exception in ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)\n";
 		player->error("Load Datapad unknown exception in : ItemManagerImplementation::loadDefaultPlayerDatapadItems(Player* player)");
 	}
 
@@ -1290,9 +1290,9 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 	 // xp 38 doesnt work
 	 //MountCreatureImplementation* land2Impl = new MountCreatureImplementation(player, "landspeeder_xp38", "monster_name",
 	 //String::hashCode("object/intangible/vehicle/shared_vehicle_pcd_base.iff"), 0x3F6E7BA7, player->getNewItemID());
-	 //stringstream Land2;
+	 //StringBuffer Land2;
 	 //Land2 << "Mount" << land2Impl->getObjectID();
-	 //MountCreature* land2 = (MountCreature*) DistributedObjectBroker::instance()->deploy(Land2.str(), land2Impl);
+	 //MountCreature* land2 = (MountCreature*) DistributedObjectBroker::instance()->deploy(Land2.toString(), land2Impl);
 	 //land2->addToDatapad();
 
 	// x34
@@ -1314,9 +1314,9 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 	MountCreatureImplementation* jetImpl = new MountCreatureImplementation(player, "jetpack", "monster_name",
 	String::hashCode("object/intangible/vehicle/shared_jetpack_pcd.iff"), 0x60250B32, player->getNewItemID());
 	jetImpl->setInstantMount(true);
-	stringstream Jet;
+	StringBuffer Jet;
 	Jet << "Mount" << jetImpl->getObjectID();
-	MountCreature* jet = (MountCreature*) DistributedObjectBroker::instance()->deploy(Jet.str(), jetImpl);
+	MountCreature* jet = (MountCreature*) DistributedObjectBroker::instance()->deploy(Jet.toString(), jetImpl);
 	jet->addToDatapad();
 	*/
 }
@@ -1334,13 +1334,13 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 		}
 
 		try {
-			stringstream query;
+			StringBuffer query;
 			query << "UPDATE `characters` set itemShift = " << player->getItemShift() << " ";
 			query << "WHERE character_id = " << player->getCharacterID() << ";";
 
 			ServerDatabase::instance()->executeStatement(query);
 		} catch (DatabaseException& e) {
-			cout << e.getMessage() << "\n";
+			System::out << e.getMessage() << "\n";
 		}
 
 	}
@@ -1348,26 +1348,26 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 
 void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item) {
 	try {
-		string itemname = item->getName().c_str();
+		String itemname = item->getName().toCharArray();
 		MySqlDatabase::escapeString(itemname);
 
-		string appearance;
-		string itemApp;
+		String appearance;
+		String itemApp;
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
 		cust.encode(appearance);
 
-		string attr = item->getAttributes();
+		String attr = item->getAttributes();
 		MySqlDatabase::escapeString(attr);
 
-		stringstream query;
+		StringBuffer query;
 		query << "INSERT INTO `character_items` "
 		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`attributes`,`appearance`, `itemMask`)"
 		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
 		<< ",'\\" << itemname << "',"
 		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 		<< item->isEquipped() << ",'" << attr
-		<< "','" << appearance.substr(0, appearance.size() - 1) << "', " << item->getPlayerUseMask() << ")";
+		<< "','" << appearance.subString(0, appearance.length() - 1) << "', " << item->getPlayerUseMask() << ")";
 
 		ServerDatabase::instance()->executeStatement(query);
 
@@ -1375,65 +1375,65 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 		item->setPersistent(true);
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	} catch (...) {
-		cout << "unreported exception caught in ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item)\n";
+		System::out << "unreported exception caught in ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item)\n";
 	}
 }
 
 void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item) {
 	try {
-		string appearance = "";
-		string itemApp;
+		String appearance = "";
+		String itemApp;
 		item->getCustomizationString(itemApp);
 		BinaryData cust(itemApp);
 		cust.encode(appearance);
 
-		string attr = item->getAttributes();
+		String attr = item->getAttributes();
 		MySqlDatabase::escapeString(attr);
 
-		stringstream query;
+		StringBuffer query;
 		query << "update `character_items` set equipped = " << item->isEquipped();
 		query << ", character_id = " << player->getCharacterID() << " ";
 		query << ", attributes = '" << attr << "' ";
-		query << ", appearance = '" << appearance.substr(0, appearance.size() - 1) << "' ";
+		query << ", appearance = '" << appearance.subString(0, appearance.length() - 1) << "' ";
 		query << ", itemMask = " << item->getPlayerUseMask() << " ";
 		query << "where item_id = " << item->getObjectID();
 
 		ServerDatabase::instance()->executeStatement(query);
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	} catch (...) {
-		cout << "unreported exception caught in ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item)\n";
+		System::out << "unreported exception caught in ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* item)\n";
 	}
 }
 
 void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject* item, bool notify) {
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "update `character_items` set deleted = " << 1 << " where item_id = " << item->getObjectID();
 
 		ServerDatabase::instance()->executeStatement(query);
 
-		//cout << query.str() << endl;
+		//System::out << query.toString() << endl;
 
-		stringstream playertxt;
+		StringBuffer playertxt;
 		if (notify)
-			playertxt << "You have destroyed " << item->getName().c_str() << ".";
+			playertxt << "You have destroyed " << item->getName().toCharArray() << ".";
 
-		player->sendSystemMessage(playertxt.str());
+		player->sendSystemMessage(playertxt.toString());
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 }
 
 void ItemManagerImplementation::showDbStats(Player* player) {
-	stringstream txt;
+	StringBuffer txt;
 	txt << "Database Statistics\n";
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "select * from `character_items`";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1442,11 +1442,11 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 
 		delete res;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `deleted` = 1";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1455,11 +1455,11 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 
 		delete res;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `template_type` = 2";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1468,11 +1468,11 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 
 		delete res;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `template_type` = 3";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1481,11 +1481,11 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 
 		delete res;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `template_type` = 4";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1494,11 +1494,11 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 
 		delete res;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "SELECT * FROM `character_items` WHERE `deleted` = 0 ORDER BY `max_damage` DESC LIMIT 10";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1515,13 +1515,13 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 
 		delete res;
 
-		player->sendSystemMessage(txt.str());
+		player->sendSystemMessage(txt.toString());
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "SELECT * FROM `character_items` WHERE `deleted` = 0 ORDER BY `dot1_strength` DESC LIMIT 10";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -1539,22 +1539,22 @@ void ItemManagerImplementation::showDbStats(Player* player) {
 
 		delete res;
 
-		player->sendSystemMessage(txt.str());
+		player->sendSystemMessage(txt.toString());
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 
-	player->sendSystemMessage(txt.str());
+	player->sendSystemMessage(txt.toString());
 }
 
 void ItemManagerImplementation::showDbDeleted(Player* player) {
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "select * from `character_items` where `character_id` = " << player->getCharacterID() << " and `deleted` = 1";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
-		stringstream txt;
+		StringBuffer txt;
 
 		while (res->next()) {
 			if (res->getInt(4) == WeaponImplementation::WEAPON) {
@@ -1572,21 +1572,21 @@ void ItemManagerImplementation::showDbDeleted(Player* player) {
 			}
 		}
 
-		player->sendSystemMessage(txt.str());
+		player->sendSystemMessage(txt.toString());
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 }
 
 void ItemManagerImplementation::purgeDbDeleted(Player* player) {
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "DELETE FROM `character_items` WHERE `deleted` = 1";
 
 		ServerDatabase::instance()->executeStatement(query);
 
 		player->sendSystemMessage("Deleted items purged.");
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 }

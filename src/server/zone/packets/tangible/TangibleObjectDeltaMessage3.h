@@ -60,7 +60,7 @@ public:
 	}
 	
 	void updateCustomizationString() {
-		string app;
+		String app;
 		tano->getCustomizationString(app);
 		addAsciiUpdate(4, app);
 	}
@@ -69,7 +69,7 @@ public:
 		addFloatUpdate(0, complexity);
 	}
 	
-	void updateName(string name) {
+	void updateName(String name) {
 		addUnicodeUpdate(2, name);
 	}
 	
@@ -87,7 +87,7 @@ public:
 	
 	void setQuantity(int quantity) { 
 		
-		if(quantity == 1)
+		if (quantity == 1)
 			quantity = 0;
 		
 		addIntUpdate(7, quantity);

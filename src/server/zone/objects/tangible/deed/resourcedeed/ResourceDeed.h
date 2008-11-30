@@ -23,9 +23,9 @@ class ObjectMenuResponse;
 
 class ResourceDeed : public DeedObject {
 public:
-	ResourceDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn);
+	ResourceDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
 
-	ResourceDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
+	ResourceDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
 	int useObject(Player* player);
 
@@ -79,8 +79,8 @@ public:
 	ResourceDeed* _this;
 
 public:
-	ResourceDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp);
-	ResourceDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp);
+	ResourceDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	ResourceDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~ResourceDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -51,7 +51,7 @@ class ForceHealTargetSkill : public HealTargetSkill {
 	int forceCost;
 	
 public:
-	ForceHealTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : HealTargetSkill(name, aname, serv) {
+	ForceHealTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : HealTargetSkill(name, aname, serv) {
 		forceCost = 0;
 	}
 	

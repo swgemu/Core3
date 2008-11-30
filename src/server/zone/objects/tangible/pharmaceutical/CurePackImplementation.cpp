@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "../../../objects.h"
 
-CurePackImplementation::CurePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn)
+CurePackImplementation::CurePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: CurePackServant(oid, tempCRC, n, tempn, CUREPACK) {
 	initialize();
 }
-CurePackImplementation::CurePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
+CurePackImplementation::CurePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: CurePackServant(creature, tempCRC, n, tempn, CUREPACK) {
 
 	name = n;
@@ -81,7 +81,7 @@ int CurePackImplementation::useObject(Player* player) {
 		break;
 	}
 
-	player->queueHeal((TangibleObject*)_this, actionCRC, string(""));
+	player->queueHeal((TangibleObject*)_this, actionCRC, String(""));
 
 	return 0;
 }
@@ -94,7 +94,7 @@ void CurePackImplementation::initialize() {
 void CurePackImplementation::parseItemAttributes() {
 	PharmaceuticalImplementation::parseItemAttributes();
 
-	string attr = "effectiveness";
+	String attr = "effectiveness";
 	setEffectiveness(itemAttributes->getFloatAttribute(attr));
 
 	attr = "state";
@@ -104,9 +104,9 @@ void CurePackImplementation::parseItemAttributes() {
 void CurePackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
-	stringstream eff;
+	StringBuffer eff;
 	eff << "@obj_attr_n:dot_type_" << CreatureState::getSpecialName(state);
-	alm->insertAttribute("examine_dot_cure", eff.str());
+	alm->insertAttribute("examine_dot_cure", eff.toString());
 
 	alm->insertAttribute("examine_dot_cure_power", effectiveness);
 

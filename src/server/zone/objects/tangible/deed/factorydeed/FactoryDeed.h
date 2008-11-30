@@ -21,9 +21,9 @@ class CreatureObject;
 
 class FactoryDeed : public DeedObject {
 public:
-	FactoryDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn);
+	FactoryDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
 
-	FactoryDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
+	FactoryDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void parseItemAttributes();
 
@@ -101,8 +101,8 @@ public:
 	FactoryDeed* _this;
 
 public:
-	FactoryDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp);
-	FactoryDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp);
+	FactoryDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	FactoryDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~FactoryDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

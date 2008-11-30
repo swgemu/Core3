@@ -54,14 +54,14 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid)
 
 	templateTypeName = "obj_n";
 
-	name = unicode("");
+	name = UnicodeString("");
 	templateName = "";
 
 	init();
 }
 
-ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uint32 tempCRC, const unicode& n,
-		const string& tempn) : ResourceContainerServant(oid, tempCRC, n, tempn, RESOURCECONTAINER) {
+ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n,
+		const String& tempn) : ResourceContainerServant(oid, tempCRC, n, tempn, RESOURCECONTAINER) {
 	templateTypeName = "obj_n";
 
 	name = n;
@@ -71,7 +71,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uin
 }
 
 ResourceContainerImplementation::ResourceContainerImplementation(CreatureObject* creature, uint32 tempCRC,
-		const unicode& n, const string& tempn) : ResourceContainerServant(creature, tempCRC, n, tempn, RESOURCECONTAINER) {
+		const UnicodeString& n, const String& tempn) : ResourceContainerServant(creature, tempCRC, n, tempn, RESOURCECONTAINER) {
 	templateTypeName = "obj_n";
 
 	name = n;
@@ -85,9 +85,9 @@ ResourceContainerImplementation::~ResourceContainerImplementation() {
 
 bool ResourceContainerImplementation::compare(ResourceContainer* inResource){
 
-	//cout << hex << _this->getObjectSubType() << "   " <<  inResource->getObjectSubType() << dec << endl;
+	//System::out << hex << _this->getObjectSubType() << "   " <<  inResource->getObjectSubType() << dec << endl;
 
-	if(_this->getResourceName() == inResource->getResourceName() &&
+	if (_this->getResourceName() == inResource->getResourceName() &&
 			_this->getTemplateName() == inResource->getTemplateName() &&
 			_this->getObjectSubType() == inResource->getObjectSubType() &&
 			_this->getDecayResistance() == inResource->getDecayResistance() &&
@@ -123,7 +123,7 @@ void ResourceContainerImplementation::init() {
 	setHeatResistance(0);
 	setConductivity(0);
 	setEntangleResistance(0);
-	string temp = "";
+	String temp = "";
 	setClassSeven(temp);
 	setResourceName(temp);
 }
@@ -229,7 +229,7 @@ void ResourceContainerImplementation::transferContents(Player* player, ResourceC
 }
 
 void ResourceContainerImplementation::parseItemAttributes() {
-	string temp = "quantity";
+	String temp = "quantity";
 	quantity = itemAttributes->getIntAttribute(temp);
 
 	temp = "resourceID";
@@ -284,7 +284,7 @@ void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("condition", "100/100");
 	alm->insertAttribute("volume", "1");
 
-	stringstream ssQuantity;
+	StringBuffer ssQuantity;
 	ssQuantity << quantity << "/" << getMaxContents();
 
 	alm->insertAttribute("resource_contents", ssQuantity);

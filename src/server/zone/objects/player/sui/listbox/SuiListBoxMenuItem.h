@@ -48,14 +48,14 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class SuiListBoxMenuItem {
-	string optionName;
+	String optionName;
 	
 	uint64 objectID;
 	
 	//Add needed 
 	
 public:
-	SuiListBoxMenuItem(const string& name, uint64 oid = 0) {
+	SuiListBoxMenuItem(const String& name, uint64 oid = 0) {
 		optionName = name;
 		objectID = oid;
 	}
@@ -64,7 +64,7 @@ public:
 		return objectID;
 	}
 	
-	inline string& getOptionName() {
+	inline String& getOptionName() {
 		return optionName;
 	}
 };

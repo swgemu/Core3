@@ -50,8 +50,8 @@ interface SuiBox {
 
 	BaseMessage generateCloseMessage();
 	
-	void setPromptTitle(const string name);
-	void setPromptText(const string name);
+	void setPromptTitle(const String name);
+	void setPromptText(const String name);
 	void setCancelButton(boolean value);
 	void setBackButton(boolean value);
 	void setUsingObjectID(unsigned long oid);

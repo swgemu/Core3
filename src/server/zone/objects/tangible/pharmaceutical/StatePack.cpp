@@ -20,12 +20,12 @@
  *	StatePackStub
  */
 
-StatePack::StatePack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+StatePack::StatePack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new StatePackImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-StatePack::StatePack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+StatePack::StatePack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new StatePackImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -148,11 +148,11 @@ DistributedObjectAdapter* StatePackHelper::createAdapter(DistributedObjectStub* 
  *	StatePackServant
  */
 
-StatePackServant::StatePackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
+StatePackServant::StatePackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
 	_classHelper = StatePackHelper::instance();
 }
 
-StatePackServant::StatePackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
+StatePackServant::StatePackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
 	_classHelper = StatePackHelper::instance();
 }
 

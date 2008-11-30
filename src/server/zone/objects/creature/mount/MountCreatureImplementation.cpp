@@ -59,8 +59,8 @@ which carries forward this exception.
 #include "../../../ZoneClientSession.h"
 
 
-MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCreature, const string& name,
-		const string& stf, uint32 itnocrc, uint32 objCRC, uint64 oid) : MountCreatureServant(oid) {
+MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCreature, const String& name,
+		const String& stf, uint32 itnocrc, uint32 objCRC, uint64 oid) : MountCreatureServant(oid) {
 	creatureLinkID = linkCreature->getObjectID();
 
 	linkedCreature = linkCreature;
@@ -90,9 +90,9 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 
 	instantMount = false;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "Mount = 0x" << oid;
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -157,11 +157,11 @@ void MountCreatureImplementation::repair() {
 		return;
 
 	conditionDamage = 0;
-	stringstream cond;
+	StringBuffer cond;
 
 	cond << "condition=" << (maxCondition-conditionDamage) << "/" << maxCondition << ":";
 
-	string attr = cond.str();
+	String attr = cond.toString();
 	setAttributes(attr);
 
 	BaseMessage* creo3 = new CreatureObjectMessage3(_this);
@@ -225,9 +225,9 @@ void MountCreatureImplementation::generateAttributes(SceneObject* obj) {
 
 	CreatureObject* owner = getLinkedCreature();
 	if (owner != NULL) {
-		unicode name = unicode("");
+		UnicodeString name = UnicodeString("");
 		name = owner->getCharacterName();
-		string strname = name.c_str();
+		String strname = name.toCharArray();
 
 		alm->insertAttribute("@obj_attr_n:crystal_owner", strname); //Owner: Name
 	}
@@ -238,7 +238,7 @@ void MountCreatureImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void MountCreatureImplementation::addAttributes(AttributeListMessage* alm) {
-	stringstream cond;
+	StringBuffer cond;
 	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
 
 	alm->insertAttribute("condition", cond);
@@ -268,7 +268,7 @@ void MountCreatureImplementation::call() {
 		}
 
 		// Jet Pack
-		if(isJetpack()) {
+		if (isJetpack()) {
 			//initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ() + 4, linkedCreature->getPositionY());
 			setAppearanceAttribute("index_hover_height", 40); // 32 = 9m, 64 = 12m
 			//setHeight(4.0f);
@@ -297,20 +297,20 @@ void MountCreatureImplementation::call() {
 
 		setFaction(linkedCreature->getFaction());
 
-		if(getObjectCRC()==0xAF6D9F4F)//swoop
+		if (getObjectCRC()==0xAF6D9F4F)//swoop
 			changeConditionDamage(25);
-		else if(getObjectCRC()==0x729517EF)//speederbike
+		else if (getObjectCRC()==0x729517EF)//speederbike
 			changeConditionDamage(12);
-		else if(getObjectCRC()==0x4EC3780C)//x34 landspeeder
+		else if (getObjectCRC()==0x4EC3780C)//x34 landspeeder
 			changeConditionDamage(7);
 		else
 			changeConditionDamage(25);
 
-		stringstream cond;
+		StringBuffer cond;
 
 		cond << "condition=" << (maxCondition-conditionDamage) << "/" << maxCondition << ":";
 
-		string attr = cond.str();
+		String attr = cond.toString();
 		setAttributes(attr);
 
 		insertToZone(zone);

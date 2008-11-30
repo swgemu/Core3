@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "../../../managers/resource/ResourceManager.h"
 #include "../../../managers/resource/ResourceHarvestType.h"
 
-SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn)
+SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: SurveyToolServant(object_id, tempCRC, n, tempn, SURVEYTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -64,7 +64,7 @@ SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 temp
 	init();
 }
 
-SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
+SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: SurveyToolServant(creature, tempCRC, n, tempn, SURVEYTOOL) {
 	objectCRC = tempCRC;
 
@@ -105,7 +105,7 @@ void SurveyToolImplementation::init() {
 int SurveyToolImplementation::useObject(Player* player) {
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 
-	string skillBox = "crafting_artisan_novice";
+	String skillBox = "crafting_artisan_novice";
 	if (player->getParent() != NULL && player->getParent()->isCell()) {
 		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
 		return 0;
@@ -125,7 +125,8 @@ int SurveyToolImplementation::useObject(Player* player) {
 			player->sendMessage(sysMessage);
 		}
 	} else {
-		player->sendSystemMessage("You do not have sufficient abilities to open " + getName().c_str() + ".");
+		player->sendSystemMessage("You do not have sufficient abilities to open "
+					+ getName().toString() + ".");
 	}
 
 	return 0;
@@ -148,7 +149,7 @@ void SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuRe
 		}
 
 	} catch (...) {
-		cout << "Unreported exception in SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr\n";
+		System::out << "Unreported exception in SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr\n";
 	}
 
 	omr->finish();
@@ -177,11 +178,11 @@ void SurveyToolImplementation::addAttributes(AttributeListMessage* alm) {
 
 	alm->insertAttribute("volume", "1");
 
-	if(craftersName != ""){
+	if (craftersName != ""){
 
 		alm->insertAttribute("crafter", craftersName);
 	}
-	if(craftedSerial != ""){
+	if (craftedSerial != ""){
 
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
@@ -192,7 +193,7 @@ void SurveyToolImplementation::addAttributes(AttributeListMessage* alm) {
 
 void SurveyToolImplementation::parseItemAttributes() {
 
-	string temp = "craftersname";
+	String temp = "craftersname";
 	craftersName = itemAttributes->getStringAttribute(temp);
 
 	temp = "craftedserial";
@@ -206,7 +207,7 @@ void SurveyToolImplementation::parseItemAttributes() {
 void SurveyToolImplementation::sendSurveyEffect(Player* player) {
 	PlayClientEffectLoc* effect;
 
-	stringstream file;
+	StringBuffer file;
 
 	switch (getSurveyToolType()) {
 	case ResourceHarvestType::SOLAR: // Solar
@@ -235,7 +236,7 @@ void SurveyToolImplementation::sendSurveyEffect(Player* player) {
 		break;
 	}
 
-	effect = new PlayClientEffectLoc(file.str(), player->getZoneIndex(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
+	effect = new PlayClientEffectLoc(file.toString(), player->getZoneIndex(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
 
 	player->broadcastMessage(effect);
 }
@@ -243,7 +244,7 @@ void SurveyToolImplementation::sendSurveyEffect(Player* player) {
 void SurveyToolImplementation::sendSampleEffect(Player* player) {
 	PlayClientEffectLoc* effect;
 
-	stringstream file;
+	StringBuffer file;
 
 	switch (getSurveyToolType()) {
 	case 1: // Solar
@@ -272,12 +273,12 @@ void SurveyToolImplementation::sendSampleEffect(Player* player) {
 		break;
 	}
 
-	effect = new PlayClientEffectLoc(file.str(), player->getZoneIndex(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
+	effect = new PlayClientEffectLoc(file.toString(), player->getZoneIndex(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
 
 	player->broadcastMessage(effect);
 }
 
-void SurveyToolImplementation::surveyRequest(Player* player, string resourceName) {
+void SurveyToolImplementation::surveyRequest(Player* player, String resourceName) {
 	if (player->getParent() != NULL && player->getParent()->isCell()) {
 		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
 		return;
@@ -298,7 +299,7 @@ void SurveyToolImplementation::surveyRequest(Player* player, string resourceName
 	}
 }
 
-void SurveyToolImplementation::sampleRequest(Player* player, string resourceName) {
+void SurveyToolImplementation::sampleRequest(Player* player, String resourceName) {
 	if (player->getParent() != NULL && player->getParent()->isCell()) {
 		player->sendSystemMessage("You cannot perform survey-related actions inside a structure.");
 		return;
@@ -311,7 +312,7 @@ void SurveyToolImplementation::sampleRequest(Player* player, string resourceName
 		} else if (getSurveyToolType() == ResourceHarvestType::SOLAR || getSurveyToolType() == ResourceHarvestType::WIND) {
 			player->sendSystemMessage("Unable to sample this resource type.");
 		} else if (player->getCanSample()) {
-			if(!player->isKneeled()) {
+			if (!player->isKneeled()) {
 				player->changePosture(CreaturePosture::CROUCHED);
 			}
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_sampling",resourceName,0,false);

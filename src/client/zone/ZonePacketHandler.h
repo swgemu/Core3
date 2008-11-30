@@ -55,7 +55,7 @@ class ZonePacketHandler : public Logger {
 public:
 	ZonePacketHandler();
 
-	ZonePacketHandler(const string& s, Zone * z);
+	ZonePacketHandler(const String& s, Zone * z);
 
 	~ZonePacketHandler() {
 	}

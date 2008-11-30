@@ -55,11 +55,11 @@ import "../../TangibleObject";
 import "../../../draftschematic/DraftSchematic";
  
 interface Component implements TangibleObject {
-	Component(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+	Component(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
 	
-	Component(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+	Component(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int tp);
 	}
 	Component(Component component, unsigned long oid) {
@@ -74,15 +74,15 @@ interface Component implements TangibleObject {
 	int useObject(Player player);
 
 	Component cloneComponent(Component component, unsigned long oid);
-	float getAttributeValue(string attributeName);
-	int getAttributePrecision(string attributeName);
-	string getAttributeTitle(string attributeName);
+	float getAttributeValue(String attributeName);
+	int getAttributePrecision(String attributeName);
+	String getAttributeTitle(String attributeName);
 
-	boolean hasProperty(string attributeName);
+	boolean hasProperty(String attributeName);
 
-    void addProperty(string attribute, float value, int precision, string title);
+    void addProperty(String attribute, float value, int precision, String title);
     
 	int getPropertyCount();
-	string getProperty(const int j);
+	String getProperty(const int j);
 
 }

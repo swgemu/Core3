@@ -51,18 +51,18 @@ which carries forward this exception.
 
 class ForumsDatabase {
 	static Database* impl;
-	static string forumsbannedGroup;
-	static string forumsStandardGroup;
-	static string forumsUserTable;
-	static string forumsBannedTable;
-	static string forumsNewActivationTable;
+	static String forumsbannedGroup;
+	static String forumsStandardGroup;
+	static String forumsUserTable;
+	static String forumsBannedTable;
+	static String forumsNewActivationTable;
 
 public:
 	ForumsDatabase(ConfigManager* configManager) {
-		string& forumdbHost = configManager->getForumsDBHost();
-        string& forumdbUser = configManager->getForumsDBUser();
-        string& forumdbPass = configManager->getForumsDBPass();
-        string& forumdbName = configManager->getForumsDBName();
+		String& forumdbHost = configManager->getForumsDBHost();
+        String& forumdbUser = configManager->getForumsDBUser();
+        String& forumdbPass = configManager->getForumsDBPass();
+        String& forumdbName = configManager->getForumsDBName();
         uint16& forumdbPort = configManager->getForumsDBPort();
         forumsbannedGroup = configManager->getForumsBannedGroup();
         forumsStandardGroup = configManager->getForumsStandardGroup();
@@ -70,7 +70,7 @@ public:
         forumsBannedTable = configManager->getForumsBannedTable();
         forumsNewActivationTable = configManager->getForumsNewActivationTable();
 
-        impl = new MySqlDatabase(string("ForumsDatabase"), forumdbHost);
+        impl = new MySqlDatabase(String("ForumsDatabase"), forumdbHost);
         impl->connect(forumdbName, forumdbUser, forumdbPass, forumdbPort);
 	}
 
@@ -82,24 +82,24 @@ public:
 		return impl;
 	}
 
-	inline static string bannedGroup() {
+	inline static String bannedGroup() {
 		return forumsbannedGroup;
 	}
 
-	inline static string standardGroup() {
+	inline static String standardGroup() {
 		return forumsStandardGroup;
 	}
 
 
-	inline static string userTable() {
+	inline static String userTable() {
 		return forumsUserTable;
 	}
 
-	inline static string bannedTable() {
+	inline static String bannedTable() {
 		return forumsBannedTable;
 	}
 
-	inline static string newActivationTable() {
+	inline static String newActivationTable() {
 		return forumsNewActivationTable;
 	}
 

@@ -5,7 +5,7 @@
 
 class CreatureObject : public SceneObject {
 protected:
-	string name;
+	String name;
 
 public:
 	CreatureObject(sys::uint64 oid);

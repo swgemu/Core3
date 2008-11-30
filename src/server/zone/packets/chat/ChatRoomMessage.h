@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class ChatRoomMessage : public BaseMessage {
 public:
-	ChatRoomMessage(string& sender, unicode& message, uint32 channelid) : BaseMessage() {
+	ChatRoomMessage(String& sender, UnicodeString& message, uint32 channelid) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0xCD4CE444);  // Opcode
 		insertAscii("SWG");

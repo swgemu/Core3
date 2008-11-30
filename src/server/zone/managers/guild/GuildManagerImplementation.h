@@ -67,9 +67,9 @@ public:
 
 	void load();
 
-	bool createGuild(Player* player, string& tag, string& name);
+	bool createGuild(Player* player, String& tag, String& name);
 
-	Guild* getGuild(string& tag, bool doLock = true);
+	Guild* getGuild(String& tag, bool doLock = true);
 	Guild* getGuild(uint32 gid, bool doLock = true);
 
 	bool removeGuild(int gid);
@@ -82,41 +82,41 @@ public:
 		return guilds;
 	}
 
-	void handleGuildTag(uint32 boxID, Player* player, uint32 cancel, string returnString);
-	void handleGuildName(uint32 boxID, Player* player, uint32 cancel, string returnString);
+	void handleGuildTag(uint32 boxID, Player* player, uint32 cancel, String returnString);
+	void handleGuildName(uint32 boxID, Player* player, uint32 cancel, String returnString);
 	void handleGuildCreationName(Player* player);
 
-	void handleGuildSponsor(uint32 boxID, Player* player, uint32 cancel, string returnString);
+	void handleGuildSponsor(uint32 boxID, Player* player, uint32 cancel, String returnString);
 
 	void handleVerifyBoxSponsorTargetforGuildMembership(uint32 boxID, Player* otherPlayer, uint32 cancel);
-	void VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string inviter, string guildname);
+	void VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, String inviter, String guildname);
 
-	void sendGuildMail(Player* player, string sender, string subject, string msg, bool excludeSender);
-	void sendMailGuildLeader(Player* player, string sender, uint32 guildid, string subject, string body);
+	void sendGuildMail(Player* player, String sender, String subject, String msg, bool excludeSender);
+	void sendMailGuildLeader(Player* player, String sender, uint32 guildid, String subject, String body);
 
 	void handleSponsoredGuildMembersBox(uint32 boxID, Player* player, uint32 cancel, int index);
 	void handleSponsoredGuildMembersAcceptBox(uint32 boxID, Player* player, uint32 cancel, int index);
-	void handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, string returnString);
+	void handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, String returnString);
 
 	void removeOnlineFromGuild(Player* player, Player* removePlayer);
-	void removeOfflineFromGuild(Player* player, string removeName);
+	void removeOfflineFromGuild(Player* player, String removeName);
 
-	void handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, string returnString);
-	void handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, string returnString);
+	void handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, String returnString);
+	void handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, String returnString);
 
 	void handleGuildInformationMembers(Player* player);
 	void handleGuildInformationMembersBox(uint32 boxID, Player* player, uint32 cancel, int index);
 
 	void handleGuildMemberOptions(uint32 boxID, Player* player, uint32 cancel, int index);
 
-	void handleRemoveFromGuild(Player* player, string kickee);
+	void handleRemoveFromGuild(Player* player, String kickee);
 	void execRemoveFromGuild(uint32 boxID, Player* player, uint32 cancel);
 
-	void callGuildPermissions(Player* player, string proband);
+	void callGuildPermissions(Player* player, String proband);
 
 	void handleGuildPermissionSelection(uint32 boxID, Player* player, uint32 cancel, int index);
 
-	void declineSponsoring(string declinee,uint32 inviteGuild, Player* inviter);
+	void declineSponsoring(String declinee,uint32 inviteGuild, Player* inviter);
 
 	void handleGuildInfo(Player* player);
 
@@ -125,18 +125,18 @@ public:
 	void handleGuildRenaming(Player* player);
 
 	void handleGuildTransferLeader(Player* player);
-	void handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString);
+	void handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, String returnString);
 	void handleGuildTransferLeaderVerifyBox(uint32 boxID, Player* player, uint32 cancel);
 
-	uint32 insertGuildToDB (Player* player, string tag, string name, uint64 chardID);
+	uint32 insertGuildToDB (Player* player, String tag, String name, uint64 chardID);
 
-	bool setupNewGuild(Player* player, uint32 gid, string name, string tag);
+	bool setupNewGuild(Player* player, uint32 gid, String name, String tag);
 
-	bool checkGuildNameAndTag(string tempname, string tag, Player* player);
+	bool checkGuildNameAndTag(String tempname, String tag, Player* player);
 
-	bool checkGuildProfanity(string returnString, string tag, Player* player);
+	bool checkGuildProfanity(String returnString, String tag, Player* player);
 
-	bool checkPlayerInRange(Player* player, string proband, string selfname);
+	bool checkPlayerInRange(Player* player, String proband, String selfname);
 
 	bool insertSponsorshipDB(Player* inviter, uint64 otherPlayerID);
 
@@ -150,27 +150,27 @@ public:
 
 	void removeToonFromGuildDB(uint64 removeCharID);
 
-	void updateGuildInDB(Player* player, string tag, string returnString);
+	void updateGuildInDB(Player* player, String tag, String returnString);
 
-	string getGuildLeaderName(Guild* playerGuild);
+	String getGuildLeaderName(Guild* playerGuild);
 
-	uint64 getOfflineGuildMemberID(string name);
+	uint64 getOfflineGuildMemberID(String name);
 
 	void sendGuildListToPlayers(Guild* guild);
 
-	uint32 getGuildPermissionsFromDB(string proband);
+	uint32 getGuildPermissionsFromDB(String proband);
 
-	void updateGuildPermissionsToDB(string proband, uint32 permissions);
+	void updateGuildPermissionsToDB(String proband, uint32 permissions);
 
 	void deletePreviousSponsoringsFromDB(Player* declineePlayer);
 
 	void checkPreviousSponsoringInDB(Player* inviter, Player* declineePlayer, uint32 inviteGuild);
 
-	bool updateOfflineDeclineGuild(string probandName, Player* player);
+	bool updateOfflineDeclineGuild(String probandName, Player* player);
 
 	bool checkLastRenameTime(Player* player);
 
-	string checkForNewLeader(Player* player, string proband);
+	String checkForNewLeader(Player* player, String proband);
 
 	bool changeGuildLeader(Player* olPlayer, Player* player);
 
@@ -179,7 +179,7 @@ public:
 	bool swapLeaderInDB(uint64 playerID, uint64 olPlayerID, uint32 guildID);
 
 private:
-	Player* checkInRange(Player* player, const string& proband, const string& selfname);
+	Player* checkInRange(Player* player, const String& proband, const String& selfname);
 
 };
 

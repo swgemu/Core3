@@ -74,11 +74,11 @@ protected:
 
 	bool attackable;
 
-	unicode name;
-	string templateTypeName;
-	string templateName;
-	string templateDetailName;
-	string templateDetail;
+	UnicodeString name;
+	String templateTypeName;
+	String templateName;
+	String templateDetailName;
+	String templateDetail;
 
 	CustomizationVariables customizationVars;
 
@@ -105,31 +105,31 @@ public:
 	virtual void doDamage(int damage, SceneObject* attacker);
 	virtual void doDestroyed(SceneObject* attacker);
 
-	inline void setTemplateName(string& stfname) {
+	inline void setTemplateName(String& stfname) {
 		templateName = stfname;
 	}
 
-	inline string& getTemplateTypeName() {
+	inline String& getTemplateTypeName() {
 		return templateTypeName;
 	}
 
-	inline string& getTemplateName() {
+	inline String& getTemplateName() {
 		return templateName;
 	}
 
-	inline unicode& getName() {
+	inline UnicodeString& getName() {
 		return name;
 	}
 
-	inline string& getTemplateDetailName() {
+	inline String& getTemplateDetailName() {
 		return templateDetailName;
 	}
 
-	inline string& getTemplateDetail() {
+	inline String& getTemplateDetail() {
 		return templateDetail;
 	}
 
-	void getCustomizationString(string& app) {
+	void getCustomizationString(String& app) {
 		return customizationVars.toString(app);
 	}
 

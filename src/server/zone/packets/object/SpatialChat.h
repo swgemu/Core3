@@ -50,7 +50,7 @@
 
 class SpatialChat: public ObjectControllerMessage {
 public:
-	SpatialChat(uint64 senderid, uint64 recvid, unicode& message, uint64 target, uint32 moodid,
+	SpatialChat(uint64 senderid, uint64 recvid, UnicodeString& message, uint64 target, uint32 moodid,
 			uint32 mood2) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 		insertLong(senderid);
@@ -70,7 +70,7 @@ public:
 		setCompression(true);
 	}
 
-	SpatialChat(uint64 senderid, uint64 recvid, const string& file, const string& str, StfParameter * params, uint64 target, uint16 moodid, uint16 mood2) :
+	SpatialChat(uint64 senderid, uint64 recvid, const String& file, const String& str, StfParameter* params, uint64 target, uint16 moodid, uint16 mood2) :
 		ObjectControllerMessage(recvid, 0x0B, 0xF4) {
 
 		params->generate();
@@ -87,7 +87,7 @@ public:
 		insertShort(0);
 
 		//
-		int size = 0x0E + file.size() + str.size() + params->size();
+		int size = 0x0E + file.length() + str.length() + params->size();
 		bool odd = (size & 1);
 
 		if (odd)
@@ -99,9 +99,9 @@ public:
 		insertByte(1);
 		insertInt(0xFFFFFFFF);
 
-		insertAscii(file.c_str());
+		insertAscii(file.toCharArray());
 		insertInt(0);
-		insertAscii(str.c_str());
+		insertAscii(str.toCharArray());
 
 		insertStream(params);
 

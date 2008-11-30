@@ -63,9 +63,9 @@ public:
 
 	SceneObject* removeCachedObject(SceneObject* obj, bool doLock = true);
 
-	bool banUser(string& name, string& admin);
+	bool banUser(String& name, String& admin);
 
-	bool kickUser(string& name, string& admin);
+	bool kickUser(String& name, String& admin);
 
 	void changeUserCap(int amount = 50);
 
@@ -109,7 +109,7 @@ public:
 
 	Zone* getZone(int index);
 
-	string& getServerName();
+	String& getServerName();
 
 	int getConnectionCount();
 
@@ -132,7 +132,7 @@ protected:
 
 	virtual ~ZoneServer();
 
-	string _return_getServerName;
+	String _return_getServerName;
 
 	friend class ZoneServerHelper;
 };
@@ -167,9 +167,9 @@ public:
 
 	SceneObject* removeCachedObject(SceneObject* obj, bool doLock);
 
-	bool banUser(string& name, string& admin);
+	bool banUser(String& name, String& admin);
 
-	bool kickUser(string& name, string& admin);
+	bool kickUser(String& name, String& admin);
 
 	void changeUserCap(int amount);
 
@@ -213,7 +213,7 @@ public:
 
 	Zone* getZone(int index);
 
-	string& getServerName();
+	String& getServerName();
 
 	int getConnectionCount();
 
@@ -232,10 +232,10 @@ public:
 	unsigned long long getNextCellID(bool doLock);
 
 protected:
-	string _param0_banUser__string_string_;
-	string _param1_banUser__string_string_;
-	string _param0_kickUser__string_string_;
-	string _param1_kickUser__string_string_;
+	String _param0_banUser__String_String_;
+	String _param1_banUser__String_String_;
+	String _param0_kickUser__String_String_;
+	String _param1_kickUser__String_String_;
 };
 
 class ZoneServerHelper : public DistributedObjectClassHelper, public Singleton<ZoneServerHelper> {

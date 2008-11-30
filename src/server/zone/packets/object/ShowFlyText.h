@@ -49,13 +49,13 @@ which carries forward this exception.
 
 class ShowFlyText : public ObjectControllerMessage {
 public:
-	ShowFlyText(CreatureObject* creo, const string& file, const string& aux, uint8 red, uint8 green, uint8 blue) 
+	ShowFlyText(CreatureObject* creo, const String& file, const String& aux, uint8 red, uint8 green, uint8 blue) 
 			: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0x1BD) {
 		insertLong(creo->getObjectID());
 		
-		insertAscii(file.c_str());
+		insertAscii(file.toCharArray());
 		insertInt(0);		
-		insertAscii(aux.c_str());
+		insertAscii(aux.toCharArray());
 		insertInt(0);
 		insertByte(red);
 		insertByte(green);

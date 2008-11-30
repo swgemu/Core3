@@ -67,7 +67,7 @@ void PerformanceManager::loadPerformances() {
 	performances = new Vector<Performance*>();
 
 	try {
-		string query = "SELECT * FROM performance";
+		String query = "SELECT * FROM performance";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -107,29 +107,29 @@ void PerformanceManager::loadPerformances() {
 
 		delete res;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << endl;
+		System::out << e.getMessage() << endl;
 	} catch (...) {
-		cout << "unreported exception caught in PerformanceManager::loadPerformances()\n";
+		System::out << "unreported exception caught in PerformanceManager::loadPerformances()\n";
 	}
 
 }
 
-Performance *PerformanceManager::getDance(string name) {
+Performance *PerformanceManager::getDance(String name) {
 	if (performances != NULL) {
 		for (int i = 0; i < performances->size(); ++i) {
 			Performance *ret = performances->get(i);
-			if(ret->isDance() && ret->getName() == name)
+			if (ret->isDance() && ret->getName() == name)
 				return ret;
 		}
 	}
 	return NULL;
 }
 
-Performance *PerformanceManager::getSong(string name, int instrumentType) {
+Performance *PerformanceManager::getSong(String name, int instrumentType) {
 	if (performances != NULL) {
 		for (int i = 0; i < performances->size(); ++i) {
 			Performance *ret = performances->get(i);
-			if(ret->isMusic() && ret->getName() == name && ret->getInstrumentAudioId() == instrumentType)
+			if (ret->isMusic() && ret->getName() == name && ret->getInstrumentAudioId() == instrumentType)
 				return ret;
 		}
 	}

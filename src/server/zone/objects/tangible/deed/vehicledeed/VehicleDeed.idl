@@ -7,10 +7,10 @@ import "../../../creature/CreatureObject";
 import "../../../../packets/object/ObjectMenuResponse";
 
 interface VehicleDeed implements DeedObject {
-	VehicleDeed(CreatureObject creature, int tempCRC, const unicode n, const string tempn) {
+	VehicleDeed(CreatureObject creature, int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int tp);
 	}
-	VehicleDeed(unsigned long oid, int tempCRC, const unicode n, const string tempn) {
+	VehicleDeed(unsigned long oid, int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
 

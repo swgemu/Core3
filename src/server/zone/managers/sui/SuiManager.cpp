@@ -71,34 +71,34 @@ SuiManager::SuiManager(ZoneProcessServerImplementation* serv) : Logger("SuiManag
 	setLogging(false);
 }
 
-void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value, const string& value2) {
+void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const String& value, const String& value2) {
 	uint16 type = (uint16) boxID;
 	int range;
-	string returnString;
+	String returnString;
 
 	GuildManager* pGuild = server->getGuildManager();
 
 	switch (type) {
 	case 0xC057:
-		handleConsentBox(boxID, player, cancel, atoi(value.c_str()));
+		handleConsentBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xC103:
-		handleCloneRequest(boxID, player, cancel, atoi(value.c_str()));
+		handleCloneRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0x5553:
-		handleStartMusic(boxID, player, cancel, value.c_str(), false);
+		handleStartMusic(boxID, player, cancel, value.toCharArray(), false);
 		break;
 	case 0x414E:
-		handleStartDancing(boxID, player, cancel, value.c_str(), false);
+		handleStartDancing(boxID, player, cancel, value.toCharArray(), false);
 		break;
 	case 0x5A53: // changemusic
-		handleStartMusic(boxID, player, cancel, value.c_str(), true);
+		handleStartMusic(boxID, player, cancel, value.toCharArray(), true);
 		break;
 	case 0x4B4E: // changedance
-		handleStartDancing(boxID, player, cancel, value.c_str(), true);
+		handleStartDancing(boxID, player, cancel, value.toCharArray(), true);
 		break;
 	case 0x7259:
-		range = (atoi(value.c_str()) * 64) + 64;
+		range = (atoi(value.toCharArray()) * 64) + 64;
 		handleSurveyToolRange(boxID, player, cancel, range);
 		break;
 	case 0x7270: // Guild creation InputBox #1 (Tag)
@@ -119,10 +119,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		pGuild->handleVerifyBoxSponsorTargetforGuildMembership(boxID, player, cancel);
 		break;
 	case 0x7274: // Sponsored guild member box
-		pGuild->handleSponsoredGuildMembersBox(boxID, player, cancel, atoi(value.c_str()));
+		pGuild->handleSponsoredGuildMembersBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0x7275: // Sponsored guild member accept/decline box
-		pGuild->handleSponsoredGuildMembersAcceptBox(boxID, player, cancel, atoi(value.c_str()));
+		pGuild->handleSponsoredGuildMembersAcceptBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0x7277: // Disband guild verify box
 		returnString = value;
@@ -137,13 +137,13 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		pGuild->handleGuildNameChangeName(boxID, player, cancel, returnString);
 		break;
 	case 0x7280: // Guild Information - Members
-		pGuild->handleGuildInformationMembersBox(boxID, player, cancel, atoi(value.c_str()));
+		pGuild->handleGuildInformationMembersBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0x7281: // Guild Information - Member options
-		pGuild->handleGuildMemberOptions(boxID, player, cancel, atoi(value.c_str()));
+		pGuild->handleGuildMemberOptions(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0x7282: // Guild member permissions
-		pGuild->handleGuildPermissionSelection(boxID, player, cancel, atoi(value.c_str()));
+		pGuild->handleGuildPermissionSelection(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0x7283: // Guild remove from guild exec
 		pGuild->execRemoveFromGuild(boxID, player, cancel);
@@ -156,22 +156,22 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		pGuild->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
 		break;
 	case 0xAAAA:	// slice weapon
-		handleSliceWeapon(boxID, player, cancel, atoi(value.c_str()));
+		handleSliceWeapon(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xAABA:	// slice armor
-		handleSliceArmor(boxID, player, cancel, atoi(value.c_str()));
+		handleSliceArmor(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xAACA:	// repair weapon
-		handleRepairWeapon(boxID, player, cancel, atoi(value.c_str()));
+		handleRepairWeapon(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xAADA:	// repair armor
-		handleRepairArmor(boxID, player, cancel, atoi(value.c_str()));
+		handleRepairArmor(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xDAAD:
 		handleTicketPurchaseMessageBox(boxID, player);
 		break;
 	case 0xAFAF:
-		handleTicketCollectorRespones(boxID, player, cancel, atoi(value.c_str()));
+		handleTicketCollectorRespones(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xBABE:
 		handleColorPicker(boxID, player, cancel, value, 2);
@@ -180,25 +180,25 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleColorPicker(boxID, player, cancel, value, 1);
 		break;
 	case 0xD65E:
-		handleBankTransfer(boxID, player, atoi(value.c_str()), atoi(value2.c_str()));
+		handleBankTransfer(boxID, player, atoi(value.toCharArray()), atoi(value2.toCharArray()));
 		break;
 	case 0xBF06:
-		handleBlueFrogItemRequest(boxID, player, cancel, atoi(value.c_str()));
+		handleBlueFrogItemRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xBFDA:
-		handleWoundTerminalRequest(boxID, player, cancel, atoi(value.c_str()));
+		handleWoundTerminalRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xBFD0:
-		handleStateTerminalRequest(boxID, player, cancel, atoi(value.c_str()));
+		handleStateTerminalRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xD1A6:
 		handleDiagnose(boxID, player);
 		break;
 	case 0xE4F2:
-		handleFreeResource(boxID, player, cancel, atoi(value.c_str()));
+		handleFreeResource(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case 0xE4F3:
-		handleGiveFreeResource(boxID, player, cancel, atoi(value.c_str()));
+		handleGiveFreeResource(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	default:
 		//Clean up players sui box:
@@ -223,7 +223,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 }
 
 void SuiManager::handleCodeForRedeed(uint32 boxID, Player* player,
-		uint32 cancel, const string& extra) {
+		uint32 cancel, const String& extra) {
 	try {
 		player->wlock();
 
@@ -283,7 +283,7 @@ void SuiManager::handleRedeedStructure(uint32 boxID, Player* player,
 
 			InstallationObject * inso = (InstallationObject *) scno;
 
-			if(extra == inso->getDestroyCode()){
+			if (extra == inso->getDestroyCode()){
 				inso->handleMakeDeed(player);
 			}
 			else{
@@ -353,7 +353,7 @@ void SuiManager::handleRefreshStatusListBox(uint32 boxID, Player* player,
 }
 
 void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
-		uint32 cancel, const string& name) {
+		uint32 cancel, const String& name) {
 	try {
 
 		player->wlock();
@@ -372,7 +372,7 @@ void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
 
 			TangibleObject * tano = (TangibleObject *) tano;
 
-			if(tano!= NULL)	{
+			if (tano!= NULL)	{
 
 				//tano->setTemplateName(name);
 
@@ -381,8 +381,8 @@ void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
 			/*else {
 				BuildingObject * buio = (BuildingObject * ) obj;
 
-				if(buio!= NULL)
-					buio->setName(unicode(name));
+				if (buio!= NULL)
+					buio->setName(UnicodeString(name));
 			}*/
 
 		}
@@ -405,7 +405,7 @@ void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
 }
 
 void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
-		uint32 cancel, const string& newCashVal) {
+		uint32 cancel, const String& newCashVal) {
 	try {
 
 		player->wlock();
@@ -425,24 +425,24 @@ void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
 
 			InstallationObject * inso = (InstallationObject *) scno;
 
-			if(inso!= NULL && atoi(newCashVal.c_str()) != 0)	{
-				int maint = (player->getCashCredits() - atoi(newCashVal.c_str()));
+			if (inso!= NULL && atoi(newCashVal.toCharArray()) != 0)	{
+				int maint = (player->getCashCredits() - atoi(newCashVal.toCharArray()));
 
 				inso->addMaintenance(maint);
 				player->subtractCashCredits(maint);
 
-				stringstream report;
+				StringBuffer report;
 				report << "You successfully make a payment of " << maint << " to "
-					<< inso->getName().c_str();
+					<< inso->getName().toCharArray();
 
-				player->sendSystemMessage(report.str());
+				player->sendSystemMessage(report.toString());
 
 			}
 
 			/*else {
 				BuildingObject * buio = (BuildingObject * ) obj;
 
-				if(buio!= NULL)
+				if (buio!= NULL)
 
 			}*/
 
@@ -465,7 +465,7 @@ void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
 	}
 }
 void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
-		uint32 cancel, const string& newEnergyVal) {
+		uint32 cancel, const String& newEnergyVal) {
 	try {
 
 		player->wlock();
@@ -485,24 +485,24 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 
 			InstallationObject * inso = (InstallationObject *) scno;
 
-			if(inso!= NULL)	{
-				uint energy = (inso->getSurplusPower() - atoi(newEnergyVal.c_str()));
+			if (inso!= NULL)	{
+				uint energy = (inso->getSurplusPower() - atoi(newEnergyVal.toCharArray()));
 
 				inso->addPower(energy);
 				//player->removeEnergy(energy);
 
-				stringstream report;
+				StringBuffer report;
 				report << "You successfully deposit " << energy << " units of energy.\n"
 					<< "Energy reserves now at " << inso->getSurplusPower() << " units.";
 
-				player->sendSystemMessage(report.str());
+				player->sendSystemMessage(report.toString());
 
 			}
 
 			/*else {
 				BuildingObject * buio = (BuildingObject * ) obj;
 
-				if(buio!= NULL)
+				if (buio!= NULL)
 
 			}*/
 
@@ -525,7 +525,7 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 	}
 }
 
-void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const string& song, bool change) {
+void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const String& song, bool change) {
 	try {
 		player->wlock();
 
@@ -545,18 +545,18 @@ void SuiManager::handleStartMusic(uint32 boxID, Player* player, uint32 cancel, c
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleStartMusic " << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleStartMusic(Player* player, const string& music)");
+		error("Unreported exception caught in SuiManager::handleStartMusic(Player* player, const String& music)");
 		player->unlock();
 	}
 }
 
-void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const string& dance, bool change) {
+void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const String& dance, bool change) {
 	try {
 		player->wlock();
 
@@ -576,13 +576,13 @@ void SuiManager::handleStartDancing(uint32 boxID, Player* player, uint32 cancel,
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleStartDancing " << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleStartDancing(Player* player, const string& music)");
+		error("Unreported exception caught in SuiManager::handleStartDancing(Player* player, const String& music)");
 		player->unlock();
 	}
 }
@@ -617,9 +617,9 @@ void SuiManager::handleSurveyToolRange(uint32 boxID, Player* player, uint32 canc
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleSurveyToolRange " << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
@@ -666,9 +666,9 @@ void SuiManager::handleSliceWeapon(uint32 boxID, Player* player, uint32 cancel, 
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleSliceWeapon " << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
@@ -715,9 +715,9 @@ void SuiManager::handleSliceArmor(uint32 boxID, Player* player, uint32 cancel, i
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleSliceArmor " << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
@@ -766,9 +766,9 @@ void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel,
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleRepairWeapon " << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
@@ -817,9 +817,9 @@ void SuiManager::handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, 
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleRepairArmor " << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
@@ -845,9 +845,9 @@ void SuiManager::handleTicketPurchaseMessageBox(uint32 boxID, Player* player) {
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleTicketPurchaseMessageBox " << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
@@ -873,7 +873,7 @@ void SuiManager::handleBlueFrogItemRequest(uint32 boxID, Player* player, uint32 
 			SuiListBox* listBox = (SuiListBox*)sui;
 			BlueFrogVector * bfVector = itemManager->getBFItemList();
 
-			if(itemIndex >= 0 && itemIndex < bfVector->size()) {
+			if (itemIndex >= 0 && itemIndex < bfVector->size()) {
 				itemManager->giveBFItemSet(player, bfVector->get(itemIndex));
 				player->sendSystemMessage("You received a " + bfVector->get(itemIndex));
 			}
@@ -1074,7 +1074,7 @@ void SuiManager::handleTicketCollectorRespones(uint32 boxID, Player* player, uin
 	}
 }
 
-void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value, int var) {
+void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const String& value, int var) {
 	try {
 		player->wlock();
 
@@ -1088,7 +1088,7 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 		if (sui->isColorPicker()) {
 			SuiColorPicker* colorPicker = (SuiColorPicker*) sui;
 
-			int val = atoi(value.c_str());
+			int val = atoi(value.toCharArray());
 
 			if (val >= 0 && val < 144) {
 				uint64 oID = colorPicker->getObjectID();
@@ -1127,9 +1127,9 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleColorPicker" << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
@@ -1163,9 +1163,9 @@ void SuiManager::handleBankTransfer(uint32 boxID, Player* player, int cash, int 
 
 		player->unlock();
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "Exception in SuiManager::handleBankTransfer" << e.getMessage();
-		error(msg.str());
+		error(msg.toString());
 
 		player->unlock();
 	} catch (...) {
@@ -1236,7 +1236,7 @@ void SuiManager::handleDiagnose(uint32 boxID, Player* player) {
 void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel, int index) {
 	try{
 		player->wlock();
-		if(!player->hasSuiBox(boxID)){
+		if (!player->hasSuiBox(boxID)){
 			player->unlock();
 			return;
 		}
@@ -1245,37 +1245,37 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 		ResourceManager* resManager = player->getZone()->getZoneServer()->getResourceManager();
 		if (sui->isListBox()) {
 			SuiListBox* listBox = (SuiListBox*)sui;
-			if(cancel!=1){
-				if(index==-1){//sui returns -1 if nothing is selected
+			if (cancel!=1){
+				if (index==-1){//sui returns -1 if nothing is selected
 					player->sendMessage(listBox->generateMessage());
 					player->unlock();
 					return;
 				}
-				string choice = listBox->getMenuItemName(index);
+				String choice = listBox->getMenuItemName(index);
 				player->addSuiBoxChoice(choice);
 
 				SuiListBoxVector* choicesList = player->getSuiBoxChoices();
 
-				if(resManager->containsResource(choice)){//display the resource stats
+				if (resManager->containsResource(choice)){//display the resource stats
 					/*
 					 * If we get to a resource but there are still more list boxes ahead of
 					 * this list box, we delete them so that we can insert the final box.
 					 */
 					bool hasNextBox = false;
 					SuiListBox* nextListBox;
-					if(listBox->getNextBox()!=0 && player->hasSuiBox(listBox->getNextBox())){
+					if (listBox->getNextBox()!=0 && player->hasSuiBox(listBox->getNextBox())){
 						hasNextBox = true;
 						nextListBox = (SuiListBox*)player->getSuiBox(listBox->getNextBox());
 					}
-					while(hasNextBox){
-						if(nextListBox->getNextBox()==0){
+					while (hasNextBox){
+						if (nextListBox->getNextBox()==0){
 							uint32 zero = 0;
 							nextListBox->setPreviousBox(zero);
 							player->removeSuiBox(nextListBox->getBoxID());
 							nextListBox->finalize();
 							hasNextBox=false;
 						}
-						else if(player->getSuiBox(nextListBox->getNextBox())->isListBox()){
+						else if (player->getSuiBox(nextListBox->getNextBox())->isListBox()){
 							uint32 nextBox = nextListBox->getNextBox();
 							uint32 zero = 0;
 							nextListBox->setNextBox(zero);
@@ -1298,24 +1298,24 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 					player->sendMessage(finalListBox->generateMessage());
 				}
 				else{//use a listbox to show the next set of classes to choose from
-					if(listBox->getNextBox()!=0){ //already a listbox ahead so no need to create one
+					if (listBox->getNextBox()!=0){ //already a listbox ahead so no need to create one
 						SuiBox* nextSui = player->getSuiBox(listBox->getNextBox());
-						if(nextSui->isListBox()){
+						if (nextSui->isListBox()){
 							SuiListBox* nextListBox = (SuiListBox*)nextSui;
 							nextListBox->removeAllMenuItems();
-							string text = ("Choose resource class from " + choice);
+							String text = ("Choose resource class from " + choice);
 							nextListBox->setPromptText(text);
 							resManager->generateSUI(player, nextListBox);
 							player->sendMessage(nextListBox->generateMessage());
 						}
 					}
-					else if(listBox->getNextBox()==0){ //no listbox ahead so we create one
+					else if (listBox->getNextBox()==0){ //no listbox ahead so we create one
 						SuiListBox* listBox2 = new SuiListBox(player, 0xE4F2);
 						player->addSuiBox(listBox2);
 						listBox->setNextBox(listBox2->getBoxID());
 						listBox2->setPreviousBox(listBox->getBoxID());
 						listBox2->setPromptTitle("Resources");
-						string text = ("Choose resource class from " + choice);
+						String text = ("Choose resource class from " + choice);
 						listBox2->setPromptText(text);
 						listBox2->setBackButton(true);
 						resManager->generateSUI(player, listBox2);
@@ -1323,17 +1323,17 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 					}
 				}
 			}
-			if(cancel==1 && listBox->getPreviousBox()!=0){//clicked BACK. return to previous menu
+			if (cancel==1 && listBox->getPreviousBox()!=0){//clicked BACK. return to previous menu
 				SuiBox* prevSui = player->getSuiBox(listBox->getPreviousBox());
-				if(prevSui->isListBox()){
+				if (prevSui->isListBox()){
 					SuiListBox* prevListBox = (SuiListBox*)prevSui;
 					player->removeLastSuiBoxChoice();
 					player->sendMessage(prevListBox->generateMessage());
 				}
 			}
-			else if(cancel==1 && listBox->getPreviousBox()==0){//clicked CANCEL. removing every menu
-				while(listBox->getNextBox()!=0 && player->hasSuiBox(listBox->getNextBox())){
-					if(player->getSuiBox(listBox->getNextBox())->isListBox()){
+			else if (cancel==1 && listBox->getPreviousBox()==0){//clicked CANCEL. removing every menu
+				while (listBox->getNextBox()!=0 && player->hasSuiBox(listBox->getNextBox())){
+					if (player->getSuiBox(listBox->getNextBox())->isListBox()){
 						uint32 nextBox = listBox->getNextBox();
 						uint32 zero = 0;
 						listBox->setNextBox(zero);
@@ -1345,7 +1345,7 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 				}
 
 				uint32 zero = 0;
-				if(player->hasSuiBox(listBox->getBoxID())){
+				if (player->hasSuiBox(listBox->getBoxID())){
 					listBox->setPreviousBox(zero);
 					player->removeSuiBox(listBox->getBoxID());
 					listBox->finalize();
@@ -1369,7 +1369,7 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 cancel, int index) {
 	try{
 		player->wlock();
-		if(!player->hasSuiBox(boxID)){
+		if (!player->hasSuiBox(boxID)){
 			player->unlock();
 			return;
 		}
@@ -1378,7 +1378,7 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 		ResourceManager* resManager = player->getZone()->getZoneServer()->getResourceManager();
 		if (sui->isListBox()) {
 			SuiListBox* listBox = (SuiListBox*)sui;
-			if(cancel!=1){//give the resources to the player then remove all listboxes
+			if (cancel!=1){//give the resources to the player then remove all listboxes
 				SuiListBoxVector* choicesList = player->getSuiBoxChoices();
 				resManager->useResourceDeed(player, choicesList->get(choicesList->size()-1), ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
 				player->clearSuiBoxChoices();
@@ -1391,8 +1391,8 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 				deed->destroyDeed(player);
 
 				uint32 zero = 0;
-				while(listBox->getPreviousBox()!=0 && player->hasSuiBox(listBox->getPreviousBox())){
-					if(player->getSuiBox(listBox->getPreviousBox())->isListBox()){
+				while (listBox->getPreviousBox()!=0 && player->hasSuiBox(listBox->getPreviousBox())){
+					if (player->getSuiBox(listBox->getPreviousBox())->isListBox()){
 						uint32 prevBox = listBox->getPreviousBox();
 						player->removeSuiBox(listBox->getBoxID());
 						listBox->setNextBox(zero);
@@ -1401,16 +1401,16 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 						listBox = (SuiListBox*)player->getSuiBox(prevBox);
 					}
 				}
-				if(player->hasSuiBox(listBox->getBoxID())){
+				if (player->hasSuiBox(listBox->getBoxID())){
 					listBox->setNextBox(zero);
 					player->removeSuiBox(listBox->getBoxID());
 					listBox->finalize();
 				}
 				player->clearSuiBoxChoices();
 			}
-			if(cancel==1 && listBox->getPreviousBox()!=0){//clicked BACK. just remove the final box.
+			if (cancel==1 && listBox->getPreviousBox()!=0){//clicked BACK. just remove the final box.
 				SuiBox* prevSui = player->getSuiBox(listBox->getPreviousBox());
-				if(prevSui->isListBox()){
+				if (prevSui->isListBox()){
 					SuiListBox* prevListBox = (SuiListBox*)prevSui;
 					player->removeLastSuiBoxChoice();
 					player->removeSuiBox(listBox->getBoxID());

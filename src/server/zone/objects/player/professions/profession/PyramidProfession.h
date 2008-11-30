@@ -53,7 +53,7 @@ protected:
 	SkillBox* branches[10];
 
 public:
-	PyramidProfession(string& name) : Profession(name, PYRAMID) {
+	PyramidProfession(String& name) : Profession(name, PYRAMID) {
 	}
 	
 	void setBox(int branch, SkillBox* skillbox) {

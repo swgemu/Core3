@@ -65,14 +65,14 @@ BlueFrogCreatureImplementation::BlueFrogCreatureImplementation(uint64 oid) : Blu
 
 	creatureBitmask = 0x108;
 
-	characterName = unicode("a Jawa Trader");
+	characterName = UnicodeString("a Jawa Trader");
 	speciesName = "bluefrog";
 	objectCRC = 1350586805;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "BlueFrog = 0x" << oid;
-	setLoggingName(loggingname.str());
-	setLockName(loggingname.str());
+	setLoggingName(loggingname.toString());
+	setLockName(loggingname.toString());
 	setLogging(false);
 	setGlobalLogging(true);
 }
@@ -83,19 +83,19 @@ BlueFrogCreatureImplementation::~BlueFrogCreatureImplementation() {
 void BlueFrogCreatureImplementation::setBFType(int type) {
 	switch (type) {
 	case JAWA:
-		characterName = unicode("Jawa Trader");
+		characterName = UnicodeString("Jawa Trader");
 		objectCRC = 0x508051B5;
 		break;
 	case GUNGAN:
-		characterName = unicode("Gungan Trader");
+		characterName = UnicodeString("Gungan Trader");
 		objectCRC = 0xF1E56234;
 		break;
 	case MEDDROID:
-		characterName = unicode("Medical Droid");
+		characterName = UnicodeString("Medical Droid");
 		objectCRC = 0x25CD1614;
 		break;
 	case BARTENDER:
-		characterName = unicode("Bartender");
+		characterName = UnicodeString("Bartender");
 		objectCRC = 0x4B30B5E4;
 		break;
 	default:
@@ -114,11 +114,11 @@ void BlueFrogCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 }
 
 void BlueFrogCreatureImplementation::sendMessage1(Player* player) {
-	stringstream mes1;
+	StringBuffer mes1;
 	mes1 << "I have been sanctioned by the developers to give you certain goods and to train";
 	mes1 << " you in certain skills and provide you with certain services that will help you test specific areas of development.";
 	mes1 << endl << endl << "What do you need?";
-	unicode message = unicode(mes1.str());
+	UnicodeString message = UnicodeString(mes1.toString());
 
 	NpcConversationMessage* m1 = new NpcConversationMessage(player, message);
 	player->sendMessage(m1);
@@ -126,12 +126,12 @@ void BlueFrogCreatureImplementation::sendMessage1(Player* player) {
 }
 void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 	StringList* slist = new StringList(player);
-	unicode option1 = unicode("Which professions will you teach me?");
-	//unicode option2 = unicode("I'd like to unlearn all my skills and start over.");
-	unicode option3 = unicode("Which items can I get?");
-	unicode option4 = unicode("I want to test wounds.");
-	unicode option5 = unicode("I want to test states.");
-	//unicode option6 = unicode("I want to earn some faction points.");
+	UnicodeString option1 = UnicodeString("Which professions will you teach me?");
+	//UnicodeString option2 = UnicodeString("I'd like to unlearn all my skills and start over.");
+	UnicodeString option3 = UnicodeString("Which items can I get?");
+	UnicodeString option4 = UnicodeString("I want to test wounds.");
+	UnicodeString option5 = UnicodeString("I want to test states.");
+	//UnicodeString option6 = UnicodeString("I want to earn some faction points.");
 
 	slist->insertOption(option1);
 	//slist->insertOption(option2);
@@ -145,9 +145,9 @@ void BlueFrogCreatureImplementation::sendChoices1(Player* player) {
 }
 
 void BlueFrogCreatureImplementation::sendSelectProfessionMessage(Player * player) {
-	stringstream mes1;
+	StringBuffer mes1;
 	mes1 << "I can train you in the following professions...";
-	unicode message = unicode(mes1.str());
+	UnicodeString message = UnicodeString(mes1.toString());
 
 	NpcConversationMessage* m1 = new NpcConversationMessage(player, message);
 	player->sendMessage(m1);
@@ -160,16 +160,16 @@ void BlueFrogCreatureImplementation::sendProfessionChoices(Player* player) {
 
 	StringList* slist = new StringList(player);
 
-	string messStr = player->getLastNpcConvMessStr();
-	string group = messStr.substr(15, messStr.length() - 15);
+	String messStr = player->getLastNpcConvMessStr();
+	String group = messStr.subString(15, messStr.length());
 
 	BlueFrogVector * bfVector = itemManager->getBFProfList(group);
-	for(int i = 0; i < bfVector->size(); i++) {
-		unicode option = unicode(bfVector->get(i));
+	for (int i = 0; i < bfVector->size(); i++) {
+		UnicodeString option = UnicodeString(bfVector->get(i));
 		slist->insertOption(option);
 	}
 
-	unicode restart = unicode("Can we start over?");
+	UnicodeString restart = UnicodeString("Can we start over?");
 
 	slist->insertOption(restart);
 
@@ -234,16 +234,16 @@ void BlueFrogCreatureImplementation::sendStateTerminalMessage(Player * player) {
 }
 
 void BlueFrogCreatureImplementation::sendFactionPointTerminalMessage(Player * player) {
-	stringstream mes1;
+	StringBuffer mes1;
 	mes1 << "Which Faction would you like to earn points for?";
-	unicode message = unicode(mes1.str());
+	UnicodeString message = UnicodeString(mes1.toString());
 
 	NpcConversationMessage* m1 = new NpcConversationMessage(player, message);
 	player->sendMessage(m1);
 
-	unicode option1 = unicode("The Empire");
-	unicode option2 = unicode("The Rebellion");
-	unicode restart = unicode("I'd like to start over.");
+	UnicodeString option1 = UnicodeString("The Empire");
+	UnicodeString option2 = UnicodeString("The Rebellion");
+	UnicodeString restart = UnicodeString("I'd like to start over.");
 
 	StringList* slist = new StringList(player);
 	slist->insertOption(option1);
@@ -259,15 +259,14 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 
 	Player* player = (Player*)obj;
 
-	if(player->getLastNpcConvStr() != "blue_frog")
+	if (player->getLastNpcConvStr() != "blue_frog")
 		return;
 
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
-	string lastMessage = player->getLastNpcConvMessStr();
+	String lastMessage = player->getLastNpcConvMessStr();
 
-
-	if(lastMessage == "blue_frog_m1") {
+	if (lastMessage == "blue_frog_m1") {
 		switch(option) {
 		case 0:
 			player->setLastNpcConvMessStr("blue_frog_prof_root");
@@ -295,7 +294,7 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 			sendFactionPointTerminalMessage(player);
 			break; */
 		}
-	} else if (lastMessage.find("blue_frog_fp") != string::npos) {
+	} else if (lastMessage.indexOf("blue_frog_fp") != -1) {
 		switch (option) {
 		case 0:
 			player->addFactionPoints("imperial", 500);
@@ -310,18 +309,19 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 		case 2:
 			sendMessage1(player);
 		}
-	} else if (lastMessage.find("blue_frog_prof") != string::npos) {
-		string group = lastMessage.substr(15, lastMessage.length() - 15);
-		BlueFrogVector * bfVector = itemManager->getBFProfList(group);
+	} else if (lastMessage.indexOf("blue_frog_prof") != -1) {
+		String group = lastMessage.subString(15, lastMessage.length());
+		BlueFrogVector* bfVector = itemManager->getBFProfList(group);
 
 		if (option < bfVector->size()) {
-			string key = bfVector->get(option);
-			string prof = itemManager->getBFProf(key);
+			String key = bfVector->get(option);
+			String prof = itemManager->getBFProf(key);
 
-			if (prof.empty()) {
-				stringstream ss;
+			if (prof.isEmpty()) {
+				StringBuffer ss;
 				ss << "blue_frog_prof_" << key;
-				player->setLastNpcConvMessStr(ss.str());
+				player->setLastNpcConvMessStr(ss.toString());
+
 				sendSelectProfessionMessage(player);
 
 				bfVector->finalize();
@@ -346,7 +346,7 @@ void BlueFrogCreatureImplementation::selectConversationOption(int option, SceneO
 	}
 }
 
-bool BlueFrogCreatureImplementation::trainProfession(Player * player, string prof) {
+bool BlueFrogCreatureImplementation::trainProfession(Player * player, String prof) {
 	if (player->hasSkillBox(prof))
 		return false;
 
@@ -370,7 +370,7 @@ bool BlueFrogCreatureImplementation::trainSkill(Player * player, SkillBox * skil
 
 		if (!player->hasSkillBox(sbox->getName())) {
 
-			if(!trainSkill(player, sbox))
+			if (!trainSkill(player, sbox))
 				return false;
 		}
 

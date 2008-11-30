@@ -51,7 +51,7 @@ CreatureObject::CreatureObject(DummyConstructorParameter* param) : SceneObject(p
 CreatureObject::~CreatureObject() {
 }
 
-void CreatureObject::info(const string& message, bool forcedLog) {
+void CreatureObject::info(const String& message, bool forcedLog) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +120,7 @@ void CreatureObject::doCombatAnimation(CreatureObject* defender, unsigned int an
 		((CreatureObjectImplementation*) _impl)->doCombatAnimation(defender, animcrc, hit);
 }
 
-void CreatureObject::doAnimation(const string& anim) {
+void CreatureObject::doAnimation(const String& anim) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -133,7 +133,7 @@ void CreatureObject::doAnimation(const string& anim) {
 		((CreatureObjectImplementation*) _impl)->doAnimation(anim);
 }
 
-void CreatureObject::playEffect(const string& file, const string& aux) {
+void CreatureObject::playEffect(const String& file, const String& aux) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -147,7 +147,7 @@ void CreatureObject::playEffect(const string& file, const string& aux) {
 		((CreatureObjectImplementation*) _impl)->playEffect(file, aux);
 }
 
-void CreatureObject::showFlyText(const string& file, const string& aux, unsigned char red, unsigned char green, unsigned char blue) {
+void CreatureObject::showFlyText(const String& file, const String& aux, unsigned char red, unsigned char green, unsigned char blue) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -164,7 +164,7 @@ void CreatureObject::showFlyText(const string& file, const string& aux, unsigned
 		((CreatureObjectImplementation*) _impl)->showFlyText(file, aux, red, green, blue);
 }
 
-void CreatureObject::sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill, bool areaSpam) {
+void CreatureObject::sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const String& skill, bool areaSpam) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -246,7 +246,7 @@ CreatureObject* CreatureObject::getLootOwner() {
 		return ((CreatureObjectImplementation*) _impl)->getLootOwner();
 }
 
-unsigned int CreatureObject::getMitigation(const string& mit) {
+unsigned int CreatureObject::getMitigation(const String& mit) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -488,7 +488,7 @@ void CreatureObject::updateKnockdownRecovery() {
 		((CreatureObjectImplementation*) _impl)->updateKnockdownRecovery();
 }
 
-void CreatureObject::updateMood(const string& md) {
+void CreatureObject::updateMood(const String& md) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1967,7 +1967,7 @@ SceneObject* CreatureObject::getInventoryItem(unsigned long long oid) {
 		return ((CreatureObjectImplementation*) _impl)->getInventoryItem(oid);
 }
 
-TangibleObject* CreatureObject::getMissionItem(string& tma) {
+TangibleObject* CreatureObject::getMissionItem(String& tma) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2088,7 +2088,7 @@ void CreatureObject::addSkill(Skill* skill) {
 		((CreatureObjectImplementation*) _impl)->addSkill(skill);
 }
 
-void CreatureObject::addSkillMod(const string& name, int mod, bool updateClient) {
+void CreatureObject::addSkillMod(const String& name, int mod, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2103,7 +2103,7 @@ void CreatureObject::addSkillMod(const string& name, int mod, bool updateClient)
 		((CreatureObjectImplementation*) _impl)->addSkillMod(name, mod, updateClient);
 }
 
-int CreatureObject::getSkillMod(const string& name) {
+int CreatureObject::getSkillMod(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2116,7 +2116,7 @@ int CreatureObject::getSkillMod(const string& name) {
 		return ((CreatureObjectImplementation*) _impl)->getSkillMod(name);
 }
 
-bool CreatureObject::hasSkillMod(const string& name) {
+bool CreatureObject::hasSkillMod(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2129,7 +2129,7 @@ bool CreatureObject::hasSkillMod(const string& name) {
 		return ((CreatureObjectImplementation*) _impl)->hasSkillMod(name);
 }
 
-int CreatureObject::getSkillModBonus(const string& name) {
+int CreatureObject::getSkillModBonus(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2142,7 +2142,7 @@ int CreatureObject::getSkillModBonus(const string& name) {
 		return ((CreatureObjectImplementation*) _impl)->getSkillModBonus(name);
 }
 
-bool CreatureObject::hasSkillModBonus(const string& name) {
+bool CreatureObject::hasSkillModBonus(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2361,7 +2361,7 @@ int CreatureObject::getCenteredBonus() {
 		return ((CreatureObjectImplementation*) _impl)->getCenteredBonus();
 }
 
-void CreatureObject::sendSystemMessage(const string& message) {
+void CreatureObject::sendSystemMessage(const String& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2374,7 +2374,7 @@ void CreatureObject::sendSystemMessage(const string& message) {
 		((CreatureObjectImplementation*) _impl)->sendSystemMessage(message);
 }
 
-void CreatureObject::sendSystemMessage(const string& file, const string& str, unsigned long long targetid) {
+void CreatureObject::sendSystemMessage(const String& file, const String& str, unsigned long long targetid) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2442,7 +2442,7 @@ void CreatureObject::addLootItem(TangibleObject* item) {
 		((CreatureObjectImplementation*) _impl)->addLootItem(item);
 }
 
-void CreatureObject::startDancing(const string& anim, bool changeDance) {
+void CreatureObject::startDancing(const String& anim, bool changeDance) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2456,7 +2456,7 @@ void CreatureObject::startDancing(const string& anim, bool changeDance) {
 		((CreatureObjectImplementation*) _impl)->startDancing(anim, changeDance);
 }
 
-void CreatureObject::startPlayingMusic(const string& anim, bool changeDance) {
+void CreatureObject::startPlayingMusic(const String& anim, bool changeDance) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2628,7 +2628,7 @@ void CreatureObject::removeWatcher(CreatureObject* creature) {
 		((CreatureObjectImplementation*) _impl)->removeWatcher(creature);
 }
 
-void CreatureObject::doFlourish(const string& modifier) {
+void CreatureObject::doFlourish(const String& modifier) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2772,7 +2772,7 @@ int CreatureObject::getCreatureSkillsSize() {
 		return ((CreatureObjectImplementation*) _impl)->getCreatureSkillsSize();
 }
 
-string& CreatureObject::getSkill(int idx) {
+String& CreatureObject::getSkill(int idx) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3258,7 +3258,7 @@ bool CreatureObject::isWatching() {
 		return ((CreatureObjectImplementation*) _impl)->isWatching();
 }
 
-unicode& CreatureObject::getCharacterName() {
+UnicodeString& CreatureObject::getCharacterName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3271,7 +3271,7 @@ unicode& CreatureObject::getCharacterName() {
 		return ((CreatureObjectImplementation*) _impl)->getCharacterName();
 }
 
-string& CreatureObject::getStfName() {
+String& CreatureObject::getStfName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3284,7 +3284,7 @@ string& CreatureObject::getStfName() {
 		return ((CreatureObjectImplementation*) _impl)->getStfName();
 }
 
-string& CreatureObject::getSpeciesName() {
+String& CreatureObject::getSpeciesName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3297,7 +3297,7 @@ string& CreatureObject::getSpeciesName() {
 		return ((CreatureObjectImplementation*) _impl)->getSpeciesName();
 }
 
-string& CreatureObject::getRaceName() {
+String& CreatureObject::getRaceName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3310,7 +3310,7 @@ string& CreatureObject::getRaceName() {
 		return ((CreatureObjectImplementation*) _impl)->getRaceName();
 }
 
-string& CreatureObject::getGender() {
+String& CreatureObject::getGender() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3323,7 +3323,7 @@ string& CreatureObject::getGender() {
 		return ((CreatureObjectImplementation*) _impl)->getGender();
 }
 
-string& CreatureObject::getTerrainName() {
+String& CreatureObject::getTerrainName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3336,7 +3336,7 @@ string& CreatureObject::getTerrainName() {
 		return ((CreatureObjectImplementation*) _impl)->getTerrainName();
 }
 
-void CreatureObject::getCharacterAppearance(string& appearance) {
+void CreatureObject::getCharacterAppearance(String& appearance) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3349,7 +3349,7 @@ void CreatureObject::getCharacterAppearance(string& appearance) {
 		((CreatureObjectImplementation*) _impl)->getCharacterAppearance(appearance);
 }
 
-void CreatureObject::getHairAppearance(string& appearance) {
+void CreatureObject::getHairAppearance(String& appearance) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4329,7 +4329,7 @@ unsigned int CreatureObject::getNewDefenderUpdateCounter(int cnt) {
 		return ((CreatureObjectImplementation*) _impl)->getNewDefenderUpdateCounter(cnt);
 }
 
-string& CreatureObject::getPerformanceAnimation() {
+String& CreatureObject::getPerformanceAnimation() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4366,7 +4366,7 @@ unsigned int CreatureObject::getInstrumentID() {
 		return ((CreatureObjectImplementation*) _impl)->getInstrumentID();
 }
 
-string& CreatureObject::getPerformanceName() {
+String& CreatureObject::getPerformanceName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4379,7 +4379,7 @@ string& CreatureObject::getPerformanceName() {
 		return ((CreatureObjectImplementation*) _impl)->getPerformanceName();
 }
 
-string& CreatureObject::getMood() {
+String& CreatureObject::getMood() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4500,7 +4500,7 @@ SceneObject* CreatureObject::getBuilding() {
 		return ((CreatureObjectImplementation*) _impl)->getBuilding();
 }
 
-string& CreatureObject::getGuildName() {
+String& CreatureObject::getGuildName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4562,7 +4562,7 @@ unsigned int CreatureObject::getNewSkillModsCounter(int cnt) {
 		return ((CreatureObjectImplementation*) _impl)->getNewSkillModsCounter(cnt);
 }
 
-string& CreatureObject::getHideType() {
+String& CreatureObject::getHideType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4575,7 +4575,7 @@ string& CreatureObject::getHideType() {
 		return ((CreatureObjectImplementation*) _impl)->getHideType();
 }
 
-string& CreatureObject::getBoneType() {
+String& CreatureObject::getBoneType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4588,7 +4588,7 @@ string& CreatureObject::getBoneType() {
 		return ((CreatureObjectImplementation*) _impl)->getBoneType();
 }
 
-string& CreatureObject::getMeatType() {
+String& CreatureObject::getMeatType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4745,7 +4745,7 @@ int CreatureObject::isAggressive() {
 		return ((CreatureObjectImplementation*) _impl)->isAggressive();
 }
 
-string& CreatureObject::getBehaviorScript() {
+String& CreatureObject::getBehaviorScript() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4758,7 +4758,7 @@ string& CreatureObject::getBehaviorScript() {
 		return ((CreatureObjectImplementation*) _impl)->getBehaviorScript();
 }
 
-string& CreatureObject::getCreatureFaction() {
+String& CreatureObject::getCreatureFaction() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4771,7 +4771,7 @@ string& CreatureObject::getCreatureFaction() {
 		return ((CreatureObjectImplementation*) _impl)->getCreatureFaction();
 }
 
-string& CreatureObject::getCreatureWeapon() {
+String& CreatureObject::getCreatureWeapon() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4784,7 +4784,7 @@ string& CreatureObject::getCreatureWeapon() {
 		return ((CreatureObjectImplementation*) _impl)->getCreatureWeapon();
 }
 
-string& CreatureObject::getCreatureWeaponName() {
+String& CreatureObject::getCreatureWeaponName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4797,7 +4797,7 @@ string& CreatureObject::getCreatureWeaponName() {
 		return ((CreatureObjectImplementation*) _impl)->getCreatureWeaponName();
 }
 
-string& CreatureObject::getCreatureWeaponTemp() {
+String& CreatureObject::getCreatureWeaponTemp() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4810,7 +4810,7 @@ string& CreatureObject::getCreatureWeaponTemp() {
 		return ((CreatureObjectImplementation*) _impl)->getCreatureWeaponTemp();
 }
 
-string& CreatureObject::getCreatureWeaponClass() {
+String& CreatureObject::getCreatureWeaponClass() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4871,7 +4871,7 @@ float CreatureObject::getCreatureWeaponAttackSpeed() {
 		return ((CreatureObjectImplementation*) _impl)->getCreatureWeaponAttackSpeed();
 }
 
-string& CreatureObject::getCreatureWeaponDamageType() {
+String& CreatureObject::getCreatureWeaponDamageType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4884,7 +4884,7 @@ string& CreatureObject::getCreatureWeaponDamageType() {
 		return ((CreatureObjectImplementation*) _impl)->getCreatureWeaponDamageType();
 }
 
-string& CreatureObject::getCreatureWeaponArmorPiercing() {
+String& CreatureObject::getCreatureWeaponArmorPiercing() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4921,7 +4921,7 @@ float CreatureObject::getTame() {
 		return ((CreatureObjectImplementation*) _impl)->getTame();
 }
 
-string& CreatureObject::getLootGroup() {
+String& CreatureObject::getLootGroup() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6023,7 +6023,7 @@ bool CreatureObject::setNextAttackDelay(int del) {
 		return ((CreatureObjectImplementation*) _impl)->setNextAttackDelay(del);
 }
 
-void CreatureObject::setCharacterName(const string& name) {
+void CreatureObject::setCharacterName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6036,7 +6036,7 @@ void CreatureObject::setCharacterName(const string& name) {
 		((CreatureObjectImplementation*) _impl)->setCharacterName(name);
 }
 
-void CreatureObject::setCharacterName(const unicode& name) {
+void CreatureObject::setCharacterName(const UnicodeString& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6049,7 +6049,7 @@ void CreatureObject::setCharacterName(const unicode& name) {
 		((CreatureObjectImplementation*) _impl)->setCharacterName(name);
 }
 
-void CreatureObject::setTerrainName(const string& name) {
+void CreatureObject::setTerrainName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6062,7 +6062,7 @@ void CreatureObject::setTerrainName(const string& name) {
 		((CreatureObjectImplementation*) _impl)->setTerrainName(name);
 }
 
-void CreatureObject::setCharacterAppearance(string& cust) {
+void CreatureObject::setCharacterAppearance(String& cust) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6089,7 +6089,7 @@ void CreatureObject::setAppearanceAttribute(unsigned char type, unsigned char va
 		((CreatureObjectImplementation*) _impl)->setAppearanceAttribute(type, value);
 }
 
-void CreatureObject::setAppearanceAttribute(string& type, unsigned char value) {
+void CreatureObject::setAppearanceAttribute(String& type, unsigned char value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6115,7 +6115,7 @@ void CreatureObject::updateCharacterAppearance() {
 		((CreatureObjectImplementation*) _impl)->updateCharacterAppearance();
 }
 
-void CreatureObject::setHairAppearance(string& cust) {
+void CreatureObject::setHairAppearance(String& cust) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6142,7 +6142,7 @@ void CreatureObject::setHairAppearanceAttribute(unsigned char type, unsigned cha
 		((CreatureObjectImplementation*) _impl)->setHairAppearanceAttribute(type, value);
 }
 
-void CreatureObject::setHairAppearanceAttribute(string& type, unsigned char value) {
+void CreatureObject::setHairAppearanceAttribute(String& type, unsigned char value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6156,7 +6156,7 @@ void CreatureObject::setHairAppearanceAttribute(string& type, unsigned char valu
 		((CreatureObjectImplementation*) _impl)->setHairAppearanceAttribute(type, value);
 }
 
-void CreatureObject::setRaceName(const string& name) {
+void CreatureObject::setRaceName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6169,7 +6169,7 @@ void CreatureObject::setRaceName(const string& name) {
 		((CreatureObjectImplementation*) _impl)->setRaceName(name);
 }
 
-void CreatureObject::setSpeciesName(const string& name) {
+void CreatureObject::setSpeciesName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6182,7 +6182,7 @@ void CreatureObject::setSpeciesName(const string& name) {
 		((CreatureObjectImplementation*) _impl)->setSpeciesName(name);
 }
 
-void CreatureObject::setStfName(const string& name) {
+void CreatureObject::setStfName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6195,7 +6195,7 @@ void CreatureObject::setStfName(const string& name) {
 		((CreatureObjectImplementation*) _impl)->setStfName(name);
 }
 
-void CreatureObject::setGender(const string& name) {
+void CreatureObject::setGender(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6247,7 +6247,7 @@ void CreatureObject::setMood(unsigned char mdid) {
 		((CreatureObjectImplementation*) _impl)->setMood(mdid);
 }
 
-void CreatureObject::setMood(const string& m) {
+void CreatureObject::setMood(const String& m) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6615,7 +6615,7 @@ int CreatureObject::getMedicalFacilityRating() {
 		return ((CreatureObjectImplementation*) _impl)->getMedicalFacilityRating();
 }
 
-void CreatureObject::setBoneType(const string& bone) {
+void CreatureObject::setBoneType(const String& bone) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6641,7 +6641,7 @@ void CreatureObject::setBoneMax(int bonemax) {
 		((CreatureObjectImplementation*) _impl)->setBoneMax(bonemax);
 }
 
-void CreatureObject::setHideType(const string& hide) {
+void CreatureObject::setHideType(const String& hide) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6667,7 +6667,7 @@ void CreatureObject::setHideMax(int hidemax) {
 		((CreatureObjectImplementation*) _impl)->setHideMax(hidemax);
 }
 
-void CreatureObject::setMeatType(const string& meat) {
+void CreatureObject::setMeatType(const String& meat) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6797,7 +6797,7 @@ void CreatureObject::setAggressive(int aggressive) {
 		((CreatureObjectImplementation*) _impl)->setAggressive(aggressive);
 }
 
-void CreatureObject::setBehaviorScript(const string& behaviorScript) {
+void CreatureObject::setBehaviorScript(const String& behaviorScript) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6810,7 +6810,7 @@ void CreatureObject::setBehaviorScript(const string& behaviorScript) {
 		((CreatureObjectImplementation*) _impl)->setBehaviorScript(behaviorScript);
 }
 
-void CreatureObject::setLootGroup(const string& lootgroup) {
+void CreatureObject::setLootGroup(const String& lootgroup) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6836,7 +6836,7 @@ void CreatureObject::setTame(float tme) {
 		((CreatureObjectImplementation*) _impl)->setTame(tme);
 }
 
-void CreatureObject::setCreatureFaction(const string& cfac) {
+void CreatureObject::setCreatureFaction(const String& cfac) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6862,7 +6862,7 @@ void CreatureObject::setInternalNPCDamageModifier(float indm) {
 		((CreatureObjectImplementation*) _impl)->setInternalNPCDamageModifier(indm);
 }
 
-void CreatureObject::setCreatureWeapon(const string& wpon) {
+void CreatureObject::setCreatureWeapon(const String& wpon) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6875,7 +6875,7 @@ void CreatureObject::setCreatureWeapon(const string& wpon) {
 		((CreatureObjectImplementation*) _impl)->setCreatureWeapon(wpon);
 }
 
-void CreatureObject::setCreatureWeaponName(const string& weaponname) {
+void CreatureObject::setCreatureWeaponName(const String& weaponname) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6888,7 +6888,7 @@ void CreatureObject::setCreatureWeaponName(const string& weaponname) {
 		((CreatureObjectImplementation*) _impl)->setCreatureWeaponName(weaponname);
 }
 
-void CreatureObject::setCreatureWeaponTemp(const string& weapontemp) {
+void CreatureObject::setCreatureWeaponTemp(const String& weapontemp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6901,7 +6901,7 @@ void CreatureObject::setCreatureWeaponTemp(const string& weapontemp) {
 		((CreatureObjectImplementation*) _impl)->setCreatureWeaponTemp(weapontemp);
 }
 
-void CreatureObject::setCreatureWeaponClass(const string& weaponclass) {
+void CreatureObject::setCreatureWeaponClass(const String& weaponclass) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6966,7 +6966,7 @@ void CreatureObject::setCreatureWeaponAttackSpeed(float weaponattackspeed) {
 		((CreatureObjectImplementation*) _impl)->setCreatureWeaponAttackSpeed(weaponattackspeed);
 }
 
-void CreatureObject::setCreatureWeaponDamageType(const string& weapondamtype) {
+void CreatureObject::setCreatureWeaponDamageType(const String& weapondamtype) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6979,7 +6979,7 @@ void CreatureObject::setCreatureWeaponDamageType(const string& weapondamtype) {
 		((CreatureObjectImplementation*) _impl)->setCreatureWeaponDamageType(weapondamtype);
 }
 
-void CreatureObject::setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing) {
+void CreatureObject::setCreatureWeaponArmorPiercing(const String& weaponarmorpiercing) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -6992,7 +6992,7 @@ void CreatureObject::setCreatureWeaponArmorPiercing(const string& weaponarmorpie
 		((CreatureObjectImplementation*) _impl)->setCreatureWeaponArmorPiercing(weaponarmorpiercing);
 }
 
-void CreatureObject::say(unicode& message, unsigned int moodid, unsigned int mood2) {
+void CreatureObject::say(UnicodeString& message, unsigned int moodid, unsigned int mood2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -7007,7 +7007,7 @@ void CreatureObject::say(unicode& message, unsigned int moodid, unsigned int moo
 		((CreatureObjectImplementation*) _impl)->say(message, moodid, mood2);
 }
 
-void CreatureObject::say(const string& file, const string& str, StfParameter* param, unsigned int moodid, unsigned int mood2) {
+void CreatureObject::say(const String& file, const String& str, StfParameter* param, unsigned int moodid, unsigned int mood2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -7036,7 +7036,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		info(inv->getAsciiParameter(_param0_info__string_bool_), inv->getBooleanParameter());
+		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
 		break;
 	case 7:
 		sendItemsTo((Player*) inv->getObjectParameter());
@@ -7051,16 +7051,16 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		doCombatAnimation((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 11:
-		doAnimation(inv->getAsciiParameter(_param0_doAnimation__string_));
+		doAnimation(inv->getAsciiParameter(_param0_doAnimation__String_));
 		break;
 	case 12:
-		playEffect(inv->getAsciiParameter(_param0_playEffect__string_string_), inv->getAsciiParameter(_param1_playEffect__string_string_));
+		playEffect(inv->getAsciiParameter(_param0_playEffect__String_String_), inv->getAsciiParameter(_param1_playEffect__String_String_));
 		break;
 	case 13:
-		showFlyText(inv->getAsciiParameter(_param0_showFlyText__string_string_char_char_char_), inv->getAsciiParameter(_param1_showFlyText__string_string_char_char_char_), inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter());
+		showFlyText(inv->getAsciiParameter(_param0_showFlyText__String_String_char_char_char_), inv->getAsciiParameter(_param1_showFlyText__String_String_char_char_char_), inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter());
 		break;
 	case 14:
-		sendCombatSpam((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_sendCombatSpam__CreatureObject_TangibleObject_int_string_bool_), inv->getBooleanParameter());
+		sendCombatSpam((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_sendCombatSpam__CreatureObject_TangibleObject_int_String_bool_), inv->getBooleanParameter());
 		break;
 	case 15:
 		addDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
@@ -7078,7 +7078,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(getLootOwner()->_getObjectID());
 		break;
 	case 20:
-		resp->insertInt(getMitigation(inv->getAsciiParameter(_param0_getMitigation__string_)));
+		resp->insertInt(getMitigation(inv->getAsciiParameter(_param0_getMitigation__String_)));
 		break;
 	case 21:
 		resp->insertBoolean(isIncapacitated());
@@ -7138,7 +7138,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		updateKnockdownRecovery();
 		break;
 	case 40:
-		updateMood(inv->getAsciiParameter(_param0_updateMood__string_));
+		updateMood(inv->getAsciiParameter(_param0_updateMood__String_));
 		break;
 	case 41:
 		resp->insertBoolean(checkKnockdownRecovery());
@@ -7471,7 +7471,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(getInventoryItem(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 151:
-		resp->insertLong(getMissionItem(inv->getAsciiParameter(_param0_getMissionItem__string_))->_getObjectID());
+		resp->insertLong(getMissionItem(inv->getAsciiParameter(_param0_getMissionItem__String_))->_getObjectID());
 		break;
 	case 152:
 		removeInventoryItem(inv->getUnsignedLongParameter());
@@ -7498,19 +7498,19 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(getArmor(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 160:
-		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 161:
-		resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__string_)));
+		resp->insertSignedInt(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__String_)));
 		break;
 	case 162:
-		resp->insertBoolean(hasSkillMod(inv->getAsciiParameter(_param0_hasSkillMod__string_)));
+		resp->insertBoolean(hasSkillMod(inv->getAsciiParameter(_param0_hasSkillMod__String_)));
 		break;
 	case 163:
-		resp->insertSignedInt(getSkillModBonus(inv->getAsciiParameter(_param0_getSkillModBonus__string_)));
+		resp->insertSignedInt(getSkillModBonus(inv->getAsciiParameter(_param0_getSkillModBonus__String_)));
 		break;
 	case 164:
-		resp->insertBoolean(hasSkillModBonus(inv->getAsciiParameter(_param0_hasSkillModBonus__string_)));
+		resp->insertBoolean(hasSkillModBonus(inv->getAsciiParameter(_param0_hasSkillModBonus__String_)));
 		break;
 	case 165:
 		resp->insertSignedInt(getAccuracy());
@@ -7564,10 +7564,10 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertSignedInt(getCenteredBonus());
 		break;
 	case 182:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_));
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_));
 		break;
 	case 183:
-		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__string_string_long_), inv->getAsciiParameter(_param1_sendSystemMessage__string_string_long_), inv->getUnsignedLongParameter());
+		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_String_long_), inv->getAsciiParameter(_param1_sendSystemMessage__String_String_long_), inv->getUnsignedLongParameter());
 		break;
 	case 184:
 		updateSpeed(inv->getFloatParameter(), inv->getFloatParameter());
@@ -7582,10 +7582,10 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		addLootItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 188:
-		startDancing(inv->getAsciiParameter(_param0_startDancing__string_bool_), inv->getBooleanParameter());
+		startDancing(inv->getAsciiParameter(_param0_startDancing__String_bool_), inv->getBooleanParameter());
 		break;
 	case 189:
-		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__string_bool_), inv->getBooleanParameter());
+		startPlayingMusic(inv->getAsciiParameter(_param0_startPlayingMusic__String_bool_), inv->getBooleanParameter());
 		break;
 	case 190:
 		startWatch(inv->getUnsignedLongParameter());
@@ -7624,7 +7624,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		removeWatcher((CreatureObject*) inv->getObjectParameter());
 		break;
 	case 202:
-		doFlourish(inv->getAsciiParameter(_param0_doFlourish__string_));
+		doFlourish(inv->getAsciiParameter(_param0_doFlourish__String_));
 		break;
 	case 203:
 		doPerformanceAction();
@@ -7789,10 +7789,10 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getTerrainName());
 		break;
 	case 257:
-		getCharacterAppearance(inv->getAsciiParameter(_param0_getCharacterAppearance__string_));
+		getCharacterAppearance(inv->getAsciiParameter(_param0_getCharacterAppearance__String_));
 		break;
 	case 258:
-		getHairAppearance(inv->getAsciiParameter(_param0_getHairAppearance__string_));
+		getHairAppearance(inv->getAsciiParameter(_param0_getHairAppearance__String_));
 		break;
 	case 259:
 		resp->insertBoolean(isOvert());
@@ -8431,46 +8431,46 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(setNextAttackDelay(inv->getSignedIntParameter()));
 		break;
 	case 471:
-		setCharacterName(inv->getAsciiParameter(_param0_setCharacterName__string_));
+		setCharacterName(inv->getAsciiParameter(_param0_setCharacterName__String_));
 		break;
 	case 472:
-		setCharacterName(inv->getUnicodeParameter(_param0_setCharacterName__unicode_));
+		setCharacterName(inv->getUnicodeParameter(_param0_setCharacterName__UnicodeString_));
 		break;
 	case 473:
-		setTerrainName(inv->getAsciiParameter(_param0_setTerrainName__string_));
+		setTerrainName(inv->getAsciiParameter(_param0_setTerrainName__String_));
 		break;
 	case 474:
-		setCharacterAppearance(inv->getAsciiParameter(_param0_setCharacterAppearance__string_));
+		setCharacterAppearance(inv->getAsciiParameter(_param0_setCharacterAppearance__String_));
 		break;
 	case 475:
 		setAppearanceAttribute(inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter());
 		break;
 	case 476:
-		setAppearanceAttribute(inv->getAsciiParameter(_param0_setAppearanceAttribute__string_char_), inv->getUnsignedCharParameter());
+		setAppearanceAttribute(inv->getAsciiParameter(_param0_setAppearanceAttribute__String_char_), inv->getUnsignedCharParameter());
 		break;
 	case 477:
 		updateCharacterAppearance();
 		break;
 	case 478:
-		setHairAppearance(inv->getAsciiParameter(_param0_setHairAppearance__string_));
+		setHairAppearance(inv->getAsciiParameter(_param0_setHairAppearance__String_));
 		break;
 	case 479:
 		setHairAppearanceAttribute(inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter());
 		break;
 	case 480:
-		setHairAppearanceAttribute(inv->getAsciiParameter(_param0_setHairAppearanceAttribute__string_char_), inv->getUnsignedCharParameter());
+		setHairAppearanceAttribute(inv->getAsciiParameter(_param0_setHairAppearanceAttribute__String_char_), inv->getUnsignedCharParameter());
 		break;
 	case 481:
-		setRaceName(inv->getAsciiParameter(_param0_setRaceName__string_));
+		setRaceName(inv->getAsciiParameter(_param0_setRaceName__String_));
 		break;
 	case 482:
-		setSpeciesName(inv->getAsciiParameter(_param0_setSpeciesName__string_));
+		setSpeciesName(inv->getAsciiParameter(_param0_setSpeciesName__String_));
 		break;
 	case 483:
-		setStfName(inv->getAsciiParameter(_param0_setStfName__string_));
+		setStfName(inv->getAsciiParameter(_param0_setStfName__String_));
 		break;
 	case 484:
-		setGender(inv->getAsciiParameter(_param0_setGender__string_));
+		setGender(inv->getAsciiParameter(_param0_setGender__String_));
 		break;
 	case 485:
 		setFaction(inv->getUnsignedIntParameter());
@@ -8482,7 +8482,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setMood(inv->getUnsignedCharParameter());
 		break;
 	case 488:
-		setMood(inv->getAsciiParameter(_param0_setMood__string_));
+		setMood(inv->getAsciiParameter(_param0_setMood__String_));
 		break;
 	case 489:
 		setGroup((GroupObject*) inv->getObjectParameter());
@@ -8566,19 +8566,19 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertSignedInt(getMedicalFacilityRating());
 		break;
 	case 516:
-		setBoneType(inv->getAsciiParameter(_param0_setBoneType__string_));
+		setBoneType(inv->getAsciiParameter(_param0_setBoneType__String_));
 		break;
 	case 517:
 		setBoneMax(inv->getSignedIntParameter());
 		break;
 	case 518:
-		setHideType(inv->getAsciiParameter(_param0_setHideType__string_));
+		setHideType(inv->getAsciiParameter(_param0_setHideType__String_));
 		break;
 	case 519:
 		setHideMax(inv->getSignedIntParameter());
 		break;
 	case 520:
-		setMeatType(inv->getAsciiParameter(_param0_setMeatType__string_));
+		setMeatType(inv->getAsciiParameter(_param0_setMeatType__String_));
 		break;
 	case 521:
 		setMeatMax(inv->getSignedIntParameter());
@@ -8608,31 +8608,31 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setAggressive(inv->getSignedIntParameter());
 		break;
 	case 530:
-		setBehaviorScript(inv->getAsciiParameter(_param0_setBehaviorScript__string_));
+		setBehaviorScript(inv->getAsciiParameter(_param0_setBehaviorScript__String_));
 		break;
 	case 531:
-		setLootGroup(inv->getAsciiParameter(_param0_setLootGroup__string_));
+		setLootGroup(inv->getAsciiParameter(_param0_setLootGroup__String_));
 		break;
 	case 532:
 		setTame(inv->getFloatParameter());
 		break;
 	case 533:
-		setCreatureFaction(inv->getAsciiParameter(_param0_setCreatureFaction__string_));
+		setCreatureFaction(inv->getAsciiParameter(_param0_setCreatureFaction__String_));
 		break;
 	case 534:
 		setInternalNPCDamageModifier(inv->getFloatParameter());
 		break;
 	case 535:
-		setCreatureWeapon(inv->getAsciiParameter(_param0_setCreatureWeapon__string_));
+		setCreatureWeapon(inv->getAsciiParameter(_param0_setCreatureWeapon__String_));
 		break;
 	case 536:
-		setCreatureWeaponName(inv->getAsciiParameter(_param0_setCreatureWeaponName__string_));
+		setCreatureWeaponName(inv->getAsciiParameter(_param0_setCreatureWeaponName__String_));
 		break;
 	case 537:
-		setCreatureWeaponTemp(inv->getAsciiParameter(_param0_setCreatureWeaponTemp__string_));
+		setCreatureWeaponTemp(inv->getAsciiParameter(_param0_setCreatureWeaponTemp__String_));
 		break;
 	case 538:
-		setCreatureWeaponClass(inv->getAsciiParameter(_param0_setCreatureWeaponClass__string_));
+		setCreatureWeaponClass(inv->getAsciiParameter(_param0_setCreatureWeaponClass__String_));
 		break;
 	case 539:
 		setCreatureWeaponEquipped(inv->getSignedIntParameter());
@@ -8647,16 +8647,16 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setCreatureWeaponAttackSpeed(inv->getFloatParameter());
 		break;
 	case 543:
-		setCreatureWeaponDamageType(inv->getAsciiParameter(_param0_setCreatureWeaponDamageType__string_));
+		setCreatureWeaponDamageType(inv->getAsciiParameter(_param0_setCreatureWeaponDamageType__String_));
 		break;
 	case 544:
-		setCreatureWeaponArmorPiercing(inv->getAsciiParameter(_param0_setCreatureWeaponArmorPiercing__string_));
+		setCreatureWeaponArmorPiercing(inv->getAsciiParameter(_param0_setCreatureWeaponArmorPiercing__String_));
 		break;
 	case 545:
-		say(inv->getUnicodeParameter(_param0_say__unicode_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		say(inv->getUnicodeParameter(_param0_say__UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 546:
-		say(inv->getAsciiParameter(_param0_say__string_string_StfParameter_int_int_), inv->getAsciiParameter(_param1_say__string_string_StfParameter_int_int_), (StfParameter*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		say(inv->getAsciiParameter(_param0_say__String_String_StfParameter_int_int_), inv->getAsciiParameter(_param1_say__String_String_StfParameter_int_int_), (StfParameter*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -8665,7 +8665,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-void CreatureObjectAdapter::info(const string& message, bool forcedLog) {
+void CreatureObjectAdapter::info(const String& message, bool forcedLog) {
 	return ((CreatureObjectImplementation*) impl)->info(message, forcedLog);
 }
 
@@ -8685,19 +8685,19 @@ void CreatureObjectAdapter::doCombatAnimation(CreatureObject* defender, unsigned
 	return ((CreatureObjectImplementation*) impl)->doCombatAnimation(defender, animcrc, hit);
 }
 
-void CreatureObjectAdapter::doAnimation(const string& anim) {
+void CreatureObjectAdapter::doAnimation(const String& anim) {
 	return ((CreatureObjectImplementation*) impl)->doAnimation(anim);
 }
 
-void CreatureObjectAdapter::playEffect(const string& file, const string& aux) {
+void CreatureObjectAdapter::playEffect(const String& file, const String& aux) {
 	return ((CreatureObjectImplementation*) impl)->playEffect(file, aux);
 }
 
-void CreatureObjectAdapter::showFlyText(const string& file, const string& aux, unsigned char red, unsigned char green, unsigned char blue) {
+void CreatureObjectAdapter::showFlyText(const String& file, const String& aux, unsigned char red, unsigned char green, unsigned char blue) {
 	return ((CreatureObjectImplementation*) impl)->showFlyText(file, aux, red, green, blue);
 }
 
-void CreatureObjectAdapter::sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const string& skill, bool areaSpam) {
+void CreatureObjectAdapter::sendCombatSpam(CreatureObject* defender, TangibleObject* item, unsigned int damage, const String& skill, bool areaSpam) {
 	return ((CreatureObjectImplementation*) impl)->sendCombatSpam(defender, item, damage, skill, areaSpam);
 }
 
@@ -8721,7 +8721,7 @@ CreatureObject* CreatureObjectAdapter::getLootOwner() {
 	return ((CreatureObjectImplementation*) impl)->getLootOwner();
 }
 
-unsigned int CreatureObjectAdapter::getMitigation(const string& mit) {
+unsigned int CreatureObjectAdapter::getMitigation(const String& mit) {
 	return ((CreatureObjectImplementation*) impl)->getMitigation(mit);
 }
 
@@ -8801,7 +8801,7 @@ void CreatureObjectAdapter::updateKnockdownRecovery() {
 	return ((CreatureObjectImplementation*) impl)->updateKnockdownRecovery();
 }
 
-void CreatureObjectAdapter::updateMood(const string& md) {
+void CreatureObjectAdapter::updateMood(const String& md) {
 	return ((CreatureObjectImplementation*) impl)->updateMood(md);
 }
 
@@ -9245,7 +9245,7 @@ SceneObject* CreatureObjectAdapter::getInventoryItem(unsigned long long oid) {
 	return ((CreatureObjectImplementation*) impl)->getInventoryItem(oid);
 }
 
-TangibleObject* CreatureObjectAdapter::getMissionItem(string& tma) {
+TangibleObject* CreatureObjectAdapter::getMissionItem(String& tma) {
 	return ((CreatureObjectImplementation*) impl)->getMissionItem(tma);
 }
 
@@ -9281,23 +9281,23 @@ Armor* CreatureObjectAdapter::getArmor(int type) {
 	return ((CreatureObjectImplementation*) impl)->getArmor(type);
 }
 
-void CreatureObjectAdapter::addSkillMod(const string& name, int mod, bool updateClient) {
+void CreatureObjectAdapter::addSkillMod(const String& name, int mod, bool updateClient) {
 	return ((CreatureObjectImplementation*) impl)->addSkillMod(name, mod, updateClient);
 }
 
-int CreatureObjectAdapter::getSkillMod(const string& name) {
+int CreatureObjectAdapter::getSkillMod(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->getSkillMod(name);
 }
 
-bool CreatureObjectAdapter::hasSkillMod(const string& name) {
+bool CreatureObjectAdapter::hasSkillMod(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->hasSkillMod(name);
 }
 
-int CreatureObjectAdapter::getSkillModBonus(const string& name) {
+int CreatureObjectAdapter::getSkillModBonus(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->getSkillModBonus(name);
 }
 
-bool CreatureObjectAdapter::hasSkillModBonus(const string& name) {
+bool CreatureObjectAdapter::hasSkillModBonus(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->hasSkillModBonus(name);
 }
 
@@ -9369,11 +9369,11 @@ int CreatureObjectAdapter::getCenteredBonus() {
 	return ((CreatureObjectImplementation*) impl)->getCenteredBonus();
 }
 
-void CreatureObjectAdapter::sendSystemMessage(const string& message) {
+void CreatureObjectAdapter::sendSystemMessage(const String& message) {
 	return ((CreatureObjectImplementation*) impl)->sendSystemMessage(message);
 }
 
-void CreatureObjectAdapter::sendSystemMessage(const string& file, const string& str, unsigned long long targetid) {
+void CreatureObjectAdapter::sendSystemMessage(const String& file, const String& str, unsigned long long targetid) {
 	return ((CreatureObjectImplementation*) impl)->sendSystemMessage(file, str, targetid);
 }
 
@@ -9393,11 +9393,11 @@ void CreatureObjectAdapter::addLootItem(TangibleObject* item) {
 	return ((CreatureObjectImplementation*) impl)->addLootItem(item);
 }
 
-void CreatureObjectAdapter::startDancing(const string& anim, bool changeDance) {
+void CreatureObjectAdapter::startDancing(const String& anim, bool changeDance) {
 	return ((CreatureObjectImplementation*) impl)->startDancing(anim, changeDance);
 }
 
-void CreatureObjectAdapter::startPlayingMusic(const string& anim, bool changeDance) {
+void CreatureObjectAdapter::startPlayingMusic(const String& anim, bool changeDance) {
 	return ((CreatureObjectImplementation*) impl)->startPlayingMusic(anim, changeDance);
 }
 
@@ -9449,7 +9449,7 @@ void CreatureObjectAdapter::removeWatcher(CreatureObject* creature) {
 	return ((CreatureObjectImplementation*) impl)->removeWatcher(creature);
 }
 
-void CreatureObjectAdapter::doFlourish(const string& modifier) {
+void CreatureObjectAdapter::doFlourish(const String& modifier) {
 	return ((CreatureObjectImplementation*) impl)->doFlourish(modifier);
 }
 
@@ -9493,7 +9493,7 @@ int CreatureObjectAdapter::getCreatureSkillsSize() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureSkillsSize();
 }
 
-string& CreatureObjectAdapter::getSkill(int idx) {
+String& CreatureObjectAdapter::getSkill(int idx) {
 	return ((CreatureObjectImplementation*) impl)->getSkill(idx);
 }
 
@@ -9645,35 +9645,35 @@ bool CreatureObjectAdapter::isWatching() {
 	return ((CreatureObjectImplementation*) impl)->isWatching();
 }
 
-unicode& CreatureObjectAdapter::getCharacterName() {
+UnicodeString& CreatureObjectAdapter::getCharacterName() {
 	return ((CreatureObjectImplementation*) impl)->getCharacterName();
 }
 
-string& CreatureObjectAdapter::getStfName() {
+String& CreatureObjectAdapter::getStfName() {
 	return ((CreatureObjectImplementation*) impl)->getStfName();
 }
 
-string& CreatureObjectAdapter::getSpeciesName() {
+String& CreatureObjectAdapter::getSpeciesName() {
 	return ((CreatureObjectImplementation*) impl)->getSpeciesName();
 }
 
-string& CreatureObjectAdapter::getRaceName() {
+String& CreatureObjectAdapter::getRaceName() {
 	return ((CreatureObjectImplementation*) impl)->getRaceName();
 }
 
-string& CreatureObjectAdapter::getGender() {
+String& CreatureObjectAdapter::getGender() {
 	return ((CreatureObjectImplementation*) impl)->getGender();
 }
 
-string& CreatureObjectAdapter::getTerrainName() {
+String& CreatureObjectAdapter::getTerrainName() {
 	return ((CreatureObjectImplementation*) impl)->getTerrainName();
 }
 
-void CreatureObjectAdapter::getCharacterAppearance(string& appearance) {
+void CreatureObjectAdapter::getCharacterAppearance(String& appearance) {
 	return ((CreatureObjectImplementation*) impl)->getCharacterAppearance(appearance);
 }
 
-void CreatureObjectAdapter::getHairAppearance(string& appearance) {
+void CreatureObjectAdapter::getHairAppearance(String& appearance) {
 	return ((CreatureObjectImplementation*) impl)->getHairAppearance(appearance);
 }
 
@@ -9997,7 +9997,7 @@ unsigned int CreatureObjectAdapter::getNewDefenderUpdateCounter(int cnt) {
 	return ((CreatureObjectImplementation*) impl)->getNewDefenderUpdateCounter(cnt);
 }
 
-string& CreatureObjectAdapter::getPerformanceAnimation() {
+String& CreatureObjectAdapter::getPerformanceAnimation() {
 	return ((CreatureObjectImplementation*) impl)->getPerformanceAnimation();
 }
 
@@ -10009,11 +10009,11 @@ unsigned int CreatureObjectAdapter::getInstrumentID() {
 	return ((CreatureObjectImplementation*) impl)->getInstrumentID();
 }
 
-string& CreatureObjectAdapter::getPerformanceName() {
+String& CreatureObjectAdapter::getPerformanceName() {
 	return ((CreatureObjectImplementation*) impl)->getPerformanceName();
 }
 
-string& CreatureObjectAdapter::getMood() {
+String& CreatureObjectAdapter::getMood() {
 	return ((CreatureObjectImplementation*) impl)->getMood();
 }
 
@@ -10053,7 +10053,7 @@ SceneObject* CreatureObjectAdapter::getBuilding() {
 	return ((CreatureObjectImplementation*) impl)->getBuilding();
 }
 
-string& CreatureObjectAdapter::getGuildName() {
+String& CreatureObjectAdapter::getGuildName() {
 	return ((CreatureObjectImplementation*) impl)->getGuildName();
 }
 
@@ -10073,15 +10073,15 @@ unsigned int CreatureObjectAdapter::getNewSkillModsCounter(int cnt) {
 	return ((CreatureObjectImplementation*) impl)->getNewSkillModsCounter(cnt);
 }
 
-string& CreatureObjectAdapter::getHideType() {
+String& CreatureObjectAdapter::getHideType() {
 	return ((CreatureObjectImplementation*) impl)->getHideType();
 }
 
-string& CreatureObjectAdapter::getBoneType() {
+String& CreatureObjectAdapter::getBoneType() {
 	return ((CreatureObjectImplementation*) impl)->getBoneType();
 }
 
-string& CreatureObjectAdapter::getMeatType() {
+String& CreatureObjectAdapter::getMeatType() {
 	return ((CreatureObjectImplementation*) impl)->getMeatType();
 }
 
@@ -10133,27 +10133,27 @@ int CreatureObjectAdapter::isAggressive() {
 	return ((CreatureObjectImplementation*) impl)->isAggressive();
 }
 
-string& CreatureObjectAdapter::getBehaviorScript() {
+String& CreatureObjectAdapter::getBehaviorScript() {
 	return ((CreatureObjectImplementation*) impl)->getBehaviorScript();
 }
 
-string& CreatureObjectAdapter::getCreatureFaction() {
+String& CreatureObjectAdapter::getCreatureFaction() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureFaction();
 }
 
-string& CreatureObjectAdapter::getCreatureWeapon() {
+String& CreatureObjectAdapter::getCreatureWeapon() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureWeapon();
 }
 
-string& CreatureObjectAdapter::getCreatureWeaponName() {
+String& CreatureObjectAdapter::getCreatureWeaponName() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureWeaponName();
 }
 
-string& CreatureObjectAdapter::getCreatureWeaponTemp() {
+String& CreatureObjectAdapter::getCreatureWeaponTemp() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureWeaponTemp();
 }
 
-string& CreatureObjectAdapter::getCreatureWeaponClass() {
+String& CreatureObjectAdapter::getCreatureWeaponClass() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureWeaponClass();
 }
 
@@ -10173,11 +10173,11 @@ float CreatureObjectAdapter::getCreatureWeaponAttackSpeed() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureWeaponAttackSpeed();
 }
 
-string& CreatureObjectAdapter::getCreatureWeaponDamageType() {
+String& CreatureObjectAdapter::getCreatureWeaponDamageType() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureWeaponDamageType();
 }
 
-string& CreatureObjectAdapter::getCreatureWeaponArmorPiercing() {
+String& CreatureObjectAdapter::getCreatureWeaponArmorPiercing() {
 	return ((CreatureObjectImplementation*) impl)->getCreatureWeaponArmorPiercing();
 }
 
@@ -10189,7 +10189,7 @@ float CreatureObjectAdapter::getTame() {
 	return ((CreatureObjectImplementation*) impl)->getTame();
 }
 
-string& CreatureObjectAdapter::getLootGroup() {
+String& CreatureObjectAdapter::getLootGroup() {
 	return ((CreatureObjectImplementation*) impl)->getLootGroup();
 }
 
@@ -10525,19 +10525,19 @@ bool CreatureObjectAdapter::setNextAttackDelay(int del) {
 	return ((CreatureObjectImplementation*) impl)->setNextAttackDelay(del);
 }
 
-void CreatureObjectAdapter::setCharacterName(const string& name) {
+void CreatureObjectAdapter::setCharacterName(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->setCharacterName(name);
 }
 
-void CreatureObjectAdapter::setCharacterName(const unicode& name) {
+void CreatureObjectAdapter::setCharacterName(const UnicodeString& name) {
 	return ((CreatureObjectImplementation*) impl)->setCharacterName(name);
 }
 
-void CreatureObjectAdapter::setTerrainName(const string& name) {
+void CreatureObjectAdapter::setTerrainName(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->setTerrainName(name);
 }
 
-void CreatureObjectAdapter::setCharacterAppearance(string& cust) {
+void CreatureObjectAdapter::setCharacterAppearance(String& cust) {
 	return ((CreatureObjectImplementation*) impl)->setCharacterAppearance(cust);
 }
 
@@ -10545,7 +10545,7 @@ void CreatureObjectAdapter::setAppearanceAttribute(unsigned char type, unsigned 
 	return ((CreatureObjectImplementation*) impl)->setAppearanceAttribute(type, value);
 }
 
-void CreatureObjectAdapter::setAppearanceAttribute(string& type, unsigned char value) {
+void CreatureObjectAdapter::setAppearanceAttribute(String& type, unsigned char value) {
 	return ((CreatureObjectImplementation*) impl)->setAppearanceAttribute(type, value);
 }
 
@@ -10553,7 +10553,7 @@ void CreatureObjectAdapter::updateCharacterAppearance() {
 	return ((CreatureObjectImplementation*) impl)->updateCharacterAppearance();
 }
 
-void CreatureObjectAdapter::setHairAppearance(string& cust) {
+void CreatureObjectAdapter::setHairAppearance(String& cust) {
 	return ((CreatureObjectImplementation*) impl)->setHairAppearance(cust);
 }
 
@@ -10561,23 +10561,23 @@ void CreatureObjectAdapter::setHairAppearanceAttribute(unsigned char type, unsig
 	return ((CreatureObjectImplementation*) impl)->setHairAppearanceAttribute(type, value);
 }
 
-void CreatureObjectAdapter::setHairAppearanceAttribute(string& type, unsigned char value) {
+void CreatureObjectAdapter::setHairAppearanceAttribute(String& type, unsigned char value) {
 	return ((CreatureObjectImplementation*) impl)->setHairAppearanceAttribute(type, value);
 }
 
-void CreatureObjectAdapter::setRaceName(const string& name) {
+void CreatureObjectAdapter::setRaceName(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->setRaceName(name);
 }
 
-void CreatureObjectAdapter::setSpeciesName(const string& name) {
+void CreatureObjectAdapter::setSpeciesName(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->setSpeciesName(name);
 }
 
-void CreatureObjectAdapter::setStfName(const string& name) {
+void CreatureObjectAdapter::setStfName(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->setStfName(name);
 }
 
-void CreatureObjectAdapter::setGender(const string& name) {
+void CreatureObjectAdapter::setGender(const String& name) {
 	return ((CreatureObjectImplementation*) impl)->setGender(name);
 }
 
@@ -10593,7 +10593,7 @@ void CreatureObjectAdapter::setMood(unsigned char mdid) {
 	return ((CreatureObjectImplementation*) impl)->setMood(mdid);
 }
 
-void CreatureObjectAdapter::setMood(const string& m) {
+void CreatureObjectAdapter::setMood(const String& m) {
 	return ((CreatureObjectImplementation*) impl)->setMood(m);
 }
 
@@ -10705,7 +10705,7 @@ int CreatureObjectAdapter::getMedicalFacilityRating() {
 	return ((CreatureObjectImplementation*) impl)->getMedicalFacilityRating();
 }
 
-void CreatureObjectAdapter::setBoneType(const string& bone) {
+void CreatureObjectAdapter::setBoneType(const String& bone) {
 	return ((CreatureObjectImplementation*) impl)->setBoneType(bone);
 }
 
@@ -10713,7 +10713,7 @@ void CreatureObjectAdapter::setBoneMax(int bonemax) {
 	return ((CreatureObjectImplementation*) impl)->setBoneMax(bonemax);
 }
 
-void CreatureObjectAdapter::setHideType(const string& hide) {
+void CreatureObjectAdapter::setHideType(const String& hide) {
 	return ((CreatureObjectImplementation*) impl)->setHideType(hide);
 }
 
@@ -10721,7 +10721,7 @@ void CreatureObjectAdapter::setHideMax(int hidemax) {
 	return ((CreatureObjectImplementation*) impl)->setHideMax(hidemax);
 }
 
-void CreatureObjectAdapter::setMeatType(const string& meat) {
+void CreatureObjectAdapter::setMeatType(const String& meat) {
 	return ((CreatureObjectImplementation*) impl)->setMeatType(meat);
 }
 
@@ -10761,11 +10761,11 @@ void CreatureObjectAdapter::setAggressive(int aggressive) {
 	return ((CreatureObjectImplementation*) impl)->setAggressive(aggressive);
 }
 
-void CreatureObjectAdapter::setBehaviorScript(const string& behaviorScript) {
+void CreatureObjectAdapter::setBehaviorScript(const String& behaviorScript) {
 	return ((CreatureObjectImplementation*) impl)->setBehaviorScript(behaviorScript);
 }
 
-void CreatureObjectAdapter::setLootGroup(const string& lootgroup) {
+void CreatureObjectAdapter::setLootGroup(const String& lootgroup) {
 	return ((CreatureObjectImplementation*) impl)->setLootGroup(lootgroup);
 }
 
@@ -10773,7 +10773,7 @@ void CreatureObjectAdapter::setTame(float tme) {
 	return ((CreatureObjectImplementation*) impl)->setTame(tme);
 }
 
-void CreatureObjectAdapter::setCreatureFaction(const string& cfac) {
+void CreatureObjectAdapter::setCreatureFaction(const String& cfac) {
 	return ((CreatureObjectImplementation*) impl)->setCreatureFaction(cfac);
 }
 
@@ -10781,19 +10781,19 @@ void CreatureObjectAdapter::setInternalNPCDamageModifier(float indm) {
 	return ((CreatureObjectImplementation*) impl)->setInternalNPCDamageModifier(indm);
 }
 
-void CreatureObjectAdapter::setCreatureWeapon(const string& wpon) {
+void CreatureObjectAdapter::setCreatureWeapon(const String& wpon) {
 	return ((CreatureObjectImplementation*) impl)->setCreatureWeapon(wpon);
 }
 
-void CreatureObjectAdapter::setCreatureWeaponName(const string& weaponname) {
+void CreatureObjectAdapter::setCreatureWeaponName(const String& weaponname) {
 	return ((CreatureObjectImplementation*) impl)->setCreatureWeaponName(weaponname);
 }
 
-void CreatureObjectAdapter::setCreatureWeaponTemp(const string& weapontemp) {
+void CreatureObjectAdapter::setCreatureWeaponTemp(const String& weapontemp) {
 	return ((CreatureObjectImplementation*) impl)->setCreatureWeaponTemp(weapontemp);
 }
 
-void CreatureObjectAdapter::setCreatureWeaponClass(const string& weaponclass) {
+void CreatureObjectAdapter::setCreatureWeaponClass(const String& weaponclass) {
 	return ((CreatureObjectImplementation*) impl)->setCreatureWeaponClass(weaponclass);
 }
 
@@ -10813,19 +10813,19 @@ void CreatureObjectAdapter::setCreatureWeaponAttackSpeed(float weaponattackspeed
 	return ((CreatureObjectImplementation*) impl)->setCreatureWeaponAttackSpeed(weaponattackspeed);
 }
 
-void CreatureObjectAdapter::setCreatureWeaponDamageType(const string& weapondamtype) {
+void CreatureObjectAdapter::setCreatureWeaponDamageType(const String& weapondamtype) {
 	return ((CreatureObjectImplementation*) impl)->setCreatureWeaponDamageType(weapondamtype);
 }
 
-void CreatureObjectAdapter::setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing) {
+void CreatureObjectAdapter::setCreatureWeaponArmorPiercing(const String& weaponarmorpiercing) {
 	return ((CreatureObjectImplementation*) impl)->setCreatureWeaponArmorPiercing(weaponarmorpiercing);
 }
 
-void CreatureObjectAdapter::say(unicode& message, unsigned int moodid, unsigned int mood2) {
+void CreatureObjectAdapter::say(UnicodeString& message, unsigned int moodid, unsigned int mood2) {
 	return ((CreatureObjectImplementation*) impl)->say(message, moodid, mood2);
 }
 
-void CreatureObjectAdapter::say(const string& file, const string& str, StfParameter* param, unsigned int moodid, unsigned int mood2) {
+void CreatureObjectAdapter::say(const String& file, const String& str, StfParameter* param, unsigned int moodid, unsigned int mood2) {
 	return ((CreatureObjectImplementation*) impl)->say(file, str, param, moodid, mood2);
 }
 

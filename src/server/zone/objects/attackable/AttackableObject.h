@@ -25,19 +25,19 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void setTemplateName(string& name);
+	void setTemplateName(String& name);
 
-	string& getTemplateTypeName();
+	String& getTemplateTypeName();
 
-	string& getTemplateName();
+	String& getTemplateName();
 
-	unicode& getName();
+	UnicodeString& getName();
 
-	string& getTemplateDetailName();
+	String& getTemplateDetailName();
 
-	string& getTemplateDetail();
+	String& getTemplateDetail();
 
-	void getCustomizationString(string& app);
+	void getCustomizationString(String& app);
 
 	void setConditionDamage(unsigned int cond);
 
@@ -56,12 +56,12 @@ protected:
 
 	virtual ~AttackableObject();
 
-	string _return_getTemplateDetail;
-	string _return_getTemplateDetailName;
-	string _return_getTemplateName;
-	string _return_getTemplateTypeName;
+	String _return_getTemplateDetail;
+	String _return_getTemplateDetailName;
+	String _return_getTemplateName;
+	String _return_getTemplateTypeName;
 
-	unicode _return_getName;
+	UnicodeString _return_getName;
 
 	friend class AttackableObjectHelper;
 };
@@ -80,19 +80,19 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void setTemplateName(string& name);
+	void setTemplateName(String& name);
 
-	string& getTemplateTypeName();
+	String& getTemplateTypeName();
 
-	string& getTemplateName();
+	String& getTemplateName();
 
-	unicode& getName();
+	UnicodeString& getName();
 
-	string& getTemplateDetailName();
+	String& getTemplateDetailName();
 
-	string& getTemplateDetail();
+	String& getTemplateDetail();
 
-	void getCustomizationString(string& app);
+	void getCustomizationString(String& app);
 
 	void setConditionDamage(unsigned int cond);
 
@@ -107,8 +107,8 @@ public:
 	bool isDestroyed();
 
 protected:
-	string _param0_setTemplateName__string_;
-	string _param0_getCustomizationString__string_;
+	String _param0_setTemplateName__String_;
+	String _param0_getCustomizationString__String_;
 };
 
 class AttackableObjectHelper : public DistributedObjectClassHelper, public Singleton<AttackableObjectHelper> {

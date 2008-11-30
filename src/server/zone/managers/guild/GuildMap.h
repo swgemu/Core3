@@ -19,7 +19,7 @@ public:
 
 	Guild* get(unsigned int gid);
 
-	Guild* get(string& tag);
+	Guild* get(String& tag);
 
 	void remove(unsigned int gid);
 
@@ -49,7 +49,7 @@ public:
 
 	Guild* get(unsigned int gid);
 
-	Guild* get(string& tag);
+	Guild* get(String& tag);
 
 	void remove(unsigned int gid);
 
@@ -58,7 +58,7 @@ public:
 	int size();
 
 protected:
-	string _param0_get__string_;
+	String _param0_get__String_;
 };
 
 class GuildMapHelper : public DistributedObjectClassHelper, public Singleton<GuildMapHelper> {
