@@ -48,14 +48,14 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class Certification {
-	string name;
+	String name;
 	
 public:
-	Certification(string& Name) {
+	Certification(String& Name) {
 		name = Name;
 	}
 	
-	inline string& getName() {
+	inline String& getName() {
 		return name;
 	}
 };

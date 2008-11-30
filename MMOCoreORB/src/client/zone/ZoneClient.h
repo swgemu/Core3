@@ -64,7 +64,7 @@ class ZoneClient : public BaseClient, public Thread {
 	bool disconnecting;
 
 public:
-	ZoneClient(const string& addr, int port);
+	ZoneClient(const String& addr, int port);
 
 	~ZoneClient();
 

@@ -27,9 +27,9 @@ class TangibleObject : public SceneObject {
 public:
 	TangibleObject(unsigned long long oid, int tp = 0);
 
-	TangibleObject(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempname, int tp = 0);
+	TangibleObject(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempname, int tp = 0);
 
-	TangibleObject(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempname, int tp = 0);
+	TangibleObject(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempname, int tp = 0);
 
 	void generateAttributes(Player* player);
 
@@ -95,19 +95,19 @@ public:
 
 	bool isLoot();
 
-	void setCraftersName(string& n);
+	void setCraftersName(String& n);
 
-	void setCraftedSerial(string& s);
+	void setCraftedSerial(String& s);
 
 	SceneObject* getContainer();
 
-	unicode& getName();
+	UnicodeString& getName();
 
-	string& getTemplateName();
+	String& getTemplateName();
 
-	string& getTemplateTypeName();
+	String& getTemplateTypeName();
 
-	void getCustomizationString(string& appearance);
+	void getCustomizationString(String& appearance);
 
 	void setPlayerUseMask(unsigned int mask);
 
@@ -125,27 +125,27 @@ public:
 
 	int getCondition();
 
-	string& getCraftersName();
+	String& getCraftersName();
 
-	string& getCraftedSerial();
+	String& getCraftedSerial();
 
-	void setAttributes(string& attributestring);
+	void setAttributes(String& attributeString);
 
-	string& getAttributes();
+	String& getAttributes();
 
 	void addAttributes(AttributeListMessage* alm);
 
-	string& getMisoAsocKey();
+	String& getMisoAsocKey();
 
-	void setName(const string& n);
+	void setName(const String& n);
 
-	void setName(const unicode& n);
+	void setName(const UnicodeString& n);
 
 	void setLoot(bool l);
 
-	void setTemplateName(const string& tempName);
+	void setTemplateName(const String& tempName);
 
-	void setTemplateTypeName(const string& tempTypeName);
+	void setTemplateTypeName(const String& tempTypeName);
 
 	void setObjectSubType(const int type);
 
@@ -155,29 +155,29 @@ public:
 
 	void setConditionDamage(int damage);
 
-	void setCustomizationString(string& cust);
+	void setCustomizationString(String& cust);
 
-	void setCustomizationVariable(const string& type, unsigned int value);
+	void setCustomizationVariable(const String& type, unsigned int value);
 
 	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void setObjectCount(const int count);
 
-	void setMisoAsocKey(const string& tma);
+	void setMisoAsocKey(const String& tma);
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
 
 	virtual ~TangibleObject();
 
-	string _return_getAttributes;
-	string _return_getCraftedSerial;
-	string _return_getCraftersName;
-	string _return_getMisoAsocKey;
-	string _return_getTemplateName;
-	string _return_getTemplateTypeName;
+	String _return_getAttributes;
+	String _return_getCraftedSerial;
+	String _return_getCraftersName;
+	String _return_getMisoAsocKey;
+	String _return_getTemplateName;
+	String _return_getTemplateTypeName;
 
-	unicode _return_getName;
+	UnicodeString _return_getName;
 
 	friend class TangibleObjectHelper;
 };
@@ -254,19 +254,19 @@ public:
 
 	bool isLoot();
 
-	void setCraftersName(string& n);
+	void setCraftersName(String& n);
 
-	void setCraftedSerial(string& s);
+	void setCraftedSerial(String& s);
 
 	SceneObject* getContainer();
 
-	unicode& getName();
+	UnicodeString& getName();
 
-	string& getTemplateName();
+	String& getTemplateName();
 
-	string& getTemplateTypeName();
+	String& getTemplateTypeName();
 
-	void getCustomizationString(string& appearance);
+	void getCustomizationString(String& appearance);
 
 	void setPlayerUseMask(unsigned int mask);
 
@@ -284,27 +284,27 @@ public:
 
 	int getCondition();
 
-	string& getCraftersName();
+	String& getCraftersName();
 
-	string& getCraftedSerial();
+	String& getCraftedSerial();
 
-	void setAttributes(string& attributestring);
+	void setAttributes(String& attributeString);
 
-	string& getAttributes();
+	String& getAttributes();
 
 	void addAttributes(AttributeListMessage* alm);
 
-	string& getMisoAsocKey();
+	String& getMisoAsocKey();
 
-	void setName(const string& n);
+	void setName(const String& n);
 
-	void setName(const unicode& n);
+	void setName(const UnicodeString& n);
 
 	void setLoot(bool l);
 
-	void setTemplateName(const string& tempName);
+	void setTemplateName(const String& tempName);
 
-	void setTemplateTypeName(const string& tempTypeName);
+	void setTemplateTypeName(const String& tempTypeName);
 
 	void setObjectSubType(const int type);
 
@@ -314,28 +314,28 @@ public:
 
 	void setConditionDamage(int damage);
 
-	void setCustomizationString(string& cust);
+	void setCustomizationString(String& cust);
 
-	void setCustomizationVariable(const string& type, unsigned int value);
+	void setCustomizationVariable(const String& type, unsigned int value);
 
 	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void setObjectCount(const int count);
 
-	void setMisoAsocKey(const string& tma);
+	void setMisoAsocKey(const String& tma);
 
 protected:
-	string _param0_setCraftersName__string_;
-	string _param0_setCraftedSerial__string_;
-	string _param0_getCustomizationString__string_;
-	string _param0_setAttributes__string_;
-	string _param0_setName__string_;
-	unicode _param0_setName__unicode_;
-	string _param0_setTemplateName__string_;
-	string _param0_setTemplateTypeName__string_;
-	string _param0_setCustomizationString__string_;
-	string _param0_setCustomizationVariable__string_int_;
-	string _param0_setMisoAsocKey__string_;
+	String _param0_setCraftersName__String_;
+	String _param0_setCraftedSerial__String_;
+	String _param0_getCustomizationString__String_;
+	String _param0_setAttributes__String_;
+	String _param0_setName__String_;
+	UnicodeString _param0_setName__UnicodeString_;
+	String _param0_setTemplateName__String_;
+	String _param0_setTemplateTypeName__String_;
+	String _param0_setCustomizationString__String_;
+	String _param0_setCustomizationVariable__String_int_;
+	String _param0_setMisoAsocKey__String_;
 };
 
 class TangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<TangibleObjectHelper> {

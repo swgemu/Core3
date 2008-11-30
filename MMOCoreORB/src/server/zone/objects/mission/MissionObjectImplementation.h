@@ -58,14 +58,14 @@ which carries forward this exception.
 
 class MissionObjectImplementation : public SceneObjectImplementation {
 	
-	string dbKey;
+	String dbKey;
 	
 	int terminalMask;
 	
 	TangibleObject* deliverItem;
 	
 	//MISO3:
-	string typeStr; //3 BASELINE ONLY
+	String typeStr; //3 BASELINE ONLY
 	uint32 descKey; //4 - connected to 0B
 	uint32 titleKey; //4 - connected to 0C
 	uint32 difficultyLevel; //5
@@ -74,7 +74,7 @@ class MissionObjectImplementation : public SceneObjectImplementation {
 		float destY;
 		uint32 destPlanetCrc;
 	//
-	unicode creatorName; //7
+	UnicodeString creatorName; //7
 	uint32 rewardAmount; //8
 	//9:
 		float targetX;
@@ -82,8 +82,8 @@ class MissionObjectImplementation : public SceneObjectImplementation {
 		uint32 targetPlanetCrc;
 	//
 	uint32 depictedObjCrc; //10 (0A)
-	string descriptionStf; //11 (0B)
-	string titleStf; //12 (0C)
+	String descriptionStf; //11 (0B)
+	String titleStf; //12 (0C)
 	uint32 refreshCount; //13 (0D)
 	uint32 typeCrc; //14 (0E)
 
@@ -99,11 +99,11 @@ public:
 	void doLinkToPlayer(Player* player);
 	void sendDestroyTo(Player* player);
 	
-	inline void setDBKey(string& tdbk) {
+	inline void setDBKey(String& tdbk) {
 		dbKey = tdbk;
 	}
 	
-	inline string& getDBKey() {
+	inline String& getDBKey() {
 		return dbKey;
 	}
 	
@@ -123,11 +123,11 @@ public:
 		return deliverItem;
 	}
 	
-	inline void setTypeStr(const string& tstr) {
+	inline void setTypeStr(const String& tstr) {
 		typeStr = tstr;
 	}
 	
-	inline string& getTypeStr() {
+	inline String& getTypeStr() {
 		return typeStr;
 	}
 	
@@ -179,11 +179,11 @@ public:
 		return destPlanetCrc;
 	}
 	
-	inline void setCreatorName(const unicode& tcn) {
+	inline void setCreatorName(const UnicodeString& tcn) {
 		creatorName = tcn;
 	}
 	
-	inline unicode& getCreatorName() {
+	inline UnicodeString& getCreatorName() {
 		return creatorName;
 	}
 	
@@ -227,19 +227,19 @@ public:
 		return depictedObjCrc;
 	}
 	
-	inline void setDescriptionStf(const string& tds) {
+	inline void setDescriptionStf(const String& tds) {
 		descriptionStf = tds;
 	}
 	
-	inline string& getDescriptionStf() {
+	inline String& getDescriptionStf() {
 		return descriptionStf;
 	}
 	
-	inline void setTitleStf(const string& tts) {
+	inline void setTitleStf(const String& tts) {
 		titleStf = tts;
 	}
 	
-	inline string& getTitleStf() {
+	inline String& getTitleStf() {
 		return titleStf;
 	}
 	

@@ -69,11 +69,11 @@ interface CellObject implements SceneObject {
 	void setCellNumber(int i);
 	int getCellNumber();
 	
-	void setAttributes(string attributestring);
-	string getAttributes();
+	void setAttributes(String attributeString);
+	String getAttributes();
 	void parseItemAttributes();
 	
-	string getTemplateName();
+	String getTemplateName();
 	
 	//void sendTo(Player player);
 	//void sendDestroyTo(Player player);

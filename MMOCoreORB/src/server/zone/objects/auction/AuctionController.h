@@ -98,58 +98,60 @@ public:
 		AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count);
 
 		int displaying = 0;
-		string pname = player->getFirstName();
-		String::toLower(pname);
+		String pname = player->getFirstName().toLowerCase();
 
 		switch(screen) {
-
 		case 2: // All Auctions
 			for (int i = 0; (i < items.size()) && (displaying < (offset + 100)); i++) {
 				AuctionItem* item = items.get(i);
 
 				if (!item->isSold()) {
 					if (category & 255) { // Searching a sub category
-						if(item->getItemType() == category) {
+						if (item->getItemType() == category) {
 							if (displaying >= offset)
 								reply->addItemToList(items.get(i));
+
 							displaying++;
 						}
 					} else if (item->getItemType() & category) {
 						if (displaying >= offset)
 							reply->addItemToList(items.get(i));
+
 						displaying++;
 					} else if ((category == 8192) && (item->getItemType() < 256)) {
 						if (displaying >= offset)
 							reply->addItemToList(items.get(i));
+
 						displaying++;
 					}
 				}
 			}
-			break;
 
+			break;
 		case 3: // My auctions/sales
 			for (int i = 0; i < items.size(); i++) {
 				if ((items.get(i)->getOwnerID() == player->getObjectID()) && !items.get(i)->isSold())
 					reply->addItemToList(items.get(i));
 			}
-			break;
 
+			break;
 		case 4: // My Bids
 			for (int i = 0; i < items.size(); i++) {
 				if ((items.get(i)->getBidderName() == pname) && !items.get(i)->isSold())
 					reply->addItemToList(items.get(i));
 			}
-			break;
 
+			break;
 		case 5: // Retrieve items screen
 			for (int i = 0; i < items.size(); i++) {
 				if (items.get(i)->isSold() && items.get(i)->getBuyerID() == player->getObjectID())
 					reply->addItemToList(items.get(i));
 			}
+
 			break;
 		}
 
-		if(displaying == (offset + 100))
+		if (displaying == (offset + 100))
 			reply->createMessage(offset, true);
 		else
 			reply->createMessage(offset);

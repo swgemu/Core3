@@ -68,7 +68,7 @@ protected:
 	
 	int category;
 	
-	string cert;
+	String cert;
 	bool certified;
 	
 	int usesRemaining;
@@ -208,8 +208,8 @@ public:
 	static const int LIGHTSABER = 9;
 
 public:
-	WeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
-	WeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat); 
+	WeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
+	WeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat); 
 
 	void initialize();
 	
@@ -260,7 +260,7 @@ public:
 	// dots
 	inline bool decreaseDot0Uses() {
 		if (dot0Uses != -1) {
-			string name = "dot0Uses";
+			String name = "dot0Uses";
 			itemAttributes->setIntAttribute(name, --dot0Uses);
 			return true;
 		} else
@@ -269,7 +269,7 @@ public:
 
 	inline bool decreaseDot1Uses() {
 		if (dot1Uses != -1) { 
-			string name = "dot1Uses";
+			String name = "dot1Uses";
 			itemAttributes->setIntAttribute(name, --dot1Uses);
 			return true;
 		} else
@@ -278,7 +278,7 @@ public:
 
 	inline bool decreaseDot2Uses() {
 		if (dot2Uses != -1) { 
-			string name = "dot2Uses";
+			String name = "dot2Uses";
 			itemAttributes->setIntAttribute(name, --dot2Uses);
 			return true;
 		} else
@@ -287,7 +287,7 @@ public:
 
 	inline bool decreasePowerupUses() {
 		if (powerupUses > 0) { 
-			string name = "powerupUses";
+			String name = "powerupUses";
 			itemAttributes->setIntAttribute(name, --powerupUses);
 			return true;
 		} else
@@ -296,7 +296,7 @@ public:
 	
 	inline bool decreaseUsesRemaining() {
 		if (usesRemaining > 0) { 
-			string name = "usesRemaining";
+			String name = "usesRemaining";
 			itemAttributes->setIntAttribute(name, --usesRemaining);
 			return true;
 		} else
@@ -306,349 +306,349 @@ public:
 	// setters
 	inline void setDamageType(int type) {
 		damageType = type;
-		string name = "damageType";
+		String name = "damageType";
 		itemAttributes->setIntAttribute(name, type);
 	}
 	
 	inline void setMinDamage(float minDmg) {
 		minDamage = minDmg;
-		string name = "minDamage";
+		String name = "minDamage";
 		itemAttributes->setFloatAttribute(name, minDmg);
 	}
 
 	inline void setMaxDamage(float maxDmg) {
 		maxDamage = maxDmg;
-		string name = "maxDamage";
+		String name = "maxDamage";
 		itemAttributes->setFloatAttribute(name, maxDmg);
 	}
 
 	inline void setAttackSpeed(float attackSpd) {
 		attackSpeed = attackSpd;
-		string name = "attackSpeed";
+		String name = "attackSpeed";
 		itemAttributes->setFloatAttribute(name, attackSpd);
 	}
 
 	inline void setHealthAttackCost(int healthCost) {
 		healthAttackCost = healthCost;
-		string name = "healthCost";
+		String name = "healthCost";
 		itemAttributes->setIntAttribute(name, healthCost);
 	}
 
 	inline void setActionAttackCost(int actionCost) {
 		actionAttackCost = actionCost;
-		string name = "actionCost";
+		String name = "actionCost";
 		itemAttributes->setIntAttribute(name, actionCost);
 	}
 
 	inline void setMindAttackCost(int mindCost) {
 		mindAttackCost = mindCost;
-		string name = "mindCost";
+		String name = "mindCost";
 		itemAttributes->setIntAttribute(name, mindCost);
 	}
 
 	inline void setType(int tp) {
 		type = tp;
-		string name = "type";
+		String name = "type";
 		itemAttributes->setIntAttribute(name, tp);
 	}
 	
 	inline void setCategory(int cat) {
 		category = cat;
-		string name = "category";
+		String name = "category";
 		itemAttributes->setIntAttribute(name, cat);
 	}
 	
 	inline void setUsesRemaining(int charges) {
 		usesRemaining = charges;
-		string name = "usesRemaining";
+		String name = "usesRemaining";
 		itemAttributes->setIntAttribute(name, charges);
 	}
 	
 	inline void setPointBlankRange(int pointBlankRnge) {
 		pointBlankRange = pointBlankRnge;
-		string name = "pointBlankRange";
+		String name = "pointBlankRange";
 		itemAttributes->setIntAttribute(name, pointBlankRnge);
 	}
 	
 	inline void setPointBlankAccuracy(int pointBlankAcc) {
 		pointBlankAccuracy = pointBlankAcc;
-		string name = "pointBlankAccuracy";
+		String name = "pointBlankAccuracy";
 		itemAttributes->setIntAttribute(name, pointBlankAcc);
 	}
 	
 	inline void setMaxRange(int maxRnge) {
 		maxRange = maxRnge;
-		string name = "maxRange";
+		String name = "maxRange";
 		itemAttributes->setIntAttribute(name, maxRnge);		
 	}
 	
 	inline void setMaxRangeAccuracy(int maxRangeAcc) {
 		maxRangeAccuracy = maxRangeAcc;
-		string name = "maxRangeAccuracy";
+		String name = "maxRangeAccuracy";
 		itemAttributes->setIntAttribute(name, maxRangeAcc);
 	}
 	
 	inline void setIdealRange(int idealRnge) {
 		idealRange = idealRnge;
-		string name = "idealRange";
+		String name = "idealRange";
 		itemAttributes->setIntAttribute(name, idealRnge);
 	}
 	
 	inline void setIdealAccuracy(int idealAcc) {
 		idealAccuracy = idealAcc;
-		string name = "idealAccuracy";
+		String name = "idealAccuracy";
 		itemAttributes->setIntAttribute(name, idealAcc);
 	}
 	
 	inline void setWoundsRatio(float woundsRat) {
 		woundsRatio = woundsRat;
-		string name = "woundsRatio";
+		String name = "woundsRatio";
 		itemAttributes->setFloatAttribute(name, woundsRat);
 	}
 	
 	inline void setArmorPiercing(int armorPierce) {
 		armorPiercing = armorPierce;
-		string name = "armorPiercing";
+		String name = "armorPiercing";
 		itemAttributes->setIntAttribute(name, armorPierce);
 	}
 
 	inline void setDot0Type(int type) {
 		dot0Type = type;
-		string name = "dot0Type";
+		String name = "dot0Type";
 		itemAttributes->setIntAttribute(name, type);
 	}
 	
 	inline void setDot0Attribute(int attribute) {
 		dot0Attribute = attribute;
-		string name = "dot0Attribute";
+		String name = "dot0Attribute";
 		itemAttributes->setIntAttribute(name, attribute);
 	}
 	
 	inline void setDot0Strength(int strength) {
 		dot0Strength = strength;
-		string name = "dot0Strength";
+		String name = "dot0Strength";
 		itemAttributes->setIntAttribute(name, strength);
 	}
 	
 	inline void setDot0Duration(int duration) {
 		dot0Duration = duration;
-		string name = "dot0Duration";
+		String name = "dot0Duration";
 		itemAttributes->setIntAttribute(name, duration);
 	}
 	
 	inline void setDot0Potency(int potency) {
 		dot0Potency = potency;
-		string name = "dot0Potency";
+		String name = "dot0Potency";
 		itemAttributes->setIntAttribute(name, potency);
 	}
 	
 	inline void setDot0Uses(int uses) {
 		dot0Uses = uses;
-		string name = "dot0Uses";
+		String name = "dot0Uses";
 		itemAttributes->setIntAttribute(name, uses);
 	}
 
 	inline void setDot1Type(int type) {
 		dot1Type = type;
-		string name = "dot1Type";
+		String name = "dot1Type";
 		itemAttributes->setIntAttribute(name, type);
 	}
 	
 	inline void setDot1Attribute(int attribute) {
 		dot1Attribute = attribute;
-		string name = "dot1Attribute";
+		String name = "dot1Attribute";
 		itemAttributes->setIntAttribute(name, attribute);
 	}
 	
 	inline void setDot1Strength(int strength) {
 		dot1Strength = strength;
-		string name = "dot1Strength";
+		String name = "dot1Strength";
 		itemAttributes->setIntAttribute(name, strength);
 	}
 	
 	inline void setDot1Duration(int duration) {
 		dot1Duration = duration;
-		string name = "dot1Duration";
+		String name = "dot1Duration";
 		itemAttributes->setIntAttribute(name, duration);
 	}
 	
 	inline void setDot1Potency(int potency) {
 		dot1Potency = potency;
-		string name = "dot1Potency";
+		String name = "dot1Potency";
 		itemAttributes->setIntAttribute(name, potency);
 	}
 	
 	inline void setDot1Uses(int uses) {
 		dot1Uses = uses;
-		string name = "dot1Uses";
+		String name = "dot1Uses";
 		itemAttributes->setIntAttribute(name, uses);
 	}
 	
 	inline void setDot2Type(int type) {
 		dot2Type = type;
-		string name = "dot2Type";
+		String name = "dot2Type";
 		itemAttributes->setIntAttribute(name, type);
 	}
 	
 	inline void setDot2Attribute(int attribute) {
 		dot2Attribute = attribute;
-		string name = "dot2Attribute";
+		String name = "dot2Attribute";
 		itemAttributes->setIntAttribute(name, attribute);
 	}
 	
 	inline void setDot2Strength(int strength) {
 		dot2Strength = strength;
-		string name = "dot2Strength";
+		String name = "dot2Strength";
 		itemAttributes->setIntAttribute(name, strength);
 	}
 	
 	inline void setDot2Duration(int duration) {
 		dot2Duration = duration;
-		string name = "dot2Duration";
+		String name = "dot2Duration";
 		itemAttributes->setIntAttribute(name, duration);
 	}
 	
 	inline void setDot2Potency(int potency) {
 		dot2Potency = potency;
-		string name = "dot2Potency";
+		String name = "dot2Potency";
 		itemAttributes->setIntAttribute(name, potency);
 	}
 	
 	inline void setDot2Uses(int uses) {
 		dot2Uses = uses;
-		string name = "dot2Uses";
+		String name = "dot2Uses";
 		itemAttributes->setIntAttribute(name, uses);
 	}
 
 	inline void setSliced(bool hacked) {
 		sliced = hacked;
-		string name = "sliced";
+		String name = "sliced";
 		itemAttributes->setBooleanAttribute(name, hacked);
 	}
 	
 	inline void setSkillMod0Type(int skillModType) {
 		skillMod0Type = skillModType;
-		string name = "skillMod0Type";
+		String name = "skillMod0Type";
 		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
 	inline void setSkillMod1Type(int skillModType) {
 		skillMod1Type = skillModType;
-		string name = "skillMod1Type";
+		String name = "skillMod1Type";
 		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
 	inline void setSkillMod2Type(int skillModType) {
 		skillMod2Type = skillModType;
-		string name = "skillMod2Type";
+		String name = "skillMod2Type";
 		itemAttributes->setIntAttribute(name, skillModType);
 	}
 	
 	inline void setSkillMod0Value(int skillModValue) {
 		skillMod0Value = skillModValue;
-		string name = "skillMod0Value";
+		String name = "skillMod0Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 
 	inline void setSkillMod1Value(int skillModValue) {
 		skillMod1Value = skillModValue;
-		string name = "skillMod1Value";
+		String name = "skillMod1Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 	
 	inline void setSkillMod2Value(int skillModValue) {
 		skillMod2Value = skillModValue;
-		string name = "skillMod2Value";
+		String name = "skillMod2Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 		
 	inline void setPowerupUses(int uses) {
 		powerupUses = uses;
-		string name = "powerupUses";
+		String name = "powerupUses";
 		itemAttributes->setIntAttribute(name, uses);
 	}
 	
 	inline void setBonusMinDamage(float minDmg) {
 		bonusMinDamage = minDmg;
-		string name = "bonusMinDamage";
+		String name = "bonusMinDamage";
 		itemAttributes->setFloatAttribute(name, minDmg);
 	}
 
 	inline void setBonusMaxDamage(float maxDmg) {
 		bonusMaxDamage = maxDmg;
-		string name = "bonusMaxDamage";
+		String name = "bonusMaxDamage";
 		itemAttributes->setFloatAttribute(name, maxDmg);
 	}
 
 	inline void setBonusAttackSpeed(float attackSpd) {
 		bonusAttackSpeed = attackSpd;
-		string name = "bonusAttackSpeed";
+		String name = "bonusAttackSpeed";
 		itemAttributes->setFloatAttribute(name, attackSpd);
 	}
 
 	inline void setBonusHealthAttackCost(int healthCost) {
 		bonusHealthAttackCost = healthCost;
-		string name = "bonusHealthCost";
+		String name = "bonusHealthCost";
 		itemAttributes->setIntAttribute(name, healthCost);
 	}
 
 	inline void setBonusActionAttackCost(int actionCost) {
 		bonusActionAttackCost = actionCost;
-		string name = "bonusActionCost";
+		String name = "bonusActionCost";
 		itemAttributes->setIntAttribute(name, actionCost);
 	}
 
 	inline void setBonusMindAttackCost(int mindCost) {
 		bonusMindAttackCost = mindCost;
-		string name = "bonusMindCost";
+		String name = "bonusMindCost";
 		itemAttributes->setIntAttribute(name, mindCost);
 	}
 	
 	inline void setBonusPointBlankRange(int pointBlankRnge) {
 		bonusPointBlankRange = pointBlankRnge;
-		string name = "bonusPointBlankRange";
+		String name = "bonusPointBlankRange";
 		itemAttributes->setIntAttribute(name, pointBlankRnge);
 	}
 	
 	inline void setBonusPointBlankAccuracy(int pointBlankAcc) {
 		bonusPointBlankAccuracy = pointBlankAcc;
-		string name = "bonusPointBlankAccuracy";
+		String name = "bonusPointBlankAccuracy";
 		itemAttributes->setIntAttribute(name, pointBlankAcc);
 	}
 	
 	inline void setBonusMaxRange(int maxRnge) {
 		bonusMaxRange = maxRnge;
-		string name = "bonusMaxRange";
+		String name = "bonusMaxRange";
 		itemAttributes->setIntAttribute(name, maxRnge);		
 	}
 	
 	inline void setBonusMaxRangeAccuracy(int maxRangeAcc) {
 		bonusMaxRangeAccuracy = maxRangeAcc;
-		string name = "bonusMaxRangeAccuracy";
+		String name = "bonusMaxRangeAccuracy";
 		itemAttributes->setIntAttribute(name, maxRangeAcc);
 	}
 	
 	inline void setBonusIdealRange(int idealRnge) {
 		bonusIdealRange = idealRnge;
-		string name = "bonusIdealRange";
+		String name = "bonusIdealRange";
 		itemAttributes->setIntAttribute(name, idealRnge);
 	}
 	
 	inline void setBonusIdealAccuracy(int idealAcc) {
 		bonusIdealAccuracy = idealAcc;
-		string name = "bonusIdealAccuracy";
+		String name = "bonusIdealAccuracy";
 		itemAttributes->setIntAttribute(name, idealAcc);
 	}
 	
 	inline void setBonusWoundsRatio(float woundsRat) {
 		bonusWoundsRatio = woundsRat;
-		string name = "bonusWoundsRatio";
+		String name = "bonusWoundsRatio";
 		itemAttributes->setFloatAttribute(name, woundsRat);
 	}
 
-	inline void setCert(string certification) {
+	inline void setCert(String certification) {
 		cert = certification;
-		string name = "cert";
+		String name = "cert";
 		itemAttributes->setStringAttribute(name, certification);
 	}
 	
@@ -857,7 +857,7 @@ public:
 				bonusIdealAccuracy != 0 || bonusMaxRange != 0 || bonusMaxRangeAccuracy != 0 || bonusWoundsRatio != 0);
 	}
 	
-	inline string& getCert() {
+	inline String& getCert() {
 		return cert;
 	}
 

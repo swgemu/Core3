@@ -68,7 +68,7 @@ protected:
 public:
 
 	AreaImplementation(Coordinate * center, float width, float height) {
-		if(width <= 0 || height <= 0)
+		if (width <= 0 || height <= 0)
 			throw Exception("Invalid Area Parameters!");
 
 		uid = 0;
@@ -83,7 +83,7 @@ public:
 	}
 
 	AreaImplementation(float minXPos, float maxXPos, float minYPos, float maxYPos) {
-		if(minXPos >= maxXPos || minYPos >= maxYPos)
+		if (minXPos >= maxXPos || minYPos >= maxYPos)
 			throw Exception("Invalid Area Parameters!");
 
 		uid = 0;

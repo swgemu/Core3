@@ -57,11 +57,11 @@ public:
 
 class Performance {
 
-	  string performanceName;
+	  String performanceName;
 	  int instrumentAudioId;
-	  string requiredSong;
-	  string requiredInstrument;
-	  string requiredDance;
+	  String requiredSong;
+	  String requiredInstrument;
+	  String requiredDance;
 	  int danceVisualId;
 	  int actionPointsPerLoop;
 	  float loopDuration;
@@ -70,24 +70,24 @@ class Performance {
 	  int flourishXpMod;
 	  int healMindWound;
 	  int healShockWound;
-	  string requiredSkillMod;
+	  String requiredSkillMod;
 	  int requiredSkillModValue;
-	  string mainloop;
-	  string flourish1;
-	  string flourish2;
-	  string flourish3;
-	  string flourish4;
-	  string flourish5;
-	  string flourish6;
-	  string flourish7;
-	  string flourish8;
-	  string intro;
-	  string outro;
+	  String mainloop;
+	  String flourish1;
+	  String flourish2;
+	  String flourish3;
+	  String flourish4;
+	  String flourish5;
+	  String flourish6;
+	  String flourish7;
+	  String flourish8;
+	  String intro;
+	  String outro;
 	  
 public:
 	
-	Performance* getDance(string name);
-	Performance* getSong(string name, int instrumentType);
+	Performance* getDance(String name);
+	Performance* getSong(String name, int instrumentType);
 	
 	inline bool isDance() {
 		return type == PerformanceType::DANCE;
@@ -98,68 +98,68 @@ public:
 	}
 	
 	// setters
-	inline void setName(const string& instring) {
-		performanceName = instring;
+	inline void setName(const String& inString) {
+		performanceName = inString;
 	}
 
-	inline void setRequiredSong(const string& instring) {
-		requiredSong = instring;
+	inline void setRequiredSong(const String& inString) {
+		requiredSong = inString;
 	}
 	
-	inline void setRequiredInstrument(const string& instring) {
-		requiredInstrument = instring;
+	inline void setRequiredInstrument(const String& inString) {
+		requiredInstrument = inString;
 	}
 	
-	inline void setRequiredDance(const string& instring) {
-		requiredDance = instring;
+	inline void setRequiredDance(const String& inString) {
+		requiredDance = inString;
 	}
 
-	inline void setRequiredSkillMod(const string& instring) {
-		requiredSkillMod = instring;
+	inline void setRequiredSkillMod(const String& inString) {
+		requiredSkillMod = inString;
 	}
 	
-	inline void setMainloop(const string& instring) {
-		mainloop = instring;
+	inline void setMainloop(const String& inString) {
+		mainloop = inString;
 	}
 	
-	inline void setFlourish1(const string& instring) {
-		requiredDance = instring;
+	inline void setFlourish1(const String& inString) {
+		requiredDance = inString;
 	}
 	
-	inline void setFlourish2(const string& instring) {
-		requiredDance = instring;
+	inline void setFlourish2(const String& inString) {
+		requiredDance = inString;
 	}
 	
-	inline void setFlourish3(const string& instring) {
-		flourish3 = instring;
+	inline void setFlourish3(const String& inString) {
+		flourish3 = inString;
 	}
 	
-	inline void setFlourish4(const string& instring) {
-		flourish4 = instring;
+	inline void setFlourish4(const String& inString) {
+		flourish4 = inString;
 	}
 	
-	inline void setFlourish5(const string& instring) {
-		flourish5 = instring;
+	inline void setFlourish5(const String& inString) {
+		flourish5 = inString;
 	}
 	
-	inline void setFlourish6(const string& instring) {
-		flourish6 = instring;
+	inline void setFlourish6(const String& inString) {
+		flourish6 = inString;
 	}
 	
-	inline void setFlourish7(const string& instring) {
-		flourish7 = instring;
+	inline void setFlourish7(const String& inString) {
+		flourish7 = inString;
 	}
 	
-	inline void setFlourish8(const string& instring) {
-		flourish8 = instring;
+	inline void setFlourish8(const String& inString) {
+		flourish8 = inString;
 	}
 	
-	inline void setIntro(const string& instring) {
-		intro = instring;
+	inline void setIntro(const String& inString) {
+		intro = inString;
 	}
 	
-	inline void setOutro(const string& instring) {
-		outro = instring;
+	inline void setOutro(const String& inString) {
+		outro = inString;
 	}
 	
 	inline void setInstrumentAudioId(int inInt) {
@@ -204,67 +204,67 @@ public:
 	
 	
 	// getters
-	inline string& getName() {
+	inline String& getName() {
 		return performanceName;
 	}
 	
-	inline string& getRequiredSong() {
+	inline String& getRequiredSong() {
 		return requiredSong;
 	}
 	
-	inline string& getRequiredInstrument() {
+	inline String& getRequiredInstrument() {
 		return requiredInstrument;
 	}
 	
-	inline string& getRequiredDance() {
+	inline String& getRequiredDance() {
 		return requiredDance;
 	}
 	
-	inline string& getRequiredSkillMod() {
+	inline String& getRequiredSkillMod() {
 		return requiredSkillMod;
 	}
 	
-	inline string& getMainloop() {
+	inline String& getMainloop() {
 		return mainloop;
 	}
 	
-	inline string& getFlourish1() {
+	inline String& getFlourish1() {
 		return requiredDance;
 	}
 	
-	inline string& getFlourish2() {
+	inline String& getFlourish2() {
 		return requiredDance;
 	}
 	
-	inline string& getFlourish3() {
+	inline String& getFlourish3() {
 		return flourish3;
 	}
 	
-	inline string& getFlourish4() {
+	inline String& getFlourish4() {
 		return flourish4;
 	}
 	
-	inline string& getFlourish5() {
+	inline String& getFlourish5() {
 		return flourish5;
 	}
 	
-	inline string& getFlourish6() {
+	inline String& getFlourish6() {
 		return flourish6;
 	}
 	
-	inline string& getFlourish7() {
+	inline String& getFlourish7() {
 		return flourish7;
 	}
 	
-	inline string& getFlourish8() {
+	inline String& getFlourish8() {
 		return flourish8;
 	}
 	
-	inline string& getIntro() {
+	inline String& getIntro() {
 		return intro;
 	}
 	
-	inline string& getOutro() {
+	inline String& getOutro() {
 		return outro;
 	}
 	

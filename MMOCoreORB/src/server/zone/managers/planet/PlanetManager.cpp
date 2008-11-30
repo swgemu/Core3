@@ -131,7 +131,7 @@ unsigned long long PlanetManager::getLandingTime() {
 		return ((PlanetManagerImplementation*) _impl)->getLandingTime();
 }
 
-unsigned int PlanetManager::getTravelFare(string& departurePlanet, string& arrivalPlanet) {
+unsigned int PlanetManager::getTravelFare(String& departurePlanet, String& arrivalPlanet) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +145,7 @@ unsigned int PlanetManager::getTravelFare(string& departurePlanet, string& arriv
 		return ((PlanetManagerImplementation*) _impl)->getTravelFare(departurePlanet, arrivalPlanet);
 }
 
-ShuttleCreature* PlanetManager::getShuttle(const string& Shuttle) {
+ShuttleCreature* PlanetManager::getShuttle(const String& Shuttle) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -312,10 +312,10 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getLandingTime());
 		break;
 	case 14:
-		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__string_string_), inv->getAsciiParameter(_param1_getTravelFare__string_string_)));
+		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_String_), inv->getAsciiParameter(_param1_getTravelFare__String_String_)));
 		break;
 	case 15:
-		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__string_))->_getObjectID());
+		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__String_))->_getObjectID());
 		break;
 	case 16:
 		sendPlanetTravelPointListResponse((Player*) inv->getObjectParameter());
@@ -380,11 +380,11 @@ unsigned long long PlanetManagerAdapter::getLandingTime() {
 	return ((PlanetManagerImplementation*) impl)->getLandingTime();
 }
 
-unsigned int PlanetManagerAdapter::getTravelFare(string& departurePlanet, string& arrivalPlanet) {
+unsigned int PlanetManagerAdapter::getTravelFare(String& departurePlanet, String& arrivalPlanet) {
 	return ((PlanetManagerImplementation*) impl)->getTravelFare(departurePlanet, arrivalPlanet);
 }
 
-ShuttleCreature* PlanetManagerAdapter::getShuttle(const string& Shuttle) {
+ShuttleCreature* PlanetManagerAdapter::getShuttle(const String& Shuttle) {
 	return ((PlanetManagerImplementation*) impl)->getShuttle(Shuttle);
 }
 

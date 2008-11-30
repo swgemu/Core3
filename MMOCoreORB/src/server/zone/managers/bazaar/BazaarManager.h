@@ -27,7 +27,7 @@ public:
 
 	bool isBazaarTerminal(unsigned long long objectID);
 
-	void addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, unicode& description, int price, int duration, bool auction);
+	void addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, UnicodeString& description, int price, int duration, bool auction);
 
 	void getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
@@ -61,7 +61,7 @@ public:
 
 	bool isBazaarTerminal(unsigned long long objectID);
 
-	void addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, unicode& description, int price, int duration, bool auction);
+	void addSaleItem(Player* player, unsigned long long objectid, unsigned long long bazaarid, UnicodeString& description, int price, int duration, bool auction);
 
 	void getBazaarData(Player* player, unsigned long long objectid, int screen, int extent, unsigned int category, int count, int offset);
 
@@ -76,7 +76,7 @@ public:
 	void getItemAttributes(Player* player, unsigned long long objectId);
 
 protected:
-	unicode _param3_addSaleItem__Player_long_long_unicode_int_int_bool_;
+	UnicodeString _param3_addSaleItem__Player_long_long_UnicodeString_int_int_bool_;
 };
 
 class BazaarManagerHelper : public DistributedObjectClassHelper, public Singleton<BazaarManagerHelper> {

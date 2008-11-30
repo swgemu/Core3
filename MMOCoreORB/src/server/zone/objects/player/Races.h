@@ -389,18 +389,18 @@ public:
 		return SharedRace[raceid];
 	}
 
-	inline static int getRaceID(const string& name) {
+	inline static int getRaceID(const String& name) {
     	for (int i = 0; i < 20; i++) {
-        	if (strcmp(name.c_str(), CCRaceStrs[i]) == 0)
+        	if (strcmp(name.toCharArray(), CCRaceStrs[i]) == 0)
             	return i;
     	}
 
     	return 0;
 	}
 
-	inline static int getMoodID(const string& name) {
+	inline static int getMoodID(const String& name) {
     	for (int i = 0; i < 188; i++) {
-        	if (strcmp(name.c_str(), MoodStr[i]) == 0)
+        	if (strcmp(name.toCharArray(), MoodStr[i]) == 0)
             	return i;
     	}
 

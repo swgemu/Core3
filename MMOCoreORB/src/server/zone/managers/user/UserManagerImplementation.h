@@ -62,13 +62,13 @@ public:
 
 };
 
-class AdminSet : public HashSet<string> {
-	int hash(const string& str) {
-		return String::hashCode(str);
+class AdminSet : public HashSet<String> {
+	int hash(const String& str) {
+		return str.hashCode();
 	}
 
 public:
-	AdminSet() : HashSet<string>() {
+	AdminSet() : HashSet<String>() {
 	}
 
 };
@@ -76,11 +76,9 @@ public:
 class UserManagerImplementation : public UserManagerServant, public Logger {
 	ZoneServer* server;
 
-	fstream* banFile;
-
 	BannedClientSet bannedClients;
 
-	AdminSet * adminUsers;
+	AdminSet* adminUsers;
 
 	int userCap;
 
@@ -91,16 +89,16 @@ public:
 
 	//bool checkUser(SocketAddress* addr);
 	bool checkUser(uint32 ipid);
-	bool isAdmin(const string& name);
+	bool isAdmin(const String& name);
 
-	void grantAdmin(const string& name);
+	void grantAdmin(const String& name);
 
 	void parseBanList();
 	void parseAdminList();
 
-	void banUser(const string& ipaddr);
-	bool banUserByName(string& name, string& admin);
-	bool kickUser(string& name, string& admin);
+	void banUser(const String& ipaddr);
+	bool banUserByName(String& name, String& admin);
+	bool kickUser(String& name, String& admin);
 
 	void changeUserCap(int amount);
 

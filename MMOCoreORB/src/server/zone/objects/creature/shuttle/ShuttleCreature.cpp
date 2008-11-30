@@ -16,7 +16,7 @@
  *	ShuttleCreatureStub
  */
 
-ShuttleCreature::ShuttleCreature(const string& planet, const string& city, Coordinate* playerSpawnPoint, unsigned long long oid, unsigned int tax, bool starport) : Creature(DummyConstructorParameter::instance()) {
+ShuttleCreature::ShuttleCreature(const String& planet, const String& city, Coordinate* playerSpawnPoint, unsigned long long oid, unsigned int tax, bool starport) : Creature(DummyConstructorParameter::instance()) {
 	_impl = new ShuttleCreatureImplementation(planet, city, playerSpawnPoint, oid, tax, starport);
 	_impl->_setStub(this);
 }
@@ -65,7 +65,7 @@ void ShuttleCreature::sendPlayerTo(Player* player, Ticket* ticker) {
 		((ShuttleCreatureImplementation*) _impl)->sendPlayerTo(player, ticker);
 }
 
-string& ShuttleCreature::getCity() {
+String& ShuttleCreature::getCity() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -78,7 +78,7 @@ string& ShuttleCreature::getCity() {
 		return ((ShuttleCreatureImplementation*) _impl)->getCity();
 }
 
-string& ShuttleCreature::getPlanet() {
+String& ShuttleCreature::getPlanet() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -196,11 +196,11 @@ void ShuttleCreatureAdapter::sendPlayerTo(Player* player, Ticket* ticker) {
 	return ((ShuttleCreatureImplementation*) impl)->sendPlayerTo(player, ticker);
 }
 
-string& ShuttleCreatureAdapter::getCity() {
+String& ShuttleCreatureAdapter::getCity() {
 	return ((ShuttleCreatureImplementation*) impl)->getCity();
 }
 
-string& ShuttleCreatureAdapter::getPlanet() {
+String& ShuttleCreatureAdapter::getPlanet() {
 	return ((ShuttleCreatureImplementation*) impl)->getPlanet();
 }
 

@@ -53,7 +53,7 @@ which carries forward this exception.
 #include "Profession.h"
 
 class SkillBox {
-	string name;
+	String name;
 	int skillBoxId;
 
 	SkillBox* parent;
@@ -67,18 +67,18 @@ class SkillBox {
 	int skillPointsRequired;
 	int skillRequirementsCount;
 
-	Vector<string> skillRequirements;
+	Vector<String> skillRequirements;
 	SortedVector<SkillBox*> requiredSkills;
-	Vector<string> skillPreclusions;
-	string skillXpType;
+	Vector<String> skillPreclusions;
+	String skillXpType;
 
 	int skillXpCost;
 	int skillXpCap;
 
-	Vector<string> skillSpeciesRequired;
-	string skillJediStateRequired;
+	Vector<String> skillSpeciesRequired;
+	String skillJediStateRequired;
 
-	Vector<string> skillSchematicsGranted;
+	Vector<String> skillSchematicsGranted;
 
 	bool skillIsSearchable;
 
@@ -88,7 +88,7 @@ class SkillBox {
 
 
 public:
-	SkillBox(const string& s, int id, Profession* prof) {
+	SkillBox(const String& s, int id, Profession* prof) {
 		name = s;
 		skillBoxId = id;
 		profession = prof;
@@ -141,23 +141,23 @@ public:
 		skillCommands.add(skill);
 	}
 
-	void addRequirementSkill(string skill) {
+	void addRequirementSkill(String skill) {
 		skillRequirements.add(skill);
 	}
 
-	void addPreclusionSkill(string skill) {
+	void addPreclusionSkill(String skill) {
 		skillPreclusions.add(skill);
 	}
 
-	void addRequiredSpecies(string race) {
+	void addRequiredSpecies(String race) {
 		skillSpeciesRequired.add(race);
 	}
 
-	void addSkillMod(string mod, int val) {
+	void addSkillMod(String mod, int val) {
 		skillMods.put(mod, val);
 	}
 
-	void addGrantedSchematic(string schematic) {
+	void addGrantedSchematic(String schematic) {
 		skillSchematicsGranted.add(schematic);
 	}
 
@@ -169,19 +169,19 @@ public:
 		return skillSchematicsGranted.size();
 	}
 
-	inline void getGrantedSchematic(string& schematic, int index) {
+	inline void getGrantedSchematic(String& schematic, int index) {
 		schematic = skillSchematicsGranted.get(index);
 	}
 
-	inline int getSkillMod(string mod) {
+	inline int getSkillMod(String mod) {
 		return skillMods.get(mod);
 	}
 
-	inline void getRequiredSpeces(string& race, int index) {
+	inline void getRequiredSpeces(String& race, int index) {
 		race = skillSpeciesRequired.get(index);
 	}
 
-	void setSkillXpType(const string& skill) {
+	void setSkillXpType(const String& skill) {
 		skillXpType = skill;
 	}
 
@@ -193,11 +193,11 @@ public:
 		skillXpCap = cap;
 	}
 
-	void setSkillJediStateRequired(const string& state) {
+	void setSkillJediStateRequired(const String& state) {
 		skillJediStateRequired = state;
 	}
 
-	inline void getRequiredSkill(string& skill, int index) {
+	inline void getRequiredSkill(String& skill, int index) {
 		skill = skillRequirements.get(index);
 	}
 
@@ -209,7 +209,7 @@ public:
 		parent = pr;
 	}
 
-	inline string& getName() {
+	inline String& getName() {
 		return name;
 	}
 
@@ -237,7 +237,7 @@ public:
 		return skillPointsRequired;
 	}
 
-	inline string& getSkillXpType() {
+	inline String& getSkillXpType() {
 		return skillXpType;
 	}
 

@@ -53,18 +53,17 @@ which carries forward this exception.
 
 class HealWoundTargetSkill : public TargetSkill {
 protected:
-	string effectName;
+	String effectName;
 	int mindCost;
 
 public:
-	HealWoundTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
+	HealWoundTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 		mindCost = 0;
-
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (effectName.size() != 0)
+		if (!effectName.isEmpty())
 			creatureTarget->playEffect(effectName, "");
 
 		if (creature == creatureTarget)
@@ -127,13 +126,15 @@ public:
 		return true;
 	}
 
-	void parseModifier(const string& modifier, uint8& attribute, uint64& objectId) {
-		if (!modifier.empty()) {
+	void parseModifier(const String& modifier, uint8& attribute, uint64& objectId) {
+		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
 			tokenizer.setDelimeter("|");
-			string attributeName;
+
+			String attributeName;
 
 			tokenizer.getStringToken(attributeName);
+
 			attribute = CreatureAttribute::getAttribute(attributeName);
 
 			if (tokenizer.hasMoreTokens())
@@ -146,6 +147,7 @@ public:
 
 	WoundPack* findWoundPack(CreatureObject* creature, uint8 attribute) {
 		Inventory* inventory = creature->getInventory();
+
 		int medicineUse = creature->getSkillMod("healing_ability");
 
 		if (inventory != NULL) {
@@ -168,7 +170,7 @@ public:
 		return NULL;
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "target_must_be_healable"); //Target must be a player or a creature pet in order to tend wounds.
 			return 0;
@@ -202,9 +204,9 @@ public:
 				creature->sendSystemMessage("healing_response", "healing_response_67");
 			} else {
 				//TODO: Patch the tre later to include a %NT.
-				stringstream message;
-				message << creatureTarget->getCharacterName().c_str() << " has no wounds of that type to heal.";
-				creature->sendSystemMessage(message.str());
+				StringBuffer message;
+				message << creatureTarget->getCharacterName().toString() << " has no wounds of that type to heal.";
+				creature->sendSystemMessage(message.toString());
 			}
 			return 0;
 		}
@@ -233,7 +235,7 @@ public:
 		return 0;
 	}
 
-	void awardXp(CreatureObject* creature, string type, int power) {
+	void awardXp(CreatureObject* creature, String type, int power) {
 		Player* player = (Player*) creature;
 
 		int amount = (int)round((float)power * 0.5f);
@@ -243,20 +245,22 @@ public:
 
 		player->addXp(type, amount, true);
 
-		String::toLower(type);
-		type[0] = toupper(type[0]); //Capitalize first letter.
+		// Capitalize first letter.
+		type = Character::toUpperCase(type.charAt(0)) +
+			type.subString(1, type.length()).toLowerCase();
 
-		stringstream msgExperience;
+		StringBuffer msgExperience;
 		msgExperience << "You receive " << amount << " points of " << type << " experience.";
-		player->sendSystemMessage(msgExperience.str());
+		player->sendSystemMessage(msgExperience.toString());
 	}
 
 	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint8 attribute, int woundsHealed) {
-		string creatureName = creature->getCharacterName().c_str();
-		string creatureTargetName = creatureTarget->getCharacterName().c_str();
-		string poolName = CreatureAttribute::getName(attribute);
+		String creatureName = creature->getCharacterName().toString();
+		String creatureTargetName = creatureTarget->getCharacterName().toString();
 
-		stringstream msgPlayer, msgTarget, msgTail;
+		String poolName = CreatureAttribute::getName(attribute);
+
+		StringBuffer msgPlayer, msgTarget, msgTail;
 
 		if (creature == creatureTarget) {
 			msgTarget << "You heal yourself for ";
@@ -267,12 +271,12 @@ public:
 
 		msgTail << woundsHealed << " " << poolName << " wound damage.";
 
-		msgTarget << msgTail.str();
-		creatureTarget->sendSystemMessage(msgTarget.str());
+		msgTarget << msgTail.toString();
+		creatureTarget->sendSystemMessage(msgTarget.toString());
 
 		if (creature != creatureTarget) {
-			msgPlayer << msgTail.str();
-			creature->sendSystemMessage(msgPlayer.str());
+			msgPlayer << msgTail.toString();
+			creature->sendSystemMessage(msgPlayer.toString());
 		}
 	}
 
@@ -284,7 +288,7 @@ public:
 		return true;
 	}
 
-	void setEffectName(const string& name) {
+	void setEffectName(const String& name) {
 		effectName = name;
 	}
 

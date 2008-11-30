@@ -54,7 +54,7 @@ SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint6
 	variable = "private/index_color_1";
 }
 
-SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint64 objectId, const string& var, uint32 boxType) :
+SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint64 objectId, const String& var, uint32 boxType) :
 	SuiColorPickerServant(player, boxType, COLORPICKER) {
 
 	objectID = objectId;
@@ -84,11 +84,11 @@ BaseMessage* SuiColorPickerImplementation::generateMessage() {
 	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID);
 	generateHeader(msg);
 
-	stringstream id;
+	StringBuffer id;
 	id << objectID;
 
-	msg->insertOption(3, id.str().c_str(), "ColorPicker", "TargetNetworkId");
-	msg->insertOption(3, variable.c_str(), "ColorPicker", "TargetVariable");
+	msg->insertOption(3, id.toString().toCharArray(), "ColorPicker", "TargetNetworkId");
+	msg->insertOption(3, variable.toCharArray(), "ColorPicker", "TargetVariable");
 	msg->insertOption(3, "500", "ColorPicker", "TargetRangeMax");
 	msg->insertOption(3, "@base_player:swg", "bg.caption.lblTitle", "Text");
 

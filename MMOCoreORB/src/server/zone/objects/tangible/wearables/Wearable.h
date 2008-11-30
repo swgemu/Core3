@@ -17,11 +17,11 @@ class TangibleObject;
 
 class Wearable : public TangibleObject {
 public:
-	Wearable(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	Wearable(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
-	Wearable(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	Wearable(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
-	Wearable(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	Wearable(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
 protected:
 	Wearable(DummyConstructorParameter* param);

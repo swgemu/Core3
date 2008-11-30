@@ -46,6 +46,7 @@ which carries forward this exception.
 #define GAMECOMMANDHANDLER_H_
 
 #include "engine/engine.h"
+
 #include "../zone/objects/player/Player.h"
 
 #include "../db/ForumsDatabase.h"
@@ -56,15 +57,17 @@ class GameCommandHandler;
 
 
 class GMCommand {
-	string command;
-	string description;
-	string usage;
-	int requiredAdminLevel;
-    void (*gmCommandFunc)(StringTokenizer tokenizer, Player * player);
+	String command;
+	String description;
+	String usage;
 
+	int requiredAdminLevel;
+
+    void (*gmCommandFunc)(StringTokenizer tokenizer, Player* player);
 
 public:
-	GMCommand(string cmd, int reqAdminLevel, string desc, string use, void (*func)(StringTokenizer tokenizer, Player * player)) {
+	GMCommand(String cmd, int reqAdminLevel, String desc, String use,
+			void (*func)(StringTokenizer tokenizer, Player* player)) {
 		command = cmd;
 		description = desc;
 		gmCommandFunc = func;
@@ -72,15 +75,15 @@ public:
 		requiredAdminLevel = reqAdminLevel;
 	}
 
-	inline string& getDesc() {
+	inline String& getDesc() {
 		return description;
 	}
 
-	inline string& getName() {
+	inline String& getName() {
 		return command;
 	}
 
-	inline string& getUsage() {
+	inline String& getUsage() {
 		return usage;
 	}
 
@@ -88,23 +91,26 @@ public:
 		return requiredAdminLevel;
 	}
 
-	inline void exec(StringTokenizer tokenizer, Player * player) {
+	inline void exec(StringTokenizer tokenizer, Player* player) {
 		gmCommandFunc(tokenizer, player);
 	}
 
 };
 
-class GMCommandMap : public HashTable<string, GMCommand *> {
+class GMCommandMap : public HashTable<String, GMCommand*> {
 private:
-	LinkedList<string> commandList;
+	LinkedList<String> commandList;
+
+	int hash(const String& str) {
+		return str.hashCode();
+	}
 
 public:
-	GMCommandMap() : HashTable<string, GMCommand *> () {
-
+	GMCommandMap() : HashTable<String, GMCommand*> () {
 	}
 
 	~GMCommandMap() {
-		HashTableIterator<string, GMCommand*> iterator(this);
+		HashTableIterator<String, GMCommand*> iterator(this);
 
 		iterator.resetIterator();
 
@@ -117,77 +123,76 @@ public:
 		removeAll();
 	}
 
-	int hash(const string& str) {
-		return String::hashCode(str);
-	}
-
-	void addCommand(string command, int reqAdminLevel, string disc, string usage, void (*gmCommandFunc)(StringTokenizer tokenizer, Player * player)) {
+	void addCommand(String command, int reqAdminLevel, String disc, String usage,
+			void (*gmCommandFunc)(StringTokenizer tokenizer, Player* player)) {
 		put(command, new GMCommand(command, reqAdminLevel, disc, usage, gmCommandFunc));
+
 		commandList.add(command);
 	}
 
-	LinkedList<string> getCommandList() {
+	LinkedList<String> getCommandList() {
 		return commandList;
 	}
 };
 
 class GameCommandHandler {
 private:
-	static GMCommandMap * gmCommands;
-	static void help(StringTokenizer tokenizer, Player * player);
-	static void map(StringTokenizer tokenizer, Player * player);
-	static void warp(StringTokenizer tokenizer, Player * player);
-	static void warpTo(StringTokenizer tokenizer, Player * player);
-	static void warpToWP(StringTokenizer tokenizer, Player * player);
-	static void warpPlayer(StringTokenizer tokenizer, Player * player);
-	static void summon(StringTokenizer tokenizer, Player * player);
-	static void kick(StringTokenizer tokenizer, Player * player);
-	static void kickArea(StringTokenizer tokenizer, Player * player);
-	static void printRoomTree(StringTokenizer tokenizer, Player * player);
-	static void banUser(StringTokenizer tokenizer, Player * player);
+	static GMCommandMap* gmCommands;
+
+	static void help(StringTokenizer tokenizer, Player* player);
+	static void map(StringTokenizer tokenizer, Player* player);
+	static void warp(StringTokenizer tokenizer, Player* player);
+	static void warpTo(StringTokenizer tokenizer, Player* player);
+	static void warpToWP(StringTokenizer tokenizer, Player* player);
+	static void warpPlayer(StringTokenizer tokenizer, Player* player);
+	static void summon(StringTokenizer tokenizer, Player* player);
+	static void kick(StringTokenizer tokenizer, Player* player);
+	static void kickArea(StringTokenizer tokenizer, Player* player);
+	static void printRoomTree(StringTokenizer tokenizer, Player* player);
+	static void banUser(StringTokenizer tokenizer, Player* player);
 	static void getForumName(StringTokenizer tokenizer, Player* player);
-	static void mutePlayer(StringTokenizer tokenizer, Player * player);
-	static void kill(StringTokenizer tokenizer, Player * player);
-	static void killArea(StringTokenizer tokenizer, Player * player);
-	static void muteChat(StringTokenizer tokenizer, Player * player);
-	static void users(StringTokenizer tokenizer, Player * player);
-	static void setWeather(StringTokenizer tokenizer, Player * player);
-	static void ticketPurchase(StringTokenizer tokenizer, Player * player);
-	static void awardBadge(StringTokenizer tokenizer, Player * player);
-	static void systemMessage(StringTokenizer tokenizer, Player * player);
-	static void setForce(StringTokenizer tokenizer, Player * player);
-	static void setDrinkFilling(StringTokenizer tokenizer, Player * player);
-	static void setFoodFilling(StringTokenizer tokenizer, Player * player);
-	static void getDrinkFilling(StringTokenizer tokenizer, Player * player);
-	static void getFoodFilling(StringTokenizer tokenizer, Player * player);
-	static void logAppearance(StringTokenizer tokenizer, Player * player);
-	static void updateAppearance(StringTokenizer tokenizer, Player * player);
-	static void setAppearanceVariable(StringTokenizer tokenizer, Player * player);
-	static void HAMStats(StringTokenizer tokenizer, Player * player);
-	static void buff(StringTokenizer tokenizer, Player * player);
-	static void spice(StringTokenizer tokenizer, Player * player);
-	static void dbStats(StringTokenizer tokenizer, Player * player);
-	static void dbShowDeleted(StringTokenizer tokenizer, Player * player);
-	static void dbPurge(StringTokenizer tokenizer, Player * player);
-	static void getDirection(StringTokenizer tokenizer, Player * player);
-	static void setAdminLevel(StringTokenizer tokenizer, Player * player);
-	static void getLocation(StringTokenizer tokenizer, Player * player);
-	static void getCords(StringTokenizer tokenizer, Player * player);
-	static void giveItemTemp(StringTokenizer tokenizer, Player * player);
-	static void clientEffect(StringTokenizer tokenizer, Player * player);
-	static void rez(StringTokenizer tokenizer, Player * player);
-	static void immune(StringTokenizer tokenizer, Player * player);
-	static void reloadSchematics(StringTokenizer tokenizer, Player * player);
-	static void spawn(StringTokenizer tokenizer, Player * player);
-	static void addNoBuildArea(StringTokenizer tokenizer, Player * player);
-	static void guildAdmin(StringTokenizer tokenizer, Player * player);
-	static void endGuildAdmin(StringTokenizer tokenizer, Player * player);
-	static void factionSet(StringTokenizer tokenizer, Player * player);
-	static void getCredits(StringTokenizer tokenizer, Player * player);
-	static void getXP(StringTokenizer tokenizer, Player * player);
+	static void mutePlayer(StringTokenizer tokenizer, Player* player);
+	static void kill(StringTokenizer tokenizer, Player* player);
+	static void killArea(StringTokenizer tokenizer, Player* player);
+	static void muteChat(StringTokenizer tokenizer, Player* player);
+	static void users(StringTokenizer tokenizer, Player* player);
+	static void setWeather(StringTokenizer tokenizer, Player* player);
+	static void ticketPurchase(StringTokenizer tokenizer, Player* player);
+	static void awardBadge(StringTokenizer tokenizer, Player* player);
+	static void systemMessage(StringTokenizer tokenizer, Player* player);
+	static void setForce(StringTokenizer tokenizer, Player* player);
+	static void setDrinkFilling(StringTokenizer tokenizer, Player* player);
+	static void setFoodFilling(StringTokenizer tokenizer, Player* player);
+	static void getDrinkFilling(StringTokenizer tokenizer, Player* player);
+	static void getFoodFilling(StringTokenizer tokenizer, Player* player);
+	static void logAppearance(StringTokenizer tokenizer, Player* player);
+	static void updateAppearance(StringTokenizer tokenizer, Player* player);
+	static void setAppearanceVariable(StringTokenizer tokenizer, Player* player);
+	static void HAMStats(StringTokenizer tokenizer, Player* player);
+	static void buff(StringTokenizer tokenizer, Player* player);
+	static void spice(StringTokenizer tokenizer, Player* player);
+	static void dbStats(StringTokenizer tokenizer, Player* player);
+	static void dbShowDeleted(StringTokenizer tokenizer, Player* player);
+	static void dbPurge(StringTokenizer tokenizer, Player* player);
+	static void getDirection(StringTokenizer tokenizer, Player* player);
+	static void setAdminLevel(StringTokenizer tokenizer, Player* player);
+	static void getLocation(StringTokenizer tokenizer, Player* player);
+	static void getCords(StringTokenizer tokenizer, Player* player);
+	static void giveItemTemp(StringTokenizer tokenizer, Player* player);
+	static void clientEffect(StringTokenizer tokenizer, Player* player);
+	static void rez(StringTokenizer tokenizer, Player* player);
+	static void immune(StringTokenizer tokenizer, Player* player);
+	static void reloadSchematics(StringTokenizer tokenizer, Player* player);
+	static void spawn(StringTokenizer tokenizer, Player* player);
+	static void addNoBuildArea(StringTokenizer tokenizer, Player* player);
+	static void guildAdmin(StringTokenizer tokenizer, Player* player);
+	static void endGuildAdmin(StringTokenizer tokenizer, Player* player);
+	static void factionSet(StringTokenizer tokenizer, Player* player);
+	static void getCredits(StringTokenizer tokenizer, Player* player);
+	static void getXP(StringTokenizer tokenizer, Player* player);
 	static void adminList(StringTokenizer tokenizer, Player* player);
 	static void showChars(StringTokenizer tokenizer, Player* player);
-	static void ecKill(StringTokenizer tokenizer, Player * player);
+	static void ecKill(StringTokenizer tokenizer, Player* player);
 
 	void init();
 
@@ -198,7 +203,7 @@ public:
 
 	~GameCommandHandler();
 
-	void handleCommand(string cmd, StringTokenizer tokenizer, Player * player);
+	void handleCommand(String cmd, StringTokenizer tokenizer, Player* player);
 };
 
 #endif /*GAMECOMMANDHANDLER_H_*/

@@ -76,13 +76,13 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 	uint32 jediState;
 	XpMap experienceList;
 	uint32 experienceListCount;
-	string experienceData;
+	String experienceData;
 	uint32 waypointListCount;
 	VectorMap<uint64, WaypointObject*> waypointList;
 
 	// PLAY3 operands
 	uint32 characterBitmask;
-	string title;
+	String title;
 
 	// Play9 operands
 	uint32 drinkFilling;
@@ -131,12 +131,12 @@ public:
 	bool setCharacterBit(uint32 bit, bool updateClient = false);
 	bool clearCharacterBit(uint32 bit, bool updateClient = false);
 
-	void addExperience(const string& xpType, int xp, bool updateClient);
-	void removeExperience(const string& xpType, int xp, bool updateClient);
-	void loadExperience(const string& xpStr);
-	string& saveExperience();
+	void addExperience(const String& xpType, int xp, bool updateClient);
+	void removeExperience(const String& xpType, int xp, bool updateClient);
+	void loadExperience(const String& xpStr);
+	String& saveExperience();
 
-	void setCurrentTitle(string& nTitle, bool updateClient);
+	void setCurrentTitle(String& nTitle, bool updateClient);
 
 	inline uint32 getForcePower() {
 		return forcePower;
@@ -180,7 +180,7 @@ public:
 	}
 
 	inline bool isDigesting() {
-		if(getDrinkFilling() > 0 || getFoodFilling() > 0)
+		if (getDrinkFilling() > 0 || getFoodFilling() > 0)
 			return true;
 
 		return false;
@@ -189,7 +189,7 @@ public:
 	inline void setDrinkFilling(uint32 filling, bool updateClient = true) {
 		drinkFilling = filling;
 
-		if(updateClient) {
+		if (updateClient) {
 			PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9((PlayerObject*) _this);
 			dplay9->updateStomachFilling();
 			dplay9->close();
@@ -204,7 +204,7 @@ public:
 	inline void setFoodFilling(uint32 filling, bool updateClient = true) {
 		foodFilling = filling;
 
-		if(updateClient) {
+		if (updateClient) {
 			PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9((PlayerObject*) _this);
 			dplay9->updateStomachFilling();
 			dplay9->close();
@@ -239,11 +239,11 @@ public:
 		return player;
 	}
 
-	inline string& getCurrentTitle() {
+	inline String& getCurrentTitle() {
 		return title;
 	}
 
-	inline void setTitle(string& temptitle) {
+	inline void setTitle(String& temptitle) {
 		title = temptitle;
 	}
 
@@ -270,7 +270,7 @@ public:
 		return friendsList;
 	}
 
-	inline void addFriend(string& name, string& inServer) {
+	inline void addFriend(String& name, String& inServer) {
 		friendsList->addFriend(name, inServer);
 	}
 
@@ -278,7 +278,7 @@ public:
 		friendsList->friendsMagicNumberReset();
 	}
 
-	inline void removeFriend(string& name) {
+	inline void removeFriend(String& name) {
 		friendsList->removeFriend(name);
 	}
 
@@ -294,7 +294,7 @@ public:
 		friendsList->updateAllFriends(playerObject);
 	}
 
-	inline void findFriend(string& name, PlayerManager* playerManager) {
+	inline void findFriend(String& name, PlayerManager* playerManager) {
 		friendsList->findFriend(name, playerManager);
 	}
 
@@ -303,7 +303,7 @@ public:
 		return ignoreList;
 	}
 
-	inline void addIgnore(string& name, string& inServer) {
+	inline void addIgnore(String& name, String& inServer) {
 		ignoreList->addIgnore(name, inServer);
 	}
 
@@ -311,7 +311,7 @@ public:
 		ignoreList->ignoreMagicNumberReset();
 	}
 
-	inline void removeIgnore(string& name) {
+	inline void removeIgnore(String& name) {
 		ignoreList->removeIgnore(name);
 	}
 
@@ -330,7 +330,7 @@ public:
 	}
 
 	void saveWaypoints(Player* player);
-	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
+	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
 
 	friend class Player;
 

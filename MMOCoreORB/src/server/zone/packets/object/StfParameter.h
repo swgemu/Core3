@@ -60,7 +60,7 @@ class StfPointerParameter : public Message {
 };
 
 class StfFileParameter : public Message {
-	StfFileParameter(const string& file, const string& str) : Message() {
+	StfFileParameter(const String& file, const String& str) : Message() {
 		insertLong(0);
 		insertAscii(file);
 		insertInt(0);
@@ -72,7 +72,7 @@ class StfFileParameter : public Message {
 };
 
 class StfUnicodeParameter : public Message {
-	StfUnicodeParameter(const unicode& str) : Message() {
+	StfUnicodeParameter(const UnicodeString& str) : Message() {
 		insertLong(0);
 		insertAscii("");
 		insertInt(0);
@@ -111,19 +111,19 @@ public:
 		toParam = new StfPointerParameter(to);
 	}
 
-	void addTO(const string& file, const string& str) {
+	void addTO(const String& file, const String& str) {
 		delete toParam;
 		toParam = new StfFileParameter(file, str);
 	}
 
-	void addTO(const unicode& str) {
+	void addTO(const UnicodeString& str) {
 		delete toParam;
 		toParam = new StfUnicodeParameter(str);
 	}
 
-	void addTO(const string& str) {
+	void addTO(const String& str) {
 		delete toParam;
-		toParam = new StfUnicodeParameter(unicode(str));
+		toParam = new StfUnicodeParameter(UnicodeString(str));
 	}
 
 	void addTU(uint64 to) {
@@ -131,19 +131,19 @@ public:
 		tuParam = new StfPointerParameter(to);
 	}
 
-	void addTU(const string& file, const string& str) {
+	void addTU(const String& file, const String& str) {
 		delete tuParam;
 		tuParam = new StfFileParameter(file, str);
 	}
 
-	void addTU(const unicode& str) {
+	void addTU(const UnicodeString& str) {
 		delete tuParam;
 		tuParam = new StfUnicodeParameter(str);
 	}
 
-	void addTU(const string& str) {
+	void addTU(const String& str) {
 		delete tuParam;
-		tuParam = new StfUnicodeParameter(unicode(str));
+		tuParam = new StfUnicodeParameter(UnicodeString(str));
 	}
 
 	void addTT(uint64 to) {
@@ -151,19 +151,19 @@ public:
 		ttParam = new StfPointerParameter(to);
 	}
 
-	void addTT(const string& file, const string& str) {
+	void addTT(const String& file, const String& str) {
 		delete ttParam;
 		ttParam = new StfFileParameter(file, str);
 	}
 
-	void addTT(const unicode& str) {
+	void addTT(const UnicodeString& str) {
 		delete ttParam;
 		ttParam = new StfUnicodeParameter(str);
 	}
 
-	void addTT(const string& str) {
+	void addTT(const String& str) {
 		delete ttParam;
-		ttParam = new StfUnicodeParameter(unicode(str));
+		ttParam = new StfUnicodeParameter(UnicodeString(str));
 	}
 
 	void addDI(int i) {

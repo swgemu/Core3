@@ -21,9 +21,9 @@ class TangibleObject;
 
 class FactoryCrate : public TangibleObject {
 public:
-	FactoryCrate(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	FactoryCrate(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	FactoryCrate(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	FactoryCrate(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void generateAttributes(Player* player);
 
@@ -77,8 +77,8 @@ public:
 	FactoryCrate* _this;
 
 public:
-	FactoryCrateServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
-	FactoryCrateServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	FactoryCrateServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	FactoryCrateServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~FactoryCrateServant();
 
 	void _setStub(DistributedObjectStub* stub);

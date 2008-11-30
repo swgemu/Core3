@@ -64,7 +64,7 @@ public:
 
 	void put(uint64 oid, Creature* creature) {
 		if (HashTable<uint64, Creature*>::put(oid, creature) != NULL)
-			cout << "CREATUREMAP OID CONFLICT\n";
+			System::out << "CREATUREMAP OID CONFLICT\n";
 	}
 
 };

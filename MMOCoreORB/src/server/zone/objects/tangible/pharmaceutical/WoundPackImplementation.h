@@ -55,8 +55,8 @@ protected:
 	uint8 attribute;
 
 public:
-	WoundPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	WoundPackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	WoundPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	WoundPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	void initialize();
 
@@ -80,13 +80,13 @@ public:
 
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
-		string attr = "effectiveness";
+		String attr = "effectiveness";
 		itemAttributes->setFloatAttribute(attr, effectiveness);
 	}
 
 	inline void setAttribute(uint8 value) {
 		attribute = value;
-		string attr = "attribute";
+		String attr = "attribute";
 		itemAttributes->setIntAttribute(attr, attribute);
 	}
 

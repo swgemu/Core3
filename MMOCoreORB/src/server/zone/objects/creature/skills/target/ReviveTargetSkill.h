@@ -53,18 +53,17 @@ which carries forward this exception.
 
 class ReviveTargetSkill : public TargetSkill {
 protected:
-	string effectName;
+	String effectName;
 	int mindCost;
 
 public:
-	ReviveTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, REVIVE, serv) {
+	ReviveTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, REVIVE, serv) {
 		effectName = aname;
 		mindCost = 0;
-
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (effectName.size() != 0)
+		if (!effectName.isEmpty())
 			creatureTarget->playEffect(effectName, "");
 
 		if (creature == creatureTarget)
@@ -122,9 +121,9 @@ public:
 		return true;
 	}
 
-	void parseModifier(const string& modifier, uint64& objectId) {
-		if (!modifier.empty())
-			objectId = atoll(modifier.c_str());
+	void parseModifier(const String& modifier, uint64& objectId) {
+		if (!modifier.isEmpty())
+			objectId = Long::valueOf(modifier);
 		else
 			objectId = 0;
 	}
@@ -153,7 +152,7 @@ public:
 		return NULL;
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		if (!target->isPlayer()) {
 			creature->sendSystemMessage("healing_response", "healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
 			return 0;
@@ -191,12 +190,12 @@ public:
 		if (!creature->resurrect((CreatureObject*) playerTarget))
 			return 0;
 
-		stringstream msgPlayer, msgTarget;
-		msgPlayer << "You resuscitate " << playerTarget->getCharacterName().c_str() << ".";
-		msgTarget << creature->getCharacterName().c_str() << " resuscitates you.";
+		StringBuffer msgPlayer, msgTarget;
+		msgPlayer << "You resuscitate " << playerTarget->getCharacterName().toString() << ".";
+		msgTarget << creature->getCharacterName().toString() << " resuscitates you.";
 
-		creature->sendSystemMessage(msgPlayer.str());
-		playerTarget->sendSystemMessage(msgTarget.str());
+		creature->sendSystemMessage(msgPlayer.toString());
+		playerTarget->sendSystemMessage(msgTarget.toString());
 
 		sendHealMessage((Player*) creature, playerTarget, healedHealth, healedAction, healedMind);
 		sendWoundMessage((Player*) creature, playerTarget, healedHealthWounds, healedActionWounds, healedMindWounds);
@@ -214,7 +213,7 @@ public:
 		return 0;
 	}
 
-	void awardXp(CreatureObject* creature, string type, int power) {
+	void awardXp(CreatureObject* creature, String type, int power) {
 		Player* player = (Player*) creature;
 
 		int amount = (int)round((float)power * 0.5f);
@@ -224,16 +223,17 @@ public:
 
 		player->addXp(type, amount, true);
 
-		String::toLower(type);
-		type[0] = toupper(type[0]); //Capitalize first letter.
+		// Capitalize first letter.
+		type = Character::toUpperCase(type.charAt(0)) +
+			type.subString(1, type.length()).toLowerCase();
 
-		stringstream msgExperience;
+		StringBuffer msgExperience;
 		msgExperience << "You receive " << amount << " points of " << type << " experience.";
-		player->sendSystemMessage(msgExperience.str());
+		player->sendSystemMessage(msgExperience.toString());
 	}
 
 	void sendHealMessage(Player* player, Player* playerTarget, int health, int action, int mind) {
-		stringstream msgPlayer, msgTarget, msgBody, msgTail;
+		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
 		if (health > 0 && action > 0 && mind > 0) {
 			msgBody << health << " health, " << action << " action, and " << mind << " mind";
@@ -261,18 +261,18 @@ public:
 		msgTail << " damage.";
 
 		if (player == playerTarget) {
-			msgPlayer << "You heal yourself for " << msgBody.str() << msgTail.str();
-			player->sendSystemMessage(msgPlayer.str());
+			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
 		} else {
-			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.str() << msgTail.str();
-			player->sendSystemMessage(msgPlayer.str());
-			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.str() << msgTail.str();
-			playerTarget->sendSystemMessage(msgTarget.str());
+			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
+			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.toString() << msgTail.toString();
+			playerTarget->sendSystemMessage(msgTarget.toString());
 		}
 	}
 
 	void sendWoundMessage(Player* player, Player* playerTarget, int health, int action, int mind) {
-		stringstream msgPlayer, msgTarget, msgBody, msgTail;
+		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
 		if (health > 0 && action > 0 && mind > 0) {
 			msgBody << health << " health, " << action << " action, and " << mind << " mind";
@@ -300,13 +300,13 @@ public:
 		msgTail << " wound damage.";
 
 		if (player == playerTarget) {
-			msgPlayer << "You heal yourself for " << msgBody.str() << msgTail.str();
-			player->sendSystemMessage(msgPlayer.str());
+			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
 		} else {
-			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.str() << msgTail.str();
-			player->sendSystemMessage(msgPlayer.str());
-			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.str() << msgTail.str();
-			playerTarget->sendSystemMessage(msgTarget.str());
+			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
+			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.toString() << msgTail.toString();
+			playerTarget->sendSystemMessage(msgTarget.toString());
 		}
 	}
 
@@ -318,7 +318,7 @@ public:
 		return true;
 	}
 
-	void setEffectName(const string& name) {
+	void setEffectName(const String& name) {
 		effectName = name;
 	}
 

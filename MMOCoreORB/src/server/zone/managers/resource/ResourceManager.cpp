@@ -74,7 +74,7 @@ void ResourceManager::clearResources() {
 		((ResourceManagerImplementation*) _impl)->clearResources();
 }
 
-bool ResourceManager::checkResource(Player* player, string& resourcename, int SurveyToolType) {
+bool ResourceManager::checkResource(Player* player, String& resourcename, int SurveyToolType) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -89,7 +89,7 @@ bool ResourceManager::checkResource(Player* player, string& resourcename, int Su
 		return ((ResourceManagerImplementation*) _impl)->checkResource(player, resourcename, SurveyToolType);
 }
 
-void ResourceManager::sendSurveyMessage(Player* player, string& resourcename) {
+void ResourceManager::sendSurveyMessage(Player* player, String& resourcename) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -103,7 +103,7 @@ void ResourceManager::sendSurveyMessage(Player* player, string& resourcename) {
 		((ResourceManagerImplementation*) _impl)->sendSurveyMessage(player, resourcename);
 }
 
-void ResourceManager::sendSampleMessage(Player* player, string& resourcename) {
+void ResourceManager::sendSampleMessage(Player* player, String& resourcename) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +145,7 @@ bool ResourceManager::sendSurveyResources(Player* player, int SurveyToolType) {
 		return ((ResourceManagerImplementation*) _impl)->sendSurveyResources(player, SurveyToolType);
 }
 
-void ResourceManager::getClassSeven(const string& str, string& clas) {
+void ResourceManager::getClassSeven(const String& str, String& clas) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -159,7 +159,7 @@ void ResourceManager::getClassSeven(const string& str, string& clas) {
 		((ResourceManagerImplementation*) _impl)->getClassSeven(str, clas);
 }
 
-void ResourceManager::getResourceContainerName(const string& str, string& name) {
+void ResourceManager::getResourceContainerName(const String& str, String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -173,7 +173,7 @@ void ResourceManager::getResourceContainerName(const string& str, string& name) 
 		((ResourceManagerImplementation*) _impl)->getResourceContainerName(str, name);
 }
 
-void ResourceManager::printResource(string& resname) {
+void ResourceManager::printResource(String& resname) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -217,7 +217,7 @@ ResourceList* ResourceManager::getResourceListAtLocation(int zone, float x, floa
 		return ((ResourceManagerImplementation*) _impl)->getResourceListAtLocation(zone, x, y, type);
 }
 
-string& ResourceManager::getResourceNameByID(unsigned long long rID) {
+String& ResourceManager::getResourceNameByID(unsigned long long rID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -245,7 +245,7 @@ void ResourceManager::generateSUI(Player* player, SuiListBox* sui) {
 		((ResourceManagerImplementation*) _impl)->generateSUI(player, sui);
 }
 
-bool ResourceManager::useResourceDeed(Player* player, string& resourceName, int resourceQuantity) {
+bool ResourceManager::useResourceDeed(Player* player, String& resourceName, int resourceQuantity) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -260,7 +260,7 @@ bool ResourceManager::useResourceDeed(Player* player, string& resourceName, int 
 		return ((ResourceManagerImplementation*) _impl)->useResourceDeed(player, resourceName, resourceQuantity);
 }
 
-bool ResourceManager::containsResource(string& resourceName) {
+bool ResourceManager::containsResource(String& resourceName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -294,13 +294,13 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		clearResources();
 		break;
 	case 9:
-		resp->insertBoolean(checkResource((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_checkResource__Player_string_int_), inv->getSignedIntParameter()));
+		resp->insertBoolean(checkResource((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_checkResource__Player_String_int_), inv->getSignedIntParameter()));
 		break;
 	case 10:
-		sendSurveyMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyMessage__Player_string_));
+		sendSurveyMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyMessage__Player_String_));
 		break;
 	case 11:
-		sendSampleMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleMessage__Player_string_));
+		sendSampleMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleMessage__Player_String_));
 		break;
 	case 12:
 		setResourceData((ResourceContainer*) inv->getObjectParameter(), inv->getBooleanParameter());
@@ -309,13 +309,13 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		resp->insertBoolean(sendSurveyResources((Player*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
 	case 14:
-		getClassSeven(inv->getAsciiParameter(_param0_getClassSeven__string_string_), inv->getAsciiParameter(_param1_getClassSeven__string_string_));
+		getClassSeven(inv->getAsciiParameter(_param0_getClassSeven__String_String_), inv->getAsciiParameter(_param1_getClassSeven__String_String_));
 		break;
 	case 15:
-		getResourceContainerName(inv->getAsciiParameter(_param0_getResourceContainerName__string_string_), inv->getAsciiParameter(_param1_getResourceContainerName__string_string_));
+		getResourceContainerName(inv->getAsciiParameter(_param0_getResourceContainerName__String_String_), inv->getAsciiParameter(_param1_getResourceContainerName__String_String_));
 		break;
 	case 16:
-		printResource(inv->getAsciiParameter(_param0_printResource__string_));
+		printResource(inv->getAsciiParameter(_param0_printResource__String_));
 		break;
 	case 17:
 		harvestOrganics((Player*) inv->getObjectParameter(), (Creature*) inv->getObjectParameter(), inv->getSignedIntParameter());
@@ -330,10 +330,10 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		generateSUI((Player*) inv->getObjectParameter(), (SuiListBox*) inv->getObjectParameter());
 		break;
 	case 21:
-		resp->insertBoolean(useResourceDeed((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_useResourceDeed__Player_string_int_), inv->getSignedIntParameter()));
+		resp->insertBoolean(useResourceDeed((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_useResourceDeed__Player_String_int_), inv->getSignedIntParameter()));
 		break;
 	case 22:
-		resp->insertBoolean(containsResource(inv->getAsciiParameter(_param0_containsResource__string_)));
+		resp->insertBoolean(containsResource(inv->getAsciiParameter(_param0_containsResource__String_)));
 		break;
 	default:
 		return NULL;
@@ -354,15 +354,15 @@ void ResourceManagerAdapter::clearResources() {
 	return ((ResourceManagerImplementation*) impl)->clearResources();
 }
 
-bool ResourceManagerAdapter::checkResource(Player* player, string& resourcename, int SurveyToolType) {
+bool ResourceManagerAdapter::checkResource(Player* player, String& resourcename, int SurveyToolType) {
 	return ((ResourceManagerImplementation*) impl)->checkResource(player, resourcename, SurveyToolType);
 }
 
-void ResourceManagerAdapter::sendSurveyMessage(Player* player, string& resourcename) {
+void ResourceManagerAdapter::sendSurveyMessage(Player* player, String& resourcename) {
 	return ((ResourceManagerImplementation*) impl)->sendSurveyMessage(player, resourcename);
 }
 
-void ResourceManagerAdapter::sendSampleMessage(Player* player, string& resourcename) {
+void ResourceManagerAdapter::sendSampleMessage(Player* player, String& resourcename) {
 	return ((ResourceManagerImplementation*) impl)->sendSampleMessage(player, resourcename);
 }
 
@@ -374,15 +374,15 @@ bool ResourceManagerAdapter::sendSurveyResources(Player* player, int SurveyToolT
 	return ((ResourceManagerImplementation*) impl)->sendSurveyResources(player, SurveyToolType);
 }
 
-void ResourceManagerAdapter::getClassSeven(const string& str, string& clas) {
+void ResourceManagerAdapter::getClassSeven(const String& str, String& clas) {
 	return ((ResourceManagerImplementation*) impl)->getClassSeven(str, clas);
 }
 
-void ResourceManagerAdapter::getResourceContainerName(const string& str, string& name) {
+void ResourceManagerAdapter::getResourceContainerName(const String& str, String& name) {
 	return ((ResourceManagerImplementation*) impl)->getResourceContainerName(str, name);
 }
 
-void ResourceManagerAdapter::printResource(string& resname) {
+void ResourceManagerAdapter::printResource(String& resname) {
 	return ((ResourceManagerImplementation*) impl)->printResource(resname);
 }
 
@@ -394,7 +394,7 @@ ResourceList* ResourceManagerAdapter::getResourceListAtLocation(int zone, float 
 	return ((ResourceManagerImplementation*) impl)->getResourceListAtLocation(zone, x, y, type);
 }
 
-string& ResourceManagerAdapter::getResourceNameByID(unsigned long long rID) {
+String& ResourceManagerAdapter::getResourceNameByID(unsigned long long rID) {
 	return ((ResourceManagerImplementation*) impl)->getResourceNameByID(rID);
 }
 
@@ -402,11 +402,11 @@ void ResourceManagerAdapter::generateSUI(Player* player, SuiListBox* sui) {
 	return ((ResourceManagerImplementation*) impl)->generateSUI(player, sui);
 }
 
-bool ResourceManagerAdapter::useResourceDeed(Player* player, string& resourceName, int resourceQuantity) {
+bool ResourceManagerAdapter::useResourceDeed(Player* player, String& resourceName, int resourceQuantity) {
 	return ((ResourceManagerImplementation*) impl)->useResourceDeed(player, resourceName, resourceQuantity);
 }
 
-bool ResourceManagerAdapter::containsResource(string& resourceName) {
+bool ResourceManagerAdapter::containsResource(String& resourceName) {
 	return ((ResourceManagerImplementation*) impl)->containsResource(resourceName);
 }
 

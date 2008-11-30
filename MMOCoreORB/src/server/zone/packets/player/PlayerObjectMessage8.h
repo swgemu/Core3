@@ -91,7 +91,7 @@ public:
 		
 		play->experienceList.resetIterator();
 		while (play->experienceList.hasNext()) {
-			string xpType;
+			String xpType;
 			int value;
 			play->experienceList.getNextKeyAndValue(xpType, value);
 			
@@ -120,7 +120,7 @@ public:
 			insertLong(0); //?
 			insertInt(wp->getPlanetCRC());
 
-			unicode wpName = wp->getName();
+			UnicodeString wpName = wp->getName();
 			insertUnicode(wpName);
 
 			insertLong(wp->getObjectID());

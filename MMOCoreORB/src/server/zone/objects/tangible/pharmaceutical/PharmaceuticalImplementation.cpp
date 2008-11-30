@@ -48,7 +48,7 @@ which carries forward this exception.
 
 #include "../../../objects.h"
 
-PharmaceuticalImplementation::PharmaceuticalImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int mptype)
+PharmaceuticalImplementation::PharmaceuticalImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int mptype)
 		: PharmaceuticalServant(oid, PHARMACEUTICAL) {
 
 	objectCRC = tempCRC;
@@ -60,7 +60,7 @@ PharmaceuticalImplementation::PharmaceuticalImplementation(uint64 oid, uint32 te
 	initialize();
 }
 
-PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int mptype)
+PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int mptype)
 		: PharmaceuticalServant(oid, PHARMACEUTICAL) {
 
 	objectCRC = tempCRC;
@@ -75,7 +75,7 @@ PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creat
 }
 
 
-PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, int mptype)
+PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, int mptype)
 		: PharmaceuticalServant(creature->getNewItemID(), PHARMACEUTICAL) {
 
 	objectCRC = tempCRC;
@@ -99,7 +99,7 @@ void PharmaceuticalImplementation::initialize() {
 
 void PharmaceuticalImplementation::sendDeltas(Player* player) {
 	TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3((TangibleObject*)_this);
-	if(getUsesRemaining() == 1)
+	if (getUsesRemaining() == 1)
 		dtano3->addIntUpdate(7,  0);
 	else
 		dtano3->addIntUpdate(7, getUsesRemaining()); //Update the number of charges on the pack in inventory.
@@ -121,7 +121,7 @@ void PharmaceuticalImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void PharmaceuticalImplementation::parseItemAttributes() {
-	string attr = "usesRemaining";
+	String attr = "usesRemaining";
 	setUsesRemaining(itemAttributes->getIntAttribute(attr));
 
 	attr = "medicineUseRequired";
@@ -135,11 +135,11 @@ void PharmaceuticalImplementation::addHeaderAttributes(AttributeListMessage* alm
 	alm->insertAttribute("volume", "1");
 	alm->insertAttribute("counter_uses_remaining", getUsesRemaining());
 
-	if(craftersName != ""){
+	if (craftersName != ""){
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	if(craftedSerial != ""){
+	if (craftedSerial != ""){
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
 }

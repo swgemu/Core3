@@ -43,28 +43,37 @@ which carries forward this exception.
 */
 
 #include "../../../../packets.h"
+
 #include "../../../../objects.h"
+
 #include "Component.h"
 #include "ComponentImplementation.h"
+
 #include "../../../../ZoneClientSession.h"
 
 ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCRC,
-		const unicode& n, const string& tempn) : ComponentServant(object_id, tempCRC, n, tempn,
+		const UnicodeString& n, const String& tempn) : ComponentServant(object_id, tempCRC, n, tempn,
 				COMPONENT) {
 	objectCRC = tempCRC;
+
 	templateTypeName = "obj_n";
 	templateName = tempn;
+
 	name = n;
+
 	init();
 }
 
 ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint32 tempCRC,
-		const unicode& n, const string& tempn) : ComponentServant(creature, tempCRC, n, tempn,
+		const UnicodeString& n, const String& tempn) : ComponentServant(creature, tempCRC, n, tempn,
 				COMPONENT) {
 	objectCRC = tempCRC;
+
 	templateTypeName = "obj_n";
 	templateName = tempn;
+
 	name = n;
+
 	init();
 }
 
@@ -80,27 +89,29 @@ ComponentImplementation::ComponentImplementation(Component* component, uint64 oi
 	objectCount = component->getObjectCount();
 
 	craftersName = component->getCraftersName();
-	string tempattribute = "craftersname";
+	String tempattribute = "craftersname";
 	itemAttributes->setStringAttribute(tempattribute, craftersName);
 
-	string tempattribute2 = "craftedserial";
+	String tempattribute2 = "craftedserial";
 	craftedSerial = component->getCraftedSerial();
 	itemAttributes->setStringAttribute(tempattribute2, craftedSerial);
 
-	string property;
+	String property;
 
-	for(int i = 0; i < component->getPropertyCount(); ++i) {
+	for (int i = 0; i < component->getPropertyCount(); ++i) {
 		property = component->getProperty(i);
+
 		float value = component->getAttributeValue(property);
 		int precision = component->getAttributePrecision(property);
-		string title = component->getAttributeTitle(property);
+		String title = component->getAttributeTitle(property);
+
 		keyList.add(property);
 		attributeMap.put(property, value);
 		itemAttributes->setFloatAttribute(property, value);
 		precisionMap.put(property, precision);
 		titleMap.put(property, title);
-
 	}
+
 	savePrecisionList();
 	saveTitleList();
 
@@ -138,7 +149,6 @@ void ComponentImplementation::init() {
 }
 
 int ComponentImplementation::useObject(Player* player) {
-
 	return 0;
 }
 
@@ -146,27 +156,28 @@ void ComponentImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
 
-	string attribute;
+	String attribute;
+
 	float value;
 	double power;
 	int precision;
-	string footer;
+
+	String footer;
 
 	Player* player = (Player*) obj;
+
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 	alm->insertAttribute("volume", "1");
 
-	if(craftersName != ""){
-
+	if (craftersName != "") {
 		alm->insertAttribute("crafter", craftersName);
 	}
-	if(craftedSerial != ""){
 
+	if (craftedSerial != "") {
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
 
 	for (int i = 0; i < keyList.size(); ++i) {
-
 		footer = "";
 
 		attribute = keyList.get(i);
@@ -174,33 +185,30 @@ void ComponentImplementation::generateAttributes(SceneObject* obj) {
 		precision = precisionMap.get(attribute);
 
 		if (precision >= 0) {
-
 			if (precision >= 10) {
 				footer = "%";
 				precision -= 10;
 			}
 
-			stringstream displayvalue;
+			StringBuffer displayvalue;
 
 			displayvalue << getPrecision(value, precision);
 
 			displayvalue << footer;
 
-			alm->insertAttribute(attribute, displayvalue.str());
+			alm->insertAttribute(attribute, displayvalue.toString());
 		}
-
 	}
 
 	player->sendMessage(alm);
 }
 
 void ComponentImplementation::parseItemAttributes(){
-
 	parseAttributeString();
 	parsePrecisionString();
 	parseTitleString();
 
-	string temp = "craftersname";
+	String temp = "craftersname";
 	craftersName = itemAttributes->getStringAttribute(temp);
 
 	temp = "craftedserial";
@@ -208,48 +216,40 @@ void ComponentImplementation::parseItemAttributes(){
 
 	temp = "looted";
 	wasLooted = itemAttributes->getBooleanAttribute(temp);
-
 }
 
-float ComponentImplementation::getAttributeValue(string& attributeName){
-
+float ComponentImplementation::getAttributeValue(String& attributeName){
 	return attributeMap.get(attributeName);
-
 }
 
-int ComponentImplementation::getAttributePrecision(string& attributeName){
-
+int ComponentImplementation::getAttributePrecision(String& attributeName){
 	return precisionMap.get(attributeName);
-
 }
 
-string& ComponentImplementation::getAttributeTitle(string& attributeName){
-
+String& ComponentImplementation::getAttributeTitle(String& attributeName){
 	return titleMap.get(attributeName);
-
 }
 
 void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
-
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
-	string attribute;
+
+	String attribute;
 	float value;
 	int precision;
-	string title;
+	String title;
+
 	attributeMap.removeAll();
 	precisionMap.removeAll();
 	titleMap.removeAll();
 	keyList.removeAll();
 
-	for(int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i) {
-
+	for (int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i) {
 		value = craftingValues->getAttributeAndValue(draftSchematic, attribute, i);
-		keyList.add(attribute);
 
+		keyList.add(attribute);
 	}
 
-	for(int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i){
-
+	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i){
 		attribute = craftingValues->getExperimentalPropertySubtitle(i);
 
 		//value = craftingValues->getAttributeAndValue(draftSchematic, attribute, i);
@@ -260,7 +260,7 @@ void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 		precision = craftingValues->getPrecision(attribute);
 		title = craftingValues->getExperimentalPropertyTitle(attribute);
 
-		if(!hasKey(attribute))
+		if (!hasKey(attribute))
 			keyList.add(attribute);
 
 		itemAttributes->setFloatAttribute(attribute, value);
@@ -277,70 +277,57 @@ void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 }
 
 void ComponentImplementation::savePrecisionList(){
+	StringBuffer ss;
+	String element;
 
-	stringstream ss;
-	string element;
-
-	for(int i = 0; i < keyList.size(); ++i){
-
+	for (int i = 0; i < keyList.size(); ++i){
 		element = keyList.get(i);
 
 		ss << element << "=" << precisionMap.get(element) << ";";
-
 	}
 
-	string attribute = "precision";
-	string value = ss.str();
+	String attribute = "precision";
+	String value = ss.toString();
 
 	itemAttributes->setStringAttribute(attribute, value);
-
 }
 
 void ComponentImplementation::saveTitleList(){
+	StringBuffer ss;
+	String element;
 
-	stringstream ss;
-	string element;
-
-	for(int i = 0; i < keyList.size(); ++i){
-
+	for (int i = 0; i < keyList.size(); ++i){
 		element = keyList.get(i);
 
 		ss << element << "=" << titleMap.get(element) << ";";
-
 	}
 
-	string attribute = "title";
-	string value = ss.str();
+	String attribute = "title";
+	String value = ss.toString();
 
 	itemAttributes->setStringAttribute(attribute, value);
-
 }
 
 void ComponentImplementation::parsePrecisionString() {
-
 	int index1 = 0;
 	int index2;
 	int index3;
+
 	precisionMap.removeAll();
 	keyList.removeAll();
 
-	string attribute = "precision";
-	string precisionString = itemAttributes->getStringAttribute(attribute);
+	String attribute = "precision";
+	String precisionString = itemAttributes->getStringAttribute(attribute);
 
+	while ((index2 = precisionString.indexOf(";", index1)) != -1) {
+		String attrPair = precisionString.subString(index1, index2);
 
-	while ((index2 = precisionString.find(";", index1)) != string::npos) {
+		if ((index3 = attrPair.indexOf("=", 0)) != -1) {
+			String key = attrPair.subString(0, index3);
+			String value = attrPair.subString(index3 + 1, attrPair.length());
 
-		string attrPair = precisionString.substr(index1, index2 - index1);
-
-		if ((index3 = attrPair.find("=", 0)) != string::npos) {
-
-			string key = attrPair.substr(0, index3);
-			string value = attrPair.substr(index3 + 1, attrPair.length()
-					- index3);
-
-			precisionMap.put(key, atoi(value.c_str()));
+			precisionMap.put(key, Integer::valueOf(value));
 			keyList.add(key);
-
 		}
 
 		index1 = index2 + 1;
@@ -348,28 +335,23 @@ void ComponentImplementation::parsePrecisionString() {
 }
 
 void ComponentImplementation::parseTitleString() {
-
 	int index1 = 0;
 	int index2;
 	int index3;
+
 	titleMap.removeAll();
 
-	string attribute = "title";
-	string titleString = itemAttributes->getStringAttribute(attribute);
+	String attribute = "title";
+	String titleString = itemAttributes->getStringAttribute(attribute);
 
+	while ((index2 = titleString.indexOf(";", index1)) != -1) {
+		String attrPair = titleString.subString(index1, index2);
 
-	while ((index2 = titleString.find(";", index1)) != string::npos) {
+		if ((index3 = attrPair.indexOf("=", 0)) != -1) {
+			String key = attrPair.subString(0, index3);
+			String value = attrPair.subString(index3 + 1, attrPair.length());
 
-		string attrPair = titleString.substr(index1, index2 - index1);
-
-		if ((index3 = attrPair.find("=", 0)) != string::npos) {
-
-			string key = attrPair.substr(0, index3);
-			string value = attrPair.substr(index3 + 1, attrPair.length()
-					- index3);
-
-			titleMap.put(key.c_str(), value.c_str());
-
+			titleMap.put(key, value);
 		}
 
 		index1 = index2 + 1;
@@ -377,29 +359,24 @@ void ComponentImplementation::parseTitleString() {
 }
 
 void ComponentImplementation::parseAttributeString() {
-
 	int index1 = 0;
 	int index2;
 	int index3;
+
 	attributeMap.removeAll();
 	itemAttributes->getAttributeString(attributeString);
 
-	while ((index2 = attributeString.find(":", index1)) != string::npos) {
+	while ((index2 = attributeString.indexOf(":", index1)) != -1) {
+		String attrPair = attributeString.subString(index1, index2);
 
-		string attrPair = attributeString.substr(index1, index2 - index1);
+		if ((index3 = attrPair.indexOf("=", 0)) != -1) {
+			String key = attrPair.subString(0, index3);
+			String value = attrPair.subString(index3 + 1, attrPair.length());
 
-		if ((index3 = attrPair.find("=", 0)) != string::npos) {
-
-			string key = attrPair.substr(0, index3);
-			string value = attrPair.substr(index3 + 1, attrPair.length()
-					- index3);
-
-			attributeMap.put(key, atof(value.c_str()));
-
+			attributeMap.put(key, Float::valueOf(value));
 		}
 
 		index1 = index2 + 1;
 	}
-
 }
 

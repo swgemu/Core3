@@ -54,12 +54,12 @@ class VendorTerminalImplementation : public VendorTerminalServant {
 	
 public:
 	VendorTerminalImplementation(BazaarManager* bazaarmanager, uint64 objid, float x, float z, float y) :
-			VendorTerminalServant(0xBD7FCCB1, objid, unicode("Julian's Vendor"), "vendor_terminal_basic", x, z, y, VENDOR) {
+			VendorTerminalServant(0xBD7FCCB1, objid, UnicodeString("Julian's Vendor"), "vendor_terminal_basic", x, z, y, VENDOR) {
 		bazaarManager = bazaarmanager;
 	}
 	
 	int useObject(Player* player) {
-		cout << "Vendor use object";
+		System::out << "Vendor use object";
 		
 		return 0;
 	}

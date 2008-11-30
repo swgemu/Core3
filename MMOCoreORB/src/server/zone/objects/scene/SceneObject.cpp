@@ -452,7 +452,7 @@ void SceneObject::generateAttributes(Player* player) {
 		((SceneObjectImplementation*) _impl)->generateAttributes(player);
 }
 
-void SceneObject::info(const string& message, bool forcedLog) {
+void SceneObject::info(const String& message, bool forcedLog) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -466,7 +466,7 @@ void SceneObject::info(const string& message, bool forcedLog) {
 		((SceneObjectImplementation*) _impl)->info(message, forcedLog);
 }
 
-void SceneObject::error(const string& message) {
+void SceneObject::error(const String& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -843,7 +843,7 @@ float SceneObject::getDirectionW() {
 		return ((SceneObjectImplementation*) _impl)->getDirectionW();
 }
 
-string& SceneObject::getLoggingName() {
+String& SceneObject::getLoggingName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1367,10 +1367,10 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		generateAttributes((Player*) inv->getObjectParameter());
 		break;
 	case 38:
-		info(inv->getAsciiParameter(_param0_info__string_bool_), inv->getBooleanParameter());
+		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
 		break;
 	case 39:
-		error(inv->getAsciiParameter(_param0_error__string_));
+		error(inv->getAsciiParameter(_param0_error__String_));
 		break;
 	case 40:
 		setObjectID(inv->getUnsignedLongParameter());
@@ -1693,11 +1693,11 @@ void SceneObjectAdapter::generateAttributes(Player* player) {
 	return ((SceneObjectImplementation*) impl)->generateAttributes(player);
 }
 
-void SceneObjectAdapter::info(const string& message, bool forcedLog) {
+void SceneObjectAdapter::info(const String& message, bool forcedLog) {
 	return ((SceneObjectImplementation*) impl)->info(message, forcedLog);
 }
 
-void SceneObjectAdapter::error(const string& message) {
+void SceneObjectAdapter::error(const String& message) {
 	return ((SceneObjectImplementation*) impl)->error(message);
 }
 
@@ -1813,7 +1813,7 @@ float SceneObjectAdapter::getDirectionW() {
 	return ((SceneObjectImplementation*) impl)->getDirectionW();
 }
 
-string& SceneObjectAdapter::getLoggingName() {
+String& SceneObjectAdapter::getLoggingName() {
 	return ((SceneObjectImplementation*) impl)->getLoggingName();
 }
 

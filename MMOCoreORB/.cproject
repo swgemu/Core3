@@ -71,7 +71,13 @@
 
 
 
-
+<storageModule moduleId="org.eclipse.cdt.core.pathentry">
+<pathentry kind="src" path=""/>
+<pathentry kind="out" path=""/>
+<pathentry kind="con" path="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO"/>
+<pathentry kind="prj" path="/MMOEngine"/>
+<pathentry kind="lib" library="D:/Programming/Projects/swgemu/MMOEngine/lib/unix/libengine3.a" path=""/>
+</storageModule>
 <storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
 <buildTargets>
 <target name="all" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
@@ -115,14 +121,6 @@
 <runAllBuilders>false</runAllBuilders>
 </target>
 </buildTargets>
-</storageModule>
-<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-<storageModule moduleId="org.eclipse.cdt.core.pathentry">
-<pathentry kind="src" path=""/>
-<pathentry kind="out" path=""/>
-<pathentry kind="con" path="org.eclipse.cdt.make.core.DISCOVERED_SCANNER_INFO"/>
-<pathentry kind="prj" path="/MMOEngine"/>
-<pathentry kind="lib" library="D:/Programming/Projects/swgemu/MMOEngine/lib/unix/libengine3.a" path=""/>
 </storageModule>
 </cconfiguration>
 </storageModule>

@@ -15,9 +15,9 @@ class RangedWeapon;
 
 class CarbineRangedWeapon : public RangedWeapon {
 public:
-	CarbineRangedWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	CarbineRangedWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
-	CarbineRangedWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false);
+	CarbineRangedWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false);
 
 protected:
 	CarbineRangedWeapon(DummyConstructorParameter* param);
@@ -59,8 +59,8 @@ public:
 	CarbineRangedWeapon* _this;
 
 public:
-	CarbineRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp);
-	CarbineRangedWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp);
+	CarbineRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp);
+	CarbineRangedWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp);
 	virtual ~CarbineRangedWeaponServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -50,12 +50,12 @@ which carries forward this exception.
 class PolearmMeleeWeaponImplementation : public PolearmMeleeWeaponServant {
 
 public:
-	PolearmMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
+	PolearmMeleeWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: PolearmMeleeWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::POLEARM, eqp) {
 		initialize();
 	}
 
-	PolearmMeleeWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
+	PolearmMeleeWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: PolearmMeleeWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::POLEARM, eqp) {
 		initialize();
 	}

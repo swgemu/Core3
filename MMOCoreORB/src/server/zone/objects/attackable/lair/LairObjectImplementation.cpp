@@ -58,17 +58,17 @@ LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 
 	templateTypeName = "lair_n";
 
-	name = unicode("");
+	name = UnicodeString("");
 
-	string templateDetailName = "lair_d";
+	String templateDetailName = "lair_d";
 
 	objectType = ATTACKABLE;
 	pvpStatusBitmask = 1;
 	attackable = true;
 
 	creatureCRC = 0;
-	string creatureName = "dewback";
-	string creatureStfName = "a Dewback";
+	String creatureName = "dewback";
+	String creatureStfName = "a Dewback";
 
 	spawnSize = 0;
 	babiesPerMillion = 0;
@@ -103,7 +103,7 @@ void LairObjectImplementation::doDamage(int damage, SceneObject* attacker) {
 
 void LairObjectImplementation::spawnCreatures(bool lockCreatureManager) {
 	if (zone == NULL) {
-		cout << "Zone is NULL" << endl;
+		System::out << "Zone is NULL" << endl;
 		return;
 	}
 
@@ -177,8 +177,8 @@ void LairObjectImplementation::doDestroyed(SceneObject* attacker) {
 
 	broadcastMessage(dcreo3);
 
-	string explodeStr = "clienteffect/lair_damage_heavy.cef";
-	string extraStr = "";
+	String explodeStr = "clienteffect/lair_damage_heavy.cef";
+	String extraStr = "";
 
 	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(_this, explodeStr, extraStr);
 	broadcastMessage(explode);

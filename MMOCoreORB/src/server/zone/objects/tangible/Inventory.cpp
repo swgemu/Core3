@@ -25,7 +25,7 @@ Inventory::Inventory(DummyConstructorParameter* param) : Container(param) {
 Inventory::~Inventory() {
 }
 
-TangibleObject* Inventory::getMissionItem(string& misKey) {
+TangibleObject* Inventory::getMissionItem(String& misKey) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -74,7 +74,7 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(getMissionItem(inv->getAsciiParameter(_param0_getMissionItem__string_))->_getObjectID());
+		resp->insertLong(getMissionItem(inv->getAsciiParameter(_param0_getMissionItem__String_))->_getObjectID());
 		break;
 	case 7:
 		resp->insertSignedInt(getUnequippedItemCount());
@@ -89,7 +89,7 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-TangibleObject* InventoryAdapter::getMissionItem(string& misKey) {
+TangibleObject* InventoryAdapter::getMissionItem(String& misKey) {
 	return ((InventoryImplementation*) impl)->getMissionItem(misKey);
 }
 

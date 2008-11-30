@@ -15,8 +15,8 @@ private:
 	uint64 objectId;
 	uint64 spawnId;
 	time_t spawnExpireTimestamp;
-	string name;
-	string type;
+	String name;
+	String type;
 
 	int density;
 
@@ -28,7 +28,7 @@ public:
 		type = "";
 		density = 0;
 	}
-	ResourceItemImplementation(uint64 oid, uint64 sid, time_t stamp, const string& n, const string& t, int d) {
+	ResourceItemImplementation(uint64 oid, uint64 sid, time_t stamp, const String& n, const String& t, int d) {
 		objectId = oid;
 		spawnId = sid;
 		spawnExpireTimestamp = stamp;
@@ -46,10 +46,10 @@ public:
 	inline void setSpawnExpireTimestamp(time_t stamp) {
 		spawnExpireTimestamp = stamp;
 	}
-	inline void setName(const string& n) {
+	inline void setName(const String& n) {
 		name = n;
 	}
-	inline void setType(const string& t) {
+	inline void setType(const String& t) {
 		type = t;
 	}
 	inline void setDensity(int d) {
@@ -66,10 +66,10 @@ public:
 	inline time_t getSpawnExpireTimestamp() {
 		return spawnExpireTimestamp;
 	}
-	inline string& getName() {
+	inline String& getName() {
 		return name;
 	}
-	inline string& getType() {
+	inline String& getType() {
 		return type;
 	}
 	inline int getDensity() {

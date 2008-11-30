@@ -58,23 +58,23 @@ which carries forward this exception.
 class TargetSkill : public Skill {
 protected:
 
-	string secondaryAnim;
+	String secondaryAnim;
 
-	string selfMessage;
-	string targetMessage;
+	String selfMessage;
+	String targetMessage;
 
 	bool isConeSkill;
 	int coneAngle;
 
 public:
-	TargetSkill(const string& name, const string& anim, int tp, ZoneProcessServerImplementation* serv) : Skill(name, tp, TARGET, serv) {
+	TargetSkill(const String& name, const String& anim, int tp, ZoneProcessServerImplementation* serv) : Skill(name, tp, TARGET, serv) {
 		setAnimation(anim);
 
 		isConeSkill = false;
 		coneAngle = 0;
 	}
 
-	virtual int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) = 0;
+	virtual int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) = 0;
 
 	virtual void doAnimations(CreatureObject* creature, SceneObject* target) {
 	}
@@ -91,15 +91,15 @@ public:
 
 	virtual float calculateSpeed(CreatureObject* creature) = 0;
 
-	void setSecondaryAnim(const string& name) {
+	void setSecondaryAnim(const String& name) {
 		secondaryAnim = name;
 	}
 
-	void setSelfMessage(const string& name) {
+	void setSelfMessage(const String& name) {
 		selfMessage = name;
 	}
 
-	void setTargetMessage(const string& name) {
+	void setTargetMessage(const String& name) {
 		targetMessage = name;
 	}
 

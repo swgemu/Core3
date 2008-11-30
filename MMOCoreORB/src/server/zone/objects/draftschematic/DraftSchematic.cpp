@@ -24,8 +24,8 @@
  *	DraftSchematicStub
  */
 
-DraftSchematic::DraftSchematic(unsigned int schematicID, const string& objName, const string& stringName, unsigned int objCRC, const string& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new DraftSchematicImplementation(schematicID, objName, stringName, objCRC, groupName, complexity, schematicSize, craftingToolTab);
+DraftSchematic::DraftSchematic(unsigned int schematicID, const String& objName, const String& StringName, unsigned int objCRC, const String& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new DraftSchematicImplementation(schematicID, objName, StringName, objCRC, groupName, complexity, schematicSize, craftingToolTab);
 	_impl->_setStub(this);
 }
 
@@ -79,7 +79,7 @@ void DraftSchematic::sendTo(Player* player) {
 		((DraftSchematicImplementation*) _impl)->sendTo(player);
 }
 
-void DraftSchematic::addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight, string& subtitle) {
+void DraftSchematic::addExperimentalProperty(unsigned int groupNumber, const String& experimentalProperty, unsigned int weight, String& subtitle) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -158,7 +158,7 @@ void DraftSchematic::helperSendIngredientsToPlayer(ObjectControllerMessage* objM
 		((DraftSchematicImplementation*) _impl)->helperSendIngredientsToPlayer(objMsg);
 }
 
-void DraftSchematic::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, const int optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution) {
+void DraftSchematic::addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int optional, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -240,7 +240,7 @@ void DraftSchematic::setObjectID(unsigned long long objID) {
 		((DraftSchematicImplementation*) _impl)->setObjectID(objID);
 }
 
-void DraftSchematic::setTanoAttributes(string& attributes) {
+void DraftSchematic::setTanoAttributes(String& attributes) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -266,7 +266,7 @@ void DraftSchematic::setContainer(SceneObject* container) {
 		((DraftSchematicImplementation*) _impl)->setContainer(container);
 }
 
-void DraftSchematic::setXpType(string& type) {
+void DraftSchematic::setXpType(String& type) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -330,7 +330,7 @@ void DraftSchematic::setExpFailure(float rate) {
 		((DraftSchematicImplementation*) _impl)->setExpFailure(rate);
 }
 
-void DraftSchematic::setExperimentingSkill(const string& exp) {
+void DraftSchematic::setExperimentingSkill(const String& exp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -343,7 +343,7 @@ void DraftSchematic::setExperimentingSkill(const string& exp) {
 		((DraftSchematicImplementation*) _impl)->setExperimentingSkill(exp);
 }
 
-void DraftSchematic::setCustomizationSkill(const string& cust) {
+void DraftSchematic::setCustomizationSkill(const String& cust) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -356,7 +356,7 @@ void DraftSchematic::setCustomizationSkill(const string& cust) {
 		((DraftSchematicImplementation*) _impl)->setCustomizationSkill(cust);
 }
 
-void DraftSchematic::addCustomizationOption(const string& cust, const int value) {
+void DraftSchematic::addCustomizationOption(const String& cust, const int value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -370,7 +370,7 @@ void DraftSchematic::addCustomizationOption(const string& cust, const int value)
 		((DraftSchematicImplementation*) _impl)->addCustomizationOption(cust, value);
 }
 
-void DraftSchematic::setAssemblySkill(const string& ass) {
+void DraftSchematic::setAssemblySkill(const String& ass) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -433,7 +433,7 @@ DraftSchematicAttribute* DraftSchematic::getAttributeToSet(const int i) {
 		return ((DraftSchematicImplementation*) _impl)->getAttributeToSet(i);
 }
 
-DraftSchematicAttribute* DraftSchematic::getAttributeToSet(const string& name) {
+DraftSchematicAttribute* DraftSchematic::getAttributeToSet(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -446,7 +446,7 @@ DraftSchematicAttribute* DraftSchematic::getAttributeToSet(const string& name) {
 		return ((DraftSchematicImplementation*) _impl)->getAttributeToSet(name);
 }
 
-void DraftSchematic::addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision) {
+void DraftSchematic::addAttributeToSet(const String& attribute, float minVal, float maxVal, const String& attributeExpProp, const int precision) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -512,7 +512,7 @@ unsigned int DraftSchematic::getSchematicCRC() {
 		return ((DraftSchematicImplementation*) _impl)->getSchematicCRC();
 }
 
-string& DraftSchematic::getName() {
+String& DraftSchematic::getName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -525,7 +525,7 @@ string& DraftSchematic::getName() {
 		return ((DraftSchematicImplementation*) _impl)->getName();
 }
 
-string& DraftSchematic::getStringName() {
+String& DraftSchematic::getStringName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -538,7 +538,7 @@ string& DraftSchematic::getStringName() {
 		return ((DraftSchematicImplementation*) _impl)->getStringName();
 }
 
-string& DraftSchematic::getGroupName() {
+String& DraftSchematic::getGroupName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -587,7 +587,7 @@ unsigned int DraftSchematic::getObjectID() {
 		return ((DraftSchematicImplementation*) _impl)->getObjectID();
 }
 
-string& DraftSchematic::getTanoAttributes() {
+String& DraftSchematic::getTanoAttributes() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -624,7 +624,7 @@ SceneObject* DraftSchematic::getContainer() {
 		return ((DraftSchematicImplementation*) _impl)->getContainer();
 }
 
-string& DraftSchematic::getXpType() {
+String& DraftSchematic::getXpType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -649,7 +649,7 @@ int DraftSchematic::getXp() {
 		return ((DraftSchematicImplementation*) _impl)->getXp();
 }
 
-string& DraftSchematic::getExperimentingSkill() {
+String& DraftSchematic::getExperimentingSkill() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -662,7 +662,7 @@ string& DraftSchematic::getExperimentingSkill() {
 		return ((DraftSchematicImplementation*) _impl)->getExperimentingSkill();
 }
 
-string& DraftSchematic::getCustomizationSkill() {
+String& DraftSchematic::getCustomizationSkill() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -675,7 +675,7 @@ string& DraftSchematic::getCustomizationSkill() {
 		return ((DraftSchematicImplementation*) _impl)->getCustomizationSkill();
 }
 
-string& DraftSchematic::getCustomizationOption(const int i) {
+String& DraftSchematic::getCustomizationOption(const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -714,7 +714,7 @@ int DraftSchematic::getCustomizationOptionCount() {
 		return ((DraftSchematicImplementation*) _impl)->getCustomizationOptionCount();
 }
 
-string& DraftSchematic::getAssemblySkill() {
+String& DraftSchematic::getAssemblySkill() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -832,7 +832,7 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		sendTo((Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		addExperimentalProperty(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_addExperimentalProperty__int_string_int_string_), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_addExperimentalProperty__int_string_int_string_));
+		addExperimentalProperty(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_addExperimentalProperty__int_String_int_String_), inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param3_addExperimentalProperty__int_String_int_String_));
 		break;
 	case 10:
 		sendExperimentalPropertiesToPlayer((Player*) inv->getObjectParameter());
@@ -850,7 +850,7 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		helperSendIngredientsToPlayer((ObjectControllerMessage*) inv->getObjectParameter());
 		break;
 	case 15:
-		addIngredient(inv->getAsciiParameter(_param0_addIngredient__string_string_int_string_int_int_int_), inv->getAsciiParameter(_param1_addIngredient__string_string_int_string_int_int_int_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addIngredient__string_string_int_string_int_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		addIngredient(inv->getAsciiParameter(_param0_addIngredient__String_String_int_String_int_int_int_), inv->getAsciiParameter(_param1_addIngredient__String_String_int_String_int_int_int_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addIngredient__String_String_int_String_int_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 16:
 		resp->insertLong(getIngredient(inv->getSignedIntParameter())->_getObjectID());
@@ -868,13 +868,13 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 21:
-		setTanoAttributes(inv->getAsciiParameter(_param0_setTanoAttributes__string_));
+		setTanoAttributes(inv->getAsciiParameter(_param0_setTanoAttributes__String_));
 		break;
 	case 22:
 		setContainer((SceneObject*) inv->getObjectParameter());
 		break;
 	case 23:
-		setXpType(inv->getAsciiParameter(_param0_setXpType__string_));
+		setXpType(inv->getAsciiParameter(_param0_setXpType__String_));
 		break;
 	case 24:
 		setXp(inv->getSignedIntParameter());
@@ -889,16 +889,16 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setExpFailure(inv->getFloatParameter());
 		break;
 	case 28:
-		setExperimentingSkill(inv->getAsciiParameter(_param0_setExperimentingSkill__string_));
+		setExperimentingSkill(inv->getAsciiParameter(_param0_setExperimentingSkill__String_));
 		break;
 	case 29:
-		setCustomizationSkill(inv->getAsciiParameter(_param0_setCustomizationSkill__string_));
+		setCustomizationSkill(inv->getAsciiParameter(_param0_setCustomizationSkill__String_));
 		break;
 	case 30:
-		addCustomizationOption(inv->getAsciiParameter(_param0_addCustomizationOption__string_int_), inv->getSignedIntParameter());
+		addCustomizationOption(inv->getAsciiParameter(_param0_addCustomizationOption__String_int_), inv->getSignedIntParameter());
 		break;
 	case 31:
-		setAssemblySkill(inv->getAsciiParameter(_param0_setAssemblySkill__string_));
+		setAssemblySkill(inv->getAsciiParameter(_param0_setAssemblySkill__String_));
 		break;
 	case 32:
 		setFinished();
@@ -913,10 +913,10 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertLong(getAttributeToSet(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 36:
-		resp->insertLong(getAttributeToSet(inv->getAsciiParameter(_param0_getAttributeToSet__string_))->_getObjectID());
+		resp->insertLong(getAttributeToSet(inv->getAsciiParameter(_param0_getAttributeToSet__String_))->_getObjectID());
 		break;
 	case 37:
-		addAttributeToSet(inv->getAsciiParameter(_param0_addAttributeToSet__string_float_float_string_int_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param3_addAttributeToSet__string_float_float_string_int_), inv->getSignedIntParameter());
+		addAttributeToSet(inv->getAsciiParameter(_param0_addAttributeToSet__String_float_float_String_int_), inv->getFloatParameter(), inv->getFloatParameter(), inv->getAsciiParameter(_param3_addAttributeToSet__String_float_float_String_int_), inv->getSignedIntParameter());
 		break;
 	case 38:
 		resp->insertSignedInt(getExpPropGroupListSize());
@@ -1021,7 +1021,7 @@ void DraftSchematicAdapter::sendTo(Player* player) {
 	return ((DraftSchematicImplementation*) impl)->sendTo(player);
 }
 
-void DraftSchematicAdapter::addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight, string& subtitle) {
+void DraftSchematicAdapter::addExperimentalProperty(unsigned int groupNumber, const String& experimentalProperty, unsigned int weight, String& subtitle) {
 	return ((DraftSchematicImplementation*) impl)->addExperimentalProperty(groupNumber, experimentalProperty, weight, subtitle);
 }
 
@@ -1045,7 +1045,7 @@ void DraftSchematicAdapter::helperSendIngredientsToPlayer(ObjectControllerMessag
 	return ((DraftSchematicImplementation*) impl)->helperSendIngredientsToPlayer(objMsg);
 }
 
-void DraftSchematicAdapter::addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, const int optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution) {
+void DraftSchematicAdapter::addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int optional, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution) {
 	return ((DraftSchematicImplementation*) impl)->addIngredient(ingredientTemplateName, ingredientTitleName, optional, resourceType, resourceQuantity, combineType, contribution);
 }
 
@@ -1069,7 +1069,7 @@ void DraftSchematicAdapter::setObjectID(unsigned long long objID) {
 	return ((DraftSchematicImplementation*) impl)->setObjectID(objID);
 }
 
-void DraftSchematicAdapter::setTanoAttributes(string& attributes) {
+void DraftSchematicAdapter::setTanoAttributes(String& attributes) {
 	return ((DraftSchematicImplementation*) impl)->setTanoAttributes(attributes);
 }
 
@@ -1077,7 +1077,7 @@ void DraftSchematicAdapter::setContainer(SceneObject* container) {
 	return ((DraftSchematicImplementation*) impl)->setContainer(container);
 }
 
-void DraftSchematicAdapter::setXpType(string& type) {
+void DraftSchematicAdapter::setXpType(String& type) {
 	return ((DraftSchematicImplementation*) impl)->setXpType(type);
 }
 
@@ -1097,19 +1097,19 @@ void DraftSchematicAdapter::setExpFailure(float rate) {
 	return ((DraftSchematicImplementation*) impl)->setExpFailure(rate);
 }
 
-void DraftSchematicAdapter::setExperimentingSkill(const string& exp) {
+void DraftSchematicAdapter::setExperimentingSkill(const String& exp) {
 	return ((DraftSchematicImplementation*) impl)->setExperimentingSkill(exp);
 }
 
-void DraftSchematicAdapter::setCustomizationSkill(const string& cust) {
+void DraftSchematicAdapter::setCustomizationSkill(const String& cust) {
 	return ((DraftSchematicImplementation*) impl)->setCustomizationSkill(cust);
 }
 
-void DraftSchematicAdapter::addCustomizationOption(const string& cust, const int value) {
+void DraftSchematicAdapter::addCustomizationOption(const String& cust, const int value) {
 	return ((DraftSchematicImplementation*) impl)->addCustomizationOption(cust, value);
 }
 
-void DraftSchematicAdapter::setAssemblySkill(const string& ass) {
+void DraftSchematicAdapter::setAssemblySkill(const String& ass) {
 	return ((DraftSchematicImplementation*) impl)->setAssemblySkill(ass);
 }
 
@@ -1129,11 +1129,11 @@ DraftSchematicAttribute* DraftSchematicAdapter::getAttributeToSet(const int i) {
 	return ((DraftSchematicImplementation*) impl)->getAttributeToSet(i);
 }
 
-DraftSchematicAttribute* DraftSchematicAdapter::getAttributeToSet(const string& name) {
+DraftSchematicAttribute* DraftSchematicAdapter::getAttributeToSet(const String& name) {
 	return ((DraftSchematicImplementation*) impl)->getAttributeToSet(name);
 }
 
-void DraftSchematicAdapter::addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision) {
+void DraftSchematicAdapter::addAttributeToSet(const String& attribute, float minVal, float maxVal, const String& attributeExpProp, const int precision) {
 	return ((DraftSchematicImplementation*) impl)->addAttributeToSet(attribute, minVal, maxVal, attributeExpProp, precision);
 }
 
@@ -1153,15 +1153,15 @@ unsigned int DraftSchematicAdapter::getSchematicCRC() {
 	return ((DraftSchematicImplementation*) impl)->getSchematicCRC();
 }
 
-string& DraftSchematicAdapter::getName() {
+String& DraftSchematicAdapter::getName() {
 	return ((DraftSchematicImplementation*) impl)->getName();
 }
 
-string& DraftSchematicAdapter::getStringName() {
+String& DraftSchematicAdapter::getStringName() {
 	return ((DraftSchematicImplementation*) impl)->getStringName();
 }
 
-string& DraftSchematicAdapter::getGroupName() {
+String& DraftSchematicAdapter::getGroupName() {
 	return ((DraftSchematicImplementation*) impl)->getGroupName();
 }
 
@@ -1177,7 +1177,7 @@ unsigned int DraftSchematicAdapter::getObjectID() {
 	return ((DraftSchematicImplementation*) impl)->getObjectID();
 }
 
-string& DraftSchematicAdapter::getTanoAttributes() {
+String& DraftSchematicAdapter::getTanoAttributes() {
 	return ((DraftSchematicImplementation*) impl)->getTanoAttributes();
 }
 
@@ -1189,7 +1189,7 @@ SceneObject* DraftSchematicAdapter::getContainer() {
 	return ((DraftSchematicImplementation*) impl)->getContainer();
 }
 
-string& DraftSchematicAdapter::getXpType() {
+String& DraftSchematicAdapter::getXpType() {
 	return ((DraftSchematicImplementation*) impl)->getXpType();
 }
 
@@ -1197,15 +1197,15 @@ int DraftSchematicAdapter::getXp() {
 	return ((DraftSchematicImplementation*) impl)->getXp();
 }
 
-string& DraftSchematicAdapter::getExperimentingSkill() {
+String& DraftSchematicAdapter::getExperimentingSkill() {
 	return ((DraftSchematicImplementation*) impl)->getExperimentingSkill();
 }
 
-string& DraftSchematicAdapter::getCustomizationSkill() {
+String& DraftSchematicAdapter::getCustomizationSkill() {
 	return ((DraftSchematicImplementation*) impl)->getCustomizationSkill();
 }
 
-string& DraftSchematicAdapter::getCustomizationOption(const int i) {
+String& DraftSchematicAdapter::getCustomizationOption(const int i) {
 	return ((DraftSchematicImplementation*) impl)->getCustomizationOption(i);
 }
 
@@ -1217,7 +1217,7 @@ int DraftSchematicAdapter::getCustomizationOptionCount() {
 	return ((DraftSchematicImplementation*) impl)->getCustomizationOptionCount();
 }
 
-string& DraftSchematicAdapter::getAssemblySkill() {
+String& DraftSchematicAdapter::getAssemblySkill() {
 	return ((DraftSchematicImplementation*) impl)->getAssemblySkill();
 }
 

@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "../../../ZoneClientSession.h"
 
 CraftingToolImplementation::CraftingToolImplementation(uint64 object_id, uint32 tempCRC,
-		const unicode& n, const string& tempn) : CraftingToolServant(object_id, tempCRC, n, tempn,
+		const UnicodeString& n, const String& tempn) : CraftingToolServant(object_id, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -59,7 +59,7 @@ CraftingToolImplementation::CraftingToolImplementation(uint64 object_id, uint32 
 }
 
 CraftingToolImplementation::CraftingToolImplementation(CreatureObject* creature, uint32 tempCRC,
-		const unicode& n, const string& tempn) : CraftingToolServant(creature, tempCRC, n, tempn,
+		const UnicodeString& n, const String& tempn) : CraftingToolServant(creature, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -100,7 +100,7 @@ void CraftingToolImplementation::init() {
 
 	recoverResources = true;
 
-	if(objectCRC == 0x3EE5146D){
+	if (objectCRC == 0x3EE5146D){
 
 		setToolType(GENERIC);
 		tabIds.add(1);
@@ -112,7 +112,7 @@ void CraftingToolImplementation::init() {
 		tabIds.add(524288);
 	}
 
-	if(objectCRC == 0x2CED1748){
+	if (objectCRC == 0x2CED1748){
 
 		setToolType(CLOTHING);
 		tabIds.add(2);
@@ -121,7 +121,7 @@ void CraftingToolImplementation::init() {
 		tabIds.add(32768);
 	}
 
-	if(objectCRC == 0xA9D9972F){
+	if (objectCRC == 0xA9D9972F){
 
 		setToolType(FOOD);
 		tabIds.add(4);
@@ -132,14 +132,14 @@ void CraftingToolImplementation::init() {
 
 	}
 
-	if(objectCRC == 0x2CF24272){
+	if (objectCRC == 0x2CF24272){
 
 		setToolType(JEDI);
 		tabIds.add(2048);
 
 	}
 
-	if(objectCRC == 0xAD0E3DB0){
+	if (objectCRC == 0xAD0E3DB0){
 
 		setToolType(SPACE);
 		tabIds.add(131072);
@@ -147,7 +147,7 @@ void CraftingToolImplementation::init() {
 
 	}
 
-	if(objectCRC == 0xFEDA0435){
+	if (objectCRC == 0xFEDA0435){
 
 		setToolType(STRUCTURE);
 		tabIds.add(512);
@@ -156,7 +156,7 @@ void CraftingToolImplementation::init() {
 
 	}
 
-	if(objectCRC == 0x64F6D031){
+	if (objectCRC == 0x64F6D031){
 
 		setToolType(WEAPON);
 		tabIds.add(1);
@@ -192,9 +192,9 @@ void CraftingToolImplementation::sendTo(Player* player, bool doClose) {
 
 void CraftingToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 
-	if(hopper != NULL){
+	if (hopper != NULL){
 
-		if(hopper->objectsSize() > 0){
+		if (hopper->objectsSize() > 0){
 			omr->addRadialItem(0, 130, 3, "Retrieve Prototype");
 		}
 	}
@@ -206,7 +206,7 @@ void CraftingToolImplementation::sendRadialResponseTo(Player* player, ObjectMenu
 
 void CraftingToolImplementation::parseItemAttributes() {
 
-	string temp;
+	String temp;
 
 	temp = "effectiveness";
 	effectiveness = itemAttributes->getFloatAttribute(temp);
@@ -243,11 +243,11 @@ void CraftingToolImplementation::addAttributes(AttributeListMessage* alm) {
 
 	alm->insertAttribute("craft_tool_status", status);
 
-	if(craftersName != ""){
+	if (craftersName != ""){
 
 		alm->insertAttribute("crafter", craftersName);
 	}
-	if(craftedSerial != ""){
+	if (craftedSerial != ""){
 
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
@@ -256,7 +256,7 @@ void CraftingToolImplementation::addAttributes(AttributeListMessage* alm) {
 
 void CraftingToolImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 
-	string name;
+	String name;
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 	//craftingValues->toString();
@@ -279,7 +279,7 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 
 	stationFound = findCraftingStation(player, workingStationComplexity);
 
-	if(stationFound != 0)
+	if (stationFound != 0)
 
 		experimentingEnabled = true;
 
@@ -315,7 +315,7 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 	uint32 draftSchematicListSize = schematicsToSend.size();
 	ocm->insertInt(draftSchematicListSize);
 
-	for(int i = 0; i < draftSchematicListSize; ++i){
+	for (int i = 0; i < draftSchematicListSize; ++i){
 
 		draftSchematic = schematicsToSend.get(i);
 
@@ -327,7 +327,7 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 
 	player->sendMessage(ocm);
 
-	for(int i = 0; i < draftSchematicListSize; ++i){
+	for (int i = 0; i < draftSchematicListSize; ++i){
 
 		draftSchematic = schematicsToSend.get(i);
 
@@ -335,7 +335,7 @@ void CraftingToolImplementation::sendToolStart(Player* player) {
 
 	}
 
-	for(int i = 0; i < draftSchematicListSize; ++i){
+	for (int i = 0; i < draftSchematicListSize; ++i){
 
 		draftSchematic = schematicsToSend.get(i);
 
@@ -372,7 +372,7 @@ void CraftingToolImplementation::getSchematicsForTool(Player* player, float work
 					&& toolUsesTab) {
 
 				schematicsToSend.add(draftSchematic);
-				//cout << "Adding schematic = " << draftSchematic->getName() << endl;
+				//System::out << "Adding schematic = " << draftSchematic->getName() << endl;
 
 			}
 		}
@@ -389,7 +389,7 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 
 	int closeObjectCount = player->inRangeObjectCount();
 
-	for(int i = 0; i < closeObjectCount; ++i){
+	for (int i = 0; i < closeObjectCount; ++i){
 
 		entry = player->getInRangeObject(i);
 
@@ -398,10 +398,10 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 		inRangeObject = (TangibleObject*)server->getObject(oid);
 
 		if (inRangeObject != NULL){
-			if(inRangeObject->isCraftingStation() && player->isInRange(inRangeObject, 6.0f)){
+			if (inRangeObject->isCraftingStation() && player->isInRange(inRangeObject, 6.0f)){
 				station = (CraftingStation*)inRangeObject;
 
-				//cout << "Station = " << station->getStationType() << "   Tool = " << _this->getToolType() << endl;
+				//System::out << "Station = " << station->getStationType() << "   Tool = " << _this->getToolType() << endl;
 
 				if (_this->getToolType() == station->getStationType() ||
 						(_this->getToolType() == JEDI && station->getStationType() == WEAPON)){
@@ -417,7 +417,7 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 }
 
 void CraftingToolImplementation::setWorkingTano(TangibleObject* tano){
-	if(currentTano != NULL) {
+	if (currentTano != NULL) {
 
 		currentTano->setContainer(NULL);
 		currentTano->finalize();
@@ -467,7 +467,7 @@ void CraftingToolImplementation::resetSlots() {
 }
 
 Container* CraftingToolImplementation::getHopper(Player* player){
-	if(hopper == NULL){
+	if (hopper == NULL){
 		Container* hop = new Container(player->getNewItemID());
 	}
 	return hopper;
@@ -478,8 +478,8 @@ void CraftingToolImplementation::retriveHopperItem(Player* player){
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 	Inventory* inventory = player->getInventory();
 
-	if(hopper != NULL){
-		if(hopper->objectsSize() > 0 && inventory->getObjectCount() < 80){
+	if (hopper != NULL){
+		if (hopper->objectsSize() > 0 && inventory->getObjectCount() < 80){
 
 			TangibleObject* tano = (TangibleObject*) hopper->getObject(0);
 			hopper->removeObject(0);
@@ -487,7 +487,7 @@ void CraftingToolImplementation::retriveHopperItem(Player* player){
 
 			itemManager->savePlayerItem(player, tano);
 
-			unicode mess = unicode("Hopper item Retrieved");
+			UnicodeString mess = UnicodeString("Hopper item Retrieved");
 			ChatSystemMessage* sysMessage = new ChatSystemMessage(mess);
 			player->sendMessage(sysMessage);
 
@@ -533,7 +533,7 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 		}
 	}
 
-	if(currentDraftSchematic != NULL) {
+	if (currentDraftSchematic != NULL) {
 
 		//Scene Object Destroy
 		SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(currentDraftSchematic->getObjectID());
@@ -544,8 +544,8 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 		currentDraftSchematic = NULL;
 	}
 
-	if(currentTano != NULL) {
-		if(status == "@crafting:tool_status_ready"){
+	if (currentTano != NULL) {
+		if (status == "@crafting:tool_status_ready"){
 
 			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(currentTano->getObjectID());
 			player->sendMessage(destroy);
@@ -559,12 +559,12 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 
 	SceneObject* tempScno;
 
-	for(int i = 0; i < tempIngredient.size(); ++i){
+	for (int i = 0; i < tempIngredient.size(); ++i){
 
 		tano = tempIngredient.get(i);
 		tempScno = player->getInventoryItem(tano->getObjectID());
 
-		if(tano != NULL && tempScno == NULL){
+		if (tano != NULL && tempScno == NULL){
 
 			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(tano->getObjectID());
 			player->sendMessage(destroy);

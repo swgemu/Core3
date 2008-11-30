@@ -49,22 +49,22 @@ import "../../creature/CreatureObject";
 import "../../scene/SceneObject";
 	
 interface DeedObject implements TangibleObject {
-	DeedObject(CreatureObject creature, int tempCRC, const unicode n, const string tempn) {
+	DeedObject(CreatureObject creature, int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int tp);
 	}
-	DeedObject(unsigned long oid, int tempCRC, const unicode n, const string tempn)  {
+	DeedObject(unsigned long oid, int tempCRC, const UnicodeString n, const String tempn)  {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
 
-	unicode getTargetName();
+	UnicodeString getTargetName();
 
-	string getTargetFile();
+	String getTargetFile();
 
-	string getTargetTemplate();
+	String getTargetTemplate();
 
-	void setTargetFile(string path);
+	void setTargetFile(String path);
 	
-	string getTargetTempFile();
+	String getTargetTempFile();
 
 	int useObject(Player player);
 	void generateAttributes(SceneObject obj);

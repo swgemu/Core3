@@ -107,18 +107,18 @@ class PlayerImplementation : public PlayerServant {
 	uint64 characterID;
 	uint64 baseID;
 
-	string firstName;
-	string lastName;
+	String firstName;
+	String lastName;
 
-	string firstNameProper;
+	String firstNameProper;
 
-	string raceFile; //race iff, defines the race file of the character being created.
+	String raceFile; //race iff, defines the race file of the character being created.
 	uint8 raceID;
 
-	string startingLocation; //start location iff string
-	string startingProfession; //starting profession string
+	String startingLocation; //start location iff String
+	String startingProfession; //starting profession String
 
-	unicode biography; //char biography
+	UnicodeString biography; //char biography
 
 	// player objects
 	PlayerObject* playerObject;
@@ -155,7 +155,7 @@ class PlayerImplementation : public PlayerServant {
 	// Profession stuff
 	SkillBoxMap skillBoxes;
 	SortedVector<SkillBox*> skillBoxesToSave;
-	VectorMap<string, Certification*> certificationList;
+	VectorMap<String, Certification*> certificationList;
 	int skillPoints;
 
 	// Draft Schematics
@@ -213,8 +213,8 @@ class PlayerImplementation : public PlayerServant {
 	// mission vars
 	uint32 misoRFC;
 	int misoBSB; //mission baseline send bitmask
-	string curMisoKeys; //mission keys the player is currently on
-	string finMisoKeys; //mission keys the player has completed.
+	String curMisoKeys; //mission keys the player is currently on
+	String finMisoKeys; //mission keys the player has completed.
 
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;
@@ -232,7 +232,7 @@ class PlayerImplementation : public PlayerServant {
 	// SuiEvents
 	VectorMap<uint32, SuiBox*> suiBoxes;
 	uint32 suiBoxNextID;
-	string inputBoxReturnBuffer;
+	String inputBoxReturnBuffer;
 	SuiListBoxVector* suiChoicesList;
 
 	uint64 resourceDeedID;
@@ -240,8 +240,8 @@ class PlayerImplementation : public PlayerServant {
 	uint64 currentStructureID;
 
 	//npc conversation
-	string lastNpcConvoMessage;
-	string lastNpcConvo;
+	String lastNpcConvoMessage;
+	String lastNpcConvo;
 
 	// Stat Migration Targets
 	uint32 targetHealth;
@@ -254,7 +254,7 @@ class PlayerImplementation : public PlayerServant {
 	uint32 targetFocus;
 	uint32 targetWillpower;
 
-	Vector<string> consentList;
+	Vector<String> consentList;
 
 	uint16 characterMask;
 
@@ -488,10 +488,10 @@ public:
 
 	void notifySceneReady();
 
-	void sendSystemMessage(const string& message);
-	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
-	void sendSystemMessage(const string& file, const string& str, StfParameter * param);
-	void sendSystemMessage(unicode& message);
+	void sendSystemMessage(const String& message);
+	void sendSystemMessage(const String& file, const String& str, uint64 targetid = 0);
+	void sendSystemMessage(const String& file, const String& str, StfParameter * param);
+	void sendSystemMessage(UnicodeString& message);
 
 	//Medic & Doctor System Messages
 	void sendBattleFatigueMessage(CreatureObject* target);
@@ -556,11 +556,11 @@ public:
 		return verifiedTrade;
 	}
 
-	void setInputBoxReturnBuffer(const string& message) {
+	void setInputBoxReturnBuffer(const String& message) {
 		inputBoxReturnBuffer = message;
 	}
 
-	inline string& getInputBoxReturnBuffer() {
+	inline String& getInputBoxReturnBuffer() {
 		return inputBoxReturnBuffer;
 	}
 
@@ -569,55 +569,55 @@ public:
 	// Stat Migration Targets
 	// HAM getters
 	inline uint32 getTargetHealth() {
-		if(targetHealth == 0)
+		if (targetHealth == 0)
 			targetHealth = getBaseHealth();
 		return targetHealth;
 	}
 
 	inline uint32 getTargetStrength() {
-		if(targetStrength == 0)
+		if (targetStrength == 0)
 			targetStrength = getBaseStrength();
 		return targetStrength;
 	}
 
 	inline uint32 getTargetConstitution() {
-		if(targetConstitution == 0)
+		if (targetConstitution == 0)
 			targetConstitution = getBaseConstitution();
 		return targetConstitution;
 	}
 
 	inline uint32 getTargetAction() {
-		if(targetAction == 0)
+		if (targetAction == 0)
 			targetAction = getBaseAction();
 		return targetAction;
 	}
 
 	inline uint32 getTargetQuickness() {
-		if(targetQuickness == 0)
+		if (targetQuickness == 0)
 			targetQuickness = getBaseQuickness();
 		return targetQuickness;
 	}
 
 	inline uint32 getTargetStamina() {
-		if(targetStamina == 0)
+		if (targetStamina == 0)
 			targetStamina = getBaseStamina();
 		return targetStamina;
 	}
 
 	inline uint32 getTargetMind() {
-		if(targetMind == 0)
+		if (targetMind == 0)
 			targetMind = getBaseMind();
 		return targetMind;
 	}
 
 	inline uint32 getTargetFocus() {
-		if(targetFocus == 0)
+		if (targetFocus == 0)
 			targetFocus = getBaseFocus();
 		return targetFocus;
 	}
 
 	inline uint32 getTargetWillpower() {
-		if(targetWillpower == 0)
+		if (targetWillpower == 0)
 			targetWillpower = getBaseWillpower();
 		return targetWillpower;
 	}
@@ -660,8 +660,8 @@ public:
 	}
 
 	// combat methods
-	void queueFlourish(const string& modifier, uint64 target, uint32 actionCntr);
-	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const string& amod);
+	void queueFlourish(const String& modifier, uint64 target, uint32 actionCntr);
+	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const String& amod);
 
 	bool doAction(CommandQueueAction* action);
 
@@ -708,10 +708,10 @@ public:
 
 	void sendConsentBox();
 
-	inline bool hasConsent(string name) {
-		String::toLower(name);
+	inline bool hasConsent(String name) {
+		name = name.toLowerCase();
 
-		for (int i=0; i<consentList.size(); i++) {
+		for (int i = 0; i < consentList.size(); i++) {
 			if (consentList.get(i) == name)
 				return true;
 		}
@@ -719,34 +719,37 @@ public:
 		return false;
 	}
 
-	inline int getConsentIndex(string name) {
-		String::toLower(name);
+	inline int getConsentIndex(String name) {
+		name = name.toLowerCase();
 
-		for (int i=0; i<consentList.size(); i++) {
+		for (int i = 0; i < consentList.size(); i++) {
 			if (consentList.get(i) == name)
 				return i;
 		}
 		return -1;
 	}
 
-	inline bool giveConsent(string name) {
-		String::toLower(name);
+	inline bool giveConsent(String name) {
+		name = name.toLowerCase();
 
 		if (!hasConsent(name)) {
 			consentList.add(name);
 			return true;
 		}
+
 		return false;
 	}
 
-	inline bool revokeConsent(string name) {
-		String::toLower(name);
+	inline bool revokeConsent(String name) {
+		name = name.toLowerCase();
+
 		int index = getConsentIndex(name);
 
 		if (index >= 0) {
 			consentList.remove(index);
 			return true;
 		}
+
 		return false;
 	}
 
@@ -754,7 +757,7 @@ public:
 		return consentList.size();
 	}
 
-	inline string& getConsentEntry(int index) {
+	inline String& getConsentEntry(int index) {
 		return consentList.get(index);
 	}
 
@@ -771,16 +774,18 @@ public:
 		misoBSB |= tms;
 	}
 
-	void addToCurMisoKeys(string& tck) {
+	void addToCurMisoKeys(String& tck) {
 		curMisoKeys += (tck + ",");
 	}
-	bool isOnCurMisoKey(string tmk); //player is currently on the mission key
-	void removeFromCurMisoKeys(string tck);
 
-	void addToFinMisoKeys(string& tmp) {
+	bool isOnCurMisoKey(String tmk); //player is currently on the mission key
+	void removeFromCurMisoKeys(String tck);
+
+	void addToFinMisoKeys(String& tmp) {
 		finMisoKeys += (tmp + ",");
 	}
-	bool hasCompletedMisoKey(string& tmk);
+
+	bool hasCompletedMisoKey(String& tmk);
 
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);
@@ -798,24 +803,24 @@ public:
 	}
 
 	void setForcePowerBar(uint32 fp) {
-		if(playerObject != NULL)
+		if (playerObject != NULL)
 			playerObject->setForcePowerBar(fp);
 	}
 
 	void updateMaxForcePowerBar(bool updateClient = true) {
-		if(playerObject != NULL)
+		if (playerObject != NULL)
 			playerObject->updateMaxForcePowerBar(updateClient);
 	}
 
 	int getFoodFilling() {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return 0;
 
 		return playerObject->getFoodFilling();
 	}
 
 	int getDrinkFilling() {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return 0;
 
 		return playerObject->getDrinkFilling();
@@ -823,42 +828,42 @@ public:
 
 
 	void setFoodFilling(uint32 fill, bool updateClient = true) {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return;
 
 		playerObject->setFoodFilling(fill, updateClient);
 
-		if(playerObject->isDigesting())
+		if (playerObject->isDigesting())
 			activateDigest();
 	}
 
 	void setDrinkFilling(uint32 fill, bool updateClient = true) {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return;
 
 		playerObject->setDrinkFilling(fill, updateClient);
 
-		if(playerObject->isDigesting())
+		if (playerObject->isDigesting())
 			activateDigest();
 	}
 
 	void changeFoodFilling(uint32 fill, bool updateClient = true) {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return;
 
 		playerObject->changeFoodFilling(fill, updateClient);
 
-		if(playerObject->isDigesting())
+		if (playerObject->isDigesting())
 			activateDigest();
 	}
 
 	void changeDrinkFilling(uint32 fill, bool updateClient = true) {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return;
 
 		playerObject->changeDrinkFilling(fill, updateClient);
 
-		if(playerObject->isDigesting())
+		if (playerObject->isDigesting())
 			activateDigest();
 	}
 
@@ -919,8 +924,8 @@ public:
 	void saveProfessions();
 	void loadProfessions();
 	void trainStartingProfession();
-	bool trainSkillBox(const string& name, bool updateClient = true);
-	void surrenderSkillBox(const string& name);
+	bool trainSkillBox(const String& name, bool updateClient = true);
+	void surrenderSkillBox(const String& name);
 
 	void resetSkillBoxesIterator() {
 		skillBoxes.resetIterator();
@@ -930,7 +935,7 @@ public:
 		return skillBoxes.size();
 	}
 
-	string& getNextSkillBox() {
+	String& getNextSkillBox() {
 		return skillBoxes.getNextValue()->getName();
 	}
 
@@ -970,7 +975,7 @@ public:
 		return certificationList.size();
 	}
 
-	string& getCertification(int idx) {
+	String& getCertification(int idx) {
 		return certificationList.get(idx)->getName();
 	}
 
@@ -984,14 +989,14 @@ public:
 	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
 	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
 	void removeResourceFromCraft(uint64 resID, int slot, int counter);
-	void nextCraftingStage(string test);
-	void craftingCustomization(string name, int condition, string customizationstring);
-	void createPrototype(string count);
-	void createSchematic(string count);
-	void handleExperimenting(int count, int numRowsAttempted, string expstring);
+	void nextCraftingStage(String test);
+	void craftingCustomization(String name, int condition, String customizationString);
+	void createPrototype(String count);
+	void createSchematic(String count);
+	void handleExperimenting(int count, int numRowsAttempted, String expString);
 
 
-	bool checkCertification(string certification) {
+	bool checkCertification(String certification) {
 		if (certification == "")
 			return true;
 		else
@@ -1003,8 +1008,8 @@ public:
 
 	// Draft Schematics granted from a schematicGroupName
 	void sendDraftSchematics();
-	void addDraftSchematicsFromGroupName(const string& schematicGroupName);
-	void subtractDraftSchematicsFromGroupName(const string& schematicGroupName);
+	void addDraftSchematicsFromGroupName(const String& schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(const String& schematicGroupName);
 	void addDraftSchematic(DraftSchematic* ds);
 	void subtractDraftSchematic(DraftSchematic* ds);
 
@@ -1072,16 +1077,16 @@ public:
 		skillPoints -= sPoints;
 	}
 
-	void addXp(const string& xpType, int xp, bool updateClient) {
+	void addXp(const String& xpType, int xp, bool updateClient) {
 		playerObject->addExperience(xpType, xp, updateClient);
 	}
-	void removeXp(const string& xpType, int xp, bool updateClient) {
+	void removeXp(const String& xpType, int xp, bool updateClient) {
 		playerObject->removeExperience(xpType, xp, updateClient);
 	}
-	void loadXp(const string& xpStr) {
+	void loadXp(const String& xpStr) {
 		playerObject->loadExperience(xpStr);
 	}
-	string& saveXp() {
+	String& saveXp() {
 		return playerObject->saveExperience();
 	}
 
@@ -1091,7 +1096,7 @@ public:
 	void removeCertifications(Vector<Certification*>& certs, bool updateClient = false);
 
 
-	void queueHeal(TangibleObject* medpack, uint32 actionCRC, const string& attribute);
+	void queueHeal(TangibleObject* medpack, uint32 actionCRC, const String& attribute);
 
 	// waypoint methods
 	void addWaypoint(WaypointObject* wp) {
@@ -1117,7 +1122,7 @@ public:
 		playerObject->saveWaypoints(player);
 	}
 
-	WaypointObject* searchWaypoint(Player* play, const string& name, int mode) {
+	WaypointObject* searchWaypoint(Player* play, const String& name, int mode) {
 		return playerObject->searchWaypoint(play,name,mode);
 	}
 
@@ -1156,13 +1161,13 @@ public:
 		owner = client;
 	}
 
-	void sendMail(string& mailSender, unicode& subjectSender, unicode& bodySender, string& charNameSender);
+	void sendMail(String& mailSender, UnicodeString& subjectSender, UnicodeString& bodySender, String& charNameSender);
 
-	inline void setStartingLocation(string& loc) {
+	inline void setStartingLocation(String& loc) {
 		startingLocation = loc;
 	}
 
-	inline void setRaceFileName(string& name) {
+	inline void setRaceFileName(String& name) {
 		raceFile = name;
 	}
 
@@ -1170,23 +1175,23 @@ public:
 		raceID = id;
 	}
 
-	inline void setHairObject(const string& hair) {
+	inline void setHairObject(const String& hair) {
 		hairObject = hair;
 	}
 
-	//inline void setHairData(string& hair) {
+	//inline void setHairData(String& hair) {
 	//	hairData = hair;
 	//}
 
-	inline void setStartingProfession(const string& prof) {
+	inline void setStartingProfession(const String& prof) {
 		startingProfession = prof;
 	}
 
-	inline void setBiography(unicode& bio) {
+	inline void setBiography(UnicodeString& bio) {
 		biography = bio;
 	}
 
-	inline void setBiography(const string& bio) {
+	inline void setBiography(const String& bio) {
 		biography = bio;
 	}
 
@@ -1194,15 +1199,15 @@ public:
 		conversatingCreature = conversator;
 	}
 
-	inline void setFirstName(const string& name) {
+	inline void setFirstName(const String& name) {
 		firstName = name;
 	}
 
-	inline void setLastName(const string& name) {
+	inline void setLastName(const String& name) {
 		lastName = name;
 	}
 
-	inline void setFirstNameProper(const string& name) {
+	inline void setFirstNameProper(const String& name) {
 		firstNameProper = name;
 	}
 
@@ -1229,7 +1234,7 @@ public:
 	}
 
 	// getters
-	//inline string& getHairData() {
+	//inline String& getHairData() {
 	//	return hairData;
 	//}
 
@@ -1273,15 +1278,15 @@ public:
 		return characterID;
 	}
 
-	inline string& getFirstName() {
+	inline String& getFirstName() {
 		return firstName;
 	}
 
-	inline string& getLastName() {
+	inline String& getLastName() {
 		return lastName;
 	}
 
-	inline string& getFirstNameProper() {
+	inline String& getFirstNameProper() {
 		return firstNameProper;
 	}
 
@@ -1289,7 +1294,7 @@ public:
 		return owner;
 	}
 
-	inline string& getRaceFileName() {
+	inline String& getRaceFileName() {
 		return raceFile;
 	}
 
@@ -1305,19 +1310,19 @@ public:
 		return zone;
 	}
 
-	inline string& getStartingLocation() {
+	inline String& getStartingLocation() {
 		return startingLocation;
 	}
 
-	inline string& getHairObject() {
+	inline String& getHairObject() {
 		return hairObject;
 	}
 
-	inline string& getStartingProfession() {
+	inline String& getStartingProfession() {
 		return startingProfession;
 	}
 
-	inline unicode& getBiography() {
+	inline UnicodeString& getBiography() {
 		return biography;
 	}
 
@@ -1353,7 +1358,7 @@ public:
 		playerObject = obj;
 	}
 
-	inline bool hasSkillBox(string& skillBox) {
+	inline bool hasSkillBox(String& skillBox) {
 		return skillBoxes.containsKey(skillBox);
 	}
 
@@ -1405,7 +1410,7 @@ public:
 
 	uint64 getResourceDeedID();
 
-	void addSuiBoxChoice(string& choice);
+	void addSuiBoxChoice(String& choice);
 
 	void removeLastSuiBoxChoice();
 
@@ -1487,8 +1492,8 @@ public:
 
 
 	// Survey and Sample Functions
-	void setSurveyEvent(string& resource_name);
-	void setSampleEvent(string& resource_name, bool firstTime = false);
+	void setSurveyEvent(String& resource_name);
+	void setSampleEvent(String& resource_name, bool firstTime = false);
 	void stopSample();
 	void sendSampleTimeRemaining();
 
@@ -1577,19 +1582,19 @@ public:
 	void setEntertainerEvent();
 
 	//NPC Conversation Methods
-	inline void setLastNpcConvStr(const string& conv) {
+	inline void setLastNpcConvStr(const String& conv) {
 		lastNpcConvo = conv;
 	}
 
-	inline void setLastNpcConvMessStr(const string& mess) {
+	inline void setLastNpcConvMessStr(const String& mess) {
 		lastNpcConvoMessage = mess;
 	}
 
-	inline string& getLastNpcConvStr() {
+	inline String& getLastNpcConvStr() {
 		return lastNpcConvo;
 	}
 
-	inline string& getLastNpcConvMessStr() {
+	inline String& getLastNpcConvMessStr() {
 		return lastNpcConvoMessage;
 	}
 
@@ -1601,13 +1606,13 @@ public:
 		return currentStructureID;
 	}
 
-	inline int16 getFactionPoints(const string& faction) {
+	inline int16 getFactionPoints(const String& faction) {
 		return factionPointsMap.getFactionPoints(faction);
 	}
 
-	inline uint32 getMaxFactionPoints(string faction) {
+	inline uint32 getMaxFactionPoints(String faction) {
 		if (faction == "imperial" || faction == "rebel") {
-			if (getFaction() == String::hashCode(faction) || getFaction() == 0)
+			if (getFaction() == faction.hashCode() || getFaction() == 0)
 				return FactionRankTable::getFPCap(getFactionRank());
 			else
 				return 500;
@@ -1615,8 +1620,8 @@ public:
 			return 5000;
 	}
 
-	void addFactionPoints(string faction, uint32 points);
-	void subtractFactionPoints(string faction, uint32 points);
+	void addFactionPoints(String faction, uint32 points);
+	void subtractFactionPoints(String faction, uint32 points);
 
 	inline int getFactionStatus() {
 		return factionStatus;

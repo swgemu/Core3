@@ -62,7 +62,7 @@ class ZoneProcessServerImplementation;
 
 class BazaarPlanetManagerImplementation : public AuctionController, public BazaarPlanetManagerServant, public Logger {
 	int vendorPlanet;
-	VectorMap<string, RegionBazaar*> bazaars;
+	VectorMap<String, RegionBazaar*> bazaars;
 
 public:
 	BazaarPlanetManagerImplementation(int planet);

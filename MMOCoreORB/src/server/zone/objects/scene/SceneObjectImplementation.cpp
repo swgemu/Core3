@@ -82,9 +82,9 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 	objectID = oid;
 	objectType = type;
 
-	stringstream name;
+	StringBuffer name;
 	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
-	//setDeployingName(name.str());
+	//setDeployingName(name.toString());
 
 	server = NULL;
 	zone = NULL;
@@ -256,7 +256,7 @@ void SceneObjectImplementation::unlock(bool doLock) {
 	ManagedObjectImplementation::unlock(doLock);
 }
 
-void SceneObjectImplementation::setLockName(const string& name) {
+void SceneObjectImplementation::setLockName(const String& name) {
 	//ManagedObjectImplementation::setLockName(name);
 }
 
@@ -290,7 +290,7 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 		zone->unlock();
 	} catch (...) {
-		cout << "exception SceneObjectImplementation::insertToZone(Zone* zone)\n";
+		System::out << "exception SceneObjectImplementation::insertToZone(Zone* zone)\n";
 
 		zone->unlock();
 	}
@@ -329,7 +329,7 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
 	}
 
 	try {
-		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		//System::out << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
 		zone->lock(doLock);
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
@@ -345,7 +345,7 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
             			if (!sendSelf && (player == sender)) 
                 			continue; 
                     }
-					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
+					//System::out << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
 					player->sendMessage(msg->clone());
 				}
 			}
@@ -361,7 +361,7 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
 		zone->unlock(doLock);
 	}
 
-	//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+	//System::out << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
 }
 
 void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock) {
@@ -371,7 +371,7 @@ void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int
 	}
 
 	try {
-		//cout << "SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		//System::out << "SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
 		zone->lock(doLock);
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
@@ -382,7 +382,7 @@ void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int
 				Player* player = (Player*) object;
 
 				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
-					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
+					//System::out << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
 					player->sendMessage((StandaloneBaseMessage*)msg->clone());
 				}
 			}
@@ -398,16 +398,16 @@ void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int
 		zone->unlock(doLock);
 	}
 
-	//cout << "finished SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
+	//System::out << "finished SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
 }
 
 void SceneObjectImplementation::removeFromZone(bool doLock) {
 	try {
-		//cout << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
+		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
 		if (zone == NULL || !isInQuadTree())
 			return;
 
-		//cout << "SceneObjectImplementation::removeFromZone(bool doLock) After Zone/QuadTree check" << endl;
+		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) After Zone/QuadTree check" << endl;
 		//deagro();
 
 		zone->lock(doLock);
@@ -433,7 +433,7 @@ void SceneObjectImplementation::removeFromZone(bool doLock) {
 
 		zone->unlock(doLock);
 	} catch (...) {
-		cout << "exception SceneObjectImplementation::removeFromZone(bool doLock)\n";
+		System::out << "exception SceneObjectImplementation::removeFromZone(bool doLock)\n";
 
 		zone->unlock(doLock);
 	}

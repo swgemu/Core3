@@ -88,7 +88,7 @@ protected:
 
 public:
 	ShipComponentImplementation(Player* player, uint32 tempCRC,
-			const unicode& n, const string& tempn) :
+			const UnicodeString& n, const String& tempn) :
 		ShipComponentServant(player->getNewItemID(), SHIPCOMPONENT) {
 		objectCRC = tempCRC;
 

@@ -53,9 +53,9 @@ interface WaypointObject implements SceneObject {
 	
 	void changeStatus(boolean status);
 
-	void setName(const string Name);
-	void setInternalNote(const string message);
-	void setPlanetName(const string planet);
+	void setName(const String Name);
+	void setInternalNote(const String message);
+	void setPlanetName(const String planet);
 	
 	void switchStatus();
 	
@@ -63,7 +63,7 @@ interface WaypointObject implements SceneObject {
 	
 	boolean getStatus();
 	
-	string getName();
-	string getPlanetName();
-	string getInternalNote();
+	String getName();
+	String getPlanetName();
+	String getInternalNote();
 }

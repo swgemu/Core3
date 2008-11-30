@@ -51,23 +51,23 @@ public:
 
 	void unloadCreature(Creature* creature);
 
-	bool verifyCreatureSpawn(string& name);
+	bool verifyCreatureSpawn(String& name);
 
 	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
 
-	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock = true);
+	TrainerCreature* spawnTrainer(const String& profession, const String& stfname, const String& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock = true);
 
-	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, unsigned long long cellid, float x, float y, float z, int tax = 0, bool starport = false, bool doLock = true);
+	ShuttleCreature* spawnShuttle(const String& Planet, const String& City, Coordinate* playerSpawnPoint, unsigned long long cellid, float x, float y, float z, int tax = 0, bool starport = false, bool doLock = true);
 
 	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, unsigned char type = 1, unsigned long long cellid = 0, bool doLock = true);
 
-	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock = true);
+	LairObject* spawnLair(const String& type, float x, float y, float z, bool doLock = true);
 
-	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, const string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid = 0, bool doLock = true);
+	ActionCreature* spawnActionCreature(String& name, String& stfname, unsigned int objCrc, const String& misoKey, float x, float y, float oY, float oW, unsigned long long cellid = 0, bool doLock = true);
 
-	unsigned int getCreatureCrc(string& name);
+	unsigned int getCreatureCrc(String& name);
 
-	bool hotLoadCreature(string& name);
+	bool hotLoadCreature(String& name);
 
 	void registerFunctions();
 
@@ -113,23 +113,23 @@ public:
 
 	void unloadCreature(Creature* creature);
 
-	bool verifyCreatureSpawn(string& name);
+	bool verifyCreatureSpawn(String& name);
 
 	Creature* spawnCreature(unsigned int objcrc, unsigned long long cellid, float x, float y, int bitmask, bool baby, bool doLock, float height);
 
-	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock);
+	TrainerCreature* spawnTrainer(const String& profession, const String& stfname, const String& name, int objCrc, unsigned long long cell, float x, float y, float z, float oy, float ow, bool doLock);
 
-	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, unsigned long long cellid, float x, float y, float z, int tax, bool starport, bool doLock);
+	ShuttleCreature* spawnShuttle(const String& Planet, const String& City, Coordinate* playerSpawnPoint, unsigned long long cellid, float x, float y, float z, int tax, bool starport, bool doLock);
 
 	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, unsigned char type, unsigned long long cellid, bool doLock);
 
-	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock);
+	LairObject* spawnLair(const String& type, float x, float y, float z, bool doLock);
 
-	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, const string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid, bool doLock);
+	ActionCreature* spawnActionCreature(String& name, String& stfname, unsigned int objCrc, const String& misoKey, float x, float y, float oY, float oW, unsigned long long cellid, bool doLock);
 
-	unsigned int getCreatureCrc(string& name);
+	unsigned int getCreatureCrc(String& name);
 
-	bool hotLoadCreature(string& name);
+	bool hotLoadCreature(String& name);
 
 	void registerFunctions();
 
@@ -142,18 +142,18 @@ public:
 	void addCreature(Creature* creature);
 
 protected:
-	string _param0_verifyCreatureSpawn__string_;
-	string _param0_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_;
-	string _param1_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_;
-	string _param2_spawnTrainer__string_string_string_int_long_float_float_float_float_float_bool_;
-	string _param0_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_;
-	string _param1_spawnShuttle__string_string_Coordinate_long_float_float_float_int_bool_bool_;
-	string _param0_spawnLair__string_float_float_float_bool_;
-	string _param0_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
-	string _param1_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
-	string _param3_spawnActionCreature__string_string_int_string_float_float_float_float_long_bool_;
-	string _param0_getCreatureCrc__string_;
-	string _param0_hotLoadCreature__string_;
+	String _param0_verifyCreatureSpawn__String_;
+	String _param0_spawnTrainer__String_String_String_int_long_float_float_float_float_float_bool_;
+	String _param1_spawnTrainer__String_String_String_int_long_float_float_float_float_float_bool_;
+	String _param2_spawnTrainer__String_String_String_int_long_float_float_float_float_float_bool_;
+	String _param0_spawnShuttle__String_String_Coordinate_long_float_float_float_int_bool_bool_;
+	String _param1_spawnShuttle__String_String_Coordinate_long_float_float_float_int_bool_bool_;
+	String _param0_spawnLair__String_float_float_float_bool_;
+	String _param0_spawnActionCreature__String_String_int_String_float_float_float_float_long_bool_;
+	String _param1_spawnActionCreature__String_String_int_String_float_float_float_float_long_bool_;
+	String _param3_spawnActionCreature__String_String_int_String_float_float_float_float_long_bool_;
+	String _param0_getCreatureCrc__String_;
+	String _param0_hotLoadCreature__String_;
 };
 
 class CreatureManagerHelper : public DistributedObjectClassHelper, public Singleton<CreatureManagerHelper> {

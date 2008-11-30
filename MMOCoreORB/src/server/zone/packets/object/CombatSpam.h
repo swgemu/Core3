@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class CombatSpam : public ObjectControllerMessage {
 public:
-	CombatSpam(CreatureObject* attacker, CreatureObject* defender, TangibleObject* item, uint32 damage, const string& file, const string& aux, CreatureObject* reciever) 
+	CombatSpam(CreatureObject* attacker, CreatureObject* defender, TangibleObject* item, uint32 damage, const String& file, const String& aux, CreatureObject* reciever) 
 			: ObjectControllerMessage(reciever->getObjectID(), 0x1B, 0x134) {
 		insertLong(attacker->getObjectID());
 		insertLong(defender->getObjectID());
@@ -61,9 +61,9 @@ public:
 			insertLong(item->getObjectID());
 		insertInt(damage);
 		
-		insertAscii(file.c_str());
+		insertAscii(file.toCharArray());
 		insertInt(0);		
-		insertAscii(aux.c_str());
+		insertAscii(aux.toCharArray());
 		insertByte(1);
 		insertInt(0);
 	}

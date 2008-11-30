@@ -60,7 +60,7 @@ protected:
 		
 public:
 	TravelTerminalImplementation(ShuttleCreature* shutle, uint64 objid, float x, float z, float y) 
-			: TravelTerminalServant(0x7402F0FC, objid, unicode("Travel Terminal"), "terminal_travel", x, z, y, TERMINAL) {
+			: TravelTerminalServant(0x7402F0FC, objid, UnicodeString("Travel Terminal"), "terminal_travel", x, z, y, TERMINAL) {
 
 		shuttle = shutle;
 		

@@ -61,7 +61,7 @@ public:
 
 		insertInt(1);
 
-		string app;
+		String app;
 		hino->getCustomizationString(app);
 		insertAscii(app); // I think - seems to work - but no real options to update, //insertShort(0);
 
@@ -83,9 +83,9 @@ public:
 		insertByte(1);
 
 		insertInt(0);
-		/*cout << "Neutral: " << String::hashCode("neutral") << endl;
-		cout << "Rebel: " << String::hashCode("rebel") << endl;
-		cout << "Imp: " << String::hashCode("imperial") << endl;*/
+		/*System::out << "Neutral: " << String::hashCode("neutral") << endl;
+		System::out << "Rebel: " << String::hashCode("rebel") << endl;
+		System::out << "Imp: " << String::hashCode("imperial") << endl;*/
 		insertInt(0x000041C8);
 		setSize();
 /*

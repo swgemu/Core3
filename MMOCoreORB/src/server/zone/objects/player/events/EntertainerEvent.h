@@ -72,12 +72,12 @@ public:
 			if (player->isInBuilding()) {
 
 				int buildingType = player->getBuildingType();
-				if(
+				if (
 					buildingType == BuildingObjectImplementation::CANTINA ||
 					buildingType == BuildingObjectImplementation::GUILD_THEATER ||
 					buildingType == BuildingObjectImplementation::TAVERN )
 				{
-					//cout << "calling: player->doEntertainerPatronEffects()" << endl;
+					//System::out << "calling: player->doEntertainerPatronEffects()" << endl;
 					// healShock, healWounds, addBuff
 					player->doEntertainerPatronEffects(true, true, true);
 

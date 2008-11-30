@@ -23,17 +23,17 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void setName(const string& name);
+	void setName(const String& name);
 
-	void setDetailName(const string& detail);
+	void setDetailName(const String& detail);
 
 	void setWorldObject(SceneObject* obj);
 
 	void updateStatus(unsigned int stat);
 
-	string& getName();
+	String& getName();
 
-	string& getDetailName();
+	String& getDetailName();
 
 	SceneObject* getWorldObject();
 
@@ -44,8 +44,8 @@ protected:
 
 	virtual ~IntangibleObject();
 
-	string _return_getDetailName;
-	string _return_getName;
+	String _return_getDetailName;
+	String _return_getName;
 
 	friend class IntangibleObjectHelper;
 };
@@ -62,25 +62,25 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void setName(const string& name);
+	void setName(const String& name);
 
-	void setDetailName(const string& detail);
+	void setDetailName(const String& detail);
 
 	void setWorldObject(SceneObject* obj);
 
 	void updateStatus(unsigned int stat);
 
-	string& getName();
+	String& getName();
 
-	string& getDetailName();
+	String& getDetailName();
 
 	SceneObject* getWorldObject();
 
 	unsigned int getStatus();
 
 protected:
-	string _param0_setName__string_;
-	string _param0_setDetailName__string_;
+	String _param0_setName__String_;
+	String _param0_setDetailName__String_;
 };
 
 class IntangibleObjectHelper : public DistributedObjectClassHelper, public Singleton<IntangibleObjectHelper> {

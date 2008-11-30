@@ -56,8 +56,8 @@ interface IntangibleObject implements SceneObject {
 	void sendTo(Player player, boolean doClose = true);
 	void sendDestroyTo(Player player);
 
-	void setName(const string name);
-	void setDetailName(const string detail);
+	void setName(const String name);
+	void setDetailName(const String detail);
 	
 	void setWorldObject(SceneObject obj);
 	
@@ -65,8 +65,8 @@ interface IntangibleObject implements SceneObject {
 	
 	//int useObject(Player player);
 
-	string getName();
-	string getDetailName();
+	String getName();
+	String getDetailName();
 	SceneObject getWorldObject();
 	
 	unsigned int getStatus();

@@ -651,7 +651,7 @@ public:
 		addAsciiUpdate(0x04, creo->getMood());
 	}
 
-	void updatePerformanceAnimation(string pAnimation) {
+	void updatePerformanceAnimation(String pAnimation) {
 		startUpdate(0x03);
 		insertAscii(pAnimation);
 	}
@@ -666,7 +666,7 @@ public:
 		insertInt(value);
 	}
 
-	void updateMoodAnimation(string value) {
+	void updateMoodAnimation(String value) {
 		startUpdate(0x04);
 		insertAscii(value);
 	}

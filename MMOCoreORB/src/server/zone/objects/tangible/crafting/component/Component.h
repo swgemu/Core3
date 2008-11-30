@@ -23,9 +23,9 @@ class DraftSchematic;
 
 class Component : public TangibleObject {
 public:
-	Component(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	Component(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	Component(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	Component(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	Component(Component* component, unsigned long long oid);
 
@@ -39,27 +39,27 @@ public:
 
 	Component* cloneComponent(Component* component, unsigned long long oid);
 
-	float getAttributeValue(string& attributeName);
+	float getAttributeValue(String& attributeName);
 
-	int getAttributePrecision(string& attributeName);
+	int getAttributePrecision(String& attributeName);
 
-	string& getAttributeTitle(string& attributeName);
+	String& getAttributeTitle(String& attributeName);
 
-	bool hasProperty(string& attributeName);
+	bool hasProperty(String& attributeName);
 
-	void addProperty(string& attribute, float value, int precision, string& title);
+	void addProperty(String& attribute, float value, int precision, String& title);
 
 	int getPropertyCount();
 
-	string& getProperty(const int j);
+	String& getProperty(const int j);
 
 protected:
 	Component(DummyConstructorParameter* param);
 
 	virtual ~Component();
 
-	string _return_getAttributeTitle;
-	string _return_getProperty;
+	String _return_getAttributeTitle;
+	String _return_getProperty;
 
 	friend class ComponentHelper;
 };
@@ -82,27 +82,27 @@ public:
 
 	Component* cloneComponent(Component* component, unsigned long long oid);
 
-	float getAttributeValue(string& attributeName);
+	float getAttributeValue(String& attributeName);
 
-	int getAttributePrecision(string& attributeName);
+	int getAttributePrecision(String& attributeName);
 
-	string& getAttributeTitle(string& attributeName);
+	String& getAttributeTitle(String& attributeName);
 
-	bool hasProperty(string& attributeName);
+	bool hasProperty(String& attributeName);
 
-	void addProperty(string& attribute, float value, int precision, string& title);
+	void addProperty(String& attribute, float value, int precision, String& title);
 
 	int getPropertyCount();
 
-	string& getProperty(const int j);
+	String& getProperty(const int j);
 
 protected:
-	string _param0_getAttributeValue__string_;
-	string _param0_getAttributePrecision__string_;
-	string _param0_getAttributeTitle__string_;
-	string _param0_hasProperty__string_;
-	string _param0_addProperty__string_float_int_string_;
-	string _param3_addProperty__string_float_int_string_;
+	String _param0_getAttributeValue__String_;
+	String _param0_getAttributePrecision__String_;
+	String _param0_getAttributeTitle__String_;
+	String _param0_hasProperty__String_;
+	String _param0_addProperty__String_float_int_String_;
+	String _param3_addProperty__String_float_int_String_;
 };
 
 class ComponentHelper : public DistributedObjectClassHelper, public Singleton<ComponentHelper> {
@@ -127,8 +127,8 @@ public:
 	Component* _this;
 
 public:
-	ComponentServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
-	ComponentServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	ComponentServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	ComponentServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	ComponentServant(unsigned long long oid, int tp);
 	virtual ~ComponentServant();
 

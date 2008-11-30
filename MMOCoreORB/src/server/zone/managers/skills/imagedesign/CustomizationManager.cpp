@@ -57,7 +57,7 @@ CustomizationManager::CustomizationManager() {
 CustomizationManager::~CustomizationManager() {
 	for (int i = 0; i < customizations.size(); ++i)
 	{
-		if(customizations.get(i) != NULL)
+		if (customizations.get(i) != NULL)
 			delete customizations.get(i);
 	}
 }
@@ -66,7 +66,7 @@ void CustomizationManager::loadCustomizationData() {
 	customizations.removeAll();
 
 	try {
-		string query = "SELECT * FROM customization_data";
+		String query = "SELECT * FROM customization_data";
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -95,24 +95,24 @@ void CustomizationManager::loadCustomizationData() {
 			customization->setMinScale(res->getFloat(19));
 			customization->setMaxScale(res->getFloat(20));
 
-			stringstream speciesGenderCustomization;
+			StringBuffer speciesGenderCustomization;
 			speciesGenderCustomization << customization->getSpeciesGender() << "_" << customization->getCustomizationName();
-			customizations.put(speciesGenderCustomization.str(), customization);
+			customizations.put(speciesGenderCustomization.toString(), customization);
 			loadedCount++;
 		}
 
 		delete res;
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << endl;
+		System::out << e.getMessage() << endl;
 	} catch (...) {
-		cout << "unreported exception caught in CustomizationManager::loadCustomizationData()\n";
+		System::out << "unreported exception caught in CustomizationManager::loadCustomizationData()\n";
 	}
 }
 
-CustomizationData* CustomizationManager::getCustomizationData(string speciesGender, string customizationName) {
-	stringstream speciesGenderCustomization;
+CustomizationData* CustomizationManager::getCustomizationData(String speciesGender, String customizationName) {
+	StringBuffer speciesGenderCustomization;
 	speciesGenderCustomization << speciesGender << "_" << customizationName;
 
-	CustomizationData *customization = customizations.get(speciesGenderCustomization.str());
+	CustomizationData *customization = customizations.get(speciesGenderCustomization.toString());
 	return customization;
 }

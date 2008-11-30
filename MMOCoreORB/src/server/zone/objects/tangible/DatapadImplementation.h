@@ -57,7 +57,7 @@ public:
 	DatapadImplementation(CreatureObject* creature) : DatapadServant(creature->getObjectID() + 0x03) {
 		objectCRC = 0x73BA5001; //0x01, 0x50, 0xBA, 0x73,
 		
-		name = unicode("");
+		name = UnicodeString("");
 		
 		templateTypeName = "item_n";
 		templateName = "datapad";

@@ -55,16 +55,16 @@ which carries forward this exception.
 
 class SelfSkill : public Skill {
 protected:
-	string secondaryAnim;
+	String secondaryAnim;
 	
-	string selfMessage;
+	String selfMessage;
 	
 public:
-	SelfSkill(const string& name, const char* aname, int tp, ZoneProcessServerImplementation* serv) : Skill(name, tp, SELF, serv) {
-		setEffect(string(aname));
+	SelfSkill(const String& name, const char* aname, int tp, ZoneProcessServerImplementation* serv) : Skill(name, tp, SELF, serv) {
+		setEffect(String(aname));
 	}
 	
-	virtual void doSkill(CreatureObject* creature, string& modifier) {
+	virtual void doSkill(CreatureObject* creature, String& modifier) {
 	}
 	
 	virtual void doAnimations(CreatureObject* creature) {
@@ -78,11 +78,11 @@ public:
 	
 	virtual bool calculateCost(CreatureObject* creature) = 0;
 	
-	void setSecondaryAnim(const string& name) {
+	void setSecondaryAnim(const String& name) {
 		secondaryAnim = name;
 	}
 	
-	void setSelfMessage(const string& name) {
+	void setSelfMessage(const String& name) {
 		selfMessage = name;
 	}
 

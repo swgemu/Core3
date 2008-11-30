@@ -199,11 +199,11 @@ public:
 
 	unsigned int getTotalAttribPoints();
 
-	void queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr);
+	void queueFlourish(const String& modifier, unsigned long long target, unsigned int actionCntr);
 
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
-	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier);
+	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const String& actionModifier);
 
 	void deleteQueueAction(unsigned int actioncntr);
 
@@ -235,15 +235,15 @@ public:
 
 	void doDigest();
 
-	bool hasConsent(string& charID);
+	bool hasConsent(String& charID);
 
-	bool giveConsent(string& name);
+	bool giveConsent(String& name);
 
-	bool revokeConsent(string& name);
+	bool revokeConsent(String& name);
 
 	int getConsentSize();
 
-	string& getConsentEntry(int index);
+	String& getConsentEntry(int index);
 
 	void sendConsentBox();
 
@@ -315,19 +315,19 @@ public:
 
 	void trainStartingProfession();
 
-	bool trainSkillBox(const string& name, bool updateClient = true);
+	bool trainSkillBox(const String& name, bool updateClient = true);
 
-	void surrenderSkillBox(const string& name);
+	void surrenderSkillBox(const String& name);
 
 	void resetSkillBoxesIterator();
 
 	int getSkillBoxesSize();
 
-	string& getNextSkillBox();
+	String& getNextSkillBox();
 
 	bool hasNextSkillBox();
 
-	bool hasSkillBox(string& skillBox);
+	bool hasSkillBox(String& skillBox);
 
 	void addWaypoint(WaypointObject* wp);
 
@@ -339,17 +339,17 @@ public:
 
 	void saveWaypoints(Player* player);
 
-	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
+	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
 
-	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const string& attribute);
+	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const String& attribute);
 
-	void addXp(string& xpType, int xp, bool updateClient);
+	void addXp(String& xpType, int xp, bool updateClient);
 
-	void removeXp(string& xpType, int xp, bool updateClient);
+	void removeXp(String& xpType, int xp, bool updateClient);
 
-	void loadXp(const string& xpStr);
+	void loadXp(const String& xpStr);
 
-	string& saveXp();
+	String& saveXp();
 
 	void removeFromDuelList(Player* targetPlayer);
 
@@ -377,13 +377,13 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
-	void sendSystemMessage(const string& msg);
+	void sendSystemMessage(const String& msg);
 
-	void sendSystemMessage(unicode& msg);
+	void sendSystemMessage(UnicodeString& msg);
 
-	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid = 0);
+	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
 
-	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
+	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
 
 	void sendBattleFatigueMessage(CreatureObject* target);
 
@@ -391,15 +391,15 @@ public:
 
 	void setConversatingCreature(CreatureObject* conversator);
 
-	void setFirstName(const string& name);
+	void setFirstName(const String& name);
 
-	void setLastName(const string& name);
+	void setLastName(const String& name);
 
-	void setFirstNameProper(const string& name);
+	void setFirstNameProper(const String& name);
 
-	void setBiography(const string& bio);
+	void setBiography(const String& bio);
 
-	void setBiography(unicode& bio);
+	void setBiography(UnicodeString& bio);
 
 	bool changeForcePowerBar(int fp);
 
@@ -427,9 +427,9 @@ public:
 
 	void setCharacterID(unsigned long long id);
 
-	void setStartingProfession(const string& prof);
+	void setStartingProfession(const String& prof);
 
-	void setHairObject(const string& hair);
+	void setHairObject(const String& hair);
 
 	void updateHair();
 
@@ -455,11 +455,11 @@ public:
 
 	void newChangeFactionStatusEvent(unsigned char status, unsigned int timer);
 
-	void setRaceFileName(string& name);
+	void setRaceFileName(String& name);
 
 	void setRaceID(unsigned char id);
 
-	void setStartingLocation(string& loc);
+	void setStartingLocation(String& loc);
 
 	void setItemShift(unsigned int shift);
 
@@ -523,25 +523,25 @@ public:
 
 	CreatureObject* getConversatingCreature();
 
-	string& getFirstName();
+	String& getFirstName();
 
-	string& getLastName();
+	String& getLastName();
 
-	string& getFirstNameProper();
+	String& getFirstNameProper();
 
-	string& getRaceFileName();
+	String& getRaceFileName();
 
 	unsigned char getRaceID();
 
-	unicode& getBiography();
+	UnicodeString& getBiography();
 
 	unsigned long long getCharacterID();
 
-	string& getStartingProfession();
+	String& getStartingProfession();
 
 	int getZoneIndex();
 
-	string& getHairObject();
+	String& getHairObject();
 
 	ZoneClientSession* getClient();
 
@@ -561,9 +561,9 @@ public:
 
 	int getCertificationListSize();
 
-	string& getCertification(int idx);
+	String& getCertification(int idx);
 
-	bool checkCertification(string& certification);
+	bool checkCertification(String& certification);
 
 	int getSlicingAbility();
 
@@ -571,7 +571,7 @@ public:
 
 	bool isImmune();
 
-	string& getInputBoxReturnBuffer();
+	String& getInputBoxReturnBuffer();
 
 	unsigned int nextMisoRFC();
 
@@ -579,15 +579,15 @@ public:
 
 	void setMisoBSB(int tms);
 
-	void addToCurMisoKeys(string& tck);
+	void addToCurMisoKeys(String& tck);
 
-	bool isOnCurMisoKey(string& tmk);
+	bool isOnCurMisoKey(String& tmk);
 
-	void removeFromCurMisoKeys(string& tck);
+	void removeFromCurMisoKeys(String& tck);
 
-	void addToFinMisoKeys(string& tmp);
+	void addToFinMisoKeys(String& tmp);
 
-	bool hasCompletedMisoKey(string& tmk);
+	bool hasCompletedMisoKey(String& tmk);
 
 	CraftingTool* getCurrentCraftingTool();
 
@@ -603,21 +603,21 @@ public:
 
 	void removeResourceFromCraft(unsigned long long resID, int slot, int counter);
 
-	void nextCraftingStage(string& test);
+	void nextCraftingStage(String& test);
 
-	void craftingCustomization(string& name, int condition, string& customizationstring);
+	void craftingCustomization(String& name, int condition, String& customizationString);
 
-	void createPrototype(string& count);
+	void createPrototype(String& count);
 
-	void createSchematic(string& count);
+	void createSchematic(String& count);
 
-	void handleExperimenting(int count, int numRowsAttempted, string& expstring);
+	void handleExperimenting(int count, int numRowsAttempted, String& expString);
 
 	void sendDraftSchematics();
 
-	void addDraftSchematicsFromGroupName(const string& schematicGroupName);
+	void addDraftSchematicsFromGroupName(const String& schematicGroupName);
 
-	void subtractDraftSchematicsFromGroupName(const string& schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(const String& schematicGroupName);
 
 	void addDraftSchematic(DraftSchematic* ds);
 
@@ -673,9 +673,9 @@ public:
 
 	void setCanSample();
 
-	void setSurveyEvent(string& resourcename);
+	void setSurveyEvent(String& resourcename);
 
-	void setSampleEvent(string& resourcename, bool firstTime = false);
+	void setSampleEvent(String& resourcename, bool firstTime = false);
 
 	void setCancelSample(bool val);
 
@@ -691,21 +691,21 @@ public:
 
 	bool getSampleErrorMessage();
 
-	void sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender);
+	void sendMail(String& mailsender, UnicodeString& subjectSender, UnicodeString& bodySender, String& charNameSender);
 
 	void setEntertainerEvent();
 
 	void clearEntertainerEvent();
 
-	void setLastNpcConvStr(const string& conv);
+	void setLastNpcConvStr(const String& conv);
 
-	void setLastNpcConvMessStr(const string& mess);
+	void setLastNpcConvMessStr(const String& mess);
 
-	string& getLastNpcConvStr();
+	String& getLastNpcConvStr();
 
-	string& getLastNpcConvMessStr();
+	String& getLastNpcConvMessStr();
 
-	void setInputBoxReturnBuffer(const string& message);
+	void setInputBoxReturnBuffer(const String& message);
 
 	void setGuildLeader(bool guildLeader = true);
 
@@ -721,11 +721,11 @@ public:
 
 	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient = false);
 
-	int getFactionPoints(const string& faction);
+	int getFactionPoints(const String& faction);
 
-	void addFactionPoints(const string& faction, unsigned int points);
+	void addFactionPoints(const String& faction, unsigned int points);
 
-	void subtractFactionPoints(const string& faction, unsigned int points);
+	void subtractFactionPoints(const String& faction, unsigned int points);
 
 	int getFactionStatus();
 
@@ -733,11 +733,11 @@ public:
 
 	FactionPointList* getFactionList();
 
-	unsigned int getMaxFactionPoints(string& faction);
+	unsigned int getMaxFactionPoints(String& faction);
 
 	void delFactionPoints(Player* player, unsigned int amount);
 
-	void addSuiBoxChoice(string& choice);
+	void addSuiBoxChoice(String& choice);
 
 	void removeLastSuiBoxChoice();
 
@@ -756,21 +756,21 @@ protected:
 
 	virtual ~Player();
 
-	string _return_getCertification;
-	string _return_getConsentEntry;
-	string _return_getFirstName;
-	string _return_getFirstNameProper;
-	string _return_getHairObject;
-	string _return_getInputBoxReturnBuffer;
-	string _return_getLastName;
-	string _return_getLastNpcConvMessStr;
-	string _return_getLastNpcConvStr;
-	string _return_getNextSkillBox;
-	string _return_getRaceFileName;
-	string _return_getStartingProfession;
-	string _return_saveXp;
+	String _return_getCertification;
+	String _return_getConsentEntry;
+	String _return_getFirstName;
+	String _return_getFirstNameProper;
+	String _return_getHairObject;
+	String _return_getInputBoxReturnBuffer;
+	String _return_getLastName;
+	String _return_getLastNpcConvMessStr;
+	String _return_getLastNpcConvStr;
+	String _return_getNextSkillBox;
+	String _return_getRaceFileName;
+	String _return_getStartingProfession;
+	String _return_saveXp;
 
-	unicode _return_getBiography;
+	UnicodeString _return_getBiography;
 
 	friend class PlayerHelper;
 };
@@ -915,11 +915,11 @@ public:
 
 	unsigned int getTotalAttribPoints();
 
-	void queueFlourish(const string& modifier, unsigned long long target, unsigned int actionCntr);
+	void queueFlourish(const String& modifier, unsigned long long target, unsigned int actionCntr);
 
 	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
 
-	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const string& actionModifier);
+	void queueAction(Player* player, unsigned long long target, unsigned int actionCRC, unsigned int actionCntr, const String& actionModifier);
 
 	void deleteQueueAction(unsigned int actioncntr);
 
@@ -951,15 +951,15 @@ public:
 
 	void doDigest();
 
-	bool hasConsent(string& charID);
+	bool hasConsent(String& charID);
 
-	bool giveConsent(string& name);
+	bool giveConsent(String& name);
 
-	bool revokeConsent(string& name);
+	bool revokeConsent(String& name);
 
 	int getConsentSize();
 
-	string& getConsentEntry(int index);
+	String& getConsentEntry(int index);
 
 	void sendConsentBox();
 
@@ -1031,19 +1031,19 @@ public:
 
 	void trainStartingProfession();
 
-	bool trainSkillBox(const string& name, bool updateClient);
+	bool trainSkillBox(const String& name, bool updateClient);
 
-	void surrenderSkillBox(const string& name);
+	void surrenderSkillBox(const String& name);
 
 	void resetSkillBoxesIterator();
 
 	int getSkillBoxesSize();
 
-	string& getNextSkillBox();
+	String& getNextSkillBox();
 
 	bool hasNextSkillBox();
 
-	bool hasSkillBox(string& skillBox);
+	bool hasSkillBox(String& skillBox);
 
 	void addWaypoint(WaypointObject* wp);
 
@@ -1055,17 +1055,17 @@ public:
 
 	void saveWaypoints(Player* player);
 
-	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
+	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
 
-	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const string& attribute);
+	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const String& attribute);
 
-	void addXp(string& xpType, int xp, bool updateClient);
+	void addXp(String& xpType, int xp, bool updateClient);
 
-	void removeXp(string& xpType, int xp, bool updateClient);
+	void removeXp(String& xpType, int xp, bool updateClient);
 
-	void loadXp(const string& xpStr);
+	void loadXp(const String& xpStr);
 
-	string& saveXp();
+	String& saveXp();
 
 	void removeFromDuelList(Player* targetPlayer);
 
@@ -1093,13 +1093,13 @@ public:
 
 	void removeChatRoom(ChatRoom* room);
 
-	void sendSystemMessage(const string& msg);
+	void sendSystemMessage(const String& msg);
 
-	void sendSystemMessage(unicode& msg);
+	void sendSystemMessage(UnicodeString& msg);
 
-	void sendSystemMessage(const string& file, const string& str, unsigned long long targetid);
+	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid);
 
-	void sendSystemMessage(const string& file, const string& str, StfParameter* param);
+	void sendSystemMessage(const String& file, const String& str, StfParameter* param);
 
 	void sendBattleFatigueMessage(CreatureObject* target);
 
@@ -1107,15 +1107,15 @@ public:
 
 	void setConversatingCreature(CreatureObject* conversator);
 
-	void setFirstName(const string& name);
+	void setFirstName(const String& name);
 
-	void setLastName(const string& name);
+	void setLastName(const String& name);
 
-	void setFirstNameProper(const string& name);
+	void setFirstNameProper(const String& name);
 
-	void setBiography(const string& bio);
+	void setBiography(const String& bio);
 
-	void setBiography(unicode& bio);
+	void setBiography(UnicodeString& bio);
 
 	bool changeForcePowerBar(int fp);
 
@@ -1143,9 +1143,9 @@ public:
 
 	void setCharacterID(unsigned long long id);
 
-	void setStartingProfession(const string& prof);
+	void setStartingProfession(const String& prof);
 
-	void setHairObject(const string& hair);
+	void setHairObject(const String& hair);
 
 	void updateHair();
 
@@ -1171,11 +1171,11 @@ public:
 
 	void newChangeFactionStatusEvent(unsigned char status, unsigned int timer);
 
-	void setRaceFileName(string& name);
+	void setRaceFileName(String& name);
 
 	void setRaceID(unsigned char id);
 
-	void setStartingLocation(string& loc);
+	void setStartingLocation(String& loc);
 
 	void setItemShift(unsigned int shift);
 
@@ -1239,25 +1239,25 @@ public:
 
 	CreatureObject* getConversatingCreature();
 
-	string& getFirstName();
+	String& getFirstName();
 
-	string& getLastName();
+	String& getLastName();
 
-	string& getFirstNameProper();
+	String& getFirstNameProper();
 
-	string& getRaceFileName();
+	String& getRaceFileName();
 
 	unsigned char getRaceID();
 
-	unicode& getBiography();
+	UnicodeString& getBiography();
 
 	unsigned long long getCharacterID();
 
-	string& getStartingProfession();
+	String& getStartingProfession();
 
 	int getZoneIndex();
 
-	string& getHairObject();
+	String& getHairObject();
 
 	ZoneClientSession* getClient();
 
@@ -1277,9 +1277,9 @@ public:
 
 	int getCertificationListSize();
 
-	string& getCertification(int idx);
+	String& getCertification(int idx);
 
-	bool checkCertification(string& certification);
+	bool checkCertification(String& certification);
 
 	int getSlicingAbility();
 
@@ -1287,7 +1287,7 @@ public:
 
 	bool isImmune();
 
-	string& getInputBoxReturnBuffer();
+	String& getInputBoxReturnBuffer();
 
 	unsigned int nextMisoRFC();
 
@@ -1295,15 +1295,15 @@ public:
 
 	void setMisoBSB(int tms);
 
-	void addToCurMisoKeys(string& tck);
+	void addToCurMisoKeys(String& tck);
 
-	bool isOnCurMisoKey(string& tmk);
+	bool isOnCurMisoKey(String& tmk);
 
-	void removeFromCurMisoKeys(string& tck);
+	void removeFromCurMisoKeys(String& tck);
 
-	void addToFinMisoKeys(string& tmp);
+	void addToFinMisoKeys(String& tmp);
 
-	bool hasCompletedMisoKey(string& tmk);
+	bool hasCompletedMisoKey(String& tmk);
 
 	CraftingTool* getCurrentCraftingTool();
 
@@ -1319,21 +1319,21 @@ public:
 
 	void removeResourceFromCraft(unsigned long long resID, int slot, int counter);
 
-	void nextCraftingStage(string& test);
+	void nextCraftingStage(String& test);
 
-	void craftingCustomization(string& name, int condition, string& customizationstring);
+	void craftingCustomization(String& name, int condition, String& customizationString);
 
-	void createPrototype(string& count);
+	void createPrototype(String& count);
 
-	void createSchematic(string& count);
+	void createSchematic(String& count);
 
-	void handleExperimenting(int count, int numRowsAttempted, string& expstring);
+	void handleExperimenting(int count, int numRowsAttempted, String& expString);
 
 	void sendDraftSchematics();
 
-	void addDraftSchematicsFromGroupName(const string& schematicGroupName);
+	void addDraftSchematicsFromGroupName(const String& schematicGroupName);
 
-	void subtractDraftSchematicsFromGroupName(const string& schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(const String& schematicGroupName);
 
 	void addDraftSchematic(DraftSchematic* ds);
 
@@ -1389,9 +1389,9 @@ public:
 
 	void setCanSample();
 
-	void setSurveyEvent(string& resourcename);
+	void setSurveyEvent(String& resourcename);
 
-	void setSampleEvent(string& resourcename, bool firstTime);
+	void setSampleEvent(String& resourcename, bool firstTime);
 
 	void setCancelSample(bool val);
 
@@ -1407,21 +1407,21 @@ public:
 
 	bool getSampleErrorMessage();
 
-	void sendMail(string& mailsender, unicode& subjectSender, unicode& bodySender, string& charNameSender);
+	void sendMail(String& mailsender, UnicodeString& subjectSender, UnicodeString& bodySender, String& charNameSender);
 
 	void setEntertainerEvent();
 
 	void clearEntertainerEvent();
 
-	void setLastNpcConvStr(const string& conv);
+	void setLastNpcConvStr(const String& conv);
 
-	void setLastNpcConvMessStr(const string& mess);
+	void setLastNpcConvMessStr(const String& mess);
 
-	string& getLastNpcConvStr();
+	String& getLastNpcConvStr();
 
-	string& getLastNpcConvMessStr();
+	String& getLastNpcConvMessStr();
 
-	void setInputBoxReturnBuffer(const string& message);
+	void setInputBoxReturnBuffer(const String& message);
 
 	void setGuildLeader(bool guildLeader);
 
@@ -1437,11 +1437,11 @@ public:
 
 	bool clearGuildPermissionsBit(unsigned int bit, bool updateClient);
 
-	int getFactionPoints(const string& faction);
+	int getFactionPoints(const String& faction);
 
-	void addFactionPoints(const string& faction, unsigned int points);
+	void addFactionPoints(const String& faction, unsigned int points);
 
-	void subtractFactionPoints(const string& faction, unsigned int points);
+	void subtractFactionPoints(const String& faction, unsigned int points);
 
 	int getFactionStatus();
 
@@ -1449,11 +1449,11 @@ public:
 
 	FactionPointList* getFactionList();
 
-	unsigned int getMaxFactionPoints(string& faction);
+	unsigned int getMaxFactionPoints(String& faction);
 
 	void delFactionPoints(Player* player, unsigned int amount);
 
-	void addSuiBoxChoice(string& choice);
+	void addSuiBoxChoice(String& choice);
 
 	void removeLastSuiBoxChoice();
 
@@ -1468,62 +1468,62 @@ public:
 	unsigned long long getResourceDeedID();
 
 protected:
-	string _param0_queueFlourish__string_long_int_;
-	string _param4_queueAction__Player_long_int_int_string_;
-	string _param0_hasConsent__string_;
-	string _param0_giveConsent__string_;
-	string _param0_revokeConsent__string_;
-	string _param0_trainSkillBox__string_bool_;
-	string _param0_surrenderSkillBox__string_;
-	string _param0_hasSkillBox__string_;
-	string _param1_searchWaypoint__Player_string_int_;
-	string _param2_queueHeal__TangibleObject_int_string_;
-	string _param0_addXp__string_int_bool_;
-	string _param0_removeXp__string_int_bool_;
-	string _param0_loadXp__string_;
-	string _param0_sendSystemMessage__string_;
-	unicode _param0_sendSystemMessage__unicode_;
-	string _param0_sendSystemMessage__string_string_long_;
-	string _param1_sendSystemMessage__string_string_long_;
-	string _param0_sendSystemMessage__string_string_StfParameter_;
-	string _param1_sendSystemMessage__string_string_StfParameter_;
-	string _param0_setFirstName__string_;
-	string _param0_setLastName__string_;
-	string _param0_setFirstNameProper__string_;
-	string _param0_setBiography__string_;
-	unicode _param0_setBiography__unicode_;
-	string _param0_setStartingProfession__string_;
-	string _param0_setHairObject__string_;
-	string _param0_setRaceFileName__string_;
-	string _param0_setStartingLocation__string_;
-	string _param0_checkCertification__string_;
-	string _param0_addToCurMisoKeys__string_;
-	string _param0_isOnCurMisoKey__string_;
-	string _param0_removeFromCurMisoKeys__string_;
-	string _param0_addToFinMisoKeys__string_;
-	string _param0_hasCompletedMisoKey__string_;
-	string _param0_nextCraftingStage__string_;
-	string _param0_craftingCustomization__string_int_string_;
-	string _param2_craftingCustomization__string_int_string_;
-	string _param0_createPrototype__string_;
-	string _param0_createSchematic__string_;
-	string _param2_handleExperimenting__int_int_string_;
-	string _param0_addDraftSchematicsFromGroupName__string_;
-	string _param0_subtractDraftSchematicsFromGroupName__string_;
-	string _param0_setSurveyEvent__string_;
-	string _param0_setSampleEvent__string_bool_;
-	string _param0_sendMail__string_unicode_unicode_string_;
-	unicode _param1_sendMail__string_unicode_unicode_string_;
-	unicode _param2_sendMail__string_unicode_unicode_string_;
-	string _param3_sendMail__string_unicode_unicode_string_;
-	string _param0_setLastNpcConvStr__string_;
-	string _param0_setLastNpcConvMessStr__string_;
-	string _param0_setInputBoxReturnBuffer__string_;
-	string _param0_getFactionPoints__string_;
-	string _param0_addFactionPoints__string_int_;
-	string _param0_subtractFactionPoints__string_int_;
-	string _param0_getMaxFactionPoints__string_;
-	string _param0_addSuiBoxChoice__string_;
+	String _param0_queueFlourish__String_long_int_;
+	String _param4_queueAction__Player_long_int_int_String_;
+	String _param0_hasConsent__String_;
+	String _param0_giveConsent__String_;
+	String _param0_revokeConsent__String_;
+	String _param0_trainSkillBox__String_bool_;
+	String _param0_surrenderSkillBox__String_;
+	String _param0_hasSkillBox__String_;
+	String _param1_searchWaypoint__Player_String_int_;
+	String _param2_queueHeal__TangibleObject_int_String_;
+	String _param0_addXp__String_int_bool_;
+	String _param0_removeXp__String_int_bool_;
+	String _param0_loadXp__String_;
+	String _param0_sendSystemMessage__String_;
+	UnicodeString _param0_sendSystemMessage__UnicodeString_;
+	String _param0_sendSystemMessage__String_String_long_;
+	String _param1_sendSystemMessage__String_String_long_;
+	String _param0_sendSystemMessage__String_String_StfParameter_;
+	String _param1_sendSystemMessage__String_String_StfParameter_;
+	String _param0_setFirstName__String_;
+	String _param0_setLastName__String_;
+	String _param0_setFirstNameProper__String_;
+	String _param0_setBiography__String_;
+	UnicodeString _param0_setBiography__UnicodeString_;
+	String _param0_setStartingProfession__String_;
+	String _param0_setHairObject__String_;
+	String _param0_setRaceFileName__String_;
+	String _param0_setStartingLocation__String_;
+	String _param0_checkCertification__String_;
+	String _param0_addToCurMisoKeys__String_;
+	String _param0_isOnCurMisoKey__String_;
+	String _param0_removeFromCurMisoKeys__String_;
+	String _param0_addToFinMisoKeys__String_;
+	String _param0_hasCompletedMisoKey__String_;
+	String _param0_nextCraftingStage__String_;
+	String _param0_craftingCustomization__String_int_String_;
+	String _param2_craftingCustomization__String_int_String_;
+	String _param0_createPrototype__String_;
+	String _param0_createSchematic__String_;
+	String _param2_handleExperimenting__int_int_String_;
+	String _param0_addDraftSchematicsFromGroupName__String_;
+	String _param0_subtractDraftSchematicsFromGroupName__String_;
+	String _param0_setSurveyEvent__String_;
+	String _param0_setSampleEvent__String_bool_;
+	String _param0_sendMail__String_UnicodeString_UnicodeString_String_;
+	UnicodeString _param1_sendMail__String_UnicodeString_UnicodeString_String_;
+	UnicodeString _param2_sendMail__String_UnicodeString_UnicodeString_String_;
+	String _param3_sendMail__String_UnicodeString_UnicodeString_String_;
+	String _param0_setLastNpcConvStr__String_;
+	String _param0_setLastNpcConvMessStr__String_;
+	String _param0_setInputBoxReturnBuffer__String_;
+	String _param0_getFactionPoints__String_;
+	String _param0_addFactionPoints__String_int_;
+	String _param0_subtractFactionPoints__String_int_;
+	String _param0_getMaxFactionPoints__String_;
+	String _param0_addSuiBoxChoice__String_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

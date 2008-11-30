@@ -30,13 +30,13 @@ public:
 			inso->updateHopper();
 			inso->updateOperators();
 
-			if(inso->getOperatorListSize() > 0)
+			if (inso->getOperatorListSize() > 0)
 				inso->activateSync(); // renew
 
 			inso->unlock();
 
 		} catch (...) {
-			cout << "exception InstallationSyncUIEvent" << endl;
+			System::out << "exception InstallationSyncUIEvent" << endl;
 			inso->unlock();
 		}
 		return true;

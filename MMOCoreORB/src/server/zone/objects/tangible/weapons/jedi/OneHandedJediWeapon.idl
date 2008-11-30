@@ -47,11 +47,11 @@ import "../../../creature/CreatureObject";
 import "../JediWeapon";
 
 interface OneHandedJediWeapon implements JediWeapon {
-	OneHandedJediWeapon(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+	OneHandedJediWeapon(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, boolean eqp = false) {
 		super(oid, tempCRC, n, tempn, int tp, eqp);
 	}
 
-	OneHandedJediWeapon(CreatureObject creature, const string temp, const unicode n, const string tempn, boolean eqp = false) {
+	OneHandedJediWeapon(CreatureObject creature, const String temp, const UnicodeString n, const String tempn, boolean eqp = false) {
 		super(creature, temp, n, tempn, int tp, eqp);
 	}
 }

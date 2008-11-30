@@ -56,9 +56,9 @@ MissionObjectImplementation::MissionObjectImplementation(uint64 oid) : SceneObje
 
 	objectType = SceneObjectImplementation::MISSION;
 
-	stringstream name;
+	StringBuffer name;
 	name << "MissionObject :" << oid;
-	setLoggingName(name.str());
+	setLoggingName(name.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -73,7 +73,7 @@ void MissionObjectImplementation::init() {
 	dbKey = "";
 
 	terminalMask = 0;
-	
+
 	deliverItem = NULL;
 
 	//MISO3:
@@ -124,18 +124,17 @@ void MissionObjectImplementation::sendDeltaTo(Player* player) {
 		return;
 
 	MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3((MissionObject*) _this);
-	size_t posD;
-	size_t posT;
-	
-	posD = descriptionStf.find("mission/");
-	posT = titleStf.find("mission/");
-	
-	if(posD == string::npos) {
+
+	int posD = descriptionStf.indexOf("mission/");
+	int posT = titleStf.indexOf("mission/");
+
+	if (posD == -1) {
 		dmiso3->updateDescriptionStf(false); //11 (0B)
 	} else {
 		dmiso3->updateDescriptionStf(true); //11 (0B)
 		dmiso3->updateDescKey(); //4
 	}
+
 	dmiso3->updateDifficultyLv(); //5
 	dmiso3->updateDestination(); //6
 	dmiso3->updateCreator(); //7
@@ -143,12 +142,14 @@ void MissionObjectImplementation::sendDeltaTo(Player* player) {
 	dmiso3->updateReward(); //8
 	dmiso3->updateTarget(); //9
 	dmiso3->updateDepictedObject(); //10 (0A)
-	if(posD == string::npos) {
+
+	if (posD == -1) {
 		dmiso3->updateTitleStf(false); //12 (0C)
 	} else {
 		dmiso3->updateTitleStf(true); //12 (0C)
 		dmiso3->updateTitleKey(); //4
 	}
+
 	dmiso3->updateRefreshCount(player->nextMisoRFC()); //13 (0D)
 
 	dmiso3->close();

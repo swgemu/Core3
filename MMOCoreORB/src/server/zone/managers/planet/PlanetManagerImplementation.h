@@ -136,7 +136,7 @@ private:
 	void loadMissionTerminals();
 	void loadCraftingStations();
 	void loadNoBuildAreas();
-	string getStationName(uint64 crc);
+	String getStationName(uint64 crc);
 
 
 
@@ -152,7 +152,7 @@ private:
 
 public:
 	// getters
-	ShuttleCreature* getShuttle(const string& Shuttle);
+	ShuttleCreature* getShuttle(const String& Shuttle);
 
 	StructureManager* getStructureManager() {
 		return structureManager;
@@ -169,7 +169,7 @@ public:
 
 	void placePlayerStructure(Player * player, uint64 objectID, float x, float y, int orient);
 
-	inline uint32 getTravelFare(string departurePlanet, string arrivalPlanet) {
+	inline uint32 getTravelFare(String departurePlanet, String arrivalPlanet) {
 		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 	}
 };

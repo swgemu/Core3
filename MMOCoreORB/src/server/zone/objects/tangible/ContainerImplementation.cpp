@@ -55,9 +55,9 @@ ContainerImplementation::ContainerImplementation(uint64 oid) : ContainerServant(
 	items.setInsertPlan(SortedVector<VectorMapEntry<uint64, SceneObject*>*>::NO_DUPLICATE);
 	items.setNullValue(NULL);
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "Container = 0x" << oid;
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);

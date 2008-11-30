@@ -79,7 +79,7 @@ public:
 		for (int i = 0; i < groupSize; i++) {
 			Player* player = grup->getGroupMember(i);
 			insertLong(player->getObjectID());
-			insertAscii(player->getCharacterName().c_str());
+			insertAscii(player->getCharacterName().toString());
 		}
 		
 		insertInt(0); // uses the same method as above to parse this

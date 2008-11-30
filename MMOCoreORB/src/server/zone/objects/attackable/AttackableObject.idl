@@ -57,16 +57,16 @@ interface AttackableObject implements SceneObject {
 	void removeFromZone(boolean doLock = true);
 	void sendDestroyTo(Player player);
 
-	void setTemplateName(string name);
-	string getTemplateTypeName();
-	string getTemplateName();
+	void setTemplateName(String name);
+	String getTemplateTypeName();
+	String getTemplateName();
 
-	unicode getName();
+	UnicodeString getName();
 
-	string getTemplateDetailName();
-	string getTemplateDetail();
+	String getTemplateDetailName();
+	String getTemplateDetail();
 
-	void getCustomizationString(string app);
+	void getCustomizationString(String app);
 
 	void setConditionDamage(unsigned int cond);
 	void setMaxCondition(unsigned int maxcond);

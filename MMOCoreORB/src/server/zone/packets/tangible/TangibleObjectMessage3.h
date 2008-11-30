@@ -64,7 +64,7 @@ public:
 
 		insertInt(1);
 		
-		string app;
+		String app;
 		tano->getCustomizationString(app);
 		insertAscii(app);
 
@@ -75,7 +75,7 @@ public:
 
 		int count = tano->getObjectCount();
 		
-		if(count == 1)
+		if (count == 1)
 			count = 0;
 		
 		insertInt(count); //item count

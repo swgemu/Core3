@@ -55,14 +55,14 @@ class Player;
 class ComponentImplementation : public ComponentServant {
 protected:
 
-	VectorMap<string, float> attributeMap;
-	VectorMap<string, int> precisionMap;
-	VectorMap<string, string> titleMap;
-	Vector<string> keyList;
+	VectorMap<String, float> attributeMap;
+	VectorMap<String, int> precisionMap;
+	VectorMap<String, String> titleMap;
+	Vector<String> keyList;
 
 public:
-	ComponentImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
-	ComponentImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	ComponentImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	ComponentImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	ComponentImplementation(Component* component, uint64 oid);
 
 	~ComponentImplementation();
@@ -77,9 +77,9 @@ public:
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
 
-	float getAttributeValue(string& attributeName);
-	int getAttributePrecision(string& attributeName);
-	string& getAttributeTitle(string& attributeName);
+	float getAttributeValue(String& attributeName);
+	int getAttributePrecision(String& attributeName);
+	String& getAttributeTitle(String& attributeName);
 
 	void savePrecisionList();
 	void saveTitleList();
@@ -92,11 +92,11 @@ public:
 	void parsePrecisionString();
 	void parseTitleString();
 
-	inline bool hasProperty(string& attributeName) {
+	inline bool hasProperty(String& attributeName) {
 		return attributeMap.contains(attributeName);
 	}
 
-	inline void addProperty(string& attribute, float value, int precision, string& title) {
+	inline void addProperty(String& attribute, float value, int precision, String& title) {
 		keyList.add(attribute);
 
 		itemAttributes->setFloatAttribute(attribute, value);
@@ -113,14 +113,14 @@ public:
 		return keyList.size();
 	}
 
-	inline string& getProperty(const int j){
+	inline String& getProperty(const int j){
 		return keyList.get(j);
 	}
 
-	inline bool hasKey(const string& key){
+	inline bool hasKey(const String& key){
 
-		for(int i = 0; i < keyList.size(); ++i) {
-			if(keyList.get(i) == key)
+		for (int i = 0; i < keyList.size(); ++i) {
+			if (keyList.get(i) == key)
 				return true;
 		}
 		return false;

@@ -23,9 +23,9 @@ class ObjectMenuResponse;
 
 class VehicleDeed : public DeedObject {
 public:
-	VehicleDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn);
+	VehicleDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
 
-	VehicleDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
+	VehicleDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
 	int useObject(Player* player);
 
@@ -75,8 +75,8 @@ public:
 	VehicleDeed* _this;
 
 public:
-	VehicleDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp);
-	VehicleDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp);
+	VehicleDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	VehicleDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~VehicleDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

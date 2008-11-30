@@ -88,9 +88,9 @@ Pre-CU:
 00 00 00 00
 00 00 00 00
 */
-		//stringstream msg;
+		//StringBuffer msg;
 		//msg << hex << "CellObjectMessage6 [Object = " << coId << "]\n";
-		//cout << msg.str();
+		//System::out << msg.toString();
 	}
 };
 #endif /*CELLOBJECTMESSAGE6_H_*/

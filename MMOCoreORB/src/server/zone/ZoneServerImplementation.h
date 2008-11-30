@@ -112,7 +112,7 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	uint64 nextCreatureID;
 	uint64 nextCellID;
 
-	string name;
+	String name;
 
 public:
 	ZoneServerImplementation(int processingThreads);
@@ -162,9 +162,9 @@ public:
 	}
 
 	// user control methods
-	bool banUser(string& name, string& admin);
+	bool banUser(String& name, String& admin);
 
-	bool kickUser(string& name, string& admin);
+	bool kickUser(String& name, String& admin);
 
 	void changeUserCap(int amount = 50);
 
@@ -180,7 +180,7 @@ public:
 
 	// setters and getters
 
-	inline string& getServerName() {
+	inline String& getServerName() {
 		return name;
 	}
 

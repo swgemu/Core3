@@ -88,27 +88,27 @@ public:
 	void removeMissions();
 	
 	// creation methods
-	MissionObject* poolMission(string& dbKey, int termMask, const string& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX, 
-			float destY, uint32 destPlanetCrc, const string& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc, 
-			uint32 depictedObjCrc, const string& descriptionStf, const string& titleStf, uint32 typeCrc, TangibleObject* deliverItem = NULL, bool doLock = true);
+	MissionObject* poolMission(String& dbKey, int termMask, const String& typeStr, uint32 descKey, uint32 titleKey, uint32 diffLv, float destX, 
+			float destY, uint32 destPlanetCrc, const String& creatorName, uint32 rewardAmount, float targetX, float targetY, uint32 targetPlanetCrc, 
+			uint32 depictedObjCrc, const String& descriptionStf, const String& titleStf, uint32 typeCrc, TangibleObject* deliverItem = NULL, bool doLock = true);
 	
 	//Test
 	void setupHardcodeMissions();
 	
 	//data setup
 	void sendTerminalData(Player* player, int termBitmask, bool doLock = true);
-	void sendMission(Player* player, string& tKey, bool doLock = true);
+	void sendMission(Player* player, String& tKey, bool doLock = true);
 	
 	//events
 	void doMissionAccept(Player* player, uint64& oid, bool doLock = true);
-	void doMissionComplete(Player* player, string& tKey, bool doLock = true);
+	void doMissionComplete(Player* player, String& tKey, bool doLock = true);
 	void doMissionAbort(Player* player, uint64& oid, bool doLock = true);
-	void doMissionAbort(Player* player, string& tKey, bool doLock = true);
+	void doMissionAbort(Player* player, String& tKey, bool doLock = true);
 	
 	//Completely remove the mission from the server:
 	void removeMisoFromPool(MissionObject* miso, bool doLock = true);
 	
-	uint32 getMissionItemCrc(string& tKey, bool doLock = true);
+	uint32 getMissionItemCrc(String& tKey, bool doLock = true);
 
 	//script methods
 	void loadMissionScripts();
@@ -133,18 +133,18 @@ private:
 	uint64 getNextMissionID();
 	
 	//Send mission baselines to the player:
-	void sendMissionBase(Player* player, string& tKey, bool doLock = true);
+	void sendMissionBase(Player* player, String& tKey, bool doLock = true);
 	void sendMissionBase(Player* player, uint64& oid, bool doLock = true);
 	void sendMissionBase(Player* player, MissionObject* sMiso);
 	
 	//Send mission delta to player (for mission listing):
-	void sendMissionDelta(Player* player, string& tKey, bool doLock = true);
+	void sendMissionDelta(Player* player, String& tKey, bool doLock = true);
 	void sendMissionDelta(Player* player, uint64& oid, bool doLock = true);
 	void sendMissionDelta(Player* player, MissionObject* sMiso);
 	
 	//These functions will essentially "hide" the mission from the player.
 	//Use these methods when the player completes/abandons/fails the mission.
-	void removeMisoFromPlayer(Player* player, string& tKey, bool doLock = true);
+	void removeMisoFromPlayer(Player* player, String& tKey, bool doLock = true);
 	void removeMisoFromPlayer(Player* player, uint64& oid, bool doLock = true);
 	void removeMisoFromPlayer(MissionObject* miso, Player* player);
 	

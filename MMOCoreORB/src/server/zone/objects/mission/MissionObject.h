@@ -29,9 +29,9 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void setDBKey(string& tdbk);
+	void setDBKey(String& tdbk);
 
-	string& getDBKey();
+	String& getDBKey();
 
 	void applyTerminalMask(int tam);
 
@@ -41,9 +41,9 @@ public:
 
 	TangibleObject* getDeliverItem();
 
-	void setTypeStr(const string& tstr);
+	void setTypeStr(const String& tstr);
 
-	string& getTypeStr();
+	String& getTypeStr();
 
 	void setDescKey(int tdk);
 
@@ -69,9 +69,9 @@ public:
 
 	unsigned int getDestPlanetCrc();
 
-	void setCreatorName(const unicode& tcn);
+	void setCreatorName(const UnicodeString& tcn);
 
-	unicode& getCreatorName();
+	UnicodeString& getCreatorName();
 
 	void setReward(unsigned int tr);
 
@@ -93,13 +93,13 @@ public:
 
 	unsigned int getDepictedObjCrc();
 
-	void setDescriptionStf(const string& tds);
+	void setDescriptionStf(const String& tds);
 
-	string& getDescriptionStf();
+	String& getDescriptionStf();
 
-	void setTitleStf(const string& tts);
+	void setTitleStf(const String& tts);
 
-	string& getTitleStf();
+	String& getTitleStf();
 
 	void setRefreshCount(unsigned int trc);
 
@@ -114,12 +114,12 @@ protected:
 
 	virtual ~MissionObject();
 
-	string _return_getDBKey;
-	string _return_getDescriptionStf;
-	string _return_getTitleStf;
-	string _return_getTypeStr;
+	String _return_getDBKey;
+	String _return_getDescriptionStf;
+	String _return_getTitleStf;
+	String _return_getTypeStr;
 
-	unicode _return_getCreatorName;
+	UnicodeString _return_getCreatorName;
 
 	friend class MissionObjectHelper;
 };
@@ -142,9 +142,9 @@ public:
 
 	void sendDestroyTo(Player* player);
 
-	void setDBKey(string& tdbk);
+	void setDBKey(String& tdbk);
 
-	string& getDBKey();
+	String& getDBKey();
 
 	void applyTerminalMask(int tam);
 
@@ -154,9 +154,9 @@ public:
 
 	TangibleObject* getDeliverItem();
 
-	void setTypeStr(const string& tstr);
+	void setTypeStr(const String& tstr);
 
-	string& getTypeStr();
+	String& getTypeStr();
 
 	void setDescKey(int tdk);
 
@@ -182,9 +182,9 @@ public:
 
 	unsigned int getDestPlanetCrc();
 
-	void setCreatorName(const unicode& tcn);
+	void setCreatorName(const UnicodeString& tcn);
 
-	unicode& getCreatorName();
+	UnicodeString& getCreatorName();
 
 	void setReward(unsigned int tr);
 
@@ -206,13 +206,13 @@ public:
 
 	unsigned int getDepictedObjCrc();
 
-	void setDescriptionStf(const string& tds);
+	void setDescriptionStf(const String& tds);
 
-	string& getDescriptionStf();
+	String& getDescriptionStf();
 
-	void setTitleStf(const string& tts);
+	void setTitleStf(const String& tts);
 
-	string& getTitleStf();
+	String& getTitleStf();
 
 	void setRefreshCount(unsigned int trc);
 
@@ -223,11 +223,11 @@ public:
 	unsigned int getTypeCrc();
 
 protected:
-	string _param0_setDBKey__string_;
-	string _param0_setTypeStr__string_;
-	unicode _param0_setCreatorName__unicode_;
-	string _param0_setDescriptionStf__string_;
-	string _param0_setTitleStf__string_;
+	String _param0_setDBKey__String_;
+	String _param0_setTypeStr__String_;
+	UnicodeString _param0_setCreatorName__UnicodeString_;
+	String _param0_setDescriptionStf__String_;
+	String _param0_setTitleStf__String_;
 };
 
 class MissionObjectHelper : public DistributedObjectClassHelper, public Singleton<MissionObjectHelper> {

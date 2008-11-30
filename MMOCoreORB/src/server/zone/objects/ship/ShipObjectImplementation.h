@@ -66,8 +66,8 @@ class ShipObjectImplementation : public ShipObjectServant {
 
 	IntangibleObject* shipBody;
 
-	string stfName;
-	unicode ownerName;
+	String stfName;
+	UnicodeString ownerName;
 
 	int activeComponentListSize;
 
@@ -122,15 +122,15 @@ public:
 		return shipBody;
 	}
 
-	inline void setStfName(const string& Name) {
+	inline void setStfName(const String& Name) {
 		stfName = Name;
 	}
 
-	inline string& getStfName() {
+	inline String& getStfName() {
 		return stfName;
 	}
 
-	inline unicode& getOwnerName() {
+	inline UnicodeString& getOwnerName() {
 		return ownerName;
 	}
 
@@ -141,8 +141,8 @@ public:
 
 	inline void calcActiveComponentListSize() {
 		activeComponentListSize = 0;
-		for(int i = 0; i < componentList.size(); i++) {
-			if(componentList.get(i)->getComponentCrc() != 0) {
+		for (int i = 0; i < componentList.size(); i++) {
+			if (componentList.get(i)->getComponentCrc() != 0) {
 				activeComponentListSize++;
 			}
 		}
@@ -157,7 +157,7 @@ public:
 	void removeComponent(int compId);
 
 	ShipComponent* getComponent(int compId) {
-		if(componentList.get(compId)->getComponentCrc() != 0) {
+		if (componentList.get(compId)->getComponentCrc() != 0) {
 			return componentList.get(compId);
 		} else {
 			return NULL;

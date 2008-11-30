@@ -20,7 +20,7 @@ public:
 
 	bool activate() {
 		//try {
-		//	cout << "TempInstallationSpawnEvent Start" << endl;
+		//	System::out << "TempInstallationSpawnEvent Start" << endl;
 		//	player->wlock();
 
 			inso->insertToZone(zone);

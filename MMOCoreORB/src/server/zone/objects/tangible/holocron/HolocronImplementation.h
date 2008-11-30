@@ -57,7 +57,7 @@ protected:
 	Player* ply;
 	
 public:
-	HolocronImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn) 
+	HolocronImplementation(Player* player, uint32 tempCRC, const UnicodeString& n, const String& tempn) 
 			: HolocronServant(player->getNewItemID(), HOLOCRON) {
 		objectCRC = tempCRC;
 		

@@ -12,7 +12,7 @@
  *	DraftSchematicIngredientStub
  */
 
-DraftSchematicIngredient::DraftSchematicIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, const int slotoption, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, float contribution) {
+DraftSchematicIngredient::DraftSchematicIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int slotoption, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, float contribution) {
 	_impl = new DraftSchematicIngredientImplementation(ingredientTemplateName, ingredientTitleName, slotoption, resourceType, resourceQuantity, combineType, contribution);
 	_impl->_setStub(this);
 }
@@ -42,7 +42,7 @@ void DraftSchematicIngredient::helperSendToPlayer(ObjectControllerMessage* msg) 
 		((DraftSchematicIngredientImplementation*) _impl)->helperSendToPlayer(msg);
 }
 
-string& DraftSchematicIngredient::getTemplateName() {
+String& DraftSchematicIngredient::getTemplateName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -55,7 +55,7 @@ string& DraftSchematicIngredient::getTemplateName() {
 		return ((DraftSchematicIngredientImplementation*) _impl)->getTemplateName();
 }
 
-string& DraftSchematicIngredient::getTitleName() {
+String& DraftSchematicIngredient::getTitleName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -68,7 +68,7 @@ string& DraftSchematicIngredient::getTitleName() {
 		return ((DraftSchematicIngredientImplementation*) _impl)->getTitleName();
 }
 
-string& DraftSchematicIngredient::getResourceType() {
+String& DraftSchematicIngredient::getResourceType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -235,15 +235,15 @@ void DraftSchematicIngredientAdapter::helperSendToPlayer(ObjectControllerMessage
 	return ((DraftSchematicIngredientImplementation*) impl)->helperSendToPlayer(msg);
 }
 
-string& DraftSchematicIngredientAdapter::getTemplateName() {
+String& DraftSchematicIngredientAdapter::getTemplateName() {
 	return ((DraftSchematicIngredientImplementation*) impl)->getTemplateName();
 }
 
-string& DraftSchematicIngredientAdapter::getTitleName() {
+String& DraftSchematicIngredientAdapter::getTitleName() {
 	return ((DraftSchematicIngredientImplementation*) impl)->getTitleName();
 }
 
-string& DraftSchematicIngredientAdapter::getResourceType() {
+String& DraftSchematicIngredientAdapter::getResourceType() {
 	return ((DraftSchematicIngredientImplementation*) impl)->getResourceType();
 }
 

@@ -51,7 +51,7 @@ interface Inventory implements Container {
 		super(unsigned long oid);
 	}
 	
-	TangibleObject getMissionItem(string misKey);
+	TangibleObject getMissionItem(String misKey);
 
 	int getUnequippedItemCount();
 

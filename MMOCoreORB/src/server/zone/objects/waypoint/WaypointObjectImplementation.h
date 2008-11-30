@@ -46,6 +46,7 @@ which carries forward this exception.
 #define WAYPOINTOBJECTIMPLEMENTATION_H_
 
 #include "WaypointObject.h"
+
 #include "../player/Player.h"
 
 #include "../../packets.h"
@@ -53,11 +54,12 @@ which carries forward this exception.
 #include "../terrain/PlanetNames.h"
 
 class WaypointObjectImplementation : public WaypointObjectServant {
-	string name;
-	string internalNote;
-	string planetName;
+	String name;
+	String internalNote;
+	String planetName;
 
 	bool active;
+
 	Player* owner;
 
 public:
@@ -71,9 +73,9 @@ public:
 
 		planetName = Planet::getPlanetName(player->getZoneIndex());
 
-		stringstream name;
+		StringBuffer name;
 		name << "WaypointObject :" << oid;
-		setLoggingName(name.str());
+		setLoggingName(name.toString());
 
 		setLogging(false);
 		setGlobalLogging(true);
@@ -94,31 +96,31 @@ public:
 		return active;
 	}
 
-	inline void setName(const string& Name) {
+	inline void setName(const String& Name) {
 		name = Name;
 	}
 
-	inline void setInternalNote(const string& message) {
+	inline void setInternalNote(const String& message) {
 		internalNote = message;
 	}
 
-	inline void setPlanetName(const string& planet) {
+	inline void setPlanetName(const String& planet) {
 		planetName = planet;
 	}
 
 	uint32 getPlanetCRC() {
-		return String::hashCode(planetName);
+		return planetName.hashCode();
 	}
 
-	inline string& getName() {
+	inline String& getName() {
 		return name;
 	}
 
-	inline string& getInternalNote() {
+	inline String& getInternalNote() {
 		return internalNote;
 	}
 
-	inline string& getPlanetName() {
+	inline String& getPlanetName() {
 		return planetName;
 	}
 

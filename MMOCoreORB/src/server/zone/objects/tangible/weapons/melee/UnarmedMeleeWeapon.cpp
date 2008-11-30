@@ -14,12 +14,12 @@
  *	UnarmedMeleeWeaponStub
  */
 
-UnarmedMeleeWeapon::UnarmedMeleeWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
+UnarmedMeleeWeapon::UnarmedMeleeWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
 	_impl = new UnarmedMeleeWeaponImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-UnarmedMeleeWeapon::UnarmedMeleeWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
+UnarmedMeleeWeapon::UnarmedMeleeWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
 	_impl = new UnarmedMeleeWeaponImplementation(creature, temp, n, tempn, eqp);
 	_impl->_setStub(this);
 }
@@ -83,11 +83,11 @@ DistributedObjectAdapter* UnarmedMeleeWeaponHelper::createAdapter(DistributedObj
  *	UnarmedMeleeWeaponServant
  */
 
-UnarmedMeleeWeaponServant::UnarmedMeleeWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
+UnarmedMeleeWeaponServant::UnarmedMeleeWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp) : MeleeWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
 	_classHelper = UnarmedMeleeWeaponHelper::instance();
 }
 
-UnarmedMeleeWeaponServant::UnarmedMeleeWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
+UnarmedMeleeWeaponServant::UnarmedMeleeWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp) : MeleeWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
 	_classHelper = UnarmedMeleeWeaponHelper::instance();
 }
 

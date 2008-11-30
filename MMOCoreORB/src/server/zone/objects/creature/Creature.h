@@ -79,7 +79,7 @@ public:
 
 	bool isActionCreature();
 
-	string& getName();
+	String& getName();
 
 	int getZoneIndex();
 
@@ -101,17 +101,17 @@ public:
 
 	void setCreatureGroup(CreatureGroup* group);
 
-	void setObjectFileName(const string& name);
+	void setObjectFileName(const String& name);
 
-	string& getObjectFileName();
+	String& getObjectFileName();
 
 	void setType(int tp);
 
 	void setRespawnTimer(unsigned int seconds);
 
-	void removePlayerFromHarvestList(string& firstName);
+	void removePlayerFromHarvestList(String& firstName);
 
-	bool canHarvest(string& firstName);
+	bool canHarvest(String& firstName);
 
 	bool beenLooted();
 
@@ -130,8 +130,8 @@ protected:
 
 	virtual ~Creature();
 
-	string _return_getName;
-	string _return_getObjectFileName;
+	String _return_getName;
+	String _return_getObjectFileName;
 
 	friend class CreatureHelper;
 };
@@ -196,7 +196,7 @@ public:
 
 	bool isActionCreature();
 
-	string& getName();
+	String& getName();
 
 	int getZoneIndex();
 
@@ -216,17 +216,17 @@ public:
 
 	void setCreatureGroup(CreatureGroup* group);
 
-	void setObjectFileName(const string& name);
+	void setObjectFileName(const String& name);
 
-	string& getObjectFileName();
+	String& getObjectFileName();
 
 	void setType(int tp);
 
 	void setRespawnTimer(unsigned int seconds);
 
-	void removePlayerFromHarvestList(string& firstName);
+	void removePlayerFromHarvestList(String& firstName);
 
-	bool canHarvest(string& firstName);
+	bool canHarvest(String& firstName);
 
 	bool beenLooted();
 
@@ -241,9 +241,9 @@ public:
 	void setFPValue(unsigned int value);
 
 protected:
-	string _param0_setObjectFileName__string_;
-	string _param0_removePlayerFromHarvestList__string_;
-	string _param0_canHarvest__string_;
+	String _param0_setObjectFileName__String_;
+	String _param0_removePlayerFromHarvestList__String_;
+	String _param0_canHarvest__String_;
 };
 
 class CreatureHelper : public DistributedObjectClassHelper, public Singleton<CreatureHelper> {

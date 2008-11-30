@@ -71,7 +71,7 @@ void Action::execAction(Player* player) {
 		((ActionImplementation*) _impl)->execAction(player);
 }
 
-void Action::addConvoScreen(string& screenID, string& leftBoxText, int numOptions, string& Options, string& optLinks) {
+void Action::addConvoScreen(String& screenID, String& leftBoxText, int numOptions, String& Options, String& optLinks) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -109,7 +109,7 @@ Packet* ActionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		execAction((Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		addConvoScreen(inv->getAsciiParameter(_param0_addConvoScreen__string_string_int_string_string_), inv->getAsciiParameter(_param1_addConvoScreen__string_string_int_string_string_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addConvoScreen__string_string_int_string_string_), inv->getAsciiParameter(_param4_addConvoScreen__string_string_int_string_string_));
+		addConvoScreen(inv->getAsciiParameter(_param0_addConvoScreen__String_String_int_String_String_), inv->getAsciiParameter(_param1_addConvoScreen__String_String_int_String_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addConvoScreen__String_String_int_String_String_), inv->getAsciiParameter(_param4_addConvoScreen__String_String_int_String_String_));
 		break;
 	default:
 		return NULL;
@@ -130,7 +130,7 @@ void ActionAdapter::execAction(Player* player) {
 	return ((ActionImplementation*) impl)->execAction(player);
 }
 
-void ActionAdapter::addConvoScreen(string& screenID, string& leftBoxText, int numOptions, string& Options, string& optLinks) {
+void ActionAdapter::addConvoScreen(String& screenID, String& leftBoxText, int numOptions, String& Options, String& optLinks) {
 	return ((ActionImplementation*) impl)->addConvoScreen(screenID, leftBoxText, numOptions, Options, optLinks);
 }
 

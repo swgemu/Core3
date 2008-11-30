@@ -62,7 +62,7 @@ public:
 
 	~PlayerSaveStateEvent() {
 		if (enQueued) {
-			cout << "ERROR: PlayerSaveStateEvent scheduled event deleted\n";
+			System::out << "ERROR: PlayerSaveStateEvent scheduled event deleted\n";
 			raise(SIGSEGV);
 		}
 	}

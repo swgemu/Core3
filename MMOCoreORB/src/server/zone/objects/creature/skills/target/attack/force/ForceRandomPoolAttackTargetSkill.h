@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class ForceRandomPoolAttackTargetSkill : public RandomPoolAttackTargetSkill {
 public:
-	ForceRandomPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : RandomPoolAttackTargetSkill(name, anim, serv) {
+	ForceRandomPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : RandomPoolAttackTargetSkill(name, anim, serv) {
 	}
 
 	bool calculateCost(CreatureObject* creature) {

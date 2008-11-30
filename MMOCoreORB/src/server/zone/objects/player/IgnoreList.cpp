@@ -52,7 +52,7 @@ int IgnoreList::getMagicNumber() {
 		return ((IgnoreListImplementation*) _impl)->getMagicNumber();
 }
 
-string& IgnoreList::getIgnoreName(const int i) {
+String& IgnoreList::getIgnoreName(const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -66,7 +66,7 @@ string& IgnoreList::getIgnoreName(const int i) {
 		return ((IgnoreListImplementation*) _impl)->getIgnoreName(i);
 }
 
-string& IgnoreList::getIgnoreServer(const int i) {
+String& IgnoreList::getIgnoreServer(const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -80,7 +80,7 @@ string& IgnoreList::getIgnoreServer(const int i) {
 		return ((IgnoreListImplementation*) _impl)->getIgnoreServer(i);
 }
 
-void IgnoreList::addIgnore(string& name, string& inServer) {
+void IgnoreList::addIgnore(String& name, String& inServer) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -106,7 +106,7 @@ void IgnoreList::ignoreMagicNumberReset() {
 		((IgnoreListImplementation*) _impl)->ignoreMagicNumberReset();
 }
 
-void IgnoreList::removeIgnore(string& name) {
+void IgnoreList::removeIgnore(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -179,13 +179,13 @@ Packet* IgnoreListAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getIgnoreServer(inv->getSignedIntParameter()));
 		break;
 	case 10:
-		addIgnore(inv->getAsciiParameter(_param0_addIgnore__string_string_), inv->getAsciiParameter(_param1_addIgnore__string_string_));
+		addIgnore(inv->getAsciiParameter(_param0_addIgnore__String_String_), inv->getAsciiParameter(_param1_addIgnore__String_String_));
 		break;
 	case 11:
 		ignoreMagicNumberReset();
 		break;
 	case 12:
-		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__string_));
+		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__String_));
 		break;
 	case 13:
 		saveIgnore();
@@ -211,15 +211,15 @@ int IgnoreListAdapter::getMagicNumber() {
 	return ((IgnoreListImplementation*) impl)->getMagicNumber();
 }
 
-string& IgnoreListAdapter::getIgnoreName(const int i) {
+String& IgnoreListAdapter::getIgnoreName(const int i) {
 	return ((IgnoreListImplementation*) impl)->getIgnoreName(i);
 }
 
-string& IgnoreListAdapter::getIgnoreServer(const int i) {
+String& IgnoreListAdapter::getIgnoreServer(const int i) {
 	return ((IgnoreListImplementation*) impl)->getIgnoreServer(i);
 }
 
-void IgnoreListAdapter::addIgnore(string& name, string& inServer) {
+void IgnoreListAdapter::addIgnore(String& name, String& inServer) {
 	return ((IgnoreListImplementation*) impl)->addIgnore(name, inServer);
 }
 
@@ -227,7 +227,7 @@ void IgnoreListAdapter::ignoreMagicNumberReset() {
 	return ((IgnoreListImplementation*) impl)->ignoreMagicNumberReset();
 }
 
-void IgnoreListAdapter::removeIgnore(string& name) {
+void IgnoreListAdapter::removeIgnore(String& name) {
 	return ((IgnoreListImplementation*) impl)->removeIgnore(name);
 }
 

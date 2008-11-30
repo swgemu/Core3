@@ -10,11 +10,11 @@ import "Pharmaceutical";
 
 interface EnhancePack implements Pharmaceutical {
 	
-	EnhancePack(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+	EnhancePack(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int mptype);
 	}
 	
-	EnhancePack(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+	EnhancePack(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int mptype);
 	}
 	

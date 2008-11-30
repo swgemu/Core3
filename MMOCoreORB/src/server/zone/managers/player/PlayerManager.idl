@@ -64,9 +64,9 @@ interface PlayerManager {
 	void stop();
 
 	boolean create(Player player, unsigned int sessionkey);
-	boolean validateName(string name);
+	boolean validateName(String name);
 
-	BaseMessage checkPlayerName(const string name, const string species);
+	BaseMessage checkPlayerName(const String name, const String species);
 	BaseMessage attemptPlayerCreation(Player player, ZoneClientSession client);
 
 	Player load(unsigned long charid);
@@ -85,8 +85,8 @@ interface PlayerManager {
 
 	void doBankTip(Player sender, Player receiver, int tipAmount, boolean updateTipTo);
 	void doCashTip(Player sender, Player receiver, int tipAmount, boolean updateTipTo);
-	boolean modifyOfflineBank(Player sender, string receiverName, int creditAmount);
-	boolean modifyRecipientOfflineBank(string recipient, int creditAmount);
+	boolean modifyOfflineBank(Player sender, String receiverName, int creditAmount);
+	boolean modifyRecipientOfflineBank(String recipient, int creditAmount);
 	void updatePlayerCreditsFromDatabase(Player player);
 	void updatePlayerCreditsToDatabase(Player player);
 
@@ -101,7 +101,7 @@ interface PlayerManager {
 
 	Player putPlayer(Player player);
 
-	Player getPlayer(string name);
+	Player getPlayer(String name);
 
 	GuildManager getGuildManager();
 

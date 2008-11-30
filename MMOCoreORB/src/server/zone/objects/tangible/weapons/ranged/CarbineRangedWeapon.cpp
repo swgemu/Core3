@@ -14,12 +14,12 @@
  *	CarbineRangedWeaponStub
  */
 
-CarbineRangedWeapon::CarbineRangedWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
+CarbineRangedWeapon::CarbineRangedWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
 	_impl = new CarbineRangedWeaponImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-CarbineRangedWeapon::CarbineRangedWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
+CarbineRangedWeapon::CarbineRangedWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
 	_impl = new CarbineRangedWeaponImplementation(creature, temp, n, tempn, eqp);
 	_impl->_setStub(this);
 }
@@ -83,11 +83,11 @@ DistributedObjectAdapter* CarbineRangedWeaponHelper::createAdapter(DistributedOb
  *	CarbineRangedWeaponServant
  */
 
-CarbineRangedWeaponServant::CarbineRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp) : RangedWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
+CarbineRangedWeaponServant::CarbineRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp) : RangedWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
 	_classHelper = CarbineRangedWeaponHelper::instance();
 }
 
-CarbineRangedWeaponServant::CarbineRangedWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : RangedWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
+CarbineRangedWeaponServant::CarbineRangedWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp) : RangedWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
 	_classHelper = CarbineRangedWeaponHelper::instance();
 }
 

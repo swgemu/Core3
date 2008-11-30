@@ -15,7 +15,7 @@ class CreatureObject;
 
 class VehicleDeedImplementation : public VehicleDeedServant {
 protected:
-	string vehicleFile;
+	String vehicleFile;
 	int hitPoints;
 public:
 	static const int ORE = 1;
@@ -27,8 +27,8 @@ public:
 
 public:
 
-	VehicleDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn);
-	VehicleDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
+	VehicleDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn);
+	VehicleDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn);
 	~VehicleDeedImplementation();
 
 	void init();
@@ -45,7 +45,7 @@ public:
 
 	void setHitPoints(int hp){
 		hitPoints = hp;
-		string name = "hit_points"; //obj_attr_n.stf
+		String name = "hit_points"; //obj_attr_n.stf
 		itemAttributes->setFloatAttribute(name, hp);
 	}
 

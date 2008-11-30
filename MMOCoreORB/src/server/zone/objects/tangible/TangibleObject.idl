@@ -59,11 +59,11 @@ import "../draftschematic/DraftSchematic";
 interface TangibleObject implements SceneObject {
 	TangibleObject(unsigned long oid, int tp = 0);
 	
-	TangibleObject(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempname, int tp = 0) {
+	TangibleObject(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempname, int tp = 0) {
 		super(oid, int type);
 	}
 
-	TangibleObject(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempname, int tp = 0);
+	TangibleObject(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempname, int tp = 0);
 
 	void generateAttributes(Player player);
 
@@ -123,14 +123,14 @@ interface TangibleObject implements SceneObject {
 	
 	boolean isLoot();
 
-	void setCraftersName(string n);
-	void setCraftedSerial(string s);
+	void setCraftersName(String n);
+	void setCraftedSerial(String s);
 	SceneObject getContainer();
 
-	unicode getName();
-	string getTemplateName();
-	string getTemplateTypeName();
-	void getCustomizationString(string appearance);
+	UnicodeString getName();
+	String getTemplateName();
+	String getTemplateTypeName();
+	void getCustomizationString(String appearance);
 
 	void setPlayerUseMask(unsigned int mask);
 	unsigned int getPlayerUseMask();
@@ -145,24 +145,24 @@ interface TangibleObject implements SceneObject {
 	int getMaxCondition();
 	int getCondition();
 
-	string getCraftersName();
-	string getCraftedSerial();
+	String getCraftersName();
+	String getCraftedSerial();
 	
-	void setAttributes(string attributestring);
-	string getAttributes();
+	void setAttributes(String attributeString);
+	String getAttributes();
 	
 	void addAttributes(AttributeListMessage alm);
 	
-	string getMisoAsocKey();
+	String getMisoAsocKey();
 
 	// setters
-	void setName(const string n);
-	void setName(const unicode n);
+	void setName(const String n);
+	void setName(const UnicodeString n);
 
 	void setLoot(boolean l);
 	
-	void setTemplateName(const string tempName);
-	void setTemplateTypeName(const string tempTypeName);	
+	void setTemplateName(const String tempName);
+	void setTemplateTypeName(const String tempTypeName);	
 
 	void setObjectSubType(const int type);
 	
@@ -172,12 +172,12 @@ interface TangibleObject implements SceneObject {
 
 	void setConditionDamage(int damage);
 	
-	void setCustomizationString(string cust);
+	void setCustomizationString(String cust);
 	
-	void setCustomizationVariable(const string type, unsigned int value);
+	void setCustomizationVariable(const String type, unsigned int value);
 	void setCustomizationVariable(unsigned char type, unsigned int value);
 
 	void setObjectCount(const int count);
 	
-	void setMisoAsocKey(const string tma);
+	void setMisoAsocKey(const String tma);
 }

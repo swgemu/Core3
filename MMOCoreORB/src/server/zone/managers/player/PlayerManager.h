@@ -31,9 +31,9 @@ public:
 
 	bool create(Player* player, unsigned int sessionkey);
 
-	bool validateName(string& name);
+	bool validateName(String& name);
 
-	BaseMessage* checkPlayerName(const string& name, const string& species);
+	BaseMessage* checkPlayerName(const String& name, const String& species);
 
 	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);
 
@@ -61,9 +61,9 @@ public:
 
 	void doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 
-	bool modifyOfflineBank(Player* sender, string& receiverName, int creditAmount);
+	bool modifyOfflineBank(Player* sender, String& receiverName, int creditAmount);
 
-	bool modifyRecipientOfflineBank(string& recipient, int creditAmount);
+	bool modifyRecipientOfflineBank(String& recipient, int creditAmount);
 
 	void updatePlayerCreditsFromDatabase(Player* player);
 
@@ -81,7 +81,7 @@ public:
 
 	Player* putPlayer(Player* player);
 
-	Player* getPlayer(string& name);
+	Player* getPlayer(String& name);
 
 	GuildManager* getGuildManager();
 
@@ -107,9 +107,9 @@ public:
 
 	bool create(Player* player, unsigned int sessionkey);
 
-	bool validateName(string& name);
+	bool validateName(String& name);
 
-	BaseMessage* checkPlayerName(const string& name, const string& species);
+	BaseMessage* checkPlayerName(const String& name, const String& species);
 
 	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);
 
@@ -137,9 +137,9 @@ public:
 
 	void doCashTip(Player* sender, Player* receiver, int tipAmount, bool updateTipTo);
 
-	bool modifyOfflineBank(Player* sender, string& receiverName, int creditAmount);
+	bool modifyOfflineBank(Player* sender, String& receiverName, int creditAmount);
 
-	bool modifyRecipientOfflineBank(string& recipient, int creditAmount);
+	bool modifyRecipientOfflineBank(String& recipient, int creditAmount);
 
 	void updatePlayerCreditsFromDatabase(Player* player);
 
@@ -157,19 +157,19 @@ public:
 
 	Player* putPlayer(Player* player);
 
-	Player* getPlayer(string& name);
+	Player* getPlayer(String& name);
 
 	GuildManager* getGuildManager();
 
 	PlayerMap* getPlayerMap();
 
 protected:
-	string _param0_validateName__string_;
-	string _param0_checkPlayerName__string_string_;
-	string _param1_checkPlayerName__string_string_;
-	string _param1_modifyOfflineBank__Player_string_int_;
-	string _param0_modifyRecipientOfflineBank__string_int_;
-	string _param0_getPlayer__string_;
+	String _param0_validateName__String_;
+	String _param0_checkPlayerName__String_String_;
+	String _param1_checkPlayerName__String_String_;
+	String _param1_modifyOfflineBank__Player_String_int_;
+	String _param0_modifyRecipientOfflineBank__String_int_;
+	String _param0_getPlayer__String_;
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {

@@ -37,21 +37,21 @@ public:
 
 	int getCellNumber();
 
-	void setAttributes(string& attributestring);
+	void setAttributes(String& attributeString);
 
-	string& getAttributes();
+	String& getAttributes();
 
 	void parseItemAttributes();
 
-	string& getTemplateName();
+	String& getTemplateName();
 
 protected:
 	CellObject(DummyConstructorParameter* param);
 
 	virtual ~CellObject();
 
-	string _return_getAttributes;
-	string _return_getTemplateName;
+	String _return_getAttributes;
+	String _return_getTemplateName;
 
 	friend class CellObjectHelper;
 };
@@ -76,16 +76,16 @@ public:
 
 	int getCellNumber();
 
-	void setAttributes(string& attributestring);
+	void setAttributes(String& attributeString);
 
-	string& getAttributes();
+	String& getAttributes();
 
 	void parseItemAttributes();
 
-	string& getTemplateName();
+	String& getTemplateName();
 
 protected:
-	string _param0_setAttributes__string_;
+	String _param0_setAttributes__String_;
 };
 
 class CellObjectHelper : public DistributedObjectClassHelper, public Singleton<CellObjectHelper> {

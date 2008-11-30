@@ -55,8 +55,8 @@ which carries forward this exception.
 class ZoneProcessServerImplementation;
 
 class ImageDesignCustomization {
-	string speciesGender;
-	string customizationName;
+	String speciesGender;
+	String customizationName;
 	CreatureObject *creatureObject;
 	
 	CustomizationData* customization;
@@ -65,9 +65,9 @@ public:
 
 	ImageDesignCustomization(ZoneProcessServerImplementation* serv, CreatureObject* creo);
 
-	void updateCustomization(string customizationName, float value);
+	void updateCustomization(String customizationName, float value);
 
-	void updateCustomization(string customizationName, uint32 value);
+	void updateCustomization(String customizationName, uint32 value);
 };
 
 #endif /*IMAGEDESIGNCUSTOMIZATION_H_*/

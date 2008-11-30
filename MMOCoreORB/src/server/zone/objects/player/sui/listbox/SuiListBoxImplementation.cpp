@@ -119,7 +119,7 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 
 	switch(type) {
 	case HANDLESTATUSUI:
-		if(!backButton)
+		if (!backButton)
 			msg->insertOption(3, "@cancel", "btnCancel", "Text");
 		else
 			msg->insertOption(3, "@back", "btnCancel", "Text");
@@ -132,7 +132,7 @@ BaseMessage* SuiListBoxImplementation::generateMessage() {
 	default:
 		if (cancelButton)
 			msg->insertOption(3, "@cancel", "btnCancel", "Text");
-		else if(backButton)
+		else if (backButton)
 			msg->insertOption(3, "@back", "btnCancel", "Text");
 		else {
 			msg->insertOption(3, "False", "btnCancel", "Enabled");

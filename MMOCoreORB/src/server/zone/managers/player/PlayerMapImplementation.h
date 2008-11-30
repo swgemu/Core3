@@ -51,23 +51,22 @@ which carries forward this exception.
 
 #include "../../objects/player/Player.h"
 
-class PlayerMapImplementation : public PlayerMapServant, private HashTable<string, Player*>, private HashTableIterator<string, Player*>, public Mutex {
-	int hash(const string& key) {
-        return String::hashCode(key);
+class PlayerMapImplementation : public PlayerMapServant, private HashTable<String, Player*>, private HashTableIterator<String, Player*>, public Mutex {
+	int hash(const String& key) {
+        return key.hashCode();
 	}
 
 public:
-	PlayerMapImplementation(int initsize) : PlayerMapServant(), HashTable<string, Player*>(initsize), HashTableIterator<string, Player*>(this), Mutex("PlayerMap") {
+	PlayerMapImplementation(int initsize) : PlayerMapServant(), HashTable<String, Player*>(initsize), HashTableIterator<String, Player*>(this), Mutex("PlayerMap") {
 		setNullValue(NULL);
 	}
 
-	Player* put(string name, Player* player, bool doLock = true) {
+	Player* put(String name, Player* player, bool doLock = true) {
 		Player* play = NULL;
-		String::toLower(name);
 
 		lock(doLock);
 
-		play = HashTable<string, Player*>::put(name, player);
+		play = HashTable<String, Player*>::put(name.toLowerCase(), player);
 
 		if (play == NULL)
 			player->acquire();
@@ -77,26 +76,24 @@ public:
 		return play;
 	}
 
-	Player* get(string name, bool doLock = true) {
+	Player* get(String name, bool doLock = true) {
 		Player* player = NULL;
-		String::toLower(name);
 
 		lock(doLock);
 
-		player = HashTable<string, Player*>::get(name);
+		player = HashTable<String, Player*>::get(name.toLowerCase());
 
 		unlock(doLock);
 
 		return player;
 	}
 
-	Player* remove(string name, bool doLock = true) {
+	Player* remove(String name, bool doLock = true) {
 		Player* player = NULL;
-		String::toLower(name);
 
 		lock(doLock);
 
-		player = HashTable<string, Player*>::remove(name);
+		player = HashTable<String, Player*>::remove(name.toLowerCase());
 
 		if (player != NULL)
 			player->release();
@@ -111,7 +108,7 @@ public:
 
 		lock(doLock);
 
-		player = HashTableIterator<string, Player*>::getNextValue();
+		player = HashTableIterator<String, Player*>::getNextValue();
 
 		unlock(doLock);
 
@@ -127,7 +124,7 @@ public:
 
 		lock(doLock);
 
-		res = HashTableIterator<string, Player*>::hasNext();
+		res = HashTableIterator<String, Player*>::hasNext();
 
 		unlock(doLock);
 
@@ -137,7 +134,7 @@ public:
 	void resetIterator(bool doLock = true) {
 		lock(doLock);
 
-		HashTableIterator<string, Player*>::resetIterator();
+		HashTableIterator<String, Player*>::resetIterator();
 
 		unlock(doLock);
 	}
@@ -145,7 +142,7 @@ public:
 	int size(bool doLock = true) {
 		lock(doLock);
 
-		int res = HashTable<string, Player*>::size();
+		int res = HashTable<String, Player*>::size();
 
 		unlock(doLock);
 

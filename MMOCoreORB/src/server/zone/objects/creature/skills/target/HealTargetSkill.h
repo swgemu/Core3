@@ -67,10 +67,10 @@ protected:
 	bool healBleeding;
 	bool healFire;
 
-	string effectName;
+	String effectName;
 
 public:
-	HealTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
+	HealTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 
 		speed = 0.0f;
@@ -91,7 +91,7 @@ public:
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* targetCreature) {
-		if (effectName.size() != 0)
+		if (!effectName.isEmpty())
 			targetCreature->playEffect(effectName, "");
 
 		if (creature == targetCreature)
@@ -100,23 +100,27 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
-		if(target->isNonPlayerCreature() || target->isPlayer()) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
+		if (target->isNonPlayerCreature() || target->isPlayer()) {
 			CreatureObject* targetCreature = (CreatureObject*)target;
+
 			calculateHeal(creature, targetCreature);
+
 			doAnimations(creature, targetCreature);
-		} else if(target->isAttackableObject() && creature->isPlayer()) {
+		} else if (target->isAttackableObject() && creature->isPlayer()) {
 			CreatureObject* targetCreature = creature;
+
 			calculateHeal(creature, targetCreature);
+
 			doAnimations(creature, targetCreature);
 		}
+
 		// TODO: Creatures need to be able to heal lairs
 		return 0;
 	}
 
 	void calculateHeal(CreatureObject* creature, CreatureObject* targetCreature) {
 		if (healHealth || healAction || healMind) {
-
 			float medicineUse = (float)creature->getSkillMod("healing_ability");
 
 			float creatureRatio = 1.0f - creature->calculateBFRatio();
@@ -213,7 +217,7 @@ public:
 		healBleeding = doheal;
 	}
 
-	void setEffectName(const string& name) {
+	void setEffectName(const String& name) {
 		effectName = name;
 	}
 

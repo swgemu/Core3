@@ -56,8 +56,8 @@ which carries forward this exception.
 
 #include "../../../packets.h"
 
-TicketCollectorImplementation::TicketCollectorImplementation(ShuttleCreature* shutle, uint64 objid, const unicode& n,
-		const string& tempn, float x, float z, float y) :
+TicketCollectorImplementation::TicketCollectorImplementation(ShuttleCreature* shutle, uint64 objid, const UnicodeString& n,
+		const String& tempn, float x, float z, float y) :
 	TicketCollectorServant(objid, TICKETCOLLECTOR) {
 	objectCRC = 0xFCF0B40D;
 
@@ -70,9 +70,9 @@ TicketCollectorImplementation::TicketCollectorImplementation(ShuttleCreature* sh
 
 	shuttle = shutle;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "TicketCollector = 0x" << objid;
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -92,8 +92,8 @@ int TicketCollectorImplementation::useObject(Player* player) {
 	if (!checkTime(shuttle, player))
 		return 0;
 
-	string city = shuttle->getCity();
-	string planet = shuttle->getPlanet();
+	String city = shuttle->getCity();
+	String planet = shuttle->getPlanet();
 
 	Inventory* inventory = player->getInventory();
 
@@ -114,10 +114,10 @@ int TicketCollectorImplementation::useObject(Player* player) {
 			Ticket* ticket = (Ticket*) item;
 
 			if (ticket->getDeparturePoint() == shuttle->getCity()) {
-				stringstream line;
+				StringBuffer line;
 				line << ticket->getArrivalPlanet() << " - " << ticket->getArrivalPoint();
 
-				sui->addMenuItem(line.str(), ticket->getObjectID());
+				sui->addMenuItem(line.toString(), ticket->getObjectID());
 			}
 		}
 	}
@@ -142,21 +142,21 @@ bool TicketCollectorImplementation::checkTime(ShuttleCreature* shuttle, Player* 
 		int seconds = (landTime % 60);
 
 		if (min > 0) {
-			stringstream arrivalTime;
+			StringBuffer arrivalTime;
 			arrivalTime << "The next shuttle will be ready to board in " << min << " minutes and " << seconds << " seconds";
-			player->sendSystemMessage(arrivalTime.str());
+			player->sendSystemMessage(arrivalTime.toString());
 		} else {
-			stringstream arrivalTime;
+			StringBuffer arrivalTime;
 			arrivalTime << "The next shuttle will be ready to board in " << seconds << " seconds";
-			player->sendSystemMessage(arrivalTime.str());
+			player->sendSystemMessage(arrivalTime.toString());
 
 		}
 
 		return false;
 	} else if (landTime > -20) {
-		stringstream arrivalTime;
+		StringBuffer arrivalTime;
 		arrivalTime << "The next shuttle is about to begin boarding";
-		player->sendSystemMessage(arrivalTime.str());
+		player->sendSystemMessage(arrivalTime.toString());
 
 		return false;
 	}
@@ -178,8 +178,8 @@ void TicketCollectorImplementation::useTicket(Player* player, Ticket* ticket) {
 	if (!checkTime(shuttle, player))
 		return;
 
-	string city = shuttle->getCity();
-	string planet = shuttle->getPlanet();
+	String city = shuttle->getCity();
+	String planet = shuttle->getPlanet();
 
 	if ((ticket->getDeparturePoint() == city) &&  (ticket->getDeparturePlanet() == planet)) {
 		player->removeInventoryItem(ticket->getObjectID());

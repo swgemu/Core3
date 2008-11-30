@@ -52,12 +52,12 @@ protected:
 	int forceCost;
 	
 public:
-	JediWeaponImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, int tp, bool eqp = false) 
+	JediWeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: JediWeaponServant(objid, tempCRC, n, tempn, eqp, tp, JEDI) {
 		initialize();
 	}
 
-	JediWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp = false) 
+	JediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: JediWeaponServant(creature, temp, n, tempn, eqp, tp, JEDI) {
 		initialize();
 	}
@@ -75,7 +75,7 @@ public:
 	
 	void setForceCost(int fcost) {
 		forceCost = fcost;
-		string name = "forceCost";
+		String name = "forceCost";
 		itemAttributes->setIntAttribute(name, fcost);
 	}
 };

@@ -23,7 +23,7 @@ Powerup::Powerup(unsigned long long oid) : TangibleObject(DummyConstructorParame
 	_impl->_setStub(this);
 }
 
-Powerup::Powerup(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+Powerup::Powerup(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new PowerupImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }

@@ -54,8 +54,8 @@ protected:
 	uint64 state;
 
 public:
-	StatePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	StatePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	StatePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	StatePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	void initialize();
 
@@ -70,7 +70,7 @@ public:
 
 	inline void setState(uint64 value) {
 		state = value;
-		string attr = "state";
+		String attr = "state";
 		itemAttributes->setUnsignedLongAttribute(attr, state);
 	}
 

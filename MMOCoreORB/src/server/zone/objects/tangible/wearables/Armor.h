@@ -19,9 +19,9 @@ class Wearable;
 
 class Armor : public Wearable {
 public:
-	Armor(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	Armor(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
-	Armor(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	Armor(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -355,8 +355,8 @@ public:
 	Armor* _this;
 
 public:
-	ArmorServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp);
-	ArmorServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp);
+	ArmorServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp);
+	ArmorServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp);
 	virtual ~ArmorServant();
 
 	void _setStub(DistributedObjectStub* stub);

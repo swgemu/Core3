@@ -49,12 +49,12 @@ which carries forward this exception.
 
 class ClientRandomNameReponse : public BaseMessage {
 public:
-	ClientRandomNameReponse(string race_iff, string name) : BaseMessage() {
-		unicode unicode_name = unicode(name);
+	ClientRandomNameReponse(String race_iff, String name) : BaseMessage() {
+		UnicodeString UnicodeString_name = UnicodeString(name);
 		insertShort(0x04);
 		insertInt(0xE85FB868); //opcode: ClientRandomNameReponse
 		insertAscii(race_iff);
-		insertUnicode(unicode_name); //Insert a randomly generated name here, dont need to do that now..
+		insertUnicode(UnicodeString_name); //Insert a randomly generated name here, dont need to do that now..
 		insertAscii("ui", 0x02); //STF file to use loading the desciption for Approval_Type. Pretty much static unless we really need a custom approval_type message
 		insertInt(0x00); //spacer
 		insertAscii("name_approved", 0x0D); //needed for the generated name to display.

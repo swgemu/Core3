@@ -51,17 +51,17 @@ class Player;
 
 class TicketImplementation : public TicketServant {
 protected:
-	string departurePlanet;
-	string departurePoint;
-	string arrivalPlanet;
-	string arrivalPoint;
+	String departurePlanet;
+	String departurePoint;
+	String arrivalPlanet;
+	String arrivalPoint;
 	Player* ply;
 	
 public:
-	TicketImplementation(Player* player, uint32 tempCRC, const unicode& n, const string& tempn, 
-			const string& dpPlanet, const string& dpPoint, const string& arPlanet, const string& arPoint);
+	TicketImplementation(Player* player, uint32 tempCRC, const UnicodeString& n, const String& tempn, 
+			const String& dpPlanet, const String& dpPoint, const String& arPlanet, const String& arPoint);
 	
-	TicketImplementation(uint64 objectid, uint32 tempCRC, const unicode& n, const string& tempn);
+	TicketImplementation(uint64 objectid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 	
 	void parseItemAttributes();
 
@@ -71,19 +71,19 @@ public:
 	
 	void addAttributes(AttributeListMessage* alm);
 	
-	inline string& getDeparturePlanet() {
+	inline String& getDeparturePlanet() {
 		return departurePlanet;
 	}
 	
-	inline string& getDeparturePoint() {
+	inline String& getDeparturePoint() {
 		return departurePoint;
 	}
 	
-	inline string& getArrivalPlanet() {
+	inline String& getArrivalPlanet() {
 		return arrivalPlanet;
 	}
 	
-	inline string& getArrivalPoint() {
+	inline String& getArrivalPoint() {
 		return arrivalPoint;
 	}
 	

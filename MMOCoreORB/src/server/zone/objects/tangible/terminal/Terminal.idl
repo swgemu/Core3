@@ -49,7 +49,7 @@ import "../../player/Player";
 import "../TangibleObject";
 
 interface Terminal implements TangibleObject {
-	Terminal(unsigned int objCRC, unsigned long oid, const unicode n, const string tempn, 
+	Terminal(unsigned int objCRC, unsigned long oid, const UnicodeString n, const String tempn, 
 			float x, float z, float y, int TerminalType) {
 		super(oid, int tp);
 	}

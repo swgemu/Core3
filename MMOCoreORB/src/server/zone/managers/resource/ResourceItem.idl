@@ -46,13 +46,13 @@ import "ResourceItem";
 
 interface ResourceItem : implements ManagedObject {
 	ResourceItem();
-	ResourceItem(unsigned long oid, unsigned long sid, unsigned long expire, string n, string t, int d);
+	ResourceItem(unsigned long oid, unsigned long sid, unsigned long expire, String n, String t, int d);
 	
 	unsigned long getObjectID();
 	unsigned long getSpawnID();
 	unsigned long getSpawnExpireTimestamp();
-	string getName();
-	string getType();
+	String getName();
+	String getType();
 	int getDensity();
 }
 	

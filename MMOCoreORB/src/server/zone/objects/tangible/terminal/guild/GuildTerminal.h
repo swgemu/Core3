@@ -63,7 +63,7 @@ public:
 	GuildTerminal* _this;
 
 public:
-	GuildTerminalServant(unsigned int objCRC, unsigned long long objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType);
+	GuildTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
 	virtual ~GuildTerminalServant();
 
 	void _setStub(DistributedObjectStub* stub);

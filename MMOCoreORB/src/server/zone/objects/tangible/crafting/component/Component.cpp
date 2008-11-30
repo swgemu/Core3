@@ -20,12 +20,12 @@
  *	ComponentStub
  */
 
-Component::Component(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+Component::Component(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new ComponentImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-Component::Component(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+Component::Component(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new ComponentImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -108,7 +108,7 @@ Component* Component::cloneComponent(Component* component, unsigned long long oi
 		return ((ComponentImplementation*) _impl)->cloneComponent(component, oid);
 }
 
-float Component::getAttributeValue(string& attributeName) {
+float Component::getAttributeValue(String& attributeName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +121,7 @@ float Component::getAttributeValue(string& attributeName) {
 		return ((ComponentImplementation*) _impl)->getAttributeValue(attributeName);
 }
 
-int Component::getAttributePrecision(string& attributeName) {
+int Component::getAttributePrecision(String& attributeName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -134,7 +134,7 @@ int Component::getAttributePrecision(string& attributeName) {
 		return ((ComponentImplementation*) _impl)->getAttributePrecision(attributeName);
 }
 
-string& Component::getAttributeTitle(string& attributeName) {
+String& Component::getAttributeTitle(String& attributeName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -148,7 +148,7 @@ string& Component::getAttributeTitle(string& attributeName) {
 		return ((ComponentImplementation*) _impl)->getAttributeTitle(attributeName);
 }
 
-bool Component::hasProperty(string& attributeName) {
+bool Component::hasProperty(String& attributeName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -161,7 +161,7 @@ bool Component::hasProperty(string& attributeName) {
 		return ((ComponentImplementation*) _impl)->hasProperty(attributeName);
 }
 
-void Component::addProperty(string& attribute, float value, int precision, string& title) {
+void Component::addProperty(String& attribute, float value, int precision, String& title) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -189,7 +189,7 @@ int Component::getPropertyCount() {
 		return ((ComponentImplementation*) _impl)->getPropertyCount();
 }
 
-string& Component::getProperty(const int j) {
+String& Component::getProperty(const int j) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -230,19 +230,19 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(cloneComponent((Component*) inv->getObjectParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 11:
-		resp->insertFloat(getAttributeValue(inv->getAsciiParameter(_param0_getAttributeValue__string_)));
+		resp->insertFloat(getAttributeValue(inv->getAsciiParameter(_param0_getAttributeValue__String_)));
 		break;
 	case 12:
-		resp->insertSignedInt(getAttributePrecision(inv->getAsciiParameter(_param0_getAttributePrecision__string_)));
+		resp->insertSignedInt(getAttributePrecision(inv->getAsciiParameter(_param0_getAttributePrecision__String_)));
 		break;
 	case 13:
-		resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(_param0_getAttributeTitle__string_)));
+		resp->insertAscii(getAttributeTitle(inv->getAsciiParameter(_param0_getAttributeTitle__String_)));
 		break;
 	case 14:
-		resp->insertBoolean(hasProperty(inv->getAsciiParameter(_param0_hasProperty__string_)));
+		resp->insertBoolean(hasProperty(inv->getAsciiParameter(_param0_hasProperty__String_)));
 		break;
 	case 15:
-		addProperty(inv->getAsciiParameter(_param0_addProperty__string_float_int_string_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__string_float_int_string_));
+		addProperty(inv->getAsciiParameter(_param0_addProperty__String_float_int_String_), inv->getFloatParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addProperty__String_float_int_String_));
 		break;
 	case 16:
 		resp->insertSignedInt(getPropertyCount());
@@ -277,23 +277,23 @@ Component* ComponentAdapter::cloneComponent(Component* component, unsigned long 
 	return ((ComponentImplementation*) impl)->cloneComponent(component, oid);
 }
 
-float ComponentAdapter::getAttributeValue(string& attributeName) {
+float ComponentAdapter::getAttributeValue(String& attributeName) {
 	return ((ComponentImplementation*) impl)->getAttributeValue(attributeName);
 }
 
-int ComponentAdapter::getAttributePrecision(string& attributeName) {
+int ComponentAdapter::getAttributePrecision(String& attributeName) {
 	return ((ComponentImplementation*) impl)->getAttributePrecision(attributeName);
 }
 
-string& ComponentAdapter::getAttributeTitle(string& attributeName) {
+String& ComponentAdapter::getAttributeTitle(String& attributeName) {
 	return ((ComponentImplementation*) impl)->getAttributeTitle(attributeName);
 }
 
-bool ComponentAdapter::hasProperty(string& attributeName) {
+bool ComponentAdapter::hasProperty(String& attributeName) {
 	return ((ComponentImplementation*) impl)->hasProperty(attributeName);
 }
 
-void ComponentAdapter::addProperty(string& attribute, float value, int precision, string& title) {
+void ComponentAdapter::addProperty(String& attribute, float value, int precision, String& title) {
 	return ((ComponentImplementation*) impl)->addProperty(attribute, value, precision, title);
 }
 
@@ -301,7 +301,7 @@ int ComponentAdapter::getPropertyCount() {
 	return ((ComponentImplementation*) impl)->getPropertyCount();
 }
 
-string& ComponentAdapter::getProperty(const int j) {
+String& ComponentAdapter::getProperty(const int j) {
 	return ((ComponentImplementation*) impl)->getProperty(j);
 }
 
@@ -340,11 +340,11 @@ DistributedObjectAdapter* ComponentHelper::createAdapter(DistributedObjectStub* 
  *	ComponentServant
  */
 
-ComponentServant::ComponentServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
+ComponentServant::ComponentServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = ComponentHelper::instance();
 }
 
-ComponentServant::ComponentServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
+ComponentServant::ComponentServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = ComponentHelper::instance();
 }
 

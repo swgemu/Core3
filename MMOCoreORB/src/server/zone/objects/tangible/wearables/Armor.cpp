@@ -18,12 +18,12 @@
  *	ArmorStub
  */
 
-Armor::Armor(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : Wearable(DummyConstructorParameter::instance()) {
+Armor::Armor(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : Wearable(DummyConstructorParameter::instance()) {
 	_impl = new ArmorImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-Armor::Armor(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : Wearable(DummyConstructorParameter::instance()) {
+Armor::Armor(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : Wearable(DummyConstructorParameter::instance()) {
 	_impl = new ArmorImplementation(creature, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
@@ -1510,11 +1510,11 @@ DistributedObjectAdapter* ArmorHelper::createAdapter(DistributedObjectStub* obj)
  *	ArmorServant
  */
 
-ArmorServant::ArmorServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : WearableImplementation(oid, tempCRC, n, tempn, eqp) {
+ArmorServant::ArmorServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : WearableImplementation(oid, tempCRC, n, tempn, eqp) {
 	_classHelper = ArmorHelper::instance();
 }
 
-ArmorServant::ArmorServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : WearableImplementation(creature, tempCRC, n, tempn, eqp) {
+ArmorServant::ArmorServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : WearableImplementation(creature, tempCRC, n, tempn, eqp) {
 	_classHelper = ArmorHelper::instance();
 }
 

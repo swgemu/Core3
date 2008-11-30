@@ -100,12 +100,12 @@ BaseMessage* SuiTransferBoxImplementation::generateMessage() {
 	return message;
 }
 
-void SuiTransferBoxImplementation::addOption(const string& itemText, const string& lblType, const string& itemType) {
+void SuiTransferBoxImplementation::addOption(const String& itemText, const String& lblType, const String& itemType) {
 	message->insertOption(3, itemText, lblType, itemType);
 	++options;
 }
-void SuiTransferBoxImplementation::addFrom(const string& from,
-		const string& startingFrom, const string& inputFrom, const string& rFrom) {
+void SuiTransferBoxImplementation::addFrom(const String& from,
+		const String& startingFrom, const String& inputFrom, const String& rFrom) {
 	
 	lblFrom = from;
 	lblStartingFrom = startingFrom;
@@ -113,8 +113,8 @@ void SuiTransferBoxImplementation::addFrom(const string& from,
 	convertRatioFrom = rFrom;
 	
 }
-void SuiTransferBoxImplementation::addTo(const string& to,
-		const string& startingTo, const string& inputTo, const string& rTo) {
+void SuiTransferBoxImplementation::addTo(const String& to,
+		const String& startingTo, const String& inputTo, const String& rTo) {
 	
 	lblTo = to;
 	lblStartingTo = startingTo;

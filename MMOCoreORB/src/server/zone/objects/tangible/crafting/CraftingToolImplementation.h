@@ -79,7 +79,7 @@ protected:
 
 	Container* hopper;
 
-	string status;
+	String status;
 	int assemblyResults;
 
 	int assemblyMod;
@@ -103,8 +103,8 @@ public:
 	static const int WEAPON = 7; // Weapon Droid and General Item Crafting Tool
 
 public:
-	CraftingToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
-	CraftingToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	CraftingToolImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	CraftingToolImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	~CraftingToolImplementation();
 
@@ -142,7 +142,7 @@ public:
 
 	inline void setToolEffectiveness(float eff) {
 		effectiveness = eff;
-		string temp = "effectiveness";
+		String temp = "effectiveness";
 		itemAttributes->setFloatAttribute(temp, eff);
 	}
 

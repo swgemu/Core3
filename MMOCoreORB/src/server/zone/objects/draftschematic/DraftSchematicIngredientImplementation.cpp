@@ -46,8 +46,8 @@ which carries forward this exception.
 
 #include "../../packets/object/ObjectControllerMessage.h"
 
-DraftSchematicIngredientImplementation::DraftSchematicIngredientImplementation(const string& ingredientTemplateName, const string& ingredientTitleName,
-		const int slotoption, const string& resourceType, uint32 resourceQuantity, uint32 combineType,
+DraftSchematicIngredientImplementation::DraftSchematicIngredientImplementation(const String& ingredientTemplateName, const String& ingredientTitleName,
+		const int slotoption, const String& resourceType, uint32 resourceQuantity, uint32 combineType,
 		float contribution) : DraftSchematicIngredientServant() {
 	DraftSchematicIngredientImplementation::templateName = ingredientTemplateName;
 	DraftSchematicIngredientImplementation::titleName = ingredientTitleName;
@@ -82,7 +82,7 @@ void DraftSchematicIngredientImplementation::helperSendToPlayer(ObjectController
 	msg->insertInt(0);
 	msg->insertAscii(titleName);	// ex: dried_fruit
 
-	unicode uniResourceType(resourceType);
+	UnicodeString uniResourceType(resourceType);
 	msg->insertUnicode(uniResourceType); // ex: organic
 
 	if (slotoption == MIXEDSLOT || slotoption == OPTIONALMIXEDSLOT) {

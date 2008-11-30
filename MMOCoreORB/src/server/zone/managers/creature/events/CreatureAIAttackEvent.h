@@ -62,8 +62,8 @@ public:
 		try {
 			creo->wlock();
 
-			if(target->getPositionX() != creo->getPositionX()) {
-				//! if(!creo->curMoving && target != NULL) {
+			if (target->getPositionX() != creo->getPositionX()) {
+				//! if (!creo->curMoving && target != NULL) {
 					//creo->curMoving = false;
 					//creo->addMovePoint(target->getPositionX()-1.0f, target->getPositionZ(), target->getPositionY()-1.0f);
 					//follows target:

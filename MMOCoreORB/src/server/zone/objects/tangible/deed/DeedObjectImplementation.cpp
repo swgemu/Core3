@@ -6,7 +6,7 @@
 
 #include "../../../managers/resource/ResourceHarvestType.h"
 
-DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempname)
+DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempname)
 	: DeedObjectServant(oid, tempCRC, n, tempname, DEED) {
 	objectID = oid;
 	objectCRC = tempCRC;
@@ -17,7 +17,7 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 	init();
 }
 
-DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempname)
+DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempname)
 	: DeedObjectServant(creature->getObjectID(), tempCRC, n, tempname, DEED) {
 	objectCRC = tempCRC;
 	templateTypeName = "deed";
@@ -27,7 +27,7 @@ DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uin
 	init();
 }
 
-DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempname, int type)
+DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempname, int type)
 	: DeedObjectServant(oid, tempCRC, n, tempname, type) {
 	objectID = oid;
 	objectCRC = tempCRC;
@@ -38,7 +38,7 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 	init();
 }
 
-DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempname, int type)
+DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempname, int type)
 	: DeedObjectServant(creature->getObjectID(), tempCRC, n, tempname, type) {
 	objectCRC = tempCRC;
 	templateTypeName = "deed";
@@ -62,7 +62,7 @@ int DeedObjectImplementation::useObject(Player* player) {
 		return 1;
 	}
 
-	//cout << "Enter Placement Mode.  Target File: " << targetFile << endl;
+	//System::out << "Enter Placement Mode.  Target File: " << targetFile << endl;
 	EnterStructurePlacementModeMessage * espmm = new EnterStructurePlacementModeMessage(objectID, targetFile);
 	player->sendMessage(espmm);
 
@@ -91,11 +91,11 @@ void DeedObjectImplementation::parseItemAttributes() {
 void DeedObjectImplementation::addHeaderAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("volume", "1");
 
-	if(craftersName != ""){
+	if (craftersName != ""){
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	if(craftedSerial != ""){
+	if (craftedSerial != ""){
 		alm->insertAttribute("serial_number", craftedSerial);
 	}
 }

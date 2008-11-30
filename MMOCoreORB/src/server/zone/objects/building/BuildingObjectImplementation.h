@@ -58,10 +58,10 @@ class Zone;
 class BuildingObjectImplementation : public QuadTree, public BuildingObjectServant {
 	SortedVector<CellObject*> cells;
 
-	unicode name;
-	string defaultName;
+	UnicodeString name;
+	String defaultName;
 
-	string owner;
+	String owner;
 	uint64 ownerID;
 
 	int buildingType;
@@ -70,10 +70,10 @@ class BuildingObjectImplementation : public QuadTree, public BuildingObjectServa
 
 	bool staticBuilding;
 
-	string templateName;
+	String templateName;
 
 	ItemAttributes* itemAttributes;
-	string attributeString;
+	String attributeString;
 public:
 	// Using the Building Types from Planet Map - comment out the non buildings :)
 	static const int UNKNOWN = 1;
@@ -97,7 +97,7 @@ public:
 	static const int TRAINER = 19; //category
 	static const int trainer_brawler = 20;
 	static const int trainer_artisan = 21;
-	static const int trainer_scout = 22;
+	static const int trainer_sSystem::out = 22;
 	static const int trainer_marksman = 23;
 	static const int trainer_entertainer = 24;
 	static const int trainer_medic = 25;*/
@@ -169,37 +169,37 @@ public:
 
 
 	// Attribute Setters
-	inline void setOwner(const string own) {
+	inline void setOwner(const String own) {
 		setUpdated(true);
 		owner = own;
-		string attr("owner");
+		String attr("owner");
 		itemAttributes->setStringAttribute(attr, owner);
 	}
 	inline void setOwnerID(uint64 ownerid) {
 		setUpdated(true);
 		ownerID = ownerid;
-		string attr("ownerID");
+		String attr("ownerID");
 		itemAttributes->setUnsignedLongAttribute(attr, ownerID);
 	}
-	inline void setName(const string& n) {
+	inline void setName(const String& n) {
 		name = n;
 	}
 
-	inline void setName(const unicode& n) {
+	inline void setName(const UnicodeString& n) {
 		name = n;
 	}
 
 	// Attribute Getters
-	inline string& getOwner() {
+	inline String& getOwner() {
 		return owner;
 	}
 	inline uint64 getOwnerID() {
 		return ownerID;
 	}
-	inline unicode& getName() {
+	inline UnicodeString& getName() {
 		return name;
 	}
-	inline string& getTemplateName() {
+	inline String& getTemplateName() {
 		templateName = "";
 		return templateName;
 	}
@@ -218,11 +218,11 @@ public:
 
 	void notifyInsertToZone(SceneObject* object);
 
-	inline void setAttributes(string& attributestring) {
-		itemAttributes->setAttributes(attributestring);
+	inline void setAttributes(String& attributeString) {
+		itemAttributes->setAttributes(attributeString);
 	}
 
-	inline string& getAttributes() {
+	inline String& getAttributes() {
 		itemAttributes->getAttributeString(attributeString);
 		return attributeString;
 	}
@@ -266,7 +266,7 @@ public:
 
 	void setDefaultName();
 
-	inline string& getDefaultName() {
+	inline String& getDefaultName() {
 		return defaultName;
 	}
 

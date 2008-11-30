@@ -20,7 +20,7 @@
  *	ActionCreatureStub
  */
 
-ActionCreature::ActionCreature(unsigned long long oid, unsigned int objCrc, string& creName, string& stf, string& missionKey) : Creature(DummyConstructorParameter::instance()) {
+ActionCreature::ActionCreature(unsigned long long oid, unsigned int objCrc, String& creName, String& stf, String& missionKey) : Creature(DummyConstructorParameter::instance()) {
 	_impl = new ActionCreatureImplementation(oid, objCrc, creName, stf, missionKey);
 	_impl->_setStub(this);
 }
@@ -31,7 +31,7 @@ ActionCreature::ActionCreature(DummyConstructorParameter* param) : Creature(para
 ActionCreature::~ActionCreature() {
 }
 
-void ActionCreature::addAction(string& key, Action* act) {
+void ActionCreature::addAction(String& key, Action* act) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -45,7 +45,7 @@ void ActionCreature::addAction(string& key, Action* act) {
 		((ActionCreatureImplementation*) _impl)->addAction(key, act);
 }
 
-Action* ActionCreature::getAction(string& key) {
+Action* ActionCreature::getAction(String& key) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -58,7 +58,7 @@ Action* ActionCreature::getAction(string& key) {
 		return ((ActionCreatureImplementation*) _impl)->getAction(key);
 }
 
-void ActionCreature::onConverse(string& tco, Player* player) {
+void ActionCreature::onConverse(String& tco, Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -72,7 +72,7 @@ void ActionCreature::onConverse(string& tco, Player* player) {
 		((ActionCreatureImplementation*) _impl)->onConverse(tco, player);
 }
 
-void ActionCreature::onTrade(string& ttr) {
+void ActionCreature::onTrade(String& ttr) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -85,7 +85,7 @@ void ActionCreature::onTrade(string& ttr) {
 		((ActionCreatureImplementation*) _impl)->onTrade(ttr);
 }
 
-void ActionCreature::onAttack(string& tat) {
+void ActionCreature::onAttack(String& tat) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -98,7 +98,7 @@ void ActionCreature::onAttack(string& tat) {
 		((ActionCreatureImplementation*) _impl)->onAttack(tat);
 }
 
-void ActionCreature::onDeath(string& tde) {
+void ActionCreature::onDeath(String& tde) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -123,7 +123,7 @@ bool ActionCreature::isMissionNpc() {
 		return ((ActionCreatureImplementation*) _impl)->isMissionNpc();
 }
 
-string& ActionCreature::getMissionKey() {
+String& ActionCreature::getMissionKey() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -191,22 +191,22 @@ Packet* ActionCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		addAction(inv->getAsciiParameter(_param0_addAction__string_Action_), (Action*) inv->getObjectParameter());
+		addAction(inv->getAsciiParameter(_param0_addAction__String_Action_), (Action*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertLong(getAction(inv->getAsciiParameter(_param0_getAction__string_))->_getObjectID());
+		resp->insertLong(getAction(inv->getAsciiParameter(_param0_getAction__String_))->_getObjectID());
 		break;
 	case 8:
-		onConverse(inv->getAsciiParameter(_param0_onConverse__string_Player_), (Player*) inv->getObjectParameter());
+		onConverse(inv->getAsciiParameter(_param0_onConverse__String_Player_), (Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		onTrade(inv->getAsciiParameter(_param0_onTrade__string_));
+		onTrade(inv->getAsciiParameter(_param0_onTrade__String_));
 		break;
 	case 10:
-		onAttack(inv->getAsciiParameter(_param0_onAttack__string_));
+		onAttack(inv->getAsciiParameter(_param0_onAttack__String_));
 		break;
 	case 11:
-		onDeath(inv->getAsciiParameter(_param0_onDeath__string_));
+		onDeath(inv->getAsciiParameter(_param0_onDeath__String_));
 		break;
 	case 12:
 		resp->insertBoolean(isMissionNpc());
@@ -227,27 +227,27 @@ Packet* ActionCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-void ActionCreatureAdapter::addAction(string& key, Action* act) {
+void ActionCreatureAdapter::addAction(String& key, Action* act) {
 	return ((ActionCreatureImplementation*) impl)->addAction(key, act);
 }
 
-Action* ActionCreatureAdapter::getAction(string& key) {
+Action* ActionCreatureAdapter::getAction(String& key) {
 	return ((ActionCreatureImplementation*) impl)->getAction(key);
 }
 
-void ActionCreatureAdapter::onConverse(string& tco, Player* player) {
+void ActionCreatureAdapter::onConverse(String& tco, Player* player) {
 	return ((ActionCreatureImplementation*) impl)->onConverse(tco, player);
 }
 
-void ActionCreatureAdapter::onTrade(string& ttr) {
+void ActionCreatureAdapter::onTrade(String& ttr) {
 	return ((ActionCreatureImplementation*) impl)->onTrade(ttr);
 }
 
-void ActionCreatureAdapter::onAttack(string& tat) {
+void ActionCreatureAdapter::onAttack(String& tat) {
 	return ((ActionCreatureImplementation*) impl)->onAttack(tat);
 }
 
-void ActionCreatureAdapter::onDeath(string& tde) {
+void ActionCreatureAdapter::onDeath(String& tde) {
 	return ((ActionCreatureImplementation*) impl)->onDeath(tde);
 }
 
@@ -255,7 +255,7 @@ bool ActionCreatureAdapter::isMissionNpc() {
 	return ((ActionCreatureImplementation*) impl)->isMissionNpc();
 }
 
-string& ActionCreatureAdapter::getMissionKey() {
+String& ActionCreatureAdapter::getMissionKey() {
 	return ((ActionCreatureImplementation*) impl)->getMissionKey();
 }
 

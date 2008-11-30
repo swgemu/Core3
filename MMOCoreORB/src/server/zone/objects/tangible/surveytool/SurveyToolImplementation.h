@@ -56,8 +56,8 @@ protected:
 	int surveyToolRange;
 
 public:
-	SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
-	SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	SurveyToolImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	SurveyToolImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	~SurveyToolImplementation();
 
@@ -72,8 +72,8 @@ public:
 	void sendSurveyEffect(Player* player);
 	void sendSampleEffect(Player* player);
 
-	void surveyRequest(Player* player, string resourceName);
-	void sampleRequest(Player* player, string resourceName);
+	void surveyRequest(Player* player, String resourceName);
+	void sampleRequest(Player* player, String resourceName);
 
 	inline int getSurveyToolType() {
 		return surveyToolType;
@@ -89,7 +89,7 @@ public:
 	}
 
 	inline void setSurveyToolRange(int range) {
-		string temp = "range";
+		String temp = "range";
 		itemAttributes->setIntAttribute(temp, range);
 		surveyToolRange = range;
 	}

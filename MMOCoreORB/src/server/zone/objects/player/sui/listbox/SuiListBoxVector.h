@@ -10,9 +10,9 @@ public:
 
 	unsigned int size();
 
-	void add(string& item);
+	void add(String& item);
 
-	string& get(unsigned int index);
+	String& get(unsigned int index);
 
 	void removeAll();
 
@@ -21,7 +21,7 @@ public:
 protected:
 	SuiListBoxVector(DummyConstructorParameter* param);
 
-	string _return_get;
+	String _return_get;
 
 	friend class SuiListBoxVectorHelper;
 };
@@ -36,15 +36,15 @@ public:
 
 	unsigned int size();
 
-	void add(string& item);
+	void add(String& item);
 
-	string& get(unsigned int index);
+	String& get(unsigned int index);
 
 	void removeAll();
 
 	void removeLastElement();
 protected:
-	string _param0_add__string_;
+	String _param0_add__String_;
 };
 
 class SuiListBoxVectorHelper : public DistributedObjectClassHelper, public Singleton<SuiListBoxVectorHelper> {

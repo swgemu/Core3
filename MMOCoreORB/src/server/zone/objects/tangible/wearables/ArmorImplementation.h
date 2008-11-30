@@ -133,8 +133,8 @@ public:
 	static const int BELT = 10;
 
 public:
-	ArmorImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp = false);
-	ArmorImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	ArmorImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
+	ArmorImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
 	void parseItemAttributes();
 
@@ -185,161 +185,161 @@ public:
 
 	void setArmorType();
 
-	bool isVunerableTo(string type);
+	bool isVunerableTo(String type);
 
 	// setters
 	inline void setRating(int rat) {
 		rating = rat;
-		string name = "rating";
+		String name = "rating";
 		itemAttributes->setIntAttribute(name, rat);
 	}
 
 	inline void setHealthEncumbrance(int healthEnc) {
 		healthEncumbrance = healthEnc;
-		string name = "healthEncumberence";
+		String name = "healthEncumberence";
 		itemAttributes->setIntAttribute(name, healthEnc);
 	}
 
 	inline void setActionEncumbrance(int actionEnc) {
 		actionEncumbrance = actionEnc;
-		string name = "actionEncumberence";
+		String name = "actionEncumberence";
 		itemAttributes->setIntAttribute(name, actionEnc);
 	}
 
 	inline void setMindEncumbrance(int mindEnc) {
 		mindEncumbrance = mindEnc;
-		string name = "mindEncumberence";
+		String name = "mindEncumberence";
 		itemAttributes->setIntAttribute(name, mindEnc);
 	}
 
 	inline void setKinetic(float kin) {
 		kinetic = kin;
-		string name = "kinetic";
+		String name = "kinetic";
 		itemAttributes->setFloatAttribute(name, kin);
 	}
 
 	inline void setKineticIsSpecial(bool kineticIsSpec) {
 		kineticIsSpecial = kineticIsSpec;
 		if (kineticIsSpec) {
-			string name = "kineticIsSpecial";
+			String name = "kineticIsSpecial";
 			itemAttributes->setBooleanAttribute(name, true);
 		}
 	}
 
 	inline void setEnergy(float ene) {
 		energy = ene;
-		string name = "energy";
+		String name = "energy";
 		itemAttributes->setFloatAttribute(name, ene);
 	}
 
 	inline void setEnergyIsSpecial(bool energyIsSpec) {
 		energyIsSpecial = energyIsSpec;
 		if (energyIsSpec) {
-			string name = "energyIsSpecial";
+			String name = "energyIsSpecial";
 			itemAttributes->setBooleanAttribute(name, true);
 		}
 	}
 
 	inline void setElectricity(float ele) {
 		electricity = ele;
-		string name = "electricity";
+		String name = "electricity";
 		itemAttributes->setFloatAttribute(name, ele);
 	}
 
 	inline void setElectricityIsSpecial(bool electricityIsSpec) {
 		electricityIsSpecial = electricityIsSpec;
 		if (electricityIsSpec) {
-			string name = "electricityIsSpecial";
+			String name = "electricityIsSpecial";
 			itemAttributes->setBooleanAttribute(name, true);
 		}
 	}
 
 	inline void setStun(float stu) {
 		stun = stu;
-		string name = "stun";
+		String name = "stun";
 		itemAttributes->setFloatAttribute(name, stu);
 	}
 
 	inline void setStunIsSpecial(bool stunIsSpec) {
 		stunIsSpecial = stunIsSpec;
 		if (stunIsSpec) {
-			string name = "stunIsSpecial";
+			String name = "stunIsSpecial";
 			itemAttributes->setBooleanAttribute(name, true);
 		}
 	}
 
 	inline void setBlast(float blst) {
 		blast = blst;
-		string name = "blast";
+		String name = "blast";
 		itemAttributes->setFloatAttribute(name, blst);
 	}
 
 	inline void setBlastIsSpecial(bool blastIsSpec) {
 		blastIsSpecial = blastIsSpec;
 		if (blastIsSpec) {
-			string name = "blastIsSpecial";
+			String name = "blastIsSpecial";
 			itemAttributes->setBooleanAttribute(name, true);
 		}
 	}
 
 	inline void setHeat(float hot) {
 		heat = hot;
-		string name = "heat";
+		String name = "heat";
 		itemAttributes->setFloatAttribute(name, hot);
 	}
 
 	inline void setHeatIsSpecial(bool heatIsSpec) {
 		heatIsSpecial = heatIsSpec;
 		if (heatIsSpec) {
-			string name = "heatIsSpecial";
+			String name = "heatIsSpecial";
 			itemAttributes->setBooleanAttribute(name, true);
 		}
 	}
 
 	inline void setCold(float notHot) {
 		cold = notHot;
-		string name = "cold";
+		String name = "cold";
 		itemAttributes->setFloatAttribute(name, notHot);
 	}
 
 	inline void setColdIsSpecial(bool coldIsSpec) {
 		coldIsSpecial = coldIsSpec;
 		if (coldIsSpec) {
-			string name = "coldIsSpecial";
+			String name = "coldIsSpecial";
 			itemAttributes->setBooleanAttribute(name, true);
 		}
 	}
 
 	inline void setAcid(float aci) {
 		acid = aci;
-		string name = "acid";
+		String name = "acid";
 		itemAttributes->setFloatAttribute(name, aci);
 	}
 
 	inline void setAcidIsSpecial(bool acidIsSpec) {
 		acidIsSpecial = acidIsSpec;
 		if (acidIsSpec) {
-			string name = "acidIsSpecial";
+			String name = "acidIsSpecial";
 			itemAttributes->setBooleanAttribute(name, true);
 		}
 	}
 
 	inline void setLightSaber(float lightSab) {
 		lightSaber = lightSab;
-		string name = "lightSaber";
+		String name = "lightSaber";
 		itemAttributes->setFloatAttribute(name, lightSab);
 	}
 
 	inline void setLightSaberIsSpecial(bool lightSaberIsSpec) {
 		lightSaberIsSpecial = lightSaberIsSpec;
 		if (lightSaberIsSpec) {
-			string name = "lightsaberIsSpecial";
+			String name = "lightsaberIsSpecial";
 			itemAttributes->setBooleanAttribute(name, true);
 		}
 	}
 
 	inline void setArmorPiece(int armorSlot) {
-		string name = "armorType";
+		String name = "armorType";
 		armorType = armorSlot;
 		itemAttributes->setIntAttribute(name, armorSlot);
 
@@ -373,98 +373,98 @@ public:
 
 	inline void setSliced(bool hacked) {
 		sliced = hacked;
-		string key = "sliced";
+		String key = "sliced";
 		itemAttributes->setBooleanAttribute(key, hacked);
 	}
 
 	inline void setSkillMod0Type(int skillModType) {
 		skillMod0Type = skillModType;
-		string name = "skillMod0Type";
+		String name = "skillMod0Type";
 		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
 	inline void setSkillMod1Type(int skillModType) {
 		skillMod1Type = skillModType;
-		string name = "skillMod1Type";
+		String name = "skillMod1Type";
 		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
 	inline void setSkillMod2Type(int skillModType) {
 		skillMod2Type = skillModType;
-		string name = "skillMod2Type";
+		String name = "skillMod2Type";
 		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
 	inline void setSkillMod0Value(int skillModValue) {
 		skillMod0Value = skillModValue;
-		string name = "skillMod0Value";
+		String name = "skillMod0Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 
 	inline void setSkillMod1Value(int skillModValue) {
 		skillMod1Value = skillModValue;
-		string name = "skillMod1Value";
+		String name = "skillMod1Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 
 	inline void setSkillMod2Value(int skillModValue) {
 		skillMod2Value = skillModValue;
-		string name = "skillMod2Value";
+		String name = "skillMod2Value";
 		itemAttributes->setIntAttribute(name, skillModValue);
 	}
 
 	inline void setSockets(int socket) {
 		sockets = socket;
-		string key = "sockets";
+		String key = "sockets";
 		itemAttributes->setIntAttribute(key, socket);
 	}
 
 	inline void setSocket0Type(int socketType) {
 		socket0Type = socketType;
-		string key = "socket0Type";
+		String key = "socket0Type";
 		itemAttributes->setIntAttribute(key, socketType);
 	}
 
 	inline void setSocket1Type(int socketType) {
 		socket1Type = socketType;
-		string key = "socket1Type";
+		String key = "socket1Type";
 		itemAttributes->setIntAttribute(key, socketType);
 	}
 
 	inline void setSocket2Type(int socketType) {
 		socket2Type = socketType;
-		string key = "socket2Type";
+		String key = "socket2Type";
 		itemAttributes->setIntAttribute(key, socketType);
 	}
 
 	inline void setSocket3Type(int socketType) {
 		socket3Type = socketType;
-		string key = "socket3Type";
+		String key = "socket3Type";
 		itemAttributes->setIntAttribute(key, socketType);
 	}
 
 	inline void setSocket0Value(int socketValue) {
 		socket0Value = socketValue;
-		string key = "socket0Value";
+		String key = "socket0Value";
 		itemAttributes->setIntAttribute(key, socketValue);
 	}
 
 	inline void setSocket1Value(int socketValue) {
 		socket1Value = socketValue;
-		string key = "socket1Value";
+		String key = "socket1Value";
 		itemAttributes->setIntAttribute(key, socketValue);
 	}
 
 	inline void setSocket2Value(int socketValue) {
 		socket2Value = socketValue;
-		string key = "socket2Value";
+		String key = "socket2Value";
 		itemAttributes->setIntAttribute(key, socketValue);
 	}
 
 
 	inline void setSocket3Value(int socketValue) {
 		socket3Value = socketValue;
-		string key = "socket3Value";
+		String key = "socket3Value";
 		itemAttributes->setIntAttribute(key, socketValue);
 	}
 

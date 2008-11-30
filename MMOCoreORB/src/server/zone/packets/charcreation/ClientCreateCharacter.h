@@ -52,7 +52,7 @@ which carries forward this exception.
 
 class ClientCreateCharacter : public BaseMessage {
 public:
-	ClientCreateCharacter(const unicode& name) {
+	ClientCreateCharacter(const UnicodeString& name) {
 		insertShort(12);
 		insertInt(0xB97F3074);
 
@@ -70,27 +70,25 @@ public:
 	}
 
 	static void parse(Packet* pack, Player* player) {
-		string customization;
+		String customization;
 		pack->parseAscii(customization);
 
 		player->setCharacterAppearance(customization);
 
-		unicode characterName;
-		pack->parseUnicode(characterName); //get unicode name
+		UnicodeString characterName;
+		pack->parseUnicode(characterName); //get UnicodeString name
 		player->setCharacterName(characterName);
 
 		int idx = characterName.indexOf(' ');
 		if (idx != -1) {
-			player->setFirstName(characterName.substring(0, idx).c_str());
-			player->setLastName(characterName.substring(idx + 1, characterName.size()).c_str());
-		}
-		else {
-			player->setFirstName(characterName.c_str());
+			player->setFirstName(characterName.subString(0, idx).toString());
+			player->setLastName(characterName.subString(idx + 1, characterName.length()).toString());
+		} else {
+			player->setFirstName(characterName.toString());
 			player->setLastName("");
 		}
 
-
-		string racefile;
+		String racefile;
 		pack->parseAscii(racefile);
 		player->setRaceFileName(racefile);
 
@@ -102,25 +100,23 @@ public:
 
 		player->makeCharacterMask();
 
-		string location;
+		String location;
 		pack->parseAscii(location);
 		player->setStartingLocation(location);
 
-		string hairobj;
+		String hairobj;
 		pack->parseAscii(hairobj);
-		if (!hairobj.empty()) {
-			int idx = hairobj.find("hair_", 0);
-			if (idx != -1) {
-				hairobj.replace(idx, 5, "shared_hair_");
-				player->setHairObject(hairobj);
-			}
+		if (!hairobj.isEmpty()) {
+			hairobj.replaceFirst("hair_", "shared_hair_");
+
+			player->setHairObject(hairobj);
 		}
 
-		string haircust;
+		String haircust;
 		pack->parseAscii(haircust); //grab the hair cust data
 		player->setHairAppearance(haircust);
 
-		string profession;
+		String profession;
 		pack->parseAscii(profession);
 		player->setStartingProfession(profession);
 
@@ -132,7 +128,7 @@ public:
 
 		player->setHeight(height);
 
-		unicode bio;
+		UnicodeString bio;
 		pack->parseUnicode(bio); //get the biography.
 		player->setBiography(bio);
 

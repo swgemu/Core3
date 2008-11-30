@@ -123,8 +123,8 @@ interface SceneObject implements ManagedObject {
 	void generateAttributes(Player player);
 
 	// logger methods
-	void info(const string message, boolean forcedLog = false);
-	void error(const string message);
+	void info(const String message, boolean forcedLog = false);
+	void error(const String message);
 
 	// setters
 	local void setZoneProcessServer(ZoneProcessServerImplementation processor);
@@ -141,7 +141,7 @@ interface SceneObject implements ManagedObject {
 
 	void setAssociatedArea(unsigned long uid);
 	
-	//void setLockName(const string name);
+	//void setLockName(const String name);
 	
 	void setParent(SceneObject par, unsigned int linktype = 0x04);
 	
@@ -186,7 +186,7 @@ interface SceneObject implements ManagedObject {
 
 	float getDirectionW();
 	
-	string getLoggingName();
+	String getLoggingName();
 
 	unsigned long getAssociatedArea();
 	

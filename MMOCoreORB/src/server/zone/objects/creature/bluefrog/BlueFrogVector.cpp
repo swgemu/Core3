@@ -34,7 +34,7 @@ unsigned int BlueFrogVector::size() {
 		return ((BlueFrogVectorImplementation*) _impl)->size();
 }
 
-void BlueFrogVector::add(string& item) {
+void BlueFrogVector::add(String& item) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -47,7 +47,7 @@ void BlueFrogVector::add(string& item) {
 		((BlueFrogVectorImplementation*) _impl)->add(item);
 }
 
-string& BlueFrogVector::get(unsigned int index) {
+String& BlueFrogVector::get(unsigned int index) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -76,7 +76,7 @@ Packet* BlueFrogVectorAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertInt(size());
 		break;
 	case 7:
-		add(inv->getAsciiParameter(_param0_add__string_));
+		add(inv->getAsciiParameter(_param0_add__String_));
 		break;
 	case 8:
 		resp->insertAscii(get(inv->getUnsignedIntParameter()));
@@ -92,11 +92,11 @@ unsigned int BlueFrogVectorAdapter::size() {
 	return ((BlueFrogVectorImplementation*) impl)->size();
 }
 
-void BlueFrogVectorAdapter::add(string& item) {
+void BlueFrogVectorAdapter::add(String& item) {
 	return ((BlueFrogVectorImplementation*) impl)->add(item);
 }
 
-string& BlueFrogVectorAdapter::get(unsigned int index) {
+String& BlueFrogVectorAdapter::get(unsigned int index) {
 	return ((BlueFrogVectorImplementation*) impl)->get(index);
 }
 

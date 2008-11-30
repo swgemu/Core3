@@ -47,10 +47,10 @@ import "ResourceItem";
 interface ResourceList : implements ManagedObject {
 	ResourceList();
 	
-	boolean contains(string key);
+	boolean contains(String key);
 	int size();
-	//int put(unsigned long oid, string name, string type, int density);
-	int put(string key, ResourceItem res);
+	//int put(unsigned long oid, String name, String type, int density);
+	int put(String key, ResourceItem res);
 	ResourceItem get(int index);
 }
 	

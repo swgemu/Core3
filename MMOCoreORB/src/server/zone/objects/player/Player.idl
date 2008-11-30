@@ -191,9 +191,9 @@ interface Player implements CreatureObject {
 	unsigned int getTotalAttribPoints();
 
 	// Combat
-	void queueFlourish(const string modifier, unsigned long target, unsigned int actionCntr);
+	void queueFlourish(const String modifier, unsigned long target, unsigned int actionCntr);
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
-	void queueAction(Player player, unsigned long target, unsigned int actionCRC, unsigned int actionCntr, const string actionModifier);
+	void queueAction(Player player, unsigned long target, unsigned int actionCRC, unsigned int actionCntr, const String actionModifier);
 	void deleteQueueAction(unsigned int actioncntr);
 
 	void changePosture(int post);
@@ -220,11 +220,11 @@ interface Player implements CreatureObject {
 
 	void doDigest();
 
-	boolean hasConsent(string charID);
-	boolean giveConsent(string name);
-	boolean revokeConsent(string name);
+	boolean hasConsent(String charID);
+	boolean giveConsent(String name);
+	boolean revokeConsent(String name);
 	int getConsentSize();
-	string getConsentEntry(int index);
+	String getConsentEntry(int index);
 
 	void sendConsentBox();
 
@@ -286,14 +286,14 @@ interface Player implements CreatureObject {
 	void loadProfessions();
 	void trainStartingProfession();
 
-	boolean trainSkillBox(const string name, boolean updateClient = true);
-	void surrenderSkillBox(const string name);
+	boolean trainSkillBox(const String name, boolean updateClient = true);
+	void surrenderSkillBox(const String name);
 
 	void resetSkillBoxesIterator();
 	int getSkillBoxesSize();
-	string getNextSkillBox();
+	String getNextSkillBox();
 	boolean hasNextSkillBox();
-	boolean hasSkillBox(string skillBox);
+	boolean hasSkillBox(String skillBox);
 
 	// Waypoint
 	void addWaypoint(WaypointObject wp);
@@ -303,16 +303,16 @@ interface Player implements CreatureObject {
 
 	void updateWaypoint(WaypointObject wp);
 	void saveWaypoints(Player player);
-	WaypointObject searchWaypoint(Player play, const string name, int mode);
+	WaypointObject searchWaypoint(Player play, const String name, int mode);
 
-	void queueHeal(TangibleObject medpack, unsigned int actionCRC, const string attribute);
+	void queueHeal(TangibleObject medpack, unsigned int actionCRC, const String attribute);
 
 
 	// Experience
-	void addXp(string xpType, int xp, boolean updateClient);
-	void removeXp(string xpType, int xp, boolean updateClient);
-	void loadXp(const string xpStr);
-	string saveXp();
+	void addXp(String xpType, int xp, boolean updateClient);
+	void removeXp(String xpType, int xp, boolean updateClient);
+	void loadXp(const String xpStr);
+	String saveXp();
 
 	//DuelList manipulation methods
 	void removeFromDuelList(Player targetPlayer);
@@ -338,11 +338,11 @@ interface Player implements CreatureObject {
 	void removeChatRoom(ChatRoom room);
 
 	// Client Methods
-	void sendSystemMessage(const string msg);
-	void sendSystemMessage(unicode msg);
+	void sendSystemMessage(const String msg);
+	void sendSystemMessage(UnicodeString msg);
 
-	void sendSystemMessage(const string file, const string str, unsigned long targetid = 0);
-	void sendSystemMessage(const string file, const string str, StfParameter param);
+	void sendSystemMessage(const String file, const String str, unsigned long targetid = 0);
+	void sendSystemMessage(const String file, const String str, StfParameter param);
 	
 	//Medic & Doctor System Messages
 	void sendBattleFatigueMessage(CreatureObject target);
@@ -350,14 +350,14 @@ interface Player implements CreatureObject {
 	
 	// setters
 	void setConversatingCreature(CreatureObject conversator);
-	void setFirstName(const string name);
-	void setLastName(const string name);
-	void setFirstNameProper(const string name);
+	void setFirstName(const String name);
+	void setLastName(const String name);
+	void setFirstNameProper(const String name);
 
-	void setBiography(const string bio);
-	void setBiography(unicode bio);
+	void setBiography(const String bio);
+	void setBiography(UnicodeString bio);
 
-	//void setHairData(string hair);
+	//void setHairData(String hair);
 
 	boolean changeForcePowerBar(int fp);
 
@@ -377,9 +377,9 @@ interface Player implements CreatureObject {
 
 	void setCharacterID(unsigned long id);
 
-	void setStartingProfession(const string prof);
+	void setStartingProfession(const String prof);
 
-	void setHairObject(const string hair);
+	void setHairObject(const String hair);
 	void updateHair();
 
 	void setPlayerObject(PlayerObject obj);
@@ -400,9 +400,9 @@ interface Player implements CreatureObject {
 
 	void newChangeFactionStatusEvent(unsigned char status, unsigned int timer);
 
-	void setRaceFileName(string name);
+	void setRaceFileName(String name);
 	void setRaceID(unsigned char id);
-	void setStartingLocation(string loc);
+	void setStartingLocation(String loc);
 
 	void setItemShift(unsigned int shift);
 
@@ -465,22 +465,22 @@ interface Player implements CreatureObject {
 
 	CreatureObject getConversatingCreature();
 
-	string getFirstName();
-	string getLastName();
-	string getFirstNameProper();
-	string getRaceFileName();
+	String getFirstName();
+	String getLastName();
+	String getFirstNameProper();
+	String getRaceFileName();
 	unsigned char getRaceID();
 
-	unicode getBiography();
-	//string getHairData();
+	UnicodeString getBiography();
+	//String getHairData();
 
 	unsigned long getCharacterID();
 
-	string getStartingProfession();
+	String getStartingProfession();
 
 	int getZoneIndex();
 
-	string getHairObject();
+	String getHairObject();
 
 	ZoneClientSession getClient();
 
@@ -498,26 +498,26 @@ interface Player implements CreatureObject {
 
 	int getCertificationListSize();
 
-	string getCertification(int idx);
+	String getCertification(int idx);
 
-	boolean checkCertification(string& certification);
+	boolean checkCertification(String& certification);
 
 	int getSlicingAbility();
 
 	boolean isChatMuted();
 	boolean isImmune();
 	
-	string getInputBoxReturnBuffer();
+	String getInputBoxReturnBuffer();
 
 	// mission stuff
 	unsigned int nextMisoRFC();
 	int checkMisoBSB(int tcb);
 	void setMisoBSB(int tms);
-	void addToCurMisoKeys(string& tck);
-	boolean isOnCurMisoKey(string tmk);
-	void removeFromCurMisoKeys(string tck);
-	void addToFinMisoKeys(string tmp);
-	boolean hasCompletedMisoKey(string tmk);
+	void addToCurMisoKeys(String& tck);
+	boolean isOnCurMisoKey(String tmk);
+	void removeFromCurMisoKeys(String tck);
+	void addToFinMisoKeys(String tmp);
+	boolean hasCompletedMisoKey(String tmk);
 
 	// Crafting
 	CraftingTool getCurrentCraftingTool();
@@ -528,17 +528,17 @@ interface Player implements CreatureObject {
 	void prepareCraftingSession(CraftingTool ct, DraftSchematic ds);
 	void addIngredientToSlot(TangibleObject tano, int slot, int counter);
 	void removeResourceFromCraft(unsigned long resID, int slot, int counter);
-	void nextCraftingStage(string test);
-	void craftingCustomization(string name, int condition, string customizationstring);
-	void createPrototype(string count);
-	void createSchematic(string count);
-	void handleExperimenting(int count, int numRowsAttempted, string expstring);
+	void nextCraftingStage(String test);
+	void craftingCustomization(String name, int condition, String customizationString);
+	void createPrototype(String count);
+	void createSchematic(String count);
+	void handleExperimenting(int count, int numRowsAttempted, String expString);
 
 	// Draft Schematic stuff
 	void sendDraftSchematics();
 
-	void addDraftSchematicsFromGroupName(const string schematicGroupName);
-	void subtractDraftSchematicsFromGroupName(const string schematicGroupName);
+	void addDraftSchematicsFromGroupName(const String schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(const String schematicGroupName);
 	void addDraftSchematic(DraftSchematic ds);
 	void subtractDraftSchematic(DraftSchematic ds);
 
@@ -578,8 +578,8 @@ interface Player implements CreatureObject {
 	boolean getCanSample();
 	void setCanSurvey();
 	void setCanSample();
-	void setSurveyEvent(string resource_name);
-	void setSampleEvent(string resource_name, boolean firstTime = false);
+	void setSurveyEvent(String resource_name);
+	void setSampleEvent(String resource_name, boolean firstTime = false);
 	void setCancelSample(boolean val);
 	boolean getCancelSample();
 	void sendSampleTimeRemaining();
@@ -588,18 +588,18 @@ interface Player implements CreatureObject {
 	boolean getSurveyErrorMessage();
 	boolean getSampleErrorMessage();
 
-	void sendMail(string mailsender, unicode subjectSender, unicode bodySender, string charNameSender);
+	void sendMail(String mailsender, UnicodeString subjectSender, UnicodeString bodySender, String charNameSender);
 	
 	void setEntertainerEvent();
 	void clearEntertainerEvent();
 
-	void setLastNpcConvStr(const string conv);
-	void setLastNpcConvMessStr(const string mess);
+	void setLastNpcConvStr(const String conv);
+	void setLastNpcConvMessStr(const String mess);
 
-	string getLastNpcConvStr();
-	string getLastNpcConvMessStr();
+	String getLastNpcConvStr();
+	String getLastNpcConvMessStr();
 	
-	void setInputBoxReturnBuffer(const string message);
+	void setInputBoxReturnBuffer(const String message);
 	
 	void setGuildLeader(boolean guildLeader = true);
 	
@@ -613,18 +613,18 @@ interface Player implements CreatureObject {
 	void toggleGuildPermissionsBit(unsigned int bit);	
 	boolean clearGuildPermissionsBit(unsigned int bit, boolean updateClient = false);
 	
-	int getFactionPoints(const string faction);
-	void addFactionPoints(const string faction, unsigned int points);
-	void subtractFactionPoints(const string faction, unsigned int points);
+	int getFactionPoints(const String faction);
+	void addFactionPoints(const String faction, unsigned int points);
+	void subtractFactionPoints(const String faction, unsigned int points);
 	
 	int getFactionStatus();
 	void setFactionStatus(int status);
 	FactionPointList getFactionList();
-	unsigned int getMaxFactionPoints(string faction);
+	unsigned int getMaxFactionPoints(String faction);
 	
 	void delFactionPoints(Player player, unsigned int amount);
 
-	void addSuiBoxChoice(string choice);
+	void addSuiBoxChoice(String choice);
 	
 	void removeLastSuiBoxChoice();
 	

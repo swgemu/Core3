@@ -51,7 +51,7 @@ class PlayClientEffectLoc : public BaseMessage {
 public:
 	int listSize;
 	
-	PlayClientEffectLoc(const string& file, int planet, float x, float z, float y) : BaseMessage() {
+	PlayClientEffectLoc(const String& file, int planet, float x, float z, float y) : BaseMessage() {
 		/* Struct
 		 * 09 00 // Operand
 		 * 74 9E 94 02 // Opcode

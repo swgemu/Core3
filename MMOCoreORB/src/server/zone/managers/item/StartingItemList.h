@@ -174,29 +174,29 @@ public:
 		wookFemale = NULL;
 	}
 
-	Vector<TangibleObject*>* get(string species, string sex) {
-		if (species.compare("all") == 0) {
+	Vector<TangibleObject*>* get(String species, String sex) {
+		if (species.compareTo("all") == 0) {
 			return all;
-		} else if (species.compare("ithorian") == 0) {
-			if(sex.compare("male") == 0) {
+		} else if (species.compareTo("ithorian") == 0) {
+			if (sex.compareTo("male") == 0) {
 				return ithoMale;
 			} else {
 				return ithoFemale;
 			}
-		} else if (species.compare("trandoshan") == 0) {
-			if(sex.compare("male") == 0) {
+		} else if (species.compareTo("trandoshan") == 0) {
+			if (sex.compareTo("male") == 0) {
 				return trandoMale;
 			} else {
 				return trandoFemale;
 			}
-		} else if (species.compare("wookiee") == 0) {
-			if(sex.compare("male") == 0) {
+		} else if (species.compareTo("wookiee") == 0) {
+			if (sex.compareTo("male") == 0) {
 				return wookMale;
 			} else {
 				return wookFemale;
 			}
 		} else {
-			if(sex.compare("male") == 0) {
+			if (sex.compareTo("male") == 0) {
 				return humanoidMale;
 			} else {
 				return humanoidFemale;
@@ -205,19 +205,18 @@ public:
 	}
 };
 
-class StartingItemProfessionSet : public HashTable<string, StartingProfession *> {
+class StartingItemProfessionSet : public HashTable<String, StartingProfession *> {
 public:
 	StartingItemProfessionSet() {
-
 	}
 
-	int hash(const string& str) {
-		return String::hashCode(str);
+	int hash(const String& str) {
+		return str.hashCode();
 	}
 };
 
 class StartingItemList {
-	StartingItemProfessionSet * professions;
+	StartingItemProfessionSet* professions;
 
 public:
 	StartingItemList() {
@@ -226,7 +225,7 @@ public:
 	}
 
 	~StartingItemList() {
-		HashTableIterator<string, StartingProfession*> iterator(professions);
+		HashTableIterator<String, StartingProfession*> iterator(professions);
 
 		iterator.resetIterator();
 
@@ -240,11 +239,11 @@ public:
 		professions = NULL;
 	}
 
-	void addItemToProfession(string profession, string species, string sex, TangibleObject* item) {
+	void addItemToProfession(String profession, String species, String sex, TangibleObject* item) {
 		professions->get(profession)->get(species, sex)->add(item);
 	}
 
-	Vector<TangibleObject*>* getProfessionItems(string profession, string species, string sex) {
+	Vector<TangibleObject*>* getProfessionItems(String profession, String species, String sex) {
 		return (professions->get(profession)->get(species, sex));
 	}
 
@@ -255,7 +254,7 @@ public:
 		professions->put("entertainer", new StartingProfession());
 		professions->put("marksman", new StartingProfession());
 		professions->put("medic", new StartingProfession());
-		professions->put("scout", new StartingProfession());
+		professions->put("sSystem::out", new StartingProfession());
 	}
 };
 

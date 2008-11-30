@@ -20,7 +20,7 @@
  *	GuildStub
  */
 
-Guild::Guild(unsigned int gid, const string& name, const string& tag) {
+Guild::Guild(unsigned int gid, const String& name, const String& tag) {
 	_impl = new GuildImplementation(gid, name, tag);
 	_impl->_setStub(this);
 }
@@ -122,7 +122,7 @@ void Guild::setGuildChat(ChatRoom* guildchat) {
 		((GuildImplementation*) _impl)->setGuildChat(guildchat);
 }
 
-string& Guild::getGuildName() {
+String& Guild::getGuildName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -160,7 +160,7 @@ unsigned int Guild::getGuildLeader() {
 		return ((GuildImplementation*) _impl)->getGuildLeader();
 }
 
-string& Guild::getGuildTag() {
+String& Guild::getGuildTag() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -173,7 +173,7 @@ string& Guild::getGuildTag() {
 		return ((GuildImplementation*) _impl)->getGuildTag();
 }
 
-void Guild::setGuildName(const string& nom) {
+void Guild::setGuildName(const String& nom) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -186,7 +186,7 @@ void Guild::setGuildName(const string& nom) {
 		((GuildImplementation*) _impl)->setGuildName(nom);
 }
 
-void Guild::setGuildTag(const string& nom) {
+void Guild::setGuildTag(const String& nom) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -199,7 +199,7 @@ void Guild::setGuildTag(const string& nom) {
 		((GuildImplementation*) _impl)->setGuildTag(nom);
 }
 
-void Guild::putSponsoredMap(const string& nom) {
+void Guild::putSponsoredMap(const String& nom) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -224,7 +224,7 @@ unsigned int Guild::getSponsoredMapSize() {
 		return ((GuildImplementation*) _impl)->getSponsoredMapSize();
 }
 
-string& Guild::getSponsoredMap(int i) {
+String& Guild::getSponsoredMap(int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -295,13 +295,13 @@ Packet* GuildAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getGuildTag());
 		break;
 	case 17:
-		setGuildName(inv->getAsciiParameter(_param0_setGuildName__string_));
+		setGuildName(inv->getAsciiParameter(_param0_setGuildName__String_));
 		break;
 	case 18:
-		setGuildTag(inv->getAsciiParameter(_param0_setGuildTag__string_));
+		setGuildTag(inv->getAsciiParameter(_param0_setGuildTag__String_));
 		break;
 	case 19:
-		putSponsoredMap(inv->getAsciiParameter(_param0_putSponsoredMap__string_));
+		putSponsoredMap(inv->getAsciiParameter(_param0_putSponsoredMap__String_));
 		break;
 	case 20:
 		resp->insertInt(getSponsoredMapSize());
@@ -347,7 +347,7 @@ void GuildAdapter::setGuildChat(ChatRoom* guildchat) {
 	return ((GuildImplementation*) impl)->setGuildChat(guildchat);
 }
 
-string& GuildAdapter::getGuildName() {
+String& GuildAdapter::getGuildName() {
 	return ((GuildImplementation*) impl)->getGuildName();
 }
 
@@ -359,19 +359,19 @@ unsigned int GuildAdapter::getGuildLeader() {
 	return ((GuildImplementation*) impl)->getGuildLeader();
 }
 
-string& GuildAdapter::getGuildTag() {
+String& GuildAdapter::getGuildTag() {
 	return ((GuildImplementation*) impl)->getGuildTag();
 }
 
-void GuildAdapter::setGuildName(const string& nom) {
+void GuildAdapter::setGuildName(const String& nom) {
 	return ((GuildImplementation*) impl)->setGuildName(nom);
 }
 
-void GuildAdapter::setGuildTag(const string& nom) {
+void GuildAdapter::setGuildTag(const String& nom) {
 	return ((GuildImplementation*) impl)->setGuildTag(nom);
 }
 
-void GuildAdapter::putSponsoredMap(const string& nom) {
+void GuildAdapter::putSponsoredMap(const String& nom) {
 	return ((GuildImplementation*) impl)->putSponsoredMap(nom);
 }
 
@@ -379,7 +379,7 @@ unsigned int GuildAdapter::getSponsoredMapSize() {
 	return ((GuildImplementation*) impl)->getSponsoredMapSize();
 }
 
-string& GuildAdapter::getSponsoredMap(int i) {
+String& GuildAdapter::getSponsoredMap(int i) {
 	return ((GuildImplementation*) impl)->getSponsoredMap(i);
 }
 

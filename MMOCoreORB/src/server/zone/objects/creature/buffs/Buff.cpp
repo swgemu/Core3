@@ -201,16 +201,16 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->changeMaxMindBar(-1 * getMindBuff(), updateClient);
 
 	if (getStrengthBuff() != 0) {
-		//cout << "deActivateBuff (strength max original): " << creo->getStrengthMax() << endl;
+		//System::out << "deActivateBuff (strength max original): " << creo->getStrengthMax() << endl;
 		creo->changeMaxStrengthBar(-1 * getStrengthBuff(), updateClient);
-		//cout << "deActivateBuff (strength max new): " << creo->getStrengthMax() << endl;
+		//System::out << "deActivateBuff (strength max new): " << creo->getStrengthMax() << endl;
 		creo->setStrengthBar(MAX(creo->getStrengthMax() - creo->getConstitutionWounds(), 1));
 	}
 
 	if (getConstitutionBuff() != 0) {
-		//cout << "deActivateBuff (constitution max original): " << creo->getConstitutionMax() << endl;
+		//System::out << "deActivateBuff (constitution max original): " << creo->getConstitutionMax() << endl;
 		creo->changeMaxConstitutionBar(-1 * getConstitutionBuff(), updateClient);
-		//cout << "deActivateBuff (constitution max new): " << creo->getConstitutionMax() << endl;
+		//System::out << "deActivateBuff (constitution max new): " << creo->getConstitutionMax() << endl;
 		creo->setConstitutionBar(MAX(creo->getConstitutionMax() - creo->getConstitutionWounds(), 1));
 	}
 
@@ -224,7 +224,7 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->setQuicknessBar(MAX(creo->getQuicknessMax() - creo->getQuicknessWounds(), 1));
 	}
 
-	if(getWillpowerBuff() != 0) {
+	if (getWillpowerBuff() != 0) {
 		creo->changeMaxWillpowerBar(-1 * getWillpowerBuff(), updateClient);
 		creo->setWillpowerBar(MAX(creo->getWillpowerMax() - creo->getWillpowerWounds(), 1));
 	}

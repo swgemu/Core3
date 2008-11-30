@@ -102,7 +102,7 @@ void ZoneClientSession::balancePacketCheckupTime() {
 		((ZoneClientSessionImplementation*) _impl)->balancePacketCheckupTime();
 }
 
-void ZoneClientSession::info(const string& msg, bool foredLog) {
+void ZoneClientSession::info(const String& msg, bool foredLog) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -153,7 +153,7 @@ bool ZoneClientSession::isAvailable() {
 		return ((ZoneClientSessionImplementation*) _impl)->isAvailable();
 }
 
-string& ZoneClientSession::getAddress() {
+String& ZoneClientSession::getAddress() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -208,7 +208,7 @@ Packet* ZoneClientSessionAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		balancePacketCheckupTime();
 		break;
 	case 12:
-		info(inv->getAsciiParameter(_param0_info__string_bool_), inv->getBooleanParameter());
+		info(inv->getAsciiParameter(_param0_info__String_bool_), inv->getBooleanParameter());
 		break;
 	case 13:
 		setPlayer((Player*) inv->getObjectParameter());
@@ -256,7 +256,7 @@ void ZoneClientSessionAdapter::balancePacketCheckupTime() {
 	return ((ZoneClientSessionImplementation*) impl)->balancePacketCheckupTime();
 }
 
-void ZoneClientSessionAdapter::info(const string& msg, bool foredLog) {
+void ZoneClientSessionAdapter::info(const String& msg, bool foredLog) {
 	return ((ZoneClientSessionImplementation*) impl)->info(msg, foredLog);
 }
 
@@ -272,7 +272,7 @@ bool ZoneClientSessionAdapter::isAvailable() {
 	return ((ZoneClientSessionImplementation*) impl)->isAvailable();
 }
 
-string& ZoneClientSessionAdapter::getAddress() {
+String& ZoneClientSessionAdapter::getAddress() {
 	return ((ZoneClientSessionImplementation*) impl)->getAddress();
 }
 

@@ -49,14 +49,14 @@ which carries forward this exception.
 #include "../../../../chat/ChatManagerImplementation.h"
 
 class InstallationSpawnEvent : public Event {
-
 	InstallationObject* inso;
-	Player * player;
+
+	Player* player;
+
 	Zone* z;
 
 public:
 	InstallationSpawnEvent(Player * play, InstallationObject * inInso, Zone* zn) : Event() {
-
 		inso = inInso;
 		player = play;
 		z = zn;
@@ -65,7 +65,6 @@ public:
 	}
 
 	bool activate() {
-
 		try {
 			inso->wlock();
 			// need to lock inso
@@ -79,18 +78,18 @@ public:
 		try {
 			player->wlock();
 
-			string mailSender = "Structure Builder";
-			string charNameSender = player->getFirstName();
+			String mailSender = "Structure Builder";
+			String charNameSender = player->getFirstName();
 
-			unicode subjectSender("Construction Complete");
-			unicode bodySender("Construction of your " + inso->getName().c_str() + " is now complete.  You have xx lots remaining.");
+			UnicodeString subjectSender("Construction Complete");
+			UnicodeString bodySender("Construction of your " + inso->getName().toString() + " is now complete.  You have xx lots remaining.");
 
 			player->sendMail(mailSender, subjectSender, bodySender, charNameSender);
 
 			// Create Waypoint to Structure
 			WaypointObject* waypoint =
 					new WaypointObject(player, player->getNewItemID());
-			waypoint->setName(inso->getName().c_str());
+			waypoint->setName(inso->getName().toCharArray());
 			waypoint->setPosition(inso->getPositionX(), 0.0f, inso->getPositionY());
 			waypoint->changeStatus(true);
 

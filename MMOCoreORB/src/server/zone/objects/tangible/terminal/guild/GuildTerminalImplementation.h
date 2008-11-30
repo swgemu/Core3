@@ -60,7 +60,7 @@ class GuildTerminalImplementation : public GuildTerminalServant {
 
 public:
 	GuildTerminalImplementation(GuildManager* guildmanager, uint64 objid, float x, float z, float y) :
-		GuildTerminalServant(0x2B2B8331, objid, unicode("Guild Terminal"), "terminal_guild", x, z, y, GUILD) {
+		GuildTerminalServant(0x2B2B8331, objid, UnicodeString("Guild Terminal"), "terminal_guild", x, z, y, GUILD) {
 
 		guildManager = guildmanager;
 	}

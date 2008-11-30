@@ -16,12 +16,12 @@
  *	SurveyToolStub
  */
 
-SurveyTool::SurveyTool(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+SurveyTool::SurveyTool(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new SurveyToolImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-SurveyTool::SurveyTool(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+SurveyTool::SurveyTool(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new SurveyToolImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -120,7 +120,7 @@ void SurveyTool::sendSampleEffect(Player* player) {
 		((SurveyToolImplementation*) _impl)->sendSampleEffect(player);
 }
 
-void SurveyTool::surveyRequest(Player* player, string& resourceName) {
+void SurveyTool::surveyRequest(Player* player, String& resourceName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -134,7 +134,7 @@ void SurveyTool::surveyRequest(Player* player, string& resourceName) {
 		((SurveyToolImplementation*) _impl)->surveyRequest(player, resourceName);
 }
 
-void SurveyTool::sampleRequest(Player* player, string& resourceName) {
+void SurveyTool::sampleRequest(Player* player, String& resourceName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -181,10 +181,10 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sendSampleEffect((Player*) inv->getObjectParameter());
 		break;
 	case 13:
-		surveyRequest((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_surveyRequest__Player_string_));
+		surveyRequest((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_surveyRequest__Player_String_));
 		break;
 	case 14:
-		sampleRequest((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sampleRequest__Player_string_));
+		sampleRequest((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sampleRequest__Player_String_));
 		break;
 	default:
 		return NULL;
@@ -221,11 +221,11 @@ void SurveyToolAdapter::sendSampleEffect(Player* player) {
 	return ((SurveyToolImplementation*) impl)->sendSampleEffect(player);
 }
 
-void SurveyToolAdapter::surveyRequest(Player* player, string& resourceName) {
+void SurveyToolAdapter::surveyRequest(Player* player, String& resourceName) {
 	return ((SurveyToolImplementation*) impl)->surveyRequest(player, resourceName);
 }
 
-void SurveyToolAdapter::sampleRequest(Player* player, string& resourceName) {
+void SurveyToolAdapter::sampleRequest(Player* player, String& resourceName) {
 	return ((SurveyToolImplementation*) impl)->sampleRequest(player, resourceName);
 }
 
@@ -264,11 +264,11 @@ DistributedObjectAdapter* SurveyToolHelper::createAdapter(DistributedObjectStub*
  *	SurveyToolServant
  */
 
-SurveyToolServant::SurveyToolServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
+SurveyToolServant::SurveyToolServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = SurveyToolHelper::instance();
 }
 
-SurveyToolServant::SurveyToolServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
+SurveyToolServant::SurveyToolServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = SurveyToolHelper::instance();
 }
 

@@ -53,8 +53,8 @@ class Player;
 class PlayerObject;
 
 class IgnoreListImplementation : public IgnoreListServant {
-	Vector<string> ignoreName;
-	Vector<string> ignoreServer;
+	Vector<String> ignoreName;
+	Vector<String> ignoreServer;
 
 	int ignoreMagicNumber;
 	Player* player;
@@ -62,9 +62,9 @@ class IgnoreListImplementation : public IgnoreListServant {
 public:
 	IgnoreListImplementation(Player* pl);
 
-	void addIgnore(string& name, string& server);
+	void addIgnore(String& name, String& server);
 
-	void removeIgnore(string& name);
+	void removeIgnore(String& name);
 
 	void toString();
 
@@ -80,11 +80,11 @@ public:
 		return ignoreMagicNumber;
 	}
 
-	string& getIgnoreName(const int i) {
+	String& getIgnoreName(const int i) {
 		return ignoreName.get(i);
 	}
 
-	string& getIgnoreServer(const int i) {
+	String& getIgnoreServer(const int i) {
 		return ignoreServer.get(i);
 	}
 

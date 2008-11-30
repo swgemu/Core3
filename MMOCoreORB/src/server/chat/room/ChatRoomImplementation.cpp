@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "../../zone/packets.h"
 
-ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const string& Name, uint32 channelId)
+ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const String& Name, uint32 channelId)
 		: ChatRoomServant(), Mutex("ChatRoom") {
 	server = serv;
 
@@ -58,7 +58,7 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const string& N
 
 	owner = "system";
 	creator = "system";
-	title = unicode("");
+	title = UnicodeString("");
 	fullPath = Name;
 
 	parent = NULL;
@@ -71,7 +71,7 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, const string& N
 }
 
 ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Parent,
-		const string& Name, uint32 channelId) : ChatRoomServant(), Mutex("ChatRoom") {
+		const String& Name, uint32 channelId) : ChatRoomServant(), Mutex("ChatRoom") {
 	server = serv;
 
 	name = Name;
@@ -81,7 +81,7 @@ ChatRoomImplementation::ChatRoomImplementation(ZoneServer* serv, ChatRoom* Paren
 
 	owner = "system";
 	creator = "system";
-	title = unicode("");
+	title = UnicodeString("");
 
 	parent = Parent;
 
@@ -153,7 +153,7 @@ void ChatRoomImplementation::removePlayer(Player* player, bool doLock) {
 	player->unlock(doLock);
 }
 
-void ChatRoomImplementation::removePlayer(const string& player) {
+void ChatRoomImplementation::removePlayer(const String& player) {
 	// Pre: player unlocked
 	lock();
 
@@ -175,7 +175,7 @@ void ChatRoomImplementation::removePlayer(const string& player) {
 
 		play->unlock();
 	} catch (...) {
-		cout << "unreported Exception in ChatRoom::removePlayer(const string& player)\n";
+		System::out << "unreported Exception in ChatRoom::removePlayer(const String& player)\n";
 		play->unlock();
 	}
 }
@@ -190,7 +190,7 @@ bool ChatRoomImplementation::hasPlayer(Player* player) {
 	return result;
 }
 
-bool ChatRoomImplementation::hasPlayer(const string& name) {
+bool ChatRoomImplementation::hasPlayer(const String& name) {
 	lock();
 
 	bool result = playerList.contains(name);
@@ -213,7 +213,7 @@ void ChatRoomImplementation::removeAllPlayers() {
 
 			player->unlock();
 		} catch (...) {
-			cout << "unreported Exception in ChatRoom::removeAllPlayers(Player* lockedPlayer)\n";
+			System::out << "unreported Exception in ChatRoom::removeAllPlayers(Player* lockedPlayer)\n";
 			player->unlock();
 		}
 
@@ -234,7 +234,7 @@ ChatRoom* ChatRoomImplementation::getSubRoom(int i) {
 	return channel;
 }
 
-ChatRoom* ChatRoomImplementation::getSubRoom(const string& name) {
+ChatRoom* ChatRoomImplementation::getSubRoom(const String& name) {
 	lock();
 
 	ChatRoom* channel = subRooms.get(name);
@@ -295,6 +295,6 @@ void ChatRoomImplementation::broadcastMessage(Vector<BaseMessage*>& messages) {
 	unlock();
 }
 
-string& ChatRoomImplementation::getServerName() {
+String& ChatRoomImplementation::getServerName() {
 	return server->getServerName();
 }

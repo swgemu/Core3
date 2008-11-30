@@ -10,11 +10,11 @@ import "Pharmaceutical";
 
 interface StatePack implements Pharmaceutical {
 	
-	StatePack(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+	StatePack(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int mptype);
 	}
 	
-	StatePack(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn) {
+	StatePack(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int mptype);
 	}
 	

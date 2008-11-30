@@ -54,7 +54,7 @@ public:
 		insertInt(actioncnt);
 		insertInt(actionCRC);
 		insertLong(creo->getTargetID());
-		insertInt(0); // unicode shit
+		insertInt(0); // UnicodeString shit
 	}
 
 };

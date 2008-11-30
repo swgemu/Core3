@@ -9,19 +9,19 @@
 
 class DraftSchematicAttribute : public DistributedObjectStub {
 public:
-	DraftSchematicAttribute(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision);
+	DraftSchematicAttribute(const String& attribute, float minVal, float maxVal, const String& attributeExpProp, const int precision);
 
 	DraftSchematicAttribute(DraftSchematicAttribute* attrib);
 
-	void setAttributeName(const string& attribute);
+	void setAttributeName(const String& attribute);
 
 	void setMinValue(float minVal);
 
 	void setMaxValue(float maxVal);
 
-	void setAttributeExperimentalProperty(const string& attributeExpProp);
+	void setAttributeExperimentalProperty(const String& attributeExpProp);
 
-	string& getAttributeName();
+	String& getAttributeName();
 
 	float getMinValue();
 
@@ -31,15 +31,15 @@ public:
 
 	int getPrecision();
 
-	string& getAttributeExperimentalProperty();
+	String& getAttributeExperimentalProperty();
 
 protected:
 	DraftSchematicAttribute(DummyConstructorParameter* param);
 
 	virtual ~DraftSchematicAttribute();
 
-	string _return_getAttributeExperimentalProperty;
-	string _return_getAttributeName;
+	String _return_getAttributeExperimentalProperty;
+	String _return_getAttributeName;
 
 	friend class DraftSchematicAttributeHelper;
 };
@@ -52,15 +52,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void setAttributeName(const string& attribute);
+	void setAttributeName(const String& attribute);
 
 	void setMinValue(float minVal);
 
 	void setMaxValue(float maxVal);
 
-	void setAttributeExperimentalProperty(const string& attributeExpProp);
+	void setAttributeExperimentalProperty(const String& attributeExpProp);
 
-	string& getAttributeName();
+	String& getAttributeName();
 
 	float getMinValue();
 
@@ -70,11 +70,11 @@ public:
 
 	int getPrecision();
 
-	string& getAttributeExperimentalProperty();
+	String& getAttributeExperimentalProperty();
 
 protected:
-	string _param0_setAttributeName__string_;
-	string _param0_setAttributeExperimentalProperty__string_;
+	String _param0_setAttributeName__String_;
+	String _param0_setAttributeExperimentalProperty__String_;
 };
 
 class DraftSchematicAttributeHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicAttributeHelper> {

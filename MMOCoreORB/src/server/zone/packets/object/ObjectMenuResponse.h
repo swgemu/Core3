@@ -66,7 +66,7 @@ public:
 		count = counter;
 	}
 	
-	void addRadialItem(uint8 parentid, uint8 radialid, uint8 callback, unicode text = "") {
+	void addRadialItem(uint8 parentid, uint8 radialid, uint8 callback, UnicodeString text = "") {
 		insertByte((uint8)++listSize);
 		insertByte(parentid);
 		insertByte(radialid);

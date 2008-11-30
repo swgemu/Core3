@@ -79,7 +79,7 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
-	bool trainProfession(Player * player, string prof);
+	bool trainProfession(Player * player, String prof);
 	bool trainSkill(Player * player, SkillBox * skill);
 	void dropSkills(Player * player);
 

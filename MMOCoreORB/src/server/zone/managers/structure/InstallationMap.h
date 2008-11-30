@@ -27,7 +27,7 @@ public:
 
 	void put(uint64 oid, InstallationObject* obj) {
 		if (HashTable<uint64, InstallationObject*>::put(oid, obj) != NULL)
-			cout << "INSTALLATIONMAP OID CONFLICT\n";
+			System::out << "INSTALLATIONMAP OID CONFLICT\n";
 	}
 
 };

@@ -52,27 +52,27 @@ which carries forward this exception.
 class ResourceTemplate {
 	uint64 rid;
 
-	string resname;
-	string restype;
-	string class1;
-	string class2;
-	string class3;
-	string class4;
-	string class5;
-	string class6;
-	string class7;
-	string container;
-	string att1;
-	string att2;
-	string att3;
-	string att4;
-	string att5;
-	string att6;
-	string att7;
-	string att8;
-	string att9;
-	string att10;
-	string att11;
+	String resname;
+	String restype;
+	String class1;
+	String class2;
+	String class3;
+	String class4;
+	String class5;
+	String class6;
+	String class7;
+	String container;
+	String att1;
+	String att2;
+	String att3;
+	String att4;
+	String att5;
+	String att6;
+	String att7;
+	String att8;
+	String att9;
+	String att10;
+	String att11;
 
 	int att1stat;
 	int att2stat;
@@ -97,7 +97,7 @@ class ResourceTemplate {
 	Vector<SpawnLocation*> * spawnLocations;
 
 public:
-	ResourceTemplate(const string& inType) {
+	ResourceTemplate(const String& inType) {
 		resname = "";
 		restype = "";
 		class1 = "";
@@ -155,7 +155,7 @@ public:
 
 	bool compare(ResourceTemplate* inResource) {
 
-		stringstream error;
+		StringBuffer error;
 
 		if (resname != inResource->resname)
 			error << "resname: " << resname << " != " << inResource->resname
@@ -278,13 +278,13 @@ public:
 			error << "objectSubType: " << hex << objectSubType << " != "
 					<< inResource->objectSubType << "\n";
 
-		if(containerCRC != inResource->containerCRC)
+		if (containerCRC != inResource->containerCRC)
 			error << "containerCRC: " << containerCRC << " != " << inResource->containerCRC << dec << "\n";
 
-		if (error.str() == "") {
+		if (error.toString() == "") {
 			return true;
 		} else {
-			cout << error.str();
+			System::out << error.toString();
 			return false;
 		}
 
@@ -304,7 +304,7 @@ public:
 	}
 
 	inline SpawnLocation* removeSpawn(int sid) {
-		for(int i = spawnLocations->size() - 1; i >= 0; i--) {
+		for (int i = spawnLocations->size() - 1; i >= 0; i--) {
 			SpawnLocation* sl = spawnLocations->get(i);
 			if (sl->getID() == sid) {
 				spawnLocations->remove(i);
@@ -315,79 +315,79 @@ public:
 	}
 
 	// setters
-	inline void setName(const string& instring) {
-		resname = instring;
+	inline void setName(const String& inString) {
+		resname = inString;
 	}
 
-	inline void setClass1(const string& inString) {
+	inline void setClass1(const String& inString) {
 		class1 = inString;
 	}
 
-	inline void setClass2(const string& inString) {
+	inline void setClass2(const String& inString) {
 		class2 = inString;
 	}
 
-	inline void setClass3(const string& inString) {
+	inline void setClass3(const String& inString) {
 		class3 = inString;
 	}
 
-	inline void setClass4(const string& inString) {
+	inline void setClass4(const String& inString) {
 		class4 = inString;
 	}
 
-	inline void setClass5(const string& inString) {
+	inline void setClass5(const String& inString) {
 		class5 = inString;
 	}
 
-	inline void setClass6(const string& inString) {
+	inline void setClass6(const String& inString) {
 		class6 = inString;
 	}
 
-	inline void setClass7(const string& inString) {
+	inline void setClass7(const String& inString) {
 		class7 = inString;
 	}
 
-	inline void setAtt1(const string& inString) {
+	inline void setAtt1(const String& inString) {
 		att1 = inString;
 	}
 
-	inline void setAtt2(const string& inString) {
+	inline void setAtt2(const String& inString) {
 		att2 = inString;
 	}
 
-	inline void setAtt3(const string& inString) {
+	inline void setAtt3(const String& inString) {
 		att3 = inString;
 	}
 
-	inline void setAtt4(const string& inString) {
+	inline void setAtt4(const String& inString) {
 		att4 = inString;
 	}
 
-	inline void setAtt5(const string& inString) {
+	inline void setAtt5(const String& inString) {
 		att5 = inString;
 	}
 
-	inline void setAtt6(const string& inString) {
+	inline void setAtt6(const String& inString) {
 		att6 = inString;
 	}
 
-	inline void setAtt7(const string& inString) {
+	inline void setAtt7(const String& inString) {
 		att7 = inString;
 	}
 
-	inline void setAtt8(const string& inString) {
+	inline void setAtt8(const String& inString) {
 		att8 = inString;
 	}
 
-	inline void setAtt9(const string& inString) {
+	inline void setAtt9(const String& inString) {
 		att9 = inString;
 	}
 
-	inline void setAtt10(const string& inString) {
+	inline void setAtt10(const String& inString) {
 		att10 = inString;
 	}
 
-	inline void setAtt11(const string& inString) {
+	inline void setAtt11(const String& inString) {
 		att11 = inString;
 	}
 
@@ -451,7 +451,7 @@ public:
 		minpool = inInt;
 	}
 
-	inline void setContainer(const string& inString) {
+	inline void setContainer(const String& inString) {
 		container  = inString;
 	}
 
@@ -468,83 +468,83 @@ public:
 	}
 
 	// getters
-	inline string& getName() {
+	inline String& getName() {
 		return resname;
 	}
 
-	inline string& getType() {
+	inline String& getType() {
 		return restype;
 	}
 
-	inline string& getClass1() {
+	inline String& getClass1() {
 		return class1;
 	}
 
-	inline string& getClass2() {
+	inline String& getClass2() {
 		return class2;
 	}
 
-	inline string& getClass3() {
+	inline String& getClass3() {
 		return class3;
 	}
 
-	inline string& getClass4() {
+	inline String& getClass4() {
 		return class4;
 	}
 
-	inline string& getClass5() {
+	inline String& getClass5() {
 		return class5;
 	}
 
-	inline string& getClass6() {
+	inline String& getClass6() {
 		return class6;
 	}
 
-	inline string& getClass7() {
+	inline String& getClass7() {
 		return class7;
 	}
 
-	inline string& getAtt1() {
+	inline String& getAtt1() {
 		return att1;
 	}
 
-	inline string& getAtt2() {
+	inline String& getAtt2() {
 		return att2;
 	}
 
-	inline string& getAtt3() {
+	inline String& getAtt3() {
 		return att3;
 	}
 
-	inline string& getAtt4() {
+	inline String& getAtt4() {
 		return att4;
 	}
 
-	inline string& getAtt5() {
+	inline String& getAtt5() {
 		return att5;
 	}
 
-	inline string& getAtt6() {
+	inline String& getAtt6() {
 		return att6;
 	}
 
-	inline string& getAtt7() {
+	inline String& getAtt7() {
 		return att7;
 	}
 
-	inline string& getAtt8() {
+	inline String& getAtt8() {
 		return att8;
 	}
 
-	inline string& getAtt9() {
+	inline String& getAtt9() {
 		return att9;
 	}
 
-	inline string& getAtt10() {
+	inline String& getAtt10() {
 		return att10;
 	}
 
-	inline string& getAtt11() {
+	inline String& getAtt11() {
 		return att11;
 	}
 
@@ -608,7 +608,7 @@ public:
 		return minpool;
 	}
 
-	inline string& getContainer() {
+	inline String& getContainer() {
 		return container;
 	}
 
@@ -626,33 +626,33 @@ public:
 
 	void toString(){
 
-		cout << "************ Resource Template ********************\n";
-		cout << "Resource ID = " << rid << endl;
+		System::out << "************ Resource Template ********************\n";
+		System::out << "Resource ID = " << rid << endl;
 
-		cout << "Resource ID = " << resname << endl;
-		cout << "Resource Type = " << restype << endl;
-		cout << "Class1 = " << class1 << endl;
-		cout << "Class2 = " << class2 << endl;
-		cout << "Class3 = " << class3 << endl;
-		cout << "Class4 = " << class4 << endl;
-		cout << "Class5 = " << class5 << endl;
-		cout << "Class6 = " << class6 << endl;
-		cout << "Class7 = " << class7 << endl;
-		cout << "Container = " << container << endl;
-		cout << att1 << " = " << att1stat << endl;
-		cout << att2 << " = " << att2stat << endl;
-		cout << att3 << " = " << att3stat << endl;
-		cout << att4 << " = " << att4stat << endl;
-		cout << att5 << " = " << att5stat << endl;
-		cout << att6 << " = " << att6stat << endl;
-		cout << att7 << " = " << att7stat << endl;
-		cout << att8 << " = " << att8stat << endl;
-		cout << att9 << " = " << att9stat << endl;
-		cout << att10 << " = " << att10stat << endl;
-		cout << att11 << " = " << att11stat << endl;
+		System::out << "Resource ID = " << resname << endl;
+		System::out << "Resource Type = " << restype << endl;
+		System::out << "Class1 = " << class1 << endl;
+		System::out << "Class2 = " << class2 << endl;
+		System::out << "Class3 = " << class3 << endl;
+		System::out << "Class4 = " << class4 << endl;
+		System::out << "Class5 = " << class5 << endl;
+		System::out << "Class6 = " << class6 << endl;
+		System::out << "Class7 = " << class7 << endl;
+		System::out << "Container = " << container << endl;
+		System::out << att1 << " = " << att1stat << endl;
+		System::out << att2 << " = " << att2stat << endl;
+		System::out << att3 << " = " << att3stat << endl;
+		System::out << att4 << " = " << att4stat << endl;
+		System::out << att5 << " = " << att5stat << endl;
+		System::out << att6 << " = " << att6stat << endl;
+		System::out << att7 << " = " << att7stat << endl;
+		System::out << att8 << " = " << att8stat << endl;
+		System::out << att9 << " = " << att9stat << endl;
+		System::out << att10 << " = " << att10stat << endl;
+		System::out << att11 << " = " << att11stat << endl;
 
-		cout << "Subtype = " << objectSubType  << endl;
-		cout << "containerCRC = " << containerCRC  << endl;
+		System::out << "Subtype = " << objectSubType  << endl;
+		System::out << "containerCRC = " << containerCRC  << endl;
 
 	}
 

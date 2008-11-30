@@ -64,10 +64,10 @@ interface PlayerObject implements SceneObject {
 	void sendToOwner();
 	void sendTo(Player player, boolean doClose = true);
 
-	void addExperience(const string xpType, int xp, boolean updateClient);
-	void removeExperience(const string xpType, int xp, boolean updateClient);
-	void loadExperience(const string xpStr);
-	string saveExperience();
+	void addExperience(const String xpType, int xp, boolean updateClient);
+	void removeExperience(const String xpType, int xp, boolean updateClient);
+	void loadExperience(const String xpStr);
+	String saveExperience();
 
 	boolean setCharacterBit(unsigned int bit, boolean updateClient = false);
 	boolean clearCharacterBit(unsigned int bit, boolean updateClient = false);
@@ -121,9 +121,9 @@ interface PlayerObject implements SceneObject {
 
 	Player getPlayer();
 
-	void setCurrentTitle(string nTitle, boolean updateClient);
-	void setTitle(string temptitle);
-	string getCurrentTitle();
+	void setCurrentTitle(String nTitle, boolean updateClient);
+	void setTitle(String temptitle);
+	String getCurrentTitle();
 
 	unsigned int getExperienceListCount();
 	unsigned int getNewExperienceListCount(int cnt);
@@ -132,21 +132,21 @@ interface PlayerObject implements SceneObject {
 	unsigned int getNewWaypointListCount(int cnt);
 
 	FriendsList getFriendsList();
-	void addFriend(string name, string inServer);
+	void addFriend(String name, String inServer);
 	void friendsMagicNumberReset();
-	void removeFriend(string name);
-	void findFriend(string name, PlayerManager playerManager);
+	void removeFriend(String name);
+	void findFriend(String name, PlayerManager playerManager);
 	void saveFriends();
 	void loadFriends();
 	void updateAllFriends(PlayerObject playerObject);
 
 	IgnoreList getIgnoreList();
-	void addIgnore(string name, string inServer);
+	void addIgnore(String name, String inServer);
 	void ignoreMagicNumberReset();
-	void removeIgnore(string name);
+	void removeIgnore(String name);
 	void saveIgnore();
 	void loadIgnore();
 
 	void saveWaypoints(Player player);
-	WaypointObject searchWaypoint(Player play, const string name, int mode);
+	WaypointObject searchWaypoint(Player play, const String name, int mode);
 }

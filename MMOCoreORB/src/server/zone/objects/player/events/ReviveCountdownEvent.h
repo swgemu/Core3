@@ -57,7 +57,7 @@ public:
 		player = playr;
 		counter = count;
 
-		cout << "Created revive countdown event" << endl;
+		System::out << "Created revive countdown event" << endl;
 	}
 
 	bool activate() {

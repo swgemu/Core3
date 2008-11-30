@@ -21,9 +21,9 @@ class CreatureObject;
 
 class GeneratorDeed : public DeedObject {
 public:
-	GeneratorDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn);
+	GeneratorDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
 
-	GeneratorDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
+	GeneratorDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void parseItemAttributes();
 
@@ -101,8 +101,8 @@ public:
 	GeneratorDeed* _this;
 
 public:
-	GeneratorDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp);
-	GeneratorDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp);
+	GeneratorDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	GeneratorDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~GeneratorDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

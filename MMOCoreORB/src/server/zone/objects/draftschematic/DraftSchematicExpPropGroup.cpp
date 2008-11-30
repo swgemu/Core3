@@ -12,7 +12,7 @@
  *	DraftSchematicExpPropGroupStub
  */
 
-DraftSchematicExpPropGroup::DraftSchematicExpPropGroup(string& subtitle) {
+DraftSchematicExpPropGroup::DraftSchematicExpPropGroup(String& subtitle) {
 	_impl = new DraftSchematicExpPropGroupImplementation(subtitle);
 	_impl->_setStub(this);
 }
@@ -29,7 +29,7 @@ DraftSchematicExpPropGroup::DraftSchematicExpPropGroup(DummyConstructorParameter
 DraftSchematicExpPropGroup::~DraftSchematicExpPropGroup() {
 }
 
-void DraftSchematicExpPropGroup::addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight) {
+void DraftSchematicExpPropGroup::addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -57,7 +57,7 @@ void DraftSchematicExpPropGroup::sendToPlayer(ObjectControllerMessage* msg, int 
 		((DraftSchematicExpPropGroupImplementation*) _impl)->sendToPlayer(msg, count);
 }
 
-bool DraftSchematicExpPropGroup::containsExpPropType(const string& expPropType) {
+bool DraftSchematicExpPropGroup::containsExpPropType(const String& expPropType) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -70,7 +70,7 @@ bool DraftSchematicExpPropGroup::containsExpPropType(const string& expPropType) 
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->containsExpPropType(expPropType);
 }
 
-float DraftSchematicExpPropGroup::getExpPropPercentage(const string& expPropType) {
+float DraftSchematicExpPropGroup::getExpPropPercentage(const String& expPropType) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -121,7 +121,7 @@ unsigned char DraftSchematicExpPropGroup::getTypeAndWeight(unsigned int index) {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getTypeAndWeight(index);
 }
 
-string& DraftSchematicExpPropGroup::getKey(int i) {
+String& DraftSchematicExpPropGroup::getKey(int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -147,7 +147,7 @@ int DraftSchematicExpPropGroup::getKeyCount() {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getKeyCount();
 }
 
-string& DraftSchematicExpPropGroup::getExpPropTypesKey(int i) {
+String& DraftSchematicExpPropGroup::getExpPropTypesKey(int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -186,7 +186,7 @@ int DraftSchematicExpPropGroup::getExpPropTypesSize() {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropTypesSize();
 }
 
-string& DraftSchematicExpPropGroup::getExpPropWeightsKey(int i) {
+String& DraftSchematicExpPropGroup::getExpPropWeightsKey(int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -225,7 +225,7 @@ int DraftSchematicExpPropGroup::getExpPropWeightsSize() {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropWeightsSize();
 }
 
-string& DraftSchematicExpPropGroup::getExpPropWeightPercentagesKey(int i) {
+String& DraftSchematicExpPropGroup::getExpPropWeightPercentagesKey(int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -264,7 +264,7 @@ int DraftSchematicExpPropGroup::getExpPropWeightPercentagesSize() {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getExpPropWeightPercentagesSize();
 }
 
-string& DraftSchematicExpPropGroup::getSubtitle() {
+String& DraftSchematicExpPropGroup::getSubtitle() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -289,16 +289,16 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 
 	switch (methid) {
 	case 6:
-		addExperimentalProperty(inv->getAsciiParameter(_param0_addExperimentalProperty__string_int_), inv->getUnsignedIntParameter());
+		addExperimentalProperty(inv->getAsciiParameter(_param0_addExperimentalProperty__String_int_), inv->getUnsignedIntParameter());
 		break;
 	case 7:
 		sendToPlayer((ObjectControllerMessage*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case 8:
-		resp->insertBoolean(containsExpPropType(inv->getAsciiParameter(_param0_containsExpPropType__string_)));
+		resp->insertBoolean(containsExpPropType(inv->getAsciiParameter(_param0_containsExpPropType__String_)));
 		break;
 	case 9:
-		resp->insertFloat(getExpPropPercentage(inv->getAsciiParameter(_param0_getExpPropPercentage__string_)));
+		resp->insertFloat(getExpPropPercentage(inv->getAsciiParameter(_param0_getExpPropPercentage__String_)));
 		break;
 	case 10:
 		resp->insertInt(getExpPropPercentageListSize());
@@ -352,7 +352,7 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 	return resp;
 }
 
-void DraftSchematicExpPropGroupAdapter::addExperimentalProperty(const string& experimentalPropertyType, unsigned int weight) {
+void DraftSchematicExpPropGroupAdapter::addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight) {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->addExperimentalProperty(experimentalPropertyType, weight);
 }
 
@@ -360,11 +360,11 @@ void DraftSchematicExpPropGroupAdapter::sendToPlayer(ObjectControllerMessage* ms
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->sendToPlayer(msg, count);
 }
 
-bool DraftSchematicExpPropGroupAdapter::containsExpPropType(const string& expPropType) {
+bool DraftSchematicExpPropGroupAdapter::containsExpPropType(const String& expPropType) {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->containsExpPropType(expPropType);
 }
 
-float DraftSchematicExpPropGroupAdapter::getExpPropPercentage(const string& expPropType) {
+float DraftSchematicExpPropGroupAdapter::getExpPropPercentage(const String& expPropType) {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropPercentage(expPropType);
 }
 
@@ -380,7 +380,7 @@ unsigned char DraftSchematicExpPropGroupAdapter::getTypeAndWeight(unsigned int i
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getTypeAndWeight(index);
 }
 
-string& DraftSchematicExpPropGroupAdapter::getKey(int i) {
+String& DraftSchematicExpPropGroupAdapter::getKey(int i) {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getKey(i);
 }
 
@@ -388,7 +388,7 @@ int DraftSchematicExpPropGroupAdapter::getKeyCount() {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getKeyCount();
 }
 
-string& DraftSchematicExpPropGroupAdapter::getExpPropTypesKey(int i) {
+String& DraftSchematicExpPropGroupAdapter::getExpPropTypesKey(int i) {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropTypesKey(i);
 }
 
@@ -400,7 +400,7 @@ int DraftSchematicExpPropGroupAdapter::getExpPropTypesSize() {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropTypesSize();
 }
 
-string& DraftSchematicExpPropGroupAdapter::getExpPropWeightsKey(int i) {
+String& DraftSchematicExpPropGroupAdapter::getExpPropWeightsKey(int i) {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightsKey(i);
 }
 
@@ -412,7 +412,7 @@ int DraftSchematicExpPropGroupAdapter::getExpPropWeightsSize() {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightsSize();
 }
 
-string& DraftSchematicExpPropGroupAdapter::getExpPropWeightPercentagesKey(int i) {
+String& DraftSchematicExpPropGroupAdapter::getExpPropWeightPercentagesKey(int i) {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightPercentagesKey(i);
 }
 
@@ -424,7 +424,7 @@ int DraftSchematicExpPropGroupAdapter::getExpPropWeightPercentagesSize() {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getExpPropWeightPercentagesSize();
 }
 
-string& DraftSchematicExpPropGroupAdapter::getSubtitle() {
+String& DraftSchematicExpPropGroupAdapter::getSubtitle() {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getSubtitle();
 }
 

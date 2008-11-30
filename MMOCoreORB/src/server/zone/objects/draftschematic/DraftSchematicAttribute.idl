@@ -43,21 +43,21 @@ which carries forward this exception.
 */
 
 interface DraftSchematicAttribute {
-	DraftSchematicAttribute(const string attribute, const float minVal, const float maxVal, 
-		const string attributeExpProp, const int precision);
+	DraftSchematicAttribute(const String attribute, const float minVal, const float maxVal, 
+		const String attributeExpProp, const int precision);
 	DraftSchematicAttribute(DraftSchematicAttribute attrib);
 
 	// setters
-	void setAttributeName(const string attribute);
+	void setAttributeName(const String attribute);
 	void setMinValue(const float minVal);
 	void setMaxValue(const float maxVal);
-	void setAttributeExperimentalProperty(const string attributeExpProp);
+	void setAttributeExperimentalProperty(const String attributeExpProp);
 
 	// getters
-	string getAttributeName();
+	String getAttributeName();
 	float getMinValue();
 	float getMaxValue();
 	float getRange();
 	int getPrecision();
-	string getAttributeExperimentalProperty();
+	String getAttributeExperimentalProperty();
 }

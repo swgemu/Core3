@@ -189,7 +189,7 @@ public:
 
 	void unlock(bool doLock = true);
 
-	void setLockName(const string& name);
+	void setLockName(const String& name);
 
 	// setters and getters
 	inline void setMovementCounter(uint32 cnt) {

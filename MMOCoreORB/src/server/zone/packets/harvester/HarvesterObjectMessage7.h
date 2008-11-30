@@ -64,7 +64,7 @@ public:
 
 	void insertHopperItems(HarvesterObject * hino) {
 
-		if(getHopperCount() == 0)
+		if (getHopperCount() == 0)
 			insertByte(0);
 		else
 			insertByte(getHopperCount() + 1)

@@ -17,29 +17,29 @@ class TangibleObject;
 
 class Ticket : public TangibleObject {
 public:
-	Ticket(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	Ticket(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	Ticket(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn, const string& dpPlanet, const string& dpPoint, const string& arPlanet, const string& arPoint);
+	Ticket(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn, const String& dpPlanet, const String& dpPoint, const String& arPlanet, const String& arPoint);
 
 	int useObject(Player* player);
 
-	string& getDeparturePlanet();
+	String& getDeparturePlanet();
 
-	string& getDeparturePoint();
+	String& getDeparturePoint();
 
-	string& getArrivalPlanet();
+	String& getArrivalPlanet();
 
-	string& getArrivalPoint();
+	String& getArrivalPoint();
 
 protected:
 	Ticket(DummyConstructorParameter* param);
 
 	virtual ~Ticket();
 
-	string _return_getArrivalPlanet;
-	string _return_getArrivalPoint;
-	string _return_getDeparturePlanet;
-	string _return_getDeparturePoint;
+	String _return_getArrivalPlanet;
+	String _return_getArrivalPoint;
+	String _return_getDeparturePlanet;
+	String _return_getDeparturePoint;
 
 	friend class TicketHelper;
 };
@@ -54,13 +54,13 @@ public:
 
 	int useObject(Player* player);
 
-	string& getDeparturePlanet();
+	String& getDeparturePlanet();
 
-	string& getDeparturePoint();
+	String& getDeparturePoint();
 
-	string& getArrivalPlanet();
+	String& getArrivalPlanet();
 
-	string& getArrivalPoint();
+	String& getArrivalPoint();
 
 };
 

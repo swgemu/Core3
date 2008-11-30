@@ -74,11 +74,11 @@ public:
 		} catch (Exception& e) {
 			object->unlock();
 
-			cout << "Execption on scene object undeployment\n" << e.getMessage() << "\n";
+			System::out << "Execption on scene object undeployment\n" << e.getMessage() << "\n";
 		} catch (...) {
 			object->unlock();
 
-			cout << "execption on scene object undeployment\n";
+			System::out << "execption on scene object undeployment\n";
 		}
 
 		object = NULL;

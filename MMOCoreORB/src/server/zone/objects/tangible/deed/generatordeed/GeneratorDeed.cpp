@@ -20,12 +20,12 @@
  *	GeneratorDeedStub
  */
 
-GeneratorDeed::GeneratorDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+GeneratorDeed::GeneratorDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new GeneratorDeedImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-GeneratorDeed::GeneratorDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+GeneratorDeed::GeneratorDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new GeneratorDeedImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -264,11 +264,11 @@ DistributedObjectAdapter* GeneratorDeedHelper::createAdapter(DistributedObjectSt
  *	GeneratorDeedServant
  */
 
-GeneratorDeedServant::GeneratorDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
+GeneratorDeedServant::GeneratorDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = GeneratorDeedHelper::instance();
 }
 
-GeneratorDeedServant::GeneratorDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
+GeneratorDeedServant::GeneratorDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = GeneratorDeedHelper::instance();
 }
 

@@ -75,7 +75,7 @@ BaseMessage* SuiBankTransferBox::getMessage() {
 		return ((SuiBankTransferBoxImplementation*) _impl)->getMessage();
 }
 
-void SuiBankTransferBox::addOption(const string& itemText, const string& lblType, const string& itemType) {
+void SuiBankTransferBox::addOption(const String& itemText, const String& lblType, const String& itemType) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -114,7 +114,7 @@ Packet* SuiBankTransferBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 		resp->insertLong(getMessage()->_getObjectID());
 		break;
 	case 10:
-		addOption(inv->getAsciiParameter(_param0_addOption__string_string_string_), inv->getAsciiParameter(_param1_addOption__string_string_string_), inv->getAsciiParameter(_param2_addOption__string_string_string_));
+		addOption(inv->getAsciiParameter(_param0_addOption__String_String_String_), inv->getAsciiParameter(_param1_addOption__String_String_String_), inv->getAsciiParameter(_param2_addOption__String_String_String_));
 		break;
 	default:
 		return NULL;
@@ -139,7 +139,7 @@ BaseMessage* SuiBankTransferBoxAdapter::getMessage() {
 	return ((SuiBankTransferBoxImplementation*) impl)->getMessage();
 }
 
-void SuiBankTransferBoxAdapter::addOption(const string& itemText, const string& lblType, const string& itemType) {
+void SuiBankTransferBoxAdapter::addOption(const String& itemText, const String& lblType, const String& itemType) {
 	return ((SuiBankTransferBoxImplementation*) impl)->addOption(itemText, lblType, itemType);
 }
 

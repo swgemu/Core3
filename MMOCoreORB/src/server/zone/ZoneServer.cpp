@@ -200,7 +200,7 @@ SceneObject* ZoneServer::removeCachedObject(SceneObject* obj, bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->removeCachedObject(obj, doLock);
 }
 
-bool ZoneServer::banUser(string& name, string& admin) {
+bool ZoneServer::banUser(String& name, String& admin) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -214,7 +214,7 @@ bool ZoneServer::banUser(string& name, string& admin) {
 		return ((ZoneServerImplementation*) _impl)->banUser(name, admin);
 }
 
-bool ZoneServer::kickUser(string& name, string& admin) {
+bool ZoneServer::kickUser(String& name, String& admin) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -485,7 +485,7 @@ Zone* ZoneServer::getZone(int index) {
 		return ((ZoneServerImplementation*) _impl)->getZone(index);
 }
 
-string& ZoneServer::getServerName() {
+String& ZoneServer::getServerName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -642,10 +642,10 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(removeCachedObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 17:
-		resp->insertBoolean(banUser(inv->getAsciiParameter(_param0_banUser__string_string_), inv->getAsciiParameter(_param1_banUser__string_string_)));
+		resp->insertBoolean(banUser(inv->getAsciiParameter(_param0_banUser__String_String_), inv->getAsciiParameter(_param1_banUser__String_String_)));
 		break;
 	case 18:
-		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__string_string_), inv->getAsciiParameter(_param1_kickUser__string_string_)));
+		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__String_String_), inv->getAsciiParameter(_param1_kickUser__String_String_)));
 		break;
 	case 19:
 		changeUserCap(inv->getSignedIntParameter());
@@ -788,11 +788,11 @@ SceneObject* ZoneServerAdapter::removeCachedObject(SceneObject* obj, bool doLock
 	return ((ZoneServerImplementation*) impl)->removeCachedObject(obj, doLock);
 }
 
-bool ZoneServerAdapter::banUser(string& name, string& admin) {
+bool ZoneServerAdapter::banUser(String& name, String& admin) {
 	return ((ZoneServerImplementation*) impl)->banUser(name, admin);
 }
 
-bool ZoneServerAdapter::kickUser(string& name, string& admin) {
+bool ZoneServerAdapter::kickUser(String& name, String& admin) {
 	return ((ZoneServerImplementation*) impl)->kickUser(name, admin);
 }
 
@@ -880,7 +880,7 @@ Zone* ZoneServerAdapter::getZone(int index) {
 	return ((ZoneServerImplementation*) impl)->getZone(index);
 }
 
-string& ZoneServerAdapter::getServerName() {
+String& ZoneServerAdapter::getServerName() {
 	return ((ZoneServerImplementation*) impl)->getServerName();
 }
 

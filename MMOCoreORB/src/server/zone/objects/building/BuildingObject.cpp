@@ -169,20 +169,20 @@ bool BuildingObject::isUpdated() {
 		return ((BuildingObjectImplementation*) _impl)->isUpdated();
 }
 
-void BuildingObject::setAttributes(string& attributestring) {
+void BuildingObject::setAttributes(String& attributeString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
-		method.addAsciiParameter(attributestring);
+		method.addAsciiParameter(attributeString);
 
 		method.executeWithVoidReturn();
 	} else
-		((BuildingObjectImplementation*) _impl)->setAttributes(attributestring);
+		((BuildingObjectImplementation*) _impl)->setAttributes(attributeString);
 }
 
-string& BuildingObject::getAttributes() {
+String& BuildingObject::getAttributes() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -195,7 +195,7 @@ string& BuildingObject::getAttributes() {
 		return ((BuildingObjectImplementation*) _impl)->getAttributes();
 }
 
-string& BuildingObject::getOwner() {
+String& BuildingObject::getOwner() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -208,7 +208,7 @@ string& BuildingObject::getOwner() {
 		return ((BuildingObjectImplementation*) _impl)->getOwner();
 }
 
-void BuildingObject::setOwner(const string& owner) {
+void BuildingObject::setOwner(const String& owner) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -258,7 +258,7 @@ void BuildingObject::parseItemAttributes() {
 		((BuildingObjectImplementation*) _impl)->parseItemAttributes();
 }
 
-unicode& BuildingObject::getName() {
+UnicodeString& BuildingObject::getName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -271,7 +271,7 @@ unicode& BuildingObject::getName() {
 		return ((BuildingObjectImplementation*) _impl)->getName();
 }
 
-void BuildingObject::setName(const string& n) {
+void BuildingObject::setName(const String& n) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -284,7 +284,7 @@ void BuildingObject::setName(const string& n) {
 		((BuildingObjectImplementation*) _impl)->setName(n);
 }
 
-void BuildingObject::setName(const unicode& n) {
+void BuildingObject::setName(const UnicodeString& n) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -297,7 +297,7 @@ void BuildingObject::setName(const unicode& n) {
 		((BuildingObjectImplementation*) _impl)->setName(n);
 }
 
-string& BuildingObject::getDefaultName() {
+String& BuildingObject::getDefaultName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -310,7 +310,7 @@ string& BuildingObject::getDefaultName() {
 		return ((BuildingObjectImplementation*) _impl)->getDefaultName();
 }
 
-string& BuildingObject::getTemplateName() {
+String& BuildingObject::getTemplateName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -475,7 +475,7 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isUpdated());
 		break;
 	case 17:
-		setAttributes(inv->getAsciiParameter(_param0_setAttributes__string_));
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_));
 		break;
 	case 18:
 		resp->insertAscii(getAttributes());
@@ -484,7 +484,7 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getOwner());
 		break;
 	case 20:
-		setOwner(inv->getAsciiParameter(_param0_setOwner__string_));
+		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
 		break;
 	case 21:
 		resp->insertLong(getOwnerID());
@@ -499,10 +499,10 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertUnicode(getName());
 		break;
 	case 25:
-		setName(inv->getAsciiParameter(_param0_setName__string_));
+		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
 	case 26:
-		setName(inv->getUnicodeParameter(_param0_setName__unicode_));
+		setName(inv->getUnicodeParameter(_param0_setName__UnicodeString_));
 		break;
 	case 27:
 		resp->insertAscii(getDefaultName());
@@ -585,19 +585,19 @@ bool BuildingObjectAdapter::isUpdated() {
 	return ((BuildingObjectImplementation*) impl)->isUpdated();
 }
 
-void BuildingObjectAdapter::setAttributes(string& attributestring) {
-	return ((BuildingObjectImplementation*) impl)->setAttributes(attributestring);
+void BuildingObjectAdapter::setAttributes(String& attributeString) {
+	return ((BuildingObjectImplementation*) impl)->setAttributes(attributeString);
 }
 
-string& BuildingObjectAdapter::getAttributes() {
+String& BuildingObjectAdapter::getAttributes() {
 	return ((BuildingObjectImplementation*) impl)->getAttributes();
 }
 
-string& BuildingObjectAdapter::getOwner() {
+String& BuildingObjectAdapter::getOwner() {
 	return ((BuildingObjectImplementation*) impl)->getOwner();
 }
 
-void BuildingObjectAdapter::setOwner(const string& owner) {
+void BuildingObjectAdapter::setOwner(const String& owner) {
 	return ((BuildingObjectImplementation*) impl)->setOwner(owner);
 }
 
@@ -613,23 +613,23 @@ void BuildingObjectAdapter::parseItemAttributes() {
 	return ((BuildingObjectImplementation*) impl)->parseItemAttributes();
 }
 
-unicode& BuildingObjectAdapter::getName() {
+UnicodeString& BuildingObjectAdapter::getName() {
 	return ((BuildingObjectImplementation*) impl)->getName();
 }
 
-void BuildingObjectAdapter::setName(const string& n) {
+void BuildingObjectAdapter::setName(const String& n) {
 	return ((BuildingObjectImplementation*) impl)->setName(n);
 }
 
-void BuildingObjectAdapter::setName(const unicode& n) {
+void BuildingObjectAdapter::setName(const UnicodeString& n) {
 	return ((BuildingObjectImplementation*) impl)->setName(n);
 }
 
-string& BuildingObjectAdapter::getDefaultName() {
+String& BuildingObjectAdapter::getDefaultName() {
 	return ((BuildingObjectImplementation*) impl)->getDefaultName();
 }
 
-string& BuildingObjectAdapter::getTemplateName() {
+String& BuildingObjectAdapter::getTemplateName() {
 	return ((BuildingObjectImplementation*) impl)->getTemplateName();
 }
 

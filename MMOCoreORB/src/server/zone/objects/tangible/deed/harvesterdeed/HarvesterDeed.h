@@ -21,9 +21,9 @@ class CreatureObject;
 
 class HarvesterDeed : public DeedObject {
 public:
-	HarvesterDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn);
+	HarvesterDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
 
-	HarvesterDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
+	HarvesterDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void parseItemAttributes();
 
@@ -109,8 +109,8 @@ public:
 	HarvesterDeed* _this;
 
 public:
-	HarvesterDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp);
-	HarvesterDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp);
+	HarvesterDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	HarvesterDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~HarvesterDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

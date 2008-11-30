@@ -53,8 +53,8 @@ which carries forward this exception.
 class DraftSchematicAttributeImplementation : public DraftSchematicAttributeServant {
 
 	// example: useModifier
-	string attributeName;
-	string attributeExperimentalProperty;
+	String attributeName;
+	String attributeExperimentalProperty;
 
 	float minValue;
 	float maxValue;
@@ -63,8 +63,8 @@ class DraftSchematicAttributeImplementation : public DraftSchematicAttributeServ
 	int precision;
 
 public:
-	DraftSchematicAttributeImplementation(const string& attribute, const float minVal, const float maxVal,
-			const string& attributeExpProp, const int prec) : DraftSchematicAttributeServant() {
+	DraftSchematicAttributeImplementation(const String& attribute, const float minVal, const float maxVal,
+			const String& attributeExpProp, const int prec) : DraftSchematicAttributeServant() {
 
 		attributeName = attribute;
 		minValue = minVal;
@@ -87,7 +87,7 @@ public:
 	}
 
 	// setters
-	inline void setAttributeName(const string attribute) {
+	inline void setAttributeName(const String attribute) {
 		attributeName = attribute;
 	}
 
@@ -101,12 +101,12 @@ public:
 		range = maxValue - minValue;
 	}
 
-	inline void setAttributeExperimentalProperty(const string attributeExpProp){
+	inline void setAttributeExperimentalProperty(const String attributeExpProp){
 		attributeExperimentalProperty = attributeExpProp;
 	}
 
 	// getters
-	inline string& getAttributeName() {
+	inline String& getAttributeName() {
 		return attributeName;
 	}
 
@@ -126,7 +126,7 @@ public:
 		return precision;
 	}
 
-	inline string& getAttributeExperimentalProperty(){
+	inline String& getAttributeExperimentalProperty(){
 		return attributeExperimentalProperty;
 	}
 

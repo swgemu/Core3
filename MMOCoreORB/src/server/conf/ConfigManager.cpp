@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "ConfigManager.h"
 
 bool ConfigManager::loadConfigData() {
-	if(!loadConfigFile())
+	if (!loadConfigFile())
 		return false;
 
 	makeLogin = getGlobalByte("MakeLogin");

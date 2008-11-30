@@ -62,7 +62,7 @@ interface BazaarManager {
 	
 	boolean isBazaarTerminal(unsigned long objectID);
 
-	void addSaleItem(Player player, unsigned long objectid, unsigned long bazaarid, unicode description, int price, int duration, boolean auction);
+	void addSaleItem(Player player, unsigned long objectid, unsigned long bazaarid, UnicodeString description, int price, int duration, boolean auction);
 
    	void getBazaarData(Player player, unsigned long objectid, int screen, int extent, unsigned int category, int count, int offset);
 	RegionBazaar getBazaar(unsigned long bazaarid);

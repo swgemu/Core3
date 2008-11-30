@@ -55,26 +55,26 @@ class Player;
 class ChatRoomImplementation : public ChatRoomServant, public Mutex {
 	ZoneServer* server;
 
-	string name;
-	string fullPath;
+	String name;
+	String fullPath;
 
-	string owner;
-	string creator;
+	String owner;
+	String creator;
 
-	unicode title;
+	UnicodeString title;
 	uint32 roomID;
 
 	ManagedReference<ChatRoom> parent;
 
 	//SortedVector<Player*> playerList;
-	VectorMap<string, Player*> playerList;
-	VectorMap<string, ChatRoom*> subRooms;
+	VectorMap<String, Player*> playerList;
+	VectorMap<String, ChatRoom*> subRooms;
 
 	bool isPublicRoom;
 
 public:
-	ChatRoomImplementation(ZoneServer* serv, const string& Name, uint32 channelId);
-	ChatRoomImplementation(ZoneServer* serv, ChatRoom* Parent, const string& Name, uint32 channelId);
+	ChatRoomImplementation(ZoneServer* serv, const String& Name, uint32 channelId);
+	ChatRoomImplementation(ZoneServer* serv, ChatRoom* Parent, const String& Name, uint32 channelId);
 
 	virtual ~ChatRoomImplementation();
 
@@ -86,17 +86,17 @@ public:
 	void removeSubRoom(ChatRoom* channel);
 
 	ChatRoom* getSubRoom(int i);
-	ChatRoom* getSubRoom(const string& name);
+	ChatRoom* getSubRoom(const String& name);
 
 	void addPlayer(Player* player, bool doLock = true);
 	void removePlayer(Player* player, bool doLock = true);
-	void removePlayer(const string& player);
+	void removePlayer(const String& player);
 
 	void broadcastMessage(BaseMessage* msg);
 	void broadcastMessage(Vector<BaseMessage*>& messages);
 
 	bool hasPlayer(Player* player);
-	bool hasPlayer(const string& name);
+	bool hasPlayer(const String& name);
 
 	void removeAllPlayers();
 
@@ -124,42 +124,42 @@ public:
 		return playerList.size();
 	}
 
-	void setName(const string& Name) {
+	void setName(const String& Name) {
 		name = Name;
 	}
 
-	inline string& getName() {
+	inline String& getName() {
 		return name;
 	}
 
-	inline string& getFullPath() {
+	inline String& getFullPath() {
 		return fullPath;
 	}
 
-	inline string& getOwner() {
+	inline String& getOwner() {
 		return owner;
 	}
 
-	inline string& getCreator() {
+	inline String& getCreator() {
 		return creator;
 	}
 
-	inline unicode& getTitle() {
+	inline UnicodeString& getTitle() {
 		return title;
 	}
 
-	string& getServerName();
+	String& getServerName();
 
-	inline void setOwner(const string& Owner) {
+	inline void setOwner(const String& Owner) {
 		owner = Owner;
 	}
 
-	inline void setCreator(const string& Creator) {
+	inline void setCreator(const String& Creator) {
 		creator = Creator;
 	}
 
-	inline void setTitle(const string& Title) {
-		title = unicode(Title);
+	inline void setTitle(const String& Title) {
+		title = UnicodeString(Title);
 	}
 
 	inline uint32 getRoomID() {

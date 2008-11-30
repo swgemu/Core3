@@ -52,12 +52,12 @@ which carries forward this exception.
 class HeavyRangedWeaponImplementation : public HeavyRangedWeaponServant {
 	
 public:
-	HeavyRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
+	HeavyRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: HeavyRangedWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::HEAVYWEAPON, eqp) {
 		initialize();
 	}
 
-	HeavyRangedWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
+	HeavyRangedWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: HeavyRangedWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::HEAVYWEAPON, eqp) {
 		initialize();
 	}

@@ -435,21 +435,21 @@ public:
 		return &skillModBuffs;
 	}
 
-	int getSkillModBuff(const string& name) {
+	int getSkillModBuff(const String& name) {
 		int bonus = skillModBuffs.get(name);
 		return bonus;
 	}
 
-	bool hasSkillModBuff(const string& name) {
+	bool hasSkillModBuff(const String& name) {
 		return skillModBuffs.containsKey(name);
 	}
 
-	void removeSkillModBuff(string& name) {
+	void removeSkillModBuff(String& name) {
 		skillModBuffs.remove(name);
 	}
 
-	void addSkillModBuff(string mod, int val) {
-		if(hasSkillModBuff(mod))
+	void addSkillModBuff(String mod, int val) {
+		if (hasSkillModBuff(mod))
 			removeSkillModBuff(mod);
 
 		skillModBuffs.put(mod, val);

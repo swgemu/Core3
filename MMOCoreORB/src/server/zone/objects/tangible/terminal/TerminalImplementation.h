@@ -66,7 +66,7 @@ public:
 	static const int BAZAAR = 50;
 	
 public:
-	TerminalImplementation(uint32 objCRC, uint64 objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType) 
+	TerminalImplementation(uint32 objCRC, uint64 objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) 
 			: TerminalServant(objid, TERMINAL) {
 			
 		objectCRC = objCRC;

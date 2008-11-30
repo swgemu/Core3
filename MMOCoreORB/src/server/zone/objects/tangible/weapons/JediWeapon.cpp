@@ -14,12 +14,12 @@
  *	JediWeaponStub
  */
 
-JediWeapon::JediWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp) : Weapon(DummyConstructorParameter::instance()) {
+JediWeapon::JediWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp) : Weapon(DummyConstructorParameter::instance()) {
 	_impl = new JediWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp);
 	_impl->_setStub(this);
 }
 
-JediWeapon::JediWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : Weapon(DummyConstructorParameter::instance()) {
+JediWeapon::JediWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp) : Weapon(DummyConstructorParameter::instance()) {
 	_impl = new JediWeaponImplementation(creature, temp, n, tempn, tp, eqp);
 	_impl->_setStub(this);
 }
@@ -122,11 +122,11 @@ DistributedObjectAdapter* JediWeaponHelper::createAdapter(DistributedObjectStub*
  *	JediWeaponServant
  */
 
-JediWeaponServant::JediWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat) : WeaponImplementation(oid, tempCRC, n, tempn, eqp, tp, cat) {
+JediWeaponServant::JediWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat) : WeaponImplementation(oid, tempCRC, n, tempn, eqp, tp, cat) {
 	_classHelper = JediWeaponHelper::instance();
 }
 
-JediWeaponServant::JediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat) : WeaponImplementation(creature, temp, n, tempn, eqp, tp, cat) {
+JediWeaponServant::JediWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat) : WeaponImplementation(creature, temp, n, tempn, eqp, tp, cat) {
 	_classHelper = JediWeaponHelper::instance();
 }
 

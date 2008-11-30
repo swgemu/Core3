@@ -67,7 +67,7 @@ public:
 		insertByte(1);
 		insertShort(idx);
 		insertLong(player->getObjectID());
-		insertAscii(player->getCharacterName().c_str());
+		insertAscii(player->getCharacterName().toString());
 	}
 	
 	void removeMember(int idx) {
@@ -86,12 +86,12 @@ public:
 		insertByte(2);
 		insertShort(oldLeaderIdx);
 		insertLong(oldLeader->getObjectID());
-		insertAscii(oldLeader->getCharacterName().c_str());
+		insertAscii(oldLeader->getCharacterName().toString());
 		
 		insertByte(2);
 		insertShort(0);
 		insertLong(newLeader->getObjectID());
-		insertAscii(newLeader->getCharacterName().c_str());
+		insertAscii(newLeader->getCharacterName().toString());
 	}
 };
 

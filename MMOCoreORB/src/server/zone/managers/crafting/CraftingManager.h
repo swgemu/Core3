@@ -39,15 +39,15 @@ public:
 
 	void putComponentBackInInventory(Player* player, Component* component);
 
-	void nextCraftingStage(Player* player, string& test);
+	void nextCraftingStage(Player* player, String& test);
 
-	void craftingCustomization(Player* player, string& name, int condition, string& customizationstring);
+	void craftingCustomization(Player* player, String& name, int condition, String& customizationString);
 
-	void handleExperimenting(Player* player, int counter, int numRowsAttempted, string& expstring);
+	void handleExperimenting(Player* player, int counter, int numRowsAttempted, String& expString);
 
-	void createPrototype(Player* player, string& count);
+	void createPrototype(Player* player, String& count);
 
-	void createSchematic(Player* player, string& count);
+	void createSchematic(Player* player, String& count);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 
@@ -55,9 +55,9 @@ public:
 
 	float calculateAssemblyValueModifier(CraftingTool* craftingTool);
 
-	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
+	void addDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
 
-	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
 
 	void refreshDraftSchematics(Player* player);
 
@@ -87,15 +87,15 @@ public:
 
 	void putComponentBackInInventory(Player* player, Component* component);
 
-	void nextCraftingStage(Player* player, string& test);
+	void nextCraftingStage(Player* player, String& test);
 
-	void craftingCustomization(Player* player, string& name, int condition, string& customizationstring);
+	void craftingCustomization(Player* player, String& name, int condition, String& customizationString);
 
-	void handleExperimenting(Player* player, int counter, int numRowsAttempted, string& expstring);
+	void handleExperimenting(Player* player, int counter, int numRowsAttempted, String& expString);
 
-	void createPrototype(Player* player, string& count);
+	void createPrototype(Player* player, String& count);
 
-	void createSchematic(Player* player, string& count);
+	void createSchematic(Player* player, String& count);
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 
@@ -103,21 +103,21 @@ public:
 
 	float calculateAssemblyValueModifier(CraftingTool* craftingTool);
 
-	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
+	void addDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
 
-	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
 
 	void refreshDraftSchematics(Player* player);
 
 protected:
-	string _param1_nextCraftingStage__Player_string_;
-	string _param1_craftingCustomization__Player_string_int_string_;
-	string _param3_craftingCustomization__Player_string_int_string_;
-	string _param3_handleExperimenting__Player_int_int_string_;
-	string _param1_createPrototype__Player_string_;
-	string _param1_createSchematic__Player_string_;
-	string _param1_addDraftSchematicsFromGroupName__Player_string_;
-	string _param1_subtractDraftSchematicsFromGroupName__Player_string_;
+	String _param1_nextCraftingStage__Player_String_;
+	String _param1_craftingCustomization__Player_String_int_String_;
+	String _param3_craftingCustomization__Player_String_int_String_;
+	String _param3_handleExperimenting__Player_int_int_String_;
+	String _param1_createPrototype__Player_String_;
+	String _param1_createSchematic__Player_String_;
+	String _param1_addDraftSchematicsFromGroupName__Player_String_;
+	String _param1_subtractDraftSchematicsFromGroupName__Player_String_;
 };
 
 class CraftingManagerHelper : public DistributedObjectClassHelper, public Singleton<CraftingManagerHelper> {

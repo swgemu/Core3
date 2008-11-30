@@ -64,10 +64,10 @@ class CommandQueueAction {
 	uint32 actionCounter;
 	uint64 targetID;
 	
-	string actionModifier;
+	String actionModifier;
 
 public:
-	CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const string& amod);
+	CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const String& amod);
 
 	bool check();
 	bool validate();
@@ -89,7 +89,7 @@ public:
 		skill = sk;
 	}
 
-	void setActionModifier(string& modifier) {
+	void setActionModifier(String& modifier) {
 		actionModifier = modifier;
 	}
 	
@@ -113,7 +113,7 @@ public:
 		return targetID;
 	}
 
-	inline string& getActionModifier() {
+	inline String& getActionModifier() {
 		return actionModifier;
 	}
 	

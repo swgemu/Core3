@@ -53,23 +53,23 @@ which carries forward this exception.
 
 class DiceImplementation : public DiceServant {
 protected:
-	int diceType;
+	uint32 diceType;
 	int diceSides;
 
 public:
-	static const int CHANCECUBE 	= 0x221F0907;
-	static const int CONFIGURABLE 	= 0x484AC6A6;
-	static const int CENTIHEDRON	= 0x821DB6E8;
-	static const int HEXAHEDRON	= 0xBF64B1E4;
-	static const int DECAHEDRON	= 0xB5E34222;
-	static const int DODECAHEDRON	= 0x81B6977D;
-	static const int ICOSAHEDRON	= 0xD474E5E7;
+	static const uint32 CHANCECUBE 	= 0x221F0907;
+	static const uint32 CONFIGURABLE 	= 0x484AC6A6;
+	static const uint32 CENTIHEDRON	= 0x821DB6E8;
+	static const uint32 HEXAHEDRON	= 0xBF64B1E4;
+	static const uint32 DECAHEDRON	= 0xB5E34222;
+	static const uint32 DODECAHEDRON	= 0x81B6977D;
+	static const uint32 ICOSAHEDRON	= 0xD474E5E7;
 
 public:
 
-	DiceImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	DiceImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	DiceImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	DiceImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	DiceImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	DiceImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	~DiceImplementation();
 

@@ -52,7 +52,7 @@ which carries forward this exception.
 
 #include "../../../packets.h"
 
-PowerupImplementation::PowerupImplementation(uint64 objID, uint32 tempCRC, const unicode& n, const string& tempn) 
+PowerupImplementation::PowerupImplementation(uint64 objID, uint32 tempCRC, const UnicodeString& n, const String& tempn) 
 		: PowerupServant(objID, WEAPONPOWERUP) {
 	objectCRC = tempCRC;
 	objectID = objID;
@@ -93,7 +93,7 @@ void PowerupImplementation::setPowerupStats(int modifier) {
 	
 	int maxLevel = 120;
 	
-	if(modifier > maxLevel){
+	if (modifier > maxLevel){
 		int diff = System::random(modifier - maxLevel);
 		modifier = maxLevel;
 		modifier += diff;
@@ -190,7 +190,7 @@ void PowerupImplementation::setPowerupStats(int modifier) {
 }
 
 void PowerupImplementation::generateName() {
-	stringstream powerupName;
+	StringBuffer powerupName;
 	
 	switch (type) {
 	case MELEE :
@@ -401,7 +401,7 @@ void PowerupImplementation::generateName() {
 		break;
 	}
 	
-	name = unicode(powerupName.str());	
+	name = UnicodeString(powerupName.toString());	
 }
 
 void PowerupImplementation::generateAttributes(SceneObject* obj) {
@@ -725,7 +725,7 @@ void PowerupImplementation::parseItemAttributes() {
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
 	
-	string name = "type";
+	String name = "type";
 	type = itemAttributes->getIntAttribute(name);
 	
 	name = "subType";
@@ -763,9 +763,9 @@ void PowerupImplementation::remove(Player* player) {
 }
 
 void PowerupImplementation::addAttributes(AttributeListMessage* alm) {
-	stringstream val0;
-	stringstream val1;
-	stringstream val2;
+	StringBuffer val0;
+	StringBuffer val1;
+	StringBuffer val2;
 	
 	val0 << "+" << powerup0Value << "%";
 	val1 << "+" << powerup1Value << "%";
@@ -775,44 +775,44 @@ void PowerupImplementation::addAttributes(AttributeListMessage* alm) {
 	case MELEE :
 		switch (powerup0Type) {
 		case 1:
-			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val0.str());
+			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val0.toString());
 			break;
 		case 2:
-			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val0.str());
+			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val0.toString());
 			break;
 		case 3:
-			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.str());
+			alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.toString());
 			break;
 		case 4:
-			alm->insertAttribute("cat_pup.pup_wpn_range_mid", val0.str());
+			alm->insertAttribute("cat_pup.pup_wpn_range_mid", val0.toString());
 			break;
 		}
 		switch (powerup1Type) {
 		case 1:
-			alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val1.str());
+			alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val1.toString());
 			break;
 		case 2:
-			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val1.str());
+			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val1.toString());
 			break;
 		case 3:
-			alm->insertAttribute("cat_pup.pup_wpn_damage_min", val1.str());
+			alm->insertAttribute("cat_pup.pup_wpn_damage_min", val1.toString());
 			break;
 		case 4:
-			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val1.str());
+			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val1.toString());
 			break;
 		}
 		switch (powerup2Type) {
 		case 1:
-			alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val2.str());
+			alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val2.toString());
 			break;
 		case 2:
-			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val2.str());
+			alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val2.toString());
 			break;
 		case 3:
-			alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.str());
+			alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.toString());
 			break;
 		case 4:
-			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val2.str());
+			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val2.toString());
 			break;
 		}
 		break;
@@ -821,246 +821,246 @@ void PowerupImplementation::addAttributes(AttributeListMessage* alm) {
 		case BARREL :
 			switch (powerup0Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val0.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val0.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val0.toString());
 				break;
 			}
 			switch (powerup1Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val1.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val1.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val1.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val1.toString());
 			break;
 			}
 			switch (powerup2Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val2.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val2.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val2.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val2.toString());
 			break;
 			}
 		break;
 		case COUPLER :
 			switch (powerup0Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val0.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val0.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val0.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val0.toString());
 				break;
 			}
 			switch (powerup1Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val1.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val1.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val1.toString());
 				break;
 			}
 			switch (powerup2Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val2.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val2.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val2.toString());
 				break;
 			}
 		break;
 		case GRIP :
 			switch (powerup0Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val0.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val0.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val0.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.toString());
 				break;
 			}
 			switch (powerup1Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val1.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val1.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val1.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val1.toString());
 				break;
 			}
 			switch (powerup2Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val2.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val2.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val2.toString());
 				break;
 			}
 		break;
 		case MUZZLE :
 			switch (powerup0Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val0.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val0.toString());
 				break;
 			}
 			switch (powerup1Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val1.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val1.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val1.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val1.toString());
 				break;
 			}
 			switch (powerup2Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_zero", val2.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val2.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val2.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val2.toString());
 				break;
 			}
 			break;
 		case SCOPE :
 			switch (powerup0Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_mind", val0.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_min", val0.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val0.toString());
 				break;
 			}
 			switch (powerup1Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val1.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val1.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val1.toString());
 				break;
 			}
 			switch (powerup2Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val2.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_wound_chance", val2.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val2.toString());
 				break;
 			}
 		break;
 		case STOCK :
 			switch (powerup0Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_max", val0.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_mid", val0.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val0.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_health", val0.toString());
 				break;
 			}
 			switch (powerup1Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val1.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val1.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val1.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val1.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val1.toString());
 				break;
 			}
 			switch (powerup2Type) {
 			case 1:
-				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_damage_max", val2.toString());
 				break;
 			case 2:
-				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_range_attack_mod_mid", val2.toString());
 				break;
 			case 3:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_cost_action", val2.toString());
 				break;
 			case 4:
-				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val2.str());
+				alm->insertAttribute("cat_pup.pup_wpn_attack_speed", val2.toString());
 				break;
 			}
 		break;

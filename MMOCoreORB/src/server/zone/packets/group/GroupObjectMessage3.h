@@ -55,7 +55,7 @@ public:
 			: BaseLineMessage(grup->getObjectID(), 0x4352454F, 3, 0x04) {
 		insertFloat(1);
 
-		insertAscii("string_id_table");
+		insertAscii("String_id_table");
 		insertInt(0);
 		insertShort(0);
 		insertInt(0);

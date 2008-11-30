@@ -58,9 +58,9 @@ public:
 
         //setSize();
 
-		/*stringstream msg;
+		/*StringBuffer msg;
 		msg << hex << "UpdateCellPermissionsMessage [CellObjectID = " << coId << "]\n";
-		cout << msg.str();*/
+		System::out << msg.toString();*/
 	}
 };
 #endif /*UPDATECELLPERMISSIONSMESSAGE_H_*/

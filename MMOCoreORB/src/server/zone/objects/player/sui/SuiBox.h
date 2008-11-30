@@ -15,9 +15,9 @@ class SuiBox : public DistributedObjectStub {
 public:
 	BaseMessage* generateCloseMessage();
 
-	void setPromptTitle(const string& name);
+	void setPromptTitle(const String& name);
 
-	void setPromptText(const string& name);
+	void setPromptText(const String& name);
 
 	void setCancelButton(bool value);
 
@@ -63,9 +63,9 @@ public:
 
 	BaseMessage* generateCloseMessage();
 
-	void setPromptTitle(const string& name);
+	void setPromptTitle(const String& name);
 
-	void setPromptText(const string& name);
+	void setPromptText(const String& name);
 
 	void setCancelButton(bool value);
 
@@ -94,8 +94,8 @@ public:
 	Player* getPlayer();
 
 protected:
-	string _param0_setPromptTitle__string_;
-	string _param0_setPromptText__string_;
+	String _param0_setPromptTitle__String_;
+	String _param0_setPromptText__String_;
 };
 
 class SuiBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiBoxHelper> {

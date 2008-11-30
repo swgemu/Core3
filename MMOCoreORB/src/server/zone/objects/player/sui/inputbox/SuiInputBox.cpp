@@ -50,7 +50,7 @@ void SuiInputBox::setMaxInputSize(int size) {
 		((SuiInputBoxImplementation*) _impl)->setMaxInputSize(size);
 }
 
-void SuiInputBox::setDefaultInput(const string& text) {
+void SuiInputBox::setDefaultInput(const String& text) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -93,7 +93,7 @@ Packet* SuiInputBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setMaxInputSize(inv->getSignedIntParameter());
 		break;
 	case 8:
-		setDefaultInput(inv->getAsciiParameter(_param0_setDefaultInput__string_));
+		setDefaultInput(inv->getAsciiParameter(_param0_setDefaultInput__String_));
 		break;
 	case 9:
 		resp->insertBoolean(isFilterBox());
@@ -113,7 +113,7 @@ void SuiInputBoxAdapter::setMaxInputSize(int size) {
 	return ((SuiInputBoxImplementation*) impl)->setMaxInputSize(size);
 }
 
-void SuiInputBoxAdapter::setDefaultInput(const string& text) {
+void SuiInputBoxAdapter::setDefaultInput(const String& text) {
 	return ((SuiInputBoxImplementation*) impl)->setDefaultInput(text);
 }
 

@@ -49,12 +49,12 @@ import "PlayerObject";
 interface FriendsList{
 	FriendsList(Player player);
 
-	void addFriend(string name, string inServer);
+	void addFriend(String name, String inServer);
 
 	void friendsMagicNumberReset();
 
-	void removeFriend(string name);
-	void findFriend(string name, PlayerManager playerManager);
+	void removeFriend(String name);
+	void findFriend(String name, PlayerManager playerManager);
 
 	void saveFriends();
 	void loadFriends();
@@ -66,6 +66,6 @@ interface FriendsList{
 	int getCount();
 	int getMagicNumber();
 
-	string getFriendsName(const int i);
-	string getFriendsServer(const int i);
+	String getFriendsName(const int i);
+	String getFriendsServer(const int i);
 }

@@ -24,7 +24,7 @@ PlayerMap::PlayerMap(DummyConstructorParameter* param) {
 PlayerMap::~PlayerMap() {
 }
 
-Player* PlayerMap::put(string& name, Player* player, bool doLock) {
+Player* PlayerMap::put(String& name, Player* player, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -39,7 +39,7 @@ Player* PlayerMap::put(string& name, Player* player, bool doLock) {
 		return ((PlayerMapImplementation*) _impl)->put(name, player, doLock);
 }
 
-Player* PlayerMap::get(string& name, bool doLock) {
+Player* PlayerMap::get(String& name, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -53,7 +53,7 @@ Player* PlayerMap::get(string& name, bool doLock) {
 		return ((PlayerMapImplementation*) _impl)->get(name, doLock);
 }
 
-Player* PlayerMap::remove(string& name, bool doLock) {
+Player* PlayerMap::remove(String& name, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -170,13 +170,13 @@ Packet* PlayerMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(put(inv->getAsciiParameter(_param0_put__string_Player_bool_), (Player*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(put(inv->getAsciiParameter(_param0_put__String_Player_bool_), (Player*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 7:
-		resp->insertLong(get(inv->getAsciiParameter(_param0_get__string_bool_), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(get(inv->getAsciiParameter(_param0_get__String_bool_), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 8:
-		resp->insertLong(remove(inv->getAsciiParameter(_param0_remove__string_bool_), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(remove(inv->getAsciiParameter(_param0_remove__String_bool_), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 9:
 		resp->insertSignedInt(size(inv->getBooleanParameter()));
@@ -206,15 +206,15 @@ Packet* PlayerMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-Player* PlayerMapAdapter::put(string& name, Player* player, bool doLock) {
+Player* PlayerMapAdapter::put(String& name, Player* player, bool doLock) {
 	return ((PlayerMapImplementation*) impl)->put(name, player, doLock);
 }
 
-Player* PlayerMapAdapter::get(string& name, bool doLock) {
+Player* PlayerMapAdapter::get(String& name, bool doLock) {
 	return ((PlayerMapImplementation*) impl)->get(name, doLock);
 }
 
-Player* PlayerMapAdapter::remove(string& name, bool doLock) {
+Player* PlayerMapAdapter::remove(String& name, bool doLock) {
 	return ((PlayerMapImplementation*) impl)->remove(name, doLock);
 }
 

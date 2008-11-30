@@ -89,7 +89,7 @@ void GuildManagerImplementation::load() {
 
 	ResultSet* guildList;
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM guilds";
 
 	guildList = ServerDatabase::instance()->executeQuery(query);
@@ -97,8 +97,8 @@ void GuildManagerImplementation::load() {
 	while (guildList->next()) {
 		uint32 gid = guildList->getInt(0);
 
-		string tag = guildList->getString(1);
-		string name = guildList->getString(2);
+		String tag = guildList->getString(1);
+		String name = guildList->getString(2);
 
 		Guild* guild = new Guild(gid, name, tag);
 
@@ -119,16 +119,16 @@ void GuildManagerImplementation::load() {
 	unlock();
 }
 
-uint32 GuildManagerImplementation::insertGuildToDB (Player* player, string tag, string name, uint64 charID) {
-	player->info("Entering GuildManagerImplementation::insertGuildToDB (Player* player, string tag, string name, uint64 charID)");
+uint32 GuildManagerImplementation::insertGuildToDB (Player* player, String tag, String name, uint64 charID) {
+	player->info("Entering GuildManagerImplementation::insertGuildToDB (Player* player, String tag, String name, uint64 charID)");
 
-	string tagString = tag;
+	String tagString = tag;
 	MySqlDatabase::escapeString(tagString);
 
-	string nameString = name;
+	String nameString = name;
 	MySqlDatabase::escapeString(nameString);
 
-	stringstream query;
+	StringBuffer query;
 	Time systemTime;
 
 	uint64 gid = 0;
@@ -144,7 +144,7 @@ uint32 GuildManagerImplementation::insertGuildToDB (Player* player, string tag, 
 		ResultSet* resins = ServerDatabase::instance()->executeQuery(query);
 		gid = resins->getLastAffectedRow();
 
-		stringstream query2;
+		StringBuffer query2;
 		query2 << "UPDATE characters set guild = " << gid << ", guildpermission=255 "
 			<< "WHERE character_id = " << charID << ";";
 
@@ -154,19 +154,19 @@ uint32 GuildManagerImplementation::insertGuildToDB (Player* player, string tag, 
 		delete resins;
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-		player->info("DB Exception in GuildManagerImplementation::insertGuildToDB (Player* player, string tag, string name, uint64 charID)");
+		System::out << e.getMessage() << "\n";
+		player->info("DB Exception in GuildManagerImplementation::insertGuildToDB (Player* player, String tag, String name, uint64 charID)");
 
 		return gid;
 	}
 
-	player->info("Clean exit from GuildManagerImplementation::insertGuildToDB (Player* player, string tag, string name, uint64 charID)");
+	player->info("Clean exit from GuildManagerImplementation::insertGuildToDB (Player* player, String tag, String name, uint64 charID)");
 	return gid;
 }
 
 
-bool GuildManagerImplementation::createGuild(Player* player, string& tag, string& name) {
-	player->info("ENTERING GuildManagerImplementation::createGuild(Player* player, string& tag, string& name)");
+bool GuildManagerImplementation::createGuild(Player* player, String& tag, String& name) {
+	player->info("ENTERING GuildManagerImplementation::createGuild(Player* player, String& tag, String& name)");
 
 	uint64 charID;
 
@@ -179,7 +179,7 @@ bool GuildManagerImplementation::createGuild(Player* player, string& tag, string
 			player->sendSystemMessage("You cannot create a guild while already in a guild.");
 
 			player->unlock();
-			player->info("Clean exit from GuildManagerImplementation::createGuild(Player* player, string& tag, string& name)");
+			player->info("Clean exit from GuildManagerImplementation::createGuild(Player* player, String& tag, String& name)");
 			return false;
 		}
 
@@ -200,14 +200,14 @@ bool GuildManagerImplementation::createGuild(Player* player, string& tag, string
 	if ( !setupNewGuild(player, gid, name, tag) )
 		return false;
 
-	player->info("Clean exit from GuildManagerImplementation::createGuild(Player* player, string& tag, string& name)");
+	player->info("Clean exit from GuildManagerImplementation::createGuild(Player* player, String& tag, String& name)");
 
 	return true;
 }
 
 
-bool GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, string name, string tag) {
-	player->info("Entering GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, string name, string tag)");
+bool GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, String name, String tag) {
+	player->info("Entering GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, String name, String tag)");
 
 	Guild* guild = NULL;
 
@@ -225,7 +225,7 @@ bool GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, strin
 
 		server->unlock();
 	} catch (...) {
-		player->info("Clean exit in catch #1 GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, string name, string tag)");
+		player->info("Clean exit in catch #1 GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, String name, String tag)");
 
 		server->unlock();
 		return false;
@@ -233,7 +233,7 @@ bool GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, strin
 
 	sendGuildListToPlayers(guild);
 
-	player->info("Exit GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, string name, string tag)");
+	player->info("Exit GuildManagerImplementation::setupNewGuild(Player* player, uint32 gid, String name, String tag)");
 
 	return true;
 }
@@ -260,15 +260,15 @@ void GuildManagerImplementation::sendGuildListToPlayers(Guild* guild) {
 	}
 }
 
-string GuildManagerImplementation::getGuildLeaderName(Guild* playerGuild) {
-	string leaderName = "";
+String GuildManagerImplementation::getGuildLeaderName(Guild* playerGuild) {
+	String leaderName = "";
 
 	ResultSet* guildq;
 
 	try {
 		lock();
 
-		stringstream query;
+		StringBuffer query;
 
 		query << "SELECT characters.firstname FROM characters "
 			<< "Inner Join guilds ON guilds.leader = characters.character_id "
@@ -292,9 +292,8 @@ string GuildManagerImplementation::getGuildLeaderName(Guild* playerGuild) {
 	return leaderName;
 }
 
-uint64 GuildManagerImplementation::getOfflineGuildMemberID(string name) {
-	string checkName = name;
-	String::toLower(checkName);
+uint64 GuildManagerImplementation::getOfflineGuildMemberID(String name) {
+	String checkName = name.toLowerCase();
 
 	uint64 charID = 0;
 
@@ -303,7 +302,7 @@ uint64 GuildManagerImplementation::getOfflineGuildMemberID(string name) {
 	try {
 		lock();
 
-		stringstream query;
+		StringBuffer query;
 
 		query << "SELECT character_id FROM characters "
 			<< "Where lcase(firstname) = '" << checkName << "';";
@@ -326,7 +325,7 @@ uint64 GuildManagerImplementation::getOfflineGuildMemberID(string name) {
 	return charID;
 }
 
-Guild* GuildManagerImplementation::getGuild(string& tag, bool doLock) {
+Guild* GuildManagerImplementation::getGuild(String& tag, bool doLock) {
 	lock(doLock);
 
 	Guild* guild = guilds->get(tag);
@@ -352,30 +351,28 @@ bool GuildManagerImplementation::removeGuild(int gid) {
 
 	removePlayersFromGuild(gid);
 
-	stringstream query;
+	StringBuffer query;
 
 	try {
 		query << "DELETE FROM guilds WHERE guild_id = '" << gid <<"';";
-		ServerDatabase::instance()->executeStatement(query);
 
+		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-		query.str("");
+		System::out << e.getMessage() << "\n";
+
 		return false;
 	}
 
 	try {
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM guilds_sponsoring WHERE guild_id = '" << gid <<"';";
-		ServerDatabase::instance()->executeStatement(query);
 
+		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-		query.str("");
+		System::out << e.getMessage() << "\n";
+
 		return false;
 	}
-
-	query.str("");
 
 	lock();
 
@@ -444,24 +441,24 @@ void GuildManagerImplementation::removePlayersFromGuild(int gid) {
 
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "UPDATE characters set guild = 0, guildpermission = 0 where guild = " << gid << ";";
 
 		ServerDatabase::instance()->executeStatement(query);
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 }
 
-void GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, uint32 cancel, string returnString) {
-	player->info("ENTERING GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, string returnString)");
+void GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, uint32 cancel, String returnString) {
+	player->info("ENTERING GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, String returnString)");
 
 	try {
 		player->wlock();
 
 		if (!player->hasSuiBox(boxID)) {
 			player->unlock();
-			player->info("Clean exit from GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, string returnString)");
+			player->info("Clean exit from GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, String returnString)");
 			return;
 		}
 
@@ -473,7 +470,7 @@ void GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, ui
 
 		if (cancel == 1 || returnString == "") {
 			player->setInputBoxReturnBuffer("");
-			player->info("Clean exit from GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, string returnString)");
+			player->info("Clean exit from GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, String returnString)");
 			player->unlock();
 			return;
 		}
@@ -481,15 +478,15 @@ void GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, ui
 		player->unlock();
 
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 		player->info("Exception in GuildManagerImplementation::handleGuildTag " + e.getMessage());
 		player->unlock();
 	} catch (...) {
-		player->info("Unreported exception caught in GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, string returnString)");
+		player->info("Unreported exception caught in GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, String returnString)");
 		player->unlock();
 	}
 
-	player->info("Clean exit from GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, string returnString)");
+	player->info("Clean exit from GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, String returnString)");
 
 	handleGuildCreationName(player);
 }
@@ -519,12 +516,11 @@ void GuildManagerImplementation::handleGuildCreationName(Player* player) {
 	player->info("Clean exit from GuildManagerImplementation::handleGuildCreationName(Player* player)");
 }
 
-void GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, uint32 cancel, string returnString) {
-	player->info("ENTERING GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, string returnString)");
+void GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, uint32 cancel, String returnString) {
+	player->info("ENTERING GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, String returnString)");
 
-	string tag;
-	string tempName = returnString;
-	String::toLower(tempName);
+	String tag;
+	String tempName = returnString.toLowerCase();
 
 	GuildManager* myGuildmanager;
 
@@ -533,7 +529,7 @@ void GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, u
 
 		if (!player->hasSuiBox(boxID)) {
 			player->unlock();
-			player->info("DEBUG INFO:Player has no SuiBox ?! Exit GuildManager::handleGuildName(uint32 boxID, Player* player, string returnString)");
+			player->info("DEBUG INFO:Player has no SuiBox ?! Exit GuildManager::handleGuildName(uint32 boxID, Player* player, String returnString)");
 			return;
 		}
 
@@ -565,7 +561,7 @@ void GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, u
 	myGuildmanager = server->getGuildManager();
 
 	if (myGuildmanager == NULL) {
-			player->info("Clean exit from GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, string returnString)");
+			player->info("Clean exit from GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, String returnString)");
 			return;
 		}
 
@@ -573,7 +569,7 @@ void GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, u
 		ErrorMessage* errMsg = new ErrorMessage("Error:", "There was an error creating the guild, please contact support.", 0);
 		player->sendMessage(errMsg);
 
-		player->info("Clean exit from GuildManagerImplementation::checkProfanity(string returnString, string tag, Player* player)");
+		player->info("Clean exit from GuildManagerImplementation::checkProfanity(String returnString, String tag, Player* player)");
 		return;
 	}
 
@@ -581,9 +577,9 @@ void GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, u
 	try {
 		player->wlock();
 
-		stringstream msg;
+		StringBuffer msg;
 		msg << "The guild: <" <<  tag << "> " << returnString << " has been created and you are the leader.";
-		player->sendSystemMessage(msg.str());
+		player->sendSystemMessage(msg.toString());
 
 		player->setGuildLeader(true);
 
@@ -600,35 +596,35 @@ void GuildManagerImplementation::handleGuildName(uint32 boxID, Player* player, u
 	}
 
 
-	player->info("Clean exit from GuildManager::handleGuildName(uint32 boxID, Player* player, string returnString)");
+	player->info("Clean exit from GuildManager::handleGuildName(uint32 boxID, Player* player, String returnString)");
 
 	player->loadGuildChat();
 }
 
 
-bool GuildManagerImplementation::checkGuildNameAndTag(string tempName, string tag, Player* player) {
-	player->info("ENTERING GuildManagerImplementation::checkGuildNameAndTag(string tempName, string tag, Player* player)");
+bool GuildManagerImplementation::checkGuildNameAndTag(String tempName, String tag, Player* player) {
+	player->info("ENTERING GuildManagerImplementation::checkGuildNameAndTag(String tempName, String tag, Player* player)");
 
 	Guild* myGuild;
 
 	if (tempName == "") {
-		player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(string tempName, string tag, Player* player)");
+		player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(String tempName, String tag, Player* player)");
 		return false;
 	}
 
-	if (tag.size() > 5) {
+	if (tag.length() > 5) {
 		ErrorMessage* errMsg = new ErrorMessage("@guild:create_fail_abbrev_bad_length", "", 0);
 		player->sendMessage(errMsg);
 
-		player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(string tempName, string tag, Player* player)");
+		player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(String tempName, String tag, Player* player)");
 		return false;
 	}
 
-	if (tempName.size() > 25) {
+	if (tempName.length() > 25) {
 		ErrorMessage* errMsg = new ErrorMessage("@guild:create_fail_name_bad_length", "", 0);
 		player->sendMessage(errMsg);
 
-		player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(string tempName, string tag, Player* player)");
+		player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(String tempName, String tag, Player* player)");
 		return false;
 	}
 
@@ -641,8 +637,7 @@ bool GuildManagerImplementation::checkGuildNameAndTag(string tempName, string ta
 			if (myGuild != NULL) {
 				myGuild->wlock();
 
-				string guildname = myGuild->getGuildName();
-				String::toLower(guildname);
+				String guildname = myGuild->getGuildName().toLowerCase();
 
 				if (tempName == guildname) {
 					server->unlock();
@@ -651,15 +646,13 @@ bool GuildManagerImplementation::checkGuildNameAndTag(string tempName, string ta
 					ErrorMessage* errMsg = new ErrorMessage("@guild:create_fail_name_in_use", "", 0);
 					player->sendMessage(errMsg);
 
-					player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(string tempName, string tag, Player* player)");
+					player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(String tempName, String tag, Player* player)");
 					return false;
 				}
 
 
-				string tagName = myGuild->getGuildTag();
-				string tagTemp = tag;
-				String::toLower(tagName);
-				String::toLower(tagTemp);
+				String tagName = myGuild->getGuildTag().toLowerCase();
+				String tagTemp = tag.toLowerCase();
 
 				if (tagTemp == tagName) {
 					server->unlock();
@@ -667,7 +660,7 @@ bool GuildManagerImplementation::checkGuildNameAndTag(string tempName, string ta
 
 					ErrorMessage* errMsg = new ErrorMessage("@guild:create_fail_abbrev_in_use","", 0);
 					player->sendMessage(errMsg);
-					player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(string tempName, string tag, Player* player)");
+					player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(String tempName, String tag, Player* player)");
 					return false;
 				}
 				myGuild->unlock();
@@ -680,29 +673,29 @@ bool GuildManagerImplementation::checkGuildNameAndTag(string tempName, string ta
 		server->unlock();
 		myGuild->unlock();
 
-		player->info("Exception exit from GuildManagerImplementation::checkGuildNameAndTag(string tempName, string tag, Player* player)");
+		player->info("Exception exit from GuildManagerImplementation::checkGuildNameAndTag(String tempName, String tag, Player* player)");
 		return false;
 	}
 
-	player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(string tempName, string tag, Player* player)");
+	player->info("Clean exit from GuildManagerImplementation::checkGuildNameAndTag(String tempName, String tag, Player* player)");
 	return true;
 }
 
 
-bool GuildManagerImplementation::checkGuildProfanity(string returnString, string tag, Player* player) {
+bool GuildManagerImplementation::checkGuildProfanity(String returnString, String tag, Player* player) {
 
-	player->info("Entering GuildManagerImplementation::checkProfanity(string returnString, string tag, Player* player)");
+	player->info("Entering GuildManagerImplementation::checkProfanity(String returnString, String tag, Player* player)");
 
 	try {
 		player->wlock();
 
-		string name = tag + returnString;
+		String name = tag + returnString;
 
 		//Since we are "misusing" the character-name-check here for the guildname profanity check,
 		//we need to fake the species to human, o/w the check complains if a (eg.) wookie creates a
 		// two word guild name (Wookies are not allowed to have a surname ( = two words)
 
-		string species = "human"; //player->getSpeciesName();
+		String species = "human"; //player->getSpeciesName();
 
 		if ( playerManager != NULL) {
 			playerManager->wlock();
@@ -715,7 +708,7 @@ bool GuildManagerImplementation::checkGuildProfanity(string returnString, string
 				player->sendMessage(msg);
 
 				player->unlock();
-				player->info("Clean exit from GuildManagerImplementation::checkProfanity(string returnString, string tag, Player* player)");
+				player->info("Clean exit from GuildManagerImplementation::checkProfanity(String returnString, String tag, Player* player)");
 
 				return false;
 			}
@@ -733,15 +726,15 @@ bool GuildManagerImplementation::checkGuildProfanity(string returnString, string
 }
 
 
-void GuildManagerImplementation::handleGuildSponsor(uint32 boxID, Player* player, uint32 cancel, string returnString) {
-	player->info("ENTERING GuildManager::handleGuildSponsor(uint32 boxID, Player* player, string returnString)");
+void GuildManagerImplementation::handleGuildSponsor(uint32 boxID, Player* player, uint32 cancel, String returnString) {
+	player->info("ENTERING GuildManager::handleGuildSponsor(uint32 boxID, Player* player, String returnString)");
 
 	try {
 		player->wlock();
 
 		if (!player->hasSuiBox(boxID)) {
 			player->unlock();
-			player->info("DEBUG INFO:This Player has no SuiBox ?! Exit GuildManager::handleGuildSponsor(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+			player->info("DEBUG INFO:This Player has no SuiBox ?! Exit GuildManager::handleGuildSponsor(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 			return;
 		}
 
@@ -758,37 +751,34 @@ void GuildManagerImplementation::handleGuildSponsor(uint32 boxID, Player* player
 	if (cancel) {
 		player->setInputBoxReturnBuffer("");
 
-		player->info("DEBUG INFO:Clean Exit due to cancel button in GuildManager::handleGuildSponsor(uint32 boxID, Player* player, string returnString)");
+		player->info("DEBUG INFO:Clean Exit due to cancel button in GuildManager::handleGuildSponsor(uint32 boxID, Player* player, String returnString)");
 		return;
 	}
 
-	string proband;
-	string name = player->getFirstName();
+	String proband;
+	String name = player->getFirstName();
 
-	proband = returnString;
-	String::toLower(proband);
+	proband = returnString.toLowerCase();
 
-	string myOwnName = name;
-	String::toLower(myOwnName);
+	String myOwnName = name.toLowerCase();
 
 	if (myOwnName == proband)
 		return;
 
-
-	if (! checkPlayerInRange(player, proband, name) )
+	if (!checkPlayerInRange(player, proband, name))
 		return;
 
 	Player* otherPlayer = playerManager->getPlayer(proband);
 
 	if (otherPlayer == NULL) {
-		player->info("Clean exit from GuildManagerImplementation::handleGuildSponsor(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+		player->info("Clean exit from GuildManagerImplementation::handleGuildSponsor(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 		return;
 	}
 
 	VerifyBoxSponsorTargetforGuildMembership(otherPlayer, name, player->getGuildName());
 }
 
-Player* GuildManagerImplementation::checkInRange(Player* player, const string& proband, const string& selfname) {
+Player* GuildManagerImplementation::checkInRange(Player* player, const String& proband, const String& selfname) {
 	Zone* zone = NULL;
 
 	try {
@@ -809,8 +799,7 @@ Player* GuildManagerImplementation::checkInRange(Player* player, const string& p
 			if (obj->isPlayer()) {
 				Player* otherPlayer = (Player*) obj;
 
-				string otherName = otherPlayer->getFirstName();
-				String::toLower(otherName);
+				String otherName = otherPlayer->getFirstName().toLowerCase();
 
 				if (otherName != selfname && otherName == proband && (player->isInRange(otherPlayer, 8))) {
 					player->sendSystemMessage("You sponsor " + otherName + " for membership in <" + (player->getGuild()->getGuildTag()) + ">.");
@@ -839,8 +828,8 @@ Player* GuildManagerImplementation::checkInRange(Player* player, const string& p
 }
 
 
-bool GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname) {
-	player->info("Entering GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname)");
+bool GuildManagerImplementation::checkPlayerInRange(Player* player, String proband, String selfname) {
+	player->info("Entering GuildManagerImplementation::checkPlayerInRange(Player* player, String proband, String selfname)");
 
 	Player* otherPlayer = checkInRange(player, proband, selfname);
 
@@ -848,7 +837,7 @@ bool GuildManagerImplementation::checkPlayerInRange(Player* player, string proba
 		ErrorMessage* errMsg = new ErrorMessage("@base_player:swg", "@guild:sponsor_not_found", 0);
 		player->sendMessage(errMsg);
 
-		player->info("Clean exit from GuildManagerImplementation::checkPlayerInRange(Player* player, string proband, string selfname)");
+		player->info("Clean exit from GuildManagerImplementation::checkPlayerInRange(Player* player, String proband, String selfname)");
 
 		return false;
 	}
@@ -857,8 +846,7 @@ bool GuildManagerImplementation::checkPlayerInRange(Player* player, string proba
 		otherPlayer->wlock();
 
 		uint32 othersGuild = otherPlayer->getGuildID();
-		string toSponsor = otherPlayer->getFirstName();
-		String::toLower(toSponsor);
+		String toSponsor = otherPlayer->getFirstName().toLowerCase();
 
 		if (othersGuild != 0) {
 			ErrorMessage* errMsg = new ErrorMessage("Guild:", toSponsor + " is already in a guild.", 0);
@@ -883,7 +871,7 @@ bool GuildManagerImplementation::checkPlayerInRange(Player* player, string proba
 void GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(uint32 boxID, Player* otherPlayer, uint32 cancel) {
 	otherPlayer->info("Entering GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(uint32 boxID, Player* otherPlayer, uint32 cancel)");
 
-	string inviterName, toSponsor, guildTag;
+	String inviterName, toSponsor, guildTag;
 	uint32 inviteGuild;
 	uint64 otherPlayerID;
 
@@ -982,9 +970,9 @@ void GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(
 		return;
 	}
 
-	stringstream message;
+	StringBuffer message;
 	message << inviterName << " has sponsored " << toSponsor  << " for membership in the guild.";
-	sendGuildMail(inviter, "Guild manager", "Guild Sponsorship", message.str(), false);
+	sendGuildMail(inviter, "Guild manager", "Guild Sponsorship", message.toString(), false);
 
 	otherPlayer->sendSystemMessage("Sponsoring accepted for membership in <" + guildTag + ">.");
 
@@ -998,7 +986,7 @@ bool GuildManagerImplementation::insertSponsorshipDB(Player* inviter, uint64 oth
 	try {
 		inviter->wlock();
 
-		stringstream inmqry;
+		StringBuffer inmqry;
 
 		inmqry << "INSERT into guilds_sponsoring set guild_id = " << inviter->getGuildID()
 			<< ",guild_name ='" << inviter->getGuild()->getGuildTag() << "', sponsored_time = 0, "
@@ -1009,7 +997,7 @@ bool GuildManagerImplementation::insertSponsorshipDB(Player* inviter, uint64 oth
 		inviter->unlock();
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 		inviter->info("Exit CATCH in GuildManagerImplementation::insertSponsorshipDB(Player* inviter, uint64 otherPlayerID)");
 
 		inviter->unlock();
@@ -1020,15 +1008,15 @@ bool GuildManagerImplementation::insertSponsorshipDB(Player* inviter, uint64 oth
 }
 
 
-void GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string inviter, string guildname) {
-	otherPlayer->info("Entering GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string inviter, string guildname)");
+void GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, String inviter, String guildname) {
+	otherPlayer->info("Entering GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, String inviter, String guildname)");
 
 	try {
 		otherPlayer->wlock();
 
 		if (otherPlayer->hasSuiBoxType(0x7273)) {
 			otherPlayer->unlock();
-			otherPlayer->info("Clean exit from GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string inviter, string guildname)");
+			otherPlayer->info("Clean exit from GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, String inviter, String guildname)");
 			return;
 		}
 
@@ -1046,19 +1034,19 @@ void GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player
 	} catch (...) {
 		otherPlayer->unlock();
 
-		otherPlayer->info("Exit via CATCH in GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string inviter, string guildname)");
+		otherPlayer->info("Exit via CATCH in GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, String inviter, String guildname)");
 		return;
 	}
 
-	otherPlayer->info("Clean exit from GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, string inviter, string guildname)");
+	otherPlayer->info("Clean exit from GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, String inviter, String guildname)");
 }
 
-void GuildManagerImplementation::sendGuildMail(Player* player, string sender, string subject, string body, bool excludeSender) {
-	player->info("Entering GuildManagerImplementation::sendGuildMail(Player* player, string sender, string subject, string body, bool excludeSender)");
+void GuildManagerImplementation::sendGuildMail(Player* player, String sender, String subject, String body, bool excludeSender) {
+	player->info("Entering GuildManagerImplementation::sendGuildMail(Player* player, String sender, String subject, String body, bool excludeSender)");
 
 	int32 guildid;
-	string playerName;
-	stringstream inmqry;
+	String playerName;
+	StringBuffer inmqry;
 
 	ChatManager * cm;
 
@@ -1070,14 +1058,13 @@ void GuildManagerImplementation::sendGuildMail(Player* player, string sender, st
 		if (cm == NULL) {
 			player->unlock();
 
-			player->info("Clean exit from GuildManagerImplementation::sendGuildMail(Player* player, string sender, string subject, string body, bool excludeSender)");
+			player->info("Clean exit from GuildManagerImplementation::sendGuildMail(Player* player, String sender, String subject, String body, bool excludeSender)");
 			return;
 		}
 
 		guildid = player->getGuildID();
 
-		playerName = player->getFirstName();
-		String::toLower(playerName);
+		playerName = player->getFirstName().toLowerCase();
 
 		player->unlock();
 	} catch (...) {
@@ -1092,12 +1079,11 @@ void GuildManagerImplementation::sendGuildMail(Player* player, string sender, st
 
 
 	try {
-
 		inform = ServerDatabase::instance()->executeQuery(inmqry);
-
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-		player->info("DB Exception in GuildManagerImplementation::sendGuildMail(Player* player, string sender, string subject, string body, bool excludeSender)");
+		System::out << e.getMessage() << "\n";
+
+		player->info("DB Exception in GuildManagerImplementation::sendGuildMail(Player* player, String sender, String subject, String body, bool excludeSender)");
 
 		delete inform;
 		return;
@@ -1105,25 +1091,24 @@ void GuildManagerImplementation::sendGuildMail(Player* player, string sender, st
 
 
 	while (inform->next()) {
-		string receiver = inform->getString(1);
-		String::toLower(receiver);
+		String receiver = String(inform->getString(1)).toLowerCase();
 
-		unicode uSubject(subject.c_str());
-		unicode uBody(body.c_str());
+		UnicodeString uSubject(subject);
+		UnicodeString uBody(body);
 
-		if (! ( (playerName == receiver) && excludeSender) ) {
+		if (!((playerName == receiver) && excludeSender)) {
 			cm->sendMail(sender, uSubject, uBody, receiver);
 		}
 	}
 
 	delete inform;
 
-	player->info("Clean exit from GuildManagerImplementation::sendGuildMail(Player* player, string sender, string subject, string body, bool excludeSender)");
+	player->info("Clean exit from GuildManagerImplementation::sendGuildMail(Player* player, String sender, String subject, String body, bool excludeSender)");
 
 }
 
-void GuildManagerImplementation::sendMailGuildLeader(Player* player, string sender, uint32 guildid, string subject, string body) {
-	player->info("Entering GuildManagerImplementation::sendMailGuildLeader(Player* player, string sender, uint32 guildid, string subject, string body)");
+void GuildManagerImplementation::sendMailGuildLeader(Player* player, String sender, uint32 guildid, String subject, String body) {
+	player->info("Entering GuildManagerImplementation::sendMailGuildLeader(Player* player, String sender, uint32 guildid, String subject, String body)");
 
 	ChatManager * cm;
 
@@ -1143,23 +1128,23 @@ void GuildManagerImplementation::sendMailGuildLeader(Player* player, string send
 
 
 	if (cm == NULL || playerGuild == NULL ) {
-		player->info("Clean exit from GuildManagerImplementation::sendMailGuildLeader(Player* player, string sender, uint32 guildid, string subject, string body)");
+		player->info("Clean exit from GuildManagerImplementation::sendMailGuildLeader(Player* player, String sender, uint32 guildid, String subject, String body)");
 		return;
 	}
 
 
-	string receiver = getGuildLeaderName(playerGuild);
+	String receiver = getGuildLeaderName(playerGuild);
 	if (receiver == "") {
-		player->info("Clean exit from GuildManagerImplementation::sendMailGuildLeader(Player* player, string sender, uint32 guildid, string subject, string body)");
+		player->info("Clean exit from GuildManagerImplementation::sendMailGuildLeader(Player* player, String sender, uint32 guildid, String subject, String body)");
 		return;
 	}
 
-	unicode uSubject(subject.c_str());
-	unicode uBody(body.c_str());
+	UnicodeString uSubject(subject.toCharArray());
+	UnicodeString uBody(body.toCharArray());
 
 	cm->sendMail(sender, uSubject, uBody, receiver);
 
-	player->info("Clean exit from GuildManagerImplementation::sendMailGuildLeader(Player* player, string sender, uint32 guildid, string subject, string body)");
+	player->info("Clean exit from GuildManagerImplementation::sendMailGuildLeader(Player* player, String sender, uint32 guildid, String subject, String body)");
 }
 
 void GuildManagerImplementation::handleSponsoredGuildMembersBox(uint32 boxID, Player* player, uint32 cancel, int index) {
@@ -1235,7 +1220,7 @@ void GuildManagerImplementation::handleSponsoredGuildMembersBox(uint32 boxID, Pl
 void GuildManagerImplementation::handleSponsoredGuildMembersAcceptBox(uint32 boxID, Player* player, uint32 cancel, int index) {
 	player->info("Entering GuildManagerImplementation::handleSponsoredGuildMembersAcceptBox(uint32 boxID, Player* player, uint32 cancel, int index)");
 
-	string probandName;
+	String probandName;
 	uint64 probandID;
 
 	try {
@@ -1296,18 +1281,18 @@ bool GuildManagerImplementation::updateDeclineGuild(Player* proband, Player* pla
 
 	ChatManager* cm;
 
-	stringstream body, subject;
+	StringBuffer body, subject;
 
-	string guildName, name, probandName;
+	String guildName, name, probandName;
 
 	try {
 		player->wlock();
 		proband->wlock(player);
 
-		stringstream query;
+		StringBuffer query;
 		query << "DELETE from guilds_sponsoring where sponsored = " << proband->getCharacterID() << ";";
 
-		ServerDatabase::instance()->executeStatement(query.str());
+		ServerDatabase::instance()->executeStatement(query.toString());
 
 		guildName = player->getGuildName();
 
@@ -1327,32 +1312,32 @@ bool GuildManagerImplementation::updateDeclineGuild(Player* proband, Player* pla
 
 	//Mail for sponsored target
 	body << name << " has declined your sponsorship for " << guildName << ".";
-	unicode uBody(body.str());
+	UnicodeString uBody(body.toString());
 
 	subject << "@guildmail:decline_target_subject";
-	unicode uSubject(subject.str());
+	UnicodeString uSubject(subject.toString());
 
 	if (cm != NULL)
 		cm->sendMail("Guild manager", uSubject, uBody, probandName);
 
 	//Mail for guild
-	body.str("");
+	body.deleteAll();
 	body << name << " has turned down " << probandName << " for membership in the guild.";
 
-	sendGuildMail(player, "Guild manager", "@guildmail:decline_subject", body.str(), false);
+	sendGuildMail(player, "Guild manager", "@guildmail:decline_subject", body.toString(), false);
 
 	return true;
 }
 
 
-bool GuildManagerImplementation::updateOfflineDeclineGuild(string probandName, Player* player) {
+bool GuildManagerImplementation::updateOfflineDeclineGuild(String probandName, Player* player) {
 	player->info("Entering GuildManagerImplementation::UpdateOfflienDeclineGuild(Player* proband, Player* player");
 
 	ChatManager* cm;
 
-	stringstream body, subject;
+	StringBuffer body, subject;
 
-	string guildName, name;
+	String guildName, name;
 
 	uint64 probandID = getOfflineGuildMemberID(probandName);
 
@@ -1362,10 +1347,10 @@ bool GuildManagerImplementation::updateOfflineDeclineGuild(string probandName, P
 	try {
 		player->wlock();
 
-		stringstream query;
+		StringBuffer query;
 		query << "DELETE from guilds_sponsoring where sponsored = " << probandID << ";";
 
-		ServerDatabase::instance()->executeStatement(query.str());
+		ServerDatabase::instance()->executeStatement(query.toString());
 
 		guildName = player->getGuildName();
 		name = player->getFirstName();
@@ -1379,19 +1364,19 @@ bool GuildManagerImplementation::updateOfflineDeclineGuild(string probandName, P
 
 	//Mail for sponsored target
 	body << name << " has declined your sponsorship for " << guildName << ".";
-	unicode uBody(body.str());
+	UnicodeString uBody(body.toString());
 
 	subject << "@guildmail:decline_target_subject";
-	unicode uSubject(subject.str());
+	UnicodeString uSubject(subject.toString());
 
 	if (cm != NULL)
 		cm->sendMail("Guild manager", uSubject, uBody, probandName);
 
 	//Mail for guild
-	body.str("");
+	body.deleteAll();
 	body << name << " has turned down " << probandName << " for membership in the guild.";
 
-	sendGuildMail(player, "Guild manager", "@guildmail:decline_subject", body.str(), false);
+	sendGuildMail(player, "Guild manager", "@guildmail:decline_subject", body.toString(), false);
 
 	return true;
 }
@@ -1400,8 +1385,8 @@ bool GuildManagerImplementation::updateOfflineDeclineGuild(string probandName, P
 bool GuildManagerImplementation::updateCharIntoGuild(Player* proband, Player* player) {
 	player->info("Entering GuildManagerImplementation::updateCharIntoGuild(Player* proband, Player* player)");
 
-	string name, probandName, guildName;
-	stringstream query, body, subject;
+	String name, probandName, guildName;
+	StringBuffer query, body, subject;
 
 	uint32 guildID;
 	uint64 probandID;
@@ -1445,26 +1430,26 @@ bool GuildManagerImplementation::updateCharIntoGuild(Player* proband, Player* pl
 	}
 
 	body << name << " has accepted " << probandName << " into the guild as a member.";
-	sendGuildMail(player, "Guild manager", "@guildmail:accept_subject", body.str(), false);
+	sendGuildMail(player, "Guild manager", "@guildmail:accept_subject", body.toString(), false);
 
-	body.str("");
+	body.deleteAll();
 	body << name << " has accepted you into " << guildName << " as a member.";
-	unicode uBody(body.str());
+	UnicodeString uBody(body.toString());
 
 	subject << "Accepted to guild";
-	unicode uSubject(subject.str());
+	UnicodeString uSubject(subject.toString());
 
 	if (cm != NULL)
 		cm->sendMail("Guild manager", uSubject, uBody, probandName);
 
 
-	body.str("");
+	body.deleteAll();
 	body << name << " has accepted you for membership in " << guildName << ".";
-	proband->sendSystemMessage(body.str());
+	proband->sendSystemMessage(body.toString());
 
-	body.str("");
+	body.deleteAll();
 	body << "You accept " << probandName << " for membership in " << guildName << ".";
-	player->sendSystemMessage(body.str());
+	player->sendSystemMessage(body.toString());
 
 
 	try {
@@ -1486,20 +1471,20 @@ bool GuildManagerImplementation::updateCharIntoGuild(Player* proband, Player* pl
 
 
 	try {
-		query.str("");
+		query.deleteAll();
 
 		query << "UPDATE characters SET " << "guild = "  << guildID
 			  << ", guildpermission = 0 WHERE character_id= " << probandID << ";";
 
-		ServerDatabase::instance()->executeStatement(query.str());
+		ServerDatabase::instance()->executeStatement(query.toString());
 
 		//Delete sponsoring from table
-		query.str("");
+		query.deleteAll();
 		query << "DELETE from guilds_sponsoring where sponsored = " << probandID << ";";
-		ServerDatabase::instance()->executeStatement(query.str());
+		ServerDatabase::instance()->executeStatement(query.toString());
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 
 		player->info("DB Exception #2 in GuildManagerImplementation::updateCharIntoGuild(uint64 probandID, Player* player)");
 
@@ -1509,13 +1494,12 @@ bool GuildManagerImplementation::updateCharIntoGuild(Player* proband, Player* pl
 	return true;
 }
 
-void GuildManagerImplementation::removeOfflineFromGuild(Player* player, string kickee) {
-	player->info("Entering GuildManagerImplementation::removeOfflineFromGuild(Player* player, string kickee)");
+void GuildManagerImplementation::removeOfflineFromGuild(Player* player, String kickee) {
+	player->info("Entering GuildManagerImplementation::removeOfflineFromGuild(Player* player, String kickee)");
 
-	string leaderName;
-	unicode playerName;
-	string checkName = kickee;
-	String::toLower(checkName);
+	String leaderName;
+	UnicodeString playerName;
+	String checkName = kickee.toLowerCase();
 
 	Guild* playerGuild;
 
@@ -1532,21 +1516,19 @@ void GuildManagerImplementation::removeOfflineFromGuild(Player* player, string k
 		player->unlock();
 	}
 
-	leaderName = getGuildLeaderName(playerGuild);
+	leaderName = getGuildLeaderName(playerGuild).toLowerCase();
 
 	if (leaderName == "") {
-		player->info("Clean exit from GuildManagerImplementation::removeOfflineFromGuild(Player* player, string kickee)");
+		player->info("Clean exit from GuildManagerImplementation::removeOfflineFromGuild(Player* player, String kickee)");
 
 		return;
 	}
-
-	String::toLower(leaderName);
 
 	if (leaderName == checkName) {
 		ErrorMessage* errMsg = new ErrorMessage("Guild:", "The guild leader cannot be removed from the guild.", 0);
 		player->sendMessage(errMsg);
 
-		player->info("Clean exit from GuildManagerImplementation::removeOfflineFromGuild(Player* player, string kickee)");
+		player->info("Clean exit from GuildManagerImplementation::removeOfflineFromGuild(Player* player, String kickee)");
 
 		return;
 	}
@@ -1556,10 +1538,10 @@ void GuildManagerImplementation::removeOfflineFromGuild(Player* player, string k
 	if (removeCharID != 0) {
 		removeToonFromGuildDB(removeCharID);
 
-		stringstream body;
-		body << playerName.c_str() << " has removed " << kickee << " from the guild.";
+		StringBuffer body;
+		body << playerName.toCharArray() << " has removed " << kickee << " from the guild.";
 
-		sendGuildMail(player, "Guild manager", "@guildmail:kick_subject", body.str(), false);
+		sendGuildMail(player, "Guild manager", "@guildmail:kick_subject", body.toString(), false);
 	}
 
 }
@@ -1653,8 +1635,8 @@ void GuildManagerImplementation::removeOnlineFromGuild(Player* player, Player* r
 }
 
 void GuildManagerImplementation::notifyOfGuildRemoval(Player* player, Player* removePlayer) {
-	string removeName, guildName, playerName;
-	stringstream body;
+	String removeName, guildName, playerName;
+	StringBuffer body;
 	uint64 removeCharID;
 	ChatManager* cm;
 
@@ -1698,34 +1680,34 @@ void GuildManagerImplementation::notifyOfGuildRemoval(Player* player, Player* re
 		player->sendSystemMessage("You remove yourself from the guild.");
 
 		body << removeName << " has removed themselves from the guild.";
-		sendGuildMail(removePlayer, "Guild manager", "@guildmail:leave_subject", body.str(), true);
+		sendGuildMail(removePlayer, "Guild manager", "@guildmail:leave_subject", body.toString(), true);
 
-		unicode uSubject("@guildmail:kick_subject");
+		UnicodeString uSubject("@guildmail:kick_subject");
 
-		body.str("");
+		body.deleteAll();
 		body << "You remove yourself from " << guildName << ".";
-		unicode uBody(body.str());
+		UnicodeString uBody(body.toString());
 
 		cm->sendMail("Guild manager", uSubject, uBody, removeName);
 
 	} else {
 
 		body << "You remove " << removeName << " from " << guildName << ".";
-		player->sendSystemMessage(body.str());
+		player->sendSystemMessage(body.toString());
 
-		body.str("");
+		body.deleteAll();
 		body << playerName << " has removed you from " << guildName << ".";
-		removePlayer->sendSystemMessage(body.str());
+		removePlayer->sendSystemMessage(body.toString());
 
-		body.str("");
+		body.deleteAll();
 		body << playerName << " has removed " << removeName << " from the guild.";
-		sendGuildMail(removePlayer, "Guild manager", "@guildmail:kick_subject", body.str(), true);
+		sendGuildMail(removePlayer, "Guild manager", "@guildmail:kick_subject", body.toString(), true);
 
-		body.str("");
+		body.deleteAll();
 		body << playerName << " has removed you from " << guildName << ".";
-		unicode uBody(body.str());
+		UnicodeString uBody(body.toString());
 
-		unicode uSubject("@guildmail:kick_subject");
+		UnicodeString uSubject("@guildmail:kick_subject");
 
 		cm->sendMail("Guild manager", uSubject, uBody, removeName);
 
@@ -1734,13 +1716,13 @@ void GuildManagerImplementation::notifyOfGuildRemoval(Player* player, Player* re
 
 void GuildManagerImplementation::removeToonFromGuildDB(uint64 removeCharID) {
 	try {
-		stringstream update;
+		StringBuffer update;
 
 		update << "UPDATE `characters` SET `guild` = 0, guildpermission = 0 WHERE character_id = " << removeCharID << ";";
 
 		ServerDatabase::instance()->executeStatement(update);
 	} catch (...) {
-		cout << "DB exception in GuildManagerImplementation::removeToonFromGuildDB(removeCharID)" << endl;
+		System::out << "DB exception in GuildManagerImplementation::removeToonFromGuildDB(removeCharID)" << endl;
 		return;
 	}
 }
@@ -1759,10 +1741,10 @@ bool GuildManagerImplementation::twoPlayersInSameGuild(Player* player, Player* r
 }
 
 
-void GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, string returnString) {
-	player->info("Entering GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+void GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, String returnString) {
+	player->info("Entering GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
-	string name;
+	String name;
 
 	uint32 removeGuildID;
 
@@ -1770,7 +1752,7 @@ void GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* pla
 		player->wlock();
 
 		if (!player->hasSuiBox(boxID)) {
-			player->info("Clean exit from GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+			player->info("Clean exit from GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 			player->unlock();
 			return;
 		}
@@ -1789,39 +1771,39 @@ void GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* pla
 
 
 	if (cancel) {
-		player->info("Clean exit from GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+		player->info("Clean exit from GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 		return;
 	}
 
 	if (returnString != "disband guild") {
-		player->info("Clean exit from GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+		player->info("Clean exit from GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 		return;
 	}
 
-	stringstream subject;
-	stringstream body;
+	StringBuffer subject;
+	StringBuffer body;
 
 	subject << "@guildmail:disband_subject";
 	body << "The guild has been disbanded by " << name;
 
-	sendGuildMail(player, "Guild manager", subject.str(), body.str(), false);
+	sendGuildMail(player, "Guild manager", subject.toString(), body.toString(), false);
 
 	removeGuild(removeGuildID);
 
-	player->info("Clean exit from GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+	player->info("Clean exit from GuildManagerImplementation::handleGuildDisbandBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
 }
 
-void GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, string returnString) {
+void GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, String returnString) {
 	//ToDO: After "Guild alpha" on TC is due: Change to allowed only once a week
 
-	player->info("Entering GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+	player->info("Entering GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
 	try {
 		player->wlock();
 
 		if (!player->hasSuiBox(boxID)) {
-			player->info("Clean exit from GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+			player->info("Clean exit from GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 			player->unlock();
 			return;
 		}
@@ -1834,7 +1816,7 @@ void GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* pla
 
 		if (cancel == 1 || returnString == "") {
 			player->setInputBoxReturnBuffer("");
-			player->info("Clean exit from GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+			player->info("Clean exit from GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
 			player->unlock();
 			return;
@@ -1856,22 +1838,20 @@ void GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* pla
 		player->unlock();
 	}
 
-	player->info("Clean exit from GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+	player->info("Clean exit from GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 }
 
-void GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, string returnString) {
-	player->info("Entering GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+void GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, String returnString) {
+	player->info("Entering GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
-	string tag;
-	string tempName = returnString;
-	String::toLower(tempName);
-
+	String tag;
+	String tempName = returnString.toLowerCase();
 
 	try {
 		player->wlock();
 
 		if (!player->hasSuiBox(boxID)) {
-			player->info("Clean exit from GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+			player->info("Clean exit from GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 			player->unlock();
 			return;
 		}
@@ -1888,37 +1868,34 @@ void GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player*
 		player->unlock();
 	}
 
-
 	if (cancel) {
-		player->info("Clean exit from GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+		player->info("Clean exit from GuildManagerImplementation::handleGuildNameChangeName(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 		return;
 	}
 
-
-	if ( ! checkGuildNameAndTag(tempName, tag, player) )
+	if (!checkGuildNameAndTag(tempName, tag, player))
 		return;
 
 
-	if ( ! checkGuildProfanity(returnString, tag, player) )
+	if (!checkGuildProfanity(returnString, tag, player))
 		return;
 
-
-	stringstream msg;
+	StringBuffer msg;
 	msg << "You have set your guild's name and abbreviation to be changed to '<" << tag << ">' and '" << returnString << "' "
 		<< "respectively.  The change will take place in approximately 7 days, if there are no conflicts at that time.";
 
-	player->sendSystemMessage(msg.str());
+	player->sendSystemMessage(msg.toString());
 
 	updateGuildInDB(player, tag, returnString);
 }
 
 
-void GuildManagerImplementation::updateGuildInDB(Player* player, string tag, string returnString) {
+void GuildManagerImplementation::updateGuildInDB(Player* player, String tag, String returnString) {
 	player->info("Entering GuildManagerImplementation::updateGuildInDB(Player* player)");
 
 	Guild* myGuild;
 	uint32 guildid;
-	unicode fullName;
+	UnicodeString fullName;
 
 	try {
 		player->wlock();
@@ -1928,13 +1905,13 @@ void GuildManagerImplementation::updateGuildInDB(Player* player, string tag, str
 
 		fullName = player->getCharacterName();
 
-		string tagString = tag;
+		String tagString = tag;
 		MySqlDatabase::escapeString(tagString);
 
-		string nameString = returnString;
+		String nameString = returnString;
 		MySqlDatabase::escapeString(nameString);
 
-		stringstream update;
+		StringBuffer update;
 		Time systemTime;
 
 		update << "UPDATE guilds SET `guild_tag` = '" << tagString
@@ -1945,7 +1922,7 @@ void GuildManagerImplementation::updateGuildInDB(Player* player, string tag, str
 
 		player->unlock();
 	} catch (...) {
-		cout << "DB Error in GuildManagerImplementation::updateGuildInDB(Player* player)\n";
+		System::out << "DB Error in GuildManagerImplementation::updateGuildInDB(Player* player)\n";
 		player->info("DB Error in GuildManagerImplementation::updateGuildInDB(Player* player)");
 
 		player->unlock();
@@ -1972,10 +1949,10 @@ void GuildManagerImplementation::updateGuildInDB(Player* player, string tag, str
 
 	sendGuildListToPlayers(myGuild);
 
-	stringstream message;
-	message << fullName.c_str() << " has renamed the guild to '" << returnString << "' <" << tag << ">.";
+	StringBuffer message;
+	message << fullName.toCharArray() << " has renamed the guild to '" << returnString << "' <" << tag << ">.";
 
-	sendGuildMail(player, "Guild manager", "@guildmail:namechange_subject", message.str(), false);
+	sendGuildMail(player, "Guild manager", "@guildmail:namechange_subject", message.toString(), false);
 
 	player->info("Clean exit from GuildManagerImplementation::updateGuildInDB(Player* player)");
 }
@@ -2003,7 +1980,7 @@ void GuildManagerImplementation::handleGuildInformationMembers(Player* player) {
 	}
 
 
-	stringstream query;
+	StringBuffer query;
 	ResultSet* guildInfo;
 
 	try {
@@ -2020,7 +1997,7 @@ void GuildManagerImplementation::handleGuildInformationMembers(Player* player) {
 	}
 
 
-	stringstream entry;
+	StringBuffer entry;
 
 	try {
 		server->lock();
@@ -2032,10 +2009,10 @@ void GuildManagerImplementation::handleGuildInformationMembers(Player* player) {
 		suiListBox->setCancelButton(true);
 
 		while (guildInfo->next()) {
-			entry.str("");
+			entry.deleteAll();
 			entry << guildInfo->getString(0) << " " << guildInfo->getString(1);
 
-			suiListBox->addMenuItem(entry.str());
+			suiListBox->addMenuItem(entry.toString());
 
 			playerGuild->putSponsoredMap(guildInfo->getString(0));
 		}
@@ -2075,8 +2052,8 @@ void GuildManagerImplementation::handleGuildInformationMembersBox(uint32 boxID, 
 
 	Guild* playerGuild;
 
-	string firstname;
-	string oFirstname;
+	String firstname;
+	String oFirstname;
 
 	SuiListBox* suiListBox;
 
@@ -2131,8 +2108,8 @@ void GuildManagerImplementation::handleGuildInformationMembersBox(uint32 boxID, 
 		return;
 	}
 
-	String::toLower(firstname);
-	String::toLower(oFirstname);
+	firstname = firstname.toLowerCase();
+	oFirstname = oFirstname.toLowerCase();
 
 	if (firstname == oFirstname) {
 		player->sendSystemMessage("You cannot perform actions on yourself.");
@@ -2141,7 +2118,7 @@ void GuildManagerImplementation::handleGuildInformationMembersBox(uint32 boxID, 
 		return;
 	}
 
-	stringstream prompt;
+	StringBuffer prompt;
 
 	try {
 		player->wlock();
@@ -2151,7 +2128,7 @@ void GuildManagerImplementation::handleGuildInformationMembersBox(uint32 boxID, 
 		prompt << "Select an operation from the list you want to perform on " << playerGuild->getSponsoredMap(index) << " and press Ok.";
 
 		suiListBox->setPromptTitle("@guild:member_options_title");
-		suiListBox->setPromptText(prompt.str());
+		suiListBox->setPromptText(prompt.toString());
 		suiListBox->addMenuItem("@guild:title");
 		suiListBox->addMenuItem("@guild:kick");
 		suiListBox->addMenuItem("@guild:permissions");
@@ -2172,7 +2149,7 @@ void GuildManagerImplementation::handleGuildInformationMembersBox(uint32 boxID, 
 void GuildManagerImplementation::handleGuildMemberOptions(uint32 boxID, Player* player, uint32 cancel, int index) {
 	player->info("Entering GuildManagerImplementation::handleGuildMemberOptions(uint32 boxID, Player* player, uint32 cancel, int index)");
 
-	string proband;
+	String proband;
 
 	try {
 		player->wlock();
@@ -2219,38 +2196,34 @@ void GuildManagerImplementation::handleGuildMemberOptions(uint32 boxID, Player* 
 	player->info("Clean exit from GuildManagerImplementation::handleGuildMemberOptions(uint32 boxID, Player* player, uint32 cancel, int index)");
 }
 
-void GuildManagerImplementation::handleRemoveFromGuild(Player* player, string kickee) {
-	player->info("Entering GuildManagerImplementation::handleRemoveFromGuild(Player* player, string kickee)");
+void GuildManagerImplementation::handleRemoveFromGuild(Player* player, String kickee) {
+	player->info("Entering GuildManagerImplementation::handleRemoveFromGuild(Player* player, String kickee)");
 
-	string pName, kName;
+	String playerName, kickeeName;
 
 	try {
 		player->wlock();
 
-		pName = player->getFirstName();
-		String::toLower(pName);
+		playerName = player->getFirstName().toLowerCase();
+		kickeeName = kickee.toLowerCase();
 
-		kName = kickee;
-		String::toLower(kName);
-
-		if (kName != pName) {
-			if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDKICK) ) ) {
+		if (kickeeName != playerName) {
+			if (!(player->getGuildPermissions() & PlayerImplementation::GUILDKICK)) {
 				player->sendSystemMessage("@guild:generic_fail_no_permission");
+
 				player->unlock();
 				return;
 			}
 		}
 
-
 		player->setInputBoxReturnBuffer(kickee);
 
-
-		stringstream prompt;
+		StringBuffer prompt;
 		SuiMessageBox* suiMessageBox = new SuiMessageBox(player, 0x7283);
 		prompt << "Are you sure you want kick " << kickee << " out of the guild?";
 
 		suiMessageBox->setPromptTitle("@guild:kick_title");
-		suiMessageBox->setPromptText(prompt.str());
+		suiMessageBox->setPromptText(prompt.toString());
 		suiMessageBox->setCancelButton(true);
 
 		player->addSuiBox(suiMessageBox);
@@ -2261,13 +2234,13 @@ void GuildManagerImplementation::handleRemoveFromGuild(Player* player, string ki
 		player->unlock();
 	}
 
-	player->info("Clean exit from GuildManagerImplementation::handleRemoveFromGuild(Player* player, string kickee)");
+	player->info("Clean exit from GuildManagerImplementation::handleRemoveFromGuild(Player* player, String kickee)");
 }
 
 void GuildManagerImplementation::execRemoveFromGuild(uint32 boxID, Player* player, uint32 cancel) {
 	player->info("Entering GuildManagerImplementation::execRemoveFromGuild(uint32 boxID, Player* player, uint32 cancel)");
 
-	string kickee;
+	String kickee;
 
 	Player* removePlayer;
 
@@ -2316,8 +2289,8 @@ void GuildManagerImplementation::execRemoveFromGuild(uint32 boxID, Player* playe
 	player->info("Clean exit from GuildManagerImplementation::execRemoveFromGuild(uint32 boxID, Player* player, uint32 cancel)");
 }
 
-void GuildManagerImplementation::callGuildPermissions(Player* player, string proband) {
-	player->info("Entering GuildManagerImplementation::callGuildPermissions(Player* player, string proband)");
+void GuildManagerImplementation::callGuildPermissions(Player* player, String proband) {
+	player->info("Entering GuildManagerImplementation::callGuildPermissions(Player* player, String proband)");
 
 	uint32 permissions;
 
@@ -2360,14 +2333,14 @@ void GuildManagerImplementation::callGuildPermissions(Player* player, string pro
 
 		SuiListBox* suiListBox = new SuiListBox(player, 0x7282);
 
-		stringstream prompt;
+		StringBuffer prompt;
 
 		prompt << "These are the current permissions set for " << proband << ".  "
 			<< "Permissions preceded by '+' are currently allowed, and those preceded by '-' are not.  "
 			<< "Select a permission and press Ok to toggle it.";
 
 		suiListBox->setPromptTitle("@guild:permissions_title");
-		suiListBox->setPromptText(prompt.str());
+		suiListBox->setPromptText(prompt.toString());
 
 		if (permissions & PlayerImplementation::GUILDMAIL)
 			suiListBox->addMenuItem("@guild:permission_mail_yes");
@@ -2427,39 +2400,37 @@ void GuildManagerImplementation::callGuildPermissions(Player* player, string pro
 		player->unlock();
 	}
 
-	player->info("Clean exit from GuildManagerImplementation::callGuildPermissions(Player* player, string proband)");
+	player->info("Clean exit from GuildManagerImplementation::callGuildPermissions(Player* player, String proband)");
 }
 
-uint32 GuildManagerImplementation::getGuildPermissionsFromDB(string proband) {
-	stringstream query;
+uint32 GuildManagerImplementation::getGuildPermissionsFromDB(String proband) {
+	StringBuffer query;
 	ResultSet* memberPerm;
 
 	uint32 permissions = 0;
 
-	string checkName = proband;
-	String::toLower(checkName);
+	String checkName = proband.toLowerCase();
 
 	try {
 		query << "SELECT guildpermission FROM characters where lcase(firstname) = '" << checkName << "';";
-		memberPerm = ServerDatabase::instance()->executeQuery(query);
 
+		memberPerm = ServerDatabase::instance()->executeQuery(query);
 	} catch (Exception& e) {
-		stringstream msg;
+		StringBuffer msg;
 
 		msg << "Exception in GuildManager::callGuildPermissions " << e.getMessage();
-		cout << msg.str() << endl;
+		System::out << msg.toString() << endl;
 
 		delete memberPerm;
 		return permissions;
 	}
 
 
-	if (! memberPerm->next()) {
+	if (!memberPerm->next()) {
 		delete memberPerm;
 
 		return permissions;
 	}
-
 
 	permissions = memberPerm->getInt(0);
 
@@ -2471,7 +2442,7 @@ uint32 GuildManagerImplementation::getGuildPermissionsFromDB(string proband) {
 void GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Player* player, uint32 cancel, int index) {
 	player->info("Entering GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Player* player, uint32 cancel, int index)");
 
-	string proband;
+	String proband;
 
 	try {
 		player->wlock();
@@ -2630,25 +2601,23 @@ void GuildManagerImplementation::handleGuildPermissionSelection(uint32 boxID, Pl
 
 }
 
-void GuildManagerImplementation::updateGuildPermissionsToDB(string proband, uint32 permissions) {
-	string lProband = proband;
-	String::toLower(lProband);
+void GuildManagerImplementation::updateGuildPermissionsToDB(String proband, uint32 permissions) {
+	String lProband = proband.toLowerCase();
 
 	try {
-		stringstream query;
+		StringBuffer query;
 
 		query << "UPDATE characters set guildpermission = " << permissions
-		<< " WHERE lcase(`firstname`) = '" << lProband << "';";
+			  << " WHERE lcase(`firstname`) = '" << lProband << "';";
 
 		ServerDatabase::instance()->executeStatement(query);
-
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 	}
 }
 
-void GuildManagerImplementation::declineSponsoring(string declinee,uint32 inviteGuild, Player* inviter) {
-	inviter->info("Entering GuildManagerImplementation::declineSponsoring(string declinee,uint32 inviteGuild, Player* inviter)");
+void GuildManagerImplementation::declineSponsoring(String declinee,uint32 inviteGuild, Player* inviter) {
+	inviter->info("Entering GuildManagerImplementation::declineSponsoring(String declinee,uint32 inviteGuild, Player* inviter)");
 
 	Player* declineePlayer;
 
@@ -2658,15 +2627,15 @@ void GuildManagerImplementation::declineSponsoring(string declinee,uint32 invite
 		declineePlayer = playerManager->getPlayer(declinee);
 
 		if (declineePlayer == NULL) {
-			inviter->info("Clean exit from GuildManagerImplementation::declineSponsoring(string declinee,uint32 inviteGuild, Player* inviter)");
+			inviter->info("Clean exit from GuildManagerImplementation::declineSponsoring(String declinee,uint32 inviteGuild, Player* inviter)");
 			server->unlock();
 			return;
 		}
 
 		server->unlock();
 	} catch (...) {
-		cout << "Exception in GuildManagerImplementation::declineSponsoring(string declinee,uint32 inviteGuild, Player* inviter)\n";
-		inviter->info("Clean exit via Catch#1 from GuildManagerImplementation::declineSponsoring(string declinee,uint32 inviteGuild, Player* inviter)");
+		System::out << "Exception in GuildManagerImplementation::declineSponsoring(String declinee,uint32 inviteGuild, Player* inviter)\n";
+		inviter->info("Clean exit via Catch#1 from GuildManagerImplementation::declineSponsoring(String declinee,uint32 inviteGuild, Player* inviter)");
 
 		server->unlock();
 		return;
@@ -2676,12 +2645,12 @@ void GuildManagerImplementation::declineSponsoring(string declinee,uint32 invite
 
 	deletePreviousSponsoringsFromDB(declineePlayer);
 
-	inviter->info("Clean exit from GuildManagerImplementation::declineSponsoring(string declinee,uint32 inviteGuild, Player* inviter)");
+	inviter->info("Clean exit from GuildManagerImplementation::declineSponsoring(String declinee,uint32 inviteGuild, Player* inviter)");
 }
 
 void GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Player* declineePlayer, uint32 inviteGuild) {
-	stringstream inmqry;
-	string toSponsor;
+	StringBuffer inmqry;
+	String toSponsor;
 
 	ResultSet* decline;
 
@@ -2691,7 +2660,7 @@ void GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Pl
 
 		toSponsor = declineePlayer->getFirstName();
 
-		inmqry.str("");
+		inmqry.deleteAll();
 		inmqry << "SELECT guilds_sponsoring.guild_id, guilds_sponsoring.guild_name, guilds_sponsoring.sponsored_time, "
 			<< "guilds_sponsoring.sponsored_by, guilds_sponsoring.sponsored, characters.firstname "
 
@@ -2708,7 +2677,7 @@ void GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Pl
 
 	} catch (DatabaseException& e) {
 		inviter->info(e.getMessage());
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 
 		declineePlayer->unlock();
 
@@ -2717,7 +2686,7 @@ void GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Pl
 		return;
 
 	} catch (...) {
-		cout << "Exception in GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Player* declineePlayer, uint32 inviteGuild)\n";
+		System::out << "Exception in GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Player* declineePlayer, uint32 inviteGuild)\n";
 		inviter->info("Clean exit via Catch#2 from GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Player* declineePlayer, uint32 inviteGuild)");
 
 		declineePlayer->unlock();
@@ -2729,8 +2698,8 @@ void GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Pl
 
 
 	if (decline->next()) {
-		string declineGuild = decline->getString(1);
-		string declineGuildLeader = decline->getString(5);
+		String declineGuild = decline->getString(1);
+		String declineGuildLeader = decline->getString(5);
 
 		if ( (decline->getInt(0)) == inviteGuild ) {
 
@@ -2743,15 +2712,15 @@ void GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Pl
 			declineePlayer->sendMessage(errMsg2);
 
 			delete decline;
-			inviter->info("Clean exit from GuildManagerImplementation::declineSponsoring(string declinee,uint32 inviteGuild, Player* inviter)");
+			inviter->info("Clean exit from GuildManagerImplementation::declineSponsoring(String declinee,uint32 inviteGuild, Player* inviter)");
 
 			return;
 		}
 
-		stringstream message;
+		StringBuffer message;
 		message << toSponsor << " has declined your sponsorship for <" << declineGuild << ">.";
 
-		sendMailGuildLeader(inviter, "Guildmanager", (decline->getInt(0)), "Guild Sponsorship declined", message.str());
+		sendMailGuildLeader(inviter, "Guildmanager", (decline->getInt(0)), "Guild Sponsorship declined", message.toString());
 
 	}
 
@@ -2759,7 +2728,7 @@ void GuildManagerImplementation::checkPreviousSponsoringInDB(Player* inviter, Pl
 }
 
 void GuildManagerImplementation::deletePreviousSponsoringsFromDB(Player* declineePlayer) {
-	stringstream deleteQuery;
+	StringBuffer deleteQuery;
 
 	try {
 		declineePlayer->wlock();
@@ -2770,10 +2739,10 @@ void GuildManagerImplementation::deletePreviousSponsoringsFromDB(Player* decline
 		declineePlayer->unlock();
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 		declineePlayer->unlock();
 
-		declineePlayer->info("DB Exception in GuildManagerImplementation::declineSponsoring(string declinee,uint32 inviteGuild, Player* inviter)");
+		declineePlayer->info("DB Exception in GuildManagerImplementation::declineSponsoring(String declinee,uint32 inviteGuild, Player* inviter)");
 		return;
 	}
 }
@@ -2785,10 +2754,10 @@ void GuildManagerImplementation::handleGuildInfo(Player* player) {
 
 	Guild* playerGuild;
 
-	stringstream ssTotalMembers;
-	stringstream guildtag;
-	stringstream guildname;
-	stringstream guildleader;
+	StringBuffer ssTotalMembers;
+	StringBuffer guildtag;
+	StringBuffer guildname;
+	StringBuffer guildleader;
 
 	try {
 		player->wlock();
@@ -2808,16 +2777,16 @@ void GuildManagerImplementation::handleGuildInfo(Player* player) {
 		guildInfoBox->setPromptText("@guild:menu_info");
 
 		ssTotalMembers << totalMembers;
-		string leaderName = getGuildLeaderName(playerGuild);
+		String leaderName = getGuildLeaderName(playerGuild);
 
 		guildtag << "Abbreviation: <" << playerGuild->getGuildTag() << ">";
 		guildname << "Name: " << playerGuild->getGuildName() << "";
 		guildleader << "Leader: " << leaderName;
 
-		guildInfoBox->addMenuItem(guildtag.str());
-		guildInfoBox->addMenuItem(guildname.str());
-		guildInfoBox->addMenuItem(guildleader.str());
-		guildInfoBox->addMenuItem(ssTotalMembers.str());
+		guildInfoBox->addMenuItem(guildtag.toString());
+		guildInfoBox->addMenuItem(guildname.toString());
+		guildInfoBox->addMenuItem(guildleader.toString());
+		guildInfoBox->addMenuItem(ssTotalMembers.toString());
 
 		player->addSuiBox(guildInfoBox);
 		player->sendMessage(guildInfoBox->generateMessage());
@@ -2837,8 +2806,8 @@ void GuildManagerImplementation::handleGuildSponsoring(Player* player) {
 
 	ResultSet* sponsoredList;
 
-	stringstream query;
-	string guildName;
+	StringBuffer query;
+	String guildName;
 
 	Guild* playerGuild;
 	uint32 playerGuildID;
@@ -2879,7 +2848,7 @@ void GuildManagerImplementation::handleGuildSponsoring(Player* player) {
 		sponsoredList= ServerDatabase::instance()->executeQuery(query);
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 
 		player->info("DB Exception in GuildManagerImplementation::handleGuildInfo(Player* player)");
 		return;
@@ -2923,7 +2892,7 @@ void GuildManagerImplementation::handleGuildSponsoring(Player* player) {
 void GuildManagerImplementation::handleGuildRenaming(Player* player) {
 	player->info("Entering GuildManagerImplementation::handleGuildRenaming(Player* player)");
 
-	stringstream query;
+	StringBuffer query;
 	ResultSet* guildStamp;
 
 	if ( !checkLastRenameTime(player) ) {
@@ -2955,7 +2924,7 @@ void GuildManagerImplementation::handleGuildRenaming(Player* player) {
 }
 
 bool GuildManagerImplementation::checkLastRenameTime(Player* player) {
-	stringstream query;
+	StringBuffer query;
 	ResultSet* guildStamp;
 
 	try {
@@ -2966,16 +2935,13 @@ bool GuildManagerImplementation::checkLastRenameTime(Player* player) {
 
 		if (guildStamp->next()) {
 			Time systemTime;
-			stringstream helper;
 			uint64 lastchange;
 
-			helper << guildStamp->getString(0);
-			helper >> lastchange;
-			helper.str("");
+			lastchange = Long::unsignedvalueOf(guildStamp->getString(0));
 
 			uint64 currentTime = systemTime.getMiliTime() / 1000;
 
-			if (currentTime < lastchange+86400) { //1 Day (24 h)
+			if (currentTime < lastchange + 86400) { //1 Day (24 h)
 				player->unlock();
 
 				return false;
@@ -2985,7 +2951,7 @@ bool GuildManagerImplementation::checkLastRenameTime(Player* player) {
 		player->unlock();
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 		player->unlock();
 
 		delete guildStamp;
@@ -3045,12 +3011,12 @@ void GuildManagerImplementation::handleGuildTransferLeader(Player* player) {
 }
 
 
-void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString) {
-	player->info("Entering GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, String returnString) {
+	player->info("Entering GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
-	string name;
-	string proband = returnString;
-	string newLeaderName = "";
+	String name;
+	String proband = returnString;
+	String newLeaderName = "";
 
 	Player* otherPlayer = NULL;
 
@@ -3058,7 +3024,7 @@ void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Play
 		player->wlock();
 
 		if (!player->hasSuiBox(boxID)) {
-			player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+			player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
 			player->unlock();
 			return;
@@ -3078,7 +3044,7 @@ void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Play
 
 
 	if (cancel || proband == "") {
-		player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+		player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
 		return;
 	}
@@ -3091,7 +3057,7 @@ void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Play
 	otherPlayer = playerManager->getPlayer(newLeaderName);
 
 	if (otherPlayer == NULL) {
-		player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+		player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
 		return;
 	}
@@ -3119,26 +3085,24 @@ void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Play
 		otherPlayer->unlock();
 	}
 
-	player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+	player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 }
 
 
-string GuildManagerImplementation::checkForNewLeader(Player* player, string proband) {
+String GuildManagerImplementation::checkForNewLeader(Player* player, String proband) {
 	Zone* zone;
 
-	string name, otherName;;
-	string newLeaderName = "";
+	String name, otherName;;
+	String newLeaderName = "";
 
-	String::toLower(proband);
+	proband = proband.toLowerCase();
 
 	Player* otherPlayer;
-
 
 	try {
 		player->wlock();
 
-		name = player->getFirstName();
-		String::toLower(name);
+		name = player->getFirstName().toLowerCase();
 
 		zone = player->getZone();
 
@@ -3150,8 +3114,6 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 		return "";
 	}
 
-
-
 	try {
 		if (zone != NULL) {
 			zone->lock();
@@ -3161,13 +3123,7 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 
 				if (obj->isPlayer()) {
 					otherPlayer = (Player*) obj;
-
-
-
-					otherName = otherPlayer->getFirstName();
-					String::toLower(otherName);
-
-
+					otherName = otherPlayer->getFirstName().toLowerCase();
 
 					if (otherName != name && otherName == proband && (player->isInRange(otherPlayer, 8))) {
 						newLeaderName = otherName;
@@ -3178,9 +3134,7 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 
 			zone->unlock();
 		}
-
 	} catch (...) {
-
 		zone->unlock();
 
 		return "";
@@ -3188,21 +3142,19 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 
 	if (newLeaderName == "") {
 		player->sendSystemMessage("That person is not loaded or is too far away.");
-		player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+		player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
 		return "";
 	}
 
-
 	//It is not possible, that otherPlayer == player due to the above name comparison
-
 	try {
 		player->wlock();
 		otherPlayer->wlock(player);
 
 		if (otherPlayer->getGuildID() != player->getGuildID()) {
 			player->sendSystemMessage("Unable to find a member of the PA with that name.");
-			player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
+			player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, String returnString)");
 
 			otherPlayer->unlock();
 			player->unlock();
@@ -3212,7 +3164,6 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 
 		otherPlayer->unlock();
 		player->unlock();
-
 	} catch (...) {
 		otherPlayer->unlock();
 		player->unlock();
@@ -3225,8 +3176,8 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 void GuildManagerImplementation::handleGuildTransferLeaderVerifyBox(uint32 boxID, Player* player, uint32 cancel) {
 	player->info("Entering GuildManagerImplementation::handleGuildTransferLeaderVerifyBox(uint32 boxID, Player* player, uint32 cancel)");
 
-	string oldLeader;
-	string name;
+	String oldLeader;
+	String name;
 
 	try {
 		player->wlock();
@@ -3275,10 +3226,10 @@ void GuildManagerImplementation::handleGuildTransferLeaderVerifyBox(uint32 boxID
 		return;
 
 
-	stringstream message;
+	StringBuffer message;
 	message << name << " is the new guild leader.";
 
-	sendGuildMail(player, "Guild manager", "@guildmail:leaderchange_subject", message.str(), false);
+	sendGuildMail(player, "Guild manager", "@guildmail:leaderchange_subject", message.toString(), false);
 
 	player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderVerifyBox(uint32 boxID, Player* player, uint32 cancel)");
 }
@@ -3337,7 +3288,7 @@ bool GuildManagerImplementation::changeGuildLeader(Player* olPlayer, Player* pla
 
 bool GuildManagerImplementation::swapLeaderInDB(uint64 playerID, uint64 olPlayerID, uint32 guildID) {
 	try {
-		stringstream query;
+		StringBuffer query;
 
 		query << "UPDATE characters set guildpermission = 255 "
 		<< "WHERE character_id = " << playerID << ";";
@@ -3345,21 +3296,21 @@ bool GuildManagerImplementation::swapLeaderInDB(uint64 playerID, uint64 olPlayer
 		ServerDatabase::instance()->executeStatement(query);
 
 
-		query.str("");
+		query.deleteAll();
 		query << "UPDATE characters set guildpermission = 0 "
 		<< "WHERE character_id = " << olPlayerID << ";";
 
 		ServerDatabase::instance()->executeStatement(query);
 
 
-		query.str("");
+		query.deleteAll();
 		query << "UPDATE guilds set leader = " << playerID
 		<< " WHERE guild_id = " << guildID << ";";
 
 		ServerDatabase::instance()->executeStatement(query);
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 		return false;
 	}
 
@@ -3372,7 +3323,7 @@ uint32 GuildManagerImplementation::totalMembersCount(Player* player) {
 
 	ResultSet* guildInfo;
 
-	stringstream query;
+	StringBuffer query;
 
 
 	try {
@@ -3388,7 +3339,7 @@ uint32 GuildManagerImplementation::totalMembersCount(Player* player) {
 
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 
 		player->info("DB Exception in GuildManagerImplementation::totalMembersCount(Player* player)");
 		player->unlock();

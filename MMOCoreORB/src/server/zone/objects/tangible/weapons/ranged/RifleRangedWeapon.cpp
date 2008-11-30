@@ -14,12 +14,12 @@
  *	RifleRangedWeaponStub
  */
 
-RifleRangedWeapon::RifleRangedWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
+RifleRangedWeapon::RifleRangedWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
 	_impl = new RifleRangedWeaponImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-RifleRangedWeapon::RifleRangedWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
+RifleRangedWeapon::RifleRangedWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp) : RangedWeapon(DummyConstructorParameter::instance()) {
 	_impl = new RifleRangedWeaponImplementation(creature, temp, n, tempn, eqp);
 	_impl->_setStub(this);
 }
@@ -83,11 +83,11 @@ DistributedObjectAdapter* RifleRangedWeaponHelper::createAdapter(DistributedObje
  *	RifleRangedWeaponServant
  */
 
-RifleRangedWeaponServant::RifleRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp) : RangedWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
+RifleRangedWeaponServant::RifleRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp) : RangedWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
 	_classHelper = RifleRangedWeaponHelper::instance();
 }
 
-RifleRangedWeaponServant::RifleRangedWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : RangedWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
+RifleRangedWeaponServant::RifleRangedWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp) : RangedWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
 	_classHelper = RifleRangedWeaponHelper::instance();
 }
 

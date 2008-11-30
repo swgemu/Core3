@@ -71,7 +71,7 @@ public:
 		
 public:
 	MissionTerminalImplementation(uint64 objid, float x, float z, float y, int pId, int tmsk) 
-			: MissionTerminalServant(0xAD456B02, objid, unicode("SWGEmu Mission Terminal"), "terminal_mission", x, z, y, TERMINAL) {
+			: MissionTerminalServant(0xAD456B02, objid, UnicodeString("SWGEmu Mission Terminal"), "terminal_mission", x, z, y, TERMINAL) {
 
 		planetId = pId;
 		termMask = tmsk;

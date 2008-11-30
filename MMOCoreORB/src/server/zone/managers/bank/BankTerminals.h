@@ -70,7 +70,7 @@ public:
 	}
 
 	BankTerminalDetails* isBankTerminal(long objectid) {
-		if( bankLocations->containsKey(objectid) ) {
+		if ( bankLocations->containsKey(objectid) ) {
 			return bankLocations->get(objectid);
 		} else {
 			return NULL;

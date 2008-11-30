@@ -15,7 +15,7 @@ class ResourceItem : public ManagedObject {
 public:
 	ResourceItem();
 
-	ResourceItem(unsigned long long oid, unsigned long long sid, unsigned long long expire, string& n, string& t, int d);
+	ResourceItem(unsigned long long oid, unsigned long long sid, unsigned long long expire, String& n, String& t, int d);
 
 	unsigned long long getObjectID();
 
@@ -23,9 +23,9 @@ public:
 
 	unsigned long long getSpawnExpireTimestamp();
 
-	string& getName();
+	String& getName();
 
-	string& getType();
+	String& getType();
 
 	int getDensity();
 
@@ -34,8 +34,8 @@ protected:
 
 	virtual ~ResourceItem();
 
-	string _return_getName;
-	string _return_getType;
+	String _return_getName;
+	String _return_getType;
 
 	friend class ResourceItemHelper;
 };
@@ -54,9 +54,9 @@ public:
 
 	unsigned long long getSpawnExpireTimestamp();
 
-	string& getName();
+	String& getName();
 
-	string& getType();
+	String& getType();
 
 	int getDensity();
 

@@ -21,9 +21,9 @@ class ResourceContainer : public TangibleObject {
 public:
 	ResourceContainer(unsigned long long oid);
 
-	ResourceContainer(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	ResourceContainer(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	ResourceContainer(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	ResourceContainer(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	bool compare(ResourceContainer* inResource);
 
@@ -63,13 +63,13 @@ public:
 
 	void setEntangleResistance(int i);
 
-	void setClassSeven(string& str);
+	void setClassSeven(String& str);
 
-	void setResourceName(string& str);
+	void setResourceName(String& str);
 
-	void setContainerFile(string& tempn);
+	void setContainerFile(String& tempn);
 
-	void setName(unicode& n);
+	void setName(UnicodeString& n);
 
 	void setObjectCRC(int tempCRC);
 
@@ -101,9 +101,9 @@ public:
 
 	int getEntangleResistance();
 
-	string& getClassSeven();
+	String& getClassSeven();
 
-	string& getResourceName();
+	String& getResourceName();
 
 	unsigned long long getResourceID();
 
@@ -114,8 +114,8 @@ protected:
 
 	virtual ~ResourceContainer();
 
-	string _return_getClassSeven;
-	string _return_getResourceName;
+	String _return_getClassSeven;
+	String _return_getResourceName;
 
 	friend class ResourceContainerHelper;
 };
@@ -166,13 +166,13 @@ public:
 
 	void setEntangleResistance(int i);
 
-	void setClassSeven(string& str);
+	void setClassSeven(String& str);
 
-	void setResourceName(string& str);
+	void setResourceName(String& str);
 
-	void setContainerFile(string& tempn);
+	void setContainerFile(String& tempn);
 
-	void setName(unicode& n);
+	void setName(UnicodeString& n);
 
 	void setObjectCRC(int tempCRC);
 
@@ -204,19 +204,19 @@ public:
 
 	int getEntangleResistance();
 
-	string& getClassSeven();
+	String& getClassSeven();
 
-	string& getResourceName();
+	String& getResourceName();
 
 	unsigned long long getResourceID();
 
 	int getMaxContents();
 
 protected:
-	string _param0_setClassSeven__string_;
-	string _param0_setResourceName__string_;
-	string _param0_setContainerFile__string_;
-	unicode _param0_setName__unicode_;
+	String _param0_setClassSeven__String_;
+	String _param0_setResourceName__String_;
+	String _param0_setContainerFile__String_;
+	UnicodeString _param0_setName__UnicodeString_;
 };
 
 class ResourceContainerHelper : public DistributedObjectClassHelper, public Singleton<ResourceContainerHelper> {
@@ -242,8 +242,8 @@ public:
 
 public:
 	ResourceContainerServant(unsigned long long oid, int tp);
-	ResourceContainerServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
-	ResourceContainerServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	ResourceContainerServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	ResourceContainerServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~ResourceContainerServant();
 
 	void _setStub(DistributedObjectStub* stub);

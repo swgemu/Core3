@@ -131,7 +131,7 @@ public:
 				insertInt(0);
 				insertAscii(dsi->getTitleName());
 			} else {
-				cerr << "\n\nError DMSCO7: line 65\n";
+				System::out << "\n\nError DMSCO7: line 65\n";
 			}
 		}
 	}
@@ -181,7 +181,7 @@ public:
 		startList(size, counter);
 
 		for (int i = 0; i < size; i++) {
-			if(i == 0){
+			if (i == 0){
 				addListIntElement(i, 0);
 			} else {
 				addListFloatElement(i, 1.0f);
@@ -230,8 +230,8 @@ public:
 		insertInt(titleCount);
 		insertInt(titleCount);
 
-		for(int i = 0; i < titleCount; i++) {
-			string title = craftingValues->getExperimentalPropertyTitle(i);
+		for (int i = 0; i < titleCount; i++) {
+			String title = craftingValues->getExperimentalPropertyTitle(i);
 
 			insertByte(1);
 			insertShort(i);
@@ -286,9 +286,9 @@ public:
 
 		DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 		int count, linenum;
-		string title, subtitle;
+		String title, subtitle;
 		float value;
-		VectorMap<int, string> updatedLines;
+		VectorMap<int, String> updatedLines;
 
 		for (int i = 0; i < craftingValues->getValuesToSendSize(); ++i) {
 
@@ -298,11 +298,11 @@ public:
 
 			linenum = craftingValues->getTitleLine(title);
 
-			if(linenum != -1 && !updatedLines.contains(linenum))
+			if (linenum != -1 && !updatedLines.contains(linenum))
 				updatedLines.put(linenum, title);
 		}
 
-		if(initial)
+		if (initial)
 			count = updatedLines.size() * 2;
 		else
 			count = draftSchematic->getExpCounter() + (craftingValues->getExperimentalPropertyTitleSize() - 1);
@@ -375,20 +375,20 @@ public:
 
 	void update0D(DraftSchematic* draftSchematic) {
 
-		string prefix = "/private/";
+		String prefix = "/private/";
 		int count = draftSchematic->getCustomizationOptionCount();
 
 		startUpdate(0x0D);
 
 		startList(count, count);
 
-		for(int i = 0; i < count; ++i) {
-			stringstream ss;
+		for (int i = 0; i < count; ++i) {
+			StringBuffer ss;
 			ss << prefix << draftSchematic->getCustomizationOption(i);
 
 			insertByte(0x01);
 			insertShort(i);
-			insertAscii(ss.str());
+			insertAscii(ss.toString());
 		}
 
 	}

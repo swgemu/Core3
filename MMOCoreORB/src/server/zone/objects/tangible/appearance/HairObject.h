@@ -15,7 +15,7 @@ class TangibleObject;
 
 class HairObject : public TangibleObject {
 public:
-	HairObject(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = true);
+	HairObject(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = true);
 
 protected:
 	HairObject(DummyConstructorParameter* param);

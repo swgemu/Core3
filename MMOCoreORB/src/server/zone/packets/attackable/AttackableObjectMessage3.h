@@ -63,7 +63,7 @@ public:
 
 		insertInt(1);
 		
-		string app;
+		String app;
 		tano->getCustomizationString(app);
 		insertAscii(app);
 

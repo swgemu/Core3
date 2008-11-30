@@ -105,12 +105,12 @@ public:
 	void toString() {
 		if (contents == NULL) {
 
-			cout << "Slot is EMPTY" << endl;
+			System::out << "Slot is EMPTY" << endl;
 
 		} else {
 
-			cout << "Name: " << contents->getName().c_str() << endl;
-			cout << "Quantity: " << contents->getContents() << endl;
+			System::out << "Name: " << contents->getName().toCharArray() << endl;
+			System::out << "Quantity: " << contents->getContents() << endl;
 		}
 	}
 };

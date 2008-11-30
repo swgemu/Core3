@@ -60,7 +60,7 @@ which carries forward this exception.
 class ZoneServer;
 class ZoneProcessServerImplementation;
 
-GuildImplementation::GuildImplementation(uint32 gid, const string& name, const string& tag) : GuildServant() {
+GuildImplementation::GuildImplementation(uint32 gid, const String& name, const String& tag) : GuildServant() {
 	guildID = gid;
 
 	guildName = name;

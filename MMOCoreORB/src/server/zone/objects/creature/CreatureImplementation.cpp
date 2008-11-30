@@ -157,12 +157,12 @@ void CreatureImplementation::init() {
 
 	setObjectKeeping(true);
 
-	stringstream logname;
+	StringBuffer logname;
 	logname << "NPC = 0x" << hex << objectID;
 
-	setLockName(logname.str());
+	setLockName(logname.toString());
 
-	setLoggingName(logname.str());
+	setLoggingName(logname.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -171,7 +171,7 @@ void CreatureImplementation::init() {
 void CreatureImplementation::sendRadialResponseTo(Player* player,
 		ObjectMenuResponse* omr) {
 
-	string skillBox = "outdoors_scout_novice";
+	String skillBox = "outdoors_sSystem::out_novice";
 
 	if (player->isInRange(getPositionX(), getPositionY(), 10.0f)
 			&& !player->isInCombat() && player->hasSkillBox(skillBox)
@@ -250,67 +250,67 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 				"cat_armor_special_protection.armor_eff_restraint", "100%");
 
 	if (kinetic > 0 && kinetic < 100) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(getKinetic()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic",
-				txt.str());
+				txt.toString());
 	}
 
 	if (energy > 0 && energy < 100) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(getEnergy()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy",
-				txt.str());
+				txt.toString());
 	}
 
 	if (electricity > 0 && electricity < 100) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(getElectricity()) << "%";
 		alm->insertAttribute(
 				"cat_armor_effectiveness.armor_eff_elemental_electrical",
-				txt.str());
+				txt.toString());
 	}
 
 	if (stun > 0 && stun < 100) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(getStun()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun",
-				txt.str());
+				txt.toString());
 	}
 
 	if (blast > 0 && blast < 100) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(getBlast()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast",
-				txt.str());
+				txt.toString());
 	}
 
 	if (heat > 0 && heat < 100) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(getHeat()) << "%";
 		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_heat", txt.str());
+				"cat_armor_effectiveness.armor_eff_elemental_heat", txt.toString());
 	}
 
 	if (cold > 0 && cold < 100) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(getCold()) << "%";
 		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_cold", txt.str());
+				"cat_armor_effectiveness.armor_eff_elemental_cold", txt.toString());
 	}
 
 	if (acid > 0 && acid < 100) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(getAcid()) << "%";
 		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_acid", txt.str());
+				"cat_armor_effectiveness.armor_eff_elemental_acid", txt.toString());
 	}
 
 	if (lightSaber > 0 && lightSaber < 100) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(getLightSaber()) << "%";
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint",
-				txt.str());
+				txt.toString());
 	}
 
 	if (kinetic == 0)
@@ -432,59 +432,59 @@ void CreatureImplementation::loadItems() {
 
 	Weapon* weapon = NULL;
 
-	string wpName = getCreatureWeaponName();
+	String wpName = getCreatureWeaponName();
 	if (wpName != "") {
 		try {
-			string wpObject = getCreatureWeapon();
-			string wpName = getCreatureWeaponName();
-			string wpTemp = getCreatureWeaponTemp();
+			String wpObject = getCreatureWeapon();
+			String wpName = getCreatureWeaponName();
+			String wpTemp = getCreatureWeaponTemp();
 			bool wpEq = (bool) getCreatureWeaponEquipped();
 			int wpMinDamage = getCreatureWeaponMinDamage();
 			int wpMaxDamage = getCreatureWeaponMaxDamage();
 			float wpAttackSpeed = getCreatureWeaponAttackSpeed();
-			string wpDamType = getCreatureWeaponDamageType();
-			string wpArmorPiercing = getCreatureWeaponArmorPiercing();
-			string wpClass = getCreatureWeaponClass();
+			String wpDamType = getCreatureWeaponDamageType();
+			String wpArmorPiercing = getCreatureWeaponArmorPiercing();
+			String wpClass = getCreatureWeaponClass();
 
 			if (wpClass == "CarbineRangedWeapon")
-				weapon = new CarbineRangedWeapon(_this, wpObject, unicode(
+				weapon = new CarbineRangedWeapon(_this, wpObject, UnicodeString(
 						wpName), wpTemp, wpEq);
 			else if (wpClass == "RifleRangedWeapon")
 				weapon
-						= new RifleRangedWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);
+						= new RifleRangedWeapon(_this, wpObject, UnicodeString(wpName), wpTemp, wpEq);
 			else if (wpClass == "PistolRangedWeapon")
 				weapon
-						= new PistolRangedWeapon(_this, wpObject, unicode(
+						= new PistolRangedWeapon(_this, wpObject, UnicodeString(
 								wpName), wpTemp, wpEq);
 			else if (wpClass == "UnarmedMeleeWeapon")
 				weapon
-						= new UnarmedMeleeWeapon(_this, wpObject, unicode(
+						= new UnarmedMeleeWeapon(_this, wpObject, UnicodeString(
 								wpName), wpTemp, wpEq);
 			else if (wpClass == "OneHandedMeleeWeapon")
-				weapon = new OneHandedMeleeWeapon(_this, wpObject, unicode(
+				weapon = new OneHandedMeleeWeapon(_this, wpObject, UnicodeString(
 						wpName), wpTemp, wpEq);
 			else if (wpClass == "TwoHandedMeleeWeapon")
-				weapon = new TwoHandedMeleeWeapon(_this, wpObject, unicode(
+				weapon = new TwoHandedMeleeWeapon(_this, wpObject, UnicodeString(
 						wpName), wpTemp, wpEq);
 			else if (wpClass == "PolearmMeleeWeapon")
 				weapon
-						= new PolearmMeleeWeapon(_this, wpObject, unicode(
+						= new PolearmMeleeWeapon(_this, wpObject, UnicodeString(
 								wpName), wpTemp, wpEq);
 			else if (wpClass == "OneHandedJediWeapon")
-				weapon = new OneHandedJediWeapon(_this, wpObject, unicode(
+				weapon = new OneHandedJediWeapon(_this, wpObject, UnicodeString(
 						wpName), wpTemp, wpEq);
 			else if (wpClass == "TwoHandedJediWeapon")
-				weapon = new TwoHandedJediWeapon(_this, wpObject, unicode(
+				weapon = new TwoHandedJediWeapon(_this, wpObject, UnicodeString(
 						wpName), wpTemp, wpEq);
 			else if (wpClass == "PolearmJediWeapon")
 				weapon
-						= new PolearmJediWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);
+						= new PolearmJediWeapon(_this, wpObject, UnicodeString(wpName), wpTemp, wpEq);
 			else if (wpClass == "SpecialHeavyRangedWeapon")
-				weapon = new SpecialHeavyRangedWeapon(_this, wpObject, unicode(
+				weapon = new SpecialHeavyRangedWeapon(_this, wpObject, UnicodeString(
 						wpName), wpTemp, wpEq);
 			else if (wpClass == "HeavyRangedWeapon")
 				weapon
-						= new HeavyRangedWeapon(_this, wpObject, unicode(wpName), wpTemp, wpEq);
+						= new HeavyRangedWeapon(_this, wpObject, UnicodeString(wpName), wpTemp, wpEq);
 
 			//DAMAGE TYPE
 			if (wpDamType == "ENERGY")
@@ -525,7 +525,7 @@ void CreatureImplementation::loadItems() {
 			setWeapon(weapon);
 		} catch (...) {
 			//ouch..something in the lua isnt right
-			cout
+			System::out
 					<< "exception CreatureImplementation::loadItems()  -  Weaponloading for creature "
 					<< objectID << "\n";
 			return;
@@ -535,7 +535,7 @@ void CreatureImplementation::loadItems() {
 	/*
 	 //old before new LUAs june 2008
 	 if (objectCRC == 0x738E0B1F) { //Zealot of Lord Nyax + Diciple of Lord Nyax
-	 weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/carbine/shared_carbine_laser.iff", unicode("a Laser Carbine"), "carbine_laser", true);
+	 weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/carbine/shared_carbine_laser.iff", UnicodeString("a Laser Carbine"), "carbine_laser", true);
 	 weapon->setMinDamage(350);
 	 weapon->setMaxDamage(400);
 	 weapon->setAttackSpeed(1.5);
@@ -544,7 +544,7 @@ void CreatureImplementation::loadItems() {
 	 }
 	 else if (objectCRC == 0xE275ECBB || objectCRC == 0xE275ECBB || objectCRC == 0xA1048F8A || objectCRC == 0xD084273F || objectCRC == 0x7477AB80) {
 	 //Imperial GeneralMajor // Imperial General // Imperial High Colonel / Imperial Surface Marshall // Imperial Major
-	 weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_dl44.iff", unicode("a DL-44 Pistol"), "pistol_dl44", true);
+	 weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_dl44.iff", UnicodeString("a DL-44 Pistol"), "pistol_dl44", true);
 	 weapon->setMinDamage(350);
 	 weapon->setMaxDamage(400);
 	 weapon->setAttackSpeed(2.5);
@@ -553,7 +553,7 @@ void CreatureImplementation::loadItems() {
 	 setImperial();
 	 }
 	 else if (objectCRC == 0xBA7F23CD) { //storm trooper
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", true);
+	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", UnicodeString("Teh Pwn"), "rifle_t21", true);
 	 weapon->setMinDamage(350);
 	 weapon->setMaxDamage(400);
 	 weapon->setAttackSpeed(4);
@@ -563,7 +563,7 @@ void CreatureImplementation::loadItems() {
 	 }
 	 else if (objectCRC == 0x4E38DA33) { //Dark trooper
 	 //we assign but do not equip the weapon! We just need the line "setImperial" - but without an assigned weapon we will crash
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", unicode("Teh Pwn"), "rifle_t21", false);
+	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_t21.iff", UnicodeString("Teh Pwn"), "rifle_t21", false);
 	 weapon->setMinDamage(350);
 	 weapon->setMaxDamage(400);
 	 weapon->setAttackSpeed(4);
@@ -575,7 +575,7 @@ void CreatureImplementation::loadItems() {
 	 objectCRC == 0x75A7387A || objectCRC == 0xEF5997EB ||
 	 objectCRC == 0xFCA399 || objectCRC == 0xE0B389E5 ||
 	 objectCRC == 0xFECB7C04 || objectCRC == 0xD96A33B7) { //Corsecs (also used for Rogue Corsecs!)
-	 weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", unicode("Corsec CDEF Pistol"), "pistol_cdef_corsec", true);
+	 weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_cdef_corsec.iff", UnicodeString("Corsec CDEF Pistol"), "pistol_cdef_corsec", true);
 	 weapon->setMinDamage(150);
 	 weapon->setMaxDamage(200);
 	 weapon->setAttackSpeed(3);
@@ -583,14 +583,14 @@ void CreatureImplementation::loadItems() {
 	 weapon->setArmorPiercing(WeaponImplementation::LIGHT);
 	 }
 	 else if (objectCRC == 0xFECDC4DE || objectCRC == 0x7EDC1419) { //  AT AT    / AT ST
-	 weapon = new RifleRangedWeapon(_this,"object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", unicode("Imperial Cannon"), "vehicle_atst_ranged");
+	 weapon = new RifleRangedWeapon(_this,"object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", UnicodeString("Imperial Cannon"), "vehicle_atst_ranged");
 	 weapon->setAttackSpeed(1.5f);
 	 setImperial();
 	 }
 	 else if (objectCRC == 0x8C70914) {
 	 weapon = new OneHandedJediWeapon(_this,
 	 "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff",
-	 unicode("Darth Saber"), "sword_lightsaber_one_handed_s4_gen4", true);
+	 UnicodeString("Darth Saber"), "sword_lightsaber_one_handed_s4_gen4", true);
 	 weapon->setDamageType(WeaponImplementation::LIGHTSABER);
 	 weapon->setArmorPiercing(WeaponImplementation::NONE);
 	 } else if (objectCRC == 0x2B0C220E || objectCRC == 0x476794EB || objectCRC == 0x4A889CCF ||
@@ -598,7 +598,7 @@ void CreatureImplementation::loadItems() {
 	 // low level SMC, Rebel General
 	 switch (System::random(1)) {
 	 case 0 :
-	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
+	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", UnicodeString("a Gaderiffi"), "baton_gaderiffi", true);
 	 weapon->setMinDamage(175 + level);
 	 weapon->setMaxDamage(200 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -607,7 +607,7 @@ void CreatureImplementation::loadItems() {
 	 break;
 	 case 1 :
 	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
+	 "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun Baton"), "baton_stun", true);
 	 weapon->setMinDamage(175 + level);
 	 weapon->setMaxDamage(250 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -617,7 +617,7 @@ void CreatureImplementation::loadItems() {
 	 }
 	 } else if (objectCRC == 0xE158FEC1) {
 	 //ranged tusken raider
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_tusken.iff", unicode("a Tusken Rifle"), "rifle_tusken", true);
+	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_tusken.iff", UnicodeString("a Tusken Rifle"), "rifle_tusken", true);
 	 weapon->setMinDamage(175 + level);
 	 weapon->setMaxDamage(200 + level);
 	 weapon->setAttackSpeed(4);
@@ -626,7 +626,7 @@ void CreatureImplementation::loadItems() {
 
 	 } else if (objectCRC ==0x148D60AA) {
 	 //melee tusken raider
-	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
+	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_gaderiffi.iff", UnicodeString("a Gaderiffi"), "baton_gaderiffi", true);
 	 weapon->setMinDamage(175 + level);
 	 weapon->setMaxDamage(200 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -635,7 +635,7 @@ void CreatureImplementation::loadItems() {
 
 	 } else if (objectCRC ==0xE21E6148) {
 	 //SBD 0xE21E6148
-	 weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", unicode("a SBD"), "droideka_ranged", true);
+	 weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", UnicodeString("a SBD"), "droideka_ranged", true);
 	 weapon->setMinDamage(600 + level);
 	 weapon->setMaxDamage(1300 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -644,7 +644,7 @@ void CreatureImplementation::loadItems() {
 
 	 } else if (objectCRC ==0xD3C915F9 || objectCRC ==0xB8270A11) {
 	 //Death Watch Wraith // Ghosts
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("a Dxr6_Disrupter"), "rifle_dxr6", true);
+	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", UnicodeString("a Dxr6_Disrupter"), "rifle_dxr6", true);
 	 weapon->setMinDamage(500 + level);
 	 weapon->setMaxDamage(800 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -653,7 +653,7 @@ void CreatureImplementation::loadItems() {
 
 	 } else if (objectCRC ==0xD83D2DEC || objectCRC ==0x730E66DF || objectCRC ==0xAD30C613) {
 	 //Black Sun Henchmen Assassin Thug
-	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", unicode("a Dxr6_Disrupter"), "rifle_dxr6", true);
+	 weapon = new RifleRangedWeapon(_this, "object/weapon/ranged/rifle/shared_rifle_tenloss_dxr6_disruptor_loot.iff", UnicodeString("a Dxr6_Disrupter"), "rifle_dxr6", true);
 	 weapon->setMinDamage(400 + level);
 	 weapon->setMaxDamage(600 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -662,7 +662,7 @@ void CreatureImplementation::loadItems() {
 
 	 } else if (objectCRC ==0x79BC6EB3) {
 	 //Battle Droid
-	 weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/carbine/shared_carbine_elite.iff", unicode("a E5_Carbine"), "carbine_elite", true);
+	 weapon = new CarbineRangedWeapon(_this, "object/weapon/ranged/carbine/shared_carbine_elite.iff", UnicodeString("a E5_Carbine"), "carbine_elite", true);
 	 weapon->setMinDamage(400 + level);
 	 weapon->setMaxDamage(600 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -671,7 +671,7 @@ void CreatureImplementation::loadItems() {
 
 	 } else if (objectCRC ==0xC3DE9EF6) {
 	 //Death Watch Blood Guards
-	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun_Baton"), "baton_stun", true);
+	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun_Baton"), "baton_stun", true);
 	 weapon->setMinDamage(440 + level);
 	 weapon->setMaxDamage(600 + level);
 	 weapon->setAttackSpeed(2);
@@ -680,7 +680,7 @@ void CreatureImplementation::loadItems() {
 
 	 } else if (objectCRC ==0x320DD865) {
 	 //Death Watch Overlord
-	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun_Baton"), "baton_stun", true);
+	 weapon = new OneHandedMeleeWeapon(_this, "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun_Baton"), "baton_stun", true);
 	 weapon->setMinDamage(1850 + level);
 	 weapon->setMaxDamage(2250 + level);
 	 weapon->setAttackSpeed(3);
@@ -689,7 +689,7 @@ void CreatureImplementation::loadItems() {
 
 	 } else if (objectCRC ==0xEA0D8178 || objectCRC ==0x42DB151E || objectCRC ==0xD5A733A8) {
 	 //DWB Miners
-	 weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_cdef.iff", unicode("a CDEF_Pistol"), "pistol_cdef", true);
+	 weapon = new PistolRangedWeapon(_this, "object/weapon/ranged/pistol/shared_pistol_cdef.iff", UnicodeString("a CDEF_Pistol"), "pistol_cdef", true);
 	 weapon->setMinDamage(100 + level);
 	 weapon->setMaxDamage(175 + level);
 	 weapon->setAttackSpeed(2.5);
@@ -702,7 +702,7 @@ void CreatureImplementation::loadItems() {
 	 switch (System::random(1)) {
 	 case 0 :
 	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", true);
+	 "object/weapon/melee/polearm/shared_lance_vibrolance.iff", UnicodeString("a Vibrolance"), "lance_vibrolance", true);
 	 weapon->setMinDamage(250 + level);
 	 weapon->setMaxDamage(450 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -711,7 +711,7 @@ void CreatureImplementation::loadItems() {
 	 break;
 	 case 1 :
 	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
+	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", UnicodeString("a Long Vibro Axe"), "lance_vibro_axe", true);
 	 weapon->setMinDamage(250 + level);
 	 weapon->setMaxDamage(450 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -726,7 +726,7 @@ void CreatureImplementation::loadItems() {
 	 switch (System::random(1)) {
 	 case 0 :
 	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
+	 "object/weapon/melee/baton/shared_baton_gaderiffi.iff", UnicodeString("a Gaderiffi"), "baton_gaderiffi", true);
 	 weapon->setMinDamage(175 + level);
 	 weapon->setMaxDamage(200 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -735,7 +735,7 @@ void CreatureImplementation::loadItems() {
 	 break;
 	 case 1 :
 	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
+	 "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun Baton"), "baton_stun", true);
 	 weapon->setMinDamage(175 + level);
 	 weapon->setMaxDamage(250 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -750,7 +750,7 @@ void CreatureImplementation::loadItems() {
 	 switch (System::random(1)) {
 	 case 0 :
 	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_lance_vibrolance.iff", unicode("a Vibrolance"), "lance_vibrolance", true);
+	 "object/weapon/melee/polearm/shared_lance_vibrolance.iff", UnicodeString("a Vibrolance"), "lance_vibrolance", true);
 	 weapon->setMinDamage(250 + level);
 	 weapon->setMaxDamage(450 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -759,7 +759,7 @@ void CreatureImplementation::loadItems() {
 	 break;
 	 case 1 :
 	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
+	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", UnicodeString("a Long Vibro Axe"), "lance_vibro_axe", true);
 	 weapon->setMinDamage(250 + level);
 	 weapon->setMaxDamage(450 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -770,7 +770,7 @@ void CreatureImplementation::loadItems() {
 	 } else if (objectCRC == 0xC5A39C12 || objectCRC == 0x5CECC950) {
 	 //Hutt Hideout
 	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
+	 "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun Baton"), "baton_stun", true);
 	 weapon->setMinDamage(175 + level);
 	 weapon->setMaxDamage(250 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -779,7 +779,7 @@ void CreatureImplementation::loadItems() {
 	 } else if (objectCRC == 0x3517D918) {
 	 //Gamorrean Guard
 	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
+	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", UnicodeString("a Long Vibro Axe"), "lance_vibro_axe", true);
 	 weapon->setMinDamage(250 + level);
 	 weapon->setMaxDamage(450 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -790,7 +790,7 @@ void CreatureImplementation::loadItems() {
 	 switch (System::random(1)) {
 	 case 0 :
 	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_gaderiffi.iff", unicode("a Gaderiffi"), "baton_gaderiffi", true);
+	 "object/weapon/melee/baton/shared_baton_gaderiffi.iff", UnicodeString("a Gaderiffi"), "baton_gaderiffi", true);
 	 weapon->setMinDamage(800 + level);
 	 weapon->setMaxDamage(1600 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -799,7 +799,7 @@ void CreatureImplementation::loadItems() {
 	 break;
 	 case 1 :
 	 weapon = new OneHandedMeleeWeapon(_this,
-	 "object/weapon/melee/baton/shared_baton_stun.iff", unicode("a Stun Baton"), "baton_stun", true);
+	 "object/weapon/melee/baton/shared_baton_stun.iff", UnicodeString("a Stun Baton"), "baton_stun", true);
 	 weapon->setMinDamage(900 + level);
 	 weapon->setMaxDamage(1700 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -813,7 +813,7 @@ void CreatureImplementation::loadItems() {
 	 switch (System::random(1)) {
 	 case 0 :
 	 weapon = new PolearmMeleeWeapon(_this,
-	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", unicode("a Long Vibro Axe"), "lance_vibro_axe", true);
+	 "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", UnicodeString("a Long Vibro Axe"), "lance_vibro_axe", true);
 	 weapon->setMinDamage(250 + level);
 	 weapon->setMaxDamage(450 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -822,7 +822,7 @@ void CreatureImplementation::loadItems() {
 	 break;
 	 case 1 :
 	 weapon = new TwoHandedMeleeWeapon(_this,
-	 "object/weapon/melee/axe/shared_axe_vibroaxe.iff", unicode("a Vibro Axe"), "axe_vibro", true);
+	 "object/weapon/melee/axe/shared_axe_vibroaxe.iff", UnicodeString("a Vibro Axe"), "axe_vibro", true);
 	 weapon->setMinDamage(200 + level);
 	 weapon->setMaxDamage(400 + level);
 	 weapon->setAttackSpeed(1.5);
@@ -832,7 +832,7 @@ void CreatureImplementation::loadItems() {
 	 }
 	 } else if (objectCRC == 0xFB872285) { // lord nyax
 	 weapon = new CarbineRangedWeapon(_this,
-	 "object/weapon/ranged/carbine/shared_carbine_e11.iff", unicode("a e11 Carbine"), "carbine_e11", true);
+	 "object/weapon/ranged/carbine/shared_carbine_e11.iff", UnicodeString("a e11 Carbine"), "carbine_e11", true);
 	 weapon->setMinDamage(550);
 	 weapon->setMaxDamage(880);
 	 weapon->setAttackSpeed(1.5);
@@ -873,7 +873,7 @@ void CreatureImplementation::updateZone(bool lightUpdate, bool sendPackets) {
 
 		zone->unlock();
 	} catch (...) {
-		cout << "exception CreatureImplementation::updateZone()\n";
+		System::out << "exception CreatureImplementation::updateZone()\n";
 
 		zone->unlock();
 	}
@@ -1012,7 +1012,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 			positionZ = obj->getPositionZ();
 
-			//cout << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
+			//System::out << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
 
 			if (!isQueued())
 				creatureManager->queueActivity(this, System::random(30000)
@@ -1108,12 +1108,12 @@ bool CreatureImplementation::activate() {
 
 		unlock();
 	} catch (Exception& e) {
-		cout << "exception CreatureImplementation::activate()\n";
+		System::out << "exception CreatureImplementation::activate()\n";
 		e.printStackTrace();
 
 		unlock();
 	} catch (...) {
-		cout << "exception CreatureImplementation::activate()\n";
+		System::out << "exception CreatureImplementation::activate()\n";
 
 		unlock();
 	}
@@ -1144,7 +1144,7 @@ bool CreatureImplementation::checkState() {
 
 		unload();
 		if (respawnTimer > 0) { // 0 is do not respawn
-			stringstream msg;
+			StringBuffer msg;
 			msg << "respawning creature with " << respawnTimer << "s timer";
 			info(msg);
 
@@ -1243,9 +1243,9 @@ void CreatureImplementation::setNextPosition() {
 	}
 	uint64 newCell = nextPosition->getCellID();
 
-	stringstream reachedPosition;
+	StringBuffer reachedPosition;
 	reachedPosition << "(" << positionX << ", " << positionY << ")";
-	info("reached " + reachedPosition.str());
+	info("reached " + reachedPosition.toString());
 
 	if (newCell != 0)
 		updateZoneWithParent(newCell, false, false);
@@ -1366,15 +1366,15 @@ bool CreatureImplementation::doMovement() {
 	nextPosition->setPosition(newPositionX, newPositionZ, newPositionY);
 	nextPosition->setCellID(cellID);
 
-	/*stringstream angleMsg;
+	/*StringBuffer angleMsg;
 	 angleMsg << "angle = " << directionangle * 180 / M_PI << " (" << dx << "," << dy << ")\n";
-	 info(angleMsg.str());*/
+	 info(angleMsg.toString());*/
 
 	setRadialDirection(M_PI / 2 - directionangle);
 
-	stringstream position;
+	StringBuffer position;
 	position << "(" << newPositionX << ", " << newPositionY << ")";
-	info("moving to " + position.str());
+	info("moving to " + position.toString());
 
 	broadcastNextPositionUpdate(nextPosition);
 
@@ -1388,10 +1388,14 @@ void CreatureImplementation::doIncapacitate() {
 	deagro();
 	setPosture(CreaturePosture::DEAD);
 
-	if((isImperial() || isRebel()) && getLootOwner()->isPlayer()) {
-		Player * lootOwner = (Player *) getLootOwner();
-		string pfaction = (lootOwner->getFaction() == String::hashCode("imperial")) ? "imperial" : "rebel";
-		string myfaction = (faction == String::hashCode("imperial")) ? "imperial" : "rebel";
+	if ((isImperial() || isRebel()) && getLootOwner()->isPlayer()) {
+		Player* lootOwner = (Player *) getLootOwner();
+
+		String pfaction = (lootOwner->isImperial())
+			? "imperial" : "rebel";
+
+		String myfaction = (isImperial())
+			? "imperial" : "rebel";
 
 		lootOwner->addFactionPoints(pfaction, fpValue);
 		lootOwner->subtractFactionPoints(myfaction, fpValue);
@@ -1403,12 +1407,11 @@ void CreatureImplementation::doIncapacitate() {
 }
 
 void CreatureImplementation::createHarvestList() {
-
 	Player* tempPlayer;
 	GroupObject* group;
 	Player* owner = (Player*) getLootOwner();
 
-	string skillBox = "outdoors_scout_novice";
+	String skillBox = "outdoors_sSystem::out_novice";
 
 	if (owner == NULL || !hasOrganics())
 		return;
@@ -1521,7 +1524,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 	info("queuing attacking");
 
-	string modifier = "";
+	String modifier = "";
 	CommandQueueAction
 			* action =
 					new CommandQueueAction(_this, target->getObjectID(), 0, actionCRC, modifier);
@@ -1559,7 +1562,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 
 void CreatureImplementation::deagro() {
 	if (aggroedCreature != NULL) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "deaggroed (0x" << hex << aggroedCreature->getObjectID() << dec
 				<< ")";
 		info(msg);
@@ -1708,7 +1711,7 @@ void CreatureImplementation::doStatesRecovery() {
 void CreatureImplementation::queueRespawn() {
 	creatureState = RESPAWNING;
 
-	stringstream msg;
+	StringBuffer msg;
 	info(msg);
 
 	removeFromQueue();
@@ -1728,7 +1731,7 @@ void CreatureImplementation::setPatrolPoint(PatrolPoint* cord, bool doLock) {
 
 		unlock(doLock);
 	} catch (...) {
-		cout << "exception CreatureImplementation::addPatrolPoint()\n";
+		System::out << "exception CreatureImplementation::addPatrolPoint()\n";
 		unlock(doLock);
 	}
 }
@@ -1747,7 +1750,7 @@ void CreatureImplementation::resetPatrolPoints(bool doLock) {
 
 		unlock(doLock);
 	} catch (...) {
-		cout << "exception CreatureImplementation::addPatrolPoint()\n";
+		System::out << "exception CreatureImplementation::addPatrolPoint()\n";
 		unlock(doLock);
 	}
 }
@@ -1775,7 +1778,7 @@ void CreatureImplementation::addPatrolPoint(PatrolPoint* cord, bool doLock) {
 
 		unlock(doLock);
 	} catch (...) {
-		cout << "exception CreatureImplementation::addPatrolPoint()\n";
+		System::out << "exception CreatureImplementation::addPatrolPoint()\n";
 		unlock(doLock);
 	}
 }

@@ -57,10 +57,10 @@ class SuiManager : public Logger {
 public:
 	SuiManager(ZoneProcessServerImplementation* serv);
 
-	void handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const string& value, const string& value2);
+	void handleSuiEventNotification(uint32 boxID, Player* player, uint32 cancel, const String& value, const String& value2);
 
-	void handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const string& song, bool change = false);
-	void handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const string& dance, bool change = false);
+	void handleStartMusic(uint32 boxID, Player* player, uint32 cancel, const String& song, bool change = false);
+	void handleStartDancing(uint32 boxID, Player* player, uint32 cancel, const String& dance, bool change = false);
 
 	void handleSurveyToolRange(uint32 boxID, Player* player, uint32 cancel, int range);
 
@@ -73,15 +73,15 @@ public:
 	void handleTicketPurchaseMessageBox(uint32 boxID, Player* player);
 	void handleTicketCollectorRespones(uint32 boxID, Player* player, uint32 cancel, int ticketIndex);
 
-	void handleCodeForRedeed(uint32 boxID, Player* player, uint32 cancel, const string& extra);
+	void handleCodeForRedeed(uint32 boxID, Player* player, uint32 cancel, const String& extra);
 	void handleRedeedStructure(uint32 boxID, Player* player, uint32 cancel, const int extra);
 	void handleRefreshStatusListBox(uint32 boxID, Player* player, uint32 cancel, const int extra);
-	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const string& name);
-	void handleAddMaintenance(uint32 boxID, Player* player,uint32 cancel, const string& name);
-	void handleAddEnergy(uint32 boxID, Player* player,uint32 cancel, const string& name);
+	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const String& name);
+	void handleAddMaintenance(uint32 boxID, Player* player,uint32 cancel, const String& name);
+	void handleAddEnergy(uint32 boxID, Player* player,uint32 cancel, const String& name);
 
 
-	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const string& value, int var);
+	void handleColorPicker(uint32 boxID, Player* player, uint32 cancel, const String& value, int var);
 
 	void handleBankTransfer(uint32 boxID, Player* player, int cash, int bank);
 

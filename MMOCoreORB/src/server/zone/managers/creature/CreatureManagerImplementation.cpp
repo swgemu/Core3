@@ -87,9 +87,9 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* zone, ZonePro
 	creatureMap = new CreatureMap(20000);
 	lairMap = new LairMap(1000);
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "CreatureManager " << zone->getZoneID();
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -191,7 +191,7 @@ void CreatureManagerImplementation::stop() {
 }
 
 void CreatureManagerImplementation::loadRecruiters() {
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT x,y,oY,oW,cell_id,type FROM recruiters WHERE ";
 	query << "planet_id = " << zone->getZoneID() << ";";
 
@@ -227,14 +227,14 @@ void CreatureManagerImplementation::loadTrainers() {
 	int planetid = zone->getZoneID();
 
 	ResultSet* result;
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM trainers WHERE Planet = " << planetid << ";";
 	result = ServerDatabase::instance()->executeQuery(query);
 
 	while (result->next()) {
-		string location = result->getString(0);
-		string name = result->getString(1);
-		string profession = result->getString(2);
+		String location = result->getString(0);
+		String name = result->getString(1);
+		String profession = result->getString(2);
 
 		//Profession* prof = professionManager->professionMap.get(profession);
 
@@ -267,7 +267,7 @@ void CreatureManagerImplementation::loadTrainers() {
 		for (int i = 0; professionManager->professionMap.hasNext(); i++) {
 			Profession* prof = professionManager->professionMap.getNextValue();
 
-			if ((int)prof->getName().find("jedi") >= 0 || (int)prof->getName().find("force") >= 0)
+			if (prof->getName().indexOf("jedi") != -1 || prof->getName().indexOf("force") != -1)
 				continue;
 
 			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, 0, -4967 - (i*1), 4043, 6, 0, 0);
@@ -279,7 +279,7 @@ void CreatureManagerImplementation::loadStaticCreatures() {
 }
 
 /* TODO:  Rewrite this to use the new lua based spawnCreature.
-CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask, int layout) {
+CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, const String& stfname, const String& name, int objCrc, float x, float y, int bitmask, int layout) {
 	try {
 		lock();
 
@@ -317,7 +317,7 @@ CreatureGroup* CreatureManagerImplementation::spawnCreatureGroup(int count, cons
 }
 */
 
-ActionCreature* CreatureManagerImplementation::spawnActionCreature(string& name, string& stfname, uint32 objCrc, string misoKey, float x, float y, float oY, float oW, uint64 cellid, bool doLock) {
+ActionCreature* CreatureManagerImplementation::spawnActionCreature(String& name, String& stfname, uint32 objCrc, String misoKey, float x, float y, float oY, float oW, uint64 cellid, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -381,7 +381,7 @@ BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y,
 	}
 }
 
-TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock) {
+TrainerCreature* CreatureManagerImplementation::spawnTrainer(const String& profession, const String& stfname, const String& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -396,10 +396,10 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const string& profe
 		TrainerCreature* trainer = new TrainerCreature(getNextCreatureID(), prof);
 		trainer->deploy();
 
-		if (!stfname.empty())
+		if (!stfname.isEmpty())
 			trainer->setSpeciesName(stfname);
 		else
-			trainer->setCharacterName(unicode(name));
+			trainer->setCharacterName(UnicodeString(name));
 
 		trainer->setObjectCRC(objCrc);
 		trainer->setObjectFileName("");
@@ -469,7 +469,7 @@ RecruiterCreature* CreatureManagerImplementation::spawnRecruiter(float x, float 
 	}
 }
 
-ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 cellid, float x, float y, float z, uint32 tax, bool starport, bool doLock) {
+ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const String& Planet, const String& City, Coordinate* playerSpawnPoint, uint64 cellid, float x, float y, float z, uint32 tax, bool starport, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -499,7 +499,7 @@ ShuttleCreature* CreatureManagerImplementation::spawnShuttle(const string& Plane
 	}
 }
 
-bool CreatureManagerImplementation::verifyCreatureSpawn(string objname) {
+bool CreatureManagerImplementation::verifyCreatureSpawn(String objname) {
 
 	try {
 		lock();
@@ -508,11 +508,11 @@ bool CreatureManagerImplementation::verifyCreatureSpawn(string objname) {
 
 		SpawnInfo* spawnInfo = spawnInfoMap->get(objname);
 
-		if(spawnInfo == NULL) {
+		if (spawnInfo == NULL) {
 
 			spawnInfo = spawnInfoMap->get(objname);
 
-			if(spawnInfo == NULL) {
+			if (spawnInfo == NULL) {
 				unlock();
 				return false;
 			}
@@ -527,18 +527,18 @@ bool CreatureManagerImplementation::verifyCreatureSpawn(string objname) {
 
 		LuaObject result(getLuaState());
 		if (!result.isValidTable()) {
-			stringstream ss;
+			StringBuffer ss;
 			ss << "Unknown object CRC " << objcrc;
-			info(ss.str());
+			info(ss.toString());
 			unlock();
 			return false;
 		}
 
-		string objectName = result.getStringField("objectName");
+		String objectName = result.getStringField("objectName");
 
 		unlock();
 
-		if(objectName == spawnInfo->getName())
+		if (objectName == spawnInfo->getName())
 			return true;
 		else
 			return false;
@@ -567,41 +567,41 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		LuaObject result(getLuaState());
 		if (!result.isValidTable()) {
-			stringstream ss;
+			StringBuffer ss;
 			ss << "Unknown object CRC " << objcrc;
-			info(ss.str());
+			info(ss.toString());
 			creature->unlock();
 			creature->finalize();
 			unlock(doLock);
 			return NULL;
 		}
 
-		string objectName = result.getStringField("objectName");
+		String objectName = result.getStringField("objectName");
 
-		string stfname = result.getStringField("stfName");
+		String stfname = result.getStringField("stfName");
 		if (baby)
 			stfname += " baby";
-		string name = result.getStringField("name");
+		String name = result.getStringField("name");
 
-		string faction = result.getStringField("faction");
+		String faction = result.getStringField("faction");
 
-		creature->setFaction(String::hashCode(faction));
+		creature->setFaction(faction.hashCode());
 
 		creature->setFPValue(result.getIntField("factionPoints"));
 
-		if (!stfname.empty())
+		if (!stfname.isEmpty())
 			creature->setCharacterName(stfname);
 		else if (objcrc == 0xBA7F23CD)
-			creature->setCharacterName(unicode(makeStormTrooperName()));
+			creature->setCharacterName(UnicodeString(makeStormTrooperName()));
 		else
-			creature->setCharacterName(unicode(makeCreatureName(name)));
+			creature->setCharacterName(UnicodeString(makeCreatureName(name)));
 
 		creature->setTerrainName(Terrain::getTerrainName(getZone()->getZoneID()));
 
 		setCreatureAttributes(creature, &result);
 
 		// TODO: Implement baby stats properly
-		if(baby) {
+		if (baby) {
 			creature->setHealth(creature->getHealth() / 2);
 			creature->setAction(creature->getAction() / 2);
 			creature->setMind(creature->getMind() / 2);
@@ -693,7 +693,7 @@ void CreatureManagerImplementation::setCreatureAttributes(Creature* creature, Lu
 	//CH stuff
 	creature->setTame(creatureConfig->getFloatField("tame"));
 
-	string preLead;
+	String preLead;
 	try {
 		//Testing, if this creature has the alternate weapon field set
 		(creature->setCreatureWeapon(creatureConfig->getStringField("alternateWeapon")));
@@ -743,7 +743,7 @@ void CreatureManagerImplementation::setCreatureAttributes(Creature* creature, Lu
 
 		creature->setMind(creatureConfig->getIntField("mind"));
 		creature->setMind(creature->getMind() + (creature->getMind() * (System::random(100)) / 1111));
-		cout << "ATTENTION: The LUA creature script for " << creature->getSpeciesName()  << " is obv. still in the old format ! \n";
+		System::out << "ATTENTION: The LUA creature script for " << creature->getSpeciesName()  << " is obv. still in the old format ! \n";
 	} else {
 		//red
 		creature->setHealth(creatureConfig->getIntField("healthMin") + System::random(creatureConfig->getIntField("healthMax")-creatureConfig->getIntField("healthMin")));
@@ -825,7 +825,7 @@ void CreatureManagerImplementation::respawnCreature(Creature* creature) {
 	unlock();
 }
 
-LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x, float y, float z, bool doLock) {
+LairObject* CreatureManagerImplementation::spawnLair(const String& type, float x, float y, float z, bool doLock) {
 	LairObject* lair = NULL;
 
 	lock(doLock);
@@ -834,27 +834,27 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 
 		// Load lair from lua
 		LuaFunction getObject(getLuaState(), "getObject", 1);
-		string typeStr = type;
+		String typeStr = type;
 		getObject << typeStr; // push first argument
 		callFunction(&getObject);
 
 		LuaObject result(getLuaState());
 		if (!result.isValidTable()) {
-			cout << "Unknown lair type " << typeStr << endl;
+			System::out << "Unknown lair type " << typeStr << endl;
 			return NULL;
 		}
 
 		uint32 objectCRC = result.getLongField("objectCRC");
 
-		cout << "CRC = " << objectCRC << endl;
+		System::out << "CRC = " << objectCRC << endl;
 
 		lair = new LairObject(objectCRC, getNextCreatureID());
 		lair->setZoneProcessServer(server);
 
-		//string objectName = result.getStringField("objectName");
-		string stfname = result.getStringField("stfName");
+		//String objectName = result.getStringField("objectName");
+		String stfname = result.getStringField("stfName");
 
-		cout << "Setup lair type " << typeStr << endl;
+		System::out << "Setup lair type " << typeStr << endl;
 
 		int planet = result.getIntField("planet");
 
@@ -871,7 +871,7 @@ LairObject* CreatureManagerImplementation::spawnLair(const string& type, float x
 
 		lair->setMaxCondition(maxCondition);
 
-		string stfName = result.getStringField("stfName");
+		String stfName = result.getStringField("stfName");
 
 		lair->setTemplateName(stfName);
 
@@ -922,7 +922,7 @@ void CreatureManagerImplementation::load(Creature* creature) {
 		return;
 
 
-	string objectName = result.getStringField("objectName");
+	String objectName = result.getStringField("objectName");
 	result.pop(); // remove table from stack
 
 	LuaFunction getSkills(getLuaState(), objectName, "getNumberOfSkills", 1);
@@ -934,13 +934,13 @@ void CreatureManagerImplementation::load(Creature* creature) {
 		getSkill << i; // push arg
 
 		callFunction(&getSkill);
-		string skill = getStringParameter(getLuaState());
+		String skill = getStringParameter(getLuaState());
 
 		SkillManager* sManager = server->getSkillManager();
 		Skill* s = sManager->getSkill(skill);
 
 		if (s == NULL) {
-			cout << "Invalid Skill [" << skill << "] for {" << objectName << "}\n";
+			System::out << "Invalid Skill [" << skill << "] for {" << objectName << "}\n";
 			continue;
 		}
 
@@ -987,46 +987,46 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 	Creature* creature = new Creature(instance->getNextCreatureID());
 	creature->deploy();
 
-	string objectName = creatureConfig.getStringField("objectName");
+	String objectName = creatureConfig.getStringField("objectName");
 
-	string stfname = creatureConfig.getStringField("stfName");
-	string name = creatureConfig.getStringField("name");
+	String stfname = creatureConfig.getStringField("stfName");
+	String name = creatureConfig.getStringField("name");
 
-	string speciesName = creatureConfig.getStringField("speciesName");
+	String speciesName = creatureConfig.getStringField("speciesName");
 
 
 	creature->setObjectCRC(creatureConfig.getIntField("objectCRC"));
 
 	spawnInfoMap->addCRC(objectName, creatureConfig.getIntField("objectCRC"));
 
-	if (!stfname.empty() && !speciesName.empty()) {
+	if (!stfname.isEmpty() && !speciesName.isEmpty()) {
 		creature->setStfName(stfname);
 		creature->setSpeciesName(speciesName);
-	} else if (!stfname.empty())
+	} else if (!stfname.isEmpty())
 		creature->setCharacterName(stfname);
 	else
 		if (creature->getObjectCRC() == 0xBA7F23CD)
-			creature->setCharacterName(unicode(instance->makeStormTrooperName()));
+			creature->setCharacterName(UnicodeString(instance->makeStormTrooperName()));
 
 		else if (creature->getObjectCRC() == 0x4E38DA33)
-			creature->setCharacterName(unicode(instance->makeDarkTrooperName()));
+			creature->setCharacterName(UnicodeString(instance->makeDarkTrooperName()));
 
 		else
-			creature->setCharacterName(unicode(instance->makeCreatureName(name)));
+			creature->setCharacterName(UnicodeString(instance->makeCreatureName(name)));
 
 	//creature->setTerrainName(Terrain::getTerrainName(zone->get));
 
-	string faction = creatureConfig.getStringField("faction");
-	creature->setFaction(String::hashCode(faction));
+	String faction = creatureConfig.getStringField("faction");
+	creature->setFaction(faction.hashCode());
 
 	try {
-		string dummy = creatureConfig.getStringField("gender");
+		String dummy = creatureConfig.getStringField("gender");
 		dummy = creatureConfig.getStringField("boneType");
 		dummy = creatureConfig.getStringField("hideType");
 		dummy = creatureConfig.getStringField("meatType");
 	} catch (...) {
-		cout << "The LUA script for \'" << objectName << "\' is at least missing one of these fields:\n";
-		cout << "faction, gender, boneType,hideType,meatType.\nMake sure they do exist in the lua script!\n\n";
+		System::out << "The LUA script for \'" << objectName << "\' is at least missing one of these fields:\n";
+		System::out << "faction, gender, boneType,hideType,meatType.\nMake sure they do exist in the lua script!\n\n";
 		instance->unlock();
 		return 1;
 	}
@@ -1095,7 +1095,7 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 
 		lair->setMaxCondition(maxCondition);
 
-		string stfName = object.getStringField("stfName");
+		String stfName = object.getStringField("stfName");
 
 		lair->setTemplateName(stfName);
 
@@ -1127,16 +1127,17 @@ int CreatureManagerImplementation::addLair(lua_State * L) {
 }
 
 int CreatureManagerImplementation::runCreatureFile(lua_State* L) {
-	string filename = getStringParameter(L);
+	String filename = getStringParameter(L);
 
-	if ((int) filename.find("objects/") >= 0  &&
-			filename.find_last_of('/') != filename.find_first_of('/')) {
+	int idx = filename.lastIndexOf('/');
 
-		int size = (filename.find_last_of('/') + 1) - filename.find_first_of('.');
+	if (filename.indexOf("objects/") != -1  &&
+			idx != filename.indexOf('/')) {
+		int size = (idx + 1) - filename.indexOf('.');
 
-		string templatename = filename.substr(filename.find_last_of('/') + 1, size);
+		String templatename = filename.subString(idx + 1, idx + size);
 
-		templatename = templatename.substr(0, templatename.find_first_of('.'));
+		templatename = templatename.subString(0, templatename.indexOf('.'));
 
 		SpawnInfo* spawnInfo = new SpawnInfo();
 		spawnInfo->setName(templatename);
@@ -1160,17 +1161,17 @@ int CreatureManagerImplementation::runCreatureFile(lua_State* L) {
 }
 
 int CreatureManagerImplementation::runObjectFile(lua_State* L) {
-	string filename = getStringParameter(L);
+	String filename = getStringParameter(L);
 
 	runFile("scripts/sceneobjects/" + filename, L);
 
 	return 0;
 }
 
-bool CreatureManagerImplementation::hotLoadCreature(string name) {
+bool CreatureManagerImplementation::hotLoadCreature(String name) {
 
 	SpawnInfo* spawnInfo = spawnInfoMap->get(name);
-	if(spawnInfo == NULL)
+	if (spawnInfo == NULL)
 		return false;
 
 	//spawnInfoMap->printBadSpawns();
@@ -1221,8 +1222,8 @@ uint64 CreatureManagerImplementation::getNextCreatureID() {
 	return zone->getZoneServer()->getNextCreatureID();
 }
 
-string CreatureManagerImplementation::makeStormTrooperName() {
-	stringstream characterName;
+String CreatureManagerImplementation::makeStormTrooperName() {
+	StringBuffer characterName;
 
 	switch (System::random(4)) {
 	case 0:
@@ -1244,11 +1245,11 @@ string CreatureManagerImplementation::makeStormTrooperName() {
 
 	characterName << "K-" << System::random(490)+10;
 
-	return characterName.str();
+	return characterName.toString();
 }
 
-string CreatureManagerImplementation::makeDarkTrooperName() {
-	stringstream characterName;
+String CreatureManagerImplementation::makeDarkTrooperName() {
+	StringBuffer characterName;
 
 	switch (System::random(4)) {
 	case 0:
@@ -1270,33 +1271,21 @@ string CreatureManagerImplementation::makeDarkTrooperName() {
 
 	characterName << "N-" << System::random(490)+10;
 
-	return characterName.str();
+	return characterName.toString();
 }
 
-uint32 CreatureManagerImplementation::getCreatureCrc(string name) {
+uint32 CreatureManagerImplementation::getCreatureCrc(String name) {
 	SpawnInfo* spawnInfo = spawnInfoMap->get(name);
-	if(spawnInfo == NULL)
+	if (spawnInfo == NULL)
 		return 0;
 
 	return spawnInfo->getCRC();
 }
 
-string CreatureManagerImplementation::makeCreatureName(string charname) {
+String CreatureManagerImplementation::makeCreatureName(String charname) {
 
-	stringstream newname;
+	StringBuffer newname;
 	newname << server->getNameManager()->makeCreatureName(System::random(1)) << " (" << charname << ")";
 
-	return newname.str();
+	return newname.toString();
 }
-
-inline string CreatureManagerImplementation::stringify(const int x) {
-	ostringstream o;
-
-	if (!(o << x))
-		return "";
-	else
-		return o.str();
-}
-
-
-

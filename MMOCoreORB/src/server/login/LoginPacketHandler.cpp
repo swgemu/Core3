@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "LoginClient.h"
 
 void LoginPacketHandler::handleMessage(Message* pack) {
-	stringstream msg;
+	StringBuffer msg;
 	msg << "parsing " << pack->toString();
 	//info(msg);
 
@@ -85,7 +85,7 @@ void LoginPacketHandler::handleMessage(Message* pack) {
 void LoginPacketHandler::handleLoginClientID(Message* pack) {
 	LoginClient* client = (LoginClient*) pack->getClient();
 
-	string errtype, errmsg;
+	String errtype, errmsg;
 	Message* ver;
 
 	Account account(pack);
@@ -98,11 +98,11 @@ void LoginPacketHandler::handleLoginClientID(Message* pack) {
 	} else {
 		int validateResult = account.validate(configManager);
 
-		if(validateResult != ACCOUNTOK){
+		if (validateResult != ACCOUNTOK){
 
 			validateResult = account.create(configManager);
 
-			if(validateResult == ACCOUNTOK){
+			if (validateResult == ACCOUNTOK){
 
 				account.validate(configManager);
 
@@ -161,13 +161,16 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 	LoginClient* client = (LoginClient*) pack->getClient();
 
 	uint32 ServerId = pack->parseInt();
+
 	pack->shiftOffset(4);
     uint32 charId = pack->parseInt();
+
     int dbDelete;
-    string firstName;
+
+    String firstName;
 
     try {
-		stringstream query;
+		StringBuffer query;
 
 		query << "SELECT lower(firstname) FROM characters WHERE character_id = " << charId <<" and galaxy_id = " << ServerId << ";";
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
@@ -175,59 +178,58 @@ void LoginPacketHandler::handleDeleteCharacterMessage(Message* pack) {
 		if (res->next())
 			firstName = res->getString(0);
 
-
-		query.str(""); // clear stream
+		query.deleteAll(); // clear stream
 		query << "DELETE FROM character_items WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str(""); // clear stream
+		query.deleteAll(); // clear stream
 		query << "DELETE FROM character_faction_points WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str(""); // clear stream
+		query.deleteAll(); // clear stream
 		query << "DELETE FROM character_profession WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str(""); // clear stream
+		query.deleteAll(); // clear stream
 		query << "DELETE FROM character_badge WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM waypoints WHERE owner_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM friendlist WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM friendlist WHERE friend_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM ignorelist WHERE character_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM ignorelist WHERE ignore_id = '" << charId <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM mail WHERE lower(recv_name) = '" << firstName <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 
 
 		/* ToDO: Revisit this, when mail attachments are functionally
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM mail_attachment WHERE lower(name) = '" << firstName <<"';";
 		ServerDatabase::instance()->executeStatement(query);
 		*/
 
-		query.str(""); // clear stream
+		query.deleteAll(); // clear stream
 		query << "DELETE FROM characters WHERE character_id = '" << charId <<"' and galaxy_id = '" << ServerId << "';";
 		ServerDatabase::instance()->executeStatement(query);
 
-		query.str("");
+		query.deleteAll();
 		query << "DELETE FROM consentlist WHERE character_id = '" << charId << "';";
 		ServerDatabase::instance()->executeStatement(query);
 

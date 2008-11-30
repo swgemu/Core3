@@ -62,7 +62,7 @@ public:
 		server = NULL;
 	} 
 
-	ZonePacketHandler(const string& s, ZoneProcessServerImplementation* serv);
+	ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv);
 
 	~ZonePacketHandler() {
 	}

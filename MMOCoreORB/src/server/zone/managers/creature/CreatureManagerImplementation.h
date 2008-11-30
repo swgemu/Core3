@@ -112,22 +112,22 @@ public:
 	void unloadCreature(Creature* creature);
 
 	// creation methods
-	//Creature* spawnCreature(const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, bool doLock = true);
-	//Creature* spawnCreature(string objname, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
+	//Creature* spawnCreature(const String& stfname, const String& name, int objCrc, float x, float y, int bitmask = 0x00, bool doLock = true);
+	//Creature* spawnCreature(String objname, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
 
-	bool verifyCreatureSpawn(string objname);
+	bool verifyCreatureSpawn(String objname);
 	Creature* spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
-	TrainerCreature* spawnTrainer(const string& profession, const string& stfname, const string& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock = true);
-	ShuttleCreature* spawnShuttle(const string& Planet, const string& City, Coordinate* playerSpawnPoint, uint64 cellid,float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
+	TrainerCreature* spawnTrainer(const String& profession, const String& stfname, const String& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock = true);
+	ShuttleCreature* spawnShuttle(const String& Planet, const String& City, Coordinate* playerSpawnPoint, uint64 cellid,float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
 	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, uint8 type = 1, uint64 cellid = 0, bool doLock = true);
 	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, int type = 0, uint64 cellid = 0, bool doLock = true);
-	ActionCreature* spawnActionCreature(string& name, string& stfname, uint32 objCrc, const string misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);
-	//CreatureGroup* spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
-	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock = true);
+	ActionCreature* spawnActionCreature(String& name, String& stfname, uint32 objCrc, const String misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);
+	//CreatureGroup* spawnCreatureGroup(int count, const String& stfname, const String& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
+	LairObject* spawnLair(const String& type, float x, float y, float z, bool doLock = true);
 	void despawnCreature(Creature* creature);
 	void respawnCreature(Creature* creature);
 
-	uint32 getCreatureCrc(string name);
+	uint32 getCreatureCrc(String name);
 
 	void unloadManager();
 
@@ -142,14 +142,12 @@ public:
 		runFile("scripts/sceneobjects/main.lua");
 	}
 
-	bool hotLoadCreature(string name);
+	bool hotLoadCreature(String name);
 
 	//creature naming
-	string makeStormTrooperName();
-	string makeDarkTrooperName();
-	string makeCreatureName(string charname);
-
-	inline string stringify(const int x);
+	String makeStormTrooperName();
+	String makeDarkTrooperName();
+	String makeCreatureName(String charname);
 
 	//lua functions
 	static int runCreatureFile(lua_State* L);

@@ -50,19 +50,19 @@ which carries forward this exception.
 
 class DiagnoseTargetSkill : public TargetSkill {
 protected:
-	string effectName;
+	String effectName;
 	float speed;
 	int mindCost;
 
 public:
-	DiagnoseTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, DIAGNOSE, serv) {
+	DiagnoseTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, DIAGNOSE, serv) {
 		effectName = aname;
 		speed = 0;
 		mindCost = 0;
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* targetCreature) {
-		if (effectName.size() != 0)
+		if (!effectName.isEmpty())
 			targetCreature->playEffect(effectName, "");
 
 		if (creature == targetCreature)
@@ -71,7 +71,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		CreatureObject* creatureTarget;
 		Player* player = (Player*) creature;
 
@@ -92,60 +92,60 @@ public:
 			player->removeSuiBox(0xD1A6);
 		*/
 
-		string targetName = "";
-		unicode unicodeName = unicode("");
-		unicodeName = creatureTarget->getCharacterName();
-		targetName = unicodeName.c_str();
+		String targetName = "";
+		UnicodeString UnicodeStringName = UnicodeString("");
+		UnicodeStringName = creatureTarget->getCharacterName();
+		targetName = UnicodeStringName.toCharArray();
 
 		SuiListBox* sui = new SuiListBox(player, 0xD1A6);
-		stringstream title;
-		title << "Patient " << targetName.c_str();
-		sui->setPromptTitle(title.str());
+		StringBuffer title;
+		title << "Patient " << targetName.toCharArray();
+		sui->setPromptTitle(title.toString());
 
-		stringstream text;
-		text << "Below is a listing of the wound and Battle Fatigue levels of " << targetName.c_str() << ". Wounds are healed through /tendwound or use of wound Medpacks. High levels of Battle Fatigue can inhibit the healing process, and Battle Fatigue can only be healed by the patient choosing to watch performing entertainers.";
-		sui->setPromptText(text.str());
+		StringBuffer text;
+		text << "Below is a listing of the wound and Battle Fatigue levels of " << targetName.toCharArray() << ". Wounds are healed through /tendwound or use of wound Medpacks. High levels of Battle Fatigue can inhibit the healing process, and Battle Fatigue can only be healed by the patient choosing to watch performing entertainers.";
+		sui->setPromptText(text.toString());
 		sui->setCancelButton(false);
 
-		stringstream health;
+		StringBuffer health;
 		health << "Health -- " << creatureTarget->getHealthWounds();
-		sui->addMenuItem(health.str());
+		sui->addMenuItem(health.toString());
 
-		stringstream strength;
+		StringBuffer strength;
 		strength << "Strength -- " << creatureTarget->getStrengthWounds();
-		sui->addMenuItem(strength.str());
+		sui->addMenuItem(strength.toString());
 
-		stringstream constitution;
+		StringBuffer constitution;
 		constitution << "Constitution -- " << creatureTarget->getConstitutionWounds();
-		sui->addMenuItem(constitution.str());
+		sui->addMenuItem(constitution.toString());
 
-		stringstream action;
+		StringBuffer action;
 		action << "Action -- " << creatureTarget->getActionWounds();
-		sui->addMenuItem(action.str());
+		sui->addMenuItem(action.toString());
 
-		stringstream quickness;
+		StringBuffer quickness;
 		quickness << "Quickness -- " << creatureTarget->getQuicknessWounds();
-		sui->addMenuItem(quickness.str());
+		sui->addMenuItem(quickness.toString());
 
-		stringstream stamina;
+		StringBuffer stamina;
 		stamina << "Stamina -- " << creatureTarget->getStaminaWounds();
-		sui->addMenuItem(stamina.str());
+		sui->addMenuItem(stamina.toString());
 
-		stringstream mind;
+		StringBuffer mind;
 		mind << "Mind -- " << creatureTarget->getMindWounds();
-		sui->addMenuItem(mind.str());
+		sui->addMenuItem(mind.toString());
 
-		stringstream focus;
+		StringBuffer focus;
 		focus << "Focus -- " << creatureTarget->getFocusWounds();
-		sui->addMenuItem(focus.str());
+		sui->addMenuItem(focus.toString());
 
-		stringstream willpower;
+		StringBuffer willpower;
 		willpower << "Willpower -- " << creatureTarget->getWillpowerWounds();
-		sui->addMenuItem(willpower.str());
+		sui->addMenuItem(willpower.toString());
 
-		stringstream battlefatigue;
+		StringBuffer battlefatigue;
 		battlefatigue << "Battle Fatigue -- " << creatureTarget->getShockWounds();
-		sui->addMenuItem(battlefatigue.str());
+		sui->addMenuItem(battlefatigue.toString());
 
 		player->addSuiBox(sui);
 		player->sendMessage(sui->generateMessage());
@@ -167,7 +167,7 @@ public:
 		speed = sp;
 	}
 
-	void setEffectName(const string& name) {
+	void setEffectName(const String& name) {
 		effectName = name;
 	}
 

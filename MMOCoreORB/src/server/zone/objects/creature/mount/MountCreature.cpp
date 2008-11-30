@@ -18,7 +18,7 @@
  *	MountCreatureStub
  */
 
-MountCreature::MountCreature(CreatureObject* linkCreature, const string& name, const string& stf, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid) : Creature(DummyConstructorParameter::instance()) {
+MountCreature::MountCreature(CreatureObject* linkCreature, const String& name, const String& stf, unsigned int itnocrc, unsigned int objCRC, unsigned long long oid) : Creature(DummyConstructorParameter::instance()) {
 	_impl = new MountCreatureImplementation(linkCreature, name, stf, itnocrc, objCRC, oid);
 	_impl->_setStub(this);
 }
@@ -225,20 +225,20 @@ void MountCreature::parseItemAttributes() {
 		((MountCreatureImplementation*) _impl)->parseItemAttributes();
 }
 
-void MountCreature::setAttributes(string& attributestring) {
+void MountCreature::setAttributes(String& attributeString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 22);
-		method.addAsciiParameter(attributestring);
+		method.addAsciiParameter(attributeString);
 
 		method.executeWithVoidReturn();
 	} else
-		((MountCreatureImplementation*) _impl)->setAttributes(attributestring);
+		((MountCreatureImplementation*) _impl)->setAttributes(attributeString);
 }
 
-string& MountCreature::getAttributes() {
+String& MountCreature::getAttributes() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -323,7 +323,7 @@ Packet* MountCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		parseItemAttributes();
 		break;
 	case 22:
-		setAttributes(inv->getAsciiParameter(_param0_setAttributes__string_));
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_));
 		break;
 	case 23:
 		resp->insertAscii(getAttributes());
@@ -402,11 +402,11 @@ void MountCreatureAdapter::parseItemAttributes() {
 	return ((MountCreatureImplementation*) impl)->parseItemAttributes();
 }
 
-void MountCreatureAdapter::setAttributes(string& attributestring) {
-	return ((MountCreatureImplementation*) impl)->setAttributes(attributestring);
+void MountCreatureAdapter::setAttributes(String& attributeString) {
+	return ((MountCreatureImplementation*) impl)->setAttributes(attributeString);
 }
 
-string& MountCreatureAdapter::getAttributes() {
+String& MountCreatureAdapter::getAttributes() {
 	return ((MountCreatureImplementation*) impl)->getAttributes();
 }
 

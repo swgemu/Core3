@@ -49,13 +49,13 @@ which carries forward this exception.
 class BlueFrogTree {
 
 private:
-	BlueFrogTree * parent;
-	string element;
-	LinkedList<BlueFrogTree *> children;
+	String element;
+
+	BlueFrogTree* parent;
+	LinkedList<BlueFrogTree*> children;
 
 public:
-
-	BlueFrogTree(string item, BlueFrogTree * par = NULL) {
+	BlueFrogTree(String item, BlueFrogTree* par = NULL) {
 		element = item;
 		parent = par;
 	}
@@ -65,31 +65,31 @@ public:
 			delete(children.get(i));
 	}
 
-	void add(string item) {
-		if (element.empty())
+	void add(String item) {
+		if (element.isEmpty())
 			element = item;
 		else {
-			BlueFrogTree * child = new BlueFrogTree(item, this);
+			BlueFrogTree* child = new BlueFrogTree(item, this);
 			children.add(child);
 		}
 	}
 
-	void set(string item) {
+	void set(String item) {
 		element = item;
 	}
 
-	string getElement() {
+	String getElement() {
 		return element;
 	}
 
-	LinkedList<BlueFrogTree *> getChildren() {
+	LinkedList<BlueFrogTree*> getChildren() {
 		return children;
 	}
 
 	int size() {
-		if (element.empty() && children.isEmpty())
+		if (element.isEmpty() && children.isEmpty())
 			return 0;
-		else if (!this->isGroup())
+		else if (!isGroup())
 			return 1;
 		else {
 			int count = 0;
@@ -102,19 +102,20 @@ public:
 	}
 
 	bool isEmpty() {
-		return this->size() == 0;
+		return size() == 0;
 	}
 
 	bool isGroup() {
 		return !children.isEmpty();
 	}
 
-	BlueFrogTree * find(string obj) {
-		if (element.compare(obj) == 0)
+	BlueFrogTree* find(String obj) {
+		if (element.compareTo(obj) == 0)
 			return this;
 
 		for (int i = 0; i < children.size(); i++) {
-			BlueFrogTree * t = children.get(i)->find(obj);
+			BlueFrogTree* t = children.get(i)->find(obj);
+
 			if (t != NULL)
 				return t;
 		}

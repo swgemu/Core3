@@ -25,12 +25,12 @@ TangibleObject::TangibleObject(unsigned long long oid, int tp) : SceneObject(Dum
 	_impl->_setStub(this);
 }
 
-TangibleObject::TangibleObject(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempname, int tp) : SceneObject(DummyConstructorParameter::instance()) {
+TangibleObject::TangibleObject(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempname, int tp) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new TangibleObjectImplementation(oid, tempCRC, n, tempname, tp);
 	_impl->_setStub(this);
 }
 
-TangibleObject::TangibleObject(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempname, int tp) : SceneObject(DummyConstructorParameter::instance()) {
+TangibleObject::TangibleObject(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempname, int tp) : SceneObject(DummyConstructorParameter::instance()) {
 	_impl = new TangibleObjectImplementation(creature, tempCRC, n, tempname, tp);
 	_impl->_setStub(this);
 }
@@ -437,7 +437,7 @@ bool TangibleObject::isLoot() {
 		return ((TangibleObjectImplementation*) _impl)->isLoot();
 }
 
-void TangibleObject::setCraftersName(string& n) {
+void TangibleObject::setCraftersName(String& n) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -450,7 +450,7 @@ void TangibleObject::setCraftersName(string& n) {
 		((TangibleObjectImplementation*) _impl)->setCraftersName(n);
 }
 
-void TangibleObject::setCraftedSerial(string& s) {
+void TangibleObject::setCraftedSerial(String& s) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -475,7 +475,7 @@ SceneObject* TangibleObject::getContainer() {
 		return ((TangibleObjectImplementation*) _impl)->getContainer();
 }
 
-unicode& TangibleObject::getName() {
+UnicodeString& TangibleObject::getName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -488,7 +488,7 @@ unicode& TangibleObject::getName() {
 		return ((TangibleObjectImplementation*) _impl)->getName();
 }
 
-string& TangibleObject::getTemplateName() {
+String& TangibleObject::getTemplateName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -501,7 +501,7 @@ string& TangibleObject::getTemplateName() {
 		return ((TangibleObjectImplementation*) _impl)->getTemplateName();
 }
 
-string& TangibleObject::getTemplateTypeName() {
+String& TangibleObject::getTemplateTypeName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -514,7 +514,7 @@ string& TangibleObject::getTemplateTypeName() {
 		return ((TangibleObjectImplementation*) _impl)->getTemplateTypeName();
 }
 
-void TangibleObject::getCustomizationString(string& appearance) {
+void TangibleObject::getCustomizationString(String& appearance) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -624,7 +624,7 @@ int TangibleObject::getCondition() {
 		return ((TangibleObjectImplementation*) _impl)->getCondition();
 }
 
-string& TangibleObject::getCraftersName() {
+String& TangibleObject::getCraftersName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -637,7 +637,7 @@ string& TangibleObject::getCraftersName() {
 		return ((TangibleObjectImplementation*) _impl)->getCraftersName();
 }
 
-string& TangibleObject::getCraftedSerial() {
+String& TangibleObject::getCraftedSerial() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -650,20 +650,20 @@ string& TangibleObject::getCraftedSerial() {
 		return ((TangibleObjectImplementation*) _impl)->getCraftedSerial();
 }
 
-void TangibleObject::setAttributes(string& attributestring) {
+void TangibleObject::setAttributes(String& attributeString) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 55);
-		method.addAsciiParameter(attributestring);
+		method.addAsciiParameter(attributeString);
 
 		method.executeWithVoidReturn();
 	} else
-		((TangibleObjectImplementation*) _impl)->setAttributes(attributestring);
+		((TangibleObjectImplementation*) _impl)->setAttributes(attributeString);
 }
 
-string& TangibleObject::getAttributes() {
+String& TangibleObject::getAttributes() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -689,7 +689,7 @@ void TangibleObject::addAttributes(AttributeListMessage* alm) {
 		((TangibleObjectImplementation*) _impl)->addAttributes(alm);
 }
 
-string& TangibleObject::getMisoAsocKey() {
+String& TangibleObject::getMisoAsocKey() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -702,7 +702,7 @@ string& TangibleObject::getMisoAsocKey() {
 		return ((TangibleObjectImplementation*) _impl)->getMisoAsocKey();
 }
 
-void TangibleObject::setName(const string& n) {
+void TangibleObject::setName(const String& n) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -715,7 +715,7 @@ void TangibleObject::setName(const string& n) {
 		((TangibleObjectImplementation*) _impl)->setName(n);
 }
 
-void TangibleObject::setName(const unicode& n) {
+void TangibleObject::setName(const UnicodeString& n) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -741,7 +741,7 @@ void TangibleObject::setLoot(bool l) {
 		((TangibleObjectImplementation*) _impl)->setLoot(l);
 }
 
-void TangibleObject::setTemplateName(const string& tempName) {
+void TangibleObject::setTemplateName(const String& tempName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -754,7 +754,7 @@ void TangibleObject::setTemplateName(const string& tempName) {
 		((TangibleObjectImplementation*) _impl)->setTemplateName(tempName);
 }
 
-void TangibleObject::setTemplateTypeName(const string& tempTypeName) {
+void TangibleObject::setTemplateTypeName(const String& tempTypeName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -819,7 +819,7 @@ void TangibleObject::setConditionDamage(int damage) {
 		((TangibleObjectImplementation*) _impl)->setConditionDamage(damage);
 }
 
-void TangibleObject::setCustomizationString(string& cust) {
+void TangibleObject::setCustomizationString(String& cust) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -832,7 +832,7 @@ void TangibleObject::setCustomizationString(string& cust) {
 		((TangibleObjectImplementation*) _impl)->setCustomizationString(cust);
 }
 
-void TangibleObject::setCustomizationVariable(const string& type, unsigned int value) {
+void TangibleObject::setCustomizationVariable(const String& type, unsigned int value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -873,7 +873,7 @@ void TangibleObject::setObjectCount(const int count) {
 		((TangibleObjectImplementation*) _impl)->setObjectCount(count);
 }
 
-void TangibleObject::setMisoAsocKey(const string& tma) {
+void TangibleObject::setMisoAsocKey(const String& tma) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -994,10 +994,10 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isLoot());
 		break;
 	case 38:
-		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__string_));
+		setCraftersName(inv->getAsciiParameter(_param0_setCraftersName__String_));
 		break;
 	case 39:
-		setCraftedSerial(inv->getAsciiParameter(_param0_setCraftedSerial__string_));
+		setCraftedSerial(inv->getAsciiParameter(_param0_setCraftedSerial__String_));
 		break;
 	case 40:
 		resp->insertLong(getContainer()->_getObjectID());
@@ -1012,7 +1012,7 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getTemplateTypeName());
 		break;
 	case 44:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__string_));
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
 		break;
 	case 45:
 		setPlayerUseMask(inv->getUnsignedIntParameter());
@@ -1045,7 +1045,7 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getCraftedSerial());
 		break;
 	case 55:
-		setAttributes(inv->getAsciiParameter(_param0_setAttributes__string_));
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_));
 		break;
 	case 56:
 		resp->insertAscii(getAttributes());
@@ -1057,19 +1057,19 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getMisoAsocKey());
 		break;
 	case 59:
-		setName(inv->getAsciiParameter(_param0_setName__string_));
+		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
 	case 60:
-		setName(inv->getUnicodeParameter(_param0_setName__unicode_));
+		setName(inv->getUnicodeParameter(_param0_setName__UnicodeString_));
 		break;
 	case 61:
 		setLoot(inv->getBooleanParameter());
 		break;
 	case 62:
-		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__string_));
+		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__String_));
 		break;
 	case 63:
-		setTemplateTypeName(inv->getAsciiParameter(_param0_setTemplateTypeName__string_));
+		setTemplateTypeName(inv->getAsciiParameter(_param0_setTemplateTypeName__String_));
 		break;
 	case 64:
 		setObjectSubType(inv->getSignedIntParameter());
@@ -1084,10 +1084,10 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setConditionDamage(inv->getSignedIntParameter());
 		break;
 	case 68:
-		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__string_));
+		setCustomizationString(inv->getAsciiParameter(_param0_setCustomizationString__String_));
 		break;
 	case 69:
-		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__string_int_), inv->getUnsignedIntParameter());
+		setCustomizationVariable(inv->getAsciiParameter(_param0_setCustomizationVariable__String_int_), inv->getUnsignedIntParameter());
 		break;
 	case 70:
 		setCustomizationVariable(inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
@@ -1096,7 +1096,7 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setObjectCount(inv->getSignedIntParameter());
 		break;
 	case 72:
-		setMisoAsocKey(inv->getAsciiParameter(_param0_setMisoAsocKey__string_));
+		setMisoAsocKey(inv->getAsciiParameter(_param0_setMisoAsocKey__String_));
 		break;
 	default:
 		return NULL;
@@ -1233,11 +1233,11 @@ bool TangibleObjectAdapter::isLoot() {
 	return ((TangibleObjectImplementation*) impl)->isLoot();
 }
 
-void TangibleObjectAdapter::setCraftersName(string& n) {
+void TangibleObjectAdapter::setCraftersName(String& n) {
 	return ((TangibleObjectImplementation*) impl)->setCraftersName(n);
 }
 
-void TangibleObjectAdapter::setCraftedSerial(string& s) {
+void TangibleObjectAdapter::setCraftedSerial(String& s) {
 	return ((TangibleObjectImplementation*) impl)->setCraftedSerial(s);
 }
 
@@ -1245,19 +1245,19 @@ SceneObject* TangibleObjectAdapter::getContainer() {
 	return ((TangibleObjectImplementation*) impl)->getContainer();
 }
 
-unicode& TangibleObjectAdapter::getName() {
+UnicodeString& TangibleObjectAdapter::getName() {
 	return ((TangibleObjectImplementation*) impl)->getName();
 }
 
-string& TangibleObjectAdapter::getTemplateName() {
+String& TangibleObjectAdapter::getTemplateName() {
 	return ((TangibleObjectImplementation*) impl)->getTemplateName();
 }
 
-string& TangibleObjectAdapter::getTemplateTypeName() {
+String& TangibleObjectAdapter::getTemplateTypeName() {
 	return ((TangibleObjectImplementation*) impl)->getTemplateTypeName();
 }
 
-void TangibleObjectAdapter::getCustomizationString(string& appearance) {
+void TangibleObjectAdapter::getCustomizationString(String& appearance) {
 	return ((TangibleObjectImplementation*) impl)->getCustomizationString(appearance);
 }
 
@@ -1293,19 +1293,19 @@ int TangibleObjectAdapter::getCondition() {
 	return ((TangibleObjectImplementation*) impl)->getCondition();
 }
 
-string& TangibleObjectAdapter::getCraftersName() {
+String& TangibleObjectAdapter::getCraftersName() {
 	return ((TangibleObjectImplementation*) impl)->getCraftersName();
 }
 
-string& TangibleObjectAdapter::getCraftedSerial() {
+String& TangibleObjectAdapter::getCraftedSerial() {
 	return ((TangibleObjectImplementation*) impl)->getCraftedSerial();
 }
 
-void TangibleObjectAdapter::setAttributes(string& attributestring) {
-	return ((TangibleObjectImplementation*) impl)->setAttributes(attributestring);
+void TangibleObjectAdapter::setAttributes(String& attributeString) {
+	return ((TangibleObjectImplementation*) impl)->setAttributes(attributeString);
 }
 
-string& TangibleObjectAdapter::getAttributes() {
+String& TangibleObjectAdapter::getAttributes() {
 	return ((TangibleObjectImplementation*) impl)->getAttributes();
 }
 
@@ -1313,15 +1313,15 @@ void TangibleObjectAdapter::addAttributes(AttributeListMessage* alm) {
 	return ((TangibleObjectImplementation*) impl)->addAttributes(alm);
 }
 
-string& TangibleObjectAdapter::getMisoAsocKey() {
+String& TangibleObjectAdapter::getMisoAsocKey() {
 	return ((TangibleObjectImplementation*) impl)->getMisoAsocKey();
 }
 
-void TangibleObjectAdapter::setName(const string& n) {
+void TangibleObjectAdapter::setName(const String& n) {
 	return ((TangibleObjectImplementation*) impl)->setName(n);
 }
 
-void TangibleObjectAdapter::setName(const unicode& n) {
+void TangibleObjectAdapter::setName(const UnicodeString& n) {
 	return ((TangibleObjectImplementation*) impl)->setName(n);
 }
 
@@ -1329,11 +1329,11 @@ void TangibleObjectAdapter::setLoot(bool l) {
 	return ((TangibleObjectImplementation*) impl)->setLoot(l);
 }
 
-void TangibleObjectAdapter::setTemplateName(const string& tempName) {
+void TangibleObjectAdapter::setTemplateName(const String& tempName) {
 	return ((TangibleObjectImplementation*) impl)->setTemplateName(tempName);
 }
 
-void TangibleObjectAdapter::setTemplateTypeName(const string& tempTypeName) {
+void TangibleObjectAdapter::setTemplateTypeName(const String& tempTypeName) {
 	return ((TangibleObjectImplementation*) impl)->setTemplateTypeName(tempTypeName);
 }
 
@@ -1353,11 +1353,11 @@ void TangibleObjectAdapter::setConditionDamage(int damage) {
 	return ((TangibleObjectImplementation*) impl)->setConditionDamage(damage);
 }
 
-void TangibleObjectAdapter::setCustomizationString(string& cust) {
+void TangibleObjectAdapter::setCustomizationString(String& cust) {
 	return ((TangibleObjectImplementation*) impl)->setCustomizationString(cust);
 }
 
-void TangibleObjectAdapter::setCustomizationVariable(const string& type, unsigned int value) {
+void TangibleObjectAdapter::setCustomizationVariable(const String& type, unsigned int value) {
 	return ((TangibleObjectImplementation*) impl)->setCustomizationVariable(type, value);
 }
 
@@ -1369,7 +1369,7 @@ void TangibleObjectAdapter::setObjectCount(const int count) {
 	return ((TangibleObjectImplementation*) impl)->setObjectCount(count);
 }
 
-void TangibleObjectAdapter::setMisoAsocKey(const string& tma) {
+void TangibleObjectAdapter::setMisoAsocKey(const String& tma) {
 	return ((TangibleObjectImplementation*) impl)->setMisoAsocKey(tma);
 }
 

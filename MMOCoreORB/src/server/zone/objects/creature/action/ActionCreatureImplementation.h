@@ -57,40 +57,40 @@ class SceneObject;
 
 class ActionCreatureImplementation : public ActionCreatureServant {
 	
-	VectorMap<string, Action*> actionList; //<action key, action>
+	VectorMap<String, Action*> actionList; //<action key, action>
 	
-	string misoKey; //Mission Key
+	String misoKey; //Mission Key
 	MissionManagerImplementation* misoMgr;
 	
 	//Trigger Action Keys:
-	string converseKeys;
-	string tradeKeys;
-	string attackKeys;
-	string deathKeys;
+	String converseKeys;
+	String tradeKeys;
+	String attackKeys;
+	String deathKeys;
 	
 public:
-	ActionCreatureImplementation(uint64 oid, uint32 objCrc, string& creName, string& stf, string& missionKey);
+	ActionCreatureImplementation(uint64 oid, uint32 objCrc, String& creName, String& stf, String& missionKey);
 	~ActionCreatureImplementation();
 	
 	//Action List Manip
-	void addAction(string& key, Action* act) {
+	void addAction(String& key, Action* act) {
 		actionList.put(key, act);
 	}
 	
-	Action* getAction(string& key) {
+	Action* getAction(String& key) {
 		return actionList.get(key);
 	}
 	
 	//Triggers: If an action key is passed, the action will be called when the trigger is pulled
-	void onConverse(string tco, Player* player = NULL);
-	void onTrade(string ttr);
-	void onAttack(string tat);
-	void onDeath(string tde);
+	void onConverse(String tco, Player* player = NULL);
+	void onTrade(String ttr);
+	void onAttack(String tat);
+	void onDeath(String tde);
 	
 	//Mission Specific:
 	bool isMissionNpc(); //Returns true if NPC has a mission assigned to it.
 	
-	string& getMissionKey() {
+	String& getMissionKey() {
 		return misoKey;
 	}
 	
@@ -110,7 +110,7 @@ public:
 private:
 	
 	//Action List Manip
-	void dropAction(string& key) {
+	void dropAction(String& key) {
 		actionList.drop(key);
 	}
 	

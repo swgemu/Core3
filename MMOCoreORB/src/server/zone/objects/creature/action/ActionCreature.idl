@@ -54,23 +54,23 @@ import "../Creature";
 
 interface ActionCreature implements Creature {
 
-	ActionCreature(unsigned long oid, unsigned int objCrc, string creName, string stf, string missionKey) {
+	ActionCreature(unsigned long oid, unsigned int objCrc, String creName, String stf, String missionKey) {
 		super(oid);
 	}
 	
 	//Action List Manip
-	void addAction(string key, Action act);
-	Action getAction(string key);
+	void addAction(String key, Action act);
+	Action getAction(String key);
 	
 	//Triggers: If an action key is passed, the action will be called when the trigger is pulled
-	void onConverse(string tco, Player player = NULL);
-	void onTrade(string ttr);
-	void onAttack(string tat);
-	void onDeath(string tde);
+	void onConverse(String tco, Player player = NULL);
+	void onTrade(String ttr);
+	void onAttack(String tat);
+	void onDeath(String tde);
 	
 	//Mission Specific:
 	boolean isMissionNpc(); //Returns true if NPC has a mission assigned to it.
-	string getMissionKey();
+	String getMissionKey();
 	local MissionManagerImplementation getMisoMgr();
 	local void setMisoMgr(MissionManagerImplementation tmgr);
 	

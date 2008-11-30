@@ -49,8 +49,8 @@ which carries forward this exception.
 
 #include "BlueFrogTree.h"
 
-class BlueFrogProfessionSet : public HashTable<string, string> {
-	BlueFrogTree * profTree;
+class BlueFrogProfessionSet : public HashTable<String, String> {
+	BlueFrogTree* profTree;
 
 public:
 	BlueFrogProfessionSet() {
@@ -63,32 +63,37 @@ public:
 		removeAll();
 	}
 
-	int hash(const string& str) {
-		return String::hashCode(str);
+	int hash(const String& str) {
+		return str.hashCode();
 	}
 
-	void addProfession(string name, string group, string prof) {
+	void addProfession(String name, String group, String prof) {
 		put(name, prof);
 
-		BlueFrogTree * t = profTree->find(group);
+		BlueFrogTree* t = profTree->find(group);
+
 		if (t != NULL)
 			t->add(name);
 	}
 
-	void addGroup(string name, string parent = "root") {
-		BlueFrogTree * t = profTree->find(parent);
-			if (t != NULL)
-				t->add(name);
+	void addGroup(String name, String parent = "root") {
+		BlueFrogTree* t = profTree->find(parent);
+
+		if (t != NULL)
+			t->add(name);
 	}
 
-	inline BlueFrogVector* listContents(string group) {
-		BlueFrogVector * v = new BlueFrogVector();
-		BlueFrogTree * t = profTree->find(group);
+	inline BlueFrogVector* listContents(String group) {
+		BlueFrogVector* v = new BlueFrogVector();
+
+		BlueFrogTree* t = profTree->find(group);
 		if (t != NULL) {
 			LinkedList<BlueFrogTree *> l = t->getChildren();
-			string element;
+
+			String element;
 			for (int i = 0; i < l.size(); i++) {
 				BlueFrogTree* tree = l.get(i);
+
 				if (tree != NULL) {
 					element = l.get(i)->getElement();
 					v->add(element);
@@ -99,7 +104,7 @@ public:
 		return v;
 	}
 
-	inline string getProfession(string key) {
+	inline String getProfession(String key) {
 			return get(key);
 	}
 

@@ -19,11 +19,11 @@ class TangibleObject;
 
 class GenericItem : public TangibleObject {
 public:
-	GenericItem(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype);
+	GenericItem(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype);
 
-	GenericItem(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype);
+	GenericItem(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype);
 
-	GenericItem(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype);
+	GenericItem(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype);
 
 	void generateAttributes(SceneObject* obj);
 

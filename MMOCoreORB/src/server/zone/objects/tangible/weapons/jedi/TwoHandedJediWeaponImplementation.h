@@ -50,12 +50,12 @@ which carries forward this exception.
 class TwoHandedJediWeaponImplementation : public TwoHandedJediWeaponServant {
 
 public:
-	TwoHandedJediWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, bool eqp = false) 
+	TwoHandedJediWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: TwoHandedJediWeaponServant(objid, tempcrc, n, tempn, TWOHANDSABER, eqp) {
 		initialize();
 	}
 
-	TwoHandedJediWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false) 
+	TwoHandedJediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
 			: TwoHandedJediWeaponServant(creature, temp, n, tempn, TWOHANDSABER, eqp) {
 		initialize();
 	}

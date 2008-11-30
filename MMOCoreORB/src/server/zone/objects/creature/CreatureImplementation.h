@@ -71,8 +71,8 @@ class CreatureImplementation : public CreatureServant, public Event {
 	uint64 baseID;
 	int type;
 
-	string creatureName;
-	string objectFile; //object iff
+	String creatureName;
+	String objectFile; //object iff
 
 	Vector<PatrolPoint*> patrolPoints;
 
@@ -109,7 +109,7 @@ class CreatureImplementation : public CreatureServant, public Event {
 	bool randomizeRespawn;
 	uint32 respawnTimer;
 
-	Vector<string> playerCanHarvest;
+	Vector<String> playerCanHarvest;
 	CreatureRemoveEvent* creatureRemoveEvent;
 
 	bool looted;
@@ -230,11 +230,11 @@ public:
 		creatureGroup = group;
 	}
 
-	inline void setObjectFileName(const string& name) {
+	inline void setObjectFileName(const String& name) {
 		objectFile = name;
 	}
 
-	inline string& getObjectFileName() {
+	inline String& getObjectFileName() {
 		return objectFile;
 	}
 
@@ -271,7 +271,7 @@ public:
 		return type;
 	}
 
-	inline string& getName() {
+	inline String& getName() {
 		return creatureName;
 	}
 
@@ -283,7 +283,7 @@ public:
 		return zone;
 	}
 
-	/*inline string& getHairObject() {
+	/*inline String& getHairObject() {
 		//return hairObject;
 	}*/
 
@@ -335,14 +335,14 @@ public:
 		return lootCreated == true;
 	}
 
-	inline bool canHarvest(string firstName) {
-		if(getBoneMax() == 0 && getHideMax() == 0 && getMeatMax() == 0){
+	inline bool canHarvest(String firstName) {
+		if (getBoneMax() == 0 && getHideMax() == 0 && getMeatMax() == 0){
 			return false;
 		}
 
-		for(int i = 0; i < playerCanHarvest.size(); ++i){
+		for (int i = 0; i < playerCanHarvest.size(); ++i){
 
-			if(playerCanHarvest.get(i) == firstName){
+			if (playerCanHarvest.get(i) == firstName){
 				return true;
 			}
 		}
@@ -367,12 +367,12 @@ public:
 		}
 	}
 
-	inline void removePlayerFromHarvestList(string firstName){
+	inline void removePlayerFromHarvestList(String firstName){
 
 
-		for(int i = 0; i < playerCanHarvest.size(); ++i){
+		for (int i = 0; i < playerCanHarvest.size(); ++i){
 
-			if(firstName == playerCanHarvest.get(i)){
+			if (firstName == playerCanHarvest.get(i)){
 
 				playerCanHarvest.remove(i);
 				break;
@@ -381,7 +381,7 @@ public:
 
 		}
 
-		if(playerCanHarvest.size() == 0 && beenLooted()){
+		if (playerCanHarvest.size() == 0 && beenLooted()){
 
 			server->removeEvent(creatureRemoveEvent);
 

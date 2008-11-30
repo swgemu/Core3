@@ -21,9 +21,9 @@ class Pharmaceutical;
 
 class StatePack : public Pharmaceutical {
 public:
-	StatePack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	StatePack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	StatePack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	StatePack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -77,8 +77,8 @@ public:
 	StatePack* _this;
 
 public:
-	StatePackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
-	StatePackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
+	StatePackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
+	StatePackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 	virtual ~StatePackServant();
 
 	void _setStub(DistributedObjectStub* stub);

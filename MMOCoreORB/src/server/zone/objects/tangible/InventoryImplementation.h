@@ -56,7 +56,7 @@ class InventoryImplementation : public InventoryServant {
 
 public:
 	InventoryImplementation(CreatureObject* creature) : InventoryServant(creature->getObjectID() + 0x01) {
-		name = unicode("");
+		name = UnicodeString("");
 
 		templateTypeName = "item_n";
 		templateName = "inventory";
@@ -71,7 +71,7 @@ public:
 		setContainer(NULL);
 	}
 	
-	TangibleObject* getMissionItem(string& misKey) {
+	TangibleObject* getMissionItem(String& misKey) {
 		TangibleObject* retTano = NULL;
 		TangibleObject* tano = NULL;
 		
@@ -80,7 +80,7 @@ public:
 			if (obj->isTangible()) {
 				tano = (TangibleObject*)obj;
 				
-				if((!strcmp(tano->getMisoAsocKey().c_str(), misKey.c_str())) && (!tano->isEquipped())) {
+				if ((!strcmp(tano->getMisoAsocKey().toCharArray(), misKey.toCharArray())) && (!tano->isEquipped())) {
 					break;
 				} else {
 					tano = NULL;
@@ -88,7 +88,7 @@ public:
 			}
 		}
 		
-		if(tano != NULL) {
+		if (tano != NULL) {
 			retTano = tano;
 		}
 		

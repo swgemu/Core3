@@ -359,7 +359,7 @@ bool Creature::isActionCreature() {
 		return ((CreatureImplementation*) _impl)->isActionCreature();
 }
 
-string& Creature::getName() {
+String& Creature::getName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -490,7 +490,7 @@ void Creature::setCreatureGroup(CreatureGroup* group) {
 		((CreatureImplementation*) _impl)->setCreatureGroup(group);
 }
 
-void Creature::setObjectFileName(const string& name) {
+void Creature::setObjectFileName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -503,7 +503,7 @@ void Creature::setObjectFileName(const string& name) {
 		((CreatureImplementation*) _impl)->setObjectFileName(name);
 }
 
-string& Creature::getObjectFileName() {
+String& Creature::getObjectFileName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -542,7 +542,7 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		((CreatureImplementation*) _impl)->setRespawnTimer(seconds);
 }
 
-void Creature::removePlayerFromHarvestList(string& firstName) {
+void Creature::removePlayerFromHarvestList(String& firstName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -555,7 +555,7 @@ void Creature::removePlayerFromHarvestList(string& firstName) {
 		((CreatureImplementation*) _impl)->removePlayerFromHarvestList(firstName);
 }
 
-bool Creature::canHarvest(string& firstName) {
+bool Creature::canHarvest(String& firstName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -763,7 +763,7 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setCreatureGroup((CreatureGroup*) inv->getObjectParameter());
 		break;
 	case 42:
-		setObjectFileName(inv->getAsciiParameter(_param0_setObjectFileName__string_));
+		setObjectFileName(inv->getAsciiParameter(_param0_setObjectFileName__String_));
 		break;
 	case 43:
 		resp->insertAscii(getObjectFileName());
@@ -775,10 +775,10 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setRespawnTimer(inv->getUnsignedIntParameter());
 		break;
 	case 46:
-		removePlayerFromHarvestList(inv->getAsciiParameter(_param0_removePlayerFromHarvestList__string_));
+		removePlayerFromHarvestList(inv->getAsciiParameter(_param0_removePlayerFromHarvestList__String_));
 		break;
 	case 47:
-		resp->insertBoolean(canHarvest(inv->getAsciiParameter(_param0_canHarvest__string_)));
+		resp->insertBoolean(canHarvest(inv->getAsciiParameter(_param0_canHarvest__String_)));
 		break;
 	case 48:
 		resp->insertBoolean(beenLooted());
@@ -909,7 +909,7 @@ bool CreatureAdapter::isActionCreature() {
 	return ((CreatureImplementation*) impl)->isActionCreature();
 }
 
-string& CreatureAdapter::getName() {
+String& CreatureAdapter::getName() {
 	return ((CreatureImplementation*) impl)->getName();
 }
 
@@ -949,11 +949,11 @@ void CreatureAdapter::setCreatureGroup(CreatureGroup* group) {
 	return ((CreatureImplementation*) impl)->setCreatureGroup(group);
 }
 
-void CreatureAdapter::setObjectFileName(const string& name) {
+void CreatureAdapter::setObjectFileName(const String& name) {
 	return ((CreatureImplementation*) impl)->setObjectFileName(name);
 }
 
-string& CreatureAdapter::getObjectFileName() {
+String& CreatureAdapter::getObjectFileName() {
 	return ((CreatureImplementation*) impl)->getObjectFileName();
 }
 
@@ -965,11 +965,11 @@ void CreatureAdapter::setRespawnTimer(unsigned int seconds) {
 	return ((CreatureImplementation*) impl)->setRespawnTimer(seconds);
 }
 
-void CreatureAdapter::removePlayerFromHarvestList(string& firstName) {
+void CreatureAdapter::removePlayerFromHarvestList(String& firstName) {
 	return ((CreatureImplementation*) impl)->removePlayerFromHarvestList(firstName);
 }
 
-bool CreatureAdapter::canHarvest(string& firstName) {
+bool CreatureAdapter::canHarvest(String& firstName) {
 	return ((CreatureImplementation*) impl)->canHarvest(firstName);
 }
 

@@ -92,7 +92,7 @@ void MissionObject::sendDestroyTo(Player* player) {
 		((MissionObjectImplementation*) _impl)->sendDestroyTo(player);
 }
 
-void MissionObject::setDBKey(string& tdbk) {
+void MissionObject::setDBKey(String& tdbk) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -105,7 +105,7 @@ void MissionObject::setDBKey(string& tdbk) {
 		((MissionObjectImplementation*) _impl)->setDBKey(tdbk);
 }
 
-string& MissionObject::getDBKey() {
+String& MissionObject::getDBKey() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -168,7 +168,7 @@ TangibleObject* MissionObject::getDeliverItem() {
 		return ((MissionObjectImplementation*) _impl)->getDeliverItem();
 }
 
-void MissionObject::setTypeStr(const string& tstr) {
+void MissionObject::setTypeStr(const String& tstr) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -181,7 +181,7 @@ void MissionObject::setTypeStr(const string& tstr) {
 		((MissionObjectImplementation*) _impl)->setTypeStr(tstr);
 }
 
-string& MissionObject::getTypeStr() {
+String& MissionObject::getTypeStr() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -344,7 +344,7 @@ unsigned int MissionObject::getDestPlanetCrc() {
 		return ((MissionObjectImplementation*) _impl)->getDestPlanetCrc();
 }
 
-void MissionObject::setCreatorName(const unicode& tcn) {
+void MissionObject::setCreatorName(const UnicodeString& tcn) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -357,7 +357,7 @@ void MissionObject::setCreatorName(const unicode& tcn) {
 		((MissionObjectImplementation*) _impl)->setCreatorName(tcn);
 }
 
-unicode& MissionObject::getCreatorName() {
+UnicodeString& MissionObject::getCreatorName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -495,7 +495,7 @@ unsigned int MissionObject::getDepictedObjCrc() {
 		return ((MissionObjectImplementation*) _impl)->getDepictedObjCrc();
 }
 
-void MissionObject::setDescriptionStf(const string& tds) {
+void MissionObject::setDescriptionStf(const String& tds) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -508,7 +508,7 @@ void MissionObject::setDescriptionStf(const string& tds) {
 		((MissionObjectImplementation*) _impl)->setDescriptionStf(tds);
 }
 
-string& MissionObject::getDescriptionStf() {
+String& MissionObject::getDescriptionStf() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -521,7 +521,7 @@ string& MissionObject::getDescriptionStf() {
 		return ((MissionObjectImplementation*) _impl)->getDescriptionStf();
 }
 
-void MissionObject::setTitleStf(const string& tts) {
+void MissionObject::setTitleStf(const String& tts) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -534,7 +534,7 @@ void MissionObject::setTitleStf(const string& tts) {
 		((MissionObjectImplementation*) _impl)->setTitleStf(tts);
 }
 
-string& MissionObject::getTitleStf() {
+String& MissionObject::getTitleStf() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -624,7 +624,7 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		sendDestroyTo((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		setDBKey(inv->getAsciiParameter(_param0_setDBKey__string_));
+		setDBKey(inv->getAsciiParameter(_param0_setDBKey__String_));
 		break;
 	case 12:
 		resp->insertAscii(getDBKey());
@@ -642,7 +642,7 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getDeliverItem()->_getObjectID());
 		break;
 	case 17:
-		setTypeStr(inv->getAsciiParameter(_param0_setTypeStr__string_));
+		setTypeStr(inv->getAsciiParameter(_param0_setTypeStr__String_));
 		break;
 	case 18:
 		resp->insertAscii(getTypeStr());
@@ -684,7 +684,7 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertInt(getDestPlanetCrc());
 		break;
 	case 31:
-		setCreatorName(inv->getUnicodeParameter(_param0_setCreatorName__unicode_));
+		setCreatorName(inv->getUnicodeParameter(_param0_setCreatorName__UnicodeString_));
 		break;
 	case 32:
 		resp->insertUnicode(getCreatorName());
@@ -720,13 +720,13 @@ Packet* MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertInt(getDepictedObjCrc());
 		break;
 	case 43:
-		setDescriptionStf(inv->getAsciiParameter(_param0_setDescriptionStf__string_));
+		setDescriptionStf(inv->getAsciiParameter(_param0_setDescriptionStf__String_));
 		break;
 	case 44:
 		resp->insertAscii(getDescriptionStf());
 		break;
 	case 45:
-		setTitleStf(inv->getAsciiParameter(_param0_setTitleStf__string_));
+		setTitleStf(inv->getAsciiParameter(_param0_setTitleStf__String_));
 		break;
 	case 46:
 		resp->insertAscii(getTitleStf());
@@ -770,11 +770,11 @@ void MissionObjectAdapter::sendDestroyTo(Player* player) {
 	return ((MissionObjectImplementation*) impl)->sendDestroyTo(player);
 }
 
-void MissionObjectAdapter::setDBKey(string& tdbk) {
+void MissionObjectAdapter::setDBKey(String& tdbk) {
 	return ((MissionObjectImplementation*) impl)->setDBKey(tdbk);
 }
 
-string& MissionObjectAdapter::getDBKey() {
+String& MissionObjectAdapter::getDBKey() {
 	return ((MissionObjectImplementation*) impl)->getDBKey();
 }
 
@@ -794,11 +794,11 @@ TangibleObject* MissionObjectAdapter::getDeliverItem() {
 	return ((MissionObjectImplementation*) impl)->getDeliverItem();
 }
 
-void MissionObjectAdapter::setTypeStr(const string& tstr) {
+void MissionObjectAdapter::setTypeStr(const String& tstr) {
 	return ((MissionObjectImplementation*) impl)->setTypeStr(tstr);
 }
 
-string& MissionObjectAdapter::getTypeStr() {
+String& MissionObjectAdapter::getTypeStr() {
 	return ((MissionObjectImplementation*) impl)->getTypeStr();
 }
 
@@ -850,11 +850,11 @@ unsigned int MissionObjectAdapter::getDestPlanetCrc() {
 	return ((MissionObjectImplementation*) impl)->getDestPlanetCrc();
 }
 
-void MissionObjectAdapter::setCreatorName(const unicode& tcn) {
+void MissionObjectAdapter::setCreatorName(const UnicodeString& tcn) {
 	return ((MissionObjectImplementation*) impl)->setCreatorName(tcn);
 }
 
-unicode& MissionObjectAdapter::getCreatorName() {
+UnicodeString& MissionObjectAdapter::getCreatorName() {
 	return ((MissionObjectImplementation*) impl)->getCreatorName();
 }
 
@@ -898,19 +898,19 @@ unsigned int MissionObjectAdapter::getDepictedObjCrc() {
 	return ((MissionObjectImplementation*) impl)->getDepictedObjCrc();
 }
 
-void MissionObjectAdapter::setDescriptionStf(const string& tds) {
+void MissionObjectAdapter::setDescriptionStf(const String& tds) {
 	return ((MissionObjectImplementation*) impl)->setDescriptionStf(tds);
 }
 
-string& MissionObjectAdapter::getDescriptionStf() {
+String& MissionObjectAdapter::getDescriptionStf() {
 	return ((MissionObjectImplementation*) impl)->getDescriptionStf();
 }
 
-void MissionObjectAdapter::setTitleStf(const string& tts) {
+void MissionObjectAdapter::setTitleStf(const String& tts) {
 	return ((MissionObjectImplementation*) impl)->setTitleStf(tts);
 }
 
-string& MissionObjectAdapter::getTitleStf() {
+String& MissionObjectAdapter::getTitleStf() {
 	return ((MissionObjectImplementation*) impl)->getTitleStf();
 }
 

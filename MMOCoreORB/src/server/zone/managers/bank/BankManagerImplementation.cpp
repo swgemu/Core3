@@ -58,7 +58,7 @@ BankManagerImplementation::BankManagerImplementation(ZoneServer* zoneserver, Zon
 	info("Populating the bank terminal details");
 
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "SELECT * from `staticobjects` where `file` like '%terminal_bank%';";
 
 		ResultSet* terminals = ServerDatabase::instance()->executeQuery(query);
@@ -76,10 +76,10 @@ BankManagerImplementation::BankManagerImplementation(ZoneServer* zoneserver, Zon
 
 		delete terminals;
 	} catch (DatabaseException& e) {
-		cout << "Can't get details of bank terminals\n";
-		cout << e.getMessage() << endl;
+		System::out << "Can't get details of bank terminals\n";
+		System::out << e.getMessage() << endl;
 	} catch (...) {
-		cout << "unreported exception caught in BankManagerImplementation::BankManagerImplementation\n";
+		System::out << "unreported exception caught in BankManagerImplementation::BankManagerImplementation\n";
 	}
 
 	info("Terminals populated");

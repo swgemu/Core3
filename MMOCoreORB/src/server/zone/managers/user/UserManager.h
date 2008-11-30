@@ -15,15 +15,15 @@ public:
 
 	bool checkUser(unsigned int ipid);
 
-	bool isAdmin(const string& name);
+	bool isAdmin(const String& name);
 
 	void parseBanList();
 
-	void banUser(const string& ipaddr);
+	void banUser(const String& ipaddr);
 
-	bool banUserByName(string& name, string& admin);
+	bool banUserByName(String& name, String& admin);
 
-	bool kickUser(string& name, string& admin);
+	bool kickUser(String& name, String& admin);
 
 	void changeUserCap(int amount);
 
@@ -49,15 +49,15 @@ public:
 
 	bool checkUser(unsigned int ipid);
 
-	bool isAdmin(const string& name);
+	bool isAdmin(const String& name);
 
 	void parseBanList();
 
-	void banUser(const string& ipaddr);
+	void banUser(const String& ipaddr);
 
-	bool banUserByName(string& name, string& admin);
+	bool banUserByName(String& name, String& admin);
 
-	bool kickUser(string& name, string& admin);
+	bool kickUser(String& name, String& admin);
 
 	void changeUserCap(int amount);
 
@@ -66,12 +66,12 @@ public:
 	int getUserCap();
 
 protected:
-	string _param0_isAdmin__string_;
-	string _param0_banUser__string_;
-	string _param0_banUserByName__string_string_;
-	string _param1_banUserByName__string_string_;
-	string _param0_kickUser__string_string_;
-	string _param1_kickUser__string_string_;
+	String _param0_isAdmin__String_;
+	String _param0_banUser__String_;
+	String _param0_banUserByName__String_String_;
+	String _param1_banUserByName__String_String_;
+	String _param0_kickUser__String_String_;
+	String _param1_kickUser__String_String_;
 };
 
 class UserManagerHelper : public DistributedObjectClassHelper, public Singleton<UserManagerHelper> {

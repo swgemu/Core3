@@ -80,7 +80,7 @@ class ChatManagerImplementation : public ChatManagerServant, public Mutex {
 
 	PlayerMap* playerMap;
 
-	VectorMap<string, ChatRoom*> gameRooms;
+	VectorMap<String, ChatRoom*> gameRooms;
 
 	ChatRoom* groupRoom;
 	ChatRoom* guildRoom;
@@ -92,7 +92,7 @@ class ChatManagerImplementation : public ChatManagerServant, public Mutex {
 
 private:
 	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
-	void printRoomTree(ChatRoom* channel, string name);
+	void printRoomTree(ChatRoom* channel, String name);
 
 public:
 	ChatManagerImplementation(ZoneServer* serv, int initsize);
@@ -100,10 +100,10 @@ public:
 	~ChatManagerImplementation();
 
 	void addPlayer(Player* player);
-	Player* getPlayer(string& name);
-	Player* removePlayer(string& name);
+	Player* getPlayer(String& name);
+	Player* removePlayer(String& name);
 
-	void sendMail(const string& sendername, unicode& header, unicode& body, const string& name);
+	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
 	void sendMailBody(Player* receiver, uint32 mailid);
 	void listMail(Player* ply);
 	void deleteMail(uint32 mailid);
@@ -113,16 +113,16 @@ public:
 	static void handleEmote(Player* player, Message* pack);
 	static void handleMood(Player* player, Message* pack);
 
-	void handleGameCommand(Player* player, const string& command);
-	static void sendSystemMessage(Player* player, unicode& message);
-	static void sendSystemMessage(Player* player, const string& file, const string& str, StfParameter * param);
+	void handleGameCommand(Player* player, const String& command);
+	static void sendSystemMessage(Player* player, UnicodeString& message);
+	static void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter * param);
 
-	static void broadcastSystemMessage(unicode& message);
-	static void broadcastMessage(CreatureObject* player, unicode& message, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
-	static void broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter * param, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
+	static void broadcastSystemMessage(UnicodeString& message);
+	static void broadcastMessage(CreatureObject* player, UnicodeString& message, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
+	static void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter * param, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
 
-	void broadcastMessage(const string& message);
-	void broadcastMessageRange(Player* player, const string& message, float range);
+	void broadcastMessage(const String& message);
+	void broadcastMessageRange(Player* player, const String& message, float range);
 
 
 	// ChatRooms
@@ -151,19 +151,19 @@ public:
 
 	ChatRoom* createGroupRoom(uint32 groupID, Player* creator);
 
-	ChatRoom* createRoomByFullPath(const string& path);
+	ChatRoom* createRoomByFullPath(const String& path);
 
 	void destroyRoom(ChatRoom* room);
 
 	void printRoomTree(ChatRoom* channel) {
-		string name;
+		String name;
 		printRoomTree(channel, name);
 	}
 
-	ChatRoom* getChatRoomByFullPath(const string& path);
+	ChatRoom* getChatRoomByFullPath(const String& path);
 
-	ChatRoom* getGameRoom(const string& game);
-	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const string& path);
+	ChatRoom* getGameRoom(const String& game);
+	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
 
 	inline uint32 getNextRoomID() {
 		return ++roomID;

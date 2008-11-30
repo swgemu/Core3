@@ -58,7 +58,7 @@ public:
 		play = pl;
 	}
 
-	void setCurrentTitle(string pTitle) {
+	void setCurrentTitle(String pTitle) {
 		startUpdate(7);
 		insertAscii(pTitle);
 	}

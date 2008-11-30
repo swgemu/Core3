@@ -104,26 +104,26 @@ BaseMessage* SuiBankTransferBoxImplementation::generateMessage() {
 	return message;
 }
 
-void SuiBankTransferBoxImplementation::addOption(const string& itemText, const string& lblType, const string& itemType) {
+void SuiBankTransferBoxImplementation::addOption(const String& itemText, const String& lblType, const String& itemType) {
 	message->insertOption(3, itemText, lblType, itemType);
 	++options;
 }
 void SuiBankTransferBoxImplementation::addCash(int cash) {
 
 	lblFrom = "Cash";
-	stringstream cashString;
+	StringBuffer cashString;
 	cashString << cash;
-	lblStartingFrom = cashString.str();
-	lblInputFrom = cashString.str();
+	lblStartingFrom = cashString.toString();
+	lblInputFrom = cashString.toString();
 	convertRatioFrom = "1";
 
 }
 void SuiBankTransferBoxImplementation::addBank(int bank) {
 
 	lblTo = "Bank";
-	stringstream bankString;
+	StringBuffer bankString;
 	bankString << bank;
-	lblStartingTo = bankString.str();
-	lblInputTo = bankString.str();
+	lblStartingTo = bankString.toString();
+	lblInputTo = bankString.toString();
 	convertRatioTo = "1";
 }

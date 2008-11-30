@@ -52,15 +52,15 @@ which carries forward this exception.
 
 class ManufactureSchematicObjectMessage3 : public BaseLineMessage {
 public:
-	ManufactureSchematicObjectMessage3(uint64 oid, float complexity, unicode& playerName)
+	ManufactureSchematicObjectMessage3(uint64 oid, float complexity, UnicodeString& playerName)
 			: BaseLineMessage(oid, 0x4D53434F, 3, 0x09) {
 
 		insertFloat(complexity);
-		insertAscii("string_id_table");
+		insertAscii("String_id_table");
 		insertInt(0);
 
 		insertAscii("");
-		unicode empty = "";
+		UnicodeString empty = "";
 		insertUnicode(empty);
 
 		insertInt(0);
@@ -74,7 +74,7 @@ public:
 		insertAscii("complexity");
 		insertFloat(complexity);
 
-		//unicode playerName = "Link";
+		//UnicodeString playerName = "Link";
 		insertUnicode(playerName);
 		insertInt(50);
 		insertFloat(8.0f);
