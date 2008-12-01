@@ -53,8 +53,6 @@ which carries forward this exception.
 
 #include "events/UndeploySceneObjectEvent.h"
 
-#include "../area/BaseArea.h"
-
 #include "../../managers/planet/PlanetManager.h"
 
 #include "../../Zone.h"

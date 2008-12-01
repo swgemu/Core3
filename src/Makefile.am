@@ -77,10 +77,6 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/managers/resource/ResourceItem.cpp \
 		server/zone/managers/structure/StructureManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
-		server/zone/objects/area/ActiveArea.cpp \
-		server/zone/objects/area/Area.cpp \
-		server/zone/objects/area/BaseArea.cpp \
-		server/zone/objects/area/NoBuildArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \

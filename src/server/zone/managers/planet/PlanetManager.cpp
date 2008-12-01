@@ -14,8 +14,6 @@
 
 #include "../../objects/tangible/terminal/mission/MissionTerminal.h"
 
-#include "../../objects/area/NoBuildArea.h"
-
 #include "../structure/StructureManager.h"
 
 /*
@@ -215,65 +213,19 @@ bool PlanetManager::isNoBuildArea(bool x, bool y) {
 		return ((PlanetManagerImplementation*) _impl)->isNoBuildArea(x, y);
 }
 
-void PlanetManager::addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason) {
+void PlanetManager::addNoBuildArea(float x, float y, float radius) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 20);
-		method.addFloatParameter(minX);
-		method.addFloatParameter(maxX);
-		method.addFloatParameter(minY);
-		method.addFloatParameter(maxY);
-		method.addUnsignedLongParameter(uid);
-		method.addUnsignedCharParameter(reason);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addFloatParameter(radius);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlanetManagerImplementation*) _impl)->addNoBuildArea(minX, maxX, minY, maxY, uid, reason);
-}
-
-void PlanetManager::addNoBuildArea(NoBuildArea* area) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 21);
-		method.addObjectParameter(area);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlanetManagerImplementation*) _impl)->addNoBuildArea(area);
-}
-
-void PlanetManager::deleteNoBuildArea(NoBuildArea* area) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 22);
-		method.addObjectParameter(area);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlanetManagerImplementation*) _impl)->deleteNoBuildArea(area);
-}
-
-NoBuildArea* PlanetManager::createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 23);
-		method.addFloatParameter(minX);
-		method.addFloatParameter(maxX);
-		method.addFloatParameter(minY);
-		method.addFloatParameter(maxY);
-		method.addUnsignedCharParameter(reason);
-
-		return (NoBuildArea*) method.executeWithObjectReturn();
-	} else
-		return ((PlanetManagerImplementation*) _impl)->createNoBuildArea(minX, maxX, minY, maxY, reason);
+		((PlanetManagerImplementation*) _impl)->addNoBuildArea(x, y, radius);
 }
 
 /*
@@ -330,16 +282,7 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isNoBuildArea(inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
 	case 20:
-		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedCharParameter());
-		break;
-	case 21:
-		addNoBuildArea((NoBuildArea*) inv->getObjectParameter());
-		break;
-	case 22:
-		deleteNoBuildArea((NoBuildArea*) inv->getObjectParameter());
-		break;
-	case 23:
-		resp->insertLong(createNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedCharParameter())->_getObjectID());
+		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	default:
 		return NULL;
@@ -404,20 +347,8 @@ bool PlanetManagerAdapter::isNoBuildArea(bool x, bool y) {
 	return ((PlanetManagerImplementation*) impl)->isNoBuildArea(x, y);
 }
 
-void PlanetManagerAdapter::addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason) {
-	return ((PlanetManagerImplementation*) impl)->addNoBuildArea(minX, maxX, minY, maxY, uid, reason);
-}
-
-void PlanetManagerAdapter::addNoBuildArea(NoBuildArea* area) {
-	return ((PlanetManagerImplementation*) impl)->addNoBuildArea(area);
-}
-
-void PlanetManagerAdapter::deleteNoBuildArea(NoBuildArea* area) {
-	return ((PlanetManagerImplementation*) impl)->deleteNoBuildArea(area);
-}
-
-NoBuildArea* PlanetManagerAdapter::createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason) {
-	return ((PlanetManagerImplementation*) impl)->createNoBuildArea(minX, maxX, minY, maxY, reason);
+void PlanetManagerAdapter::addNoBuildArea(float x, float y, float radius) {
+	return ((PlanetManagerImplementation*) impl)->addNoBuildArea(x, y, radius);
 }
 
 /*

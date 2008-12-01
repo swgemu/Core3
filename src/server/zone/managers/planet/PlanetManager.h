@@ -19,8 +19,6 @@ class ShuttleCreature;
 
 class MissionTerminal;
 
-class NoBuildArea;
-
 class StructureManager;
 
 class PlanetManager : public DistributedObjectStub {
@@ -55,13 +53,7 @@ public:
 
 	bool isNoBuildArea(bool x, bool y);
 
-	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason = 0);
-
-	void addNoBuildArea(NoBuildArea* area);
-
-	void deleteNoBuildArea(NoBuildArea* area);
-
-	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason = 0);
+	void addNoBuildArea(float x, float y, float radius);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -107,13 +99,7 @@ public:
 
 	bool isNoBuildArea(bool x, bool y);
 
-	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason);
-
-	void addNoBuildArea(NoBuildArea* area);
-
-	void deleteNoBuildArea(NoBuildArea* area);
-
-	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason);
+	void addNoBuildArea(float x, float y, float radius);
 
 protected:
 	String _param0_getTravelFare__String_String_;

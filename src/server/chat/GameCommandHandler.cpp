@@ -266,10 +266,6 @@ void GameCommandHandler::init() {
 			"Spawn a creature.",
 			"Usage: @spawn <creaturetype> <moves (0,1)> <cellid> <x> <y> <bitmask> <baby>",
 			&spawn);
-	gmCommands->addCommand("addNoBuildArea", DEVELOPER,
-			"Adds a no build area to the map.",
-			"Usage: @addNoBuildArea <minX> <maxX> <minY> <maxY>",
-			&addNoBuildArea);
 	gmCommands->addCommand("guildAdmin", PRIVILEGED,
 			"Let you join a guild temporarily to administer the guild via guildterminal.",
 			"Usage: @guildAdmin GUILDTAG",
@@ -2106,43 +2102,6 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	} else
 		player->sendSystemMessage("Cannot spawn creature");
 
-}
-void GameCommandHandler::addNoBuildArea(StringTokenizer tokenizer, Player* player) {
-	try {
-		if (!tokenizer.hasMoreTokens())
-			return;
-
-		float xMin = tokenizer.getFloatToken();
-
-		if (!tokenizer.hasMoreTokens())
-			return;
-
-		float xMax = tokenizer.getFloatToken();
-
-		if (!tokenizer.hasMoreTokens())
-			return;
-
-		float yMin = tokenizer.getFloatToken();
-
-		if (!tokenizer.hasMoreTokens())
-			return;
-
-		float yMax = tokenizer.getFloatToken();
-
-		PlanetManager * planetManager = player->getZone()->getPlanetManager();
-
-		if (planetManager->createNoBuildArea(xMin, xMax, yMin, yMax) != NULL)
-			player->sendSystemMessage("No Build Area Created");
-		else
-			player->sendSystemMessage("No Build Area could not be created.");
-
-	} catch (Exception e) {
-		player->sendSystemMessage("No Build Area could not be created (Exception Thrown)");
-		System::out << "Exception Caught in GameCommandHandler::addNoBuildArea: "  << e.getMessage() << endl;
-	} catch (...) {
-		player->sendSystemMessage("No Build Area could not be created (Exception Thrown)");
-		System::out << "Unspecified Exception Caught in GameCommandHandler::addNoBuildArea" << endl;
-	}
 }
 
 void GameCommandHandler::guildAdmin(StringTokenizer tokenizer, Player* player) {
