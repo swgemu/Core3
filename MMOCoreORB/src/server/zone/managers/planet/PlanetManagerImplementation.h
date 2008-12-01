@@ -62,8 +62,8 @@ which carries forward this exception.
 
 #include "PlanetManager.h"
 
-#include "AreaMap.h"
-#include "../../objects/area/BaseArea.h"
+#include "NoBuildAreaMap.h"
+#include "../../objects/area/Area.h"
 
 class ShuttleTakeOffEvent;
 class ShuttleLandingEvent;
@@ -102,7 +102,7 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 
 	StructureManager* structureManager;
 
-	AreaMap * areaMap;
+	NoBuildAreaMap * noBuildAreaMap;
 
 	static const uint32 travelFare[10][10];
 
@@ -121,10 +121,7 @@ public:
 	void sendPlanetTravelPointListResponse(Player* player);
 
 	bool isNoBuildArea(float x, float y);
-	void addNoBuildArea(float minX, float maxX, float minY, float maxY, uint64 uid, uint8 reason = 0);
-	void addNoBuildArea(NoBuildArea * area);
-	void deleteNoBuildArea(NoBuildArea * area);
-	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, uint8 reason = 0);
+	void addNoBuildArea(float x, float y, float radius);
 
 private:
 	void loadStaticPlanetObjects();

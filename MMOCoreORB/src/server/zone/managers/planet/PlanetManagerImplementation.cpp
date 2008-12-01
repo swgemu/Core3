@@ -86,7 +86,7 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	staticTangibleObjectMap.setNullValue(NULL);
 	staticTangibleObjectMap.setInsertPlan(SortedVector<VectorMapEntry<uint64, TangibleObject*>*>::NO_DUPLICATE);
 
-	areaMap = new AreaMap(16000, 16000, 500, 500);
+	noBuildAreaMap = new NoBuildAreaMap();
 
 	creatureManager = planet->getCreatureManager();
 	structureManager = new StructureManager(zone, server);
@@ -120,8 +120,8 @@ PlanetManagerImplementation::~PlanetManagerImplementation() {
 	delete missionTerminalMap;
 	missionTerminalMap = NULL;
 
-	delete areaMap;
-	areaMap = NULL;
+	delete noBuildAreaMap;
+	noBuildAreaMap = NULL;
 
 	delete shuttleTakeOffEvent;
 	shuttleTakeOffEvent = NULL;
@@ -158,30 +158,26 @@ void PlanetManagerImplementation::stop() {
 
 void PlanetManagerImplementation::loadNoBuildAreas() {
 	StringBuffer query;
-	query << "SELECT * FROM no_build_areas WHERE zoneid = " << zone->getZoneID() << ";";
+	query << "SELECT x, y, radius FROM no_build_areas WHERE zoneid = " << zone->getZoneID() << ";";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 	while (result->next()) {
-		uint64 uid = result->getUnsignedLong(1);
-		float minX = result->getFloat(2);
-		float maxX = result->getFloat(3);
-		float minY = result->getFloat(4);
-		float maxY = result->getFloat(5);
-		uint8 reason = result->getUnsignedInt(6);
+		float x = result->getFloat(0);
+		float y = result->getFloat(1);
+		float radius = result->getFloat(2);
 
-		addNoBuildArea(minX, maxX, minY, maxY, reason, uid);
+
+		addNoBuildArea(x, y, radius);
 	}
 
 	delete result;
 }
 
-void PlanetManagerImplementation::addNoBuildArea(float minX, float maxX, float minY, float maxY, uint64 uid, uint8 reason) {
+void PlanetManagerImplementation::addNoBuildArea(float x, float y, float radius) {
 	lock();
 	try {
-		NoBuildArea * area = new NoBuildArea(minX, maxX, minY, maxY, reason);
-		area->setUID(uid);
-		areaMap->addArea(area);
+		noBuildAreaMap->add(new Area(x, y, radius));
 	} catch (Exception e) {
 		System::out << "Exception Caught in PlanetManagerImplementation::loadNoBuildAreas: "  << e.getMessage() << endl;
 	} catch (...) {
@@ -189,83 +185,6 @@ void PlanetManagerImplementation::addNoBuildArea(float minX, float maxX, float m
 	}
 	unlock();
 }
-
-void PlanetManagerImplementation::addNoBuildArea(NoBuildArea * area) {
-	lock();
-	try {
-		areaMap->addArea(area);
-	} catch (Exception e) {
-		System::out << "Exception Caught in PlanetManagerImplementation::addNoBuildArea: "  << e.getMessage() << endl;
-	} catch (...) {
-		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::addNoBuildArea" << endl;
-	}
-	unlock();
-}
-
-void PlanetManagerImplementation::deleteNoBuildArea(NoBuildArea * area) {
-	lock();
-	try {
-		areaMap->addArea(area);
-
-		uint64 id = area->getUID();
-
-		area->finalize();
-
-		StringBuffer query;
-		query << "DELETE FROM no_build_areas WHERE uid = " << id << ";";
-
-		ServerDatabase::instance()->executeStatement(query);
-
-
-	} catch (Exception e) {
-		System::out << "Exception Caught in PlanetManagerImplementation::deleteNoBuildArea: "  << e.getMessage() << endl;
-	} catch (...) {
-		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::deleteNoBuildArea" << endl;
-	}
-	unlock();
-}
-
-NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float maxX, float minY, float maxY, uint8 reason) {
-	NoBuildArea * area = NULL;
-
-	try {
-		area = new NoBuildArea(minX, maxX, minY, maxY, reason);
-
-		StringBuffer statement;
-
-		statement << "INSERT INTO `no_build_areas` "
-		<< "(`zoneid`,`xMin`,`xMax`,`yMin`,`yMax`,`reason`)"
-		<< " VALUES(" << zone->getZoneID() << ", " << minX << ", " << maxX
-		<< ", " << minY << ", " << maxY << ", " << (unsigned short) reason << ");";
-
-		ServerDatabase::instance()->executeStatement(statement);
-
-		StringBuffer query;
-
-		query << "SELECT MAX(uid) FROM no_build_areas";
-
-		ResultSet * rs = ServerDatabase::instance()->executeQuery(query);
-
-
-		if (rs->next())
-			area->setUID(rs->getUnsignedLong(0));
-
-		delete rs;
-
-	} catch (Exception e) {
-		System::out << "Exception Caught in PlanetManagerImplementation::createNoBuildArea: "  << e.getMessage() << endl;
-		return NULL;
-	} catch (...) {
-		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::createNoBuildArea" << endl;
-		return NULL;
-	}
-
-	if (area != NULL)
-		addNoBuildArea(area);
-
-	return area;
-}
-
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {
 	lock();
@@ -707,9 +626,7 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 		uint64 objectID, float x, float y, int orient) {
 	try {
 
-		BaseArea * baseArea = areaMap->getBaseArea(x,y);
-
-		if (baseArea->containsNoBuildAreas() && baseArea->getNoBuildArea(x, y) != NULL) {
+		if (isNoBuildArea(x,y)) {
 			player->sendSystemMessage("You can not build here.");
 			return;
 		}
@@ -863,14 +780,5 @@ uint64 PlanetManagerImplementation::getNextStaticObjectID(bool doLock) {
 }
 
 bool PlanetManagerImplementation::isNoBuildArea(float x, float y) {
-	try {
-		BaseArea * area = areaMap->getBaseArea(x,y);
-		return (area->getNoBuildArea(x, y) != NULL);
-	} catch (Exception e) {
-		System::out << "Exception Caught in PlanetManagerImplementation::isNoBuildArea: " << e.getMessage() << endl;
-		return false;
-	} catch ( ... ) {
-		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::isNoBuildArea" << endl;
-		return false;
-	}
+	return noBuildAreaMap->isNoBuildArea(x,y);
 }

@@ -2815,7 +2815,12 @@ bool PlayerImplementation::hasItemPermission(TangibleObject * item) {
 
 	if (maskRes == 0)
 		return true;
-	else if (maskRes == COVERT) {
+
+	//suppress system message if item is being taken off.
+	if (item->isEquipped())
+		return false;
+
+	if (maskRes == COVERT) {
 		this->sendSystemMessage("You can not use this item while on leave.");
 		return false;
 	} else if (maskRes & (COVERT | REBEL | IMPERIAL | NEUTRAL)) {
