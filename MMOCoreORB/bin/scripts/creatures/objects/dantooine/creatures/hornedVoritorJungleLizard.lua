@@ -139,7 +139,8 @@ hornedVoritorJungleLizard = Creature:new {
 	meatType = "meat_carnivore_dantooine",
 	meatMax = 65,
 
-	skills = { " Area attack (poison)", " Poison attack (strong)", "" }
+	--skills = { " Area attack (poison)", " Poison attack (strong)", "" }
+	skills = { "voritorAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

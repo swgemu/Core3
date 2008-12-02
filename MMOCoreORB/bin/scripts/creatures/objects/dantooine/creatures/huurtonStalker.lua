@@ -139,7 +139,8 @@ huurtonStalker = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 15,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "huurtonAttack5", "huurtonAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

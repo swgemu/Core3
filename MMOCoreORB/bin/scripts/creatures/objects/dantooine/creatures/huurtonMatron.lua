@@ -139,7 +139,8 @@ huurtonMatron = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 15,
 
-	skills = { " Blind attack", " Stun attack", "" }
+	--skills = { " Blind attack", " Stun attack", "" }
+	skills = { "huurtonAttack4", "huurtonAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

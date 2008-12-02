@@ -139,7 +139,8 @@ infantGraul = Creature:new {
 	meatType = "meat_carnivore_dantooine",
 	meatMax = 700,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "graulAttack1", "graulAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,8 @@ huurtonBloodhunter = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 15,
 
-	skills = { " Posture down attack", " Stun attack", "" }
+	--skills = { " Posture down attack", " Stun attack", "" }
+	skills = { "huurtonAttack1", "huurtonAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

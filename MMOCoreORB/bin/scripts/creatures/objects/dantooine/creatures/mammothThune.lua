@@ -139,7 +139,8 @@ mammothThune = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 225,
 
-	skills = { " Dizzy attack", " Posture down attack", "" }
+	--skills = { " Dizzy attack", " Posture down attack", "" }
+	skills = { "thuneAttack2", "thuneAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

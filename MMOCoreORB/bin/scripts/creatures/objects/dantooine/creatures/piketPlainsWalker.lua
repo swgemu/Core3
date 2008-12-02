@@ -139,9 +139,9 @@ piketPlainsWalker = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 35,
 
-	skills = { "picketAttack1" },
+	skills = { "picketAttack5" },
 	-- skills = { " Dizzy attack", "", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

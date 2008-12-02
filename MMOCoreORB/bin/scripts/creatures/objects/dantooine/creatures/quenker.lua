@@ -139,9 +139,9 @@ quenker = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 35,
 
-	skills = { "quenkerAttack1" },
+	skills = { "quenkerAttack1", "quenkerAttack2" },
 	-- skills = { " Intimidation attack", " Knockdown attack", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

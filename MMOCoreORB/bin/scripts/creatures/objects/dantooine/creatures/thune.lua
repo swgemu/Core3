@@ -139,9 +139,9 @@ thune = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 115,
 
-	skills = { "thuneAttack1" },
+	skills = { "thuneAttack4" },
 	-- skills = { " Intimidation attack", "", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

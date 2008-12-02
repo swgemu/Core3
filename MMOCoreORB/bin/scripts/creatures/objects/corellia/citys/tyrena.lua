@@ -568,28 +568,6 @@ tyrenaNpc26 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc27 = Creature:new {
-	objectName = "tyrenaNpc27",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2693793018,
-	positionX = -5150.16,
-	positionY = -2293.51,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.825052,
-	directionW = -0.565057,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 tyrenaNpc28 = Creature:new {
 	objectName = "tyrenaNpc28",
 	creatureType = NPC,
@@ -607,50 +585,6 @@ tyrenaNpc28 = Creature:new {
 	directionZ = 0,
 	directionY = 0.833061,
 	directionW = -0.553182,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc29 = Creature:new {
-	objectName = "tyrenaNpc29",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3075287882,
-	positionX = -5148.18,
-	positionY = -2295.08,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.97295,
-	directionW = -0.231015,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc30 = Creature:new {
-	objectName = "tyrenaNpc30",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3216467552,
-	positionX = -5143.95,
-	positionY = -2294.65,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.784808,
-	directionW = 0.619739,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -920,50 +854,6 @@ tyrenaNpc44 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc45 = Creature:new {
-	objectName = "tyrenaNpc45",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2693793018,
-	positionX = -5217.28,
-	positionY = -2331.54,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.267528,
-	directionW = 0.96355,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc46 = Creature:new {
-	objectName = "tyrenaNpc46",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1439737032,
-	positionX = -5216.1,
-	positionY = -2332.42,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.336443,
-	directionW = 0.941704,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 tyrenaNpc47 = Creature:new {
 	objectName = "tyrenaNpc47",
 	creatureType = NPC,
@@ -986,28 +876,6 @@ tyrenaNpc47 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc48 = Creature:new {
-	objectName = "tyrenaNpc48",
-	creatureType = NPC,
-
-	speciesName = "corellia_retired_officer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1865005075,
-	positionX = -5099.63,
-	positionY = -2442.71,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.77804,
-	directionW = -0.628215,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 tyrenaNpc49 = Creature:new {
 	objectName = "tyrenaNpc49",
 	creatureType = NPC,
@@ -1027,28 +895,6 @@ tyrenaNpc49 = Creature:new {
 	directionW = 0.85149,
 	randomMovement = 0,
 	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc50 = Creature:new {
-	objectName = "tyrenaNpc50",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2268027596,
-	positionX = -5219.06,
-	positionY = -2335.48,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.345984,
-	directionW = 0.93824,
-	randomMovement = 0,
-	mood = "calm",
 	cellID = 0
 }
 
@@ -1184,226 +1030,6 @@ tyrenaNpc56 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc57 = Creature:new {
-	objectName = "tyrenaNpc57",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1439737032,
-	positionX = -5254.58,
-	positionY = -2322.33,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.782517,
-	directionW = 0.622629,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc58 = Creature:new {
-	objectName = "tyrenaNpc58",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3216467552,
-	positionX = -5257.05,
-	positionY = -2322.57,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.873155,
-	directionW = 0.487444,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc59 = Creature:new {
-	objectName = "tyrenaNpc59",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2693793018,
-	positionX = -5255.52,
-	positionY = -2322.36,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.784814,
-	directionW = 0.619731,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc62 = Creature:new {
-	objectName = "tyrenaNpc62",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2268027596,
-	positionX = -5295.73,
-	positionY = -2341.81,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.377243,
-	directionW = 0.926115,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc63 = Creature:new {
-	objectName = "tyrenaNpc63",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3216467552,
-	positionX = -5295.97,
-	positionY = -2347.63,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.732583,
-	directionW = -0.680678,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc64 = Creature:new {
-	objectName = "tyrenaNpc64",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2268027596,
-	positionX = -5229.08,
-	positionY = -2378.99,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.233957,
-	directionW = 0.972247,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc65 = Creature:new {
-	objectName = "tyrenaNpc65",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2268027596,
-	positionX = -5219.18,
-	positionY = -2386.63,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.566556,
-	directionW = 0.824023,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc66 = Creature:new {
-	objectName = "tyrenaNpc66",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4184098303,
-	positionX = -5229.72,
-	positionY = -2376.2,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.749875,
-	directionW = -0.66158,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc67 = Creature:new {
-	objectName = "tyrenaNpc67",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2693793018,
-	positionX = -5296.21,
-	positionY = -2350.01,
-	positionZ = 21,
-
-	directionX = -0.0699958,
-	directionZ = 0.0393618,
-	directionY = 0.36412,
-	directionW = 0.927884,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc68 = Creature:new {
-	objectName = "tyrenaNpc68",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2693793018,
-	positionX = -5272.32,
-	positionY = -2374.22,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.663898,
-	directionW = 0.747823,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 tyrenaNpc69 = Creature:new {
 	objectName = "tyrenaNpc69",
 	creatureType = NPC,
@@ -1443,94 +1069,6 @@ tyrenaNpc70 = Creature:new {
 	directionZ = 0,
 	directionY = 0.736945,
 	directionW = 0.675953,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc71 = Creature:new {
-	objectName = "tyrenaNpc71",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3216467552,
-	positionX = -5239.75,
-	positionY = -2391.25,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.323226,
-	directionW = 0.946322,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc72 = Creature:new {
-	objectName = "tyrenaNpc72",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3075287882,
-	positionX = -5244.41,
-	positionY = -2402.57,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.993832,
-	directionW = -0.1109,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-tyrenaNpc73 = Creature:new {
-	objectName = "tyrenaNpc73",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3216467552,
-	positionX = -5274.76,
-	positionY = -2384.12,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.657994,
-	directionW = 0.753023,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc74 = Creature:new {
-	objectName = "tyrenaNpc74",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3456571922,
-	positionX = -5279.97,
-	positionY = -2372.61,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.44435,
-	directionW = 0.895853,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -1663,50 +1201,6 @@ tyrenaNpc80 = Creature:new {
 	directionZ = 0,
 	directionY = 0.265099,
 	directionW = 0.964221,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc81 = Creature:new {
-	objectName = "tyrenaNpc81",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1439737032,
-	positionX = -5262.74,
-	positionY = -2422.16,
-	positionZ = 21,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = 0.0399368,
-	directionW = 0.999202,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-tyrenaNpc82 = Creature:new {
-	objectName = "tyrenaNpc82",
-	creatureType = NPC,
-
-	speciesName = "corellia_braggans_fist_thug",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1439737032,
-	positionX = -5263.87,
-	positionY = -2423.61,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.967962,
-	directionW = -0.251098,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -6970,28 +6464,6 @@ tyrenaNpc342 = Creature:new {
 	cellID = 0
 }
 
-tyrenaNpc343 = Creature:new {
-	objectName = "tyrenaNpc343",
-	creatureType = NPC,
-
-	speciesName = "corellia_edbr_yamagh",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3272854572,
-	positionX = -5096.19,
-	positionY = -2445.25,
-	positionZ = 21,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.8477,
-	directionW = -0.530476,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 tyrenaNpc344 = Creature:new {
 	objectName = "tyrenaNpc344",
 	creatureType = NPC,
@@ -7276,28 +6748,6 @@ tyrenaNpc356 = Creature:new {
 	randomMovement = 0,
 	mood = "conversation",
 	cellID = 1935826
-}
-
-tyrenaNpc357 = Creature:new {
-	objectName = "tyrenaNpc357",
-	creatureType = NPC,
-
-	speciesName = "herald_biogenic_03",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 2913899110,
-	positionX = 21.3645,
-	positionY = 9.48413,
-	positionZ = 1.28309,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.9476,
-	directionW = 0.31946,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 1935823
 }
 
 tyrenaNpc358 = Creature:new {
@@ -7615,7 +7065,7 @@ tyrenaNpc372 = Creature:new {
 	speciesName = "bartender",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "mob/creature_names",
+	stfName = "npc_name",
 	objectCRC = 2800812844,
 	positionX = 7.85884,
 	positionY = 0.356158,

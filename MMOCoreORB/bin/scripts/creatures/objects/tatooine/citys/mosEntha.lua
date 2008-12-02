@@ -524,28 +524,6 @@ mosEnthaNpc22 = Creature:new {
 	cellID = 0
 }
 
-mosEnthaNpc23 = Creature:new {
-	objectName = "mosEnthaNpc23",
-	creatureType = NPC,
-
-	speciesName = "tatooine_entha_podracers_racedroid2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4167333574,
-	positionX = 1353.48,
-	positionY = 3051.41,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.136557,
-	directionW = 0.990632,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEnthaNpc24 = Creature:new {
 	objectName = "mosEnthaNpc24",
 	creatureType = NPC,
@@ -1619,28 +1597,6 @@ mosEnthaNpc74 = Creature:new {
 	directionZ = 0,
 	directionY = 0.863349,
 	directionW = -0.504608,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEnthaNpc75 = Creature:new {
-	objectName = "mosEnthaNpc75",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_entha_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 300124372,
-	positionX = 1553.34,
-	positionY = 3014.89,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.00349213,
-	directionW = 0.999994,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -3115,28 +3071,6 @@ mosEnthaNpc142 = Creature:new {
 	directionZ = 0,
 	directionY = -0.527736,
 	directionW = 0.849409,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEnthaNpc143 = Creature:new {
-	objectName = "mosEnthaNpc143",
-	creatureType = NPC,
-
-	speciesName = "tatooine_entha_podracers_racedroid3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1105187711,
-	positionX = 1702.92,
-	positionY = 3076.48,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.98238,
-	directionW = -0.186893,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -5078,28 +5012,6 @@ mosEnthaNpc232 = Creature:new {
 	cellID = 0
 }
 
-mosEnthaNpc233 = Creature:new {
-	objectName = "mosEnthaNpc233",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2474359135,
-	positionX = 1509.91,
-	positionY = 3256.29,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.97475,
-	directionW = 0.223297,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEnthaNpc234 = Creature:new {
 	objectName = "mosEnthaNpc234",
 	creatureType = NPC,
@@ -5205,28 +5117,6 @@ mosEnthaNpc238 = Creature:new {
 	directionZ = 0,
 	directionY = 0.44268,
 	directionW = 0.89668,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEnthaNpc239 = Creature:new {
-	objectName = "mosEnthaNpc239",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3885288051,
-	positionX = 1518.21,
-	positionY = 3348.82,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.184997,
-	directionW = 0.982739,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -7586,28 +7476,6 @@ mosEnthaNpc348 = Creature:new {
 	cellID = 0
 }
 
-mosEnthaNpc349 = Creature:new {
-	objectName = "mosEnthaNpc349",
-	creatureType = NPC,
-
-	speciesName = "tatooine_entha_podracers_racedroid1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3980932165,
-	positionX = 1124.11,
-	positionY = 2982.6,
-	positionZ = 6.96828,
-
-	directionX = 0.0023165,
-	directionZ = 0.000435422,
-	directionY = 0.0327109,
-	directionW = 0.999462,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEnthaNpc350 = Creature:new {
 	objectName = "mosEnthaNpc350",
 	creatureType = NPC,
@@ -8334,50 +8202,6 @@ mosEnthaNpc382 = Creature:new {
 	cellID = 0
 }
 
-mosEnthaNpc383 = Creature:new {
-	objectName = "mosEnthaNpc383",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_entha_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 300124372,
-	positionX = 1540.6,
-	positionY = 3081.89,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.284235,
-	directionW = 0.958755,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEnthaNpc384 = Creature:new {
-	objectName = "mosEnthaNpc384",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_entha_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 969141434,
-	positionX = 1549.83,
-	positionY = 3088.55,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.284339,
-	directionW = 0.958724,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEnthaNpc385 = Creature:new {
 	objectName = "mosEnthaNpc385",
 	creatureType = NPC,
@@ -8442,28 +8266,6 @@ mosEnthaNpc387 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 1156906
-}
-
-mosEnthaNpc388 = Creature:new {
-	objectName = "mosEnthaNpc388",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_entha_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3885288051,
-	positionX = 1541.63,
-	positionY = 3020.82,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.00436669,
-	directionW = 0.99999,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
 }
 
 mosEnthaNpc389 = Creature:new {
@@ -9297,28 +9099,6 @@ mosEnthaNpc426 = Creature:new {
 	directionZ = 0,
 	directionY = 0.839609,
 	directionW = 0.543192,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEnthaNpc427 = Creature:new {
-	objectName = "mosEnthaNpc427",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3885288051,
-	positionX = 1455.33,
-	positionY = 3253.36,
-	positionZ = 7,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.735377,
-	directionW = 0.677658,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0

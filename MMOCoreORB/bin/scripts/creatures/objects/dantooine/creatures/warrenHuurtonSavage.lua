@@ -139,7 +139,8 @@ warrenHuurtonSavage = Creature:new {
 	meatType = "",
 	meatMax = 35,
 
-	skills = { " Intimidation attack", " Stun attack", "" }
+	--skills = { " Intimidation attack", " Stun attack", "" }
+	skills = { "huurtonAttack6", "huurtonAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

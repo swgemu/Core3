@@ -139,7 +139,8 @@ warrenCyborgBol = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 100,
 
-	skills = { " Knockdown attack", " Intimidation attack", "" }
+	--skills = { " Knockdown attack", " Intimidation attack", "" }
+	skills = { "bolAttack1", "bolAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

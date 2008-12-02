@@ -139,7 +139,8 @@ piketLonghorn = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 35,
 
-	skills = { " Blind attack", " Intimidation attack", "" }
+	--skills = { " Blind attack", " Intimidation attack", "" }
+	skills = { "picketAttack3", "picketAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

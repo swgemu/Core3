@@ -138,7 +138,7 @@ graulMarauder = Creature:new {
 	meatType = "meat_carnivore_dantooine",
 	meatMax = 1100,
 
-	skills = { "graulMarauderAttack1", "graulMarauderAttack2" },
+	skills = { "graulAttack4", "graulAttack3" },
 	-- skills = { " Area attack (bleeds)", " Stun attack", "" }
 	respawnTimer = 3600,
 
