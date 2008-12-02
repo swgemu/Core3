@@ -11,6 +11,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for loottable
 -- ----------------------------
+DROP TABLE IF EXISTS `loottable`;
 CREATE TABLE `loottable` (
   `lootgroup` tinyint(4) default NULL,
   `name` text NOT NULL,
