@@ -364,7 +364,7 @@ void ChatManagerImplementation::handleMessage(Player* player, Message* pack) {
 		tokenizer.finalToken(msg);
 
 		if (msg[0] == '@') {
-			handleGameCommand(player, msg.toCharArray());
+			handleGameCommand(player, msg.toString());
 		} else {
 			if (isMute()) {
 				if (player->getAdminLevel() & PlayerImplementation::ADMIN) {
@@ -715,7 +715,7 @@ void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* p
 		try {
 			sender->wlock();
 
-			handleGameCommand(sender, adminmsg.toCharArray());
+			handleGameCommand(sender, adminmsg);
 
 			sender->unlock();
 			return;
@@ -768,7 +768,7 @@ void ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack) {
 	String adminmsg = message.toCharArray();
 
 	if (adminmsg[0] == '@') {
-		handleGameCommand(sender, adminmsg.toCharArray());
+		handleGameCommand(sender, adminmsg);
 		return;
 	}
 
@@ -804,7 +804,7 @@ void ChatManagerImplementation::handleGuildChat(Player* sender, Message* pack) {
 	String adminmsg = message.toCharArray();
 
 	if (adminmsg[0] == '@') {
-		handleGameCommand(sender, adminmsg.toCharArray());
+		handleGameCommand(sender, adminmsg);
 		return;
 	}
 
