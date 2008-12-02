@@ -340,7 +340,7 @@ void GameCommandHandler::help(StringTokenizer tokenizer, Player* player) {
 			str << list.get(i) << ", ";
 	}
 
-	str.removeRange(str.length() - 2, str.length());
+	str.removeRange(str.length() - 3, str.length() - 1);
 
 	player->sendSystemMessage(str.toString());
 }
