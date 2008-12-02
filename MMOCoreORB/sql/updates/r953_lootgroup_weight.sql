@@ -11,6 +11,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for lootgroup_weight
 -- ----------------------------
+DROP TABLE IF EXISTS `lootgroup_weight`;
 CREATE TABLE `lootgroup_weight` (
   `lootgroup` int(4) unsigned NOT NULL,
   `weight` tinyint(3) default NULL,
