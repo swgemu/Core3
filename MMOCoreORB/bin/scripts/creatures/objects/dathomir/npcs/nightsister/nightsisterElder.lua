@@ -59,18 +59,18 @@ nightsisterElder = Creature:new {
 
 	healthMax = 392000,
 	healthMin = 321000,
-	strength = 500,
-	constitution = 500,
+	strength = 30000,
+	constitution = 30000,
 
 	actionMax = 392000,
 	actionMin = 321000,
-	quickness = 500,
-	stamina = 500,
+	quickness = 30000,
+	stamina = 30000,
 
 	mindMax = 392000,
 	mindMin = 321000,
-	focus = 500,
-	willpower = 500,
+	focus = 30000,
+	willpower = 30000,
 
 	height = 1, -- Size of creature
 	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -84,7 +84,7 @@ nightsisterElder = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 400,
 
 	healer = 1,
 
@@ -105,8 +105,8 @@ nightsisterElder = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 450,
+	weaponMinDamage = 750,
+	weaponMaxDamage = 1550,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -116,15 +116,15 @@ nightsisterElder = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 250,
-	alternateWeaponMaxDamage = 450,
+	alternateWeaponMinDamage = 650,
+	alternateWeaponMaxDamage = 1950,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,1,4,11,15,19,30,33,37", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,7 +140,7 @@ nightsisterElder = Creature:new {
 	meatMax = 0,
 
 	skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
-	respawnTimer = 1800,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

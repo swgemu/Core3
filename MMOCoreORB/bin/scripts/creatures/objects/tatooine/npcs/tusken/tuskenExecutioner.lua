@@ -50,7 +50,7 @@ tuskenExecutioner = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3780705985, 
 	socialGroup = "Tusken Raider",
-	
+	 
 
 	level = 263,
 	
@@ -83,7 +83,7 @@ tuskenExecutioner = Creature:new {
 	acid = 45,
 	lightsaber = 0,
 
-	accuracy = 450,
+	accuracy = 400,
 
 	healer = 0,
 
@@ -94,9 +94,9 @@ tuskenExecutioner = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
+	  
 	
-	meleeDefense = 1,  
-	
+	meleeDefense = 1,    
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -106,8 +106,8 @@ tuskenExecutioner = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 1200,
-	weaponMaxDamage = 3350,
+	weaponMinDamage = 1000,
+	weaponMaxDamage = 2250,
 	weaponAttackSpeed = 1.6,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -125,7 +125,7 @@ tuskenExecutioner = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,24,25,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,11,15,24,25,33,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

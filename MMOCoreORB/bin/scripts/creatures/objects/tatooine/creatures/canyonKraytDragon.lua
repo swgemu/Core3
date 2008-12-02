@@ -59,18 +59,18 @@ canyonKraytDragon = Creature:new {
 
 	healthMax = 392000,
 	healthMin = 321000,
-	strength = 50000,
-	constitution =50000,
+	strength = 20000,
+	constitution =20000,
 
 	actionMax = 392000,
 	actionMin = 321000,
-	quickness = 50000,
-	stamina = 50000,
+	quickness = 20000,
+	stamina = 20000,
 
 	mindMax = 392000,
 	mindMin = 321000,
-	focus = 50000,
-	willpower = 50000,
+	focus = 20000,
+	willpower = 20000,
 
 	height = 2, -- Size of creature
 	
@@ -85,7 +85,7 @@ canyonKraytDragon = Creature:new {
 	acid = 60,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 380,
 
 	healer = 0,
 
@@ -125,7 +125,7 @@ canyonKraytDragon = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,39,40,51,52,96", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,19,33,39,40,51,52,96", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -141,7 +141,7 @@ canyonKraytDragon = Creature:new {
 	meatMax = 1250,
 
 	skills = { "kraytAttack1", "kraytAttack4" },
-	respawnTimer = 1200,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

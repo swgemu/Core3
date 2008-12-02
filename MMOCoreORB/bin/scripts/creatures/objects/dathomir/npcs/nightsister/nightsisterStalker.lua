@@ -52,25 +52,25 @@ nightsisterStalker = Creature:new {
 	socialGroup = "Nightsister",
 	
 
-	level = 96,
+	level = 86,
 	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 25000,
 	healthMin = 20000,
-	strength = 500,
-	constitution = 500,
+	strength = 5000,
+	constitution = 5000,
 
 	actionMax = 25000,
 	actionMin = 20000,
-	quickness = 500,
-	stamina = 500,
+	quickness = 5000,
+	stamina = 5000,
 
 	mindMax = 25000,
 	mindMin = 20000,
-	focus = 500,
-	willpower = 500,
+	focus = 5000,
+	willpower = 5000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -84,7 +84,7 @@ nightsisterStalker = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -105,11 +105,11 @@ nightsisterStalker = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 175,
-	weaponMaxDamage = 200,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 700,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
@@ -120,11 +120,11 @@ nightsisterStalker = Creature:new {
 	alternateWeaponMaxDamage = 250,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,19,30,33,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,7 +140,7 @@ nightsisterStalker = Creature:new {
 	meatMax = 0,
 
 	skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
-	 respawnTimer = 300,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

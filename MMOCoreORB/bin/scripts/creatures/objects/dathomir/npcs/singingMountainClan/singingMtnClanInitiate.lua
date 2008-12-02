@@ -106,25 +106,25 @@ singingMtnClanInitiate = Creature:new {
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 175,
-	weaponMaxDamage = 200,
+	weaponMaxDamage = 300,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 175,
-	alternateWeaponMaxDamage = 250,
+	alternateWeaponMinDamage = 100,
+	alternateWeaponMaxDamage = 200,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,19,39,40", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,7 +140,7 @@ singingMtnClanInitiate = Creature:new {
 	meatMax = 0,
 
 	skills = { "singingMountainClanAttack40", "singingMountainClanAttack41", "singingMountainClanAttack42", "singingMountainClanAttack43", "singingMountainClanAttack44", "singingMountainClanAttack45", "singingMountainClanAttack46", "singingMountainClanAttack47", "singingMountainClanAttack48", "singingMountainClanAttack49", "singingMountainClanAttack50", "singingMountainClanAttack51" },
-	 respawnTimer = 300,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

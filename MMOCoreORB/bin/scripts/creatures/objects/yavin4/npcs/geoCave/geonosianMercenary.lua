@@ -40,51 +40,51 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-geonosianHumanSecurityForce = Creature:new {
-	objectName = "geonosianHumanSecurityForce",  -- Lua Object Name
+geonosianMercenary = Creature:new {
+	objectName = "geonosianMercenary",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "Geonosian",
 	gender = "",
 
 	speciesName = "geonosian_human_security_force",
-	stfName = "mob/creature_names", 
+	stfName = "mob/creature_names",
 	objectCRC = 4182262563, 
 	socialGroup = "Geonosian",
 	
 
-	level = 66,
+	level = 90,
 	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 14000,
-	healthMin = 12000,
-	strength = 0,
-	constitution = 0,
+	healthMax = 16000,
+	healthMin = 14000,
+	strength = 5000,
+	constitution = 5000,
 
 	actionMax = 14000,
 	actionMin = 12000,
-	quickness = 0,
-	stamina = 0,
+	quickness = 5000,
+	stamina = 5000,
 
 	mindMax = 14000,
 	mindMin = 12000,
-	focus = 0,
-	willpower = 0,
+	focus = 5000,
+	willpower = 5000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 40,
 	energy = 40,
-	electricity = 0,
+	electricity = 20,
 	stun = -1,
-	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
+	blast = 20,
+	heat = 20,
+	cold = 20,
+	acid = 20,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -100,16 +100,16 @@ geonosianHumanSecurityForce = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/knife/shared_knife_survival.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Survival Knife", -- Name ex. 'a Vibrolance'
+	weaponTemp = "knife_survival", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 300,
+	weaponMaxDamage = 650,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -124,7 +124,7 @@ geonosianHumanSecurityForce = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,80,81", --Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -139,10 +139,10 @@ geonosianHumanSecurityForce = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "geonosianMercenaryAttack1", "geonosianMercenaryAttack2", "geonosianMercenaryAttack3",  "geonosianMercenaryAttack4" },
+	respawnTimer = 240,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(geonosianHumanSecurityForce, 4182262563) --  Add to Global Table
+Creatures:addCreature(geonosianMercenary, 4182262563) --  Add to Global Table

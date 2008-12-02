@@ -51,7 +51,7 @@ tuskenObserver = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3780705985, 
 	socialGroup = "Tusken Raider",
-	
+	 
 
 	level = 227,
 	
@@ -84,20 +84,20 @@ tuskenObserver = Creature:new {
 	acid = 45,
 	lightsaber = 0,
 
-	accuracy = 450,
+	accuracy = 380,
 
 	healer = 0,
 
 	pack = 1,
 	herd = 0,
-	stalker = 0,
+	stalker = 1,
 	killer = 1,
 	aggressive = 1,
 	invincible = 0, 
 
+	  
 	
-	meleeDefense = 1,  
-	
+	meleeDefense = 1,    
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -107,8 +107,8 @@ tuskenObserver = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 1050,
-	weaponMaxDamage = 2500,
+	weaponMinDamage = 750,
+	weaponMaxDamage = 1550,
 	weaponAttackSpeed = 1.6,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -126,7 +126,7 @@ tuskenObserver = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,24,25,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,11,15,24,25,33,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

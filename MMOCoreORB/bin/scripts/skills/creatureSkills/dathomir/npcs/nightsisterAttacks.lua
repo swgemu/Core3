@@ -43,13 +43,13 @@
 
 nightsisterAttack20 = { 
 	attackname = "nightsisterAttack20",
-	animation = "lower_posture_2hmelee_2",
+	animation = "combo_3a_medium",
 
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 1.50,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -85,14 +85,13 @@ AddDotPoolAttackTargetSkill(nightsisterAttack20)
 
 nightsisterAttack21 = { 
 	attackname = "nightsisterAttack21",
-	--animation = "combo_5a_medium",
-	animation = "force_choke_1_arc_particle_level_1_light",
+	animation = "lower_posture_polearm_2",
 
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.85,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -101,7 +100,7 @@ nightsisterAttack21 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 1,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -117,14 +116,13 @@ AddRandomPoolAttackTargetSkill(nightsisterAttack21)
 
 nightsisterAttack22 = { 
 	attackname = "nightsisterAttack22",
-	--animation = "combo_3a_medium",
 	animation = "force_lightning_1_particle_level_5_medium",
 
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -155,8 +153,8 @@ nightsisterAttack23 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.0,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -181,21 +179,20 @@ AddRandomPoolAttackTargetSkill(nightsisterAttack23)
 
 nightsisterAttack24 = { 
 	attackname = "nightsisterAttack24",
-	--animation = "combo_2c_medium",
-	animation = "force_drain_1",
+	animation = "combo_2c_medium",
 
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.25,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 50,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -218,22 +215,10 @@ nightsisterAttack25 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
-
-	healthAttackChance = 0,
-	strengthAttackChance = 0,
-	constitutionAttackChance = 0,
-
-	actionAttackChance = 50,
-	quicknessAttackChance = 0,
-	staminaAttackChance = 0,
-
-	mindAttackChance = 0,
-	focusAttackChance = 0,
-	willpowerAttackChance = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -249,7 +234,7 @@ nightsisterAttack25 = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDirectPoolAttackTargetSkill(nightsisterAttack25)
+AddRandomPoolAttackTargetSkill(nightsisterAttack25)
 
 -----------------------------------------------------------------------
 
@@ -260,15 +245,15 @@ nightsisterAttack26 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.5,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 25,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -291,20 +276,20 @@ nightsisterAttack27 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
-	speedRatio = 1.45,
-	areaRange = 0,
+	damageRatio = 5,
+	speedRatio = 1.5,
+	areaRange = 7,
 	accuracyBonus = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
-	actionAttackChance = 50,
+	actionAttackChance = 0,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 0,
+	mindAttackChance = 75,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -328,22 +313,22 @@ AddDirectPoolAttackTargetSkill(nightsisterAttack27)
 
 nightsisterAttack28 = { 
 	attackname = "nightsisterAttack28",
-	animation = "lower_posture_2hmelee_6",
+	animation = "combo_3a_medium",
 
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 3.0,
-	speedRatio = 2.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 18,
 	blindChance = 0,
-	stunChance = 1,
+	stunChance = 10,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -364,13 +349,13 @@ nightsisterAttack29 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.0,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
-	postureDownChance = 0,
+	knockdownChance = 0,
+	postureDownChance = 25,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -395,8 +380,8 @@ nightsisterAttack30 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.2,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -426,8 +411,8 @@ nightsisterAttack31 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
-	speedRatio = 1.05,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
@@ -435,7 +420,7 @@ nightsisterAttack31 = {
 	actionAttackChance = 50,
 	mindAttackChance = 0,
 		
-	dotChance = 5,
+	dotChance = 75,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -467,13 +452,13 @@ nightsisterAttack40 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.5,
-	speedRatio = 1.25,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 0,
+	postureDownChance = 50,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -498,8 +483,8 @@ nightsisterAttack41 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.5,
-	speedRatio = 1.25,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -529,8 +514,8 @@ nightsisterAttack42 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.0,
-	speedRatio = 1.8,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -560,8 +545,8 @@ nightsisterAttack43 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.2,
-	speedRatio = 1.25,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -592,23 +577,19 @@ nightsisterAttack44 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.15,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 50,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
-
-	dotChance = 5,
+	dotChance = 25,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
 	bleedingStrength = 0,
-	bleedingType = HEALTH,
+	bleedingType = ACTION,
 
 	poisonStrength = 0,
 	poisonType = 0,
@@ -629,20 +610,20 @@ AddDotPoolAttackTargetSkill(nightsisterAttack44)
 
 nightsisterAttack45 = { 
 	attackname = "nightsisterAttack45",
-	animation = "lower_posture_2hmelee_6",
+	animation = "lower_posture_1hmelee_1",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.15,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 0,
+	postureDownChance = 75,
 	postureUpChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 25,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -666,16 +647,16 @@ nightsisterAttack46 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.15,
-	speedRatio = 1.45,
-	areaRange = 0,
+	damageRatio = 5,
+	speedRatio = 1.5,
+	areaRange = 7,
 	accuracyBonus = 0,
 
 	healthAttackChance = 50,
 	actionAttackChance = 0,
 	mindAttackChance = 0,
 
-	dotChance = 5,
+	dotChance = 75,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -708,28 +689,16 @@ nightsisterAttack47 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.15,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
-
-	healthAttackChance = 50,
-	strengthAttackChance = 0,
-	constitutionAttackChance = 0,
-
-	actionAttackChance = 0,
-	quicknessAttackChance = 0,
-	staminaAttackChance = 0,
-
-	mindAttackChance = 0,
-	focusAttackChance = 0,
-	willpowerAttackChance = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 10,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 25,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -739,7 +708,7 @@ nightsisterAttack47 = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDirectPoolAttackTargetSkill(nightsisterAttack47)
+AddRandomPoolAttackTargetSkill(nightsisterAttack47)
 
 -----------------------------------------------------------------------
 
@@ -750,12 +719,12 @@ nightsisterAttack48 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.15,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 50,
+	healthAttackChance = 0,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
@@ -763,7 +732,7 @@ nightsisterAttack48 = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 0,
+	mindAttackChance = 75,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -787,13 +756,13 @@ AddDirectPoolAttackTargetSkill(nightsisterAttack48)
 
 nightsisterAttack49 = { 
 	attackname = "nightsisterAttack49",
-	animation = "combo_4b_medium",
+	animation = "force_lightning_1_particle_level_5_medium",
 
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.15,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -801,7 +770,7 @@ nightsisterAttack49 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 1,
+	blindChance = 50,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -823,8 +792,8 @@ nightsisterAttack50 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.55,
-	speedRatio = 1.45,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -832,7 +801,7 @@ nightsisterAttack50 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 1,
+	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -854,8 +823,8 @@ nightsisterAttack51 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.5,
-	speedRatio = 1.25,
+	damageRatio = 5,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -863,7 +832,7 @@ nightsisterAttack51 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 1,
+	blindChance = 25,
 	stunChance = 0,
 	intimidateChance = 0,
 	

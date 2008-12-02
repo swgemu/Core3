@@ -50,7 +50,7 @@ tuskenSniper = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3780705985, 
 	socialGroup = "Tusken Raider",
-	
+	 
 
 	level = 75,
 	
@@ -83,7 +83,7 @@ tuskenSniper = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 370,
+	accuracy = 400,
 
 	healer = 0,
 
@@ -94,7 +94,10 @@ tuskenSniper = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
+	  
+	
 	meleeDefense = 1,  
+	  
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -104,10 +107,10 @@ tuskenSniper = Creature:new {
 	weaponTemp = "rifle_tusken", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 350,
-	weaponMaxDamage = 500,
-	weaponAttackSpeed = 1.6,
-	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponMinDamage = 200,
+	weaponMaxDamage = 450,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
@@ -123,7 +126,7 @@ tuskenSniper = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,3,11,15,23,24,33", -- Group it belongs to for loot
+	lootGroup = "0,1,11,15,19,23,24,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

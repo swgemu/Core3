@@ -50,9 +50,9 @@ tuskenExecutionerRandom = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3780705985, 
 	socialGroup = "Tusken Raider",
-	
+	 
 
-	level = 283,
+	level = 289,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -94,9 +94,8 @@ tuskenExecutionerRandom = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
-	
-	meleeDefense = 1,  
-	
+	  
+	meleeDefense = 1,    
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -106,10 +105,10 @@ tuskenExecutionerRandom = Creature:new {
 	weaponTemp = "rifle_tusken", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 1400,
-	weaponMaxDamage = 3550,
-	weaponAttackSpeed = 1.63,
-	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponMinDamage = 1250,
+	weaponMaxDamage = 2750,
+	weaponAttackSpeed = 1.6,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
@@ -125,7 +124,7 @@ tuskenExecutionerRandom = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,25,33,99", -- Group it belongs to for loot
+	lootGroup = "1,11,15,19,24,25,33,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,7 +139,7 @@ tuskenExecutionerRandom = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "tuskenRangedAttack4", "tuskenRangedAttack5", "tuskenRangedAttack6", "tuskenRangedAttack7",  "tuskenRangedAttack8", "tuskenRangedAttack9", "tuskenRangedAttack10", "tuskenRangedAttack11", "tuskenRangedAttack12",  "tuskenRangedAttack13" },
+	skills = { "tuskenRangedAttack5", "tuskenRangedAttack6", "tuskenRangedAttack7",  "tuskenRangedAttack8", "tuskenRangedAttack9", "tuskenRangedAttack10", "tuskenRangedAttack11", "tuskenRangedAttack12",  "tuskenRangedAttack13" },
 	respawnTimer = 36000,
 
 	behaviorScript = "", -- Link to the behavior script for this object
