@@ -40,59 +40,58 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-geonosianWorker = Creature:new {
-	objectName = "geonosianWorker",  -- Lua Object Name
+geonosianCrazed = Creature:new {
+	objectName = "geonosianCrazed",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Geonosian",
+	faction = "self",
 	gender = "",
 
-	speciesName = "geonosian_worker",
-	stfName = "mob/creature_names", 
-	objectCRC = 2569118493, 
-	socialGroup = "Geonosian",
+	speciesName = "geonosian_crazed_guard",
+	stfName = "mob/creature_names",
+	objectCRC = 3023268625, 
+	socialGroup = "geo",
+	
+	level = 75,
 	
 
-	level = 44,
-	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	healthMax = 14000,
+	healthMin = 12000,
+	strength = 3000,
+	constitution = 3000,
 
-	healthMax = 11900,
-	healthMin = 9700,
-	strength = 0,
-	constitution = 0,
+	actionMax = 14000,
+	actionMin = 12000,
+	quickness = 3000,
+	stamina = 3000,
 
-	actionMax = 11900,
-	actionMin = 9700,
-	quickness = 0,
-	stamina = 0,
-
-	mindMax = 11900,
-	mindMin = 9700,
-	focus = 0,
-	willpower = 0,
+	mindMax = 14000,
+	mindMin = 12000,
+	focus = 3000,
+	willpower = 3000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 25,
-	energy = 25,
+	energy = 35,
 	electricity = 25,
 	stun = 0,
 	blast = -1,
 	heat = 65,
-	cold = 0,
+	cold = 25,
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 320,
 
 	healer = 0,
 
 	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 0,
-	aggressive = 0,
+	killer = 1,
+	aggressive = 1,
 	invincible = 0, 
 
 	meleeDefense = 1,  
@@ -100,16 +99,16 @@ geonosianWorker = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Crazed Geonosian", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 200,
+	weaponMaxDamage = 500,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -124,7 +123,7 @@ geonosianWorker = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,80", --Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -139,10 +138,10 @@ geonosianWorker = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "geonosianCrazedAttack1", "geonosianCrazedAttack2", "geonosianCrazedAttack3", "geonosianCrazedAttack4"  },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(geonosianWorker, 2569118493) --  Add to Global Table
+Creatures:addCreature(geonosianCrazed, 3023268625) --  Add to Global Table

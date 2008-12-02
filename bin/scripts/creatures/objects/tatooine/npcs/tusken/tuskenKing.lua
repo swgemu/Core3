@@ -50,7 +50,7 @@ tuskenKing = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3780705985, 
 	socialGroup = "Tusken Raider",
-	
+	 
 
 	level = 100,
 	
@@ -94,7 +94,10 @@ tuskenKing = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
+	  
+
 	meleeDefense = 1,  
+	  
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -104,9 +107,9 @@ tuskenKing = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 350,
-	weaponMaxDamage = 675,
-	weaponAttackSpeed = 1.55,
+	weaponMinDamage = 275,
+	weaponMaxDamage = 500,
+	weaponAttackSpeed = 1.6,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -123,7 +126,7 @@ tuskenKing = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "3,11,15,23,24,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,3,11,15,23,24,33,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

@@ -40,51 +40,50 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-geonosianDroidekaCrazed = Creature:new {
-	objectName = "geonosianDroidekaCrazed",  -- Lua Object Name
+geonosianAlertDroideka = Creature:new {
+	objectName = "geonosianAlertDroideka",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "self (Geon. Monster)",
+	faction = "self",
 	gender = "",
 
 	speciesName = "geonosian_droideka_crazed",
 	stfName = "mob/creature_names", 
-	objectCRC = 2412922465, 
-	socialGroup = "self (Geon. Monster)",
+	objectCRC = 2397633499, 
+	socialGroup = "self",
 	
-
 	level = 86,
 	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 17000,
-	healthMin = 14000,
-	strength = 0,
-	constitution = 0,
+	healthMax = 15000,
+	healthMin = 13000,
+	strength = 5000,
+	constitution = 5000,
 
-	actionMax = 17000,
-	actionMin = 14000,
-	quickness = 0,
-	stamina = 0,
+	actionMax = 15000,
+	actionMin = 13000,
+	quickness = 5000,
+	stamina = 5000,
 
-	mindMax = 17000,
-	mindMin = 14000,
-	focus = 0,
-	willpower = 0,
+	mindMax = 15000,
+	mindMin = 13000,
+	focus = 5000,
+	willpower = 5000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 40,
 	energy = 55,
 	electricity = -1,
-	stun = 0,
+	stun = 40,
 	blast = 10,
 	heat = 25,
 	cold = 25,
-	acid = 0,
+	acid = 40,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -100,16 +99,17 @@ geonosianDroidekaCrazed = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Alert Droideka", -- Name ex. 'a Vibrolance'
+	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 300,
+	weaponMaxDamage = 800,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -124,7 +124,7 @@ geonosianDroidekaCrazed = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "4", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -139,10 +139,10 @@ geonosianDroidekaCrazed = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "geonosianAlertDroidekaAttack1", "geonosianAlertDroidekaAttack2", "geonosianAlertDroidekaAttack3", "geonosianAlertDroidekaAttack4" },
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(geonosianDroidekaCrazed, 2412922465) --  Add to Global Table
+Creatures:addCreature(geonosianAlertDroideka, 2397633499) --  Add to Global Table

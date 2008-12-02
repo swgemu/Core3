@@ -49,30 +49,29 @@ acklay = Creature:new {
 	speciesName = "geonosian_acklay_bunker_boss",
 	stfName = "mob/creature_names",
 	objectCRC = 258679778, 
-	socialGroup = "Acklay",
+	socialGroup = "self",
 	
-
 	level = 157,
 	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 120000,
-	healthMin = 100000,
+	healthMin = 110000,
 	strength = 20000,
 	constitution = 20000,
 
 	actionMax = 120000,
-	actionMin = 100000,
+	actionMin = 110000,
 	quickness = 20000,
 	stamina = 20000,
 
 	mindMax = 120000,
-	mindMin = 100000,
+	mindMin = 110000,
 	focus = 20000,
 	willpower = 20000,
 
-	height = 1.5, -- Size of creature
+	height = 1.2, -- Size of creature
 	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 30,
 	energy = 45,
@@ -84,7 +83,7 @@ acklay = Creature:new {
 	acid = 30,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 400,
 
 	healer = 0,
 
@@ -100,16 +99,16 @@ acklay = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
-	weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 380,
-	weaponMaxDamage = 650,
-	weaponAttackSpeed = 1.5,
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Acklay Weapon", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 800,
+	weaponMaxDamage = 1750,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -124,7 +123,7 @@ acklay = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,34,39,40,46,47,49,50", -- Group it belongs to for loot
+	lootGroup = "0,1,80,81", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,8 +139,8 @@ acklay = Creature:new {
 	meatMax = 1250,
 
 	
-	skills = { "acklayAttack1", "acklayAttack2", "acklayAttack3", "acklayAttack4", "acklayAttack5", "acklayAttack6", "acklayAttack7", "acklayAttack8", "acklayAttack9" },
-	respawnTimer = 43200,
+	skills = { "geonosianAcklayAttack1", "geonosianAcklayAttack2", "geonosianAcklayAttack3", "geonosianAcklayAttack4", "geonosianAcklayAttack5", "geonosianAcklayAttack6", "geonosianAcklayAttack7" },
+	respawnTimer = 7200,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

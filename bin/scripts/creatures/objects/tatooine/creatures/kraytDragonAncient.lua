@@ -47,6 +47,7 @@ kraytDragonAncient = Creature:new {
 	gender = "",
 
 	speciesName = "krayt_dragon_ancient",
+	
 	stfName = "mob/creature_names",
 	objectCRC = 1238991743, 
 	socialGroup = "Krayt Dragon",
@@ -59,18 +60,18 @@ kraytDragonAncient = Creature:new {
 
 	healthMax = 501000,
 	healthMin = 410000,
-	strength = 100000,
-	constitution = 100000,
+	strength = 30000,
+	constitution = 30000,
 
 	actionMax = 501000,
 	actionMin = 410000,
-	quickness = 100000,
-	stamina = 100000,
+	quickness = 30000,
+	stamina = 30000,
 
 	mindMax = 501000,
 	mindMin = 410000,
-	focus = 100000,
-	willpower = 100000,
+	focus = 30000,
+	willpower = 30000,
 
 	height = 3, -- Size of creature
 	
@@ -85,7 +86,7 @@ kraytDragonAncient = Creature:new {
 	acid = 95,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 400,
 
 	healer = 0,
 
@@ -125,7 +126,7 @@ kraytDragonAncient = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,39,40,51,52,96", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,33,39,40,51,52,96", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,7 +141,7 @@ kraytDragonAncient = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 1700,
 	skills = { "kraytAttack1", "kraytAttack2", "kraytAttack3", "kraytAttack4", "kraytAttack5", "kraytAttack6", "kraytAttack7" },	
-	respawnTimer = 3600, 
+	respawnTimer = 300, 
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

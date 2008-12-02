@@ -42,6 +42,8 @@
 
 -- Random Observer
 spawnCreatures(tuskenObserver, 8, -3951, 6245, 750, 1)
+spawnCreatures(tuskenExecutioner, 8, -3951, 6245, 1750, 1)
+spawnCreatures(tuskenBantha, 8, -3965, 6380, 250, 30)
 
 -- Fort
 spawnCreatureInCell(tuskenWitchDoctor, 8, -4.5, 37.9, -3.3, 1189188)
@@ -94,12 +96,10 @@ spawnCreatureInCell(tuskenEliteGuard, 8, 18.9, 22.2, 8.1, 1189182)
 spawnCreatureInCell(tuskenEliteGuard, 8, -19.2, 14.2, -50.4, 1189179)
 spawnCreatureInCell(tuskenEliteGuard, 8, -1.8, 8.9, -43.5, 1189179)
 spawnCreatureInCell(tuskenEliteGuard, 8, 1.4, 8.3, -33.4, 1189178)
-spawnCreatureInCell(tuskenExecutioner, 8, 10.8, 8.0, -37.4, 1189178)
+--spawnCreatureInCell(tuskenExecutioner, 8, 10.8, 8.0, -37.4, 1189178)
 spawnCreatureInCell(tuskenKing, 8, 1.1, 8.1, -19.0, 1189178)
 spawnCreatureInCell(tuskenWarlord, 8, -16.2, 6.1, -16.4, 1189177)
 spawnCreatureInCell(tuskenWarlord, 8, -24.7, 3.3, 5.7, 1189176)
 spawnCreatureInCell(tuskenWarlord, 8, -13.9, 2.9, 9.2, 1189176)
 spawnCreatureInCell(tuskenWarlord, 8, -8.8, 1.7, -3.4, 1189175)
 spawnCreatureInCell(tuskenKing, 8, 0.8, 1.7, -6.3, 1189175)
-
-spawnCreatures(tuskenBantha, 8, -3965, 6380, 100, 20)
