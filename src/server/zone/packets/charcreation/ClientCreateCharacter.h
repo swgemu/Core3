@@ -107,7 +107,7 @@ public:
 		String hairobj;
 		pack->parseAscii(hairobj);
 		if (!hairobj.isEmpty()) {
-			hairobj.replaceFirst("hair_", "shared_hair_");
+			hairobj = hairobj.replaceFirst("hair_", "shared_hair_");
 
 			player->setHairObject(hairobj);
 		}
