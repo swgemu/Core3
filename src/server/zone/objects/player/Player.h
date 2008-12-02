@@ -283,11 +283,11 @@ public:
 
 	void changeArmor(unsigned long long itemid, bool forced);
 
-	void setWeaponSkillMods(Weapon* weapon);
-
-	void setArmorSkillMods(Armor* armor);
-
 	bool setArmorEncumbrance(Armor* armor, bool forced);
+
+	void unsetArmorEncumbrance(Armor* armor);
+
+	void addSkillModBonus(string& name, int mod, bool updateClient = false);
 
 	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
 
@@ -307,7 +307,7 @@ public:
 
 	void addInventoryResource(ResourceContainer* item);
 
-	void equipPlayerItem(TangibleObject* item, bool doUpdate);
+	void equipPlayerItem(TangibleObject* item, bool updateLevel);
 
 	void saveDatapad(Player* player);
 
@@ -482,6 +482,8 @@ public:
 	void setLinkDead();
 
 	void setLoggingIn();
+
+	void setWeaponAccuracy(Weapon* weapon);
 
 	void setAdminLevel(int level);
 
@@ -799,6 +801,12 @@ public:
 
 	void teachSkill(string& skillname);
 
+	void equipItem(TangibleObject* item);
+
+	void unequipItem(TangibleObject* item);
+
+	Armor* getArmor(int location);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -1048,11 +1056,11 @@ public:
 
 	void changeArmor(unsigned long long itemid, bool forced);
 
-	void setWeaponSkillMods(Weapon* weapon);
-
-	void setArmorSkillMods(Armor* armor);
-
 	bool setArmorEncumbrance(Armor* armor, bool forced);
+
+	void unsetArmorEncumbrance(Armor* armor);
+
+	void addSkillModBonus(string& name, int mod, bool updateClient);
 
 	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
 
@@ -1072,7 +1080,7 @@ public:
 
 	void addInventoryResource(ResourceContainer* item);
 
-	void equipPlayerItem(TangibleObject* item, bool doUpdate);
+	void equipPlayerItem(TangibleObject* item, bool updateLevel);
 
 	void saveDatapad(Player* player);
 
@@ -1247,6 +1255,8 @@ public:
 	void setLinkDead();
 
 	void setLoggingIn();
+
+	void setWeaponAccuracy(Weapon* weapon);
 
 	void setAdminLevel(int level);
 
@@ -1564,12 +1574,19 @@ public:
 
 	void teachSkill(string& skillname);
 
+	void equipItem(TangibleObject* item);
+
+	void unequipItem(TangibleObject* item);
+
+	Armor* getArmor(int location);
+
 protected:
 	string _param0_queueFlourish__string_long_int_;
 	string _param4_queueAction__Player_long_int_int_string_;
 	string _param0_hasConsent__string_;
 	string _param0_giveConsent__string_;
 	string _param0_revokeConsent__string_;
+	string _param0_addSkillModBonus__string_int_bool_;
 	string _param0_trainSkillBox__string_bool_;
 	string _param0_surrenderSkillBox__string_;
 	string _param0_hasSkillBox__string_;

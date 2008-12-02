@@ -259,9 +259,11 @@ interface Player implements CreatureObject {
 	void changeWeapon(unsigned long itemid, boolean doUpdate);
 	void changeArmor(unsigned long itemid, boolean forced);
 
-	void setWeaponSkillMods(Weapon weapon);
-	void setArmorSkillMods(Armor armor);
+	//void setWeaponSkillMods(Weapon weapon);
+	//void setArmorSkillMods(Armor armor);
 	boolean setArmorEncumbrance(Armor armor, boolean forced);
+	void unsetArmorEncumbrance(Armor armor);
+	void addSkillModBonus(string name, int mod, boolean updateClient = false);
 
 	void applyAttachment(unsigned long attachmentID, unsigned long targetID);
 
@@ -278,7 +280,7 @@ interface Player implements CreatureObject {
 
 	void addInventoryItem(TangibleObject item);
 	void addInventoryResource(ResourceContainer item);
-	void equipPlayerItem(TangibleObject item, boolean doUpdate);
+	void equipPlayerItem(TangibleObject item, boolean updateLevel);
 	
 	void saveDatapad(Player player);
 
@@ -421,6 +423,8 @@ interface Player implements CreatureObject {
 	void setLinkDead();
 
 	void setLoggingIn();
+
+	void setWeaponAccuracy(Weapon weapon);
 
 	void setAdminLevel(int level);
 	int getAdminLevel();
@@ -665,4 +669,8 @@ interface Player implements CreatureObject {
 	void clearTeachingSkillOptions();
 	void teachSkill(string skillname);
 	
+	void equipItem(TangibleObject item);
+	void unequipItem(TangibleObject item);
+	
+	Armor getArmor(int location);
 }

@@ -743,6 +743,19 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 
 
 	int reduction = 0;
+
+	/* Design philosophy
+	 *
+	 * Armour will be implemented in three 'layers'
+	 * 	1) Will be for external armour that protects the whole body this will include PSGs and Force Armour
+	 *  2) Normal armour
+	 *  3) Inherent armour this includes TK/Jedi toughness and all creature armour.
+	 *
+	 *  Armour is cumulative not additive.  This means the affect of each layer is calculated then the remaining damge
+	 *  is passed through to the next layer.
+	 *
+	 */
+
 	/* TODO: reintroduce later in testing
 	int APARreduction = 0;
 
@@ -1255,10 +1268,10 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 
 		float globalMultiplier = 1.0f;
 		if (creature->isPlayer()) {
-			globalMultiplier = GLOBAL_MULTIPLIER;
+			globalMultiplier = GLOBAL_MULTIPLIER;  // All player damage has a multiplier
 			if (!target->isPlayer())
 				globalMultiplier *= PVE_MULTIPLIER;
-			else if (target->isPlayer())
+			else
 				globalMultiplier *= PVP_MULTIPLIER;
 		}
 

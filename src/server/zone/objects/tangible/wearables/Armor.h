@@ -123,6 +123,8 @@ public:
 
 	int getSocket3Value();
 
+	int getArmorType();
+
 	void setArmorPiece(int armorSlot);
 
 	void setHealthEncumbrance(int healthEnc);
@@ -284,6 +286,8 @@ public:
 	int getSocket2Value();
 
 	int getSocket3Value();
+
+	int getArmorType();
 
 	void setArmorPiece(int armorSlot);
 

@@ -52,20 +52,6 @@ which carries forward this exception.
 class WearableImplementation : public WearableServant {
 public:
 
-	// Areas covered
-	static const int CHEST = 0x0001;
-	static const int HAND = 0x0002;
-	static const int BRACERL = 0x0004;
-	static const int BICEPL = 0x0008;
-	static const int BRACERR = 0x0010;
-	static const int BICEPR = 0x0020;
-	static const int LEG = 0x0040;
-	static const int FOOT = 0x0080;
-	static const int HEAD = 0x0100;
-	static const int BELT = 0x0200;  // special case as a belt can go over most clothing
-	static const int SHIRT = 0x0400;  // special case as a shirt can go under most clothing.
-	static const int BACKPACK = 0x0800;
-
 	WearableImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp = false)
 			: WearableServant(objid, CLOTHING) {
 		objectCRC = tempCRC;
@@ -107,7 +93,6 @@ public:
 		else
 			setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 	}
-
 };
 
 #endif /*WEARABLEIMPLEMENTATION_H_*/

@@ -67,6 +67,7 @@ which carries forward this exception.
 #include "../../../chat/room/ChatRoom.h"
 
 #include "Player.h"
+#include "EquippedItems.h"
 
 #include "../tangible/surveytool/SurveyTool.h"
 
@@ -264,13 +265,15 @@ class PlayerImplementation : public PlayerServant {
 	Vector<string> consentList;
 
 	uint16 characterMask;
-	
+
 	bool imagedesignXpGiven;
-	
+
 	Vector<SkillBox*> teachingSkillList;
 	Player* teachingTarget;
 	Player* teachingTrainer;
 	SkillBox* teachingOffer;
+
+	EquippedItems* equippedItems;
 
 public:
 	static const int ONLINE = 1;
@@ -511,9 +514,11 @@ public:
 	void removeDatapadItem(uint64 oid);
 	void addInventoryItem(TangibleObject* item);
 	void addInventoryResource(ResourceContainer* item);
-	void equipPlayerItem(TangibleObject* item, bool doUpdate = true);
+	void equipPlayerItem(TangibleObject* item, bool updateLevel = true);
 	SceneObject* getPlayerItem(uint64 oid);
 	bool hasItemPermission(TangibleObject* item);
+
+	void setPlayerLevel(bool updateLevel);
 
 	// trade mehtods
 	void addTradeItem(TangibleObject* item) {
@@ -908,7 +913,7 @@ public:
 
 	// item methods
 	void changeCloth(uint64 itemid);
-	void changeWeapon(uint64 itemid, bool doUpdate = true);
+	void changeWeapon(uint64 itemid, bool updateLevel = true);
 	void changeArmor(uint64 itemid, bool forced);
 
 	void setWeaponSkillMods(Weapon* weapon);
@@ -1246,6 +1251,8 @@ public:
 	inline void setTradeRequestedPlayer(uint64 id) {
 		tradeRequestedPlayer = id;
 	}
+
+	void setWeaponAccuracy(Weapon* weapon);
 
 	// getters
 	//inline string& getHairData() {
@@ -1613,11 +1620,11 @@ public:
 	inline string& getLastNpcConvMessStr() {
 		return lastNpcConvoMessage;
 	}
-	
+
 	inline string& getLastNpcConvOption(int idx) {
 		return lastNpcConvoOptions.get(idx);
 	}
-	
+
 	inline void addLastNpcConvOptions(const string& option) {
 		lastNpcConvoOptions.add(option);
 	}
@@ -1625,7 +1632,7 @@ public:
 	inline int countLastNpcConvOptions() {
 		return lastNpcConvoOptions.size();
 	}
-	
+
 	inline void clearLastNpcConvOptions() {
 		lastNpcConvoOptions.removeAll();
 	}
@@ -1664,50 +1671,54 @@ public:
 	}
 
 	void delFactionPoints(Player * player, uint32 amount);
-	
+
 	inline void setImagedesignXpGiven(bool given) {
 		imagedesignXpGiven = given;
 	}
-	
+
 	inline bool getImagedesignXpGiven() {
 		return imagedesignXpGiven;
 	}
-	
+
 	void teachPlayer(Player* player);
-	
+
 	void setTeachingOffer(string& sBox) {
 		teachingOffer = server->getProfessionManager()->getSkillBox(sBox);
 	}
-	
+
 	void setTeacher(Player* player) {
 		teachingTrainer = player;
 	}
-	
+
 	void setStudent(Player* player) {
 		teachingTarget = player;
 	}
-	
+
 	string& getTeachingOffer() {
 		return teachingOffer->getName();
 	}
-	
+
 	Player* getTeacher() {
 		return teachingTrainer;
 	}
-	
+
 	Player* getStudent() {
 		return teachingTarget;
 	}
-	
+
 	string& getTeachingSkillOption(int idx) {
 		return teachingSkillList.get(idx)->getName();
 	}
-	
+
 	void clearTeachingSkillOptions() {
 		teachingSkillList.removeAll();
 	}
-	
+
 	void teachSkill(string& skillname);
+
+	Armor* getArmor (int location) {
+		return equippedItems->getArmor(location);
+	}
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

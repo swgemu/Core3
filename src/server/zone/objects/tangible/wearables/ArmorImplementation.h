@@ -361,6 +361,10 @@ public:
 		}
 	}
 
+	inline int getArmorType() {
+		return armorType;
+	}
+
 	inline void setSliced(bool hacked) {
 		sliced = hacked;
 		string key = "sliced";

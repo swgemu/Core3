@@ -106,11 +106,13 @@ PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 
 	setHeight(1.0f);
 	imagedesignXpGiven = false;
+
 }
 
 PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = cid << 32) {
 	characterID = cid;
 	imagedesignXpGiven = false;
+
 }
 
 PlayerImplementation::~PlayerImplementation() {
@@ -308,12 +310,12 @@ void PlayerImplementation::initialize() {
 
 	setLogging(false);
 	setGlobalLogging(true);
-	
+
 	teachingTarget = NULL;
 	teachingTrainer = NULL;
 	teachingSkillList.removeAll();
 	teachingOffer = false;
-	
+
 	if (getWeapon() == NULL) {
 		int templevel = calcPlayerLevel("combat_meleespecialize_unarmed");
 		if (calcPlayerLevel("medical") > templevel)
@@ -869,8 +871,8 @@ void PlayerImplementation::removeEvents() {
 
 void PlayerImplementation::createItems() {
 	inventory = new Inventory(_this);
-
 	datapad = new Datapad(_this);
+	equippedItems = new EquippedItems(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadDefaultPlayerItems(_this);
@@ -886,8 +888,8 @@ void PlayerImplementation::createItems() {
 
 void PlayerImplementation::loadItems() {
 	inventory = new Inventory(_this);
-
 	datapad = new Datapad(_this);
+	equippedItems = new EquippedItems(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadPlayerItems(_this);
@@ -989,22 +991,13 @@ void PlayerImplementation::decayInventory() {
 		}
 }
 
+
 void PlayerImplementation::resetArmorEncumbrance() {
-	healthEncumbrance = 0;
-	actionEncumbrance = 0;
-	mindEncumbrance = 0;
-
-	for (int i=0; i < inventory->objectsSize(); i++) {
-		TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
-
-		if (item->isEquipped() && item->isArmor()) {
-			item->setEquipped(false);
-			unsetArmorSkillMods((Armor*)item);
-			changeArmor(item->getObjectID(), true);
-
-		}
-	}
+	healthEncumbrance = equippedItems->getHealthEncumbrance();
+	actionEncumbrance = equippedItems->getActionEncumbrance();
+	mindEncumbrance = equippedItems->getMindEncumbrance();
 }
+
 
 void PlayerImplementation::sendToOwner() {
 	if (faction != 0)
@@ -2765,252 +2758,17 @@ void PlayerImplementation::addInventoryResource(ResourceContainer* item) {
 }
 
 
-void PlayerImplementation::equipPlayerItem(TangibleObject* item, bool doUpdate) {
-	if (item->isEquipped())
+void PlayerImplementation::equipPlayerItem(TangibleObject* item, bool updateLevel) {
+	if(item->isEquipped())
 		item->setEquipped(false);
-
-	if (item->isWeapon()) {
-		changeWeapon(item->getObjectID(), doUpdate);
-	} else if (item->isArmor()) {
-		changeArmor(item->getObjectID(), true);
-	} else if (item->isClothing()) {
-		changeCloth(item->getObjectID());
-	} else if (item->isInstrument()) {
-		changeWeapon(item->getObjectID(), doUpdate);
-	}
+	if (item->isInstrument() || item->isWeapon())
+		changeWeapon(item->getObjectID(), updateLevel);
+	else
+		equippedItems->equipItem(item);
 }
 
-bool PlayerImplementation::hasItemPermission(TangibleObject * item) {
-	uint16 maskRes = ~(item->getPlayerUseMask()) & characterMask;
-
-	if (maskRes == 0)
-		return true;
-	else if (maskRes == COVERT) {
-		this->sendSystemMessage("You can not use this item while on leave.");
-		return false;
-	} else if (maskRes & (COVERT | REBEL | IMPERIAL | NEUTRAL)) {
-		this->sendSystemMessage("You are not the proper faction to use this item.");
-		return false;
-	} else if (maskRes & 0x0FFC) {
-		this->sendSystemMessage("Your species can not use this item.");
-		return false;
-	} else if (maskRes & (MALE | FEMALE)) {
-		this->sendSystemMessage("This item is not appropriate for your gender.");
-		return false;
-	}
-
-	//should never get here
-	this->sendSystemMessage("There was an error, while trying to equip this item.");
-	return false;
-}
 void PlayerImplementation::changeCloth(uint64 itemid) {
-	SceneObject* obj = inventory->getObject(itemid);
-
-	if (obj == NULL || !obj->isTangible())
-		return;
-
-	TangibleObject* cloth = (TangibleObject*) obj;
-
-	if(!hasItemPermission(cloth) && !cloth->isEquipped())
-		return;
-
-	if (cloth->isWeapon()) {
-		if (cloth->isEquipped())
-			changeWeapon(itemid);
-		return;
-	}
-
-	if (cloth->isArmor()) {
-		if (cloth->isEquipped())
-			changeArmor(itemid, false);
-		return;
-	}
-
-	if (cloth->isEquipped()) {
-		unequipItem(cloth);
-	} else {
-		equipItem(cloth);
-	}
-}
-
-void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
-	SceneObject* obj = inventory->getObject(itemid);
-
-	if (obj == NULL || !obj->isTangible())
-		return;
-
-
-
-	if (isPlayingMusic())
-		stopPlayingMusic();
-
-	if (((TangibleObject*)obj)->isWeapon()) {
-
-		Weapon* weapon = (Weapon*) obj;
-
-		if (weapon == NULL)
-			return;
-
-		if (!this->hasItemPermission(weapon) && !weapon->isEquipped())
-			return;
-
-		if (centered)
-			removeCenterOfBeing();
-
-		if (weapon->isEquipped()) {
-			unequipItem(weapon);
-			unsetWeaponSkillMods(weapon);
-			setWeapon(NULL);
-
-			accuracy = getSkillMod("unarmed_accuracy");
-		} else {
-			if (weaponObject != NULL) {
-				unequipItem(weaponObject);
-				unsetWeaponSkillMods(weaponObject);
-			}
-
-			setWeapon(weapon);
-			equipItem(weapon);
-
-			setWeaponSkillMods(weapon);
-
-		}
-		
-		int playerlevel;
-		if (getWeapon() == NULL)
-			playerlevel = calcPlayerLevel("combat_meleespecialize_unarmed");
-		else
-			playerlevel = calcPlayerLevel(getWeapon()->getXpType());
-		
-		if (calcPlayerLevel("medical") > playerlevel)
-			setLevel(calcPlayerLevel("medical"));
-		else
-			setLevel(playerlevel);
-			
-		if (isInAGroup()) {
-			getGroupObject()->calcGroupLevel();
-			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(getGroupObject());
-			grp->updateLevel(getGroupObject()->getGroupLevel());
-			grp->close();
-
-			broadcastMessage(grp);
-		}
-		
-		if (doUpdate) {
-			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-			if (isInAGroup()) {
-				dcreo6->updateLevel(getGroupObject()->getGroupLevel());
-			} else {
-				dcreo6->updateLevel(getLevel());
-			}
-			dcreo6->close();
-			
-			broadcastMessage(dcreo6);
-		}
-		
-	} else if (((TangibleObject*)obj)->isInstrument()){
-
-		Instrument* device = (Instrument*) obj;
-		int instrument = device->getInstrumentType();
-
-		string skillBox;
-		// Needs to be refactored
-		switch(instrument)
-		{
-		case InstrumentImplementation::SLITHERHORN: //SLITHERHORN
-			skillBox = "social_entertainer_novice";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::FIZZ: // FIZZ
-			skillBox = "social_entertainer_music_01";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::FANFAR: // FANFAR
-			skillBox = "social_entertainer_music_03";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::KLOOHORN: // KLOOHORN
-			skillBox = "social_entertainer_music_04";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::MANDOVIOL: // MANDOVIOL
-			skillBox = "social_entertainer_master";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::TRAZ: // TRAZ
-			skillBox = "social_musician_novice";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::BANDFILL: // BANDFILL
-			skillBox = "social_musician_knowledge_02";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::FLUTEDROOPY: // FLUTEDROOPY
-			skillBox = "social_musician_knowledge_03";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::OMNIBOX: // OMNIBOX
-			skillBox = "social_musician_knowledge_04";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::NALARGON: // NALARGON
-			skillBox = "social_musician_master";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-				return;
-			}
-			break;
-		default :
-			sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().c_str() + ".");
-			return;
-		}
-
-		TangibleObject* item = (TangibleObject*) obj;
-
-		if (isPlayingMusic())
-			stopPlayingMusic();
-
-		if (item->isEquipped()) {
-			unequipItem(item);
-		}
-		else
-			equipItem(item);
-	} else {
-		TangibleObject* item = (TangibleObject*) obj;
-
-		sendSystemMessage("triggered here.");
-		if (item->isEquipped())
-			unequipItem(item);
-		else
-			equipItem(item);
-	}
+	changeArmor(itemid, false);
 }
 
 void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
@@ -3019,149 +2777,83 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 	if (obj == NULL || !obj->isTangible())
 		return;
 
-	if (((TangibleObject*)obj)->isArmor()) {
-		Armor* armoritem = (Armor*) obj;
+	if (!((TangibleObject*)obj)->isArmor() && !((TangibleObject*)obj)->isClothing())
+		return;
 
-		if (armoritem == NULL)
-			return;
+	Wearable* cloth = (Wearable*) obj;
 
-		if(!hasItemPermission(armoritem) && !armoritem->isEquipped())
-			return;
+	equippedItems->changeClothing(cloth, forced);
+}
 
-		if (armoritem->isEquipped()) {
-			unequipItem((TangibleObject*) obj);
-			unsetArmorSkillMods(armoritem);
-			unsetArmorEncumbrance(armoritem);
+void PlayerImplementation::changeWeapon(uint64 itemid, bool updateLevel) {
+	SceneObject* obj = inventory->getObject(itemid);
+
+	if (obj == NULL || !obj->isTangible())
+		return;
+
+	if (!((TangibleObject*)obj)->isWeapon() && !((TangibleObject*)obj)->isInstrument())
+		return;
+
+	TangibleObject* item = (TangibleObject*)obj;
+
+	equippedItems->changeWeapon(item);
+
+	Weapon* weapon = NULL;
+
+	if (equippedItems->getInstrument() != NULL)
+		return;
+	else if (equippedItems->getWeapon() != NULL)
+		weapon = equippedItems->getWeapon();
+
+	setWeapon(weapon);
+
+	if (centered)
+		removeCenterOfBeing();
+
+	setPlayerLevel(updateLevel);
+}
+
+void PlayerImplementation::setPlayerLevel(bool updateLevel) {
+	int playerlevel;
+
+	if (getWeapon() == NULL)
+		playerlevel = calcPlayerLevel("combat_meleespecialize_unarmed");
+	else
+		playerlevel = calcPlayerLevel(getWeapon()->getXpType());
+
+	if (calcPlayerLevel("medical") > playerlevel)
+		setLevel(calcPlayerLevel("medical"));
+	else
+		setLevel(playerlevel);
+
+	if (isInAGroup()) {
+		getGroupObject()->calcGroupLevel();
+		GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(getGroupObject());
+		grp->updateLevel(getGroupObject()->getGroupLevel());
+		grp->close();
+
+		broadcastMessage(grp);
+	}
+
+	if (updateLevel) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+		if (isInAGroup()) {
+			dcreo6->updateLevel(getGroupObject()->getGroupLevel());
 		} else {
-			Armor* olditem = getArmor(armoritem->getType());
-
-			if (olditem != NULL) {
-				unsetArmorSkillMods(olditem);
-				unsetArmorEncumbrance(olditem);
-				unequipItem((TangibleObject*) olditem);
-			}
-
-			if (setArmorEncumbrance(armoritem, forced)) {
-				equipItem((TangibleObject*) obj);
-				setArmorSkillMods(armoritem);
-			} else
-				sendSystemMessage("You don't have enough pool points to do that!");
+			dcreo6->updateLevel(getLevel());
 		}
-	} else {
-		TangibleObject* item = (TangibleObject*) obj;
+		dcreo6->close();
 
-		if (item->isEquipped())
-			unequipItem(item);
-		else
-			equipItem(item);
-	}
-
-	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
-	BaseMessage* creo4 = new CreatureObjectMessage4(this);
-
-	sendMessage(creo6);
-	sendMessage(creo4);
-}
-
-void PlayerImplementation::setItemSkillMod(int type, int value) {
-	switch (type) {
-	case 1:
-		addSkillModBonus("melee_defense", value, true);
-		break;
-	case 2:
-		addSkillModBonus("ranged_defense", value, true);
-		break;
-	case 3:
-		addSkillModBonus("stun_defense", value, true);
-		break;
-	case 4:
-		addSkillModBonus("dizzy_defense", value, true);
-		break;
-	case 5:
-		addSkillModBonus("blind_defense", value, true);
-		break;
-	case 6:
-		addSkillModBonus("knockdown_defense", value, true);
-		break;
-	case 7:
-		addSkillModBonus("intimidate_defense", value, true);
-		break;
-	case 8:
-		addSkillModBonus("pistol_speed", value, true);
-		break;
-	case 9:
-		addSkillModBonus("carbine_speed", value, true);
-		break;
-	case 10:
-		addSkillModBonus("rifle_speed", value, true);
-		break;
-	case 11:
-		addSkillModBonus("unarmed_speed", value, true);
-		break;
-	case 12:
-		addSkillModBonus("onehandmelee_speed", value, true);
-		break;
-	case 13:
-		addSkillModBonus("twohandmelee_speed", value, true);
-		break;
-	case 14:
-		addSkillModBonus("polearm_speed", value, true);
-		break;
-	case 15:
-		addSkillModBonus("pistol_accuracy", value, true);
-		break;
-	case 16:
-		addSkillModBonus("carbine_accuracy", value, true);
-		break;
-	case 17:
-		addSkillModBonus("rifle_accuracy", value, true);
-		break;
-	case 18:
-		addSkillModBonus("unarmed_accuracy", value, true);
-		break;
-	case 19:
-		addSkillModBonus("onehandmelee_accuracy", value, true);
-		break;
-	case 20:
-		addSkillModBonus("twohandmelee_accuracy", value, true);
-		break;
-	case 21:
-		addSkillModBonus("polearm_accuracy", value, true);
-		break;
-	case 22:
-		addSkillModBonus("dodge", value, true);
-		break;
-	case 23:
-		addSkillModBonus("block", value, true);
-		break;
-	case 24:
-		addSkillModBonus("counterattack", value, true);
-		break;
-	case 25:
-		addSkillModBonus("resistance_bleeding", value, true);
-		break;
-	case 26:
-		addSkillModBonus("resistance_disease", value, true);
-		break;
-	case 27:
-		addSkillModBonus("resistance_fire", value, true);
-		break;
-	case 28:
-		addSkillModBonus("resistance_poison", value, true);
-		break;
-	case 29:
-		addSkillModBonus("slope_move", value, true);
-		break;
-	case 30:
-		addSkillModBonus("heavyweapon_speed", value, true);
-		break;
-	case 31:
-		addSkillModBonus("heavyweapon_accuracy", value, true);
-		break;
+		broadcastMessage(dcreo6);
 	}
 }
 
-void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
+void PlayerImplementation::setWeaponAccuracy(Weapon* weapon) {
+	if (weapon == NULL) {
+		accuracy = getSkillMod("unarmed_accuracy");
+		return;
+	}
+
 	switch (weapon->getType()) {
 		case WeaponImplementation::UNARMED:
 			accuracy = getSkillMod("unarmed_accuracy");
@@ -3217,48 +2909,6 @@ void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 			accuracy = getSkillMod("polearmlightsaber_accuracy");
 			break;
 	}
-	setItemSkillMod(weapon->getSkillMod0Type(), weapon->getSkillMod0Value());
-	setItemSkillMod(weapon->getSkillMod1Type(), weapon->getSkillMod1Value());
-	setItemSkillMod(weapon->getSkillMod2Type(), weapon->getSkillMod2Value());
-
-	if (checkCertification(weapon->getCert())) {
-		weapon->setCertified(true);
-	} else {
-		sendSystemMessage("You are not certified to use this weapon. Damage will be reduced.");
-		weapon->setCertified(false);
-	}
-}
-
-void PlayerImplementation::setArmorSkillMods(Armor* armoritem) {
-	setItemSkillMod(armoritem->getSkillMod0Type(), armoritem->getSkillMod0Value());
-	setItemSkillMod(armoritem->getSkillMod1Type(), armoritem->getSkillMod1Value());
-	setItemSkillMod(armoritem->getSkillMod2Type(), armoritem->getSkillMod2Value());
-
-	setItemSkillMod(armoritem->getSocket0Type(), armoritem->getSocket0Value());
-	setItemSkillMod(armoritem->getSocket1Type(), armoritem->getSocket1Value());
-	setItemSkillMod(armoritem->getSocket2Type(), armoritem->getSocket2Value());
-	setItemSkillMod(armoritem->getSocket3Type(), armoritem->getSocket3Value());
-
-}
-
-void PlayerImplementation::unsetArmorSkillMods(Armor* armoritem) {
-	setItemSkillMod(armoritem->getSkillMod0Type(), -armoritem->getSkillMod0Value());
-	setItemSkillMod(armoritem->getSkillMod1Type(), -armoritem->getSkillMod1Value());
-	setItemSkillMod(armoritem->getSkillMod2Type(), -armoritem->getSkillMod2Value());
-
-	setItemSkillMod(armoritem->getSocket0Type(), -armoritem->getSocket0Value());
-	setItemSkillMod(armoritem->getSocket1Type(), -armoritem->getSocket1Value());
-	setItemSkillMod(armoritem->getSocket2Type(), -armoritem->getSocket2Value());
-	setItemSkillMod(armoritem->getSocket3Type(), -armoritem->getSocket3Value());
-
-}
-
-void PlayerImplementation::unsetWeaponSkillMods(Weapon* weapon) {
-	setItemSkillMod(weapon->getSkillMod0Type(), -weapon->getSkillMod0Value());
-	setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
-	setItemSkillMod(weapon->getSkillMod2Type(), -weapon->getSkillMod2Value());
-
-	accuracy = getSkillMod("unarmed_accuracy");
 }
 
 bool PlayerImplementation::setArmorEncumbrance(Armor* armor, bool forced) {
@@ -3294,6 +2944,12 @@ bool PlayerImplementation::setArmorEncumbrance(Armor* armor, bool forced) {
 	focus -= mindEncumb;
 	willpower -= mindEncumb;
 
+	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
+	BaseMessage* creo4 = new CreatureObjectMessage4(this);
+
+	sendMessage(creo6);
+	sendMessage(creo4);
+
 	return true;
 
 }
@@ -3320,6 +2976,12 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 	stamina += actionEncumb;
 	focus += mindEncumb;
 	willpower += mindEncumb;
+
+	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
+	BaseMessage* creo4 = new CreatureObjectMessage4(this);
+
+	sendMessage(creo6);
+	sendMessage(creo4);
 
 }
 
@@ -3397,6 +3059,9 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 
 	Armor* armor = (Armor*) tano;
 
+	if (armor->isEquipped())
+		return;
+
 	armor->wlock();
 	attachment->wlock();
 
@@ -3415,17 +3080,7 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 		skillModType = attachment->getSkillModType(attachmentIndex);
 		skillModValue = attachment->getSkillModValue(attachmentIndex);
 
-		if (armor->isEquipped()) {
-			unsetArmorSkillMods(armor);
-			setMods = true;
-		}
-
 		int armorIndex = armor->addSkillMod(skillModType, skillModValue);
-
-		if (setMods) {
-			setArmorSkillMods(armor);
-			setMods = false;
-		}
 
 		switch (armorIndex) {
 		case (-1): // add failed
@@ -4141,13 +3796,13 @@ void PlayerImplementation::setEntertainerEvent() {
 
 void PlayerImplementation::addEntertainerFlourishXp(int xp) {
 	EntertainerEvent* entEvent = (EntertainerEvent*)entertainerEvent;
-	
+
 	entEvent->addFlourishXp(xp);
 }
-	
+
 void PlayerImplementation::addEntertainerHealingXp(int xp) {
 	EntertainerEvent* entEvent = (EntertainerEvent*)entertainerEvent;
-	
+
 	entEvent->addHealingXp(xp);
 }
 
@@ -4350,7 +4005,7 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 		else
 			omr->addRadialItem(0, 50, 3, "Stop Watch");
 	}
-	
+
 	if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
 		omr->addRadialItem(0, 48, 3, "@cmd_n:teach");
 	}
@@ -4567,19 +4222,19 @@ void PlayerImplementation::loadXpTypeCap() {
 	xpCapList.removeAll();
 	while ( hasNextSkillBox()) {
 		SkillBox *skillbox = skillBoxes.getNextValue();
-		
+
 		if (skillbox->isNoviceBox()) {
 			Profession *prof = skillbox->getProfession();
 			SkillBox *plusone;
-			
+
 			if (prof->isFourByFour()) {
 				for (int j = 1; j <= 4; j++) {
 					FourByFourProfession *curprof = (FourByFourProfession*)prof;
-					plusone = curprof->getBox(1,j);			
+					plusone = curprof->getBox(1,j);
 					if (xpCapList.contains(plusone->getSkillXpType())) {
 						if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
 							xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
-					} else 
+					} else
 						xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
 				}
 			} else if (prof->isOneByFour()) {
@@ -4588,7 +4243,7 @@ void PlayerImplementation::loadXpTypeCap() {
 				if (xpCapList.contains(plusone->getSkillXpType())) {
 					if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
 						xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
-				} else 
+				} else
 					xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
 			} else if (prof->isPyramid()) {
 				PyramidProfession *curprof = (PyramidProfession*)prof;
@@ -4596,11 +4251,11 @@ void PlayerImplementation::loadXpTypeCap() {
 				if (xpCapList.contains(plusone->getSkillXpType())) {
 					if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
 						xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
-				} else 
+				} else
 					xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
 			}
-			
-		} else 
+
+		} else
 			xpCapList.put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
 	}
 }
@@ -4608,7 +4263,7 @@ void PlayerImplementation::loadXpTypeCap() {
 int PlayerImplementation::calcPlayerLevel(string xptype) {
 	resetSkillBoxesIterator();
 	playerLevel = 0;
-	
+
 	if (xptype == "jedi_general") {
 		playerLevel = 10;
 		int skillnum = 0;
@@ -4625,14 +4280,14 @@ int PlayerImplementation::calcPlayerLevel(string xptype) {
 		}
 		playerLevel += 5*skillnum;
 		if (playerLevel > 25)
-			playerLevel = 25; 
+			playerLevel = 25;
 		return playerLevel;
 	}
-	
+
 	Weapon *weap = getWeapon();
 	int wtype;
-	
-	if (weap == NULL) 
+
+	if (weap == NULL)
 		wtype = WeaponImplementation::UNARMED;
 	else
 		wtype = weap->getType();
@@ -4779,35 +4434,35 @@ int PlayerImplementation::calcPlayerLevel(string xptype) {
 			break;
 		};
 	}
-	
+
 	// force the 5-25 range
 	if (playerLevel < 5)
 		playerLevel = 5;
 	else if (playerLevel > 25)
 		playerLevel = 25;
-		
+
 	return playerLevel;
 }
 
 void PlayerImplementation::teachPlayer(Player* player) {
 	if (teachingSkillList.size() > 0)
 		return;
-	
+
 	Vector<SkillBox*> trainboxes;
 	resetSkillBoxesIterator();
-	
+
 	if (!hasNextSkillBox()) {
 		sendSystemMessage("teaching","no_skills");
 		return;
 	}
-	
+
 	while (hasNextSkillBox()) {
 		SkillBox* sBox = skillBoxes.getNextValue();
-		
+
 		if (sBox->isNoviceBox())
 			continue;
-		
-		if (sBox->getSkillXpType() == "jedi_general" || 
+
+		if (sBox->getSkillXpType() == "jedi_general" ||
 			sBox->getSkillXpType() == "space_combat_general" ||
 			sBox->getSkillXpType() == "fs_crafting" ||
 			sBox->getSkillXpType() == "fs_combat" ||
@@ -4815,16 +4470,16 @@ void PlayerImplementation::teachPlayer(Player* player) {
 			sBox->getSkillXpType() == "fs_senses" ||
 			sBox->getSkillXpType() == "force_rank_xp")
 			continue;
-		
+
 		if (player->hasSkillBox(sBox->getName()))
 			continue;
-			
+
 		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {
 			if (player->hasSkillBox(sBox->getRequiredSkill(j)->getName()))
 				trainboxes.add(sBox);
 		}
 	}
-	
+
 	if (trainboxes.size() > 0) {
 		setStudent(player);
 		player->setTeacher(_this);
@@ -4832,14 +4487,14 @@ void PlayerImplementation::teachPlayer(Player* player) {
 		sbox->setPromptTitle("@sui:teach");
 		sbox->setPromptText("What would you like to teach?");
 		sbox->setCancelButton(true);
-		
+
 		for (int i = 0; i < trainboxes.size(); i++) {
 			stringstream skillboxname;
 			skillboxname << "@skl_n:" << trainboxes.get(i)->getName();
 			sbox->addMenuItem(skillboxname.str());
 			teachingSkillList.add(trainboxes.get(i));
 		}
-		
+
 		addSuiBox(sbox);
 		sendMessage(sbox->generateMessage());
 	} else {
@@ -4853,21 +4508,21 @@ void PlayerImplementation::teachPlayer(Player* player) {
 void PlayerImplementation::teachSkill(string& skillname) {
 	SkillBox* sBox = server->getProfessionManager()->getSkillBox(skillname);
 	StfParameter* params = new StfParameter;
-	
+
 	params->addTO("skl_n",skillname);
 	params->addTT(getTeacher()->getFirstNameProper());
-	
+
 	if (sBox->getSkillXpCost() > getXp(sBox->getSkillXpType())) {
 		sendSystemMessage("skill_teacher","prose_train_failed", params);
 	} else {
 		sendSystemMessage("teaching","student_skill_learned", params);
 		addXp(sBox->getSkillXpType(), (-1)*sBox->getSkillXpCost(), true);
 		trainSkillBox(skillname);
-		
+
 		StfParameter* locparams = new StfParameter;
 		locparams->addTT(getFirstNameProper());
 		locparams->addTO("skl_n",skillname);
-		
+
 		int xp = 0;
 		string xptype("apprenticeship");
 		if (sBox->isMasterBox())
@@ -4877,15 +4532,15 @@ void PlayerImplementation::teachSkill(string& skillname) {
 			xp = ((tier-'0') + 1) * 10;
 		}
 		locparams->addDI(xp);
-		
+
 		getTeacher()->sendSystemMessage("teaching","teacher_skill_learned", locparams);
 		getTeacher()->addXp(xptype, xp, true);
-		
+
 		delete locparams;
 	}
-	
+
 	delete params;
-		
+
 	getTeacher()->setStudent(NULL);
 	setTeacher(NULL);
 }
