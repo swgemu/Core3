@@ -139,7 +139,8 @@ warrenCyborgSlicehound = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 70,
 
-	skills = { " Stun attack", " Intimidation attack", "" }
+	--skills = { " Stun attack", " Intimidation attack", "" }
+	skills = { "slicehoundAttack1", "slicehoundAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

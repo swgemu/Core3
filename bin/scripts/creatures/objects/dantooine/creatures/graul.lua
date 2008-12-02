@@ -141,7 +141,7 @@ graul = Creature:new {
 
 	skills = { "graulAttack1" },
 	-- skills = { " Intimidation attack", " Stun attack", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

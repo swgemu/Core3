@@ -139,7 +139,8 @@ bolPackRunner = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 35,
 
-	skills = { " Stun attack", " Dizzy attack", "" }
+	--skills = { " Stun attack", " Dizzy attack", "" }
+	skills = { "bolAttack3", "bolAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

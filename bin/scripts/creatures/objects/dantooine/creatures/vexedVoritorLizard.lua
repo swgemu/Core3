@@ -139,7 +139,8 @@ vexedVoritorLizard = Creature:new {
 	meatType = "meat_carnivore_dantooine",
 	meatMax = 50,
 
-	skills = { " Dizzy attack", " Knockdown attack", "" }
+	--skills = { " Dizzy attack", " Knockdown attack", "" }
+	skills = { "voritorAttack1", "voritorAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -594,10 +594,10 @@ jabbaPalace26 = Creature:new {
 	objectName = "jabbaPalace26",
 	creatureType = NPC,
 
-	speciesName = "3po_base",
+	speciesName = "protocol_droid_3po",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "droid_name",
+	stfName = "mob/creature_names",
 	objectCRC = 3980932165,
 	positionX = -15.07,
 	positionY = 45.9,

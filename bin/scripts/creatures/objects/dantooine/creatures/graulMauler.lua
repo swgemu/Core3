@@ -139,9 +139,9 @@ graulMauler = Creature:new {
 	meatType = "meat_carnivore_dantooine",
 	meatMax = 950,
 
-	skills = { "graulAttack1" },
+	skills = { "graulAttack5", "graulAttack6" },
 	-- skills = { " Intimidation attack", " Posture down attack", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

@@ -139,7 +139,8 @@ slinkingVoritorHunter = Creature:new {
 	meatType = "meat_carnivore_dantooine",
 	meatMax = 90,
 
-	skills = { " Dizzy attack", " Posture down attack", "" }
+	--skills = { " Dizzy attack", " Posture down attack", "" }
+	skills = { "voritorAttack1", "voritorAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

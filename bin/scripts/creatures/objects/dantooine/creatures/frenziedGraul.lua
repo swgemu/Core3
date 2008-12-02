@@ -139,7 +139,8 @@ frenziedGraul = Creature:new {
 	meatType = "meat_carnivore_dantooine",
 	meatMax = 1025,
 
-	skills = { " Area attack (bleeds)", " Stun attack", "" }
+	--skills = { " Area attack (bleeds)", " Stun attack", "" }
+	skills = { "graulAttack4", "graulAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -1888,28 +1888,6 @@ doabaNpc87 = Creature:new {
 	cellID = 0
 }
 
-doabaNpc88 = Creature:new {
-	objectName = "doabaNpc88",
-	creatureType = NPC,
-
-	speciesName = "corellia_lilith_laughlin",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1520469080,
-	positionX = 3084.07,
-	positionY = 4979.36,
-	positionZ = 279.996,
-
-	directionX = -0.000364349,
-	directionZ = 8.2989e-06,
-	directionY = 0.0227715,
-	directionW = 0.999741,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 doabaNpc89 = Creature:new {
 	objectName = "doabaNpc89",
 	creatureType = NPC,

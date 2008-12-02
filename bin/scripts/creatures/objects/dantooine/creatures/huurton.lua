@@ -140,7 +140,7 @@ huurton = Creature:new {
 	meatMax = 15,
 
 	skills = { "huurtonAttack1" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

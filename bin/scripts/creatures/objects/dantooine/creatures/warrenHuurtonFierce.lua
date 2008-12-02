@@ -139,7 +139,8 @@ warrenHuurtonFierce = Creature:new {
 	meatType = "",
 	meatMax = 35,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "huurtonAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

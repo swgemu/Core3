@@ -139,9 +139,9 @@ bol = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 35,
 
-	skills = { "bolAttack1" },
+	skills = { "bolAttack1", "bolAttack2" },
 	-- skills = { " Knockdown attack", " Intimidation attack", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

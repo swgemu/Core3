@@ -139,7 +139,8 @@ seethingBolCrusher = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 35,
 
-	skills = { " Dizzy attack", " Disease attack (medium)", "" }
+	--skills = { " Dizzy attack", " Disease attack (medium)", "" }
+	skills = { "bolAttack4", "bolAttack6" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

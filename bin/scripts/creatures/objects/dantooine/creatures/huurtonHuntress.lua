@@ -139,7 +139,8 @@ huurtonHuntress = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 15,
 
-	skills = { " Knockdown attack", " Stun attack", "" }
+	--skills = { " Knockdown attack", " Stun attack", "" }
+	skills = { "huurtonAttack3", "huurtonAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

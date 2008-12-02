@@ -139,7 +139,8 @@ domesticBolMount = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 35,
 
-	skills = { " Blind attack", " Dizzy attack", "" }
+	--skills = { " Blind attack", " Dizzy attack", "" }
+	skills = { "bolAttack5", "bolAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
