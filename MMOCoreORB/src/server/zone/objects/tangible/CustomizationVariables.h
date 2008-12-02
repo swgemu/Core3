@@ -537,6 +537,8 @@ public:
 
 		buf.append(0xFF);
 		buf.append(0x03);
+
+		ascii = buf.toString();
 	}
 
 };
