@@ -123,7 +123,7 @@ void VehicleDeedImplementation::parseItemAttributes(){
 int VehicleDeedImplementation::useObject(Player* player) {
 	Datapad * datapad = player->getDatapad();
 
-	MountCreature* vehicle = new MountCreature(player, targetName.toCharArray(), "monster_name",
+	MountCreature* vehicle = new MountCreature(player, targetName.toString(), "monster_name",
 			targetFile.hashCode(),
 			vehicleFile.hashCode(),
 			player->getNewItemID());

@@ -829,7 +829,7 @@ void StructureManagerImplementation::spawnBuilding(Player * player,
 void StructureManagerImplementation::createInstallation(InstallationObject* inso) {
 	try {
 		StringBuffer sqlInsertStructure;
-		String itemname = inso->getName().toCharArray();
+		String itemname = inso->getName().toString();
 		MySqlDatabase::escapeString(itemname);
 
 		String attr = inso->getAttributes();
@@ -874,7 +874,7 @@ void StructureManagerImplementation::createInstallation(InstallationObject* inso
 void StructureManagerImplementation::saveInstallation(InstallationObject* inso) {
 	try {
 		StringBuffer sqlUpdateStructure;
-		String itemname = inso->getName().toCharArray();
+		String itemname = inso->getName().toString();
 		MySqlDatabase::escapeString(itemname);
 
 		String attr = inso->getAttributes();
@@ -929,7 +929,7 @@ void StructureManagerImplementation::createBuilding(BuildingObject* buio) {
 
 	try {
 		StringBuffer sqlInsertStructure;
-		String itemname = buio->getName().toCharArray();
+		String itemname = buio->getName().toString();
 		MySqlDatabase::escapeString(itemname);
 
 		String attr = buio->getAttributes();

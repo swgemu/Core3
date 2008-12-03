@@ -915,7 +915,7 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	if (unk2 > 1)
 		pack->parseUnicode(value2);
 
-	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.toCharArray(), value2.toCharArray());
+	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.toString(), value2.toString());
 }
 
 void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {

@@ -2057,7 +2057,7 @@ void PlayerImplementation::deathblow(Player* killer) {
 	String killerName = "";
 	UnicodeString uniName = UnicodeString("");
 	uniName = killer->getCharacterName();
-	killerName = uniName.toCharArray();
+	killerName = uniName.toString();
 
 	if (pointsLost > 0) {
 		switch (System::random(2)) {
@@ -3351,7 +3351,7 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 
 	if (weapon->getPowerupUses() == 0) {
 		StringBuffer msg;
-		msg << "You powerup your " << weapon->getName().toCharArray() << " with " << powerup->getName().toCharArray();
+		msg << "You powerup your " << weapon->getName().toString() << " with " << powerup->getName().toString();
 		sendSystemMessage(msg.toString());
 		powerup->apply(weapon);
 		powerup->remove(_this);

@@ -61,6 +61,8 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 	updated = false;
 
 	buildingType = UNKNOWN; // default building Type
+	objectCRC = 0;
+
 	setDefaultName();
 
 	name = "";

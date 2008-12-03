@@ -76,25 +76,27 @@ UserManagerImplementation::~UserManagerImplementation() {
 
 void UserManagerImplementation::parseBanList() {
 	File* banFile = new File("bannedusers.lst");
-	if (!banFile->exists()) {
-		delete banFile;
 
-		return;
-	} else
+	try {
+		FileReader banReader(banFile);
+
 		info("parsing ban list: bannedusers.lst", true);
 
-	FileReader banReader(banFile);
+		String line;
 
- 	String line;
+		while (banReader.readLine(line)) {
+			StringTokenizer tokenizer(line);
 
-	while (banReader.readLine(line)) {
-		StringTokenizer tokenizer(line);
+			String ip;
+			tokenizer.getStringToken(ip);
 
-		String ip;
-		tokenizer.getStringToken(ip);
-
-		if (!ip.isEmpty())
-			banUser(ip);
+			if (!ip.isEmpty())
+				banUser(ip);
+		}
+	} catch (...) {
+		error("error parsing ban list: bannedusers.lst");
+		delete banFile;
+		return;
 	}
 
 	banFile->close();
@@ -103,27 +105,27 @@ void UserManagerImplementation::parseBanList() {
 
 void UserManagerImplementation::parseAdminList() {
 	File* adminFile = new File("adminusers.lst");
-	if (!adminFile->exists()) {
+
+	try {
+		FileReader adminReader(adminFile);
+
+		String line;
+
+		while (adminReader.readLine(line)) {
+			StringTokenizer tokenizer(line);
+
+			String name;
+			tokenizer.getStringToken(name);
+
+			name = name.trim().toLowerCase();
+
+			if (!name.isEmpty())
+				grantAdmin(name);
+		}
+	} catch (...) {
+		error("error parsing admin list: adminusers.lst");
 		delete adminFile;
-
 		return;
-	} else
-		info("parsing admin list: adminusers.lst", true);
-
-	FileReader adminReader(adminFile);
-
-	String line;
-
-	while (adminReader.readLine(line)) {
-		StringTokenizer tokenizer(line);
-
-		String name;
-		tokenizer.getStringToken(name);
-
-		name = name.trim().toLowerCase();
-
-		if (!name.isEmpty())
-			grantAdmin(name);
 	}
 
 	adminFile->close();

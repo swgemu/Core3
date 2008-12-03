@@ -227,7 +227,7 @@ void MountCreatureImplementation::generateAttributes(SceneObject* obj) {
 	if (owner != NULL) {
 		UnicodeString name = UnicodeString("");
 		name = owner->getCharacterName();
-		String strname = name.toCharArray();
+		String strname = name.toString();
 
 		alm->insertAttribute("@obj_attr_n:crystal_owner", strname); //Owner: Name
 	}

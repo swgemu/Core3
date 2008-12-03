@@ -141,7 +141,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->setCashCredits(creditsCash);
 	player->setBankCredits(creditsBank);
 
-	String bio = player->getBiography().toCharArray();
+	String bio = player->getBiography().toString();
 	MySqlDatabase::escapeString(bio);
 	String info = "";
 
@@ -711,7 +711,7 @@ void PlayerManagerImplementation::unload(Player* player) {
 }
 
 void PlayerManagerImplementation::save(Player* player) {
-	String biography = player->getBiography().toCharArray();
+	String biography = player->getBiography().toString();
 	MySqlDatabase::escapeString(biography);
 
 	StringBuffer query;
