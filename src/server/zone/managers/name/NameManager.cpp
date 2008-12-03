@@ -77,6 +77,8 @@ void NameManager::fillNames() {
 	try {
 		FileReader restrictedReader(restrictedFile);
 
+		info("parsing restricted names list: restrictednames.lst", true);
+
 		BannedNameSet* setp;
 
 		String line;
@@ -85,7 +87,8 @@ void NameManager::fillNames() {
 		while (restrictedReader.readLine(line)) {
 			String name = line.trim().toLowerCase();
 
-			if (name == "" || ((name.length() > 1) && (name.subString(0, 2).compareTo("--") == 0))) {
+			if ((name.length() >= 2 && name.subString(0, 2).compareTo("--") == 0)
+					|| name == "") {
 				continue; //skip it
 			} else if (name.indexOf("[profane]") != -1) {
 				isset = false;
@@ -110,11 +113,10 @@ void NameManager::fillNames() {
 				continue;
 			}
 		}
-	} catch (...) {
-		error("error parsing restricted names list: restrictednames.lst");
-		delete restrictedFile;
-		return;
+	} catch (FileNotFoundException&e ) {
 	}
+
+	delete restrictedFile;
 }
 
 

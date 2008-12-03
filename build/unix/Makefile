@@ -218,7 +218,7 @@ target_os = cygwin
 target_vendor = pc
 top_builddir = .
 top_srcdir = ../..
-SUBDIRS = src 
+SUBDIRS = src
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 

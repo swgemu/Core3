@@ -80,7 +80,6 @@ public:
 	static const int ACCOUNTDOESNTEXIST = 5;
 	static const int ACCOUNTNOTACTIVE = 6;
 
-
 public:
 	int accountID;
 
@@ -101,7 +100,6 @@ public:
 	}
 
 	int validate(ConfigManager* configManager) {
-
 		if (configManager->getUseVBIngeration() == 1){
 
 			int validateResult = validateForumAccount(configManager);
@@ -113,14 +111,10 @@ public:
 			return ACCOUNTAUTOREGDISABLED;
 		}
 
-		String query = "SELECT * FROM account WHERE username = \'" + username +
-					   "\'";
+		String query = "SELECT * FROM account WHERE username = \'" + username + "\'";
 
-		if (configManager->getUseVBIngeration() == 0){
-
+		if (configManager->getUseVBIngeration() == 0)
 			query += " and password = sha1(\'" + password + "\')";
-
-		}
 
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
@@ -139,17 +133,12 @@ public:
 	}
 
 	int create(ConfigManager* configManager) {
-
 		try {
-
 			if (configManager->getUseVBIngeration() == 1){
-
 				int validateResult = validateForumAccount(configManager);
 
 				if (validateResult != 0)
 					return validateResult;
-
-
 			} else if (configManager->getAutoReg() == 0 && configManager->getUseVBIngeration() == 0) {
 				return ACCOUNTAUTOREGDISABLED; // Auto Reg Disabled
 			}
@@ -170,7 +159,6 @@ public:
 	}
 
 	int validateForumAccount(ConfigManager* configManager){
-
 		if (configManager->getUseVBIngeration() == 0 || configManager->getAutoReg() == 1)
 			return 0;
 
@@ -202,7 +190,6 @@ public:
 			ResultSet* res = ForumsDatabase::instance()->executeQuery(query);
 
 			if (res->next()){
-
 				forumUserID = res->getString(0);
 				forumUserGroupID = res->getString(1);
 				forumUser = res->getString(2);
@@ -213,9 +200,7 @@ public:
 					String test = res->getString(5);
 					isBanned = true;
 				} catch (...) {
-
 					isBanned = false;
-
 				}
 
 				if (isBanned){
@@ -227,9 +212,7 @@ public:
 					String test = res->getString(6);
 					isBanned = true;
 				} catch (...) {
-
 					isBanned = false;
-
 				}
 
 				if (isBanned){
@@ -244,7 +227,6 @@ public:
 				ResultSet* res2 = ForumsDatabase::instance()->executeQuery(query2);
 
 				if (res2->next()){
-
 					String tempPass = res2->getString(0);
 
 					if (tempPass == forumPass){
@@ -274,7 +256,7 @@ public:
 			uint32 sessionKey = 0; //temp until we store the session key in the db and check on zone server
 			Message* lct = new LoginClientToken(username, sessionKey, accountID, stationID);
 			client->sendMessage(lct);
-			
+
 			//send the sessionkey to the DB here
 
 			loadGalaxies(client);

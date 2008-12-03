@@ -29,10 +29,11 @@ HeightMap::~HeightMap() {
 void HeightMap::load(const String& path) {
 	File* file = new File(path);
 
-	if (file->exists())
+	try {
 		reader = new FileReader(file);
-	else
+	} catch (FileNotFoundException& e) {
 		reader = NULL;
+	}
 }
 
 float HeightMap::getHeight(float x, float y) {
