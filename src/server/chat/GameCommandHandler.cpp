@@ -294,6 +294,14 @@ void GameCommandHandler::init() {
 			"Returns a list of characters a player has registrated with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
+	gmCommands->addCommand("sendp", ALL,
+			"Send Packet Test.",
+			"Usage: @sendp",
+			&sendp);
+	gmCommands->addCommand("requestStartingLocations", ALL,
+				"Resends the Starting Locations packet in case you accidentally close the window.",
+				"Usage: @requestStartingLocations",
+				&requestStartingLocations);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -348,7 +356,7 @@ void GameCommandHandler::help(StringTokenizer tokenizer, Player* player) {
 void GameCommandHandler::map(StringTokenizer tokenizer, Player* player) {
 	if (tokenizer.hasMoreTokens()) {
 		int planetid = tokenizer.getIntToken();
-		if (planetid >= 0 && planetid <= 10) //Servercrash risk! Do not change this back to 50 since there are no managers initialized
+		if (planetid >= 0 && planetid <= 45) //Servercrash risk! Do not change this back to 50 since there are no managers initialized
 			player->switchMap(planetid);
 	} else {
 		player->sendSystemMessage("Usage: map <planetid>\n"
@@ -2101,8 +2109,8 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 
 	} else
 		player->sendSystemMessage("Cannot spawn creature");
-
 }
+
 
 void GameCommandHandler::guildAdmin(StringTokenizer tokenizer, Player* player) {
 	String tag;
@@ -2395,3 +2403,72 @@ void GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player) {
 		player->info("Unreported Exception in GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player)");
 	}
 }
+
+void GameCommandHandler::sendp(StringTokenizer tokenizer, Player * player) {
+	//TESTING PURPOSES ULTYMAS.
+	uint32 type;
+
+		if (tokenizer.hasMoreTokens())
+			type = tokenizer.getIntToken();
+		else
+			type = 0;
+
+		if (type == 0) {
+			LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com");
+			player->sendMessage(lbm);
+		} else if (type == 1) {
+			//GetArticleResponseMessage
+
+		} else if (type == 2) {
+			String command;
+			tokenizer.getStringToken(command);
+
+			ExecuteConsoleCommand* ecm = new ExecuteConsoleCommand(command);
+			player->sendMessage(ecm);
+		}  else if (type == 3) {
+			String hud;
+			tokenizer.getStringToken(hud);
+
+			NewbieTutorialEnableHudElement* nthud = new NewbieTutorialEnableHudElement(hud);
+			player->sendMessage(nthud);
+		} else if (type == 4) {
+			int flagtest;
+			flagtest = tokenizer.getIntToken();
+
+			ChatServerStatus* css = new ChatServerStatus(flagtest);
+			player->sendMessage(css);
+		}  else if (type == 5) {
+			ConnectionServerTestMessage* csmf = new ConnectionServerTestMessage();
+			player->sendMessage(csmf);
+
+		} else if (type == 6) {
+			unkZone* uzp = new unkZone();
+			player->sendMessage(uzp);
+		} else if (type == 7) {
+			unkZoneTwo* uzp = new unkZoneTwo();
+			player->sendMessage(uzp);
+		} else if (type == 8) {
+			unkZoneThree* uzp = new unkZoneThree();
+			player->sendMessage(uzp);
+		} else if (type == 9) {
+			StartingLocationList* sll = new StartingLocationList(player);
+			sll->AddLocation("tatooine", "mos_eisley", true);
+			sll->AddLocation("naboo", "theed", true);
+			player->sendMessage(sll);
+		} else if (type == 10) {
+			CommoditiesItemTypeListResponse* citlr = new CommoditiesItemTypeListResponse();
+			player->sendMessage(citlr);
+		}
+
+	}
+
+void GameCommandHandler::requestStartingLocations(StringTokenizer tokenizer, Player * player) {
+
+	if (player->getZoneID() == 42) {
+		StartingLocationList* sll = new StartingLocationList(player);
+		player->sendMessage(sll);
+	 } else {
+		 player->sendSystemMessage("You can only use this command from the tutorial.");
+	 }
+}
+

@@ -60,6 +60,11 @@ which carries forward this exception.
 #include "packets/zone/ParametersMessage.h"
 #include "packets/zone/CmdStartScene.h"
 #include "packets/zone/CmdSceneReady.h"
+#include "packets/zone/unkZone.h"
+#include "packets/zone/unkZoneTwo.h"
+#include "packets/zone/unkZoneThree.h"
+#include "packets/zone/ConnectionServerTestMessage.h"
+#include "packets/zone/ConnectPlayerResponseMessage.h"
 
 #include "packets/object/ObjectControllerMessage.h"
 #include "packets/object/CombatAction.h"
@@ -87,6 +92,7 @@ which carries forward this exception.
 #include "packets/object/DataTransform.h"
 #include "packets/object/DataTransformWithParent.h"
 #include "packets/object/StfParameter.h"
+#include "packets/object/StartingLocationList.h"
 
 #include "packets/scene/SceneObjectCreateMessage.h"
 #include "packets/scene/SceneObjectCloseMessage.h"
@@ -102,6 +108,8 @@ which carries forward this exception.
 #include "packets/scene/GameSceneChangedMessage.h"
 #include "packets/scene/PlayClientEffectLocMessage.h"
 #include "packets/scene/ClientOpenContainerMessage.h"
+#include "packets/scene/DebugTransformMessage.h"
+#include "packets/scene/IsFlattenedTheaterMessage.h"
 
 #include "packets/ship/ShipObjectMessage1.h"
 #include "packets/ship/ShipObjectMessage3.h"
@@ -152,6 +160,9 @@ which carries forward this exception.
 #include "packets/player/AddIgnoreMessage.h"
 #include "packets/player/IgnoreListMessage.h"
 
+#include "packets/player/LogoutMessage.h"
+#include "packets/player/NewbieTutorialRequest.h"
+
 #include "packets/tangible/TangibleObjectMessage3.h"
 #include "packets/tangible/TangibleObjectMessage6.h"
 #include "packets/tangible/TangibleObjectMessage7.h"
@@ -180,9 +191,29 @@ which carries forward this exception.
 #include "packets/chat/ChatOnDestroyRoom.h"
 #include "packets/chat/ChatOnCreateRoom.h"
 #include "packets/chat/ChatOnLeaveRoom.h"
+#include "packets/chat/ChatServerStatus.h"
 
 #include "packets/ui/SuiCreatePageMessage.h"
 #include "packets/ui/SuiForceClosePage.h"
+#include "packets/ui/SearchKnowledgebaseResponseMessage.h"
+#include "packets/ui/GetArticleResponseMessage.h"
+#include "packets/ui/GetTicketsResponseMessage.h"
+#include "packets/ui/AppendCommentsResponseMessage.h"
+#include "packets/ui/CancelTicketResponseMessage.h"
+#include "packets/ui/CloseHolocronMessage.h"
+#include "packets/ui/ConGenericMessage.h"
+#include "packets/ui/CreateClientPathMessage.h"
+#include "packets/ui/DestroyClientPathMessage.h"
+#include "packets/ui/ExecuteConsoleCommand.h"
+#include "packets/ui/LaunchBrowserMessage.h"
+#include "packets/ui/OpenHolocronToPageMessage.h"
+#include "packets/ui/NewbieTutorialEnableHudElement.h"
+#include "packets/ui/CreateTicketResponseMessage.h"
+#include "packets/ui/ClientMfdStatusUpdateMessage.h"
+#include "packets/ui/RequestCategoriesResponseMessage.h"
+#include "packets/ui/NewTicketActivityResponseMessage.h"
+#include "packets/ui/VerifyPlayerNameResponseMessage.h"
+#include "packets/ui/CommoditiesItemTypeListResponse.h"
 
 #include "packets/building/BuildingObjectMessage3.h"
 #include "packets/building/BuildingObjectMessage6.h"
@@ -260,4 +291,9 @@ which carries forward this exception.
 #include "packets/factory/FactoryCrateObjectMessage3.h"
 #include "packets/factory/FactoryCrateObjectMessage6.h"
 
+// JTL
+#include "packets/jtl/CreateMissileMessage.h"
+#include "packets/jtl/CreateNebulaLightningMessage.h"
+#include "packets/jtl/CreateProjectileMessage.h"
+#include "packets/jtl/DogfightTauntPlayerMessage.h"
 #endif /*PACKETS_H_*/

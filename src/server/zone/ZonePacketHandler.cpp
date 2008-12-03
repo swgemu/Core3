@@ -139,6 +139,21 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0xD6D1B6D1: //ClientRandomNameRequest
 			handleClientRandomNameRequest(pack);
 			break;
+		case 0x2E365218: //ConnectPlayerMessage
+			handleConnectPlayerMessage(pack);
+			break;
+		case 0x274F4E78: //NewTicketActivityMessage
+			handleNewTicketActivityMessage(pack);
+			break;
+		case 0xF898E25F: //RequestCategoriesMessage
+			handleRequestCategoriesMessage(pack);
+			break;
+		case 0x0F5D5325: //ClientInactivityMessage
+			handleClientInactivityMessage(pack);
+			break;
+		case 0x48F493C5: //CommoditiesItemTypeListRequest
+			handleCommoditiesItemTypeListRequest(pack);
+			break;
 		}
 
 		break;
@@ -168,6 +183,15 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x12B0D449: // Retrieve auction item
 			handleRetrieveAuctionItem(pack);
 			break;
+		case 0xBB8CAD45: // VerifyPlayerNameMessage
+			handleVerifyPlayerNameMessage(pack);
+			break;
+		case 0x5E7B4846: // GetArticleMessage
+			handleGetArticleMessage(pack);
+			break;
+		case 0x962E8B9B: //SearchKnowledgebaseMessage
+			handleSearchKnowledgebaseMessage(pack);
+			break;
 		}
 
 		break;
@@ -181,6 +205,9 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			break;
 		case 0x91125453: // Bazaar/Vendor bid
 			handleBazaarBuy(pack);
+			break;
+		case 0xC9A5F98D: // GetTicketsMessage
+			handleGetTicketsMessage(pack);
 			break;
 		}
 		break;
@@ -229,6 +256,13 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			break;
 		}
 		break;
+	case 10:
+		switch (opcode) {
+		case 0x40E64DAC: //CreateTicketMessage
+			handleCreateTicketMessage(pack);
+			break;
+		}
+		break;
 	case 12:
 		switch (opcode) {
 		case 0xB97F3074: //ClientCreateCharacter
@@ -244,7 +278,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		}
 		break;
 	default:
-		//error("unhandled operand count" + pack->toString());
+		error("unhandled operand count" + pack->toString());
 		break;
 	}
 }
@@ -340,6 +374,12 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 		player->wlock();
 
 		player->notifySceneReady();
+
+		//If their on the tutorial terrain, send the starting location packet.
+		if (player->getZoneID() == 42) {
+			StartingLocationList* sll = new StartingLocationList(player);
+			player->sendMessage(sll);
+		}
 
 		player->unlock();
 	} catch (...) {
@@ -1039,3 +1079,293 @@ void ZonePacketHandler::handleGetAuctionItemAttributes(Message* pack) {
    	bazaarManager->getItemAttributes(player, objectId);
 
 }
+
+void ZonePacketHandler::handleVerifyPlayerNameMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	UnicodeString name;
+	uint32 mystery1;
+	uint32 mystery2;
+	pack->parseUnicode(name);
+	mystery1 = pack->parseInt();
+	mystery2 = pack->parseInt();
+
+	//TODO: Write code here to check for player name in the Database.
+	//TODO: Find out what that int is.
+	VerifyPlayerNameResponseMessage* vpnrm = new VerifyPlayerNameResponseMessage(true, mystery1);
+	client->sendMessage(vpnrm);
+
+}
+
+void ZonePacketHandler::handleConnectPlayerMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	ConnectPlayerResponseMessage* cprm = new ConnectPlayerResponseMessage();
+	client->sendMessage(cprm);
+}
+
+void ZonePacketHandler::handleNewbieTutorialResponse(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	//I DON'T THINK THIS IS RIGHT. BUT ITS HERE FOR NOW.
+	String req;
+	pack->parseAscii(req);
+
+	NewbieTutorialRequest* ntr = new NewbieTutorialRequest(req);
+	client->sendMessage(ntr);
+
+}
+
+void ZonePacketHandler::handleGetArticleMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	String articleid;
+	bool foundarticle;
+	String body;
+	pack->parseAscii(articleid);
+
+	 StringBuffer query;
+	 query << "SELECT * FROM knowledgebase WHERE article_id = '" << articleid << "';";
+
+		 try {
+		   		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+		   		while (result->next()) {
+		   			foundarticle = true;
+		   			body = result->getString(2);
+		   			UnicodeString var(body);
+
+		   		}
+
+		   		delete result;
+		   	} catch (DatabaseException& e) {
+		   		error(e.getMessage());
+		   		foundarticle = false;
+
+		   	} catch (...) {
+		   		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuildings()\n");
+		   		foundarticle = false;
+		   	}
+	//TODO:
+		   	GetArticleResponseMessage* garm = new GetArticleResponseMessage(foundarticle);
+
+		   	if (foundarticle == true) {
+		   		garm->insertArticle(body);
+		   	}
+
+			client->sendMessage(garm);
+}
+
+void ZonePacketHandler::handleSearchKnowledgebaseMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	UnicodeString searchtext;
+	String title;
+	String articleid;
+	bool foundarticle;
+
+	pack->parseUnicode(searchtext);
+
+	//Setup the message.
+	SearchKnowledgebaseResponseMessage* kbrm = new SearchKnowledgebaseResponseMessage(false);
+
+	StringBuffer query;
+		 query << "SELECT * FROM knowledgebase WHERE article_title LIKE '%" << searchtext.toString() << "%';";
+
+			 try {
+			   		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+			   		while (result->next()) {
+			   			foundarticle = true;
+
+			   			articleid = result->getString(0);
+			   			title = result->getString(1);
+			   			UnicodeString var(title);
+
+			   			kbrm->addArticle(title, articleid);
+
+			   		}
+
+			   		delete result;
+			   	} catch (DatabaseException& e) {
+			   		error(e.getMessage());
+			   		foundarticle = false;
+
+			   	} catch (...) {
+			   		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuildings()\n");
+			   		foundarticle = false;
+			   	}
+
+	//If we found an article, update the packet.
+	if (foundarticle == true) {
+		kbrm->updateFound(true);
+	}
+
+	client->sendMessage(kbrm);
+
+
+}
+
+void ZonePacketHandler::handleAppendCommentMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+
+	//TODO: ADD RESPONSE.
+}
+
+void ZonePacketHandler::handleGetCommentsMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+
+	//TODO: ADD RESPONSE.
+}
+
+void ZonePacketHandler::handleCreateTicketMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	//TODO: I don't know!
+
+	//Ok. Lets first create all the vars to hold this crap.
+	String playerName;
+	uint32 bugMainCategoryID;
+	uint32 bugSubCategoryID;
+	pack->parseAscii(playerName);
+	bugMainCategoryID = pack->parseInt();
+	bugSubCategoryID = pack->parseInt();
+
+	//GIANT UNICODE STRING
+	UnicodeString giantUnicode;
+	pack->parseUnicode(giantUnicode);
+
+	String str = giantUnicode.toString();
+	//cout << str;
+
+    /*
+	StringTokenizer st = new StringTokenizer(str, "a");
+
+	//Here is where we seperate everything by 0xA
+	string stationid; //convert to uint64?
+	string bugtype;
+	string repeatable;
+	string gameSystem;
+	string severity;
+	string positionX; // convert to float?
+	string positionY; // convert to float?
+	string positionZ; // convert to float?
+	string heading;
+	string planet;
+	string cluster;
+	string character;
+	string race;
+	string clientVersion;
+	string dateAndTime;
+	string additionalInfo;
+
+	*/
+	CreateTicketResponseMessage* ctrm = new CreateTicketResponseMessage(true);
+	player->sendMessage(ctrm);
+}
+
+void ZonePacketHandler::handleGetTicketsMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	//TODO: Pull tickets from the database.
+	GetTicketsResponseMessage* gtrm = new GetTicketsResponseMessage();
+	gtrm->addTicket("test name", "test body", 31337, 0x85, false, false);
+	client->sendMessage(gtrm);
+}
+
+void ZonePacketHandler::handleNewTicketActivityMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	uint32 ticketid;
+	ticketid = pack->parseInt();
+
+	NewTicketActivityResponseMessage* ntar = new NewTicketActivityResponseMessage(0,ticketid);
+	client->sendMessage(ntar);
+}
+
+void ZonePacketHandler::handleRequestCategoriesMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	//TODO: FIX THIS. AND RESEARCH THIS.
+	//In the client, theres 02 00 65 6E after the opcode.
+	//Check this precu.
+	RequestCategoriesResponseMessage* rcrm = new RequestCategoriesResponseMessage();
+	rcrm->addMainCategory("Account/Billing", 0xB808, 1, 1, 1);
+	client->sendMessage(rcrm);
+}
+
+void ZonePacketHandler::handleClientInactivityMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	byte flag;
+	flag = pack->parseByte();
+
+	//TODO: Put code here to set player AFK.
+}
+
+void ZonePacketHandler::handleCommoditiesItemTypeListRequest(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	String request;
+	pack->parseAscii(request);
+
+	//TODO: Rework this. Right now sending blank list.
+	CommoditiesItemTypeListResponse* citlr = new CommoditiesItemTypeListResponse();
+	player->sendMessage(citlr);
+}
+
+

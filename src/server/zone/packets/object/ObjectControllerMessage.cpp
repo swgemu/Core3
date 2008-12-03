@@ -865,6 +865,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x029D0CC5): // Harvest
 		parseHarvestOrganics(player, pack);
 		break;
+	case (0xCF2D30F4): // newbieselectstartinglocation
+		parseNewbieSelectStartingLocation(player, pack);
+		break;
 	default:
 		target = pack->parseLong();
 		String actionModifier = "";
@@ -4047,3 +4050,62 @@ void ObjectControllerMessage::parseDelFactionPoints(Player* player, Message* pac
 
 
 }
+
+void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player, Message* pack) {
+
+	pack->shiftOffset(8);
+	UnicodeString startingcity;
+	pack->parseUnicode(startingcity);
+	String city = startingcity.toString();
+	//"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok,\n"
+	//"5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4, 10=Bad player prison (Space)");
+	/*
+ (1,'bestine',8,-1290.000000,0.000000,-3590.000000,'Bestine, Tatooine',3,180),
+ (2,'mos_espa',8,-2902.000000,0.000000,2130.000000,'Mos Espa, Tatooine',3,180),
+ (3,'mos_eisley',8,3528.000000,0.000000,-4804.000000,'Mos Eisley, Tatooine',3,180),
+ (4,'mos_entha',8,1291.000000,0.000000,3138.000000,'Mos Entha, Tatooine',3,180),
+ (5,'coronet',0,-137.000000,0.000000,-4723.000000,'Coronet, Corellia',3,180),
+ (6,'tyrena',0,-5045.000000,0.000000,-2294.000000,'Tyrena, Corellia',3,180),
+ (7,'kor_vella',0,-3138.000000,0.000000,2808.000000,'Kor Vella, Corellia',3,180),
+ (8,'doaba_guerfel',0,3336.000000,0.000000,5525.000000,'Doaba Guerfel, Corellia',3,180),
+ (9,'dearic',7,335.000000,0.000000,-2931.000000,'Dearic, Talus',3,180),
+ (10,'nashal',7,4371.000000,0.000000,5165.000000,'Nashal, Talus',3,180),
+ (11,'narmle',6,-5310.000000,0.000000,-2221.000000,'Narmle, Rori',3,180),
+ (12,'restuss',6,5362.000000,0.000000,5663.000000,'Restuss, Rori',3,180),
+ (13,'theed',6,-4856.000000,0.000000,4162.000000,'Theed, Naboo',3,180),
+ (14,'moenia',5,4800.000000,0.000000,-4700.000000,'Moenia, Naboo',3,180),
+ (15,'keren',5,1441.000000,0.000000,2771.000000,'Keren, Naboo',3,180),
+ (16,'kaadara',5,5209.000000,0.000000,6677.000000,'Kaadara, Naboo',3,180),
+ (17,'tutorial',41,0.000000,0.000000,0.000000,'Tutorial',3,180);
+	 */
+	if (city == "mos_eisley") {
+		player->setPosition(3528.0f,0,-4804.0f);
+		player->switchMap(8);
+
+	} else if (city == "bestine") {
+		player->setPosition(-1290.0f,0,-3590.0f);
+		player->switchMap(8);
+
+	} else if (city == "theed") {
+		player->setPosition(-4908.0f, 6, 4101.0f);
+		player->switchMap(5);
+
+	} else if (city == "moenia") {
+		player->setPosition(4800.0f,0,-4700.0f);
+		player->switchMap(5);
+
+	} else if (city == "coronet") {
+		player->setPosition(-137.00f,0,-4723.0f);
+		player->switchMap(0);
+
+	} else if (city == "tyrena") {
+		player->setPosition(-5045.0f,0,-2294.0f);
+		player->switchMap(0);
+
+	}
+
+
+
+
+}
+

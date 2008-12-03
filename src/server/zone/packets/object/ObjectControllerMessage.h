@@ -204,6 +204,8 @@ public:
 	static void parseMeditation(Player* player);
 
 	static void parseDelFactionPoints(Player* player, Message* pack);
+
+	static void parseNewbieSelectStartingLocation(Player* player, Message* pack);
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

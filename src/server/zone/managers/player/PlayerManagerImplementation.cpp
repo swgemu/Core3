@@ -115,8 +115,8 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	int accountID = sessionkey;
 	int galaxyID = 2;
 
-	player->setZoneIndex(5);
-	player->setTerrainName(Terrain::getTerrainName(5));
+	player->setZoneIndex(42);
+	player->setTerrainName(Terrain::getTerrainName(42));
 
 	player->initializePosition(-4908.0f, 6, 4101.0f);
 
