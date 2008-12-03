@@ -205,7 +205,7 @@ void ZoneServerImplementation::init() {
 
 	info("initializing zones", true);
 
-	for (int i = 0; i < 50; ++i) {
+	for (int i = 0; i < 45; ++i) {
 		Zone* zone = new Zone(_this, processor, i);
 		zone->deploy("Zone", i);
 
@@ -300,7 +300,7 @@ void ZoneServerImplementation::shutdown() {
 
 	info("shutting down zones", true);
 
-	for (int i = 0; i < 50; ++i) {
+	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
 		zone->stopManagers();
 	}

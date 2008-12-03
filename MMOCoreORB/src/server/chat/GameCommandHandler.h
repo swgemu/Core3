@@ -192,6 +192,8 @@ private:
 	static void adminList(StringTokenizer tokenizer, Player* player);
 	static void showChars(StringTokenizer tokenizer, Player* player);
 	static void ecKill(StringTokenizer tokenizer, Player* player);
+	static void sendp(StringTokenizer tokenizer, Player* player);
+	static void requestStartingLocations(StringTokenizer tokenizer, Player* player);
 
 	void init();
 
