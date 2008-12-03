@@ -93,13 +93,11 @@ void UserManagerImplementation::parseBanList() {
 			if (!ip.isEmpty())
 				banUser(ip);
 		}
-	} catch (...) {
-		error("error parsing ban list: bannedusers.lst");
-		delete banFile;
-		return;
+
+		banFile->close();
+	} catch (FileNotFoundException& e) {
 	}
 
-	banFile->close();
 	delete banFile;
 }
 
@@ -108,6 +106,8 @@ void UserManagerImplementation::parseAdminList() {
 
 	try {
 		FileReader adminReader(adminFile);
+
+		info("parsing admin list: adminusers.lst", true);
 
 		String line;
 
@@ -122,13 +122,11 @@ void UserManagerImplementation::parseAdminList() {
 			if (!name.isEmpty())
 				grantAdmin(name);
 		}
-	} catch (...) {
-		error("error parsing admin list: adminusers.lst");
-		delete adminFile;
-		return;
+
+		adminFile->close();
+	} catch (FileNotFoundException& e) {
 	}
 
-	adminFile->close();
 	delete adminFile;
 }
 
@@ -192,14 +190,22 @@ bool UserManagerImplementation::banUserByName(String& name, String& admin) {
 		String line = ip + " // " + name + " (" + admin + ")\n";
 
 		File* banFile = new File("bannedusers.lst");
-		FileWriter banWriter(banFile);
 
-		banWriter.writeLine(line);
+		try {
+			FileWriter banWriter(banFile);
 
-		banFile->close();
-		delete banFile;
+			banWriter.writeLine(line);
 
-		info("user \'" + name + "\' banned", true);
+			banFile->close();
+
+			info("user \'" + name + "\' banned", true);
+
+			delete banFile;
+		} catch (FileNotFoundException& e) {
+			delete banFile;
+
+			return false;
+		}
 
 		return true;
 	} else {

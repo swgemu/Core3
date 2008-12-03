@@ -99,14 +99,13 @@ am__objects_1 = ChatManager.$(OBJEXT) GameCommandHandler.$(OBJEXT) \
 	PlayerMap.$(OBJEXT) ResourceManager.$(OBJEXT) \
 	ResourceList.$(OBJEXT) ResourceItem.$(OBJEXT) \
 	StructureManager.$(OBJEXT) UserManager.$(OBJEXT) \
-	ActiveArea.$(OBJEXT) Area.$(OBJEXT) BaseArea.$(OBJEXT) \
-	NoBuildArea.$(OBJEXT) AttackableObject.$(OBJEXT) \
-	LairObject.$(OBJEXT) AuctionItem.$(OBJEXT) \
-	BuildingObject.$(OBJEXT) CellObject.$(OBJEXT) Action.$(OBJEXT) \
-	ActionCreature.$(OBJEXT) BlueFrogCreature.$(OBJEXT) \
-	BlueFrogVector.$(OBJEXT) Creature.$(OBJEXT) \
-	CreatureGroup.$(OBJEXT) CreatureObject.$(OBJEXT) \
-	MountCreature.$(OBJEXT) ImperialRecruiterCreature.$(OBJEXT) \
+	AttackableObject.$(OBJEXT) LairObject.$(OBJEXT) \
+	AuctionItem.$(OBJEXT) BuildingObject.$(OBJEXT) \
+	CellObject.$(OBJEXT) Action.$(OBJEXT) ActionCreature.$(OBJEXT) \
+	BlueFrogCreature.$(OBJEXT) BlueFrogVector.$(OBJEXT) \
+	Creature.$(OBJEXT) CreatureGroup.$(OBJEXT) \
+	CreatureObject.$(OBJEXT) MountCreature.$(OBJEXT) \
+	ImperialRecruiterCreature.$(OBJEXT) \
 	RebelRecruiterCreature.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
 	ShuttleCreature.$(OBJEXT) TrainerCreature.$(OBJEXT) \
 	DraftSchematicAttribute.$(OBJEXT) DraftSchematic.$(OBJEXT) \
@@ -382,6 +381,7 @@ target_alias = @target_alias@
 target_cpu = @target_cpu@
 target_os = @target_os@
 target_vendor = @target_vendor@
+top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AM_CXXFLAGS = -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -march=i686
@@ -412,10 +412,6 @@ core3_IDLS = server/chat/ChatManager.cpp \
 		server/zone/managers/resource/ResourceItem.cpp \
 		server/zone/managers/structure/StructureManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
-		server/zone/objects/area/ActiveArea.cpp \
-		server/zone/objects/area/Area.cpp \
-		server/zone/objects/area/BaseArea.cpp \
-		server/zone/objects/area/NoBuildArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
@@ -726,8 +722,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ActionCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ActionCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ActionImplementation.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ActiveArea.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Area.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Armor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ArmorImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Attachment.Po@am__quote@
@@ -738,7 +732,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bank.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BankManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BankManagerImplementation.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BaseArea.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarManagerImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BazaarPlanetManager.Po@am__quote@
@@ -869,7 +862,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MountCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/MountCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/NameManager.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/NoBuildArea.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectControllerMessage.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ObjectManager.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/OneHandedJediWeapon.Po@am__quote@
@@ -1307,62 +1299,6 @@ UserManager.obj: server/zone/managers/user/UserManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/user/UserManager.cpp' object='UserManager.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o UserManager.obj `if test -f 'server/zone/managers/user/UserManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/user/UserManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/user/UserManager.cpp'; fi`
-
-ActiveArea.o: server/zone/objects/area/ActiveArea.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ActiveArea.o -MD -MP -MF $(DEPDIR)/ActiveArea.Tpo -c -o ActiveArea.o `test -f 'server/zone/objects/area/ActiveArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/ActiveArea.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ActiveArea.Tpo $(DEPDIR)/ActiveArea.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/ActiveArea.cpp' object='ActiveArea.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ActiveArea.o `test -f 'server/zone/objects/area/ActiveArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/ActiveArea.cpp
-
-ActiveArea.obj: server/zone/objects/area/ActiveArea.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ActiveArea.obj -MD -MP -MF $(DEPDIR)/ActiveArea.Tpo -c -o ActiveArea.obj `if test -f 'server/zone/objects/area/ActiveArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/ActiveArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/ActiveArea.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ActiveArea.Tpo $(DEPDIR)/ActiveArea.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/ActiveArea.cpp' object='ActiveArea.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ActiveArea.obj `if test -f 'server/zone/objects/area/ActiveArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/ActiveArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/ActiveArea.cpp'; fi`
-
-Area.o: server/zone/objects/area/Area.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Area.o -MD -MP -MF $(DEPDIR)/Area.Tpo -c -o Area.o `test -f 'server/zone/objects/area/Area.cpp' || echo '$(srcdir)/'`server/zone/objects/area/Area.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Area.Tpo $(DEPDIR)/Area.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/Area.cpp' object='Area.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Area.o `test -f 'server/zone/objects/area/Area.cpp' || echo '$(srcdir)/'`server/zone/objects/area/Area.cpp
-
-Area.obj: server/zone/objects/area/Area.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Area.obj -MD -MP -MF $(DEPDIR)/Area.Tpo -c -o Area.obj `if test -f 'server/zone/objects/area/Area.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/Area.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/Area.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Area.Tpo $(DEPDIR)/Area.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/Area.cpp' object='Area.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Area.obj `if test -f 'server/zone/objects/area/Area.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/Area.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/Area.cpp'; fi`
-
-BaseArea.o: server/zone/objects/area/BaseArea.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BaseArea.o -MD -MP -MF $(DEPDIR)/BaseArea.Tpo -c -o BaseArea.o `test -f 'server/zone/objects/area/BaseArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/BaseArea.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BaseArea.Tpo $(DEPDIR)/BaseArea.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/BaseArea.cpp' object='BaseArea.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BaseArea.o `test -f 'server/zone/objects/area/BaseArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/BaseArea.cpp
-
-BaseArea.obj: server/zone/objects/area/BaseArea.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BaseArea.obj -MD -MP -MF $(DEPDIR)/BaseArea.Tpo -c -o BaseArea.obj `if test -f 'server/zone/objects/area/BaseArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/BaseArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/BaseArea.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BaseArea.Tpo $(DEPDIR)/BaseArea.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/BaseArea.cpp' object='BaseArea.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BaseArea.obj `if test -f 'server/zone/objects/area/BaseArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/BaseArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/BaseArea.cpp'; fi`
-
-NoBuildArea.o: server/zone/objects/area/NoBuildArea.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT NoBuildArea.o -MD -MP -MF $(DEPDIR)/NoBuildArea.Tpo -c -o NoBuildArea.o `test -f 'server/zone/objects/area/NoBuildArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/NoBuildArea.cpp
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/NoBuildArea.Tpo $(DEPDIR)/NoBuildArea.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/NoBuildArea.cpp' object='NoBuildArea.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o NoBuildArea.o `test -f 'server/zone/objects/area/NoBuildArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/NoBuildArea.cpp
-
-NoBuildArea.obj: server/zone/objects/area/NoBuildArea.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT NoBuildArea.obj -MD -MP -MF $(DEPDIR)/NoBuildArea.Tpo -c -o NoBuildArea.obj `if test -f 'server/zone/objects/area/NoBuildArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/NoBuildArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/NoBuildArea.cpp'; fi`
-@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/NoBuildArea.Tpo $(DEPDIR)/NoBuildArea.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/NoBuildArea.cpp' object='NoBuildArea.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o NoBuildArea.obj `if test -f 'server/zone/objects/area/NoBuildArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/NoBuildArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/NoBuildArea.cpp'; fi`
 
 AttackableObject.o: server/zone/objects/attackable/AttackableObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObject.o -MD -MP -MF $(DEPDIR)/AttackableObject.Tpo -c -o AttackableObject.o `test -f 'server/zone/objects/attackable/AttackableObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObject.cpp

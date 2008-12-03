@@ -1816,21 +1816,28 @@ void GameCommandHandler::getCords(StringTokenizer tokenizer, Player* player) {
 	msg << "Mobname is " << name << " \n";
 	player->sendSystemMessage(msg.toString());
 
-	FileWriter cordFile(new File("cords.txt"));
+	File* cordFile = new File("cords.txt");
 
-	if ((player->getParentID() == 0)) {
-		cordFile << "spawnCreature(" << name << ", " << player->getZoneIndex()
-				<< ", " << player->getPositionX() << ", "
-				<< player->getPositionY() << ")\n";
-	} else {
-		cordFile << "spawnCreatureInCell(" << name << ", "
-				<< player->getZoneIndex() << ", " << player->getPositionX()
-				<< ", " << player->getPositionZ() << ", "
-				<< player->getPositionY() << ", " << player->getParentID()
-				<< ")\n";
+	try {
+		FileWriter cordWriter(cordFile);
+
+		if ((player->getParentID() == 0)) {
+			cordWriter << "spawnCreature(" << name << ", " << player->getZoneIndex()
+					   << ", " << player->getPositionX() << ", "
+					   << player->getPositionY() << ")\n";
+		} else {
+			cordWriter << "spawnCreatureInCell(" << name << ", "
+					   << player->getZoneIndex() << ", " << player->getPositionX()
+					   << ", " << player->getPositionZ() << ", "
+					   << player->getPositionY() << ", " << player->getParentID()
+					   << ")\n";
+		}
+
+		cordWriter.close();
+	} catch (FileNotFoundException& e) {
 	}
 
-	cordFile.close();
+	delete cordFile;
 }
 
 void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player) {
