@@ -139,7 +139,7 @@ class GameCommandHandler {
 private:
 	static GMCommandMap* gmCommands;
 
-	static void help(StringTokenizer tokenizer, Player* player);
+	static void commands(StringTokenizer tokenizer, Player* player);
 	static void map(StringTokenizer tokenizer, Player* player);
 	static void warp(StringTokenizer tokenizer, Player* player);
 	static void warpTo(StringTokenizer tokenizer, Player* player);
@@ -194,7 +194,7 @@ private:
 	static void ecKill(StringTokenizer tokenizer, Player* player);
 	static void sendp(StringTokenizer tokenizer, Player* player);
 	static void requestStartingLocations(StringTokenizer tokenizer, Player* player);
-
+	static void help(StringTokenizer tokenizer, Player* player);
 	void init();
 
 public:

@@ -81,10 +81,10 @@ void GameCommandHandler::init() {
 
 	gmCommands = new GMCommandMap();
 
-	gmCommands->addCommand("help", ALL,
+	gmCommands->addCommand("commands", ALL,
 			"Prints a list of commands.",
-			"Usage: @help [command]",
-			&help);
+			"Usage: @commands [command]",
+			&commands);
 	gmCommands->addCommand("map", STAFF,
 			"Warps you to a different map.",
 			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4",
@@ -294,7 +294,7 @@ void GameCommandHandler::init() {
 			"Returns a list of characters a player has registrated with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
-	gmCommands->addCommand("sendp", ALL,
+	gmCommands->addCommand("sendp", DEVELOPER,
 			"Send Packet Test.",
 			"Usage: @sendp",
 			&sendp);
@@ -302,6 +302,10 @@ void GameCommandHandler::init() {
 				"Resends the Starting Locations packet in case you accidentally close the window.",
 				"Usage: @requestStartingLocations",
 				&requestStartingLocations);
+	gmCommands->addCommand("help", ALL,
+				"Launch a web browser to the SWGEmu Support site.",
+				"Usage: @help",
+				&help);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -324,7 +328,7 @@ void GameCommandHandler::handleCommand(String cmd, StringTokenizer tokenizer, Pl
 		player->sendSystemMessage("You do not have permission to use this command.");
 }
 
-void GameCommandHandler::help(StringTokenizer tokenizer, Player* player) {
+void GameCommandHandler::commands(StringTokenizer tokenizer, Player* player) {
 	if (tokenizer.hasMoreTokens()) {
 		String token;
 		tokenizer.getStringToken(token);
@@ -2471,4 +2475,10 @@ void GameCommandHandler::requestStartingLocations(StringTokenizer tokenizer, Pla
 		 player->sendSystemMessage("You can only use this command from the tutorial.");
 	 }
 }
+
+void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
+			LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com/support");
+			player->sendMessage(lbm);
+}
+
 
