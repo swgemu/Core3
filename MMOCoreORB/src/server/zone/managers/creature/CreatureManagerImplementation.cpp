@@ -578,10 +578,11 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		String objectName = result.getStringField("objectName");
 
-		String stfname = result.getStringField("stfName");
-		if (baby)
-			stfname += " baby";
 		String name = result.getStringField("name");
+
+		String stfname = result.getStringField("stfName");
+
+		String species = result.getStringField("speciesName");
 
 		String faction = result.getStringField("faction");
 
@@ -589,8 +590,11 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		creature->setFPValue(result.getIntField("factionPoints"));
 
-		if (!stfname.isEmpty())
-			creature->setCharacterName(stfname);
+		if (!stfname.isEmpty() && !species.isEmpty()) {
+			creature->setStfName(stfname);
+			creature->setSpeciesName(species);
+		} else if (!name.isEmpty())
+			creature->setCharacterName(name);
 		else if (objcrc == 0xBA7F23CD)
 			creature->setCharacterName(UnicodeString(makeStormTrooperName()));
 		else
