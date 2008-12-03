@@ -109,7 +109,7 @@ public:
 
 		} else {
 
-			System::out << "Name: " << contents->getName().toCharArray() << endl;
+			System::out << "Name: " << contents->getName().toString() << endl;
 			System::out << "Quantity: " << contents->getContents() << endl;
 		}
 	}

@@ -122,7 +122,7 @@ void LootManager::moveObject(TangibleObject* object, Player* player, Creature* c
 
 	if (player->getGroupObject() != NULL) {
 		StringBuffer grouptxt;
-		grouptxt << player->getCharacterName().toString() << " looted " << object->getName().toCharArray() << "\\#ffffff from " << creature->getCharacterName().toString();
+		grouptxt << player->getCharacterName().toString() << " looted " << object->getName().toString() << "\\#ffffff from " << creature->getCharacterName().toString();
 
 		UnicodeString utxt = UnicodeString(grouptxt.toString());
 		BaseMessage* packet = new ChatSystemMessage(utxt);

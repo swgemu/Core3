@@ -401,7 +401,7 @@ void ChatManagerImplementation::handleEmote(Player* player, Message* pack) {
 	pack->parseLong();
 	pack->parseUnicode(emote);
 
-	StringTokenizer tokenizer(emote.toCharArray());
+	StringTokenizer tokenizer(emote.toString());
 
 	try {
 		zone->lock();
@@ -442,7 +442,7 @@ void ChatManagerImplementation::handleMood(Player* player, Message* pack) {
 	pack->parseLong();
 	pack->parseUnicode(mood);
 
-	StringTokenizer tokenizer(mood.toCharArray());
+	StringTokenizer tokenizer(mood.toString());
 
 	if (!tokenizer.hasMoreTokens())
 		return;
@@ -531,7 +531,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
   		StringBuffer mySender;
   		mySender << "Guildmail: " << sendername;
 
-  		gm->sendGuildMail(sender, mySender.toString(), header.toCharArray() , body.toCharArray(), false);
+  		gm->sendGuildMail(sender, mySender.toString(), header.toString() , body.toString(), false);
 
   		return;
   	}
@@ -558,10 +558,10 @@ void ChatManagerImplementation::sendMail(const String& sendername, UnicodeString
 
 		//Receiver is valid: Insert mail into db.
 
-	  	String headerString = header.toCharArray();
+	  	String headerString = header.toString();
 	  	MySqlDatabase::escapeString(headerString);
 
-	  	String bodyString = body.toCharArray();
+	  	String bodyString = body.toString();
 	  	MySqlDatabase::escapeString(bodyString);
 
 	  	String senderName = sendername;
@@ -709,7 +709,7 @@ void ChatManagerImplementation::handleChatRoomMessage(Player* sender, Message* p
 	UnicodeString message;
 	pack->parseUnicode(message);
 
-	String adminmsg = message.toCharArray();
+	String adminmsg = message.toString();
 
 	if (adminmsg[0] == '@') {
 		try {
@@ -765,7 +765,7 @@ void ChatManagerImplementation::handleGroupChat(Player* sender, Message* pack) {
 	pack->parseUnicode(message);
 
 
-	String adminmsg = message.toCharArray();
+	String adminmsg = message.toString();
 
 	if (adminmsg[0] == '@') {
 		handleGameCommand(sender, adminmsg);
@@ -801,7 +801,7 @@ void ChatManagerImplementation::handleGuildChat(Player* sender, Message* pack) {
 	pack->parseUnicode(message);
 
 
-	String adminmsg = message.toCharArray();
+	String adminmsg = message.toString();
 
 	if (adminmsg[0] == '@') {
 		handleGameCommand(sender, adminmsg);

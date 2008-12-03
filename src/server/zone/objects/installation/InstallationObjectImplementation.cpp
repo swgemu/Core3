@@ -220,7 +220,7 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 
 		SuiListBox* redeedBox = new SuiListBox(player, 0x7280, 0x02);
 
-		redeedBox->setPromptTitle(this->getName().toCharArray());
+		redeedBox->setPromptTitle(this->getName().toString());
 
 		redeedBox->setPromptText("You have elected to destroy a structure.  Pertinent structure"
 				" data can be found in the list below.  Please complete the following steps"

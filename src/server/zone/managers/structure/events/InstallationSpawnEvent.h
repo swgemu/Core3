@@ -89,7 +89,7 @@ public:
 			// Create Waypoint to Structure
 			WaypointObject* waypoint =
 					new WaypointObject(player, player->getNewItemID());
-			waypoint->setName(inso->getName().toCharArray());
+			waypoint->setName(inso->getName().toString());
 			waypoint->setPosition(inso->getPositionX(), 0.0f, inso->getPositionY());
 			waypoint->changeStatus(true);
 

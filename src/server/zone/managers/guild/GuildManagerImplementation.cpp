@@ -1539,7 +1539,7 @@ void GuildManagerImplementation::removeOfflineFromGuild(Player* player, String k
 		removeToonFromGuildDB(removeCharID);
 
 		StringBuffer body;
-		body << playerName.toCharArray() << " has removed " << kickee << " from the guild.";
+		body << playerName.toString() << " has removed " << kickee << " from the guild.";
 
 		sendGuildMail(player, "Guild manager", "@guildmail:kick_subject", body.toString(), false);
 	}
@@ -1950,7 +1950,7 @@ void GuildManagerImplementation::updateGuildInDB(Player* player, String tag, Str
 	sendGuildListToPlayers(myGuild);
 
 	StringBuffer message;
-	message << fullName.toCharArray() << " has renamed the guild to '" << returnString << "' <" << tag << ">.";
+	message << fullName.toString() << " has renamed the guild to '" << returnString << "' <" << tag << ">.";
 
 	sendGuildMail(player, "Guild manager", "@guildmail:namechange_subject", message.toString(), false);
 

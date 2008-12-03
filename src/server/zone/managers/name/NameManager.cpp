@@ -73,45 +73,47 @@ NameManager::~NameManager() {
 
 void NameManager::fillNames() {
 	File* restrictedFile = new File("restrictednames.lst");
-	if (!restrictedFile->exists())
-		return;
-	else
-		info("parsing restricted names list: restrictednames.lst", true);
 
-	BannedNameSet* setp;
+	try {
+		FileReader restrictedReader(restrictedFile);
 
-	FileReader restrictedReader(restrictedFile);
+		BannedNameSet* setp;
 
-	String line;
-	bool isset = false;
+		String line;
+		bool isset = false;
 
-	while (restrictedReader.readLine(line)) {
-		String name = line.trim().toLowerCase();
+		while (restrictedReader.readLine(line)) {
+			String name = line.trim().toLowerCase();
 
-		if (name.subString(0, 2).compareTo("--") == 0 || name == "") {
-			continue; //skip it
-		} else if (name.indexOf("[profane]") != -1) {
-			isset = false;
-			continue;
-		} else if (name.indexOf("[developer]") != -1) {
-			isset = true;
-			setp = developerNames;
-			continue;
-		} else if (name.indexOf("[fiction]") != -1) {
-			isset = true;
-			setp = fictionNames;
-			continue;
-		} else if (name.indexOf("[reserved]") != -1) {
-			isset = true;
-			setp = reservedNames;
-			continue;
-		} else if (isset) {
-			setp->add(name);
-			continue;
-		} else {
-			profaneNames->add(name);
-			continue;
+			if (name == "" || ((name.length() > 1) && (name.subString(0, 2).compareTo("--") == 0))) {
+				continue; //skip it
+			} else if (name.indexOf("[profane]") != -1) {
+				isset = false;
+				continue;
+			} else if (name.indexOf("[developer]") != -1) {
+				isset = true;
+				setp = developerNames;
+				continue;
+			} else if (name.indexOf("[fiction]") != -1) {
+				isset = true;
+				setp = fictionNames;
+				continue;
+			} else if (name.indexOf("[reserved]") != -1) {
+				isset = true;
+				setp = reservedNames;
+				continue;
+			} else if (isset) {
+				setp->add(name);
+				continue;
+			} else {
+				profaneNames->add(name);
+				continue;
+			}
 		}
+	} catch (...) {
+		error("error parsing restricted names list: restrictednames.lst");
+		delete restrictedFile;
+		return;
 	}
 }
 

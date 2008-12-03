@@ -441,7 +441,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 
 			//TODO: Duration modifier for Master TK is not in this pack?
 			pack->parseUnicode(option);
-			actionModifier = option.toCharArray();
+			actionModifier = option.toString();
 
 			player->queueAction(player, target, actionCRC, actioncntr, actionModifier.toCharArray());
 		}
@@ -895,7 +895,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		case (0xDC7CF134): //diagnose
 			option = UnicodeString("");
 			pack->parseUnicode(option);
-			actionModifier = option.toCharArray();
+			actionModifier = option.toString();
 
 			//if (skillOptionID <=0 ) skillOptionID = 1; // default to level 1
 			break;
@@ -942,7 +942,7 @@ void ObjectControllerMessage::parsePowerupDragDrop(Player* player, Message* pack
 	UnicodeString UnicodeStringID;
 
 	pack->parseUnicode(UnicodeStringID);
-	StringTokenizer tokenizer(UnicodeStringID.toCharArray());
+	StringTokenizer tokenizer(UnicodeStringID.toString());
 
 	if (tokenizer.hasMoreTokens()) {
 		uint64 targetID = tokenizer.getLongToken();
@@ -1056,7 +1056,7 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 
 	//player->info(stats.toCharArray());
 
-	StringTokenizer tokenizer(stats.toCharArray());
+	StringTokenizer tokenizer(stats.toString());
 	tokenizer.setDelimeter(" ");
 
 	uint32 targetHealth, targetStrength, targetConstitution;
@@ -1075,7 +1075,7 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 	ss << "Player Name: " << player->getCharacterName().toString() << endl;
 	ss << "Species: " << player->getSpeciesName() << endl;
 	ss << "Sex: " << player->getGender() << endl;
-	ss << "Target Stats: " << stats.toCharArray() << endl;
+	ss << "Target Stats: " << stats.toString() << endl;
 	ss << "Min/Max/Current Health: " << player->getMinHealth() << " | " << player->getMaxHealth() << " | " << player->getBaseHealth() << endl;
 	ss << "Min/Max/Current Strength: " << player->getMinStrength() << " | " << player->getMaxStrength() << " | " << player->getBaseStrength() << endl;
 	ss << "Min/Max/Current Constitution: " << player->getMinConstitution() << " | " << player->getMaxConstitution() << " | " << player->getBaseConstitution() << endl;
@@ -1235,7 +1235,7 @@ void ObjectControllerMessage::parseSetBiography(Player* player, Message *pack) {
 	UnicodeString bio;
 	pack->parseUnicode(bio);
 
-	player->setBiography(bio.toCharArray());
+	player->setBiography(bio.toString());
 }
 
 void ObjectControllerMessage::parseBadgesRequest(Player* player, Message *pack) {
@@ -1249,7 +1249,7 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 	UnicodeString ticketmessage;
 	pack->parseUnicode(ticketmessage);
 
-	StringTokenizer tokenizer(ticketmessage.toCharArray());
+	StringTokenizer tokenizer(ticketmessage.toString());
 
 	String departurePlanet;
 	if (tokenizer.hasMoreTokens())
@@ -1356,7 +1356,7 @@ void ObjectControllerMessage::parseGetAttributes(Player* player, Message* pack) 
 	UnicodeString objectid;
 	pack->parseUnicode(objectid);
 
-	StringTokenizer ids(objectid.toCharArray());
+	StringTokenizer ids(objectid.toString());
 
 	while (ids.hasMoreTokens()) {
 		uint64 objid = 0;
@@ -1881,7 +1881,7 @@ void ObjectControllerMessage::parseSetCurrentSkillTitle(Player* player,
 	pack->shiftOffset(8); //shift past the blank id.
 	UnicodeString title;
 	pack->parseUnicode(title);
-	String newTitle = title.toCharArray();
+	String newTitle = title.toString();
 
 	if (!player->hasSkillBox(newTitle))
 		return;
@@ -2018,7 +2018,7 @@ void ObjectControllerMessage::parseFlourish(Player* player, Message* pack,
 
 	UnicodeString option = UnicodeString("");
 	pack->parseUnicode(option);
-	String actionModifier = option.toCharArray();
+	String actionModifier = option.toString();
 
 	player->queueFlourish(actionModifier, target, actionCntr);
 	//player->queueFlourish()
@@ -2030,7 +2030,7 @@ void ObjectControllerMessage::parseChangeMusic(Player* player, Message* pack) {
 
 	UnicodeString option = UnicodeString("");
 	pack->parseUnicode(option);
-	String actionModifier = option.toCharArray();
+	String actionModifier = option.toString();
 
 	player->startPlayingMusic(actionModifier, true);
 }
@@ -2040,7 +2040,7 @@ void ObjectControllerMessage::parseChangeDance(Player* player, Message* pack) {
 
 	UnicodeString option = UnicodeString("");
 	pack->parseUnicode(option);
-	String actionModifier = option.toCharArray();
+	String actionModifier = option.toString();
 
 	player->startDancing(actionModifier, true);
 }
@@ -2062,7 +2062,7 @@ void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {
 		ZoneServer* server = zone->getZoneServer();
 
 		try {
-			StringTokenizer tokenizer(waypoint.toCharArray());
+			StringTokenizer tokenizer(waypoint.toString());
 			tokenizer.setDelimeter(",");
 			float x = tokenizer.getFloatToken();
 			float y = tokenizer.getFloatToken();
@@ -2134,7 +2134,7 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 
 	UnicodeString rawWaypoint;
 	pack->parseUnicode(rawWaypoint);
-	String waypointData = rawWaypoint.toCharArray();
+	String waypointData = rawWaypoint.toString();
 
 	String waypointName = "New Waypoint";
 	String planet = Planet::getPlanetName(player->getZoneID());
@@ -2664,7 +2664,7 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 	UnicodeString tipParams;
 	pack->parseUnicode(tipParams);
 
-	StringTokenizer tokenizer(tipParams.toCharArray());
+	StringTokenizer tokenizer(tipParams.toString());
 	tokenizer.setDelimeter(" ");
 
 	if (!tokenizer.hasMoreTokens())
@@ -2893,7 +2893,7 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 			String victimName = "";
 			UnicodeString uniName = UnicodeString("");
 			uniName = target->getCharacterName();
-			victimName = uniName.toCharArray();
+			victimName = uniName.toString();
 
 			if (pointsGained > 0) {
 				switch (System::random(2)) {
@@ -3284,7 +3284,7 @@ void ObjectControllerMessage::parseResourceContainerSplit(Player* player,
 	UnicodeString resourceQuantity;
 	packet->parseUnicode(resourceQuantity);
 
-	StringTokenizer tokenizer(resourceQuantity.toCharArray());
+	StringTokenizer tokenizer(resourceQuantity.toString());
 
 	String quantityString;
 
@@ -3320,7 +3320,7 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player,
 	UnicodeString ustr;
 	packet->parseUnicode(ustr);
 
-	StringTokenizer tokenizer(ustr.toCharArray());
+	StringTokenizer tokenizer(ustr.toString());
 
 	String quantityString, toIDString;
 
@@ -3354,7 +3354,7 @@ void ObjectControllerMessage::parseRequestDraftSlotsBatch(Player* player,
 	UnicodeString crcAndID;
 	packet->parseUnicode(crcAndID);
 
-	StringTokenizer tokenizer(crcAndID.toCharArray());
+	StringTokenizer tokenizer(crcAndID.toString());
 
 	uint32 schematicID;
 	uint32 schematicCRC;
@@ -3378,7 +3378,7 @@ void ObjectControllerMessage::parseRequestResourceWeightsBatch(Player* player,
 	UnicodeString id;
 	packet->parseUnicode(id);
 
-	StringTokenizer tokenizer(id.toCharArray());
+	StringTokenizer tokenizer(id.toString());
 
 	uint32 schematicID;
 	if (tokenizer.hasMoreTokens())
@@ -3481,7 +3481,7 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
 	UnicodeString uniIndexOfSelectedSchematic;
 	packet->parseUnicode(uniIndexOfSelectedSchematic);
 
-	StringTokenizer tokenizer(uniIndexOfSelectedSchematic.toCharArray());
+	StringTokenizer tokenizer(uniIndexOfSelectedSchematic.toString());
 
 	int indexOfSelectedSchematic;
 
@@ -3575,7 +3575,7 @@ void ObjectControllerMessage::parseNextCraftingStage(Player* player,
 	UnicodeString d;
 	packet->parseUnicode(d);
 
-	String data = d.toCharArray();
+	String data = d.toString();
 
 	player->nextCraftingStage(data);
 
@@ -3588,7 +3588,7 @@ void ObjectControllerMessage::parseCraftCustomization(Player* player,
 	UnicodeString n;
 	packet->parseUnicode(n);
 
-	String name = n.toCharArray();
+	String name = n.toString();
 
 	packet->shiftOffset(1);
 
@@ -3622,7 +3622,7 @@ void ObjectControllerMessage::parseCreatePrototype(Player* player, Message* pack
 	UnicodeString d;
 	packet->parseUnicode(d);
 
-	String count = d.toCharArray();
+	String count = d.toString();
 
 	player->createPrototype(count);
 }
@@ -3679,7 +3679,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 	UnicodeString data;
 	pack->parseUnicode(data);
 
-	StringTokenizer tokenizer(data.toCharArray());
+	StringTokenizer tokenizer(data.toString());
 	tokenizer.setDelimeter(" ");
 
 	uint64 destinationID = tokenizer.getLongToken();
@@ -3738,7 +3738,7 @@ void ObjectControllerMessage::parseAddFriend(Player* player, Message* pack) {
 	UnicodeString d;
 	pack->parseUnicode(d);
 
-	String name = d.toCharArray();
+	String name = d.toString();
 
 	if (name != ""){
 		player->getPlayerObject()->addFriend(name, player->getZone()->getZoneServer()->getServerName());
@@ -3751,7 +3751,7 @@ void ObjectControllerMessage::parseRemoveFriend(Player* player, Message* pack) {
 	UnicodeString d;
 	pack->parseUnicode(d);
 
-	String name = d.toCharArray();
+	String name = d.toString();
 
 	if (name != ""){
 		player->getPlayerObject()->removeFriend(name);
@@ -3764,7 +3764,7 @@ void ObjectControllerMessage::parseFindFriend(Player* player, Message* pack, Pla
 	UnicodeString d;
 	pack->parseUnicode(d);
 
-	String name = d.toCharArray();
+	String name = d.toString();
 
 	if (name != ""){
 		player->getPlayerObject()->findFriend(name, playerManager);
@@ -3797,7 +3797,7 @@ void ObjectControllerMessage::parseAddIgnore(Player* player, Message* pack) {
 	UnicodeString d;
 	pack->parseUnicode(d);
 
-	String name = d.toCharArray();
+	String name = d.toString();
 
 	if (name != ""){
 		player->getPlayerObject()->addIgnore(name, player->getZone()->getZoneServer()->getServerName());
@@ -3811,7 +3811,7 @@ void ObjectControllerMessage::parseRemoveIgnore(Player* player, Message* pack) {
 	UnicodeString d;
 	pack->parseUnicode(d);
 
-	String name = d.toCharArray();
+	String name = d.toString();
 
 	if (name != ""){
 		player->getPlayerObject()->removeIgnore(name);
@@ -3827,7 +3827,7 @@ void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* p
 	pack->shiftOffset(8);
 	UnicodeString UnicodeStringName;
 	pack->parseUnicode(UnicodeStringName);
-	String name = UnicodeStringName.toCharArray();
+	String name = UnicodeStringName.toString();
 	String consentName = "";
 
 	if (name.isEmpty()) {
@@ -3874,7 +3874,7 @@ void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message*
 	pack->shiftOffset(8);
 	UnicodeString UnicodeStringName;
 	pack->parseUnicode(UnicodeStringName);
-	String name = UnicodeStringName.toCharArray();
+	String name = UnicodeStringName.toString();
 	String consentName = "";
 
 	if (name.isEmpty()) {
@@ -3908,7 +3908,7 @@ void ObjectControllerMessage::parseHaveConsentRequest(Player* player, Message* p
 	pack->shiftOffset(8);
 	UnicodeString UnicodeStringName;
 	pack->parseUnicode(UnicodeStringName);
-	String name = UnicodeStringName.toCharArray();
+	String name = UnicodeStringName.toString();
 	String consentName = "";
 
 	if (name.isEmpty()) {
@@ -4010,7 +4010,7 @@ void ObjectControllerMessage::parseDelFactionPoints(Player* player, Message* pac
 	UnicodeString tipParams;
 	pack->parseUnicode(tipParams);
 
-	StringTokenizer tokenizer(tipParams.toCharArray());
+	StringTokenizer tokenizer(tipParams.toString());
 	tokenizer.setDelimeter(" ");
 
 	if (!tokenizer.hasMoreTokens())

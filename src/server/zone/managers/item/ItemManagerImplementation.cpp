@@ -574,7 +574,7 @@ TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
 	TangibleObject* item = NULL;
 
 	item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
-			objectname.toCharArray(), objecttemp, equipped, false, "", 0);
+			objectname.toString(), objecttemp, equipped, false, "", 0);
 
 	/*if (item == NULL) {
 		System::out << "NULL ITEM" << endl;
@@ -595,7 +595,7 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 	}
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
 	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(),
-			objectid, templ->getObjectCRC(), UnicodeString(templ->getName().toCharArray()),
+			objectid, templ->getObjectCRC(), UnicodeString(templ->getName()),
 			(char *) templ->getTemplateName().toCharArray(), templ->isEquipped(), false, "", 0);
 
 	newTempl->setAttributes(templ->getAttributes());
@@ -1348,7 +1348,7 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 
 void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item) {
 	try {
-		String itemname = item->getName().toCharArray();
+		String itemname = item->getName().toString();
 		MySqlDatabase::escapeString(itemname);
 
 		String appearance;
@@ -1420,7 +1420,7 @@ void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject*
 
 		StringBuffer playertxt;
 		if (notify)
-			playertxt << "You have destroyed " << item->getName().toCharArray() << ".";
+			playertxt << "You have destroyed " << item->getName().toString() << ".";
 
 		player->sendSystemMessage(playertxt.toString());
 	} catch (DatabaseException& e) {

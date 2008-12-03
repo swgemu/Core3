@@ -303,7 +303,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 	itemType = obj->getObjectSubType();
 
-	String name = obj->getName().toCharArray();
+	String name = obj->getName().toString();
 
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
@@ -332,7 +332,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 		StringBuffer query2;
 		query2 << "INSERT into `bazaar_items` (objectid, name, description, item_type, ownerid, ownername,"
 		<< " price, auction, sold, expire, terminalid, planet, buyerid, bidderName) "
-		<< "VALUES (" << objectid << ",'\\" << name << "','" << description.toCharArray() << "'," << itemType << ","
+		<< "VALUES (" << objectid << ",'\\" << name << "','" << description.toString() << "'," << itemType << ","
 		<< player->getObjectID() << ",'" << playername << "'," << price << "," << auctionout << ",0,"
 		<< expire << "," << bazaarid << "," << planet << ",0,'');";
 
@@ -364,7 +364,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 	item->setOwnerID(player->getObjectID());
 	item->setOwnerName(playername);
 	item->setItemName(name);
-	item->setItemDescription(description.toCharArray());
+	item->setItemDescription(description.toString());
 	item->setItemType(itemType);
 	item->setPrice(price);
 	item->setAuction(auction);

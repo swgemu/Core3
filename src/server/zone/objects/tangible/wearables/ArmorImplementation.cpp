@@ -749,21 +749,21 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		luck = luck + 100;
 
 		StringBuffer itemText;
-		itemText << "\\#ffff00" << name.toCharArray() << " (Legendary)";
+		itemText << "\\#ffff00" << name.toString() << " (Legendary)";
 		name = UnicodeString(itemText.toString());
 	} else if (playerRoll > 55000) {
 		modifier = modifier + 50;
 		luck = luck + 50;
 
 		StringBuffer itemText;
-		itemText << "\\#ffff00" << name.toCharArray() << " (Exceptional)";
+		itemText << "\\#ffff00" << name.toString() << " (Exceptional)";
 		name = UnicodeString(itemText.toString());
 	} else if (playerRoll > 12500) {
 		modifier = modifier + 10;
 		luck = luck + 20;
 
 		StringBuffer itemText;
-		itemText << "\\#ffff00" << name.toCharArray();
+		itemText << "\\#ffff00" << name.toString();
 		name = UnicodeString(itemText.toString());
 	}
 

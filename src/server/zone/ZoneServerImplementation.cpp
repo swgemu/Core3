@@ -188,7 +188,7 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		missionManager = NULL;
 	}
 
-	for (int i = 0; i < 50; ++i) {
+	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
 		zone->finalize();
 	}

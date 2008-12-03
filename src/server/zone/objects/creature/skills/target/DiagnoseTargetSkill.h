@@ -95,7 +95,7 @@ public:
 		String targetName = "";
 		UnicodeString UnicodeStringName = UnicodeString("");
 		UnicodeStringName = creatureTarget->getCharacterName();
-		targetName = UnicodeStringName.toCharArray();
+		targetName = UnicodeStringName.toString();
 
 		SuiListBox* sui = new SuiListBox(player, 0xD1A6);
 		StringBuffer title;
