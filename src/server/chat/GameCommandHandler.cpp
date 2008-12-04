@@ -1251,13 +1251,11 @@ void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player * player) 
 }
 
 void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player * player) {
-	uint32 range;
+	uint32 range = 0;
 
 	try {
 		if (tokenizer.hasMoreTokens())
-			float range = tokenizer.getFloatToken();
-		else
-			range = 0;
+			range = tokenizer.getIntToken();
 
 		if (!tokenizer.hasMoreTokens()) {
 			player->sendSystemMessage("Error sending systemMessage - Usage: systemMessage RANGE TEXT");

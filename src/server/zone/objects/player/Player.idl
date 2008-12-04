@@ -578,6 +578,7 @@ interface Player implements CreatureObject {
 	boolean getCanSample();
 	void setCanSurvey();
 	void setCanSample();
+	void clearFirstSampleEvent();
 	void setSurveyEvent(string resource_name);
 	void setSampleEvent(string resource_name, boolean firstTime = false);
 	void setCancelSample(boolean val);

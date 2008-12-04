@@ -71,6 +71,8 @@ public:
 
 			player->setCanSample();
 
+			player->clearFirstSampleEvent();
+
 			if (player->isOnline() && !firstTime) {
 				if (resetCancelSample)
 					player->setCancelSample(false);

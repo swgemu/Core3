@@ -673,6 +673,8 @@ public:
 
 	void setCanSample();
 
+	void clearFirstSampleEvent();
+
 	void setSurveyEvent(string& resourcename);
 
 	void setSampleEvent(string& resourcename, bool firstTime = false);
@@ -1388,6 +1390,8 @@ public:
 	void setCanSurvey();
 
 	void setCanSample();
+
+	void clearFirstSampleEvent();
 
 	void setSurveyEvent(string& resourcename);
 

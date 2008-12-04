@@ -27,7 +27,7 @@ public:
 
 	void disconnect(bool doLock = true);
 
-	void closeConnection(bool doLock = true);
+	void closeConnection(bool lockPlayer, bool doLock = true);
 
 	void sendMessage(BaseMessage* msg);
 
@@ -69,7 +69,7 @@ public:
 
 	void disconnect(bool doLock);
 
-	void closeConnection(bool doLock);
+	void closeConnection(bool lockPlayer, bool doLock);
 
 	void sendMessage(BaseMessage* msg);
 

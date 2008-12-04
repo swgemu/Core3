@@ -1388,8 +1388,10 @@ void CreatureImplementation::doIncapacitate() {
 	deagro();
 	setPosture(CreaturePosture::DEAD);
 
-	if((isImperial() || isRebel()) && getLootOwner()->isPlayer()) {
-		Player * lootOwner = (Player *) getLootOwner();
+	CreatureObject* lootOwnerCreature = getLootOwner();
+	if ((isImperial() || isRebel()) && lootOwnerCreature != NULL && lootOwnerCreature->isPlayer()) {
+		Player* lootOwner = (Player *) getLootOwner();
+
 		string pfaction = (lootOwner->getFaction() == String::hashCode("imperial")) ? "imperial" : "rebel";
 		string myfaction = (faction == String::hashCode("imperial")) ? "imperial" : "rebel";
 
@@ -1403,7 +1405,6 @@ void CreatureImplementation::doIncapacitate() {
 }
 
 void CreatureImplementation::createHarvestList() {
-
 	Player* tempPlayer;
 	GroupObject* group;
 	Player* owner = (Player*) getLootOwner();

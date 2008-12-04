@@ -566,8 +566,8 @@ void PlayerImplementation::unload() {
 
 	removeEvents();
 
-	PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-	playerManager->updateOtherFriendlists(_this, false);
+	/*PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+	playerManager->updateOtherFriendlists(_this, false);*/
 
 	// remove from group
 	if (group != NULL && zone != NULL) {
@@ -819,7 +819,7 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 		}
 
 		if (closeClient && owner != NULL) {
-			owner->closeConnection();
+			owner->closeConnection(false);
 		}
 
 		owner = NULL;
@@ -1246,6 +1246,9 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 	if (newParent == NULL)
 		return;
 
+	if (!newParent->isCell())
+		return;
+
 	bool insert = false;
 
 	try {
@@ -1256,22 +1259,25 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 				zone->remove(this);
 				insert = true;
 			} else {
-				BuildingObject* building = (BuildingObject*) parent->getParent();
-				SceneObject* newObj = newParent->getParent();
+				if (parent->isCell()) {
+					BuildingObject* building = (BuildingObject*) parent->getParent();
+					SceneObject* newObj = newParent->getParent();
 
-				if (newObj->isBuilding()) {
-					BuildingObject* newBuilding = (BuildingObject*) newObj;
+					if (newObj->isBuilding()) {
+						BuildingObject* newBuilding = (BuildingObject*) newObj;
 
-					if (building != newBuilding) {
-						cout << "Does this actually ever happen when someone goes from one building to another?" << endl;
-						removeFromBuilding(building);
+						if (building != newBuilding) {
+							cout << "Does this actually ever happen when someone goes from one building to another?" << endl;
+							removeFromBuilding(building);
 
-						insert = true;
+							insert = true;
+						}
 					}
-				}
 
-				// remove from old cell
-				((CellObject*) parent)->removeChild(_this);
+					// remove from old cell
+					((CellObject*) parent)->removeChild(_this);
+				} else
+					insert = true;
 			}
 
 			//cout << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;

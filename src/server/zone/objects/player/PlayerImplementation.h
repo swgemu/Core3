@@ -89,6 +89,9 @@ class PlayerDigestEvent;
 class CenterOfBeingEvent;
 class PowerboostEventWane;
 class PowerboostEventEnd;
+class PlayerDisconnectEvent;
+class PlayerLogoutEvent;
+class PlayerResurrectEvent;
 
 class Datapad;
 
@@ -127,9 +130,9 @@ class PlayerImplementation : public PlayerServant {
 	Vector<CommandQueueAction*> commandQueue;
 	Time nextAction;
 
-	Event* disconnectEvent;
-	Event* logoutEvent;
-	Event* resurrectEvent;
+	PlayerDisconnectEvent* disconnectEvent;
+	PlayerLogoutEvent* logoutEvent;
+	PlayerResurrectEvent* resurrectEvent;
 
 	PlayerSaveStateEvent* playerSaveStateEvent;
 
@@ -1510,6 +1513,10 @@ public:
 
 	inline void setCanSample() {
 		sampleEvent = NULL;
+	}
+
+	inline void clearFirstSampleEvent() {
+		firstSampleEvent = NULL;
 	}
 
 	inline void setSurveyErrorMessage() {
