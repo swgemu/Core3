@@ -360,7 +360,7 @@ void GameCommandHandler::commands(StringTokenizer tokenizer, Player* player) {
 void GameCommandHandler::map(StringTokenizer tokenizer, Player* player) {
 	if (tokenizer.hasMoreTokens()) {
 		int planetid = tokenizer.getIntToken();
-		if (planetid >= 0 && planetid <= 45) //Servercrash risk! Do not change this back to 50 since there are no managers initialized
+		if ((planetid >= 0 && planetid <= 10) || planetid == 42) //Servercrash risk! Do not change this back to 50 since there are no managers initialized
 			player->switchMap(planetid);
 	} else {
 		player->sendSystemMessage("Usage: map <planetid>\n"
