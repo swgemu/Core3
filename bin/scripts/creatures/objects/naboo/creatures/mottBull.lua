@@ -139,7 +139,8 @@ mottBull = Creature:new {
 	meatType = "meat_herbivore_naboo",
 	meatMax = 100,
 
-	skills = { " Intimidation attack", "", "" }
+	--skills = { " Intimidation attack", "", "" }
+	skills = { "mottAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

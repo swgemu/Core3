@@ -139,7 +139,7 @@ domesticKrahbu = Creature:new {
 	meatType = "meat_herbivore_corellia",
 	meatMax = 230,
 
-	skills = { "", "", "" }
+	skills = { "krahbuAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

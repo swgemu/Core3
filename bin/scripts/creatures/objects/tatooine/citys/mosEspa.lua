@@ -1250,28 +1250,6 @@ mosEspaNpc55 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc56 = Creature:new {
-	objectName = "mosEspaNpc56",
-	creatureType = NPC,
-
-	speciesName = "feeder_tusken_questgiver",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3044338694,
-	positionX = -2799.39,
-	positionY = 2259.96,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.884284,
-	directionW = -0.46695,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc57 = Creature:new {
 	objectName = "mosEspaNpc57",
 	creatureType = NPC,
@@ -1778,28 +1756,6 @@ mosEspaNpc79 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc80 = Creature:new {
-	objectName = "mosEspaNpc80",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2579.03,
-	positionY = 2042.14,
-	positionZ = 5.26702,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.701866,
-	directionW = 0.712309,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc81 = Creature:new {
 	objectName = "mosEspaNpc81",
 	creatureType = NPC,
@@ -1866,28 +1822,6 @@ mosEspaNpc83 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc84 = Creature:new {
-	objectName = "mosEspaNpc84",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2585.79,
-	positionY = 2035.52,
-	positionZ = 5.0883,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.928485,
-	directionW = 0.371371,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc85 = Creature:new {
 	objectName = "mosEspaNpc85",
 	creatureType = NPC,
@@ -1905,116 +1839,6 @@ mosEspaNpc85 = Creature:new {
 	directionZ = 0,
 	directionY = 0.0838752,
 	directionW = 0.996476,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc86 = Creature:new {
-	objectName = "mosEspaNpc86",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2633.43,
-	positionY = 1952.51,
-	positionZ = 5.01395,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.888018,
-	directionW = -0.459809,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc87 = Creature:new {
-	objectName = "mosEspaNpc87",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2628.18,
-	positionY = 1955.15,
-	positionZ = 5.04651,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = -0.0707594,
-	directionW = 0.997494,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc88 = Creature:new {
-	objectName = "mosEspaNpc88",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2618.22,
-	positionY = 1957.43,
-	positionZ = 5.11747,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.747945,
-	directionW = 0.663761,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc89 = Creature:new {
-	objectName = "mosEspaNpc89",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2594.32,
-	positionY = 2215.81,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999391,
-	directionW = -0.0348797,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc90 = Creature:new {
-	objectName = "mosEspaNpc90",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2590.93,
-	positionY = 2218.28,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.535724,
-	directionW = 0.844393,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -2042,72 +1866,6 @@ mosEspaNpc91 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc92 = Creature:new {
-	objectName = "mosEspaNpc92",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2593.87,
-	positionY = 2226.87,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.579777,
-	directionW = 0.814776,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc93 = Creature:new {
-	objectName = "mosEspaNpc93",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2589.82,
-	positionY = 2226.13,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.820469,
-	directionW = 0.571691,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc94 = Creature:new {
-	objectName = "mosEspaNpc94",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2590.52,
-	positionY = 2218.13,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.89862,
-	directionW = 0.438727,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc95 = Creature:new {
 	objectName = "mosEspaNpc95",
 	creatureType = NPC,
@@ -2125,28 +1883,6 @@ mosEspaNpc95 = Creature:new {
 	directionZ = 0,
 	directionY = -0.539021,
 	directionW = 0.842292,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc96 = Creature:new {
-	objectName = "mosEspaNpc96",
-	creatureType = NPC,
-
-	speciesName = "rill_tempest",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2484.53,
-	positionY = 2081.3,
-	positionZ = 8.7534,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.872409,
-	directionW = -0.488776,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -2284,28 +2020,6 @@ mosEspaNpc102 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc103 = Creature:new {
-	objectName = "mosEspaNpc103",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2586.74,
-	positionY = 2327.16,
-	positionZ = 5.44835,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.913593,
-	directionW = -0.40663,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc104 = Creature:new {
 	objectName = "mosEspaNpc104",
 	creatureType = NPC,
@@ -2372,116 +2086,6 @@ mosEspaNpc106 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc107 = Creature:new {
-	objectName = "mosEspaNpc107",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2681.63,
-	positionY = 2446.35,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.419968,
-	directionW = 0.907539,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc108 = Creature:new {
-	objectName = "mosEspaNpc108",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2686.76,
-	positionY = 2433.69,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.859036,
-	directionW = -0.511915,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc109 = Creature:new {
-	objectName = "mosEspaNpc109",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2759.53,
-	positionY = 2452.82,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.605782,
-	directionW = 0.795631,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc110 = Creature:new {
-	objectName = "mosEspaNpc110",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2712.54,
-	positionY = 2478.41,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.269095,
-	directionW = 0.963114,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc111 = Creature:new {
-	objectName = "mosEspaNpc111",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2725.86,
-	positionY = 2448.69,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.34819,
-	directionW = 0.937424,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc112 = Creature:new {
 	objectName = "mosEspaNpc112",
 	creatureType = NPC,
@@ -2499,138 +2103,6 @@ mosEspaNpc112 = Creature:new {
 	directionZ = 0,
 	directionY = 0.873182,
 	directionW = -0.487394,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc113 = Creature:new {
-	objectName = "mosEspaNpc113",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2704.69,
-	positionY = 2447,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.952833,
-	directionW = 0.303496,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc114 = Creature:new {
-	objectName = "mosEspaNpc114",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2708.25,
-	positionY = 2502.65,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.287003,
-	directionW = 0.95793,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc115 = Creature:new {
-	objectName = "mosEspaNpc115",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2672.59,
-	positionY = 2453.01,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.974436,
-	directionW = -0.224665,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc116 = Creature:new {
-	objectName = "mosEspaNpc116",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2723.69,
-	positionY = 2481,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.241317,
-	directionW = 0.970447,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc117 = Creature:new {
-	objectName = "mosEspaNpc117",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2795.9,
-	positionY = 2465.26,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.890821,
-	directionW = -0.454355,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc118 = Creature:new {
-	objectName = "mosEspaNpc118",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2724.24,
-	positionY = 2493.81,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.887508,
-	directionW = 0.460793,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -2702,28 +2174,6 @@ mosEspaNpc121 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc122 = Creature:new {
-	objectName = "mosEspaNpc122",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2727.05,
-	positionY = 2452.36,
-	positionZ = 5,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = 0.89316,
-	directionW = -0.44974,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc123 = Creature:new {
 	objectName = "mosEspaNpc123",
 	creatureType = NPC,
@@ -2741,72 +2191,6 @@ mosEspaNpc123 = Creature:new {
 	directionZ = 0,
 	directionY = 0.532938,
 	directionW = 0.846154,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc124 = Creature:new {
-	objectName = "mosEspaNpc124",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2770.34,
-	positionY = 2507.88,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.628885,
-	directionW = 0.777498,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc125 = Creature:new {
-	objectName = "mosEspaNpc125",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2775.96,
-	positionY = 2483.96,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.984811,
-	directionW = 0.173633,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc126 = Creature:new {
-	objectName = "mosEspaNpc126",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2702.54,
-	positionY = 2484.93,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.7478,
-	directionW = -0.663924,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -2856,138 +2240,6 @@ mosEspaNpc128 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc129 = Creature:new {
-	objectName = "mosEspaNpc129",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2753.85,
-	positionY = 2515.57,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.590359,
-	directionW = 0.80714,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc130 = Creature:new {
-	objectName = "mosEspaNpc130",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2674.79,
-	positionY = 2495.31,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.707906,
-	directionW = 0.706307,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc131 = Creature:new {
-	objectName = "mosEspaNpc131",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2723.47,
-	positionY = 2516.85,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.919653,
-	directionW = -0.39273,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc132 = Creature:new {
-	objectName = "mosEspaNpc132",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2776.92,
-	positionY = 2519.58,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.896816,
-	directionW = 0.442404,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc133 = Creature:new {
-	objectName = "mosEspaNpc133",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2689.61,
-	positionY = 2510.66,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.896734,
-	directionW = 0.442569,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc134 = Creature:new {
-	objectName = "mosEspaNpc134",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2738.08,
-	positionY = 2593.59,
-	positionZ = 7.0857,
-
-	directionX = -0,
-	directionZ = -0,
-	directionY = 0.0879845,
-	directionW = 0.996122,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc135 = Creature:new {
 	objectName = "mosEspaNpc135",
 	creatureType = NPC,
@@ -3027,50 +2279,6 @@ mosEspaNpc136 = Creature:new {
 	directionZ = 0,
 	directionY = -0.240878,
 	directionW = 0.970555,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc137 = Creature:new {
-	objectName = "mosEspaNpc137",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2712.84,
-	positionY = 2531.4,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.551778,
-	directionW = 0.833991,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc138 = Creature:new {
-	objectName = "mosEspaNpc138",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2660.7,
-	positionY = 2500.87,
-	positionZ = 5.26786,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.968611,
-	directionW = 0.248581,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -3142,50 +2350,6 @@ mosEspaNpc141 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc142 = Creature:new {
-	objectName = "mosEspaNpc142",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2674.03,
-	positionY = 2516.33,
-	positionZ = 5.08911,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.956489,
-	directionW = 0.291767,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc143 = Creature:new {
-	objectName = "mosEspaNpc143",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2783.56,
-	positionY = 2547.41,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = -0,
-	directionY = -0.679706,
-	directionW = 0.733485,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc144 = Creature:new {
 	objectName = "mosEspaNpc144",
 	creatureType = NPC,
@@ -3203,50 +2367,6 @@ mosEspaNpc144 = Creature:new {
 	directionZ = 0,
 	directionY = 0.671853,
 	directionW = 0.740685,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc145 = Creature:new {
-	objectName = "mosEspaNpc145",
-	creatureType = NPC,
-
-	speciesName = "kitster_banai",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 684030067,
-	positionX = -2887.15,
-	positionY = 2494.08,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.244682,
-	directionW = 0.969603,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-mosEspaNpc146 = Creature:new {
-	objectName = "mosEspaNpc146",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2814.11,
-	positionY = 2564.44,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0763575,
-	directionW = 0.997081,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -3291,28 +2411,6 @@ mosEspaNpc148 = Creature:new {
 	directionZ = 0,
 	directionY = 0.916565,
 	directionW = -0.399887,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc149 = Creature:new {
-	objectName = "mosEspaNpc149",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2688.24,
-	positionY = 2540.25,
-	positionZ = 5.18783,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.448908,
-	directionW = 0.893578,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -3428,28 +2526,6 @@ mosEspaNpc154 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc155 = Creature:new {
-	objectName = "mosEspaNpc155",
-	creatureType = NPC,
-
-	speciesName = "tatooine_mynock_greater",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4044500153,
-	positionX = -2697.2,
-	positionY = 2579.61,
-	positionZ = 5.68001,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.506457,
-	directionW = 0.862265,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc156 = Creature:new {
 	objectName = "mosEspaNpc156",
 	creatureType = NPC,
@@ -3516,28 +2592,6 @@ mosEspaNpc158 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc159 = Creature:new {
-	objectName = "mosEspaNpc159",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2872.34,
-	positionY = 2645.44,
-	positionZ = 5.55843,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.781637,
-	directionW = -0.623734,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc160 = Creature:new {
 	objectName = "mosEspaNpc160",
 	creatureType = NPC,
@@ -3577,28 +2631,6 @@ mosEspaNpc161 = Creature:new {
 	directionZ = 0,
 	directionY = 0.943936,
 	directionW = -0.330128,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc162 = Creature:new {
-	objectName = "mosEspaNpc162",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2867.04,
-	positionY = 2645.57,
-	positionZ = 5.66638,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.41401,
-	directionW = 0.910272,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -3670,28 +2702,6 @@ mosEspaNpc165 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc166 = Creature:new {
-	objectName = "mosEspaNpc166",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2878.72,
-	positionY = 2655.63,
-	positionZ = 5.73483,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.983147,
-	directionW = -0.182818,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc167 = Creature:new {
 	objectName = "mosEspaNpc167",
 	creatureType = NPC,
@@ -3714,28 +2724,6 @@ mosEspaNpc167 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc168 = Creature:new {
-	objectName = "mosEspaNpc168",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2961.46,
-	positionY = 2651.28,
-	positionZ = 5.95319,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = -0.623119,
-	directionW = 0.782127,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc169 = Creature:new {
 	objectName = "mosEspaNpc169",
 	creatureType = NPC,
@@ -3753,28 +2741,6 @@ mosEspaNpc169 = Creature:new {
 	directionZ = 0,
 	directionY = 0.305099,
 	directionW = 0.952321,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc170 = Creature:new {
-	objectName = "mosEspaNpc170",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2956.31,
-	positionY = 2647.42,
-	positionZ = 5.85355,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.925346,
-	directionW = 0.379124,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -4066,28 +3032,6 @@ mosEspaNpc183 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc184 = Creature:new {
-	objectName = "mosEspaNpc184",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -2998.58,
-	positionY = 2701.67,
-	positionZ = 7.10669,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.435902,
-	directionW = 0.899994,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc185 = Creature:new {
 	objectName = "mosEspaNpc185",
 	creatureType = NPC,
@@ -4220,50 +3164,6 @@ mosEspaNpc190 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc191 = Creature:new {
-	objectName = "mosEspaNpc191",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3012.17,
-	positionY = 2691.38,
-	positionZ = 7.90734,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.886574,
-	directionW = -0.462588,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc192 = Creature:new {
-	objectName = "mosEspaNpc192",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3010.7,
-	positionY = 2696.54,
-	positionZ = 8.06339,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0366138,
-	directionW = 0.99933,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc193 = Creature:new {
 	objectName = "mosEspaNpc193",
 	creatureType = NPC,
@@ -4281,138 +3181,6 @@ mosEspaNpc193 = Creature:new {
 	directionZ = 0,
 	directionY = 0.838528,
 	directionW = -0.544859,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc194 = Creature:new {
-	objectName = "mosEspaNpc194",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3075.74,
-	positionY = 2609.75,
-	positionZ = 6.01681,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.161731,
-	directionW = 0.986835,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc195 = Creature:new {
-	objectName = "mosEspaNpc195",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3074.46,
-	positionY = 2617.97,
-	positionZ = 6.07262,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.201404,
-	directionW = 0.979508,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc196 = Creature:new {
-	objectName = "mosEspaNpc196",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3069.16,
-	positionY = 2614.47,
-	positionZ = 5.91533,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.585011,
-	directionW = 0.811025,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc197 = Creature:new {
-	objectName = "mosEspaNpc197",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3068.78,
-	positionY = 2624.45,
-	positionZ = 6.01769,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0843541,
-	directionW = 0.996436,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc198 = Creature:new {
-	objectName = "mosEspaNpc198",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -3064.46,
-	positionY = 2615.22,
-	positionZ = 5.7272,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.604217,
-	directionW = 0.79682,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc199 = Creature:new {
-	objectName = "mosEspaNpc199",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3073.79,
-	positionY = 2617.18,
-	positionZ = 6.05983,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.212468,
-	directionW = 0.977168,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -4594,72 +3362,6 @@ mosEspaNpc207 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc208 = Creature:new {
-	objectName = "mosEspaNpc208",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 741031462,
-	positionX = -3068.28,
-	positionY = 2320.75,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.607615,
-	directionW = 0.794232,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc209 = Creature:new {
-	objectName = "mosEspaNpc209",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4162283815,
-	positionX = -3118.48,
-	positionY = 2307.51,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.583375,
-	directionW = 0.812203,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc210 = Creature:new {
-	objectName = "mosEspaNpc210",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 741031462,
-	positionX = -3118.48,
-	positionY = 2307.51,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.583378,
-	directionW = 0.812201,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc211 = Creature:new {
 	objectName = "mosEspaNpc211",
 	creatureType = NPC,
@@ -4677,72 +3379,6 @@ mosEspaNpc211 = Creature:new {
 	directionZ = 0,
 	directionY = -0.391772,
 	directionW = 0.920062,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc212 = Creature:new {
-	objectName = "mosEspaNpc212",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -3249.68,
-	positionY = 2224.78,
-	positionZ = 5.837,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.998574,
-	directionW = -0.053387,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc213 = Creature:new {
-	objectName = "mosEspaNpc213",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -3232.15,
-	positionY = 2232.39,
-	positionZ = 6.18538,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.845553,
-	directionW = 0.533892,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc214 = Creature:new {
-	objectName = "mosEspaNpc214",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -3252.78,
-	positionY = 2230.5,
-	positionZ = 6.52437,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.84309,
-	directionW = -0.537773,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -4770,50 +3406,6 @@ mosEspaNpc215 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc216 = Creature:new {
-	objectName = "mosEspaNpc216",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2603521920,
-	positionX = -3150.12,
-	positionY = 2205.48,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.994226,
-	directionW = -0.107308,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc217 = Creature:new {
-	objectName = "mosEspaNpc217",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1931190505,
-	positionX = -3156.04,
-	positionY = 2205.87,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999701,
-	directionW = -0.0244678,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc218 = Creature:new {
 	objectName = "mosEspaNpc218",
 	creatureType = NPC,
@@ -4836,28 +3428,6 @@ mosEspaNpc218 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc219 = Creature:new {
-	objectName = "mosEspaNpc219",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3241.57,
-	positionY = 2216.06,
-	positionZ = 5.39865,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.517172,
-	directionW = 0.855881,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc220 = Creature:new {
 	objectName = "mosEspaNpc220",
 	creatureType = NPC,
@@ -4875,94 +3445,6 @@ mosEspaNpc220 = Creature:new {
 	directionZ = 0,
 	directionY = 0.906801,
 	directionW = 0.421559,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc221 = Creature:new {
-	objectName = "mosEspaNpc221",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1495617954,
-	positionX = -3194.21,
-	positionY = 2198.54,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.205773,
-	directionW = 0.9786,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc222 = Creature:new {
-	objectName = "mosEspaNpc222",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1938688799,
-	positionX = -3155.85,
-	positionY = 2205.08,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.778765,
-	directionW = 0.627316,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc223 = Creature:new {
-	objectName = "mosEspaNpc223",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1931190505,
-	positionX = -3191.88,
-	positionY = 2192.99,
-	positionZ = 5,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = -0.578737,
-	directionW = 0.815515,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc224 = Creature:new {
-	objectName = "mosEspaNpc224",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2375379724,
-	positionX = -3190.6,
-	positionY = 2178.72,
-	positionZ = 5,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = 0.40199,
-	directionW = 0.915644,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -4990,28 +3472,6 @@ mosEspaNpc225 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc226 = Creature:new {
-	objectName = "mosEspaNpc226",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3726012530,
-	positionX = -3201.79,
-	positionY = 2187.24,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.941204,
-	directionW = -0.33784,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc227 = Creature:new {
 	objectName = "mosEspaNpc227",
 	creatureType = NPC,
@@ -5031,28 +3491,6 @@ mosEspaNpc227 = Creature:new {
 	directionW = -0.209009,
 	randomMovement = 0,
 	mood = "",
-	cellID = 0
-}
-
-mosEspaNpc228 = Creature:new {
-	objectName = "mosEspaNpc228",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1616396794,
-	positionX = -3146.3,
-	positionY = 2195.74,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.317991,
-	directionW = 0.948094,
-	randomMovement = 0,
-	mood = "calm",
 	cellID = 0
 }
 
@@ -5100,160 +3538,6 @@ mosEspaNpc230 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc231 = Creature:new {
-	objectName = "mosEspaNpc231",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1938688799,
-	positionX = -3169.68,
-	positionY = 2163.63,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0195816,
-	directionW = 0.999808,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc232 = Creature:new {
-	objectName = "mosEspaNpc232",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 490930067,
-	positionX = -3170.53,
-	positionY = 2172.6,
-	positionZ = 5,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = 0.740774,
-	directionW = -0.671754,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-mosEspaNpc233 = Creature:new {
-	objectName = "mosEspaNpc233",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1938688799,
-	positionX = -3172.19,
-	positionY = 2168.25,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.909088,
-	directionW = -0.416603,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-mosEspaNpc234 = Creature:new {
-	objectName = "mosEspaNpc234",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 490930067,
-	positionX = -3166.47,
-	positionY = 2158.61,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.00688489,
-	directionW = 0.999976,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-mosEspaNpc235 = Creature:new {
-	objectName = "mosEspaNpc235",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3411344577,
-	positionX = -3163.26,
-	positionY = 2160.37,
-	positionZ = 5,
-
-	directionX = 1.18327e-05,
-	directionZ = -1.04106e-05,
-	directionY = 0.114707,
-	directionW = 0.993399,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-mosEspaNpc236 = Creature:new {
-	objectName = "mosEspaNpc236",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 344653298,
-	positionX = -3168.43,
-	positionY = 2169.08,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.621695,
-	directionW = 0.783259,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-mosEspaNpc237 = Creature:new {
-	objectName = "mosEspaNpc237",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1938688799,
-	positionX = -3175.76,
-	positionY = 2161.62,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.982178,
-	directionW = 0.187956,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 mosEspaNpc238 = Creature:new {
 	objectName = "mosEspaNpc238",
 	creatureType = NPC,
@@ -5298,116 +3582,6 @@ mosEspaNpc239 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc240 = Creature:new {
-	objectName = "mosEspaNpc240",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3337.76,
-	positionY = 2207.57,
-	positionZ = 7.3219,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.882889,
-	directionW = -0.469581,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc241 = Creature:new {
-	objectName = "mosEspaNpc241",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1077493527,
-	positionX = -3165.99,
-	positionY = 2154.07,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.608368,
-	directionW = 0.793655,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc242 = Creature:new {
-	objectName = "mosEspaNpc242",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1077493527,
-	positionX = -3175.45,
-	positionY = 2149.81,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.823323,
-	directionW = -0.567573,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc243 = Creature:new {
-	objectName = "mosEspaNpc243",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3221946711,
-	positionX = -3163.13,
-	positionY = 2150.73,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.966873,
-	directionW = 0.255259,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc244 = Creature:new {
-	objectName = "mosEspaNpc244",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3646837680,
-	positionX = -3167.97,
-	positionY = 2150.55,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.793026,
-	directionW = 0.609188,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc245 = Creature:new {
 	objectName = "mosEspaNpc245",
 	creatureType = NPC,
@@ -5430,72 +3604,6 @@ mosEspaNpc245 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc246 = Creature:new {
-	objectName = "mosEspaNpc246",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3257.35,
-	positionY = 2118.72,
-	positionZ = 5.46191,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999922,
-	directionW = 0.0124637,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc247 = Creature:new {
-	objectName = "mosEspaNpc247",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3253.53,
-	positionY = 2125.54,
-	positionZ = 5.24487,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.795584,
-	directionW = 0.605843,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc248 = Creature:new {
-	objectName = "mosEspaNpc248",
-	creatureType = NPC,
-
-	speciesName = "minor_worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3258.59,
-	positionY = 2132.91,
-	positionZ = 5.19927,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.514426,
-	directionW = 0.857535,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc249 = Creature:new {
 	objectName = "mosEspaNpc249",
 	creatureType = NPC,
@@ -5513,28 +3621,6 @@ mosEspaNpc249 = Creature:new {
 	directionZ = 0,
 	directionY = 0.907554,
 	directionW = 0.419936,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc250 = Creature:new {
-	objectName = "mosEspaNpc250",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -3250.93,
-	positionY = 2105.16,
-	positionZ = 5.68002,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.992642,
-	directionW = -0.121088,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -5672,50 +3758,6 @@ mosEspaNpc258 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc259 = Creature:new {
-	objectName = "mosEspaNpc259",
-	creatureType = NPC,
-
-	speciesName = "watto_thieves",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1616396794,
-	positionX = -3158.86,
-	positionY = 2159.15,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.837772,
-	directionW = 0.54602,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc260 = Creature:new {
-	objectName = "mosEspaNpc260",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -3207.4,
-	positionY = 2028.55,
-	positionZ = 5.68534,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.24002,
-	directionW = 0.970768,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc261 = Creature:new {
 	objectName = "mosEspaNpc261",
 	creatureType = NPC,
@@ -5782,50 +3824,6 @@ mosEspaNpc263 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc264 = Creature:new {
-	objectName = "mosEspaNpc264",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -3204.8,
-	positionY = 2007.91,
-	positionZ = 5.93603,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = 0.503674,
-	directionW = 0.863894,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc265 = Creature:new {
-	objectName = "mosEspaNpc265",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3213.79,
-	positionY = 2012.58,
-	positionZ = 6.5217,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.270737,
-	directionW = 0.962653,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc266 = Creature:new {
 	objectName = "mosEspaNpc266",
 	creatureType = NPC,
@@ -5887,94 +3885,6 @@ mosEspaNpc268 = Creature:new {
 	directionZ = 0,
 	directionY = -0.316444,
 	directionW = 0.948611,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc269 = Creature:new {
-	objectName = "mosEspaNpc269",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3242.18,
-	positionY = 1949.38,
-	positionZ = 5.11691,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0938603,
-	directionW = 0.995585,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc270 = Creature:new {
-	objectName = "mosEspaNpc270",
-	creatureType = NPC,
-
-	speciesName = "worrt",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1368967713,
-	positionX = -3227.98,
-	positionY = 1939.4,
-	positionZ = 4.76563,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.522058,
-	directionW = 0.85291,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc271 = Creature:new {
-	objectName = "mosEspaNpc271",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1189502506,
-	positionX = -3078.17,
-	positionY = 2058.81,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.967804,
-	directionW = 0.251705,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc272 = Creature:new {
-	objectName = "mosEspaNpc272",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 741031462,
-	positionX = -3078.17,
-	positionY = 2058.81,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.967769,
-	directionW = 0.251838,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -6063,50 +3973,6 @@ mosEspaNpc276 = Creature:new {
 	directionZ = 0,
 	directionY = 0.998638,
 	directionW = -0.052181,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc277 = Creature:new {
-	objectName = "mosEspaNpc277",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 300124372,
-	positionX = -3075.89,
-	positionY = 2040.74,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.602117,
-	directionW = 0.798408,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc278 = Creature:new {
-	objectName = "mosEspaNpc278",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_mos_espa_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 42070043,
-	positionX = -3053.53,
-	positionY = 2039.03,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.664884,
-	directionW = 0.746946,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -6261,28 +4127,6 @@ mosEspaNpc285 = Creature:new {
 	directionZ = 0,
 	directionY = -0.67167,
 	directionW = 0.740851,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc286 = Creature:new {
-	objectName = "mosEspaNpc286",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -3108.03,
-	positionY = 1896.46,
-	positionZ = 5.62114,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.995787,
-	directionW = 0.0916971,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -6706,28 +4550,6 @@ mosEspaNpc305 = Creature:new {
 	cellID = 0
 }
 
-mosEspaNpc306 = Creature:new {
-	objectName = "mosEspaNpc306",
-	creatureType = NPC,
-
-	speciesName = "watto_leg_syndil",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 849175958,
-	positionX = -2866.54,
-	positionY = 1856.86,
-	positionZ = 5,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.854179,
-	directionW = -0.519979,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEspaNpc307 = Creature:new {
 	objectName = "mosEspaNpc307",
 	creatureType = NPC,
@@ -6813,28 +4635,6 @@ mosEspaNpc310 = Creature:new {
 	directionW = 0.976567,
 	randomMovement = 0,
 	mood = "",
-	cellID = 0
-}
-
-mosEspaNpc311 = Creature:new {
-	objectName = "mosEspaNpc311",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2795.61,
-	positionY = 1767.23,
-	positionZ = 5.42368,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.949344,
-	directionW = -0.314239,
-	randomMovement = 0,
-	mood = "calm",
 	cellID = 0
 }
 
@@ -6987,28 +4787,6 @@ mosEspaNpc318 = Creature:new {
 	directionZ = 0,
 	directionY = -0.340995,
 	directionW = 0.940065,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc319 = Creature:new {
-	objectName = "mosEspaNpc319",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2795.65,
-	positionY = 1752.01,
-	positionZ = 6.41057,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.986027,
-	directionW = 0.166588,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -7383,50 +5161,6 @@ mosEspaNpc336 = Creature:new {
 	directionZ = 0,
 	directionY = -0.217768,
 	directionW = 0.976,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc337 = Creature:new {
-	objectName = "mosEspaNpc337",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2723.39,
-	positionY = 1842.49,
-	positionZ = 5.02906,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0827664,
-	directionW = 0.996569,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-mosEspaNpc338 = Creature:new {
-	objectName = "mosEspaNpc338",
-	creatureType = NPC,
-
-	speciesName = "rill",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1669128383,
-	positionX = -2724.42,
-	positionY = 1826.85,
-	positionZ = 5.34057,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.270749,
-	directionW = 0.96265,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -7879,7 +5613,7 @@ mosEspaNpc359 = Creature:new {
 	speciesName = "bartender",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "mob/creature_names",
+	stfName = "npc_name",
 	objectCRC = 3043344299,
 	positionX = -11.1703,
 	positionY = 1.53149,

@@ -44,11 +44,12 @@
 
 -- Dantooine
 RunSkillsFile("creatureSkills/dantooine/creatures/bolAttacks.lua")
+RunSkillsFile("creatureSkills/dantooine/creatures/dunelizardAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/graulAttacks.lua")
-RunSkillsFile("creatureSkills/dantooine/creatures/graulMarauderAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/huurtonAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/picketAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/quenkerAttacks.lua")
+RunSkillsFile("creatureSkills/dantooine/creatures/slicehoundAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/thuneAttacks.lua")
+RunSkillsFile("creatureSkills/dantooine/creatures/tuskcatAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/creatures/voritorAttacks.lua")
-

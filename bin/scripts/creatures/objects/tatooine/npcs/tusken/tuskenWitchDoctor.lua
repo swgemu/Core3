@@ -48,9 +48,8 @@ tuskenWitchDoctor = Creature:new {
 
 	speciesName = "tusken_witch_doctor",
 	stfName = "mob/creature_names", 
-	objectCRC = 3780705985, 
 	socialGroup = "Tusken Raider",
-	
+	 
 
 	level = 202,	
 
@@ -83,7 +82,7 @@ tuskenWitchDoctor = Creature:new {
 	acid = 45,
 	lightsaber = 0,
 
-	accuracy = 420,
+	accuracy = 380,
 
 	healer = 0,
 
@@ -94,9 +93,9 @@ tuskenWitchDoctor = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
+	  
 	
-	meleeDefense = 1,  
-	
+	meleeDefense = 1,    
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -106,8 +105,8 @@ tuskenWitchDoctor = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 650,
-	weaponMaxDamage = 850,
+	weaponMinDamage = 500,
+	weaponMaxDamage = 1200,
 	weaponAttackSpeed = 1.6,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -125,7 +124,7 @@ tuskenWitchDoctor = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "11,15,19,24,25,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,11,15,19,24,25,33,99", -- Group it belongs to for loot
 	
 	tame = 0,  -- Likely hood to be tamed
 

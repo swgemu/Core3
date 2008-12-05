@@ -139,7 +139,8 @@ mammothBeardedJax = Creature:new {
 	meatType = "meat_herbivore_rori",
 	meatMax = 25,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "jaxAttack3", "jaxAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

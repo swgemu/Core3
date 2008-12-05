@@ -139,7 +139,8 @@ quenkerRelicReaper = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 35,
 
-	skills = { " Blind attack", " Intimidation attack", "" }
+	--skills = { " Blind attack", " Intimidation attack", "" }
+	skills = { "quenkerAttack5", "quenkerAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

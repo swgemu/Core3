@@ -139,7 +139,7 @@ corellianButterflyDrone = Creature:new {
 	meatType = "meat_insect_corellia",
 	meatMax = 3,
 
-	skills = { "", "", "" }
+	skills = { "corellianButterflyAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

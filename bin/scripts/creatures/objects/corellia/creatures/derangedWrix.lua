@@ -139,7 +139,8 @@ derangedWrix = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 55,
 
-	skills = { " Stun attack", " Intimidation attack", "" }
+	--skills = { " Stun attack", " Intimidation attack", "" }
+	skills = { "wrixAttack1", "wrixAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

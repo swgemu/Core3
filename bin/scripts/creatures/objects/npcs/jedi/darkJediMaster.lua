@@ -51,10 +51,8 @@ darkJediMaster = Creature:new {
 	objectCRC = 2005105485, 
 	socialGroup = "sith",
 	
-
 	level = 400,
 	
-
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 444000,
@@ -84,7 +82,7 @@ darkJediMaster = Creature:new {
  	acid = 90,
  	lightSaber = 0, 
 
-	accuracy = 500,
+	accuracy = 400,
 
 	healer = 0,
 
@@ -92,11 +90,12 @@ darkJediMaster = Creature:new {
 	herd = 0,
 	stalker = 0,
 	killer = 1,
-	aggressive = 0,
+	aggressive = 1,
 	invincible = 0, 
-
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	  
+        meleeDefense = 1,  
+	  
+        rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
@@ -124,7 +123,7 @@ darkJediMaster = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,39,40,100", -- Group it belongs to for loot
+        lootGroup = "0,1,3,4,11,15,19,33,39,40,100", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

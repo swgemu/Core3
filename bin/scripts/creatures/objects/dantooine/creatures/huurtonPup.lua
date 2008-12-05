@@ -139,7 +139,7 @@ huurtonPup = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 10,
 
-	skills = { "", "", "" }
+	skills = { "huurtonAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

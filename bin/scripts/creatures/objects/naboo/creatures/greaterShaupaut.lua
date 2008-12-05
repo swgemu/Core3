@@ -139,7 +139,8 @@ greaterShaupaut = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 10,
 
-	skills = { " Blind attack", " Stun attack", "" }
+	--skills = { " Blind attack", " Stun attack", "" }
+	skills = { "shaupautAttack1", "shaupautAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

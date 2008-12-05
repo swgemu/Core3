@@ -139,7 +139,8 @@ piketEnragedDefender = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 35,
 
-	skills = { " Posture down attack", " Blind attack", "" }
+	--skills = { " Posture down attack", " Blind attack", "" }
+	skills = { "picketAttack2", "picketAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

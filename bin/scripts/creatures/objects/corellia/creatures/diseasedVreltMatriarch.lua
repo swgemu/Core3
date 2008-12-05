@@ -100,7 +100,7 @@ diseasedVreltMatriarch = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "", -- Name ex. 'a Vibrolance'
 	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -139,7 +139,8 @@ diseasedVreltMatriarch = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 10,
 
-	skills = { " Disease attack (mild)", " Posture down attack", " Ranged attack (spit)" }
+	--skills = { " Disease attack (mild)", " Posture down attack", " Ranged attack (spit)" }
+	skills = { "vreltAttack2", "vreltAttack1", "vreltAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,8 @@ noxiousVreltScavenger = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 10,
 
-	skills = { " Stun attack", " Disease attack (mild)", " Ranged attack (spit)" }
+	--skills = { " Stun attack", " Disease attack (mild)", " Ranged attack (spit)" }
+	skills = { "vreltAttack4", "vreltAttack2", "vreltAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,8 @@ sharnaffRecklessRavager = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 450,
 
-	skills = { " Knockdown attack", " Dizzy attack", "" }
+	--skills = { " Knockdown attack", " Dizzy attack", "" }
+	skills = { "sharnaffAttack3", "sharnaffAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

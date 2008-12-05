@@ -42,7 +42,7 @@
 
 --Corellia
 if (PLANET_ID == 0) then
- RunCreatureFile("spawns/corellia/staticSpawns.lua")
+ RunCreatureFile("spawns/corellia/staticSpawns.lua") 
  RunCreatureFile("spawns/corellia/afarathuCave.lua")
  RunCreatureFile("spawns/corellia/drallCave.lua")
  RunCreatureFile("spawns/corellia/lordNyaxCult.lua")

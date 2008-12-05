@@ -139,7 +139,8 @@ fambaaFuriousDevastator = Creature:new {
 	meatType = "meat_reptilian_naboo",
 	meatMax = 1250,
 
-	skills = { " Intimidation attack", " Posture down attack", "" }
+	--skills = { " Intimidation attack", " Posture down attack", "" }
+	skills = { "fambaaAttack3", "fambaaAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,8 @@ giantPekoPeko = Creature:new {
 	meatType = "meat_avian_naboo",
 	meatMax = 155,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "pekoPekoAttack1", "pekoPekoAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

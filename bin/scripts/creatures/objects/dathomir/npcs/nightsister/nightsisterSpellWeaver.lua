@@ -84,7 +84,7 @@ nightsisterSpellWeaver = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 370,
 
 	healer = 1,
 
@@ -105,8 +105,8 @@ nightsisterSpellWeaver = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 450,
+	weaponMinDamage = 300,
+	weaponMaxDamage = 850,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -116,15 +116,15 @@ nightsisterSpellWeaver = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 250,
-	alternateWeaponMaxDamage = 450,
+	alternateWeaponMinDamage = 350,
+	alternateWeaponMaxDamage = 800,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,19,30,33,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,7 +140,7 @@ nightsisterSpellWeaver = Creature:new {
 	meatMax = 0,
 
 	skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
-	respawnTimer = 400,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -139,7 +139,7 @@ narglatchCub = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 30,
 
-	skills = { "", "", "" }
+	skills = { "narglatchAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

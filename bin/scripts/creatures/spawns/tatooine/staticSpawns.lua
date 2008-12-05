@@ -157,4 +157,3 @@ spawnCreatures(worrt, 8, 227, -5349, 30, 1)
 
 --Misc
 spawnCreature(darkJawa, 8, 7042, 7038)
-spawnCreatures(tuskenExecutionerRandom, 8, -3890, 6356, 3000, 1)

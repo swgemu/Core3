@@ -139,7 +139,8 @@ borgleMatriarch = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 5,
 
-	skills = { " Posture down attack", "", "" }
+	--skills = { " Posture down attack", "", "" }
+	skills = { "borgleBatAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

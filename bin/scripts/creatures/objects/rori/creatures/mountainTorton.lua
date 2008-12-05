@@ -139,7 +139,8 @@ mountainTorton = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 1400,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "tortonAttack1", "tortonAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

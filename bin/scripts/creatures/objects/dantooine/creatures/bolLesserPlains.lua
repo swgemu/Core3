@@ -139,7 +139,7 @@ bolLesserPlains = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 35,
 
-	skills = { "", "", "" }
+	skills = { "bolAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

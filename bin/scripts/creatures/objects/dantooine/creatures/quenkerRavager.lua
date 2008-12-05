@@ -139,7 +139,8 @@ quenkerRavager = Creature:new {
 	meatType = "meat_wild_dantooine",
 	meatMax = 35,
 
-	skills = { " Dizzy attack", " Area attack (poison)", "" }
+	--skills = { " Dizzy attack", " Area attack (poison)", "" }
+	skills = { "quenkerAttack3", "quenkerAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

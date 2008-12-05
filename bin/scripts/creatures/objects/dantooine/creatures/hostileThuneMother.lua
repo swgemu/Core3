@@ -139,7 +139,8 @@ hostileThuneMother = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 135,
 
-	skills = { " Blind attack", "", "" }
+	--skills = { " Blind attack", "", "" }
+	skills = { "thuneAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

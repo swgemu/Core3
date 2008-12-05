@@ -139,8 +139,9 @@ narglatch = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 75,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
-	 respawnTimer = 60,
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "narglatchAttack1", "narglatchAttack2" },
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

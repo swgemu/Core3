@@ -139,7 +139,8 @@ ikopiStag = Creature:new {
 	meatType = "meat_wild_naboo",
 	meatMax = 100,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "ikopiAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

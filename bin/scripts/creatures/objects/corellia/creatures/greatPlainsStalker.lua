@@ -139,7 +139,8 @@ greatPlainsStalker = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 65,
 
-	skills = { " Blind attack", " Stun attack", "" }
+	--skills = { " Blind attack", " Stun attack", "" }
+	skills = { "sandPantherAttack3", "sandPantherAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

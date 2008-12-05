@@ -139,8 +139,8 @@ kaadu = Creature:new {
 	meatType = "meat_avian_naboo",
 	meatMax = 120,
 
-	skills = { "", "", "" }
-	 respawnTimer = 60,
+	skills = { "kaaduAttack1" },
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

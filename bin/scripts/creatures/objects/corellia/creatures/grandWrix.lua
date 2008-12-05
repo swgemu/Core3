@@ -139,7 +139,8 @@ grandWrix = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 70,
 
-	skills = { " Knockdown attack", " Stun attack", "" }
+	--skills = { " Knockdown attack", " Stun attack", "" }
+	skills = { "wrixAttack3", "wrixAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

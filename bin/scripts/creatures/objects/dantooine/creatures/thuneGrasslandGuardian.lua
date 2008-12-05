@@ -139,7 +139,8 @@ thuneGrasslandGuardian = Creature:new {
 	meatType = "meat_herbivore_dantooine",
 	meatMax = 135,
 
-	skills = { " Posture down attack", " Dizzy attack", "" }
+	--skills = { " Posture down attack", " Dizzy attack", "" }
+	skills = { "thuneAttack3", "thuneAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

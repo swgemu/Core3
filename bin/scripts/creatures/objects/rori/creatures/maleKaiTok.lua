@@ -139,7 +139,8 @@ maleKaiTok = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 25,
 
-	skills = { " Posture down attack", " Ranged attack (spit)", "" }
+	--skills = { " Posture down attack", " Ranged attack (spit)", "" }
+	skills = { "kaiTokAttack3", "kaiTokAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

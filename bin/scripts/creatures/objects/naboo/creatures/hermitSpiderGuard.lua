@@ -139,7 +139,8 @@ hermitSpiderGuard = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 9,
 
-	skills = { " Poison attack (mild)", " Stun attack", "" }
+	--skills = { " Poison attack (mild)", " Stun attack", "" }
+	skills = { "hermitSpiderAttack2", "hermitSpiderAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -139,7 +139,8 @@ warGronda = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 390,
 
-	skills = { " Stun attack", " Knockdown attack", "" }
+	--skills = { " Stun attack", " Knockdown attack", "" }
+	skills = { "grondaAttack1", "grondaAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

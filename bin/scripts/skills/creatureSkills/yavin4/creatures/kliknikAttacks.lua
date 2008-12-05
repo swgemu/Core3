@@ -43,11 +43,11 @@ kliknikAttack1 = {
 	attackname = "kliknikAttack1",
 	animation = "creature_attack_light",
 	
-	requiredWeaponType = NONE,
+	requiredWeaponType = MELEE,
 
 	range = 10,
 
-	damageRatio = 9,
+	damageRatio = 5,
 
 	speedRatio = 2,
 

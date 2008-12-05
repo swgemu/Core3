@@ -84,7 +84,7 @@ darkJediKnight = Creature:new {
  	acid = 90,
  	lightSaber = 0, 
 
-	accuracy = 500,
+	accuracy = 400,
 
 	healer = 0,
 
@@ -92,7 +92,7 @@ darkJediKnight = Creature:new {
 	herd = 0,
 	stalker = 0,
 	killer = 1,
-	aggressive = 0,
+	aggressive = 1,
 	invincible = 0, 
 
 	meleeDefense = 1,  
@@ -124,7 +124,7 @@ darkJediKnight = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,39,40,100", -- Group it belongs to for loot
+	lootGroup = "0,1,3,11,15,19,33,39,40,100", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

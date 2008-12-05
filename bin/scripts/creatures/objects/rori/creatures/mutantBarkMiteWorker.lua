@@ -139,7 +139,8 @@ mutantBarkMiteWorker = Creature:new {
 	meatType = "meat_insect_rori",
 	meatMax = 15,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "barkMiteAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

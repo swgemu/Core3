@@ -139,7 +139,8 @@ domesticHumbaba = Creature:new {
 	meatType = "meat_domesticated_corellia",
 	meatMax = 215,
 
-	skills = { " Posture down attack", "", "" }
+	--skills = { " Posture down attack", "", "" }
+	skills = { "humbabaAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

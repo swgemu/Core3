@@ -139,7 +139,8 @@ crimsonSandPanther = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 65,
 
-	skills = { " Dizzy attack", " Stun attack", "" }
+	--skills = { " Dizzy attack", " Stun attack", "" }
+	skills = { "sandPantherAttack1", "sandPantherAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

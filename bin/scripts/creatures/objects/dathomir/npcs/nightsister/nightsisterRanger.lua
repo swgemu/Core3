@@ -59,18 +59,18 @@ nightsisterRanger = Creature:new {
 
 	healthMax = 15000,
 	healthMin = 12000,
-	strength = 500,
-	constitution = 500,
+	strength = 5000,
+	constitution = 5000,
 
 	actionMax = 15000,
 	actionMin = 12000,
-	quickness = 500,
-	stamina = 500,
+	quickness = 5000,
+	stamina = 5000,
 
 	mindMax = 15000,
 	mindMin = 12000,
-	focus = 500,
-	willpower = 500,
+	focus = 5000,
+	willpower = 5000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -84,7 +84,7 @@ nightsisterRanger = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -105,11 +105,11 @@ nightsisterRanger = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 175,
-	weaponMaxDamage = 200,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 700,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
@@ -120,11 +120,11 @@ nightsisterRanger = Creature:new {
 	alternateWeaponMaxDamage = 250,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,1,3,11,19,30,33,39,40", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,7 +140,7 @@ nightsisterRanger = Creature:new {
 	meatMax = 0,
 
 	skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44", "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51" },
-	 respawnTimer = 300,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -139,7 +139,7 @@ domesticBeardedJax = Creature:new {
 	meatType = "meat_domesticated_rori",
 	meatMax = 11,
 
-	skills = { "", "", "" }
+	skills = { "jaxAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

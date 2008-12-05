@@ -140,7 +140,7 @@ plumedRasp = Creature:new {
 	meatMax = 3,
 
 	skills = { "plumedRaspAttack1" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

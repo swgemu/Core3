@@ -52,25 +52,25 @@ nightsisterSentry = Creature:new {
 	socialGroup = "Nightsister",
 	
 
-	level = 27,
+	level = 57,
 	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 8800,
 	healthMin = 7200,
-	strength = 500,
-	constitution = 500,
+	strength = 5000,
+	constitution = 5000,
 
 	actionMax = 8800,
 	actionMin = 7200,
-	quickness = 500,
-	stamina = 500,
+	quickness = 5000,
+	stamina = 5000,
 
 	mindMax = 8800,
 	mindMin = 7200,
-	focus = 500,
-	willpower = 500,
+	focus = 5000,
+	willpower = 5000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -106,25 +106,25 @@ nightsisterSentry = Creature:new {
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 175,
-	weaponMaxDamage = 200,
+	weaponMaxDamage = 450,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 175,
-	alternateWeaponMaxDamage = 250,
+	alternateWeaponMinDamage = 100,
+	alternateWeaponMaxDamage = 200,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,19,30,39", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,7 +140,7 @@ nightsisterSentry = Creature:new {
 	meatMax = 0,
 
 	skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44", "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51" },
-	 respawnTimer = 300,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

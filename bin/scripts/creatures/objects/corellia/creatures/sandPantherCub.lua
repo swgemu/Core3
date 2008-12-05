@@ -139,7 +139,8 @@ sandPantherCub = Creature:new {
 	meatType = "meat_carnivore_corellia",
 	meatMax = 25,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "sandPantherAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

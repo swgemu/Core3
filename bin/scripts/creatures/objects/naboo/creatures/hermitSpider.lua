@@ -139,8 +139,8 @@ hermitSpider = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 60,
 
-	skills = { "", "", "" }
-	 respawnTimer = 60,
+	skills = { "hermitSpiderAttack1" },
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

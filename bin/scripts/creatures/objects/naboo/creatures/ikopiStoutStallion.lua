@@ -139,7 +139,8 @@ ikopiStoutStallion = Creature:new {
 	meatType = "meat_wild_naboo",
 	meatMax = 70,
 
-	skills = { " Posture down attack", " Stun attack", "" }
+	--skills = { " Posture down attack", " Stun attack", "" }
+	skills = { "ikopiAttack2", "ikopiAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

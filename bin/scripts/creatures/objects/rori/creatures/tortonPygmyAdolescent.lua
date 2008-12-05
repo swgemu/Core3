@@ -139,7 +139,8 @@ tortonPygmyAdolescent = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 500,
 
-	skills = { " Knockdown attack", " Dizzy attack", "" }
+	--skills = { " Knockdown attack", " Dizzy attack", "" }
+	skills = { "tortonAttack1", "tortonAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

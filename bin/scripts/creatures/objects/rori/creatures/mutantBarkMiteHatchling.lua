@@ -139,7 +139,8 @@ mutantBarkMiteHatchling = Creature:new {
 	meatType = "meat_insect_rori",
 	meatMax = 10,
 
-	skills = { " Blind attack", "", "" }
+	--skills = { " Blind attack", "", "" }
+	skills = { "barkMiteAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

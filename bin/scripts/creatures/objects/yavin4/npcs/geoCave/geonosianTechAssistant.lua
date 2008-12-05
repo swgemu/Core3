@@ -59,18 +59,18 @@ geonosianTechAssistant = Creature:new {
 
 	healthMax = 12200,
 	healthMin = 10000,
-	strength = 0,
-	constitution = 0,
+	strength = 2000,
+	constitution = 2000,
 
 	actionMax = 12200,
 	actionMin = 10000,
-	quickness = 0,
-	stamina = 0,
+	quickness = 2000,
+	stamina = 2000,
 
 	mindMax = 12200,
 	mindMin = 10000,
-	focus = 0,
-	willpower = 0,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -84,7 +84,7 @@ geonosianTechAssistant = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -100,16 +100,16 @@ geonosianTechAssistant = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Geonosian Tech Assist", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 100,
+	weaponMaxDamage = 300,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -124,7 +124,7 @@ geonosianTechAssistant = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,80", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -139,8 +139,8 @@ geonosianTechAssistant = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "geonosianCrazedAttack1", "geonosianCrazedAttack2", "geonosianCrazedAttack3", "geonosianCrazedAttack4"  },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

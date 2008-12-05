@@ -139,7 +139,8 @@ veermokHunter = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 150,
 
-	skills = { " Stun attack", " Blind attack", "" }
+	--skills = { " Stun attack", " Blind attack", "" }
+	skills = { "veermokAttack5", "veermokAttack6" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

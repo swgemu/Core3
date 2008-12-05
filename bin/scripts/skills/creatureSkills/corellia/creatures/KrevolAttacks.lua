@@ -1,5 +1,5 @@
 --Copyright (C) 2007 <SWGEmu>
- 
+
 --This File is part of Core3.
  
 --This program is free software; you can redistribute 
@@ -70,5 +70,3 @@ hornedKrevolAttack1 = {
 }
 
 AddRandomPoolAttackTargetSkill(hornedKrevolAttack1)
-
------------------------------------------------

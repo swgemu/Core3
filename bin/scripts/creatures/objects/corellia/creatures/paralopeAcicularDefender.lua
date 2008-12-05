@@ -139,7 +139,8 @@ paralopeAcicularDefender = Creature:new {
 	meatType = "meat_herbivore_corellia",
 	meatMax = 5,
 
-	skills = { " Blind attack", "", "" }
+	--skills = { " Blind attack", "", "" }
+	skills = { "paralopeAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

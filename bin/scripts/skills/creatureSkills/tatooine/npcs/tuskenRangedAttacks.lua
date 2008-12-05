@@ -40,149 +40,6 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-tuskenRangedAttack1 = {
-	attackname = "tuskenRangedAttack1",
-	animation = "fire_1_special_single_medium",
-	
-	requiredWeaponType = RIFLE,
-
-	range = 64,
-
-	damageRatio = 10,
-
-	speedRatio = 1.5,
-	coneAngle = 0,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 5,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack1)
-
------------------------------------------------------------------------
-
-tuskenRangedAttack2 = {
-	attackname = "tuskenRangedAttack2",
-	animation = "fire_1_special_single_medium",
-	
-	requiredWeaponType = RIFLE,
-
-	range = 64,
-
-	damageRatio = 15,
-
-	speedRatio = 1.5,
-	coneAngle = 0,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 5,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack2)
-
------------------------------------------------------------------------
-
-tuskenRangedAttack3 = {
-	attackname = "tuskenRangedAttack3",
-	animation = "fire_1_special_single_medium",
-	
-	requiredWeaponType = RIFLE,
-
-	range = 64,
-
-	damageRatio = 10,
-
-	speedRatio = 4,
-	coneAngle = 60,
-
-	areaRange = 30,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack3)
-
------------------------------------------------------------------------
-
-tuskenRangedAttack4 = { 
-	attackname = "tuskenRangedAttack4",
-	animation = "fire_3_special_single_medium",
-
-	requiredWeaponType = RIFLE,
-	
-	range = 64,
-	damageRatio = 4.5,
-	speedRatio = 3,
-	areaRange = 0,
-	accuracyBonus = 0,
-
-	dotChance = 50,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 2,
-	bleedingType = HEALTH,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
-	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
-}
-
-AddDotPoolAttackTargetSkill(tuskenRangedAttack4)
-
------------------------------------------------------------------------
-
 tuskenRangedAttack5 = {
 	attackname = "tuskenRangedAttack5",
 	animation = "fire_1_special_single_medium",
@@ -196,11 +53,11 @@ tuskenRangedAttack5 = {
 	speedRatio = 2,
 	coneAngle = 60,
 
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 0,
+	postureDownChance = 1,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -231,14 +88,14 @@ tuskenRangedAttack6 = {
 	speedRatio = 2,
 	coneAngle = 60,
 
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 20,
+	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 20,
+	dizzyChance = 60,
+	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -266,7 +123,7 @@ tuskenRangedAttack7 = {
 	speedRatio = 2,
 	coneAngle = 60,
 
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -274,7 +131,7 @@ tuskenRangedAttack7 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 60,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
@@ -301,16 +158,16 @@ tuskenRangedAttack8 = {
 	speedRatio = 2,
 	coneAngle = 60,
 
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 60,
 	stunChance = 0,
-	intimidateChance = 10,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -336,16 +193,16 @@ tuskenRangedAttack9 = {
 	speedRatio = 2,
 	coneAngle = 60,
 
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 50,
+	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 40,
+	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 0,
+	intimidateChance = 60,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -371,7 +228,7 @@ tuskenRangedAttack10 = {
 	speedRatio = 2,
 	coneAngle = 60,
 
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -406,14 +263,14 @@ tuskenRangedAttack11 = {
 	speedRatio = 2,
 	coneAngle = 60,
 
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 10,
-	blindChance = 1,
+	dizzyChance = 0,
+	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -441,16 +298,16 @@ tuskenRangedAttack12 = {
 	speedRatio = 2,
 	coneAngle = 60,
 
-	areaRange = 30,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 10,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 1,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -471,7 +328,7 @@ tuskenRangedAttack13 = {
 
 	range = 64,
 
-	damageRatio = 5,
+	damageRatio = 2,
 
 	speedRatio = 2,
 	coneAngle = 0,
@@ -491,7 +348,7 @@ tuskenRangedAttack13 = {
 	poisonStrength = 0,
 	poisonType = 0,
 
-	diseaseStrength = 2,
+	diseaseStrength = 0,
 	diseaseType = HEALTH,
 	
 	CbtSpamBlock = "attack_block",

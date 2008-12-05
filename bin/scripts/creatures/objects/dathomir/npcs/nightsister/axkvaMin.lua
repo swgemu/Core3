@@ -59,18 +59,18 @@ axkvaMin = Creature:new {
 
 	healthMax = 471000,
 	healthMin = 385000,
-	strength = 0,
-	constitution = 0,
+	strength = 30000,
+	constitution = 30000,
 
 	actionMax = 471000,
 	actionMin = 385000,
-	quickness = 0,
-	stamina = 0,
+	quickness = 30000,
+	stamina = 30000,
 
 	mindMax = 471000,
 	mindMin = 385000,
-	focus = 0,
-	willpower = 0,
+	focus = 30000,
+	willpower = 30000,
 
 	height = 1, -- Size of creature
 	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -84,7 +84,7 @@ axkvaMin = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 400,
 
 	healer = 1,
 
@@ -106,7 +106,7 @@ axkvaMin = Creature:new {
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 800,
-	weaponMaxDamage = 1600,
+	weaponMaxDamage = 1800,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -116,15 +116,15 @@ axkvaMin = Creature:new {
 	alternateWeaponTemp = "shared_baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 900,
-	alternateWeaponMaxDamage = 1700,
+	alternateWeaponMinDamage = 300,
+	alternateWeaponMaxDamage = 500,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,30,33,37,39,40,51,52,53,54,55,56,57,58,59,60", -- Group it belongs to for loot
+	lootGroup = "11,15,19,30,33,37", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -139,7 +139,7 @@ axkvaMin = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
+	skills = { "nightsisterAttack40", "nightsisterAttack41", "nightsisterAttack42", "nightsisterAttack43", "nightsisterAttack44",  "nightsisterAttack45", "nightsisterAttack46", "nightsisterAttack47", "nightsisterAttack48", "nightsisterAttack49", "nightsisterAttack50", "nightsisterAttack51" },
 	respawnTimer = 43200,
 
 	behaviorScript = "", -- Link to the behavior script for this object

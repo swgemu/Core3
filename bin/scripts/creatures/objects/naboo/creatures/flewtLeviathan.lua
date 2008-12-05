@@ -139,7 +139,8 @@ flewtLeviathan = Creature:new {
 	meatType = "meat_insect_naboo",
 	meatMax = 3,
 
-	skills = { " Dizzy attack", "", "" }
+	--skills = { " Dizzy attack", "", "" }
+	skills = { "flewtAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

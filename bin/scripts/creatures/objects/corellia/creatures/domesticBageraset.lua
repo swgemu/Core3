@@ -139,7 +139,8 @@ domesticBageraset = Creature:new {
 	meatType = "meat_herbivore_corellia",
 	meatMax = 240,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "bagerasetAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

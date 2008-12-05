@@ -139,7 +139,8 @@ maleSwampTuskCat = Creature:new {
 	meatType = "meat_carnivore_naboo",
 	meatMax = 70,
 
-	skills = { " Blind attack", "", "" }
+	--skills = { " Blind attack", "", "" }
+	skills = { "tuskCatAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

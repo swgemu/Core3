@@ -100,7 +100,7 @@ screamingKaiTok = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "", -- Name ex. 'a Vibrolance'
 	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -139,7 +139,8 @@ screamingKaiTok = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 25,
 
-	skills = { " Ranged attack (spit)", " Dizzy attack", "" }
+	--skills = { " Ranged attack (spit)", " Dizzy attack", "" }
+	skills = { "kaiTokAttack2", "kaiTokAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

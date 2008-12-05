@@ -139,7 +139,8 @@ vrobalSow = Creature:new {
 	meatType = "meat_carnivore_rori",
 	meatMax = 13,
 
-	skills = { " Stun attack", "", "" }
+	--skills = { " Stun attack", "", "" }
+	skills = { "vrobalAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
