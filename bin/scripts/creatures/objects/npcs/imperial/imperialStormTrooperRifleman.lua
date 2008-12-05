@@ -96,21 +96,21 @@ stormtrooperRifleman = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	meleeDefense = 79,  
+	rangedDefense = 100,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/rifle/shared_rifle_dlt20a.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Storm Rifleman Dlt20a", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_dlt20a", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RIFLE", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 200,
+	weaponMaxDamage = 313,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,7 +140,7 @@ stormtrooperRifleman = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
+	skills = { "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack3", "imperialStormTrooperRiflemanAttack4" }
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

@@ -72,8 +72,8 @@ imperialStormTrooper = Creature:new {
 	mindMin = 7200,
 	focus = 500,
 	willpower = 500,
-
 	height = 1, -- Size of creature
+
 	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 30,
 	energy = 65,

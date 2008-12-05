@@ -53,7 +53,7 @@ stormtrooperSquadLeader = Creature:new {
 	socialGroup = "imperial",
 	
 
-	level = 1,
+	level = 42,
 	
 
 	combatFlags = 0,
@@ -96,21 +96,21 @@ stormtrooperSquadLeader = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	meleeDefense = 79,  
+	rangedDefense = 101,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
+	weapon = "object/weapon/ranged/rifle/shared_rifle_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Imperial Standard Issue E11", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_e11", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RIFLE", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 79,
+	weaponMaxDamage = 250,
 	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,7 +140,7 @@ stormtrooperSquadLeader = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
+	skills = { "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack4" }
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

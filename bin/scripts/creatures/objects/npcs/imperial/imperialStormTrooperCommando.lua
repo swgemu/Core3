@@ -97,8 +97,8 @@ imperialStormTrooperCommando = Creature:new {
 	aggressive = 0,
 	invincible = 0,
 	
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	meleeDefense = 79,  
+	rangedDefense = 79,
 	
 	randomMovement = 0,
 
@@ -111,7 +111,7 @@ imperialStormTrooperCommando = Creature:new {
 	weaponEquipped = 1,
 	weaponMinDamage = 250,
 	weaponMaxDamage = 400,
-	weaponAttackSpeed = 1.5,
+	weaponAttackSpeed = 4.9,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
