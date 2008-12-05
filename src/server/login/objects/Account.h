@@ -223,6 +223,7 @@ public:
 					return ACCOUNTBANNED;
 				}
 
+				/*
 				try {
 					string test = res->getString(6);
 					isBanned = true;
@@ -235,7 +236,7 @@ public:
 				if(isBanned){
 					delete res;
 					return ACCOUNTNOTACTIVE;
-				}
+				} */
 
 				string forSalt = forumSalt;
 				MySqlDatabase::escapeString(forSalt);
@@ -274,7 +275,7 @@ public:
 			uint32 sessionKey = 0; //temp until we store the session key in the db and check on zone server
 			Message* lct = new LoginClientToken(username, sessionKey, accountID, stationID);
 			client->sendMessage(lct);
-			
+
 			//send the sessionkey to the DB here
 
 			loadGalaxies(client);
