@@ -53,10 +53,10 @@ rebelCommando = Creature:new {
 	socialGroup = "Rebel",
 	
 
-	level = 1,
+	level = 30,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 8800,
 	healthMin = 7200,
@@ -101,16 +101,16 @@ rebelCommando = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/draft_schematic/weapon/shared_rifle_flame_thrower.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "rebel flamer", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 440,
+	weaponMaxDamage = 637,
+	weaponAttackSpeed = 5,
+	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,7 +140,7 @@ rebelCommando = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
+	skills = { "rebelCommandoAttack1", "rebelCommandoAttack2", "" }
 	-- respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
