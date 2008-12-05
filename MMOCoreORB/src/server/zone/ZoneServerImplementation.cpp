@@ -190,7 +190,9 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 
 	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
-		zone->finalize();
+
+		if (zone != NULL)
+			zone->finalize();
 	}
 
 	zones.removeAll();
@@ -206,10 +208,16 @@ void ZoneServerImplementation::init() {
 	info("initializing zones", true);
 
 	for (int i = 0; i < 45; ++i) {
-		Zone* zone = new Zone(_this, processor, i);
-		zone->deploy("Zone", i);
+		Zone * zone;
 
-		zone->startManagers();
+		if (i > 10 && i != 42) {
+			zone = NULL;
+		} else {
+			zone = new Zone(_this, processor, i);
+			zone->deploy("Zone", i);
+
+			zone->startManagers();
+		}
 
 		zones.add(zone);
 	}
@@ -302,12 +310,17 @@ void ZoneServerImplementation::shutdown() {
 
 	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
-		zone->stopManagers();
+		if (zone != NULL)
+			zone->stopManagers();
 	}
+
+	info("zones shut down", true);
 
 	scheduler->stop();
 
 	printInfo(true);
+
+	info("shut down complete", true);
 }
 
 void ZoneServerImplementation::stopManagers() {

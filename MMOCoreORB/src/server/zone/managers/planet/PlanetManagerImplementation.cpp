@@ -146,12 +146,12 @@ void PlanetManagerImplementation::start() {
 void PlanetManagerImplementation::stop() {
 	lock();
 
-	structureManager->unloadStructures();
 	clearShuttles();
 	clearTicketCollectors();
 	clearTravelTerminals();
 	clearCraftingStations();
 	clearStaticTangibleObjects();
+	structureManager->unloadStructures();
 
 	unlock();
 }
