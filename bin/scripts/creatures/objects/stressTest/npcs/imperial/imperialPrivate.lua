@@ -47,8 +47,7 @@ imperialPrivateStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "imperial_private",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Imperial Private", 
 	objectCRC = 519244536, 
 	socialGroup = "Imperial",
 	
@@ -105,7 +104,7 @@ imperialPrivateStress = Creature:new {
 	weaponName = "Imperial Issue E11 Carbine", -- Name ex. 'a Vibrolance'
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
+	weaponEquipped = 1,
 	weaponMinDamage = 55,
 	weaponMaxDamage = 140,
 	weaponAttackSpeed = 2.2,

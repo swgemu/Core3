@@ -46,8 +46,7 @@ tortonStress = Creature:new {
 	faction = "Torton",
 	gender = "",
 
-	speciesName = "torton",
-	stfName = "mob/creature_names",
+	stfName = "a stressed torton",
 	objectCRC = 2343686181, 
 	socialGroup = "Torton",
 	

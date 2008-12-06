@@ -46,8 +46,7 @@ bullRancorStress = Creature:new {
 	faction = "Rancor",
 	gender = "",
 
-	speciesName = "bull_rancor",
-	stfName = "mob/creature_names",
+	stfName = "a stressed bull rancor",
 	objectCRC = 837719973, 
 	socialGroup = "Rancor",
 	

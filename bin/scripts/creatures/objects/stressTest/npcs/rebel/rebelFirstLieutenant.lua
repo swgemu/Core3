@@ -47,8 +47,7 @@ rebelFirstLieutenantStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "rebel_first_lieutenant",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Rebel First Lieutenan", 
 	objectCRC = 1053270126, 
 	socialGroup = "Rebel",
 	
@@ -103,7 +102,7 @@ rebelFirstLieutenantStress = Creature:new {
 
 	weapon = "object/weapon/ranged/pistol/shared_pistol_power5.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "officer's Power 5", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_blaster_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 140,
@@ -116,7 +115,7 @@ rebelFirstLieutenantStress = Creature:new {
 	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
+	alternateWeaponEquipped = 1,
 	alternateWeaponMinDamage = 210,
 	alternateWeaponMaxDamage = 310,
 	alternateWeaponAttackSpeed = 1.5,

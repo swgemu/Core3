@@ -47,8 +47,7 @@ imperialStormTrooperSniperStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "crackdown_stormtrooper_sniper",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Imperial stormsniper", 
 	objectCRC = 2688076350, 
 	socialGroup = "imperial",
 	
@@ -105,7 +104,7 @@ imperialStormTrooperSniperStress = Creature:new {
 	weaponName = "StormSnipert21", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_t21", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
+	weaponEquipped = 1,
 	weaponMinDamage = 237,
 	weaponMaxDamage = 425,
 	weaponAttackSpeed = 5.3,

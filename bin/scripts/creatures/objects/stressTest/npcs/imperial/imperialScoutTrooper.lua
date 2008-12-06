@@ -47,8 +47,7 @@ imperialScoutTrooperStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "crackdown_scout_trooper",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Imperial scout trooper", 
 	objectCRC = 3260762182, 
 	socialGroup = "Imperial",
 	

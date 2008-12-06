@@ -46,8 +46,7 @@ malklocBullStress = Creature:new {
 	faction = "Malkloc",
 	gender = "",
 
-	speciesName = "malkloc_bull",
-	stfName = "mob/creature_names",
+	stfName = "a stressed malkloc bull",
 	objectCRC = 197708576, 
 	socialGroup = "Malkloc",
 	

@@ -47,8 +47,7 @@ rebelSpecforceCaptainStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "rebel_specforce_captain",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Rebel SpecForce Captain", 
 	objectCRC = 542195677, 
 	socialGroup = "Rebel",
 	
@@ -100,7 +99,7 @@ rebelSpecforceCaptainStress = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/rifle/shared_event_rifle_tusken/berserker.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/rifle/shared_rifle_berserker.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "spec ops berserker", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_berserker", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -115,9 +114,9 @@ rebelSpecforceCaptainStress = Creature:new {
 	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
-	alternateWeaponMinDamage = 220,
-	alternateWeaponMaxDamage = 301,
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 210,
+	alternateWeaponMaxDamage = 310,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY

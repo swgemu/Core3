@@ -47,8 +47,7 @@ rebelStaffCorporalStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "rebel_staff_corporal",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Rebel Staff Corporal", 
 	objectCRC = 760067467, 
 	socialGroup = "Rebel",
 	
@@ -103,7 +102,7 @@ rebelStaffCorporalStress = Creature:new {
 
 	weapon = "object/weapon/ranged/carbine/shared_carbine_laser.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "a Laser Carbine", -- Name ex. 'a Vibrolance'
-	weaponTemp = "rifle_light_blaster_laser_carbine", -- Weapon Template ex. 'lance_vibrolance'
+	weaponTemp = "carbine_laser", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 120,
@@ -116,7 +115,7 @@ rebelStaffCorporalStress = Creature:new {
 	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
+	alternateWeaponEquipped = 1,
 	alternateWeaponMinDamage = 92,
 	alternateWeaponMaxDamage = 301,
 	alternateWeaponAttackSpeed = 1.5,

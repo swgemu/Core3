@@ -47,8 +47,7 @@ imperialDarkTrooperStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "dark_trooper",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Dark Trooper", 
 	objectCRC = 1312348723, 
 	socialGroup = "imperial",
 	

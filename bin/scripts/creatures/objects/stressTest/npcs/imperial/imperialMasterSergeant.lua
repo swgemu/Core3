@@ -47,8 +47,7 @@ imperialMasterSergeantStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "crackdown_imperial_master_sergeant",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Imperial master sergeant", 
 	objectCRC = 1867395579, 
 	socialGroup = "Imperial",
 	
@@ -101,16 +100,16 @@ imperialMasterSergeantStress = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_scout_blaster.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "scout Blaster", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_scout_blaster", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 90,
+	weaponMaxDamage = 230,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "heat", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "light", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

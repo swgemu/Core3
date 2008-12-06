@@ -47,8 +47,7 @@ imperialSurfaceMarshalStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "imperial_surface_marshal",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Imperial surface Marshall", 
 	objectCRC = 3498321727, 
 	socialGroup = "imperial",
 	

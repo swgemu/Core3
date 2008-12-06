@@ -46,8 +46,8 @@ graulStress = Creature:new {
 	faction = "Graul",
 	gender = "",
 
-	speciesName = "graul",
-	stfName = "mob/creature_names",
+	
+	stfName = "a stressed graul",
 	objectCRC = 3456488947, 
 	socialGroup = "Graul",
 	

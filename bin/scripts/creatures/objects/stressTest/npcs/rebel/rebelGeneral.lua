@@ -47,8 +47,7 @@ rebelGeneralStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "rebel_general",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Rebel General", 
 	objectCRC = 354934529, 
 	socialGroup = "rebel",
 	

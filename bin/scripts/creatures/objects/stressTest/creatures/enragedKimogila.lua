@@ -46,8 +46,7 @@ enragedKimogilaStress = Creature:new {
 	faction = "Kimogila",
 	gender = "",
 
-	speciesName = "enraged_kimogila",
-	stfName = "mob/creature_names",
+	stfName = "a stressed enraged kimogila",
 	objectCRC = 533451918, 
 	socialGroup = "Kimogila",
 	

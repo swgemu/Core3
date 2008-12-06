@@ -47,8 +47,7 @@ imperialWarrantOfficerIStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "imperial_warrant_officer_i",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Imperial Warrant Officer I", 
 	objectCRC = 1476291957, 
 	socialGroup = "Imperial",
 	

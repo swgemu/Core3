@@ -47,8 +47,7 @@ imperialMajorStress = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "imperial_major",
-	stfName = "mob/creature_names", 
+	stfName = "a stressed Imperial Major", 
 	objectCRC = 1953999744, 
 	socialGroup = "imperial",
 	
