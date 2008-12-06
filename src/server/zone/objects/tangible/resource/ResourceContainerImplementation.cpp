@@ -324,8 +324,6 @@ void ResourceContainerImplementation::addAttributes(AttributeListMessage* alm) {
 
 	if (res_er > 0)
 		alm->insertAttribute("entangle_resistance", res_er);
-
-	alm->insertInt(0xFFFFFFFF);
 }
 
 

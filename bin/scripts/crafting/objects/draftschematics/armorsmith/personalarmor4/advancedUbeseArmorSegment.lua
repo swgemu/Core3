@@ -59,9 +59,8 @@ advancedUbeseArmorSegment = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "segment_layer_assembly_plate, armor_layer_weld_tabs, segment_mounting_tabs, defensive_layer, segment_enhancement",
-   ingredientSlotType = "0, 0, 0, 1, 1",
-   --resourceTypes = "iron_axidite, steel_neutronium, fiberplast, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
-   resourceTypes = "metal, metal, metal, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
+   ingredientSlotType = "0, 0, 0, 3, 3",
+   resourceTypes = "iron_axidite, steel_neutronium, fiberplast, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
    resourceQuantities = "25, 15, 10, 1, 1",
    combineTypes = "1, 1, 1, 3, 3",
    contribution = "100, 100, 100, 100, 100",

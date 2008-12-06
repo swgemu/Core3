@@ -436,6 +436,9 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 
 		setLoggingIn(); //Anyone notice this is in here twice?
 
+		if(playerObject != NULL)
+			playerObject->clearCharacterBit(PlayerObjectImplementation::LD, true);
+
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 		insertToZone(zone);
 

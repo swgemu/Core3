@@ -60,12 +60,11 @@ kashyyykianHuntingArmorChestPlate = Object:new {
 
    ingredientTemplateNames = "craft_clothing_ingredients_n, craft_chemical_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_item_ingredients_n, craft_armor_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
    ingredientTitleNames = "auxiliary_coverage, body, liner, hardware_and_attachments, binding_and_reinforcement, padding, structural_reinforcements, armor_segment_kashyyykian_hunting, load_bearing_harness, padding_segment",
-   --ingredientSlotType = "0, 0, 0, 0, 0, 0, 0, 0, 0, 0",
-   ingredientSlotType = "0, 3, 3, 3, 3, 3, 3, 3, 3, 3",
-   --resourceTypes = "softwood_evergreen_dathomir, hide_leathery_lok, hide_wooly_tatooine, copper_mythra, petrochem_inert_polymer, fiberplast_naboo, bone_mammal_dantooine, object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting.iff, object/tangible/component/clothing/shared_synthetic_cloth.iff, object/tangible/component/clothing/shared_padding_segment.iff",
-   resourceTypes = "metal, metal, metal, metal, metal, metal, metal, object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting.iff, object/tangible/component/clothing/shared_synthetic_cloth.iff, object/tangible/component/clothing/shared_padding_segment.iff",
-   resourceQuantities = "100, 100, 80, 50, 40, 40, 40, 4, 5, 6",
-   combineTypes = "1, 1, 1, 1, 1, 1, 1, 1, 2, 3",
+   ingredientSlotType = "0, 0, 0, 0, 0, 0, 0, 2, 4, 4",
+   resourceTypes = "softwood_evergreen_dathomir, hide_leathery_lok, hide_wooly_tatooine, copper_mythra, petrochem_inert_polymer, fiberplast_naboo, bone_mammal_dantooine, object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting.iff, object/tangible/component/clothing/shared_synthetic_cloth.iff, object/tangible/component/clothing/shared_padding_segment.iff",
+   resourceQuantities = "100, 100, 80, 50, 40, 40, 40, 1, 5, 6",
+   --resourceQuantities = "100, 100, 80, 50, 40, 40, 40, 4, 5, 6",
+   combineTypes = "1, 1, 1, 1, 1, 1, 1, 2, 2, 2",
    contribution = "100, 100, 100, 100, 100, 100, 100, 100, 100, 100",
 
 

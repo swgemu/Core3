@@ -59,7 +59,7 @@ compositeArmorBoots = Object:new {
 
    ingredientTemplateNames = "craft_clothing_ingredients_n, craft_chemical_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
    ingredientTitleNames = "auxiliary_coverage, body, liner, hardware_and_attachments, binding_and_reinforcement, padding, armor, load_bearing_harness, reinforcement",
-   ingredientSlotType = "0, 0, 0, 0, 0, 0, 0, 1, 1",
+   ingredientSlotType = "0, 0, 0, 0, 0, 0, 2, 4, 4",
    resourceTypes = "ore_intrusive, fuel_petrochem_solid_known, fiberplast_naboo, aluminum, copper_beyrllius, hide_wooly, object/tangible/component/armor/shared_armor_segment_composite.iff, object/tangible/component/clothing/shared_synthetic_cloth.iff, object/tangible/component/clothing/shared_reinforced_fiber_panels.iff",
    --resourceQuantities = "50, 50, 25, 30, 20, 20, 2, 1, 1",
    resourceQuantities = "50, 50, 25, 30, 20, 20, 1, 1, 1",
