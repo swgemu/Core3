@@ -2381,8 +2381,7 @@ void ObjectControllerMessage::parseRequestCharacterMatch(Player* player,
 
 
 void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* pack) {
-
-	cout << "parseResourceEmptyHopper: " <<  pack->toString() << endl;
+	//cout << "parseResourceEmptyHopper: " <<  pack->toString() << endl;
 
 	//skip objId + old size
 	pack->shiftOffset(12);
@@ -2395,26 +2394,25 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
 	uint8 byte2 = pack->parseByte(); // checksum?
 
-	cout << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
+	//cout << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
 
 	SceneObject* object = player->getZone()->lookupObject(hId);
 
 	if (object == NULL) {
-		cout << "ObjectControllerMessage::parseResourceEmptyHopper() bad object" << endl;
+		//cout << "ObjectControllerMessage::parseResourceEmptyHopper() bad object" << endl;
 		return;
 	}
 
-	if(!object->isTangible()) {
-		cout << "ObjectControllerMessage::parseResourceEmptyHopper() bad tano" << endl;
+	if (!object->isTangible()) {
+		//cout << "ObjectControllerMessage::parseResourceEmptyHopper() bad tano" << endl;
 		return;
 	}
 
 
 	TangibleObject* tano = (TangibleObject*) object;
 
-	if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-	{
-		cout << "ObjectControllerMessage::parseResourceEmptyHopper() bad harvester" << endl;
+	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)	{
+		//cout << "ObjectControllerMessage::parseResourceEmptyHopper() bad harvester" << endl;
 		return;
 	}
 
@@ -2432,7 +2430,7 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 
 	quantity = (uint32)inso->removeHopperItem(rId, quantity);
 	if (quantity >= 1) {
-		if(byte1 == 0) // Retreive vs Discard
+		if (byte1 == 0) // Retreive vs Discard
 		{
 			ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
 			string resourceName = resourceManager->getResourceNameByID(rId);
