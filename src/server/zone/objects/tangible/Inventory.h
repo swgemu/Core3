@@ -11,13 +11,17 @@ class Container;
 
 class CreatureObject;
 
+class TangibleObject;
+
 #include "Container.h"
 
 class Inventory : public Container {
 public:
 	Inventory(CreatureObject* creature);
 
-	TangibleObject* getMissionItem(string& misKey);
+	TangibleObject* getItemByMisoKey(string& misKey);
+
+	void removeAllByMisoKey(CreatureObject* owner, string& misKey);
 
 	int getUnequippedItemCount();
 
@@ -39,14 +43,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	TangibleObject* getMissionItem(string& misKey);
+	TangibleObject* getItemByMisoKey(string& misKey);
+
+	void removeAllByMisoKey(CreatureObject* owner, string& misKey);
 
 	int getUnequippedItemCount();
 
 	bool isFull();
 
 protected:
-	string _param0_getMissionItem__string_;
+	string _param0_getItemByMisoKey__string_;
+	string _param1_removeAllByMisoKey__CreatureObject_string_;
 };
 
 class InventoryHelper : public DistributedObjectClassHelper, public Singleton<InventoryHelper> {

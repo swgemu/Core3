@@ -12,6 +12,8 @@
 
 #include "../../scene/SceneObject.h"
 
+#include "../../tangible/TangibleObject.h"
+
 #include "../../player/Player.h"
 
 #include "../Creature.h"
@@ -45,12 +47,38 @@ void Action::setPrereq(int tpr) {
 		((ActionImplementation*) _impl)->setPrereq(tpr);
 }
 
-void Action::setActionMask(int tat) {
+void Action::setMeetHasMission(string& tstr) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addAsciiParameter(tstr);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActionImplementation*) _impl)->setMeetHasMission(tstr);
+}
+
+void Action::setMeetKillLimitList(string& tlist) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addAsciiParameter(tlist);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActionImplementation*) _impl)->setMeetKillLimitList(tlist);
+}
+
+void Action::setActionMask(int tat) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(tat);
 
 		method.executeWithVoidReturn();
@@ -63,7 +91,7 @@ void Action::execAction(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 10);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -76,7 +104,7 @@ void Action::addConvoScreen(string& screenID, string& leftBoxText, int numOption
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 11);
 		method.addAsciiParameter(screenID);
 		method.addAsciiParameter(leftBoxText);
 		method.addSignedIntParameter(numOptions);
@@ -86,6 +114,35 @@ void Action::addConvoScreen(string& screenID, string& leftBoxText, int numOption
 		method.executeWithVoidReturn();
 	} else
 		((ActionImplementation*) _impl)->addConvoScreen(screenID, leftBoxText, numOptions, Options, optLinks);
+}
+
+void Action::setGiveItem(TangibleObject* tempTano) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addObjectParameter(tempTano);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActionImplementation*) _impl)->setGiveItem(tempTano);
+}
+
+void Action::setTakeItem(unsigned int crc, string& itemname, bool useParentMisoKey, string& withMisoKey) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+		method.addUnsignedIntParameter(crc);
+		method.addAsciiParameter(itemname);
+		method.addBooleanParameter(useParentMisoKey);
+		method.addAsciiParameter(withMisoKey);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActionImplementation*) _impl)->setTakeItem(crc, itemname, useParentMisoKey, withMisoKey);
 }
 
 /*
@@ -103,13 +160,25 @@ Packet* ActionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setPrereq(inv->getSignedIntParameter());
 		break;
 	case 7:
-		setActionMask(inv->getSignedIntParameter());
+		setMeetHasMission(inv->getAsciiParameter(_param0_setMeetHasMission__string_));
 		break;
 	case 8:
-		execAction((Player*) inv->getObjectParameter());
+		setMeetKillLimitList(inv->getAsciiParameter(_param0_setMeetKillLimitList__string_));
 		break;
 	case 9:
+		setActionMask(inv->getSignedIntParameter());
+		break;
+	case 10:
+		execAction((Player*) inv->getObjectParameter());
+		break;
+	case 11:
 		addConvoScreen(inv->getAsciiParameter(_param0_addConvoScreen__string_string_int_string_string_), inv->getAsciiParameter(_param1_addConvoScreen__string_string_int_string_string_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_addConvoScreen__string_string_int_string_string_), inv->getAsciiParameter(_param4_addConvoScreen__string_string_int_string_string_));
+		break;
+	case 12:
+		setGiveItem((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 13:
+		setTakeItem(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_setTakeItem__int_string_bool_string_), inv->getBooleanParameter(), inv->getAsciiParameter(_param3_setTakeItem__int_string_bool_string_));
 		break;
 	default:
 		return NULL;
@@ -122,6 +191,14 @@ void ActionAdapter::setPrereq(int tpr) {
 	return ((ActionImplementation*) impl)->setPrereq(tpr);
 }
 
+void ActionAdapter::setMeetHasMission(string& tstr) {
+	return ((ActionImplementation*) impl)->setMeetHasMission(tstr);
+}
+
+void ActionAdapter::setMeetKillLimitList(string& tlist) {
+	return ((ActionImplementation*) impl)->setMeetKillLimitList(tlist);
+}
+
 void ActionAdapter::setActionMask(int tat) {
 	return ((ActionImplementation*) impl)->setActionMask(tat);
 }
@@ -132,6 +209,14 @@ void ActionAdapter::execAction(Player* player) {
 
 void ActionAdapter::addConvoScreen(string& screenID, string& leftBoxText, int numOptions, string& Options, string& optLinks) {
 	return ((ActionImplementation*) impl)->addConvoScreen(screenID, leftBoxText, numOptions, Options, optLinks);
+}
+
+void ActionAdapter::setGiveItem(TangibleObject* tempTano) {
+	return ((ActionImplementation*) impl)->setGiveItem(tempTano);
+}
+
+void ActionAdapter::setTakeItem(unsigned int crc, string& itemname, bool useParentMisoKey, string& withMisoKey) {
+	return ((ActionImplementation*) impl)->setTakeItem(crc, itemname, useParentMisoKey, withMisoKey);
 }
 
 /*

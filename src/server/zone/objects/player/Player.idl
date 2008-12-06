@@ -522,6 +522,10 @@ interface Player implements CreatureObject {
 	void removeFromCurMisoKeys(string tck);
 	void addToFinMisoKeys(string tmp);
 	boolean hasCompletedMisoKey(string tmk);
+	
+	void updateMissionSave(string misoKey, const string dbVar, string varName, string varData, boolean doLock = false);
+	void fillMissionSaveVars();
+	void saveMissions();
 
 	// Crafting
 	CraftingTool getCurrentCraftingTool();

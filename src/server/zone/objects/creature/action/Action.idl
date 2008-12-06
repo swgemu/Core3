@@ -47,9 +47,8 @@ import "ActionCreature";
 import "../../../managers/mission/MissionManagerImplementation";
 
 import "../../scene/SceneObject";
-
+import "../../tangible/TangibleObject";
 import "../../player/Player";
-
 import "../Creature";
 
 interface Action {
@@ -57,11 +56,31 @@ interface Action {
 	Action(SceneObject po, int actMask, int tpr) {
 	}
 	
+	////////////////////////////
+	//Prerequisite:
+	////////////////////////////
+	
 	void setPrereq(int tpr);
 	
-	void setActionMask(int tat);
+	//prereq:hasMission:
+	void setMeetHasMission(string tstr);
+
+	//prereq:killCountLimitList
+	void setMeetKillLimitList(string tlist);
 	
+	////////////////////////////
+	//Action:
+	////////////////////////////
+	
+	void setActionMask(int tat);
 	void execAction(Player player);
 	
+	//Action:Conversation:
 	void addConvoScreen(string screenID, string leftBoxText, int numOptions, string Options, string optLinks);
+
+	//Action:giveItem:
+	void setGiveItem(TangibleObject tempTano);
+
+	//Action:takeItem:
+	void setTakeItem(unsigned int crc, string itemname, boolean useParentMisoKey, string withMisoKey);
 }

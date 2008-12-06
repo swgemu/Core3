@@ -219,6 +219,7 @@ class PlayerImplementation : public PlayerServant {
 	int misoBSB; //mission baseline send bitmask
 	string curMisoKeys; //mission keys the player is currently on
 	string finMisoKeys; //mission keys the player has completed.
+	VectorMap<string, string> missionSaveList;
 
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;
@@ -794,6 +795,10 @@ public:
 		finMisoKeys += (tmp + ",");
 	}
 	bool hasCompletedMisoKey(string& tmk);
+
+	void saveMissions();
+	void updateMissionSave(string misoKey, const string& dbVar, string& varName, string& varData, bool doLock = false);
+	void fillMissionSaveVars();
 
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);

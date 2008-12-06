@@ -47,6 +47,20 @@ public:
 
 	void doMissionAbort(Player* player, string& tKey, bool doLock = true);
 
+	void doMissionSave(Player* player, const string& mkey, const string& objectivevars, const string& killcountvars, bool doLock = false);
+
+	void deleteMissionSave(Player* player, string& mkey, bool doLock = false);
+
+	bool hasMissionSave(Player* player, const string& mkey, bool createIfNone = false, bool doLock = false);
+
+	void getMissionSaveVarLine(Player* player, const string& mkey, const string& dbVar, string& retStr, bool doLock = false);
+
+	void getMisoKeysStatus(Player* player, bool finKeys, string& retStr, bool doLock = false);
+
+	void setMisoKeyCurrent(Player* player, string& misoKey, bool remove, bool doLock = false);
+
+	void setMisoKeyFinished(Player* player, string& misoKey, bool remove, bool doLock = false);
+
 	void removeMisoFromPool(MissionObject* miso, bool doLock = true);
 
 	unsigned int getMissionItemCrc(string& tKey, bool doLock = true);
@@ -95,6 +109,20 @@ public:
 
 	void doMissionAbort(Player* player, string& tKey, bool doLock);
 
+	void doMissionSave(Player* player, const string& mkey, const string& objectivevars, const string& killcountvars, bool doLock);
+
+	void deleteMissionSave(Player* player, string& mkey, bool doLock);
+
+	bool hasMissionSave(Player* player, const string& mkey, bool createIfNone, bool doLock);
+
+	void getMissionSaveVarLine(Player* player, const string& mkey, const string& dbVar, string& retStr, bool doLock);
+
+	void getMisoKeysStatus(Player* player, bool finKeys, string& retStr, bool doLock);
+
+	void setMisoKeyCurrent(Player* player, string& misoKey, bool remove, bool doLock);
+
+	void setMisoKeyFinished(Player* player, string& misoKey, bool remove, bool doLock);
+
 	void removeMisoFromPool(MissionObject* miso, bool doLock);
 
 	unsigned int getMissionItemCrc(string& tKey, bool doLock);
@@ -114,6 +142,17 @@ protected:
 	string _param1_sendMission__Player_string_bool_;
 	string _param1_doMissionComplete__Player_string_bool_;
 	string _param1_doMissionAbort__Player_string_bool_;
+	string _param1_doMissionSave__Player_string_string_string_bool_;
+	string _param2_doMissionSave__Player_string_string_string_bool_;
+	string _param3_doMissionSave__Player_string_string_string_bool_;
+	string _param1_deleteMissionSave__Player_string_bool_;
+	string _param1_hasMissionSave__Player_string_bool_bool_;
+	string _param1_getMissionSaveVarLine__Player_string_string_string_bool_;
+	string _param2_getMissionSaveVarLine__Player_string_string_string_bool_;
+	string _param3_getMissionSaveVarLine__Player_string_string_string_bool_;
+	string _param2_getMisoKeysStatus__Player_bool_string_bool_;
+	string _param1_setMisoKeyCurrent__Player_string_bool_bool_;
+	string _param1_setMisoKeyFinished__Player_string_bool_bool_;
 	string _param0_getMissionItemCrc__string_bool_;
 };
 

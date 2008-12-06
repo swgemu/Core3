@@ -593,6 +593,12 @@ public:
 
 	bool hasCompletedMisoKey(string& tmk);
 
+	void updateMissionSave(string& misoKey, const string& dbVar, string& varName, string& varData, bool doLock = false);
+
+	void fillMissionSaveVars();
+
+	void saveMissions();
+
 	CraftingTool* getCurrentCraftingTool();
 
 	CraftingTool* getCraftingTool(const int type, bool doLock = true);
@@ -1315,6 +1321,12 @@ public:
 
 	bool hasCompletedMisoKey(string& tmk);
 
+	void updateMissionSave(string& misoKey, const string& dbVar, string& varName, string& varData, bool doLock);
+
+	void fillMissionSaveVars();
+
+	void saveMissions();
+
 	CraftingTool* getCurrentCraftingTool();
 
 	CraftingTool* getCraftingTool(const int type, bool doLock);
@@ -1514,6 +1526,10 @@ protected:
 	string _param0_removeFromCurMisoKeys__string_;
 	string _param0_addToFinMisoKeys__string_;
 	string _param0_hasCompletedMisoKey__string_;
+	string _param0_updateMissionSave__string_string_string_string_bool_;
+	string _param1_updateMissionSave__string_string_string_string_bool_;
+	string _param2_updateMissionSave__string_string_string_string_bool_;
+	string _param3_updateMissionSave__string_string_string_string_bool_;
 	string _param0_nextCraftingStage__string_;
 	string _param0_craftingCustomization__string_int_string_;
 	string _param2_craftingCustomization__string_int_string_;

@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "../creature/CreatureObject.h"
 #include "../scene/SceneObject.h"
+#include "TangibleObject.h"
 
 #include "Container.h"
 
@@ -70,16 +71,16 @@ public:
 	virtual ~InventoryImplementation() {
 		setContainer(NULL);
 	}
-	
-	TangibleObject* getMissionItem(string& misKey) {
+
+	TangibleObject* getItemByMisoKey(string& misKey) {
 		TangibleObject* retTano = NULL;
 		TangibleObject* tano = NULL;
-		
+
 		for (int i = 0; i < items.size(); ++i) {
 			SceneObject* obj = items.get(i);
 			if (obj->isTangible()) {
 				tano = (TangibleObject*)obj;
-				
+
 				if((!strcmp(tano->getMisoAsocKey().c_str(), misKey.c_str())) && (!tano->isEquipped())) {
 					break;
 				} else {
@@ -87,12 +88,35 @@ public:
 				}
 			}
 		}
-		
+
 		if(tano != NULL) {
 			retTano = tano;
 		}
-		
+
 		return retTano;
+	}
+
+	void removeAllByMisoKey(CreatureObject* owner, string& misKey) {
+		TangibleObject* tano = NULL;
+
+		for (int i = 0; i < items.size(); ++i) {
+			SceneObject* obj = items.get(i);
+			if (obj->isTangible()) {
+				tano = (TangibleObject*)obj;
+
+				if((!strcmp(tano->getMisoAsocKey().c_str(), misKey.c_str())) && (!tano->isEquipped())) {
+					if(tano != NULL) {
+						removeObject(tano->getObjectID());
+						if(owner->isPlayer()) {
+							tano->sendDestroyTo((Player*)owner);
+						}
+						tano->finalize();
+					}
+				} else {
+					tano = NULL;
+				}
+			}
+		}
 	}
 
 	int getUnequippedItemCount() {

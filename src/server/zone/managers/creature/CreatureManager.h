@@ -65,6 +65,8 @@ public:
 
 	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, const string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid = 0, bool doLock = true);
 
+	ActionCreature* spawnActionCreature(ActionCreature* tac, bool doLock = true);
+
 	unsigned int getCreatureCrc(string& name);
 
 	bool hotLoadCreature(string& name);
@@ -126,6 +128,8 @@ public:
 	LairObject* spawnLair(const string& type, float x, float y, float z, bool doLock);
 
 	ActionCreature* spawnActionCreature(string& name, string& stfname, unsigned int objCrc, const string& misoKey, float x, float y, float oY, float oW, unsigned long long cellid, bool doLock);
+
+	ActionCreature* spawnActionCreature(ActionCreature* tac, bool doLock);
 
 	unsigned int getCreatureCrc(string& name);
 

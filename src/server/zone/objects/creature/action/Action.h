@@ -13,6 +13,8 @@ class MissionManagerImplementation;
 
 class SceneObject;
 
+class TangibleObject;
+
 class Player;
 
 class Creature;
@@ -23,11 +25,19 @@ public:
 
 	void setPrereq(int tpr);
 
+	void setMeetHasMission(string& tstr);
+
+	void setMeetKillLimitList(string& tlist);
+
 	void setActionMask(int tat);
 
 	void execAction(Player* player);
 
 	void addConvoScreen(string& screenID, string& leftBoxText, int numOptions, string& Options, string& optLinks);
+
+	void setGiveItem(TangibleObject* tempTano);
+
+	void setTakeItem(unsigned int crc, string& itemname, bool useParentMisoKey, string& withMisoKey);
 
 protected:
 	Action(DummyConstructorParameter* param);
@@ -47,17 +57,29 @@ public:
 
 	void setPrereq(int tpr);
 
+	void setMeetHasMission(string& tstr);
+
+	void setMeetKillLimitList(string& tlist);
+
 	void setActionMask(int tat);
 
 	void execAction(Player* player);
 
 	void addConvoScreen(string& screenID, string& leftBoxText, int numOptions, string& Options, string& optLinks);
 
+	void setGiveItem(TangibleObject* tempTano);
+
+	void setTakeItem(unsigned int crc, string& itemname, bool useParentMisoKey, string& withMisoKey);
+
 protected:
+	string _param0_setMeetHasMission__string_;
+	string _param0_setMeetKillLimitList__string_;
 	string _param0_addConvoScreen__string_string_int_string_string_;
 	string _param1_addConvoScreen__string_string_int_string_string_;
 	string _param3_addConvoScreen__string_string_int_string_string_;
 	string _param4_addConvoScreen__string_string_int_string_string_;
+	string _param1_setTakeItem__int_string_bool_string_;
+	string _param3_setTakeItem__int_string_bool_string_;
 };
 
 class ActionHelper : public DistributedObjectClassHelper, public Singleton<ActionHelper> {
