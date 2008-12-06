@@ -161,6 +161,7 @@ testact = Action:new {
 	objectName = "testact", -- name of the lua Object
 	actionKey = "am_cnv", -- UNIQUE internal key used to identify the action. No spaces, keep small but informational
 
+	prereqMask = 0,
 	actionMask = ATYPE_CONVERSE,
 
 	-- Optional Triggers
@@ -170,6 +171,20 @@ testact = Action:new {
 	onDeath = 0,
 	--
 	
+	--------
+	-- Prerequisite Vars:
+	--------
+
+	-- Has mission:
+	meet_hasMission = "", -- Fill in w/ mission key to check if player has specified mission
+
+	-- Kill Count Limit - KILL COUNTING / TRACKING
+	meet_killLimitList = "", -- List of creature crc / limit value pairs. See documentation for more information.
+
+	--------
+	-- Action Vars:
+	--------
+
 	-- Conversation Vars
 	convoScreenList = "0,refuse", -- Keep this updated with ALL your screen ids. ScreenID "0" is REQUIRED.
 	--
@@ -197,6 +212,7 @@ testact = Action:new {
 testacttwo = Action:new {
 	actionKey = "blah2", -- UNIQUE internal key used to identify the action. No spaces, keep small but informational
 
+	prereqMask = 0,
 	actionMask = 0,
 
 	-- Optional Triggers
@@ -206,6 +222,20 @@ testacttwo = Action:new {
 	onDeath = false,
 	--
 	
+	--------
+	-- Prerequisite Vars:
+	--------
+
+	-- Has mission:
+	meet_hasMission = "", -- Fill in w/ mission key to check if player has specified mission
+
+	-- Kill Count Limit - KILL COUNTING / TRACKING
+	meet_killLimitList = "", -- List of creature crc / limit value pairs. See documentation for more information.
+
+	--------
+	-- Action Vars:
+	--------
+
 	-- Conversation Vars
 	convoScreenList = "", -- Keep this updated with ALL your screen ids. ScreenID "0" is REQUIRED.
 	--
