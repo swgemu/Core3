@@ -120,7 +120,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 	uint32 lastStamp = player->getLastMovementUpdateStamp();
 
-	if (lastStamp == 0 || lastStamp > movementStamp) {
+	/*if (lastStamp == 0 || lastStamp > movementStamp) {
 		player->updateServerMovementStamp();
 
 		player->setLastMovementUpdateStamp(movementStamp);
@@ -179,7 +179,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
-	}
+	}*/
 
 	//cout << "Movement counter:" << movementCounter << "\n";
 
@@ -232,7 +232,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 	uint32 lastStamp = player->getLastMovementUpdateStamp();
 
-	if (lastStamp == 0 || lastStamp > movementStamp) {
+	/*if (lastStamp == 0 || lastStamp > movementStamp) {
 		player->updateServerMovementStamp();
 
 		player->setLastMovementUpdateStamp(movementStamp);
@@ -289,7 +289,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
-	}
+	}*/
 
 
 	/*
@@ -2674,6 +2674,12 @@ void ObjectControllerMessage::parseDismount(Player* player, Message* pack) {
 
 void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 		PlayerManager* playerManager) {
+	if (!player->canTip()) {
+		player->sendSystemMessage("You can only tip once every 10 seconds.");
+		return;
+	}
+
+	player->updateNextTipTime();
 	uint64 tipToId = pack->parseLong();
 
 	unicode tipParams;

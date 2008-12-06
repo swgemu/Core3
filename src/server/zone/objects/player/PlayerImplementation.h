@@ -129,6 +129,7 @@ class PlayerImplementation : public PlayerServant {
 
 	Vector<CommandQueueAction*> commandQueue;
 	Time nextAction;
+	Time nextTip;
 
 	PlayerDisconnectEvent* disconnectEvent;
 	PlayerLogoutEvent* logoutEvent;
@@ -509,6 +510,15 @@ public:
 	void equipPlayerItem(TangibleObject* item);
 	SceneObject* getPlayerItem(uint64 oid);
 	bool hasItemPermission(TangibleObject* item);
+
+	inline void updateNextTipTime() {
+		nextTip.update();
+		nextTip.addMiliTime(10000);
+	}
+
+	inline bool canTip() {
+		return nextTip.isPast();
+	}
 
 	// trade mehtods
 	void addTradeItem(TangibleObject* item) {

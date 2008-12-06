@@ -389,6 +389,10 @@ interface Player implements CreatureObject {
 	void clearDisconnectEvent();
 
 	void setClient(ZoneClientSession client);
+	
+	void updateNextTipTime();
+
+	boolean canTip();
 
 	void setOvert();
 	void setCovert();

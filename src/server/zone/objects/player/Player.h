@@ -441,6 +441,10 @@ public:
 
 	void setClient(ZoneClientSession* client);
 
+	void updateNextTipTime();
+
+	bool canTip();
+
 	void setOvert();
 
 	void setCovert();
@@ -1158,6 +1162,10 @@ public:
 	void clearDisconnectEvent();
 
 	void setClient(ZoneClientSession* client);
+
+	void updateNextTipTime();
+
+	bool canTip();
 
 	void setOvert();
 

@@ -230,6 +230,8 @@ interface SceneObject implements ManagedObject {
 	
 	boolean doKeepObject();
 	
+	local ZoneProcessServerImplementation getZoneProcessServer();
+	
 	// Virtual functions for combat
 	void setCombatState();
 	void clearCombatState(boolean removedefenders = true);

@@ -65,6 +65,8 @@ which carries forward this exception.
 #include "objects/terrain/PlanetNames.h"
 #include "objects/tangible/terminal/bazaar/RegionBazaar.h"
 
+#include "../login/packets/ErrorMessage.h"
+
 #include "../chat/ChatManager.h"
 
 #include "ZonePacketHandler.h"
@@ -272,6 +274,33 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 
 	Player* player = NULL;
 
+	if (server->isServerLocked()) {
+		try {
+			stringstream query;
+			query << "SELECT adminLevel FROM characters WHERE character_id = " << characterID;
+
+			ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+			if (result->next()) {
+				uint32 adminLevel = result->getInt(0);
+
+				if (adminLevel == PlayerImplementation::NORMAL) {
+					ErrorMessage* msg = new ErrorMessage("Server", "Server is locked. Please try again later.", 0);
+					client->sendMessage(msg);
+
+					delete result;
+					return;
+				}
+			}
+
+			delete result;
+		} catch (DatabaseException& e) {
+			cout << e.getMessage() << endl;
+		} catch (...) {
+			cout << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
+		}
+	}
+
 	try {
 
 		server->lock();
@@ -353,6 +382,13 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
 	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
+
+	if (server->isServerLocked()) {
+		ErrorMessage* msg = new ErrorMessage("Server", "Sever is locked. Please try again later.", 0);
+		client->sendMessage(msg);
+
+		return;
+	}
 
 	Player* player = new Player();
 	player->initialize();

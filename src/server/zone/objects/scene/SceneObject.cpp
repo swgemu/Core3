@@ -1108,6 +1108,14 @@ bool SceneObject::doKeepObject() {
 		return ((SceneObjectImplementation*) _impl)->doKeepObject();
 }
 
+ZoneProcessServerImplementation* SceneObject::getZoneProcessServer() {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return ((SceneObjectImplementation*) _impl)->getZoneProcessServer();
+}
+
 void SceneObject::setCombatState() {
 	if (_impl == NULL) {
 		if (!deployed)

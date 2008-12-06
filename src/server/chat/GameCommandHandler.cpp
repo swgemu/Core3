@@ -60,6 +60,7 @@ which carries forward this exception.
 #include "../zone/managers/guild/GuildManager.h"
 #include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/structure/StructureManager.h"
+#include "../zone/managers/combat/CombatManager.h"
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
@@ -298,6 +299,18 @@ void GameCommandHandler::init() {
 			"Returns a list of characters a player has registrated with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
+	gmCommands->addCommand("toggleCombat", DEVELOPER,
+				"Enables/Disables combat.",
+				"USAGE: @toggleCombat",
+				&toggleCombat);
+	gmCommands->addCommand("lockServer", DEVELOPER,
+				"Locks the server for intern testing.",
+				"USAGE: @lockServer",
+				&lockServer);
+	gmCommands->addCommand("unlockServer", DEVELOPER,
+				"Unlocks the server for public testing.",
+				"USAGE: @lockServer",
+				&unlockServer);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -2458,4 +2471,60 @@ void GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player) {
 	} catch (...) {
 		player->info("Unreported Exception in GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player)");
 	}
+}
+
+void GameCommandHandler::toggleCombat(StringTokenizer tokenizer, Player * player) {
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	CombatManager* combatManager = srv->getCombatManager();
+
+	combatManager->toggleCombat();
+
+	ChatManager * chatManager = zone->getChatManager();
+
+	if (combatManager->isCombatEnabled()) {
+		stringstream message;
+		message <<  player->getFirstName() << " enabled Combat";
+
+		chatManager->broadcastMessage(message.str());
+	} else {
+		stringstream message;
+		message <<  player->getFirstName() << " disabled Combat";
+
+		chatManager->broadcastMessage(message.str());
+	}
+}
+
+void GameCommandHandler::lockServer(StringTokenizer tokenizer, Player * player) {
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	zoneServer->setServerStateLocked();
+}
+
+void GameCommandHandler::unlockServer(StringTokenizer tokenizer, Player * player) {
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	zoneServer->setServerStateOnline();
 }

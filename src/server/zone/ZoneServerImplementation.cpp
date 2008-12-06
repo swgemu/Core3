@@ -111,6 +111,8 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	nextCreatureID = 0x10000000;
 	nextCellID = 9995371; // last objectid in static objects // 0x00;
 
+	serverState = OFFLINE;
+
 	setLogging(false);
 	setLockName("ZoneServerLock");
 
@@ -197,6 +199,8 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 }
 
 void ZoneServerImplementation::init() {
+	serverState = LOADING;
+
 	processor = new ZoneProcessServerImplementation(_this, procThreadCount);
 	processor->init();
 
@@ -227,6 +231,8 @@ void ZoneServerImplementation::init() {
 	startManagers();
 
 	startTimestamp = time(NULL);
+
+	serverState = ONLINE;
 
 	return;
 }
