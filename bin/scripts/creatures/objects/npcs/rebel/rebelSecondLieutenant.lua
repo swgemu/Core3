@@ -101,7 +101,7 @@ rebelSecondLieutenant = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/draft_schematic/weapon/shared_rifle_light_blaster_laser_carbine.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/carbine/shared_carbine_laser.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "a Laser Carbine", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_light_blaster_laser_carbine", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -112,7 +112,7 @@ rebelSecondLieutenant = Creature:new {
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 	
-	alternateWeapon = "object/draft_schematic/weapon/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'

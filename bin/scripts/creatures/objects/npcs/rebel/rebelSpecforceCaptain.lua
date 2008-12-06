@@ -100,7 +100,7 @@ rebelSpecforceCaptain = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/draft_schematic/weapon/shared_rifle_berserker.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/rifle/shared_event_rifle_tusken/berserker.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "spec ops berserker", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_berserker", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -111,7 +111,7 @@ rebelSpecforceCaptain = Creature:new {
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 	
-	alternateWeapon = "object/draft_schematic/weapon/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'

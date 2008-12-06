@@ -101,7 +101,7 @@ rebelCommando = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/draft_schematic/weapon/shared_rifle_flame_thrower.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "rebel flamer", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
