@@ -101,7 +101,7 @@ rebelSurfaceMarshal = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	Officer Class:
+	--Officer Class:
 	weapon = "object/draft_schematic/weapon/shared_pistol_blaster_power5.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "officer's Power 5", -- Name ex. 'a Vibrolance'
 	weaponTemp = "pistol_blaster_power5", -- Weapon Template ex. 'lance_vibrolance'

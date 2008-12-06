@@ -140,8 +140,8 @@ imperialTrooper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	-- skills = { "", "", "" }
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

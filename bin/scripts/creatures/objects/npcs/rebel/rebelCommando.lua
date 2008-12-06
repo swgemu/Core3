@@ -140,8 +140,8 @@ rebelCommando = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "rebelCommandoAttack1", "rebelCommandoAttack2", "" }
-	-- respawnTimer = 180,
+	skills = { "rebelCommandoAttack1", "rebelCommandoAttack2" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
