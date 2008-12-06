@@ -40,33 +40,12 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Npcs
 
--- Rebel Attacks
-RunSkillsFile("creatureSkills/npcs/rebel/rebelAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelColonelAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/rebel/rebelCommandoAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelCorporalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelFirstLieutenantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelGeneralAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelHighGeneralAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelLanceCorporalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelLieutenantColonelAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorGeneralAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelMedicAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelScoutAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSecondLieutenantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantMajorAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSpecforceCaptainAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelStaffCorporalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSurfaceMarshalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelTrooperAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelWarrantOfficerIAttacks.lua")
+--Rebel
 
-RunSkillsFile("creatureSkills/npcs/rebel/hanSoloAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/rebel/chewbaccaAttacks.lua")
-
-RunSkillsFile("creatureSkills/npcs/rebel/oldManAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/rebel/lukeAttacks.lua")
+RunCreatureFile("objects/stressTest/creatures/bullRancor.lua")
+RunCreatureFile("objects/stressTest/creatures/enragedKimogila.lua")
+RunCreatureFile("objects/stressTest/creatures/graul.lua")
+RunCreatureFile("objects/stressTest/creatures/juvenileCanyonKrayt.lua")
+RunCreatureFile("objects/stressTest/creatures/malklocBull.lua")
+RunCreatureFile("objects/stressTest/creatures/torton.lua")
