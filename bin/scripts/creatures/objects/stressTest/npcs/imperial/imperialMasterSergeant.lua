@@ -55,7 +55,7 @@ imperialMasterSergeantStress = Creature:new {
 	level = 1,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 5000,
 	healthMin = 4100,

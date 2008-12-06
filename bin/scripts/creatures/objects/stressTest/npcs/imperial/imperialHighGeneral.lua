@@ -55,7 +55,7 @@ imperialHighGeneralStress = Creature:new {
 	level = 29,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 10100,
 	healthMin = 8300,

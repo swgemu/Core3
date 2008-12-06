@@ -55,7 +55,7 @@ imperialLanceCorporalStress = Creature:new {
 	level = 15,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 3000,
 	healthMin = 2400,
