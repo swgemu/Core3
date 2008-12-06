@@ -1219,6 +1219,8 @@ void CreatureManagerImplementation::registerGlobals() {
 	setGlobalInt("GUNGAN", BlueFrogCreatureImplementation::GUNGAN);
 	setGlobalInt("BARTENDER", BlueFrogCreatureImplementation::BARTENDER);
 	setGlobalInt("MEDDROID", BlueFrogCreatureImplementation::MEDDROID);
+	setGlobalInt("EWOK", BlueFrogCreatureImplementation::EWOK);
+	setGlobalInt("JEDI", BlueFrogCreatureImplementation::JEDI);
 }
 
 uint64 CreatureManagerImplementation::getNextCreatureID() {

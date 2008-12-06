@@ -141,10 +141,10 @@ void GameCommandHandler::init() {
 			"Kills a creature. EC version of the kill command.",
 			"Usage: @ecKill <current-target>",
 			&ecKill);
-	gmCommands->addCommand("killArea", DEVELOPER,
+/*	gmCommands->addCommand("killArea", DEVELOPER,
 			"Kills all players within a certain range.",
 			"Usage: @killArea [distance]",
-			&killArea);
+			&killArea); */
 	gmCommands->addCommand("muteChat", CSREVENTS,
 			"Prevents players from speaking in chat.",
 			"Usage: @muteChat",
@@ -205,7 +205,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", PRIVILEGED | LEADQA,
+	gmCommands->addCommand("buff", DEVELOPER,
 			"Buffs your player.",
 			"Usage: @buff",
 			&buff);

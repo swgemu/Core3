@@ -57,3 +57,15 @@ if (PLANET_ID == 5) then
  spawnBlueFrog(2.2, -2.5, 1, 0, BARTENDER, 91);
  spawnBlueFrog(-4933, 4234, 1, .1, GUNGAN, 0);
 end
+
+--Endor
+if (PLANET_ID == 3) then
+ spawnBlueFrog(3221, -3451, .99154, 0.04113, EWOK, 0);
+end
+
+--Yavin IV
+if (PLANET_ID == 9) then
+ spawnBlueFrog(5076, 322, .998216, -0.07456, JEDI, 0);
+ spawnBlueFrog(-5583, 4902, 0.860041, 0.50955, JEDI, 0);
+end
+
