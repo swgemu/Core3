@@ -47,7 +47,8 @@ imperialColonel = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Imperial Colonel", 
+	speciesName = "an Imperial Colonel",
+	stfName = "mob/creature_names",
 	objectCRC = 2701430666, 
 	socialGroup = "imperial",
 	

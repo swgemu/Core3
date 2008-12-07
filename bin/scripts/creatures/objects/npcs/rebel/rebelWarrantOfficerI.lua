@@ -47,7 +47,8 @@ rebelWarrantOfficerI = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Rebel Warrant Officer I", 
+	speciesName = "rebel_warrant_officer_i",
+    stfName = "mob/creature_names",
 	objectCRC = 3172332319, 
 	socialGroup = "Rebel",
 	

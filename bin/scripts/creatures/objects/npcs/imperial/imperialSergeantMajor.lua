@@ -47,7 +47,8 @@ imperialSergeantMajor = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Imperial Sergeant Major", 
+	speciesName = "imperial_sergeant_major",
+    stfName = "mob/creature_names",
 	objectCRC = 1476291957, 
 	socialGroup = "Imperial",
 	

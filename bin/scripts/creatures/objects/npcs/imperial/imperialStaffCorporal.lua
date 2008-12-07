@@ -47,7 +47,8 @@ imperialStaffCorporal = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Imperial Staff Corporal", 
+	speciesName = "imperial_staff_corporal",
+    stfName = "mob/creature_names",
 	objectCRC = 2701430666, 
 	socialGroup = "Imperial",
 	

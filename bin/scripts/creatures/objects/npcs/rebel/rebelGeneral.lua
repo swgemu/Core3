@@ -47,7 +47,8 @@ rebelGeneral = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Rebel General", 
+	speciesName = "rebel_general",
+    stfName = "mob/creature_names",
 	objectCRC = 354934529, 
 	socialGroup = "rebel",
 	

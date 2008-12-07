@@ -47,7 +47,8 @@ imperialWarrantOfficerI = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Imperial Warrant Officer I", 
+	speciesName = "imperial_warrant_officer_i",
+    stfName = "mob/creature_names",
 	objectCRC = 1476291957, 
 	socialGroup = "Imperial",
 	

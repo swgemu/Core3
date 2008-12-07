@@ -47,7 +47,8 @@ rebelSurfaceMarshal = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Rebel surface Marshall", 
+	speciesName = "rebel_surface_marshal",
+    stfName = "mob/creature_names",
 	objectCRC = 7469172, 
 	socialGroup = "rebel",
 	
