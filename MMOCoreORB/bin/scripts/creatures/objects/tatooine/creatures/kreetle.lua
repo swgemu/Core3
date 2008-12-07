@@ -145,4 +145,4 @@ kreetle = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(kreetle, 3267723937) --  Add to Global Table
+Creatures:addCreature(kreetle, 3267723937) -- Add to Global Table

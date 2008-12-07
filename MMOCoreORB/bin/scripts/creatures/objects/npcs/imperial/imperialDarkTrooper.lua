@@ -47,8 +47,7 @@ imperialDarkTrooper = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "dark_trooper",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Dark Trooper", 
 	objectCRC = 1312348723, 
 	socialGroup = "imperial",
 	
@@ -96,8 +95,8 @@ imperialDarkTrooper = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	meleeDefense = 79,  
+	rangedDefense = 110,
 	
 	randomMovement = 0,
 
@@ -108,8 +107,8 @@ imperialDarkTrooper = Creature:new {
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 350,
-	weaponMaxDamage = 550,
+	weaponMinDamage = 230,
+	weaponMaxDamage = 411,
 	weaponAttackSpeed = 1,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY

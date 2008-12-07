@@ -139,7 +139,7 @@ domesticEopie = Creature:new {
 	meatType = "meat_domesticated_tatooine",
 	meatMax = 335,
 
-	skills = { "domesticEopieAttack1" },
+	skills = { "eopieAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

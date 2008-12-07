@@ -585,7 +585,7 @@ rebelAttack44 = {
 	attackname = "rebelAttack44",
 	animation = "counter_low_left_light",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = MELEE,
 	
 	range = 11,
 	damageRatio = 5.15,
@@ -627,7 +627,7 @@ rebelAttack45 = {
 	attackname = "rebelAttack45",
 	animation = "lower_posture_2hmelee_6",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = MELEE,
 	
 	range = 11,
 	damageRatio = 5.15,
@@ -659,7 +659,7 @@ rebelAttack46 = {
 	attackname = "rebelAttack46",
 	animation = "combo_3c_light",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = MELEE,
 	
 	range = 11,
 	damageRatio = 4.15,
@@ -701,7 +701,7 @@ rebelAttack47 = {
 	attackname = "rebelAttack47",
 	animation = "combo_4b_medium",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = MELEE,
 	
 	range = 11,
 	damageRatio = 5.15,
@@ -743,7 +743,7 @@ rebelAttack48 = {
 	attackname = "rebelAttack48",
 	animation = "combo_3a_light",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = MELEE,
 	
 	range = 11,
 	damageRatio = 4.15,
@@ -785,7 +785,7 @@ rebelAttack49 = {
 	attackname = "rebelAttack49",
 	animation = "combo_4b_medium",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = MELEE,
 	
 	range = 11,
 	damageRatio = 5.15,
@@ -871,3 +871,227 @@ rebelAttack51 = {
 }
 
 AddRandomPoolAttackTargetSkill(rebelAttack51)
+
+-----------------------------------------------------------------------
+rebelAttack52 = { 
+	attackname = "rebelAttack52",
+	animation = "fire_area_medium",
+
+	requiredWeaponType = RANGED,
+	
+	range = 75,
+	damageRatio = 5.0,
+	speedRatio = 3.5,
+	coneAngle = 60,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "advancedstrafe_block",
+	CbtSpamCounter = "advancedstrafe_counter",
+	CbtSpamEvade = "advancedstrafe_evade",
+	CbtSpamHit = "advancedstrafe_hit",
+	CbtSpamMiss = "advancedstrafe_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelAttack52)
+-----------------------------------------------------------------------
+rebelAttack53 = { 
+	attackname = "rebelAttack53",
+	animation = "fire_5_special_single_medium_face",
+
+	requiredWeaponType = RANGED,
+	
+	range = 75,
+	damageRatio = 1.5,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 10,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "flurryshot_block",
+	CbtSpamCounter = "flurryshot_counter",
+	CbtSpamEvade = "flurryshot_evade",
+	CbtSpamHit = "flurryshot_hit",
+	CbtSpamMiss = "flurryshot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelAttack53)
+-----------------------------------------------------------------------
+rebelAttack54 = { 
+	attackname = "rebelAttack54",
+	animation = "fire_area_medium",
+
+	requiredWeaponType = RANGED,
+	
+	range = 64,
+	damageRatio = 2.2,
+	speedRatio = 1.7,
+	areaRange = 0,
+	coneAngle = 40,
+	accuracyBonus = 0,
+
+	healthAttackChance = 0,
+	actionAttackChance = 100,
+	mindAttackChance = 0,
+	
+	knockdownChance = 0,
+	postureDownChance = 25,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+
+	dotChance = 60,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = ACTION,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+	
+	CbtSpamBlock = "legshot_block",
+	CbtSpamCounter = "legshot_counter",
+	CbtSpamEvade = "legshot_evade",
+	CbtSpamHit = "legshot_hit",
+	CbtSpamMiss = "legshot_miss",
+}
+
+AddDotPoolAttackTargetSkill(rebelAttack54)
+-----------------------------------------------------------------------
+rebelAttack55 = { 
+	attackname = "rebelAttack55",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = RANGED,
+	
+	range = 65,
+	damageRatio = 6.0,
+	speedRatio = 4.0,
+	areaRange = 0,
+	accuracyBonus = 10,
+
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 40,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "lastditch_block",
+	CbtSpamCounter = "lastditch_counter",
+	CbtSpamEvade = "lastditch_evade",
+	CbtSpamHit = "lastditch_hit",
+	CbtSpamMiss = "lastditch_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelAttack55)
+-----------------------------------------------------------------------
+rebelAttack56 = { 
+	attackname = "rebelAttack56",
+	animation = "fire_area_medium",
+
+	requiredWeaponType = RANGED,
+	
+	range = 75,
+	damageRatio = 2.0,
+	speedRatio = 2.3,
+	coneAngle = 60,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 30,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "flurry_block",
+	CbtSpamCounter = "flurry_counter",
+	CbtSpamEvade = "flurry_evade",
+	CbtSpamHit = "flurry_hit",
+	CbtSpamMiss = "flurry_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelAttack56)
+-----------------------------------------------------------------------
+rebelAttack57 = { 
+	attackname = "rebelAttack57",
+	animation = "fire_5_single_light",
+
+	requiredWeaponType = RANGED,
+	
+	range = 65,
+	damageRatio = 2.0,
+	speedRatio = 2.4,
+	areaRange = 0,
+	accuracyBonus = 5,
+		
+	knockdownChance = 30,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "debilitatingshot_block",
+	CbtSpamCounter = "debilitatingshot_counter",
+	CbtSpamEvade = "debilitatingshot_evade",
+	CbtSpamHit = "debilitatingshot_hit",
+	CbtSpamMiss = "debilitatingshot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelAttack57)
+-----------------------------------------------------------------------
+rebelAttack58 = { 
+	attackname = "rebelAttack58",
+	animation = "fire_defender_posture_change_up",
+
+	requiredWeaponType = RANGED,
+	
+	range = 75,
+	damageRatio = 4.0,
+	speedRatio = 2.6,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 60,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "startleshot_block",
+	CbtSpamCounter = "startleshot_counter",
+	CbtSpamEvade = "startleshot_evade",
+	CbtSpamHit = "startleshot_hit",
+	CbtSpamMiss = "startleshot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelAttack58)

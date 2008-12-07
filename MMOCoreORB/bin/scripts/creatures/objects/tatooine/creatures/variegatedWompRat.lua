@@ -139,7 +139,7 @@ variegatedWompRat = Creature:new {
 	meatType = "meat_wild_tatooine",
 	meatMax = 3,
 
-	skills = { "variegatedWompRatAttack1" },
+	skills = { "wompAttack2" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

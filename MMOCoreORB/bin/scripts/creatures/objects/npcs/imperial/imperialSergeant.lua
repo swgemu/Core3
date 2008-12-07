@@ -47,16 +47,15 @@ imperialSergeant = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "imperial_sergeant",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Imperial sergeant", 
 	objectCRC = 3317919928, 
 	socialGroup = "Imperial",
 	
 
-	level = 1,
+	level = 31,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 3500,
 	healthMin = 2900,
@@ -101,16 +100,16 @@ imperialSergeant = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_scout_blaster.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "scout Blaster", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_scout_blaster", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 90,
+	weaponMaxDamage = 230,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "heat", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "light", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,8 +139,8 @@ imperialSergeant = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

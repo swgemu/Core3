@@ -139,9 +139,9 @@ duneBantha = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 375,
 
-	skills = { "banthaAttack1" },
+	skills = { "banthaAttack2" },
 	-- skills = { " Stun attack", "", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

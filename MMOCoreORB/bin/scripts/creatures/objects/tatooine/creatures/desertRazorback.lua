@@ -140,7 +140,7 @@ desertRazorback = Creature:new {
 	meatMax = 65,
 
 	skills = { "desertRazorbackAttack1" },
-	-- skills = { " Stun attack", "", "" }
+	-- skills = { "Stun attack", "", "" }
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

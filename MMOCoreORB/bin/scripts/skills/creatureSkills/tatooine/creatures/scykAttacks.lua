@@ -91,3 +91,4 @@ scykAttack1 = {
 AddRandomPoolAttackTargetSkill(scykAttack1)
 
 -----------------------------------------------
+

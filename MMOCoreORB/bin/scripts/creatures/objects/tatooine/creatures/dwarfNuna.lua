@@ -145,4 +145,4 @@ dwarfNuna = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(dwarfNuna, 2763251553) --  Add to Global Table
+Creatures:addCreature(dwarfNuna, 2763251553) -- Add to Global Table

@@ -47,8 +47,7 @@ rebelSurfaceMarshal = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "rebel_surface_marshal",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Rebel surface Marshall", 
 	objectCRC = 7469172, 
 	socialGroup = "rebel",
 	
@@ -101,27 +100,28 @@ rebelSurfaceMarshal = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/melee/polearm/shared_lance_vibrolance.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "a Vibrolance", -- Name ex. 'a Vibrolance'
-	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	--Officer Class:
+	weapon = "object/weapon/ranged/pistol/shared_pistol_power5.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "officer's Power 5", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 200,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 140,
+	weaponMaxDamage = 220,
+	weaponAttackSpeed = 1.2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "a Long Vibro Axe", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 250,
-	alternateWeaponMaxDamage = 450,
+	alternateWeaponMinDamage = 210,
+	alternateWeaponMaxDamage = 310,
 	alternateWeaponAttackSpeed = 1.5,
-	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 

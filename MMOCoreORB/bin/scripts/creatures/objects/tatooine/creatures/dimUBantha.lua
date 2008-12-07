@@ -139,7 +139,7 @@ dimUBantha = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 450,
 
-	skills = { "dimUBanthaAttack1" },
+	skills = { "banthaAttack1" },
 	-- skills = { " Dizzy attack", "", "" }
 	respawnTimer = 60,
 

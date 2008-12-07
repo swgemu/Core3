@@ -47,16 +47,15 @@ imperialSharpshooter = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "imperial_sharpshooter",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Imperial sharpshooter", 
 	objectCRC = 1623607949, 
 	socialGroup = "Imperial",
 	
 
-	level = 1,
+	level = 30,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 4300,
 	healthMin = 3500,
@@ -101,16 +100,16 @@ imperialSharpshooter = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/rifle/shared_rifle_dlt20a.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Storm Rifleman Dlt20a", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_dlt20a", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 200,
+	weaponMaxDamage = 313,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,8 +139,8 @@ imperialSharpshooter = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack3", "imperialStormTrooperRiflemanAttack4" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -139,7 +139,7 @@ wastelandCuPa = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 215,
 
-	skills = { "wastelandCuPaAttack1" },
+	skills = { "cuPaAttack1" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

@@ -139,7 +139,7 @@ mountainSquill = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 3,
 
-	skills = { "mountainSquillAttack1" },
+	skills = { "squillAttack4", "squillAttack2" },
 	-- skills = { " Blind attack", " Intimidation attack", "" }
 	respawnTimer = 60,
 

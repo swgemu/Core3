@@ -40,15 +40,15 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-imperialStormTrooperCommandoAttack1 = {
-	attackname = "imperialStormTrooperCommandoAttack1",
-	animation = "fire_flame_thrower_single_1_light",
+imperialStormTrooperSniperAttack2 = { 
+	attackname = "imperialStormTrooperSniperAttack2",
+	animation = "fire_1_special_single_medium",
 
-	requiredWeaponType = RIFLEFLAMETHROWER,
+	requiredWeaponType = RIFLE,
 	
-	range = 25,
-	damageRatio = 5,
-	speedRatio = 4,
+	range = 75,
+	damageRatio = 1.25,
+	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -59,38 +59,26 @@ imperialStormTrooperCommandoAttack1 = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
-
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
-
-	dotChance = 100,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = HEALTH,
 	
-	CbtSpamBlock = "flamesingle1_block",
-	CbtSpamCounter = "flamesingle1_counter",
-	CbtSpamEvade = "flamesingle1_evade",
-	CbtSpamHit = "flamesingle1_hit",
-	CbtSpamMiss = "flamesingle1_miss",
+	CbtSpamBlock = "snipershot_block",
+	CbtSpamCounter = "snipershot_counter",
+	CbtSpamEvade = "snipershot_evade",
+	CbtSpamHit = "snipershot_hit",
+	CbtSpamMiss = "snipershot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(imperialStormTrooperCommandoAttack1)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack2)
 
------------------------------------------------------------------------
+imperialStormTrooperSniperAttack1 = { 
+	attackname = "imperialStormTrooperSniperAttack1",
+	animation = "fire_area_medium",
 
-imperialStormTrooperCommandoAttack2 = {
-	attackname = "imperialStormTrooperCommandoAttack2",
-	animation = "fire_flame_thrower_cone_1_light",
-
-	requiredWeaponType = RIFLEFLAMETHROWER,
+	requiredWeaponType = RIFLE,
 	
-	range = 20,
-	damageRatio = 5,
-	speedRatio = 4,
-	coneAngle = 30,
+	range = 75,
+	damageRatio = 5.0,
+	speedRatio = 3.5,
+	coneAngle = 60,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -100,38 +88,28 @@ imperialStormTrooperCommandoAttack2 = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
-
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
-
-	dotChance = 100,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = HEALTH,
 	
-	CbtSpamBlock = "flamecone1_block",
-	CbtSpamCounter = "flamecone1_counter",
-	CbtSpamEvade = "flamecone1_evade",
-	CbtSpamHit = "flamecone1_hit",
-	CbtSpamMiss = "flamecone1_miss",
+	CbtSpamBlock = "advancedstrafe_block",
+	CbtSpamCounter = "advancedstrafe_counter",
+	CbtSpamEvade = "advancedstrafe_evade",
+	CbtSpamHit = "advancedstrafe_hit",
+	CbtSpamMiss = "advancedstrafe_miss",
 }
 
-AddRandomPoolAttackTargetSkill(imperialStormTrooperCommandoAttack2)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack1)
 
 -----------------------------------------------------------------------
 
-imperialStormTrooperCommandoAttack3 = {
-	attackname = "imperialStormTrooperCommandoAttack3",
-	animation = "fire_flame_thrower_single_2_medium",
+imperialStormTrooperRiflemanAttack1 = { 
+	attackname = "imperialStormTrooperRiflemanAttack1",
+	animation = "fire_5_special_single_medium",
 
-	requiredWeaponType = RIFLEFLAMETHROWER,
+	requiredWeaponType = RIFLE,
 	
-	range = 25,
-	damageRatio = 8,
-	speedRatio = 4,
-	coneAngle = 0,
+	range = 75,
+	damageRatio = 2.0,
+	speedRatio = 2.0,
+	coneAngle = 60,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -141,38 +119,70 @@ imperialStormTrooperCommandoAttack3 = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
-
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
-
-	dotChance = 100,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = HEALTH,
 	
-	CbtSpamBlock = "flamesingle2_block",
-	CbtSpamCounter = "flamesingle2_counter",
-	CbtSpamEvade = "flamesingle2_evade",
-	CbtSpamHit = "flamesingle2_hit",
-	CbtSpamMiss = "flamesingle2_miss",
+	CbtSpamBlock = "strafeshot_block",
+	CbtSpamCounter = "strafeshot_counter",
+	CbtSpamEvade = "strafeshot_evade",
+	CbtSpamHit = "strafeshot_hit",
+	CbtSpamMiss = "strafeshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(imperialStormTrooperCommandoAttack3)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperRiflemanAttack1)
 
 -----------------------------------------------------------------------
 
-imperialStormTrooperCommandoAttack4 = {
-	attackname = "imperialStormTrooperCommandoAttack4",
-	animation = "fire_flame_thrower_cone_2_light",
+imperialStormTrooperRiflemanAttack2 = { 
+	attackname = "imperialStormTrooperRiflemanAttack2",
+	animation = "fire_1_special_single_medium_face",
 
-	requiredWeaponType = RIFLEFLAMETHROWER,
+	requiredWeaponType = RIFLE,
 	
-	range = 20,
-	damageRatio = 6,
-	speedRatio = 4,
-	coneAngle = 30,
+	range = 75,
+	damageRatio = 3.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthAttackChance = 0,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+	
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 100,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "masterheadshot_block",
+	CbtSpamCounter = "masterheadshot_counter",
+	CbtSpamEvade = "masterheadshot_evade",
+	CbtSpamHit = "masterheadshot_hit",
+	CbtSpamMiss = "masterheadshot_miss",
+}
+
+AddDirectPoolAttackTargetSkill(imperialStormTrooperRiflemanAttack2)
+
+-----------------------------------------------------------------------
+
+imperialStormTrooperRiflemanAttack3 = { 
+	attackname = "imperialStormTrooperRiflemanAttack3",
+	animation = "fire_1_special_single_medium",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 75,
+	damageRatio = 2.5,
+	speedRatio = 3.0,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -182,23 +192,43 @@ imperialStormTrooperCommandoAttack4 = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
-	rezChance = 100,
-
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
-
-	dotChance = 100,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = HEALTH,
 	
-	CbtSpamBlock = "flamecone2_block",
-	CbtSpamCounter = "flamecone2_counter",
-	CbtSpamEvade = "flamecone2_evade",
-	CbtSpamHit = "flamecone2_hit",
-	CbtSpamMiss = "flamecone2_miss",
+	CbtSpamBlock = "concealedshot_block",
+	CbtSpamCounter = "concealedshot_counter",
+	CbtSpamEvade = "concealedshot_evade",
+	CbtSpamHit = "concealedshot_hit",
+	CbtSpamMiss = "concealedshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(imperialStormTrooperCommandoAttack4)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperRiflemanAttack3)
+
+-----------------------------------------------------------------------
+
+imperialStormTrooperRiflemanAttack4 = { 
+	attackname = "imperialStormTrooperRiflemanAttack4",
+	animation = "fire_3_special_single_medium",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 75,
+	damageRatio = 2.0,
+	speedRatio = 2.1,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 20,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 20,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "flushingshot_block",
+	CbtSpamCounter = "flushingshot_counter",
+	CbtSpamEvade = "flushingshot_evade",
+	CbtSpamHit = "flushingshot_hit",
+	CbtSpamMiss = "flushingshot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(imperialStormTrooperRiflemanAttack4)

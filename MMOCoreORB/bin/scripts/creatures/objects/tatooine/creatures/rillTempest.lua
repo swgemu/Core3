@@ -139,7 +139,7 @@ rillTempest = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 35,
 
-	skills = { "rillTempestAttack1" },
+	skills = { "rillAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

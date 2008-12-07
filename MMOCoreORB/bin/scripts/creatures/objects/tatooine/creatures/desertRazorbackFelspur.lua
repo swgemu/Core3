@@ -139,7 +139,7 @@ desertRazorbackFelspur = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 65,
 
-	skills = { "desertRazorbackFelspurAttack1" },
+	skills = { "desertRazorbackAttack1" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

@@ -72,3 +72,4 @@ rillAttack1 = {
 AddRandomPoolAttackTargetSkill(rillAttack1)
 
 -----------------------------------------------
+

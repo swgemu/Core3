@@ -40,15 +40,14 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-scoutTrooper = Creature:new {
-	objectName = "scoutTrooper",  -- Lua Object Name
+imperialScoutTrooper = Creature:new {
+	objectName = "imperialScoutTrooper",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "imperial", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "crackdown_scout_trooper",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Imperial scout trooper", 
 	objectCRC = 3260762182, 
 	socialGroup = "Imperial",
 	
@@ -56,7 +55,7 @@ scoutTrooper = Creature:new {
 	level = 1,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 7700,
 	healthMin = 6300,
@@ -101,16 +100,16 @@ scoutTrooper = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_scout_blaster.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "scout Blaster", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_scout_blaster", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 90,
+	weaponMaxDamage = 230,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,10 +139,10 @@ scoutTrooper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(scoutTrooper, 3260762182) --  Add to Global Table
+Creatures:addCreature(imperialScoutTrooper, 3260762182) --  Add to Global Table

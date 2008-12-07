@@ -139,7 +139,7 @@ lesserDesertWompRat = Creature:new {
 	meatType = "meat_wild_tatooine",
 	meatMax = 2,
 
-	skills = { "lesserDesertWompRatAttack1" },
+	skills = { "wompRatAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

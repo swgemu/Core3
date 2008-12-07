@@ -139,7 +139,7 @@ lesserBocatt = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 100,
 
-	skills = { "lesserBocattAttack1" },
+	skills = { "bocattAttack1", "bocattAttack2" },
 	-- skills = { " Posture down attack", " Stun attack", "" }
 	respawnTimer = 60,
 

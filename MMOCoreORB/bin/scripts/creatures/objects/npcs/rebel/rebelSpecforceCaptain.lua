@@ -47,16 +47,14 @@ rebelSpecforceCaptain = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "rebel_specforce_captain",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Rebel SpecForce Captain", 
 	objectCRC = 542195677, 
 	socialGroup = "Rebel",
 	
 
 	level = 25,
 	
-
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 8800,
 	healthMin = 7200,
@@ -101,27 +99,27 @@ rebelSpecforceCaptain = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
-
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
-	alternateWeaponMinDamage = 0,
-	alternateWeaponMaxDamage = 0,
-	alternateWeaponAttackSpeed = 0,
-	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/rifle/shared_rifle_berserker.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "spec ops berserker", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_berserker", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 365,
+	weaponMaxDamage = 627,
+	weaponAttackSpeed = 2.2,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	
+	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 210,
+	alternateWeaponMaxDamage = 310,
+	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
@@ -140,8 +138,8 @@ rebelSpecforceCaptain = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "rebelAttack44", "rebelAttack45", "rebelAttack48", "rebelAttack52", "rebelAttack51", "rebelAttack54", "rebelAttack53", "rebelAttack55", "rebelAttack56", "rebelAttack57", "rebelAttack58" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

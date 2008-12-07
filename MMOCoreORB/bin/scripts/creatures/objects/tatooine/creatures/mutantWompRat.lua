@@ -139,7 +139,7 @@ mutantWompRat = Creature:new {
 	meatType = "meat_wild_tatooine",
 	meatMax = 6,
 
-	skills = { "mutantWompRatAttack1" },
+	skills = { "wompAttack2" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

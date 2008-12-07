@@ -139,7 +139,7 @@ gorgGlutton = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 12,
 	
-	skills = { "gorgGluttonAttack1" },
+	skills = { "gorgAttack1" },
 	-- skills = { "", "", "" }	
 	respawnTimer = 60,
 

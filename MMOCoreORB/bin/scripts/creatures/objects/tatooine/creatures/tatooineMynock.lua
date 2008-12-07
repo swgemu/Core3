@@ -145,4 +145,4 @@ tatooineMynock = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(tatooineMynock, 2246027732) --  Add to Global Table
+Creatures:addCreature(tatooineMynock, 2246027732) -- Add to Global Table

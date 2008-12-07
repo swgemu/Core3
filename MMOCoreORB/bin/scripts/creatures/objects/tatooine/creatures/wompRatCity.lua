@@ -40,35 +40,36 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-CuPa = Creature:new {
-	objectName = "CuPa",  -- Lua Object Name
+wompratCity = Creature:new {
+	objectName = "wompratCity",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "CuPa",
+	faction = "WompRat",
 	gender = "",
 
-	speciesName = "cu_pa",
+	speciesName = "creature_name",
 	stfName = "mob/creature_names",
-	objectCRC = 673552695, 
-	socialGroup = "CuPa",
+	stfName = "a Womprat City",
+	objectCRC = 1909480803, 
+	socialGroup = "WompRat",
 	
 
-	level = 11,
+	level = 6,
 	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 1200,
-	healthMin = 1000,
+	healthMax = 220,
+	healthMin = 180,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 1200,
-	actionMin = 1000,
+	actionMax = 220,
+	actionMin = 180,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 1200,
-	mindMin = 1000,
+	mindMax = 220,
+	mindMin = 180,
 	focus = 0,
 	willpower = 0,
 
@@ -84,7 +85,7 @@ CuPa = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 200,
+	accuracy = 0,
 
 	healer = 0,
 
@@ -128,22 +129,21 @@ CuPa = Creature:new {
 
 	tame = 0.25,  -- Likely hood to be tamed
 
-	milk = 1,
+	milk = 0,
 
 	boneType = "bone_mammal_tatooine",
-	boneMax = 115,
+	boneMax = 3,
 
-	hideType = "hide_bristley_tatooine",
-	hideMax = 100,
+	hideType = "hide_leathery_tatooine",
+	hideMax = 7,
 
-	meatType = "meat_reptilian_tatooine",
-	meatMax = 215,
+	meatType = "meat_wild_tatooine",
+	meatMax = 7,
 
-	skills = { "cupaAttack1" },
-	-- skills = { " Stun attack", " Ranged attack (spit)", "" },
-	 respawnTimer = 60,
+	skills = { "wompRatAttack1" },
+	respawnTimer = 60,
 
-	behaviorScript = "" -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(CuPa, 673552695) --  Add to Global Table
+Creatures:addCreature(wompratCity, 1909480803) --  Add to Global Table

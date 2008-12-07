@@ -146,4 +146,4 @@ sevorrt = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(sevorrt, 714826259) --  Add to Global Table
+Creatures:addCreature(sevorrt, 714826259) -- Add to Global Table

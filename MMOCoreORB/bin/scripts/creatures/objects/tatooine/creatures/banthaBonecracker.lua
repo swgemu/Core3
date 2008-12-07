@@ -139,7 +139,7 @@ banthaBonecracker = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 475,
 
-	skills = { "banthaBonecrackerAttack1" },
+	skills = { "banthaBonecrackerAttack1", "banthaBonecrackerAttack2" },
 	-- skills = { " Intimidation attack", " Stun attack", "" }
 	respawnTimer = 60,
 

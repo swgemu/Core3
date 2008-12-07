@@ -139,7 +139,7 @@ lesserDewback = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 175,
 
-	skills = { "lesserDewbackAttack1" },
+	skills = { "dewbackAttack3" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

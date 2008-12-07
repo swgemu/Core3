@@ -49,7 +49,7 @@ imperialAttack10 = {
 
 	range = 64,
 
-	damageRatio = 6.01,
+	damageRatio = 2.01,
 
 	speedRatio = 2,
 	coneAngle = 60,
@@ -82,7 +82,7 @@ imperialAttack11 = {
 
 	range = 64,
 
-	damageRatio = 8.1,
+	damageRatio = 2.1,
 
 	speedRatio = 2,
 	coneAngle = 60,
@@ -115,7 +115,7 @@ imperialAttack12 = {
 
 	range = 64,
 
-	damageRatio = 11.3,
+	damageRatio = 2.3,
 
 	speedRatio = 2,
 	coneAngle = 60,

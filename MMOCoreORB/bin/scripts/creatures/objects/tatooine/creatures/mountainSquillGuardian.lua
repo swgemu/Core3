@@ -140,7 +140,7 @@ mountainSquillGuardian = Creature:new {
 	meatMax = 3,
 
 	skills = { "squillAttack2", "squillAttack3" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -139,7 +139,7 @@ kreetleSwarming = Creature:new {
 	meatType = "meat_insect_tatooine",
 	meatMax = 1,
 
-	skills = { "kreetleSwarmingAttack1" },
+	skills = { "kreetleAttack3" },
 	-- skills = { " Posture down attack", "", "" }
 	respawnTimer = 60,
 

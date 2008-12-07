@@ -47,8 +47,7 @@ imperialCivilPatrolCaptain = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "imperial_civil_patrol_captain",
-	stfName = "mob/creature_names", 
+	stfName = "a ed civil patrol captain", 
 	objectCRC = 152421728, 
 	socialGroup = "Imperial",
 	
@@ -56,7 +55,7 @@ imperialCivilPatrolCaptain = Creature:new {
 	level = 9,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 825,
 	healthMin = 675,
@@ -101,16 +100,16 @@ imperialCivilPatrolCaptain = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Imperial Standard Issue E11", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 69,
+	weaponMaxDamage = 169,
+	weaponAttackSpeed = 2.5,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,8 +139,8 @@ imperialCivilPatrolCaptain = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "stormAttack1", "stormAttack2", "stormAttack3", "stormAttack4", "stormAttack5", "stormAttack6", "stormAttack7", "stormAttack8", "stormAttack9", "stormAttack10", "stormAttack11", "stormAttack12", "stormAttack13", "stormAttack14", "stormAttack15" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

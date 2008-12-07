@@ -139,7 +139,7 @@ dewbackCannibal = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 340,
 
-	skills = { "dewbackCannibalAttack1" },
+	skills = { "dewbackAttack1" },
 	-- skills = { " Dizzy attack", "", "" }
 	respawnTimer = 60,
 

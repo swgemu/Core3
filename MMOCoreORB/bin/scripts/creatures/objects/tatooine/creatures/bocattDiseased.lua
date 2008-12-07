@@ -139,9 +139,9 @@ bocattDiseased = Creature:new {
 	meatType = "meat_wild_tatooine",
 	meatMax = 6,
 
-	skills = { "bocattAttack1" },
+	skills = { "bocattAttack4", "bocattAttack5" },
 	-- skills = { " Intimidation attack", " Disease attack (mild)", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

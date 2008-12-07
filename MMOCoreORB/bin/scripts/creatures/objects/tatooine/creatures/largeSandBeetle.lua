@@ -139,7 +139,7 @@ largeSandBeetle = Creature:new {
 	meatType = "meat_insect_tatooine",
 	meatMax = 10,
 
-	skills = { "largeSandBeetleAttack1" },
+	skills = { "sandBeetleAttack1", "sandBeetleAttack2" },
 	-- skills = { " Blind attack", " Stun attack", "" }
 	respawnTimer = 60,
 

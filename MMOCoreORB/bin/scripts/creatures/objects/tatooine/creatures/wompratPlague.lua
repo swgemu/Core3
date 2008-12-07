@@ -139,7 +139,7 @@ wompratPlague = Creature:new {
 	meatType = "meat_wild_tatooine",
 	meatMax = 4,
 
-	skills = { "wompratPlagueAttack1" },
+	skills = { "wompRatAttack4", "wompRatAttack5" },
 	-- skills = { " Intimidation attack", " Disease attack (mild)", "" }
 	respawnTimer = 60,
 

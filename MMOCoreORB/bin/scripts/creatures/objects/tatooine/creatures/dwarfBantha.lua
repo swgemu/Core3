@@ -139,7 +139,7 @@ dwarfBantha = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 300,
 	
-	skills = { "dwarfBanthaAttack1" },
+	skills = { "banthaAttack2" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

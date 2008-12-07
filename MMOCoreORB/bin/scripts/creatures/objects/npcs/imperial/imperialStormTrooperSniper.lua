@@ -40,20 +40,19 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-stormtrooperSniper = Creature:new {
-	objectName = "stormtrooperSniper",  -- Lua Object Name
+imperialStormTrooperSniper = Creature:new {
+	objectName = "imperialStormTrooperSniper",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "imperial", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "crackdown_stormtrooper_sniper",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Imperial stormsniper", 
 	objectCRC = 2688076350, 
 	socialGroup = "imperial",
 	
 
-	level = 1,
+	level = 32,
 	
 
 	combatFlags = 0,
@@ -96,21 +95,21 @@ stormtrooperSniper = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	meleeDefense = 100,  
+	rangedDefense = 79,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/rifle/shared_rifle_t21.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "StormSnipert21", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_t21", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 237,
+	weaponMaxDamage = 425,
+	weaponAttackSpeed = 5.3,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,10 +139,10 @@ stormtrooperSniper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
+	skills = { "imperialStormTrooperSniperAttack2", "imperialStormTrooperSniperAttack1", "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack3", "imperialStormTrooperRiflemanAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(stormtrooperSniper, 2688076350) --  Add to Global Table
+Creatures:addCreature(imperialStormTrooperSniper, 2688076350) --  Add to Global Table

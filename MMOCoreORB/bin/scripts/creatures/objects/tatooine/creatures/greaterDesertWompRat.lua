@@ -100,7 +100,7 @@ greaterDesertWompRat = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "", -- Name ex. 'a Vibrolance'
 	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -139,7 +139,7 @@ greaterDesertWompRat = Creature:new {
 	meatType = "meat_wild_tatooine",
 	meatMax = 6,
 
-	skills = { "wompRatAttack1" },
+	skills = { "wompAttack1", "wompAttack2", "wompAttack3" },
 	-- skills = { " Blind attack", " Stun attack", " Ranged attack (spit)" },
 	 respawnTimer = 60,
 

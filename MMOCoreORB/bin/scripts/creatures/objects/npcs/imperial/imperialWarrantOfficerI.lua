@@ -47,16 +47,15 @@ imperialWarrantOfficerI = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "imperial_warrant_officer_i",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Imperial Warrant Officer I", 
 	objectCRC = 1476291957, 
 	socialGroup = "Imperial",
 	
 
-	level = 19,
+	level = 24,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 5500,
 	healthMin = 4500,
@@ -96,19 +95,19 @@ imperialWarrantOfficerI = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	meleeDefense = 25,  
+	rangedDefense = 27,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
+	weapon = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "officer's FWG5", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 110,
+	weaponMaxDamage = 220,
+	weaponAttackSpeed = 1.2,
 	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -140,8 +139,8 @@ imperialWarrantOfficerI = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
