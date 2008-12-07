@@ -2511,8 +2511,14 @@ void GameCommandHandler::lockServer(StringTokenizer tokenizer, Player * player) 
 		return;
 
 	ZoneServer* zoneServer = zone->getZoneServer();
+	ChatManager * chatManager = zone->getChatManager();
 
 	zoneServer->setServerStateLocked();
+
+	stringstream message;
+	message <<  player->getFirstName() << " locked the server";
+
+	chatManager->broadcastMessage(message.str());
 }
 
 void GameCommandHandler::unlockServer(StringTokenizer tokenizer, Player * player) {
@@ -2525,6 +2531,13 @@ void GameCommandHandler::unlockServer(StringTokenizer tokenizer, Player * player
 		return;
 
 	ZoneServer* zoneServer = zone->getZoneServer();
+	ChatManager * chatManager = zone->getChatManager();
 
 	zoneServer->setServerStateOnline();
+
+	stringstream message;
+	message <<  player->getFirstName() << " unlocked the server";
+
+	chatManager->broadcastMessage(message.str());
+
 }

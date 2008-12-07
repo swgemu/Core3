@@ -295,6 +295,10 @@ public:
 
 		serverState = LOCKED;
 
+		stringstream msg;
+		msg << dec << "server locked";
+		info(msg, true);
+
 		unlock();
 	}
 
@@ -302,6 +306,10 @@ public:
 		lock();
 
 		serverState = ONLINE;
+
+		stringstream msg;
+		msg << dec << "server unlocked";
+		info(msg, true);
 
 		unlock();
 	}

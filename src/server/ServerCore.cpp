@@ -217,10 +217,10 @@ void ServerCore::handleCommands() {
 
 				if (pingServer != NULL)
 					pingServer->printInfo();
-			} else if (command == "lockServer") {
+			} else if (command == "lock") {
 				if (zoneServer != NULL)
 					zoneServer->setServerStateLocked();
-			} else if (command == "unlockServer") {
+			} else if (command == "unlock") {
 				if (zoneServer != NULL)
 					zoneServer->setServerStateOnline();
 			} else if (command == "icap") {
