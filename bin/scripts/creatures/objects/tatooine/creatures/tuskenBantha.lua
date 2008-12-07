@@ -47,7 +47,6 @@ tuskenBantha = Creature:new {
 	gender = "",
 
 	speciesName = "tusken_bantha",
-	
 	stfName = "mob/creature_names",
 	objectCRC = 1901766605, 
 	socialGroup = "tusken",
@@ -141,7 +140,8 @@ tuskenBantha = Creature:new {
 	meatMax = 450,
 
 	skills = { "banthaAttack1" },
-	respawnTimer = 120,
+	-- skills = { " Dizzy attack", "", "" },
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

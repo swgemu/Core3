@@ -139,7 +139,7 @@ kreetleDeath = Creature:new {
 	meatType = "meat_insect_tatooine",
 	meatMax = 3,
 
-	skills = { "kreetleDeathAttack1" },
+	skills = { "kreetleAttack1" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

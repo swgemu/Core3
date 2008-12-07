@@ -47,8 +47,7 @@ imperialColonel = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "an Imperial Colonel",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Imperial Colonel", 
 	objectCRC = 2701430666, 
 	socialGroup = "imperial",
 	
@@ -96,8 +95,8 @@ imperialColonel = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	meleeDefense = 70,  
+	rangedDefense = 48,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 

@@ -139,7 +139,7 @@ duneLizardSunstained = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 85,
 
-	skills = { "duneLizardSunstainedAttack1" },
+	skills = { "duneLizardAttack2", "duneLizardAttack1" },
 	-- skills = { " Ranged attack (spit)", " Dizzy attack", "" }
 	respawnTimer = 60,
 

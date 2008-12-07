@@ -47,8 +47,7 @@ imperialMedic = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "imperial_medic",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Imperial medic", 
 	objectCRC = 1258151269, 
 	socialGroup = "Imperial",
 	
@@ -56,7 +55,7 @@ imperialMedic = Creature:new {
 	level = 16,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 3500,
 	healthMin = 2900,
@@ -98,21 +97,22 @@ imperialMedic = Creature:new {
 
 	meleeDefense = 1,  
 	rangedDefense = 1,
+	
+	randomMovement = 0,
 
-	attackCreatureOnSight = "", -- Enter socialGroups 
-
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
-
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	attackCreatureOnSight = "", -- Enter socialGroups 	
+	
+	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 100,
+	weaponMaxDamage = 250,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -125,7 +125,7 @@ imperialMedic = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,42", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -140,8 +140,8 @@ imperialMedic = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

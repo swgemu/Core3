@@ -100,7 +100,7 @@ bocatt = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "", -- Name ex. 'a Vibrolance'
 	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -139,9 +139,9 @@ bocatt = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 100,
 
-	skills = { "bocattAttack1" },
+	skills = { "bocattAttack1", "bocattAttack2", "bocattAttack3" },
 	-- skills = { " Posture down attack", " Stun attack", " Ranged attack (spit)" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

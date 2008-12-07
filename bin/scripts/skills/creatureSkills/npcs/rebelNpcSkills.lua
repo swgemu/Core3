@@ -45,7 +45,7 @@
 -- Rebel Attacks
 RunSkillsFile("creatureSkills/npcs/rebel/rebelAttacks.lua")
 -- RunSkillsFile("creatureSkills/npcs/rebel/rebelColonelAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelCommandoAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/rebel/rebelCommandoAttacks.lua")
 -- RunSkillsFile("creatureSkills/npcs/rebel/rebelCorporalAttacks.lua")
 -- RunSkillsFile("creatureSkills/npcs/rebel/rebelFirstLieutenantAttacks.lua")
 -- RunSkillsFile("creatureSkills/npcs/rebel/rebelGeneralAttacks.lua")

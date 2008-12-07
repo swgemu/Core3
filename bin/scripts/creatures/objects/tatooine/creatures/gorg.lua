@@ -145,4 +145,4 @@ gorg = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(gorg, 2760269032) --  Add to Global Table
+Creatures:addCreature(gorg, 2760269032) -- Add to Global Table

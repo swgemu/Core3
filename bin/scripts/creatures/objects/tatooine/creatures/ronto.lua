@@ -139,9 +139,9 @@ ronto = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 450,
 
-	skills = { "rontoAttack1" },
+	skills = { "rontoAttack1", "rontoAttack2" },
 	-- skills = { " Stun attack", " Dizzy attack", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

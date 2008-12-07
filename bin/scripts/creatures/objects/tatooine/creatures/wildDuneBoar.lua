@@ -139,7 +139,7 @@ wildDuneBoar = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 90,
 
-	skills = { "wildDuneBoarAttack1" },
+	skills = { "zuccaBoarAttack1", "zuccaBoarAttack3" },
 	-- skills = { " Stun attack", " Intimidation attack", "" }
 	respawnTimer = 60,
 

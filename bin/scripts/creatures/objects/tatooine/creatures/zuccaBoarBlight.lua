@@ -139,7 +139,7 @@ zuccaBoarBlight = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 65,
 
-	skills = { "zuccaBoarBlightAttack1" },
+	skills = { "zuccaBoarAttack1" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

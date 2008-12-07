@@ -146,4 +146,4 @@ moundMite = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(moundMite, 4266026234) --  Add to Global Table
+Creatures:addCreature(moundMite, 4266026234) -- Add to Global Table

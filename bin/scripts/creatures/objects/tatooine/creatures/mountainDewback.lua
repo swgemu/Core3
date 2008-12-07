@@ -139,7 +139,7 @@ mountainDewback = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 330,
 
-	skills = { "mountainDewbackAttack1" },
+	skills = { "dewbackAttack2", "dewbackAttack1" },
 	-- skills = { " Knockdown attack", " Dizzy attack", "" }
 	respawnTimer = 60,
 

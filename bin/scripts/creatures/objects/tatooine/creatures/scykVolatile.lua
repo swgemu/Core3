@@ -139,7 +139,7 @@ scykVolatile = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 40,
 
-	skills = { "scykVolatileAttack1" },
+	skills = { "scykAttack1" },
 	-- skills = { " Poison attack (medium)", "", "" }
 	respawnTimer = 60,
 

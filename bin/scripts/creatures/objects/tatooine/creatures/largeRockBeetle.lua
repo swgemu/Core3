@@ -139,7 +139,7 @@ largeRockBeetle = Creature:new {
 	meatType = "meat_insect_tatooine",
 	meatMax = 10,
 
-	skills = { "largeRockBeetleAttack1" },
+	skills = { "rockBeetleAttack1" },
 	-- skills = { " Posture down attack", "", "" }
 	respawnTimer = 60,
 

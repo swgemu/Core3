@@ -47,7 +47,7 @@ imperialStormTrooperCommandoAttack1 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 25,
-	damageRatio = 5,
+	damageRatio = 3,
 	speedRatio = 4,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -88,7 +88,7 @@ imperialStormTrooperCommandoAttack2 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 20,
-	damageRatio = 5,
+	damageRatio = 2,
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -129,7 +129,7 @@ imperialStormTrooperCommandoAttack3 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 25,
-	damageRatio = 8,
+	damageRatio = 2.1,
 	speedRatio = 4,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -170,7 +170,7 @@ imperialStormTrooperCommandoAttack4 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 20,
-	damageRatio = 6,
+	damageRatio = 4,
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,

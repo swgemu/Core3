@@ -139,7 +139,7 @@ kreetleOver = Creature:new {
 	meatType = "meat_insect_tatooine",
 	meatMax = 8,
 
-	skills = { "kreetleOverAttack1" },
+	skills = { "kreetleAttack2" },
 	-- skills = { " Intimidation attack", "", "" }
 	respawnTimer = 60,
 

@@ -139,7 +139,7 @@ dragonetArmodragon = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 125,
 
-	skills = { "dragonetArmodragonAttack1" },
+	skills = { "dragonetAttack1", "dragonetAttack3", "dragonetAttack2" },
 	-- skills = { " Dizzy attack", " Posture down attack", " Ranged attack (spit)" }
 	respawnTimer = 60,
 

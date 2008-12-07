@@ -140,7 +140,7 @@ eopie = Creature:new {
 	meatMax = 315,
 
 	skills = { "eopieAttack1" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

@@ -139,7 +139,7 @@ squillGreat = Creature:new {
 	meatType = "meat_carnivore_tatooine",
 	meatMax = 6,
 
-	skills = { "squillGreatAttack1" },
+	skills = { "squillAttack1" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

@@ -139,7 +139,7 @@ rontoMale = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 465,
 
-	skills = { "rontoMaleAttack1" },
+	skills = { "rontoAttack3", "rontoAttack1" },
 	-- skills = { " Posture down attack", " Stun attack", "" }
 	respawnTimer = 60,
 

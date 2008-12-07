@@ -70,6 +70,8 @@ squillAttack1 = {
 }
 AddRandomPoolAttackTargetSkill(squillAttack1)
 
+-----------------------------------------------
+
 squillAttack2 = {
 	attackname = "squillAttack2",
 	animation = "creature_attack_light",
@@ -100,6 +102,8 @@ squillAttack2 = {
 	CbtSpamMiss = "attack_miss",
 }
 AddRandomPoolAttackTargetSkill(squillAttack2)
+
+-----------------------------------------------
 
 squillAttack3 = {
 	attackname = "squillAttack3",
@@ -132,6 +136,8 @@ squillAttack3 = {
 }
 AddRandomPoolAttackTargetSkill(squillAttack3)
 
+-----------------------------------------------
+
 squillAttack4 = {
 	attackname = "squillAttack4",
 	animation = "creature_attack_light",
@@ -151,9 +157,9 @@ squillAttack4 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 20,
 	stunChance = 0,
-	intimidateChance = 1,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",

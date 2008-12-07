@@ -139,7 +139,7 @@ grizzledDewback = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 365,
 
-	skills = { "grizzledDewbackAttack1" },
+	skills = { "dewbackAttack1", "dewbackAttack2" },
 	-- skills = { " Dizzy attack", " Knockdown attack", "" }
 	respawnTimer = 60,
 

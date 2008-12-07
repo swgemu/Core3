@@ -139,7 +139,7 @@ minorWorrt = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 3,
 
-	skills = { "minorWorrtAttack1" },
+	skills = { "worrtAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

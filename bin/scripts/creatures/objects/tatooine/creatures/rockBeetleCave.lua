@@ -139,7 +139,7 @@ rockBeetleCave = Creature:new {
 	meatType = "meat_insect_tatooine",
 	meatMax = 6,
 
-	skills = { "rockBeetleCaveAttack1" },
+	skills = { "rockBeetleAttack2", "rockBeetleAttack1" },
 	-- skills = { " Ranged attack (spit)", " Posture down attack", "" }
 	respawnTimer = 60,
 

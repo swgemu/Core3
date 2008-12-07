@@ -139,8 +139,8 @@ duneBeetle = Creature:new {
 	meatType = "meat_insect_tatooine",
 	meatMax = 6,
 
-	skills = { "cavebeetle1", "cavebeetle2", "cavebeetle3", "cavebeetle4" },
-	 respawnTimer = 60,
+	skills = { "sandBeetleAttack1", "sandBeetleAttack2", "sandBeetleAttack3", "sandBeetleAttack4" },
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

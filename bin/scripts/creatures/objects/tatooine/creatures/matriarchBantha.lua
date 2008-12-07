@@ -139,7 +139,7 @@ matriarchBantha = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 485,
 
-	skills = { "matriarchBanthaAttack1" },
+	skills = { "banthaAttack3" },
 	-- skills = { " Posture down attack", "", "" }
 	respawnTimer = 60,
 

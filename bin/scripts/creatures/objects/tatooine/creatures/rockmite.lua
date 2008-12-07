@@ -145,4 +145,4 @@ rockmite = Creature:new {
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(rockmite, 1212835476) --  Add to Global Table
+Creatures:addCreature(rockmite, 1212835476) -- Add to Global Table

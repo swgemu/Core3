@@ -139,7 +139,7 @@ dwarfEopie = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 230,
 
-	skills = { "dwarfEopieAttack1" },
+	skills = { "eopieAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

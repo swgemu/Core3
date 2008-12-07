@@ -141,7 +141,7 @@ desertEopie = Creature:new {
 
 	skills = { "eopieAttack1" },
 	-- skills = { " Posture down attack", "", "" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "" -- Link to the behavior script for this object
 }

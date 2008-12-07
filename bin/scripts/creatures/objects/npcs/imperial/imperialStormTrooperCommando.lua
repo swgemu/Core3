@@ -48,8 +48,7 @@ imperialStormTrooperCommando = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "crackdown_storm_commando",
-	stfName = "mob/creature_names", 
+	stfName = "a ed Imperial storm commando", 
 	objectCRC = 3037629485, 
 	socialGroup = "imperial",
 	
@@ -97,8 +96,8 @@ imperialStormTrooperCommando = Creature:new {
 	aggressive = 0,
 	invincible = 0,
 	
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	meleeDefense = 79,  
+	rangedDefense = 79,
 	
 	randomMovement = 0,
 
@@ -107,11 +106,11 @@ imperialStormTrooperCommando = Creature:new {
 	weapon = "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "Imperial Flame Thrower", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "RIFLEFLAMETHROWER", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 250,
 	weaponMaxDamage = 400,
-	weaponAttackSpeed = 1.5,
+	weaponAttackSpeed = 4.9,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

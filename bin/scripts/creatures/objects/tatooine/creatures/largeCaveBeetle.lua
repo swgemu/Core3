@@ -100,7 +100,7 @@ largeCaveBeetle = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "", -- Name ex. 'a Vibrolance'
 	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -139,7 +139,7 @@ largeCaveBeetle = Creature:new {
 	meatType = "meat_insect_tatooine",
 	meatMax = 10,
 
-	skills = { "largeCaveBeetleAttack1" },
+	skills = { "rockBeetleAttack1", "rockBeetleAttack2" },
 	-- skills = { " Posture down attack", " Ranged attack (spit)", "" }
 	respawnTimer = 60,
 

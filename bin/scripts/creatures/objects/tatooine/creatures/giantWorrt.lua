@@ -139,7 +139,7 @@ giantWorrt = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 9,
 
-	skills = { "giantWorrtAttack1" },
+	skills = { "worrtAttack1" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

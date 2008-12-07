@@ -139,7 +139,7 @@ jundlandEopie = Creature:new {
 	meatType = "meat_herbivore_tatooine",
 	meatMax = 300,
 
-	skills = { "jundlandEopieAttack1" },
+	skills = { "eopieAttack2" },
 	-- skills = { " Stun attack", "", "" }
 	respawnTimer = 60,
 

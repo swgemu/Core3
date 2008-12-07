@@ -140,7 +140,7 @@ caveBeetle = Creature:new {
 	meatMax = 6,
 
 	skills = { "cavebeetle1", "cavebeetle2", "cavebeetle3", "cavebeetle4" },
-	 respawnTimer = 60,
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

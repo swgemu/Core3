@@ -139,7 +139,7 @@ stormtrooperDewback = Creature:new {
 	meatType = "meat_reptilian_tatooine",
 	meatMax = 360,
 
-	skills = { "stormtrooperDewbackAttack1" },
+	skills = { "dewbackAttack3", "dewbackAttack1" },
 	-- skills = { " Stun attack", " Dizzy attack", "" }
 	respawnTimer = 60,
 

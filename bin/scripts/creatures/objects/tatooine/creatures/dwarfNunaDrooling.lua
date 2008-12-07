@@ -139,7 +139,7 @@ dwarfNunaDrooling = Creature:new {
 	meatType = "meat_avian_tatooine",
 	meatMax = 2,
 
-	skills = { "dwarfNunaDroolingAttack1" },
+	skills = { "dwarfNunaAttack1" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

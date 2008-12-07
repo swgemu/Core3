@@ -140,7 +140,7 @@ questHeroOfTatooineFerociousBeast = Creature:new {
 	meatType = "meat_wild_tatooine",
 	meatMax = 120,
 
-	skills = { "questHeroOfTatooineFerociousBeastAttack1" },
+	skills = { "zuccaBoarAttack1", "zuccaBoarAttack2" },
 	-- skills = { " Stun attack", " Knockdown attack", "" }
 	respawnTimer = 60,
 
