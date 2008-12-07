@@ -47,7 +47,8 @@ imperialLanceCorporal = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Imperial Lance Corporal", 
+	speciesName = "imperial_lance_corporal",
+	stfName = "mob/creature_names",
 	objectCRC = 2701430666, 
 	socialGroup = "Imperial",
 	

@@ -47,7 +47,8 @@ imperialSharpshooter = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Imperial sharpshooter", 
+	speciesName = "imperial_sharpshooter",
+    stfName = "mob/creature_names",
 	objectCRC = 1623607949, 
 	socialGroup = "Imperial",
 	

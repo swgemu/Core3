@@ -47,7 +47,8 @@ imperialSurfaceMarshal = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Imperial surface Marshall", 
+	speciesName = "imperial_surface_marshal",
+    stfName = "mob/creature_names",
 	objectCRC = 3498321727, 
 	socialGroup = "imperial",
 	

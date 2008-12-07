@@ -47,7 +47,8 @@ imperialCivilPatrolCaptain = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed civil patrol captain", 
+	speciesName = "imperial_civil_patrol_captain",
+	stfName = "mob/creature_names",
 	objectCRC = 152421728, 
 	socialGroup = "Imperial",
 	

@@ -47,7 +47,8 @@ imperialPrivate = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Imperial Private", 
+	speciesName = "imperial_private",
+	stfName = "mob/creature_names",
 	objectCRC = 519244536, 
 	socialGroup = "Imperial",
 	

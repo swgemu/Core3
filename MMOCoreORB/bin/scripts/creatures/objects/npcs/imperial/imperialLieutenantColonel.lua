@@ -47,7 +47,8 @@ imperialLieutenantColonel = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	stfName = "a ed Imperial Lieutenant Colonel", 
+	speciesName = "imperial_lieutenant_colonel",
+	stfName = "mob/creature_names",
 	objectCRC = 2701430666, 
 	socialGroup = "Imperial",
 	
