@@ -52,88 +52,9 @@ which carries forward this exception.
 
 class ClientCreateCharacter : public BaseMessage {
 public:
-	ClientCreateCharacter(const UnicodeString& name) {
-		insertShort(12);
-		insertInt(0xB97F3074);
+	ClientCreateCharacter(const UnicodeString& name);
 
-		insertAscii("");
-		insertUnicode(name);
-		insertAscii("");
-		insertAscii("");
-		insertAscii("");
-		insertAscii("");
-		insertAscii("");
-		insertByte(0);
-		insertInt(1);
-		insertInt(0);
-		insertByte(0);
-	}
-
-	static void parse(Packet* pack, Player* player) {
-		String customization;
-		pack->parseAscii(customization);
-
-		player->setCharacterAppearance(customization);
-
-		UnicodeString characterName;
-		pack->parseUnicode(characterName); //get UnicodeString name
-		player->setCharacterName(characterName);
-
-		int idx = characterName.indexOf(' ');
-		if (idx != -1) {
-			player->setFirstName(characterName.subString(0, idx).toString());
-			player->setLastName(characterName.subString(idx + 1, characterName.length()).toString());
-		} else {
-			player->setFirstName(characterName.toString());
-			player->setLastName("");
-		}
-
-		String racefile;
-		pack->parseAscii(racefile);
-		player->setRaceFileName(racefile);
-
-		int raceid = Races::getRaceID(racefile);
-		player->setRaceID(raceid);
-		player->setRaceName(Races::getRace(raceid));
-		player->setSpeciesName(Races::getSpecies(raceid));
-		player->setGender(Races::getGender(raceid));
-
-		player->makeCharacterMask();
-
-		String location;
-		pack->parseAscii(location);
-		player->setStartingLocation(location);
-
-		String hairobj;
-		pack->parseAscii(hairobj);
-		if (!hairobj.isEmpty()) {
-			hairobj = hairobj.replaceFirst("hair_", "shared_hair_");
-
-			player->setHairObject(hairobj);
-		}
-
-		String haircust;
-		pack->parseAscii(haircust); //grab the hair cust data
-		player->setHairAppearance(haircust);
-
-		String profession;
-		pack->parseAscii(profession);
-		player->setStartingProfession(profession);
-
-		pack->shiftOffset(1); //move past some unknown byte
-
-		float height = pack->parseFloat();
-		if (height < 0.7 || height > 1.5)
-			height = 1;
-
-		player->setHeight(height);
-
-		UnicodeString bio;
-		pack->parseUnicode(bio); //get the biography.
-		player->setBiography(bio);
-
-		uint8 tutflag = pack->parseByte(); //tutorial bool.
-	}
+	static void parse(Packet* pack, Player* player);
 
 };
 

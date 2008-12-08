@@ -148,6 +148,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	String appearance;
 	String playApp;
 	player->getCharacterAppearance(playApp);
+
 	BinaryData cust(playApp);
 	cust.encode(appearance);
 
