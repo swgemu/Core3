@@ -42,8 +42,8 @@
 
 
  --Force Crystal Cave Mob
- RunCreatureFile("objects/dantooine/npcs/darkForceCrystalHunter.lua") 
- RunCreatureFile("objects/dantooine/npcs/untrainedWielderOfTheDarkSide.lua")
+ RunCreatureFile("objects/dantooine/npcs/forceSens/darkForceCrystalHunter.lua") 
+ RunCreatureFile("objects/dantooine/npcs/forceSens/untrainedWielderOfTheDarkSide.lua")
 
  --Jantas
  RunCreatureFile("objects/dantooine/npcs/janta/jantaClanLeader.lua")
