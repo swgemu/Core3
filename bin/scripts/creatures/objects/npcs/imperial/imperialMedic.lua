@@ -56,7 +56,7 @@ imperialMedic = Creature:new {
 	level = 16,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 3500,
 	healthMin = 2900,
@@ -96,12 +96,14 @@ imperialMedic = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
+	meleeDefense = 1,
 	rangedDefense = 1,
 	
-	randomMovement = 0
+	randomMovement = 0,
 
-	attackCreatureOnSight = "", -- Enter socialGroups 	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
+	attackCreatureOnSight = "", -- Enter socialGroups 
+	
+	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx	
 	weaponName = "a e11 Carbine", -- Name ex. 'a Vibrolance'
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'

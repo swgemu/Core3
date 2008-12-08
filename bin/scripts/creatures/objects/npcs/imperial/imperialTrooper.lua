@@ -96,7 +96,7 @@ imperialTrooper = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
+	meleeDefense = 1,
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -140,7 +140,7 @@ imperialTrooper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	-- skills = { "", "", "" }
+	-- skills = { "", "", "" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object

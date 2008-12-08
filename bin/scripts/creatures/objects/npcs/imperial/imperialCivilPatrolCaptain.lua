@@ -96,7 +96,7 @@ imperialCivilPatrolCaptain = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
+	meleeDefense = 1,
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -104,13 +104,13 @@ imperialCivilPatrolCaptain = Creature:new {
 	weapon = "object/weapon/ranged/carbine/shared_carbine_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "Imperial Standard Issue E11", -- Name ex. 'a Vibrolance'
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "carbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
 	weaponMinDamage = 69,
 	weaponMaxDamage = 169,
 	weaponAttackSpeed = 2.5,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,7 +140,7 @@ imperialCivilPatrolCaptain = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "stormAttack1", "stormAttack2", "stormAttack3", "stormAttack4", "stormAttack5", "stormAttack6", "stormAttack7", "stormAttack8", "stormAttack9", "stormAttack10", "stormAttack11", "stormAttack12", "stormAttack13", "stormAttack14", "stormAttack15",  },
+	skills = { "stormAttack1", "stormAttack2", "stormAttack3", "stormAttack4", "stormAttack5", "stormAttack6", "stormAttack7", "stormAttack8", "stormAttack9", "stormAttack10", "stormAttack11", "stormAttack12", "stormAttack13", "stormAttack14", "stormAttack15" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object

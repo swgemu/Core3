@@ -96,8 +96,8 @@ imperialWarrantOfficerI = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 25,  
-	rangedDefense = 27,
+	meleeDefense = 1,
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 

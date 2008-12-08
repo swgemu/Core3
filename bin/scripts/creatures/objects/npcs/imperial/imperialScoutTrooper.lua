@@ -40,8 +40,8 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-scoutTrooper = Creature:new {
-	objectName = "scoutTrooper",  -- Lua Object Name
+imperialScoutTrooper = Creature:new {
+	objectName = "imperialScoutTrooper",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "imperial", 
 	factionPoints = 20,
@@ -56,7 +56,7 @@ scoutTrooper = Creature:new {
 	level = 1,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 7700,
 	healthMin = 6300,
@@ -96,7 +96,7 @@ scoutTrooper = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
+	meleeDefense = 1,
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -109,8 +109,8 @@ scoutTrooper = Creature:new {
 	weaponMinDamage = 90,
 	weaponMaxDamage = 230,
 	weaponAttackSpeed = 1,
-	weaponDamageType = "heat", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "light", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -140,10 +140,10 @@ scoutTrooper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" }
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(scoutTrooper, 3260762182) --  Add to Global Table
+Creatures:addCreature(imperialScoutTrooper, 3260762182) --  Add to Global Table
