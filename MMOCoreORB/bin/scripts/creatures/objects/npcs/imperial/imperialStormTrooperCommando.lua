@@ -97,8 +97,8 @@ imperialStormTrooperCommando = Creature:new {
 	aggressive = 0,
 	invincible = 0,
 	
-	meleeDefense = 79,  
-	rangedDefense = 79,
+	meleeDefense = 1,
+	rangedDefense = 1,
 	
 	randomMovement = 0,
 

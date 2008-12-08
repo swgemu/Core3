@@ -96,8 +96,8 @@ imperialColonel = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 70,  
-	rangedDefense = 48,
+	meleeDefense = 1,
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 

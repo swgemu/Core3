@@ -87,7 +87,6 @@ end
 
 --Endor
 if (PLANET_ID == 3) then
-RunCreatureFile("spawns/endor/stressTest.lua")
 RunCreatureFile("spawns/endor/staticSpawns.lua")
 RunCreatureFile("spawns/endor/jindaCave.lua")
 RunCreatureFile("spawns/endor/korgaCave.lua")

@@ -56,7 +56,7 @@ imperialPrivate = Creature:new {
 	level = 15,
 	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 3000,
 	healthMin = 2400,
@@ -96,7 +96,7 @@ imperialPrivate = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
+	meleeDefense = 1,
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -105,7 +105,7 @@ imperialPrivate = Creature:new {
 	weaponName = "Imperial Issue E11 Carbine", -- Name ex. 'a Vibrolance'
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
+	weaponEquipped = 1,
 	weaponMinDamage = 55,
 	weaponMaxDamage = 140,
 	weaponAttackSpeed = 2.2,
@@ -140,7 +140,7 @@ imperialPrivate = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" }
+	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object

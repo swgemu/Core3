@@ -95,7 +95,7 @@ bobaFett = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 1,  
+	meleeDefense = 1,
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -139,7 +139,7 @@ bobaFett = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "bobaAttack1", "bobaAttack2", "bobaAttack3", "bobaAttack4", "bobaAttack5", "bobaAttack6", "bobaAttack7", "bobaAttack8", "bobaAttack9", "bobaAttack10", "bobaAttack11", "bobaAttack12", "bobaAttack13", "bobaAttack14", "bobaAttack15",  },
+	skills = { "bobaAttack1", "bobaAttack2", "bobaAttack3", "bobaAttack4", "bobaAttack5", "bobaAttack6", "bobaAttack7", "bobaAttack8", "bobaAttack9", "bobaAttack10", "bobaAttack11", "bobaAttack12", "bobaAttack13", "bobaAttack14", "bobaAttack15" },
 	respawnTimer = 42300,
 
 	behaviorScript = "", -- Link to the behavior script for this object

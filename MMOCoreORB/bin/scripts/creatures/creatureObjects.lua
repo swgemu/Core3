@@ -137,11 +137,3 @@ end
 RunCreatureFile("objects/npcs/imperialNpcs.lua") 
 RunCreatureFile("objects/npcs/rebelNpcs.lua") 
 RunCreatureFile("objects/npcs/miscNpcs.lua") 
-
---Stress Test
-RunCreatureFile("objects/stressTest/creatures.lua") 
-RunCreatureFile("objects/stressTest/imperialNpcs.lua") 
-RunCreatureFile("objects/stressTest/rebelNpcs.lua") 
-
-
-

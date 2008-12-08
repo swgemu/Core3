@@ -40,8 +40,8 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-stormtrooperSquadLeader = Creature:new {
-	objectName = "stormtrooperSquadLeader",  -- Lua Object Name
+imperialStormTrooperSquadLeader = Creature:new {
+	objectName = "imperialStormTrooperSquadLeader",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "imperial", 
 	factionPoints = 20,
@@ -96,15 +96,15 @@ stormtrooperSquadLeader = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	meleeDefense = 79,  
-	rangedDefense = 101,
+	meleeDefense = 1,
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/ranged/rifle/shared_rifle_e11.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "Imperial Standard Issue E11", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_e11", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "RIFLE", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 79,
 	weaponMaxDamage = 250,
@@ -140,10 +140,10 @@ stormtrooperSquadLeader = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack4" }
+	skills = { "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack4" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(stormtrooperSquadLeader, 2642423881) --  Add to Global Table
+Creatures:addCreature(imperialStormTrooperSquadLeader, 2642423881) --  Add to Global Table
