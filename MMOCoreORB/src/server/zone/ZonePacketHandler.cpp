@@ -308,10 +308,12 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 
 	Player* player = NULL;
 
-	if (!playerManager->hasAdminRights(characterID)) {
-		ErrorMessage* msg = new ErrorMessage("Server", "Server is locked. Please try again later.", 0);
-		client->sendMessage(msg);
-		return;
+	if (server->isServerLocked()) {
+		if (!playerManager->hasAdminRights(characterID)) {
+			ErrorMessage* msg = new ErrorMessage("Server", "Server is locked. Please try again later.", 0);
+			client->sendMessage(msg);
+			return;
+		}
 	}
 
 	try {
