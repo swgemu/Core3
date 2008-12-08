@@ -48,7 +48,7 @@ rebelSurfaceMarshal = Creature:new {
 	gender = "",
 
 	speciesName = "rebel_surface_marshal",
-    stfName = "mob/creature_names",
+	stfName = "mob/creature_names", 
 	objectCRC = 7469172, 
 	socialGroup = "rebel",
 	
@@ -104,7 +104,7 @@ rebelSurfaceMarshal = Creature:new {
 	--Officer Class:
 	weapon = "object/weapon/ranged/pistol/shared_pistol_power5.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "officer's Power 5", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponTemp = "pistol_blaster_power5", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 140,
@@ -117,7 +117,7 @@ rebelSurfaceMarshal = Creature:new {
 	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
+	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 210,
 	alternateWeaponMaxDamage = 310,
 	alternateWeaponAttackSpeed = 1.5,

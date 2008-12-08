@@ -120,7 +120,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 	uint32 lastStamp = player->getLastMovementUpdateStamp();
 
-	if (lastStamp == 0 || lastStamp > movementStamp) {
+	/*if (lastStamp == 0 || lastStamp > movementStamp) {
 		player->updateServerMovementStamp();
 
 		player->setLastMovementUpdateStamp(movementStamp);
@@ -179,7 +179,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
-	}
+	}*/
 
 	//System::out << "Movement counter:" << movementCounter << "\n";
 
@@ -232,7 +232,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 	uint32 lastStamp = player->getLastMovementUpdateStamp();
 
-	if (lastStamp == 0 || lastStamp > movementStamp) {
+	/*if (lastStamp == 0 || lastStamp > movementStamp) {
 		player->updateServerMovementStamp();
 
 		player->setLastMovementUpdateStamp(movementStamp);
@@ -289,7 +289,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
-	}
+	}*/
 
 
 	/*
@@ -2364,8 +2364,9 @@ void ObjectControllerMessage::parseRequestCharacterMatch(Player* player,
 
 
 void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* pack) {
+	//cout << "parseResourceEmptyHopper: " <<  pack->toString() << endl;
 
-	System::out << "parseResourceEmptyHopper: " <<  pack->toString() << endl;
+	//System::out << "parseResourceEmptyHopper: " <<  pack->toString() << endl;
 
 	//skip objId + old size
 	pack->shiftOffset(12);
@@ -2378,26 +2379,25 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
 	uint8 byte2 = pack->parseByte(); // checksum?
 
-	System::out << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
+	//System::out << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
 
 	SceneObject* object = player->getZone()->lookupObject(hId);
 
 	if (object == NULL) {
-		System::out << "ObjectControllerMessage::parseResourceEmptyHopper() bad object" << endl;
+		//System::out << "ObjectControllerMessage::parseResourceEmptyHopper() bad object" << endl;
 		return;
 	}
 
 	if (!object->isTangible()) {
-		System::out << "ObjectControllerMessage::parseResourceEmptyHopper() bad tano" << endl;
+		//System::out << "ObjectControllerMessage::parseResourceEmptyHopper() bad tano" << endl;
 		return;
 	}
 
 
 	TangibleObject* tano = (TangibleObject*) object;
 
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-	{
-		System::out << "ObjectControllerMessage::parseResourceEmptyHopper() bad harvester" << endl;
+	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER) {
+		//System::out << "ObjectControllerMessage::parseResourceEmptyHopper() bad harvester" << endl;
 		return;
 	}
 
@@ -2659,6 +2659,12 @@ void ObjectControllerMessage::parseDismount(Player* player, Message* pack) {
 
 void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 		PlayerManager* playerManager) {
+	if (!player->canTip()) {
+		player->sendSystemMessage("You can only tip once every 10 seconds.");
+		return;
+	}
+
+	player->updateNextTipTime();
 	uint64 tipToId = pack->parseLong();
 
 	UnicodeString tipParams;

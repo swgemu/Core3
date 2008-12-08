@@ -192,9 +192,13 @@ private:
 	static void adminList(StringTokenizer tokenizer, Player* player);
 	static void showChars(StringTokenizer tokenizer, Player* player);
 	static void ecKill(StringTokenizer tokenizer, Player* player);
+	static void toggleCombat(StringTokenizer tokenizer, Player* player);
+	static void lockServer(StringTokenizer tokenizer, Player* player);
+	static void unlockServer(StringTokenizer tokenizer, Player* player);
 	static void sendp(StringTokenizer tokenizer, Player* player);
 	static void requestStartingLocations(StringTokenizer tokenizer, Player* player);
 	static void help(StringTokenizer tokenizer, Player* player);
+
 	void init();
 
 public:

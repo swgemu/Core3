@@ -40,15 +40,15 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-imperialStormTrooperSniper = Creature:new {
-	objectName = "imperialStormTrooperSniper",  -- Lua Object Name
+stormtrooperSniper = Creature:new {
+	objectName = "stormtrooperSniper",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "imperial", 
 	factionPoints = 20,
 	gender = "",
 
 	speciesName = "crackdown_stormtrooper_sniper",
-    stfName = "mob/creature_names",
+	stfName = "mob/creature_names", 
 	objectCRC = 2688076350, 
 	socialGroup = "imperial",
 	
@@ -104,8 +104,8 @@ imperialStormTrooperSniper = Creature:new {
 	weapon = "object/weapon/ranged/rifle/shared_rifle_t21.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "StormSnipert21", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_t21", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 1,
+	weaponClass = "RIFLE", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
 	weaponMinDamage = 237,
 	weaponMaxDamage = 425,
 	weaponAttackSpeed = 5.3,
@@ -140,10 +140,10 @@ imperialStormTrooperSniper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialStormTrooperSniperAttack2", "imperialStormTrooperSniperAttack1", "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack3", "imperialStormTrooperRiflemanAttack2" },
+	skills = { "imperialStormTrooperSniperAttack2", "imperialStormTrooperSniperAttack1", "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack3", "imperialStormTrooperRiflemanAttack2" }
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(imperialStormTrooperSniper, 2688076350) --  Add to Global Table
+Creatures:addCreature(stormtrooperSniper, 2688076350) --  Add to Global Table

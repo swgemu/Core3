@@ -201,6 +201,8 @@ public:
 
 	bool doKeepObject();
 
+	ZoneProcessServerImplementation* getZoneProcessServer();
+
 	void setCombatState();
 
 	void clearCombatState(bool removedefenders = true);

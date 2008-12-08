@@ -441,6 +441,10 @@ public:
 
 	void setClient(ZoneClientSession* client);
 
+	void updateNextTipTime();
+
+	bool canTip();
+
 	void setOvert();
 
 	void setCovert();
@@ -589,6 +593,12 @@ public:
 
 	bool hasCompletedMisoKey(String& tmk);
 
+	void updateMissionSave(String& misoKey, const String& dbVar, String& varName, String& varData, bool doLock = false);
+
+	void fillMissionSaveVars();
+
+	void saveMissions();
+
 	CraftingTool* getCurrentCraftingTool();
 
 	CraftingTool* getCraftingTool(const int type, bool doLock = true);
@@ -672,6 +682,8 @@ public:
 	void setCanSurvey();
 
 	void setCanSample();
+
+	void clearFirstSampleEvent();
 
 	void setSurveyEvent(String& resourcename);
 
@@ -1157,6 +1169,10 @@ public:
 
 	void setClient(ZoneClientSession* client);
 
+	void updateNextTipTime();
+
+	bool canTip();
+
 	void setOvert();
 
 	void setCovert();
@@ -1305,6 +1321,12 @@ public:
 
 	bool hasCompletedMisoKey(String& tmk);
 
+	void updateMissionSave(String& misoKey, const String& dbVar, String& varName, String& varData, bool doLock);
+
+	void fillMissionSaveVars();
+
+	void saveMissions();
+
 	CraftingTool* getCurrentCraftingTool();
 
 	CraftingTool* getCraftingTool(const int type, bool doLock);
@@ -1388,6 +1410,8 @@ public:
 	void setCanSurvey();
 
 	void setCanSample();
+
+	void clearFirstSampleEvent();
 
 	void setSurveyEvent(String& resourcename);
 
@@ -1502,6 +1526,10 @@ protected:
 	String _param0_removeFromCurMisoKeys__String_;
 	String _param0_addToFinMisoKeys__String_;
 	String _param0_hasCompletedMisoKey__String_;
+	String _param0_updateMissionSave__String_String_String_String_bool_;
+	String _param1_updateMissionSave__String_String_String_String_bool_;
+	String _param2_updateMissionSave__String_String_String_String_bool_;
+	String _param3_updateMissionSave__String_String_String_String_bool_;
 	String _param0_nextCraftingStage__String_;
 	String _param0_craftingCustomization__String_int_String_;
 	String _param2_craftingCustomization__String_int_String_;

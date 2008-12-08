@@ -78,6 +78,15 @@ interface MissionManager {
 	void doMissionAbort(Player player, unsigned long oid, boolean doLock = true);
 	void doMissionAbort(Player player, String tKey, boolean doLock = true);
 	
+	//Save functions
+	void doMissionSave(Player player, const String mkey, const String objectivevars, const String killcountvars, boolean doLock = false);
+	void deleteMissionSave(Player player, String mkey, boolean doLock = false);
+	boolean hasMissionSave(Player player, const String mkey, boolean createIfNone = false, boolean doLock = false);
+	void getMissionSaveVarLine(Player player, const String mkey, const String dbVar, String retStr, boolean doLock = false);
+	void getMisoKeysStatus(Player player, boolean finKeys, String retStr, boolean doLock = false);
+	//Called by doAbort,complete,accept
+	void setMisoKeyCurrent(Player player, String misoKey, boolean remove, boolean doLock = false);
+	void setMisoKeyFinished(Player player, String misoKey, boolean remove, boolean doLock = false);
 	
 	//Completely remove the mission from the server:
 	void removeMisoFromPool(MissionObject miso, boolean doLock = true);

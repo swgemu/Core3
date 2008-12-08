@@ -98,6 +98,14 @@ void BlueFrogCreatureImplementation::setBFType(int type) {
 		characterName = UnicodeString("Bartender");
 		objectCRC = 0x4B30B5E4;
 		break;
+	case EWOK:
+		characterName = UnicodeString("Ewok Trader");
+		objectCRC = 0xC25E7435;
+		break;
+	case JEDI:
+		characterName = UnicodeString("Jedi Trader");
+		objectCRC = 0x04340A7D;
+		break;
 	default:
 		break;
 	}

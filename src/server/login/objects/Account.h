@@ -208,6 +208,7 @@ public:
 					return ACCOUNTBANNED;
 				}
 
+				/*
 				try {
 					String test = res->getString(6);
 					isBanned = true;
@@ -218,7 +219,7 @@ public:
 				if (isBanned){
 					delete res;
 					return ACCOUNTNOTACTIVE;
-				}
+				} */
 
 				String forSalt = forumSalt;
 				MySqlDatabase::escapeString(forSalt);

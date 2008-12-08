@@ -804,7 +804,9 @@ public:
 	void addInventoryResource(ResourceContainer* rcno);
 
 	SceneObject* getInventoryItem(uint64 oid);
-	TangibleObject* getMissionItem(String& tma);
+
+	void removeAllInventoryByMisoKey(String& mkey);
+	TangibleObject* getItemByMisoKey(String& tma);
 
 	void removeInventoryItem(SceneObject* item);
 	void removeInventoryItem(uint64 oid);

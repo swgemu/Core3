@@ -127,6 +127,11 @@ interface ZoneServer {
 	
 	String getServerName();
 	
+	boolean isServerLocked();
+	boolean isServerOnline();
+	boolean isServerOffline();
+	int getServerState();
+	
 	int getConnectionCount();
 	int getTotalPlayers();
 	int getMaxPlayers();
@@ -137,4 +142,9 @@ interface ZoneServer {
 	unsigned long getNextCreatureID(boolean doLock = true);
 	unsigned long getNextID(boolean doLock = true);
 	unsigned long getNextCellID(boolean doLock = true);
+	
+	// setters
+	void setServerState(int state);
+	void setServerStateLocked();
+	void setServerStateOnline();
 }

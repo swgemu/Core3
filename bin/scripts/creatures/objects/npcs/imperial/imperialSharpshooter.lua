@@ -48,7 +48,7 @@ imperialSharpshooter = Creature:new {
 	gender = "",
 
 	speciesName = "imperial_sharpshooter",
-    stfName = "mob/creature_names",
+	stfName = "mob/creature_names", 
 	objectCRC = 1623607949, 
 	socialGroup = "Imperial",
 	
@@ -104,7 +104,7 @@ imperialSharpshooter = Creature:new {
 	weapon = "object/weapon/ranged/rifle/shared_rifle_dlt20a.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "Storm Rifleman Dlt20a", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_dlt20a", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponClass = "RIFLE", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 200,
 	weaponMaxDamage = 313,
@@ -140,7 +140,7 @@ imperialSharpshooter = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack3", "imperialStormTrooperRiflemanAttack4" },
+	skills = { "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack3", "imperialStormTrooperRiflemanAttack4" }
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object

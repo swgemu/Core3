@@ -48,8 +48,8 @@ rebelScout = Creature:new {
 	gender = "",
 
 	speciesName = "rebel_scout",
-    stfName = "mob/creature_names",
-	objectCRC = 3518921629, 
+	stfName = "mob/creature_names", 
+	objectCRC = 2176412218, 
 	socialGroup = "Rebel",
 	
 
@@ -101,10 +101,9 @@ rebelScout = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-
-	weapon = "object/weapon/ranged/pistol/shared_pistol_power5.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/carbine/shared_carbine_laser.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "a Laser Carbine", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponTemp = "rifle_light_blaster_laser_carbine", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 120,
@@ -117,9 +116,9 @@ rebelScout = Creature:new {
 	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 210,
-	alternateWeaponMaxDamage = 310,
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 92,
+	alternateWeaponMaxDamage = 301,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -141,7 +140,7 @@ rebelScout = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "rebelAttack44", "rebelAttack45", "rebelAttack48", "rebelAttack52", "rebelAttack51", "rebelAttack54", "rebelAttack53", "rebelAttack55", "rebelAttack56", "rebelAttack57", "rebelAttack58" },
+	skills = { "rebelAttack44", "rebelAttack45", "rebelAttack48", "rebelAttack52", "rebelAttack51", "rebelAttack 54", "rebelAttack53", "rebelAttack55", "rebelAttack56", "rebelAttack57", rebelAttack58" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object

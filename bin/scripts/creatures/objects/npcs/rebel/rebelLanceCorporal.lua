@@ -48,7 +48,7 @@ rebelLanceCorporal = Creature:new {
 	gender = "",
 
 	speciesName = "rebel_lance_corporal",
-    stfName = "mob/creature_names",
+	stfName = "mob/creature_names", 
 	objectCRC = 3527361510, 
 	socialGroup = "Rebel",
 	
@@ -103,7 +103,7 @@ rebelLanceCorporal = Creature:new {
 
 	weapon = "object/weapon/ranged/carbine/shared_carbine_laser.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "a Laser Carbine", -- Name ex. 'a Vibrolance'
-	weaponTemp = "carbine_laser", -- Weapon Template ex. 'lance_vibrolance'
+	weaponTemp = "rifle_light_blaster_laser_carbine", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 120,
@@ -116,7 +116,7 @@ rebelLanceCorporal = Creature:new {
 	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
+	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 92,
 	alternateWeaponMaxDamage = 301,
 	alternateWeaponAttackSpeed = 1.5,
@@ -140,7 +140,7 @@ rebelLanceCorporal = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "rebelAttack44", "rebelAttack45", "rebelAttack48", "rebelAttack52", "rebelAttack51", "rebelAttack54", "rebelAttack53", "rebelAttack55", "rebelAttack56", "rebelAttack57", "rebelAttack58" },
+	skills = { "rebelAttack44", "rebelAttack45", "rebelAttack48", "rebelAttack52", "rebelAttack51", "rebelAttack 54", "rebelAttack53", "rebelAttack55", "rebelAttack56", "rebelAttack57", rebelAttack58" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object

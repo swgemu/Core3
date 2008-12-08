@@ -48,7 +48,7 @@ rebelSpecforceCaptain = Creature:new {
 	gender = "",
 
 	speciesName = "rebel_specforce_captain",
-    stfName = "mob/creature_names",
+	stfName = "mob/creature_names", 
 	objectCRC = 542195677, 
 	socialGroup = "Rebel",
 	
@@ -100,7 +100,7 @@ rebelSpecforceCaptain = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/rifle/shared_rifle_berserker.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/ranged/rifle/shared_event_rifle_tusken/berserker.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "spec ops berserker", -- Name ex. 'a Vibrolance'
 	weaponTemp = "rifle_berserker", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -115,9 +115,9 @@ rebelSpecforceCaptain = Creature:new {
 	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 210,
-	alternateWeaponMaxDamage = 310,
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 220,
+	alternateWeaponMaxDamage = 301,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -139,7 +139,7 @@ rebelSpecforceCaptain = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "rebelAttack44", "rebelAttack45", "rebelAttack48", "rebelAttack52", "rebelAttack51", "rebelAttack54", "rebelAttack53", "rebelAttack55", "rebelAttack56", "rebelAttack57", "rebelAttack58" },
+	skills = { "rebelAttack44", "rebelAttack45", "rebelAttack48", "rebelAttack52", "rebelAttack51", "rebelAttack 54", "rebelAttack53", "rebelAttack55", "rebelAttack56", "rebelAttack57", rebelAttack58" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object

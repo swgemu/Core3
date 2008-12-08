@@ -339,7 +339,9 @@ public:
 
 	SceneObject* getInventoryItem(unsigned long long oid);
 
-	TangibleObject* getMissionItem(String& tma);
+	void removeAllInventoryByMisoKey(String& mkey);
+
+	TangibleObject* getItemByMisoKey(String& tma);
 
 	void removeInventoryItem(unsigned long long oid);
 
@@ -1464,7 +1466,9 @@ public:
 
 	SceneObject* getInventoryItem(unsigned long long oid);
 
-	TangibleObject* getMissionItem(String& tma);
+	void removeAllInventoryByMisoKey(String& mkey);
+
+	TangibleObject* getItemByMisoKey(String& tma);
 
 	void removeInventoryItem(unsigned long long oid);
 
@@ -2266,7 +2270,8 @@ protected:
 	String _param3_sendCombatSpam__CreatureObject_TangibleObject_int_String_bool_;
 	String _param0_getMitigation__String_;
 	String _param0_updateMood__String_;
-	String _param0_getMissionItem__String_;
+	String _param0_removeAllInventoryByMisoKey__String_;
+	String _param0_getItemByMisoKey__String_;
 	String _param0_addSkillMod__String_int_bool_;
 	String _param0_getSkillMod__String_;
 	String _param0_hasSkillMod__String_;

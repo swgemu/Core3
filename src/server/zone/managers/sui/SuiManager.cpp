@@ -370,7 +370,7 @@ void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
 
 			SceneObject * scno = zone->lookupObject(player->getCurrentStructureID());
 
-			TangibleObject * tano = (TangibleObject *) tano;
+			TangibleObject * tano = (TangibleObject *) scno;
 
 			if (tano!= NULL)	{
 

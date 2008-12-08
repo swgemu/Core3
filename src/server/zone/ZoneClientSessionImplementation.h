@@ -76,7 +76,7 @@ public:
 	void disconnect();
 	void disconnect(bool doLock);
 
-	void closeConnection(bool doLock = true);
+	void closeConnection(bool lockPlayer, bool doLock = true);
 
 	void acquire();
 
