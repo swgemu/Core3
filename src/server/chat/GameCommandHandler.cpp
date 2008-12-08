@@ -1295,11 +1295,12 @@ void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player* player
 		ChatManager * chatManager = player->getZone()->getChatManager();
 
 		StringBuffer message;
+		String msg;
 		message << "System Message from " << player->getFirstName() << ": ";
 
 		while (tokenizer.hasMoreTokens()) {
-			tokenizer.getStringToken(message);
-			message << " ";
+			tokenizer.getStringToken(msg);
+			message << msg << " ";
 		}
 
 		if (range == 0)
@@ -2501,60 +2502,9 @@ void GameCommandHandler::unlockServer(StringTokenizer tokenizer, Player * player
 }
 
 void GameCommandHandler::sendp(StringTokenizer tokenizer, Player * player) {
-	//TESTING PURPOSES ULTYMAS.
-	uint32 type;
 
-	if (tokenizer.hasMoreTokens())
-		type = tokenizer.getIntToken();
-	else
-		type = 0;
-
-	if (type == 0) {
-		LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com");
-		player->sendMessage(lbm);
-	} else if (type == 1) {
-		//GetArticleResponseMessage
-
-	} else if (type == 2) {
-		String command;
-		tokenizer.getStringToken(command);
-
-		ExecuteConsoleCommand* ecm = new ExecuteConsoleCommand(command);
-		player->sendMessage(ecm);
-	}  else if (type == 3) {
-		String hud;
-		tokenizer.getStringToken(hud);
-
-		NewbieTutorialEnableHudElement* nthud = new NewbieTutorialEnableHudElement(hud);
-		player->sendMessage(nthud);
-	} else if (type == 4) {
-		int flagtest;
-		flagtest = tokenizer.getIntToken();
-
-		ChatServerStatus* css = new ChatServerStatus(flagtest);
-		player->sendMessage(css);
-	}  else if (type == 5) {
-		ConnectionServerTestMessage* csmf = new ConnectionServerTestMessage();
-		player->sendMessage(csmf);
-
-	} else if (type == 6) {
-		unkZone* uzp = new unkZone();
-		player->sendMessage(uzp);
-	} else if (type == 7) {
-		unkZoneTwo* uzp = new unkZoneTwo();
-		player->sendMessage(uzp);
-	} else if (type == 8) {
-		unkZoneThree* uzp = new unkZoneThree();
-		player->sendMessage(uzp);
-	} else if (type == 9) {
-		StartingLocationList* sll = new StartingLocationList(player);
-		sll->AddLocation("tatooine", "mos_eisley", true);
-		sll->AddLocation("naboo", "theed", true);
-		player->sendMessage(sll);
-	} else if (type == 10) {
-		CommoditiesItemTypeListResponse* citlr = new CommoditiesItemTypeListResponse();
-		player->sendMessage(citlr);
-	}
+	player->savePlayerState(false);
+	player->sendSystemMessage("char saved");
 
 }
 
