@@ -120,7 +120,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 	uint32 lastStamp = player->getLastMovementUpdateStamp();
 
-	/*if (lastStamp == 0 || lastStamp > movementStamp) {
+	if (lastStamp == 0 || lastStamp > movementStamp) {
 		player->updateServerMovementStamp();
 
 		player->setLastMovementUpdateStamp(movementStamp);
@@ -179,7 +179,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
-	}*/
+	}
 
 	//cout << "Movement counter:" << movementCounter << "\n";
 
@@ -232,7 +232,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 	uint32 lastStamp = player->getLastMovementUpdateStamp();
 
-	/*if (lastStamp == 0 || lastStamp > movementStamp) {
+	if (lastStamp == 0 || lastStamp > movementStamp) {
 		player->updateServerMovementStamp();
 
 		player->setLastMovementUpdateStamp(movementStamp);
@@ -289,7 +289,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
-	}*/
+	}
 
 
 	/*
@@ -3907,6 +3907,9 @@ void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message*
 
 	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
 	Player* playerTarget = playerManager->getPlayer(consentName);
+
+	if (playerTarget == NULL)
+		return;
 
 	if (player->revokeConsent(consentName)) {
 		StfParameter* param = new StfParameter();

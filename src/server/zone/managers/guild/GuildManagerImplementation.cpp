@@ -1310,7 +1310,8 @@ bool GuildManagerImplementation::updateDeclineGuild(Player* proband, Player* pla
 
 	try {
 		player->wlock();
-		proband->wlock(player);
+		if (proband != player)
+			proband->wlock(player);
 
 		stringstream query;
 		query << "DELETE from guilds_sponsoring where sponsored = " << proband->getCharacterID() << ";";
@@ -1324,10 +1325,12 @@ bool GuildManagerImplementation::updateDeclineGuild(Player* proband, Player* pla
 
 		cm = player->getZone()->getChatManager();
 
-		proband->unlock();
+		if (proband != player)
+			proband->unlock();
 		player->unlock();
 	} catch (...) {
-		proband->unlock();
+		if (proband != player)
+			proband->unlock();
 		player->unlock();
 
 		return false;
@@ -1421,7 +1424,8 @@ bool GuildManagerImplementation::updateCharIntoGuild(Player* proband, Player* pl
 
 	try {
 		proband->wlock();
-		player->wlock(proband);
+		if (player != proband)
+			player->wlock(proband);
 
 		name = player->getFirstName();
 
@@ -1444,11 +1448,13 @@ bool GuildManagerImplementation::updateCharIntoGuild(Player* proband, Player* pl
 
 		cm = player->getZone()->getChatManager();
 
-		player->unlock();
+		if (player != proband)
+			player->unlock();
 		proband->unlock();
 
 	} catch (...) {
-		player->unlock();
+		if (player != proband)
+			player->unlock();
 		proband->unlock();
 	}
 
@@ -3206,23 +3212,27 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 
 	try {
 		player->wlock();
-		otherPlayer->wlock(player);
+		if (otherPlayer != player)
+			otherPlayer->wlock(player);
 
 		if (otherPlayer->getGuildID() != player->getGuildID()) {
 			player->sendSystemMessage("Unable to find a member of the PA with that name.");
 			player->info("Clean exit from GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Player* player, uint32 cancel, string returnString)");
 
-			otherPlayer->unlock();
+			if (otherPlayer != player)
+				otherPlayer->unlock();
 			player->unlock();
 
 			return "";
 		}
 
-		otherPlayer->unlock();
+		if (otherPlayer != player)
+			otherPlayer->unlock();
 		player->unlock();
 
 	} catch (...) {
-		otherPlayer->unlock();
+		if (otherPlayer != player)
+			otherPlayer->unlock();
 		player->unlock();
 	}
 

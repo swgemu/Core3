@@ -278,6 +278,39 @@ BaseMessage* PlayerManagerImplementation::checkPlayerName(const string& name, co
 	return msg;
 }
 
+bool PlayerManagerImplementation::hasAdminRights(uint32 characterID) {
+	try {
+		stringstream query;
+		query << "SELECT adminLevel FROM characters WHERE character_id = " << characterID;
+
+		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+		if (result->next()) {
+			uint32 adminLevel = result->getInt(0);
+
+			if (adminLevel == PlayerImplementation::NORMAL) {
+				delete result;
+				return false;
+			}
+		} else {
+			delete result;
+			return false;
+		}
+
+		delete result;
+
+		return true;
+	} catch (DatabaseException& e) {
+		cout << e.getMessage() << endl;
+		return false;
+	} catch (...) {
+		cout << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
+		return false;
+	}
+
+	return false;
+}
+
 BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, ZoneClientSession* client) {
 	//Player name is valid, attempt to create player
 	BaseMessage* msg = NULL;
