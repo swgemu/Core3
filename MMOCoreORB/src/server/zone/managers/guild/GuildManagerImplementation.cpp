@@ -408,6 +408,7 @@ void GuildManagerImplementation::removePlayersFromGuild(int gid) {
 	room = playerGuild->getGuildChat();
 
 
+	// TODO: TA: fix this
 	try {
 		players->lock();
 
@@ -416,26 +417,33 @@ void GuildManagerImplementation::removePlayersFromGuild(int gid) {
 		while (players->hasNext(false)) {
 			player = players->getNextValue(false);
 
-			player->wlock();
+			players->unlock();
 
-			if (player->getGuildID() == gid) {
+			try {
+				player->wlock();
 
-				player->setGuild(defGuild);
-				player->updateGuild(defGuild);
-				player->setGuildLeader(false);
-				player->setGuildPermissions(0);
+				if (player->getGuildID() == gid) {
 
-				if (room != NULL)
-					room->removePlayer(player, false);
+					player->setGuild(defGuild);
+					player->updateGuild(defGuild);
+					player->setGuildLeader(false);
+					player->setGuildPermissions(0);
+
+					if (room != NULL)
+						room->removePlayer(player, false);
+				}
+
+				player->unlock();
+			} catch (...) {
+				player->unlock();
 			}
 
-			player->unlock();
+			players->lock();
 		}
 
 		players->unlock();
 
 	} catch (...) {
-		player->unlock();
 		players->unlock();
 	}
 

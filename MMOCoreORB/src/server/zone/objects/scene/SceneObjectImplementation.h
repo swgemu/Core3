@@ -280,6 +280,10 @@ public:
 		return QuadTreeEntry::isInRange(x, y, range);
 	}
 
+	ZoneProcessServerImplementation* getZoneProcessServer() {
+		return server;
+	}
+
 	inline bool isPlayer() {
 		return objectType == PLAYER;
 	}

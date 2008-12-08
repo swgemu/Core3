@@ -46,12 +46,15 @@ import "Container";
 
 import "../creature/CreatureObject";
 
+import "TangibleObject";
+
 interface Inventory implements Container {
 	Inventory(CreatureObject creature) {
 		super(unsigned long oid);
 	}
 	
-	TangibleObject getMissionItem(String misKey);
+	TangibleObject getItemByMisoKey(String misKey);
+	void removeAllByMisoKey(CreatureObject owner, String misKey);
 
 	int getUnequippedItemCount();
 

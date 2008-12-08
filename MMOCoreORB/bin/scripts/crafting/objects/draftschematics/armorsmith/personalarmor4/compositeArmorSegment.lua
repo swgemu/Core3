@@ -59,10 +59,10 @@ compositeArmorSegment = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "armor_layer_frame, armor_layer_inner_structure, defensive_layer, segment_enhancement",
-   ingredientSlotType = "0, 0, 1, 1",
+   ingredientSlotType = "0, 0, 4, 4",
    resourceTypes = "metal, steel, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
    resourceQuantities = "13, 5, 1, 1",
-   combineTypes = "1, 1, , 3",
+   combineTypes = "1, 1, 2, 2",
    contribution = "100, 100, 100, 100",
 
 

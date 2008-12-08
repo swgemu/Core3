@@ -348,6 +348,38 @@ ActionCreature* CreatureManagerImplementation::spawnActionCreature(String& name,
 	}
 }
 
+ActionCreature* CreatureManagerImplementation::spawnActionCreature(ActionCreature* tac, bool doLock) {
+	try {
+		lock(doLock);
+
+		ActionCreature* actCr = tac;
+
+		actCr->setObjectID(getNextCreatureID());
+		actCr->setTerrainName(Terrain::getTerrainName(zone->getZoneID()));
+
+		/*actCr->setHeight(1.0f);
+		actCr->initializePosition(x, 0, y);
+		actCr->setParent(getZone()->lookupObject(cellid));
+		actCr->setDirection(0, 0, oY, oW);
+		actCr->setPvpStatusBitmask(0);*/
+		actCr->setZoneProcessServer(server);
+
+		load(actCr);
+
+		actCr->insertToZone(zone);
+
+		creatureMap->put(actCr->getObjectID(), actCr);
+
+		unlock(doLock);
+		return actCr;
+	} catch (...) {
+		error("unreported Exception caught on spawnActionCreature()");
+
+		unlock(doLock);
+		return NULL;
+	}
+}
+
 BlueFrogCreature* CreatureManagerImplementation::spawnBlueFrog(float x, float y, float oY, float oW, int type, uint64 cellid, bool doLock) {
 	try {
 		lock(doLock);
@@ -1222,6 +1254,8 @@ void CreatureManagerImplementation::registerGlobals() {
 	setGlobalInt("GUNGAN", BlueFrogCreatureImplementation::GUNGAN);
 	setGlobalInt("BARTENDER", BlueFrogCreatureImplementation::BARTENDER);
 	setGlobalInt("MEDDROID", BlueFrogCreatureImplementation::MEDDROID);
+	setGlobalInt("EWOK", BlueFrogCreatureImplementation::EWOK);
+	setGlobalInt("JEDI", BlueFrogCreatureImplementation::JEDI);
 }
 
 uint64 CreatureManagerImplementation::getNextCreatureID() {

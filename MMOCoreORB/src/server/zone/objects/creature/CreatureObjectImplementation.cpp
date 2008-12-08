@@ -2738,8 +2738,12 @@ SceneObject* CreatureObjectImplementation::getInventoryItem(uint64 oid) {
 	return (TangibleObject*) inventory->getObject(oid);
 }
 
-TangibleObject* CreatureObjectImplementation::getMissionItem(String& tma) {
-	return inventory->getMissionItem(tma);
+void CreatureObjectImplementation::removeAllInventoryByMisoKey(String& mkey) {
+	inventory->removeAllByMisoKey(_this, mkey);
+}
+
+TangibleObject* CreatureObjectImplementation::getItemByMisoKey(String& tma) {
+	return inventory->getItemByMisoKey(tma);
 }
 
 void CreatureObjectImplementation::removeInventoryItem(SceneObject* item) {
@@ -5063,3 +5067,4 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature) {
 
 	return (pvpStatusBitmask & CreatureFlag::ATTACKABLE);
 }
+

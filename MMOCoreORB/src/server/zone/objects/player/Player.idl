@@ -389,6 +389,10 @@ interface Player implements CreatureObject {
 	void clearDisconnectEvent();
 
 	void setClient(ZoneClientSession client);
+	
+	void updateNextTipTime();
+
+	boolean canTip();
 
 	void setOvert();
 	void setCovert();
@@ -518,6 +522,11 @@ interface Player implements CreatureObject {
 	void removeFromCurMisoKeys(String tck);
 	void addToFinMisoKeys(String tmp);
 	boolean hasCompletedMisoKey(String tmk);
+	
+	void updateMissionSave(String misoKey, const String dbVar, String varName, String varData, boolean doLock = false);
+	
+	void fillMissionSaveVars();
+	void saveMissions();
 
 	// Crafting
 	CraftingTool getCurrentCraftingTool();
@@ -570,21 +579,32 @@ interface Player implements CreatureObject {
 	
 	SurveyTool getSurveyTool();
 	SurveyTool getSampleTool();
+
 	void setSurveyTool(SurveyTool sTool);
 	void setSampleTool(SurveyTool sTool);
+	
 	void setSurveyWaypoint(WaypointObject id);
 	WaypointObject getSurveyWaypoint();
+
 	boolean getCanSurvey();
 	boolean getCanSample();
+
 	void setCanSurvey();
 	void setCanSample();
+
+	void clearFirstSampleEvent();
+	
 	void setSurveyEvent(String resource_name);
 	void setSampleEvent(String resource_name, boolean firstTime = false);
+	
 	void setCancelSample(boolean val);
 	boolean getCancelSample();
+	
 	void sendSampleTimeRemaining();
+
 	void setSurveyErrorMessage();
 	void setSampleErrorMessage();
+
 	boolean getSurveyErrorMessage();
 	boolean getSampleErrorMessage();
 

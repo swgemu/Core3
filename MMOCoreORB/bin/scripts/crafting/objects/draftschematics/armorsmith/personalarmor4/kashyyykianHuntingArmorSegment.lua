@@ -57,14 +57,13 @@ kashyyykianHuntingArmorSegment = Object:new {
    assemblySkill = "armor_assembly", 
    experimentingSkill = "armor_experimentation", 
 
-   ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
-   ingredientTitleNames = "armor_layer_weld_tabs, segment_mounting_tabs, segment_layer_assembly_plate, defensive_layer, segment_enhancement",
-   ingredientSlotType = "0, 0, 0, 1, 1",
-   --resourceTypes = "bone_avian, softwood_evergreen, hide_leathery, object/tangible/component/armor/shared_armor_layer, object/tangible/component/armor/shared_base_armor_",
-   resourceTypes = "metal, metal, metal, object/tangible/component/armor/shared_armor_layer, object/tangible/component/armor/shared_base_armor_",
-   resourceQuantities = "10, 5, 15, 3, 1",
-   combineTypes = "1, 1, 1, 2, 2",
-   contribution = "100, 100, 100, 100, 100",
+   ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
+   ingredientTitleNames = "armor_layer_weld_tabs, segment_mounting_tabs, segment_layer_assembly_plate, defensive_layer, defensive_layer_2, defensive_layer_3, segment_enhancement",
+   ingredientSlotType = "0, 0, 0, 4, 4, 4, 4",
+   resourceTypes = "bone_avian, softwood_evergreen, hide_leathery, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_armor_layer.iff,object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
+   resourceQuantities = "10, 5, 15, 1, 1, 1, 1",
+   combineTypes = "1, 1, 1, 2, 2, 2, 2",
+   contribution = "100, 100, 100, 100, 100, 100, 100",
 
 
   numberExperimentalProperties = "1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2",

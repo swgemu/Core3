@@ -59,18 +59,18 @@ juvenileCanyonKrayt = Creature:new {
 
 	healthMax = 54000,
 	healthMin = 44000,
-	strength = 500,
-	constitution = 500,
+	strength = 5000,
+	constitution = 5000,
 
 	actionMax = 54000,
 	actionMin = 44000,
-	quickness = 500,
-	stamina = 500,
+	quickness = 5000,
+	stamina = 5000,
 
 	mindMax = 54000,
 	mindMin = 44000,
-	focus = 500,
-	willpower = 500,
+	focus = 5000,
+	willpower = 5000,
 
 	height = 1, -- Size of creature
 	
@@ -85,7 +85,7 @@ juvenileCanyonKrayt = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 370,
 
 	healer = 0,
 
@@ -125,7 +125,7 @@ juvenileCanyonKrayt = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,39,40,51,52,96", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,19,39,40,51,52,96", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -141,7 +141,7 @@ juvenileCanyonKrayt = Creature:new {
 	meatMax = 750,
 
 	skills = { "kraytAttack3", "kraytAttack5" },
-	respawnTimer = 600,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

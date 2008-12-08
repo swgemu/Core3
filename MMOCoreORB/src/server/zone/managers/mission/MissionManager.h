@@ -47,6 +47,20 @@ public:
 
 	void doMissionAbort(Player* player, String& tKey, bool doLock = true);
 
+	void doMissionSave(Player* player, const String& mkey, const String& objectivevars, const String& killcountvars, bool doLock = false);
+
+	void deleteMissionSave(Player* player, String& mkey, bool doLock = false);
+
+	bool hasMissionSave(Player* player, const String& mkey, bool createIfNone = false, bool doLock = false);
+
+	void getMissionSaveVarLine(Player* player, const String& mkey, const String& dbVar, String& retStr, bool doLock = false);
+
+	void getMisoKeysStatus(Player* player, bool finKeys, String& retStr, bool doLock = false);
+
+	void setMisoKeyCurrent(Player* player, String& misoKey, bool remove, bool doLock = false);
+
+	void setMisoKeyFinished(Player* player, String& misoKey, bool remove, bool doLock = false);
+
 	void removeMisoFromPool(MissionObject* miso, bool doLock = true);
 
 	unsigned int getMissionItemCrc(String& tKey, bool doLock = true);
@@ -95,6 +109,20 @@ public:
 
 	void doMissionAbort(Player* player, String& tKey, bool doLock);
 
+	void doMissionSave(Player* player, const String& mkey, const String& objectivevars, const String& killcountvars, bool doLock);
+
+	void deleteMissionSave(Player* player, String& mkey, bool doLock);
+
+	bool hasMissionSave(Player* player, const String& mkey, bool createIfNone, bool doLock);
+
+	void getMissionSaveVarLine(Player* player, const String& mkey, const String& dbVar, String& retStr, bool doLock);
+
+	void getMisoKeysStatus(Player* player, bool finKeys, String& retStr, bool doLock);
+
+	void setMisoKeyCurrent(Player* player, String& misoKey, bool remove, bool doLock);
+
+	void setMisoKeyFinished(Player* player, String& misoKey, bool remove, bool doLock);
+
 	void removeMisoFromPool(MissionObject* miso, bool doLock);
 
 	unsigned int getMissionItemCrc(String& tKey, bool doLock);
@@ -114,6 +142,17 @@ protected:
 	String _param1_sendMission__Player_String_bool_;
 	String _param1_doMissionComplete__Player_String_bool_;
 	String _param1_doMissionAbort__Player_String_bool_;
+	String _param1_doMissionSave__Player_String_String_String_bool_;
+	String _param2_doMissionSave__Player_String_String_String_bool_;
+	String _param3_doMissionSave__Player_String_String_String_bool_;
+	String _param1_deleteMissionSave__Player_String_bool_;
+	String _param1_hasMissionSave__Player_String_bool_bool_;
+	String _param1_getMissionSaveVarLine__Player_String_String_String_bool_;
+	String _param2_getMissionSaveVarLine__Player_String_String_String_bool_;
+	String _param3_getMissionSaveVarLine__Player_String_String_String_bool_;
+	String _param2_getMisoKeysStatus__Player_bool_String_bool_;
+	String _param1_setMisoKeyCurrent__Player_String_bool_bool_;
+	String _param1_setMisoKeyFinished__Player_String_bool_bool_;
 	String _param0_getMissionItemCrc__String_bool_;
 };
 

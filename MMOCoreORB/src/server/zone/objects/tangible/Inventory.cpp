@@ -10,6 +10,8 @@
 
 #include "../creature/CreatureObject.h"
 
+#include "TangibleObject.h"
+
 /*
  *	InventoryStub
  */
@@ -25,7 +27,7 @@ Inventory::Inventory(DummyConstructorParameter* param) : Container(param) {
 Inventory::~Inventory() {
 }
 
-TangibleObject* Inventory::getMissionItem(String& misKey) {
+TangibleObject* Inventory::getItemByMisoKey(String& misKey) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -35,7 +37,21 @@ TangibleObject* Inventory::getMissionItem(String& misKey) {
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
-		return ((InventoryImplementation*) _impl)->getMissionItem(misKey);
+		return ((InventoryImplementation*) _impl)->getItemByMisoKey(misKey);
+}
+
+void Inventory::removeAllByMisoKey(CreatureObject* owner, String& misKey) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+		method.addObjectParameter(owner);
+		method.addAsciiParameter(misKey);
+
+		method.executeWithVoidReturn();
+	} else
+		((InventoryImplementation*) _impl)->removeAllByMisoKey(owner, misKey);
 }
 
 int Inventory::getUnequippedItemCount() {
@@ -43,7 +59,7 @@ int Inventory::getUnequippedItemCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -55,7 +71,7 @@ bool Inventory::isFull() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -74,12 +90,15 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertLong(getMissionItem(inv->getAsciiParameter(_param0_getMissionItem__String_))->_getObjectID());
+		resp->insertLong(getItemByMisoKey(inv->getAsciiParameter(_param0_getItemByMisoKey__String_))->_getObjectID());
 		break;
 	case 7:
-		resp->insertSignedInt(getUnequippedItemCount());
+		removeAllByMisoKey((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_removeAllByMisoKey__CreatureObject_String_));
 		break;
 	case 8:
+		resp->insertSignedInt(getUnequippedItemCount());
+		break;
+	case 9:
 		resp->insertBoolean(isFull());
 		break;
 	default:
@@ -89,8 +108,12 @@ Packet* InventoryAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-TangibleObject* InventoryAdapter::getMissionItem(String& misKey) {
-	return ((InventoryImplementation*) impl)->getMissionItem(misKey);
+TangibleObject* InventoryAdapter::getItemByMisoKey(String& misKey) {
+	return ((InventoryImplementation*) impl)->getItemByMisoKey(misKey);
+}
+
+void InventoryAdapter::removeAllByMisoKey(CreatureObject* owner, String& misKey) {
+	return ((InventoryImplementation*) impl)->removeAllByMisoKey(owner, misKey);
 }
 
 int InventoryAdapter::getUnequippedItemCount() {

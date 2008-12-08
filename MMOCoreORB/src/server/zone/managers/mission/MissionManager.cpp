@@ -204,12 +204,125 @@ void MissionManager::doMissionAbort(Player* player, String& tKey, bool doLock) {
 		((MissionManagerImplementation*) _impl)->doMissionAbort(player, tKey, doLock);
 }
 
-void MissionManager::removeMisoFromPool(MissionObject* miso, bool doLock) {
+void MissionManager::doMissionSave(Player* player, const String& mkey, const String& objectivevars, const String& killcountvars, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(mkey);
+		method.addAsciiParameter(objectivevars);
+		method.addAsciiParameter(killcountvars);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->doMissionSave(player, mkey, objectivevars, killcountvars, doLock);
+}
+
+void MissionManager::deleteMissionSave(Player* player, String& mkey, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(mkey);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->deleteMissionSave(player, mkey, doLock);
+}
+
+bool MissionManager::hasMissionSave(Player* player, const String& mkey, bool createIfNone, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(mkey);
+		method.addBooleanParameter(createIfNone);
+		method.addBooleanParameter(doLock);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((MissionManagerImplementation*) _impl)->hasMissionSave(player, mkey, createIfNone, doLock);
+}
+
+void MissionManager::getMissionSaveVarLine(Player* player, const String& mkey, const String& dbVar, String& retStr, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(mkey);
+		method.addAsciiParameter(dbVar);
+		method.addAsciiParameter(retStr);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->getMissionSaveVarLine(player, mkey, dbVar, retStr, doLock);
+}
+
+void MissionManager::getMisoKeysStatus(Player* player, bool finKeys, String& retStr, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+		method.addObjectParameter(player);
+		method.addBooleanParameter(finKeys);
+		method.addAsciiParameter(retStr);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->getMisoKeysStatus(player, finKeys, retStr, doLock);
+}
+
+void MissionManager::setMisoKeyCurrent(Player* player, String& misoKey, bool remove, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(misoKey);
+		method.addBooleanParameter(remove);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->setMisoKeyCurrent(player, misoKey, remove, doLock);
+}
+
+void MissionManager::setMisoKeyFinished(Player* player, String& misoKey, bool remove, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(misoKey);
+		method.addBooleanParameter(remove);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		((MissionManagerImplementation*) _impl)->setMisoKeyFinished(player, misoKey, remove, doLock);
+}
+
+void MissionManager::removeMisoFromPool(MissionObject* miso, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(miso);
 		method.addBooleanParameter(doLock);
 
@@ -223,7 +336,7 @@ unsigned int MissionManager::getMissionItemCrc(String& tKey, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 25);
 		method.addAsciiParameter(tKey);
 		method.addBooleanParameter(doLock);
 
@@ -237,7 +350,7 @@ void MissionManager::loadMissionScripts() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 26);
 
 		method.executeWithVoidReturn();
 	} else
@@ -249,7 +362,7 @@ void MissionManager::registerFunctions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 27);
 
 		method.executeWithVoidReturn();
 	} else
@@ -261,7 +374,7 @@ void MissionManager::registerGlobals() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 28);
 
 		method.executeWithVoidReturn();
 	} else
@@ -313,18 +426,39 @@ Packet* MissionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		doMissionAbort((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionAbort__Player_String_bool_), inv->getBooleanParameter());
 		break;
 	case 17:
-		removeMisoFromPool((MissionObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		doMissionSave((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_doMissionSave__Player_String_String_String_bool_), inv->getAsciiParameter(_param2_doMissionSave__Player_String_String_String_bool_), inv->getAsciiParameter(_param3_doMissionSave__Player_String_String_String_bool_), inv->getBooleanParameter());
 		break;
 	case 18:
-		resp->insertInt(getMissionItemCrc(inv->getAsciiParameter(_param0_getMissionItemCrc__String_bool_), inv->getBooleanParameter()));
+		deleteMissionSave((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_deleteMissionSave__Player_String_bool_), inv->getBooleanParameter());
 		break;
 	case 19:
-		loadMissionScripts();
+		resp->insertBoolean(hasMissionSave((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_hasMissionSave__Player_String_bool_bool_), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
 	case 20:
-		registerFunctions();
+		getMissionSaveVarLine((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getMissionSaveVarLine__Player_String_String_String_bool_), inv->getAsciiParameter(_param2_getMissionSaveVarLine__Player_String_String_String_bool_), inv->getAsciiParameter(_param3_getMissionSaveVarLine__Player_String_String_String_bool_), inv->getBooleanParameter());
 		break;
 	case 21:
+		getMisoKeysStatus((Player*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(_param2_getMisoKeysStatus__Player_bool_String_bool_), inv->getBooleanParameter());
+		break;
+	case 22:
+		setMisoKeyCurrent((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_setMisoKeyCurrent__Player_String_bool_bool_), inv->getBooleanParameter(), inv->getBooleanParameter());
+		break;
+	case 23:
+		setMisoKeyFinished((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_setMisoKeyFinished__Player_String_bool_bool_), inv->getBooleanParameter(), inv->getBooleanParameter());
+		break;
+	case 24:
+		removeMisoFromPool((MissionObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 25:
+		resp->insertInt(getMissionItemCrc(inv->getAsciiParameter(_param0_getMissionItemCrc__String_bool_), inv->getBooleanParameter()));
+		break;
+	case 26:
+		loadMissionScripts();
+		break;
+	case 27:
+		registerFunctions();
+		break;
+	case 28:
 		registerGlobals();
 		break;
 	default:
@@ -376,6 +510,34 @@ void MissionManagerAdapter::doMissionAbort(Player* player, unsigned long long oi
 
 void MissionManagerAdapter::doMissionAbort(Player* player, String& tKey, bool doLock) {
 	return ((MissionManagerImplementation*) impl)->doMissionAbort(player, tKey, doLock);
+}
+
+void MissionManagerAdapter::doMissionSave(Player* player, const String& mkey, const String& objectivevars, const String& killcountvars, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->doMissionSave(player, mkey, objectivevars, killcountvars, doLock);
+}
+
+void MissionManagerAdapter::deleteMissionSave(Player* player, String& mkey, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->deleteMissionSave(player, mkey, doLock);
+}
+
+bool MissionManagerAdapter::hasMissionSave(Player* player, const String& mkey, bool createIfNone, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->hasMissionSave(player, mkey, createIfNone, doLock);
+}
+
+void MissionManagerAdapter::getMissionSaveVarLine(Player* player, const String& mkey, const String& dbVar, String& retStr, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->getMissionSaveVarLine(player, mkey, dbVar, retStr, doLock);
+}
+
+void MissionManagerAdapter::getMisoKeysStatus(Player* player, bool finKeys, String& retStr, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->getMisoKeysStatus(player, finKeys, retStr, doLock);
+}
+
+void MissionManagerAdapter::setMisoKeyCurrent(Player* player, String& misoKey, bool remove, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->setMisoKeyCurrent(player, misoKey, remove, doLock);
+}
+
+void MissionManagerAdapter::setMisoKeyFinished(Player* player, String& misoKey, bool remove, bool doLock) {
+	return ((MissionManagerImplementation*) impl)->setMisoKeyFinished(player, misoKey, remove, doLock);
 }
 
 void MissionManagerAdapter::removeMisoFromPool(MissionObject* miso, bool doLock) {

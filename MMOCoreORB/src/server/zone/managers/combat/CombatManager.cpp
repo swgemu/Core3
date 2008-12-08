@@ -62,10 +62,19 @@ which carries forward this exception.
 
 CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
 	server = srv;
+
+	combatEnabled = true;
 }
 
 float CombatManager::handleAction(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
+
+	if (!combatEnabled) {
+		if (creature != NULL)
+			creature->sendSystemMessage("Combat is disabled.");
+
+		return 1.0f;
+	}
 
 	if (creature != NULL && creature->isPlayer() && ((Player*)creature)->isImmune()) {
 		((Player*)creature)->sendSystemMessage("You cannot attack while Immune.");

@@ -89,6 +89,9 @@ class PlayerDigestEvent;
 class CenterOfBeingEvent;
 class PowerboostEventWane;
 class PowerboostEventEnd;
+class PlayerDisconnectEvent;
+class PlayerLogoutEvent;
+class PlayerResurrectEvent;
 
 class Datapad;
 
@@ -126,10 +129,11 @@ class PlayerImplementation : public PlayerServant {
 
 	Vector<CommandQueueAction*> commandQueue;
 	Time nextAction;
+	Time nextTip;
 
-	Event* disconnectEvent;
-	Event* logoutEvent;
-	Event* resurrectEvent;
+	PlayerDisconnectEvent* disconnectEvent;
+	PlayerLogoutEvent* logoutEvent;
+	PlayerResurrectEvent* resurrectEvent;
 
 	PlayerSaveStateEvent* playerSaveStateEvent;
 
@@ -213,8 +217,11 @@ class PlayerImplementation : public PlayerServant {
 	// mission vars
 	uint32 misoRFC;
 	int misoBSB; //mission baseline send bitmask
+
 	String curMisoKeys; //mission keys the player is currently on
 	String finMisoKeys; //mission keys the player has completed.
+
+	VectorMap<String, String> missionSaveList;
 
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;
@@ -501,11 +508,24 @@ public:
 	void addDatapadItem(SceneObject* item);
 	SceneObject* getDatapadItem(uint64 oid);
 	void removeDatapadItem(uint64 oid);
+
 	void addInventoryItem(TangibleObject* item);
 	void addInventoryResource(ResourceContainer* item);
+
 	void equipPlayerItem(TangibleObject* item);
+
 	SceneObject* getPlayerItem(uint64 oid);
+
 	bool hasItemPermission(TangibleObject* item);
+
+	inline void updateNextTipTime() {
+		nextTip.update();
+		nextTip.addMiliTime(10000);
+	}
+
+	inline bool canTip() {
+		return nextTip.isPast();
+	}
 
 	// trade mehtods
 	void addTradeItem(TangibleObject* item) {
@@ -786,6 +806,12 @@ public:
 	}
 
 	bool hasCompletedMisoKey(String& tmk);
+
+	void saveMissions();
+
+	void updateMissionSave(String misoKey, const String& dbVar, String& varName, String& varData, bool doLock = false);
+
+	void fillMissionSaveVars();
 
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);
@@ -1515,6 +1541,10 @@ public:
 
 	inline void setCanSample() {
 		sampleEvent = NULL;
+	}
+
+	inline void clearFirstSampleEvent() {
+		firstSampleEvent = NULL;
 	}
 
 	inline void setSurveyErrorMessage() {

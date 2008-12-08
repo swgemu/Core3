@@ -116,14 +116,19 @@ public:
 	//Creature* spawnCreature(String objname, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
 
 	bool verifyCreatureSpawn(String objname);
+
 	Creature* spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask = 0, bool baby = false, bool doLock = true, float height = 1);
 	TrainerCreature* spawnTrainer(const String& profession, const String& stfname, const String& name, int objCrc, uint64 cell, float x, float y, float z, float oy, float ow, bool doLock = true);
 	ShuttleCreature* spawnShuttle(const String& Planet, const String& City, Coordinate* playerSpawnPoint, uint64 cellid,float x, float y, float z, uint32 tax = 0, bool starport = false, bool doLock = true);
 	RecruiterCreature* spawnRecruiter(float x, float y, float oY, float oW, uint8 type = 1, uint64 cellid = 0, bool doLock = true);
 	BlueFrogCreature* spawnBlueFrog(float x, float y, float oY, float oW, int type = 0, uint64 cellid = 0, bool doLock = true);
+
 	ActionCreature* spawnActionCreature(String& name, String& stfname, uint32 objCrc, const String misoKey, float x, float y, float oY, float oW, uint64 cellid = 0, bool doLock = true);
-	//CreatureGroup* spawnCreatureGroup(int count, const String& stfname, const String& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
+	ActionCreature* spawnActionCreature(ActionCreature* tac, bool doLock = true);
+	//CreatureGroup* spawnCreatureGroup(int count, const string& stfname, const string& name, int objCrc, float x, float y, int bitmask = 0x00, int layout = LINE_LAYOUT);
+
 	LairObject* spawnLair(const String& type, float x, float y, float z, bool doLock = true);
+
 	void despawnCreature(Creature* creature);
 	void respawnCreature(Creature* creature);
 
@@ -141,6 +146,8 @@ public:
 	void loadObjectFile() {
 		runFile("scripts/sceneobjects/main.lua");
 	}
+
+	void setCreatureAttributes(Creature* creature, LuaObject* creatureConfig);
 
 	bool hotLoadCreature(String name);
 
@@ -171,7 +178,6 @@ public:
 
 private:
 	uint64 getNextCreatureID();
-	void setCreatureAttributes(Creature* creature, LuaObject* creatureConfig);
 
 public:
 	// setters and getters

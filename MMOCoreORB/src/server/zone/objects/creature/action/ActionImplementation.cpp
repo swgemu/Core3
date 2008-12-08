@@ -95,7 +95,7 @@ void ActionImplementation::execAction(Player* player) {
 
 			misoKey = parentCreature->getMissionKey();
 
-			pItem = player->getMissionItem(misoKey);
+			pItem = player->getItemByMisoKey(misoKey);
 
 			if (pItem == NULL) {
 				//Elaborate with NPC dialogue later.

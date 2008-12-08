@@ -59,11 +59,10 @@ paddedArmorChestPlate = Object:new {
 
    ingredientTemplateNames = "craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_chemical_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n, craft_clothing_ingredients_n",
    ingredientTitleNames = "liner, auxiliary_coverage, hardware_and_attachments, binding_and_reinforcement, body, padding, armor, reinforcement, load_bearing_harness",
-   --ingredientSlotType = "0, 0, 0, 0, 0, 0, 0, 0, 0",
-   ingredientSlotType = "0, 3, 3, 3, 3, 3, 3, 3, 3",
-   --resourceTypes = "fiberplast_corellia, hide_leathery_lok, metal, petrochem_inert_polymer, hide_scaley, hide_wooly, object/tangible/component/armor/shared_armor_segme, object/tangible/component/clothing/shared_reinforc, object/tangible/component/clothing/shared_syntheti",
-   resourceTypes = "metal, metal, metal, metal, metal, metal, object/tangible/component/armor/shared_armor_segme, object/tangible/component/clothing/shared_reinforc, object/tangible/component/clothing/shared_syntheti",
-   resourceQuantities = "40, 80, 50, 50, 80, 50, 4, 1, 1",
+   ingredientSlotType = "0, 0, 0, 0, 0, 0, 2, 3, 3",
+   resourceTypes = "fiberplast_corellia, hide_leathery_lok, metal, petrochem_inert_polymer, hide_scaley, hide_wooly, object/tangible/component/armor/shared_armor_segment_padded.iff, object/tangible/component/clothing/shared_reinforced_fiber_panels.iff, object/tangible/component/clothing/shared_synthetic_cloth.iff",
+   resourceQuantities = "40, 80, 50, 50, 80, 50, 1, 1, 1",
+   --resourceQuantities = "40, 80, 50, 50, 80, 50, 4, 1, 1",
    combineTypes = "1, 1, 1, 1, 1, 1, 2, 2, 1",
    contribution = "100, 100, 100, 100, 100, 100, 100, 100, 100",
 

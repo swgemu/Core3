@@ -60,6 +60,7 @@ which carries forward this exception.
 #include "../zone/managers/guild/GuildManager.h"
 #include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/structure/StructureManager.h"
+#include "../zone/managers/combat/CombatManager.h"
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
@@ -141,10 +142,10 @@ void GameCommandHandler::init() {
 			"Kills a creature. EC version of the kill command.",
 			"Usage: @ecKill <current-target>",
 			&ecKill);
-	gmCommands->addCommand("killArea", DEVELOPER,
+/*	gmCommands->addCommand("killArea", DEVELOPER,
 			"Kills all players within a certain range.",
 			"Usage: @killArea [distance]",
-			&killArea);
+			&killArea); */
 	gmCommands->addCommand("muteChat", CSREVENTS,
 			"Prevents players from speaking in chat.",
 			"Usage: @muteChat",
@@ -205,7 +206,7 @@ void GameCommandHandler::init() {
 			"Prints your current HAM stats.",
 			"Usage: @HAMStats",
 			&HAMStats);
-	gmCommands->addCommand("buff", PRIVILEGED | LEADQA,
+	gmCommands->addCommand("buff", DEVELOPER,
 			"Buffs your player.",
 			"Usage: @buff",
 			&buff);
@@ -294,14 +295,31 @@ void GameCommandHandler::init() {
 			"Returns a list of characters a player has registrated with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
+
+	gmCommands->addCommand("toggleCombat", DEVELOPER,
+				"Enables/Disables combat.",
+				"USAGE: @toggleCombat",
+				&toggleCombat);
+
+	gmCommands->addCommand("lockServer", DEVELOPER,
+				"Locks the server for intern testing.",
+				"USAGE: @lockServer",
+				&lockServer);
+	gmCommands->addCommand("unlockServer", DEVELOPER,
+				"Unlocks the server for public testing.",
+				"USAGE: @lockServer",
+				&unlockServer);
+
 	gmCommands->addCommand("sendp", DEVELOPER,
 			"Send Packet Test.",
 			"Usage: @sendp",
 			&sendp);
+
 	gmCommands->addCommand("requestStartingLocations", ALL,
 				"Resends the Starting Locations packet in case you accidentally close the window.",
 				"Usage: @requestStartingLocations",
 				&requestStartingLocations);
+
 	gmCommands->addCommand("help", ALL,
 				"Launch a web browser to the SWGEmu Support site.",
 				"Usage: @help",
@@ -1263,13 +1281,11 @@ void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player* player) {
 }
 
 void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player* player) {
-	uint32 range;
+	uint32 range = 0;
 
 	try {
 		if (tokenizer.hasMoreTokens())
-			float range = tokenizer.getFloatToken();
-		else
-			range = 0;
+			range = tokenizer.getIntToken();
 
 		if (!tokenizer.hasMoreTokens()) {
 			player->sendSystemMessage("Error sending systemMessage - Usage: systemMessage RANGE TEXT");
@@ -2415,77 +2431,143 @@ void GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player) {
 	}
 }
 
+void GameCommandHandler::toggleCombat(StringTokenizer tokenizer, Player * player) {
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	CombatManager* combatManager = srv->getCombatManager();
+
+	combatManager->toggleCombat();
+
+	ChatManager * chatManager = zone->getChatManager();
+
+	if (combatManager->isCombatEnabled()) {
+		StringBuffer message;
+		message << player->getFirstName() << " enabled Combat";
+
+		chatManager->broadcastMessage(message.toString());
+	} else {
+		StringBuffer message;
+		message << player->getFirstName() << " disabled Combat";
+
+		chatManager->broadcastMessage(message.toString());
+	}
+}
+
+void GameCommandHandler::lockServer(StringTokenizer tokenizer, Player * player) {
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	ChatManager * chatManager = zone->getChatManager();
+
+	zoneServer->setServerStateLocked();
+
+	StringBuffer message;
+	message <<  player->getFirstName() << " locked the server";
+
+	chatManager->broadcastMessage(message.toString());
+}
+
+void GameCommandHandler::unlockServer(StringTokenizer tokenizer, Player * player) {
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	ChatManager * chatManager = zone->getChatManager();
+
+	zoneServer->setServerStateOnline();
+
+	StringBuffer message;
+	message << player->getFirstName() << " unlocked the server";
+
+	chatManager->broadcastMessage(message.toString());
+
+}
+
 void GameCommandHandler::sendp(StringTokenizer tokenizer, Player * player) {
 	//TESTING PURPOSES ULTYMAS.
 	uint32 type;
 
-		if (tokenizer.hasMoreTokens())
-			type = tokenizer.getIntToken();
-		else
-			type = 0;
+	if (tokenizer.hasMoreTokens())
+		type = tokenizer.getIntToken();
+	else
+		type = 0;
 
-		if (type == 0) {
-			LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com");
-			player->sendMessage(lbm);
-		} else if (type == 1) {
-			//GetArticleResponseMessage
+	if (type == 0) {
+		LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com");
+		player->sendMessage(lbm);
+	} else if (type == 1) {
+		//GetArticleResponseMessage
 
-		} else if (type == 2) {
-			String command;
-			tokenizer.getStringToken(command);
+	} else if (type == 2) {
+		String command;
+		tokenizer.getStringToken(command);
 
-			ExecuteConsoleCommand* ecm = new ExecuteConsoleCommand(command);
-			player->sendMessage(ecm);
-		}  else if (type == 3) {
-			String hud;
-			tokenizer.getStringToken(hud);
+		ExecuteConsoleCommand* ecm = new ExecuteConsoleCommand(command);
+		player->sendMessage(ecm);
+	}  else if (type == 3) {
+		String hud;
+		tokenizer.getStringToken(hud);
 
-			NewbieTutorialEnableHudElement* nthud = new NewbieTutorialEnableHudElement(hud);
-			player->sendMessage(nthud);
-		} else if (type == 4) {
-			int flagtest;
-			flagtest = tokenizer.getIntToken();
+		NewbieTutorialEnableHudElement* nthud = new NewbieTutorialEnableHudElement(hud);
+		player->sendMessage(nthud);
+	} else if (type == 4) {
+		int flagtest;
+		flagtest = tokenizer.getIntToken();
 
-			ChatServerStatus* css = new ChatServerStatus(flagtest);
-			player->sendMessage(css);
-		}  else if (type == 5) {
-			ConnectionServerTestMessage* csmf = new ConnectionServerTestMessage();
-			player->sendMessage(csmf);
+		ChatServerStatus* css = new ChatServerStatus(flagtest);
+		player->sendMessage(css);
+	}  else if (type == 5) {
+		ConnectionServerTestMessage* csmf = new ConnectionServerTestMessage();
+		player->sendMessage(csmf);
 
-		} else if (type == 6) {
-			unkZone* uzp = new unkZone();
-			player->sendMessage(uzp);
-		} else if (type == 7) {
-			unkZoneTwo* uzp = new unkZoneTwo();
-			player->sendMessage(uzp);
-		} else if (type == 8) {
-			unkZoneThree* uzp = new unkZoneThree();
-			player->sendMessage(uzp);
-		} else if (type == 9) {
-			StartingLocationList* sll = new StartingLocationList(player);
-			sll->AddLocation("tatooine", "mos_eisley", true);
-			sll->AddLocation("naboo", "theed", true);
-			player->sendMessage(sll);
-		} else if (type == 10) {
-			CommoditiesItemTypeListResponse* citlr = new CommoditiesItemTypeListResponse();
-			player->sendMessage(citlr);
-		}
-
+	} else if (type == 6) {
+		unkZone* uzp = new unkZone();
+		player->sendMessage(uzp);
+	} else if (type == 7) {
+		unkZoneTwo* uzp = new unkZoneTwo();
+		player->sendMessage(uzp);
+	} else if (type == 8) {
+		unkZoneThree* uzp = new unkZoneThree();
+		player->sendMessage(uzp);
+	} else if (type == 9) {
+		StartingLocationList* sll = new StartingLocationList(player);
+		sll->AddLocation("tatooine", "mos_eisley", true);
+		sll->AddLocation("naboo", "theed", true);
+		player->sendMessage(sll);
+	} else if (type == 10) {
+		CommoditiesItemTypeListResponse* citlr = new CommoditiesItemTypeListResponse();
+		player->sendMessage(citlr);
 	}
 
-void GameCommandHandler::requestStartingLocations(StringTokenizer tokenizer, Player * player) {
+}
 
+void GameCommandHandler::requestStartingLocations(StringTokenizer tokenizer, Player * player) {
 	if (player->getZoneID() == 42) {
 		StartingLocationList* sll = new StartingLocationList(player);
 		player->sendMessage(sll);
-	 } else {
-		 player->sendSystemMessage("You can only use this command from the tutorial.");
-	 }
+	} else {
+		player->sendSystemMessage("You can only use this command from the tutorial.");
+	}
 }
 
 void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
-			LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com/support");
-			player->sendMessage(lbm);
+	LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com/support");
+	player->sendMessage(lbm);
 }
-
-

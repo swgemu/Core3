@@ -111,6 +111,14 @@ public:
 
 	String& getServerName();
 
+	bool isServerLocked();
+
+	bool isServerOnline();
+
+	bool isServerOffline();
+
+	int getServerState();
+
 	int getConnectionCount();
 
 	int getTotalPlayers();
@@ -126,6 +134,12 @@ public:
 	unsigned long long getNextID(bool doLock = true);
 
 	unsigned long long getNextCellID(bool doLock = true);
+
+	void setServerState(int state);
+
+	void setServerStateLocked();
+
+	void setServerStateOnline();
 
 protected:
 	ZoneServer(DummyConstructorParameter* param);
@@ -215,6 +229,14 @@ public:
 
 	String& getServerName();
 
+	bool isServerLocked();
+
+	bool isServerOnline();
+
+	bool isServerOffline();
+
+	int getServerState();
+
 	int getConnectionCount();
 
 	int getTotalPlayers();
@@ -230,6 +252,12 @@ public:
 	unsigned long long getNextID(bool doLock);
 
 	unsigned long long getNextCellID(bool doLock);
+
+	void setServerState(int state);
+
+	void setServerStateLocked();
+
+	void setServerStateOnline();
 
 protected:
 	String _param0_banUser__String_String_;
