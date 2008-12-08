@@ -73,12 +73,25 @@ bool PlayerManager::validateName(String& name) {
 		return ((PlayerManagerImplementation*) _impl)->validateName(name);
 }
 
-BaseMessage* PlayerManager::checkPlayerName(const String& name, const String& species) {
+bool PlayerManager::hasAdminRights(unsigned int characterID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+		method.addUnsignedIntParameter(characterID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerManagerImplementation*) _impl)->hasAdminRights(characterID);
+}
+
+BaseMessage* PlayerManager::checkPlayerName(const String& name, const String& species) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(species);
 
@@ -92,7 +105,7 @@ BaseMessage* PlayerManager::attemptPlayerCreation(Player* player, ZoneClientSess
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 		method.addObjectParameter(client);
 
@@ -106,7 +119,7 @@ Player* PlayerManager::load(unsigned long long charid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addUnsignedLongParameter(charid);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -119,7 +132,7 @@ void PlayerManager::unload(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -132,7 +145,7 @@ void PlayerManager::save(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -145,7 +158,7 @@ void PlayerManager::handleAbortTradeMessage(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -158,7 +171,7 @@ void PlayerManager::handleAddItemMessage(Player* player, unsigned long long item
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(itemID);
 
@@ -172,7 +185,7 @@ void PlayerManager::handleGiveMoneyMessage(Player* player, unsigned int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(value);
 
@@ -186,7 +199,7 @@ void PlayerManager::handleAcceptTransactionMessage(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -199,7 +212,7 @@ void PlayerManager::handleUnAcceptTransactionMessage(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -212,7 +225,7 @@ void PlayerManager::handleVerifyTradeMessage(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -225,7 +238,7 @@ void PlayerManager::moveItem(Player* sender, Player* receiver, TangibleObject* i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(sender);
 		method.addObjectParameter(receiver);
 		method.addObjectParameter(item);
@@ -240,7 +253,7 @@ void PlayerManager::doBankTip(Player* sender, Player* receiver, int tipAmount, b
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 		method.addObjectParameter(sender);
 		method.addObjectParameter(receiver);
 		method.addSignedIntParameter(tipAmount);
@@ -256,7 +269,7 @@ void PlayerManager::doCashTip(Player* sender, Player* receiver, int tipAmount, b
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addObjectParameter(sender);
 		method.addObjectParameter(receiver);
 		method.addSignedIntParameter(tipAmount);
@@ -272,7 +285,7 @@ bool PlayerManager::modifyOfflineBank(Player* sender, String& receiverName, int 
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 		method.addObjectParameter(sender);
 		method.addAsciiParameter(receiverName);
 		method.addSignedIntParameter(creditAmount);
@@ -287,7 +300,7 @@ bool PlayerManager::modifyRecipientOfflineBank(String& recipient, int creditAmou
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 		method.addAsciiParameter(recipient);
 		method.addSignedIntParameter(creditAmount);
 
@@ -301,7 +314,7 @@ void PlayerManager::updatePlayerCreditsFromDatabase(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -314,7 +327,7 @@ void PlayerManager::updatePlayerCreditsToDatabase(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -327,7 +340,7 @@ void PlayerManager::updatePlayerAppearanceToDatabase(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -340,7 +353,7 @@ void PlayerManager::updatePlayerBaseHAMToDatabase(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -353,7 +366,7 @@ void PlayerManager::updateOtherFriendlists(Player* player, bool status) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(status);
 
@@ -367,7 +380,7 @@ void PlayerManager::updateGuildStatus(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -380,7 +393,7 @@ void PlayerManager::setGuildManager(GuildManager* gmanager) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 		method.addObjectParameter(gmanager);
 
 		method.executeWithVoidReturn();
@@ -393,7 +406,7 @@ Player* PlayerManager::putPlayer(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addObjectParameter(player);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -406,7 +419,7 @@ Player* PlayerManager::getPlayer(String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 		method.addAsciiParameter(name);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -419,7 +432,7 @@ GuildManager* PlayerManager::getGuildManager() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return (GuildManager*) method.executeWithObjectReturn();
 	} else
@@ -431,7 +444,7 @@ PlayerMap* PlayerManager::getPlayerMap() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return (PlayerMap*) method.executeWithObjectReturn();
 	} else
@@ -459,84 +472,87 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(validateName(inv->getAsciiParameter(_param0_validateName__String_)));
 		break;
 	case 9:
-		resp->insertLong(checkPlayerName(inv->getAsciiParameter(_param0_checkPlayerName__String_String_), inv->getAsciiParameter(_param1_checkPlayerName__String_String_))->_getObjectID());
+		resp->insertBoolean(hasAdminRights(inv->getUnsignedIntParameter()));
 		break;
 	case 10:
-		resp->insertLong(attemptPlayerCreation((Player*) inv->getObjectParameter(), (ZoneClientSession*) inv->getObjectParameter())->_getObjectID());
+		resp->insertLong(checkPlayerName(inv->getAsciiParameter(_param0_checkPlayerName__String_String_), inv->getAsciiParameter(_param1_checkPlayerName__String_String_))->_getObjectID());
 		break;
 	case 11:
-		resp->insertLong(load(inv->getUnsignedLongParameter())->_getObjectID());
+		resp->insertLong(attemptPlayerCreation((Player*) inv->getObjectParameter(), (ZoneClientSession*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 12:
-		unload((Player*) inv->getObjectParameter());
+		resp->insertLong(load(inv->getUnsignedLongParameter())->_getObjectID());
 		break;
 	case 13:
-		save((Player*) inv->getObjectParameter());
+		unload((Player*) inv->getObjectParameter());
 		break;
 	case 14:
-		handleAbortTradeMessage((Player*) inv->getObjectParameter());
+		save((Player*) inv->getObjectParameter());
 		break;
 	case 15:
-		handleAddItemMessage((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+		handleAbortTradeMessage((Player*) inv->getObjectParameter());
 		break;
 	case 16:
-		handleGiveMoneyMessage((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		handleAddItemMessage((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 17:
-		handleAcceptTransactionMessage((Player*) inv->getObjectParameter());
+		handleGiveMoneyMessage((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 18:
-		handleUnAcceptTransactionMessage((Player*) inv->getObjectParameter());
+		handleAcceptTransactionMessage((Player*) inv->getObjectParameter());
 		break;
 	case 19:
-		handleVerifyTradeMessage((Player*) inv->getObjectParameter());
+		handleUnAcceptTransactionMessage((Player*) inv->getObjectParameter());
 		break;
 	case 20:
-		moveItem((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		handleVerifyTradeMessage((Player*) inv->getObjectParameter());
 		break;
 	case 21:
-		doBankTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		moveItem((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 22:
-		doCashTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		doBankTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 23:
-		resp->insertBoolean(modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_String_int_), inv->getSignedIntParameter()));
+		doCashTip((Player*) inv->getObjectParameter(), (Player*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 24:
-		resp->insertBoolean(modifyRecipientOfflineBank(inv->getAsciiParameter(_param0_modifyRecipientOfflineBank__String_int_), inv->getSignedIntParameter()));
+		resp->insertBoolean(modifyOfflineBank((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_modifyOfflineBank__Player_String_int_), inv->getSignedIntParameter()));
 		break;
 	case 25:
-		updatePlayerCreditsFromDatabase((Player*) inv->getObjectParameter());
+		resp->insertBoolean(modifyRecipientOfflineBank(inv->getAsciiParameter(_param0_modifyRecipientOfflineBank__String_int_), inv->getSignedIntParameter()));
 		break;
 	case 26:
-		updatePlayerCreditsToDatabase((Player*) inv->getObjectParameter());
+		updatePlayerCreditsFromDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 27:
-		updatePlayerAppearanceToDatabase((Player*) inv->getObjectParameter());
+		updatePlayerCreditsToDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 28:
-		updatePlayerBaseHAMToDatabase((Player*) inv->getObjectParameter());
+		updatePlayerAppearanceToDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 29:
-		updateOtherFriendlists((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
+		updatePlayerBaseHAMToDatabase((Player*) inv->getObjectParameter());
 		break;
 	case 30:
-		updateGuildStatus((Player*) inv->getObjectParameter());
+		updateOtherFriendlists((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 31:
-		setGuildManager((GuildManager*) inv->getObjectParameter());
+		updateGuildStatus((Player*) inv->getObjectParameter());
 		break;
 	case 32:
-		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getObjectID());
+		setGuildManager((GuildManager*) inv->getObjectParameter());
 		break;
 	case 33:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
+		resp->insertLong(putPlayer((Player*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 34:
-		resp->insertLong(getGuildManager()->_getObjectID());
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
 	case 35:
+		resp->insertLong(getGuildManager()->_getObjectID());
+		break;
+	case 36:
 		resp->insertLong(getPlayerMap()->_getObjectID());
 		break;
 	default:
@@ -556,6 +572,10 @@ bool PlayerManagerAdapter::create(Player* player, unsigned int sessionkey) {
 
 bool PlayerManagerAdapter::validateName(String& name) {
 	return ((PlayerManagerImplementation*) impl)->validateName(name);
+}
+
+bool PlayerManagerAdapter::hasAdminRights(unsigned int characterID) {
+	return ((PlayerManagerImplementation*) impl)->hasAdminRights(characterID);
 }
 
 BaseMessage* PlayerManagerAdapter::checkPlayerName(const String& name, const String& species) {

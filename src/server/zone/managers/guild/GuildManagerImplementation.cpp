@@ -1295,7 +1295,8 @@ bool GuildManagerImplementation::updateDeclineGuild(Player* proband, Player* pla
 
 	try {
 		player->wlock();
-		proband->wlock(player);
+		if (proband != player)
+			proband->wlock(player);
 
 		StringBuffer query;
 		query << "DELETE from guilds_sponsoring where sponsored = " << proband->getCharacterID() << ";";
@@ -1309,10 +1310,12 @@ bool GuildManagerImplementation::updateDeclineGuild(Player* proband, Player* pla
 
 		cm = player->getZone()->getChatManager();
 
-		proband->unlock();
+		if (proband != player)
+			proband->unlock();
 		player->unlock();
 	} catch (...) {
-		proband->unlock();
+		if (proband != player)
+			proband->unlock();
 		player->unlock();
 
 		return false;
@@ -1406,7 +1409,8 @@ bool GuildManagerImplementation::updateCharIntoGuild(Player* proband, Player* pl
 
 	try {
 		proband->wlock();
-		player->wlock(proband);
+		if (proband != player)
+			player->wlock(proband);
 
 		name = player->getFirstName();
 
@@ -1429,11 +1433,13 @@ bool GuildManagerImplementation::updateCharIntoGuild(Player* proband, Player* pl
 
 		cm = player->getZone()->getChatManager();
 
-		player->unlock();
+		if (proband != player)
+			player->unlock();
 		proband->unlock();
 
 	} catch (...) {
-		player->unlock();
+		if (proband != player)
+			player->unlock();
 		proband->unlock();
 	}
 

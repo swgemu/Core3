@@ -65,6 +65,7 @@ interface PlayerManager {
 
 	boolean create(Player player, unsigned int sessionkey);
 	boolean validateName(String name);
+	boolean hasAdminRights(unsigned int characterID);
 
 	BaseMessage checkPlayerName(const String name, const String species);
 	BaseMessage attemptPlayerCreation(Player player, ZoneClientSession client);
@@ -94,7 +95,7 @@ interface PlayerManager {
 	void updatePlayerBaseHAMToDatabase(Player player);
 
 	void updateOtherFriendlists(Player player, boolean status);
-	
+
 	void updateGuildStatus(Player player);
 
 	void setGuildManager(GuildManager gmanager);

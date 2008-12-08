@@ -120,6 +120,11 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {
+	if (missionManager != NULL) {
+		missionManager->finalize();
+		missionManager = NULL;
+	}
+
 	if (phandler != NULL) {
 		delete phandler;
 		phandler = NULL;
@@ -183,11 +188,6 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 	if (chatManager != NULL) {
 		chatManager->finalize();
 		chatManager = NULL;
-	}
-
-	if (missionManager != NULL) {
-		missionManager->finalize();
-		missionManager = NULL;
 	}
 
 	for (int i = 0; i < 45; ++i) {
