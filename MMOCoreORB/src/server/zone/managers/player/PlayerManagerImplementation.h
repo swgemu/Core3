@@ -96,6 +96,7 @@ public:
 	void save(Player* player);
 
 	bool validateName(const String& name);
+	bool hasAdminRights(uint32 characterID);
 
 	BaseMessage* checkPlayerName(const String& name, const String& species);
 	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);

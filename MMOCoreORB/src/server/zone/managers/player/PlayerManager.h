@@ -33,6 +33,8 @@ public:
 
 	bool validateName(String& name);
 
+	bool hasAdminRights(unsigned int characterID);
+
 	BaseMessage* checkPlayerName(const String& name, const String& species);
 
 	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);
@@ -108,6 +110,8 @@ public:
 	bool create(Player* player, unsigned int sessionkey);
 
 	bool validateName(String& name);
+
+	bool hasAdminRights(unsigned int characterID);
 
 	BaseMessage* checkPlayerName(const String& name, const String& species);
 
