@@ -506,15 +506,15 @@ void MissionManagerImplementation::doMissionAbort(Player* player, String& tKey, 
 
 void MissionManagerImplementation::doMissionSave(Player* player, const String& mkey, const String& objectivevars, const String& killcountvars, bool doLock) {
 	try {
-		printf("doMissionSave, 1\n");
+		////printf("doMissionSave, 1\n");
 		lock(doLock);
 
-		printf("doMissionSave, 2\n");
+		////printf("doMissionSave, 2\n");
 		//Create mission save if it doesnt exist.
 		if(!hasMissionSave(player, mkey, true, false))
 			return;
 
-		printf("doMissionSave, 3\n");
+		////printf("doMissionSave, 3\n");
 		//Update the mission save:
 
 		//If no update vars are passed, abort save.
@@ -537,12 +537,12 @@ void MissionManagerImplementation::doMissionSave(Player* player, const String& m
 			prevStr = true;
 		}
 
-		printf("doMissionSave, 4\n");
+		////printf("doMissionSave, 4\n");
 
 		if(!prevStr) //If we havent added anything to the query, bail.
 			return;
 
-		printf("doMissionSave, 5\n");
+		////printf("doMissionSave, 5\n");
 
 		query2 << "WHERE character_id = " << player->getCharacterID() << " and miso_key = '" << mkey << "';";
 		ServerDatabase::instance()->executeStatement(query2);
@@ -556,21 +556,21 @@ void MissionManagerImplementation::doMissionSave(Player* player, const String& m
 
 		unlock(doLock);
 	}
-	printf("doMissionSave, 6, end\n");
+	////printf("doMissionSave, 6, end\n");
 }
 
 void MissionManagerImplementation::deleteMissionSave(Player* player, const String& mkey, bool doLock) {
 	try {
-		printf("deleteMissionSave, 1\n");
+		////printf("deleteMissionSave, 1\n");
 		lock(doLock);
 
-		printf("deleteMissionSave, 2\n");
+		////printf("deleteMissionSave, 2\n");
 
 		//Check to see if player even has a mission save to delete. Abort if false.
 		if(!hasMissionSave(player, mkey, false, false))
 				return;
 
-		printf("deleteMissionSave, 3\n");
+		////printf("deleteMissionSave, 3\n");
 
 		StringBuffer query;
 		query << "DELETE FROM mission_save WHERE character_id = " << player->getCharacterID() << " and ";
@@ -585,23 +585,23 @@ void MissionManagerImplementation::deleteMissionSave(Player* player, const Strin
 
 		unlock(doLock);
 	}
-	printf("deleteMissionSave, 4, end\n");
+	////printf("deleteMissionSave, 4, end\n");
 }
 
 bool MissionManagerImplementation::hasMissionSave(Player* player, const String& mkey, bool createIfNone, bool doLock) {
 	bool ret = false;
 	ResultSet* msRes;
 	try {
-		printf("hasMissionSave, 1\n");
+		////printf("hasMissionSave, 1\n");
 		lock(doLock);
 
 		StringBuffer query;
 		//Check if the database has an entry for the playerid & misokey:
 		query << "SELECT * FROM mission_save WHERE character_id = " << player->getCharacterID() << " and miso_key = '" << mkey << "';";
-		//printf("executing query: %s\n", query.str());
+		////printf("executing query: %s\n", query.str());
 		msRes = ServerDatabase::instance()->executeQuery(query);
 
-		printf("hasMissionSave, 2\n");
+		////printf("hasMissionSave, 2\n");
 
 		//If db doesnt have an entry AND createIfNone is true, we'll create one
 		if ((msRes->size() <= 0) && createIfNone) {
@@ -613,7 +613,7 @@ bool MissionManagerImplementation::hasMissionSave(Player* player, const String& 
 				<< "VALUES (" << player->getCharacterID() << ",'" << mkey << "'"
 				<< ");";
 
-			//printf("executing insert query: %s\n", query.str());
+			////printf("executing insert query: %s\n", query.str());
 			ServerDatabase::instance()->executeStatement(queryIns);
 		} else if ((msRes->size() <= 0)) { //No db entry, create is false
 			ret = false;
@@ -621,7 +621,7 @@ bool MissionManagerImplementation::hasMissionSave(Player* player, const String& 
 			ret = true;
 		}
 
-		printf("hasMissionSave, 3\n");
+		////printf("hasMissionSave, 3\n");
 
 		unlock(doLock);
 	} catch (DatabaseException& e) {
@@ -635,7 +635,7 @@ bool MissionManagerImplementation::hasMissionSave(Player* player, const String& 
 
 	delete msRes;
 
-	printf("hasMissionSave, 4, end\n");
+	////printf("hasMissionSave, 4, end\n");
 
 	return ret;
 }
@@ -645,7 +645,7 @@ void MissionManagerImplementation::getMissionSaveVarLine(Player* player, const S
 	String varline = "";
 	ResultSet* res;
 	try {
-		printf("getMissionSaveVarLine, 1\n");
+		//printf("getMissionSaveVarLine, 1\n");
 		lock(doLock);
 
 		query << "SELECT " << dbVar << " FROM mission_save WHERE character_id = " << player->getCharacterID() << " and miso_key = '" << mkey << "';";
@@ -656,7 +656,7 @@ void MissionManagerImplementation::getMissionSaveVarLine(Player* player, const S
 			varline = res->getString(0);
 		}
 
-		printf("getMissionSaveVarLine, 2\n");
+		//printf("getMissionSaveVarLine, 2\n");
 
 		unlock(doLock);
 	} catch (DatabaseException& e) {
@@ -670,7 +670,7 @@ void MissionManagerImplementation::getMissionSaveVarLine(Player* player, const S
 
 	delete res;
 
-	printf("getMissionSaveVarLine, 3, end. Return = %s\n", retStr.toCharArray());
+	//printf("getMissionSaveVarLine, 3, end. Return = %s\n", retStr.toCharArray());
 
 	retStr = varline;
 }
@@ -681,7 +681,7 @@ void MissionManagerImplementation::getMisoKeysStatus(Player* player, bool finKey
 	String misoKeys = "";
 
 	try {
-		printf("getMisoKeysStatus, 1\n");
+		//printf("getMisoKeysStatus, 1\n");
 		lock(doLock);
 
 		String dbCol = "";
@@ -699,7 +699,7 @@ void MissionManagerImplementation::getMisoKeysStatus(Player* player, bool finKey
 			misoKeys = res->getString(0);
 		}
 
-		printf("getMisoKeysStatus, 2\n");
+		//printf("getMisoKeysStatus, 2\n");
 
 		unlock(doLock);
 	} catch (DatabaseException& e) {
@@ -713,7 +713,7 @@ void MissionManagerImplementation::getMisoKeysStatus(Player* player, bool finKey
 
 	delete res;
 
-	printf("getMisoKeysStatus, 3, end. returning: %s\n", retStr.toCharArray());
+	//printf("getMisoKeysStatus, 3, end. returning: %s\n", retStr.toCharArray());
 
 	retStr = misoKeys;
 }
@@ -722,33 +722,33 @@ void MissionManagerImplementation::setMisoKeyCurrent(Player* player, String miso
 	ResultSet* res;
 
 	try {
-		printf("setMisoKeyCurrent, 1\n");
+		//printf("setMisoKeyCurrent, 1\n");
 		lock(doLock);
 
 		StringBuffer query;
 		String keyList;
 
-		//printf("character id = %i\n", player->getCharacterID());
+		////printf("character id = %i\n", player->getCharacterID());
 
 		//Get either the current or finished miso
 		query << "SELECT 'characters.currentMissionKeys' FROM characters WHERE character_id = " << player->getCharacterID() << ";";
 		res = ServerDatabase::instance()->executeQuery(query);
-		//printf("setMisoKeyCurrent, 1.7\n");
+		////printf("setMisoKeyCurrent, 1.7\n");
 
 		if(res == NULL) {
-			printf("the result set is NULL!\n");
+			//printf("the result set is NULL!\n");
 			delete res;
 			return;
 		}
 
 		if(res->size() > 0) {
-			printf("res size above 0\n");
+			//printf("res size above 0\n");
 			keyList = res->getString(0);
 		} else {
-			printf("res size at 0\n");
+			//printf("res size at 0\n");
 		}
 
-		printf("setMisoKeyCurrent, 2\n");
+		//printf("setMisoKeyCurrent, 2\n");
 
 		//Check if the key already exists in the list:
 		StringTokenizer klistTok(keyList);
@@ -770,7 +770,7 @@ void MissionManagerImplementation::setMisoKeyCurrent(Player* player, String miso
 			}
 		}
 
-		printf("setMisoKeyCurrent, 3\n");
+		//printf("setMisoKeyCurrent, 3\n");
 
 		//if there was a match, add the key. This makes sure there is only 1 key
 		if (hadMatch && !remove) {
@@ -782,7 +782,7 @@ void MissionManagerImplementation::setMisoKeyCurrent(Player* player, String miso
 		query2 << "UPDATE characters set currentMissionKeys = '" << newList << "' WHERE character_id = " << player->getCharacterID() << ";";
 		ServerDatabase::instance()->executeStatement(query2);
 
-		printf("setMisoKeyCurrent, 4\n");
+		//printf("setMisoKeyCurrent, 4\n");
 
 		unlock(doLock);
 	} catch (DatabaseException& e) {
@@ -794,7 +794,7 @@ void MissionManagerImplementation::setMisoKeyCurrent(Player* player, String miso
 		unlock(doLock);
 	}
 	delete res;
-	printf("setMisoKeyCurrent, 5, end.\n");
+	//printf("setMisoKeyCurrent, 5, end.\n");
 }
 
 void MissionManagerImplementation::setMisoKeyFinished(Player* player, String misoKey, bool remove, bool doLock) {
@@ -802,7 +802,7 @@ void MissionManagerImplementation::setMisoKeyFinished(Player* player, String mis
 	ResultSet* res;
 
 	try {
-		printf("setMisoKeyFinished, 1\n");
+		//printf("setMisoKeyFinished, 1\n");
 		lock(doLock);
 
 		String keyList = "";
@@ -814,7 +814,7 @@ void MissionManagerImplementation::setMisoKeyFinished(Player* player, String mis
 			keyList = res->getString(0);
 		}
 
-		printf("setMisoKeyFinished, 2\n");
+		//printf("setMisoKeyFinished, 2\n");
 
 		//Check if the key already exists in the list:
 		StringTokenizer klistTok(keyList);
@@ -847,7 +847,7 @@ void MissionManagerImplementation::setMisoKeyFinished(Player* player, String mis
 		query2 << "UPDATE characters set finishedMissionKeys = '" << newList << "' WHERE character_id = " << player->getCharacterID() << ";";
 		ServerDatabase::instance()->executeStatement(query2);
 
-		printf("setMisoKeyFinished, 3\n");
+		//printf("setMisoKeyFinished, 3\n");
 
 		unlock(doLock);
 	} catch (DatabaseException& e) {
@@ -860,7 +860,7 @@ void MissionManagerImplementation::setMisoKeyFinished(Player* player, String mis
 	}
 	delete res;
 
-	printf("setMisoKeyFinished, 4, end.\n");
+	//printf("setMisoKeyFinished, 4, end.\n");
 }
 
 /// END OF SAVE FUNCS
@@ -1172,7 +1172,7 @@ int MissionManagerImplementation::addActionCreatureToServer(lua_State* L) {
 	ActionCreature* actCreature;
 
 	for(int i = actCount; i >= 1; i--) {
-		printf("i = %i\n", i);
+		//printf("i = %i\n", i);
 
 		if(i == actCount) {
 			actCreature = addActionCreature(L, i);
@@ -1203,7 +1203,7 @@ ActionCreature* MissionManagerImplementation::addActionCreature(lua_State* L, in
 		instance->lock();
 
 		String objectName = creatureConfig.getStringField("objectName");
-		printf("loading script object. objectname: %s. numBuf = %s\n", objectName.toCharArray(), numBuf);
+		//printf("loading script object. objectname: %s. numBuf = %s\n", objectName.toCharArray(), numBuf);
 
 		String stfname = creatureConfig.getStringField("stfName");
 		String name = creatureConfig.getStringField("name");
@@ -1298,7 +1298,7 @@ void MissionManagerImplementation::addAction(lua_State* L, int sIdx, ActionCreat
 
 		String actionKey = actionConfig.getStringField("actionKey");
 
-		printf("Adding action. Key: %s \n", actionKey.toCharArray());
+		//printf("Adding action. Key: %s \n", actionKey.toCharArray());
 
 		int prereqMask = actionConfig.getIntField("prereqMask");
 		action->setPrereq(prereqMask);
@@ -1323,7 +1323,7 @@ void MissionManagerImplementation::addAction(lua_State* L, int sIdx, ActionCreat
 		if(onDeath)
 			actCreature->onDeath(actionKey);
 
-		printf("done loading optional triggers\n");
+		//printf("done loading optional triggers\n");
 
 		/////////////////////
 		// Prereq Vars
@@ -1384,7 +1384,7 @@ void MissionManagerImplementation::addAction(lua_State* L, int sIdx, ActionCreat
 
 					//Get compiled options String
 					String compOptionText = retScreen.getStringField("compOptionText");
-					printf("compOptionText: %s\n", compOptionText.toCharArray());
+					//printf("compOptionText: %s\n", compOptionText.toCharArray());
 
 					//Get compiled option links
 					String compOptionLinks = retScreen.getStringField("compOptionLinks");

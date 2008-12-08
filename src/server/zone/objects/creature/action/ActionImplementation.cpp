@@ -99,7 +99,7 @@ void ActionImplementation::execAction(Player* player) {
 
 			if (pItem == NULL) {
 				//Elaborate with NPC dialogue later.
-				//printf("Cannot get mission item from player, it is NULL\n");
+				////printf("Cannot get mission item from player, it is NULL\n");
 				return;
 			}
 
@@ -126,7 +126,7 @@ void ActionImplementation::execAction(Player* player) {
 			mMgr = parentCreature->getMisoMgr();
 
 			if (mMgr == NULL) {
-				printf("Cannot complete mission, mission manager is null in parent creature\n");
+				//printf("Cannot complete mission, mission manager is null in parent creature\n");
 				return;
 			}
 
@@ -157,7 +157,7 @@ void ActionImplementation::execAction(Player* player) {
 			mMgr = parentCreature->getMisoMgr();
 
 			if (mMgr == NULL) {
-				//printf("Cannot abort mission, mission manager is null in parent creature\n");
+				////printf("Cannot abort mission, mission manager is null in parent creature\n");
 				return;
 			}
 
@@ -196,7 +196,7 @@ void ActionImplementation::addConvoScreen(String screenID, String leftBoxText, i
 
 void ActionImplementation::carryConversation(Player* player) {
 	if (player->getLastNpcConvStr() != "action_npc") {
-		//printf("debug: aborting ActionImpl carryConversation() because getLastNpcConvStr = %s\n", player->getLastNpcConvStr().toCharArray());
+		////printf("debug: aborting ActionImpl carryConversation() because getLastNpcConvStr = %s\n", player->getLastNpcConvStr().toCharArray());
 		return;
 	}
 
@@ -223,7 +223,7 @@ void ActionImplementation::carryConversation(Player* player) {
 		String tns = "";
 		tns = convoOptLink.get(player->getLastNpcConvMessStr());
 		if (tns == "") {
-			//printf("carryConversation() : No such Conversation Option link found in map.");
+			////printf("carryConversation() : No such Conversation Option link found in map.");
 			return;
 		}
 
@@ -303,7 +303,7 @@ bool ActionImplementation::prereqCheck(Player* player) {
 		misoKey = parentCreature->getMissionKey();
 
 		if (misoKey == "") {
-			//printf("Unable to get Mission key from parentCreature in prereqCheck()\n");
+			////printf("Unable to get Mission key from parentCreature in prereqCheck()\n");
 			return false;
 		} else {
 			return player->isOnCurMisoKey(misoKey);

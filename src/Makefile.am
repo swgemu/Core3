@@ -278,6 +278,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
+		server/zone/objects/tangible/CustomizationVariables.cpp \
 		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
@@ -309,6 +310,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
+		server/zone/packets/charcreation/ClientCreateCharacter.cpp \
 		server/zone/ZoneClientSessionImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/ZoneMessageProcessorThread.cpp \
