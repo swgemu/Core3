@@ -625,6 +625,8 @@ void PlayerImplementation::unload() {
 			//zone = NULL;
 		}
 	}
+
+	activateRecovery();
 }
 
 void PlayerImplementation::savePlayerState(bool doSchedule) {
@@ -859,9 +861,9 @@ void PlayerImplementation::initializeEvents() {
 		recoveryEvent->setPlayer(_this);
 
 	if (digestEvent == NULL)
-		digestEvent = new PlayerDigestEvent(_this);
+		digestEvent = new PlayerDigestEvent(NULL);/*
 	else
-		digestEvent->setPlayer(_this);
+		digestEvent->setPlayer(_this);*/
 
 	if (dizzyFallDownEvent == NULL)
 		dizzyFallDownEvent = new DizzyFallDownEvent(this);
@@ -2194,8 +2196,10 @@ void PlayerImplementation::activateRecovery() {
 	if (recoveryEvent == NULL)
 		recoveryEvent = new PlayerRecoveryEvent(_this);
 
-	if (!recoveryEvent->isQueued())
+	if (!recoveryEvent->isQueued()) {
+		recoveryEvent->setPlayer(_this);
 		server->addEvent(recoveryEvent, 3000);
+	}
 }
 
 void PlayerImplementation::rescheduleRecovery(int time) {
@@ -2203,6 +2207,7 @@ void PlayerImplementation::rescheduleRecovery(int time) {
 		server->removeEvent(recoveryEvent);
 
 	server->addEvent(recoveryEvent, time);
+	recoveryEvent->setPlayer(_this);
 }
 
 void PlayerImplementation::doRecovery() {
@@ -2213,6 +2218,9 @@ void PlayerImplementation::doRecovery() {
 			unload();
 
 			setOffline();
+
+			if (owner != NULL)
+				owner->closeConnection(false);
 
 			return;
 		} else {
@@ -2235,9 +2243,9 @@ void PlayerImplementation::doRecovery() {
 	}
 
 
-	if (!isInCombat() && isOnFullHealth() && ((playerObject != NULL && isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
+	/*if (!isInCombat() && isOnFullHealth() && ((playerObject != NULL && isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
 		return;
-	} else if (lastCombatAction.miliDifference() > 15000) {
+	} else*/ if (lastCombatAction.miliDifference() > 15000) {
 		clearCombatState();
 	} else if (isInCombat() && targetObject != NULL && !hasState(CreatureState::PEACE)
 			&& (commandQueue.size() == 0)) {
@@ -2321,8 +2329,10 @@ void PlayerImplementation::doStateRecovery() {
 }
 
 void PlayerImplementation::activateDigest() {
-	if (!digestEvent->isQueued())
+	if (!digestEvent->isQueued()) {
+		digestEvent->setPlayer(_this);
 		server->addEvent(digestEvent, 18000);
+	}
 }
 
 void PlayerImplementation::doDigest() {

@@ -58,17 +58,23 @@ public:
 	}
 
 	bool activate() {
+		ManagedReference<Player> temp = player;
+
+		player = NULL;
+
 		try {
-			player->wlock();
+			temp->wlock();
 
-			if (player->isOnline() || player->isLinkDead())
-				player->doRecovery();
+			if (temp->isOnline() || temp->isLinkDead())
+				temp->doRecovery();
 
-			player->unlock();
+			temp->unlock();
 		} catch (...) {
-			player->error("unreported exception caught in PlayerRecoveryEvent::activate");
-			player->unlock();
+			temp->error("unreported exception caught in PlayerRecoveryEvent::activate");
+			temp->unlock();
 		}
+
+		temp = NULL;
 
 		return true;
 	}
