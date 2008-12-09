@@ -148,108 +148,165 @@ public:
 	}
 
 	void updateHealthWoundsBar(uint32 healthWounds) {
+		uint32 healthw = creo->getHealthWounds();
+
+		if (healthWounds == healthWounds) {
+			creo->error("update creo delta3 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x11);
 
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 healthw = creo->getHealthWounds();
 		addBar(0, healthw, healthWounds);
 
 		creo->setHealthWounds(healthw);
 	}
 
 	void updateStrengthWoundsBar(uint32 strengthWounds) {
+		uint32 strengthw = creo->getStrengthWounds();
+
+		if (strengthw == strengthWounds) {
+			creo->error("update creo delta3 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x11);
 
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 strengthw = creo->getStrengthWounds();
+
 		addBar(1, strengthw, strengthWounds);
 
 		creo->setStrengthWounds(strengthw);
 	}
 
 	void updateConstitutionWoundsBar(uint32 constitutionWounds) {
+		uint32 constitutionw = creo->getConstitutionWounds();
+
+		if (constitutionw == constitutionWounds) {
+			creo->error("update creo delta3 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x11);
 
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 constitutionw = creo->getConstitutionWounds();
+
 		addBar(2, constitutionw, constitutionWounds);
 
 		creo->setConstitutionWounds(constitutionw);
 	}
 
 	void updateActionWoundsBar(uint32 actionWounds) {
+		uint32 actionw = creo->getActionWounds();
+
+		if (actionw == actionWounds) {
+			creo->error("update creo delta3 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x11);
 
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 actionw = creo->getActionWounds();
+
 		addBar(3, actionw, actionWounds);
 
 		creo->setActionWounds(actionw);
 	}
 
 	void updateQuicknessWoundsBar(uint32 quicknessWounds) {
+		uint32 quicknessw = creo->getQuicknessWounds();
+
+		if (quicknessw == quicknessWounds) {
+			creo->error("update creo delta3 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x11);
 
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 quicknessw = creo->getQuicknessWounds();
 		addBar(4, quicknessw, quicknessWounds);
 
 		creo->setQuicknessWounds(quicknessw);
 	}
 
 	void updateStaminaWoundsBar(uint32 staminaWounds) {
+		uint32 staminaw = creo->getStaminaWounds();
+
+		if (staminaw == staminaWounds) {
+			creo->error("update creo delta3 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x11);
 
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 staminaw = creo->getStaminaWounds();
 		addBar(5, staminaw, staminaWounds);
 
 		creo->setStaminaWounds(staminaw);
 	}
 
 	void updateMindWoundsBar(uint32 mindWounds) {
+		uint32 mindw = creo->getMindWounds();
+
+		if (mindw == mindWounds) {
+			creo->error("update creo delta3 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x11);
 
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 mindw = creo->getMindWounds();
 		addBar(6, mindw, mindWounds);
 
 		creo->setMindWounds(mindw);
 	}
 
 	void updateFocusWoundsBar(uint32 focusWounds) {
+		uint32 focusw = creo->getFocusWounds();
+
+		if (focusw == focusWounds) {
+			creo->error("update creo delta3 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x11);
 
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 focusw = creo->getFocusWounds();
 		addBar(7, focusw, focusWounds);
 
 		creo->setFocusWounds(focusw);
 	}
 
 	void updateWillpowerWoundsBar(uint32 willpowerWounds) {
+		uint32 willpowerw = creo->getWillpowerWounds();
+
+		if (willpowerw == willpowerWounds) {
+			creo->error("update creo delta3 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x11);
 
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 willpowerw = creo->getWillpowerWounds();
 		addBar(8, willpowerw, willpowerWounds);
 
 		creo->setWillpowerWounds(willpowerw);

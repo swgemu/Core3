@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef CREATUREOBJECTDELTAMESSAGE6_H_
 #define CREATUREOBJECTDELTAMESSAGE6_H_
@@ -54,7 +54,7 @@ class CreatureObjectDeltaMessage6 : public DeltaMessage {
 
 public:
 	CreatureObjectDeltaMessage6(CreatureObject* cr)
-			: DeltaMessage(cr->getObjectID(), 0x4352454F, 6) {
+	: DeltaMessage(cr->getObjectID(), 0x4352454F, 6) {
 		creo = cr;
 	}
 
@@ -106,57 +106,13 @@ public:
 	}
 
 
-	void updateMaximumHAMBars() {
-		startUpdate(0x0E);
-
-		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(9);
-		startList(9, updatecount);
-
-		uint32 healthCreo = creo->getHealthMax();
-		addBar(0, healthCreo);
-		uint32 strengthCreo = creo->getStrengthMax();
-		addBar(1, strengthCreo);
-		uint32 constCreo = creo->getConstitutionMax();
-		addBar(2, constCreo);
-		uint32 actionCreo = creo->getActionMax();
-		addBar(3, actionCreo);
-		uint32 quicknessCreo = creo->getQuicknessMax();
-		addBar(4, quicknessCreo);
-		uint32 staminaCreo = creo->getStaminaMax();
-		addBar(5, staminaCreo);
-		uint32 mindCreo = creo->getMindMax();
-		addBar(6, mindCreo);
-		uint32 focusCreo = creo->getFocusMax();
-		addBar(7, focusCreo);
-		uint32 willpowerCreo = creo->getWillpowerMax();
-		addBar(8, willpowerCreo);
+	/*void updateMaximumHAMBars() {
+		we need to send full creo6 here intead of deltas to avoid counter corruption
 	}
 
 	void updateHAMBars() {
-		startUpdate(0x0D);
-
-		uint32 updatecount = creo->getNewHAMUpdateCounter(9);
-		startList(9, updatecount);
-
-		uint32 healthCreo = creo->getHealth();
-		addBar(0, healthCreo);
-		uint32 strengthCreo = creo->getStrength();
-		addBar(1, strengthCreo);
-		uint32 constCreo = creo->getConstitution();
-		addBar(2, constCreo);
-		uint32 actionCreo = creo->getAction();
-		addBar(3, actionCreo);
-		uint32 quicknessCreo = creo->getQuickness();
-		addBar(4, quicknessCreo);
-		uint32 staminaCreo = creo->getStamina();
-		addBar(5, staminaCreo);
-		uint32 mindCreo = creo->getMind();
-		addBar(6, mindCreo);
-		uint32 focusCreo = creo->getFocus();
-		addBar(7, focusCreo);
-		uint32 willpowerCreo = creo->getWillpower();
-		addBar(8, willpowerCreo);
-	}
+		we need to send full creo6 here intead of deltas to avoid counter corruption
+	}*/
 
 	void updateMaximumPrimaryBars(uint32 health, uint32 action, uint32 mind) {
 		startUpdate(0x0E);
@@ -237,207 +193,320 @@ public:
 	}
 
 	void updateHealthBar(uint32 health) {
+		uint32 healthCreo = creo->getHealth();
+
+		if (health == healthCreo) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
+
+		creo->setHealth(healthCreo);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 healthCreo = creo->getHealth();
 		addBar(0, healthCreo, health);
-
-		creo->setHealth(healthCreo);
 	}
 
 	void updateMaxHealthBar(uint32 health) {
+		uint32 healthCreoMax = creo->getHealthMax();
+
+		if (health == healthCreoMax) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 healthCreoMax = creo->getHealthMax();
 		addBar(0, healthCreoMax, health);
 
 		creo->setHealthMax(healthCreoMax);
 	}
 
 	void updateStrengthBar(uint32 strength) {
+		uint32 strengthCreo = creo->getStrength();
+
+		if (strength == strengthCreo) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 strengthCreo = creo->getStrength();
 		addBar(1, strengthCreo, strength);
 
 		creo->setStrength(strengthCreo);
 	}
 
 	void updateMaxStrengthBar(uint32 strength) {
+		uint32 strengthCreoMax = creo->getStrengthMax();
+
+		if (strength == strengthCreoMax) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 strengthCreoMax = creo->getStrengthMax();
 		addBar(1, strengthCreoMax, strength);
 		creo->setStrengthMax(strengthCreoMax);
 	}
 
 	void updateConstitutionBar(uint32 constitution) {
+		uint32 constitutionCreo = creo->getConstitution();
+
+		if (constitution == constitutionCreo) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 constitutionCreo = creo->getConstitution();
 		addBar(2, constitutionCreo, constitution);
 		creo->setConstitution(constitutionCreo);
 	}
 
 	void updateMaxConstitutionBar(uint32 constitution) {
+		uint32 constitutionCreoMax = creo->getConstitutionMax();
+
+		if (constitution == constitutionCreoMax) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 constitutionCreoMax = creo->getConstitutionMax();
 		addBar(2, constitutionCreoMax, constitution);
 		creo->setConstitutionMax(constitutionCreoMax);
 	}
 
 	void updateActionBar(uint32 action) {
+		uint32 actionCreo = creo->getAction();
+
+		if (actionCreo == action) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 actionCreo = creo->getAction();
 		addBar(3, actionCreo, action);
 		creo->setAction(actionCreo);
 	}
 
 	void updateMaxActionBar(uint32 action) {
+		uint32 actionCreoMax = creo->getActionMax();
+
+		if (actionCreoMax == action) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 actionCreoMax = creo->getActionMax();
 		addBar(3, actionCreoMax, action);
 		creo->setActionMax(actionCreoMax);
 	}
 
 	void updateQuicknessBar(uint32 quickness) {
+		uint32 quicknessCreo = creo->getQuickness();
+
+		if (quicknessCreo == quickness) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 quicknessCreo = creo->getQuickness();
 		addBar(4, quicknessCreo, quickness);
 		creo->setQuickness(quicknessCreo);
 	}
 
 	void updateMaxQuicknessBar(uint32 quickness) {
+		uint32 quicknessCreoMax = creo->getQuicknessMax();
+
+		if (quicknessCreoMax == quickness) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 quicknessCreoMax = creo->getQuicknessMax();
 		addBar(4, quicknessCreoMax, quickness);
 		creo->setQuicknessMax(quicknessCreoMax);
 	}
 
 	void updateStaminaBar(uint32 stamina) {
+		uint32 staminaCreo = creo->getStamina();
+
+		if (staminaCreo == stamina) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 staminaCreo = creo->getStamina();
 		addBar(5, staminaCreo, stamina);
 		creo->setStamina(staminaCreo);
 	}
 
 	void updateMaxStaminaBar(uint32 stamina) {
+		uint32 staminaCreoMax = creo->getStaminaMax();
+
+		if (staminaCreoMax == stamina) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 staminaCreoMax = creo->getStaminaMax();
 		addBar(5, staminaCreoMax, stamina);
 		creo->setStaminaMax(staminaCreoMax);
 	}
 
 	void updateMindBar(uint32 mind) {
+		uint32 mindCreo = creo->getMind();
+
+		if (mindCreo == mind) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 mindCreo = creo->getMind();
 		addBar(6, mindCreo, mind);
 		creo->setMind(mindCreo);
 	}
 
 	void updateMaxMindBar(uint32 mind) {
+		uint32 mindCreoMax = creo->getMindMax();
+
+		if (mindCreoMax == mind) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 mindCreoMax = creo->getMindMax();
 		addBar(6, mindCreoMax, mind);
 		creo->setMindMax(mindCreoMax);
 	}
 
 	void updateFocusBar(uint32 focus) {
+		uint32 focusCreo = creo->getFocus();
+
+		if (focusCreo == focus) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 focusCreo = creo->getFocus();
 		addBar(7, focusCreo, focus);
 		creo->setFocus(focusCreo);
 	}
 
 	void updateMaxFocusBar(uint32 focus) {
+		uint32 focusCreoMax = creo->getFocusMax();
+
+		if (focusCreoMax == focus) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 focusCreoMax = creo->getFocusMax();
 		addBar(7, focusCreoMax, focus);
 		creo->setFocusMax(focusCreoMax);
 	}
 
 	void updateWillpowerBar(uint32 willpower) {
+		uint32 willpowerCreo = creo->getWillpower();
+
+		if (willpowerCreo == willpower) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 willpowerCreo = creo->getWillpower();
 		addBar(8, willpowerCreo, willpower);
 		creo->setWillpower(willpowerCreo);
 	}
 
 	void updateMaxWillpowerBar(uint32 willpower) {
+		uint32 willpowerCreoMax = creo->getWillpowerMax();
+
+		if (willpowerCreoMax == willpower) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
 		startList(1, updatecount);
 
-		uint32 willpowerCreoMax = creo->getWillpowerMax();
 		addBar(8, willpowerCreoMax, willpower);
 		creo->setWillpowerMax(willpowerCreoMax);
 	}
 
 	void changeHealthBar(int32 health) {
+		if (health == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
@@ -449,6 +518,11 @@ public:
 	}
 
 	void changeMaxHealthBar(int32 health) {
+		if (health == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
@@ -460,6 +534,11 @@ public:
 	}
 
 	void changeStrengthBar(int32 strength) {
+		if (strength == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
@@ -471,6 +550,11 @@ public:
 	}
 
 	void changeMaxStrengthBar(int32 strength) {
+		if (strength == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
@@ -482,6 +566,11 @@ public:
 	}
 
 	void changeConstitutionBar(int32 constitution) {
+		if (constitution == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
@@ -493,6 +582,11 @@ public:
 	}
 
 	void changeMaxConstitutionBar(int32 constitution) {
+		if (constitution == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
@@ -504,6 +598,11 @@ public:
 	}
 
 	void changeActionBar(int32 action) {
+		if (action == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
@@ -515,6 +614,11 @@ public:
 	}
 
 	void changeMaxActionBar(int32 action) {
+		if (action == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
@@ -526,6 +630,11 @@ public:
 	}
 
 	void changeQuicknessBar(int32 quickness) {
+		if (quickness == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
@@ -537,6 +646,11 @@ public:
 	}
 
 	void changeMaxQuicknessBar(int32 quickness) {
+		if (quickness == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
@@ -548,6 +662,11 @@ public:
 	}
 
 	void changeStaminaBar(int32 stamina) {
+		if (stamina == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
@@ -559,6 +678,11 @@ public:
 	}
 
 	void changeMaxStaminaBar(int32 stamina) {
+		if (stamina == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
@@ -570,6 +694,11 @@ public:
 	}
 
 	void changeMindBar(int32 mind) {
+		if (mind == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
@@ -581,6 +710,11 @@ public:
 	}
 
 	void changeMaxMindBar(int32 mind) {
+		if (mind == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
@@ -592,6 +726,11 @@ public:
 	}
 
 	void changeFocusBar(int32 focus) {
+		if (focus == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
@@ -603,6 +742,11 @@ public:
 	}
 
 	void changeMaxFocusBar(int32 focus) {
+		if (focus == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);
@@ -614,6 +758,11 @@ public:
 	}
 
 	void changeWillpowerBar(int32 willpower) {
+		if (willpower == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0D);
 
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
@@ -625,6 +774,11 @@ public:
 	}
 
 	void changeMaxWillpowerBar(int32 willpower) {
+		if (willpower == 0) {
+			creo->error("update creo delta6 bar error");
+			StackTrace::printStackTrace();
+		}
+
 		startUpdate(0x0E);
 
 		uint32 updatecount = creo->getNewHAMMaxUpdateCounter(1);

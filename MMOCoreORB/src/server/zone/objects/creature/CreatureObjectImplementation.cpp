@@ -1224,7 +1224,6 @@ bool CreatureObjectImplementation::changeConstitutionWoundsBar(int32 wounds, boo
 }
 
 bool CreatureObjectImplementation::changeActionWoundsBar(int32 wounds, bool forcedChange) {
-
 	if (wounds < 0 && -wounds > getActionWounds())
 		wounds = -1 * getActionWounds();
 
@@ -1352,6 +1351,9 @@ bool CreatureObjectImplementation::changeHealthBar(int32 hp, bool forcedChange) 
 }
 
 void CreatureObjectImplementation::changeMaxHealthBar(int32 hp, bool updateClient) {
+	if (hp == 0)
+		return;
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->changeMaxHealthBar(hp);
@@ -1386,6 +1388,9 @@ bool CreatureObjectImplementation::changeStrengthBar(int32 st, bool forcedChange
 }
 
 void CreatureObjectImplementation::changeMaxStrengthBar(int32 st, bool updateClient) {
+	if (st == 0)
+		return;
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->changeMaxStrengthBar(st);
@@ -1403,6 +1408,9 @@ void CreatureObjectImplementation::changeMaxStrengthBar(int32 st, bool updateCli
 }
 
 bool CreatureObjectImplementation::changeConstitutionBar(int32 cs, bool forcedChange) {
+	if (cs == 0)
+		return true;
+
 	int32 newConstitution = constitution + cs;
 
 	if (newConstitution <= 0) {
@@ -1419,6 +1427,9 @@ bool CreatureObjectImplementation::changeConstitutionBar(int32 cs, bool forcedCh
 }
 
 void CreatureObjectImplementation::changeMaxConstitutionBar(int32 cs, bool updateClient) {
+	if (cs == 0)
+		return;
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->changeMaxConstitutionBar(cs);
@@ -1436,6 +1447,9 @@ void CreatureObjectImplementation::changeMaxConstitutionBar(int32 cs, bool updat
 }
 
 bool CreatureObjectImplementation::changeActionBar(int32 ap, bool forcedChange) {
+	if (ap == 0)
+		return true;
+
 	int32 newAction = action + ap;
 
 	if (newAction <= 0) {
@@ -1453,6 +1467,9 @@ bool CreatureObjectImplementation::changeActionBar(int32 ap, bool forcedChange) 
 }
 
 void CreatureObjectImplementation::changeMaxActionBar(int32 ap, bool updateClient) {
+	if (ap == 0)
+		return;
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->changeMaxActionBar(ap);
@@ -1472,6 +1489,9 @@ void CreatureObjectImplementation::changeMaxActionBar(int32 ap, bool updateClien
 }
 
 bool CreatureObjectImplementation::changeQuicknessBar(int32 qc, bool forcedChange) {
+	if (qc == 0)
+		return true;
+
 	int32 newQuickness = quickness + qc;
 
 	if (newQuickness <= 0) {
@@ -1488,6 +1508,9 @@ bool CreatureObjectImplementation::changeQuicknessBar(int32 qc, bool forcedChang
 }
 
 void CreatureObjectImplementation::changeMaxQuicknessBar(int32 qc, bool updateClient) {
+	if (qc == 0)
+		return;
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->changeMaxQuicknessBar(qc);
@@ -1505,6 +1528,9 @@ void CreatureObjectImplementation::changeMaxQuicknessBar(int32 qc, bool updateCl
 }
 
 bool CreatureObjectImplementation::changeStaminaBar(int32 st, bool forcedChange) {
+	if (st == 0)
+		return true;
+
 	int32 newStamina = stamina + st;
 
 	if (newStamina <= 0) {
@@ -1521,6 +1547,9 @@ bool CreatureObjectImplementation::changeStaminaBar(int32 st, bool forcedChange)
 }
 
 void CreatureObjectImplementation::changeMaxStaminaBar(int32 st, bool updateClient) {
+	if (st == 0)
+		return;
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->changeMaxStaminaBar(st);
@@ -1538,6 +1567,9 @@ void CreatureObjectImplementation::changeMaxStaminaBar(int32 st, bool updateClie
 }
 
 bool CreatureObjectImplementation::changeMindBar(int32 mp, bool forcedChange) {
+	if (mp == 0)
+		return true;
+
 	int32 newMind = mind + mp;
 
 	if (newMind <= 0) {
@@ -1555,6 +1587,9 @@ bool CreatureObjectImplementation::changeMindBar(int32 mp, bool forcedChange) {
 }
 
 void CreatureObjectImplementation::changeMaxMindBar(int32 mp, bool updateClient) {
+	if (mp == 0)
+		return;
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->changeMaxMindBar(mp);
@@ -1574,6 +1609,9 @@ void CreatureObjectImplementation::changeMaxMindBar(int32 mp, bool updateClient)
 }
 
 bool CreatureObjectImplementation::changeFocusBar(int32 fc, bool forcedChange) {
+	if (fc == 0)
+		return true;
+
 	int32 newFocus = focus + fc;
 
 	if (newFocus <= 0) {
@@ -1590,6 +1628,9 @@ bool CreatureObjectImplementation::changeFocusBar(int32 fc, bool forcedChange) {
 }
 
 void CreatureObjectImplementation::changeMaxFocusBar(int32 fc, bool updateClient) {
+	if (fc == 0)
+		return;
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->changeMaxFocusBar(fc);
@@ -1607,6 +1648,9 @@ void CreatureObjectImplementation::changeMaxFocusBar(int32 fc, bool updateClient
 }
 
 bool CreatureObjectImplementation::changeWillpowerBar(int32 wl, bool forcedChange) {
+	if (wl == 0)
+		return true;
+
 	int32 newWillpower = willpower + wl;
 
 	if (newWillpower <= 0) {
@@ -1623,6 +1667,9 @@ bool CreatureObjectImplementation::changeWillpowerBar(int32 wl, bool forcedChang
 }
 
 void CreatureObjectImplementation::changeMaxWillpowerBar(int32 wl, bool updateClient) {
+	if (wl == 0)
+		return;
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		dcreo6->changeMaxWillpowerBar(wl);
@@ -2095,8 +2142,6 @@ void CreatureObjectImplementation::setMaxActionBar(uint32 ap, bool updateClient)
 void CreatureObjectImplementation::setActionWoundsBar(uint32 wounds) {
 	if (wounds == getActionWounds())
 		return;
-
-
 
 	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
 	dcreo3->updateActionWoundsBar(wounds);
@@ -4385,12 +4430,8 @@ bool CreatureObjectImplementation::verifyBankCredits(uint32 creditsToRemove) {
 }
 
 void CreatureObjectImplementation::updateHAMBars() {
-	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
-	delta->updateMaximumHAMBars();
-	delta->updateHAMBars();
-	delta->close();
-
-	broadcastMessage(delta);
+	CreatureObjectMessage6* msg = new CreatureObjectMessage6(_this);
+	broadcastMessage(msg);
 }
 
 void CreatureObjectImplementation::updateBaseStats() {
@@ -4477,6 +4518,14 @@ void CreatureObjectImplementation::applyBuff(Buff *buff) {
 
 	buff->activateBuff(_this, server);
 
+	CreatureObjectMessage3* msg1 = new CreatureObjectMessage3(_this);
+	CreatureObjectMessage6* msg2 = new CreatureObjectMessage6(_this);
+
+	Vector<BaseMessage*> msgs;
+	msgs.add(msg1);
+	msgs.add(msg2);
+	broadcastMessages(msgs);
+
 	activateRecovery();
 }
 
@@ -4500,38 +4549,8 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateClient) {
 	}
 
 	/*
-	CreatureObjectDeltaMessage6* delta = new CreatureObjectDeltaMessage6(_this);
-
-	delta->updateHealthBar(health);
-	delta->updateMaxHealthBar(healthMax);
-
-	delta->updateStrengthBar(getStrength());
-	delta->updateMaxStrengthBar(getStrengthMax());
-
-	delta->updateConstitutionBar(getConstitution());
-	delta->updateMaxConstitutionBar(getConstitutionMax());
-
-	delta->updateActionBar(action);
-	delta->updateMaxActionBar(actionMax);
-
-	delta->updateQuicknessBar(getQuickness());
-	delta->updateMaxQuicknessBar(getQuicknessMax());
-
-	delta->updateStaminaBar(getStamina());
-	delta->updateMaxStaminaBar(getStaminaMax());
-
-	delta->updateMindBar(mind);
-	delta->updateMaxMindBar(mindMax);
-
-	delta->updateFocusBar(getFocus());
-	delta->updateMaxFocusBar(getFocusMax());
-
-	delta->updateWillpowerBar(getWillpower());
-	delta->updateMaxWillpowerBar(getWillpowerMax());
-
-	delta->close();
-
-	broadcastMessage(delta);
+	CreatureObjectMessage6* msg = new CreatureObjectDeltaMessage6(_this);
+	broadcastMessage(msg);
 	*/
 }
 
