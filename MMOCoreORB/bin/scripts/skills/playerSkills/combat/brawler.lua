@@ -988,8 +988,7 @@ CmbtEnhaceSkill = {
 	animation = "warcry",
 
 	range = 15,
-	areaRange = 10,
-
+	coneAngle = 30,
 	duration = 30.0,
 	
 	speedRatio = 1.0,

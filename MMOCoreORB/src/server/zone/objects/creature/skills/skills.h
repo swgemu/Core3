@@ -63,6 +63,8 @@ which carries forward this exception.
 #include "target/DiagnoseTargetSkill.h"
 #include "target/ReviveTargetSkill.h"
 #include "target/FirstAidTargetSkill.h"
+#include "target/QuickHealTargetSkill.h"
+#include "target/MindHealTargetSkill.h"
 #include "target/TendHealTargetSkill.h"
 
 #include "self/HealSelfSkill.h"

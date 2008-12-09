@@ -3661,6 +3661,7 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 			msg << "You stop watching " << entName << ".";
 
 		sendSystemMessage(msg.toString());
+		sendSystemMessage("healing", "performance_enhance_dance_mind_d");
 	}
 
 	activateEntertainerBuff(PerformanceType::DANCE);
@@ -3720,6 +3721,8 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 			msg << "You stop listening to " << entName << ".";
 
 		sendSystemMessage(msg.toString());
+		sendSystemMessage("healing", "performance_enhance_music_focus_d");
+		sendSystemMessage("healing", "performance_enhance_music_willpower_d");
 	}
 
 	//TODO: Activate Buff

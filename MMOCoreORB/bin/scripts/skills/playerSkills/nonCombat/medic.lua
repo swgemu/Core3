@@ -61,7 +61,6 @@ HealSelfSkill = {
  
 AddHealWoundTargetSkill(HealSelfSkill);
  
- 
 FirstAidSkill = {
 	skillname = "firstaid",
 	effect = "clienteffect/healing_healdamage.cef",
@@ -92,6 +91,20 @@ TendDamageSkill = {
  
 AddTendHealTargetSkill(TendDamageSkill);
  
+QuickHealSkill = {
+	skillname = "quickheal",
+	effect = "clienteffect/healing_healdamage.cef",
+	animation = "heal_self",
+ 
+	mindCost = 175,
+	mindWoundCost = 10,
+ 
+	speed = 3.5,
+	range = 6.0
+}
+ 
+AddQuickHealTargetSkill(QuickHealSkill);
+
 TendWoundSkill = {
 	skillname = "tendwound",
 	effect = "clienteffect/healing_healwound.cef",

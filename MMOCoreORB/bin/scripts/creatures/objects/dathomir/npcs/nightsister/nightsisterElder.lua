@@ -58,18 +58,18 @@ nightsisterElder = Creature:new {
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 392000,
-	healthMin = 321000,
+	healthMax = 400000,
+	healthMin = 351000,
 	strength = 30000,
 	constitution = 30000,
 
-	actionMax = 392000,
-	actionMin = 321000,
+	actionMax = 400000,
+	actionMin = 351000,
 	quickness = 30000,
 	stamina = 30000,
 
-	mindMax = 392000,
-	mindMin = 321000,
+	mindMax = 400000,
+	mindMin = 351000,
 	focus = 30000,
 	willpower = 30000,
 

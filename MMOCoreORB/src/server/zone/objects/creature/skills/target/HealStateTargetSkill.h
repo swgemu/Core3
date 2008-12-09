@@ -83,8 +83,13 @@ public:
 			return false;
 		}
 
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot Heal States while prone.");
+			return false;
+		}
+
 		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot do that while Meditating.");
+			creature->sendSystemMessage("You cannot Heal States while Meditating.");
 			return false;
 		}
 
