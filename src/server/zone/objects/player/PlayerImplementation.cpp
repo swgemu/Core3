@@ -2611,6 +2611,7 @@ void PlayerImplementation::doCenterOfBeing() {
 	//defenseBonus += efficacy;
 	centeredBonus = efficacy;
 
+	sendSystemMessage("combat_effects", "center_start");
 	showFlyText("combat_effects", "center_start_fly", 0, 255, 0);
 
 	server->addEvent(centerOfBeingEvent, duration * 1000);
@@ -2627,6 +2628,7 @@ void PlayerImplementation::removeCenterOfBeing() {
 	//defenseBonus -= centeredBonus;
 	centeredBonus = 0;
 
+	sendSystemMessage("combat_effects", "center_stop");
 	showFlyText("combat_effects", "center_stop_fly", 255, 0, 0);
 	centered = false;
 }

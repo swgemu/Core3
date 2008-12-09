@@ -42,25 +42,35 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FIRSTAIDTARGETSKILL_H_
-#define FIRSTAIDTARGETSKILL_H_
+#ifndef QUICKHEALTARGETSKILL_H_
+#define QUICKHEALTARGETSKILL_H_
 
 #include "../TargetSkill.h"
 
 #include "../../../../managers/player/PlayerManager.h"
 
-class FirstAidTargetSkill : public TargetSkill {
+class QuickHealTargetSkill : public TargetSkill {
 protected:
 	String effectName;
-
 	int mindCost;
+	int mindWoundCost;	
+
+	int healthHealed;
+	int actionHealed;
+	int mindHealed;
+	
 	float speed;
 
 public:
-	FirstAidTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
+	QuickHealTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 		mindCost = 0;
-
+		mindWoundCost = 0;
+		
+		healthHealed = 0;
+		actionHealed = 0;
+		mindHealed = 0;
+		
 		speed = 0.0f;
 	}
 
@@ -76,7 +86,7 @@ public:
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
-			creature->sendSystemMessage("healing_response", "healing_response_79"); //Target must be a player or a creature pet in order to apply first aid.
+			creature->sendSystemMessage("healing_response", "healing_response_99"); //Target must be a player or a creature pet in order to quickheal .
 			return 0;
 		}
 
@@ -86,12 +96,12 @@ public:
 			creatureTarget = creature;	//If our target is dead, riding a creature, or mounted, then we make ourself target.
 
 		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot apply First Aid while prone.");
-			return 0;
+			creature->sendSystemMessage("You cannot Quick Heal while prone.");
+			return 0;		
 		}
-		
+
 		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot apply First Aid while Meditating.");
+			creature->sendSystemMessage("You cannot Quick Heal while meditating.");
 			return 0;
 		}
 
@@ -115,35 +125,65 @@ public:
 			return 0;
 		}
 
-		if (creatureTarget->isBleeding()) {
-			if (creatureTarget->clearState(CreatureState::BLEEDING)) {
-				creatureTarget->updateStates();
-
-				if (creatureTarget != creature) {
-					StringBuffer message;
-					message << "You apply first aid to " << creatureTarget->getCharacterName().toString() << ".";
-					creature->sendSystemMessage(message.toString());
-				} else {
-					creature->sendSystemMessage("healing_response","first_aid_self"); //You apply first aid to yourself.
-				}
-
-				creature->changeMindBar(mindCost);
-
-				doAnimations(creature, creatureTarget);
-			} else {
-				creature->error("Failed clearing bleeding state on player for unknown reason.");
+		
+		if (!creatureTarget->hasHealthDamage() && !creatureTarget->hasActionDamage()) {
+				if (creatureTarget == creature)
+					creature->sendSystemMessage("healing_response", "healing_response_61"); //You have no damage to heal.
+				else
+					creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
+				return 0;
 			}
-		} else {
-			if (creatureTarget != creature) {
-				creature->sendSystemMessage("healing_response", "healing_response_80", creatureTarget->getObjectID()); //%NT is not bleeding.
-			} else {
-				creature->sendSystemMessage("healing_response", "healing_response_78"); //You are not bleeding.
-			}
-		}
+
+			int healPower = (int) round(150 + System::random(600));
+
+			int healedHealth = creature->healDamage(creatureTarget, healPower, CreatureAttribute::HEALTH);
+			int healedAction = creature->healDamage(creatureTarget, healPower, CreatureAttribute::ACTION);
+
+			if (creature->isPlayer())
+				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
+
+			sendHealMessage(creature, creatureTarget, healedHealth, healedAction);
+			
+		creature->changeMindBar(-mindCost);
+		creature->changeFocusWoundsBar(mindWoundCost);
+		creature->changeWillpowerWoundsBar(mindWoundCost);
+		creature->changeShockWounds(2);
+
+		doAnimations(creature, creatureTarget);
 
 		return 0;
 	}
+	
+	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int healthDamage, int actionDamage) {
+		Player* player = (Player*) creature;
+		Player* playerTarget = (Player*) creatureTarget;
 
+		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
+
+		if (healthDamage > 0 && actionDamage > 0) {
+			msgBody << healthDamage << " health and " << actionDamage << " action";
+		} else if (healthDamage > 0) {
+			msgBody << healthDamage << " health";
+		} else if (actionDamage > 0) {
+			msgBody << actionDamage << " action";
+		} else {
+			return; //No damage to heal.
+		}
+
+		msgTail << " damage.";
+
+		if (creature == creatureTarget) {
+			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
+		} else {
+			msgPlayer << "You heal " << playerTarget->getCharacterName().toString() << " for " << msgBody.toString() << msgTail.toString();
+			msgTarget << player->getCharacterName().toString() << " heals you for " << msgBody.toString() << msgTail.toString();
+
+			player->sendSystemMessage(msgPlayer.toString());
+			playerTarget->sendSystemMessage(msgTarget.toString());
+		}
+	}
+	
 	float calculateSpeed(CreatureObject* creature) {
 		return speed;
 	}
@@ -160,10 +200,25 @@ public:
 		mindCost = cost;
 	}
 
+	void setMindWoundCost(int cost) {
+		mindWoundCost = cost;
+	}
+
+	void setHealthHealed(int health) {
+		healthHealed = health;
+	}
+
+	void setActionHealed(int action) {
+		actionHealed = action;
+	}
+
+	void setMindHealed(int mind) {
+		mindHealed = mind;
+	}
+
 	void setSpeed(float spd) {
 		speed = spd;
 	}
-
 };
 
-#endif /*HEALSTATETARGETSKILL_H_*/
+#endif /*QUICKHEALTARGETSKILL_H_*/

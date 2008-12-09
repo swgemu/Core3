@@ -84,6 +84,12 @@ public:
 			return false;
 		}
 
+		
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot do that while prone.");
+			return false;
+		}
+
 		if (creature->isMeditating()) {
 			creature->sendSystemMessage("You cannot do that while meditating.");
 			return false;

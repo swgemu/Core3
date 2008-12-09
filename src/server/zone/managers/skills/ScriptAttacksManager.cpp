@@ -85,6 +85,8 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddReviveTargetSkill", AddReviveTargetSkill);
 	lua_register(getLuaState(), "AddFirstAidTargetSkill", AddFirstAidTargetSkill);
 	lua_register(getLuaState(), "AddTendHealTargetSkill", AddTendHealTargetSkill);
+	lua_register(getLuaState(), "AddMindHealTargetSkill", AddMindHealTargetSkill);
+	lua_register(getLuaState(), "AddQuickHealTargetSkill", AddQuickHealTargetSkill);
 	lua_register(getLuaState(), "AddDeBuffAttackTargetSkill", AddDeBuffAttackTargetSkill);
 	lua_register(getLuaState(), "AddEnhanceSelfSkill", AddEnhanceSelfSkill);
 	lua_register(getLuaState(), "AddDotPoolAttackTargetSkill", AddDotPoolAttackTargetSkill);
@@ -962,6 +964,74 @@ int ScriptAttacksManager::AddTendHealTargetSkill(lua_State* L) {
 
 	heal->setTendDamage(tendDamage);
 	heal->setTendWound(tendWound);
+
+	CombatActions->put(heal);
+	return 0;
+}
+
+int ScriptAttacksManager::AddQuickHealTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	QuickHealTargetSkill* heal;
+
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
+
+	int mindCost = skill.getIntField("mindCost");
+	int mindWoundCost = skill.getIntField("mindWoundCost");
+	float range = skill.getFloatField("range");
+	float speed = skill.getFloatField("speed");
+
+	int healthHealed = skill.getIntField("healthHealed");
+	int actionHealed = skill.getIntField("actionHealed");
+	int mindHealed = skill.getIntField("mindHealed");
+
+	heal = new QuickHealTargetSkill(skillname, effect.toCharArray(), server);
+	heal->setSecondaryAnim(animation);
+	heal->setMindCost(mindCost);
+	heal->setMindWoundCost(mindWoundCost);
+	heal->setRange(range);
+	heal->setSpeed(speed);
+
+	heal->setHealthHealed(healthHealed);
+	heal->setActionHealed(actionHealed);
+	heal->setMindHealed(mindHealed);
+
+	CombatActions->put(heal);
+	return 0;
+}
+
+int ScriptAttacksManager::AddMindHealTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	MindHealTargetSkill* heal;
+
+	String skillname = skill.getStringField("skillname");
+	String animation = skill.getStringField("animation");
+	String effect = skill.getStringField("effect");
+
+	int mindCost = skill.getIntField("mindCost");
+	int mindWoundCost = skill.getIntField("mindWoundCost");
+	float range = skill.getFloatField("range");
+	float speed = skill.getFloatField("speed");
+
+	int mindHealed = skill.getIntField("mindHealed");
+
+	heal = new MindHealTargetSkill(skillname, effect.toCharArray(), server);
+	heal->setSecondaryAnim(animation);
+	heal->setMindCost(mindCost);
+	heal->setMindWoundCost(mindWoundCost);
+	heal->setRange(range);
+	heal->setSpeed(speed);
+
+	heal->setMindHealed(mindHealed);
 
 	CombatActions->put(heal);
 	return 0;

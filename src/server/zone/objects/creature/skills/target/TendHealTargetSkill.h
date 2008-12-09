@@ -110,6 +110,11 @@ public:
 			creatureTarget = creature;
 
 
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot do that while prone.");
+			return 0;
+		}
+
 		if (creature->isMeditating()) {
 			creature->sendSystemMessage("You cannot do that while Meditating.");
 			return 0;
@@ -193,9 +198,9 @@ public:
 		}
 
 		creature->changeMindBar(-mindCost);
-
 		creature->changeFocusWoundsBar(mindWoundCost);
 		creature->changeWillpowerWoundsBar(mindWoundCost);
+		creature->changeShockWounds(2);
 
 		if (creatureTarget != creature)
 			awardXp(creature, "medical", 100);

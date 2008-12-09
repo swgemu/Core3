@@ -42,25 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef FIRSTAIDTARGETSKILL_H_
-#define FIRSTAIDTARGETSKILL_H_
+#ifndef MINDHEALTARGETSKILL_H_
+#define MINDHEALTARGETSKILL_H_
 
 #include "../TargetSkill.h"
 
 #include "../../../../managers/player/PlayerManager.h"
 
-class FirstAidTargetSkill : public TargetSkill {
+class MindHealTargetSkill : public TargetSkill {
 protected:
 	String effectName;
-
 	int mindCost;
+	int mindWoundCost;	
+
+	int mindHealed;
+	
 	float speed;
 
 public:
-	FirstAidTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
+	MindHealTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 		mindCost = 0;
-
+		mindWoundCost = 0;
+		
+		mindHealed = 0;
+		
 		speed = 0.0f;
 	}
 
@@ -72,26 +78,31 @@ public:
 			creature->doAnimation("heal_self");
 		else
 			creature->doAnimation("heal_other");
-	}
+	}	
 
 	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
-		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
-			creature->sendSystemMessage("healing_response", "healing_response_79"); //Target must be a player or a creature pet in order to apply first aid.
+		CreatureObject* creatureTarget;
+		Player* player = (Player*) creature;
+
+		if (target->isPlayer() || target->isNonPlayerCreature()) {
+			creatureTarget = (CreatureObject*) target;
+		} else {
+			creature->sendSystemMessage("healing", "heal_mind_invalid_target");
 			return 0;
 		}
 
-		CreatureObject* creatureTarget = (CreatureObject*) target;
-
-		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
-			creatureTarget = creature;	//If our target is dead, riding a creature, or mounted, then we make ourself target.
+		if (creatureTarget == creature) {
+			creature->sendSystemMessage("healing", "no_heal_mind_self");
+			return 0;
+		}
 
 		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot apply First Aid while prone.");
-			return 0;
+			creature->sendSystemMessage("You cannot Heal Mind while prone.");
+			return 0;		
 		}
-		
+
 		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot apply First Aid while Meditating.");
+			creature->sendSystemMessage("You cannot Heal Mind while Meditating.");
 			return 0;
 		}
 
@@ -105,6 +116,11 @@ public:
 			return 0;
 		}
 
+		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted()) {
+			creature->sendSystemMessage("You cannot Heal the Mind of your Target in their current state.");
+			return 0;
+		}
+
 		if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
 			creature->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
 			return 0;
@@ -113,37 +129,58 @@ public:
 		if (creature->getMind() < abs(mindCost)) {
 			creature->sendSystemMessage("healing_response", "not_enough_mind"); //You do not have enough mind to do that.
 			return 0;
-		}
+		}		
 
-		if (creatureTarget->isBleeding()) {
-			if (creatureTarget->clearState(CreatureState::BLEEDING)) {
-				creatureTarget->updateStates();
-
-				if (creatureTarget != creature) {
-					StringBuffer message;
-					message << "You apply first aid to " << creatureTarget->getCharacterName().toString() << ".";
-					creature->sendSystemMessage(message.toString());
-				} else {
-					creature->sendSystemMessage("healing_response","first_aid_self"); //You apply first aid to yourself.
-				}
-
-				creature->changeMindBar(mindCost);
-
-				doAnimations(creature, creatureTarget);
-			} else {
-				creature->error("Failed clearing bleeding state on player for unknown reason.");
+		if (!creatureTarget->hasMindDamage()) {
+				if (creatureTarget) 
+					creature->sendSystemMessage("healing", "no_mind_to_heal_target", creatureTarget->getObjectID()); //%NT has no mind to heal.
+				return 0;
 			}
-		} else {
-			if (creatureTarget != creature) {
-				creature->sendSystemMessage("healing_response", "healing_response_80", creatureTarget->getObjectID()); //%NT is not bleeding.
-			} else {
-				creature->sendSystemMessage("healing_response", "healing_response_78"); //You are not bleeding.
-			}
-		}
+		
+			int healPower = (int) round(150 + System::random(600));
+
+			int healedMind = creature->healDamage(creatureTarget, healPower, CreatureAttribute::MIND);
+
+			if (creature->isPlayer())
+				((Player*)creature)->sendBattleFatigueMessage(creatureTarget);
+		
+			sendHealMessage(creature, creatureTarget, healedMind);
+			
+		creature->changeMindBar(-mindCost);
+		creature->changeMindWoundsBar(mindWoundCost);
+		creature->changeFocusWoundsBar(mindWoundCost);
+		creature->changeWillpowerWoundsBar(mindWoundCost);
+		creature->changeShockWounds(25);
+
+		doAnimations(creature, creatureTarget);
 
 		return 0;
 	}
+	
+	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int mindDamage) {
+		
+		Player* player = (Player*) creature;
+		Player* playerTarget = (Player*) creatureTarget;
 
+		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
+
+		if (mindDamage > 0) {
+			msgBody << mindDamage << " mind";
+		} else {
+			return; //No damage to heal.
+		}
+
+		msgTail << " damage.";
+
+		if (creatureTarget) {
+			msgPlayer << "You heal " << playerTarget->getCharacterName().toString() << " for " << msgBody.toString() << msgTail.toString();
+			msgTarget << player->getCharacterName().toString() << " heals you for " << msgBody.toString() << msgTail.toString();
+
+			player->sendSystemMessage(msgPlayer.toString());
+			playerTarget->sendSystemMessage(msgTarget.toString());
+		}
+	}
+	
 	float calculateSpeed(CreatureObject* creature) {
 		return speed;
 	}
@@ -160,10 +197,17 @@ public:
 		mindCost = cost;
 	}
 
+	void setMindWoundCost(int cost) {
+		mindWoundCost = cost;
+	}
+
+	void setMindHealed(int mind) {
+		mindHealed = mind;
+	}
+
 	void setSpeed(float spd) {
 		speed = spd;
 	}
-
 };
 
-#endif /*HEALSTATETARGETSKILL_H_*/
+#endif /*MINDHEALTARGETSKILL_H_*/
