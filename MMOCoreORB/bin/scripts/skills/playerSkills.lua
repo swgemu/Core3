@@ -47,7 +47,7 @@ RunSkillsFile("playerSkills/defaultSkill.lua")
 RunSkillsFile("playerSkills/passiveSkills.lua")
 
 --Combat
-RunSkillsFile("playerSkills/combat/combatmedic.lua")
+RunSkillsFile("playerSkills/combat/combatMedic.lua")
 RunSkillsFile("playerSkills/combat/brawler.lua")
 RunSkillsFile("playerSkills/combat/bountyhunter.lua")
 RunSkillsFile("playerSkills/combat/carbineer.lua")
