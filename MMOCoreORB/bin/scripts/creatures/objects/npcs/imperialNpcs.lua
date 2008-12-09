@@ -44,6 +44,7 @@
 --Imperial
 RunCreatureFile("objects/npcs/imperial/imperialCivilPatrolCaptain.lua")
 RunCreatureFile("objects/npcs/imperial/imperialColonel.lua")
+RunCreatureFile("objects/npcs/imperial/imperialCorporal.lua")
 RunCreatureFile("objects/npcs/imperial/imperialDarkTrooper.lua")
 RunCreatureFile("objects/npcs/imperial/imperialFirstLieutenant.lua")
 RunCreatureFile("objects/npcs/imperial/imperialGeneral.lua")

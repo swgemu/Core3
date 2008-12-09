@@ -43,13 +43,14 @@
 corsecComissioner = Creature:new {
 	objectName = "corsecComissioner",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Corsec",
+	faction = "corsec", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "corsec_comissioner",
 	stfName = "mob/creature_names", 
 	objectCRC = 16556953, 
-	socialGroup = "Corsec",
+	socialGroup = "corsec",
 	
 
 	level = 30,

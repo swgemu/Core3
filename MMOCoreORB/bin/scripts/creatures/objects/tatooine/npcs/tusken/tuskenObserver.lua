@@ -44,13 +44,14 @@
 tuskenObserver = Creature:new {
 	objectName = "tuskenObserver",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Tusken Raider",
+	faction = "tusken_raider", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "tusken_observer",
 	stfName = "mob/creature_names", 
 	objectCRC = 3780705985, 
-	socialGroup = "Tusken Raider",
+	socialGroup = "tusken_raider",
 	 
 
 	level = 227,

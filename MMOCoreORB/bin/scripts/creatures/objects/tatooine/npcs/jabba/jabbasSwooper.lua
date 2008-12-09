@@ -43,13 +43,14 @@
 jabbasSwooper = Creature:new {
 	objectName = "jabbasSwooper",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Jabba",
+	faction = "jabba", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "jabbas_swooper",
 	stfName = "mob/creature_names", 
 	objectCRC = 1282805440, 
-	socialGroup = "Jabba",
+	socialGroup = "jabba",
 	
 
 	level = 28,

@@ -43,13 +43,14 @@
 wastelandMarauder = Creature:new {
 	objectName = "wastelandMarauder",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Marauder",
+	faction = "marauder", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "wasteland_marauder",
 	stfName = "mob/creature_names", 
 	objectCRC = 4103644702, 
-	socialGroup = "Marauder",
+	socialGroup = "marauder",
 	
 
 	level = 55,

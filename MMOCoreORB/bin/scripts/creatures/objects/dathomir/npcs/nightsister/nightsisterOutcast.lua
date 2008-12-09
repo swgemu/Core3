@@ -43,13 +43,14 @@
 nightsisterOutcast = Creature:new {
 	objectName = "nightsisterOutcast",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Nightsister",
+	faction = "nightsister", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "nightsister_outcast",
 	stfName = "mob/creature_names", 
 	objectCRC = 2430135288, 
-	socialGroup = "Nightsister",
+	socialGroup = "nightsister",
 	
 
 	level = 81,

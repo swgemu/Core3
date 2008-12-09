@@ -43,13 +43,14 @@
 axkvaMin = Creature:new {
 	objectName = "axkvaMin",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Nightsister",
+	faction = "nightsister", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "axkva_min",
 	stfName = "mob/creature_names", 
 	objectCRC = 2853795094, 
-	socialGroup = "Nightsister",
+	socialGroup = "nightsister",
 	
 
 	level = 302,

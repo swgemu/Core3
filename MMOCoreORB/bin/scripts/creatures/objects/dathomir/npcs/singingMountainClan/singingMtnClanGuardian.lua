@@ -43,13 +43,14 @@
 singingMtnClanGuardian = Creature:new {
 	objectName = "singingMtnClanGuardian",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Mtn. Clan",
+	faction = "mtn_clan", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "singing_mtn_clan_guardian",
 	stfName = "mob/creature_names", 
 	objectCRC = 3845924648, 
-	socialGroup = "Mtn. Clan",
+	socialGroup = "mtn_clan",
 	
 
 	level = 156,

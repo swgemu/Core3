@@ -43,13 +43,14 @@
 jantaClanLeader = Creature:new {
 	objectName = "jantaClanLeader",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Janta Tnbe",
+	faction = "janta_tribe", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "janta_clan_leader",
 	stfName = "mob/creature_names", 
 	objectCRC = 4083847450, 
-	socialGroup = "Janta Tnbe",
+	socialGroup = "janta_tribe",
 	
 
 	level = 75,

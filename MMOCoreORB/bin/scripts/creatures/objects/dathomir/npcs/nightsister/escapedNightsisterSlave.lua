@@ -43,12 +43,13 @@
 escapedNightsisterSlave = Creature:new {
       objectName = "escapedNightsisterSlave",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Escaped Slave",
+      faction = "nightsister", 
+	factionPoints = 20,
       gender = "",
 
       name = "Escaped Nightsister slave",
       objectCRC = 361612105, 
-      socialGroup = "Escaped Slave",
+      socialGroup = "nightsister",
       named = FALSE, 
 
       level = 28,

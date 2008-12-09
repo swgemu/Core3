@@ -43,13 +43,14 @@
 afarathuCultRuffian = Creature:new {
 	objectName = "afarathuCultRuffian",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Afarathu",
+	faction = "afarathu", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "afarathu_cult_ruffian",
 	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
-	socialGroup = "Afarathu",
+	socialGroup = "afarathu",
 	
 
 	level = 5,

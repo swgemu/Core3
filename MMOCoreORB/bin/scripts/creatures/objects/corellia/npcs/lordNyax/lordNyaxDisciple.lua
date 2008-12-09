@@ -43,13 +43,14 @@
 lordNyaxDisciple = Creature:new {
 	objectName = "lordNyaxDisciple",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Lord Nyax",
+	faction = "followers_of_lord_nyax", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "lord_nyax_disciple",
 	stfName = "mob/creature_names", 
 	objectCRC = 651266589, 
-	socialGroup = "Lord Nyax",
+	socialGroup = "followers_of_lord_nyax",
 	
 
 	level = 16,

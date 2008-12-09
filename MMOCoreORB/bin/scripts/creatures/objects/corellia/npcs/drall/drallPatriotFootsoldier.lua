@@ -43,13 +43,14 @@
 drallPatriotFootsoldier = Creature:new {
 	objectName = "drallPatriotFootsoldier",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Drall",
+	faction = "drall", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "drall_patriot_footsoldier",
 	stfName = "mob/creature_names", 
 	objectCRC = 3116494340, 
-	socialGroup = "Drall",
+	socialGroup = "drall",
 	
 
 	level = 13,

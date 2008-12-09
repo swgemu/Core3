@@ -43,12 +43,13 @@
 kungaClanPrimalist = Creature:new {
       objectName = "kungaClanPrimalist",  -- Lua Object Name
       creatureType = "NPC",
-      faction = "Kunga Tribe",
+      faction = "kunga_tribe", 
+	factionPoints = 20,
       gender = "",
 
       name = "Kunga clan primalist",
       objectCRC = 4186110670, 
-      socialGroup = "Kunga Tribe",
+      socialGroup = "kunga_tribe",
       named = FALSE, 
 
       level = 40,
