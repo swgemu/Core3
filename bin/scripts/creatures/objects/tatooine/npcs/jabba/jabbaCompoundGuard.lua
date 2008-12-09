@@ -43,13 +43,14 @@
 jabbaCompoundGuard = Creature:new {
 	objectName = "jabbaCompoundGuard",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Jabba",
+	faction = "jabba", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "jabba_compound_guard",
 	stfName = "mob/creature_names", 
 	objectCRC = 3315833874, 
-	socialGroup = "Jabba",
+	socialGroup = "jabba",
 	
 
 	level = 44,

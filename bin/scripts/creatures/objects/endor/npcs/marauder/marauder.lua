@@ -43,13 +43,14 @@
 marauder = Creature:new {
 	objectName = "marauder",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Marauder",
+	faction = "marauder", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "marauder",
 	stfName = "mob/creature_names", 
 	objectCRC = 2107662910, 
-	socialGroup = "Marauder",
+	socialGroup = "marauder",
 	
 
 	level = 44,

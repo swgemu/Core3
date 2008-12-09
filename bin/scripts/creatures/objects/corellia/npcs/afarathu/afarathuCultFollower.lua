@@ -43,13 +43,14 @@
 afarathuCultFollower = Creature:new {
 	objectName = "afarathuCultFollower",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Afarathu",
+	faction = "afarathu", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "afarathu_cult_follower",
 	stfName = "mob/creature_names", 
 	objectCRC = 1633608178, 
-	socialGroup = "Afarathu",
+	socialGroup = "afarathu",
 	
 
 	level = 5,

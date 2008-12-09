@@ -49,7 +49,7 @@ drallAbbot = Creature:new {
 	speciesName = "drall_abbot",
 	stfName = "mob/creature_names", 
 	objectCRC = 3116494340, 
-	socialGroup = "Drall O",
+	socialGroup = "drall",
 	
 
 	level = 15,

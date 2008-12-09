@@ -43,13 +43,14 @@
 korgaElder = Creature:new {
 	objectName = "korgaElder",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Korga Tribe",
+	faction = "korga_tribe", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "korga_elder",
 	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
-	socialGroup = "Korga Tribe",
+	socialGroup = "korga_tribe",
 	
 
 	level = 22,

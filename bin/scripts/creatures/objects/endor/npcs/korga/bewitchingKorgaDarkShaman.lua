@@ -43,13 +43,14 @@
 bewitchingKorgaDarkShaman = Creature:new {
 	objectName = "bewitchingKorgaDarkShaman",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Korga Tribe",
+	faction = "korga_tribe", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "bewitching_korga_dark_shaman",
 	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
-	socialGroup = "Korga Tribe",
+	socialGroup = "korga_tribe",
 	
 
 	level = 38,

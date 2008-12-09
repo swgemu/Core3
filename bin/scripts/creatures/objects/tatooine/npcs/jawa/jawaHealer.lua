@@ -43,13 +43,14 @@
 jawaHealer = Creature:new {
 	objectName = "jawaHealer",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Jawa",
+	faction = "jawa", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "jawa_healer",
 	stfName = "mob/creature_names", 
 	objectCRC = 3444186231, 
-	socialGroup = "Jawa",
+	socialGroup = "jawa",
 	
 
 	level = 10,

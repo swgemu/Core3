@@ -106,28 +106,6 @@ coronetNpc3 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc4 = Creature:new {
-	objectName = "coronetNpc4",
-	creatureType = NPC,
-
-	speciesName = "corellia_lieutenant_jasper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 152421728,
-	positionX = -69.16,
-	positionY = -4634.16,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.924626,
-	directionW = -0.380876,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 coronetNpc5 = Creature:new {
 	objectName = "coronetNpc5",
 	creatureType = NPC,
@@ -524,28 +502,6 @@ coronetNpc25 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc26 = Creature:new {
-	objectName = "coronetNpc26",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_squad_leader",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2493178409,
-	positionX = -175.938,
-	positionY = -4767.14,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.683939,
-	directionW = 0.729539,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 coronetNpc27 = Creature:new {
 	objectName = "coronetNpc27",
 	creatureType = NPC,
@@ -565,28 +521,6 @@ coronetNpc27 = Creature:new {
 	directionW = 0.729686,
 	randomMovement = 0,
 	mood = "npc_imperial",
-	cellID = 0
-}
-
-coronetNpc29 = Creature:new {
-	objectName = "coronetNpc29",
-	creatureType = NPC,
-
-	speciesName = "corellia_frye_troeman",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 694637565,
-	positionX = 14.4412,
-	positionY = -4577.37,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.920254,
-	directionW = -0.391322,
-	randomMovement = 0,
-	mood = "calm",
 	cellID = 0
 }
 
@@ -986,28 +920,6 @@ coronetNpc51 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc52 = Creature:new {
-	objectName = "coronetNpc52",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_colonel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2701430666,
-	positionX = 158.9,
-	positionY = -4707.2,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.930418,
-	directionW = 0.366501,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 coronetNpc54 = Creature:new {
 	objectName = "coronetNpc54",
 	creatureType = NPC,
@@ -1047,50 +959,6 @@ coronetNpc55 = Creature:new {
 	directionZ = 0,
 	directionY = 0.937341,
 	directionW = -0.348414,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc56 = Creature:new {
-	objectName = "coronetNpc56",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_squad_leader",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2493178409,
-	positionX = 144.7,
-	positionY = -4536.6,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.970296,
-	directionW = 0.241922,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc57 = Creature:new {
-	objectName = "coronetNpc57",
-	creatureType = NPC,
-
-	speciesName = "crackdown_storm_commando",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 427178976,
-	positionX = 152.386,
-	positionY = -4524.14,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.972372,
-	directionW = -0.233438,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -1316,28 +1184,6 @@ coronetNpc70 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc72 = Creature:new {
-	objectName = "coronetNpc72",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = 96.6,
-	positionY = -4407.1,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.71325,
-	directionW = 0.700909,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 coronetNpc73 = Creature:new {
 	objectName = "coronetNpc73",
 	creatureType = NPC,
@@ -1470,28 +1316,6 @@ coronetNpc78 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc79 = Creature:new {
-	objectName = "coronetNpc79",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_squad_leader",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2493178409,
-	positionX = -12.4,
-	positionY = -4404.7,
-	positionZ = 28.6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999962,
-	directionW = -0.00872653,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 coronetNpc80 = Creature:new {
 	objectName = "coronetNpc80",
 	creatureType = NPC,
@@ -1580,28 +1404,6 @@ coronetNpc85 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc86 = Creature:new {
-	objectName = "coronetNpc86",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -59.1,
-	positionY = -4260.1,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.398749,
-	directionW = 0.91706,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 coronetNpc87 = Creature:new {
 	objectName = "coronetNpc87",
 	creatureType = NPC,
@@ -1665,28 +1467,6 @@ coronetNpc89 = Creature:new {
 	directionW = 0.738386,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc90 = Creature:new {
-	objectName = "coronetNpc90",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_rifleman",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1298804271,
-	positionX = -118.7,
-	positionY = -4204.6,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.139173,
-	directionW = 0.990268,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -1773,28 +1553,6 @@ coronetNpc95 = Creature:new {
 	directionZ = 0,
 	directionY = 0.173648,
 	directionW = 0.984808,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc96 = Creature:new {
-	objectName = "coronetNpc96",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_rifleman",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1298804271,
-	positionX = -188.9,
-	positionY = -4076.8,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.207912,
-	directionW = 0.978148,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -2218,28 +1976,6 @@ coronetNpc115 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc116 = Creature:new {
-	objectName = "coronetNpc116",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_first_lieutenant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3843039724,
-	positionX = -199.701,
-	positionY = -4077.2,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.817408,
-	directionW = 0.576059,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 coronetNpc118 = Creature:new {
 	objectName = "coronetNpc118",
 	creatureType = NPC,
@@ -2259,28 +1995,6 @@ coronetNpc118 = Creature:new {
 	directionW = 0.310354,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc119 = Creature:new {
-	objectName = "coronetNpc119",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_rifleman",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1298804271,
-	positionX = -223.2,
-	positionY = -4078,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.0784591,
-	directionW = 0.996917,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -2570,28 +2284,6 @@ coronetNpc139 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc140 = Creature:new {
-	objectName = "coronetNpc140",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_medic",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1258151269,
-	positionX = -439.1,
-	positionY = -4144.4,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.21644,
-	directionW = 0.976296,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 coronetNpc141 = Creature:new {
 	objectName = "coronetNpc141",
 	creatureType = NPC,
@@ -2702,28 +2394,6 @@ coronetNpc149 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc150 = Creature:new {
-	objectName = "coronetNpc150",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_medic",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1590349271,
-	positionX = -582.441,
-	positionY = -4259.52,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.130637,
-	directionW = 0.99143,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 coronetNpc151 = Creature:new {
 	objectName = "coronetNpc151",
 	creatureType = NPC,
@@ -2768,50 +2438,6 @@ coronetNpc152 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc153 = Creature:new {
-	objectName = "coronetNpc153",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_squad_leader",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2493178409,
-	positionX = -593.7,
-	positionY = -4321.9,
-	positionZ = 27.9851,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.838671,
-	directionW = -0.544639,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc154 = Creature:new {
-	objectName = "coronetNpc154",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4182262563,
-	positionX = -579.972,
-	positionY = -4349.14,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.768368,
-	directionW = 0.640008,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 coronetNpc155 = Creature:new {
 	objectName = "coronetNpc155",
 	creatureType = NPC,
@@ -2829,94 +2455,6 @@ coronetNpc155 = Creature:new {
 	directionZ = 0,
 	directionY = 0.995606,
 	directionW = 0.0936425,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc156 = Creature:new {
-	objectName = "coronetNpc156",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = -587.465,
-	positionY = -4339.61,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.2579,
-	directionW = 0.966172,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc157 = Creature:new {
-	objectName = "coronetNpc157",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = -576.928,
-	positionY = -4345.95,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.901421,
-	directionW = 0.432943,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc158 = Creature:new {
-	objectName = "coronetNpc158",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = -558.956,
-	positionY = -4354.45,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.631086,
-	directionW = 0.775713,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc159 = Creature:new {
-	objectName = "coronetNpc159",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 742313213,
-	positionX = -550.859,
-	positionY = -4352.41,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.121276,
-	directionW = 0.992619,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -3010,50 +2548,6 @@ coronetNpc163 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc164 = Creature:new {
-	objectName = "coronetNpc164",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 742313213,
-	positionX = -556.923,
-	positionY = -4363.74,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.551578,
-	directionW = 0.834123,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc165 = Creature:new {
-	objectName = "coronetNpc165",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1672932530,
-	positionX = -535.135,
-	positionY = -4372.66,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.870536,
-	directionW = -0.492104,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 coronetNpc166 = Creature:new {
 	objectName = "coronetNpc166",
 	creatureType = NPC,
@@ -3098,50 +2592,6 @@ coronetNpc167 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc168 = Creature:new {
-	objectName = "coronetNpc168",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4182262563,
-	positionX = -565.967,
-	positionY = -4394.59,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.347948,
-	directionW = 0.937514,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc169 = Creature:new {
-	objectName = "coronetNpc169",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = -534.583,
-	positionY = -4379.03,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.918531,
-	directionW = -0.39535,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 coronetNpc170 = Creature:new {
 	objectName = "coronetNpc170",
 	creatureType = NPC,
@@ -3159,116 +2609,6 @@ coronetNpc170 = Creature:new {
 	directionZ = 0,
 	directionY = -0.376946,
 	directionW = 0.926235,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc171 = Creature:new {
-	objectName = "coronetNpc171",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 742313213,
-	positionX = -546.128,
-	positionY = -4399.23,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.671618,
-	directionW = 0.740898,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc172 = Creature:new {
-	objectName = "coronetNpc172",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1672932530,
-	positionX = -559.682,
-	positionY = -4403.85,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.714467,
-	directionW = -0.699669,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc173 = Creature:new {
-	objectName = "coronetNpc173",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4182262563,
-	positionX = -569.739,
-	positionY = -4411.96,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.974725,
-	directionW = -0.22341,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc174 = Creature:new {
-	objectName = "coronetNpc174",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = -578.35,
-	positionY = -4405.16,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.926502,
-	directionW = -0.37629,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc175 = Creature:new {
-	objectName = "coronetNpc175",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = -541.906,
-	positionY = -4401.13,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.186174,
-	directionW = 0.982517,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -3296,226 +2636,6 @@ coronetNpc176 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc177 = Creature:new {
-	objectName = "coronetNpc177",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1672932530,
-	positionX = -539.819,
-	positionY = -4403.68,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.99276,
-	directionW = 0.120119,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc178 = Creature:new {
-	objectName = "coronetNpc178",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 742313213,
-	positionX = -495.505,
-	positionY = -4412.45,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.612145,
-	directionW = 0.790746,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc179 = Creature:new {
-	objectName = "coronetNpc179",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -593.7,
-	positionY = -4483.1,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.707107,
-	directionW = -0.707107,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc180 = Creature:new {
-	objectName = "coronetNpc180",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1672932530,
-	positionX = -495.991,
-	positionY = -4409.16,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.968586,
-	directionW = 0.24868,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc181 = Creature:new {
-	objectName = "coronetNpc181",
-	creatureType = NPC,
-
-	speciesName = "corellia_coronet_armor_thief",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = -497.052,
-	positionY = -4410.3,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.914757,
-	directionW = 0.404005,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc183 = Creature:new {
-	objectName = "coronetNpc183",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3750712439,
-	positionX = -525.34,
-	positionY = -4463.06,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0164597,
-	directionW = 0.999865,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc184 = Creature:new {
-	objectName = "coronetNpc184",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1875886160,
-	positionX = -525.34,
-	positionY = -4463.06,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0165783,
-	directionW = 0.999863,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc185 = Creature:new {
-	objectName = "coronetNpc185",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_rifleman",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1298804271,
-	positionX = -499.3,
-	positionY = -4469.1,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.94262,
-	directionW = -0.333867,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc186 = Creature:new {
-	objectName = "coronetNpc186",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3750712439,
-	positionX = -526.15,
-	positionY = -4558.69,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.00261298,
-	directionW = 0.999997,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc187 = Creature:new {
-	objectName = "coronetNpc187",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3750712439,
-	positionX = -471,
-	positionY = -4534.03,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.703439,
-	directionW = 0.710755,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 coronetNpc188 = Creature:new {
 	objectName = "coronetNpc188",
 	creatureType = NPC,
@@ -3533,28 +2653,6 @@ coronetNpc188 = Creature:new {
 	directionZ = 0,
 	directionY = -0.705516,
 	directionW = 0.708694,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-coronetNpc189 = Creature:new {
-	objectName = "coronetNpc189",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -533.523,
-	positionY = -4632.07,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.7054,
-	directionW = 0.70881,
 	randomMovement = 0,
 	mood = "npc_imperial",
 	cellID = 0
@@ -3599,28 +2697,6 @@ coronetNpc192 = Creature:new {
 	directionZ = 0,
 	directionY = -0.242691,
 	directionW = 0.970104,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc194 = Creature:new {
-	objectName = "coronetNpc194",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_rifleman",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1298804271,
-	positionX = -526.1,
-	positionY = -4670.1,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.573576,
-	directionW = 0.819152,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -3802,50 +2878,6 @@ coronetNpc204 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc205 = Creature:new {
-	objectName = "coronetNpc205",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_squad_leader",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2493178409,
-	positionX = -502.1,
-	positionY = -4701.1,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999048,
-	directionW = -0.0436193,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc208 = Creature:new {
-	objectName = "coronetNpc208",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_first_lieutenant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1476291957,
-	positionX = -336.602,
-	positionY = -4791.97,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.616149,
-	directionW = 0.78763,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 coronetNpc209 = Creature:new {
 	objectName = "coronetNpc209",
 	creatureType = NPC,
@@ -3953,28 +2985,6 @@ coronetNpc213 = Creature:new {
 	directionW = 0.997536,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc214 = Creature:new {
-	objectName = "coronetNpc214",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -295.9,
-	positionY = -4786.4,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.992546,
-	directionW = -0.121869,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -4726,28 +3736,6 @@ coronetNpc250 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc251 = Creature:new {
-	objectName = "coronetNpc251",
-	creatureType = NPC,
-
-	speciesName = "corellia_demmi_wot",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1359545142,
-	positionX = -452.07,
-	positionY = -4467.64,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.996958,
-	directionW = 0.0779362,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 coronetNpc252 = Creature:new {
 	objectName = "coronetNpc252",
 	creatureType = NPC,
@@ -4765,28 +3753,6 @@ coronetNpc252 = Creature:new {
 	directionZ = 0,
 	directionY = 0.707107,
 	directionW = 0.707107,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc253 = Creature:new {
-	objectName = "coronetNpc253",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_rifleman",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1298804271,
-	positionX = -291.603,
-	positionY = -4413.99,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.686839,
-	directionW = 0.726809,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -4812,50 +3778,6 @@ coronetNpc254 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
-}
-
-coronetNpc255 = Creature:new {
-	objectName = "coronetNpc255",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_corporal",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1040681339,
-	positionX = -291.531,
-	positionY = -4412.73,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.436006,
-	directionW = 0.899944,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-coronetNpc257 = Creature:new {
-	objectName = "coronetNpc257",
-	creatureType = NPC,
-
-	speciesName = "corellia_jonset",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2867003287,
-	positionX = -6.6465,
-	positionY = 21.8812,
-	positionZ = -0.894996,
-
-	directionX = -1.70149e-08,
-	directionZ = -4.56185e-07,
-	directionY = 0.999305,
-	directionW = -0.0372723,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 8105502
 }
 
 coronetNpc258 = Creature:new {
@@ -4909,7 +3831,7 @@ coronetNpc260 = Creature:new {
 	speciesName = "bartender",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "mob/creature_names",
+	stfName = "npc_name",
 	objectCRC = 3494490373,
 	positionX = 7.60649,
 	positionY = 1.42464,
@@ -5122,28 +4044,6 @@ coronetNpc269 = Creature:new {
 	cellID = 0
 }
 
-coronetNpc270 = Creature:new {
-	objectName = "coronetNpc270",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_squad_leader",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2493178409,
-	positionX = -226.4,
-	positionY = -4372,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.496808,
-	directionW = 0.867861,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 coronetNpc271 = Creature:new {
 	objectName = "coronetNpc271",
 	creatureType = NPC,
@@ -5207,28 +4107,6 @@ coronetNpc275 = Creature:new {
 	directionW = 0.2898,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-coronetNpc276 = Creature:new {
-	objectName = "coronetNpc276",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -275.4,
-	positionY = -4614.6,
-	positionZ = 28,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.7866,
-	directionW = -0.617463,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -5825,29 +4703,6 @@ coronetNpc303 = Creature:new {
 	mood = "conversation",
 	cellID = 1855468
 }
-
-coronetNpc304 = Creature:new {
-	objectName = "coronetNpc304",
-	creatureType = NPC,
-
-	speciesName = "daclif_gallamby",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3507958054,
-	positionX = -35.6875,
-	positionY = -1.70805,
-	positionZ = 1.29422,
-
-	directionX = -3.33769e-08,
-	directionZ = 1.2008e-08,
-	directionY = 0.697641,
-	directionW = 0.716448,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 1855467
-}
-
 coronetNpc305 = Creature:new {
 	objectName = "coronetNpc305",
 	creatureType = NPC,
@@ -6090,28 +4945,6 @@ coronetNpc315 = Creature:new {
 	cellID = 1855463
 }
 
-coronetNpc316 = Creature:new {
-	objectName = "coronetNpc316",
-	creatureType = NPC,
-
-	speciesName = "thale_dustrunner",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4184098303,
-	positionX = -0.052739,
-	positionY = -10.9388,
-	positionZ = 3.0782,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.997964,
-	directionW = -0.0637823,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 1855463
-}
-
 coronetNpc317 = Creature:new {
 	objectName = "coronetNpc317",
 	creatureType = NPC,
@@ -6173,28 +5006,6 @@ coronetNpc319 = Creature:new {
 	directionZ = 3.62205e-05,
 	directionY = 0.928349,
 	directionW = 0.371711,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 1855463
-}
-
-coronetNpc320 = Creature:new {
-	objectName = "coronetNpc320",
-	creatureType = NPC,
-
-	speciesName = "corellia_gallura_handerin",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2896726979,
-	positionX = -6.51554,
-	positionY = 9.6562,
-	positionZ = 1.3031,
-
-	directionX = 0.000362307,
-	directionZ = 5.02462e-05,
-	directionY = 0.405559,
-	directionW = 0.914069,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 1855463

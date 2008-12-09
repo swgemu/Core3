@@ -43,13 +43,14 @@
 nightsisterSpellWeaver = Creature:new {
 	objectName = "nightsisterSpellWeaver",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Nightsister",
+	faction = "nightsister", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "nightsister_spell_weaver",
 	stfName = "mob/creature_names", 
 	objectCRC = 2291851149, 
-	socialGroup = "Nightsister",
+	socialGroup = "nightsister",
 	
 
 	level = 107,

@@ -43,13 +43,14 @@
 mokkTribesman = Creature:new {
 	objectName = "mokkTribesman",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Mokk Tribe",
+	faction = "mokk_tribe", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "mokk_tribesman",
 	stfName = "mob/creature_names", 
 	objectCRC = 4083847450,
-	socialGroup = "Mokk Tribe",
+	socialGroup = "mokk_tribe",
 	
 
 	level = 20,

@@ -43,13 +43,14 @@
 meatlumpStooge = Creature:new {
 	objectName = "meatlumpStooge",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Meatlump",
+	faction = "meatlump", 
+	factionPoints = 20,
 	gender = "",
 
 	speciesName = "meatlump_stooge",
 	stfName = "mob/creature_names", 
 	objectCRC = 3021148797, 
-	socialGroup = "Meatlump",
+	socialGroup = "meatlump",
 	
 
 	level = 7,
