@@ -4537,7 +4537,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		for (int i = 0; i < datapad->objectsSize(); ++i) {
 			name = "";
 			detailName = "";
-			appearance = "";
+			appearance = " ";
 			attr = "";
 			mountApp = "";
 			fileName = "";
@@ -4599,6 +4599,9 @@ void PlayerImplementation::saveDatapad(Player* player) {
 	} catch (DatabaseException& e) {
 		player->error("DB Exception in PlayerImplementation::saveDatapad(Player* player)");
 		player->error(e.getMessage());
+	} catch (Exception& e) {
+		player->error("Exception in PlayerImplementation::saveDatapad(Player* player)");
+		e.printStackTrace();
 	} catch (...) {
 		player->error("Unreported Exception in PlayerImplementation::saveDatapad(Player* player)");
 	}

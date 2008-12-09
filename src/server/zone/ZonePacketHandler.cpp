@@ -280,7 +280,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		}
 		break;
 	default:
-		error("unhandled operand count" + pack->toString());
+		//error("unhandled operand count" + pack->toString());
 		break;
 	}
 }

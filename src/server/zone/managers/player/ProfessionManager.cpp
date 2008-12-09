@@ -107,8 +107,6 @@ void ProfessionManager::loadProfessions(PlayerImplementation* player) {
 	BinaryData decodedProfession(professions);
 	decodedProfession.decode(decodedData);
 
-	System::out << "decoded profession data:[" << decodedData << "]";
-
 	uint16* data = (uint16*)decodedData.toCharArray();
 	uint16 size = *data;
 	data++;

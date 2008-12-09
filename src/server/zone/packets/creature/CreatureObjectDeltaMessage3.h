@@ -150,7 +150,7 @@ public:
 	void updateHealthWoundsBar(uint32 healthWounds) {
 		uint32 healthw = creo->getHealthWounds();
 
-		if (healthWounds == healthWounds) {
+		if (healthWounds == healthw) {
 			creo->error("update creo delta3 bar error");
 			StackTrace::printStackTrace();
 		}

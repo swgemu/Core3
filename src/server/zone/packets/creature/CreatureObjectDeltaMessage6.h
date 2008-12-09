@@ -201,13 +201,12 @@ public:
 		}
 
 		startUpdate(0x0D);
-
-		creo->setHealth(healthCreo);
-
 		uint32 updatecount = creo->getNewHAMUpdateCounter(1);
 		startList(1, updatecount);
 
 		addBar(0, healthCreo, health);
+
+		creo->setHealth(healthCreo);
 	}
 
 	void updateMaxHealthBar(uint32 health) {
