@@ -180,7 +180,7 @@ class PlayerImplementation : public PlayerServant {
 	//guild permissions
 	uint32 guildPermissionsBitmask;
 
-	Badges badges;
+	Badges* badges;
 
 	float clonePositionX;
 	float clonePositionY;
@@ -271,6 +271,7 @@ public:
 	static const int LINKDEAD = 3;
 	static const int LOGGINGIN = 4;
 	static const int LOGGINGOUT = 5;
+	static const int LOADING = 6;
 
 	static const int CSR = 1;
 	static const int DEVELOPER = 2;
@@ -347,6 +348,18 @@ public:
 
 	void clearResurrectEvent() {
 		resurrectEvent = NULL;
+	}
+
+	void clearDigestEvent() {
+		digestEvent = NULL;
+	}
+
+	void clearRecoveryEvent() {
+		recoveryEvent = NULL;
+	}
+
+	void clearSaveStateEvent() {
+		playerSaveStateEvent = NULL;
 	}
 
 	void createItems();
@@ -694,8 +707,10 @@ public:
 	void activateQueueAction(CommandQueueAction* action = NULL);
 
 	void activateRecovery();
+	void activateSaveStateEvent();
 
 	void rescheduleRecovery(int time = 3000);
+	void rescheduleSaveStateEvent(int time);
 
 	void doRecovery();
 	void doStateRecovery();
@@ -1276,6 +1291,10 @@ public:
 		return onlineStatus == OFFLINE;
 	}
 
+	inline bool isLoading() {
+		return onlineStatus == LOADING || onlineStatus == LOGGINGIN;
+	}
+
 	inline bool isLinkDead() {
 		return onlineStatus == LINKDEAD;
 	}
@@ -1397,7 +1416,7 @@ public:
 	}
 
 	inline Badges* getBadges() {
-		return &badges;
+		return badges;
 	}
 
 	inline int getRegionID() {

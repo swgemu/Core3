@@ -110,6 +110,8 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 			} catch (...) {
 				player->unlock();
 			}
+
+			closeConnection(true, true);
 		}
 
 		lock();

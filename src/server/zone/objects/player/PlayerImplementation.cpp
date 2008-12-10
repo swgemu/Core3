@@ -134,6 +134,11 @@ PlayerImplementation::~PlayerImplementation() {
 		hairObj = NULL;
 	}
 
+	if (badges != NULL) {
+		badges->finalize();
+		badges = NULL;
+	}
+
 	if (playerSaveStateEvent != NULL) {
 		if (playerSaveStateEvent->isQueued())
 			server->removeEvent(playerSaveStateEvent);
@@ -222,6 +227,8 @@ void PlayerImplementation::initialize() {
 	datapad = NULL;
 
 	stfName = "species";
+
+	badges = new Badges(_this);
 
 	// modifiers
 	weaponSpeedModifier = 1;
@@ -451,8 +458,6 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 
 		initializeEvents();
 
-		server->addEvent(playerSaveStateEvent, 300000);
-
 		resetArmorEncumbrance();
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
@@ -521,8 +526,6 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		setLoggingIn();
 
 		initializeEvents();
-
-		server->addEvent(playerSaveStateEvent, 300000);
 
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 
@@ -656,17 +659,8 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 		itemManager->unloadPlayerItems(_this);
 	}
 
-	if (playerSaveStateEvent == NULL)
-		return;
-
-	if (doSchedule) {
-		playerSaveStateEvent->setPlayer(_this);
-		server->addEvent(playerSaveStateEvent, 300000);
-	} else {
-		if (playerSaveStateEvent->isQueued())
-			server->removeEvent(playerSaveStateEvent);
-		playerSaveStateEvent->setPlayer(NULL);
-	}
+	if (doSchedule)
+		activateSaveStateEvent();
 }
 
 void PlayerImplementation::logout(bool doLock) {
@@ -855,20 +849,11 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 }
 
 void PlayerImplementation::initializeEvents() {
-	if (playerSaveStateEvent == NULL)
+	if (playerSaveStateEvent == NULL) {
 		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
-	else
-		playerSaveStateEvent->setPlayer(_this);
 
-	if (recoveryEvent == NULL)
-		recoveryEvent = new PlayerRecoveryEvent(_this);
-	else
-		recoveryEvent->setPlayer(_this);
-
-	if (digestEvent == NULL)
-		digestEvent = new PlayerDigestEvent(NULL);/*
-	else
-		digestEvent->setPlayer(_this);*/
+		server->addEvent(playerSaveStateEvent);
+	}
 
 	if (dizzyFallDownEvent == NULL)
 		dizzyFallDownEvent = new DizzyFallDownEvent(this);
@@ -1113,6 +1098,9 @@ void PlayerImplementation::sendPersonalContainers() {
 void PlayerImplementation::insertToZone(Zone* zone) {
 	PlayerImplementation::zone = zone;
 
+	if (onlineStatus != LOGGINGIN)
+		onlineStatus = LOADING;
+
 	if (owner == NULL)
 		return;
 
@@ -1179,6 +1167,9 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 }
 
 void PlayerImplementation::reinsertToZone(Zone* zone) {
+	if (onlineStatus != LOGGINGIN)
+		onlineStatus = LOADING;
+
 	try {
 		zone->lock();
 
@@ -2207,12 +2198,31 @@ void PlayerImplementation::activateRecovery() {
 	}
 }
 
+void PlayerImplementation::activateSaveStateEvent() {
+	if (playerSaveStateEvent == NULL) {
+		recoveryEvent = new PlayerRecoveryEvent(_this);
+
+		server->addEvent(playerSaveStateEvent, 3000);
+	}
+}
+
+void PlayerImplementation::rescheduleSaveStateEvent(int time) {
+	if ((playerSaveStateEvent != NULL) && playerSaveStateEvent->isQueued()) {
+		server->removeEvent(playerSaveStateEvent);
+	} else
+		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
+
+	server->addEvent(playerSaveStateEvent, time);
+}
+
 void PlayerImplementation::rescheduleRecovery(int time) {
-	if (recoveryEvent->isQueued())
+	if (recoveryEvent != NULL && recoveryEvent->isQueued()) {
 		server->removeEvent(recoveryEvent);
+	} else {
+		recoveryEvent = new PlayerRecoveryEvent(_this);
+	}
 
 	server->addEvent(recoveryEvent, time);
-	recoveryEvent->setPlayer(_this);
 }
 
 void PlayerImplementation::doRecovery() {
@@ -2334,8 +2344,9 @@ void PlayerImplementation::doStateRecovery() {
 }
 
 void PlayerImplementation::activateDigest() {
-	if (!digestEvent->isQueued()) {
-		digestEvent->setPlayer(_this);
+	if (digestEvent == NULL) {
+		digestEvent = new PlayerDigestEvent(_this);
+
 		server->addEvent(digestEvent, 18000);
 	}
 }
@@ -4144,7 +4155,7 @@ bool PlayerImplementation::awardBadge(uint32 badgeindex) {
   	if (badgeindex > 139)
   		return false;
 
-	badges.setBadge(badgeindex);
+	badges->setBadge(badgeindex);
 
 	return true;
 }

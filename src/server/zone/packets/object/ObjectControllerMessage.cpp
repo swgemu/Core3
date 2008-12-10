@@ -1239,8 +1239,8 @@ void ObjectControllerMessage::parseSetBiography(Player* player, Message *pack) {
 }
 
 void ObjectControllerMessage::parseBadgesRequest(Player* player, Message *pack) {
-	/*BadgesResponseMessage* brm = new BadgesResponseMessage(player);
-	 player->sendMessage(brm);*/
+	BadgesResponseMessage* brm = new BadgesResponseMessage(player);
+	player->sendMessage(brm);
 }
 
 void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack) {
