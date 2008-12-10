@@ -1180,9 +1180,7 @@ public:
 	// setters
 	void setOnline();
 
-	void setOffline() {
-		onlineStatus = OFFLINE;
-	}
+	void setOffline();
 
 	void setLinkDead();
 
