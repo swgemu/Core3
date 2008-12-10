@@ -187,6 +187,11 @@ PlayerImplementation::~PlayerImplementation() {
 		digestEvent = NULL;
 	}
 
+	if (suiChoicesList != NULL) {
+		suiChoicesList->finalize();
+		suiChoicesList = NULL;
+	}
+
 	server->getZoneServer()->increaseTotalDeletedPlayers();
 
 	info("undeploying player");
