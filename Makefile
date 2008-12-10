@@ -73,6 +73,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
+				server/zone/objects/player/badges/Badges.idl \
 				server/zone/objects/installation/factory/FactoryObject.idl \
 				server/zone/objects/installation/generator/GeneratorObject.idl \
 				server/zone/objects/installation/harvester/HarvesterObject.idl \

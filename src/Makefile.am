@@ -123,6 +123,7 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
+		server/zone/objects/player/badges/Badges.cpp \
 		server/zone/objects/scene/SceneObject.cpp \
 		server/zone/objects/ship/ShipObject.cpp \
 		server/zone/objects/static/firework/FireworkWorld.cpp \
