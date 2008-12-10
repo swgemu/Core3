@@ -215,6 +215,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
 		item = new Wearable(objectid, objectcrc, objectname, objecttemp, equipped);
+		item->setObjectSubType(objecttype);
 		if (makeStats)
 			item->setConditionDamage(System::random(item->getMaxCondition() * 3 / 4));
 
