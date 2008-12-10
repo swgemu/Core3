@@ -450,9 +450,6 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 
 		setLoggingIn(); //Anyone notice this is in here twice?
 
-		if(playerObject != NULL)
-			playerObject->clearCharacterBit(PlayerObjectImplementation::LD, true);
-
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 		insertToZone(zone);
 
@@ -3634,6 +3631,15 @@ void PlayerImplementation::setOnline() {
 	}
 
 	onlineStatus = ONLINE;
+}
+
+void PlayerImplementation::setOffline() {
+	if(isLinkDead()) {
+		if (playerObject != NULL)
+			playerObject->clearCharacterBit(PlayerObjectImplementation::LD, true);
+	}
+
+	onlineStatus = OFFLINE;
 }
 
 bool PlayerImplementation::isInDuelWith(Player* targetPlayer, bool doLock) {
