@@ -59,6 +59,8 @@ class CraftingTool;
 
 class ResourceContainer;
 
+class Badges;
+
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
@@ -92,6 +94,12 @@ public:
 	void clearLogoutEvent();
 
 	void clearResurrectEvent();
+
+	void clearDigestEvent();
+
+	void clearRecoveryEvent();
+
+	void clearSaveStateEvent();
 
 	void makeCharacterMask();
 
@@ -244,6 +252,8 @@ public:
 	int getConsentSize();
 
 	String& getConsentEntry(int index);
+
+	Badges* getBadges();
 
 	void sendConsentBox();
 
@@ -522,6 +532,8 @@ public:
 	bool isLoggingIn();
 
 	bool isLoggingOut();
+
+	bool isLoading();
 
 	PlayerObject* getPlayerObject();
 
@@ -821,6 +833,12 @@ public:
 
 	void clearResurrectEvent();
 
+	void clearDigestEvent();
+
+	void clearRecoveryEvent();
+
+	void clearSaveStateEvent();
+
 	void makeCharacterMask();
 
 	unsigned int getCharacterMask();
@@ -972,6 +990,8 @@ public:
 	int getConsentSize();
 
 	String& getConsentEntry(int index);
+
+	Badges* getBadges();
 
 	void sendConsentBox();
 
@@ -1250,6 +1270,8 @@ public:
 	bool isLoggingIn();
 
 	bool isLoggingOut();
+
+	bool isLoading();
 
 	PlayerObject* getPlayerObject();
 

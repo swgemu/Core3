@@ -1,53 +1,57 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef BADGES_H_
-#define BADGES_H_
+#ifndef BADGESIMPLEMENTATION_H_
+#define BADGESIMPLEMENTATION_H_
 
-class Badges {
+#include "Badges.h"
+#include "../Player.h"
+
+class BadgesImplementation : public BadgesServant {
 	uint32 badgeBitmask[15];
-	
+	Player* player;
+
 public:
 	//First Bitmask
 	static const uint32 COUNT_5 = 0;
@@ -82,7 +86,7 @@ public:
 	static const uint32 EXP_DAT_MISTY_FALLS_2 = 29;
 	static const uint32 EXP_DAN_JEDI_TEMPLE = 30;
 	static const uint32 EXP_DAN_REBEL_BASE = 31;
-	
+
 	//Second Bitmask
 	static const uint32 EVENT_PROJECT_DEAD_EYE_1 = 32;
 	static const uint32 ACC_GOOD_SAMARITAN = 33;
@@ -116,7 +120,7 @@ public:
 	static const uint32 CRAFTING_WEAPONSMITH_MASTER = 61;
 	static const uint32 OUTDOORS_BIOENGINEER_MASTER = 62;
 	static const uint32 OUTDOORS_CREATUREHANDLER_MASTER = 63;
-	
+
 	//Third Bitmask
 	static const uint32 OUTDOORS_RANGER_MASTER = 64;
 	static const uint32 OUTDOORS_SCOUT_MASTER = 65;
@@ -150,7 +154,7 @@ public:
 	static const uint32 BDG_EXP_TAL_AQUALISH_CAVE = 93;
 	static const uint32 BDG_EXP_ROR_KOBALA_SPICE_MINE = 94;
 	static const uint32 BDG_EXP_ROR_REBEL_OUTPOST = 95;
-	
+
 	//Fourth Bitmask
 	static const uint32 BDG_EXP_ROR_IMP_CAMP = 96;
 	static const uint32 BDG_EXP_ROR_IMP_HYPERDRIVE_FAC = 97;
@@ -184,7 +188,7 @@ public:
 	static const uint32 BDG_RACING_LOK_MARATHON = 125;
 	static const uint32 BDG_RACING_NARMLE_MEMORIAL = 126;
 	static const uint32 BDG_RACING_NASHAL_RIVER = 127;
-	
+
 	//Fifth Bitmask
 	static const uint32 DESTROY_DEATHSTAR = 128;
 	static const uint32 CRAFTING_SHIPWRIGHT = 129;
@@ -199,17 +203,26 @@ public:
 	static const uint32 PILOT_TATOOINE = 138;
 	static const uint32 BDG_ACCOLATE_HOME_SHOW = 139;
 
+	BadgesImplementation(Player* pl) {
+		player = pl;
+
+		for (int i = 0; i < 15; ++i)
+			badgeBitmask[i] = 0;
+	}
+
+	~BadgesImplementation() {
+	}
+
 public:
 	void setBadge(int badgeindex) {
 		int bitmaskNumber = badgeindex >> 5;
-		
+
 		uint32 bit = badgeindex % 32;
-		//uint32 value = (uint32)pow(2, bit);
 		uint32 value = 1 << bit;
 
 		badgeBitmask[bitmaskNumber] |= value;
 	}
-	
+
 	void setBitmask(int index, uint32 bitmask) {
 		badgeBitmask[index] = bitmask;
 	}
@@ -224,4 +237,4 @@ public:
 
 };
 
-#endif /*BADGES_H_*/
+#endif /*BADGESIMPLEMENTATION_H_*/

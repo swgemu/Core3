@@ -53,28 +53,22 @@ class PlayerRecoveryEvent : public Event {
 public:
 	PlayerRecoveryEvent(Player* pl) : Event(2000) {
 		player = pl;
-
-		setKeeping(true);
 	}
 
 	bool activate() {
-		ManagedReference<Player> temp = player;
-
-		player = NULL;
-
 		try {
-			temp->wlock();
+			player->wlock();
 
-			if (temp->isOnline() || temp->isLinkDead())
-				temp->doRecovery();
+			player->clearRecoveryEvent();
 
-			temp->unlock();
+			if (player->isOnline() || player->isLinkDead())
+				player->doRecovery();
+
+			player->unlock();
 		} catch (...) {
-			temp->error("unreported exception caught in PlayerRecoveryEvent::activate");
-			temp->unlock();
+			player->error("unreported exception caught in PlayerRecoveryEvent::activate");
+			player->unlock();
 		}
-
-		temp = NULL;
 
 		return true;
 	}

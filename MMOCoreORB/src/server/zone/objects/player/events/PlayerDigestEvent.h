@@ -53,28 +53,22 @@ class PlayerDigestEvent : public Event {
 public:
 	PlayerDigestEvent(Player* pl) : Event(18000) {
 		player = pl;
-
-		setKeeping(true);
 	}
 
 	bool activate() {
-		ManagedReference<Player> temp = player;
-
-		player = NULL;
-
 		try {
-			temp->wlock();
+			player->wlock();
 
-			if (temp->isOnline() || temp->isLinkDead())
-				temp->doDigest();
+			player->clearDigestEvent();
 
-			temp->unlock();
+			if (player->isOnline() || player->isLinkDead())
+				player->doDigest();
+
+			player->unlock();
 		} catch (...) {
-			temp->error("unreported exception caught in PlayerDigestEvent::activate");
-			temp->unlock();
+			player->error("unreported exception caught in PlayerDigestEvent::activate");
+			player->unlock();
 		}
-
-		temp = NULL;
 
 		return true;
 	}
