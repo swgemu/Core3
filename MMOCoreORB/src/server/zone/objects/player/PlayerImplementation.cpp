@@ -2200,7 +2200,7 @@ void PlayerImplementation::activateSaveStateEvent() {
 	if (playerSaveStateEvent == NULL) {
 		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
 
-		server->addEvent(playerSaveStateEvent, 3000);
+		server->addEvent(playerSaveStateEvent);
 	}
 }
 
