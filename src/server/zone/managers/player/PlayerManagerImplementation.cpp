@@ -361,6 +361,7 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, 
 		StringBuffer err;
 		err << "unreported exception on PlayerManagerImplementation::attemptPlayerCreation()\n" << e.getMessage() << "\n";
 		player->error(err.toString());
+		e.printStackTrace();
 		player->unlock();
 		return new ClientCreateCharacterFailed("name_declined_internal_error"); //something went wrong
 	} catch (...) {

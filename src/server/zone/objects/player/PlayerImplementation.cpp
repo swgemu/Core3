@@ -2189,18 +2189,16 @@ void PlayerImplementation::changePosture(int post) {
 }
 
 void PlayerImplementation::activateRecovery() {
-	if (recoveryEvent == NULL)
+	if (recoveryEvent == NULL) {
 		recoveryEvent = new PlayerRecoveryEvent(_this);
 
-	if (!recoveryEvent->isQueued()) {
-		recoveryEvent->setPlayer(_this);
 		server->addEvent(recoveryEvent, 3000);
 	}
 }
 
 void PlayerImplementation::activateSaveStateEvent() {
 	if (playerSaveStateEvent == NULL) {
-		recoveryEvent = new PlayerRecoveryEvent(_this);
+		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
 
 		server->addEvent(playerSaveStateEvent, 3000);
 	}
