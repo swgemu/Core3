@@ -692,7 +692,7 @@ void MissionManagerImplementation::getMisoKeysStatus(Player* player, bool finKey
 			dbCol = "currentMissionKeys";
 		}
 
-		query << "SELECT " << dbCol << " FROM characters WHERE character_id = " << player->getCharacterID() << ";";
+		query << "SELECT " << dbCol << " FROM characters WHERE character_id = " << player->getCharacterID() << " and " << dbCol << " is not null;";
 
 		res = ServerDatabase::instance()->executeQuery(query);
 
