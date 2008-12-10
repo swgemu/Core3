@@ -94,6 +94,13 @@ public:
 		spawnInfoMap.setNullValue(NULL);
 	}
 
+	~SpawnInfoMap() {
+		for (int i = 0; i < spawnInfoMap.size(); ++i)
+			delete spawnInfoMap.get(i);
+
+		spawnInfoMap.removeAll();
+	}
+
 	void put(String name, SpawnInfo* spawnInfo) {
 		if (!spawnInfoMap.contains(name))
 			spawnInfoMap.put(name, spawnInfo);

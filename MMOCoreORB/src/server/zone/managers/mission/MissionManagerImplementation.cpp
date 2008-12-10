@@ -80,6 +80,7 @@ MissionManagerImplementation::MissionManagerImplementation(ZoneServer* zs, ZoneP
 MissionManagerImplementation::~MissionManagerImplementation() {
 	removeMissions();
 
+	delete misoMap;
 	misoMap = NULL;
 }
 

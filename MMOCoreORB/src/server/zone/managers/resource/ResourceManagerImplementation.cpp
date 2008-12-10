@@ -69,6 +69,8 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 
 	setLoggingName("ResourceManager");
 
+	itemStrings = NULL;
+
 	init();
 
 	serv = inserv;
