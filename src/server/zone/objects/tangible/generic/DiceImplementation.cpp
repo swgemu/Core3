@@ -136,11 +136,19 @@ void DiceImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse
 			omr->addRadialItem(4,57,3,"@dice/dice:dice_three_single");
 			omr->addRadialItem(4,58,3,"@dice/dice:dice_two_single");
 		}
-
-		omr->finish();
-
-		player->sendMessage(omr);
 	}
+
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
+
+	omr->finish();
+
+	player->sendMessage(omr);
 }
 
 void DiceImplementation::initialize() {

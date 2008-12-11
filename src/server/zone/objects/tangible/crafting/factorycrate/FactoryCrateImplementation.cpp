@@ -76,6 +76,16 @@ FactoryCrateImplementation::~FactoryCrateImplementation(){
 }
 
 void FactoryCrateImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	//TODO:Cell permission check
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			if (_this->isTangible())
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
+
 	omr->finish();
 
 	player->sendMessage(omr);

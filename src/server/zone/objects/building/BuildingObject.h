@@ -89,6 +89,10 @@ public:
 
 	void inRange(QuadTreeEntry* obj, float range);
 
+	bool getStorageLoaded();
+
+	void setStorageLoaded(bool setter);
+
 protected:
 	BuildingObject(DummyConstructorParameter* param);
 
@@ -173,6 +177,10 @@ public:
 	bool update(QuadTreeEntry* obj);
 
 	void inRange(QuadTreeEntry* obj, float range);
+
+	bool getStorageLoaded();
+
+	void setStorageLoaded(bool setter);
 
 protected:
 	String _param0_setAttributes__String_;

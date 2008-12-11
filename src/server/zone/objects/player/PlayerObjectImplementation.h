@@ -90,7 +90,12 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 
 	uint32 foodFilling;
 	uint32 foodFillingMax;
+
 	FriendsList* friendsList;
+
+	uint32 reverseFriendListListCount;
+	Vector<uint64> reverseFriendList;
+
 	IgnoreList* ignoreList;
 
 	uint32 guildPermissionsBitmask;
@@ -272,6 +277,17 @@ public:
 
 	inline void addFriend(String& name, String& inServer) {
 		friendsList->addFriend(name, inServer);
+	}
+
+	void pokeReverseFriendList(uint64 playID);
+	void removeFromReverseFriendList(uint64 playID);
+
+	int getReverseFriendListSize() {
+		return reverseFriendList.size();
+	}
+
+	uint64 getReverseFriendListEntry(int i) {
+		return reverseFriendList.get(i);
 	}
 
 	inline void friendsMagicNumberReset() {

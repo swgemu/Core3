@@ -430,6 +430,31 @@ void BuildingObject::inRange(QuadTreeEntry* obj, float range) {
 		((BuildingObjectImplementation*) _impl)->inRange(obj, range);
 }
 
+bool BuildingObject::getStorageLoaded() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->getStorageLoaded();
+}
+
+void BuildingObject::setStorageLoaded(bool setter) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
+		method.addBooleanParameter(setter);
+
+		method.executeWithVoidReturn();
+	} else
+		((BuildingObjectImplementation*) _impl)->setStorageLoaded(setter);
+}
+
 /*
  *	BuildingObjectAdapter
  */
@@ -533,6 +558,12 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 36:
 		inRange((QuadTreeEntry*) inv->getObjectParameter(), inv->getFloatParameter());
+		break;
+	case 37:
+		resp->insertBoolean(getStorageLoaded());
+		break;
+	case 38:
+		setStorageLoaded(inv->getBooleanParameter());
 		break;
 	default:
 		return NULL;
@@ -663,6 +694,14 @@ bool BuildingObjectAdapter::update(QuadTreeEntry* obj) {
 
 void BuildingObjectAdapter::inRange(QuadTreeEntry* obj, float range) {
 	return ((BuildingObjectImplementation*) impl)->inRange(obj, range);
+}
+
+bool BuildingObjectAdapter::getStorageLoaded() {
+	return ((BuildingObjectImplementation*) impl)->getStorageLoaded();
+}
+
+void BuildingObjectAdapter::setStorageLoaded(bool setter) {
+	return ((BuildingObjectImplementation*) impl)->setStorageLoaded(setter);
 }
 
 /*

@@ -204,12 +204,23 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 	player->setMovementCounter(pack->parseInt() + 1);
 
-	uint64 oldParent = player->getParentID();
 	uint64 parent = pack->parseLong();
+	uint64 oldParent = 0;
 
 	Zone* zone = player->getZone();
 	if (zone == NULL)
 		return 0;
+
+
+	if (player->getParent() != NULL)
+		oldParent = player->getParent()->getObjectID();
+
+	if (oldParent != parent) {
+		ItemManager* itemManager = zone->getZoneServer()->getItemManager();
+		if (itemManager != NULL) {
+			itemManager->loadStructurePlayerItems(player, parent);
+		}
+	}
 
 	if (zone->lookupObject(parent) == NULL)
 		return 0;
@@ -333,6 +344,8 @@ void ObjectControllerMessage::parseObjectTargetUpdate(Player* player,
 void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		Message* pack, ZoneProcessServerImplementation* serv) {
 
+	//cout << pack->toString() << "\n";
+
 	pack->shiftOffset(12); // skip ObjectID and size
 
 	//uint32 objectid = pack->parseLong(); // grab object id
@@ -421,6 +434,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	UnicodeString option;
 
 	switch (actionCRC) {
+	case (0x70177586): //Open Container
+		handleContainerOpen(player, pack);
+		break;
 	case (0x1E0B1E43): //guildremove
 		player->clearQueueAction(actioncntr);
 		handleRemoveFromGuild(player, pack, serv);
@@ -496,8 +512,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		player->changeWeapon(target);
 		break;
 	case 0x82f75977: // transferitemmisc
-		/*target = pack->parseLong();
-		 player->changeCloth(target);*/
 		parseTransferItemMisc(player, pack);
 		break;
 	case 0x18726ca1: // equip, change armor
@@ -2278,13 +2292,12 @@ void ObjectControllerMessage::parseSetWaypointName(Player* player, Message* pack
 }
 
 void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* pack) {
-	//NOTE: this is probably used for more than deleteing waypoints.
 	uint64 objid = pack->parseLong(); //get the id
 
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
 	if (player->getTradeSize() != 0) {
-		player->sendSystemMessage("You cant destroy objects while trading..");
+		player->sendSystemMessage("You can't destroy objects while trading..");
 		return;
 	}
 
@@ -2293,8 +2306,36 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 
 	WaypointObject* waypoint = player->getWaypoint(objid);
 	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(objid);
-
 	SceneObject* invObj = player->getInventoryItem(objid);
+
+	//TODO: add all other source-tabs here in the if-consition later (eg. schematic tab etc)
+
+	if ( waypoint == NULL && datapadData == NULL && invObj == NULL) {
+		//Item is in an inventory container
+
+		Zone* zone = player->getZone();
+
+		if (zone != NULL) {
+			if (zone->lookupObject(objid) != NULL) {
+
+				SceneObject* invObj = zone->lookupObject(objid);
+
+				if (invObj != NULL) {
+					itemManager->deletePlayerItem(player, ((TangibleObject*) invObj), true);
+
+					Container* container = (Container*) invObj->getParent();
+					container->removeObject(objid);
+
+					BaseMessage* msg = new SceneObjectDestroyMessage(invObj);
+					player->getClient()->sendMessage(msg);
+
+					invObj->finalize();
+
+					return;
+				}
+			}
+		}
+	}
 
 	if (invObj != NULL && invObj->isTangible()) {
 		TangibleObject* item = (TangibleObject*) invObj;
@@ -2331,9 +2372,11 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		player->getClient()->sendMessage(msg);
 
 		item->finalize();
+
 	} else if (waypoint != NULL) {
 		if (player->removeWaypoint(waypoint))
 			waypoint->finalize();
+
 	} else if (datapadData != NULL){
 		player->removeDatapadItem(objid);
 
@@ -2341,8 +2384,6 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		player->getClient()->sendMessage(msg);
 	}
 }
-
-
 
 void ObjectControllerMessage::parseSetWaypointActiveStatus(Player* player,
 		Message* pack) {
@@ -3679,8 +3720,7 @@ void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {
 	//System::out << pack->toString() << "\n";
 }
 
-void ObjectControllerMessage::parseTransferItemMisc(Player* player,
-		Message* pack) {
+void ObjectControllerMessage::parseTransferItemMisc(Player* player,	Message* pack) {
 	uint64 target = pack->parseLong();
 	UnicodeString data;
 	pack->parseUnicode(data);
@@ -3689,54 +3729,74 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 	tokenizer.setDelimeter(" ");
 
 	uint64 destinationID = tokenizer.getLongToken();
-	int unknown = tokenizer.getIntToken(); // I've seen -1 usually.. 4 when equipping most clothes
+	int unknown = tokenizer.getIntToken(); // I've seen -1 usually.. 4 when equipping most clothes (I think -1 is remove)
+
 	float x = tokenizer.getFloatToken();
 	float z = tokenizer.getFloatToken();
 	float y = tokenizer.getFloatToken();
 
-	if (destinationID == player->getObjectID())  { //equip item to player
+	if (destinationID == player->getObjectID())  { //equipping item to player (weapons, clothes etc.)
 		player->changeCloth(target);
-	} else if (destinationID == player->getObjectID() + 1) { //player's inventory object id, evidentaly (This one probably will need to be expanded
 
+	} else if (destinationID == player->getObjectID() + 1) { //item is going to inventory
 		if (player->getInventoryItem(target) != NULL) {
-			//Means player already has this item, so it must be equipped
-			//or most likely in another container, so when we add bags to inventory, we need
-			//to change this.
 			player->changeCloth(target);
 			return;
 		}
 
 		SceneObject* targetObject = player->getTarget();
 
-		if (targetObject != NULL && targetObject != player
-				&& targetObject->isNonPlayerCreature()) {
+		//Target is dead creature, looting from another creature to players inventory
+		if (targetObject != NULL && targetObject != player && targetObject->isNonPlayerCreature()) {
 			Creature* creature = (Creature*) targetObject;
+
 			SceneObject * object;
 
 			try {
 				creature->wlock(player);
 
+				//if this is null, player isn't looting but moving stuff around in inventory
 				object = creature->getLootItem(target);
 
 				creature->unlock();
+
 			} catch (...) {
 				creature->unlock();
 			}
 
-			if (object != NULL)
+			if (object != NULL) {
 				player->lootObject(creature, object);
-		}
-	} else { //another container
-		/*
-		 * This is where we'd have to handle transfering items to one container to another.. like a cell
-		 * We might be able to write one generic function that handles, looting, equipping, dropping ect..
-		 * At least this fixes the bug for now.
-		 *
-		 * Don't forget to use the x y z coordinates!
-		 */
-	}
+			} else {
+				//Current target is a dead creature but player is moving stuff in inventory (because creature->getLootItem returned NULL)
+				TangibleObject* item = validateDropAction(player, target);
 
+				if (item != NULL)
+					transferItemToContainer(player, item, destinationID);
+
+				return;
+			}
+
+		} else {
+			//Player has no dead creature as target and dropping an item from a cell or container to the inventory
+			TangibleObject* item = validateDropAction(player, target);
+
+			if (item != NULL)
+				transferItemToContainer(player, item, destinationID);
+
+			return;
+		}
+
+	//Dropping FROM the players inventory TO a cell or container (which could also be a nested inventory container)
+	} else {
+		TangibleObject* item = validateDropAction(player, target);
+
+		if (item != NULL)
+			transferItemToContainer(player, item, destinationID);
+
+		return;
+	}
 }
+
 void ObjectControllerMessage::parseAddFriend(Player* player, Message* pack) {
 	//ToDO: Split the token based on dots for game (SWG), server (eg. sunrunner) and name (SWG.sunrunner.john)
 	pack->shiftOffset(8);
@@ -4059,8 +4119,64 @@ void ObjectControllerMessage::parseDelFactionPoints(Player* player, Message* pac
 		return;
 
 	player->delFactionPoints(tipTo, tipAmount);
+}
 
+void ObjectControllerMessage::handleContainerOpen(Player* player, Message* pack) {
+	//TODO:Cell permission must take place here
+	uint64 target = pack->parseLong();
 
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	Container* conti = (Container*) zone->lookupObject(target);
+	if (conti == NULL)
+		return;
+
+	conti->sendTo(player);
+	conti->openTo(player);
+}
+
+TangibleObject* ObjectControllerMessage::validateDropAction(Player* player, uint64 target) {
+	SceneObject* obj;
+
+	//TODO:Cell permission must take place here
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return NULL;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if (zoneServer == NULL)
+		return NULL;
+
+	obj = zone->lookupObject(target);
+
+	if (obj == NULL) {
+		obj = player->getInventoryItem(target);
+		if (obj == NULL)
+			return NULL;
+	}
+
+	if (!obj->isTangible())
+		return NULL;
+
+	return (TangibleObject*) obj;
+}
+
+void ObjectControllerMessage::transferItemToContainer(Player* player, TangibleObject* item, uint64 destinationID) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if (zoneServer == NULL)
+		return;
+
+	ItemManager* im = zoneServer->getItemManager();
+	if (im == NULL)
+		return;
+
+	im->transferContainerItem(player, item, destinationID);
 }
 
 void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player, Message* pack) {

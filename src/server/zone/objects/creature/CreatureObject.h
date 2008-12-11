@@ -345,6 +345,8 @@ public:
 
 	void removeInventoryItem(unsigned long long oid);
 
+	void removeInventoryItem(SceneObject* item);
+
 	SceneObject* getLootItem(unsigned long long oid);
 
 	void removeLootItem(unsigned long long oid);
@@ -1471,6 +1473,8 @@ public:
 	TangibleObject* getItemByMisoKey(String& tma);
 
 	void removeInventoryItem(unsigned long long oid);
+
+	void removeInventoryItem(SceneObject* item);
 
 	SceneObject* getLootItem(unsigned long long oid);
 

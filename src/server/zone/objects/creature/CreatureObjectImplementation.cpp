@@ -2604,6 +2604,7 @@ void CreatureObjectImplementation::equipItem(TangibleObject* item) {
 
 	item->setEquipped(true);
 	item->setContainer(_this, 0x04);
+	item->setParent(_this);
 
 	item->setUpdated(true);
 
@@ -2623,7 +2624,6 @@ void CreatureObjectImplementation::equipItem(TangibleObject* item) {
 		zone->unlock();
 	} catch (...) {
 		error("Unreported Exception in CreatureObjectImplementation::equipItem");
-
 		zone->unlock();
 	}
 }
@@ -2632,11 +2632,12 @@ void CreatureObjectImplementation::unequipItem(TangibleObject* item) {
 	if (!item->isEquipped())
 		return;
 
-     if (item->isInstrument() && isPlayingMusic())
+	if (item->isInstrument() && isPlayingMusic())
         stopPlayingMusic();
 
 	item->setEquipped(false);
 	item->setContainer(inventory, 0xFFFFFFFF);
+	item->setParent(inventory);
 
 	item->setUpdated(true);
 
@@ -2690,11 +2691,13 @@ Armor* CreatureObjectImplementation::getArmor(int type) {
 
 void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
 	if (item->isEquipped() && item->isWeapon()) {
-			item->setContainer(_this, 0x04);
-			setWeapon((Weapon*) item);
-		} else
-			item->setContainer(inventory, 0xFFFFFFFF);
 
+		item->setContainer(_this, 0x04);
+		setWeapon((Weapon*) item);
+
+	} else
+
+		item->setContainer(inventory, 0xFFFFFFFF);
 		inventory->addObject(item);
 }
 
@@ -4183,7 +4186,6 @@ uint32 CreatureObjectImplementation::getMitigation(const String& mit) {
 		return mitigation->getDamageReduction();
 	}
 }
-
 
 void CreatureObjectImplementation::broadcastMessages(Vector<BaseMessage*>& msgs, int range, bool doLock) {
 	if (zone == NULL) {

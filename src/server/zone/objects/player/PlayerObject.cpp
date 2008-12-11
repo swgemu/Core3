@@ -706,12 +706,63 @@ void PlayerObject::updateAllFriends(PlayerObject* playerObject) {
 		((PlayerObjectImplementation*) _impl)->updateAllFriends(playerObject);
 }
 
-IgnoreList* PlayerObject::getIgnoreList() {
+void PlayerObject::pokeReverseFriendList(unsigned long long playerID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 58);
+		method.addUnsignedLongParameter(playerID);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->pokeReverseFriendList(playerID);
+}
+
+void PlayerObject::removeFromReverseFriendList(unsigned long long playID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 59);
+		method.addUnsignedLongParameter(playID);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->removeFromReverseFriendList(playID);
+}
+
+int PlayerObject::getReverseFriendListSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 60);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getReverseFriendListSize();
+}
+
+unsigned long long PlayerObject::getReverseFriendListEntry(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 61);
+		method.addSignedIntParameter(i);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getReverseFriendListEntry(i);
+}
+
+IgnoreList* PlayerObject::getIgnoreList() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 62);
 
 		return (IgnoreList*) method.executeWithObjectReturn();
 	} else
@@ -723,7 +774,7 @@ void PlayerObject::addIgnore(String& name, String& inServer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 63);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(inServer);
 
@@ -737,7 +788,7 @@ void PlayerObject::ignoreMagicNumberReset() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 64);
 
 		method.executeWithVoidReturn();
 	} else
@@ -749,7 +800,7 @@ void PlayerObject::removeIgnore(String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 65);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -762,7 +813,7 @@ void PlayerObject::saveIgnore() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 66);
 
 		method.executeWithVoidReturn();
 	} else
@@ -774,7 +825,7 @@ void PlayerObject::loadIgnore() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 67);
 
 		method.executeWithVoidReturn();
 	} else
@@ -786,7 +837,7 @@ void PlayerObject::saveWaypoints(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 68);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -799,7 +850,7 @@ WaypointObject* PlayerObject::searchWaypoint(Player* play, const String& name, i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 69);
 		method.addObjectParameter(play);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(mode);
@@ -977,27 +1028,39 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		updateAllFriends((PlayerObject*) inv->getObjectParameter());
 		break;
 	case 58:
-		resp->insertLong(getIgnoreList()->_getObjectID());
+		pokeReverseFriendList(inv->getUnsignedLongParameter());
 		break;
 	case 59:
-		addIgnore(inv->getAsciiParameter(_param0_addIgnore__String_String_), inv->getAsciiParameter(_param1_addIgnore__String_String_));
+		removeFromReverseFriendList(inv->getUnsignedLongParameter());
 		break;
 	case 60:
-		ignoreMagicNumberReset();
+		resp->insertSignedInt(getReverseFriendListSize());
 		break;
 	case 61:
-		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__String_));
+		resp->insertLong(getReverseFriendListEntry(inv->getSignedIntParameter()));
 		break;
 	case 62:
-		saveIgnore();
+		resp->insertLong(getIgnoreList()->_getObjectID());
 		break;
 	case 63:
-		loadIgnore();
+		addIgnore(inv->getAsciiParameter(_param0_addIgnore__String_String_), inv->getAsciiParameter(_param1_addIgnore__String_String_));
 		break;
 	case 64:
-		saveWaypoints((Player*) inv->getObjectParameter());
+		ignoreMagicNumberReset();
 		break;
 	case 65:
+		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__String_));
+		break;
+	case 66:
+		saveIgnore();
+		break;
+	case 67:
+		loadIgnore();
+		break;
+	case 68:
+		saveWaypoints((Player*) inv->getObjectParameter());
+		break;
+	case 69:
 		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_String_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
@@ -1213,6 +1276,22 @@ void PlayerObjectAdapter::loadFriends() {
 
 void PlayerObjectAdapter::updateAllFriends(PlayerObject* playerObject) {
 	return ((PlayerObjectImplementation*) impl)->updateAllFriends(playerObject);
+}
+
+void PlayerObjectAdapter::pokeReverseFriendList(unsigned long long playerID) {
+	return ((PlayerObjectImplementation*) impl)->pokeReverseFriendList(playerID);
+}
+
+void PlayerObjectAdapter::removeFromReverseFriendList(unsigned long long playID) {
+	return ((PlayerObjectImplementation*) impl)->removeFromReverseFriendList(playID);
+}
+
+int PlayerObjectAdapter::getReverseFriendListSize() {
+	return ((PlayerObjectImplementation*) impl)->getReverseFriendListSize();
+}
+
+unsigned long long PlayerObjectAdapter::getReverseFriendListEntry(int i) {
+	return ((PlayerObjectImplementation*) impl)->getReverseFriendListEntry(i);
 }
 
 IgnoreList* PlayerObjectAdapter::getIgnoreList() {

@@ -139,6 +139,10 @@ interface PlayerObject implements SceneObject {
 	void saveFriends();
 	void loadFriends();
 	void updateAllFriends(PlayerObject playerObject);
+	void pokeReverseFriendList(unsigned long playerID);
+	void removeFromReverseFriendList(unsigned long playID);
+	int getReverseFriendListSize();
+	unsigned long getReverseFriendListEntry(int i);
 
 	IgnoreList getIgnoreList();
 	void addIgnore(String name, String inServer);

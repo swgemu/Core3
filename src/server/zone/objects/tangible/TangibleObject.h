@@ -65,6 +65,12 @@ public:
 
 	bool isClothing();
 
+	bool isWearableContainer();
+
+	bool isContainer1();
+
+	bool isContainer2();
+
 	bool isInstrument();
 
 	bool isAttachment();
@@ -223,6 +229,12 @@ public:
 	bool isArmor();
 
 	bool isClothing();
+
+	bool isWearableContainer();
+
+	bool isContainer1();
+
+	bool isContainer2();
 
 	bool isInstrument();
 

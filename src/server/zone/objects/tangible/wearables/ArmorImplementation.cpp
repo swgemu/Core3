@@ -270,11 +270,19 @@ void ArmorImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespons
 			omr->addRadialItem(0, 69, 3, "Slice");
 
 		omr->addRadialItem(0, 70, 3, "Repair");
-
-		omr->finish();
-
-		player->sendMessage(omr);
 	}
+
+	//TODO:Cell permission check
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
+
+	omr->finish();
+	player->sendMessage(omr);
 }
 
 void ArmorImplementation::generateAttributes(SceneObject* obj) {
@@ -1380,4 +1388,3 @@ void ArmorImplementation::setArmorPiece() {
 
 	setArmorPiece(armorSlot);
 }
-

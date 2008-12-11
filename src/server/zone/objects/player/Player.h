@@ -503,6 +503,8 @@ public:
 
 	void sendMessage(StandaloneBaseMessage* msg);
 
+	void broadcastMessageToOthersAround(Player* player, BaseMessage* msg);
+
 	bool isJedi();
 
 	void mutePlayer();
@@ -1240,6 +1242,8 @@ public:
 	void sendMessage(BaseMessage* msg);
 
 	void sendMessage(StandaloneBaseMessage* msg);
+
+	void broadcastMessageToOthersAround(Player* player, BaseMessage* msg);
 
 	bool isJedi();
 

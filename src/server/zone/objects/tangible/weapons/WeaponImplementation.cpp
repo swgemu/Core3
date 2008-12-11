@@ -348,11 +348,21 @@ void WeaponImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 
 		if (hasPowerup())
 			omr->addRadialItem(0, 71, 3, "Remove Powerup");
-
-		omr->finish();
-
-		player->sendMessage(omr);
 	}
+
+	//TODO:Cell permission check
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
+
+	omr->finish();
+
+	player->sendMessage(omr);
+
 }
 
 void WeaponImplementation::generateAttributes(SceneObject* obj) {

@@ -67,4 +67,10 @@ interface Container implements TangibleObject {
 	void openTo(Player player);
 	
 	boolean isEmpty();
+	
+	int getSlots();
+	
+	void setSlots(int attributeSlots);
+	
+	void generateAttributes(SceneObject obj);
 }

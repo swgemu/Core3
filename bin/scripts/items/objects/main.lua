@@ -59,5 +59,3 @@ RunItemLUAFile("objects/instruments/main.lua");
 RunItemLUAFile("objects/pharmaceutical/main.lua");
 RunItemLUAFile("objects/tools/main.lua");
 RunItemLUAFile("objects/weapons/main.lua");
-
-

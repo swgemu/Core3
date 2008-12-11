@@ -324,6 +324,20 @@ void GameCommandHandler::init() {
 				"Launch a web browser to the SWGEmu Support site.",
 				"Usage: @help",
 				&help);
+	gmCommands->addCommand("openInventory", PRIVILEGED,
+				"Open a players (target) inventory.",
+				"Usage: @openInventory (with a player as the current target)",
+				&openInventory);
+	//Temporary for CSRs as long as structures and cell permissions not finally in
+	gmCommands->addCommand("poofObject", PRIVILEGED,
+			"Destroys an object finally.",
+			"USAGE: @poofObject <target>",
+			&poofObject);
+	//Temporary for CSRs as long as structures and cell permissions not finally in
+	gmCommands->addCommand("whoDroppedThis", PRIVILEGED,
+			"Shows the characters name who dropped the current target (item).",
+			"USAGE: @whoDroppedThis <target>",
+			&whoDroppedThis);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -1464,85 +1478,118 @@ void GameCommandHandler::buff(StringTokenizer tokenizer, Player* player) {
 		devBuff = 0;
 	}
 
+	//If the player has a target, the target player is buffed
+	//This function is for developers (privileged) so they can re-buff
+	//players which lost buffs due to bugs or participate in stress test
+	//and can't find someone buffing them.
 
-	int buffValue = 3000;
+	Player* targetPlayer;
+	Player* buffie;
 
-	if (devBuff > 0 )
-		buffValue = devBuff;
+	buffie = player;
+
+	try {
+		SceneObject* obj = player->getTarget();
+
+		if (obj != NULL && obj->isPlayer()) {
+			targetPlayer = (Player*) obj;
+
+			if (targetPlayer != NULL && targetPlayer != player) {
+				buffie = targetPlayer;
+				buffie->wlock(player);
+			}
+		}
+
+		int buffValue = 2750;
+
+		if (devBuff > 0 )
+			buffValue = devBuff;
 
 
-	if ( (player->getHealthMax() == player->getBaseHealth()) || (devBuff > 0)  ) {
-		//float buffDuration = 10.0f; // Testing purposes
-		float buffDuration = 10800.0f;
+		if ( (buffie->getHealthMax() == buffie->getBaseHealth()) || (devBuff > 0)  ) {
+			//Heal wounds at first
+			buffie->changeActionWoundsBar(-1500);
+			buffie->changeConstitutionWoundsBar(-1500);
+			buffie->changeHealthWoundsBar(-1500);
+			buffie->changeMindWoundsBar(-1500);
+			buffie->changeQuicknessWoundsBar(-1500);
+			buffie->changeStaminaWoundsBar(-1500);
+			buffie->changeStrengthWoundsBar(-1500);
+			buffie->changeWillpowerWoundsBar(-1500);
+			buffie->changeFocusWoundsBar(-1500);
 
-		Buff *buff; //pointer for each buff
-		BuffObject *bo; //distributed object that contains the payload
+			//now buff
+			float buffDuration = 10800.0f;
 
-		// Health
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_HEALTH, BuffType::MEDICAL, buffDuration);
-		buff->setHealthBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			Buff *buff; //pointer for each buff
+			BuffObject *bo; //distributed object that contains the payload
 
-		// Strength
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_STRENGTH, BuffType::MEDICAL, buffDuration);
-		buff->setStrengthBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Health
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_HEALTH, BuffType::MEDICAL, buffDuration);
+			buff->setHealthBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Constitution
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION, BuffType::MEDICAL, buffDuration);
-		buff->setConstitutionBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Strength
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STRENGTH, BuffType::MEDICAL, buffDuration);
+			buff->setStrengthBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Action
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_ACTION, BuffType::MEDICAL, buffDuration);
-		buff->setActionBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Constitution
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION, BuffType::MEDICAL, buffDuration);
+			buff->setConstitutionBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Quickness
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_QUICKNESS, BuffType::MEDICAL, buffDuration);
-		buff->setQuicknessBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Action
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_ACTION, BuffType::MEDICAL, buffDuration);
+			buff->setActionBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Stamina
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_STAMINA, BuffType::MEDICAL, buffDuration);
-		buff->setStaminaBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Quickness
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_QUICKNESS, BuffType::MEDICAL, buffDuration);
+			buff->setQuicknessBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Mind
-		buff
-				= new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
-		buff->setMindBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Stamina
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STAMINA, BuffType::MEDICAL, buffDuration);
+			buff->setStaminaBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		buff
-				= new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
-		buff->setFocusBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Mind
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
+			buff->setMindBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		buff
-				= new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
-		buff->setWillpowerBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
+			buff->setFocusBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		player->sendSystemMessage("Buffs applied");
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
+			buff->setWillpowerBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-	} else {
-		player->sendSystemMessage("Already buffed");
+			if (buffie != player)
+				buffie->unlock();
+
+			player->sendSystemMessage("Buffs applied");
+
+		} else {
+			player->sendSystemMessage("Already buffed");
+		}
+
+	} catch (...) {
+		if (buffie != player)
+			buffie->unlock();
+
+		player->sendSystemMessage("Error buffing player.");
 	}
 }
 
@@ -2501,8 +2548,124 @@ void GameCommandHandler::unlockServer(StringTokenizer tokenizer, Player * player
 
 }
 
-void GameCommandHandler::sendp(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player) {
+	SceneObject* obj = player->getTarget();
+	uint64 oid;
 
+	if (obj == NULL || obj->isPlayer()) {
+		player->sendSystemMessage("This object was not dropped by a player - it can't be deleted!");
+		return;
+	}
+
+	try {
+		obj->wlock();
+
+		oid = obj->getObjectID();
+
+		StringBuffer query;
+
+		query << "SELECT item_id FROM player_storage WHERE item_id = '" << oid << "';";
+
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+		if (!res->next()) {
+			player->sendSystemMessage("This object was not dropped by a player - it can't be deleted!");
+			obj->unlock();
+			return;
+		}
+
+		query.deleteAll();
+		query << "DELETE FROM player_storage WHERE item_id = " << oid << " or container = " << oid << ";";
+		ServerDatabase::instance()->executeStatement(query);
+
+		Zone* zone = player->getZone();
+
+		if (zone == NULL) {
+			obj->unlock();
+			return;
+		}
+
+		if (((TangibleObject*) obj)->isContainer1() || ((TangibleObject*) obj)->isContainer2() || ((TangibleObject*) obj)->isWearableContainer()) {
+			Container* container = (Container*) obj;
+
+			for (int i = 0; i < container->objectsSize(); ++i) {
+				TangibleObject* item = (TangibleObject*) container->getObject(i);
+
+				container->removeObject(item->getObjectID());
+
+				item->removeFromZone(true);
+				System::out << "Removing item from container...\n";
+				i--;
+			}
+		}
+
+		obj->unlock();
+
+		obj->removeFromZone(true);
+
+	} catch (DatabaseException& e) {
+		player->info("Database Exception in GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player)");
+		player->info(e.getMessage());
+		System::out << e.getMessage() << endl;
+		obj->unlock();
+
+	} catch (...) {
+		player->info("Unreported Exception in GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player)");
+		obj->unlock();
+	}
+}
+
+void GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * player) {
+	SceneObject* obj = player->getTarget();
+
+	if (obj == NULL || obj->isPlayer())
+		return;
+
+	uint64 oid = 0;
+
+	try {
+		obj->wlock();
+
+		oid = obj->getObjectID();
+
+		obj->unlock();
+
+	} catch (...) {
+		obj->unlock();
+		player->info("Unreported Exception in GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * player)\n");
+		return;
+	}
+
+	StringBuffer itemInfo, msg;
+
+	itemInfo << "SELECT player_storage.dropped_by_character, characters.firstname "
+			<< "FROM player_storage "
+			<< "Inner Join characters ON player_storage.dropped_by_character = characters.character_id "
+			<< "Where item_id = " << oid << ";";
+
+	try {
+		ResultSet* res = ServerDatabase::instance()->executeQuery(itemInfo);
+
+		if (res->next()) {
+			msg.deleteAll();
+			msg << "This item was dropped by character ID: " << res->getInt(0) << "    Charactername: " << res->getString(1);
+
+			player->sendSystemMessage(msg.toString());
+		}
+
+		delete res;
+
+	} catch (DatabaseException& e) {
+		player->info("Database Exception in GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * player)");
+		player->info(e.getMessage());
+		System::out << e.getMessage() << endl;
+	} catch (...) {
+		player->info("Unreported Exception in GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * player)");
+	}
+}
+
+void GameCommandHandler::sendp(StringTokenizer tokenizer, Player * player) {
+	//TESTING PURPOSES ULTYMAS.
 	player->savePlayerState(false);
 	player->sendSystemMessage("char saved");
 
@@ -2521,3 +2684,44 @@ void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
 	LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com/support");
 	player->sendMessage(lbm);
 }
+
+void GameCommandHandler::openInventory(StringTokenizer tokenizer, Player * player) {
+	Player* targetPlayer;
+
+	try {
+		SceneObject* obj = player->getTarget();
+
+		if (obj != NULL && obj->isPlayer()) {
+			targetPlayer = (Player*) obj;
+		} else {
+			player->sendSystemMessage("Usage: @openInventory <with a player as the current target>\n");
+			return;
+		}
+
+
+		if (targetPlayer == player || targetPlayer == NULL)
+			return;
+
+		targetPlayer->wlock(player);
+
+		Container* othersInventory = targetPlayer->getInventory();
+
+		if (othersInventory != NULL) {
+			othersInventory->sendTo(player);
+			othersInventory->openTo(player);
+		}
+
+		StringBuffer devLog;
+		devLog << "Player " << player->getFirstName() << " is using @openInventory on player "
+			   << targetPlayer->getFirstName() << "\n";
+
+		player->info(devLog.toString(), true);
+
+		targetPlayer->unlock();
+
+	} catch (...) {
+		System::out << "Unreported exception caught in GameCommandHandler::openInventory(StringTokenizer tokenizer, Player * player)";
+		targetPlayer->unlock();
+	}
+}
+

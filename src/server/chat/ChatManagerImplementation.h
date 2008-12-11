@@ -117,13 +117,11 @@ public:
 	static void sendSystemMessage(Player* player, UnicodeString& message);
 	static void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter * param);
 
-	static void broadcastSystemMessage(UnicodeString& message);
 	static void broadcastMessage(CreatureObject* player, UnicodeString& message, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
 	static void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter * param, uint64 target = 0, uint32 moodid = 0, uint32 mood2 = 0);
 
 	void broadcastMessage(const String& message);
 	void broadcastMessageRange(Player* player, const String& message, float range);
-
 
 	// ChatRooms
 	void initiateRooms();

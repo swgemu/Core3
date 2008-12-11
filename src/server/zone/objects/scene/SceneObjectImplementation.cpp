@@ -231,6 +231,16 @@ void SceneObjectImplementation::randomizePosition(float radius) {
 }
 
 void SceneObjectImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	//TODO:Cell permission check
+
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
+
 	omr->finish();
 
 	player->sendMessage(omr);
@@ -317,7 +327,6 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 	} catch (...) {
 		error("exception SceneObjectImplementation::insertToBuilding(BuildingObject* building)");
-
 		//building->unlock(doLock);
 	}
 }

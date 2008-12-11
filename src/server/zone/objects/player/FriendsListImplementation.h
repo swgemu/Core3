@@ -55,6 +55,7 @@ class PlayerObject;
 class FriendsListImplementation : public FriendsListServant {
 	Vector<String> friendName;
 	Vector<String> friendServer;
+	Vector<uint64> reverseFriendList;
 
 	int friendsMagicNumber;
 	Player* player;
@@ -63,9 +64,12 @@ public:
 	FriendsListImplementation(Player* pl);
 
 	void addFriend(String& name, String& server);
-
 	void removeFriend(String& name);
 	void findFriend(String& name, PlayerManager* playerManager);
+
+	void populateReverseFriendListForOfflineToonInDB(uint64 poid, uint32 myPlayer);
+
+	ResultSet* pullMyFriendsFromDB(String name);
 
 	void toString();
 

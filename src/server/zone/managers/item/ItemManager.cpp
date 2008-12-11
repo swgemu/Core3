@@ -130,12 +130,26 @@ void ItemManager::createPlayerItem(Player* player, TangibleObject* item) {
 		((ItemManagerImplementation*) _impl)->createPlayerItem(player, item);
 }
 
-TangibleObject* ItemManager::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped) {
+TangibleObject* ItemManager::clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+		method.addUnsignedLongParameter(objectid);
+		method.addObjectParameter(templ);
+
+		return (TangibleObject*) method.executeWithObjectReturn();
+	} else
+		return ((ItemManagerImplementation*) _impl)->clonePlayerObjectTemplate(objectid, templ);
+}
+
+TangibleObject* ItemManager::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
 		method.addSignedIntParameter(objecttype);
 		method.addUnsignedLongParameter(objectid);
 		method.addUnsignedLongParameter(objectcrc);
@@ -153,7 +167,7 @@ void ItemManager::savePlayerItem(Player* player, TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 		method.addObjectParameter(item);
 
@@ -167,7 +181,7 @@ void ItemManager::deletePlayerItem(Player* player, TangibleObject* item, bool no
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addObjectParameter(player);
 		method.addObjectParameter(item);
 		method.addBooleanParameter(notify);
@@ -177,12 +191,41 @@ void ItemManager::deletePlayerItem(Player* player, TangibleObject* item, bool no
 		((ItemManagerImplementation*) _impl)->deletePlayerItem(player, item, notify);
 }
 
+void ItemManager::transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+		method.addObjectParameter(player);
+		method.addObjectParameter(item);
+		method.addUnsignedLongParameter(destinationID);
+
+		method.executeWithVoidReturn();
+	} else
+		((ItemManagerImplementation*) _impl)->transferContainerItem(player, item, destinationID);
+}
+
+void ItemManager::loadStructurePlayerItems(Player* player, unsigned long long cellID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addObjectParameter(player);
+		method.addUnsignedLongParameter(cellID);
+
+		method.executeWithVoidReturn();
+	} else
+		((ItemManagerImplementation*) _impl)->loadStructurePlayerItems(player, cellID);
+}
+
 void ItemManager::showDbStats(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 19);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -195,7 +238,7 @@ void ItemManager::showDbDeleted(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 20);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -208,7 +251,7 @@ void ItemManager::purgeDbDeleted(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -221,7 +264,7 @@ unsigned long long ItemManager::getNextStaticObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -233,7 +276,7 @@ BlueFrogVector* ItemManager::getBFItemList() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 23);
 
 		return (BlueFrogVector*) method.executeWithObjectReturn();
 	} else
@@ -245,7 +288,7 @@ BlueFrogVector* ItemManager::getBFProfList(String& group) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 24);
 		method.addAsciiParameter(group);
 
 		return (BlueFrogVector*) method.executeWithObjectReturn();
@@ -258,7 +301,7 @@ String& ItemManager::getBFProf(String& key) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 25);
 		method.addAsciiParameter(key);
 
 		method.executeWithAsciiReturn(_return_getBFProf);
@@ -272,7 +315,7 @@ void ItemManager::giveBFItemSet(Player* player, String& set) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 26);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(set);
 
@@ -314,36 +357,45 @@ Packet* ItemManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		createPlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertLong(initializeTangibleForCrafting(inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param3_initializeTangibleForCrafting__int_long_long_String_String_bool_), inv->getAsciiParameter(_param4_initializeTangibleForCrafting__int_long_long_String_String_bool_), inv->getBooleanParameter())->_getObjectID());
+		resp->insertLong(clonePlayerObjectTemplate(inv->getUnsignedLongParameter(), (TangibleObject*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 14:
-		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+		resp->insertLong(initializeTangibleForCrafting(inv->getSignedIntParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter(), inv->getAsciiParameter(_param3_initializeTangibleForCrafting__int_long_long_String_String_bool_), inv->getAsciiParameter(_param4_initializeTangibleForCrafting__int_long_long_String_String_bool_), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 15:
-		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		savePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case 16:
-		showDbStats((Player*) inv->getObjectParameter());
+		deletePlayerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 17:
-		showDbDeleted((Player*) inv->getObjectParameter());
+		transferContainerItem((Player*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 18:
-		purgeDbDeleted((Player*) inv->getObjectParameter());
+		loadStructurePlayerItems((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 19:
-		resp->insertLong(getNextStaticObjectID());
+		showDbStats((Player*) inv->getObjectParameter());
 		break;
 	case 20:
-		resp->insertLong(getBFItemList()->_getObjectID());
+		showDbDeleted((Player*) inv->getObjectParameter());
 		break;
 	case 21:
-		resp->insertLong(getBFProfList(inv->getAsciiParameter(_param0_getBFProfList__String_))->_getObjectID());
+		purgeDbDeleted((Player*) inv->getObjectParameter());
 		break;
 	case 22:
-		resp->insertAscii(getBFProf(inv->getAsciiParameter(_param0_getBFProf__String_)));
+		resp->insertLong(getNextStaticObjectID());
 		break;
 	case 23:
+		resp->insertLong(getBFItemList()->_getObjectID());
+		break;
+	case 24:
+		resp->insertLong(getBFProfList(inv->getAsciiParameter(_param0_getBFProfList__String_))->_getObjectID());
+		break;
+	case 25:
+		resp->insertAscii(getBFProf(inv->getAsciiParameter(_param0_getBFProf__String_)));
+		break;
+	case 26:
 		giveBFItemSet((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_giveBFItemSet__Player_String_));
 		break;
 	default:
@@ -381,6 +433,10 @@ void ItemManagerAdapter::createPlayerItem(Player* player, TangibleObject* item) 
 	return ((ItemManagerImplementation*) impl)->createPlayerItem(player, item);
 }
 
+TangibleObject* ItemManagerAdapter::clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ) {
+	return ((ItemManagerImplementation*) impl)->clonePlayerObjectTemplate(objectid, templ);
+}
+
 TangibleObject* ItemManagerAdapter::initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped) {
 	return ((ItemManagerImplementation*) impl)->initializeTangibleForCrafting(objecttype, objectid, objectcrc, objectn, objecttemp, equipped);
 }
@@ -391,6 +447,14 @@ void ItemManagerAdapter::savePlayerItem(Player* player, TangibleObject* item) {
 
 void ItemManagerAdapter::deletePlayerItem(Player* player, TangibleObject* item, bool notify) {
 	return ((ItemManagerImplementation*) impl)->deletePlayerItem(player, item, notify);
+}
+
+void ItemManagerAdapter::transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID) {
+	return ((ItemManagerImplementation*) impl)->transferContainerItem(player, item, destinationID);
+}
+
+void ItemManagerAdapter::loadStructurePlayerItems(Player* player, unsigned long long cellID) {
+	return ((ItemManagerImplementation*) impl)->loadStructurePlayerItems(player, cellID);
 }
 
 void ItemManagerAdapter::showDbStats(Player* player) {

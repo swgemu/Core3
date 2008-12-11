@@ -108,5 +108,10 @@ interface BuildingObject implements SceneObject {
 	void removeAll();
 	boolean update(QuadTreeEntry obj);
 	void inRange(QuadTreeEntry obj, float range);
+	
+	//itemStorage getter/setter
+	boolean getStorageLoaded();
+
+	void setStorageLoaded(boolean setter);
 
 }

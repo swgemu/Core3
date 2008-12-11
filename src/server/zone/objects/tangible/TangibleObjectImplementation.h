@@ -355,7 +355,8 @@ public:
 	virtual void addAttributes(AttributeListMessage* alm);
 
 	// setters and getters
-	inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
+	//inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
+	inline void setContainer(SceneObject* cont, uint32 type = 0xFFFFFFFF) {
 		container = cont;
 		linkType = type;
 	}
@@ -535,6 +536,18 @@ public:
 		return (objectSubType & CLOTHING);
 	}
 
+	inline bool isWearableContainer() {
+		return (objectSubType == WEARABLECONTAINER);
+	}
+
+	inline bool isContainer1() {
+		return (objectSubType == CONTAINER);
+	}
+
+	inline bool isContainer2() {
+		return (objectSubType == CONTAINER2);
+	}
+
 	inline bool isAttachment() {
 		return (objectSubType == ARMORATTACHMENT || objectSubType == CLOTHINGATTACHMENT);
 	}
@@ -614,8 +627,6 @@ public:
 	inline int getCondition() {
 		return maxCondition - conditionDamage;
 	}
-
-
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

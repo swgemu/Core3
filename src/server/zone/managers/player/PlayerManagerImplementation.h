@@ -122,6 +122,8 @@ public:
 	void updateConsentList(Player* player);
 
 	void updateOtherFriendlists(Player* player,bool status);
+	void sendUpdateMessagesToFriends(Player* player, bool status);
+	void populateReverseFriendList(Player* player);
 
 	void updateGuildStatus(Player* player);
 
