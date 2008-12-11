@@ -43,17 +43,13 @@
 squillDerangedRavisher = Creature:new {
 	objectName = "squillDerangedRavisher",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Endor Squill",
 	gender = "",
 
 	speciesName = "squill_deranged_ravisher",
 	stfName = "mob/creature_names",
 	objectCRC = 1824637824, 
 	socialGroup = "Endor Squill",
-	
-
 	level = 35,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

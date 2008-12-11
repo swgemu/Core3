@@ -43,17 +43,13 @@
 bileDrenchedQuenker = Creature:new {
 	objectName = "bileDrenchedQuenker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Quenker",
 	gender = "",
 
 	speciesName = "bile_drenched_quenker",
 	stfName = "mob/creature_names",
 	objectCRC = 644720935, 
 	socialGroup = "Quenker",
-	
-
 	level = 34,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

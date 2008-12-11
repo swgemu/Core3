@@ -43,17 +43,13 @@
 battleDroidDWB = Creature:new {
 	objectName = "battleDroidDWB",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Corsec [aggro]",
 	gender = "",
 
 	speciesName = "mand_bunker_battle_droid",
 	stfName = "mob/creature_names", 
 	objectCRC = 2042392243, 
 	socialGroup = "Corsec [aggro]",
-	
-
 	level = 130,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

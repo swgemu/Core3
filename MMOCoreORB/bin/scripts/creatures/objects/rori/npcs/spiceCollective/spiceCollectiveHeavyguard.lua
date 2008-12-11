@@ -51,10 +51,7 @@ spiceCollectiveHeavyguard = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2295073659, 
 	socialGroup = "spice_collective",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 malignantSquill = Creature:new {
 	objectName = "malignantSquill",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Squill",
 	gender = "",
 
 	speciesName = "malignant_squill",
 	stfName = "mob/creature_names",
 	objectCRC = 807169980, 
 	socialGroup = "Squill",
-	
-
 	level = 50,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

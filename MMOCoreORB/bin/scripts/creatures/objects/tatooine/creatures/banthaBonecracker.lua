@@ -43,17 +43,13 @@
 banthaBonecracker = Creature:new {
 	objectName = "banthaBonecracker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bantha",
 	gender = "",
 
 	speciesName = "bantha_bonecracker",
 	stfName = "mob/creature_names",
 	objectCRC = 3918529401, 
 	socialGroup = "Bantha",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

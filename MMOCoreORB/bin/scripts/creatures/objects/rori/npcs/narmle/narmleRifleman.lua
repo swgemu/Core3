@@ -50,10 +50,7 @@ narmleRifleman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2146377796, 
 	socialGroup = "Narmle O",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

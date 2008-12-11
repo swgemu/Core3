@@ -43,17 +43,13 @@
 strandedRebelOfficer = Creature:new {
 	objectName = "strandedRebelOfficer",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Rebel f)",
 	gender = "",
 
 	speciesName = "stranded_rebel_officer",
 	stfName = "mob/creature_names", 
 	objectCRC = 3622133309, 
 	socialGroup = "Rebel f)",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

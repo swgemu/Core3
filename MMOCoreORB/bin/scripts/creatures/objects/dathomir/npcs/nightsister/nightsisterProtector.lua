@@ -51,10 +51,7 @@ nightsisterProtector = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2893162759, 
 	socialGroup = "nightsister",
-	
-
 	level = 131,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 woodlandGurreck = Creature:new {
 	objectName = "woodlandGurreck",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gurreck",
 	gender = "",
 
 	speciesName = "woodland_gurreck",
 	stfName = "mob/creature_names",
 	objectCRC = 1386599736, 
 	socialGroup = "Gurreck",
-	
-
 	level = 32,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

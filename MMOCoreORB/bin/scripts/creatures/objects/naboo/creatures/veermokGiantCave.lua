@@ -43,17 +43,13 @@
 veermokGiantCave = Creature:new {
 	objectName = "veermokGiantCave",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Veermok",
 	gender = "",
 
 	speciesName = "veermok_giant_cave",
 	stfName = "mob/creature_names",
 	objectCRC = 2363995443, 
 	socialGroup = "Veermok",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

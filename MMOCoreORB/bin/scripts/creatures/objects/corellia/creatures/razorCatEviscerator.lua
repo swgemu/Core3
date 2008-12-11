@@ -43,17 +43,13 @@
 razorCatEviscerator = Creature:new {
 	objectName = "razorCatEviscerator",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Sand Panther",
 	gender = "",
 
 	speciesName = "razor_cat_eviscerator",
 	stfName = "mob/creature_names",
 	objectCRC = 3021374410, 
 	socialGroup = "Sand Panther",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

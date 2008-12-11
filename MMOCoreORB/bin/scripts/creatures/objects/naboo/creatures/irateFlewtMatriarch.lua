@@ -43,17 +43,13 @@
 irateFlewtMatriarch = Creature:new {
 	objectName = "irateFlewtMatriarch",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rewt",
 	gender = "",
 
 	speciesName = "irate_flewt_matriarch",
 	stfName = "mob/creature_names",
 	objectCRC = 1979223286, 
 	socialGroup = "Rewt",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

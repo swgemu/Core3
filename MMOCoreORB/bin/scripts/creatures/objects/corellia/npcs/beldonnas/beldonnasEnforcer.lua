@@ -53,10 +53,7 @@ beldonnasEnforcer = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "beldonnas_league",
-	
-
 	level = 23,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

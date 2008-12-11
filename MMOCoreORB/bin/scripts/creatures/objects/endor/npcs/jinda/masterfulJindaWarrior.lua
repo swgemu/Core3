@@ -50,10 +50,7 @@ masterfulJindaWarrior = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 242045215, 
 	socialGroup = "Jinda Tribe",
-	
-
 	level = 42,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

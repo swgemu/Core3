@@ -42,15 +42,12 @@
 engineerDWB = Creature:new {
 	objectName = "engineerDWB", -- name of the lua Object
 	creatureType = "NPC",
-	faction = "Corsec",
 	gender = "",
 	
 	stfName = "an engineer",
 	objectCRC = 1121654046,
 	socialGroup = "deathwatch",	
-
 	level = 230,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 	

@@ -43,17 +43,13 @@
 rottingPustuleGuard = Creature:new {
 	objectName = "rottingPustuleGuard",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "rotting_pustule_guard",
 	stfName = "mob/creature_names",
 	objectCRC = 3943467921, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

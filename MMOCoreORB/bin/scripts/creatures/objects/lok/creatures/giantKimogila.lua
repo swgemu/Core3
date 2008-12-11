@@ -43,17 +43,13 @@
 giantKimogila = Creature:new {
 	objectName = "giantKimogila",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kimogila",
 	gender = "",
 
 	speciesName = "giant_kimogila",
 	stfName = "mob/creature_names",
 	objectCRC = 2503643993, 
 	socialGroup = "Kimogila",
-	
-
 	level = 139,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

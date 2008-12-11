@@ -42,16 +42,13 @@
 twilekSlave = Creature:new {
 	objectName = "twilekSlave", -- name of the lua Object
 	creatureType = "NPC",
-	faction = "slaves",
 	gender = "female",
 
 	speciesName = "slave_twilek_female",
 	stfName = "mob/creature_names", 
 	objectCRC = 2673849471,
-	socialGroup = "slaves",	
-	
+	socialGroup = "slaves",
 	level = 600,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

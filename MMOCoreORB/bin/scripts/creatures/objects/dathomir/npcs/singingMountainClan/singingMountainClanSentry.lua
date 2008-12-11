@@ -51,10 +51,7 @@ singingMountainClanSentry = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1197970667, 
 	socialGroup = "mtn_clan",
-	
-
 	level = 51,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

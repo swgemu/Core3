@@ -43,17 +43,13 @@
 tybisGrand = Creature:new {
 	objectName = "tybisGrand",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Tybis",
 	gender = "",
 
 	speciesName = "tybis_grand",
 	stfName = "mob/creature_names",
 	objectCRC = 393124713, 
 	socialGroup = "Tybis",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

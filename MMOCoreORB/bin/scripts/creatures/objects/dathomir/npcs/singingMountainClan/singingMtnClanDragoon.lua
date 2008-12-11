@@ -51,10 +51,7 @@ singingMtnClanDragoon = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2066521183, 
 	socialGroup = "mtn_clan",
-	
-
 	level = 94,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

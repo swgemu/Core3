@@ -43,7 +43,6 @@
 wompratCity = Creature:new {
 	objectName = "wompratCity",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "WompRat",
 	gender = "",
 
 	speciesName = "creature_name",
@@ -51,10 +50,7 @@ wompratCity = Creature:new {
 	stfName = "a Womprat City",
 	objectCRC = 1909480803, 
 	socialGroup = "WompRat",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

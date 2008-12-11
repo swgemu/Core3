@@ -43,17 +43,13 @@
 kaiTokSlayer = Creature:new {
 	objectName = "kaiTokSlayer",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "KaiTok",
 	gender = "",
 
 	speciesName = "kai_tok_slayer",
 	stfName = "mob/creature_names",
 	objectCRC = 1823266132, 
 	socialGroup = "KaiTok",
-	
-
 	level = 35,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

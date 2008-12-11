@@ -50,8 +50,6 @@ imperialStaffSergeant = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 519244536, 
 	socialGroup = "imperial",
-	
-
 	level = 17,
 	
 

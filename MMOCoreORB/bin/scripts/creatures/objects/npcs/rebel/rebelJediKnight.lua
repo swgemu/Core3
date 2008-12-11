@@ -51,8 +51,6 @@ rebelJediKnight = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1570698968, 
 	socialGroup = "rebel",
-	
-
 	level = 350,
 	
 

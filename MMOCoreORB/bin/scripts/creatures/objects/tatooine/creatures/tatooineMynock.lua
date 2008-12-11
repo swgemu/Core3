@@ -43,17 +43,13 @@
 tatooineMynock = Creature:new {
 	objectName = "tatooineMynock",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "tatooine_mynock",
 	stfName = "mob/creature_names",
 	objectCRC = 2246027732, 
 	socialGroup = "self",
-	
-
 	level = 3,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

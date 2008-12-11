@@ -43,17 +43,13 @@
 geonosianTechAssistant = Creature:new {
 	objectName = "geonosianTechAssistant",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Geonosian",
 	gender = "",
 
 	speciesName = "geonosian_tech_assistant",
 	stfName = "mob/creature_names", 
 	objectCRC = 1110838154, 
 	socialGroup = "Geonosian",
-	
-
 	level = 48,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

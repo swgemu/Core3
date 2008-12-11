@@ -43,17 +43,13 @@
 festeringSquill = Creature:new {
 	objectName = "festeringSquill",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Endot Squill",
 	gender = "",
 
 	speciesName = "festering_squill",
 	stfName = "mob/creature_names",
 	objectCRC = 1824637824, 
 	socialGroup = "Endor Squill",
-	
-
 	level = 31,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

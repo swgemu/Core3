@@ -51,10 +51,7 @@ spiderNightsisterInitiate = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3869716156, 
 	socialGroup = "spider_nightsister",
-	
-
 	level = 64,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

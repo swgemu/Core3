@@ -43,17 +43,13 @@
 runtyPharple = Creature:new {
 	objectName = "runtyPharple",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Pharple",
 	gender = "",
 
 	speciesName = "runty_pharple",
 	stfName = "mob/creature_names",
 	objectCRC = 1469572833, 
 	socialGroup = "Pharple",
-	
-
 	level = 3,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

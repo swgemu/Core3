@@ -43,17 +43,13 @@
 gluttedFynockQueen = Creature:new {
 	objectName = "gluttedFynockQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Fynock",
 	gender = "",
 
 	speciesName = "glutted_fynock_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 2677634246, 
 	socialGroup = "Fynock",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

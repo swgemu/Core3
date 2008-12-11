@@ -51,8 +51,6 @@ rebelSurfaceMarshal = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 7469172, 
 	socialGroup = "rebel",
-	
-
 	level = 30,
 	
 

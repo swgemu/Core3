@@ -43,17 +43,13 @@
 diseasedVreltMatriarch = Creature:new {
 	objectName = "diseasedVreltMatriarch",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Vrelt",
 	gender = "",
 
 	speciesName = "diseased_vrelt_matriarch",
 	stfName = "mob/creature_names",
 	objectCRC = 2882436158, 
 	socialGroup = "Vrelt",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

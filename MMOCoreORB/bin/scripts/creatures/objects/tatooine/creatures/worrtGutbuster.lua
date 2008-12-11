@@ -43,17 +43,13 @@
 worrtGutbuster = Creature:new {
 	objectName = "worrtGutbuster",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Worrt",
 	gender = "",
 
 	speciesName = "worrt_gutbuster",
 	stfName = "mob/creature_names",
 	objectCRC = 714826259, 
 	socialGroup = "Worrt",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

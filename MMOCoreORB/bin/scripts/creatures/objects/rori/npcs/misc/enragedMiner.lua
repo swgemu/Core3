@@ -50,10 +50,7 @@ enragedMiner = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3926753656, 
 	socialGroup = "self",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

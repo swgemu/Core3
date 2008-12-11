@@ -43,17 +43,13 @@
 gurkGatherer = Creature:new {
 	objectName = "gurkGatherer",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gurk",
 	gender = "",
 
 	speciesName = "gurk_gatherer",
 	stfName = "mob/creature_names",
 	objectCRC = 3464397925, 
 	socialGroup = "Gurk",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

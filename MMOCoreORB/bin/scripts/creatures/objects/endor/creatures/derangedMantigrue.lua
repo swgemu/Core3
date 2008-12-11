@@ -43,17 +43,13 @@
 derangedMantigrue = Creature:new {
 	objectName = "derangedMantigrue",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Mantigrue",
 	gender = "",
 
 	speciesName = "deranged_mantigrue",
 	stfName = "mob/creature_names",
 	objectCRC = 1684536430, 
 	socialGroup = "Mantigrue",
-	
-
 	level = 45,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

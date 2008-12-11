@@ -43,17 +43,13 @@
 blisterRotQueen = Creature:new {
 	objectName = "blisterRotQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "blister_rot_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 2430922138, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 rsfCommando = Creature:new {
 	objectName = "rsfCommando",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "RSF 0",
 	gender = "",
 
 	speciesName = "rsf_commando",
 	stfName = "mob/creature_names", 
 	objectCRC = 3895382960, 
 	socialGroup = "RSF 0",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,14 +43,12 @@
 darkJediMaster = Creature:new {
 	objectName = "darkJediMaster",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "sith",
 	gender = "",
 
 	speciesName = "dark_jedi_master",
 	stfName = "mob/creature_names", 
 	objectCRC = 2005105485, 
 	socialGroup = "sith",
-	
 	level = 400,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,

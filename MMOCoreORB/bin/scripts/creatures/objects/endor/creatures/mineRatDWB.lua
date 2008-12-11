@@ -42,13 +42,12 @@
 mineRatDWB = Creature:new {
 	objectName = "mineRatDWB", -- name of the lua Object
 	creatureType = "ANIMAL",
-	faction = "slaves",
 	gender = "",
 	
 	speciesName = "death_watch_quenker",
 	stfName = "mob/creature_names",
 	objectCRC = 3273659222,
-
+	socialGroup = "Corsec [aggro]",
 	level = 100,
 	
 	

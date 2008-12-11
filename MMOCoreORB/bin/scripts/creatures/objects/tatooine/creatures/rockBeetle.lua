@@ -43,17 +43,13 @@
 rockBeetle = Creature:new {
 	objectName = "rockBeetle",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rock Beetle",
 	gender = "",
 
 	speciesName = "rock_beetle",
 	stfName = "mob/creature_names",
 	objectCRC = 1381990465, 
 	socialGroup = "Rock Beetle",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

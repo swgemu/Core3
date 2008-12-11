@@ -43,17 +43,13 @@
 savagePugoriss = Creature:new {
 	objectName = "savagePugoriss",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Pugoriss",
 	gender = "",
 
 	speciesName = "savage_pugoriss",
 	stfName = "mob/creature_names",
 	objectCRC = 2081633047, 
 	socialGroup = "Pugoriss",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

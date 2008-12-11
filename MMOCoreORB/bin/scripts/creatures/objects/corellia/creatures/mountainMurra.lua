@@ -43,17 +43,13 @@
 mountainMurra = Creature:new {
 	objectName = "mountainMurra",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "mountain_murra",
 	stfName = "mob/creature_names",
 	objectCRC = 1555554447, 
 	socialGroup = "self",
-	
-
 	level = 17,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

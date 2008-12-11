@@ -50,10 +50,7 @@ shadowThug = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1509984298, 
 	socialGroup = "Sith Shadow",
-	
-
 	level = 51,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

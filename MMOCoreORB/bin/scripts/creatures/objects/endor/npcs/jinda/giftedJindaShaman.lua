@@ -50,10 +50,7 @@ giftedJindaShaman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3260970037, 
 	socialGroup = "Jinda Tribe",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

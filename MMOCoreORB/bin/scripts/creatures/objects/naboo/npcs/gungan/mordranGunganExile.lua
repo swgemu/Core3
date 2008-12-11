@@ -50,10 +50,7 @@ mordranGunganExile = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1780356929, 
 	socialGroup = "gungan",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

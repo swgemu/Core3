@@ -51,10 +51,7 @@ corsecChief = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 142160511, 
 	socialGroup = "corsec",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 cowardlyGurreck = Creature:new {
 	objectName = "cowardlyGurreck",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gurreck",
 	gender = "",
 
 	speciesName = "cowardly_gurreck",
 	stfName = "mob/creature_names",
 	objectCRC = 1386599736, 
 	socialGroup = "Gurreck",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

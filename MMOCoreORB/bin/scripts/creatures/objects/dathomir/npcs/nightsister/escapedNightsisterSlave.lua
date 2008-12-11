@@ -51,10 +51,7 @@ escapedNightsisterSlave = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 361612105, 
 	socialGroup = "nightsister",
-	
-
 	level = 28,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

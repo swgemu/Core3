@@ -51,10 +51,7 @@ garynMugger = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 779794461, 
 	socialGroup = "garyn",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

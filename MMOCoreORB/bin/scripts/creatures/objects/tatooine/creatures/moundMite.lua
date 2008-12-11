@@ -43,17 +43,13 @@
 moundMite = Creature:new {
 	objectName = "moundMite",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "mound_mite",
 	stfName = "mob/creature_names",
 	objectCRC = 4266026234, 
 	socialGroup = "self",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 spineflapQueen = Creature:new {
 	objectName = "spineflapQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Spineflap",
 	gender = "",
 
 	speciesName = "spineflap_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 1774004209, 
 	socialGroup = "Spineflap",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

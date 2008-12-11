@@ -43,17 +43,13 @@
 gundarkRuffian = Creature:new {
 	objectName = "gundarkRuffian",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Gundk. Gang (thug)",
 	gender = "",
 
 	speciesName = "gundark_ruffian",
 	stfName = "mob/creature_names", 
 	objectCRC = 1794653011, 
 	socialGroup = "Gundk. Gang (thug)",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

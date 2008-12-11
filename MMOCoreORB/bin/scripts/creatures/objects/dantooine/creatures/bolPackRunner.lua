@@ -43,17 +43,13 @@
 bolPackRunner = Creature:new {
 	objectName = "bolPackRunner",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bol",
 	gender = "",
 
 	speciesName = "bol_pack_runner",
 	stfName = "mob/creature_names",
 	objectCRC = 3745797903, 
 	socialGroup = "Bol",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 scavengerRat = Creature:new {
 	objectName = "scavengerRat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "scavenger_rat",
 	stfName = "mob/creature_names",
 	objectCRC = 3337882429, 
 	socialGroup = "self",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

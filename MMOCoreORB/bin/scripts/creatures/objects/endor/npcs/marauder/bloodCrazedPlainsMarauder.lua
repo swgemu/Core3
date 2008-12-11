@@ -51,10 +51,7 @@ bloodCrazedPlainsMarauder = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 332227579, 
 	socialGroup = "marauder",
-	
-
 	level = 56,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

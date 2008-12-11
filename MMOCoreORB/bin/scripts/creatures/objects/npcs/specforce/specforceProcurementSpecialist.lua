@@ -51,8 +51,6 @@ specforceProcurementSpecialist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2669072967, 
 	socialGroup = "■■'     Rebel VBBH",
-	
-
 	level = 13,
 	
 

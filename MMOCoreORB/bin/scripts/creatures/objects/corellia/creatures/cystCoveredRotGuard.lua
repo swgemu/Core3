@@ -43,17 +43,13 @@
 cystCoveredRotGuard = Creature:new {
 	objectName = "cystCoveredRotGuard",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "cyst_covered_rot_guard",
 	stfName = "mob/creature_names",
 	objectCRC = 4167786528, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

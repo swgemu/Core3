@@ -43,15 +43,12 @@
 graulMarauder = Creature:new {
 	objectName = "graulMarauder",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Graul",
 	gender = "",
 
 	speciesName = "graul_marauder",
 	stfName = "mob/creature_names",
 	objectCRC = 4126395623, 
 	socialGroup = "Graul",
-	
-
 	level = 173,	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,

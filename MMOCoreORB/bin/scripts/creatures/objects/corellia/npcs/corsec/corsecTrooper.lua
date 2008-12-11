@@ -51,10 +51,7 @@ corsecTrooper = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3630538207, 
 	socialGroup = "corsec",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 grasslandVoritorTracker = Creature:new {
 	objectName = "grasslandVoritorTracker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Voritor Lizard",
 	gender = "",
 
 	speciesName = "grassland_voritor_tracker",
 	stfName = "mob/creature_names",
 	objectCRC = 727049275, 
 	socialGroup = "Voritor Lizard",
-	
-
 	level = 45,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

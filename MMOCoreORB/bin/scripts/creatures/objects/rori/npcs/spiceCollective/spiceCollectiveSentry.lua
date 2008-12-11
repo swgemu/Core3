@@ -51,10 +51,7 @@ spiceCollectiveSentry = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1341689731, 
 	socialGroup = "spice_collective",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

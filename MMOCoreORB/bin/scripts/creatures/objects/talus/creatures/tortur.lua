@@ -43,17 +43,13 @@
 tortur = Creature:new {
 	objectName = "tortur",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Tortur",
 	gender = "",
 
 	speciesName = "tortur",
 	stfName = "mob/creature_names",
 	objectCRC = 2394031156, 
 	socialGroup = "Tortur",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

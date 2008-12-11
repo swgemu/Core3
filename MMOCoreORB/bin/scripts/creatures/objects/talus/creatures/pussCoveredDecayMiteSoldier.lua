@@ -43,17 +43,13 @@
 pussCoveredDecayMiteSoldier = Creature:new {
 	objectName = "pussCoveredDecayMiteSoldier",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "puss_covered_decay_mite_soldier",
 	stfName = "mob/creature_names",
 	objectCRC = 3943467921, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

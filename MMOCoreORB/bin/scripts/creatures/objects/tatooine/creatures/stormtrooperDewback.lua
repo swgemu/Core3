@@ -50,8 +50,6 @@ stormtrooperDewback = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 720218946, 
 	socialGroup = "Imperial",
-	
-
 	level = 29,
 	
 

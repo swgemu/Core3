@@ -43,17 +43,13 @@
 rhoaKwi = Creature:new {
 	objectName = "rhoaKwi",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rhoa Kwi",
 	gender = "",
 
 	speciesName = "rhoa_kwi",
 	stfName = "mob/creature_names",
 	objectCRC = 2111021739, 
 	socialGroup = "Rhoa Kwi",
-	
-
 	level = 35,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

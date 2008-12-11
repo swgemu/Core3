@@ -51,10 +51,7 @@ desertDemonBodyguard = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2891837247, 
 	socialGroup = "desert_demon",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 mountainWorrt = Creature:new {
 	objectName = "mountainWorrt",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "mountain_worrt",
 	stfName = "mob/creature_names",
 	objectCRC = 239900799, 
 	socialGroup = "self",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

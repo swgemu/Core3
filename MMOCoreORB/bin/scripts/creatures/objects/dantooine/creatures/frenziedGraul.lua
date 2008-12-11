@@ -43,17 +43,13 @@
 frenziedGraul = Creature:new {
 	objectName = "frenziedGraul",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Graul",
 	gender = "",
 
 	speciesName = "frenzied_graul",
 	stfName = "mob/creature_names",
 	objectCRC = 4126395623, 
 	socialGroup = "Graul",
-	
-
 	level = 56,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

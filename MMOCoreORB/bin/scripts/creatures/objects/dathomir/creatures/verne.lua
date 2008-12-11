@@ -43,15 +43,12 @@
 verne = Creature:new {
 	objectName = "verne",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Verne",
 	gender = "",
 
 	speciesName = "verne",
 	stfName = "mob/creature_names",
 	objectCRC = 1915375945, 
 	socialGroup = "Verne",
-	
-
 	level = 17,
 	
 

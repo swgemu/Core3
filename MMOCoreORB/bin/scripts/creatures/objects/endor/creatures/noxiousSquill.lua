@@ -43,17 +43,13 @@
 noxiousSquill = Creature:new {
 	objectName = "noxiousSquill",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Endor Squill",
 	gender = "",
 
 	speciesName = "noxious_squill",
 	stfName = "mob/creature_names",
 	objectCRC = 1824637824, 
 	socialGroup = "Endor Squill",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

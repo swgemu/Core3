@@ -43,17 +43,13 @@
 darkSideSavage = Creature:new {
 	objectName = "darkSideSavage",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Remn. Of Kun",
 	gender = "",
 
 	speciesName = "dark_side_savage",
 	stfName = "mob/creature_names", 
 	objectCRC = 381404964, 
 	socialGroup = "Remn. Of Kun",
-	
-
 	level = 75,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

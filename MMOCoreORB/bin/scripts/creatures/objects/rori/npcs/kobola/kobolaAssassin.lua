@@ -51,10 +51,7 @@ kobolaAssassin = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1197861951, 
 	socialGroup = "kobola",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

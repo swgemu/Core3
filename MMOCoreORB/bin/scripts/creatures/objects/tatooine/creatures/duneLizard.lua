@@ -43,17 +43,13 @@
 duneLizard = Creature:new {
 	objectName = "duneLizard",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dune Lizard",
 	gender = "",
 
 	speciesName = "dune_lizard",
 	stfName = "mob/creature_names",
 	objectCRC = 3554679154, 
 	socialGroup = "Dune Lizard",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

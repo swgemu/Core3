@@ -50,8 +50,6 @@ hanSolo = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4209483922, 
 	socialGroup = "rebel",
-	
-
 	level = 250,
 	
 

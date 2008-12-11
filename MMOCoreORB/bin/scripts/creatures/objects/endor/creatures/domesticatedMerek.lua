@@ -43,17 +43,13 @@
 domesticatedMerek = Creature:new {
 	objectName = "domesticatedMerek",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "domesticated_merek",
 	stfName = "mob/creature_names",
 	objectCRC = 4057111915, 
 	socialGroup = "self",
-	
-
 	level = 49,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

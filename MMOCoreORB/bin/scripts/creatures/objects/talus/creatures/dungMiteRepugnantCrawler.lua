@@ -43,17 +43,13 @@
 dungMiteRepugnantCrawler = Creature:new {
 	objectName = "dungMiteRepugnantCrawler",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "dung_mite_repugnant_crawler",
 	stfName = "mob/creature_names",
 	objectCRC = 382834958, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

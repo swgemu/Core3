@@ -43,17 +43,13 @@
 sennexLookout = Creature:new {
 	objectName = "sennexLookout",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Sennex",
 	gender = "",
 
 	speciesName = "sennex_lookout",
 	stfName = "mob/creature_names", 
 	objectCRC = 5798432, 
 	socialGroup = "Sennex",
-	
-
 	level = 47,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

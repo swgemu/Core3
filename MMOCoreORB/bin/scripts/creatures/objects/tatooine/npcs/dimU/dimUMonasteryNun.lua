@@ -43,17 +43,13 @@
 dimUMonasteryNun = Creature:new {
 	objectName = "dimUMonasteryNun",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Dim-U",
 	gender = "",
 
 	speciesName = "dim_u_monastery_nun",
 	stfName = "mob/creature_names", 
 	objectCRC = 507065980, 
 	socialGroup = "Dim-U",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

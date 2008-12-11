@@ -51,8 +51,6 @@ specforceTechnician = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 174316325, 
 	socialGroup = "rebel",
-	
-
 	level = 18,
 	
 

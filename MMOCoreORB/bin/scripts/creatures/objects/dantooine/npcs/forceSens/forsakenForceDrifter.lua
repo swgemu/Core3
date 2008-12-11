@@ -43,17 +43,13 @@
 forsakenForceDrifter = Creature:new {
 	objectName = "forsakenForceDrifter",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Force Reneg.",
 	gender = "",
 
 	speciesName = "forsaken_force_drifter",
 	stfName = "mob/creature_names", 
 	objectCRC = 1874526327, 
 	socialGroup = "Force Reneg.",
-	
-
 	level = 80,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

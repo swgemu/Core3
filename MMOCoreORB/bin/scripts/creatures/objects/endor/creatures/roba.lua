@@ -43,17 +43,13 @@
 roba = Creature:new {
 	objectName = "roba",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Roba",
 	gender = "",
 
 	speciesName = "roba",
 	stfName = "mob/creature_names",
 	objectCRC = 1008127960, 
 	socialGroup = "Roba",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

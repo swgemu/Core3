@@ -43,17 +43,13 @@
 stintarilScavenger = Creature:new {
 	objectName = "stintarilScavenger",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Stinaril",
 	gender = "",
 
 	speciesName = "stintaril_scavenger",
 	stfName = "mob/creature_names",
 	objectCRC = 3055227574, 
 	socialGroup = "Stinaril",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

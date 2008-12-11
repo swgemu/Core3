@@ -43,17 +43,13 @@
 flitYouth = Creature:new {
 	objectName = "flitYouth",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Flit",
 	gender = "",
 
 	speciesName = "flit_youth",
 	stfName = "mob/creature_names",
 	objectCRC = 554215691, 
 	socialGroup = "Flit",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

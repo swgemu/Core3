@@ -43,17 +43,13 @@
 surefootBrackaset = Creature:new {
 	objectName = "surefootBrackaset",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Brackaset",
 	gender = "",
 
 	speciesName = "surefoot_brackaset",
 	stfName = "mob/creature_names",
 	objectCRC = 2038129742, 
 	socialGroup = "Brackaset",
-	
-
 	level = 46,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

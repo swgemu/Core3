@@ -51,10 +51,7 @@ canyonCorsairCutthroat = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3977728311, 
 	socialGroup = "canyon_corsair",
-	
-
 	level = 35,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

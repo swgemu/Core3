@@ -43,17 +43,13 @@
 duneBeetle = Creature:new {
 	objectName = "duneBeetle",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Sand Beetle",
 	gender = "",
 
 	speciesName = "dune_beetle",
 	stfName = "mob/creature_names",
 	objectCRC = 1381990465, 
 	socialGroup = "Sand Beetle",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

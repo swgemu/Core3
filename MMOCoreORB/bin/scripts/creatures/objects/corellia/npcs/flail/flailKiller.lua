@@ -51,10 +51,7 @@ flailKiller = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1731610618, 
 	socialGroup = "flail",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

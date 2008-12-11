@@ -51,10 +51,7 @@ nightsisterOutcast = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2430135288, 
 	socialGroup = "nightsister",
-	
-
 	level = 81,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

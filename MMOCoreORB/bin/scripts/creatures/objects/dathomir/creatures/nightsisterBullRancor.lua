@@ -50,8 +50,6 @@ nightsisterBullRancor = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 837719973, 
 	socialGroup = "Nightsister",
-	
-
 	level = 65,
 	
 

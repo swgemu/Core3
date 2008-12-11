@@ -50,10 +50,7 @@ nabooNomad = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 157916561, 
 	socialGroup = "Maboo Nomad",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

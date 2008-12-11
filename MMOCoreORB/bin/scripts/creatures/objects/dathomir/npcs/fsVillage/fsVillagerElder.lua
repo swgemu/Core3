@@ -50,10 +50,7 @@ fsVillagerElder = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3897249451, 
 	socialGroup = "Force Sensitive villager",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

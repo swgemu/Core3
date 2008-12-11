@@ -43,17 +43,13 @@
 rsfPilot = Creature:new {
 	objectName = "rsfPilot",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "RSF",
 	gender = "",
 
 	speciesName = "rsf_pilot",
 	stfName = "mob/creature_names", 
 	objectCRC = 67737149, 
 	socialGroup = "RSF",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

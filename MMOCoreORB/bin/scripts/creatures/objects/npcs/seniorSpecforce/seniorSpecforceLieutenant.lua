@@ -51,8 +51,6 @@ seniorSpecforceLieutenant = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2082664932, 
 	socialGroup = "rebel",
-	
-
 	level = 24,
 	
 

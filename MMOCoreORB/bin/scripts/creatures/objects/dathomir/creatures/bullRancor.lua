@@ -43,17 +43,13 @@
 bullRancor = Creature:new {
 	objectName = "bullRancor",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rancor",
 	gender = "",
 
 	speciesName = "bull_rancor",
 	stfName = "mob/creature_names",
 	objectCRC = 837719973, 
 	socialGroup = "Rancor",
-	
-
 	level = 65,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

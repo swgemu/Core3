@@ -43,17 +43,13 @@
 shaupautHunter = Creature:new {
 	objectName = "shaupautHunter",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Shaupaut",
 	gender = "",
 
 	speciesName = "shaupaut_hunter",
 	stfName = "mob/creature_names",
 	objectCRC = 176125140, 
 	socialGroup = "Shaupaut",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

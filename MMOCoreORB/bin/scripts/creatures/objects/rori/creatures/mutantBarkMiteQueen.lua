@@ -43,17 +43,13 @@
 mutantBarkMiteQueen = Creature:new {
 	objectName = "mutantBarkMiteQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bark Mite",
 	gender = "",
 
 	speciesName = "mutant_bark_mite_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 1477419452, 
 	socialGroup = "Bark Mite",
-	
-
 	level = 38,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

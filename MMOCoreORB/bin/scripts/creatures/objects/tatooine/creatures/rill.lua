@@ -43,17 +43,13 @@
 rill = Creature:new {
 	objectName = "rill",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rill",
 	gender = "",
 
 	speciesName = "rill",
 	stfName = "mob/creature_names",
 	objectCRC = 813958609, 
 	socialGroup = "Rill",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

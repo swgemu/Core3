@@ -43,17 +43,13 @@
 enragedTabageMother = Creature:new {
 	objectName = "enragedTabageMother",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Tabage",
 	gender = "",
 
 	speciesName = "enraged_tabage_mother",
 	stfName = "mob/creature_names",
 	objectCRC = 1588417694, 
 	socialGroup = "Tabage",
-	
-
 	level = 17,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

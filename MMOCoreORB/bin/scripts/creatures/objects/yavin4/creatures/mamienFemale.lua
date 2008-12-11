@@ -43,17 +43,13 @@
 mamienFemale = Creature:new {
 	objectName = "mamienFemale",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Marnien",
 	gender = "",
 
 	speciesName = "mamien_female",
 	stfName = "mob/creature_names",
 	objectCRC = 1795257005, 
 	socialGroup = "Marnien",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

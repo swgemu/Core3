@@ -51,10 +51,7 @@ spiderNightsisterStalker = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 780342276, 
 	socialGroup = "spider_nightsister",
-	
-
 	level = 100,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

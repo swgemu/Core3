@@ -50,10 +50,7 @@ narmleGuard = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 607934672, 
 	socialGroup = "Narmle",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

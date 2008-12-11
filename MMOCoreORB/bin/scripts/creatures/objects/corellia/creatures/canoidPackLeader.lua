@@ -43,17 +43,13 @@
 canoidPackLeader = Creature:new {
 	objectName = "canoidPackLeader",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Canoid",
 	gender = "",
 
 	speciesName = "canoid_pack_leader",
 	stfName = "mob/creature_names",
 	objectCRC = 1139580531, 
 	socialGroup = "Canoid",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

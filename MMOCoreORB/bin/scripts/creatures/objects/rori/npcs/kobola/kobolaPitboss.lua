@@ -51,10 +51,7 @@ kobolaPitboss = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3583164488, 
 	socialGroup = "kobola",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

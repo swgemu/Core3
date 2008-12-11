@@ -43,17 +43,13 @@
 mammothThune = Creature:new {
 	objectName = "mammothThune",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Thune",
 	gender = "",
 
 	speciesName = "mammoth_thune",
 	stfName = "mob/creature_names",
 	objectCRC = 2147765074, 
 	socialGroup = "Thune",
-	
-
 	level = 129,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

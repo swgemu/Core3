@@ -50,10 +50,7 @@ nymGuardElite = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 427983067, 
 	socialGroup = "Nym",
-	
-
 	level = 38,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

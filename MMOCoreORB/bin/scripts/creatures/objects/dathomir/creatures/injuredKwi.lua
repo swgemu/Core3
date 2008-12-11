@@ -43,17 +43,13 @@
 injuredKwi = Creature:new {
 	objectName = "injuredKwi",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kwi",
 	gender = "",
 
 	speciesName = "injured_kwi",
 	stfName = "mob/creature_names",
 	objectCRC = 2111021739, 
 	socialGroup = "Kwi",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -51,10 +51,7 @@ jabbasSwooperLeader = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3956928835, 
 	socialGroup = "jabba",
-	
-
 	level = 28,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -51,10 +51,7 @@ afarathuCultFollower = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1633608178, 
 	socialGroup = "afarathu",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

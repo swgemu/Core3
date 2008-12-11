@@ -43,17 +43,13 @@
 vineRawl = Creature:new {
 	objectName = "vineRawl",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "vine_rawl",
 	stfName = "mob/creature_names",
 	objectCRC = 304357171, 
 	socialGroup = "self",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

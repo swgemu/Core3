@@ -43,17 +43,13 @@
 toxicMerekBattlelord = Creature:new {
 	objectName = "toxicMerekBattlelord",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Merek",
 	gender = "",
 
 	speciesName = "toxic_merek_battlelord",
 	stfName = "mob/creature_names",
 	objectCRC = 4057111915, 
 	socialGroup = "Merek",
-	
-
 	level = 45,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

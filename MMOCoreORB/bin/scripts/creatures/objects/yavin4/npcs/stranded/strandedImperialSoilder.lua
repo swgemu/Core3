@@ -43,17 +43,13 @@
 strandedImperialSoilder = Creature:new {
 	objectName = "strandedImperialSoilder",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "imperial",
 	gender = "",
 
 	speciesName = "stranded_imperial_soilder",
 	stfName = "mob/creature_names", 
 	objectCRC = 2951134852, 
 	socialGroup = "imperial",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

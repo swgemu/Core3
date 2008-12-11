@@ -43,17 +43,13 @@
 stoneskinHanadak = Creature:new {
 	objectName = "stoneskinHanadak",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Hanadak",
 	gender = "",
 
 	speciesName = "stoneskin_hanadak",
 	stfName = "mob/creature_names",
 	objectCRC = 3722994435, 
 	socialGroup = "Hanadak",
-	
-
 	level = 139,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

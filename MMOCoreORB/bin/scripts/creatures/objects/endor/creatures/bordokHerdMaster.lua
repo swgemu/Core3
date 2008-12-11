@@ -43,17 +43,13 @@
 bordokHerdMaster = Creature:new {
 	objectName = "bordokHerdMaster",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bordok",
 	gender = "",
 
 	speciesName = "bordok_herd_master",
 	stfName = "mob/creature_names",
 	objectCRC = 622383012, 
 	socialGroup = "Bordok",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -51,10 +51,7 @@ desertDemonLeader = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3171148228, 
 	socialGroup = "desert_demon",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

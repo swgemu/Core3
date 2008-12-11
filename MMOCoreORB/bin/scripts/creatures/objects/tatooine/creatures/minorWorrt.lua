@@ -43,17 +43,13 @@
 minorWorrt = Creature:new {
 	objectName = "minorWorrt",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "minor_worrt",
 	stfName = "mob/creature_names",
 	objectCRC = 1647415305, 
 	socialGroup = "self",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

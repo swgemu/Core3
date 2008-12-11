@@ -43,17 +43,13 @@
 langlatchMarauder = Creature:new {
 	objectName = "langlatchMarauder",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Langiatch",
 	gender = "",
 
 	speciesName = "langlatch_marauder",
 	stfName = "mob/creature_names",
 	objectCRC = 2513300255, 
 	socialGroup = "Langiatch",
-	
-
 	level = 17,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

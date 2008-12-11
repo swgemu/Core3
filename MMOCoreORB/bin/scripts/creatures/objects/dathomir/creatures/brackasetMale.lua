@@ -43,17 +43,13 @@
 brackasetMale = Creature:new {
 	objectName = "brackasetMale",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Brackaset",
 	gender = "",
 
 	speciesName = "brackaset_male",
 	stfName = "mob/creature_names",
 	objectCRC = 437036395, 
 	socialGroup = "Brackaset",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

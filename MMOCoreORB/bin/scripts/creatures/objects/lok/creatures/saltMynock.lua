@@ -43,17 +43,13 @@
 saltMynock = Creature:new {
 	objectName = "saltMynock",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Mynock",
 	gender = "",
 
 	speciesName = "salt_mynock",
 	stfName = "mob/creature_names",
 	objectCRC = 1848263825, 
 	socialGroup = "Mynock",
-	
-
 	level = 23,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

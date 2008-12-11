@@ -51,10 +51,7 @@ kobolaMiner = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3466937588, 
 	socialGroup = "kobola",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

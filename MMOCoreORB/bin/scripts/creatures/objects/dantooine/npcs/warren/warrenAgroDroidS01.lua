@@ -50,10 +50,7 @@ warrenAgroDroidS01 = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 162667025, 
 	socialGroup = "Warren Teraud",
-	
-
 	level = 23,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

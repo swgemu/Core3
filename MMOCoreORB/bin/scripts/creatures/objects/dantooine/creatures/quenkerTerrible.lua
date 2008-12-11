@@ -43,17 +43,13 @@
 quenkerTerrible = Creature:new {
 	objectName = "quenkerTerrible",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Quenker",
 	gender = "",
 
 	speciesName = "quenker_terrible",
 	stfName = "mob/creature_names",
 	objectCRC = 644720935, 
 	socialGroup = "Quenker",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 sevorrt = Creature:new {
 	objectName = "sevorrt",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Sevorrt",
 	gender = "",
 
 	speciesName = "sevorrt",
 	stfName = "mob/creature_names",
 	objectCRC = 714826259, 
 	socialGroup = "Sevorrt",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

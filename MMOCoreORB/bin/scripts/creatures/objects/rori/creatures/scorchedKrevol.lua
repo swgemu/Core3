@@ -43,17 +43,13 @@
 scorchedKrevol = Creature:new {
 	objectName = "scorchedKrevol",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Krevol",
 	gender = "",
 
 	speciesName = "scorched_krevol",
 	stfName = "mob/creature_names",
 	objectCRC = 4151073468, 
 	socialGroup = "Krevol",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

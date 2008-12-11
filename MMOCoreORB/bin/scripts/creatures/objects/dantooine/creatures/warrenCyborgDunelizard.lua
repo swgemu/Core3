@@ -43,17 +43,13 @@
 warrenCyborgDunelizard = Creature:new {
 	objectName = "warrenCyborgDunelizard",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Warren Cyborg",
 	gender = "",
 
 	speciesName = "warren_cyborg_dunelizard",
 	stfName = "mob/creature_names",
 	objectCRC = 1142940054, 
 	socialGroup = "Warren Cyborg",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

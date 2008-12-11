@@ -51,10 +51,7 @@ nightsisterSentinal = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 1363815615, 
 	socialGroup = "nightsister",
-	
-
 	level = 95,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

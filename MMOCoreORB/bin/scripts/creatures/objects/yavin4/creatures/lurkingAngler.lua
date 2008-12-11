@@ -43,17 +43,13 @@
 lurkingAngler = Creature:new {
 	objectName = "lurkingAngler",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Angler",
 	gender = "",
 
 	speciesName = "lurking_angler",
 	stfName = "mob/creature_names",
 	objectCRC = 3645434131, 
 	socialGroup = "Angler",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

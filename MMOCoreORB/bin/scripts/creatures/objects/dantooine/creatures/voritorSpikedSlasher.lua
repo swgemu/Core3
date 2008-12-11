@@ -43,17 +43,13 @@
 voritorSpikedSlasher = Creature:new {
 	objectName = "voritorSpikedSlasher",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Voritor Lizard",
 	gender = "",
 
 	speciesName = "voritor_spiked_slasher",
 	stfName = "mob/creature_names",
 	objectCRC = 4014205794, 
 	socialGroup = "Voritor Lizard",
-	
-
 	level = 58,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

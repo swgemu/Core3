@@ -51,8 +51,6 @@ chewbacca = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 993210305, 
 	socialGroup = "rebel",
-	
-
 	level = 250,
 	
 

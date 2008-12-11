@@ -43,17 +43,13 @@
 imperialVeermok = Creature:new {
 	objectName = "imperialVeermok",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Imperial",
 	gender = "",
 
 	speciesName = "imperial_veermok",
 	stfName = "mob/creature_names",
 	objectCRC = 798042116, 
 	socialGroup = "Imperial",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

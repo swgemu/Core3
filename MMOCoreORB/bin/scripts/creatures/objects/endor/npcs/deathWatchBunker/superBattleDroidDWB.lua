@@ -42,16 +42,12 @@
 superBattleDroidDWB = Creature:new {
 	objectName = "superBattleDroidDWB",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Death Watch",
 	gender = "",
 
 	speciesName = "mand_bunker_super_battle_droid",
 	stfName = "mob/creature_names",
 	objectCRC = 3793641800, 
 	socialGroup = "Death Watch",
-	
-
-
 	level = 228,
 	
 

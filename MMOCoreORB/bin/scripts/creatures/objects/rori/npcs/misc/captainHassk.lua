@@ -50,10 +50,7 @@ captainHassk = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4166677801, 
 	socialGroup = "Rorgungan",
-	
-
 	level = 73,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

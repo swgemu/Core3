@@ -51,10 +51,7 @@ aakuanSentinal = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 810742409, 
 	socialGroup = "aakuans",
-	
-
 	level = 17,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

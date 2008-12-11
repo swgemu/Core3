@@ -51,10 +51,7 @@ meatlumpBuffoon = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2358376164, 
 	socialGroup = "meatlump",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

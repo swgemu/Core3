@@ -43,17 +43,13 @@
 snorbalMatriarch = Creature:new {
 	objectName = "snorbalMatriarch",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Snorbal",
 	gender = "",
 
 	speciesName = "snorbal_matriarch",
 	stfName = "mob/creature_names",
 	objectCRC = 2831973457, 
 	socialGroup = "Snorbal",
-	
-
 	level = 45,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

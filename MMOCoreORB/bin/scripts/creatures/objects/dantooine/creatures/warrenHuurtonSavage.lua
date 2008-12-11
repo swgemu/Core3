@@ -43,17 +43,13 @@
 warrenHuurtonSavage = Creature:new {
 	objectName = "warrenHuurtonSavage",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Warren Huurton",
 	gender = "",
 
 	speciesName = "warren_huurton_savage",
 	stfName = "mob/creature_names",
 	objectCRC = 3011024511, 
 	socialGroup = "Warren Huurton",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

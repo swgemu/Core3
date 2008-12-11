@@ -43,17 +43,13 @@
 verneBull = Creature:new {
 	objectName = "verneBull",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Verne",
 	gender = "",
 
 	speciesName = "verne_bull",
 	stfName = "mob/creature_names",
 	objectCRC = 3971784364, 
 	socialGroup = "Verne",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

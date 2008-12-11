@@ -43,17 +43,13 @@
 craggyBolma = Creature:new {
 	objectName = "craggyBolma",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bolma",
 	gender = "",
 
 	speciesName = "craggy_bolma",
 	stfName = "mob/creature_names",
 	objectCRC = 4078228623, 
 	socialGroup = "Bolma",
-	
-
 	level = 47,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

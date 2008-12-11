@@ -51,10 +51,7 @@ giftedPansheeShaman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1346681647, 
 	socialGroup = "panshee_tribe",
-	
-
 	level = 38,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

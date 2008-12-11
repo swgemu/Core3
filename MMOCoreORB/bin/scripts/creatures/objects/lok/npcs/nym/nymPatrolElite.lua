@@ -50,10 +50,7 @@ nymPatrolElite = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4269351452, 
 	socialGroup = "Nym",
-	
-
 	level = 41,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

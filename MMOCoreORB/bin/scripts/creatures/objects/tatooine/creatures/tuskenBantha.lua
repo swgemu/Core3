@@ -51,8 +51,6 @@ tuskenBantha = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 1901766605, 
 	socialGroup = "tusken",
-	
-
 	level = 15,
 	
 

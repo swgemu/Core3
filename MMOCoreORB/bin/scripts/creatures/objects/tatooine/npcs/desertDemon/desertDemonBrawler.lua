@@ -51,10 +51,7 @@ desertDemonBrawler = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1319703009, 
 	socialGroup = "desert_demon",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

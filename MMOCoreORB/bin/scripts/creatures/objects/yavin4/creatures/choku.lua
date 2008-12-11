@@ -43,17 +43,13 @@
 choku = Creature:new {
 	objectName = "choku",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Choku",
 	gender = "",
 
 	speciesName = "choku",
 	stfName = "mob/creature_names",
 	objectCRC = 2946461572, 
 	socialGroup = "Choku",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

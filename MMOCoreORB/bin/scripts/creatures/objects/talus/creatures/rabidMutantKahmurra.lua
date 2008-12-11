@@ -43,17 +43,13 @@
 rabidMutantKahmurra = Creature:new {
 	objectName = "rabidMutantKahmurra",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kahmurra",
 	gender = "",
 
 	speciesName = "rabid_mutant_kahmurra",
 	stfName = "mob/creature_names",
 	objectCRC = 3433057460, 
 	socialGroup = "Kahmurra",
-	
-
 	level = 41,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 sliceHound = Creature:new {
 	objectName = "sliceHound",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Slice Hound",
 	gender = "",
 
 	speciesName = "slice_hound",
 	stfName = "mob/creature_names",
 	objectCRC = 2638763255, 
 	socialGroup = "Slice Hound",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

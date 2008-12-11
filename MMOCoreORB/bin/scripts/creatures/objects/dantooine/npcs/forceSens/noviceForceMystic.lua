@@ -43,17 +43,13 @@
 noviceForceMystic = Creature:new {
 	objectName = "noviceForceMystic",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Force Reneg.",
 	gender = "",
 
 	speciesName = "novice_force_mystic",
 	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "Force Reneg.",
-	
-
 	level = 60,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

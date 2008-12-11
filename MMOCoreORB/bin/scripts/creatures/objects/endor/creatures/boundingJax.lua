@@ -43,17 +43,13 @@
 boundingJax = Creature:new {
 	objectName = "boundingJax",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Jax",
 	gender = "",
 
 	speciesName = "bounding_jax",
 	stfName = "mob/creature_names",
 	objectCRC = 2095266416, 
 	socialGroup = "Jax",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

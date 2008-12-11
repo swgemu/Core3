@@ -43,17 +43,13 @@
 fambaa = Creature:new {
 	objectName = "fambaa",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Fambaa",
 	gender = "",
 
 	speciesName = "fambaa",
 	stfName = "mob/creature_names",
 	objectCRC = 2375688304, 
 	socialGroup = "Fambaa",
-	
-
 	level = 34,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

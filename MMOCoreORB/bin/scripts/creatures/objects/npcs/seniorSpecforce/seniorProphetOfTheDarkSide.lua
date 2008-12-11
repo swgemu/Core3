@@ -51,8 +51,6 @@ seniorProphetOfTheDarkSide = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4246600608, 
 	socialGroup = "imperial",
-	
-
 	level = 138,
 	
 

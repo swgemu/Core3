@@ -43,17 +43,13 @@
 gurkWhelp = Creature:new {
 	objectName = "gurkWhelp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gurk",
 	gender = "",
 
 	speciesName = "gurk_whelp",
 	stfName = "mob/creature_names",
 	objectCRC = 3648622033, 
 	socialGroup = "Gurk",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

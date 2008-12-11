@@ -43,17 +43,13 @@
 rogueFambaa = Creature:new {
 	objectName = "rogueFambaa",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "rogue_fambaa",
 	stfName = "mob/creature_names",
 	objectCRC = 2375688304, 
 	socialGroup = "self",
-	
-
 	level = 37,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

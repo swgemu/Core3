@@ -43,17 +43,13 @@
 carnivorousNuna = Creature:new {
 	objectName = "carnivorousNuna",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "carnivorous_nuna",
 	stfName = "mob/creature_names",
 	objectCRC = 2432817562, 
 	socialGroup = "self",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

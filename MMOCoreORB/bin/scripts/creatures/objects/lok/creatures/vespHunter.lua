@@ -43,17 +43,13 @@
 vespHunter = Creature:new {
 	objectName = "vespHunter",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Vesp",
 	gender = "",
 
 	speciesName = "vesp_hunter",
 	stfName = "mob/creature_names",
 	objectCRC = 3698435149, 
 	socialGroup = "Vesp",
-	
-
 	level = 25,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

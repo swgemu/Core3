@@ -43,17 +43,13 @@
 selonianScout = Creature:new {
 	objectName = "selonianScout",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Selonian",
 	gender = "",
 
 	speciesName = "selonian_scout",
 	stfName = "mob/creature_names", 
 	objectCRC = 3612945735, 
 	socialGroup = "Selonian",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

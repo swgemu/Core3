@@ -43,17 +43,13 @@
 frenziedFynockGuardian = Creature:new {
 	objectName = "frenziedFynockGuardian",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Fynock",
 	gender = "",
 
 	speciesName = "frenzied_fynock_guardian",
 	stfName = "mob/creature_names",
 	objectCRC = 388899118, 
 	socialGroup = "Fynock",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

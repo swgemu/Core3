@@ -51,10 +51,7 @@ binayreSwindler = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3282438609, 
 	socialGroup = "binayre",
-	
-
 	level = 20,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

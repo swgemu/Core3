@@ -50,10 +50,7 @@ narmleGrenadier = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 741581017, 
 	socialGroup = "Narmle",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

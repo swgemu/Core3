@@ -43,17 +43,13 @@
 giantWorrt = Creature:new {
 	objectName = "giantWorrt",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Worrt",
 	gender = "",
 
 	speciesName = "giant_worrt",
 	stfName = "mob/creature_names",
 	objectCRC = 4229150764, 
 	socialGroup = "Worrt",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

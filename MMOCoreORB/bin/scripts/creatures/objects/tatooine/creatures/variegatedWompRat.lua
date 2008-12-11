@@ -43,17 +43,13 @@
 variegatedWompRat = Creature:new {
 	objectName = "variegatedWompRat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "variegated_womprat",
 	stfName = "mob/creature_names",
 	objectCRC = 1909480803, 
 	socialGroup = "self",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

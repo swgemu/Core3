@@ -43,17 +43,13 @@
 chunkerBruiser = Creature:new {
 	objectName = "chunkerBruiser",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Chunker Gang",
 	gender = "",
 
 	speciesName = "chunker_bruiser",
 	stfName = "mob/creature_names", 
 	objectCRC = 3682831326, 
 	socialGroup = "Chunker Gang",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

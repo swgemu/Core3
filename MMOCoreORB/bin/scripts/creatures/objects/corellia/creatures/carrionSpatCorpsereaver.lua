@@ -43,17 +43,13 @@
 carrionSpatCorpsereaver = Creature:new {
 	objectName = "carrionSpatCorpsereaver",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Carrion Spat",
 	gender = "",
 
 	speciesName = "carrion_spat_corpsereaver",
 	stfName = "mob/creature_names",
 	objectCRC = 3186677588, 
 	socialGroup = "Carrion Spat",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

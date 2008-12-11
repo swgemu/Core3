@@ -43,17 +43,13 @@
 malklocPlainswalkerYouth = Creature:new {
 	objectName = "malklocPlainswalkerYouth",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Malkloc",
 	gender = "",
 
 	speciesName = "malkloc_plainswalker_youth",
 	stfName = "mob/creature_names",
 	objectCRC = 3978814666, 
 	socialGroup = "Malkloc",
-	
-
 	level = 55,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 sickeningDungMiteWorker = Creature:new {
 	objectName = "sickeningDungMiteWorker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "sickening_dung_mite_worker",
 	stfName = "mob/creature_names",
 	objectCRC = 382834958, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

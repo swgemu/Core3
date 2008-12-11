@@ -43,17 +43,13 @@
 shimmeringLanternBird = Creature:new {
 	objectName = "shimmeringLanternBird",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Lantern",
 	gender = "",
 
 	speciesName = "shimmering_lantern_bird",
 	stfName = "mob/creature_names",
 	objectCRC = 1183906554, 
 	socialGroup = "Lantern",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

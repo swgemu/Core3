@@ -43,17 +43,13 @@
 nymKusakGuardian = Creature:new {
 	objectName = "nymKusakGuardian",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Nym",
 	gender = "",
 
 	speciesName = "nym_kusak_guardian",
 	stfName = "mob/creature_names",
 	objectCRC = 1518117227, 
 	socialGroup = "Nym",
-	
-
 	level = 29,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

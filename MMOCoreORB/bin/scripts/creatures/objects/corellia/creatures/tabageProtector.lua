@@ -43,17 +43,13 @@
 tabageProtector = Creature:new {
 	objectName = "tabageProtector",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Tabage",
 	gender = "",
 
 	speciesName = "tabage_protector",
 	stfName = "mob/creature_names",
 	objectCRC = 1588417694, 
 	socialGroup = "Tabage",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

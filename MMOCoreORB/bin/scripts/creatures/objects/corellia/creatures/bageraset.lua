@@ -43,17 +43,13 @@
 bageraset = Creature:new {
 	objectName = "bageraset",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bageraset",
 	gender = "",
 
 	speciesName = "bageraset",
 	stfName = "mob/creature_names",
 	objectCRC = 2017464107, 
 	socialGroup = "Bageraset",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

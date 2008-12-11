@@ -43,17 +43,13 @@
 bolmaCalf = Creature:new {
 	objectName = "bolmaCalf",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bolma",
 	gender = "",
 
 	speciesName = "bolma_calf",
 	stfName = "mob/creature_names",
 	objectCRC = 395403417, 
 	socialGroup = "Bolma",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

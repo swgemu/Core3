@@ -43,17 +43,13 @@
 sickleRasp = Creature:new {
 	objectName = "sickleRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "sickle_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 144116282, 
 	socialGroup = "Rasp",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

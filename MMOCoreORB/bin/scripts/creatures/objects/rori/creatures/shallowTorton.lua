@@ -43,17 +43,13 @@
 shallowTorton = Creature:new {
 	objectName = "shallowTorton",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Torton",
 	gender = "",
 
 	speciesName = "shallow_torton",
 	stfName = "mob/creature_names",
 	objectCRC = 1970962787, 
 	socialGroup = "Torton",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

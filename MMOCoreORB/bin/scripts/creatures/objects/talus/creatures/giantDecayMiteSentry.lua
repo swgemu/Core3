@@ -43,17 +43,13 @@
 giantDecayMiteSentry = Creature:new {
 	objectName = "giantDecayMiteSentry",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "giant_decay_mite_sentry",
 	stfName = "mob/creature_names",
 	objectCRC = 3943467921, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,10 +51,7 @@ gunganPriest = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4058341940, 
 	socialGroup = "gungan",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

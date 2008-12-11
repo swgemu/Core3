@@ -43,17 +43,13 @@
 domesticFalumpaset = Creature:new {
 	objectName = "domesticFalumpaset",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Naboo",
 	gender = "",
 
 	speciesName = "domestic_falumpaset",
 	stfName = "mob/creature_names",
 	objectCRC = 891448142, 
 	socialGroup = "Naboo",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

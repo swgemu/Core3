@@ -51,10 +51,7 @@ feralMarauder = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 52876059, 
 	socialGroup = "marauder",
-	
-
 	level = 44,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 mammothBeardedJax = Creature:new {
 	objectName = "mammothBeardedJax",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Jax",
 	gender = "",
 
 	speciesName = "mammoth_bearded_jax",
 	stfName = "mob/creature_names",
 	objectCRC = 534842102, 
 	socialGroup = "Jax",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

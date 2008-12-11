@@ -43,17 +43,13 @@
 piket = Creature:new {
 	objectName = "piket",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Piket",
 	gender = "",
 
 	speciesName = "piket",
 	stfName = "mob/creature_names",
 	objectCRC = 228250912, 
 	socialGroup = "Piket",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

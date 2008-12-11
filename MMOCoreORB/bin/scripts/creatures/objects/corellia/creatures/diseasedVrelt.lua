@@ -43,17 +43,13 @@
 diseasedVrelt = Creature:new {
 	objectName = "diseasedVrelt",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Vrelt",
 	gender = "",
 
 	speciesName = "diseased_vrelt",
 	stfName = "mob/creature_names",
 	objectCRC = 2882436158, 
 	socialGroup = "Vrelt",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,16 +43,13 @@
 acklay = Creature:new {
 	objectName = "acklay",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Acklay",
 	gender = "male",
 
 	speciesName = "geonosian_acklay_bunker_boss",
 	stfName = "mob/creature_names",
 	objectCRC = 258679778, 
 	socialGroup = "self",
-	
 	level = 157,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

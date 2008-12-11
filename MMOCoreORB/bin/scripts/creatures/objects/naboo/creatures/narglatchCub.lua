@@ -43,17 +43,13 @@
 narglatchCub = Creature:new {
 	objectName = "narglatchCub",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Narglatch",
 	gender = "",
 
 	speciesName = "narglatch_cub",
 	stfName = "mob/creature_names",
 	objectCRC = 2474362724, 
 	socialGroup = "Narglatch",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

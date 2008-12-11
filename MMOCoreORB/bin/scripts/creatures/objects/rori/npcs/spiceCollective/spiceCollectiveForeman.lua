@@ -51,10 +51,7 @@ spiceCollectiveForeman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 615329380, 
 	socialGroup = "spice_collective",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

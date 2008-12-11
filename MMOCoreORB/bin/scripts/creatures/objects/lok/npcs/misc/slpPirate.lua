@@ -50,10 +50,7 @@ slpPirate = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "Pirate",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

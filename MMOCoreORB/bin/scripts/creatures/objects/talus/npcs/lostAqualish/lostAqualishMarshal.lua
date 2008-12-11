@@ -51,10 +51,7 @@ lostAqualishMarshal = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3894956242, 
 	socialGroup = "lost_aqualish",
-	
-
 	level = 25,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

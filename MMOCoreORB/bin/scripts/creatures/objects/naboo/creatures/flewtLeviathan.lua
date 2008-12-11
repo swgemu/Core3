@@ -43,17 +43,13 @@
 flewtLeviathan = Creature:new {
 	objectName = "flewtLeviathan",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rewt",
 	gender = "",
 
 	speciesName = "flewt_leviathan",
 	stfName = "mob/creature_names",
 	objectCRC = 1436777570, 
 	socialGroup = "Rewt",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

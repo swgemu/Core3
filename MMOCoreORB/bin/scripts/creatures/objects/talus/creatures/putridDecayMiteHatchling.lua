@@ -43,17 +43,13 @@
 putridDecayMiteHatchling = Creature:new {
 	objectName = "putridDecayMiteHatchling",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "putrid_decay_mite_hatchling",
 	stfName = "mob/creature_names",
 	objectCRC = 2827279538, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 juvenileCanyonKrayt = Creature:new {
 	objectName = "juvenileCanyonKrayt",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Krayt Dragon",
 	gender = "",
 
 	speciesName = "juvenile_canyon_krayt",
 	stfName = "mob/creature_names",
 	objectCRC = 899113216, 
 	socialGroup = "Krayt Dragon",
-	
-
 	level = 122,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,8 +51,6 @@ seniorSpecforceInfiltrator = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 995551214, 
 	socialGroup = "rebel",
-	
-
 	level = 20,
 	
 

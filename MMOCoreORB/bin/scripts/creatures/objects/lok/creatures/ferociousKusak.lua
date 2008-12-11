@@ -43,17 +43,13 @@
 ferociousKusak = Creature:new {
 	objectName = "ferociousKusak",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kusak",
 	gender = "",
 
 	speciesName = "ferocious_kusak",
 	stfName = "mob/creature_names",
 	objectCRC = 1518117227, 
 	socialGroup = "Kusak",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

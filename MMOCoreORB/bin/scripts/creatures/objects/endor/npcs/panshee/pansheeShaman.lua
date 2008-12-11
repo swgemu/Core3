@@ -51,10 +51,7 @@ pansheeShaman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 39965146, 
 	socialGroup = "panshee_tribe",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

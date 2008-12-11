@@ -43,17 +43,13 @@
 forceSensitiveCryptCrawler = Creature:new {
 	objectName = "forceSensitiveCryptCrawler",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Remn. Of Kun",
 	gender = "",
 
 	speciesName = "force_sensitive_crypt_crawler",
 	stfName = "mob/creature_names", 
 	objectCRC = 3582842102, 
 	socialGroup = "Remn. Of Kun",
-	
-
 	level = 95,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

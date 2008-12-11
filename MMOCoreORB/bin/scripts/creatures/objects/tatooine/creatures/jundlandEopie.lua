@@ -43,17 +43,13 @@
 jundlandEopie = Creature:new {
 	objectName = "jundlandEopie",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "jundland_eopie",
 	stfName = "mob/creature_names",
 	objectCRC = 3289792361, 
 	socialGroup = "self",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 arachneWidow = Creature:new {
 	objectName = "arachneWidow",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Arachne",
 	gender = "",
 
 	speciesName = "arachne_widow",
 	stfName = "mob/creature_names",
 	objectCRC = 1157055229, 
 	socialGroup = "Arachne",
-	
-
 	level = 58,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

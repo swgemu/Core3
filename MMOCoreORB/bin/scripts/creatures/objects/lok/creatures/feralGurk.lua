@@ -43,17 +43,13 @@
 feralGurk = Creature:new {
 	objectName = "feralGurk",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "feral_gurk",
 	stfName = "mob/creature_names",
 	objectCRC = 3464397925, 
 	socialGroup = "self",
-	
-
 	level = 34,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

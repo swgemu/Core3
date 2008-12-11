@@ -43,17 +43,13 @@
 disturbedBolma = Creature:new {
 	objectName = "disturbedBolma",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "disturbed_bolma",
 	stfName = "mob/creature_names",
 	objectCRC = 4078228623, 
 	socialGroup = "self",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

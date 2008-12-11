@@ -43,17 +43,13 @@
 rontoFurious = Creature:new {
 	objectName = "rontoFurious",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Ronto",
 	gender = "",
 
 	speciesName = "ronto_furious",
 	stfName = "mob/creature_names",
 	objectCRC = 4073846880, 
 	socialGroup = "Ronto",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

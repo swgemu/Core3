@@ -50,10 +50,7 @@ shadowOutlawNonaggro = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3442964433, 
 	socialGroup = "Sith Shadow (s.s. non-aggro)",
-	
-
 	level = 68,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

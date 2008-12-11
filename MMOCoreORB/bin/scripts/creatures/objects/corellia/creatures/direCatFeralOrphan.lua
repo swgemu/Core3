@@ -43,17 +43,13 @@
 direCatFeralOrphan = Creature:new {
 	objectName = "direCatFeralOrphan",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dire Cat",
 	gender = "",
 
 	speciesName = "dire_cat_feral_orphan",
 	stfName = "mob/creature_names",
 	objectCRC = 1616759912, 
 	socialGroup = "Dire Cat",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,10 +51,7 @@ singingMtnClanSlave = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 722215438, 
 	socialGroup = "mtn_clan",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -50,10 +50,7 @@ rorgunganWarchief = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3438350132, 
 	socialGroup = "Rorgungan",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

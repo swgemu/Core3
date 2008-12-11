@@ -43,17 +43,13 @@
 swampGurrcat = Creature:new {
 	objectName = "swampGurrcat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "swamp_gurrcat",
 	stfName = "mob/creature_names",
 	objectCRC = 4196368391, 
 	socialGroup = "self",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

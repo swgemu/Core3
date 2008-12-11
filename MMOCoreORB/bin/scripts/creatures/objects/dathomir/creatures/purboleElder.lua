@@ -43,17 +43,13 @@
 purboleElder = Creature:new {
 	objectName = "purboleElder",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Purbole",
 	gender = "",
 
 	speciesName = "purbole_elder",
 	stfName = "mob/creature_names",
 	objectCRC = 1649503815, 
 	socialGroup = "Purbole",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

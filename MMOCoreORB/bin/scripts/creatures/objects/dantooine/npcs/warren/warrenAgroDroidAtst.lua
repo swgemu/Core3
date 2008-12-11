@@ -50,10 +50,7 @@ warrenAgroDroidAtst = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 2128352281, 
 	socialGroup = "Warren Cyborg",
-	
-
 	level = 86,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

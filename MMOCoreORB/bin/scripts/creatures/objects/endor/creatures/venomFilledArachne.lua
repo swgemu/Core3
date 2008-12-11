@@ -43,17 +43,13 @@
 venomFilledArachne = Creature:new {
 	objectName = "venomFilledArachne",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Arachne",
 	gender = "",
 
 	speciesName = "venom_filled_arachne",
 	stfName = "mob/creature_names",
 	objectCRC = 1157055229, 
 	socialGroup = "Arachne",
-	
-
 	level = 36,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

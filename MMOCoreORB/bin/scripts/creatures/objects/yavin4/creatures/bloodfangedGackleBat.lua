@@ -43,17 +43,13 @@
 bloodfangedGackleBat = Creature:new {
 	objectName = "bloodfangedGackleBat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gacklebat",
 	gender = "",
 
 	speciesName = "bloodfanged_gackle_bat",
 	stfName = "mob/creature_names",
 	objectCRC = 2273297352, 
 	socialGroup = "Gacklebat",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

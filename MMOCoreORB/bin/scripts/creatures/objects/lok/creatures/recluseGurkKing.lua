@@ -43,17 +43,13 @@
 recluseGurkKing = Creature:new {
 	objectName = "recluseGurkKing",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gurk",
 	gender = "",
 
 	speciesName = "recluse_gurk_king",
 	stfName = "mob/creature_names",
 	objectCRC = 657461156, 
 	socialGroup = "Gurk",
-	
-
 	level = 45,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

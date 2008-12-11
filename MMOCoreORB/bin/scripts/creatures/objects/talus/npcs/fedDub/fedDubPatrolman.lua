@@ -51,10 +51,7 @@ fedDubPatrolman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1664654311, 
 	socialGroup = "fed_dub",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

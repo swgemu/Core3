@@ -43,17 +43,13 @@
 crescentRasp = Creature:new {
 	objectName = "crescentRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "crescent_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 229802836, 
 	socialGroup = "Rasp",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

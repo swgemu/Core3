@@ -51,10 +51,7 @@ lostAqualishWarchief = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1107235899, 
 	socialGroup = "lost_aqualish",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

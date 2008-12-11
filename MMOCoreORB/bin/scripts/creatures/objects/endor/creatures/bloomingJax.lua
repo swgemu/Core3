@@ -43,17 +43,13 @@
 bloomingJax = Creature:new {
 	objectName = "bloomingJax",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Jax",
 	gender = "",
 
 	speciesName = "blooming_jax",
 	stfName = "a Blooming Jax",
 	objectCRC = 1187375621, 
 	socialGroup = "Jax",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 virVurToxicSlasher = Creature:new {
 	objectName = "virVurToxicSlasher",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "VirVur",
 	gender = "",
 
 	speciesName = "vir_vur_toxic_slasher",
 	stfName = "mob/creature_names",
 	objectCRC = 844441928, 
 	socialGroup = "VirVur",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 derangedSquall = Creature:new {
 	objectName = "derangedSquall",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "deranged_squall",
 	stfName = "mob/creature_names",
 	objectCRC = 536393830, 
 	socialGroup = "self",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

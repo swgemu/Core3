@@ -51,10 +51,7 @@ meatlumpCretin = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3682831326, 
 	socialGroup = "meatlump",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

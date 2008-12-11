@@ -43,17 +43,13 @@
 eopieHerdmaster = Creature:new {
 	objectName = "eopieHerdmaster",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Eopie",
 	gender = "",
 
 	speciesName = "eopie_herdmaster",
 	stfName = "mob/creature_names",
 	objectCRC = 3289792361, 
 	socialGroup = "Eopie",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

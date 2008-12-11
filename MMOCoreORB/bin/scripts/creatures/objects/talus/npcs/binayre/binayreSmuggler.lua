@@ -51,10 +51,7 @@ binayreSmuggler = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1210819917, 
 	socialGroup = "binayre",
-	
-
 	level = 17,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 kusakMauler = Creature:new {
 	objectName = "kusakMauler",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kusak",
 	gender = "",
 
 	speciesName = "kusak_mauler",
 	stfName = "mob/creature_names",
 	objectCRC = 1518117227, 
 	socialGroup = "Kusak",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

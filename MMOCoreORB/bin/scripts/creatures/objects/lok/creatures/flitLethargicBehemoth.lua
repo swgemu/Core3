@@ -43,7 +43,6 @@
 flitLethargicBehemoth = Creature:new {
 	objectName = "flitLethargicBehemoth",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Flit",
 	gender = "",
 
 	speciesName = "flit_lethargic_behemoth",
@@ -51,10 +50,7 @@ flitLethargicBehemoth = Creature:new {
 	--objectCRC = 1138484659,
 	objectCRC = 4002066866,
 	socialGroup = "Flit",
-	
-
 	level = 23,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

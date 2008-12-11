@@ -43,17 +43,13 @@
 dwarfNuna = Creature:new {
 	objectName = "dwarfNuna",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dwarf Nuna",
 	gender = "",
 
 	speciesName = "dwarf_nuna",
 	stfName = "mob/creature_names",
 	objectCRC = 2763251553, 
 	socialGroup = "Dwarf Nuna",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

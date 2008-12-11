@@ -51,8 +51,6 @@ rebelCommando = Creature:new {
     stfName = "mob/creature_names",
 	objectCRC = 1340194354, 
 	socialGroup = "Rebel",
-	
-
 	level = 30,
 	
 

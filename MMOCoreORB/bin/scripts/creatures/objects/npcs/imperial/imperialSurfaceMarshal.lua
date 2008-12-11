@@ -51,8 +51,6 @@ imperialSurfaceMarshal = Creature:new {
     stfName = "mob/creature_names",
 	objectCRC = 3498321727, 
 	socialGroup = "imperial",
-	
-
 	level = 30,
 	
 

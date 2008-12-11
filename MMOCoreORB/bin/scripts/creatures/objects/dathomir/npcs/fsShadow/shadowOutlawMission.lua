@@ -50,10 +50,7 @@ shadowOutlawMission = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 371253062, 
 	socialGroup = "Sith Shadow",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,10 +51,7 @@ wiseGondulaRitualist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
 	socialGroup = "gondula_tribe",
-	
-
 	level = 41,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

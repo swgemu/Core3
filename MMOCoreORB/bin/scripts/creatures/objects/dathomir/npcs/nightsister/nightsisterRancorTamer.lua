@@ -51,10 +51,7 @@ nightsisterRancorTamer = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 764979635, 
 	socialGroup = "nightsister",
-	
-
 	level = 76,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

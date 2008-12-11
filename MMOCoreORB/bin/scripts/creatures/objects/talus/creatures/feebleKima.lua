@@ -43,17 +43,13 @@
 feebleKima = Creature:new {
 	objectName = "feebleKima",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kima",
 	gender = "",
 
 	speciesName = "feeble_kima",
 	stfName = "mob/creature_names",
 	objectCRC = 558452126, 
 	socialGroup = "Kima",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

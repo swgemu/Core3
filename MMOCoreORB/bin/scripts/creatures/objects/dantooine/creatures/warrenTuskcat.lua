@@ -43,17 +43,13 @@
 warrenTuskcat = Creature:new {
 	objectName = "warrenTuskcat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Tusk Cat",
 	gender = "",
 
 	speciesName = "warren_tuskcat",
 	stfName = "mob/creature_names",
 	objectCRC = 3651259209, 
 	socialGroup = "Tusk Cat",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

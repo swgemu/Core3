@@ -43,17 +43,13 @@
 forceSensitiveRenegade = Creature:new {
 	objectName = "forceSensitiveRenegade",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Force Reneg.",
 	gender = "",
 
 	speciesName = "force_sensitive_renegade",
 	stfName = "mob/creature_names", 
 	objectCRC = 4022749602, 
 	socialGroup = "Force Reneg.",
-	
-
 	level = 80,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

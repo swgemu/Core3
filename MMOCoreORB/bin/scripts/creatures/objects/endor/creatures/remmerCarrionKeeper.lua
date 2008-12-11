@@ -43,17 +43,13 @@
 remmerCarrionKeeper = Creature:new {
 	objectName = "remmerCarrionKeeper",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Remmer",
 	gender = "",
 
 	speciesName = "remmer_carrion_keeper",
 	stfName = "mob/creature_names",
 	objectCRC = 3186677588, 
 	socialGroup = "Remmer",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

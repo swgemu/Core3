@@ -51,10 +51,7 @@ craftyDonkuwahScout = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 974088634, 
 	socialGroup = "donkuwah_tribe",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

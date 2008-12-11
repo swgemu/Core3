@@ -51,8 +51,6 @@ imperialMajor = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 1953999744, 
 	socialGroup = "imperial",
-	
-
 	level = 21,
 	
 

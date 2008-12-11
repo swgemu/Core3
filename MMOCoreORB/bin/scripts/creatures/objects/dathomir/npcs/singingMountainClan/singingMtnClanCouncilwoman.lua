@@ -51,10 +51,7 @@ singingMtnClanCouncilwoman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 905293113, 
 	socialGroup = "mtn_clan",
-	
-
 	level = 263,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

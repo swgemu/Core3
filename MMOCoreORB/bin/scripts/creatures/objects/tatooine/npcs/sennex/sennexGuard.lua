@@ -43,17 +43,13 @@
 sennexGuard = Creature:new {
 	objectName = "sennexGuard",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Sennex",
 	gender = "",
 
 	speciesName = "sennex_guard",
 	stfName = "mob/creature_names", 
 	objectCRC = 2453845306, 
 	socialGroup = "Sennex",
-	
-
 	level = 62,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

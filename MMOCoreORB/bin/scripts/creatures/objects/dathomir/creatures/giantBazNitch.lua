@@ -43,17 +43,13 @@
 giantBazNitch = Creature:new {
 	objectName = "giantBazNitch",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Baz Nitch",
 	gender = "",
 
 	speciesName = "giant_baz_nitch",
 	stfName = "mob/creature_names",
 	objectCRC = 411959999, 
 	socialGroup = "Baz Nitch",
-	
-
 	level = 35,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

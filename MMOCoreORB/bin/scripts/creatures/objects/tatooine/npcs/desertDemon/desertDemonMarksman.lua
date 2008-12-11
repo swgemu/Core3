@@ -51,10 +51,7 @@ desertDemonMarksman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 207095094, 
 	socialGroup = "desert_demon",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

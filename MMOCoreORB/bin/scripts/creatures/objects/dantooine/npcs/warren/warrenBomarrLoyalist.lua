@@ -50,10 +50,7 @@ warrenBomarrLoyalist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2037341400, 
 	socialGroup = "Warren Teraud",
-	
-
 	level = 50,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

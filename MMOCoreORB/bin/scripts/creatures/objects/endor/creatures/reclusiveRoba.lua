@@ -43,17 +43,13 @@
 reclusiveRoba = Creature:new {
 	objectName = "reclusiveRoba",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "reclusive_roba",
 	stfName = "mob/creature_names",
 	objectCRC = 1008127960, 
 	socialGroup = "self",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

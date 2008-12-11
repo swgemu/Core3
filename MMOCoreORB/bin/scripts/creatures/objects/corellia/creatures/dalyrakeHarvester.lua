@@ -43,17 +43,13 @@
 dalyrakeHarvester = Creature:new {
 	objectName = "dalyrakeHarvester",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dalyrake",
 	gender = "",
 
 	speciesName = "dalyrake_harvester",
 	stfName = "mob/creature_names",
 	objectCRC = 3621894346, 
 	socialGroup = "Dalyrake",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 kimogilaHatchling = Creature:new {
 	objectName = "kimogilaHatchling",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kimogila",
 	gender = "",
 
 	speciesName = "kimogila_hatchling",
 	stfName = "mob/creature_names",
 	objectCRC = 331807070, 
 	socialGroup = "Kimogila",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

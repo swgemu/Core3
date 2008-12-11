@@ -43,16 +43,12 @@
 festeringDungQueen = Creature:new {
 	objectName = "festeringDungQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "festering_dung_queen",
 	stfName = "mob/creature_names",
 	socialGroup = "Decay Mite",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

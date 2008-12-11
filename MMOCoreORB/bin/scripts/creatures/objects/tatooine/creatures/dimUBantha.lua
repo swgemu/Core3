@@ -43,17 +43,13 @@
 dimUBantha = Creature:new {
 	objectName = "dimUBantha",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bantha",
 	gender = "",
 
 	speciesName = "dim_u_bantha",
 	stfName = "mob/creature_names",
 	objectCRC = 3918529401, 
 	socialGroup = "Bantha",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

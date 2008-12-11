@@ -51,10 +51,7 @@ spiderNightsisterElder = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 916249685, 
 	socialGroup = "spider_nightsister",
-	
-
 	level = 277,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

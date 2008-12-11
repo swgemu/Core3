@@ -43,17 +43,13 @@
 hostileThuneMother = Creature:new {
 	objectName = "hostileThuneMother",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Thune",
 	gender = "",
 
 	speciesName = "hostile_thune_mother",
 	stfName = "mob/creature_names",
 	objectCRC = 3588269792, 
 	socialGroup = "Thune",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 madAngler = Creature:new {
 	objectName = "madAngler",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Angler",
 	gender = "",
 
 	speciesName = "mad_angler",
 	stfName = "mob/creature_names",
 	objectCRC = 3645434131, 
 	socialGroup = "Angler",
-	
-
 	level = 95,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

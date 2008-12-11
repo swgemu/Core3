@@ -43,17 +43,13 @@
 cuPa = Creature:new {
 	objectName = "cuPa",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "CuPa",
 	gender = "",
 
 	speciesName = "cu_pa",
 	stfName = "mob/creature_names",
 	objectCRC = 673552695, 
 	socialGroup = "CuPa",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -192,17 +188,13 @@ Creatures:addCreature(cuPa, 673552695) --  Add to Global Table
 CuPa = Creature:new {
 	objectName = "CuPa",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "CuPa",
 	gender = "",
 
 	speciesName = "cu_pa",
 	stfName = "mob/creature_names",
 	objectCRC = 673552695, 
 	socialGroup = "CuPa",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

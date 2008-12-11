@@ -50,10 +50,7 @@ rorgunganScout = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4058341940, 
 	socialGroup = "Rorgungan",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -51,10 +51,7 @@ corsecComissioner = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 16556953, 
 	socialGroup = "corsec",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

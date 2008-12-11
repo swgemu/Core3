@@ -51,10 +51,7 @@ lostAqualishInfiltrator = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3958728876, 
 	socialGroup = "lost_aqualish",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

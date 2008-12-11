@@ -47,12 +47,10 @@ imperialStormTrooper = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "crackdown_imperialStormTrooper",
+	speciesName = "crackdown_stormtrooper",
     stfName = "mob/creature_names",
 	objectCRC = 3128894413, 
 	socialGroup = "imperial",
-	
-
 	level = 80,
 	
 

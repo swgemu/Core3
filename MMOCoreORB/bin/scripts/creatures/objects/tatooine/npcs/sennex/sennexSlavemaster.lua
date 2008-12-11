@@ -43,17 +43,13 @@
 sennexSlavemaster = Creature:new {
 	objectName = "sennexSlavemaster",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Sennex",
 	gender = "",
 
 	speciesName = "sennex_slavemaster",
 	stfName = "mob/creature_names", 
 	objectCRC = 4223357236, 
 	socialGroup = "Sennex",
-	
-
 	level = 67,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

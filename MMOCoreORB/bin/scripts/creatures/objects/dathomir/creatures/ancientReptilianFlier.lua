@@ -43,17 +43,13 @@
 ancientReptilianFlier = Creature:new {
 	objectName = "ancientReptilianFlier",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Reptilian Flier",
 	gender = "",
 
 	speciesName = "ancient_reptilian_flier",
 	stfName = "mob/creature_names",
 	objectCRC = 2270001055, 
 	socialGroup = "Reptilian Flier",
-	
-
 	level = 25,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

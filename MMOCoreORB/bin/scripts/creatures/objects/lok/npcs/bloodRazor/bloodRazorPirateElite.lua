@@ -51,10 +51,7 @@ bloodRazorPirateElite = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2257177660, 
 	socialGroup = "bloodrazor",
-	
-
 	level = 33,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

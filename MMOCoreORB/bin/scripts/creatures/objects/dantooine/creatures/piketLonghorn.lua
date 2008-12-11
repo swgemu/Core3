@@ -43,17 +43,13 @@
 piketLonghorn = Creature:new {
 	objectName = "piketLonghorn",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Piket",
 	gender = "",
 
 	speciesName = "piket_longhorn",
 	stfName = "mob/creature_names",
 	objectCRC = 3816463323, 
 	socialGroup = "Piket",
-	
-
 	level = 37,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

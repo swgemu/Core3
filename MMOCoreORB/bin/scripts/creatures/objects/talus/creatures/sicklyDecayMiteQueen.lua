@@ -43,17 +43,13 @@
 sicklyDecayMiteQueen = Creature:new {
 	objectName = "sicklyDecayMiteQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "sickly_decay_mite_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 3821753803, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 20,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

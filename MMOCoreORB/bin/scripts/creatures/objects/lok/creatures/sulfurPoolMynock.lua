@@ -43,17 +43,13 @@
 sulfurPoolMynock = Creature:new {
 	objectName = "sulfurPoolMynock",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Mynock",
 	gender = "",
 
 	speciesName = "sulfur_pool_mynock",
 	stfName = "mob/creature_names",
 	objectCRC = 2246027732, 
 	socialGroup = "Mynock",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

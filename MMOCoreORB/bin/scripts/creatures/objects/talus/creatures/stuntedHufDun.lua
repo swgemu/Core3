@@ -43,17 +43,13 @@
 stuntedHufDun = Creature:new {
 	objectName = "stuntedHufDun",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "HufDun",
 	gender = "",
 
 	speciesName = "stunted_huf_dun",
 	stfName = "mob/creature_names",
 	objectCRC = 3411571666, 
 	socialGroup = "HufDun",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

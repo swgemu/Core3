@@ -50,10 +50,7 @@ nymSurveyer = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3657604091, 
 	socialGroup = "Nym",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

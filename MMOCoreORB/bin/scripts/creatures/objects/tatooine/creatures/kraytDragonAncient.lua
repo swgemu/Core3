@@ -43,7 +43,6 @@
 kraytDragonAncient = Creature:new {
 	objectName = "kraytDragonAncient",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Krayt Dragon",
 	gender = "",
 
 	speciesName = "krayt_dragon_ancient",
@@ -51,10 +50,7 @@ kraytDragonAncient = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 1238991743, 
 	socialGroup = "Krayt Dragon",
-	
-
 	level = 336,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

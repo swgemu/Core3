@@ -43,17 +43,13 @@
 vrobalet = Creature:new {
 	objectName = "vrobalet",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Vrobal",
 	gender = "",
 
 	speciesName = "vrobalet",
 	stfName = "mob/creature_names",
 	objectCRC = 130113365, 
 	socialGroup = "Vrobal",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

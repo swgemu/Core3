@@ -43,17 +43,13 @@
 seethingBolCrusher = Creature:new {
 	objectName = "seethingBolCrusher",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bol",
 	gender = "",
 
 	speciesName = "seething_bol_crusher",
 	stfName = "mob/creature_names",
 	objectCRC = 3820992759, 
 	socialGroup = "Bol",
-	
-
 	level = 44,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

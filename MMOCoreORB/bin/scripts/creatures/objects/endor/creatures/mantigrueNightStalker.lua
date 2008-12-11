@@ -43,17 +43,13 @@
 mantigrueNightStalker = Creature:new {
 	objectName = "mantigrueNightStalker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Mantigrue",
 	gender = "",
 
 	speciesName = "mantigrue_night_stalker",
 	stfName = "mob/creature_names",
 	objectCRC = 1684536430, 
 	socialGroup = "Mantigrue",
-	
-
 	level = 28,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 snorbalTitanicDemolisher = Creature:new {
 	objectName = "snorbalTitanicDemolisher",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Snorbal",
 	gender = "",
 
 	speciesName = "snorbal_titanic_demolisher",
 	stfName = "mob/creature_names",
 	objectCRC = 581977565, 
 	socialGroup = "Snorbal",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

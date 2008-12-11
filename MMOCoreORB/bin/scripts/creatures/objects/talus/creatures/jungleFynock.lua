@@ -43,17 +43,13 @@
 jungleFynock = Creature:new {
 	objectName = "jungleFynock",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Fynock",
 	gender = "",
 
 	speciesName = "jungle_fynock",
 	stfName = "mob/creature_names",
 	objectCRC = 388899118, 
 	socialGroup = "Fynock",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -51,10 +51,7 @@ nightsisterTrainingSlave = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1482802851, 
 	socialGroup = "nightsister",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

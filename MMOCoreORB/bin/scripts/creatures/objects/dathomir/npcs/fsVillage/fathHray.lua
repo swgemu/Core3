@@ -50,10 +50,7 @@ fathHray = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 3937658602, 
 	socialGroup = "Nightsister",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

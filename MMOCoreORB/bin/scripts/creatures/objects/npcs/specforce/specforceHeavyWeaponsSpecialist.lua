@@ -51,8 +51,6 @@ specforceHeavyWeaponsSpecialist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 542195677, 
 	socialGroup = "rebel",
-	
-
 	level = 18,
 	
 

@@ -43,17 +43,13 @@
 clippedFynock = Creature:new {
 	objectName = "clippedFynock",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Fynock",
 	gender = "",
 
 	speciesName = "clipped_fynock",
 	stfName = "mob/creature_names",
 	objectCRC = 768940720, 
 	socialGroup = "Fynock",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

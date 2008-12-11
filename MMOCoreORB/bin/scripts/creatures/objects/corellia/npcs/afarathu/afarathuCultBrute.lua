@@ -51,10 +51,7 @@ afarathuCultBrute = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4114788784, 
 	socialGroup = "afarathu",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

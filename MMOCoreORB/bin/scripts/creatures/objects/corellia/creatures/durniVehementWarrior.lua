@@ -43,17 +43,13 @@
 durniVehementWarrior = Creature:new {
 	objectName = "durniVehementWarrior",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Durni",
 	gender = "",
 
 	speciesName = "durni_vehement_warrior",
 	stfName = "mob/creature_names",
 	objectCRC = 138923017, 
 	socialGroup = "Durni",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

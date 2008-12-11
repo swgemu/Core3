@@ -43,17 +43,13 @@
 majesticPlumedRasp = Creature:new {
 	objectName = "majesticPlumedRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "majestic_plumed_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 144116282, 
 	socialGroup = "Rasp",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

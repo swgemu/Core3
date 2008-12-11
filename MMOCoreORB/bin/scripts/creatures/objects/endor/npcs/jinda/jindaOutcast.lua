@@ -50,10 +50,7 @@ jindaOutcast = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2886364858, 
 	socialGroup = "self (Jinda Tribe)",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

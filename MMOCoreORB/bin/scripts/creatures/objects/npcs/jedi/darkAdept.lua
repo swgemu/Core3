@@ -43,7 +43,6 @@
 darkAdept = Creature:new {
 	objectName = "darkAdept",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "DarkJedi",
 	gender = "",
 
 	name = "Dark Adept",
@@ -51,10 +50,7 @@ darkAdept = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2005105485, 
 	socialGroup = "DarkJedi",
-	
-
 	level = 140,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

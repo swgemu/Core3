@@ -50,10 +50,7 @@ nabooMonk = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3542952599, 
 	socialGroup = "self",
-	
-
 	level = 4,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

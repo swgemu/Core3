@@ -43,17 +43,13 @@
 gurkLoathsomeMangler = Creature:new {
 	objectName = "gurkLoathsomeMangler",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gurk",
 	gender = "",
 
 	speciesName = "gurk_loathsome_mangler",
 	stfName = "mob/creature_names",
 	objectCRC = 3464397925, 
 	socialGroup = "Gurk",
-	
-
 	level = 33,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

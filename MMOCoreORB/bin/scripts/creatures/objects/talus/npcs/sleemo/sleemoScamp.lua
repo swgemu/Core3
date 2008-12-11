@@ -43,17 +43,13 @@
 sleemoScamp = Creature:new {
 	objectName = "sleemoScamp",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Sleemo Gang",
 	gender = "",
 
 	speciesName = "sleemo_scamp",
 	stfName = "mob/creature_names", 
 	objectCRC = 3021148797, 
 	socialGroup = "Sleemo Gang",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

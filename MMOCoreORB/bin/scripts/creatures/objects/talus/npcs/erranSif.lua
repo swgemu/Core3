@@ -50,10 +50,7 @@ erranSif = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2888229824, 
 	socialGroup = "Sif",
-	
-
 	level = 67,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

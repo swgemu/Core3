@@ -51,10 +51,7 @@ binayreHooligan = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 48769020, 
 	socialGroup = "binayre",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

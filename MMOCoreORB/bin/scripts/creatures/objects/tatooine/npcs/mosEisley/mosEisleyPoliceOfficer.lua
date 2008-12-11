@@ -43,17 +43,13 @@
 mosEisleyPoliceOfficer = Creature:new {
 	objectName = "mosEisleyPoliceOfficer",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "imperial",
 	gender = "",
 
 	speciesName = "mos_eisley_police_officer",
 	stfName = "mob/creature_names", 
 	objectCRC = 966807087, 
 	socialGroup = "imperial",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

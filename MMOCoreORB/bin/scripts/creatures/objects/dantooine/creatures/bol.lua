@@ -43,17 +43,13 @@
 bol = Creature:new {
 	objectName = "bol",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bol",
 	gender = "",
 
 	speciesName = "bol",
 	stfName = "mob/creature_names",
 	objectCRC = 1195766949, 
 	socialGroup = "Bol",
-	
-
 	level = 29,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

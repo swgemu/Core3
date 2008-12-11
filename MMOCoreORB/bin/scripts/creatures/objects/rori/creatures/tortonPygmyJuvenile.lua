@@ -43,17 +43,13 @@
 tortonPygmyJuvenile = Creature:new {
 	objectName = "tortonPygmyJuvenile",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Torton",
 	gender = "",
 
 	speciesName = "torton_pygmy_juvenile",
 	stfName = "mob/creature_names",
 	objectCRC = 1970962787, 
 	socialGroup = "Torton",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,8 +51,6 @@ imperialPrivate = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 519244536, 
 	socialGroup = "Imperial",
-	
-
 	level = 15,
 	
 

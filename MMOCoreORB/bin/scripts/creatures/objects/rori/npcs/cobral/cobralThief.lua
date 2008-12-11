@@ -51,10 +51,7 @@ cobralThief = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "cobral",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 enragedDuneKimogila = Creature:new {
 	objectName = "enragedDuneKimogila",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kimogila",
 	gender = "",
 
 	speciesName = "enraged_dune_kimogila",
 	stfName = "mob/creature_names",
 	objectCRC = 533451918, 
 	socialGroup = "Kimogila",
-	
-
 	level = 148,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

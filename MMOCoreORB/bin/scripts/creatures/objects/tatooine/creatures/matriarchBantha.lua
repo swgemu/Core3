@@ -43,17 +43,13 @@
 matriarchBantha = Creature:new {
 	objectName = "matriarchBantha",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bantha",
 	gender = "",
 
 	speciesName = "matriarch_bantha",
 	stfName = "mob/creature_names",
 	objectCRC = 3918529401, 
 	socialGroup = "Bantha",
-	
-
 	level = 25,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 savageFlewtQueen = Creature:new {
 	objectName = "savageFlewtQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Flewt",
 	gender = "",
 
 	speciesName = "savage_flewt_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 1979223286, 
 	socialGroup = "Flewt",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

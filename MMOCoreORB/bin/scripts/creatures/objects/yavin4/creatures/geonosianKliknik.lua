@@ -43,7 +43,7 @@
 geonosianKliknik = Creature:new {
       objectName = "geonosianKliknik",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "self",
+      
       gender = "",
 
       stfName = "a Kliknik",

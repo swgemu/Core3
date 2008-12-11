@@ -43,17 +43,13 @@
 geneticallyEnhancedKahmurra = Creature:new {
 	objectName = "geneticallyEnhancedKahmurra",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kahmurra",
 	gender = "",
 
 	speciesName = "genetically_enhanced_kahmurra",
 	stfName = "mob/creature_names",
 	objectCRC = 3723114695, 
 	socialGroup = "Kahmurra",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

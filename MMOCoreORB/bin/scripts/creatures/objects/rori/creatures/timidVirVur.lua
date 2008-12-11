@@ -43,17 +43,13 @@
 timidVirVur = Creature:new {
 	objectName = "timidVirVur",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "VirVur",
 	gender = "",
 
 	speciesName = "timid_vir_vur",
 	stfName = "mob/creature_names",
 	objectCRC = 844441928, 
 	socialGroup = "VirVur",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

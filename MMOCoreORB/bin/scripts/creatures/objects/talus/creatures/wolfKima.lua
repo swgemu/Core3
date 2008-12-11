@@ -43,17 +43,13 @@
 wolfKima = Creature:new {
 	objectName = "wolfKima",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "wolf_kima",
 	stfName = "mob/creature_names",
 	objectCRC = 558452126, 
 	socialGroup = "self",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

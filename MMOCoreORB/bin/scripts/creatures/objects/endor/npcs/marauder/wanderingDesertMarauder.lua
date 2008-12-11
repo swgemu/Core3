@@ -51,10 +51,7 @@ wanderingDesertMarauder = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4103644702, 
 	socialGroup = "marauder",
-	
-
 	level = 47,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

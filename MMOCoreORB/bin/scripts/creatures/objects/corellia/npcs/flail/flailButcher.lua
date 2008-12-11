@@ -51,10 +51,7 @@ flailButcher = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2735896748, 
 	socialGroup = "flail",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

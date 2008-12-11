@@ -43,7 +43,6 @@
 questHeroOfTatooineFerociousBeast = Creature:new {
 	objectName = "questHeroOfTatooineFerociousBeast",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Zucca Boar",
 	gender = "",
 
 	speciesName = "creature_name",
@@ -51,10 +50,7 @@ questHeroOfTatooineFerociousBeast = Creature:new {
 	stfName = "a Quest Hero Of Tatooine Ferocious Beast",
 	objectCRC = 277596046, 
 	socialGroup = "Zucca Boar",
-	
-
 	level = 39,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 mummerThug = Creature:new {
 	objectName = "mummerThug",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Mumm. Gang (thug)",
 	gender = "",
 
 	speciesName = "mummer_thug",
 	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "Mumm. Gang (thug)",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

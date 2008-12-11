@@ -50,10 +50,7 @@ nymGuardStrong = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1348802097, 
 	socialGroup = "Nym",
-	
-
 	level = 36,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

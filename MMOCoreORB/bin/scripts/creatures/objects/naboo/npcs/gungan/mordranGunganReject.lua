@@ -50,10 +50,7 @@ mordranGunganReject = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2136286680, 
 	socialGroup = "gungan",
-	
-
 	level = 35,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

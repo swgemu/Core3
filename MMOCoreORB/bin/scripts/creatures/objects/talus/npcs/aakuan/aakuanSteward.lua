@@ -51,10 +51,7 @@ aakuanSteward = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1987859108, 
 	socialGroup = "aakuans",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

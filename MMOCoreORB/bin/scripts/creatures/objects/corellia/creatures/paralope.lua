@@ -43,17 +43,13 @@
 paralope = Creature:new {
 	objectName = "paralope",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Paratope",
 	gender = "",
 
 	speciesName = "paralope",
 	stfName = "mob/creature_names",
 	objectCRC = 634611787, 
 	socialGroup = "Paratope",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

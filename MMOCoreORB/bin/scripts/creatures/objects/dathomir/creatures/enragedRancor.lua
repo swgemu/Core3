@@ -43,17 +43,13 @@
 enragedRancor = Creature:new {
 	objectName = "enragedRancor",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rancor",
 	gender = "",
 
 	speciesName = "enraged_rancor",
 	stfName = "mob/creature_names",
 	objectCRC = 3516440142, 
 	socialGroup = "Rancor",
-	
-
 	level = 80,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

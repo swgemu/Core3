@@ -51,10 +51,7 @@ mercenaryWeak = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4246087789, 
 	socialGroup = "lok_mercenaries",
-	
-
 	level = 34,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

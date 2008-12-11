@@ -43,17 +43,13 @@
 rogueFalumpaset = Creature:new {
 	objectName = "rogueFalumpaset",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "rogue_falumpaset",
 	stfName = "mob/creature_names",
 	objectCRC = 891448142, 
 	socialGroup = "self",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

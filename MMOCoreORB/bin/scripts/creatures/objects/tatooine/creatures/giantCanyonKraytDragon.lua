@@ -43,7 +43,6 @@
 giantCanyonKraytDragon = Creature:new {
 	objectName = "giantCanyonKraytDragon",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Krayt Dragon",
 	gender = "",
 
 	speciesName = "giant_canyon_krayt_dragon",
@@ -51,10 +50,7 @@ giantCanyonKraytDragon = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 1661868611, 
 	socialGroup = "Krayt Dragon",
-	
-
 	level = 300,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

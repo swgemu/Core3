@@ -43,17 +43,13 @@
 huurtonReaper = Creature:new {
 	objectName = "huurtonReaper",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Huurton",
 	gender = "",
 
 	speciesName = "huurton_reaper",
 	stfName = "mob/creature_names",
 	objectCRC = 3338559238, 
 	socialGroup = "Huurton",
-	
-
 	level = 84,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

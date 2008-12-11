@@ -43,17 +43,13 @@
 weequayChampion = Creature:new {
 	objectName = "weequayChampion",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Weequay",
 	gender = "",
 
 	speciesName = "weequay_champion",
 	stfName = "mob/creature_names", 
 	objectCRC = 165532274, 
 	socialGroup = "Weequay",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -50,10 +50,7 @@ jindaElderWorker = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2886364858, 
 	socialGroup = "Jinda Tribe",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
