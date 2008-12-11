@@ -47,13 +47,14 @@ corvetteRebelRearAdmiral = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Rebel Rear Admiral",
+	speciesName = "corvette_rebel_rear_admiral",
+	stfName = "mob/creature_names", 
 	objectCRC = 3881398557, 
 	socialGroup = "rebel",
-	named = FALSE, 
+	
 
 	level = 200,
-	xp = 19008,
+	
 
 	combatFlags = 0,
 
@@ -121,7 +122,7 @@ corvetteRebelRearAdmiral = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ corvetteRebelRearAdmiral = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

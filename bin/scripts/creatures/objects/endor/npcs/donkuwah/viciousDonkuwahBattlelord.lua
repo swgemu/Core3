@@ -47,13 +47,14 @@ viciousDonkuwahBattlelord = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Vicious Donkuwah battlelord",
+	speciesName = "vicious_donkuwah_battlelord",
+	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
 	socialGroup = "donkuwah_tribe",
-	named = FALSE, 
+	
 
 	level = 1,
-	xp = 5007,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ viciousDonkuwahBattlelord = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ viciousDonkuwahBattlelord = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

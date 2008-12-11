@@ -40,22 +40,23 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-stormCommando = Creature:new {
-	objectName = "stormCommando",  -- Lua Object Name
+imperialStormCommando = Creature:new {
+	objectName = "imperialStormCommando",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "imperial" 
+	faction = "imperial", 
 	factionPoints = 20,
 	gender = "",
 
-	name = "Crackdown Storm Commando",
+	speciesName = "crackdown_storm_commando",
+	stfName = "mob/creature_names", 
 	objectCRC = 3637879502, 
 	socialGroup = "imperial",
-	named = FALSE, 
+	
 
 	level = 1,
-	xp = 45,
+	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 10100,
 	healthMin = 8300,
@@ -97,16 +98,16 @@ stormCommando = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Imperial Flame Thrower", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 400,
+	weaponAttackSpeed = 4.9,
+	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -121,7 +122,7 @@ stormCommando = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,10 +137,10 @@ stormCommando = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "imperialStormCommandoAttack1", "imperialStormCommandoAttack2", "imperialStormCommandoAttack3", "imperialStormCommandoAttack4" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(stormCommando, 3637879502) --  Add to Global Table
+Creatures:addCreature(imperialStormCommando, 3637879502) --  Add to Global Table

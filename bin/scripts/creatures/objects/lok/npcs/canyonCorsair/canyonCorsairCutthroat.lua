@@ -47,13 +47,14 @@ canyonCorsairCutthroat = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Canyon Corsair cutthroat",
+	speciesName = "canyon_corsair_cutthroat",
+	stfName = "mob/creature_names", 
 	objectCRC = 3977728311, 
 	socialGroup = "canyon_corsair",
-	named = FALSE, 
+	
 
 	level = 35,
-	xp = 3551,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ canyonCorsairCutthroat = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ canyonCorsairCutthroat = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -47,13 +47,14 @@ corvetteRebelCommodore = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Rebel Commodore",
+	speciesName = "corvette_rebel_commodore",
+	stfName = "mob/creature_names", 
 	objectCRC = 1340194354, 
 	socialGroup = "rebel",
-	named = FALSE, 
+	
 
 	level = 181,
-	xp = 17178,
+	
 
 	combatFlags = 0,
 
@@ -121,7 +122,7 @@ corvetteRebelCommodore = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ corvetteRebelCommodore = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

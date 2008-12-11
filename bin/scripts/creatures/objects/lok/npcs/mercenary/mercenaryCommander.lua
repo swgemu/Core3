@@ -47,13 +47,14 @@ mercenaryCommander = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "mercenary commander",
+	speciesName = "mercenary_commander",
+	stfName = "mob/creature_names", 
 	objectCRC = 3360870828, 
 	socialGroup = "lok_mercenaries",
-	named = FALSE, 
+	
 
 	level = 42,
-	xp = 4188,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ mercenaryCommander = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ mercenaryCommander = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

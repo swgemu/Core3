@@ -47,13 +47,14 @@ kobolaMiner = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Kobola miner",
+	speciesName = "kobola_miner",
+	stfName = "mob/creature_names", 
 	objectCRC = 3466937588, 
 	socialGroup = "kobola",
-	named = FALSE, 
+	
 
 	level = 8,
-	xp = 0,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ kobolaMiner = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ kobolaMiner = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

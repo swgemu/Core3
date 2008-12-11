@@ -47,13 +47,14 @@ valarianThug = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Valarian's thug",
+	speciesName = "valarian_thug",
+	stfName = "mob/creature_names", 
 	objectCRC = 2854514144, 
 	socialGroup = "valarian",
-	named = FALSE, 
+	
 
 	level = 11,
-	xp = 430,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ valarianThug = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ valarianThug = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -47,13 +47,14 @@ fedDubCaptain = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Fed-Dub Captain",
+	speciesName = "fed_dub_captain",
+	stfName = "mob/creature_names", 
 	objectCRC = 3361618348, 
 	socialGroup = "fed_dub",
-	named = FALSE, 
+	
 
 	level = 19,
-	xp = 1426,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ fedDubCaptain = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ fedDubCaptain = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

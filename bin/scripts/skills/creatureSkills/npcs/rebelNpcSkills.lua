@@ -40,33 +40,32 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Npcs
+-- Npc Skills
 
 -- Rebel Attacks
-RunSkillsFile("creatureSkills/npcs/rebel/rebelAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelColonelAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/rebel/rebelCommandoAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelCorporalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelFirstLieutenantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelGeneralAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelHighGeneralAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelLanceCorporalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelLieutenantColonelAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorGeneralAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelMedicAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelScoutAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSecondLieutenantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantMajorAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSpecforceCaptainAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelStaffCorporalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelSurfaceMarshalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelTrooperAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/rebel/rebelWarrantOfficerIAttacks.lua")
-
-RunSkillsFile("creatureSkills/npcs/rebel/hanSoloAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/rebel/chewbaccaAttacks.lua")
-
-RunSkillsFile("creatureSkills/npcs/rebel/oldManAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/rebel/hanSoloAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/rebel/lukeAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/rebel/oldManAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/rebel/rebelColonelAttacks.lua") -- Weapon "Power 5, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelCommandoAttacks.lua") -- Weapon "Rebel Flamer"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelCorporalAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelFirstLieutenantAttacks.lua") -- Weapon "Power 5, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelGeneralAttacks.lua") -- Weapon "Gaderiffi, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelHighGeneralAttacks.lua") -- Weapon "Power 5, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelJediKnightAttacks.lua") -- Weapon "2handed Lightsaber"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelJediMasterAttacks.lua") -- Weapon "Polearm Lightsaber"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelLanceCorporalAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelLieutenantColonelAttacks.lua") -- Weapon "Power 5, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorAttacks.lua") -- Weapon "Power 5, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorGeneralAttacks.lua") -- Weapon "Power 5, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelMedicAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelScoutAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelSecondLieutenantAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantAttacks.lua") -- Weapon "Republic Blaster, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantMajorAttacks.lua") -- Weapon "Republic Blaster, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelSpecforceCaptainAttacks.lua") -- Weapon "spec ops berserker, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelStaffCorporalAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelSurfaceMarshalAttacks.lua") -- Weapon "Power 5, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelTrooperAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelWarrantOfficerIAttacks.lua") -- Weapon "Power 5, Stun Baton"

@@ -47,13 +47,14 @@ pansheeElderWorker = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Panshee elder worker",
+	speciesName = "panshee_elder_worker",
+	stfName = "mob/creature_names", 
 	objectCRC = 1805137364, 
 	socialGroup = "panshee_tribe",
-	named = FALSE, 
+	
 
 	level = 27,
-	xp = 2730,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ pansheeElderWorker = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ pansheeElderWorker = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -46,13 +46,14 @@ corsecCadetAggro = Creature:new {
 	faction = "Corsec [aggro]",
 	gender = "",
 
-	name = "CorSec Special Ops Trainee",
+	speciesName = "corsec_cadet_aggro",
+	stfName = "mob/creature_names", 
 	objectCRC = 3630538207, 
 	socialGroup = "Corsec [aggro]",
-	named = FALSE, 
+	
 
 	level = 71,
-	xp = 6839,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -120,7 +121,7 @@ corsecCadetAggro = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -135,8 +136,8 @@ corsecCadetAggro = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

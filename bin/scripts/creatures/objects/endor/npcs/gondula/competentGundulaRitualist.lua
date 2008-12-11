@@ -47,13 +47,14 @@ competentGundulaRitualist = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Competent Condula ritualist",
+	speciesName = "competent_gundula_ritualist",
+	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "gondula_tribe",
-	named = FALSE, 
+	
 
 	level = 17,
-	xp = 1102,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ competentGundulaRitualist = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ competentGundulaRitualist = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

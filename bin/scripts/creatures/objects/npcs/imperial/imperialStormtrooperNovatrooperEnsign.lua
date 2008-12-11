@@ -40,22 +40,23 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-stormtrooperNovatrooperEnsign = Creature:new {
-	objectName = "stormtrooperNovatrooperEnsign",  -- Lua Object Name
+imperialStormTrooperNovatrooperEnsign = Creature:new {
+	objectName = "imperialStormTrooperNovatrooperEnsign",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "imperial" 
+	faction = "imperial", 
 	factionPoints = 20,
 	gender = "",
 
-	name = "Novatrooper Ensign",
+	speciesName = "stormtrooper_novatrooper_ensign",
+	stfName = "mob/creature_names", 
 	objectCRC = 952713016, 
 	socialGroup = "imperial",
-	named = FALSE, 
+	
 
 	level = 87,
-	xp = 8315,
+	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	combatFlags = 0,
 
 	healthMax = 16000,
 	healthMin = 13000,
@@ -97,16 +98,16 @@ stormtrooperNovatrooperEnsign = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_scout_blaster.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "scout Blaster", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_scout_blaster", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 90,
+	weaponMaxDamage = 230,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -121,7 +122,7 @@ stormtrooperNovatrooperEnsign = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,10 +137,10 @@ stormtrooperNovatrooperEnsign = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "imperialStormTrooperNovaTrooperEnsignAttack1" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(stormtrooperNovatrooperEnsign, 952713016) --  Add to Global Table
+Creatures:addCreature(imperialStormTrooperNovatrooperEnsign, 952713016) --  Add to Global Table

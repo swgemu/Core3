@@ -47,13 +47,14 @@ adeptPansheeShaman = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Adept Panshe shaman",
+	speciesName = "adept_panshee_shaman",
+	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "panshee_tribe",
-	named = FALSE, 
+	
 
 	level = 23,
-	xp = 2219,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ adeptPansheeShaman = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ adeptPansheeShaman = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -140,7 +140,7 @@ rebelGeneral = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "rebelAttack40", "rebelAttack41", "rebelAttack42", "rebelAttack43", "rebelAttack44", "rebelAttack45", "rebelAttack46", "rebelAttack47", "rebelAttack48", "rebelAttack49", "rebelAttack50", "rebelAttack51" },
+	skills = { "rebelGeneralAttack1" },
 	 respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

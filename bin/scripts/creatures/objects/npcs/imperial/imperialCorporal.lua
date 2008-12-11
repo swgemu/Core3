@@ -47,13 +47,14 @@ imperialCorporal = Creature:new {
 	 factionPoints = 20,
 	gender = "",
 
-	name = "Crackdown Imperial Corporal",
+	speciesName = "crackdown_imperial_corporal",
+	stfName = "mob/creature_names", 
 	objectCRC = 3498321727, 
 	socialGroup = "imperial",
-	named = FALSE, 
+	
 
 	level = 1,
-	xp = 40,
+	
 
 	combatFlags = 0,
 
@@ -121,7 +122,7 @@ imperialCorporal = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,7 +137,7 @@ imperialCorporal = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
+	skills = { "imperialCorporalAttack1" },
 	respawnTimer = 60,
 	behaviorScript = "", -- Link to the behavior script for this object
 }

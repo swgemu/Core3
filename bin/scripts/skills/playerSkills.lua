@@ -49,7 +49,7 @@ RunSkillsFile("playerSkills/passiveSkills.lua")
 --Combat
 RunSkillsFile("playerSkills/combat/combatMedic.lua")
 RunSkillsFile("playerSkills/combat/brawler.lua")
-RunSkillsFile("playerSkills/combat/bountyhunter.lua")
+RunSkillsFile("playerSkills/combat/bountyHunter.lua")
 RunSkillsFile("playerSkills/combat/carbineer.lua")
 RunSkillsFile("playerSkills/combat/commando.lua")
 RunSkillsFile("playerSkills/combat/fencer.lua")
@@ -59,7 +59,7 @@ RunSkillsFile("playerSkills/combat/pistoleer.lua")
 RunSkillsFile("playerSkills/combat/rifleman.lua")
 RunSkillsFile("playerSkills/combat/swordsman.lua")
 RunSkillsFile("playerSkills/combat/smuggler.lua")
-RunSkillsFile("playerSkills/combat/teraskasiartist.lua")
+RunSkillsFile("playerSkills/combat/terasKasiArtist.lua")
 
 --Non Combat
 RunSkillsFile("playerSkills/nonCombat/doctor.lua")

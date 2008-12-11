@@ -47,13 +47,14 @@ giftedGondulaShaman = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "gifted Gondula shaman",
+	speciesName = "gifted_gondula_shaman",
+	stfName = "mob/creature_names", 
 	objectCRC = 424271010, 
 	socialGroup = "gondula_tribe",
-	named = FALSE, 
+	
 
 	level = 46,
-	xp = 4461,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ giftedGondulaShaman = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ giftedGondulaShaman = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

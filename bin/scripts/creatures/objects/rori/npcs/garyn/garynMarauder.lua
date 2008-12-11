@@ -47,13 +47,14 @@ garynMarauder = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Garyn's marauder",
+	speciesName = "garyn_marauder",
+	stfName = "mob/creature_names", 
 	objectCRC = 704542206, 
 	socialGroup = "garyn",
-	named = FALSE, 
+	
 
 	level = 23,
-	xp = 2219,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ garynMarauder = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ garynMarauder = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

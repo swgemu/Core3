@@ -47,13 +47,14 @@ masterfulPansheeWarrior = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "masterful Panshee warrior",
+	speciesName = "masterful_panshee_warrior",
+	stfName = "mob/creature_names", 
 	objectCRC = 4186110670, 
 	socialGroup = "panshee_tribe",
-	named = FALSE, 
+	
 
 	level = 42,
-	xp = 4188,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ masterfulPansheeWarrior = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ masterfulPansheeWarrior = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

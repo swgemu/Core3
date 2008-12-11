@@ -140,8 +140,8 @@ imperialMajor = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
-	 respawnTimer = 60,
+	skills = { "imperialMajorAttack1" },
+	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

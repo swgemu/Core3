@@ -47,13 +47,14 @@ corvetteRebelMate = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Rebel First Mate",
+	speciesName = "corvette_rebel_mate",
+	stfName = "mob/creature_names", 
 	objectCRC = 1570013854, 
 	socialGroup = "rebel",
-	named = FALSE, 
+	
 
 	level = 86,
-	xp = 8223,
+	
 
 	combatFlags = 0,
 
@@ -121,7 +122,7 @@ corvetteRebelMate = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ corvetteRebelMate = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

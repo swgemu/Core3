@@ -42,26 +42,28 @@
 
 
 --Rebel
-RunCreatureFile("objects/npcs/rebel/rebelColonel.lua")
-RunCreatureFile("objects/npcs/rebel/rebelCommando.lua")
-RunCreatureFile("objects/npcs/rebel/rebelCorporal.lua")
-RunCreatureFile("objects/npcs/rebel/rebelFirstLieutenant.lua")
-RunCreatureFile("objects/npcs/rebel/rebelGeneral.lua")
-RunCreatureFile("objects/npcs/rebel/rebelHighGeneral.lua")
-RunCreatureFile("objects/npcs/rebel/rebelLanceCorporal.lua")
-RunCreatureFile("objects/npcs/rebel/rebelLieutenantColonel.lua")
-RunCreatureFile("objects/npcs/rebel/rebelMajor.lua")
-RunCreatureFile("objects/npcs/rebel/rebelMajorGeneral.lua")
-RunCreatureFile("objects/npcs/rebel/rebelMedic.lua")
-RunCreatureFile("objects/npcs/rebel/rebelScout.lua")
-RunCreatureFile("objects/npcs/rebel/rebelSecondLieutenant.lua")
-RunCreatureFile("objects/npcs/rebel/rebelSergeant.lua")
-RunCreatureFile("objects/npcs/rebel/rebelSergeantMajor.lua")
-RunCreatureFile("objects/npcs/rebel/rebelSpecforceCaptain.lua")
-RunCreatureFile("objects/npcs/rebel/rebelStaffCorporal.lua")
-RunCreatureFile("objects/npcs/rebel/rebelSurfaceMarshal.lua")
-RunCreatureFile("objects/npcs/rebel/rebelTrooper.lua")
-RunCreatureFile("objects/npcs/rebel/rebelWarrantOfficerI.lua")
+RunCreatureFile("objects/npcs/rebel/rebelColonel.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelCommando.lua") -- Weapon "Rebel Flamer"
+RunCreatureFile("objects/npcs/rebel/rebelCorporal.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelFirstLieutenant.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelGeneral.lua") -- Weapon "Gaderiffi, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelHighGeneral.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelJediKnight.lua") -- Weapon "2handed Lightsaber"
+RunCreatureFile("objects/npcs/rebel/rebeljediMaster.lua") -- Weapon "Polearm Lightsaber"
+RunCreatureFile("objects/npcs/rebel/rebelLanceCorporal.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelLieutenantColonel.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelMajor.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelMajorGeneral.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelMedic.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelScout.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelSecondLieutenant.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelSergeant.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelSergeantMajor.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelSpecforceCaptain.lua") -- Weapon "spec ops berserker, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelStaffCorporal.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelSurfaceMarshal.lua") -- Weapon "Power 5, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelTrooper.lua") -- Weapon "Laser Carbine, Stun Baton"
+RunCreatureFile("objects/npcs/rebel/rebelWarrantOfficerI.lua") -- Weapon "Power 5, Stun Baton"
 
 RunCreatureFile("objects/npcs/rebel/oldMan.lua")
 RunCreatureFile("objects/npcs/rebel/luke.lua")

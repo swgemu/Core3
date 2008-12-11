@@ -46,13 +46,14 @@ gunganMercenary = Creature:new {
 	faction = "Mercenary",
 	gender = "",
 
-	name = "Gungan mercenary",
+	speciesName = "gungan_mercenary",
+	stfName = "mob/creature_names", 
 	objectCRC = 1911569758, 
 	socialGroup = "gungan",
-	named = FALSE, 
+	
 
 	level = 14,
-	xp = 831,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -120,7 +121,7 @@ gunganMercenary = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -135,8 +136,8 @@ gunganMercenary = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

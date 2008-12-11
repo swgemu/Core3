@@ -39,8 +39,9 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-probotAttack1 = {
-	attackname = "probotAttack1",
+
+imperialProbotAttack1 = {
+	attackname = "imperialProbotAttack1",
 	animation = "droid_attack_medium",
 
 	requiredWeaponType = RANGED,
@@ -66,4 +67,4 @@ probotAttack1 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(probotAttack1)
+AddRandomPoolAttackTargetSkill(imperialProbotAttack1)

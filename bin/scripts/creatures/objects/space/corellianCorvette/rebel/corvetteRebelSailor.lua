@@ -47,13 +47,14 @@ corvetteRebelSailor = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Rebel Sailor",
+	speciesName = "corvette_rebel_sailor",
+	stfName = "mob/creature_names", 
 	objectCRC = 824556597, 
 	socialGroup = "rebel",
-	named = FALSE, 
+	
 
 	level = 96,
-	xp = 9150,
+	
 
 	combatFlags = 0,
 
@@ -121,7 +122,7 @@ corvetteRebelSailor = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ corvetteRebelSailor = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
