@@ -57,7 +57,7 @@ twilekSlave = Creature:new {
 	strength = 10,
 	constitution = 10,
 
-	actioinMax = 20,
+	actionMax = 20,
 	actionMin = 10,
 	quickness = 10,
 	stamina = 10,

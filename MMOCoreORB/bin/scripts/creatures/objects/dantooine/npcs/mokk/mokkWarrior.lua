@@ -66,7 +66,7 @@ mokkWarrior = Creature:new {
 	stamina = 0,
 
 	mindMax = 15000,
-	mindMax = 12000,
+	mindMin = 12000,
 	focus = 0,
 	willpower = 0,
 

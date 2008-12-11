@@ -45,9 +45,8 @@ questHeroOfTatooineFerociousBeast = Creature:new {
 	creatureType = "ANIMAL",
 	gender = "",
 
-	speciesName = "creature_name",
-	stfName = "mob/creature_names",
-	stfName = "a Quest Hero Of Tatooine Ferocious Beast",
+	speciesName = "quest_hero_of_tatooine_ferocious_beast",
+	stfName = "mob/creature_names",	
 	objectCRC = 277596046, 
 	socialGroup = "Zucca Boar",
 	level = 39,

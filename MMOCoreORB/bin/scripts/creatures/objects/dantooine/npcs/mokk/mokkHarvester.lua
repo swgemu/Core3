@@ -66,7 +66,7 @@ mokkHarvester = Creature:new {
 	stamina = 0,
 
 	mindMax = 10200,
-	mindMax = 8400,
+	mindMin = 8400,
 	focus = 0,
 	willpower = 0,
 

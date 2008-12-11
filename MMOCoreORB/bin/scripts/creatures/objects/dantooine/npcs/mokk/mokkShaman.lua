@@ -66,7 +66,7 @@ mokkShaman = Creature:new {
 	stamina = 0,
 
 	mindMax = 14000,
-	mindMax = 11000,
+	mindMin = 11000,
 	focus = 0,
 	willpower = 0,
 

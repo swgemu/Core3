@@ -66,7 +66,7 @@ mokkHerbalist = Creature:new {
 	stamina = 0,
 
 	mindMax = 8800,
-	mindMax = 7200,
+	mindMin = 7200,
 	focus = 0,
 	willpower = 0,
 

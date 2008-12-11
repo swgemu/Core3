@@ -66,7 +66,7 @@ mokkSoothsayer = Creature:new {
 	stamina = 0,
 
 	mindMax = 11300,
-	mindMax = 9300,
+	mindMin = 9300,
 	focus = 0,
 	willpower = 0,
 
