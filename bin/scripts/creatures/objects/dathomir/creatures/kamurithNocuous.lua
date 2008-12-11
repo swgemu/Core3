@@ -43,17 +43,13 @@
 kamurithNocuous = Creature:new {
 	objectName = "kamurithNocuous",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kamurith",
 	gender = "",
 
 	speciesName = "kamurith_nocuous",
 	stfName = "mob/creature_names",
 	objectCRC = 1248104419, 
 	socialGroup = "Kamurith",
-	
-
 	level = 46,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

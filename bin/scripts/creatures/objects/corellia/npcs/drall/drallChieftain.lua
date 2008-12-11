@@ -51,10 +51,7 @@ drallChieftain = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3116494340, 
 	socialGroup = "drall",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

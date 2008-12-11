@@ -43,17 +43,13 @@
 desertRazorbackFelspur = Creature:new {
 	objectName = "desertRazorbackFelspur",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Zucca Boar",
 	gender = "",
 
 	speciesName = "desert_razorback_felspur",
 	stfName = "mob/creature_names",
 	objectCRC = 3021374410, 
 	socialGroup = "Zucca Boar",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 greaterGulginaw = Creature:new {
 	objectName = "greaterGulginaw",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gulginaw",
 	gender = "",
 
 	speciesName = "greater_gulginaw",
 	stfName = "mob/creature_names",
 	objectCRC = 2004591794, 
 	socialGroup = "Gulginaw",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

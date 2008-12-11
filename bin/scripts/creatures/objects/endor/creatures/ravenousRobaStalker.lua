@@ -43,17 +43,13 @@
 ravenousRobaStalker = Creature:new {
 	objectName = "ravenousRobaStalker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Roba",
 	gender = "",
 
 	speciesName = "ravenous_roba_stalker",
 	stfName = "mob/creature_names",
 	objectCRC = 1008127960, 
 	socialGroup = "Roba",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

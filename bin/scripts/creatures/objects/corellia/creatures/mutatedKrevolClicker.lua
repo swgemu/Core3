@@ -43,17 +43,13 @@
 mutatedKrevolClicker = Creature:new {
 	objectName = "mutatedKrevolClicker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Horned Ktevol",
 	gender = "",
 
 	speciesName = "mutated_krevol_clicker",
 	stfName = "mob/creature_names",
 	objectCRC = 1223392893, 
 	socialGroup = "Horned Ktevol",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

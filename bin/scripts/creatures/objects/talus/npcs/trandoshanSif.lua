@@ -50,10 +50,7 @@ trandoshanSif = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3717185433, 
 	socialGroup = "Srl",
-	
-
 	level = 36,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

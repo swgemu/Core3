@@ -50,10 +50,7 @@ nabooPirateCutthroat = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "Naboo Pirate",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

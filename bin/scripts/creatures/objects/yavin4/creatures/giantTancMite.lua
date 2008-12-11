@@ -43,17 +43,13 @@
 giantTancMite = Creature:new {
 	objectName = "giantTancMite",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Tancmite",
 	gender = "",
 
 	speciesName = "giant_tanc_mite",
 	stfName = "mob/creature_names",
 	objectCRC = 2091826918, 
 	socialGroup = "Tancmite",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

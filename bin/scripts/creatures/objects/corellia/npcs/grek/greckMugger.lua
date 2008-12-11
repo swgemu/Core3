@@ -43,17 +43,13 @@
 greckMugger = Creature:new {
 	objectName = "greckMugger",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Olag Greek",
 	gender = "",
 
 	speciesName = "greck_mugger",
 	stfName = "mob/creature_names", 
 	objectCRC = 2175646546, 
 	socialGroup = "Olag Greek",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

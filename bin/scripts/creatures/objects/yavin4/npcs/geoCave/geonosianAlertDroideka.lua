@@ -43,16 +43,13 @@
 geonosianAlertDroideka = Creature:new {
 	objectName = "geonosianAlertDroideka",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "self",
 	gender = "",
 
 	speciesName = "geonosian_droideka_crazed",
 	stfName = "mob/creature_names", 
 	objectCRC = 2397633499, 
 	socialGroup = "self",
-	
 	level = 86,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

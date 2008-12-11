@@ -51,10 +51,7 @@ mokkClanLeader = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 4083847450,
 	socialGroup = "mokk_tribe",
-	
-
 	level = 75,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 liceRiddenRemmerQueen = Creature:new {
 	objectName = "liceRiddenRemmerQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Remmer",
 	gender = "",
 
 	speciesName = "lice_ridden_remmer_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 1979857288, 
 	socialGroup = "Remmer",
-	
-
 	level = 37,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

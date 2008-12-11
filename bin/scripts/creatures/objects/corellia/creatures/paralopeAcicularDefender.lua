@@ -43,17 +43,13 @@
 paralopeAcicularDefender = Creature:new {
 	objectName = "paralopeAcicularDefender",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Paralope",
 	gender = "",
 
 	speciesName = "paralope_acicular_defender",
 	stfName = "mob/creature_names",
 	objectCRC = 634611787, 
 	socialGroup = "Paralope",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

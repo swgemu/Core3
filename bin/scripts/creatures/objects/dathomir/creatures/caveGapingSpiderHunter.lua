@@ -43,17 +43,13 @@
 caveGapingSpiderHunter = Creature:new {
 	objectName = "caveGapingSpiderHunter",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Nightsister",
 	gender = "",
 
 	speciesName = "cave_gaping_spider_hunter",
 	stfName = "mob/creature_names",
 	objectCRC = 874176443, 
 	socialGroup = "Nightsister",
-	
-
 	level = 46,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 kinadBazNitch = Creature:new {
 	objectName = "kinadBazNitch",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Baz Nitch",
 	gender = "",
 
 	speciesName = "kinad_baz_nitch",
 	stfName = "mob/creature_names",
 	objectCRC = 252682001, 
 	socialGroup = "Baz Nitch",
-	
-
 	level = 46,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

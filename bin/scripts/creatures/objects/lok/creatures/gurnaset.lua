@@ -43,17 +43,13 @@
 gurnaset = Creature:new {
 	objectName = "gurnaset",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gurnasel",
 	gender = "",
 
 	speciesName = "gurnaset",
 	stfName = "mob/creature_names",
 	objectCRC = 526557680, 
 	socialGroup = "Gurnasel",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

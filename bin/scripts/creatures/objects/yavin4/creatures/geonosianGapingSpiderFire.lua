@@ -43,17 +43,13 @@
 geonosianGapingSpiderFire = Creature:new {
 	objectName = "geonosianGapingSpiderFire",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Geon. Monster",
 	gender = "",
 
 	speciesName = "geonosian_gaping_spider_fire",
 	stfName = "mob/creature_names",
 	objectCRC = 874176443, 
 	socialGroup = "Geon. Monster",
-	
-
 	level = 108,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

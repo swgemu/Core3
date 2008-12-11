@@ -43,17 +43,13 @@
 gurreckProwler = Creature:new {
 	objectName = "gurreckProwler",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gurreck",
 	gender = "",
 
 	speciesName = "gurreck_prowler",
 	stfName = "mob/creature_names",
 	objectCRC = 1386599736, 
 	socialGroup = "Gurreck",
-	
-
 	level = 45,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

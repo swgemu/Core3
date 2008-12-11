@@ -51,8 +51,6 @@ palpatine = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3254768126, 
 	socialGroup = "imperial",
-	
-
 	level = 700,
 	
 

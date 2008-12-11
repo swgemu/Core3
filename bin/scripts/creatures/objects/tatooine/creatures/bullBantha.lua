@@ -43,17 +43,13 @@
 bullBantha = Creature:new {
 	objectName = "bullBantha",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bantha",
 	gender = "",
 
 	speciesName = "bull_bantha",
 	stfName = "mob/creature_names",
 	objectCRC = 3918529401, 
 	socialGroup = "Bantha",
-	
-
 	level = 20,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

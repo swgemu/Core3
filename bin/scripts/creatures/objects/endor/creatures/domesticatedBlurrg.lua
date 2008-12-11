@@ -43,17 +43,13 @@
 domesticatedBlurrg = Creature:new {
 	objectName = "domesticatedBlurrg",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "domesticated_blurrg",
 	stfName = "mob/creature_names",
 	objectCRC = 2309529743, 
 	socialGroup = "self",
-	
-
 	level = 20,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

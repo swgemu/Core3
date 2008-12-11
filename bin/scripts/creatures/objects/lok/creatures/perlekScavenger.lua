@@ -43,17 +43,13 @@
 perlekScavenger = Creature:new {
 	objectName = "perlekScavenger",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Perlek",
 	gender = "",
 
 	speciesName = "perlek_scavanger",
 	stfName = "mob/creature_names",
 	objectCRC = 4249958797, 
 	socialGroup = "Perlek",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

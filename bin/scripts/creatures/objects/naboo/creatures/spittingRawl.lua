@@ -43,17 +43,13 @@
 spittingRawl = Creature:new {
 	objectName = "spittingRawl",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "spitting_rawl",
 	stfName = "mob/creature_names",
 	objectCRC = 304357171, 
 	socialGroup = "self",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

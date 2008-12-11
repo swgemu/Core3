@@ -51,10 +51,7 @@ beguilingDonkuwahScout = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4083847450, 
 	socialGroup = "donkuwah_tribe",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

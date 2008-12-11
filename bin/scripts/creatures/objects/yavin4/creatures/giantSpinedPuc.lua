@@ -43,17 +43,13 @@
 giantSpinedPuc = Creature:new {
 	objectName = "giantSpinedPuc",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Spined Puc",
 	gender = "",
 
 	speciesName = "giant_spined_puc",
 	stfName = "mob/creature_names",
 	objectCRC = 1892971996, 
 	socialGroup = "Spined Puc",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

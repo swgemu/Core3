@@ -43,17 +43,13 @@
 reclusiveShearMite = Creature:new {
 	objectName = "reclusiveShearMite",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Shearmite",
 	gender = "",
 
 	speciesName = "reclusive_shear_mite",
 	stfName = "mob/creature_names",
 	objectCRC = 3399904934, 
 	socialGroup = "Shearmite",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

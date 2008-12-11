@@ -51,10 +51,7 @@ gunganScout = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4291134911, 
 	socialGroup = "gungan",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 canoidHunter = Creature:new {
 	objectName = "canoidHunter",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Canoid",
 	gender = "",
 
 	speciesName = "canoid_hunter",
 	stfName = "mob/creature_names",
 	objectCRC = 1600355953, 
 	socialGroup = "Canoid",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

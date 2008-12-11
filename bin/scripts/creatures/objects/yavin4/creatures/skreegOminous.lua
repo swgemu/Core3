@@ -43,17 +43,13 @@
 skreegOminous = Creature:new {
 	objectName = "skreegOminous",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Skreeg",
 	gender = "",
 
 	speciesName = "skreeg_ominous",
 	stfName = "mob/creature_names",
 	objectCRC = 2391906030, 
 	socialGroup = "Skreeg",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

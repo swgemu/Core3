@@ -43,17 +43,13 @@
 rawlDeadlyHooded = Creature:new {
 	objectName = "rawlDeadlyHooded",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Fanned Rawl",
 	gender = "",
 
 	speciesName = "rawl_deadly_hooded",
 	stfName = "mob/creature_names",
 	objectCRC = 304357171, 
 	socialGroup = "Fanned Rawl",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

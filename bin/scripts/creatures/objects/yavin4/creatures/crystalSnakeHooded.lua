@@ -43,17 +43,13 @@
 crystalSnakeHooded = Creature:new {
 	objectName = "crystalSnakeHooded",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Crystal Snake",
 	gender = "",
 
 	speciesName = "crystal_snake_hooded",
 	stfName = "mob/creature_names",
 	objectCRC = 2368515148, 
 	socialGroup = "Crystal Snake",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

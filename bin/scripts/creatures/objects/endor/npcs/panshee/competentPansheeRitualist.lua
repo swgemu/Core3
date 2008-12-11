@@ -51,10 +51,7 @@ competentPansheeRitualist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "panshee_tribe",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

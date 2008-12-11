@@ -43,17 +43,13 @@
 mosTaikeCantinaOwner = Creature:new {
 	objectName = "mosTaikeCantinaOwner",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Townsperson",
 	gender = "",
 
 	speciesName = "mos_taike_cantina_owner",
 	stfName = "mob/creature_names", 
 	objectCRC = 3571307552, 
 	socialGroup = "Townsperson",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

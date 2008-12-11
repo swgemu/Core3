@@ -43,17 +43,13 @@
 robaInfuriatedProtectorate = Creature:new {
 	objectName = "robaInfuriatedProtectorate",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Roba",
 	gender = "",
 
 	speciesName = "roba_infuriated_protectorate",
 	stfName = "mob/creature_names",
 	objectCRC = 1008127960, 
 	socialGroup = "Roba",
-	
-
 	level = 57,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

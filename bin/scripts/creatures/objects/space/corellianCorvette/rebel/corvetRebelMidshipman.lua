@@ -51,8 +51,6 @@ corvetRebelMidshipman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1246114680, 
 	socialGroup = "rebel",
-	
-
 	level = 136,
 	
 

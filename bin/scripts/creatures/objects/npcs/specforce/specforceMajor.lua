@@ -51,8 +51,6 @@ specforceMajor = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2297961472, 
 	socialGroup = "rebel",
-	
-
 	level = 26,
 	
 

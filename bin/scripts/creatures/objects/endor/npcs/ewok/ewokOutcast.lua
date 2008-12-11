@@ -43,17 +43,13 @@
 ewokOutcast = Creature:new {
 	objectName = "ewokOutcast",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Ewok Outcast",
 	gender = "",
 
 	speciesName = "ewok_outcast",
 	stfName = "mob/creature_names", 
 	objectCRC = 39965146, 
 	socialGroup = "Ewok Outcast",
-	
-
 	level = 31,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

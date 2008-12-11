@@ -43,17 +43,13 @@
 bloodseekerMiteSanguineHierarch = Creature:new {
 	objectName = "bloodseekerMiteSanguineHierarch",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bloodseeker",
 	gender = "",
 
 	speciesName = "bloodseeker_mite_sanguine_hierarch",
 	stfName = "mob/creature_names",
 	objectCRC = 4102628433, 
 	socialGroup = "Bloodseeker",
-	
-
 	level = 23,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

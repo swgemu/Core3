@@ -50,10 +50,7 @@ nabooPoliceChief = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3605262391, 
 	socialGroup = "RSFO",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

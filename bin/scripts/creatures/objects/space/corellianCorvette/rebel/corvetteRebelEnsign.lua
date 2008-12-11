@@ -51,8 +51,6 @@ corvetteRebelEnsign = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2508023537, 
 	socialGroup = "rebel",
-	
-
 	level = 72,
 	
 

@@ -42,14 +42,12 @@
 minerDWB = Creature:new {
 	objectName = "minerDWB", -- name of the lua Object
 	creatureType = "NPC",
-	faction = "Corsec",
 	gender = "",
 	
 	speciesName = "death_watch_miner",
 	stfName = "mob/creature_names", 
 	objectCRC = 3926753656,
 	socialGroup = "deathwatch",	
-
 	level = 230,
 	
 	

@@ -51,10 +51,7 @@ lordNyaxMinion = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1086114556, 
 	socialGroup = "followers_of_lord_nyax",
-	
-
 	level = 50,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

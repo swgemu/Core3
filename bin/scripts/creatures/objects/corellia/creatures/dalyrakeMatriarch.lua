@@ -43,17 +43,13 @@
 dalyrakeMatriarch = Creature:new {
 	objectName = "dalyrakeMatriarch",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dalyrake",
 	gender = "",
 
 	speciesName = "dalyrake_matriarch",
 	stfName = "mob/creature_names",
 	objectCRC = 3341021560, 
 	socialGroup = "Dalyrake",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

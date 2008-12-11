@@ -43,17 +43,13 @@
 frenziedChoku = Creature:new {
 	objectName = "frenziedChoku",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Choku",
 	gender = "",
 
 	speciesName = "frenzied_choku",
 	stfName = "mob/creature_names",
 	objectCRC = 2946461572, 
 	socialGroup = "Choku",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,7 +43,7 @@
 geonosianEnhancedKwi = Creature:new {
       objectName = "geonosianEnhancedKwi",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "self",
+      
       gender = "",
 
       stfName = "Enhanced Kwi",

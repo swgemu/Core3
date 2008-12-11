@@ -51,10 +51,7 @@ kobolaUnderboss = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3433581784, 
 	socialGroup = "kobola",
-	
-
 	level = 25,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

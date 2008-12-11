@@ -51,8 +51,6 @@ imperialMasterSergeant = Creature:new {
     stfName = "mob/creature_names",
 	objectCRC = 1867395579, 
 	socialGroup = "Imperial",
-	
-
 	level = 1,
 	
 

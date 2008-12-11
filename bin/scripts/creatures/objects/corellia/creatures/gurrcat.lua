@@ -43,17 +43,13 @@
 gurrcat = Creature:new {
 	objectName = "gurrcat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "gurrcat",
 	stfName = "mob/creature_names",
 	objectCRC = 4196368391, 
 	socialGroup = "self",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

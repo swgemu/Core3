@@ -43,17 +43,13 @@
 kamurithSnapper = Creature:new {
 	objectName = "kamurithSnapper",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kamurith",
 	gender = "",
 
 	speciesName = "kamurith_snapper",
 	stfName = "mob/creature_names",
 	objectCRC = 1248104419, 
 	socialGroup = "Kamurith",
-	
-
 	level = 44,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

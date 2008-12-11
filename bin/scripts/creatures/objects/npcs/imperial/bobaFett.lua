@@ -50,8 +50,6 @@ bobaFett = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2908233289, 
 	socialGroup = "imperial",
-	
-
 	level = 250,
 	
 

@@ -51,10 +51,7 @@ monumenterSmuggler = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "monumenter",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

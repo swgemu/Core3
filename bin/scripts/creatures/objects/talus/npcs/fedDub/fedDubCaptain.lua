@@ -51,10 +51,7 @@ fedDubCaptain = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3361618348, 
 	socialGroup = "fed_dub",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

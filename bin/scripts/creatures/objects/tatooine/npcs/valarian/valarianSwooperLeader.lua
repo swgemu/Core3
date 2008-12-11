@@ -51,10 +51,7 @@ valarianSwooperLeader = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3404283589, 
 	socialGroup = "valarian",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

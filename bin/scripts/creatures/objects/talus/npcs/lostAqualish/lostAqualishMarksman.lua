@@ -51,10 +51,7 @@ lostAqualishMarksman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3432799906, 
 	socialGroup = "lost_aqualish",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

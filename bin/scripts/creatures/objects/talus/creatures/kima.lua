@@ -43,17 +43,13 @@
 kima = Creature:new {
 	objectName = "kima",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kima",
 	gender = "",
 
 	speciesName = "kima",
 	stfName = "mob/creature_names",
 	objectCRC = 558452126, 
 	socialGroup = "Kima",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

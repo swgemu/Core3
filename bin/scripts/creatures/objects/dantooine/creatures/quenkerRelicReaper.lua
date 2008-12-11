@@ -43,17 +43,13 @@
 quenkerRelicReaper = Creature:new {
 	objectName = "quenkerRelicReaper",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Quenker",
 	gender = "",
 
 	speciesName = "quenker_relic_reaper",
 	stfName = "mob/creature_names",
 	objectCRC = 3105108794, 
 	socialGroup = "Quenker",
-	
-
 	level = 45,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

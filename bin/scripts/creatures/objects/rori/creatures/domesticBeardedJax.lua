@@ -43,17 +43,13 @@
 domesticBeardedJax = Creature:new {
 	objectName = "domesticBeardedJax",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Jax",
 	gender = "",
 
 	speciesName = "domestic_bearded_jax",
 	stfName = "mob/creature_names",
 	objectCRC = 2095266416, 
 	socialGroup = "Jax",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

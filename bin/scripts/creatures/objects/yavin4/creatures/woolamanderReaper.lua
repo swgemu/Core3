@@ -43,17 +43,13 @@
 woolamanderReaper = Creature:new {
 	objectName = "woolamanderReaper",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Woolamander",
 	gender = "",
 
 	speciesName = "woolamander_reaper",
 	stfName = "mob/creature_names",
 	objectCRC = 23943354, 
 	socialGroup = "Woolamander",
-	
-
 	level = 47,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

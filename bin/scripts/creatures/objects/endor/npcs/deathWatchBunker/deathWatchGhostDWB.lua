@@ -43,17 +43,13 @@
 deathWatchGhostDWB = Creature:new {
 	objectName = "deathWatchGhostDWB",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Death Watch",
 	gender = "",
 
 	speciesName = "mand_bunker_dthwatch_grey",
 	stfName = "mob/creature_names", 
 	objectCRC = 3089566225, 
 	socialGroup = "Death Watch",
-	
-
 	level = 152,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 nymDomesticatedGurk = Creature:new {
 	objectName = "nymDomesticatedGurk",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Nym",
 	gender = "",
 
 	speciesName = "nym_domesticated_gurk",
 	stfName = "mob/creature_names",
 	objectCRC = 3464397925, 
 	socialGroup = "Nym",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

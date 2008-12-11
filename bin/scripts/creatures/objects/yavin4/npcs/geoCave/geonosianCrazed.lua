@@ -43,16 +43,13 @@
 geonosianCrazed = Creature:new {
 	objectName = "geonosianCrazed",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "self",
 	gender = "",
 
 	speciesName = "geonosian_crazed_guard",
 	stfName = "mob/creature_names",
 	objectCRC = 3023268625, 
 	socialGroup = "geo",
-	
 	level = 75,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,10 +51,7 @@ kobolaThief = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 145386432, 
 	socialGroup = "kobola",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

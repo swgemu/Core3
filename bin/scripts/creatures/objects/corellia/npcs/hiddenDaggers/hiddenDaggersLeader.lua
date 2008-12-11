@@ -51,10 +51,7 @@ hiddenDaggersLeader = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3209293435, 
 	socialGroup = "hidden_daggers",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

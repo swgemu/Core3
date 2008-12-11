@@ -43,17 +43,13 @@
 poisonousKrevolQueen = Creature:new {
 	objectName = "poisonousKrevolQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Krevol",
 	gender = "",
 
 	speciesName = "poisonous_krevol_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 1766345516, 
 	socialGroup = "Krevol",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

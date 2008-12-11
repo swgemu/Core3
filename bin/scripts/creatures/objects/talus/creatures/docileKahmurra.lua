@@ -43,17 +43,13 @@
 docileKahmurra = Creature:new {
 	objectName = "docileKahmurra",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "docile_kahmurra",
 	stfName = "mob/creature_names",
 	objectCRC = 3433057460, 
 	socialGroup = "self",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

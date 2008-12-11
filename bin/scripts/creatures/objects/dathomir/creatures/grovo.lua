@@ -43,7 +43,6 @@
 grovo = Creature:new {
 	objectName = "grovo",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Nightsister",
 	gender = "",
 
 	--speciesName = "creature_name",
@@ -51,10 +50,7 @@ grovo = Creature:new {
 	stfName = "a Grovo",
 	objectCRC = 2646925455, 
 	socialGroup = "Nightsister",
-	
-
 	level = 75,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

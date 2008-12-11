@@ -51,10 +51,7 @@ pansheeElderWorker = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1805137364, 
 	socialGroup = "panshee_tribe",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

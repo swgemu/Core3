@@ -50,8 +50,6 @@ gunganVeermok = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 798042116, 
 	socialGroup = "Gungan",
-	
-
 	level = 22,
 	
 

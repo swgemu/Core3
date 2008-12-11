@@ -43,17 +43,13 @@
 plumedRasp = Creature:new {
 	objectName = "plumedRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "plumed_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 144116282, 
 	socialGroup = "Rasp",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

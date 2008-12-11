@@ -51,10 +51,7 @@ spiceCollectiveMiner = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 929247009, 
 	socialGroup = "spice_collective",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

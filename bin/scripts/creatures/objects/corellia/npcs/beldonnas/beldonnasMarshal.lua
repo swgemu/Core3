@@ -53,10 +53,7 @@ beldonnasMarshal = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3021148797, 
 	socialGroup = "beldonnas_league",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

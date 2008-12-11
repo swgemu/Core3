@@ -52,8 +52,6 @@ darthVader = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 147261716, 
 	socialGroup = "imperial",
-	
-
 	level = 500,
 	
 

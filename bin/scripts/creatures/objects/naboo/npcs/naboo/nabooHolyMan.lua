@@ -50,10 +50,7 @@ nabooHolyMan = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2996282061, 
 	socialGroup = "Naboo",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

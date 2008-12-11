@@ -51,10 +51,7 @@ binayreRuffian = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3680180330, 
 	socialGroup = "binayre",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

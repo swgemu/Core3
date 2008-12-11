@@ -51,8 +51,6 @@ corvetteRebelAdmiral = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3089637617, 
 	socialGroup = "rebel",
-	
-
 	level = 226,
 	
 

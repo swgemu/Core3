@@ -43,17 +43,13 @@
 thuneHerdLeader = Creature:new {
 	objectName = "thuneHerdLeader",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Thune",
 	gender = "",
 
 	speciesName = "thune_herd_leader",
 	stfName = "mob/creature_names",
 	objectCRC = 3588269792, 
 	socialGroup = "Thune",
-	
-
 	level = 48,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

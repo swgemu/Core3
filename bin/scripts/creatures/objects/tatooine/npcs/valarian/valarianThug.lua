@@ -51,10 +51,7 @@ valarianThug = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2854514144, 
 	socialGroup = "valarian",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

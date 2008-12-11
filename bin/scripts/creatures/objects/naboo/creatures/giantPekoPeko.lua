@@ -43,17 +43,13 @@
 giantPekoPeko = Creature:new {
 	objectName = "giantPekoPeko",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Peko Peko",
 	gender = "",
 
 	speciesName = "giant_peko_peko",
 	stfName = "mob/creature_names",
 	objectCRC = 1032288412, 
 	socialGroup = "Peko Peko",
-	
-
 	level = 23,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

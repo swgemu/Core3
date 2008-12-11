@@ -51,10 +51,7 @@ monumenterMarauder = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "monumenter",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

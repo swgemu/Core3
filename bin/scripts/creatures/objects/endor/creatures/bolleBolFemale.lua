@@ -43,17 +43,13 @@
 bolleBolFemale = Creature:new {
 	objectName = "bolleBolFemale",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bolle Bol",
 	gender = "",
 
 	speciesName = "bolle_bol_female",
 	stfName = "mob/creature_names",
 	objectCRC = 2905349573, 
 	socialGroup = "Bolle Bol",
-	
-
 	level = 32,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

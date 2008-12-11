@@ -43,17 +43,13 @@
 deliriousMerekAvenger = Creature:new {
 	objectName = "deliriousMerekAvenger",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Merek",
 	gender = "",
 
 	speciesName = "delirious_merek_avenger",
 	stfName = "mob/creature_names",
 	objectCRC = 4057111915, 
 	socialGroup = "Merek",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 wastelandCuPa = Creature:new {
 	objectName = "wastelandCuPa",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "CuPa",
 	gender = "",
 
 	speciesName = "wasteland_cu_pa",
 	stfName = "mob/creature_names",
 	objectCRC = 1883442736, 
 	socialGroup = "CuPa",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

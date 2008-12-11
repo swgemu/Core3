@@ -43,17 +43,13 @@
 dimUAbbot = Creature:new {
 	objectName = "dimUAbbot",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Dim-U",
 	gender = "",
 
 	speciesName = "dim_u_abbot",
 	stfName = "mob/creature_names", 
 	objectCRC = 47900839, 
 	socialGroup = "Dim-U",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

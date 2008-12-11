@@ -50,10 +50,7 @@ warrenIrradiatedWorker = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 520769640, 
 	socialGroup = "Warren Imp.",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

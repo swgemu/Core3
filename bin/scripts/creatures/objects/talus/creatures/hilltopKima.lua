@@ -43,17 +43,13 @@
 hilltopKima = Creature:new {
 	objectName = "hilltopKima",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "hilltop_kima",
 	stfName = "mob/creature_names",
 	objectCRC = 558452126, 
 	socialGroup = "self",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

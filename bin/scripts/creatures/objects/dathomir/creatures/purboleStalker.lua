@@ -43,17 +43,13 @@
 purboleStalker = Creature:new {
 	objectName = "purboleStalker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Purbole",
 	gender = "",
 
 	speciesName = "purbole_stalker",
 	stfName = "mob/creature_names",
 	objectCRC = 1043838137, 
 	socialGroup = "Purbole",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

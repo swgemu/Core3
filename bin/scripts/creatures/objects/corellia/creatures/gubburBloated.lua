@@ -43,17 +43,13 @@
 gubburBloated = Creature:new {
 	objectName = "gubburBloated",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gubbur",
 	gender = "",
 
 	speciesName = "gubbur_bloated",
 	stfName = "mob/creature_names",
 	objectCRC = 406952354, 
 	socialGroup = "Gubbur",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

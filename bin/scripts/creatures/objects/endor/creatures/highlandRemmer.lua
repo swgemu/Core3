@@ -43,17 +43,13 @@
 highlandRemmer = Creature:new {
 	objectName = "highlandRemmer",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Remmer",
 	gender = "",
 
 	speciesName = "highland_remmer",
 	stfName = "mob/creature_names",
 	objectCRC = 1979857288, 
 	socialGroup = "Remmer",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

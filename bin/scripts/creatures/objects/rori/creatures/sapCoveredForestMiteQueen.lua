@@ -43,17 +43,13 @@
 sapCoveredForestMiteQueen = Creature:new {
 	objectName = "sapCoveredForestMiteQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bark Mite",
 	gender = "",
 
 	speciesName = "sap_covered_forest_mite_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 4253086890, 
 	socialGroup = "Bark Mite",
-	
-
 	level = 20,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

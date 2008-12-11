@@ -43,17 +43,13 @@
 murra = Creature:new {
 	objectName = "murra",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Murra",
 	gender = "",
 
 	speciesName = "murra",
 	stfName = "mob/creature_names",
 	objectCRC = 2019564259, 
 	socialGroup = "Murra",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

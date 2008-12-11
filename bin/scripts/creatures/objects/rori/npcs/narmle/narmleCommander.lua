@@ -50,10 +50,7 @@ narmleCommander = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4291865971, 
 	socialGroup = "Narmle",
-	
-
 	level = 25,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

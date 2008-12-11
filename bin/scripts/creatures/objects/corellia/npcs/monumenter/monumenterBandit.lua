@@ -51,10 +51,7 @@ monumenterBandit = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "monumenter",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

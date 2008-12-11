@@ -43,17 +43,13 @@
 shaggyGurkYouth = Creature:new {
 	objectName = "shaggyGurkYouth",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gurk",
 	gender = "",
 
 	speciesName = "shaggy_gurk_youth",
 	stfName = "mob/creature_names",
 	objectCRC = 117230570, 
 	socialGroup = "Gurk",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

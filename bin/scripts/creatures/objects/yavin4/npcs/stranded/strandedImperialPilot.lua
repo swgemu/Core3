@@ -43,17 +43,13 @@
 strandedImperialPilot = Creature:new {
 	objectName = "strandedImperialPilot",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "imperial",
 	gender = "",
 
 	speciesName = "stranded_imperial_pilot",
 	stfName = "mob/creature_names", 
 	objectCRC = 1689982294, 
 	socialGroup = "imperial",
-	
-
 	level = 20,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

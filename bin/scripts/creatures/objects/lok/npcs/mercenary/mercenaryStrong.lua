@@ -51,10 +51,7 @@ mercenaryStrong = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1881777997, 
 	socialGroup = "lok_mercenaries",
-	
-
 	level = 36,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

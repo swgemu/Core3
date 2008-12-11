@@ -43,17 +43,13 @@
 startledVreltMother = Creature:new {
 	objectName = "startledVreltMother",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Vreit",
 	gender = "",
 
 	speciesName = "startled_vrelt_mother",
 	stfName = "mob/creature_names",
 	objectCRC = 2882436158, 
 	socialGroup = "Vreit",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

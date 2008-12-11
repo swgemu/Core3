@@ -43,17 +43,13 @@
 shearMiteHunter = Creature:new {
 	objectName = "shearMiteHunter",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Shearmite",
 	gender = "",
 
 	speciesName = "shear_mite_hunter",
 	stfName = "mob/creature_names",
 	objectCRC = 4216430900, 
 	socialGroup = "Shearmite",
-	
-
 	level = 29,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

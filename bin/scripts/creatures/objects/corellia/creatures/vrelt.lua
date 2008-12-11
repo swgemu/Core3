@@ -43,17 +43,13 @@
 vrelt = Creature:new {
 	objectName = "vrelt",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Worrt",
 	gender = "",
 
 	speciesName = "vrelt",
 	stfName = "mob/creature_names",
 	objectCRC = 2882436158, 
 	socialGroup = "Worrt",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

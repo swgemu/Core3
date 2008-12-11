@@ -43,17 +43,13 @@
 darkForceCrystalHunter = Creature:new {
 	objectName = "darkForceCrystalHunter",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Remn. Of Kun",
 	gender = "",
 
 	speciesName = "dark_force_crystal_hunter",
 	stfName = "mob/creature_names", 
 	objectCRC = 2005105485, 
 	socialGroup = "Remn. Of Kun",
-	
-
 	level = 115,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

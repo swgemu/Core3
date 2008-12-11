@@ -51,10 +51,7 @@ hiddenDaggersExtremist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3209293435, 
 	socialGroup = "hidden_daggers",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

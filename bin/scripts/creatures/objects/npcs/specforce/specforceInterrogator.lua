@@ -51,8 +51,6 @@ specforceInterrogator = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 969101090, 
 	socialGroup = "rebel",
-	
-
 	level = 16,
 	
 

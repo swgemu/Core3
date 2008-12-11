@@ -43,17 +43,13 @@
 greatPlainsStalker = Creature:new {
 	objectName = "greatPlainsStalker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Sand Panther",
 	gender = "",
 
 	speciesName = "great_plains_stalker",
 	stfName = "mob/creature_names",
 	objectCRC = 2922712105, 
 	socialGroup = "Sand Panther",
-	
-
 	level = 51,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

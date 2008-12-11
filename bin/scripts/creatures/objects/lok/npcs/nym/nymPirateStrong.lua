@@ -50,10 +50,7 @@ nymPirateStrong = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 18144111, 
 	socialGroup = "HM	    Nym	   JH",
-	
-
 	level = 23,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

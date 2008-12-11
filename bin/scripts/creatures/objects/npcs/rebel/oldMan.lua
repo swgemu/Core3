@@ -51,8 +51,6 @@ oldMan = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2513398694, 
 	socialGroup = "rebel",
-	
-
 	level = 700,
 	
 

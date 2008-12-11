@@ -43,17 +43,13 @@
 minorSludgePanther = Creature:new {
 	objectName = "minorSludgePanther",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Sludge Panther",
 	gender = "",
 
 	speciesName = "minor_sludge_panther",
 	stfName = "mob/creature_names",
 	objectCRC = 2183424297, 
 	socialGroup = "Sludge Panther",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

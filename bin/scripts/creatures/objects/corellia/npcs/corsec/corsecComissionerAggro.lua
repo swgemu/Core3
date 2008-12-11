@@ -50,10 +50,7 @@ corsecComissionerAggro = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3254959481, 
 	socialGroup = "Corsec [aggro]",
-	
-
 	level = 226,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

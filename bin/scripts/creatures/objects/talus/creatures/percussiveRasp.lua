@@ -43,17 +43,13 @@
 percussiveRasp = Creature:new {
 	objectName = "percussiveRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "percussive_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 229802836, 
 	socialGroup = "Rasp",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

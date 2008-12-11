@@ -50,10 +50,7 @@ shadowNco = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2396195964, 
 	socialGroup = "Sith Shadow",
-	
-
 	level = 87,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

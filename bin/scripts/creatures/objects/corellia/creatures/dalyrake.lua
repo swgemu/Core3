@@ -43,17 +43,13 @@
 dalyrake = Creature:new {
 	objectName = "dalyrake",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dalyrake",
 	gender = "",
 
 	speciesName = "dalyrake",
 	stfName = "mob/creature_names",
 	objectCRC = 3621894346, 
 	socialGroup = "Dalyrake",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

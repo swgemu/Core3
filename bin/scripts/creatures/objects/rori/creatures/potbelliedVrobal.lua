@@ -43,17 +43,13 @@
 potbelliedVrobal = Creature:new {
 	objectName = "potbelliedVrobal",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Vrobal",
 	gender = "",
 
 	speciesName = "potbellied_vrobal",
 	stfName = "mob/creature_names",
 	objectCRC = 927885796, 
 	socialGroup = "Vrobal",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

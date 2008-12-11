@@ -43,17 +43,13 @@
 noxiousVreltScavenger = Creature:new {
 	objectName = "noxiousVreltScavenger",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Vrelt",
 	gender = "",
 
 	speciesName = "noxious_vrelt_scavenger",
 	stfName = "mob/creature_names",
 	objectCRC = 1273076283, 
 	socialGroup = "Vrelt",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

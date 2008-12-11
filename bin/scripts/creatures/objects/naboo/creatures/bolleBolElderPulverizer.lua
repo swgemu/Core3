@@ -43,17 +43,13 @@
 bolleBolElderPulverizer = Creature:new {
 	objectName = "bolleBolElderPulverizer",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bolle Bol",
 	gender = "",
 
 	speciesName = "bolle_bol_elder_pulverizer",
 	stfName = "mob/creature_names",
 	objectCRC = 2905349573, 
 	socialGroup = "Bolle Bol",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

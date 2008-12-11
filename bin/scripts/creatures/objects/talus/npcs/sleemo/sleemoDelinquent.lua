@@ -43,17 +43,13 @@
 sleemoDelinquent = Creature:new {
 	objectName = "sleemoDelinquent",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Sleemo Gang",
 	gender = "",
 
 	speciesName = "sleemo_delinquent",
 	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "Sleemo Gang",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -51,10 +51,7 @@ korgaElder = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
 	socialGroup = "korga_tribe",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

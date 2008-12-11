@@ -51,10 +51,7 @@ cobralHitman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3682831326, 
 	socialGroup = "cobral",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

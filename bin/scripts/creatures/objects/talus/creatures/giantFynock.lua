@@ -43,17 +43,13 @@
 giantFynock = Creature:new {
 	objectName = "giantFynock",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Fynock",
 	gender = "",
 
 	speciesName = "giant_fynock",
 	stfName = "mob/creature_names",
 	objectCRC = 2677634246, 
 	socialGroup = "Fynock",
-	
-
 	level = 42,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

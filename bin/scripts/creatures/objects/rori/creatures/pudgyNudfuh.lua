@@ -43,17 +43,13 @@
 pudgyNudfuh = Creature:new {
 	objectName = "pudgyNudfuh",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Nudfuh",
 	gender = "",
 
 	speciesName = "pudgy_nudfuh",
 	stfName = "mob/creature_names",
 	objectCRC = 598467155, 
 	socialGroup = "Nudfuh",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

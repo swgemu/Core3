@@ -43,17 +43,13 @@
 direCat = Creature:new {
 	objectName = "direCat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dire Cat",
 	gender = "",
 
 	speciesName = "dire_cat",
 	stfName = "mob/creature_names",
 	objectCRC = 1616759912, 
 	socialGroup = "Dire Cat",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

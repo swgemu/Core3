@@ -50,10 +50,7 @@ rorgunganBoss = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4291134911, 
 	socialGroup = "Rorgungan",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

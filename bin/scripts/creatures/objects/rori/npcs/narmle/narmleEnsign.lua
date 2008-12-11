@@ -50,10 +50,7 @@ narmleEnsign = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3253691894, 
 	socialGroup = "Narmle",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

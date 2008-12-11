@@ -43,17 +43,13 @@
 riversideSulfurMynock = Creature:new {
 	objectName = "riversideSulfurMynock",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Mynock",
 	gender = "",
 
 	speciesName = "riverside_sulfur_mynock",
 	stfName = "mob/creature_names",
 	objectCRC = 1599197632, 
 	socialGroup = "Mynock",
-	
-
 	level = 33,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

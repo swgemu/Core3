@@ -43,17 +43,13 @@
 skaakTipperSwindler = Creature:new {
 	objectName = "skaakTipperSwindler",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Sk.Tip. Gang (Thug)",
 	gender = "",
 
 	speciesName = "skaak_tipper_swindler",
 	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "Sk.Tip. Gang (Thug)",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

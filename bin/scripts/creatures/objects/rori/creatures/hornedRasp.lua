@@ -43,17 +43,13 @@
 hornedRasp = Creature:new {
 	objectName = "hornedRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "horned_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 1235301079, 
 	socialGroup = "Rasp",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

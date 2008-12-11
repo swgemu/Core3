@@ -43,17 +43,13 @@
 kaaduMale = Creature:new {
 	objectName = "kaaduMale",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kaadu",
 	gender = "",
 
 	speciesName = "kaadu_male",
 	stfName = "mob/creature_names",
 	objectCRC = 3798151898, 
 	socialGroup = "Kaadu",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

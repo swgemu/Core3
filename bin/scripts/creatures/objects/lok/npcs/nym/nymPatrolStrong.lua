@@ -50,10 +50,7 @@ nymPatrolStrong = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1881777997, 
 	socialGroup = "Nym O",
-	
-
 	level = 36,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -50,10 +50,7 @@ shadowMercenaryNonaggro = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4155355778, 
 	socialGroup = "Sith Shadow (s.s. non-aggro)",
-	
-
 	level = 148,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

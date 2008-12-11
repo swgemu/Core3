@@ -43,7 +43,7 @@
 geonosianFireBreathingSpider = Creature:new {
       objectName = "geonosianFireBreathingSpider",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "self",
+      
       gender = "",
 
       stfName = "Fire Breathing Spider",

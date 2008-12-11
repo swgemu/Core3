@@ -50,10 +50,7 @@ shadowPirateNonaggro = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 241297803, 
 	socialGroup = "Sith Shadow (s.s. non-aggro)",
-	
-
 	level = 90,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

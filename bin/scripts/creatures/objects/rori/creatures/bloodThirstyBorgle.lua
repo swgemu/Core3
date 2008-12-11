@@ -43,17 +43,13 @@
 bloodThirstyBorgle = Creature:new {
 	objectName = "bloodThirstyBorgle",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Borgle",
 	gender = "",
 
 	speciesName = "blood_thirsty_borgle",
 	stfName = "mob/creature_names",
 	objectCRC = 715008896, 
 	socialGroup = "Borgle",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

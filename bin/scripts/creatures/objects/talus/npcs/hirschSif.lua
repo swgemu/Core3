@@ -50,10 +50,7 @@ hirschSif = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2591680328, 
 	socialGroup = "Sif",
-	
-
 	level = 57,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

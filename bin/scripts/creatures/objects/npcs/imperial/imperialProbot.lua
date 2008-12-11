@@ -51,8 +51,6 @@ probot = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2028323765, 
 	socialGroup = "imperial",
-	
-
 	level = 19,
 	
 

@@ -43,17 +43,13 @@
 elderSnorbalFemale = Creature:new {
 	objectName = "elderSnorbalFemale",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Snorbal",
 	gender = "",
 
 	speciesName = "elder_snorbal_female",
 	stfName = "mob/creature_names",
 	objectCRC = 2656910223, 
 	socialGroup = "Snorbal",
-	
-
 	level = 34,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

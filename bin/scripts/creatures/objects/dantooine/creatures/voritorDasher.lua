@@ -43,17 +43,13 @@
 voritorDasher = Creature:new {
 	objectName = "voritorDasher",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Voritor Lizard",
 	gender = "",
 
 	speciesName = "voritor_dasher",
 	stfName = "mob/creature_names",
 	objectCRC = 2238343173, 
 	socialGroup = "Voritor Lizard",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

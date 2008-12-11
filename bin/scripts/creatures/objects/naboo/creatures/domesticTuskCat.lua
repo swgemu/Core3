@@ -43,17 +43,13 @@
 domesticTuskCat = Creature:new {
 	objectName = "domesticTuskCat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Naboo",
 	gender = "",
 
 	speciesName = "domestic_tusk_cat",
 	stfName = "mob/creature_names",
 	objectCRC = 4196368391, 
 	socialGroup = "Naboo",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

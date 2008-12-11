@@ -43,17 +43,13 @@
 mantigrueScreecher = Creature:new {
 	objectName = "mantigrueScreecher",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Mantigrue",
 	gender = "",
 
 	speciesName = "mantigrue_screecher",
 	stfName = "mob/creature_names",
 	objectCRC = 1684536430, 
 	socialGroup = "Mantigrue",
-	
-
 	level = 55,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,10 +51,7 @@ mercenaryMessanger = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3229947334, 
 	socialGroup = "lok_mercenaries",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

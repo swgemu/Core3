@@ -43,17 +43,13 @@
 woodlandKima = Creature:new {
 	objectName = "woodlandKima",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "woodland_kima",
 	stfName = "mob/creature_names",
 	objectCRC = 558452126, 
 	socialGroup = "self",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

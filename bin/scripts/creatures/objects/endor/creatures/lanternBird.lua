@@ -43,17 +43,13 @@
 lanternBird = Creature:new {
 	objectName = "lanternBird",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Lantern",
 	gender = "",
 
 	speciesName = "lantern_bird",
 	stfName = "mob/creature_names",
 	objectCRC = 1183906554, 
 	socialGroup = "Lantern",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

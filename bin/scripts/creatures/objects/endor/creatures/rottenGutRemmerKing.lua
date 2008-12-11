@@ -43,17 +43,13 @@
 rottenGutRemmerKing = Creature:new {
 	objectName = "rottenGutRemmerKing",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Remmer",
 	gender = "",
 
 	speciesName = "rotten_gut_remmer_king",
 	stfName = "mob/creature_names",
 	objectCRC = 413618023, 
 	socialGroup = "Remmer",
-	
-
 	level = 37,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -50,10 +50,7 @@ corsecCadetAggro = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3630538207, 
 	socialGroup = "Corsec [aggro]",
-	
-
 	level = 71,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

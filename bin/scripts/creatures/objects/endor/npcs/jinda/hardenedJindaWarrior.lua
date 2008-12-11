@@ -50,10 +50,7 @@ hardenedJindaWarrior = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
 	socialGroup = "Jinda Tribe",
-	
-
 	level = 50,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

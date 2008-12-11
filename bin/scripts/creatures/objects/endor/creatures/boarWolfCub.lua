@@ -43,17 +43,13 @@
 boarWolfCub = Creature:new {
 	objectName = "boarWolfCub",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Boar Wolf",
 	gender = "",
 
 	speciesName = "boar_wolf_cub",
 	stfName = "mob/creature_names",
 	objectCRC = 2560245072, 
 	socialGroup = "Boar Wolf",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 kreetleOver = Creature:new {
 	objectName = "kreetleOver",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kreetle",
 	gender = "",
 
 	speciesName = "kreetle_over",
 	stfName = "mob/creature_names",
 	objectCRC = 3267723937, 
 	socialGroup = "Kreetle",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

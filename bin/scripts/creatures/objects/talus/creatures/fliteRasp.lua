@@ -43,17 +43,13 @@
 fliteRasp = Creature:new {
 	objectName = "fliteRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "flite_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 1138484659, 
 	socialGroup = "Rasp",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

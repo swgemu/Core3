@@ -43,17 +43,13 @@
 vynock = Creature:new {
 	objectName = "vynock",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "vynock",
 	stfName = "mob/creature_names",
 	objectCRC = 942459622, 
 	socialGroup = "self",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

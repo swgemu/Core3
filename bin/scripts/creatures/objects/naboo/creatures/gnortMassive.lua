@@ -43,17 +43,13 @@
 gnortMassive = Creature:new {
 	objectName = "gnortMassive",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gnort",
 	gender = "",
 
 	speciesName = "gnort_massive",
 	stfName = "mob/creature_names",
 	objectCRC = 2332032204, 
 	socialGroup = "Gnort",
-	
-
 	level = 4,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

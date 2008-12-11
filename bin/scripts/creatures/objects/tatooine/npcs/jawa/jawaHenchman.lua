@@ -51,10 +51,7 @@ jawaHenchman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3444186231, 
 	socialGroup = "jawa",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

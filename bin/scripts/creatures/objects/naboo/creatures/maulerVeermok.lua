@@ -43,17 +43,13 @@
 maulerVeermok = Creature:new {
 	objectName = "maulerVeermok",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Veermok",
 	gender = "",
 
 	speciesName = "mauler_veermok",
 	stfName = "mob/creature_names",
 	objectCRC = 873755149, 
 	socialGroup = "Veermok",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

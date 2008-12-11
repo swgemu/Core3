@@ -43,17 +43,13 @@
 cuPaWonderous = Creature:new {
 	objectName = "cuPaWonderous",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "CuPa",
 	gender = "",
 
 	speciesName = "cu_pa_wonderous",
 	stfName = "mob/creature_names",
 	objectCRC = 1883442736, 
 	socialGroup = "CuPa",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

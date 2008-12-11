@@ -43,17 +43,13 @@
 gapingSpiderHunter = Creature:new {
 	objectName = "gapingSpiderHunter",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gaping",
 	gender = "",
 
 	speciesName = "gaping_spider_hunter",
 	stfName = "mob/creature_names",
 	objectCRC = 874176443, 
 	socialGroup = "Gaping",
-	
-
 	level = 44,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

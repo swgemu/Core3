@@ -43,17 +43,13 @@
 spineflapGatherer = Creature:new {
 	objectName = "spineflapGatherer",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Spineflap",
 	gender = "",
 
 	speciesName = "spineflap_gatherer",
 	stfName = "mob/creature_names",
 	objectCRC = 1774004209, 
 	socialGroup = "Spineflap",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

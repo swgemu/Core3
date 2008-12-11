@@ -50,10 +50,7 @@ lieutenantHebNee = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4246900266, 
 	socialGroup = "Rorgungan",
-	
-
 	level = 50,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,7 +43,6 @@
 darkJediSentinel = Creature:new {
 	objectName = "darkJediSentinel",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "self",
 	gender = "",
 
 	name = "Dark Jedi Sentinel",
@@ -51,10 +50,7 @@ darkJediSentinel = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2005105485, 
 	socialGroup = "self",
-	
-
 	level = 300,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

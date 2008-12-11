@@ -43,17 +43,13 @@
 hermitSpiderGuard = Creature:new {
 	objectName = "hermitSpiderGuard",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Hermit Spider",
 	gender = "",
 
 	speciesName = "hermit_spider_guard",
 	stfName = "mob/creature_names",
 	objectCRC = 321800919, 
 	socialGroup = "Hermit Spider",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

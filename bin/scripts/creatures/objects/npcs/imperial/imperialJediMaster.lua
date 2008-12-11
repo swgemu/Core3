@@ -51,8 +51,6 @@ imperialJediMaster = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2005105485, 
 	socialGroup = "imperial",
-	
-
 	level = 400,
 	
 

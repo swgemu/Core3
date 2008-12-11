@@ -43,17 +43,13 @@
 gualama = Creature:new {
 	objectName = "gualama",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gualama",
 	gender = "",
 
 	speciesName = "gualama",
 	stfName = "mob/creature_names",
 	objectCRC = 2511253817, 
 	socialGroup = "Gualama",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

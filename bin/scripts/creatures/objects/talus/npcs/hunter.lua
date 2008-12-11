@@ -51,10 +51,7 @@ hunter = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "Talus Poacher",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

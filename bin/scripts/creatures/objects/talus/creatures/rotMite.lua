@@ -43,17 +43,13 @@
 rotMite = Creature:new {
 	objectName = "rotMite",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "rot_mite",
 	stfName = "mob/creature_names",
 	objectCRC = 4167786528, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

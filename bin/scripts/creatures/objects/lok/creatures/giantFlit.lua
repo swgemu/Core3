@@ -43,17 +43,13 @@
 giantFlit = Creature:new {
 	objectName = "giantFlit",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Flit",
 	gender = "",
 
 	speciesName = "giant_flit",
 	stfName = "mob/creature_names",
 	objectCRC = 4002066866, 
 	socialGroup = "Flit",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

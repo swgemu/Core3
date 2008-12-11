@@ -43,17 +43,13 @@
 domesticBolMount = Creature:new {
 	objectName = "domesticBolMount",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "domestic_bol_mount",
 	stfName = "mob/creature_names",
 	objectCRC = 1195766949, 
 	socialGroup = "self",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

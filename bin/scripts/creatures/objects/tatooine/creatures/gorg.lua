@@ -43,17 +43,13 @@
 gorg = Creature:new {
 	objectName = "gorg",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gorg",
 	gender = "",
 
 	speciesName = "gorg",
 	stfName = "mob/creature_names",
 	objectCRC = 2760269032, 
 	socialGroup = "Gorg",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

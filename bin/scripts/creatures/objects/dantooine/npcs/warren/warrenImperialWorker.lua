@@ -50,10 +50,7 @@ warrenImperialWorker = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3351270727, 
 	socialGroup = "Warren Imp.",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

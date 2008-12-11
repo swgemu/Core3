@@ -43,17 +43,13 @@
 frightenedYoungFlewt = Creature:new {
 	objectName = "frightenedYoungFlewt",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Flewt",
 	gender = "",
 
 	speciesName = "frightened_young_flewt",
 	stfName = "mob/creature_names",
 	objectCRC = 1114917911, 
 	socialGroup = "Flewt",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

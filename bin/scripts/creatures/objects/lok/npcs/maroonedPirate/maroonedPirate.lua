@@ -50,10 +50,7 @@ maroonedPirate = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3615217683, 
 	socialGroup = "Pirate of Lok",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

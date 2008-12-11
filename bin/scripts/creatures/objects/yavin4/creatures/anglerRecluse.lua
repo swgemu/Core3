@@ -43,17 +43,13 @@
 anglerRecluse = Creature:new {
 	objectName = "anglerRecluse",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Angler",
 	gender = "",
 
 	speciesName = "angler_recluse",
 	stfName = "mob/creature_names",
 	objectCRC = 2216583678, 
 	socialGroup = "Angler",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

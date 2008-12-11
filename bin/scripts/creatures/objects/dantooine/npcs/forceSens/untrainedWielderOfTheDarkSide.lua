@@ -43,17 +43,13 @@
 untrainedWielderOfTheDarkSide = Creature:new {
 	objectName = "untrainedWielderOfTheDarkSide",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Remn. Of Kun",
 	gender = "",
 
 	speciesName = "untrained_wielder_of_the_dark_side",
 	stfName = "mob/creature_names", 
 	objectCRC = 2507849557, 
 	socialGroup = "Remn. Of Kun",
-	
-
 	level = 65,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

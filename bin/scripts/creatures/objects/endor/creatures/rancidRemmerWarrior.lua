@@ -43,17 +43,13 @@
 rancidRemmerWarrior = Creature:new {
 	objectName = "rancidRemmerWarrior",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Remmer",
 	gender = "",
 
 	speciesName = "rancid_remmer_warrior",
 	stfName = "mob/creature_names",
 	objectCRC = 3273659222, 
 	socialGroup = "Remmer",
-	
-
 	level = 33,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

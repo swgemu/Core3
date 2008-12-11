@@ -51,8 +51,6 @@ specforceWildernessOperative = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2586945197, 
 	socialGroup = "rebel",
-	
-
 	level = 18,
 	
 

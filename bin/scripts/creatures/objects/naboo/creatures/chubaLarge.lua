@@ -43,17 +43,13 @@
 chubaLarge = Creature:new {
 	objectName = "chubaLarge",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Chuba",
 	gender = "",
 
 	speciesName = "chuba_large",
 	stfName = "mob/creature_names",
 	objectCRC = 3308574907, 
 	socialGroup = "Chuba",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

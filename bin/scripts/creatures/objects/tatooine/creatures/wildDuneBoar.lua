@@ -43,17 +43,13 @@
 wildDuneBoar = Creature:new {
 	objectName = "wildDuneBoar",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Zucca Boar",
 	gender = "",
 
 	speciesName = "wild_dune_boar",
 	stfName = "mob/creature_names",
 	objectCRC = 277596046, 
 	socialGroup = "Zucca Boar",
-	
-
 	level = 50,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

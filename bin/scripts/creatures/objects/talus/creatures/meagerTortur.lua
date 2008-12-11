@@ -43,17 +43,13 @@
 meagerTortur = Creature:new {
 	objectName = "meagerTortur",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Tortur",
 	gender = "",
 
 	speciesName = "meager_tortur",
 	stfName = "mob/creature_names",
 	objectCRC = 2394031156, 
 	socialGroup = "Tortur",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

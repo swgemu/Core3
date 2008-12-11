@@ -51,8 +51,6 @@ specforceMarine = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 691099757, 
 	socialGroup = "Rebel O",
-	
-
 	level = 18,
 	
 

@@ -50,10 +50,7 @@ kole = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3181883060, 
 	socialGroup = "Nym",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

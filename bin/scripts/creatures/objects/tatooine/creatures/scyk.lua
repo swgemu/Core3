@@ -43,17 +43,13 @@
 scyk = Creature:new {
 	objectName = "scyk",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Scyk",
 	gender = "",
 
 	speciesName = "scyk",
 	stfName = "mob/creature_names",
 	objectCRC = 3164121956, 
 	socialGroup = "Scyk",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

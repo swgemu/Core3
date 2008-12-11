@@ -43,17 +43,13 @@
 greatBorgle = Creature:new {
 	objectName = "greatBorgle",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Borgle",
 	gender = "",
 
 	speciesName = "great_borgle",
 	stfName = "mob/creature_names",
 	objectCRC = 197567680, 
 	socialGroup = "Borgle",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

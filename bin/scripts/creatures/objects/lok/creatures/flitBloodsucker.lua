@@ -43,17 +43,13 @@
 flitBloodsucker = Creature:new {
 	objectName = "flitBloodsucker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Flit",
 	gender = "",
 
 	speciesName = "flit_bloodsucker",
 	stfName = "mob/creature_names",
 	objectCRC = 878848245, 
 	socialGroup = "Flit",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,10 +51,7 @@ meatlumpStooge = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3021148797, 
 	socialGroup = "meatlump",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

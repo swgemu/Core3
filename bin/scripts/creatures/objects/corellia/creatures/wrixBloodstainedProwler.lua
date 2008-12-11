@@ -43,17 +43,13 @@
 wrixBloodstainedProwler = Creature:new {
 	objectName = "wrixBloodstainedProwler",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Wrix",
 	gender = "",
 
 	speciesName = "wrix_bloodstained_prowler",
 	stfName = "mob/creature_names",
 	objectCRC = 2441033354, 
 	socialGroup = "Wrix",
-	
-
 	level = 29,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

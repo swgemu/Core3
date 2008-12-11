@@ -43,17 +43,13 @@
 femaleDireCat = Creature:new {
 	objectName = "femaleDireCat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dire Cat",
 	gender = "",
 
 	speciesName = "female_dire_cat",
 	stfName = "mob/creature_names",
 	objectCRC = 2465113907, 
 	socialGroup = "Dire Cat",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

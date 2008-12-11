@@ -43,17 +43,13 @@
 gufDrolg = Creature:new {
 	objectName = "gufDrolg",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Guf Drolg",
 	gender = "",
 
 	speciesName = "guf_drolg",
 	stfName = "mob/creature_names",
 	objectCRC = 2412635704, 
 	socialGroup = "Guf Drolg",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

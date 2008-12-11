@@ -43,17 +43,13 @@
 dragonet = Creature:new {
 	objectName = "dragonet",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dragonet",
 	gender = "",
 
 	speciesName = "dragonet",
 	stfName = "mob/creature_names",
 	objectCRC = 3554679154, 
 	socialGroup = "Dragonet",
-	
-
 	level = 29,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

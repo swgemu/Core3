@@ -43,17 +43,13 @@
 dimUPriestess = Creature:new {
 	objectName = "dimUPriestess",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Dim-U",
 	gender = "",
 
 	speciesName = "dim_u_priestess",
 	stfName = "mob/creature_names", 
 	objectCRC = 62019124, 
 	socialGroup = "Dim-U",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

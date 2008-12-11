@@ -50,10 +50,7 @@ kais = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 770892346, 
 	socialGroup = "Nightsister",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

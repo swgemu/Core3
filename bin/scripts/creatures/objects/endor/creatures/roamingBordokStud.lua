@@ -43,17 +43,13 @@
 roamingBordokStud = Creature:new {
 	objectName = "roamingBordokStud",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bordok",
 	gender = "",
 
 	speciesName = "roaming_bordok_stud",
 	stfName = "mob/creature_names",
 	objectCRC = 153161597, 
 	socialGroup = "Bordok",
-	
-
 	level = 34,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

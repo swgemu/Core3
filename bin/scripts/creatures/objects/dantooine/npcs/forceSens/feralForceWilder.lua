@@ -43,17 +43,13 @@
 feralForceWilder = Creature:new {
 	objectName = "feralForceWilder",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Force Reneg.",
 	gender = "",
 
 	speciesName = "feral_force_wilder",
 	stfName = "mob/creature_names", 
 	objectCRC = 2507849557, 
 	socialGroup = "Force Reneg.",
-	
-
 	level = 115,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 mottledWrix = Creature:new {
 	objectName = "mottledWrix",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Wrix",
 	gender = "",
 
 	speciesName = "mottled_wrix",
 	stfName = "mob/creature_names",
 	objectCRC = 2626589931, 
 	socialGroup = "Wrix",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

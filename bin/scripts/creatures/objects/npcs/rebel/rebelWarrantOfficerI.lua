@@ -51,8 +51,6 @@ rebelWarrantOfficerI = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3172332319, 
 	socialGroup = "Rebel",
-	
-
 	level = 18,
 	
 

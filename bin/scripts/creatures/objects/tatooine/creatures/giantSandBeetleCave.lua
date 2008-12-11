@@ -43,17 +43,13 @@
 giantSandBeetleCave = Creature:new {
 	objectName = "giantSandBeetleCave",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Sand Beetle",
 	gender = "",
 
 	speciesName = "giant_sand_beetle_cave",
 	stfName = "mob/creature_names",
 	objectCRC = 607873114, 
 	socialGroup = "Sand Beetle",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

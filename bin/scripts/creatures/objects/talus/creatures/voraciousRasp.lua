@@ -43,17 +43,13 @@
 voraciousRasp = Creature:new {
 	objectName = "voraciousRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "voracious_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 1138484659, 
 	socialGroup = "Rasp",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

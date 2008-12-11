@@ -51,10 +51,7 @@ kobolaSmuggler = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1070809352, 
 	socialGroup = "kobola",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

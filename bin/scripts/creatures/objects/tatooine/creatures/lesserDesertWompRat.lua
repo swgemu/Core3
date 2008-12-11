@@ -43,17 +43,13 @@
 lesserDesertWompRat = Creature:new {
 	objectName = "lesserDesertWompRat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "WompRat",
 	gender = "",
 
 	speciesName = "lesser_desert_womprat",
 	stfName = "mob/creature_names",
 	objectCRC = 2598364682, 
 	socialGroup = "WompRat",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

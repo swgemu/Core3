@@ -43,17 +43,13 @@
 duneBantha = Creature:new {
 	objectName = "duneBantha",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bantha",
 	gender = "",
 
 	speciesName = "dune_bantha",
 	stfName = "mob/creature_names",
 	objectCRC = 3918529401, 
 	socialGroup = "Bantha",
-	
-
 	level = 17,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

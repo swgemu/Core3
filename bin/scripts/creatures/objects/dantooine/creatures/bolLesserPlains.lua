@@ -43,17 +43,13 @@
 bolLesserPlains = Creature:new {
 	objectName = "bolLesserPlains",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bol",
 	gender = "",
 
 	speciesName = "bol_lesser_plains",
 	stfName = "mob/creature_names",
 	objectCRC = 854757845, 
 	socialGroup = "Bol",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

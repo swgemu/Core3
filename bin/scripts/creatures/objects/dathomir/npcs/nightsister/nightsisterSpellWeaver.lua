@@ -51,10 +51,7 @@ nightsisterSpellWeaver = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2291851149, 
 	socialGroup = "nightsister",
-	
-
 	level = 107,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

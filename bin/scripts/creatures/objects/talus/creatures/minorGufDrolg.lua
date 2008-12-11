@@ -43,17 +43,13 @@
 minorGufDrolg = Creature:new {
 	objectName = "minorGufDrolg",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Guf Drolg",
 	gender = "",
 
 	speciesName = "minor_guf_drolg",
 	stfName = "mob/creature_names",
 	objectCRC = 1297255033, 
 	socialGroup = "Guf Drolg",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

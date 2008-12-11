@@ -43,17 +43,13 @@
 ravenousRasp = Creature:new {
 	objectName = "ravenousRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "ravenous_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 229802836, 
 	socialGroup = "Rasp",
-	
-
 	level = 31,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

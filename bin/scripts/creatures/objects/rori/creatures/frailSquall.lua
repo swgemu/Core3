@@ -43,17 +43,13 @@
 frailSquall = Creature:new {
 	objectName = "frailSquall",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Squall",
 	gender = "",
 
 	speciesName = "frail_squall",
 	stfName = "mob/creature_names",
 	objectCRC = 536393830, 
 	socialGroup = "Squall",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

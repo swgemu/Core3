@@ -43,17 +43,13 @@
 lesserBocatt = Creature:new {
 	objectName = "lesserBocatt",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bocatt",
 	gender = "",
 
 	speciesName = "lesser_bocatt",
 	stfName = "mob/creature_names",
 	objectCRC = 3725325606, 
 	socialGroup = "Bocatt",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

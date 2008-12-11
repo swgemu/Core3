@@ -43,17 +43,13 @@
 warGronda = Creature:new {
 	objectName = "warGronda",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gronda",
 	gender = "",
 
 	speciesName = "war_gronda",
 	stfName = "mob/creature_names",
 	objectCRC = 3265031797, 
 	socialGroup = "Gronda",
-	
-
 	level = 23,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

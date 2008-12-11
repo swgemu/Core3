@@ -43,17 +43,13 @@
 mosTaikeMayor = Creature:new {
 	objectName = "mosTaikeMayor",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Townspercon",
 	gender = "",
 
 	speciesName = "mos_taike_mayor",
 	stfName = "mob/creature_names", 
 	objectCRC = 3457587793, 
 	socialGroup = "Townspercon",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

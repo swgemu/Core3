@@ -43,17 +43,13 @@
 merekCavernCreeper = Creature:new {
 	objectName = "merekCavernCreeper",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Merek",
 	gender = "",
 
 	speciesName = "merek_cavern_creeper",
 	stfName = "mob/creature_names",
 	objectCRC = 696113680, 
 	socialGroup = "Merek",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 crimsonSandPanther = Creature:new {
 	objectName = "crimsonSandPanther",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Sand Panther",
 	gender = "",
 
 	speciesName = "crimson_sand_panther",
 	stfName = "mob/creature_names",
 	objectCRC = 3569435698, 
 	socialGroup = "Sand Panther",
-	
-
 	level = 29,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

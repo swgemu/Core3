@@ -50,10 +50,7 @@ quharek = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2964267603, 
 	socialGroup = "Force Sensitive villager",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

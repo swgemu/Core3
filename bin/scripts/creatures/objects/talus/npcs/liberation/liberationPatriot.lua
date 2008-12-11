@@ -51,10 +51,7 @@ liberationPatriot = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1736741704, 
 	socialGroup = "liberation_party",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 ikopi = Creature:new {
 	objectName = "ikopi",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Ikopi",
 	gender = "",
 
 	speciesName = "ikopi",
 	stfName = "mob/creature_names",
 	objectCRC = 2370403426, 
 	socialGroup = "Ikopi",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

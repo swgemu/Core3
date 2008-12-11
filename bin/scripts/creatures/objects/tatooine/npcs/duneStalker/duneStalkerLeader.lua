@@ -43,17 +43,13 @@
 duneStalkerLeader = Creature:new {
 	objectName = "duneStalkerLeader",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Dune Stalker",
 	gender = "",
 
 	speciesName = "dune_stalker_leader",
 	stfName = "mob/creature_names", 
 	objectCRC = 172429008, 
 	socialGroup = "Dune Stalker",
-	
-
 	level = 23,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

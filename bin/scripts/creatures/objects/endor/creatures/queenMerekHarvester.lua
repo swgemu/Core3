@@ -43,17 +43,13 @@
 queenMerekHarvester = Creature:new {
 	objectName = "queenMerekHarvester",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Merek",
 	gender = "",
 
 	speciesName = "queen_merek_harvester",
 	stfName = "mob/creature_names",
 	objectCRC = 1600142947, 
 	socialGroup = "Merek",
-	
-
 	level = 50,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 blackSunThugDWB = Creature:new {
 	objectName = "blackSunThugDWB",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Death Watch",
 	gender = "",
 
 	speciesName = "mand_bunker_blksun_thug",
 	stfName = "mob/creature_names", 
 	objectCRC = 2905654803, 
 	socialGroup = "Death Watch",
-	
-
 	level = 86,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

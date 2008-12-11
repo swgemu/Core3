@@ -43,17 +43,13 @@
 zuccaBoar = Creature:new {
 	objectName = "zuccaBoar",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Zucca Boar",
 	gender = "",
 
 	speciesName = "zucca_boar",
 	stfName = "mob/creature_names",
 	objectCRC = 277596046, 
 	socialGroup = "Zucca Boar",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

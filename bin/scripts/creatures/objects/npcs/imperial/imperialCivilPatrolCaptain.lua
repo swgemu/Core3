@@ -51,8 +51,6 @@ imperialCivilPatrolCaptain = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 152421728, 
 	socialGroup = "Imperial",
-	
-
 	level = 9,
 	
 

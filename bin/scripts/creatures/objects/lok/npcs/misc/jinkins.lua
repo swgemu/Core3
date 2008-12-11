@@ -50,10 +50,7 @@ jinkins = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4152200653, 
 	socialGroup = "Nym",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 mountainKrevol = Creature:new {
 	objectName = "mountainKrevol",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "mountain_krevol",
 	stfName = "mob/creature_names",
 	objectCRC = 1223392893, 
 	socialGroup = "self",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

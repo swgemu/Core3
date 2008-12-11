@@ -43,17 +43,13 @@
 gnarledBarkMiteQueen = Creature:new {
 	objectName = "gnarledBarkMiteQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bark Mite",
 	gender = "",
 
 	speciesName = "gnarled_bark_mite_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 1247872509, 
 	socialGroup = "Bark Mite",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

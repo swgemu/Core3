@@ -51,10 +51,7 @@ grasslandBloodMarauder = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1397186032, 
 	socialGroup = "marauder",
-	
-
 	level = 50,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

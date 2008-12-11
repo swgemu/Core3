@@ -43,17 +43,13 @@
 spineflapHandmaiden = Creature:new {
 	objectName = "spineflapHandmaiden",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Spineflap",
 	gender = "",
 
 	speciesName = "spineflap_handmaiden",
 	stfName = "mob/creature_names",
 	objectCRC = 3797965860, 
 	socialGroup = "Spineflap",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

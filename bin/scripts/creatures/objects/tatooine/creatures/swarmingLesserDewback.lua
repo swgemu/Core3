@@ -43,17 +43,13 @@
 swarmingLesserDewback = Creature:new {
 	objectName = "swarmingLesserDewback",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "swarming_lesser_dewback",
 	stfName = "mob/creature_names",
 	objectCRC = 1765279360, 
 	socialGroup = "self",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

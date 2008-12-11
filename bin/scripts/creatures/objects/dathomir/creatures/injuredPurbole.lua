@@ -43,17 +43,13 @@
 injuredPurbole = Creature:new {
 	objectName = "injuredPurbole",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Purbole",
 	gender = "",
 
 	speciesName = "injured_purbole",
 	stfName = "mob/creature_names",
 	objectCRC = 1043838137, 
 	socialGroup = "Purbole",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

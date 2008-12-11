@@ -43,17 +43,13 @@
 mountainIkopi = Creature:new {
 	objectName = "mountainIkopi",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "mountain_ikopi",
 	stfName = "mob/creature_names",
 	objectCRC = 2370403426, 
 	socialGroup = "self",
-	
-
 	level = 17,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

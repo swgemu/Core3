@@ -51,10 +51,7 @@ binayrePirate = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3089904341, 
 	socialGroup = "binayre",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -50,10 +50,7 @@ nymDroidekaWeak = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2412922465, 
 	socialGroup = "Nym",
-	
-
 	level = 45,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -51,10 +51,7 @@ huttExpeditionForceMember = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3240174951, 
 	socialGroup = "hutt",
-	
-
 	level = 17,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

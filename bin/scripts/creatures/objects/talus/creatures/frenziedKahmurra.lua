@@ -43,17 +43,13 @@
 frenziedKahmurra = Creature:new {
 	objectName = "frenziedKahmurra",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kahmurra",
 	gender = "",
 
 	speciesName = "frenzied_kahmurra",
 	stfName = "mob/creature_names",
 	objectCRC = 3433057460, 
 	socialGroup = "Kahmurra",
-	
-
 	level = 33,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

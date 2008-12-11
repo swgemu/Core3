@@ -50,10 +50,7 @@ fightmasterJorak = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3041927583, 
 	socialGroup = "Marauder",
-	
-
 	level = 22,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

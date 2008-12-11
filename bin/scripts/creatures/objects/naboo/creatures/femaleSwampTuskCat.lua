@@ -43,17 +43,13 @@
 femaleSwampTuskCat = Creature:new {
 	objectName = "femaleSwampTuskCat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Tusk Cat",
 	gender = "",
 
 	speciesName = "female_swamp_tusk_cat",
 	stfName = "mob/creature_names",
 	objectCRC = 3651259209, 
 	socialGroup = "Tusk Cat",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

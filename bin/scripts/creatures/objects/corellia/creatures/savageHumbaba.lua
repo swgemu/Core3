@@ -43,17 +43,13 @@
 savageHumbaba = Creature:new {
 	objectName = "savageHumbaba",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "savage_humbaba",
 	stfName = "mob/creature_names",
 	objectCRC = 1217993661, 
 	socialGroup = "self",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

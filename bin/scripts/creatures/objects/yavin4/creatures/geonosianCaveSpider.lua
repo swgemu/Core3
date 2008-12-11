@@ -43,7 +43,7 @@
 geonosianCaveSpider = Creature:new {
       objectName = "geonosianCaveSpider",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "self",
+      
       gender = "",
 
       stfName = "a Cavern Spider",

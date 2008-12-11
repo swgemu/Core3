@@ -43,17 +43,13 @@
 giantDecayMiteHatchling = Creature:new {
 	objectName = "giantDecayMiteHatchling",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "giant_decay_mite_hatchling",
 	stfName = "mob/creature_names",
 	objectCRC = 2827279538, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

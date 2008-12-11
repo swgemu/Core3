@@ -43,17 +43,13 @@
 grondaElder = Creature:new {
 	objectName = "grondaElder",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gronda",
 	gender = "",
 
 	speciesName = "gronda_elder",
 	stfName = "mob/creature_names",
 	objectCRC = 2380349390, 
 	socialGroup = "Gronda",
-	
-
 	level = 33,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

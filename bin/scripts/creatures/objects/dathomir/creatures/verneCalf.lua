@@ -43,17 +43,13 @@
 verneCalf = Creature:new {
 	objectName = "verneCalf",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Verne",
 	gender = "",
 
 	speciesName = "verne_calf",
 	stfName = "mob/creature_names",
 	objectCRC = 3137388613, 
 	socialGroup = "Verne",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

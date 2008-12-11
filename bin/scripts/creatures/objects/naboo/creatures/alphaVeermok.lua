@@ -43,17 +43,13 @@
 alphaVeermok = Creature:new {
 	objectName = "alphaVeermok",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Veermok",
 	gender = "",
 
 	speciesName = "alpha_veermok",
 	stfName = "mob/creature_names",
 	objectCRC = 873755149, 
 	socialGroup = "Veermok",
-	
-
 	level = 20,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

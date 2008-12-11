@@ -51,8 +51,6 @@ imperialScoutTrooper = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3260762182, 
 	socialGroup = "Imperial",
-	
-
 	level = 1,
 	
 

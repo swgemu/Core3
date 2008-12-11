@@ -43,17 +43,13 @@
 plainsHunter = Creature:new {
 	objectName = "plainsHunter",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Tusk Cat",
 	gender = "",
 
 	speciesName = "plains_hunter",
 	stfName = "mob/creature_names",
 	objectCRC = 1884038525, 
 	socialGroup = "Tusk Cat",
-	
-
 	level = 31,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

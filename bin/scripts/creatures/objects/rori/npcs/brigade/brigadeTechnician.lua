@@ -43,17 +43,13 @@
 brigadeTechnician = Creature:new {
 	objectName = "brigadeTechnician",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Restuss",
 	gender = "",
 
 	speciesName = "brigade_technician",
 	stfName = "mob/creature_names", 
 	objectCRC = 2807671153, 
 	socialGroup = "Restuss",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

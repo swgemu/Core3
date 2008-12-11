@@ -51,10 +51,7 @@ tradeFederationLoyalist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3507336402, 
 	socialGroup = "trade_federation",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

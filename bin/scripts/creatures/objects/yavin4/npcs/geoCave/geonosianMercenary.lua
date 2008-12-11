@@ -43,17 +43,13 @@
 geonosianMercenary = Creature:new {
 	objectName = "geonosianMercenary",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Geonosian",
 	gender = "",
 
 	speciesName = "geonosian_human_security_force",
 	stfName = "mob/creature_names",
 	objectCRC = 4182262563, 
 	socialGroup = "Geonosian",
-	
-
 	level = 90,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -50,10 +50,7 @@ imperialDeserter = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3498321727, 
 	socialGroup = "Nym (Rebel)",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

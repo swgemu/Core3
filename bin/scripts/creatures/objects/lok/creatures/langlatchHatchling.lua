@@ -43,17 +43,13 @@
 langlatchHatchling = Creature:new {
 	objectName = "langlatchHatchling",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Langiatch",
 	gender = "",
 
 	speciesName = "langlatch_hatchling",
 	stfName = "mob/creature_names",
 	objectCRC = 2513300255, 
 	socialGroup = "Langiatch",
-	
-
 	level = 4,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

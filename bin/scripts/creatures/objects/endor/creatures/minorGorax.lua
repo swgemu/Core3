@@ -43,17 +43,13 @@
 minorGorax = Creature:new {
 	objectName = "minorGorax",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gorax",
 	gender = "",
 
 	speciesName = "minor_gorax",
 	stfName = "mob/creature_names",
 	objectCRC = 3371835636, 
 	socialGroup = "Gorax",
-	
-
 	level = 131,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

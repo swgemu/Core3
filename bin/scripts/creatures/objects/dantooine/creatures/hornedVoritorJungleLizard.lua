@@ -43,17 +43,13 @@
 hornedVoritorJungleLizard = Creature:new {
 	objectName = "hornedVoritorJungleLizard",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Voritor Lizard",
 	gender = "",
 
 	speciesName = "horned_voritor_jungle_lizard",
 	stfName = "mob/creature_names",
 	objectCRC = 1248104419, 
 	socialGroup = "Voritor Lizard",
-	
-
 	level = 53,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

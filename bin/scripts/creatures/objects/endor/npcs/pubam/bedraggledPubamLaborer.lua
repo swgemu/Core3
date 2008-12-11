@@ -51,10 +51,7 @@ bedraggledPubamLaborer = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4083847450, 
 	socialGroup = "pubam",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

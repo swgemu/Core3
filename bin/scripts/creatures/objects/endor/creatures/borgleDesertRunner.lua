@@ -43,17 +43,13 @@
 borgleDesertRunner = Creature:new {
 	objectName = "borgleDesertRunner",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Borgle",
 	gender = "",
 
 	speciesName = "borgle_desert_runner",
 	stfName = "mob/creature_names",
 	objectCRC = 715008896, 
 	socialGroup = "Borgle",
-	
-
 	level = 37,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

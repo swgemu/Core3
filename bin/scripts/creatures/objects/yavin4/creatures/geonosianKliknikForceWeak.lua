@@ -43,17 +43,13 @@
 geonosianKliknikForceWeak = Creature:new {
 	objectName = "geonosianKliknikForceWeak",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Geon. Monster",
 	gender = "",
 
 	speciesName = "geonosian_kliknik_force_weak",
 	stfName = "mob/creature_names",
 	objectCRC = 965104200, 
 	socialGroup = "Geon. Monster",
-	
-
 	level = 109,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

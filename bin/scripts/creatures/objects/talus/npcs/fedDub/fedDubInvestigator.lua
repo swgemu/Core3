@@ -51,10 +51,7 @@ fedDubInvestigator = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3778777696, 
 	socialGroup = "fed_dub",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

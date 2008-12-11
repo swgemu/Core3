@@ -43,17 +43,13 @@
 youngSpinedSnake = Creature:new {
 	objectName = "youngSpinedSnake",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Spinesnake",
 	gender = "",
 
 	speciesName = "young_spined_snake",
 	stfName = "mob/creature_names",
 	objectCRC = 729848387, 
 	socialGroup = "Spinesnake",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

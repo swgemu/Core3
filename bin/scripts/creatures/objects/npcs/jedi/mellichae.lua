@@ -43,17 +43,13 @@
 mellichae = Creature:new {
 	objectName = "mellichae",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "sith",
 	gender = "",
 
 	speciesName = "mellichae",
 	stfName = "mob/creature_names",
 	objectCRC = 1261483492, 
 	socialGroup = "sith",
-	
-
 	level = 350,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

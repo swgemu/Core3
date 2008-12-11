@@ -43,17 +43,13 @@
 skreegWarrior = Creature:new {
 	objectName = "skreegWarrior",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Skreeg",
 	gender = "",
 
 	speciesName = "skreeg_warrior",
 	stfName = "mob/creature_names",
 	objectCRC = 2391906030, 
 	socialGroup = "Skreeg",
-	
-
 	level = 28,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

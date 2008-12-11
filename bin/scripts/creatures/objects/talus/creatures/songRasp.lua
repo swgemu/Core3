@@ -43,17 +43,13 @@
 songRasp = Creature:new {
 	objectName = "songRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "song_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 1138484659, 
 	socialGroup = "Rasp",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

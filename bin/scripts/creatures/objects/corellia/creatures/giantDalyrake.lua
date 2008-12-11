@@ -43,17 +43,13 @@
 giantDalyrake = Creature:new {
 	objectName = "giantDalyrake",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dalyrake",
 	gender = "",
 
 	speciesName = "giant_dalyrake",
 	stfName = "mob/creature_names",
 	objectCRC = 1561394973, 
 	socialGroup = "Dalyrake",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

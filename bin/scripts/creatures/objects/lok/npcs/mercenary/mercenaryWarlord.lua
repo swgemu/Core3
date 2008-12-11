@@ -51,10 +51,7 @@ mercenaryWarlord = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3306620307, 
 	socialGroup = "lok_mercenaries",
-	
-
 	level = 44,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

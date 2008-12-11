@@ -50,10 +50,7 @@ corsecRenegade = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3254959481, 
 	socialGroup = "Rogue Corsec",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

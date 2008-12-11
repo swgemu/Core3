@@ -43,17 +43,13 @@
 wompratPlague = Creature:new {
 	objectName = "wompratPlague",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "WompRat",
 	gender = "",
 
 	speciesName = "womprat_plague",
 	stfName = "mob/creature_names",
 	objectCRC = 995330799, 
 	socialGroup = "WompRat",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

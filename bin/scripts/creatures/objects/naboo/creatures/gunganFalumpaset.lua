@@ -43,17 +43,13 @@
 gunganFalumpaset = Creature:new {
 	objectName = "gunganFalumpaset",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gungan",
 	gender = "",
 
 	speciesName = "gungan_falumpaset",
 	stfName = "mob/creature_names",
 	objectCRC = 891448142, 
 	socialGroup = "Gungan",
-	
-
 	level = 26,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

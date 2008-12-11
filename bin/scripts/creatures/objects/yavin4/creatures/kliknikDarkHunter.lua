@@ -43,17 +43,13 @@
 kliknikDarkHunter = Creature:new {
 	objectName = "kliknikDarkHunter",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kliknik",
 	gender = "",
 
 	speciesName = "kliknik_dark_hunter",
 	stfName = "mob/creature_names",
 	objectCRC = 965104200, 
 	socialGroup = "Kliknik",
-	
-
 	level = 38,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -50,8 +50,6 @@ imperialWarrantOfficerIi = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1967105963, 
 	socialGroup = "imperial",
-	
-
 	level = 1,
 	
 

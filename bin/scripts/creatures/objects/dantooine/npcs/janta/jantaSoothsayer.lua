@@ -51,10 +51,7 @@ jantaSoothsayer = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4083847450, 
 	socialGroup = "janta_tribe",
-	
-
 	level = 60,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

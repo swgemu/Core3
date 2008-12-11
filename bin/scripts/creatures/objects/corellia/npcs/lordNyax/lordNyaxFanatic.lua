@@ -51,10 +51,7 @@ lordNyaxFanatic = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3808151967, 
 	socialGroup = "followers_of_lord_nyax",
-	
-
 	level = 20,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,8 +51,6 @@ rebelSpecforceCaptain = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 542195677, 
 	socialGroup = "Rebel",
-	
-
 	level = 25,
 	
 	combatFlags = 0,

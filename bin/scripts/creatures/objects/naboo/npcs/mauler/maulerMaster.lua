@@ -43,17 +43,13 @@
 maulerMaster = Creature:new {
 	objectName = "maulerMaster",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Mauler",
 	gender = "",
 
 	speciesName = "mauler_master",
 	stfName = "mob/creature_names", 
 	objectCRC = 1826884049, 
 	socialGroup = "Mauler",
-	
-
 	level = 54,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

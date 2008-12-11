@@ -51,8 +51,6 @@ luke = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 196428947, 
 	socialGroup = "rebel",
-	
-
 	level = 500,
 	
 

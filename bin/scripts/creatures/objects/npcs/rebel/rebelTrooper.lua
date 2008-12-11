@@ -51,8 +51,6 @@ rebelTrooper = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4012550111, 
 	socialGroup = "Rebel",
-	
-
 	level = 15,
 	
 

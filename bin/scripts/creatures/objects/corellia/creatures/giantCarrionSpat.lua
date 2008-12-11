@@ -43,17 +43,13 @@
 giantCarrionSpat = Creature:new {
 	objectName = "giantCarrionSpat",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Carrion Spat",
 	gender = "",
 
 	speciesName = "giant_carrion_spat",
 	stfName = "mob/creature_names",
 	objectCRC = 2592720151, 
 	socialGroup = "Carrion Spat",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

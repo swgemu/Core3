@@ -43,17 +43,13 @@
 gigaFliteRasp = Creature:new {
 	objectName = "gigaFliteRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "giga_flite_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 1138484659, 
 	socialGroup = "Rasp",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

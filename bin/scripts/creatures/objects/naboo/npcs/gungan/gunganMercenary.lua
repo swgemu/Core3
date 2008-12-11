@@ -50,10 +50,7 @@ gunganMercenary = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1911569758, 
 	socialGroup = "gungan",
-	
-
 	level = 14,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

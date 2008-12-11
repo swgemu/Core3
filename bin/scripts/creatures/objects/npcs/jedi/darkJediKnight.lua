@@ -43,17 +43,13 @@
 darkJediKnight = Creature:new {
 	objectName = "darkJediKnight",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "sith",
 	gender = "",
 
 	speciesName = "dark_jedi_knight",
 	stfName = "mob/creature_names", 
 	objectCRC = 1570698968, 
 	socialGroup = "sith",
-	
-
 	level = 350,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

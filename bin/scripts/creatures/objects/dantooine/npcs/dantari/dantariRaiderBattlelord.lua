@@ -51,10 +51,7 @@ dantariRaiderBattlelord = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4083847450, 
 	socialGroup = "dantari_raiders",
-	
-
 	level = 36,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

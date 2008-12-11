@@ -51,10 +51,7 @@ valarianThief = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3873950036, 
 	socialGroup = "valarian",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

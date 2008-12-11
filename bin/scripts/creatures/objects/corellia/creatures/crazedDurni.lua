@@ -43,17 +43,13 @@
 crazedDurni = Creature:new {
 	objectName = "crazedDurni",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "crazed_durni",
 	stfName = "mob/creature_names",
 	objectCRC = 138923017, 
 	socialGroup = "self",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

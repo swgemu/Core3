@@ -43,17 +43,13 @@
 merekDeathsHead = Creature:new {
 	objectName = "merekDeathsHead",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Merek",
 	gender = "",
 
 	speciesName = "merek_deaths_head",
 	stfName = "mob/creature_names",
 	objectCRC = 21982066, 
 	socialGroup = "Merek",
-	
-
 	level = 56,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

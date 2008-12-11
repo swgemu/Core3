@@ -50,10 +50,7 @@ gunganOutcast = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1911569758, 
 	socialGroup = "gungan",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

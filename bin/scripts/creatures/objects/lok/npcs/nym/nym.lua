@@ -50,10 +50,7 @@ nym = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2824646682, 
 	socialGroup = "Nym",
-	
-
 	level = 100,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

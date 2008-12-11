@@ -43,17 +43,13 @@
 whisperBirdHatchling = Creature:new {
 	objectName = "whisperBirdHatchling",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Whisperbird",
 	gender = "",
 
 	speciesName = "whisper_bird_hatchling",
 	stfName = "mob/creature_names",
 	objectCRC = 453669455, 
 	socialGroup = "Whisperbird",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

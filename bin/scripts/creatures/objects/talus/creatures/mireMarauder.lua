@@ -43,17 +43,13 @@
 mireMarauder = Creature:new {
 	objectName = "mireMarauder",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Sludge Panther",
 	gender = "",
 
 	speciesName = "mire_marauder",
 	stfName = "mob/creature_names",
 	objectCRC = 197708576, 
 	socialGroup = "Sludge Panther",
-	
-
 	level = 56,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

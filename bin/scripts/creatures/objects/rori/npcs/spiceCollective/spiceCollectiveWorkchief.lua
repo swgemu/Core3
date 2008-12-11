@@ -51,10 +51,7 @@ spiceCollectiveWorkchief = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1727419831, 
 	socialGroup = "spice_collective",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 matureHanadak = Creature:new {
 	objectName = "matureHanadak",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Hanadak",
 	gender = "",
 
 	speciesName = "mature_hanadak",
 	stfName = "mob/creature_names",
 	objectCRC = 737828942, 
 	socialGroup = "Hanadak",
-	
-
 	level = 31,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

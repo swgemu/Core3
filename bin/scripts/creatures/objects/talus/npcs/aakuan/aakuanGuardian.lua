@@ -51,10 +51,7 @@ aakuanGuardian = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3190504305, 
 	socialGroup = "aakuans",
-	
-
 	level = 25,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

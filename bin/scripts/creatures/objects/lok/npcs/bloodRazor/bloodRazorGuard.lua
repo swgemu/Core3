@@ -51,10 +51,7 @@ bloodRazorGuard = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2535139283, 
 	socialGroup = "bloodrazor",
-	
-
 	level = 39,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

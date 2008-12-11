@@ -43,17 +43,13 @@
 ragtagManiac = Creature:new {
 	objectName = "ragtagManiac",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Rgtg. Gang (Thug)",
 	gender = "",
 
 	speciesName = "ragtag_maniac",
 	stfName = "mob/creature_names", 
 	objectCRC = 3021148797, 
 	socialGroup = "Rgtg. Gang (Thug)",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

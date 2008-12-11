@@ -43,17 +43,13 @@
 gapingSpiderRecluseQueen = Creature:new {
 	objectName = "gapingSpiderRecluseQueen",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gaping",
 	gender = "",
 
 	speciesName = "gaping_spider_recluse_queen",
 	stfName = "mob/creature_names",
 	objectCRC = 2216583678, 
 	socialGroup = "Gaping",
-	
-
 	level = 68,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

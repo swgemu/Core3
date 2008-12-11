@@ -51,10 +51,7 @@ mercenaryCommander = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3360870828, 
 	socialGroup = "lok_mercenaries",
-	
-
 	level = 42,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

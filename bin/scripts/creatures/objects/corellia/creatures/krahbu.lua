@@ -43,17 +43,13 @@
 krahbu = Creature:new {
 	objectName = "krahbu",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Krahbu",
 	gender = "",
 
 	speciesName = "krahbu",
 	stfName = "mob/creature_names",
 	objectCRC = 3335337379, 
 	socialGroup = "Krahbu",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

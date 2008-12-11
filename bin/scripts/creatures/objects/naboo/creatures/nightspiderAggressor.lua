@@ -43,17 +43,13 @@
 nightspiderAggressor = Creature:new {
 	objectName = "nightspiderAggressor",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Nightspider",
 	gender = "",
 
 	speciesName = "nightspider_aggressor",
 	stfName = "mob/creature_names",
 	objectCRC = 2881975821, 
 	socialGroup = "Nightspider",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

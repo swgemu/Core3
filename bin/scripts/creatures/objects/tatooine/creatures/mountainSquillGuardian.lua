@@ -43,17 +43,13 @@
 mountainSquillGuardian = Creature:new {
 	objectName = "mountainSquillGuardian",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Squill",
 	gender = "",
 
 	speciesName = "mountain_squill_guardian",
 	stfName = "mob/creature_names",
 	objectCRC = 807169980, 
 	socialGroup = "Squill",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

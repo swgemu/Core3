@@ -43,17 +43,13 @@
 masterfulEwokWarrior = Creature:new {
 	objectName = "masterfulEwokWarrior",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Condula Tribe",
 	gender = "",
 
 	speciesName = "masterful_ewok_warrior",
 	stfName = "mob/creature_names", 
 	objectCRC = 3260970037, 
 	socialGroup = "Condula Tribe",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

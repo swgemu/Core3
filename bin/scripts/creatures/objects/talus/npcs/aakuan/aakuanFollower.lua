@@ -51,10 +51,7 @@ aakuanFollower = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3521468694, 
 	socialGroup = "aakuans",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

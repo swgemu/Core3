@@ -43,17 +43,13 @@
 stuntedWoolamander = Creature:new {
 	objectName = "stuntedWoolamander",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Woolamander",
 	gender = "",
 
 	speciesName = "stunted_woolamander",
 	stfName = "mob/creature_names",
 	objectCRC = 23943354, 
 	socialGroup = "Woolamander",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

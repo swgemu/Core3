@@ -43,17 +43,13 @@
 domesticHumbaba = Creature:new {
 	objectName = "domesticHumbaba",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "domestic_humbaba",
 	stfName = "mob/creature_names",
 	objectCRC = 1217993661, 
 	socialGroup = "self",
-	
-
 	level = 7,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

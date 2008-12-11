@@ -51,8 +51,6 @@ seniorSpecforceHeavyWeaponsSpecialist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = ?, 
 	socialGroup = "tlist		  Rebel",
-	
-
 	level = 20,
 	
 

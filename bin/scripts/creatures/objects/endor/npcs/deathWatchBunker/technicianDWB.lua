@@ -42,14 +42,12 @@
 technicianDWB = Creature:new {
 	objectName = "technicianDWB", -- name of the lua Object
 	creatureType = "NPC",
-	faction = "Corsec",
 	gender = "",
 	
 	speciesName = "death_watch_technician",
 	stfName = "mob/creature_names",
 	objectCRC = 3584504744,
 	socialGroup = "deathwatch",	
-
 	level = 230,
 	
 	

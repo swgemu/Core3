@@ -43,17 +43,13 @@
 giantGubbur = Creature:new {
 	objectName = "giantGubbur",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Gubbur",
 	gender = "",
 
 	speciesName = "giant_gubbur",
 	stfName = "mob/creature_names",
 	objectCRC = 2210767459, 
 	socialGroup = "Gubbur",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

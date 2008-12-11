@@ -43,17 +43,13 @@
 forceTrainedArchaist = Creature:new {
 	objectName = "forceTrainedArchaist",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Force Reneg.",
 	gender = "",
 
 	speciesName = "force_trained_archaist",
 	stfName = "mob/creature_names", 
 	objectCRC = 2067446413, 
 	socialGroup = "Force Reneg.",
-	
-
 	level = 90,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 youngBorgleGruntling = Creature:new {
 	objectName = "youngBorgleGruntling",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Borgle",
 	gender = "",
 
 	speciesName = "young_borgle_gruntling",
 	stfName = "mob/creature_names",
 	objectCRC = 715008896, 
 	socialGroup = "Borgle",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

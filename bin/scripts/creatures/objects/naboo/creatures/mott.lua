@@ -43,17 +43,13 @@
 mott = Creature:new {
 	objectName = "mott",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Mott",
 	gender = "",
 
 	speciesName = "mott",
 	stfName = "mob/creature_names",
 	objectCRC = 3313283529, 
 	socialGroup = "Mott",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

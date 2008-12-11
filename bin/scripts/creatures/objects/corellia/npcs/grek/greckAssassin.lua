@@ -43,17 +43,13 @@
 greckAssassin = Creature:new {
 	objectName = "greckAssassin",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Olag Greek",
 	gender = "",
 
 	speciesName = "greck_assassin",
 	stfName = "mob/creature_names", 
 	objectCRC = 1197861951, 
 	socialGroup = "Olag Greek",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

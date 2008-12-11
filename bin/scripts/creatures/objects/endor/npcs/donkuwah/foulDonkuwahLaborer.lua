@@ -51,10 +51,7 @@ foulDonkuwahLaborer = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
 	socialGroup = "donkuwah_tribe",
-	
-
 	level = 24,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

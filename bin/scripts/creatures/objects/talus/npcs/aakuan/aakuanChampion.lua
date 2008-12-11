@@ -51,10 +51,7 @@ aakuanChampion = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 285582608, 
 	socialGroup = "aakuans",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

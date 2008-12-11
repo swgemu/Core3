@@ -43,16 +43,13 @@
 geonosianImperialObserver = Creature:new {
 	objectName = "geonosianImperialObserver",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "self",
 	gender = "",
 
 	speciesName = "geonosian_imperial_observer",
 	stfName = "mob/creature_names", 
 	objectCRC = 3498321727, 
 	socialGroup = "self",
-	
 	level = 66,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

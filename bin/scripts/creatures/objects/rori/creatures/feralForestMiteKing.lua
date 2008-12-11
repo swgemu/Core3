@@ -43,17 +43,13 @@
 feralForestMiteKing = Creature:new {
 	objectName = "feralForestMiteKing",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bark Mite",
 	gender = "",
 
 	speciesName = "feral_forest_mite_king",
 	stfName = "mob/creature_names",
 	objectCRC = 4253086890, 
 	socialGroup = "Bark Mite",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

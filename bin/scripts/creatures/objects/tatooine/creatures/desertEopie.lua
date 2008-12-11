@@ -43,17 +43,13 @@
 desertEopie = Creature:new {
 	objectName = "desertEopie",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "desert_eopie",
 	stfName = "mob/creature_names",
 	objectCRC = 3289792361, 
 	socialGroup = "self",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

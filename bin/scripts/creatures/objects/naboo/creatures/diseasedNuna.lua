@@ -43,17 +43,13 @@
 diseasedNuna = Creature:new {
 	objectName = "diseasedNuna",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "diseased_nuna",
 	stfName = "mob/creature_names",
 	objectCRC = 2432817562, 
 	socialGroup = "self",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG,
 

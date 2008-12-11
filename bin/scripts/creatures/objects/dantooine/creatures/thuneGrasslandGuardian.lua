@@ -43,17 +43,13 @@
 thuneGrasslandGuardian = Creature:new {
 	objectName = "thuneGrasslandGuardian",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Thune",
 	gender = "",
 
 	speciesName = "thune_grassland_guardian",
 	stfName = "mob/creature_names",
 	objectCRC = 2147765074, 
 	socialGroup = "Thune",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,10 +51,7 @@ jantaClanLeader = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4083847450, 
 	socialGroup = "janta_tribe",
-	
-
 	level = 75,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

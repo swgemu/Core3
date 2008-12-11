@@ -43,17 +43,13 @@
 bocattDiseased = Creature:new {
 	objectName = "bocattDiseased",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bocatt",
 	gender = "",
 
 	speciesName = "bocatt_diseased",
 	stfName = "mob/creature_names",
 	objectCRC = 3725325606, 
 	socialGroup = "Bocatt",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

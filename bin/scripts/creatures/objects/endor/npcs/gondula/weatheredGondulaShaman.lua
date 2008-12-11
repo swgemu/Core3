@@ -51,10 +51,7 @@ weatheredGondulaShaman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
 	socialGroup = "gondula_tribe",
-	
-
 	level = 43,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

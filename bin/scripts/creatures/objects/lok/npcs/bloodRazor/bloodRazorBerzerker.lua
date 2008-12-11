@@ -51,10 +51,7 @@ bloodRazorBerzerker = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4199989558, 
 	socialGroup = "bloodrazor",
-	
-
 	level = 36,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

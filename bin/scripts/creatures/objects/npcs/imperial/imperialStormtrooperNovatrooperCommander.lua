@@ -51,8 +51,6 @@ imperialStormTrooperNovatrooperCommander = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4280388140, 
 	socialGroup = "imperial",
-	
-
 	level = 182,
 	
 

@@ -43,17 +43,13 @@
 rabidShaupaut = Creature:new {
 	objectName = "rabidShaupaut",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "rabid_shaupaut",
 	stfName = "mob/creature_names",
 	objectCRC = 176125140, 
 	socialGroup = "self",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -51,10 +51,7 @@ axkvaMin = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2853795094, 
 	socialGroup = "nightsister",
-	
-
 	level = 302,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

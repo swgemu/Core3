@@ -43,17 +43,13 @@
 gleamingLanternBird = Creature:new {
 	objectName = "gleamingLanternBird",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Lantern",
 	gender = "",
 
 	speciesName = "gleaming_lantern_bird",
 	stfName = "mob/creature_names",
 	objectCRC = 1183906554, 
 	socialGroup = "Lantern",
-	
-
 	level = 34,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

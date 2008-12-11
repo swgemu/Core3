@@ -50,10 +50,7 @@ kylaenaHaley = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3989382798, 
 	socialGroup = "Sith Shadow 0",
-	
-
 	level = 103,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -51,10 +51,7 @@ kungaClanPrimalist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4186110670, 
 	socialGroup = "kunga_tribe",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

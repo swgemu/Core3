@@ -51,10 +51,7 @@ bloodRazorPirateWeak = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 437068806, 
 	socialGroup = "bloodrazor",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

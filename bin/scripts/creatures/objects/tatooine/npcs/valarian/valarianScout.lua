@@ -51,10 +51,7 @@ valarianScout = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 162757528, 
 	socialGroup = "valarian",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

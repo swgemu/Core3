@@ -43,17 +43,13 @@
 kimaFerineRazorfang = Creature:new {
 	objectName = "kimaFerineRazorfang",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Kima",
 	gender = "",
 	
 	speciesName = "kima_ferine_razorfang",
 	stfName = "mob/creature_names",
 	objectCRC = 558452126, 
 	socialGroup = "Kima",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

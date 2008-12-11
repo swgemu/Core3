@@ -43,17 +43,13 @@
 bomarrMonkHealer = Creature:new {
 	objectName = "bomarrMonkHealer",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Spiderdroid",
 	gender = "",
 
 	speciesName = "bomarr_monk_healer",
 	stfName = "mob/creature_names", 
 	objectCRC = 2894091205, 
 	socialGroup = "Spiderdroid",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 bordokMare = Creature:new {
 	objectName = "bordokMare",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bordok",
 	gender = "",
 
 	speciesName = "bordok_mare",
 	stfName = "mob/creature_names",
 	objectCRC = 622383012, 
 	socialGroup = "Bordok",
-	
-
 	level = 34,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

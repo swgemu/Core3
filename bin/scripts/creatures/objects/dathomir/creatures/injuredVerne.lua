@@ -43,17 +43,13 @@
 injuredVerne = Creature:new {
 	objectName = "injuredVerne",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Verne",
 	gender = "",
 
 	speciesName = "injured_verne",
 	stfName = "mob/creature_names",
 	objectCRC = 1915375945, 
 	socialGroup = "Verne",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

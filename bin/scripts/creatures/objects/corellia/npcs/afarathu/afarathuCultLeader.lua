@@ -51,10 +51,7 @@ afarathuCultLeader = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "afarathu",
-	
-
 	level = 18,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

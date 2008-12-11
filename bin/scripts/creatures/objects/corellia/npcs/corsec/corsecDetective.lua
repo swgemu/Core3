@@ -51,10 +51,7 @@ corsecDetective = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3750712439, 
 	socialGroup = "corsec",
-	
-
 	level = 17,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

@@ -43,17 +43,13 @@
 deadlyForestMiteGuardian = Creature:new {
 	objectName = "deadlyForestMiteGuardian",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Bark Mite",
 	gender = "",
 
 	speciesName = "deadly_forest_mite_guardian",
 	stfName = "mob/creature_names",
 	objectCRC = 4253086890, 
 	socialGroup = "Bark Mite",
-	
-
 	level = 16,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

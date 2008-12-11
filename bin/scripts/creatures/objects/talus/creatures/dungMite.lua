@@ -43,17 +43,13 @@
 dungMite = Creature:new {
 	objectName = "dungMite",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Decay Mite",
 	gender = "",
 
 	speciesName = "dung_mite",
 	stfName = "mob/creature_names",
 	objectCRC = 382834958, 
 	socialGroup = "Decay Mite",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

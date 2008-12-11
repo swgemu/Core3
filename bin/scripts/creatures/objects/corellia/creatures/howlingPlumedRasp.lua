@@ -43,17 +43,13 @@
 howlingPlumedRasp = Creature:new {
 	objectName = "howlingPlumedRasp",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Rasp",
 	gender = "",
 
 	speciesName = "howling_plumed_rasp",
 	stfName = "mob/creature_names",
 	objectCRC = 144116282, 
 	socialGroup = "Rasp",
-	
-
 	level = 4,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

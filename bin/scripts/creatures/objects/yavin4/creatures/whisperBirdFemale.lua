@@ -43,17 +43,13 @@
 whisperBirdFemale = Creature:new {
 	objectName = "whisperBirdFemale",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Whisperbird",
 	gender = "",
 
 	speciesName = "whisper_bird_female",
 	stfName = "mob/creature_names",
 	objectCRC = 3229632721, 
 	socialGroup = "Whisperbird",
-	
-
 	level = 15,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

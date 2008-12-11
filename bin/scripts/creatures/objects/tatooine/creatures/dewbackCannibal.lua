@@ -43,17 +43,13 @@
 dewbackCannibal = Creature:new {
 	objectName = "dewbackCannibal",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Dewback",
 	gender = "",
 
 	speciesName = "dewback_cannibal",
 	stfName = "mob/creature_names",
 	objectCRC = 3499529322, 
 	socialGroup = "Dewback",
-	
-
 	level = 21,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

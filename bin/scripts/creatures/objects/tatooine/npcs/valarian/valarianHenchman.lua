@@ -51,10 +51,7 @@ valarianHenchman = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2870201143, 
 	socialGroup = "valarian",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

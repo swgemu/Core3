@@ -43,17 +43,13 @@
 femaleSnorbalCalf = Creature:new {
 	objectName = "femaleSnorbalCalf",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Snorbal",
 	gender = "",
 
 	speciesName = "female_snorbal_calf",
 	stfName = "mob/creature_names",
 	objectCRC = 857953251, 
 	socialGroup = "Snorbal",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

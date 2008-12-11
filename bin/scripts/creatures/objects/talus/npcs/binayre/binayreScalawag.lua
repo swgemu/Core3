@@ -51,10 +51,7 @@ binayreScalawag = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2348451756, 
 	socialGroup = "binayre",
-	
-
 	level = 11,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 brigadeTrooper = Creature:new {
 	objectName = "brigadeTrooper",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Restuss",
 	gender = "",
 
 	speciesName = "brigade_trooper",
 	stfName = "mob/creature_names", 
 	objectCRC = 2170332525, 
 	socialGroup = "Restuss",
-	
-
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

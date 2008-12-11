@@ -51,10 +51,7 @@ lostAqualishLookout = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4072770288, 
 	socialGroup = "lost_aqualish",
-	
-
 	level = 10,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

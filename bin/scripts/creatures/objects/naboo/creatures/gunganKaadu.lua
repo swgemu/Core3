@@ -50,8 +50,6 @@ gunganKaadu = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 3798151898, 
 	socialGroup = "Gungan",
-	
-
 	level = 13,
 	
 

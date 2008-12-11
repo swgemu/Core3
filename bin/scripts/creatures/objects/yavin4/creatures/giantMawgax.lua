@@ -43,17 +43,13 @@
 giantMawgax = Creature:new {
 	objectName = "giantMawgax",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Mawgax",
 	gender = "",
 
 	speciesName = "giant_mawgax",
 	stfName = "mob/creature_names",
 	objectCRC = 2940660181, 
 	socialGroup = "Mawgax",
-	
-
 	level = 32,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

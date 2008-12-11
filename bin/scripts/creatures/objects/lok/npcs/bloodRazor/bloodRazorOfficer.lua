@@ -51,10 +51,7 @@ bloodRazorOfficer = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3398840753, 
 	socialGroup = "bloodrazor",
-	
-
 	level = 40,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

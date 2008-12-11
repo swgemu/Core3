@@ -43,17 +43,13 @@
 domesticatedMott = Creature:new {
 	objectName = "domesticatedMott",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Naboo",
 	gender = "",
 
 	speciesName = "domesticated_mott",
 	stfName = "mob/creature_names",
 	objectCRC = 3313283529, 
 	socialGroup = "Naboo",
-	
-
 	level = 5,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

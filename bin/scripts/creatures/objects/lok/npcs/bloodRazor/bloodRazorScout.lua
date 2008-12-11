@@ -51,10 +51,7 @@ bloodRazorScout = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1671721438, 
 	socialGroup = "bloodrazor",
-	
-
 	level = 32,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

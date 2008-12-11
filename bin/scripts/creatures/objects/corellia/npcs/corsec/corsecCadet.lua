@@ -50,10 +50,7 @@ corsecCadet = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3630538207, 
 	socialGroup = "CorsecQ",
-	
-
 	level = 12,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

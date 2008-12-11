@@ -51,10 +51,7 @@ gundulaOutcast = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 176533841, 
 	socialGroup = "gondula_tribe",
-	
-
 	level = 13,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

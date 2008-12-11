@@ -51,10 +51,7 @@ singingMtnClanOutcast = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3930207510, 
 	socialGroup = "mtn_clan",
-	
-
 	level = 85,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

@@ -43,17 +43,13 @@
 fambaaFuriousDevastator = Creature:new {
 	objectName = "fambaaFuriousDevastator",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Fambaa     ",
 	gender = "",
 
 	speciesName = "fambaa_furious_devastator",
 	stfName = "mob/creature_names",
 	objectCRC = 2375688304, 
 	socialGroup = "Fambaa     ",
-	
-
 	level = 38,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

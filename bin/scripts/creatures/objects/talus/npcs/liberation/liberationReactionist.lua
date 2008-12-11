@@ -51,10 +51,7 @@ liberationReactionist = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 479143739, 
 	socialGroup = "liberation_party",
-	
-
 	level = 19,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

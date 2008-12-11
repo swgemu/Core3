@@ -43,17 +43,13 @@
 rsfSecurityGuard = Creature:new {
 	objectName = "rsfSecurityGuard",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "RSF",
 	gender = "",
 
 	speciesName = "rsf_security_guard",
 	stfName = "mob/creature_names", 
 	objectCRC = 4160022471, 
 	socialGroup = "RSF",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

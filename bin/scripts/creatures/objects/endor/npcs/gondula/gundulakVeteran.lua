@@ -51,10 +51,7 @@ gundulakVeteran = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3253486254, 
 	socialGroup = "gondula_tribe",
-	
-
 	level = 35,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

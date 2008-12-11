@@ -43,17 +43,13 @@
 rockmite = Creature:new {
 	objectName = "rockmite",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "self",
 	gender = "",
 
 	speciesName = "rockmite",
 	stfName = "mob/creature_names",
 	objectCRC = 1212835476, 
 	socialGroup = "self",
-	
-
 	level = 8,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

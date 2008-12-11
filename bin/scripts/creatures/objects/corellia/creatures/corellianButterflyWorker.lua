@@ -43,17 +43,13 @@
 corellianButterflyWorker = Creature:new {
 	objectName = "corellianButterflyWorker",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Cor. Butterfly",
 	gender = "",
 
 	speciesName = "corellian_butterfly_worker",
 	stfName = "mob/creature_names",
 	objectCRC = 3636427705, 
 	socialGroup = "Cor. Butterfly",
-	
-
 	level = 9,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

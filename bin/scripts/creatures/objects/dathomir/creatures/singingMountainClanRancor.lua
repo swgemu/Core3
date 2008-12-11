@@ -50,8 +50,6 @@ singingMountainClanRancor = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 3516440142, 
 	socialGroup = "Singing Mountain",
-	
-
 	level = 55,
 	
 

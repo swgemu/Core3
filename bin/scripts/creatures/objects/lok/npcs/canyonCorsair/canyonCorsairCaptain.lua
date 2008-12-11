@@ -51,10 +51,7 @@ canyonCorsairCaptain = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3643912755, 
 	socialGroup = "canyon_corsair",
-	
-
 	level = 50,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

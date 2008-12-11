@@ -43,17 +43,13 @@
 swirlProngImpaler = Creature:new {
 	objectName = "swirlProngImpaler",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Swirl Prong",
 	gender = "",
 
 	speciesName = "swirl_prong_impaler",
 	stfName = "mob/creature_names",
 	objectCRC = 4177314208, 
 	socialGroup = "Swirl Prong",
-	
-
 	level = 30,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

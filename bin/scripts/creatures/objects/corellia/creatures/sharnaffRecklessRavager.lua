@@ -43,17 +43,13 @@
 sharnaffRecklessRavager = Creature:new {
 	objectName = "sharnaffRecklessRavager",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	faction = "Sharnaff",
 	gender = "",
 
 	speciesName = "sharnaff_reckless_ravager",
 	stfName = "mob/creature_names",
 	objectCRC = 3709004378, 
 	socialGroup = "Sharnaff",
-	
-
 	level = 34,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

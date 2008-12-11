@@ -51,10 +51,7 @@ spiderNightsisterSentry = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3303384094, 
 	socialGroup = "spider_nightsister",
-	
-
 	level = 27,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

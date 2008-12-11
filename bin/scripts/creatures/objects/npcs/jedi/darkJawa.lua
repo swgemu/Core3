@@ -43,15 +43,12 @@
 darkJawa = Creature:new {
 	objectName = "darkJawa",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Jawa",
 	gender = "",
 
 	stfName = "Dark Jawa",
 	objectCRC = 3444186231, 
-	socialGroup = "Jawa",	
-
+	socialGroup = "Jawa",
 	level = 6,
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
