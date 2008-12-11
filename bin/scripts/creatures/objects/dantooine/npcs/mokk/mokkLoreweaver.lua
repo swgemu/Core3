@@ -66,7 +66,7 @@ mokkLoreweaver = Creature:new {
 	stamina = 0,
 
 	mindMax = 12000,
-	mindMax = 10000,
+	mindMin = 10000,
 	focus = 0,
 	willpower = 0,
 

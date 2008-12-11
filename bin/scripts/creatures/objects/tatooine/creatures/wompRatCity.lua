@@ -45,9 +45,8 @@ wompratCity = Creature:new {
 	creatureType = "ANIMAL",
 	gender = "",
 
-	speciesName = "creature_name",
-	stfName = "mob/creature_names",
-	stfName = "a Womprat City",
+	speciesName = "womprat_city",
+	stfName = "mob/creature_names",	
 	objectCRC = 1909480803, 
 	socialGroup = "WompRat",
 	level = 6,
