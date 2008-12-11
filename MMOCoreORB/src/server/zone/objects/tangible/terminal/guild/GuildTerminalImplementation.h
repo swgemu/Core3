@@ -116,8 +116,8 @@ public:
 			omr->addRadialItem(0, 196, 3, "@guild:menu_create");
 		}
 
-			omr->finish();
-			player->sendMessage(omr);
+		omr->finish();
+		player->sendMessage(omr);
 	}
 
 };

@@ -1176,6 +1176,7 @@ public:
 	// packet methods
 	void sendMessage(BaseMessage* msg);
 	void sendMessage(StandaloneBaseMessage* msg);
+	void broadcastMessageToOthersAround(Player* player, BaseMessage* msg);
 
 	// setters
 	void setOnline();

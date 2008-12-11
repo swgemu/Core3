@@ -69,6 +69,8 @@ class BuildingObjectImplementation : public QuadTree, public BuildingObjectServa
 	bool persistent, updated;
 
 	bool staticBuilding;
+	
+	bool storageLoaded;
 
 	String templateName;
 
@@ -276,6 +278,15 @@ public:
 
 	void unlock(bool doLock = true) {
 		QuadTree::unlock(doLock);
+	}
+
+	//itemStorage getter/setter
+	bool getStorageLoaded() {
+		return storageLoaded;
+	}
+
+	void setStorageLoaded(bool setter) {
+		storageLoaded = setter;
 	}
 
 };

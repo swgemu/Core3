@@ -840,6 +840,7 @@ public:
 	bool isInBuilding();
 	SceneObject* getBuilding();
 	int getBuildingType();
+
 	bool canGiveEntertainBuff();
 
 	// guild methods
@@ -886,6 +887,7 @@ public:
 	void sendDestroyTo(Player* player);
 
 	void broadcastMessages(Vector<BaseMessage*>& msgs, int range = 128, bool doLock = true);
+	void broadcastMessageRange(Player* player, const String& message, float range);
 
 	void sendSystemMessage(const String& message);
 	void sendSystemMessage(const String& file, const String& str, uint64 targetid = 0);

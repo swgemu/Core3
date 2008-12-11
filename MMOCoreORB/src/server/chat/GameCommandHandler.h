@@ -191,7 +191,11 @@ private:
 	static void getXP(StringTokenizer tokenizer, Player* player);
 	static void adminList(StringTokenizer tokenizer, Player* player);
 	static void showChars(StringTokenizer tokenizer, Player* player);
-	static void ecKill(StringTokenizer tokenizer, Player* player);
+
+	static void ecKill(StringTokenizer tokenizer, Player * player);
+	static void poofObject(StringTokenizer tokenizer, Player * player);
+	static void whoDroppedThis(StringTokenizer tokenizer, Player * player);
+	static void openInventory(StringTokenizer tokenizer, Player * player);
 	static void toggleCombat(StringTokenizer tokenizer, Player* player);
 	static void lockServer(StringTokenizer tokenizer, Player* player);
 	static void unlockServer(StringTokenizer tokenizer, Player* player);

@@ -90,6 +90,8 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjec
 
 	friendsList = new FriendsList(player);
 	ignoreList = new IgnoreList(player);
+
+	reverseFriendListListCount = 0;
 }
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {
@@ -472,4 +474,20 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 
 	unlock();
 	return returnWP;
+}
+
+void PlayerObjectImplementation::pokeReverseFriendList(uint64 playID) {
+	reverseFriendList.add(playID);
+}
+
+void PlayerObjectImplementation::removeFromReverseFriendList(uint64 playerID) {
+	for (int i = 0; i < reverseFriendList.size(); ++i) {
+		uint64 tempoID = reverseFriendList.get(i);
+
+		if (tempoID == playerID) {
+			reverseFriendList.remove(i);
+			break;
+		}
+
+	}
 }

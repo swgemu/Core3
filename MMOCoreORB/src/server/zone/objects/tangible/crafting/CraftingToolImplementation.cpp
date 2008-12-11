@@ -192,10 +192,19 @@ void CraftingToolImplementation::sendTo(Player* player, bool doClose) {
 
 void CraftingToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 
-	if (hopper != NULL){
-
-		if (hopper->objectsSize() > 0){
+	if(hopper != NULL) {
+		if(hopper->objectsSize() > 0) {
 			omr->addRadialItem(0, 130, 3, "Retrieve Prototype");
+		}
+	}
+
+	//TODO:Cell permission check
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			if (_this->isTangible())
+			omr->addRadialItem(0, 10, 3, "Pickup");
 		}
 	}
 

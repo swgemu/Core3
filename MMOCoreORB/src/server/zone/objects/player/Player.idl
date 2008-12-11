@@ -440,6 +440,7 @@ interface Player implements CreatureObject {
 
 	void sendMessage(BaseMessage msg);
 	void sendMessage(StandaloneBaseMessage msg);
+	void broadcastMessageToOthersAround(Player player, BaseMessage msg);
 
 	boolean isJedi();
 

@@ -459,8 +459,6 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 	player->setFirstNameProper(player->getFirstName());
 
-	//TODO: why did we do this - String::toLower(player->getFirstName());
-
 	Zone* zne = server->getZoneServer()->getZone(character->getInt(16));
 
 	player->setZoneIndex(character->getInt(16));
@@ -679,64 +677,83 @@ void PlayerManagerImplementation::updateGuildStatus(Player* player) {
 	player->info("Clean exit from PlayerManagerImplementation::updateGuildStatus(Player* player)");
 }
 
-
 void PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status) {
-	/*player->unlock();
+	PlayerObject* playerObject = player->getPlayerObject();
+	if (playerObject == NULL)
+		return;
 
-	Player* playerToInform = NULL;
-	PlayerObject* toInformObject = NULL;
+	if (player->isOnline())
+		populateReverseFriendList(player);
+
+	sendUpdateMessagesToFriends(player, status);
+
+}
+
+void PlayerManagerImplementation::populateReverseFriendList(Player* player) {
+	PlayerObject* playerObject = player->getPlayerObject();
 
 	try {
-		player->info("Entering PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
+		StringBuffer query;
+
+		query << "SELECT * from friendlist_reverse where charID = " << player->getCharacterID() << ";";
+
+		ResultSet* gotMe = ServerDatabase::instance()->executeQuery(query);
+
+		while (gotMe->next())
+			playerObject->pokeReverseFriendList(gotMe->getUnsignedLong(1));
+
+		delete gotMe;
+
+	} catch (DatabaseException& e) {
+		System::out << "DB Exception at PlayerManagerImplementation::updateOtherFriendlists \n" << e.getMessage();
+		return;
+
+	} catch (...) {
+		System::out << "unreported exception at PlayerManagerImplementation::updateOtherFriendlists\n";
+		return;
+	}
+}
+
+void PlayerManagerImplementation::sendUpdateMessagesToFriends(Player* player, bool status) {
+	PlayerObject* playerObject = player->getPlayerObject();
+
+	Player* playerToInform = NULL;
+
+	uint64 poid;
+
+	try {
+		player->info("Starting messaging at PlayerManagerImplementation::sendUpdateMessagesToFriends");
 
 		String loggingInName = player->getFirstName().toLowerCase();
 
-		playerMap->lock();
+		Zone* zone = player->getZone();
+		if (zone == NULL)
+			return;
 
-		playerMap->resetIterator(false);
+		int listSize = playerObject->getReverseFriendListSize();
 
-		while (playerMap->hasNext(false)) {
-			playerToInform = playerMap->next(false);
+		for (int i = 0; i < listSize; ++i) {
+			poid = playerObject->getReverseFriendListEntry(i);
 
-			if (playerToInform == player)
-				continue;
+			SceneObject* sco = zone->lookupObject(poid);
 
-			try {
-				playerToInform->wlock(playerMap);
+			if (sco != NULL) {
+				if (sco->isPlayer()) {
+					playerToInform = (Player*) sco;
 
-				toInformObject = playerToInform->getPlayerObject();
-
-				if (toInformObject != NULL) {
-					for (int i = 0; i < toInformObject->getFriendsList()->getCount(); ++i) {
-						if (toInformObject->getFriendsList()->getFriendsName(i) == loggingInName) {
-
-							if (playerToInform->isOnline()) {
-								FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(loggingInName, "Core3", status);
-								playerToInform->sendMessage(notifyStatus);
-								break;
-							}
-
-						}
+					if (playerToInform->isOnline()) {
+						FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(loggingInName, "Core3", status);
+						playerToInform->sendMessage(notifyStatus);
 					}
 				}
-
-				playerToInform->unlock();
-			} catch (...) {
-				playerToInform->error("unreported exception caught in PlayerManagerImplementation::updateOtherFriendlists");
-				playerToInform->unlock();
 			}
-
 		}
 
-		playerMap->unlock();
 	} catch (...) {
-		player->error("Unreported exception in PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
-
-		playerMap->unlock();
+		player->error("Unreported exception in PlayerManagerImplementation::sendUpdateMessagesToFriends");
+		return;
 	}
-
-	player->info("Clean exit from PlayerManagerImplementation::updateOtherFriendlists(Player* player, bool status)");
-	player->wlock();*/
+	player->info("Clean exit from PlayerManagerImplementation::sendUpdateMessagesToFriends");
 }
 
 void PlayerManagerImplementation::unload(Player* player) {

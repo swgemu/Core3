@@ -129,6 +129,17 @@ void LootManager::moveObject(TangibleObject* object, Player* player, Creature* c
 
 		player->getGroupObject()->broadcastMessage(packet);
 	}
+
+	//Register loot with server
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if (zoneServer == NULL)
+		return;
+
+	zoneServer->addObject(object);
 }
 
 void LootManager::lootCredits(Player* player, Creature* creature) {

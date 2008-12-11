@@ -205,3 +205,9 @@ void TicketCollectorImplementation::useTicket(Player* player, Ticket* ticket) {
 	player->sendSystemMessage("travel", "wrong_shuttle");
 	return;
 }
+
+void TicketCollectorImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	omr->finish();
+
+	player->sendMessage(omr);
+}

@@ -73,6 +73,8 @@ interface ItemManager {
 	
 	void createPlayerItem(Player player, TangibleObject item);
 
+	TangibleObject clonePlayerObjectTemplate(unsigned long objectid, TangibleObject templ);
+
 	TangibleObject initializeTangibleForCrafting(int objecttype,
 			unsigned long objectid, unsigned long objectcrc, String objectn,
 			String objecttemp, boolean equipped);
@@ -80,6 +82,9 @@ interface ItemManager {
 	void savePlayerItem(Player player, TangibleObject item); 
 
 	void deletePlayerItem(Player player, TangibleObject item, boolean notify);
+	
+	void transferContainerItem(Player player, TangibleObject item, unsigned long destinationID);
+	void loadStructurePlayerItems(Player player, unsigned long cellID);
 	
 	// stat methods
 	void showDbStats(Player player);

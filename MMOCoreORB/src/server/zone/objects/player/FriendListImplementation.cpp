@@ -70,7 +70,9 @@ FriendsListImplementation::FriendsListImplementation(Player* pl): FriendsListSer
 
 void FriendsListImplementation::addFriend(String& name, String& server) {
 	PlayerObject* playerObject = player->getPlayerObject();
+
 	int magicnumber = friendsMagicNumber;
+	uint32 offlineCharID;
 
 	name = name.toLowerCase();
 
@@ -85,40 +87,18 @@ void FriendsListImplementation::addFriend(String& name, String& server) {
 		}
 	}
 
-	try {
-		StringBuffer query;
-		String mysqlName = name;
-		MySqlDatabase::escapeString(mysqlName);
 
-		query << "SELECT * from `characters` where lower(`firstname`) = '" << mysqlName << "';";
-		ResultSet* friends = ServerDatabase::instance()->executeQuery(query);
-
-		if (!friends->next()) {
-			StringBuffer friendString;
-			friendString << name << " is not a valid friend name.";
-
-			UnicodeString message = UnicodeString(friendString.toString());
-			player->sendSystemMessage(message);
-
-			delete friends;
-			return;
-		}
-
-		delete friends;
-	} catch (DatabaseException& e) {
-		System::out << "exception at Friendlist::addFriend()\n" << e.getMessage();
+	ResultSet* friends = pullMyFriendsFromDB(name);
+	if (friends == NULL)
 		return;
-	} catch (...) {
-		System::out << "unreported exception at Friendlist::addFriend()\n";
-		return;
-	}
+
+
+	offlineCharID = friends->getInt(0);
 
 	friendName.add(name);
 	friendServer.add(server);
 
 	friendsMagicNumber = magicnumber + (friendName.size() +1);
-
-	//toString();
 
 	AddFriendInitiateMessage* init = new AddFriendInitiateMessage();
 	player->sendMessage(init);
@@ -132,9 +112,16 @@ void FriendsListImplementation::addFriend(String& name, String& server) {
 		if (playerToAdd->isOnline()) {
 			FriendStatusChangeMessage* notifyStatus =
 				new FriendStatusChangeMessage(name, server, true);
+
 			player->sendMessage(notifyStatus);
+
+			PlayerObject* playerToAddObject = playerToAdd->getPlayerObject();
+			if (playerToAddObject != NULL)
+				playerToAddObject->pokeReverseFriendList(player->getObjectID());
 		}
 	}
+
+	populateReverseFriendListForOfflineToonInDB(player->getObjectID(), offlineCharID);
 
 	StringBuffer friendString;
 	friendString << name << " is now your friend.";
@@ -148,6 +135,57 @@ void FriendsListImplementation::addFriend(String& name, String& server) {
 	dplay9->updateFriendsList();
 	dplay9->close();
 	player->sendMessage(dplay9);
+
+	delete friends;
+}
+
+ResultSet* FriendsListImplementation::pullMyFriendsFromDB(String name) {
+	ResultSet* friends;
+
+	try {
+		StringBuffer query;
+		String mysqlName = name;
+		MySqlDatabase::escapeString(mysqlName);
+
+		query << "SELECT * from `characters` where lower(`firstname`) = '" << mysqlName << "';";
+		friends = ServerDatabase::instance()->executeQuery(query);
+
+		if (!friends->next()) {
+			StringBuffer friendString;
+			friendString << name << " is not a valid friend name.";
+
+			UnicodeString message = UnicodeString(friendString.toString());
+			player->sendSystemMessage(message);
+
+			delete friends;
+			return NULL;
+
+		}
+	} catch (DatabaseException& e) {
+		System::out << "exception at Friendlist::addFriend()\n" << e.getMessage();
+		return NULL;
+	} catch (...) {
+		System::out << "unreported exception at Friendlist::addFriend()\n";
+		return NULL;
+	}
+
+	return friends;
+}
+
+void FriendsListImplementation::populateReverseFriendListForOfflineToonInDB(uint64 poid, uint32 myPlayer) {
+	try {
+		StringBuffer query;
+		query << "INSERT DELAYED INTO friendlist_reverse set charID = " << myPlayer << ", gotMePOID = " << poid << ";";
+
+		ServerDatabase::instance()->executeStatement(query);
+
+	} catch (DatabaseException& e) {
+		System::out << "FriendsListImplementation::populateReverseFriendListForOfflineToonInDB(uint64 poid, uint32 myPlayer) DB exception! \n";
+
+		System::out << e.getMessage() << endl;
+	} catch (...) {
+		System::out << "unreported exception caught in FriendsListImplementation::populateReverseFriendListForOfflineToonInDB\n";
+	}
 }
 
 void FriendsListImplementation::removeFriend(String& name) {
@@ -168,6 +206,19 @@ void FriendsListImplementation::removeFriend(String& name) {
 			friendsMagicNumber = magicnumber + (friendName.size() +1);
 
 			//toString();
+
+
+			Player* playerToRemove = player->getZone()->getZoneServer()->getPlayerManager()->getPlayer(name);
+
+			if (playerToRemove != NULL) {
+				if (playerToRemove->isOnline()) {
+					PlayerObject* playerToRemoveObject = playerToRemove->getPlayerObject();
+					if (playerToRemoveObject != NULL) {
+						playerToRemoveObject->removeFromReverseFriendList(player->getObjectID());
+					}
+				}
+			}
+
 
 			AddFriendMessage* remove = new AddFriendMessage(player->getObjectID(),name, inServer, false);
 			player->sendMessage(remove);
@@ -196,20 +247,22 @@ void FriendsListImplementation::findFriend(String& name, PlayerManager* playerMa
 	Player* targetPlayer;
 	PlayerObject* targetObject;
 
+	String myName = player->getFirstName();
+	myName = myName.toLowerCase();
+
+	int i = 0;
+
 	try {
 		targetPlayer = playerManager->getPlayer(name);
-
 		if (targetPlayer == NULL)
 			return;
 
 		targetObject = targetPlayer->getPlayerObject();
+
 	} catch (...) {
 		player->sendSystemMessage("Usage: /findFriend <friend name>\n");
 		return;
 	}
-
-	String myName = player->getFirstName();
-	int i = 0;
 
 	//Set wp->internalNote and check if we have a FindFriend-Wapoint for this buddy already
 	StringBuffer friendString;
@@ -218,6 +271,7 @@ void FriendsListImplementation::findFriend(String& name, PlayerManager* playerMa
 	WaypointObject* returnWP = player->searchWaypoint(player, friendString.toString(), 1);
 
 	FriendsList* friendsList = targetObject->getFriendsList();
+
 	for (int i = 0; i < friendsList->getCount(); ++i) {
 		if (friendsList->getFriendsName(i) == myName) {
 			float x = targetPlayer->getPositionX();
@@ -252,6 +306,7 @@ void FriendsListImplementation::findFriend(String& name, PlayerManager* playerMa
 				player->sendSystemMessage(message);
 
 				break;
+
 			} else {
 				WaypointObject* wp = new WaypointObject(player, player->getNewItemID());
 

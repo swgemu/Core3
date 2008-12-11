@@ -119,6 +119,8 @@ public:
 
 	//Watch / Listen
 	void handleEntertainerActions(Player* player, SceneObject* obj);
+
+	void handleItemDrop(Player* player, SceneObject* obj);
 };
 
 #endif /*RADIALMANAGER_H_*/

@@ -133,19 +133,19 @@ int SurveyToolImplementation::useObject(Player* player) {
 }
 
 void SurveyToolImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
-	omr->addRadialItem(0, 136, 3, "@sui:tool_options");
-
 	try {
-		SceneObject* parent = player->getParent();
+		SceneObject* parent = getParent();
 
 		if (parent != NULL) {
+
 			if (parent->isCell()) {
-				omr->addRadialItem(5, 137, 3, "@sui:survey_range");
-			} else { //is this even possible? Parent not NULL but no cell?
+				omr->addRadialItem(0, 10, 3, "Pickup");
+
+			} else if (parent == player->getInventory() && player->getParent() == NULL) {
+				omr->addRadialItem(0, 136, 3, "@sui:tool_options");
 				omr->addRadialItem(4, 137, 3, "@sui:survey_range");
 			}
-		} else {
-			omr->addRadialItem(4, 137, 3, "@sui:survey_range");
+
 		}
 
 	} catch (...) {

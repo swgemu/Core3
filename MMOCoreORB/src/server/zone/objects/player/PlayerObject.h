@@ -131,6 +131,14 @@ public:
 
 	void updateAllFriends(PlayerObject* playerObject);
 
+	void pokeReverseFriendList(unsigned long long playerID);
+
+	void removeFromReverseFriendList(unsigned long long playID);
+
+	int getReverseFriendListSize();
+
+	unsigned long long getReverseFriendListEntry(int i);
+
 	IgnoreList* getIgnoreList();
 
 	void addIgnore(String& name, String& inServer);
@@ -269,6 +277,14 @@ public:
 	void loadFriends();
 
 	void updateAllFriends(PlayerObject* playerObject);
+
+	void pokeReverseFriendList(unsigned long long playerID);
+
+	void removeFromReverseFriendList(unsigned long long playID);
+
+	int getReverseFriendListSize();
+
+	unsigned long long getReverseFriendListEntry(int i);
 
 	IgnoreList* getIgnoreList();
 

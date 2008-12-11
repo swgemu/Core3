@@ -43,11 +43,17 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
+	TangibleObject* clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ);
+
 	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
+
+	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
+
+	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
 
 	void showDbStats(Player* player);
 
@@ -97,11 +103,17 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
+	TangibleObject* clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ);
+
 	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
+
+	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
+
+	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
 
 	void showDbStats(Player* player);
 

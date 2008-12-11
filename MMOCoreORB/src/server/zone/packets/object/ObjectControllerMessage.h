@@ -55,6 +55,7 @@ class Player;
 class CombatManager;
 class ItemManager;
 class PlanetManager;
+class TangibleObject;
 
 class ObjectControllerMessage : public BaseMessage {
 public:
@@ -204,6 +205,12 @@ public:
 	static void parseMeditation(Player* player);
 
 	static void parseDelFactionPoints(Player* player, Message* pack);
+
+	static void handleContainerOpen(Player* player, Message* pack);
+
+	static TangibleObject* validateDropAction(Player* player, uint64 target);
+
+	static void transferItemToContainer(Player* player, TangibleObject* item, uint64 destinationID);
 
 	static void parseNewbieSelectStartingLocation(Player* player, Message* pack);
 };

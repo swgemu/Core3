@@ -91,3 +91,7 @@ RunItemLUAFile("objects/clothing/cargoVest.lua");
 RunItemLUAFile("objects/clothing/paramilitaryCamos.lua");
 RunItemLUAFile("objects/clothing/longSleeveShirt.lua");
 RunItemLUAFile("objects/clothing/linedWorkShirt.lua");
+RunItemLUAFile("objects/clothing/backpack1.lua");
+RunItemLUAFile("objects/clothing/backpack2.lua");
+RunItemLUAFile("objects/clothing/backpack3.lua");
+

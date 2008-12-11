@@ -56,6 +56,8 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 		: QuadTree(-1024, -1024, 1024, 1024), BuildingObjectServant(oid, BUILDING) {
 
 	staticBuilding = staticBuild;
+	
+	storageLoaded = false;
 
 	persistent = false;
 	updated = false;

@@ -577,8 +577,8 @@ void PlayerImplementation::unload() {
 
 	removeEvents();
 
-	/*PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-	playerManager->updateOtherFriendlists(_this, false);*/
+	PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+	playerManager->updateOtherFriendlists(_this, false);
 
 	// remove from group
 	if (group != NULL && zone != NULL) {
@@ -1106,10 +1106,8 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		info("inserting to zone");
 
-		if (parent == NULL) {
-			//System::out << "Debug Position Cout: Player inserted with cords: " <<  positionX << " " << zone->getHeight(positionX, positionY) << " " << positionY << endl;
+		if (parent == NULL)
 			setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
-		}
 
 		zone->registerObject(_this);
 
@@ -1119,8 +1117,20 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
+
 			insertToBuilding(building);
+
 			building->notifyInsertToZone(_this);
+
+			if (!building->getStorageLoaded()) {
+				ZoneServer* zserver = zone->getZoneServer();
+				ItemManager* itemManager = zserver->getItemManager();
+
+				zone->unlock();
+				itemManager->loadStructurePlayerItems(_this, parent->getObjectID());
+				zone->lock();
+			}
+
 		} else {
 			zone->insert(this);
 			zone->inRange(this, 128);
@@ -1704,7 +1714,6 @@ void PlayerImplementation::notifySceneReady() {
 		}
 
 	} else {
-		//we need to reset the "magicnumber" for the internal friendlist due to clientbehaviour (Diff. Zoningservers SoE)
 		playerObject->friendsMagicNumberReset();
 	}
 
@@ -2845,6 +2854,8 @@ void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
 		changeCloth(item->getObjectID());
 	} else if (item->isInstrument()) {
 		changeWeapon(item->getObjectID());
+	} else if (item->isContainer1() || item->isContainer2() || item->isWearableContainer()) {
+		changeCloth(item->getObjectID());
 	}
 }
 
@@ -4034,6 +4045,36 @@ DraftSchematic* PlayerImplementation::getDraftSchematic(int index) {
 	}
 }
 
+void PlayerImplementation::broadcastMessageToOthersAround(Player* player, BaseMessage* msg) {
+	try {
+		Zone* zone = player->getZone();
+		if (zone == NULL)
+			return;
+
+		zone->lock();
+
+		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+
+			if (object->isPlayer()) {
+				Player* creature = (Player*) object;
+
+				if (creature != player) {
+					if (player->isInRange(creature, 128)) {
+						creature->sendMessage(msg);
+					}
+				}
+			}
+		}
+
+		zone->unlock();
+
+	} catch (...) {
+		zone->unlock();
+		System::out << "Exception PlayerImplementation::broadcastMessageToOthersAround(Player* player, const String& msg)\n";
+	}
+}
+
 void PlayerImplementation::sendMessage(BaseMessage* msg) {
 	if (owner != NULL)
 		owner->sendMessage(msg);
@@ -4543,6 +4584,7 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 void PlayerImplementation::saveDatapad(Player* player) {
 	try {
 		Datapad* datapad = player->getDatapad();
+
 		if (datapad == NULL)
 			return;
 
@@ -4559,7 +4601,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		for (int i = 0; i < datapad->objectsSize(); ++i) {
 			name = "";
 			detailName = "";
-			appearance = " ";
+			appearance = " "; //There's a reason for the whitespace - don't change it plz !
 			attr = "";
 			mountApp = "";
 			fileName = "";
@@ -4585,11 +4627,10 @@ void PlayerImplementation::saveDatapad(Player* player) {
 
 							itnoCRC = mountCreature->getObjectCRC();
 							objID = mountCreature->getObjectID();
-
 							mountCreature->getCharacterAppearance(mountApp);
-
 							fileName = mountCreature->getObjectFileName();
 							attr = mountCreature->getAttributes();
+
 							MySqlDatabase::escapeString(attr);
 
 							if (mountApp != "") {

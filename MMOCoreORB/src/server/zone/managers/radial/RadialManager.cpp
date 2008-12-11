@@ -177,8 +177,13 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		handleTrade(player, obj);
 		break;
 	case 13: // DROP
+		handleItemDrop(player, obj);
 		break;
 	case 14: // DESTROY
+		break;
+	//case 16: // OPEN RADIAL
+		break;
+	//case 17: // OPEN IN NEW WINDOW RADIAL
 		break;
 	case 20: // ITEM_USE
 		obj->useObject(player);
@@ -191,7 +196,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 36:  // LOOT_ALL
 		player->lootCorpse(true);
 		break;
-    case 41: // One die
+    case 41: // One dice
         handleDiceRoll(player, obj, 1);
         break;
     case 42: // Two dice
@@ -1058,4 +1063,9 @@ void RadialManager::handleDiceConfigure(Player* player, SceneObject* obj, int ds
             dice->setConfigurableDice(dsides);
         }
     }
+}
+
+
+void RadialManager::handleItemDrop(Player* player, SceneObject* obj) {
+	//Leave in plz, i still need it
 }
