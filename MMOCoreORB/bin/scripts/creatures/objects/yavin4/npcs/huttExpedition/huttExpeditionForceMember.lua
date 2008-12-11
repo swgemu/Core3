@@ -47,13 +47,14 @@ huttExpeditionForceMember = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Hutt Expeditionary Force member",
+	speciesName = "hutt_expedition_force_member",
+	stfName = "mob/creature_names", 
 	objectCRC = 3240174951, 
 	socialGroup = "hutt",
-	named = FALSE, 
+	
 
 	level = 17,
-	xp = 1257,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ huttExpeditionForceMember = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ huttExpeditionForceMember = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -47,13 +47,14 @@ reveredPansheeMatriarch = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "revered Panshee matriarch",
+	speciesName = "revered_panshee_matriarch",
+	stfName = "mob/creature_names", 
 	objectCRC = 974088634, 
 	socialGroup = "panshee_tribe",
-	named = FALSE, 
+	
 
 	level = 39,
-	xp = 3824,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ reveredPansheeMatriarch = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ reveredPansheeMatriarch = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

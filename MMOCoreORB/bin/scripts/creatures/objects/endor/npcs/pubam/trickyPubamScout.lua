@@ -47,13 +47,14 @@ trickyPubamScout = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "tricky Pubam scout",
+	speciesName = "tricky_pubam_scout",
+	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
 	socialGroup = "pubam",
-	named = FALSE, 
+	
 
 	level = 50,
-	xp = 4916,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ trickyPubamScout = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ trickyPubamScout = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

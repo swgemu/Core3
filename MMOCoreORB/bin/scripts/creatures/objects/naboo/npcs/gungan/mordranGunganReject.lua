@@ -46,13 +46,14 @@ mordranGunganReject = Creature:new {
 	faction = "Borvo",
 	gender = "",
 
-	name = "Gungan reject",
+	speciesName = "mordran_gungan_reject",
+	stfName = "mob/creature_names", 
 	objectCRC = 2136286680, 
 	socialGroup = "gungan",
-	named = FALSE, 
+	
 
 	level = 35,
-	xp = 3460,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -120,7 +121,7 @@ mordranGunganReject = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -135,8 +136,8 @@ mordranGunganReject = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

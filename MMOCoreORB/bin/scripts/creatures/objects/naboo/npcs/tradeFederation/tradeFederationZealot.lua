@@ -47,13 +47,14 @@ tradeFederationZealot = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Trade Federation zealot",
+	speciesName = "trade_federation_zealot",
+	stfName = "mob/creature_names", 
 	objectCRC = 2609079790, 
 	socialGroup = "trade_federation",
-	named = FALSE, 
+	
 
 	level = 17,
-	xp = 1102,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ tradeFederationZealot = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ tradeFederationZealot = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

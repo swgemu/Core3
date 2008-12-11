@@ -47,13 +47,14 @@ spiceCollectiveHeavyguard = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Spice Collective heavy guard",
+	speciesName = "spice_collective_heavyguard",
+	stfName = "mob/creature_names", 
 	objectCRC = 2295073659, 
 	socialGroup = "spice_collective",
-	named = FALSE, 
+	
 
 	level = 22,
-	xp = 2219,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ spiceCollectiveHeavyguard = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ spiceCollectiveHeavyguard = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

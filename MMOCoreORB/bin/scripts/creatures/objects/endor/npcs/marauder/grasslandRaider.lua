@@ -47,13 +47,14 @@ grasslandRaider = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "grassland raider",
+	speciesName = "grassland_raider",
+	stfName = "mob/creature_names", 
 	objectCRC = 3217528770, 
 	socialGroup = "marauder",
-	named = FALSE, 
+	
 
 	level = 40,
-	xp = 4006,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ grasslandRaider = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ grasslandRaider = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -46,13 +46,14 @@ corsecRenegade = Creature:new {
 	faction = "Rogue Corsec",
 	gender = "",
 
-	name = "renegade CorSec trooper",
+	speciesName = "corsec_renegade",
+	stfName = "mob/creature_names", 
 	objectCRC = 3254959481, 
 	socialGroup = "Rogue Corsec",
-	named = FALSE, 
+	
 
 	level = 12,
-	xp = 609,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -120,7 +121,7 @@ corsecRenegade = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -135,8 +136,8 @@ corsecRenegade = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

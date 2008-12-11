@@ -47,13 +47,14 @@ valarianCompoundGuard = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Valarian's compound guard",
+	speciesName = "valarian_compound_guard",
+	stfName = "mob/creature_names", 
 	objectCRC = 1450006686, 
 	socialGroup = "valarian",
-	named = FALSE, 
+	
 
 	level = 12,
-	xp = 609,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ valarianCompoundGuard = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ valarianCompoundGuard = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

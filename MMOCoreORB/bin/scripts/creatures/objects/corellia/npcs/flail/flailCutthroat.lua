@@ -47,13 +47,14 @@ flailCutthroat = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Flail cutthroat",
+	speciesName = "flail_cutthroat",
+	stfName = "mob/creature_names", 
 	objectCRC = 1633608178, 
 	socialGroup = "flail",
-	named = FALSE, 
+	
 
 	level = 15,
-	xp = 831,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ flailCutthroat = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ flailCutthroat = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

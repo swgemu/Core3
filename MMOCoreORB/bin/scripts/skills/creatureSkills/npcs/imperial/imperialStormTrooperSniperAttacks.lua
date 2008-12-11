@@ -40,68 +40,8 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-imperialStormTrooperSniperAttack2 = { 
-	attackname = "imperialStormTrooperSniperAttack2",
-	animation = "fire_1_special_single_medium",
-
-	requiredWeaponType = RIFLE,
-	
-	range = 75,
-	damageRatio = 1.25,
-	speedRatio = 1.25,
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "snipershot_block",
-	CbtSpamCounter = "snipershot_counter",
-	CbtSpamEvade = "snipershot_evade",
-	CbtSpamHit = "snipershot_hit",
-	CbtSpamMiss = "snipershot_miss",
-}
-
-AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack2)
-
 imperialStormTrooperSniperAttack1 = { 
 	attackname = "imperialStormTrooperSniperAttack1",
-	animation = "fire_area_medium",
-
-	requiredWeaponType = RIFLE,
-	
-	range = 75,
-	damageRatio = 5.0,
-	speedRatio = 3.5,
-	coneAngle = 60,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "advancedstrafe_block",
-	CbtSpamCounter = "advancedstrafe_counter",
-	CbtSpamEvade = "advancedstrafe_evade",
-	CbtSpamHit = "advancedstrafe_hit",
-	CbtSpamMiss = "advancedstrafe_miss",
-}
-
-AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack1)
-
------------------------------------------------------------------------
-
-imperialStormTrooperRiflemanAttack1 = { 
-	attackname = "imperialStormTrooperRiflemanAttack1",
 	animation = "fire_5_special_single_medium",
 
 	requiredWeaponType = RIFLE,
@@ -127,12 +67,12 @@ imperialStormTrooperRiflemanAttack1 = {
 	CbtSpamMiss = "strafeshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(imperialStormTrooperRiflemanAttack1)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack1)
 
 -----------------------------------------------------------------------
 
-imperialStormTrooperRiflemanAttack2 = { 
-	attackname = "imperialStormTrooperRiflemanAttack2",
+imperialStormTrooperSniperAttack2 = { 
+	attackname = "imperialStormTrooperSniperAttack2",
 	animation = "fire_1_special_single_medium_face",
 
 	requiredWeaponType = RIFLE,
@@ -169,12 +109,12 @@ imperialStormTrooperRiflemanAttack2 = {
 	CbtSpamMiss = "masterheadshot_miss",
 }
 
-AddDirectPoolAttackTargetSkill(imperialStormTrooperRiflemanAttack2)
+AddDirectPoolAttackTargetSkill(imperialStormTrooperSniperAttack2)
 
 -----------------------------------------------------------------------
 
-imperialStormTrooperRiflemanAttack3 = { 
-	attackname = "imperialStormTrooperRiflemanAttack3",
+imperialStormTrooperSniperAttack3 = { 
+	attackname = "imperialStormTrooperSniperAttack3",
 	animation = "fire_1_special_single_medium",
 
 	requiredWeaponType = RIFLE,
@@ -200,12 +140,12 @@ imperialStormTrooperRiflemanAttack3 = {
 	CbtSpamMiss = "concealedshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(imperialStormTrooperRiflemanAttack3)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack3)
 
 -----------------------------------------------------------------------
 
-imperialStormTrooperRiflemanAttack4 = { 
-	attackname = "imperialStormTrooperRiflemanAttack4",
+imperialStormTrooperSniperAttack4 = { 
+	attackname = "imperialStormTrooperSniperAttack4",
 	animation = "fire_3_special_single_medium",
 
 	requiredWeaponType = RIFLE,
@@ -231,4 +171,66 @@ imperialStormTrooperRiflemanAttack4 = {
 	CbtSpamMiss = "flushingshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(imperialStormTrooperRiflemanAttack4)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack4)
+
+-----------------------------------------------------------------------
+
+imperialStormTrooperSniperAttack5 = { 
+	attackname = "imperialStormTrooperSniperAttack5",
+	animation = "fire_1_special_single_medium",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 75,
+	damageRatio = 1.25,
+	speedRatio = 1.25,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "snipershot_block",
+	CbtSpamCounter = "snipershot_counter",
+	CbtSpamEvade = "snipershot_evade",
+	CbtSpamHit = "snipershot_hit",
+	CbtSpamMiss = "snipershot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack5)
+
+-----------------------------------------------------------------------
+
+imperialStormTrooperSniperAttack6 = { 
+	attackname = "imperialStormTrooperSniperAttack6",
+	animation = "fire_area_medium",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 75,
+	damageRatio = 5.0,
+	speedRatio = 3.5,
+	coneAngle = 60,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "advancedstrafe_block",
+	CbtSpamCounter = "advancedstrafe_counter",
+	CbtSpamEvade = "advancedstrafe_evade",
+	CbtSpamHit = "advancedstrafe_hit",
+	CbtSpamMiss = "advancedstrafe_miss",
+}
+
+AddRandomPoolAttackTargetSkill(imperialStormTrooperSniperAttack6)

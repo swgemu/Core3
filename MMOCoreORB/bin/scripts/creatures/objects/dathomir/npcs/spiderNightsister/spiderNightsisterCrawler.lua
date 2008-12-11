@@ -47,13 +47,14 @@ spiderNightsisterCrawler = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Spiderclan crawler",
+	speciesName = "spider_nightsister_crawler",
+	stfName = "mob/creature_names", 
 	objectCRC = 4294388409, 
 	socialGroup = "spider_nightsister",
-	named = FALSE, 
+	
 
 	level = 85,
-	xp = 8130,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ spiderNightsisterCrawler = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ spiderNightsisterCrawler = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

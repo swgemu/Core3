@@ -61,11 +61,9 @@
  RunCreatureFile("objects/corellia/npcs/lordNyax/lordNyaxVisionary.lua")
  RunCreatureFile("objects/corellia/npcs/lordNyax/lordNyaxZealot.lua")
 
- RunCreatureFile("objects/corellia/npcs/corsec/corsecComissioner1.lua")
- RunCreatureFile("objects/corellia/npcs/corsec/corsecComissioner.lua")
+  RunCreatureFile("objects/corellia/npcs/corsec/corsecComissioner.lua")
  RunCreatureFile("objects/corellia/npcs/corsec/corsecDeserter.lua")
  RunCreatureFile("objects/corellia/npcs/corsec/corsecRogue.lua")
  RunCreatureFile("objects/corellia/npcs/corsec/corsecTraitor.lua")
- RunCreatureFile("objects/corellia/npcs/corsec/corsecTrooper1.lua")
  RunCreatureFile("objects/corellia/npcs/corsec/corsecTrooper.lua")
  

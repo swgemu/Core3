@@ -47,7 +47,7 @@ imperialStormTrooper = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "crackdown_stormtrooper",
+	speciesName = "crackdown_imperialStormTrooper",
     stfName = "mob/creature_names",
 	objectCRC = 3128894413, 
 	socialGroup = "imperial",
@@ -142,7 +142,7 @@ imperialStormTrooper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "stormAttack1", "stormAttack2", "stormAttack3", "stormAttack4", "stormAttack5", "stormAttack6", "stormAttack7", "stormAttack8", "stormAttack9", "stormAttack10", "stormAttack11", "stormAttack12", "stormAttack13", "stormAttack14", "stormAttack15" },
+	skills = { "imperialStormTrooperAttack1", "imperialStormTrooperAttack2", "imperialStormTrooperAttack3", "imperialStormTrooperAttack4", "imperialStormTrooperAttack5", "imperialStormTrooperAttack6", "imperialStormTrooperAttack7", "imperialStormTrooperAttack8", "imperialStormTrooperAttack9", "imperialStormTrooperAttack10", "imperialStormTrooperAttack11", "imperialStormTrooperAttack12", "imperialStormTrooperAttack13", "imperialStormTrooperAttack14", "imperialStormTrooperAttack15" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

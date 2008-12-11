@@ -140,7 +140,7 @@ imperialSergeant = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialAttack10", "imperialAttack11", "imperialAttack12" },
+	skills = { "imperialSergeantAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object

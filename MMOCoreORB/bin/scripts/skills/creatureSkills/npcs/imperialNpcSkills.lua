@@ -40,43 +40,61 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Npcs
-
--- Imperial Attacks
-
-RunSkillsFile("creatureSkills/npcs/imperial/imperialAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialCivilPatrolCaptainAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialColonelAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialFirstLieutenantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialGeneralAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialHighGeneralAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialLanceCorporalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialLieutenantColonelAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialMajorAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialMajorGeneralAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialMasterSergeantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialMedicAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialPrivateAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialScoutTrooperAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialSecondLieutenantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialSergeantAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialSergeantMajorAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialSharpshooterAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialStaffCorporalAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperCommandoAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperRiflemanAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperSniperAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperSquadLeaderAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialSurfaceMarshalAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialTrooperAttacks.lua")
--- RunSkillsFile("creatureSkills/npcs/imperial/imperialWarrantOfficerIAttacks.lua")
-
-RunSkillsFile("creatureSkills/npcs/imperial/bobaFettAttacks.lua")
-
-RunSkillsFile("creatureSkills/npcs/imperial/atAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/imperial/imperialProbotAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/imperial/imperialDroidekaAttacks.lua")
-
+-- Npc Skills
 RunSkillsFile("creatureSkills/npcs/imperial/palpatineAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/imperial/darthVaderAttacks.lua")
+RunSkillsFile("creatureSkills/npcs/imperial/bobaFettAttacks.lua")
+
+-- Imperial Attacks
+RunSkillsFile("creatureSkills/npcs/imperial/imperialArmyCaptainAttacks.lua") -- Weapon "DL44"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialAtAttacks.lua") -- Weapon "Cannon"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialCivilPatrolCaptainAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialColonelAttacks.lua") -- Weapon "DL44"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialCorporalAttacks.lua") -- Weapon "DL44"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialDarkTrooperAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialDroidekaAttacks.lua") -- Weapon "Droid Attack"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialFirstLieutenantAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialGeneralAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialHighGeneralAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialJediKnightAttacks.lua") -- Weapon "2handed Lightsaber"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialJediMasterAttacks.lua") -- Weapon "Polearm Lightsaber"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialLanceCorporalAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialLieutenantColonelAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialMajorAttacks.lua") -- Weapon "DL44"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialMajorGeneralAttacks.lua") -- Weapon "DL44"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialMasterSergeantAttacks.lua") -- Weapon "Scout Blaster"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialMedicAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialPrivateAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialProbotAttacks.lua") -- Weapon "Droid Attack"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialScoutTrooperAttacks.lua") -- Weapon "Scout Blaster"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialSecondLieutenantAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialSergeantAttacks.lua") -- Weapon "Scout Blaster"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialSergeantMajorAttacks.lua") -- Weapon "Scout Blaster"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialSharpshooterAttacks.lua") -- Weapon "Rifle DLT20a"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStaffCorporalAttacks.lua") -- Weapon "Scout Blaster"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStaffSergeantAttacks.lua") -- Weapon "Scout Blaster"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormCommandoAttacks.lua") -- Weapon "Flame Thrower"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperBlackHoleAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperBombardierAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperCaptainAttacks.lua") -- Weapon "DL44"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperCommandoAttacks.lua") -- Weapon "Flame Thrower"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperDarkTrooperNovaTrooperAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperMajorAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperMedicAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperNovaTrooperAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperNovaTrooperCadetAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperNovaTrooperCaptainAttacks.lua") -- Weapon "DL44"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperNovaTrooperCommanderAttacks.lua") -- Weapon "DL44"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperNovaTrooperEliteAttacks.lua") -- Weapon "Rifle E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperNovaTrooperEliteCommanderAttacks.lua") -- Weapon "Rifle E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperNovaTrooperEnsignAttacks.lua") -- Weapon "Scout Blaster"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperNovaTrooperMedicAttacks.lua") -- Weapon "Carbine E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperNovaTrooperSquadLeaderAttacks.lua") -- Weapon "Rifle E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperRiflemanAttacks.lua") -- Weapon "Rifle DLT20a"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperSniperAttacks.lua") -- Weapon "T21"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperSquadLeaderAttacks.lua") -- Weapon "Rifle E11"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialSurfaceMarshalAttacks.lua") -- Weapon "DL44"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialTrooperAttacks.lua") -- Weapon "Scout Blaster"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialWarrantOfficerIAttacks.lua") -- Weapon "Pistol fwg5"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialWarrantOfficerIiAttacks.lua") -- Weapon "Pistol fwg5"

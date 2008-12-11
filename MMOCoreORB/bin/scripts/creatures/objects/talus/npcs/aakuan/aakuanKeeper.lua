@@ -47,13 +47,14 @@ aakuanKeeper = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Aa'kuan keeper",
+	speciesName = "aakuan_keeper",
+	stfName = "mob/creature_names", 
 	objectCRC = 2426711269, 
 	socialGroup = "aakuans",
-	named = FALSE, 
+	
 
 	level = 13,
-	xp = 714,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ aakuanKeeper = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ aakuanKeeper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

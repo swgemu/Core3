@@ -140,7 +140,7 @@ imperialSharpshooter = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialStormTrooperRiflemanAttack1", "imperialStormTrooperRiflemanAttack2", "imperialStormTrooperRiflemanAttack3", "imperialStormTrooperRiflemanAttack4" },
+	skills = { "imperialSharpshooterAttack1", "imperialSharpshooterAttack2", "imperialSharpshooterAttack3", "imperialSharpshooterAttack4" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object

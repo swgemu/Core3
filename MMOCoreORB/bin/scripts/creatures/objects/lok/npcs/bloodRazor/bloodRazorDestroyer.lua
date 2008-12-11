@@ -47,13 +47,14 @@ bloodRazorDestroyer = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Blood Razor destroyer",
+	speciesName = "blood_razor_destroyer",
+	stfName = "mob/creature_names", 
 	objectCRC = 3613451706, 
 	socialGroup = "bloodrazor",
-	named = FALSE, 
+	
 
 	level = 38,
-	xp = 3824,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ bloodRazorDestroyer = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ bloodRazorDestroyer = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

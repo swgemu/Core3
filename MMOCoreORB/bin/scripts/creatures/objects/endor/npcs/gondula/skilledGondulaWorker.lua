@@ -47,13 +47,14 @@ skilledGondulaWorker = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "skilled Condula worker",
+	speciesName = "skilled_gondula_worker",
+	stfName = "mob/creature_names", 
 	objectCRC = 2350961206, 
 	socialGroup = "gondula_tribe",
-	named = FALSE, 
+	
 
 	level = 37,
-	xp = 3642,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ skilledGondulaWorker = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ skilledGondulaWorker = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -47,13 +47,16 @@ beldonnasScout = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Beldonna's League scout",
+	speciesName = "beldonnas_scout",
+	stfName = "mob/creature_names", 
+	speciesName = "creature_name",
+	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "beldonnas_league",
-	named = FALSE, 
+	
 
 	level = 19,
-	xp = 1426,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +124,7 @@ beldonnasScout = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +139,8 @@ beldonnasScout = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

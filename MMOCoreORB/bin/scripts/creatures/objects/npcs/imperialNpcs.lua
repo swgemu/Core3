@@ -42,40 +42,62 @@
 
 
 --Imperial
-RunCreatureFile("objects/npcs/imperial/imperialCivilPatrolCaptain.lua")
-RunCreatureFile("objects/npcs/imperial/imperialColonel.lua")
-RunCreatureFile("objects/npcs/imperial/imperialCorporal.lua")
-RunCreatureFile("objects/npcs/imperial/imperialDarkTrooper.lua")
-RunCreatureFile("objects/npcs/imperial/imperialFirstLieutenant.lua")
-RunCreatureFile("objects/npcs/imperial/imperialGeneral.lua")
-RunCreatureFile("objects/npcs/imperial/imperialHighGeneral.lua")
-RunCreatureFile("objects/npcs/imperial/imperialLanceCorporal.lua")
-RunCreatureFile("objects/npcs/imperial/imperialLieutenantColonel.lua")
-RunCreatureFile("objects/npcs/imperial/imperialMajor.lua")
-RunCreatureFile("objects/npcs/imperial/imperialMajorGeneral.lua")
-RunCreatureFile("objects/npcs/imperial/imperialMasterSergeant.lua")
-RunCreatureFile("objects/npcs/imperial/imperialMedic.lua")
-RunCreatureFile("objects/npcs/imperial/imperialPrivate.lua")
-RunCreatureFile("objects/npcs/imperial/imperialScoutTrooper.lua")
-RunCreatureFile("objects/npcs/imperial/imperialSecondLieutenant.lua")
-RunCreatureFile("objects/npcs/imperial/imperialSergeant.lua")
-RunCreatureFile("objects/npcs/imperial/imperialSergeantMajor.lua")
-RunCreatureFile("objects/npcs/imperial/imperialSharpshooter.lua")
-RunCreatureFile("objects/npcs/imperial/imperialStaffCorporal.lua")
-RunCreatureFile("objects/npcs/imperial/imperialStormTrooper.lua")
-RunCreatureFile("objects/npcs/imperial/imperialStormTrooperCommando.lua")
-RunCreatureFile("objects/npcs/imperial/imperialStormTrooperRifleman.lua")
-RunCreatureFile("objects/npcs/imperial/imperialStormTrooperSniper.lua")
-RunCreatureFile("objects/npcs/imperial/imperialStormTrooperSquadLeader.lua")
-RunCreatureFile("objects/npcs/imperial/imperialSurfaceMarshal.lua")
-RunCreatureFile("objects/npcs/imperial/imperialTrooper.lua")
-RunCreatureFile("objects/npcs/imperial/imperialWarrantOfficerI.lua")
+RunCreatureFile("objects/npcs/imperial/imperialArmyCaptain.lua") -- Weapon "DL44"
 
+RunCreatureFile("objects/npcs/imperial/imperialCivilPatrolCaptain.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialColonel.lua") -- Weapon "DL44"
+RunCreatureFile("objects/npcs/imperial/imperialCorporal.lua") -- Weapon "DL44"
+RunCreatureFile("objects/npcs/imperial/imperialDarkTrooper.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialDroideka.lua") -- Weapon "Droid Attack"
+RunCreatureFile("objects/npcs/imperial/imperialFirstLieutenant.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialGeneral.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialHighGeneral.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialLanceCorporal.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialLieutenantColonel.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialMajor.lua") -- Weapon "DL44"
+RunCreatureFile("objects/npcs/imperial/imperialMajorGeneral.lua") -- Weapon "DL44"
+RunCreatureFile("objects/npcs/imperial/imperialMasterSergeant.lua") -- Weapon "Scout Blaster"
+RunCreatureFile("objects/npcs/imperial/imperialMedic.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialPrivate.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialScoutTrooper.lua") -- Weapon "Scout Blaster"
+RunCreatureFile("objects/npcs/imperial/imperialSecondLieutenant.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialSergeant.lua") -- Weapon "Scout Blaster"
+RunCreatureFile("objects/npcs/imperial/imperialSergeantMajor.lua") -- Weapon "Scout Blaster"
+RunCreatureFile("objects/npcs/imperial/imperialSharpshooter.lua") -- Weapon "Rifle DLT20a"
+RunCreatureFile("objects/npcs/imperial/imperialStaffCorporal.lua") -- Weapon "Scout Blaster"
+RunCreatureFile("objects/npcs/imperial/imperialStaffSergeant.lua") -- Weapon "Scout Blaster"
+RunCreatureFile("objects/npcs/imperial/imperialStormCommando.lua") -- Weapon "Flame Thrower"
+RunCreatureFile("objects/npcs/imperial/imperialStormTrooper.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperBlackHole.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperBombardier.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperCaptain.lua") -- Weapon "DL44"
+RunCreatureFile("objects/npcs/imperial/imperialStormTrooperCommando.lua") -- Weapon "Flame Thrower"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperDarkTrooperNovatrooper.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperMajor.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperMedic.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperNovatrooper.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperNovatrooperCadet.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperNovatrooperCaptain.lua") -- Weapon "DL44"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperNovatrooperCommander.lua") -- Weapon "DL44"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperNovatrooperElite.lua") -- Weapon "Rifle E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperNovatrooperEliteCommander.lua") -- Weapon "Rifle E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperNovatrooperEnsign.lua") -- Weapon "Scout Blaster"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperNovatrooperMedic.lua") -- Weapon "Carbine E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormtrooperNovatrooperSquadLeader.lua") -- Weapon "Rifle E11"
+RunCreatureFile("objects/npcs/imperial/imperialStormTrooperRifleman.lua") -- Weapon "Rifle DLT20a"
+RunCreatureFile("objects/npcs/imperial/imperialStormTrooperSniper.lua") -- Weapon "T21"
+RunCreatureFile("objects/npcs/imperial/imperialStormTrooperSquadLeader.lua") -- Weapon "Rifle E11"
+RunCreatureFile("objects/npcs/imperial/imperialSurfaceMarshal.lua") -- Weapon "DL44"
+RunCreatureFile("objects/npcs/imperial/imperialTrooper.lua") -- Weapon "Scout Blaster"
+RunCreatureFile("objects/npcs/imperial/imperialWarrantOfficerI.lua") -- Weapon "Pistol fwg5"
+RunCreatureFile("objects/npcs/imperial/imperialWarrantOfficerIi.lua") -- Weapon "Pistol fwg5"
 
-RunCreatureFile("objects/npcs/imperial/imperialDroideka.lua")
-RunCreatureFile("objects/npcs/imperial/imperialProbot.lua")
-RunCreatureFile("objects/npcs/imperial/imperialAtSt.lua")
-RunCreatureFile("objects/npcs/imperial/imperialAtAt.lua")
+RunCreatureFile("objects/npcs/imperial/imperialAtAt.lua") -- Weapon "Cannon"
+RunCreatureFile("objects/npcs/imperial/imperialAtSt.lua") -- Weapon "Cannon"
+RunCreatureFile("objects/npcs/imperial/imperialProbot.lua") -- Weapon "Droid Attack"
+
+RunCreatureFile("objects/npcs/imperial/imperialJediKnight.lua") -- Weapon "Lightsaber"
+RunCreatureFile("objects/npcs/imperial/imperialJediMaster.lua") -- Weapon "Lightsaber"
 
 RunCreatureFile("objects/npcs/imperial/palpatine.lua")
 RunCreatureFile("objects/npcs/imperial/darthVader.lua")

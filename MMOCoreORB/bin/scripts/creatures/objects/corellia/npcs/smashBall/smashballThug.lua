@@ -47,13 +47,14 @@ smashballThug = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "smashball thug",
+	speciesName = "smashball_thug",
+	stfName = "mob/creature_names", 
 	objectCRC = 1527998977, 
 	socialGroup = "smashball",
-	named = FALSE, 
+	
 
 	level = 5,
-	xp = 113,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ smashballThug = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ smashballThug = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

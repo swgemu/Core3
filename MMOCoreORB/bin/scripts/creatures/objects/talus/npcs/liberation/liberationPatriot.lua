@@ -47,13 +47,14 @@ liberationPatriot = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Talus Liberation Party patriot",
+	speciesName = "liberation_patriot",
+	stfName = "mob/creature_names", 
 	objectCRC = 1736741704, 
 	socialGroup = "liberation_party",
-	named = FALSE, 
+	
 
 	level = 14,
-	xp = 714,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -121,7 +122,7 @@ liberationPatriot = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ liberationPatriot = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

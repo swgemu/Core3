@@ -47,13 +47,14 @@ tradeFederationAvenger = Creature:new {
 	factionPoints = 20,
 	gender = "",
 
-	name = "Trade Federation avenger",
+	speciesName = "trade_federation_avenger",
+	stfName = "mob/creature_names", 
 	objectCRC = 595567551, 
 	socialGroup = "trade_federation",
-	named = FALSE, 
+	
 
 	level = 16,
-	xp = 960,
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -121,7 +122,7 @@ tradeFederationAvenger = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,8 +137,8 @@ tradeFederationAvenger = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "", "", "" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

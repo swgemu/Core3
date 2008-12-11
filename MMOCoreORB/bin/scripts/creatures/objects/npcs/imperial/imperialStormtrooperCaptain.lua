@@ -40,22 +40,23 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-stormtrooperCaptain = Creature:new {
-	objectName = "stormtrooperCaptain",  -- Lua Object Name
+imperialStormTrooperCaptain = Creature:new {
+	objectName = "imperialStormTrooperCaptain",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "imperial" 
+	faction = "imperial", 
 	factionPoints = 20,
 	gender = "",
 
-	name = "Crackdown Stormtrooper Captain",
+	speciesName = "stormtrooper_captain",
+	stfName = "mob/creature_names", 
 	objectCRC = 2684193105, 
 	socialGroup = "imperial",
-	named = FALSE, 
+	
 
 	level = 1,
-	xp = 45,
+	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	combatFlags = 0,
 
 	healthMax = 10100,
 	healthMin = 8300,
@@ -97,16 +98,17 @@ stormtrooperCaptain = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_dl44.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a DL-44 Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 350,
+	weaponMaxDamage = 400,
+	weaponAttackSpeed = 2.5,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -121,7 +123,7 @@ stormtrooperCaptain = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = 0, -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -136,10 +138,10 @@ stormtrooperCaptain = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" }
-	-- respawnTimer = 180,
+	skills = { "imperialStormTrooperCaptainAttack1" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(stormtrooperCaptain, 2684193105) --  Add to Global Table
+Creatures:addCreature(imperialStormTrooperCaptain, 2684193105) --  Add to Global Table
