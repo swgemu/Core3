@@ -339,17 +339,17 @@ void GameCommandHandler::init() {
 			"USAGE: @whoDroppedThis <target>",
 			&whoDroppedThis);
 
-	gmCommands->addCommand("freezePlayer", ALL,
+	gmCommands->addCommand("freezePlayer", PRIVILEGED,
 					"Freezes a player to prevent movement.",
 					"Usage: @freezePlayer name.",
 					&freezePlayer);
 
-	gmCommands->addCommand("unfreezePlayer", ALL,
+	gmCommands->addCommand("unfreezePlayer", PRIVILEGED,
 						"Freezes a player to prevent movement.",
 						"Usage: @unfreezePlayer name.",
 						&unfreezePlayer);
 
-	gmCommands->addCommand("changeTemplate", ALL,
+	gmCommands->addCommand("changeTemplate", PRIVILEGED,
 					"Changes the objects template. Useful for CSR Events.",
 					"Usage: @changeTemplate newtemplate.",
 					&changeTemplate);
@@ -2775,17 +2775,6 @@ void GameCommandHandler::freezePlayer(StringTokenizer tokenizer, Player* player)
 		codm->setFrozen(true);
 		codm->close();
 		player->broadcastMessage(codm);
-//		try {
-//
-//			//targetPlayer->sendSystemMessage("Your character has been resuscitated by \'" + player->getFirstName() + "\'.");
-//
-//			if (targetPlayer != player)
-//				targetPlayer->unlock();
-//
-//		} catch (...) {
-//			if (targetPlayer != player)
-//				targetPlayer->unlock();
-//		}
 }
 
 void GameCommandHandler::unfreezePlayer(StringTokenizer tokenizer, Player* player) {
@@ -2818,17 +2807,6 @@ void GameCommandHandler::unfreezePlayer(StringTokenizer tokenizer, Player* playe
 		codm->setFrozen(false);
 		codm->close();
 		player->broadcastMessage(codm);
-//		try {
-//
-//			//targetPlayer->sendSystemMessage("Your character has been resuscitated by \'" + player->getFirstName() + "\'.");
-//
-//			if (targetPlayer != player)
-//				targetPlayer->unlock();
-//
-//		} catch (...) {
-//			if (targetPlayer != player)
-//				targetPlayer->unlock();
-//		}
 }
 
 void GameCommandHandler::changeTemplate(StringTokenizer tokenizer, Player* player) {
@@ -2844,7 +2822,7 @@ void GameCommandHandler::changeTemplate(StringTokenizer tokenizer, Player* playe
 	player->setTemplateString(newTemplateString);
 
 	CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(player);
-	codm->updateTemplateString(player->getTemplateString());
+	codm->updateTemplateString();
 	codm->close();
 	player->broadcastMessage(codm);
 }

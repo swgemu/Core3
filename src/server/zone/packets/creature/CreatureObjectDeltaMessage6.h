@@ -829,14 +829,14 @@ public:
 		insertInt(value);
 	}
 
-	void updateTemplateString(String newTemplate) {
+	void updateTemplateString() {
 		startUpdate(0x10);
-		insertAscii(newTemplate);
+		insertAscii(creo->getTemplateString());
 	}
 
 	void setFrozen(bool frozen) {
 		startUpdate(0x11);
-		if (frozen == true) {
+		if (frozen) {
 			insertByte(0x01);
 		} else {
 			insertByte(0);
