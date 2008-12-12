@@ -2604,7 +2604,7 @@ void GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player) 
 		ServerDatabase::instance()->executeStatement(query);
 
 
-		if (((TangibleObject*) obj)->isContainer1() || ((TangibleObject*) obj)->isContainer2() || ((TangibleObject*) obj)->isWearableContainer()) {
+		if (((TangibleObject*) obj)->isContainer()) {
 			Container* container = (Container*) obj;
 
 			for (int i = 0; i < container->objectsSize(); ++i) {

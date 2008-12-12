@@ -4188,7 +4188,7 @@ void ObjectControllerMessage::handleContainerOpen(Player* player, Message* pack)
 
 	TangibleObject* tano = (TangibleObject*) obj;
 
-	if (!tano->isContainer1() && !tano->isContainer2() && !tano->isWearableContainer())
+	if (!tano->isContainer())
 		return;
 
 	Container* conti = (Container*) obj;

@@ -97,6 +97,10 @@ interface TangibleObject implements SceneObject {
 	boolean isArmor();
 	boolean isClothing();
 	
+	//General handler
+	boolean isContainer();
+	
+	//More different handle
 	boolean isWearableContainer();
 	boolean isContainer1();
 	boolean isContainer2();	
