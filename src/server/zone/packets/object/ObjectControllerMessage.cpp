@@ -2197,12 +2197,13 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 			StringBuffer newWaypointName;
 
 			while (tokenizer.hasMoreTokens()) {
-				newWaypointName << " ";
-				tokenizer.getStringToken(newWaypointName);
+				String name;
+				tokenizer.getStringToken(name);
+				newWaypointName << name << " ";
 			}
 
-			if (!newWaypointName.isEmpty())
-				newWaypointName.deleteRange(0, 1);
+			/*if (!newWaypointName.isEmpty())
+				newWaypointName.deleteRange(0, 1);*/ // ????
 
 			waypointName = newWaypointName.toString();
 		} else {

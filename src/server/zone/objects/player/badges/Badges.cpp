@@ -12,8 +12,8 @@
  *	BadgesStub
  */
 
-Badges::Badges(Player* pl) {
-	_impl = new BadgesImplementation(pl);
+Badges::Badges() {
+	_impl = new BadgesImplementation();
 	_impl->_setStub(this);
 }
 

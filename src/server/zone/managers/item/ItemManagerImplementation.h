@@ -149,7 +149,7 @@ public:
 	void loadContainersInStructures(Player* player, BuildingObject* building);
 	void loadStructurePlayerItems(Player* player, uint64 cellID);
 	void transferContainerItem(Player* player, TangibleObject* item, uint64 destinationID);
-	void DeleteItemFromPlayerStorageDB(TangibleObject* item);
+	void deleteItemFromPlayerStorageDB(TangibleObject* item);
 	void moveNestedItemsToInventoryContainer(Player* player, Container* container);
 	void createPlayerItemInInventoryContainer(Player* player, TangibleObject* item, SceneObject* destinationObject);
 	void moveItemInInventory(Player* player, TangibleObject* item, SceneObject* destinationObject, bool destinationIsInventory);

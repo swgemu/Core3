@@ -228,7 +228,7 @@ void PlayerImplementation::initialize() {
 
 	stfName = "species";
 
-	badges = new Badges(_this);
+	badges = new Badges();
 
 	// modifiers
 	weaponSpeedModifier = 1;
@@ -1127,10 +1127,13 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 				ItemManager* itemManager = zserver->getItemManager();
 
 				zone->unlock();
-				itemManager->loadStructurePlayerItems(_this, parent->getObjectID());
-				zone->lock();
-			}
 
+				itemManager->loadStructurePlayerItems(_this, parent->getObjectID());
+
+				owner->resetPacketCheckupTime();
+
+				return;
+			}
 		} else {
 			zone->insert(this);
 			zone->inRange(this, 128);

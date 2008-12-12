@@ -2552,10 +2552,17 @@ void GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player) 
 	SceneObject* obj = player->getTarget();
 	uint64 oid;
 
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
 	if (obj == NULL || obj->isPlayer()) {
 		player->sendSystemMessage("This object was not dropped by a player - it can't be deleted!");
 		return;
 	}
+
+	player->unlock();
 
 	try {
 		obj->wlock();
@@ -2571,19 +2578,16 @@ void GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player) 
 		if (!res->next()) {
 			player->sendSystemMessage("This object was not dropped by a player - it can't be deleted!");
 			obj->unlock();
+			player->wlock();
 			return;
 		}
+
+		delete res;
 
 		query.deleteAll();
 		query << "DELETE FROM player_storage WHERE item_id = " << oid << " or container = " << oid << ";";
 		ServerDatabase::instance()->executeStatement(query);
 
-		Zone* zone = player->getZone();
-
-		if (zone == NULL) {
-			obj->unlock();
-			return;
-		}
 
 		if (((TangibleObject*) obj)->isContainer1() || ((TangibleObject*) obj)->isContainer2() || ((TangibleObject*) obj)->isWearableContainer()) {
 			Container* container = (Container*) obj;
@@ -2599,10 +2603,9 @@ void GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player) 
 			}
 		}
 
-		obj->unlock();
-
 		obj->removeFromZone(true);
 
+		obj->unlock();
 	} catch (DatabaseException& e) {
 		player->info("Database Exception in GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player)");
 		player->info(e.getMessage());
@@ -2613,6 +2616,8 @@ void GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player) 
 		player->info("Unreported Exception in GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player)");
 		obj->unlock();
 	}
+
+	player->wlock();
 }
 
 void GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * player) {
@@ -2624,7 +2629,7 @@ void GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * play
 	uint64 oid = 0;
 
 	try {
-		obj->wlock();
+		obj->wlock(player);
 
 		oid = obj->getObjectID();
 

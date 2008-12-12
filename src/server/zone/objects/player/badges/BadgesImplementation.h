@@ -50,7 +50,6 @@ which carries forward this exception.
 
 class BadgesImplementation : public BadgesServant {
 	uint32 badgeBitmask[15];
-	Player* player;
 
 public:
 	//First Bitmask
@@ -203,11 +202,11 @@ public:
 	static const uint32 PILOT_TATOOINE = 138;
 	static const uint32 BDG_ACCOLATE_HOME_SHOW = 139;
 
-	BadgesImplementation(Player* pl) {
-		player = pl;
-
+	BadgesImplementation() {
 		for (int i = 0; i < 15; ++i)
 			badgeBitmask[i] = 0;
+
+		setBadge(139);
 	}
 
 	~BadgesImplementation() {
