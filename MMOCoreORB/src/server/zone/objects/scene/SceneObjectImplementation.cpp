@@ -104,6 +104,8 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
+	parent = NULL;
+
 	if (isInQuadTree()) {
 		error("deleting an object that is still in QuadTree");
 
