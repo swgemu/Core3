@@ -536,6 +536,10 @@ public:
 		return (objectSubType & CLOTHING);
 	}
 
+	inline bool isContainer() {
+		return (objectSubType == WEARABLECONTAINER || objectSubType == CONTAINER || objectSubType == CONTAINER2);
+	}
+
 	inline bool isWearableContainer() {
 		return (objectSubType == WEARABLECONTAINER);
 	}

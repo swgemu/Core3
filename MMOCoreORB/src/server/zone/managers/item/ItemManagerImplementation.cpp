@@ -1216,7 +1216,7 @@ void ItemManagerImplementation::giveBFItemSet(Player * player, String& set) {
 			player->addInventoryItem(item);
 			item->sendTo(player);
 
-			if (item->isContainer1() || item->isContainer1() || item->isWearableContainer())
+			if (item->isContainer())
 				server->addObject(item);
 		}
 	}
@@ -1698,7 +1698,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			comesFromInventoryContainer = true;
 			sourceContainer = (Container*) sourceObject;
 
-		} else if (sourceTano->isWearableContainer() || sourceTano->isContainer1() || sourceTano->isContainer2()) {
+		} else if (sourceTano->isContainer()) {
 			comesFromExternalContainer = true;
 			sourceContainer = (Container*) sourceObject;
 		}
@@ -1729,11 +1729,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 
 					if (destinationObject->getParentID() == player->getInventory()->getObjectID()) {
 						destinationIsInventoryContainer = true;
-					} else if (destinationTano->isWearableContainer())
-						destinationIsExternalContainer = true;
-					else if (destinationTano->isContainer1())
-						destinationIsExternalContainer = true;
-					else if (destinationTano->isContainer2())
+					} else if (destinationTano->isContainer())
 						destinationIsExternalContainer = true;
 				}
 			}
@@ -1744,7 +1740,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			item->wlock(player);
 		}
 
-		if (item->isWearableContainer() || item->isContainer1() || item->isContainer2())
+		if (item->isContainer())
 			itemIsContainer = true;
 
 		item->unlock();
@@ -1764,7 +1760,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			}
 		}
 
-		if (sourceContainer != NULL && (!sourceContainer->isWearableContainer() && !sourceContainer->isContainer1() && !sourceContainer->isContainer2()))
+		if (sourceContainer != NULL && !sourceContainer->isContainer())
 			sourceContainer = NULL;
 
 		moveItem(zone, player, item, object, comesFromCell, comesFromInventory, comesFromInventoryContainer,
@@ -2210,7 +2206,7 @@ void ItemManagerImplementation::moveItemInInventory(Player* player, TangibleObje
 			if (destinationObject->isTangible()) {
 				TangibleObject* destinationItem = (TangibleObject*) destinationObject;
 
-				if (destinationItem->isContainer1() || destinationItem->isContainer2() || destinationItem->isWearableContainer())
+				if (destinationItem->isContainer())
 					containerID = destinationItem->getObjectID();
 			}
 		}
@@ -2415,7 +2411,7 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 				UpdateTransformWithParentMessage* transformMessage = new UpdateTransformWithParentMessage(item);
 				player->broadcastMessage(transformMessage);
 
-				if (item->isWearableContainer() || item->isContainer1() || item->isContainer2() )
+				if (item->isContainer())
 					loadItemsInContainersForStructure(player, (Container*) item);
 			}
 		}
