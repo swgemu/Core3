@@ -205,6 +205,8 @@ private:
 	static void freezePlayer(StringTokenizer tokenizer, Player* player);
 	static void unfreezePlayer(StringTokenizer tokenizer, Player* player);
 	static void changeTemplate(StringTokenizer tokenizer, Player* player);
+	static void setSpeed(StringTokenizer tokenizer, Player* player);
+	static void setHeight(StringTokenizer tokenizer, Player* player);
 
 	void init();
 
