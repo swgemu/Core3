@@ -1224,23 +1224,25 @@ void ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pac
 	if (object == NULL)
 		return;
 
-	try {
-		if (object->isPlayer()) {
-			Player* play = (Player*) object;
+	if (object->isPlayer()) {
+		Player* play = (Player*) object;
 
+		try {
 			if (play != player)
-			play->wlock(player);
+				play->wlock(player);
 
 			Biography* bio = new Biography(player, play);
 			player->sendMessage(bio);
 
 			if (play != player)
-			play->unlock();
-
+				play->unlock();
+		} catch (...) {
+			System::out << "Unreported exception in ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack)";
+			if (play != player)
+				play->unlock();
 		}
-	} catch (...) {
-		System::out << "Unreported exception in ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack)";
 	}
+
 }
 
 void ObjectControllerMessage::parseSetBiography(Player* player, Message *pack) {
@@ -1253,8 +1255,31 @@ void ObjectControllerMessage::parseSetBiography(Player* player, Message *pack) {
 }
 
 void ObjectControllerMessage::parseBadgesRequest(Player* player, Message *pack) {
-	BadgesResponseMessage* brm = new BadgesResponseMessage(player);
-	player->sendMessage(brm);
+	uint64 objectid = pack->parseLong();
+
+	SceneObject* object = player->getZone()->lookupObject(objectid);
+
+	if (object == NULL)
+		return;
+
+	if (object->isPlayer()) {
+		Player* play = (Player*) object;
+
+		try {
+			if (play != player)
+				play->wlock(player);
+
+			BadgesResponseMessage* brm = new BadgesResponseMessage(play);
+			player->sendMessage(brm);
+
+			if (play != player)
+				play->unlock();
+		} catch (...) {
+			System::out << "Unreported exception in ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack)";
+			if (play != player)
+				play->unlock();
+		}
+	}
 }
 
 void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack) {
@@ -2322,10 +2347,28 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 				SceneObject* invObj = zone->lookupObject(objid);
 
 				if (invObj != NULL) {
+
+					if (!invObj->isTangible())
+						return;
+
+					if (((TangibleObject*)invObj)->isEquipped()) {
+						player->sendSystemMessage("You must unequip the item before destroying it.");
+						return;
+					}
+
+					if (player->getWeapon() == invObj)
+						player->setWeapon(NULL);
+
+					if (player->getSurveyTool() == invObj)
+						player->setSurveyTool(NULL);
+
 					itemManager->deletePlayerItem(player, ((TangibleObject*) invObj), true);
 
 					Container* container = (Container*) invObj->getParent();
 					container->removeObject(objid);
+
+					zone->getZoneServer()->removeObject(invObj);
+					invObj->removeUndeploymentEvent();
 
 					BaseMessage* msg = new SceneObjectDestroyMessage(invObj);
 					player->getClient()->sendMessage(msg);
@@ -2357,6 +2400,12 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 				return;
 			} else
 				player->clearCurrentCraftingTool();
+		}
+
+		Zone* zone = player->getZone();
+		if (zone != NULL) {
+			zone->getZoneServer()->removeObject(item);
+			item->removeUndeploymentEvent();
 		}
 
 		itemManager->deletePlayerItem(player, item, true);
@@ -4130,12 +4179,28 @@ void ObjectControllerMessage::handleContainerOpen(Player* player, Message* pack)
 	if (zone == NULL)
 		return;
 
-	Container* conti = (Container*) zone->lookupObject(target);
-	if (conti == NULL)
+	SceneObject* obj = zone->lookupObject(target);
+	if (obj == NULL)
 		return;
 
-	conti->sendTo(player);
-	conti->openTo(player);
+	if (!obj->isTangible())
+		return;
+
+	TangibleObject* tano = (TangibleObject*) obj;
+
+	if (!tano->isContainer1() && !tano->isContainer2() && !tano->isWearableContainer())
+		return;
+
+	Container* conti = (Container*) obj;
+
+	SceneObject* parent = conti->getParent();
+	if (parent == NULL)
+		return;
+
+	if (conti->getParent() == player->getInventory() || parent->isCell()) {
+		conti->sendTo(player);
+		conti->openTo(player);
+	}
 }
 
 TangibleObject* ObjectControllerMessage::validateDropAction(Player* player, uint64 target) {
