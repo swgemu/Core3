@@ -750,7 +750,25 @@ void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleStomachRequestMessage(Message* pack) {
-	//Send a PLAY update here.
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	try {
+		player->wlock();
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		delta->updateStomachFilling();
+		delta->close();
+
+		player->sendMessage(delta);
+
+		player->unlock();
+	} catch (...) {
+		player->error("unreported exception in ZonePacketHandler::handleStomachRequestMessage(Message* pack)");
+		player->unlock();
+	}
 }
 
 void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {

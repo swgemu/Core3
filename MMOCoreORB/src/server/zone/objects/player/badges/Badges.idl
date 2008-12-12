@@ -45,7 +45,7 @@ which carries forward this exception.
 import "../Player";
 
 interface Badges {
-	Badges(Player pl);
+	Badges();
 
 	void setBadge(int badgeindex);
 

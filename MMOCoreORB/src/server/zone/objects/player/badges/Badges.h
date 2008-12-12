@@ -11,7 +11,7 @@ class Player;
 
 class Badges : public DistributedObjectStub {
 public:
-	Badges(Player* pl);
+	Badges();
 
 	void setBadge(int badgeindex);
 
