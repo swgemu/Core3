@@ -575,6 +575,7 @@ interface CreatureObject implements SceneObject {
 	String getPerformanceName();
 
 	String getMood();
+	String getMoodStr();
 	unsigned char getMoodID();
 
 	unsigned long getGroupInviterID();

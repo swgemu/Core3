@@ -145,6 +145,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	moodid = 0;
 	mood = Races::getMood(moodid);
+	moodStr = Races::getMoodStr(mood);
 
 	weaponObject = NULL;
 	targetObject = NULL;
@@ -4104,7 +4105,8 @@ void CreatureObjectImplementation::sendEntertainmentUpdate(uint64 entid, const S
 	}
 
 	CreatureObjectDeltaMessage6* codm6 = new CreatureObjectDeltaMessage6(_this);
-	codm6->updateMoodAnimation(mood);
+	String str = Races::getMoodStr(mood);
+	codm6->updateMoodAnimation(str);
 	codm6->close();
 	broadcastMessage(codm6);
 }

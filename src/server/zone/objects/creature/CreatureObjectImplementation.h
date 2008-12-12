@@ -227,6 +227,7 @@ protected:
 	uint64 defenderID;
 
 	String mood;
+	String moodStr;
 	uint8 moodid;
 
 	Weapon* weaponObject;
@@ -1148,10 +1149,12 @@ public:
 	inline void setMood(uint8 mdid) {
 		moodid = mdid;
 		mood = Races::getMood(moodid);
+		moodStr = Races::getMoodStr(mood);
 	}
 
 	inline void setMood(const String& m) {
 		mood = m;
+		moodStr = Races::getMoodStr(mood);
 	}
 
 	inline void setPvpStatusBitmask(uint32 mask) {
@@ -1811,6 +1814,10 @@ public:
 
 	inline String& getMood() {
 		return mood;
+	}
+
+	inline String& getMoodStr() {
+		return moodStr;
 	}
 
 	inline uint8 getMoodID() {

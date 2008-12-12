@@ -801,7 +801,7 @@ public:
 	}
 
 	void updateMoodStr() {
-		addAsciiUpdate(0x04, creo->getMood());
+		addAsciiUpdate(0x04, creo->getMoodStr());
 	}
 
 	void updatePerformanceAnimation(String pAnimation) {

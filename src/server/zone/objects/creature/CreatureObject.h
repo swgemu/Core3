@@ -731,6 +731,8 @@ public:
 
 	String& getMood();
 
+	String& getMoodStr();
+
 	unsigned char getMoodID();
 
 	unsigned long long getGroupInviterID();
@@ -1165,6 +1167,7 @@ protected:
 	String _return_getLootGroup;
 	String _return_getMeatType;
 	String _return_getMood;
+	String _return_getMoodStr;
 	String _return_getPerformanceAnimation;
 	String _return_getPerformanceName;
 	String _return_getRaceName;
@@ -1866,6 +1869,8 @@ public:
 	String& getPerformanceName();
 
 	String& getMood();
+
+	String& getMoodStr();
 
 	unsigned char getMoodID();
 

@@ -72,7 +72,7 @@ public:
 
 		insertAscii(creo->getPerformanceName());
 
-		insertAscii(creo->getMood());
+		insertAscii(creo->getMoodStr());
 
 		insertLong(creo->getWeaponID());
 
