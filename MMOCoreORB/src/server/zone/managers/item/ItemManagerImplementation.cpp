@@ -1910,12 +1910,19 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 				if (comesFromCell) {
 					BuildingObject* sourceBuilding = (BuildingObject*) object->getParent()->getParent();
 
+					//If a s container gets picked up, we need to close the container for others.
+					//This is done by removing the object from zone and re-inserting. We also re-send
+					//the item to the player picking up, o/w the item won't show up in inventory
+
 					if (sourceBuilding != NULL) {
-						//Note to myself (Farmer) TODO: destroy the container for other players around
-						object->removeFromZone();
 						Zone* zone = object->getZone();
-						if (zone != NULL)
+
+						object->removeFromZone();
+
+						if (zone != NULL) {
 							zone->getZoneServer()->addObject(object);
+							object->sendTo(player);
+						}
 					}
 				}
 
