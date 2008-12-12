@@ -1782,6 +1782,7 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 		Container* sourceContainer, bool itemIsContainer) {
 
 	BuildingObject* building = NULL;
+	Container* conti = NULL;
 
 	uint64 objectID = 0;
 	if (object != NULL)
@@ -1809,7 +1810,6 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 			item->wlock(player);
 		}
 
-		Container* conti = NULL;
 		if (destinationIsInventoryContainer || destinationIsExternalContainer)
 			conti = (Container*) destinationObject;
 
@@ -1881,7 +1881,14 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 			else
 				player->broadcastMessage(transformMessage);
 
-			((Container*) destinationObject)->addObject(item);
+			if (destinationObject->isTangible() && ((TangibleObject*)destinationObject)->isContainer())
+				((Container*) destinationObject)->addObject(item);
+			else {
+				System::out << "error destination is not a container its a " << destinationObject->getObjectType();
+				if (destinationObject->isTangible()) {
+					System::out << " tano subtype " << ((TangibleObject*)destinationObject)->getObjectSubType() << " crc:" << destinationObject->getObjectCRC();
+				}
+			}
 
 		} else if (destinationIsInventory) {
 			try {
@@ -1937,15 +1944,19 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 
 		item->unlock();
 
-		reflectItemMovementInDB(player, item, comesFromCell, comesFromInventory, comesFromInventoryContainer,
-				comesFromExternalContainer,	destinationObject, destinationIsCell, destinationIsInventory,
-				destinationIsInventoryContainer, destinationIsExternalContainer, itemIsContainer, conti, building);
+	}  catch (Exception& e) {
+		item->unlock();
 
-	} catch (...) {
+		System::out << "exception caught in ItemManagerImplementation::moveItem(....)\n" << e.getMessage();
+	}	catch (...) {
 		item->unlock();
 
 		System::out << "Unreported exception caught in ItemManagerImplementation::moveItem(....)\n";
 	}
+
+	reflectItemMovementInDB(player, item, comesFromCell, comesFromInventory, comesFromInventoryContainer,
+			comesFromExternalContainer,	destinationObject, destinationIsCell, destinationIsInventory,
+			destinationIsInventoryContainer, destinationIsExternalContainer, itemIsContainer, conti, building);
 }
 
 void ItemManagerImplementation::reflectItemMovementInDB(Player* player, TangibleObject* item, bool comesFromCell,

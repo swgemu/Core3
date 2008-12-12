@@ -1229,13 +1229,19 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 					zone->unlock();
 
 					try {
-						uint damage = 100000000;
+						uint32 damage = 100000000;
+
+						creature->wlock(player);
+
 						creature->explode(2, false);
 						creature->addDamage(player, damage);
 						creature->takeHealthDamage(damage);
 						player->sendSystemMessage("creature has been killed.");
+
+						creature->unlock();
 					} catch (...) {
 						player->sendSystemMessage("unable to kill creature");
+						creature->unlock();
 					}
 
 					zone->lock();
@@ -1601,14 +1607,14 @@ void GameCommandHandler::buff(StringTokenizer tokenizer, Player* player) {
 			bo = new BuffObject(buff);
 			buffie->applyBuff(bo);
 
-			if (buffie != player)
-				buffie->unlock();
-
 			player->sendSystemMessage("Buffs applied");
 
 		} else {
 			player->sendSystemMessage("Already buffed");
 		}
+
+		if (buffie != player)
+			buffie->unlock();
 
 	} catch (...) {
 		if (buffie != player)

@@ -2364,8 +2364,17 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 
 					itemManager->deletePlayerItem(player, ((TangibleObject*) invObj), true);
 
-					Container* container = (Container*) invObj->getParent();
-					container->removeObject(objid);
+					SceneObject* obj = invObj->getParent();
+
+					if (obj != NULL && obj->isTangible()) {
+						TangibleObject* tano = (TangibleObject*) obj;
+
+						if (tano->isContainer() || tano == player->getInventory()) {
+							Container* container = (Container*) tano;
+
+							container->removeObject(objid);
+						}
+					}
 
 					zone->getZoneServer()->removeObject(invObj);
 					invObj->removeUndeploymentEvent();
