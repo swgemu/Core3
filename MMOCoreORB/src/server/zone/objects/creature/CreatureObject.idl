@@ -853,6 +853,12 @@ interface CreatureObject implements SceneObject {
 	void setCreatureWeaponAttackSpeed(float weaponattackspeed);
 	void setCreatureWeaponDamageType(const String weapondamtype);
 	void setCreatureWeaponArmorPiercing(const String weaponarmorpiercing);
+								
+	boolean isFrozen();
+	void setFrozen(boolean flag);
+
+	String getTemplateString();
+	void setTemplateString(const String tmpString);
 
 	void say(UnicodeString message, unsigned int moodid = 0, unsigned int mood2 = 0);
 

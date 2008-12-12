@@ -307,6 +307,9 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	injuryTreatmentEvent = NULL;
 	stateTreatmentEvent = NULL;
 	conditionTreatmentEvent = NULL;
+
+	frozen = false;
+	templateString = "";
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
