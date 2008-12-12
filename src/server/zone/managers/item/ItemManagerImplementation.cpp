@@ -1724,12 +1724,10 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			}
 
 			if (!destinationIsCell) {
-				TangibleObject* destinationTano = (TangibleObject*) destinationObject;
+				if (destinationObject->isTangible()) {
+					TangibleObject* destinationTano = (TangibleObject*) destinationObject;
 
-				if (destinationTano != NULL) {
-
-					if (destinationObject->getParentID() == player->getInventory()->getObjectID()
-							|| destinationObject->getParentID() == player->getObjectID())
+					if (destinationObject->getParentID() == player->getInventory()->getObjectID())
 						destinationIsInventoryContainer = true;
 
 					else if (destinationObject->getParentID() != player->getInventory()->getObjectID()
@@ -1742,6 +1740,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 						else if (destinationTano->isContainer2())
 							destinationIsExternalContainer = true;
 					}
+
 				}
 			}
 		}
@@ -1797,14 +1796,6 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 	uint64 objectID = 0;
 	if (object != NULL)
 		objectID = object->getObjectID();
-
-	if (object != NULL && object->isTangible()) {
-		if (((TangibleObject*)object)->getTemplateName() == "inventory") {
-			player->error("moving inventory??");
-			StackTrace::printStackTrace();
-			return;
-		}
-	}
 
 	try {
 		item->wlock(player);
