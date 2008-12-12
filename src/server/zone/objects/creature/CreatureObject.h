@@ -1133,6 +1133,14 @@ public:
 
 	void setCreatureWeaponArmorPiercing(const String& weaponarmorpiercing);
 
+	bool isFrozen();
+
+	void setFrozen(bool flag);
+
+	String& getTemplateString();
+
+	void setTemplateString(const String& tmpString);
+
 	void say(UnicodeString& message, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void say(const String& file, const String& str, StfParameter* param, unsigned int moodid = 0, unsigned int mood2 = 0);
@@ -1163,6 +1171,7 @@ protected:
 	String _return_getSkill;
 	String _return_getSpeciesName;
 	String _return_getStfName;
+	String _return_getTemplateString;
 	String _return_getTerrainName;
 
 	UnicodeString _return_getCharacterName;
@@ -2260,6 +2269,14 @@ public:
 
 	void setCreatureWeaponArmorPiercing(const String& weaponarmorpiercing);
 
+	bool isFrozen();
+
+	void setFrozen(bool flag);
+
+	String& getTemplateString();
+
+	void setTemplateString(const String& tmpString);
+
 	void say(UnicodeString& message, unsigned int moodid, unsigned int mood2);
 
 	void say(const String& file, const String& str, StfParameter* param, unsigned int moodid, unsigned int mood2);
@@ -2313,6 +2330,7 @@ protected:
 	String _param0_setCreatureWeaponClass__String_;
 	String _param0_setCreatureWeaponDamageType__String_;
 	String _param0_setCreatureWeaponArmorPiercing__String_;
+	String _param0_setTemplateString__String_;
 	UnicodeString _param0_say__UnicodeString_int_int_;
 	String _param0_say__String_String_StfParameter_int_int_;
 	String _param1_say__String_String_StfParameter_int_int_;

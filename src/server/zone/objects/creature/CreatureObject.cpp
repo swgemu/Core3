@@ -7018,12 +7018,63 @@ void CreatureObject::setCreatureWeaponArmorPiercing(const String& weaponarmorpie
 		((CreatureObjectImplementation*) _impl)->setCreatureWeaponArmorPiercing(weaponarmorpiercing);
 }
 
-void CreatureObject::say(UnicodeString& message, unsigned int moodid, unsigned int mood2) {
+bool CreatureObject::isFrozen() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 547);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isFrozen();
+}
+
+void CreatureObject::setFrozen(bool flag) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 548);
+		method.addBooleanParameter(flag);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setFrozen(flag);
+}
+
+String& CreatureObject::getTemplateString() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 549);
+
+		method.executeWithAsciiReturn(_return_getTemplateString);
+		return _return_getTemplateString;
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getTemplateString();
+}
+
+void CreatureObject::setTemplateString(const String& tmpString) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 550);
+		method.addAsciiParameter(tmpString);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setTemplateString(tmpString);
+}
+
+void CreatureObject::say(UnicodeString& message, unsigned int moodid, unsigned int mood2) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 551);
 		method.addUnicodeParameter(message);
 		method.addUnsignedIntParameter(moodid);
 		method.addUnsignedIntParameter(mood2);
@@ -7038,7 +7089,7 @@ void CreatureObject::say(const String& file, const String& str, StfParameter* pa
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 548);
+		DistributedMethod method(this, 552);
 		method.addAsciiParameter(file);
 		method.addAsciiParameter(str);
 		method.addObjectParameter(param);
@@ -8685,9 +8736,21 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setCreatureWeaponArmorPiercing(inv->getAsciiParameter(_param0_setCreatureWeaponArmorPiercing__String_));
 		break;
 	case 547:
-		say(inv->getUnicodeParameter(_param0_say__UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		resp->insertBoolean(isFrozen());
 		break;
 	case 548:
+		setFrozen(inv->getBooleanParameter());
+		break;
+	case 549:
+		resp->insertAscii(getTemplateString());
+		break;
+	case 550:
+		setTemplateString(inv->getAsciiParameter(_param0_setTemplateString__String_));
+		break;
+	case 551:
+		say(inv->getUnicodeParameter(_param0_say__UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 552:
 		say(inv->getAsciiParameter(_param0_say__String_String_StfParameter_int_int_), inv->getAsciiParameter(_param1_say__String_String_StfParameter_int_int_), (StfParameter*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	default:
@@ -10859,6 +10922,22 @@ void CreatureObjectAdapter::setCreatureWeaponDamageType(const String& weapondamt
 
 void CreatureObjectAdapter::setCreatureWeaponArmorPiercing(const String& weaponarmorpiercing) {
 	return ((CreatureObjectImplementation*) impl)->setCreatureWeaponArmorPiercing(weaponarmorpiercing);
+}
+
+bool CreatureObjectAdapter::isFrozen() {
+	return ((CreatureObjectImplementation*) impl)->isFrozen();
+}
+
+void CreatureObjectAdapter::setFrozen(bool flag) {
+	return ((CreatureObjectImplementation*) impl)->setFrozen(flag);
+}
+
+String& CreatureObjectAdapter::getTemplateString() {
+	return ((CreatureObjectImplementation*) impl)->getTemplateString();
+}
+
+void CreatureObjectAdapter::setTemplateString(const String& tmpString) {
+	return ((CreatureObjectImplementation*) impl)->setTemplateString(tmpString);
 }
 
 void CreatureObjectAdapter::say(UnicodeString& message, unsigned int moodid, unsigned int mood2) {

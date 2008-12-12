@@ -410,6 +410,8 @@ protected:
 	StateTreatmentOverEvent* stateTreatmentEvent;
 	ConditionTreatmentOverEvent* conditionTreatmentEvent;
 
+	bool frozen;
+	String templateString;
 public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCELERATION = 1.549f;
@@ -2621,6 +2623,22 @@ public:
 	inline void say(const String& file, const String& str, StfParameter * param, uint32 moodid = 0, uint32 mood2 = 0) {
 		ChatManager * chatManager = this->getZone()->getChatManager();
 		chatManager->broadcastMessage(_this, file, str, param, this->getTargetID(),moodid, mood2);
+	}
+
+	inline bool isFrozen() {
+		return frozen;
+	}
+
+	inline void setFrozen(bool flag) {
+		frozen = flag;
+	}
+
+	inline String& getTemplateString() {
+		return templateString;
+	}
+
+	inline void setTemplateString(const String& tmpString) {
+		templateString = tmpString;
 	}
 
 	friend class CombatManager;

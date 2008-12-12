@@ -828,6 +828,20 @@ public:
 		startUpdate(0x08);
 		insertInt(value);
 	}
+
+	void updateTemplateString(String newTemplate) {
+		startUpdate(0x10);
+		insertAscii(newTemplate);
+	}
+
+	void setFrozen(bool frozen) {
+		startUpdate(0x11);
+		if (frozen == true) {
+			insertByte(0x01);
+		} else {
+			insertByte(0);
+		}
+	}
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE6_H_*/

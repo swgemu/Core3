@@ -138,6 +138,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 			float y = result->getFloat(10);
 
 			float type = result->getFloat(11);
+			info("Loading Structures for zone: " + zone->getZoneID());
 
 			if (file.indexOf("object/cell/") != -1) {
 				BuildingObject* buio = buildingMap->get(parentId);

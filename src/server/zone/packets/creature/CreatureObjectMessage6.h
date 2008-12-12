@@ -118,8 +118,14 @@ public:
 		insertInt(0);
 		insertInt(0);
 
-		insertShort(0);
-		insertByte(0);
+		insertAscii(creo->getTemplateString());
+
+		if (creo->isFrozen() == true) {
+			insertByte(1);
+		} else {
+			insertByte(0);
+		}
+
 
 		setSize();
 	}

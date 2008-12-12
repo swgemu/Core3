@@ -338,6 +338,21 @@ void GameCommandHandler::init() {
 			"Shows the characters name who dropped the current target (item).",
 			"USAGE: @whoDroppedThis <target>",
 			&whoDroppedThis);
+
+	gmCommands->addCommand("freezePlayer", ALL,
+					"Freezes a player to prevent movement.",
+					"Usage: @freezePlayer name.",
+					&freezePlayer);
+
+	gmCommands->addCommand("unfreezePlayer", ALL,
+						"Freezes a player to prevent movement.",
+						"Usage: @unfreezePlayer name.",
+						&unfreezePlayer);
+
+	gmCommands->addCommand("changeTemplate", ALL,
+					"Changes the objects template. Useful for CSR Events.",
+					"Usage: @changeTemplate newtemplate.",
+					&changeTemplate);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -2729,4 +2744,109 @@ void GameCommandHandler::openInventory(StringTokenizer tokenizer, Player * playe
 		targetPlayer->unlock();
 	}
 }
+
+void GameCommandHandler::freezePlayer(StringTokenizer tokenizer, Player* player) {
+		String name;
+		Player* targetPlayer;
+
+		ChatManager * chatManager = player->getZone()->getChatManager();
+
+		if (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(name);
+			targetPlayer = chatManager->getPlayer(name);
+
+			if (targetPlayer == NULL)
+				return;
+		} else {
+			SceneObject* obj = player->getTarget();
+			if (obj != NULL && obj->isPlayer()) {
+				targetPlayer = (Player*) obj;
+				name = targetPlayer->getFirstName();
+			} else {
+				return;
+			}
+		}
+
+		//By right here, we should have a player object. or not.
+
+		targetPlayer->setFrozen(true);
+
+		CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(targetPlayer);
+		codm->setFrozen(true);
+		codm->close();
+		player->broadcastMessage(codm);
+//		try {
+//
+//			//targetPlayer->sendSystemMessage("Your character has been resuscitated by \'" + player->getFirstName() + "\'.");
+//
+//			if (targetPlayer != player)
+//				targetPlayer->unlock();
+//
+//		} catch (...) {
+//			if (targetPlayer != player)
+//				targetPlayer->unlock();
+//		}
+}
+
+void GameCommandHandler::unfreezePlayer(StringTokenizer tokenizer, Player* player) {
+		String name;
+		Player* targetPlayer;
+
+		ChatManager * chatManager = player->getZone()->getChatManager();
+
+		if (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(name);
+			targetPlayer = chatManager->getPlayer(name);
+
+			if (targetPlayer == NULL)
+				return;
+		} else {
+			SceneObject* obj = player->getTarget();
+			if (obj != NULL && obj->isPlayer()) {
+				targetPlayer = (Player*) obj;
+				name = targetPlayer->getFirstName();
+			} else {
+				return;
+			}
+		}
+
+		//By right here, we should have a player object. or not.
+
+		targetPlayer->setFrozen(false);
+
+		CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(targetPlayer);
+		codm->setFrozen(false);
+		codm->close();
+		player->broadcastMessage(codm);
+//		try {
+//
+//			//targetPlayer->sendSystemMessage("Your character has been resuscitated by \'" + player->getFirstName() + "\'.");
+//
+//			if (targetPlayer != player)
+//				targetPlayer->unlock();
+//
+//		} catch (...) {
+//			if (targetPlayer != player)
+//				targetPlayer->unlock();
+//		}
+}
+
+void GameCommandHandler::changeTemplate(StringTokenizer tokenizer, Player* player) {
+	String newTemplateString;
+
+	if (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(newTemplateString);
+	} else {
+		player->sendSystemMessage("Usage: @changeTemplate [string]");
+		return;
+	}
+
+	player->setTemplateString(newTemplateString);
+
+	CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(player);
+	codm->updateTemplateString(player->getTemplateString());
+	codm->close();
+	player->broadcastMessage(codm);
+}
+
 
