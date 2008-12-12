@@ -1614,8 +1614,8 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 	//Item cant be null here, o/w the function would not have been called
 	//This function is called by the ObjectControllerMessage.cpp
 
-	SceneObject* sourceObject;
-	SceneObject* destinationObject;
+	SceneObject* sourceObject = NULL;
+	SceneObject* destinationObject = NULL;
 
 	try {
 		item->wlock(player);
@@ -1771,6 +1771,9 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			}
 		}
 
+		if (sourceContainer != NULL && (!sourceContainer->isWearableContainer() && !sourceContainer->isContainer1() && !sourceContainer->isContainer2()))
+			sourceContainer = NULL;
+
 		moveItem(zone, player, item, object, comesFromCell, comesFromInventory, comesFromInventoryContainer,
 				comesFromExternalContainer, destinationObject, destinationIsCell, destinationIsInventory,
 				destinationIsInventoryContainer, destinationIsExternalContainer,sourceContainer, itemIsContainer);
@@ -1791,9 +1794,17 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 
 	BuildingObject* building = NULL;
 
-	uint64 objectID;
+	uint64 objectID = 0;
 	if (object != NULL)
 		objectID = object->getObjectID();
+
+	if (object != NULL && object->isTangible()) {
+		if (((TangibleObject*)object)->getTemplateName() == "inventory") {
+			player->error("moving inventory??");
+			StackTrace::printStackTrace();
+			return;
+		}
+	}
 
 	try {
 		item->wlock(player);
@@ -1862,7 +1873,7 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 					BuildingObject* sourceBuilding = (BuildingObject*) object->getParent()->getParent();
 
 					if (sourceBuilding != NULL)
-						object->removeFromBuilding(sourceBuilding);
+						object->removeFromZone();
 				}
 
 				object->setParent(destinationObject);
@@ -1897,7 +1908,7 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 
 					if (sourceBuilding != NULL) {
 						//Note to myself (Farmer) TODO: destroy the container for other players around
-						object->removeFromBuilding(sourceBuilding);
+						object->removeFromZone();
 					}
 				}
 
@@ -2306,6 +2317,8 @@ void ItemManagerImplementation::loadStructurePlayerItems(Player* player, uint64 
 	if (cellSCO == NULL)
 		return;
 
+	if (!cellSCO->isCell())
+		return;
 
 	BuildingObject* building = (BuildingObject*) cellSCO->getParent();
 	if (building == NULL)
@@ -2321,29 +2334,20 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 		ResultSet* result = NULL;
 		Zone* zone = NULL;
 
-		try {
-			building->wlock();
+		building->wlock();
 
-			zone = building->getZone();
-			if (zone == NULL) {
-				building->unlock();
-				return;
-			}
+		zone = building->getZone();
 
-			StringBuffer query;
-
-			query << "select * from `player_storage` where `structure_id` = " << building->getObjectID() << " and container = 0;";
-
-			result = ServerDatabase::instance()->executeQuery(query);
-
+		if (zone == NULL) {
 			building->unlock();
-		} catch (DatabaseException& e) {
-			System::out << e.getMessage() << "\n";
-			building->unlock();
-		} catch (...) {
-			System::out << "unreported exception caught in ItemManagerImplementation::loadContainersInStructures(";
-			building->unlock();
+			return;
 		}
+
+		StringBuffer query;
+
+		query << "select * from `player_storage` where `structure_id` = " << building->getObjectID() << " and container = 0;";
+
+		result = ServerDatabase::instance()->executeQuery(query);
 
 		while (result->next())	{
 			uint64 objectid = result->getUnsignedLong(0);
@@ -2378,6 +2382,7 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 					UnicodeString(objectname), objecttemp, equipped, false, "", 0);
 
 			if (item == NULL) {
+				building->unlock();
 				delete result;
 				return;
 			}
@@ -2418,11 +2423,15 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 
 		building->setStorageLoaded(true);
 
+		building->unlock();
+
 		delete result;
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
+		building->unlock();
 	} catch (...) {
 		System::out << "unreported exception caught in ItemManagerImplementation::loadContainersInStructures(Player* player, BuildingObject* building)\n";
+		building->unlock();
 	}
 }
 

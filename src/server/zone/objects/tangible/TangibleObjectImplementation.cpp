@@ -108,6 +108,8 @@ TangibleObjectImplementation::~TangibleObjectImplementation() {
 	if (container != NULL) {
 		error(_this->getTemplateName() + "item still in container on delete");
 
+		StackTrace::printStackTrace();
+
 		//raise(SIGSEGV);
 	}
 

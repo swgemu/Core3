@@ -104,7 +104,11 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 }
 
 SceneObjectImplementation::~SceneObjectImplementation() {
-	parent = NULL;
+	if (isInQuadTree()) {
+		error("deleting an object that is still in QuadTree");
+
+		StackTrace::printStackTrace();
+	}
 
 	undeploy();
 }
@@ -348,11 +352,11 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 
-                if (range == 128 || isInRange(player, range) || player->getParent() != NULL) { 
-                    if (this->isPlayer()) { 
-                        Player* sender = (Player*) this->_getStub(); 
-            			if (!sendSelf && (player == sender)) 
-                			continue; 
+                if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+                    if (this->isPlayer()) {
+                        Player* sender = (Player*) this->_getStub();
+            			if (!sendSelf && (player == sender))
+                			continue;
                     }
 					//System::out << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
 					player->sendMessage(msg->clone());
