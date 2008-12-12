@@ -1727,20 +1727,14 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 				if (destinationObject->isTangible()) {
 					TangibleObject* destinationTano = (TangibleObject*) destinationObject;
 
-					if (destinationObject->getParentID() == player->getInventory()->getObjectID())
+					if (destinationObject->getParentID() == player->getInventory()->getObjectID()) {
 						destinationIsInventoryContainer = true;
-
-					else if (destinationObject->getParentID() != player->getInventory()->getObjectID()
-							&& destinationObject->getParentID() != player->getObjectID() ) {
-
-						if (destinationTano->isWearableContainer())
-							destinationIsExternalContainer = true;
-						else if (destinationTano->isContainer1())
-							destinationIsExternalContainer = true;
-						else if (destinationTano->isContainer2())
-							destinationIsExternalContainer = true;
-					}
-
+					} else if (destinationTano->isWearableContainer())
+						destinationIsExternalContainer = true;
+					else if (destinationTano->isContainer1())
+						destinationIsExternalContainer = true;
+					else if (destinationTano->isContainer2())
+						destinationIsExternalContainer = true;
 				}
 			}
 		}
