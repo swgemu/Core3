@@ -1872,8 +1872,12 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 				if (comesFromCell) {
 					BuildingObject* sourceBuilding = (BuildingObject*) object->getParent()->getParent();
 
-					if (sourceBuilding != NULL)
+					if (sourceBuilding != NULL) {
 						object->removeFromZone();
+						Zone* zone = object->getZone();
+						if (zone != NULL)
+							zone->getZoneServer()->addObject(object);
+					}
 				}
 
 				object->setParent(destinationObject);
@@ -1909,6 +1913,9 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 					if (sourceBuilding != NULL) {
 						//Note to myself (Farmer) TODO: destroy the container for other players around
 						object->removeFromZone();
+						Zone* zone = object->getZone();
+						if (zone != NULL)
+							zone->getZoneServer()->addObject(object);
 					}
 				}
 
