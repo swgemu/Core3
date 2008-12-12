@@ -353,6 +353,16 @@ void GameCommandHandler::init() {
 					"Changes the objects template. Useful for CSR Events.",
 					"Usage: @changeTemplate newtemplate.",
 					&changeTemplate);
+
+	gmCommands->addCommand("setSpeed", PRIVILEGED,
+					"Sets a players speed/acceleration.",
+					"Usage: @setSpeed speed acceleration.",
+					&setSpeed);
+
+	gmCommands->addCommand("setHeight", PRIVILEGED,
+					"Sets the height of the object.",
+					"Usage: @setHeight number.",
+					&setHeight);
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -2768,45 +2778,87 @@ void GameCommandHandler::freezePlayer(StringTokenizer tokenizer, Player* player)
 		}
 
 		//By right here, we should have a player object. or not.
+				try {
+					if (targetPlayer != player)
+						targetPlayer->wlock(player);
 
-		targetPlayer->setFrozen(true);
+					targetPlayer->updateSpeed(0,0);
 
-		CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(targetPlayer);
-		codm->setFrozen(true);
-		codm->close();
-		player->broadcastMessage(codm);
+					targetPlayer->setFrozen(true);
+
+					CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(targetPlayer);
+					codm->setFrozen(true);
+					codm->close();
+					player->broadcastMessage(codm);
+
+					targetPlayer->sendSystemMessage(
+							"You have been frozen by \'"
+									+ player->getFirstName() + "\'.");
+					player->sendSystemMessage("You have frozen \'" + name
+							+ "\'.");
+
+					if (targetPlayer != player)
+						targetPlayer->unlock();
+
+				} catch (...) {
+					if (targetPlayer != player)
+						targetPlayer->unlock();
+				}
+
+
 }
 
 void GameCommandHandler::unfreezePlayer(StringTokenizer tokenizer, Player* player) {
-		String name;
-		Player* targetPlayer;
+			String name;
+			Player* targetPlayer;
 
-		ChatManager * chatManager = player->getZone()->getChatManager();
+			ChatManager * chatManager = player->getZone()->getChatManager();
 
-		if (tokenizer.hasMoreTokens()) {
-			tokenizer.getStringToken(name);
-			targetPlayer = chatManager->getPlayer(name);
+			if (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(name);
+				targetPlayer = chatManager->getPlayer(name);
 
-			if (targetPlayer == NULL)
-				return;
-		} else {
-			SceneObject* obj = player->getTarget();
-			if (obj != NULL && obj->isPlayer()) {
-				targetPlayer = (Player*) obj;
-				name = targetPlayer->getFirstName();
+				if (targetPlayer == NULL)
+					return;
 			} else {
-				return;
+				SceneObject* obj = player->getTarget();
+				if (obj != NULL && obj->isPlayer()) {
+					targetPlayer = (Player*) obj;
+					name = targetPlayer->getFirstName();
+				} else {
+					return;
+				}
 			}
-		}
 
-		//By right here, we should have a player object. or not.
+			//By right here, we should have a player object. or not.
+					try {
+						if (targetPlayer != player)
+							targetPlayer->wlock(player);
 
-		targetPlayer->setFrozen(false);
+						targetPlayer->updateSpeed(5.376, 1.549f);
 
-		CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(targetPlayer);
-		codm->setFrozen(false);
-		codm->close();
-		player->broadcastMessage(codm);
+						targetPlayer->setFrozen(false);
+
+						CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(targetPlayer);
+						codm->setFrozen(false);
+						codm->close();
+						player->broadcastMessage(codm);
+
+						targetPlayer->sendSystemMessage(
+								"You have been unfrozen by \'"
+										+ player->getFirstName() + "\'.");
+						player->sendSystemMessage("You have unfrozen \'" + name
+								+ "\'.");
+
+						if (targetPlayer != player)
+							targetPlayer->unlock();
+
+					} catch (...) {
+						if (targetPlayer != player)
+							targetPlayer->unlock();
+					}
+
+
 }
 
 void GameCommandHandler::changeTemplate(StringTokenizer tokenizer, Player* player) {
@@ -2825,6 +2877,97 @@ void GameCommandHandler::changeTemplate(StringTokenizer tokenizer, Player* playe
 	codm->updateTemplateString();
 	codm->close();
 	player->broadcastMessage(codm);
+}
+
+void GameCommandHandler::setSpeed(StringTokenizer tokenizer, Player* player) {
+	Player* targetPlayer;
+	SceneObject* obj = player->getTarget();
+		if (obj != NULL && obj->isPlayer()) {
+			targetPlayer = (Player*) obj;
+		} else {
+			return;
+		}
+		//Now we want to make sure theres more tokens.
+		if (!tokenizer.hasMoreTokens())
+			return;
+
+		float speed = tokenizer.getFloatToken();
+
+		if (!tokenizer.hasMoreTokens())
+				return;
+
+		float acceleration = tokenizer.getFloatToken();
+
+		int defaultFlag;
+		defaultFlag = 0;
+		if (tokenizer.hasMoreTokens()) {
+			defaultFlag = tokenizer.getIntToken();
+		}
+
+
+		//By right here, we should have a player object. or not.
+		try {
+			if (targetPlayer != player)
+				targetPlayer->wlock(player);
+
+			if (defaultFlag == 0) {
+				targetPlayer->updateSpeed(speed, acceleration);
+				targetPlayer->sendSystemMessage("Your speed has been changed.");
+				player->sendSystemMessage("You have changed their speed.");
+			} else {
+				targetPlayer->updateSpeed(5.376, 1.549f);
+				targetPlayer->sendSystemMessage("Your speed has been defaulted back to normal.");
+				player->sendSystemMessage("You have changed their speed back to default.");
+			}
+
+			if (targetPlayer != player)
+				targetPlayer->unlock();
+
+		} catch (...) {
+			if (targetPlayer != player)
+				targetPlayer->unlock();
+		}
+
+}
+
+void GameCommandHandler::setHeight(StringTokenizer tokenizer, Player* player) {
+	CreatureObject* targetObject;
+	SceneObject* obj = player->getTarget();
+		if (obj != NULL) {
+			targetObject = (CreatureObject*) obj;
+		} else {
+				return;
+		}
+
+		if (!tokenizer.hasMoreTokens())
+				return;
+
+		float height = tokenizer.getFloatToken();
+
+
+		//By right here, we should have a player object. or not.
+							try {
+								if (targetObject != player)
+									targetObject->wlock(player);
+
+								targetObject->setHeight(height);
+
+								CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(targetObject);
+								dcreo3->updateHeight();
+								dcreo3->close();
+								player->broadcastMessage(dcreo3);
+
+								//targetObject->sendSystemMessage("Your height has been changed.");
+								player->sendSystemMessage("You have changed their height.");
+
+								if (targetObject != player)
+									targetObject->unlock();
+
+							} catch (...) {
+								if (targetObject != player)
+									targetObject->unlock();
+							}
+
 }
 
 

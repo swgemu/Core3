@@ -115,8 +115,21 @@ public:
 		insertInt(creo->getFocusMax());
 		insertInt(creo->getWillpowerMax());
 
-		insertInt(0);
-		insertInt(0);
+		insertInt(2); //Equipment list
+		insertInt(2); //Equipment update count
+
+		insertShort(0); //Customization String
+		insertInt(0x04); //Equipped
+		insertLong(creo->getObjectID() + 1); //Inventory ID
+		insertInt(0x2110791C); //CRC of Inventory
+
+
+		insertShort(0); //Customization String
+		insertInt(0x04); //Equipped
+		insertLong(creo->getWeaponID()); //Weapon ID
+		insertInt(0xC470AE12); //CRC of the weapon
+
+
 
 		insertAscii(creo->getTemplateString());
 
