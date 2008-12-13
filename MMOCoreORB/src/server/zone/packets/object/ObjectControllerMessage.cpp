@@ -2334,9 +2334,17 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(objid);
 	SceneObject* invObj = player->getInventoryItem(objid);
 
-	if (invObj != NULL) {
-		if (((TangibleObject*)invObj)->isContainer()) {
-			Container* container = (Container*) invObj;
+	if (invObj != NULL && invObj->isTangible()) {
+		TangibleObject* tano = (TangibleObject*) invObj;
+
+		if (tano->isEquipped()) {
+			//player->changeCloth(objid);
+			player->sendSystemMessage("You must unequip the item before destroying it.");
+			return;
+		}
+
+		if (tano->isContainer()) {
+			Container* container = (Container*) tano;
 
 			while (!container->isEmpty()) {
 				SceneObject* sco = container->getObject(0);
@@ -2351,7 +2359,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 			}
 		}
 	}
-	
+
 	if (invObj != NULL && invObj->isTangible()) {
 		TangibleObject* item = (TangibleObject*) invObj;
 

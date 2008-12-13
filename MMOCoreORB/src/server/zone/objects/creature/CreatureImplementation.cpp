@@ -520,6 +520,7 @@ void CreatureImplementation::loadItems() {
 			weapon->setMinDamage(wpMinDamage);
 			weapon->setMaxDamage(wpMaxDamage);
 			weapon->setAttackSpeed(wpAttackSpeed);
+			weapon->setEquipped(true);
 
 			addInventoryItem(weapon);
 			setWeapon(weapon);

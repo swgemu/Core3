@@ -1894,7 +1894,6 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 
 						if (zone != NULL) {
 							zone->getZoneServer()->addObject(object);
-							object->sendTo(player);
 						}
 					}
 				}
@@ -1912,6 +1911,8 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 
 				inventory->addObject(item);
 				createPlayerItem(player, item);
+
+				object->sendTo(player);
 
 				BaseMessage* linkmsg = item->link(inventory);
 				player->broadcastMessage(linkmsg);

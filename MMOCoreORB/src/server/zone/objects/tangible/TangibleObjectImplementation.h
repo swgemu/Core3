@@ -356,7 +356,7 @@ public:
 
 	// setters and getters
 	//inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
-	inline void setContainer(SceneObject* cont, uint32 type = 0xFFFFFFFF) {
+	inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
 		parent = cont;
 		container = cont;
 		linkType = type;

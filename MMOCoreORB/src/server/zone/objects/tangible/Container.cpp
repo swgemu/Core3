@@ -117,12 +117,25 @@ void Container::openTo(Player* player) {
 		((ContainerImplementation*) _impl)->openTo(player);
 }
 
-bool Container::isEmpty() {
+void Container::sendItemsTo(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 13);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((ContainerImplementation*) _impl)->sendItemsTo(player);
+}
+
+bool Container::isEmpty() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -134,7 +147,7 @@ int Container::getSlots() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -146,7 +159,7 @@ void Container::setSlots(int attributeSlots) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addSignedIntParameter(attributeSlots);
 
 		method.executeWithVoidReturn();
@@ -159,7 +172,7 @@ void Container::generateAttributes(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -200,15 +213,18 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		openTo((Player*) inv->getObjectParameter());
 		break;
 	case 13:
-		resp->insertBoolean(isEmpty());
+		sendItemsTo((Player*) inv->getObjectParameter());
 		break;
 	case 14:
-		resp->insertSignedInt(getSlots());
+		resp->insertBoolean(isEmpty());
 		break;
 	case 15:
-		setSlots(inv->getSignedIntParameter());
+		resp->insertSignedInt(getSlots());
 		break;
 	case 16:
+		setSlots(inv->getSignedIntParameter());
+		break;
+	case 17:
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -244,6 +260,10 @@ int ContainerAdapter::objectsSize() {
 
 void ContainerAdapter::openTo(Player* player) {
 	return ((ContainerImplementation*) impl)->openTo(player);
+}
+
+void ContainerAdapter::sendItemsTo(Player* player) {
+	return ((ContainerImplementation*) impl)->sendItemsTo(player);
 }
 
 bool ContainerAdapter::isEmpty() {

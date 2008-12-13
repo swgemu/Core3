@@ -2695,14 +2695,12 @@ Armor* CreatureObjectImplementation::getArmor(int type) {
 
 void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
 	if (item->isEquipped() && item->isWeapon()) {
-
 		item->setContainer(_this, 0x04);
 		setWeapon((Weapon*) item);
-
 	} else
-
 		item->setContainer(inventory, 0xFFFFFFFF);
-		inventory->addObject(item);
+
+	inventory->addObject(item);
 }
 
 void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno) {
