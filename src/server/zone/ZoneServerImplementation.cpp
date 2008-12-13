@@ -240,7 +240,7 @@ void ZoneServerImplementation::init() {
 
 	startTimestamp = time(NULL);
 
-	serverState = ONLINE;
+	serverState = LOCKED;
 
 	return;
 }

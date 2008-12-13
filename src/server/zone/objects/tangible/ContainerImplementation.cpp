@@ -119,6 +119,9 @@ void ContainerImplementation::removeObject(uint64 oid) {
 }
 
 void ContainerImplementation::openTo(Player* player) {
+	if (player != parent && player->getInventory() != parent)
+		sendItemsTo(player);
+
 	ClientOpenContainerMessage* msg = new ClientOpenContainerMessage(this);
 	player->sendMessage(msg);
 }
@@ -140,7 +143,8 @@ void ContainerImplementation::sendTo(Player* player, bool doClose) {
 	BaseMessage* tano6 = new TangibleObjectMessage6((TangibleObject*) _this);
 	client->sendMessage(tano6);
 
-	sendItemsTo(player);
+	if (player == parent || player->getInventory() == parent)
+		sendItemsTo(player);
 
 	if (doClose)
 		SceneObjectImplementation::close(client);

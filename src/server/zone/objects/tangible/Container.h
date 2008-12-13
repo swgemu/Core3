@@ -33,6 +33,8 @@ public:
 
 	void openTo(Player* player);
 
+	void sendItemsTo(Player* player);
+
 	bool isEmpty();
 
 	int getSlots();
@@ -70,6 +72,8 @@ public:
 	int objectsSize();
 
 	void openTo(Player* player);
+
+	void sendItemsTo(Player* player);
 
 	bool isEmpty();
 

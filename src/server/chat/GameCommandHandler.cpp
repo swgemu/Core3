@@ -349,10 +349,10 @@ void GameCommandHandler::init() {
 						"Usage: @unfreezePlayer name.",
 						&unfreezePlayer);
 
-	gmCommands->addCommand("changeTemplate", PRIVILEGED,
+	/*gmCommands->addCommand("changeTemplate", PRIVILEGED,
 					"Changes the objects template. Useful for CSR Events.",
 					"Usage: @changeTemplate newtemplate.",
-					&changeTemplate);
+					&changeTemplate);*/
 
 	gmCommands->addCommand("setSpeed", PRIVILEGED,
 					"Sets a players speed/acceleration.",
@@ -2742,6 +2742,7 @@ void GameCommandHandler::openInventory(StringTokenizer tokenizer, Player * playe
 
 		if (othersInventory != NULL) {
 			othersInventory->sendTo(player);
+			othersInventory->sendItemsTo(player);
 			othersInventory->openTo(player);
 		}
 
