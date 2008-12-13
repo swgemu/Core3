@@ -2323,7 +2323,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
 	if (player->getTradeSize() != 0) {
-		player->sendSystemMessage("You can't destroy objects while trading..");
+		player->sendSystemMessage("You cant destroy objects while trading..");
 		return;
 	}
 
@@ -2334,62 +2334,24 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(objid);
 	SceneObject* invObj = player->getInventoryItem(objid);
 
-	//TODO: add all other source-tabs here in the if-consition later (eg. schematic tab etc)
+	if (invObj != NULL) {
+		if (((TangibleObject*)invObj)->isContainer()) {
+			Container* container = (Container*) invObj;
 
-	if ( waypoint == NULL && datapadData == NULL && invObj == NULL) {
-		//Item is in an inventory container
+			while (!container->isEmpty()) {
+				SceneObject* sco = container->getObject(0);
 
-		Zone* zone = player->getZone();
+				itemManager->deletePlayerItem(player, ((TangibleObject*)sco), true);
 
-		if (zone != NULL) {
-			if (zone->lookupObject(objid) != NULL) {
+				container->removeObject(0);
 
-				SceneObject* invObj = zone->lookupObject(objid);
+				sco->removeFromZone(true);
 
-				if (invObj != NULL) {
-
-					if (!invObj->isTangible())
-						return;
-
-					if (((TangibleObject*)invObj)->isEquipped()) {
-						player->sendSystemMessage("You must unequip the item before destroying it.");
-						return;
-					}
-
-					if (player->getWeapon() == invObj)
-						player->setWeapon(NULL);
-
-					if (player->getSurveyTool() == invObj)
-						player->setSurveyTool(NULL);
-
-					itemManager->deletePlayerItem(player, ((TangibleObject*) invObj), true);
-
-					SceneObject* obj = invObj->getParent();
-
-					if (obj != NULL && obj->isTangible()) {
-						TangibleObject* tano = (TangibleObject*) obj;
-
-						if (tano->isContainer() || tano == player->getInventory()) {
-							Container* container = (Container*) tano;
-
-							container->removeObject(objid);
-						}
-					}
-
-					zone->getZoneServer()->removeObject(invObj);
-					invObj->removeUndeploymentEvent();
-
-					BaseMessage* msg = new SceneObjectDestroyMessage(invObj);
-					player->getClient()->sendMessage(msg);
-
-					invObj->finalize();
-
-					return;
-				}
+				sco->finalize();
 			}
 		}
 	}
-
+	
 	if (invObj != NULL && invObj->isTangible()) {
 		TangibleObject* item = (TangibleObject*) invObj;
 
@@ -2411,12 +2373,6 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 				player->clearCurrentCraftingTool();
 		}
 
-		Zone* zone = player->getZone();
-		if (zone != NULL) {
-			zone->getZoneServer()->removeObject(item);
-			item->removeUndeploymentEvent();
-		}
-
 		itemManager->deletePlayerItem(player, item, true);
 
 		player->removeInventoryItem(objid);
@@ -2431,11 +2387,9 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 		player->getClient()->sendMessage(msg);
 
 		item->finalize();
-
 	} else if (waypoint != NULL) {
 		if (player->removeWaypoint(waypoint))
 			waypoint->finalize();
-
 	} else if (datapadData != NULL){
 		player->removeDatapadItem(objid);
 
@@ -3806,7 +3760,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,	Message* pac
 		SceneObject* targetObject = player->getTarget();
 
 		//Target is dead creature, looting from another creature to players inventory
-		if (targetObject != NULL && targetObject != player && targetObject->isNonPlayerCreature()) {
+		if (targetObject != NULL && targetObject->isNonPlayerCreature()) {
 			Creature* creature = (Creature*) targetObject;
 
 			SceneObject * object;

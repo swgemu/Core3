@@ -168,6 +168,17 @@ void ContainerImplementation::setSlots(int attributeSlots) {
 
 void ContainerImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	//Not to myself (Farmer): TODO: Fix this as soon as rename is working
+
+	//TODO:Cell permission check
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			if (_this->isTangible())
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
+
 	omr->addRadialItem(0, 131, 3, "Set Name"); //"@player_structure:set_name"
 
 	omr->finish();

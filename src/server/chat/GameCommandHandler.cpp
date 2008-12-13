@@ -2623,14 +2623,12 @@ void GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player) 
 		if (((TangibleObject*) obj)->isContainer()) {
 			Container* container = (Container*) obj;
 
-			for (int i = 0; i < container->objectsSize(); ++i) {
-				TangibleObject* item = (TangibleObject*) container->getObject(i);
+			while (!container->isEmpty()) {
+				SceneObject* sco = container->getObject(0);
 
-				container->removeObject(item->getObjectID());
+				container->removeObject(0);
 
-				item->removeFromZone(true);
-				System::out << "Removing item from container...\n";
-				i--;
+				sco->removeFromZone(true);
 			}
 		}
 
@@ -2975,5 +2973,3 @@ void GameCommandHandler::setHeight(StringTokenizer tokenizer, Player* player) {
 							}
 
 }
-
-
