@@ -1642,27 +1642,6 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			return;
 		}
 
-		/*
-		//break and branch to the loot manager if the item comes from a dead creature (standard loot case)
-		if (sourceObject->getParent() != NULL) {
-			SceneObject* parent = sourceObject->getParent();
-
-			SceneObject* creatureSCO = parent->getParent();
-
-			if (creatureSCO != NULL && creatureSCO->isNonPlayerCreature()) {
-				Creature* creature = (Creature*) creatureSCO;
-
-				LootManager* lootManager = pServer->getLootManager();
-				if (lootManager != NULL) {
-					item->unlock();
-
-					lootManager->lootCorpse(player, creature);
-					return;
-				}
-			}
-		}
-		*/
-
 		destinationObject = zone->lookupObject(destinationID);
 
 		bool destinationIsInventory = false;
@@ -1691,19 +1670,17 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			sourceObject->wlock(player);
 		}
 
-		if (sourceObject->isCell()) {
-			comesFromCell = true;
-
-		} else if (sourceObject->getParentID() == player->getInventory()->getObjectID()) {
-			comesFromInventoryContainer = true;
-			sourceContainer = (Container*) sourceObject;
-
-		} else if (sourceTano->isContainer()) {
-			comesFromExternalContainer = true;
-			sourceContainer = (Container*) sourceObject;
-		}
-
 		if (!comesFromInventory) {
+			if (sourceObject->isCell()) {
+				comesFromCell = true;
+			} else if (sourceObject->getParentID() == player->getInventory()->getObjectID()) {
+				comesFromInventoryContainer = true;
+				sourceContainer = (Container*) sourceObject;
+			} else if (sourceTano->isContainer()) {
+				comesFromExternalContainer = true;
+				sourceContainer = (Container*) sourceObject;
+			}
+
 			sourceObject->unlock();
 			item->wlock(player);
 		}
@@ -1721,9 +1698,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 
 			if (destinationObject->isCell()) {
 				destinationIsCell = true;
-			}
-
-			if (!destinationIsCell) {
+			} else {
 				if (destinationObject->isTangible()) {
 					TangibleObject* destinationTano = (TangibleObject*) destinationObject;
 
@@ -1733,11 +1708,11 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 						destinationIsExternalContainer = true;
 				}
 			}
-		}
 
-		if (!destinationIsInventory) {
-			destinationObject->unlock();
-			item->wlock(player);
+			if (!destinationIsInventory) {
+				destinationObject->unlock();
+				item->wlock(player);
+			}
 		}
 
 		if (item->isContainer())
@@ -1796,6 +1771,16 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 
 		if (comesFromInventoryContainer || comesFromExternalContainer) {
 			item->unlock();
+
+			//********** Temporarely debug code for TC
+			int debugTest = sourceContainer->objectsSize();
+			if (debugTest < 1) {
+				System::out << "ATTENTION - SERIOUS PROBLEM: There is an object considered to be a container, but it isnt. The name of the sourceContainer is "
+				<< sourceContainer->getName().toString() << "  and the OID is " << sourceContainer->getObjectID() << "\n";
+
+				return;
+			}
+			//**********
 
 			try {
 				sourceContainer->wlock(player);
@@ -1948,10 +1933,12 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 		item->unlock();
 
 		System::out << "exception caught in ItemManagerImplementation::moveItem(....)\n" << e.getMessage();
+		return;
 	}	catch (...) {
 		item->unlock();
 
 		System::out << "Unreported exception caught in ItemManagerImplementation::moveItem(....)\n";
+		return;
 	}
 
 	reflectItemMovementInDB(player, item, comesFromCell, comesFromInventory, comesFromInventoryContainer,
@@ -1971,34 +1958,35 @@ void ItemManagerImplementation::reflectItemMovementInDB(Player* player, Tangible
 			if (itemIsContainer) {
 				Container* container = (Container*) item;
 				moveNestedItemsToInventoryContainer(player, container);
+			}
 
-			} else if (destinationIsInventoryContainer)
+			/* Can never happen
+			else if (destinationIsInventoryContainer)
 				createPlayerItemInInventoryContainer(player, item, destinationObject);
+			*/
 		}
 
 	} else if (comesFromInventory) {
 		if (destinationIsInventoryContainer)
-			moveItemInInventory(player, item, destinationObject, destinationIsInventory);
+			moveItemInInventory(player, item, destinationObject, false);
 
 		if (destinationIsCell || destinationIsExternalContainer) {
 			deletePlayerItem(player, item, false);
 
 			insertItemIntoPlayerStorage(player, item, destinationObject, conti, building);
 
-			if (itemIsContainer) {
+			if (itemIsContainer && destinationIsCell) {
 				Container* container = (Container*) item;
 
 				if (container != NULL)
 					moveNestedItemsToPlayerStorage(player, container);
 			}
-
 		}
 
 	} else if (comesFromInventoryContainer) {
 		if (destinationIsInventory)
-			moveItemInInventory(player, item, NULL, destinationIsInventory);
-
-		if (destinationIsCell || destinationIsExternalContainer) {
+			moveItemInInventory(player, item, NULL, true);
+		else if (destinationIsCell || destinationIsExternalContainer) {
 			deletePlayerItem(player, item, false);
 			insertItemIntoPlayerStorage(player, item, destinationObject, conti, building);
 		}
@@ -2192,9 +2180,6 @@ void ItemManagerImplementation::createPlayerItemInInventoryContainer(Player* pla
 	}
 }
 
-//Load item in buildings when spawning in buildings
-//Friend going offline wont inform
-
 void ItemManagerImplementation::moveItemInInventory(Player* player, TangibleObject* item, SceneObject* destinationObject,bool destinationIsInventory) {
 	uint64 containerID = 0;
 	uint64 itemID;
@@ -2270,7 +2255,7 @@ void ItemManagerImplementation::insertItemIntoPlayerStorage(Player* player, Tang
 		String itemname = item->getName().toString();
 		MySqlDatabase::escapeString(itemname);
 
-		String appearance = " "; //Whitepace intended!
+		String appearance = " "; //Whitespace intended!
 		String itemApp;
 
 		item->getCustomizationString(itemApp);
