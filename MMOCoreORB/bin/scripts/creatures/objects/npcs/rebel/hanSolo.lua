@@ -99,7 +99,7 @@ hanSolo = Creature:new {
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/ranged/pistol/shared_pistol_dl44.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Hon Pistol", -- Name ex. 'a Vibrolance'
+	weaponName = "Han's Pistol", -- Name ex. 'a Vibrolance'
 	weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,

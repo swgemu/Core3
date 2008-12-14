@@ -136,10 +136,10 @@ corsecTraitor = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "corsecAttack1", "corsecAttack2", "corsecAttack3" }, 
+	skills = { "corsecAttack1" }, 
 	respawnTimer = 300, 
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corsecTraitor, 3630538207) --  Add to Global Table
+Creatures:addCreature(corsecTraitor, 3630538207) -- Add to Global Table

@@ -40,31 +40,32 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-ragtagLunatic = Creature:new {
-	objectName = "ragtagLunatic",  -- Lua Object Name
+
+ragTagLoon = Creature:new {
+	objectName = "ragTagLoon",  -- Lua Object Name
 	creatureType = "NPC",
 	gender = "",
 
-	speciesName = "ragtag_lunatic",
+	speciesName = "ragTag_loon",
 	stfName = "mob/creature_names", 
-	objectCRC = 1527998977, 
+	objectCRC = 3021148797, 
 	socialGroup = "Rgtg. Gang (Thug)",
-	level = 7,
+	level = 6,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 330,
-	healthMin = 270,
+	healthMax = 220,
+	healthMin = 180,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 330,
-	actionMin = 270,
+	actionMax = 220,
+	actionMin = 180,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 330,
-	mindMin = 270,
+	mindMax = 220,
+	mindMin = 180,
 	focus = 0,
 	willpower = 0,
 
@@ -84,25 +85,25 @@ ragtagLunatic = Creature:new {
 
 	healer = 0,
 
-	pack = 1,
+	pack = 0,
 	herd = 0,
-	stalker = 0,
+	stalker = 1,
 	killer = 0,
 	aggressive = 0,
 	invincible = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_power5.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Power5 Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 150,
+	weaponMaxDamage = 350,
+	weaponAttackSpeed = 1.0,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -132,10 +133,10 @@ ragtagLunatic = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "ragTagAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(ragtagLunatic, 1527998977) --  Add to Global Table
+Creatures:addCreature(ragTagLoon, 3021148797) -- Add to Global Table

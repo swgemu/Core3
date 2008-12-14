@@ -39,22 +39,54 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Load files
 
--- CreatureSkills
+smashBallAttack1 = {
+	attackname = "smashBallAttack1",	
+	animation = "fire_area_medium",
 
--- Corellia
--- RunSkillsFile("creatureSkills/corellia/npcs/rogueCorsecAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/afarathuAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/beldonnasAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/corsecAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/flailAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/drallAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/greckAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/hiddenDaggerAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/nyaxAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/meatlumpAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/monumenterAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/ragTagAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/selonianAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/smashBallAttacks.lua")
+	requiredWeaponType = CARBINE,
+	
+	range = 64,
+	damageRatio = 1.5,
+	speedRatio = 1,
+	areaRange = 0,
+	coneAngle = 0,
+	accuracyBonus = 0,
+
+	healthAttackChance = 0,
+	actionAttackChance = 100,
+	mindAttackChance = 0,
+	
+	knockdownChance = 0,
+	postureDownChance = 25,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+
+	dotChance = 60,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = ACTION,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+	
+	CbtSpamBlock = "legshot_block",
+	CbtSpamCounter = "legshot_counter",
+	CbtSpamEvade = "legshot_evade",
+	CbtSpamHit = "legshot_hit",
+	CbtSpamMiss = "legshot_miss",
+}
+
+AddRandomPoolAttackTargetSkill(smashBallAttack1)
+
+-----------------------------------------------------------------------

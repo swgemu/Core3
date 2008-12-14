@@ -40,8 +40,9 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-smashballDegenerate = Creature:new {
-	objectName = "smashballDegenerate",  -- Lua Object Name
+
+smashBallDegenerate = Creature:new {
+	objectName = "smashBallDegenerate",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "smashball", 
 	factionPoints = 20,
@@ -95,16 +96,16 @@ smashballDegenerate = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/carbine/shared_carbine_dxr6.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "DXR6 Carbine", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_dxr6", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 350,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -134,10 +135,10 @@ smashballDegenerate = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "smashBallAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(smashballDegenerate, 3021148797) --  Add to Global Table
+Creatures:addCreature(smashBallDegenerate, 3021148797) -- Add to Global Table

@@ -136,7 +136,7 @@ bloodseekerMiteQueen = Creature:new {
 	meatMax = 35,
 
 	--skills = { " Dizzy attack", " Disease attack (strong)", "" }
-	skill = { "bloodseekerMiteAttack1", "bloodseekerMiteAttack5" },
+	skills = { "bloodseekerMiteAttack1", "bloodseekerMiteAttack5" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
