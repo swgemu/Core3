@@ -39,22 +39,38 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Load files
 
--- CreatureSkills
+selonianAttack1 = {
+	attackname = "selonianAttack1",
+	animation = "creature_attack_ranged_light",
+	
+	requiredWeaponType = NONE,
 
--- Corellia
--- RunSkillsFile("creatureSkills/corellia/npcs/rogueCorsecAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/afarathuAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/beldonnasAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/corsecAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/flailAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/drallAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/greckAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/hiddenDaggerAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/nyaxAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/meatlumpAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/monumenterAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/ragTagAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/selonianAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/smashBallAttacks.lua")
+	range = 64,
+
+	damageRatio = 7.0,
+
+	speedRatio = 5,
+	coneAngle = 0,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 1,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(selonianAttack1)
+
+-----------------------------------------------

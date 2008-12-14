@@ -40,31 +40,32 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-greckAssassin = Creature:new {
-	objectName = "greckAssassin",  -- Lua Object Name
+
+ragTagLunatic = Creature:new {
+	objectName = "ragTagLunatic",  -- Lua Object Name
 	creatureType = "NPC",
 	gender = "",
 
-	speciesName = "greck_assassin",
+	speciesName = "ragTag_lunatic",
 	stfName = "mob/creature_names", 
-	objectCRC = 1197861951, 
-	socialGroup = "Olag Greek",
-	level = 11,
+	objectCRC = 1527998977, 
+	socialGroup = "Rgtg. Gang (Thug)",
+	level = 7,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 825,
-	healthMin = 675,
+	healthMax = 330,
+	healthMin = 270,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 825,
-	actionMin = 675,
+	actionMax = 330,
+	actionMin = 270,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 825,
-	mindMin = 675,
+	mindMax = 330,
+	mindMin = 270,
 	focus = 0,
 	willpower = 0,
 
@@ -87,22 +88,22 @@ greckAssassin = Creature:new {
 	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 1,
+	killer = 0,
 	aggressive = 0,
 	invincible = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_power5.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Power5 Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 150,
+	weaponMaxDamage = 350,
+	weaponAttackSpeed = 1.0,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -132,10 +133,10 @@ greckAssassin = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "ragTagAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(greckAssassin, 1197861951) --  Add to Global Table
+Creatures:addCreature(ragTagLunatic, 1527998977) -- Add to Global Table

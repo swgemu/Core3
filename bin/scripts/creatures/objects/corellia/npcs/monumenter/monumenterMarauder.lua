@@ -40,6 +40,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 monumenterMarauder = Creature:new {
 	objectName = "monumenterMarauder",  -- Lua Object Name
 	creatureType = "NPC",
@@ -49,7 +50,7 @@ monumenterMarauder = Creature:new {
 
 	speciesName = "monumenter_marauder",
 	stfName = "mob/creature_names", 
-	objectCRC = ?, 
+	objectCRC = 00000000000, 
 	socialGroup = "monumenter",
 	level = 13,
 
@@ -95,16 +96,16 @@ monumenterMarauder = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_dl44.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "DL44 Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 150,
+	weaponMaxDamage = 350,
+	weaponAttackSpeed = 1.0,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -134,10 +135,10 @@ monumenterMarauder = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "monumenterAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(monumenterMarauder, ?) --  Add to Global Table
+Creatures:addCreature(monumenterMarauder, 00000000000) -- Add to Global Table

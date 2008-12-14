@@ -46,11 +46,63 @@
  RunCreatureFile("objects/corellia/npcs/afarathu/afarathuCultRuffian.lua")
  RunCreatureFile("objects/corellia/npcs/afarathu/afarathuCultSavage.lua")
 
+ RunCreatureFile("objects/corellia/npcs/beldonnas/beldonnasEnforcer.lua") -- Weapon "DH17 Pistol"
+ RunCreatureFile("objects/corellia/npcs/beldonnas/beldonnasMarshal.lua") -- Weapon "DH17 Pistol"
+ RunCreatureFile("objects/corellia/npcs/beldonnas/beldonnasScout.lua") -- Weapon "DH17 Pistol"
+ RunCreatureFile("objects/corellia/npcs/beldonnas/beldonnasSoldier.lua") -- Weapon "DH17 Pistol"
+
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecAgent.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecAgentAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecCadet.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecCadetAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecCaptain.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecCaptainAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecChief.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecChiefAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecComissioner.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecComissionerAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecDeserter.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecDetective.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecDetectiveAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecInspectorSergeant.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecInvestigator.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecLieutenant.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecLieutenantAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecMajor.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecMajorAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecMasterSergeant.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecMasterSergeantAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecRenegade.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecRogue.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecSergeant.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecSergeantAggro.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecTraitor.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecTrooper.lua") -- Weapon "Corsec CDEF Pistol"
+ RunCreatureFile("objects/corellia/npcs/corsec/corsecTrooperAggro.lua") -- Weapon "Corsec CDEF Pistol"
+
+ RunCreatureFile("objects/corellia/npcs/flail/flailBoss.lua") -- Weapon "FWG5 Pistol"
+ RunCreatureFile("objects/corellia/npcs/flail/flailButcher.lua") -- Weapon "FWG5 Pistol"
+ RunCreatureFile("objects/corellia/npcs/flail/flailCutthroat.lua") -- Weapon "FWG5 Pistol"
+ RunCreatureFile("objects/corellia/npcs/flail/flailExecutioner.lua") -- Weapon "FWG5 Pistol"
+ RunCreatureFile("objects/corellia/npcs/flail/flailKiller.lua") -- Weapon "FWG5 Pistol"
+ RunCreatureFile("objects/corellia/npcs/flail/flailSlayer.lua") -- Weapon "FWG5 Pistol"
+
  RunCreatureFile("objects/corellia/npcs/drall/drallAbbot.lua")
  RunCreatureFile("objects/corellia/npcs/drall/drallChieftain.lua")
  RunCreatureFile("objects/corellia/npcs/drall/drallPatriotConqueror.lua")
  RunCreatureFile("objects/corellia/npcs/drall/drallPatriotFootsoldier.lua")
  RunCreatureFile("objects/corellia/npcs/drall/drallPatriotLegionnare.lua")
+
+ RunCreatureFile("objects/corellia/npcs/greck/greckAssassin.lua") -- Weapon "DX2 Pistol"
+ RunCreatureFile("objects/corellia/npcs/greck/greckHenchman.lua") -- Weapon "DX2 Pistol"
+ RunCreatureFile("objects/corellia/npcs/greck/greckMugger.lua") -- Weapon "DX2 Pistol"
+ RunCreatureFile("objects/corellia/npcs/greck/greckSmuggler.lua") -- Weapon "DX2 Pistol"
+
+ RunCreatureFile("objects/corellia/npcs/hiddenDaggers/hiddenDaggersActivist.lua") -- Weapon "D18 Pistol"
+ RunCreatureFile("objects/corellia/npcs/hiddenDaggers/hiddenDaggersDissident.lua") -- Weapon "D18 Pistol"
+ RunCreatureFile("objects/corellia/npcs/hiddenDaggers/hiddenDaggersExtremist.lua") -- Weapon "D18 Pistol"
+ RunCreatureFile("objects/corellia/npcs/hiddenDaggers/hiddenDaggersLeader.lua") -- Weapon "D18 Pistol"
+ RunCreatureFile("objects/corellia/npcs/hiddenDaggers/hiddenDaggersLieutenant.lua") -- Weapon "D18 Pistol"
 
  RunCreatureFile("objects/corellia/npcs/lordNyax/lordNyax.lua")
  RunCreatureFile("objects/corellia/npcs/lordNyax/lordNyaxDisciple.lua")
@@ -61,9 +113,40 @@
  RunCreatureFile("objects/corellia/npcs/lordNyax/lordNyaxVisionary.lua")
  RunCreatureFile("objects/corellia/npcs/lordNyax/lordNyaxZealot.lua")
 
-  RunCreatureFile("objects/corellia/npcs/corsec/corsecComissioner.lua")
- RunCreatureFile("objects/corellia/npcs/corsec/corsecDeserter.lua")
- RunCreatureFile("objects/corellia/npcs/corsec/corsecRogue.lua")
- RunCreatureFile("objects/corellia/npcs/corsec/corsecTraitor.lua")
- RunCreatureFile("objects/corellia/npcs/corsec/corsecTrooper.lua")
- 
+ RunCreatureFile("objects/corellia/npcs/meatlump/meatlumpBuffoon.lua") -- Weapon "DE10 Pistol"
+ RunCreatureFile("objects/corellia/npcs/meatlump/meatlumpClod.lua") -- Weapon "DE10 Pistol"
+ RunCreatureFile("objects/corellia/npcs/meatlump/meatlumpCretin.lua") -- Weapon "DE10 Pistol"
+ RunCreatureFile("objects/corellia/npcs/meatlump/meatlumpFool.lua") -- Weapon "DE10 Pistol"
+ RunCreatureFile("objects/corellia/npcs/meatlump/meatlumpLoon.lua") -- Weapon "DE10 Pistol"
+ RunCreatureFile("objects/corellia/npcs/meatlump/meatlumpOaf.lua") -- Weapon "DE10 Pistol"
+ RunCreatureFile("objects/corellia/npcs/meatlump/meatlumpStooge.lua") -- Weapon "DE10 Pistol"
+
+ RunCreatureFile("objects/corellia/npcs/monumenter/monumenterBandit.lua") -- Weapon "DL44 Pistol"
+ RunCreatureFile("objects/corellia/npcs/monumenter/monumenterMarauder.lua") -- Weapon "DL44 Pistol"
+ RunCreatureFile("objects/corellia/npcs/monumenter/monumenterSmuggler.lua") -- Weapon "DL44 Pistol"
+
+ RunCreatureFile("objects/corellia/npcs/ragTag/ragtagKook.lua") -- Weapon "Power5 Pistol"
+ RunCreatureFile("objects/corellia/npcs/ragTag/ragtagLoon.lua") -- Weapon "Power5 Pistol"
+ RunCreatureFile("objects/corellia/npcs/ragTag/ragtagLunatic.lua") -- Weapon "Power5 Pistol"
+ RunCreatureFile("objects/corellia/npcs/ragTag/ragtagManiac.lua") -- Weapon "Power5 Pistol"
+
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianAssassin.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianCaptain.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianChampion.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianHealer.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianHunter.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianRaider.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianScout.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianSentinel.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianSeparatist.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianSeparatistCaptain.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianSeparatistGeneral.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianSeparatistRecruit.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianSeparatistSoldier.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianThief.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianWarlord.lua") 
+ RunCreatureFile("objects/corellia/npcs/selonian/selonianWarrior.lua") 
+
+ RunCreatureFile("objects/corellia/npcs/smashBall/smashballBully.lua") -- Weapon "DXR6 Carbine"
+ RunCreatureFile("objects/corellia/npcs/smashBall/smashballDegenerate.lua") -- Weapon "DXR6 Carbine"
+ RunCreatureFile("objects/corellia/npcs/smashBall/smashballThug.lua") -- Weapon "DXR6 Carbine"

@@ -10,7 +10,7 @@
  
 --This program is distributed in the hope that it will be useful, 
 --but WITHOUT ANY WARRANTY; without even the implied warranty of 
---MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+--MERCflailTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 --See the GNU Lesser General Public License for
 --more details.
  
@@ -27,7 +27,7 @@
 --give you permission to combine Engine3 program with free software 
 --programs or libraries that are released under the GNU LGPL and with 
 --code included in the standard release of Core3 under the GNU LGPL 
---license (or modified versions of such code, with unchanged license). 
+--license (or modified versions of such code, with uncflailged license). 
 --You may copy and distribute such a system following the terms of the 
 --GNU LGPL for Engine3 and the licenses of the other code concerned, 
 --provided that you include the source code of that other code when 
@@ -39,22 +39,45 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Load files
 
--- CreatureSkills
+flailAttack1 = {
+	attackname = "flailAttack1",
+	animation = "fire_1_special_single_light",
 
--- Corellia
--- RunSkillsFile("creatureSkills/corellia/npcs/rogueCorsecAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/afarathuAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/beldonnasAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/corsecAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/flailAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/drallAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/greckAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/hiddenDaggerAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/nyaxAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/meatlumpAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/monumenterAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/ragTagAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/selonianAttacks.lua")
-RunSkillsFile("creatureSkills/corellia/npcs/smashBallAttacks.lua")
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthAttackCflailce = 100,
+	actionAttackCflailce = 0,
+	mindAttackCflailce = 0,
+
+	dotCflailce = 60,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+	
+	CbtSpamBlock = "sapblast_block",
+	CbtSpamCounter = "sapblast_counter",
+	CbtSpamEvade = "sapblast_evade",
+	CbtSpamHit = "sapblast_hit",
+	CbtSpamMiss = "sapblast_miss",
+}
+
+AddRandomPoolAttackTargetSkill(flailAttack1)
+
+-----------------------------------------------
