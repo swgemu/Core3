@@ -45,6 +45,10 @@ which carries forward this exception.
 #include "events/ShuttleLandingEvent.h"
 #include "events/ShuttleTakeOffEvent.h"
 
+#include "events/WeatherChangeEvent.h"
+#include "events/WeatherIncreaseEvent.h"
+#include "events/WeatherDecreaseEvent.h"
+
 #include "PlanetManagerImplementation.h"
 
 #include "../../ZoneProcessServerImplementation.h"
@@ -66,6 +70,17 @@ const uint32 PlanetManagerImplementation::travelFare[10][10] = {
 		{3000,    0,    0,    0,    0,    0,    0,    0,    0,  100}
 };
 
+const float PlanetManagerImplementation::windDirection[8][2] = {
+		{0.0f, 1.0f},
+		{1.0f, 1.0f},
+		{1.0f, 0.0f},
+		{1.0f, -1.0f},
+		{0.0f, -1.0f},
+		{-1.0f, -1.0f},
+		{-1.0f, 0.0f},
+		{-1.0f, 1.0f}
+};
+
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* serv) :
 	PlanetManagerServant(), Mutex("PlanetManager"), Logger() {
 	zone = planet;
@@ -76,6 +91,10 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 
 	shuttleTakeOffEvent = new ShuttleTakeOffEvent(this);
 	shuttleLandingEvent = new ShuttleLandingEvent(this);
+
+	weatherChangeEvent = new WeatherChangeEvent(this);
+	weatherIncreaseEvent = new WeatherIncreaseEvent(this);
+	weatherDecreaseEvent = new WeatherDecreaseEvent(this);
 
 	shuttleMap = new ShuttleMap();
 	ticketCollectorMap = new TicketCollectorMap(2000);
@@ -94,6 +113,11 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	StringBuffer logName;
 	logName << "PlanetManager" << zone->getZoneID();
 	setLoggingName(logName.toString());
+
+	windRow = 3;
+	if (zone->getZoneID() < 10) {
+		weatherChange();
+	}
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -128,6 +152,15 @@ PlanetManagerImplementation::~PlanetManagerImplementation() {
 
 	delete shuttleLandingEvent;
 	shuttleLandingEvent = NULL;
+
+	delete weatherChangeEvent;
+	weatherChangeEvent = NULL;
+
+	delete weatherIncreaseEvent;
+	weatherIncreaseEvent = NULL;
+
+	delete weatherDecreaseEvent;
+	weatherDecreaseEvent = NULL;
 }
 
 void PlanetManagerImplementation::init() {
@@ -781,4 +814,142 @@ uint64 PlanetManagerImplementation::getNextStaticObjectID(bool doLock) {
 
 bool PlanetManagerImplementation::isNoBuildArea(float x, float y) {
 	return noBuildAreaMap->isNoBuildArea(x,y);
+}
+
+void PlanetManagerImplementation::weatherChange() {
+	if (!zone->isWeatherEnabled())
+			return;
+
+	//Set the desired target weather.
+    int random = System::random(99);
+
+    if (random < 75) { //Set clear weather. //75%
+    	targetWeatherID = 0;
+
+    } else if (random >= 75 && random < 85){ //Set cloudy weather. //10%
+    	targetWeatherID = 1;
+
+    } else if (random >= 85 && random < 94) { //Set light storm. //9%
+    	targetWeatherID = 2;
+
+    } else if (random >= 94 && random < 98) { //Set moderate storm. //4%
+    	targetWeatherID = 3;
+
+    } else if (random >= 98) { //Set severe storm. //2%
+    	targetWeatherID = 4;
+    }
+
+    uint32 currentWeatherID = zone->getWeatherID();
+	int weatherDifference = (int)targetWeatherID - (int)currentWeatherID;
+
+	if (weatherDifference < 0) {
+		weatherTransition(-1); //Decrease the weather severity.
+
+	} else if (weatherDifference > 0) {
+		weatherTransition(1); //Increase the weather severity.
+	}
+
+	//Queue the next weather change.
+    uint32 newWeatherDelay = 2700000 + System::random(4500000); //45-120 minutes
+    server->addEvent(weatherChangeEvent, newWeatherDelay);
+}
+
+void PlanetManagerImplementation::weatherTransition(int direction) {
+	if (!zone->isWeatherEnabled())
+			return;
+
+	zone->changeWeatherID(direction);
+
+	if (zone->getWeatherID() >= 3 && System::random(2) == 2)
+		weatherWindChange();
+
+	weatherUpdatePlayers();
+
+    //See if we need to queue another increase or decrease event.
+    uint32 currentWeatherID = zone->getWeatherID();
+	int weatherDifference = (int)targetWeatherID - (int)currentWeatherID;
+
+	int delay = 180000 + System::random(600000); //3-13 minutes
+    if (weatherDifference < 0) { //Decrease the weather severity.
+		server->addEvent(weatherDecreaseEvent, delay);
+	}
+
+	if (weatherDifference > 0) { //Increase the weather severity.
+		server->addEvent(weatherIncreaseEvent, delay);
+	}
+}
+
+void PlanetManagerImplementation::weatherWindChange() {
+	if (windRow == 0) {
+		windRow = 1;
+
+	} else if (windRow == 7) {
+		windRow = 6;
+
+	} else if (windRow > 0 && windRow < 7){
+		switch (System::random(1)) {
+		case 0:
+			windRow++;
+			break;
+        case 1:
+			windRow--;
+			break;
+		}
+
+	} else {
+		windRow = 3;
+	}
+	zone->setWeatherWindX(windDirection[windRow][0]);
+    zone->setWeatherWindY(windDirection[windRow][1]);
+}
+
+void PlanetManagerImplementation::weatherUpdatePlayers() {
+    bool serverLoading = zone->getZoneServer()->isServerLoading();
+    if (serverLoading)
+    	return;
+
+    playerManager = server->getPlayerManager();
+    if (playerManager == NULL)
+    	return;
+
+    playerMap = playerManager->getPlayerMap();
+    if (playerMap == NULL)
+    	return;
+
+    try {
+    	playerMap->lock();
+    	playerMap->resetIterator(false);
+    	Player* player;
+
+    	while (playerMap->hasNext(false)) {
+    		player = playerMap->next(false);
+
+    		if (player != NULL) {
+    			playerMap->unlock();
+
+    			try {
+    				player->wlock();
+
+    				int playerZone = player->getZoneIndex();
+
+    				if (playerZone == zone->getZoneID() && player->isOnline() && !player->isLoading()) {
+    					player->updateWeather();
+    				}
+
+    				player->unlock();
+
+    			} catch (...) {
+    				player->unlock();
+    			}
+
+    			playerMap->lock();
+    		}
+    	}
+
+    	playerMap->unlock();
+
+    } catch (...) {
+    	error("unreported exception caught in PlanetManagerImplementation::updatePlayerWeather()");
+    	playerMap->unlock();
+    }
 }

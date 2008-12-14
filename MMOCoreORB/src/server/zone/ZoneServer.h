@@ -117,6 +117,8 @@ public:
 
 	bool isServerOffline();
 
+	bool isServerLoading();
+
 	int getServerState();
 
 	int getConnectionCount();
@@ -234,6 +236,8 @@ public:
 	bool isServerOnline();
 
 	bool isServerOffline();
+
+	bool isServerLoading();
 
 	int getServerState();
 

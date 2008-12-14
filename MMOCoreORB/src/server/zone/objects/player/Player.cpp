@@ -4502,12 +4502,24 @@ void Player::delFactionPoints(Player* player, unsigned int amount) {
 		((PlayerImplementation*) _impl)->delFactionPoints(player, amount);
 }
 
-void Player::addSuiBoxChoice(String& choice) {
+void Player::updateWeather() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 353);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->updateWeather();
+}
+
+void Player::addSuiBoxChoice(String& choice) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 354);
 		method.addAsciiParameter(choice);
 
 		method.executeWithVoidReturn();
@@ -4520,7 +4532,7 @@ void Player::removeLastSuiBoxChoice() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 354);
+		DistributedMethod method(this, 355);
 
 		method.executeWithVoidReturn();
 	} else
@@ -4532,7 +4544,7 @@ void Player::setSuiBoxChoices(SuiListBoxVector* choicesList) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 355);
+		DistributedMethod method(this, 356);
 		method.addObjectParameter(choicesList);
 
 		method.executeWithVoidReturn();
@@ -4545,7 +4557,7 @@ SuiListBoxVector* Player::getSuiBoxChoices() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 356);
+		DistributedMethod method(this, 357);
 
 		return (SuiListBoxVector*) method.executeWithObjectReturn();
 	} else
@@ -4557,7 +4569,7 @@ void Player::clearSuiBoxChoices() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 357);
+		DistributedMethod method(this, 358);
 
 		method.executeWithVoidReturn();
 	} else
@@ -4569,7 +4581,7 @@ void Player::setResourceDeedID(unsigned long long objectID) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 358);
+		DistributedMethod method(this, 359);
 		method.addUnsignedLongParameter(objectID);
 
 		method.executeWithVoidReturn();
@@ -4582,7 +4594,7 @@ unsigned long long Player::getResourceDeedID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 359);
+		DistributedMethod method(this, 360);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -5642,24 +5654,27 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		delFactionPoints((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 353:
-		addSuiBoxChoice(inv->getAsciiParameter(_param0_addSuiBoxChoice__String_));
+		updateWeather();
 		break;
 	case 354:
-		removeLastSuiBoxChoice();
+		addSuiBoxChoice(inv->getAsciiParameter(_param0_addSuiBoxChoice__String_));
 		break;
 	case 355:
-		setSuiBoxChoices((SuiListBoxVector*) inv->getObjectParameter());
+		removeLastSuiBoxChoice();
 		break;
 	case 356:
-		resp->insertLong(getSuiBoxChoices()->_getObjectID());
+		setSuiBoxChoices((SuiListBoxVector*) inv->getObjectParameter());
 		break;
 	case 357:
-		clearSuiBoxChoices();
+		resp->insertLong(getSuiBoxChoices()->_getObjectID());
 		break;
 	case 358:
-		setResourceDeedID(inv->getUnsignedLongParameter());
+		clearSuiBoxChoices();
 		break;
 	case 359:
+		setResourceDeedID(inv->getUnsignedLongParameter());
+		break;
+	case 360:
 		resp->insertLong(getResourceDeedID());
 		break;
 	default:
@@ -7055,6 +7070,10 @@ unsigned int PlayerAdapter::getMaxFactionPoints(String& faction) {
 
 void PlayerAdapter::delFactionPoints(Player* player, unsigned int amount) {
 	return ((PlayerImplementation*) impl)->delFactionPoints(player, amount);
+}
+
+void PlayerAdapter::updateWeather() {
+	return ((PlayerImplementation*) impl)->updateWeather();
 }
 
 void PlayerAdapter::addSuiBoxChoice(String& choice) {

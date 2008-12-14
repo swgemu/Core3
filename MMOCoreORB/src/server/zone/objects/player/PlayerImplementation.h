@@ -1681,6 +1681,8 @@ public:
 
 	void delFactionPoints(Player * player, uint32 amount);
 
+	void updateWeather();
+
 	friend class PlayerManager;
 	friend class ProfessionManager;
 	friend class SkillManager;

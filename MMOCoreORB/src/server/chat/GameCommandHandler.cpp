@@ -117,11 +117,7 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("kickArea", DEVELOPER,
 			"Disconnects all players in a certain range.",
 			"Usage: @kickArea [distance]",
-			&kickArea);
-	/*gmCommands->addCommand("printRoomTree", DEVELOPER,
-			"Prints the room tree.",
-			"Usage: @printRoomTree",
-			&printRoomTree);*/
+			&kickArea);	
 	gmCommands->addCommand("banUser", PRIVILEGED,
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <name> <ban time in minutes> <reason>",
@@ -156,8 +152,16 @@ void GameCommandHandler::init() {
 			&users);
 	gmCommands->addCommand("setWeather", CSREVENTS,
 			"Changes the weather conditions on the planet.",
-			"Usage: @setWeather <1-5>",
+			"Usage: @setWeather <0-4>",
 			&setWeather);
+	gmCommands->addCommand("enableWeather", DEVELOPER,
+			"Turn on weather randomization for the current planet.",
+			"Usage: @enableWeather",
+			&enableWeather);
+	gmCommands->addCommand("disableWeather", DEVELOPER,
+			"Turn off weather randomization for the current planet.",
+			"Usage: @disableWeather",
+			&disableWeather);
 	gmCommands->addCommand("ticketPurchase", DEVELOPER,
 			"Gives you a travel ticket.",
 			"Usage: @ticketPurchase <planet> <city>",
@@ -213,19 +217,7 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("spice", ALL,
 			"Gives your player a certain spice.",
 			"Usage: @spice <spice>",
-			&spice);
-	/*gmCommands->addCommand("dbStats", DEVELOPER,
-			"Prints various database stats.",
-			"Usage: @dbStats",
-			&dbStats);
-	gmCommands->addCommand("dbShowDeleted", DEVELOPER,
-			"Prints deleted items from the database.",
-			"Usage: @dbShowDeleted",
-			&dbShowDeleted);
-	gmCommands->addCommand("dbPurge", DEVELOPER,
-			"Purges deleted items from the database.",
-			"Usage: @dbPurge",
-			&dbPurge);*/
+			&spice);	
 	gmCommands->addCommand("getDirection", STAFF,
 			"Prints out your direction or the direction of a targeted object.",
 			"Usage: @getDirection",
@@ -237,12 +229,7 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("getLocation", ALL,
 			"Gives full detailsofyour location.",
 			"Usage: @getLocation",
-			&getLocation);
-	/* Uncomment for use on DEV servers
-	gmCommands->addCommand("getCords", DEVELOPER,
-			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
-			"Usage: @getCords <nameOfCreatureFile>",
-			&getCords); */
+			&getLocation);	
 	gmCommands->addCommand("giveItemTemp", DEVELOPER,
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
@@ -295,39 +282,33 @@ void GameCommandHandler::init() {
 			"Returns a list of characters a player has registrated with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
-
 	gmCommands->addCommand("toggleCombat", DEVELOPER,
-				"Enables/Disables combat.",
-				"USAGE: @toggleCombat",
-				&toggleCombat);
-
+			"Enables/Disables combat.",
+			"USAGE: @toggleCombat",
+			&toggleCombat);
 	gmCommands->addCommand("lockServer", DEVELOPER,
-				"Locks the server for intern testing.",
-				"USAGE: @lockServer",
-				&lockServer);
-	gmCommands->addCommand("unlockServer", DEVELOPER,
-				"Unlocks the server for public testing.",
-				"USAGE: @lockServer",
-				&unlockServer);
-
+			"Locks the server for intern testing.",
+			"USAGE: @lockServer",
+			&lockServer);	gmCommands->addCommand("unlockServer", DEVELOPER,
+			"Unlocks the server for public testing.",
+			"USAGE: @lockServer",
+			&unlockServer);
 	gmCommands->addCommand("sendp", DEVELOPER,
 			"Send Packet Test.",
 			"Usage: @sendp",
 			&sendp);
-
 	gmCommands->addCommand("requestStartingLocations", ALL,
-				"Resends the Starting Locations packet in case you accidentally close the window.",
-				"Usage: @requestStartingLocations",
-				&requestStartingLocations);
-
+			"Resends the Starting Locations packet in case you accidentally close the window.",
+			"Usage: @requestStartingLocations",
+			&requestStartingLocations);
 	gmCommands->addCommand("help", ALL,
-				"Launch a web browser to the SWGEmu Support site.",
-				"Usage: @help",
-				&help);
+			"Launch a web browser to the SWGEmu Support site.",
+			"Usage: @help",
+			&help);
 	gmCommands->addCommand("openInventory", PRIVILEGED,
-				"Open a players (target) inventory.",
-				"Usage: @openInventory (with a player as the current target)",
-				&openInventory);
+			"Open a players (target) inventory.",
+			"Usage: @openInventory (with a player as the current target)",
+			&openInventory);
 	//Temporary for CSRs as long as structures and cell permissions not finally in
 	gmCommands->addCommand("poofObject", PRIVILEGED,
 			"Destroys an object finally.",
@@ -338,31 +319,56 @@ void GameCommandHandler::init() {
 			"Shows the characters name who dropped the current target (item).",
 			"USAGE: @whoDroppedThis <target>",
 			&whoDroppedThis);
-
 	gmCommands->addCommand("freezePlayer", PRIVILEGED,
-					"Freezes a player to prevent movement.",
-					"Usage: @freezePlayer name.",
-					&freezePlayer);
-
+			"Freezes a player to prevent movement.",
+			"Usage: @freezePlayer name.",
+			&freezePlayer);
 	gmCommands->addCommand("unfreezePlayer", PRIVILEGED,
-						"Freezes a player to prevent movement.",
-						"Usage: @unfreezePlayer name.",
-						&unfreezePlayer);
-
-	/*gmCommands->addCommand("changeTemplate", PRIVILEGED,
-					"Changes the objects template. Useful for CSR Events.",
-					"Usage: @changeTemplate newtemplate.",
-					&changeTemplate);*/
-
+			"Freezes a player to prevent movement.",
+			"Usage: @unfreezePlayer name.",
+			&unfreezePlayer);
+	/**/
 	gmCommands->addCommand("setSpeed", PRIVILEGED,
-					"Sets a players speed/acceleration.",
-					"Usage: @setSpeed speed acceleration.",
-					&setSpeed);
-
+			"Sets a players speed/acceleration.",
+			"Usage: @setSpeed speed acceleration.",
+			&setSpeed);
 	gmCommands->addCommand("setHeight", PRIVILEGED,
-					"Sets the height of the object.",
-					"Usage: @setHeight number.",
-					&setHeight);
+			"Sets the height of the object.",
+			"Usage: @setHeight number.",
+			&setHeight);		
+	gmCommands->addCommand("warpAreaToWP", PRIVILEGED,
+			"Warps all players in a set radius to a specific waypoint",
+			"Usage: @warpAreaToWP <waypointName> <radius>",
+			&warpAreaToWP);
+	/* Disabled Commands
+		
+	Uncomment for use on DEV servers
+	gmCommands->addCommand("getCords", DEVELOPER,
+			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
+			"Usage: @getCords <nameOfCreatureFile>",
+			&getCords);
+	gmCommands->addCommand("changeTemplate", PRIVILEGED,
+			"Changes the objects template. Useful for CSR Events.",
+			"Usage: @changeTemplate newtemplate.",
+			&changeTemplate);
+	/*gmCommands->addCommand("dbStats", DEVELOPER,
+			"Prints various database stats.",
+			"Usage: @dbStats",
+			&dbStats);
+	gmCommands->addCommand("dbShowDeleted", DEVELOPER,
+			"Prints deleted items from the database.",
+			"Usage: @dbShowDeleted",
+			&dbShowDeleted);
+	gmCommands->addCommand("dbPurge", DEVELOPER,
+			"Purges deleted items from the database.",
+			"Usage: @dbPurge",
+			&dbPurge);
+	gmCommands->addCommand("printRoomTree", DEVELOPER,
+			"Prints the room tree.",
+			"Usage: @printRoomTree",
+			&printRoomTree);		
+		
+	Disabled Commands */ 
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -1286,10 +1292,111 @@ void GameCommandHandler::users(StringTokenizer tokenizer, Player* player) {
 }
 
 void GameCommandHandler::setWeather(StringTokenizer tokenizer, Player* player) {
-	int weatherid = tokenizer.getIntToken();
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+ 
+	PlanetManager* planet = zone->getPlanetManager();
+	if (planet == NULL)
+		return;
 
-	ServerWeatherMessage* swm = new ServerWeatherMessage(weatherid);
-	player->broadcastMessage(swm);
+	int weatherID = tokenizer.getIntToken();
+
+	if (zone->getZoneID() > 9) {
+		player->sendSystemMessage("You can't change the weather here.");
+		return;
+	}
+
+	if (weatherID >= 0 && weatherID < 5) {
+		try {
+			player->unlock();
+
+			zone->setWeatherID(weatherID);
+			planet->weatherUpdatePlayers();
+			player->sendSystemMessage("Weather has been set.");
+
+			player->wlock();
+
+		} catch (...) {
+			player->wlock();
+			System::out << "Unreported Exception in GameCommandHandler::setWeather()\n";
+		}
+
+	} else {
+		player->sendSystemMessage("Weather ID must be 0-4.");
+		return;
+	}
+}
+
+void GameCommandHandler::enableWeather(StringTokenizer tokenizer, Player * player) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	PlanetManager* planet = zone->getPlanetManager();
+	if (planet == NULL)
+		return;
+
+	if (zone->getZoneID() > 9) {
+		player->sendSystemMessage("You can't change the weather here.");
+		return;
+	}
+
+	if (zone->isWeatherEnabled()) {
+		player->sendSystemMessage("Weather on this planet is already enabled.");
+		return;
+
+	} else {
+		try {
+			player->unlock();
+
+			zone->setWeatherEnabled(true);
+			planet->weatherChange();
+			player->sendSystemMessage("Weather on this planet is now enabled.");
+
+			player->wlock();
+
+		} catch (...) {
+			player->wlock();
+			System::out << "Unreported Exception in GameCommandHandler::enableWeather()\n";
+		}
+	}
+}
+
+void GameCommandHandler::disableWeather(StringTokenizer tokenizer, Player * player) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	PlanetManager* planet = zone->getPlanetManager();
+	if (planet == NULL)
+		return;
+
+	if (zone->getZoneID() > 9) {
+		player->sendSystemMessage("You can't change the weather here.");
+		return;
+	}
+
+	if (!zone->isWeatherEnabled()) {
+		player->sendSystemMessage("Weather on this planet is already disabled.");
+		return;
+
+	} else {
+		try {
+			player->unlock();
+
+			zone->setWeatherEnabled(false);
+			zone->setWeatherID(0);
+			planet->weatherUpdatePlayers();
+			player->sendSystemMessage("Weather on this planet is now disabled.");
+
+			player->wlock();
+
+		} catch (...) {
+			player->wlock();
+			System::out << "Unreported Exception in GameCommandHandler::disableWeather()\n";
+		}
+	}
 }
 
 void GameCommandHandler::ticketPurchase(StringTokenizer tokenizer, Player* player) {
@@ -2973,4 +3080,91 @@ void GameCommandHandler::setHeight(StringTokenizer tokenizer, Player* player) {
 									targetObject->unlock();
 							}
 
+}
+
+void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player) {
+	float x,y;
+	String wpName;
+
+	if (!tokenizer.hasMoreTokens())
+		return;
+	tokenizer.getStringToken(wpName);
+
+	if (!tokenizer.hasMoreTokens())
+		return;
+		int meter = tokenizer.getIntToken();
+
+	WaypointObject* waypoint = player->searchWaypoint(player, wpName,2);
+
+	if (waypoint != NULL) {
+		x = waypoint->getPositionX();
+		y = waypoint->getPositionY();
+
+		String planetName = waypoint->getPlanetName();
+		int planet = player->getZoneIndex();
+
+		if (planetName == "corellia")
+			planet = 0;
+		else if (planetName == "dantooine")
+			planet = 1;
+		else if (planetName == "dathomir")
+			planet = 2;
+		else if (planetName == "endor")
+			planet = 3;
+		else if (planetName == "lok")
+			planet = 4;
+		else if (planetName == "naboo")
+			planet = 5;
+		else if (planetName == "rori")
+			planet = 6;
+		else if (planetName == "talus")
+			planet = 7;
+		else if (planetName == "tatooine")
+			planet = 8;
+		else if (planetName == "yavin4")
+			planet = 9;
+
+	String name = player->getFirstName();
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	try {
+		zone->lock();
+
+		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+			SceneObject
+					* obj =
+							(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
+									i))->_getStub());
+
+			if (obj->isPlayer()) {
+				Player* otherPlayer = (Player*) obj;
+				String otherName = otherPlayer->getFirstName();
+
+				if (otherName != name && player->isInRange(otherPlayer, meter)
+						&& (otherPlayer->getAdminLevel()
+								== PlayerImplementation::NORMAL)) {
+					
+
+					try {
+						if (planet != otherPlayer->getZoneIndex())
+							
+
+						otherPlayer->switchMap(planet);
+						otherPlayer->doWarp(x, y);
+						zone->unlock();
+						player->sendSystemMessage("player \'" + otherName
+								+ "\' has been warped.");
+					} catch (...) {
+						player->sendSystemMessage("unable to warp player \'"
+								+ otherName + "\'");
+					}
+				}
+			} 
+			}
+	}catch (...)
+	{}
+}
 }

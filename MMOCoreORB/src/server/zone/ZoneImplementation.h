@@ -82,8 +82,11 @@ class ZoneImplementation : public ZoneServant, public QuadTree {
 
 	Time galacticTime;
 
-	uint32 weatherId;
-	float weatherCloudX, weatherCloudY;
+	//Weather
+	float weatherWindX; //1.0 = east, -1.0 = west
+	float weatherWindY; //1.0 = north, -1.0 = south
+	uint32 weatherID;
+	bool weatherEnabled;
 
 public:
 	ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplementation* srv, int id);
@@ -130,16 +133,50 @@ public:
 		return (uint64) galacticTime.miliDifference() / 1000;
 	}
 
-	inline uint32 getWeatherId() {
-		return weatherId;
+	inline uint32 getWeatherID() {
+		return weatherID;
 	}
 
-	inline float getWeatherCloudX() {
-		return weatherCloudX;
+	inline void setWeatherID(uint32 value) {
+		weatherID = value;
 	}
 
-	inline float getWeatherCloudY() {
-		return weatherCloudY;
+	inline void changeWeatherID(int value) {
+		if (weatherID == 0 && value < 0) {
+			weatherID = 0;
+			return;
+		}
+
+		weatherID += value;
+
+		if (weatherID > 4) {
+			weatherID = 4;
+			return;
+		}
+	}
+
+	inline bool isWeatherEnabled() {
+		return weatherEnabled;
+	}
+
+	inline void setWeatherEnabled(bool value) {
+		weatherEnabled = value;
+	}
+
+	inline void setWeatherWindX(float value) {
+		weatherWindX = value;
+	}
+
+	inline void setWeatherWindY(float value) {
+		weatherWindY = value;
+	}
+
+	inline float getWeatherWindX() {
+		return weatherWindX;
+	}
+
+	inline float getWeatherWindY() {
+		return weatherWindY;
 	}
 
 };

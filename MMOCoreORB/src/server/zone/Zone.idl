@@ -101,9 +101,21 @@ interface Zone {
 	
 	unsigned long getGalacticTime();
 	
-	unsigned int getWeatherId();
+	unsigned int getWeatherID();  																																
 	
-	float getWeatherCloudX();
+	void setWeatherID(unsigned int value);
 	
-	float getWeatherCloudY();
+	void changeWeatherID(int value);
+	
+    boolean isWeatherEnabled();
+
+	void setWeatherEnabled(boolean value);
+	
+	void setWeatherWindX(float value);
+
+	void setWeatherWindY(float value);
+
+	float getWeatherWindX();
+	
+	float getWeatherWindY();
 }

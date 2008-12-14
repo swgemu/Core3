@@ -42,40 +42,26 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SERVERWEATHERMESSAGE_H_
-#define SERVERWEATHERMESSAGE_H_
+#ifndef WEATHERINCREASEEVENT_H_
+#define WEATHERINCREASEEVENT_H_
 
-#include "engine/engine.h"
+#include "../PlanetManagerImplementation.h"
 
-#include "../../Zone.h"
+class WeatherIncreaseEvent : public Event {
 
-class ServerWeatherMessage : public BaseMessage {
+	PlanetManagerImplementation* planet;
+
 public:
-	ServerWeatherMessage(Zone* zone) : BaseMessage() {
-
-		insertShort(0x03);
-		insertInt(0x486356EA);
-		insertInt(zone->getWeatherID());
-
-		insertFloat(zone->getWeatherWindX());
-		insertFloat(0.0f);
-		insertFloat(zone->getWeatherWindY());
-
+	WeatherIncreaseEvent(PlanetManagerImplementation* plt) : Event() {
+		planet = plt;
+		setKeeping(true);
 	}
 
-    //for setting custom weather by @ command
-	/*ServerWeatherMessage(int weatherid) : BaseMessage() {
-		insertShort(0x03);
-		insertInt(0x486356EA);
-
-		insertInt(weatherid);
-		insertFloat(0.0f);
-		insertFloat(0.0f);
-		insertFloat(0.0f);
-
-
-	}*/
+	bool activate() {
+		planet->weatherTransition(1);
+		return true;
+	}
 
 };
 
-#endif /*SERVERWEATHERMESSAGE_H_*/
+#endif /*WEATHERINCREASEEVENT_H_*/

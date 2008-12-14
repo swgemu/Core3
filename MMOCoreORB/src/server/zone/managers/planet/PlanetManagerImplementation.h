@@ -60,6 +60,9 @@ which carries forward this exception.
 #include "../creature/CreatureManager.h"
 #include "../structure/StructureManager.h"
 
+#include "../player/PlayerManager.h"
+#include "../player/PlayerMap.h"
+
 #include "PlanetManager.h"
 
 #include "NoBuildAreaMap.h"
@@ -68,6 +71,9 @@ which carries forward this exception.
 class ShuttleTakeOffEvent;
 class ShuttleLandingEvent;
 
+class WeatherChangeEvent;
+class WeatherIncreaseEvent;
+class WeatherDecreaseEvent;
 
 class Zone;
 class CreatureManager;
@@ -85,6 +91,8 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 
 	uint64 nextStaticObjectID;
 
+	uint32 targetWeatherID;
+
 	ShuttleMap* shuttleMap;
 
 	TicketCollectorMap* ticketCollectorMap;
@@ -96,6 +104,10 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	ShuttleLandingEvent* shuttleLandingEvent;
 	ShuttleTakeOffEvent* shuttleTakeOffEvent;
 
+	WeatherChangeEvent* weatherChangeEvent;
+    WeatherIncreaseEvent* weatherIncreaseEvent;
+    WeatherDecreaseEvent* weatherDecreaseEvent;
+
 	VectorMap<uint64, TangibleObject*> staticTangibleObjectMap;
 
 	CreatureManager* creatureManager;
@@ -105,6 +117,14 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	NoBuildAreaMap * noBuildAreaMap;
 
 	static const uint32 travelFare[10][10];
+
+	static const float windDirection[8][2];
+
+	uint8 windRow;
+
+	PlayerManager* playerManager;
+    PlayerMap* playerMap;
+
 
 public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
@@ -122,6 +142,11 @@ public:
 
 	bool isNoBuildArea(float x, float y);
 	void addNoBuildArea(float x, float y, float radius);
+
+	void weatherChange();
+	void weatherTransition(int direction);
+	void weatherWindChange();
+	void weatherUpdatePlayers();
 
 private:
 	void loadStaticPlanetObjects();

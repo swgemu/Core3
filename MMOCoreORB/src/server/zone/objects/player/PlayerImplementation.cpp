@@ -1728,6 +1728,7 @@ void PlayerImplementation::notifySceneReady() {
 
 	info("scene ready");
 	setOnline();
+    updateWeather();
 }
 
 void PlayerImplementation::loadGuildChat() {
@@ -4759,6 +4760,11 @@ void PlayerImplementation::delFactionPoints(Player * player, uint32 amount) {
 		error("unreported exception caught in PlayerImplementation::delFactionPoints(Player * player, uint32 amount)");
 		player->unlock();
 	}
+}
+
+void PlayerImplementation::updateWeather() {
+    ServerWeatherMessage* swm = new ServerWeatherMessage(zone);
+    sendMessage(swm);
 }
 
 void PlayerImplementation::addSuiBoxChoice(String& choice){

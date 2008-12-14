@@ -652,6 +652,8 @@ interface Player implements CreatureObject {
 	unsigned int getMaxFactionPoints(String faction);
 
 	void delFactionPoints(Player player, unsigned int amount);
+	
+	void updateWeather(); 																								
 
 	void addSuiBoxChoice(String choice);
 

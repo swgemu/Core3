@@ -69,6 +69,12 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 
 	creatureManager = NULL;
 	planetManager = NULL;
+
+	//Weather
+	weatherID = 0;
+	weatherWindX = 1.0f;
+	weatherWindY = -1.0f;
+	weatherEnabled = true;
 }
 
 void ZoneImplementation::startManagers() {
