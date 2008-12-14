@@ -728,59 +728,41 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
  * 		Inputs are the attacker, defender, the amount of damage
  * 		and an integer specifying where the target has been hit
  * 		The values are:
- * 			1,2 - Right arm
- * 			3,4 - Left arm
- * 			5,6 - Body
- * 			7 -	Left leg
- * 			8 - Right leg
- * 			9 - Head
+ * 			0 - Chest
+ * 			1 - Hands
+ * 			2,3 - Left arm
+ * 			4,5 - Right arm
+ * 			6 -	Legs
+ * 			7 - Feet
+ * 			8 - Head
  * 		Returns the amount of damage absorbed by armour.
  */
 int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill) {
 
 	Weapon* weapon = attacker->getWeapon();
-	Armor* armor = target->getArmor(part);
-
 
 	int reduction = 0;
 
-	/* Design philosophy
-	 *
-	 * Armour will be implemented in three 'layers'
-	 * 	1) Will be for external armour that protects the whole body this will include PSGs and Force Armour
-	 *  2) Normal armour
-	 *  3) Inherent armour this includes TK/Jedi toughness and all creature armour.
-	 *
-	 *  Armour is cumulative not additive.  This means the affect of each layer is calculated then the remaining damge
-	 *  is passed through to the next layer.
-	 *
-	 */
-
-	/* TODO: reintroduce later in testing
-	int APARreduction = 0;
-
+	/*
+	cout << "Target is ";
 	if (target->isPlayer())
-		reduction = doArmorResists(armor, weapon, damage);
-	else if (weapon != NULL)
-		reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
+		cout << "player" << endl;
 	else
-		reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
-
-
-	if (reduction > 0)
-			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
-	else
-			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,false);
-
-	damage = damage - reduction - APARreduction;
-	 */
+		cout << "creature" << endl;
+	cout << "Working out reduction for location " << part << endl;
+	*/
+	reduction = getArmorReduction(weapon, target, damage, part);
+	//cout << "Armour reduction (location " << part << ") = " << reduction << endl << endl;
+	damage -= reduction;
+	if (damage < 0)
+		damage = 0;
 
 	target->addDamage(attacker, damage);
 	target->addDamageDone(attacker, damage, askill->getSkillName());
 
-	if (part < 7)
+	if (part < 6)
 		target->takeHealthDamage(damage);
-	else if (part < 9)
+	else if (part < 8)
 		target->takeActionDamage(damage);
 	else
 		target->takeMindDamage(damage);
@@ -788,35 +770,38 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 	if (attacker->isPlayer()) {
 		ShowFlyText* fly;
 		switch(part) {
-		case 9:
+		case 8:
 			fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);
+			((Player*)attacker)->sendMessage(fly);
+			break;
+		case 4:
+		case 5:
+			fly = new ShowFlyText(target, "combat_effects", "hit_rarm", 0xFF, 0, 0);
 			((Player*)attacker)->sendMessage(fly);
 			break;
 		case 1:
 		case 2:
-			fly = new ShowFlyText(target, "combat_effects", "hit_rarm", 0xFF, 0, 0);
-			((Player*)attacker)->sendMessage(fly);
-			break;
 		case 3:
-		case 4:
 			fly = new ShowFlyText(target, "combat_effects", "hit_larm", 0xFF, 0, 0);
 			((Player*)attacker)->sendMessage(fly);
 			break;
-		case 5:
-		case 6:
+		case 0:
 			fly = new ShowFlyText(target, "combat_effects", "hit_body", 0xFF, 0, 0);
 			((Player*)attacker)->sendMessage(fly);
 			break;
+		case 6:
 		case 7:
-			fly = new ShowFlyText(target, "combat_effects", "hit_lleg", 0, 0xFF, 0);
-			((Player*)attacker)->sendMessage(fly);
-			break;
-		case 8:
-			fly = new ShowFlyText(target, "combat_effects", "hit_rleg", 0, 0xFF, 0);
+			if (System::random(1) == 0)
+				fly = new ShowFlyText(target, "combat_effects", "hit_lleg", 0, 0xFF, 0);
+			else
+				fly = new ShowFlyText(target, "combat_effects", "hit_rleg", 0, 0xFF, 0);
 			((Player*)attacker)->sendMessage(fly);
 			break;
 		}
 	}
+
+	if (target->isPlayer() && reduction > 0)  // if total damage reduction is positive, tell the player what their expensive armor did for them
+		target->sendCombatSpam(target,(TangibleObject*)((Player*)target)->getPlayerArmor(part), reduction, "armor_damaged", false);
 
 	float woundsRatio = 5;
 
@@ -837,6 +822,10 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 			target->sendCombatSpam(attacker, NULL, 1, "wounded", false);
 			target->sendCombatSpam(attacker, NULL, 1, "shock_wound", false);
 		}
+
+		Armor* armor = NULL;
+		if (target->isPlayer())
+			armor = ((Player*)target)->getPlayerArmor(part);
 		if (armor != NULL) {
 			armor->setConditionDamage(armor->getConditionDamage() + 1);
 			armor->setUpdated(true);
@@ -847,6 +836,108 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 			weapon->setUpdated(true);
 		}
 	}
+
+	return reduction;
+}
+
+int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int damage, int location) {
+	float currentDamage = damage;
+	int reduction;
+
+	// Stage one : External full coverage.  PSG and Force Armour
+	if (target->isPlayer() && ((Player*)target)->getPlayerArmor(13) != NULL) {
+		// Do the reduction for PSG
+	}
+
+	// Stage two : Regular armour
+	Armor* armor = NULL;
+
+	//cout << "Getting armour for location " << location << endl;
+
+	if (target->isPlayer()) {
+		armor = ((Player*)target)->getPlayerArmor(location);
+		if (armor != NULL)
+			if (!armor->isArmor()) {
+				cout << "Returned item is not armor, location " << location << endl;
+				armor == NULL;
+			}
+		/*
+			else
+				cout << "Returned armour is " << armor->getName().c_str().c_str() <<
+
+					" for location " << location << endl;
+		*/
+		}
+
+	int damageType = WeaponImplementation::KINETIC;
+	int armorPiercing = 1;
+	if (weapon != NULL) {
+		damageType = weapon->getDamageType();
+		armorPiercing = weapon->getArmorPiercing();
+	}
+
+	int armorResistance = 0;
+	if (armor != NULL)
+		armorResistance = armor->getRating() / 16;
+	else if (target->isNonPlayerCreature())
+		armorResistance = ((Creature*)target)->getArmor();
+	// cout << "Armour resistance type " << armorResistance << endl;
+
+	if (armorPiercing > armorResistance)
+		for (int i = armorResistance; i < armorPiercing; i++)
+			currentDamage *= 1.25f;
+	else if (armorPiercing < armorResistance)
+		for (int i = armorPiercing; i < armorResistance; i++)
+			currentDamage *= 0.5;
+	// cout << "Armour piercing type " << armorPiercing << endl;
+
+	float resist = 0;
+	if (armor != NULL) {
+		switch (damageType) {
+		case WeaponImplementation::KINETIC:
+			resist = armor->getKinetic();
+			break;
+		case WeaponImplementation::ENERGY:
+			resist = armor->getEnergy();
+			break;
+		case WeaponImplementation::ELECTRICITY:
+			resist = armor->getElectricity();
+			break;
+		case WeaponImplementation::STUN:
+			resist = armor->getStun();
+			break;
+		case WeaponImplementation::BLAST:
+			resist = armor->getBlast();
+			break;
+		case WeaponImplementation::HEAT:
+			resist = armor->getHeat();
+			break;
+		case WeaponImplementation::COLD:
+			resist = armor->getCold();
+			break;
+		case WeaponImplementation::ACID:
+			resist = armor->getAcid();
+			break;
+		case WeaponImplementation::LIGHTSABER:
+			resist = armor->getLightSaber();
+			break;
+		case WeaponImplementation::FORCE:
+			resist = 0;
+			break;
+		}
+	} else if (target->isNonPlayerCreature()) {
+			resist = ((Creature*)target)->getArmorResist(damageType);
+	}
+	// cout << "Armor resistance to type " << damageType << " is " << resist << "%" << endl;
+
+	currentDamage -= currentDamage * resist / 100.0f;
+
+	// Stage three : Toughness
+
+
+	// Final outcome may be negative
+	reduction = damage - (int)currentDamage;
+
 	return reduction;
 }
 
@@ -962,14 +1053,6 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 		weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
 	else
 		weaponSpeed = (1.0f - ((float)speedMod / 100.0f)) * tskill->getSpeedRatio() * 2.0f;
-
-	// New exponential equation
-	/*
-	if (weapon != NULL)
-		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / 17500.0f)) * tskill->getSpeedRatio() * weapon->getAttackSpeed();
-	else
-		weaponSpeed = (1.0f - ((float)(speedMod*speedMod) / 17500.0f)) * tskill->getSpeedRatio() * 2.0f;
-	*/
 
 	return MAX(weaponSpeed, 1.0f);
 }
@@ -1247,10 +1330,8 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 				maxDamage = weapon->getMaxDamage() / 5;
 			}
 		} else {
-			maxDamage = (float)creature->getSkillMod("unarmed_damage");
-			if (maxDamage < 25)
-				maxDamage = 25;
-			minDamage = maxDamage / 2;
+			minDamage = (float)creature->getSkillMod("unarmed_damage");
+			maxDamage = minDamage + 15.0;
 		}
 
 		CreatureObject* targetCreature = NULL;
@@ -1311,20 +1392,35 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 					for (int i = 0; i < poolsAffected; i++) {
 						int pool = System::random(totalPercentage);
 
+						/* Body parts are
+						 * 	0 - Chest
+						 * 	1 - Hands
+						 * 	2,3 - Left arm
+						 * 	4,5 - Right arm
+						 * 	6 -	Legs
+						 * 	7 - Feet
+						 * 	8 - Head
+						 */
 						int bodyPart = 0;
 						if (pool < skill->healthPoolAttackChance) {
 							healthDamage = individualDamage;
-							bodyPart = System::random(5)+1;
+							if (System::random(1) == 0)  // 50% chance of chest hit
+								bodyPart = 0;
+							else
+								bodyPart = System::random(4)+1;
 							calculateDamageReduction(creature, targetCreature, healthDamage);
 						}
 						else if (pool < skill->healthPoolAttackChance + skill->actionPoolAttackChance) {
 							actionDamage = individualDamage;
-							bodyPart = System::random(1)+7;
+							if (System::random(2) == 0)  // 50% chance of chest hit
+								bodyPart = 7;
+							else
+								bodyPart = 6;
 							calculateDamageReduction(creature, targetCreature, actionDamage);
 						}
 						else {
 							mindDamage = individualDamage;
-							bodyPart = 9;
+							bodyPart = 8;
 							calculateDamageReduction(creature, targetCreature, mindDamage);
 						}
 

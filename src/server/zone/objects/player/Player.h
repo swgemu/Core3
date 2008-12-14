@@ -283,6 +283,8 @@ public:
 
 	void changeArmor(unsigned long long itemid, bool forced);
 
+	Armor* getPlayerArmor(int location);
+
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 
 	void unsetArmorEncumbrance(Armor* armor);
@@ -805,8 +807,6 @@ public:
 
 	void unequipItem(TangibleObject* item);
 
-	Armor* getArmor(int location);
-
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -1055,6 +1055,8 @@ public:
 	void changeWeapon(unsigned long long itemid, bool doUpdate);
 
 	void changeArmor(unsigned long long itemid, bool forced);
+
+	Armor* getPlayerArmor(int location);
 
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 
@@ -1577,8 +1579,6 @@ public:
 	void equipItem(TangibleObject* item);
 
 	void unequipItem(TangibleObject* item);
-
-	Armor* getArmor(int location);
 
 protected:
 	string _param0_queueFlourish__string_long_int_;

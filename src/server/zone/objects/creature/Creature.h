@@ -91,6 +91,10 @@ public:
 
 	unsigned int getRespawnTimer();
 
+	unsigned int getArmor();
+
+	float getArmorResist(int resistType);
+
 	LairObject* getLair();
 
 	bool hasLootCreated();
@@ -106,6 +110,26 @@ public:
 	void setType(int tp);
 
 	void setRespawnTimer(unsigned int seconds);
+
+	void setArmor(unsigned int ar);
+
+	void setKinetic(float kin);
+
+	void setEnergy(float ene);
+
+	void setElectricity(float ele);
+
+	void setStun(float stu);
+
+	void setBlast(float bla);
+
+	void setHeat(float hea);
+
+	void setCold(float col);
+
+	void setAcid(float aci);
+
+	void setLightSaber(float lig);
 
 	void removePlayerFromHarvestList(string& firstName);
 
@@ -205,6 +229,10 @@ public:
 
 	unsigned int getRespawnTimer();
 
+	unsigned int getArmor();
+
+	float getArmorResist(int resistType);
+
 	LairObject* getLair();
 
 	bool hasLootCreated();
@@ -218,6 +246,26 @@ public:
 	void setType(int tp);
 
 	void setRespawnTimer(unsigned int seconds);
+
+	void setArmor(unsigned int ar);
+
+	void setKinetic(float kin);
+
+	void setEnergy(float ene);
+
+	void setElectricity(float ele);
+
+	void setStun(float stu);
+
+	void setBlast(float bla);
+
+	void setHeat(float hea);
+
+	void setCold(float col);
+
+	void setAcid(float aci);
+
+	void setLightSaber(float lig);
 
 	void removePlayerFromHarvestList(string& firstName);
 

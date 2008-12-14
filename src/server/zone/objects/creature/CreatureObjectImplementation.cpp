@@ -190,18 +190,6 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	actionEncumbrance = 0;
 	mindEncumbrance = 0;
 
-	armor = 0;
-
-	kinetic = 0;
-	energy = 0;
-	electricity = 0;
-	stun = 0;
-	blast = 0;
-	heat = 0;
-	cold = 0;
-	acid = 0;
-	lightSaber = 0;
-
 	// ent
 	performanceCounter = 0;
 
@@ -2615,22 +2603,6 @@ Instrument* CreatureObjectImplementation::getInstrument() {
 	return NULL;
 }
 
-Armor* CreatureObjectImplementation::getArmor(int type) {
-	if (inventory == NULL)
-		return NULL;
-
-	for (int i=0; i < inventory->objectsSize(); i++) {
-		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-		if (item->isArmor()) {
-			if (((Armor*) item)->getType() == type && item->isEquipped())
-				return (Armor*) item;
-		}
-	}
-
-	return NULL;
-}
-
 void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
 	if (item->isEquipped() && item->isWeapon()) {
 			item->setContainer(_this, 0x04);
@@ -4517,40 +4489,6 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateClient) {
 
 	broadcastMessage(delta);
 	*/
-}
-
-float CreatureObjectImplementation::getArmorResist(int resistType) {
-	switch (resistType) {
-	case 1:
-		return kinetic - (kinetic * calculateBFRatio());
-
-	case 2:
-		return energy - (energy * calculateBFRatio());
-
-	case 3:
-		return electricity - (electricity * calculateBFRatio());
-
-	case 4:
-		return stun - (stun * calculateBFRatio());
-
-	case 5:
-		return blast - (blast * calculateBFRatio());
-
-	case 6:
-		return heat - (heat * calculateBFRatio());
-
-	case 7:
-		return cold - (cold * calculateBFRatio());
-
-	case 8:
-		return acid - (acid * calculateBFRatio());
-
-	case 9:
-		return lightSaber - (lightSaber * calculateBFRatio());
-
-	default:
-		return 0;
-	}
 }
 
 bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {

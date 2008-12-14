@@ -1716,8 +1716,11 @@ public:
 
 	void teachSkill(string& skillname);
 
-	Armor* getArmor (int location) {
-		return equippedItems->getArmor(location);
+	Armor* getPlayerArmor (int location) {
+		if (location > 14 || location < 0)
+			return NULL;
+		else
+			return equippedItems->getArmor(location);
 	}
 
 	friend class PlayerManager;

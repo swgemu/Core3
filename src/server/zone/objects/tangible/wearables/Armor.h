@@ -133,6 +133,8 @@ public:
 
 	void setMindEncumbrance(int mindEnc);
 
+	void setRating(int rating);
+
 	void setAcid(float resist);
 
 	void setBlast(float resist);
@@ -142,6 +144,8 @@ public:
 	void setElectricity(float resist);
 
 	void setEnergy(float resist);
+
+	void setStun(float resist);
 
 	void setHeat(float resist);
 
@@ -297,6 +301,8 @@ public:
 
 	void setMindEncumbrance(int mindEnc);
 
+	void setRating(int rating);
+
 	void setAcid(float resist);
 
 	void setBlast(float resist);
@@ -306,6 +312,8 @@ public:
 	void setElectricity(float resist);
 
 	void setEnergy(float resist);
+
+	void setStun(float resist);
 
 	void setHeat(float resist);
 

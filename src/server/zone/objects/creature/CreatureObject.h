@@ -355,8 +355,6 @@ public:
 
 	Weapon* getWeapon();
 
-	Armor* getArmor(int type);
-
 	void addSkill(Skill* skill);
 
 	void addSkillMod(const string& name, int mod, bool updateClient = false);
@@ -639,10 +637,6 @@ public:
 
 	unsigned int getWillpowerMax();
 
-	unsigned int getArmor();
-
-	float getArmorResist(int resistType);
-
 	unsigned int getHealthWounds();
 
 	unsigned int getStrengthWounds();
@@ -865,8 +859,6 @@ public:
 
 	void setWillpowerMax(unsigned int willpower);
 
-	void setArmor(unsigned int ar);
-
 	void setHealthWounds(unsigned int wounds);
 
 	void setStrengthWounds(unsigned int wounds);
@@ -928,24 +920,6 @@ public:
 	void setSpeed(float spd);
 
 	void setAcceleration(float acc);
-
-	void setKinetic(float kin);
-
-	void setEnergy(float ene);
-
-	void setElectricity(float ele);
-
-	void setStun(float stu);
-
-	void setBlast(float bla);
-
-	void setHeat(float hea);
-
-	void setCold(float col);
-
-	void setAcid(float aci);
-
-	void setLightSaber(float lig);
 
 	void changeConditionDamage(int amount);
 
@@ -1474,8 +1448,6 @@ public:
 
 	Weapon* getWeapon();
 
-	Armor* getArmor(int type);
-
 	void addSkillMod(const string& name, int mod, bool updateClient);
 
 	int getSkillMod(const string& name);
@@ -1756,10 +1728,6 @@ public:
 
 	unsigned int getWillpowerMax();
 
-	unsigned int getArmor();
-
-	float getArmorResist(int resistType);
-
 	unsigned int getHealthWounds();
 
 	unsigned int getStrengthWounds();
@@ -1982,8 +1950,6 @@ public:
 
 	void setWillpowerMax(unsigned int willpower);
 
-	void setArmor(unsigned int ar);
-
 	void setHealthWounds(unsigned int wounds);
 
 	void setStrengthWounds(unsigned int wounds);
@@ -2045,24 +2011,6 @@ public:
 	void setSpeed(float spd);
 
 	void setAcceleration(float acc);
-
-	void setKinetic(float kin);
-
-	void setEnergy(float ene);
-
-	void setElectricity(float ele);
-
-	void setStun(float stu);
-
-	void setBlast(float bla);
-
-	void setHeat(float hea);
-
-	void setCold(float col);
-
-	void setAcid(float aci);
-
-	void setLightSaber(float lig);
 
 	void changeConditionDamage(int amount);
 

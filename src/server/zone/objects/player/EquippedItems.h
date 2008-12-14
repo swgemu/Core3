@@ -296,9 +296,11 @@ public:
 			weapon = (Weapon*)item;
 			setWeaponSkillMods(weapon);
 			player->setWeaponAccuracy(weapon);
+			player->setWeapon(weapon);
 		} else {
 			instrument = (Instrument*)item;
 			player->setWeaponAccuracy(NULL);
+			player->setWeapon(NULL);
 		}
 
 		player->equipItem(item);
@@ -328,7 +330,15 @@ public:
 	}
 
 	Armor* getArmor (int location) {
-		return (Armor*)clothingLocations[location];
+		if (location > 14 || location < 0) {
+			cout << "Illegal clothing location " << location << endl;
+			return NULL;
+		}
+		if (clothingLocations[location] == NULL || !clothingLocations[location]->isArmor()) {
+			return NULL;
+		} else {
+			return (Armor*)clothingLocations[location];
+		}
 	}
 
 	Weapon* getWeapon () {

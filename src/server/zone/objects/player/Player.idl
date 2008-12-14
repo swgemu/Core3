@@ -258,6 +258,7 @@ interface Player implements CreatureObject {
 	void changeCloth(unsigned long itemid);
 	void changeWeapon(unsigned long itemid, boolean doUpdate);
 	void changeArmor(unsigned long itemid, boolean forced);
+	Armor getPlayerArmor(int location);
 
 	//void setWeaponSkillMods(Weapon weapon);
 	//void setArmorSkillMods(Armor armor);
@@ -672,5 +673,4 @@ interface Player implements CreatureObject {
 	void equipItem(TangibleObject item);
 	void unequipItem(TangibleObject item);
 	
-	Armor getArmor(int location);
 }

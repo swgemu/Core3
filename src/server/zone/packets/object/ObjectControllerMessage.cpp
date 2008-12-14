@@ -844,7 +844,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case (0x5041F83A): // Teach
 		parseTeach(player, pack);
-		break; 
+		break;
 	default:
 		target = pack->parseLong();
 		string actionModifier = "";
@@ -1419,7 +1419,7 @@ void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack,
 
 void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
 	int xpval = 0;
-	
+
 	try {
 		/*player->sendSystemMessage("Image Designer Update");
 		player->info("Image Design Change - Original Packet");
@@ -1564,7 +1564,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					if(commitChanges)
 						customization->updateCustomization(attr, val);
 				}
-				
+
 				if (xpval < 300)
 					xpval = 300;
 			}
@@ -1595,10 +1595,10 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					if(commitChanges)
 						customization->updateCustomization(attr, val);
 				}
-				
+
 				if (xpval < 100)
 					xpval = 100;
-			}	
+			}
 
 			if (target_object != NULL && player != target_object)
 				target_object->unlock();
@@ -1650,7 +1650,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					((Player *)target_object)->sendSystemMessage(msg.str());*/
 
 				}
-				
+
 				if (xpval < 100)
 					xpval = 100;
 			}
@@ -1688,10 +1688,10 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 
 				if(playerManager != NULL)
 					playerManager->updatePlayerBaseHAMToDatabase(player);
-					
+
 				xpval = 2000;
 			}
-			
+
 			// Add Experience
 			string xptype("imagedesigner");
 			if(designer == target) {
@@ -3611,6 +3611,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 
 	SceneObject* object = player->getPlayerItem(target);
 
+	// TODO:  This could be the cause of equipping instead of dropping in cell
 	if (object != NULL) {
 		player->changeCloth(target);
 		return;
@@ -3863,15 +3864,15 @@ void ObjectControllerMessage::parseTeach(Player* player, Message* pack) {
 	Zone* zone = player->getZone();
 	if(zone == NULL)
 		return;
-	
+
 	uint64 targetid = pack->parseLong();
-	
+
 	SceneObject* object = zone->lookupObject(targetid);
 	if (object == NULL) {
 		player->sendSystemMessage("teaching","no_target");
 		return;
 	}
-	
+
 	Player* target = NULL;
 	if (object->isPlayer())
 		target = (Player*)object;
@@ -3879,10 +3880,10 @@ void ObjectControllerMessage::parseTeach(Player* player, Message* pack) {
 		player->sendSystemMessage("teaching","no_target");
 		return;
 	}
-	
+
 	StfParameter *params = new StfParameter();
 	params->addTT(target->getFirstNameProper());
-	
+
 	if (player == target) {
 		player->sendSystemMessage("teaching","no_teach_self");
 		delete params;
@@ -3904,14 +3905,14 @@ void ObjectControllerMessage::parseTeach(Player* player, Message* pack) {
 		delete params;
 		return;
 	}
-	
+
 	delete params;
-	
+
 	unicode opts;
 	pack->parseUnicode(opts);
-	
+
 	string skillname = opts.c_str().c_str();
-	
+
 	if (skillname.size() <= 0) {
 		player->teachPlayer(target);
 	}

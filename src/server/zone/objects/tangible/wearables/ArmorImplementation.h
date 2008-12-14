@@ -173,7 +173,11 @@ public:
 
 	void setArmorPiece();
 
-	void setArmorType();
+	//void setArmorType();
+
+	void setArmorType(int type) {
+		armorType = type;
+	}
 
 	bool isVunerableTo(string type);
 
