@@ -157,6 +157,8 @@ private:
 	static void muteChat(StringTokenizer tokenizer, Player* player);
 	static void users(StringTokenizer tokenizer, Player* player);
 	static void setWeather(StringTokenizer tokenizer, Player* player);
+	static void enableWeather(StringTokenizer tokenizer, Player* player);
+	static void disableWeather(StringTokenizer tokenizer, Player* player);
 	static void ticketPurchase(StringTokenizer tokenizer, Player* player);
 	static void awardBadge(StringTokenizer tokenizer, Player* player);
 	static void systemMessage(StringTokenizer tokenizer, Player* player);
@@ -207,6 +209,7 @@ private:
 	static void changeTemplate(StringTokenizer tokenizer, Player* player);
 	static void setSpeed(StringTokenizer tokenizer, Player* player);
 	static void setHeight(StringTokenizer tokenizer, Player* player);
+	static void warpAreaToWP(StringTokenizer tokenizer, Player* player);
 
 	void init();
 

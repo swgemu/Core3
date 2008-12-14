@@ -130,6 +130,7 @@ interface ZoneServer {
 	boolean isServerLocked();
 	boolean isServerOnline();
 	boolean isServerOffline();
+	boolean isServerLoading();
 	int getServerState();
 	
 	int getConnectionCount();

@@ -252,6 +252,10 @@ public:
 		return serverState == OFFLINE;
 	}
 
+	inline bool isServerLoading() {
+		return serverState == LOADING;
+	}
+
 	inline int getServerState() {
 		return serverState;
 	}

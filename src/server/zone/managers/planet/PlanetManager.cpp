@@ -228,6 +228,30 @@ void PlanetManager::addNoBuildArea(float x, float y, float radius) {
 		((PlanetManagerImplementation*) _impl)->addNoBuildArea(x, y, radius);
 }
 
+void PlanetManager::weatherUpdatePlayers() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->weatherUpdatePlayers();
+}
+
+void PlanetManager::weatherChange() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->weatherChange();
+}
+
 /*
  *	PlanetManagerAdapter
  */
@@ -283,6 +307,12 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 20:
 		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
+		break;
+	case 21:
+		weatherUpdatePlayers();
+		break;
+	case 22:
+		weatherChange();
 		break;
 	default:
 		return NULL;
@@ -349,6 +379,14 @@ bool PlanetManagerAdapter::isNoBuildArea(bool x, bool y) {
 
 void PlanetManagerAdapter::addNoBuildArea(float x, float y, float radius) {
 	return ((PlanetManagerImplementation*) impl)->addNoBuildArea(x, y, radius);
+}
+
+void PlanetManagerAdapter::weatherUpdatePlayers() {
+	return ((PlanetManagerImplementation*) impl)->weatherUpdatePlayers();
+}
+
+void PlanetManagerAdapter::weatherChange() {
+	return ((PlanetManagerImplementation*) impl)->weatherChange();
 }
 
 /*

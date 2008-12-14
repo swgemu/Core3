@@ -763,6 +763,8 @@ public:
 
 	void delFactionPoints(Player* player, unsigned int amount);
 
+	void updateWeather();
+
 	void addSuiBoxChoice(String& choice);
 
 	void removeLastSuiBoxChoice();
@@ -1502,6 +1504,8 @@ public:
 	unsigned int getMaxFactionPoints(String& faction);
 
 	void delFactionPoints(Player* player, unsigned int amount);
+
+	void updateWeather();
 
 	void addSuiBoxChoice(String& choice);
 

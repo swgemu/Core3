@@ -81,4 +81,7 @@ interface PlanetManager {
 		
 	boolean isNoBuildArea(boolean x, boolean y);
 	void addNoBuildArea(float x, float y, float radius);
+	
+	void weatherUpdatePlayers();
+	void weatherChange();
 }

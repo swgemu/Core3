@@ -55,6 +55,10 @@ public:
 
 	void addNoBuildArea(float x, float y, float radius);
 
+	void weatherUpdatePlayers();
+
+	void weatherChange();
+
 protected:
 	PlanetManager(DummyConstructorParameter* param);
 
@@ -100,6 +104,10 @@ public:
 	bool isNoBuildArea(bool x, bool y);
 
 	void addNoBuildArea(float x, float y, float radius);
+
+	void weatherUpdatePlayers();
+
+	void weatherChange();
 
 protected:
 	String _param0_getTravelFare__String_String_;
