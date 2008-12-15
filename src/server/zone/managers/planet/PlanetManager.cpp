@@ -252,6 +252,18 @@ void PlanetManager::weatherChange() {
 		((PlanetManagerImplementation*) _impl)->weatherChange();
 }
 
+void PlanetManager::weatherRemoveEvents() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->weatherRemoveEvents();
+}
+
 /*
  *	PlanetManagerAdapter
  */
@@ -313,6 +325,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 22:
 		weatherChange();
+		break;
+	case 23:
+		weatherRemoveEvents();
 		break;
 	default:
 		return NULL;
@@ -387,6 +402,10 @@ void PlanetManagerAdapter::weatherUpdatePlayers() {
 
 void PlanetManagerAdapter::weatherChange() {
 	return ((PlanetManagerImplementation*) impl)->weatherChange();
+}
+
+void PlanetManagerAdapter::weatherRemoveEvents() {
+	return ((PlanetManagerImplementation*) impl)->weatherRemoveEvents();
 }
 
 /*

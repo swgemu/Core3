@@ -117,7 +117,7 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("kickArea", DEVELOPER,
 			"Disconnects all players in a certain range.",
 			"Usage: @kickArea [distance]",
-			&kickArea);	
+			&kickArea);
 	gmCommands->addCommand("banUser", PRIVILEGED,
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <name> <ban time in minutes> <reason>",
@@ -217,7 +217,7 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("spice", ALL,
 			"Gives your player a certain spice.",
 			"Usage: @spice <spice>",
-			&spice);	
+			&spice);
 	gmCommands->addCommand("getDirection", STAFF,
 			"Prints out your direction or the direction of a targeted object.",
 			"Usage: @getDirection",
@@ -229,7 +229,7 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("getLocation", ALL,
 			"Gives full detailsofyour location.",
 			"Usage: @getLocation",
-			&getLocation);	
+			&getLocation);
 	gmCommands->addCommand("giveItemTemp", DEVELOPER,
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
@@ -335,13 +335,13 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("setHeight", PRIVILEGED,
 			"Sets the height of the object.",
 			"Usage: @setHeight number.",
-			&setHeight);		
+			&setHeight);
 	gmCommands->addCommand("warpAreaToWP", PRIVILEGED,
 			"Warps all players in a set radius to a specific waypoint",
 			"Usage: @warpAreaToWP <waypointName> <radius>",
 			&warpAreaToWP);
 	/* Disabled Commands
-		
+
 	Uncomment for use on DEV servers
 	gmCommands->addCommand("getCords", DEVELOPER,
 			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
@@ -366,9 +366,9 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("printRoomTree", DEVELOPER,
 			"Prints the room tree.",
 			"Usage: @printRoomTree",
-			&printRoomTree);		
-		
-	Disabled Commands */ 
+			&printRoomTree);
+
+	Disabled Commands */
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -1295,7 +1295,7 @@ void GameCommandHandler::setWeather(StringTokenizer tokenizer, Player* player) {
 	Zone* zone = player->getZone();
 	if (zone == NULL)
 		return;
- 
+
 	PlanetManager* planet = zone->getPlanetManager();
 	if (planet == NULL)
 		return;
@@ -1388,6 +1388,7 @@ void GameCommandHandler::disableWeather(StringTokenizer tokenizer, Player * play
 			zone->setWeatherEnabled(false);
 			zone->setWeatherID(0);
 			planet->weatherUpdatePlayers();
+			planet->weatherRemoveEvents();
 			player->sendSystemMessage("Weather on this planet is now disabled.");
 
 			player->wlock();
@@ -3146,11 +3147,11 @@ void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player)
 				if (otherName != name && player->isInRange(otherPlayer, meter)
 						&& (otherPlayer->getAdminLevel()
 								== PlayerImplementation::NORMAL)) {
-					
+
 
 					try {
 						if (planet != otherPlayer->getZoneIndex())
-							
+
 
 						otherPlayer->switchMap(planet);
 						otherPlayer->doWarp(x, y);
@@ -3162,7 +3163,7 @@ void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player)
 								+ otherName + "\'");
 					}
 				}
-			} 
+			}
 			}
 	}catch (...)
 	{}

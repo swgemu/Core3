@@ -59,6 +59,8 @@ public:
 
 	void weatherChange();
 
+	void weatherRemoveEvents();
+
 protected:
 	PlanetManager(DummyConstructorParameter* param);
 
@@ -108,6 +110,8 @@ public:
 	void weatherUpdatePlayers();
 
 	void weatherChange();
+
+	void weatherRemoveEvents();
 
 protected:
 	String _param0_getTravelFare__String_String_;
