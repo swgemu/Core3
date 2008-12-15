@@ -114,8 +114,10 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	logName << "PlanetManager" << zone->getZoneID();
 	setLoggingName(logName.toString());
 
-	windRow = 3;
+	windRow = System::random(7);
+
 	if (zone->getZoneID() < 10) {
+		weatherWindChange();
 		weatherChange();
 	}
 
@@ -952,4 +954,21 @@ void PlanetManagerImplementation::weatherUpdatePlayers() {
     	error("unreported exception caught in PlanetManagerImplementation::updatePlayerWeather()");
     	playerMap->unlock();
     }
+}
+
+void PlanetManagerImplementation::weatherRemoveEvents() {
+	if (weatherChangeEvent->isQueued()) {
+		System::out << "Removing weather change event from queue." << endl;
+		server->removeEvent(weatherChangeEvent);
+	}
+
+	if (weatherIncreaseEvent->isQueued()) {
+		System::out << "Removing weather increase event from queue." << endl;
+		server->removeEvent(weatherIncreaseEvent);
+	}
+
+	if (weatherDecreaseEvent->isQueued()) {
+		System::out << "Removing weather decrease event from queue." << endl;
+		server->removeEvent(weatherDecreaseEvent);
+	}
 }

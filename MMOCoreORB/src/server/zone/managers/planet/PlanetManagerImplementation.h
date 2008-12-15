@@ -147,6 +147,7 @@ public:
 	void weatherTransition(int direction);
 	void weatherWindChange();
 	void weatherUpdatePlayers();
+	void weatherRemoveEvents();
 
 private:
 	void loadStaticPlanetObjects();
