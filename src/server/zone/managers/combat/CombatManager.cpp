@@ -800,7 +800,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 		}
 	}
 
-	if (target->isPlayer() && reduction > 0)  // if total damage reduction is positive, tell the player what their expensive armor did for them
+	if (target->isPlayer() && reduction > 0 && ((Player*)target)->getPlayerArmor(part) != NULL)  // if total damage reduction is positive, tell the player what their expensive armor did for them
 		target->sendCombatSpam(target,(TangibleObject*)((Player*)target)->getPlayerArmor(part), reduction, "armor_damaged", false);
 
 	float woundsRatio = 5;
@@ -850,6 +850,26 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 	}
 
 	// Stage two toughness
+	if (target->isPlayer())
+		if (weapon == NULL || weapon->getType() < 4) // Melee attack
+			if (target->getWeapon() == NULL || target->getWeapon()->getType() < 4) { // Melee defence
+				int toughness = 0;
+				switch(target->getWeapon()->getType()) {
+				case 0:
+					toughness = target->getSkillMod("unarmed_toughness");
+					break;
+				case 1:
+					toughness = target->getSkillMod("onehandmelee_toughness");
+					break;
+				case 2:
+					toughness = target->getSkillMod("twohandmelee_toughness");
+					break;
+				case 3:
+					toughness = target->getSkillMod("polearm_toughness");
+					break;
+				}
+				currentDamage -= currentDamage * toughness / 100.0f;
+			}
 
 	// Stage three : Regular armour
 	Armor* armor = NULL;
