@@ -849,7 +849,9 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 		// Do the reduction for PSG
 	}
 
-	// Stage two : Regular armour
+	// Stage two toughness
+
+	// Stage three : Regular armour
 	Armor* armor = NULL;
 
 	//cout << "Getting armour for location " << location << endl;
@@ -861,35 +863,9 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 				cout << "Returned item is not armor, location " << location << endl;
 				armor == NULL;
 			}
-		/*
-			else
-				cout << "Returned armour is " << armor->getName().c_str().c_str() <<
-
-					" for location " << location << endl;
-		*/
 		}
 
 	int damageType = WeaponImplementation::KINETIC;
-	int armorPiercing = 1;
-	if (weapon != NULL) {
-		damageType = weapon->getDamageType();
-		armorPiercing = weapon->getArmorPiercing();
-	}
-
-	int armorResistance = 0;
-	if (armor != NULL)
-		armorResistance = armor->getRating() / 16;
-	else if (target->isNonPlayerCreature())
-		armorResistance = ((Creature*)target)->getArmor();
-	// cout << "Armour resistance type " << armorResistance << endl;
-
-	if (armorPiercing > armorResistance)
-		for (int i = armorResistance; i < armorPiercing; i++)
-			currentDamage *= 1.25f;
-	else if (armorPiercing < armorResistance)
-		for (int i = armorPiercing; i < armorResistance; i++)
-			currentDamage *= 0.5;
-	// cout << "Armour piercing type " << armorPiercing << endl;
 
 	float resist = 0;
 	if (armor != NULL) {
@@ -928,14 +904,33 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 	} else if (target->isNonPlayerCreature()) {
 			resist = ((Creature*)target)->getArmorResist(damageType);
 	}
+
+	if (resist > 0) {
+		int armorPiercing = 1;
+		if (weapon != NULL) {
+			damageType = weapon->getDamageType();
+			armorPiercing = weapon->getArmorPiercing();
+		}
+
+		int armorResistance = 0;
+		if (armor != NULL)
+			armorResistance = armor->getRating() / 16;
+		else if (target->isNonPlayerCreature())
+			armorResistance = ((Creature*)target)->getArmor();
+
+		if (armorPiercing > armorResistance)
+			for (int i = armorResistance; i < armorPiercing; i++)
+				currentDamage *= 1.25f;
+		else if (armorPiercing < armorResistance)
+			for (int i = armorPiercing; i < armorResistance; i++)
+				currentDamage *= 0.5;
+	}
+
 	// cout << "Armor resistance to type " << damageType << " is " << resist << "%" << endl;
 
 	currentDamage -= currentDamage * resist / 100.0f;
 
-	// Stage three : Toughness
-
-
-	// Final outcome may be negative
+	// Final outcome, may be negative
 	reduction = damage - (int)currentDamage;
 
 	return reduction;
@@ -1321,13 +1316,15 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 		int reduction = 0;
 
 		if (weapon != NULL) {
-			if (weapon->isCertified()) {
-				minDamage = weapon->getMinDamage();
-				maxDamage = weapon->getMaxDamage();
+			minDamage = weapon->getMinDamage();
+			maxDamage = weapon->getMaxDamage();
+			if (weapon->getType() == 0) {  // Unarmed
+				minDamage += (float)creature->getSkillMod("unarmed_damage");
+				maxDamage += (float)creature->getSkillMod("unarmed_damage");
 			}
-			else {
-				minDamage = weapon->getMinDamage() / 5;
-				maxDamage = weapon->getMaxDamage() / 5;
+			if (!weapon->isCertified()) {
+				minDamage /= 5;
+				maxDamage /= 5;
 			}
 		} else {
 			minDamage = (float)creature->getSkillMod("unarmed_damage");
