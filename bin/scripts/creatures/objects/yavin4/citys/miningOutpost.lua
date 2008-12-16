@@ -392,25 +392,3 @@ yavinMiningOutpostNpc16 = Creature:new {
 	cellID = 7925452
 }
 
-yavinMiningOutpostNpc17 = Creature:new {
-	objectName = "yavinMiningOutpostNpc17",
-	creatureType = NPC,
-
-	speciesName = "herald_biogenic_01",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 1068785020,
-	positionX = -3.88672,
-	positionY = -3.74503,
-	positionZ = 0.125266,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.272356,
-	directionW = 0.962197,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 1713374
-}
-

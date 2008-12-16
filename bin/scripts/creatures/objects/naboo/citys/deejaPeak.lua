@@ -392,28 +392,6 @@ deejaPeakNpc16 = Creature:new {
 	cellID = 0
 }
 
-deejaPeakNpc17 = Creature:new {
-	objectName = "deejaPeakNpc17",
-	creatureType = NPC,
-
-	speciesName = "damalia_korde",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 2800557384,
-	positionX = 5138.01,
-	positionY = -1530.64,
-	positionZ = 346.5,
-
-	directionX = 0,
-	directionZ = -0,
-	directionY = 0.515768,
-	directionW = 0.856729,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 deejaPeakNpc18 = Creature:new {
 	objectName = "deejaPeakNpc18",
 	creatureType = NPC,
@@ -964,94 +942,6 @@ deejaPeakNpc42 = Creature:new {
 	cellID = 0
 }
 
-deejaPeakNpc43 = Creature:new {
-	objectName = "deejaPeakNpc43",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 4979.02,
-	positionY = -1445.87,
-	positionZ = 360,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.0212178,
-	directionW = 0.999775,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-deejaPeakNpc44 = Creature:new {
-	objectName = "deejaPeakNpc44",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 4979.02,
-	positionY = -1445.87,
-	positionZ = 360,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = 0.0212533,
-	directionW = 0.999774,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-deejaPeakNpc45 = Creature:new {
-	objectName = "deejaPeakNpc45",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 4965.43,
-	positionY = -1434.08,
-	positionZ = 360,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0584077,
-	directionW = 0.998293,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-deejaPeakNpc46 = Creature:new {
-	objectName = "deejaPeakNpc46",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 4965.43,
-	positionY = -1434.08,
-	positionZ = 360,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0577487,
-	directionW = 0.998331,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 deejaPeakNpc47 = Creature:new {
 	objectName = "deejaPeakNpc47",
 	creatureType = NPC,
@@ -1597,28 +1487,6 @@ deejaPeakNpc71 = Creature:new {
 	directionZ = 0,
 	directionY = 0.423166,
 	directionW = 0.906052,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-deejaPeakNpc72 = Creature:new {
-	objectName = "deejaPeakNpc72",
-	creatureType = NPC,
-
-	speciesName = "arven_wendik",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 3430477753,
-	positionX = 4711.54,
-	positionY = -1433,
-	positionZ = 330,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.192148,
-	directionW = 0.981366,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0

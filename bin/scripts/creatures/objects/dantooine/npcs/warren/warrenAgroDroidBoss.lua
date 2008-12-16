@@ -40,6 +40,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 warrenAgroDroidBoss = Creature:new {
 	objectName = "warrenAgroDroidBoss",  -- Lua Object Name
 	creatureType = "NPC",
@@ -97,16 +98,16 @@ warrenAgroDroidBoss = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/vehicle/shared_vehicle_atst_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Imperial Cannon", -- Name ex. 'a Vibrolance'
+	weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 450,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -136,10 +137,11 @@ warrenAgroDroidBoss = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { " Blind attack", " Intimidation attack", "" }
-	-- respawnTimer = 180,
+	-- skills = { " Blind attack", " Intimidation attack", "" }
+	skills = { "warrenAttack3", "warrenAttack2" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(warrenAgroDroidBoss, 89820136) --  Add to Global Table
+Creatures:addCreature(warrenAgroDroidBoss, 89820136) -- Add to Global Table
