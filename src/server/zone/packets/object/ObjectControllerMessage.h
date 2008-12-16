@@ -202,7 +202,7 @@ public:
 
 	static void handleRemoveFromGuild(Player* player, Message* pack, ZoneProcessServerImplementation* serv);
 
-	static void parseMeditation(Player* player);
+	static bool parseMeditation(Player* player);
 
 	static void parseDelFactionPoints(Player* player, Message* pack);
 

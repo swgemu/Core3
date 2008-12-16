@@ -195,6 +195,58 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	delete msg;
 }
 
+void GroupObjectImplementation::sendSystemMessage(Player* player,
+		const String& message, bool sendToSelf) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		Player* play = groupMembers.get(i);
+
+		if (play != player) {
+
+			play->sendSystemMessage(message);
+
+		} else {
+
+			if (sendToSelf)
+				play->sendSystemMessage(message);
+		}
+	}
+}
+
+void GroupObjectImplementation::sendSystemMessage(Player* player,
+		const String& file, const String& str, uint64 targetid, bool sendToSelf) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		Player* play = groupMembers.get(i);
+
+		if (play != player) {
+
+			play->sendSystemMessage(file, str, targetid);
+
+		} else {
+
+			if (sendToSelf)
+				play->sendSystemMessage(file, str, targetid);
+		}
+	}
+}
+
+void GroupObjectImplementation::sendSystemMessage(Player* player,
+		const String& file, const String& str, StfParameter* param,
+		bool sendToSelf) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		Player* play = groupMembers.get(i);
+
+		if (play != player) {
+
+			play->sendSystemMessage(file, str, param);
+
+		} else {
+
+			if (sendToSelf)
+				play->sendSystemMessage(file, str, param);
+		}
+	}
+}
+
 void GroupObjectImplementation::makeLeader(Player* player) {
 	if (groupMembers.size() < 2)
 		return;

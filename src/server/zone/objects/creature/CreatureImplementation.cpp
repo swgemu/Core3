@@ -179,13 +179,13 @@ void CreatureImplementation::sendRadialResponseTo(Player* player,
 
 		omr->addRadialItem(0, 148, 3, "@sui:harvest_corpse");
 
-		if (getMeatMax() != 0)
+		if (getMeatType() != "")
 			omr->addRadialItem(4, 108, 3, "@sui:harvest_meat");
 
-		if (getHideMax() != 0)
+		if (getHideType() != "")
 			omr->addRadialItem(4, 109, 3, "@sui:harvest_hide");
 
-		if (getBoneMax() != 0)
+		if (getBoneType() != "")
 			omr->addRadialItem(4, 110, 3, "@sui:harvest_bone");
 
 	}
@@ -1401,6 +1401,8 @@ void CreatureImplementation::doIncapacitate() {
 		lootOwner->addFactionPoints(pfaction, fpValue);
 		lootOwner->subtractFactionPoints(myfaction, fpValue);
 	}
+
+	creatureHealth = System::random(3) + 1;
 
 	createHarvestList();
 

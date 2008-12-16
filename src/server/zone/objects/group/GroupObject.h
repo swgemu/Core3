@@ -15,6 +15,8 @@ class Player;
 
 class ChatRoom;
 
+#include "../../packets/object/StfParameter.h"
+
 #include "../scene/SceneObject.h"
 
 class GroupObject : public SceneObject {
@@ -24,6 +26,12 @@ public:
 	void sendTo(Player* player);
 
 	void broadcastMessage(BaseMessage* msg);
+
+	void sendSystemMessage(Player* player, const String& message, bool sendToSelf = false);
+
+	void sendSystemMessage(Player* player, const String& file, const String& str, unsigned long long targetid = 0, bool sendToSelf = false);
+
+	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param, bool sendToSelf = false);
 
 	void addPlayer(Player* player);
 
@@ -75,6 +83,12 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
+	void sendSystemMessage(Player* player, const String& message, bool sendToSelf);
+
+	void sendSystemMessage(Player* player, const String& file, const String& str, unsigned long long targetid, bool sendToSelf);
+
+	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param, bool sendToSelf);
+
 	void addPlayer(Player* player);
 
 	void removePlayer(Player* player);
@@ -105,6 +119,12 @@ public:
 
 	float getRangerBonusForHarvesting(Player* player);
 
+protected:
+	String _param1_sendSystemMessage__Player_String_bool_;
+	String _param1_sendSystemMessage__Player_String_String_long_bool_;
+	String _param2_sendSystemMessage__Player_String_String_long_bool_;
+	String _param1_sendSystemMessage__Player_String_String_StfParameter_bool_;
+	String _param2_sendSystemMessage__Player_String_String_StfParameter_bool_;
 };
 
 class GroupObjectHelper : public DistributedObjectClassHelper, public Singleton<GroupObjectHelper> {

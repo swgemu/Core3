@@ -2174,6 +2174,8 @@ void PlayerImplementation::changePosture(int post) {
 
 	if (meditating) {
 		updateMood(Races::getMood(moodid));
+		clearState(CreatureState::ALERT);
+		updateStates();
 		meditating = false;
 		sendSystemMessage("teraskasi", "med_end");
 	}

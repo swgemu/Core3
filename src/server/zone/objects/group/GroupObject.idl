@@ -50,6 +50,8 @@ import "../player/Player";
 
 import "../../../chat/room/ChatRoom";
 
+include "../../packets/object/StfParameter";
+
 interface GroupObject implements SceneObject {
 	GroupObject(unsigned long oid, Player leader) {
 		super(oid, int type);
@@ -58,6 +60,10 @@ interface GroupObject implements SceneObject {
 	void sendTo(Player player);
 
 	void broadcastMessage(BaseMessage msg);
+	
+	void sendSystemMessage(Player player, const String message, boolean sendToSelf = false);
+	void sendSystemMessage(Player player, const String file, const String str, unsigned long targetid = 0, boolean sendToSelf = false);
+	void sendSystemMessage(Player player, const String file, const String str, StfParameter param, boolean sendToSelf = false);
 
 	void addPlayer(Player player);
 	void removePlayer(Player player);

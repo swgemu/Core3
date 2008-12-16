@@ -777,6 +777,8 @@ public:
 
 	bool hasOrganics();
 
+	int getCreatureHealth();
+
 	int getXP();
 
 	int isHealer();
@@ -1915,6 +1917,8 @@ public:
 	int getMilk();
 
 	bool hasOrganics();
+
+	int getCreatureHealth();
 
 	int getXP();
 
