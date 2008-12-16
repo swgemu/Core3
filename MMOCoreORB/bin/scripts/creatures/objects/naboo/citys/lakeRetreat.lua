@@ -436,50 +436,6 @@ lakeRetreatNpc18 = Creature:new {
 	cellID = 0
 }
 
-lakeRetreatNpc19 = Creature:new {
-	objectName = "lakeRetreatNpc19",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = -5455.89,
-	positionY = -84.8729,
-	positionZ = -156.439,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.62937,
-	directionW = 0.777106,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-lakeRetreatNpc20 = Creature:new {
-	objectName = "lakeRetreatNpc20",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = -5455.62,
-	positionY = -84.8167,
-	positionZ = -156.342,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.629369,
-	directionW = 0.777107,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 lakeRetreatNpc21 = Creature:new {
 	objectName = "lakeRetreatNpc21",
 	creatureType = NPC,

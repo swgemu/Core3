@@ -1558,28 +1558,6 @@ moeniaNpc69 = Creature:new {
 	cellID = 0
 }
 
-moeniaNpc70 = Creature:new {
-	objectName = "moeniaNpc70",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 4882.04,
-	positionY = -4810.99,
-	positionZ = 3.75,
-
-	directionX = -5.058e-09,
-	directionZ = -5.31141e-08,
-	directionY = 0.987277,
-	directionW = -0.159006,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 moeniaNpc71 = Creature:new {
 	objectName = "moeniaNpc71",
 	creatureType = NPC,
@@ -1602,28 +1580,6 @@ moeniaNpc71 = Creature:new {
 	cellID = 0
 }
 
-moeniaNpc72 = Creature:new {
-	objectName = "moeniaNpc72",
-	creatureType = NPC,
-
-	speciesName = "borvos_guard",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2881848951,
-	positionX = -24.3732,
-	positionY = 12.5143,
-	positionZ = -0.519991,
-
-	directionX = -0.0012578,
-	directionZ = 0.00920269,
-	directionY = -0.13541,
-	directionW = 0.990746,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 121
-}
-
 moeniaNpc73 = Creature:new {
 	objectName = "moeniaNpc73",
 	creatureType = NPC,
@@ -1644,50 +1600,6 @@ moeniaNpc73 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 121
-}
-
-moeniaNpc74 = Creature:new {
-	objectName = "moeniaNpc74",
-	creatureType = NPC,
-
-	speciesName = "borvos_guard",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 309867940,
-	positionX = -25.8127,
-	positionY = 25.1603,
-	positionZ = -0.894991,
-
-	directionX = -2.12769e-07,
-	directionZ = -1.23912e-07,
-	directionY = 0.921554,
-	directionW = 0.388251,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 120
-}
-
-moeniaNpc75 = Creature:new {
-	objectName = "moeniaNpc75",
-	creatureType = NPC,
-
-	speciesName = "borvos_guard",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2881848951,
-	positionX = -17.2942,
-	positionY = 18.9768,
-	positionZ = -0.89499,
-
-	directionX = -1.32679e-08,
-	directionZ = 4.12887e-07,
-	directionY = -0.487009,
-	directionW = 0.873397,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 120
 }
 
 moeniaNpc76 = Creature:new {
@@ -1851,7 +1763,7 @@ moeniaNpc83 = Creature:new {
 	speciesName = "bartender",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "mob/creature_names",
+	stfName = "npc_name",
 	objectCRC = 806651827,
 	positionX = -11.4301,
 	positionY = 1.13442,
@@ -3230,28 +3142,6 @@ moeniaNpc145 = Creature:new {
 	cellID = 0
 }
 
-moeniaNpc146 = Creature:new {
-	objectName = "moeniaNpc146",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 4882.76,
-	positionY = -4808.91,
-	positionZ = 3.75,
-
-	directionX = -3.19746e-05,
-	directionZ = -4.61487e-05,
-	directionY = -0.429296,
-	directionW = 0.903164,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 moeniaNpc147 = Creature:new {
 	objectName = "moeniaNpc147",
 	creatureType = NPC,
@@ -3489,50 +3379,6 @@ moeniaNpc157 = Creature:new {
 	directionZ = -1.07911e-05,
 	directionY = 0.999957,
 	directionW = 0.00928734,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-moeniaNpc158 = Creature:new {
-	objectName = "moeniaNpc158",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 4924.02,
-	positionY = -4813.35,
-	positionZ = 3.75,
-
-	directionX = -5.99408e-05,
-	directionZ = -0.000546455,
-	directionY = 0.927148,
-	directionW = -0.374696,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-moeniaNpc159 = Creature:new {
-	objectName = "moeniaNpc159",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 4918.5,
-	positionY = -4819.09,
-	positionZ = 3.75,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.926967,
-	directionW = -0.375142,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0

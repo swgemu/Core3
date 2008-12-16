@@ -1866,28 +1866,6 @@ staticTheedNpc91 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc92 = Creature:new {
-	objectName = "staticTheedNpc92",
-	creatureType = NPC,
-
-	speciesName = "naboo_theed_toff_henrou",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1077493527,
-	positionX = -4959.3,
-	positionY = 4048.02,
-	positionZ = 6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.719169,
-	directionW = 0.694835,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 staticTheedNpc93 = Creature:new {
 	objectName = "staticTheedNpc93",
 	creatureType = NPC,
@@ -3934,94 +3912,6 @@ staticTheedNpc195 = Creature:new {
 	cellID = 0
 }
 
-staticTheedNpc196 = Creature:new {
-	objectName = "staticTheedNpc196",
-	creatureType = NPC,
-
-	speciesName = "itp_emperor_queen_security_tech",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4160022471,
-	positionX = 36.4463,
-	positionY = -169.5,
-	positionZ = 27,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.885646,
-	directionW = -0.464361,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 1688880
-}
-
-staticTheedNpc197 = Creature:new {
-	objectName = "staticTheedNpc197",
-	creatureType = NPC,
-
-	speciesName = "itp_emperor_queen_security_tech",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4160022471,
-	positionX = 36.6772,
-	positionY = -175.595,
-	positionZ = 27,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.639051,
-	directionW = 0.769164,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 1688880
-}
-
-staticTheedNpc198 = Creature:new {
-	objectName = "staticTheedNpc198",
-	creatureType = NPC,
-
-	speciesName = "itp_emperor_queen_security_tech",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4160022471,
-	positionX = 3.14024,
-	positionY = -175.382,
-	positionZ = 27,
-
-	directionX = -3.7716e-07,
-	directionZ = -2.13391e-08,
-	directionY = -0.191836,
-	directionW = 0.981427,
-	randomMovement = 0,
-	mood = "",
-	cellID = 1688879
-}
-
-staticTheedNpc199 = Creature:new {
-	objectName = "staticTheedNpc199",
-	creatureType = NPC,
-
-	speciesName = "itp_emperor_queen_security_tech",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4160022471,
-	positionX = 3.2163,
-	positionY = -169.604,
-	positionZ = 27,
-
-	directionX = -1.02038e-07,
-	directionZ = -3.57291e-09,
-	directionY = -0.0349939,
-	directionW = 0.999388,
-	randomMovement = 0,
-	mood = "",
-	cellID = 1688879
-}
-
 staticTheedNpc200 = Creature:new {
 	objectName = "staticTheedNpc200",
 	creatureType = NPC,
@@ -5535,28 +5425,6 @@ staticTheedNpc271 = Creature:new {
 	directionZ = 0,
 	directionY = 0.283728,
 	directionW = 0.958905,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-staticTheedNpc275 = Creature:new {
-	objectName = "staticTheedNpc275",
-	creatureType = NPC,
-
-	speciesName = "pooja_naberrie",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2701359949,
-	positionX = -5479.35,
-	positionY = 4467.15,
-	positionZ = 14,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.890602,
-	directionW = -0.454784,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0

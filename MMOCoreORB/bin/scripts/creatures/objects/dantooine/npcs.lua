@@ -41,8 +41,21 @@
 --which carries forward this exception.
 
 
- --Force Crystal Cave Mob
- RunCreatureFile("objects/dantooine/npcs/forceSens/darkForceCrystalHunter.lua") 
+ --Dantari
+ RunCreatureFile("objects/dantooine/npcs/dantari/dantariRaider.lua")
+ RunCreatureFile("objects/dantooine/npcs/dantari/dantariRaiderBattlelord.lua")
+ RunCreatureFile("objects/dantooine/npcs/dantari/dantariRaiderChief.lua")
+ RunCreatureFile("objects/dantooine/npcs/dantari/dantariRaiderStrategist.lua")
+
+ --Force Crystal Cave Mob (ForceSens)
+ RunCreatureFile("objects/dantooine/npcs/forceSens/darkForceCrystalHunter.lua")
+ RunCreatureFile("objects/dantooine/npcs/forceSens/darkSideSavage.lua")
+ RunCreatureFile("objects/dantooine/npcs/forceSens/feralForceWilder.lua")
+ RunCreatureFile("objects/dantooine/npcs/forceSens/forceSensitiveCryptCrawler.lua")
+ RunCreatureFile("objects/dantooine/npcs/forceSens/forceSensitiveRenegade.lua")
+ RunCreatureFile("objects/dantooine/npcs/forceSens/forceTrainedArchaist.lua")
+ RunCreatureFile("objects/dantooine/npcs/forceSens/forsakenForceDrifter.lua")
+ RunCreatureFile("objects/dantooine/npcs/forceSens/noviceForceMystic.lua")
  RunCreatureFile("objects/dantooine/npcs/forceSens/untrainedWielderOfTheDarkSide.lua")
 
  --Jantas
@@ -61,6 +74,7 @@
 
  --Kungas
  RunCreatureFile("objects/dantooine/npcs/kunga/kungaClanLeader.lua")
+ RunCreatureFile("objects/dantooine/npcs/kunga/kungaClanPrimalist.lua")
  RunCreatureFile("objects/dantooine/npcs/kunga/kungaHarvester.lua")
  RunCreatureFile("objects/dantooine/npcs/kunga/kungaHerbalist.lua")
  RunCreatureFile("objects/dantooine/npcs/kunga/kungaHunter.lua")
@@ -86,3 +100,20 @@
  RunCreatureFile("objects/dantooine/npcs/mokk/mokkTribesman.lua")
  RunCreatureFile("objects/dantooine/npcs/mokk/mokkWarrior.lua")
  
+--Warren
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenAgroDroidAtst.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenAgroDroidBoss.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenAgroDroidS01.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenAgroDroidS02.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenAgroDroidS03.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenAgroDroidS04.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenBomarrLoyalist.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenBorsTeraud.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenDroidekaLoyalist.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenImperialOfficer.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenImperialWorker.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenInsaneCompSci.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenIrradiatedWorker.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenTeraudLoyalist.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenTeraudLoyalistCommander.lua")
+ RunCreatureFile("objects/dantooine/npcs/warren/warrenTeraudLoyalistCyborg.lua")

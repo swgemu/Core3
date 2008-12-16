@@ -4989,28 +4989,6 @@ coronetNpc318 = Creature:new {
 	cellID = 1855463
 }
 
-coronetNpc319 = Creature:new {
-	objectName = "coronetNpc319",
-	creatureType = NPC,
-
-	speciesName = "brantlee_spondoon",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3269586252,
-	positionX = -26.3947,
-	positionY = -0.48564,
-	positionZ = 1.29895,
-
-	directionX = -1.45027e-05,
-	directionZ = 3.62205e-05,
-	directionY = 0.928349,
-	directionW = 0.371711,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 1855463
-}
-
 coronetNpc323 = Creature:new {
 	objectName = "coronetNpc323",
 	creatureType = NPC,

@@ -1756,28 +1756,6 @@ kadaaraNpc79 = Creature:new {
 	cellID = 0
 }
 
-kadaaraNpc80 = Creature:new {
-	objectName = "kadaaraNpc80",
-	creatureType = NPC,
-
-	speciesName = "herald_biogenic_02",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 3835950571,
-	positionX = 5094.69,
-	positionY = 6754.11,
-	positionZ = -192,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.977794,
-	directionW = -0.209567,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 kadaaraNpc81 = Creature:new {
 	objectName = "kadaaraNpc81",
 	creatureType = NPC,
@@ -1954,28 +1932,6 @@ kadaaraNpc88 = Creature:new {
 	cellID = 0
 }
 
-kadaaraNpc89 = Creature:new {
-	objectName = "kadaaraNpc89",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 5109.66,
-	positionY = 6736.43,
-	positionZ = -192,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.928234,
-	directionW = 0.371997,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 kadaaraNpc90 = Creature:new {
 	objectName = "kadaaraNpc90",
 	creatureType = NPC,
@@ -1995,28 +1951,6 @@ kadaaraNpc90 = Creature:new {
 	directionW = 0.892001,
 	randomMovement = 0,
 	mood = "",
-	cellID = 0
-}
-
-kadaaraNpc91 = Creature:new {
-	objectName = "kadaaraNpc91",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 5109.66,
-	positionY = 6736.43,
-	positionZ = -192,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.928229,
-	directionW = 0.37201,
-	randomMovement = 0,
-	mood = "calm",
 	cellID = 0
 }
 
@@ -2127,50 +2061,6 @@ kadaaraNpc96 = Creature:new {
 	directionW = -0.286943,
 	randomMovement = 0,
 	mood = "",
-	cellID = 0
-}
-
-kadaaraNpc97 = Creature:new {
-	objectName = "kadaaraNpc97",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 5088.44,
-	positionY = 6800,
-	positionZ = -192,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.344088,
-	directionW = 0.938938,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc98 = Creature:new {
-	objectName = "kadaaraNpc98",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_3",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1225308126,
-	positionX = 5088.44,
-	positionY = 6800,
-	positionZ = -192,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.344089,
-	directionW = 0.938937,
-	randomMovement = 0,
-	mood = "calm",
 	cellID = 0
 }
 
@@ -2433,28 +2323,6 @@ kadaaraNpc110 = Creature:new {
 	directionZ = 0,
 	directionY = -0.0223476,
 	directionW = 0.99975,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc111 = Creature:new {
-	objectName = "kadaaraNpc111",
-	creatureType = NPC,
-
-	speciesName = "mullud_bombo",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 747095842,
-	positionX = 5046.66,
-	positionY = 6787.6,
-	positionZ = -192,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.353144,
-	directionW = 0.935569,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -3105,7 +2973,7 @@ kadaaraNpc141 = Creature:new {
 	speciesName = "bartender",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "mob/creature_names",
+	stfName = "npc_name",
 	objectCRC = 2440014656,
 	positionX = 7.91779,
 	positionY = 2.58107,
@@ -3117,28 +2985,6 @@ kadaaraNpc141 = Creature:new {
 	directionW = 0.652898,
 	randomMovement = 0,
 	mood = "neutral",
-	cellID = 64
-}
-
-kadaaraNpc142 = Creature:new {
-	objectName = "kadaaraNpc142",
-	creatureType = NPC,
-
-	speciesName = "leb_slesher",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 3892196875,
-	positionX = 3.29211,
-	positionY = 6.08823,
-	positionZ = -0.894992,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.568592,
-	directionW = 0.82262,
-	randomMovement = 0,
-	mood = "calm",
 	cellID = 64
 }
 
@@ -3472,28 +3318,6 @@ kadaaraNpc157 = Creature:new {
 	cellID = 0
 }
 
-kadaaraNpc158 = Creature:new {
-	objectName = "kadaaraNpc158",
-	creatureType = NPC,
-
-	speciesName = "naboo_beachcomber_smuggler",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3216467552,
-	positionX = 5083.92,
-	positionY = 6921.27,
-	positionZ = -205.348,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999893,
-	directionW = -0.0146091,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 kadaaraNpc159 = Creature:new {
 	objectName = "kadaaraNpc159",
 	creatureType = NPC,
@@ -3626,50 +3450,6 @@ kadaaraNpc164 = Creature:new {
 	cellID = 0
 }
 
-kadaaraNpc165 = Creature:new {
-	objectName = "kadaaraNpc165",
-	creatureType = NPC,
-
-	speciesName = "naboo_beachcomber_smuggler",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3216467552,
-	positionX = 4898.6,
-	positionY = 6578.81,
-	positionZ = -209.156,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.992094,
-	directionW = -0.125501,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc166 = Creature:new {
-	objectName = "kadaaraNpc166",
-	creatureType = NPC,
-
-	speciesName = "naboo_beachcomber_smuggler",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4184098303,
-	positionX = 4903.25,
-	positionY = 6576.16,
-	positionZ = -208.471,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.984752,
-	directionW = 0.173964,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 kadaaraNpc167 = Creature:new {
 	objectName = "kadaaraNpc167",
 	creatureType = NPC,
@@ -3780,28 +3560,6 @@ kadaaraNpc171 = Creature:new {
 	cellID = 0
 }
 
-kadaaraNpc172 = Creature:new {
-	objectName = "kadaaraNpc172",
-	creatureType = NPC,
-
-	speciesName = "naboo_beachcomber_smuggler",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1439737032,
-	positionX = 4904.18,
-	positionY = 6572.7,
-	positionZ = -208.22,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.264421,
-	directionW = 0.964407,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 kadaaraNpc173 = Creature:new {
 	objectName = "kadaaraNpc173",
 	creatureType = NPC,
@@ -3907,72 +3665,6 @@ kadaaraNpc177 = Creature:new {
 	directionZ = 0,
 	directionY = 0.0915384,
 	directionW = 0.995802,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc178 = Creature:new {
-	objectName = "kadaaraNpc178",
-	creatureType = NPC,
-
-	speciesName = "naboo_beachcomber_smuggler",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3216467552,
-	positionX = 4894.09,
-	positionY = 6517.08,
-	positionZ = -207.285,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.998727,
-	directionW = -0.0504395,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc179 = Creature:new {
-	objectName = "kadaaraNpc179",
-	creatureType = NPC,
-
-	speciesName = "naboo_beachcomber_smuggler",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4184098303,
-	positionX = 4891.73,
-	positionY = 6511.59,
-	positionZ = -207.439,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.643281,
-	directionW = 0.765631,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc180 = Creature:new {
-	objectName = "kadaaraNpc180",
-	creatureType = NPC,
-
-	speciesName = "naboo_beachcomber_smuggler",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4184098303,
-	positionX = 4893.83,
-	positionY = 6511.25,
-	positionZ = -206.957,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.314734,
-	directionW = 0.94918,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -4105,116 +3797,6 @@ kadaaraNpc186 = Creature:new {
 	directionZ = 0,
 	directionY = 0.950253,
 	directionW = 0.311481,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc187 = Creature:new {
-	objectName = "kadaaraNpc187",
-	creatureType = NPC,
-
-	speciesName = "skaak_tipper_mugger",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2558798248,
-	positionX = 5142.41,
-	positionY = 6486.56,
-	positionZ = -193.157,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.818546,
-	directionW = 0.574441,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc188 = Creature:new {
-	objectName = "kadaaraNpc188",
-	creatureType = NPC,
-
-	speciesName = "skaak_tipper_mugger",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3646837680,
-	positionX = 5141.07,
-	positionY = 6463.98,
-	positionZ = -194.477,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.988345,
-	directionW = 0.152231,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc189 = Creature:new {
-	objectName = "kadaaraNpc189",
-	creatureType = NPC,
-
-	speciesName = "skaak_tipper_mugger",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 344653298,
-	positionX = 5144.44,
-	positionY = 6479.79,
-	positionZ = -193.606,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999422,
-	directionW = 0.0340042,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc190 = Creature:new {
-	objectName = "kadaaraNpc190",
-	creatureType = NPC,
-
-	speciesName = "skaak_tipper_mugger",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1938688799,
-	positionX = 5140.53,
-	positionY = 6473.78,
-	positionZ = -193.822,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.878136,
-	directionW = 0.47841,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-kadaaraNpc191 = Creature:new {
-	objectName = "kadaaraNpc191",
-	creatureType = NPC,
-
-	speciesName = "skaak_tipper_bandit",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3726012530,
-	positionX = 5057.08,
-	positionY = 6424.29,
-	positionZ = -191.841,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.992609,
-	directionW = 0.121359,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -4594,28 +4176,6 @@ kadaaraNpc208 = Creature:new {
 	cellID = 0
 }
 
-kadaaraNpc209 = Creature:new {
-	objectName = "kadaaraNpc209",
-	creatureType = NPC,
-
-	speciesName = "naboo_skaak_tipper_maniac",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2558798248,
-	positionX = 5499.91,
-	positionY = 6488.31,
-	positionZ = -197.17,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.465266,
-	directionW = 0.885171,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 kadaaraNpc210 = Creature:new {
 	objectName = "kadaaraNpc210",
 	creatureType = NPC,
@@ -4721,28 +4281,6 @@ kadaaraNpc214 = Creature:new {
 	directionZ = 0,
 	directionY = 0.835367,
 	directionW = -0.549692,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-kadaaraNpc215 = Creature:new {
-	objectName = "kadaaraNpc215",
-	creatureType = NPC,
-
-	speciesName = "naboo_skaak_tipper_maniac",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1681935872,
-	positionX = 5500.14,
-	positionY = 6492.35,
-	positionZ = -197.119,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.661522,
-	directionW = 0.749926,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
