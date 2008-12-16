@@ -2415,27 +2415,12 @@ void CreatureObjectImplementation::calculateHAMregen() {
 	}
 
 	if (meditating) {
-		newHealth *= 2;
-		newAction *= 2;
-		newMind *= 2;
-
-		if (healthWounds != 0 && System::random(3) == 3)
-			changeHealthWoundsBar(-100);
-
-		if (actionWounds != 0 && System::random(3) == 3)
-			changeActionWoundsBar(-100);
-
-		if (mindWounds != 0 && System::random(3) == 3)
-			changeMindWoundsBar(-100);
-
-		if (isPoisoned() && System::random(3) == 3)
-			poisonRecoveryTime.update();
-
-		if (isBleeding() && System::random(3) == 3)
-			bleedingRecoveryTime.update();
-
-		if (isDiseased() && System::random(3) == 3)
-			diseasedRecoveryTime.update();
+		int meditateMod = getSkillMod("meditate");
+		float meditateBonus = 1 + ((float)meditateMod / 100);
+		newHealth *= meditateBonus;
+		newAction *= meditateBonus;
+		newMind *= meditateBonus;
+		doMeditateHeals();
 	}
 
 	if (postureState == CreaturePosture::SITTING) {
@@ -2452,6 +2437,185 @@ void CreatureObjectImplementation::calculateHAMregen() {
 		newMind = newMind * 4 / 7;
 
 		bool change = changeHAMBars((int)newHealth, (int)newAction, (int)newMind);
+	}
+}
+
+void CreatureObjectImplementation::doMeditateHeals() {
+	int meditateMod = getSkillMod("meditate");
+
+    //Heal dots first.
+	if (isBleeding() || isPoisoned() || isDiseased()) {
+
+		switch (0) {
+		case 0:
+			if (isBleeding() && meditateMod >= 15) {
+				bleedingDotStrength -= 20 + (meditateMod / 3);
+				if (bleedingDotStrength < 1) {
+					bleedingDotStrength = 0;
+					clearState(CreatureState::BLEEDING);
+				} else {
+					if (isPlayer())
+						sendSystemMessage("dot_message", "decrease_bleeding");
+				}
+				return;
+			}
+
+		case 1:
+			if (isPoisoned() && meditateMod >= 30) {
+				poisonDotStrength -= 20 + (meditateMod / 3);
+				if (poisonDotStrength < 1) {
+					poisonDotStrength = 0;
+					clearState(CreatureState::POISONED);
+				} else {
+					if (isPlayer())
+						sendSystemMessage("dot_message", "decrease_poisoned");
+				}
+				return;
+			}
+
+		case 2:
+			if (isDiseased() && meditateMod >= 45) {
+				diseaseDotStrength -= 20 + (meditateMod / 3);
+				if (diseaseDotStrength < 1) {
+					diseaseDotStrength = 0;
+					clearState(CreatureState::DISEASED);
+				} else {
+					if (isPlayer())
+						sendSystemMessage("dot_message", "decrease_diseased");
+				}
+				return;
+			}
+		}
+	}
+
+    //If no more dots can be healed, heal wounds.
+	if (meditateMod >= 75) {
+		doMeditateWoundHeals();
+	}
+}
+
+void CreatureObjectImplementation::doMeditateWoundHeals() {
+	int heal;
+	int wounds;
+	int meditateMod = getSkillMod("meditate");
+	String attribute;
+	StfParameter* healParams = new StfParameter;
+	Vector<uint8> woundedPools;
+
+	//Determine which pools are wounded.
+	for (uint8 i = 1; i < 10; i++) {
+		bool hasWounds = hasWound(i);
+		if (hasWounds == true) {
+			woundedPools.add(i);
+		}
+	}
+
+	if (woundedPools.size() == 0) {
+		return;
+	}
+
+    //Set the heal amount.
+	if (meditateMod > 0 && meditateMod < 100) {
+		 heal = 20 + System::random(10);
+	} else if (meditateMod >= 100) {
+		heal = 30 + System::random(20);
+	} else {
+		return;
+	}
+
+	//Heal a random wounded pool.
+    uint8 pool = woundedPools.get(System::random(woundedPools.size() - 1));
+
+    switch (pool) {
+    case 1:
+    	wounds = getHealthWounds();
+        if (wounds < heal) {
+    		heal = wounds;
+        }
+    	attribute = "Health";
+    	changeHealthWoundsBar(-heal);
+    	break;
+
+    case 2:
+        wounds = getStrengthWounds();
+        if (wounds < heal) {
+    		heal = wounds;
+        }
+        attribute = "Strength";
+        changeStrengthWoundsBar(-heal);
+        break;
+
+    case 3:
+        wounds = getConstitutionWounds();
+        if (wounds < heal) {
+    		heal = wounds;
+        }
+        attribute = "Constitution";
+        changeConstitutionWoundsBar(-heal);
+        break;
+
+    case 4:
+        wounds = getActionWounds();
+        if (wounds < heal) {
+    		heal = wounds;
+        }
+        attribute = "Action";
+        changeActionWoundsBar(-heal);
+        break;
+
+    case 5:
+        wounds = getQuicknessWounds();
+        if (wounds < heal) {
+    		heal = wounds;
+        }
+        attribute = "Quickness";
+        changeQuicknessWoundsBar(-heal);
+        break;
+
+    case 6:
+        wounds = getStaminaWounds();
+        if (wounds < heal) {
+    		heal = wounds;
+        }
+        attribute = "Stamina";
+        changeStaminaWoundsBar(-heal);
+        break;
+
+    case 7:
+        wounds = getMindWounds();
+        if (wounds < heal) {
+    		heal = wounds;
+        }
+        attribute = "Mind";
+        changeMindWoundsBar(-heal);
+        break;
+
+    case 8:
+        wounds = getFocusWounds();
+        if (wounds < heal) {
+    		heal = wounds;
+        }
+        attribute = "Focus";
+        changeFocusWoundsBar(-heal);
+        break;
+
+    case 9:
+        wounds = getWillpowerWounds();
+        if (wounds < heal) {
+    		heal = wounds;
+        }
+        attribute = "Willpower";
+        changeWillpowerWoundsBar(-heal);
+        break;
+    }
+
+    //Send heal message.
+	if (isPlayer()) {
+		Player* player = (Player*)_this;
+		healParams->addTO(attribute);
+        healParams->addDI(heal);
+		player->sendSystemMessage("teraskasi","prose_curewound",healParams);
+		delete healParams;
 	}
 }
 

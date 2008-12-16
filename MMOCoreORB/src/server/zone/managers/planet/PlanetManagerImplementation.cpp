@@ -71,14 +71,14 @@ const uint32 PlanetManagerImplementation::travelFare[10][10] = {
 };
 
 const float PlanetManagerImplementation::windDirection[8][2] = {
-		{0.0f, 1.0f},
-		{1.0f, 1.0f},
-		{1.0f, 0.0f},
-		{1.0f, -1.0f},
-		{0.0f, -1.0f},
-		{-1.0f, -1.0f},
-		{-1.0f, 0.0f},
-		{-1.0f, 1.0f}
+		{0.0f, 1.0f},    //N
+		{1.0f, 1.0f},   //NE
+		{1.0f, 0.0f},    //E
+		{1.0f, -1.0f},  //SE
+		{0.0f, -1.0f},   //S
+		{-1.0f, -1.0f}, //SW
+		{-1.0f, 0.0f},   //W
+		{-1.0f, 1.0f}   //NW
 };
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* serv) :
@@ -883,10 +883,24 @@ void PlanetManagerImplementation::weatherTransition(int direction) {
 
 void PlanetManagerImplementation::weatherWindChange() {
 	if (windRow == 0) {
-		windRow = 1;
+		switch (System::random(1)) {
+			case 0:
+				windRow = 1;
+				break;
+			case 1:
+				windRow = 7;
+				break;
+		}
 
 	} else if (windRow == 7) {
-		windRow = 6;
+		switch (System::random(1)) {
+		case 0:
+			windRow = 6;
+			break;
+		case 1:
+			windRow = 0;
+			break;
+		}
 
 	} else if (windRow > 0 && windRow < 7){
 		switch (System::random(1)) {
@@ -899,7 +913,7 @@ void PlanetManagerImplementation::weatherWindChange() {
 		}
 
 	} else {
-		windRow = 3;
+		windRow = 2;
 	}
 	zone->setWeatherWindX(windDirection[windRow][0]);
     zone->setWeatherWindY(windDirection[windRow][1]);
@@ -958,17 +972,14 @@ void PlanetManagerImplementation::weatherUpdatePlayers() {
 
 void PlanetManagerImplementation::weatherRemoveEvents() {
 	if (weatherChangeEvent->isQueued()) {
-		System::out << "Removing weather change event from queue." << endl;
 		server->removeEvent(weatherChangeEvent);
 	}
 
 	if (weatherIncreaseEvent->isQueued()) {
-		System::out << "Removing weather increase event from queue." << endl;
 		server->removeEvent(weatherIncreaseEvent);
 	}
 
 	if (weatherDecreaseEvent->isQueued()) {
-		System::out << "Removing weather decrease event from queue." << endl;
 		server->removeEvent(weatherDecreaseEvent);
 	}
 }

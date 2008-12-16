@@ -606,6 +606,7 @@ interface CreatureObject implements SceneObject {
 	int getMeatMax();
 	int getMilk();
 	boolean hasOrganics();
+	int getCreatureHealth();
 
 	int getXP();
 

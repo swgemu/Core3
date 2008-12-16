@@ -73,6 +73,10 @@ public:
 	void sendTo(Player* player, bool doClose = true);
 	void broadcastMessage(BaseMessage* msg);
 
+	void sendSystemMessage(Player* player, const String& message, bool sendToSelf = false);
+	void sendSystemMessage(Player* player, const String& file, const String& str, uint64 targetid = 0, bool sendToSelf = false);
+	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param, bool sendToSelf = false);
+
 	void addPlayer(Player* player);
 	void removePlayer(Player* player);
 

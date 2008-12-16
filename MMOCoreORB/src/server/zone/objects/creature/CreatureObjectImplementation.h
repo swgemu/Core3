@@ -122,6 +122,7 @@ protected:
 	int hideMax;
 	int boneMax;
 	int meatMax;
+	int creatureHealth; // 1 = scrawny, 2 = skinny, 3 = medium, 4 = fat;
 
 	String creatureFaction;
 
@@ -542,6 +543,10 @@ public:
 	void setWillpowerWoundsBar(uint32 wounds);
 
 	void calculateHAMregen();
+
+	void doMeditateHeals();
+	void doMeditateWoundHeals();
+
 	float calculateBFRatio();
 
 	void activateBurstRun();
@@ -2143,6 +2148,10 @@ public:
 
 	inline int getMeatMax() {
 		return meatMax;
+	}
+
+	inline int getCreatureHealth() {
+		return creatureHealth;
 	}
 
 	inline String& getLootGroup() {

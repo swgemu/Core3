@@ -53,12 +53,61 @@ void GroupObject::broadcastMessage(BaseMessage* msg) {
 		((GroupObjectImplementation*) _impl)->broadcastMessage(msg);
 }
 
-void GroupObject::addPlayer(Player* player) {
+void GroupObject::sendSystemMessage(Player* player, const String& message, bool sendToSelf) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 8);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(message);
+		method.addBooleanParameter(sendToSelf);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->sendSystemMessage(player, message, sendToSelf);
+}
+
+void GroupObject::sendSystemMessage(Player* player, const String& file, const String& str, unsigned long long targetid, bool sendToSelf) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(file);
+		method.addAsciiParameter(str);
+		method.addUnsignedLongParameter(targetid);
+		method.addBooleanParameter(sendToSelf);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->sendSystemMessage(player, file, str, targetid, sendToSelf);
+}
+
+void GroupObject::sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param, bool sendToSelf) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(file);
+		method.addAsciiParameter(str);
+		method.addObjectParameter(param);
+		method.addBooleanParameter(sendToSelf);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->sendSystemMessage(player, file, str, param, sendToSelf);
+}
+
+void GroupObject::addPlayer(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -71,7 +120,7 @@ void GroupObject::removePlayer(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -84,7 +133,7 @@ void GroupObject::disband() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 13);
 
 		method.executeWithVoidReturn();
 	} else
@@ -96,7 +145,7 @@ void GroupObject::makeLeader(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -109,7 +158,7 @@ bool GroupObject::hasMember(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -122,7 +171,7 @@ void GroupObject::startChannel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 16);
 
 		method.executeWithVoidReturn();
 	} else
@@ -134,7 +183,7 @@ ChatRoom* GroupObject::getGroupChannel() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 17);
 
 		return (ChatRoom*) method.executeWithObjectReturn();
 	} else
@@ -146,7 +195,7 @@ int GroupObject::getListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -158,7 +207,7 @@ int GroupObject::getGroupSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -170,7 +219,7 @@ Player* GroupObject::getGroupMember(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 20);
 		method.addSignedIntParameter(index);
 
 		return (Player*) method.executeWithObjectReturn();
@@ -183,7 +232,7 @@ void GroupObject::addMember(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 21);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -196,7 +245,7 @@ Player* GroupObject::getLeader() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 22);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -208,7 +257,7 @@ unsigned int GroupObject::getListCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -220,7 +269,7 @@ unsigned int GroupObject::getNewListCount(int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 24);
 		method.addSignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -233,7 +282,7 @@ float GroupObject::getRangerBonusForHarvesting(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 25);
 		method.addObjectParameter(player);
 
 		return method.executeWithFloatReturn();
@@ -259,48 +308,57 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
 	case 8:
-		addPlayer((Player*) inv->getObjectParameter());
+		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSystemMessage__Player_String_bool_), inv->getBooleanParameter());
 		break;
 	case 9:
-		removePlayer((Player*) inv->getObjectParameter());
+		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSystemMessage__Player_String_String_long_bool_), inv->getAsciiParameter(_param2_sendSystemMessage__Player_String_String_long_bool_), inv->getUnsignedLongParameter(), inv->getBooleanParameter());
 		break;
 	case 10:
-		disband();
+		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSystemMessage__Player_String_String_StfParameter_bool_), inv->getAsciiParameter(_param2_sendSystemMessage__Player_String_String_StfParameter_bool_), (StfParameter*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 11:
-		makeLeader((Player*) inv->getObjectParameter());
+		addPlayer((Player*) inv->getObjectParameter());
 		break;
 	case 12:
-		resp->insertBoolean(hasMember((Player*) inv->getObjectParameter()));
+		removePlayer((Player*) inv->getObjectParameter());
 		break;
 	case 13:
-		startChannel();
+		disband();
 		break;
 	case 14:
-		resp->insertLong(getGroupChannel()->_getObjectID());
+		makeLeader((Player*) inv->getObjectParameter());
 		break;
 	case 15:
-		resp->insertSignedInt(getListSize());
+		resp->insertBoolean(hasMember((Player*) inv->getObjectParameter()));
 		break;
 	case 16:
-		resp->insertSignedInt(getGroupSize());
+		startChannel();
 		break;
 	case 17:
-		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertLong(getGroupChannel()->_getObjectID());
 		break;
 	case 18:
-		addMember((Player*) inv->getObjectParameter());
+		resp->insertSignedInt(getListSize());
 		break;
 	case 19:
-		resp->insertLong(getLeader()->_getObjectID());
+		resp->insertSignedInt(getGroupSize());
 		break;
 	case 20:
-		resp->insertInt(getListCount());
+		resp->insertLong(getGroupMember(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 21:
-		resp->insertInt(getNewListCount(inv->getSignedIntParameter()));
+		addMember((Player*) inv->getObjectParameter());
 		break;
 	case 22:
+		resp->insertLong(getLeader()->_getObjectID());
+		break;
+	case 23:
+		resp->insertInt(getListCount());
+		break;
+	case 24:
+		resp->insertInt(getNewListCount(inv->getSignedIntParameter()));
+		break;
+	case 25:
 		resp->insertFloat(getRangerBonusForHarvesting((Player*) inv->getObjectParameter()));
 		break;
 	default:
@@ -316,6 +374,18 @@ void GroupObjectAdapter::sendTo(Player* player) {
 
 void GroupObjectAdapter::broadcastMessage(BaseMessage* msg) {
 	return ((GroupObjectImplementation*) impl)->broadcastMessage(msg);
+}
+
+void GroupObjectAdapter::sendSystemMessage(Player* player, const String& message, bool sendToSelf) {
+	return ((GroupObjectImplementation*) impl)->sendSystemMessage(player, message, sendToSelf);
+}
+
+void GroupObjectAdapter::sendSystemMessage(Player* player, const String& file, const String& str, unsigned long long targetid, bool sendToSelf) {
+	return ((GroupObjectImplementation*) impl)->sendSystemMessage(player, file, str, targetid, sendToSelf);
+}
+
+void GroupObjectAdapter::sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param, bool sendToSelf) {
+	return ((GroupObjectImplementation*) impl)->sendSystemMessage(player, file, str, param, sendToSelf);
 }
 
 void GroupObjectAdapter::addPlayer(Player* player) {

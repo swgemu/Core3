@@ -344,6 +344,10 @@ void ObjectControllerMessage::parseObjectTargetUpdate(Player* player,
 void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		Message* pack, ZoneProcessServerImplementation* serv) {
 
+	/**
+	 * Player is wlock() upon entry
+	 */
+
 	//cout << pack->toString() << "\n";
 
 	pack->shiftOffset(12); // skip ObjectID and size
@@ -442,8 +446,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		handleRemoveFromGuild(player, pack, serv);
 		break;
 	case (0x124629F2): // Meditating
-		parseMeditation(player);
-		player->queueAction(player, target, actionCRC, actioncntr, "");
+	    if (parseMeditation(player))
+	    	player->queueAction(player, target, actionCRC, actioncntr, "");
 		break;
 	case (0x8C2221CB): // Powerboost
 		if (!player->hasSkill(actionCRC)) {
@@ -4035,23 +4039,32 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 	if (creature == NULL)
 		return;
 
-	int type = 0;
+	try {
 
-	UnicodeString restype;
-	pack->parseUnicode(restype);
+		creature->wlock();
 
-	String resourceType = restype.toString();
+		int type = 0;
 
-	if (resourceType == "meat")
-		type = 1;
+		UnicodeString restype;
+		pack->parseUnicode(restype);
 
-	if (resourceType == "hide")
-		type = 2;
+		String resourceType = restype.toString();
 
-	if (resourceType == "bone")
-		type = 3;
+		if (resourceType == "meat")
+			type = 1;
 
-	resourceManager->harvestOrganics(player, creature, type);
+		if (resourceType == "hide")
+			type = 2;
+
+		if (resourceType == "bone")
+			type = 3;
+
+		resourceManager->harvestOrganics(player, creature, type);
+
+		creature->unlock();
+	} catch (...) {
+		creature->unlock();
+	}
 }
 
 void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
@@ -4077,23 +4090,23 @@ void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pac
 	player->wlock();
 }
 
-void ObjectControllerMessage::parseMeditation(Player* player) {
+bool ObjectControllerMessage::parseMeditation(Player* player) {
 
 	if (player->isMounted() ||
 		player->isDizzied() ||
 		player->isInCombat() ||
 		player->isKnockedDown() ) {
 
-		player->sendSystemMessage("@teraskasi:med_fail");
-
-		return;
+		player->sendSystemMessage("teraskasi", "med_fail");
+		return false;
 	}
-
 
 	if (player->getMeditate()) {
 		player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
+		return false;
 	} else {
 		player->sendSystemMessage("teraskasi", "med_begin");
+		return true;
 	}
 }
 
