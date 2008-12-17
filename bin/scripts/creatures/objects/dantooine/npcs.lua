@@ -55,7 +55,7 @@
  RunCreatureFile("objects/dantooine/npcs/forceSens/forceSensitiveRenegade.lua")
  RunCreatureFile("objects/dantooine/npcs/forceSens/forceTrainedArchaist.lua")
  RunCreatureFile("objects/dantooine/npcs/forceSens/forsakenForceDrifter.lua")
- RunCreatureFile("objects/dantooine/npcs/forceSens/noviceForceMystic.lua")
+ --RunCreatureFile("objects/dantooine/npcs/forceSens/noviceForceMystic.lua") --Find CRC
  RunCreatureFile("objects/dantooine/npcs/forceSens/untrainedWielderOfTheDarkSide.lua")
 
  --Jantas

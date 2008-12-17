@@ -39,7 +39,8 @@
 --it is their choice whether to do so. The GNU Lesser General Public License 
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
---which carries forward this exception.
+--which carries forward this exception. 
+
 shadowPirate = Creature:new {
 	objectName = "shadowPirate",  -- Lua Object Name
 	creatureType = "NPC",
@@ -133,10 +134,10 @@ shadowPirate = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "sithShadowAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(shadowPirate, 2218397788) --  Add to Global Table
+Creatures:addCreature(shadowPirate, 2218397788) -- Add to Global Table
