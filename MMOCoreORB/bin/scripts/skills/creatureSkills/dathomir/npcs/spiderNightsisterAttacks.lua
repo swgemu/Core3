@@ -40,11 +40,36 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
- -- Load files
+spiderNightsisterAttack1 = {
+        attackname = "spiderNightsisterAttack1",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
 
- -- Dathomir
- RunSkillsFile("creatureSkills/dathomir/npcs/nightsisterAttacks.lua")
- RunSkillsFile("creatureSkills/dathomir/npcs/singingMountainClanAttacks.lua")
- RunSkillsFile("creatureSkills/dathomir/npcs/spiderNightsisterAttacks.lua")
- RunSkillsFile("creatureSkills/dathomir/npcs/sithShadowAttacks.lua")
- RunSkillsFile("creatureSkills/dathomir/npcs/villageAttacks.lua")
+        range = 10,
+
+        damageRatio = 10,
+
+        speedRatio = 4,
+
+        areaRange = 0,
+        accuracyBonus = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(spiderNightsisterAttack1)
+
+---------------------------------------------------------------------------------------
