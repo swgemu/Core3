@@ -62,7 +62,7 @@ public:
 		groupLists();
 		
 		insertAscii("");
-		insertShort(0);
+		insertShort((uint16)gr->getGroupLevel());
 		insertInt(0);
 		insertLong(0);
 		insertInt(0);

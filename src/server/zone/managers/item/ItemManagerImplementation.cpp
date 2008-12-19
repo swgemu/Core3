@@ -600,11 +600,11 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 				conti->addObject(item);
 			}
 		}
-	} else if (player != NULL)
+	} else if (player != NULL) 
 		((CreatureObject*)player)->addInventoryItem(item);
 
 	if(item->isEquipped())
-		player->equipPlayerItem(item);
+		player->equipPlayerItem(item, false);
 
 	return item;
 }

@@ -13,6 +13,8 @@
 
 #include "../../packets/object/StfParameter.h"
 
+#include "professions/SkillBox.h"
+
 class ZoneClientSession;
 
 class Zone;
@@ -287,7 +289,7 @@ public:
 
 	void changeCloth(unsigned long long itemid);
 
-	void changeWeapon(unsigned long long itemid);
+	void changeWeapon(unsigned long long itemid, bool doUpdate);
 
 	void changeArmor(unsigned long long itemid, bool forced);
 
@@ -315,7 +317,7 @@ public:
 
 	void addInventoryResource(ResourceContainer* item);
 
-	void equipPlayerItem(TangibleObject* item);
+	void equipPlayerItem(TangibleObject* item, bool doUpdate);
 
 	void saveDatapad(Player* player);
 
@@ -353,6 +355,8 @@ public:
 
 	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const String& attribute);
 
+	int getXp(const String& xpType);
+
 	void addXp(String& xpType, int xp, bool updateClient);
 
 	void removeXp(String& xpType, int xp, bool updateClient);
@@ -360,6 +364,12 @@ public:
 	void loadXp(const String& xpStr);
 
 	String& saveXp();
+
+	int getXpTypeCap(String& xptype);
+
+	void loadXpTypeCap();
+
+	int calcPlayerLevel(String& xptype);
 
 	void removeFromDuelList(Player* targetPlayer);
 
@@ -723,6 +733,10 @@ public:
 
 	void clearEntertainerEvent();
 
+	void addEntertainerFlourishXp(int xp);
+
+	void addEntertainerHealingXp(int xp);
+
 	void setLastNpcConvStr(const String& conv);
 
 	void setLastNpcConvMessStr(const String& mess);
@@ -730,6 +744,14 @@ public:
 	String& getLastNpcConvStr();
 
 	String& getLastNpcConvMessStr();
+
+	String& getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const String& option);
+
+	void clearLastNpcConvOptions();
+
+	int countLastNpcConvOptions();
 
 	void setInputBoxReturnBuffer(const String& message);
 
@@ -779,6 +801,30 @@ public:
 
 	unsigned long long getResourceDeedID();
 
+	void setImagedesignXpGiven(bool given);
+
+	bool getImagedesignXpGiven();
+
+	void teachPlayer(Player* player);
+
+	void setTeachingOffer(String& sBox);
+
+	void setTeacher(Player* player);
+
+	void setStudent(Player* player);
+
+	String& getTeachingOffer();
+
+	Player* getTeacher();
+
+	Player* getStudent();
+
+	String& getTeachingSkillOption(int idx);
+
+	void clearTeachingSkillOptions();
+
+	void teachSkill(String& skillname);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -792,10 +838,13 @@ protected:
 	String _return_getInputBoxReturnBuffer;
 	String _return_getLastName;
 	String _return_getLastNpcConvMessStr;
+	String _return_getLastNpcConvOption;
 	String _return_getLastNpcConvStr;
 	String _return_getNextSkillBox;
 	String _return_getRaceFileName;
 	String _return_getStartingProfession;
+	String _return_getTeachingOffer;
+	String _return_getTeachingSkillOption;
 	String _return_saveXp;
 
 	UnicodeString _return_getBiography;
@@ -1029,7 +1078,7 @@ public:
 
 	void changeCloth(unsigned long long itemid);
 
-	void changeWeapon(unsigned long long itemid);
+	void changeWeapon(unsigned long long itemid, bool doUpdate);
 
 	void changeArmor(unsigned long long itemid, bool forced);
 
@@ -1057,7 +1106,7 @@ public:
 
 	void addInventoryResource(ResourceContainer* item);
 
-	void equipPlayerItem(TangibleObject* item);
+	void equipPlayerItem(TangibleObject* item, bool doUpdate);
 
 	void saveDatapad(Player* player);
 
@@ -1095,6 +1144,8 @@ public:
 
 	void queueHeal(TangibleObject* medpack, unsigned int actionCRC, const String& attribute);
 
+	int getXp(const String& xpType);
+
 	void addXp(String& xpType, int xp, bool updateClient);
 
 	void removeXp(String& xpType, int xp, bool updateClient);
@@ -1102,6 +1153,12 @@ public:
 	void loadXp(const String& xpStr);
 
 	String& saveXp();
+
+	int getXpTypeCap(String& xptype);
+
+	void loadXpTypeCap();
+
+	int calcPlayerLevel(String& xptype);
 
 	void removeFromDuelList(Player* targetPlayer);
 
@@ -1465,6 +1522,10 @@ public:
 
 	void clearEntertainerEvent();
 
+	void addEntertainerFlourishXp(int xp);
+
+	void addEntertainerHealingXp(int xp);
+
 	void setLastNpcConvStr(const String& conv);
 
 	void setLastNpcConvMessStr(const String& mess);
@@ -1472,6 +1533,14 @@ public:
 	String& getLastNpcConvStr();
 
 	String& getLastNpcConvMessStr();
+
+	String& getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const String& option);
+
+	void clearLastNpcConvOptions();
+
+	int countLastNpcConvOptions();
 
 	void setInputBoxReturnBuffer(const String& message);
 
@@ -1521,6 +1590,30 @@ public:
 
 	unsigned long long getResourceDeedID();
 
+	void setImagedesignXpGiven(bool given);
+
+	bool getImagedesignXpGiven();
+
+	void teachPlayer(Player* player);
+
+	void setTeachingOffer(String& sBox);
+
+	void setTeacher(Player* player);
+
+	void setStudent(Player* player);
+
+	String& getTeachingOffer();
+
+	Player* getTeacher();
+
+	Player* getStudent();
+
+	String& getTeachingSkillOption(int idx);
+
+	void clearTeachingSkillOptions();
+
+	void teachSkill(String& skillname);
+
 protected:
 	String _param0_queueFlourish__String_long_int_;
 	String _param4_queueAction__Player_long_int_int_String_;
@@ -1532,9 +1625,12 @@ protected:
 	String _param0_hasSkillBox__String_;
 	String _param1_searchWaypoint__Player_String_int_;
 	String _param2_queueHeal__TangibleObject_int_String_;
+	String _param0_getXp__String_;
 	String _param0_addXp__String_int_bool_;
 	String _param0_removeXp__String_int_bool_;
 	String _param0_loadXp__String_;
+	String _param0_getXpTypeCap__String_;
+	String _param0_calcPlayerLevel__String_;
 	String _param0_sendSystemMessage__String_;
 	UnicodeString _param0_sendSystemMessage__UnicodeString_;
 	String _param0_sendSystemMessage__String_String_long_;
@@ -1576,12 +1672,15 @@ protected:
 	String _param3_sendMail__String_UnicodeString_UnicodeString_String_;
 	String _param0_setLastNpcConvStr__String_;
 	String _param0_setLastNpcConvMessStr__String_;
+	String _param0_addLastNpcConvOptions__String_;
 	String _param0_setInputBoxReturnBuffer__String_;
 	String _param0_getFactionPoints__String_;
 	String _param0_addFactionPoints__String_int_;
 	String _param0_subtractFactionPoints__String_int_;
 	String _param0_getMaxFactionPoints__String_;
 	String _param0_addSuiBoxChoice__String_;
+	String _param0_setTeachingOffer__String_;
+	String _param0_teachSkill__String_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

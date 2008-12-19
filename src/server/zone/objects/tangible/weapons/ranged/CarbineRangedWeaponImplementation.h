@@ -51,12 +51,12 @@ class CarbineRangedWeaponImplementation : public CarbineRangedWeaponServant {
 	
 public:
 	CarbineRangedWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
-			: CarbineRangedWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::CARBINE, eqp) {
+			: CarbineRangedWeaponServant(objid, tempcrc, n, tempn, CARBINE, eqp) {
 		initialize();
 	}
 
 	CarbineRangedWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
-			: CarbineRangedWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::CARBINE, eqp) {
+			: CarbineRangedWeaponServant(creature, temp, n, tempn, CARBINE, eqp) {
 		initialize();
 	}
 

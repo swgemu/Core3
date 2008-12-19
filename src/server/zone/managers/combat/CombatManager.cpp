@@ -1042,3 +1042,4 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 
 	return defense - (uint32)(defense * targetCreature->calculateBFRatio());
 }
+

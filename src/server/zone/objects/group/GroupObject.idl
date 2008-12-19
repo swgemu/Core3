@@ -91,4 +91,8 @@ interface GroupObject implements SceneObject {
 	unsigned int getNewListCount(int cnt);
 
 	float getRangerBonusForHarvesting(Player player);
+
+	void calcGroupLevel();
+	
+	int getGroupLevel();
 }

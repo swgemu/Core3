@@ -41,98 +41,76 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
-
-#ifndef GROUPOBJECTIMPLEMENTATION_H_
-#define GROUPOBJECTIMPLEMENTATION_H_
+#ifndef DAMAGEDONE_H_
+#define DAMAGEDONE_H_
 
 #include "engine/engine.h"
 
-#include "../scene/SceneObject.h"
-#include "../scene/SceneObjectImplementation.h"
-
-#include "../player/Player.h"
-
-#include "../../../chat/room/ChatRoom.h"
-
-#include "GroupObject.h"
-
-class CreatureObject;
-
-class GroupObjectImplementation : public GroupObjectServant {
-	Player* leader;
-
-	Vector<Player*> groupMembers;
-
-	uint32 listCount;
-
-	ChatRoom* groupChannel;
+class DamageDone {
+	protected:
+	VectorMap<String, int> xpDamage;
+	VectorMap<String, int> xpLevel;
 	
-	int groupLevel;
-
-public:
-	GroupObjectImplementation(uint64 oid, Player* Leader);
-
-	void sendTo(Player* player, bool doClose = true);
-	void broadcastMessage(BaseMessage* msg);
-
-	void sendSystemMessage(Player* player, const String& message, bool sendToSelf = false);
-	void sendSystemMessage(Player* player, const String& file, const String& str, uint64 targetid = 0, bool sendToSelf = false);
-	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param, bool sendToSelf = false);
-
-	void addPlayer(Player* player);
-	void removePlayer(Player* player);
-
-	void disband();
-	void makeLeader(Player* player);
-
-	bool hasMember(Player* player);
-
-	void startChannel();
-
-	float getRangerBonusForHarvesting(Player* player);
+	int totalDamage;
 	
-	void calcGroupLevel();
+	public:
+	DamageDone() {
+		xpDamage.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+		xpLevel.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+		
+		xpDamage.removeAll();
+		xpLevel.removeAll();
+
+		totalDamage = 0;
+	}
 	
-	int getGroupLevel() {
-		return groupLevel;
+	~DamageDone() {
+		xpDamage.removeAll();
+		xpLevel.removeAll();
 	}
+	
+	void addDamage( String xptype, int damage, int level ) {
+		totalDamage += damage;
+		
+		if (xpDamage.contains(xptype)) {
+			damage += xpDamage.get(xptype);
+			xpDamage.drop(xptype);
+		}
 
-	ChatRoom* getGroupChannel() {
-		return groupChannel;
+		xpDamage.put(xptype, damage);
+
+		if (!xpLevel.contains(xptype))
+			xpLevel.put(xptype, level);
 	}
-
-	inline int getListSize() {
-		return groupMembers.size();
+	
+	int getSize() {
+		return xpDamage.size();
 	}
-
-	inline int getGroupSize() {
-		return groupMembers.size();
+	
+	String getXpType(int idx) {
+		VectorMapEntry<String, int> *entry = xpDamage.SortedVector<VectorMapEntry<String, int>*>::get(idx);
+		return entry->getKey();
 	}
-
-	inline Player* getGroupMember(int index) {
-		return groupMembers.get(index);
+	
+	int getDamage(int idx) {
+		return xpDamage.get(idx);
 	}
-
-	void addMember(Player* player) {
-		groupMembers.add(player);
+	
+	int getDamage(String xptype) {
+		return xpDamage.get(xptype);
 	}
-
-	inline Player* getLeader() {
-		return leader;
+	
+	int getLevel(int idx) {
+		return xpLevel.get(idx);
 	}
-
-	inline uint32 getListCount() {
-		return listCount;
+	
+	int getLevel(String xptype) {
+		return xpLevel.get(xptype);
 	}
-
-	inline uint32 getNewListCount(int cnt) {
-		return listCount += cnt;
+	
+	int getTotalDamage() {
+		return totalDamage;
 	}
-
-	friend class GroupObjectMessage3;
-	friend class GroupObjectMessage6;
-
-	friend class GroupObjectDeltaMessage6;
 };
 
-#endif /*GROUPOBJECTIMPLEMENTATION_H_*/
+#endif /*DAMAGEDONE_H_*/

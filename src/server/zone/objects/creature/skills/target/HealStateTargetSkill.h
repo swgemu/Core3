@@ -224,14 +224,6 @@ public:
 			return;
 
 		player->addXp(type, amount, true);
-
-		// Capitalize first letter.
-		type = Character::toUpperCase(type.charAt(0)) +
-			type.subString(1, type.length()).toLowerCase();
-
-		StringBuffer msgExperience;
-		msgExperience << "You receive " << amount << " points of " << type << " experience.";
-		player->sendSystemMessage(msgExperience.toString());
 	}
 
 	void sendStateMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint64 state) {

@@ -27,20 +27,20 @@ TrainerCreature::TrainerCreature(DummyConstructorParameter* param) : Creature(pa
 TrainerCreature::~TrainerCreature() {
 }
 
-void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
+void TrainerCreature::sendInitialMessage(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
-		method.addObjectParameter(obj);
+		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->sendConversationStartTo(obj);
+		((TrainerCreatureImplementation*) _impl)->sendInitialMessage(player);
 }
 
-void TrainerCreature::sendSkillBoxes(Player* player) {
+void TrainerCreature::sendInitialChoices(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -50,7 +50,61 @@ void TrainerCreature::sendSkillBoxes(Player* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((TrainerCreatureImplementation*) _impl)->sendSkillBoxes(player);
+		((TrainerCreatureImplementation*) _impl)->sendInitialChoices(player);
+}
+
+void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((TrainerCreatureImplementation*) _impl)->sendConversationStartTo(obj);
+}
+
+void TrainerCreature::sendSkillBoxes(Player* player, bool checkXp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+		method.addBooleanParameter(checkXp);
+
+		method.executeWithVoidReturn();
+	} else
+		((TrainerCreatureImplementation*) _impl)->sendSkillBoxes(player, checkXp);
+}
+
+void TrainerCreature::sendSkillBoxList(Player* player, bool checkLearned) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addObjectParameter(player);
+		method.addBooleanParameter(checkLearned);
+
+		method.executeWithVoidReturn();
+	} else
+		((TrainerCreatureImplementation*) _impl)->sendSkillBoxList(player, checkLearned);
+}
+
+void TrainerCreature::sendConfirmation(Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((TrainerCreatureImplementation*) _impl)->sendConfirmation(player);
 }
 
 void TrainerCreature::selectConversationOption(int option, SceneObject* obj) {
@@ -58,7 +112,7 @@ void TrainerCreature::selectConversationOption(int option, SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 12);
 		method.addSignedIntParameter(option);
 		method.addObjectParameter(obj);
 
@@ -79,12 +133,24 @@ Packet* TrainerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 
 	switch (methid) {
 	case 6:
-		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
+		sendInitialMessage((Player*) inv->getObjectParameter());
 		break;
 	case 7:
-		sendSkillBoxes((Player*) inv->getObjectParameter());
+		sendInitialChoices((Player*) inv->getObjectParameter());
 		break;
 	case 8:
+		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 9:
+		sendSkillBoxes((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 10:
+		sendSkillBoxList((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 11:
+		sendConfirmation((Player*) inv->getObjectParameter());
+		break;
+	case 12:
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -94,12 +160,28 @@ Packet* TrainerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	return resp;
 }
 
+void TrainerCreatureAdapter::sendInitialMessage(Player* player) {
+	return ((TrainerCreatureImplementation*) impl)->sendInitialMessage(player);
+}
+
+void TrainerCreatureAdapter::sendInitialChoices(Player* player) {
+	return ((TrainerCreatureImplementation*) impl)->sendInitialChoices(player);
+}
+
 void TrainerCreatureAdapter::sendConversationStartTo(SceneObject* obj) {
 	return ((TrainerCreatureImplementation*) impl)->sendConversationStartTo(obj);
 }
 
-void TrainerCreatureAdapter::sendSkillBoxes(Player* player) {
-	return ((TrainerCreatureImplementation*) impl)->sendSkillBoxes(player);
+void TrainerCreatureAdapter::sendSkillBoxes(Player* player, bool checkXp) {
+	return ((TrainerCreatureImplementation*) impl)->sendSkillBoxes(player, checkXp);
+}
+
+void TrainerCreatureAdapter::sendSkillBoxList(Player* player, bool checkLearned) {
+	return ((TrainerCreatureImplementation*) impl)->sendSkillBoxList(player, checkLearned);
+}
+
+void TrainerCreatureAdapter::sendConfirmation(Player* player) {
+	return ((TrainerCreatureImplementation*) impl)->sendConfirmation(player);
 }
 
 void TrainerCreatureAdapter::selectConversationOption(int option, SceneObject* obj) {

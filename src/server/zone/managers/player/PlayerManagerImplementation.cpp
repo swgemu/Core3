@@ -490,8 +490,6 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	hair.decode(hData);
 	player->setHairAppearance(hData);
 
-	player->loadXp(character->getString(60));
-
 	int raceID = character->getInt(7);
 
 	player->setRaceID(raceID);
@@ -546,6 +544,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->resetHAMBars(false);
 
 	player->loadProfessions();
+	player->loadXp(character->getString(60)); // put this here to avoid cap confusions
 
 	PlanetManager* planetManager = zne->getPlanetManager();
 	StructureManager* structureManager = planetManager->getStructureManager();

@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "PlayerObject.h"
 
 #include "professions/SkillBoxMap.h"
+#include "professions/SkillBox.h"
 #include "professions/XpMap.h"
 
 #include "badges/Badges.h"
@@ -160,7 +161,9 @@ class PlayerImplementation : public PlayerServant {
 	SkillBoxMap skillBoxes;
 	SortedVector<SkillBox*> skillBoxesToSave;
 	VectorMap<String, Certification*> certificationList;
+	VectorMap<String, int> xpCapList;
 	int skillPoints;
+	int playerLevel;
 
 	// Draft Schematics
 	uint32 draftSchematicUpdateCount;
@@ -249,6 +252,7 @@ class PlayerImplementation : public PlayerServant {
 	//npc conversation
 	String lastNpcConvoMessage;
 	String lastNpcConvo;
+	Vector<String> lastNpcConvoOptions;
 
 	// Stat Migration Targets
 	uint32 targetHealth;
@@ -264,6 +268,13 @@ class PlayerImplementation : public PlayerServant {
 	Vector<String> consentList;
 
 	uint16 characterMask;
+	
+	bool imagedesignXpGiven;
+	
+	Vector<SkillBox*> teachingSkillList;
+	Player* teachingTarget;
+	Player* teachingTrainer;
+	SkillBox* teachingOffer;
 
 public:
 	static const int ONLINE = 1;
@@ -525,7 +536,7 @@ public:
 	void addInventoryItem(TangibleObject* item);
 	void addInventoryResource(ResourceContainer* item);
 
-	void equipPlayerItem(TangibleObject* item);
+	void equipPlayerItem(TangibleObject* item, bool doUpdate = true);
 
 	SceneObject* getPlayerItem(uint64 oid);
 
@@ -944,7 +955,7 @@ public:
 
 	// item methods
 	void changeCloth(uint64 itemid);
-	void changeWeapon(uint64 itemid);
+	void changeWeapon(uint64 itemid, bool doUpdate = true);
 	void changeArmor(uint64 itemid, bool forced);
 
 	void setWeaponSkillMods(Weapon* weapon);
@@ -1118,6 +1129,9 @@ public:
 		skillPoints -= sPoints;
 	}
 
+	int getXp(const String& xpType) {
+		return playerObject->getExperience(xpType);
+	}
 	void addXp(const String& xpType, int xp, bool updateClient) {
 		playerObject->addExperience(xpType, xp, updateClient);
 	}
@@ -1130,6 +1144,9 @@ public:
 	String& saveXp() {
 		return playerObject->saveExperience();
 	}
+	int getXpTypeCap(String xptype);
+	void loadXpTypeCap();
+	int calcPlayerLevel(String xptype);
 
 	void addSkillBox(SkillBox* skillBox, bool updateClient = false);
 	void removeSkillBox(SkillBox* skillBox, bool updateClient = false);
@@ -1628,6 +1645,8 @@ public:
 
 	// Entertainer tick
 	void setEntertainerEvent();
+	void addEntertainerFlourishXp(int xp);
+	void addEntertainerHealingXp(int xp);
 
 	//NPC Conversation Methods
 	inline void setLastNpcConvStr(const String& conv) {
@@ -1644,6 +1663,22 @@ public:
 
 	inline String& getLastNpcConvMessStr() {
 		return lastNpcConvoMessage;
+	}
+	
+	inline String& getLastNpcConvOption(int idx) {
+		return lastNpcConvoOptions.get(idx);
+	}
+	
+	inline void addLastNpcConvOptions(const String& option) {
+		lastNpcConvoOptions.add(option);
+	}
+
+	inline int countLastNpcConvOptions() {
+		return lastNpcConvoOptions.size();
+	}
+	
+	inline void clearLastNpcConvOptions() {
+		lastNpcConvoOptions.removeAll();
 	}
 
 	inline void setCurrentStructureID(uint64 oid){
@@ -1680,6 +1715,50 @@ public:
 	}
 
 	void delFactionPoints(Player * player, uint32 amount);
+	
+	inline void setImagedesignXpGiven(bool given) {
+		imagedesignXpGiven = given;
+	}
+	
+	inline bool getImagedesignXpGiven() {
+		return imagedesignXpGiven;
+	}
+	
+	void teachPlayer(Player* player);
+	
+	void setTeachingOffer(String& sBox) {
+		teachingOffer = server->getProfessionManager()->getSkillBox(sBox);
+	}
+	
+	void setTeacher(Player* player) {
+		teachingTrainer = player;
+	}
+	
+	void setStudent(Player* player) {
+		teachingTarget = player;
+	}
+	
+	String& getTeachingOffer() {
+		return teachingOffer->getName();
+	}
+	
+	Player* getTeacher() {
+		return teachingTrainer;
+	}
+	
+	Player* getStudent() {
+		return teachingTarget;
+	}
+	
+	String& getTeachingSkillOption(int idx) {
+		return teachingSkillList.get(idx)->getName();
+	}
+	
+	void clearTeachingSkillOptions() {
+		teachingSkillList.removeAll();
+	}
+	
+	void teachSkill(String& skillname);
 
 	void updateWeather();
 

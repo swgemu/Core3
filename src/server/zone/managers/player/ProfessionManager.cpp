@@ -511,3 +511,4 @@ void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, String& grantedD
 		}
 	}
 }
+

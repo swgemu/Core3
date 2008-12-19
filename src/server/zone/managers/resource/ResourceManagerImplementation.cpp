@@ -759,7 +759,8 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 		creature->removePlayerFromHarvestList(player->getFirstName());
 
 		String xpType = "scout";
-		int xp = int(creatureObj->getXP() * .1f);
+		//int xp = int(creatureObj->getXP() * .1f);
+		int xp = int(creatureObj->getLevel() * 10);
 
 		player->addXp(xpType, xp, true);
 	}

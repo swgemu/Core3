@@ -45,6 +45,7 @@ which carries forward this exception.
 include "engine/service/proto/BaseMessage";
 include "engine/service/proto/StandaloneBaseMessage";
 include "../../packets/object/StfParameter";
+include "professions/SkillBox";
 
 import "../../ZoneClientSession";
 import "../../Zone";
@@ -261,7 +262,7 @@ interface Player implements CreatureObject {
 
 	// Item manipulation methods
 	void changeCloth(unsigned long itemid);
-	void changeWeapon(unsigned long itemid);
+	void changeWeapon(unsigned long itemid, boolean doUpdate);
 	void changeArmor(unsigned long itemid, boolean forced);
 
 	void setWeaponSkillMods(Weapon weapon);
@@ -283,7 +284,7 @@ interface Player implements CreatureObject {
 
 	void addInventoryItem(TangibleObject item);
 	void addInventoryResource(ResourceContainer item);
-	void equipPlayerItem(TangibleObject item);
+	void equipPlayerItem(TangibleObject item, boolean doUpdate);
 
 	void saveDatapad(Player player);
 
@@ -315,10 +316,14 @@ interface Player implements CreatureObject {
 
 
 	// Experience
+	int getXp(const String xpType);
 	void addXp(String xpType, int xp, boolean updateClient);
 	void removeXp(String xpType, int xp, boolean updateClient);
 	void loadXp(const String xpStr);
 	String saveXp();
+	int getXpTypeCap(String xptype);
+	void loadXpTypeCap();
+	int calcPlayerLevel(String xptype);
 
 	//DuelList manipulation methods
 	void removeFromDuelList(Player targetPlayer);
@@ -621,6 +626,8 @@ interface Player implements CreatureObject {
 
 	void setEntertainerEvent();
 	void clearEntertainerEvent();
+	void addEntertainerFlourishXp(int xp);
+	void addEntertainerHealingXp(int xp);
 
 	void setLastNpcConvStr(const String conv);
 	void setLastNpcConvMessStr(const String mess);
@@ -628,8 +635,13 @@ interface Player implements CreatureObject {
 	String getLastNpcConvStr();
 	String getLastNpcConvMessStr();
 
+	String getLastNpcConvOption(int idx);
+	void addLastNpcConvOptions(const String option);
+	void clearLastNpcConvOptions();
+	int countLastNpcConvOptions();
+	
 	void setInputBoxReturnBuffer(const String message);
-
+	
 	void setGuildLeader(boolean guildLeader = true);
 
 	void loadGuildChat();
@@ -669,4 +681,18 @@ interface Player implements CreatureObject {
 
 	unsigned long getResourceDeedID();
 
+	void setImagedesignXpGiven(boolean given);
+	boolean getImagedesignXpGiven();
+
+	void teachPlayer(Player player);
+	void setTeachingOffer(String sBox);
+	void setTeacher(Player player);
+	void setStudent(Player player);
+	String getTeachingOffer();
+	Player getTeacher();
+	Player getStudent();
+	String getTeachingSkillOption(int idx);
+	void clearTeachingSkillOptions();
+	void teachSkill(String skillname);
+	
 }

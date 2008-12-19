@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#include "../object/StfParameter.h"
+
 class SuiCreatePageMessage : public BaseMessage {
 public:
    SuiCreatePageMessage(uint32 pageID) : BaseMessage() {

@@ -290,6 +290,30 @@ float GroupObject::getRangerBonusForHarvesting(Player* player) {
 		return ((GroupObjectImplementation*) _impl)->getRangerBonusForHarvesting(player);
 }
 
+void GroupObject::calcGroupLevel() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		method.executeWithVoidReturn();
+	} else
+		((GroupObjectImplementation*) _impl)->calcGroupLevel();
+}
+
+int GroupObject::getGroupLevel() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((GroupObjectImplementation*) _impl)->getGroupLevel();
+}
+
 /*
  *	GroupObjectAdapter
  */
@@ -360,6 +384,12 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 25:
 		resp->insertFloat(getRangerBonusForHarvesting((Player*) inv->getObjectParameter()));
+		break;
+	case 26:
+		calcGroupLevel();
+		break;
+	case 27:
+		resp->insertSignedInt(getGroupLevel());
 		break;
 	default:
 		return NULL;
@@ -446,6 +476,14 @@ unsigned int GroupObjectAdapter::getNewListCount(int cnt) {
 
 float GroupObjectAdapter::getRangerBonusForHarvesting(Player* player) {
 	return ((GroupObjectImplementation*) impl)->getRangerBonusForHarvesting(player);
+}
+
+void GroupObjectAdapter::calcGroupLevel() {
+	return ((GroupObjectImplementation*) impl)->calcGroupLevel();
+}
+
+int GroupObjectAdapter::getGroupLevel() {
+	return ((GroupObjectImplementation*) impl)->getGroupLevel();
 }
 
 /*

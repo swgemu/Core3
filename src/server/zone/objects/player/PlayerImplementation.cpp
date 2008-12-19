@@ -94,6 +94,9 @@ which carries forward this exception.
 #include "../creature/events/DizzyFallDownEvent.h"
 
 #include "professions/Certification.h"
+#include "professions/profession/FourByFourProfession.h"
+#include "professions/profession/OneByFourProfession.h"
+#include "professions/profession/PyramidProfession.h"
 
 #include "../../managers/combat/CommandQueueAction.h"
 #include "../../managers/skills/SkillManager.h"
@@ -103,10 +106,12 @@ PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 	//zoneID = 8;
 
 	setHeight(1.0f);
+	imagedesignXpGiven = false;
 }
 
 PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = cid << 32) {
 	characterID = cid;
+	imagedesignXpGiven = false;
 }
 
 PlayerImplementation::~PlayerImplementation() {
@@ -246,6 +251,7 @@ void PlayerImplementation::initialize() {
 	skillPoints = 0;
 	skillBoxesToSave.setInsertPlan(SortedVector<SkillBox*>::NO_DUPLICATE);
 	certificationList.setInsertPlan(SortedVector<Certification*>::NO_DUPLICATE);
+	xpCapList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 
 	// Draft Schematics
 	draftSchematicList.setInsertPlan(SortedVector<DraftSchematic*>::NO_DUPLICATE);
@@ -322,6 +328,23 @@ void PlayerImplementation::initialize() {
 
 	setLogging(false);
 	setGlobalLogging(true);
+	
+	teachingTarget = NULL;
+	teachingTrainer = NULL;
+	teachingSkillList.removeAll();
+	teachingOffer = false;
+	
+	if (getWeapon() == NULL) {
+		int templevel = calcPlayerLevel("combat_meleespecialize_unarmed");
+		if (calcPlayerLevel("medical") > templevel)
+			templevel = calcPlayerLevel("medical");
+		setLevel(templevel);
+	} else {
+		int templevel = calcPlayerLevel(getWeapon()->getXpType());
+		if (calcPlayerLevel("medical") > templevel)
+			templevel = calcPlayerLevel("medical");
+		setLevel(templevel);
+	}
 }
 
 void PlayerImplementation::create(ZoneClientSession* client) {
@@ -1430,6 +1453,7 @@ void PlayerImplementation::deaggro() {
 
 			for (int i = 0; i < getDefenderListSize(); ++i) {
 				scno = getDefender(i);
+				scno->dropDamageDone((CreatureObject*)this);
 
 				if (scno->isNonPlayerCreature()) {
 
@@ -2848,18 +2872,18 @@ void PlayerImplementation::addInventoryResource(ResourceContainer* item) {
 }
 
 
-void PlayerImplementation::equipPlayerItem(TangibleObject* item) {
+void PlayerImplementation::equipPlayerItem(TangibleObject* item, bool doUpdate) {
 	if (item->isEquipped())
 		item->setEquipped(false);
 
 	if (item->isWeapon()) {
-		changeWeapon(item->getObjectID());
+		changeWeapon(item->getObjectID(), doUpdate);
 	} else if (item->isArmor()) {
 		changeArmor(item->getObjectID(), true);
 	} else if (item->isClothing()) {
 		changeCloth(item->getObjectID());
 	} else if (item->isInstrument()) {
-		changeWeapon(item->getObjectID());
+		changeWeapon(item->getObjectID(), doUpdate);
 	} else if (item->isContainer1() || item->isContainer2() || item->isWearableContainer()) {
 		changeCloth(item->getObjectID());
 	}
@@ -2923,7 +2947,7 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 	}
 }
 
-void PlayerImplementation::changeWeapon(uint64 itemid) {
+void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
 	SceneObject* obj = inventory->getObject(itemid);
 
 	if (obj == NULL || !obj->isTangible())
@@ -2962,7 +2986,41 @@ void PlayerImplementation::changeWeapon(uint64 itemid) {
 			equipItem(weapon);
 
 			setWeaponSkillMods(weapon);
+
 		}
+		
+		int playerlevel;
+		if (getWeapon() == NULL)
+			playerlevel = calcPlayerLevel("combat_meleespecialize_unarmed");
+		else
+			playerlevel = calcPlayerLevel(getWeapon()->getXpType());
+		
+		if (calcPlayerLevel("medical") > playerlevel)
+			setLevel(calcPlayerLevel("medical"));
+		else
+			setLevel(playerlevel);
+			
+		if (isInAGroup()) {
+			getGroupObject()->calcGroupLevel();
+			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(getGroupObject());
+			grp->updateLevel(getGroupObject()->getGroupLevel());
+			grp->close();
+
+			broadcastMessage(grp);
+		}
+		
+		if (doUpdate) {
+			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+			if (isInAGroup()) {
+				dcreo6->updateLevel(getGroupObject()->getGroupLevel());
+			} else {
+				dcreo6->updateLevel(getLevel());
+			}
+			dcreo6->close();
+			
+			broadcastMessage(dcreo6);
+		}
+		
 	} else if (((TangibleObject*)obj)->isInstrument()){
 		Instrument* device = (Instrument*) obj;
 		int instrument = device->getInstrumentType();
@@ -4097,6 +4155,7 @@ void PlayerImplementation::sendMessage(StandaloneBaseMessage* msg) {
 
 void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 	skillBoxes.put(skillBox->getName(), skillBox);
+	loadXpTypeCap();
 
 	if (updateClient) {
 		CreatureObjectDeltaMessage1* dcreo1;
@@ -4112,6 +4171,7 @@ void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 
 void PlayerImplementation::removeSkillBox(SkillBox* skillBox, bool updateClient) {
 	skillBoxes.remove(skillBox->getName());
+	loadXpTypeCap();
 
 	if (updateClient) {
 		CreatureObjectDeltaMessage1* dcreo1;
@@ -4382,6 +4442,18 @@ void PlayerImplementation::setEntertainerEvent() {
 	server->addEvent(entertainerEvent, 10000);
 }
 
+void PlayerImplementation::addEntertainerFlourishXp(int xp) {
+	EntertainerEvent* entEvent = (EntertainerEvent*)entertainerEvent;
+	
+	entEvent->addFlourishXp(xp);
+}
+	
+void PlayerImplementation::addEntertainerHealingXp(int xp) {
+	EntertainerEvent* entEvent = (EntertainerEvent*)entertainerEvent;
+	
+	entEvent->addHealingXp(xp);
+}
+
 void PlayerImplementation::setSurveyEvent(String& resourceName) {
 	surveyEvent = new SurveyEvent(_this, resourceName);
 	server->addEvent(surveyEvent, 5000);
@@ -4580,6 +4652,10 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 			omr->addRadialItem(0, 50, 3, "Watch");
 		else
 			omr->addRadialItem(0, 50, 3, "Stop Watch");
+	}
+	
+	if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
+		omr->addRadialItem(0, 48, 3, "@cmd_n:teach");
 	}
 
 	omr->finish();
@@ -4796,4 +4872,343 @@ void PlayerImplementation::setResourceDeedID(uint64 objectID){
 
 uint64 PlayerImplementation::getResourceDeedID(){
 	return resourceDeedID;
+}
+
+int PlayerImplementation::getXpTypeCap(String xptype) {
+	int xpcap = 0;
+	if (xpCapList.contains(xptype))
+	 	xpcap = xpCapList.get(xptype);
+	if (xpcap > 0)
+		return xpcap;
+	else
+		return 2000;
+}
+
+void PlayerImplementation::loadXpTypeCap() {
+	resetSkillBoxesIterator();
+	xpCapList.removeAll();
+	while (hasNextSkillBox()) {
+		SkillBox *skillbox = skillBoxes.getNextValue();
+		
+		if (skillbox->isNoviceBox()) {
+			Profession *prof = skillbox->getProfession();
+			SkillBox *plusone;
+			
+			if (prof->isFourByFour()) {
+				for (int j = 1; j <= 4; j++) {
+					FourByFourProfession *curprof = (FourByFourProfession*)prof;
+					plusone = curprof->getBox(j, 1);	
+					System::out << plusone->getName() << ":" << plusone->getSkillXpCap() << endl;		
+					if (xpCapList.contains(plusone->getSkillXpType())) {
+						if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
+							xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+					} else 
+						xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+				}
+			} else if (prof->isOneByFour()) {
+				OneByFourProfession *curprof = (OneByFourProfession*)prof;
+				plusone = curprof->getBox(1);
+				if (xpCapList.contains(plusone->getSkillXpType())) {
+					if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
+						xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+				} else 
+					xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+			} else if (prof->isPyramid()) {
+				PyramidProfession *curprof = (PyramidProfession*)prof;
+				plusone = curprof->getBox(1);
+				if (xpCapList.contains(plusone->getSkillXpType())) {
+					if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
+						xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+				} else 
+					xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
+			}
+			
+		} else
+			xpCapList.put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
+	}
+}
+
+int PlayerImplementation::calcPlayerLevel(String xptype) {
+	resetSkillBoxesIterator();
+	playerLevel = 0;
+	
+	if (xptype == "jedi_general") {
+		playerLevel = 10;
+		int skillnum = 0;
+		while (hasNextSkillBox()) {
+			SkillBox *skillbox = skillBoxes.getNextValue();
+			if (skillbox->getSkillXpType() == "jedi_general")
+				skillnum += 1;
+
+			// no reason to continue
+			if (skillnum >= 3) {
+				skillnum = 3;
+				break;
+			}
+		}
+		playerLevel += 5*skillnum;
+		if (playerLevel > 25)
+			playerLevel = 25; 
+		return playerLevel;
+	}
+	
+	Weapon *weap = getWeapon();
+	int wtype;
+	
+	if (weap == NULL) 
+		wtype = WeaponImplementation::UNARMED;
+	else
+		wtype = weap->getType();
+
+	while ( hasNextSkillBox() ) {
+		SkillBox *skillbox = skillBoxes.getNextValue();
+		switch (wtype) {
+		case WeaponImplementation::UNARMED:
+			if (skillbox->getName() == "combat_unarmed_master") {
+				playerLevel = 25;
+				break;
+			}
+			else if (skillbox->getName() == "combat_brawler_novice")
+				playerLevel += 5;
+			else if (skillbox->getName() == "combat_brawler_master")
+				playerLevel += 6;
+			else if (skillbox->getName() == "combat_unarmed_novice")
+				playerLevel += 2;
+			else if (skillbox->getSkillXpType() == "combat_meleespecialize_unarmed" && skillbox->getProfession()->getName() == "combat_brawler")
+				playerLevel += 1;
+			else if (skillbox->getSkillXpType() == "combat_meleespecialize_unarmed" && skillbox->getProfession()->getName() == "combat_unarmed")
+				playerLevel += 2;
+			break;
+		case WeaponImplementation::ONEHANDED:
+			if (skillbox->getName() == "combat_1hsword_master") {
+				playerLevel = 25;
+				break;
+			}
+			if (skillbox->getName() == "combat_brawler_novice")
+				playerLevel += 5;
+			else if (skillbox->getName() == "combat_brawler_master")
+				playerLevel += 6;
+			else if (skillbox->getName() == "combat_1hsword_novice")
+				playerLevel += 2;
+			else if (skillbox->getSkillXpType() == "combat_meleespecialize_onehand" && skillbox->getProfession()->getName() == "combat_brawler")
+				playerLevel += 1;
+			else if (skillbox->getSkillXpType() == "combat_meleespecialize_onehand" && skillbox->getProfession()->getName() == "combat_1hsword")
+				playerLevel += 2;
+			break;
+		case WeaponImplementation::TWOHANDED:
+			if (skillbox->getName() == "combat_2hsword_master") {
+				playerLevel = 25;
+				break;
+			}
+			if (skillbox->getName() == "combat_brawler_novice")
+				playerLevel += 5;
+			else if (skillbox->getName() == "combat_brawler_master")
+				playerLevel += 6;
+			else if (skillbox->getName() == "combat_2hsword_novice")
+				playerLevel += 2;
+			else if (skillbox->getSkillXpType() == "combat_meleespecialize_twohand" && skillbox->getProfession()->getName() == "combat_brawler")
+				playerLevel += 1;
+			else if (skillbox->getSkillXpType() == "combat_meleespecialize_twohand" && skillbox->getProfession()->getName() == "combat_2hsword")
+				playerLevel += 2;
+			break;
+		case WeaponImplementation::POLEARM:
+			if (skillbox->getName() == "combat_polearm_master") {
+				playerLevel = 25;
+				break;
+			}
+			if (skillbox->getName() == "combat_brawler_novice")
+				playerLevel += 5;
+			else if (skillbox->getName() == "combat_brawler_master")
+				playerLevel += 6;
+			else if (skillbox->getName() == "combat_polearm_novice")
+				playerLevel += 2;
+			else if (skillbox->getSkillXpType() == "combat_meleespecialize_polearm" && skillbox->getProfession()->getName() == "combat_brawler")
+				playerLevel += 1;
+			else if (skillbox->getSkillXpType() == "combat_meleespecialize_polearm" && skillbox->getProfession()->getName() == "combat_polearm")
+				playerLevel += 2;
+			break;
+		case WeaponImplementation::PISTOL:
+			if (skillbox->getName() == "combat_pistol_master") {
+				playerLevel = 25;
+				break;
+			}
+			if (skillbox->getName() == "combat_marksman_novice")
+				playerLevel += 5;
+			else if (skillbox->getName() == "combat_marksman_master")
+				playerLevel += 6;
+			else if (skillbox->getName() == "combat_pistol_novice" || skillbox->getName() == "combat_bountyhunter_novice")
+				playerLevel += 2;
+			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_pistol" && skillbox->getProfession()->getName() == "combat_marksman")
+				playerLevel += 1;
+			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_pistol" && (skillbox->getProfession()->getName() == "combat_pistol" || skillbox->getProfession()->getName() == "combat_bountyhunter"))
+				playerLevel += 2;
+			break;
+		case WeaponImplementation::CARBINE:
+			if (skillbox->getName() == "combat_carbine_master") {
+				playerLevel = 25;
+				break;
+			}
+			if (skillbox->getName() == "combat_marksman_novice")
+				playerLevel += 5;
+			else if (skillbox->getName() == "combat_marksman_master")
+				playerLevel += 6;
+			else if (skillbox->getName() == "combat_carbine_novice")
+				playerLevel += 2;
+			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_carbine" && skillbox->getProfession()->getName() == "combat_marksman")
+				playerLevel += 1;
+			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_carbine" && skillbox->getProfession()->getName() == "combat_carbine")
+				playerLevel += 2;
+			break;
+		case WeaponImplementation::RIFLE:
+			if (skillbox->getName() == "combat_rifleman_master") {
+				playerLevel = 25;
+				break;
+			}
+			if (skillbox->getName() == "combat_marksman_novice")
+				playerLevel += 5;
+			else if (skillbox->getName() == "combat_marksman_master")
+				playerLevel += 6;
+			else if (skillbox->getName() == "combat_rifleman_novice")
+				playerLevel += 2;
+			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_rifle" && skillbox->getProfession()->getName() == "combat_marksman")
+				playerLevel += 1;
+			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_rifle" && skillbox->getProfession()->getName() == "combat_rifleman")
+				playerLevel += 2;
+			break;
+		case WeaponImplementation::ONEHANDSABER:
+		case WeaponImplementation::TWOHANDSABER:
+		case WeaponImplementation::POLEARMSABER:
+			return calcPlayerLevel(String("jedi_general"));
+			break;
+		case WeaponImplementation::RIFLEBEAM:
+		case WeaponImplementation::RIFLEFLAMETHROWER:
+		case WeaponImplementation::RIFLELIGHTNING:
+		case WeaponImplementation::RIFLEACIDBEAM:
+		case WeaponImplementation::HEAVYACIDBEAM:
+		case WeaponImplementation::HEAVYLIGHTNINGBEAM:
+		case WeaponImplementation::HEAVYPARTICLEBEAM:
+		case WeaponImplementation::HEAVYROCKETLAUNCHER:
+		case WeaponImplementation::HEAVYLAUNCHER:
+			if (skillbox->getName() == "combat_commando_master" || skillbox->getName() == "combat_bountyhunter_master") {
+				playerLevel = 25;
+				break;
+			}
+			else if (skillbox->getName() == "combat_commando_novice" || skillbox->getName() == "combat_bountyhunter_novice")
+				playerLevel += 17;
+			else if (skillbox->getSkillXpType() == "combat_rangedspecialize_heavy" )
+				playerLevel += 2;
+			break;
+		default:
+			break;
+		};
+	}
+	
+	// force the 5-25 range
+	if (playerLevel < 5)
+		playerLevel = 5;
+	else if (playerLevel > 25)
+		playerLevel = 25;
+		
+	return playerLevel;
+}
+
+void PlayerImplementation::teachPlayer(Player* player) {
+	if (teachingSkillList.size() > 0)
+		return;
+	
+	Vector<SkillBox*> trainboxes;
+	resetSkillBoxesIterator();
+	
+	if (!hasNextSkillBox()) {
+		sendSystemMessage("teaching","no_skills");
+		return;
+	}
+	
+	while (hasNextSkillBox()) {
+		SkillBox* sBox = skillBoxes.getNextValue();
+		
+		if (sBox->isNoviceBox())
+			continue;
+		
+		if (sBox->getSkillXpType() == "jedi_general" || 
+			sBox->getSkillXpType() == "space_combat_general" ||
+			sBox->getSkillXpType() == "fs_crafting" ||
+			sBox->getSkillXpType() == "fs_combat" ||
+			sBox->getSkillXpType() == "fs_reflex" ||
+			sBox->getSkillXpType() == "fs_senses" ||
+			sBox->getSkillXpType() == "force_rank_xp")
+			continue;
+		
+		if (player->hasSkillBox(sBox->getName()))
+			continue;
+			
+		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {
+			if (player->hasSkillBox(sBox->getRequiredSkill(j)->getName()))
+				trainboxes.add(sBox);
+		}
+	}
+	
+	if (trainboxes.size() > 0) {
+		setStudent(player);
+		player->setTeacher(_this);
+		SuiListBox* sbox = new SuiListBox(player, 0x7848);
+		sbox->setPromptTitle("@sui:teach");
+		sbox->setPromptText("What would you like to teach?");
+		sbox->setCancelButton(true);
+		
+		for (int i = 0; i < trainboxes.size(); i++) {
+			StringBuffer skillboxname;
+			skillboxname << "@skl_n:" << trainboxes.get(i)->getName();
+			sbox->addMenuItem(skillboxname.toString());
+			teachingSkillList.add(trainboxes.get(i));
+		}
+		
+		addSuiBox(sbox);
+		sendMessage(sbox->generateMessage());
+	} else {
+		StfParameter* params = new StfParameter();
+		params->addTT(player->getFirstNameProper());
+		sendSystemMessage("teaching","no_skills_for_student",params);
+		delete params;
+	}
+}
+
+void PlayerImplementation::teachSkill(String& skillname) {
+	SkillBox* sBox = server->getProfessionManager()->getSkillBox(skillname);
+	StfParameter* params = new StfParameter;
+	
+	params->addTO("skl_n",skillname);
+	params->addTT(getTeacher()->getFirstNameProper());
+	
+	if (sBox->getSkillXpCost() > getXp(sBox->getSkillXpType())) {
+		sendSystemMessage("skill_teacher","prose_train_failed", params);
+	} else {
+		sendSystemMessage("teaching","student_skill_learned", params);
+		addXp(sBox->getSkillXpType(), (-1)*sBox->getSkillXpCost(), true);
+		trainSkillBox(skillname);
+		
+		StfParameter* locparams = new StfParameter;
+		locparams->addTT(getFirstNameProper());
+		locparams->addTO("skl_n",skillname);
+		
+		int xp = 0;
+		String xptype("apprenticeship");
+		if (sBox->isMasterBox())
+			xp = 60;
+		else {
+			char tier = skillname.charAt(skillname.length()-1);
+			xp = ((tier-'0') + 1) * 10;
+		}
+		locparams->addDI(xp);
+		
+		getTeacher()->sendSystemMessage("teaching","teacher_skill_learned", locparams);
+		getTeacher()->addXp(xptype, xp, true);
+		
+		delete locparams;
+	}
+	
+	delete params;
+		
+	getTeacher()->setStudent(NULL);
+	setTeacher(NULL);
 }

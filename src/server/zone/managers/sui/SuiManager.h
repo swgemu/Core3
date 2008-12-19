@@ -96,6 +96,11 @@ public:
 	void handleCloneRequest(uint32 boxID, Player* player, uint32 cancel, int value);
 	void handleConsentBox(uint32 boxID, Player* player, uint32 cancel, int value);
 
+	void handleDenyTrainingList(uint32 boxID, Player* player);
+	
+	void handleTeachPlayer(uint32 boxID, Player* player, int value);
+	void handleTeachSkill(uint32 boxID, Player* player, uint32 cancel);
+
 };
 
 #endif /*SUIMANAGER_H_*/

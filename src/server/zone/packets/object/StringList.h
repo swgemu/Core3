@@ -149,6 +149,9 @@ public:
 		insertByte(30, ++optionCount);
 	}
 
+	int getOptionCount() {
+		return optionCount;
+	}
 };
 
 #endif

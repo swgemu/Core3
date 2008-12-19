@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class DirectPoolAttackTargetSkill : public AttackTargetSkill {
 public:
-	DirectPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, serv) {
+	DirectPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, DIRECT, serv) {
 		healthPoolAttackChance = 0;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;

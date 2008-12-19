@@ -200,6 +200,22 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case 0xE4F3:
 		handleGiveFreeResource(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
+	case 0x7847:
+		handleTeachSkill(boxID, player, cancel);
+		break;
+	case 0x7848:
+		if (cancel != 1)
+			handleTeachPlayer(boxID, player, atoi(value.toCharArray()));
+		else {
+			player->getStudent()->setTeacher(NULL);
+			player->setStudent(NULL);
+			player->clearTeachingSkillOptions();
+		}
+			
+		break;
+	case 0x7849:
+		handleDenyTrainingList(boxID, player);
+		break;
 	default:
 		//Clean up players sui box:
 
@@ -1462,5 +1478,134 @@ void SuiManager::handleConsentBox(uint32 boxID, Player* player, uint32 cancel, i
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleDiagnose");
 		player->unlock();
+	}
+}
+
+void SuiManager::handleDenyTrainingList(uint32 boxID, Player* player) {
+        try {
+               player->wlock();
+
+               if (!player->hasSuiBox(boxID)) {
+                       player->unlock();
+                       return;
+               }
+
+               SuiBox* sui = player->getSuiBox(boxID);
+
+               player->removeSuiBox(boxID);
+
+	       sui->finalize();
+
+       	       player->unlock();
+       } catch (Exception& e) {
+               error("Exception in SuiManager::handleDenyTrainingList ");
+	       e.printStackTrace();
+               player->unlock();
+       } catch (...) {
+               error("Unreported exception caught in SuiManager::handleDenyTrainingList");
+               player->unlock();
+       }
+}
+
+void SuiManager::handleTeachPlayer(uint32 boxID, Player* player, int value) {
+	try {
+		player->wlock();
+		
+		if(!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+		
+		SuiBox* sui = player->getSuiBox(boxID);
+		player->removeSuiBox(boxID);
+		sui->finalize();
+		
+		Player* student = player->getStudent();
+			
+		student->setTeachingOffer(player->getTeachingSkillOption(value));
+		
+		StfParameter* params = new StfParameter;
+		params->addTT(student->getFirstNameProper());
+		params->addTO("skl_n",player->getTeachingSkillOption(value));
+		
+		player->sendSystemMessage("teaching","offer_given", params);
+		
+		delete params;
+		
+		SuiListBox* mbox = new SuiListBox(student, 0x7847);
+		
+		// TODO: redo this after I find the proper String 
+		StringBuffer prompt, skillname;
+		skillname << "@skl_n:" << player->getTeachingSkillOption(value);
+		prompt << "Do you wish to learn the following from " << player->getFirstNameProper() << "?";
+		mbox->setPromptTitle("@sui:teach");
+		mbox->setPromptText(prompt.toString());
+		mbox->addMenuItem(skillname.toString());
+		mbox->setCancelButton(true);
+		
+		student->addSuiBox(mbox);
+		student->sendMessage(mbox->generateMessage());
+		
+		player->clearTeachingSkillOptions();
+		player->setStudent(NULL);
+		
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleTeachPlayer");
+	    	e.printStackTrace();
+        	player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleTeachPlayer");
+        	player->unlock();
+	}
+}
+
+void SuiManager::handleTeachSkill(uint32 boxID, Player* player, uint32 cancel) {
+	try {
+		player->wlock();
+		
+		if(!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+		
+		SuiBox* sui = player->getSuiBox(boxID);
+		player->removeSuiBox(boxID);
+		sui->finalize();
+		
+		StfParameter* params = new StfParameter;
+		StfParameter* locparams = new StfParameter;
+		params->addTT(player->getFirstNameProper());
+		params->addTO("skl_n",player->getTeachingOffer());
+		locparams->addTT(player->getTeacher()->getFirstNameProper());
+		locparams->addTO("skl_n",player->getTeachingOffer());
+
+		if (cancel != 1) {
+			if (player->getTeacher() == NULL) {
+				player->sendSystemMessage("teaching","teacher_too_far");
+				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
+			} else if (!player->isInRange(player->getTeacher(), 128)) {
+				player->sendSystemMessage("teaching","teacher_too_far_target", locparams);
+				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
+			} else 
+				player->teachSkill(player->getTeachingOffer());
+		} else {
+			player->getTeacher()->sendSystemMessage("teaching","offer_refused",params);
+			player->getTeacher()->setStudent(NULL);
+			player->getTeacher()->clearTeachingSkillOptions();
+			player->setTeacher(NULL);
+		}
+		
+		delete params;
+		delete locparams;
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleTeachSkill");
+		e.printStackTrace();
+       		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleTeachSkill");
+        	player->unlock();
 	}
 }

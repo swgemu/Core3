@@ -152,7 +152,6 @@ public:
 		for (int i = 0; i < size; ++i)
 			insertLong(creo->getDefender(i)->getObjectID());
 	}
-
 };
 
 #endif /*CREATUREOBJECTMESSAGE6_H_*/

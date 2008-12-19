@@ -513,7 +513,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case 0x335676c7: // equip, change weapon.
 		target = pack->parseLong();
-		player->changeWeapon(target);
+		player->changeWeapon(target, true);
 		break;
 	case 0x82f75977: // transferitemmisc
 		parseTransferItemMisc(player, pack);
@@ -886,6 +886,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0xCF2D30F4): // newbieselectstartinglocation
 		parseNewbieSelectStartingLocation(player, pack);
 		break;
+	case (0x5041F83A): // Teach
+		parseTeach(player, pack);
+		break; 
 	default:
 		target = pack->parseLong();
 		String actionModifier = "";
@@ -1473,6 +1476,8 @@ void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack,
 }
 
 void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
+	int xpval = 0;
+	
 	try {
 		/*player->sendSystemMessage("Image Designer Update");
 		player->info("Image Design Change - Original Packet");
@@ -1617,6 +1622,9 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					if (commitChanges)
 						customization->updateCustomization(attr, val);
 				}
+				
+				if (xpval < 300)
+					xpval = 300;
 			}
 
 			// Parse
@@ -1643,7 +1651,10 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					if (commitChanges)
 						customization->updateCustomization(attr, val);
 				}
-			}
+				
+				if (xpval < 100)
+					xpval = 100;
+			}	
 
 			if (target_object != NULL && player != target_object)
 				target_object->unlock();
@@ -1692,6 +1703,9 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 					msg << "imagedesignerupdate, hairObject:" << hex << hairObject;
 					((Player *)target_object)->sendSystemMessage(msg.toString());*/
 				}
+				
+				if (xpval < 100)
+					xpval = 100;
 			}
 
 			PlayerManager* playerManager = serv->getZoneServer()->getPlayerManager();
@@ -1726,6 +1740,24 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 
 				if (playerManager != NULL)
 					playerManager->updatePlayerBaseHAMToDatabase(player);
+					
+				xpval = 2000;
+			}
+			
+			// Add Experience
+			String xptype("imagedesigner");
+			if(designer == target) {
+				if (!player->getImagedesignXpGiven()) {
+					xpval /= 2;
+					player->addXp(xptype, xpval, true);
+					player->setImagedesignXpGiven(true);
+				} else
+					player->setImagedesignXpGiven(false);
+			} else if(player->getObjectID() == target) {
+				if (designer_object->isPlayer()) {
+					Player* designer_player = (Player*)designer_object;
+					designer_player->addXp(xptype, xpval, true);
+				}
 			}
 
 			if (customization != NULL)
@@ -4064,6 +4096,64 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 		creature->unlock();
 	} catch (...) {
 		creature->unlock();
+	}
+}
+
+void ObjectControllerMessage::parseTeach(Player* player, Message* pack) {
+	Zone* zone = player->getZone();
+	if(zone == NULL)
+		return;
+	
+	uint64 targetid = pack->parseLong();
+	
+	SceneObject* object = zone->lookupObject(targetid);
+	if (object == NULL) {
+		player->sendSystemMessage("teaching","no_target");
+		return;
+	}
+	
+	Player* target = NULL;
+	if (object->isPlayer())
+		target = (Player*)object;
+	else {
+		player->sendSystemMessage("teaching","no_target");
+		return;
+	}
+	
+	StfParameter *params = new StfParameter();
+	params->addTT(target->getFirstNameProper());
+	
+	if (player == target) {
+		player->sendSystemMessage("teaching","no_teach_self");
+		delete params;
+		return;
+	} else if (target->isDead() || target->isIncapacitated()) {
+		player->sendSystemMessage("teaching","student_dead",params);
+		delete params;
+		return;
+	} else if (!player->isInRange(target, 128)) {
+		player->sendSystemMessage("teaching","student_too_far_target",params);
+		delete params;
+		return;
+	} else if (!player->isInAGroup() || !target->isInAGroup() || (player->getGroupObject() != target->getGroupObject())) {
+		player->sendSystemMessage("teaching","not_in_same_group");
+		delete params;
+		return;
+	} else if (target->getTeacher() != NULL) {
+		player->sendSystemMessage("teaching","student_has_offer_to_learn",params);
+		delete params;
+		return;
+	}
+	
+	delete params;
+	
+	UnicodeString opts;
+	pack->parseUnicode(opts);
+	
+	String skillname = opts.toString();
+	
+	if (skillname.length() <= 0) {
+		player->teachPlayer(target);
 	}
 }
 

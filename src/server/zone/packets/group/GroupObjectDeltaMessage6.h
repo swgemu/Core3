@@ -93,6 +93,11 @@ public:
 		insertLong(newLeader->getObjectID());
 		insertAscii(newLeader->getCharacterName().toString());
 	}
+	
+	void updateLevel(uint16 value) {
+		startUpdate(0x04);
+		insertShort(value);
+	}
 };
 
 #endif /*GROUPOBJECTDELTAMESSAGE6_H_*/

@@ -270,7 +270,7 @@ void CreatureManagerImplementation::loadTrainers() {
 			if (prof->getName().indexOf("jedi") != -1 || prof->getName().indexOf("force") != -1)
 				continue;
 
-			TrainerCreature* trainer = spawnTrainer(prof->getName(), "", prof->getName(), 0x8C73B91, 0, -4967 - (i*1), 4043, 6, 0, 0);
+			TrainerCreature* trainer = spawnTrainer(prof->getName(), "trainer_unknown", prof->getName(), 0x8C73B91, 0, -4967 - (i*1), 4043, 6, 0, 0);
 		}
 	}
 }
@@ -430,7 +430,8 @@ TrainerCreature* CreatureManagerImplementation::spawnTrainer(const String& profe
 
 		if (!stfname.isEmpty())
 			trainer->setSpeciesName(stfname);
-		else
+		//else
+		if (!name.isEmpty())
 			trainer->setCharacterName(UnicodeString(name));
 
 		trainer->setObjectCRC(objCrc);
