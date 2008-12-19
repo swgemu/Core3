@@ -1311,22 +1311,22 @@ void ZonePacketHandler::handleCreateTicketMessage(Message* pack) {
 	StringTokenizer st = new StringTokenizer(str, "a");
 
 	//Here is where we seperate everything by 0xA
-	string stationid; //convert to uint64?
-	string bugtype;
-	string repeatable;
-	string gameSystem;
-	string severity;
-	string positionX; // convert to float?
-	string positionY; // convert to float?
-	string positionZ; // convert to float?
-	string heading;
-	string planet;
-	string cluster;
-	string character;
-	string race;
-	string clientVersion;
-	string dateAndTime;
-	string additionalInfo;
+	String stationid; //convert to uint64?
+	String bugtype;
+	String repeatable;
+	String gameSystem;
+	String severity;
+	String positionX; // convert to float?
+	String positionY; // convert to float?
+	String positionZ; // convert to float?
+	String heading;
+	String planet;
+	String cluster;
+	String character;
+	String race;
+	String clientVersion;
+	String dateAndTime;
+	String additionalInfo;
 
 	*/
 	CreateTicketResponseMessage* ctrm = new CreateTicketResponseMessage(true);

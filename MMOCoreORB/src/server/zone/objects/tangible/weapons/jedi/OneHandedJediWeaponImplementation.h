@@ -51,12 +51,12 @@ class OneHandedJediWeaponImplementation : public OneHandedJediWeaponServant {
 
 public:
 	OneHandedJediWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, bool eqp = false) 
-			: OneHandedJediWeaponServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::ONEHANDSABER, eqp) {
+			: OneHandedJediWeaponServant(objid, tempcrc, n, tempn, ONEHANDSABER, eqp) {
 		initialize();
 	}
 
 	OneHandedJediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false) 
-			: OneHandedJediWeaponServant(creature, temp, n, tempn, TangibleObjectImplementation::ONEHANDSABER, eqp) {
+			: OneHandedJediWeaponServant(creature, temp, n, tempn, ONEHANDSABER, eqp) {
 		initialize();
 	}
 

@@ -245,12 +245,20 @@ public:
 		return skillXpCost;
 	}
 
+	inline int getSkillXpCap() {
+		return skillXpCap;
+	}
+
 	int getRequiredSkillsSize() {
 		return requiredSkills.size();
 	}
 
 	SkillBox* getRequiredSkill(int idx) {
 		return requiredSkills.get(idx);
+	}
+
+	int getSkillMoneyRequired() {
+		return skillMoneyRequired;
 	}
 
 	friend class SkillManager;

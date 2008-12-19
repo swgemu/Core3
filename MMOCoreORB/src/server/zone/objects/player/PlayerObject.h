@@ -31,6 +31,8 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
+	int getExperience(const String& xpType);
+
 	void addExperience(const String& xpType, int xp, bool updateClient);
 
 	void removeExperience(const String& xpType, int xp, bool updateClient);
@@ -178,6 +180,8 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
+	int getExperience(const String& xpType);
+
 	void addExperience(const String& xpType, int xp, bool updateClient);
 
 	void removeExperience(const String& xpType, int xp, bool updateClient);
@@ -303,6 +307,7 @@ public:
 	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
 
 protected:
+	String _param0_getExperience__String_;
 	String _param0_addExperience__String_int_bool_;
 	String _param0_removeExperience__String_int_bool_;
 	String _param0_loadExperience__String_;

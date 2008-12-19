@@ -21,9 +21,17 @@ class TrainerCreature : public Creature {
 public:
 	TrainerCreature(unsigned long long oid, Profession* prof);
 
+	void sendInitialMessage(Player* player);
+
+	void sendInitialChoices(Player* player);
+
 	void sendConversationStartTo(SceneObject* obj);
 
-	void sendSkillBoxes(Player* player);
+	void sendSkillBoxes(Player* player, bool checkXp);
+
+	void sendSkillBoxList(Player* player, bool checkLearned);
+
+	void sendConfirmation(Player* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
 
@@ -43,9 +51,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void sendInitialMessage(Player* player);
+
+	void sendInitialChoices(Player* player);
+
 	void sendConversationStartTo(SceneObject* obj);
 
-	void sendSkillBoxes(Player* player);
+	void sendSkillBoxes(Player* player, bool checkXp);
+
+	void sendSkillBoxList(Player* player, bool checkLearned);
+
+	void sendConfirmation(Player* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
 

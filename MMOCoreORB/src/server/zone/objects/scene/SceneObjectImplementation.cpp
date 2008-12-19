@@ -52,11 +52,15 @@ which carries forward this exception.
 
 #include "../../packets.h"
 
+#include "../tangible/weapons/WeaponImplementation.h"
+
 #include "SceneObjectImplementation.h"
 
 #include "engine/core/ManagedObjectImplementation.h"
 
 #include "../building/cell/CellObject.h"
+
+#include "../creature/skills/target/AttackTargetSkill.h"
 
 SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), QuadTreeEntry(), Logger() {
 	objectID = 0;
@@ -69,6 +73,11 @@ SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), Q
 	directionX = directionZ = directionY = 0;
 
 	parent = NULL;
+	
+	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
+	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
 
 	linkType = 0x04;
 
@@ -94,6 +103,11 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 	directionZ = directionX = directionW = 0;
 
 	parent = NULL;
+	
+	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
+	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
+	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
 
 	linkType = 0x04;
 
@@ -474,5 +488,178 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 		error("exception SceneObjectImplementation::removeFromBuilding(BuildingObject* building, bool doLock)");
 
 		//building->unlock(doLock);
+	}
+}
+
+void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int damage, String skillname) {
+	String xptype;
+	
+	AttackTargetSkill *askill;
+	Skill *skill = server->getSkillManager()->getSkill(skillname);
+	if (skill->isAttackSkill())
+		askill = (AttackTargetSkill*)skill;
+		
+	
+	/*if (askill->getRequiredWeaponType() == 0xFF && askill->isForce()) {
+		xptype = String("jedi_general");
+	} else if (creature->getWeapon() == NULL) {
+		xptype = String("combat_meleespecialize_unarmed");
+	} else 
+		xptype = creature->getWeapon()->getXpType();*/
+	switch (askill->getSkillType()) {
+	case AttackTargetSkill::DEBUFF:
+		return;
+		break;
+	case AttackTargetSkill::DIRECT:
+	case AttackTargetSkill::DOT:
+	case AttackTargetSkill::RANDOM:
+	case AttackTargetSkill::WOUNDS:
+	case AttackTargetSkill::OTHER:
+		if (creature->getWeapon() == NULL)
+			xptype = String("combat_meleespecialize_unarmed");
+		else 
+			xptype = creature->getWeapon()->getXpType();
+		break;
+	case AttackTargetSkill::WEAPONLESS:
+		xptype = "medical";
+		break;
+	case AttackTargetSkill::FORCE:
+		xptype = "jedi_general";
+		break;
+	default:
+		xptype = "none";
+		break;
+	};
+	
+	DamageDone *dmg;
+	if (creature->isIncapacitated() || creature->isDead())
+		return;
+	
+	if (!playerDamageList.contains(creature)) {	
+		dmg = new DamageDone;
+	} else
+		dmg = playerDamageList.get(creature);
+
+	if (!creature->isPlayer())
+		dmg->addDamage(xptype, damage, 0);
+	else {
+		Player* player = (Player*)creature;
+		dmg->addDamage(xptype, damage, player->calcPlayerLevel(xptype));
+	}
+	
+	playerDamageList.put(creature, dmg);
+	
+	if (creature->isInAGroup() && creature->isPlayer()) {
+		Player *player = (Player*)creature;
+		GroupObject *group = player->getGroupObject();
+		if (groupDamageList.contains(group)) {
+			int groupdamage = groupDamageList.get(group);
+			groupdamage += damage;
+			groupDamageList.drop(group);
+			groupDamageList.put(group, groupdamage);
+		} else {
+			groupDamageList.put(group, damage);
+		}
+	}
+}
+
+void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
+	int damage = playerDamageList.get(creature)->getTotalDamage();
+	DamageDone *dmg = playerDamageList.get(creature);
+
+	delete dmg;
+	
+	playerDamageList.drop(creature);
+
+	if (creature->isInAGroup() && creature->isPlayer()) {
+		Player *player = (Player*)creature;
+		GroupObject *group = player->getGroupObject();
+		
+		if (groupDamageList.contains(group)) {
+			int groupdamage = groupDamageList.get(group);
+			groupdamage -= damage;
+			groupDamageList.drop(group);
+			groupDamageList.put(group, groupdamage);
+		}
+	}	
+}
+
+int SceneObjectImplementation::getTotalDamage() {
+	int damage = 0;
+	
+	for (int i = 0; i < playerDamageList.size(); i++) {
+		damage += playerDamageList.get(i)->getTotalDamage();
+	}
+	
+	return damage;
+}
+
+void SceneObjectImplementation::disseminateXp(int levels) {
+	float total = (float)getTotalDamage();
+	
+	for (int i = 0; i < playerDamageList.size(); i++) {
+		VectorMapEntry<CreatureObject*, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<CreatureObject*, DamageDone*>*>::get(i);
+		CreatureObject *creature = entry->getKey();
+		DamageDone *dmg = entry->getValue();
+		
+		// don't do any of this if this isn't a player
+		if (!creature->isPlayer()) {
+			delete dmg;
+			continue;
+		}
+		
+		Player* player = (Player*)creature;
+		float xpadd = 0.0f;
+			
+		float totaldamage = (float)dmg->getTotalDamage();
+		
+		float multiplier = levels / 10.0f;
+		if (multiplier > 2.5f)
+			multiplier = 2.5f;
+		else if (multiplier < 1.0f)
+			multiplier = 1.0f;
+			
+		for ( int j = 0; j < dmg->getSize(); j++) {
+			float damage = (float)dmg->getDamage(j);
+			float playerlevel = (float)dmg->getLevel(j);
+			String xptype = dmg->getXpType(j);
+			float xpaddsingle = 0.0f;
+
+			if (player->isInAGroup()) { // use group calculation
+				GroupObject *group = player->getGroupObject();
+				if (isNonPlayerCreature()) {
+					xpaddsingle = (groupDamageList.get(group)/total)*(damage/totaldamage)*40.0f*((float)levels)*((multiplier)/(group->getGroupSize()))*(1.0f+(group->getGroupSize()+5.0f)*.01f);
+					if (levels > 25)
+						xpaddsingle += (playerlevel - levels) * 60.0f;
+					else if (playerlevel > levels)
+						xpaddsingle += (levels - playerlevel) * 4.5f;
+					if (xptype == "jedi_general")
+						xpaddsingle /= 3.4f;
+				}
+			} else { // use solo calculation
+				if (isNonPlayerCreature()) {
+					xpaddsingle = (damage/total)*40.0f*((float)levels)*(multiplier);
+					if (levels > 25)
+						xpaddsingle += (playerlevel - levels) * 60.0f;
+					else if (playerlevel > levels)
+						xpaddsingle += (levels - playerlevel) * 4.5f;
+					if (xptype == "jedi_general")
+						xpaddsingle /= 3.4f;
+				}
+			}
+			
+			if (xpaddsingle < 1.0f) 
+				xpaddsingle = 1.0f;
+			
+			player->addXp(xptype, (int)xpaddsingle, true);
+			if (xptype != "jedi_general")
+				xpadd += xpaddsingle;
+		}
+		
+		xpadd /= 10.0f;
+		String xptype = String("combat_general");
+		player->addXp(xptype, (int)xpadd, true);
+
+		delete dmg;
 	}
 }

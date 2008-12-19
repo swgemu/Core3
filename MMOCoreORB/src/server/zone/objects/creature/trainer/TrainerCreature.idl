@@ -55,8 +55,12 @@ interface TrainerCreature implements Creature {
 		super(oid);
 	}
 
+	void sendInitialMessage(Player player);
+	void sendInitialChoices(Player player);
 	void sendConversationStartTo(SceneObject obj);
-	void sendSkillBoxes(Player player);
+	void sendSkillBoxes(Player player, boolean checkXp);
+	void sendSkillBoxList(Player player, boolean checkLearned);
+	void sendConfirmation(Player player);
 
 	void selectConversationOption(int option, SceneObject obj);
 }

@@ -101,16 +101,32 @@ void GroupObjectImplementation::sendTo(Player* player, bool doClose) {
 
 void GroupObjectImplementation::addPlayer(Player* player) {
 	int index = groupMembers.size();
+	
+	groupMembers.add(player);
+	calcGroupLevel();
 
 	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
 	grp->addMember(player, index);
+	grp->updateLevel(groupLevel);
 	grp->close();
 
 	broadcastMessage(grp);
 
-	groupMembers.add(player);
+	//groupMembers.add(player);
+	//calcGroupLevel();
 
 	sendTo(player);
+}
+
+void GroupObjectImplementation::calcGroupLevel() {
+	groupLevel = 0;
+	
+	for (int i = 0; i < getGroupSize(); i++) {
+		int currentlevel = groupLevel - getGroupSize();
+		int memberlevel = getGroupMember(i)->getLevel();
+		if (memberlevel > currentlevel)
+			groupLevel = memberlevel + getGroupSize();
+	}
 }
 
 void GroupObjectImplementation::removePlayer(Player* player) {
@@ -121,9 +137,12 @@ void GroupObjectImplementation::removePlayer(Player* player) {
 
 		if (play == player) {
 			groupMembers.remove(i);
+			
+			calcGroupLevel();
 
 			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6((GroupObject*) _this);
 			grp->removeMember(i);
+			grp->updateLevel(groupLevel);
 			grp->close();
 
 			broadcastMessage(grp);
@@ -134,6 +153,8 @@ void GroupObjectImplementation::removePlayer(Player* player) {
 
 	if ((player == leader) && groupMembers.size() > 0)
 		leader = groupMembers.get(0);
+		
+	calcGroupLevel();
 }
 
 bool GroupObjectImplementation::hasMember(Player* player) {

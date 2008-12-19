@@ -150,6 +150,8 @@ protected:
 
 	bool sliced;
 	
+	String xpType;
+
 public:
 
 	static const int MELEE = 0x10;
@@ -206,6 +208,7 @@ public:
 	static const int COLD = 7;
 	static const int ACID = 8;
 	static const int LIGHTSABER = 9;
+	static const int FORCE = 10;
 
 public:
 	WeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
@@ -225,6 +228,8 @@ public:
 	
 	void generatePowerup(class AttributeListMessage* alm);
 	
+	void setXpType();
+
 	void setWeaponStats(int modifier);
 	
 	void decayWeapon(int decayRate);
@@ -859,6 +864,10 @@ public:
 	
 	inline String& getCert() {
 		return cert;
+	}
+
+	inline String& getXpType() {
+		return xpType;
 	}
 
 	friend class CombatManager;

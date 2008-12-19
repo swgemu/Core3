@@ -23,9 +23,13 @@ class ZoneClientSession;
 
 class Player;
 
+class Weapon;
+
 class CreatureObject;
 
 class BuildingObject;
+
+class AttackTargetSkill;
 
 #include "engine/core/ManagedObject.h"
 
@@ -226,6 +230,14 @@ public:
 	bool isAttackableBy(CreatureObject* creature);
 
 	bool isInANoBuildArea();
+
+	void addDamageDone(CreatureObject* creature, int damage, String& skillname);
+
+	void dropDamageDone(CreatureObject* creature);
+
+	int getTotalDamage();
+
+	void disseminateXp(int levels);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -439,9 +451,18 @@ public:
 
 	bool isInANoBuildArea();
 
+	void addDamageDone(CreatureObject* creature, int damage, String& skillname);
+
+	void dropDamageDone(CreatureObject* creature);
+
+	int getTotalDamage();
+
+	void disseminateXp(int levels);
+
 protected:
 	String _param0_info__String_bool_;
 	String _param0_error__String_;
+	String _param2_addDamageDone__CreatureObject_int_String_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {

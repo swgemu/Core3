@@ -163,6 +163,7 @@ void PlayerObjectImplementation::sendTo(Player* targetPlayer, bool doClose) {
 }
 
 void PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool updateClient) {
+	int gained = xp;
 	if (experienceList.containsKey(xpType)) {
 		xp += experienceList.get(xpType);
 		if (xp <= 0) {
@@ -171,10 +172,27 @@ void PlayerObjectImplementation::addExperience(const String& xpType, int xp, boo
 		}
 		experienceList.remove(xpType);
 	}
+
+	String xptype = xpType;
+	Player* player = getPlayer();
+	if (player->getXpTypeCap(xptype) < xp) {
+		gained = gained - (xp - player->getXpTypeCap(xptype));
+		xp = player->getXpTypeCap(xptype);
+	}
+
 	experienceList.put(xpType, xp);
 
 	if (updateClient) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+		if (gained > 0) {
+			StfParameter *params = new StfParameter;
+		
+			params->addDI(gained);
+			params->addTO("exp_n",xpType);
+			player->sendSystemMessage("base_player", "prose_grant_xp", params);
+					
+			delete params;
+		}
 
 		dplay8->startExperienceUpdate(1);
 		dplay8->addExperience(xpType, xp);

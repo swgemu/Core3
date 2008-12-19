@@ -121,6 +121,9 @@ public:
 	void handleEntertainerActions(Player* player, SceneObject* obj);
 
 	void handleItemDrop(Player* player, SceneObject* obj);
+	
+	//Teach
+	void handleTeach(SceneObject* obj, Player* trainer);
 };
 
 #endif /*RADIALMANAGER_H_*/

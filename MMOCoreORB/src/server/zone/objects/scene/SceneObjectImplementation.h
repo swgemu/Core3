@@ -55,11 +55,16 @@ which carries forward this exception.
 
 #include "../../managers/planet/PlanetManager.h"
 
+#include "../../managers/player/ProfessionManager.h"
+
 #include "../../Zone.h"
+
+#include "DamageDone.h"
 
 class Zone;
 class ZoneClientSession;
 class Player;
+class GroupObject;
 
 class ZoneProcessServerImplementation;
 
@@ -96,6 +101,11 @@ protected:
 	bool keepObject;
 
 	uint64 associatedArea;
+
+	VectorMap<uint64, CreatureObject*> weaponCreatureList;
+	VectorMap<uint64, int> weaponDamageList;
+	VectorMap<GroupObject*, int> groupDamageList;
+	VectorMap<CreatureObject*, DamageDone*> playerDamageList;
 
 public:
 	static const int NONPLAYERCREATURE = 1;
@@ -146,6 +156,12 @@ public:
 	virtual void insertToBuilding(BuildingObject * building);
 	virtual void removeFromZone(bool doLock = true);
 	virtual void removeFromBuilding(BuildingObject* building);
+
+	// experience functions
+	void addDamageDone(CreatureObject* creature, int damage, String skillname);
+	void dropDamageDone(CreatureObject* creature);
+	int getTotalDamage();
+	void disseminateXp(int levels); 
 
 	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true, bool sendSelf = true);
 	void broadcastMessage(StandaloneBaseMessage* msg, int range = 128, bool doLock = true);

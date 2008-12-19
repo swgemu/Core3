@@ -57,9 +57,13 @@ import "../../ZoneClientSession";
 
 import "../player/Player";
 
+import "../tangible/weapons/Weapon";
+
 import "../creature/CreatureObject";
 
 import "../building/BuildingObject";
+
+import "../creature/skills/target/AttackTargetSkill";
 
 interface SceneObject implements ManagedObject {
 	native boolean destroy();
@@ -250,4 +254,10 @@ interface SceneObject implements ManagedObject {
 	boolean isAttackableBy(CreatureObject creature);
 
 	boolean isInANoBuildArea();
+
+	// experience functions
+	void addDamageDone(CreatureObject creature, int damage, String skillname);
+	void dropDamageDone(CreatureObject creature);
+	int getTotalDamage();
+	void disseminateXp(int levels);
 }

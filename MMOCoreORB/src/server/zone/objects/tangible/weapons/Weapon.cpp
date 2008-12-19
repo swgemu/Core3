@@ -777,12 +777,25 @@ String& Weapon::getCert() {
 		return ((WeaponImplementation*) _impl)->getCert();
 }
 
-void Weapon::setType(int type) {
+String& Weapon::getXpType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 67);
+
+		method.executeWithAsciiReturn(_return_getXpType);
+		return _return_getXpType;
+	} else
+		return ((WeaponImplementation*) _impl)->getXpType();
+}
+
+void Weapon::setType(int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 68);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -795,7 +808,7 @@ void Weapon::setDamageType(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, 69);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -808,7 +821,7 @@ void Weapon::setMinDamage(float minDmg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, 70);
 		method.addFloatParameter(minDmg);
 
 		method.executeWithVoidReturn();
@@ -821,7 +834,7 @@ void Weapon::setMaxDamage(float maxDmg) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 71);
 		method.addFloatParameter(maxDmg);
 
 		method.executeWithVoidReturn();
@@ -834,7 +847,7 @@ void Weapon::setAttackSpeed(float attackSpd) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, 72);
 		method.addFloatParameter(attackSpd);
 
 		method.executeWithVoidReturn();
@@ -847,7 +860,7 @@ void Weapon::setHealthAttackCost(int healthCost) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 73);
 		method.addSignedIntParameter(healthCost);
 
 		method.executeWithVoidReturn();
@@ -860,7 +873,7 @@ void Weapon::setActionAttackCost(int actionCost) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 74);
 		method.addSignedIntParameter(actionCost);
 
 		method.executeWithVoidReturn();
@@ -873,7 +886,7 @@ void Weapon::setMindAttackCost(int mindCost) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, 75);
 		method.addSignedIntParameter(mindCost);
 
 		method.executeWithVoidReturn();
@@ -886,7 +899,7 @@ void Weapon::setWoundsRatio(float woundsRat) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, 76);
 		method.addFloatParameter(woundsRat);
 
 		method.executeWithVoidReturn();
@@ -899,7 +912,7 @@ void Weapon::setArmorPiercing(int armorPierce) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, 77);
 		method.addSignedIntParameter(armorPierce);
 
 		method.executeWithVoidReturn();
@@ -912,7 +925,7 @@ void Weapon::setDot0Type(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 77);
+		DistributedMethod method(this, 78);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -925,7 +938,7 @@ void Weapon::setDot0Attribute(int attribute) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, 79);
 		method.addSignedIntParameter(attribute);
 
 		method.executeWithVoidReturn();
@@ -938,7 +951,7 @@ void Weapon::setDot0Strength(int strength) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, 80);
 		method.addSignedIntParameter(strength);
 
 		method.executeWithVoidReturn();
@@ -951,7 +964,7 @@ void Weapon::setDot0Duration(int duration) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, 81);
 		method.addSignedIntParameter(duration);
 
 		method.executeWithVoidReturn();
@@ -964,7 +977,7 @@ void Weapon::setDot0Potency(int potency) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, 82);
 		method.addSignedIntParameter(potency);
 
 		method.executeWithVoidReturn();
@@ -977,7 +990,7 @@ void Weapon::setDot0Uses(int uses) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 82);
+		DistributedMethod method(this, 83);
 		method.addSignedIntParameter(uses);
 
 		method.executeWithVoidReturn();
@@ -990,7 +1003,7 @@ void Weapon::setDot1Uses(int uses) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 83);
+		DistributedMethod method(this, 84);
 		method.addSignedIntParameter(uses);
 
 		method.executeWithVoidReturn();
@@ -1003,7 +1016,7 @@ void Weapon::setDot2Uses(int uses) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 84);
+		DistributedMethod method(this, 85);
 		method.addSignedIntParameter(uses);
 
 		method.executeWithVoidReturn();
@@ -1016,7 +1029,7 @@ void Weapon::setPointBlankRange(int pointBlankRnge) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 85);
+		DistributedMethod method(this, 86);
 		method.addSignedIntParameter(pointBlankRnge);
 
 		method.executeWithVoidReturn();
@@ -1029,7 +1042,7 @@ void Weapon::setPointBlankAccuracy(int pointBlankAcc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 86);
+		DistributedMethod method(this, 87);
 		method.addSignedIntParameter(pointBlankAcc);
 
 		method.executeWithVoidReturn();
@@ -1042,7 +1055,7 @@ void Weapon::setMaxRange(int maxRnge) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 87);
+		DistributedMethod method(this, 88);
 		method.addSignedIntParameter(maxRnge);
 
 		method.executeWithVoidReturn();
@@ -1055,7 +1068,7 @@ void Weapon::setMaxRangeAccuracy(int maxRangeAcc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 88);
+		DistributedMethod method(this, 89);
 		method.addSignedIntParameter(maxRangeAcc);
 
 		method.executeWithVoidReturn();
@@ -1068,7 +1081,7 @@ void Weapon::setIdealRange(int idealRnge) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 89);
+		DistributedMethod method(this, 90);
 		method.addSignedIntParameter(idealRnge);
 
 		method.executeWithVoidReturn();
@@ -1081,7 +1094,7 @@ void Weapon::setIdealAccuracy(int idealAcc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 90);
+		DistributedMethod method(this, 91);
 		method.addSignedIntParameter(idealAcc);
 
 		method.executeWithVoidReturn();
@@ -1094,7 +1107,7 @@ void Weapon::powerupMinDamage(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 91);
+		DistributedMethod method(this, 92);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1107,7 +1120,7 @@ void Weapon::powerupMaxDamage(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 92);
+		DistributedMethod method(this, 93);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1120,7 +1133,7 @@ void Weapon::powerupHealthAttackCost(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 93);
+		DistributedMethod method(this, 94);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1133,7 +1146,7 @@ void Weapon::powerupActionAttackCost(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 94);
+		DistributedMethod method(this, 95);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1146,7 +1159,7 @@ void Weapon::powerupMindAttackCost(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 95);
+		DistributedMethod method(this, 96);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1159,7 +1172,7 @@ void Weapon::powerupWoundsRatio(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 96);
+		DistributedMethod method(this, 97);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1172,7 +1185,7 @@ void Weapon::powerupAttackSpeed(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 97);
+		DistributedMethod method(this, 98);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1185,7 +1198,7 @@ void Weapon::powerupPointBlankAccuracy(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 98);
+		DistributedMethod method(this, 99);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1198,7 +1211,7 @@ void Weapon::powerupIdealRange(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 99);
+		DistributedMethod method(this, 100);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1211,7 +1224,7 @@ void Weapon::powerupIdealAccuracy(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 100);
+		DistributedMethod method(this, 101);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1224,7 +1237,7 @@ void Weapon::powerupMaxRangeAccuracy(float powerupValue) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 101);
+		DistributedMethod method(this, 102);
 		method.addFloatParameter(powerupValue);
 
 		method.executeWithVoidReturn();
@@ -1237,7 +1250,7 @@ void Weapon::setPowerupUses(int uses) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 102);
+		DistributedMethod method(this, 103);
 		method.addSignedIntParameter(uses);
 
 		method.executeWithVoidReturn();
@@ -1250,7 +1263,7 @@ void Weapon::setUsesRemaining(int charges) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 103);
+		DistributedMethod method(this, 104);
 		method.addSignedIntParameter(charges);
 
 		method.executeWithVoidReturn();
@@ -1263,7 +1276,7 @@ void Weapon::setCert(String& certification) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 104);
+		DistributedMethod method(this, 105);
 		method.addAsciiParameter(certification);
 
 		method.executeWithVoidReturn();
@@ -1276,12 +1289,24 @@ void Weapon::setCertified(bool crt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 105);
+		DistributedMethod method(this, 106);
 		method.addBooleanParameter(crt);
 
 		method.executeWithVoidReturn();
 	} else
 		((WeaponImplementation*) _impl)->setCertified(crt);
+}
+
+void Weapon::setXpType() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 107);
+
+		method.executeWithVoidReturn();
+	} else
+		((WeaponImplementation*) _impl)->setXpType();
 }
 
 /*
@@ -1479,121 +1504,127 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getCert());
 		break;
 	case 67:
-		setType(inv->getSignedIntParameter());
+		resp->insertAscii(getXpType());
 		break;
 	case 68:
-		setDamageType(inv->getSignedIntParameter());
+		setType(inv->getSignedIntParameter());
 		break;
 	case 69:
-		setMinDamage(inv->getFloatParameter());
+		setDamageType(inv->getSignedIntParameter());
 		break;
 	case 70:
-		setMaxDamage(inv->getFloatParameter());
+		setMinDamage(inv->getFloatParameter());
 		break;
 	case 71:
-		setAttackSpeed(inv->getFloatParameter());
+		setMaxDamage(inv->getFloatParameter());
 		break;
 	case 72:
-		setHealthAttackCost(inv->getSignedIntParameter());
+		setAttackSpeed(inv->getFloatParameter());
 		break;
 	case 73:
-		setActionAttackCost(inv->getSignedIntParameter());
+		setHealthAttackCost(inv->getSignedIntParameter());
 		break;
 	case 74:
-		setMindAttackCost(inv->getSignedIntParameter());
+		setActionAttackCost(inv->getSignedIntParameter());
 		break;
 	case 75:
-		setWoundsRatio(inv->getFloatParameter());
+		setMindAttackCost(inv->getSignedIntParameter());
 		break;
 	case 76:
-		setArmorPiercing(inv->getSignedIntParameter());
+		setWoundsRatio(inv->getFloatParameter());
 		break;
 	case 77:
-		setDot0Type(inv->getSignedIntParameter());
+		setArmorPiercing(inv->getSignedIntParameter());
 		break;
 	case 78:
-		setDot0Attribute(inv->getSignedIntParameter());
+		setDot0Type(inv->getSignedIntParameter());
 		break;
 	case 79:
-		setDot0Strength(inv->getSignedIntParameter());
+		setDot0Attribute(inv->getSignedIntParameter());
 		break;
 	case 80:
-		setDot0Duration(inv->getSignedIntParameter());
+		setDot0Strength(inv->getSignedIntParameter());
 		break;
 	case 81:
-		setDot0Potency(inv->getSignedIntParameter());
+		setDot0Duration(inv->getSignedIntParameter());
 		break;
 	case 82:
-		setDot0Uses(inv->getSignedIntParameter());
+		setDot0Potency(inv->getSignedIntParameter());
 		break;
 	case 83:
-		setDot1Uses(inv->getSignedIntParameter());
+		setDot0Uses(inv->getSignedIntParameter());
 		break;
 	case 84:
-		setDot2Uses(inv->getSignedIntParameter());
+		setDot1Uses(inv->getSignedIntParameter());
 		break;
 	case 85:
-		setPointBlankRange(inv->getSignedIntParameter());
+		setDot2Uses(inv->getSignedIntParameter());
 		break;
 	case 86:
-		setPointBlankAccuracy(inv->getSignedIntParameter());
+		setPointBlankRange(inv->getSignedIntParameter());
 		break;
 	case 87:
-		setMaxRange(inv->getSignedIntParameter());
+		setPointBlankAccuracy(inv->getSignedIntParameter());
 		break;
 	case 88:
-		setMaxRangeAccuracy(inv->getSignedIntParameter());
+		setMaxRange(inv->getSignedIntParameter());
 		break;
 	case 89:
-		setIdealRange(inv->getSignedIntParameter());
+		setMaxRangeAccuracy(inv->getSignedIntParameter());
 		break;
 	case 90:
-		setIdealAccuracy(inv->getSignedIntParameter());
+		setIdealRange(inv->getSignedIntParameter());
 		break;
 	case 91:
-		powerupMinDamage(inv->getFloatParameter());
+		setIdealAccuracy(inv->getSignedIntParameter());
 		break;
 	case 92:
-		powerupMaxDamage(inv->getFloatParameter());
+		powerupMinDamage(inv->getFloatParameter());
 		break;
 	case 93:
-		powerupHealthAttackCost(inv->getFloatParameter());
+		powerupMaxDamage(inv->getFloatParameter());
 		break;
 	case 94:
-		powerupActionAttackCost(inv->getFloatParameter());
+		powerupHealthAttackCost(inv->getFloatParameter());
 		break;
 	case 95:
-		powerupMindAttackCost(inv->getFloatParameter());
+		powerupActionAttackCost(inv->getFloatParameter());
 		break;
 	case 96:
-		powerupWoundsRatio(inv->getFloatParameter());
+		powerupMindAttackCost(inv->getFloatParameter());
 		break;
 	case 97:
-		powerupAttackSpeed(inv->getFloatParameter());
+		powerupWoundsRatio(inv->getFloatParameter());
 		break;
 	case 98:
-		powerupPointBlankAccuracy(inv->getFloatParameter());
+		powerupAttackSpeed(inv->getFloatParameter());
 		break;
 	case 99:
-		powerupIdealRange(inv->getFloatParameter());
+		powerupPointBlankAccuracy(inv->getFloatParameter());
 		break;
 	case 100:
-		powerupIdealAccuracy(inv->getFloatParameter());
+		powerupIdealRange(inv->getFloatParameter());
 		break;
 	case 101:
-		powerupMaxRangeAccuracy(inv->getFloatParameter());
+		powerupIdealAccuracy(inv->getFloatParameter());
 		break;
 	case 102:
-		setPowerupUses(inv->getSignedIntParameter());
+		powerupMaxRangeAccuracy(inv->getFloatParameter());
 		break;
 	case 103:
-		setUsesRemaining(inv->getSignedIntParameter());
+		setPowerupUses(inv->getSignedIntParameter());
 		break;
 	case 104:
-		setCert(inv->getAsciiParameter(_param0_setCert__String_));
+		setUsesRemaining(inv->getSignedIntParameter());
 		break;
 	case 105:
+		setCert(inv->getAsciiParameter(_param0_setCert__String_));
+		break;
+	case 106:
 		setCertified(inv->getBooleanParameter());
+		break;
+	case 107:
+		setXpType();
 		break;
 	default:
 		return NULL;
@@ -1846,6 +1877,10 @@ String& WeaponAdapter::getCert() {
 	return ((WeaponImplementation*) impl)->getCert();
 }
 
+String& WeaponAdapter::getXpType() {
+	return ((WeaponImplementation*) impl)->getXpType();
+}
+
 void WeaponAdapter::setType(int type) {
 	return ((WeaponImplementation*) impl)->setType(type);
 }
@@ -2000,6 +2035,10 @@ void WeaponAdapter::setCert(String& certification) {
 
 void WeaponAdapter::setCertified(bool crt) {
 	return ((WeaponImplementation*) impl)->setCertified(crt);
+}
+
+void WeaponAdapter::setXpType() {
+	return ((WeaponImplementation*) impl)->setXpType();
 }
 
 /*

@@ -211,6 +211,9 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 45: // Open vendor
 		sendRadialResponseForBazaar(obj->getObjectID(), player);
 		break;
+	case 48:
+		handleTeach(obj, player);
+		break;
 	case 50:  // LISTEN / WATCH (Entertainer)
 		handleEntertainerActions(player, obj);
 		break;
@@ -1069,3 +1072,45 @@ void RadialManager::handleDiceConfigure(Player* player, SceneObject* obj, int ds
 void RadialManager::handleItemDrop(Player* player, SceneObject* obj) {
 	//Leave in plz, i still need it
 }
+
+void RadialManager::handleTeach(SceneObject* obj, Player* trainer) {
+	if (obj == NULL) {
+		trainer->sendSystemMessage("teaching","no_target");
+		return;
+	} else if (!obj->isPlayer()) {
+		trainer->sendSystemMessage("teaching","no_target");
+		return;
+	}
+	
+	Player* trainee = (Player*)obj;
+	
+	StfParameter *params = new StfParameter();
+	params->addTT(trainee->getFirstNameProper());
+	
+	if (trainer == trainee) {
+		trainer->sendSystemMessage("teaching","no_teach_self");
+		delete params;
+		return;
+	} else if (trainee->isDead() || trainee->isIncapacitated()) {
+		trainer->sendSystemMessage("teaching","student_dead",params);
+		delete params;
+		return;
+	} else if (!trainer->isInRange(trainee, 128)) {
+		trainer->sendSystemMessage("teaching","student_too_far_target",params);
+		delete params;
+		return;
+	} else if (!trainer->isInAGroup() || !trainee->isInAGroup() || (trainer->getGroupObject() != trainee->getGroupObject())) {
+		trainer->sendSystemMessage("teaching","not_in_same_group");
+		delete params;
+		return;
+	}  else if (trainee->getTeacher() != NULL) {
+		trainer->sendSystemMessage("teaching","student_has_offer_to_learn",params);
+		delete params;
+		return;
+	}
+	
+	delete params;
+	
+	trainer->teachPlayer(trainee);
+}
+

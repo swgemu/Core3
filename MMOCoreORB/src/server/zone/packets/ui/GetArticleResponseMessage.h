@@ -55,7 +55,7 @@ public:
 			insertInt(0); //option.  1 = couldnt retrieve. 0 = show article.
 		else {
 			insertInt(1);
-			insertInt(0); //Blank Unicode string.
+			insertInt(0); //Blank Unicode String.
 		}
    }
 

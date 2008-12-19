@@ -147,6 +147,8 @@ public:
 
 	String& getCert();
 
+	String& getXpType();
+
 	void setType(int type);
 
 	void setDamageType(int type);
@@ -225,12 +227,15 @@ public:
 
 	void setCertified(bool crt);
 
+	void setXpType();
+
 protected:
 	Weapon(DummyConstructorParameter* param);
 
 	virtual ~Weapon();
 
 	String _return_getCert;
+	String _return_getXpType;
 
 	friend class WeaponHelper;
 };
@@ -365,6 +370,8 @@ public:
 
 	String& getCert();
 
+	String& getXpType();
+
 	void setType(int type);
 
 	void setDamageType(int type);
@@ -442,6 +449,8 @@ public:
 	void setCert(String& certification);
 
 	void setCertified(bool crt);
+
+	void setXpType();
 
 protected:
 	String _param0_setCert__String_;

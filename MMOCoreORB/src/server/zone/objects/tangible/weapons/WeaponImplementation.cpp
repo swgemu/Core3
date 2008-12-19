@@ -160,7 +160,7 @@ void WeaponImplementation::initialize() {
 	sliced = false;
 
 	StringBuffer loggingname;
-	loggingname << "Weapon = 0x" << objectID;
+	setXpType();
 	setLoggingName(loggingname.toString());
 
 	setLogging(false);
@@ -1204,4 +1204,55 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 
 	generatePowerup(alm);
 
+}
+
+void WeaponImplementation::setXpType() {
+	switch (getType()) {
+	case UNARMED:
+		xpType = "combat_meleespecialize_unarmed";
+		break;
+	case ONEHANDED:
+		xpType = "combat_meleespecialize_onehand";
+		break;
+	case TWOHANDED:
+		xpType = "combat_meleespecialize_twohand";
+		break;
+	case POLEARM:
+		xpType = "combat_meleespecialize_polearm";
+		break;
+	case PISTOL:
+		xpType = "combat_rangedspecialize_pistol";
+		break;
+	case CARBINE:
+		xpType = "combat_rangedspecialize_carbine";
+		break;
+	case RIFLE:
+		xpType = "combat_rangedspecialize_rifle";
+		break;
+	case ONEHANDSABER:
+	case TWOHANDSABER:
+	case POLEARMSABER:
+		xpType = "jedi_general";
+		break;
+	case RIFLEBEAM:
+	case RIFLEFLAMETHROWER:
+	case RIFLELIGHTNING:
+	case RIFLEACIDBEAM:
+	case HEAVYACIDBEAM:
+	case HEAVYLIGHTNINGBEAM:
+	case HEAVYPARTICLEBEAM:
+	case HEAVYROCKETLAUNCHER:
+	case HEAVYLAUNCHER:
+		xpType = "combat_rangedspecialize_heavy";
+		break;
+	case GRENADE:
+		xpType = "combat_general";
+		break;
+	default:
+		if (getDamageType() == FORCE || isJedi())
+			xpType = "jedi_general";
+		else
+			xpType = "combat_meleespecialize_unarmed";
+		return;
+	};
 }

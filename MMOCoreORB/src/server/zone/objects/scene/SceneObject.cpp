@@ -14,9 +14,13 @@
 
 #include "../player/Player.h"
 
+#include "../tangible/weapons/Weapon.h"
+
 #include "../creature/CreatureObject.h"
 
 #include "../building/BuildingObject.h"
+
+#include "../creature/skills/target/AttackTargetSkill.h"
 
 /*
  *	SceneObjectStub
@@ -1267,6 +1271,59 @@ bool SceneObject::isInANoBuildArea() {
 		return ((SceneObjectImplementation*) _impl)->isInANoBuildArea();
 }
 
+void SceneObject::addDamageDone(CreatureObject* creature, int damage, String& skillname) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 102);
+		method.addObjectParameter(creature);
+		method.addSignedIntParameter(damage);
+		method.addAsciiParameter(skillname);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->addDamageDone(creature, damage, skillname);
+}
+
+void SceneObject::dropDamageDone(CreatureObject* creature) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 103);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->dropDamageDone(creature);
+}
+
+int SceneObject::getTotalDamage() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 104);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->getTotalDamage();
+}
+
+void SceneObject::disseminateXp(int levels) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 105);
+		method.addSignedIntParameter(levels);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->disseminateXp(levels);
+}
+
 /*
  *	SceneObjectAdapter
  */
@@ -1565,6 +1622,18 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 101:
 		resp->insertBoolean(isInANoBuildArea());
+		break;
+	case 102:
+		addDamageDone((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_addDamageDone__CreatureObject_int_String_));
+		break;
+	case 103:
+		dropDamageDone((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 104:
+		resp->insertSignedInt(getTotalDamage());
+		break;
+	case 105:
+		disseminateXp(inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -1955,6 +2024,22 @@ bool SceneObjectAdapter::isAttackableBy(CreatureObject* creature) {
 
 bool SceneObjectAdapter::isInANoBuildArea() {
 	return ((SceneObjectImplementation*) impl)->isInANoBuildArea();
+}
+
+void SceneObjectAdapter::addDamageDone(CreatureObject* creature, int damage, String& skillname) {
+	return ((SceneObjectImplementation*) impl)->addDamageDone(creature, damage, skillname);
+}
+
+void SceneObjectAdapter::dropDamageDone(CreatureObject* creature) {
+	return ((SceneObjectImplementation*) impl)->dropDamageDone(creature);
+}
+
+int SceneObjectAdapter::getTotalDamage() {
+	return ((SceneObjectImplementation*) impl)->getTotalDamage();
+}
+
+void SceneObjectAdapter::disseminateXp(int levels) {
+	return ((SceneObjectImplementation*) impl)->disseminateXp(levels);
 }
 
 /*

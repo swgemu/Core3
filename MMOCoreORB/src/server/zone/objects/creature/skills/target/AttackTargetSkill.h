@@ -85,6 +85,7 @@ protected:
 	int intimidateStateChance;
 
 	int requiredWeaponType;
+	int skillType;
 
 	String cbtSpamBlock;
 	String cbtSpamCounter;
@@ -93,7 +94,17 @@ protected:
 	String cbtSpamMiss;
 
 public:
-	AttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : TargetSkill(name, anim, ATTACK, serv) {
+	static const int DEBUFF = 1;
+	static const int DIRECT = 2;
+	static const int DOT = 3;
+	static const int FORCE = 4;
+	static const int RANDOM = 5;
+	static const int WEAPONLESS = 6;
+	static const int WOUNDS = 7;
+	static const int OTHER = 0;
+
+public:
+	AttackTargetSkill(const String& name, const String& anim, int tp, ZoneProcessServerImplementation* serv) : TargetSkill(name, anim, ATTACK, serv) {
 		healthPoolAttackChance = 0;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
@@ -123,6 +134,7 @@ public:
 		intimidateStateChance = 0;
 
 		requiredWeaponType = 0xFF; // NONE
+		skillType = tp;
 	}
 
 
@@ -169,6 +181,7 @@ public:
 		damage = damage - reduction - APARreduction;
 
 		target->addDamage(attacker, damage);
+		target->addDamageDone(attacker, damage, getSkillName());
 
 		target->takeHealthDamage(damage);
 
@@ -252,6 +265,7 @@ public:
 		damage = damage - reduction - APARreduction;
 
 		target->addDamage(attacker, damage);
+		target->addDamageDone(attacker, damage, getSkillName());
 
 		target->takeActionDamage(damage);
 
@@ -332,6 +346,7 @@ public:
 		damage = damage - reduction - APARreduction;
 
 		target->addDamage(attacker, damage);
+		target->addDamageDone(attacker, damage, getSkillName());
 
 		target->takeMindDamage(damage);
 
@@ -818,7 +833,7 @@ public:
 	bool isCone() {
 		return false;
 	}
-
+	
 	inline void setDamageRatio(float ratio) {
 		damageRatio = ratio;
 	}
@@ -972,6 +987,10 @@ public:
 
 	int getRequiredWeaponType() {
 		return requiredWeaponType;
+	}
+	
+	int getSkillType() {
+		return skillType;
 	}
 
 	friend class CombatManager;

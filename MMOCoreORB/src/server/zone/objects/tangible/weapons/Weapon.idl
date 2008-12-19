@@ -161,6 +161,7 @@ interface Weapon implements TangibleObject {
 	boolean hasPowerup();
 
 	String& getCert();
+	String& getXpType();
 
 	// setters
 	void setType(int type);
@@ -211,4 +212,6 @@ interface Weapon implements TangibleObject {
 
 	void setCert(String& certification);
 	void setCertified(boolean crt);
+
+	void setXpType();
 }

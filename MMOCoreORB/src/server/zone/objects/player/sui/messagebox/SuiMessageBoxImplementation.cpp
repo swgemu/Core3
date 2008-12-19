@@ -70,7 +70,7 @@ void SuiMessageBoxImplementation::generateHeader(BaseMessage* msg) {
 BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID);
 	generateHeader(msg);
-
+	
 	msg->insertOption(3, promptText, "Prompt.lblPrompt", "Text");
 	msg->insertOption(3, promptTitle, "bg.caption.lblTitle", "Text");
 	

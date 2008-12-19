@@ -842,6 +842,11 @@ public:
 			insertByte(0);
 		}
 	}
+	
+	void updateLevel(uint16 value) {
+		startUpdate(0x02);
+		insertShort(value);
+	}
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE6_H_*/

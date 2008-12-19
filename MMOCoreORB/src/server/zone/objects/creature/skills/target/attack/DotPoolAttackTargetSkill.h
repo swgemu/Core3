@@ -66,7 +66,7 @@ protected:
 	int diseaseDotStrength;
 
 public:
-	DotPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, serv) {
+	DotPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, DOT, serv) {
 
 		dotChanceState = 0;
 
