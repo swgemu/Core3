@@ -160,8 +160,9 @@ void WeaponImplementation::initialize() {
 	sliced = false;
 
 	StringBuffer loggingname;
-	setXpType();
+	loggingname << "Weapon = 0x" << objectID;
 	setLoggingName(loggingname.toString());
+	setXpType();
 
 	setLogging(false);
 	setGlobalLogging(true);
