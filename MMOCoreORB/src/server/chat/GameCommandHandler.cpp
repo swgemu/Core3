@@ -2565,7 +2565,7 @@ void GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player) {
 
 void GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player) {
 	StringBuffer name, getToons, msg;
-	String StringName;
+	String stringName;
 
 	Player* targetPlayer;
 	ResultSet* res;
@@ -2581,22 +2581,22 @@ void GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player) {
 		}
 
 		while (tokenizer.hasMoreTokens()) {
-			tokenizer.getStringToken(StringName);
-			name << StringName << " ";
+			tokenizer.getStringToken(stringName);
+			name << stringName << " ";
 		}
 
-		StringName = name.toString().toLowerCase();
+		stringName = name.toString().toLowerCase();
 
-		MySqlDatabase::escapeString(StringName);
+		MySqlDatabase::escapeString(stringName);
 
 		getToons << "SELECT characters.character_id, characters.account_id, characters.firstname "
 				 << "FROM characters Inner Join account ON account.account_id = characters.account_id "
-				 << "WHERE LCASE(account.username) = '" << StringName << "' "
+				 << "WHERE LCASE(account.username) = '" << stringName << "' "
 				 << "ORDER BY characters.account_id ASC, characters.firstname ASC;";
 
 		res = ServerDatabase::instance()->executeQuery(getToons);
 
-		msg << "The player " << StringName << "has registered the following characters: ";
+		msg << "The player " << stringName << "has registered the following characters: ";
 
 		player->sendSystemMessage(msg.toString());
 
@@ -2980,7 +2980,7 @@ void GameCommandHandler::changeTemplate(StringTokenizer tokenizer, Player* playe
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(newTemplateString);
 	} else {
-		player->sendSystemMessage("Usage: @changeTemplate [String]");
+		player->sendSystemMessage("Usage: @changeTemplate [string]");
 		return;
 	}
 
