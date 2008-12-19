@@ -40,6 +40,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 bewitchingDonkuwahShaman = Creature:new {
 	objectName = "bewitchingDonkuwahShaman",  -- Lua Object Name
 	creatureType = "NPC",
@@ -49,7 +50,7 @@ bewitchingDonkuwahShaman = Creature:new {
 
 	speciesName = "bewitching_donkuwah_shaman",
 	stfName = "mob/creature_names", 
-	objectCRC = ?, 
+	objectCRC = 00000000, 
 	socialGroup = "donkuwah_tribe",
 	level = 21,
 
@@ -134,10 +135,10 @@ bewitchingDonkuwahShaman = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "donkuwahAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(bewitchingDonkuwahShaman, ?) --  Add to Global Table
+Creatures:addCreature(bewitchingDonkuwahShaman, 00000000) -- Add to Global Table
