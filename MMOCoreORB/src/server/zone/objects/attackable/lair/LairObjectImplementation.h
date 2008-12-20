@@ -70,6 +70,7 @@ class LairObjectImplementation : public LairObjectServant {
 	String creatureStfName;
 	int spawnSize;
 	int babiesPerMillion;
+	int level;
 
 public:
 	LairObjectImplementation(uint32 objCRC, uint64 oid);
@@ -99,6 +100,10 @@ public:
 		babiesPerMillion = babies;
 	}
 
+	inline void setLevel(int lev) {
+		level = lev;
+	}
+
 	void addCreature(Creature* creature) {
 		creatures.add(creature);
 	}
@@ -116,6 +121,10 @@ public:
 
 	int getNumberOfCreatures() {
 		return creatures.size();
+	}
+
+	inline int getLevel() {
+		return level;
 	}
 
 };

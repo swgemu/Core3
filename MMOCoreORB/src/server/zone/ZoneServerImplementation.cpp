@@ -117,6 +117,8 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	setLockName("ZoneServerLock");
 
 	scheduler->setLogging(false);
+	
+	xpScale = 1;
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {

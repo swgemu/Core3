@@ -75,6 +75,31 @@ void LairObject::spawnCreatures(bool lockCreatureManager) {
 		((LairObjectImplementation*) _impl)->spawnCreatures(lockCreatureManager);
 }
 
+int LairObject::getLevel() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((LairObjectImplementation*) _impl)->getLevel();
+}
+
+void LairObject::setLevel(int lev) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addSignedIntParameter(lev);
+
+		method.executeWithVoidReturn();
+	} else
+		((LairObjectImplementation*) _impl)->setLevel(lev);
+}
+
 /*
  *	LairObjectAdapter
  */
@@ -98,6 +123,12 @@ Packet* LairObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 9:
 		spawnCreatures(inv->getBooleanParameter());
 		break;
+	case 10:
+		resp->insertSignedInt(getLevel());
+		break;
+	case 11:
+		setLevel(inv->getSignedIntParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -119,6 +150,14 @@ void LairObjectAdapter::setBabiesPerMillion(int babies) {
 
 void LairObjectAdapter::spawnCreatures(bool lockCreatureManager) {
 	return ((LairObjectImplementation*) impl)->spawnCreatures(lockCreatureManager);
+}
+
+int LairObjectAdapter::getLevel() {
+	return ((LairObjectImplementation*) impl)->getLevel();
+}
+
+void LairObjectAdapter::setLevel(int lev) {
+	return ((LairObjectImplementation*) impl)->setLevel(lev);
 }
 
 /*

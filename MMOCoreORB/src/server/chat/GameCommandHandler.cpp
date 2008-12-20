@@ -344,6 +344,10 @@ void GameCommandHandler::init() {
 			"Warps all players in a set radius to a specific waypoint",
 			"Usage: @warpAreaToWP <waypointName> <radius>",
 			&warpAreaToWP);
+	gmCommands->addCommand("scaleXP", PRIVILEGED,
+			"Sets the multiplier for serverwide experience",
+			"Usage: @scaleXP <scaler>",
+			&scaleXP);
 	/* Disabled Commands
 
 	Uncomment for use on DEV servers
@@ -3193,4 +3197,33 @@ void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player)
 	}catch (...)
 	{}
 }
+}
+
+void GameCommandHandler::scaleXP(StringTokenizer tokenizer, Player* player) {
+	int scale;
+	
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+		
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+		
+	ZoneServer* zsrv = srv->getZoneServer();
+	if (zsrv == NULL)
+		return;
+
+	if (!tokenizer.hasMoreTokens())
+		return;
+		
+	scale = tokenizer.getIntToken();
+	
+	zsrv->setXpScale(scale);
+
+	ChatManager * chatManager = zone->getChatManager();
+	
+	StringBuffer message;
+	message << player->getFirstNameProper() << " set XP scale to " << scale << ".";
+	chatManager->broadcastMessage(message.toString());
 }

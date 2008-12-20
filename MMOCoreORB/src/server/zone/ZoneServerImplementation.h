@@ -115,6 +115,8 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	int serverState;
 
 	String name;
+	
+	int xpScale;
 
 public:
 	const static int OFFLINE = 0;
@@ -278,6 +280,14 @@ public:
 
 	inline time_t getStartTimestamp() {
 		return startTimestamp;
+	}
+	
+	inline void setXpScale(int scale) {
+		xpScale = scale;
+	}
+	
+	inline int getXpScale() {
+		return xpScale;
 	}
 
 	uint64 getNextCreatureID(bool doLock = true);

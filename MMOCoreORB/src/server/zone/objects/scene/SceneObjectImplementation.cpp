@@ -62,6 +62,8 @@ which carries forward this exception.
 
 #include "../creature/skills/target/AttackTargetSkill.h"
 
+#include "../attackable/lair/LairObject.h"
+
 SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), QuadTreeEntry(), Logger() {
 	objectID = 0;
 	objectType = 0;
@@ -74,8 +76,6 @@ SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), Q
 
 	parent = NULL;
 	
-	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
-	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
 
@@ -104,8 +104,6 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 
 	parent = NULL;
 	
-	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
-	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
 
@@ -500,12 +498,6 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 		askill = (AttackTargetSkill*)skill;
 		
 	
-	/*if (askill->getRequiredWeaponType() == 0xFF && askill->isForce()) {
-		xptype = String("jedi_general");
-	} else if (creature->getWeapon() == NULL) {
-		xptype = String("combat_meleespecialize_unarmed");
-	} else 
-		xptype = creature->getWeapon()->getXpType();*/
 	switch (askill->getSkillType()) {
 	case AttackTargetSkill::DEBUFF:
 		return;
@@ -628,14 +620,19 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 			if (player->isInAGroup()) { // use group calculation
 				GroupObject *group = player->getGroupObject();
 				if (isNonPlayerCreature()) {
-					xpaddsingle = (groupDamageList.get(group)/total)*(damage/totaldamage)*40.0f*((float)levels)*((multiplier)/(group->getGroupSize()))*(1.0f+(group->getGroupSize()+5.0f)*.01f);
+					xpaddsingle = (groupDamageList.get(group)/total)*(damage/totaldamage)*40.0f*((float)levels)*((multiplier)/(group->getGroupSize()))*(1.0f+((group->getGroupSize()+5.0f)*.01f));
 					if (levels > 25)
 						xpaddsingle += (playerlevel - levels) * 60.0f;
 					else if (playerlevel > levels)
 						xpaddsingle += (levels - playerlevel) * 4.5f;
-					if (xptype == "jedi_general")
-						xpaddsingle /= 3.4f;
+				} else if (isAttackableObject()) {
+					AttackableObject *attobj = (AttackableObject*)_this;
+					if (attobj->getTemplateTypeName() == "lair_n") {
+						LairObject *lair = (LairObject*)attobj;
+						xpaddsingle = lair->getLevel() * 100 / (group->getGroupSize()) * (1.0f+((group->getGroupSize()+5.0f)*.01f));
+					}
 				}
+						
 			} else { // use solo calculation
 				if (isNonPlayerCreature()) {
 					xpaddsingle = (damage/total)*40.0f*((float)levels)*(multiplier);
@@ -643,13 +640,24 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 						xpaddsingle += (playerlevel - levels) * 60.0f;
 					else if (playerlevel > levels)
 						xpaddsingle += (levels - playerlevel) * 4.5f;
-					if (xptype == "jedi_general")
-						xpaddsingle /= 3.4f;
+				} else if (isAttackableObject()) {
+					AttackableObject *attobj = (AttackableObject*)_this;
+					if (attobj->getTemplateTypeName() == "lair_n") {
+						LairObject *lair = (LairObject*)attobj;
+						xpaddsingle = lair->getLevel() * 100;
+					}
 				}
 			}
 			
+			if (xptype == "jedi_general")
+				xpaddsingle /= 3.4f;
+
 			if (xpaddsingle < 1.0f) 
 				xpaddsingle = 1.0f;
+				
+			ZoneServer* zsrv = server->getZoneServer();
+			if (zsrv != NULL) 
+				xpaddsingle *= zsrv->getXpScale(); 
 			
 			player->addXp(xptype, (int)xpaddsingle, true);
 			if (xptype != "jedi_general")

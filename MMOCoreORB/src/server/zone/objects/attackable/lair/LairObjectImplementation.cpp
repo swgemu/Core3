@@ -75,6 +75,8 @@ LairObjectImplementation::LairObjectImplementation(uint32 objCRC, uint64 oid)
 
 	spawn1 = false;
 	spawn2 = false;
+
+	setLevel(0);
 }
 
 void LairObjectImplementation::doDamage(int damage, SceneObject* attacker) {
@@ -123,6 +125,8 @@ void LairObjectImplementation::spawnCreatures(bool lockCreatureManager) {
 
 		Creature* creature = creatureManager->spawnCreature(creatureCRC, 0, x, y, bitmask, baby, lockCreatureManager);
 		creatures.add(creature);
+		if (creature->getLevel() > getLevel())
+			setLevel(creature->getLevel());
 
 		try {
 			creature->wlock(_this);

@@ -31,6 +31,8 @@ class BuildingObject;
 
 class AttackTargetSkill;
 
+class LairObject;
+
 #include "engine/core/ManagedObject.h"
 
 class SceneObject : public ManagedObject {
