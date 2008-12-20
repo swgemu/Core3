@@ -230,6 +230,10 @@ void GameCommandHandler::init() {
 			"Gives full detailsofyour location.",
 			"Usage: @getLocation",
 			&getLocation);
+	gmCommands->addCommand("getTargetLocation", ALL,
+			"Gives full details of targeted object location.",
+			"Usage: @getTargetLocation",
+			&getTargetLocation);
 	gmCommands->addCommand("giveItemTemp", DEVELOPER,
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
@@ -1992,6 +1996,27 @@ void GameCommandHandler::getLocation(StringTokenizer tokenizer, Player* player) 
 	ss << "oY: " << player->getDirectionY() << " oW: " << player->getDirectionW();
 
 	player->sendSystemMessage(ss.toString());
+}
+
+void GameCommandHandler::getTargetLocation(StringTokenizer tokenizer, Player* player) {
+	StringBuffer ss;
+
+	SceneObject* target = player->getTarget();
+
+	if (target != NULL) {
+
+		ss << "planet: " << target->getZoneID() << " cell: "
+				<< target->getParentID() << endl;
+		ss << " X: " << target->getPositionX() << " Y: "
+				<< target->getPositionY();
+		ss << " Z: " << target->getPositionZ() << endl;
+		ss << "oX: " << target->getDirectionX() << " oZ: "
+				<< target->getDirectionZ();
+		ss << "oY: " << target->getDirectionY() << " oW: "
+				<< target->getDirectionW();
+
+		player->sendSystemMessage(ss.toString());
+	}
 }
 
 void GameCommandHandler::getCords(StringTokenizer tokenizer, Player* player) {
