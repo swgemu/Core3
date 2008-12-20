@@ -2233,88 +2233,88 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 	StringTokenizer tokenizer(waypointData);
 	tokenizer.setDelimeter(" ");
 
-	if (!tokenizer.hasMoreTokens())
-		return;
+	if (tokenizer.hasMoreTokens()) {
 
 	String arg1;
 	tokenizer.getStringToken(arg1);
 
 	if (tokenizer.hasMoreTokens()) {
-		if (isalpha(arg1[0]) == 0) {
-			//A waypoint in the form of /waypoint X Y <name>
-			x = atof(arg1.toCharArray());
+			if (isalpha(arg1[0]) == 0) {
+				//A waypoint in the form of /waypoint X Y <name>
+				x = atof(arg1.toCharArray());
 
-			if (tokenizer.hasMoreTokens()) {
-				String temp;
-				tokenizer.getStringToken(temp);
-				if (isalpha(temp[0]) == 0) {
-					y = atof(temp.toCharArray());
-				} else {
+				if (tokenizer.hasMoreTokens()) {
+					String temp;
+					tokenizer.getStringToken(temp);
+					if (isalpha(temp[0]) == 0) {
+						y = atof(temp.toCharArray());
+					} else {
+						player->sendSystemMessage(usageError);
+						return;
+					}
+				}
+
+				StringBuffer newWaypointName;
+
+				while (tokenizer.hasMoreTokens()) {
+					String name;
+					tokenizer.getStringToken(name);
+					newWaypointName << name << " ";
+				}
+
+				/*if (!newWaypointName.isEmpty())
+				 newWaypointName.deleteRange(0, 1);*/// ????
+
+				waypointName = newWaypointName.toString();
+			} else {
+				//A waypoint in the form of /waypoint planet X Z Y - Planetary Map
+				planet = arg1;
+
+				if (Planet::getPlanetID(planet) < 0) { //Not a valid planet name - malformed command
 					player->sendSystemMessage(usageError);
 					return;
 				}
+
+				if (tokenizer.hasMoreTokens()) {
+					String temp;
+					tokenizer.getStringToken(temp);
+
+					if (!Character::isLetterOrDigit(temp.charAt(0))) {
+						x = Float::valueOf(temp);
+					} else {
+						player->sendSystemMessage(usageError);
+						return;
+					}
+				}
+
+				if (tokenizer.hasMoreTokens()) {
+					String temp;
+					tokenizer.getStringToken(temp);
+
+					if (!Character::isLetterOrDigit(temp.charAt(0))) {
+						z = Float::valueOf(temp);
+					} else {
+						player->sendSystemMessage(usageError);
+						return;
+					}
+				}
+
+				if (tokenizer.hasMoreTokens()) {
+					String temp;
+					tokenizer.getStringToken(temp);
+
+					if (!Character::isLetterOrDigit(temp.charAt(0))) {
+						y = Float::valueOf(temp);
+					} else {
+						player->sendSystemMessage(usageError);
+						return;
+					}
+				}
 			}
-
-			StringBuffer newWaypointName;
-
-			while (tokenizer.hasMoreTokens()) {
-				String name;
-				tokenizer.getStringToken(name);
-				newWaypointName << name << " ";
-			}
-
-			/*if (!newWaypointName.isEmpty())
-				newWaypointName.deleteRange(0, 1);*/ // ????
-
-			waypointName = newWaypointName.toString();
 		} else {
-			//A waypoint in the form of /waypoint planet X Z Y - Planetary Map
-			planet = arg1;
-
-			if (Planet::getPlanetID(planet) < 0) { //Not a valid planet name - malformed command
-				player->sendSystemMessage(usageError);
-				return;
-			}
-
-			if (tokenizer.hasMoreTokens()) {
-				String temp;
-				tokenizer.getStringToken(temp);
-
-				if (!Character::isLetterOrDigit(temp.charAt(0))) {
-					x = Float::valueOf(temp);
-				} else {
-					player->sendSystemMessage(usageError);
-					return;
-				}
-			}
-
-			if (tokenizer.hasMoreTokens()) {
-				String temp;
-				tokenizer.getStringToken(temp);
-
-				if (!Character::isLetterOrDigit(temp.charAt(0))) {
-					z = Float::valueOf(temp);
-				} else {
-					player->sendSystemMessage(usageError);
-					return;
-				}
-			}
-
-			if (tokenizer.hasMoreTokens()) {
-				String temp;
-				tokenizer.getStringToken(temp);
-
-				if (!Character::isLetterOrDigit(temp.charAt(0))) {
-					y = Float::valueOf(temp);
-				} else {
-					player->sendSystemMessage(usageError);
-					return;
-				}
-			}
+			//A waypoint in the form of /waypoint <name>
+			waypointName = arg1;
 		}
-	} else {
-		//A waypoint in the form of /waypoint <name>
-		waypointName = arg1;
 	}
 
 	x = (x < -8192) ? -8192 : x;

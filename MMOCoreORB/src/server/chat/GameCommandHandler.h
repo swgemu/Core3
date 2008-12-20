@@ -179,6 +179,7 @@ private:
 	static void getDirection(StringTokenizer tokenizer, Player* player);
 	static void setAdminLevel(StringTokenizer tokenizer, Player* player);
 	static void getLocation(StringTokenizer tokenizer, Player* player);
+	static void getTargetLocation(StringTokenizer tokenizer, Player* player);
 	static void getCords(StringTokenizer tokenizer, Player* player);
 	static void giveItemTemp(StringTokenizer tokenizer, Player* player);
 	static void clientEffect(StringTokenizer tokenizer, Player* player);
