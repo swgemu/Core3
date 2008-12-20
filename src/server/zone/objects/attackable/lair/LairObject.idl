@@ -54,4 +54,7 @@ interface LairObject implements AttackableObject {
 	void setBabiesPerMillion(int babies);
 	
 	void spawnCreatures(boolean lockCreatureManager = true);
+
+	int getLevel();
+	void setLevel(int lev);
 }

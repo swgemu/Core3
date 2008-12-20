@@ -1453,7 +1453,7 @@ void PlayerImplementation::deaggro() {
 
 			for (int i = 0; i < getDefenderListSize(); ++i) {
 				scno = getDefender(i);
-				scno->dropDamageDone((CreatureObject*)this);
+				scno->dropDamageDone((CreatureObject*)_this);
 
 				if (scno->isNonPlayerCreature()) {
 
@@ -4898,7 +4898,6 @@ void PlayerImplementation::loadXpTypeCap() {
 				for (int j = 1; j <= 4; j++) {
 					FourByFourProfession *curprof = (FourByFourProfession*)prof;
 					plusone = curprof->getBox(j, 1);	
-					System::out << plusone->getName() << ":" << plusone->getSkillXpCap() << endl;		
 					if (xpCapList.contains(plusone->getSkillXpType())) {
 						if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
 							xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());

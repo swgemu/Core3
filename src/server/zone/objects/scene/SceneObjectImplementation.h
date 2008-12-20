@@ -102,8 +102,6 @@ protected:
 
 	uint64 associatedArea;
 
-	VectorMap<uint64, CreatureObject*> weaponCreatureList;
-	VectorMap<uint64, int> weaponDamageList;
 	VectorMap<GroupObject*, int> groupDamageList;
 	VectorMap<CreatureObject*, DamageDone*> playerDamageList;
 
