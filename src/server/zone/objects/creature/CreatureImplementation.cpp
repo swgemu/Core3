@@ -1390,17 +1390,19 @@ void CreatureImplementation::doIncapacitate() {
 	deagro();
 	setPosture(CreaturePosture::DEAD);
 
-	if ((isImperial() || isRebel()) && getLootOwner()->isPlayer()) {
-		Player* lootOwner = (Player *) getLootOwner();
+	CreatureObject* lootOwner = getLootOwner();
 
-		String pfaction = (lootOwner->isImperial())
+	if ((isImperial() || isRebel()) && lootOwner != NULL && lootOwner->isPlayer()) {
+		Player* lootOwnerPlayer = (Player *) lootOwner;
+
+		String pfaction = (lootOwnerPlayer->isImperial())
 			? "imperial" : "rebel";
 
 		String myfaction = (isImperial())
 			? "imperial" : "rebel";
 
-		lootOwner->addFactionPoints(pfaction, fpValue);
-		lootOwner->subtractFactionPoints(myfaction, fpValue);
+		lootOwnerPlayer->addFactionPoints(pfaction, fpValue);
+		lootOwnerPlayer->subtractFactionPoints(myfaction, fpValue);
 	}
 
 	creatureHealth = System::random(3) + 1;
