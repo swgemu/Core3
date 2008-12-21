@@ -140,6 +140,9 @@ TangibleObject* ItemManagerImplementation::getPlayerItem(Player* player, uint64 
 	TangibleObject* tano = NULL;
 	SceneObject* item = NULL;
 
+	if (player == NULL)
+		return NULL;
+
 	if (player != NULL)
 		SceneObject* item = player->getPlayerItem(objectid);
 
@@ -1735,7 +1738,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			}
 		}
 
-		if (sourceContainer != NULL && !sourceContainer->isContainer())
+		if (sourceContainer != NULL && player->getInventory() != sourceContainer && !sourceContainer->isTangible()  && !sourceContainer->isContainer())
 			sourceContainer = NULL;
 
 		moveItem(zone, player, item, object, comesFromCell, comesFromInventory, comesFromInventoryContainer,
@@ -1759,6 +1762,8 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 	BuildingObject* building = NULL;
 	Container* conti = NULL;
 
+
+
 	uint64 objectID = 0;
 	if (object != NULL)
 		objectID = object->getObjectID();
@@ -1772,13 +1777,18 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 		if (comesFromInventoryContainer || comesFromExternalContainer) {
 			item->unlock();
 
-			//********** Temporarely debug code for TC
-			int debugTest = sourceContainer->objectsSize();
-			if (debugTest < 1) {
-				System::out << "ATTENTION - SERIOUS PROBLEM: There is an object considered to be a container, but it isnt. The name of the sourceContainer is "
-				<< sourceContainer->getName().toString() << "  and the OID is " << sourceContainer->getObjectID() << "\n";
-
+			if (sourceContainer == NULL)
 				return;
+
+			//********** Temporarely debug code for TC
+			if (sourceContainer != player->getInventory()) {
+				bool container = sourceContainer->isTangible() && sourceContainer->isContainer();
+				if (!container) {
+					System::out << "ATTENTION - SERIOUS PROBLEM: There is an object considered to be a container, but it isnt. The name of the sourceContainer is "
+					<< sourceContainer->getObjectCRC() << "  and the OID is " << sourceContainer->getObjectID() << "\n";
+
+					return;
+				}
 			}
 			//**********
 

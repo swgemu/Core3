@@ -1199,13 +1199,12 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 		zone->lock();
 
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject
-					* obj =
+			ManagedReference<SceneObject> obj =
 							(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
 									i))->_getStub());
 
 			if (obj->isPlayer()) {
-				Player* otherPlayer = (Player*) obj;
+				Player* otherPlayer = (Player*) obj.get();
 				String otherName = otherPlayer->getFirstName();
 
 				if (otherName != name && player->isInRange(otherPlayer, meter)
@@ -1236,7 +1235,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 				}
 			} else if (obj->isNonPlayerCreature()) {
 
-				Creature* creature = (Creature*) obj;
+				Creature* creature = (Creature*) obj.get();
 
 				//if (creature->isInRange(creature, meter) && !creature->isTrainer() && !creature->isRecruiter()) {
 				if (player->isInRange(creature, meter) && creature->getCreatureBitmask() != 0x108 && creature->getCreatureBitmask() != 0x1080) {
