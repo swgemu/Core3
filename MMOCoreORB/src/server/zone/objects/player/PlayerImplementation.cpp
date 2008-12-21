@@ -328,12 +328,12 @@ void PlayerImplementation::initialize() {
 
 	setLogging(false);
 	setGlobalLogging(true);
-	
+
 	teachingTarget = NULL;
 	teachingTrainer = NULL;
 	teachingSkillList.removeAll();
 	teachingOffer = false;
-	
+
 	if (getWeapon() == NULL) {
 		int templevel = calcPlayerLevel("combat_meleespecialize_unarmed");
 		if (calcPlayerLevel("medical") > templevel)
@@ -1077,9 +1077,6 @@ void PlayerImplementation::resetArmorEncumbrance() {
 }
 
 void PlayerImplementation::sendToOwner() {
-	if (faction != 0)
-		pvpStatusBitmask |= CreatureFlag::OVERT;
-
 	CreatureObjectImplementation::sendToOwner(_this, false);
 
 	playerObject->sendToOwner();
@@ -2988,18 +2985,18 @@ void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
 			setWeaponSkillMods(weapon);
 
 		}
-		
+
 		int playerlevel;
 		if (getWeapon() == NULL)
 			playerlevel = calcPlayerLevel("combat_meleespecialize_unarmed");
 		else
 			playerlevel = calcPlayerLevel(getWeapon()->getXpType());
-		
+
 		if (calcPlayerLevel("medical") > playerlevel)
 			setLevel(calcPlayerLevel("medical"));
 		else
 			setLevel(playerlevel);
-			
+
 		if (isInAGroup()) {
 			getGroupObject()->calcGroupLevel();
 			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(getGroupObject());
@@ -3008,7 +3005,7 @@ void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
 
 			broadcastMessage(grp);
 		}
-		
+
 		if (doUpdate) {
 			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 			if (isInAGroup()) {
@@ -3017,10 +3014,10 @@ void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
 				dcreo6->updateLevel(getLevel());
 			}
 			dcreo6->close();
-			
+
 			broadcastMessage(dcreo6);
 		}
-		
+
 	} else if (((TangibleObject*)obj)->isInstrument()){
 		Instrument* device = (Instrument*) obj;
 		int instrument = device->getInstrumentType();
@@ -4444,13 +4441,13 @@ void PlayerImplementation::setEntertainerEvent() {
 
 void PlayerImplementation::addEntertainerFlourishXp(int xp) {
 	EntertainerEvent* entEvent = (EntertainerEvent*)entertainerEvent;
-	
+
 	entEvent->addFlourishXp(xp);
 }
-	
+
 void PlayerImplementation::addEntertainerHealingXp(int xp) {
 	EntertainerEvent* entEvent = (EntertainerEvent*)entertainerEvent;
-	
+
 	entEvent->addHealingXp(xp);
 }
 
@@ -4653,7 +4650,7 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 		else
 			omr->addRadialItem(0, 50, 3, "Stop Watch");
 	}
-	
+
 	if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
 		omr->addRadialItem(0, 48, 3, "@cmd_n:teach");
 	}
@@ -4889,19 +4886,19 @@ void PlayerImplementation::loadXpTypeCap() {
 	xpCapList.removeAll();
 	while (hasNextSkillBox()) {
 		SkillBox *skillbox = skillBoxes.getNextValue();
-		
+
 		if (skillbox->isNoviceBox()) {
 			Profession *prof = skillbox->getProfession();
 			SkillBox *plusone;
-			
+
 			if (prof->isFourByFour()) {
 				for (int j = 1; j <= 4; j++) {
 					FourByFourProfession *curprof = (FourByFourProfession*)prof;
-					plusone = curprof->getBox(j, 1);	
+					plusone = curprof->getBox(j, 1);
 					if (xpCapList.contains(plusone->getSkillXpType())) {
 						if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
 							xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
-					} else 
+					} else
 						xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
 				}
 			} else if (prof->isOneByFour()) {
@@ -4910,7 +4907,7 @@ void PlayerImplementation::loadXpTypeCap() {
 				if (xpCapList.contains(plusone->getSkillXpType())) {
 					if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
 						xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
-				} else 
+				} else
 					xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
 			} else if (prof->isPyramid()) {
 				PyramidProfession *curprof = (PyramidProfession*)prof;
@@ -4918,10 +4915,10 @@ void PlayerImplementation::loadXpTypeCap() {
 				if (xpCapList.contains(plusone->getSkillXpType())) {
 					if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
 						xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
-				} else 
+				} else
 					xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
 			}
-			
+
 		} else
 			xpCapList.put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
 	}
@@ -4930,7 +4927,7 @@ void PlayerImplementation::loadXpTypeCap() {
 int PlayerImplementation::calcPlayerLevel(String xptype) {
 	resetSkillBoxesIterator();
 	playerLevel = 0;
-	
+
 	if (xptype == "jedi_general") {
 		playerLevel = 10;
 		int skillnum = 0;
@@ -4947,14 +4944,14 @@ int PlayerImplementation::calcPlayerLevel(String xptype) {
 		}
 		playerLevel += 5*skillnum;
 		if (playerLevel > 25)
-			playerLevel = 25; 
+			playerLevel = 25;
 		return playerLevel;
 	}
-	
+
 	Weapon *weap = getWeapon();
 	int wtype;
-	
-	if (weap == NULL) 
+
+	if (weap == NULL)
 		wtype = WeaponImplementation::UNARMED;
 	else
 		wtype = weap->getType();
@@ -5101,35 +5098,35 @@ int PlayerImplementation::calcPlayerLevel(String xptype) {
 			break;
 		};
 	}
-	
+
 	// force the 5-25 range
 	if (playerLevel < 5)
 		playerLevel = 5;
 	else if (playerLevel > 25)
 		playerLevel = 25;
-		
+
 	return playerLevel;
 }
 
 void PlayerImplementation::teachPlayer(Player* player) {
 	if (teachingSkillList.size() > 0)
 		return;
-	
+
 	Vector<SkillBox*> trainboxes;
 	resetSkillBoxesIterator();
-	
+
 	if (!hasNextSkillBox()) {
 		sendSystemMessage("teaching","no_skills");
 		return;
 	}
-	
+
 	while (hasNextSkillBox()) {
 		SkillBox* sBox = skillBoxes.getNextValue();
-		
+
 		if (sBox->isNoviceBox())
 			continue;
-		
-		if (sBox->getSkillXpType() == "jedi_general" || 
+
+		if (sBox->getSkillXpType() == "jedi_general" ||
 			sBox->getSkillXpType() == "space_combat_general" ||
 			sBox->getSkillXpType() == "fs_crafting" ||
 			sBox->getSkillXpType() == "fs_combat" ||
@@ -5137,16 +5134,16 @@ void PlayerImplementation::teachPlayer(Player* player) {
 			sBox->getSkillXpType() == "fs_senses" ||
 			sBox->getSkillXpType() == "force_rank_xp")
 			continue;
-		
+
 		if (player->hasSkillBox(sBox->getName()))
 			continue;
-			
+
 		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {
 			if (player->hasSkillBox(sBox->getRequiredSkill(j)->getName()))
 				trainboxes.add(sBox);
 		}
 	}
-	
+
 	if (trainboxes.size() > 0) {
 		setStudent(player);
 		player->setTeacher(_this);
@@ -5154,14 +5151,14 @@ void PlayerImplementation::teachPlayer(Player* player) {
 		sbox->setPromptTitle("@sui:teach");
 		sbox->setPromptText("What would you like to teach?");
 		sbox->setCancelButton(true);
-		
+
 		for (int i = 0; i < trainboxes.size(); i++) {
 			StringBuffer skillboxname;
 			skillboxname << "@skl_n:" << trainboxes.get(i)->getName();
 			sbox->addMenuItem(skillboxname.toString());
 			teachingSkillList.add(trainboxes.get(i));
 		}
-		
+
 		addSuiBox(sbox);
 		sendMessage(sbox->generateMessage());
 	} else {
@@ -5175,21 +5172,21 @@ void PlayerImplementation::teachPlayer(Player* player) {
 void PlayerImplementation::teachSkill(String& skillname) {
 	SkillBox* sBox = server->getProfessionManager()->getSkillBox(skillname);
 	StfParameter* params = new StfParameter;
-	
+
 	params->addTO("skl_n",skillname);
 	params->addTT(getTeacher()->getFirstNameProper());
-	
+
 	if (sBox->getSkillXpCost() > getXp(sBox->getSkillXpType())) {
 		sendSystemMessage("skill_teacher","prose_train_failed", params);
 	} else {
 		sendSystemMessage("teaching","student_skill_learned", params);
 		addXp(sBox->getSkillXpType(), (-1)*sBox->getSkillXpCost(), true);
 		trainSkillBox(skillname);
-		
+
 		StfParameter* locparams = new StfParameter;
 		locparams->addTT(getFirstNameProper());
 		locparams->addTO("skl_n",skillname);
-		
+
 		int xp = 0;
 		String xptype("apprenticeship");
 		if (sBox->isMasterBox())
@@ -5199,15 +5196,15 @@ void PlayerImplementation::teachSkill(String& skillname) {
 			xp = ((tier-'0') + 1) * 10;
 		}
 		locparams->addDI(xp);
-		
+
 		getTeacher()->sendSystemMessage("teaching","teacher_skill_learned", locparams);
 		getTeacher()->addXp(xptype, xp, true);
-		
+
 		delete locparams;
 	}
-	
+
 	delete params;
-		
+
 	getTeacher()->setStudent(NULL);
 	setTeacher(NULL);
 }
