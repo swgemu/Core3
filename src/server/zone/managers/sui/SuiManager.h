@@ -97,8 +97,8 @@ public:
 	void handleConsentBox(uint32 boxID, Player* player, uint32 cancel, int value);
 
 	void handleDenyTrainingList(uint32 boxID, Player* player);
-	
-	void handleTeachPlayer(uint32 boxID, Player* player, int value);
+
+	void handleTeachPlayer(uint32 boxID, Player* player, int value, uint32 cancel);
 	void handleTeachSkill(uint32 boxID, Player* player, uint32 cancel);
 
 };

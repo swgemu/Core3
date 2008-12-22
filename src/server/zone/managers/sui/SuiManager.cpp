@@ -204,14 +204,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		handleTeachSkill(boxID, player, cancel);
 		break;
 	case 0x7848:
-		if (cancel != 1)
-			handleTeachPlayer(boxID, player, atoi(value.toCharArray()));
-		else {
-			player->getStudent()->setTeacher(NULL);
-			player->setStudent(NULL);
-			player->clearTeachingSkillOptions();
-		}
-			
+		handleTeachPlayer(boxID, player, atoi(value.toCharArray()), cancel);
 		break;
 	case 0x7849:
 		handleDenyTrainingList(boxID, player);
@@ -1507,34 +1500,57 @@ void SuiManager::handleDenyTrainingList(uint32 boxID, Player* player) {
        }
 }
 
-void SuiManager::handleTeachPlayer(uint32 boxID, Player* player, int value) {
+void SuiManager::handleTeachPlayer(uint32 boxID, Player* player, int value, uint32 cancel) {
+	Player* student = NULL;
+
 	try {
 		player->wlock();
-		
+
 		if(!player->hasSuiBox(boxID)) {
 			player->unlock();
 			return;
 		}
-		
+
 		SuiBox* sui = player->getSuiBox(boxID);
 		player->removeSuiBox(boxID);
 		sui->finalize();
-		
-		Player* student = player->getStudent();
-			
+
+		student = player->getStudent();
+
+		if (student == NULL) {
+			player->unlock();
+			return;
+		}
+
+		if (student != player)
+			student->wlock(player);
+
+		if (cancel == 1) {
+			student->setTeacher(NULL);
+			player->setStudent(NULL);
+			player->clearTeachingSkillOptions();
+
+			if (student != player)
+				student->unlock();
+
+			player->unlock();
+			return;
+		}
+
+
 		student->setTeachingOffer(player->getTeachingSkillOption(value));
-		
+
 		StfParameter* params = new StfParameter;
 		params->addTT(student->getFirstNameProper());
 		params->addTO("skl_n",player->getTeachingSkillOption(value));
-		
+
 		player->sendSystemMessage("teaching","offer_given", params);
-		
+
 		delete params;
-		
+
 		SuiListBox* mbox = new SuiListBox(student, 0x7847);
-		
-		// TODO: redo this after I find the proper String 
+
+		// TODO: redo this after I find the proper String
 		StringBuffer prompt, skillname;
 		skillname << "@skl_n:" << player->getTeachingSkillOption(value);
 		prompt << "Do you wish to learn the following from " << player->getFirstNameProper() << "?";
@@ -1542,37 +1558,45 @@ void SuiManager::handleTeachPlayer(uint32 boxID, Player* player, int value) {
 		mbox->setPromptText(prompt.toString());
 		mbox->addMenuItem(skillname.toString());
 		mbox->setCancelButton(true);
-		
+
 		student->addSuiBox(mbox);
 		student->sendMessage(mbox->generateMessage());
-		
+
 		player->clearTeachingSkillOptions();
 		player->setStudent(NULL);
-		
+
+		if (student != player)
+			student->unlock();
+
 		player->unlock();
 	} catch (Exception& e) {
 		error("Exception in SuiManager::handleTeachPlayer");
 	    	e.printStackTrace();
+
+	    	if (student != player)
+	    		student->unlock();
         	player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleTeachPlayer");
-        	player->unlock();
+		if (student != player)
+			student->unlock();
+        player->unlock();
 	}
 }
 
 void SuiManager::handleTeachSkill(uint32 boxID, Player* player, uint32 cancel) {
 	try {
 		player->wlock();
-		
+
 		if(!player->hasSuiBox(boxID)) {
 			player->unlock();
 			return;
 		}
-		
+
 		SuiBox* sui = player->getSuiBox(boxID);
 		player->removeSuiBox(boxID);
 		sui->finalize();
-		
+
 		StfParameter* params = new StfParameter;
 		StfParameter* locparams = new StfParameter;
 		params->addTT(player->getFirstNameProper());
@@ -1587,7 +1611,7 @@ void SuiManager::handleTeachSkill(uint32 boxID, Player* player, uint32 cancel) {
 			} else if (!player->isInRange(player->getTeacher(), 128)) {
 				player->sendSystemMessage("teaching","teacher_too_far_target", locparams);
 				player->getTeacher()->sendSystemMessage("teaching","teaching_failed");
-			} else 
+			} else
 				player->teachSkill(player->getTeachingOffer());
 		} else {
 			player->getTeacher()->sendSystemMessage("teaching","offer_refused",params);
@@ -1595,7 +1619,7 @@ void SuiManager::handleTeachSkill(uint32 boxID, Player* player, uint32 cancel) {
 			player->getTeacher()->clearTeachingSkillOptions();
 			player->setTeacher(NULL);
 		}
-		
+
 		delete params;
 		delete locparams;
 
