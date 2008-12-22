@@ -1450,38 +1450,35 @@ void PlayerImplementation::deaggro() {
 
 			for (int i = 0; i < getDefenderListSize(); ++i) {
 				scno = getDefender(i);
-				scno->dropDamageDone((CreatureObject*)_this);
 
-				if (scno->isNonPlayerCreature()) {
+				try {
+					if ((SceneObject*) scno != (SceneObject*) _this)
+						scno->wlock(_this);
 
-					defender = (Creature*) scno;
-					aggroedCreature = defender->getAggroedCreature();
+					scno->dropDamageDone((CreatureObject*)_this);
 
-					if (aggroedCreature != NULL && aggroedCreature->isPlayer()) {
+					if (scno->isNonPlayerCreature()) {
 
-						aggroedPlayer = (Player*) aggroedCreature;
+						defender = (Creature*) scno;
+						aggroedCreature = defender->getAggroedCreature();
 
-						if (aggroedPlayer->getFirstName() == getFirstName()) {
+						if (aggroedCreature != NULL && aggroedCreature->isPlayer()) {
 
-							try {
-								if ((SceneObject*) defender
-										!= (SceneObject*) _this)
+							aggroedPlayer = (Player*) aggroedCreature;
 
-								defender->wlock(_this);
+							if (aggroedPlayer->getFirstName() == getFirstName()) {
 								defender->deagro();
 								defender->removeFromDamageMap(aggroedCreature);
 								removeDefender(scno);
-
-								if ((SceneObject*) defender
-										!= (SceneObject*) _this)
-									defender->unlock();
-							} catch (...) {
-								if ((SceneObject*) defender
-										!= (SceneObject*) _this)
-									defender->unlock();
 							}
 						}
 					}
+
+					if ((SceneObject*) scno != (SceneObject*) _this)
+						scno->unlock();
+				} catch (...) {
+					if ((SceneObject*) scno != (SceneObject*) _this)
+						scno->unlock();
 				}
 
 				if (scno->isPlayer()) {

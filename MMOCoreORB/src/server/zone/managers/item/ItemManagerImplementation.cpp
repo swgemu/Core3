@@ -603,7 +603,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 				conti->addObject(item);
 			}
 		}
-	} else if (player != NULL) 
+	} else if (player != NULL)
 		((CreatureObject*)player)->addInventoryItem(item);
 
 	if(item->isEquipped())
@@ -1705,7 +1705,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 				if (destinationObject->isTangible()) {
 					TangibleObject* destinationTano = (TangibleObject*) destinationObject;
 
-					if (destinationObject->getParentID() == player->getInventory()->getObjectID()) {
+					if (destinationObject->getObjectID() == player->getInventory()->getObjectID()) {
 						destinationIsInventoryContainer = true;
 					} else if (destinationTano->isContainer())
 						destinationIsExternalContainer = true;
@@ -1728,7 +1728,7 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			return;
 		}
 
-		if (destinationIsExternalContainer || destinationIsInventoryContainer) {
+		if (destinationIsInventoryContainer || destinationIsExternalContainer) {
 			int containerItems = ((Container*) destinationObject)->objectsSize();
 			int attributeSlots = ((Container*) destinationObject)->getSlots();
 

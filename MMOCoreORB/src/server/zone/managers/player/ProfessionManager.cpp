@@ -103,9 +103,15 @@ void ProfessionManager::loadProfessions(PlayerImplementation* player) {
 	}
 
 	String professions = result->getString(0);
+
+	delete result;
+
 	String decodedData;
 	BinaryData decodedProfession(professions);
 	decodedProfession.decode(decodedData);
+
+	if (decodedData.length() == 0)
+		return;
 
 	uint16* data = (uint16*)decodedData.toCharArray();
 	uint16 size = *data;
@@ -127,8 +133,6 @@ void ProfessionManager::loadProfessions(PlayerImplementation* player) {
 
 		data++;
 	}
-
-	delete result;
 
 	loadDefaultSkills(player);
 }
