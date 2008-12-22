@@ -73,7 +73,7 @@ SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), Q
 	directionX = directionZ = directionY = 0;
 
 	parent = NULL;
-	
+
 	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
@@ -103,7 +103,7 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 	directionZ = directionX = directionW = 0;
 
 	parent = NULL;
-	
+
 	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
@@ -349,11 +349,11 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
 			if (object->isPlayer()) {
 				Player* player = (Player*) object;
 
-                if (range == 128 || isInRange(player, range) || player->getParent() != NULL) { 
-                    if (this->isPlayer()) { 
-                        Player* sender = (Player*) this->_getStub(); 
-            			if (!sendSelf && (player == sender)) 
-                			continue; 
+                if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
+                    if (this->isPlayer()) {
+                        Player* sender = (Player*) this->_getStub();
+            			if (!sendSelf && (player == sender))
+                			continue;
                     }
 					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
 					player->sendMessage(msg->clone());
@@ -474,18 +474,18 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 
 void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int damage, string skillname) {
 	string xptype;
-	
+
 	AttackTargetSkill *askill;
 	Skill *skill = server->getSkillManager()->getSkill(skillname);
 	if (skill->isAttackSkill())
 		askill = (AttackTargetSkill*)skill;
-		
-	
+
+
 	/*if (askill->getRequiredWeaponType() == 0xFF && askill->isForce()) {
 		xptype = string("jedi_general");
 	} else if (creature->getWeapon() == NULL) {
 		xptype = string("combat_meleespecialize_unarmed");
-	} else 
+	} else
 		xptype = creature->getWeapon()->getXpType();*/
 	switch (askill->getSkillType()) {
 	case AttackTargetSkill::DEBUFF:
@@ -498,7 +498,7 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 	case AttackTargetSkill::OTHER:
 		if (creature->getWeapon() == NULL)
 			xptype = string("combat_meleespecialize_unarmed");
-		else 
+		else
 			xptype = creature->getWeapon()->getXpType();
 		break;
 	case AttackTargetSkill::WEAPONLESS:
@@ -511,12 +511,12 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 		xptype = "none";
 		break;
 	};
-	
+
 	DamageDone *dmg;
 	if (creature->isIncapacitated() || creature->isDead())
 		return;
-	
-	if (!playerDamageList.contains(creature)) {	
+
+	if (!playerDamageList.contains(creature)) {
 		dmg = new DamageDone;
 	} else
 		dmg = playerDamageList.get(creature);
@@ -527,9 +527,9 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 		Player* player = (Player*)creature;
 		dmg->addDamage(xptype, damage, player->calcPlayerLevel(xptype));
 	}
-	
+
 	playerDamageList.put(creature, dmg);
-	
+
 	if (creature->isInAGroup() && creature->isPlayer()) {
 		Player *player = (Player*)creature;
 		GroupObject *group = player->getGroupObject();
@@ -549,57 +549,57 @@ void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
 	DamageDone *dmg = playerDamageList.get(creature);
 
 	delete dmg;
-	
+
 	playerDamageList.drop(creature);
 
 	if (creature->isInAGroup() && creature->isPlayer()) {
 		Player *player = (Player*)creature;
 		GroupObject *group = player->getGroupObject();
-		
+
 		if (groupDamageList.contains(group)) {
 			int groupdamage = groupDamageList.get(group);
 			groupdamage -= damage;
 			groupDamageList.drop(group);
 			groupDamageList.put(group, groupdamage);
 		}
-	}	
+	}
 }
 
 int SceneObjectImplementation::getTotalDamage() {
 	int damage = 0;
-	
+
 	for (int i = 0; i < playerDamageList.size(); i++) {
 		damage += playerDamageList.get(i)->getTotalDamage();
 	}
-	
+
 	return damage;
 }
 
 void SceneObjectImplementation::disseminateXp(int levels) {
 	float total = (float)getTotalDamage();
-	
+
 	for (int i = 0; i < playerDamageList.size(); i++) {
 		VectorMapEntry<CreatureObject*, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<CreatureObject*, DamageDone*>*>::get(i);
 		CreatureObject *creature = entry->getKey();
 		DamageDone *dmg = entry->getValue();
-		
+
 		// don't do any of this if this isn't a player
 		if (!creature->isPlayer()) {
 			delete dmg;
 			continue;
 		}
-		
+
 		Player* player = (Player*)creature;
 		float xpadd = 0.0f;
-			
+
 		float totaldamage = (float)dmg->getTotalDamage();
-		
+
 		float multiplier = levels / 10.0f;
 		if (multiplier > 2.5f)
 			multiplier = 2.5f;
 		else if (multiplier < 1.0f)
 			multiplier = 1.0f;
-			
+
 		for ( int j = 0; j < dmg->getSize(); j++) {
 			float damage = (float)dmg->getDamage(j);
 			float playerlevel = (float)dmg->getLevel(j);
@@ -628,19 +628,23 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 						xpaddsingle /= 3.4f;
 				}
 			}
-			
-			if (xpaddsingle < 1.0f) 
+
+			if (xpaddsingle < 1.0f)
 				xpaddsingle = 1.0f;
-			
+
 			player->addXp(xptype, (int)xpaddsingle, true);
 			if (xptype != "jedi_general")
 				xpadd += xpaddsingle;
 		}
-		
+
 		xpadd /= 10.0f;
 		string xptype = string("combat_general");
 		player->addXp(xptype, (int)xpadd, true);
 
-		delete dmg;
+		delete dmg;  // This is dangerous as the pointer to the object still exists in the vector
 	}
+
+	// Clean up invalid pointers
+	playerDamageList.removeAll();
+	groupDamageList.removeAll();
 }

@@ -800,9 +800,6 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 		}
 	}
 
-	if (target->isPlayer() && reduction > 0 && ((Player*)target)->getPlayerArmor(part) != NULL)  // if total damage reduction is positive, tell the player what their expensive armor did for them
-		target->sendCombatSpam(target,(TangibleObject*)((Player*)target)->getPlayerArmor(part), reduction, "armor_damaged", false);
-
 	float woundsRatio = 5;
 
 	if (weapon != NULL)
@@ -851,9 +848,11 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 
 	// Stage two toughness
 	if (target->isPlayer())
-		if (weapon == NULL || weapon->getType() < 4) // Melee attack
-			if (target->getWeapon() == NULL || target->getWeapon()->getType() < 4) { // Melee defence
-				int toughness = 0;
+		if (weapon == NULL || weapon->getType() < 4 || (weapon->getType() > 6 && weapon->getType() < 10)) { // Melee attack
+			int toughness = 0;
+			if (target->getWeapon() == NULL)
+				toughness = target->getSkillMod("unarmed_toughness");
+			else
 				switch(target->getWeapon()->getType()) {
 				case 0:
 					toughness = target->getSkillMod("unarmed_toughness");
@@ -867,14 +866,19 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 				case 3:
 					toughness = target->getSkillMod("polearm_toughness");
 					break;
+				case 7:
+				case 8:
+				case 9:
+					toughness = target->getSkillMod("lightsaber_toughness");
+					break;
 				}
 				currentDamage -= currentDamage * toughness / 100.0f;
-			}
+		}
+	// TODO: Add Jedi toughness, all attacks except lightsaber
+
 
 	// Stage three : Regular armour
 	Armor* armor = NULL;
-
-	//cout << "Getting armour for location " << location << endl;
 
 	if (target->isPlayer()) {
 		armor = ((Player*)target)->getPlayerArmor(location);
@@ -946,7 +950,8 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 				currentDamage *= 0.5;
 	}
 
-	// cout << "Armor resistance to type " << damageType << " is " << resist << "%" << endl;
+	if (target->isPlayer() && resist > 0 && armor != NULL)
+		target->sendCombatSpam(target,(TangibleObject*)armor, (int)(currentDamage * resist / 100.0f), "armor_damaged", false);
 
 	currentDamage -= currentDamage * resist / 100.0f;
 
