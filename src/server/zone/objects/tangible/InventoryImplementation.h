@@ -80,11 +80,11 @@ public:
 			if (obj->isTangible()) {
 				tano = (TangibleObject*)obj;
 				
-				if((tano->getMisoAsocKey() == misKey) && (!tano->isEquipped())) {
+				if((!strcmp(tano->getMisoAsocKey().c_str(), misKey.c_str())) && (!tano->isEquipped())) {
 					break;
+				} else {
+					tano = NULL;
 				}
-				
-				tano = NULL;
 			}
 		}
 		

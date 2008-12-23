@@ -52,7 +52,7 @@ bolma = Creature:new {
       named = FALSE, 
 
       level = 19,
-      xp = 1426,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -136,7 +136,7 @@ bolma = Creature:new {
       hideMax = 160,
 
       meatType = "meat_wild_dathomir",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "bolmaAttack1" },
 	  -- skills = { " Dizzy attack", " Posture down attack", "" },

@@ -34,10 +34,10 @@ GeneratorObjectImplementation::GeneratorObjectImplementation(uint64 oid, Generat
 	templateName = deed->getTargetTemplate();
 
 
-	maintenance = deed->getSurplusMaintenance();
-	maintenanceRate = deed->getMaintenanceRate();
-	hopperSizeMax = deed->getHopperSize();
-	specRate = deed->getExtractionRate();
+	setSurplusMaintenance(deed->getSurplusMaintenance());
+	setMaintenanceRate(deed->getMaintenanceRate());
+	setHopperSizeMax(deed->getHopperSize());
+	setExtractionRate(deed->getExtractionRate());
 }
 
 GeneratorObjectImplementation::~GeneratorObjectImplementation(){

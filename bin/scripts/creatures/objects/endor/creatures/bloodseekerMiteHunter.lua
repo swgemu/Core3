@@ -46,13 +46,13 @@ bloodseekerMiteHunter = Creature:new {
       faction = "Bloodseeker",
       gender = "",
 
-      name = "a Bloodseeker Mite Hunter",
+      stfName = "a Bloodseeker Mite Hunter",
       objectCRC = 4102628433, 
       socialGroup = "Bloodseeker",
       named = FALSE, 
 
       level = 31,
-      xp = 3097,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ bloodseekerMiteHunter = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_insect_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Dizzy attack", " Posture down attack", " Ranged attack (spit)" }
+      --skills = { " Dizzy attack", " Posture down attack", " Ranged attack (spit)" }
+      skills = { "bloodseekerMiteAttack1", "bloodseekerMiteAttack2", "bloodseekerMiteAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -59,7 +59,7 @@ compositeArmorSegment = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "armor_layer_frame, armor_layer_inner_structure, defensive_layer, segment_enhancement",
-   ingredientOptionals = "0, 0, 1, 1",
+   ingredientSlotType = "0, 0, 1, 1",
    resourceTypes = "metal, steel, object/tangible/component/armor/shared_armor_layer.iff, object/tangible/component/armor/shared_base_armor_segment_enhancement.iff",
    resourceQuantities = "13, 5, 1, 1",
    combineTypes = "1, 1, , 3",
@@ -73,7 +73,9 @@ compositeArmorSegment = Object:new {
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "electricaleffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
-   tanoAttributes = "objecttype=262144:objectcrc=3596548182:objecttemp=armor_segment_composite:templatetype=craft_clothing_ingredients_n:",
+   tanoAttributes = "objecttype=262145:objectcrc=3596548182:objecttemp=armor_segment_composite:templatetype=craft_clothing_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
   attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  electricaleffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",

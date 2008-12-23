@@ -46,13 +46,13 @@ festeringSquill = Creature:new {
       faction = "Endot Squill",
       gender = "",
 
-      name = "a Festering Squill",
+      stfName = "a Festering Squill",
       objectCRC = 1824637824, 
-      socialGroup = "Endot Squill",
+      socialGroup = "Endor Squill",
       named = FALSE, 
 
       level = 31,
-      xp = 3097,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,22 +123,23 @@ festeringSquill = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Blind attack", " Disease attack (medium)", "" }
+      --skills = { " Blind attack", " Disease attack (medium)", "" }
+      skills = { "squillAttack1", "squillAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

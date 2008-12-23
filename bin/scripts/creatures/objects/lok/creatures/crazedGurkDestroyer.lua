@@ -43,16 +43,16 @@
 crazedGurkDestroyer = Creature:new {
       objectName = "crazedGurkDestroyer",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "Curk",
+      faction = "Gurk",
       gender = "",
 
-      name = "a Crazed Gurk Destroyer",
+      stfName = "a Crazed Gurk Destroyer",
       objectCRC = 3464397925, 
-      socialGroup = "Curk",
+      socialGroup = "Gurk",
       named = FALSE, 
 
       level = 43,
-      xp = 4279,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ crazedGurkDestroyer = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ crazedGurkDestroyer = Creature:new {
       hideMax = 275,
 
       meatType = "meat_herbivore_lok",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Knockdown attack", " Intimidation attack", "" }
+      --skills = { " Knockdown attack", " Intimidation attack", "" }
+      skills = { "gurkAttack1", "gurkAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

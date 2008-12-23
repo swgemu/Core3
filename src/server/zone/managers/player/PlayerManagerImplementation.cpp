@@ -70,6 +70,7 @@ which carries forward this exception.
 #include "../guild/GuildManager.h"
 #include "../group/GroupManager.h"
 #include "../planet/PlanetManager.h"
+#include "../structure/StructureManager.h"
 #include "../item/ItemManager.h"
 #include "../name/NameManager.h"
 #include "../user/UserManager.h"
@@ -373,6 +374,28 @@ Player* PlayerManagerImplementation::load(uint64 charid) {
 void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	ResultSet* character;
 
+/*
+	string mcmahon_app;
+	string app;
+	stringstream appstream;
+	appstream << 0x02 << 0x24 << 0x17 << 0xC2 << 0xA3 << 0x18 << 0xC3 << 0xBF << 0x01 << 0x1C << 0xC3 << 0xBF << 0x01 << 0x1B << 0xC3 << 0xBD << 0x05 << 0xC3 << 0xBF << 0x01 << 0x1A << 0xC2 << 0x8A << 0x19 << 0xC3 << 0xBF << 0x01 << 0x0D << 0xC3 << 0xA5 << 0x09 << 0xC3 << 0xBF << 0x01 << 0x12 << 0xC3 << 0xBF << 0x01 << 0x13 << 0x38 << 0x20 << 0x7A << 0x10 << 0x38 << 0x21 << 0xC3 << 0xBF << 0x01 << 0x0F << 0xC3 << 0xBF << 0x01 << 0x14 << 0x09 << 0x11 << 0xC3 << 0xBF << 0x01 << 0x0E << 0x42 << 0x03 << 0xC3 << 0x91 << 0x0B << 0x07 << 0x0C << 0xC3 << 0xBF << 0x01 << 0x06 << 0xC2 << 0x8F << 0x08 << 0xC3 << 0xBF << 0x01 << 0x15 << 0xC3 << 0xBF << 0x01 << 0x16 << 0x4C << 0x04 << 0xC3 << 0xBF << 0x02 << 0x07 << 0xC3 << 0xBF << 0x01 << 0x0A << 0xC3 << 0xBF << 0x02 << 0x23 << 0x07 << 0x25 << 0xC3 << 0xBF << 0x01 << 0x24 << 0xC3 << 0xBF << 0x01 << 0x2A << 0xC3 << 0xBF << 0x01 << 0x01 << 0x1D << 0x1D << 0xC3 << 0xBF << 0x01 << 0x1F << 0x0A << 0x1E << 0x01 << 0xC3 << 0xBF << 0x03;
+	app = appstream.str();
+	BinaryData myapp(app);
+	myapp.encode(mcmahon_app);
+	cout << "appearance string: \"" << mcmahon_app.substr(0, mcmahon_app.size() - 1) << "\"" << endl;
+
+
+	string mcmahon_hair;
+	string hairsss;
+	stringstream hairstream;
+	hairstream << 0x02 << 0x01 << 0x02 << 0x0A << 0xC3 << 0xBF << 0x03;
+	hairsss = hairstream.str();
+	BinaryData myhair(hairsss);
+	myhair.encode(mcmahon_hair);
+	cout << "hair string: \"" << mcmahon_hair.substr(0, mcmahon_hair.size() - 1) << "\"" << endl;
+*/
+
+
 	stringstream query;
 	query << "SELECT * FROM characters WHERE character_id = " << player->getCharacterID();
 
@@ -492,7 +515,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setForcePowerBar(player->getForcePowerMax());
 
 	PlanetManager* planetManager = zne->getPlanetManager();
-	SceneObject* parent = planetManager->getCell(character->getUnsignedLong(33));
+	StructureManager* structureManager = planetManager->getStructureManager();
+	SceneObject* parent = structureManager->getCell(character->getUnsignedLong(33));
 
 	if (parent != NULL)
 		player->setParent(parent, 0xFFFFFFFF);
@@ -505,9 +529,19 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	player->setFactionStatus(character->getInt(58));
 	player->setFactionRank(character->getInt(59));
 
+	//Posture
+	player->changePosture(character->getInt(61));
+
+	if (player->isDead()) {
+		uint64 rezExpires = ((uint64) character->getUnsignedInt(62)) * 1000;
+		player->setResurrectionExpires(rezExpires);
+	}
+
 	//Load consent list from database
 	loadConsentList(player);
 	loadFactionPoints(player);
+
+
 	delete character;
 }
 
@@ -707,8 +741,10 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< ",PvpRating=" << player->getPvpRating()
 	<< ",guildpermission=" << player->getGuildPermissions()
 	<< ",factionStatus=" << (int) player->getFactionStatus()
-	<< ",factionRank=" << (int)player->getFactionRank()
+	<< ",factionRank=" << (int) player->getFactionRank()
 	<< ",experience=" << "'" << player->saveXp() << "'"
+	<< ",posture=" << (int) player->getPosture()
+	<< ",rezExpires=" << (int) floor(((float)(player->getResurrectionExpires()) / 1000.0f))
 	<< " WHERE character_id=" << player->getCharacterID() << ";";
 	try {
 		ServerDatabase::instance()->executeStatement(query);

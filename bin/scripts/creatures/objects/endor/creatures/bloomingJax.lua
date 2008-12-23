@@ -52,7 +52,7 @@ bloomingJax = Creature:new {
       named = FALSE, 
 
       level = 27,
-      xp = 2730,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -136,9 +136,9 @@ bloomingJax = Creature:new {
       hideMax = 35,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "JaxAttack1" },
+      skills = { "JaxAttack1", "JaxAttack2" },
 	  -- skills = { " Posture down attack", " Blind attack", "" },
        respawnTimer = 60,
 

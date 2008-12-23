@@ -52,7 +52,7 @@ plumedRasp = Creature:new {
       named = FALSE, 
 
       level = 7,
-      xp = 147,
+      
 
       combatFlags = ATTACKABLE_FLAG,
 
@@ -133,7 +133,7 @@ plumedRasp = Creature:new {
       boneMax = 2,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_corellia",
       meatMax = 3,

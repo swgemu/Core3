@@ -1,0 +1,2 @@
+ALTER TABLE `swgemu`.`characters` ADD COLUMN `posture` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 AFTER `experience`;
+ALTER TABLE `swgemu`.`characters` ADD COLUMN `rezExpires` INT(8) UNSIGNED NOT NULL DEFAULT 0 AFTER `posture`;

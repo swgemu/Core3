@@ -52,7 +52,7 @@ kliknikHunter = Creature:new {
       named = FALSE, 
 
       level = 32,
-      xp = 3279,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,14 +123,14 @@ kliknikHunter = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_yavin4",
       hideMax = 4,

@@ -46,13 +46,13 @@ enragedDuneKimogila = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      name = "a Enraged Dune Kimogila",
+      stfName = "a Enraged Dune Kimogila",
       objectCRC = 533451918, 
       socialGroup = "Kimogila",
       named = FALSE, 
 
       level = 148,
-      xp = 14030,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,14 +123,14 @@ enragedDuneKimogila = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
       hideMax = 1450,
@@ -138,7 +138,8 @@ enragedDuneKimogila = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 1600,
 
-      skills = { " Area attack", " Blind attack", "" }
+      --skills = { " Area attack", " Blind attack", "" }
+      skills = { "kimogilaAttack3", "kimogilaAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,13 +46,13 @@ gurreckProwler = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      name = "a Gurreck Prowler",
+      stfName = "a Gurreck Prowler",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
       named = FALSE, 
 
       level = 45,
-      xp = 4370,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ gurreckProwler = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.05,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_wooly_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Blind attack", " Posture down attack", "" }
+      --skills = { "Blind attack", "Posture down attack" }
+      skills = { "gurreckAttack3", "gurreckAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,13 +46,13 @@ bordokHerdMaster = Creature:new {
       faction = "Bordok",
       gender = "",
 
-      name = "a Bordok Herd Master",
+      stfName = "a Bordok Herd Master",
       objectCRC = 622383012, 
       socialGroup = "Bordok",
       named = FALSE, 
 
       level = 40,
-      xp = 3915,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,22 +123,23 @@ bordokHerdMaster = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "bone_mammal_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Intimidation attack", "", "" }
+      --skills = { "Intimidation attack" }
+      skills = { "bordokAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

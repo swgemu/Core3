@@ -59,7 +59,7 @@ liquidSuspension = Object:new {
 
    ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n",
    ingredientTitleNames = "purified_organic_suspension, suspension_base",
-   ingredientOptionals = "0, 0",
+   ingredientSlotType = "0, 0",
    resourceTypes = "organic, water",
    resourceQuantities = "6, 6",
    combineTypes = "1, 1",
@@ -74,7 +74,8 @@ liquidSuspension = Object:new {
    experimentalSubGroupTitles = "power",
 
    tanoAttributes = "objecttype=262144:objectcrc=3358009919:objecttemp=liquid_suspension:templatetype=craft_chemical_ingredients_n:",
-
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "power",
    attributeExperimentalProperties = "exp_effectiveness",

@@ -46,13 +46,13 @@ langlatchHatchling = Creature:new {
       faction = "Langiatch",
       gender = "",
 
-      name = "a Langlatch Hatchling",
+      stfName = "a Langlatch Hatchling",
       objectCRC = 2513300255, 
       socialGroup = "Langiatch",
       named = FALSE, 
 
       level = 4,
-      xp = 85,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ langlatchHatchling = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ langlatchHatchling = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 5,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "langlatchAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

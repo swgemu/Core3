@@ -52,7 +52,7 @@ bobaFett = Creature:new {
       named = TRUE, 
 
       level = 250,
-      xp = 28549,
+      
 
       combatFlags = 0,
 
@@ -123,7 +123,7 @@ bobaFett = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for loott belongs to for loot
+      lootGroup = "0,11,15,19,33,39,40,51,52,53,54,55,56,57,58,59,60,61,101", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

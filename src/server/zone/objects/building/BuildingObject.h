@@ -37,11 +37,41 @@ public:
 
 	void setBuildingType(int type);
 
-	string& getName();
+	int getCellCount();
 
-	void setName(string& name);
+	CellObject* getCell(int idx);
+
+	void setPersistent(bool pers);
+
+	void setUpdated(bool up);
+
+	bool isPersistent();
+
+	bool isUpdated();
+
+	void setAttributes(string& attributestring);
+
+	string& getAttributes();
+
+	string& getOwner();
+
+	void setOwner(const string& owner);
+
+	unsigned long long getOwnerID();
+
+	void setOwnerID(unsigned long long owner);
+
+	void parseItemAttributes();
+
+	unicode& getName();
+
+	void setName(const string& n);
+
+	void setName(const unicode& n);
 
 	string& getDefaultName();
+
+	string& getTemplateName();
 
 	void lock(bool doLock = true);
 
@@ -64,8 +94,12 @@ protected:
 
 	virtual ~BuildingObject();
 
+	string _return_getAttributes;
 	string _return_getDefaultName;
-	string _return_getName;
+	string _return_getOwner;
+	string _return_getTemplateName;
+
+	unicode _return_getName;
 
 	friend class BuildingObjectHelper;
 };
@@ -88,11 +122,41 @@ public:
 
 	void setBuildingType(int type);
 
-	string& getName();
+	int getCellCount();
 
-	void setName(string& name);
+	CellObject* getCell(int idx);
+
+	void setPersistent(bool pers);
+
+	void setUpdated(bool up);
+
+	bool isPersistent();
+
+	bool isUpdated();
+
+	void setAttributes(string& attributestring);
+
+	string& getAttributes();
+
+	string& getOwner();
+
+	void setOwner(const string& owner);
+
+	unsigned long long getOwnerID();
+
+	void setOwnerID(unsigned long long owner);
+
+	void parseItemAttributes();
+
+	unicode& getName();
+
+	void setName(const string& n);
+
+	void setName(const unicode& n);
 
 	string& getDefaultName();
+
+	string& getTemplateName();
 
 	void lock(bool doLock);
 
@@ -111,7 +175,10 @@ public:
 	void inRange(QuadTreeEntry* obj, float range);
 
 protected:
+	string _param0_setAttributes__string_;
+	string _param0_setOwner__string_;
 	string _param0_setName__string_;
+	unicode _param0_setName__unicode_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

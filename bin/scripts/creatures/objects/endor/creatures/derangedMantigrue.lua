@@ -46,13 +46,13 @@ derangedMantigrue = Creature:new {
       faction = "Mantigrue",
       gender = "",
 
-      name = "a Deranged Mantigrue",
+      stfName = "a Deranged Mantigrue",
       objectCRC = 1684536430, 
       socialGroup = "Mantigrue",
       named = FALSE, 
 
       level = 45,
-      xp = 4279,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ derangedMantigrue = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_wooly_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Blind attack", " Stun attack", "" }
+      --skills = { " Blind attack", " Stun attack", "" }
+      skills = { "mantigrueAttack1", "mantigrueAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

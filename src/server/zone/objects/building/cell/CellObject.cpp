@@ -23,8 +23,8 @@ CellObject::CellObject(unsigned long long oid, BuildingObject* buio) : SceneObje
 	_impl->_setStub(this);
 }
 
-CellObject::CellObject(unsigned long long oid, BuildingObject* buio, unsigned long long cid) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new CellObjectImplementation(oid, buio, cid);
+CellObject::CellObject(unsigned long long oid, BuildingObject* buio, int number) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new CellObjectImplementation(oid, buio, number);
 	_impl->_setStub(this);
 }
 
@@ -34,12 +34,24 @@ CellObject::CellObject(DummyConstructorParameter* param) : SceneObject(param) {
 CellObject::~CellObject() {
 }
 
-void CellObject::addChild(SceneObject* object, bool doLock) {
+int CellObject::getChildrenSize() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CellObjectImplementation*) _impl)->getChildrenSize();
+}
+
+void CellObject::addChild(SceneObject* object, bool doLock) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(doLock);
 
@@ -53,7 +65,7 @@ void CellObject::removeChild(SceneObject* object, bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 7);
+		DistributedMethod method(this, 8);
 		method.addObjectParameter(object);
 		method.addBooleanParameter(doLock);
 
@@ -67,7 +79,7 @@ SceneObject* CellObject::getChild(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(idx);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -75,28 +87,80 @@ SceneObject* CellObject::getChild(int idx) {
 		return ((CellObjectImplementation*) _impl)->getChild(idx);
 }
 
-unsigned long long CellObject::getCellID() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-
-		return method.executeWithUnsignedLongReturn();
-	} else
-		return ((CellObjectImplementation*) _impl)->getCellID();
-}
-
-int CellObject::getChildrenSize() {
+void CellObject::setCellNumber(int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addSignedIntParameter(i);
+
+		method.executeWithVoidReturn();
+	} else
+		((CellObjectImplementation*) _impl)->setCellNumber(i);
+}
+
+int CellObject::getCellNumber() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return ((CellObjectImplementation*) _impl)->getChildrenSize();
+		return ((CellObjectImplementation*) _impl)->getCellNumber();
+}
+
+void CellObject::setAttributes(string& attributestring) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addAsciiParameter(attributestring);
+
+		method.executeWithVoidReturn();
+	} else
+		((CellObjectImplementation*) _impl)->setAttributes(attributestring);
+}
+
+string& CellObject::getAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		method.executeWithAsciiReturn(_return_getAttributes);
+		return _return_getAttributes;
+	} else
+		return ((CellObjectImplementation*) _impl)->getAttributes();
+}
+
+void CellObject::parseItemAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		method.executeWithVoidReturn();
+	} else
+		((CellObjectImplementation*) _impl)->parseItemAttributes();
+}
+
+string& CellObject::getTemplateName() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		method.executeWithAsciiReturn(_return_getTemplateName);
+		return _return_getTemplateName;
+	} else
+		return ((CellObjectImplementation*) _impl)->getTemplateName();
 }
 
 /*
@@ -111,25 +175,44 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		addChild((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		resp->insertSignedInt(getChildrenSize());
 		break;
 	case 7:
-		removeChild((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
+		addChild((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 8:
-		resp->insertLong(getChild(inv->getSignedIntParameter())->_getObjectID());
+		removeChild((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 9:
-		resp->insertLong(getCellID());
+		resp->insertLong(getChild(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 10:
-		resp->insertSignedInt(getChildrenSize());
+		setCellNumber(inv->getSignedIntParameter());
+		break;
+	case 11:
+		resp->insertSignedInt(getCellNumber());
+		break;
+	case 12:
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__string_));
+		break;
+	case 13:
+		resp->insertAscii(getAttributes());
+		break;
+	case 14:
+		parseItemAttributes();
+		break;
+	case 15:
+		resp->insertAscii(getTemplateName());
 		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+int CellObjectAdapter::getChildrenSize() {
+	return ((CellObjectImplementation*) impl)->getChildrenSize();
 }
 
 void CellObjectAdapter::addChild(SceneObject* object, bool doLock) {
@@ -144,12 +227,28 @@ SceneObject* CellObjectAdapter::getChild(int idx) {
 	return ((CellObjectImplementation*) impl)->getChild(idx);
 }
 
-unsigned long long CellObjectAdapter::getCellID() {
-	return ((CellObjectImplementation*) impl)->getCellID();
+void CellObjectAdapter::setCellNumber(int i) {
+	return ((CellObjectImplementation*) impl)->setCellNumber(i);
 }
 
-int CellObjectAdapter::getChildrenSize() {
-	return ((CellObjectImplementation*) impl)->getChildrenSize();
+int CellObjectAdapter::getCellNumber() {
+	return ((CellObjectImplementation*) impl)->getCellNumber();
+}
+
+void CellObjectAdapter::setAttributes(string& attributestring) {
+	return ((CellObjectImplementation*) impl)->setAttributes(attributestring);
+}
+
+string& CellObjectAdapter::getAttributes() {
+	return ((CellObjectImplementation*) impl)->getAttributes();
+}
+
+void CellObjectAdapter::parseItemAttributes() {
+	return ((CellObjectImplementation*) impl)->parseItemAttributes();
+}
+
+string& CellObjectAdapter::getTemplateName() {
+	return ((CellObjectImplementation*) impl)->getTemplateName();
 }
 
 /*

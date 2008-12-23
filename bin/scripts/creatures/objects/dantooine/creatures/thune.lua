@@ -52,7 +52,7 @@ thune = Creature:new {
       named = FALSE, 
 
       level = 26,
-      xp = 2637,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -130,7 +130,7 @@ thune = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_wooly_dantooine",
       hideMax = 125,

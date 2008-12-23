@@ -46,13 +46,13 @@ bolleBolFemale = Creature:new {
       faction = "Bolle Bol",
       gender = "",
 
-      name = "a Bolle Bol Female",
+      stfName = "a Bolle Bol Female",
       objectCRC = 2905349573, 
       socialGroup = "Bolle Bol",
       named = FALSE, 
 
       level = 32,
-      xp = 3188,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ bolleBolFemale = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ bolleBolFemale = Creature:new {
       hideMax = 300,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Posture down attack", " Dizzy attack", "" }
+      --skills = { " Posture down attack", " Dizzy attack", "" }
+      skills = { "bolleBolAttack2", "bolleBolAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

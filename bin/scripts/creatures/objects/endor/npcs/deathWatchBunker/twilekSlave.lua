@@ -51,7 +51,7 @@ twilekSlave = Creature:new {
 	named = TRUE,
 	
 	level = 600,
-	xp = 1200,
+	
 
 	combatFlags = ATTACKABLE_FLAG,
 

@@ -46,13 +46,13 @@ gurkWhelp = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Gurk Whelp",
+      stfName = "a Gurk Whelp",
       objectCRC = 3648622033, 
       socialGroup = "Gurk",
       named = FALSE, 
 
       level = 27,
-      xp = 2730,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ gurkWhelp = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ gurkWhelp = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 300,
 
-      skills = { " Blind attack", " Intimidation attack", "" }
+      --skills = { " Blind attack", " Intimidation attack", "" }
+      skills = { "gurkAttack6", "gurkAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

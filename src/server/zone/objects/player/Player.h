@@ -89,7 +89,11 @@ public:
 
 	void userLogout(int msgCounter = 3);
 
+	void resurrectCountdown(int counter = 6);
+
 	void clearLogoutEvent();
+
+	void clearResurrectEvent();
 
 	void makeCharacterMask();
 
@@ -223,6 +227,8 @@ public:
 
 	void handleDeath();
 
+	void throttlePvpRating(Player* player);
+
 	void doClone();
 
 	void activateClone();
@@ -230,12 +236,6 @@ public:
 	void doRecovery();
 
 	void doDigest();
-
-	void activateReviveCountdown();
-
-	void clearReviveCountdown();
-
-	void countdownRevive(int counter);
 
 	bool hasConsent(string& charID);
 
@@ -621,7 +621,7 @@ public:
 
 	void nextCraftingStage(string& test);
 
-	void craftingCustomization(string& name, int condition);
+	void craftingCustomization(string& name, int condition, string& customizationstring);
 
 	void createPrototype(string& count);
 
@@ -862,7 +862,11 @@ public:
 
 	void userLogout(int msgCounter);
 
+	void resurrectCountdown(int counter);
+
 	void clearLogoutEvent();
+
+	void clearResurrectEvent();
 
 	void makeCharacterMask();
 
@@ -996,6 +1000,8 @@ public:
 
 	void handleDeath();
 
+	void throttlePvpRating(Player* player);
+
 	void doClone();
 
 	void activateClone();
@@ -1003,12 +1009,6 @@ public:
 	void doRecovery();
 
 	void doDigest();
-
-	void activateReviveCountdown();
-
-	void clearReviveCountdown();
-
-	void countdownRevive(int counter);
 
 	bool hasConsent(string& charID);
 
@@ -1394,7 +1394,7 @@ public:
 
 	void nextCraftingStage(string& test);
 
-	void craftingCustomization(string& name, int condition);
+	void craftingCustomization(string& name, int condition, string& customizationstring);
 
 	void createPrototype(string& count);
 
@@ -1622,7 +1622,8 @@ protected:
 	string _param0_addToFinMisoKeys__string_;
 	string _param0_hasCompletedMisoKey__string_;
 	string _param0_nextCraftingStage__string_;
-	string _param0_craftingCustomization__string_int_;
+	string _param0_craftingCustomization__string_int_string_;
+	string _param2_craftingCustomization__string_int_string_;
 	string _param0_createPrototype__string_;
 	string _param0_createSchematic__string_;
 	string _param2_handleExperimenting__int_int_string_;

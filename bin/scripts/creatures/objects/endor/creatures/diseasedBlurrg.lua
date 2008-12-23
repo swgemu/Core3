@@ -46,13 +46,13 @@ diseasedBlurrg = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Diseased Blurrg",
+      stfName = "a Diseased Blurrg",
       objectCRC = 2309529743, 
       socialGroup = "self",
       named = FALSE, 
 
       level = 37,
-      xp = 3551,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ diseasedBlurrg = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Disease attack (medium)", " Area attack (bleeds)", "" }
+      --skills = { " Disease attack (medium)", " Area attack (bleeds)", "" }
+      skills = { "blurggAttack1", "blurggAttack2" }, 
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

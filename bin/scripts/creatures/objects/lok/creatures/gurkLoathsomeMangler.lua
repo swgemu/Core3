@@ -46,13 +46,13 @@ gurkLoathsomeMangler = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Gurk Loathsome Mangler",
+      stfName = "a Gurk Loathsome Mangler",
       objectCRC = 3464397925, 
       socialGroup = "Gurk",
       named = FALSE, 
 
       level = 33,
-      xp = 3370,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ gurkLoathsomeMangler = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.05,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ gurkLoathsomeMangler = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 350,
 
-      skills = { " Dizzy attack", " Intimidation attack", "" }
+      --skills = { " Dizzy attack", " Intimidation attack", "" }
+      skills = { "gurkAttack3", "gurkAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

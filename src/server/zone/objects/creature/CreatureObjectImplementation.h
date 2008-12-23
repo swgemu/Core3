@@ -196,6 +196,7 @@ protected:
 
 	uint64 creatureLinkID;
 
+	Time resurrectionExpires;
 	Time knockdownRecoveryTime;
 
 	Time dizzyRecoveryTime;
@@ -470,6 +471,7 @@ public:
 	bool changeWillpowerWoundsBar(int32 wounds, bool forcedChange = false);
 
 	void changeConditionDamage(int amount);
+	void setMaxCondition(int condition);
 
 	void changeShockWounds(int bf);
 
@@ -1816,8 +1818,17 @@ public:
 	}
 
 	inline bool isResurrectable() {
-		//TODO: check to see if resurrect timer has expired
-		return true;
+		return resurrectionExpires.isFuture();
+	}
+
+	inline uint64 getResurrectionExpires() {
+		return resurrectionExpires.getMiliTime();
+	}
+
+	inline void setResurrectionExpires(uint64 msecs) {
+		resurrectionExpires.update();
+		int64 diff = msecs - resurrectionExpires.getMiliTime();
+		resurrectionExpires.addMiliTime((diff > 0) ? diff : 0);
 	}
 
 	inline bool hasHealthDamage() {
@@ -2471,7 +2482,7 @@ public:
 	bool extinguishFire(CreatureObject* target, float effectiveness);
 	bool healState(CreatureObject* target, uint64 state);
 	bool revive(CreatureObject* target, bool forcedChange = false);
-	bool resurrect(CreatureObject* target);
+	bool resurrect(CreatureObject* target, bool forcedChange = false);
 
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();

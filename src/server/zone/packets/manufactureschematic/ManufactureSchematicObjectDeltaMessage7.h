@@ -106,6 +106,14 @@ public:
 		update12(draftSchematic);
 	}
 
+	void updateCustomizationOptions(DraftSchematic* draftSchematic, int custpoints){
+		update0D(draftSchematic);
+		update0E(draftSchematic);
+		update0F(draftSchematic);
+		update10(draftSchematic, custpoints);
+		update11();
+	}
+
 	void updateIngredientList(DraftSchematic* draftSchematic) {
 
 		startUpdate(0);
@@ -363,6 +371,80 @@ public:
 			removeListFloatElement(i, value);
 
 		}
+	}
+
+	void update0D(DraftSchematic* draftSchematic) {
+
+		string prefix = "/private/";
+		int count = draftSchematic->getCustomizationOptionCount();
+
+		startUpdate(0x0D);
+
+		startList(count, count);
+
+		for(int i = 0; i < count; ++i) {
+			stringstream ss;
+			ss << prefix << draftSchematic->getCustomizationOption(i);
+
+			insertByte(0x01);
+			insertShort(i);
+			insertAscii(ss.str());
+		}
+
+	}
+
+	// Starting COlor chooser position
+	void update0E(DraftSchematic* draftSchematic) {
+
+		int count = draftSchematic->getCustomizationOptionCount();
+
+		startUpdate(0x0E);
+
+		startList(count, count);
+
+		for (int i = 0; i < count; ++i) {
+
+			insertByte(0x01);
+			insertShort(i);
+			insertInt(draftSchematic->getCustomizationDefaultValue(i));
+		}
+	}
+
+	void update0F(DraftSchematic* draftSchematic) {
+
+		int count = draftSchematic->getCustomizationOptionCount();
+
+		startUpdate(0x0F);
+
+		startList(count, count);
+
+		for (int i = 0; i < count; ++i) {
+			insertByte(0x01);
+			insertShort(i);
+			insertInt(0);
+		}
+	}
+
+	// Number of palette colors
+	void update10(DraftSchematic* draftSchematic, int custpoints) {
+
+		int count = draftSchematic->getCustomizationOptionCount();
+
+		startUpdate(0x10);
+
+		startList(count, count);
+
+		for (int i = 0; i < count; ++i) {
+			insertByte(0x01);
+			insertShort(i);
+			insertInt(custpoints);
+		}
+	}
+
+	void update11() {
+
+		startUpdate(0x11);
+		insertByte(1);
 	}
 
 	void update12(DraftSchematic* draftSchematic){

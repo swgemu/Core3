@@ -46,13 +46,13 @@ blushingJax = Creature:new {
       faction = "Jax",
       gender = "",
 
-      name = "a Blushing Jax",
+      stfName = "a Blushing Jax",
       objectCRC = 3376386441, 
       socialGroup = "Jax",
       named = FALSE, 
 
       level = 27,
-      xp = 2730,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -136,9 +136,9 @@ blushingJax = Creature:new {
       hideMax = 35,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "JaxAttack1" },
+      skills = { "JaxAttack2", "JaxAttack3" },
 	  -- skills = { " Blind attack", " Dizzy attack", "" }
        respawnTimer = 60,
 

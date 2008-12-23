@@ -52,7 +52,7 @@ spineflapQueen = Creature:new {
       named = FALSE, 
 
       level = 19,
-      xp = 1426,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ spineflapQueen = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,7 +136,7 @@ spineflapQueen = Creature:new {
       hideMax = 5,
 
       meatType = "meat_insect_naboo",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { " Disease attack (poison)", " Knockdown attack", "" }
       respawnTimer = 60,

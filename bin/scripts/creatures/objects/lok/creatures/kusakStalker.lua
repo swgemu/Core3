@@ -46,13 +46,13 @@ kusakStalker = Creature:new {
       faction = "Kusak",
       gender = "",
 
-      name = "a Kusak Stalker",
+      stfName = "a Kusak Stalker",
       objectCRC = 1518117227, 
       socialGroup = "Kusak",
       named = FALSE, 
 
       level = 24,
-      xp = 2543,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ kusakStalker = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ kusakStalker = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 20,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "kusakAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -927,8 +927,8 @@ void GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(
 			return;
 		}
 	} else {
-		//TODO: fix this when name was empty
 		otherPlayer->info("Inviter player NULL - Clean exit from GuildManagerImplementation::handleVerifyBoxSponsorTargetforGuildMembership(uint32 boxID, Player* otherPlayer, uint32 cancel)");
+		otherPlayer->sendSystemMessage("Sponsoring canceled (InvN_NULL)! Please sponsor the player again.");
 		return;
 	}
 
@@ -3162,12 +3162,12 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 				if (obj->isPlayer()) {
 					otherPlayer = (Player*) obj;
 
-					otherPlayer->wlock();
+
 
 					otherName = otherPlayer->getFirstName();
 					String::toLower(otherName);
 
-					otherPlayer->unlock();
+
 
 					if (otherName != name && otherName == proband && (player->isInRange(otherPlayer, 8))) {
 						newLeaderName = otherName;
@@ -3180,7 +3180,7 @@ string GuildManagerImplementation::checkForNewLeader(Player* player, string prob
 		}
 
 	} catch (...) {
-		otherPlayer->unlock();
+
 		zone->unlock();
 
 		return "";

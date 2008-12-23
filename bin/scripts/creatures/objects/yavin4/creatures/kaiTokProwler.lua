@@ -52,7 +52,7 @@ kaiTokProwler = Creature:new {
       named = FALSE, 
 
       level = 26,
-      xp = 2637,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ kaiTokProwler = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -136,7 +136,7 @@ kaiTokProwler = Creature:new {
       hideMax = 41,
 
       meatType = "meat_carnivore_yavin4",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { " Disease attack (poison)", " Posture down attack", " Ranged attack (spit)" }
       respawnTimer = 60,

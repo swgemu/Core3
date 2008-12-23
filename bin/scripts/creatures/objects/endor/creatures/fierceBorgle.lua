@@ -46,13 +46,13 @@ fierceBorgle = Creature:new {
       faction = "Borgle",
       gender = "",
 
-      name = "a Fierce Borgle",
+      stfName = "a Fierce Borgle",
       objectCRC = 715008896, 
       socialGroup = "Borgle",
       named = FALSE, 
 
       level = 32,
-      xp = 3279,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ fierceBorgle = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ fierceBorgle = Creature:new {
       hideMax = 5,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { " Blind attack", "", "" }
+      skills = { "borgleAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

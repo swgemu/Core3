@@ -46,13 +46,13 @@ bloodseekerMiteDrone = Creature:new {
       faction = "Bloodseeker",
       gender = "",
 
-      name = "a Bloodseeker Mite Drone",
+      stfName = "a Bloodseeker Mite Drone",
       objectCRC = 4102628433, 
       socialGroup = "Bloodseeker",
       named = FALSE, 
 
       level = 20,
-      xp = 1609,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,22 +123,22 @@ bloodseekerMiteDrone = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_insect_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "barkMiteAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

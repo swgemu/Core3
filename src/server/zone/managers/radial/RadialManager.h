@@ -83,6 +83,7 @@ public:
 	void handleWearableColorChange(Player* player, SceneObject* obj);
 	void handleSlicing(Player* player, SceneObject* obj);
 	void handleRepair(Player* player, SceneObject* obj);
+	void handleVehicleRepair(SceneObject* obj);
 	void handleRemovePowerup(Player* player, SceneObject* obj);
 
 	// Installation radial handling
@@ -111,10 +112,10 @@ public:
 	//Surveytools
 	void sendRadialResponseForSurveyTools(Player* player, SurveyTool* surveyTool, ObjectMenuResponse* omr);
 	void sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj);
-	
-    //Dice 
-    void handleDiceRoll(Player* player, SceneObject* obj, int dnum); 
-    void handleDiceConfigure(Player* player, SceneObject* obj, int dsides); 
+
+    //Dice
+    void handleDiceRoll(Player* player, SceneObject* obj, int dnum);
+    void handleDiceConfigure(Player* player, SceneObject* obj, int dsides);
 
 	//Watch / Listen
 	void handleEntertainerActions(Player* player, SceneObject* obj);

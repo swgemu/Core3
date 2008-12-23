@@ -46,13 +46,13 @@ barkMiteBurrowerWorker = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Bark Mite Burrower Worker",
+      stfName = "a Bark Mite Burrower Worker",
       objectCRC = 2318119001, 
       socialGroup = "Bark Mite",
       named = FALSE, 
 
       level = 45,
-      xp = 4370,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -99,7 +99,7 @@ barkMiteBurrowerWorker = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -123,22 +123,23 @@ barkMiteBurrowerWorker = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_insect_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Stun attack", " Disease attack (medium)", " Ranged attack (spit)" }
+      --skills = { " Stun attack", " Disease attack (medium)", " Ranged attack (spit)" }
+      skills = { "barkMiteAttack4", "barkMiteAttack2", "barkMiteAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

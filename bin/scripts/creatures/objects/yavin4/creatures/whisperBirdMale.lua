@@ -52,7 +52,7 @@ whisperBirdMale = Creature:new {
       named = FALSE, 
 
       level = 16,
-      xp = 960,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -133,7 +133,7 @@ whisperBirdMale = Creature:new {
       boneMax = 40,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_yavin4",
       meatMax = 65,

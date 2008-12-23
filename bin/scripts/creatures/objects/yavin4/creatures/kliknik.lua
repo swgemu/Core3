@@ -52,7 +52,7 @@ kliknik = Creature:new {
       named = FALSE, 
 
       level = 18,
-      xp = 1257,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -130,7 +130,7 @@ kliknik = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_yavin4",
       hideMax = 4,

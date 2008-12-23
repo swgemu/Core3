@@ -52,7 +52,7 @@ malklocPlainswalkerFemale = Creature:new {
       named = FALSE, 
 
       level = 81,
-      xp = 7761,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ malklocPlainswalkerFemale = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

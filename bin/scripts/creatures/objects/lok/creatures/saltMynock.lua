@@ -46,13 +46,13 @@ saltMynock = Creature:new {
       faction = "Mynock",
       gender = "",
 
-      name = "a Salt Mynock",
+      stfName = "a Salt Mynock",
       objectCRC = 1848263825, 
       socialGroup = "Mynock",
       named = FALSE, 
 
       level = 23,
-      xp = 2219,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ saltMynock = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ saltMynock = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 50,
 
-      skills = { " Blind attack", " Knockdown attack", "" }
+      --skills = { " Blind attack", " Knockdown attack", "" }
+      skills = { "mynockAttack3", "mynockAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

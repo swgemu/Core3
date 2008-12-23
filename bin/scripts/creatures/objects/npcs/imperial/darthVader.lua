@@ -54,7 +54,7 @@ darthVader = Creature:new {
       named = TRUE, 
 
       level = 500,
-      xp = 28549,
+      
 
       combatFlags = 0,
 
@@ -92,7 +92,7 @@ darthVader = Creature:new {
       pack = 1,
       herd = 0,
       stalker = 0,
-      killer = 0,
+      killer = 1,
       aggressive = 0,
       invincible = 0, 
 
@@ -106,8 +106,8 @@ darthVader = Creature:new {
       weaponTemp = "sword_lightsaber_vader", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       weaponEquipped = 1,
-      weaponMinDamage = 1200,
-      weaponMaxDamage = 1500,
+      weaponMinDamage = 650,
+      weaponMaxDamage = 950,
       weaponAttackSpeed = 1.0,
       weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -125,7 +125,7 @@ darthVader = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,34,39,40", -- Group it belongs to for lootelongs to for loot
+      lootGroup = "0,11,15,19,33,39,40,51,52,53,54,55,56,57,58,59,60,61,101", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

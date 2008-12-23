@@ -56,7 +56,7 @@ JaxAttack1 = {
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 0,
+	postureUpChance = 50,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
@@ -70,5 +70,73 @@ JaxAttack1 = {
 }
 
 AddRandomPoolAttackTargetSkill(JaxAttack1)
+
+-----------------------------------------------
+
+JaxAttack2 = {
+	attackname = "JaxAttack2",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 9,
+
+	speedRatio = 2,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 50,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(JaxAttack2)
+
+-----------------------------------------------
+
+JaxAttack3 = {
+	attackname = "JaxAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 9,
+
+	speedRatio = 2,
+
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 50,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(JaxAttack3)
 
 -----------------------------------------------

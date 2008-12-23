@@ -52,7 +52,7 @@ verne = Creature:new {
       named = FALSE, 
 
       level = 17,
-      xp = 1102,
+      
 
       ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

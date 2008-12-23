@@ -52,7 +52,7 @@ deathWatchBloodguardDWB = Creature:new {
       named = FALSE, 
 
       level = 121,
-      xp = 11390,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

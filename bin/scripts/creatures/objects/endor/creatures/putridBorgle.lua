@@ -46,13 +46,13 @@ putridBorgle = Creature:new {
       faction = "Borgie",
       gender = "",
 
-      name = "a Putrid Borgle",
+      stfName = "a Putrid Borgle",
       objectCRC = 715008896, 
       socialGroup = "Borgie",
       named = FALSE, 
 
       level = 19,
-      xp = 1426,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ putridBorgle = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ putridBorgle = Creature:new {
       hideMax = 5,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Intimidation attack", " Disease attack (medium)", "" }
+      --skills = { "Intimidation attack", "Disease attack (medium)" }
+      skills = { "borgleAttack1", "borgleAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

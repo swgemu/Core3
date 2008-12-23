@@ -46,13 +46,13 @@ giantKimogila = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      name = "a Giant Kimogila",
+      stfName = "a Giant Kimogila",
       objectCRC = 2503643993, 
       socialGroup = "Kimogila",
       named = FALSE, 
 
       level = 139,
-      xp = 13178,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,14 +123,14 @@ giantKimogila = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
       hideMax = 1350,
@@ -138,7 +138,8 @@ giantKimogila = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 1450,
 
-      skills = { " Area attack (knockdown)", " Dizzy attack", "" }
+      --skills = { " Area attack (knockdown)", " Dizzy attack", "" }
+      skills = { "kimogilaAttack3", "kimogilaAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

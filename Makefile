@@ -130,6 +130,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/pharmaceutical/StimPack.idl \
 				server/zone/objects/tangible/pharmaceutical/StatePack.idl \
 				server/zone/objects/tangible/pharmaceutical/CurePack.idl \
+				server/zone/objects/tangible/pharmaceutical/CureAreaPack.idl \
 				server/zone/objects/tangible/pharmaceutical/RevivePack.idl \
 				server/zone/objects/tangible/attachment/Attachment.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
@@ -162,22 +163,23 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/waypoint/WaypointObject.idl \
 				server/zone/objects/tangible/component/ShipComponent.idl \
 				server/zone/objects/ship/ShipObject.idl \
+				server/zone/managers/bank/BankManager.idl \
 				server/zone/managers/bazaar/BazaarManager.idl \
 				server/zone/managers/bazaar/BazaarPlanetManager.idl \
-				server/zone/managers/bank/BankManager.idl \
-				server/zone/managers/mission/MissionManager.idl \
+				server/zone/managers/creature/CreatureManager.idl \
 				server/zone/managers/guild/GuildMap.idl \
 				server/zone/managers/guild/GuildManager.idl \
+				server/zone/managers/item/ItemManager.idl \
+				server/zone/managers/loot/LootTableManager.idl \
+				server/zone/managers/mission/MissionManager.idl \
+				server/zone/managers/planet/PlanetManager.idl \
 				server/zone/managers/player/PlayerManager.idl \
 				server/zone/managers/player/PlayerMap.idl \
-				server/zone/managers/item/ItemManager.idl \
-				server/zone/managers/user/UserManager.idl \
-				server/zone/managers/creature/CreatureManager.idl \
-				server/zone/managers/planet/PlanetManager.idl \
 				server/zone/managers/resource/ResourceManager.idl \
 				server/zone/managers/resource/ResourceList.idl \
 				server/zone/managers/resource/ResourceItem.idl \
-				server/zone/managers/loot/LootTableManager.idl \
+				server/zone/managers/structure/StructureManager.idl \
+				server/zone/managers/user/UserManager.idl \
 				server/chat/room/ChatRoom.idl \
 				server/chat/ChatManager.idl
 

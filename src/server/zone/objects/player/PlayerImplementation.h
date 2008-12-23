@@ -91,7 +91,6 @@ class PlayerDigestEvent;
 class CenterOfBeingEvent;
 class PowerboostEventWane;
 class PowerboostEventEnd;
-class ReviveCountdownEvent;
 
 class Datapad;
 
@@ -132,6 +131,7 @@ class PlayerImplementation : public PlayerServant {
 
 	Event* disconnectEvent;
 	Event* logoutEvent;
+	Event* resurrectEvent;
 
 	PlayerSaveStateEvent* playerSaveStateEvent;
 
@@ -141,7 +141,7 @@ class PlayerImplementation : public PlayerServant {
 
 	int itemShift;
 
-	int deathCount;
+	uint8 incapacitationCount;
 	Time firstIncapacitationTime;
 	int pvpRating;
 
@@ -259,9 +259,6 @@ class PlayerImplementation : public PlayerServant {
 	uint32 targetFocus;
 	uint32 targetWillpower;
 
-	Time reviveTimeout;
-	ReviveCountdownEvent* reviveCountdownEvent;
-
 	Vector<string> consentList;
 
 	uint16 characterMask;
@@ -344,6 +341,8 @@ public:
 	void logout(bool doLock = true);
 	void userLogout(int msgCounter = 3);
 
+	void resurrectCountdown(int counter = 6);
+
 	void disconnect(bool closeClient = true, bool doLock = true);
 
 	void initializeEvents();
@@ -351,6 +350,10 @@ public:
 
 	void clearLogoutEvent() {
 		logoutEvent = NULL;
+	}
+
+	void clearResurrectEvent() {
+		resurrectEvent = NULL;
 	}
 
 	void createItems();
@@ -712,12 +715,10 @@ public:
 	void deathblow(Player* player);
 	void resurrect();
 
+	void throttlePvpRating(Player* player);
+
 	void activateClone();
 	void doClone();
-
-	void activateReviveCountdown();
-	void clearReviveCountdown();
-	void countdownRevive(int counter);
 
 	void handleDeath();
 
@@ -789,7 +790,7 @@ public:
 	void addToCurMisoKeys(string& tck) {
 		curMisoKeys += (tck + ",");
 	}
-	bool isOnCurMisoKey(string& tmk); //player is currently on the mission key
+	bool isOnCurMisoKey(string tmk); //player is currently on the mission key
 	void removeFromCurMisoKeys(string tck);
 
 	void addToFinMisoKeys(string& tmp) {
@@ -1000,7 +1001,7 @@ public:
 	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
 	void removeResourceFromCraft(uint64 resID, int slot, int counter);
 	void nextCraftingStage(string test);
-	void craftingCustomization(string name, int condition);
+	void craftingCustomization(string name, int condition, string customizationstring);
 	void createPrototype(string count);
 	void createSchematic(string count);
 	void handleExperimenting(int count, int numRowsAttempted, string expstring);

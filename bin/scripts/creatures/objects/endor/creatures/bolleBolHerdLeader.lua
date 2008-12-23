@@ -46,13 +46,13 @@ bolleBolHerdLeader = Creature:new {
       faction = "Bolle Bol",
       gender = "",
 
-      name = "a Bolle Bol Herd Leader",
+      stfName = "a Bolle Bol Herd Leader",
       objectCRC = 2905349573, 
       socialGroup = "Bolle Bol",
       named = FALSE, 
 
       level = 35,
-      xp = 3460,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ bolleBolHerdLeader = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ bolleBolHerdLeader = Creature:new {
       hideMax = 300,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Knockdown attack", " Intimidation attack", "" }
+      --skills = { " Knockdown attack", " Intimidation attack", "" }
+      skills = { "bolleBolAttack3", "bolleBolAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

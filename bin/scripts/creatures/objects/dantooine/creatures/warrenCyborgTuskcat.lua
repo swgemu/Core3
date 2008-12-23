@@ -52,7 +52,7 @@ warrenCyborgTuskcat = Creature:new {
       named = FALSE, 
 
       level = 30,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,14 +123,14 @@ warrenCyborgTuskcat = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "bone_mammal_dantooine",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_dantooine",
       hideMax = 70,

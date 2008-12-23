@@ -78,8 +78,8 @@ public:
 		insertByte(0); // ??
 
 		insertByte(1); // Active Flag
-		insertFloat(inso->getEnergy()); // Energy Store
-		insertFloat(inso->getEnergyRate()); // Energy Rate
+		insertFloat(inso->getSurplusPower()); // Energy Store
+		insertFloat(inso->getPowerRate()); // Energy Rate
 
 		setSize();
 	}

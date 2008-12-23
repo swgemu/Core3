@@ -46,13 +46,13 @@ rottenGutRemmerKing = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      name = "a Rotten Gut Remmer King",
+      stfName = "a Rotten Gut Remmer King",
       objectCRC = 413618023, 
       socialGroup = "Remmer",
       named = FALSE, 
 
       level = 37,
-      xp = 3733,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ rottenGutRemmerKing = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_bristley_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Posture down attack", " Dizzy attack", "" }
+      --skills = { " Posture down attack", " Dizzy attack", "" }
+      skills = { "remmerAttack1", "remmerAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

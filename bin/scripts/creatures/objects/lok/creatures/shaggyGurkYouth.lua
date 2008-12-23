@@ -46,13 +46,13 @@ shaggyGurkYouth = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Shaggy Gurk Youth",
+      stfName = "a Shaggy Gurk Youth",
       objectCRC = 117230570, 
       socialGroup = "Gurk",
       named = FALSE, 
 
       level = 30,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ shaggyGurkYouth = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ shaggyGurkYouth = Creature:new {
       hideMax = 275,
 
       meatType = "meat_herbivore_lok",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "gurkAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

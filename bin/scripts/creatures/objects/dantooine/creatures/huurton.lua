@@ -52,7 +52,7 @@ huurton = Creature:new {
       named = FALSE, 
 
       level = 18,
-      xp = 1257,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -133,7 +133,7 @@ huurton = Creature:new {
       boneMax = 15,
 
       hideType = "hide_wooly_dantooine",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_wild_dantooine",
       meatMax = 15,

@@ -195,11 +195,13 @@ which carries forward this exception.
 #include "objects/tangible/pharmaceutical/CurePackImplementation.h"
 #include "objects/tangible/pharmaceutical/RevivePack.h"
 #include "objects/tangible/pharmaceutical/RevivePackImplementation.h"
+#include "objects/tangible/pharmaceutical/CureAreaPack.h"
+#include "objects/tangible/pharmaceutical/CureAreaPackImplementation.h"
 
-#include "objects/tangible/generic/GenericItem.h" 
-#include "objects/tangible/generic/GenericItemImplementation.h" 
-#include "objects/tangible/generic/Dice.h" 
-#include "objects/tangible/generic/DiceImplementation.h" 
+#include "objects/tangible/generic/GenericItem.h"
+#include "objects/tangible/generic/GenericItemImplementation.h"
+#include "objects/tangible/generic/Dice.h"
+#include "objects/tangible/generic/DiceImplementation.h"
 
 #include "objects/intangible/IntangibleObject.h"
 #include "objects/intangible/IntangibleObjectImplementation.h"
@@ -240,6 +242,10 @@ which carries forward this exception.
 #include "objects/installation/InstallationObjectImplementation.h"
 #include "objects/installation/harvester/HarvesterObject.h"
 #include "objects/installation/harvester/HarvesterObjectImplementation.h"
+#include "objects/installation/factory/FactoryObject.h"
+#include "objects/installation/factory/FactoryObjectImplementation.h"
+#include "objects/installation/generator/GeneratorObject.h"
+#include "objects/installation/generator/GeneratorObjectImplementation.h"
 
 #include "objects/mission/MissionObject.h"
 #include "objects/mission/MissionObjectImplementation.h"

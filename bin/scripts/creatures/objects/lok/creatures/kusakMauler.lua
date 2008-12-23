@@ -46,13 +46,13 @@ kusakMauler = Creature:new {
       faction = "Kusak",
       gender = "",
 
-      name = "a Kusak Mauler",
+      stfName = "a Kusak Mauler",
       objectCRC = 1518117227, 
       socialGroup = "Kusak",
       named = FALSE, 
 
       level = 22,
-      xp = 2006,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ kusakMauler = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ kusakMauler = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 21,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "kusakAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

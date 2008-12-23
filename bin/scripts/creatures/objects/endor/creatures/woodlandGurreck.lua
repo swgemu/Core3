@@ -46,13 +46,13 @@ woodlandGurreck = Creature:new {
       faction = "Gurreck",
       gender = "",
 
-      name = "a Woodland Gurreck",
+      stfName = "a Woodland Gurreck",
       objectCRC = 1386599736, 
       socialGroup = "Gurreck",
       named = FALSE, 
 
       level = 32,
-      xp = 3188,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ woodlandGurreck = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 1,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_wooly_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "gurreckAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

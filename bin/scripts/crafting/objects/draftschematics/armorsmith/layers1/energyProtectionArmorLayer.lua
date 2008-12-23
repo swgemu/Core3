@@ -59,7 +59,7 @@ energyProtectionArmorLayer = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "armor_layer_frame, defensive_layer_microlattice, shockwave_repulsion_compound, blast_harmonics_absorbtion_medium",
-   ingredientOptionals = "0, 0, 0, 0",
+   ingredientSlotType = "0, 0, 0, 0",
    --resourceTypes = "metal, petrochem_inert_polymer, gas_inert_known, ore",
 resourceTypes = "metal, metal, metal, metal",
    resourceQuantities = "20, 8, 8, 5",
@@ -73,7 +73,9 @@ resourceTypes = "metal, metal, metal, metal",
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "energyeffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
-   tanoAttributes = "objecttype=262144:objectcrc=2938969271:objecttemp=armor_layer_energy:templatetype=craft_armor_ingredients_n:",
+   tanoAttributes = "objecttype=262145:objectcrc=2938969271:objecttemp=armor_layer_energy:templatetype=craft_armor_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  energyeffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",

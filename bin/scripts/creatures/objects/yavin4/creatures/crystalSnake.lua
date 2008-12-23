@@ -52,7 +52,7 @@ crystalSnake = Creature:new {
       named = FALSE, 
 
       level = 25,
-      xp = 2543,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -130,7 +130,7 @@ crystalSnake = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_yavin4",
       hideMax = 2,

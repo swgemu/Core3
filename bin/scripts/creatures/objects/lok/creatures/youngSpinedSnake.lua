@@ -46,13 +46,13 @@ youngSpinedSnake = Creature:new {
       faction = "Spinesnake",
       gender = "",
 
-      name = "a Young Spined Snake",
+      stfName = "a Young Spined Snake",
       objectCRC = 729848387, 
       socialGroup = "Spinesnake",
       named = FALSE, 
 
       level = 11,
-      xp = 430,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,14 +123,14 @@ youngSpinedSnake = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
       hideMax = 2,
@@ -138,7 +138,8 @@ youngSpinedSnake = Creature:new {
       meatType = "meat_reptilian_lok",
       meatMax = 7,
 
-      skills = { " Poison attack (mild)", "", "" }
+      --skills = { " Poison attack (mild)", "", "" }
+      skills = { "snakeAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

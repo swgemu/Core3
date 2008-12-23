@@ -46,13 +46,13 @@ shimmeringLanternBird = Creature:new {
       faction = "Lantern",
       gender = "",
 
-      name = "a Shimmering Lantern Bird",
+      stfName = "a Shimmering Lantern Bird",
       objectCRC = 1183906554, 
       socialGroup = "Lantern",
       named = FALSE, 
 
       level = 30,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ shimmeringLanternBird = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,9 @@ shimmeringLanternBird = Creature:new {
       hideMax = 41,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "lanternBirdAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,13 +46,13 @@ arachneWidow = Creature:new {
       faction = "Arachne",
       gender = "",
 
-      name = "a Arachne Widow",
+      stfName = "a Arachne Widow",
       objectCRC = 1157055229, 
       socialGroup = "Arachne",
       named = FALSE, 
 
       level = 58,
-      xp = 5647,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ arachneWidow = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.01,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_insect_endor",
       meatMax = 30,
 
-      skills = { " Stun attack", " Poison attack (strong)", "" }
+      --skills = { " Stun attack", " Poison attack (strong)", "" }
+      skills = { "arachneAttack8", "arachneAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

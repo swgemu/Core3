@@ -46,13 +46,13 @@ deadlyVesp = Creature:new {
       faction = "Vesp",
       gender = "",
 
-      name = "a Deadly Vesp",
+      stfName = "a Deadly Vesp",
       objectCRC = 3698435149, 
       socialGroup = "Vesp",
       named = FALSE, 
 
       level = 93,
-      xp = 8871,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,14 +123,14 @@ deadlyVesp = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
       hideMax = 6,
@@ -138,7 +138,8 @@ deadlyVesp = Creature:new {
       meatType = "meat_reptilian_lok",
       meatMax = 15,
 
-      skills = { " Poison attack (strong)", " Stun attack", "" }
+      --skills = { " Poison attack (strong)", " Stun attack", "" }
+      skills = { "vespAttack1", "vespAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

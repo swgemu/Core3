@@ -110,8 +110,6 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 }
 
 void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
-	SceneObject* obj = NULL;
-
 	try {
 		player->wlock();
 
@@ -126,7 +124,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		}
 
 		//cout << "Radial ID = " << dec << radialID << endl;
-		obj = zone->lookupObject(objectID);
+		SceneObject* obj = zone->lookupObject(objectID);
 
 		//TODO: Get a bazaar object to pass to the next functions
 		BazaarManager* bazaarManager = zone->getZoneServer()->getBazaarManager();
@@ -193,18 +191,18 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 36:  // LOOT_ALL
 		player->lootCorpse(true);
 		break;
-    case 41: // One die 
-        handleDiceRoll(player, obj, 1); 
-        break; 
-    case 42: // Two dice 
-        handleDiceRoll(player, obj, 2); 
-        break; 
-    case 43: // Three dice 
-        handleDiceRoll(player, obj, 3); 
-        break; 
-    case 44: // Four dice 
-        handleDiceRoll(player, obj, 4); 
-        break; 
+    case 41: // One die
+        handleDiceRoll(player, obj, 1);
+        break;
+    case 42: // Two dice
+        handleDiceRoll(player, obj, 2);
+        break;
+    case 43: // Three dice
+        handleDiceRoll(player, obj, 3);
+        break;
+    case 44: // Four dice
+        handleDiceRoll(player, obj, 4);
+        break;
 	case 45: // Open vendor
 		sendRadialResponseForBazaar(obj->getObjectID(), player);
 		break;
@@ -214,39 +212,41 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 50:  // LISTEN / WATCH (Entertainer)
 		handleEntertainerActions(player, obj);
 		break;
-    case 51: // Configure (dice) 
-        // nothing here, has sub-members 
-        break; 
-    case 52: 
-        handleDiceConfigure(player, obj, 8); // 8 sides 
-        break; 
-    case 53: 
-        handleDiceConfigure(player, obj, 7); // 7 sides 
-        break; 
-    case 54: 
-        handleDiceConfigure(player, obj, 6); // 6 sides 
-        break; 
-    case 55: 
-        handleDiceConfigure(player, obj, 5); // 5 sides 
-        break; 
-    case 56: 
-        handleDiceConfigure(player, obj, 4); // 4 sides 
-        break; 
-    case 57: 
-        handleDiceConfigure(player, obj, 3); // 3 sides 
-        break; 
-    case 58: 
-        handleDiceConfigure(player, obj, 2); // 2 sides 
-        break; 
+    case 51: // Configure (dice)
+        // nothing here, has sub-members
+        break;
+    case 52:
+        handleDiceConfigure(player, obj, 8); // 8 sides
+        break;
+    case 53:
+        handleDiceConfigure(player, obj, 7); // 7 sides
+        break;
+    case 54:
+        handleDiceConfigure(player, obj, 6); // 6 sides
+        break;
+    case 55:
+        handleDiceConfigure(player, obj, 5); // 5 sides
+        break;
+    case 56:
+        handleDiceConfigure(player, obj, 4); // 4 sides
+        break;
+    case 57:
+        handleDiceConfigure(player, obj, 3); // 3 sides
+        break;
+    case 58:
+        handleDiceConfigure(player, obj, 2); // 2 sides
+        break;
 	case 60: // VEHICLE_GENERATE
 		player->unlock();
-
 		handleVehicleGenerate(obj);
 		return;
 	case 61: // VEHICLE_STORE
 		player->unlock();
-
 		handleVehicleStore(obj);
+		return;
+	case 62: // VEHICLE_REPAIR
+		player->unlock();
+		handleVehicleRepair(obj);
 		return;
 	case 68: // SERVER_MENU1 using to change color on wearables (temporary)
 		handleWearableColorChange(player, obj);
@@ -410,6 +410,7 @@ void RadialManager::sendRadialResponseForBank(uint64 objectId, Player* player) {
 
 void RadialManager::handleVehicleStore(SceneObject* obj) {
 	if (obj->isIntangible()) {
+
 		SceneObject* mount = ((IntangibleObject*)obj)->getWorldObject();
 		if (mount == NULL)
 			return;
@@ -478,6 +479,26 @@ void RadialManager::handleVehicleGenerate(SceneObject* obj) {
 	}
 }
 
+void RadialManager::handleVehicleRepair(SceneObject* obj) {
+	if (!obj->isNonPlayerCreature())
+		return;
+
+	if (!((Creature*)obj)->isMount())
+		return;
+
+	try {
+		obj->wlock();
+
+		((MountCreature*)obj)->repair();
+
+		obj->unlock();
+
+	} catch (...) {
+		cout << "Unreported exception caught in RadialManager::handleVehicleRepair(SceneObject* obj)\n";
+		obj->unlock();
+	}
+}
+
 void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
@@ -515,7 +536,6 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 	}
 }
 
-
 void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) {
 	if (!obj->isTangible())
 		return;
@@ -540,9 +560,7 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 }
 
 void RadialManager::handleManageHarvester(Player* player, SceneObject* obj) {
-	try{
-
-		cout << "RadialManager::handleManageHarvester() entered" << endl;
+	try {
 		if (!obj->isTangible())
 			return;
 
@@ -558,13 +576,10 @@ void RadialManager::handleManageHarvester(Player* player, SceneObject* obj) {
 
 		ResourceHarvesterActivatePageMessage* rhapm = new ResourceHarvesterActivatePageMessage(obj->getObjectID());
 		player->sendMessage(rhapm);
-
-
 	}
 	catch(...){
 		cout << "Unreported exception in RadialManager::handleManageHarvester\n";
 	}
-	cout << "RadialManager::handleManageHarvester() completed" << endl;
 }
 
 
@@ -1018,35 +1033,35 @@ void RadialManager::handleEntertainerActions(Player* player, SceneObject* obj) {
 	}
 }
 
-void RadialManager::handleDiceRoll(Player* player, SceneObject* obj, int dnum) { 
-    if (!obj->isTangible()) 
-        return; 
+void RadialManager::handleDiceRoll(Player* player, SceneObject* obj, int dnum) {
+    if (!obj->isTangible())
+        return;
 
-    TangibleObject* tano = (TangibleObject*) obj; 
- 
+    TangibleObject* tano = (TangibleObject*) obj;
+
     if (tano->isGenericItem()) {
-        GenericItem* geni = (GenericItem*) tano; 
-        if (geni->isDice()) { 
-	        Dice* dice = (Dice*) geni; 
-	        dice->rollDice(player, dnum); 
-        } 
-    } 
-} 
- 
-void RadialManager::handleDiceConfigure(Player* player, SceneObject* obj, int dsides) { 
-    if (!obj->isTangible()) 
-        return; 
- 
-    TangibleObject* tano = (TangibleObject*) obj; 
+        GenericItem* geni = (GenericItem*) tano;
+        if (geni->isDice()) {
+	        Dice* dice = (Dice*) geni;
+	        dice->rollDice(player, dnum);
+        }
+    }
+}
 
-    if (tano->isGenericItem()) { 
-	    GenericItem* geni = (GenericItem*) tano; 
-        if (geni->isDice()) { 
-		    Dice* dice = (Dice*) geni; 
-            dice->setConfigurableDice(dsides); 
-        } 
-    } 
-} 
+void RadialManager::handleDiceConfigure(Player* player, SceneObject* obj, int dsides) {
+    if (!obj->isTangible())
+        return;
+
+    TangibleObject* tano = (TangibleObject*) obj;
+
+    if (tano->isGenericItem()) {
+	    GenericItem* geni = (GenericItem*) tano;
+        if (geni->isDice()) {
+		    Dice* dice = (Dice*) geni;
+            dice->setConfigurableDice(dsides);
+        }
+    }
+}
 
 void RadialManager::handleTeach(SceneObject* obj, Player* trainer) {
 	if (obj == NULL) {

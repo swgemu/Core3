@@ -46,13 +46,13 @@ arachneHatchling = Creature:new {
       faction = "Arachne",
       gender = "",
 
-      name = "a Arachne Hatchling",
+      stfName = "a Arachne Hatchling",
       objectCRC = 1157055229, 
       socialGroup = "Arachne",
       named = FALSE, 
 
       level = 18,
-      xp = 1257,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,22 +123,23 @@ arachneHatchling = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_insect_endor",
       meatMax = 1,
 
-      skills = { " Disease attack (poison)", "", "" }
+      --skills = { " Disease attack (poison)", "", "" }
+      skills = { "arachneAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,13 +46,13 @@ gurnaset = Creature:new {
       faction = "Gurnasel",
       gender = "",
 
-      name = "a Gurnaset",
+      stfName = "a Gurnaset",
       objectCRC = 526557680, 
       socialGroup = "Gurnasel",
       named = FALSE, 
 
       level = 15,
-      xp = 831,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 

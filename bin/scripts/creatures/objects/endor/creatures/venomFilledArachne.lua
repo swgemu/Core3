@@ -46,13 +46,13 @@ venomFilledArachne = Creature:new {
       faction = "Arachne",
       gender = "",
 
-      name = "a Venom Filled Arachne",
+      stfName = "a Venom Filled Arachne",
       objectCRC = 1157055229, 
       socialGroup = "Arachne",
       named = FALSE, 
 
       level = 36,
-      xp = 3642,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -99,7 +99,7 @@ venomFilledArachne = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -123,22 +123,23 @@ venomFilledArachne = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_insect_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Ranged attack (spit)", " Poison attack (strong)", " Stun attack" }
+      --skills = { " Ranged attack (spit)", " Poison attack (strong)", " Stun attack" }
+      skills = { "arachneAttack3", "arachneAttack1", "arachneAttack8" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

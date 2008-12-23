@@ -46,13 +46,13 @@ giantPharple = Creature:new {
       faction = "Pharple",
       gender = "",
 
-      name = "a Giant Pharple",
+      stfName = "a Giant Pharple",
       objectCRC = 4108418006, 
       socialGroup = "Pharple",
       named = FALSE, 
 
       level = 7,
-      xp = 187,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ giantPharple = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,7 @@ giantPharple = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 21,
 
-      skills = { "", "", "" }
+      skills = { "pharpleAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -51,10 +51,20 @@ public:
 
 	unsigned int getItnocrc();
 
+	void parseItemAttributes();
+
+	void setAttributes(string& attributestring);
+
+	string& getAttributes();
+
+	void repair();
+
 protected:
 	MountCreature(DummyConstructorParameter* param);
 
 	virtual ~MountCreature();
+
+	string _return_getAttributes;
 
 	friend class MountCreatureHelper;
 };
@@ -97,6 +107,16 @@ public:
 
 	unsigned int getItnocrc();
 
+	void parseItemAttributes();
+
+	void setAttributes(string& attributestring);
+
+	string& getAttributes();
+
+	void repair();
+
+protected:
+	string _param0_setAttributes__string_;
 };
 
 class MountCreatureHelper : public DistributedObjectClassHelper, public Singleton<MountCreatureHelper> {

@@ -1514,28 +1514,6 @@ mosEisleyNpc67 = Creature:new {
 	cellID = 0
 }
 
-mosEisleyNpc68 = Creature:new {
-	objectName = "mosEisleyNpc68",
-	creatureType = NPC,
-
-	speciesName = "lt_harburik",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 1571582723,
-	positionX = 3485.35,
-	positionY = -4740.37,
-	positionZ = 4.93096,
-
-	directionX = -0.065004,
-	directionZ = -0.00652826,
-	directionY = 0.885103,
-	directionW = -0.460787,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 mosEisleyNpc69 = Creature:new {
 	objectName = "mosEisleyNpc69",
 	creatureType = NPC,
@@ -5471,28 +5449,6 @@ mosEisleyNpc249 = Creature:new {
 	directionW = 0.843918,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-mosEisleyNpc250 = Creature:new {
-	objectName = "mosEisleyNpc250",
-	creatureType = NPC,
-
-	speciesName = "crackdown_sand_trooper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 440719956,
-	positionX = 3538.04,
-	positionY = -4806.46,
-	positionZ = 5.12541,
-
-	directionX = 0.0919041,
-	directionZ = 0.0409263,
-	directionY = -0.388232,
-	directionW = 0.916054,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 

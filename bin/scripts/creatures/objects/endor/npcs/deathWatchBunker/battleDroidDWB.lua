@@ -52,7 +52,7 @@ battleDroidDWB = Creature:new {
       named = FALSE, 
 
       level = 130,
-      xp = 12329,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

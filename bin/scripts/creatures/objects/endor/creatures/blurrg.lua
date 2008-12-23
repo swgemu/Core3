@@ -46,13 +46,13 @@ blurrg = Creature:new {
       faction = "Blurrg",
       gender = "",
 
-      name = "a Blurrg",
+      stfName = "a Blurrg",
       objectCRC = 2309529743, 
       socialGroup = "Blurrg",
       named = FALSE, 
 
       level = 50,
-      xp = 4825,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -99,7 +99,7 @@ blurrg = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -130,15 +130,15 @@ blurrg = Creature:new {
       milk = 0,
 
       boneType = "bone_avian_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "blurrgAttack1" },
+      skills = { "blurggAttack1", "blurggAttack2", "blurggAttack3" },
 	  -- skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }
        respawnTimer = 60,
 

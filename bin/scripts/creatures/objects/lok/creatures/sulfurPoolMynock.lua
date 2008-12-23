@@ -46,13 +46,13 @@ sulfurPoolMynock = Creature:new {
       faction = "Mynock",
       gender = "",
 
-      name = "a Sulfur Pool Mynock",
+      stfName = "a Sulfur Pool Mynock",
       objectCRC = 2246027732, 
       socialGroup = "Mynock",
       named = FALSE, 
 
       level = 30,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ sulfurPoolMynock = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ sulfurPoolMynock = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 57,
 
-      skills = { " Knockdown attack", " Intimidation attack", "" }
+      --skills = { " Knockdown attack", " Intimidation attack", "" }
+      skills = { "mynockAttack4", "mynockAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

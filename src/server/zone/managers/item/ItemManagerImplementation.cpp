@@ -215,7 +215,6 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 
 	} else if (objecttype & TangibleObjectImplementation::CLOTHING) {
 		item = new Wearable(objectid, objectcrc, objectname, objecttemp, equipped);
-		item->setObjectSubType(objecttype);
 		if (makeStats)
 			item->setConditionDamage(System::random(item->getMaxCondition() * 3 / 4));
 
@@ -349,7 +348,6 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 				switch(DeedObjectImplementation::getSubType(objectcrc)){
 					case TangibleObjectImplementation::HARVESTER:
 						item = new HarvesterDeed(objectid, objectcrc, objectname, objecttemp);
-						cout << "ItemManagerImplementation::createPlayerObjectTemplate TangibleObjectImplementation::HARVESTER" << endl;
 						break;
 					case TangibleObjectImplementation::FACTORY:
 						item = new FactoryDeed(objectid, objectcrc, objectname, objecttemp);
@@ -552,6 +550,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	item->setAttributes(attributes);
 	item->parseItemAttributes();
 
+	item->setObjectSubType(objecttype);
+
 	item->setPlayerUseMask(itemMask);
 
 	item->setCustomizationString(custStr);
@@ -574,7 +574,7 @@ TangibleObject* ItemManagerImplementation::initializeTangibleForCrafting(
 
 	unicode objectname(objectn);
 
-	TangibleObject * item = NULL;
+	TangibleObject* item = NULL;
 
 	item = createPlayerObjectTemplate(objecttype, objectid, objectcrc,
 			objectname.c_str(), objecttemp, equipped, false, "", 0);
@@ -1250,6 +1250,7 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 
 			land = new MountCreature(player, res->getString(2), "monster_name",
 					res->getLong(3), res->getLong(4), res->getUnsignedLong(9));
+			land->setObjectFileName(res->getString(5));
 
 			land->setZoneProcessServer(pServer);
 
@@ -1260,6 +1261,11 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 
 				land->setCharacterAppearance(custStr);
 			}
+
+			string attributes = res->getString(6);
+
+			land->setAttributes(attributes );
+			land->parseItemAttributes();
 
 			land->addToDatapad();
 

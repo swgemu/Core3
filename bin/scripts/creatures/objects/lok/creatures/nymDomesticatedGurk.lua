@@ -46,13 +46,13 @@ nymDomesticatedGurk = Creature:new {
       faction = "Nym",
       gender = "",
 
-      name = "a Nym Domesticated Gurk",
+      stfName = "a Nym Domesticated Gurk",
       objectCRC = 3464397925, 
       socialGroup = "Nym",
       named = FALSE, 
 
       level = 26,
-      xp = 2637,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ nymDomesticatedGurk = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ nymDomesticatedGurk = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 350,
 
-      skills = { " Dizzy attack", " Stun attack", "" }
+      --skills = { " Dizzy attack", " Stun attack", "" }
+      skills = { "gurkAttack3", "gurkAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

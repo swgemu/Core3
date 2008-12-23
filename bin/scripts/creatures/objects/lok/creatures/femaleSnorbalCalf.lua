@@ -46,13 +46,13 @@ femaleSnorbalCalf = Creature:new {
       faction = "Snorbal",
       gender = "",
 
-      name = "a Female Snorbal Calf",
+      stfName = "a Female Snorbal Calf",
       objectCRC = 857953251, 
       socialGroup = "Snorbal",
       named = FALSE, 
 
       level = 19,
-      xp = 1257,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ femaleSnorbalCalf = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ femaleSnorbalCalf = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 500,
 
-      skills = { " Stun attack", "", "" }
+      --skills = { " Stun attack", "", "" }
+      skills = { "snorbalAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

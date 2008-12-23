@@ -46,13 +46,13 @@ sharptoothLanglatch = Creature:new {
       faction = "Langlatch",
       gender = "",
 
-      name = "a Sharptooth Langlatch",
+      stfName = "a Sharptooth Langlatch",
       objectCRC = 2513300255, 
       socialGroup = "Langlatch",
       named = FALSE, 
 
       level = 17,
-      xp = 1102,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ sharptoothLanglatch = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ sharptoothLanglatch = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 16,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { " Dizzy attack", "", "" }
+      skills = { "langlatchAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

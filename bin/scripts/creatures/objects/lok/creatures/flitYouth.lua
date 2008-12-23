@@ -46,13 +46,13 @@ flitYouth = Creature:new {
       faction = "Flit",
       gender = "",
 
-      name = "a Flit Youth",
+      stfName = "a Flit Youth",
       objectCRC = 554215691, 
       socialGroup = "Flit",
       named = FALSE, 
 
       level = 6,
-      xp = 147,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ flitYouth = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -133,12 +133,12 @@ flitYouth = Creature:new {
       boneMax = 5,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_lok",
       meatMax = 5,
 
-      skills = { "", "", "" }
+      skills = { "flitAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

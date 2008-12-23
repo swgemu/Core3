@@ -52,7 +52,7 @@ bordokMare = Creature:new {
       named = FALSE, 
 
       level = 34,
-      xp = 3460,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -130,15 +130,15 @@ bordokMare = Creature:new {
       milk = 0,
 
       boneType = "bone_mammal_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "bordokAttack1" },
+      skills = { "bordokAttack2", "bordokAttack5" },
 	  -- skills = { " Stun attack", " Area attack (knockdown)", "" },
        respawnTimer = 60,
 

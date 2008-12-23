@@ -52,7 +52,7 @@ jantaLoreweaver = Creature:new {
       named = FALSE, 
 
       level = 55,
-      xp = 5373,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -122,7 +122,7 @@ jantaLoreweaver = Creature:new {
       alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
       alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      lootGroup = "0,11,15,19,33", -- Group it belongs to for lootoot
+      lootGroup = "0,11,15,19,33,65", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

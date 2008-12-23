@@ -52,7 +52,7 @@ carrionSpat = Creature:new {
       named = FALSE, 
 
       level = 10,
-      xp = 292,
+      
 
       combatFlags = ATTACKABLE_FLAG,
 
@@ -133,7 +133,7 @@ carrionSpat = Creature:new {
       boneMax = 180,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_corellia",
       meatMax = 260,

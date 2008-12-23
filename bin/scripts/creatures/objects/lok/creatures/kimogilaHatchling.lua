@@ -46,13 +46,13 @@ kimogilaHatchling = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      name = "a Kimogila Hatchling",
+      stfName = "a Kimogila Hatchling",
       objectCRC = 331807070, 
       socialGroup = "Kimogila",
       named = FALSE, 
 
       level = 22,
-      xp = 2006,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -99,7 +99,7 @@ kimogilaHatchling = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_large_red.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -123,14 +123,14 @@ kimogilaHatchling = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
       hideMax = 625,
@@ -138,7 +138,8 @@ kimogilaHatchling = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 700,
 
-      skills = { " Dizzy attack", " Stun attack", " Ranged attack (spit)" }
+      --skills = { " Dizzy attack", " Stun attack", " Ranged attack (spit)" }
+      skills = { "kimogilaAttack6", "kimogilaAttack8", "kimogilaAttack9" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

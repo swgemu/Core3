@@ -52,7 +52,7 @@ shaggyKorgaYouth = Creature:new {
       named = FALSE, 
 
       level = 15,
-      xp = 831,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ shaggyKorgaYouth = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33,34", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

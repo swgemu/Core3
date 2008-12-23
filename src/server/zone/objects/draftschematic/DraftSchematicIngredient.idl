@@ -46,7 +46,7 @@ import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematicIngredient {
 	DraftSchematicIngredient(const string ingredientTemplateName, const string ingredientTitleName,
-			boolean optional, const string resourceType, unsigned int resourceQuantity, 
+			const int slotoption, const string resourceType, unsigned int resourceQuantity, 
 			unsigned int combineType, float contribution);
 	DraftSchematicIngredient(DraftSchematicIngredient ingredient);
 		
@@ -63,7 +63,15 @@ interface DraftSchematicIngredient {
 
 	unsigned int getCombineType();
 	
-	boolean getOptional();
+	int getSlotType();
+
+	boolean isOptionalSlot();
+	
+	boolean isIdenticalSlot();
+	
+	boolean isResourceSlot();
+	
+	boolean isMixedSlot();
 
 	float getContribution();
 }

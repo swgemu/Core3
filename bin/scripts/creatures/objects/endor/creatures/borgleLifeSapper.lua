@@ -46,13 +46,13 @@ borgleLifeSapper = Creature:new {
       faction = "Borgle",
       gender = "",
 
-      name = "a Borgle Life Sapper",
+      stfName = "a Borgle Life Sapper",
       objectCRC = 715008896, 
       socialGroup = "Borgle",
       named = FALSE, 
 
       level = 25,
-      xp = 2637,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -99,7 +99,7 @@ borgleLifeSapper = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -123,7 +123,7 @@ borgleLifeSapper = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ borgleLifeSapper = Creature:new {
       hideMax = 5,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Posture down attack", " Disease attack (poison)", " Ranged attack (spit)" }
+      --skills = { "Posture down attack", "Disease attack (poison)", "Ranged attack (spit)" }
+      skills = { "borgleAttack3", "borgleAttack4", "borgleAttack5" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

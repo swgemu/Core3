@@ -46,13 +46,13 @@ giantSpinedSnake = Creature:new {
       faction = "Spinesnake",
       gender = "",
 
-      name = "a Giant Spined Snake",
+      stfName = "a Giant Spined Snake",
       objectCRC = 928031214, 
       socialGroup = "Spinesnake",
       named = FALSE, 
 
       level = 22,
-      xp = 2219,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,14 +123,14 @@ giantSpinedSnake = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
       hideMax = 8,
@@ -138,7 +138,8 @@ giantSpinedSnake = Creature:new {
       meatType = "meat_reptilian_lok",
       meatMax = 15,
 
-      skills = { " Dizzy attack", " Poison attack (strong)", "" }
+      --skills = { " Dizzy attack", " Poison attack (strong)", "" }
+      skills = { "snakeAttack1", "snakeAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,13 +46,13 @@ stoneskinHanadak = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      name = "a Stoneskin Hanadak",
+      stfName = "a Stoneskin Hanadak",
       objectCRC = 3722994435, 
       socialGroup = "Hanadak",
       named = FALSE, 
 
       level = 139,
-      xp = 13178,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ stoneskinHanadak = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ stoneskinHanadak = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 40,
 
-      skills = { " Blind attack", " Knockdown attack", "" }
+      --skills = { " Blind attack", " Knockdown attack", "" }
+      skills = { "hanadakAttack6", "hanadakAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

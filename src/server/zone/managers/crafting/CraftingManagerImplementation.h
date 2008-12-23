@@ -153,7 +153,7 @@ public:
 
 	// Crafting Methods
 	void nextCraftingStage(Player* player, string test);
-	void craftingCustomization(Player* player, string name, int condition);
+	void craftingCustomization(Player* player, string name, int condition, string customizationstring);
 	void handleExperimenting(Player* player, int counter, int numRowsAttempted, string expstring);
 	void createPrototype(Player* player, string count);
 	void createSchematic(Player* player, string count);
@@ -182,14 +182,14 @@ private:
 	void sendSlotMessage(Player* player, int counter, short message);
 	ResourceContainer * makeNewResourceStack(Player* player, string name, int quantity);
 	bool slotIsFull(Player* player, CraftingTool* craftingTool, TangibleObject* tano, TangibleObject* ingredientInSlot,
-			int slot, int quantity, int counter);
+			int ingredientInSlotQuantity, int slot, int quantity, int counter);
 	TangibleObject* transferIngredientToSlot(Player* player, TangibleObject* tano,
-			CraftingTool* craftingTool, int& quantity);
+			CraftingTool* craftingTool, int quantity);
 	TangibleObject* transferResourceToSlot(Player* player, ResourceContainer* rcno,
-			CraftingTool* craftingTool, int& quantity);
+			CraftingTool* craftingTool, int quantity);
 	TangibleObject* transferComponentToSlot(
 			Player* player, Component* component, CraftingTool* craftingTool,
-			int& quantity);
+			int quantity);
 
 	// Turn on Experimentation window
 	void enableExperimentation(Player* player, CraftingTool* craftingTool);

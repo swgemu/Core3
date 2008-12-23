@@ -287,7 +287,7 @@ void CraftingTool::increaseInsertCount() {
 		((CraftingToolImplementation*) _impl)->increaseInsertCount();
 }
 
-void CraftingTool::addIngredientToSlot(int slot, TangibleObject* tano) {
+bool CraftingTool::addIngredientToSlot(int slot, TangibleObject* tano) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -296,9 +296,22 @@ void CraftingTool::addIngredientToSlot(int slot, TangibleObject* tano) {
 		method.addSignedIntParameter(slot);
 		method.addObjectParameter(tano);
 
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CraftingToolImplementation*) _impl)->addIngredientToSlot(slot, tano);
+}
+
+void CraftingTool::clearIngredientInSlot(int slot) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+		method.addSignedIntParameter(slot);
+
 		method.executeWithVoidReturn();
 	} else
-		((CraftingToolImplementation*) _impl)->addIngredientToSlot(slot, tano);
+		((CraftingToolImplementation*) _impl)->clearIngredientInSlot(slot);
 }
 
 void CraftingTool::addTempIngredient(TangibleObject* tano) {
@@ -306,7 +319,7 @@ void CraftingTool::addTempIngredient(TangibleObject* tano) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 		method.addObjectParameter(tano);
 
 		method.executeWithVoidReturn();
@@ -319,7 +332,7 @@ float CraftingTool::getToolEffectiveness() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -331,7 +344,7 @@ int CraftingTool::getCraftingState() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -343,7 +356,7 @@ TangibleObject* CraftingTool::getWorkingTano() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 
 		return (TangibleObject*) method.executeWithObjectReturn();
 	} else
@@ -355,7 +368,7 @@ DraftSchematic* CraftingTool::getWorkingDraftSchematic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
 	} else
@@ -367,24 +380,11 @@ int CraftingTool::getInsertCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((CraftingToolImplementation*) _impl)->getInsertCount();
-}
-
-void CraftingTool::initializeCraftingSlots(const int size) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 32);
-		method.addSignedIntParameter(size);
-
-		method.executeWithVoidReturn();
-	} else
-		((CraftingToolImplementation*) _impl)->initializeCraftingSlots(size);
 }
 
 TangibleObject* CraftingTool::getIngredientInSlot(int slot) {
@@ -400,12 +400,25 @@ TangibleObject* CraftingTool::getIngredientInSlot(int slot) {
 		return ((CraftingToolImplementation*) _impl)->getIngredientInSlot(slot);
 }
 
-int CraftingTool::getSlotCount() {
+int CraftingTool::getIngredientInSlotQuantity(int slot) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 34);
+		method.addSignedIntParameter(slot);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CraftingToolImplementation*) _impl)->getIngredientInSlotQuantity(slot);
+}
+
+int CraftingTool::getSlotCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -417,7 +430,7 @@ Container* CraftingTool::getHopper(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 		method.addObjectParameter(player);
 
 		return (Container*) method.executeWithObjectReturn();
@@ -430,7 +443,7 @@ int CraftingTool::getAssemblyResults() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -442,7 +455,7 @@ float CraftingTool::getCraftingToolModifier() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -454,7 +467,7 @@ int CraftingTool::getToolType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -466,7 +479,7 @@ DraftSchematic* CraftingTool::getCurrentDraftSchematic(int slot) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 		method.addSignedIntParameter(slot);
 
 		return (DraftSchematic*) method.executeWithObjectReturn();
@@ -479,7 +492,7 @@ bool CraftingTool::isExperimenting() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -491,7 +504,7 @@ bool CraftingTool::isReady() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -503,7 +516,7 @@ bool CraftingTool::isFinished() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -515,7 +528,7 @@ bool CraftingTool::isWorking() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -591,60 +604,63 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		increaseInsertCount();
 		break;
 	case 25:
-		addIngredientToSlot(inv->getSignedIntParameter(), (TangibleObject*) inv->getObjectParameter());
+		resp->insertBoolean(addIngredientToSlot(inv->getSignedIntParameter(), (TangibleObject*) inv->getObjectParameter()));
 		break;
 	case 26:
-		addTempIngredient((TangibleObject*) inv->getObjectParameter());
+		clearIngredientInSlot(inv->getSignedIntParameter());
 		break;
 	case 27:
-		resp->insertFloat(getToolEffectiveness());
+		addTempIngredient((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 28:
-		resp->insertSignedInt(getCraftingState());
+		resp->insertFloat(getToolEffectiveness());
 		break;
 	case 29:
-		resp->insertLong(getWorkingTano()->_getObjectID());
+		resp->insertSignedInt(getCraftingState());
 		break;
 	case 30:
-		resp->insertLong(getWorkingDraftSchematic()->_getObjectID());
+		resp->insertLong(getWorkingTano()->_getObjectID());
 		break;
 	case 31:
-		resp->insertSignedInt(getInsertCount());
+		resp->insertLong(getWorkingDraftSchematic()->_getObjectID());
 		break;
 	case 32:
-		initializeCraftingSlots(inv->getSignedIntParameter());
+		resp->insertSignedInt(getInsertCount());
 		break;
 	case 33:
 		resp->insertLong(getIngredientInSlot(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 34:
-		resp->insertSignedInt(getSlotCount());
+		resp->insertSignedInt(getIngredientInSlotQuantity(inv->getSignedIntParameter()));
 		break;
 	case 35:
-		resp->insertLong(getHopper((Player*) inv->getObjectParameter())->_getObjectID());
+		resp->insertSignedInt(getSlotCount());
 		break;
 	case 36:
-		resp->insertSignedInt(getAssemblyResults());
+		resp->insertLong(getHopper((Player*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case 37:
-		resp->insertFloat(getCraftingToolModifier());
+		resp->insertSignedInt(getAssemblyResults());
 		break;
 	case 38:
-		resp->insertSignedInt(getToolType());
+		resp->insertFloat(getCraftingToolModifier());
 		break;
 	case 39:
-		resp->insertLong(getCurrentDraftSchematic(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertSignedInt(getToolType());
 		break;
 	case 40:
-		resp->insertBoolean(isExperimenting());
+		resp->insertLong(getCurrentDraftSchematic(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 41:
-		resp->insertBoolean(isReady());
+		resp->insertBoolean(isExperimenting());
 		break;
 	case 42:
-		resp->insertBoolean(isFinished());
+		resp->insertBoolean(isReady());
 		break;
 	case 43:
+		resp->insertBoolean(isFinished());
+		break;
+	case 44:
 		resp->insertBoolean(isWorking());
 		break;
 	default:
@@ -730,8 +746,12 @@ void CraftingToolAdapter::increaseInsertCount() {
 	return ((CraftingToolImplementation*) impl)->increaseInsertCount();
 }
 
-void CraftingToolAdapter::addIngredientToSlot(int slot, TangibleObject* tano) {
+bool CraftingToolAdapter::addIngredientToSlot(int slot, TangibleObject* tano) {
 	return ((CraftingToolImplementation*) impl)->addIngredientToSlot(slot, tano);
+}
+
+void CraftingToolAdapter::clearIngredientInSlot(int slot) {
+	return ((CraftingToolImplementation*) impl)->clearIngredientInSlot(slot);
 }
 
 void CraftingToolAdapter::addTempIngredient(TangibleObject* tano) {
@@ -758,12 +778,12 @@ int CraftingToolAdapter::getInsertCount() {
 	return ((CraftingToolImplementation*) impl)->getInsertCount();
 }
 
-void CraftingToolAdapter::initializeCraftingSlots(const int size) {
-	return ((CraftingToolImplementation*) impl)->initializeCraftingSlots(size);
-}
-
 TangibleObject* CraftingToolAdapter::getIngredientInSlot(int slot) {
 	return ((CraftingToolImplementation*) impl)->getIngredientInSlot(slot);
+}
+
+int CraftingToolAdapter::getIngredientInSlotQuantity(int slot) {
+	return ((CraftingToolImplementation*) impl)->getIngredientInSlotQuantity(slot);
 }
 
 int CraftingToolAdapter::getSlotCount() {

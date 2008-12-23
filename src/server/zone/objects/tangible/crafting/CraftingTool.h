@@ -73,7 +73,9 @@ public:
 
 	void increaseInsertCount();
 
-	void addIngredientToSlot(int slot, TangibleObject* tano);
+	bool addIngredientToSlot(int slot, TangibleObject* tano);
+
+	void clearIngredientInSlot(int slot);
 
 	void addTempIngredient(TangibleObject* tano);
 
@@ -87,9 +89,9 @@ public:
 
 	int getInsertCount();
 
-	void initializeCraftingSlots(const int size);
-
 	TangibleObject* getIngredientInSlot(int slot);
+
+	int getIngredientInSlotQuantity(int slot);
 
 	int getSlotCount();
 
@@ -165,7 +167,9 @@ public:
 
 	void increaseInsertCount();
 
-	void addIngredientToSlot(int slot, TangibleObject* tano);
+	bool addIngredientToSlot(int slot, TangibleObject* tano);
+
+	void clearIngredientInSlot(int slot);
 
 	void addTempIngredient(TangibleObject* tano);
 
@@ -179,9 +183,9 @@ public:
 
 	int getInsertCount();
 
-	void initializeCraftingSlots(const int size);
-
 	TangibleObject* getIngredientInSlot(int slot);
+
+	int getIngredientInSlotQuantity(int slot);
 
 	int getSlotCount();
 

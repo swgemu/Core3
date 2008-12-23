@@ -23,7 +23,9 @@ class CellObject : public SceneObject {
 public:
 	CellObject(unsigned long long oid, BuildingObject* buio);
 
-	CellObject(unsigned long long oid, BuildingObject* buio, unsigned long long cid);
+	CellObject(unsigned long long oid, BuildingObject* buio, int number);
+
+	int getChildrenSize();
 
 	void addChild(SceneObject* object, bool doLock = true);
 
@@ -31,14 +33,25 @@ public:
 
 	SceneObject* getChild(int idx);
 
-	unsigned long long getCellID();
+	void setCellNumber(int i);
 
-	int getChildrenSize();
+	int getCellNumber();
+
+	void setAttributes(string& attributestring);
+
+	string& getAttributes();
+
+	void parseItemAttributes();
+
+	string& getTemplateName();
 
 protected:
 	CellObject(DummyConstructorParameter* param);
 
 	virtual ~CellObject();
+
+	string _return_getAttributes;
+	string _return_getTemplateName;
 
 	friend class CellObjectHelper;
 };
@@ -51,16 +64,28 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	int getChildrenSize();
+
 	void addChild(SceneObject* object, bool doLock);
 
 	void removeChild(SceneObject* object, bool doLock);
 
 	SceneObject* getChild(int idx);
 
-	unsigned long long getCellID();
+	void setCellNumber(int i);
 
-	int getChildrenSize();
+	int getCellNumber();
 
+	void setAttributes(string& attributestring);
+
+	string& getAttributes();
+
+	void parseItemAttributes();
+
+	string& getTemplateName();
+
+protected:
+	string _param0_setAttributes__string_;
 };
 
 class CellObjectHelper : public DistributedObjectClassHelper, public Singleton<CellObjectHelper> {

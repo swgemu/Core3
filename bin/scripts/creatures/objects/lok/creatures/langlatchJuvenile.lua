@@ -46,13 +46,13 @@ langlatchJuvenile = Creature:new {
       faction = "Langlatch",
       gender = "",
 
-      name = "a Langlatch Juvenile",
+      stfName = "a Langlatch Juvenile",
       objectCRC = 92206253, 
       socialGroup = "Langlatch",
       named = FALSE, 
 
       level = 8,
-      xp = 235,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ langlatchJuvenile = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ langlatchJuvenile = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 7,
 
-      skills = { " Posture down attack", "", "" }
+      --skills = { " Posture down attack", "", "" }
+      skills = { "langlatchAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

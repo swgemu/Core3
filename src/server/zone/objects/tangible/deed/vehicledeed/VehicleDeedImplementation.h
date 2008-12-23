@@ -16,6 +16,7 @@ class CreatureObject;
 class VehicleDeedImplementation : public VehicleDeedServant {
 protected:
 	string vehicleFile;
+	int hitPoints;
 public:
 	static const int ORE = 1;
 	static const int MOISTURE = 2;
@@ -35,6 +36,22 @@ public:
 	int useObject(Player* player);
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
+	void addAttributes(AttributeListMessage* alm);
+
+	void parseItemAttributes();
+
+	void setHitPoints(int hp){
+		hitPoints = hp;
+		string name = "hit_points"; //obj_attr_n.stf
+		itemAttributes->setFloatAttribute(name, hp);
+	}
+
+	int getHitPoints(){
+		return hitPoints;
+	}
 
 	//void sendTo(Player* player, MountCreature* swoop, bool doClose);
 

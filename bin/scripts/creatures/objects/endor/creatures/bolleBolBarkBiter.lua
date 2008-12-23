@@ -46,13 +46,13 @@ bolleBolBarkBiter = Creature:new {
       faction = "Bolle Bol",
       gender = "",
 
-      name = "a Bolle Bol Bark Biter",
+      stfName = "a Bolle Bol Bark Biter",
       objectCRC = 2905349573, 
       socialGroup = "Bolle Bol",
       named = FALSE, 
 
       level = 27,
-      xp = 2730,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ bolleBolBarkBiter = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ bolleBolBarkBiter = Creature:new {
       hideMax = 300,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Dizzy attack", " Posture down attack", "" }
+      --skills = { " Dizzy attack", " Posture down attack", "" }
+      skills = { "bolleBolAttack1", "bolleBolAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

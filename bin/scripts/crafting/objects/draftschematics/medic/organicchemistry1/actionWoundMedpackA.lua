@@ -59,7 +59,7 @@ actionWoundMedpackA = Object:new {
 
    ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n",
    ingredientTitleNames = "inorganic_element, organic_element",
-   ingredientOptionals = "0, 0",
+   ingredientSlotType = "0, 0",
    resourceTypes = "inorganic, organic",
    resourceQuantities = "8, 8",
    combineTypes = "1, 1",
@@ -73,7 +73,8 @@ actionWoundMedpackA = Object:new {
    experimentalSubGroupTitles = "power, charges",
 
    tanoAttributes = "objecttype=8205:objectcrc=3915445448:objecttemp=medpack_wound_action_a:templatetype=medicine_name:",
-
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "charges, power, medicineUseRequired, poolAffected",
    attributeExperimentalProperties = "exp_charges, exp_effectiveness, exp_effectiveness, exp_effectiveness",

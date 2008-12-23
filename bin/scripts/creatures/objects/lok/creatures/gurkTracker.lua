@@ -46,13 +46,13 @@ gurkTracker = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Gurk Tracker",
+      stfName = "a Gurk Tracker",
       objectCRC = 3464397925, 
       socialGroup = "Gurk",
       named = FALSE, 
 
       level = 30,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ gurkTracker = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ gurkTracker = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 350,
 
-      skills = { " Blind attack", " Dizzy attack", "" }
+      --skills = { " Blind attack", " Dizzy attack", "" }
+      skills = { "gurkAttack6", "gurkAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

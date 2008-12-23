@@ -52,7 +52,7 @@ afarathuCultBrute = Creature:new {
       named = FALSE, 
 
       level = 11,
-      xp = 514,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

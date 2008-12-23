@@ -46,13 +46,13 @@ rancidRemmerWarrior = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      name = "a Rancid Remmer Warrior",
+      stfName = "a Rancid Remmer Warrior",
       objectCRC = 3273659222, 
       socialGroup = "Remmer",
       named = FALSE, 
 
       level = 33,
-      xp = 3279,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ rancidRemmerWarrior = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_bristley_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Stun attack", " Posture down attack", " Ranged attack (spit)" }
+      --skills = { " Stun attack", " Posture down attack", " Ranged attack (spit)" }
+      skills = { "remmerAttack5", "remmerAttack2", "remmerAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

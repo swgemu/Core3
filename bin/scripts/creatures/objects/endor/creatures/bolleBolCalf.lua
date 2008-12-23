@@ -46,13 +46,13 @@ bolleBolCalf = Creature:new {
       faction = "Bolle Bol",
       gender = "",
 
-      name = "a Bolle Bol Calf",
+      stfName = "a Bolle Bol Calf",
       objectCRC = 2063978210, 
       socialGroup = "Bolle Bol",
       named = FALSE, 
 
       level = 15,
-      xp = 831,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ bolleBolCalf = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,9 @@ bolleBolCalf = Creature:new {
       hideMax = 300,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "bolleBolAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,13 +46,13 @@ kusakPup = Creature:new {
       faction = "Kusak",
       gender = "",
 
-      name = "a Kusak Pup",
+      stfName = "a Kusak Pup",
       objectCRC = 837351779, 
       socialGroup = "Kusak",
       named = FALSE, 
 
       level = 8,
-      xp = 235,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ kusakPup = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ kusakPup = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 10,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { " Blind attack", "", "" }
+      skills = { "kusakAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

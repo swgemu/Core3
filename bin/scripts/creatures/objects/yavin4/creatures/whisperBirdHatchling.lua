@@ -52,7 +52,7 @@ whisperBirdHatchling = Creature:new {
       named = FALSE, 
 
       level = 7,
-      xp = 187,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ whisperBirdHatchling = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -133,7 +133,7 @@ whisperBirdHatchling = Creature:new {
       boneMax = 30,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_yavin4",
       meatMax = 55,

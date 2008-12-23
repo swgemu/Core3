@@ -147,6 +147,10 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 
 	string experimentingSkill;
 	string assemblySkill;
+	string customizationSkill;
+
+	Vector<string> customizationOptions;
+	Vector<int> customizationDefaults;
 
 	bool finished;
 
@@ -171,7 +175,7 @@ public:
 
 	// Ingredient Methods
 	void addIngredient(const string& ingredientTemplateName,
-			const string& ingredientTitleName, bool optional,
+			const string& ingredientTitleName, const int slotoption,
 			const string& resourceType, uint32 resourceQuantity,
 			uint32 combineType, uint32 contribution);
 
@@ -236,7 +240,23 @@ public:
 		experimentingSkill = exp;
 	}
 
+	inline void setCustomizationSkill(const string& cust) {
+		customizationSkill = cust;
+	}
+
+	inline void addCustomizationOption(const string cust, const int value) {
+		customizationOptions.add(cust);
+		customizationDefaults.add(value);
+	}
+
 	inline void setAssemblySkill(const string& ass) {
+		if ((int) ass.find("armor") >= 0)
+			customizationSkill = "armor_customization";
+		if ((int) ass.find("clothing") >= 0)
+			customizationSkill = "clothing_customization";
+		if ((int) ass.find("droid") >= 0)
+			customizationSkill = "droid_customization";
+
 		assemblySkill = ass;
 	}
 
@@ -307,6 +327,22 @@ public:
 
 	inline string& getExperimentingSkill() {
 		return experimentingSkill;
+	}
+
+	inline string& getCustomizationSkill() {
+		return customizationSkill;
+	}
+
+	inline string& getCustomizationOption(const int i) {
+		return customizationOptions.get(i);
+	}
+
+	inline int getCustomizationDefaultValue(const int i) {
+		return customizationDefaults.get(i);
+	}
+
+	inline int getCustomizationOptionCount() {
+		return customizationOptions.size();
 	}
 
 	inline string& getAssemblySkill() {

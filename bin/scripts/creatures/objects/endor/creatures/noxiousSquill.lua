@@ -46,13 +46,13 @@ noxiousSquill = Creature:new {
       faction = "Endor Squill",
       gender = "",
 
-      name = "a Noxious Squill",
+      stfName = "a Noxious Squill",
       objectCRC = 1824637824, 
       socialGroup = "Endor Squill",
       named = FALSE, 
 
       level = 19,
-      xp = 1426,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ noxiousSquill = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Stun attack", " Disease attack (mild)", "" }
+      --skills = { "Stun attack", "Disease attack (mild)" }
+      skills = { "squillAttack3", "squillAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

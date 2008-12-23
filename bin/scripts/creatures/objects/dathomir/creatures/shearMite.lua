@@ -52,7 +52,7 @@ shearMite = Creature:new {
       named = FALSE, 
 
       level = 16,
-      xp = 960,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -130,7 +130,7 @@ shearMite = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_dathomir",
       hideMax = 12,

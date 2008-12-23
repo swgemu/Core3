@@ -76,6 +76,7 @@ which carries forward this exception.
 #include "PlayerHAM.h"
 
 #include "events/PlayerLogoutEvent.h"
+#include "events/PlayerResurrectEvent.h"
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerSaveStateEvent.h"
 #include "events/PlayerRecoveryEvent.h"
@@ -88,7 +89,6 @@ which carries forward this exception.
 #include "events/SurveyEvent.h"
 #include "events/EntertainerEvent.h"
 #include "events/SampleEvent.h"
-#include "events/ReviveCountdownEvent.h"
 
 #include "../creature/events/DizzyFallDownEvent.h"
 
@@ -148,6 +148,14 @@ PlayerImplementation::~PlayerImplementation() {
 		playerSaveStateEvent = NULL;
 	}
 
+	if (resurrectEvent != NULL) {
+		if (resurrectEvent->isQueued())
+			server->removeEvent(resurrectEvent);
+
+		delete resurrectEvent;
+		resurrectEvent = NULL;
+	}
+
 	if (centerOfBeingEvent != NULL) {
 		server->removeEvent(centerOfBeingEvent);
 
@@ -203,6 +211,7 @@ void PlayerImplementation::initialize() {
 
 	disconnectEvent = NULL;
 	logoutEvent = NULL;
+	resurrectEvent = NULL;
 
 	playerSaveStateEvent = NULL;
 
@@ -222,7 +231,7 @@ void PlayerImplementation::initialize() {
 	itemShift = 100;
 
 	// pvp stuff
-	deathCount = 0;
+	incapacitationCount = 0;
 	pvpRating = PVPRATING_DEFAULT; //New players start with pvpRating of 1200
 	duelList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
 	factionStatus = 0;
@@ -295,9 +304,6 @@ void PlayerImplementation::initialize() {
 	setTargetMind(0);
 	setTargetFocus(0);
 	setTargetWillpower(0);
-
-	reviveTimeout;
- 	reviveCountdownEvent = NULL;
 
 	suiBoxes.setInsertPlan(SortedVector<SuiBox*>::NO_DUPLICATE);
 	suiBoxes.setNullValue(NULL);
@@ -518,6 +524,12 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 			info("reloading player from Cache");
 		}
 
+		if (isLinkDead()) {
+			info("clearing link dead status");
+			if (playerObject != NULL)
+				playerObject->clearCharacterBit(PlayerObjectImplementation::LD, true);
+		}
+
 		owner = client;
 		client->setPlayer(_this);
 
@@ -686,39 +698,104 @@ void PlayerImplementation::logout(bool doLock) {
 	unlock(doLock);
 }
 
+//Resurrection
+void PlayerImplementation::resurrectCountdown(int counter) {
+	if (counter < 0 || counter > 6)
+		counter = 6;
+
+	if (resurrectionExpires.isPast())
+		counter = 1;
+
+	//Remove any pre existing events.
+	if (resurrectEvent != NULL) {
+
+		if (resurrectEvent->isQueued())
+			server->removeEvent(resurrectEvent);
+
+		delete resurrectEvent;
+		resurrectEvent = NULL;
+	}
+
+	if (isDead()) {
+		resurrectEvent = new PlayerResurrectEvent(_this, counter);
+
+		switch (counter) {
+		case 6:
+		case 5:
+		case 4:
+		case 3:
+		case 2:
+		{
+			int realCount = counter - 1;
+
+			stringstream msgRemainingTime;
+			msgRemainingTime << "You have " << (counter - 1) << " minute" << ((counter == 2) ? "" : "s") << " remaining to be resuscitated.";
+			sendSystemMessage(msgRemainingTime.str());
+
+			//Find out how much time is actually left until the next tick should be going off.
+			int diff = abs((int) resurrectionExpires.miliDifference());
+			int nextTick = diff - (60000 * (realCount - 1));
+
+			server->addEvent(resurrectEvent, nextTick);
+			break;
+		}
+		case 1:
+			sendSystemMessage("You have been dead too long and can no longer be resuscitated. You have 10 minutes before you will automatically be cloned.");
+			server->addEvent(resurrectEvent, 600000);
+			break;
+		case 0:
+			delete resurrectEvent;
+			resurrectEvent = NULL;
+
+			doClone();
+			break;
+		}
+	}
+}
+
 void PlayerImplementation::userLogout(int msgCounter) {
 	if (msgCounter < 0 || msgCounter > 3)
 		msgCounter = 3;
 
-	if (!isSitting()) {
+	if (!isSitting() && !isInCombat() && !isDead() && !isIncapacitated())
 		changePosture(CreaturePosture::SITTING);
-	}
 
-	if (!isInCombat() && isSitting()) {
+	if (isSitting() && !isInCombat()) {
 		logoutEvent = new PlayerLogoutEvent(_this, msgCounter);
 
+		uint8 duration = 30; //Logout event lasts x seconds.
+		uint8 multiplier = 5; //Interval multiplier of x seconds.
+		uint8 timeLeft = duration; //How much time is remaining.
+
 		switch (msgCounter) {
-		case 3:
-			sendSystemMessage("You can safely log out in 30 seconds...");
-			server->addEvent(logoutEvent, 15000);
-			break;
-		case 2:
-			sendSystemMessage("You can safely log out in 15 seconds...");
-			server->addEvent(logoutEvent, 10000);
-			break;
-		case 1:
-			sendSystemMessage("You can safely log out in 5 seconds...");
-			server->addEvent(logoutEvent, 5000);
-			break;
-		case 0:  // Disconnect!!!
-			info("Safe Logout");
+			case 0: { // Disconnect!!!
+				sendSystemMessage("logout", "safe_to_log_out"); //You may now logout safely.
 
-			ClientLogout* packet = new ClientLogout();
-			sendMessage(packet);
+				info("Safe Logout");
 
-			delete logoutEvent;
-			logoutEvent = NULL;
-			break;
+				setLoggingOut();
+
+				ClientLogout * packet = new ClientLogout();
+				sendMessage(packet);
+
+				delete logoutEvent;
+				logoutEvent = NULL;
+				break;
+			}
+			case 1:
+				timeLeft -= 10;
+			case 2:
+				timeLeft -= 15;
+			case 3: {
+
+				StfParameter* stfp = new StfParameter();
+				stfp->addDI(timeLeft);
+				sendSystemMessage("logout", "time_left", stfp); //You have %DI seconds before you may logout safely.
+				delete stfp;
+
+				server->addEvent(logoutEvent, multiplier * msgCounter * 1000);
+				break;
+			}
 		}
 	} else {
 		if (logoutEvent != NULL) { // we better dont delete the event from where
@@ -730,10 +807,7 @@ void PlayerImplementation::userLogout(int msgCounter) {
 			logoutEvent = NULL;
 		}
 
-		if (isInCombat())
-			sendSystemMessage("Can not log out while in combat.");
-		else if (!isSitting())
-			sendSystemMessage("You must be sitting to log out.");
+		sendSystemMessage("logout", "must_be_sitting"); //You must be sitting in order to log out safely.
 	}
 }
 
@@ -811,21 +885,20 @@ void PlayerImplementation::initializeEvents() {
 }
 
 void PlayerImplementation::removeEvents() {
-	/*
-	if (reviveCountdownEvent != NULL) {
-		if (reviveCountdownEvent->isQueued())
-			server->removeEvent(reviveCountdownEvent);
-
-		delete reviveCountdownEvent;
-		reviveCountdownEvent = NULL;
-	}*/
-
 	if (firstSampleEvent != NULL) {
 		if (firstSampleEvent->isQueued())
 			server->removeEvent(firstSampleEvent);
 
 		delete firstSampleEvent;
 		firstSampleEvent = NULL;
+	}
+
+	if (resurrectEvent != NULL) {
+		if (resurrectEvent->isQueued())
+			server->removeEvent(resurrectEvent);
+
+		delete resurrectEvent;
+		resurrectEvent = NULL;
 	}
 
 	if (sampleEvent != NULL) {
@@ -852,13 +925,6 @@ void PlayerImplementation::removeEvents() {
 			delete dizzyFallDownEvent;
 			dizzyFallDownEvent = NULL;
 		}
-
-		/*if (reviveCountdownEvent != NULL && reviveCountdownEvent->isQueued()) {
-			server->removeEvent(reviveCountdownEvent);
-
-			delete reviveCountdownEvent;
-			reviveCountdownEvent = NULL;
-		}*/
 
 		if (changeFactionEvent != NULL) {
 			server->removeEvent(changeFactionEvent);
@@ -1096,7 +1162,8 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 		//building->unlock(doLock);
 
 		linkType = 0xFFFFFFFF;
-		broadcastMessage(link(parent), 128, false);
+		//linkType = 0x04;
+		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), 128, false);
 
 	} catch (...) {
 		error("exception PlayerImplementation::insertToBuilding(BuildingObject* building)");
@@ -1212,16 +1279,25 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 					BuildingObject* newBuilding = (BuildingObject*) newObj;
 
 					if (building != newBuilding) {
+						cout << "Does this actually ever happen when someone goes from one building to another?" << endl;
 						removeFromBuilding(building);
 
 						insert = true;
 					}
 				}
 
+				// remove from old cell
 				((CellObject*) parent)->removeChild(_this);
 			}
+
+			//cout << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
+			// add to new cell
 			parent = newParent;
 			((CellObject*) parent)->addChild(_this);
+
+			//linkType = 0x04;
+			broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), 128, false);
+
 		}
 
 		BuildingObject* building = (BuildingObject*) parent->getParent();
@@ -1415,7 +1491,8 @@ void PlayerImplementation::removeFromBuilding(BuildingObject* building, bool doL
 
 		info("removing from building");
 
-		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
+		//broadcastMessage(link(0, 0x04), 128, false);
+		broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), 128, false);
 
 		((CellObject*)parent)->removeChild(_this);
 
@@ -1553,6 +1630,8 @@ void PlayerImplementation::switchMap(int planetid) {
 	misoRFC = 0x01;
 	misoBSB = 0;
 
+	setPositionZ(zone->getHeight(positionX, positionY));
+
 	insertToZone(zone);
 }
 
@@ -1567,7 +1646,7 @@ void PlayerImplementation::doWarp(float x, float y, float z, float randomizeDist
 
 	parent = NULL;
 
-	setPosition(x, 0, y);
+	setPosition(x, zone->getHeight(x, y), y);
 
 	if (parentID != 0) {
 		SceneObject* newParent = zone->lookupObject(parentID);
@@ -1614,6 +1693,15 @@ void PlayerImplementation::notifySceneReady() {
 
 		loadGuildChat();
 
+		if (isDead()) {
+			activateClone();
+			if (resurrectionExpires.isFuture()) {
+				int diff = abs((int) floor(((float)resurrectionExpires.miliDifference()) / 60000));
+				resurrectCountdown(diff + 1);
+			} else {
+				resurrectCountdown(1);
+			}
+		}
 
 	} else {
 		//we need to reset the "magicnumber" for the internal friendlist due to clientbehaviour (Diff. Zoningservers SoE)
@@ -1912,22 +2000,25 @@ void PlayerImplementation::deleteQueueAction(uint32 actioncntr) {
 void PlayerImplementation::doIncapacitate() {
 	clearCombatState();
 
+	if (isDead())
+		return;
+
 	if (isMounted())
 		dismount(true, true);
 
-	if (deathCount == 0) {
+	if (incapacitationCount == 0) {
 		firstIncapacitationTime.update();
 		firstIncapacitationTime.addMiliTime(900000);
-	} else if (deathCount != 0 && firstIncapacitationTime.isPast()) {
-		deathCount = 0;
+	} else if (incapacitationCount != 0 && firstIncapacitationTime.isPast()) {
+		incapacitationCount = 0;
 		firstIncapacitationTime.update();
 		firstIncapacitationTime.addMiliTime(900000);
 	}
 
-	if (++deathCount < 3) {
+	if (++incapacitationCount < 3) {
 		// send incapacitation timer
 		CreatureObjectDeltaMessage3* incap = new CreatureObjectDeltaMessage3(_this);
-		incap->updateIncapacitationRecoveryTime(8);
+		incap->updateIncapacitationRecoveryTime(10);
 		incap->close();
 
 		sendMessage(incap);
@@ -1935,9 +2026,11 @@ void PlayerImplementation::doIncapacitate() {
 		clearStates();
 		setPosture(CreaturePosture::INCAPACITATED);
 
-		rescheduleRecovery(8000);
-	} else
-		kill();
+		rescheduleRecovery(10000);
+	} else {
+		if (firstIncapacitationTime.isFuture())
+			kill();
+	}
 }
 
 void PlayerImplementation::kill() {
@@ -1960,6 +2053,7 @@ void PlayerImplementation::deathblow(Player* killer) {
 	}
 
 	//Using the formula: N = P1 - ( (1/5) * (P1 - P2 + 100) ), where P1 - P2 + 100 >= 0
+	//P1 = Player1; P2 = Player2; N = PointsLost
 	int pointsLost = (int)round((1.0f/5.0f) * (currentRating - opponentRating + 100.0f));
 
 	pointsLost = (pointsLost >= 0) ? pointsLost : 0;
@@ -1993,8 +2087,6 @@ void PlayerImplementation::deathblow(Player* killer) {
 		defeatedMsg << "Although you have fallen at the hands of " << killerName.c_str() << ",  your cannot lose any more rating points at this time.  Your player combat rating remains at " << newRating << ".";
 	}
 
-	//TODO: awardFactionPoints(); Only if both players are overt.
-
 	sendSystemMessage("base_player", "prose_victim_dead", killer->getObjectID()); //You were slain by %TT. Requesting clone activation...
 
 	sendSystemMessage(defeatedMsg.str());
@@ -2003,17 +2095,22 @@ void PlayerImplementation::deathblow(Player* killer) {
 	handleDeath();
 }
 
-/*
 void PlayerImplementation::throttlePvpRating(Player* player) {
-	 *
+	 /*
 	 * TODO: When a player is killed, they should be added to that players recently killed list so that no points are awarded.
-	 *
-}*/
+	 */
+}
 
 void PlayerImplementation::handleDeath() {
 	setPosture(CreaturePosture::DEAD);
-	deathCount = 0;
-	rescheduleRecovery(3000);
+	incapacitationCount = 0;
+
+	resurrectionExpires.update();
+	resurrectionExpires.addMiliTime(5 * 60 * 1000); //5 minutse till expires
+
+	resurrectCountdown();
+
+	rescheduleRecovery(2000);
 }
 
 void PlayerImplementation::changePosture(int post) {
@@ -2023,7 +2120,7 @@ void PlayerImplementation::changePosture(int post) {
 			return;
 		}
 
-		sendSystemMessage("Logout canceled.");
+		sendSystemMessage("logout", "aborted"); //Your attempt to log out safely has been aborted.
 		server->removeEvent(logoutEvent);
 		delete logoutEvent;
 
@@ -2090,6 +2187,9 @@ void PlayerImplementation::changePosture(int post) {
 }
 
 void PlayerImplementation::activateRecovery() {
+	if (recoveryEvent == NULL)
+		recoveryEvent = new PlayerRecoveryEvent(_this);
+
 	if (!recoveryEvent->isQueued())
 		server->addEvent(recoveryEvent, 3000);
 }
@@ -2122,9 +2222,11 @@ void PlayerImplementation::doRecovery() {
 		speed = 5.376;
 
 		setPosture(CreaturePosture::UPRIGHT);
-	} else if (isDead()) {
+	}
+
+
+	if (isDead() && isOnline() && !isLoggingIn()) {
 		activateClone();
-		//activateReviveCountdown(); TODO: Fix the revive countdown timer issue.
 		return;
 	}
 
@@ -2152,6 +2254,16 @@ void PlayerImplementation::doRecovery() {
 
 
 void PlayerImplementation::resurrect() {
+	resurrectionExpires.update();
+
+	if (resurrectEvent != NULL) {
+		if (resurrectEvent->isQueued())
+			server->removeEvent(resurrectEvent);
+
+		delete resurrectEvent;
+		resurrectEvent = NULL;
+	}
+
 	uint32 boxID = getSuiBoxFromType(0xC103); //Activate Clone SuiBox
 
 	if (hasSuiBox(boxID)) {
@@ -2160,71 +2272,8 @@ void PlayerImplementation::resurrect() {
 		removeSuiBox(boxID);
 		sui->finalize();
 	}
+
 	changePosture(CreaturePosture::UPRIGHT);
-}
-
-void PlayerImplementation::clearReviveCountdown() {
-	reviveTimeout.update();
-
-	if (reviveCountdownEvent != NULL && reviveCountdownEvent->isQueued()) {
-		server->removeEvent(reviveCountdownEvent);
-
-		delete reviveCountdownEvent;
-		reviveCountdownEvent = NULL;
-	}
-}
-
-void PlayerImplementation::activateReviveCountdown() {
-	int minutes = 5;
-
-	reviveTimeout.update();
-	reviveTimeout.addMiliTime(minutes * 60 * 1000);
-
-	countdownRevive(minutes);
-}
-
-void PlayerImplementation::countdownRevive(int counter) {
-	stringstream message;
-	int seconds = 60; //How long in between message delays.
-
-	if (!isRevivable() && counter >= 0) {
-		counter = 0;
-	}
-
-	switch (counter) {
-	case 5:
-	case 4:
-	case 3:
-	case 2:
-	case 1:
-		message << "You have " << counter << " minutes remaining to be revived.";
-		break;
-	case 0:
-		message << "Your chance for resuscitation has expired. You have one minute to select a cloning facility, or one will be automatically chosen.";
-		break;
-	default:
-		break;
-	}
-
-	sendSystemMessage(message.str());
-
-	if (counter >= 0) {
-
-		--counter;
-
-		if (reviveCountdownEvent != NULL && reviveCountdownEvent->isQueued()) {
-			server->removeEvent(reviveCountdownEvent);
-
-			delete reviveCountdownEvent;
-			reviveCountdownEvent = NULL;
-		}
-
-		reviveCountdownEvent = new ReviveCountdownEvent(this, counter, seconds);
-		server->addEvent(reviveCountdownEvent);
-	} else {
-		if (!hasSuiBox(0xC103))
-			doClone();
-	}
 }
 
 void PlayerImplementation::doStateRecovery() {
@@ -2326,7 +2375,7 @@ void PlayerImplementation::activateClone() {
 void PlayerImplementation::doClone() {
 	info("cloning player");
 
-	//clearReviveCountdown();
+	resurrectionExpires.update();
 
 	clearStates();
 	clearBuffs(true);
@@ -2337,7 +2386,7 @@ void PlayerImplementation::doClone() {
 	changeHealthWoundsBar(100);
 	changeActionWoundsBar(100);
 	changeMindWoundsBar(100);
-	//TODO: Add in secondary wounds?
+
 	changeShockWounds(100);
 
 	switch (zoneID) {
@@ -3302,7 +3351,7 @@ void PlayerImplementation::clearDuelList() {
 
 // Mission Functions
 
-bool PlayerImplementation::isOnCurMisoKey(string& tmk) {
+bool PlayerImplementation::isOnCurMisoKey(string tmk) {
 	tmk += ",";
 
 	size_t pos;
@@ -3410,9 +3459,9 @@ void PlayerImplementation::nextCraftingStage(string test) {
 	craftingManager->nextCraftingStage(_this, test);
 }
 
-void PlayerImplementation::craftingCustomization(string name, int condition) {
+void PlayerImplementation::craftingCustomization(string name, int condition, string customizationstring) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->craftingCustomization(_this, name, condition);
+	craftingManager->craftingCustomization(_this, name, condition, customizationstring);
 }
 
 void PlayerImplementation::createPrototype(string count) {
@@ -4021,7 +4070,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		if (datapad == NULL)
 			return;
 
-		string name, detailName, appearance, mountApp;
+		string name, detailName, appearance, mountApp, attr, fileName;
 		stringstream query;
 		uint32 objCRC, itnoCRC;
 		uint64 objID;
@@ -4030,11 +4079,15 @@ void PlayerImplementation::saveDatapad(Player* player) {
 		query << "DELETE FROM datapad where character_id = " << player->getCharacterID() << ";";
 		ServerDatabase::instance()->executeStatement(query);
 
+
+
 		for (int i = 0; i < datapad->objectsSize(); ++i) {
 			name = "";
 			detailName = "";
 			appearance = "";
+			attr = "";
 			mountApp = "";
+			fileName = "";
 			objCRC = 0;
 			objID = 0;
 			itnoCRC = 0;
@@ -4060,6 +4113,10 @@ void PlayerImplementation::saveDatapad(Player* player) {
 
 							mountCreature->getCharacterAppearance(mountApp);
 
+							fileName = mountCreature->getObjectFileName();
+							attr = mountCreature->getAttributes();
+							MySqlDatabase::escapeString(attr);
+
 							if (mountApp != "") {
 								BinaryData cust(mountApp);
 								cust.encode(appearance);
@@ -4077,7 +4134,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 						query << "Insert into datapad set character_id = " << player->getCharacterID()
 						<< ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = " << itnoCRC
 						<< ",itemMask = 65535, appearance = '" << appearance.substr(0, appearance.size() - 1)
-						<< "',obj_id = " << objID << ";";
+						<< "',attributes = '" << attr << "',file_name = '" << fileName << "',obj_id = " << objID << ";";
 
 						ServerDatabase::instance()->executeStatement(query);
 					}

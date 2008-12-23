@@ -52,7 +52,7 @@ gurreck = Creature:new {
       named = FALSE, 
 
       level = 50,
-      xp = 4825,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -130,15 +130,15 @@ gurreck = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_wooly_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "gurreckAttack1" },
+      skills = { "gurreckAttack4", "gurreckAttack5" },
 	  -- skills = { " Intimidation attack", " Posture down attack", "" },
        respawnTimer = 60,
 

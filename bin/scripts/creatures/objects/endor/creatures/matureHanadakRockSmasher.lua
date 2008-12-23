@@ -46,13 +46,13 @@ matureHanadakRockSmasher = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      name = "a Mature Hanadak Rock Smasher",
+      stfName = "a Mature Hanadak Rock Smasher",
       objectCRC = 3722994435, 
       socialGroup = "Hanadak",
       named = FALSE, 
 
       level = 35,
-      xp = 3460,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ matureHanadakRockSmasher = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ matureHanadakRockSmasher = Creature:new {
       hideMax = 35,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Stun attack", " Dizzy attack", "" }
+      --skills = { " Stun attack", " Dizzy attack", "" }
+      skills = { "hanadakAttack5", "hanadakAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

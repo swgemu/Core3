@@ -557,8 +557,10 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 		else if (doPlayingMusic)
 			stopPlayingMusic();
 
-		if (meditating && postureState != CreaturePosture::SITTING)
+		if (meditating && postureState != CreaturePosture::SITTING) {
+			clearState(CreatureState::ALERT);
 			meditating = false;
+		}
 
 		Vector<BaseMessage*> msgs;
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(_this);
@@ -845,6 +847,7 @@ void CreatureObjectImplementation::setMeditateState() {
 
 	updateMood("meditating");
 	setPosture(CreaturePosture::SITTING);
+	setState(CreatureState::ALERT);
 
 	meditating = true;
 }
@@ -1648,6 +1651,20 @@ void CreatureObjectImplementation::changeConditionDamage(int amount) {
 	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3((CreatureObject*) _this);
 
 	dcreo3->updateConditionDamage();
+	dcreo3->close();
+
+	broadcastMessage(dcreo3);
+}
+
+void CreatureObjectImplementation::setMaxCondition(int condition) {
+	maxCondition = condition;
+
+	CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3((CreatureObject*) _this);
+	if (conditionDamage > maxCondition){
+		conditionDamage = maxCondition;
+		dcreo3->updateConditionDamage();
+	}
+	dcreo3->updateMaxCondition();
 	dcreo3->close();
 
 	broadcastMessage(dcreo3);
@@ -2676,7 +2693,7 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 
 	if (makeNewResource) {
 		// NOTE: Figure out how to get max inventory size...
-		if (inventory->getObjectCount() >= 80) {
+		if (inventory->getUnequippedItemCount() + 1 > InventoryImplementation::MAXUNEQUIPPEDCOUNT) {
 			ChatSystemMessage* sysMessage =
 					new ChatSystemMessage("survey", "no_inv_spc");
 			player->sendMessage(sysMessage);
@@ -4853,29 +4870,19 @@ bool CreatureObjectImplementation::revive(CreatureObject* target, bool forcedCha
 	return true;
 }
 
-bool CreatureObjectImplementation::resurrect(CreatureObject* target) {
+bool CreatureObjectImplementation::resurrect(CreatureObject* target, bool forcedChange) {
 	if (!target->isDead())
 		return false;
 
-	if (!target->isResurrectable())
+	if (!target->isResurrectable() && !forcedChange)
 		return false;
 
-	if (isPlayer()) {
-		//Remove the clone window if it exists
-		Player* player = (Player*) _this;
-
-		uint32 boxID = player->getSuiBoxFromType(0xC103); //Activate Clone SuiBox
-
-		if (player->hasSuiBox(boxID)) {
-			SuiBox* sui = player->getSuiBox(boxID);
-			player->sendMessage(sui->generateCloseMessage());
-			player->removeSuiBox(boxID);
-			sui->finalize();
-		}
+	if (target->isPlayer()) {
+		((Player*)target)->resurrect();
+	} else {
+		if (!revive(target, true))
+			return false;
 	}
-
-	if (!revive(target, true))
-		return false;
 
 	return true;
 }

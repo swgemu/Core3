@@ -52,7 +52,7 @@ gulginaw = Creature:new {
       named = FALSE, 
 
       level = 13,
-      xp = 609,
+      
 
       combatFlags = ATTACKABLE_FLAG,
 
@@ -133,7 +133,7 @@ gulginaw = Creature:new {
       boneMax = 25,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_corellia",
       meatMax = 75,

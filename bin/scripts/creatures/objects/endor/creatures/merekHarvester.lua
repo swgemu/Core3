@@ -46,13 +46,13 @@ merekHarvester = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a Merek Harvester",
+      stfName = "a Merek Harvester",
       objectCRC = 696113680, 
       socialGroup = "Merek",
       named = FALSE, 
 
       level = 55,
-      xp = 5281,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ merekHarvester = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
       hideMax = 45,
 
       meatType = "meat_wild_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Area attack (combo)", " Dizzy attack", "" }
+      --skills = { " Area attack (combo)", " Dizzy attack", "" }
+      skills = { "merekAttack10", "merekAttack7" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

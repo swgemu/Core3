@@ -46,13 +46,13 @@ highlandRemmer = Creature:new {
       faction = "Remmer",
       gender = "",
 
-      name = "a Highland Remmer",
+      stfName = "a Highland Remmer",
       objectCRC = 1979857288, 
       socialGroup = "Remmer",
       named = FALSE, 
 
       level = 26,
-      xp = 2637,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -99,7 +99,7 @@ highlandRemmer = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -123,22 +123,23 @@ highlandRemmer = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_bristley_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Dizzy attack", " Posture down attack", " Ranged attack (spit)" }
+      --skills = { "Dizzy attack", "Posture down attack", "Ranged attack (spit)" }
+      skills = { "remmerAttack1", "remmerAttack2", "remmerAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

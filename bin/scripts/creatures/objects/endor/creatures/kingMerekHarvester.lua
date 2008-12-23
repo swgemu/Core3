@@ -46,13 +46,13 @@ kingMerekHarvester = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a King Merek Harvester",
+      stfName = "a King Merek Harvester",
       objectCRC = 696113680, 
       socialGroup = "Merek",
       named = FALSE, 
 
       level = 50,
-      xp = 4916,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ kingMerekHarvester = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
       hideMax = 50,
 
       meatType = "meat_wild_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Area attack (poison)", " Blind attack", " Ranged attack (spit)" }
+      --skills = { "Area attack (poison)", "Blind attack", "Ranged attack (spit)" }
+      skills = { "merekAttack6", "merekAttack2", "merekAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

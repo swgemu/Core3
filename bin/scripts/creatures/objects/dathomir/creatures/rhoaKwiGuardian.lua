@@ -52,7 +52,7 @@ rhoaKwiGuardian = Creature:new {
       named = FALSE, 
 
       level = 45,
-      xp = 4461,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ rhoaKwiGuardian = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.15,  -- Likely hood to be tamed
 

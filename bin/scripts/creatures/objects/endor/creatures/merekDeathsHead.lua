@@ -46,13 +46,13 @@ merekDeathsHead = Creature:new {
       faction = "Merek",
       gender = "",
 
-      name = "a Merek Deaths Head",
+      stfName = "a Merek Deaths Head",
       objectCRC = 21982066, 
       socialGroup = "Merek",
       named = FALSE, 
 
       level = 56,
-      xp = 5464,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ merekDeathsHead = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.005,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
       hideMax = 45,
 
       meatType = "meat_wild_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Poison attack (strong)", " Disease attack (strong)", "" }
+      --skills = { " Poison attack (strong)", " Disease attack (strong)", "" }
+      skills = { "merekAttack8", "merekAttack9" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

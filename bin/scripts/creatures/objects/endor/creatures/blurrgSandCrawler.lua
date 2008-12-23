@@ -46,13 +46,13 @@ blurrgSandCrawler = Creature:new {
       faction = "Blurrg",
       gender = "",
 
-      name = "a Blurrg Sand Crawler",
+      stfName = "a Blurrg Sand Crawler",
       objectCRC = 2309529743, 
       socialGroup = "Blurrg",
       named = FALSE, 
 
       level = 43,
-      xp = 4188,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -99,7 +99,7 @@ blurrgSandCrawler = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -123,22 +123,23 @@ blurrgSandCrawler = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "bone_avian_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }
+      --skills = { " Stun attack", " Blind attack", " Ranged attack (spit)" }
+      skills = { "blurggAttack1", "blurggAttack2", "blurggAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -52,7 +52,7 @@ choku = Creature:new {
       named = FALSE, 
 
       level = 16,
-      xp = 960,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -133,7 +133,7 @@ choku = Creature:new {
       boneMax = 8,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_yavin4",
       meatMax = 10,

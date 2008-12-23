@@ -52,7 +52,7 @@ quenker = Creature:new {
       named = FALSE, 
 
       level = 23,
-      xp = 2219,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -130,13 +130,13 @@ quenker = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_dantooine",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_wild_dantooine",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "quenkerAttack1" },
 	  -- skills = { " Intimidation attack", " Knockdown attack", "" },

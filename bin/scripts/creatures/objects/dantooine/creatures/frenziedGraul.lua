@@ -52,7 +52,7 @@ frenziedGraul = Creature:new {
       named = FALSE, 
 
       level = 56,
-      xp = 5464,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ frenziedGraul = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.0001,  -- Likely hood to be tamed
 

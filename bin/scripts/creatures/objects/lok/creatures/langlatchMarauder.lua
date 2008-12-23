@@ -46,13 +46,13 @@ langlatchMarauder = Creature:new {
       faction = "Langiatch",
       gender = "",
 
-      name = "a Langlatch Marauder",
+      stfName = "a Langlatch Marauder",
       objectCRC = 2513300255, 
       socialGroup = "Langiatch",
       named = FALSE, 
 
       level = 17,
-      xp = 1102,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ langlatchMarauder = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ langlatchMarauder = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 12,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { " Blind attack", "", "" }
+      skills = { "langlatchAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

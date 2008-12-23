@@ -204,6 +204,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 	player->setMovementCounter(pack->parseInt() + 1);
 
+	uint64 oldParent = player->getParentID();
 	uint64 parent = pack->parseLong();
 
 	Zone* zone = player->getZone();
@@ -289,6 +290,27 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 		player->setLastTestPositionX(x);
 		player->setLastTestPositionY(y);
 	}
+
+
+	/*
+	// if we changed cell
+	if(oldParent != parent)
+	{
+		// Just entered building
+		if(oldParent != 0)
+		{
+			// Remove from old parent cell?
+
+		}
+		else // from outside
+		{
+			// Remove from quadtree? before entering?
+		}
+
+		// Add to cell
+		UpdateContainmentMessage* link = new UpdateContainmentMessage(player->getObjectID(), parent, 0x04);
+		player->broadcastMessage(link);
+	}*/
 
 	player->setDirection(dx, dz, dy, dw);
 	player->setPosition(x, z, y);
@@ -2402,12 +2424,10 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	uint64 hId = pack->parseLong();
 	uint64 rId = pack->parseLong();
 	uint32 quantity = pack->parseInt(); // need to verify the quantity exists in the hopper
-	uint8 byte1 = pack->parseByte();
-	uint8 byte2 = pack->parseByte();
+	uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
+	uint8 byte2 = pack->parseByte(); // checksum?
 
 	cout << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
-
-	cout << "ObjectControllerMessage::parseResourceEmptyHopper() entered" << endl;
 
 	SceneObject* object = player->getZone()->lookupObject(hId);
 
@@ -2436,25 +2456,26 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	if (zone == NULL)
 		return;
 
-
 	ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
-	if(resourceManager == NULL)
+	if (resourceManager == NULL)
 		return;
 
 	bool makeNewResource = true;
 
 	quantity = (uint32)inso->removeHopperItem(rId, quantity);
-	if(quantity >= 1)
-	{
-		ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
-		string resourceName = resourceManager->getResourceNameByID(rId);
-		newRcno->setResourceName(resourceName);
-		newRcno->setContents(quantity);
-		resourceManager->setResourceData(newRcno, false);
-		player->addInventoryResource(newRcno);
+	if (quantity >= 1) {
+		if(byte1 == 0) // Retreive vs Discard
+		{
+			ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
+			string resourceName = resourceManager->getResourceNameByID(rId);
+			newRcno->setResourceName(resourceName);
+			newRcno->setContents(quantity);
+			resourceManager->setResourceData(newRcno, false);
+			player->addInventoryResource(newRcno);
+		}
 	}
-	// need to send to anyone looking
 
+	// need to send to anyone looking
 	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateHopper();
 	dinso7->updateHopperItem(rId);
@@ -2463,7 +2484,7 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	player->sendMessage(dinso7);
 
 	GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
-	cout << "GenericResponse: " <<  gr->toString() << endl;
+	//cout << "GenericResponse: " <<  gr->toString() << endl;
 	player->sendMessage(gr);
 
 
@@ -2478,8 +2499,6 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	dinso7->close();
 	player->sendMessage(dinso7);
 */
-
-	cout << "ObjectControllerMessage::parseResourceEmptyHopper() completed" << endl;
 
 }
 
@@ -2954,7 +2973,6 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 }
 
 void ObjectControllerMessage::parsePlaceStructure(Player* player, Message* packet){
-
 	player->sendSystemMessage("Placing Structure");
 	packet->parseInt();  // Empty Data
 	packet->parseInt();  // Empty Data
@@ -2974,11 +2992,9 @@ void ObjectControllerMessage::parsePlaceStructure(Player* player, Message* packe
 
 	PlanetManager * planet = player->getZone()->getPlanetManager();
 	planet->placePlayerStructure(player, toID, x, y, orient);
-
 }
 
 void ObjectControllerMessage::parseSynchronizedUIListen(Player *player, Message *pack) {
-	cout << "ObjectControllerMessage::parseSynchronizedUIListen() entered" << endl;
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -2986,12 +3002,12 @@ void ObjectControllerMessage::parseSynchronizedUIListen(Player *player, Message 
 	if (object == NULL)
 		return;
 
-	if(!object->isTangible())
+	if (!object->isTangible())
 		return;
 
 	TangibleObject* tano = (TangibleObject*) object;
 
-	if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
 		return;
 
 	InstallationObject* inso = (InstallationObject*) tano;
@@ -3003,13 +3019,9 @@ void ObjectControllerMessage::parseSynchronizedUIListen(Player *player, Message 
 
 	inso->addOperator(player);
 	inso->activateSync();
-
-	cout << "ObjectControllerMessage::parseSynchronizedUIListen() completed" << endl;
-
 }
 
 void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player, Message *pack) {
-	cout << "ObjectControllerMessage::parseSynchronizedUIStopListening() entered" << endl;
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3017,26 +3029,22 @@ void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player, M
 	if (object == NULL)
 		return;
 
-	if(!object->isTangible())
+	if (!object->isTangible())
 		return;
 
 	TangibleObject* tano = (TangibleObject*) object;
 
-	if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
 		return;
 
 	InstallationObject* inso = (InstallationObject*) tano;
 
 
 	inso->removeOperator(player);
-
-	cout << "ObjectControllerMessage::parseSynchronizedUIStopListening() completed" << endl;
-
 }
 
 
 void ObjectControllerMessage::parseHarvesterActivate(Player *player, Message *pack) {
-	cout << "ObjectControllerMessage::parseHarvesterActivate() entered" << endl;
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3044,12 +3052,12 @@ void ObjectControllerMessage::parseHarvesterActivate(Player *player, Message *pa
 	if (object == NULL)
 		return;
 
-	if(!object->isTangible())
+	if (!object->isTangible())
 		return;
 
 	TangibleObject* tano = (TangibleObject*) object;
 
-	if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
 		return;
 
 	InstallationObject* inso = (InstallationObject*) tano;
@@ -3062,15 +3070,12 @@ void ObjectControllerMessage::parseHarvesterActivate(Player *player, Message *pa
 
 	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateOperating(true);
+	dinso7->updateExtractionRate(inso->getActualRate());
 	dinso7->close();
 	player->sendMessage(dinso7);
-
-	cout << "ObjectControllerMessage::parseHarvesterActivate() completed" << endl;
-
 }
 
 void ObjectControllerMessage::parseHarvesterDeActivate(Player *player, Message *pack) {
-	cout << "ObjectControllerMessage::parseHarvesterDeActivate() entered" << endl;
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3078,12 +3083,12 @@ void ObjectControllerMessage::parseHarvesterDeActivate(Player *player, Message *
 	if (object == NULL)
 		return;
 
-	if(!object->isTangible())
+	if (!object->isTangible())
 		return;
 
 	TangibleObject* tano = (TangibleObject*) object;
 
-	if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
 		return;
 
 	InstallationObject* inso = (InstallationObject*) tano;
@@ -3097,17 +3102,106 @@ void ObjectControllerMessage::parseHarvesterDeActivate(Player *player, Message *
 	dinso7->updateOperating(false);
 	dinso7->close();
 	player->sendMessage(dinso7);
-	cout << "ObjectControllerMessage::parseHarvesterDeActivate() completed" << endl;
-
 }
 
 void ObjectControllerMessage::parseHarvesterDiscardHopper(Player *player, Message *pack) {
+	//skip objId + old size
+	pack->shiftOffset(12);
+
+	uint64 hId = pack->parseLong();
+	SceneObject* object = player->getZone()->lookupObject(hId);
+
+	if (object == NULL) {
+		player->error("ObjectControllerMessage::parseResourceEmptyHopper() bad object");
+		return;
+	}
+
+	if(!object->isTangible()) {
+		player->error("ObjectControllerMessage::parseResourceEmptyHopper() bad tano");
+		return;
+	}
+
+
+	TangibleObject* tano = (TangibleObject*) object;
+	if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+	{
+		player->error("ObjectControllerMessage::parseResourceEmptyHopper() bad harvester");
+		return;
+	}
+
+	InstallationObject* inso = (InstallationObject*) tano;
+
+	// Need to loop through and remove each item in hopper
+
+
+	//Grab the harvester object id
+	/*pack->shiftOffset(8); // skip passed player
+	uint64 hId = pack->parseLong();
+	uint64 rId = pack->parseLong();
+	uint32 quantity = pack->parseInt(); // need to verify the quantity exists in the hopper
+	uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
+	uint8 byte2 = pack->parseByte(); // checksum?
+
+	cout << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
+
+
+	InstallationObject* inso = (InstallationObject*) tano;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+
+	ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
+	if(resourceManager == NULL)
+		return;
+
+	bool makeNewResource = true;
+
+	quantity = inso->removeHopperItem(rId, quantity);
+	if(quantity >= 1)
+	{
+		if(byte1 == 0) // Retreive vs Discard
+		{
+			ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
+			string resourceName = resourceManager->getResourceNameByID(rId);
+			newRcno->setResourceName(resourceName);
+			newRcno->setContents(quantity);
+			resourceManager->setResourceData(newRcno, false);
+			player->addInventoryResource(newRcno);
+		}
+	}
+	// need to send to anyone looking
+
+
+	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	dinso7->updateHopper();
+	dinso7->updateHopperItem(rId);
+	dinso7->updateHopperSize();
+	dinso7->close();
+	player->sendMessage(dinso7);
+
+	GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
+	//cout << "GenericResponse: " <<  gr->toString() << endl;
+	player->sendMessage(gr);
+
+	*/
+
+/*
+	InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
+	dinso3->updateOperating(true);
+	dinso3->close();
+	player->sendMessage(dinso3);
+
+	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	dinso7->updateOperating(true);
+	dinso7->close();
+	player->sendMessage(dinso7);
+*/
 
 }
 
 void ObjectControllerMessage::parseHarvesterGetResourceData(Player *player, Message *pack) {
-
-	cout << "ObjectControllerMessage::parseHarvesterGetResourceData() entered" << endl;
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3115,26 +3209,22 @@ void ObjectControllerMessage::parseHarvesterGetResourceData(Player *player, Mess
 	if (object == NULL)
 		return;
 
-	if(!object->isTangible())
+	if (!object->isTangible())
 		return;
 
 	TangibleObject* tano = (TangibleObject*) object;
 
-	if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
 		return;
 
 	HarvesterObject* hino = (HarvesterObject*) tano;
 
 	HarvesterResourceDataMessage* hrdm = new HarvesterResourceDataMessage(player, hino);
 	player->sendMessage(hrdm);
-
-	cout << "ObjectControllerMessage::parseHarvesterGetResourceData() completed" << endl;
 }
 
 
 void ObjectControllerMessage::parseHarvesterSelectResource(Player *player, Message *pack) {
-
-	cout << "ObjectControllerMessage::parseHarvesterSelectResource() entered" << endl;
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 	SceneObject* object = player->getZone()->lookupObject(objectid);
 
@@ -3142,30 +3232,28 @@ void ObjectControllerMessage::parseHarvesterSelectResource(Player *player, Messa
 	unicode resourceIDUnicode("");
 	pack->parseUnicode(resourceIDUnicode);
 	string sResourceID = resourceIDUnicode.c_str();
+	cout << "harvesterSelectResource: " << sResourceID.c_str() << endl;
 	uint64 resourceID = String::toUnsignedLong(sResourceID.c_str());
-
-	cout << "ObjectControllerMessage::parseHarvesterSelectResource(), objectID: " << hex << objectid << dec << "unicode string: " << sResourceID << " id: " << hex << resourceID << endl;
 
 	//return;
 	if (object == NULL)
 		return;
 
-	if(!object->isTangible())
+	if (!object->isTangible())
 		return;
 
 	TangibleObject* tano = (TangibleObject*) object;
 
-	if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
 		return;
 
 	InstallationObject* inso = (InstallationObject*) tano;
 
 	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateActiveResource(resourceID);
+	dinso7->updateExtractionRate(inso->getActualRate());
 	dinso7->close();
 	player->sendMessage(dinso7);
-
-	cout << "ObjectControllerMessage::parseHarvesterSelectResource() completed" << endl;
 }
 
 
@@ -3452,7 +3540,14 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
 				* draftSchematic =
 						craftingTool->getCurrentDraftSchematic(indexOfSelectedSchematic);
 
-		if (draftSchematic != NULL) {
+		if (draftSchematic == NULL) {
+
+			parseCancelCraftingSession(player, packet);
+			craftingTool->sendToolStart(player);
+			draftSchematic = craftingTool->getCurrentDraftSchematic(indexOfSelectedSchematic);
+		}
+
+		if(draftSchematic != NULL) {
 
 			try {
 
@@ -3468,8 +3563,8 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
 				craftingTool->unlock();
 
 			}
-
 		}
+
 	} else {
 		// This eles should never execute
 		player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Link of this error.");
@@ -3541,7 +3636,27 @@ void ObjectControllerMessage::parseCraftCustomization(Player* player,
 
 	int condition = packet->parseInt();
 
-	player->craftingCustomization(name, condition);
+	int customizationcount = packet->parseByte();
+
+	int value, count;
+
+	stringstream ss;
+
+	for(int i = 0; i < customizationcount; ++i) {
+
+		count = packet->parseInt();
+
+		value = packet->parseInt();
+
+		ss << count << " " << value;
+
+		if(i < customizationcount - 1)
+			ss  << " ";
+	}
+
+	string customizationstring = ss.str();
+
+	player->craftingCustomization(name, condition, customizationstring);
 }
 void ObjectControllerMessage::parseCreatePrototype(Player* player,
 		Message* packet) {
@@ -3608,34 +3723,60 @@ void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {
 void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 		Message* pack) {
 	uint64 target = pack->parseLong();
+	unicode data;
+	pack->parseUnicode(data);
 
-	SceneObject* object = player->getPlayerItem(target);
+	StringTokenizer tokenizer(data.c_str());
+	tokenizer.setDelimeter(" ");
 
-	// TODO:  This could be the cause of equipping instead of dropping in cell
-	if (object != NULL) {
+	uint64 destinationID = tokenizer.getLongToken();
+	int unknown = tokenizer.getIntToken(); // I've seen -1 usually.. 4 when equipping most clothes
+	float x = tokenizer.getFloatToken();
+	float z = tokenizer.getFloatToken();
+	float y = tokenizer.getFloatToken();
+
+	if (destinationID == player->getObjectID())  { //equip item to player
 		player->changeCloth(target);
-		return;
-	}
+	} else if (destinationID == player->getObjectID() + 1) { //player's inventory object id, evidentaly (This one probably will need to be expanded
 
-	SceneObject* targetObject = player->getTarget();
-
-	if (targetObject != NULL && targetObject != player
-			&& targetObject->isNonPlayerCreature()) {
-		Creature* creature = (Creature*) targetObject;
-
-		try {
-			creature->wlock(player);
-
-			object = creature->getLootItem(target);
-
-			creature->unlock();
-		} catch (...) {
-			creature->unlock();
+		if (player->getInventoryItem(target) != NULL) {
+			//Means player already has this item, so it must be equipped
+			//or most likely in another container, so when we add bags to inventory, we need
+			//to change this.
+			player->changeCloth(target);
+			return;
 		}
 
-		if (object != NULL)
-			player->lootObject(creature, object);
+		SceneObject* targetObject = player->getTarget();
+
+		if (targetObject != NULL && targetObject != player
+				&& targetObject->isNonPlayerCreature()) {
+			Creature* creature = (Creature*) targetObject;
+			SceneObject * object;
+
+			try {
+				creature->wlock(player);
+
+				object = creature->getLootItem(target);
+
+				creature->unlock();
+			} catch (...) {
+				creature->unlock();
+			}
+
+			if (object != NULL)
+				player->lootObject(creature, object);
+		}
+	} else { //another container
+		/*
+		 * This is where we'd have to handle transfering items to one container to another.. like a cell
+		 * We might be able to write one generic function that handles, looting, equipping, dropping ect..
+		 * At least this fixes the bug for now.
+		 *
+		 * Don't forget to use the x y z coordinates!
+		 */
 	}
+
 }
 void ObjectControllerMessage::parseAddFriend(Player* player, Message* pack) {
 	//ToDO: Split the token based on dots for game (SWG), server (eg. sunrunner) and name (SWG.sunrunner.john)
@@ -3755,8 +3896,12 @@ void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* p
 		}
 
 		if (player->giveConsent(playerTarget->getFirstName())) {
-			player->sendSystemMessage("base_player", "prose_consent", playerTarget->getObjectID()); //You give your consent to %TO.
-			playerTarget->sendSystemMessage("base_player", "prose_got_consent", player->getObjectID()); //%TO consents you.
+			StfParameter* param = new StfParameter();
+			param->addTO(playerTarget->getCharacterName().c_str());
+			player->sendSystemMessage("base_player", "prose_consent", param); //You give your consent to %TO.
+			param->addTO(player->getCharacterName().c_str());
+			playerTarget->sendSystemMessage("base_player", "prose_got_consent", param); //%TO consents you.
+			delete param;
 		} else {
 			player->sendSystemMessage("You have already given them your consent.");
 		}
@@ -3792,11 +3937,15 @@ void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message*
 	Player* playerTarget = playerManager->getPlayer(consentName);
 
 	if (player->revokeConsent(consentName)) {
-		player->sendSystemMessage("You revoke your consent from " + consentName + ".");
+		StfParameter* param = new StfParameter();
+		param->addTO(playerTarget->getCharacterName().c_str());
+		player->sendSystemMessage("base_player", "prose_unconsent", param); //You revoke your consent from %TO.
 
 		if (playerTarget != NULL) {
-			playerTarget->sendSystemMessage(player->getFirstNameProper() + " revokes your consent.");
+			param->addTO(player->getCharacterName().c_str());
+			playerTarget->sendSystemMessage("base_player", "prose_lost_consent", param); //%TO no longer consents you.
 		}
+		delete param;
 	} else {
 		player->sendSystemMessage("Your target for unconsent is offline or does note exist.");
 	}

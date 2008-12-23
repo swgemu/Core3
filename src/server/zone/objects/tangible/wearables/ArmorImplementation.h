@@ -145,6 +145,16 @@ public:
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
 
 	void updateCraftingValues(DraftSchematic* draftSchematic);
+	void generateSockets(DraftSchematic* draftSchematic);
+	void setCraftingKinetic(DraftSchematic* draftSchematic);
+	void setCraftingEnergy(DraftSchematic* draftSchematic);
+	void setCraftingElectrical(DraftSchematic* draftSchematic);
+	void setCraftingStun(DraftSchematic* draftSchematic);
+	void setCraftingBlast(DraftSchematic* draftSchematic);
+	void setCraftingHeat(DraftSchematic* draftSchematic);
+	void setCraftingCold(DraftSchematic* draftSchematic);
+	void setCraftingAcid(DraftSchematic* draftSchematic);
+	void setCraftingRestrain(DraftSchematic* draftSchematic);
 
 	void decayArmor(int decayRate);
 

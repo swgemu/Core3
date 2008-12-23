@@ -52,7 +52,7 @@ mokkTribesman = Creature:new {
       named = FALSE, 
 
       level = 20,
-      xp = 1803,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -120,7 +120,7 @@ mokkTribesman = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,33", -- Group it belongs to for lootootoot
+      lootGroup = "0,11,15,19,33", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

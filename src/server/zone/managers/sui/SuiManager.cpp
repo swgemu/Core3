@@ -502,14 +502,14 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 			InstallationObject * inso = (InstallationObject *) scno;
 
 			if(inso!= NULL)	{
-				uint energy = (inso->getEnergy() - atoi(newEnergyVal.c_str()));
+				uint energy = (inso->getSurplusPower() - atoi(newEnergyVal.c_str()));
 
-				inso->addEnergy(energy);
+				inso->addPower(energy);
 				//player->removeEnergy(energy);
 
 				stringstream report;
 				report << "You successfully deposit " << energy << " units of energy.\n"
-					<< "Energy reserves now at " << inso->getEnergy() << " units.";
+					<< "Energy reserves now at " << inso->getSurplusPower() << " units.";
 
 				player->sendSystemMessage(report.str());
 
@@ -1211,7 +1211,8 @@ void SuiManager::handleCloneRequest(uint32 boxID, Player* player, uint32 cancel,
 				player->doClone();
 			}
 		} else {
-			player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
+			if (player->isDead())
+				player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
 		}
 
 		player->unlock();
@@ -1395,7 +1396,7 @@ void SuiManager::handleGiveFreeResource(uint32 boxID, Player* player, uint32 can
 			SuiListBox* listBox = (SuiListBox*)sui;
 			if(cancel!=1){//give the resources to the player then remove all listboxes
 				SuiListBoxVector* choicesList = player->getSuiBoxChoices();
-				resManager->giveResource(player, choicesList->get(choicesList->size()-1), ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
+				resManager->useResourceDeed(player, choicesList->get(choicesList->size()-1), ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
 				player->clearSuiBoxChoices();
 				player->sendSystemMessage("You received 30k of resources.");
 

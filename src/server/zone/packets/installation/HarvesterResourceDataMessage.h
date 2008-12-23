@@ -67,7 +67,7 @@ public:
 
 	void insertResourceList(ResourceList *list) {
 
-		cout << "insertResourceList size(): " << list->size() << endl;
+		//cout << "insertResourceList size(): " << list->size() << endl;
 		insertInt(list->size()); // list size
 
 /*		LONG:		Resource ID

@@ -54,12 +54,11 @@ which carries forward this exception.
 #include "../../Zone.h"
 
 #include "ShuttleMap.h"
-#include "CellMap.h"
-#include "BuildingMap.h"
 #include "TicketCollectorMap.h"
 #include "TravelTerminalMap.h"
 #include "MissionTerminalMap.h"
 #include "../creature/CreatureManager.h"
+#include "../structure/StructureManager.h"
 
 #include "PlanetManager.h"
 
@@ -68,13 +67,11 @@ which carries forward this exception.
 
 class ShuttleTakeOffEvent;
 class ShuttleLandingEvent;
-class HarvesterSpawnEvent;
-class InstallationSpawnEvent;
-class TempInstallationSpawnEvent;
-class TempInstallationDespawnEvent;
+
 
 class Zone;
 class CreatureManager;
+class StructureManager;
 
 class ZoneProcessServerImplementation;
 class BuildingObject;
@@ -89,8 +86,7 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	uint64 nextStaticObjectID;
 
 	ShuttleMap* shuttleMap;
- 	BuildingMap* buildingMap;
-	CellMap* cellMap;
+
 	TicketCollectorMap* ticketCollectorMap;
 	TravelTerminalMap* travelTerminalMap;
 
@@ -100,14 +96,11 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	ShuttleLandingEvent* shuttleLandingEvent;
 	ShuttleTakeOffEvent* shuttleTakeOffEvent;
 
-	InstallationSpawnEvent* installationSpawnEvent;
-
-	TempInstallationSpawnEvent* tempInstallationSpawnEvent;
-	TempInstallationDespawnEvent* tempInstallationDespawnEvent;
-
 	VectorMap<uint64, TangibleObject*> staticTangibleObjectMap;
 
 	CreatureManager* creatureManager;
+
+	StructureManager* structureManager;
 
 	AreaMap * areaMap;
 
@@ -127,8 +120,6 @@ public:
 
 	void sendPlanetTravelPointListResponse(Player* player);
 
-	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
-
 	bool isNoBuildArea(float x, float y);
 	void addNoBuildArea(float minX, float maxX, float minY, float maxY, uint64 uid, uint8 reason = 0);
 	void addNoBuildArea(NoBuildArea * area);
@@ -140,9 +131,6 @@ private:
 	void loadStaticTangibleObjects();
 	void loadShuttles();
 	void loadTrainers();
-	int guessBuildingType(uint64 oid, string file);
-	void loadBuildings();
-	void loadPlayerStructures();
 	void loadGuildTerminals();
 	void loadVendorTerminals();
 	void loadMissionTerminals();
@@ -151,11 +139,10 @@ private:
 	string getStationName(uint64 crc);
 
 
-	BuildingObject* loadBuilding(uint64 oid, int planet);
 
 
 	void clearShuttles();
-	void clearBuildings();
+	//void clearBuildings();
 	void clearTicketCollectors();
 	void clearTravelTerminals();
 	void clearMissionTerminals();
@@ -167,12 +154,8 @@ public:
 	// getters
 	ShuttleCreature* getShuttle(const string& Shuttle);
 
-	inline CellObject* getCell(uint64 id) {
-		return cellMap->get(id);
-	}
-
-	inline BuildingObject* getBuilding(uint64 id) {
-		return buildingMap->get(id);
+	StructureManager* getStructureManager() {
+		return structureManager;
 	}
 
 	//change this to generic get terminal function if we move to unified terminal map:
@@ -189,15 +172,6 @@ public:
 	inline uint32 getTravelFare(string departurePlanet, string arrivalPlanet) {
 		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 	}
-	void spawnTempStructure(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnInstallation(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnHarvester(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void spawnBuilding(Player * player, DeedObject * deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
-
-	void addPlayerCells(Player * player, BuildingObject * buio, int cellCount);
 };
 
 #endif

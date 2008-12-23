@@ -46,13 +46,13 @@ agedLanternBird = Creature:new {
       faction = "Lantern",
       gender = "",
 
-      name = "a Aged Lantern Bird",
+      stfName = "a Aged Lantern Bird",
       objectCRC = 1183906554, 
       socialGroup = "Lantern",
       named = FALSE, 
 
       level = 27,
-      xp = 2730,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ agedLanternBird = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -136,9 +136,9 @@ agedLanternBird = Creature:new {
       hideMax = 41,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "lanternBirdAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

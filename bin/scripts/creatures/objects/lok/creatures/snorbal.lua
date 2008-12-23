@@ -46,13 +46,13 @@ snorbal = Creature:new {
       faction = "Snorbal",
       gender = "",
 
-      name = "a Snorbal",
+      stfName = "a Snorbal",
       objectCRC = 581977565, 
       socialGroup = "Snorbal",
       named = FALSE, 
 
       level = 30,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ snorbal = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ snorbal = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 545,
 
-      skills = { " Stun attack", " Dizzy attack", "" }
+      --skills = { " Stun attack", " Dizzy attack", "" }
+      skills = { "snorbalAttack2", "snorbalAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

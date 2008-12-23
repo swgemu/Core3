@@ -149,7 +149,6 @@ void TangibleObjectImplementation::initialize() {
 	itemAttributes = new ItemAttributes();
 
 	setLoot(false);
-
 }
 
 void TangibleObjectImplementation::parseAttributes() {

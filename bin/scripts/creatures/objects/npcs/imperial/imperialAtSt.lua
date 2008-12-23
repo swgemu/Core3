@@ -53,7 +53,7 @@ imperialAtSt = Creature:new {
 	named = TRUE, 
 	
 	level = 100,	
-	xp = 10000,
+	
 	
 	combatFlags = 0,
 	
@@ -123,7 +123,7 @@ imperialAtSt = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,34", -- Group it belongs to for lootoot
+	lootGroup = "0,11,15,19,33", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

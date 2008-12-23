@@ -52,7 +52,7 @@ swirlProng = Creature:new {
       named = FALSE, 
 
       level = 19,
-      xp = 1426,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -130,15 +130,15 @@ swirlProng = Creature:new {
       milk = 1,
 
       boneType = "bone_mammal_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "swirlProngAttack1" },
+      skills = { "swirlProngAttack3", "swirlProngAttack4" },
 	  -- skills = { " Stun attack", " Knockdown attack", "" },
        respawnTimer = 60,
 

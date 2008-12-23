@@ -54,7 +54,7 @@ imperialStormTrooperCommando = Creature:new {
       named = FALSE, 
 
       level = 29,
-      xp = 3005,
+      
 
       combatFlags = 0,
 
@@ -127,7 +127,7 @@ imperialStormTrooperCommando = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,34,42", -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33,42", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

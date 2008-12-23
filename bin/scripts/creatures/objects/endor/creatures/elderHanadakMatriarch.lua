@@ -46,13 +46,13 @@ elderHanadakMatriarch = Creature:new {
       faction = "Hanadak",
       gender = "",
 
-      name = "a Elder Hanadak Matriarch",
+      stfName = "a Elder Hanadak Matriarch",
       objectCRC = 426628456, 
       socialGroup = "Hanadak",
       named = FALSE, 
 
       level = 35,
-      xp = 3551,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ elderHanadakMatriarch = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ elderHanadakMatriarch = Creature:new {
       meatType = "meat_carnivore_endor",
       meatMax = 35,
 
-      skills = { " Posture down attack", " Intimidation attack", "" }
+      --skills = { " Posture down attack", " Intimidation attack", "" }
+      skills = { "hanadakAttack1", "hanadakAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

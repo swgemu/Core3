@@ -105,6 +105,8 @@ void InstallationObjectImplementation::init() {
 	persistent = false;
 	updated = false;
 
+	ownerID = 0;
+
 	building = NULL;
 
 	// INSO6 operands
@@ -115,16 +117,16 @@ void InstallationObjectImplementation::init() {
 
 	structureStatus = "private";
 
-	energy = 0;
+	setSurplusPower(0);
+	setPowerRate(45);
 
-	energyRate = 45;
-	maintenanceRate = 45;
+	setSurplusMaintenance(3000);
+	setMaintenanceRate(45);
+
+	setOperating(false);
 
 	conditionDamage = 0;
 	maxCondition = 1000;
-
-	maintenance = 3000;
-	minimumMaintenance = 3000;
 
 	objectType = SceneObjectImplementation::TANGIBLE;
 	objectSubType = TangibleObjectImplementation::INSTALLATION;
@@ -133,7 +135,7 @@ void InstallationObjectImplementation::init() {
 
 	pvpStatusBitmask = 0;
 
-	operating = 0;
+
 
 	syncEvent = new InstallationSyncUIEvent(this);
 }
@@ -188,13 +190,13 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 		stringstream sscan, sscond, ssmain;
 		string willRedeed;
 
-		if((conditionDamage == 0) && (maintenance >= minimumMaintenance)) {
+		if((conditionDamage == 0) && (getSurplusMaintenance() >= (getMaintenanceRate() * 100))) {
 
 			sscan << "CAN REDEED: \\#32CD32YES\\#";
 			willRedeed = "\\#32CD32YES\\#";
 
 			sscond << dec << "- CONDITION: \\#32CD32" << maxCondition - conditionDamage << "/" << maxCondition << "\\#";
-			ssmain << dec << "- MAINTENANCE: \\#32CD32" << static_cast<int>(maintenance) << "/" << minimumMaintenance << "\\#";
+			ssmain << dec << "- MAINTENANCE: \\#32CD32" << static_cast<int>(getSurplusMaintenance()) << "/" << (getSurplusMaintenance() * 100) << "\\#";
 
 		}
 		else {
@@ -205,13 +207,13 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 			if((conditionDamage == 0)) {
 
 				sscond << dec << "- CONDITION: \\#32CD32"<< maxCondition - conditionDamage << "/" << maxCondition << "\\#";
-				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(maintenance) << "/" << minimumMaintenance << "\\#";
+				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << (getSurplusMaintenance() * 100) << "\\#";
 
 			}
 			else {
 
 				sscond << dec << "- CONDITION: \\#FF6347" << maxCondition - conditionDamage << "/" << maxCondition << "\\#";
-				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(maintenance) << "/" << minimumMaintenance << "\\#";
+				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << (getSurplusMaintenance() * 100) << "\\#";
 
 			}
 		}
@@ -251,7 +253,7 @@ void InstallationObjectImplementation::handleStructureRedeedConfirm(
 
 		confirmRedeed->setPromptTitle("Confirm Structure Destruction");
 
-		if((conditionDamage == 0) && (maintenance >= minimumMaintenance)){
+		if((conditionDamage == 0) && (getSurplusMaintenance() >= (getSurplusMaintenance() * 100))){
 			status = "\\#32CD32WILL\\#       \\#93F5FF";
 		}
 		else{
@@ -293,16 +295,16 @@ void InstallationObjectImplementation::handleStructureStatus(Player* player) {
 		sscond << dec << "Condition: " << (static_cast<int>(((maxCondition - conditionDamage)/maxCondition) * 100)) << "%";
 		statusBox->addMenuItem(sscond.str());
 
-		ssmpool << dec << "Maintenance Pool: " << static_cast<int>(maintenance);
+		ssmpool << dec << "Maintenance Pool: " << static_cast<int>(getSurplusMaintenance());
 		statusBox->addMenuItem(ssmpool.str());
 
-		ssmrate << dec << "Maintenance Rate: " << static_cast<int>(maintenanceRate) << " cr/hr";
+		ssmrate << dec << "Maintenance Rate: " << static_cast<int>(getMaintenanceRate()) << " cr/hr";
 		statusBox->addMenuItem(ssmrate.str());
 
-		ssppool << dec << "Power Reserves: " << static_cast<int>(energy);
+		ssppool << dec << "Power Reserves: " << static_cast<int>(getSurplusPower());
 		statusBox->addMenuItem(ssppool.str());
 
-		ssprate << dec << "Power Consumption " << static_cast<int>(energyRate) << " units/hr";
+		ssprate << dec << "Power Consumption " << static_cast<int>(getPowerRate()) << " units/hr";
 		statusBox->addMenuItem(ssprate.str());
 
 		player->addSuiBox(statusBox);
@@ -326,11 +328,11 @@ void InstallationObjectImplementation::handleStructureAddMaintenance(Player* pla
 		maintenanceBox->setPromptTitle("Select Amount");
 
 		sstext << "Select the total amount you would like to pay the existing"
-			<<" maintenace pool.\n\nCurrent maintanence pool: " << maintenance << "cr.";
+			<<" maintenace pool.\n\nCurrent maintanence pool: " << getSurplusMaintenance() << "cr.";
 		maintenanceBox->setPromptText(sstext.str());
 
 		sscash << player->getCashCredits();
-		ssmaintenance << maintenance;
+		ssmaintenance << getSurplusMaintenance();
 
 		maintenanceBox->addFrom("@player_structure:total_funds", sscash.str(), sscash.str(), "1");
 		maintenanceBox->addTo("@player_structure:to_pay", ssmaintenance.str(), ssmaintenance.str(), "1");
@@ -354,7 +356,7 @@ void InstallationObjectImplementation::handleStructureAddEnergy(Player* player) 
 		energyBox->setPromptTitle("Add Power");
 
 		energyBox->setPromptText("Select the amount of power you would like to deposit"
-				"\n\nCurrent power Value: " + energy);
+				"\n\nCurrent power Value: " + getSurplusPower());
 
 		ssTotalEnergy << "100";
 
@@ -674,3 +676,70 @@ int InstallationObjectImplementation::getObjectSubType() {
 
 	}
 }
+
+void InstallationObjectImplementation::generateAttributes(SceneObject* obj) {
+	if (!obj->isPlayer())
+		return;
+
+	Player* player = (Player*) obj;
+	AttributeListMessage* alm = new AttributeListMessage((TangibleObject*) _this);
+
+	addAttributes(alm);
+
+	player->sendMessage(alm);
+}
+
+void InstallationObjectImplementation::parseItemAttributes() {
+	string attr = "operating";
+	setOperating(itemAttributes->getBooleanAttribute(attr));
+
+	attr = "owner";
+	setOwner(itemAttributes->getStringAttribute(attr));
+
+	attr = "ownerID";
+	setOwnerID(itemAttributes->getUnsignedLongAttribute(attr));
+
+	attr = "surplusMaintenance";
+	setSurplusMaintenance(itemAttributes->getIntAttribute(attr));
+
+	attr = "maintenanceRate";
+	setMaintenanceRate(itemAttributes->getFloatAttribute(attr));
+
+	attr = "surplusPower";
+	setSurplusPower(itemAttributes->getIntAttribute(attr));
+
+	attr = "powerRate";
+	setPowerRate(itemAttributes->getFloatAttribute(attr));
+}
+
+void InstallationObjectImplementation::addHeaderAttributes(AttributeListMessage* alm) {
+	alm->insertAttribute("volume", "1");
+
+	/*if(craftersName != ""){
+		alm->insertAttribute("crafter", craftersName);
+	}
+
+	if(craftedSerial != ""){
+		alm->insertAttribute("serial_number", craftedSerial);
+	}*/
+}
+
+void InstallationObjectImplementation::addFooterAttributes(AttributeListMessage* alm) {
+	//alm->insertAttribute("healing_ability", getMedicineUseRequired());
+}
+
+void InstallationObjectImplementation::addAttributes(AttributeListMessage* alm) {
+	addHeaderAttributes(alm);
+
+	/*
+	alm->insertAttribute("examine_maintenance", (int)getSurplusMaintenance());
+	alm->insertAttribute("examine_maintenance_rate", (float)getMaintenanceRate());
+	alm->insertAttribute("examine_power", (int)getSurplusPower());
+	alm->insertAttribute("examine_extractionrate", (float)getExtractionRate());
+	alm->insertAttribute("examine_hoppersize", (float)getHopperSize());
+	*/
+
+	addFooterAttributes(alm);
+}
+
+// structureManager->deleteInstallation(InstallationObject *inso);

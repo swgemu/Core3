@@ -46,13 +46,13 @@ gurk = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Gurk",
+      stfName = "a Gurk",
       objectCRC = 3464397925, 
       socialGroup = "Gurk",
       named = FALSE, 
 
       level = 30,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ gurk = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ gurk = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 350,
 
-      skills = { " Dizzy attack", " Stun attack", "" }
+      --skills = { " Dizzy attack", " Stun attack", "" }
+      skills = { "gurkAttack3", "gurkAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

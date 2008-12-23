@@ -46,13 +46,13 @@ spinedSnakeRecluse = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Spined Snake Recluse",
+      stfName = "a Spined Snake Recluse",
       objectCRC = 271168429, 
       socialGroup = "self",
       named = FALSE, 
 
       level = 14,
-      xp = 609,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -99,7 +99,7 @@ spinedSnakeRecluse = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_spray_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -123,14 +123,14 @@ spinedSnakeRecluse = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
       hideMax = 5,
@@ -138,7 +138,8 @@ spinedSnakeRecluse = Creature:new {
       meatType = "meat_reptilian_lok",
       meatMax = 11,
 
-      skills = { " Ranged attack (spit)", " Disease attack (poison)", " Stun attack" }
+      --skills = { " Ranged attack (spit)", " Disease attack (poison)", " Stun attack" }
+      skills = { "snakeAttack4", "snakeAttack2", "snakeAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

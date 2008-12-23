@@ -420,6 +420,8 @@ interface CreatureObject implements SceneObject {
 	boolean hasState(unsigned long state);
 
 	boolean isRevivable();
+	unsigned long getResurrectionExpires();
+	void setResurrectionExpires(unsigned long msecs);
 	boolean isResurrectable();
 
 	boolean hasHealthDamage();
@@ -693,6 +695,7 @@ interface CreatureObject implements SceneObject {
 	void setAcceleration(float acc);
 
 	void changeConditionDamage(int amount);
+	void setMaxCondition(int condition);
 
 	void setPosture(unsigned char state, boolean overrideDizzy = false, boolean objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 
@@ -760,7 +763,7 @@ interface CreatureObject implements SceneObject {
 	boolean extinguishFire(CreatureObject target, float effectiveness);
 	boolean healState(CreatureObject target, unsigned long state);
 	boolean revive(CreatureObject target, boolean forcedChange = false);
-	boolean resurrect(CreatureObject target);
+	boolean resurrect(CreatureObject target, boolean forcedChange = false);
 	
 	void deactivateWoundTreatment();
 	void activateWoundTreatment();

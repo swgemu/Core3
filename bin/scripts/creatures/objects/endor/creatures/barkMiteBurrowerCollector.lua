@@ -46,13 +46,13 @@ barkMiteBurrowerCollector = Creature:new {
       faction = "Bark Mite",
       gender = "",
 
-      name = "a Bark Mite Burrower Collector",
+      stfName = "a Bark Mite Burrower Collector",
       objectCRC = 2318119001, 
       socialGroup = "Bark Mite",
       named = FALSE, 
 
       level = 36,
-      xp = 3551,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ barkMiteBurrowerCollector = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.2,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_insect_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Blind attack", " Stun attack", "" }
+      --skills = { " Blind attack", " Stun attack", "" }
+      skills = { "barkMiteAttack3", "barkMiteAttack4" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

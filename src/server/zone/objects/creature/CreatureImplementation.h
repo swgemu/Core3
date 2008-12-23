@@ -247,6 +247,10 @@ public:
 		objectFile = name;
 	}
 
+	inline string& getObjectFileName() {
+		return objectFile;
+	}
+
 	inline void setType(int tp) {
 		type = tp;
 	}

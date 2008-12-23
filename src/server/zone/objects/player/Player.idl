@@ -111,8 +111,10 @@ interface Player implements CreatureObject {
 
 	void logout(boolean doLock = true);
 	void userLogout(int msgCounter = 3);
+	void resurrectCountdown(int counter = 6);
 
 	void clearLogoutEvent();
+	void clearResurrectEvent();
 
 	void makeCharacterMask();
 	unsigned int getCharacterMask();
@@ -209,6 +211,8 @@ interface Player implements CreatureObject {
 	void deathblow(Player player);
 	void resurrect();
 	void handleDeath();
+	
+	void throttlePvpRating(Player player);
 
 	void doClone();
 	void activateClone();
@@ -216,10 +220,6 @@ interface Player implements CreatureObject {
 	void doRecovery();
 
 	void doDigest();
-
-	void activateReviveCountdown();
-	void clearReviveCountdown();
-	void countdownRevive(int counter);
 
 	boolean hasConsent(string charID);
 	boolean giveConsent(string name);
@@ -540,7 +540,7 @@ interface Player implements CreatureObject {
 	void addIngredientToSlot(TangibleObject tano, int slot, int counter);
 	void removeResourceFromCraft(unsigned long resID, int slot, int counter);
 	void nextCraftingStage(string test);
-	void craftingCustomization(string name, int condition);
+	void craftingCustomization(string name, int condition, string customizationstring);
 	void createPrototype(string count);
 	void createSchematic(string count);
 	void handleExperimenting(int count, int numRowsAttempted, string expstring);

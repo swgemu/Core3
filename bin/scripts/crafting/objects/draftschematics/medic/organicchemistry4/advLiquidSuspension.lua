@@ -59,7 +59,7 @@ advLiquidSuspension = Object:new {
 
    ingredientTemplateNames = "craft_chemical_ingredients_n, craft_chemical_ingredients_n",
    ingredientTitleNames = "purified_organic_suspension, suspension_base",
-   ingredientOptionals = "0, 0",
+   ingredientSlotType = "0, 0",
    resourceTypes = "fruit_berries_dantooine, water_vapor_talus",
    resourceQuantities = "6, 6",
    combineTypes = "1, 1",
@@ -73,7 +73,8 @@ advLiquidSuspension = Object:new {
    experimentalSubGroupTitles = "power",
 
    tanoAttributes = "objecttype=262144:objectcrc=1862978449:objecttemp=liquid_suspension_advanced:templatetype=craft_chemical_ingredients_n:",
-
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "power",
    attributeExperimentalProperties = "exp_effectiveness",

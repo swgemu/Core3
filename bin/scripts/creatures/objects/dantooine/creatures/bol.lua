@@ -52,7 +52,7 @@ bol = Creature:new {
       named = FALSE, 
 
       level = 29,
-      xp = 2914,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -136,7 +136,7 @@ bol = Creature:new {
       hideMax = 300,
 
       meatType = "meat_herbivore_dantooine",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "bolAttack1" },
 	  -- skills = { " Knockdown attack", " Intimidation attack", "" },

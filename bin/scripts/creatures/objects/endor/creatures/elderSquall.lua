@@ -46,13 +46,13 @@ elderSquall = Creature:new {
       faction = "Squall",
       gender = "",
 
-      name = "a Elder Squall",
+      stfName = "a Elder Squall",
       objectCRC = 536393830, 
       socialGroup = "Squall",
       named = FALSE, 
 
       level = 9,
-      xp = 292,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ elderSquall = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,9 @@ elderSquall = Creature:new {
       hideMax = 12,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { "", "", "" }
+      skills = { "squallAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

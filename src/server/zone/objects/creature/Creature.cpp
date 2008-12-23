@@ -528,12 +528,25 @@ void Creature::setObjectFileName(const string& name) {
 		((CreatureImplementation*) _impl)->setObjectFileName(name);
 }
 
-void Creature::setType(int tp) {
+string& Creature::getObjectFileName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 45);
+
+		method.executeWithAsciiReturn(_return_getObjectFileName);
+		return _return_getObjectFileName;
+	} else
+		return ((CreatureImplementation*) _impl)->getObjectFileName();
+}
+
+void Creature::setType(int tp) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
 		method.addSignedIntParameter(tp);
 
 		method.executeWithVoidReturn();
@@ -546,7 +559,7 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 		method.addUnsignedIntParameter(seconds);
 
 		method.executeWithVoidReturn();
@@ -559,7 +572,7 @@ void Creature::setArmor(unsigned int ar) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 48);
 		method.addUnsignedIntParameter(ar);
 
 		method.executeWithVoidReturn();
@@ -572,7 +585,7 @@ void Creature::setKinetic(float kin) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 49);
 		method.addFloatParameter(kin);
 
 		method.executeWithVoidReturn();
@@ -585,7 +598,7 @@ void Creature::setEnergy(float ene) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 50);
 		method.addFloatParameter(ene);
 
 		method.executeWithVoidReturn();
@@ -598,7 +611,7 @@ void Creature::setElectricity(float ele) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 51);
 		method.addFloatParameter(ele);
 
 		method.executeWithVoidReturn();
@@ -611,7 +624,7 @@ void Creature::setStun(float stu) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 52);
 		method.addFloatParameter(stu);
 
 		method.executeWithVoidReturn();
@@ -624,7 +637,7 @@ void Creature::setBlast(float bla) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 53);
 		method.addFloatParameter(bla);
 
 		method.executeWithVoidReturn();
@@ -637,7 +650,7 @@ void Creature::setHeat(float hea) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 54);
 		method.addFloatParameter(hea);
 
 		method.executeWithVoidReturn();
@@ -650,7 +663,7 @@ void Creature::setCold(float col) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 55);
 		method.addFloatParameter(col);
 
 		method.executeWithVoidReturn();
@@ -663,7 +676,7 @@ void Creature::setAcid(float aci) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 56);
 		method.addFloatParameter(aci);
 
 		method.executeWithVoidReturn();
@@ -676,7 +689,7 @@ void Creature::setLightSaber(float lig) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 57);
 		method.addFloatParameter(lig);
 
 		method.executeWithVoidReturn();
@@ -689,7 +702,7 @@ void Creature::removePlayerFromHarvestList(string& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 58);
 		method.addAsciiParameter(firstName);
 
 		method.executeWithVoidReturn();
@@ -702,7 +715,7 @@ bool Creature::canHarvest(string& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 59);
 		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
@@ -715,7 +728,7 @@ bool Creature::beenLooted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 60);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -727,7 +740,7 @@ void Creature::wasLooted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 61);
 
 		method.executeWithVoidReturn();
 	} else
@@ -739,7 +752,7 @@ void Creature::setLootCreated(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 62);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -752,7 +765,7 @@ void Creature::setRandomMovement(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 63);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -765,7 +778,7 @@ unsigned int Creature::getFPValue() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 64);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -777,7 +790,7 @@ void Creature::setFPValue(unsigned int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 65);
 		method.addUnsignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -914,63 +927,66 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setObjectFileName(inv->getAsciiParameter(_param0_setObjectFileName__string_));
 		break;
 	case 45:
-		setType(inv->getSignedIntParameter());
+		resp->insertAscii(getObjectFileName());
 		break;
 	case 46:
-		setRespawnTimer(inv->getUnsignedIntParameter());
+		setType(inv->getSignedIntParameter());
 		break;
 	case 47:
-		setArmor(inv->getUnsignedIntParameter());
+		setRespawnTimer(inv->getUnsignedIntParameter());
 		break;
 	case 48:
-		setKinetic(inv->getFloatParameter());
+		setArmor(inv->getUnsignedIntParameter());
 		break;
 	case 49:
-		setEnergy(inv->getFloatParameter());
+		setKinetic(inv->getFloatParameter());
 		break;
 	case 50:
-		setElectricity(inv->getFloatParameter());
+		setEnergy(inv->getFloatParameter());
 		break;
 	case 51:
-		setStun(inv->getFloatParameter());
+		setElectricity(inv->getFloatParameter());
 		break;
 	case 52:
-		setBlast(inv->getFloatParameter());
+		setStun(inv->getFloatParameter());
 		break;
 	case 53:
-		setHeat(inv->getFloatParameter());
+		setBlast(inv->getFloatParameter());
 		break;
 	case 54:
-		setCold(inv->getFloatParameter());
+		setHeat(inv->getFloatParameter());
 		break;
 	case 55:
-		setAcid(inv->getFloatParameter());
+		setCold(inv->getFloatParameter());
 		break;
 	case 56:
-		setLightSaber(inv->getFloatParameter());
+		setAcid(inv->getFloatParameter());
 		break;
 	case 57:
-		removePlayerFromHarvestList(inv->getAsciiParameter(_param0_removePlayerFromHarvestList__string_));
+		setLightSaber(inv->getFloatParameter());
 		break;
 	case 58:
-		resp->insertBoolean(canHarvest(inv->getAsciiParameter(_param0_canHarvest__string_)));
+		removePlayerFromHarvestList(inv->getAsciiParameter(_param0_removePlayerFromHarvestList__string_));
 		break;
 	case 59:
-		resp->insertBoolean(beenLooted());
+		resp->insertBoolean(canHarvest(inv->getAsciiParameter(_param0_canHarvest__string_)));
 		break;
 	case 60:
-		wasLooted();
+		resp->insertBoolean(beenLooted());
 		break;
 	case 61:
-		setLootCreated(inv->getBooleanParameter());
+		wasLooted();
 		break;
 	case 62:
-		setRandomMovement(inv->getBooleanParameter());
+		setLootCreated(inv->getBooleanParameter());
 		break;
 	case 63:
-		resp->insertInt(getFPValue());
+		setRandomMovement(inv->getBooleanParameter());
 		break;
 	case 64:
+		resp->insertInt(getFPValue());
+		break;
+	case 65:
 		setFPValue(inv->getUnsignedIntParameter());
 		break;
 	default:
@@ -1134,6 +1150,10 @@ void CreatureAdapter::setCreatureGroup(CreatureGroup* group) {
 
 void CreatureAdapter::setObjectFileName(const string& name) {
 	return ((CreatureImplementation*) impl)->setObjectFileName(name);
+}
+
+string& CreatureAdapter::getObjectFileName() {
+	return ((CreatureImplementation*) impl)->getObjectFileName();
 }
 
 void CreatureAdapter::setType(int tp) {

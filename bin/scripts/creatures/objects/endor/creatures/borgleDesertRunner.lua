@@ -46,13 +46,13 @@ borgleDesertRunner = Creature:new {
       faction = "Borgle",
       gender = "",
 
-      name = "a Borgle Desert Runner",
+      stfName = "a Borgle Desert Runner",
       objectCRC = 715008896, 
       socialGroup = "Borgle",
       named = FALSE, 
 
       level = 37,
-      xp = 3642,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ borgleDesertRunner = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ borgleDesertRunner = Creature:new {
       hideMax = 5,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Intimidation attack", " Blind attack", "" }
+      --skills = { "Intimidation attack", "Blind attack" }
+      skills = { "borgleAttack1", "borgleAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

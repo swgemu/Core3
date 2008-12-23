@@ -49,7 +49,7 @@ public:
 
 	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
+	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, const int optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -76,6 +76,10 @@ public:
 	void setExpFailure(float rate);
 
 	void setExperimentingSkill(const string& exp);
+
+	void setCustomizationSkill(const string& cust);
+
+	void addCustomizationOption(const string& cust, const int value);
 
 	void setAssemblySkill(const string& ass);
 
@@ -123,6 +127,14 @@ public:
 
 	string& getExperimentingSkill();
 
+	string& getCustomizationSkill();
+
+	string& getCustomizationOption(const int i);
+
+	int getCustomizationDefaultValue(const int i);
+
+	int getCustomizationOptionCount();
+
 	string& getAssemblySkill();
 
 	int getExpPoints();
@@ -145,6 +157,8 @@ protected:
 	virtual ~DraftSchematic();
 
 	string _return_getAssemblySkill;
+	string _return_getCustomizationOption;
+	string _return_getCustomizationSkill;
 	string _return_getExperimentingSkill;
 	string _return_getGroupName;
 	string _return_getName;
@@ -181,7 +195,7 @@ public:
 
 	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, bool optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
+	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, const int optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -208,6 +222,10 @@ public:
 	void setExpFailure(float rate);
 
 	void setExperimentingSkill(const string& exp);
+
+	void setCustomizationSkill(const string& cust);
+
+	void addCustomizationOption(const string& cust, const int value);
 
 	void setAssemblySkill(const string& ass);
 
@@ -255,6 +273,14 @@ public:
 
 	string& getExperimentingSkill();
 
+	string& getCustomizationSkill();
+
+	string& getCustomizationOption(const int i);
+
+	int getCustomizationDefaultValue(const int i);
+
+	int getCustomizationOptionCount();
+
 	string& getAssemblySkill();
 
 	int getExpPoints();
@@ -274,12 +300,14 @@ public:
 protected:
 	string _param1_addExperimentalProperty__int_string_int_string_;
 	string _param3_addExperimentalProperty__int_string_int_string_;
-	string _param0_addIngredient__string_string_bool_string_int_int_int_;
-	string _param1_addIngredient__string_string_bool_string_int_int_int_;
-	string _param3_addIngredient__string_string_bool_string_int_int_int_;
+	string _param0_addIngredient__string_string_int_string_int_int_int_;
+	string _param1_addIngredient__string_string_int_string_int_int_int_;
+	string _param3_addIngredient__string_string_int_string_int_int_int_;
 	string _param0_setTanoAttributes__string_;
 	string _param0_setXpType__string_;
 	string _param0_setExperimentingSkill__string_;
+	string _param0_setCustomizationSkill__string_;
+	string _param0_addCustomizationOption__string_int_;
 	string _param0_setAssemblySkill__string_;
 	string _param0_getAttributeToSet__string_;
 	string _param0_addAttributeToSet__string_float_float_string_int_;

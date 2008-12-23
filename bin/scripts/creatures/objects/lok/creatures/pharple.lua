@@ -46,13 +46,13 @@ pharple = Creature:new {
       faction = "Pharple",
       gender = "",
 
-      name = "a Pharple",
+      stfName = "a Pharple",
       objectCRC = 1469572833, 
       socialGroup = "Pharple",
       named = FALSE, 
 
       level = 5,
-      xp = 113,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ pharple = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,7 @@ pharple = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 18,
 
-      skills = { "", "", "" }
+      skills = { "pharpleAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -46,13 +46,13 @@ squillDerangedRavisher = Creature:new {
       faction = "Endor Squill",
       gender = "",
 
-      name = "a Squill Deranged Ravisher",
+      stfName = "a Squill Deranged Ravisher",
       objectCRC = 1824637824, 
       socialGroup = "Endor Squill",
       named = FALSE, 
 
       level = 35,
-      xp = 3460,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ squillDerangedRavisher = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.05,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Knockdown attack", " Disease attack (medium)", "" }
+      --skills = { " Knockdown attack", " Disease attack (medium)", "" }
+      skills = { "squillAttack4", "squillAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

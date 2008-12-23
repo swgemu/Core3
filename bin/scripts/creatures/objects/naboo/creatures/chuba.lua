@@ -52,7 +52,7 @@ chuba = Creature:new {
       named = FALSE, 
 
       level = 5,
-      xp = 85,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -130,7 +130,7 @@ chuba = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_naboo",
       hideMax = 3,

@@ -55,7 +55,7 @@ gurnasetAttack1 = {
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 0,
+	postureDownChance = 50,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,

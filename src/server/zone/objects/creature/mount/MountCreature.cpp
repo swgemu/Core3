@@ -213,6 +213,56 @@ unsigned int MountCreature::getItnocrc() {
 		return ((MountCreatureImplementation*) _impl)->getItnocrc();
 }
 
+void MountCreature::parseItemAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		method.executeWithVoidReturn();
+	} else
+		((MountCreatureImplementation*) _impl)->parseItemAttributes();
+}
+
+void MountCreature::setAttributes(string& attributestring) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addAsciiParameter(attributestring);
+
+		method.executeWithVoidReturn();
+	} else
+		((MountCreatureImplementation*) _impl)->setAttributes(attributestring);
+}
+
+string& MountCreature::getAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		method.executeWithAsciiReturn(_return_getAttributes);
+		return _return_getAttributes;
+	} else
+		return ((MountCreatureImplementation*) _impl)->getAttributes();
+}
+
+void MountCreature::repair() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		method.executeWithVoidReturn();
+	} else
+		((MountCreatureImplementation*) _impl)->repair();
+}
+
 /*
  *	MountCreatureAdapter
  */
@@ -268,6 +318,18 @@ Packet* MountCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 20:
 		resp->insertInt(getItnocrc());
+		break;
+	case 21:
+		parseItemAttributes();
+		break;
+	case 22:
+		setAttributes(inv->getAsciiParameter(_param0_setAttributes__string_));
+		break;
+	case 23:
+		resp->insertAscii(getAttributes());
+		break;
+	case 24:
+		repair();
 		break;
 	default:
 		return NULL;
@@ -334,6 +396,22 @@ bool MountCreatureAdapter::isInWorld() {
 
 unsigned int MountCreatureAdapter::getItnocrc() {
 	return ((MountCreatureImplementation*) impl)->getItnocrc();
+}
+
+void MountCreatureAdapter::parseItemAttributes() {
+	return ((MountCreatureImplementation*) impl)->parseItemAttributes();
+}
+
+void MountCreatureAdapter::setAttributes(string& attributestring) {
+	return ((MountCreatureImplementation*) impl)->setAttributes(attributestring);
+}
+
+string& MountCreatureAdapter::getAttributes() {
+	return ((MountCreatureImplementation*) impl)->getAttributes();
+}
+
+void MountCreatureAdapter::repair() {
+	return ((MountCreatureImplementation*) impl)->repair();
 }
 
 /*

@@ -8,7 +8,7 @@
 
 #include "ActionCreature.h"
 
-#include "../../../managers/mission/MissionManager.h"
+#include "../../../managers/mission/MissionManagerImplementation.h"
 
 #include "../../scene/SceneObject.h"
 

@@ -46,13 +46,13 @@ matureSnorbalMale = Creature:new {
       faction = "Snorbalmale",
       gender = "",
 
-      name = "a Mature Snorbal Male",
+      stfName = "a Mature Snorbal Male",
       objectCRC = 2413744233, 
       socialGroup = "Snorbalmale",
       named = FALSE, 
 
       level = 32,
-      xp = 3188,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ matureSnorbalMale = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ matureSnorbalMale = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 545,
 
-      skills = { " Posture down attack", " Stun attack", "" }
+      --skills = { " Posture down attack", " Stun attack", "" }
+      skills = { "snorbalAttack3", "snorbalAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

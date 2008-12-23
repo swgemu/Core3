@@ -52,7 +52,7 @@ duneBeetle = Creature:new {
       named = FALSE, 
 
       level = 13,
-      xp = 714,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -130,7 +130,7 @@ duneBeetle = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_tatooine",
       hideMax = 8,

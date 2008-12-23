@@ -52,7 +52,7 @@ lanternBird = Creature:new {
       named = FALSE, 
 
       level = 21,
-      xp = 1803,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -136,7 +136,7 @@ lanternBird = Creature:new {
       hideMax = 41,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "lanternBirdAttack1" },
        respawnTimer = 60,

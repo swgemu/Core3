@@ -190,8 +190,12 @@ void SceneObjectImplementation::link(ZoneClientSession* client, SceneObject* con
 
 	parent = container;
 
-	BaseMessage* msg = new UpdateContainmentMessage(container, _this, linkType);
+	BaseMessage* msg = new UpdateContainmentMessage(_this, container, linkType);
 	client->sendMessage(msg);
+}
+
+BaseMessage* SceneObjectImplementation::link(SceneObject* container, uint32 type) {
+	return new UpdateContainmentMessage(objectID, container->getObjectID(), type);
 }
 
 BaseMessage* SceneObjectImplementation::link(uint64 container, uint32 type) {
@@ -199,7 +203,7 @@ BaseMessage* SceneObjectImplementation::link(uint64 container, uint32 type) {
 }
 
 BaseMessage* SceneObjectImplementation::link(SceneObject* container) {
-	return new UpdateContainmentMessage(container, _this, linkType);
+	return new UpdateContainmentMessage(_this, container, linkType);
 }
 
 void SceneObjectImplementation::close(ZoneClientSession* client) {
@@ -458,7 +462,7 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 
 		info("removing from building");
 
-		broadcastMessage(link(0, 0xFFFFFFFF), 128, false);
+		broadcastMessage(link((uint64)0, (uint32)0xFFFFFFFF), 128, false);
 
 		((CellObject*)parent)->removeChild(_this);
 

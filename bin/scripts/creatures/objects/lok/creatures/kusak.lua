@@ -46,13 +46,13 @@ kusak = Creature:new {
       faction = "Kusak",
       gender = "",
 
-      name = "a Kusak",
+      stfName = "a Kusak",
       objectCRC = 1518117227, 
       socialGroup = "Kusak",
       named = FALSE, 
 
       level = 18,
-      xp = 1257,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 

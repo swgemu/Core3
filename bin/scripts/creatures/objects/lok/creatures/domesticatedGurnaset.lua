@@ -46,13 +46,13 @@ domesticatedGurnaset = Creature:new {
       faction = "self",
       gender = "",
 
-      name = "a Domesticated Gurnaset",
+      stfName = "a Domesticated Gurnaset",
       objectCRC = 526557680, 
       socialGroup = "self",
       named = FALSE, 
 
       level = 13,
-      xp = 514,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -99,7 +99,7 @@ domesticatedGurnaset = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -123,7 +123,7 @@ domesticatedGurnaset = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ domesticatedGurnaset = Creature:new {
       meatType = "meat_herbivore_lok",
       meatMax = 352,
 
-      skills = { " Intimidation attack", " Ranged attack (spit)", "" }
+      --skills = { " Intimidation attack", " Ranged attack (spit)", "" }
+      skills = { "gurnasetAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

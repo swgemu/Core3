@@ -46,13 +46,13 @@ langlatchMale = Creature:new {
       faction = "Langlatch",
       gender = "",
 
-      name = "a Langlatch Male",
+      stfName = "a Langlatch Male",
       objectCRC = 2513300255, 
       socialGroup = "Langlatch",
       named = FALSE, 
 
       level = 14,
-      xp = 714,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -138,7 +138,7 @@ langlatchMale = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 10,
 
-      skills = { "langlatchAttack1" },
+      skills = { "langlatchAttack4" },
 	  -- skills = { " Posture down attack", "", "" },
        respawnTimer = 60,
 

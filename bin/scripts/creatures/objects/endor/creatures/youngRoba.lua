@@ -46,13 +46,13 @@ youngRoba = Creature:new {
       faction = "Roba",
       gender = "",
 
-      name = "a Young Roba",
+      stfName = "a Young Roba",
       objectCRC = 2564251610, 
       socialGroup = "Roba",
       named = FALSE, 
 
       level = 50,
-      xp = 4825,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,22 +123,23 @@ youngRoba = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "bone_mammal_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Stun attack", " Blind attack", "" }
+      --skills = { " Stun attack", " Blind attack", "" }
+      skills = { "robaAttack2", "robaAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

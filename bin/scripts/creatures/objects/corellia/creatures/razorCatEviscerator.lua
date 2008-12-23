@@ -52,7 +52,7 @@ razorCatEviscerator = Creature:new {
       named = FALSE, 
 
       level = 24,
-      xp = 2543,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ razorCatEviscerator = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.05,  -- Likely hood to be tamed
 

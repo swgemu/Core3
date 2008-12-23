@@ -59,7 +59,7 @@ heatProtectionArmorLayer = Object:new {
 
    ingredientTemplateNames = "craft_armor_ingredients_n, craft_armor_ingredients_n, craft_armor_ingredients_n",
    ingredientTitleNames = "armor_layer_frame, secondary_insulator_microsheath, primary_insulator_micro_layer",
-   ingredientOptionals = "0, 0, 0",
+   ingredientSlotType = "0, 0, 0",
    resourceTypes = "metal_nonferrous, petrochem_inert_polymer, ore_intrusive",
    resourceQuantities = "25, 12, 10",
    combineTypes = "1, 1, 1",
@@ -73,7 +73,9 @@ heatProtectionArmorLayer = Object:new {
    experimentalSubGroupCount = "1, 4, 1",
    experimentalSubGroupTitles = "heateffectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance, base_effectiveness",
 
-   tanoAttributes = "objecttype=262144:objectcrc=3125319440:objecttemp=armor_layer_heat:templatetype=craft_armor_ingredients_n:",
+   tanoAttributes = "objecttype=262145:objectcrc=3125319440:objecttemp=armor_layer_heat:templatetype=craft_armor_ingredients_n:",
+   customizationOptions = "",
+   customizationDefaults = "",
 
    attributesToSet = "base_effectiveness, armorIntegrity, armor_action_encumbrance, armor_health_encumbrance, armor_mind_encumbrance,  heateffectiveness",
    attributeExperimentalProperties = "exp_quality, exp_durability, exp_durability, exp_durability, exp_durability, exp_resistance",

@@ -46,13 +46,13 @@ mantigrueHunter = Creature:new {
       faction = "Mantigrue",
       gender = "",
 
-      name = "a Mantigrue Hunter",
+      stfName = "a Mantigrue Hunter",
       objectCRC = 1684536430, 
       socialGroup = "Mantigrue",
       named = FALSE, 
 
       level = 38,
-      xp = 3733,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ mantigrueHunter = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.2,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_wooly_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Blind attack", "", "" }
+      --skills = { "Blind attack" }
+      skills = { "mantigrueAttack1" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

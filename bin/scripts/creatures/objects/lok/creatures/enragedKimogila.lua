@@ -46,13 +46,13 @@ enragedKimogila = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      name = "a Enraged Kimogila",
+      stfName = "a Enraged Kimogila",
       objectCRC = 533451918, 
       socialGroup = "Kimogila",
       named = FALSE, 
 
       level = 135,
-      xp = 12801,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,14 +123,14 @@ enragedKimogila = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
       hideMax = 1400,
@@ -138,7 +138,8 @@ enragedKimogila = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 1500,
 
-      skills = { " Knockdown attack", " Dizzy attack", "" }
+      --skills = { " Knockdown attack", " Dizzy attack", "" }
+      skills = { "kimogilaAttack5", "kimogilaAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

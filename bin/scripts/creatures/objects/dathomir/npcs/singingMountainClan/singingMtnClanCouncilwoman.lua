@@ -52,7 +52,7 @@ singingMtnClanCouncilwoman = Creature:new {
       named = FALSE, 
 
       level = 253,
-      xp = 24180,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ singingMtnClanCouncilwoman = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot for loot
+      lootGroup = "0,19,21,30,31,33,39,40", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

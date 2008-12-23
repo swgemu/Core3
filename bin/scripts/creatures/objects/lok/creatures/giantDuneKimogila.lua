@@ -46,13 +46,13 @@ giantDuneKimogila = Creature:new {
       faction = "Kimogila",
       gender = "",
 
-      name = "a Giant Dune Kimogila",
+      stfName = "a Giant Dune Kimogila",
       objectCRC = 1341282550, 
       socialGroup = "Kimogila",
       named = FALSE, 
 
       level = 153,
-      xp = 14504,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,14 +123,14 @@ giantDuneKimogila = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_lok",
       hideMax = 1400,
@@ -138,7 +138,8 @@ giantDuneKimogila = Creature:new {
       meatType = "meat_carnivore_lok",
       meatMax = 1500,
 
-      skills = { " Area attack (combo)", " Area attack (disease)", "" }
+      --skills = { " Area attack (combo)", " Area attack (disease)", "" }
+      skills = { "kimogilaAttack2", "kimogilaAttack7" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

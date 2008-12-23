@@ -88,7 +88,7 @@ interface ResourceManager {
 	
 	void generateSUI(Player player, SuiListBox sui);
 	
-	boolean giveResource(Player player, string resourceName, int amount);
+	boolean useResourceDeed(Player player, string resourceName, int resourceQuantity);
 
 	boolean containsResource(string resourceName);
 }

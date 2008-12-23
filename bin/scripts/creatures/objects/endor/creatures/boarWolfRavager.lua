@@ -46,13 +46,13 @@ boarWolfRavager = Creature:new {
       faction = "Boar Wolf",
       gender = "",
 
-      name = "a Boar Wolf Ravager",
+      stfName = "a Boar Wolf Ravager",
       objectCRC = 1815686462, 
       socialGroup = "Boar Wolf",
       named = FALSE, 
 
       level = 34,
-      xp = 3460,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,22 +123,23 @@ boarWolfRavager = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_carnivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Stun attack", " Blind attack", "" }
+      --skills = { " Stun attack", " Blind attack" }
+      skills = { "boarWolfAttack3", "boarWolfAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

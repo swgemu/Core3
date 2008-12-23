@@ -8,7 +8,7 @@
 
 #include "Action.h"
 
-#include "../../../managers/mission/MissionManager.h"
+#include "../../../managers/mission/MissionManagerImplementation.h"
 
 #include "../../scene/SceneObject.h"
 
@@ -20,8 +20,8 @@
  *	ActionCreatureStub
  */
 
-ActionCreature::ActionCreature(unsigned long long oid, unsigned int objCrc, string& creName, string& stf, string& missionKey, MissionManager* mMgr) : Creature(DummyConstructorParameter::instance()) {
-	_impl = new ActionCreatureImplementation(oid, objCrc, creName, stf, missionKey, mMgr);
+ActionCreature::ActionCreature(unsigned long long oid, unsigned int objCrc, string& creName, string& stf, string& missionKey) : Creature(DummyConstructorParameter::instance()) {
+	_impl = new ActionCreatureImplementation(oid, objCrc, creName, stf, missionKey);
 	_impl->_setStub(this);
 }
 
@@ -136,16 +136,20 @@ string& ActionCreature::getMissionKey() {
 		return ((ActionCreatureImplementation*) _impl)->getMissionKey();
 }
 
-MissionManager* ActionCreature::getMisoMgr() {
+MissionManagerImplementation* ActionCreature::getMisoMgr() {
 	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, 14);
-
-		return (MissionManager*) method.executeWithObjectReturn();
 	} else
 		return ((ActionCreatureImplementation*) _impl)->getMisoMgr();
+}
+
+void ActionCreature::setMisoMgr(MissionManagerImplementation* tmgr) {
+	if (_impl == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		((ActionCreatureImplementation*) _impl)->setMisoMgr(tmgr);
 }
 
 void ActionCreature::sendConversationStartTo(SceneObject* obj) {
@@ -153,7 +157,7 @@ void ActionCreature::sendConversationStartTo(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -166,7 +170,7 @@ void ActionCreature::selectConversationOption(int option, SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 		method.addSignedIntParameter(option);
 		method.addObjectParameter(obj);
 
@@ -211,12 +215,9 @@ Packet* ActionCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertAscii(getMissionKey());
 		break;
 	case 14:
-		resp->insertLong(getMisoMgr()->_getObjectID());
-		break;
-	case 15:
 		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case 16:
+	case 15:
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -256,10 +257,6 @@ bool ActionCreatureAdapter::isMissionNpc() {
 
 string& ActionCreatureAdapter::getMissionKey() {
 	return ((ActionCreatureImplementation*) impl)->getMissionKey();
-}
-
-MissionManager* ActionCreatureAdapter::getMisoMgr() {
-	return ((ActionCreatureImplementation*) impl)->getMisoMgr();
 }
 
 void ActionCreatureAdapter::sendConversationStartTo(SceneObject* obj) {

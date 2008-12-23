@@ -52,7 +52,7 @@ angler = Creature:new {
       named = FALSE, 
 
       level = 22,
-      xp = 2006,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -130,10 +130,10 @@ angler = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_insect_yavin4",
       meatMax = 4,

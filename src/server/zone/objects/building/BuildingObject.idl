@@ -71,10 +71,33 @@ interface BuildingObject implements SceneObject {
 	int getBuildingType();
 	void setBuildingType(int type);
 	
-	string getName();
-	void setName(string name);
+	int getCellCount();
+	CellObject getCell(int idx);
 	
+	void setPersistent(boolean pers);
+	void setUpdated(boolean up);
+	
+	boolean isPersistent();
+	boolean isUpdated();
+
+	void setAttributes(string attributestring);
+	string getAttributes();
+	
+	string getOwner();
+	void setOwner(const string owner);
+	
+	unsigned long getOwnerID();
+	void setOwnerID(unsigned long owner);
+
+	void parseItemAttributes();
+
+	unicode getName();
+	void setName(const string n);
+	void setName(const unicode n);
+
 	string getDefaultName();
+	
+	string getTemplateName();
 	
 	void lock(boolean doLock = true);
 	void unlock(boolean doLock = true);

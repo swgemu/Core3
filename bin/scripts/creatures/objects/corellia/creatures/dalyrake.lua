@@ -52,7 +52,7 @@ dalyrake = Creature:new {
       named = FALSE, 
 
       level = 9,
-      xp = 292,
+      
 
       combatFlags = ATTACKABLE_FLAG,
 
@@ -130,7 +130,7 @@ dalyrake = Creature:new {
       milk = 0,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_corellia",
       hideMax = 45,

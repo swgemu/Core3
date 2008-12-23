@@ -46,13 +46,13 @@ boundingJax = Creature:new {
       faction = "Jax",
       gender = "",
 
-      name = "a Bounding Jax",
+      stfName = "a Bounding Jax",
       objectCRC = 2095266416, 
       socialGroup = "Jax",
       named = FALSE, 
 
       level = 16,
-      xp = 960,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,7 +123,7 @@ boundingJax = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ boundingJax = Creature:new {
       hideMax = 35,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Dizzy attack", "", "" }
+      --skills = { "Dizzy attack" }
+      skills = { "JaxAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

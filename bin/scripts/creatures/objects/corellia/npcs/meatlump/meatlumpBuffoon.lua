@@ -52,7 +52,7 @@ meatlumpBuffoon = Creature:new {
       named = FALSE, 
 
       level = 5,
-      xp = 85,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -120,7 +120,7 @@ meatlumpBuffoon = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

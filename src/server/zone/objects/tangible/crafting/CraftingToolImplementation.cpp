@@ -427,13 +427,14 @@ void CraftingToolImplementation::setWorkingTano(TangibleObject* tano){
 	currentTano = tano;
 }
 
-void CraftingToolImplementation::setWorkingDraftSchematic(DraftSchematic* draftSchematic){
+void CraftingToolImplementation::setWorkingDraftSchematic(
+		DraftSchematic* draftSchematic) {
 
 	draftSchematic->lock();
 
-	try{
+	try {
 
-		if(currentDraftSchematic != NULL) {
+		if (currentDraftSchematic != NULL) {
 			currentDraftSchematic->setContainer(NULL);
 			currentDraftSchematic->finalize();
 			currentDraftSchematic = NULL;
@@ -441,12 +442,12 @@ void CraftingToolImplementation::setWorkingDraftSchematic(DraftSchematic* draftS
 
 		// This will be replaced but the built in cloning method when available
 
-	currentDraftSchematic = draftSchematic->dsClone(draftSchematic);
+		currentDraftSchematic = draftSchematic->dsClone(draftSchematic);
 
+		craftingSlots->init(currentDraftSchematic);
 
 		draftSchematic->unlock();
-	}
-	catch(...){
+	} catch (...) {
 
 		draftSchematic->unlock();
 
@@ -457,14 +458,12 @@ void CraftingToolImplementation::resetSlots() {
 
 	if (currentDraftSchematic != NULL) {
 
-		craftingSlots->init(currentDraftSchematic->getIngredientListSize());
+		craftingSlots->init(currentDraftSchematic);
 
 	} else {
 
 		craftingSlots->init(0);
-
 	}
-
 }
 
 Container* CraftingToolImplementation::getHopper(Player* player){

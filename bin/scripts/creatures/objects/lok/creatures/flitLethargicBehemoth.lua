@@ -46,13 +46,14 @@ flitLethargicBehemoth = Creature:new {
       faction = "Flit",
       gender = "",
 
-      name = "a Flit Lethargic Behemoth",
-      objectCRC = 1138484659, 
+      stfName = "a Flit Lethargic Behemoth",
+      --objectCRC = 1138484659,
+      objectCRC = 4002066866,
       socialGroup = "Flit",
       named = FALSE, 
 
       level = 23,
-      xp = 2219,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +124,7 @@ flitLethargicBehemoth = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.05,  -- Likely hood to be tamed
 
@@ -133,15 +134,16 @@ flitLethargicBehemoth = Creature:new {
       boneMax = 13,
 
       hideType = "",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_avian_lok",
       meatMax = 11,
 
-      skills = { " Stun attack", " Knockdown attack", "" }
+      --skills = { " Stun attack", " Knockdown attack", "" }
+      skills = { "flitAttack1", "flitAttack3" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(flitLethargicBehemoth, 1138484659) --  Add to Global Table
+Creatures:addCreature(flitLethargicBehemoth, 4002066866) --  Add to Global Table

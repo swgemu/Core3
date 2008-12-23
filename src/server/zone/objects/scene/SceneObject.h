@@ -89,6 +89,12 @@ public:
 
 	void setPosition(float x, float z, float y);
 
+	void setPositionX(float x);
+
+	void setPositionZ(float z);
+
+	void setPositionY(float y);
+
 	void setDirection(float x, float z, float y, float w);
 
 	void generateAttributes(Player* player);
@@ -102,6 +108,8 @@ public:
 	void setObjectID(unsigned long long oid);
 
 	void setObjectCRC(unsigned int crc);
+
+	void setObjectType(int tp);
 
 	void setMovementCounter(unsigned int cntr);
 
@@ -303,6 +311,12 @@ public:
 
 	void setPosition(float x, float z, float y);
 
+	void setPositionX(float x);
+
+	void setPositionZ(float z);
+
+	void setPositionY(float y);
+
 	void setDirection(float x, float z, float y, float w);
 
 	void generateAttributes(Player* player);
@@ -314,6 +328,8 @@ public:
 	void setObjectID(unsigned long long oid);
 
 	void setObjectCRC(unsigned int crc);
+
+	void setObjectType(int tp);
 
 	void setMovementCounter(unsigned int cntr);
 

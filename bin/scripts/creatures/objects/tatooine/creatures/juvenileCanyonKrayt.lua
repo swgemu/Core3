@@ -52,7 +52,7 @@ juvenileCanyonKrayt = Creature:new {
       named = FALSE, 
 
       level = 122,
-      xp = 11577,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -124,7 +124,7 @@ juvenileCanyonKrayt = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0,11,15,19,21,33,34,39,40,49,50", -- Group it belongs to for lootloot
+      lootGroup = "0,11,15,19,33,39,40,51,52,96", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

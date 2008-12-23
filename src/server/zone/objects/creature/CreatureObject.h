@@ -507,6 +507,10 @@ public:
 
 	bool isRevivable();
 
+	unsigned long long getResurrectionExpires();
+
+	void setResurrectionExpires(unsigned long long msecs);
+
 	bool isResurrectable();
 
 	bool hasHealthDamage();
@@ -923,6 +927,8 @@ public:
 
 	void changeConditionDamage(int amount);
 
+	void setMaxCondition(int condition);
+
 	void setPosture(unsigned char state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 
 	void setPvpStatusBitmask(unsigned int mask);
@@ -1011,7 +1017,7 @@ public:
 
 	bool revive(CreatureObject* target, bool forcedChange = false);
 
-	bool resurrect(CreatureObject* target);
+	bool resurrect(CreatureObject* target, bool forcedChange = false);
 
 	void deactivateWoundTreatment();
 
@@ -1598,6 +1604,10 @@ public:
 
 	bool isRevivable();
 
+	unsigned long long getResurrectionExpires();
+
+	void setResurrectionExpires(unsigned long long msecs);
+
 	bool isResurrectable();
 
 	bool hasHealthDamage();
@@ -2014,6 +2024,8 @@ public:
 
 	void changeConditionDamage(int amount);
 
+	void setMaxCondition(int condition);
+
 	void setPosture(unsigned char state, bool overrideDizzy, bool objectInteraction, float objX, float objY, float objZ);
 
 	void setPvpStatusBitmask(unsigned int mask);
@@ -2102,7 +2114,7 @@ public:
 
 	bool revive(CreatureObject* target, bool forcedChange);
 
-	bool resurrect(CreatureObject* target);
+	bool resurrect(CreatureObject* target, bool forcedChange);
 
 	void deactivateWoundTreatment();
 

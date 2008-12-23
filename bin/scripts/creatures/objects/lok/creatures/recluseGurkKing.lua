@@ -46,13 +46,13 @@ recluseGurkKing = Creature:new {
       faction = "Gurk",
       gender = "",
 
-      name = "a Recluse Gurk King",
+      stfName = "a Recluse Gurk King",
       objectCRC = 657461156, 
       socialGroup = "Gurk",
       named = FALSE, 
 
       level = 45,
-      xp = 4461,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ recluseGurkKing = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -136,9 +136,10 @@ recluseGurkKing = Creature:new {
       hideMax = 275,
 
       meatType = "meat_herbivore_lok",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Posture down attack", " Blind attack", "" }
+      --skills = { " Posture down attack", " Blind attack", "" }
+      skills = { "gurkAttack5", "gurkAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

@@ -52,7 +52,7 @@ piket = Creature:new {
       named = FALSE, 
 
       level = 30,
-      xp = 3005,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -130,13 +130,13 @@ piket = Creature:new {
       milk = 1,
 
       boneType = "",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_scaley_dantooine",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_herbivore_dantooine",
-      meatMax = 0,
+      meatMax = 35,
 
       skills = { "picketAttack1" },
 	  -- skills = { " Stun attack", "", "" },

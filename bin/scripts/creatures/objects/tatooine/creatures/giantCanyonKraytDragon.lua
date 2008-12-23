@@ -52,7 +52,7 @@ giantCanyonKraytDragon = Creature:new {
       named = FALSE, 
 
       level = 300,
-      xp = 28549,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -123,7 +123,7 @@ giantCanyonKraytDragon = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0,11,15,19,33,39,40,51,52,96", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 

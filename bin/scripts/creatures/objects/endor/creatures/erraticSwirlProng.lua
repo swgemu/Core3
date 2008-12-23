@@ -46,13 +46,13 @@ erraticSwirlProng = Creature:new {
       faction = "Swirl Prong",
       gender = "",
 
-      name = "a Erratic Swirl Prong",
+      stfName = "a Erratic Swirl Prong",
       objectCRC = 4177314208, 
       socialGroup = "Swirl Prong",
       named = FALSE, 
 
       level = 27,
-      xp = 2730,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,22 +123,23 @@ erraticSwirlProng = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "bone_mammal_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Posture down attack", " Intimidation attack", "" }
+      --skills = { " Posture down attack", " Intimidation attack", "" }
+      skills = { "swirlProngAttack1", "swirlProngAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

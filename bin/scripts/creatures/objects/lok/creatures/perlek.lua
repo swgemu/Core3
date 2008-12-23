@@ -46,13 +46,13 @@ perlek = Creature:new {
       faction = "Perlek",
       gender = "",
 
-      name = "a Perlek",
+      stfName = "a Perlek",
       objectCRC = 4249958797, 
       socialGroup = "Perlek",
       named = FALSE, 
 
       level = 14,
-      xp = 714,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -99,7 +99,7 @@ perlek = Creature:new {
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      weapon = "object/weapon/ranged/creature/shared_creature_spit_spray_green.iff", -- File path to weapon -> object\xxx\xxx\xx
       weaponName = "", -- Name ex. 'a Vibrolance'
       weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -123,7 +123,7 @@ perlek = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0.25,  -- Likely hood to be tamed
 
@@ -138,7 +138,8 @@ perlek = Creature:new {
       meatType = "meat_avian_lok",
       meatMax = 250,
 
-      skills = { " Intimidation attack", " Ranged attack (spit)", "" }
+      --skills = { " Intimidation attack", " Ranged attack (spit)", "" }
+      skills = { "perlekAttack1", "perlekAttack2" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

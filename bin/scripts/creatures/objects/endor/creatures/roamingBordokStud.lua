@@ -46,13 +46,13 @@ roamingBordokStud = Creature:new {
       faction = "Bordok",
       gender = "",
 
-      name = "a Roaming Bordok Stud",
+      stfName = "a Roaming Bordok Stud",
       objectCRC = 153161597, 
       socialGroup = "Bordok",
       named = FALSE, 
 
       level = 34,
-      xp = 3370,
+      
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -123,22 +123,23 @@ roamingBordokStud = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = 0, -- Group it belongs to for loot
+      lootGroup = "0", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
       milk = 0,
 
       boneType = "bone_mammal_endor",
-      boneMax = 0,
+      boneMax = 20,
 
       hideType = "hide_leathery_endor",
-      hideMax = 0,
+      hideMax = 20,
 
       meatType = "meat_herbivore_endor",
-      meatMax = 0,
+      meatMax = 35,
 
-      skills = { " Dizzy attack", " Posture down attack", "" }
+      --skills = { " Dizzy attack", " Posture down attack", "" }
+      skills = { "bordokAttack4", "bordokAttack6" },
       respawnTimer = 60,
 
       behaviorScript = "", -- Link to the behavior script for this object

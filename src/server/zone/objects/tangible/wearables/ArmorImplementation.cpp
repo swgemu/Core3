@@ -296,28 +296,7 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
 	if(firstCraftingUpdate) {
-
-		string assemblySkill = draftSchematic->getAssemblySkill();
-		// Get assembly points from skill
-
-		Player* player = draftSchematic->getCrafter();
-
-		if (player == NULL) {
-
-			setSockets(0);
-
-		} else {
-
-			int sockets = int((player->getSkillMod(assemblySkill) / 10) / 3.0f)
-					+ System::random(4) - System::random(4);
-
-			if (sockets > 4)
-				sockets = 4;
-			if (sockets < 0)
-				sockets = 0;
-
-			setSockets(sockets);
-		}
+		generateSockets(draftSchematic);
 	}
 
 	setArmorPiece();
@@ -331,9 +310,55 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 	float base = craftingValues->getCurrentValue("base_effectiveness");
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
-	float value;
+	setCraftingKinetic(draftSchematic);
+	setCraftingEnergy(draftSchematic);
+	setCraftingElectrical(draftSchematic);
+	setCraftingStun(draftSchematic);
+	setCraftingBlast(draftSchematic);
+	setCraftingHeat(draftSchematic);
+	setCraftingCold(draftSchematic);
+	setCraftingAcid(draftSchematic);
+	setCraftingRestrain(draftSchematic);
 
-	value = craftingValues->getCurrentValue("kineticeffectiveness");
+	setCondition((int)craftingValues->getCurrentValue("armorIntegrity"),
+			(int)craftingValues->getCurrentValue("armorIntegrity"));
+
+	firstCraftingUpdate = false;
+}
+
+void ArmorImplementation::generateSockets(DraftSchematic* draftSchematic) {
+
+	string assemblySkill = draftSchematic->getAssemblySkill();
+	// Get assembly points from skill
+
+	Player* player = draftSchematic->getCrafter();
+
+	if (player == NULL) {
+
+		setSockets(0);
+
+	} else {
+
+		int sockets = int((player->getSkillMod(assemblySkill) / 10) / 3.0f)
+				+ System::random(4) - System::random(4);
+
+		if (sockets > 4)
+			sockets = 4;
+		if (sockets < 0)
+			sockets = 0;
+
+		setSockets(sockets);
+	}
+}
+
+void ArmorImplementation::setCraftingKinetic(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("base_effectiveness");
+	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
+
+	float value = craftingValues->getCurrentValue("kineticeffectiveness");
 	if(draftSchematic->getAttributeToSet("kineticeffectiveness") == NULL) {
 		if(firstCraftingUpdate) {
 			craftingValues->lockValue("kineticeffectiveness");
@@ -356,7 +381,16 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 		setKineticIsSpecial(true);
 	}
 
-	value = craftingValues->getCurrentValue("energyeffectiveness");
+}
+
+void ArmorImplementation::setCraftingEnergy(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("base_effectiveness");
+	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
+
+	float value = craftingValues->getCurrentValue("energyeffectiveness");
 	if(draftSchematic->getAttributeToSet("energyeffectiveness") == NULL) {
 		if(firstCraftingUpdate) {
 			craftingValues->lockValue("energyeffectiveness");
@@ -378,8 +412,16 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 				setEnergy(value);
 		setEnergyIsSpecial(true);
 	}
+}
 
-	value = craftingValues->getCurrentValue("electricaleffectiveness");
+void ArmorImplementation::setCraftingElectrical(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("base_effectiveness");
+	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
+
+	float value = craftingValues->getCurrentValue("electricaleffectiveness");
 	if(draftSchematic->getAttributeToSet("electricaleffectiveness") == NULL) {
 		if(firstCraftingUpdate) {
 			craftingValues->lockValue("electricaleffectiveness");
@@ -401,8 +443,16 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 				setElectricity(value);
 		setElectricityIsSpecial(true);
 	}
+}
 
-	value = craftingValues->getCurrentValue("stuneffectiveness");
+void ArmorImplementation::setCraftingStun(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("base_effectiveness");
+	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
+
+	float value = craftingValues->getCurrentValue("stuneffectiveness");
 	if(draftSchematic->getAttributeToSet("stuneffectiveness") == NULL) {
 		if(firstCraftingUpdate) {
 			craftingValues->lockValue("stuneffectiveness");
@@ -424,8 +474,16 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 			setStun(value + base);
 		setStunIsSpecial(true);
 	}
+}
 
-	value = craftingValues->getCurrentValue("blasteffectiveness");
+void ArmorImplementation::setCraftingBlast(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("base_effectiveness");
+	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
+
+	float value = craftingValues->getCurrentValue("blasteffectiveness");
 	if(draftSchematic->getAttributeToSet("blasteffectiveness") == NULL) {
 		if(firstCraftingUpdate) {
 			craftingValues->lockValue("blasteffectiveness");
@@ -447,8 +505,16 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 			setBlast(value + base);
 		setBlastIsSpecial(true);
 	}
+}
 
-	value = craftingValues->getCurrentValue("heateffectiveness");
+void ArmorImplementation::setCraftingHeat(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("base_effectiveness");
+	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
+
+	float value = craftingValues->getCurrentValue("heateffectiveness");
 	if(draftSchematic->getAttributeToSet("heateffectiveness") == NULL) {
 		if(firstCraftingUpdate) {
 			craftingValues->lockValue("heateffectiveness");
@@ -470,8 +536,16 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 			setHeat(value + base);
 		setHeatIsSpecial(true);
 	}
+}
 
-	value = craftingValues->getCurrentValue("coldeffectiveness");
+void ArmorImplementation::setCraftingCold(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("base_effectiveness");
+	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
+
+	float value = craftingValues->getCurrentValue("coldeffectiveness");
 	if(draftSchematic->getAttributeToSet("coldeffectiveness") == NULL) {
 		if(firstCraftingUpdate) {
 			craftingValues->lockValue("coldeffectiveness");
@@ -493,8 +567,16 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 			setCold(value + base);
 		setColdIsSpecial(true);
 	}
+}
 
-	value = craftingValues->getCurrentValue("acideffectiveness");
+void ArmorImplementation::setCraftingAcid(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("base_effectiveness");
+	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
+
+	float value = craftingValues->getCurrentValue("acideffectiveness");
 	if(draftSchematic->getAttributeToSet("acideffectiveness") == NULL) {
 		if(firstCraftingUpdate) {
 			craftingValues->lockValue("acideffectiveness");
@@ -516,8 +598,16 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 			setAcid(value + base);
 		setAcidIsSpecial(true);
 	}
+}
 
-	value = craftingValues->getCurrentValue("restraineffectiveness");
+void ArmorImplementation::setCraftingRestrain(DraftSchematic* draftSchematic) {
+
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	float base = craftingValues->getCurrentValue("base_effectiveness");
+	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
+
+	float value = craftingValues->getCurrentValue("restraineffectiveness");
 	if(draftSchematic->getAttributeToSet("restraineffectiveness") == NULL) {
 		if(firstCraftingUpdate) {
 			craftingValues->lockValue("restraineffectiveness");
@@ -539,11 +629,6 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 			setLightSaber(value + base);
 		setLightSaberIsSpecial(true);
 	}
-
-	setCondition((int)craftingValues->getCurrentValue("armorIntegrity"),
-			(int)craftingValues->getCurrentValue("armorIntegrity"));
-
-	firstCraftingUpdate = false;
 }
 
 void ArmorImplementation::decayArmor(int decayRate) {
@@ -1239,8 +1324,11 @@ void ArmorImplementation::addAttributes(AttributeListMessage* alm) {
 
 }
 
-bool ArmorImplementation::isVunerableTo(string type) {
+bool ArmorImplementation::isVunerableTo(string damagetype) {
 
+	if(isComposite() && (damagetype == "restrain" || damagetype == "stun")) {
+		return true;
+	}
 
 	return false;
 }
