@@ -117,7 +117,7 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	setLockName("ZoneServerLock");
 
 	scheduler->setLogging(false);
-	
+
 	xpScale = 1;
 }
 
@@ -242,7 +242,8 @@ void ZoneServerImplementation::init() {
 
 	startTimestamp = time(NULL);
 
-	serverState = LOCKED;
+	//serverState = LOCKED;
+	serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
 
 	return;
 }
