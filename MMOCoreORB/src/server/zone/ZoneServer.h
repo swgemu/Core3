@@ -131,10 +131,6 @@ public:
 
 	unsigned long long getStartTimestamp();
 
-	void setXpScale(int scale);
-
-	int getXpScale();
-
 	unsigned long long getNextCreatureID(bool doLock = true);
 
 	unsigned long long getNextID(bool doLock = true);
@@ -254,10 +250,6 @@ public:
 	int getDeletedPlayers();
 
 	unsigned long long getStartTimestamp();
-
-	void setXpScale(int scale);
-
-	int getXpScale();
 
 	unsigned long long getNextCreatureID(bool doLock);
 

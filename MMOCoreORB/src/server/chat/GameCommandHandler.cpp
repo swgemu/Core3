@@ -3217,16 +3217,16 @@ void GameCommandHandler::scaleXP(StringTokenizer tokenizer, Player* player) {
 	if (zone == NULL)
 		return;
 		
-	ZoneServer* zsrv = srv->getZoneServer();
-	if (zsrv == NULL)
+	PlayerManager* pmng = srv->getPlayerManager();
+	if (pmng == NULL)
 		return;
-
+		 
 	if (!tokenizer.hasMoreTokens())
 		return;
 		
 	scale = tokenizer.getIntToken();
 	
-	zsrv->setXpScale(scale);
+	pmng->setXpScale(scale);
 
 	ChatManager * chatManager = zone->getChatManager();
 	

@@ -4170,7 +4170,7 @@ void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 void PlayerImplementation::removeSkillBox(SkillBox* skillBox, bool updateClient) {
 	skillBoxes.remove(skillBox->getName());
 	loadXpTypeCap();
-
+	
 	if (updateClient) {
 		CreatureObjectDeltaMessage1* dcreo1;
 
@@ -5111,6 +5111,7 @@ int PlayerImplementation::calcPlayerLevel(String xptype) {
 	else if (playerLevel > 25)
 		playerLevel = 25;
 
+	System::out << playerLevel << endl;
 	return playerLevel;
 }
 

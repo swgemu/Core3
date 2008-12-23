@@ -618,37 +618,12 @@ unsigned long long ZoneServer::getStartTimestamp() {
 		return ((ZoneServerImplementation*) _impl)->getStartTimestamp();
 }
 
-void ZoneServer::setXpScale(int scale) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 51);
-		method.addSignedIntParameter(scale);
-
-		method.executeWithVoidReturn();
-	} else
-		((ZoneServerImplementation*) _impl)->setXpScale(scale);
-}
-
-int ZoneServer::getXpScale() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 52);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((ZoneServerImplementation*) _impl)->getXpScale();
-}
-
 unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 51);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -661,7 +636,7 @@ unsigned long long ZoneServer::getNextID(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 52);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -674,7 +649,7 @@ unsigned long long ZoneServer::getNextCellID(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 53);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -687,7 +662,7 @@ void ZoneServer::setServerState(int state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 54);
 		method.addSignedIntParameter(state);
 
 		method.executeWithVoidReturn();
@@ -700,7 +675,7 @@ void ZoneServer::setServerStateLocked() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 55);
 
 		method.executeWithVoidReturn();
 	} else
@@ -712,7 +687,7 @@ void ZoneServer::setServerStateOnline() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 56);
 
 		method.executeWithVoidReturn();
 	} else
@@ -866,27 +841,21 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getStartTimestamp());
 		break;
 	case 51:
-		setXpScale(inv->getSignedIntParameter());
-		break;
-	case 52:
-		resp->insertSignedInt(getXpScale());
-		break;
-	case 53:
 		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
 		break;
-	case 54:
+	case 52:
 		resp->insertLong(getNextID(inv->getBooleanParameter()));
 		break;
-	case 55:
+	case 53:
 		resp->insertLong(getNextCellID(inv->getBooleanParameter()));
 		break;
-	case 56:
+	case 54:
 		setServerState(inv->getSignedIntParameter());
 		break;
-	case 57:
+	case 55:
 		setServerStateLocked();
 		break;
-	case 58:
+	case 56:
 		setServerStateOnline();
 		break;
 	default:
@@ -1074,14 +1043,6 @@ int ZoneServerAdapter::getDeletedPlayers() {
 
 unsigned long long ZoneServerAdapter::getStartTimestamp() {
 	return ((ZoneServerImplementation*) impl)->getStartTimestamp();
-}
-
-void ZoneServerAdapter::setXpScale(int scale) {
-	return ((ZoneServerImplementation*) impl)->setXpScale(scale);
-}
-
-int ZoneServerAdapter::getXpScale() {
-	return ((ZoneServerImplementation*) impl)->getXpScale();
 }
 
 unsigned long long ZoneServerAdapter::getNextCreatureID(bool doLock) {

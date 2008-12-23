@@ -89,6 +89,10 @@ public:
 
 	PlayerMap* getPlayerMap();
 
+	void setXpScale(int scale);
+
+	int getXpScale();
+
 protected:
 	PlayerManager(DummyConstructorParameter* param);
 
@@ -166,6 +170,10 @@ public:
 	GuildManager* getGuildManager();
 
 	PlayerMap* getPlayerMap();
+
+	void setXpScale(int scale);
+
+	int getXpScale();
 
 protected:
 	String _param0_validateName__String_;

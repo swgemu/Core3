@@ -436,6 +436,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	GuildManager* pGuild = serv->getGuildManager();
 
 	UnicodeString option;
+	bool canPowerboost;
 
 	switch (actionCRC) {
 	case (0x70177586): //Open Container
@@ -455,7 +456,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			return;
 
 		}
-		bool canPowerboost = player->doPowerboost();
+		canPowerboost = player->doPowerboost();
 		if (!canPowerboost) {
 			break;
 		}
