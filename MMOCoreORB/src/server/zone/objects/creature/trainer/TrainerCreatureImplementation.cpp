@@ -249,9 +249,14 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 		return;
 	
 	Vector<SkillBox*>* skillBoxes = profession->getSkillBoxes();
+	
 	String choice;
-	if (player->countLastNpcConvOptions() > 0)
-		choice = player->getLastNpcConvOption(option);
+	if (player->countLastNpcConvOptions() > 0) {
+		if (player->getLastNpcConvMessStr() == "trainer_learn")
+			choice = player->getLastNpcConvOption(0);
+		else
+			choice = player->getLastNpcConvOption(option);
+	}
 	player->clearLastNpcConvOptions();
 	
 	if (player->getLastNpcConvMessStr() == "trainer_initial") {
