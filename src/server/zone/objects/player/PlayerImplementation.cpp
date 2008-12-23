@@ -4920,7 +4920,12 @@ void PlayerImplementation::loadXpTypeCap() {
 					xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
 			}
 
-		} else
+		} else if (xpCapList.contains(skillbox->getSkillXpType())) {
+			if (xpCapList.get(skillbox->getSkillXpType()) < skillbox->getSkillXpCap()) {
+				xpCapList.drop(skillbox->getSkillXpType());
+				xpCapList.put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
+			}
+		} else 
 			xpCapList.put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
 	}
 }
