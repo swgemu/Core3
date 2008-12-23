@@ -5111,7 +5111,6 @@ int PlayerImplementation::calcPlayerLevel(String xptype) {
 	else if (playerLevel > 25)
 		playerLevel = 25;
 
-	System::out << playerLevel << endl;
 	return playerLevel;
 }
 
