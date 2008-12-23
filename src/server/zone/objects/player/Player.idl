@@ -207,7 +207,7 @@ interface Player implements CreatureObject {
 	void doCenterOfBeing();
 	void removeCenterOfBeing();
 
-	void doPowerboost();
+	boolean doPowerboost();
 
 	void doPeace();
 
@@ -259,6 +259,8 @@ interface Player implements CreatureObject {
 	//boolean isChangingFaction();
 
 	boolean getMeditate();
+	boolean getPowerboosted();
+	void setPowerboosted(boolean pb);
 
 	// Item manipulation methods
 	void changeCloth(unsigned long itemid);

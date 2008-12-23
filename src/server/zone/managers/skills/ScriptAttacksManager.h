@@ -83,6 +83,7 @@ public:
 	static int AddWoundsDirectPoolAttackTargetSkill(lua_State* L);
 	static int AddPassiveSkill(lua_State* L);
 	static int AddMeditateSkill(lua_State* L);
+	static int AddPowerboostSkill(lua_State* L);
 	static int AddHealTargetSkill(lua_State* L);
 	static int AddHealEnhanceTargetSkill(lua_State* L);
 	static int AddHealDamageTargetSkill(lua_State* L);

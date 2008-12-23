@@ -79,23 +79,15 @@ AddMeditateSkill(skill)
 
 -------------------------------------------------------------
 
-boost = {
+powerboost = {
 	skillname = "powerboost",
-	effect = "",
 	
-	requiredState = MEDITATE,
-	
-	duration = 300.0, -- seconds
-	
-	healthBonus = 500,
-	actionBonus = 500,
-	mindBonus = 500,
-	
-	StartFlyText = "",
-	FinishFlyText = ""
+        effect = "",
+        
+        bonus = 0.5 --multiple of base mind to add to HAM  	
 }
 
-AddEnhanceSelfSkill(boost)
+AddPowerboostSkill(powerboost)
 
 -------------------------------------------------------------
 
