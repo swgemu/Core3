@@ -246,6 +246,8 @@ interface CreatureObject implements SceneObject {
 	boolean addQueuedState(unsigned int skillCRC);
 
 	void setMeditateState();
+	
+	void removePowerboost();
 
 	boolean isGuilded();
 
@@ -548,6 +550,14 @@ interface CreatureObject implements SceneObject {
 	unsigned int getHealthEncumbrance();
 	unsigned int getActionEncumbrance();
 	unsigned int getMindEncumbrance();
+	
+	int getpbHA();
+
+	int getpbMind(); 
+	
+	int getpbTick(); 
+	
+	int getpbBonus(); 
 
 	unsigned long getTargetID();
 
@@ -704,6 +714,14 @@ interface CreatureObject implements SceneObject {
 	void changeMind(int mind);
 	void changeFocus(int focus);
 	void changeWillpower(int willpower);
+	
+	void setpbHA(int value);
+ 
+	void setpbMind(int value); 
+	
+	void setpbTick(int value); 
+	
+    void setpbBonus(unsigned int value); 
 
 	void setSpeed(float spd);
 	void setAcceleration(float acc);

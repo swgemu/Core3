@@ -335,6 +335,13 @@ protected:
 
 	bool meditating;
 
+	//Powerboost
+	int pbHA;
+	int pbMind;
+	int pbTick;
+	uint32 pbBonus;
+	uint8 pbCounter;
+
 	int accuracy;
 
 	Time burstRunCooldown;
@@ -565,6 +572,9 @@ public:
 	bool setNextAttackDelay(int del);
 
 	void setMeditateState();
+
+	void doPowerboostTick(Player* player);
+	void removePowerboost();
 
 	void addDamage(CreatureObject* creature, uint32 damage);
 	void removeFromDamageMap(CreatureObject* target);
@@ -1445,6 +1455,22 @@ public:
 		woundsUpdateCounter = count;
 	}
 
+	inline void setpbHA(int value) {
+		pbHA = value;
+	}
+
+	inline void setpbMind(int value) {
+		pbMind = value;
+	}
+
+	inline void setpbTick(int value) {
+		pbTick = value;
+	}
+
+	inline void setpbBonus(uint32 value) {
+		pbBonus = value;
+	}
+
 	inline void setDefenderID(uint64 did) {
 		defenderID = did;
 	}
@@ -1458,6 +1484,22 @@ public:
 	}
 
 	// getters
+	inline int getpbHA() {
+		return pbHA;
+	}
+
+	inline int getpbMind() {
+		return pbMind;
+	}
+
+	inline int getpbTick() {
+		return pbTick;
+	}
+
+	inline int getpbBonus() {
+		return pbBonus;
+	}
+
 	inline UnicodeString& getCharacterName() {
 		return characterName;
 	}

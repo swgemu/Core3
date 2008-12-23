@@ -453,18 +453,13 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		if (!player->hasSkill(actionCRC)) {
 			player->clearQueueAction(actioncntr, 0, 2, 0);
 			return;
-		} else {
-			player->doPowerboost();
 
-			UnicodeString option = UnicodeString("");
-			String actionModifier = "";
-
-			//TODO: Duration modifier for Master TK is not in this pack?
-			pack->parseUnicode(option);
-			actionModifier = option.toString();
-
-			player->queueAction(player, target, actionCRC, actioncntr, actionModifier.toCharArray());
 		}
+		bool canPowerboost = player->doPowerboost();
+		if (!canPowerboost) {
+			break;
+		}
+		player->queueAction(player, target, actionCRC, actioncntr, "");
 		break;
 	case (0xB93A3853): //haveconsent
 		parseHaveConsentRequest(player, pack);

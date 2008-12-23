@@ -297,6 +297,8 @@ public:
 
 	void setMeditateState();
 
+	void removePowerboost();
+
 	bool isGuilded();
 
 	void removeGroup();
@@ -699,6 +701,14 @@ public:
 
 	unsigned int getMindEncumbrance();
 
+	int getpbHA();
+
+	int getpbMind();
+
+	int getpbTick();
+
+	int getpbBonus();
+
 	unsigned long long getTargetID();
 
 	SceneObject* getTarget();
@@ -936,6 +946,14 @@ public:
 	void changeFocus(int focus);
 
 	void changeWillpower(int willpower);
+
+	void setpbHA(int value);
+
+	void setpbMind(int value);
+
+	void setpbTick(int value);
+
+	void setpbBonus(unsigned int value);
 
 	void setSpeed(float spd);
 
@@ -1440,6 +1458,8 @@ public:
 
 	void setMeditateState();
 
+	void removePowerboost();
+
 	bool isGuilded();
 
 	void removeGroup();
@@ -1840,6 +1860,14 @@ public:
 
 	unsigned int getMindEncumbrance();
 
+	int getpbHA();
+
+	int getpbMind();
+
+	int getpbTick();
+
+	int getpbBonus();
+
 	unsigned long long getTargetID();
 
 	SceneObject* getTarget();
@@ -2077,6 +2105,14 @@ public:
 	void changeFocus(int focus);
 
 	void changeWillpower(int willpower);
+
+	void setpbHA(int value);
+
+	void setpbMind(int value);
+
+	void setpbTick(int value);
+
+	void setpbBonus(unsigned int value);
 
 	void setSpeed(float spd);
 

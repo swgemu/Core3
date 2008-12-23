@@ -1307,7 +1307,15 @@ void GameCommandHandler::setWeather(StringTokenizer tokenizer, Player* player) {
 	if (planet == NULL)
 		return;
 
-	int weatherID = tokenizer.getIntToken();
+	int weatherID;
+
+	if (tokenizer.hasMoreTokens()) {
+		weatherID = tokenizer.getIntToken();
+	} else {
+		player->sendSystemMessage("Usage example: @setWeather 3");
+		player->sendSystemMessage("Weather ID must be 0-4.");
+		return;
+	}
 
 	if (zone->getZoneID() > 9) {
 		player->sendSystemMessage("You can't change the weather here.");

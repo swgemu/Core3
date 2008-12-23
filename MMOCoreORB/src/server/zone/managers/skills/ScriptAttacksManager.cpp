@@ -94,6 +94,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddWoundsDirectPoolAttackTargetSkill", AddWoundsDirectPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddPassiveSkill", AddPassiveSkill);
 	lua_register(getLuaState(), "AddMeditateSkill", AddMeditateSkill);
+	lua_register(getLuaState(), "AddPowerboostSkill", AddPowerboostSkill);
 	lua_register(getLuaState(), "AddEntertainSkill", AddEntertainSkill);
 	lua_register(getLuaState(), "AddEntertainEffectSkill", AddEntertainEffectSkill);
 	lua_register(getLuaState(), "AddDanceEffectSkill", AddDanceEffectSkill);
@@ -1299,6 +1300,22 @@ int ScriptAttacksManager::AddMeditateSkill(lua_State* L) {
 
 	meditate = new MeditateSelfSkill(skillname, effect, server);
 	CombatActions->put(meditate);
+
+	return 0;
+}
+
+int ScriptAttacksManager::AddPowerboostSkill(lua_State* L) {
+	LuaObject skill(L);
+	if (!skill.isValidTable())
+		return 0;
+
+	String skillname = skill.getStringField("skillname");
+	String effect = skill.getStringField("effect");
+	float bonus = skill.getFloatField("bonus");
+
+	PowerboostSelfSkill* powerboost = new PowerboostSelfSkill(skillname, effect.toCharArray(), server);
+	powerboost->setBonus(bonus);
+	CombatActions->put(powerboost);
 
 	return 0;
 }

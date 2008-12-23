@@ -86,7 +86,6 @@ which carries forward this exception.
 #include "events/ChangeFactionStatusEvent.h"
 #include "events/CenterOfBeingEvent.h"
 #include "events/PowerboostEventWane.h"
-#include "events/PowerboostEventEnd.h"
 #include "events/SurveyEvent.h"
 #include "events/EntertainerEvent.h"
 #include "events/SampleEvent.h"
@@ -167,15 +166,9 @@ PlayerImplementation::~PlayerImplementation() {
 		centerOfBeingEvent = NULL;
 	}
 
-	if (powerboostEventEnd != NULL) {
-		server->removeEvent(powerboostEventEnd);
-
-		delete powerboostEventEnd;
-		powerboostEventEnd = NULL;
-	}
-
 	if (powerboostEventWane != NULL) {
-		server->removeEvent(powerboostEventWane);
+		if (powerboostEventWane->isQueued())
+			server->removeEvent(powerboostEventWane);
 
 		delete powerboostEventWane;
 		powerboostEventWane = NULL;
@@ -281,12 +274,10 @@ void PlayerImplementation::initialize() {
  	chatRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 
  	centered = false;
-	powerboosted = false;
+
+ 	powerboosted = false;
 
 	centerOfBeingEvent = new CenterOfBeingEvent(this);
-	powerboostEventEnd = new PowerboostEventEnd(this);
-	powerboostEventWane = new PowerboostEventWane(this);
-
 
 	lastTestPositionX = 0.f;
 	lastTestPositionY = 0.f;
@@ -2136,11 +2127,23 @@ void PlayerImplementation::handleDeath() {
 	incapacitationCount = 0;
 
 	resurrectionExpires.update();
-	resurrectionExpires.addMiliTime(5 * 60 * 1000); //5 minutse till expires
+	resurrectionExpires.addMiliTime(5 * 60 * 1000); //5 minutes till expires
 
 	resurrectCountdown();
 
 	rescheduleRecovery(2000);
+
+    //Remove powerboost if active.
+	if (powerboosted) {
+		if (powerboostEventWane != NULL) {
+			server->removeEvent(powerboostEventWane);
+			delete powerboostEventWane;
+			powerboostEventWane = NULL;
+		}
+		CreatureObject* creature = (CreatureObject*)_this;
+		creature->removePowerboost();
+		powerboosted = false;
+	}
 }
 
 void PlayerImplementation::changePosture(int post) {
@@ -2295,7 +2298,7 @@ void PlayerImplementation::doRecovery() {
 		queueAction(_this, getTargetID(), 0xA8FEF90A, ++actionCounter, "");
 	}
 
-	if (!isOnFullHealth() || hasWounds() || hasShockWounds())
+	if (!isOnFullHealth() || hasWounds() || hasShockWounds() || powerboosted)
 		calculateHAMregen();
 
 	if (hasStates())
@@ -2329,6 +2332,8 @@ void PlayerImplementation::resurrect() {
 	}
 
 	changePosture(CreaturePosture::UPRIGHT);
+
+	rescheduleRecovery(3000);
 }
 
 void PlayerImplementation::doStateRecovery() {
@@ -2571,45 +2576,44 @@ void PlayerImplementation::sendConsentBox() {
 	sendMessage(consentBox->generateMessage());
 }
 
-void PlayerImplementation::doPowerboost() {
+bool PlayerImplementation::doPowerboost() {
+	uint32 crc = 0x8C2221CB; //powerboost
+	PowerboostSelfSkill* skill = (PowerboostSelfSkill*)creatureSkills.get(crc); //Get the Powerboost skill.
+
+	//Check if already powerboosted.
 	if (powerboosted) {
-		sendSystemMessage("teraskasi", "powerboost_active");
-		return;
+		sendSystemMessage("teraskasi", "powerboost_active"); //"[meditation] You are unable to channel your energies any further."
+		return false;
 	}
 
-	int duration = 0;
-
+    //Make sure player is meditating.
 	if (!meditating) {
-		sendSystemMessage("teraskasi", "powerboost_fail");
-		return;
+		sendSystemMessage("teraskasi", "powerboost_fail"); //"You must be meditating to perform that command."
+		return false;
 	}
 
-	String txt0 = "combat_unarmed_accuracy_02";
-	String txt1 = "combat_unarmed_master";
+	//Check if player has enough mind.
+	float bonus = skill->getBonus();
+	int availableMind = getMindMax() - getMindWounds();
+    if (availableMind <= getBaseMind() * bonus) {
+    	sendSystemMessage("teraskasi", "powerboost_mind"); //"[meditation] You currently lack the mental capacity to focus your energies."
+    	return false;
+    }
 
-	if (hasSkillBox(txt1))
-		// ToDo: Master duration modifier is missing in the packet?
-		// TKM should have 10 Minutes powerboost but the client sends only 5 minute powerboost at master as well
-		//duration = 600000;
+	//Calculate duration.
+	int meditateMod = getSkillMod("meditate");
+	int duration = 300000 + (3000 * meditateMod);
 
-		duration = 300000;
+    //Start Powerboost.
+    powerboosted = true;
+	sendSystemMessage("teraskasi", "powerboost_begin"); //"[meditation] You focus your energies into your physical form."
 
-	else if (hasSkillBox(txt0))
-		duration = 300000;
+	//Queue the wane event.
+	powerboostEventWane = new PowerboostEventWane(_this, skill);
+	server->addEvent(powerboostEventWane, duration);
 
-	//Fire the "begin"-event
-	sendSystemMessage("teraskasi", "powerboost_begin");
-
-	//Queue the "wane"-event
-	server->addEvent(powerboostEventWane, duration-60000);
-
-	//Queue the "...come to an end"-event
-	server->addEvent(powerboostEventEnd, duration);
-
-	powerboosted = true;
+	return true;
 }
-
-
 
 void PlayerImplementation::doCenterOfBeing() {
 	if (centered) {

@@ -89,7 +89,6 @@ class PlayerRecoveryEvent;
 class PlayerDigestEvent;
 class CenterOfBeingEvent;
 class PowerboostEventWane;
-class PowerboostEventEnd;
 class PlayerDisconnectEvent;
 class PlayerLogoutEvent;
 class PlayerResurrectEvent;
@@ -193,12 +192,12 @@ class PlayerImplementation : public PlayerServant {
 	bool guildLeader;
 
 	bool centered;
-	CenterOfBeingEvent* centerOfBeingEvent;
 
 	bool powerboosted;
 
+	CenterOfBeingEvent* centerOfBeingEvent;
+
 	PowerboostEventWane* powerboostEventWane;
-	PowerboostEventEnd* powerboostEventEnd;
 
 
 	float lastTestPositionX;
@@ -732,7 +731,7 @@ public:
 	void doCenterOfBeing();
 	void removeCenterOfBeing();
 
-	void doPowerboost();
+	bool doPowerboost();
 
 	void doPeace();
 
@@ -1461,6 +1460,14 @@ public:
 
 	inline bool getMeditate() {
 		return meditating;
+	}
+
+	inline bool getPowerboosted() {
+		return powerboosted;
+	}
+
+	inline void setPowerboosted(bool pb) {
+		powerboosted = pb;
 	}
 
 	inline bool isChangingFactionStatus() {

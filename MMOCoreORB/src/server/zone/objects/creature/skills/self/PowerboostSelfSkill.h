@@ -42,46 +42,81 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SKILLS_H_
-#define SKILLS_H_
+#ifndef POWERBOOSTSELFSKILL_H_
+#define POWERBOOSTSELFSKILL_H_
 
-#include "target/attack/RandomPoolAttackTargetSkill.h"
-#include "target/attack/DirectPoolAttackTargetSkill.h"
-#include "target/attack/DotPoolAttackTargetSkill.h"
-#include "target/attack/DeBuffAttackTargetSkill.h"
-#include "target/attack/WoundsDirectPoolAttackTargetSkill.h"
-#include "target/attack/force/ForceRandomPoolAttackTargetSkill.h"
-#include "target/attack/force/ForceDotPoolAttackTargetSkill.h"
-#include "target/HealTargetSkill.h"
-#include "target/heal/ForceHealTargetSkill.h"
+#include "../SelfSkill.h"
 
-#include "target/HealEnhanceTargetSkill.h"
-#include "target/HealDamageTargetSkill.h"
-#include "target/HealStateTargetSkill.h"
-#include "target/HealWoundTargetSkill.h"
-#include "target/CureTargetSkill.h"
-#include "target/DiagnoseTargetSkill.h"
-#include "target/ReviveTargetSkill.h"
-#include "target/FirstAidTargetSkill.h"
-#include "target/QuickHealTargetSkill.h"
-#include "target/MindHealTargetSkill.h"
-#include "target/TendHealTargetSkill.h"
+class PowerboostSelfSkill : public SelfSkill {
 
-#include "self/HealSelfSkill.h"
-#include "self/force/ForceHealSelfSkill.h"
-#include "self/force/ForceRunSelfSkill.h"
-#include "self/EnhanceSelfSkill.h"
-#include "self/ChangePostureSelfSkill.h"
-#include "self/MeditateSelfSkill.h"
-#include "self/PowerboostSelfSkill.h"
+protected:
 
-#include "self/EntertainSelfSkill.h"
-#include "self/EntertainEffectSelfSkill.h"
-#include "self/DanceEffectSelfSkill.h"
-#include "self/MusicEffectSelfSkill.h"
+	float bonus;
+	String effect;
 
+public:
+	PowerboostSelfSkill(const String& name, const String& eff, ZoneProcessServerImplementation* serv) : SelfSkill(name, eff.toCharArray(), OTHER, serv) {
+		effect = eff;
+	}
 
-#include "PassiveSkill.h"
+	void doSkill(CreatureObject* creature, String& modifier) {
+		int baseMind = creature->getBaseMind();
 
+		//Calculate the Powerboost bonus.
+		float hamBonus = (float)baseMind * bonus;
+		int pbBonus = (int)hamBonus;
+		int pbMind = pbBonus * 2;
+		int pbTick = pbBonus / 20;
 
-#endif /*SKILLS_H_*/
+		//Subtract from the mind pool.
+		creature->changeMaxMindBar(-pbBonus);
+
+		//Apply the buff.
+		creature->setpbHA(pbBonus);
+		creature->setpbMind(pbMind);
+		creature->setpbTick(pbTick);
+		creature->setpbBonus(pbBonus);
+
+		//Play the effect.
+		doEffect(creature);
+	}
+
+	void finish(Player* player) {
+		CreatureObject* creature = (CreatureObject*)player;
+		player->sendSystemMessage("teraskasi", "powerboost_wane"); //"[meditation] You feel the effects of your mental focus begin to wane."
+
+		//Remove the buff.
+		int pbBonus = creature->getpbBonus();
+		creature->setpbHA(-pbBonus);
+		creature->setpbMind(-pbBonus);
+		creature->setpbTick(-pbBonus / 20);
+		creature->setpbBonus(0);
+	}
+
+	void doEffect(CreatureObject* creature) {
+		if (!effect.isEmpty()) {
+			creature->playEffect(effect, "");
+		}
+	}
+
+	void setBonus(float bon) {
+		bonus = bon;
+	}
+
+	float getBonus() {
+		return bonus;
+	}
+
+	float calculateSpeed(CreatureObject* creature) {
+		return 1.0;
+	}
+
+	bool calculateCost(CreatureObject* creature) {
+		if (!creature->isMeditating() || creature->isInCombat() || creature->isMounted())
+			return false;
+		else
+			return true;
+	}
+};
+
+#endif /*POWERBOOSTSELFSKILL_H_*/

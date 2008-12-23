@@ -286,6 +286,13 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	level = 0;
 
+	//Powerboost
+	pbHA = 0;
+	pbMind = 0;
+	pbTick = 0;
+	pbBonus = 0;
+	pbCounter = 0;
+
 	// Buffs
 	healthBuff = false;
 	strengthBuff = false;
@@ -573,8 +580,11 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 		else if (doPlayingMusic)
 			stopPlayingMusic();
 
+		//Remove meditative state if needed.
 		if (meditating && postureState != CreaturePosture::SITTING) {
+			updateMood(Races::getMood(moodid));
 			clearState(CreatureState::ALERT);
+			updateStates();
 			meditating = false;
 		}
 
@@ -2423,6 +2433,13 @@ void CreatureObjectImplementation::calculateHAMregen() {
 		doMeditateHeals();
 	}
 
+	if (isPlayer()) {
+		Player* player = (Player*)_this;
+		if (player->getPowerboosted() && pbMind != 0) {
+			doPowerboostTick(player);
+		}
+	}
+
 	if (postureState == CreaturePosture::SITTING) {
 		bool change = changeHAMBars((int)newHealth, (int)newAction, (int)newMind);
 	} else if (postureState == CreaturePosture::CROUCHED) {
@@ -2617,6 +2634,78 @@ void CreatureObjectImplementation::doMeditateWoundHeals() {
 		player->sendSystemMessage("teraskasi","prose_curewound",healParams);
 		delete healParams;
 	}
+}
+
+void CreatureObjectImplementation::doPowerboostTick(Player* player) {
+    //Update the tick counter.
+	pbCounter++;
+
+	//Change the Max Health & Action.
+	if (pbHA != 0) {
+		if (pbCounter >= 20) {
+			changeMaxHealthBar(pbHA);
+			changeMaxActionBar(pbHA);
+			pbHA = 0;
+
+		} else {
+			changeMaxHealthBar(pbTick);
+			changeMaxActionBar(pbTick);
+			pbHA -= pbTick;
+		}
+	}
+
+	//Change the Max Mind.
+	if (pbMind > 0) { //Deal with positive values.
+		if (pbCounter >= 40) {
+			changeMaxMindBar(pbMind);
+			pbMind = 0;
+			pbCounter = 0;
+		} else {
+			changeMaxMindBar(pbTick);
+			pbMind -= pbTick;
+		}
+
+	} else if (pbMind < 0) { //Deal with negative values.
+		if (pbCounter >= 20) {
+			changeMaxMindBar(pbMind);
+			pbMind = 0;
+			pbCounter = 0;
+			player->sendSystemMessage("teraskasi", "powerboost_end");
+			player->setPowerboosted(false);
+		} else {
+			changeMaxMindBar(pbTick);
+			pbMind -= pbTick;
+		}
+	}
+	//System::out << "pbHA = " << pbHA << " pbMind = " << pbMind << " pbBonus = " << pbBonus << " pbTick = " << pbTick << " pbCounter = " << pbCounter << endl;
+}
+
+void CreatureObjectImplementation::removePowerboost() {
+	//Remove health & action bonuses.
+	if (pbHA > 0) {
+		changeMaxHealthBar(-(pbBonus - pbHA));
+		changeMaxActionBar(-(pbBonus - pbHA));
+		pbHA = 0;
+	} else if (pbHA < 0) {
+		changeMaxHealthBar(pbHA);
+		changeMaxActionBar(pbHA);
+		pbHA = 0;
+	} else {
+		changeMaxHealthBar(-pbBonus);
+		changeMaxActionBar(-pbBonus);
+	}
+
+	//Remove mind bonus.
+	if (pbMind > 0) {
+		changeMaxMindBar(-(pbBonus - pbMind));
+		pbMind = 0;
+	} else if (pbMind < 0) {
+		changeMaxMindBar(pbMind);
+		pbMind = 0;
+	} else {
+		changeMaxMindBar(-pbBonus);
+	}
+	pbCounter = 0;
 }
 
 void CreatureObjectImplementation::activateBurstRun() {
@@ -3998,11 +4087,11 @@ void CreatureObjectImplementation::doFlourish(const String& modifier) {
 			//sendSystemMessage("Flourish Buff");
 			addEntertainerFlourishBuff();
 		}
-		
+
 		// Grant Experience
 		if (isPlayer()) {
 			Player* player = (Player*)_this;
-			
+
 			player->addEntertainerFlourishXp(performance->getBaseXp() + performance->getFlourishXpMod());
 		}
 
@@ -4122,7 +4211,7 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 		changeMindWoundsBar(woundHeal, false);
 		changeFocusWoundsBar(woundHeal, false);
 		changeWillpowerWoundsBar(woundHeal, false);
-		
+
 		healingXp += -1 * woundHeal;
 	}
 
@@ -4158,13 +4247,13 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 						obj->changeMindWoundsBar(woundHeal, false);
 						obj->changeFocusWoundsBar(woundHeal, false);
 						obj->changeWillpowerWoundsBar(woundHeal, false);
-						
+
 						healingXp += -1 * woundHeal;
 					}
 
 					if (healShock) {
 						obj->changeShockWounds(shockHeal);
-						
+
 						healingXp += -1 * woundHeal;
 					}
 
@@ -4201,11 +4290,11 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 		}
 	} /*else
 		System::out << "no patrons";*/
-		
+
 	// Add Experience
 	if (healingXp > 0 && isPlayer()) {
 		Player* player = (Player*)_this;
-		
+
 		player->addEntertainerHealingXp(healingXp);
 	}
 

@@ -223,7 +223,7 @@ public:
 
 	void removeCenterOfBeing();
 
-	void doPowerboost();
+	bool doPowerboost();
 
 	void doPeace();
 
@@ -286,6 +286,10 @@ public:
 	unsigned int getMoneyToTrade();
 
 	bool getMeditate();
+
+	bool getPowerboosted();
+
+	void setPowerboosted(bool pb);
 
 	void changeCloth(unsigned long long itemid);
 
@@ -1012,7 +1016,7 @@ public:
 
 	void removeCenterOfBeing();
 
-	void doPowerboost();
+	bool doPowerboost();
 
 	void doPeace();
 
@@ -1075,6 +1079,10 @@ public:
 	unsigned int getMoneyToTrade();
 
 	bool getMeditate();
+
+	bool getPowerboosted();
+
+	void setPowerboosted(bool pb);
 
 	void changeCloth(unsigned long long itemid);
 
