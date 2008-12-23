@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "ItemManagerImplementation.h"
 
 StartingItemList * ItemManagerImplementation::startingItems = NULL;
+ForageItemList * ItemManagerImplementation::forageItems = NULL;
 BlueFrogItemSet * ItemManagerImplementation::bfItemSet = NULL;
 BlueFrogProfessionSet * ItemManagerImplementation::bfProfSet = NULL;
 bool ItemManagerImplementation::bfEnabled = false;
@@ -70,6 +71,7 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv, ZoneProce
 	nextStaticItemID = 0x90000000;
 
 	startingItems = new StartingItemList();
+	forageItems = new ForageItemList();
 	bfItemSet = new BlueFrogItemSet();
 	bfProfSet = new BlueFrogProfessionSet();
 
@@ -78,6 +80,8 @@ ItemManagerImplementation::ItemManagerImplementation(ZoneServer* serv, ZoneProce
 	registerGlobals();
 	info("Loading Starting Items...", true);
 	runFile("scripts/items/starting/main.lua");
+	info("Loading Forage Items...", true);
+	runFile("scripts/items/forageable/main.lua");
 	info("Loading Blue Frog Items...", true);
 	runFile("scripts/items/bluefrog/main.lua");
 }
@@ -660,6 +664,7 @@ void ItemManagerImplementation::registerFunctions() {
 	lua_register(getLuaState(), "AddBFItem", addBFItem);
 	lua_register(getLuaState(), "AddBFProf", addBFProf);
 	lua_register(getLuaState(), "AddBFGroup", addBFGroup);
+	lua_register(getLuaState(), "CreateForageItemFromLua", createForageItemFromLua);
 }
 
 void ItemManagerImplementation::registerGlobals() {
@@ -670,6 +675,7 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("LAIR", TangibleObjectImplementation::LAIR);
 	setGlobalInt("HOLOCRON", TangibleObjectImplementation::HOLOCRON);
 	setGlobalInt("SHIPCOMPONENT", TangibleObjectImplementation::SHIPCOMPONENT);
+	setGlobalInt("COMPONENT", TangibleObjectImplementation::COMPONENT);
 	setGlobalInt("ARMOR", TangibleObjectImplementation::ARMOR);
 	setGlobalInt("BODYARMOR", TangibleObjectImplementation::BODYARMOR);
 	setGlobalInt("HEADARMOR", TangibleObjectImplementation::HEADARMOR);
@@ -1138,7 +1144,35 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		int attributeSlots = itemconfig.getIntField("slots");
 		Container* container = (Container*) item;
 		container->setSlots(attributeSlots);
-	}
+
+    } else if (type == TangibleObjectImplementation::COMPONENT) {
+	    Component* component = (Component*) item;
+	    String attribute;
+	    String title;
+	    int charges, power;
+
+	    switch (crc) {
+	    case (0xDCC80CD1): //BEC
+	    case (0x891C5134): //ABEC
+
+	    	charges = itemconfig.getIntField("charges");
+	    	attribute = "Charges";
+	    	title = "exp_charges";
+	    	component->addProperty(attribute, charges, 0, title);
+
+	    case (0xC8272A3F): //LS
+	    case (0x6F0ACB91): //ALS
+	    case (0x6F7D65AD): //CRDM
+	    case (0x10D04467): //ACRDM
+	    case (0x83597C2E): //SDS
+	    case (0xAFFCBBEB): //ASDS
+
+            	power = itemconfig.getIntField("power");
+            	attribute = "Power";
+            	title = "exp_effectiveness";
+            	component->addProperty(attribute, power, 0, title);
+	    }
+    }
 
 	return item;
 }
@@ -1611,6 +1645,120 @@ void ItemManagerImplementation::purgeDbDeleted(Player* player) {
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
 	}
+}
+
+int ItemManagerImplementation::createForageItemFromLua(lua_State* l) {
+	LuaObject itemconfig(l);
+
+	int forageGroup = itemconfig.getIntField("forageGroup");
+	TangibleObject* item = createTemplateFromLua(itemconfig);
+
+	forageItems->add(item, forageGroup);
+
+    return 0;
+}
+
+void ItemManagerImplementation::giveForageItem(Player* player, int group, int count) {
+	TangibleObject* item;
+    String crafter;
+    String serial;
+    String attributeName;
+    uint64 objectID;
+    int type;
+    float value;
+
+	if (group != 6) {
+	   for (int i = 0; i < count; i++) {
+
+	       //Pull a random item from the specified loot group.
+           item = forageItems->get(group);
+
+           //Set a new object ID.
+           objectID = player->getNewItemID();
+           item = clonePlayerObjectTemplate(objectID, item);
+
+           //Set the crafter's name blank.
+           crafter = " ";
+           item->setCraftersName(crafter);
+
+           //Set the serial number.
+           serial = player->getZone()->getZoneServer()->getCraftingManager()->generateCraftedSerial();
+           item->setCraftedSerial(serial);
+
+           //Randomize the attribute values.
+           item = forageStatRandomizer(item);
+
+           //Give item to player.
+           player->addInventoryItem(item);
+           item->sendTo(player);
+       }
+
+	} else { //Exceptional Components.
+        if (count > 0) {
+
+		    //Pull a random item from the specified loot group.
+		   item = forageItems->get(group);
+
+		   //Set a new object ID.
+		   objectID = player->getNewItemID();
+		   item = clonePlayerObjectTemplate(objectID, item);
+
+		   //Set the crafter's name blank.
+		   crafter = " ";
+		   item->setCraftersName(crafter);
+
+		   //Set the serial number.
+		   serial = player->getZone()->getZoneServer()->getCraftingManager()->generateCraftedSerial();
+		   item->setCraftedSerial(serial);
+
+		   //Give first item.
+		   player->addInventoryItem(item);
+		   item->sendTo(player);
+
+		   //Give additional identical items.
+		   for (int i = 0; i < count - 1; i++) {
+		       objectID = player->getNewItemID();
+		       item = clonePlayerObjectTemplate(objectID, item);
+		       player->addInventoryItem(item);
+		       item->sendTo(player);
+		   }
+        }
+    }
+}
+
+TangibleObject* ItemManagerImplementation::forageStatRandomizer(TangibleObject* item) {
+	int type = item->getObjectSubType();
+	float value;
+	String property;
+	uint64 crc = item->getObjectCRC();
+
+	Component* component = (Component*)item;
+
+	switch (crc) {
+	    case (0xDCC80CD1): //BEC
+	    case (0x891C5134): //ABEC
+	    	property = "Charges";
+	    	value = component->getAttributeValue(property);
+	    	if (value != -1234.0f) {
+
+	    	   	value += System::random((int)value * 3);
+	    	   	component->changeAttributeValue(property, value);
+	    	}
+	    case (0xC8272A3F): //LS
+	    case (0x6F0ACB91): //ALS
+	    case (0x6F7D65AD): //CRDM
+	    case (0x10D04467): //ACRDM
+	    case (0x83597C2E): //SDS
+	    case (0xAFFCBBEB): //ASDS
+	    	property = "Power";
+	    	value = component->getAttributeValue(property);
+	    	if (value != -1234.0f) {
+	    	    value += System::random((int)value * 3);
+	    	   	component->changeAttributeValue(property, value);
+	    	}
+    }
+
+   return item;
 }
 
 void ItemManagerImplementation::transferContainerItem(Player* player, TangibleObject* item, uint64 destinationID) {

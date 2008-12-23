@@ -303,6 +303,11 @@ interface Player implements CreatureObject {
 	String getNextSkillBox();
 	boolean hasNextSkillBox();
 	boolean hasSkillBox(String skillBox);
+	
+	// Foraging                                                                                                                       
+	void startForaging(int foragetype);
+	boolean isForaging();      
+	int lottery(int mytickets, int totaltickets);                                                                                     
 
 	// Waypoint
 	void addWaypoint(WaypointObject wp);

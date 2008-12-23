@@ -78,6 +78,7 @@ public:
 	static const int MUSIC = 8;
 	static const int DIAGNOSE = 9;
 	static const int REVIVE = 10;
+	static const int FORAGE = 11;
 	static const int OTHER = 0;
 
 	static const int TARGET = 1;
@@ -171,6 +172,10 @@ public:
 
 	inline bool isReviveSkill() {
 		return type == REVIVE;
+	}
+
+	inline bool isForageSkill() {
+		return type == FORAGE;
 	}
 
 	inline uint32 getNameCRC() {

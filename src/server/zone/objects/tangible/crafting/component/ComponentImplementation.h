@@ -125,6 +125,16 @@ public:
 		}
 		return false;
 	}
+
+	inline bool changeAttributeValue(String& property, float value) {
+		bool exists = hasKey(property);
+		if (exists == false)
+			return false;
+
+		attributeMap.drop(property);
+		attributeMap.put(property, value);
+		itemAttributes->setFloatAttribute(property, value);
+	}
 };
 
 #endif /*COMPONENTIMPLEMENTATION_H_*/

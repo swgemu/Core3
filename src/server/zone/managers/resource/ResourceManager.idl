@@ -91,4 +91,6 @@ interface ResourceManager {
 	boolean useResourceDeed(Player player, String resourceName, int resourceQuantity);
 
 	boolean containsResource(String resourceName);
+	
+	void giveForageResource(Player player, float foragex, float foragey, int forageplanet);                                              
 }

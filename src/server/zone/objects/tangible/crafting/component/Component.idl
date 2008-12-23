@@ -84,5 +84,7 @@ interface Component implements TangibleObject {
     
 	int getPropertyCount();
 	String getProperty(const int j);
+	
+	boolean changeAttributeValue(String property, float value);                                                                             
 
 }

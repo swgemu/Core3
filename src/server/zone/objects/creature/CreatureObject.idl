@@ -109,6 +109,7 @@ interface CreatureObject implements SceneObject {
 	boolean isKnockedDown();
 	boolean isKneeled();
 	boolean isProne();
+	boolean isStanding();                                                                                                                         
 	boolean isInCombat();
 	boolean isDizzied();
 	boolean isStunned();

@@ -74,6 +74,7 @@ which carries forward this exception.
 #include "self/ChangePostureSelfSkill.h"
 #include "self/MeditateSelfSkill.h"
 #include "self/PowerboostSelfSkill.h"
+#include "self/ForageSelfSkill.h"
 
 #include "self/EntertainSelfSkill.h"
 #include "self/EntertainEffectSelfSkill.h"

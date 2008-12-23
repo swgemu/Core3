@@ -76,6 +76,8 @@ class CraftingManagerImplementation : public CraftingManagerServant,
 	// Use a groupName to recieve a vector of draftSchematics back
 	VectorMap<String, DraftSchematicGroup*> draftSchematicsMap;
 
+	String generatedSerial;
+
 	static CraftingManagerImplementation* instance;
 
 	static const double CONSTE = 2.71828182845904523536;
@@ -168,6 +170,8 @@ public:
 
 	void refreshDraftSchematics(Player* player);
 
+	String& generateCraftedSerial();
+
 private:
 	void mapDraftSchematic(DraftSchematic* draftSchematic);
 	// End LUA Methods
@@ -222,8 +226,6 @@ private:
 	float getLog(float value);
 
 	int lookUpResourceAttribute(Player* player, TangibleObject* tano, int type,  int slot);
-
-	String generateCraftedSerial();
 
 	Vector<String> parseStringsFromString(const String& unparsedStrings);
 	Vector<uint32> parseUnsignedInt32sFromString(const String& unparsedInts);

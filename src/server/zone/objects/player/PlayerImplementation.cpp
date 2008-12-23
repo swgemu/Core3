@@ -90,6 +90,9 @@ which carries forward this exception.
 #include "events/EntertainerEvent.h"
 #include "events/SampleEvent.h"
 
+#include "events/ForageDelayEvent.h"
+#include "../creature/skills/self/ForageZone.h"
+
 #include "../creature/events/DizzyFallDownEvent.h"
 
 #include "professions/Certification.h"
@@ -190,6 +193,14 @@ PlayerImplementation::~PlayerImplementation() {
 		digestEvent = NULL;
 	}
 
+	if (forageDelayEvent != NULL) {
+		if (forageDelayEvent->isQueued())
+			server->removeEvent(forageDelayEvent);
+
+		delete forageDelayEvent;
+		forageDelayEvent = NULL;
+	}
+
 	if (suiChoicesList != NULL) {
 		suiChoicesList->finalize();
 		suiChoicesList = NULL;
@@ -276,6 +287,8 @@ void PlayerImplementation::initialize() {
  	centered = false;
 
  	powerboosted = false;
+
+ 	foraging = false;
 
 	centerOfBeingEvent = new CenterOfBeingEvent(this);
 
@@ -586,6 +599,9 @@ void PlayerImplementation::unload() {
 	}
 
 	commandQueue.removeAll();
+
+	forageZones.removeAll();
+	medForageZones.removeAll();
 
 	clearCombatState(); // remove the defenders
 
@@ -2201,6 +2217,14 @@ void PlayerImplementation::changePosture(int post) {
 		sendSystemMessage("teraskasi", "med_end");
 	}
 
+	if (foraging) {
+		foraging = false;
+		if (forageDelayEvent->isQueued()) {
+			server->removeEvent(forageDelayEvent);
+		}
+		sendSystemMessage("skl_use", "sys_forage_movefail");  //"You failed to forage because you moved.
+	}
+
 	if (isInCombat() && post == CreaturePosture::SITTING) {
 		clearQueueAction(actionCounter);
 		return;
@@ -2574,6 +2598,235 @@ void PlayerImplementation::sendConsentBox() {
 
 	addSuiBox(consentBox);
 	sendMessage(consentBox->generateMessage());
+}
+
+void PlayerImplementation::startForaging(int foragetype) {
+	foraging = true;
+
+	//Collect player's current position.
+	forageX = getPositionX();
+	forageY = getPositionY();
+	foragePlanet = zone->getZoneID();
+
+	//Queue the forage delay event.
+	int delay = 8500;
+	forageDelayEvent = new ForageDelayEvent(this, foragetype);
+	server->addEvent(forageDelayEvent, delay);
+}
+
+void PlayerImplementation::finishForaging(int foragetype) {
+    if (isLinkDead() || !isForaging())
+    	return;
+
+    foraging = false;
+
+    //Check if player entered combat.
+    if (isInCombat() || isDead() || isIncapacitated()) {
+    	sendSystemMessage("skl_use", "sys_forage_combatfail"); //"Combat distracts you from your foraging attempt."
+    	return;
+    }
+
+    //Check if player moved while foraging.
+    bool success = forageMoveCheck(forageX, forageY, foragePlanet);
+    if (success == false)
+    	return;
+
+    //Determine if player is allowed to forage in this area.
+    success = forageZoneCheck(foragetype);
+    if (success == false)
+    	return;
+
+    //Determine if player gets items.
+    int forageMod;
+    int myTickets;
+    giveReg = 0;
+    giveBonus = 0;
+
+    if (foragetype == 0) {
+    	forageMod = getSkillMod("foraging");
+    	myTickets = (int)(25 + (forageMod * 0.75));
+
+    	giveReg += lottery(myTickets, 99);
+    	giveBonus = lottery(myTickets, 49999); //1 in 500 at +100 mod.
+
+    	if (forageMod >= 25)
+    		giveReg += lottery(myTickets, 2999);
+
+    	if (forageMod >=50)
+        	giveReg += lottery(myTickets, 2999);
+    }
+
+    if (foragetype == 1) {
+    	forageMod = getSkillMod("medical_foraging");
+    	myTickets = (int)(50 + (forageMod * 0.50));
+
+    	giveReg += lottery(myTickets, 99);
+        giveBonus = lottery(myTickets, 249999); //1 in 2500 at +100 mod.
+
+        if (giveBonus == 1) {
+        	giveBonus = 2; //Give 2 identical items with same serial number.
+        	giveReg = 0;
+        }
+    }
+
+    //Send success or fail message.
+    if (giveReg > 0 || giveBonus > 0)
+    	sendSystemMessage("skl_use", "sys_forage_success"); //"Your attempt at foraging was a success!"
+
+    else {
+       	sendSystemMessage("skl_use", "sys_forage_fail"); //"You failed to find anything worth foraging."
+        return;
+    }
+
+    //Discard items if the player's inventory is full.
+    success = discardForageItems();
+    if (success == false)
+        	return;
+
+    //Give items to the player.
+    giveForageItems(foragetype);
+}
+
+bool PlayerImplementation::forageMoveCheck(float startx, float starty, int startplanet) {
+    int movementX = abs((int)getPositionX() - (int)startx);
+    int movementY = abs((int)getPositionY() - (int)starty);
+
+    if (movementX > 5 || movementY > 5 || zone->getZoneID() != startplanet || isMounted() || !isStanding()) {
+    	sendSystemMessage("skl_use", "sys_forage_movefail"); //"You fail to forage because you moved."
+    	return false;
+    } else
+    	return true;
+}
+
+bool PlayerImplementation::forageZoneCheck(int foragetype) {
+	ForageZone* fZone;
+	Vector<ForageZone*>* zoneContainer;
+	int8 zoneStatus = -1;
+	int8 authorized = -1;
+
+	//Point to the correct forage zone container.
+	if (foragetype == 0)
+		zoneContainer = &forageZones;
+	else
+		zoneContainer = &medForageZones;
+
+	//Check each zone for permission to forage.
+	for (int i = 0; i < zoneContainer->size(); i++) {
+		fZone = zoneContainer->get(i);
+		zoneStatus = fZone->zonePermission(forageX, forageY, foragePlanet);
+
+        if (zoneStatus == 0) { //Zone is time expired, delete.
+            zoneContainer->remove(i);
+            i -= 1; //Indexes shift down 1 when deleting an element, compensate.
+        }
+
+        //If zoneStatus == 1, player is not in the zone but it's not expired, so ignore it.
+
+        if (zoneStatus == 2) { //Player is in this zone but was allowed to forage.
+        	authorized = i; //Remember which zone gave permission.
+        }
+
+        if (zoneStatus == 3) { //Player is not allowed to forage in this zone, deny.
+        	sendSystemMessage("skl_use", "sys_forage_empty"); //"There is nothing in this area to forage."
+        	return false;
+        }
+    }
+
+	//Check if a zone gave permission to forage.
+    if (authorized != -1) { //A zone gave permission to forage.
+    	fZone = zoneContainer->get(authorized);
+    	fZone->uses += 1; //Add 1 use to the last zone to allow forage (zones can overlap).
+
+    } else { //Player is not in any zones, so make a new one.
+    	if (zoneContainer->size() == 20) { //Determines how many zones to remember.
+    		zoneContainer->remove(0); //If at capacity, delete the oldest zone.
+    	}
+
+    	ForageZone* newZone = new ForageZone(forageX, forageY, foragePlanet);
+    	zoneContainer->add(newZone);
+    }
+    return true;
+}
+
+int PlayerImplementation::lottery(int mytickets, int totaltickets) {
+	int target = totaltickets - mytickets;
+    int randomNum = System::random(totaltickets);
+
+    if (randomNum > target)
+    	return 1; //Win.
+    else
+    	return 0; //Lose.
+}
+
+bool PlayerImplementation::discardForageItems() {
+    Inventory* inventory = getInventory();
+
+    int inventoryRoom = InventoryImplementation::MAXUNEQUIPPEDCOUNT - inventory->getUnequippedItemCount();
+
+    if (inventoryRoom < 1) {
+        sendSystemMessage("skl_use", "sys_forage_noroom"); //"Some foraged items were discarded, because your inventory is full."
+ 	    return false;
+    }
+
+    int itemCount = giveReg + giveBonus;
+    int drop = itemCount - inventoryRoom;
+
+    if (drop > 0) {
+        sendSystemMessage("skl_use", "sys_forage_noroom");
+
+        while (drop > 0) {
+               if (giveReg == 0) break;
+               giveReg -= 1;
+               drop -= 1;
+        }
+
+        while (drop > 0) {
+               if (giveBonus == 0) break;
+               giveBonus -= 1;
+               drop -= 1;
+        }
+    }
+    return true;
+}
+
+void PlayerImplementation::giveForageItems(int foragetype) {
+	ItemManager* itemManager = getZone()->getZoneServer()->getItemManager();
+	ResourceManager* resourceManager = getZone()->getZoneServer()->getResourceManager();
+
+    if (foragetype == 0) {
+    		itemManager->giveForageItem(_this, 1, giveReg); //basic forage items.
+
+        if (giveBonus == 1)
+        	itemManager->giveForageItem(_this, 2, 1); //rare forage item.
+    }
+
+    if (foragetype == 1) {
+        if (giveReg == 1) {
+	    	int randnum = System::random(99);
+
+	    	if (randnum < 25) { //Give food.
+	    		itemManager->giveForageItem(_this, 3, 1); //medicalforage food.
+	    		return;
+	    	}
+	    	if (randnum < 50) { //Give resource.
+                resourceManager->giveForageResource(_this, forageX, forageY, foragePlanet);
+	    		return;
+	        }
+
+	    	if (randnum < 100) { //Give component.
+	    		randnum = System::random(99);
+	    		if (randnum < 85) {
+	    			itemManager->giveForageItem(_this, 4, 1); //basic component.
+	    		} else {
+	    			itemManager->giveForageItem(_this, 5, 1); //advanced component.
+	    		}
+	    		return;
+	    	}
+        }
+
+    	if (giveBonus > 0) //Give rare components.
+    		itemManager->giveForageItem(_this, 6, giveBonus); //exceptional component.
+    }
 }
 
 bool PlayerImplementation::doPowerboost() {
@@ -4170,7 +4423,7 @@ void PlayerImplementation::addSkillBox(SkillBox* skillBox, bool updateClient) {
 void PlayerImplementation::removeSkillBox(SkillBox* skillBox, bool updateClient) {
 	skillBoxes.remove(skillBox->getName());
 	loadXpTypeCap();
-	
+
 	if (updateClient) {
 		CreatureObjectDeltaMessage1* dcreo1;
 
@@ -4925,7 +5178,7 @@ void PlayerImplementation::loadXpTypeCap() {
 				xpCapList.drop(skillbox->getSkillXpType());
 				xpCapList.put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
 			}
-		} else 
+		} else
 			xpCapList.put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
 	}
 }

@@ -345,6 +345,12 @@ public:
 
 	bool hasSkillBox(String& skillBox);
 
+	void startForaging(int foragetype);
+
+	bool isForaging();
+
+	int lottery(int mytickets, int totaltickets);
+
 	void addWaypoint(WaypointObject* wp);
 
 	bool removeWaypoint(WaypointObject* wp);
@@ -1137,6 +1143,12 @@ public:
 	bool hasNextSkillBox();
 
 	bool hasSkillBox(String& skillBox);
+
+	void startForaging(int foragetype);
+
+	bool isForaging();
+
+	int lottery(int mytickets, int totaltickets);
 
 	void addWaypoint(WaypointObject* wp);
 
