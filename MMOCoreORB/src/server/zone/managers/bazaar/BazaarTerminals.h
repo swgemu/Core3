@@ -199,7 +199,7 @@ public:
 				// Dantooine Imperial Outpost
 				location = "an_imperial_outpost";
 				//TODO: -4252, -2412
-				bazaarLocations->put(1365895, new BazaarTerminalDetails(1, location, -4252, -2412)); //I cant get this bazaar to initialize, have to take a look at it some other time.
+				// bazaarLocations->put(1365895, new BazaarTerminalDetails(1, location, -4252, -2412)); //I cant get this bazaar to initialize, have to take a look at it some other time.
 				bazaarLocations->put(1365910, new BazaarTerminalDetails(1, location, -4263, -2404)); //inside a cell
 
 				// Dantooine Mining Outpost
