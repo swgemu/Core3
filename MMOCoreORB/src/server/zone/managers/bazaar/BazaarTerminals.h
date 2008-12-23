@@ -100,6 +100,14 @@ public:
 				bazaarLocations->put(4005561, new BazaarTerminalDetails(8, location, 1209, 2990));
 				bazaarLocations->put(4005562, new BazaarTerminalDetails(8, location, 1181, 3010));
 				bazaarLocations->put(4005563, new BazaarTerminalDetails(8, location, 1184, 3008));
+				bazaarLocations->put(4685580, new BazaarTerminalDetails(8, location, 1284, 3159));
+				bazaarLocations->put(4685582, new BazaarTerminalDetails(8, location, 1432, 3322));
+				bazaarLocations->put(4685581, new BazaarTerminalDetails(8, location, 1435, 3265));
+				bazaarLocations->put(4685580, new BazaarTerminalDetails(8, location, 1284, 3159));
+				bazaarLocations->put(6076306, new BazaarTerminalDetails(8, location, 1284, 2952));
+				bazaarLocations->put(6076307, new BazaarTerminalDetails(8, location, 1257, 2925));
+				bazaarLocations->put(6076308, new BazaarTerminalDetails(8, location, 1258, 2952));
+				bazaarLocations->put(6076309, new BazaarTerminalDetails(8, location, 1284, 2925));
 
 				// Tatooine Mos Espa
 				location = "mos_espa";
@@ -115,7 +123,6 @@ public:
 				bazaarLocations->put(7495394, new BazaarTerminalDetails(8, location, -3115, 2158));
 				bazaarLocations->put(7495607, new BazaarTerminalDetails(8, location, -2908, 1927));
 
-
 				// Tatooine Mos Taike
 				location = "mos_taike";
 				bazaarLocations->put(3945387, new BazaarTerminalDetails(8, location, 3790, 2337));
@@ -125,7 +132,6 @@ public:
 				location = "wayfar";
 				bazaarLocations->put(3945394, new BazaarTerminalDetails(8, location, -5177, -6485));
 				bazaarLocations->put(3945395, new BazaarTerminalDetails(8, location, -5174, -6485));
-
 
 				// Corellia Coronet
 				location = "coronet";
@@ -176,7 +182,6 @@ public:
 				bazaarLocations->put(6035515, new BazaarTerminalDetails(0, location, -3790, 3178));
 				bazaarLocations->put(6035516, new BazaarTerminalDetails(0, location, -3776, 3192));
 
-
 				// Dathomir Science outpost
 				location = "science_outpost";
 				bazaarLocations->put(2835653, new BazaarTerminalDetails(2, location, -70, -1598));
@@ -193,11 +198,15 @@ public:
 
 				// Dantooine Imperial Outpost
 				location = "an_imperial_outpost";
-				bazaarLocations->put(1365895, new BazaarTerminalDetails(1, location, -4252, -2412));
+				//TODO: -4252, -2412
+				bazaarLocations->put(1365895, new BazaarTerminalDetails(1, location, -4252, -2412)); //I cant get this bazaar to initialize, have to take a look at it some other time.
+				bazaarLocations->put(1365910, new BazaarTerminalDetails(1, location, -4263, -2404)); //inside a cell
 
 				// Dantooine Mining Outpost
 				location = "an_outpost";
 				bazaarLocations->put(1366001, new BazaarTerminalDetails(1, location, -618, 2490));
+				bazaarLocations->put(7275354, new BazaarTerminalDetails(1, location, -607, 2468)); //inside a cell
+
 				// Dantooine Agro Outpost
 				//location = "an_outpost";
 				bazaarLocations->put(8605394, new BazaarTerminalDetails(1, location, 1615, -6366));
@@ -253,10 +262,10 @@ public:
 				bazaarLocations->put(4776021, new BazaarTerminalDetails(5, location, 4817, -4849));
 				bazaarLocations->put(4776022, new BazaarTerminalDetails(5, location, 4821, -4880));
 				bazaarLocations->put(4776023, new BazaarTerminalDetails(5, location, 4790, -4883));
-				bazaarLocations->put(4855366, new BazaarTerminalDetails(5, location, 4658, -4617));
-				bazaarLocations->put(4855367, new BazaarTerminalDetails(5, location, 4655, -4622));
-				bazaarLocations->put(4855368, new BazaarTerminalDetails(5, location, 4675, -4593));
-				bazaarLocations->put(4855369, new BazaarTerminalDetails(5, location, 4673, -4597));
+				bazaarLocations->put(4855366, new BazaarTerminalDetails(5, location, 4656, -4617));
+				bazaarLocations->put(4855367, new BazaarTerminalDetails(5, location, 4653, -4621));
+				bazaarLocations->put(4855368, new BazaarTerminalDetails(5, location, 4674, -4592));
+				bazaarLocations->put(4855369, new BazaarTerminalDetails(5, location, 4671, -4597));
 
 				// Naboo Deeja Peak
 				location = "deeja_peak";
@@ -320,10 +329,13 @@ public:
 				location = "an_imperial_outpost";
 				bazaarLocations->put(5315984, new BazaarTerminalDetails(7, location, -2170, 2344));
 
-				// Endor
+				// Endor Research Outpost
 				location = "an_outpost";
 				bazaarLocations->put(3606001, new BazaarTerminalDetails(3, location, 3231, -3501));
 				bazaarLocations->put(3606003, new BazaarTerminalDetails(3, location, 3243, -3501));
+				// Endor Smuggler Outpost
+				bazaarLocations->put(6645628, new BazaarTerminalDetails(3, location, -867, 1557));
+				bazaarLocations->put(6645630, new BazaarTerminalDetails(3, location, -868, 1554));
 
 				// Lok Nyms Stronghold
 				location = "nyms_stronghold";

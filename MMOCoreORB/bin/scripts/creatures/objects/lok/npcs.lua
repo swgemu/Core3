@@ -39,3 +39,65 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+ --Blood Razor
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorBerzerker.lua")
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorCaptain.lua")
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorCutthroat.lua")
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorDestroyer.lua")
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorGuard.lua")
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorOfficer.lua")
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorPirateElite.lua")
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorPirateStrong.lua")
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorPirateWeak.lua")
+ RunCreatureFile("objects/lok/npcs/bloodRazor/bloodRazorScout.lua")
+
+ --Canyon Corsair
+ RunCreatureFile("objects/lok/npcs/canyonCorsair/canyonCorsairCaptain.lua")
+ RunCreatureFile("objects/lok/npcs/canyonCorsair/canyonCorsairCutthroat.lua")
+ RunCreatureFile("objects/lok/npcs/canyonCorsair/canyonCorsairDestroyer.lua")
+ RunCreatureFile("objects/lok/npcs/canyonCorsair/canyonCorsairGuard.lua")
+ RunCreatureFile("objects/lok/npcs/canyonCorsair/canyonCorsairPirateElite.lua")
+ RunCreatureFile("objects/lok/npcs/canyonCorsair/canyonCorsairPirateStrong.lua")
+ RunCreatureFile("objects/lok/npcs/canyonCorsair/canyonCorsairPirateWeak.lua")
+ RunCreatureFile("objects/lok/npcs/canyonCorsair/canyonCorsairScout.lua")
+ RunCreatureFile("objects/lok/npcs/canyonCorsair/eliteCanyonCorsair.lua")
+
+ --Marooned Pirate
+ RunCreatureFile("objects/lok/npcs/maroonedPirate/maroonedPirate.lua")
+ RunCreatureFile("objects/lok/npcs/maroonedPirate/maroonedPirateCaptain.lua")
+ RunCreatureFile("objects/lok/npcs/maroonedPirate/maroonedPirateEngineer.lua")
+ RunCreatureFile("objects/lok/npcs/maroonedPirate/maroonedPirateFirstMate.lua")
+
+ --Mercenary
+ RunCreatureFile("objects/lok/npcs/mercenary/mercenaryCommander.lua")
+ RunCreatureFile("objects/lok/npcs/mercenary/mercenaryDestroyer.lua")
+ RunCreatureFile("objects/lok/npcs/mercenary/mercenaryElite.lua")
+ RunCreatureFile("objects/lok/npcs/mercenary/mercenaryMessenger.lua")
+ RunCreatureFile("objects/lok/npcs/mercenary/mercenaryStrong.lua")
+ RunCreatureFile("objects/lok/npcs/mercenary/mercenaryWarlord.lua")
+ RunCreatureFile("objects/lok/npcs/mercenary/mercenaryWeak.lua")
+
+ --Misc
+ RunCreatureFile("objects/lok/npcs/misc/droideka.lua")
+ RunCreatureFile("objects/lok/npcs/misc/imperialDeserter.lua")
+ RunCreatureFile("objects/lok/npcs/misc/jinkins.lua")
+ RunCreatureFile("objects/lok/npcs/misc/kole.lua")
+ RunCreatureFile("objects/lok/npcs/misc/slpPirate.lua")
+
+ --Nym
+ RunCreatureFile("objects/lok/npcs/nym/nym.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymBodyguard.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymBrawler.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymDestroyer.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymDroidekaStrong.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymDroidekaWeak.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymGuard.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymGuardElite.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymGuardStrong.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymPatrolElite.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymPatrolStrong.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymPatrolWeak.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymPirateElite.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymPirateStrong.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymPirateWeak.lua")
+ RunCreatureFile("objects/lok/npcs/nym/nymSurveyer.lua")

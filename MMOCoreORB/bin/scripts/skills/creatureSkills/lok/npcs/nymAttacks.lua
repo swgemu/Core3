@@ -39,6 +39,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 nymAttack1 = {
 	attackname = "nymAttack1",
 	animation = "combo_2d_medium",
@@ -71,6 +72,9 @@ nymAttack1 = {
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack1)
+
+-----------------------------------------------------------------------
+
 nymAttack2 = {
 	attackname = "nymAttack2",
 	animation = "combo_4b_medium",
@@ -103,6 +107,38 @@ nymAttack2 = {
 }
 
 AddRandomPoolAttackTargetSkill(nymAttack2)
+
+-----------------------------------------------------------------------
+
+nymAttack3 = {
+	attackname = "nymAttack3",
+	animation = "droid_attack_medium",
+
+	requiredWeaponType = RANGED,
+	
+	range = 64,
+	damageRatio = 10,
+	speedRatio = 1,
+	coneAngle = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 10,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(nymAttack3)
+-----------------------------------------------------------------------
 
 nymAttack10 = { 
 	attackname = "nymAttack10",
@@ -176,7 +212,6 @@ nymAttack11 = {
 AddRandomPoolAttackTargetSkill(nymAttack11)
 
 -----------------------------------------------------------------------
-
 
 nymAttack12 = { 
 	attackname = "nymAttack12",
@@ -608,4 +643,4 @@ nymAttack24 = {
 	CbtSpamHit = "chargeshot_hit",
 	CbtSpamMiss = "chargeshot_miss",
 }
-RandomPoolAttackTargetSkill(nymAttack24)
+AddRandomPoolAttackTargetSkill(nymAttack24)
