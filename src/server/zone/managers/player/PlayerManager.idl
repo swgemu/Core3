@@ -107,4 +107,7 @@ interface PlayerManager {
 	GuildManager getGuildManager();
 
 	PlayerMap getPlayerMap();
+
+	void setXpScale(int scale);
+	int getXpScale();
 }

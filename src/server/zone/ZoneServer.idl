@@ -139,9 +139,6 @@ interface ZoneServer {
 	int getDeletedPlayers();
 
 	unsigned long getStartTimestamp();
-
-	void setXpScale(int scale);
-	int getXpScale();
 	
 	unsigned long getNextCreatureID(boolean doLock = true);
 	unsigned long getNextID(boolean doLock = true);

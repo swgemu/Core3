@@ -64,6 +64,8 @@ which carries forward this exception.
 
 #include "../attackable/lair/LairObject.h"
 
+#include "../../managers/player/PlayerManager.h"
+
 SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), QuadTreeEntry(), Logger() {
 	objectID = 0;
 	objectType = 0;
@@ -663,9 +665,9 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 			if (xpaddsingle < 1.0f)
 				xpaddsingle = 1.0f;
 
-			ZoneServer* zsrv = server->getZoneServer();
-			if (zsrv != NULL)
-				xpaddsingle *= zsrv->getXpScale();
+			PlayerManager* pmng = server->getPlayerManager();
+			if (pmng != NULL)
+				xpaddsingle *= pmng->getXpScale();
 
 			player->addXp(xptype, (int)xpaddsingle, true);
 			if (xptype != "jedi_general")

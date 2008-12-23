@@ -73,6 +73,8 @@ class PlayerManagerImplementation : public PlayerManagerServant {
 	ItemManager* itemManager;
 
 	GuildManager* guildManager;
+	
+	int xpScale;
 
 private:
 	void loadFromDatabase(Player* player);
@@ -153,6 +155,14 @@ public:
 
 	inline GuildManager* getGuildManager() {
 		return guildManager;
+	}
+	
+	inline void setXpScale(int scale) {
+		xpScale = scale;
+	}
+	
+	inline int getXpScale() {
+		return xpScale;
 	}
 };
 

@@ -84,6 +84,8 @@ PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneP
 	itemManager = mgr;
 
 	server = srv;
+	
+	xpScale = 1;
 }
 
 PlayerManagerImplementation::~PlayerManagerImplementation() {
