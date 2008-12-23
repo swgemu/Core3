@@ -59,6 +59,7 @@
 #include "ItemManager.h"
 
 #include "StartingItemList.h"
+#include "ForageItemList.h"
 #include "../../objects/creature/bluefrog/BlueFrogItemSet.h"
 #include "../../objects/creature/bluefrog/BlueFrogProfessionSet.h"
 
@@ -78,6 +79,7 @@ class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	uint64 nextStaticItemID;
 
 	static StartingItemList * startingItems;
+	static ForageItemList* forageItems;
 	static BlueFrogItemSet * bfItemSet;
 	static BlueFrogProfessionSet * bfProfSet;
 
@@ -90,6 +92,9 @@ class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	static int addBFProf(lua_State * l);
 	static int addBFGroup(lua_State * l);
 	static int runItemLUAFile(lua_State* L);
+
+	static int createForageItemFromLua(lua_State* l);
+	TangibleObject* forageStatRandomizer(TangibleObject* item);
 
 	static int enableBlueFrogs(lua_State* L) {
 		bfEnabled = true;
@@ -143,6 +148,8 @@ public:
 	void showDbDeleted(Player* player);
 
 	void purgeDbDeleted(Player* player);
+
+	void giveForageItem(Player* player, int group, int count);
 
 	//player storage / item movement
 	void loadItemsInContainersForStructure(Player* player, Container* conti);

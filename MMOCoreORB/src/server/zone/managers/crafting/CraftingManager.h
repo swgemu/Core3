@@ -61,10 +61,14 @@ public:
 
 	void refreshDraftSchematics(Player* player);
 
+	String& generateCraftedSerial();
+
 protected:
 	CraftingManager(DummyConstructorParameter* param);
 
 	virtual ~CraftingManager();
+
+	String _return_generateCraftedSerial;
 
 	friend class CraftingManagerHelper;
 };
@@ -108,6 +112,8 @@ public:
 	void subtractDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
 
 	void refreshDraftSchematics(Player* player);
+
+	String& generateCraftedSerial();
 
 protected:
 	String _param1_nextCraftingStage__Player_String_;

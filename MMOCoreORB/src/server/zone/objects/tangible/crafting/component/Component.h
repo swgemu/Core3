@@ -53,6 +53,8 @@ public:
 
 	String& getProperty(const int j);
 
+	bool changeAttributeValue(String& property, float value);
+
 protected:
 	Component(DummyConstructorParameter* param);
 
@@ -96,6 +98,8 @@ public:
 
 	String& getProperty(const int j);
 
+	bool changeAttributeValue(String& property, float value);
+
 protected:
 	String _param0_getAttributeValue__String_;
 	String _param0_getAttributePrecision__String_;
@@ -103,6 +107,7 @@ protected:
 	String _param0_hasProperty__String_;
 	String _param0_addProperty__String_float_int_String_;
 	String _param3_addProperty__String_float_int_String_;
+	String _param0_changeAttributeValue__String_float_;
 };
 
 class ComponentHelper : public DistributedObjectClassHelper, public Singleton<ComponentHelper> {

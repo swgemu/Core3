@@ -86,6 +86,8 @@ interface ItemManager {
 	void transferContainerItem(Player player, TangibleObject item, unsigned long destinationID);
 	void loadStructurePlayerItems(Player player, unsigned long cellID);
 	
+	void giveForageItem(Player player, int group, int count);                                                                     
+	
 	// stat methods
 	void showDbStats(Player player);
 	void showDbDeleted(Player player);

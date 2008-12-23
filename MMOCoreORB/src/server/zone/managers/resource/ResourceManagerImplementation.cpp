@@ -81,6 +81,8 @@ ResourceManagerImplementation::ResourceManagerImplementation(ZoneServer* inserve
 	//  Spawner does take a good bit of time to populate an
 	//  Empty database.
 
+	forageResource = true;
+
 	setLogging(false);
 	setGlobalLogging(true);
 
@@ -2438,4 +2440,84 @@ void ResourceManagerImplementation::printResource(String name){
 	} catch (...) {
 		System::out << "unreported exception caught in ResourceManagerImplementation::printResource\n";
 	}
+}
+
+void ResourceManagerImplementation::giveForageResource(Player* player, float foragex, float foragey, int forageplanet){
+	ResourceList* resList;
+	ResourceItem* resItem;
+	String resName;
+	int resQuantity = 14 + System::random(4);
+	bool giveBackupResource = false;
+
+	//Find resources near the player and randomly pick one.
+    if (forageResource == true) { //Give flora resource.
+    	resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::FLORA);
+
+	    if (resList->size() > 0) { //Make sure there is a resource of this type near the player.
+		    resItem = resList->get(System::random(resList->size() - 1));
+		    resName = resItem->getName();
+	    } else {
+		    giveBackupResource = true; //No resources of this type, try to give something else.
+	    }
+	    forageResource = false;
+
+    } else { //Give inorganic resource.
+       switch (System::random(3)) {
+          case 0:
+    	      resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::MINERAL);
+    	      break;
+          case 1:
+    	      resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::CHEMICAL);
+    	      break;
+          case 2:
+    	      resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::GAS);
+    	      break;
+          case 3:
+    	      resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::WATER);
+    	      break;
+       }
+       if (resList->size() > 0) { //Make sure there is a resource of this type near the player.
+    	   resItem = resList->get(System::random(resList->size() - 1));
+    	   resName = resItem->getName();
+       } else {
+		   giveBackupResource = true; //No resources of this type, try to give something else.
+       }
+       forageResource = true;
+    }
+
+    //If there are no resources of the randomly selected type, give a different resource.
+    if (giveBackupResource == true) { //Failed to find a resource of the type they were randomly selected to get.
+       switch (0) {
+    	  case 0:
+    	      resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::MINERAL);
+    	      if (resList->size() > 0)
+    	    	  break;
+    	  case 1:
+    	      resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::CHEMICAL);
+    	      if (resList->size() > 0)
+    	          break;
+    	  case 2:
+    	      resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::GAS);
+    	      if (resList->size() > 0)
+    	           break;
+    	  case 3:
+    	      resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::WATER);
+    	      if (resList->size() > 0)
+    	          break;
+    	  case 4:
+    	      resList = getResourceListAtLocation(forageplanet, foragex, foragey, ResourceHarvestType::FLORA);
+    	      if (resList->size() > 0)
+    	      	 break;
+       }
+       if (resList->size() > 0) {
+    	   resItem = resList->get(System::random(resList->size() - 1));
+    	   resName = resItem->getName();
+       }
+    }
+
+    //Give player the resource.
+    if (resList->size() > 0) {
+    	ResourceContainer* newRcno = createNewResourceContainer(player, resName, resQuantity);
+    	player->addInventoryResource(newRcno);
+    }
 }

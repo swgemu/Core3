@@ -84,4 +84,6 @@ interface CraftingManager {
 	void subtractDraftSchematicsFromGroupName(Player player, const String schematicGroupName);
 
 	void refreshDraftSchematics(Player player);
+	
+	String generateCraftedSerial();
 }

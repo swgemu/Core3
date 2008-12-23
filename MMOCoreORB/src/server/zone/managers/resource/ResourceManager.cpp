@@ -273,6 +273,22 @@ bool ResourceManager::containsResource(String& resourceName) {
 		return ((ResourceManagerImplementation*) _impl)->containsResource(resourceName);
 }
 
+void ResourceManager::giveForageResource(Player* player, float foragex, float foragey, int forageplanet) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+		method.addObjectParameter(player);
+		method.addFloatParameter(foragex);
+		method.addFloatParameter(foragey);
+		method.addSignedIntParameter(forageplanet);
+
+		method.executeWithVoidReturn();
+	} else
+		((ResourceManagerImplementation*) _impl)->giveForageResource(player, foragex, foragey, forageplanet);
+}
+
 /*
  *	ResourceManagerAdapter
  */
@@ -334,6 +350,9 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 22:
 		resp->insertBoolean(containsResource(inv->getAsciiParameter(_param0_containsResource__String_)));
+		break;
+	case 23:
+		giveForageResource((Player*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -408,6 +427,10 @@ bool ResourceManagerAdapter::useResourceDeed(Player* player, String& resourceNam
 
 bool ResourceManagerAdapter::containsResource(String& resourceName) {
 	return ((ResourceManagerImplementation*) impl)->containsResource(resourceName);
+}
+
+void ResourceManagerAdapter::giveForageResource(Player* player, float foragex, float foragey, int forageplanet) {
+	return ((ResourceManagerImplementation*) impl)->giveForageResource(player, foragex, foragey, forageplanet);
 }
 
 /*

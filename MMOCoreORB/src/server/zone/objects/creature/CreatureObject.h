@@ -89,6 +89,8 @@ public:
 
 	bool isProne();
 
+	bool isStanding();
+
 	bool isInCombat();
 
 	bool isDizzied();
@@ -1249,6 +1251,8 @@ public:
 	bool isKneeled();
 
 	bool isProne();
+
+	bool isStanding();
 
 	bool isInCombat();
 

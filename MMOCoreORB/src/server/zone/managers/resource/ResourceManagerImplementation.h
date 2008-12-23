@@ -108,6 +108,8 @@ class ResourceManagerImplementation : public ResourceManagerServant, public Mute
 
 	float spawnThrottling;
 
+	bool forageResource;
+
 	String EMPTY;
 
 	//int tempOver, tempUnder;
@@ -152,6 +154,8 @@ public:
 	void generateSUI(Player* player, SuiListBox* sui);
 
 	bool containsResource(String& resourceName);
+
+	void giveForageResource(Player* player, float foragex, float foragey, int forageplanet);
 
 private:
 	void init();

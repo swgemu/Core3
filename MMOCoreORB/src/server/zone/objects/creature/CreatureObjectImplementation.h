@@ -730,6 +730,10 @@ public:
 		return postureState == CreaturePosture::PRONE;
 	}
 
+	inline bool isStanding() {
+		return postureState == CreaturePosture::UPRIGHT;
+	}
+
 	inline bool isSitting() {
 		return postureState == CreaturePosture::SITTING;
 	}

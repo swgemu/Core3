@@ -101,6 +101,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddMusicEffectSkill", AddMusicEffectSkill);
 	lua_register(getLuaState(), "AddForceRunSelfSkill", AddForceRunSelfSkill);
 	lua_register(getLuaState(), "AddDiagnoseTargetSkill", AddDiagnoseTargetSkill);
+	lua_register(getLuaState(), "AddForageSkill", AddForageSkill);
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -1428,5 +1429,33 @@ int ScriptAttacksManager::AddDiagnoseTargetSkill(lua_State* L) {
 
 
 	CombatActions->put(diagnose);
+	return 0;
+}
+
+int ScriptAttacksManager::AddForageSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	String skillName = skill.getStringField("skillName");
+	String animation = skill.getStringField("animation");
+	int actionCost = skill.getIntField("actionCost");
+
+	ForageSelfSkill* forage;
+	forage = new ForageSelfSkill(skillName, animation, server);
+
+	actionCost = abs(actionCost);
+	forage->setActionCost(actionCost);
+
+	if (skillName == "forage") {
+		forage->setSkill(0);
+	} else if (skillName == "medicalforage") {
+		forage->setSkill(1);
+	} else {
+		System::out << "[ERROR] when attempting to add a forage skill. The skillName in the lua is incorrect!" << endl;
+	}
+
+	CombatActions->put(forage);
 	return 0;
 }

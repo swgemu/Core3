@@ -55,6 +55,8 @@ public:
 
 	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
 
+	void giveForageItem(Player* player, int group, int count);
+
 	void showDbStats(Player* player);
 
 	void showDbDeleted(Player* player);
@@ -114,6 +116,8 @@ public:
 	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
 
 	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
+
+	void giveForageItem(Player* player, int group, int count);
 
 	void showDbStats(Player* player);
 

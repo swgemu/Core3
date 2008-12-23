@@ -2073,7 +2073,7 @@ int CraftingManagerImplementation::lookUpResourceAttribute(Player* player,
 	return tempValue;
 
 }
-String CraftingManagerImplementation::generateCraftedSerial() {
+String& CraftingManagerImplementation::generateCraftedSerial() {
 
 	StringBuffer ss;
 	char a;
@@ -2094,7 +2094,8 @@ String CraftingManagerImplementation::generateCraftedSerial() {
 
 	ss << ")";
 
-	return ss.toString();
+	generatedSerial = ss.toString();
+	return generatedSerial;
 }
 
 /*void CraftingManagerImplementation::WriteDraftSchematicToDB(DraftSchematic* draftSchematic) {

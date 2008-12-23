@@ -92,6 +92,8 @@ class PowerboostEventWane;
 class PlayerDisconnectEvent;
 class PlayerLogoutEvent;
 class PlayerResurrectEvent;
+class ForageDelayEvent;
+class ForageZone;
 
 class Datapad;
 
@@ -163,6 +165,17 @@ class PlayerImplementation : public PlayerServant {
 	VectorMap<String, int> xpCapList;
 	int skillPoints;
 	int playerLevel;
+
+	// Foraging
+	bool foraging;
+	int giveReg;
+	int giveBonus;
+	int foragePlanet;
+	float forageX;
+	float forageY;
+	ForageDelayEvent* forageDelayEvent;
+	Vector<ForageZone*> forageZones;
+	Vector<ForageZone*> medForageZones;
 
 	// Draft Schematics
 	uint32 draftSchematicUpdateCount;
@@ -267,9 +280,9 @@ class PlayerImplementation : public PlayerServant {
 	Vector<String> consentList;
 
 	uint16 characterMask;
-	
+
 	bool imagedesignXpGiven;
-	
+
 	Vector<SkillBox*> teachingSkillList;
 	Player* teachingTarget;
 	Player* teachingTrainer;
@@ -752,6 +765,15 @@ public:
 	void handleDeath();
 
 	void sendConsentBox();
+
+	//Foraging
+	void startForaging(int foragetype);
+	void finishForaging(int foragetype);
+	bool forageMoveCheck(float startx, float starty, int startplanet);
+	bool forageZoneCheck(int foragetype);
+	int lottery(int mytickets, int totaltickets);
+	bool discardForageItems();
+	void giveForageItems(int foragetype);
 
 	inline bool hasConsent(String name) {
 		name = name.toLowerCase();
@@ -1474,6 +1496,10 @@ public:
 		return changeFactionEvent != NULL;
 	}
 
+	inline bool isForaging() {
+		return foraging;
+	}
+
 	void setResourceDeedID(uint64 objectID);
 
 	uint64 getResourceDeedID();
@@ -1671,11 +1697,11 @@ public:
 	inline String& getLastNpcConvMessStr() {
 		return lastNpcConvoMessage;
 	}
-	
+
 	inline String& getLastNpcConvOption(int idx) {
 		return lastNpcConvoOptions.get(idx);
 	}
-	
+
 	inline void addLastNpcConvOptions(const String& option) {
 		lastNpcConvoOptions.add(option);
 	}
@@ -1683,7 +1709,7 @@ public:
 	inline int countLastNpcConvOptions() {
 		return lastNpcConvoOptions.size();
 	}
-	
+
 	inline void clearLastNpcConvOptions() {
 		lastNpcConvoOptions.removeAll();
 	}
@@ -1722,49 +1748,49 @@ public:
 	}
 
 	void delFactionPoints(Player * player, uint32 amount);
-	
+
 	inline void setImagedesignXpGiven(bool given) {
 		imagedesignXpGiven = given;
 	}
-	
+
 	inline bool getImagedesignXpGiven() {
 		return imagedesignXpGiven;
 	}
-	
+
 	void teachPlayer(Player* player);
-	
+
 	void setTeachingOffer(String& sBox) {
 		teachingOffer = server->getProfessionManager()->getSkillBox(sBox);
 	}
-	
+
 	void setTeacher(Player* player) {
 		teachingTrainer = player;
 	}
-	
+
 	void setStudent(Player* player) {
 		teachingTarget = player;
 	}
-	
+
 	String& getTeachingOffer() {
 		return teachingOffer->getName();
 	}
-	
+
 	Player* getTeacher() {
 		return teachingTrainer;
 	}
-	
+
 	Player* getStudent() {
 		return teachingTarget;
 	}
-	
+
 	String& getTeachingSkillOption(int idx) {
 		return teachingSkillList.get(idx)->getName();
 	}
-	
+
 	void clearTeachingSkillOptions() {
 		teachingSkillList.removeAll();
 	}
-	
+
 	void teachSkill(String& skillname);
 
 	void updateWeather();

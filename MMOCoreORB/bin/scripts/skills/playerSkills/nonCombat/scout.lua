@@ -40,3 +40,21 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+------------------------------------------------------------------------
+ForageSkill = {
+	skillName = "forage",
+	animation = "forage",       
+        actionCost = 50	
+}
+
+AddForageSkill(ForageSkill);
+------------------------------------------------------------------------
+
+MedicalForageSkill = {
+	skillName = "medicalforage",
+	animation = "forage",       
+        actionCost = 50	
+}
+
+AddForageSkill(MedicalForageSkill);
+------------------------------------------------------------------------

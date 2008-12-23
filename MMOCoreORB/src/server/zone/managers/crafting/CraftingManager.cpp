@@ -267,6 +267,19 @@ void CraftingManager::refreshDraftSchematics(Player* player) {
 		((CraftingManagerImplementation*) _impl)->refreshDraftSchematics(player);
 }
 
+String& CraftingManager::generateCraftedSerial() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		method.executeWithAsciiReturn(_return_generateCraftedSerial);
+		return _return_generateCraftedSerial;
+	} else
+		return ((CraftingManagerImplementation*) _impl)->generateCraftedSerial();
+}
+
 /*
  *	CraftingManagerAdapter
  */
@@ -325,6 +338,9 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 21:
 		refreshDraftSchematics((Player*) inv->getObjectParameter());
+		break;
+	case 22:
+		resp->insertAscii(generateCraftedSerial());
 		break;
 	default:
 		return NULL;
@@ -395,6 +411,10 @@ void CraftingManagerAdapter::subtractDraftSchematicsFromGroupName(Player* player
 
 void CraftingManagerAdapter::refreshDraftSchematics(Player* player) {
 	return ((CraftingManagerImplementation*) impl)->refreshDraftSchematics(player);
+}
+
+String& CraftingManagerAdapter::generateCraftedSerial() {
+	return ((CraftingManagerImplementation*) impl)->generateCraftedSerial();
 }
 
 /*

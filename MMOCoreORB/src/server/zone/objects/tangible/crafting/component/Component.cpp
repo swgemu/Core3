@@ -203,6 +203,20 @@ String& Component::getProperty(const int j) {
 		return ((ComponentImplementation*) _impl)->getProperty(j);
 }
 
+bool Component::changeAttributeValue(String& property, float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+		method.addAsciiParameter(property);
+		method.addFloatParameter(value);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ComponentImplementation*) _impl)->changeAttributeValue(property, value);
+}
+
 /*
  *	ComponentAdapter
  */
@@ -249,6 +263,9 @@ Packet* ComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 17:
 		resp->insertAscii(getProperty(inv->getSignedIntParameter()));
+		break;
+	case 18:
+		resp->insertBoolean(changeAttributeValue(inv->getAsciiParameter(_param0_changeAttributeValue__String_float_), inv->getFloatParameter()));
 		break;
 	default:
 		return NULL;
@@ -303,6 +320,10 @@ int ComponentAdapter::getPropertyCount() {
 
 String& ComponentAdapter::getProperty(const int j) {
 	return ((ComponentImplementation*) impl)->getProperty(j);
+}
+
+bool ComponentAdapter::changeAttributeValue(String& property, float value) {
+	return ((ComponentImplementation*) impl)->changeAttributeValue(property, value);
 }
 
 /*

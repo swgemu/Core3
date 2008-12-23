@@ -61,6 +61,8 @@ public:
 
 	bool containsResource(String& resourceName);
 
+	void giveForageResource(Player* player, float foragex, float foragey, int forageplanet);
+
 protected:
 	ResourceManager(DummyConstructorParameter* param);
 
@@ -112,6 +114,8 @@ public:
 	bool useResourceDeed(Player* player, String& resourceName, int resourceQuantity);
 
 	bool containsResource(String& resourceName);
+
+	void giveForageResource(Player* player, float foragex, float foragey, int forageplanet);
 
 protected:
 	String _param1_checkResource__Player_String_int_;
