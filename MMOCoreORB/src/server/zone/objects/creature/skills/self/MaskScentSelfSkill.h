@@ -91,7 +91,7 @@ public:
 			StfParameter* params = new StfParameter();
 			params->addDI(seconds);
 
-			player->sendSystemMessage("skl_use", "sys_conceal_delay ", params);
+			player->sendSystemMessage("skl_use", "sys_conceal_delay", params);
 			delete params;
 
 			return false;
