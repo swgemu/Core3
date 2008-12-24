@@ -54,6 +54,8 @@ import "../../objects/creature/shuttle/ShuttleCreature";
 import "../../objects/tangible/terminal/mission/MissionTerminal";
 import "../structure/StructureManager";
 
+import "../../objects/area/ActiveArea";
+
 interface PlanetManager {
 	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
 		super(zone, processor);
@@ -85,4 +87,5 @@ interface PlanetManager {
 	void weatherUpdatePlayers();
 	void weatherChange();
 	void weatherRemoveEvents();
+	void spawnActiveArea(ActiveArea area);
 }

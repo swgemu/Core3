@@ -16,6 +16,8 @@
 
 #include "../structure/StructureManager.h"
 
+#include "../../objects/area/ActiveArea.h"
+
 /*
  *	PlanetManagerStub
  */
@@ -264,6 +266,19 @@ void PlanetManager::weatherRemoveEvents() {
 		((PlanetManagerImplementation*) _impl)->weatherRemoveEvents();
 }
 
+void PlanetManager::spawnActiveArea(ActiveArea* area) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addObjectParameter(area);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->spawnActiveArea(area);
+}
+
 /*
  *	PlanetManagerAdapter
  */
@@ -328,6 +343,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 23:
 		weatherRemoveEvents();
+		break;
+	case 24:
+		spawnActiveArea((ActiveArea*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -406,6 +424,10 @@ void PlanetManagerAdapter::weatherChange() {
 
 void PlanetManagerAdapter::weatherRemoveEvents() {
 	return ((PlanetManagerImplementation*) impl)->weatherRemoveEvents();
+}
+
+void PlanetManagerAdapter::spawnActiveArea(ActiveArea* area) {
+	return ((PlanetManagerImplementation*) impl)->spawnActiveArea(area);
 }
 
 /*

@@ -57,6 +57,9 @@ which carries forward this exception.
 
 #include "../../objects/terrain/PlanetNames.h"
 
+#include "../../objects/area/ActiveAreaTrigger.h"
+#include "../../objects/area/TestActiveArea.h"
+
 const uint32 PlanetManagerImplementation::travelFare[10][10] = {
 		{ 100, 1000, 2000, 4000,    0,  500,    0,    0,  600, 3000},
 		{1000,  100,    0,    0,    0,    0,    0,    0,    0,    0},
@@ -176,6 +179,11 @@ void PlanetManagerImplementation::start() {
 		takeOffShuttles();
 
 	loadNoBuildAreas();
+
+	if (zone->getZoneID() == 5) {
+		TestActiveArea * area = new TestActiveArea(-4912,4095,25);
+		spawnActiveArea(area);
+	}
 }
 
 void PlanetManagerImplementation::stop() {
@@ -982,4 +990,18 @@ void PlanetManagerImplementation::weatherRemoveEvents() {
 	if (weatherDecreaseEvent->isQueued()) {
 		server->removeEvent(weatherDecreaseEvent);
 	}
+}
+
+void PlanetManagerImplementation::spawnActiveArea(ActiveArea * area) {
+
+	lock();
+
+	ActiveAreaTrigger * trigger = new ActiveAreaTrigger(area);
+
+	trigger->setObjectID(getNextStaticObjectID(false));
+	trigger->initializePosition(area->getX(), 0, area->getY());
+	trigger->setZoneProcessServer(server);
+	trigger->insertToZone(zone);
+
+	unlock();
 }

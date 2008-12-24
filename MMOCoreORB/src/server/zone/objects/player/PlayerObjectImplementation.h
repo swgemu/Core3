@@ -56,6 +56,8 @@ which carries forward this exception.
 #include "FriendsList.h"
 #include "FriendsListImplementation.h"
 
+#include "badges/Badges.h"
+
 #include "IgnoreList.h"
 #include "IgnoreListImplementation.h"
 
@@ -101,6 +103,8 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 	uint32 guildPermissionsBitmask;
 
 	uint32 adminLevel;
+
+	Badges * badges;
 
 public:
 
@@ -351,6 +355,18 @@ public:
 
 	void saveWaypoints(Player* player);
 	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
+
+	inline void awardBadge(uint32 badge) {
+		badges->setBadge(badge);
+	}
+
+	inline bool hasBadge(uint32 badge) {
+		return badges->hasBadge(badge);
+	}
+
+	inline Badges * getBadges() {
+		return badges;
+	}
 
 	friend class Player;
 

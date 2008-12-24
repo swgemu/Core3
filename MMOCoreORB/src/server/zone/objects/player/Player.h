@@ -63,6 +63,8 @@ class ResourceContainer;
 
 class Badges;
 
+class ActiveArea;
+
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
@@ -811,6 +813,8 @@ public:
 
 	unsigned long long getResourceDeedID();
 
+	bool hasBadge(unsigned int badge);
+
 	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
 
 	void setImagedesignXpGiven(bool given);
@@ -836,6 +840,10 @@ public:
 	void clearTeachingSkillOptions();
 
 	void teachSkill(String& skillname);
+
+	ActiveArea* getActiveArea();
+
+	void setActiveArea(ActiveArea* area);
 
 protected:
 	Player(DummyConstructorParameter* param);
@@ -1612,6 +1620,8 @@ public:
 
 	unsigned long long getResourceDeedID();
 
+	bool hasBadge(unsigned int badge);
+
 	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
 
 	void setImagedesignXpGiven(bool given);
@@ -1637,6 +1647,10 @@ public:
 	void clearTeachingSkillOptions();
 
 	void teachSkill(String& skillname);
+
+	ActiveArea* getActiveArea();
+
+	void setActiveArea(ActiveArea* area);
 
 protected:
 	String _param0_queueFlourish__String_long_int_;

@@ -890,6 +890,7 @@ interface CreatureObject implements SceneObject {
 
 	String getTemplateString();
 	void setTemplateString(const String tmpString);
+	void clearTemplateString();
 
 	void say(UnicodeString message, unsigned int moodid = 0, unsigned int mood2 = 0);
 

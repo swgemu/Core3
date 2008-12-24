@@ -42,31 +42,41 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef NOBUILDAREAMAP_H_
-#define NOBUILDAREAMAP_H_
+#ifndef TESTACTIVEAREAIMPLEMENTATION_H_
+#define TESTACTIVEAREAIMPLEMENTATION_H_
 
-#include "../../objects/area/Area.h"
-#include "engine/engine.h"
+#include "TestActiveArea.h"
+#include "../player/Player.h"
 
-class NoBuildAreaMap : public Vector<Area *> {
+#include "../../packets.h"
+
+class TestActiveAreaImplementation : public TestActiveAreaServant {
+
 public:
-	NoBuildAreaMap() { }
+	TestActiveAreaImplementation(float x, float y, float range) : TestActiveAreaServant(x, y, range){
 
-	~NoBuildAreaMap() {
-		for (int i = 0; i < size(); i++) {
-			get(i)->finalize();
-		}
-
-		removeAll();
 	}
 
-	bool isNoBuildArea(float x, float y) {
-		for (int i = 0; i < size(); i++) {
-			if (get(i)->containsPoint(x,y))
-				return true;
-		}
+	void onEnter(Player * player) {
+		player->setHeight(player->getHeight() / 5);
+		player->updateSpeed(player->getSpeed() / 3, player->getAcceleration() / 3);
 
-		return false;
+		CreatureObjectDeltaMessage3* codm = new CreatureObjectDeltaMessage3(player);
+		codm->updateHeight();
+		codm->close();
+		player->broadcastMessage(codm, 128, false);
+	}
+
+	void onExit(Player * player) {
+		player->setHeight(player->getHeight() * 5);
+		player->updateSpeed(player->getSpeed() * 3, player->getAcceleration() * 3);
+
+		CreatureObjectDeltaMessage3* codm = new CreatureObjectDeltaMessage3(player);
+		codm->updateHeight();
+		codm->close();
+		player->broadcastMessage(codm, 128, false);
 	}
 };
-#endif /* NOBUILDAREAMAP_H_ */
+
+
+#endif /* TESTACTIVEAREAIMPLEMENTATION_H_ */

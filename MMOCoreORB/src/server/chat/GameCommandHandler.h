@@ -212,6 +212,7 @@ private:
 	static void setHeight(StringTokenizer tokenizer, Player* player);
 	static void warpAreaToWP(StringTokenizer tokenizer, Player* player);
 	static void scaleXP(StringTokenizer tokenizer, Player* player);
+	static void spawnAA(StringTokenizer tokenizer, Player* player);
 
 	void init();
 

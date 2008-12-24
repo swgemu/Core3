@@ -42,31 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef NOBUILDAREAMAP_H_
-#define NOBUILDAREAMAP_H_
+#ifndef ACTIVEAREAIMPLEMENTATION_H_
+#define ACTIVEAREAIMPLEMENTATION_H_
 
-#include "../../objects/area/Area.h"
-#include "engine/engine.h"
+#include "ActiveArea.h"
 
-class NoBuildAreaMap : public Vector<Area *> {
+class ActiveAreaImplementation : public ActiveAreaServant {
+
 public:
-	NoBuildAreaMap() { }
+	ActiveAreaImplementation(float x, float y, float range) : ActiveAreaServant(x,y,range) {
 
-	~NoBuildAreaMap() {
-		for (int i = 0; i < size(); i++) {
-			get(i)->finalize();
-		}
-
-		removeAll();
 	}
 
-	bool isNoBuildArea(float x, float y) {
-		for (int i = 0; i < size(); i++) {
-			if (get(i)->containsPoint(x,y))
-				return true;
-		}
+	virtual void onEnter(Player * player) { }
 
-		return false;
-	}
+	virtual void onExit(Player * player) { }
+
 };
-#endif /* NOBUILDAREAMAP_H_ */
+
+#endif /* ACTIVEAREAIMPLEMENTATION_H_ */

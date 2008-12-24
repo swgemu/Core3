@@ -121,13 +121,13 @@ void LootManager::moveObject(TangibleObject* object, Player* player, Creature* c
 	object->setPersistent(false);
 
 	if (player->getGroupObject() != NULL) {
-		StringBuffer grouptxt;
-		grouptxt << player->getCharacterName().toString() << " looted " << object->getName().toString() << "\\#ffffff from " << creature->getCharacterName().toString();
+		StfParameter * param = new StfParameter();
+		param->addTU(player->getObjectID());
+		param->addTT(object->getName());
 
-		UnicodeString utxt = UnicodeString(grouptxt.toString());
-		BaseMessage* packet = new ChatSystemMessage(utxt);
+		player->getGroupObject()->sendSystemMessage(player, "base_player", "prose_item_looted_other", param);
 
-		player->getGroupObject()->broadcastMessage(packet);
+		delete param;
 	}
 
 	//Register loot with server
@@ -152,10 +152,12 @@ void LootManager::lootCredits(Player* player, Creature* creature) {
 
 		player->addCashCredits(credits);
 
-		StringBuffer creditText;
-		creditText << "You loot " << credits << " credits from corpse of " << creature->getCharacterName().toString() << ".";
+		StfParameter * param = new StfParameter();
+		param->addDI(credits);
+		param->addTT(creature->getObjectID());
 
-		player->sendSystemMessage(creditText.toString());
+		player->sendSystemMessage("base_player", "prose_coin_loot", param);
+		delete param;
 	}
 }
 

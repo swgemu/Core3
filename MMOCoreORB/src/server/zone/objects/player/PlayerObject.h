@@ -21,6 +21,8 @@ class WaypointObject;
 
 class PlayerManager;
 
+class Badges;
+
 #include "../scene/SceneObject.h"
 
 class PlayerObject : public SceneObject {
@@ -152,6 +154,12 @@ public:
 	void saveIgnore();
 
 	void loadIgnore();
+
+	void awardBadge(unsigned int badge);
+
+	bool hasBadge(unsigned int badge);
+
+	Badges* getBadges();
 
 	void saveWaypoints(Player* player);
 
@@ -301,6 +309,12 @@ public:
 	void saveIgnore();
 
 	void loadIgnore();
+
+	void awardBadge(unsigned int badge);
+
+	bool hasBadge(unsigned int badge);
+
+	Badges* getBadges();
 
 	void saveWaypoints(Player* player);
 

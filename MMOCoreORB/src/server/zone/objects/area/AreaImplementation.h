@@ -42,31 +42,41 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef NOBUILDAREAMAP_H_
-#define NOBUILDAREAMAP_H_
+#ifndef AREAIMPLEMENTATION_H_
+#define AREAIMPLEMENTATION_H_
 
-#include "../../objects/area/Area.h"
-#include "engine/engine.h"
+#include "Area.h"
 
-class NoBuildAreaMap : public Vector<Area *> {
+class AreaImplementation : public AreaServant {
+protected:
+	float x;
+	float y;
+	float radius;
+
 public:
-	NoBuildAreaMap() { }
-
-	~NoBuildAreaMap() {
-		for (int i = 0; i < size(); i++) {
-			get(i)->finalize();
-		}
-
-		removeAll();
+	AreaImplementation(float x, float y, float radius) {
+		this->x = x;
+		this->y = y;
+		this->radius = radius;
 	}
 
-	bool isNoBuildArea(float x, float y) {
-		for (int i = 0; i < size(); i++) {
-			if (get(i)->containsPoint(x,y))
-				return true;
-		}
-
-		return false;
+	bool containsPoint(float px, float py) {
+		return (sqrt(pow(px - x, 2) + pow(py - y, 2)) <= radius);
 	}
+
+	inline float getX() {
+		return x;
+	}
+
+	inline float getY() {
+		return y;
+	}
+
+	inline float getRadius() {
+		return radius;
+	}
+
+
 };
-#endif /* NOBUILDAREAMAP_H_ */
+
+#endif /* AREAIMPLEMENTATION_H_ */
