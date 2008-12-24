@@ -1794,6 +1794,7 @@ public:
 	void teachSkill(String& skillname);
 
 	void updateWeather();
+	void queueThrow(TangibleObject* throwItem, uint32 actionCRC);
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

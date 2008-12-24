@@ -67,4 +67,9 @@ addBFGroup("Non-Combatant Professions", "root");
     addBFProfession("Master Musician", "Social Professions", "social_musician_master");
     addBFProfession("Master Dancer", "Social Professions", "social_dancer_master");
     addBFProfession("Master Image Designer", "Social Professions", "social_imagedesigner_master");
-
+  addBFGroup("Scouting Professions", "Non-Combatant Professions");
+    addBFProfession("Exploration 2", "Scouting Professions", "outdoors_scout_movement_02");
+    addBFProfession("Exploration 4", "Scouting Professions", "outdoors_scout_movement_04");
+    addBFProfession("Master Scout", "Scouting Professions", "outdoors_scout_master");
+    addBFProfession("Master Ranger", "Scouting Professions", "outdoors_ranger_master");
+        

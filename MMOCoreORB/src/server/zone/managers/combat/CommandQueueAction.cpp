@@ -132,13 +132,35 @@ bool CommandQueueAction::validate() {
 
 					Weapon* weapon = creature->getWeapon();
 
-					int range;
+					float range;
 
 					if (weapon != NULL)
 						//TODO: This will break lunge as weapon range is less than lunge range
 						range = MIN((int)skill->getRange(), weapon->getMaxRange());
 					else
 						range = 10;
+
+					uint32 skillCRC = skill->getNameCRC();
+
+					//if (skillCRC == 81532273 || skillCRC == 2144753741 ||
+					//skillCRC == 3896406063 || skillCRC == 59497940 ||
+					//skillCRC == 161428392 || skillCRC == 3850196726 ||
+					//skillCRC == 1922399892 || skillCRC == 248052493 ||
+					if (skillCRC == 0x4DC1571 || skillCRC == 0x7FD6584D ||
+							skillCRC == 0xE83E702F || skillCRC == 0x38BDDD4 ||
+							skillCRC == 0x99F33A8 || skillCRC == 0xE57D56F6 ||
+							skillCRC == 0x72957E94 || skillCRC == 0xEC8FB0D ||
+							skill->isThrowSkill()) {
+						range = skill->getRange();
+					}
+
+					if (skill->isThrowSkill() && creature->isInRange(target->getPositionX(), target->getPositionY(), 5)) {
+						creature->sendSystemMessage("trap/trap", "sys_trapdrop_too_close");
+						target->unlock();
+						clearError(0);
+						return false;
+					}
+
 
 					if (!creature->isInRange(target->getPositionX(), target->getPositionY(), range)) {
 						target->unlock();

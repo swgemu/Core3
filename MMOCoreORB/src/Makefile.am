@@ -55,7 +55,10 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3
 
-core3_IDLS = 	server/chat/ChatManager.cpp \
+core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
+		server/zone/objects/tangible/weapons/ThrowableWeapon.cpp \
+		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.cpp \
+		server/chat/ChatManager.cpp \
 		server/chat/GameCommandHandler.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/zone/managers/bank/BankManager.cpp \
@@ -194,9 +197,11 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
 		server/zone/ZoneClientSession.cpp \
 		server/zone/Zone.cpp \
-		server/zone/ZoneServer.cpp
-
+		server/zone/ZoneServer.cpp 
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/tangible/camokits/CamoKitImplementation.cpp \
+		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
+		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \
@@ -318,4 +323,5 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneServerImplementation.cpp \
-		main.cpp
+		main.cpp 
+		

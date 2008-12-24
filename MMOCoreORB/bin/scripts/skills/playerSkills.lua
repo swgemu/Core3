@@ -68,6 +68,7 @@ RunSkillsFile("playerSkills/nonCombat/entertainer.lua")
 RunSkillsFile("playerSkills/nonCombat/medic.lua")
 RunSkillsFile("playerSkills/nonCombat/musician.lua")
 RunSkillsFile("playerSkills/nonCombat/scout.lua")
+RunSkillsFile("playerSkills/nonCombat/ranger.lua")
 
 -- Jedi
 --RunSkillsFile("playerSkills/combat/jedi/jedi.lua")

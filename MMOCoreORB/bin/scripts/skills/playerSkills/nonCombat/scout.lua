@@ -58,3 +58,466 @@ MedicalForageSkill = {
 
 AddForageSkill(MedicalForageSkill);
 ------------------------------------------------------------------------
+
+--------------------------------------------------------------------------
+
+CamoSkill = {
+	skillname = "maskscent",
+	type = 1,
+	duration = 1200.0,	
+}
+
+AddCamoSkill(CamoSkill)
+
+----------------------------- Traps NOVICE --------------------------------
+
+--A small dart delivery system, ingeniously crafted from natural organics. The tip is coated with a 
+--light Lecepanine poison. This object is thrown at a target in combat. If it hits, the poison will 
+--cause the target to become drowsy and slightly confused. This has the effect of making the target 
+--dizzy as well as causing a slight decrease in the target's mind and action pools. 
+--This weapon cannot kill and only works on animals.
+
+ThrowSkill = { 
+	attackname = "throwlecepanindart",
+	animation = "throw_trap_drowsy_dart",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+	
+	healthAttackChance = 0,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 100,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 100,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 100,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffMessage = "trap_drowsy_effect",
+	deBuffEndMessage = "trap_drowsy_effect_no",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowDirectPoolTargetSkill(ThrowSkill)
+
+--A small canister packed with a fine and somewhat sticky mesh. When it strikes the target, 
+--the mesh entangles them making movement more difficult. This has the effect of reducing 
+--the target's defense against melee attacks.
+
+ThrowSkill = { 
+	attackname = "throwwiredmeshtrap",
+	animation = "throw_trap_melee_def_1",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffMessage = "trap_melee_def_1_effect",
+	deBuffEndMessage = "trap_melee_def_1_effect_no",
+	
+	meleeDefDebuff = -15,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowRandomPoolTargetSkill(ThrowSkill)
+
+----------------------------- Traps TOOLS 1 -------------------------------
+
+ThrowSkill = { 
+	attackname = "throwglowjuicetrap",
+	animation = "throw_trap_ranged_def_1",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffMessage = "trap_melee_ranged_def_1_effect",
+	deBuffEndMessage = "trap_melee_ranged_def_1_effect_no",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = -15,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowRandomPoolTargetSkill(ThrowSkill)
+
+--A spur fashioned from natural organics. A knowledgeable scout can throw this at an enemy creature, 
+--placing it in a perfect spot to cause pain. This has the effect of damaging both the creature's 
+--health and mind. However, the effects are never fatal.
+
+ThrowSkill = { 
+	attackname = "throwsharpbonespur",
+	animation = "throw_trap_enraging_spur",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 2.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+	
+	healthAttackChance = 0,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 100,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 100,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffMessage = "trap_spur_effect",
+	deBuffEndMessage = "trap_spur_effect_no",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowDirectPoolTargetSkill(ThrowSkill)
+
+----------------------------- Traps TOOLS 2 -------------------------------
+
+--A special device that emits annoying noises. When thrown at a creature by a sufficiently 
+--skilled scout, the trap will cause the target to become stunned. The raw shock of the noise 
+--will also cause a large amount of damage to the target's mind pool.
+
+ThrowSkill = { 
+	attackname = "thrownoisemaker",
+	animation = "throw_trap_noise_maker",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 2.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+	
+	healthAttackChance = 0,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 100,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 100,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffMessage = "trap_noise_maker_effect",
+	deBuffEndMessage = "trap_noise_maker_effect_no",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowDirectPoolTargetSkill(ThrowSkill)
+
+--A small container filled with the natural musk of an animal. The musk has a repellent 
+--smell and can cause a target to become distracted. This has the effect of making the 
+--target more vulnerable to status effects like stun or intimidate.
+
+ThrowSkill = { 
+	attackname = "throwstinkbomb",
+	animation = "throw_trap_state_def_1",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 100,
+	intimidateChance = 100,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffMessage = "trap_state_def_1_effect",
+	deBuffEndMessage = "trap_state_def_1_effect_no",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = -20,
+	intimidateDefDebuff = -20
+}
+
+AddThrowRandomPoolTargetSkill(ThrowSkill)
+
+----------------------------- Traps TOOLS 3 -------------------------------
+
+--Similar to the wire mesh trap, but this trap has been enhanced. The wire mesh has been 
+--strengthened and treated with a bioluminescent goo. The target will become more vulnerable 
+--to both melee and ranged attacks.
+
+ThrowSkill = { 
+	attackname = "throwglowwiretrap",
+	animation = "throw_trap_melee_ranged_def_1",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 100,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffMessage = "trap_melee_ranged_def_1_effect",
+	deBuffEndMessage = "trap_melee_ranged_def_1_effect_no",
+	
+	meleeDefDebuff = -30,
+	rangedDefDebuff = -30,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowRandomPoolTargetSkill(ThrowSkill)
+
+--A small Phecnacine tranquilizer delivery system. This object is thrown at a 
+--target in combat. When it strikes something, it releases a thin mist of poison. 
+--The poison will cause the target's movement to slow significantly.
+
+ThrowSkill = { 
+	attackname = "throwphecnacinedart",
+	animation = "throw_trap_tranq_dart",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 100,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+
+	deBuffStrFile = "trap\\trap",
+	deBuffMessage = "trap_tranq_dart_effect",
+	deBuffEndMessage = "trap_tranq_dart_effect_no",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowRandomPoolTargetSkill(ThrowSkill)
+
+----------------------------- Traps TOOLS 4 -------------------------------
+
+--A trap containing some form of compressed mucilage based adhesive. This trap is 
+--thrown at a target creature. If the adhesive mesh successfully traps the creature, 
+--the target will become immoblie for a short time and will suffer significant 
+--damage to its action pool.
+
+ThrowSkill = { 
+	attackname = "throwadhesivemesh",
+	animation = "throw_trap_webber",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 0,
+	accuracyBonus = 0,
+	
+	healthAttackChance = 0,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 100,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 0,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
+	
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 100,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 100,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffMessage = "trap_webber_effect",
+	deBuffEndMessage = "trap_webber_effect_no",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowDirectPoolTargetSkill(ThrowSkill)

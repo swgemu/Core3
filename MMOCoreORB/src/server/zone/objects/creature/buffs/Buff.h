@@ -53,7 +53,7 @@ which carries forward this exception.
 
 #include "engine/sched/Event.h"
 
-//#include "../skillmods/SkillModList.h"
+#include "../skillmods/SkillModList.h"
 
 class CreatureObject;
 class Player;
@@ -264,7 +264,7 @@ protected:
 	int forcePowerBuff;
 	//int forceRegenBuff;
 
-	//SkillModList skillModBuffs;
+	SkillModList skillModBuffs;
 
 
 public:
@@ -430,7 +430,7 @@ public:
 
 	// Skill Mods
 
-	/*
+
 	SkillModList* getSkillModBuffList() {
 		return &skillModBuffs;
 	}
@@ -453,8 +453,8 @@ public:
 			removeSkillModBuff(mod);
 
 		skillModBuffs.put(mod, val);
+
 	}
-	*/
 
 	bool isActive() {
 		return buffEvent->isQueued();

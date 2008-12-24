@@ -688,6 +688,7 @@ interface Player implements CreatureObject {
 
 	unsigned long getResourceDeedID();
 
+	void queueThrow(TangibleObject throwItem, unsigned int actionCRC);
 	void setImagedesignXpGiven(boolean given);
 	boolean getImagedesignXpGiven();
 

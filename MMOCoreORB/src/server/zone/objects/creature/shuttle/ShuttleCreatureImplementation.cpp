@@ -106,8 +106,8 @@ void ShuttleCreatureImplementation::sendPlayerTo(Player* player, Ticket* ticket)
 
 	if (arrivalShuttle != NULL) {
 		Coordinate* coords = arrivalShuttle->getArrivalPoint();
-
 		if (zone != arrivalZone) {
+			player->deactivateCamo(false);
 			player->setPosition(coords->getPositionX(), coords->getPositionZ(), coords->getPositionY());
 			player->switchMap(id);
 		} else

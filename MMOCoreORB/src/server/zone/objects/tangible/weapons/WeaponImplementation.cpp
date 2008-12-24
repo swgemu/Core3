@@ -1230,6 +1230,9 @@ void WeaponImplementation::setXpType() {
 	case RIFLE:
 		xpType = "combat_rangedspecialize_rifle";
 		break;
+	case TRAP:
+		xpType = "trapping";
+		break;
 	case ONEHANDSABER:
 	case TWOHANDSABER:
 	case POLEARMSABER:

@@ -273,4 +273,10 @@ which carries forward this exception.
 #include "objects/player/sui/transferbox/SuiTransferBoxImplementation.h"
 #include "objects/player/sui/transferbox/SuiTransferBox.h"
 
+#include "objects/tangible/weapons/ThrowableWeapon.h"
+#include "objects/tangible/weapons/ThrowableWeaponImplementation.h"
+#include "objects/tangible/weapons/throwable/TrapThrowableWeapon.h"
+#include "objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.h"
+#include "objects/tangible/camokits/CamoKit.h"
+#include "objects/tangible/camokits/CamoKitImplementation.h"
 #endif /*ZONEOBJECTS_H_*/

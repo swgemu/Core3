@@ -1026,6 +1026,15 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 
 	String objectName = creatureConfig.getStringField("objectName");
 
+	try {
+		String creatureType = creatureConfig.getStringField("creatureType");
+		creature->setCreatureType(creatureType);
+	} catch (...) {
+		StringBuffer errorString;
+		errorString << "The LUA script for " << objectName << " is missing creatureType";
+		//System::out << errorString.toString() << endl;
+	}
+
 	String stfname = creatureConfig.getStringField("stfName");
 	String name = creatureConfig.getStringField("name");
 

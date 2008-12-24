@@ -115,6 +115,8 @@ interface CreatureObject implements SceneObject {
 	boolean isStunned();
 	boolean isBlinded();
 	boolean isIntimidated();
+	boolean isSnared();
+	boolean isRooted();
 	boolean isDiseased();
 	boolean isPoisoned();
 	boolean isBleeding();
@@ -122,6 +124,8 @@ interface CreatureObject implements SceneObject {
 	boolean isMounted();
 	boolean isRidingCreature();
 	boolean isMeditating();
+	boolean isCreature();
+	boolean isNPC();
 
 	boolean hatesFaction(unsigned int faction);
 
@@ -317,6 +321,8 @@ interface CreatureObject implements SceneObject {
 
 	int getSkillModBonus(const String name);
 
+	void addSkillModBonus(const String name, int mod, boolean updateClient = false);
+
 	boolean hasSkillModBonus(const String name);
 
 	int getAccuracy();
@@ -458,6 +464,7 @@ interface CreatureObject implements SceneObject {
 	String getSpeciesName();
 	String getRaceName();
 	String getGender();
+	String getCreatureType();
 
 	String getTerrainName();
 
@@ -750,6 +757,8 @@ interface CreatureObject implements SceneObject {
 	void setStunnedState();
 	void setBlindedState();
 	void setIntimidatedState();
+	void setSnaredState();
+	void setRootedState();
 
 	void setPoisonedState(int str, int type, int duration);
 	void setBleedingState(int str, int type, int duration);
@@ -778,6 +787,7 @@ interface CreatureObject implements SceneObject {
 	void setSpeciesName(const String name);
 	void setStfName(const String name);
 	void setGender(const String name);
+	void setCreatureType(const String name);
 
 	void setFaction(unsigned int fac);
 
@@ -884,4 +894,16 @@ interface CreatureObject implements SceneObject {
 	void say(UnicodeString message, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void say(const String file, const String str, StfParameter param, unsigned int moodid = 0, unsigned int mood2 = 0);
+
+	void setCamoType(unsigned int cType);
+	unsigned int getCamoType();
+	
+	void activateCamo(unsigned int camoCRC,unsigned int time,unsigned int ms);
+	void deactivateCamo(boolean forced);
+	void activateCamoLock();
+	boolean isCamoCooldownActive();
+	int getCamoCooldownLeft();
+	int getMaskScent();
+	void setMaskScent(int value);
+	
 }

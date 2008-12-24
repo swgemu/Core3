@@ -99,7 +99,15 @@ public:
 
 	bool isComponent();
 
+	bool isTrap();
+
+	bool isGranade();
+
+	bool isThrowable();
+
 	bool isWeaponPowerup();
+
+	bool isCamoKit();
 
 	bool isLoot();
 
@@ -266,7 +274,15 @@ public:
 
 	bool isComponent();
 
+	bool isTrap();
+
+	bool isGranade();
+
+	bool isThrowable();
+
 	bool isWeaponPowerup();
+
+	bool isCamoKit();
 
 	bool isLoot();
 

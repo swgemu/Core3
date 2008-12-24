@@ -121,6 +121,12 @@ private:
 	void setNextPosition();
 	void checkNewAngle(float directionangle);
 
+	uint32 lastCamoUser;
+	int camoCount;
+	bool camoSet;
+
+	void doCamoCheck(CreatureObject* target);
+
 public:
 
 	const static int CREATURE = 1;
