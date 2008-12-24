@@ -88,6 +88,8 @@ import "../tangible/resource/ResourceContainer";
 
 import "badges/Badges";
 
+import "../area/ActiveArea";
+
 interface Player implements CreatureObject {
 	Player() {
 		super(unsigned long oid);
@@ -687,6 +689,8 @@ interface Player implements CreatureObject {
 	void setResourceDeedID(unsigned long objectID);
 
 	unsigned long getResourceDeedID();
+	
+	boolean hasBadge(unsigned int badge);
 
 	void queueThrow(TangibleObject throwItem, unsigned int actionCRC);
 	void setImagedesignXpGiven(boolean given);
@@ -702,5 +706,8 @@ interface Player implements CreatureObject {
 	String getTeachingSkillOption(int idx);
 	void clearTeachingSkillOptions();
 	void teachSkill(String skillname);
+	
+	ActiveArea getActiveArea();
+	void setActiveArea(ActiveArea area);
 	
 }

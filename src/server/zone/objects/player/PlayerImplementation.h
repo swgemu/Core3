@@ -57,8 +57,6 @@ which carries forward this exception.
 #include "professions/SkillBox.h"
 #include "professions/XpMap.h"
 
-#include "badges/Badges.h"
-
 #include "../terrain/RegionNames.h"
 
 #include "sui/SuiBoxImplementation.h"
@@ -102,6 +100,8 @@ class Guild;
 class Certification;
 
 class ResourceContainer;
+
+class ActiveArea;
 
 class PlayerImplementation : public PlayerServant {
 	ReferenceSlot<ZoneClientSession> owner;
@@ -195,8 +195,6 @@ class PlayerImplementation : public PlayerServant {
 	//guild permissions
 	uint32 guildPermissionsBitmask;
 
-	Badges* badges;
-
 	float clonePositionX;
 	float clonePositionY;
 
@@ -287,6 +285,8 @@ class PlayerImplementation : public PlayerServant {
 	Player* teachingTarget;
 	Player* teachingTrainer;
 	SkillBox* teachingOffer;
+
+	ActiveArea * activeArea;
 
 public:
 	static const int ONLINE = 1;
@@ -1453,7 +1453,7 @@ public:
 	}
 
 	inline Badges* getBadges() {
-		return badges;
+		return playerObject->getBadges();
 	}
 
 	inline int getRegionID() {
@@ -1795,6 +1795,18 @@ public:
 
 	void updateWeather();
 	void queueThrow(TangibleObject* throwItem, uint32 actionCRC);
+
+	inline bool hasBadge(uint32 badge) {
+		return playerObject->hasBadge(badge);
+	}
+
+	inline ActiveArea * getActiveArea() {
+		return activeArea;
+	}
+
+	inline void setActiveArea(ActiveArea * area) {
+		activeArea = area;
+	}
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

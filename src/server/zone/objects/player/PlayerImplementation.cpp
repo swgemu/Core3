@@ -141,11 +141,6 @@ PlayerImplementation::~PlayerImplementation() {
 		hairObj = NULL;
 	}
 
-	if (badges != NULL) {
-		badges->finalize();
-		badges = NULL;
-	}
-
 	if (playerSaveStateEvent != NULL) {
 		if (playerSaveStateEvent->isQueued())
 			server->removeEvent(playerSaveStateEvent);
@@ -236,8 +231,6 @@ void PlayerImplementation::initialize() {
 	datapad = NULL;
 
 	stfName = "species";
-
-	badges = new Badges();
 
 	// modifiers
 	weaponSpeedModifier = 1;
@@ -337,6 +330,7 @@ void PlayerImplementation::initialize() {
 	teachingTrainer = NULL;
 	teachingSkillList.removeAll();
 	teachingOffer = false;
+	activeArea = NULL;
 
 	if (getWeapon() == NULL) {
 		int templevel = calcPlayerLevel("combat_meleespecialize_unarmed");
@@ -1084,6 +1078,11 @@ void PlayerImplementation::resetArmorEncumbrance() {
 }
 
 void PlayerImplementation::sendToOwner() {
+
+	// Why is this here? -Bobius
+	//if (faction != 0)
+	//	pvpStatusBitmask |= CreatureFlag::OVERT;
+
 	CreatureObjectImplementation::sendToOwner(_this, false);
 
 	playerObject->sendToOwner();
@@ -4516,7 +4515,7 @@ bool PlayerImplementation::awardBadge(uint32 badgeindex) {
   	if (badgeindex > 139)
   		return false;
 
-	badges->setBadge(badgeindex);
+	playerObject->awardBadge(badgeindex);
 
 	return true;
 }
@@ -5162,7 +5161,9 @@ void PlayerImplementation::loadXpTypeCap() {
 			if (prof->isFourByFour()) {
 				for (int j = 1; j <= 4; j++) {
 					FourByFourProfession *curprof = (FourByFourProfession*)prof;
+
 					plusone = curprof->getBox(j, 1);
+
 					if (xpCapList.contains(plusone->getSkillXpType())) {
 						if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
 							xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());

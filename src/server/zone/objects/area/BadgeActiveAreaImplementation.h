@@ -42,31 +42,24 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef NOBUILDAREAMAP_H_
-#define NOBUILDAREAMAP_H_
+#ifndef BADGEACTIVEAREAIMPLEMENTATION_H_
+#define BADGEACTIVEAREAIMPLEMENTATION_H_
 
-#include "../../objects/area/Area.h"
-#include "engine/engine.h"
+#include "BadgeActiveArea.h"
+#include "../player/Player.h"
 
-class NoBuildAreaMap : public Vector<Area *> {
+class BadgeActiveAreaImplementation : public BadgeActiveAreaServant {
+	uint32 badge;
 public:
-	NoBuildAreaMap() { }
-
-	~NoBuildAreaMap() {
-		for (int i = 0; i < size(); i++) {
-			get(i)->finalize();
-		}
-
-		removeAll();
+	BadgeActiveAreaImplementation(float x, float y, float range, uint32 badge) : BadgeActiveAreaServant(x, y, range){
+		this->badge = badge;
 	}
 
-	bool isNoBuildArea(float x, float y) {
-		for (int i = 0; i < size(); i++) {
-			if (get(i)->containsPoint(x,y))
-				return true;
-		}
-
-		return false;
+	void onEnter(Player * player) {
+		if (!player->hasBadge(badge))
+			player->awardBadge(badge);
 	}
 };
-#endif /* NOBUILDAREAMAP_H_ */
+
+
+#endif /* BADGEACTIVEAREAIMPLEMENTATION_H_ */

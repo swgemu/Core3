@@ -1183,6 +1183,8 @@ public:
 
 	void setTemplateString(const String& tmpString);
 
+	void clearTemplateString();
+
 	void say(UnicodeString& message, unsigned int moodid = 0, unsigned int mood2 = 0);
 
 	void say(const String& file, const String& str, StfParameter* param, unsigned int moodid = 0, unsigned int mood2 = 0);
@@ -2380,6 +2382,8 @@ public:
 	String& getTemplateString();
 
 	void setTemplateString(const String& tmpString);
+
+	void clearTemplateString();
 
 	void say(UnicodeString& message, unsigned int moodid, unsigned int mood2);
 

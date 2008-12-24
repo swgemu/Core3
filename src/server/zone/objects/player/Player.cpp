@@ -54,6 +54,8 @@
 
 #include "badges/Badges.h"
 
+#include "../area/ActiveArea.h"
+
 /*
  *	PlayerStub
  */
@@ -4795,12 +4797,25 @@ unsigned long long Player::getResourceDeedID() {
 		return ((PlayerImplementation*) _impl)->getResourceDeedID();
 }
 
-void Player::queueThrow(TangibleObject* throwItem, unsigned int actionCRC) {
+bool Player::hasBadge(unsigned int badge) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 376);
+		method.addUnsignedIntParameter(badge);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->hasBadge(badge);
+}
+
+void Player::queueThrow(TangibleObject* throwItem, unsigned int actionCRC) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 377);
 		method.addObjectParameter(throwItem);
 		method.addUnsignedIntParameter(actionCRC);
 
@@ -4814,7 +4829,7 @@ void Player::setImagedesignXpGiven(bool given) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 377);
+		DistributedMethod method(this, 378);
 		method.addBooleanParameter(given);
 
 		method.executeWithVoidReturn();
@@ -4827,7 +4842,7 @@ bool Player::getImagedesignXpGiven() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 378);
+		DistributedMethod method(this, 379);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -4839,7 +4854,7 @@ void Player::teachPlayer(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 379);
+		DistributedMethod method(this, 380);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -4852,7 +4867,7 @@ void Player::setTeachingOffer(String& sBox) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 380);
+		DistributedMethod method(this, 381);
 		method.addAsciiParameter(sBox);
 
 		method.executeWithVoidReturn();
@@ -4865,7 +4880,7 @@ void Player::setTeacher(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 381);
+		DistributedMethod method(this, 382);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -4878,7 +4893,7 @@ void Player::setStudent(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 382);
+		DistributedMethod method(this, 383);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -4891,7 +4906,7 @@ String& Player::getTeachingOffer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 383);
+		DistributedMethod method(this, 384);
 
 		method.executeWithAsciiReturn(_return_getTeachingOffer);
 		return _return_getTeachingOffer;
@@ -4904,7 +4919,7 @@ Player* Player::getTeacher() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 384);
+		DistributedMethod method(this, 385);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -4916,7 +4931,7 @@ Player* Player::getStudent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 385);
+		DistributedMethod method(this, 386);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -4928,7 +4943,7 @@ String& Player::getTeachingSkillOption(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 386);
+		DistributedMethod method(this, 387);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getTeachingSkillOption);
@@ -4942,7 +4957,7 @@ void Player::clearTeachingSkillOptions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 387);
+		DistributedMethod method(this, 388);
 
 		method.executeWithVoidReturn();
 	} else
@@ -4954,12 +4969,37 @@ void Player::teachSkill(String& skillname) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 388);
+		DistributedMethod method(this, 389);
 		method.addAsciiParameter(skillname);
 
 		method.executeWithVoidReturn();
 	} else
 		((PlayerImplementation*) _impl)->teachSkill(skillname);
+}
+
+ActiveArea* Player::getActiveArea() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 390);
+
+		return (ActiveArea*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getActiveArea();
+}
+
+void Player::setActiveArea(ActiveArea* area) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 391);
+		method.addObjectParameter(area);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->setActiveArea(area);
 }
 
 /*
@@ -6084,43 +6124,52 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getResourceDeedID());
 		break;
 	case 376:
-		queueThrow((TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		resp->insertBoolean(hasBadge(inv->getUnsignedIntParameter()));
 		break;
 	case 377:
-		setImagedesignXpGiven(inv->getBooleanParameter());
+		queueThrow((TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 378:
-		resp->insertBoolean(getImagedesignXpGiven());
+		setImagedesignXpGiven(inv->getBooleanParameter());
 		break;
 	case 379:
-		teachPlayer((Player*) inv->getObjectParameter());
+		resp->insertBoolean(getImagedesignXpGiven());
 		break;
 	case 380:
-		setTeachingOffer(inv->getAsciiParameter(_param0_setTeachingOffer__String_));
+		teachPlayer((Player*) inv->getObjectParameter());
 		break;
 	case 381:
-		setTeacher((Player*) inv->getObjectParameter());
+		setTeachingOffer(inv->getAsciiParameter(_param0_setTeachingOffer__String_));
 		break;
 	case 382:
-		setStudent((Player*) inv->getObjectParameter());
+		setTeacher((Player*) inv->getObjectParameter());
 		break;
 	case 383:
-		resp->insertAscii(getTeachingOffer());
+		setStudent((Player*) inv->getObjectParameter());
 		break;
 	case 384:
-		resp->insertLong(getTeacher()->_getObjectID());
+		resp->insertAscii(getTeachingOffer());
 		break;
 	case 385:
-		resp->insertLong(getStudent()->_getObjectID());
+		resp->insertLong(getTeacher()->_getObjectID());
 		break;
 	case 386:
-		resp->insertAscii(getTeachingSkillOption(inv->getSignedIntParameter()));
+		resp->insertLong(getStudent()->_getObjectID());
 		break;
 	case 387:
-		clearTeachingSkillOptions();
+		resp->insertAscii(getTeachingSkillOption(inv->getSignedIntParameter()));
 		break;
 	case 388:
+		clearTeachingSkillOptions();
+		break;
+	case 389:
 		teachSkill(inv->getAsciiParameter(_param0_teachSkill__String_));
+		break;
+	case 390:
+		resp->insertLong(getActiveArea()->_getObjectID());
+		break;
+	case 391:
+		setActiveArea((ActiveArea*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -7609,6 +7658,10 @@ unsigned long long PlayerAdapter::getResourceDeedID() {
 	return ((PlayerImplementation*) impl)->getResourceDeedID();
 }
 
+bool PlayerAdapter::hasBadge(unsigned int badge) {
+	return ((PlayerImplementation*) impl)->hasBadge(badge);
+}
+
 void PlayerAdapter::queueThrow(TangibleObject* throwItem, unsigned int actionCRC) {
 	return ((PlayerImplementation*) impl)->queueThrow(throwItem, actionCRC);
 }
@@ -7659,6 +7712,14 @@ void PlayerAdapter::clearTeachingSkillOptions() {
 
 void PlayerAdapter::teachSkill(String& skillname) {
 	return ((PlayerImplementation*) impl)->teachSkill(skillname);
+}
+
+ActiveArea* PlayerAdapter::getActiveArea() {
+	return ((PlayerImplementation*) impl)->getActiveArea();
+}
+
+void PlayerAdapter::setActiveArea(ActiveArea* area) {
+	return ((PlayerImplementation*) impl)->setActiveArea(area);
 }
 
 /*

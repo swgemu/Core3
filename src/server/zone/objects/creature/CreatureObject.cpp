@@ -7331,12 +7331,24 @@ void CreatureObject::setTemplateString(const String& tmpString) {
 		((CreatureObjectImplementation*) _impl)->setTemplateString(tmpString);
 }
 
-void CreatureObject::say(UnicodeString& message, unsigned int moodid, unsigned int mood2) {
+void CreatureObject::clearTemplateString() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 572);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->clearTemplateString();
+}
+
+void CreatureObject::say(UnicodeString& message, unsigned int moodid, unsigned int mood2) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 573);
 		method.addUnicodeParameter(message);
 		method.addUnsignedIntParameter(moodid);
 		method.addUnsignedIntParameter(mood2);
@@ -7351,7 +7363,7 @@ void CreatureObject::say(const String& file, const String& str, StfParameter* pa
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 573);
+		DistributedMethod method(this, 574);
 		method.addAsciiParameter(file);
 		method.addAsciiParameter(str);
 		method.addObjectParameter(param);
@@ -7368,7 +7380,7 @@ void CreatureObject::setCamoType(unsigned int cType) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 574);
+		DistributedMethod method(this, 575);
 		method.addUnsignedIntParameter(cType);
 
 		method.executeWithVoidReturn();
@@ -7381,7 +7393,7 @@ unsigned int CreatureObject::getCamoType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 575);
+		DistributedMethod method(this, 576);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -7393,7 +7405,7 @@ void CreatureObject::activateCamo(unsigned int camoCRC, unsigned int time, unsig
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 576);
+		DistributedMethod method(this, 577);
 		method.addUnsignedIntParameter(camoCRC);
 		method.addUnsignedIntParameter(time);
 		method.addUnsignedIntParameter(ms);
@@ -7408,7 +7420,7 @@ void CreatureObject::deactivateCamo(bool forced) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 577);
+		DistributedMethod method(this, 578);
 		method.addBooleanParameter(forced);
 
 		method.executeWithVoidReturn();
@@ -7421,7 +7433,7 @@ void CreatureObject::activateCamoLock() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 578);
+		DistributedMethod method(this, 579);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7433,7 +7445,7 @@ bool CreatureObject::isCamoCooldownActive() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 579);
+		DistributedMethod method(this, 580);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -7445,7 +7457,7 @@ int CreatureObject::getCamoCooldownLeft() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 580);
+		DistributedMethod method(this, 581);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -7457,7 +7469,7 @@ int CreatureObject::getMaskScent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 581);
+		DistributedMethod method(this, 582);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -7469,7 +7481,7 @@ void CreatureObject::setMaskScent(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 582);
+		DistributedMethod method(this, 583);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -9187,36 +9199,39 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setTemplateString(inv->getAsciiParameter(_param0_setTemplateString__String_));
 		break;
 	case 572:
-		say(inv->getUnicodeParameter(_param0_say__UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		clearTemplateString();
 		break;
 	case 573:
-		say(inv->getAsciiParameter(_param0_say__String_String_StfParameter_int_int_), inv->getAsciiParameter(_param1_say__String_String_StfParameter_int_int_), (StfParameter*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		say(inv->getUnicodeParameter(_param0_say__UnicodeString_int_int_), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 574:
-		setCamoType(inv->getUnsignedIntParameter());
+		say(inv->getAsciiParameter(_param0_say__String_String_StfParameter_int_int_), inv->getAsciiParameter(_param1_say__String_String_StfParameter_int_int_), (StfParameter*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 575:
-		resp->insertInt(getCamoType());
+		setCamoType(inv->getUnsignedIntParameter());
 		break;
 	case 576:
-		activateCamo(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		resp->insertInt(getCamoType());
 		break;
 	case 577:
-		deactivateCamo(inv->getBooleanParameter());
+		activateCamo(inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 578:
-		activateCamoLock();
+		deactivateCamo(inv->getBooleanParameter());
 		break;
 	case 579:
-		resp->insertBoolean(isCamoCooldownActive());
+		activateCamoLock();
 		break;
 	case 580:
-		resp->insertSignedInt(getCamoCooldownLeft());
+		resp->insertBoolean(isCamoCooldownActive());
 		break;
 	case 581:
-		resp->insertSignedInt(getMaskScent());
+		resp->insertSignedInt(getCamoCooldownLeft());
 		break;
 	case 582:
+		resp->insertSignedInt(getMaskScent());
+		break;
+	case 583:
 		setMaskScent(inv->getSignedIntParameter());
 		break;
 	default:
@@ -11488,6 +11503,10 @@ String& CreatureObjectAdapter::getTemplateString() {
 
 void CreatureObjectAdapter::setTemplateString(const String& tmpString) {
 	return ((CreatureObjectImplementation*) impl)->setTemplateString(tmpString);
+}
+
+void CreatureObjectAdapter::clearTemplateString() {
+	return ((CreatureObjectImplementation*) impl)->clearTemplateString();
 }
 
 void CreatureObjectAdapter::say(UnicodeString& message, unsigned int moodid, unsigned int mood2) {

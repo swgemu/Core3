@@ -42,31 +42,57 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef NOBUILDAREAMAP_H_
-#define NOBUILDAREAMAP_H_
+#ifndef ACTIVEAREATRIGGERIMPLEMENTATION_H_
+#define ACTIVEAREATRIGGERIMPLEMENTATION_H_
 
-#include "../../objects/area/Area.h"
+#include "ActiveAreaTrigger.h"
+#include "ActiveArea.h"
+
 #include "engine/engine.h"
+#include "../player/Player.h"
 
-class NoBuildAreaMap : public Vector<Area *> {
+class ActiveAreaTriggerImplementation : public ActiveAreaTriggerServant {
+protected:
+	ActiveArea * area;
+
 public:
-	NoBuildAreaMap() { }
-
-	~NoBuildAreaMap() {
-		for (int i = 0; i < size(); i++) {
-			get(i)->finalize();
-		}
-
-		removeAll();
+	ActiveAreaTriggerImplementation(ActiveArea * area) {
+		this->setObjectCRC(0x84425787);
+		this->area = area;
 	}
 
-	bool isNoBuildArea(float x, float y) {
-		for (int i = 0; i < size(); i++) {
-			if (get(i)->containsPoint(x,y))
-				return true;
+	~ActiveAreaTriggerImplementation() {
+		if (area != NULL) {
+			area->finalize();
+			area = NULL;
+		}
+	}
+
+	void notifyPositionUpdate(QuadTreeEntry * obj) {
+		if (obj == NULL || obj == this)
+			return;
+
+		SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+
+		if (!scno->isPlayer())
+			return;
+
+		Player * player = (Player *) scno;
+
+
+		if (player->getActiveArea() == NULL && area->containsPoint(player->getPositionX(), player->getPositionY())) {
+			player->setActiveArea(area);
+			area->onEnter(player);
+
+		} else if (player->getActiveArea() == area && !area->containsPoint(player->getPositionX(), player->getPositionY())) {
+			player->setActiveArea(NULL);
+			area->onExit(player);
+
 		}
 
-		return false;
 	}
+
+
 };
-#endif /* NOBUILDAREAMAP_H_ */
+
+#endif /* ACTIVEAREATRIGGERIMPLEMENTATION_H_ */

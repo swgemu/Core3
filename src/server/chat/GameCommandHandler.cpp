@@ -46,7 +46,6 @@ which carries forward this exception.
 
 #include "GameCommandHandler.h"
 
-#include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/item/ItemManager.h"
 #include "../zone/managers/player/PlayerManager.h"
 #include "../zone/managers/player/PlayerMap.h"
@@ -61,6 +60,8 @@ which carries forward this exception.
 #include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/structure/StructureManager.h"
 #include "../zone/managers/combat/CombatManager.h"
+
+#include "../zone/objects/area/TestActiveArea.h"
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
@@ -375,6 +376,10 @@ void GameCommandHandler::init() {
 			"Prints the room tree.",
 			"Usage: @printRoomTree",
 			&printRoomTree);
+	gmCommands->addCommand("spawnAA", DEVELOPER,
+			"Spawns a test Action Area",
+			"Usage: @spawnAA <x> <y> <range>",
+			&spawnAA);
 
 	Disabled Commands */
 }
@@ -3208,29 +3213,59 @@ void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player)
 
 void GameCommandHandler::scaleXP(StringTokenizer tokenizer, Player* player) {
 	int scale;
-	
+
 	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
 	if (srv == NULL)
 		return;
-		
+
 	Zone* zone = player->getZone();
 	if (zone == NULL)
 		return;
-		
+
 	PlayerManager* pmng = srv->getPlayerManager();
 	if (pmng == NULL)
 		return;
-		 
+
 	if (!tokenizer.hasMoreTokens())
 		return;
-		
+
 	scale = tokenizer.getIntToken();
-	
+
 	pmng->setXpScale(scale);
 
 	ChatManager * chatManager = zone->getChatManager();
-	
+
 	StringBuffer message;
 	message << player->getFirstNameProper() << " set XP scale to " << scale << ".";
 	chatManager->broadcastMessage(message.toString());
+}
+
+void GameCommandHandler::spawnAA(StringTokenizer tokenizer, Player* player) {
+	Zone* zone = player->getZone();
+	PlanetManager * planetManager = zone->getPlanetManager();
+
+	float x, y, range;
+
+
+	if (tokenizer.hasMoreTokens()) {
+		x = tokenizer.getFloatToken();
+	} else {
+		return;
+	}
+
+	if (tokenizer.hasMoreTokens()) {
+		y = tokenizer.getFloatToken();
+	} else {
+		return;
+	}
+
+	if (tokenizer.hasMoreTokens()) {
+		range = tokenizer.getFloatToken();
+	} else {
+		return;
+	}
+
+	TestActiveArea * testArea = new TestActiveArea(x,y,range);
+
+	planetManager->spawnActiveArea(testArea);
 }

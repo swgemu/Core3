@@ -121,7 +121,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		try {
 			if (creature != target)
 				target->wlock(creature);
-			//System::out << "combat manager do skill : " << tskill->getSkillName() << "\n";
+
 				tskill->doSkill(creature, target, actionModifier);
 
 			if (creature != target)
@@ -137,9 +137,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	if (!checkSkill(creature, target, tskill))
 		return 0.0f;
 
-
 	uint32 animCRC = tskill->getAnimCRC();
-	//System::out << tskill->getSkillName() << " Anim " << animCRC << "\n";
 
 	if (animCRC == 0)
 		animCRC = getDefaultAttackAnimation(creature);
@@ -309,7 +307,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 			Creature* creature = (Creature*)targetCreature;
 			if (creature->isMount()) {
-				if (!skill->isAttackSkill()) {
+				if (!skill->isAttackSkill() || (attacker->getMount() == targetCreature)) {
 					targetCreature->unlock();
 					return false;
 				}
@@ -469,7 +467,9 @@ bool CombatManager::canAttack(Player* player, Player* targetPlayer) {
 	if (!player->isInDuelWith(targetPlayer, false)) {
 		if (!player->isOvert() || !targetPlayer->isOvert()) {
 			return false;
-		} else if (!player->hatesFaction(targetPlayer->getFaction())) {
+		}
+
+		if (!player->hatesFaction(targetPlayer->getFaction())) {
 			return false;
 		}
 	}
@@ -480,15 +480,11 @@ bool CombatManager::checkSkill(CreatureObject* creature, SceneObject* target, Ta
 	if (target == NULL)
 		return false;
 
-	if (!skill->isUseful(creature, target)) {
-//		cout << "not usefull\n";
+	if (!skill->isUseful(creature, target))
 		return false;
-	}
 
-	if (!skill->calculateCost(creature)) {
-//		cout << "not costs\n";
+	if (!skill->calculateCost(creature))
 		return false;
-	}
 
 	return true;
 }

@@ -2738,8 +2738,8 @@ public:
 	inline void setTemplateString(const String& tmpString) {
 		templateString = tmpString;
 	}
-
-	void setCamoType(unsigned int cType) {
+	
+		void setCamoType(unsigned int cType) {
 		camoType = cType;
 	}
 
@@ -2762,6 +2762,11 @@ public:
 
 	void setMaskScent(int value) {
 		maskScent = value;
+	}
+	
+
+	inline void clearTemplateString() {
+		templateString = "";
 	}
 
 	friend class CombatManager;

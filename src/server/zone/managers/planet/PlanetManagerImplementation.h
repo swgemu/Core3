@@ -68,6 +68,8 @@ which carries forward this exception.
 #include "NoBuildAreaMap.h"
 #include "../../objects/area/Area.h"
 
+#include "../../objects/area/ActiveArea.h"
+
 class ShuttleTakeOffEvent;
 class ShuttleLandingEvent;
 
@@ -195,6 +197,8 @@ public:
 	inline uint32 getTravelFare(String departurePlanet, String arrivalPlanet) {
 		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 	}
+
+	void spawnActiveArea(ActiveArea * area);
 };
 
 #endif

@@ -21,6 +21,8 @@ class MissionTerminal;
 
 class StructureManager;
 
+class ActiveArea;
+
 class PlanetManager : public DistributedObjectStub {
 public:
 	PlanetManager(Zone* zone, ZoneProcessServerImplementation* processor);
@@ -60,6 +62,8 @@ public:
 	void weatherChange();
 
 	void weatherRemoveEvents();
+
+	void spawnActiveArea(ActiveArea* area);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -112,6 +116,8 @@ public:
 	void weatherChange();
 
 	void weatherRemoveEvents();
+
+	void spawnActiveArea(ActiveArea* area);
 
 protected:
 	String _param0_getTravelFare__String_String_;

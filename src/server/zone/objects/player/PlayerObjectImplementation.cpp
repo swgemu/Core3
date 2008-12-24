@@ -91,6 +91,8 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjec
 	friendsList = new FriendsList(player);
 	ignoreList = new IgnoreList(player);
 
+	badges = new Badges();
+
 	reverseFriendListListCount = 0;
 }
 
@@ -108,6 +110,11 @@ PlayerObjectImplementation::~PlayerObjectImplementation() {
 	if (ignoreList != NULL) {
 		ignoreList->finalize();
 		ignoreList = NULL;
+	}
+
+	if (badges != NULL) {
+		badges->finalize();
+		badges = NULL;
 	}
 }
 
