@@ -1913,8 +1913,9 @@ void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 act
 	} else if (commandQueue.size() < 15) {
 		CommandQueueAction* action = new CommandQueueAction(player, target, actionCRC, actionCntr, amod);
 
-		if (!doAction(action))
+		if (!doAction(action)) {
 			delete action;
+		}
 	} else
 		clearQueueAction(actionCntr);
 
@@ -1947,11 +1948,9 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 			CommandQueueActionEvent* e = new CommandQueueActionEvent(_this);
 			server->addEvent(e, nextAction);
 		}
-
 		commandQueue.add(action);
 	} else {
 		nextAction.update();
-
 		activateQueueAction(action);
 
 	}
@@ -3127,7 +3126,7 @@ void PlayerImplementation::equipPlayerItem(TangibleObject* item, bool doUpdate) 
 	if (item->isEquipped())
 		item->setEquipped(false);
 
-	if (item->isWeapon()) {
+	if (item->isWeapon() && !item->isThrowable()) {
 		changeWeapon(item->getObjectID(), doUpdate);
 	} else if (item->isArmor()) {
 		changeArmor(item->getObjectID(), true);
@@ -4881,6 +4880,21 @@ void PlayerImplementation::queueHeal(TangibleObject* medPack, uint32 actionCRC, 
 	StringBuffer actionModifier;
 	if (!attribute.isEmpty())
 		actionModifier << attribute << "|";
+
+	actionModifier << objectID;
+
+	queueAction(_this, getTargetID(), actionCRC, ++actionCounter, actionModifier.toString());
+}
+
+void PlayerImplementation::queueThrow(TangibleObject* throwItem, uint32 actionCRC) {
+	//if (medPack == NULL || !medPack->isPharmaceutical()) {
+	//	sendSystemMessage("healing_response", "healing_resonse_60"); //No valid medicine found.
+	//	return;
+	//}
+
+	uint64 objectID = throwItem->getObjectID();
+
+	StringBuffer actionModifier;
 
 	actionModifier << objectID;
 

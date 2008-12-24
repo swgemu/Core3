@@ -214,4 +214,5 @@ interface Weapon implements TangibleObject {
 	void setCertified(boolean crt);
 
 	void setXpType();
+
 }

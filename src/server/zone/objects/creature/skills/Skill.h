@@ -68,6 +68,7 @@ protected:
 	ZoneProcessServerImplementation* server;
 
 public:
+	static const int OTHER = 0;
 	static const int ATTACK = 1;
 	static const int HEAL = 2;
 	static const int ENHANCE = 3;
@@ -78,8 +79,9 @@ public:
 	static const int MUSIC = 8;
 	static const int DIAGNOSE = 9;
 	static const int REVIVE = 10;
-	static const int FORAGE = 11;
-	static const int OTHER = 0;
+	static const int CAMO = 11;
+	static const int THROW = 12;
+	static const int FORAGE = 13;
 
 	static const int TARGET = 1;
 	static const int SELF = 2;
@@ -89,6 +91,7 @@ public:
 		server = serv;
 
 		nameCRC = name.hashCode();
+
 		skillName = name;
 		type = tp;
 		category = cat;
@@ -135,7 +138,7 @@ public:
 	}
 
 	inline bool isAttackSkill() {
-		return type == ATTACK;
+		return type == ATTACK || type == THROW;
 	}
 
 	inline bool isHealSkill() {
@@ -174,15 +177,15 @@ public:
 		return type == REVIVE;
 	}
 
-	inline bool isForageSkill() {
-		return type == FORAGE;
-	}
-
 	inline uint32 getNameCRC() {
 		return nameCRC;
 	}
 
 	inline uint32 getAnimCRC() {
+		return animCRC;
+	}
+
+	inline uint32 getAnimCRC(CreatureObject* creature, const String& actionModifier) {
 		return animCRC;
 	}
 
@@ -208,6 +211,14 @@ public:
 
 	inline String& getSkillName() {
 		return skillName;
+	}
+
+	inline bool isCamoSkill(){
+		return type == CAMO;
+	}
+
+	inline bool isThrowSkill(){
+		return type == THROW;
 	}
 
 };

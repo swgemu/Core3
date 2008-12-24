@@ -102,8 +102,11 @@ public:
 	static int AddDanceEffectSkill(lua_State* L);
 	static int AddMusicEffectSkill(lua_State* L);
 	static int AddForceRunSelfSkill(lua_State *L);
-	static int AddForageSkill(lua_State* L);
 
+	static int AddCamoSkill(lua_State* L);
+	static int AddForageSkill(lua_State* L);
+	static int AddThrowRandomPoolTargetSkill(lua_State *L);
+	static int AddThrowDirectPoolTargetSkill(lua_State *L);
 };
 
 

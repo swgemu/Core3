@@ -101,6 +101,10 @@ public:
 
 	bool isIntimidated();
 
+	bool isSnared();
+
+	bool isRooted();
+
 	bool isDiseased();
 
 	bool isPoisoned();
@@ -114,6 +118,10 @@ public:
 	bool isRidingCreature();
 
 	bool isMeditating();
+
+	bool isCreature();
+
+	bool isNPC();
 
 	bool hatesFaction(unsigned int faction);
 
@@ -375,6 +383,8 @@ public:
 
 	int getSkillModBonus(const String& name);
 
+	void addSkillModBonus(const String& name, int mod, bool updateClient = false);
+
 	bool hasSkillModBonus(const String& name);
 
 	int getAccuracy();
@@ -558,6 +568,8 @@ public:
 	String& getRaceName();
 
 	String& getGender();
+
+	String& getCreatureType();
 
 	String& getTerrainName();
 
@@ -997,6 +1009,10 @@ public:
 
 	void setIntimidatedState();
 
+	void setSnaredState();
+
+	void setRootedState();
+
 	void setPoisonedState(int str, int type, int duration);
 
 	void setBleedingState(int str, int type, int duration);
@@ -1036,6 +1052,8 @@ public:
 	void setStfName(const String& name);
 
 	void setGender(const String& name);
+
+	void setCreatureType(const String& name);
 
 	void setFaction(unsigned int fac);
 
@@ -1169,6 +1187,24 @@ public:
 
 	void say(const String& file, const String& str, StfParameter* param, unsigned int moodid = 0, unsigned int mood2 = 0);
 
+	void setCamoType(unsigned int cType);
+
+	unsigned int getCamoType();
+
+	void activateCamo(unsigned int camoCRC, unsigned int time, unsigned int ms);
+
+	void deactivateCamo(bool forced);
+
+	void activateCamoLock();
+
+	bool isCamoCooldownActive();
+
+	int getCamoCooldownLeft();
+
+	int getMaskScent();
+
+	void setMaskScent(int value);
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -1177,6 +1213,7 @@ protected:
 	String _return_getBehaviorScript;
 	String _return_getBoneType;
 	String _return_getCreatureFaction;
+	String _return_getCreatureType;
 	String _return_getCreatureWeapon;
 	String _return_getCreatureWeaponArmorPiercing;
 	String _return_getCreatureWeaponClass;
@@ -1264,6 +1301,10 @@ public:
 
 	bool isIntimidated();
 
+	bool isSnared();
+
+	bool isRooted();
+
 	bool isDiseased();
 
 	bool isPoisoned();
@@ -1277,6 +1318,10 @@ public:
 	bool isRidingCreature();
 
 	bool isMeditating();
+
+	bool isCreature();
+
+	bool isNPC();
 
 	bool hatesFaction(unsigned int faction);
 
@@ -1536,6 +1581,8 @@ public:
 
 	int getSkillModBonus(const String& name);
 
+	void addSkillModBonus(const String& name, int mod, bool updateClient);
+
 	bool hasSkillModBonus(const String& name);
 
 	int getAccuracy();
@@ -1719,6 +1766,8 @@ public:
 	String& getRaceName();
 
 	String& getGender();
+
+	String& getCreatureType();
 
 	String& getTerrainName();
 
@@ -2158,6 +2207,10 @@ public:
 
 	void setIntimidatedState();
 
+	void setSnaredState();
+
+	void setRootedState();
+
 	void setPoisonedState(int str, int type, int duration);
 
 	void setBleedingState(int str, int type, int duration);
@@ -2197,6 +2250,8 @@ public:
 	void setStfName(const String& name);
 
 	void setGender(const String& name);
+
+	void setCreatureType(const String& name);
 
 	void setFaction(unsigned int fac);
 
@@ -2330,6 +2385,24 @@ public:
 
 	void say(const String& file, const String& str, StfParameter* param, unsigned int moodid, unsigned int mood2);
 
+	void setCamoType(unsigned int cType);
+
+	unsigned int getCamoType();
+
+	void activateCamo(unsigned int camoCRC, unsigned int time, unsigned int ms);
+
+	void deactivateCamo(bool forced);
+
+	void activateCamoLock();
+
+	bool isCamoCooldownActive();
+
+	int getCamoCooldownLeft();
+
+	int getMaskScent();
+
+	void setMaskScent(int value);
+
 protected:
 	String _param0_info__String_bool_;
 	String _param0_doAnimation__String_;
@@ -2346,6 +2419,7 @@ protected:
 	String _param0_getSkillMod__String_;
 	String _param0_hasSkillMod__String_;
 	String _param0_getSkillModBonus__String_;
+	String _param0_addSkillModBonus__String_int_bool_;
 	String _param0_hasSkillModBonus__String_;
 	String _param0_sendSystemMessage__String_;
 	String _param0_sendSystemMessage__String_String_long_;
@@ -2366,6 +2440,7 @@ protected:
 	String _param0_setSpeciesName__String_;
 	String _param0_setStfName__String_;
 	String _param0_setGender__String_;
+	String _param0_setCreatureType__String_;
 	String _param0_setMood__String_;
 	String _param0_setBoneType__String_;
 	String _param0_setHideType__String_;

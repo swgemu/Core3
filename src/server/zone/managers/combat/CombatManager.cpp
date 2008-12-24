@@ -85,6 +85,8 @@ float CombatManager::handleAction(CommandQueueAction* action) {
 
 	if (skill->isTargetSkill())
 		return doTargetSkill(action);
+	else if (skill->isCamoSkill())
+		return doCamoEvent(action);
 	else if (skill->isSelfSkill())
 		return doSelfSkill(action);
 
@@ -119,7 +121,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		try {
 			if (creature != target)
 				target->wlock(creature);
-
+			//System::out << "combat manager do skill : " << tskill->getSkillName() << "\n";
 				tskill->doSkill(creature, target, actionModifier);
 
 			if (creature != target)
@@ -135,7 +137,9 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	if (!checkSkill(creature, target, tskill))
 		return 0.0f;
 
+
 	uint32 animCRC = tskill->getAnimCRC();
+	//System::out << tskill->getSkillName() << " Anim " << animCRC << "\n";
 
 	if (animCRC == 0)
 		animCRC = getDefaultAttackAnimation(creature);
@@ -182,6 +186,25 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 	return selfskill->calculateSpeed(creature);
 }
 
+float CombatManager::doCamoEvent(CommandQueueAction* action) {
+
+	CamoSkill* skill = (MaskScentSelfSkill*) action->getSkill();
+	CreatureObject* creature = action->getCreature();
+	SceneObject* target = action->getTarget();
+	String actionModifier = action->getActionModifier();
+
+	if (skill->getDuration() == 0)
+		return skill->calculateSpeed(creature);
+
+	if (skill->getCamoType() == 10) {
+		skill->doSkill(creature,actionModifier);
+	} else {
+		skill->doSkill(creature,target,actionModifier);
+	}
+
+	return skill->calculateSpeed(creature);
+
+}
 
 void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* target, CommandQueueAction* action, CombatAction* actionMessage) {
 	TargetSkill* skill = (TargetSkill*) action->getSkill();
@@ -457,11 +480,15 @@ bool CombatManager::checkSkill(CreatureObject* creature, SceneObject* target, Ta
 	if (target == NULL)
 		return false;
 
-	if (!skill->isUseful(creature, target))
+	if (!skill->isUseful(creature, target)) {
+//		cout << "not usefull\n";
 		return false;
+	}
 
-	if (!skill->calculateCost(creature))
+	if (!skill->calculateCost(creature)) {
+//		cout << "not costs\n";
 		return false;
+	}
 
 	return true;
 }

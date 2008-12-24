@@ -48,8 +48,11 @@ which carries forward this exception.
 #include "../TargetSkill.h"
 #include "../PassiveSkill.h"
 #include "../../../tangible/wearables/Armor.h"
+#include "../../../tangible/weapons/ThrowableWeapon.h"
 
 #include "../../../../packets/object/ShowFlyText.h"
+
+#include "../../buffs/Buff.h"
 
 class CombatManager;
 
@@ -83,6 +86,8 @@ protected:
 	int blindStateChance;
 	int stunStateChance;
 	int intimidateStateChance;
+	int snareStateChance;
+	int rootStateChance;
 
 	int requiredWeaponType;
 	int skillType;
@@ -92,6 +97,15 @@ protected:
 	String cbtSpamEvade;
 	String cbtSpamHit;
 	String cbtSpamMiss;
+
+	int meleeDefDebuff;
+	int rangedDefDebuff;
+	int stunDefDebuff;
+	int intimidateDefDebuff;
+
+	String debuffMessage;
+	String debuffStrFile;
+	String debuffEndMessage;
 
 public:
 	static const int DEBUFF = 1;
@@ -133,12 +147,18 @@ public:
 		stunStateChance = 0;
 		intimidateStateChance = 0;
 
+		meleeDefDebuff = 0;
+		rangedDefDebuff = 0;
+		stunDefDebuff = 0;
+		intimidateDefDebuff = 0;
+
 		requiredWeaponType = 0xFF; // NONE
 		skillType = tp;
 	}
 
 
 	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) = 0;
+
 
 	virtual bool calculateCost(CreatureObject* creature) {
 		return creature->changeMindBar(-50);
@@ -157,9 +177,11 @@ public:
 		*/
 	}
 
-	int applyHealthPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 1) {
+	int applyHealthPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 1, Weapon* weapon = NULL) {
 
-		Weapon* weapon = attacker->getWeapon();
+		if (weapon == NULL)
+			weapon = attacker->getWeapon();
+
 		Armor* armor = target->getArmor(part);
 
 		int reduction = 0;
@@ -242,9 +264,11 @@ public:
 		target->changeConstitutionBar(-(int32) damage, true);
 	}
 
-	int applyActionPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 7) {
+	int applyActionPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 7, Weapon* weapon = NULL) {
 
-		Weapon* weapon = attacker->getWeapon();
+		if (weapon == NULL)
+			weapon = attacker->getWeapon();
+
 		Armor* armor = target->getArmor(part);
 
 		int reduction = 0;
@@ -322,9 +346,11 @@ public:
 		target->changeStaminaBar(-(int32) damage, true);
 	}
 
-	int applyMindPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage) {
+	int applyMindPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, Weapon* weapon = NULL) {
 
-		Weapon* weapon = attacker->getWeapon();
+		if (weapon == NULL)
+			weapon = attacker->getWeapon();
+
 		Armor* armor = target->getArmor(9);
 
 		int reduction = 0;
@@ -395,7 +421,7 @@ public:
 		target->changeWillpowerBar(-(int32) damage, true);
 	}
 
-	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
+	virtual void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
 		if (hasCbtSpamMiss())
 			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
 
@@ -451,16 +477,22 @@ public:
 		if (weapon != NULL) {
 			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * speedRatio * weapon->getAttackSpeed();
 		} else
-			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * 1;
+			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * speedRatio * 3.0;
 
+		/*cout << "skill->getSpeedRatio = " << getSpeedRatio() << "\n";
+		if (weapon != NULL)
+			cout << "weapon->getAttackSpeed = " << weapon->getAttackSpeed() << "\n";
+		cout << "weapon speed  = " << weaponSpeed << "\n";
+		cout << "speed : " << MAX(weaponSpeed, 1.0f) << "\n";*/
 		return MAX(weaponSpeed, 1.0f);
 	}
 
-	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature) {
+	virtual void calculateStates(CreatureObject* creature, CreatureObject* targetCreature) {
 		if (hasStateChance) {
 			checkKnockDown(creature, targetCreature);
 			checkPostureDown(creature, targetCreature);
 			checkPostureUp(creature, targetCreature);
+			bool stateApply = false;
 
 			if (dizzyStateChance != 0) {
 				int targetDefense = targetCreature->getSkillMod("dizzy_defense");
@@ -468,8 +500,10 @@ public:
 
 				int rand = System::random(100);
 
-				if ((5 > rand) || (rand > targetDefense))
+				if ((5 > rand) || (rand > targetDefense)) {
 					targetCreature->setDizziedState();
+					stateApply = true;
+				}
 			}
 
 			if (blindStateChance != 0) {
@@ -478,8 +512,10 @@ public:
 
 				int rand = System::random(100);
 
-				if ((5 > rand) || (rand > targetDefense))
+				if ((5 > rand) || (rand > targetDefense)) {
 					targetCreature->setBlindedState();
+					stateApply = true;
+				}
 			}
 
 			if (stunStateChance != 0) {
@@ -488,8 +524,10 @@ public:
 
 				int rand = System::random(100);
 
-				if ((5 > rand) || (rand > targetDefense))
+				if ((5 > rand) || (rand > targetDefense)) {
 					targetCreature->setStunnedState();
+					stateApply = true;
+				}
 			}
 
 			if (intimidateStateChance != 0) {
@@ -499,13 +537,42 @@ public:
 				int rand = System::random(10);
 
 				//if ((5 > rand) || (rand > targetDefense))
-				if (5 >= rand)
+				if (5 >= rand) {
 					targetCreature->setIntimidatedState();
+					stateApply = true;
+				}
 			}
+			//  This code is only needed if we decide to let creatures root and snare players (Also needs movement code put in player)
+			/*if (snareStateChance != 0) {
+				int targetDefense = targetCreature->getSkillMod("burst_run");
+				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+
+				int rand = System::random(10);
+
+				//if ((5 > rand) || (rand > targetDefense))
+				if (5 >= rand) {
+					targetCreature->setSnaredState();
+					stateApply = true;
+				}
+			}
+
+			if (rootStateChance != 0) {
+				int targetDefense = targetCreature->getSkillMod("burst_run");
+				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+
+				int rand = System::random(10);
+
+				//if ((5 > rand) || (rand > targetDefense))
+				if (5 >= rand) {
+					targetCreature->setRootedState();
+					stateApply = true;
+				}
+			}*/
 
 			targetCreature->updateStates();
 		}
 	}
+
 
 	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature) {
 		if (knockdownStateChance != 0) {
@@ -833,7 +900,7 @@ public:
 	bool isCone() {
 		return false;
 	}
-	
+
 	inline void setDamageRatio(float ratio) {
 		damageRatio = ratio;
 	}
@@ -906,6 +973,16 @@ public:
 
 	inline void setIntimidateChance(int chance) {
 		intimidateStateChance = chance;
+		hasStateChance = true;
+	}
+
+	inline void setSnareChance(int chance) {
+		snareStateChance = chance;
+		hasStateChance = true;
+	}
+
+	inline void setRootChance(int chance) {
+		rootStateChance = chance;
 		hasStateChance = true;
 	}
 
@@ -988,9 +1065,110 @@ public:
 	int getRequiredWeaponType() {
 		return requiredWeaponType;
 	}
-	
+
 	int getSkillType() {
 		return skillType;
+	}
+
+	void setMeleeDefDebuff(int dBuff) {
+		meleeDefDebuff = dBuff;
+	}
+
+	void setRangedDefDebuff(int dBuff) {
+		rangedDefDebuff = dBuff;
+	}
+
+	void setStunDefDebuff(int dBuff) {
+		stunDefDebuff = dBuff;
+	}
+
+	void setIntimidateDefDebuff(int dBuff) {
+		intimidateDefDebuff = dBuff;
+	}
+
+	int getMeleeDefDebuff() {
+		return meleeDefDebuff;
+	}
+
+	int getRangedDefDebuff() {
+		return rangedDefDebuff;
+	}
+
+	int getStunDefDebuff() {
+		return stunDefDebuff;
+	}
+
+	int getIntimidateDefDebuff() {
+		return intimidateDefDebuff;
+	}
+
+	bool isDebuff() {
+		return meleeDefDebuff != 0 || rangedDefDebuff != 0 || intimidateDefDebuff != 0 || stunDefDebuff != 0;
+	}
+
+	ThrowableWeapon* getThrowableWeapon(CreatureObject* creature, const String& modifier) {
+			if (!modifier.isEmpty()) {
+			StringTokenizer tokenizer(modifier);
+			String poolName;
+			uint64 objectid = 0;
+
+			tokenizer.setDelimeter("|");
+
+			if (tokenizer.hasMoreTokens())
+				objectid = tokenizer.getLongToken();
+
+			if (objectid > 0) {
+				SceneObject* invObj = creature->getInventoryItem(objectid);
+
+				if (invObj != NULL && invObj->isTangible()) {
+					TangibleObject* tano = (TangibleObject*) invObj;
+
+					if (tano->isThrowable()) {
+						ThrowableWeapon* twp = (ThrowableWeapon*) tano;
+
+						return twp;
+					}
+				}
+			}
+		}
+
+		return NULL;
+	}
+
+	bool isAttackSkill() {
+		return true;
+	}
+
+	void setDeBuffMessage(const String& ename) {
+		debuffMessage = ename;
+	}
+
+	String getDeBuffMessage() {
+		return debuffMessage;
+	}
+
+	void setDeBuffStrFile(const String& ename) {
+		debuffStrFile = ename;
+	}
+
+	String getDeBuffStrFile() {
+		return debuffStrFile;
+	}
+
+	void setDeBuffEndMessage(const String& ename) {
+		debuffEndMessage = ename;
+	}
+
+	String getDeBuffEndMessage() {
+		return debuffEndMessage;
+	}
+
+	bool hasDeBuffEndMessage() {
+			return !debuffEndMessage.isEmpty();
+	}
+
+	bool hasDeBuffMessage() {
+			return !debuffMessage.isEmpty();
 	}
 
 	friend class CombatManager;

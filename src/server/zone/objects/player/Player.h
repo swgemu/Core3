@@ -811,6 +811,8 @@ public:
 
 	unsigned long long getResourceDeedID();
 
+	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
+
 	void setImagedesignXpGiven(bool given);
 
 	bool getImagedesignXpGiven();
@@ -1609,6 +1611,8 @@ public:
 	void setResourceDeedID(unsigned long long objectID);
 
 	unsigned long long getResourceDeedID();
+
+	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
 
 	void setImagedesignXpGiven(bool given);
 

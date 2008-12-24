@@ -4795,12 +4795,26 @@ unsigned long long Player::getResourceDeedID() {
 		return ((PlayerImplementation*) _impl)->getResourceDeedID();
 }
 
-void Player::setImagedesignXpGiven(bool given) {
+void Player::queueThrow(TangibleObject* throwItem, unsigned int actionCRC) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 376);
+		method.addObjectParameter(throwItem);
+		method.addUnsignedIntParameter(actionCRC);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->queueThrow(throwItem, actionCRC);
+}
+
+void Player::setImagedesignXpGiven(bool given) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 377);
 		method.addBooleanParameter(given);
 
 		method.executeWithVoidReturn();
@@ -4813,7 +4827,7 @@ bool Player::getImagedesignXpGiven() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 377);
+		DistributedMethod method(this, 378);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -4825,7 +4839,7 @@ void Player::teachPlayer(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 378);
+		DistributedMethod method(this, 379);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -4838,7 +4852,7 @@ void Player::setTeachingOffer(String& sBox) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 379);
+		DistributedMethod method(this, 380);
 		method.addAsciiParameter(sBox);
 
 		method.executeWithVoidReturn();
@@ -4851,7 +4865,7 @@ void Player::setTeacher(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 380);
+		DistributedMethod method(this, 381);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -4864,7 +4878,7 @@ void Player::setStudent(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 381);
+		DistributedMethod method(this, 382);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -4877,7 +4891,7 @@ String& Player::getTeachingOffer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 382);
+		DistributedMethod method(this, 383);
 
 		method.executeWithAsciiReturn(_return_getTeachingOffer);
 		return _return_getTeachingOffer;
@@ -4890,7 +4904,7 @@ Player* Player::getTeacher() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 383);
+		DistributedMethod method(this, 384);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -4902,7 +4916,7 @@ Player* Player::getStudent() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 384);
+		DistributedMethod method(this, 385);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -4914,7 +4928,7 @@ String& Player::getTeachingSkillOption(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 385);
+		DistributedMethod method(this, 386);
 		method.addSignedIntParameter(idx);
 
 		method.executeWithAsciiReturn(_return_getTeachingSkillOption);
@@ -4928,7 +4942,7 @@ void Player::clearTeachingSkillOptions() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 386);
+		DistributedMethod method(this, 387);
 
 		method.executeWithVoidReturn();
 	} else
@@ -4940,7 +4954,7 @@ void Player::teachSkill(String& skillname) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 387);
+		DistributedMethod method(this, 388);
 		method.addAsciiParameter(skillname);
 
 		method.executeWithVoidReturn();
@@ -6070,39 +6084,42 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getResourceDeedID());
 		break;
 	case 376:
-		setImagedesignXpGiven(inv->getBooleanParameter());
+		queueThrow((TangibleObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 377:
-		resp->insertBoolean(getImagedesignXpGiven());
+		setImagedesignXpGiven(inv->getBooleanParameter());
 		break;
 	case 378:
-		teachPlayer((Player*) inv->getObjectParameter());
+		resp->insertBoolean(getImagedesignXpGiven());
 		break;
 	case 379:
-		setTeachingOffer(inv->getAsciiParameter(_param0_setTeachingOffer__String_));
+		teachPlayer((Player*) inv->getObjectParameter());
 		break;
 	case 380:
-		setTeacher((Player*) inv->getObjectParameter());
+		setTeachingOffer(inv->getAsciiParameter(_param0_setTeachingOffer__String_));
 		break;
 	case 381:
-		setStudent((Player*) inv->getObjectParameter());
+		setTeacher((Player*) inv->getObjectParameter());
 		break;
 	case 382:
-		resp->insertAscii(getTeachingOffer());
+		setStudent((Player*) inv->getObjectParameter());
 		break;
 	case 383:
-		resp->insertLong(getTeacher()->_getObjectID());
+		resp->insertAscii(getTeachingOffer());
 		break;
 	case 384:
-		resp->insertLong(getStudent()->_getObjectID());
+		resp->insertLong(getTeacher()->_getObjectID());
 		break;
 	case 385:
-		resp->insertAscii(getTeachingSkillOption(inv->getSignedIntParameter()));
+		resp->insertLong(getStudent()->_getObjectID());
 		break;
 	case 386:
-		clearTeachingSkillOptions();
+		resp->insertAscii(getTeachingSkillOption(inv->getSignedIntParameter()));
 		break;
 	case 387:
+		clearTeachingSkillOptions();
+		break;
+	case 388:
 		teachSkill(inv->getAsciiParameter(_param0_teachSkill__String_));
 		break;
 	default:
@@ -7590,6 +7607,10 @@ void PlayerAdapter::setResourceDeedID(unsigned long long objectID) {
 
 unsigned long long PlayerAdapter::getResourceDeedID() {
 	return ((PlayerImplementation*) impl)->getResourceDeedID();
+}
+
+void PlayerAdapter::queueThrow(TangibleObject* throwItem, unsigned int actionCRC) {
+	return ((PlayerImplementation*) impl)->queueThrow(throwItem, actionCRC);
 }
 
 void PlayerAdapter::setImagedesignXpGiven(bool given) {

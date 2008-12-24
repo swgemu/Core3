@@ -150,6 +150,19 @@ bool Buff::activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* s
 		creo->changeMaxFocusBar(getFocusBuff());
 	}
 
+	if(!skillModBuffs.isEmpty()) {
+		String mod = "";
+		int32 value = 0;
+
+		while (skillModBuffs.hasNext()) {
+			mod = skillModBuffs.getNextKey();
+			value = skillModBuffs.get(mod);
+			creo->addSkillModBonus(mod,value,false);
+		}
+
+		skillModBuffs.resetIterator();
+	}
+
 	removeBuffEvent();
 
 	// TODO: Add Skill Mods
@@ -180,7 +193,6 @@ void Buff::downerBuff(CreatureObject* creo) {
 
 	buff->setBuffDowner(true);
 
-	// TODO: Switch Skill Mods?
 	BuffObject* bo = new BuffObject(buff);
 	creo->applyBuff(bo);
 }
@@ -234,9 +246,36 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->setFocusBar(MAX(creo->getFocusMax() - creo->getFocusWounds(), 1));
 	}
 
+	if(getSkillModBuff("melee_defense") != 0) {
+		creo->showFlyText("trap/trap", "melee_def_1_off", 255, 255, 255);
+	}
+
+	if(getSkillModBuff("ranged_defense") != 0) {
+		creo->showFlyText("trap/trap", "ranged_def_1_off", 255, 255, 255);
+	}
+
+	if(getSkillModBuff("intimidate_defense") != 0) {
+		creo->showFlyText("trap/trap", "melee_ranged_def_1_off", 255, 255, 255);
+	}
+
+	if(getSkillModBuff("stun_defense") != 0) {
+		creo->showFlyText("trap/trap", "state_def_1_off", 255, 255, 255);
+	}
+
 	creo->activateRecovery();
 
-	// TODO: Remove Skill Mods
+	if(!skillModBuffs.isEmpty()) {
+		String mod = "";
+		int32 value = 0;
+
+		while (skillModBuffs.hasNext()) {
+			mod = skillModBuffs.getNextKey();
+			value = skillModBuffs.get(mod);
+			creo->addSkillModBonus(mod,(-1 *value),false);
+		}
+
+		skillModBuffs.resetIterator();
+	}
 
 	removeBuffEvent();
 

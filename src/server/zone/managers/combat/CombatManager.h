@@ -77,6 +77,7 @@ public:
 
 	float doTargetSkill(CommandQueueAction* action);
 	float doSelfSkill(CommandQueueAction* action);
+	float doCamoEvent(CommandQueueAction* action);
 
 	bool handleMountDamage(CreatureObject* targetCreature, MountCreature* mount);
 

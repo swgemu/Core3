@@ -79,6 +79,7 @@ which carries forward this exception.
 #include "events/InjuryTreatmentOverEvent.h"
 #include "events/StateTreatmentOverEvent.h"
 #include "events/ConditionTreatmentOverEvent.h"
+#include "events/MaskScentEvent.h"
 
 #include "../../objects/player/Races.h"
 #include "mount/MountCreature.h"
@@ -318,6 +319,11 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	frozen = false;
 	templateString = "";
+
+	camoType = 11;
+	maskScentEvent = NULL;
+	maskScent = 0;
+
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -337,6 +343,14 @@ CreatureObjectImplementation::~CreatureObjectImplementation() {
 
 		delete woundTreatmentEvent;
 		woundTreatmentEvent = NULL;
+	}
+
+	if (maskScentEvent != NULL) {
+		if (maskScentEvent->isQueued()) {
+			server->removeEvent(maskScentEvent);
+		delete maskScentEvent;
+		maskScentEvent = NULL;
+		}
 	}
 
 	if (injuryTreatmentEvent != NULL) {
@@ -843,8 +857,34 @@ void CreatureObjectImplementation::setIntimidatedState() {
 		playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 
+		int time = 15000 + System::random(5000);
+
 		intimidateRecoveryTime.update();
-		intimidateRecoveryTime.addMiliTime(15000 + System::random(5000));
+		intimidateRecoveryTime.addMiliTime(time);
+	}
+}
+
+void CreatureObjectImplementation::setSnaredState() {
+	if (setState(CreatureState::IMMOBILIZED)) {
+		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
+		showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
+
+		int time = 20000 + System::random(10000);
+
+		snareRecoveryTime.update();
+		snareRecoveryTime.addMiliTime(time);
+	}
+}
+
+void CreatureObjectImplementation::setRootedState() {
+	if (setState(CreatureState::FROZEN)) {
+		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
+		showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
+
+		int time = 20000 + System::random(10000);
+
+		rootRecoveryTime.update();
+		rootRecoveryTime.addMiliTime(time);
 	}
 }
 
@@ -1047,6 +1087,12 @@ bool CreatureObjectImplementation::clearState(uint64 state) {
 			break;
 		case CreatureState::INTIMIDATED:
 			showFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
+			break;
+		case CreatureState::IMMOBILIZED:
+			showFlyText("combat_effects", "no_snare", 0xFF, 0, 0);
+			break;
+		case CreatureState::FROZEN:
+			showFlyText("combat_effects", "no_rooted", 0xFF, 0, 0);
 			break;
 		default:
 			break;
@@ -3096,6 +3142,7 @@ void CreatureObjectImplementation::addSkills(Vector<Skill*>& skills, bool update
 		Skill* skill = skills.get(i);
 		if (!creatureSkills.contains(skill->getNameCRC()))
 			creatureSkills.put(skill->getNameCRC(), skill);
+
 		if (updateClient)
 			dplay9->addSkill(skill->getSkillName());
 	}
@@ -3169,10 +3216,10 @@ void CreatureObjectImplementation::addSkillModBonus(const String& name, int mod,
 	if (creatureSkillModBonus.containsKey(name)) {
 		mod += creatureSkillModBonus.get(name);
 
-		if (mod <= 0) {
-			removeSkillModBonus(name, updateClient);
-			return;
-		}
+		//if (mod <= 0) {
+		//	removeSkillModBonus(name, updateClient);
+		//	return;
+		//}
 
 		creatureSkillModBonus.remove(name);
 	}
@@ -5309,7 +5356,7 @@ void CreatureObjectImplementation::deactivateStateTreatment() {
 void CreatureObjectImplementation::activateStateTreatment() {
 	doStateTreatment = true;
 	stateTreatmentEvent = NULL;
-	sendSystemMessage("You are now ready to heal more states.");
+	sendSystemMessage("healing_response", "healing_response_59 ");
 }
 
 void CreatureObjectImplementation::deactivateConditionTreatment() {
@@ -5329,7 +5376,7 @@ void CreatureObjectImplementation::deactivateConditionTreatment() {
 void CreatureObjectImplementation::activateConditionTreatment() {
 	doConditionTreatment = true;
 	conditionTreatmentEvent = NULL;
-	sendSystemMessage("You are now ready to cure more conditions.");
+	sendSystemMessage("healing_response", "healing_response_59 ");
 }
 
 int CreatureObjectImplementation::getMedicalFacilityRating() {
@@ -5370,5 +5417,60 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature) {
 	}
 
 	return (pvpStatusBitmask & CreatureFlag::ATTACKABLE);
+}
+
+void CreatureObjectImplementation::activateCamo(unsigned int camoCRC ,unsigned int time,unsigned int ms) {
+		MaskScentEvent* event = new MaskScentEvent(_this,camoCRC,time);
+
+		maskScentEvent = event;
+
+		server->addEvent(maskScentEvent);
+		setMaskScent(ms);
+		//addQueuedState(maskScentEvent->getNameCRC());
+		addBuff(maskScentEvent->getNameCRC(),time);
+		setState(CreatureState::MASKSCENT);
+		updateStates();
+
+		if (camoType == 10)
+			sendSystemMessage("skl_use", "sys_scentmask_start");
+		else
+			sendSystemMessage("skl_use", "sys_conceal_start");
+}
+
+void CreatureObjectImplementation::deactivateCamo(bool forced) {
+	if (maskScentEvent != NULL) {
+
+		if (forced)
+			sendSystemMessage("skl_use", "sys_scentmask_break");
+		else if (getCamoType() == 10)
+			sendSystemMessage("skl_use", "sys_scentmask_stop ");
+		else
+			sendSystemMessage("skl_use", "sys_conceal_stop ");
+
+
+
+		//removeQueuedState(maskScentEvent->getNameCRC());
+		removeBuff(maskScentEvent->getNameCRC());
+		server->removeEvent(maskScentEvent);
+		camoType = 11;
+		clearState(CreatureState::MASKSCENT);
+		updateStates();
+		maskScentEvent = NULL;
+
+		activateCamoLock();
+	}
+}
+
+void CreatureObjectImplementation::activateCamoLock() {
+	camoLock.update();
+	camoLock.addMiliTime(60000);
+}
+
+bool CreatureObjectImplementation::isCamoCooldownActive() {
+	return camoLock.isPast();
+}
+
+int CreatureObjectImplementation::getCamoCooldownLeft() {
+	return -1 * camoLock.miliDifference();
 }
 

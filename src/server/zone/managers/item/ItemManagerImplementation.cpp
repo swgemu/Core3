@@ -216,6 +216,12 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		case TangibleObjectImplementation::HEAVYWEAPON:
 			item = new HeavyRangedWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
 			break;
+		case TangibleObjectImplementation::TRAP:
+			item = new TrapThrowableWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
+			break;
+		//case TangibleObjectImplementation::GRANADE:
+		//	item = new ThrowableWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
+		//	break;
 		}
 
 		if (item != NULL && makeStats) {
@@ -318,6 +324,13 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
                 item->parseItemAttributes();
             }
             break;
+	    case TangibleObjectImplementation::CAMOKIT:
+			item = new CamoKit(objectid, objectcrc, objectname, objecttemp);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
+			break;
 
 		default:
 			item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, objecttype);
@@ -669,6 +682,7 @@ void ItemManagerImplementation::registerFunctions() {
 
 void ItemManagerImplementation::registerGlobals() {
 	//Object Types
+	setGlobalInt("CAMOKIT", TangibleObjectImplementation::CAMOKIT);
 	setGlobalInt("HAIR", TangibleObjectImplementation::HAIR);
 	setGlobalInt("TERMINAL", TangibleObjectImplementation::TERMINAL);
 	setGlobalInt("TICKETCOLLECTOR", TangibleObjectImplementation::TICKETCOLLECTOR);
@@ -975,6 +989,14 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		weapon->setMinDamage(mindmg);
 		weapon->setMaxDamage(maxdmg);
 
+		if (weapon->isTrap()) {
+			int uses =  itemconfig.getIntField("uses");
+			String skill = itemconfig.getStringField("skill");
+
+			((TrapThrowableWeapon*) weapon)->setUsesRemaining(uses);
+			((TrapThrowableWeapon*) weapon)->setSkill(skill);
+		}
+
 		if (!cert.isEmpty())
 			weapon->setCert(cert);
 
@@ -1144,7 +1166,14 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		int attributeSlots = itemconfig.getIntField("slots");
 		Container* container = (Container*) item;
 		container->setSlots(attributeSlots);
-
+	} else if (type == TangibleObjectImplementation::CAMOKIT) {
+		CamoKit* camoKit = (CamoKit*) item;
+		int planet = itemconfig.getIntField("planetType");
+		int uses = itemconfig.getIntField("uses");
+		int cMin = itemconfig.getIntField("concealSkill");
+		camoKit->setPlanet(planet);
+		camoKit->setUsesRemaining(uses);
+		camoKit->setConcealMin(cMin);
     } else if (type == TangibleObjectImplementation::COMPONENT) {
 	    Component* component = (Component*) item;
 	    String attribute;
@@ -1176,6 +1205,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 	return item;
 }
+
 int ItemManagerImplementation::addPlayerItem(lua_State * l) {
 	LuaObject itemwrapper(l);
 

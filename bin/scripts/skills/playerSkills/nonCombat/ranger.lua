@@ -40,3 +40,10 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+CamoSkill = {
+	skillname = "conceal",
+	type = 2,
+	duration = 3600.0,	
+}
+
+AddCamoSkill(CamoSkill)

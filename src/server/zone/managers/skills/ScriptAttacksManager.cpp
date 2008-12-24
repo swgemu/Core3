@@ -101,7 +101,12 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddMusicEffectSkill", AddMusicEffectSkill);
 	lua_register(getLuaState(), "AddForceRunSelfSkill", AddForceRunSelfSkill);
 	lua_register(getLuaState(), "AddDiagnoseTargetSkill", AddDiagnoseTargetSkill);
+
+	lua_register(getLuaState(), "AddCamoSkill", AddCamoSkill);
 	lua_register(getLuaState(), "AddForageSkill", AddForageSkill);
+	lua_register(getLuaState(), "AddThrowRandomPoolTargetSkill", AddThrowRandomPoolTargetSkill);
+	lua_register(getLuaState(), "AddThrowDirectPoolTargetSkill", AddThrowDirectPoolTargetSkill);
+
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -165,7 +170,7 @@ void ScriptAttacksManager::registerGlobals() {
 	setGlobalInt("DEAD_POSTURE" ,14);
 
 	// weapons
-
+	setGlobalInt("ALL", 0xFF);
 	setGlobalInt("MELEE", 0x10);
 	setGlobalInt("RANGED", 0x20);
 	setGlobalInt("JEDI", 0x30);
@@ -771,6 +776,7 @@ int ScriptAttacksManager::AddHealEnhanceTargetSkill(lua_State* L) {
 
 
 	CombatActions->put(heal);
+
 	return 0;
 }
 
@@ -1164,6 +1170,7 @@ int ScriptAttacksManager::AddEnhanceSelfSkill(lua_State* L) {
 
 	CombatActions->put(Skill);
 
+
 	return 0;
 }
 
@@ -1432,6 +1439,29 @@ int ScriptAttacksManager::AddDiagnoseTargetSkill(lua_State* L) {
 	return 0;
 }
 
+int ScriptAttacksManager::AddCamoSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	String skillname = skill.getStringField("skillname");
+	int type = skill.getIntField("type");
+	float duration = skill.getFloatField("duration");
+
+	CamoSkill* Skill ;
+	if (type == 1)
+		Skill = new MaskScentSelfSkill(skillname, server);
+	if (type == 2)
+		Skill = new ConcealSkill(skillname, server);
+
+	Skill->setDuration(duration);
+
+	CombatActions->put(Skill);
+
+	return 0;
+}
+
 int ScriptAttacksManager::AddForageSkill(lua_State* L) {
 	LuaObject skill(L);
 
@@ -1457,5 +1487,213 @@ int ScriptAttacksManager::AddForageSkill(lua_State* L) {
 	}
 
 	CombatActions->put(forage);
+	return 0;
+}
+
+int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	ThrowRandomPoolAttackTargetSkill* attack;
+
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
+
+	//cout << attackname << "\n";
+
+	int weaponType = skill.getIntField("requiredWeaponType");
+
+	int range = skill.getIntField("range");
+	float DamageRatio = skill.getFloatField("damageRatio");
+	float SpeedRatio = skill.getFloatField("speedRatio");
+	int areaRangeDamage = skill.getIntField("areaRange");
+	int cone = skill.getIntField("coneAngle");
+	int accuracyBonus = skill.getIntField("accuracyBonus");
+
+	int knockdownStateChance = skill.getIntField("knockdownChance");
+	int postureDownStateChance = skill.getIntField("postureDownChance");
+	int postureUpStateChance = skill.getIntField("postureUpChance");
+	int dizzyStateChance = skill.getIntField("dizzyChance");
+	int blindStateChance = skill.getIntField("blindChance");
+	int stunStateChance = skill.getIntField("stunChance");
+	int intimidateStateChance = skill.getIntField("intimidateChance");
+	int snareStateChance = skill.getIntField("snareChance");
+	int rootStateChance = skill.getIntField("rootChance");
+
+//	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+//	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+//	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+//	string CbtSpamHit = skill.getStringField("CbtSpamHit");
+//	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+
+	String deBuffStrFile = skill.getStringField("deBuffStrFile");
+	String deBuffMessage = skill.getStringField("deBuffMessage");
+	String deBuffEndMessage = skill.getStringField("deBuffEndMessage");
+
+	int meleeDefDebuff = skill.getIntField("meleeDefDebuff");
+	int rangedDefDebuff = skill.getIntField("rangedDefDebuff");
+	int stunDefDebuff = skill.getIntField("stunDefDebuff");
+	int intimidateDefDebuff = skill.getIntField("intimidateDefDebuff");
+
+	attack = new ThrowRandomPoolAttackTargetSkill(attackname, animation, server);
+
+	attack->setRequiredWeaponType(weaponType);
+	attack->setRange(range);
+	attack->setAreaRangeDamage(areaRangeDamage);
+	attack->setConeAngle(cone);
+	attack->setDamageRatio(DamageRatio);
+	attack->setSpeedRatio(SpeedRatio);
+	attack->setAccuracyBonus(accuracyBonus);
+
+	attack->setKnockdownChance(knockdownStateChance);
+	attack->setPostureDownChance(postureDownStateChance);
+	attack->setPostureUpChance(postureUpStateChance);
+	attack->setDizzyChance(dizzyStateChance);
+	attack->setBlindChance(blindStateChance);
+	attack->setStunChance(stunStateChance);
+	attack->setIntimidateChance(intimidateStateChance);
+	attack->setSnareChance(snareStateChance);
+	attack->setRootChance(rootStateChance);
+
+//	attack->setCbtSpamHit(CbtSpamHit);
+//	attack->setCbtSpamMiss(CbtSpamMiss);
+//	attack->setCbtSpamEvade(CbtSpamEvade);
+//	attack->setCbtSpamCounter(CbtSpamCounter);
+//	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setDeBuffStrFile(deBuffStrFile);
+	attack->setDeBuffMessage(deBuffMessage);
+	attack->setDeBuffEndMessage(deBuffEndMessage);
+
+	attack->setMeleeDefDebuff(meleeDefDebuff);
+	attack->setRangedDefDebuff(rangedDefDebuff);
+	attack->setStunDefDebuff(stunDefDebuff);
+	attack->setIntimidateDefDebuff(intimidateDefDebuff);
+
+	CombatActions->put(attack);
+
+	/*cout << attack->hasCbtSpamBlock() << "\n";
+	cout << attack->hasCbtSpamCounter() << "\n";
+	cout << attack->hasCbtSpamEvade() << "\n";
+	cout << attack->hasCbtSpamHit() << "\n";
+	cout << attack->hasCbtSpamMiss() << "\n";*/
+
+	return 0;
+}
+
+int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	ThrowDirectPoolAttackTargetSkill* attack;
+
+	String attackname = skill.getStringField("attackname");
+	String animation = skill.getStringField("animation");
+
+	//cout << attackname << "\n";
+
+	int weaponType = skill.getIntField("requiredWeaponType");
+
+	int range = skill.getIntField("range");
+	float DamageRatio = skill.getFloatField("damageRatio");
+	float SpeedRatio = skill.getFloatField("speedRatio");
+	int areaRangeDamage = skill.getIntField("areaRange");
+	int cone = skill.getIntField("coneAngle");
+	int accuracyBonus = skill.getIntField("accuracyBonus");
+
+	int healthPoolAttackChance = skill.getIntField("healthAttackChance");
+	int strengthPoolAttackChance = skill.getIntField("strengthAttackChance");
+	int constitutionPoolAttackChance = skill.getIntField("constitutionAttackChance");
+
+	int actionPoolAttackChance = skill.getIntField("actionAttackChance");
+	int quicknessPoolAttackChance = skill.getIntField("quicknessPoolAttackChance");
+	int staminaPoolAttackChance = skill.getIntField("staminaPoolAttackChance");
+
+	int mindPoolAttackChance = skill.getIntField("mindAttackChance");
+	int focusPoolAttackChance = skill.getIntField("focusAttackChance");
+	int willpowerPoolAttackChance = skill.getIntField("willpowerAttackChance");
+
+	int knockdownStateChance = skill.getIntField("knockdownChance");
+	int postureDownStateChance = skill.getIntField("postureDownChance");
+	int dizzyStateChance = skill.getIntField("dizzyChance");
+	int blindStateChance = skill.getIntField("blindChance");
+	int stunStateChance = skill.getIntField("stunChance");
+	int intimidateStateChance = skill.getIntField("intimidateChance");
+	int snareStateChance = skill.getIntField("snareChance");
+	int rootStateChance = skill.getIntField("rootChance");
+
+//	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+//	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+//	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+//	string CbtSpamHit = skill.getStringField("CbtSpamHit");
+//	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+
+	String deBuffStrFile = skill.getStringField("deBuffStrFile");
+	String deBuffMessage = skill.getStringField("deBuffMessage");
+	String deBuffEndMessage = skill.getStringField("deBuffEndMessage");
+
+
+	int meleeDefDebuff = skill.getIntField("meleeDefDebuff");
+	int rangedDefDebuff = skill.getIntField("rangedDefDebuff");
+	int stunDefDebuff = skill.getIntField("stunDefDebuff");
+	int intimidateDefDebuff = skill.getIntField("intimidateDefDebuff");
+
+	attack = new ThrowDirectPoolAttackTargetSkill(attackname, animation, server);
+
+	attack->setRequiredWeaponType(weaponType);
+	attack->setRange(range);
+	attack->setAreaRangeDamage(areaRangeDamage);
+	attack->setConeAngle(cone);
+	attack->setDamageRatio(DamageRatio);
+	attack->setSpeedRatio(SpeedRatio);
+	attack->setAccuracyBonus(accuracyBonus);
+
+	attack->setHealthPoolAttackRatio(healthPoolAttackChance);
+	attack->setStrengthPoolAttackRatio(strengthPoolAttackChance);
+	attack->setConstitutionPoolAttackRatio(constitutionPoolAttackChance);
+
+	attack->setActionPoolAttackRatio(actionPoolAttackChance);
+	attack->setQuicknessPoolAttackRatio(quicknessPoolAttackChance);
+	attack->setStaminaPoolAttackRatio(staminaPoolAttackChance);
+
+	attack->setMindPoolAttackRatio(mindPoolAttackChance);
+	attack->setFocusPoolAttackRatio(focusPoolAttackChance);
+	attack->setWillpowerPoolAttackRatio(willpowerPoolAttackChance);
+
+	attack->setKnockdownChance(knockdownStateChance);
+	attack->setPostureDownChance(postureDownStateChance);
+	attack->setDizzyChance(dizzyStateChance);
+	attack->setBlindChance(blindStateChance);
+	attack->setStunChance(stunStateChance);
+	attack->setIntimidateChance(intimidateStateChance);
+	attack->setSnareChance(snareStateChance);
+	attack->setRootChance(rootStateChance);
+
+//	attack->setCbtSpamHit(CbtSpamHit);
+//	attack->setCbtSpamMiss(CbtSpamMiss);
+//	attack->setCbtSpamEvade(CbtSpamEvade);
+//	attack->setCbtSpamCounter(CbtSpamCounter);
+//	attack->setCbtSpamBlock(CbtSpamBlock);
+
+	attack->setDeBuffStrFile(deBuffStrFile);
+	attack->setDeBuffMessage(deBuffMessage);
+	attack->setDeBuffEndMessage(deBuffEndMessage);
+
+	attack->setMeleeDefDebuff(meleeDefDebuff);
+	attack->setRangedDefDebuff(rangedDefDebuff);
+	attack->setStunDefDebuff(stunDefDebuff);
+	attack->setIntimidateDefDebuff(intimidateDefDebuff);
+
+
+/*	cout << attack->hasCbtSpamBlock() << "\n";
+	cout << attack->hasCbtSpamCounter() << "\n";
+	cout << attack->hasCbtSpamEvade() << "\n";
+	cout << attack->hasCbtSpamHit() << "\n";
+	cout << attack->hasCbtSpamMiss() << "\n";*/
+	CombatActions->put(attack);
 	return 0;
 }

@@ -152,7 +152,6 @@ public:
 	static const int FACTORYCRATE = 0x2011;
 	static const int TRAVELTICKET = 0x2012;
 	static const int GENERICITEM = 0x2013;
-	static const int TRAP = 0x2014;
 	static const int WEARABLECONTAINER = 0x2015;
 	static const int FISHINGPOLE = 0x2016;
 	static const int FISHINGBAIT = 0x2017;
@@ -196,6 +195,8 @@ public:
 	static const int PISTOL = 0x2000A;
 	static const int CARBINE = 0x2000B;
 	static const int RIFLE = 0x2000C;
+	static const int TRAP = 0x2000D;
+	static const int GRANADE = 0x2000E;
 
 	static const int COMPONENT = 0x40000;
 	static const int ARMORCOMPONENT = 0x40001;
@@ -211,6 +212,7 @@ public:
 	static const int RANGEDWEAPONCOMPONENT = 0x4000B;
 	static const int STRUVTURECOMPONENT = 0x4000C;
 	static const int TISSUECOMPONENT = 0x4000D;
+
 
 	static const int RESOURCECONTAINER = 0x400000;
 	static const int ENERGYGAS = 0x400001;
@@ -247,6 +249,7 @@ public:
 	static const int TURRET = 0x1004;
 	static const int MINEFIELD = 0x1005;
 
+
 	// DEEDS
 	static const int DEED = 0x800000;
 	static const int BUILDINGDEED = 0x800001;
@@ -276,6 +279,7 @@ public:
 	static const int MISCCLOTHING = 0x1000011;
 	static const int SKIRT = 0x1000012;
 	static const int ITHOGARB = 0x1000013;
+	static const int CAMOKIT = 567894;
 
 	static const uint16 MALE = 0x01;
 	static const uint16 FEMALE = 0x02;
@@ -569,6 +573,18 @@ public:
 		return objectSubType == TRAVELTICKET;
 	}
 
+	inline bool isTrap() {
+		return objectSubType == TRAP;
+	}
+
+	inline bool isGranade() {
+		return objectSubType == GRANADE;
+	}
+
+	inline bool isThrowable() {
+		return (objectSubType == GRANADE || objectSubType == TRAP);
+	}
+
 	inline bool isInstrument() {
 		return objectSubType == INSTRUMENT;
 	}
@@ -620,6 +636,10 @@ public:
 	inline bool isWeaponPowerup() {
 		return objectSubType == WEAPONPOWERUP;
 	}
+
+	inline bool isCamoKit() {
+			return objectSubType == CAMOKIT;
+		}
 
 	inline int getConditionDamage() {
 		return conditionDamage;

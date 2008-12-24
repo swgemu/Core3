@@ -83,6 +83,9 @@ CreatureImplementation::CreatureImplementation(uint64 oid, CreatureGroup* group)
 	setKeeping(true);
 
 	init();
+
+	camoCount = 0;
+	camoSet = false;
 }
 
 CreatureImplementation::~CreatureImplementation() {
@@ -390,6 +393,7 @@ void CreatureImplementation::unload() {
 		parent = zone->lookupObject(respawnCellID);
 
 	info("creature despawned");
+
 }
 
 void CreatureImplementation::scheduleDespawnCreature(int time) {
@@ -994,7 +998,19 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		}
 
 		if (this->shouldAgro(scno)) {
-			if ((parent == NULL && isInRange(scno, 24)) || ((parent != NULL)
+
+			int worldAggroRange = 25;
+
+			if(isKiller() && getLevel() > 35)
+				worldAggroRange = 35;
+
+			if(isKiller() && getLevel() > 70)
+				worldAggroRange = 45;
+
+			if(isKiller() && getLevel() > 100)
+				worldAggroRange = 55;
+
+			if ((parent == NULL && isInRange(scno, worldAggroRange)) || ((parent != NULL)
 					&& (getParentID() == scno->getParentID()) && isInRange(
 					scno, 10))) {
 
@@ -1026,6 +1042,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 }
 
 bool CreatureImplementation::shouldAgro(SceneObject * target) {
+
 	if (this->isDead() || this->isIncapacitated())
 		return false;
 
@@ -1269,7 +1286,7 @@ bool CreatureImplementation::doMovement() {
 	if (actualSpeed != 0)
 		setNextPosition();
 
-	if (isKnockedDown())
+	if (isKnockedDown() || isRooted())
 		return true;
 
 	if (isKneeled())
@@ -1280,7 +1297,10 @@ bool CreatureImplementation::doMovement() {
 
 	float maxSpeed = speed + 0.75f;
 
-	if (aggroedCreature != NULL) {
+	if(isSnared())
+		maxSpeed *= 0.20f;
+
+	if (aggroedCreature != NULL && !camoSet) {
 		waypointX = aggroedCreature->getPositionX();
 		waypointZ = aggroedCreature->getPositionZ();
 		waypointY = aggroedCreature->getPositionY();
@@ -1447,6 +1467,7 @@ void CreatureImplementation::doStandUp() {
 }
 
 void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
+
 	if (target != aggroedCreature && highestMadeDamage < damage) {
 		highestMadeDamage = damage;
 
@@ -1473,6 +1494,11 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 
 bool CreatureImplementation::attack(CreatureObject* target) {
 	info("attacking target");
+
+	doCamoCheck(target);
+	if (camoSet) {
+		return false;
+	}
 
 	if (target == NULL || target == _this || (!target->isPlayer() && !target->isNonPlayerCreature()))
 		return false;
@@ -1564,6 +1590,96 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	nextAttackDelay.addMiliTime((uint64) (delay * 1000));
 
 	return true;
+}
+
+void CreatureImplementation::doCamoCheck(CreatureObject* target) {
+	unsigned int targetHash = target->getCharacterName().toString().hashCode();
+
+	int targetCamoType = target->getCamoType();
+
+	if (targetCamoType != 11) {
+
+		if (targetCamoType == 10 && !isCreature()) {
+			camoSet = false;
+			camoCount = 0;
+			return;
+		}
+
+		// if more player are in the range and maskscent they should be checked
+		// more often. i wasn't able to test this situation
+		// in case of strange creature behavior it could store the last n players
+		// instead of the last one. in this case a map or list and events are needed.
+
+		if (lastCamoUser == targetHash && camoCount > 0 && !target->isInCombat()) {
+			camoCount--;
+			camoSet = true;
+			return;
+		}
+
+		float rndNumber = (float) rand()/RAND_MAX;
+		float score = target->getMaskScent();
+
+
+
+		if (targetCamoType == 10)
+			score -= 1.0f * (float) getLevel();
+		else
+			score -= 0.5f * (float) getLevel();
+
+		score = score / 100.0f;
+
+
+		if (target->isInCombat())
+			score *= 0.75f;
+		if (target->isProne())
+			score *= 1.25f;
+		if (target->isRidingCreature())
+			score *= 0.5f;
+
+		if(!isCreature())
+			score *= 0.75f;
+
+		if (score > 0.9f)
+			score = 0.9f;
+		else if (score < 0.1f)
+			score = 0.1f;
+
+
+		if (rndNumber < score) {
+			if (!target->isInCombat()) {
+				if (target->isPlayer()) {
+					Player* player = (Player*) target;
+					String type = "scout";
+					player->addXp(type,getLevel()*3, true);
+
+					StfParameter* params = new StfParameter();
+					StringBuffer creatureName;
+					creatureName << "@" << getStfName() << ":" << getSpeciesName();
+					params->addTT(creatureName.toString());
+
+					player->sendSystemMessage("skl_use", "sys_scentmask_success", params);
+					delete params;
+				}
+			}
+			lastCamoUser = targetHash;
+			camoCount = 60;
+			camoSet = true;
+
+			return;
+		} else {
+			if (targetCamoType == 10)
+				target->deactivateCamo(true);
+
+			lastCamoUser = 0;
+			camoCount = 0;
+			camoSet = false;
+
+			return;
+		}
+
+	} else {
+		camoSet = false;
+	}
 }
 
 void CreatureImplementation::deagro() {
@@ -1682,6 +1798,12 @@ void CreatureImplementation::doStatesRecovery() {
 
 	if (isIntimidated() && intimidateRecoveryTime.isPast())
 		clearState(CreatureState::INTIMIDATED);
+
+	if (isRooted() && rootRecoveryTime.isPast())
+		clearState(CreatureState::FROZEN);
+
+	if (isSnared() && snareRecoveryTime.isPast())
+		clearState(CreatureState::IMMOBILIZED);
 
 	if (isPoisoned()) {
 		if (poisonRecoveryTime.isPast())

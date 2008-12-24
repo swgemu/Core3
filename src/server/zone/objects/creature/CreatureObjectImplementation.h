@@ -73,7 +73,7 @@ which carries forward this exception.
 #include "../guild/Guild.h"
 
 #include "../../../chat/ChatManager.h"
-
+#include "events/MaskScentEvent.h"
 class CombatManager;
 
 class Player;
@@ -114,6 +114,8 @@ protected:
 	//String hairData; //hair customization String
 
 	String stfName;
+
+	String creatureType;
 
 	String meatType;
 	String hideType;
@@ -204,6 +206,8 @@ protected:
 	Time stunRecoveryTime;
 	Time blindRecoveryTime;
 	Time intimidateRecoveryTime;
+	Time rootRecoveryTime;
+	Time snareRecoveryTime;
 
 	Time fireRecoveryTime;
 	Time poisonRecoveryTime;
@@ -421,6 +425,12 @@ protected:
 
 	bool frozen;
 	String templateString;
+
+	uint32 camoType;
+	MaskScentEvent* maskScentEvent;
+	Time camoLock;
+	uint32 maskScent;
+
 public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCELERATION = 1.549f;
@@ -568,6 +578,8 @@ public:
 	void setStunnedState();
 	void setBlindedState();
 	void setIntimidatedState();
+	void setSnaredState();
+	void setRootedState();
 
 	bool setNextAttackDelay(int del);
 
@@ -758,6 +770,14 @@ public:
 		return stateBitmask & CreatureState::INTIMIDATED;
 	}
 
+	inline bool isSnared() {
+		return stateBitmask & CreatureState::IMMOBILIZED;
+	}
+
+	inline bool isRooted() {
+		return stateBitmask & CreatureState::FROZEN;
+	}
+
 	inline bool isDiseased() {
 		return stateBitmask & CreatureState::DISEASED;
 	}
@@ -788,6 +808,14 @@ public:
 
 	inline bool isMeditating() {
 		return meditating;
+	}
+
+	inline bool isCreature() {
+		return creatureType == "ANIMAL";
+	}
+
+	inline bool isNPC() {
+		return creatureType == "NPC";
 	}
 
 	// misc methods
@@ -1155,6 +1183,10 @@ public:
 
 	inline void setGender(const String& gend) {
 		gender = gend;
+	}
+
+	inline void setCreatureType(const String& ctype) {
+		creatureType = ctype;
 	}
 
 	inline void setHeight(float h) {
@@ -1533,6 +1565,10 @@ public:
 
 	inline String& getGender() {
 		return gender;
+	}
+
+	inline String& getCreatureType() {
+		return creatureType;
 	}
 
 	inline String& getStfName() {
@@ -2701,6 +2737,31 @@ public:
 
 	inline void setTemplateString(const String& tmpString) {
 		templateString = tmpString;
+	}
+
+	void setCamoType(unsigned int cType) {
+		camoType = cType;
+	}
+
+	uint32 getCamoType() {
+		if ((int)camoType < 0)
+			return 0;
+		else
+			return camoType;
+	}
+
+	void activateCamo(unsigned int camoCRC,unsigned int time,unsigned int ms);
+	void deactivateCamo(bool forced);
+	void activateCamoLock();
+	bool isCamoCooldownActive();
+	int getCamoCooldownLeft();
+
+	int getMaskScent() {
+		return maskScent;
+	}
+
+	void setMaskScent(int value) {
+		maskScent = value;
 	}
 
 	friend class CombatManager;
