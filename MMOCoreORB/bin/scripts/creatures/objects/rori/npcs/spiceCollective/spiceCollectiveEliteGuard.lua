@@ -40,44 +40,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-rorgunganBoss = Creature:new {
-	objectName = "rorgunganBoss",  -- Lua Object Name
+
+spiceCollectiveEliteGuard = Creature:new {
+	objectName = "spiceCollectiveEliteGuard",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Rorgungan",
+	faction = "spice_collective", 
+	factionPoints = 20,
 	gender = "",
 
-	speciesName = "rorgungan_boss",
+	speciesName = "spice_collective_EliteGuard",
 	stfName = "mob/creature_names", 
-	objectCRC = 4291134911, 
-	socialGroup = "Rorgungan",
-	level = 22,
+	objectCRC = 575122373, 
+	socialGroup = "spice_collective",
+	level = 25,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 6100,
-	healthMin = 5000,
+	healthMax = 8300,
+	healthMin = 6800,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 6100,
-	actionMin = 5000,
+	actionMax = 8300,
+	actionMin = 6800,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 6100,
-	mindMin = 5000,
+	mindMax = 8300,
+	mindMin = 6800,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 25,
-	energy = 25,
-	electricity = 0,
+	kinetic = 20,
+	energy = 40,
+	electricity = -1,
 	stun = -1,
 	blast = 0,
 	heat = -1,
-	cold = 30,
+	cold = -1,
 	acid = -1,
 	lightsaber = 0,
 
@@ -88,7 +90,7 @@ rorgunganBoss = Creature:new {
 	pack = 1,
 	herd = 1,
 	stalker = 0,
-	killer = 0,
+	killer = 1,
 	aggressive = 0,
 	invincible = 0,
 
@@ -133,10 +135,10 @@ rorgunganBoss = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "spiceCollectiveAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(rorgunganBoss, 4291134911) --  Add to Global Table
+Creatures:addCreature(spiceCollectiveEliteGuard, 575122373) -- Add to Global Table

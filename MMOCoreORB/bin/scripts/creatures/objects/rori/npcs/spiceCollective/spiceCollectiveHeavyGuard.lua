@@ -40,14 +40,15 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-spiceCollectiveHeavyguard = Creature:new {
-	objectName = "spiceCollectiveHeavyguard",  -- Lua Object Name
+
+spiceCollectiveHeavyGuard = Creature:new {
+	objectName = "spiceCollectiveHeavyGuard",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "spice_collective", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "spice_collective_heavyguard",
+	speciesName = "spice_collective_HeavyGuard",
 	stfName = "mob/creature_names", 
 	objectCRC = 2295073659, 
 	socialGroup = "spice_collective",
@@ -134,10 +135,10 @@ spiceCollectiveHeavyguard = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "spiceCollectiveAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(spiceCollectiveHeavyguard, 2295073659) --  Add to Global Table
+Creatures:addCreature(spiceCollectiveHeavyGuard, 2295073659) -- Add to Global Table

@@ -40,46 +40,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-spiceCollectiveWorkchief = Creature:new {
-	objectName = "spiceCollectiveWorkchief",  -- Lua Object Name
+
+roriGunganBoss = Creature:new {
+	objectName = "roriGunganBoss",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "spice_collective", 
-	factionPoints = 20,
+	faction = "roriGungan",
 	gender = "",
 
-	speciesName = "spice_collective_workchief",
+	speciesName = "roriGungan_boss",
 	stfName = "mob/creature_names", 
-	objectCRC = 1727419831, 
-	socialGroup = "spice_collective",
-	level = 11,
+	objectCRC = 4291134911, 
+	socialGroup = "roriGungan",
+	level = 22,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 1200,
-	healthMin = 1000,
+	healthMax = 6100,
+	healthMin = 5000,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 1200,
-	actionMin = 1000,
+	actionMax = 6100,
+	actionMin = 5000,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 1200,
-	mindMin = 1000,
+	mindMax = 6100,
+	mindMin = 5000,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
-	energy = 0,
+	kinetic = 25,
+	energy = 25,
 	electricity = 0,
 	stun = -1,
 	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
+	heat = -1,
+	cold = 30,
+	acid = -1,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -134,10 +134,10 @@ spiceCollectiveWorkchief = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "roriGunganAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(spiceCollectiveWorkchief, 1727419831) --  Add to Global Table
+Creatures:addCreature(roriGunganBoss, 4291134911) -- Add to Global Table

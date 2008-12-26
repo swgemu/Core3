@@ -40,44 +40,45 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-rorgunganWarchief = Creature:new {
-	objectName = "rorgunganWarchief",  -- Lua Object Name
+
+roriGunganScout = Creature:new {
+	objectName = "roriGunganScout",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Rorgungan",
+	faction = "roriGungan",
 	gender = "",
 
-	speciesName = "rorgungan_warchief",
+	speciesName = "roriGungan_scout",
 	stfName = "mob/creature_names", 
-	objectCRC = 3438350132, 
-	socialGroup = "Rorgungan",
-	level = 19,
+	objectCRC = 4058341940, 
+	socialGroup = "roriGungan",
+	level = 12,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 5000,
-	healthMin = 4100,
+	healthMax = 1200,
+	healthMin = 1000,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 5000,
-	actionMin = 4100,
+	actionMax = 1200,
+	actionMin = 1000,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 5000,
-	mindMin = 4100,
+	mindMax = 1200,
+	mindMin = 1000,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 20,
-	energy = 15,
+	kinetic = 0,
+	energy = 0,
 	electricity = 0,
 	stun = -1,
 	blast = 0,
-	heat = -1,
-	cold = 30,
+	heat = 0,
+	cold = 15,
 	acid = 0,
 	lightsaber = 0,
 
@@ -88,7 +89,7 @@ rorgunganWarchief = Creature:new {
 	pack = 1,
 	herd = 1,
 	stalker = 0,
-	killer = 1,
+	killer = 0,
 	aggressive = 0,
 	invincible = 0,
 
@@ -133,10 +134,10 @@ rorgunganWarchief = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "roriGunganAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(rorgunganWarchief, 3438350132) --  Add to Global Table
+Creatures:addCreature(roriGunganScout, 4058341940) -- Add to Global Table
