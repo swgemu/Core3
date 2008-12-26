@@ -40,6 +40,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 nabooPirate = Creature:new {
 	objectName = "nabooPirate",  -- Lua Object Name
 	creatureType = "NPC",
@@ -48,7 +49,7 @@ nabooPirate = Creature:new {
 
 	speciesName = "naboo_pirate",
 	stfName = "mob/creature_names", 
-	objectCRC = ?, 
+	objectCRC = 00000000, 
 	socialGroup = "Naboo Pirate",
 	level = 12,
 
@@ -133,10 +134,10 @@ nabooPirate = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "nabooAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(nabooPirate, ?) --  Add to Global Table
+Creatures:addCreature(nabooPirate, 00000000) -- Add to Global Table

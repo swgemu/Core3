@@ -39,13 +39,37 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Load files
 
--- Naboo
- RunSkillsFile("creatureSkills/naboo/npcs/gunganAttacks.lua")
- RunSkillsFile("creatureSkills/naboo/npcs/maulerAttacks.lua")
- RunSkillsFile("creatureSkills/naboo/npcs/mummerAttacks.lua")
- RunSkillsFile("creatureSkills/naboo/npcs/nabooAttacks.lua")
- RunSkillsFile("creatureSkills/naboo/npcs/rsfAttacks.lua")
- RunSkillsFile("creatureSkills/naboo/npcs/skaakTipperAttacks.lua")
- RunSkillsFile("creatureSkills/naboo/npcs/tradeFederationAttacks.lua")
+tradeFederationAttack1 = {
+        attackname = "tradeFederationAttack1",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
+
+        range = 10,
+
+        damageRatio = 10,
+
+        speedRatio = 4,
+
+        areaRange = 0,
+        accuracyBonus = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(tradeFederationAttack1)
+
+---------------------------------------------------------------------------------------

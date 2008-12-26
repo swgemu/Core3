@@ -132,10 +132,10 @@ maulerAcolyte = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "maulerAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(maulerAcolyte, 3239599673) --  Add to Global Table
+Creatures:addCreature(maulerAcolyte, 3239599673) -- Add to Global Table
