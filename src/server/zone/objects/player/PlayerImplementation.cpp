@@ -117,6 +117,7 @@ PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = 
 }
 
 PlayerImplementation::~PlayerImplementation() {
+
 	clearBuffs(false);
 
 	for (int i = 0; i < suiBoxes.size(); ++i) {
@@ -188,14 +189,6 @@ PlayerImplementation::~PlayerImplementation() {
 		digestEvent = NULL;
 	}
 
-	if (forageDelayEvent != NULL) {
-		if (forageDelayEvent->isQueued())
-			server->removeEvent(forageDelayEvent);
-
-		delete forageDelayEvent;
-		forageDelayEvent = NULL;
-	}
-
 	if (suiChoicesList != NULL) {
 		suiChoicesList->finalize();
 		suiChoicesList = NULL;
@@ -204,6 +197,7 @@ PlayerImplementation::~PlayerImplementation() {
 	server->getZoneServer()->increaseTotalDeletedPlayers();
 
 	info("undeploying player");
+
 }
 
 void PlayerImplementation::initialize() {
@@ -282,8 +276,13 @@ void PlayerImplementation::initialize() {
  	powerboosted = false;
 
  	foraging = false;
+ 	forageDelayEvent = NULL;
 
 	centerOfBeingEvent = new CenterOfBeingEvent(this);
+
+	uint32 pbCRC = 0x8C2221CB; //powerboost
+	PowerboostSelfSkill* skill = (PowerboostSelfSkill*)creatureSkills.get(pbCRC); //Get the Powerboost skill.
+	powerboostEventWane = new PowerboostEventWane(_this, skill);
 
 	lastTestPositionX = 0.f;
 	lastTestPositionY = 0.f;
@@ -596,6 +595,10 @@ void PlayerImplementation::unload() {
 
 	forageZones.removeAll();
 	medForageZones.removeAll();
+
+	if (powerboosted) {
+		removePowerboost();
+	}
 
 	clearCombatState(); // remove the defenders
 
@@ -2147,16 +2150,8 @@ void PlayerImplementation::handleDeath() {
 
 	rescheduleRecovery(2000);
 
-    //Remove powerboost if active.
 	if (powerboosted) {
-		if (powerboostEventWane != NULL) {
-			server->removeEvent(powerboostEventWane);
-			delete powerboostEventWane;
-			powerboostEventWane = NULL;
-		}
-		CreatureObject* creature = (CreatureObject*)_this;
-		creature->removePowerboost();
-		powerboosted = false;
+		removePowerboost();
 	}
 }
 
@@ -2217,10 +2212,12 @@ void PlayerImplementation::changePosture(int post) {
 
 	if (foraging) {
 		foraging = false;
-		if (forageDelayEvent->isQueued()) {
-			server->removeEvent(forageDelayEvent);
+		if (forageDelayEvent != NULL){
+			if (forageDelayEvent->isQueued()) {
+				server->removeEvent(forageDelayEvent);
+			}
 		}
-		sendSystemMessage("skl_use", "sys_forage_movefail");  //"You failed to forage because you moved.
+	    sendSystemMessage("skl_use", "sys_forage_movefail");  //"You failed to forage because you moved.
 	}
 
 	if (isInCombat() && post == CreaturePosture::SITTING) {
@@ -2828,8 +2825,8 @@ void PlayerImplementation::giveForageItems(int foragetype) {
 }
 
 bool PlayerImplementation::doPowerboost() {
-	uint32 crc = 0x8C2221CB; //powerboost
-	PowerboostSelfSkill* skill = (PowerboostSelfSkill*)creatureSkills.get(crc); //Get the Powerboost skill.
+	uint32 pbCRC = 0x8C2221CB; //powerboost
+	PowerboostSelfSkill* skill = (PowerboostSelfSkill*)creatureSkills.get(pbCRC); //Get the Powerboost skill.
 
 	//Check if already powerboosted.
 	if (powerboosted) {
@@ -2860,10 +2857,32 @@ bool PlayerImplementation::doPowerboost() {
 	sendSystemMessage("teraskasi", "powerboost_begin"); //"[meditation] You focus your energies into your physical form."
 
 	//Queue the wane event.
-	powerboostEventWane = new PowerboostEventWane(_this, skill);
+	if (powerboostEventWane != NULL) {
+		if (powerboostEventWane->isQueued()) {
+			server->removeEvent(powerboostEventWane);
+		}
+	} else {
+		powerboostEventWane = new PowerboostEventWane(_this, skill);
+	}
+
 	server->addEvent(powerboostEventWane, duration);
 
 	return true;
+}
+
+void PlayerImplementation::removePowerboost() {
+	if (!powerboosted)
+		return;
+
+	if (powerboostEventWane != NULL) {
+		if (powerboostEventWane->isQueued()) {
+			server->removeEvent(powerboostEventWane);
+		}
+	}
+
+	CreatureObject* creature = (CreatureObject*)_this;
+	creature->removePowerboost();
+	powerboosted = false;
 }
 
 void PlayerImplementation::doCenterOfBeing() {

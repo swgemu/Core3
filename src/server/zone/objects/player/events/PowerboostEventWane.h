@@ -57,7 +57,7 @@ public:
 	PowerboostEventWane(Player* pl, PowerboostSelfSkill* sk) : Event() {
 		player = pl;
 		powerboost = sk;
-		setKeeping(false);
+		setKeeping(true);
 	}
 
 
@@ -65,7 +65,7 @@ public:
 		try {
 			player->wlock();
 
-			if (player->isOnline() && !player->isLoggingOut()) {
+			if (player->isOnline() || player->isLinkDead()) {
 				powerboost->finish(player);
 			}
 

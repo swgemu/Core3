@@ -745,6 +745,7 @@ public:
 	void removeCenterOfBeing();
 
 	bool doPowerboost();
+	void removePowerboost();
 
 	void doPeace();
 
