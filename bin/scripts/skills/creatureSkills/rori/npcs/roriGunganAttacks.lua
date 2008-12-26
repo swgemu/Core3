@@ -39,15 +39,37 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Load files
 
- -- Rori
- RunSkillsFile("creatureSkills/rori/npcs/brigadeAttacks.lua")
- RunSkillsFile("creatureSkills/rori/npcs/cobralAttacks.lua")
- RunSkillsFile("creatureSkills/rori/npcs/garynAttacks.lua")
- RunSkillsFile("creatureSkills/rori/npcs/gundarkAttacks.lua")
- RunSkillsFile("creatureSkills/rori/npcs/kobolaAttacks.lua")
- RunSkillsFile("creatureSkills/rori/npcs/miscAttacks.lua")
- RunSkillsFile("creatureSkills/rori/npcs/narmleAttacks.lua")
- RunSkillsFile("creatureSkills/rori/npcs/roriGunganAttacks.lua")
- RunSkillsFile("creatureSkills/rori/npcs/spiceCollectiveAttacks.lua")
+roriGunganAttack1 = {
+        attackname = "roriGunganAttack1",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
+
+        range = 10,
+
+        damageRatio = 10,
+
+        speedRatio = 4,
+
+        areaRange = 0,
+        accuracyBonus = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(roriGunganAttack1)
+
+---------------------------------------------------------------------------------------

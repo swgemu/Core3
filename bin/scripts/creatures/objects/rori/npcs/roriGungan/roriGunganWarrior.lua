@@ -40,16 +40,17 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-rorgunganWarrior = Creature:new {
-	objectName = "rorgunganWarrior",  -- Lua Object Name
+
+roriGunganWarrior = Creature:new {
+	objectName = "roriGunganWarrior",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "Rorgungan",
+	faction = "roriGungan",
 	gender = "",
 
-	speciesName = "rorgungan_warrior",
+	speciesName = "roriGungan_warrior",
 	stfName = "mob/creature_names", 
 	objectCRC = 1911569758, 
-	socialGroup = "Rorgungan",
+	socialGroup = "roriGungan",
 	level = 17,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
@@ -133,10 +134,10 @@ rorgunganWarrior = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "roriGunganAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(rorgunganWarrior, 1911569758) --  Add to Global Table
+Creatures:addCreature(roriGunganWarrior, 1911569758) -- Add to Global Table

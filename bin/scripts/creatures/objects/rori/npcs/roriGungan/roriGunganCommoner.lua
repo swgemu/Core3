@@ -40,46 +40,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-spiceCollectiveEliteguard = Creature:new {
-	objectName = "spiceCollectiveEliteguard",  -- Lua Object Name
+
+roriGunganCommoner = Creature:new {
+	objectName = "roriGunganCommoner",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "spice_collective", 
-	factionPoints = 20,
+	faction = "roriGungan",
 	gender = "",
 
-	speciesName = "spice_collective_eliteguard",
+	speciesName = "roriGungan_commoner",
 	stfName = "mob/creature_names", 
-	objectCRC = 575122373, 
-	socialGroup = "spice_collective",
-	level = 25,
+	objectCRC = 2136286680, 
+	socialGroup = "roriGungan",
+	level = 14,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 8300,
-	healthMin = 6800,
+	healthMax = 2400,
+	healthMin = 2000,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 8300,
-	actionMin = 6800,
+	actionMax = 2400,
+	actionMin = 2000,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 8300,
-	mindMin = 6800,
+	mindMax = 2400,
+	mindMin = 2000,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 20,
-	energy = 40,
-	electricity = -1,
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
 	stun = -1,
 	blast = 0,
-	heat = -1,
-	cold = -1,
-	acid = -1,
+	heat = 0,
+	cold = 15,
+	acid = 0,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -89,7 +89,7 @@ spiceCollectiveEliteguard = Creature:new {
 	pack = 1,
 	herd = 1,
 	stalker = 0,
-	killer = 1,
+	killer = 0,
 	aggressive = 0,
 	invincible = 0,
 
@@ -134,10 +134,10 @@ spiceCollectiveEliteguard = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "roriGunganAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(spiceCollectiveEliteguard, 575122373) --  Add to Global Table
+Creatures:addCreature(roriGunganCommoner, 2136286680) -- Add to Global Table

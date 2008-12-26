@@ -40,6 +40,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 kobolaForeman = Creature:new {
 	objectName = "kobolaForeman",  -- Lua Object Name
 	creatureType = "NPC",
@@ -134,10 +135,10 @@ kobolaForeman = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "kobolaAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(kobolaForeman, 3583164488) --  Add to Global Table
+Creatures:addCreature(kobolaForeman, 3583164488) -- Add to Global Table
