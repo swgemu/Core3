@@ -39,3 +39,72 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
+ --Gungan
+ RunCreatureFile("objects/naboo/npcs/gungan/ankuraGungan.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganBomber.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganBoss.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganCaptain.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganGeneral.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganGrandArmySoldier.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganGuard.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganHermit.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganHunter.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganKaaduRider.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganMercenary.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganOutcast.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganPriest.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganScout.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/gunganWarChief.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/mordranGunganExile.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/mordranGunganOutcast.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/mordranGunganReject.lua")
+ RunCreatureFile("objects/naboo/npcs/gungan/otollaGungan.lua")
+
+ --Mauler
+ RunCreatureFile("objects/naboo/npcs/mauler/mauler.lua")
+ RunCreatureFile("objects/naboo/npcs/mauler/maulerAcolyte.lua")
+ RunCreatureFile("objects/naboo/npcs/mauler/maulerApprentice.lua")
+ RunCreatureFile("objects/naboo/npcs/mauler/maulerLord.lua")
+ RunCreatureFile("objects/naboo/npcs/mauler/maulerMaster.lua")
+
+ --Mummer
+ RunCreatureFile("objects/naboo/npcs/mummer/mummerBully.lua")
+ RunCreatureFile("objects/naboo/npcs/mummer/mummerPunk.lua")
+ RunCreatureFile("objects/naboo/npcs/mummer/mummerRuffian.lua")
+ RunCreatureFile("objects/naboo/npcs/mummer/mummerThug.lua")
+
+ --Naboo
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooDissident.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooDreadPirate.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooGunrunner.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooHolyMan.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooMonk.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooNomad.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooPirate.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooPirateArmsman.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooPirateCutthroat.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooPirateLieutenant.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooPolice.lua")
+ RunCreatureFile("objects/naboo/npcs/naboo/nabooPoliceChief.lua")
+
+ --RSF
+ RunCreatureFile("objects/naboo/npcs/rsf/rsfCaptain.lua")
+ RunCreatureFile("objects/naboo/npcs/rsf/rsfCommando.lua")
+ RunCreatureFile("objects/naboo/npcs/rsf/rsfPalaceGuard.lua")
+ RunCreatureFile("objects/naboo/npcs/rsf/rsfPilot.lua")
+ RunCreatureFile("objects/naboo/npcs/rsf/rsfSecurityGuard.lua")
+ RunCreatureFile("objects/naboo/npcs/rsf/rsfSecurityOfficer.lua")
+
+ --Skaak Tipper
+ RunCreatureFile("objects/naboo/npcs/skaakTipper/skaakTipperBandit.lua")
+ RunCreatureFile("objects/naboo/npcs/skaakTipper/skaakTipperCrook.lua")
+ RunCreatureFile("objects/naboo/npcs/skaakTipper/skaakTipperMugger.lua")
+ RunCreatureFile("objects/naboo/npcs/skaakTipper/skaakTipperProwler.lua")
+ RunCreatureFile("objects/naboo/npcs/skaakTipper/skaakTipperSwindler.lua")
+
+ --Trade Federation
+ RunCreatureFile("objects/naboo/npcs/tradeFederation/tradeFederationAvenger.lua")
+ RunCreatureFile("objects/naboo/npcs/tradeFederation/tradeFederationLoyalist.lua")
+ RunCreatureFile("objects/naboo/npcs/tradeFederation/tradeFederationPirate.lua")
+ RunCreatureFile("objects/naboo/npcs/tradeFederation/tradeFederationZealot.lua")
