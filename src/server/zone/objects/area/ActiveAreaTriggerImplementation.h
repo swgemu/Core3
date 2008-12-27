@@ -80,7 +80,7 @@ public:
 		Player * player = (Player *) scno;
 
 
-		if (player->getActiveArea() == NULL && area->containsPoint(player->getPositionX(), player->getPositionY())) {
+		if (player->getActiveArea() != area && area->containsPoint(player->getPositionX(), player->getPositionY())) {
 			player->setActiveArea(area);
 			area->onEnter(player);
 

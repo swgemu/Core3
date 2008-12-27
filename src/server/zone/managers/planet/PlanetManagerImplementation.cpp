@@ -216,7 +216,7 @@ void PlanetManagerImplementation::loadNoBuildAreas() {
 
 void PlanetManagerImplementation::loadBadgeAreas() {
 	StringBuffer query;
-	query << "SELECT x, y, badge_id FROM badge_areas WHERE planet_id = " << zone->getZoneID() << ";";
+	query << "SELECT x, y, z, badge_id FROM badge_areas WHERE planet_id = " << zone->getZoneID() << ";";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
@@ -226,7 +226,7 @@ void PlanetManagerImplementation::loadBadgeAreas() {
 		float z = result->getFloat(2);
 		uint8 badge_id = result->getInt(3);
 
-		spawnActiveArea(new BadgeActiveArea(x,y,z, 50, badge_id));
+		spawnActiveArea(new BadgeActiveArea(x,y,z, 100, badge_id));
 	}
 
 	delete result;
