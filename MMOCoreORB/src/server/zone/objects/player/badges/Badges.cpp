@@ -37,12 +37,25 @@ void Badges::setBadge(int badgeindex) {
 		((BadgesImplementation*) _impl)->setBadge(badgeindex);
 }
 
-void Badges::setBitmask(int index, unsigned int bitmask) {
+void Badges::unsetBadge(int badgeindex) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
+		method.addSignedIntParameter(badgeindex);
+
+		method.executeWithVoidReturn();
+	} else
+		((BadgesImplementation*) _impl)->unsetBadge(badgeindex);
+}
+
+void Badges::setBitmask(int index, unsigned int bitmask) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
 		method.addSignedIntParameter(index);
 		method.addUnsignedIntParameter(bitmask);
 
@@ -56,7 +69,7 @@ bool Badges::hasBadge(int badgeindex) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(badgeindex);
 
 		return method.executeWithBooleanReturn();
@@ -69,12 +82,64 @@ unsigned int Badges::getBitmask(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return ((BadgesImplementation*) _impl)->getBitmask(index);
+}
+
+unsigned char Badges::getTypeCount(unsigned char type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addUnsignedCharParameter(type);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((BadgesImplementation*) _impl)->getTypeCount(type);
+}
+
+void Badges::setTypeCount(unsigned char index, unsigned char value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addUnsignedCharParameter(index);
+		method.addUnsignedCharParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((BadgesImplementation*) _impl)->setTypeCount(index, value);
+}
+
+unsigned char Badges::getNumBadges() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithUnsignedCharReturn();
+	} else
+		return ((BadgesImplementation*) _impl)->getNumBadges();
+}
+
+void Badges::setNumBadges(unsigned char value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addUnsignedCharParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((BadgesImplementation*) _impl)->setNumBadges(value);
 }
 
 /*
@@ -92,13 +157,28 @@ Packet* BadgesAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setBadge(inv->getSignedIntParameter());
 		break;
 	case 7:
-		setBitmask(inv->getSignedIntParameter(), inv->getUnsignedIntParameter());
+		unsetBadge(inv->getSignedIntParameter());
 		break;
 	case 8:
-		resp->insertBoolean(hasBadge(inv->getSignedIntParameter()));
+		setBitmask(inv->getSignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 9:
+		resp->insertBoolean(hasBadge(inv->getSignedIntParameter()));
+		break;
+	case 10:
 		resp->insertInt(getBitmask(inv->getSignedIntParameter()));
+		break;
+	case 11:
+		resp->insertByte(getTypeCount(inv->getUnsignedCharParameter()));
+		break;
+	case 12:
+		setTypeCount(inv->getUnsignedCharParameter(), inv->getUnsignedCharParameter());
+		break;
+	case 13:
+		resp->insertByte(getNumBadges());
+		break;
+	case 14:
+		setNumBadges(inv->getUnsignedCharParameter());
 		break;
 	default:
 		return NULL;
@@ -111,6 +191,10 @@ void BadgesAdapter::setBadge(int badgeindex) {
 	return ((BadgesImplementation*) impl)->setBadge(badgeindex);
 }
 
+void BadgesAdapter::unsetBadge(int badgeindex) {
+	return ((BadgesImplementation*) impl)->unsetBadge(badgeindex);
+}
+
 void BadgesAdapter::setBitmask(int index, unsigned int bitmask) {
 	return ((BadgesImplementation*) impl)->setBitmask(index, bitmask);
 }
@@ -121,6 +205,22 @@ bool BadgesAdapter::hasBadge(int badgeindex) {
 
 unsigned int BadgesAdapter::getBitmask(int index) {
 	return ((BadgesImplementation*) impl)->getBitmask(index);
+}
+
+unsigned char BadgesAdapter::getTypeCount(unsigned char type) {
+	return ((BadgesImplementation*) impl)->getTypeCount(type);
+}
+
+void BadgesAdapter::setTypeCount(unsigned char index, unsigned char value) {
+	return ((BadgesImplementation*) impl)->setTypeCount(index, value);
+}
+
+unsigned char BadgesAdapter::getNumBadges() {
+	return ((BadgesImplementation*) impl)->getNumBadges();
+}
+
+void BadgesAdapter::setNumBadges(unsigned char value) {
+	return ((BadgesImplementation*) impl)->setNumBadges(value);
 }
 
 /*

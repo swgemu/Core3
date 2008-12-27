@@ -155,12 +155,6 @@ public:
 
 	void loadIgnore();
 
-	void awardBadge(unsigned int badge);
-
-	bool hasBadge(unsigned int badge);
-
-	Badges* getBadges();
-
 	void saveWaypoints(Player* player);
 
 	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
@@ -309,12 +303,6 @@ public:
 	void saveIgnore();
 
 	void loadIgnore();
-
-	void awardBadge(unsigned int badge);
-
-	bool hasBadge(unsigned int badge);
-
-	Badges* getBadges();
 
 	void saveWaypoints(Player* player);
 

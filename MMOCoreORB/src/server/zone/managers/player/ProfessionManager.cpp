@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "../skills/SkillManager.h"
 #include "../../ZoneServer.h"
 
+#include "../../objects/player/badges/Badge.h"
 #include "../../objects/player/professions/SkillBox.h"
 #include "../../objects/player/professions/profession/FourByFourProfession.h"
 #include "../../objects/player/professions/profession/OneByFourProfession.h"
@@ -204,6 +205,10 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* 
 	player->skillBoxesToSave.put(skillBox);
 
 	skillManager->loadSkillBox(skillBox, player, false, updateClient);
+
+	if (skillBox->isMasterBox()) {
+		player->awardBadge(Badge::getID(skillBox->getName()));
+	}
 
 	return true;
 }

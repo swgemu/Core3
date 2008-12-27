@@ -58,7 +58,7 @@ which carries forward this exception.
 #include "../../objects/terrain/PlanetNames.h"
 
 #include "../../objects/area/ActiveAreaTrigger.h"
-#include "../../objects/area/TestActiveArea.h"
+#include "../../objects/area/BadgeActiveArea.h"
 
 const uint32 PlanetManagerImplementation::travelFare[10][10] = {
 		{ 100, 1000, 2000, 4000,    0,  500,    0,    0,  600, 3000},
@@ -180,10 +180,7 @@ void PlanetManagerImplementation::start() {
 
 	loadNoBuildAreas();
 
-	if (zone->getZoneID() == 5) {
-		TestActiveArea * area = new TestActiveArea(-4912,4095,25);
-		spawnActiveArea(area);
-	}
+	loadBadgeAreas();
 }
 
 void PlanetManagerImplementation::stop() {
@@ -212,6 +209,23 @@ void PlanetManagerImplementation::loadNoBuildAreas() {
 
 
 		addNoBuildArea(x, y, radius);
+	}
+
+	delete result;
+}
+
+void PlanetManagerImplementation::loadBadgeAreas() {
+	StringBuffer query;
+	query << "SELECT x, y, badge_id FROM badge_areas WHERE planet_id = " << zone->getZoneID() << ";";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	while (result->next()) {
+		float x = result->getFloat(0);
+		float y = result->getFloat(1);
+		uint8 badge_id = result->getInt(2);
+
+		spawnActiveArea(new BadgeActiveArea(x,y, 50, badge_id));
 	}
 
 	delete result;
@@ -999,7 +1013,7 @@ void PlanetManagerImplementation::spawnActiveArea(ActiveArea * area) {
 	ActiveAreaTrigger * trigger = new ActiveAreaTrigger(area);
 
 	trigger->setObjectID(getNextStaticObjectID(false));
-	trigger->initializePosition(area->getX(), 0, area->getY());
+	trigger->initializePosition(area->getX(), zone->getHeight(area->getX(), area->getY()), area->getY());
 	trigger->setZoneProcessServer(server);
 	trigger->insertToZone(zone);
 

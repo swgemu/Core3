@@ -153,11 +153,6 @@ interface PlayerObject implements SceneObject {
 	void removeIgnore(String name);
 	void saveIgnore();
 	void loadIgnore();
-	
-	void awardBadge(unsigned int badge);
-	boolean hasBadge(unsigned int badge);
-	
-	Badges getBadges();
 
 	void saveWaypoints(Player player);
 	WaypointObject searchWaypoint(Player play, const String name, int mode);

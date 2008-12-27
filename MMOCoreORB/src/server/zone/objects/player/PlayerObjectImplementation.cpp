@@ -91,8 +91,6 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjec
 	friendsList = new FriendsList(player);
 	ignoreList = new IgnoreList(player);
 
-	badges = new Badges();
-
 	reverseFriendListListCount = 0;
 }
 
@@ -110,11 +108,6 @@ PlayerObjectImplementation::~PlayerObjectImplementation() {
 	if (ignoreList != NULL) {
 		ignoreList->finalize();
 		ignoreList = NULL;
-	}
-
-	if (badges != NULL) {
-		badges->finalize();
-		badges = NULL;
 	}
 }
 
@@ -193,11 +186,11 @@ void PlayerObjectImplementation::addExperience(const String& xpType, int xp, boo
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 		if (gained > 0) {
 			StfParameter *params = new StfParameter;
-		
+
 			params->addDI(gained);
 			params->addTO("exp_n",xpType);
 			player->sendSystemMessage("base_player", "prose_grant_xp", params);
-					
+
 			delete params;
 		}
 

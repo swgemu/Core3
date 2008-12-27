@@ -104,8 +104,6 @@ class PlayerObjectImplementation : public PlayerObjectServant {
 
 	uint32 adminLevel;
 
-	Badges * badges;
-
 public:
 
 	const static int LFG = 1;
@@ -143,7 +141,7 @@ public:
 	int getExperience(const String& xpType) {
 		return experienceList.get(xpType);
 	}
-	
+
 	void addExperience(const String& xpType, int xp, bool updateClient);
 	void removeExperience(const String& xpType, int xp, bool updateClient);
 	void loadExperience(const String& xpStr);
@@ -355,18 +353,6 @@ public:
 
 	void saveWaypoints(Player* player);
 	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
-
-	inline void awardBadge(uint32 badge) {
-		badges->setBadge(badge);
-	}
-
-	inline bool hasBadge(uint32 badge) {
-		return badges->hasBadge(badge);
-	}
-
-	inline Badges * getBadges() {
-		return badges;
-	}
 
 	friend class Player;
 
