@@ -72,8 +72,8 @@ public:
 		static const uint8 EXP_TAT_SARLACC_PIT = 16;
 		static const uint8 EXP_TAT_LARS_HOMESTEAD = 17;
 		static const uint8 EXP_TAT_KRAYT_GRAVEYARD = 18;
-		static const uint8 EXP_NAB_GUNGAN_SACRED_PALACE = 19;
-		static const uint8 EXP_COR_AGRILAT_SWAP = 20;
+		static const uint8 EXP_NAB_GUNGAN_SACRED_PLACE = 19;
+		static const uint8 EXP_COR_AGRILAT_SWAMP = 20;
 		static const uint8 EXP_YAV_TEMPLE_WOOLAMANDER = 21;
 		static const uint8 EXP_YAV_TEMPLE_BLUELEAF = 22;
 		static const uint8 EXP_YAV_TEMPLE_EXAR_KUN = 23;
