@@ -51,7 +51,7 @@ which carries forward this exception.
 class BadgeActiveAreaImplementation : public BadgeActiveAreaServant {
 	uint32 badge;
 public:
-	BadgeActiveAreaImplementation(float x, float y, float range, uint32 badge) : BadgeActiveAreaServant(x, y, range){
+	BadgeActiveAreaImplementation(float x, float y, float z, float range, uint32 badge) : BadgeActiveAreaServant(x, y, z, range){
 		this->badge = badge;
 	}
 

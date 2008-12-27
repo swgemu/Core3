@@ -382,7 +382,7 @@ void GameCommandHandler::init() {
 			&printRoomTree);
 	gmCommands->addCommand("spawnAA", DEVELOPER,
 			"Spawns a test Action Area",
-			"Usage: @spawnAA <x> <y> <range>",
+			"Usage: @spawnAA <x> <y> <z> <range>",
 			&spawnAA);
 
 	Disabled Commands */
@@ -3262,7 +3262,7 @@ void GameCommandHandler::spawnAA(StringTokenizer tokenizer, Player* player) {
 	Zone* zone = player->getZone();
 	PlanetManager * planetManager = zone->getPlanetManager();
 
-	float x, y, range;
+	float x, y, z, range;
 
 
 	if (tokenizer.hasMoreTokens()) {
@@ -3278,12 +3278,18 @@ void GameCommandHandler::spawnAA(StringTokenizer tokenizer, Player* player) {
 	}
 
 	if (tokenizer.hasMoreTokens()) {
+		z = tokenizer.getFloatToken();
+	} else {
+		return;
+	}
+
+	if (tokenizer.hasMoreTokens()) {
 		range = tokenizer.getFloatToken();
 	} else {
 		return;
 	}
 
-	TestActiveArea * testArea = new TestActiveArea(x,y,range);
+	TestActiveArea * testArea = new TestActiveArea(x,y,z,range);
 
 	planetManager->spawnActiveArea(testArea);
 }

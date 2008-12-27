@@ -50,7 +50,7 @@ which carries forward this exception.
 class ActiveAreaImplementation : public ActiveAreaServant {
 
 public:
-	ActiveAreaImplementation(float x, float y, float range) : ActiveAreaServant(x,y,range) {
+	ActiveAreaImplementation(float x, float y, float z, float range) : ActiveAreaServant(x,y,z,range) {
 
 	}
 

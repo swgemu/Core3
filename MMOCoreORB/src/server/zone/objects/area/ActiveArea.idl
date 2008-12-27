@@ -47,8 +47,8 @@ import "Area";
 import "../player/Player";
 
 interface ActiveArea implements Area {
-	ActiveArea(float x, float y, float radius) {
-		super(x,y,radius);
+	ActiveArea(float x, float y, float z, float radius) {
+		super(x,y,z,radius);
 	}
 	
 	void onEnter(Player player);

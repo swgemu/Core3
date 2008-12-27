@@ -15,7 +15,7 @@ class Player;
 
 class ActiveArea : public Area {
 public:
-	ActiveArea(float x, float y, float radius);
+	ActiveArea(float x, float y, float z, float radius);
 
 	void onEnter(Player* player);
 
@@ -65,7 +65,7 @@ public:
 	ActiveArea* _this;
 
 public:
-	ActiveAreaServant(float x, float y, float radius);
+	ActiveAreaServant(float x, float y, float z, float radius);
 	virtual ~ActiveAreaServant();
 
 	void _setStub(DistributedObjectStub* stub);

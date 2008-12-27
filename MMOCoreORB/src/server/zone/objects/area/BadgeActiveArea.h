@@ -15,7 +15,7 @@ class Player;
 
 class BadgeActiveArea : public ActiveArea {
 public:
-	BadgeActiveArea(float x, float y, float radius, unsigned int badge);
+	BadgeActiveArea(float x, float y, float z, float radius, unsigned int badge);
 
 	void onEnter(Player* player);
 
@@ -61,7 +61,7 @@ public:
 	BadgeActiveArea* _this;
 
 public:
-	BadgeActiveAreaServant(float x, float y, float radius);
+	BadgeActiveAreaServant(float x, float y, float z, float radius);
 	virtual ~BadgeActiveAreaServant();
 
 	void _setStub(DistributedObjectStub* stub);

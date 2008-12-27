@@ -43,11 +43,12 @@ which carries forward this exception.
 */
 
 interface Area implements ManagedObject {
-	Area(float x, float y, float radius);
+	Area(float x, float y, float z, float radius);
 	
 	boolean containsPoint(float x, float y);
 	
 	float getX();
 	float getY();
+	float getZ();
 	float getRadius();
 }

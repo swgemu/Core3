@@ -11,13 +11,15 @@
 
 class Area : public ManagedObject {
 public:
-	Area(float x, float y, float radius);
+	Area(float x, float y, float z, float radius);
 
 	bool containsPoint(float x, float y);
 
 	float getX();
 
 	float getY();
+
+	float getZ();
 
 	float getRadius();
 
@@ -42,6 +44,8 @@ public:
 	float getX();
 
 	float getY();
+
+	float getZ();
 
 	float getRadius();
 

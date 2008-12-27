@@ -14,8 +14,8 @@
  *	BadgeActiveAreaStub
  */
 
-BadgeActiveArea::BadgeActiveArea(float x, float y, float radius, unsigned int badge) : ActiveArea(DummyConstructorParameter::instance()) {
-	_impl = new BadgeActiveAreaImplementation(x, y, radius, badge);
+BadgeActiveArea::BadgeActiveArea(float x, float y, float z, float radius, unsigned int badge) : ActiveArea(DummyConstructorParameter::instance()) {
+	_impl = new BadgeActiveAreaImplementation(x, y, z, radius, badge);
 	_impl->_setStub(this);
 }
 
@@ -98,7 +98,7 @@ DistributedObjectAdapter* BadgeActiveAreaHelper::createAdapter(DistributedObject
  *	BadgeActiveAreaServant
  */
 
-BadgeActiveAreaServant::BadgeActiveAreaServant(float x, float y, float radius) : ActiveAreaImplementation(x, y, radius) {
+BadgeActiveAreaServant::BadgeActiveAreaServant(float x, float y, float z, float radius) : ActiveAreaImplementation(x, y, z, radius) {
 	_classHelper = BadgeActiveAreaHelper::instance();
 }
 
