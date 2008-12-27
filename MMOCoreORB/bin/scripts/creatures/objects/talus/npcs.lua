@@ -40,3 +40,70 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+ --Aakuan
+ RunCreatureFile("objects/talus/npcs/aakuan/aakuanChampion.lua")
+ RunCreatureFile("objects/talus/npcs/aakuan/aakuanDefender.lua")
+ RunCreatureFile("objects/talus/npcs/aakuan/aakuanFollower.lua")
+ RunCreatureFile("objects/talus/npcs/aakuan/aakuanGuardian.lua")
+ RunCreatureFile("objects/talus/npcs/aakuan/aakuanKeeper.lua")
+ RunCreatureFile("objects/talus/npcs/aakuan/aakuanSentinal.lua")
+ RunCreatureFile("objects/talus/npcs/aakuan/aakuanSteward.lua")
+ RunCreatureFile("objects/talus/npcs/aakuan/aakuanWarder.lua")
+
+ --Binayre
+ RunCreatureFile("objects/talus/npcs/binayre/binayreChief.lua")
+ RunCreatureFile("objects/talus/npcs/binayre/binayreHooligan.lua")
+ RunCreatureFile("objects/talus/npcs/binayre/binayrePirate.lua")
+ RunCreatureFile("objects/talus/npcs/binayre/binayreRuffian.lua")
+ RunCreatureFile("objects/talus/npcs/binayre/binayreScalawag.lua")
+ RunCreatureFile("objects/talus/npcs/binayre/binayreSmuggler.lua")
+ RunCreatureFile("objects/talus/npcs/binayre/binayreSwindler.lua")
+
+ --Chunker
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerBraggart.lua")
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerBruiser.lua")
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerBully.lua")
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerCreep.lua")
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerGoon.lua")
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerMooch.lua")
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerNitwit.lua")
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerPest.lua")
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerPunk.lua")
+ RunCreatureFile("objects/talus/npcs/chunker/chunkerSwindler.lua")
+
+ --Fed Dub
+ RunCreatureFile("objects/talus/npcs/fedDub/fedDubCaptain.lua")
+ RunCreatureFile("objects/talus/npcs/fedDub/fedDubCommander.lua")
+ RunCreatureFile("objects/talus/npcs/fedDub/fedDubConstable.lua")
+ RunCreatureFile("objects/talus/npcs/fedDub/fedDubInvestigator.lua")
+ RunCreatureFile("objects/talus/npcs/fedDub/fedDubPatrolman.lua")
+ RunCreatureFile("objects/talus/npcs/fedDub/fedDubSupporter.lua")
+
+ --Liberation
+ RunCreatureFile("objects/talus/npcs/liberation/liberationActivist.lua")
+ RunCreatureFile("objects/talus/npcs/liberation/liberationFanatic.lua")
+ RunCreatureFile("objects/talus/npcs/liberation/liberationLoyalist.lua")
+ RunCreatureFile("objects/talus/npcs/liberation/liberationPartisan.lua")
+ RunCreatureFile("objects/talus/npcs/liberation/liberationPatriot.lua")
+ RunCreatureFile("objects/talus/npcs/liberation/liberationReactionist.lua")
+ RunCreatureFile("objects/talus/npcs/liberation/liberationVolunteer.lua")
+
+ --Lost Aqualish
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishBomber.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishCaptain.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishCommando.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishInfiltrator.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishLookout.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishMarksman.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishMarshal.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishOutrider.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishScout.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishSoldier.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishWarchief.lua")
+ RunCreatureFile("objects/talus/npcs/lostAqualish/lostAqualishWarrior.lua")
+
+ --Sleemo
+ RunCreatureFile("objects/talus/npcs/sleemo/sleemoDelinquent.lua")
+ RunCreatureFile("objects/talus/npcs/sleemo/sleemoHoodlum.lua")
+ RunCreatureFile("objects/talus/npcs/sleemo/sleemoPunk.lua")
+ RunCreatureFile("objects/talus/npcs/sleemo/sleemoScamp.lua")
