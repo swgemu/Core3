@@ -73,14 +73,16 @@ class PlayerManagerImplementation : public PlayerManagerServant {
 	ItemManager* itemManager;
 
 	GuildManager* guildManager;
-	
+
 	int xpScale;
 
 private:
 	void loadFromDatabase(Player* player);
 	void loadWaypoints(Player* player);
 	void loadFactionPoints(Player * player);
+	void loadBadges(Player * player);
 	void saveFactionPoints(Player * player);
+	void saveBadges(Player * player);
 
 public:
 	PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv);
@@ -156,11 +158,11 @@ public:
 	inline GuildManager* getGuildManager() {
 		return guildManager;
 	}
-	
+
 	inline void setXpScale(int scale) {
 		xpScale = scale;
 	}
-	
+
 	inline int getXpScale() {
 		return xpScale;
 	}

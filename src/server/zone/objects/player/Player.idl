@@ -432,7 +432,9 @@ interface Player implements CreatureObject {
 
 	void toggleCharacterBit(unsigned int bit);
 
-	boolean awardBadge(unsigned int badgeindex);
+	void awardBadge(unsigned char badge);
+	void removeBadge(unsigned char badge);
+	boolean hasBadge(unsigned char badge);
 
 	//void addBadgeBitmask(unsigned int bitmask);
 
@@ -689,8 +691,6 @@ interface Player implements CreatureObject {
 	void setResourceDeedID(unsigned long objectID);
 
 	unsigned long getResourceDeedID();
-	
-	boolean hasBadge(unsigned int badge);
 
 	void queueThrow(TangibleObject throwItem, unsigned int actionCRC);
 	void setImagedesignXpGiven(boolean given);

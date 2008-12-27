@@ -161,6 +161,7 @@ private:
 	void loadMissionTerminals();
 	void loadCraftingStations();
 	void loadNoBuildAreas();
+	void loadBadgeAreas();
 	String getStationName(uint64 crc);
 
 

@@ -84,7 +84,7 @@ PlayerManagerImplementation::PlayerManagerImplementation(ItemManager* mgr, ZoneP
 	itemManager = mgr;
 
 	server = srv;
-	
+
 	xpScale = 1;
 }
 
@@ -574,6 +574,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	//Load consent list from database
 	loadConsentList(player);
 	loadFactionPoints(player);
+	loadBadges(player);
 
 	delete character;
 }
@@ -806,6 +807,7 @@ void PlayerManagerImplementation::save(Player* player) {
 
 	player->saveProfessions();
 	saveFactionPoints(player);
+	saveBadges(player);
 
 	//Update the database with the consentlist info
 	updateConsentList(player);
@@ -859,6 +861,54 @@ void PlayerManagerImplementation::saveFactionPoints(Player* player) {
 	}
 }
 
+void PlayerManagerImplementation::loadBadges(Player* player) {
+	Badges * badges = player->getBadges();
+	StringBuffer query;
+	query << "SELECT * FROM character_badge WHERE character_id = " << player->getCharacterID() << ";";
+	try {
+		ResultSet * res = ServerDatabase::instance()->executeQuery(query);
+
+		while (res->next()) {
+			for (int i=0; i < 5; i++) {
+				badges->setBitmask(i, res->getInt(i + 1));
+			}
+
+			badges->setNumBadges(res->getInt(6));
+
+			for (int i=0; i < 6; i++) {
+				badges->setTypeCount(i, res->getInt(i + 6));
+			}
+		}
+
+		delete res;
+	} catch(DatabaseException& e) {
+		System::out << "Failed to load Badges: " << player->getFirstName() << endl;
+		System::out << e.getMessage() << endl;
+	}
+}
+
+void PlayerManagerImplementation::saveBadges(Player* player) {
+
+	Badges * badges = player->getBadges();
+
+	try {
+
+		StringBuffer query;
+		query << "REPLACE INTO character_badge VALUES(";
+		query << player->getCharacterID() << ",";
+		query << badges->getBitmask(0) << "," << badges->getBitmask(1) << "," << badges->getBitmask(2) << "," << badges->getBitmask(3) << "," << badges->getBitmask(4) << ",";
+		query << badges->getNumBadges() << "," << badges->getTypeCount(0) << "," << badges->getTypeCount(1) << "," << badges->getTypeCount(2) << "," ;
+		query << badges->getTypeCount(3) << "," << badges->getTypeCount(4) << "," << badges->getTypeCount(5) << ");";
+
+
+		ServerDatabase::instance()->executeStatement(query);
+
+
+	} catch(DatabaseException& e) {
+		System::out << "Failed to save Badges: " << player->getFirstName() << endl;
+		System::out << e.getMessage() << endl;
+	}
+}
 void PlayerManagerImplementation::handleAbortTradeMessage(Player* player, bool doLock) {
 	try {
 		player->wlock(doLock);

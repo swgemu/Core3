@@ -15,11 +15,21 @@ public:
 
 	void setBadge(int badgeindex);
 
+	void unsetBadge(int badgeindex);
+
 	void setBitmask(int index, unsigned int bitmask);
 
 	bool hasBadge(int badgeindex);
 
 	unsigned int getBitmask(int index);
+
+	unsigned char getTypeCount(unsigned char type);
+
+	void setTypeCount(unsigned char index, unsigned char value);
+
+	unsigned char getNumBadges();
+
+	void setNumBadges(unsigned char value);
 
 protected:
 	Badges(DummyConstructorParameter* param);
@@ -39,11 +49,21 @@ public:
 
 	void setBadge(int badgeindex);
 
+	void unsetBadge(int badgeindex);
+
 	void setBitmask(int index, unsigned int bitmask);
 
 	bool hasBadge(int badgeindex);
 
 	unsigned int getBitmask(int index);
+
+	unsigned char getTypeCount(unsigned char type);
+
+	void setTypeCount(unsigned char index, unsigned char value);
+
+	unsigned char getNumBadges();
+
+	void setNumBadges(unsigned char value);
 
 };
 

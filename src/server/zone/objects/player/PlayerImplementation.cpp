@@ -102,6 +102,7 @@ which carries forward this exception.
 
 #include "../../managers/combat/CommandQueueAction.h"
 #include "../../managers/skills/SkillManager.h"
+#include "badges/Badge.h"
 
 PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 	zoneID = 1;
@@ -192,6 +193,11 @@ PlayerImplementation::~PlayerImplementation() {
 	if (suiChoicesList != NULL) {
 		suiChoicesList->finalize();
 		suiChoicesList = NULL;
+	}
+
+	if (badges != NULL) {
+		badges->finalize();
+		badges = NULL;
 	}
 
 	server->getZoneServer()->increaseTotalDeletedPlayers();
@@ -330,6 +336,7 @@ void PlayerImplementation::initialize() {
 	teachingSkillList.removeAll();
 	teachingOffer = false;
 	activeArea = NULL;
+	badges = new Badges();
 
 	if (getWeapon() == NULL) {
 		int templevel = calcPlayerLevel("combat_meleespecialize_unarmed");
@@ -4530,13 +4537,131 @@ void PlayerImplementation::toggleGuildPermissionsBit(uint32 bit) {
 		clearGuildPermissionsBit(bit, true);
 }
 
-bool PlayerImplementation::awardBadge(uint32 badgeindex) {
-  	if (badgeindex > 139)
-  		return false;
+void PlayerImplementation::awardBadge(uint8 badge) {
+	if (!Badge::exists(badge))
+		return;
 
-	playerObject->awardBadge(badgeindex);
+	StfParameter * badgeName = new StfParameter();
+	badgeName->addTO("badge_n", Badge::getName(badge));
 
-	return true;
+	if (hasBadge(badge)) {
+		sendSystemMessage("badge_n", "prose_hasbadge", badgeName);
+		delete badgeName;
+		return;
+	}
+
+	badges->setBadge(badge);
+	sendSystemMessage("badge_n", "prose_grant", badgeName);
+	delete badgeName;
+
+	switch (badges->getNumBadges()) {
+	case 5:
+		awardBadge(Badge::COUNT_5);
+		break;
+	case 10:
+		awardBadge(Badge::COUNT_10);
+		break;
+	case 25:
+		awardBadge(Badge::COUNT_25);
+		break;
+	case 50:
+		awardBadge(Badge::COUNT_50);
+		break;
+	case 75:
+		awardBadge(Badge::COUNT_75);
+		break;
+	case 100:
+		awardBadge(Badge::COUNT_100);
+		break;
+	case 125:
+		awardBadge(Badge::COUNT_125);
+		break;
+	default:
+		break;
+	}
+
+	if (Badge::getType(badge) == Badge::EXPLORATION) {
+		switch (badges->getTypeCount(Badge::EXPLORATION)) {
+		case 10:
+			awardBadge(Badge::BDG_EXP_10_BADGES);
+			break;
+		case 20:
+			awardBadge(Badge::BDG_EXP_20_BADGES);
+			break;
+		case 30:
+			awardBadge(Badge::BDG_EXP_30_BADGES);
+			break;
+		case 40:
+			awardBadge(Badge::BDG_EXP_40_BADGES);
+			break;
+		case 45:
+			awardBadge(Badge::BDG_EXP_45_BADGES);
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void PlayerImplementation::removeBadge(uint8 badge) {
+	if (!Badge::exists(badge) || !badges->hasBadge(badge))
+		return;
+
+	StfParameter * badgeName = new StfParameter();
+	badgeName->addTO("badge_n", Badge::getName(badge));
+
+	badges->unsetBadge(badge);
+	sendSystemMessage("badge_n", "prose_revoke", badgeName);
+
+	delete badgeName;
+
+	switch (badges->getNumBadges()) {
+	case 5:
+		removeBadge(Badge::COUNT_5);
+		break;
+	case 10:
+		removeBadge(Badge::COUNT_10);
+		break;
+	case 25:
+		removeBadge(Badge::COUNT_25);
+		break;
+	case 50:
+		removeBadge(Badge::COUNT_50);
+		break;
+	case 75:
+		removeBadge(Badge::COUNT_75);
+		break;
+	case 100:
+		removeBadge(Badge::COUNT_100);
+		break;
+	case 125:
+		removeBadge(Badge::COUNT_125);
+		break;
+	default:
+		break;
+	}
+
+	if (Badge::getType(badge) == Badge::EXPLORATION) {
+		switch (badges->getTypeCount(Badge::EXPLORATION)) {
+		case 9:
+			removeBadge(Badge::BDG_EXP_10_BADGES);
+			break;
+		case 19:
+			removeBadge(Badge::BDG_EXP_20_BADGES);
+			break;
+		case 29:
+			removeBadge(Badge::BDG_EXP_30_BADGES);
+			break;
+		case 39:
+			removeBadge(Badge::BDG_EXP_40_BADGES);
+			break;
+		case 44:
+			removeBadge(Badge::BDG_EXP_45_BADGES);
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void PlayerImplementation::getPlayersNearYou() {

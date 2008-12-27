@@ -501,7 +501,11 @@ public:
 
 	void toggleCharacterBit(unsigned int bit);
 
-	bool awardBadge(unsigned int badgeindex);
+	void awardBadge(unsigned char badge);
+
+	void removeBadge(unsigned char badge);
+
+	bool hasBadge(unsigned char badge);
 
 	void setLinkDead();
 
@@ -812,8 +816,6 @@ public:
 	void setResourceDeedID(unsigned long long objectID);
 
 	unsigned long long getResourceDeedID();
-
-	bool hasBadge(unsigned int badge);
 
 	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
 
@@ -1308,7 +1310,11 @@ public:
 
 	void toggleCharacterBit(unsigned int bit);
 
-	bool awardBadge(unsigned int badgeindex);
+	void awardBadge(unsigned char badge);
+
+	void removeBadge(unsigned char badge);
+
+	bool hasBadge(unsigned char badge);
 
 	void setLinkDead();
 
@@ -1619,8 +1625,6 @@ public:
 	void setResourceDeedID(unsigned long long objectID);
 
 	unsigned long long getResourceDeedID();
-
-	bool hasBadge(unsigned int badge);
 
 	void queueThrow(TangibleObject* throwItem, unsigned int actionCRC);
 

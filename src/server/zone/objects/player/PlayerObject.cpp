@@ -847,50 +847,12 @@ void PlayerObject::loadIgnore() {
 		((PlayerObjectImplementation*) _impl)->loadIgnore();
 }
 
-void PlayerObject::awardBadge(unsigned int badge) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 69);
-		method.addUnsignedIntParameter(badge);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlayerObjectImplementation*) _impl)->awardBadge(badge);
-}
-
-bool PlayerObject::hasBadge(unsigned int badge) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 70);
-		method.addUnsignedIntParameter(badge);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((PlayerObjectImplementation*) _impl)->hasBadge(badge);
-}
-
-Badges* PlayerObject::getBadges() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 71);
-
-		return (Badges*) method.executeWithObjectReturn();
-	} else
-		return ((PlayerObjectImplementation*) _impl)->getBadges();
-}
-
 void PlayerObject::saveWaypoints(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 69);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -903,7 +865,7 @@ WaypointObject* PlayerObject::searchWaypoint(Player* play, const String& name, i
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 70);
 		method.addObjectParameter(play);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(mode);
@@ -1114,18 +1076,9 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		loadIgnore();
 		break;
 	case 69:
-		awardBadge(inv->getUnsignedIntParameter());
-		break;
-	case 70:
-		resp->insertBoolean(hasBadge(inv->getUnsignedIntParameter()));
-		break;
-	case 71:
-		resp->insertLong(getBadges()->_getObjectID());
-		break;
-	case 72:
 		saveWaypoints((Player*) inv->getObjectParameter());
 		break;
-	case 73:
+	case 70:
 		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_String_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
@@ -1385,18 +1338,6 @@ void PlayerObjectAdapter::saveIgnore() {
 
 void PlayerObjectAdapter::loadIgnore() {
 	return ((PlayerObjectImplementation*) impl)->loadIgnore();
-}
-
-void PlayerObjectAdapter::awardBadge(unsigned int badge) {
-	return ((PlayerObjectImplementation*) impl)->awardBadge(badge);
-}
-
-bool PlayerObjectAdapter::hasBadge(unsigned int badge) {
-	return ((PlayerObjectImplementation*) impl)->hasBadge(badge);
-}
-
-Badges* PlayerObjectAdapter::getBadges() {
-	return ((PlayerObjectImplementation*) impl)->getBadges();
 }
 
 void PlayerObjectAdapter::saveWaypoints(Player* player) {

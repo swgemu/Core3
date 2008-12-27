@@ -76,6 +76,9 @@ which carries forward this exception.
 #include "faction/FactionRankTable.h"
 #include "faction/FactionPointList.h"
 
+#include "../../managers/player/PlayerManager.h"
+#include "badges/Badges.h"
+
 class PlayerManager;
 class ItemManager;
 class ProfessionManager;
@@ -287,6 +290,7 @@ class PlayerImplementation : public PlayerServant {
 	SkillBox* teachingOffer;
 
 	ActiveArea * activeArea;
+	Badges * badges;
 
 public:
 	static const int ONLINE = 1;
@@ -1106,9 +1110,13 @@ public:
 	// badge methods
 	void toggleCharacterBit(uint32 bit);
 
-	void addBadgeBitmask(uint32 bitmask);
+	void awardBadge(uint8 badge);
 
-	bool awardBadge(uint32 badgeindex);
+	void removeBadge(uint8 badge);
+
+	inline bool hasBadge(uint8 badge) {
+		return badges->hasBadge(badge);
+	}
 
 	// guild methods
 	bool setGuild(uint32 gid);
@@ -1454,7 +1462,7 @@ public:
 	}
 
 	inline Badges* getBadges() {
-		return playerObject->getBadges();
+		return badges;
 	}
 
 	inline int getRegionID() {
@@ -1796,10 +1804,6 @@ public:
 
 	void updateWeather();
 	void queueThrow(TangibleObject* throwItem, uint32 actionCRC);
-
-	inline bool hasBadge(uint32 badge) {
-		return playerObject->hasBadge(badge);
-	}
 
 	inline ActiveArea * getActiveArea() {
 		return activeArea;

@@ -171,6 +171,10 @@ void GameCommandHandler::init() {
 			"Awards a badge to targeted player.",
 			"Usage: @awardBadge <badgeid>",
 			&awardBadge);
+	gmCommands->addCommand("revolkBadge", DEVELOPER,
+				"Remove a badge from a targeted player.",
+				"Usage: @revolkBadge <badgeid>",
+				&revolkBadge);
 	gmCommands->addCommand("systemMessage", CSREVENTS | LEADQA,
 			"Sends a message to all players on the server.",
 			"Usage: @systemMessage <range> <message>",
@@ -1441,11 +1445,25 @@ void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player* player) {
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
 
-		if (targetPlayer->awardBadge(badgeid)) {
-			player->sendSystemMessage("You have awarded a badge.");
-			targetPlayer->sendSystemMessage("You have been awarded a badge.");
-		} else
-			player->sendSystemMessage("Invalid Badge ID");
+		targetPlayer->awardBadge(badgeid);
+
+		if (targetPlayer != player)
+			targetPlayer->unlock();
+	} else
+		player->sendSystemMessage("Invalid target.");
+}
+
+void GameCommandHandler::revolkBadge(StringTokenizer tokenizer, Player* player) {
+	int badgeid = tokenizer.getIntToken();
+	CreatureObject* target = (CreatureObject*) player->getTarget();
+
+	if (target != NULL && target->isPlayer()) {
+		Player* targetPlayer = (Player*) target;
+
+		if (targetPlayer != player)
+			targetPlayer->wlock(player);
+
+		targetPlayer->removeBadge(badgeid);
 
 		if (targetPlayer != player)
 			targetPlayer->unlock();
