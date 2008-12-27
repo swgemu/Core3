@@ -51,12 +51,14 @@ class AreaImplementation : public AreaServant {
 protected:
 	float x;
 	float y;
+	float z;
 	float radius;
 
 public:
-	AreaImplementation(float x, float y, float radius) {
+	AreaImplementation(float x, float y, float z, float radius) {
 		this->x = x;
 		this->y = y;
+		this->z = z;
 		this->radius = radius;
 	}
 
@@ -70,6 +72,10 @@ public:
 
 	inline float getY() {
 		return y;
+	}
+
+	inline float getZ() {
+		return z;
 	}
 
 	inline float getRadius() {

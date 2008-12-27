@@ -10,8 +10,8 @@
  *	AreaStub
  */
 
-Area::Area(float x, float y, float radius) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new AreaImplementation(x, y, radius);
+Area::Area(float x, float y, float z, float radius) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new AreaImplementation(x, y, z, radius);
 	_impl->_setStub(this);
 }
 
@@ -59,12 +59,24 @@ float Area::getY() {
 		return ((AreaImplementation*) _impl)->getY();
 }
 
-float Area::getRadius() {
+float Area::getZ() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 9);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((AreaImplementation*) _impl)->getZ();
+}
+
+float Area::getRadius() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -92,6 +104,9 @@ Packet* AreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertFloat(getY());
 		break;
 	case 9:
+		resp->insertFloat(getZ());
+		break;
+	case 10:
 		resp->insertFloat(getRadius());
 		break;
 	default:
@@ -111,6 +126,10 @@ float AreaAdapter::getX() {
 
 float AreaAdapter::getY() {
 	return ((AreaImplementation*) impl)->getY();
+}
+
+float AreaAdapter::getZ() {
+	return ((AreaImplementation*) impl)->getZ();
 }
 
 float AreaAdapter::getRadius() {

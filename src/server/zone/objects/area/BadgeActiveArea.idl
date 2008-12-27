@@ -47,8 +47,8 @@ import "ActiveArea";
 import "../player/Player";
 
 interface BadgeActiveArea implements ActiveArea {
-	BadgeActiveArea(float x, float y, float radius, unsigned int badge) {
-		super(x,y,radius);
+	BadgeActiveArea(float x, float y, float z, float radius, unsigned int badge) {
+		super(x,y, z,radius);
 	}
 	
 	void onEnter(Player player);

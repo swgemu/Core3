@@ -14,8 +14,8 @@
  *	ActiveAreaStub
  */
 
-ActiveArea::ActiveArea(float x, float y, float radius) : Area(DummyConstructorParameter::instance()) {
-	_impl = new ActiveAreaImplementation(x, y, radius);
+ActiveArea::ActiveArea(float x, float y, float z, float radius) : Area(DummyConstructorParameter::instance()) {
+	_impl = new ActiveAreaImplementation(x, y, z, radius);
 	_impl->_setStub(this);
 }
 
@@ -118,7 +118,7 @@ DistributedObjectAdapter* ActiveAreaHelper::createAdapter(DistributedObjectStub*
  *	ActiveAreaServant
  */
 
-ActiveAreaServant::ActiveAreaServant(float x, float y, float radius) : AreaImplementation(x, y, radius) {
+ActiveAreaServant::ActiveAreaServant(float x, float y, float z, float radius) : AreaImplementation(x, y, z, radius) {
 	_classHelper = ActiveAreaHelper::instance();
 }
 

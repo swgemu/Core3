@@ -15,7 +15,7 @@ class Player;
 
 class TestActiveArea : public ActiveArea {
 public:
-	TestActiveArea(float x, float y, float radius);
+	TestActiveArea(float x, float y, float z, float radius);
 
 	void onEnter(Player* player);
 
@@ -65,7 +65,7 @@ public:
 	TestActiveArea* _this;
 
 public:
-	TestActiveAreaServant(float x, float y, float radius);
+	TestActiveAreaServant(float x, float y, float z, float radius);
 	virtual ~TestActiveAreaServant();
 
 	void _setStub(DistributedObjectStub* stub);

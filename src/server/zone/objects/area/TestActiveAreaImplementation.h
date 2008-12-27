@@ -53,7 +53,7 @@ which carries forward this exception.
 class TestActiveAreaImplementation : public TestActiveAreaServant {
 
 public:
-	TestActiveAreaImplementation(float x, float y, float range) : TestActiveAreaServant(x, y, range){
+	TestActiveAreaImplementation(float x, float y, float z, float range) : TestActiveAreaServant(x, y, z, range){
 
 	}
 

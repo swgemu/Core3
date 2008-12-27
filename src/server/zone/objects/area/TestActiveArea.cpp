@@ -14,8 +14,8 @@
  *	TestActiveAreaStub
  */
 
-TestActiveArea::TestActiveArea(float x, float y, float radius) : ActiveArea(DummyConstructorParameter::instance()) {
-	_impl = new TestActiveAreaImplementation(x, y, radius);
+TestActiveArea::TestActiveArea(float x, float y, float z, float radius) : ActiveArea(DummyConstructorParameter::instance()) {
+	_impl = new TestActiveAreaImplementation(x, y, z, radius);
 	_impl->_setStub(this);
 }
 
@@ -118,7 +118,7 @@ DistributedObjectAdapter* TestActiveAreaHelper::createAdapter(DistributedObjectS
  *	TestActiveAreaServant
  */
 
-TestActiveAreaServant::TestActiveAreaServant(float x, float y, float radius) : ActiveAreaImplementation(x, y, radius) {
+TestActiveAreaServant::TestActiveAreaServant(float x, float y, float z, float radius) : ActiveAreaImplementation(x, y, z, radius) {
 	_classHelper = TestActiveAreaHelper::instance();
 }
 

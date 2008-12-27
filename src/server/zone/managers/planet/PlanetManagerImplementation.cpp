@@ -223,9 +223,10 @@ void PlanetManagerImplementation::loadBadgeAreas() {
 	while (result->next()) {
 		float x = result->getFloat(0);
 		float y = result->getFloat(1);
-		uint8 badge_id = result->getInt(2);
+		float z = result->getFloat(2);
+		uint8 badge_id = result->getInt(3);
 
-		spawnActiveArea(new BadgeActiveArea(x,y, 50, badge_id));
+		spawnActiveArea(new BadgeActiveArea(x,y,z, 50, badge_id));
 	}
 
 	delete result;
@@ -234,7 +235,7 @@ void PlanetManagerImplementation::loadBadgeAreas() {
 void PlanetManagerImplementation::addNoBuildArea(float x, float y, float radius) {
 	lock();
 	try {
-		noBuildAreaMap->add(new Area(x, y, radius));
+		noBuildAreaMap->add(new Area(x, y, 0, radius));
 	} catch (Exception e) {
 		System::out << "Exception Caught in PlanetManagerImplementation::loadNoBuildAreas: "  << e.getMessage() << endl;
 	} catch (...) {
@@ -1013,7 +1014,7 @@ void PlanetManagerImplementation::spawnActiveArea(ActiveArea * area) {
 	ActiveAreaTrigger * trigger = new ActiveAreaTrigger(area);
 
 	trigger->setObjectID(getNextStaticObjectID(false));
-	trigger->initializePosition(area->getX(), zone->getHeight(area->getX(), area->getY()), area->getY());
+	trigger->initializePosition(area->getX(), area->getZ(), area->getY());
 	trigger->setZoneProcessServer(server);
 	trigger->insertToZone(zone);
 
