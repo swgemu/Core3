@@ -40,40 +40,41 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-bomarrMonkAbbot = Creature:new {
-	objectName = "bomarrMonkAbbot",  -- Lua Object Name
+
+bomarrMonkBodyguard = Creature:new {
+	objectName = "bomarrMonkBodyguard",  -- Lua Object Name
 	creatureType = "NPC",
 	gender = "",
 
-	speciesName = "bomarr_monk_abbot",
+	speciesName = "bomarr_monk_bodyguard",
 	stfName = "mob/creature_names", 
 	objectCRC = 2894091205, 
 	socialGroup = "Spiderdroid",
-	level = 16,
+	level = 12,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 3000,
-	healthMin = 2400,
+	healthMax = 1200,
+	healthMin = 1000,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 3000,
-	actionMin = 2400,
+	actionMax = 1200,
+	actionMin = 1000,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 3000,
-	mindMin = 2400,
+	mindMax = 1200,
+	mindMin = 1000,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 20,
+	kinetic = 0,
 	energy = 0,
 	electricity = 0,
-	stun = 0,
+	stun = -1,
 	blast = 0,
 	heat = 0,
 	cold = 0,
@@ -132,10 +133,10 @@ bomarrMonkAbbot = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "bomarrMonkAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(bomarrMonkAbbot, 2894091205) --  Add to Global Table
+Creatures:addCreature(bomarrMonkBodyguard, 2894091205) -- Add to Global Table
