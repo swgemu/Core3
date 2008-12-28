@@ -40,40 +40,41 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-bomarrMonkHealer = Creature:new {
-	objectName = "bomarrMonkHealer",  -- Lua Object Name
+
+bomarrMonkAbbot = Creature:new {
+	objectName = "bomarrMonkAbbot",  -- Lua Object Name
 	creatureType = "NPC",
 	gender = "",
 
-	speciesName = "bomarr_monk_healer",
+	speciesName = "bomarr_monk_abbot",
 	stfName = "mob/creature_names", 
 	objectCRC = 2894091205, 
 	socialGroup = "Spiderdroid",
-	level = 5,
+	level = 16,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 165,
-	healthMin = 135,
+	healthMax = 3000,
+	healthMin = 2400,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 165,
-	actionMin = 135,
+	actionMax = 3000,
+	actionMin = 2400,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 165,
-	mindMin = 135,
+	mindMax = 3000,
+	mindMin = 2400,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 0,
+	kinetic = 20,
 	energy = 0,
 	electricity = 0,
-	stun = -1,
+	stun = 0,
 	blast = 0,
 	heat = 0,
 	cold = 0,
@@ -84,8 +85,8 @@ bomarrMonkHealer = Creature:new {
 
 	healer = 0,
 
-	pack = 0,
-	herd = 1,
+	pack = 1,
+	herd = 0,
 	stalker = 0,
 	killer = 0,
 	aggressive = 0,
@@ -132,10 +133,10 @@ bomarrMonkHealer = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "bomarrMonkAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(bomarrMonkHealer, 2894091205) --  Add to Global Table
+Creatures:addCreature(bomarrMonkAbbot, 2894091205) -- Add to Global Table

@@ -40,33 +40,36 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-bomarrMonk = Creature:new {
-	objectName = "bomarrMonk",  -- Lua Object Name
+
+jabbaSwooper = Creature:new {
+	objectName = "jabbaSwooper",  -- Lua Object Name
 	creatureType = "NPC",
+	faction = "jabba", 
+	factionPoints = 20,
 	gender = "",
 
-	speciesName = "bomarr_monk",
+	speciesName = "jabba_swooper",
 	stfName = "mob/creature_names", 
-	objectCRC = 2894091205, 
-	socialGroup = "Spiderdroid",
-	level = 3,
+	objectCRC = 1282805440, 
+	socialGroup = "jabba",
+	level = 28,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 110,
-	healthMin = 90,
-	strength = 0,
-	constitution = 0,
+	healthMax = 495,
+	healthMin = 405,
+	strength = 500,
+	constitution = 500,
 
-	actionMax = 110,
-	actionMin = 90,
-	quickness = 0,
-	stamina = 0,
+	actionMax = 495,
+	actionMin = 405,
+	quickness = 500,
+	stamina = 500,
 
-	mindMax = 110,
-	mindMin = 90,
-	focus = 0,
-	willpower = 0,
+	mindMax = 495,
+	mindMin = 405,
+	focus = 500,
+	willpower = 500,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -80,29 +83,32 @@ bomarrMonk = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 300,
 
 	healer = 0,
 
 	pack = 1,
 	herd = 0,
-	stalker = 0,
+	stalker = 1,
 	killer = 0,
 	aggressive = 0,
-	invincible = 0,
+	invincible = 0, 
+
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
+	weaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 175,
+	weaponMaxDamage = 250,
+	weaponAttackSpeed = 1.5,
+	weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -117,7 +123,7 @@ bomarrMonk = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,11,15,19,33,39", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -132,10 +138,10 @@ bomarrMonk = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
-	respawnTimer = 180,
+	skills = { "jabbaAttack40", "jabbaAttack41", "jabbaAttack42" },
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(bomarrMonk, 2894091205) --  Add to Global Table
+Creatures:addCreature(jabbaSwooper, 1282805440) -- Add to Global Table

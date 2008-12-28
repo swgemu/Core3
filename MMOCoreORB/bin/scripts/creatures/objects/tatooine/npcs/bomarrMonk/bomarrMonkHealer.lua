@@ -40,31 +40,32 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-bomarrMonkInitiate = Creature:new {
-	objectName = "bomarrMonkInitiate",  -- Lua Object Name
+
+bomarrMonkHealer = Creature:new {
+	objectName = "bomarrMonkHealer",  -- Lua Object Name
 	creatureType = "NPC",
 	gender = "",
 
-	speciesName = "bomarr_monk_initiate",
+	speciesName = "bomarr_monk_healer",
 	stfName = "mob/creature_names", 
 	objectCRC = 2894091205, 
 	socialGroup = "Spiderdroid",
-	level = 2,
+	level = 5,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 83,
-	healthMin = 68,
+	healthMax = 165,
+	healthMin = 135,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 83,
-	actionMin = 68,
+	actionMax = 165,
+	actionMin = 135,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 83,
-	mindMin = 68,
+	mindMax = 165,
+	mindMin = 135,
 	focus = 0,
 	willpower = 0,
 
@@ -132,10 +133,10 @@ bomarrMonkInitiate = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "bomarrMonkAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(bomarrMonkInitiate, 2894091205) --  Add to Global Table
+Creatures:addCreature(bomarrMonkHealer, 2894091205) -- Add to Global Table

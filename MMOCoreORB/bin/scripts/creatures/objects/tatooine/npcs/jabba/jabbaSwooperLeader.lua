@@ -40,16 +40,17 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-jabbasSwooper = Creature:new {
-	objectName = "jabbasSwooper",  -- Lua Object Name
+
+jabbaSwooperLeader = Creature:new {
+	objectName = "jabbaSwooperLeader",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "jabba", 
 	factionPoints = 20,
 	gender = "",
 
-	speciesName = "jabbas_swooper",
+	speciesName = "jabba_swooper_leader",
 	stfName = "mob/creature_names", 
-	objectCRC = 1282805440, 
+	objectCRC = 3956928835, 
 	socialGroup = "jabba",
 	level = 28,
 
@@ -137,10 +138,10 @@ jabbasSwooper = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "jabbaAttack40", "jabbaAttack41", "jabbaAttack42" },
+	skills = { "jabbaAttack25", "jabbaAttack26", "jabbaAttack27", "jabbaAttack28" },
 	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(jabbasSwooper, 1282805440) --  Add to Global Table
+Creatures:addCreature(jabbaSwooperLeader, 3956928835) -- Add to Global Table
