@@ -1946,15 +1946,16 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 	}
 }
 
-void ObjectControllerMessage::parseSetCurrentSkillTitle(Player* player,
-		Message* pack) {
+void ObjectControllerMessage::parseSetCurrentSkillTitle(Player* player, Message* pack) {
 	pack->shiftOffset(8); //shift past the blank id.
 	UnicodeString title;
 	pack->parseUnicode(title);
 	String newTitle = title.toString();
 
-	if (!player->hasSkillBox(newTitle))
-		return;
+	if (newTitle.length() > 0) {
+		if (!player->hasSkillBox(newTitle))
+				return;
+	}
 
 	PlayerObject* object = player->getPlayerObject();
 	object->setCurrentTitle(newTitle, true);
