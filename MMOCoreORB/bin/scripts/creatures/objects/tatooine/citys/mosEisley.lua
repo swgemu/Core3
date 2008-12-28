@@ -1470,28 +1470,6 @@ mosEisleyNpc104 = Creature:new {
 	cellID = 0
 }
 
-mosEisleyNpc105 = Creature:new {
-	objectName = "mosEisleyNpc105",
-	creatureType = NPC,
-
-	speciesName = "mos_eisley_police_officer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4169319121,
-	positionX = 3369.94,
-	positionY = -4729.68,
-	positionZ = 5,
-
-	directionX = 0.0210012,
-	directionZ = 0.00258689,
-	directionY = 0.99804,
-	directionW = -0.0588895,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 mosEisleyNpc106 = Creature:new {
 	objectName = "mosEisleyNpc106",
 	creatureType = NPC,
@@ -1602,28 +1580,6 @@ mosEisleyNpc110 = Creature:new {
 	cellID = 0
 }
 
-mosEisleyNpc111 = Creature:new {
-	objectName = "mosEisleyNpc111",
-	creatureType = NPC,
-
-	speciesName = "mos_eisley_police_officer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 300124372,
-	positionX = 3287.5,
-	positionY = -4682.63,
-	positionZ = 5,
-
-	directionX = 0.0406898,
-	directionZ = 0.0462339,
-	directionY = 0.949956,
-	directionW = 0.306253,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 mosEisleyNpc112 = Creature:new {
 	objectName = "mosEisleyNpc112",
 	creatureType = NPC,
@@ -1687,28 +1643,6 @@ mosEisleyNpc114 = Creature:new {
 	directionW = 0.567891,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-mosEisleyNpc115 = Creature:new {
-	objectName = "mosEisleyNpc115",
-	creatureType = NPC,
-
-	speciesName = "mos_eisley_police_officer",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 741031462,
-	positionX = 3298.17,
-	positionY = -4655.93,
-	positionZ = 4.72998,
-
-	directionX = -0.0117815,
-	directionZ = -0.00978883,
-	directionY = -0.211073,
-	directionW = 0.97735,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
