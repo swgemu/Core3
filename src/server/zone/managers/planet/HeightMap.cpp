@@ -26,13 +26,14 @@ HeightMap::~HeightMap() {
 	free(planes);
 }
 
-void HeightMap::load(const string& path) {
+void HeightMap::load(const String& path) {
 	File* file = new File(path);
 
-	if (file->exists())
+	try {
 		reader = new FileReader(file);
-	else
+	} catch (FileNotFoundException& e) {
 		reader = NULL;
+	}
 }
 
 float HeightMap::getHeight(float x, float y) {
@@ -104,7 +105,7 @@ int HeightMap::getPlanePosition(float x, float y) {
 	return planeX + planeY * PLANESSIZE;
 }
 
-void HeightMap::convert(const string& path) {
+void HeightMap::convert(const String& path) {
 	Reader* reader = new FileReader(new File(path));
 	Writer* writer = new FileWriter(new File("converted_" + path));
 
@@ -132,7 +133,7 @@ void HeightMap::convert(const string& path) {
 
 		// inner 60 planes
 		for (int j = 0; j < 60; ++j) {
-			cout << "\r writing(" << planeIndexX << ", " << planeIndexY << ")";
+			System::out << "\r writing(" << planeIndexX << ", " << planeIndexY << ")";
 
 			float plane[PLANEWIDTH * PLANEWIDTH];
 			readPlaneForConversion(reader, plane, planeIndexX - 2, planeIndexY);

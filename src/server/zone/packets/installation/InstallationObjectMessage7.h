@@ -59,14 +59,14 @@ public:
 	InstallationObjectMessage7(InstallationObject * inso)
 			: BaseLineMessage(inso->getObjectID(), 0x494E534F, 7, 0x05) {
 
-		if(inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER)
+		if (inso->getObjectSubType() == TangibleObjectImplementation::HARVESTER)
 		{
 			HarvesterObject* hino = (HarvesterObject*) inso;
 			ResourceManager* resourceManager = inso->getZone()->getZoneServer()->getResourceManager();
 			ResourceList* list = resourceManager->getResourceListAtLocation(inso->getZone()->getZoneID(), inso->getPositionX(), inso->getPositionY(), hino->getHarvesterType());
 
-			if(list == NULL)
-				cout << "list was null!" << endl;
+			if (list == NULL)
+				System::out << "list was null!" << endl;
 
 			insertByte(1); // ResourcePoolUpdateFlag ?
 			insertResourceIDList(list);
@@ -117,13 +117,13 @@ public:
 
 	void insertResourceIDList(ResourceList *list) {
 
-		//cout << "insertResourceIDList size(): " << list->size() << endl;
+		//System::out << "insertResourceIDList size(): " << list->size() << endl;
 		insertInt(list->size()); // size
 		insertInt(list->size()); // counter
 		for (int x = 0; x < list->size(); x++)
 		{
 			ResourceItem *ri = list->get(x);
-			//cout << "insertResourceIDList() ObjectID: " << hex << ri->getObjectID() << endl;
+			//System::out << "insertResourceIDList() ObjectID: " << hex << ri->getObjectID() << endl;
 			insertLong(ri->getObjectID());
 		}
 
@@ -131,25 +131,25 @@ public:
 
 	void insertResourceNameList(ResourceList *list) {
 
-		//cout << "insertResourceNameList size(): " << list->size() << endl;
+		//System::out << "insertResourceNameList size(): " << list->size() << endl;
 		insertInt(list->size()); // size
 		insertInt(list->size()); // counter
 		for (int x = 0; x < list->size(); x++)
 		{
 			ResourceItem *ri = list->get(x);
-			//cout << "insertResourceNameList() Name: " << ri->getName() << endl;
+			//System::out << "insertResourceNameList() Name: " << ri->getName() << endl;
 			insertAscii(ri->getName());
 		}
 	}
 
 	void insertResourceTypeList(ResourceList *list) {
-		//cout << "insertResourceTypeList size(): " << list->size() << endl;
+		//System::out << "insertResourceTypeList size(): " << list->size() << endl;
 		insertInt(list->size()); // size
 		insertInt(list->size()); // counter
 		for (int x = 0; x < list->size(); x++)
 		{
 			ResourceItem *ri = list->get(x);
-			//cout << "insertResourceTypeList() Type: " << ri->getType() << endl;
+			//System::out << "insertResourceTypeList() Type: " << ri->getType() << endl;
 			insertAscii(ri->getType());
 		}
 	}

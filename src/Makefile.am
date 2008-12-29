@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-write-strings -march=i686
+AM_CXXFLAGS=-ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -march=i686
 
 ENGINE3_PATH=../../../../MMOEngine
 
@@ -55,7 +55,10 @@ LIBS =	$(SYSTEM_LIBS)  \
 
 bin_PROGRAMS = core3
 
-core3_IDLS = 	server/chat/ChatManager.cpp \
+core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
+		server/zone/objects/tangible/weapons/ThrowableWeapon.cpp \
+		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.cpp \
+		server/chat/ChatManager.cpp \
 		server/chat/GameCommandHandler.cpp \
 		server/chat/room/ChatRoom.cpp \
 		server/zone/managers/bank/BankManager.cpp \
@@ -77,10 +80,11 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/managers/resource/ResourceItem.cpp \
 		server/zone/managers/structure/StructureManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
-		server/zone/objects/area/ActiveArea.cpp \
 		server/zone/objects/area/Area.cpp \
-		server/zone/objects/area/BaseArea.cpp \
-		server/zone/objects/area/NoBuildArea.cpp \
+		server/zone/objects/area/ActiveArea.cpp \
+		server/zone/objects/area/ActiveAreaTrigger.cpp \
+		server/zone/objects/area/BadgeActiveArea.cpp \
+		server/zone/objects/area/TestActiveArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
@@ -127,6 +131,7 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 		server/zone/objects/player/sui/SuiBox.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
+		server/zone/objects/player/badges/Badges.cpp \
 		server/zone/objects/scene/SceneObject.cpp \
 		server/zone/objects/ship/ShipObject.cpp \
 		server/zone/objects/static/firework/FireworkWorld.cpp \
@@ -197,9 +202,11 @@ core3_IDLS = 	server/chat/ChatManager.cpp \
 		server/zone/objects/waypoint/WaypointObject.cpp \
 		server/zone/ZoneClientSession.cpp \
 		server/zone/Zone.cpp \
-		server/zone/ZoneServer.cpp
-
+		server/zone/ZoneServer.cpp 
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/tangible/camokits/CamoKitImplementation.cpp \
+		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
+		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
 		server/conf/ConfigManager.cpp \
@@ -270,6 +277,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/IgnoreListImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/player/badges/Badge.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
@@ -282,6 +290,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
+		server/zone/objects/tangible/CustomizationVariables.cpp \
 		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingStationImplementation.cpp \
 		server/zone/objects/tangible/crafting/CraftingToolImplementation.cpp \
@@ -313,10 +322,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
+		server/zone/packets/charcreation/ClientCreateCharacter.cpp \
 		server/zone/ZoneClientSessionImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
 		server/zone/ZoneMessageProcessorThread.cpp \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneServerImplementation.cpp \
-		main.cpp
+		main.cpp 
+		

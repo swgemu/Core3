@@ -28,12 +28,12 @@
  *	CraftingToolStub
  */
 
-CraftingTool::CraftingTool(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+CraftingTool::CraftingTool(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new CraftingToolImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-CraftingTool::CraftingTool(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+CraftingTool::CraftingTool(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new CraftingToolImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -861,11 +861,11 @@ DistributedObjectAdapter* CraftingToolHelper::createAdapter(DistributedObjectStu
  *	CraftingToolServant
  */
 
-CraftingToolServant::CraftingToolServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int type) : TangibleObjectImplementation(oid, tempCRC, n, tempn, type) {
+CraftingToolServant::CraftingToolServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int type) : TangibleObjectImplementation(oid, tempCRC, n, tempn, type) {
 	_classHelper = CraftingToolHelper::instance();
 }
 
-CraftingToolServant::CraftingToolServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int type) : TangibleObjectImplementation(creature, tempCRC, n, tempn, type) {
+CraftingToolServant::CraftingToolServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int type) : TangibleObjectImplementation(creature, tempCRC, n, tempn, type) {
 	_classHelper = CraftingToolHelper::instance();
 }
 

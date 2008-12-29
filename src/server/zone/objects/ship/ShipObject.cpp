@@ -94,7 +94,7 @@ IntangibleObject* ShipObject::getShipBody() {
 		return ((ShipObjectImplementation*) _impl)->getShipBody();
 }
 
-void ShipObject::setStfName(const string& Name) {
+void ShipObject::setStfName(const String& Name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -107,7 +107,7 @@ void ShipObject::setStfName(const string& Name) {
 		((ShipObjectImplementation*) _impl)->setStfName(Name);
 }
 
-string& ShipObject::getStfName() {
+String& ShipObject::getStfName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -120,7 +120,7 @@ string& ShipObject::getStfName() {
 		return ((ShipObjectImplementation*) _impl)->getStfName();
 }
 
-unicode& ShipObject::getOwnerName() {
+UnicodeString& ShipObject::getOwnerName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -537,7 +537,7 @@ Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getShipBody()->_getObjectID());
 		break;
 	case 11:
-		setStfName(inv->getAsciiParameter(_param0_setStfName__string_));
+		setStfName(inv->getAsciiParameter(_param0_setStfName__String_));
 		break;
 	case 12:
 		resp->insertAscii(getStfName());
@@ -665,15 +665,15 @@ IntangibleObject* ShipObjectAdapter::getShipBody() {
 	return ((ShipObjectImplementation*) impl)->getShipBody();
 }
 
-void ShipObjectAdapter::setStfName(const string& Name) {
+void ShipObjectAdapter::setStfName(const String& Name) {
 	return ((ShipObjectImplementation*) impl)->setStfName(Name);
 }
 
-string& ShipObjectAdapter::getStfName() {
+String& ShipObjectAdapter::getStfName() {
 	return ((ShipObjectImplementation*) impl)->getStfName();
 }
 
-unicode& ShipObjectAdapter::getOwnerName() {
+UnicodeString& ShipObjectAdapter::getOwnerName() {
 	return ((ShipObjectImplementation*) impl)->getOwnerName();
 }
 

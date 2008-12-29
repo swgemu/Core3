@@ -19,11 +19,11 @@ public:
 
 	void changeStatus(bool status);
 
-	void setName(const string& Name);
+	void setName(const String& Name);
 
-	void setInternalNote(const string& message);
+	void setInternalNote(const String& message);
 
-	void setPlanetName(const string& planet);
+	void setPlanetName(const String& planet);
 
 	void switchStatus();
 
@@ -31,20 +31,20 @@ public:
 
 	bool getStatus();
 
-	string& getName();
+	String& getName();
 
-	string& getPlanetName();
+	String& getPlanetName();
 
-	string& getInternalNote();
+	String& getInternalNote();
 
 protected:
 	WaypointObject(DummyConstructorParameter* param);
 
 	virtual ~WaypointObject();
 
-	string _return_getInternalNote;
-	string _return_getName;
-	string _return_getPlanetName;
+	String _return_getInternalNote;
+	String _return_getName;
+	String _return_getPlanetName;
 
 	friend class WaypointObjectHelper;
 };
@@ -59,11 +59,11 @@ public:
 
 	void changeStatus(bool status);
 
-	void setName(const string& Name);
+	void setName(const String& Name);
 
-	void setInternalNote(const string& message);
+	void setInternalNote(const String& message);
 
-	void setPlanetName(const string& planet);
+	void setPlanetName(const String& planet);
 
 	void switchStatus();
 
@@ -71,16 +71,16 @@ public:
 
 	bool getStatus();
 
-	string& getName();
+	String& getName();
 
-	string& getPlanetName();
+	String& getPlanetName();
 
-	string& getInternalNote();
+	String& getInternalNote();
 
 protected:
-	string _param0_setName__string_;
-	string _param0_setInternalNote__string_;
-	string _param0_setPlanetName__string_;
+	String _param0_setName__String_;
+	String _param0_setInternalNote__String_;
+	String _param0_setPlanetName__String_;
 };
 
 class WaypointObjectHelper : public DistributedObjectClassHelper, public Singleton<WaypointObjectHelper> {

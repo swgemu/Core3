@@ -13,9 +13,9 @@ class AuctionItem : public ManagedObject {
 public:
 	AuctionItem(unsigned long long objectid);
 
-	AuctionItem(unsigned long long objectid, string& name, int itemprice, int time, bool isauction, int type, string& owner);
+	AuctionItem(unsigned long long objectid, String& name, int itemprice, int time, bool isauction, int type, String& owner);
 
-	void setLocation(string& planet, string& header, unsigned long long vendorid, int x, int z, bool vendor);
+	void setLocation(String& planet, String& header, unsigned long long vendorid, int x, int z, bool vendor);
 
 	int getPlanet();
 
@@ -23,13 +23,13 @@ public:
 
 	unsigned long long getOwnerID();
 
-	string& getTerminalTitle();
+	String& getTerminalTitle();
 
-	string& getOwnerName();
+	String& getOwnerName();
 
 	unsigned long long getBuyerID();
 
-	string& getBidderName();
+	String& getBidderName();
 
 	unsigned int getItemType();
 
@@ -39,7 +39,7 @@ public:
 
 	bool getAuction();
 
-	string& getLocation();
+	String& getLocation();
 
 	int getPrice();
 
@@ -47,21 +47,21 @@ public:
 
 	int getOwnerPointer();
 
-	string& getItemDescription();
+	String& getItemDescription();
 
-	string& getItemName();
+	String& getItemName();
 
 	unsigned int getExpireTime();
 
 	void setOwnerID(unsigned long long ownerid);
 
-	void setOwnerName(const string& name);
+	void setOwnerName(const String& name);
 
 	void setVendorID(unsigned long long vid);
 
 	void setPlanet(int planet);
 
-	void setBidderName(const string& name);
+	void setBidderName(const String& name);
 
 	void setSold(bool sld);
 
@@ -69,9 +69,9 @@ public:
 
 	void setItemType(int type);
 
-	void setItemName(const string& name);
+	void setItemName(const String& name);
 
-	void setItemDescription(const string& description);
+	void setItemDescription(const String& description);
 
 	void setPrice(int prc);
 
@@ -88,12 +88,12 @@ protected:
 
 	virtual ~AuctionItem();
 
-	string _return_getBidderName;
-	string _return_getItemDescription;
-	string _return_getItemName;
-	string _return_getLocation;
-	string _return_getOwnerName;
-	string _return_getTerminalTitle;
+	String _return_getBidderName;
+	String _return_getItemDescription;
+	String _return_getItemName;
+	String _return_getLocation;
+	String _return_getOwnerName;
+	String _return_getTerminalTitle;
 
 	friend class AuctionItemHelper;
 };
@@ -106,7 +106,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void setLocation(string& planet, string& header, unsigned long long vendorid, int x, int z, bool vendor);
+	void setLocation(String& planet, String& header, unsigned long long vendorid, int x, int z, bool vendor);
 
 	int getPlanet();
 
@@ -114,13 +114,13 @@ public:
 
 	unsigned long long getOwnerID();
 
-	string& getTerminalTitle();
+	String& getTerminalTitle();
 
-	string& getOwnerName();
+	String& getOwnerName();
 
 	unsigned long long getBuyerID();
 
-	string& getBidderName();
+	String& getBidderName();
 
 	unsigned int getItemType();
 
@@ -130,7 +130,7 @@ public:
 
 	bool getAuction();
 
-	string& getLocation();
+	String& getLocation();
 
 	int getPrice();
 
@@ -138,21 +138,21 @@ public:
 
 	int getOwnerPointer();
 
-	string& getItemDescription();
+	String& getItemDescription();
 
-	string& getItemName();
+	String& getItemName();
 
 	unsigned int getExpireTime();
 
 	void setOwnerID(unsigned long long ownerid);
 
-	void setOwnerName(const string& name);
+	void setOwnerName(const String& name);
 
 	void setVendorID(unsigned long long vid);
 
 	void setPlanet(int planet);
 
-	void setBidderName(const string& name);
+	void setBidderName(const String& name);
 
 	void setSold(bool sld);
 
@@ -160,9 +160,9 @@ public:
 
 	void setItemType(int type);
 
-	void setItemName(const string& name);
+	void setItemName(const String& name);
 
-	void setItemDescription(const string& description);
+	void setItemDescription(const String& description);
 
 	void setPrice(int prc);
 
@@ -175,12 +175,12 @@ public:
 	void setOwnerPointer(int ownpt);
 
 protected:
-	string _param0_setLocation__string_string_long_int_int_bool_;
-	string _param1_setLocation__string_string_long_int_int_bool_;
-	string _param0_setOwnerName__string_;
-	string _param0_setBidderName__string_;
-	string _param0_setItemName__string_;
-	string _param0_setItemDescription__string_;
+	String _param0_setLocation__String_String_long_int_int_bool_;
+	String _param1_setLocation__String_String_long_int_int_bool_;
+	String _param0_setOwnerName__String_;
+	String _param0_setBidderName__String_;
+	String _param0_setItemName__String_;
+	String _param0_setItemDescription__String_;
 };
 
 class AuctionItemHelper : public DistributedObjectClassHelper, public Singleton<AuctionItemHelper> {

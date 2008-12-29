@@ -63,9 +63,9 @@ GroupObjectImplementation::GroupObjectImplementation(uint64 oid, Player* Leader)
 
 	groupMembers.add(Leader);
 
-	stringstream name;
+	StringBuffer name;
 	name << "Group :" << oid;
-	setLoggingName(name.str());
+	setLoggingName(name.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -185,7 +185,7 @@ void GroupObjectImplementation::disband() {
 			play->unlock();
 
 		} catch (...) {
-			cout << "Exception in GroupObject::disband(Player* player)\n";
+			System::out << "Exception in GroupObject::disband(Player* player)\n";
 			play->unlock();
 		}
 	}
@@ -216,6 +216,58 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	delete msg;
 }
 
+void GroupObjectImplementation::sendSystemMessage(Player* player,
+		const String& message, bool sendToSelf) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		Player* play = groupMembers.get(i);
+
+		if (play != player) {
+
+			play->sendSystemMessage(message);
+
+		} else {
+
+			if (sendToSelf)
+				play->sendSystemMessage(message);
+		}
+	}
+}
+
+void GroupObjectImplementation::sendSystemMessage(Player* player,
+		const String& file, const String& str, uint64 targetid, bool sendToSelf) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		Player* play = groupMembers.get(i);
+
+		if (play != player) {
+
+			play->sendSystemMessage(file, str, targetid);
+
+		} else {
+
+			if (sendToSelf)
+				play->sendSystemMessage(file, str, targetid);
+		}
+	}
+}
+
+void GroupObjectImplementation::sendSystemMessage(Player* player,
+		const String& file, const String& str, StfParameter* param,
+		bool sendToSelf) {
+	for (int i = 0; i < groupMembers.size(); i++) {
+		Player* play = groupMembers.get(i);
+
+		if (play != player) {
+
+			play->sendSystemMessage(file, str, param);
+
+		} else {
+
+			if (sendToSelf)
+				play->sendSystemMessage(file, str, param);
+		}
+	}
+}
+
 void GroupObjectImplementation::makeLeader(Player* player) {
 	if (groupMembers.size() < 2)
 		return;
@@ -241,8 +293,8 @@ void GroupObjectImplementation::makeLeader(Player* player) {
 
 float GroupObjectImplementation::getRangerBonusForHarvesting(Player* player) {
 	Player* temp;
-	string skillBox = "outdoors_ranger_novice";
-	string skillBox2 = "outdoors_ranger_master";
+	String skillBox = "outdoors_ranger_novice";
+	String skillBox2 = "outdoors_ranger_master";
 
 	float bonus = .2f;
 	bool closeEnough = false;

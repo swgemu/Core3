@@ -75,7 +75,7 @@ public:
 		insertLong(0); //?
 		insertInt(wp->getPlanetCRC()); //21 91 27 57 planet crc
 
-		unicode name = wp->getName();
+		UnicodeString name = wp->getName();
 		insertUnicode(name);
 
 		insertLong(wp->getObjectID());
@@ -96,15 +96,15 @@ public:
 		startList(typesOfExp, play->getNewExperienceListCount(typesOfExp));
 	}
 
-	void addExperience(const string& name, int xp) {
+	void addExperience(const String& name, int xp) {
 		insertByte(0);
-		insertAscii(name.c_str());
+		insertAscii(name.toCharArray());
 		insertInt(xp);
 	}
 
-	void removeExperience(const string& name) {
+	void removeExperience(const String& name) {
 		insertByte(1);
-		insertAscii(name.c_str());
+		insertAscii(name.toCharArray());
 		insertInt(0);
 	}
 };

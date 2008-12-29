@@ -111,11 +111,14 @@ void LootTableManagerImplementation::init() {
 
 void LootTableManagerImplementation::buildLootMap() {
 	int i = 0, rememberLootGroup = 0;
+
 	ResultSet* lootRes;
 	ResultSet* weightRes;
+
 	LootTableTemplate* lootTableTemp;
 
-	stringstream query;
+	StringBuffer query;
+
 	try {
 		query << "SELECT "
 				<< "lootgroup,name,template_crc,template_type,template_name,container,attributes,appearance,level,"
@@ -123,24 +126,18 @@ void LootTableManagerImplementation::buildLootMap() {
 				<< "FROM loottable order by lootgroup asc;";
 
 		lootRes = ServerDatabase::instance()->executeQuery(query);
-
 	} catch (...) {
-		cout << "Exception in DB query LootTableManagerImplementation::loadLootItems \n";
+		System::out << "Exception in DB query LootTableManagerImplementation::loadLootItems \n";
 	}
-	query.str("");
 
-
-
-	stringstream query2;
+	StringBuffer query2;
 	try {
-
 		query2 << "SELECT lootgroup,weight,max_drop_from_this_group from lootgroup_weight order by lootgroup asc;";
-		weightRes = ServerDatabase::instance()->executeQuery(query2);
 
+		weightRes = ServerDatabase::instance()->executeQuery(query2);
 	} catch (...) {
-		cout << "Exception in DB query LootTableManagerImplementation::loadLootWeight_Table \n";
+		System::out << "Exception in DB query LootTableManagerImplementation::loadLootWeight_Table \n";
 	}
-	query2.str("");
 
 	while (weightRes->next()) {
 		lootWeightMap->put(weightRes->getInt(0), weightRes->getInt(1));
@@ -169,19 +166,16 @@ void LootTableManagerImplementation::buildLootMap() {
 		lootTableTemp->setLootItemMask(lootRes->getUnsignedInt(15));
 
 		lootTableMap[lootRes->getInt(0)]->add(lootTableTemp);
-		//for testing: cout << "Adding item " << lootRes->getString(1) << "to lootMap No." << lootRes->getInt(0) << endl;
+		//for testing: System::out << "Adding item " << lootRes->getString(1) << "to lootMap No." << lootRes->getInt(0) << endl;
 	}
 
-
-	stringstream msg;
+	StringBuffer msg;
 	msg << "Loot table built from database with <" << i << "> loot items.";
-	info(msg.str());
+	info(msg.toString());
 
 	//Garbage collection
 	delete lootRes;
 	delete weightRes;
-	query.clear();
-	msg.clear();
 }
 
 
@@ -189,10 +183,10 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 	if (creature == NULL)
 		return;
 
-	int i, itemcount;
-	i = 0;
+	int i = 0, itemcount;
 
 	uint32 objectCRC = creature->getObjectCRC();
+
 	LootTableTemplate* lootTableTemp;
 	ItemManagerImplementation* im;
 
@@ -205,11 +199,10 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		lootTableTemp = lootTableMap[lootGroup]->get(i);
 
 		if (lootTableTemp->getLootItemLevel() <= level) {
-			int compare = lootTableTemp->getLootItemRace().find (player->getSpeciesName());
+			int compare = lootTableTemp->getLootItemRace().indexOf(player->getSpeciesName());
 
 			if (compare >= 0 || lootTableTemp->getLootItemRace() == "all" )
 				selectedLootTableMap.add(lootTableTemp);
-
 		}
 	}
 
@@ -245,13 +238,13 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 		lootTableTemp = selectedLootTableMap.get(i+offset);
 
 		int itemType = lootTableTemp->getLootItemTemplateType();
-		unicode clearName = (unicode)lootTableTemp->getLootItemName();
+		UnicodeString clearName = (UnicodeString)lootTableTemp->getLootItemName();
 		uint64 itemCRC = lootTableTemp->getLootItemTemplateCRC();
-		string itemName = lootTableTemp->getLootItemTemplateName();
-		string lootAttributes = lootTableTemp->getLootItemAttributes();
+		String itemName = lootTableTemp->getLootItemTemplateName();
+		String lootAttributes = lootTableTemp->getLootItemAttributes();
 		uint16 itemMask = lootTableTemp->getLootItemMask();
 
-		//for testing: cout << "Selected lootitem is " << lootTableTemp->getLootItemName() << endl;
+		//for testing: System::out << "Selected lootitem is " << lootTableTemp->getLootItemName() << endl;
 		TangibleObject* item = im->createPlayerObjectTemplate(itemType, creature->getNewItemID(), itemCRC,
 				clearName, itemName, false, true, lootAttributes, level);
 
@@ -261,49 +254,48 @@ void LootTableManagerImplementation::createLootItem(Creature* creature, int leve
 			item->setPlayerUseMask(itemMask);
 			creature->addLootItem(item);
 		} else {
-			stringstream err;
+			StringBuffer err;
 			err << "Loot item could not be created"
 				<< " itemType = 0x" << hex << itemType
 				<< " itemCRC = " << itemCRC
 				<< " itemMask = " << itemMask
 				<< " itemName = " << itemName;
-			error(err.str());
+			error(err.toString());
 		}
 	}
 }
 
 int LootTableManagerImplementation::makeLootGroup(Creature* creature) {
 	Vector<int> weightHelper;
-	Vector<string> parsedStrings;
+	Vector<String> parsedStrings;
 
-	string parseHelper;
+	StringBuffer parseHelper;
 	int retLG = 0;
 
-	string line = creature->getLootGroup();
+	String line = creature->getLootGroup();
 
-	for (int i = 0; i < line.size(); i++) {
-		char currentChar = line.at(i);
+	for (int i = 0; i < line.length(); i++) {
+		char currentChar = line.charAt(i);
 
 		if (currentChar != ' ') {
 			if (currentChar == ',') {
-				parsedStrings.add(parseHelper);
-				parseHelper.clear();
+				parsedStrings.add(parseHelper.toString());
+				parseHelper.deleteAll();
 			} else {
-				parseHelper += currentChar;
+				parseHelper.append(currentChar);
 			}
 		}
 
 	}
-	// The last template name has to be added because it was not added during the loop
-	parsedStrings.add(parseHelper);
 
+	// The last template name has to be added because it was not added during the loop
+	parsedStrings.add(parseHelper.toString());
 
 	if (parsedStrings.size() > 0) {
-
 		for (int i = 0; i < parsedStrings.size(); i++) {
 
 			//lootgroup the creature belongs to
-			int lootGroup = atoi(parsedStrings.get(i).c_str());
+			int lootGroup = atoi(parsedStrings.get(i).toCharArray());
 
 			//determining the weight of this lootgroup
 			int weight = lootWeightMap->get(lootGroup);
@@ -316,12 +308,6 @@ int LootTableManagerImplementation::makeLootGroup(Creature* creature) {
 		int rand = System::random(weightHelper.size()-1);
 		retLG = weightHelper.get(rand);
 	}
-
-	//Garbage collection
-	parsedStrings.removeAll();
-	weightHelper.removeAll();
-	parseHelper.clear();
-	line.clear();
 
 	return retLG;
 }

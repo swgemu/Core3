@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class TendHealTargetSkill : public TargetSkill {
 protected:
-	string effectName;
+	String effectName;
 	int mindCost;
 	int mindWoundCost;
 
@@ -68,7 +68,7 @@ protected:
 	float speed;
 
 public:
-	TendHealTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
+	TendHealTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 		mindCost = 0;
 		mindWoundCost = 0;
@@ -87,7 +87,7 @@ public:
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (effectName.size() != 0)
+		if (!effectName.isEmpty())
 			creatureTarget->playEffect(effectName, "");
 
 		if (creature == creatureTarget)
@@ -96,7 +96,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "healing_response_a1"); //Target must be a player or a creature pet in order to tend damage.
 			return 0;
@@ -109,6 +109,11 @@ public:
 		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
 			creatureTarget = creature;
 
+
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot do that while prone.");
+			return 0;
+		}
 
 		if (creature->isMeditating()) {
 			creature->sendSystemMessage("You cannot do that while Meditating.");
@@ -167,7 +172,8 @@ public:
 				if (creatureTarget == creature)
 					creature->sendSystemMessage("healing_response", "healing_response_67");
 				else
-					creature->sendSystemMessage(creatureTarget->getCharacterName().c_str() + " has no wounds of that type to heal.");
+					creature->sendSystemMessage(creatureTarget->getCharacterName().toString()
+							+ " has no wounds of that type to heal.");
 
 				return 0;
 			}
@@ -192,9 +198,9 @@ public:
 		}
 
 		creature->changeMindBar(-mindCost);
-
 		creature->changeFocusWoundsBar(mindWoundCost);
 		creature->changeWillpowerWoundsBar(mindWoundCost);
+		creature->changeShockWounds(2);
 
 		if (creatureTarget != creature)
 			awardXp(creature, "medical", 100);
@@ -208,7 +214,7 @@ public:
 		Player* player = (Player*) creature;
 		Player* playerTarget = (Player*) creatureTarget;
 
-		stringstream msgPlayer, msgTarget, msgBody, msgTail;
+		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
 		if (healthDamage > 0 && actionDamage > 0) {
 			msgBody << healthDamage << " health and " << actionDamage << " action";
@@ -223,23 +229,24 @@ public:
 		msgTail << " damage.";
 
 		if (creature == creatureTarget) {
-			msgPlayer << "You heal yourself for " << msgBody.str() << msgTail.str();
-			player->sendSystemMessage(msgPlayer.str());
+			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
 		} else {
-			msgPlayer << "You heal " << playerTarget->getCharacterName().c_str() << " for " << msgBody.str() << msgTail.str();
-			msgTarget << player->getCharacterName().c_str() << " heals you for " << msgBody.str() << msgTail.str();
+			msgPlayer << "You heal " << playerTarget->getCharacterName().toString() << " for " << msgBody.toString() << msgTail.toString();
+			msgTarget << player->getCharacterName().toString() << " heals you for " << msgBody.toString() << msgTail.toString();
 
-			player->sendSystemMessage(msgPlayer.str());
-			playerTarget->sendSystemMessage(msgTarget.str());
+			player->sendSystemMessage(msgPlayer.toString());
+			playerTarget->sendSystemMessage(msgTarget.toString());
 		}
 	}
 
 	void sendWoundMessage(CreatureObject* creature, CreatureObject* creatureTarget, int poolAffected, int woundsHealed) {
-		string creatureName = creature->getCharacterName().c_str();
-		string creatureTargetName = creatureTarget->getCharacterName().c_str();
-		string poolName = CreatureAttribute::getName(poolAffected);
+		String creatureName = creature->getCharacterName().toString();
+		String creatureTargetName = creatureTarget->getCharacterName().toString();
 
-		stringstream msgPlayer, msgTarget, msgTail;
+		String poolName = CreatureAttribute::getName(poolAffected);
+
+		StringBuffer msgPlayer, msgTarget, msgTail;
 
 		if (creature == creatureTarget) {
 			msgTarget << "You heal yourself for ";
@@ -250,16 +257,16 @@ public:
 
 		msgTail << woundsHealed << " " << poolName << " wound damage.";
 
-		msgTarget << msgTail.str();
-		creatureTarget->sendSystemMessage(msgTarget.str());
+		msgTarget << msgTail.toString();
+		creatureTarget->sendSystemMessage(msgTarget.toString());
 
 		if (creature != creatureTarget) {
-			msgPlayer << msgTail.str();
-			creature->sendSystemMessage(msgPlayer.str());
+			msgPlayer << msgTail.toString();
+			creature->sendSystemMessage(msgPlayer.toString());
 		}
 	}
 
-	void awardXp(CreatureObject* creature, string type, int power) {
+	void awardXp(CreatureObject* creature, String type, int power) {
 		Player* player = (Player*) creature;
 
 		int amount = (int)round((float)power * 1.0f);
@@ -278,7 +285,7 @@ public:
 		return true;
 	}
 
-	void setEffectName(const string& name) {
+	void setEffectName(const String& name) {
 		effectName = name;
 	}
 

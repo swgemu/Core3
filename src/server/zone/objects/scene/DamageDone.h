@@ -48,8 +48,8 @@ which carries forward this exception.
 
 class DamageDone {
 	protected:
-	VectorMap<string, int> xpDamage;
-	VectorMap<string, int> xpLevel;
+	VectorMap<String, int> xpDamage;
+	VectorMap<String, int> xpLevel;
 	
 	int totalDamage;
 	
@@ -65,9 +65,11 @@ class DamageDone {
 	}
 	
 	~DamageDone() {
+		xpDamage.removeAll();
+		xpLevel.removeAll();
 	}
 	
-	void addDamage( string xptype, int damage, int level ) {
+	void addDamage( String xptype, int damage, int level ) {
 		totalDamage += damage;
 		
 		if (xpDamage.contains(xptype)) {
@@ -85,8 +87,8 @@ class DamageDone {
 		return xpDamage.size();
 	}
 	
-	string getXpType(int idx) {
-		VectorMapEntry<string, int> *entry = xpDamage.SortedVector<VectorMapEntry<string, int>*>::get(idx);
+	String getXpType(int idx) {
+		VectorMapEntry<String, int> *entry = xpDamage.SortedVector<VectorMapEntry<String, int>*>::get(idx);
 		return entry->getKey();
 	}
 	
@@ -94,7 +96,7 @@ class DamageDone {
 		return xpDamage.get(idx);
 	}
 	
-	int getDamage(string xptype) {
+	int getDamage(String xptype) {
 		return xpDamage.get(xptype);
 	}
 	
@@ -102,7 +104,7 @@ class DamageDone {
 		return xpLevel.get(idx);
 	}
 	
-	int getLevel(string xptype) {
+	int getLevel(String xptype) {
 		return xpLevel.get(xptype);
 	}
 	

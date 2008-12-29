@@ -15,7 +15,7 @@ class TangibleObject;
 
 class Holocron : public TangibleObject {
 public:
-	Holocron(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn);
+	Holocron(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	int useObject(Player* player);
 

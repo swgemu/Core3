@@ -60,14 +60,22 @@ which carries forward this exception.
 #include "../creature/CreatureManager.h"
 #include "../structure/StructureManager.h"
 
+#include "../player/PlayerManager.h"
+#include "../player/PlayerMap.h"
+
 #include "PlanetManager.h"
 
-#include "AreaMap.h"
-#include "../../objects/area/BaseArea.h"
+#include "NoBuildAreaMap.h"
+#include "../../objects/area/Area.h"
+
+#include "../../objects/area/ActiveArea.h"
 
 class ShuttleTakeOffEvent;
 class ShuttleLandingEvent;
 
+class WeatherChangeEvent;
+class WeatherIncreaseEvent;
+class WeatherDecreaseEvent;
 
 class Zone;
 class CreatureManager;
@@ -85,6 +93,8 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 
 	uint64 nextStaticObjectID;
 
+	uint32 targetWeatherID;
+
 	ShuttleMap* shuttleMap;
 
 	TicketCollectorMap* ticketCollectorMap;
@@ -96,15 +106,27 @@ class PlanetManagerImplementation : public PlanetManagerServant, public Mutex, p
 	ShuttleLandingEvent* shuttleLandingEvent;
 	ShuttleTakeOffEvent* shuttleTakeOffEvent;
 
+	WeatherChangeEvent* weatherChangeEvent;
+    WeatherIncreaseEvent* weatherIncreaseEvent;
+    WeatherDecreaseEvent* weatherDecreaseEvent;
+
 	VectorMap<uint64, TangibleObject*> staticTangibleObjectMap;
 
 	CreatureManager* creatureManager;
 
 	StructureManager* structureManager;
 
-	AreaMap * areaMap;
+	NoBuildAreaMap * noBuildAreaMap;
 
 	static const uint32 travelFare[10][10];
+
+	static const float windDirection[8][2];
+
+	uint8 windRow;
+
+	PlayerManager* playerManager;
+    PlayerMap* playerMap;
+
 
 public:
 	PlanetManagerImplementation(Zone* zone, ZoneProcessServerImplementation* serv);
@@ -121,10 +143,13 @@ public:
 	void sendPlanetTravelPointListResponse(Player* player);
 
 	bool isNoBuildArea(float x, float y);
-	void addNoBuildArea(float minX, float maxX, float minY, float maxY, uint64 uid, uint8 reason = 0);
-	void addNoBuildArea(NoBuildArea * area);
-	void deleteNoBuildArea(NoBuildArea * area);
-	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, uint8 reason = 0);
+	void addNoBuildArea(float x, float y, float radius);
+
+	void weatherChange();
+	void weatherTransition(int direction);
+	void weatherWindChange();
+	void weatherUpdatePlayers();
+	void weatherRemoveEvents();
 
 private:
 	void loadStaticPlanetObjects();
@@ -136,7 +161,8 @@ private:
 	void loadMissionTerminals();
 	void loadCraftingStations();
 	void loadNoBuildAreas();
-	string getStationName(uint64 crc);
+	void loadBadgeAreas();
+	String getStationName(uint64 crc);
 
 
 
@@ -152,7 +178,7 @@ private:
 
 public:
 	// getters
-	ShuttleCreature* getShuttle(const string& Shuttle);
+	ShuttleCreature* getShuttle(const String& Shuttle);
 
 	StructureManager* getStructureManager() {
 		return structureManager;
@@ -169,9 +195,11 @@ public:
 
 	void placePlayerStructure(Player * player, uint64 objectID, float x, float y, int orient);
 
-	inline uint32 getTravelFare(string departurePlanet, string arrivalPlanet) {
+	inline uint32 getTravelFare(String departurePlanet, String arrivalPlanet) {
 		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 	}
+
+	void spawnActiveArea(ActiveArea * area);
 };
 
 #endif

@@ -51,7 +51,7 @@ class SkillBox;
 
 class Profession {
 protected:
-	string name;
+	String name;
 	int type;
 	
 	Vector<SkillBox*> skillBoxes;
@@ -62,7 +62,7 @@ public:
 	const static int PYRAMID = 3;
 
 public:
-	Profession(string& Name, int Type) {
+	Profession(String& Name, int Type) {
 		name = Name;
 		type = Type;
 	}
@@ -91,7 +91,7 @@ private:
 	}
 
 public:	
-	inline string& getName() {
+	inline String& getName() {
 		return name;
 	}
 	

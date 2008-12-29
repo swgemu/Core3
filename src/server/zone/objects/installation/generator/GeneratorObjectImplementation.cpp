@@ -28,11 +28,10 @@ GeneratorObjectImplementation::GeneratorObjectImplementation(uint64 oid, Generat
 	InstallationObjectImplementation::init();
 	init();
 
-	objectCRC = String::hashCode(deed->getTargetFile());
+	objectCRC = deed->getTargetFile().hashCode();
 	name = deed->getTargetName();
 	file = deed->getTargetFile();
 	templateName = deed->getTargetTemplate();
-
 
 	setSurplusMaintenance(deed->getSurplusMaintenance());
 	setMaintenanceRate(deed->getMaintenanceRate());
@@ -41,7 +40,6 @@ GeneratorObjectImplementation::GeneratorObjectImplementation(uint64 oid, Generat
 }
 
 GeneratorObjectImplementation::~GeneratorObjectImplementation(){
-
 }
 
 void GeneratorObjectImplementation::init() {

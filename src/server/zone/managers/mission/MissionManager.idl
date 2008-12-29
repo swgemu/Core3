@@ -61,28 +61,37 @@ interface MissionManager {
 	void removeMissions();
 	
 	// creation methods
-	MissionObject poolMission(string dbKey, int termMask, const string typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, 
-			float destY, unsigned int destPlanetCrc, const string creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, 
-			unsigned int depictedObjCrc, const string descriptionStf, const string titleStf, unsigned int typeCrc, TangibleObject deliverItem = NULL, boolean doLock = true);
+	MissionObject poolMission(String dbKey, int termMask, const String typeStr, unsigned int descKey, unsigned int titleKey, unsigned int diffLv, float destX, 
+			float destY, unsigned int destPlanetCrc, const String creatorName, unsigned int rewardAmount, float targetX, float targetY, unsigned int targetPlanetCrc, 
+			unsigned int depictedObjCrc, const String descriptionStf, const String titleStf, unsigned int typeCrc, TangibleObject deliverItem = NULL, boolean doLock = true);
 	
 	//Test
 	void setupHardcodeMissions();
 	
 	//data setup
 	void sendTerminalData(Player player, int termBitmask, boolean doLock = true);
-	void sendMission(Player player, string tKey, boolean doLock = true);
+	void sendMission(Player player, String tKey, boolean doLock = true);
 	
 	//events
 	void doMissionAccept(Player player, unsigned long oid, boolean doLock = true);
-	void doMissionComplete(Player player, string tKey, boolean doLock = true);
+	void doMissionComplete(Player player, String tKey, boolean doLock = true);
 	void doMissionAbort(Player player, unsigned long oid, boolean doLock = true);
-	void doMissionAbort(Player player, string tKey, boolean doLock = true);
+	void doMissionAbort(Player player, String tKey, boolean doLock = true);
 	
+	//Save functions
+	void doMissionSave(Player player, const String mkey, const String objectivevars, const String killcountvars, boolean doLock = false);
+	void deleteMissionSave(Player player, String mkey, boolean doLock = false);
+	boolean hasMissionSave(Player player, const String mkey, boolean createIfNone = false, boolean doLock = false);
+	void getMissionSaveVarLine(Player player, const String mkey, const String dbVar, String retStr, boolean doLock = false);
+	void getMisoKeysStatus(Player player, boolean finKeys, String retStr, boolean doLock = false);
+	//Called by doAbort,complete,accept
+	void setMisoKeyCurrent(Player player, String misoKey, boolean remove, boolean doLock = false);
+	void setMisoKeyFinished(Player player, String misoKey, boolean remove, boolean doLock = false);
 	
 	//Completely remove the mission from the server:
 	void removeMisoFromPool(MissionObject miso, boolean doLock = true);
 	
-	unsigned int getMissionItemCrc(string tKey, boolean doLock = true);
+	unsigned int getMissionItemCrc(String tKey, boolean doLock = true);
 
 	//script methods
 	void loadMissionScripts();

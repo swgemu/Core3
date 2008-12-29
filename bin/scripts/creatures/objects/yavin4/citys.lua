@@ -44,4 +44,6 @@
 RunCreatureFile("objects/yavin4/citys/imperialFortress.lua")
 RunCreatureFile("objects/yavin4/citys/laborOutpost.lua")
 RunCreatureFile("objects/yavin4/citys/miningOutpost.lua")
+RunCreatureFile("objects/yavin4/citys/geoCave.lua")
+
 

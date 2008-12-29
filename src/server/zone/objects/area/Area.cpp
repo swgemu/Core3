@@ -6,19 +6,12 @@
 
 #include "AreaImplementation.h"
 
-#include "../../objects/scene/SceneObject.h"
-
 /*
  *	AreaStub
  */
 
-Area::Area(Coordinate* center, float width, float height) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new AreaImplementation(center, width, height);
-	_impl->_setStub(this);
-}
-
-Area::Area(float minXPos, float maxXPos, float minYPos, float maxYPos) : ManagedObject(DummyConstructorParameter::instance()) {
-	_impl = new AreaImplementation(minXPos, maxXPos, minYPos, maxYPos);
+Area::Area(float x, float y, float z, float radius) : ManagedObject(DummyConstructorParameter::instance()) {
+	_impl = new AreaImplementation(x, y, z, radius);
 	_impl->_setStub(this);
 }
 
@@ -28,228 +21,66 @@ Area::Area(DummyConstructorParameter* param) : ManagedObject(param) {
 Area::~Area() {
 }
 
-unsigned char Area::getType() {
+bool Area::containsPoint(float x, float y) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
-
-		return method.executeWithUnsignedCharReturn();
-	} else
-		return ((AreaImplementation*) _impl)->getType();
-}
-
-bool Area::contains(SceneObject* object) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addObjectParameter(object);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((AreaImplementation*) _impl)->contains(object);
-}
-
-bool Area::contains(Coordinate* coord) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addObjectParameter(coord);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((AreaImplementation*) _impl)->contains(coord);
-}
-
-bool Area::contains(float x, float y) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((AreaImplementation*) _impl)->contains(x, y);
+		return ((AreaImplementation*) _impl)->containsPoint(x, y);
 }
 
-bool Area::contains(Area* region) {
+float Area::getX() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((AreaImplementation*) _impl)->getX();
+}
+
+float Area::getY() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((AreaImplementation*) _impl)->getY();
+}
+
+float Area::getZ() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((AreaImplementation*) _impl)->getZ();
+}
+
+float Area::getRadius() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
-		method.addObjectParameter(region);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((AreaImplementation*) _impl)->contains(region);
-}
-
-bool Area::isBaseArea() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((AreaImplementation*) _impl)->isBaseArea();
-}
-
-bool Area::isActiveArea() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 12);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((AreaImplementation*) _impl)->isActiveArea();
-}
-
-bool Area::isNoBuildArea() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 13);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return ((AreaImplementation*) _impl)->isNoBuildArea();
-}
-
-void Area::setWidth(float w) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 14);
-		method.addFloatParameter(w);
-
-		method.executeWithVoidReturn();
-	} else
-		((AreaImplementation*) _impl)->setWidth(w);
-}
-
-void Area::setHeight(float h) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addFloatParameter(h);
-
-		method.executeWithVoidReturn();
-	} else
-		((AreaImplementation*) _impl)->setHeight(h);
-}
-
-void Area::setUID(unsigned long long uid) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 16);
-		method.addUnsignedLongParameter(uid);
-
-		method.executeWithVoidReturn();
-	} else
-		((AreaImplementation*) _impl)->setUID(uid);
-}
-
-float Area::getWidth() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 17);
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((AreaImplementation*) _impl)->getWidth();
-}
-
-float Area::getHeight() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 18);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((AreaImplementation*) _impl)->getHeight();
-}
-
-float Area::getMinX() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 19);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((AreaImplementation*) _impl)->getMinX();
-}
-
-float Area::getMaxX() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 20);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((AreaImplementation*) _impl)->getMaxX();
-}
-
-float Area::getMinY() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 21);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((AreaImplementation*) _impl)->getMinY();
-}
-
-float Area::getMaxY() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 22);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((AreaImplementation*) _impl)->getMaxY();
-}
-
-unsigned long long Area::getUID() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 23);
-
-		return method.executeWithUnsignedLongReturn();
-	} else
-		return ((AreaImplementation*) _impl)->getUID();
+		return ((AreaImplementation*) _impl)->getRadius();
 }
 
 /*
@@ -264,58 +95,19 @@ Packet* AreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertByte(getType());
+		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case 7:
-		resp->insertBoolean(contains((SceneObject*) inv->getObjectParameter()));
+		resp->insertFloat(getX());
 		break;
 	case 8:
-		resp->insertBoolean(contains((Coordinate*) inv->getObjectParameter()));
+		resp->insertFloat(getY());
 		break;
 	case 9:
-		resp->insertBoolean(contains(inv->getFloatParameter(), inv->getFloatParameter()));
+		resp->insertFloat(getZ());
 		break;
 	case 10:
-		resp->insertBoolean(contains((Area*) inv->getObjectParameter()));
-		break;
-	case 11:
-		resp->insertBoolean(isBaseArea());
-		break;
-	case 12:
-		resp->insertBoolean(isActiveArea());
-		break;
-	case 13:
-		resp->insertBoolean(isNoBuildArea());
-		break;
-	case 14:
-		setWidth(inv->getFloatParameter());
-		break;
-	case 15:
-		setHeight(inv->getFloatParameter());
-		break;
-	case 16:
-		setUID(inv->getUnsignedLongParameter());
-		break;
-	case 17:
-		resp->insertFloat(getWidth());
-		break;
-	case 18:
-		resp->insertFloat(getHeight());
-		break;
-	case 19:
-		resp->insertFloat(getMinX());
-		break;
-	case 20:
-		resp->insertFloat(getMaxX());
-		break;
-	case 21:
-		resp->insertFloat(getMinY());
-		break;
-	case 22:
-		resp->insertFloat(getMaxY());
-		break;
-	case 23:
-		resp->insertLong(getUID());
+		resp->insertFloat(getRadius());
 		break;
 	default:
 		return NULL;
@@ -324,76 +116,24 @@ Packet* AreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-unsigned char AreaAdapter::getType() {
-	return ((AreaImplementation*) impl)->getType();
+bool AreaAdapter::containsPoint(float x, float y) {
+	return ((AreaImplementation*) impl)->containsPoint(x, y);
 }
 
-bool AreaAdapter::contains(SceneObject* object) {
-	return ((AreaImplementation*) impl)->contains(object);
+float AreaAdapter::getX() {
+	return ((AreaImplementation*) impl)->getX();
 }
 
-bool AreaAdapter::contains(Coordinate* coord) {
-	return ((AreaImplementation*) impl)->contains(coord);
+float AreaAdapter::getY() {
+	return ((AreaImplementation*) impl)->getY();
 }
 
-bool AreaAdapter::contains(float x, float y) {
-	return ((AreaImplementation*) impl)->contains(x, y);
+float AreaAdapter::getZ() {
+	return ((AreaImplementation*) impl)->getZ();
 }
 
-bool AreaAdapter::contains(Area* region) {
-	return ((AreaImplementation*) impl)->contains(region);
-}
-
-bool AreaAdapter::isBaseArea() {
-	return ((AreaImplementation*) impl)->isBaseArea();
-}
-
-bool AreaAdapter::isActiveArea() {
-	return ((AreaImplementation*) impl)->isActiveArea();
-}
-
-bool AreaAdapter::isNoBuildArea() {
-	return ((AreaImplementation*) impl)->isNoBuildArea();
-}
-
-void AreaAdapter::setWidth(float w) {
-	return ((AreaImplementation*) impl)->setWidth(w);
-}
-
-void AreaAdapter::setHeight(float h) {
-	return ((AreaImplementation*) impl)->setHeight(h);
-}
-
-void AreaAdapter::setUID(unsigned long long uid) {
-	return ((AreaImplementation*) impl)->setUID(uid);
-}
-
-float AreaAdapter::getWidth() {
-	return ((AreaImplementation*) impl)->getWidth();
-}
-
-float AreaAdapter::getHeight() {
-	return ((AreaImplementation*) impl)->getHeight();
-}
-
-float AreaAdapter::getMinX() {
-	return ((AreaImplementation*) impl)->getMinX();
-}
-
-float AreaAdapter::getMaxX() {
-	return ((AreaImplementation*) impl)->getMaxX();
-}
-
-float AreaAdapter::getMinY() {
-	return ((AreaImplementation*) impl)->getMinY();
-}
-
-float AreaAdapter::getMaxY() {
-	return ((AreaImplementation*) impl)->getMaxY();
-}
-
-unsigned long long AreaAdapter::getUID() {
-	return ((AreaImplementation*) impl)->getUID();
+float AreaAdapter::getRadius() {
+	return ((AreaImplementation*) impl)->getRadius();
 }
 
 /*

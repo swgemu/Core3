@@ -112,7 +112,15 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	uint64 nextCreatureID;
 	uint64 nextCellID;
 
-	string name;
+	int serverState;
+
+	String name;
+
+public:
+	const static int OFFLINE = 0;
+	const static int LOADING = 1;
+	const static int ONLINE = 2;
+	const static int LOCKED = 3;
 
 public:
 	ZoneServerImplementation(int processingThreads);
@@ -162,9 +170,9 @@ public:
 	}
 
 	// user control methods
-	bool banUser(string& name, string& admin);
+	bool banUser(String& name, String& admin);
 
-	bool kickUser(string& name, string& admin);
+	bool kickUser(String& name, String& admin);
 
 	void changeUserCap(int amount = 50);
 
@@ -180,7 +188,7 @@ public:
 
 	// setters and getters
 
-	inline string& getServerName() {
+	inline String& getServerName() {
 		return name;
 	}
 
@@ -232,6 +240,26 @@ public:
 		return (zones.get(zone))->getCreatureManager();
 	}
 
+	inline bool isServerLocked() {
+		return serverState == LOCKED;
+	}
+
+	inline bool isServerOnline() {
+		return serverState == ONLINE;
+	}
+
+	inline bool isServerOffline() {
+		return serverState == OFFLINE;
+	}
+
+	inline bool isServerLoading() {
+		return serverState == LOADING;
+	}
+
+	inline int getServerState() {
+		return serverState;
+	}
+
 	inline Zone* getZone(int index) {
 		return zones.get(index);
 	}
@@ -251,10 +279,44 @@ public:
 	inline time_t getStartTimestamp() {
 		return startTimestamp;
 	}
-
+	
 	uint64 getNextCreatureID(bool doLock = true);
 	uint64 getNextID(bool doLock = true);
 	uint64 getNextCellID(bool doLock = true);
+
+	//setters
+
+	inline void setServerState(int state) {
+		lock();
+
+		serverState = state;
+
+		unlock();
+	}
+
+	inline void setServerStateLocked() {
+		lock();
+
+		serverState = LOCKED;
+
+		StringBuffer msg;
+		msg << dec << "server locked";
+		info(msg, true);
+
+		unlock();
+	}
+
+	inline void setServerStateOnline() {
+		lock();
+
+		serverState = ONLINE;
+
+		StringBuffer msg;
+		msg << dec << "server unlocked";
+		info(msg, true);
+
+		unlock();
+	}
 };
 
 #endif /*ZONESERVERIMPLEMENTATION_H_*/

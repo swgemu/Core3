@@ -21,7 +21,7 @@ class Ticket;
 
 class TicketCollector : public TangibleObject {
 public:
-	TicketCollector(ShuttleCreature* shutle, unsigned long long oid, const unicode& n, const string& tempn, float x, float z, float y);
+	TicketCollector(ShuttleCreature* shutle, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y);
 
 	int useObject(Player* player);
 

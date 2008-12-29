@@ -57,7 +57,7 @@ public:
 	/*
 	 * Need More Research.
 	 * 
-	 * void setContainerType(string& file, string& ctype) {
+	 * void setContainerType(String& file, String& ctype) {
 	 * 	startUpdate(0x01);
 	 * 	insertAscii(file);
 	 * 	insertInt(0);

@@ -50,7 +50,7 @@ which carries forward this exception.
 class AuctionItemDescriptionMessage : public BaseMessage {
 	
 public:
-	AuctionItemDescriptionMessage(uint64 objectid, unicode& description) {
+	AuctionItemDescriptionMessage(uint64 objectid, UnicodeString& description) {
 		insertShort(2);
 		insertInt(0xFE0E644B);
 		

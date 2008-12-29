@@ -39,7 +39,6 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-
 gapingSpiderAttack1 = {
 	attackname = "gapingSpiderAttack1",
 	animation = "creature_attack_light",
@@ -68,7 +67,7 @@ gapingSpiderAttack1 = {
 	bleedingStrength = 0,
 	bleedingType = 0,
 
-	poisonStrength = 1,
+	poisonStrength = 100,
 	poisonType = HEALTH,
 
 	diseaseStrength = 0,
@@ -91,6 +90,8 @@ gapingSpiderAttack1 = {
 
 AddDotPoolAttackTargetSkill(gapingSpiderAttack1)
 
+-----------------------------------------------
+
 gapingSpiderAttack2 = {
 	attackname = "gapingSpiderAttack2",
 	animation = "creature_attack_light",
@@ -104,14 +105,84 @@ gapingSpiderAttack2 = {
 	speedRatio = 4,
 
 	areaRange = 0,
+	
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 50,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(gapingSpiderAttack2)
+
+-----------------------------------------------
+
+gapingSpiderAttack3 = {
+	attackname = "gapingSpiderAttack3",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 20,
+
+	damageRatio = 25,
+
+	speedRatio = 4,
+
+	areaRange = 0,
+	
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 50,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(gapingSpiderAttack3)
+
+-----------------------------------------------
+
+gapingSpiderAttack4 = {
+	attackname = "gapingSpiderAttack4",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 15,
+
+	speedRatio = 4,
+
+	areaRange = 0,
 	accuracyBonus = 0,
 
-	healthAttackChance = 25,
+	healthAttackChance = 50,
 	actionAttackChance = 25,
-	mindAttackChance = 25,
+	mindAttackChance = 10,
 
 	dotChance = 50,
-	tickStrengthOfHit = 2,
+	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
@@ -119,8 +190,237 @@ gapingSpiderAttack2 = {
 	bleedingStrength = 0,
 	bleedingType = 0,
 
-	poisonStrength = 1,
-	poisonType = MIND,
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 100,
+	diseaseType = HEALTH,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(gapingSpiderAttack4)
+
+-----------------------------------------------
+
+gapingSpiderAttack5 = {
+	attackname = "gapingSpiderAttack5",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 30,
+
+	damageRatio = 25,
+
+	speedRatio = 4,
+
+	areaRange = 0,
+	
+	accuracyBonus = 0,
+		
+	knockdownChance = 50,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(gapingSpiderAttack5)
+
+-----------------------------------------------
+
+gapingSpiderAttack6 = {
+	attackname = "gapingSpiderAttack6",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 20,
+
+	damageRatio = 25,
+
+	speedRatio = 4,
+
+	areaRange = 0,
+	
+	accuracyBonus = 0,
+		
+	knockdownChance = 50,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(gapingSpiderAttack6)
+
+-----------------------------------------------
+
+gapingSpiderAttack7 = {
+        attackname = "gapingSpiderAttack7",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
+
+        range = 10,
+
+        damageRatio = 15,
+
+        speedRatio = 4,
+
+        areaRange = 30,
+        accuracyBonus = 0,
+
+        healthAttackChance = 100,
+        actionAttackChance = 0,
+        mindAttackChance = 0,
+
+        dotChance = 50,
+        tickStrengthOfHit = 1,
+
+        fireStrength = 0,
+        fireType = 0,
+
+        bleedingStrength = 0,
+		bleedingType = 0,
+
+        poisonStrength = 0,
+        poisonType = 0,
+
+        diseaseStrength = 0,
+        diseaseType = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(gapingSpiderAttack7)
+
+--------------------------------------------------------------------------------------
+
+gapingSpiderAttack8 = {
+        attackname = "gapingSpiderAttack8",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
+
+        range = 10,
+
+        damageRatio = 15,
+
+        speedRatio = 4,
+
+        areaRange = 10,
+        accuracyBonus = 0,
+
+        healthAttackChance = 100,
+        actionAttackChance = 0,
+        mindAttackChance = 0,
+
+        dotChance = 50,
+        tickStrengthOfHit = 1,
+
+        fireStrength = 0,
+        fireType = 0,
+
+        bleedingStrength = 0,
+		bleedingType = 0,
+
+        poisonStrength = 0,
+        poisonType = 0,
+
+        diseaseStrength = 0,
+        diseaseType = 0,
+                
+        knockdownChance = 50,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 50,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(gapingSpiderAttack8)
+
+--------------------------------------------------------------------------------------
+
+gapingSpiderAttack9 = {
+	attackname = "gapingSpiderAttack9",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
+
+	range = 10,
+
+	damageRatio = 15,
+
+	speedRatio = 4,
+
+	areaRange = 30,
+	accuracyBonus = 0,
+
+	healthAttackChance = 50,
+	actionAttackChance = 25,
+	mindAttackChance = 10,
+
+	dotChance = 50,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = 0,
+
+	poisonStrength = 100,
+	poisonType = HEALTH,
 
 	diseaseStrength = 0,
 	diseaseType = 0,
@@ -140,7 +440,6 @@ gapingSpiderAttack2 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddDotPoolAttackTargetSkill(gapingSpiderAttack2)
-
+AddDotPoolAttackTargetSkill(gapingSpiderAttack9)
 
 -----------------------------------------------

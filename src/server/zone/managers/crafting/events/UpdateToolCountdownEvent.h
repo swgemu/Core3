@@ -70,7 +70,7 @@ public:
 
 
 		} catch (...) {
-			cout << "Unreported exception caught in UpdateToolCountdownEvent::activate\n";
+			System::out << "Unreported exception caught in UpdateToolCountdownEvent::activate\n";
 		}
 
 		return true;

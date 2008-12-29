@@ -39,13 +39,20 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Load files
 
--- Endor
+ -- Load files
 
-RunSkillsFile("creatureSkills/endor/npcs/dwbAttacks.lua")
-RunSkillsFile("creatureSkills/endor/npcs/dwbSBDAttacks.lua")
-RunSkillsFile("creatureSkills/endor/npcs/dwbMeleeAttacks.lua")
-RunSkillsFile("creatureSkills/endor/npcs/jindaAttacks.lua")
-RunSkillsFile("creatureSkills/endor/npcs/korgaAttacks.lua")
-RunSkillsFile("creatureSkills/endor/npcs/marauderAttacks.lua")
+ -- Endor
+ RunSkillsFile("creatureSkills/endor/npcs/donkuwahAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/dulokAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/dwbAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/dwbSBDAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/dwbMeleeAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/ewokAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/gundulaAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/jindaAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/korgaAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/marauderAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/miscAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/pansheeAttacks.lua")
+ RunSkillsFile("creatureSkills/endor/npcs/pubamAttacks.lua")

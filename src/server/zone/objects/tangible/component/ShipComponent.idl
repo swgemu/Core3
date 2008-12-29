@@ -49,7 +49,7 @@ import "../../player/Player";
 import "../TangibleObject";
 
 interface ShipComponent implements TangibleObject {
-	ShipComponent(Player player, unsigned int tempCRC, const unicode n, const string tempn) {
+	ShipComponent(Player player, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(unsigned long oid, int tp);
 	}
 

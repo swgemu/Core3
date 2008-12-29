@@ -52,7 +52,7 @@ class Player;
 
 class SuiInputBoxImplementation : public SuiInputBoxServant {
 	int maxInputSize;
-	string defaultInput;
+	String defaultInput;
 
 	int inputType;
 
@@ -72,7 +72,7 @@ public:
 		maxInputSize = size;
 	}
 
-	inline void setDefaultInput(const string& text) {
+	inline void setDefaultInput(const String& text) {
 		defaultInput = text;
 	}
 

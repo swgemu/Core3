@@ -66,7 +66,7 @@ void AttackableObject::sendDestroyTo(Player* player) {
 		((AttackableObjectImplementation*) _impl)->sendDestroyTo(player);
 }
 
-void AttackableObject::setTemplateName(string& name) {
+void AttackableObject::setTemplateName(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -79,7 +79,7 @@ void AttackableObject::setTemplateName(string& name) {
 		((AttackableObjectImplementation*) _impl)->setTemplateName(name);
 }
 
-string& AttackableObject::getTemplateTypeName() {
+String& AttackableObject::getTemplateTypeName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -92,7 +92,7 @@ string& AttackableObject::getTemplateTypeName() {
 		return ((AttackableObjectImplementation*) _impl)->getTemplateTypeName();
 }
 
-string& AttackableObject::getTemplateName() {
+String& AttackableObject::getTemplateName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -105,7 +105,7 @@ string& AttackableObject::getTemplateName() {
 		return ((AttackableObjectImplementation*) _impl)->getTemplateName();
 }
 
-unicode& AttackableObject::getName() {
+UnicodeString& AttackableObject::getName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -118,7 +118,7 @@ unicode& AttackableObject::getName() {
 		return ((AttackableObjectImplementation*) _impl)->getName();
 }
 
-string& AttackableObject::getTemplateDetailName() {
+String& AttackableObject::getTemplateDetailName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -131,7 +131,7 @@ string& AttackableObject::getTemplateDetailName() {
 		return ((AttackableObjectImplementation*) _impl)->getTemplateDetailName();
 }
 
-string& AttackableObject::getTemplateDetail() {
+String& AttackableObject::getTemplateDetail() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -144,7 +144,7 @@ string& AttackableObject::getTemplateDetail() {
 		return ((AttackableObjectImplementation*) _impl)->getTemplateDetail();
 }
 
-void AttackableObject::getCustomizationString(string& app) {
+void AttackableObject::getCustomizationString(String& app) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -254,7 +254,7 @@ Packet* AttackableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		sendDestroyTo((Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__string_));
+		setTemplateName(inv->getAsciiParameter(_param0_setTemplateName__String_));
 		break;
 	case 10:
 		resp->insertAscii(getTemplateTypeName());
@@ -272,7 +272,7 @@ Packet* AttackableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		resp->insertAscii(getTemplateDetail());
 		break;
 	case 15:
-		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__string_));
+		getCustomizationString(inv->getAsciiParameter(_param0_getCustomizationString__String_));
 		break;
 	case 16:
 		setConditionDamage(inv->getUnsignedIntParameter());
@@ -311,31 +311,31 @@ void AttackableObjectAdapter::sendDestroyTo(Player* player) {
 	return ((AttackableObjectImplementation*) impl)->sendDestroyTo(player);
 }
 
-void AttackableObjectAdapter::setTemplateName(string& name) {
+void AttackableObjectAdapter::setTemplateName(String& name) {
 	return ((AttackableObjectImplementation*) impl)->setTemplateName(name);
 }
 
-string& AttackableObjectAdapter::getTemplateTypeName() {
+String& AttackableObjectAdapter::getTemplateTypeName() {
 	return ((AttackableObjectImplementation*) impl)->getTemplateTypeName();
 }
 
-string& AttackableObjectAdapter::getTemplateName() {
+String& AttackableObjectAdapter::getTemplateName() {
 	return ((AttackableObjectImplementation*) impl)->getTemplateName();
 }
 
-unicode& AttackableObjectAdapter::getName() {
+UnicodeString& AttackableObjectAdapter::getName() {
 	return ((AttackableObjectImplementation*) impl)->getName();
 }
 
-string& AttackableObjectAdapter::getTemplateDetailName() {
+String& AttackableObjectAdapter::getTemplateDetailName() {
 	return ((AttackableObjectImplementation*) impl)->getTemplateDetailName();
 }
 
-string& AttackableObjectAdapter::getTemplateDetail() {
+String& AttackableObjectAdapter::getTemplateDetail() {
 	return ((AttackableObjectImplementation*) impl)->getTemplateDetail();
 }
 
-void AttackableObjectAdapter::getCustomizationString(string& app) {
+void AttackableObjectAdapter::getCustomizationString(String& app) {
 	return ((AttackableObjectImplementation*) impl)->getCustomizationString(app);
 }
 

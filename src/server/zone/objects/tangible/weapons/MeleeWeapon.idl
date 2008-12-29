@@ -47,11 +47,11 @@ import "../../creature/CreatureObject";
 import "Weapon";
 
 interface MeleeWeapon implements Weapon {
-	MeleeWeapon(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, int tp, boolean eqp = false) {
+	MeleeWeapon(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, int tp, boolean eqp = false) {
 		super(oid, tempCRC, n, tempn, eqp, tp, int cat);
 	}
 	
-	MeleeWeapon(CreatureObject creature, const string temp, const unicode n, const string tempn, int tp, boolean eqp = false) {
+	MeleeWeapon(CreatureObject creature, const String temp, const UnicodeString n, const String tempn, int tp, boolean eqp = false) {
 		super(creature, temp, n, tempn, eqp, tp, int cat);
 	}
 }

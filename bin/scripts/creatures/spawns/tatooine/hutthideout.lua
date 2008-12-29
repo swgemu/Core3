@@ -62,8 +62,8 @@ spawnCreatureInCell(jabbaEnforcer, 8, 53.6, -46.0, -89.3, 4235588)
 spawnCreatureInCell(jabbaEnforcer, 8, 52.2, -45.9, -91.0, 4235588)
 spawnCreatureInCell(jabbaEnforcer, 8, 49.5, -47.2, -86.8, 4235588)
 --assn grp
-spawnCreatureInCell(jabbasSwooper, 8, 47.1, -46.2, -94.4, 4235588)
-spawnCreatureInCell(jabbasSwooper, 8, 42.3, -46.0, -97.3, 4235588)
+spawnCreatureInCell(jabbaSwooper, 8, 47.1, -46.2, -94.4, 4235588)
+spawnCreatureInCell(jabbaSwooper, 8, 42.3, -46.0, -97.3, 4235588)
 --enfrcr grp
 spawnCreatureInCell(jabbaEnforcer, 8, 15.8, -44.7, -114.5, 4235589)
 spawnCreatureInCell(jabbaEnforcer, 8, 13.1, -44.8, -118.9, 4235589)
@@ -73,8 +73,8 @@ spawnCreatureInCell(jabbaEnforcer, 8, 2.3, -44.7, -138.2, 4235589)
 spawnCreatureInCell(jabbaEnforcer, 8, -0.2, -44.9, -141.0, 4235589)
 spawnCreatureInCell(jabbaEnforcer, 8, 1.9, -44.8, -135.9, 4235589)
 --assn grp
-spawnCreatureInCell(jabbasSwooper, 8, 65.6, -46.7, -126.4, 4235589)
-spawnCreatureInCell(jabbasSwooper, 8, 64.8, -48.6, -131.9, 4235589)
+spawnCreatureInCell(jabbaSwooper, 8, 65.6, -46.7, -126.4, 4235589)
+spawnCreatureInCell(jabbaSwooper, 8, 64.8, -48.6, -131.9, 4235589)
 --enfrcr grp
 spawnCreatureInCell(jabbaEnforcer, 8, 37.3, -55.9, -156.4, 4235589)
 spawnCreatureInCell(jabbaEnforcer, 8, 41.6, -55.3, -155.2, 4235589)
@@ -84,8 +84,8 @@ spawnCreatureInCell(jabbaEnforcer, 8, 65.3, -56.9, -177.5, 4235589)
 spawnCreatureInCell(jabbaEnforcer, 8, 60.1, -56.8, -177.9, 4235589)
 spawnCreatureInCell(jabbaEnforcer, 8, 55.8, -56.5, -177.2, 4235589)
 --assn grp
-spawnCreatureInCell(jabbasSwooper, 8, -12.1, -64.2, -179.5, 4235590)
-spawnCreatureInCell(jabbasSwooper, 8, -11.3, -64.0, -187.1, 4235590)
+spawnCreatureInCell(jabbaSwooper, 8, -12.1, -64.2, -179.5, 4235590)
+spawnCreatureInCell(jabbaSwooper, 8, -11.3, -64.0, -187.1, 4235590)
 --enfrcr grp
 spawnCreatureInCell(jabbaEnforcer, 8, -14.8, -63.8, -198.1, 4235590)
 spawnCreatureInCell(jabbaEnforcer, 8, -11.2, -64.3, -197.6, 4235590)
@@ -107,11 +107,11 @@ spawnCreatureInCell(jabbaCompoundGuard, 8, -30.0, -79.4, -136.4, 4235594)
 spawnCreatureInCell(jabbaCompoundGuard, 8, -27.2, -79.3, -138.9, 4235594)
 spawnCreatureInCell(jabbaCompoundGuard, 8, -23.7, -78.8, -137.1, 4235594)
 --assn grp
-spawnCreatureInCell(jabbasSwooper, 8, -83.6, -100.9, -109.0, 4235595)
-spawnCreatureInCell(jabbasSwooper, 8, -83.6, -101.5, -111.9, 4235595)
+spawnCreatureInCell(jabbaSwooper, 8, -83.6, -100.9, -109.0, 4235595)
+spawnCreatureInCell(jabbaSwooper, 8, -83.6, -101.5, -111.9, 4235595)
 --assn grp
-spawnCreatureInCell(jabbasSwooper, 8, -87.6, -100.8, -104.5, 4235595)
-spawnCreatureInCell(jabbasSwooper, 8, -87.8, -101.4, -109.2, 4235595)
+spawnCreatureInCell(jabbaSwooper, 8, -87.6, -100.8, -104.5, 4235595)
+spawnCreatureInCell(jabbaSwooper, 8, -87.8, -101.4, -109.2, 4235595)
 
 
 

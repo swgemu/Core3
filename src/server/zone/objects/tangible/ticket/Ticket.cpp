@@ -14,12 +14,12 @@
  *	TicketStub
  */
 
-Ticket::Ticket(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+Ticket::Ticket(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new TicketImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-Ticket::Ticket(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn, const string& dpPlanet, const string& dpPoint, const string& arPlanet, const string& arPoint) : TangibleObject(DummyConstructorParameter::instance()) {
+Ticket::Ticket(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn, const String& dpPlanet, const String& dpPoint, const String& arPlanet, const String& arPoint) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new TicketImplementation(player, tempCRC, n, tempn, dpPlanet, dpPoint, arPlanet, arPoint);
 	_impl->_setStub(this);
 }
@@ -43,7 +43,7 @@ int Ticket::useObject(Player* player) {
 		return ((TicketImplementation*) _impl)->useObject(player);
 }
 
-string& Ticket::getDeparturePlanet() {
+String& Ticket::getDeparturePlanet() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -56,7 +56,7 @@ string& Ticket::getDeparturePlanet() {
 		return ((TicketImplementation*) _impl)->getDeparturePlanet();
 }
 
-string& Ticket::getDeparturePoint() {
+String& Ticket::getDeparturePoint() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -69,7 +69,7 @@ string& Ticket::getDeparturePoint() {
 		return ((TicketImplementation*) _impl)->getDeparturePoint();
 }
 
-string& Ticket::getArrivalPlanet() {
+String& Ticket::getArrivalPlanet() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -82,7 +82,7 @@ string& Ticket::getArrivalPlanet() {
 		return ((TicketImplementation*) _impl)->getArrivalPlanet();
 }
 
-string& Ticket::getArrivalPoint() {
+String& Ticket::getArrivalPoint() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -132,19 +132,19 @@ int TicketAdapter::useObject(Player* player) {
 	return ((TicketImplementation*) impl)->useObject(player);
 }
 
-string& TicketAdapter::getDeparturePlanet() {
+String& TicketAdapter::getDeparturePlanet() {
 	return ((TicketImplementation*) impl)->getDeparturePlanet();
 }
 
-string& TicketAdapter::getDeparturePoint() {
+String& TicketAdapter::getDeparturePoint() {
 	return ((TicketImplementation*) impl)->getDeparturePoint();
 }
 
-string& TicketAdapter::getArrivalPlanet() {
+String& TicketAdapter::getArrivalPlanet() {
 	return ((TicketImplementation*) impl)->getArrivalPlanet();
 }
 
-string& TicketAdapter::getArrivalPoint() {
+String& TicketAdapter::getArrivalPoint() {
 	return ((TicketImplementation*) impl)->getArrivalPoint();
 }
 

@@ -69,7 +69,7 @@ void ChatManager::addPlayer(Player* player) {
 		((ChatManagerImplementation*) _impl)->addPlayer(player);
 }
 
-Player* ChatManager::getPlayer(string& name) {
+Player* ChatManager::getPlayer(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -82,7 +82,7 @@ Player* ChatManager::getPlayer(string& name) {
 		return ((ChatManagerImplementation*) _impl)->getPlayer(name);
 }
 
-Player* ChatManager::removePlayer(string& name) {
+Player* ChatManager::removePlayer(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -95,7 +95,7 @@ Player* ChatManager::removePlayer(string& name) {
 		return ((ChatManagerImplementation*) _impl)->removePlayer(name);
 }
 
-void ChatManager::sendMail(const string& sendername, unicode& header, unicode& body, const string& name) {
+void ChatManager::sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -207,7 +207,7 @@ void ChatManager::handleMood(Player* player, Message* pack) {
 		((ChatManagerImplementation*) _impl)->handleMood(player, pack);
 }
 
-void ChatManager::sendSystemMessage(Player* player, unicode& message) {
+void ChatManager::sendSystemMessage(Player* player, UnicodeString& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -221,7 +221,7 @@ void ChatManager::sendSystemMessage(Player* player, unicode& message) {
 		((ChatManagerImplementation*) _impl)->sendSystemMessage(player, message);
 }
 
-void ChatManager::sendSystemMessage(Player* player, const string& file, const string& str, StfParameter* param) {
+void ChatManager::sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -237,7 +237,7 @@ void ChatManager::sendSystemMessage(Player* player, const string& file, const st
 		((ChatManagerImplementation*) _impl)->sendSystemMessage(player, file, str, param);
 }
 
-void ChatManager::broadcastMessage(CreatureObject* player, unicode& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
+void ChatManager::broadcastMessage(CreatureObject* player, UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -254,7 +254,7 @@ void ChatManager::broadcastMessage(CreatureObject* player, unicode& message, uns
 		((ChatManagerImplementation*) _impl)->broadcastMessage(player, message, target, moodid, mood2);
 }
 
-void ChatManager::broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2) {
+void ChatManager::broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -273,7 +273,7 @@ void ChatManager::broadcastMessage(CreatureObject* player, const string& file, c
 		((ChatManagerImplementation*) _impl)->broadcastMessage(player, file, str, param, target, moodid, mood2);
 }
 
-void ChatManager::broadcastMessage(const string& message) {
+void ChatManager::broadcastMessage(const String& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -286,7 +286,7 @@ void ChatManager::broadcastMessage(const string& message) {
 		((ChatManagerImplementation*) _impl)->broadcastMessage(message);
 }
 
-void ChatManager::broadcastMessageRange(Player* player, const string& message, float range) {
+void ChatManager::broadcastMessageRange(Player* player, const String& message, float range) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -301,7 +301,7 @@ void ChatManager::broadcastMessageRange(Player* player, const string& message, f
 		((ChatManagerImplementation*) _impl)->broadcastMessageRange(player, message, range);
 }
 
-void ChatManager::handleGameCommand(Player* player, const string& command) {
+void ChatManager::handleGameCommand(Player* player, const String& command) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -504,7 +504,7 @@ void ChatManager::sendGuildChat(Player* player) {
 		((ChatManagerImplementation*) _impl)->sendGuildChat(player);
 }
 
-ChatRoom* ChatManager::createRoomByFullPath(const string& path) {
+ChatRoom* ChatManager::createRoomByFullPath(const String& path) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -543,7 +543,7 @@ void ChatManager::printRoomTree(ChatRoom* channel) {
 		((ChatManagerImplementation*) _impl)->printRoomTree(channel);
 }
 
-ChatRoom* ChatManager::getChatRoomByFullPath(const string& path) {
+ChatRoom* ChatManager::getChatRoomByFullPath(const String& path) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -556,7 +556,7 @@ ChatRoom* ChatManager::getChatRoomByFullPath(const string& path) {
 		return ((ChatManagerImplementation*) _impl)->getChatRoomByFullPath(path);
 }
 
-ChatRoom* ChatManager::getGameRoom(const string& game) {
+ChatRoom* ChatManager::getGameRoom(const String& game) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -569,7 +569,7 @@ ChatRoom* ChatManager::getGameRoom(const string& game) {
 		return ((ChatManagerImplementation*) _impl)->getGameRoom(game);
 }
 
-ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const string& path) {
+ChatRoom* ChatManager::getChatRoomByGamePath(ChatRoom* game, const String& path) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -653,13 +653,13 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		addPlayer((Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__string_))->_getObjectID());
+		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
 	case 10:
-		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__string_))->_getObjectID());
+		resp->insertLong(removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_))->_getObjectID());
 		break;
 	case 11:
-		sendMail(inv->getAsciiParameter(_param0_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param1_sendMail__string_unicode_unicode_string_), inv->getUnicodeParameter(_param2_sendMail__string_unicode_unicode_string_), inv->getAsciiParameter(_param3_sendMail__string_unicode_unicode_string_));
+		sendMail(inv->getAsciiParameter(_param0_sendMail__String_UnicodeString_UnicodeString_String_), inv->getUnicodeParameter(_param1_sendMail__String_UnicodeString_UnicodeString_String_), inv->getUnicodeParameter(_param2_sendMail__String_UnicodeString_UnicodeString_String_), inv->getAsciiParameter(_param3_sendMail__String_UnicodeString_UnicodeString_String_));
 		break;
 	case 12:
 		sendMailBody((Player*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
@@ -683,25 +683,25 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		handleMood((Player*) inv->getObjectParameter(), (Message*) inv->getObjectParameter());
 		break;
 	case 19:
-		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_sendSystemMessage__Player_unicode_));
+		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_sendSystemMessage__Player_UnicodeString_));
 		break;
 	case 20:
-		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSystemMessage__Player_string_string_StfParameter_), inv->getAsciiParameter(_param2_sendSystemMessage__Player_string_string_StfParameter_), (StfParameter*) inv->getObjectParameter());
+		sendSystemMessage((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSystemMessage__Player_String_String_StfParameter_), inv->getAsciiParameter(_param2_sendSystemMessage__Player_String_String_StfParameter_), (StfParameter*) inv->getObjectParameter());
 		break;
 	case 21:
-		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_unicode_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnicodeParameter(_param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 22:
-		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastMessage__CreatureObject_string_string_StfParameter_long_int_int_), inv->getAsciiParameter(_param2_broadcastMessage__CreatureObject_string_string_StfParameter_long_int_int_), (StfParameter*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
+		broadcastMessage((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastMessage__CreatureObject_String_String_StfParameter_long_int_int_), inv->getAsciiParameter(_param2_broadcastMessage__CreatureObject_String_String_StfParameter_long_int_int_), (StfParameter*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedIntParameter(), inv->getUnsignedIntParameter());
 		break;
 	case 23:
-		broadcastMessage(inv->getAsciiParameter(_param0_broadcastMessage__string_));
+		broadcastMessage(inv->getAsciiParameter(_param0_broadcastMessage__String_));
 		break;
 	case 24:
-		broadcastMessageRange((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastMessageRange__Player_string_float_), inv->getFloatParameter());
+		broadcastMessageRange((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_broadcastMessageRange__Player_String_float_), inv->getFloatParameter());
 		break;
 	case 25:
-		handleGameCommand((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_handleGameCommand__Player_string_));
+		handleGameCommand((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_handleGameCommand__Player_String_));
 		break;
 	case 26:
 		initiateRooms();
@@ -746,7 +746,7 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		sendGuildChat((Player*) inv->getObjectParameter());
 		break;
 	case 40:
-		resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(_param0_createRoomByFullPath__string_))->_getObjectID());
+		resp->insertLong(createRoomByFullPath(inv->getAsciiParameter(_param0_createRoomByFullPath__String_))->_getObjectID());
 		break;
 	case 41:
 		destroyRoom((ChatRoom*) inv->getObjectParameter());
@@ -755,13 +755,13 @@ Packet* ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		printRoomTree((ChatRoom*) inv->getObjectParameter());
 		break;
 	case 43:
-		resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(_param0_getChatRoomByFullPath__string_))->_getObjectID());
+		resp->insertLong(getChatRoomByFullPath(inv->getAsciiParameter(_param0_getChatRoomByFullPath__String_))->_getObjectID());
 		break;
 	case 44:
-		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__string_))->_getObjectID());
+		resp->insertLong(getGameRoom(inv->getAsciiParameter(_param0_getGameRoom__String_))->_getObjectID());
 		break;
 	case 45:
-		resp->insertLong(getChatRoomByGamePath((ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_string_))->_getObjectID());
+		resp->insertLong(getChatRoomByGamePath((ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getChatRoomByGamePath__ChatRoom_String_))->_getObjectID());
 		break;
 	case 46:
 		resp->insertInt(getNextRoomID());
@@ -794,15 +794,15 @@ void ChatManagerAdapter::addPlayer(Player* player) {
 	return ((ChatManagerImplementation*) impl)->addPlayer(player);
 }
 
-Player* ChatManagerAdapter::getPlayer(string& name) {
+Player* ChatManagerAdapter::getPlayer(String& name) {
 	return ((ChatManagerImplementation*) impl)->getPlayer(name);
 }
 
-Player* ChatManagerAdapter::removePlayer(string& name) {
+Player* ChatManagerAdapter::removePlayer(String& name) {
 	return ((ChatManagerImplementation*) impl)->removePlayer(name);
 }
 
-void ChatManagerAdapter::sendMail(const string& sendername, unicode& header, unicode& body, const string& name) {
+void ChatManagerAdapter::sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name) {
 	return ((ChatManagerImplementation*) impl)->sendMail(sendername, header, body, name);
 }
 
@@ -834,31 +834,31 @@ void ChatManagerAdapter::handleMood(Player* player, Message* pack) {
 	return ((ChatManagerImplementation*) impl)->handleMood(player, pack);
 }
 
-void ChatManagerAdapter::sendSystemMessage(Player* player, unicode& message) {
+void ChatManagerAdapter::sendSystemMessage(Player* player, UnicodeString& message) {
 	return ((ChatManagerImplementation*) impl)->sendSystemMessage(player, message);
 }
 
-void ChatManagerAdapter::sendSystemMessage(Player* player, const string& file, const string& str, StfParameter* param) {
+void ChatManagerAdapter::sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param) {
 	return ((ChatManagerImplementation*) impl)->sendSystemMessage(player, file, str, param);
 }
 
-void ChatManagerAdapter::broadcastMessage(CreatureObject* player, unicode& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
+void ChatManagerAdapter::broadcastMessage(CreatureObject* player, UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2) {
 	return ((ChatManagerImplementation*) impl)->broadcastMessage(player, message, target, moodid, mood2);
 }
 
-void ChatManagerAdapter::broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2) {
+void ChatManagerAdapter::broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2) {
 	return ((ChatManagerImplementation*) impl)->broadcastMessage(player, file, str, param, target, moodid, mood2);
 }
 
-void ChatManagerAdapter::broadcastMessage(const string& message) {
+void ChatManagerAdapter::broadcastMessage(const String& message) {
 	return ((ChatManagerImplementation*) impl)->broadcastMessage(message);
 }
 
-void ChatManagerAdapter::broadcastMessageRange(Player* player, const string& message, float range) {
+void ChatManagerAdapter::broadcastMessageRange(Player* player, const String& message, float range) {
 	return ((ChatManagerImplementation*) impl)->broadcastMessageRange(player, message, range);
 }
 
-void ChatManagerAdapter::handleGameCommand(Player* player, const string& command) {
+void ChatManagerAdapter::handleGameCommand(Player* player, const String& command) {
 	return ((ChatManagerImplementation*) impl)->handleGameCommand(player, command);
 }
 
@@ -918,7 +918,7 @@ void ChatManagerAdapter::sendGuildChat(Player* player) {
 	return ((ChatManagerImplementation*) impl)->sendGuildChat(player);
 }
 
-ChatRoom* ChatManagerAdapter::createRoomByFullPath(const string& path) {
+ChatRoom* ChatManagerAdapter::createRoomByFullPath(const String& path) {
 	return ((ChatManagerImplementation*) impl)->createRoomByFullPath(path);
 }
 
@@ -930,15 +930,15 @@ void ChatManagerAdapter::printRoomTree(ChatRoom* channel) {
 	return ((ChatManagerImplementation*) impl)->printRoomTree(channel);
 }
 
-ChatRoom* ChatManagerAdapter::getChatRoomByFullPath(const string& path) {
+ChatRoom* ChatManagerAdapter::getChatRoomByFullPath(const String& path) {
 	return ((ChatManagerImplementation*) impl)->getChatRoomByFullPath(path);
 }
 
-ChatRoom* ChatManagerAdapter::getGameRoom(const string& game) {
+ChatRoom* ChatManagerAdapter::getGameRoom(const String& game) {
 	return ((ChatManagerImplementation*) impl)->getGameRoom(game);
 }
 
-ChatRoom* ChatManagerAdapter::getChatRoomByGamePath(ChatRoom* game, const string& path) {
+ChatRoom* ChatManagerAdapter::getChatRoomByGamePath(ChatRoom* game, const String& path) {
 	return ((ChatManagerImplementation*) impl)->getChatRoomByGamePath(game, path);
 }
 

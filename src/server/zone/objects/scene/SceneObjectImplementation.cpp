@@ -62,6 +62,10 @@ which carries forward this exception.
 
 #include "../creature/skills/target/AttackTargetSkill.h"
 
+#include "../attackable/lair/LairObject.h"
+
+#include "../../managers/player/PlayerManager.h"
+
 SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), QuadTreeEntry(), Logger() {
 	objectID = 0;
 	objectType = 0;
@@ -74,8 +78,6 @@ SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), Q
 
 	parent = NULL;
 
-	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
-	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
 
@@ -91,9 +93,9 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 	objectID = oid;
 	objectType = type;
 
-	stringstream name;
+	StringBuffer name;
 	name << "SceneObject(" << objectType << ")  0x" << hex << objectID;
-	//setDeployingName(name.str());
+	//setDeployingName(name.toString());
 
 	server = NULL;
 	zone = NULL;
@@ -104,8 +106,6 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 
 	parent = NULL;
 
-	weaponDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
-	weaponCreatureList.setInsertPlan(SortedVector<Creature*>::ALLOW_OVERWRITE);
 	groupDamageList.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 	playerDamageList.setInsertPlan(SortedVector<DamageDone>::ALLOW_OVERWRITE);
 
@@ -119,6 +119,18 @@ SceneObjectImplementation::SceneObjectImplementation(uint64 oid, int type) : Sce
 
 SceneObjectImplementation::~SceneObjectImplementation() {
 	parent = NULL;
+
+	if (isInQuadTree()) {
+		error("deleting an object that is still in QuadTree");
+
+		StackTrace::printStackTrace();
+	}
+
+	for (int i = 0; i < playerDamageList.size(); i++) {
+		VectorMapEntry<CreatureObject*, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<CreatureObject*, DamageDone*>*>::get(i);
+		CreatureObject *creature = entry->getKey();
+		creature->release();
+	}
 
 	undeploy();
 }
@@ -245,6 +257,16 @@ void SceneObjectImplementation::randomizePosition(float radius) {
 }
 
 void SceneObjectImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	//TODO:Cell permission check
+
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
+
 	omr->finish();
 
 	player->sendMessage(omr);
@@ -270,7 +292,7 @@ void SceneObjectImplementation::unlock(bool doLock) {
 	ManagedObjectImplementation::unlock(doLock);
 }
 
-void SceneObjectImplementation::setLockName(const string& name) {
+void SceneObjectImplementation::setLockName(const String& name) {
 	//ManagedObjectImplementation::setLockName(name);
 }
 
@@ -304,7 +326,7 @@ void SceneObjectImplementation::insertToZone(Zone* zone) {
 
 		zone->unlock();
 	} catch (...) {
-		cout << "exception SceneObjectImplementation::insertToZone(Zone* zone)\n";
+		System::out << "exception SceneObjectImplementation::insertToZone(Zone* zone)\n";
 
 		zone->unlock();
 	}
@@ -331,7 +353,6 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 
 	} catch (...) {
 		error("exception SceneObjectImplementation::insertToBuilding(BuildingObject* building)");
-
 		//building->unlock(doLock);
 	}
 }
@@ -343,7 +364,7 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
 	}
 
 	try {
-		//cout << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		//System::out << "CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
 		zone->lock(doLock);
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
@@ -359,7 +380,7 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
             			if (!sendSelf && (player == sender))
                 			continue;
                     }
-					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
+					//System::out << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
 					player->sendMessage(msg->clone());
 				}
 			}
@@ -375,7 +396,7 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
 		zone->unlock(doLock);
 	}
 
-	//cout << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
+	//System::out << "finished CreatureObject::broadcastMessage(Message* msg, int range, bool doLock)\n";
 }
 
 void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int range, bool doLock) {
@@ -385,7 +406,7 @@ void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int
 	}
 
 	try {
-		//cout << "SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
+		//System::out << "SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
 		zone->lock(doLock);
 
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
@@ -396,7 +417,7 @@ void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int
 				Player* player = (Player*) object;
 
 				if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
-					//cout << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
+					//System::out << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
 					player->sendMessage((StandaloneBaseMessage*)msg->clone());
 				}
 			}
@@ -412,16 +433,16 @@ void SceneObjectImplementation::broadcastMessage(StandaloneBaseMessage* msg, int
 		zone->unlock(doLock);
 	}
 
-	//cout << "finished SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
+	//System::out << "finished SceneObjectImplementation::broadcastMessage(Message* msg, int range, bool doLock)\n";
 }
 
 void SceneObjectImplementation::removeFromZone(bool doLock) {
 	try {
-		//cout << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
+		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) Entered" << endl;
 		if (zone == NULL || !isInQuadTree())
 			return;
 
-		//cout << "SceneObjectImplementation::removeFromZone(bool doLock) After Zone/QuadTree check" << endl;
+		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) After Zone/QuadTree check" << endl;
 		//deagro();
 
 		zone->lock(doLock);
@@ -447,7 +468,7 @@ void SceneObjectImplementation::removeFromZone(bool doLock) {
 
 		zone->unlock(doLock);
 	} catch (...) {
-		cout << "exception SceneObjectImplementation::removeFromZone(bool doLock)\n";
+		System::out << "exception SceneObjectImplementation::removeFromZone(bool doLock)\n";
 
 		zone->unlock(doLock);
 	}
@@ -476,8 +497,8 @@ void SceneObjectImplementation::removeFromBuilding(BuildingObject* building) {
 	}
 }
 
-void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int damage, string skillname) {
-	string xptype;
+void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int damage, String skillname) {
+	String xptype;
 
 	AttackTargetSkill *askill;
 	Skill *skill = server->getSkillManager()->getSkill(skillname);
@@ -485,12 +506,6 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 		askill = (AttackTargetSkill*)skill;
 
 
-	/*if (askill->getRequiredWeaponType() == 0xFF && askill->isForce()) {
-		xptype = string("jedi_general");
-	} else if (creature->getWeapon() == NULL) {
-		xptype = string("combat_meleespecialize_unarmed");
-	} else
-		xptype = creature->getWeapon()->getXpType();*/
 	switch (askill->getSkillType()) {
 	case AttackTargetSkill::DEBUFF:
 		return;
@@ -501,7 +516,7 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 	case AttackTargetSkill::WOUNDS:
 	case AttackTargetSkill::OTHER:
 		if (creature->getWeapon() == NULL)
-			xptype = string("combat_meleespecialize_unarmed");
+			xptype = String("combat_meleespecialize_unarmed");
 		else
 			xptype = creature->getWeapon()->getXpType();
 		break;
@@ -521,6 +536,7 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 		return;
 
 	if (!playerDamageList.contains(creature)) {
+		creature->acquire();
 		dmg = new DamageDone;
 	} else
 		dmg = playerDamageList.get(creature);
@@ -552,9 +568,10 @@ void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
 	int damage = playerDamageList.get(creature)->getTotalDamage();
 	DamageDone *dmg = playerDamageList.get(creature);
 
-	delete dmg;
+	if (playerDamageList.drop(creature))
+		creature->release();
 
-	playerDamageList.drop(creature);
+	delete dmg;
 
 	if (creature->isInAGroup() && creature->isPlayer()) {
 		Player *player = (Player*)creature;
@@ -589,7 +606,7 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 
 		// don't do any of this if this isn't a player
 		if (!creature->isPlayer()) {
-			delete dmg;
+			//delete dmg; ?
 			continue;
 		}
 
@@ -607,20 +624,25 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 		for ( int j = 0; j < dmg->getSize(); j++) {
 			float damage = (float)dmg->getDamage(j);
 			float playerlevel = (float)dmg->getLevel(j);
-			string xptype = dmg->getXpType(j);
+			String xptype = dmg->getXpType(j);
 			float xpaddsingle = 0.0f;
 
 			if (player->isInAGroup()) { // use group calculation
 				GroupObject *group = player->getGroupObject();
 				if (isNonPlayerCreature()) {
-					xpaddsingle = (groupDamageList.get(group)/total)*(damage/totaldamage)*40.0f*((float)levels)*((multiplier)/(group->getGroupSize()))*(1.0f+(group->getGroupSize()+5.0f)*.01f);
+					xpaddsingle = (groupDamageList.get(group)/total)*(damage/totaldamage)*40.0f*((float)levels)*((multiplier)/(group->getGroupSize()))*(1.0f+((group->getGroupSize()+5.0f)*.01f));
 					if (levels > 25)
 						xpaddsingle += (playerlevel - levels) * 60.0f;
 					else if (playerlevel > levels)
 						xpaddsingle += (levels - playerlevel) * 4.5f;
-					if (xptype == "jedi_general")
-						xpaddsingle /= 3.4f;
+				} else if (isAttackableObject()) {
+					AttackableObject *attobj = (AttackableObject*)_this;
+					if (attobj->getTemplateTypeName() == "lair_n") {
+						LairObject *lair = (LairObject*)attobj;
+						xpaddsingle = lair->getLevel() * 100 / (group->getGroupSize()) * (1.0f+((group->getGroupSize()+5.0f)*.01f));
+					}
 				}
+
 			} else { // use solo calculation
 				if (isNonPlayerCreature()) {
 					xpaddsingle = (damage/total)*40.0f*((float)levels)*(multiplier);
@@ -628,13 +650,24 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 						xpaddsingle += (playerlevel - levels) * 60.0f;
 					else if (playerlevel > levels)
 						xpaddsingle += (levels - playerlevel) * 4.5f;
-					if (xptype == "jedi_general")
-						xpaddsingle /= 3.4f;
+				} else if (isAttackableObject()) {
+					AttackableObject *attobj = (AttackableObject*)_this;
+					if (attobj->getTemplateTypeName() == "lair_n") {
+						LairObject *lair = (LairObject*)attobj;
+						xpaddsingle = lair->getLevel() * 100;
+					}
 				}
 			}
 
+			if (xptype == "jedi_general")
+				xpaddsingle /= 3.4f;
+
 			if (xpaddsingle < 1.0f)
 				xpaddsingle = 1.0f;
+
+			PlayerManager* pmng = server->getPlayerManager();
+			if (pmng != NULL)
+				xpaddsingle *= pmng->getXpScale();
 
 			player->addXp(xptype, (int)xpaddsingle, true);
 			if (xptype != "jedi_general")
@@ -642,13 +675,9 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 		}
 
 		xpadd /= 10.0f;
-		string xptype = string("combat_general");
+		String xptype = String("combat_general");
 		player->addXp(xptype, (int)xpadd, true);
 
-		delete dmg;  // This is dangerous as the pointer to the object still exists in the vector
+		//delete dmg;
 	}
-
-	// Clean up invalid pointers
-	playerDamageList.removeAll();
-	groupDamageList.removeAll();
 }

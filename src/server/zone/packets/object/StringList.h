@@ -58,9 +58,9 @@ public:
 		insertByte(0);
 	}
 
-	void insertOption(const string& file, const string& str) {
+	void insertOption(const String& file, const String& str) {
 
-		int size = 0x56 + file.size() + str.size();
+		int size = 0x56 + file.length() + str.length();
 		bool odd = (size & 1);
 
 		if (odd)
@@ -73,9 +73,9 @@ public:
 		insertByte(1);
 		insertInt(0xFFFFFFFF);
 
-		insertAscii(file.c_str());
+		insertAscii(file);
 		insertInt(0);
-		insertAscii(str.c_str());
+		insertAscii(str);
 
 		insertLong(0);
 		insertAscii("");
@@ -105,10 +105,10 @@ public:
 		updateOptionCount();
 	}
 
-	void insertOption(const string& file, const string& str, StfParameter* params) {
+	void insertOption(const String& file, const String& str, StfParameter* params) {
 		params->generate();
 
-		int size = 0x11 + file.size() + str.size() + params->size();
+		int size = 0x11 + file.length() + str.length() + params->size();
 		bool odd = (size & 1);
 
 		if (odd)
@@ -121,9 +121,9 @@ public:
 		insertByte(1);
 		insertInt(0xFFFFFFFF);
 
-		insertAscii(file.c_str());
+		insertAscii(file);
 		insertInt(0);
-		insertAscii(str.c_str());
+		insertAscii(str);
 
 		insertStream(params);
 
@@ -135,12 +135,12 @@ public:
 		delete params;
 	}
 
-	void insertOption(string& option) {
-		insertUnicode(unicode(option));
+	void insertOption(String& option) {
+		insertUnicode(UnicodeString(option));
 		updateOptionCount();
 	}
 
-	void insertOption(unicode& option) {
+	void insertOption(UnicodeString& option) {
 		insertUnicode(option);
 		updateOptionCount();
 	}

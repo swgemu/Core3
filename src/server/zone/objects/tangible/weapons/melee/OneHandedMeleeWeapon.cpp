@@ -14,12 +14,12 @@
  *	OneHandedMeleeWeaponStub
  */
 
-OneHandedMeleeWeapon::OneHandedMeleeWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
+OneHandedMeleeWeapon::OneHandedMeleeWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
 	_impl = new OneHandedMeleeWeaponImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-OneHandedMeleeWeapon::OneHandedMeleeWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
+OneHandedMeleeWeapon::OneHandedMeleeWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp) : MeleeWeapon(DummyConstructorParameter::instance()) {
 	_impl = new OneHandedMeleeWeaponImplementation(creature, temp, n, tempn, eqp);
 	_impl->_setStub(this);
 }
@@ -83,11 +83,11 @@ DistributedObjectAdapter* OneHandedMeleeWeaponHelper::createAdapter(DistributedO
  *	OneHandedMeleeWeaponServant
  */
 
-OneHandedMeleeWeaponServant::OneHandedMeleeWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
+OneHandedMeleeWeaponServant::OneHandedMeleeWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp) : MeleeWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
 	_classHelper = OneHandedMeleeWeaponHelper::instance();
 }
 
-OneHandedMeleeWeaponServant::OneHandedMeleeWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : MeleeWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
+OneHandedMeleeWeaponServant::OneHandedMeleeWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp) : MeleeWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
 	_classHelper = OneHandedMeleeWeaponHelper::instance();
 }
 

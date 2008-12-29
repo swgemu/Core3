@@ -14,7 +14,7 @@ protected:
 	bool operating;
 
 	int installationType, destroyCode;
-	string file, temp, owner, structureStatus;
+	String file, temp, owner, structureStatus;
 
 	uint64 ownerID;
 
@@ -49,43 +49,43 @@ public:
 	inline void setOperating(bool state) {
 		setUpdated(true);
 		operating = state;
-		string attr("operating");
+		String attr("operating");
 		itemAttributes->setBooleanAttribute(attr, operating);
 	}
-	inline void setOwner(const string own) {
+	inline void setOwner(const String own) {
 		setUpdated(true);
 		owner = own;
-		string attr("owner");
+		String attr("owner");
 		itemAttributes->setStringAttribute(attr, owner);
 	}
 	inline void setOwnerID(uint64 ownerid) {
 		setUpdated(true);
 		ownerID = ownerid;
-		string attr("ownerID");
+		String attr("ownerID");
 		itemAttributes->setUnsignedLongAttribute(attr, ownerID);
 	}
 	inline void setSurplusMaintenance(uint32 maint) {
 		setUpdated(true);
 		surplusMaintenance = maint;
-		string attr("surplusMaintenance");
+		String attr("surplusMaintenance");
 		itemAttributes->setIntAttribute(attr, (int)surplusMaintenance);
 	}
 	inline void setMaintenanceRate(float rate) {
 		setUpdated(true);
 		 maintenanceRate = rate;
-		 string attr("maintenanceRate");
+		 String attr("maintenanceRate");
 		 itemAttributes->setFloatAttribute(attr, (float)maintenanceRate);
 	}
 	inline void setSurplusPower(uint32 pow) {
 		setUpdated(true);
 		surplusPower = pow;
-		string attr("surplusPower");
+		String attr("surplusPower");
 		itemAttributes->setIntAttribute(attr, (int)surplusPower);
 	}
 	inline void setPowerRate(float rate) {
 		setUpdated(true);
 		powerRate = rate;
-		string attr("powerRate");
+		String attr("powerRate");
 		itemAttributes->setFloatAttribute(attr, (float)powerRate);
 	}
 
@@ -93,7 +93,7 @@ public:
 	inline bool isOperating(){
 		return operating;
 	}
-	inline string& getOwner() {
+	inline String& getOwner() {
 		return owner;
 	}
 	inline uint64 getOwnerID() {
@@ -189,7 +189,7 @@ public:
 
 	void activateSync();
 
-	inline string& getFile(){
+	inline String& getFile(){
 		return file;
 	}
 	int getObjectSubType();

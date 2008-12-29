@@ -41,107 +41,104 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 crazedRoba = Creature:new {
-      objectName = "crazedRoba",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      faction = "self",
-      gender = "",
+	objectName = "crazedRoba",  -- Lua Object Name
+	creatureType = "ANIMAL",
+	gender = "",
+	speciesName = "crazed_roba",
+	stfName = "mob/creature_names",
+	objectCRC = 1008127960, 
+	socialGroup = "self",
+	level = 12,
 
-      name = "a Crazed Roba",
-      objectCRC = 1008127960, 
-      socialGroup = "self",
-      named = FALSE, 
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-      level = 12,
-      
+	healthMax = 1200,
+	healthMin = 1000,
+	strength = 0,
+	constitution = 0,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+	actionMax = 1200,
+	actionMin = 1000,
+	quickness = 0,
+	stamina = 0,
 
-      healthMax = 1200,
-      healthMin = 1000,
-      strength = 0,
-      constitution = 0,
+	mindMax = 1200,
+	mindMin = 1000,
+	focus = 0,
+	willpower = 0,
 
-      actionMax = 1200,
-      actionMin = 1000,
-      quickness = 0,
-      stamina = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = -1,
+	blast = 0,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      mindMax = 1200,
-      mindMin = 1000,
-      focus = 0,
-      willpower = 0,
+	accuracy = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = -1,
-      blast = 0,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	healer = 0,
 
-      accuracy = 0,
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 1,
+	invincible = 0, 
 
-      healer = 0,
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 1,
-      invincible = 0, 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "", -- Name ex. 'a Vibrolance'
+	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 0,
+	weaponMinDamage = 0,
+	weaponMaxDamage = 0,
+	weaponAttackSpeed = 0,
+	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	lootGroup = "0", -- Group it belongs to for loot
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	tame = 0.25,  -- Likely hood to be tamed
 
-      lootGroup = "0", -- Group it belongs to for loot
+	milk = 0,
 
-      tame = 0.25,  -- Likely hood to be tamed
+	boneType = "bone_mammal_talus",
+	boneMax = 12,
 
-      milk = 0,
+	hideType = "hide_leathery_talus",
+	hideMax = 18,
 
-      boneType = "bone_mammal_talus",
-      boneMax = 12,
+	meatType = "meat_carnivore_talus",
+	meatMax = 12,
 
-      hideType = "hide_leathery_talus",
-      hideMax = 18,
+	--skills = { " Stun attack", "", "" }
+	skills = { "robaAttack1" },
+	respawnTimer = 60,
 
-      meatType = "meat_carnivore_talus",
-      meatMax = 12,
-
-      skills = { " Stun attack", "", "" }
-      respawnTimer = 60,
-
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(crazedRoba, 1008127960) --  Add to Global Table

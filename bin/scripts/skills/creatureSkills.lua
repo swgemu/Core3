@@ -61,7 +61,7 @@ RunSkillsFile("creatureSkills/endor/npcSkills.lua")
 
 -- Lok
 RunSkillsFile("creatureSkills/lok/creatureSkills.lua")
---RunSkillsFile("creatureSkills/lok/npcSkills.lua")
+RunSkillsFile("creatureSkills/lok/npcSkills.lua")
 
 -- Naboo
 RunSkillsFile("creatureSkills/naboo/creatureSkills.lua")
@@ -71,6 +71,14 @@ RunSkillsFile("creatureSkills/naboo/npcSkills.lua")
 RunSkillsFile("creatureSkills/npcs/imperialNpcSkills.lua")
 RunSkillsFile("creatureSkills/npcs/rebelNpcSkills.lua")
 RunSkillsFile("creatureSkills/npcs/miscNpcSkills.lua")
+
+-- Rori
+RunSkillsFile("creatureSkills/rori/creatureSkills.lua")
+RunSkillsFile("creatureSkills/rori/npcSkills.lua")
+
+-- Talus
+RunSkillsFile("creatureSkills/talus/creatureSkills.lua")
+RunSkillsFile("creatureSkills/talus/npcSkills.lua")
 
 -- Tatooine
 RunSkillsFile("creatureSkills/tatooine/creatureSkills.lua")

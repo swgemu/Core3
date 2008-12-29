@@ -45,17 +45,17 @@ which carries forward this exception.
 import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematicExpPropGroup {
-	DraftSchematicExpPropGroup(string subtitle);
+	DraftSchematicExpPropGroup(String subtitle);
 	DraftSchematicExpPropGroup(DraftSchematicExpPropGroup group);
 	
-	void addExperimentalProperty(const string experimentalPropertyType, unsigned int weight);
+	void addExperimentalProperty(const String experimentalPropertyType, unsigned int weight);
 	
 	void sendToPlayer(ObjectControllerMessage msg, int count);
 	
-	boolean containsExpPropType(const string expPropType);
+	boolean containsExpPropType(const String expPropType);
 
 	// getters	
-	float getExpPropPercentage(const string expPropType);
+	float getExpPropPercentage(const String expPropType);
 	
 	unsigned int getExpPropPercentageListSize();
 	
@@ -65,20 +65,20 @@ interface DraftSchematicExpPropGroup {
 	unsigned char getTypeAndWeight(unsigned int index);
 
 	// Cloning stuffs
-	string getKey(int i);
+	String getKey(int i);
 	int getKeyCount();
 
-	string getExpPropTypesKey(int i);
+	String getExpPropTypesKey(int i);
 	unsigned char getExpPropTypesValue(int i);
 	int getExpPropTypesSize();
 
-	string getExpPropWeightsKey(int i);
+	String getExpPropWeightsKey(int i);
 	unsigned char getExpPropWeightsValue(int i);
 	int getExpPropWeightsSize();
 
-	string getExpPropWeightPercentagesKey(int i);
+	String getExpPropWeightPercentagesKey(int i);
 	float getExpPropWeightPercentagesValue(int i);
 	int getExpPropWeightPercentagesSize();
 
-	string getSubtitle();
+	String getSubtitle();
 }

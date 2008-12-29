@@ -23,7 +23,7 @@ public:
 
 	void setMaxInputSize(int size);
 
-	void setDefaultInput(const string& text);
+	void setDefaultInput(const String& text);
 
 	bool isFilterBox();
 
@@ -47,12 +47,12 @@ public:
 
 	void setMaxInputSize(int size);
 
-	void setDefaultInput(const string& text);
+	void setDefaultInput(const String& text);
 
 	bool isFilterBox();
 
 protected:
-	string _param0_setDefaultInput__string_;
+	String _param0_setDefaultInput__String_;
 };
 
 class SuiInputBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiInputBoxHelper> {

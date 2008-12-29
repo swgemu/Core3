@@ -58,9 +58,9 @@ RecruiterCreatureImplementation::RecruiterCreatureImplementation(uint64 oid) : R
 
 	creatureBitmask = 0x108;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "Recruiter = 0x" << oid;
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 
 	stfName = "mob/creature_names";
 
@@ -104,7 +104,7 @@ void RecruiterCreatureImplementation::selectConversationOption(int option, Scene
 
 	Player* player = (Player*)obj;
 
-	if(player->getLastNpcConvStr() != "recruiter") {
+	if (player->getLastNpcConvStr() != "recruiter") {
 		sendConversationStartTo(player);
 		return;
 	}

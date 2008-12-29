@@ -49,11 +49,11 @@ interface PlayerMap {
 		super(initsize);
 	}
 
-	Player put(string name, Player player, boolean doLock = true);
+	Player put(String name, Player player, boolean doLock = true);
 
-	Player get(string name, boolean doLock = true);
+	Player get(String name, boolean doLock = true);
 
-	Player remove(string name, boolean doLock = true);
+	Player remove(String name, boolean doLock = true);
 
 	int size(boolean doLock = true);
 

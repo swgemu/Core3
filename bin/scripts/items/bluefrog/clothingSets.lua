@@ -40,6 +40,13 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+RunItemLUAFile("bluefrog/bikinis.lua");
+RunItemLUAFile("bluefrog/belts.lua");
+RunItemLUAFile("bluefrog/bandolier.lua");
+RunItemLUAFile("bluefrog/backpacks.lua");
+RunItemLUAFile("bluefrog/bodysuits.lua");
+RunItemLUAFile("bluefrog/skirt.lua");
+RunItemLUAFile("bluefrog/bustiers.lua");
 RunItemLUAFile("bluefrog/wookieGarb.lua");
 RunItemLUAFile("bluefrog/gloves.lua");
 RunItemLUAFile("bluefrog/goggles.lua");

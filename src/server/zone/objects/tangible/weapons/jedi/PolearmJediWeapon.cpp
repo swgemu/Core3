@@ -14,12 +14,12 @@
  *	PolearmJediWeaponStub
  */
 
-PolearmJediWeapon::PolearmJediWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : JediWeapon(DummyConstructorParameter::instance()) {
+PolearmJediWeapon::PolearmJediWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : JediWeapon(DummyConstructorParameter::instance()) {
 	_impl = new PolearmJediWeaponImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-PolearmJediWeapon::PolearmJediWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp) : JediWeapon(DummyConstructorParameter::instance()) {
+PolearmJediWeapon::PolearmJediWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp) : JediWeapon(DummyConstructorParameter::instance()) {
 	_impl = new PolearmJediWeaponImplementation(creature, temp, n, tempn, eqp);
 	_impl->_setStub(this);
 }
@@ -83,11 +83,11 @@ DistributedObjectAdapter* PolearmJediWeaponHelper::createAdapter(DistributedObje
  *	PolearmJediWeaponServant
  */
 
-PolearmJediWeaponServant::PolearmJediWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp) : JediWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
+PolearmJediWeaponServant::PolearmJediWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp) : JediWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
 	_classHelper = PolearmJediWeaponHelper::instance();
 }
 
-PolearmJediWeaponServant::PolearmJediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : JediWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
+PolearmJediWeaponServant::PolearmJediWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp) : JediWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
 	_classHelper = PolearmJediWeaponHelper::instance();
 }
 

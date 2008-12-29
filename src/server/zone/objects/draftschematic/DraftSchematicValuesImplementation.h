@@ -54,68 +54,68 @@ which carries forward this exception.
 
 
 class DraftSchematicValuesImplementation : public DraftSchematicValuesServant {
-	VectorMap<string, Subclasses*> experimentalValuesMap;
+	VectorMap<String, Subclasses*> experimentalValuesMap;
 
-	Vector<string> valuesToSend;
+	Vector<String> valuesToSend;
 
-	string EMPTY;
+	String EMPTY;
 
 public:
 	DraftSchematicValuesImplementation();
 	~DraftSchematicValuesImplementation();
 	// Experimental Titles
-	void addExperimentalProperty(const string& title, const string& subtitle,
+	void addExperimentalProperty(const String& title, const String& subtitle,
 			const float min, const float max, const int precision);
 
-	string& getExperimentalPropertyTitle(const string& subtitle);
-	string& getExperimentalPropertyTitle(const int i);
+	String& getExperimentalPropertyTitle(const String& subtitle);
+	String& getExperimentalPropertyTitle(const int i);
 
-	string& getExperimentalPropertySubtitleClass(const int i);
+	String& getExperimentalPropertySubtitleClass(const int i);
 
-	string& getExperimentalPropertySubtitle(const int i);
+	String& getExperimentalPropertySubtitle(const int i);
 
-	string& getExperimentalPropertySubtitle(const string title, const int i);
+	String& getExperimentalPropertySubtitle(const String title, const int i);
 
 	int getExperimentalPropertySubtitleSize();
 
-	int getExperimentalPropertySubtitleSize(const string title);
+	int getExperimentalPropertySubtitleSize(const String title);
 
-	bool hasProperty(const string& attribute);
+	bool hasProperty(const String& attribute);
 
-	void setCurrentValue(const string& attribute, const float value);
-	void setCurrentValue(const string& attribute, const float value, const float min, const float max);
+	void setCurrentValue(const String& attribute, const float value);
+	void setCurrentValue(const String& attribute, const float value, const float min, const float max);
 
-	float getCurrentValue(const string& attribute);
+	float getCurrentValue(const String& attribute);
 
 	float getCurrentValue(const int i);
 
-	void lockValue(const string& attribute);
-	void resetValue(const string& attribute);
+	void lockValue(const String& attribute);
+	void resetValue(const String& attribute);
 
-	void setCurrentPercentage(const string& subtitle, const float value);
-	void setCurrentPercentage(const string& subtitle, const float value, const float min, const float max);
+	void setCurrentPercentage(const String& subtitle, const float value);
+	void setCurrentPercentage(const String& subtitle, const float value, const float min, const float max);
 
-	float getCurrentPercentage(const string& attribute);
+	float getCurrentPercentage(const String& attribute);
 	float getCurrentPercentage(const int i);
 
 	float getCurrentPercentageAverage(const int i);
-	float getCurrentPercentageAverage(const string title);
+	float getCurrentPercentageAverage(const String title);
 
-	void setMaxPercentage(const string& attribute, const float value);
+	void setMaxPercentage(const String& attribute, const float value);
 
-	float getMaxPercentage(const string& attribute);
+	float getMaxPercentage(const String& attribute);
 	float getMaxPercentage(const int i);
 
 	float getMaxPercentageAverage(const int i);
 
-	float getMinValue(const string& attribute);
-	float getMaxValue(const string& attribute);
+	float getMinValue(const String& attribute);
+	float getMaxValue(const String& attribute);
 
-	void setMinValue(const string& attribute, const float value);
-	void setMaxValue(const string& attribute, const float value);
+	void setMinValue(const String& attribute, const float value);
+	void setMaxValue(const String& attribute, const float value);
 
-	int getPrecision(const string& attribute);
-	void setPrecision(const string& attribute, const int precision);
+	int getPrecision(const String& attribute);
+	void setPrecision(const String& attribute, const int precision);
 
 	void recalculateValues(DraftSchematic* draftSchematic);
 
@@ -129,10 +129,10 @@ public:
 		return valuesToSend.size();
 	}
 
-	inline int getTitleLine(string& title){
+	inline int getTitleLine(String& title){
 
 		Subclasses* subClasses;
-		string exptitle;
+		String exptitle;
 
 		for (int j = 0; j < experimentalValuesMap.size(); ++j) {
 
@@ -140,7 +140,7 @@ public:
 
 			exptitle = subClasses->getClassName();
 
-			if(title == exptitle)
+			if (title == exptitle)
 				return j;
 		}
 
@@ -148,11 +148,11 @@ public:
 
 	}
 
-	string& getValuesToSend(const int i){
+	String& getValuesToSend(const int i){
 		return valuesToSend.get(i);
 	}
 
-	float getAttributeAndValue(DraftSchematic* draftSchematic, string& attribute, const int i){
+	float getAttributeAndValue(DraftSchematic* draftSchematic, String& attribute, const int i){
 
 		DraftSchematicAttribute* attrib = draftSchematic->getAttributeToSet(i);
 

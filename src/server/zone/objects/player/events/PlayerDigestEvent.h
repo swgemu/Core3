@@ -53,13 +53,13 @@ class PlayerDigestEvent : public Event {
 public:
 	PlayerDigestEvent(Player* pl) : Event(18000) {
 		player = pl;
-
-		setKeeping(true);
 	}
 
 	bool activate() {
 		try {
 			player->wlock();
+
+			player->clearDigestEvent();
 
 			if (player->isOnline() || player->isLinkDead())
 				player->doDigest();

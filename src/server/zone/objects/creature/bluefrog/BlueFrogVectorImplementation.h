@@ -48,11 +48,11 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class BlueFrogVectorImplementation : public BlueFrogVectorServant {
-	Vector<string> * vector;
+	Vector<String> * vector;
 
 public:
 	BlueFrogVectorImplementation() : BlueFrogVectorServant() {
-		vector = new Vector<string>();
+		vector = new Vector<String>();
 	}
 
 	~BlueFrogVectorImplementation() {
@@ -63,11 +63,11 @@ public:
 		return vector->size();
 	}
 
-	inline void add(string item) {
+	inline void add(String item) {
 		vector->add(item);
 	}
 
-	inline string& get(unsigned int index) {
+	inline String& get(unsigned int index) {
 		return vector->get(index);
 	}
 

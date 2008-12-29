@@ -29,7 +29,7 @@ FactoryObjectImplementation::FactoryObjectImplementation(uint64 oid, FactoryDeed
 	InstallationObjectImplementation::init();
 	init();
 
-	objectCRC = String::hashCode(deed->getTargetFile());
+	objectCRC = deed->getTargetFile().hashCode();
 	name = deed->getTargetName();
 	file = deed->getTargetFile();
 	templateName = deed->getTargetTemplate();

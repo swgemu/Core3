@@ -83,6 +83,7 @@ public:
 	static int AddWoundsDirectPoolAttackTargetSkill(lua_State* L);
 	static int AddPassiveSkill(lua_State* L);
 	static int AddMeditateSkill(lua_State* L);
+	static int AddPowerboostSkill(lua_State* L);
 	static int AddHealTargetSkill(lua_State* L);
 	static int AddHealEnhanceTargetSkill(lua_State* L);
 	static int AddHealDamageTargetSkill(lua_State* L);
@@ -93,6 +94,8 @@ public:
 	static int AddReviveTargetSkill(lua_State* L);
 	static int AddFirstAidTargetSkill(lua_State* L);
 	static int AddTendHealTargetSkill(lua_State* L);
+	static int AddQuickHealTargetSkill(lua_State* L);
+	static int AddMindHealTargetSkill(lua_State* L);
 
 	static int AddEntertainSkill(lua_State* L);
 	static int AddEntertainEffectSkill(lua_State* L);
@@ -100,6 +103,10 @@ public:
 	static int AddMusicEffectSkill(lua_State* L);
 	//static int AddForceRunSelfSkill(lua_State *L);
 
+	static int AddCamoSkill(lua_State* L);
+	static int AddForageSkill(lua_State* L);
+	static int AddThrowRandomPoolTargetSkill(lua_State *L);
+	static int AddThrowDirectPoolTargetSkill(lua_State *L);
 };
 
 

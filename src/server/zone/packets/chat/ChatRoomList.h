@@ -103,14 +103,14 @@ public:
 		
 		/*insertInt(1); //List Count of Players in Room?
 		insertAscii("SWG");
-		insertAscii(serverName.c_str());
-		insertAscii(name.c_str());*/
+		insertAscii(serverName.toCharArray());
+		insertAscii(name.toCharArray());*/
 	}
 	
 	void addToUnknownListB() {
 		insertInt(0); //List Count
 		/*insertAscii("SWG");
-		insertAscii(serverName.c_str());
+		insertAscii(serverName.toCharArray());
 		insertAscii(name);*/	
 	}
 

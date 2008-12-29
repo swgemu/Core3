@@ -15,7 +15,7 @@ AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConst
 	_impl->_setStub(this);
 }
 
-AuctionItem::AuctionItem(unsigned long long objectid, string& name, int itemprice, int time, bool isauction, int type, string& owner) : ManagedObject(DummyConstructorParameter::instance()) {
+AuctionItem::AuctionItem(unsigned long long objectid, String& name, int itemprice, int time, bool isauction, int type, String& owner) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new AuctionItemImplementation(objectid, name, itemprice, time, isauction, type, owner);
 	_impl->_setStub(this);
 }
@@ -26,7 +26,7 @@ AuctionItem::AuctionItem(DummyConstructorParameter* param) : ManagedObject(param
 AuctionItem::~AuctionItem() {
 }
 
-void AuctionItem::setLocation(string& planet, string& header, unsigned long long vendorid, int x, int z, bool vendor) {
+void AuctionItem::setLocation(String& planet, String& header, unsigned long long vendorid, int x, int z, bool vendor) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -80,7 +80,7 @@ unsigned long long AuctionItem::getOwnerID() {
 		return ((AuctionItemImplementation*) _impl)->getOwnerID();
 }
 
-string& AuctionItem::getTerminalTitle() {
+String& AuctionItem::getTerminalTitle() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -93,7 +93,7 @@ string& AuctionItem::getTerminalTitle() {
 		return ((AuctionItemImplementation*) _impl)->getTerminalTitle();
 }
 
-string& AuctionItem::getOwnerName() {
+String& AuctionItem::getOwnerName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -118,7 +118,7 @@ unsigned long long AuctionItem::getBuyerID() {
 		return ((AuctionItemImplementation*) _impl)->getBuyerID();
 }
 
-string& AuctionItem::getBidderName() {
+String& AuctionItem::getBidderName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -179,7 +179,7 @@ bool AuctionItem::getAuction() {
 		return ((AuctionItemImplementation*) _impl)->getAuction();
 }
 
-string& AuctionItem::getLocation() {
+String& AuctionItem::getLocation() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -228,7 +228,7 @@ int AuctionItem::getOwnerPointer() {
 		return ((AuctionItemImplementation*) _impl)->getOwnerPointer();
 }
 
-string& AuctionItem::getItemDescription() {
+String& AuctionItem::getItemDescription() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -241,7 +241,7 @@ string& AuctionItem::getItemDescription() {
 		return ((AuctionItemImplementation*) _impl)->getItemDescription();
 }
 
-string& AuctionItem::getItemName() {
+String& AuctionItem::getItemName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -279,7 +279,7 @@ void AuctionItem::setOwnerID(unsigned long long ownerid) {
 		((AuctionItemImplementation*) _impl)->setOwnerID(ownerid);
 }
 
-void AuctionItem::setOwnerName(const string& name) {
+void AuctionItem::setOwnerName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -318,7 +318,7 @@ void AuctionItem::setPlanet(int planet) {
 		((AuctionItemImplementation*) _impl)->setPlanet(planet);
 }
 
-void AuctionItem::setBidderName(const string& name) {
+void AuctionItem::setBidderName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -370,7 +370,7 @@ void AuctionItem::setItemType(int type) {
 		((AuctionItemImplementation*) _impl)->setItemType(type);
 }
 
-void AuctionItem::setItemName(const string& name) {
+void AuctionItem::setItemName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -383,7 +383,7 @@ void AuctionItem::setItemName(const string& name) {
 		((AuctionItemImplementation*) _impl)->setItemName(name);
 }
 
-void AuctionItem::setItemDescription(const string& description) {
+void AuctionItem::setItemDescription(const String& description) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -473,7 +473,7 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case 6:
-		setLocation(inv->getAsciiParameter(_param0_setLocation__string_string_long_int_int_bool_), inv->getAsciiParameter(_param1_setLocation__string_string_long_int_int_bool_), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		setLocation(inv->getAsciiParameter(_param0_setLocation__String_String_long_int_int_bool_), inv->getAsciiParameter(_param1_setLocation__String_String_long_int_int_bool_), inv->getUnsignedLongParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 7:
 		resp->insertSignedInt(getPlanet());
@@ -533,7 +533,7 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setOwnerID(inv->getUnsignedLongParameter());
 		break;
 	case 26:
-		setOwnerName(inv->getAsciiParameter(_param0_setOwnerName__string_));
+		setOwnerName(inv->getAsciiParameter(_param0_setOwnerName__String_));
 		break;
 	case 27:
 		setVendorID(inv->getUnsignedLongParameter());
@@ -542,7 +542,7 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setPlanet(inv->getSignedIntParameter());
 		break;
 	case 29:
-		setBidderName(inv->getAsciiParameter(_param0_setBidderName__string_));
+		setBidderName(inv->getAsciiParameter(_param0_setBidderName__String_));
 		break;
 	case 30:
 		setSold(inv->getBooleanParameter());
@@ -554,10 +554,10 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setItemType(inv->getSignedIntParameter());
 		break;
 	case 33:
-		setItemName(inv->getAsciiParameter(_param0_setItemName__string_));
+		setItemName(inv->getAsciiParameter(_param0_setItemName__String_));
 		break;
 	case 34:
-		setItemDescription(inv->getAsciiParameter(_param0_setItemDescription__string_));
+		setItemDescription(inv->getAsciiParameter(_param0_setItemDescription__String_));
 		break;
 	case 35:
 		setPrice(inv->getSignedIntParameter());
@@ -581,7 +581,7 @@ Packet* AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	return resp;
 }
 
-void AuctionItemAdapter::setLocation(string& planet, string& header, unsigned long long vendorid, int x, int z, bool vendor) {
+void AuctionItemAdapter::setLocation(String& planet, String& header, unsigned long long vendorid, int x, int z, bool vendor) {
 	return ((AuctionItemImplementation*) impl)->setLocation(planet, header, vendorid, x, z, vendor);
 }
 
@@ -597,11 +597,11 @@ unsigned long long AuctionItemAdapter::getOwnerID() {
 	return ((AuctionItemImplementation*) impl)->getOwnerID();
 }
 
-string& AuctionItemAdapter::getTerminalTitle() {
+String& AuctionItemAdapter::getTerminalTitle() {
 	return ((AuctionItemImplementation*) impl)->getTerminalTitle();
 }
 
-string& AuctionItemAdapter::getOwnerName() {
+String& AuctionItemAdapter::getOwnerName() {
 	return ((AuctionItemImplementation*) impl)->getOwnerName();
 }
 
@@ -609,7 +609,7 @@ unsigned long long AuctionItemAdapter::getBuyerID() {
 	return ((AuctionItemImplementation*) impl)->getBuyerID();
 }
 
-string& AuctionItemAdapter::getBidderName() {
+String& AuctionItemAdapter::getBidderName() {
 	return ((AuctionItemImplementation*) impl)->getBidderName();
 }
 
@@ -629,7 +629,7 @@ bool AuctionItemAdapter::getAuction() {
 	return ((AuctionItemImplementation*) impl)->getAuction();
 }
 
-string& AuctionItemAdapter::getLocation() {
+String& AuctionItemAdapter::getLocation() {
 	return ((AuctionItemImplementation*) impl)->getLocation();
 }
 
@@ -645,11 +645,11 @@ int AuctionItemAdapter::getOwnerPointer() {
 	return ((AuctionItemImplementation*) impl)->getOwnerPointer();
 }
 
-string& AuctionItemAdapter::getItemDescription() {
+String& AuctionItemAdapter::getItemDescription() {
 	return ((AuctionItemImplementation*) impl)->getItemDescription();
 }
 
-string& AuctionItemAdapter::getItemName() {
+String& AuctionItemAdapter::getItemName() {
 	return ((AuctionItemImplementation*) impl)->getItemName();
 }
 
@@ -661,7 +661,7 @@ void AuctionItemAdapter::setOwnerID(unsigned long long ownerid) {
 	return ((AuctionItemImplementation*) impl)->setOwnerID(ownerid);
 }
 
-void AuctionItemAdapter::setOwnerName(const string& name) {
+void AuctionItemAdapter::setOwnerName(const String& name) {
 	return ((AuctionItemImplementation*) impl)->setOwnerName(name);
 }
 
@@ -673,7 +673,7 @@ void AuctionItemAdapter::setPlanet(int planet) {
 	return ((AuctionItemImplementation*) impl)->setPlanet(planet);
 }
 
-void AuctionItemAdapter::setBidderName(const string& name) {
+void AuctionItemAdapter::setBidderName(const String& name) {
 	return ((AuctionItemImplementation*) impl)->setBidderName(name);
 }
 
@@ -689,11 +689,11 @@ void AuctionItemAdapter::setItemType(int type) {
 	return ((AuctionItemImplementation*) impl)->setItemType(type);
 }
 
-void AuctionItemAdapter::setItemName(const string& name) {
+void AuctionItemAdapter::setItemName(const String& name) {
 	return ((AuctionItemImplementation*) impl)->setItemName(name);
 }
 
-void AuctionItemAdapter::setItemDescription(const string& description) {
+void AuctionItemAdapter::setItemDescription(const String& description) {
 	return ((AuctionItemImplementation*) impl)->setItemDescription(description);
 }
 

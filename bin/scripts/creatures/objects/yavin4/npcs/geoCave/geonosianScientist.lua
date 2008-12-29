@@ -40,108 +40,201 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-geonosianScientist = Creature:new {
-      objectName = "geonosianScientist",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "Geonosian",
-      gender = "",
 
-      name = "Geonosian scientist",
-      objectCRC = 504767605, 
-      socialGroup = "Geonosian",
-      named = FALSE, 
+geonosianScientist1 = Creature:new { 
+	objectName = "geonosianScientist1", 
+	creatureType = NPC, 
 
-      level = 48,
-      
+	speciesName = "geonosian_scientist", 
+	combatFlags = 0, 
+	creatureBitmask = 264, 
+	stfName = "mob/creature_names", 
+	objectCRC = 504767605, 
+	positionX = -2.4, 
+	positionY = 10.0, 
+	positionZ = 10.8, 
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	directionX = 0, 
+	directionZ = 0, 
+	directionY = 0.995104, 
+	directionW = -0.0988351, 
+	randomMovement = 0, 
+	mood = "neutral", 
+	cellID = 1627781 
+} 
 
-      healthMax = 12200,
-      healthMin = 10000,
-      strength = 0,
-      constitution = 0,
+geonosianScientist2 = Creature:new { 
+	objectName = "geonosianScientist2", 
+	creatureType = NPC, 
 
-      actionMax = 12200,
-      actionMin = 10000,
-      quickness = 0,
-      stamina = 0,
+	speciesName = "geonosian_scientist", 
+	combatFlags = 0, 
+	creatureBitmask = 264, 
+	stfName = "mob/creature_names", 
+	objectCRC = 504767605, 
+	positionX = -107.2, 
+	positionY = -33.8, 
+	positionZ = -18.0, 
 
-      mindMax = 12200,
-      mindMin = 10000,
-      focus = 0,
-      willpower = 0,
+	directionX = 0, 
+	directionZ = 0, 
+	directionY = 0.995104, 
+	directionW = -0.0988351, 
+	randomMovement = 0, 
+	mood = "neutral", 
+	cellID = 1627790 
+} 
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 15,
-      energy = 15,
-      electricity = 30,
-      stun = 0,
-      blast = -1,
-      heat = 65,
-      cold = 0,
-      acid = -1,
-      lightsaber = 0,
+geonosianScientist3 = Creature:new { 
+	objectName = "geonosianScientist3", 
+	creatureType = NPC, 
 
-      accuracy = 0,
+	speciesName = "geonosian_scientist", 
+	combatFlags = 0, 
+	creatureBitmask = 264, 
+	stfName = "mob/creature_names", 
+	objectCRC = 504767605, 
+	positionX = -134.1, 
+	positionY = -74.3, 
+	positionZ = -21.8, 
 
-      healer = 0,
+	directionX = 0, 
+	directionZ = 0, 
+	directionY = 0.995104, 
+	directionW = -0.0988351, 
+	randomMovement = 0, 
+	mood = "neutral", 
+	cellID = 1627794  
+} 
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 0,
-      aggressive = 0,
-      invincible = 0, 
+geonosianScientist4 = Creature:new { 
+	objectName = "geonosianScientist4", 
+	creatureType = NPC, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	speciesName = "geonosian_scientist", 
+	combatFlags = 0, 
+	creatureBitmask = 264, 
+	stfName = "mob/creature_names", 
+	objectCRC = 504767605, 
+	positionX = 23.8, 
+	positionY = -79.3, 
+	positionZ = -31.6, 
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	directionX = 0, 
+	directionZ = 0, 
+	directionY = 0.995104, 
+	directionW = -0.0988351, 
+	randomMovement = 0, 
+	mood = "neutral", 
+	cellID = 1627798 
+} 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+geonosianScientist5 = Creature:new { 
+	objectName = "geonosianScientist5", 
+	creatureType = NPC, 
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	speciesName = "geonosian_scientist", 
+	combatFlags = 0, 
+	creatureBitmask = 264, 
+	stfName = "mob/creature_names", 
+	objectCRC = 504767605, 
+	positionX = -35.8, 
+	positionY = -161.2, 
+	positionZ = -21.8, 
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	directionX = 0, 
+	directionZ = 0, 
+	directionY = 0.995104, 
+	directionW = -0.0988351, 
+	randomMovement = 0, 
+	mood = "neutral", 
+	cellID = 1627803 
+} 
 
-      lootGroup = "0", -- Group it belongs to for loot
+geonosianScientist6 = Creature:new { 
+	objectName = "geonosianScientist6", 
+	creatureType = NPC, 
 
-      tame = 0,  -- Likely hood to be tamed
+	speciesName = "geonosian_scientist", 
+	combatFlags = 0, 
+	creatureBitmask = 264, 
+	stfName = "mob/creature_names", 
+	objectCRC = 504767605, 
+	positionX = -72.1, 
+	positionY = -276.9, 
+	positionZ = -34.0, 
 
-      milk = 0,
+	directionX = 0, 
+	directionZ = 0, 
+	directionY = 0.995104, 
+	directionW = -0.0988351, 
+	randomMovement = 0, 
+	mood = "neutral", 
+	cellID = 1627812 
+} 
 
-      boneType = "",
-      boneMax = 0,
+geonosianScientist7 = Creature:new { 
+	objectName = "geonosianScientist7", 
+	creatureType = NPC, 
 
-      hideType = "",
-      hideMax = 0,
+	speciesName = "geonosian_scientist", 
+	combatFlags = 0, 
+	creatureBitmask = 264, 
+	stfName = "mob/creature_names", 
+	objectCRC = 504767605, 
+	positionX = -126.4, 
+	positionY = -186.2, 
+	positionZ = -34.0, 
 
-      meatType = "",
-      meatMax = 0,
+	directionX = 0, 
+	directionZ = 0, 
+	directionY = 0.995104, 
+	directionW = -0.0988351, 
+	randomMovement = 0, 
+	mood = "neutral", 
+	cellID = 1627815 
+} 
 
-      skills = { "", "", "" }
-      -- respawnTimer = 180,
+geonosianScientist8 = Creature:new { 
+	objectName = "geonosianScientist8", 
+	creatureType = NPC, 
 
-      behaviorScript = "", -- Link to the behavior script for this object
-}
+	speciesName = "geonosian_scientist", 
+	combatFlags = 0, 
+	creatureBitmask = 264, 
+	stfName = "mob/creature_names", 
+	objectCRC = 504767605, 
+	positionX = 7.2, 
+	positionY = -333.2, 
+	positionZ = -22.0, 
 
-Creatures:addCreature(geonosianScientist, 504767605) --  Add to Global Table
+	directionX = 0, 
+	directionZ = 0, 
+	directionY = 0.995104, 
+	directionW = -0.0988351, 
+	randomMovement = 0, 
+	mood = "neutral", 
+	cellID = 1627822 
+} 
+
+geonosianScientist9 = Creature:new { 
+	objectName = "geonosianScientist9", 
+	creatureType = NPC, 
+
+	speciesName = "geonosian_scientist", 
+	combatFlags = 0, 
+	creatureBitmask = 264, 
+	stfName = "mob/creature_names", 
+	objectCRC = 3305213154, 
+	positionX = -48.8, 
+	positionY = -31.8, 
+	positionZ = -18.0, 
+
+	directionX = 0, 
+	directionZ = 0, 
+	directionY = 0.995104, 
+	directionW = -0.0988351, 
+	randomMovement = 0, 
+	mood = "neutral", 
+	cellID = 1627785 
+} 

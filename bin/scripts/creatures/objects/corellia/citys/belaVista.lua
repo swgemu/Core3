@@ -84,160 +84,6 @@ belavistNpc2 = Creature:new {
 	cellID = 0
 }
 
-belavistNpc3 = Creature:new {
-	objectName = "belavistNpc3",
-	creatureType = NPC,
-
-	speciesName = "rtp_stormtrooper_elite_85",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6699.38,
-	positionY = -5809.72,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.937662,
-	directionW = -0.347549,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-belavistNpc4 = Creature:new {
-	objectName = "belavistNpc4",
-	creatureType = NPC,
-
-	speciesName = "rtp_leia_stormtrooper_guard",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4217747543,
-	positionX = 6646.02,
-	positionY = -5931.59,
-	positionZ = 330,
-
-	directionX = 7.79232e-05,
-	directionZ = -0.000560068,
-	directionY = -0.0203507,
-	directionW = 0.999793,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-belavistNpc5 = Creature:new {
-	objectName = "belavistNpc5",
-	creatureType = NPC,
-
-	speciesName = "rtp_leia_stormtrooper_guard",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4217747543,
-	positionX = 6644.26,
-	positionY = -5937.08,
-	positionZ = 330,
-
-	directionX = -2.1655e-05,
-	directionZ = -0.000414413,
-	directionY = 0.0521802,
-	directionW = 0.998638,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-belavistNpc6 = Creature:new {
-	objectName = "belavistNpc6",
-	creatureType = NPC,
-
-	speciesName = "rtp_leia_stormtrooper_guard",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4217747543,
-	positionX = 6649.56,
-	positionY = -5935.6,
-	positionZ = 330,
-
-	directionX = 0.000968106,
-	directionZ = -0.000246906,
-	directionY = 0.900925,
-	directionW = 0.433975,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-belavistNpc7 = Creature:new {
-	objectName = "belavistNpc7",
-	creatureType = NPC,
-
-	speciesName = "rtp_stormtrooper_elite_85",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6707.89,
-	positionY = -5814.25,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.912273,
-	directionW = 0.409583,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-belavistNpc8 = Creature:new {
-	objectName = "belavistNpc8",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_squad_leader",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2493178409,
-	positionX = 6650.38,
-	positionY = -5938.43,
-	positionZ = 330,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.637018,
-	directionW = 0.770849,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-belavistNpc9 = Creature:new {
-	objectName = "belavistNpc9",
-	creatureType = NPC,
-
-	speciesName = "crackdown_storm_commando",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 427178976,
-	positionX = 6648.54,
-	positionY = -5939.32,
-	positionZ = 330,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.636982,
-	directionW = 0.770879,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 belavistNpc10 = Creature:new {
 	objectName = "belavistNpc10",
 	creatureType = NPC,
@@ -257,28 +103,6 @@ belavistNpc10 = Creature:new {
 	directionW = 1,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-belavistNpc14 = Creature:new {
-	objectName = "belavistNpc14",
-	creatureType = NPC,
-
-	speciesName = "rtp_imperial_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2887599713,
-	positionX = 6712.78,
-	positionY = -5810.38,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.831294,
-	directionW = 0.555833,
-	randomMovement = 0,
-	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -326,28 +150,6 @@ belavistNpc16 = Creature:new {
 	cellID = 0
 }
 
-belavistNpc17 = Creature:new {
-	objectName = "belavistNpc17",
-	creatureType = NPC,
-
-	speciesName = "crackdown_storm_commando",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 427178976,
-	positionX = 6752.1,
-	positionY = -5823.5,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.688355,
-	directionW = 0.725374,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 belavistNpc18 = Creature:new {
 	objectName = "belavistNpc18",
 	creatureType = NPC,
@@ -389,50 +191,6 @@ belavistNpc19 = Creature:new {
 	directionW = 0.939396,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-belavistNpc20 = Creature:new {
-	objectName = "belavistNpc20",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_army_captain",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3498321727,
-	positionX = 6820.49,
-	positionY = -5743.53,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.0570603,
-	directionW = 0.998371,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-belavistNpc21 = Creature:new {
-	objectName = "belavistNpc21",
-	creatureType = NPC,
-
-	speciesName = "rtp_stormtrooper_elite_85",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6826.7,
-	positionY = -5820.68,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.428958,
-	directionW = 0.903324,
-	randomMovement = 0,
-	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -499,50 +257,6 @@ belavistNpc24 = Creature:new {
 	directionW = 0.778578,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-belavistNpc25 = Creature:new {
-	objectName = "belavistNpc25",
-	creatureType = NPC,
-
-	speciesName = "rtp_stormtrooper_elite_85",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6837.95,
-	positionY = -5806.84,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.478882,
-	directionW = 0.877879,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-belavistNpc26 = Creature:new {
-	objectName = "belavistNpc26",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_army_captain",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3498321727,
-	positionX = 6832.21,
-	positionY = -5811.19,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.99647,
-	directionW = -0.0839503,
-	randomMovement = 0,
-	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -795,7 +509,7 @@ belavistNpc38 = Creature:new {
 	speciesName = "bartender",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "mob/creature_names",
+	stfName = "npc_name",
 	objectCRC = 1359439934,
 	positionX = 8.54,
 	positionY = 0.14,
@@ -852,28 +566,6 @@ belavistNpc40 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 3375355
-}
-
-belavistNpc41 = Creature:new {
-	objectName = "belavistNpc41",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_rifleman",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1298804271,
-	positionX = 6845.3,
-	positionY = -5826.8,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.906308,
-	directionW = 0.422618,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
 }
 
 belavistNpc42 = Creature:new {
@@ -986,28 +678,6 @@ belavistNpc48 = Creature:new {
 	cellID = 0
 }
 
-belavistNpc49 = Creature:new {
-	objectName = "belavistNpc49",
-	creatureType = NPC,
-
-	speciesName = "rtp_stormtrooper_elite_85",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6852,
-	positionY = -5831.51,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.901421,
-	directionW = 0.432944,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 belavistNpc50 = Creature:new {
 	objectName = "belavistNpc50",
 	creatureType = NPC,
@@ -1049,28 +719,6 @@ belavistNpc51 = Creature:new {
 	directionW = -0.539331,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-belavistNpc53 = Creature:new {
-	objectName = "belavistNpc53",
-	creatureType = NPC,
-
-	speciesName = "rtp_imperial_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1476291957,
-	positionX = 6795.21,
-	positionY = -5702.92,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.52932,
-	directionW = 0.848422,
-	randomMovement = 0,
-	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -1137,50 +785,6 @@ belavistNpc56 = Creature:new {
 	directionW = 0.983037,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-belavistNpc57 = Creature:new {
-	objectName = "belavistNpc57",
-	creatureType = NPC,
-
-	speciesName = "rtp_stormtrooper_elite_85",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6794.42,
-	positionY = -5696.6,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.710534,
-	directionW = 0.703663,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-belavistNpc58 = Creature:new {
-	objectName = "belavistNpc58",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_captain",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2493178409,
-	positionX = 6853.17,
-	positionY = -5696.6,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.775701,
-	directionW = -0.631101,
-	randomMovement = 0,
-	mood = "npc_imperial",
 	cellID = 0
 }
 
@@ -1360,28 +964,6 @@ belavistNpc67 = Creature:new {
 	cellID = 0
 }
 
-belavistNpc68 = Creature:new {
-	objectName = "belavistNpc68",
-	creatureType = NPC,
-
-	speciesName = "rtp_stormtrooper_elite_85",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6825.35,
-	positionY = -5620.37,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.661262,
-	directionW = 0.750155,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 belavistNpc69 = Creature:new {
 	objectName = "belavistNpc69",
 	creatureType = NPC,
@@ -1448,50 +1030,6 @@ belavistNpc72 = Creature:new {
 	cellID = 0
 }
 
-belavistNpc73 = Creature:new {
-	objectName = "belavistNpc73",
-	creatureType = NPC,
-
-	speciesName = "rtp_stormtrooper_elite_85",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 628727249,
-	positionX = 6842.92,
-	positionY = -5604.11,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.469735,
-	directionW = 0.882808,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-belavistNpc74 = Creature:new {
-	objectName = "belavistNpc74",
-	creatureType = NPC,
-
-	speciesName = "rtp_imperial_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1040681339,
-	positionX = 6823.92,
-	positionY = -5597.88,
-	positionZ = 315,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.87395,
-	directionW = 0.486015,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 belavistNpc75 = Creature:new {
 	objectName = "belavistNpc75",
 	creatureType = NPC,
@@ -1533,50 +1071,6 @@ belavistNpc76 = Creature:new {
 	directionW = 0.256954,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-belavistNpc77 = Creature:new {
-	objectName = "belavistNpc77",
-	creatureType = NPC,
-
-	speciesName = "imperial_sergeant_major",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = 6908.17,
-	positionY = -5608.54,
-	positionZ = 330,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.237313,
-	directionW = 0.971433,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-belavistNpc78 = Creature:new {
-	objectName = "belavistNpc78",
-	creatureType = NPC,
-
-	speciesName = "imperial_staff_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = 6909.29,
-	positionY = -5606.48,
-	positionZ = 330,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.976369,
-	directionW = -0.216109,
-	randomMovement = 0,
-	mood = "npc_imperial",
 	cellID = 0
 }
 

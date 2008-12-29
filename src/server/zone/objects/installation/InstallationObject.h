@@ -43,9 +43,9 @@ public:
 
 	void handleStructureAddEnergy(Player* player);
 
-	string& getOwner();
+	String& getOwner();
 
-	void setOwner(const string& owner);
+	void setOwner(const String& owner);
 
 	unsigned long long getOwnerID();
 
@@ -116,7 +116,7 @@ protected:
 
 	virtual ~InstallationObject();
 
-	string _return_getOwner;
+	String _return_getOwner;
 
 	friend class InstallationObjectHelper;
 };
@@ -143,9 +143,9 @@ public:
 
 	void handleStructureAddEnergy(Player* player);
 
-	string& getOwner();
+	String& getOwner();
 
-	void setOwner(const string& owner);
+	void setOwner(const String& owner);
 
 	unsigned long long getOwnerID();
 
@@ -212,7 +212,7 @@ public:
 	float removeHopperItem(unsigned long long rid, int quantity);
 
 protected:
-	string _param0_setOwner__string_;
+	String _param0_setOwner__String_;
 };
 
 class InstallationObjectHelper : public DistributedObjectClassHelper, public Singleton<InstallationObjectHelper> {

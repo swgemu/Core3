@@ -66,9 +66,9 @@ interface ShipObject implements SceneObject {
 	void setShipBody(IntangibleObject tsb);
 	IntangibleObject getShipBody();
 	
-	void setStfName(const string Name);
-	string getStfName();
-	unicode getOwnerName();
+	void setStfName(const String Name);
+	String getStfName();
+	UnicodeString getOwnerName();
 	
 	//<Component Funcs>
 	int getComponentListSize();

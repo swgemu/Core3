@@ -45,6 +45,10 @@ which carries forward this exception.
 #include "events/ShuttleLandingEvent.h"
 #include "events/ShuttleTakeOffEvent.h"
 
+#include "events/WeatherChangeEvent.h"
+#include "events/WeatherIncreaseEvent.h"
+#include "events/WeatherDecreaseEvent.h"
+
 #include "PlanetManagerImplementation.h"
 
 #include "../../ZoneProcessServerImplementation.h"
@@ -52,6 +56,9 @@ which carries forward this exception.
 #include "../../objects.h"
 
 #include "../../objects/terrain/PlanetNames.h"
+
+#include "../../objects/area/ActiveAreaTrigger.h"
+#include "../../objects/area/BadgeActiveArea.h"
 
 const uint32 PlanetManagerImplementation::travelFare[10][10] = {
 		{ 100, 1000, 2000, 4000,    0,  500,    0,    0,  600, 3000},
@@ -66,6 +73,17 @@ const uint32 PlanetManagerImplementation::travelFare[10][10] = {
 		{3000,    0,    0,    0,    0,    0,    0,    0,    0,  100}
 };
 
+const float PlanetManagerImplementation::windDirection[8][2] = {
+		{0.0f, 1.0f},    //N
+		{1.0f, 1.0f},   //NE
+		{1.0f, 0.0f},    //E
+		{1.0f, -1.0f},  //SE
+		{0.0f, -1.0f},   //S
+		{-1.0f, -1.0f}, //SW
+		{-1.0f, 0.0f},   //W
+		{-1.0f, 1.0f}   //NW
+};
+
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServerImplementation* serv) :
 	PlanetManagerServant(), Mutex("PlanetManager"), Logger() {
 	zone = planet;
@@ -77,6 +95,10 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	shuttleTakeOffEvent = new ShuttleTakeOffEvent(this);
 	shuttleLandingEvent = new ShuttleLandingEvent(this);
 
+	weatherChangeEvent = new WeatherChangeEvent(this);
+	weatherIncreaseEvent = new WeatherIncreaseEvent(this);
+	weatherDecreaseEvent = new WeatherDecreaseEvent(this);
+
 	shuttleMap = new ShuttleMap();
 	ticketCollectorMap = new TicketCollectorMap(2000);
 	travelTerminalMap = new TravelTerminalMap(2000);
@@ -86,14 +108,21 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	staticTangibleObjectMap.setNullValue(NULL);
 	staticTangibleObjectMap.setInsertPlan(SortedVector<VectorMapEntry<uint64, TangibleObject*>*>::NO_DUPLICATE);
 
-	areaMap = new AreaMap(16000, 16000, 500, 500);
+	noBuildAreaMap = new NoBuildAreaMap();
 
 	creatureManager = planet->getCreatureManager();
 	structureManager = new StructureManager(zone, server);
 
-	stringstream logName;
+	StringBuffer logName;
 	logName << "PlanetManager" << zone->getZoneID();
-	setLoggingName(logName.str());
+	setLoggingName(logName.toString());
+
+	windRow = System::random(7);
+
+	if (zone->getZoneID() < 10) {
+		weatherWindChange();
+		weatherChange();
+	}
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -120,14 +149,23 @@ PlanetManagerImplementation::~PlanetManagerImplementation() {
 	delete missionTerminalMap;
 	missionTerminalMap = NULL;
 
-	delete areaMap;
-	areaMap = NULL;
+	delete noBuildAreaMap;
+	noBuildAreaMap = NULL;
 
 	delete shuttleTakeOffEvent;
 	shuttleTakeOffEvent = NULL;
 
 	delete shuttleLandingEvent;
 	shuttleLandingEvent = NULL;
+
+	delete weatherChangeEvent;
+	weatherChangeEvent = NULL;
+
+	delete weatherIncreaseEvent;
+	weatherIncreaseEvent = NULL;
+
+	delete weatherDecreaseEvent;
+	weatherDecreaseEvent = NULL;
 }
 
 void PlanetManagerImplementation::init() {
@@ -141,131 +179,70 @@ void PlanetManagerImplementation::start() {
 		takeOffShuttles();
 
 	loadNoBuildAreas();
+
+	loadBadgeAreas();
 }
 
 void PlanetManagerImplementation::stop() {
 	lock();
 
-	structureManager->unloadStructures();
 	clearShuttles();
 	clearTicketCollectors();
 	clearTravelTerminals();
 	clearCraftingStations();
 	clearStaticTangibleObjects();
+	structureManager->unloadStructures();
 
 	unlock();
 }
 
 void PlanetManagerImplementation::loadNoBuildAreas() {
-	stringstream query;
-	query << "SELECT * FROM no_build_areas WHERE zoneid = " << zone->getZoneID() << ";";
+	StringBuffer query;
+	query << "SELECT x, y, radius FROM no_build_areas WHERE zoneid = " << zone->getZoneID() << ";";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 	while (result->next()) {
-		uint64 uid = result->getUnsignedLong(1);
-		float minX = result->getFloat(2);
-		float maxX = result->getFloat(3);
-		float minY = result->getFloat(4);
-		float maxY = result->getFloat(5);
-		uint8 reason = result->getUnsignedInt(6);
+		float x = result->getFloat(0);
+		float y = result->getFloat(1);
+		float radius = result->getFloat(2);
 
-		addNoBuildArea(minX, maxX, minY, maxY, reason, uid);
+
+		addNoBuildArea(x, y, radius);
 	}
 
 	delete result;
 }
 
-void PlanetManagerImplementation::addNoBuildArea(float minX, float maxX, float minY, float maxY, uint64 uid, uint8 reason) {
+void PlanetManagerImplementation::loadBadgeAreas() {
+	StringBuffer query;
+	query << "SELECT x, y, z, badge_id FROM badge_areas WHERE planet_id = " << zone->getZoneID() << ";";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	while (result->next()) {
+		float x = result->getFloat(0);
+		float y = result->getFloat(1);
+		float z = result->getFloat(2);
+		uint8 badge_id = result->getInt(3);
+
+		spawnActiveArea(new BadgeActiveArea(x,y,z, 100, badge_id));
+	}
+
+	delete result;
+}
+
+void PlanetManagerImplementation::addNoBuildArea(float x, float y, float radius) {
 	lock();
 	try {
-		NoBuildArea * area = new NoBuildArea(minX, maxX, minY, maxY, reason);
-		area->setUID(uid);
-		areaMap->addArea(area);
+		noBuildAreaMap->add(new Area(x, y, 0, radius));
 	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::loadNoBuildAreas: "  << e.getMessage() << endl;
+		System::out << "Exception Caught in PlanetManagerImplementation::loadNoBuildAreas: "  << e.getMessage() << endl;
 	} catch (...) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::loadNoBuildAreas" << endl;
+		System::out << "Unspecified Exception Caught in PlanetManagerImplementation::loadNoBuildAreas" << endl;
 	}
 	unlock();
 }
-
-void PlanetManagerImplementation::addNoBuildArea(NoBuildArea * area) {
-	lock();
-	try {
-		areaMap->addArea(area);
-	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::addNoBuildArea: "  << e.getMessage() << endl;
-	} catch (...) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::addNoBuildArea" << endl;
-	}
-	unlock();
-}
-
-void PlanetManagerImplementation::deleteNoBuildArea(NoBuildArea * area) {
-	lock();
-	try {
-		areaMap->addArea(area);
-
-		uint64 id = area->getUID();
-
-		area->finalize();
-
-		stringstream query;
-		query << "DELETE FROM no_build_areas WHERE uid = " << id << ";";
-
-		ServerDatabase::instance()->executeStatement(query);
-
-
-	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::deleteNoBuildArea: "  << e.getMessage() << endl;
-	} catch (...) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::deleteNoBuildArea" << endl;
-	}
-	unlock();
-}
-
-NoBuildArea * PlanetManagerImplementation::createNoBuildArea(float minX, float maxX, float minY, float maxY, uint8 reason) {
-	NoBuildArea * area = NULL;
-
-	try {
-		area = new NoBuildArea(minX, maxX, minY, maxY, reason);
-
-		stringstream statement;
-
-		statement << "INSERT INTO `no_build_areas` "
-		<< "(`zoneid`,`xMin`,`xMax`,`yMin`,`yMax`,`reason`)"
-		<< " VALUES(" << zone->getZoneID() << ", " << minX << ", " << maxX
-		<< ", " << minY << ", " << maxY << ", " << (unsigned short) reason << ");";
-
-		ServerDatabase::instance()->executeStatement(statement);
-
-		stringstream query;
-
-		query << "SELECT MAX(uid) FROM no_build_areas";
-
-		ResultSet * rs = ServerDatabase::instance()->executeQuery(query);
-
-
-		if (rs->next())
-			area->setUID(rs->getUnsignedLong(0));
-
-		delete rs;
-
-	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::createNoBuildArea: "  << e.getMessage() << endl;
-		return NULL;
-	} catch (...) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::createNoBuildArea" << endl;
-		return NULL;
-	}
-
-	if (area != NULL)
-		addNoBuildArea(area);
-
-	return area;
-}
-
 
 
 void PlanetManagerImplementation::loadStaticTangibleObjects() {
@@ -273,7 +250,7 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 
 	int planetid = zone->getZoneID();
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM statictangibleobjects WHERE zoneid = " << planetid << ";";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
@@ -281,13 +258,13 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 	while (result->next()) {
 		uint64 parentId = result->getUnsignedLong(2);
 
-		string name = result->getString(3);
+		String name = result->getString(3);
 
-		string file = result->getString(4);
+		String file = result->getString(4);
 
 		int type = result->getInt(5);
 
-		string templatename = result->getString(6);
+		String templatename = result->getString(6);
 
 		float oX = result->getFloat(7);
 		float oY = result->getFloat(8);
@@ -302,7 +279,7 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 
 		tano->setName(name);
 		tano->setParent(zone->lookupObject(parentId));
-		tano->setObjectCRC(String::hashCode(file));
+		tano->setObjectCRC(file.hashCode());
 		tano->initializePosition(x, z, y);
 		tano->setDirection(oX, oZ, oY, oW);
 		tano->setObjectSubType(type);
@@ -422,18 +399,18 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 
 void PlanetManagerImplementation::loadShuttles() {
 	int planetid = zone->getZoneID();
-	string planetName = Planet::getPlanetName(zone->getZoneID());
+	String planetName = Planet::getPlanetName(zone->getZoneID());
 
 	lock();
 	try {
-		stringstream query;
+		StringBuffer query;
 		query << "SELECT * FROM transports WHERE planet_id = " << planetid << ";";
 
 		ResultSet* shut = ServerDatabase::instance()->executeQuery(query);
 
 		while (shut->next()) {
 			uint32 shuttleId = shut->getUnsignedInt(0);
-			string shuttleName = shut->getString(2);
+			String shuttleName = shut->getString(2);
 			uint64 shuttleParentId = shut->getUnsignedLong(3);
 			float shuttlePosX = shut->getFloat(4);
 			float shuttlePosY = shut->getFloat(5);
@@ -454,7 +431,7 @@ void PlanetManagerImplementation::loadShuttles() {
 			shuttle->setObjectCRC(shuttleCRC);
 			shuttleMap->put(shuttleName, shuttle);
 
-			stringstream query2;
+			StringBuffer query2;
 			query2 << "SELECT parent, pos_x, pos_y, pos_z, dir_y, dir_w FROM ticket_collectors WHERE transport_id = " << shuttleId << ";";
 
 			ResultSet* collectors = ServerDatabase::instance()->executeQuery(query2);
@@ -468,7 +445,7 @@ void PlanetManagerImplementation::loadShuttles() {
 				float collDirW = collectors->getFloat(5);
 
 				TicketCollector * colector = new TicketCollector(shuttle, getNextStaticObjectID(false),
-					unicode("Ticket Collector"), "ticket_travel", collPosX, collPosZ, collPosY);
+					UnicodeString("Ticket Collector"), "ticket_travel", collPosX, collPosZ, collPosY);
 				colector->setZoneProcessServer(server);
 				colector->setDirection(0, 0, collDirY, collDirW);
 				colector->setParent(zone->lookupObject(collCellId));
@@ -479,7 +456,7 @@ void PlanetManagerImplementation::loadShuttles() {
 
 			delete collectors;
 
-			stringstream query3;
+			StringBuffer query3;
 			query3 << "SELECT parent, pos_x, pos_y, pos_z, dir_y, dir_w FROM ticket_terminals WHERE transport_id = " << shuttleId << ";";
 
 			ResultSet* terminals = ServerDatabase::instance()->executeQuery(query3);
@@ -625,10 +602,10 @@ void PlanetManagerImplementation::loadCraftingStations() {
 
 	lock();
 
-	string name;
+	String name;
 	uint64 crc;
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM staticobjects WHERE zoneid = " << planetid << ";";
 
 	try {
@@ -639,7 +616,7 @@ void PlanetManagerImplementation::loadCraftingStations() {
 
 			uint64 parentId = result->getUnsignedLong(2);
 
-			string file = result->getString(3);
+			String file = result->getString(3);
 
 			float oX = result->getFloat(4);
 			float oY = result->getFloat(5);
@@ -653,13 +630,12 @@ void PlanetManagerImplementation::loadCraftingStations() {
 
 			float type = result->getFloat(11);
 
-			if ((int) file.find("object/tangible/crafting/station/") >= 0) {
-
-				crc = String::hashCode(file);
+			if (file.indexOf("object/tangible/crafting/station/") != -1) {
+				crc = file.hashCode();
 
 				name = getStationName(crc);
 
-				CraftingStation* station = new CraftingStation(oid, crc, unicode(name), "public_crafting_station");
+				CraftingStation* station = new CraftingStation(oid, crc, UnicodeString(name), "public_crafting_station");
 
 				station->setEffectiveness(50);
 
@@ -684,22 +660,22 @@ void PlanetManagerImplementation::loadCraftingStations() {
 	unlock();
 }
 
-string PlanetManagerImplementation::getStationName(uint64 crc){
-	string name = "";
+String PlanetManagerImplementation::getStationName(uint64 crc){
+	String name = "";
 
-	if(crc == 0xAF09A3F0)
+	if (crc == 0xAF09A3F0)
 		name = "Clothing and Armor Public Crafting Station";
 
-	if(crc == 0x2FF7F78B)
+	if (crc == 0x2FF7F78B)
 		name = "Food and Chemical Public Crafting Station";
 
-	if(crc == 0x17929444)
+	if (crc == 0x17929444)
 		name = "Starship Public Crafting Station";
 
-	if(crc == 0x1BABCF4B)
+	if (crc == 0x1BABCF4B)
 		name = "Structure and Furniture Public Crafting Station";
 
-	if(crc == 0x72719FEA)
+	if (crc == 0x72719FEA)
 		name = "Weapon, Droid, and General Public Crafting Station";
 
 	return name;
@@ -709,9 +685,7 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 		uint64 objectID, float x, float y, int orient) {
 	try {
 
-		BaseArea * baseArea = areaMap->getBaseArea(x,y);
-
-		if (baseArea->containsNoBuildAreas() && baseArea->getNoBuildArea(x, y) != NULL) {
+		if (isNoBuildArea(x,y)) {
 			player->sendSystemMessage("You can not build here.");
 			return;
 		}
@@ -753,7 +727,7 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 		structureManager->spawnTempStructure(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
 	}
 	catch(...) {
-		cout << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
+		System::out << "Exception in PlanetManagerImplementation::placePlayerStructure\n";
 	}
 }
 
@@ -841,7 +815,7 @@ int64 PlanetManagerImplementation::getLandingTime() {
 	return landing.miliDifference();
 }
 
-ShuttleCreature* PlanetManagerImplementation::getShuttle(const string& Shuttle) {
+ShuttleCreature* PlanetManagerImplementation::getShuttle(const String& Shuttle) {
 	lock();
 
 	ShuttleCreature* shuttle = shuttleMap->get(Shuttle);
@@ -865,14 +839,185 @@ uint64 PlanetManagerImplementation::getNextStaticObjectID(bool doLock) {
 }
 
 bool PlanetManagerImplementation::isNoBuildArea(float x, float y) {
-	try {
-		BaseArea * area = areaMap->getBaseArea(x,y);
-		return (area->getNoBuildArea(x, y) != NULL);
-	} catch (Exception e) {
-		cout << "Exception Caught in PlanetManagerImplementation::isNoBuildArea: " << e.getMessage() << endl;
-		return false;
-	} catch ( ... ) {
-		cout << "Unspecified Exception Caught in PlanetManagerImplementation::isNoBuildArea" << endl;
-		return false;
+	return noBuildAreaMap->isNoBuildArea(x,y);
+}
+
+void PlanetManagerImplementation::weatherChange() {
+	if (!zone->isWeatherEnabled())
+			return;
+
+	//Set the desired target weather.
+    int random = System::random(99);
+
+    if (random < 75) { //Set clear weather. //75%
+    	targetWeatherID = 0;
+
+    } else if (random >= 75 && random < 85){ //Set cloudy weather. //10%
+    	targetWeatherID = 1;
+
+    } else if (random >= 85 && random < 94) { //Set light storm. //9%
+    	targetWeatherID = 2;
+
+    } else if (random >= 94 && random < 98) { //Set moderate storm. //4%
+    	targetWeatherID = 3;
+
+    } else if (random >= 98) { //Set severe storm. //2%
+    	targetWeatherID = 4;
+    }
+
+    uint32 currentWeatherID = zone->getWeatherID();
+	int weatherDifference = (int)targetWeatherID - (int)currentWeatherID;
+
+	if (weatherDifference < 0) {
+		weatherTransition(-1); //Decrease the weather severity.
+
+	} else if (weatherDifference > 0) {
+		weatherTransition(1); //Increase the weather severity.
 	}
+
+	//Queue the next weather change.
+    uint32 newWeatherDelay = 2700000 + System::random(4500000); //45-120 minutes
+    server->addEvent(weatherChangeEvent, newWeatherDelay);
+}
+
+void PlanetManagerImplementation::weatherTransition(int direction) {
+	if (!zone->isWeatherEnabled())
+			return;
+
+	zone->changeWeatherID(direction);
+
+	if (zone->getWeatherID() >= 3 && System::random(2) == 2)
+		weatherWindChange();
+
+	weatherUpdatePlayers();
+
+    //See if we need to queue another increase or decrease event.
+    uint32 currentWeatherID = zone->getWeatherID();
+	int weatherDifference = (int)targetWeatherID - (int)currentWeatherID;
+
+	int delay = 180000 + System::random(600000); //3-13 minutes
+    if (weatherDifference < 0) { //Decrease the weather severity.
+		server->addEvent(weatherDecreaseEvent, delay);
+	}
+
+	if (weatherDifference > 0) { //Increase the weather severity.
+		server->addEvent(weatherIncreaseEvent, delay);
+	}
+}
+
+void PlanetManagerImplementation::weatherWindChange() {
+	if (windRow == 0) {
+		switch (System::random(1)) {
+			case 0:
+				windRow = 1;
+				break;
+			case 1:
+				windRow = 7;
+				break;
+		}
+
+	} else if (windRow == 7) {
+		switch (System::random(1)) {
+		case 0:
+			windRow = 6;
+			break;
+		case 1:
+			windRow = 0;
+			break;
+		}
+
+	} else if (windRow > 0 && windRow < 7){
+		switch (System::random(1)) {
+		case 0:
+			windRow++;
+			break;
+        case 1:
+			windRow--;
+			break;
+		}
+
+	} else {
+		windRow = 2;
+	}
+	zone->setWeatherWindX(windDirection[windRow][0]);
+    zone->setWeatherWindY(windDirection[windRow][1]);
+}
+
+void PlanetManagerImplementation::weatherUpdatePlayers() {
+    bool serverLoading = zone->getZoneServer()->isServerLoading();
+    if (serverLoading)
+    	return;
+
+    playerManager = server->getPlayerManager();
+    if (playerManager == NULL)
+    	return;
+
+    playerMap = playerManager->getPlayerMap();
+    if (playerMap == NULL)
+    	return;
+
+    try {
+    	playerMap->lock();
+    	playerMap->resetIterator(false);
+    	Player* player;
+
+    	while (playerMap->hasNext(false)) {
+    		player = playerMap->next(false);
+
+    		if (player != NULL) {
+    			playerMap->unlock();
+
+    			try {
+    				player->wlock();
+
+    				int playerZone = player->getZoneIndex();
+
+    				if (playerZone == zone->getZoneID() && player->isOnline() && !player->isLoading()) {
+    					player->updateWeather();
+    				}
+
+    				player->unlock();
+
+    			} catch (...) {
+    				player->unlock();
+    			}
+
+    			playerMap->lock();
+    		}
+    	}
+
+    	playerMap->unlock();
+
+    } catch (...) {
+    	error("unreported exception caught in PlanetManagerImplementation::updatePlayerWeather()");
+    	playerMap->unlock();
+    }
+}
+
+void PlanetManagerImplementation::weatherRemoveEvents() {
+	if (weatherChangeEvent->isQueued()) {
+		server->removeEvent(weatherChangeEvent);
+	}
+
+	if (weatherIncreaseEvent->isQueued()) {
+		server->removeEvent(weatherIncreaseEvent);
+	}
+
+	if (weatherDecreaseEvent->isQueued()) {
+		server->removeEvent(weatherDecreaseEvent);
+	}
+}
+
+void PlanetManagerImplementation::spawnActiveArea(ActiveArea * area) {
+
+	lock();
+
+	ActiveAreaTrigger * trigger = new ActiveAreaTrigger(area);
+
+	trigger->setObjectID(getNextStaticObjectID(false));
+	trigger->initializePosition(area->getX(), area->getZ(), area->getY());
+	trigger->setZoneProcessServer(server);
+	trigger->insertToZone(zone);
+
+	unlock();
 }

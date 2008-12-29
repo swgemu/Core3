@@ -60,7 +60,7 @@ public:
 		insertUnicode(inso->getName()); // Object Name
 		insertInt(1); // Volume
 
-		string app;
+		String app;
 		inso->getCustomizationString(app);
 		insertAscii(app); // I think - seems to work - but no real options to update, //insertShort(0);
 

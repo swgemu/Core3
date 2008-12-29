@@ -20,12 +20,12 @@
  *	DeedObjectStub
  */
 
-DeedObject::DeedObject(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+DeedObject::DeedObject(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new DeedObjectImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-DeedObject::DeedObject(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+DeedObject::DeedObject(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new DeedObjectImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -36,7 +36,7 @@ DeedObject::DeedObject(DummyConstructorParameter* param) : TangibleObject(param)
 DeedObject::~DeedObject() {
 }
 
-unicode& DeedObject::getTargetName() {
+UnicodeString& DeedObject::getTargetName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -49,7 +49,7 @@ unicode& DeedObject::getTargetName() {
 		return ((DeedObjectImplementation*) _impl)->getTargetName();
 }
 
-string& DeedObject::getTargetFile() {
+String& DeedObject::getTargetFile() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +62,7 @@ string& DeedObject::getTargetFile() {
 		return ((DeedObjectImplementation*) _impl)->getTargetFile();
 }
 
-string& DeedObject::getTargetTemplate() {
+String& DeedObject::getTargetTemplate() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +75,7 @@ string& DeedObject::getTargetTemplate() {
 		return ((DeedObjectImplementation*) _impl)->getTargetTemplate();
 }
 
-void DeedObject::setTargetFile(string& path) {
+void DeedObject::setTargetFile(String& path) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -88,7 +88,7 @@ void DeedObject::setTargetFile(string& path) {
 		((DeedObjectImplementation*) _impl)->setTargetFile(path);
 }
 
-string& DeedObject::getTargetTempFile() {
+String& DeedObject::getTargetTempFile() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -160,7 +160,7 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getTargetTemplate());
 		break;
 	case 9:
-		setTargetFile(inv->getAsciiParameter(_param0_setTargetFile__string_));
+		setTargetFile(inv->getAsciiParameter(_param0_setTargetFile__String_));
 		break;
 	case 10:
 		resp->insertAscii(getTargetTempFile());
@@ -181,23 +181,23 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-unicode& DeedObjectAdapter::getTargetName() {
+UnicodeString& DeedObjectAdapter::getTargetName() {
 	return ((DeedObjectImplementation*) impl)->getTargetName();
 }
 
-string& DeedObjectAdapter::getTargetFile() {
+String& DeedObjectAdapter::getTargetFile() {
 	return ((DeedObjectImplementation*) impl)->getTargetFile();
 }
 
-string& DeedObjectAdapter::getTargetTemplate() {
+String& DeedObjectAdapter::getTargetTemplate() {
 	return ((DeedObjectImplementation*) impl)->getTargetTemplate();
 }
 
-void DeedObjectAdapter::setTargetFile(string& path) {
+void DeedObjectAdapter::setTargetFile(String& path) {
 	return ((DeedObjectImplementation*) impl)->setTargetFile(path);
 }
 
-string& DeedObjectAdapter::getTargetTempFile() {
+String& DeedObjectAdapter::getTargetTempFile() {
 	return ((DeedObjectImplementation*) impl)->getTargetTempFile();
 }
 
@@ -248,11 +248,11 @@ DistributedObjectAdapter* DeedObjectHelper::createAdapter(DistributedObjectStub*
  *	DeedObjectServant
  */
 
-DeedObjectServant::DeedObjectServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
+DeedObjectServant::DeedObjectServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = DeedObjectHelper::instance();
 }
 
-DeedObjectServant::DeedObjectServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
+DeedObjectServant::DeedObjectServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = DeedObjectHelper::instance();
 }
 

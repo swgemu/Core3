@@ -47,6 +47,6 @@ interface BlueFrogVector {
 	BlueFrogVector();
 	
 	unsigned int size();
-	void add(string item);
-	string get(unsigned int index);
+	void add(String item);
+	String get(unsigned int index);
 }

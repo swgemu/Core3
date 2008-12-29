@@ -6,32 +6,35 @@
 #include "../DeedObject.h"
 #include "../DeedObjectImplementation.h"
 
-FactoryDeedImplementation::FactoryDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn)
+FactoryDeedImplementation::FactoryDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn)
 	: FactoryDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectCRC = tempcrc;
+
 	name = n;
 	templateName = tempn;
 
 	init();
 }
 
-FactoryDeedImplementation::FactoryDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn)
+FactoryDeedImplementation::FactoryDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn)
 	: FactoryDeedServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectID = objid;
+
 	objectCRC = tempcrc;
+
 	name = n;
 	templateName = tempn;
 
 	init();
 }
-FactoryDeedImplementation::~FactoryDeedImplementation() {
 
+FactoryDeedImplementation::~FactoryDeedImplementation() {
 }
 
 void FactoryDeedImplementation::parseItemAttributes() {
 	DeedObjectImplementation::parseItemAttributes();
 
-	string attr = "surplusMaintenance";
+	String attr = "surplusMaintenance";
 	setSurplusMaintenance(itemAttributes->getIntAttribute(attr));
 
 	attr = "surplusPower";
@@ -47,10 +50,10 @@ void FactoryDeedImplementation::parseItemAttributes() {
 void FactoryDeedImplementation::addAttributes(AttributeListMessage* alm) {
 	addHeaderAttributes(alm);
 
-	alm->insertAttribute("examine_maintenance", (int)getSurplusMaintenance());
-	alm->insertAttribute("examine_maintenance_rate", (float)getMaintenanceRate());
-	alm->insertAttribute("examine_power", (int)getSurplusPower());
-	alm->insertAttribute("examine_hoppersize", (float)getHopperSize());
+	alm->insertAttribute("examine_maintenance", (int) getSurplusMaintenance());
+	alm->insertAttribute("examine_maintenance_rate", (float) getMaintenanceRate());
+	alm->insertAttribute("examine_power", (int) getSurplusPower());
+	alm->insertAttribute("examine_hoppersize", (float) getHopperSize());
 
 	addFooterAttributes(alm);
 }
@@ -60,26 +63,34 @@ void FactoryDeedImplementation::init() {
 
 	targetTempFile = "object/installation/base/shared_construction_installation_base.iff";
 
-	if ((templateName.find("clothing") != string::npos)){
+	if (templateName.indexOf("clothing") != -1){
 		type = WEARABLES;
+
 		targetTemplate = "clothing_factory";
 		targetFile = "object/installation/manufacture/shared_clothing_factory.iff";
-		targetName = string("Clothing Factory");
-	} else if ((templateName.find("food") != string::npos)){
+
+		targetName = String("Clothing Factory");
+	} else if (templateName.indexOf("food") != -1){
 		type = FOOD;
+
 		targetTemplate = "food_factory";
 		targetFile = "object/installation/manufacture/shared_food_factory.iff";
-		targetName = string("Food Factory");
-	} else if ((templateName.find("structure") != string::npos)){
+
+		targetName = String("Food Factory");
+	} else if (templateName.indexOf("structure") != -1){
 		type = STRUCTURE;
+
 		targetTemplate = "structure_factory";
 		targetFile = "object/installation/manufacture/shared_structure_factory.iff";
-		targetName = string("Structure Factory");
+
+		targetName = String("Structure Factory");
 	} else {
 		type = EQUIPMENT;
+
 		targetTemplate = "weapon_factory";
 		targetFile = "object/installation/manufacture/shared_weapon_factory.iff";
-		targetName = string("Equipment Factory");
+
+		targetName = String("Equipment Factory");
 	}
 }
 

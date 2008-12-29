@@ -42,6 +42,9 @@
 -- Load files
 
 -- Dantooine
+RunSkillsFile("creatureSkills/dantooine/npcs/dantariAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/npcs/forceCrystalHunterAttacks.lua")
+RunSkillsFile("creatureSkills/dantooine/npcs/forceSensativeAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/npcs/untrainedWielderDarkSideAttacks.lua")
 RunSkillsFile("creatureSkills/dantooine/npcs/kungaAttacks.lua")
+RunSkillsFile("creatureSkills/dantooine/npcs/warrenAttacks.lua")

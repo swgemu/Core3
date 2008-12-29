@@ -58,7 +58,7 @@ paralopeAttack1 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 50,
 	stunChance = 0,
 	intimidateChance = 0,
 	

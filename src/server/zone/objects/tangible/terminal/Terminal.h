@@ -17,7 +17,7 @@ class TangibleObject;
 
 class Terminal : public TangibleObject {
 public:
-	Terminal(unsigned int objCRC, unsigned long long oid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType);
+	Terminal(unsigned int objCRC, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
 
 	int useObject(Player* player);
 

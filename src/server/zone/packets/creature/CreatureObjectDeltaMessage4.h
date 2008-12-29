@@ -75,16 +75,16 @@ public:
 		startList(skillModsToUpdate, creo->skillModsCounter += skillModsToUpdate);
 	}
 
-	void addSkillMod(const string& skillMod, int value) {
+	void addSkillMod(const String& skillMod, int value) {
 		insertByte(0);
-		insertAscii(skillMod.c_str());
+		insertAscii(skillMod.toCharArray());
 		insertInt(value);
 		insertInt(0);
 	}
 
-	void removeSkillMod(const string& skillMod, int value) {
+	void removeSkillMod(const String& skillMod, int value) {
 		insertByte(1);
-		insertAscii(skillMod.c_str());
+		insertAscii(skillMod.toCharArray());
 		insertInt(value);
 		insertInt(0);
 	}

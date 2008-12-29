@@ -14,7 +14,7 @@
  *	TerminalStub
  */
 
-Terminal::Terminal(unsigned int objCRC, unsigned long long oid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType) : TangibleObject(DummyConstructorParameter::instance()) {
+Terminal::Terminal(unsigned int objCRC, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new TerminalImplementation(objCRC, oid, n, tempn, x, z, y, TerminalType);
 	_impl->_setStub(this);
 }

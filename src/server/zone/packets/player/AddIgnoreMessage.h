@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class AddIgnoreMessage : public BaseMessage {
 public:
-    AddIgnoreMessage(uint64 oid, string name, string server, bool add) : BaseMessage() {
+    AddIgnoreMessage(uint64 oid, String name, String server, bool add) : BaseMessage() {
 	
     	insertShort(0x06);
     	insertInt(0x70E9DA0F);  // CRC

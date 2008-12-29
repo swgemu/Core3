@@ -81,7 +81,7 @@ Lieutenant Colonel (Cost:5,500) 110,000 (Delegate Costs 125 to send 100)
 Colonel (Cost:6,000) 120,000 (Delegate Costs 118 to send 100)
  */
 
-static const string rankNames[16] = { "", "private",
+static const String rankNames[16] = { "", "private",
 		"lance_corporal", "corporal", "staff_corporal", "sergeant",
 		"staff_sergeant", "master_sergeant", "warrant_officer_2",
 		"warrant_officer_1", "second_lieutenant", "lieutenant", "captain",
@@ -104,7 +104,7 @@ public:
 		return rank < 16;
 	}
 
-	inline static string getRankName(uint8 rank) {
+	inline static String getRankName(uint8 rank) {
 		if (!rankExists(rank))
 			return "";
 

@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "../../../../ZoneClientSession.h"
  
 FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, uint32 tempCRC, 
-		const unicode& n, const string& tempn) : FactoryCrateServant(object_id, tempCRC, n, tempn, 
+		const UnicodeString& n, const String& tempn) : FactoryCrateServant(object_id, tempCRC, n, tempn, 
 				FACTORYCRATE) {
 	objectCRC = tempCRC;
 	templateTypeName = "factory_n";
@@ -61,7 +61,7 @@ FactoryCrateImplementation::FactoryCrateImplementation(uint64 object_id, uint32 
 }
  
 FactoryCrateImplementation::FactoryCrateImplementation(CreatureObject* creature, uint32 tempCRC, 
-		const unicode& n, const string& tempn) : FactoryCrateServant(creature, tempCRC, n, tempn, 
+		const UnicodeString& n, const String& tempn) : FactoryCrateServant(creature, tempCRC, n, tempn, 
 				FACTORYCRATE) {
 	objectCRC = tempCRC;
 	templateTypeName = "factory_n";
@@ -76,6 +76,16 @@ FactoryCrateImplementation::~FactoryCrateImplementation(){
 }
 
 void FactoryCrateImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	//TODO:Cell permission check
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			if (_this->isTangible())
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
+
 	omr->finish();
 
 	player->sendMessage(omr);

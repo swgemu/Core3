@@ -15,9 +15,9 @@ class Weapon;
 
 class MeleeWeapon : public Weapon {
 public:
-	MeleeWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp = false);
+	MeleeWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp = false);
 
-	MeleeWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp = false);
+	MeleeWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false);
 
 protected:
 	MeleeWeapon(DummyConstructorParameter* param);
@@ -59,8 +59,8 @@ public:
 	MeleeWeapon* _this;
 
 public:
-	MeleeWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
-	MeleeWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
+	MeleeWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
+	MeleeWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
 	virtual ~MeleeWeaponServant();
 
 	void _setStub(DistributedObjectStub* stub);

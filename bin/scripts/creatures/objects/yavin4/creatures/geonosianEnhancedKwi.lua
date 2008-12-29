@@ -43,47 +43,46 @@
 geonosianEnhancedKwi = Creature:new {
       objectName = "geonosianEnhancedKwi",  -- Lua Object Name
       creatureType = "ANIMAL",
-      faction = "Geon. Monster",
+      
       gender = "",
 
-      name = "a Geonosian Enhanced Kwi",
+      stfName = "Enhanced Kwi",
       objectCRC = 2111021739, 
-      socialGroup = "Geon. Monster",
-      named = FALSE, 
+      socialGroup = "self", 
 
       level = 106,
       
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
+      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-      healthMax = 33000,
-      healthMin = 27000,
-      strength = 0,
-      constitution = 0,
+      healthMax = 35000,
+      healthMin = 31000,
+      strength = 5000,
+      constitution = 5000,
 
-      actionMax = 33000,
-      actionMin = 27000,
-      quickness = 0,
-      stamina = 0,
+      actionMax = 35000,
+      actionMin = 31000,
+      quickness = 5000,
+      stamina = 5000,
 
-      mindMax = 33000,
-      mindMin = 27000,
-      focus = 0,
-      willpower = 0,
+      mindMax = 35000,
+      mindMin = 31000,
+      focus = 5000,
+      willpower = 5000,
 
       height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+      armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
       kinetic = 40,
       energy = 40,
-      electricity = 0,
-      stun = 0,
-      blast = 0,
+      electricity = 5,
+      stun = 5,
+      blast = 5,
       heat = 40,
-      cold = 0,
-      acid = 0,
+      cold = 5,
+      acid = 5,
       lightsaber = 0,
 
-      accuracy = 0,
+      accuracy = 375,
 
       healer = 0,
 
@@ -91,24 +90,27 @@ geonosianEnhancedKwi = Creature:new {
       herd = 0,
       stalker = 0,
       killer = 1,
-      aggressive = 1,
+      aggressive = 0,
       invincible = 0, 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	  
+
+      meleeDefense = 1,  
+	  
+      rangedDefense = 1,
 
       attackCreatureOnSight = "", -- Enter socialGroups 
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+      weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+      weaponName = "Geonosian Enhanced Kwi", -- Name ex. 'a Vibrolance'
+      weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+      weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      weaponEquipped = 1,
+      weaponMinDamage = 350,
+      weaponMaxDamage = 800,
+      weaponAttackSpeed = 1,
+      weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
       alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -123,7 +125,7 @@ geonosianEnhancedKwi = Creature:new {
 
       internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      lootGroup = "0", -- Group it belongs to for loot
+      lootGroup = "4", -- Group it belongs to for loot
 
       tame = 0,  -- Likely hood to be tamed
 
@@ -138,8 +140,8 @@ geonosianEnhancedKwi = Creature:new {
       meatType = "meat_herbivore_yavin4",
       meatMax = 100,
 
-      skills = { " Stun attack", " Intimidation attack", "" }
-      respawnTimer = 60,
+      skills = { "geonosianEnhancedKwiAttack1", "geonosianEnhancedKwiAttack2", "geonosianEnhancedKwiAttack3",  "geonosianEnhancedKwiAttack4" },
+      respawnTimer = 300,
 
       behaviorScript = "", -- Link to the behavior script for this object
 }

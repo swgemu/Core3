@@ -54,13 +54,13 @@ class ServerDatabase {
 
 public:
 	ServerDatabase(ConfigManager* configManager) {
-		string& dbHost = configManager->getDBHost();
-        string& dbUser = configManager->getDBUser();
-        string& dbPass = configManager->getDBPass();
-        string& dbName = configManager->getDBName();
+		String& dbHost = configManager->getDBHost();
+        String& dbUser = configManager->getDBUser();
+        String& dbPass = configManager->getDBPass();
+        String& dbName = configManager->getDBName();
         uint16& dbPort = configManager->getDBPort();
 
-		impl = new MySqlDatabase(string("ServerDatabase"), dbHost);
+		impl = new MySqlDatabase(String("ServerDatabase"), dbHost);
 		impl->connect(dbName, dbUser, dbPass, dbPort);
 	}
 

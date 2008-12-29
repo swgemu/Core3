@@ -20,12 +20,12 @@
  *	RevivePackStub
  */
 
-RevivePack::RevivePack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+RevivePack::RevivePack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new RevivePackImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-RevivePack::RevivePack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+RevivePack::RevivePack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new RevivePackImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -343,11 +343,11 @@ DistributedObjectAdapter* RevivePackHelper::createAdapter(DistributedObjectStub*
  *	RevivePackServant
  */
 
-RevivePackServant::RevivePackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
+RevivePackServant::RevivePackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
 	_classHelper = RevivePackHelper::instance();
 }
 
-RevivePackServant::RevivePackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
+RevivePackServant::RevivePackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
 	_classHelper = RevivePackHelper::instance();
 }
 

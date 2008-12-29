@@ -38,7 +38,7 @@ void WaypointObject::changeStatus(bool status) {
 		((WaypointObjectImplementation*) _impl)->changeStatus(status);
 }
 
-void WaypointObject::setName(const string& Name) {
+void WaypointObject::setName(const String& Name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -51,7 +51,7 @@ void WaypointObject::setName(const string& Name) {
 		((WaypointObjectImplementation*) _impl)->setName(Name);
 }
 
-void WaypointObject::setInternalNote(const string& message) {
+void WaypointObject::setInternalNote(const String& message) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -64,7 +64,7 @@ void WaypointObject::setInternalNote(const string& message) {
 		((WaypointObjectImplementation*) _impl)->setInternalNote(message);
 }
 
-void WaypointObject::setPlanetName(const string& planet) {
+void WaypointObject::setPlanetName(const String& planet) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -113,7 +113,7 @@ bool WaypointObject::getStatus() {
 		return ((WaypointObjectImplementation*) _impl)->getStatus();
 }
 
-string& WaypointObject::getName() {
+String& WaypointObject::getName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -126,7 +126,7 @@ string& WaypointObject::getName() {
 		return ((WaypointObjectImplementation*) _impl)->getName();
 }
 
-string& WaypointObject::getPlanetName() {
+String& WaypointObject::getPlanetName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -139,7 +139,7 @@ string& WaypointObject::getPlanetName() {
 		return ((WaypointObjectImplementation*) _impl)->getPlanetName();
 }
 
-string& WaypointObject::getInternalNote() {
+String& WaypointObject::getInternalNote() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -167,13 +167,13 @@ Packet* WaypointObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		changeStatus(inv->getBooleanParameter());
 		break;
 	case 7:
-		setName(inv->getAsciiParameter(_param0_setName__string_));
+		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
 	case 8:
-		setInternalNote(inv->getAsciiParameter(_param0_setInternalNote__string_));
+		setInternalNote(inv->getAsciiParameter(_param0_setInternalNote__String_));
 		break;
 	case 9:
-		setPlanetName(inv->getAsciiParameter(_param0_setPlanetName__string_));
+		setPlanetName(inv->getAsciiParameter(_param0_setPlanetName__String_));
 		break;
 	case 10:
 		switchStatus();
@@ -204,15 +204,15 @@ void WaypointObjectAdapter::changeStatus(bool status) {
 	return ((WaypointObjectImplementation*) impl)->changeStatus(status);
 }
 
-void WaypointObjectAdapter::setName(const string& Name) {
+void WaypointObjectAdapter::setName(const String& Name) {
 	return ((WaypointObjectImplementation*) impl)->setName(Name);
 }
 
-void WaypointObjectAdapter::setInternalNote(const string& message) {
+void WaypointObjectAdapter::setInternalNote(const String& message) {
 	return ((WaypointObjectImplementation*) impl)->setInternalNote(message);
 }
 
-void WaypointObjectAdapter::setPlanetName(const string& planet) {
+void WaypointObjectAdapter::setPlanetName(const String& planet) {
 	return ((WaypointObjectImplementation*) impl)->setPlanetName(planet);
 }
 
@@ -228,15 +228,15 @@ bool WaypointObjectAdapter::getStatus() {
 	return ((WaypointObjectImplementation*) impl)->getStatus();
 }
 
-string& WaypointObjectAdapter::getName() {
+String& WaypointObjectAdapter::getName() {
 	return ((WaypointObjectImplementation*) impl)->getName();
 }
 
-string& WaypointObjectAdapter::getPlanetName() {
+String& WaypointObjectAdapter::getPlanetName() {
 	return ((WaypointObjectImplementation*) impl)->getPlanetName();
 }
 
-string& WaypointObjectAdapter::getInternalNote() {
+String& WaypointObjectAdapter::getInternalNote() {
 	return ((WaypointObjectImplementation*) impl)->getInternalNote();
 }
 

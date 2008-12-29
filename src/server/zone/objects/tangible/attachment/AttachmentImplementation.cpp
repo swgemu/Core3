@@ -81,12 +81,12 @@ void AttachmentImplementation::initialize() {
 	if (attachmentType == ARMOR) {
 		objectCRC = 0xDF144F5C;
 		objectSubType = TangibleObjectImplementation::ARMORATTACHMENT;
-		name = unicode("\\#ffff00Armor Attachment");
+		name = UnicodeString("\\#ffff00Armor Attachment");
 		templateName = "gem_armor";
 	} else {
 		objectCRC = 0xC0FCFE34;
 		objectSubType = TangibleObjectImplementation::CLOTHINGATTACHMENT;
-		name = unicode("\\#ffff00Clothing Attachment");
+		name = UnicodeString("\\#ffff00Clothing Attachment");
 		templateName = "gem_clothing";
 	}
 	
@@ -99,7 +99,7 @@ void AttachmentImplementation::initialize() {
 
 void AttachmentImplementation::parseItemAttributes() {
 	
-	string name = "skillMod0Type";
+	String name = "skillMod0Type";
 	skillMod0Type = itemAttributes->getIntAttribute(name);
 	name = "skillMod0Value";
 	skillMod0Value = itemAttributes->getIntAttribute(name);
@@ -209,7 +209,7 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 	
 	int maxLevel = 120;
 
-	if(modifier > maxLevel){
+	if (modifier > maxLevel){
 		int diff = System::random(modifier - maxLevel);
 
 		modifier = maxLevel;
@@ -295,10 +295,10 @@ int AttachmentImplementation::getModValue(int luck, int modifier){
 	
 	int min, mod, result;
 	
-	if(modifier > 180){
+	if (modifier > 180){
 		min = 10;
 		mod = modifier % 25;
-	} else if(modifier > 130){
+	} else if (modifier > 130){
 		min = 3;
 		mod = modifier % 7;
 	} else {
@@ -307,7 +307,7 @@ int AttachmentImplementation::getModValue(int luck, int modifier){
 	}
 	
 	result = min + mod;
-	if(mod == 0){
+	if (mod == 0){
 		result *= -1;
 	}
 	

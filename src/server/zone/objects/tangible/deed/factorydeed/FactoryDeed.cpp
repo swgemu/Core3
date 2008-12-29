@@ -20,12 +20,12 @@
  *	FactoryDeedStub
  */
 
-FactoryDeed::FactoryDeed(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+FactoryDeed::FactoryDeed(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new FactoryDeedImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-FactoryDeed::FactoryDeed(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn) : DeedObject(DummyConstructorParameter::instance()) {
+FactoryDeed::FactoryDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn) : DeedObject(DummyConstructorParameter::instance()) {
 	_impl = new FactoryDeedImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -264,11 +264,11 @@ DistributedObjectAdapter* FactoryDeedHelper::createAdapter(DistributedObjectStub
  *	FactoryDeedServant
  */
 
-FactoryDeedServant::FactoryDeedServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
+FactoryDeedServant::FactoryDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = FactoryDeedHelper::instance();
 }
 
-FactoryDeedServant::FactoryDeedServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
+FactoryDeedServant::FactoryDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : DeedObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = FactoryDeedHelper::instance();
 }
 

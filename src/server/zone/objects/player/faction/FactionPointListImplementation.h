@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "FactionPointList.h"
 
 class FactionPointListImplementation : public FactionPointListServant {
-	LinkedList<string> list;
+	LinkedList<String> list;
 public:
 	FactionPointListImplementation() : FactionPointListServant() {
 
@@ -61,11 +61,11 @@ public:
 			list.remove(i-1);
 	}
 
-	void add(string& obj) {
+	void add(String& obj) {
 		list.add(obj);
 	}
 
-	string& get(int index) {
+	String& get(int index) {
 		return list.get(index);
 	}
 

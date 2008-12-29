@@ -20,12 +20,12 @@
  *	WeaponStub
  */
 
-Weapon::Weapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat) : TangibleObject(DummyConstructorParameter::instance()) {
+Weapon::Weapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WeaponImplementation(oid, tempCRC, n, tempn, eqp, tp, cat);
 	_impl->_setStub(this);
 }
 
-Weapon::Weapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat) : TangibleObject(DummyConstructorParameter::instance()) {
+Weapon::Weapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new WeaponImplementation(creature, temp, n, tempn, eqp, tp, cat);
 	_impl->_setStub(this);
 }
@@ -776,7 +776,7 @@ bool Weapon::hasPowerup() {
 		return ((WeaponImplementation*) _impl)->hasPowerup();
 }
 
-string& Weapon::getCert() {
+String& Weapon::getCert() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -789,7 +789,7 @@ string& Weapon::getCert() {
 		return ((WeaponImplementation*) _impl)->getCert();
 }
 
-string& Weapon::getXpType() {
+String& Weapon::getXpType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1296,7 +1296,7 @@ void Weapon::setUsesRemaining(int charges) {
 		((WeaponImplementation*) _impl)->setUsesRemaining(charges);
 }
 
-void Weapon::setCert(string& certification) {
+void Weapon::setCert(String& certification) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1649,7 +1649,7 @@ Packet* WeaponAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setUsesRemaining(inv->getSignedIntParameter());
 		break;
 	case 107:
-		setCert(inv->getAsciiParameter(_param0_setCert__string_));
+		setCert(inv->getAsciiParameter(_param0_setCert__String_));
 		break;
 	case 108:
 		setCertified(inv->getBooleanParameter());
@@ -1908,11 +1908,11 @@ bool WeaponAdapter::hasPowerup() {
 	return ((WeaponImplementation*) impl)->hasPowerup();
 }
 
-string& WeaponAdapter::getCert() {
+String& WeaponAdapter::getCert() {
 	return ((WeaponImplementation*) impl)->getCert();
 }
 
-string& WeaponAdapter::getXpType() {
+String& WeaponAdapter::getXpType() {
 	return ((WeaponImplementation*) impl)->getXpType();
 }
 
@@ -2068,7 +2068,7 @@ void WeaponAdapter::setUsesRemaining(int charges) {
 	return ((WeaponImplementation*) impl)->setUsesRemaining(charges);
 }
 
-void WeaponAdapter::setCert(string& certification) {
+void WeaponAdapter::setCert(String& certification) {
 	return ((WeaponImplementation*) impl)->setCert(certification);
 }
 
@@ -2115,7 +2115,7 @@ DistributedObjectAdapter* WeaponHelper::createAdapter(DistributedObjectStub* obj
  *	WeaponServant
  */
 
-WeaponServant::WeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
+WeaponServant::WeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = WeaponHelper::instance();
 }
 

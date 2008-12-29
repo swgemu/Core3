@@ -21,9 +21,9 @@ class Pharmaceutical;
 
 class RevivePack : public Pharmaceutical {
 public:
-	RevivePack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	RevivePack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	RevivePack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	RevivePack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -117,8 +117,8 @@ public:
 	RevivePack* _this;
 
 public:
-	RevivePackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
-	RevivePackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
+	RevivePackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
+	RevivePackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 	virtual ~RevivePackServant();
 
 	void _setStub(DistributedObjectStub* stub);

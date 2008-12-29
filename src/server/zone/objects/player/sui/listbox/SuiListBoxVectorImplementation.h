@@ -48,11 +48,11 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 class SuiListBoxVectorImplementation : public SuiListBoxVectorServant {
-	Vector<string> * vector;
+	Vector<String> * vector;
 
 public:
 	SuiListBoxVectorImplementation() : SuiListBoxVectorServant() {
-		vector = new Vector<string>();
+		vector = new Vector<String>();
 	}
 
 	~SuiListBoxVectorImplementation() {
@@ -63,11 +63,11 @@ public:
 		return vector->size();
 	}
 
-	inline void add(string item) {
+	inline void add(String item) {
 		vector->add(item);
 	}
 
-	inline string& get(unsigned int index) {
+	inline String& get(unsigned int index) {
 		return vector->get(index);
 	}
 

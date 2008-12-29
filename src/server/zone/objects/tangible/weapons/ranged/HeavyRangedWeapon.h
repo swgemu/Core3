@@ -17,9 +17,9 @@ class RangedWeapon;
 
 class HeavyRangedWeapon : public RangedWeapon {
 public:
-	HeavyRangedWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	HeavyRangedWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
-	HeavyRangedWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false);
+	HeavyRangedWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false);
 
 	int useObject(Player* player);
 
@@ -65,8 +65,8 @@ public:
 	HeavyRangedWeapon* _this;
 
 public:
-	HeavyRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp);
-	HeavyRangedWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp);
+	HeavyRangedWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp);
+	HeavyRangedWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp);
 	virtual ~HeavyRangedWeaponServant();
 
 	void _setStub(DistributedObjectStub* stub);

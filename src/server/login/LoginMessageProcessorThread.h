@@ -54,7 +54,7 @@ class LoginMessageProcessorThread : public ServiceProcessThread {
 	LoginPacketHandler* phandler;
 	
 public:
-	LoginMessageProcessorThread(string s, LoginPacketHandler* phand) : ServiceProcessThread(s) {
+	LoginMessageProcessorThread(String s, LoginPacketHandler* phand) : ServiceProcessThread(s) {
 		phandler = phand;
 	}
 

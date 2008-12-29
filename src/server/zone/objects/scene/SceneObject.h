@@ -31,6 +31,8 @@ class BuildingObject;
 
 class AttackTargetSkill;
 
+class LairObject;
+
 #include "engine/core/ManagedObject.h"
 
 class SceneObject : public ManagedObject {
@@ -99,9 +101,9 @@ public:
 
 	void generateAttributes(Player* player);
 
-	void info(const string& message, bool forcedLog = false);
+	void info(const String& message, bool forcedLog = false);
 
-	void error(const string& message);
+	void error(const String& message);
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* processor);
 
@@ -161,7 +163,7 @@ public:
 
 	float getDirectionW();
 
-	string& getLoggingName();
+	String& getLoggingName();
 
 	unsigned long long getAssociatedArea();
 
@@ -205,6 +207,8 @@ public:
 
 	bool doKeepObject();
 
+	ZoneProcessServerImplementation* getZoneProcessServer();
+
 	void setCombatState();
 
 	void clearCombatState(bool removedefenders = true);
@@ -229,7 +233,7 @@ public:
 
 	bool isInANoBuildArea();
 
-	void addDamageDone(CreatureObject* creature, int damage, string& skillname);
+	void addDamageDone(CreatureObject* creature, int damage, String& skillname);
 
 	void dropDamageDone(CreatureObject* creature);
 
@@ -244,7 +248,7 @@ protected:
 
 	bool _destroy();
 
-	string _return_getLoggingName;
+	String _return_getLoggingName;
 
 	friend class SceneObjectHelper;
 };
@@ -321,9 +325,9 @@ public:
 
 	void generateAttributes(Player* player);
 
-	void info(const string& message, bool forcedLog);
+	void info(const String& message, bool forcedLog);
 
-	void error(const string& message);
+	void error(const String& message);
 
 	void setObjectID(unsigned long long oid);
 
@@ -381,7 +385,7 @@ public:
 
 	float getDirectionW();
 
-	string& getLoggingName();
+	String& getLoggingName();
 
 	unsigned long long getAssociatedArea();
 
@@ -449,7 +453,7 @@ public:
 
 	bool isInANoBuildArea();
 
-	void addDamageDone(CreatureObject* creature, int damage, string& skillname);
+	void addDamageDone(CreatureObject* creature, int damage, String& skillname);
 
 	void dropDamageDone(CreatureObject* creature);
 
@@ -458,9 +462,9 @@ public:
 	void disseminateXp(int levels);
 
 protected:
-	string _param0_info__string_bool_;
-	string _param0_error__string_;
-	string _param2_addDamageDone__CreatureObject_int_string_;
+	String _param0_info__String_bool_;
+	String _param0_error__String_;
+	String _param2_addDamageDone__CreatureObject_int_String_;
 };
 
 class SceneObjectHelper : public DistributedObjectClassHelper, public Singleton<SceneObjectHelper> {

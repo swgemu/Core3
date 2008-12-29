@@ -27,7 +27,7 @@ class ObjectControllerMessage;
 
 class DraftSchematic : public ManagedObject {
 public:
-	DraftSchematic(unsigned int schematicID, const string& objName, const string& stringName, unsigned int objCRC, const string& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab);
+	DraftSchematic(unsigned int schematicID, const String& objName, const String& StringName, unsigned int objCRC, const String& groupName, unsigned int complexity, unsigned int schematicSize, int craftingToolTab);
 
 	DraftSchematic(DraftSchematic* draftSchematic);
 
@@ -37,7 +37,7 @@ public:
 
 	void sendTo(Player* player);
 
-	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight, string& subtitle);
+	void addExperimentalProperty(unsigned int groupNumber, const String& experimentalProperty, unsigned int weight, String& subtitle);
 
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
@@ -49,7 +49,7 @@ public:
 
 	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, const int optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
+	void addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int optional, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -61,11 +61,11 @@ public:
 
 	void setObjectID(unsigned long long objID);
 
-	void setTanoAttributes(string& attributes);
+	void setTanoAttributes(String& attributes);
 
 	void setContainer(SceneObject* container);
 
-	void setXpType(string& type);
+	void setXpType(String& type);
 
 	void setXp(int x);
 
@@ -75,13 +75,13 @@ public:
 
 	void setExpFailure(float rate);
 
-	void setExperimentingSkill(const string& exp);
+	void setExperimentingSkill(const String& exp);
 
-	void setCustomizationSkill(const string& cust);
+	void setCustomizationSkill(const String& cust);
 
-	void addCustomizationOption(const string& cust, const int value);
+	void addCustomizationOption(const String& cust, const int value);
 
-	void setAssemblySkill(const string& ass);
+	void setAssemblySkill(const String& ass);
 
 	void setFinished();
 
@@ -91,9 +91,9 @@ public:
 
 	DraftSchematicAttribute* getAttributeToSet(const int i);
 
-	DraftSchematicAttribute* getAttributeToSet(const string& name);
+	DraftSchematicAttribute* getAttributeToSet(const String& name);
 
-	void addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision);
+	void addAttributeToSet(const String& attribute, float minVal, float maxVal, const String& attributeExpProp, const int precision);
 
 	int getExpPropGroupListSize();
 
@@ -103,11 +103,11 @@ public:
 
 	unsigned int getSchematicCRC();
 
-	string& getName();
+	String& getName();
 
-	string& getStringName();
+	String& getStringName();
 
-	string& getGroupName();
+	String& getGroupName();
 
 	unsigned int getComplexity();
 
@@ -115,27 +115,27 @@ public:
 
 	unsigned int getObjectID();
 
-	string& getTanoAttributes();
+	String& getTanoAttributes();
 
 	int getCraftingToolTab();
 
 	SceneObject* getContainer();
 
-	string& getXpType();
+	String& getXpType();
 
 	int getXp();
 
-	string& getExperimentingSkill();
+	String& getExperimentingSkill();
 
-	string& getCustomizationSkill();
+	String& getCustomizationSkill();
 
-	string& getCustomizationOption(const int i);
+	String& getCustomizationOption(const int i);
 
 	int getCustomizationDefaultValue(const int i);
 
 	int getCustomizationOptionCount();
 
-	string& getAssemblySkill();
+	String& getAssemblySkill();
 
 	int getExpPoints();
 
@@ -156,15 +156,15 @@ protected:
 
 	virtual ~DraftSchematic();
 
-	string _return_getAssemblySkill;
-	string _return_getCustomizationOption;
-	string _return_getCustomizationSkill;
-	string _return_getExperimentingSkill;
-	string _return_getGroupName;
-	string _return_getName;
-	string _return_getStringName;
-	string _return_getTanoAttributes;
-	string _return_getXpType;
+	String _return_getAssemblySkill;
+	String _return_getCustomizationOption;
+	String _return_getCustomizationSkill;
+	String _return_getExperimentingSkill;
+	String _return_getGroupName;
+	String _return_getName;
+	String _return_getStringName;
+	String _return_getTanoAttributes;
+	String _return_getXpType;
 
 	friend class DraftSchematicHelper;
 };
@@ -183,7 +183,7 @@ public:
 
 	void sendTo(Player* player);
 
-	void addExperimentalProperty(unsigned int groupNumber, const string& experimentalProperty, unsigned int weight, string& subtitle);
+	void addExperimentalProperty(unsigned int groupNumber, const String& experimentalProperty, unsigned int weight, String& subtitle);
 
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
@@ -195,7 +195,7 @@ public:
 
 	void helperSendIngredientsToPlayer(ObjectControllerMessage* objMsg);
 
-	void addIngredient(const string& ingredientTemplateName, const string& ingredientTitleName, const int optional, const string& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
+	void addIngredient(const String& ingredientTemplateName, const String& ingredientTitleName, const int optional, const String& resourceType, unsigned int resourceQuantity, unsigned int combineType, unsigned int contribution);
 
 	DraftSchematicIngredient* getIngredient(int index);
 
@@ -207,11 +207,11 @@ public:
 
 	void setObjectID(unsigned long long objID);
 
-	void setTanoAttributes(string& attributes);
+	void setTanoAttributes(String& attributes);
 
 	void setContainer(SceneObject* container);
 
-	void setXpType(string& type);
+	void setXpType(String& type);
 
 	void setXp(int x);
 
@@ -221,13 +221,13 @@ public:
 
 	void setExpFailure(float rate);
 
-	void setExperimentingSkill(const string& exp);
+	void setExperimentingSkill(const String& exp);
 
-	void setCustomizationSkill(const string& cust);
+	void setCustomizationSkill(const String& cust);
 
-	void addCustomizationOption(const string& cust, const int value);
+	void addCustomizationOption(const String& cust, const int value);
 
-	void setAssemblySkill(const string& ass);
+	void setAssemblySkill(const String& ass);
 
 	void setFinished();
 
@@ -237,9 +237,9 @@ public:
 
 	DraftSchematicAttribute* getAttributeToSet(const int i);
 
-	DraftSchematicAttribute* getAttributeToSet(const string& name);
+	DraftSchematicAttribute* getAttributeToSet(const String& name);
 
-	void addAttributeToSet(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision);
+	void addAttributeToSet(const String& attribute, float minVal, float maxVal, const String& attributeExpProp, const int precision);
 
 	int getExpPropGroupListSize();
 
@@ -249,11 +249,11 @@ public:
 
 	unsigned int getSchematicCRC();
 
-	string& getName();
+	String& getName();
 
-	string& getStringName();
+	String& getStringName();
 
-	string& getGroupName();
+	String& getGroupName();
 
 	unsigned int getComplexity();
 
@@ -261,27 +261,27 @@ public:
 
 	unsigned int getObjectID();
 
-	string& getTanoAttributes();
+	String& getTanoAttributes();
 
 	int getCraftingToolTab();
 
 	SceneObject* getContainer();
 
-	string& getXpType();
+	String& getXpType();
 
 	int getXp();
 
-	string& getExperimentingSkill();
+	String& getExperimentingSkill();
 
-	string& getCustomizationSkill();
+	String& getCustomizationSkill();
 
-	string& getCustomizationOption(const int i);
+	String& getCustomizationOption(const int i);
 
 	int getCustomizationDefaultValue(const int i);
 
 	int getCustomizationOptionCount();
 
-	string& getAssemblySkill();
+	String& getAssemblySkill();
 
 	int getExpPoints();
 
@@ -298,20 +298,20 @@ public:
 	void toString();
 
 protected:
-	string _param1_addExperimentalProperty__int_string_int_string_;
-	string _param3_addExperimentalProperty__int_string_int_string_;
-	string _param0_addIngredient__string_string_int_string_int_int_int_;
-	string _param1_addIngredient__string_string_int_string_int_int_int_;
-	string _param3_addIngredient__string_string_int_string_int_int_int_;
-	string _param0_setTanoAttributes__string_;
-	string _param0_setXpType__string_;
-	string _param0_setExperimentingSkill__string_;
-	string _param0_setCustomizationSkill__string_;
-	string _param0_addCustomizationOption__string_int_;
-	string _param0_setAssemblySkill__string_;
-	string _param0_getAttributeToSet__string_;
-	string _param0_addAttributeToSet__string_float_float_string_int_;
-	string _param3_addAttributeToSet__string_float_float_string_int_;
+	String _param1_addExperimentalProperty__int_String_int_String_;
+	String _param3_addExperimentalProperty__int_String_int_String_;
+	String _param0_addIngredient__String_String_int_String_int_int_int_;
+	String _param1_addIngredient__String_String_int_String_int_int_int_;
+	String _param3_addIngredient__String_String_int_String_int_int_int_;
+	String _param0_setTanoAttributes__String_;
+	String _param0_setXpType__String_;
+	String _param0_setExperimentingSkill__String_;
+	String _param0_setCustomizationSkill__String_;
+	String _param0_addCustomizationOption__String_int_;
+	String _param0_setAssemblySkill__String_;
+	String _param0_getAttributeToSet__String_;
+	String _param0_addAttributeToSet__String_float_float_String_int_;
+	String _param3_addAttributeToSet__String_float_float_String_int_;
 };
 
 class DraftSchematicHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicHelper> {

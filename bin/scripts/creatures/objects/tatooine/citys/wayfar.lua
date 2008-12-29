@@ -861,7 +861,7 @@ wayfarNpc38 = Creature:new {
 	speciesName = "bartender",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "mob/creature_names",
+	stfName = "npc_name",
 	objectCRC = 1678307362,
 	positionX = -11.0018,
 	positionY = 1.78678,
@@ -1162,50 +1162,6 @@ wayfarNpc51 = Creature:new {
 	cellID = 0
 }
 
-wayfarNpc52 = Creature:new {
-	objectName = "wayfarNpc52",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = -5195.41,
-	positionY = -6449.13,
-	positionZ = 75,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = -0.668228,
-	directionW = 0.743957,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-wayfarNpc53 = Creature:new {
-	objectName = "wayfarNpc53",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_1",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1672932530,
-	positionX = -5195.41,
-	positionY = -6449.13,
-	positionZ = 75,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.668227,
-	directionW = 0.743957,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 wayfarNpc54 = Creature:new {
 	objectName = "wayfarNpc54",
 	creatureType = NPC,
@@ -1430,10 +1386,10 @@ wayfarNpc64 = Creature:new {
 	objectName = "wayfarNpc64",
 	creatureType = NPC,
 
-	speciesName = "sullustan_patron",
+	speciesName = "patron_sullustan",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "npc_name",
+	stfName = "mob/creature_names",
 	objectCRC = 1613368528,
 	positionX = -5252.74,
 	positionY = -6553.42,

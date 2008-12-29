@@ -62,14 +62,14 @@ public:
 
 	~StructureManagerSaveStateEvent() {
 		if (enQueued) {
-			cout << "ERROR: StructureManagerSaveStateEvent scheduled event deleted\n";
+			System::out << "ERROR: StructureManagerSaveStateEvent scheduled event deleted\n";
 			raise(SIGSEGV);
 		}
 	}
 
 	bool activate() {
-		if(structureManager == NULL) {
-			cout << "Error in StructureManagerSaveStateEvent::activate=>structureManager is NULL";
+		if (structureManager == NULL) {
+			System::out << "Error in StructureManagerSaveStateEvent::activate=>structureManager is NULL";
 			return false;
 		}
 

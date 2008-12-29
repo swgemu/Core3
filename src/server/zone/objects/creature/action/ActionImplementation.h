@@ -55,7 +55,7 @@ which carries forward this exception.
 class ActionImplementation : public ActionServant {
 	
 	SceneObject* parentObject;
-	VectorMap<uint32, string> conversationList; //Option Responses
+	VectorMap<uint32, String> conversationList; //Option Responses
 	
 	int actionMask;
 	int preRequisites;
@@ -69,17 +69,17 @@ class ActionImplementation : public ActionServant {
 	//Converse:
 		//Option Responses. <screenID, screenStr> 
 	    //String Syntax: "Left Box Text~Option1Text|O2|O3"
-		VectorMap<string, string> convoScreens;
+		VectorMap<String, String> convoScreens;
 		//Conversation Option Links. <"screenID,OptionNumber","nextScreenID,actionKey(if applicable)">
-		VectorMap<string, string> convoOptLink;
+		VectorMap<String, String> convoOptLink;
 	
 	//Say:
-		string sayText; //Say text
+		String sayText; //Say text
 		
 	//Give Item:
 		
 	//Give Mission:
-		string giveMissionKey;
+		String giveMissionKey;
 	
 public:
 	const static int TYPE_MOVE = 1;
@@ -111,11 +111,11 @@ public:
 	
 	void execAction(Player* player);
 	
-	void addConvoScreen(string screenID, string leftBoxText, int numOptions, string Options, string optLinks);
+	void addConvoScreen(String screenID, String leftBoxText, int numOptions, String Options, String optLinks);
 	
 private:
 	void carryConversation(Player* player);
-	void sendConvoScreen(Player* player, string& screenID);
+	void sendConvoScreen(Player* player, String& screenID);
 	bool prereqCheck(Player* player);
 };
 

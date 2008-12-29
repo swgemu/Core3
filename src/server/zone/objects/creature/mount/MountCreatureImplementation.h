@@ -64,7 +64,7 @@ class MountCreatureImplementation : public MountCreatureServant {
 	bool instantMount;
 
 protected:
-	string attributeString;
+	String attributeString;
 
 	ItemAttributes* itemAttributes;
 
@@ -75,8 +75,8 @@ public:
 	const static int PET = 2;
 
 public:
-	MountCreatureImplementation(CreatureObject* linkCreature, const string& name,
-			const string& stf, uint32 itnocrc, uint32 objCRC, uint64 oid);
+	MountCreatureImplementation(CreatureObject* linkCreature, const String& name,
+			const String& stf, uint32 itnocrc, uint32 objCRC, uint64 oid);
 
 	~MountCreatureImplementation();
 
@@ -94,11 +94,11 @@ public:
 	void store(bool doLock = true);
 
 	// setters and getters
-	inline void setAttributes(string& attributestring) {
-		itemAttributes->setAttributes(attributestring);
+	inline void setAttributes(String& attributeString) {
+		itemAttributes->setAttributes(attributeString);
 	}
 
-	inline string& getAttributes() {
+	inline String& getAttributes() {
 		itemAttributes->getAttributeString(attributeString);
 		return attributeString;
 	}

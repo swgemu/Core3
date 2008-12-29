@@ -19,9 +19,9 @@ class ShuttleCreature;
 
 class MissionTerminal;
 
-class NoBuildArea;
-
 class StructureManager;
+
+class ActiveArea;
 
 class PlanetManager : public DistributedObjectStub {
 public:
@@ -43,9 +43,9 @@ public:
 
 	unsigned long long getLandingTime();
 
-	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
+	unsigned int getTravelFare(String& departurePlanet, String& arrivalPlanet);
 
-	ShuttleCreature* getShuttle(const string& Shuttle);
+	ShuttleCreature* getShuttle(const String& Shuttle);
 
 	void sendPlanetTravelPointListResponse(Player* player);
 
@@ -55,13 +55,15 @@ public:
 
 	bool isNoBuildArea(bool x, bool y);
 
-	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason = 0);
+	void addNoBuildArea(float x, float y, float radius);
 
-	void addNoBuildArea(NoBuildArea* area);
+	void weatherUpdatePlayers();
 
-	void deleteNoBuildArea(NoBuildArea* area);
+	void weatherChange();
 
-	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason = 0);
+	void weatherRemoveEvents();
+
+	void spawnActiveArea(ActiveArea* area);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -95,9 +97,9 @@ public:
 
 	unsigned long long getLandingTime();
 
-	unsigned int getTravelFare(string& departurePlanet, string& arrivalPlanet);
+	unsigned int getTravelFare(String& departurePlanet, String& arrivalPlanet);
 
-	ShuttleCreature* getShuttle(const string& Shuttle);
+	ShuttleCreature* getShuttle(const String& Shuttle);
 
 	void sendPlanetTravelPointListResponse(Player* player);
 
@@ -107,18 +109,20 @@ public:
 
 	bool isNoBuildArea(bool x, bool y);
 
-	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason);
+	void addNoBuildArea(float x, float y, float radius);
 
-	void addNoBuildArea(NoBuildArea* area);
+	void weatherUpdatePlayers();
 
-	void deleteNoBuildArea(NoBuildArea* area);
+	void weatherChange();
 
-	NoBuildArea* createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason);
+	void weatherRemoveEvents();
+
+	void spawnActiveArea(ActiveArea* area);
 
 protected:
-	string _param0_getTravelFare__string_string_;
-	string _param1_getTravelFare__string_string_;
-	string _param0_getShuttle__string_;
+	String _param0_getTravelFare__String_String_;
+	String _param1_getTravelFare__String_String_;
+	String _param0_getShuttle__String_;
 };
 
 class PlanetManagerHelper : public DistributedObjectClassHelper, public Singleton<PlanetManagerHelper> {

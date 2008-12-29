@@ -14,12 +14,12 @@
  *	ChatRoomStub
  */
 
-ChatRoom::ChatRoom(ZoneServer* server, const string& name, unsigned int cid) {
+ChatRoom::ChatRoom(ZoneServer* server, const String& name, unsigned int cid) {
 	_impl = new ChatRoomImplementation(server, name, cid);
 	_impl->_setStub(this);
 }
 
-ChatRoom::ChatRoom(ZoneServer* server, ChatRoom* parent, const string& name, unsigned int cid) {
+ChatRoom::ChatRoom(ZoneServer* server, ChatRoom* parent, const String& name, unsigned int cid) {
 	_impl = new ChatRoomImplementation(server, parent, name, cid);
 	_impl->_setStub(this);
 }
@@ -96,7 +96,7 @@ ChatRoom* ChatRoom::getSubRoom(int i) {
 		return ((ChatRoomImplementation*) _impl)->getSubRoom(i);
 }
 
-ChatRoom* ChatRoom::getSubRoom(const string& name) {
+ChatRoom* ChatRoom::getSubRoom(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -137,7 +137,7 @@ void ChatRoom::removePlayer(Player* player, bool doLock) {
 		((ChatRoomImplementation*) _impl)->removePlayer(player, doLock);
 }
 
-void ChatRoom::removePlayer(const string& player) {
+void ChatRoom::removePlayer(const String& player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -176,7 +176,7 @@ bool ChatRoom::hasPlayer(Player* player) {
 		return ((ChatRoomImplementation*) _impl)->hasPlayer(player);
 }
 
-bool ChatRoom::hasPlayer(const string& name) {
+bool ChatRoom::hasPlayer(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -274,7 +274,7 @@ int ChatRoom::getPlayerSize() {
 		return ((ChatRoomImplementation*) _impl)->getPlayerSize();
 }
 
-void ChatRoom::setName(const string& Name) {
+void ChatRoom::setName(const String& Name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -287,7 +287,7 @@ void ChatRoom::setName(const string& Name) {
 		((ChatRoomImplementation*) _impl)->setName(Name);
 }
 
-string& ChatRoom::getName() {
+String& ChatRoom::getName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -300,7 +300,7 @@ string& ChatRoom::getName() {
 		return ((ChatRoomImplementation*) _impl)->getName();
 }
 
-string& ChatRoom::getFullPath() {
+String& ChatRoom::getFullPath() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -313,7 +313,7 @@ string& ChatRoom::getFullPath() {
 		return ((ChatRoomImplementation*) _impl)->getFullPath();
 }
 
-string& ChatRoom::getOwner() {
+String& ChatRoom::getOwner() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -326,7 +326,7 @@ string& ChatRoom::getOwner() {
 		return ((ChatRoomImplementation*) _impl)->getOwner();
 }
 
-string& ChatRoom::getCreator() {
+String& ChatRoom::getCreator() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -339,7 +339,7 @@ string& ChatRoom::getCreator() {
 		return ((ChatRoomImplementation*) _impl)->getCreator();
 }
 
-unicode& ChatRoom::getTitle() {
+UnicodeString& ChatRoom::getTitle() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -352,7 +352,7 @@ unicode& ChatRoom::getTitle() {
 		return ((ChatRoomImplementation*) _impl)->getTitle();
 }
 
-string& ChatRoom::getServerName() {
+String& ChatRoom::getServerName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -365,7 +365,7 @@ string& ChatRoom::getServerName() {
 		return ((ChatRoomImplementation*) _impl)->getServerName();
 }
 
-void ChatRoom::setOwner(const string& Owner) {
+void ChatRoom::setOwner(const String& Owner) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -378,7 +378,7 @@ void ChatRoom::setOwner(const string& Owner) {
 		((ChatRoomImplementation*) _impl)->setOwner(Owner);
 }
 
-void ChatRoom::setCreator(const string& Creator) {
+void ChatRoom::setCreator(const String& Creator) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -391,7 +391,7 @@ void ChatRoom::setCreator(const string& Creator) {
 		((ChatRoomImplementation*) _impl)->setCreator(Creator);
 }
 
-void ChatRoom::setTitle(const string& Title) {
+void ChatRoom::setTitle(const String& Title) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -480,7 +480,7 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getSubRoom(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 11:
-		resp->insertLong(getSubRoom(inv->getAsciiParameter(_param0_getSubRoom__string_))->_getObjectID());
+		resp->insertLong(getSubRoom(inv->getAsciiParameter(_param0_getSubRoom__String_))->_getObjectID());
 		break;
 	case 12:
 		addPlayer((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
@@ -489,7 +489,7 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		removePlayer((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 14:
-		removePlayer(inv->getAsciiParameter(_param0_removePlayer__string_));
+		removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_));
 		break;
 	case 15:
 		broadcastMessage((BaseMessage*) inv->getObjectParameter());
@@ -498,7 +498,7 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(hasPlayer((Player*) inv->getObjectParameter()));
 		break;
 	case 17:
-		resp->insertBoolean(hasPlayer(inv->getAsciiParameter(_param0_hasPlayer__string_)));
+		resp->insertBoolean(hasPlayer(inv->getAsciiParameter(_param0_hasPlayer__String_)));
 		break;
 	case 18:
 		removeAllPlayers();
@@ -522,7 +522,7 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(getPlayerSize());
 		break;
 	case 25:
-		setName(inv->getAsciiParameter(_param0_setName__string_));
+		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
 	case 26:
 		resp->insertAscii(getName());
@@ -543,13 +543,13 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getServerName());
 		break;
 	case 32:
-		setOwner(inv->getAsciiParameter(_param0_setOwner__string_));
+		setOwner(inv->getAsciiParameter(_param0_setOwner__String_));
 		break;
 	case 33:
-		setCreator(inv->getAsciiParameter(_param0_setCreator__string_));
+		setCreator(inv->getAsciiParameter(_param0_setCreator__String_));
 		break;
 	case 34:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
+		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
 		break;
 	case 35:
 		resp->insertInt(getRoomID());
@@ -590,7 +590,7 @@ ChatRoom* ChatRoomAdapter::getSubRoom(int i) {
 	return ((ChatRoomImplementation*) impl)->getSubRoom(i);
 }
 
-ChatRoom* ChatRoomAdapter::getSubRoom(const string& name) {
+ChatRoom* ChatRoomAdapter::getSubRoom(const String& name) {
 	return ((ChatRoomImplementation*) impl)->getSubRoom(name);
 }
 
@@ -602,7 +602,7 @@ void ChatRoomAdapter::removePlayer(Player* player, bool doLock) {
 	return ((ChatRoomImplementation*) impl)->removePlayer(player, doLock);
 }
 
-void ChatRoomAdapter::removePlayer(const string& player) {
+void ChatRoomAdapter::removePlayer(const String& player) {
 	return ((ChatRoomImplementation*) impl)->removePlayer(player);
 }
 
@@ -614,7 +614,7 @@ bool ChatRoomAdapter::hasPlayer(Player* player) {
 	return ((ChatRoomImplementation*) impl)->hasPlayer(player);
 }
 
-bool ChatRoomAdapter::hasPlayer(const string& name) {
+bool ChatRoomAdapter::hasPlayer(const String& name) {
 	return ((ChatRoomImplementation*) impl)->hasPlayer(name);
 }
 
@@ -646,43 +646,43 @@ int ChatRoomAdapter::getPlayerSize() {
 	return ((ChatRoomImplementation*) impl)->getPlayerSize();
 }
 
-void ChatRoomAdapter::setName(const string& Name) {
+void ChatRoomAdapter::setName(const String& Name) {
 	return ((ChatRoomImplementation*) impl)->setName(Name);
 }
 
-string& ChatRoomAdapter::getName() {
+String& ChatRoomAdapter::getName() {
 	return ((ChatRoomImplementation*) impl)->getName();
 }
 
-string& ChatRoomAdapter::getFullPath() {
+String& ChatRoomAdapter::getFullPath() {
 	return ((ChatRoomImplementation*) impl)->getFullPath();
 }
 
-string& ChatRoomAdapter::getOwner() {
+String& ChatRoomAdapter::getOwner() {
 	return ((ChatRoomImplementation*) impl)->getOwner();
 }
 
-string& ChatRoomAdapter::getCreator() {
+String& ChatRoomAdapter::getCreator() {
 	return ((ChatRoomImplementation*) impl)->getCreator();
 }
 
-unicode& ChatRoomAdapter::getTitle() {
+UnicodeString& ChatRoomAdapter::getTitle() {
 	return ((ChatRoomImplementation*) impl)->getTitle();
 }
 
-string& ChatRoomAdapter::getServerName() {
+String& ChatRoomAdapter::getServerName() {
 	return ((ChatRoomImplementation*) impl)->getServerName();
 }
 
-void ChatRoomAdapter::setOwner(const string& Owner) {
+void ChatRoomAdapter::setOwner(const String& Owner) {
 	return ((ChatRoomImplementation*) impl)->setOwner(Owner);
 }
 
-void ChatRoomAdapter::setCreator(const string& Creator) {
+void ChatRoomAdapter::setCreator(const String& Creator) {
 	return ((ChatRoomImplementation*) impl)->setCreator(Creator);
 }
 
-void ChatRoomAdapter::setTitle(const string& Title) {
+void ChatRoomAdapter::setTitle(const String& Title) {
 	return ((ChatRoomImplementation*) impl)->setTitle(Title);
 }
 

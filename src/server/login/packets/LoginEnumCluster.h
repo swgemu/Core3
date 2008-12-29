@@ -58,7 +58,7 @@ public:
 		insertInt(galcnt); //Galaxy count
 	}
 
-	void addGalaxy(uint32 gid, string& name) {
+	void addGalaxy(uint32 gid, String& name) {
 	    insertInt(gid); //Zone Server ID
 
     	insertAscii(name); //IP Address

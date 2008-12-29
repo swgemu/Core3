@@ -81,11 +81,11 @@ protected:
 
 	BuildingObject* building;
 
-	unicode name;
-	string templateTypeName;
-	string templateName;
+	UnicodeString name;
+	String templateTypeName;
+	String templateName;
 
-	string attributeString;
+	String attributeString;
 
 	CustomizationVariables customizationVars;
 
@@ -99,10 +99,10 @@ protected:
 
 	ItemAttributes* itemAttributes;
 
-	string misoAsocKey; //Mission association key
+	String misoAsocKey; //Mission association key
 
-	string craftersName;
-	string craftedSerial;
+	String craftersName;
+	String craftedSerial;
 
 	bool wasLooted;
 
@@ -152,7 +152,6 @@ public:
 	static const int FACTORYCRATE = 0x2011;
 	static const int TRAVELTICKET = 0x2012;
 	static const int GENERICITEM = 0x2013;
-	static const int TRAP = 0x2014;
 	static const int WEARABLECONTAINER = 0x2015;
 	static const int FISHINGPOLE = 0x2016;
 	static const int FISHINGBAIT = 0x2017;
@@ -196,6 +195,8 @@ public:
 	static const int PISTOL = 0x2000A;
 	static const int CARBINE = 0x2000B;
 	static const int RIFLE = 0x2000C;
+	static const int TRAP = 0x2000D;
+	static const int GRANADE = 0x2000E;
 
 	static const int COMPONENT = 0x40000;
 	static const int ARMORCOMPONENT = 0x40001;
@@ -211,6 +212,7 @@ public:
 	static const int RANGEDWEAPONCOMPONENT = 0x4000B;
 	static const int STRUVTURECOMPONENT = 0x4000C;
 	static const int TISSUECOMPONENT = 0x4000D;
+
 
 	static const int RESOURCECONTAINER = 0x400000;
 	static const int ENERGYGAS = 0x400001;
@@ -247,6 +249,7 @@ public:
 	static const int TURRET = 0x1004;
 	static const int MINEFIELD = 0x1005;
 
+
 	// DEEDS
 	static const int DEED = 0x800000;
 	static const int BUILDINGDEED = 0x800001;
@@ -276,6 +279,7 @@ public:
 	static const int MISCCLOTHING = 0x1000011;
 	static const int SKIRT = 0x1000012;
 	static const int ITHOGARB = 0x1000013;
+	static const int CAMOKIT = 567894;
 
 	static const uint16 MALE = 0x01;
 	static const uint16 FEMALE = 0x02;
@@ -311,8 +315,8 @@ public:
 
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
-	TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const unicode& name, const string& tempname, int tp = 0);
-	TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& name, const string& tempname, int tp = 0);
+	TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& name, const String& tempname, int tp = 0);
+	TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& name, const String& tempname, int tp = 0);
 
 	~TangibleObjectImplementation();
 
@@ -355,7 +359,9 @@ public:
 	virtual void addAttributes(AttributeListMessage* alm);
 
 	// setters and getters
+	//inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
 	inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
+		parent = cont;
 		container = cont;
 		linkType = type;
 	}
@@ -372,7 +378,7 @@ public:
 		equipped = eqp;
 	}
 
-	inline void setCustomizationString(string& cust) {
+	inline void setCustomizationString(String& cust) {
 		customizationVars = cust;
 	}
 
@@ -396,25 +402,25 @@ public:
 		customizationVars.setVariable(type, value);
 	}
 
-	inline void setCustomizationVariable(const string type, uint8 value) {
+	inline void setCustomizationVariable(const String type, uint8 value) {
 		customizationVars.setVariable(type, value);
 	}
 
-	inline void setCraftersName(string& n){
+	inline void setCraftersName(String& n){
 		craftersName = n;
-		string temp = "craftersname";
+		String temp = "craftersname";
 		itemAttributes->setStringAttribute(temp, n);
 	}
 
 	inline void setLoot(bool l){
 		wasLooted = l;
-		string temp = "looted";
+		String temp = "looted";
 		itemAttributes->setBooleanAttribute(temp, l);
 	}
 
-	inline void setCraftedSerial(string& s){
+	inline void setCraftedSerial(String& s){
 		craftedSerial = s;
-		string temp = "craftedserial";
+		String temp = "craftedserial";
 		itemAttributes->setStringAttribute(temp, s);
 	}
 
@@ -442,15 +448,15 @@ public:
 		return container;
 	}
 
-	inline void setName(const string& n) {
+	inline void setName(const String& n) {
 		name = n;
 	}
 
-	inline void setName(const unicode& n) {
+	inline void setName(const UnicodeString& n) {
 		name = n;
 	}
 
-	inline unicode& getName() {
+	inline UnicodeString& getName() {
 		return name;
 	}
 
@@ -458,23 +464,23 @@ public:
 		return templateID;
 	}
 
-	inline void setTemplateName(const string& tempName) {
+	inline void setTemplateName(const String& tempName) {
 		templateName = tempName;
 	}
 
-	inline string& getTemplateName() {
+	inline String& getTemplateName() {
 		return templateName;
 	}
 
-	inline void getCustomizationString(string& appearance) {
+	inline void getCustomizationString(String& appearance) {
 		return customizationVars.toString(appearance);
 	}
 
-	inline void setTemplateTypeName(const string& tempTypeName) {
+	inline void setTemplateTypeName(const String& tempTypeName) {
 		templateTypeName = tempTypeName;
 	}
 
-	inline string& getTemplateTypeName() {
+	inline String& getTemplateTypeName() {
 		return templateTypeName;
 	}
 
@@ -486,11 +492,11 @@ public:
 		return equipped;
 	}
 
-	inline void setAttributes(string& attributestring) {
-		itemAttributes->setAttributes(attributestring);
+	inline void setAttributes(String& attributeString) {
+		itemAttributes->setAttributes(attributeString);
 	}
 
-	inline string& getAttributes() {
+	inline String& getAttributes() {
 		itemAttributes->getAttributeString(attributeString);
 		return attributeString;
 	}
@@ -499,11 +505,11 @@ public:
 		objectSubType = type;
 	}
 
-	inline string& getCraftersName(){
+	inline String& getCraftersName(){
 		return craftersName;
 	}
 
-	inline string& getCraftedSerial(){
+	inline String& getCraftedSerial(){
 		return craftedSerial;
 	}
 
@@ -511,11 +517,11 @@ public:
 		return objectSubType;
 	}
 
-	inline string& getMisoAsocKey() {
+	inline String& getMisoAsocKey() {
 		return misoAsocKey;
 	}
 
-	inline void setMisoAsocKey(const string& tma) {
+	inline void setMisoAsocKey(const String& tma) {
 		misoAsocKey = tma;
 	}
 
@@ -535,6 +541,22 @@ public:
 		return (objectSubType & CLOTHING);
 	}
 
+	inline bool isContainer() {
+		return (objectSubType == WEARABLECONTAINER || objectSubType == CONTAINER || objectSubType == CONTAINER2);
+	}
+
+	inline bool isWearableContainer() {
+		return (objectSubType == WEARABLECONTAINER);
+	}
+
+	inline bool isContainer1() {
+		return (objectSubType == CONTAINER);
+	}
+
+	inline bool isContainer2() {
+		return (objectSubType == CONTAINER2);
+	}
+
 	inline bool isAttachment() {
 		return (objectSubType == ARMORATTACHMENT || objectSubType == CLOTHINGATTACHMENT);
 	}
@@ -549,6 +571,18 @@ public:
 
 	inline bool isTicket() {
 		return objectSubType == TRAVELTICKET;
+	}
+
+	inline bool isTrap() {
+		return objectSubType == TRAP;
+	}
+
+	inline bool isGranade() {
+		return objectSubType == GRANADE;
+	}
+
+	inline bool isThrowable() {
+		return (objectSubType == GRANADE || objectSubType == TRAP);
 	}
 
 	inline bool isInstrument() {
@@ -603,6 +637,10 @@ public:
 		return objectSubType == WEAPONPOWERUP;
 	}
 
+	inline bool isCamoKit() {
+			return objectSubType == CAMOKIT;
+		}
+
 	inline int getConditionDamage() {
 		return conditionDamage;
 	}
@@ -614,8 +652,6 @@ public:
 	inline int getCondition() {
 		return maxCondition - conditionDamage;
 	}
-
-
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

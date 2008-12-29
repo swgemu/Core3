@@ -50,13 +50,13 @@ which carries forward this exception.
 class SampleEvent : public Event {
 	Player* player;
 
-	string resourceName;
+	String resourceName;
 
 	bool resetCancelSample;
 	bool firstTime;
 
 public:
-	SampleEvent(Player* pl, string& res_name, bool rcs = false, bool ft = false) : Event() {
+	SampleEvent(Player* pl, String& res_name, bool rcs = false, bool ft = false) : Event() {
 		player = pl;
 
 		resourceName = res_name;
@@ -70,6 +70,8 @@ public:
 			player->wlock();
 
 			player->setCanSample();
+
+			player->clearFirstSampleEvent();
 
 			if (player->isOnline() && !firstTime) {
 				if (resetCancelSample)

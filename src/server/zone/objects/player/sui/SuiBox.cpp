@@ -31,7 +31,7 @@ BaseMessage* SuiBox::generateCloseMessage() {
 		return ((SuiBoxImplementation*) _impl)->generateCloseMessage();
 }
 
-void SuiBox::setPromptTitle(const string& name) {
+void SuiBox::setPromptTitle(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -44,7 +44,7 @@ void SuiBox::setPromptTitle(const string& name) {
 		((SuiBoxImplementation*) _impl)->setPromptTitle(name);
 }
 
-void SuiBox::setPromptText(const string& name) {
+void SuiBox::setPromptText(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -231,10 +231,10 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(generateCloseMessage()->_getObjectID());
 		break;
 	case 7:
-		setPromptTitle(inv->getAsciiParameter(_param0_setPromptTitle__string_));
+		setPromptTitle(inv->getAsciiParameter(_param0_setPromptTitle__String_));
 		break;
 	case 8:
-		setPromptText(inv->getAsciiParameter(_param0_setPromptText__string_));
+		setPromptText(inv->getAsciiParameter(_param0_setPromptText__String_));
 		break;
 	case 9:
 		setCancelButton(inv->getBooleanParameter());
@@ -286,11 +286,11 @@ BaseMessage* SuiBoxAdapter::generateCloseMessage() {
 	return ((SuiBoxImplementation*) impl)->generateCloseMessage();
 }
 
-void SuiBoxAdapter::setPromptTitle(const string& name) {
+void SuiBoxAdapter::setPromptTitle(const String& name) {
 	return ((SuiBoxImplementation*) impl)->setPromptTitle(name);
 }
 
-void SuiBoxAdapter::setPromptText(const string& name) {
+void SuiBoxAdapter::setPromptText(const String& name) {
 	return ((SuiBoxImplementation*) impl)->setPromptText(name);
 }
 

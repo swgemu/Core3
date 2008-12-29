@@ -55,8 +55,8 @@ class SuiCreatePageMessage;
 class SuiTransferBoxImplementation : public SuiTransferBoxServant {
 	int options;
 	
-	string lblFrom, lblStartingFrom, lblInputFrom, lblTo, lblStartingTo, lblInputTo;
-	string convertRatioFrom, convertRatioTo;
+	String lblFrom, lblStartingFrom, lblInputFrom, lblTo, lblStartingTo, lblInputTo;
+	String convertRatioFrom, convertRatioTo;
 	
 	SuiCreatePageMessage* message;
 	
@@ -72,9 +72,9 @@ public:
 		return (BaseMessage*)message;
 	}
 	
-	void addOption(const string& itemText, const string& lblType, const string& itemType);
-	void addFrom(const string& from, const string& startingFrom, const string& inputFrom, const string& rFrom);
-	void addTo(const string& to, const string& startingTo, const string& inputTo, const string& rTo);
+	void addOption(const String& itemText, const String& lblType, const String& itemType);
+	void addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom);
+	void addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo);
 };
 
 #endif /*SUITRANSFERBOXIMPLEMENTATION_H_*/

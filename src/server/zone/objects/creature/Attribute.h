@@ -64,8 +64,8 @@ public:
 		return (attribute == HEALTH || attribute == ACTION || attribute == MIND);
 	}
 
-	static uint8 getAttribute(string attribute) {
-		String::toLower(attribute);
+	static uint8 getAttribute(String attribute) {
+		attribute = attribute.toLowerCase();
 
 		if (attribute == "health")
 			return HEALTH;
@@ -89,8 +89,8 @@ public:
 			return UNKNOWN;
 	}
 
-	static string getName(uint8 attribute, bool initialCap = false) {
-		string name = "";
+	static String getName(uint8 attribute, bool initialCap = false) {
+		String name = "";
 
 		switch (attribute) {
 		case HEALTH:

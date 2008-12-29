@@ -54,7 +54,7 @@ which carries forward this exception.
 
 class HairObjectImplementation : public HairObjectServant {
 public:
-	HairObjectImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp = true)
+	HairObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = true)
 			: HairObjectServant(creature->getObjectID() + 0x0a, HAIR) {
 		objectCRC = tempCRC;
 

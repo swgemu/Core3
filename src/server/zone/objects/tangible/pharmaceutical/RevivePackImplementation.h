@@ -59,8 +59,8 @@ protected:
 	float mindHealed;
 
 public:
-	RevivePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	RevivePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	RevivePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	RevivePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	void initialize();
 
@@ -74,37 +74,37 @@ public:
 
 	inline void setHealthWoundHealed(float eff) {
 		healthWoundHealed = eff;
-		string attr = "healthWoundHealed";
+		String attr = "healthWoundHealed";
 		itemAttributes->setFloatAttribute(attr, healthWoundHealed);
 	}
 
 	inline void setHealthHealed(float eff) {
 		healthHealed = eff;
-		string attr = "healthHealed";
+		String attr = "healthHealed";
 		itemAttributes->setFloatAttribute(attr, healthHealed);
 	}
 
 	inline void setActionWoundHealed(float eff) {
 		actionWoundHealed = eff;
-		string attr = "actionWoundHealed";
+		String attr = "actionWoundHealed";
 		itemAttributes->setFloatAttribute(attr, actionWoundHealed);
 	}
 
 	inline void setActionHealed(float eff) {
 		actionHealed = eff;
-		string attr = "actionHealed";
+		String attr = "actionHealed";
 		itemAttributes->setFloatAttribute(attr, actionHealed);
 	}
 
 	inline void setMindWoundHealed(float eff) {
 		mindWoundHealed = eff;
-		string attr = "mindWoundHealed";
+		String attr = "mindWoundHealed";
 		itemAttributes->setFloatAttribute(attr, mindWoundHealed);
 	}
 
 	inline void setMindHealed(float eff) {
 		mindHealed = eff;
-		string attr = "mindHealed";
+		String attr = "mindHealed";
 		itemAttributes->setFloatAttribute(attr, mindHealed);
 	}
 

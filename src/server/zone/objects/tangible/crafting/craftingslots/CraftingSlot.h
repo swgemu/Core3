@@ -52,7 +52,7 @@ protected:
 
 	int maxsize;
 	int slottype;
-	string serial;
+	String serial;
 
 public:
 
@@ -82,11 +82,11 @@ public:
 
 		/*TangibleObject* tano;
 
-		for(int i = 0; i < objects.size(); ++i){
+		for (int i = 0; i < objects.size(); ++i){
 
 			tano = objects.get(i);
 
-			if(tano != NULL){
+			if (tano != NULL){
 
 				tano->setContainer(NULL);
 				tano->finalize();
@@ -111,7 +111,7 @@ public:
 				&& (serial != tano->getCraftedSerial()))
 			return false;
 
-		if(slottype != MIXEDSLOT) {
+		if (slottype != MIXEDSLOT) {
 			TangibleObject* ingredientInSlot = (TangibleObject*) get();
 			ingredientInSlot->finalize();
 

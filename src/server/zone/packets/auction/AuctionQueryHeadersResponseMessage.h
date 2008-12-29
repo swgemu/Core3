@@ -54,7 +54,7 @@ class AuctionQueryHeadersResponseMessage : public BaseMessage {
 
 	Vector<AuctionItem*> itemList;
 
-	Vector<string> locationList;
+	Vector<String> locationList;
 
 public:
 	AuctionQueryHeadersResponseMessage(int screen, int counter) : BaseMessage() {
@@ -73,7 +73,7 @@ public:
 			int pointer = -1;
 
 			for (int i = 0; i < locationList.size(); i++) {
-				if (!locationList.get(i).compare(ai->getTerminalTitle())) {
+				if (locationList.get(i) == ai->getTerminalTitle()) {
 					pointer = i;
 					ai->setLocationPointer(i);
 				}
@@ -87,7 +87,7 @@ public:
 			pointer = -1;
 
 			for (int i = 0; i < locationList.size(); i++) {
-				if (!locationList.get(i).compare(ai->getOwnerName())){
+				if (locationList.get(i) == ai->getOwnerName()){
 					pointer = i;
 					ai->setOwnerPointer(i);
 				}
@@ -125,7 +125,7 @@ public:
 		for (int i = 0; i < itemList.size(); i++) {
 			AuctionItem* il = itemList.get(i);
 
-	    	unicode name = il->getItemName();
+	    	UnicodeString name = il->getItemName();
 	    	insertUnicode(name); //name
 		}
 	}
@@ -139,7 +139,7 @@ public:
 			AuctionItem* il = itemList.get(i);
 
 			insertLong(il->getID()); //item id
-			insertByte(i);  // List item string number
+			insertByte(i);  // List item String number
 
 			insertInt(il->getPrice()); //item cost.
 

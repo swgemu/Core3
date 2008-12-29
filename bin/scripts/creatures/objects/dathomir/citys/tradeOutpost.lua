@@ -568,28 +568,6 @@ dathTradeNpc24 = Creature:new {
 	cellID = 6955368
 }
 
-dathTradeNpc25 = Creature:new {
-	objectName = "dathTradeNpc25",
-	creatureType = NPC,
-
-	speciesName = "wallaw_loowobbli",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 998736755,
-	positionX = 1.19457,
-	positionY = 6.04704,
-	positionZ = 0.624999,
-
-	directionX = 4.34477e-08,
-	directionZ = 7.69084e-08,
-	directionY = 0.897735,
-	directionW = -0.440536,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 6955367
-}
-
 dathTradeNpc26 = Creature:new {
 	objectName = "dathTradeNpc26",
 	creatureType = NPC,

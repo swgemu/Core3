@@ -27,7 +27,7 @@ public:
 
 	void disconnect(bool doLock = true);
 
-	void closeConnection(bool doLock = true);
+	void closeConnection(bool lockPlayer, bool doLock = true);
 
 	void sendMessage(BaseMessage* msg);
 
@@ -37,7 +37,7 @@ public:
 
 	void balancePacketCheckupTime();
 
-	void info(const string& msg, bool foredLog = false);
+	void info(const String& msg, bool foredLog = false);
 
 	void setPlayer(Player* player);
 
@@ -45,7 +45,7 @@ public:
 
 	bool isAvailable();
 
-	string& getAddress();
+	String& getAddress();
 
 	unsigned int getSessionKey();
 
@@ -54,7 +54,7 @@ protected:
 
 	virtual ~ZoneClientSession();
 
-	string _return_getAddress;
+	String _return_getAddress;
 
 	friend class ZoneClientSessionHelper;
 };
@@ -69,7 +69,7 @@ public:
 
 	void disconnect(bool doLock);
 
-	void closeConnection(bool doLock);
+	void closeConnection(bool lockPlayer, bool doLock);
 
 	void sendMessage(BaseMessage* msg);
 
@@ -79,7 +79,7 @@ public:
 
 	void balancePacketCheckupTime();
 
-	void info(const string& msg, bool foredLog);
+	void info(const String& msg, bool foredLog);
 
 	void setPlayer(Player* player);
 
@@ -87,12 +87,12 @@ public:
 
 	bool isAvailable();
 
-	string& getAddress();
+	String& getAddress();
 
 	unsigned int getSessionKey();
 
 protected:
-	string _param0_info__string_bool_;
+	String _param0_info__String_bool_;
 };
 
 class ZoneClientSessionHelper : public DistributedObjectClassHelper, public Singleton<ZoneClientSessionHelper> {

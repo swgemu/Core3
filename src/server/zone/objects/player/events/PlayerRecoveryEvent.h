@@ -53,13 +53,20 @@ class PlayerRecoveryEvent : public Event {
 public:
 	PlayerRecoveryEvent(Player* pl) : Event(2000) {
 		player = pl;
+	}
 
-		setKeeping(true);
+	~PlayerRecoveryEvent() {
+		if (enQueued) {
+			System::out << "ERROR: PlayerRecoveryEvent scheduled event deleted\n";
+			raise(SIGSEGV);
+		}
 	}
 
 	bool activate() {
 		try {
 			player->wlock();
+
+			player->clearRecoveryEvent();
 
 			if (player->isOnline() || player->isLinkDead())
 				player->doRecovery();

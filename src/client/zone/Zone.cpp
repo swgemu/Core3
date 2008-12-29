@@ -29,12 +29,12 @@ void Zone::run() {
 				/*Message * idmsg = new ClientIDMessage ( loginSession->getAccountID ( ) );
 				client->sendMessage ( idmsg );*/
 
-				string name;
+				String name;
 
-				cout << "Creating Charater\nName: ";
+				System::out << "Creating Charater\nName: ";
 				cin >> name;
 
-				unicode uname = name;
+				UnicodeString uname = name;
 
 				/*Message* msg = new ClientCreateCharacter (uname);
 				client->sendMessage(msg);*/
@@ -57,10 +57,10 @@ void Zone::run() {
 			insertPlayer(player);*/
 		}
 	} catch (sys::lang::Exception& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 		exit(0);
 	} catch (...) {
-		cout << "unreported exception\n";
+		System::out << "unreported exception\n";
 	}
 }
 
@@ -90,7 +90,7 @@ void Zone::insertPlayer(Player* pl) {
 		player->insertToZone(this);
 	}
 
-//	cout << hex << "inserting Player [" << pl->getObjectID() << "] to (" << dec << pl->getPositionX() << ", "
+//	System::out << hex << "inserting Player [" << pl->getObjectID() << "] to (" << dec << pl->getPositionX() << ", "
 //		 << pl->getPositionZ() << ", " << pl->getPositionY() << ")\n";
 
 	unlock();

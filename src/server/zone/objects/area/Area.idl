@@ -42,49 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-include "engine/util/Coordinate";
-
-import "../../objects/scene/SceneObject";
-
-interface Area implements ManagedObject{
-	Area(Coordinate center, float width, float height);
-	Area(float minXPos, float maxXPos, float minYPos, float maxYPos);
+interface Area implements ManagedObject {
+	Area(float x, float y, float z, float radius);
 	
-	unsigned char getType();
-
-	boolean contains(SceneObject object);
-
-	boolean contains(Coordinate coord);
-
-	boolean contains(float x, float y);
-
-	boolean contains(Area region);
-
-	boolean isBaseArea();
-
-	boolean isActiveArea();
-
-	boolean isNoBuildArea();
-
-	//Setters
-	void setWidth(float w);
-
-	void setHeight(float h);
-
-	void setUID(unsigned long uid);
-
-	//Getters
-	float getWidth();
-
-	float getHeight();
-
-	float getMinX();
-
-	float getMaxX();
-
-	float getMinY();
-
-	float getMaxY();
-
-	unsigned long getUID();
+	boolean containsPoint(float x, float y);
+	
+	float getX();
+	float getY();
+	float getZ();
+	float getRadius();
 }

@@ -90,6 +90,8 @@ PlayerObjectImplementation::PlayerObjectImplementation(Player* pl) : PlayerObjec
 
 	friendsList = new FriendsList(player);
 	ignoreList = new IgnoreList(player);
+
+	reverseFriendListListCount = 0;
 }
 
 PlayerObjectImplementation::~PlayerObjectImplementation() {
@@ -160,7 +162,7 @@ void PlayerObjectImplementation::sendTo(Player* targetPlayer, bool doClose) {
 		close(client);
 }
 
-void PlayerObjectImplementation::addExperience(const string& xpType, int xp, bool updateClient) {
+void PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool updateClient) {
 	int gained = xp;
 	if (experienceList.containsKey(xpType)) {
 		xp += experienceList.get(xpType);
@@ -171,7 +173,7 @@ void PlayerObjectImplementation::addExperience(const string& xpType, int xp, boo
 		experienceList.remove(xpType);
 	}
 
-	string xptype = xpType;
+	String xptype = xpType;
 	Player* player = getPlayer();
 	if (player->getXpTypeCap(xptype) < xp) {
 		gained = gained - (xp - player->getXpTypeCap(xptype));
@@ -184,11 +186,11 @@ void PlayerObjectImplementation::addExperience(const string& xpType, int xp, boo
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 		if (gained > 0) {
 			StfParameter *params = new StfParameter;
-		
+
 			params->addDI(gained);
 			params->addTO("exp_n",xpType);
 			player->sendSystemMessage("base_player", "prose_grant_xp", params);
-					
+
 			delete params;
 		}
 
@@ -200,7 +202,7 @@ void PlayerObjectImplementation::addExperience(const string& xpType, int xp, boo
 	}
 }
 
-void PlayerObjectImplementation::removeExperience(const string& xpType, int xp, bool updateClient) {
+void PlayerObjectImplementation::removeExperience(const String& xpType, int xp, bool updateClient) {
 	if (experienceList.containsKey(xpType)) {
 		experienceList.remove(xpType);
 	} else
@@ -217,12 +219,12 @@ void PlayerObjectImplementation::removeExperience(const string& xpType, int xp, 
 	}
 }
 
-void PlayerObjectImplementation::loadExperience(const string& xpStr) {
-	StringTokenizer xptokens(xpStr.c_str());
+void PlayerObjectImplementation::loadExperience(const String& xpStr) {
+	StringTokenizer xptokens(xpStr.toCharArray());
 	xptokens.setDelimeter(":");
 
 	while (xptokens.hasMoreTokens()) {
-		string xptype, xpvalue;
+		String xptype, xpvalue;
 		int xpamount;
 
 		xptokens.getStringToken(xptype);
@@ -237,18 +239,18 @@ void PlayerObjectImplementation::loadExperience(const string& xpStr) {
 
 }
 
-string& PlayerObjectImplementation::saveExperience() {
-	stringstream xpstr;
+String& PlayerObjectImplementation::saveExperience() {
+	StringBuffer xpstr;
 	experienceList.resetIterator();
 
 	while (experienceList.hasNext()) {
-		string key;
+		String key;
 		int value;
 		experienceList.getNextKeyAndValue(key, value);
 		xpstr << key << ":" << value << ":";
 	}
 
-	experienceData = xpstr.str();
+	experienceData = xpstr.toString();
 
 	return experienceData;
 }
@@ -297,7 +299,7 @@ void PlayerObjectImplementation::setAdminLevel(uint32 level, bool updateClient) 
 	}
 }
 
-void PlayerObjectImplementation::setCurrentTitle(string& nTitle, bool updateClient) {
+void PlayerObjectImplementation::setCurrentTitle(String& nTitle, bool updateClient) {
   	title = nTitle;
 
 	if (updateClient) {
@@ -324,7 +326,7 @@ void PlayerObjectImplementation::setForcePowerBar(uint32 fp) {
 
 
 void PlayerObjectImplementation::updateMaxForcePowerBar(bool updateClient) {
-	if(updateClient && player != NULL) {
+	if (updateClient && player != NULL) {
 		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
 		dplay8->updateForcePowerMax();
 		dplay8->close();
@@ -332,9 +334,9 @@ void PlayerObjectImplementation::updateMaxForcePowerBar(bool updateClient) {
 		player->sendMessage(dplay8);
 	}
 
-	if(getForcePower() > getForcePowerMax())
+	if (getForcePower() > getForcePowerMax())
 	{
-		if(updateClient)
+		if (updateClient)
 			setForcePowerBar(getForcePowerMax());
 		else
 			setForcePower(getForcePowerMax());
@@ -419,14 +421,14 @@ void PlayerObjectImplementation::updateWaypoint(WaypointObject* wp) {
 
 void PlayerObjectImplementation::saveWaypoints(Player* player) {
 	wlock();
-	stringstream query;
 
 	try {
-		query.str( "" );
+		StringBuffer query;
 		query << "DELETE FROM waypoints WHERE owner_id = '" << player->getCharacterID() <<"';";
+
 		ServerDatabase::instance()->executeStatement(query);
 
-		string name;
+		String name;
 
 		for (int i = 0; i < waypointList.size() ; ++i) {
 			WaypointObject* wpl = waypointList.get(i);
@@ -434,36 +436,34 @@ void PlayerObjectImplementation::saveWaypoints(Player* player) {
 			name = wpl->getName();
 			MySqlDatabase::escapeString(name);
 
-			query.str( "" );
+			query.deleteAll();
 			query << "INSERT DELAYED INTO waypoints (`waypoint_id`,`owner_id`,`waypoint_name`,`x`,`y`,`planet_name`,`internal_note`,`active`)"
-			<< " VALUES ('"
-			<< wpl->getObjectID() << "','"
-			<< player->getCharacterID() << "','"
-			<< name << "','"
-			<< wpl->getPositionX() << "','"
-			<< wpl->getPositionY() << "','"
-			<< wpl->getPlanetName() << "','"
-			<< wpl->getInternalNote() << "',"
-			<< wpl->getStatus() << ");" ;
+				  << " VALUES ('"
+				  << wpl->getObjectID() << "','"
+				  << player->getCharacterID() << "','" << name << "','"
+				  << wpl->getPositionX() << "','"  << wpl->getPositionY() << "','"
+				  << wpl->getPlanetName() << "','"
+				  << wpl->getInternalNote() << "',"
+				  << wpl->getStatus() << ");" ;
 
 			ServerDatabase::instance()->executeStatement(query);
 		}
 	} catch (DatabaseException& e) {
-		cout << "exception in PlayerObject::saveWaypoints()\n" << e.getMessage();
+		System::out << "exception in PlayerObject::saveWaypoints()\n" << e.getMessage();
 	} catch (...) {
-		cout << "exception in PlayerObject::saveWaypoints\n";
+		System::out << "exception in PlayerObject::saveWaypoints\n";
 	}
 
 	unlock();
 }
 
-WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const string& name, int mode) {
+WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const String& name, int mode) {
 	wlock();
 
 	WaypointObject* waypoint = NULL;
 	WaypointObject* returnWP = NULL;
 	int i = 0;
-	string sName;
+	String sName;
 
 	if (mode == 1 ) {
 		//Lookup InternalNote field
@@ -477,13 +477,11 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 		}
 	} else if (mode == 2 ) {
 		//Lookup WaypointName field
-		sName = name.c_str();
-		String::toLower(sName);
+		sName = name.toLowerCase();
 
 		for (int i = 0; i < waypointList.size(); ++i) {
 			waypoint = waypointList.get(i);
-			string wpName = waypoint->getName();
-			String::toLower(wpName);
+			String wpName = waypoint->getName().toLowerCase();
 
 			if (wpName == sName) {
 				returnWP = waypoint;
@@ -494,4 +492,20 @@ WaypointObject* PlayerObjectImplementation::searchWaypoint(Player* player, const
 
 	unlock();
 	return returnWP;
+}
+
+void PlayerObjectImplementation::pokeReverseFriendList(uint64 playID) {
+	reverseFriendList.add(playID);
+}
+
+void PlayerObjectImplementation::removeFromReverseFriendList(uint64 playerID) {
+	for (int i = 0; i < reverseFriendList.size(); ++i) {
+		uint64 tempoID = reverseFriendList.get(i);
+
+		if (tempoID == playerID) {
+			reverseFriendList.remove(i);
+			break;
+		}
+
+	}
 }

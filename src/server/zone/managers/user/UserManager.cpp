@@ -37,7 +37,7 @@ bool UserManager::checkUser(unsigned int ipid) {
 		return ((UserManagerImplementation*) _impl)->checkUser(ipid);
 }
 
-bool UserManager::isAdmin(const string& name) {
+bool UserManager::isAdmin(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -62,7 +62,7 @@ void UserManager::parseBanList() {
 		((UserManagerImplementation*) _impl)->parseBanList();
 }
 
-void UserManager::banUser(const string& ipaddr) {
+void UserManager::banUser(const String& ipaddr) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +75,7 @@ void UserManager::banUser(const string& ipaddr) {
 		((UserManagerImplementation*) _impl)->banUser(ipaddr);
 }
 
-bool UserManager::banUserByName(string& name, string& admin) {
+bool UserManager::banUserByName(String& name, String& admin) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -89,7 +89,7 @@ bool UserManager::banUserByName(string& name, string& admin) {
 		return ((UserManagerImplementation*) _impl)->banUserByName(name, admin);
 }
 
-bool UserManager::kickUser(string& name, string& admin) {
+bool UserManager::kickUser(String& name, String& admin) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -156,19 +156,19 @@ Packet* UserManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		resp->insertBoolean(checkUser(inv->getUnsignedIntParameter()));
 		break;
 	case 7:
-		resp->insertBoolean(isAdmin(inv->getAsciiParameter(_param0_isAdmin__string_)));
+		resp->insertBoolean(isAdmin(inv->getAsciiParameter(_param0_isAdmin__String_)));
 		break;
 	case 8:
 		parseBanList();
 		break;
 	case 9:
-		banUser(inv->getAsciiParameter(_param0_banUser__string_));
+		banUser(inv->getAsciiParameter(_param0_banUser__String_));
 		break;
 	case 10:
-		resp->insertBoolean(banUserByName(inv->getAsciiParameter(_param0_banUserByName__string_string_), inv->getAsciiParameter(_param1_banUserByName__string_string_)));
+		resp->insertBoolean(banUserByName(inv->getAsciiParameter(_param0_banUserByName__String_String_), inv->getAsciiParameter(_param1_banUserByName__String_String_)));
 		break;
 	case 11:
-		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__string_string_), inv->getAsciiParameter(_param1_kickUser__string_string_)));
+		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__String_String_), inv->getAsciiParameter(_param1_kickUser__String_String_)));
 		break;
 	case 12:
 		changeUserCap(inv->getSignedIntParameter());
@@ -190,7 +190,7 @@ bool UserManagerAdapter::checkUser(unsigned int ipid) {
 	return ((UserManagerImplementation*) impl)->checkUser(ipid);
 }
 
-bool UserManagerAdapter::isAdmin(const string& name) {
+bool UserManagerAdapter::isAdmin(const String& name) {
 	return ((UserManagerImplementation*) impl)->isAdmin(name);
 }
 
@@ -198,15 +198,15 @@ void UserManagerAdapter::parseBanList() {
 	return ((UserManagerImplementation*) impl)->parseBanList();
 }
 
-void UserManagerAdapter::banUser(const string& ipaddr) {
+void UserManagerAdapter::banUser(const String& ipaddr) {
 	return ((UserManagerImplementation*) impl)->banUser(ipaddr);
 }
 
-bool UserManagerAdapter::banUserByName(string& name, string& admin) {
+bool UserManagerAdapter::banUserByName(String& name, String& admin) {
 	return ((UserManagerImplementation*) impl)->banUserByName(name, admin);
 }
 
-bool UserManagerAdapter::kickUser(string& name, string& admin) {
+bool UserManagerAdapter::kickUser(String& name, String& admin) {
 	return ((UserManagerImplementation*) impl)->kickUser(name, admin);
 }
 

@@ -5,11 +5,11 @@ import "../../../player/Player";
 import "../../../creature/CreatureObject";
 
 interface PlayerHouseDeed implements DeedObject {
-	PlayerHouseDeed(CreatureObject creature, int tempCRC, const unicode n, const string tempn) {
+	PlayerHouseDeed(CreatureObject creature, int tempCRC, const UnicodeString n, const String tempn) {
 		super(creature, tempCRC, n, tempn, int tp);
 	}
 	
-	PlayerHouseDeed(unsigned long oid, int tempCRC, const unicode n, const string tempn) {
+	PlayerHouseDeed(unsigned long oid, int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
 

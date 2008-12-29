@@ -58,10 +58,10 @@ class Zone;
 class BuildingObjectImplementation : public QuadTree, public BuildingObjectServant {
 	SortedVector<CellObject*> cells;
 
-	unicode name;
-	string defaultName;
+	UnicodeString name;
+	String defaultName;
 
-	string owner;
+	String owner;
 	uint64 ownerID;
 
 	int buildingType;
@@ -69,11 +69,13 @@ class BuildingObjectImplementation : public QuadTree, public BuildingObjectServa
 	bool persistent, updated;
 
 	bool staticBuilding;
+	
+	bool storageLoaded;
 
-	string templateName;
+	String templateName;
 
 	ItemAttributes* itemAttributes;
-	string attributeString;
+	String attributeString;
 public:
 	// Using the Building Types from Planet Map - comment out the non buildings :)
 	static const int UNKNOWN = 1;
@@ -169,37 +171,37 @@ public:
 
 
 	// Attribute Setters
-	inline void setOwner(const string own) {
+	inline void setOwner(const String own) {
 		setUpdated(true);
 		owner = own;
-		string attr("owner");
+		String attr("owner");
 		itemAttributes->setStringAttribute(attr, owner);
 	}
 	inline void setOwnerID(uint64 ownerid) {
 		setUpdated(true);
 		ownerID = ownerid;
-		string attr("ownerID");
+		String attr("ownerID");
 		itemAttributes->setUnsignedLongAttribute(attr, ownerID);
 	}
-	inline void setName(const string& n) {
+	inline void setName(const String& n) {
 		name = n;
 	}
 
-	inline void setName(const unicode& n) {
+	inline void setName(const UnicodeString& n) {
 		name = n;
 	}
 
 	// Attribute Getters
-	inline string& getOwner() {
+	inline String& getOwner() {
 		return owner;
 	}
 	inline uint64 getOwnerID() {
 		return ownerID;
 	}
-	inline unicode& getName() {
+	inline UnicodeString& getName() {
 		return name;
 	}
-	inline string& getTemplateName() {
+	inline String& getTemplateName() {
 		templateName = "";
 		return templateName;
 	}
@@ -218,11 +220,11 @@ public:
 
 	void notifyInsertToZone(SceneObject* object);
 
-	inline void setAttributes(string& attributestring) {
-		itemAttributes->setAttributes(attributestring);
+	inline void setAttributes(String& attributeString) {
+		itemAttributes->setAttributes(attributeString);
 	}
 
-	inline string& getAttributes() {
+	inline String& getAttributes() {
 		itemAttributes->getAttributeString(attributeString);
 		return attributeString;
 	}
@@ -266,7 +268,7 @@ public:
 
 	void setDefaultName();
 
-	inline string& getDefaultName() {
+	inline String& getDefaultName() {
 		return defaultName;
 	}
 
@@ -276,6 +278,15 @@ public:
 
 	void unlock(bool doLock = true) {
 		QuadTree::unlock(doLock);
+	}
+
+	//itemStorage getter/setter
+	bool getStorageLoaded() {
+		return storageLoaded;
+	}
+
+	void setStorageLoaded(bool setter) {
+		storageLoaded = setter;
 	}
 
 };

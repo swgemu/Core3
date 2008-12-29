@@ -51,11 +51,11 @@ which carries forward this exception.
 
 class PlayClientEffectObjectMessage : public BaseMessage {
 public:
-	PlayClientEffectObjectMessage(SceneObject* obj, const string& file, const string& aux) : BaseMessage() {
+	PlayClientEffectObjectMessage(SceneObject* obj, const String& file, const String& aux) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x8855434A);  // CRC
-		insertAscii(file.c_str());
-		insertAscii(aux.c_str());
+		insertAscii(file.toCharArray());
+		insertAscii(aux.toCharArray());
 		insertLong(obj->getObjectID());
 	}
 

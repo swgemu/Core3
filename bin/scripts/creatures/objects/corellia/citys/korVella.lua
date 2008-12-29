@@ -40,50 +40,6 @@
 --this exception also makes it possible to release a modified version
 --which carries forward this exception.
 
-korvellaNpc1 = Creature:new {
-	objectName = "korvellaNpc1",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_first_lieutenant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 519244536,
-	positionX = -3074,
-	positionY = 2825,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.886286,
-	directionW = -0.463139,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc2 = Creature:new {
-	objectName = "korvellaNpc2",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -3093,
-	positionY = 2803,
-	positionZ = 31.0391,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.113203,
-	directionW = 0.993572,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 korvellaNpc3 = Creature:new {
 	objectName = "korvellaNpc3",
 	creatureType = NPC,
@@ -986,28 +942,6 @@ korvellaNpc43 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc44 = Creature:new {
-	objectName = "korvellaNpc44",
-	creatureType = NPC,
-
-	speciesName = "corellia_lt_cope",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 16556953,
-	positionX = -3101.82,
-	positionY = 2799.81,
-	positionZ = 31,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.662905,
-	directionW = 0.748704,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 korvellaNpc45 = Creature:new {
 	objectName = "korvellaNpc45",
 	creatureType = NPC,
@@ -1866,28 +1800,6 @@ korvellaNpc85 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc87 = Creature:new {
-	objectName = "korvellaNpc87",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_corporal",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1040681339,
-	positionX = -3387,
-	positionY = 2960,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.737277,
-	directionW = 0.67559,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 korvellaNpc88 = Creature:new {
 	objectName = "korvellaNpc88",
 	creatureType = NPC,
@@ -2196,94 +2108,6 @@ korvellaNpc103 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc104 = Creature:new {
-	objectName = "korvellaNpc104",
-	creatureType = NPC,
-
-	speciesName = "corellia_menchi_lerann",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2901057639,
-	positionX = -3468.54,
-	positionY = 3022.99,
-	positionZ = 78,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.405043,
-	directionW = 0.914298,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc106 = Creature:new {
-	objectName = "korvellaNpc106",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -3435.46,
-	positionY = 3034.56,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.716698,
-	directionW = 0.697384,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc112 = Creature:new {
-	objectName = "korvellaNpc112",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -3435.46,
-	positionY = 3034.56,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.778277,
-	directionW = 0.627922,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc113 = Creature:new {
-	objectName = "korvellaNpc113",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -3435.46,
-	positionY = 3034.56,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.778023,
-	directionW = 0.628236,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 korvellaNpc114 = Creature:new {
 	objectName = "korvellaNpc114",
 	creatureType = NPC,
@@ -2435,28 +2259,6 @@ korvellaNpc120 = Creature:new {
 	directionW = 0.376565,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc121 = Creature:new {
-	objectName = "korvellaNpc121",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -3460.41,
-	positionY = 3112.21,
-	positionZ = 78,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.896374,
-	directionW = -0.443298,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -2951,7 +2753,7 @@ korvellaNpc146 = Creature:new {
 	speciesName = "bartender",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "mob/creature_names",
+	stfName = "npc_name",
 	objectCRC = 4029226753,
 	positionX = 6.4346,
 	positionY = -2.33458,
@@ -3516,72 +3318,6 @@ korvellaNpc173 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc174 = Creature:new {
-	objectName = "korvellaNpc174",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -3366,
-	positionY = 3232,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.992546,
-	directionW = 0.121869,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc175 = Creature:new {
-	objectName = "korvellaNpc175",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -3368.45,
-	positionY = 3242.5,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.950015,
-	directionW = -0.312205,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc176 = Creature:new {
-	objectName = "korvellaNpc176",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -3326.35,
-	positionY = 3231.94,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.446063,
-	directionW = 0.895002,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 korvellaNpc177 = Creature:new {
 	objectName = "korvellaNpc177",
 	creatureType = NPC,
@@ -3645,28 +3381,6 @@ korvellaNpc181 = Creature:new {
 	directionW = 0.550347,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc182 = Creature:new {
-	objectName = "korvellaNpc182",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -3318.03,
-	positionY = 3230.13,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.847839,
-	directionW = 0.530254,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -3956,50 +3670,6 @@ korvellaNpc196 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc197 = Creature:new {
-	objectName = "korvellaNpc197",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3750712439,
-	positionX = -3296.89,
-	positionY = 3295.02,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.985797,
-	directionW = 0.16794,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc198 = Creature:new {
-	objectName = "korvellaNpc198",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1875886160,
-	positionX = -3296.83,
-	positionY = 3294.86,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.993195,
-	directionW = -0.116463,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 korvellaNpc199 = Creature:new {
 	objectName = "korvellaNpc199",
 	creatureType = NPC,
@@ -4151,28 +3821,6 @@ korvellaNpc207 = Creature:new {
 	directionW = 0.999962,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-korvellaNpc208 = Creature:new {
-	objectName = "korvellaNpc208",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_corporal",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2887599713,
-	positionX = -3404.35,
-	positionY = 3347.14,
-	positionZ = 74,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.997425,
-	directionW = -0.0717224,
-	randomMovement = 0,
-	mood = "neutral",
 	cellID = 0
 }
 
@@ -4352,28 +4000,6 @@ korvellaNpc216 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc217 = Creature:new {
-	objectName = "korvellaNpc217",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -3582,
-	positionY = 3143,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.233445,
-	directionW = 0.97237,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 korvellaNpc218 = Creature:new {
 	objectName = "korvellaNpc218",
 	creatureType = NPC,
@@ -4547,50 +4173,6 @@ korvellaNpc226 = Creature:new {
 	directionW = 0,
 	randomMovement = 0,
 	mood = "conversation",
-	cellID = 0
-}
-
-korvellaNpc227 = Creature:new {
-	objectName = "korvellaNpc227",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -3602.47,
-	positionY = 3214.02,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.379993,
-	directionW = 0.924989,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc228 = Creature:new {
-	objectName = "korvellaNpc228",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -3613.06,
-	positionY = 3212.07,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.406049,
-	directionW = 0.913851,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -5034,50 +4616,6 @@ korvellaNpc251 = Creature:new {
 	cellID = 0
 }
 
-korvellaNpc253 = Creature:new {
-	objectName = "korvellaNpc253",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_first_lieutenant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -3674.98,
-	positionY = 3104.95,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999999,
-	directionW = -0.00155065,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc254 = Creature:new {
-	objectName = "korvellaNpc254",
-	creatureType = NPC,
-
-	speciesName = "crackdown_stormtrooper_sniper",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2688076350,
-	positionX = -3715.75,
-	positionY = 3169.75,
-	positionZ = 86.0549,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.284725,
-	directionW = 0.958609,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 korvellaNpc255 = Creature:new {
 	objectName = "korvellaNpc255",
 	creatureType = NPC,
@@ -5208,50 +4746,6 @@ korvellaNpc267 = Creature:new {
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
-}
-
-korvellaNpc268 = Creature:new {
-	objectName = "korvellaNpc268",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_first_lieutenant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -3662.58,
-	positionY = 3090.82,
-	positionZ = 86,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.774307,
-	directionW = 0.63281,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-korvellaNpc269 = Creature:new {
-	objectName = "korvellaNpc269",
-	creatureType = NPC,
-
-	speciesName = "crackdown_imperial_master_sergeant",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3843039724,
-	positionX = -10.0845,
-	positionY = -12.51,
-	positionZ = 0.184067,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.693239,
-	directionW = 0.720708,
-	randomMovement = 0,
-	mood = "",
-	cellID = 3375393
 }
 
 korvellaNpc270 = Creature:new {

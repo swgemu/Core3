@@ -60,10 +60,10 @@ ZoneClientSessionImplementation::ZoneClientSessionImplementation(DatagramService
 
 	disconnecting = false;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "ZoneClientSession " << addr->getFullIPAddress();
 
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 	setLogging(false);
 }
 
@@ -94,14 +94,25 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 			lock();
 		}
 
-		closeConnection(false);
+		closeConnection(true, false);
 	} else if (player != NULL) {
 		unlock();
 
 		if (player->isLoggingOut())
 			player->logout();
-		else
-			player->setLinkDead();
+		else {
+			try {
+				player->wlock();
+
+				player->setLinkDead();
+
+				player->unlock();
+			} catch (...) {
+				player->unlock();
+			}
+
+			closeConnection(true, true);
+		}
 
 		lock();
 	}
@@ -109,7 +120,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	unlock(doLock);
 }
 
-void ZoneClientSessionImplementation::closeConnection(bool doLock) {
+void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLock) {
 	try {
 		lock(doLock);
 
@@ -118,10 +129,28 @@ void ZoneClientSessionImplementation::closeConnection(bool doLock) {
 		ZoneServer* server = NULL;
 
 		if (player != NULL) {
-		 	if (player->getZone() != NULL)
-				server = player->getZone()->getZoneServer();
+			ZoneServer* srv = NULL;
 
-			player->setClient(NULL);
+			if (lockPlayer)
+				unlock();
+
+			try {
+				player->wlock(lockPlayer);
+
+				if (player->getZone() != NULL)
+					srv = player->getZone()->getZoneServer();
+
+				player->setClient(NULL);
+
+				player->unlock(lockPlayer);
+			} catch (...) {
+				player->unlock(lockPlayer);
+			}
+
+			if (lockPlayer)
+				lock();
+
+			server = srv;
 
 			player = NULL;
 		}

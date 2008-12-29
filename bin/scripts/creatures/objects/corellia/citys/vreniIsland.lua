@@ -150,50 +150,6 @@ vreniNpc5 = Creature:new {
 	cellID = 0
 }
 
-vreniNpc6 = Creature:new {
-	objectName = "vreniNpc6",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1875886160,
-	positionX = -5536.02,
-	positionY = -6106.37,
-	positionZ = 23.4,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.749569,
-	directionW = 0.661927,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-vreniNpc7 = Creature:new {
-	objectName = "vreniNpc7",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1875886160,
-	positionX = -5570.21,
-	positionY = -6102.1,
-	positionZ = 23.4,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.0682283,
-	directionW = 0.99767,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 vreniNpc8 = Creature:new {
 	objectName = "vreniNpc8",
 	creatureType = NPC,
@@ -524,50 +480,6 @@ vreniNpc22 = Creature:new {
 	cellID = 0
 }
 
-vreniNpc23 = Creature:new {
-	objectName = "vreniNpc23",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3750712439,
-	positionX = -5557.36,
-	positionY = -6213.31,
-	positionZ = 23.4,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999305,
-	directionW = -0.0372827,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-vreniNpc24 = Creature:new {
-	objectName = "vreniNpc24",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1875886160,
-	positionX = -5530.12,
-	positionY = -6190.79,
-	positionZ = 23.4,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.344926,
-	directionW = 0.93863,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 vreniNpc25 = Creature:new {
 	objectName = "vreniNpc25",
 	creatureType = NPC,
@@ -786,28 +698,6 @@ vreniNpc34 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 2775419
-}
-
-vreniNpc35 = Creature:new {
-	objectName = "vreniNpc35",
-	creatureType = NPC,
-
-	speciesName = "karrek_film",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 3607865991,
-	positionX = -6.11988,
-	positionY = -7.43599,
-	positionZ = 1.6,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.940658,
-	directionW = -0.339355,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 2775417
 }
 
 vreniNpc36 = Creature:new {

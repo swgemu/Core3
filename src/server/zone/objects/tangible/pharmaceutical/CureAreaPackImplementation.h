@@ -56,8 +56,8 @@ protected:
 	uint64 state;
 
 public:
-	CureAreaPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn);
-	CureAreaPackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	CureAreaPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	CureAreaPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	void initialize();
 
@@ -71,19 +71,19 @@ public:
 
 	inline void setEffectiveness(float eff) {
 		effectiveness = eff;
-		string attr = "effectiveness";
+		String attr = "effectiveness";
 		itemAttributes->setFloatAttribute(attr, effectiveness);
 	}
 
 	inline void setAreaOfEffect(float area) {
 		areaOfEffect = area;
-		string attr = "areaOfEffect";
+		String attr = "areaOfEffect";
 		itemAttributes->setFloatAttribute(attr, areaOfEffect);
 	}
 
 	inline void setState(uint64 value) {
 		state = value;
-		string attr = "state";
+		String attr = "state";
 		itemAttributes->setUnsignedLongAttribute(attr, state);
 	}
 

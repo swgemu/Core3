@@ -86,7 +86,7 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 
 	ManagedReference<SceneObject> object = zone->lookupObject(objectid);
 
-	//cout << "Radial Request ObjectID: " << dec << objectid << "\n";
+	//System::out << "Radial Request ObjectID: " << dec << objectid << "\n";
 	if (object == NULL)
 		object = player->getPlayerItem(objectid);
 
@@ -104,7 +104,7 @@ void RadialManager::handleRadialRequest(Player* player, Packet* pack) {
 		} catch (...) {
 			if (object != player)
 				object->unlock();
-			cout << "unreported exception caught in RadialManager::handleRadialRequest\n";
+			System::out << "unreported exception caught in RadialManager::handleRadialRequest\n";
 		}
 	}
 }
@@ -123,7 +123,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 			return;
 		}
 
-		//cout << "Radial ID = " << dec << radialID << endl;
+		//System::out << "Radial ID = " << dec << radialID << endl;
 		SceneObject* obj = zone->lookupObject(objectID);
 
 		//TODO: Get a bazaar object to pass to the next functions
@@ -160,7 +160,7 @@ void RadialManager::handleRadialSelect(Player* player, Packet* pack) {
 		handleSelection(radialID, player, obj);
 
 	} catch (...) {
-		cout << "unreported exception in void RadialManager::handleRadialSelect(Player* player, Packet* pack)\n";
+		System::out << "unreported exception in void RadialManager::handleRadialSelect(Player* player, Packet* pack)\n";
 		player->unlock();
 	}
 }
@@ -169,7 +169,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	// Pre: player is wlocked, obj is unlocked
 	// Post: player and obj unlocked
 
-	//cout << "Radial ID = " << dec << radialID << endl;
+	//System::out << "Radial ID = " << dec << radialID << endl;
 	switch (radialID) {
 	case 7: // EXAMINE
 		break;
@@ -177,8 +177,13 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		handleTrade(player, obj);
 		break;
 	case 13: // DROP
+		handleItemDrop(player, obj);
 		break;
 	case 14: // DESTROY
+		break;
+	//case 16: // OPEN RADIAL
+		break;
+	//case 17: // OPEN IN NEW WINDOW RADIAL
 		break;
 	case 20: // ITEM_USE
 		obj->useObject(player);
@@ -191,7 +196,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 36:  // LOOT_ALL
 		player->lootCorpse(true);
 		break;
-    case 41: // One die
+    case 41: // One dice
         handleDiceRoll(player, obj, 1);
         break;
     case 42: // Two dice
@@ -310,7 +315,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		return;
 	case 190: // SERVER_GUILD_ENEMIES
 		player->unlock();
-		//cout << "Radial Guild Enemies" << endl;
+		//System::out << "Radial Guild Enemies" << endl;
 		return;
 	case 194: // SERVER_GUILD_GUILD_MANAGEMENT
 		//nothing, has sub menues
@@ -347,7 +352,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		handleGuildTransferLeader(player);
 		return;
 	default:
-		//cout << "Unknown radial selection received:" << radialID << "\n";
+		//System::out << "Unknown radial selection received:" << radialID << "\n";
 		break;
 	}
 
@@ -368,7 +373,7 @@ ObjectMenuResponse* RadialManager::parseDefaults(Player* player, uint64 objectid
 		//if (radialid == 20)
 		callback = 3;
 
-		pack->shiftOffset(4); // shift unicode command
+		pack->shiftOffset(4); // shift UnicodeString command
 
 		omr->addRadialItem(parentid, radialid, callback);
 	}
@@ -447,7 +452,7 @@ void RadialManager::handleVehicleStore(SceneObject* obj) {
 
 		obj->unlock();
 	} catch (...) {
-		cout << "Unreported exception caught in RadialManager::handleVehicleStore(Player* player, SceneObject* obj)\n";
+		System::out << "Unreported exception caught in RadialManager::handleVehicleStore(Player* player, SceneObject* obj)\n";
 		obj->unlock();
 	}
 }
@@ -474,7 +479,7 @@ void RadialManager::handleVehicleGenerate(SceneObject* obj) {
 
 		mount->unlock();
 	} catch (...) {
-		cout << "Unreported exception caught in RadialManager::handleVehicleGenerate\n";
+		System::out << "Unreported exception caught in RadialManager::handleVehicleGenerate\n";
 		mount->unlock();
 	}
 }
@@ -494,7 +499,7 @@ void RadialManager::handleVehicleRepair(SceneObject* obj) {
 		obj->unlock();
 
 	} catch (...) {
-		cout << "Unreported exception caught in RadialManager::handleVehicleRepair(SceneObject* obj)\n";
+		System::out << "Unreported exception caught in RadialManager::handleVehicleRepair(SceneObject* obj)\n";
 		obj->unlock();
 	}
 }
@@ -521,18 +526,18 @@ void RadialManager::handleTrade(Player* player, SceneObject* obj) {
 		} else {
 			Player* target = (Player*)obj;
 
-			stringstream msg;
-			msg << player->getCharacterName().c_str() << " requested a trade.";
-			target->sendSystemMessage(msg.str());
+			StringBuffer msg;
+			msg << player->getCharacterName().toString() << " requested a trade.";
+			target->sendSystemMessage(msg.toString());
 		}
 
 		target->unlock();
 	} catch (Exception& e) {
 		target->unlock();
-		cout << e.getMessage() << "caught in RadialManager::handleTrade(Player* player, SceneObject* obj)\n";
+		System::out << e.getMessage() << "caught in RadialManager::handleTrade(Player* player, SceneObject* obj)\n";
 	} catch (...) {
 		target->unlock();
-		cout << "Unreported exception caught in RadialManager::handleTrade(Player* player, SceneObject* obj)\n";
+		System::out << "Unreported exception caught in RadialManager::handleTrade(Player* player, SceneObject* obj)\n";
 	}
 }
 
@@ -566,7 +571,7 @@ void RadialManager::handleManageHarvester(Player* player, SceneObject* obj) {
 
 		TangibleObject* tano = (TangibleObject*) obj;
 
-		if(tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
+		if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
 			return;
 
 		InstallationObject* inso = (InstallationObject*) tano;
@@ -578,7 +583,7 @@ void RadialManager::handleManageHarvester(Player* player, SceneObject* obj) {
 		player->sendMessage(rhapm);
 	}
 	catch(...){
-		cout << "Unreported exception in RadialManager::handleManageHarvester\n";
+		System::out << "Unreported exception in RadialManager::handleManageHarvester\n";
 	}
 }
 
@@ -588,18 +593,18 @@ void RadialManager::handleStructureDestroy(Player* player, SceneObject* obj) {
 	try{
 		InstallationObject * inso = (InstallationObject *) obj;
 
-		if(inso!= NULL)
+		if (inso!= NULL)
 			inso->handleStructureRedeed(player);
 		/*else {
 				BuildingObject * buio = (BuildingObject * ) obj;
 
-				if(buio!= NULL)
+				if (buio!= NULL)
 					buio->undeploy();
 			}
 		}*/
 	}
 	catch(...){
-		cout << "Unreported exception in RadialManager::handleStructureDestroy\n";
+		System::out << "Unreported exception in RadialManager::handleStructureDestroy\n";
 	}
 }
 
@@ -607,18 +612,18 @@ void RadialManager::handleStructureStatus(Player* player, SceneObject* obj) {
 	try{
 		InstallationObject * inso = (InstallationObject *) obj;
 
-		if(inso!= NULL)
+		if (inso!= NULL)
 			inso->handleStructureStatus(player);
 		/*else {
 				BuildingObject * buio = (BuildingObject * ) obj;
 
-				if(buio!= NULL)
+				if (buio!= NULL)
 					buio->handleStructureStatus(player);
 			}
 		}*/
 	}
 	catch(...){
-		cout << "Unreported exception in RadialManager::handleStructureStatus\n";
+		System::out << "Unreported exception in RadialManager::handleStructureStatus\n";
 	}
 }
 
@@ -626,21 +631,21 @@ void RadialManager::handleSetName(Player* player, SceneObject* obj) {
 	try{
 		TangibleObject * tano = (TangibleObject*) obj;
 
-		if(tano!= NULL)
+		if (tano!= NULL)
 
 			tano->setObjectName(player);
 
 		/*else {
 			BuildingObject * buio = (BuildingObject * ) obj;
 
-			if(buio!= NULL)
+			if (buio!= NULL)
 				buio->setName(player);
 		}
 		*/
 
 	}
 	catch(...){
-		cout << "Unreported exception RadialManager::handleSetName\n";
+		System::out << "Unreported exception RadialManager::handleSetName\n";
 	}
 }
 
@@ -648,42 +653,42 @@ void RadialManager::handleStructureAddMaintenance(Player* player, SceneObject* o
 	try{
 		InstallationObject * inso = (InstallationObject*) obj;
 
-		if(inso!= NULL)
+		if (inso!= NULL)
 
 			inso->handleStructureAddMaintenance(player);
 
 		/*else {
 			BuildingObject * buio = (BuildingObject * ) obj;
 
-			if(buio!= NULL)
+			if (buio!= NULL)
 				buio->setName(player);
 		}
 		*/
 
 	}
 	catch(...){
-		cout << "Unreported exception in RadialManager::handleStructureAddMaintenance\n";
+		System::out << "Unreported exception in RadialManager::handleStructureAddMaintenance\n";
 	}
 }
 void RadialManager::handleStructureAddEnergy(Player* player, SceneObject* obj) {
 	try{
 		InstallationObject * inso = (InstallationObject*) obj;
 
-		if(inso!= NULL)
+		if (inso!= NULL)
 
 			inso->handleStructureAddEnergy(player);
 
 		/*else {
 			BuildingObject * buio = (BuildingObject * ) obj;
 
-			if(buio!= NULL)
+			if (buio!= NULL)
 				buio->setName(player);
 		}
 		*/
 
 	}
 	catch(...){
-		cout << "Unreported exception in RadialManager::handleStructureAddEnergy\n";
+		System::out << "Unreported exception in RadialManager::handleStructureAddEnergy\n";
 	}
 }
 
@@ -731,7 +736,7 @@ void RadialManager::handleRepair(Player* player, SceneObject* obj) {
 
 		tano->unlock();
 	} catch (...) {
-		cout << "unreported exception caught in RadialManager::handleRepair\n";
+		System::out << "unreported exception caught in RadialManager::handleRepair\n";
 		tano->unlock();
 	}
 }
@@ -758,7 +763,7 @@ void RadialManager::handleRemovePowerup(Player* player, SceneObject* obj) {
 
 		weapon->unlock();
 	} catch (...) {
-		cout << "unreported exception caught in RadialManager::handleRemovePowerup\n";
+		System::out << "unreported exception caught in RadialManager::handleRemovePowerup\n";
 		weapon->unlock();
 	}
 }
@@ -773,14 +778,14 @@ void RadialManager::sendRadialResponseForSurveyTools(Player* player, SurveyTool*
 }
 
 void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneObject* obj) {
-	string skillBox = "crafting_artisan_novice";
+	String skillBox = "crafting_artisan_novice";
 
 	if (!player->hasSkillBox(skillBox)) {
 		player->sendSystemMessage("error_message", "insufficient_skill");
 		return;
 	}
 
-	string surveying = "surveying";
+	String surveying = "surveying";
 
 	int surveyMod = player->getSkillMod(surveying);
 
@@ -827,7 +832,7 @@ void RadialManager::handleOpenCraftingToolHopper(Player* player, SceneObject* ob
 
 		craftingTool->unlock();
 	} catch (...) {
-		cout << "unreported exception caught in RadialManager::handleOpenCraftingToolHopper\n";
+		System::out << "unreported exception caught in RadialManager::handleOpenCraftingToolHopper\n";
 		craftingTool->unlock();
 	}
 }
@@ -925,12 +930,12 @@ void RadialManager::handleGuildDisband(Player* player) {
 
 	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7277, 0);
 
-	stringstream prompt;
+	StringBuffer prompt;
 	prompt << "@guild:disband_prompt " << endl << endl << "To confirm the disbanding of your guild, "
 	<< "please type the following in the area below, then press Ok:" << endl << endl << "disband guild" << endl;
 
 	suiInpBox->setPromptTitle("@guild:disband_title");
-	suiInpBox->setPromptText(prompt.str());
+	suiInpBox->setPromptText(prompt.toString());
 	suiInpBox->setCancelButton(true);
 	suiInpBox->setMaxInputSize(15);
 
@@ -1063,6 +1068,11 @@ void RadialManager::handleDiceConfigure(Player* player, SceneObject* obj, int ds
     }
 }
 
+
+void RadialManager::handleItemDrop(Player* player, SceneObject* obj) {
+	//Leave in plz, i still need it
+}
+
 void RadialManager::handleTeach(SceneObject* obj, Player* trainer) {
 	if (obj == NULL) {
 		trainer->sendSystemMessage("teaching","no_target");
@@ -1103,3 +1113,4 @@ void RadialManager::handleTeach(SceneObject* obj, Player* trainer) {
 	
 	trainer->teachPlayer(trainee);
 }
+

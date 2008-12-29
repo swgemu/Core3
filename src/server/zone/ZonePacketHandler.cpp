@@ -65,11 +65,13 @@ which carries forward this exception.
 #include "objects/terrain/PlanetNames.h"
 #include "objects/tangible/terminal/bazaar/RegionBazaar.h"
 
+#include "../login/packets/ErrorMessage.h"
+
 #include "../chat/ChatManager.h"
 
 #include "ZonePacketHandler.h"
 
-ZonePacketHandler::ZonePacketHandler(const string& s, ZoneProcessServerImplementation* serv) : Logger(s) {
+ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServerImplementation* serv) : Logger(s) {
 		processServer = serv;
 
 		server = processServer->getZoneServer();
@@ -81,7 +83,7 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 	uint16 opcount = pack->parseShort();
 	uint32 opcode = pack->parseInt();
 
-	//cout << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
+	//System::out << "handleMessage: opcount: " << hex << opcount << dec << " opcode: " << hex << opcode << endl;
 
 	switch (opcount) {
 	case 1:
@@ -139,6 +141,21 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0xD6D1B6D1: //ClientRandomNameRequest
 			handleClientRandomNameRequest(pack);
 			break;
+		case 0x2E365218: //ConnectPlayerMessage
+			handleConnectPlayerMessage(pack);
+			break;
+		case 0x274F4E78: //NewTicketActivityMessage
+			handleNewTicketActivityMessage(pack);
+			break;
+		case 0xF898E25F: //RequestCategoriesMessage
+			handleRequestCategoriesMessage(pack);
+			break;
+		case 0x0F5D5325: //ClientInactivityMessage
+			handleClientInactivityMessage(pack);
+			break;
+		case 0x48F493C5: //CommoditiesItemTypeListRequest
+			handleCommoditiesItemTypeListRequest(pack);
+			break;
 		}
 
 		break;
@@ -168,6 +185,15 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 		case 0x12B0D449: // Retrieve auction item
 			handleRetrieveAuctionItem(pack);
 			break;
+		case 0xBB8CAD45: // VerifyPlayerNameMessage
+			handleVerifyPlayerNameMessage(pack);
+			break;
+		case 0x5E7B4846: // GetArticleMessage
+			handleGetArticleMessage(pack);
+			break;
+		case 0x962E8B9B: //SearchKnowledgebaseMessage
+			handleSearchKnowledgebaseMessage(pack);
+			break;
 		}
 
 		break;
@@ -181,6 +207,9 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			break;
 		case 0x91125453: // Bazaar/Vendor bid
 			handleBazaarBuy(pack);
+			break;
+		case 0xC9A5F98D: // GetTicketsMessage
+			handleGetTicketsMessage(pack);
 			break;
 		}
 		break;
@@ -229,6 +258,13 @@ void ZonePacketHandler::handleMessage(Message* pack) {
 			break;
 		}
 		break;
+	case 10:
+		switch (opcode) {
+		case 0x40E64DAC: //CreateTicketMessage
+			handleCreateTicketMessage(pack);
+			break;
+		}
+		break;
 	case 12:
 		switch (opcode) {
 		case 0xB97F3074: //ClientCreateCharacter
@@ -271,6 +307,14 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	uint64 playerID = (characterID << 32) + 0x15;
 
 	Player* player = NULL;
+
+	if (server->isServerLocked()) {
+		if (!playerManager->hasAdminRights(characterID)) {
+			ErrorMessage* msg = new ErrorMessage("Server", "Server is locked. Please try again later.", 0);
+			client->sendMessage(msg);
+			return;
+		}
+	}
 
 	try {
 
@@ -318,7 +362,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 
 		clientimpl->setLockName("ZoneClientSession = " + player->getFirstName());
 	} catch (Exception& e) {
-		cout << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
+		System::out << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
 		e.printStackTrace();
 		server->unlock();
 	}
@@ -341,10 +385,16 @@ void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
 
 		player->notifySceneReady();
 
+		//If their on the tutorial terrain, send the starting location packet.
+		if (player->getZoneID() == 42) {
+			StartingLocationList* sll = new StartingLocationList(player);
+			player->sendMessage(sll);
+		}
+
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler::handleCmdSceneReady(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler::handleCmdSceneReady(Message* pack)\n";
 	}
 }
 
@@ -353,6 +403,13 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	ZoneClientSessionImplementation* clientimpl = (ZoneClientSessionImplementation*) pack->getClient();
 	ZoneClientSession* client = (ZoneClientSession*) clientimpl->_getStub();
+
+	if (server->isServerLocked()) {
+		ErrorMessage* msg = new ErrorMessage("Server", "Sever is locked. Please try again later.", 0);
+		client->sendMessage(msg);
+
+		return;
+	}
 
 	Player* player = new Player();
 	player->initialize();
@@ -363,9 +420,9 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	player->create(client);
 
-	string species = player->getSpeciesName();
-	string firstName = player->getFirstName();
-	string name = player->getCharacterName().c_str();
+	String species = player->getSpeciesName();
+	String firstName = player->getFirstName();
+	String name = player->getCharacterName().toString();
 
 	player->info("attempting to create Player " + firstName);
 
@@ -407,9 +464,10 @@ void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
 
 	NameManager* nameManager = processServer->getNameManager();
 
-	string racefile;
+	String racefile;
 	pack->parseAscii(racefile);
-	bool notwook = (racefile.find("wookie") == string::npos);
+
+	bool notwook = (racefile.indexOf("wookie") == -1);
 
 	BaseMessage* msg = new ClientRandomNameReponse(racefile, nameManager->makeCreatureName(notwook));
 	client->sendMessage(msg);
@@ -417,6 +475,7 @@ void ZonePacketHandler::handleClientRandomNameRequest(Message* pack) {
 
 void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
 	Player* player = client->getPlayer();
 	if (player == NULL)
 		return;
@@ -424,9 +483,9 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	uint32 header1 = pack->parseInt();
 	uint32 header2 = pack->parseInt();
 
-	/*stringstream msg;
+	/*StringBuffer msg;
 	msg << "ObjectControllerMessage(0x" << hex << header1 << ", 0x" << header2 << dec << ")";
-	player->info(msg.str());*/
+	player->info(msg.toString());*/
 
 	try {
 		player->wlock();
@@ -435,7 +494,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 			return;
 		}
 
-		//cout << "Header 1 = " << hex <<  header1 << "  Header 2 = " << header2 << endl;
+		//System::out << "Header 1 = " << hex <<  header1 << "  Header 2 = " << header2 << endl;
 
 		uint64 parent;
 
@@ -538,12 +597,12 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 	} catch (Exception& e) {
 		player->unlock();
 
-		cout << "exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
+		System::out << "exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
 		e.printStackTrace();
 	} catch (...) {
 		player->unlock();
 
-		cout << "unreported exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler:::handleObjectControllerMessage(Message* pack)\n";
 	}
 }
 
@@ -565,7 +624,7 @@ void ZonePacketHandler::handleTellMessage(Message* pack) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
 	}
 }
 
@@ -576,10 +635,10 @@ void ZonePacketHandler::handleSendMail(Message* pack) {
 	if (player == NULL)
 		return;
 
-	//cout << pack->toString() << "\n";
+	//System::out << pack->toString() << "\n";
 
-	unicode header, body;
-	string name;
+	UnicodeString header, body;
+	String name;
 
 	pack->parseUnicode(body);
 	pack->shiftOffset(8);
@@ -630,13 +689,13 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 
 		frm->addFactionCount(list->size());
 		for (int i=0; i < list->size(); i++) {
-			string faction = list->get(i);
+			String faction = list->get(i);
 			frm->addFactionName(faction);
 		}
 
 		frm->addFactionCount(list->size());
 		for (int i=0; i < list->size(); i++) {
-			string faction = list->get(i);
+			String faction = list->get(i);
 			int points = player->getFactionPoints(faction);
 			frm->addFactionPoint(points);
 		}
@@ -647,21 +706,21 @@ void ZonePacketHandler::handleFactionRequestMessage(Message* pack) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler:::handleTellMessage(Message* pack)\n";
 	}
 }
 
 void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
-	string planet;
+	String planet;
     pack->parseAscii(planet);
 
 	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(planet);
 
 	try {
 		ResultSet* result;
-		stringstream query;
+		StringBuffer query;
 		query << "SELECT * FROM planetmap WHERE lower(planet) = '" << planet << "';";
 		result = ServerDatabase::instance()->executeQuery(query);
 
@@ -673,7 +732,7 @@ void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 		delete result;
 
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 
 		return;
 	}
@@ -691,7 +750,25 @@ void ZonePacketHandler::handleGetMapLocationsRequestMessage(Message* pack) {
 }
 
 void ZonePacketHandler::handleStomachRequestMessage(Message* pack) {
-	//Send a PLAY update here.
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	try {
+		player->wlock();
+
+		PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		delta->updateStomachFilling();
+		delta->close();
+
+		player->sendMessage(delta);
+
+		player->unlock();
+	} catch (...) {
+		player->error("unreported exception in ZonePacketHandler::handleStomachRequestMessage(Message* pack)");
+		player->unlock();
+	}
 }
 
 void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
@@ -730,7 +807,7 @@ void ZonePacketHandler::handleGuildRequestMessage(Message* pack) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler:::handleGuildRequest(Message* pack)\\\\\\\\n";
+		System::out << "unreported exception on ZonePacketHandler:::handleGuildRequest(Message* pack)\\\\\\\\n";
 	}
 }
 
@@ -750,7 +827,7 @@ void ZonePacketHandler::handlePlayerMoneyRequest(Message* pack) {
 		player->unlock();
 	} catch (...) {
 		player->unlock();
-		cout << "unreported exception on ZonePacketHandler:::handlePlayerMoneyRequest(Message* pack)\n";
+		System::out << "unreported exception on ZonePacketHandler:::handlePlayerMoneyRequest(Message* pack)\n";
 	}
 }
 
@@ -764,7 +841,7 @@ void ZonePacketHandler::handleTravelListRequest(Message* pack) {
 
 	uint64 objectid;
 	objectid = pack->parseLong();
-	string planet;
+	String planet;
 	pack->parseAscii(planet);
 
 	int id = Planet::getPlanetID(planet);
@@ -865,15 +942,15 @@ void ZonePacketHandler::handleSuiEventNotification(Message* pack) {
 	uint32 cancel = pack->parseInt();
 	uint32 unk1 = pack->parseInt();
 	uint32 unk2 = pack->parseInt();
-	unicode value;
-	unicode value2;
+	UnicodeString value;
+	UnicodeString value2;
 
 	if (unk2 != 0)
 		pack->parseUnicode(value);
 	if (unk2 > 1)
 		pack->parseUnicode(value2);
 
-	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.c_str(), value2.c_str());
+	processServer->getSuiManager()->handleSuiEventNotification(opcode, player, cancel, value.toString(), value2.toString());
 }
 
 void ZonePacketHandler::handleAbortTradeMessage(Message* pack) {
@@ -953,7 +1030,7 @@ void ZonePacketHandler::handleBazaarAddItem(Message* pack, bool auction) {
    	uint32 price = pack->parseInt(); // Sale price
    	uint32 duration = pack->parseInt(); // How long to sell for in minutes
 
-   	unicode description;
+   	UnicodeString description;
    	pack->parseUnicode(description);
 
    	BazaarManager* bazaarManager = server->getBazaarManager();
@@ -1037,3 +1114,293 @@ void ZonePacketHandler::handleGetAuctionItemAttributes(Message* pack) {
    	bazaarManager->getItemAttributes(player, objectId);
 
 }
+
+void ZonePacketHandler::handleVerifyPlayerNameMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	UnicodeString name;
+	uint32 mystery1;
+	uint32 mystery2;
+	pack->parseUnicode(name);
+	mystery1 = pack->parseInt();
+	mystery2 = pack->parseInt();
+
+	//TODO: Write code here to check for player name in the Database.
+	//TODO: Find out what that int is.
+	VerifyPlayerNameResponseMessage* vpnrm = new VerifyPlayerNameResponseMessage(true, mystery1);
+	client->sendMessage(vpnrm);
+
+}
+
+void ZonePacketHandler::handleConnectPlayerMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	ConnectPlayerResponseMessage* cprm = new ConnectPlayerResponseMessage();
+	client->sendMessage(cprm);
+}
+
+void ZonePacketHandler::handleNewbieTutorialResponse(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	//I DON'T THINK THIS IS RIGHT. BUT ITS HERE FOR NOW.
+	String req;
+	pack->parseAscii(req);
+
+	NewbieTutorialRequest* ntr = new NewbieTutorialRequest(req);
+	client->sendMessage(ntr);
+
+}
+
+void ZonePacketHandler::handleGetArticleMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	String articleid;
+	bool foundarticle;
+	String body;
+	pack->parseAscii(articleid);
+
+	 StringBuffer query;
+	 query << "SELECT * FROM knowledgebase WHERE article_id = '" << articleid << "';";
+
+		 try {
+		   		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+		   		while (result->next()) {
+		   			foundarticle = true;
+		   			body = result->getString(2);
+		   			UnicodeString var(body);
+
+		   		}
+
+		   		delete result;
+		   	} catch (DatabaseException& e) {
+		   		error(e.getMessage());
+		   		foundarticle = false;
+
+		   	} catch (...) {
+		   		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuildings()\n");
+		   		foundarticle = false;
+		   	}
+	//TODO:
+		   	GetArticleResponseMessage* garm = new GetArticleResponseMessage(foundarticle);
+
+		   	if (foundarticle == true) {
+		   		garm->insertArticle(body);
+		   	}
+
+			client->sendMessage(garm);
+}
+
+void ZonePacketHandler::handleSearchKnowledgebaseMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	UnicodeString searchtext;
+	String title;
+	String articleid;
+	bool foundarticle;
+
+	pack->parseUnicode(searchtext);
+
+	//Setup the message.
+	SearchKnowledgebaseResponseMessage* kbrm = new SearchKnowledgebaseResponseMessage(false);
+
+	StringBuffer query;
+		 query << "SELECT * FROM knowledgebase WHERE article_title LIKE '%" << searchtext.toString() << "%';";
+
+			 try {
+			   		ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+			   		while (result->next()) {
+			   			foundarticle = true;
+
+			   			articleid = result->getString(0);
+			   			title = result->getString(1);
+			   			UnicodeString var(title);
+
+			   			kbrm->addArticle(title, articleid);
+
+			   		}
+
+			   		delete result;
+			   	} catch (DatabaseException& e) {
+			   		error(e.getMessage());
+			   		foundarticle = false;
+
+			   	} catch (...) {
+			   		error("unreported exception caught in PlanetManagerImplementation::loadStaticBuildings()\n");
+			   		foundarticle = false;
+			   	}
+
+	//If we found an article, update the packet.
+	if (foundarticle == true) {
+		kbrm->updateFound(true);
+	}
+
+	client->sendMessage(kbrm);
+
+
+}
+
+void ZonePacketHandler::handleAppendCommentMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+
+	//TODO: ADD RESPONSE.
+}
+
+void ZonePacketHandler::handleGetCommentsMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+
+	//TODO: ADD RESPONSE.
+}
+
+void ZonePacketHandler::handleCreateTicketMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	//TODO: I don't know!
+
+	//Ok. Lets first create all the vars to hold this crap.
+	String playerName;
+	uint32 bugMainCategoryID;
+	uint32 bugSubCategoryID;
+	pack->parseAscii(playerName);
+	bugMainCategoryID = pack->parseInt();
+	bugSubCategoryID = pack->parseInt();
+
+	//GIANT UNICODE STRING
+	UnicodeString giantUnicode;
+	pack->parseUnicode(giantUnicode);
+
+	String str = giantUnicode.toString();
+	//System::out << str;
+
+    /*
+	StringTokenizer st = new StringTokenizer(str, "a");
+
+	//Here is where we seperate everything by 0xA
+	string stationid; //convert to uint64?
+	string bugtype;
+	string repeatable;
+	string gameSystem;
+	string severity;
+	string positionX; // convert to float?
+	string positionY; // convert to float?
+	string positionZ; // convert to float?
+	string heading;
+	string planet;
+	string cluster;
+	string character;
+	string race;
+	string clientVersion;
+	string dateAndTime;
+	string additionalInfo;
+
+	*/
+	CreateTicketResponseMessage* ctrm = new CreateTicketResponseMessage(true);
+	player->sendMessage(ctrm);
+}
+
+void ZonePacketHandler::handleGetTicketsMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	//TODO: Pull tickets from the database.
+	GetTicketsResponseMessage* gtrm = new GetTicketsResponseMessage();
+	gtrm->addTicket("test name", "test body", 31337, 0x85, false, false);
+	client->sendMessage(gtrm);
+}
+
+void ZonePacketHandler::handleNewTicketActivityMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	uint32 ticketid;
+	ticketid = pack->parseInt();
+
+	NewTicketActivityResponseMessage* ntar = new NewTicketActivityResponseMessage(0,ticketid);
+	client->sendMessage(ntar);
+}
+
+void ZonePacketHandler::handleRequestCategoriesMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	//TODO: FIX THIS. AND RESEARCH THIS.
+	//In the client, theres 02 00 65 6E after the opcode.
+	//Check this precu.
+	RequestCategoriesResponseMessage* rcrm = new RequestCategoriesResponseMessage();
+	rcrm->addMainCategory("Account/Billing", 0xB808, 1, 1, 1);
+	client->sendMessage(rcrm);
+}
+
+void ZonePacketHandler::handleClientInactivityMessage(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	byte flag;
+	flag = pack->parseByte();
+
+	//TODO: Put code here to set player AFK.
+}
+
+void ZonePacketHandler::handleCommoditiesItemTypeListRequest(Message* pack) {
+	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
+
+	Player* player = client->getPlayer();
+	if (player == NULL)
+		return;
+
+	String request;
+	pack->parseAscii(request);
+
+	//TODO: Rework this. Right now sending blank list.
+	CommoditiesItemTypeListResponse* citlr = new CommoditiesItemTypeListResponse();
+	player->sendMessage(citlr);
+}
+
+

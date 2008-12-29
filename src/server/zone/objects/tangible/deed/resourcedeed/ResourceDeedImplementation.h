@@ -15,14 +15,14 @@ class CreatureObject;
 
 class ResourceDeedImplementation : public ResourceDeedServant {
 protected:
-	string resourceFile;
+	String resourceFile;
 
 public:
 
 public:
 
-	ResourceDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn);
-	ResourceDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
+	ResourceDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn);
+	ResourceDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn);
 	~ResourceDeedImplementation();
 
 	void init();

@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "../skills/SkillManager.h"
 #include "../../ZoneServer.h"
 
+#include "../../objects/player/badges/Badge.h"
 #include "../../objects/player/professions/SkillBox.h"
 #include "../../objects/player/professions/profession/FourByFourProfession.h"
 #include "../../objects/player/professions/profession/OneByFourProfession.h"
@@ -67,8 +68,6 @@ ProfessionManager::ProfessionManager(ZoneProcessServerImplementation* serv)
 
 	skillBoxMap.setNullValue(NULL);
 	certificationMap.setNullValue(NULL);
-
-	loadXpTypes();
 
 	loadProfessionsFromDatabase();
 }
@@ -90,26 +89,32 @@ ProfessionManager::~ProfessionManager() {
 
 void ProfessionManager::loadProfessions(PlayerImplementation* player) {
 	SkillBox* skillBox;
-	string box;
+	String box;
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT professions FROM characters WHERE character_id = " << player->characterID;
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 	if (!result->next()) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "unknown character ID" << player->characterID;
 
-		throw Exception(msg.str());
+		throw Exception(msg.toString());
 	}
 
-	string professions = result->getString(0);
-	string decodedData;
+	String professions = result->getString(0);
+
+	delete result;
+
+	String decodedData;
 	BinaryData decodedProfession(professions);
 	decodedProfession.decode(decodedData);
 
-	uint16* data = (uint16*)decodedData.c_str();
+	if (decodedData.length() == 0)
+		return;
+
+	uint16* data = (uint16*)decodedData.toCharArray();
 	uint16 size = *data;
 	data++;
 
@@ -118,10 +123,10 @@ void ProfessionManager::loadProfessions(PlayerImplementation* player) {
 
 		skillBox = skillBoxMap.get(idx);
 		if (skillBox == NULL) {
-			stringstream msg;
+			StringBuffer msg;
 			msg << "Invalid SkillBox when loading professions for character:" << player->characterID;
 
-			throw Exception(msg.str());
+			throw Exception(msg.toString());
 		}
 
 		skillManager->loadSkillBox(skillBox, player, true);
@@ -129,8 +134,6 @@ void ProfessionManager::loadProfessions(PlayerImplementation* player) {
 
 		data++;
 	}
-
-	delete result;
 
 	loadDefaultSkills(player);
 }
@@ -147,15 +150,15 @@ void ProfessionManager::saveProfessions(PlayerImplementation* player) {
 	int size = player->skillBoxesToSave.size();
 
 	if (size > 40) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "SkillBoxes overflow when saving professions for character:" << player->characterID;
 
 		for (int i = 0; i < size; i++) {
 			SkillBox* sBox = player->skillBoxesToSave.get(i);
-			cout << i << ": " << sBox->getName() << "\n";
+			System::out << i << ": " << sBox->getName() << "\n";
 		}
 
-		throw Exception(msg.str());
+		throw Exception(msg.toString());
 	}
 
 	uint16* data = new uint16[size + 1];
@@ -167,18 +170,18 @@ void ProfessionManager::saveProfessions(PlayerImplementation* player) {
 		data[i+1] = (uint16)pos;
 	}
 
-	string professionData((char*)data, (size + 1) * 2);
+	String professionData((char*)data, (size + 1) * 2);
 
-	string encodedData;
+	String encodedData;
 	BinaryData profession(professionData);
 	profession.encode(encodedData);
 
-	ostringstream query;
+	StringBuffer query;
 	query << "UPDATE characters SET "
-          << "professions ='" << encodedData.substr(0, encodedData.size() - 1)
+          << "professions ='" << encodedData.subString(0, encodedData.length() - 1)
           << "' WHERE character_id=" << player->characterID << ";";
 
-	ServerDatabase::instance()->executeStatement(query.str());
+	ServerDatabase::instance()->executeStatement(query.toString());
 
 	delete [] data;
 }
@@ -203,10 +206,14 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerImplementation* 
 
 	skillManager->loadSkillBox(skillBox, player, false, updateClient);
 
+	if (skillBox->isMasterBox()) {
+		player->awardBadge(Badge::getID(skillBox->getName()));
+	}
+
 	return true;
 }
 
-bool ProfessionManager::trainSkillBox(const string& skillBox, PlayerImplementation* player, bool updateClient) {
+bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
 	if (sBox != NULL)
 		return trainSkillBox(sBox, player, updateClient);
@@ -229,7 +236,7 @@ void ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerImplementati
 	}
 }
 
-void ProfessionManager::surrenderSkillBox(const string& skillBox, PlayerImplementation* player, bool updateClient) {
+void ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerImplementation* player, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
 
 	if (sBox != NULL)
@@ -241,17 +248,17 @@ void ProfessionManager::loadProfessionsFromDatabase() {
 
 	ResultSet* result;
 
-	stringstream query;
+	StringBuffer query;
 	query << "SELECT * FROM skills";
 
 	result = ServerDatabase::instance()->executeQuery(query);
 
 	if (!result->next()) {
-		stringstream msg;
+		StringBuffer msg;
 		msg << "No Skills in Database";
 
 		unlock();
-		throw Exception(msg.str());
+		throw Exception(msg.toString());
 	}
 
 	while (result->next()) {
@@ -264,13 +271,14 @@ void ProfessionManager::loadProfessionsFromDatabase() {
 					professionMap.put(prof->getName(), prof);
 		}
 	}
+
 	delete result;
 
 	for (int i = 0; i < skillBoxMap.size(); i++) {
 		SkillBox* sBox = skillBoxMap.get(i);
 
 		for (int i = 0; i < sBox->skillRequirements.size(); i++) {
-			string box = sBox->skillRequirements.get(i);
+			String box = sBox->skillRequirements.get(i);
 
 			SkillBox* requiredSkillBox = skillBoxMap.get(box);
 			sBox->requiredSkills.add(requiredSkillBox);
@@ -281,36 +289,36 @@ void ProfessionManager::loadProfessionsFromDatabase() {
 }
 
 Profession* ProfessionManager::loadProfession(ResultSet* result) {
-	string name = result->getString(1);
+	String name = result->getString(1);
 	Profession* profession = NULL;
 
-	string skillGraphType = result->getString(3);
+	String skillGraphType = result->getString(3);
 
-	if (skillGraphType.compare("fourByFour") == 0) {
+	if (skillGraphType.compareTo("fourByFour") == 0) {
 		FourByFourProfession* fourByFourProfession = new FourByFourProfession(name);
 
 		if (result->next())
-			fourByFourProfession->setNoviceBox(loadSkillBox(result, (Profession*)fourByFourProfession));
+			fourByFourProfession->setNoviceBox(loadSkillBox(result, (Profession*) fourByFourProfession));
 
 		if (result->next())
-			fourByFourProfession->setMasterBox(loadSkillBox(result, (Profession*)fourByFourProfession));
+			fourByFourProfession->setMasterBox(loadSkillBox(result, (Profession*) fourByFourProfession));
 
 		for (int i = 1; i <= 4; i++) {
 			for (int j = 1; j <= 4; j++) {
 				if (!result->next()) {
-					stringstream msg;
+					StringBuffer msg;
 					msg << "Missing SkillBoxes for " << name << " Profession";
 
-					throw Exception(msg.str());
+					throw Exception(msg.toString());
 				}
 
-				SkillBox* skillBox = loadSkillBox(result, (Profession*)fourByFourProfession);
+				SkillBox* skillBox = loadSkillBox(result, (Profession*) fourByFourProfession);
 				fourByFourProfession->setBox(i, j, skillBox);
 			}
 		}
-		profession = (Profession*)fourByFourProfession;
 
-	} else if (skillGraphType.compare("oneByFour") == 0) {
+		profession = (Profession*) fourByFourProfession;
+	} else if (skillGraphType.compareTo("oneByFour") == 0) {
 		OneByFourProfession* oneByFourProfession = new OneByFourProfession(name);
 
 		if (result->next())
@@ -321,17 +329,18 @@ Profession* ProfessionManager::loadProfession(ResultSet* result) {
 
 		for (int i = 1; i <= 4; i++) {
 			if (!result->next()) {
-					stringstream msg;
+					StringBuffer msg;
 					msg << "Missing SkillBoxes for " << name << " Profession";
 
-					throw Exception(msg.str());
+					throw Exception(msg.toString());
 			}
 
 			SkillBox* skillBox = loadSkillBox(result, (Profession*)oneByFourProfession);
 			oneByFourProfession->setBox(i, skillBox);
 		}
+
 		profession = (Profession*)oneByFourProfession;
-	} else if (skillGraphType.compare("pyramid") == 0) {
+	} else if (skillGraphType.compareTo("pyramid") == 0) {
 		PyramidProfession* pyramidProfession = new PyramidProfession(name);
 
 		if (result->next())
@@ -342,15 +351,16 @@ Profession* ProfessionManager::loadProfession(ResultSet* result) {
 
 		for (int i = 1; i <= 10; i++) {
 			if (!result->next()) {
-					stringstream msg;
+					StringBuffer msg;
 					msg << "Missing SkillBoxes for " << name << " Profession";
 
-					throw Exception(msg.str());
+					throw Exception(msg.toString());
 			}
 
 			SkillBox* skillBox = loadSkillBox(result, (Profession*)pyramidProfession);
 			pyramidProfession->setBox(i, skillBox);
 		}
+
 		profession = (Profession*)pyramidProfession;
 	}
 	return profession;
@@ -359,9 +369,9 @@ Profession* ProfessionManager::loadProfession(ResultSet* result) {
 SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profession) {
 	SkillBox* skillBox = new SkillBox(result->getString(1), result->getInt(0), profession);
 
-	string skillParent = result->getString(2);
+	String skillParent = result->getString(2);
 
-	if (skillParent.size() > 1) {
+	if (skillParent.length() > 1) {
 		SkillBox* parent = skillBoxMap.get(skillParent);
 		if (parent != NULL) {
 			skillBox->setParent(parent);
@@ -374,29 +384,28 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 	skillBox->setSkillMoneyRequired(result->getInt(8));
 	skillBox->setSkillPointsRequired(result->getInt(9));
 
-	string skillRequirements = result->getString(11);
+	String skillRequirements = result->getString(11);
 	loadSkillRequirements(skillBox, skillRequirements);
 
-	string skillPreclusions = result->getString(12);
+	String skillPreclusions = result->getString(12);
 	loadSkillPreclusions(skillBox, skillPreclusions);
 
 	skillBox->setSkillXpType(result->getString(13));
-	skillBox->setSkillXpTypeProse(xpTypeList.get(skillBox->getSkillXpType()));
 	skillBox->setSkillXpCost(result->getInt(14));
 	skillBox->setSkillXpCap(result->getInt(15));
 
-	string skillSpeciesRequired = result->getString(19);
+	String skillSpeciesRequired = result->getString(19);
 	loadSkillSpeciesRequired(skillBox, skillSpeciesRequired);
 
 	skillBox->setSkillJediStateRequired(result->getString(20));
 
-	string skillCommands = result->getString(22);
+	String skillCommands = result->getString(22);
 	loadSkillCommands(skillBox, skillCommands);
 
-	string skillMods = result->getString(23);
+	String skillMods = result->getString(23);
 	loadSkillMods(skillBox, skillMods);
 
-	string grantedDraftSchematics = result->getString(24);
+	String grantedDraftSchematics = result->getString(24);
 	loadDraftSchematics(skillBox, grantedDraftSchematics);
 
 	skillBox->setSkillIsSearchable(result->getInt(25));
@@ -406,13 +415,13 @@ SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profess
 	return skillBox;
 }
 
-void ProfessionManager::loadSkillRequirements(SkillBox* skillBox, string& skillRequirements) {
-	if (skillRequirements.size() > 1) {
-		StringTokenizer tokenizer(skillRequirements.c_str());
+void ProfessionManager::loadSkillRequirements(SkillBox* skillBox, String& skillRequirements) {
+	if (skillRequirements.length() > 1) {
+		StringTokenizer tokenizer(skillRequirements);
 		tokenizer.setDelimeter(",");
 
 		while (tokenizer.hasMoreTokens()) {
-			string skill;
+			String skill;
 			tokenizer.getStringToken(skill);
 
 			skillBox->addRequirementSkill(skill);
@@ -420,13 +429,13 @@ void ProfessionManager::loadSkillRequirements(SkillBox* skillBox, string& skillR
 	}
 }
 
-void ProfessionManager::loadSkillPreclusions(SkillBox* skillBox, string& skillPreclusions) {
-	if (skillPreclusions.size() > 1) {
-		StringTokenizer tokenizer(skillPreclusions.c_str());
+void ProfessionManager::loadSkillPreclusions(SkillBox* skillBox, String& skillPreclusions) {
+	if (skillPreclusions.length() > 1) {
+		StringTokenizer tokenizer(skillPreclusions);
 		tokenizer.setDelimeter(",");
 
 		while (tokenizer.hasMoreTokens()) {
-			string skill;
+			String skill;
 			tokenizer.getStringToken(skill);
 
 			skillBox->addPreclusionSkill(skill);
@@ -434,13 +443,13 @@ void ProfessionManager::loadSkillPreclusions(SkillBox* skillBox, string& skillPr
 	}
 }
 
-void ProfessionManager::loadSkillSpeciesRequired(SkillBox* skillBox, string& skillSpeciesRequired) {
-	if (skillSpeciesRequired.size() > 1) {
-		StringTokenizer tokenizer(skillSpeciesRequired.c_str());
+void ProfessionManager::loadSkillSpeciesRequired(SkillBox* skillBox, String& skillSpeciesRequired) {
+	if (skillSpeciesRequired.length() > 1) {
+		StringTokenizer tokenizer(skillSpeciesRequired);
 		tokenizer.setDelimeter(",");
 
 		while (tokenizer.hasMoreTokens()) {
-			string race;
+			String race;
 			tokenizer.getStringToken(race);
 
 			skillBox->addRequiredSpecies(race);
@@ -448,19 +457,19 @@ void ProfessionManager::loadSkillSpeciesRequired(SkillBox* skillBox, string& ski
 	}
 }
 
-void ProfessionManager::loadSkillCommands(SkillBox* skillBox, string& skillCommands) {
-	if (skillCommands.size() > 1) {
-		StringTokenizer tokenizer(skillCommands.c_str());
+void ProfessionManager::loadSkillCommands(SkillBox* skillBox, String& skillCommands) {
+	if (skillCommands.length() > 1) {
+		StringTokenizer tokenizer(skillCommands);
 		tokenizer.setDelimeter(",");
 
 		while (tokenizer.hasMoreTokens()) {
-			string command;
+			String command;
 			tokenizer.getStringToken(command);
-			String::toLower(command);
 
-			int idx = command.find("cert_");
+			command = command.toLowerCase();
 
-			if (idx >= 0) {
+			int idx = command.indexOf("cert_");
+			if (idx != -1) {
 				Certification* cert = certificationMap.get(command);
 
 				if (cert == NULL) {
@@ -480,31 +489,31 @@ void ProfessionManager::loadSkillCommands(SkillBox* skillBox, string& skillComma
 	}
 }
 
-void ProfessionManager::loadSkillMods(SkillBox* skillBox, string& skillMods) {
-	if (skillMods.size() > 1) {
-		StringTokenizer tokenizer(skillMods.c_str());
+void ProfessionManager::loadSkillMods(SkillBox* skillBox, String& skillMods) {
+	if (skillMods.length() > 1) {
+		StringTokenizer tokenizer(skillMods);
 		tokenizer.setDelimeter(",");
 
 		while (tokenizer.hasMoreTokens()) {
-			string skillMod;
+			String skillMod;
 			tokenizer.getStringToken(skillMod);
 
-			int index = skillMod.find("=");
-			string skillModName = skillMod.substr(0, index);
-			int value = atoi(skillMod.substr(index + 1, skillMod.size() - (index + 1)).c_str());
+			int index = skillMod.indexOf("=");
+			String skillModName = skillMod.subString(0, index);
+			int value = Integer::valueOf(skillMod.subString(index + 1, skillMod.length()));
 
 			skillBox->addSkillMod(skillModName, value);
 		}
 	}
 }
 
-void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, string& grantedDraftSchematics) {
-	if (grantedDraftSchematics.size() > 1) {
-		StringTokenizer tokenizer(grantedDraftSchematics.c_str());
+void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, String& grantedDraftSchematics) {
+	if (grantedDraftSchematics.length() > 1) {
+		StringTokenizer tokenizer(grantedDraftSchematics);
 		tokenizer.setDelimeter(",");
 
 		while (tokenizer.hasMoreTokens()) {
-			string draftSchematic;
+			String draftSchematic;
 			tokenizer.getStringToken(draftSchematic);
 
 			skillBox->addGrantedSchematic(draftSchematic);
@@ -512,51 +521,3 @@ void ProfessionManager::loadDraftSchematics(SkillBox* skillBox, string& grantedD
 	}
 }
 
-void ProfessionManager::loadXpTypes() {
-	xpTypeList.put("imagedesigner", "Image Designer");
-	xpTypeList.put("music", "Musician");
-	xpTypeList.put("dance", "Dancing");
-	xpTypeList.put("entertainer_healing", "Entertainer Healing");
-	xpTypeList.put("scout", "Scouting");
-	xpTypeList.put("trapping", "Trapping");
-	xpTypeList.put("camp", "Wilderness Survival");
-	xpTypeList.put("medical", "Medical");
-	xpTypeList.put("crafting_medicine_general", "Medicine Crafting");
-	xpTypeList.put("crafting_general", "General Crafting");
-	xpTypeList.put("resource_harvesting_inorganic", "Surveying");
-	xpTypeList.put("combat_meleespecialize_unarmed", "Unarmed Combat");
-	xpTypeList.put("combat_meleespecialize_onehand", "Onehanded Weapons");
-	xpTypeList.put("combat_meleespecialize_twohand", "Twohanded Weapons");
-	xpTypeList.put("combat_meleespecialize_polearm", "Polearm Weapons");
-	xpTypeList.put("combat_rangedspecialize_rifle", "Rifle Weapons");
-	xpTypeList.put("combat_rangedspecialize_pistol", "Pistol Weapons");
-	xpTypeList.put("combat_rangedspecialize_carbine", "Carbine Weapons");
-	xpTypeList.put("combat_general", "Combat");
-	xpTypeList.put("creaturehandler", "Creature Handling");
-	xpTypeList.put("crafting_bio_engineer_creature", "Bio-Engineer Crafting");
-	xpTypeList.put("bio_engineer_dna_harvesting", "DNA Sampling");
-	xpTypeList.put("crafting_clothing_armor", "Armor Crafting");
-	xpTypeList.put("crafting_weapons_general", "Weapon Crafting");
-	xpTypeList.put("crafting_food_general", "Food Crafting");
-	xpTypeList.put("crafting_clothing_general", "Tailoring");
-	xpTypeList.put("crafting_structure_general", "Structure Crafting");
-	xpTypeList.put("crafting_droid_general", "Droid Crafting");
-	xpTypeList.put("merchant", "Merchant");
-	xpTypeList.put("slicing", "Slicing");
-	xpTypeList.put("crafting_spice", "Spice Crafting");
-	xpTypeList.put("bountyhunter", "Bounty Hunter");
-	xpTypeList.put("combat_rangedspecialize_heavy", "Heavy Weapons");
-	xpTypeList.put("squadleader", "Squad Leadership");
-	xpTypeList.put("political", "Political");
-	xpTypeList.put("jedi_general", "Jedi");
-	xpTypeList.put("combat_meleespecialize_onehandlightsaber", "Onehanded Lightsaber");
-	xpTypeList.put("combat_meleespecialize_twohandlightsaber", "Twohanded Lightsaber");
-	xpTypeList.put("combat_meleespecialize_polearmlightsaber", "Polearm Lightsaber");
-	xpTypeList.put("fs_combat", "Force-sensitive Combat");
-	xpTypeList.put("fs_reflex", "Force-sensitive Reflex");
-	xpTypeList.put("fs_crafting", "Force-sensitive Crafting");
-	xpTypeList.put("fs_senses", "Force-sensitive Senses");
-	xpTypeList.put("force_rank_xp", "Force Rank");
-	xpTypeList.put("shipwright", "Shipwright");
-	xpTypeList.put("space_combat_general", "Starship Combat");
-}

@@ -50,7 +50,7 @@ which carries forward this exception.
 class EnterTicketPurchaseModeMessage : public BaseMessage {
 public:
 
-    EnterTicketPurchaseModeMessage(string planet, string city) : BaseMessage() {
+    EnterTicketPurchaseModeMessage(String planet, String city) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x904DAE1A);  // CRC
         insertAscii(planet);

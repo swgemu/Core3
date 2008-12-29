@@ -52,42 +52,42 @@ which carries forward this exception.
 
 
 class CustomizationData {
-	string speciesGender;
-	string customizationGroup;
-	string type;
-	string customizationName;
-	string variables;
+	String speciesGender;
+	String customizationGroup;
+	String type;
+	String customizationName;
+	String variables;
 	bool isScale;
 	bool reverse;
-	string colorLinked;
-	string colorLinkedtoSelf0;
-	string colorLinkedtoSelf1;
+	String colorLinked;
+	String colorLinkedtoSelf0;
+	String colorLinkedtoSelf1;
 	int cameraYaw;
 	bool discrete;
 	bool randomizable;
 	bool randomizableGroup;
 	bool isVarHairColor;
-	string imageDesignSkillMod;
+	String imageDesignSkillMod;
 	int skillModValue;
-	string modificationType;
+	String modificationType;
 	int maxChoices;
 	float minScale;
 	float maxScale;
 public:
 	// setters
-	inline void setSpeciesGender(string value) {
+	inline void setSpeciesGender(String value) {
 		speciesGender = value;
 	}
-	inline void setCustomizationGroup(string value) {
+	inline void setCustomizationGroup(String value) {
 		customizationGroup = value;
 	}
-	inline void setType(string value) {
+	inline void setType(String value) {
 		type = value;
 	}
-	inline void setCustomizationName(string value) {
+	inline void setCustomizationName(String value) {
 		customizationName = value;
 	}
-	inline void setVariables(string value) {
+	inline void setVariables(String value) {
 		variables = value;
 	}
 	inline void setIsScale(bool value) {
@@ -96,13 +96,13 @@ public:
 	inline void setReverse(bool value) {
 		reverse = value;
 	}
-	inline void setColorLinked(string value) {
+	inline void setColorLinked(String value) {
 		colorLinked = value;
 	}
-	inline void setColorLinkedtoSelf0(string value) {
+	inline void setColorLinkedtoSelf0(String value) {
 		colorLinkedtoSelf0 = value;
 	}
-	inline void setColorLinkedtoSelf1(string value) {
+	inline void setColorLinkedtoSelf1(String value) {
 		colorLinkedtoSelf1 = value;
 	}
 	inline void setCameraYaw(int value) {
@@ -120,13 +120,13 @@ public:
 	inline void setIsVarHairColor(bool value) {
 		isVarHairColor = value;
 	}
-	inline void setImageDesignSkillMod(string value) {
+	inline void setImageDesignSkillMod(String value) {
 		imageDesignSkillMod = value;
 	}
 	inline void setSkillModValue(int value) {
 		skillModValue = value;
 	}
-	inline void setModificationType(string value) {
+	inline void setModificationType(String value) {
 		modificationType = value;
 	}
 	inline void setMaxChoices(int value) {
@@ -140,19 +140,19 @@ public:
 	}	
 
 	// getters
-	inline string getSpeciesGender() {
+	inline String getSpeciesGender() {
 		return speciesGender;
 	}
-	inline string getCustomizationGroup() {
+	inline String getCustomizationGroup() {
 		return customizationGroup;
 	}
-	inline string getType() {
+	inline String getType() {
 		return type;
 	}
-	inline string getCustomizationName() {
+	inline String getCustomizationName() {
 		return customizationName;
 	}
-	inline string getVariables() {
+	inline String getVariables() {
 		return variables;
 	}
 	inline bool getIsScale() {
@@ -161,13 +161,13 @@ public:
 	inline bool getReverse() {
 		return reverse;
 	}
-	inline string getColorLinked() {
+	inline String getColorLinked() {
 		return colorLinked;
 	}
-	inline string getColorLinkedtoSelf0() {
+	inline String getColorLinkedtoSelf0() {
 		return colorLinkedtoSelf0;
 	}
-	inline string getColorLinkedtoSelf1() {
+	inline String getColorLinkedtoSelf1() {
 		return colorLinkedtoSelf1;
 	}
 	inline int getCameraYaw() {
@@ -185,13 +185,13 @@ public:
 	inline bool getIsVarHairColor() {
 		return isVarHairColor;
 	}
-	inline string getImageDesignSkillMod() {
+	inline String getImageDesignSkillMod() {
 		return imageDesignSkillMod;
 	}
 	inline int getSkillModValue() {
 		return skillModValue;
 	}
-	inline string getModificationType() {
+	inline String getModificationType() {
 		return modificationType;
 	}
 	inline int getMaxChoices() {
@@ -208,7 +208,7 @@ public:
 
 class CustomizationManager {
 	
-	VectorMap<string, CustomizationData*> customizations;
+	VectorMap<String, CustomizationData*> customizations;
 	int loadedCount;
 	void loadCustomizationData();
 
@@ -217,7 +217,7 @@ public:
 	
 	~CustomizationManager();
 	
-	CustomizationData* getCustomizationData(string speciesGender, string customizationName);
+	CustomizationData* getCustomizationData(String speciesGender, String customizationName);
 	
 };
 #endif /*CUSTOMIZATIONMANAGER_H_*/

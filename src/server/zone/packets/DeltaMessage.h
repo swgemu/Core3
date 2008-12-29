@@ -107,14 +107,14 @@ public:
 		insertFloat(value);
 	}
 	
-	inline void addAsciiUpdate(uint16 type, const string& val) {
+	inline void addAsciiUpdate(uint16 type, const String& val) {
 		startUpdate(type);
-		insertAscii(val.c_str());
+		insertAscii(val.toCharArray());
 	}
 	
-	inline void addUnicodeUpdate(uint16 type, const string& val) {
+	inline void addUnicodeUpdate(uint16 type, const String& val) {
 		startUpdate(type);
-		unicode v = unicode(val);
+		UnicodeString v = UnicodeString(val);
 		insertUnicode(v);
 	}
 
@@ -143,9 +143,9 @@ public:
 		insertLong(value);
 	}
 
-	inline void addListAsciiElement(const string& value) {
+	inline void addListAsciiElement(const String& value) {
 		insertByte(0x00);
-		insertAscii(value.c_str());
+		insertAscii(value.toCharArray());
 	}
 
 	inline void removeListIntElement(uint16 index, uint32 value) {
@@ -171,9 +171,9 @@ public:
 		insertShort(index);
 	}
 
-	inline void removeListAsciiElement(const string& value) {
+	inline void removeListAsciiElement(const String& value) {
 		insertByte(0x01);
-		insertAscii(value.c_str());
+		insertAscii(value.toCharArray());
 	}
 
 	inline void close() {

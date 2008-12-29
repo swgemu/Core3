@@ -260,28 +260,6 @@ dathScienceOutpostNpc10 = Creature:new {
 	cellID = 0
 }
 
-dathScienceOutpostNpc11 = Creature:new {
-	objectName = "dathScienceOutpostNpc11",
-	creatureType = NPC,
-
-	speciesName = "shaki_hamachil",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 2341728454,
-	positionX = -101.049,
-	positionY = -1542.62,
-	positionZ = 18,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.548248,
-	directionW = 0.836316,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 dathScienceOutpostNpc12 = Creature:new {
 	objectName = "dathScienceOutpostNpc12",
 	creatureType = NPC,
@@ -301,28 +279,6 @@ dathScienceOutpostNpc12 = Creature:new {
 	directionW = 0.854832,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-dathScienceOutpostNpc13 = Creature:new {
-	objectName = "dathScienceOutpostNpc13",
-	creatureType = NPC,
-
-	speciesName = "shibb_nisshil",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 2385405505,
-	positionX = -71.1537,
-	positionY = -1639.84,
-	positionZ = 18,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.547719,
-	directionW = 0.836662,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -392,28 +348,6 @@ dathScienceOutpostNpc16 = Creature:new {
 	cellID = 0
 }
 
-dathScienceOutpostNpc17 = Creature:new {
-	objectName = "dathScienceOutpostNpc17",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_12",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = -83.6701,
-	positionY = -1546.23,
-	positionZ = 18,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.304595,
-	directionW = 0.952482,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 dathScienceOutpostNpc18 = Creature:new {
 	objectName = "dathScienceOutpostNpc18",
 	creatureType = NPC,
@@ -475,28 +409,6 @@ dathScienceOutpostNpc20 = Creature:new {
 	directionZ = 0,
 	directionY = 0.340141,
 	directionW = 0.940374,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-dathScienceOutpostNpc21 = Creature:new {
-	objectName = "dathScienceOutpostNpc21",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_12",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4182262563,
-	positionX = -66.29,
-	positionY = -1559.58,
-	positionZ = 18,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.896578,
-	directionW = 0.442886,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0

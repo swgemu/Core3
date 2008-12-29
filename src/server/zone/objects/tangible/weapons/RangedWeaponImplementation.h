@@ -54,12 +54,12 @@ protected:
 	int range;
 
 public:
-	RangedWeaponImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn, int tp, bool eqp = false) 
+	RangedWeaponImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: RangedWeaponServant(objid, tempcrc, n, tempn, eqp, tp, RANGED) {
 		initialize();
 	}
 
-	RangedWeaponImplementation(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp = false) 
+	RangedWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
 			: RangedWeaponServant(creature, temp, n, tempn, eqp, tp, RANGED) {
 		initialize();
 	}
@@ -85,7 +85,7 @@ public:
 	
 	void setRange(int rng) {
 		range = rng;
-		string name = "range";
+		String name = "range";
 		itemAttributes->setIntAttribute(name, rng);
 	}
 	

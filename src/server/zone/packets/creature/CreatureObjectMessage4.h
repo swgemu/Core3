@@ -95,7 +95,7 @@ public:
 
 	// TODO: this needs to be cleaner for dealing with values
 	void insertSkillMods(CreatureObjectImplementation* creo) {
-		string skillmod;
+		String skillmod;
 		int value;
 
 		creo->creatureSkillMods.resetIterator();

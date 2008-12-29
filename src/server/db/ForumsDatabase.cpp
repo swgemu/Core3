@@ -45,8 +45,8 @@ which carries forward this exception.
 #include "ForumsDatabase.h"
 
 Database* ForumsDatabase::impl = NULL;
-string ForumsDatabase::forumsbannedGroup = "0";
-string ForumsDatabase::forumsStandardGroup = "0";
-string ForumsDatabase::forumsUserTable = "0";
-string ForumsDatabase::forumsBannedTable = "0";
-string ForumsDatabase::forumsNewActivationTable = "0";
+String ForumsDatabase::forumsbannedGroup = "0";
+String ForumsDatabase::forumsStandardGroup = "0";
+String ForumsDatabase::forumsUserTable = "0";
+String ForumsDatabase::forumsBannedTable = "0";
+String ForumsDatabase::forumsNewActivationTable = "0";

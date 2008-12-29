@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "../../../objects.h"
 
-WoundPackImplementation::WoundPackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn)
+WoundPackImplementation::WoundPackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: WoundPackServant(oid, tempCRC, n, tempn, WOUNDPACK) {
 	initialize();
 }
-WoundPackImplementation::WoundPackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
+WoundPackImplementation::WoundPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: WoundPackServant(creature, tempCRC, n, tempn, WOUNDPACK) {
 
 	name = n;
@@ -73,7 +73,7 @@ int WoundPackImplementation::useObject(Player* player) {
 }
 
 void WoundPackImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
-	string name;
+	String name;
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 	//craftingValues->toString();
@@ -104,7 +104,7 @@ void WoundPackImplementation::initialize() {
 void WoundPackImplementation::parseItemAttributes() {
 	PharmaceuticalImplementation::parseItemAttributes();
 
-	string attr = "effectiveness";
+	String attr = "effectiveness";
 	setEffectiveness(itemAttributes->getFloatAttribute(attr));
 	attr = "attribute";
 	setAttribute(itemAttributes->getIntAttribute(attr));
@@ -113,9 +113,9 @@ void WoundPackImplementation::parseItemAttributes() {
 void WoundPackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
-	stringstream eff;
+	StringBuffer eff;
 	eff << "examine_heal_wound_" << CreatureAttribute::getName(attribute);
-	alm->insertAttribute(string(eff.str()), getPrecision(effectiveness, 0));
+	alm->insertAttribute(String(eff.toString()), getPrecision(effectiveness, 0));
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

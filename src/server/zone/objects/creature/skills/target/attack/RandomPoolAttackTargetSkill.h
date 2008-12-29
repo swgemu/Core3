@@ -49,14 +49,15 @@ which carries forward this exception.
 
 class RandomPoolAttackTargetSkill : public AttackTargetSkill {
 public:
-	RandomPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, RANDOM, serv) {
+	RandomPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, RANDOM, serv) {
 		healthPoolAttackChance = 50;
 		actionPoolAttackChance = 35;
 		mindPoolAttackChance = 15;
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
+
 
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			CreatureObject* targetCreature = (CreatureObject*) target;

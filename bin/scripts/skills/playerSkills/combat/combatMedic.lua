@@ -40,3 +40,16 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+MindHealSkill = {
+	skillname = "healmind",
+	effect = "clienteffect/healing_healenhance.cef",
+	animation = "heal_self",
+ 
+	mindCost = 250,
+	mindWoundCost = 250,
+ 
+	speed = 5.0,
+	range = 6.0
+}
+ 
+AddMindHealTargetSkill(MindHealSkill);

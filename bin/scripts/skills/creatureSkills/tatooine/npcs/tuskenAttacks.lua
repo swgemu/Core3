@@ -40,14 +40,13 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-
 tuskenAttack40 = { 
 	attackname = "tuskenAttack40",
 	animation = "combo_4a_medium",
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
+	range = 6,
 	damageRatio = 4.5,
 	speedRatio = 1.5,
 	areaRange = 0,
@@ -78,10 +77,10 @@ tuskenAttack41 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
-	areaRange = 7,
+	range = 6,
+	damageRatio = 4.5,
+	speedRatio = 1.5,
+	areaRange = 0,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -109,8 +108,8 @@ tuskenAttack42 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
-	damageRatio = 4.0,
+	range = 6,
+	damageRatio = 4,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -140,41 +139,10 @@ tuskenAttack43 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
+	range = 6,
 	damageRatio = 4.2,
 	speedRatio = 1.5,
 	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 1,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
-}
-
-AddRandomPoolAttackTargetSkill(tuskenAttack43)
-
------------------------------------------------------------------------
-
-tuskenAttack44 = { 
-	attackname = "tuskenAttack44",
-	animation = "combo_2d_medium",
-
-	requiredWeaponType = ONEHANDED,
-	
-	range = 8,
-	damageRatio = 4.0,
-	speedRatio = 1.7,
-	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -192,7 +160,49 @@ tuskenAttack44 = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddRandomPoolAttackTargetSkill(tuskenAttack44)
+AddRandomPoolAttackTargetSkill(tuskenAttack43)
+
+-----------------------------------------------------------------------
+
+tuskenAttack44 = { 
+	attackname = "tuskenAttack44",
+	animation = "counter_low_left_light",
+
+	requiredWeaponType = ONEHANDED,
+	
+	range = 6,
+	damageRatio = 4.2,
+	speedRatio = 1.5,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthAttackChance = 25,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
+
+	dotChance = 50,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+	
+	CbtSpamBlock = "melee_block",
+	CbtSpamCounter = "melee_counter",
+	CbtSpamEvade = "melee_evade",
+	CbtSpamHit = "melee_hit",
+	CbtSpamMiss = "melee_miss",
+}
+
+AddDotPoolAttackTargetSkill(tuskenAttack44)
 
 -----------------------------------------------------------------------
 
@@ -202,8 +212,8 @@ tuskenAttack45 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
-	damageRatio = 4.15,
+	range = 6,
+	damageRatio = 4,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -227,33 +237,25 @@ AddRandomPoolAttackTargetSkill(tuskenAttack45)
 
 -----------------------------------------------------------------------
 
-
 tuskenAttack46 = { 
 	attackname = "tuskenAttack46",
 	animation = "combo_3c_light",
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
-	damageRatio = 4.15,
+	range = 6,
+	damageRatio = 4,
 	speedRatio = 1.5,
-	areaRange = 0,
+	areaRange = 7,
 	accuracyBonus = 0,
-
-	dotChance = 50,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 2,
-	bleedingType = HEALTH,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 1,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
 	CbtSpamCounter = "melee_counter",
@@ -262,19 +264,19 @@ tuskenAttack46 = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDotPoolAttackTargetSkill(tuskenAttack46)
+AddRandomPoolAttackTargetSkill(tuskenAttack46)
 
 -----------------------------------------------------------------------
 
 tuskenAttack47 = { 
 	attackname = "tuskenAttack47",
-	animation = "combo_2d_medium",
+	animation = "combo_4b_medium",
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
-	damageRatio = 4.0,
-	speedRatio = 1.25,
+	range = 6,
+	damageRatio = 4,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -303,7 +305,7 @@ tuskenAttack49 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
+	range = 6,
 	damageRatio = 4.15,
 	speedRatio = 1.5,
 	areaRange = 7,
@@ -313,7 +315,7 @@ tuskenAttack49 = {
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 1,
+	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -334,7 +336,7 @@ tuskenAttack50 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
+	range = 6,
 	damageRatio = 4.55,
 	speedRatio = 1.5,
 	areaRange = 7,
@@ -346,7 +348,7 @@ tuskenAttack50 = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 1,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
 	CbtSpamCounter = "melee_counter",
@@ -365,13 +367,13 @@ tuskenAttack53 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 8,
+	range = 6,
 	damageRatio = 3.15,
-	speedRatio = 1.45,
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 
-	dotChance = 80,
+	dotChance = 50,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -383,7 +385,7 @@ tuskenAttack53 = {
 	poisonStrength = 0,
 	poisonType = 0,
 
-	diseaseStrength = 2,
+	diseaseStrength = 1,
 	diseaseType = HEALTH,
 	
 	CbtSpamBlock = "melee_block",
@@ -396,3 +398,132 @@ tuskenAttack53 = {
 AddDotPoolAttackTargetSkill(tuskenAttack53)
 
 -----------------------------------------------------------------------
+
+tuskenRangedAttack1 = { 
+	attackname = "tuskenRangedAttack1",
+	animation = "creature_attack_ranged_light",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 64,
+	damageRatio = 10,
+	speedRatio = 1.5,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 12,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(tuskenRangedAttack1)
+
+-----------------------------------------------------------------------
+
+tuskenRangedAttack2 = { 
+	attackname = "tuskenRangedAttack2",
+	animation = "creature_attack_ranged_light",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 64,
+	damageRatio = 10,
+	speedRatio = 1.5,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(tuskenRangedAttack2)
+
+-----------------------------------------------------------------------
+
+tuskenRangedAttack3 = { 
+	attackname = "tuskenRangedAttack3",
+	animation = "creature_attack_ranged_light",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 64,
+	damageRatio = 10,
+	speedRatio = 1.5,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 25,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(tuskenRangedAttack3)
+
+-----------------------------------------------------------------------
+
+tuskenRangedAttack4 = { 
+	attackname = "tuskenRangedAttack4",
+	animation = "creature_attack_ranged_light",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 64,
+	damageRatio = 4.5,
+	speedRatio = 3,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	dotChance = 50,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddDotPoolAttackTargetSkill(tuskenRangedAttack4)

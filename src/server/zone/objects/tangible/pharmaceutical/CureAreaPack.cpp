@@ -20,12 +20,12 @@
  *	CureAreaPackStub
  */
 
-CureAreaPack::CureAreaPack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+CureAreaPack::CureAreaPack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new CureAreaPackImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-CureAreaPack::CureAreaPack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+CureAreaPack::CureAreaPack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new CureAreaPackImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -207,11 +207,11 @@ DistributedObjectAdapter* CureAreaPackHelper::createAdapter(DistributedObjectStu
  *	CureAreaPackServant
  */
 
-CureAreaPackServant::CureAreaPackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
+CureAreaPackServant::CureAreaPackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
 	_classHelper = CureAreaPackHelper::instance();
 }
 
-CureAreaPackServant::CureAreaPackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
+CureAreaPackServant::CureAreaPackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
 	_classHelper = CureAreaPackHelper::instance();
 }
 

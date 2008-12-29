@@ -69,11 +69,17 @@ ZoneImplementation::ZoneImplementation(ZoneServer* serv, ZoneProcessServerImplem
 
 	creatureManager = NULL;
 	planetManager = NULL;
+
+	//Weather
+	weatherID = 0;
+	weatherWindX = 1.0f;
+	weatherWindY = -1.0f;
+	weatherEnabled = true;
 }
 
 void ZoneImplementation::startManagers() {
-	if (zoneID > 10) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
-		return;
+	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
+	//	return;
 
 	creatureManager = new CreatureManager(_this, processor);
 	creatureManager->deploy("CreatureManager", zoneID);
@@ -96,8 +102,8 @@ void ZoneImplementation::startManagers() {
 }
 
 void ZoneImplementation::stopManagers() {
-	if (zoneID > 10) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
-		return;
+	//if (zoneID > 45) //TODO: Change back to 9 sometimes. We use Zone 10 (Space Corellia) as a "prison" for the CSRs sending bad players there
+	//	return;
 
 	if (creatureManager != NULL) {
 		creatureManager->stop();

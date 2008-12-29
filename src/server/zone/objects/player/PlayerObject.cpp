@@ -20,6 +20,8 @@
 
 #include "../../managers/player/PlayerManager.h"
 
+#include "badges/Badges.h"
+
 /*
  *	PlayerObjectStub
  */
@@ -61,7 +63,7 @@ void PlayerObject::sendTo(Player* player, bool doClose) {
 		((PlayerObjectImplementation*) _impl)->sendTo(player, doClose);
 }
 
-int PlayerObject::getExperience(const string& xpType) {
+int PlayerObject::getExperience(const String& xpType) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -74,7 +76,7 @@ int PlayerObject::getExperience(const string& xpType) {
 		return ((PlayerObjectImplementation*) _impl)->getExperience(xpType);
 }
 
-void PlayerObject::addExperience(const string& xpType, int xp, bool updateClient) {
+void PlayerObject::addExperience(const String& xpType, int xp, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -89,7 +91,7 @@ void PlayerObject::addExperience(const string& xpType, int xp, bool updateClient
 		((PlayerObjectImplementation*) _impl)->addExperience(xpType, xp, updateClient);
 }
 
-void PlayerObject::removeExperience(const string& xpType, int xp, bool updateClient) {
+void PlayerObject::removeExperience(const String& xpType, int xp, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -104,7 +106,7 @@ void PlayerObject::removeExperience(const string& xpType, int xp, bool updateCli
 		((PlayerObjectImplementation*) _impl)->removeExperience(xpType, xp, updateClient);
 }
 
-void PlayerObject::loadExperience(const string& xpStr) {
+void PlayerObject::loadExperience(const String& xpStr) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -117,7 +119,7 @@ void PlayerObject::loadExperience(const string& xpStr) {
 		((PlayerObjectImplementation*) _impl)->loadExperience(xpStr);
 }
 
-string& PlayerObject::saveExperience() {
+String& PlayerObject::saveExperience() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -527,7 +529,7 @@ Player* PlayerObject::getPlayer() {
 		return ((PlayerObjectImplementation*) _impl)->getPlayer();
 }
 
-void PlayerObject::setCurrentTitle(string& nTitle, bool updateClient) {
+void PlayerObject::setCurrentTitle(String& nTitle, bool updateClient) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -541,7 +543,7 @@ void PlayerObject::setCurrentTitle(string& nTitle, bool updateClient) {
 		((PlayerObjectImplementation*) _impl)->setCurrentTitle(nTitle, updateClient);
 }
 
-void PlayerObject::setTitle(string& temptitle) {
+void PlayerObject::setTitle(String& temptitle) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -554,7 +556,7 @@ void PlayerObject::setTitle(string& temptitle) {
 		((PlayerObjectImplementation*) _impl)->setTitle(temptitle);
 }
 
-string& PlayerObject::getCurrentTitle() {
+String& PlayerObject::getCurrentTitle() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -629,7 +631,7 @@ FriendsList* PlayerObject::getFriendsList() {
 		return ((PlayerObjectImplementation*) _impl)->getFriendsList();
 }
 
-void PlayerObject::addFriend(string& name, string& inServer) {
+void PlayerObject::addFriend(String& name, String& inServer) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -655,7 +657,7 @@ void PlayerObject::friendsMagicNumberReset() {
 		((PlayerObjectImplementation*) _impl)->friendsMagicNumberReset();
 }
 
-void PlayerObject::removeFriend(string& name) {
+void PlayerObject::removeFriend(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -668,7 +670,7 @@ void PlayerObject::removeFriend(string& name) {
 		((PlayerObjectImplementation*) _impl)->removeFriend(name);
 }
 
-void PlayerObject::findFriend(string& name, PlayerManager* playerManager) {
+void PlayerObject::findFriend(String& name, PlayerManager* playerManager) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -719,24 +721,75 @@ void PlayerObject::updateAllFriends(PlayerObject* playerObject) {
 		((PlayerObjectImplementation*) _impl)->updateAllFriends(playerObject);
 }
 
-IgnoreList* PlayerObject::getIgnoreList() {
+void PlayerObject::pokeReverseFriendList(unsigned long long playerID) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 59);
+		method.addUnsignedLongParameter(playerID);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->pokeReverseFriendList(playerID);
+}
+
+void PlayerObject::removeFromReverseFriendList(unsigned long long playID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 60);
+		method.addUnsignedLongParameter(playID);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerObjectImplementation*) _impl)->removeFromReverseFriendList(playID);
+}
+
+int PlayerObject::getReverseFriendListSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 61);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getReverseFriendListSize();
+}
+
+unsigned long long PlayerObject::getReverseFriendListEntry(int i) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 62);
+		method.addSignedIntParameter(i);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return ((PlayerObjectImplementation*) _impl)->getReverseFriendListEntry(i);
+}
+
+IgnoreList* PlayerObject::getIgnoreList() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 63);
 
 		return (IgnoreList*) method.executeWithObjectReturn();
 	} else
 		return ((PlayerObjectImplementation*) _impl)->getIgnoreList();
 }
 
-void PlayerObject::addIgnore(string& name, string& inServer) {
+void PlayerObject::addIgnore(String& name, String& inServer) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 64);
 		method.addAsciiParameter(name);
 		method.addAsciiParameter(inServer);
 
@@ -750,19 +803,19 @@ void PlayerObject::ignoreMagicNumberReset() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 65);
 
 		method.executeWithVoidReturn();
 	} else
 		((PlayerObjectImplementation*) _impl)->ignoreMagicNumberReset();
 }
 
-void PlayerObject::removeIgnore(string& name) {
+void PlayerObject::removeIgnore(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 66);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -775,7 +828,7 @@ void PlayerObject::saveIgnore() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 67);
 
 		method.executeWithVoidReturn();
 	} else
@@ -787,7 +840,7 @@ void PlayerObject::loadIgnore() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 68);
 
 		method.executeWithVoidReturn();
 	} else
@@ -799,7 +852,7 @@ void PlayerObject::saveWaypoints(Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 69);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -807,12 +860,12 @@ void PlayerObject::saveWaypoints(Player* player) {
 		((PlayerObjectImplementation*) _impl)->saveWaypoints(player);
 }
 
-WaypointObject* PlayerObject::searchWaypoint(Player* play, const string& name, int mode) {
+WaypointObject* PlayerObject::searchWaypoint(Player* play, const String& name, int mode) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 70);
 		method.addObjectParameter(play);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(mode);
@@ -840,16 +893,16 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 8:
-		resp->insertSignedInt(getExperience(inv->getAsciiParameter(_param0_getExperience__string_)));
+		resp->insertSignedInt(getExperience(inv->getAsciiParameter(_param0_getExperience__String_)));
 		break;
 	case 9:
-		addExperience(inv->getAsciiParameter(_param0_addExperience__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		addExperience(inv->getAsciiParameter(_param0_addExperience__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 10:
-		removeExperience(inv->getAsciiParameter(_param0_removeExperience__string_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		removeExperience(inv->getAsciiParameter(_param0_removeExperience__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
 	case 11:
-		loadExperience(inv->getAsciiParameter(_param0_loadExperience__string_));
+		loadExperience(inv->getAsciiParameter(_param0_loadExperience__String_));
 		break;
 	case 12:
 		resp->insertAscii(saveExperience());
@@ -948,10 +1001,10 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(getPlayer()->_getObjectID());
 		break;
 	case 44:
-		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__string_bool_), inv->getBooleanParameter());
+		setCurrentTitle(inv->getAsciiParameter(_param0_setCurrentTitle__String_bool_), inv->getBooleanParameter());
 		break;
 	case 45:
-		setTitle(inv->getAsciiParameter(_param0_setTitle__string_));
+		setTitle(inv->getAsciiParameter(_param0_setTitle__String_));
 		break;
 	case 46:
 		resp->insertAscii(getCurrentTitle());
@@ -972,16 +1025,16 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		resp->insertLong(getFriendsList()->_getObjectID());
 		break;
 	case 52:
-		addFriend(inv->getAsciiParameter(_param0_addFriend__string_string_), inv->getAsciiParameter(_param1_addFriend__string_string_));
+		addFriend(inv->getAsciiParameter(_param0_addFriend__String_String_), inv->getAsciiParameter(_param1_addFriend__String_String_));
 		break;
 	case 53:
 		friendsMagicNumberReset();
 		break;
 	case 54:
-		removeFriend(inv->getAsciiParameter(_param0_removeFriend__string_));
+		removeFriend(inv->getAsciiParameter(_param0_removeFriend__String_));
 		break;
 	case 55:
-		findFriend(inv->getAsciiParameter(_param0_findFriend__string_PlayerManager_), (PlayerManager*) inv->getObjectParameter());
+		findFriend(inv->getAsciiParameter(_param0_findFriend__String_PlayerManager_), (PlayerManager*) inv->getObjectParameter());
 		break;
 	case 56:
 		saveFriends();
@@ -993,28 +1046,40 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		updateAllFriends((PlayerObject*) inv->getObjectParameter());
 		break;
 	case 59:
-		resp->insertLong(getIgnoreList()->_getObjectID());
+		pokeReverseFriendList(inv->getUnsignedLongParameter());
 		break;
 	case 60:
-		addIgnore(inv->getAsciiParameter(_param0_addIgnore__string_string_), inv->getAsciiParameter(_param1_addIgnore__string_string_));
+		removeFromReverseFriendList(inv->getUnsignedLongParameter());
 		break;
 	case 61:
-		ignoreMagicNumberReset();
+		resp->insertSignedInt(getReverseFriendListSize());
 		break;
 	case 62:
-		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__string_));
+		resp->insertLong(getReverseFriendListEntry(inv->getSignedIntParameter()));
 		break;
 	case 63:
-		saveIgnore();
+		resp->insertLong(getIgnoreList()->_getObjectID());
 		break;
 	case 64:
-		loadIgnore();
+		addIgnore(inv->getAsciiParameter(_param0_addIgnore__String_String_), inv->getAsciiParameter(_param1_addIgnore__String_String_));
 		break;
 	case 65:
-		saveWaypoints((Player*) inv->getObjectParameter());
+		ignoreMagicNumberReset();
 		break;
 	case 66:
-		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_string_int_), inv->getSignedIntParameter())->_getObjectID());
+		removeIgnore(inv->getAsciiParameter(_param0_removeIgnore__String_));
+		break;
+	case 67:
+		saveIgnore();
+		break;
+	case 68:
+		loadIgnore();
+		break;
+	case 69:
+		saveWaypoints((Player*) inv->getObjectParameter());
+		break;
+	case 70:
+		resp->insertLong(searchWaypoint((Player*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_searchWaypoint__Player_String_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
 	default:
 		return NULL;
@@ -1031,23 +1096,23 @@ void PlayerObjectAdapter::sendTo(Player* player, bool doClose) {
 	return ((PlayerObjectImplementation*) impl)->sendTo(player, doClose);
 }
 
-int PlayerObjectAdapter::getExperience(const string& xpType) {
+int PlayerObjectAdapter::getExperience(const String& xpType) {
 	return ((PlayerObjectImplementation*) impl)->getExperience(xpType);
 }
 
-void PlayerObjectAdapter::addExperience(const string& xpType, int xp, bool updateClient) {
+void PlayerObjectAdapter::addExperience(const String& xpType, int xp, bool updateClient) {
 	return ((PlayerObjectImplementation*) impl)->addExperience(xpType, xp, updateClient);
 }
 
-void PlayerObjectAdapter::removeExperience(const string& xpType, int xp, bool updateClient) {
+void PlayerObjectAdapter::removeExperience(const String& xpType, int xp, bool updateClient) {
 	return ((PlayerObjectImplementation*) impl)->removeExperience(xpType, xp, updateClient);
 }
 
-void PlayerObjectAdapter::loadExperience(const string& xpStr) {
+void PlayerObjectAdapter::loadExperience(const String& xpStr) {
 	return ((PlayerObjectImplementation*) impl)->loadExperience(xpStr);
 }
 
-string& PlayerObjectAdapter::saveExperience() {
+String& PlayerObjectAdapter::saveExperience() {
 	return ((PlayerObjectImplementation*) impl)->saveExperience();
 }
 
@@ -1175,15 +1240,15 @@ Player* PlayerObjectAdapter::getPlayer() {
 	return ((PlayerObjectImplementation*) impl)->getPlayer();
 }
 
-void PlayerObjectAdapter::setCurrentTitle(string& nTitle, bool updateClient) {
+void PlayerObjectAdapter::setCurrentTitle(String& nTitle, bool updateClient) {
 	return ((PlayerObjectImplementation*) impl)->setCurrentTitle(nTitle, updateClient);
 }
 
-void PlayerObjectAdapter::setTitle(string& temptitle) {
+void PlayerObjectAdapter::setTitle(String& temptitle) {
 	return ((PlayerObjectImplementation*) impl)->setTitle(temptitle);
 }
 
-string& PlayerObjectAdapter::getCurrentTitle() {
+String& PlayerObjectAdapter::getCurrentTitle() {
 	return ((PlayerObjectImplementation*) impl)->getCurrentTitle();
 }
 
@@ -1207,7 +1272,7 @@ FriendsList* PlayerObjectAdapter::getFriendsList() {
 	return ((PlayerObjectImplementation*) impl)->getFriendsList();
 }
 
-void PlayerObjectAdapter::addFriend(string& name, string& inServer) {
+void PlayerObjectAdapter::addFriend(String& name, String& inServer) {
 	return ((PlayerObjectImplementation*) impl)->addFriend(name, inServer);
 }
 
@@ -1215,11 +1280,11 @@ void PlayerObjectAdapter::friendsMagicNumberReset() {
 	return ((PlayerObjectImplementation*) impl)->friendsMagicNumberReset();
 }
 
-void PlayerObjectAdapter::removeFriend(string& name) {
+void PlayerObjectAdapter::removeFriend(String& name) {
 	return ((PlayerObjectImplementation*) impl)->removeFriend(name);
 }
 
-void PlayerObjectAdapter::findFriend(string& name, PlayerManager* playerManager) {
+void PlayerObjectAdapter::findFriend(String& name, PlayerManager* playerManager) {
 	return ((PlayerObjectImplementation*) impl)->findFriend(name, playerManager);
 }
 
@@ -1235,11 +1300,27 @@ void PlayerObjectAdapter::updateAllFriends(PlayerObject* playerObject) {
 	return ((PlayerObjectImplementation*) impl)->updateAllFriends(playerObject);
 }
 
+void PlayerObjectAdapter::pokeReverseFriendList(unsigned long long playerID) {
+	return ((PlayerObjectImplementation*) impl)->pokeReverseFriendList(playerID);
+}
+
+void PlayerObjectAdapter::removeFromReverseFriendList(unsigned long long playID) {
+	return ((PlayerObjectImplementation*) impl)->removeFromReverseFriendList(playID);
+}
+
+int PlayerObjectAdapter::getReverseFriendListSize() {
+	return ((PlayerObjectImplementation*) impl)->getReverseFriendListSize();
+}
+
+unsigned long long PlayerObjectAdapter::getReverseFriendListEntry(int i) {
+	return ((PlayerObjectImplementation*) impl)->getReverseFriendListEntry(i);
+}
+
 IgnoreList* PlayerObjectAdapter::getIgnoreList() {
 	return ((PlayerObjectImplementation*) impl)->getIgnoreList();
 }
 
-void PlayerObjectAdapter::addIgnore(string& name, string& inServer) {
+void PlayerObjectAdapter::addIgnore(String& name, String& inServer) {
 	return ((PlayerObjectImplementation*) impl)->addIgnore(name, inServer);
 }
 
@@ -1247,7 +1328,7 @@ void PlayerObjectAdapter::ignoreMagicNumberReset() {
 	return ((PlayerObjectImplementation*) impl)->ignoreMagicNumberReset();
 }
 
-void PlayerObjectAdapter::removeIgnore(string& name) {
+void PlayerObjectAdapter::removeIgnore(String& name) {
 	return ((PlayerObjectImplementation*) impl)->removeIgnore(name);
 }
 
@@ -1263,7 +1344,7 @@ void PlayerObjectAdapter::saveWaypoints(Player* player) {
 	return ((PlayerObjectImplementation*) impl)->saveWaypoints(player);
 }
 
-WaypointObject* PlayerObjectAdapter::searchWaypoint(Player* play, const string& name, int mode) {
+WaypointObject* PlayerObjectAdapter::searchWaypoint(Player* play, const String& name, int mode) {
 	return ((PlayerObjectImplementation*) impl)->searchWaypoint(play, name, mode);
 }
 

@@ -55,7 +55,7 @@ public:
 		insertAscii(""); // Resource Container: "resource_container_d"
 		insertInt(0);
 		insertAscii(""); // Resource Type: "organic_food_small"
-		unicode u_str = unicode("");
+		UnicodeString u_str = UnicodeString("");
 		insertUnicode(u_str); // Container Name
 		insertInt(rcno->getMaxContents()); // Max stack size
 		insertAscii(rcno->getTemplateName()); // Resource Type: planet specific

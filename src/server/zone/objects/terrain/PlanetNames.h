@@ -151,7 +151,7 @@ public:
 		return planetNames[id];
 	}
 
-	static int getPlanetID(const string& name) {
+	static int getPlanetID(const String& name) {
 		for (int i = 0; i < 10; ++i) {
 			if (name == planetNames[i])
 				return i;
@@ -160,7 +160,7 @@ public:
 		return -1;
 	}
 
-	static int getPlanetCRC(const string& name) {
+	static int getPlanetCRC(const String& name) {
 		for (int i = 0; i < 10; ++i) {
 			if (name == planetNames[i]) {
 				return planetCrcs[i];

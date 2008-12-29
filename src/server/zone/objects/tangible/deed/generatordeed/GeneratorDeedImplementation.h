@@ -25,8 +25,8 @@ public:
 
 public:
 
-	GeneratorDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn);
-	GeneratorDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
+	GeneratorDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn);
+	GeneratorDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn);
 	~GeneratorDeedImplementation();
 
 	void parseItemAttributes();
@@ -35,22 +35,22 @@ public:
 	// Attribute Setters
 	inline void setSurplusMaintenance(uint32 maint) {
 		surplusMaintenance = maint;
-		string attr("surplusMaintenance");
+		String attr("surplusMaintenance");
 		itemAttributes->setIntAttribute(attr, (int)surplusMaintenance);
 	}
 	inline void setMaintenanceRate(float rate) {
 		 maintenanceRate = rate;
-		 string attr("maintenanceRate");
+		 String attr("maintenanceRate");
 		 itemAttributes->setFloatAttribute(attr, (float)maintenanceRate);
 	}
 	inline void setExtractionRate(float rate) {
 		extractionRate = rate;
-		string attr("extractionRate");
+		String attr("extractionRate");
 		itemAttributes->setFloatAttribute(attr, (float)extractionRate);
 	}
 	inline void setHopperSize(float size) {
 		hopperSize = size;
-		string attr("hopperSize");
+		String attr("hopperSize");
 		itemAttributes->setFloatAttribute(attr, (float)hopperSize);
 	}
 	// Attribute Getters

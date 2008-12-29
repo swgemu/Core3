@@ -52,7 +52,7 @@ void IntangibleObject::sendDestroyTo(Player* player) {
 		((IntangibleObjectImplementation*) _impl)->sendDestroyTo(player);
 }
 
-void IntangibleObject::setName(const string& name) {
+void IntangibleObject::setName(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -65,7 +65,7 @@ void IntangibleObject::setName(const string& name) {
 		((IntangibleObjectImplementation*) _impl)->setName(name);
 }
 
-void IntangibleObject::setDetailName(const string& detail) {
+void IntangibleObject::setDetailName(const String& detail) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -104,7 +104,7 @@ void IntangibleObject::updateStatus(unsigned int stat) {
 		((IntangibleObjectImplementation*) _impl)->updateStatus(stat);
 }
 
-string& IntangibleObject::getName() {
+String& IntangibleObject::getName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -117,7 +117,7 @@ string& IntangibleObject::getName() {
 		return ((IntangibleObjectImplementation*) _impl)->getName();
 }
 
-string& IntangibleObject::getDetailName() {
+String& IntangibleObject::getDetailName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -172,10 +172,10 @@ Packet* IntangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		sendDestroyTo((Player*) inv->getObjectParameter());
 		break;
 	case 8:
-		setName(inv->getAsciiParameter(_param0_setName__string_));
+		setName(inv->getAsciiParameter(_param0_setName__String_));
 		break;
 	case 9:
-		setDetailName(inv->getAsciiParameter(_param0_setDetailName__string_));
+		setDetailName(inv->getAsciiParameter(_param0_setDetailName__String_));
 		break;
 	case 10:
 		setWorldObject((SceneObject*) inv->getObjectParameter());
@@ -210,11 +210,11 @@ void IntangibleObjectAdapter::sendDestroyTo(Player* player) {
 	return ((IntangibleObjectImplementation*) impl)->sendDestroyTo(player);
 }
 
-void IntangibleObjectAdapter::setName(const string& name) {
+void IntangibleObjectAdapter::setName(const String& name) {
 	return ((IntangibleObjectImplementation*) impl)->setName(name);
 }
 
-void IntangibleObjectAdapter::setDetailName(const string& detail) {
+void IntangibleObjectAdapter::setDetailName(const String& detail) {
 	return ((IntangibleObjectImplementation*) impl)->setDetailName(detail);
 }
 
@@ -226,11 +226,11 @@ void IntangibleObjectAdapter::updateStatus(unsigned int stat) {
 	return ((IntangibleObjectImplementation*) impl)->updateStatus(stat);
 }
 
-string& IntangibleObjectAdapter::getName() {
+String& IntangibleObjectAdapter::getName() {
 	return ((IntangibleObjectImplementation*) impl)->getName();
 }
 
-string& IntangibleObjectAdapter::getDetailName() {
+String& IntangibleObjectAdapter::getDetailName() {
 	return ((IntangibleObjectImplementation*) impl)->getDetailName();
 }
 

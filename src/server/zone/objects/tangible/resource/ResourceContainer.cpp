@@ -23,12 +23,12 @@ ResourceContainer::ResourceContainer(unsigned long long oid) : TangibleObject(Du
 	_impl->_setStub(this);
 }
 
-ResourceContainer::ResourceContainer(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+ResourceContainer::ResourceContainer(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new ResourceContainerImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-ResourceContainer::ResourceContainer(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+ResourceContainer::ResourceContainer(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new ResourceContainerImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -288,7 +288,7 @@ void ResourceContainer::setEntangleResistance(int i) {
 		((ResourceContainerImplementation*) _impl)->setEntangleResistance(i);
 }
 
-void ResourceContainer::setClassSeven(string& str) {
+void ResourceContainer::setClassSeven(String& str) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -301,7 +301,7 @@ void ResourceContainer::setClassSeven(string& str) {
 		((ResourceContainerImplementation*) _impl)->setClassSeven(str);
 }
 
-void ResourceContainer::setResourceName(string& str) {
+void ResourceContainer::setResourceName(String& str) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -314,7 +314,7 @@ void ResourceContainer::setResourceName(string& str) {
 		((ResourceContainerImplementation*) _impl)->setResourceName(str);
 }
 
-void ResourceContainer::setContainerFile(string& tempn) {
+void ResourceContainer::setContainerFile(String& tempn) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -327,7 +327,7 @@ void ResourceContainer::setContainerFile(string& tempn) {
 		((ResourceContainerImplementation*) _impl)->setContainerFile(tempn);
 }
 
-void ResourceContainer::setName(unicode& n) {
+void ResourceContainer::setName(UnicodeString& n) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -523,7 +523,7 @@ int ResourceContainer::getEntangleResistance() {
 		return ((ResourceContainerImplementation*) _impl)->getEntangleResistance();
 }
 
-string& ResourceContainer::getClassSeven() {
+String& ResourceContainer::getClassSeven() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -536,7 +536,7 @@ string& ResourceContainer::getClassSeven() {
 		return ((ResourceContainerImplementation*) _impl)->getClassSeven();
 }
 
-string& ResourceContainer::getResourceName() {
+String& ResourceContainer::getResourceName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -642,16 +642,16 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 		setEntangleResistance(inv->getSignedIntParameter());
 		break;
 	case 25:
-		setClassSeven(inv->getAsciiParameter(_param0_setClassSeven__string_));
+		setClassSeven(inv->getAsciiParameter(_param0_setClassSeven__String_));
 		break;
 	case 26:
-		setResourceName(inv->getAsciiParameter(_param0_setResourceName__string_));
+		setResourceName(inv->getAsciiParameter(_param0_setResourceName__String_));
 		break;
 	case 27:
-		setContainerFile(inv->getAsciiParameter(_param0_setContainerFile__string_));
+		setContainerFile(inv->getAsciiParameter(_param0_setContainerFile__String_));
 		break;
 	case 28:
-		setName(inv->getUnicodeParameter(_param0_setName__unicode_));
+		setName(inv->getUnicodeParameter(_param0_setName__UnicodeString_));
 		break;
 	case 29:
 		setObjectCRC(inv->getSignedIntParameter());
@@ -793,19 +793,19 @@ void ResourceContainerAdapter::setEntangleResistance(int i) {
 	return ((ResourceContainerImplementation*) impl)->setEntangleResistance(i);
 }
 
-void ResourceContainerAdapter::setClassSeven(string& str) {
+void ResourceContainerAdapter::setClassSeven(String& str) {
 	return ((ResourceContainerImplementation*) impl)->setClassSeven(str);
 }
 
-void ResourceContainerAdapter::setResourceName(string& str) {
+void ResourceContainerAdapter::setResourceName(String& str) {
 	return ((ResourceContainerImplementation*) impl)->setResourceName(str);
 }
 
-void ResourceContainerAdapter::setContainerFile(string& tempn) {
+void ResourceContainerAdapter::setContainerFile(String& tempn) {
 	return ((ResourceContainerImplementation*) impl)->setContainerFile(tempn);
 }
 
-void ResourceContainerAdapter::setName(unicode& n) {
+void ResourceContainerAdapter::setName(UnicodeString& n) {
 	return ((ResourceContainerImplementation*) impl)->setName(n);
 }
 
@@ -869,11 +869,11 @@ int ResourceContainerAdapter::getEntangleResistance() {
 	return ((ResourceContainerImplementation*) impl)->getEntangleResistance();
 }
 
-string& ResourceContainerAdapter::getClassSeven() {
+String& ResourceContainerAdapter::getClassSeven() {
 	return ((ResourceContainerImplementation*) impl)->getClassSeven();
 }
 
-string& ResourceContainerAdapter::getResourceName() {
+String& ResourceContainerAdapter::getResourceName() {
 	return ((ResourceContainerImplementation*) impl)->getResourceName();
 }
 
@@ -924,11 +924,11 @@ ResourceContainerServant::ResourceContainerServant(unsigned long long oid, int t
 	_classHelper = ResourceContainerHelper::instance();
 }
 
-ResourceContainerServant::ResourceContainerServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
+ResourceContainerServant::ResourceContainerServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = ResourceContainerHelper::instance();
 }
 
-ResourceContainerServant::ResourceContainerServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
+ResourceContainerServant::ResourceContainerServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = ResourceContainerHelper::instance();
 }
 

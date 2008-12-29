@@ -53,18 +53,17 @@ which carries forward this exception.
 
 class HealStateTargetSkill : public TargetSkill {
 protected:
-	string effectName;
+	String effectName;
 	int mindCost;
 
 public:
-	HealStateTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
+	HealStateTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 		mindCost = 0;
-
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (effectName.size() != 0)
+		if (!effectName.isEmpty())
 			creatureTarget->playEffect(effectName, "");
 
 		if (creature == creatureTarget)
@@ -84,8 +83,13 @@ public:
 			return false;
 		}
 
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot Heal States while prone.");
+			return false;
+		}
+
 		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot do that while Meditating.");
+			creature->sendSystemMessage("You cannot Heal States while Meditating.");
 			return false;
 		}
 
@@ -112,13 +116,15 @@ public:
 		return true;
 	}
 
-	void parseModifier(const string& modifier, uint64& state, uint64& objectId) {
-		if (!modifier.empty()) {
+	void parseModifier(const String& modifier, uint64& state, uint64& objectId) {
+		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
 			tokenizer.setDelimeter("|");
-			string stateName;
+
+			String stateName;
 
 			tokenizer.getStringToken(stateName);
+
 			state = CreatureState::getState(stateName);
 
 			if (tokenizer.hasMoreTokens())
@@ -131,6 +137,7 @@ public:
 
 	StatePack* findStatePack(CreatureObject* creature, uint64 state) {
 		Inventory* inventory = creature->getInventory();
+
 		int medicineUse = creature->getSkillMod("healing_ability");
 
 		if (inventory != NULL) {
@@ -153,7 +160,7 @@ public:
 		return NULL;
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "healing_response_73"); //Target must be a player or a creature pet in order to heal a state.
 			return 0;
@@ -208,7 +215,7 @@ public:
 		return 0;
 	}
 
-	void awardXp(CreatureObject* creature, string type, int power) {
+	void awardXp(CreatureObject* creature, String type, int power) {
 		Player* player = (Player*) creature;
 
 		int amount = (int)round((float)power * 1.0f);
@@ -220,25 +227,25 @@ public:
 	}
 
 	void sendStateMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint64 state) {
-		stringstream msgPlayer, msgTarget;
+		StringBuffer msgPlayer, msgTarget;
 
-		string stateName = CreatureState::getName(state, true);
+		String stateName = CreatureState::getName(state, true);
 
 		if (creature == creatureTarget) {
 			msgTarget << "You remove the " << stateName << " state from yourself.";
 		} else {
-			string creatureName = creature->getCharacterName().c_str().c_str();
-			string creatureTargetName = creatureTarget->getCharacterName().c_str().c_str();
+			String creatureName = creature->getCharacterName().toString();
+			String creatureTargetName = creatureTarget->getCharacterName().toString();
 
 			msgPlayer << "You remove the " << stateName << " state from " << creatureTargetName << ".";
 			msgTarget << creatureName << " removes the " << stateName << " from you.";
 		}
 
 
-		creatureTarget->sendSystemMessage(msgTarget.str());
+		creatureTarget->sendSystemMessage(msgTarget.toString());
 
 		if (creature != creatureTarget)
-			creature->sendSystemMessage(msgPlayer.str());
+			creature->sendSystemMessage(msgPlayer.toString());
 	}
 
 	float getSpeed() {
@@ -249,7 +256,7 @@ public:
 		return true;
 	}
 
-	void setEffectName(const string& name) {
+	void setEffectName(const String& name) {
 		effectName = name;
 	}
 

@@ -65,7 +65,7 @@ protected:
 	uint64 factionCRC;
 	uint64 enemyFactionCRC;
 	uint8 recruiterType;
-	string factionString;
+	String factionString;
 
 	virtual void greetEnemy() { };
 	virtual void greetHated() { };
@@ -114,7 +114,7 @@ protected:
 	}
 
 	inline bool canOfferBribe(Player * player) {
-		string requiredSkill = "combat_smuggler_underworld_04";
+		String requiredSkill = "combat_smuggler_underworld_04";
 
 		return player->hasSkillBox(requiredSkill) &&
 			(player->getCashCredits() >= 20000) &&

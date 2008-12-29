@@ -111,6 +111,8 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 	nextCreatureID = 0x10000000;
 	nextCellID = 9995371; // last objectid in static objects // 0x00;
 
+	serverState = OFFLINE;
+
 	setLogging(false);
 	setLockName("ZoneServerLock");
 
@@ -118,6 +120,11 @@ ZoneServerImplementation::ZoneServerImplementation(int processingThreads) :
 }
 
 ZoneServerImplementation::~ZoneServerImplementation() {
+	if (missionManager != NULL) {
+		missionManager->finalize();
+		missionManager = NULL;
+	}
+
 	if (phandler != NULL) {
 		delete phandler;
 		phandler = NULL;
@@ -183,20 +190,19 @@ ZoneServerImplementation::~ZoneServerImplementation() {
 		chatManager = NULL;
 	}
 
-	if (missionManager != NULL) {
-		missionManager->finalize();
-		missionManager = NULL;
-	}
-
-	for (int i = 0; i < 50; ++i) {
+	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
-		zone->finalize();
+
+		if (zone != NULL)
+			zone->finalize();
 	}
 
 	zones.removeAll();
 }
 
 void ZoneServerImplementation::init() {
+	serverState = LOADING;
+
 	processor = new ZoneProcessServerImplementation(_this, procThreadCount);
 	processor->init();
 
@@ -205,11 +211,17 @@ void ZoneServerImplementation::init() {
 
 	info("initializing zones", true);
 
-	for (int i = 0; i < 50; ++i) {
-		Zone* zone = new Zone(_this, processor, i);
-		zone->deploy("Zone", i);
+	for (int i = 0; i < 45; ++i) {
+		Zone * zone;
 
-		zone->startManagers();
+		if (i > 10 && i != 42) {
+			zone = NULL;
+		} else {
+			zone = new Zone(_this, processor, i);
+			zone->deploy("Zone", i);
+
+			zone->startManagers();
+		}
 
 		zones.add(zone);
 	}
@@ -227,6 +239,9 @@ void ZoneServerImplementation::init() {
 	startManagers();
 
 	startTimestamp = time(NULL);
+
+	//serverState = LOCKED;
+	serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
 
 	return;
 }
@@ -300,14 +315,19 @@ void ZoneServerImplementation::shutdown() {
 
 	info("shutting down zones", true);
 
-	for (int i = 0; i < 50; ++i) {
+	for (int i = 0; i < 45; ++i) {
 		Zone* zone = zones.get(i);
-		zone->stopManagers();
+		if (zone != NULL)
+			zone->stopManagers();
 	}
+
+	info("zones shut down", true);
 
 	scheduler->stop();
 
 	printInfo(true);
+
+	info("shut down complete", true);
 }
 
 void ZoneServerImplementation::stopManagers() {
@@ -316,7 +336,7 @@ void ZoneServerImplementation::stopManagers() {
 	/*if (playerManager != NULL)
 		playerManager->stop();*/
 
-	if(missionManager != NULL)
+	if (missionManager != NULL)
 		missionManager->unloadManager();
 
 	if (resourceManager != NULL)
@@ -421,7 +441,7 @@ SceneObject* ZoneServerImplementation::removeObject(uint64 oid, bool doLock) {
 
 		if (obj->isPlayer()) {
 			Player* player = (Player*) obj;
-			string& name = player->getFirstName();
+			String& name = player->getFirstName();
 
 			chatManager->removePlayer(name);
 
@@ -475,7 +495,7 @@ SceneObject* ZoneServerImplementation::getCachedObject(uint64 oid, bool doLock) 
 SceneObject* ZoneServerImplementation::removeCachedObject(uint64 oid, bool doLock) {
 	SceneObject* obj = NULL;
 
-	cout << "removeCachedObject OID = " << oid << endl;
+	System::out << "removeCachedObject OID = " << oid << endl;
 	try {
 		lock(doLock);
 
@@ -493,7 +513,7 @@ SceneObject* ZoneServerImplementation::removeCachedObject(SceneObject* obj, bool
 	return removeCachedObject(obj->getObjectID(), doLock);
 }
 
-bool ZoneServerImplementation::banUser(string& name, string& admin) {
+bool ZoneServerImplementation::banUser(String& name, String& admin) {
 	lock();
 
 	bool result = userManager->banUserByName(name, admin);
@@ -503,7 +523,7 @@ bool ZoneServerImplementation::banUser(string& name, string& admin) {
 	return result;
 }
 
-bool ZoneServerImplementation::kickUser(string& name, string& admin) {
+bool ZoneServerImplementation::kickUser(String& name, String& admin) {
 	lock();
 
 	bool result = userManager->kickUser(name, admin);
@@ -544,11 +564,11 @@ int ZoneServerImplementation::getConnectionCount() {
 void ZoneServerImplementation::printInfo(bool forcedLog) {
 	lock();
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, forcedLog);
 
-	stringstream msg2;
+	StringBuffer msg2;
 	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
 	info(msg2, forcedLog);
 
@@ -558,12 +578,12 @@ void ZoneServerImplementation::printInfo(bool forcedLog) {
 	else
 		packetloss = (100 * totalResentPackets) / (totalResentPackets + totalSentPackets);
 
-	stringstream msg3;
+	StringBuffer msg3;
 	msg3 << "sent packets = " << totalSentPackets << ", resent packets = "
 		<< totalResentPackets << " [" << packetloss << "%]";
 	info(msg3, forcedLog);
 
-	stringstream msg4;
+	StringBuffer msg4;
 	msg4 << dec << currentPlayers << " users connected (" << maximumPlayers << " max, " << totalPlayers << " total, "
 		 << totalDeletedPlayers << " deleted)";
 	info(msg4, forcedLog);

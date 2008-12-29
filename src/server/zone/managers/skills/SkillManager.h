@@ -76,11 +76,11 @@ public:
 	void loadSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool loadRequirements = false, bool updateClient = false);
 	void removeSkillBox(SkillBox* skillBox, PlayerImplementation* player, bool updateClient = false);
 		
-	Skill* getSkill(const string& name);
+	Skill* getSkill(const String& name);
 	
-	Performance* getDance(const string& name);
-	Performance* getSong(const string& name, int instrumentType);
-	CustomizationData* getCustomizationData(const string& speciesGender, const string& customizationName);
+	Performance* getDance(const String& name);
+	Performance* getSong(const String& name, int instrumentType);
+	CustomizationData* getCustomizationData(const String& speciesGender, const String& customizationName);
 	
 private:
 	void loadSkillCommands(SkillBox* skillBox, PlayerImplementation* player, bool updateClient);

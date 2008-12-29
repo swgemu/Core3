@@ -48,11 +48,11 @@ which carries forward this exception.
 class ChatOnDestroyRoom : public BaseMessage {
 public:
 	
-	ChatOnDestroyRoom(const string& game, const string& server, uint32 channelid) : BaseMessage() {
+	ChatOnDestroyRoom(const String& game, const String& server, uint32 channelid) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0xE8EC5877);  // Opcode
-		insertAscii(game.c_str());
-		insertAscii(server.c_str());
+		insertAscii(game.toCharArray());
+		insertAscii(server.toCharArray());
 		insertAscii("system");
 		insertInt(0);
 		insertInt(channelid);

@@ -55,8 +55,8 @@ class SuiCreatePageMessage;
 class SuiBankTransferBoxImplementation : public SuiBankTransferBoxServant {
 	int options;
 	
-	string lblFrom, lblStartingFrom, lblInputFrom, lblTo, lblStartingTo, lblInputTo;
-	string convertRatioFrom, convertRatioTo;
+	String lblFrom, lblStartingFrom, lblInputFrom, lblTo, lblStartingTo, lblInputTo;
+	String convertRatioFrom, convertRatioTo;
 	
 	SuiCreatePageMessage* message;
 	
@@ -72,7 +72,7 @@ public:
 		return (BaseMessage*)message;
 	}
 	
-	void addOption(const string& itemText, const string& lblType, const string& itemType);
+	void addOption(const String& itemText, const String& lblType, const String& itemType);
 
 	void addCash(int cash);
 	void addBank(int bank);

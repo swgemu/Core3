@@ -60,9 +60,9 @@ CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject*
 	objectType = SceneObjectImplementation::CELL;
 
 	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
-	stringstream name;
+	StringBuffer name;
 	name << "Cell :" << objID;
-	setLoggingName(name.str());
+	setLoggingName(name.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -77,9 +77,9 @@ CellObjectImplementation::CellObjectImplementation(uint64 objID, BuildingObject*
 	objectType = SceneObjectImplementation::CELL;
 
 	children.setInsertPlan(SortedVector<SceneObject*>::NO_DUPLICATE);
-	stringstream name;
+	StringBuffer name;
 	name << "Cell :" << objID;
-	setLoggingName(name.str());
+	setLoggingName(name.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -98,16 +98,16 @@ void CellObjectImplementation::addChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);
 
 	if (children.put(obj) != -1) {
-		stringstream object;
+		StringBuffer object;
 		object << "acquired child:" << obj->getLoggingName();
-		info(object.str());
+		info(object.toString());
 	}
 
 	unlock(doLock);
 }
 
 void CellObjectImplementation::parseItemAttributes() {
-	string attr = "cellNumber";
+	String attr = "cellNumber";
 	setCellNumber(itemAttributes->getIntAttribute(attr));
 }
 
@@ -116,9 +116,9 @@ void CellObjectImplementation::removeChild(SceneObject* obj, bool doLock) {
 	wlock(doLock);
 
 	if (children.drop(obj)) {
-		stringstream object;
+		StringBuffer object;
 		object << "released child:" << obj->getLoggingName();
-		info(object.str());
+		info(object.toString());
 	}
 
 	unlock(doLock);

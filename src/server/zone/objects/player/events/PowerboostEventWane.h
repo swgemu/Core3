@@ -46,14 +46,17 @@ which carries forward this exception.
 #define POWERBOOSTEVENTWANE_H_
 
 #include "../PlayerImplementation.h"
+#include "../../creature/skills/self/PowerboostSelfSkill.h"
 
 class PowerboostEventWane : public Event {
-	PlayerImplementation* player;
+
+	Player* player;
+	PowerboostSelfSkill* powerboost;
 
 public:
-	PowerboostEventWane(PlayerImplementation* pl) : Event() {
+	PowerboostEventWane(Player* pl, PowerboostSelfSkill* sk) : Event() {
 		player = pl;
-
+		powerboost = sk;
 		setKeeping(true);
 	}
 
@@ -62,9 +65,8 @@ public:
 		try {
 			player->wlock();
 
-			if (player->isOnline() && !player->isLoggingOut()) {
-				ChatSystemMessage* sysMessage = new ChatSystemMessage("teraskasi", "powerboost_wane");
-				player->sendMessage(sysMessage);
+			if (player->isOnline() || player->isLinkDead()) {
+				powerboost->finish(player);
 			}
 
 			player->unlock();

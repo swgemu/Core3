@@ -21,9 +21,9 @@ class Pharmaceutical;
 
 class EnhancePack : public Pharmaceutical {
 public:
-	EnhancePack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	EnhancePack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	EnhancePack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	EnhancePack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -101,8 +101,8 @@ public:
 	EnhancePack* _this;
 
 public:
-	EnhancePackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
-	EnhancePackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
+	EnhancePackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
+	EnhancePackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 	virtual ~EnhancePackServant();
 
 	void _setStub(DistributedObjectStub* stub);

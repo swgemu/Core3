@@ -10,7 +10,7 @@
  *	DraftSchematicAttributeStub
  */
 
-DraftSchematicAttribute::DraftSchematicAttribute(const string& attribute, float minVal, float maxVal, const string& attributeExpProp, const int precision) {
+DraftSchematicAttribute::DraftSchematicAttribute(const String& attribute, float minVal, float maxVal, const String& attributeExpProp, const int precision) {
 	_impl = new DraftSchematicAttributeImplementation(attribute, minVal, maxVal, attributeExpProp, precision);
 	_impl->_setStub(this);
 }
@@ -27,7 +27,7 @@ DraftSchematicAttribute::DraftSchematicAttribute(DummyConstructorParameter* para
 DraftSchematicAttribute::~DraftSchematicAttribute() {
 }
 
-void DraftSchematicAttribute::setAttributeName(const string& attribute) {
+void DraftSchematicAttribute::setAttributeName(const String& attribute) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -66,7 +66,7 @@ void DraftSchematicAttribute::setMaxValue(float maxVal) {
 		((DraftSchematicAttributeImplementation*) _impl)->setMaxValue(maxVal);
 }
 
-void DraftSchematicAttribute::setAttributeExperimentalProperty(const string& attributeExpProp) {
+void DraftSchematicAttribute::setAttributeExperimentalProperty(const String& attributeExpProp) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -79,7 +79,7 @@ void DraftSchematicAttribute::setAttributeExperimentalProperty(const string& att
 		((DraftSchematicAttributeImplementation*) _impl)->setAttributeExperimentalProperty(attributeExpProp);
 }
 
-string& DraftSchematicAttribute::getAttributeName() {
+String& DraftSchematicAttribute::getAttributeName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -140,7 +140,7 @@ int DraftSchematicAttribute::getPrecision() {
 		return ((DraftSchematicAttributeImplementation*) _impl)->getPrecision();
 }
 
-string& DraftSchematicAttribute::getAttributeExperimentalProperty() {
+String& DraftSchematicAttribute::getAttributeExperimentalProperty() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -165,7 +165,7 @@ Packet* DraftSchematicAttributeAdapter::invokeMethod(uint32 methid, DistributedM
 
 	switch (methid) {
 	case 6:
-		setAttributeName(inv->getAsciiParameter(_param0_setAttributeName__string_));
+		setAttributeName(inv->getAsciiParameter(_param0_setAttributeName__String_));
 		break;
 	case 7:
 		setMinValue(inv->getFloatParameter());
@@ -174,7 +174,7 @@ Packet* DraftSchematicAttributeAdapter::invokeMethod(uint32 methid, DistributedM
 		setMaxValue(inv->getFloatParameter());
 		break;
 	case 9:
-		setAttributeExperimentalProperty(inv->getAsciiParameter(_param0_setAttributeExperimentalProperty__string_));
+		setAttributeExperimentalProperty(inv->getAsciiParameter(_param0_setAttributeExperimentalProperty__String_));
 		break;
 	case 10:
 		resp->insertAscii(getAttributeName());
@@ -201,7 +201,7 @@ Packet* DraftSchematicAttributeAdapter::invokeMethod(uint32 methid, DistributedM
 	return resp;
 }
 
-void DraftSchematicAttributeAdapter::setAttributeName(const string& attribute) {
+void DraftSchematicAttributeAdapter::setAttributeName(const String& attribute) {
 	return ((DraftSchematicAttributeImplementation*) impl)->setAttributeName(attribute);
 }
 
@@ -213,11 +213,11 @@ void DraftSchematicAttributeAdapter::setMaxValue(float maxVal) {
 	return ((DraftSchematicAttributeImplementation*) impl)->setMaxValue(maxVal);
 }
 
-void DraftSchematicAttributeAdapter::setAttributeExperimentalProperty(const string& attributeExpProp) {
+void DraftSchematicAttributeAdapter::setAttributeExperimentalProperty(const String& attributeExpProp) {
 	return ((DraftSchematicAttributeImplementation*) impl)->setAttributeExperimentalProperty(attributeExpProp);
 }
 
-string& DraftSchematicAttributeAdapter::getAttributeName() {
+String& DraftSchematicAttributeAdapter::getAttributeName() {
 	return ((DraftSchematicAttributeImplementation*) impl)->getAttributeName();
 }
 
@@ -237,7 +237,7 @@ int DraftSchematicAttributeAdapter::getPrecision() {
 	return ((DraftSchematicAttributeImplementation*) impl)->getPrecision();
 }
 
-string& DraftSchematicAttributeAdapter::getAttributeExperimentalProperty() {
+String& DraftSchematicAttributeAdapter::getAttributeExperimentalProperty() {
 	return ((DraftSchematicAttributeImplementation*) impl)->getAttributeExperimentalProperty();
 }
 

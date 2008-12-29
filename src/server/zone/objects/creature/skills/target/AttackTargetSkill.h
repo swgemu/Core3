@@ -93,11 +93,11 @@ protected:
 
 	int forceCost;
 
-	string CbtSpamBlock;
-	string CbtSpamCounter;
-	string CbtSpamEvade;
-	string CbtSpamHit;
-	string CbtSpamMiss;
+	String cbtSpamBlock;
+	String cbtSpamCounter;
+	String cbtSpamEvade;
+	String cbtSpamHit;
+	String cbtSpamMiss;
 
 public:
 	static const int DEBUFF = 1;
@@ -110,7 +110,7 @@ public:
 	static const int OTHER = 0;
 
 public:
-	AttackTargetSkill(const string& name, const string& anim, int tp, ZoneProcessServerImplementation* serv) : TargetSkill(name, anim, ATTACK, serv) {
+	AttackTargetSkill(const String& name, const String& anim, int tp, ZoneProcessServerImplementation* serv) : TargetSkill(name, anim, ATTACK, serv) {
 		healthPoolAttackChance = 0;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
@@ -310,7 +310,7 @@ public:
 	bool isCone() {
 		return false;
 	}
-	
+
 	bool isForce() {
 		return forceCost > 0;
 	}
@@ -438,24 +438,24 @@ public:
 		areaRangeDamage = area;
 	}
 
-	void setCbtSpamBlock(const string& ename) {
-		CbtSpamBlock = ename;
+	void setCbtSpamBlock(const String& ename) {
+		cbtSpamBlock = ename;
 	}
 
-	void setCbtSpamCounter(const string& ename) {
-		CbtSpamCounter = ename;
+	void setCbtSpamCounter(const String& ename) {
+		cbtSpamCounter = ename;
 	}
 
-	void setCbtSpamEvade(const string& ename) {
-		CbtSpamEvade = ename;
+	void setCbtSpamEvade(const String& ename) {
+		cbtSpamEvade = ename;
 	}
 
-	void setCbtSpamHit(const string& ename) {
-		CbtSpamHit = ename;
+	void setCbtSpamHit(const String& ename) {
+		cbtSpamHit = ename;
 	}
 
-	void setCbtSpamMiss(const string& ename) {
-		CbtSpamMiss = ename;
+	void setCbtSpamMiss(const String& ename) {
+		cbtSpamMiss = ename;
 	}
 
 	void setRequiredWeaponType(int wea) {
@@ -467,43 +467,43 @@ public:
 	}
 
 	bool hasCbtSpamBlock() {
-		return CbtSpamBlock.size() != 0;
+		return cbtSpamBlock.length() != 0;
 	}
 
 	bool hasCbtSpamCounter() {
-		return CbtSpamCounter.size() != 0;
+		return cbtSpamCounter.length() != 0;
 	}
 
 	bool hasCbtSpamEvade() {
-		return CbtSpamEvade.size() != 0;
+		return cbtSpamEvade.length() != 0;
 	}
 
 	bool hasCbtSpamHit() {
-		return CbtSpamHit.size() != 0;
+		return cbtSpamHit.length() != 0;
 	}
 
 	bool hasCbtSpamMiss() {
-		return CbtSpamMiss.size() != 0;
+		return cbtSpamMiss.length() != 0;
 	}
 
-	inline string& getCbtSpamBlock() {
-		return CbtSpamBlock;
+	inline String& getCbtSpamBlock() {
+		return cbtSpamBlock;
 	}
 
-	inline string& getCbtSpamCounter() {
-		return CbtSpamCounter;
+	inline String& getCbtSpamCounter() {
+		return cbtSpamCounter;
 	}
 
-	inline string& getCbtSpamEvade() {
-		return CbtSpamEvade;
+	inline String& getCbtSpamEvade() {
+		return cbtSpamEvade;
 	}
 
-	inline string& getCbtSpamHit() {
-		return CbtSpamHit;
+	inline String& getCbtSpamHit() {
+		return cbtSpamHit;
 	}
 
-	inline string& getCbtSpamMiss() {
-		return CbtSpamMiss;
+	inline String& getCbtSpamMiss() {
+		return cbtSpamMiss;
 	}
 
 	inline int getAreaRange() {
@@ -513,7 +513,7 @@ public:
 	inline int getRequiredWeaponType() {
 		return requiredWeaponType;
 	}
-	
+
 	int getSkillType() {
 		return skillType;
 	}

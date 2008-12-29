@@ -49,7 +49,7 @@ which carries forward this exception.
 #include "../../../ZoneClientSession.h"
 
 CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, uint32 tempCRC,
-		const unicode& n, const string& tempn) : CraftingStationServant(object_id, tempCRC, n, tempn,
+		const UnicodeString& n, const String& tempn) : CraftingStationServant(object_id, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -59,7 +59,7 @@ CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, u
 }
 
 CraftingStationImplementation::CraftingStationImplementation(CreatureObject* creature, uint32 tempCRC,
-		const unicode& n, const string& tempn) : CraftingStationServant(creature, tempCRC, n, tempn,
+		const UnicodeString& n, const String& tempn) : CraftingStationServant(creature, tempCRC, n, tempn,
 				CRAFTINGTOOL) {
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
@@ -73,6 +73,15 @@ CraftingStationImplementation::~CraftingStationImplementation(){
 }
 
 void CraftingStationImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	//TODO:Cell permission check
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			if (_this->isTangible())
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
 
 	omr->finish();
 
@@ -83,19 +92,19 @@ void CraftingStationImplementation::init() {
 
 	objectSubType = TangibleObjectImplementation::CRAFTINGSTATION;
 
-	if(objectCRC == 0xAF09A3F0 || objectCRC == 0x2BFCD5A1)
+	if (objectCRC == 0xAF09A3F0 || objectCRC == 0x2BFCD5A1)
 		stationType = CLOTHING;
 
-	if(objectCRC == 0x2FF7F78B || objectCRC == 0xBACAE4C8)
+	if (objectCRC == 0x2FF7F78B || objectCRC == 0xBACAE4C8)
 		stationType = FOOD;
 
-	if(objectCRC == 0x1BABCF4B || objectCRC == 0x94D50879)
+	if (objectCRC == 0x1BABCF4B || objectCRC == 0x94D50879)
 		stationType = STRUCTURE;
 
-	if(objectCRC == 0x72719FEA || objectCRC == 0x812DD757)
+	if (objectCRC == 0x72719FEA || objectCRC == 0x812DD757)
 		stationType = WEAPON;
 
-	if(objectCRC == 0x17929444 || objectCRC == 0x185987B1)
+	if (objectCRC == 0x17929444 || objectCRC == 0x185987B1)
 		stationType = SPACE;
 
 	complexityLevel = 50;
@@ -103,7 +112,7 @@ void CraftingStationImplementation::init() {
 }
 
 int CraftingStationImplementation::useObject(Player* player) {
-	cout << "Use Crafting Station\n";
+	System::out << "Use Crafting Station\n";
 	return 0;
 }
 

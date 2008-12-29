@@ -73,7 +73,7 @@ which carries forward this exception.
 #include "../guild/Guild.h"
 
 #include "../../../chat/ChatManager.h"
-
+#include "events/MaskScentEvent.h"
 class CombatManager;
 
 class Player;
@@ -100,30 +100,33 @@ class CreatureInventory;
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
-	unicode characterName; //character name
-	string terrainName;
+	UnicodeString characterName; //character name
+	String terrainName;
 
 	CustomizationVariables customization;
-	//string customization;
-	string raceName; //species
-	string speciesName; //species
-	string gender;
+	//String customization;
+	String raceName; //species
+	String speciesName; //species
+	String gender;
 
-	string hairObject; //hair object iff string
+	String hairObject; //hair object iff String
 	CustomizationVariables hairCustomization;
-	//string hairData; //hair customization string
+	//String hairData; //hair customization String
 
-	string stfName;
+	String stfName;
 
-	string meatType;
-	string hideType;
-	string boneType;
+	String creatureType;
+
+	String meatType;
+	String hideType;
+	String boneType;
 	int milk;
 	int hideMax;
 	int boneMax;
 	int meatMax;
+	int creatureHealth; // 1 = scrawny, 2 = skinny, 3 = medium, 4 = fat;
 
-	string creatureFaction;
+	String creatureFaction;
 
 	int xp;
 
@@ -135,22 +138,22 @@ protected:
 	int killer;
 	int aggressive;
 
-	string behaviorScript;
+	String behaviorScript;
 
-	string creatureWeapon;
-	string creatureWeaponName;
-	string creatureWeaponTemp;
-	string creatureWeaponClass;
+	String creatureWeapon;
+	String creatureWeaponName;
+	String creatureWeaponTemp;
+	String creatureWeaponClass;
 	int creatureWeaponEquipped;
 	int creatureWeaponMinDamage;
 	int creatureWeaponMaxDamage;
 	float creatureWeaponAttackSpeed;
-	string creatureWeaponDamageType;
-	string creatureWeaponArmorPiercing;
+	String creatureWeaponDamageType;
+	String creatureWeaponArmorPiercing;
 
 	float internalNPCDamageModifier;
 
-	string lootGroup;
+	String lootGroup;
 
 	float tame;
 
@@ -203,6 +206,8 @@ protected:
 	Time stunRecoveryTime;
 	Time blindRecoveryTime;
 	Time intimidateRecoveryTime;
+	Time rootRecoveryTime;
+	Time snareRecoveryTime;
 
 	Time fireRecoveryTime;
 	Time poisonRecoveryTime;
@@ -218,7 +223,7 @@ protected:
 	BuffList creatureBuffs;
 
 	uint32 skillModsCounter;
-	string skillMod;
+	String skillMod;
 
 	uint32 skillModBonusCounter;
 
@@ -226,7 +231,8 @@ protected:
 	uint32 defenderUpdateCounter;
 	uint64 defenderID;
 
-	string mood;
+	String mood;
+	String moodStr;
 	uint8 moodid;
 
 	Weapon* weaponObject;
@@ -320,6 +326,13 @@ protected:
 
 	bool meditating;
 
+	//Powerboost
+	int pbHA;
+	int pbMind;
+	int pbTick;
+	uint32 pbBonus;
+	uint8 pbCounter;
+
 	int accuracy;
 
 	Time burstRunCooldown;
@@ -342,9 +355,9 @@ protected:
 	ManagedReference<GroupObject> group;
 
 	// Entertainer stuff
-	string performanceAnimation;
+	String performanceAnimation;
 	uint32 performanceCounter;
-	string performanceName;
+	String performanceName;
 
 	int instrumentID; // instrument + song
 
@@ -397,6 +410,14 @@ protected:
 	StateTreatmentOverEvent* stateTreatmentEvent;
 	ConditionTreatmentOverEvent* conditionTreatmentEvent;
 
+	bool frozen;
+	String templateString;
+
+	uint32 camoType;
+	MaskScentEvent* maskScentEvent;
+	Time camoLock;
+	uint32 maskScent;
+
 public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCELERATION = 1.549f;
@@ -408,10 +429,10 @@ public:
 
 	// opdarand Update methods
 	void doCombatAnimation(CreatureObject* defender, uint32 animcrc, uint8 hit = 0);
-	void doAnimation(const string& anim);
-	void playEffect(const string& file, const string& aux = "");
-	void showFlyText(const string& file, const string& aux, uint8 red, uint8 green, uint8 blue);
-	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const string& skill, bool areaSpam = true);
+	void doAnimation(const String& anim);
+	void playEffect(const String& file, const String& aux = "");
+	void showFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue);
+	void sendCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, const String& skill, bool areaSpam = true);
 
 	void setPosture(uint8 state, bool overrideDizzy = false, bool objectInteraction = false, float objX = 0, float objY = 0, float objZ = 0);
 
@@ -526,6 +547,10 @@ public:
 	void setWillpowerWoundsBar(uint32 wounds);
 
 	void calculateHAMregen();
+
+	void doMeditateHeals();
+	void doMeditateWoundHeals();
+
 	float calculateBFRatio();
 
 	void activateBurstRun();
@@ -540,10 +565,15 @@ public:
 	void setStunnedState();
 	void setBlindedState();
 	void setIntimidatedState();
+	void setSnaredState();
+	void setRootedState();
 
 	bool setNextAttackDelay(int del);
 
 	void setMeditateState();
+
+	void doPowerboostTick(Player* player);
+	void removePowerboost();
 
 	void addDamage(CreatureObject* creature, uint32 damage);
 	void removeFromDamageMap(CreatureObject* target);
@@ -568,11 +598,11 @@ public:
 	}
 
 	void setRebel() {
-		faction = String::hashCode("rebel");
+		faction = String("rebel").hashCode();
 	}
 
 	void setImperial() {
-		faction = String::hashCode("imperial");
+		faction = String("imperial").hashCode();
 	}
 
 	void setNeutral() {
@@ -601,11 +631,11 @@ public:
 		creatureSkills.put(skill->getNameCRC(), skill);
 	}
 
-	Skill* getSkill(const string& name) {
-		return creatureSkills.get(String::hashCode(name));
+	Skill* getSkill(const String& name) {
+		return creatureSkills.get(name.hashCode());
 	}
 
-	inline string& getSkill(int idx) {
+	inline String& getSkill(int idx) {
 		return creatureSkills.get(idx)->getSkillName();
 	}
 
@@ -632,7 +662,7 @@ public:
 		return damageMap.get(creature);
 	}
 
-	uint32 getMitigation(const string& mit);
+	uint32 getMitigation(const String& mit);
 
 	virtual void activateRecovery() {
 	}
@@ -699,6 +729,10 @@ public:
 		return postureState == CreaturePosture::PRONE;
 	}
 
+	inline bool isStanding() {
+		return postureState == CreaturePosture::UPRIGHT;
+	}
+
 	inline bool isSitting() {
 		return postureState == CreaturePosture::SITTING;
 	}
@@ -721,6 +755,14 @@ public:
 
 	inline bool isIntimidated() {
 		return stateBitmask & CreatureState::INTIMIDATED;
+	}
+
+	inline bool isSnared() {
+		return stateBitmask & CreatureState::IMMOBILIZED;
+	}
+
+	inline bool isRooted() {
+		return stateBitmask & CreatureState::FROZEN;
 	}
 
 	inline bool isDiseased() {
@@ -753,6 +795,14 @@ public:
 
 	inline bool isMeditating() {
 		return meditating;
+	}
+
+	inline bool isCreature() {
+		return creatureType == "ANIMAL";
+	}
+
+	inline bool isNPC() {
+		return creatureType == "NPC";
 	}
 
 	// misc methods
@@ -791,7 +841,9 @@ public:
 	void addInventoryResource(ResourceContainer* rcno);
 
 	SceneObject* getInventoryItem(uint64 oid);
-	TangibleObject* getMissionItem(string& tma);
+
+	void removeAllInventoryByMisoKey(String& mkey);
+	TangibleObject* getItemByMisoKey(String& tma);
 
 	void removeInventoryItem(SceneObject* item);
 	void removeInventoryItem(uint64 oid);
@@ -804,8 +856,8 @@ public:
 	void removeLootItem(uint64 oid);
 
 	// Entertainer methods
-	void startDancing(const string& anim, bool changeDance = false);
-	void startPlayingMusic(const string& anim, bool changeMusic = false);
+	void startDancing(const String& anim, bool changeDance = false);
+	void startPlayingMusic(const String& anim, bool changeMusic = false);
 
 	void stopDancing();
 	void stopPlayingMusic();
@@ -816,7 +868,7 @@ public:
 	void stopListen(uint64 entid, bool doSendPackets = true, bool forced = false, bool doLock = true);
 	void activateEntertainerBuff(int performanceType);
 
-	void doFlourish(const string& modifier = "");
+	void doFlourish(const String& modifier = "");
 	void addEntertainerFlourishBuff();
 	// Rename to Tick Patron?
 	void doEntertainerPatronEffects(bool healShock = false, bool healWounds = false, bool addBuff = false);
@@ -825,6 +877,7 @@ public:
 	bool isInBuilding();
 	SceneObject* getBuilding();
 	int getBuildingType();
+
 	bool canGiveEntertainBuff();
 
 	// guild methods
@@ -836,10 +889,10 @@ public:
 
 	// buffing methods
 	void addBuff(int buffCRC, float duration); // Mostly Debugging purposes
-	//void applyBuff(const string& type, int value, float duration);
+	//void applyBuff(const String& type, int value, float duration);
 	void applyBuff(Buff *buff);
 	void applyBuff(BuffObject *bo);
-	//void removeBuff(const string& type, int value, Event* event);
+	//void removeBuff(const String& type, int value, Event* event);
 	void removeBuff(const uint32 buffCRC, bool remove = true);
 
 
@@ -871,9 +924,10 @@ public:
 	void sendDestroyTo(Player* player);
 
 	void broadcastMessages(Vector<BaseMessage*>& msgs, int range = 128, bool doLock = true);
+	void broadcastMessageRange(Player* player, const String& message, float range);
 
-	void sendSystemMessage(const string& message);
-	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
+	void sendSystemMessage(const String& message);
+	void sendSystemMessage(const String& file, const String& str, uint64 targetid = 0);
 
 	void updateSpeed(float speed, float acceleration);
 
@@ -882,7 +936,7 @@ public:
 
 	float getDistanceTo(CreatureObject* targetCreature);
 
-	void updateMood(const string& md);
+	void updateMood(const String& md);
 
 	inline void updateServerMovementStamp() {
 		lastServerMovementStamp.update();
@@ -893,16 +947,16 @@ public:
 	}
 
 protected:
-	void sendEntertainingUpdate(uint32 entval, const string& performance, uint32 perfcntr, int instrid);
-	void sendEntertainmentUpdate(uint64 entid, const string& mood, bool updateEntVal = false);
+	void sendEntertainingUpdate(uint32 entval, const String& performance, uint32 perfcntr, int instrid);
+	void sendEntertainmentUpdate(uint64 entid, const String& mood, bool updateEntVal = false);
 
 public:
 	// setters and getters
-	void addSkillMod(const string& name, int mod, bool updateClient = false);
-	void removeSkillMod(const string& name, bool updateClient = false);
+	void addSkillMod(const String& name, int mod, bool updateClient = false);
+	void removeSkillMod(const String& name, bool updateClient = false);
 
-	void addSkillModBonus(const string& name, int mod, bool updateClient = false);
-	void removeSkillModBonus(const string& name, bool updateClient = false);
+	void addSkillModBonus(const String& name, int mod, bool updateClient = false);
+	void removeSkillModBonus(const String& name, bool updateClient = false);
 
 	bool hasQueuedState(uint32 skillCRC) {
 		return queuedStates.contains(skillCRC);
@@ -932,7 +986,7 @@ public:
 		groupInviterID = oid;
 	}
 
-	int getSkillMod(const string& name) {
+	int getSkillMod(const String& name) {
 		// TODO: Add Buffs
 		int bonus = creatureSkillModBonus.get(name);
 		if (bonus > 25)
@@ -940,11 +994,11 @@ public:
 		return creatureSkillMods.get(name) + bonus;
 	}
 
-	bool hasSkillMod(const string& name) {
+	bool hasSkillMod(const String& name) {
 		return creatureSkillMods.containsKey(name);
 	}
 
-	void removeSkillMod(string& name) {
+	void removeSkillMod(String& name) {
 		creatureSkillMods.remove(name);
 	}
 
@@ -958,7 +1012,7 @@ public:
 		return bo;
 	}
 
-	int getSkillModBonus(const string& name) {
+	int getSkillModBonus(const String& name) {
 		int bonus = creatureSkillModBonus.get(name);
 		return bonus;
 	}
@@ -968,10 +1022,10 @@ public:
 	}
 
 	bool hasSpice() {
-		for(int i = 0; i < creatureBuffs.size(); i++)
+		for (int i = 0; i < creatureBuffs.size(); i++)
 		{
 			Buff *buff = creatureBuffs.get(i);
-			if(buff != NULL && buff->getBuffType() == BuffType::SPICE)
+			if (buff != NULL && buff->getBuffType() == BuffType::SPICE)
 				return true;
 		}
 		return false;
@@ -979,11 +1033,11 @@ public:
 
 	bool hatesFaction(uint32 faction);
 
-	bool hasSkillModBonus(const string& name) {
+	bool hasSkillModBonus(const String& name) {
 		return creatureSkillModBonus.containsKey(name);
 	}
 
-	void removeSkillModBonus(string& name) {
+	void removeSkillModBonus(String& name) {
 		creatureSkillModBonus.remove(name);
 	}
 
@@ -1055,23 +1109,23 @@ public:
 		creatureLinkID = creatureID;
 	}
 
-	inline void setCharacterName(const string& name) {
+	inline void setCharacterName(const String& name) {
 		characterName = name;
 	}
 
-	inline void setCharacterName(const unicode& name) {
+	inline void setCharacterName(const UnicodeString& name) {
 		characterName = name;
 	}
 
-	inline void setTerrainName(const string& name) {
+	inline void setTerrainName(const String& name) {
 		terrainName = name;
 	}
 
-	inline void setCharacterAppearance(const string& cust) {
+	inline void setCharacterAppearance(const String& cust) {
 		customization = cust;
 	}
 
-	inline void setHairAppearance(const string& cust) {
+	inline void setHairAppearance(const String& cust) {
 		hairCustomization = cust;
 	}
 
@@ -1081,7 +1135,7 @@ public:
 		// TODO send packet update?
 	}
 
-	inline void setAppearanceAttribute(string type, uint8 value) {
+	inline void setAppearanceAttribute(String type, uint8 value) {
 		customization.setVariable(type, value);
 
 		// TODO send packet update?
@@ -1093,7 +1147,7 @@ public:
 		// TODO send packet update?
 	}
 
-	inline void setHairAppearanceAttribute(string type, uint8 value) {
+	inline void setHairAppearanceAttribute(String type, uint8 value) {
 		hairCustomization.setVariable(type, value);
 
 		// TODO send packet update?
@@ -1102,20 +1156,24 @@ public:
 
 	void updateCharacterAppearance();
 
-	inline void setRaceName(const string& name) {
+	inline void setRaceName(const String& name) {
 		raceName = name;
 	}
 
-	inline void setSpeciesName(const string& name) {
+	inline void setSpeciesName(const String& name) {
 		speciesName = name;
 	}
 
-	inline void setStfName(const string& name) {
+	inline void setStfName(const String& name) {
 		stfName = name;
 	}
 
-	inline void setGender(const string& gend) {
+	inline void setGender(const String& gend) {
 		gender = gend;
+	}
+
+	inline void setCreatureType(const String& ctype) {
+		creatureType = ctype;
 	}
 
 	inline void setHeight(float h) {
@@ -1129,10 +1187,12 @@ public:
 	inline void setMood(uint8 mdid) {
 		moodid = mdid;
 		mood = Races::getMood(moodid);
+		moodStr = Races::getMoodStr(mood);
 	}
 
-	inline void setMood(const string& m) {
+	inline void setMood(const String& m) {
 		mood = m;
+		moodStr = Races::getMoodStr(mood);
 	}
 
 	inline void setPvpStatusBitmask(uint32 mask) {
@@ -1378,6 +1438,22 @@ public:
 		woundsUpdateCounter = count;
 	}
 
+	inline void setpbHA(int value) {
+		pbHA = value;
+	}
+
+	inline void setpbMind(int value) {
+		pbMind = value;
+	}
+
+	inline void setpbTick(int value) {
+		pbTick = value;
+	}
+
+	inline void setpbBonus(uint32 value) {
+		pbBonus = value;
+	}
+
 	inline void setDefenderID(uint64 did) {
 		defenderID = did;
 	}
@@ -1391,38 +1467,58 @@ public:
 	}
 
 	// getters
-	inline unicode& getCharacterName() {
+	inline int getpbHA() {
+		return pbHA;
+	}
+
+	inline int getpbMind() {
+		return pbMind;
+	}
+
+	inline int getpbTick() {
+		return pbTick;
+	}
+
+	inline int getpbBonus() {
+		return pbBonus;
+	}
+
+	inline UnicodeString& getCharacterName() {
 		return characterName;
 	}
 
-	inline string& getTerrainName() {
+	inline String& getTerrainName() {
 		return terrainName;
 	}
 
-	inline void getCharacterAppearance(string& appearance) {
+	inline void getCharacterAppearance(String& appearance) {
 		customization.toString(appearance);
 		//appearance = customization;
 	}
 
-	inline void getHairAppearance(string& appearance) {
+	inline void getHairAppearance(String& appearance) {
 		hairCustomization.toString(appearance);
 		//appearance = customization;
 	}
 
 
-	inline string& getRaceName() {
+	inline String& getRaceName() {
 		return raceName;
 	}
 
-	inline string& getSpeciesName() {
+	inline String& getSpeciesName() {
 		return speciesName;
 	}
 
-	inline string& getGender() {
+	inline String& getGender() {
 		return gender;
 	}
 
-	inline string& getStfName() {
+	inline String& getCreatureType() {
+		return creatureType;
+	}
+
+	inline String& getStfName() {
 		return stfName;
 	}
 
@@ -1550,7 +1646,7 @@ public:
 	}
 
 	inline uint32 getHealthMax() {
-		if(healthMax < 1)
+		if (healthMax < 1)
 			return 1;
 		else
 			return healthMax;
@@ -1571,7 +1667,7 @@ public:
 	}
 
 	inline uint32 getActionMax() {
-		if(actionMax < 1)
+		if (actionMax < 1)
 			return 1;
 		else
 			return actionMax;
@@ -1592,7 +1688,7 @@ public:
 	}
 
 	inline uint32 getMindMax() {
-		if(mindMax < 1)
+		if (mindMax < 1)
 			return 1;
 		else
 			return mindMax;
@@ -1708,8 +1804,12 @@ public:
 		return postureState;
 	}
 
-	inline string& getMood() {
+	inline String& getMood() {
 		return mood;
+	}
+
+	inline String& getMoodStr() {
+		return moodStr;
 	}
 
 	inline uint8 getMoodID() {
@@ -1892,7 +1992,7 @@ public:
 	}
 
 	inline bool isRebel() {
-		return faction == String::hashCode("rebel");
+		return faction == String("rebel").hashCode();
 	}
 
 	inline bool isNeutral() {
@@ -1900,7 +2000,7 @@ public:
 	}
 
 	inline bool isImperial() {
-		return faction == String::hashCode("imperial");
+		return faction == String("imperial").hashCode();
 	}
 
 	inline uint32 getPvpStatusBitmask() {
@@ -1967,7 +2067,7 @@ public:
 		return mindEncumbrance;
 	}
 
-	inline string& getCreatureFaction() {
+	inline String& getCreatureFaction() {
 		return creatureFaction;
 	}
 
@@ -1999,21 +2099,21 @@ public:
 		return aggressive;
 	}
 
-	inline string& getBehaviorScript() {
+	inline String& getBehaviorScript() {
 		return behaviorScript;
 	}
 
 
 	//Harvesting stuff
-	inline string& getMeatType() {
+	inline String& getMeatType() {
 		return meatType;
 	}
 
-	inline string& getBoneType() {
+	inline String& getBoneType() {
 		return boneType;
 	}
 
-	inline string& getHideType() {
+	inline String& getHideType() {
 		return hideType;
 	}
 
@@ -2037,7 +2137,11 @@ public:
 		return meatMax;
 	}
 
-	inline string& getLootGroup() {
+	inline int getCreatureHealth() {
+		return creatureHealth;
+	}
+
+	inline String& getLootGroup() {
 		return lootGroup;
 	}
 
@@ -2051,16 +2155,16 @@ public:
 		return internalNPCDamageModifier;
 	}
 
-	inline string& getCreatureWeapon() {
+	inline String& getCreatureWeapon() {
 		return creatureWeapon;
 	}
-	inline string& getCreatureWeaponName() {
+	inline String& getCreatureWeaponName() {
 		return creatureWeaponName;
 	}
-	inline string& getCreatureWeaponClass() {
+	inline String& getCreatureWeaponClass() {
 		return creatureWeaponClass;
 	}
-	inline string& getCreatureWeaponTemp() {
+	inline String& getCreatureWeaponTemp() {
 		return creatureWeaponTemp;
 	}
 	inline int getCreatureWeaponEquipped() {
@@ -2075,15 +2179,15 @@ public:
 	inline float getCreatureWeaponAttackSpeed() {
 		return creatureWeaponAttackSpeed;
 	}
-	inline string& getCreatureWeaponDamageType() {
+	inline String& getCreatureWeaponDamageType() {
 		return creatureWeaponDamageType;
 	}
-	inline string& getCreatureWeaponArmorPiercing() {
+	inline String& getCreatureWeaponArmorPiercing() {
 		return creatureWeaponArmorPiercing;
 	}
 
 	//behavior
-	inline string& getCreatureBehaviorScript() {
+	inline String& getCreatureBehaviorScript() {
 		return behaviorScript;
 	}
 
@@ -2112,32 +2216,32 @@ public:
 	inline void removeListener(CreatureObject* creature) {
 		listeners.drop(creature);
 		/*if (!listeners.drop(creature)); {
-			cout << "SortedVector ERROR: object " << creature << " not found\n";
+			System::out << "SortedVector ERROR: object " << creature << " not found\n";
 
 			for (int i = 0; i < listeners.size(); ++i) {
 				CreatureObject* obj = listeners.get(i);
-				cout << obj << "(0x" << obj->getObjectID() << ") ";
+				System::out << obj << "(0x" << obj->getObjectID() << ") ";
 			}
 
-			cout << "\n";
+			System::out << "\n";
 		}*/
 	}
 
 	inline void removeWatcher(CreatureObject* creature) {
 		watchers.drop(creature);
 		/*if (!watchers.drop(creature)); {
-			cout << "SortedVector ERROR: object " << creature << " not found\n";
+			System::out << "SortedVector ERROR: object " << creature << " not found\n";
 
 			for (int i = 0; i < watchers.size(); ++i) {
 				CreatureObject* obj = watchers.get(i);
-				cout << obj << "(0x" << obj->getObjectID() << ") ";
+				System::out << obj << "(0x" << obj->getObjectID() << ") ";
 			}
 
-			cout << "\n";
+			System::out << "\n";
 		}*/
 	}
 
-	inline string& getPerformanceAnimation() {
+	inline String& getPerformanceAnimation() {
 		return performanceAnimation;
 	}
 
@@ -2149,7 +2253,7 @@ public:
 		return instrumentID;
 	}
 
-	inline string& getPerformanceName() {
+	inline String& getPerformanceName() {
 		return performanceName;
 	}
 
@@ -2163,15 +2267,15 @@ public:
 
 
 	//Harvesting stuff
-	inline void setMeatType(const string& meat) {
+	inline void setMeatType(const String& meat) {
 		meatType = meat;
 	}
 
-	inline void setBoneType(const string& bone) {
+	inline void setBoneType(const String& bone) {
 		boneType = bone;
 	}
 
-	inline void setHideType(const string& hide) {
+	inline void setHideType(const String& hide) {
 		hideType = hide;
 	}
 
@@ -2191,7 +2295,7 @@ public:
 		meatMax = meatmax;
 	}
 
-	inline void setLootGroup(const string& lootgroup) {
+	inline void setLootGroup(const String& lootgroup) {
 		lootGroup = lootgroup;
 	}
 
@@ -2204,19 +2308,19 @@ public:
 		internalNPCDamageModifier = indm;
 	}
 
-	inline void setCreatureWeapon(const string& wpon) {
+	inline void setCreatureWeapon(const String& wpon) {
 		creatureWeapon = wpon;
 	}
 
-	inline void setCreatureWeaponName(const string& weaponname) {
+	inline void setCreatureWeaponName(const String& weaponname) {
 		creatureWeaponName = weaponname;
 	}
 
-	inline void setCreatureWeaponTemp(const string& weapontemp) {
+	inline void setCreatureWeaponTemp(const String& weapontemp) {
 		creatureWeaponTemp = weapontemp;
 	}
 
-	inline void setCreatureWeaponClass(const string& weaponclass) {
+	inline void setCreatureWeaponClass(const String& weaponclass) {
 		creatureWeaponClass = weaponclass;
 	}
 
@@ -2236,19 +2340,19 @@ public:
 		creatureWeaponAttackSpeed = weaponattackspeed;
 	}
 
-	inline void setCreatureWeaponDamageType(const string& weapondamtype) {
+	inline void setCreatureWeaponDamageType(const String& weapondamtype) {
 		creatureWeaponDamageType = weapondamtype;
 	}
 
-	inline void setCreatureWeaponArmorPiercing(const string& weaponarmorpiercing) {
+	inline void setCreatureWeaponArmorPiercing(const String& weaponarmorpiercing) {
 		creatureWeaponArmorPiercing = weaponarmorpiercing;
 	}
 
-	inline void setBehaviorScript(const string& behaviorscript) {
+	inline void setBehaviorScript(const String& behaviorscript) {
 		behaviorScript = behaviorscript;
 	}
 
-	inline void setCreatureFaction(const string& cfac) {
+	inline void setCreatureFaction(const String& cfac) {
 		creatureFaction = cfac;
 	}
 
@@ -2285,12 +2389,12 @@ public:
 		switch(performanceType) {
 		case PerformanceType::DANCE:
 			danceBuffDuration += duration;
-			if(danceBuffDuration > (120.0f + (10.0f/60.0f)) ) // 2 hrs 10 seconds
+			if (danceBuffDuration > (120.0f + (10.0f/60.0f)) ) // 2 hrs 10 seconds
 				danceBuffDuration = (120.0f + (10.0f/60.0f)); // 2hrs 10 seconds
 			break;
 		case PerformanceType::MUSIC:
 			musicBuffDuration += duration;
-			if(musicBuffDuration > (120.0f + (10.0f/60.0f)) ) // 2 hrs 10 seconds
+			if (musicBuffDuration > (120.0f + (10.0f/60.0f)) ) // 2 hrs 10 seconds
 				musicBuffDuration = (120.0f + (10.0f/60.0f)); // 2hrs 10 seconds
 			break;
 		}
@@ -2300,12 +2404,12 @@ public:
 		switch(performanceType) {
 		case PerformanceType::DANCE:
 			danceBuffStrength += strength;
-			if(danceBuffStrength > 125.0f)
+			if (danceBuffStrength > 125.0f)
 				danceBuffStrength = 125.0f; // 125% cap
 			break;
 		case PerformanceType::MUSIC:
 			musicBuffStrength += strength;
-			if(musicBuffStrength > 125.0f)
+			if (musicBuffStrength > 125.0f)
 				musicBuffStrength = 125.0f; // 125% cap
 			break;
 		}
@@ -2356,7 +2460,7 @@ public:
 		return 0.0f;
 	}
 
-	inline void setPerformanceAnimation(const string& performanceanimation) {
+	inline void setPerformanceAnimation(const String& performanceanimation) {
 		performanceAnimation = performanceanimation;
 	}
 
@@ -2368,7 +2472,7 @@ public:
 		instrumentID = value;
 	}
 
-	inline void setPerformanceName(const string& performancename) {
+	inline void setPerformanceName(const String& performancename) {
 		performanceName = performancename;
 	}
 
@@ -2451,7 +2555,7 @@ public:
 			return 0;
 	}
 
-	inline string& getGuildName() {
+	inline String& getGuildName() {
 		return guild->getGuildName();
 	}
 
@@ -2514,14 +2618,60 @@ public:
 
 	int getMedicalFacilityRating();
 
-	inline void say(unicode& message, uint32 moodid = 0, uint32 mood2 = 0) {
+	inline void say(UnicodeString& message, uint32 moodid = 0, uint32 mood2 = 0) {
 		ChatManager * chatManager = this->getZone()->getChatManager();
 		chatManager->broadcastMessage(_this, message, this->getTargetID(),moodid, mood2);
 	}
 
-	inline void say(const string& file, const string& str, StfParameter * param, uint32 moodid = 0, uint32 mood2 = 0) {
+	inline void say(const String& file, const String& str, StfParameter * param, uint32 moodid = 0, uint32 mood2 = 0) {
 		ChatManager * chatManager = this->getZone()->getChatManager();
 		chatManager->broadcastMessage(_this, file, str, param, this->getTargetID(),moodid, mood2);
+	}
+
+	inline bool isFrozen() {
+		return frozen;
+	}
+
+	inline void setFrozen(bool flag) {
+		frozen = flag;
+	}
+
+	inline String& getTemplateString() {
+		return templateString;
+	}
+
+	inline void setTemplateString(const String& tmpString) {
+		templateString = tmpString;
+	}
+	
+		void setCamoType(unsigned int cType) {
+		camoType = cType;
+	}
+
+	uint32 getCamoType() {
+		if ((int)camoType < 0)
+			return 0;
+		else
+			return camoType;
+	}
+
+	void activateCamo(unsigned int camoCRC,unsigned int time,unsigned int ms);
+	void deactivateCamo(bool forced);
+	void activateCamoLock();
+	bool isCamoCooldownActive();
+	int getCamoCooldownLeft();
+
+	int getMaskScent() {
+		return maskScent;
+	}
+
+	void setMaskScent(int value) {
+		maskScent = value;
+	}
+	
+
+	inline void clearTemplateString() {
+		templateString = "";
 	}
 
 	friend class CombatManager;

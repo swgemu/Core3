@@ -72,3 +72,4 @@ rockmiteAttack1 = {
 AddRandomPoolAttackTargetSkill(rockmiteAttack1)
 
 -----------------------------------------------
+

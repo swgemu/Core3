@@ -69,7 +69,7 @@ public:
 		// add direction
 		insertByte(scno->getDirectionAngle());
 		
-		/*cout << "Position Update [" << player->getObjectID() << "] (" 
+		/*System::out << "Position Update [" << player->getObjectID() << "] (" 
 			 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
 			 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
 	}
@@ -92,7 +92,7 @@ public:
 		// add direction
 		insertByte(scno->getDirectionAngle());
 
-		/*cout << "Position Update [" << player->getObjectID() << "] (" 
+		/*System::out << "Position Update [" << player->getObjectID() << "] (" 
 				 << (int) (player->getPositionX()) << "," << (int) (player->getPositionZ()) << "," 
 				 << (int) (player->getPositionY()) << ") - Dir = " << (int) (player->getDirectionAngle()) << "\n";*/
 	}

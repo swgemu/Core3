@@ -54,19 +54,19 @@ class AuctionItemImplementation : public AuctionItemServant {
 	int itemType;
 	
 	uint64 ownerID;
-	string ownerName;
+	String ownerName;
 	uint16 ownerPointer;
-	string bidderName;
+	String bidderName;
 	
 	uint16 planet;
-	string region;
-	string location;
-	string terminalTitle;
+	String region;
+	String location;
+	String terminalTitle;
 	uint16 locationPointer;
 	uint64 vendorID;
 	
-	string itemName;
-	string itemDescription;
+	String itemName;
+	String itemDescription;
 	
 	int price;
 	
@@ -85,7 +85,7 @@ public:
 		id = objectid;
 	}
 	
-	AuctionItemImplementation(uint64 objectid, string& name, int itemprice, int time, bool isauction, int type, string& owner) 
+	AuctionItemImplementation(uint64 objectid, String& name, int itemprice, int time, bool isauction, int type, String& owner) 
 			: AuctionItemServant() {
 		id = objectid;
 		itemType = type;
@@ -98,10 +98,10 @@ public:
 		ownerName = owner;
 	}
 	
-	void setLocation(string& planet, string& header, long long vendorid, int x, int z, bool vendor) {
+	void setLocation(String& planet, String& header, long long vendorid, int x, int z, bool vendor) {
 		location = header;
 		
-		stringstream title;
+		StringBuffer title;
 		title << planet << ".@";
 		
 		if (vendor)
@@ -110,7 +110,7 @@ public:
 			title << planet << "_region_names:" << header << ".@:";
 		
 		title << "." << vendorid << "#" << x << "," << z;
-		terminalTitle = title.str();
+		terminalTitle = title.toString();
 	}
 	
 	inline bool isSold() {
@@ -133,23 +133,23 @@ public:
 		ownerID = ownerid;
 	}
 	
-	inline string& getBidderName() {
+	inline String& getBidderName() {
 		return bidderName;
 	}
 	
-	inline void setBidderName(const string& name) {
+	inline void setBidderName(const String& name) {
 		bidderName = name;
 	}
 	
-	inline string& getTerminalTitle() {
+	inline String& getTerminalTitle() {
 		return terminalTitle;
 	}
 	
-	inline string& getOwnerName() {
+	inline String& getOwnerName() {
 		return ownerName;
 	}
 		
-	inline void setOwnerName(const string& name) {
+	inline void setOwnerName(const String& name) {
 		ownerName = name;
 	}
 	
@@ -189,12 +189,12 @@ public:
 		return auction;
 	}
 	
-	inline string& getLocation() {
+	inline String& getLocation() {
 		return location;
 	}
 	
 	void dump() {
-		cout << "id: " << id <<
+		System::out << "id: " << id <<
 			" itemName: " << itemName <<
 			" itemType: " << itemType <<
 			" ownerID: " << ownerID << 
@@ -229,11 +229,11 @@ public:
 		return vendorID;
 	}
 
-	inline string& getItemName() {
+	inline String& getItemName() {
 		return itemName;
 	}
 
-	inline string& getItemDescription() {
+	inline String& getItemDescription() {
 		return itemDescription;
 	}
 
@@ -254,11 +254,11 @@ public:
 		itemType = type;
 	}
 	
-	inline void setItemName(const string& name) {
+	inline void setItemName(const String& name) {
 		itemName = name;
 	}
 
-	inline void setItemDescription(const string& description) {
+	inline void setItemDescription(const String& description) {
 		itemDescription = description;
 	}
 	

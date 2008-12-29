@@ -31,9 +31,9 @@ class CraftingStation;
 
 class CraftingTool : public TangibleObject {
 public:
-	CraftingTool(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	CraftingTool(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	CraftingTool(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	CraftingTool(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -231,8 +231,8 @@ public:
 	CraftingTool* _this;
 
 public:
-	CraftingToolServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int type);
-	CraftingToolServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int type);
+	CraftingToolServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int type);
+	CraftingToolServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int type);
 	virtual ~CraftingToolServant();
 
 	void _setStub(DistributedObjectStub* stub);

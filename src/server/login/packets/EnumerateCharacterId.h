@@ -57,7 +57,7 @@ public:
 
 	    insertInt(characters->size()); //Character List Count
 	    while (characters->next()) {
-		    unicode name;
+		    UnicodeString name;
 		    characters->getCharacterName(name);
 	    	insertUnicode(name);
 	  

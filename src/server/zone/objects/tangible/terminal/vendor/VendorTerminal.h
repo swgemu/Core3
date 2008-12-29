@@ -63,7 +63,7 @@ public:
 	VendorTerminal* _this;
 
 public:
-	VendorTerminalServant(unsigned int objCRC, unsigned long long objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType);
+	VendorTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
 	virtual ~VendorTerminalServant();
 
 	void _setStub(DistributedObjectStub* stub);

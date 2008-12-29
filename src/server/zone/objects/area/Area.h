@@ -7,53 +7,21 @@
 
 #include "engine/orb/DistributedObjectBroker.h"
 
-#include "engine/util/Coordinate.h"
-
-class SceneObject;
-
 #include "engine/core/ManagedObject.h"
 
 class Area : public ManagedObject {
 public:
-	Area(Coordinate* center, float width, float height);
+	Area(float x, float y, float z, float radius);
 
-	Area(float minXPos, float maxXPos, float minYPos, float maxYPos);
+	bool containsPoint(float x, float y);
 
-	unsigned char getType();
+	float getX();
 
-	bool contains(SceneObject* object);
+	float getY();
 
-	bool contains(Coordinate* coord);
+	float getZ();
 
-	bool contains(float x, float y);
-
-	bool contains(Area* region);
-
-	bool isBaseArea();
-
-	bool isActiveArea();
-
-	bool isNoBuildArea();
-
-	void setWidth(float w);
-
-	void setHeight(float h);
-
-	void setUID(unsigned long long uid);
-
-	float getWidth();
-
-	float getHeight();
-
-	float getMinX();
-
-	float getMaxX();
-
-	float getMinY();
-
-	float getMaxY();
-
-	unsigned long long getUID();
+	float getRadius();
 
 protected:
 	Area(DummyConstructorParameter* param);
@@ -71,41 +39,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	unsigned char getType();
+	bool containsPoint(float x, float y);
 
-	bool contains(SceneObject* object);
+	float getX();
 
-	bool contains(Coordinate* coord);
+	float getY();
 
-	bool contains(float x, float y);
+	float getZ();
 
-	bool contains(Area* region);
-
-	bool isBaseArea();
-
-	bool isActiveArea();
-
-	bool isNoBuildArea();
-
-	void setWidth(float w);
-
-	void setHeight(float h);
-
-	void setUID(unsigned long long uid);
-
-	float getWidth();
-
-	float getHeight();
-
-	float getMinX();
-
-	float getMaxX();
-
-	float getMinY();
-
-	float getMaxY();
-
-	unsigned long long getUID();
+	float getRadius();
 
 };
 

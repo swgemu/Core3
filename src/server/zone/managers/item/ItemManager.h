@@ -43,11 +43,19 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
-	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, string& objectn, string& objecttemp, bool equipped);
+	TangibleObject* clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ);
+
+	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
+
+	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
+
+	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
+
+	void giveForageItem(Player* player, int group, int count);
 
 	void showDbStats(Player* player);
 
@@ -59,18 +67,18 @@ public:
 
 	BlueFrogVector* getBFItemList();
 
-	BlueFrogVector* getBFProfList(string& group);
+	BlueFrogVector* getBFProfList(String& group);
 
-	string& getBFProf(string& key);
+	String& getBFProf(String& key);
 
-	void giveBFItemSet(Player* player, string& set);
+	void giveBFItemSet(Player* player, String& set);
 
 protected:
 	ItemManager(DummyConstructorParameter* param);
 
 	virtual ~ItemManager();
 
-	string _return_getBFProf;
+	String _return_getBFProf;
 
 	friend class ItemManagerHelper;
 };
@@ -97,11 +105,19 @@ public:
 
 	void createPlayerItem(Player* player, TangibleObject* item);
 
-	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, string& objectn, string& objecttemp, bool equipped);
+	TangibleObject* clonePlayerObjectTemplate(unsigned long long objectid, TangibleObject* templ);
+
+	TangibleObject* initializeTangibleForCrafting(int objecttype, unsigned long long objectid, unsigned long long objectcrc, String& objectn, String& objecttemp, bool equipped);
 
 	void savePlayerItem(Player* player, TangibleObject* item);
 
 	void deletePlayerItem(Player* player, TangibleObject* item, bool notify);
+
+	void transferContainerItem(Player* player, TangibleObject* item, unsigned long long destinationID);
+
+	void loadStructurePlayerItems(Player* player, unsigned long long cellID);
+
+	void giveForageItem(Player* player, int group, int count);
 
 	void showDbStats(Player* player);
 
@@ -113,18 +129,18 @@ public:
 
 	BlueFrogVector* getBFItemList();
 
-	BlueFrogVector* getBFProfList(string& group);
+	BlueFrogVector* getBFProfList(String& group);
 
-	string& getBFProf(string& key);
+	String& getBFProf(String& key);
 
-	void giveBFItemSet(Player* player, string& set);
+	void giveBFItemSet(Player* player, String& set);
 
 protected:
-	string _param3_initializeTangibleForCrafting__int_long_long_string_string_bool_;
-	string _param4_initializeTangibleForCrafting__int_long_long_string_string_bool_;
-	string _param0_getBFProfList__string_;
-	string _param0_getBFProf__string_;
-	string _param1_giveBFItemSet__Player_string_;
+	String _param3_initializeTangibleForCrafting__int_long_long_String_String_bool_;
+	String _param4_initializeTangibleForCrafting__int_long_long_String_String_bool_;
+	String _param0_getBFProfList__String_;
+	String _param0_getBFProf__String_;
+	String _param1_giveBFItemSet__Player_String_;
 };
 
 class ItemManagerHelper : public DistributedObjectClassHelper, public Singleton<ItemManagerHelper> {

@@ -66,7 +66,7 @@ protected:
 	int diseaseDotStrength;
 
 public:
-	DotPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, DOT, serv) {
+	DotPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, DOT, serv) {
 
 		dotChanceState = 0;
 
@@ -86,8 +86,9 @@ public:
 
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
+
 
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			CreatureObject* targetCreature = (CreatureObject*) target;

@@ -17,7 +17,7 @@ ResourceItem::ResourceItem() : ManagedObject(DummyConstructorParameter::instance
 	_impl->_setStub(this);
 }
 
-ResourceItem::ResourceItem(unsigned long long oid, unsigned long long sid, unsigned long long expire, string& n, string& t, int d) : ManagedObject(DummyConstructorParameter::instance()) {
+ResourceItem::ResourceItem(unsigned long long oid, unsigned long long sid, unsigned long long expire, String& n, String& t, int d) : ManagedObject(DummyConstructorParameter::instance()) {
 	_impl = new ResourceItemImplementation(oid, sid, expire, n, t, d);
 	_impl->_setStub(this);
 }
@@ -64,7 +64,7 @@ unsigned long long ResourceItem::getSpawnExpireTimestamp() {
 		return ((ResourceItemImplementation*) _impl)->getSpawnExpireTimestamp();
 }
 
-string& ResourceItem::getName() {
+String& ResourceItem::getName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -77,7 +77,7 @@ string& ResourceItem::getName() {
 		return ((ResourceItemImplementation*) _impl)->getName();
 }
 
-string& ResourceItem::getType() {
+String& ResourceItem::getType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -150,11 +150,11 @@ unsigned long long ResourceItemAdapter::getSpawnExpireTimestamp() {
 	return ((ResourceItemImplementation*) impl)->getSpawnExpireTimestamp();
 }
 
-string& ResourceItemAdapter::getName() {
+String& ResourceItemAdapter::getName() {
 	return ((ResourceItemImplementation*) impl)->getName();
 }
 
-string& ResourceItemAdapter::getType() {
+String& ResourceItemAdapter::getType() {
 	return ((ResourceItemImplementation*) impl)->getType();
 }
 

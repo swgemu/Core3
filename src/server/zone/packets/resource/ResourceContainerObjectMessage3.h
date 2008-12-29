@@ -61,7 +61,7 @@ public:
 		insertUnicode(rcno->getName());
 
 		insertInt(1); // Volume
-		string app;
+		String app;
 		rcno->getCustomizationString(app);
 		insertAscii(app);
 

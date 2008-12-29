@@ -50,7 +50,7 @@ import "../Terminal";
 
 interface VendorTerminal implements Terminal {
 	VendorTerminal(BazaarManager bazaarmanager, unsigned long objid, float x, float z, float y) {
-		super(unsigned int objCRC, objid, const unicode n, const string tempn, x, z, y, int TerminalType); 
+		super(unsigned int objCRC, objid, const UnicodeString n, const String tempn, x, z, y, int TerminalType); 
 	}
 	
 	int useObject(Player player);

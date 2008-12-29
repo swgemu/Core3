@@ -53,8 +53,9 @@ class Player;
 class PlayerObject;
 
 class FriendsListImplementation : public FriendsListServant {
-	Vector<string> friendName;
-	Vector<string> friendServer;
+	Vector<String> friendName;
+	Vector<String> friendServer;
+	Vector<uint64> reverseFriendList;
 
 	int friendsMagicNumber;
 	Player* player;
@@ -62,10 +63,13 @@ class FriendsListImplementation : public FriendsListServant {
 public:
 	FriendsListImplementation(Player* pl);
 
-	void addFriend(string& name, string& server);
+	void addFriend(String& name, String& server);
+	void removeFriend(String& name);
+	void findFriend(String& name, PlayerManager* playerManager);
 
-	void removeFriend(string& name);
-	void findFriend(string& name, PlayerManager* playerManager);
+	void populateReverseFriendListForOfflineToonInDB(uint64 poid, uint32 myPlayer);
+
+	ResultSet* pullMyFriendsFromDB(String name);
 
 	void toString();
 
@@ -82,11 +86,11 @@ public:
 		return friendsMagicNumber;
 	}
 
-	string& getFriendsName(const int i){
+	String& getFriendsName(const int i){
 		return friendName.get(i);
 	}
 
-	string& getFriendsServer(const int i){
+	String& getFriendsServer(const int i){
 		return friendServer.get(i);
 	}
 

@@ -6,18 +6,21 @@
 #include "../DeedObject.h"
 #include "../DeedObjectImplementation.h"
 
-GeneratorDeedImplementation::GeneratorDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn)
-	: GeneratorDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
+GeneratorDeedImplementation::GeneratorDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn)
+		: GeneratorDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectCRC = tempcrc;
+
 	name = n;
 	templateName = tempn;
 
 	init();
 }
-GeneratorDeedImplementation::GeneratorDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn)
-	: GeneratorDeedServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
+GeneratorDeedImplementation::GeneratorDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn)
+		: GeneratorDeedServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectID = objid;
+
 	objectCRC = tempcrc;
+
 	name = n;
 	templateName = tempn;
 
@@ -25,13 +28,12 @@ GeneratorDeedImplementation::GeneratorDeedImplementation(uint64 objid, uint32 te
 }
 
 GeneratorDeedImplementation::~GeneratorDeedImplementation() {
-
 }
 
 void GeneratorDeedImplementation::parseItemAttributes() {
 	DeedObjectImplementation::parseItemAttributes();
 
-	string attr = "surplusMaintenance";
+	String attr = "surplusMaintenance";
 	setSurplusMaintenance(itemAttributes->getIntAttribute(attr));
 
 	attr = "maintenanceRate";
@@ -60,26 +62,34 @@ void GeneratorDeedImplementation::init() {
 
 	targetTempFile = "object/installation/base/shared_construction_installation_base.iff";
 
-	if ((templateName.find("fusion") != string::npos)){
+	if ((templateName.indexOf("fusion") != -1)){
 		type = FUSION;
+
 		targetTemplate = "fusion_generator";
 		targetFile = "object/installation/generators/shared_power_generator_fusion_style_1.iff";
-		targetName = string("Fusion Power Generator");
-	} else if ((templateName.find("photo") != string::npos)){
+
+		targetName = String("Fusion Power Generator");
+	} else if ((templateName.indexOf("photo") != -1)){
 		type = PHOTOBIO;
+
 		targetTemplate = "photobio_generator";
 		targetFile = "object/installation/generators/shared_power_generator_photo_bio_style_1.iff";
-		targetName = string("Photo Power Generator");
-	} else if ((templateName.find("solar") != string::npos)){
+
+		targetName = String("Photo Power Generator");
+	} else if ((templateName.indexOf("solar") != -1)){
 		type = SOLAR;
+
 		targetTemplate = "solar_generator";
 		targetFile = "object/installation/generators/shared_power_generator_solar_style_1.iff";
-		targetName = string("Solar Power Generator");
-	} else if ((templateName.find("wind") != string::npos)){
+
+		targetName = String("Solar Power Generator");
+	} else if ((templateName.indexOf("wind") != -1)){
 		type = WIND;
+
 		targetTempFile = "object/installation/base/shared_construction_installation_base.iff";
 		targetTemplate = "wind_generator";
 		targetFile = "object/installation/generators/shared_power_generator_wind_style_1.iff";
-		targetName = string("Wind Power Generator");
+
+		targetName = String("Wind Power Generator");
 	}
 }

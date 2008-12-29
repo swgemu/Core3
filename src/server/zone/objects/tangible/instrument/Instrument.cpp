@@ -14,12 +14,12 @@
  *	InstrumentStub
  */
 
-Instrument::Instrument(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int insttype) : TangibleObject(DummyConstructorParameter::instance()) {
+Instrument::Instrument(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int insttype) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new InstrumentImplementation(oid, tempCRC, n, tempn, insttype);
 	_impl->_setStub(this);
 }
 
-Instrument::Instrument(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn, int insttype) : TangibleObject(DummyConstructorParameter::instance()) {
+Instrument::Instrument(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int insttype) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new InstrumentImplementation(player, tempCRC, n, tempn, insttype);
 	_impl->_setStub(this);
 }

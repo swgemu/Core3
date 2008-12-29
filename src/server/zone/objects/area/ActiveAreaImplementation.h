@@ -45,47 +45,19 @@ which carries forward this exception.
 #ifndef ACTIVEAREAIMPLEMENTATION_H_
 #define ACTIVEAREAIMPLEMENTATION_H_
 
-#include "engine/engine.h"
-
 #include "ActiveArea.h"
-#include "AreaImplementation.h"
-
-#include "NoBuildArea.h"
-#include "../scene/SceneObject.h"
 
 class ActiveAreaImplementation : public ActiveAreaServant {
 
 public:
-	ActiveAreaImplementation(Coordinate * center, float width, float height) : ActiveAreaServant(center, width, height) {
+	ActiveAreaImplementation(float x, float y, float z, float range) : ActiveAreaServant(x,y,z,range) {
 
 	}
 
-	ActiveAreaImplementation(float minXPos, float maxXPos, float minYPos, float maxYPos) : ActiveAreaServant(minXPos, maxXPos, minYPos, maxYPos) {
+	virtual void onEnter(Player * player) { }
 
-	}
+	virtual void onExit(Player * player) { }
 
-	~ActiveAreaImplementation() {
-
-	}
-
-	inline uint8 getType() {
-		return ACTIVE;
-	}
-
-	void onEnter(SceneObject * so) {
-
-	}
-
-	void onExit(SceneObject * so) {
-
-	}
-
-	void onSpawn(SceneObject * so) {
-
-	}
-
-	void onDespawn(SceneObject * so) {
-
-	}
 };
+
 #endif /* ACTIVEAREAIMPLEMENTATION_H_ */

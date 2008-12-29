@@ -8,19 +8,14 @@
 
 #include "Area.h"
 
-#include "../../objects/scene/SceneObject.h"
+#include "../player/Player.h"
 
 /*
  *	ActiveAreaStub
  */
 
-ActiveArea::ActiveArea(Coordinate* center, float width, float height) : Area(DummyConstructorParameter::instance()) {
-	_impl = new ActiveAreaImplementation(center, width, height);
-	_impl->_setStub(this);
-}
-
-ActiveArea::ActiveArea(float minXPos, float maxXPos, float minYPos, float maxYPos) : Area(DummyConstructorParameter::instance()) {
-	_impl = new ActiveAreaImplementation(minXPos, maxXPos, minYPos, maxYPos);
+ActiveArea::ActiveArea(float x, float y, float z, float radius) : Area(DummyConstructorParameter::instance()) {
+	_impl = new ActiveAreaImplementation(x, y, z, radius);
 	_impl->_setStub(this);
 }
 
@@ -30,68 +25,30 @@ ActiveArea::ActiveArea(DummyConstructorParameter* param) : Area(param) {
 ActiveArea::~ActiveArea() {
 }
 
-unsigned char ActiveArea::getType() {
+void ActiveArea::onEnter(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 6);
+		method.addObjectParameter(player);
 
-		return method.executeWithUnsignedCharReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((ActiveAreaImplementation*) _impl)->getType();
+		((ActiveAreaImplementation*) _impl)->onEnter(player);
 }
 
-void ActiveArea::onEnter(SceneObject* so) {
+void ActiveArea::onExit(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addObjectParameter(so);
+		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		((ActiveAreaImplementation*) _impl)->onEnter(so);
-}
-
-void ActiveArea::onExit(SceneObject* so) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 8);
-		method.addObjectParameter(so);
-
-		method.executeWithVoidReturn();
-	} else
-		((ActiveAreaImplementation*) _impl)->onExit(so);
-}
-
-void ActiveArea::onSpawn(SceneObject* so) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 9);
-		method.addObjectParameter(so);
-
-		method.executeWithVoidReturn();
-	} else
-		((ActiveAreaImplementation*) _impl)->onSpawn(so);
-}
-
-void ActiveArea::onDespawn(SceneObject* so) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 10);
-		method.addObjectParameter(so);
-
-		method.executeWithVoidReturn();
-	} else
-		((ActiveAreaImplementation*) _impl)->onDespawn(so);
+		((ActiveAreaImplementation*) _impl)->onExit(player);
 }
 
 /*
@@ -106,19 +63,10 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		resp->insertByte(getType());
+		onEnter((Player*) inv->getObjectParameter());
 		break;
 	case 7:
-		onEnter((SceneObject*) inv->getObjectParameter());
-		break;
-	case 8:
-		onExit((SceneObject*) inv->getObjectParameter());
-		break;
-	case 9:
-		onSpawn((SceneObject*) inv->getObjectParameter());
-		break;
-	case 10:
-		onDespawn((SceneObject*) inv->getObjectParameter());
+		onExit((Player*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -127,24 +75,12 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-unsigned char ActiveAreaAdapter::getType() {
-	return ((ActiveAreaImplementation*) impl)->getType();
+void ActiveAreaAdapter::onEnter(Player* player) {
+	return ((ActiveAreaImplementation*) impl)->onEnter(player);
 }
 
-void ActiveAreaAdapter::onEnter(SceneObject* so) {
-	return ((ActiveAreaImplementation*) impl)->onEnter(so);
-}
-
-void ActiveAreaAdapter::onExit(SceneObject* so) {
-	return ((ActiveAreaImplementation*) impl)->onExit(so);
-}
-
-void ActiveAreaAdapter::onSpawn(SceneObject* so) {
-	return ((ActiveAreaImplementation*) impl)->onSpawn(so);
-}
-
-void ActiveAreaAdapter::onDespawn(SceneObject* so) {
-	return ((ActiveAreaImplementation*) impl)->onDespawn(so);
+void ActiveAreaAdapter::onExit(Player* player) {
+	return ((ActiveAreaImplementation*) impl)->onExit(player);
 }
 
 /*
@@ -182,11 +118,7 @@ DistributedObjectAdapter* ActiveAreaHelper::createAdapter(DistributedObjectStub*
  *	ActiveAreaServant
  */
 
-ActiveAreaServant::ActiveAreaServant(Coordinate* center, float width, float height) : AreaImplementation(center, width, height) {
-	_classHelper = ActiveAreaHelper::instance();
-}
-
-ActiveAreaServant::ActiveAreaServant(float minXPos, float maxXPos, float minYPos, float maxYPos) : AreaImplementation(minXPos, maxXPos, minYPos, maxYPos) {
+ActiveAreaServant::ActiveAreaServant(float x, float y, float z, float radius) : AreaImplementation(x, y, z, radius) {
 	_classHelper = ActiveAreaHelper::instance();
 }
 

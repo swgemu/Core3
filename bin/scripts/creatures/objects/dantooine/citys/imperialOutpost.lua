@@ -458,28 +458,6 @@ dantImpOutpostNpc19 = Creature:new {
 	cellID = 0
 }
 
-dantImpOutpostNpc20 = Creature:new {
-	objectName = "dantImpOutpostNpc20",
-	creatureType = NPC,
-
-	speciesName = "imperial_private",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -4249.26,
-	positionY = -2402.07,
-	positionZ = 3,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.199127,
-	directionW = 0.979974,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
 dantImpOutpostNpc21 = Creature:new {
 	objectName = "dantImpOutpostNpc21",
 	creatureType = NPC,
@@ -499,72 +477,6 @@ dantImpOutpostNpc21 = Creature:new {
 	directionW = 0.910517,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-dantImpOutpostNpc26 = Creature:new {
-	objectName = "dantImpOutpostNpc26",
-	creatureType = NPC,
-
-	speciesName = "imperial_corporal",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1040681339,
-	positionX = -4300.4,
-	positionY = -2424.1,
-	positionZ = 3,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.704198,
-	directionW = 0.710004,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-dantImpOutpostNpc31 = Creature:new {
-	objectName = "dantImpOutpostNpc31",
-	creatureType = NPC,
-
-	speciesName = "imperial_private",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3423844128,
-	positionX = -4134.42,
-	positionY = -2392.06,
-	positionZ = 3,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.715005,
-	directionW = -0.699119,
-	randomMovement = 0,
-	mood = "npc_imperial",
-	cellID = 0
-}
-
-dantImpOutpostNpc33 = Creature:new {
-	objectName = "dantImpOutpostNpc33",
-	creatureType = NPC,
-
-	speciesName = "imperial_corporal",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 519244536,
-	positionX = -4198.16,
-	positionY = -2419.87,
-	positionZ = 3,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.706495,
-	directionW = 0.707718,
-	randomMovement = 0,
-	mood = "npc_imperial",
 	cellID = 0
 }
 

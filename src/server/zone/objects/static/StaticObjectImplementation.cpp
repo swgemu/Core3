@@ -82,7 +82,7 @@ void StaticObjectImplementation::insertToZone(Zone* zone) {
 
 		zone->unlock();
 	} catch (...) {
-		cout << "exception StaticObject::insertToZone(Zone* zone)\n";
+		System::out << "exception StaticObject::insertToZone(Zone* zone)\n";
 
 		zone->unlock();
 	}
@@ -111,7 +111,7 @@ void StaticObjectImplementation::removeFromZone() {
 
 		zone = NULL;
 	} catch (...) {
-		cout << "exception StaticObject::removeFromZone(bool doLock)\n";
+		System::out << "exception StaticObject::removeFromZone(bool doLock)\n";
 
 		zone->unlock();
 	}

@@ -54,13 +54,13 @@ which carries forward this exception.
 
 class Skill {
 protected:
-	string skillName;
+	String skillName;
 	uint32 nameCRC;
 	int type;
 	int category;
 
 	uint32 animCRC;
-	string effectName;
+	String effectName;
 
 	float range;
 	float speedRatio;
@@ -68,6 +68,7 @@ protected:
 	ZoneProcessServerImplementation* server;
 
 public:
+	static const int OTHER = 0;
 	static const int ATTACK = 1;
 	static const int HEAL = 2;
 	static const int ENHANCE = 3;
@@ -78,16 +79,19 @@ public:
 	static const int MUSIC = 8;
 	static const int DIAGNOSE = 9;
 	static const int REVIVE = 10;
-	static const int OTHER = 0;
+	static const int CAMO = 11;
+	static const int THROW = 12;
+	static const int FORAGE = 13;
 
 	static const int TARGET = 1;
 	static const int SELF = 2;
 
 public:
-	Skill(const string& name, int tp, int cat, ZoneProcessServerImplementation* serv) {
+	Skill(const String& name, int tp, int cat, ZoneProcessServerImplementation* serv) {
 		server = serv;
 
-		nameCRC = String::hashCode(name);
+		nameCRC = name.hashCode();
+
 		skillName = name;
 		type = tp;
 		category = cat;
@@ -109,11 +113,11 @@ public:
 		return -1;
 	}
 
-	void setAnimation(const string& ename) {
-		animCRC = String::hashCode(ename);
+	void setAnimation(const String& ename) {
+		animCRC = ename.hashCode();
 	}
 
-	void setEffect(const string& ename) {
+	void setEffect(const String& ename) {
 		effectName = ename;
 	}
 
@@ -130,11 +134,11 @@ public:
 	}
 
 	bool hasEffect() {
-		return effectName.size() != 0;
+		return !effectName.isEmpty();
 	}
 
 	inline bool isAttackSkill() {
-		return type == ATTACK;
+		return type == ATTACK || type == THROW;
 	}
 
 	inline bool isHealSkill() {
@@ -181,7 +185,11 @@ public:
 		return animCRC;
 	}
 
-	inline string& getEffectName() {
+	inline uint32 getAnimCRC(CreatureObject* creature, const String& actionModifier) {
+		return animCRC;
+	}
+
+	inline String& getEffectName() {
 		return effectName;
 	}
 
@@ -201,8 +209,16 @@ public:
 		return category == TARGET;
 	}
 
-	inline string& getSkillName() {
+	inline String& getSkillName() {
 		return skillName;
+	}
+
+	inline bool isCamoSkill(){
+		return type == CAMO;
+	}
+
+	inline bool isThrowSkill(){
+		return type == THROW;
 	}
 
 };

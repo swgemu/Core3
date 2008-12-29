@@ -21,19 +21,19 @@ class SceneObject;
 
 class DeedObject : public TangibleObject {
 public:
-	DeedObject(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn);
+	DeedObject(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn);
 
-	DeedObject(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn);
+	DeedObject(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
-	unicode& getTargetName();
+	UnicodeString& getTargetName();
 
-	string& getTargetFile();
+	String& getTargetFile();
 
-	string& getTargetTemplate();
+	String& getTargetTemplate();
 
-	void setTargetFile(string& path);
+	void setTargetFile(String& path);
 
-	string& getTargetTempFile();
+	String& getTargetTempFile();
 
 	int useObject(Player* player);
 
@@ -46,11 +46,11 @@ protected:
 
 	virtual ~DeedObject();
 
-	string _return_getTargetFile;
-	string _return_getTargetTempFile;
-	string _return_getTargetTemplate;
+	String _return_getTargetFile;
+	String _return_getTargetTempFile;
+	String _return_getTargetTemplate;
 
-	unicode _return_getTargetName;
+	UnicodeString _return_getTargetName;
 
 	friend class DeedObjectHelper;
 };
@@ -63,15 +63,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	unicode& getTargetName();
+	UnicodeString& getTargetName();
 
-	string& getTargetFile();
+	String& getTargetFile();
 
-	string& getTargetTemplate();
+	String& getTargetTemplate();
 
-	void setTargetFile(string& path);
+	void setTargetFile(String& path);
 
-	string& getTargetTempFile();
+	String& getTargetTempFile();
 
 	int useObject(Player* player);
 
@@ -80,7 +80,7 @@ public:
 	int getHarvesterType();
 
 protected:
-	string _param0_setTargetFile__string_;
+	String _param0_setTargetFile__String_;
 };
 
 class DeedObjectHelper : public DistributedObjectClassHelper, public Singleton<DeedObjectHelper> {
@@ -105,8 +105,8 @@ public:
 	DeedObject* _this;
 
 public:
-	DeedObjectServant(CreatureObject* creature, int tempCRC, const unicode& n, const string& tempn, int tp);
-	DeedObjectServant(unsigned long long oid, int tempCRC, const unicode& n, const string& tempn, int tp);
+	DeedObjectServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	DeedObjectServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~DeedObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

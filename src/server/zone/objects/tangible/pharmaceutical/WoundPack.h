@@ -21,9 +21,9 @@ class Pharmaceutical;
 
 class WoundPack : public Pharmaceutical {
 public:
-	WoundPack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	WoundPack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	WoundPack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	WoundPack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -89,8 +89,8 @@ public:
 	WoundPack* _this;
 
 public:
-	WoundPackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
-	WoundPackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
+	WoundPackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
+	WoundPackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 	virtual ~WoundPackServant();
 
 	void _setStub(DistributedObjectStub* stub);

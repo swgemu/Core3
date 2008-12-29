@@ -19,7 +19,7 @@
 
 #include "../../../../managers/item/ItemManager.h"
 
-ResourceDeedImplementation::ResourceDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn)
+ResourceDeedImplementation::ResourceDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn)
 	: ResourceDeedServant(creature, tempcrc, n, tempn, DEED) {
 
 	objectID = creature->getNewItemID();
@@ -29,7 +29,7 @@ ResourceDeedImplementation::ResourceDeedImplementation(CreatureObject* creature,
 	init();
 }
 
-ResourceDeedImplementation::ResourceDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn)
+ResourceDeedImplementation::ResourceDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn)
 	: ResourceDeedServant(objid, tempcrc, n, tempn, DEED) {
 
 	objectID = objid;
@@ -51,6 +51,15 @@ void ResourceDeedImplementation::init() {
 }
 
 void ResourceDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
+	//TODO:Cell permission check
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			if (_this->isTangible())
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
 
 	omr->addRadialItem(0, 20, 3, "@ui_radial:item_use");
 

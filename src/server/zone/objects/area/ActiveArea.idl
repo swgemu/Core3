@@ -44,21 +44,14 @@ which carries forward this exception.
 
 import "Area";
 
-import "../../objects/scene/SceneObject";
-
-include "engine/util/Coordinate";
+import "../player/Player";
 
 interface ActiveArea implements Area {
-	ActiveArea(Coordinate center, float width, float height) { super(center, width, height); }
-	ActiveArea(float minXPos, float maxXPos, float minYPos, float maxYPos) { super(minXPos, maxXPos, minYPos, maxYPos); }
+	ActiveArea(float x, float y, float z, float radius) {
+		super(x,y,z,radius);
+	}
 	
-	unsigned char getType();
-
-	void onEnter(SceneObject so);
-
-	void onExit(SceneObject so);
-
-	void onSpawn(SceneObject so);
-
-	void onDespawn(SceneObject so);
+	void onEnter(Player player);
+	
+	void onExit(Player player);
 }

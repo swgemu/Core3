@@ -50,13 +50,13 @@ interface UserManager {
 	}
 	
 	boolean checkUser(unsigned int ipid);
-	boolean isAdmin(const string name);
+	boolean isAdmin(const String name);
 	
 	void parseBanList();
 	
-	void banUser(const string ipaddr);
-	boolean banUserByName(string name, string admin);
-	boolean kickUser(string name, string admin);
+	void banUser(const String ipaddr);
+	boolean banUserByName(String name, String admin);
+	boolean kickUser(String name, String admin);
 
 	void changeUserCap(int amount);
 		

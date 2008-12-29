@@ -74,7 +74,9 @@ class CraftingManagerImplementation : public CraftingManagerServant,
 	ZoneProcessServerImplementation * processor;
 
 	// Use a groupName to recieve a vector of draftSchematics back
-	VectorMap<string, DraftSchematicGroup*> draftSchematicsMap;
+	VectorMap<String, DraftSchematicGroup*> draftSchematicsMap;
+
+	String generatedSerial;
 
 	static CraftingManagerImplementation* instance;
 
@@ -152,21 +154,23 @@ public:
 	void putComponentBackInInventory(Player* player, Component* component);
 
 	// Crafting Methods
-	void nextCraftingStage(Player* player, string test);
-	void craftingCustomization(Player* player, string name, int condition, string customizationstring);
-	void handleExperimenting(Player* player, int counter, int numRowsAttempted, string expstring);
-	void createPrototype(Player* player, string count);
-	void createSchematic(Player* player, string count);
+	void nextCraftingStage(Player* player, String test);
+	void craftingCustomization(Player* player, String name, int condition, String customizationString);
+	void handleExperimenting(Player* player, int counter, int numRowsAttempted, String expString);
+	void createPrototype(Player* player, String count);
+	void createSchematic(Player* player, String count);
 
 
 	float getWeightedValue(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic, int type);
 	float getAssemblyPercentage(float value);
 	float calculateAssemblyValueModifier(CraftingTool* craftingTool);
 
-	void addDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
-	void subtractDraftSchematicsFromGroupName(Player* player, const string& schematicGroupName);
+	void addDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(Player* player, const String& schematicGroupName);
 
 	void refreshDraftSchematics(Player* player);
+
+	String& generateCraftedSerial();
 
 private:
 	void mapDraftSchematic(DraftSchematic* draftSchematic);
@@ -180,7 +184,7 @@ private:
 
 	// Slot manipulation
 	void sendSlotMessage(Player* player, int counter, short message);
-	ResourceContainer * makeNewResourceStack(Player* player, string name, int quantity);
+	ResourceContainer * makeNewResourceStack(Player* player, String name, int quantity);
 	bool slotIsFull(Player* player, CraftingTool* craftingTool, TangibleObject* tano, TangibleObject* ingredientInSlot,
 			int ingredientInSlotQuantity, int slot, int quantity, int counter);
 	TangibleObject* transferIngredientToSlot(Player* player, TangibleObject* tano,
@@ -199,7 +203,7 @@ private:
 	bool addSubcomponentTraitsToNewTano(CraftingTool* craftingTool);
 	void setInitialCraftingValues(Player* player, CraftingTool* craftingTool, DraftSchematic* draftSchematic);
 	bool applyComponentBoost(DraftSchematic* draftSchematic, CraftingTool* craftingTool);
-	//float applyComponentPercentageBoost(string subtitle, DraftSchematic* draftSchematic, CraftingTool* craftingTool);
+	//float applyComponentPercentageBoost(String subtitle, DraftSchematic* draftSchematic, CraftingTool* craftingTool);
 
 	// Experimenting
 	void experimentRow(DraftSchematicValues* craftingValues,
@@ -223,10 +227,8 @@ private:
 
 	int lookUpResourceAttribute(Player* player, TangibleObject* tano, int type,  int slot);
 
-	string generateCraftedSerial();
-
-	Vector<string> parseStringsFromString(const string& unparsedStrings);
-	Vector<uint32> parseUnsignedInt32sFromString(const string& unparsedInts);
+	Vector<String> parseStringsFromString(const String& unparsedStrings);
+	Vector<uint32> parseUnsignedInt32sFromString(const String& unparsedInts);
 
 };
 

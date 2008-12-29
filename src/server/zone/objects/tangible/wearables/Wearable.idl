@@ -48,15 +48,15 @@ import "../../player/Player";
 import "../TangibleObject";
 
 interface Wearable implements TangibleObject {
-	Wearable(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+	Wearable(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, boolean eqp = false) {
 			super(oid, int tp);
 	}
 
-	Wearable(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+	Wearable(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, boolean eqp = false) {
 		super(oid, int tp);
 	}
 
-	Wearable(CreatureObject creature, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+	Wearable(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn, boolean eqp = false) {
 		super(unsigned long oid, int tp);
 	}
 }

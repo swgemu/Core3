@@ -52,12 +52,12 @@ which carries forward this exception.
 
 #include "../../../managers/player/PlayerManager.h"
 
-ArmorImplementation::ArmorImplementation(uint64 objid, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp)
+ArmorImplementation::ArmorImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp)
 		: ArmorServant(objid, tempCRC, n, tempn, eqp) {
 	initialize();
 }
 
-ArmorImplementation::ArmorImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, bool eqp)
+ArmorImplementation::ArmorImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp)
 		: ArmorServant(creature, tempCRC, n, tempn, eqp) {
 
 	//objectCRC = String::hashCode(temp);
@@ -68,7 +68,7 @@ ArmorImplementation::ArmorImplementation(CreatureObject* creature, uint32 tempCR
 }
 
 void ArmorImplementation::parseItemAttributes() {
-	string name = "armorType";
+	String name = "armorType";
 	armorType = itemAttributes->getIntAttribute(name);
 
 	maxCondition = itemAttributes->getMaxCondition();
@@ -236,9 +236,9 @@ void ArmorImplementation::initialize() {
 	customizationVars.setVariable(2, 0);
 	customizationVars.setVariable(1, 0);
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "Armor = 0x" << objectID;
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 
 	setLogging(false);
 	setGlobalLogging(true);
@@ -270,11 +270,19 @@ void ArmorImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespons
 			omr->addRadialItem(0, 69, 3, "Slice");
 
 		omr->addRadialItem(0, 70, 3, "Repair");
-
-		omr->finish();
-
-		player->sendMessage(omr);
 	}
+
+	//TODO:Cell permission check
+	if (_this->getParent() != NULL) {
+		bool cellPermission = true;
+
+		if (_this->getParent()->isCell() && cellPermission) {
+			omr->addRadialItem(0, 10, 3, "Pickup");
+		}
+	}
+
+	omr->finish();
+	player->sendMessage(omr);
 }
 
 void ArmorImplementation::generateAttributes(SceneObject* obj) {
@@ -295,7 +303,7 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
-	if(firstCraftingUpdate) {
+	if (firstCraftingUpdate) {
 		generateSockets(draftSchematic);
 	}
 
@@ -328,7 +336,7 @@ void ArmorImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
 
 void ArmorImplementation::generateSockets(DraftSchematic* draftSchematic) {
 
-	string assemblySkill = draftSchematic->getAssemblySkill();
+	String assemblySkill = draftSchematic->getAssemblySkill();
 	// Get assembly points from skill
 
 	Player* player = draftSchematic->getCrafter();
@@ -359,8 +367,8 @@ void ArmorImplementation::setCraftingKinetic(DraftSchematic* draftSchematic) {
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
 	float value = craftingValues->getCurrentValue("kineticeffectiveness");
-	if(draftSchematic->getAttributeToSet("kineticeffectiveness") == NULL) {
-		if(firstCraftingUpdate) {
+	if (draftSchematic->getAttributeToSet("kineticeffectiveness") == NULL) {
+		if (firstCraftingUpdate) {
 			craftingValues->lockValue("kineticeffectiveness");
 		}
 	}
@@ -371,10 +379,10 @@ void ArmorImplementation::setCraftingKinetic(DraftSchematic* draftSchematic) {
 			setKinetic(base);
 		setKineticIsSpecial(false);
 	} else {
-		if(value + base > 80.0f)
+		if (value + base > 80.0f)
 			setKinetic(80.0f);
 		else
-			if(isComposite())
+			if (isComposite())
 				setKinetic(specialbase + base);
 			else
 				setKinetic(value);
@@ -391,8 +399,8 @@ void ArmorImplementation::setCraftingEnergy(DraftSchematic* draftSchematic) {
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
 	float value = craftingValues->getCurrentValue("energyeffectiveness");
-	if(draftSchematic->getAttributeToSet("energyeffectiveness") == NULL) {
-		if(firstCraftingUpdate) {
+	if (draftSchematic->getAttributeToSet("energyeffectiveness") == NULL) {
+		if (firstCraftingUpdate) {
 			craftingValues->lockValue("energyeffectiveness");
 		}
 	}
@@ -403,10 +411,10 @@ void ArmorImplementation::setCraftingEnergy(DraftSchematic* draftSchematic) {
 			setEnergy(base);
 		setEnergyIsSpecial(false);
 	} else {
-		if(value + base > 80.0f)
+		if (value + base > 80.0f)
 			setEnergy(80.0f);
 		else
-			if(isComposite())
+			if (isComposite())
 				setEnergy(value + base);
 			else
 				setEnergy(value);
@@ -422,8 +430,8 @@ void ArmorImplementation::setCraftingElectrical(DraftSchematic* draftSchematic) 
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
 	float value = craftingValues->getCurrentValue("electricaleffectiveness");
-	if(draftSchematic->getAttributeToSet("electricaleffectiveness") == NULL) {
-		if(firstCraftingUpdate) {
+	if (draftSchematic->getAttributeToSet("electricaleffectiveness") == NULL) {
+		if (firstCraftingUpdate) {
 			craftingValues->lockValue("electricaleffectiveness");
 		}
 	}
@@ -434,10 +442,10 @@ void ArmorImplementation::setCraftingElectrical(DraftSchematic* draftSchematic) 
 			setElectricity(base);
 		setElectricityIsSpecial(false);
 	} else {
-		if(specialbase + base > 80.0f || value > 80.0f)
+		if (specialbase + base > 80.0f || value > 80.0f)
 			setElectricity(80.0f);
 		else
-			if(isComposite())
+			if (isComposite())
 				setElectricity(specialbase + base);
 			else
 				setElectricity(value);
@@ -453,8 +461,8 @@ void ArmorImplementation::setCraftingStun(DraftSchematic* draftSchematic) {
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
 	float value = craftingValues->getCurrentValue("stuneffectiveness");
-	if(draftSchematic->getAttributeToSet("stuneffectiveness") == NULL) {
-		if(firstCraftingUpdate) {
+	if (draftSchematic->getAttributeToSet("stuneffectiveness") == NULL) {
+		if (firstCraftingUpdate) {
 			craftingValues->lockValue("stuneffectiveness");
 		}
 	} else {
@@ -468,7 +476,7 @@ void ArmorImplementation::setCraftingStun(DraftSchematic* draftSchematic) {
 			setStun(base);
 		setStunIsSpecial(false);
 	} else {
-		if(value + base > 80.f)
+		if (value + base > 80.f)
 			setStun(80.0f);
 		else
 			setStun(value + base);
@@ -484,8 +492,8 @@ void ArmorImplementation::setCraftingBlast(DraftSchematic* draftSchematic) {
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
 	float value = craftingValues->getCurrentValue("blasteffectiveness");
-	if(draftSchematic->getAttributeToSet("blasteffectiveness") == NULL) {
-		if(firstCraftingUpdate) {
+	if (draftSchematic->getAttributeToSet("blasteffectiveness") == NULL) {
+		if (firstCraftingUpdate) {
 			craftingValues->lockValue("blasteffectiveness");
 		}
 	} else {
@@ -499,7 +507,7 @@ void ArmorImplementation::setCraftingBlast(DraftSchematic* draftSchematic) {
 			setBlast(base);
 		setBlastIsSpecial(false);
 	} else {
-		if(value + base > 80.f)
+		if (value + base > 80.f)
 			setBlast(80.0f);
 		else
 			setBlast(value + base);
@@ -515,8 +523,8 @@ void ArmorImplementation::setCraftingHeat(DraftSchematic* draftSchematic) {
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
 	float value = craftingValues->getCurrentValue("heateffectiveness");
-	if(draftSchematic->getAttributeToSet("heateffectiveness") == NULL) {
-		if(firstCraftingUpdate) {
+	if (draftSchematic->getAttributeToSet("heateffectiveness") == NULL) {
+		if (firstCraftingUpdate) {
 			craftingValues->lockValue("heateffectiveness");
 		}
 	} else {
@@ -530,7 +538,7 @@ void ArmorImplementation::setCraftingHeat(DraftSchematic* draftSchematic) {
 			setHeat(base);
 		setHeatIsSpecial(false);
 	} else {
-		if(value + base > 80.f)
+		if (value + base > 80.f)
 			setHeat(80.0f);
 		else
 			setHeat(value + base);
@@ -546,8 +554,8 @@ void ArmorImplementation::setCraftingCold(DraftSchematic* draftSchematic) {
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
 	float value = craftingValues->getCurrentValue("coldeffectiveness");
-	if(draftSchematic->getAttributeToSet("coldeffectiveness") == NULL) {
-		if(firstCraftingUpdate) {
+	if (draftSchematic->getAttributeToSet("coldeffectiveness") == NULL) {
+		if (firstCraftingUpdate) {
 			craftingValues->lockValue("coldeffectiveness");
 		}
 	} else {
@@ -561,7 +569,7 @@ void ArmorImplementation::setCraftingCold(DraftSchematic* draftSchematic) {
 			setCold(base);
 		setColdIsSpecial(false);
 	} else {
-		if(value + base > 80.f)
+		if (value + base > 80.f)
 			setCold(80.0f);
 		else
 			setCold(value + base);
@@ -577,8 +585,8 @@ void ArmorImplementation::setCraftingAcid(DraftSchematic* draftSchematic) {
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
 	float value = craftingValues->getCurrentValue("acideffectiveness");
-	if(draftSchematic->getAttributeToSet("acideffectiveness") == NULL) {
-		if(firstCraftingUpdate) {
+	if (draftSchematic->getAttributeToSet("acideffectiveness") == NULL) {
+		if (firstCraftingUpdate) {
 			craftingValues->lockValue("acideffectiveness");
 		}
 	} else {
@@ -592,7 +600,7 @@ void ArmorImplementation::setCraftingAcid(DraftSchematic* draftSchematic) {
 			setAcid(base);
 		setAcidIsSpecial(false);
 	} else {
-		if(value + base > 80.f)
+		if (value + base > 80.f)
 			setAcid(80.0f);
 		else
 			setAcid(value + base);
@@ -608,8 +616,8 @@ void ArmorImplementation::setCraftingRestrain(DraftSchematic* draftSchematic) {
 	float specialbase = craftingValues->getCurrentValue("specialeffectiveness");
 
 	float value = craftingValues->getCurrentValue("restraineffectiveness");
-	if(draftSchematic->getAttributeToSet("restraineffectiveness") == NULL) {
-		if(firstCraftingUpdate) {
+	if (draftSchematic->getAttributeToSet("restraineffectiveness") == NULL) {
+		if (firstCraftingUpdate) {
 			craftingValues->lockValue("restraineffectiveness");
 		}
 	} else {
@@ -623,7 +631,7 @@ void ArmorImplementation::setCraftingRestrain(DraftSchematic* draftSchematic) {
 			setLightSaber(base);
 		setLightSaberIsSpecial(false);
 	} else {
-		if(value + base > 80.f)
+		if (value + base > 80.f)
 			setLightSaber(80.0f);
 		else
 			setLightSaber(value + base);
@@ -687,7 +695,7 @@ void ArmorImplementation::repairArmor(Player* player) {
 
 	int decayRate = 0;
 
-	stringstream txt;
+	StringBuffer txt;
 
 	if (roll < 10) {
 		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
@@ -706,7 +714,7 @@ void ArmorImplementation::repairArmor(Player* player) {
 		txt << "You have completely repaired the item.";
 	}
 
-	player->sendSystemMessage(txt.str());
+	player->sendSystemMessage(txt.toString());
 
 	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
 	conditionDamage = 0;
@@ -726,7 +734,7 @@ void ArmorImplementation::setArmorStats(int modifier) {
 
 	int maxLevel = 120;
 
-	if(modifier > maxLevel){
+	if (modifier > maxLevel){
 		int diff = System::random(modifier - maxLevel);
 		modifier = maxLevel;
 		modifier += diff;
@@ -748,23 +756,23 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		modifier = modifier + 100;
 		luck = luck + 100;
 
-		stringstream itemText;
-		itemText << "\\#ffff00" << name.c_str() << " (Legendary)";
-		name = unicode(itemText.str());
+		StringBuffer itemText;
+		itemText << "\\#ffff00" << name.toString() << " (Legendary)";
+		name = UnicodeString(itemText.toString());
 	} else if (playerRoll > 55000) {
 		modifier = modifier + 50;
 		luck = luck + 50;
 
-		stringstream itemText;
-		itemText << "\\#ffff00" << name.c_str() << " (Exceptional)";
-		name = unicode(itemText.str());
+		StringBuffer itemText;
+		itemText << "\\#ffff00" << name.toString() << " (Exceptional)";
+		name = UnicodeString(itemText.toString());
 	} else if (playerRoll > 12500) {
 		modifier = modifier + 10;
 		luck = luck + 20;
 
-		stringstream itemText;
-		itemText << "\\#ffff00" << name.c_str();
-		name = unicode(itemText.str());
+		StringBuffer itemText;
+		itemText << "\\#ffff00" << name.toString();
+		name = UnicodeString(itemText.toString());
 	}
 
 	maxCondition = 25000 + (luck * System::random(luck));
@@ -878,7 +886,7 @@ void ArmorImplementation::sliceArmor(Player* player){
 	int min = 0;
 	int max = 0;
 
-	stringstream msg;
+	StringBuffer msg;
 
 	try {
 		wlock();
@@ -940,7 +948,7 @@ void ArmorImplementation::sliceArmor(Player* player){
 		unlock();
 	}
 
-	player->sendSystemMessage(msg.str());
+	player->sendSystemMessage(msg.toString());
 }
 
 int ArmorImplementation::sliceArmorEffectiveness(int min, int max){
@@ -1144,7 +1152,7 @@ int ArmorImplementation::addSkillMod(int skillModType, int skillModValue) {
 }
 
 void ArmorImplementation::addAttributes(AttributeListMessage* alm) {
-	stringstream conditionStr;
+	StringBuffer conditionStr;
 	conditionStr << getCondition() << '/' << maxCondition;
 	alm->insertAttribute("Condition", conditionStr);
 
@@ -1183,95 +1191,95 @@ void ArmorImplementation::addAttributes(AttributeListMessage* alm) {
 
 	//Check for special protections
 	if (kineticIsSpecial && kinetic >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(kinetic) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", txt.str());
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", txt.toString());
 	}
 	if (energyIsSpecial && energy >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(energy) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", txt.str());
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy", txt.toString());
 	}
 	if (electricityIsSpecial && electricity >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(electricity) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", txt.str());
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_electrical", txt.toString());
 	}
 	if (stunIsSpecial && stun >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(stun) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", txt.str());
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun", txt.toString());
 	}
 	if (blastIsSpecial && blast >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(blast) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", txt.str());
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_blast", txt.toString());
 	}
 	if (heatIsSpecial && heat >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(heat) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", txt.str());
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_heat", txt.toString());
 	}
 	if (coldIsSpecial && cold >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(cold) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", txt.str());
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_cold", txt.toString());
 	}
 	if (acidIsSpecial && acid >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(acid) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", txt.str());
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_elemental_acid", txt.toString());
 	}
 	if (lightSaberIsSpecial && lightSaberIsSpecial >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(lightSaber) << "%";
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", txt.str());
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_restraint", txt.toString());
 	}
 	//Check for Effectiveness protections(Normal)
 	if (!kineticIsSpecial && kinetic >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(kinetic) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.str());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic", txt.toString());
 	}
 	if (!energyIsSpecial && energy >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(energy) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.str());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", txt.toString());
 	}
 	if (!electricityIsSpecial && electricity >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(electricity) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.str());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", txt.toString());
 	}
 	if (!stunIsSpecial && stun >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(stun) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.str());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", txt.toString());
 	}
 	if (!blastIsSpecial && blast >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(blast) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.str());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", txt.toString());
 	}
 	if (!heatIsSpecial && heat >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(heat) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.str());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", txt.toString());
 	}
 	if (!coldIsSpecial && cold >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(cold) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.str());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", txt.toString());
 	}
 	if (!acidIsSpecial && acid >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(acid) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.str());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", txt.toString());
 	}
 	if (!lightSaberIsSpecial && lightSaber >= 0.5) {
-		stringstream txt;
+		StringBuffer txt;
 		txt << round(lightSaber) << "%";
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.str());
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.toString());
 	}
 
 	//Vulnerabilities
@@ -1324,9 +1332,9 @@ void ArmorImplementation::addAttributes(AttributeListMessage* alm) {
 
 }
 
-bool ArmorImplementation::isVunerableTo(string damagetype) {
+bool ArmorImplementation::isVunerableTo(String damagetype) {
 
-	if(isComposite() && (damagetype == "restrain" || damagetype == "stun")) {
+	if (isComposite() && (damagetype == "restrain" || damagetype == "stun")) {
 		return true;
 	}
 
@@ -1380,4 +1388,3 @@ void ArmorImplementation::setArmorPiece() {
 
 	setArmorPiece(armorSlot);
 }
-

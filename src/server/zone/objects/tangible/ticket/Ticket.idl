@@ -49,23 +49,23 @@ import "../../player/Player";
 import "../TangibleObject";
 
 interface Ticket implements TangibleObject {
-	Ticket(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn) {
+	Ticket(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(oid, int tp);
 	}
 
-	Ticket(Player player, unsigned int tempCRC, const unicode n, const string tempn, const string dpPlanet, 
-			const string dpPoint, const string arPlanet, const string arPoint) {
+	Ticket(Player player, unsigned int tempCRC, const UnicodeString n, const String tempn, const String dpPlanet, 
+			const String dpPoint, const String arPlanet, const String arPoint) {
 		super(unsigned long oid, int tp);
 	}
 	
 	int useObject(Player player);
 	
-	string getDeparturePlanet();
+	String getDeparturePlanet();
 	
-	string getDeparturePoint();
+	String getDeparturePoint();
 	
-	string getArrivalPlanet();
+	String getArrivalPlanet();
 	
-	string getArrivalPoint();
+	String getArrivalPoint();
 }
 

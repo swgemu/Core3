@@ -68,8 +68,8 @@ public:
 	static const int WEAPON = 7; // Weapon Droid and General Item Crafting Tool
 
 public:
-	CraftingStationImplementation(uint64 object_id, uint32 tempCRC, const unicode& n, const string& tempn);
-	CraftingStationImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn);
+	CraftingStationImplementation(uint64 object_id, uint32 tempCRC, const UnicodeString& n, const String& tempn);
+	CraftingStationImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn);
 
 	~CraftingStationImplementation();
 

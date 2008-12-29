@@ -53,8 +53,8 @@ import "../TangibleObject";
 import "../ticket/Ticket";
 
 interface TicketCollector implements TangibleObject {
-	TicketCollector(ShuttleCreature shutle, unsigned long oid, const unicode n, 
-			const string tempn, float x, float z, float y) {
+	TicketCollector(ShuttleCreature shutle, unsigned long oid, const UnicodeString n, 
+			const String tempn, float x, float z, float y) {
 		super(oid, int tp);
 	}
 	

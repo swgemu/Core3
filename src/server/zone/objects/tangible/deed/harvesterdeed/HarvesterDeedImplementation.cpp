@@ -7,19 +7,22 @@
 #include "../DeedObjectImplementation.h"
 
 
-HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn) :
-	HarvesterDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
+HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn) :
+		HarvesterDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectCRC = tempcrc;
+
 	name = n;
 	templateName = tempn;
 
 	init();
 }
 
-HarvesterDeedImplementation::HarvesterDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn) :
-	HarvesterDeedServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
+HarvesterDeedImplementation::HarvesterDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn) :
+		HarvesterDeedServant(objid, tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectID = objid;
+
 	objectCRC = tempcrc;
+
 	name = n;
 	templateName = tempn;
 
@@ -27,8 +30,8 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(uint64 objid, uint32 te
 }
 
 HarvesterDeedImplementation::~HarvesterDeedImplementation() {
-
 }
+
 void HarvesterDeedImplementation::init() {
 	getType();
 	getSize();
@@ -41,136 +44,135 @@ void HarvesterDeedImplementation::init() {
 		case SMALL:
 			targetTemplate = "small_ore_mine";
 			targetFile = "object/installation/mining_ore/shared_mining_ore_harvester_style_1.iff";
-			targetName = unicode("Personal Mineral Extractor");
-			break;
 
+			targetName = UnicodeString("Personal Mineral Extractor");
+			break;
 		case MEDIUM:
 			targetTemplate = "ore_mine";
 			targetFile
 					= "object/installation/mining_ore/shared_mining_ore_harvester_style_2.iff";
-			targetName = unicode("Mineral Mining Installation");
-			break;
 
+			targetName = UnicodeString("Mineral Mining Installation");
+			break;
 		case LARGE:
 			targetTemplate = "heavy_ore_mine";
 			targetFile
 					= "object/installation/mining_ore/shared_mining_ore_harvester_heavy.iff";
-			targetName = unicode("Heavy Mineral Mining Installation");
-			break;
 
+			targetName = UnicodeString("Heavy Mineral Mining Installation");
+			break;
 		}
+
 		break;
 	case MOISTURE:
-
 		switch (size) {
-
 		case SMALL:
 			targetTemplate = "moisture_mine";
 			targetFile
 					= "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester.iff";
-			targetName = unicode("Personal Moisture Vaporator");
-			break;
 
+			targetName = UnicodeString("Personal Moisture Vaporator");
+			break;
 		case MEDIUM:
 			targetTemplate = "moisture_mine_medium";
 			targetFile
 					= "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_medium.iff";
-			targetName = unicode("Moisture Vaporator");
-			break;
 
+			targetName = UnicodeString("Moisture Vaporator");
+			break;
 		case LARGE:
 			targetTemplate = "moisture_mine_large";
 			targetFile
 					= "object/installation/mining_liquid/shared_mining_liquid_moisture_harvester_heavy.iff";
-			targetName = unicode("High Efficiency Moisture Vaporator");
+
+			targetName = UnicodeString("High Efficiency Moisture Vaporator");
 			break;
-
 		}
-		break;
 
+		break;
 	case LIQUID:
 		switch (size) {
-
 		case SMALL:
 			targetTemplate = "liquid_mine";
 			targetFile
 					= "object/installation/mining_liquid/shared_mining_liquid_harvester_style_1.iff";
-			targetName = unicode("Personal Chemical Extractor");
-			break;
 
+			targetName = UnicodeString("Personal Chemical Extractor");
+			break;
 		case MEDIUM:
 			targetTemplate = "liquid_mine_medium";
 			targetFile = "object/installation/mining_liquid/shared_mining_liquid_harvester_style_2.iff";
-			targetName = unicode("Chemical Extractor");
-			break;
 
+			targetName = UnicodeString("Chemical Extractor");
+			break;
 		case LARGE:
 			targetTemplate = "liquid_mine_large";
 			targetFile = "object/installation/mining_liquid/shared_mining_liquid_harvester_style_3.iff";
-			targetName = unicode("Deep Crust Chemical Extractor");
+
+			targetName = UnicodeString("Deep Crust Chemical Extractor");
 			break;
-
 		}
-		break;
 
+		break;
 	case GAS:
 		switch (size) {
 		case SMALL:
 			targetTemplate = "gas_mine";
 			targetFile
 					= "object/installation/mining_gas/shared_mining_gas_harvester_style_1.iff";
-			targetName = unicode("Personal Natural Gas Processor");
-			break;
 
+			targetName = UnicodeString("Personal Natural Gas Processor");
+			break;
 		case MEDIUM:
 			targetTemplate = "gas_mine_medium";
 			targetFile
 					= "object/installation/mining_gas/shared_mining_gas_harvester_style_2.iff";
-			targetName = unicode("Natural Gas Processor");
-			break;
 
+			targetName = UnicodeString("Natural Gas Processor");
+			break;
 		case LARGE:
 			targetTemplate = "gas_mine_large";
 			targetFile
 					= "object/installation/mining_gas/shared_mining_gas_harvester_style_3.iff";
-			targetName = unicode("Heavy Natural Gas Processor");
+
+			targetName = UnicodeString("Heavy Natural Gas Processor");
 			break;
-
 		}
-		break;
 
+		break;
 	case FLORA:
 		switch (size) {
-	case SMALL:
+		case SMALL:
 			targetTemplate = "flora_farm";
 			targetFile
 					= "object/installation/mining_organic/shared_mining_organic_flora_farm.iff";
-			targetName = unicode("Micro Flora Farm");
-			break;
 
+			targetName = UnicodeString("Micro Flora Farm");
+			break;
 		case MEDIUM:
 			targetTemplate = "flora_farm_medium";
 			targetFile
 					= "object/installation/mining_organic/shared_mining_organic_flora_farm_medium.iff";
-			targetName = unicode("Automated Flora Farm");
-			break;
 
+			targetName = UnicodeString("Automated Flora Farm");
+			break;
 		case LARGE:
 			targetTemplate = "flora_farm_heavy";
 			targetFile
 					= "object/installation/mining_organic/shared_mining_organic_flora_farm_heavy.iff";
-		targetName = unicode("High Capacity Flora Farm");
-			break;
 
+			targetName = UnicodeString("High Capacity Flora Farm");
+			break;
 		}
-		break;
 
+		break;
 	case CREATURE:
-			targetTemplate = "organic_harvester";
-			targetFile
-					= "object/installation/mining_organic/shared_mining_organic_creature_farm.iff";
-			targetName = unicode("Creature Harvester");
-			break;
+		targetTemplate = "organic_harvester";
+		targetFile
+				= "object/installation/mining_organic/shared_mining_organic_creature_farm.iff";
+
+		targetName = UnicodeString("Creature Harvester");
+		break;
 	}
 
 	switch (size) {
@@ -181,7 +183,7 @@ void HarvesterDeedImplementation::init() {
 	case MEDIUM:
 		targetTempFile
 				= "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_2.iff";
-	break;
+		break;
 	case LARGE:
 		targetTempFile
 				= "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_heavy.iff";
@@ -192,7 +194,7 @@ void HarvesterDeedImplementation::init() {
 void HarvesterDeedImplementation::parseItemAttributes() {
 	DeedObjectImplementation::parseItemAttributes();
 
-	string attr = "surplusMaintenance";
+	String attr = "surplusMaintenance";
 	setSurplusMaintenance(itemAttributes->getIntAttribute(attr));
 
 	attr = "surplusPower";
@@ -221,24 +223,24 @@ void HarvesterDeedImplementation::addAttributes(AttributeListMessage* alm) {
 }
 
 void HarvesterDeedImplementation::getType(){
-	if ((templateName.find("ore") != string::npos))
+	if ((templateName.indexOf("ore") != -1))
 		type = ORE;
-	else if ((templateName.find("flora") != string::npos))
+	else if ((templateName.indexOf("flora") != -1))
 		type = FLORA;
-	else if ((templateName.find("gas") != string::npos))
+	else if ((templateName.indexOf("gas") != -1))
 		type = GAS;
-	else if ((templateName.find("liquid") != string::npos))
+	else if ((templateName.indexOf("liquid") != -1))
 		type = LIQUID;
-	else if ((templateName.find("moisture") != string::npos))
+	else if ((templateName.indexOf("moisture") != -1))
 		type = MOISTURE;
-	else if ((templateName.find("creature") != string::npos))
+	else if ((templateName.indexOf("creature") != -1))
 		type = CREATURE;
 }
 
 void HarvesterDeedImplementation::getSize() {
-	if ((templateName.find("heavy") != string::npos))
+	if ((templateName.indexOf("heavy") != -1))
 		size = LARGE;
-	else if ((templateName.find("medium") != string::npos) || (templateName.find("s2") != string::npos))
+	else if ((templateName.indexOf("medium") != -1) || (templateName.indexOf("s2") != -1))
 		size = MEDIUM;
 	else
 		size = SMALL;

@@ -75,12 +75,12 @@ public:
 
 	void init();
 
-	void addMenuItem(const string& name, uint64 objectID = 0) {
+	void addMenuItem(const String& name, uint64 objectID = 0) {
 		SuiListBoxMenuItem* item = new SuiListBoxMenuItem(name, objectID);
 		menuItems.add(item);
 	}
 
-	string& getMenuItemName(int index){
+	String& getMenuItemName(int index){
 		SuiListBoxMenuItem* menuItem = menuItems.get(index);
 		return menuItem->getOptionName();
 	}

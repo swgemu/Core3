@@ -53,7 +53,7 @@ which carries forward this exception.
 
 class TangibleObjectImplementation;
 
-class BlueFrogItemSet : public HashTable<string, Vector<TangibleObject*>*> {
+class BlueFrogItemSet : public HashTable<String, Vector<TangibleObject*>*> {
 	BlueFrogVector* itemList;
 
 public:
@@ -62,7 +62,7 @@ public:
 	}
 
 	~BlueFrogItemSet() {
-		HashTableIterator<string, Vector<TangibleObject*>*> iterator(this);
+		HashTableIterator<String, Vector<TangibleObject*>*> iterator(this);
 
 		iterator.resetIterator();
 
@@ -86,11 +86,11 @@ public:
 		itemList = NULL;
 	}
 
-	int hash(const string& str) {
-		return String::hashCode(str);
+	int hash(const String& str) {
+		return str.hashCode();
 	}
 
-	void addItem(string setName, TangibleObject* item) {
+	void addItem(String setName, TangibleObject* item) {
 		if (containsKey(setName)) {
 			get(setName)->add(item);
 		} else {
@@ -107,7 +107,7 @@ public:
 		return itemList;
 	}
 
-	inline Vector<TangibleObject*>* getItems(string set) {
+	inline Vector<TangibleObject*>* getItems(String set) {
 		return get(set);
 	}
 };

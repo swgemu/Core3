@@ -74,11 +74,15 @@ class PlayerManagerImplementation : public PlayerManagerServant {
 
 	GuildManager* guildManager;
 
+	int xpScale;
+
 private:
 	void loadFromDatabase(Player* player);
 	void loadWaypoints(Player* player);
 	void loadFactionPoints(Player * player);
+	void loadBadges(Player * player);
 	void saveFactionPoints(Player * player);
+	void saveBadges(Player * player);
 
 public:
 	PlayerManagerImplementation(ItemManager* mgr, ZoneProcessServerImplementation* srv);
@@ -95,15 +99,16 @@ public:
 
 	void save(Player* player);
 
-	bool validateName(const string& cname);
+	bool validateName(const String& name);
+	bool hasAdminRights(uint32 characterID);
 
-	BaseMessage* checkPlayerName(const string& name, const string& species);
+	BaseMessage* checkPlayerName(const String& name, const String& species);
 	BaseMessage* attemptPlayerCreation(Player* player, ZoneClientSession* client);
 
 	void doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
 	void doCashTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo);
-	bool modifyOfflineBank(Player* sender, string playerName, uint32 creditAmount);
-	bool modifyRecipientOfflineBank(string recipient, uint32 creditAmount);
+	bool modifyOfflineBank(Player* sender, String playerName, uint32 creditAmount);
+	bool modifyRecipientOfflineBank(String recipient, uint32 creditAmount);
 	void updatePlayerCreditsFromDatabase(Player* player);
 	void updatePlayerCreditsToDatabase(Player* player);
 
@@ -121,6 +126,8 @@ public:
 	void updateConsentList(Player* player);
 
 	void updateOtherFriendlists(Player* player,bool status);
+	void sendUpdateMessagesToFriends(Player* player, bool status);
+	void populateReverseFriendList(Player* player);
 
 	void updateGuildStatus(Player* player);
 
@@ -136,7 +143,7 @@ public:
 		return playerMap;
 	}
 
-	inline Player* getPlayer(string name) {
+	inline Player* getPlayer(String name) {
 		return playerMap->get(name);
 	}
 
@@ -144,12 +151,20 @@ public:
 		return playerMap->put(player->getFirstName(), player);
 	}
 
-	inline Player* removePlayer(string firstname) {
+	inline Player* removePlayer(String firstname) {
 		return playerMap->remove(firstname);
 	}
 
 	inline GuildManager* getGuildManager() {
 		return guildManager;
+	}
+
+	inline void setXpScale(int scale) {
+		xpScale = scale;
+	}
+
+	inline int getXpScale() {
+		return xpScale;
 	}
 };
 

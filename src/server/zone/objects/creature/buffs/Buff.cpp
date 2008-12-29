@@ -150,6 +150,19 @@ bool Buff::activateBuff(CreatureObject* creo, ZoneProcessServerImplementation* s
 		creo->changeMaxFocusBar(getFocusBuff());
 	}
 
+	if(!skillModBuffs.isEmpty()) {
+		String mod = "";
+		int32 value = 0;
+
+		while (skillModBuffs.hasNext()) {
+			mod = skillModBuffs.getNextKey();
+			value = skillModBuffs.get(mod);
+			creo->addSkillModBonus(mod,value,false);
+		}
+
+		skillModBuffs.resetIterator();
+	}
+
 	removeBuffEvent();
 
 	// TODO: Add Skill Mods
@@ -180,7 +193,6 @@ void Buff::downerBuff(CreatureObject* creo) {
 
 	buff->setBuffDowner(true);
 
-	// TODO: Switch Skill Mods?
 	BuffObject* bo = new BuffObject(buff);
 	creo->applyBuff(bo);
 }
@@ -201,16 +213,16 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->changeMaxMindBar(-1 * getMindBuff(), updateClient);
 
 	if (getStrengthBuff() != 0) {
-		//cout << "deActivateBuff (strength max original): " << creo->getStrengthMax() << endl;
+		//System::out << "deActivateBuff (strength max original): " << creo->getStrengthMax() << endl;
 		creo->changeMaxStrengthBar(-1 * getStrengthBuff(), updateClient);
-		//cout << "deActivateBuff (strength max new): " << creo->getStrengthMax() << endl;
+		//System::out << "deActivateBuff (strength max new): " << creo->getStrengthMax() << endl;
 		creo->setStrengthBar(MAX(creo->getStrengthMax() - creo->getConstitutionWounds(), 1));
 	}
 
 	if (getConstitutionBuff() != 0) {
-		//cout << "deActivateBuff (constitution max original): " << creo->getConstitutionMax() << endl;
+		//System::out << "deActivateBuff (constitution max original): " << creo->getConstitutionMax() << endl;
 		creo->changeMaxConstitutionBar(-1 * getConstitutionBuff(), updateClient);
-		//cout << "deActivateBuff (constitution max new): " << creo->getConstitutionMax() << endl;
+		//System::out << "deActivateBuff (constitution max new): " << creo->getConstitutionMax() << endl;
 		creo->setConstitutionBar(MAX(creo->getConstitutionMax() - creo->getConstitutionWounds(), 1));
 	}
 
@@ -224,7 +236,7 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->setQuicknessBar(MAX(creo->getQuicknessMax() - creo->getQuicknessWounds(), 1));
 	}
 
-	if(getWillpowerBuff() != 0) {
+	if (getWillpowerBuff() != 0) {
 		creo->changeMaxWillpowerBar(-1 * getWillpowerBuff(), updateClient);
 		creo->setWillpowerBar(MAX(creo->getWillpowerMax() - creo->getWillpowerWounds(), 1));
 	}
@@ -234,9 +246,36 @@ bool Buff::deActivateBuff(CreatureObject* creo, bool updateClient) {
 		creo->setFocusBar(MAX(creo->getFocusMax() - creo->getFocusWounds(), 1));
 	}
 
+	if(getSkillModBuff("melee_defense") != 0) {
+		creo->showFlyText("trap/trap", "melee_def_1_off", 255, 255, 255);
+	}
+
+	if(getSkillModBuff("ranged_defense") != 0) {
+		creo->showFlyText("trap/trap", "ranged_def_1_off", 255, 255, 255);
+	}
+
+	if(getSkillModBuff("intimidate_defense") != 0) {
+		creo->showFlyText("trap/trap", "melee_ranged_def_1_off", 255, 255, 255);
+	}
+
+	if(getSkillModBuff("stun_defense") != 0) {
+		creo->showFlyText("trap/trap", "state_def_1_off", 255, 255, 255);
+	}
+
 	creo->activateRecovery();
 
-	// TODO: Remove Skill Mods
+	if(!skillModBuffs.isEmpty()) {
+		String mod = "";
+		int32 value = 0;
+
+		while (skillModBuffs.hasNext()) {
+			mod = skillModBuffs.getNextKey();
+			value = skillModBuffs.get(mod);
+			creo->addSkillModBonus(mod,(-1 *value),false);
+		}
+
+		skillModBuffs.resetIterator();
+	}
 
 	removeBuffEvent();
 

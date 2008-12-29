@@ -45,10 +45,10 @@ which carries forward this exception.
 interface AuctionItem implements ManagedObject {
 	AuctionItem(unsigned long objectid);
 	
-	AuctionItem(unsigned long objectid, string name, int itemprice, int time, 
-			boolean isauction, int type, string owner); 
+	AuctionItem(unsigned long objectid, String name, int itemprice, int time, 
+			boolean isauction, int type, String owner); 
 
-	void setLocation(string planet, string header, unsigned long vendorid, int x, int z, boolean vendor);
+	void setLocation(String planet, String header, unsigned long vendorid, int x, int z, boolean vendor);
 
 	// getters
 	int getPlanet();
@@ -57,13 +57,13 @@ interface AuctionItem implements ManagedObject {
 	
 	unsigned long getOwnerID();
 
-	string getTerminalTitle();
+	String getTerminalTitle();
 	
-	string getOwnerName();
+	String getOwnerName();
 
 	unsigned long getBuyerID();
 
-	string getBidderName();
+	String getBidderName();
 
 	unsigned int getItemType();	
 	
@@ -73,7 +73,7 @@ interface AuctionItem implements ManagedObject {
 	
 	boolean getAuction();
 
-	string getLocation();
+	String getLocation();
 
 	int getPrice();
 
@@ -81,22 +81,22 @@ interface AuctionItem implements ManagedObject {
 	
 	int getOwnerPointer();
 	
-	string getItemDescription();
+	String getItemDescription();
 
-	string getItemName();
+	String getItemName();
 
 	unsigned int getExpireTime();
 	
 	// setters
 	void setOwnerID(unsigned long ownerid);
 
-	void setOwnerName(const string name);
+	void setOwnerName(const String name);
 
 	void setVendorID(unsigned long vid);
 	
 	void setPlanet(int planet);
 
-	void setBidderName(const string name);
+	void setBidderName(const String name);
 
 	void setSold(boolean sld);
 	
@@ -104,9 +104,9 @@ interface AuctionItem implements ManagedObject {
 
 	void setItemType(int type);
 	
-	void setItemName(const string name);
+	void setItemName(const String name);
 	
-	void setItemDescription(const string description);
+	void setItemDescription(const String description);
 	
 	void setPrice(int prc);
 

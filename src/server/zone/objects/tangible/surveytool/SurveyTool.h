@@ -19,9 +19,9 @@ class TangibleObject;
 
 class SurveyTool : public TangibleObject {
 public:
-	SurveyTool(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn);
+	SurveyTool(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	SurveyTool(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn);
+	SurveyTool(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
 	int useObject(Player* player);
 
@@ -37,9 +37,9 @@ public:
 
 	void sendSampleEffect(Player* player);
 
-	void surveyRequest(Player* player, string& resourceName);
+	void surveyRequest(Player* player, String& resourceName);
 
-	void sampleRequest(Player* player, string& resourceName);
+	void sampleRequest(Player* player, String& resourceName);
 
 protected:
 	SurveyTool(DummyConstructorParameter* param);
@@ -71,13 +71,13 @@ public:
 
 	void sendSampleEffect(Player* player);
 
-	void surveyRequest(Player* player, string& resourceName);
+	void surveyRequest(Player* player, String& resourceName);
 
-	void sampleRequest(Player* player, string& resourceName);
+	void sampleRequest(Player* player, String& resourceName);
 
 protected:
-	string _param1_surveyRequest__Player_string_;
-	string _param1_sampleRequest__Player_string_;
+	String _param1_surveyRequest__Player_String_;
+	String _param1_sampleRequest__Player_String_;
 };
 
 class SurveyToolHelper : public DistributedObjectClassHelper, public Singleton<SurveyToolHelper> {
@@ -102,8 +102,8 @@ public:
 	SurveyTool* _this;
 
 public:
-	SurveyToolServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
-	SurveyToolServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	SurveyToolServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	SurveyToolServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	virtual ~SurveyToolServant();
 
 	void _setStub(DistributedObjectStub* stub);

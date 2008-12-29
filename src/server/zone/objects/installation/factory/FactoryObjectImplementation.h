@@ -33,7 +33,7 @@ public:
 	// Attribute Setters
 	inline void setHopperSizeMax(float size) {
 		hopperSizeMax = size;
-		string attr("hopperSizeMax");
+		String attr("hopperSizeMax");
 		itemAttributes->setFloatAttribute(attr, (float)hopperSizeMax);
 	}
 

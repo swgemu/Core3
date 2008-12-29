@@ -33,7 +33,15 @@ public:
 
 	void openTo(Player* player);
 
+	void sendItemsTo(Player* player);
+
 	bool isEmpty();
+
+	int getSlots();
+
+	void setSlots(int attributeSlots);
+
+	void generateAttributes(SceneObject* obj);
 
 protected:
 	Container(DummyConstructorParameter* param);
@@ -65,7 +73,15 @@ public:
 
 	void openTo(Player* player);
 
+	void sendItemsTo(Player* player);
+
 	bool isEmpty();
+
+	int getSlots();
+
+	void setSlots(int attributeSlots);
+
+	void generateAttributes(SceneObject* obj);
 
 };
 

@@ -19,11 +19,11 @@ class TangibleObject;
 
 class Pharmaceutical : public TangibleObject {
 public:
-	Pharmaceutical(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
+	Pharmaceutical(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 
-	Pharmaceutical(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
+	Pharmaceutical(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 
-	Pharmaceutical(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype);
+	Pharmaceutical(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype);
 
 	void sendDeltas(Player* player);
 

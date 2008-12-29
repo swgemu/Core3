@@ -57,7 +57,7 @@ interface RegionBazaar implements SceneObject {
 	
 	boolean removeItem(unsigned long objectid);
 	
-	void setRegion(string region);
+	void setRegion(String region);
 	
 	void setManager(BazaarPlanetManager manager);
 	

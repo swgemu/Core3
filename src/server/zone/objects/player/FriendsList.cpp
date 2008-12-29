@@ -28,7 +28,7 @@ FriendsList::FriendsList(DummyConstructorParameter* param) {
 FriendsList::~FriendsList() {
 }
 
-void FriendsList::addFriend(string& name, string& inServer) {
+void FriendsList::addFriend(String& name, String& inServer) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -54,7 +54,7 @@ void FriendsList::friendsMagicNumberReset() {
 		((FriendsListImplementation*) _impl)->friendsMagicNumberReset();
 }
 
-void FriendsList::removeFriend(string& name) {
+void FriendsList::removeFriend(String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -67,7 +67,7 @@ void FriendsList::removeFriend(string& name) {
 		((FriendsListImplementation*) _impl)->removeFriend(name);
 }
 
-void FriendsList::findFriend(string& name, PlayerManager* playerManager) {
+void FriendsList::findFriend(String& name, PlayerManager* playerManager) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -154,7 +154,7 @@ int FriendsList::getMagicNumber() {
 		return ((FriendsListImplementation*) _impl)->getMagicNumber();
 }
 
-string& FriendsList::getFriendsName(const int i) {
+String& FriendsList::getFriendsName(const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -168,7 +168,7 @@ string& FriendsList::getFriendsName(const int i) {
 		return ((FriendsListImplementation*) _impl)->getFriendsName(i);
 }
 
-string& FriendsList::getFriendsServer(const int i) {
+String& FriendsList::getFriendsServer(const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -194,16 +194,16 @@ Packet* FriendsListAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 
 	switch (methid) {
 	case 6:
-		addFriend(inv->getAsciiParameter(_param0_addFriend__string_string_), inv->getAsciiParameter(_param1_addFriend__string_string_));
+		addFriend(inv->getAsciiParameter(_param0_addFriend__String_String_), inv->getAsciiParameter(_param1_addFriend__String_String_));
 		break;
 	case 7:
 		friendsMagicNumberReset();
 		break;
 	case 8:
-		removeFriend(inv->getAsciiParameter(_param0_removeFriend__string_));
+		removeFriend(inv->getAsciiParameter(_param0_removeFriend__String_));
 		break;
 	case 9:
-		findFriend(inv->getAsciiParameter(_param0_findFriend__string_PlayerManager_), (PlayerManager*) inv->getObjectParameter());
+		findFriend(inv->getAsciiParameter(_param0_findFriend__String_PlayerManager_), (PlayerManager*) inv->getObjectParameter());
 		break;
 	case 10:
 		saveFriends();
@@ -236,7 +236,7 @@ Packet* FriendsListAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	return resp;
 }
 
-void FriendsListAdapter::addFriend(string& name, string& inServer) {
+void FriendsListAdapter::addFriend(String& name, String& inServer) {
 	return ((FriendsListImplementation*) impl)->addFriend(name, inServer);
 }
 
@@ -244,11 +244,11 @@ void FriendsListAdapter::friendsMagicNumberReset() {
 	return ((FriendsListImplementation*) impl)->friendsMagicNumberReset();
 }
 
-void FriendsListAdapter::removeFriend(string& name) {
+void FriendsListAdapter::removeFriend(String& name) {
 	return ((FriendsListImplementation*) impl)->removeFriend(name);
 }
 
-void FriendsListAdapter::findFriend(string& name, PlayerManager* playerManager) {
+void FriendsListAdapter::findFriend(String& name, PlayerManager* playerManager) {
 	return ((FriendsListImplementation*) impl)->findFriend(name, playerManager);
 }
 
@@ -276,11 +276,11 @@ int FriendsListAdapter::getMagicNumber() {
 	return ((FriendsListImplementation*) impl)->getMagicNumber();
 }
 
-string& FriendsListAdapter::getFriendsName(const int i) {
+String& FriendsListAdapter::getFriendsName(const int i) {
 	return ((FriendsListImplementation*) impl)->getFriendsName(i);
 }
 
-string& FriendsListAdapter::getFriendsServer(const int i) {
+String& FriendsListAdapter::getFriendsServer(const int i) {
 	return ((FriendsListImplementation*) impl)->getFriendsServer(i);
 }
 

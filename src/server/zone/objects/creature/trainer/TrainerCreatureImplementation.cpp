@@ -63,9 +63,9 @@ TrainerCreatureImplementation::TrainerCreatureImplementation(uint64 oid, Profess
 	creatureBitmask = 0x108;
 	pvpStatusBitmask = 0;
 
-	stringstream loggingname;
+	StringBuffer loggingname;
 	loggingname << "Trainer = 0x" << oid;
-	setLoggingName(loggingname.str());
+	setLoggingName(loggingname.toString());
 	
 	setLogging(false);
 	setGlobalLogging(true);
@@ -95,7 +95,7 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	player->setLastNpcConvMessStr("");
 
 	for (int i = 0; (qual == true) && (i < sBox->getRequiredSkillsSize()); i++) {
-		string skillname;
+		String skillname;
 		sBox->getRequiredSkill(skillname, i);
 		if(!player->hasSkillBox(skillname))
 			qual = false;
@@ -108,10 +108,10 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 		suiBox->setPromptTitle("@skill_teacher:no_qualify_title");
 		suiBox->setPromptText("@skill_teacher:no_qualify_prompt");
 		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {
-			stringstream skillboxname;
+			StringBuffer skillboxname;
 			skillboxname << "@skl_n:" << sBox->getRequiredSkill(j)->getName();
 			
-			suiBox->addMenuItem(skillboxname.str());
+			suiBox->addMenuItem(skillboxname.toString());
 		}
 
 		player->addSuiBox(suiBox);
@@ -149,7 +149,7 @@ void TrainerCreatureImplementation::sendInitialChoices(Player* player) {
 void TrainerCreatureImplementation::sendSkillBoxes(Player* player, bool checkXp) {
 	StringList* slist = new StringList(player);
 	Vector<SkillBox*>* skillBoxes = profession->getSkillBoxes();
-	string option;
+	String option;
 	int known = 0;
 	
 	player->clearLastNpcConvOptions();
@@ -167,7 +167,7 @@ void TrainerCreatureImplementation::sendSkillBoxes(Player* player, bool checkXp)
 			qual = false;
 
 		for (int j = 0; (qual == true) && (j < skillBox->getRequiredSkillsSize()); j++) {
-			string skillname;
+			String skillname;
 			skillBox->getRequiredSkill(skillname, j);
 
 			if (!player->hasSkillBox(skillname))
@@ -199,7 +199,7 @@ void TrainerCreatureImplementation::sendSkillBoxes(Player* player, bool checkXp)
 	player->sendMessage(m2);
 
 	slist->insertOption("skill_teacher","back");
-	player->addLastNpcConvOptions(string("back"));
+	player->addLastNpcConvOptions(String("back"));
 	player->sendMessage(slist);
 }
 
@@ -215,7 +215,7 @@ void TrainerCreatureImplementation::sendSkillBoxList(Player* player, bool checkL
 		player->addLastNpcConvOptions(skillBox->getName());
 	}
 	
-	string option;
+	String option;
 	if (checkLearned) {
 		option = "msg2_3";
 		player->setLastNpcConvMessStr("trainer_unlearned");
@@ -226,7 +226,7 @@ void TrainerCreatureImplementation::sendSkillBoxList(Player* player, bool checkL
 	
 	NpcConversationMessage* m3 = new NpcConversationMessage(player, "skill_teacher", option);
 	slist->insertOption("skill_teacher","back");
-	player->addLastNpcConvOptions(string("back"));
+	player->addLastNpcConvOptions(String("back"));
 	player->sendMessage(slist);
 } 
 
@@ -249,9 +249,14 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 		return;
 	
 	Vector<SkillBox*>* skillBoxes = profession->getSkillBoxes();
-	string choice;
-	if (player->countLastNpcConvOptions() > 0)
-		choice = player->getLastNpcConvOption(option);
+	
+	String choice;
+	if (player->countLastNpcConvOptions() > 0) {
+		if (player->getLastNpcConvMessStr() == "trainer_learn")
+			choice = player->getLastNpcConvOption(0);
+		else
+			choice = player->getLastNpcConvOption(option);
+	}
 	player->clearLastNpcConvOptions();
 	
 	if (player->getLastNpcConvMessStr() == "trainer_initial") {
@@ -308,7 +313,7 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 		}
 	} else if (player->getLastNpcConvMessStr() == "trainer_learn") {
 		SkillBox* sBox;
-		string optionmessage;
+		String optionmessage;
 		StfParameter* params = new StfParameter();
 		int money;
 

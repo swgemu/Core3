@@ -15,9 +15,9 @@ class JediWeapon;
 
 class TwoHandedJediWeapon : public JediWeapon {
 public:
-	TwoHandedJediWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp = false);
+	TwoHandedJediWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
-	TwoHandedJediWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp = false);
+	TwoHandedJediWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp = false);
 
 protected:
 	TwoHandedJediWeapon(DummyConstructorParameter* param);
@@ -59,8 +59,8 @@ public:
 	TwoHandedJediWeapon* _this;
 
 public:
-	TwoHandedJediWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp);
-	TwoHandedJediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp);
+	TwoHandedJediWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp);
+	TwoHandedJediWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp);
 	virtual ~TwoHandedJediWeaponServant();
 
 	void _setStub(DistributedObjectStub* stub);

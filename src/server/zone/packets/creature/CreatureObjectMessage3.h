@@ -63,7 +63,7 @@ public:
 
 		insertInt(0x0085E5CA); // Volume
 
-		string appearance;
+		String appearance;
 		creo->getCharacterAppearance(appearance);
 		insertAscii(appearance);
 

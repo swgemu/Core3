@@ -700,28 +700,6 @@ doabaNpc30 = Creature:new {
 	cellID = 0
 }
 
-doabaNpc31 = Creature:new {
-	objectName = "doabaNpc31",
-	creatureType = NPC,
-
-	speciesName = "corellia_gwhirrye_baric",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 454087031,
-	positionX = 3276.87,
-	positionY = 5384.97,
-	positionZ = 300,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.928181,
-	directionW = 0.372128,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 doabaNpc32 = Creature:new {
 	objectName = "doabaNpc32",
 	creatureType = NPC,
@@ -830,28 +808,6 @@ doabaNpc37 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 4345354
-}
-
-doabaNpc38 = Creature:new {
-	objectName = "doabaNpc38",
-	creatureType = NPC,
-
-	speciesName = "corellia_captain_baize",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 466282881,
-	positionX = 3178.36,
-	positionY = 5371.88,
-	positionZ = 300,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.812884,
-	directionW = -0.582426,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
 }
 
 doabaNpc39 = Creature:new {
@@ -1015,7 +971,7 @@ doabaNpc46 = Creature:new {
 	speciesName = "bartender",
 	combatFlags = 0,
 	creatureBitmask = 264,
-	stfName = "mob/creature_names",
+	stfName = "npc_name",
 	objectCRC = 675581684,
 	positionX = -4.00542,
 	positionY = -2.41,
@@ -1360,28 +1316,6 @@ doabaNpc61 = Creature:new {
 	cellID = 0
 }
 
-doabaNpc62 = Creature:new {
-	objectName = "doabaNpc62",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3750712439,
-	positionX = 3048.33,
-	positionY = 5196.77,
-	positionZ = 300,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.663651,
-	directionW = 0.748043,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 doabaNpc63 = Creature:new {
 	objectName = "doabaNpc63",
 	creatureType = NPC,
@@ -1426,28 +1360,6 @@ doabaNpc64 = Creature:new {
 	cellID = 0
 }
 
-doabaNpc65 = Creature:new {
-	objectName = "doabaNpc65",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1875886160,
-	positionX = 3120.48,
-	positionY = 5138.5,
-	positionZ = 300,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.996663,
-	directionW = -0.0816214,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 doabaNpc66 = Creature:new {
 	objectName = "doabaNpc66",
 	creatureType = NPC,
@@ -1465,28 +1377,6 @@ doabaNpc66 = Creature:new {
 	directionZ = 0,
 	directionY = -0.599489,
 	directionW = 0.800383,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc67 = Creature:new {
-	objectName = "doabaNpc67",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_thief_5",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1875886160,
-	positionX = 3103.26,
-	positionY = 5141.58,
-	positionZ = 300,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = -0.641845,
-	directionW = 0.766835,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -1888,28 +1778,6 @@ doabaNpc87 = Creature:new {
 	cellID = 0
 }
 
-doabaNpc88 = Creature:new {
-	objectName = "doabaNpc88",
-	creatureType = NPC,
-
-	speciesName = "corellia_lilith_laughlin",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1520469080,
-	positionX = 3084.07,
-	positionY = 4979.36,
-	positionZ = 279.996,
-
-	directionX = -0.000364349,
-	directionZ = 8.2989e-06,
-	directionY = 0.0227715,
-	directionW = 0.999741,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 doabaNpc89 = Creature:new {
 	objectName = "doabaNpc89",
 	creatureType = NPC,
@@ -1927,28 +1795,6 @@ doabaNpc89 = Creature:new {
 	directionZ = 0,
 	directionY = 0.253035,
 	directionW = 0.967457,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc90 = Creature:new {
-	objectName = "doabaNpc90",
-	creatureType = NPC,
-
-	speciesName = "disappear_angela",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3852856398,
-	positionX = 3166.38,
-	positionY = 4989.97,
-	positionZ = 290,
-
-	directionX = 0,
-	directionZ = -0,
-	directionY = 0.687814,
-	directionW = 0.725887,
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 0
@@ -2194,204 +2040,6 @@ doabaNpc101 = Creature:new {
 	randomMovement = 0,
 	mood = "calm",
 	cellID = 3055767
-}
-
-doabaNpc102 = Creature:new {
-	objectName = "doabaNpc102",
-	creatureType = NPC,
-
-	speciesName = "corellia_ragtag_cudgel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1794187804,
-	positionX = 3260.62,
-	positionY = 4987.67,
-	positionZ = 290,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.436502,
-	directionW = 0.899703,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc103 = Creature:new {
-	objectName = "doabaNpc103",
-	creatureType = NPC,
-
-	speciesName = "corellia_ragtag_cudgel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 725530518,
-	positionX = 3218.73,
-	positionY = 4926.53,
-	positionZ = 292.197,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999973,
-	directionW = 0.0073284,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc104 = Creature:new {
-	objectName = "doabaNpc104",
-	creatureType = NPC,
-
-	speciesName = "corellia_ragtag_ventil_tamplin",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4274430150,
-	positionX = 3244.74,
-	positionY = 4941.27,
-	positionZ = 290.107,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = -0.310531,
-	directionW = 0.950563,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc105 = Creature:new {
-	objectName = "doabaNpc105",
-	creatureType = NPC,
-
-	speciesName = "corellia_ragtag_cudgel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3651467751,
-	positionX = 3258.27,
-	positionY = 4963.72,
-	positionZ = 290,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.972536,
-	directionW = -0.232752,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc106 = Creature:new {
-	objectName = "doabaNpc106",
-	creatureType = NPC,
-
-	speciesName = "corellia_ragtag_cudgel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 181687135,
-	positionX = 3242.42,
-	positionY = 4952.31,
-	positionZ = 290,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.832636,
-	directionW = 0.553821,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc107 = Creature:new {
-	objectName = "doabaNpc107",
-	creatureType = NPC,
-
-	speciesName = "corellia_ragtag_cudgel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1020849451,
-	positionX = 3257.43,
-	positionY = 4977.08,
-	positionZ = 290,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.966906,
-	directionW = 0.255134,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc108 = Creature:new {
-	objectName = "doabaNpc108",
-	creatureType = NPC,
-
-	speciesName = "corellia_ragtag_cudgel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 194053329,
-	positionX = 3263.11,
-	positionY = 4965.73,
-	positionZ = 290,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.999419,
-	directionW = -0.0340857,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc109 = Creature:new {
-	objectName = "doabaNpc109",
-	creatureType = NPC,
-
-	speciesName = "corellia_ragtag_cudgel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 3206502581,
-	positionX = 3245.42,
-	positionY = 4956.73,
-	positionZ = 290,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.334728,
-	directionW = 0.942315,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-doabaNpc110 = Creature:new {
-	objectName = "doabaNpc110",
-	creatureType = NPC,
-
-	speciesName = "corellia_ragtag_cudgel",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 41146771,
-	positionX = 3219.78,
-	positionY = 4932.78,
-	positionZ = 290,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.439215,
-	directionW = 0.898382,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
 }
 
 doabaNpc111 = Creature:new {

@@ -57,8 +57,6 @@ which carries forward this exception.
 #include "professions/SkillBox.h"
 #include "professions/XpMap.h"
 
-#include "badges/Badges.h"
-
 #include "../terrain/RegionNames.h"
 
 #include "sui/SuiBoxImplementation.h"
@@ -79,6 +77,9 @@ which carries forward this exception.
 #include "faction/FactionRankTable.h"
 #include "faction/FactionPointList.h"
 
+#include "../../managers/player/PlayerManager.h"
+#include "badges/Badges.h"
+
 class PlayerManager;
 class ItemManager;
 class ProfessionManager;
@@ -90,7 +91,11 @@ class PlayerRecoveryEvent;
 class PlayerDigestEvent;
 class CenterOfBeingEvent;
 class PowerboostEventWane;
-class PowerboostEventEnd;
+class PlayerDisconnectEvent;
+class PlayerLogoutEvent;
+class PlayerResurrectEvent;
+class ForageDelayEvent;
+class ForageZone;
 
 class Datapad;
 
@@ -99,6 +104,8 @@ class Guild;
 class Certification;
 
 class ResourceContainer;
+
+class ActiveArea;
 
 class PlayerImplementation : public PlayerServant {
 	ReferenceSlot<ZoneClientSession> owner;
@@ -109,29 +116,31 @@ class PlayerImplementation : public PlayerServant {
 	uint64 characterID;
 	uint64 baseID;
 
-	string firstName;
-	string lastName;
+	String firstName;
+	String lastName;
 
-	string firstNameProper;
+	String firstNameProper;
 
-	string raceFile; //race iff, defines the race file of the character being created.
+	String raceFile; //race iff, defines the race file of the character being created.
 	uint8 raceID;
 
-	string startingLocation; //start location iff string
-	string startingProfession; //starting profession string
+	String startingLocation; //start location iff String
+	String startingProfession; //starting profession String
 
-	unicode biography; //char biography
+	UnicodeString biography; //char biography
 
 	// player objects
 	PlayerObject* playerObject;
 	Datapad* datapad;
+	EquippedItems* equippedItems;
 
 	Vector<CommandQueueAction*> commandQueue;
 	Time nextAction;
+	Time nextTip;
 
-	Event* disconnectEvent;
-	Event* logoutEvent;
-	Event* resurrectEvent;
+	PlayerDisconnectEvent* disconnectEvent;
+	PlayerLogoutEvent* logoutEvent;
+	PlayerResurrectEvent* resurrectEvent;
 
 	PlayerSaveStateEvent* playerSaveStateEvent;
 
@@ -157,10 +166,21 @@ class PlayerImplementation : public PlayerServant {
 	// Profession stuff
 	SkillBoxMap skillBoxes;
 	SortedVector<SkillBox*> skillBoxesToSave;
-	VectorMap<string, Certification*> certificationList;
-	VectorMap<string, int> xpCapList;
+	VectorMap<String, Certification*> certificationList;
+	VectorMap<String, int> xpCapList;
 	int skillPoints;
 	int playerLevel;
+
+	// Foraging
+	bool foraging;
+	int giveReg;
+	int giveBonus;
+	int foragePlanet;
+	float forageX;
+	float forageY;
+	ForageDelayEvent* forageDelayEvent;
+	Vector<ForageZone*> forageZones;
+	Vector<ForageZone*> medForageZones;
 
 	// Draft Schematics
 	uint32 draftSchematicUpdateCount;
@@ -180,8 +200,6 @@ class PlayerImplementation : public PlayerServant {
 	//guild permissions
 	uint32 guildPermissionsBitmask;
 
-	Badges badges;
-
 	float clonePositionX;
 	float clonePositionY;
 
@@ -190,12 +208,12 @@ class PlayerImplementation : public PlayerServant {
 	bool guildLeader;
 
 	bool centered;
-	CenterOfBeingEvent* centerOfBeingEvent;
 
 	bool powerboosted;
 
+	CenterOfBeingEvent* centerOfBeingEvent;
+
 	PowerboostEventWane* powerboostEventWane;
-	PowerboostEventEnd* powerboostEventEnd;
 
 
 	float lastTestPositionX;
@@ -217,8 +235,11 @@ class PlayerImplementation : public PlayerServant {
 	// mission vars
 	uint32 misoRFC;
 	int misoBSB; //mission baseline send bitmask
-	string curMisoKeys; //mission keys the player is currently on
-	string finMisoKeys; //mission keys the player has completed.
+
+	String curMisoKeys; //mission keys the player is currently on
+	String finMisoKeys; //mission keys the player has completed.
+
+	VectorMap<String, String> missionSaveList;
 
 	// Entertainer - Dance + Music
 	Event* entertainerEvent;
@@ -236,7 +257,7 @@ class PlayerImplementation : public PlayerServant {
 	// SuiEvents
 	VectorMap<uint32, SuiBox*> suiBoxes;
 	uint32 suiBoxNextID;
-	string inputBoxReturnBuffer;
+	String inputBoxReturnBuffer;
 	SuiListBoxVector* suiChoicesList;
 
 	uint64 resourceDeedID;
@@ -244,9 +265,9 @@ class PlayerImplementation : public PlayerServant {
 	uint64 currentStructureID;
 
 	//npc conversation
-	string lastNpcConvoMessage;
-	string lastNpcConvo;
-	Vector<string> lastNpcConvoOptions;
+	String lastNpcConvoMessage;
+	String lastNpcConvo;
+	Vector<String> lastNpcConvoOptions;
 
 	// Stat Migration Targets
 	uint32 targetHealth;
@@ -259,7 +280,7 @@ class PlayerImplementation : public PlayerServant {
 	uint32 targetFocus;
 	uint32 targetWillpower;
 
-	Vector<string> consentList;
+	Vector<String> consentList;
 
 	uint16 characterMask;
 
@@ -270,7 +291,8 @@ class PlayerImplementation : public PlayerServant {
 	Player* teachingTrainer;
 	SkillBox* teachingOffer;
 
-	EquippedItems* equippedItems;
+	ActiveArea * activeArea;
+	Badges * badges;
 
 public:
 	static const int ONLINE = 1;
@@ -278,6 +300,7 @@ public:
 	static const int LINKDEAD = 3;
 	static const int LOGGINGIN = 4;
 	static const int LOGGINGOUT = 5;
+	static const int LOADING = 6;
 
 	static const int CSR = 1;
 	static const int DEVELOPER = 2;
@@ -356,6 +379,18 @@ public:
 		resurrectEvent = NULL;
 	}
 
+	void clearDigestEvent() {
+		digestEvent = NULL;
+	}
+
+	void clearRecoveryEvent() {
+		recoveryEvent = NULL;
+	}
+
+	void clearSaveStateEvent() {
+		playerSaveStateEvent = NULL;
+	}
+
 	void createItems();
 	void loadItems();
 
@@ -367,6 +402,7 @@ public:
 
 	void decayInventory();
 	void resetArmorEncumbrance();
+	void unsetArmorEncumbrance(Armor* armor);
 
 	void makeCharacterMask();
 
@@ -502,10 +538,10 @@ public:
 
 	void notifySceneReady();
 
-	void sendSystemMessage(const string& message);
-	void sendSystemMessage(const string& file, const string& str, uint64 targetid = 0);
-	void sendSystemMessage(const string& file, const string& str, StfParameter * param);
-	void sendSystemMessage(unicode& message);
+	void sendSystemMessage(const String& message);
+	void sendSystemMessage(const String& file, const String& str, uint64 targetid = 0);
+	void sendSystemMessage(const String& file, const String& str, StfParameter * param);
+	void sendSystemMessage(UnicodeString& message);
 
 	//Medic & Doctor System Messages
 	void sendBattleFatigueMessage(CreatureObject* target);
@@ -515,11 +551,23 @@ public:
 	void addDatapadItem(SceneObject* item);
 	SceneObject* getDatapadItem(uint64 oid);
 	void removeDatapadItem(uint64 oid);
+
 	void addInventoryItem(TangibleObject* item);
 	void addInventoryResource(ResourceContainer* item);
 	void equipPlayerItem(TangibleObject* item, bool updateLevel = true);
+
 	SceneObject* getPlayerItem(uint64 oid);
+
 	bool hasItemPermission(TangibleObject* item);
+
+	inline void updateNextTipTime() {
+		nextTip.update();
+		nextTip.addMiliTime(10000);
+	}
+
+	inline bool canTip() {
+		return nextTip.isPast();
+	}
 
 	void setPlayerLevel(bool updateLevel);
 
@@ -572,11 +620,11 @@ public:
 		return verifiedTrade;
 	}
 
-	void setInputBoxReturnBuffer(const string& message) {
+	void setInputBoxReturnBuffer(const String& message) {
 		inputBoxReturnBuffer = message;
 	}
 
-	inline string& getInputBoxReturnBuffer() {
+	inline String& getInputBoxReturnBuffer() {
 		return inputBoxReturnBuffer;
 	}
 
@@ -585,55 +633,55 @@ public:
 	// Stat Migration Targets
 	// HAM getters
 	inline uint32 getTargetHealth() {
-		if(targetHealth == 0)
+		if (targetHealth == 0)
 			targetHealth = getBaseHealth();
 		return targetHealth;
 	}
 
 	inline uint32 getTargetStrength() {
-		if(targetStrength == 0)
+		if (targetStrength == 0)
 			targetStrength = getBaseStrength();
 		return targetStrength;
 	}
 
 	inline uint32 getTargetConstitution() {
-		if(targetConstitution == 0)
+		if (targetConstitution == 0)
 			targetConstitution = getBaseConstitution();
 		return targetConstitution;
 	}
 
 	inline uint32 getTargetAction() {
-		if(targetAction == 0)
+		if (targetAction == 0)
 			targetAction = getBaseAction();
 		return targetAction;
 	}
 
 	inline uint32 getTargetQuickness() {
-		if(targetQuickness == 0)
+		if (targetQuickness == 0)
 			targetQuickness = getBaseQuickness();
 		return targetQuickness;
 	}
 
 	inline uint32 getTargetStamina() {
-		if(targetStamina == 0)
+		if (targetStamina == 0)
 			targetStamina = getBaseStamina();
 		return targetStamina;
 	}
 
 	inline uint32 getTargetMind() {
-		if(targetMind == 0)
+		if (targetMind == 0)
 			targetMind = getBaseMind();
 		return targetMind;
 	}
 
 	inline uint32 getTargetFocus() {
-		if(targetFocus == 0)
+		if (targetFocus == 0)
 			targetFocus = getBaseFocus();
 		return targetFocus;
 	}
 
 	inline uint32 getTargetWillpower() {
-		if(targetWillpower == 0)
+		if (targetWillpower == 0)
 			targetWillpower = getBaseWillpower();
 		return targetWillpower;
 	}
@@ -676,8 +724,8 @@ public:
 	}
 
 	// combat methods
-	void queueFlourish(const string& modifier, uint64 target, uint32 actionCntr);
-	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const string& amod);
+	void queueFlourish(const String& modifier, uint64 target, uint32 actionCntr);
+	void queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const String& amod);
 
 	bool doAction(CommandQueueAction* action);
 
@@ -690,8 +738,10 @@ public:
 	void activateQueueAction(CommandQueueAction* action = NULL);
 
 	void activateRecovery();
+	void activateSaveStateEvent();
 
 	void rescheduleRecovery(int time = 3000);
+	void rescheduleSaveStateEvent(int time);
 
 	void doRecovery();
 	void doStateRecovery();
@@ -702,7 +752,8 @@ public:
 	void doCenterOfBeing();
 	void removeCenterOfBeing();
 
-	void doPowerboost();
+	bool doPowerboost();
+	void removePowerboost();
 
 	void doPeace();
 
@@ -724,10 +775,19 @@ public:
 
 	void sendConsentBox();
 
-	inline bool hasConsent(string name) {
-		String::toLower(name);
+	//Foraging
+	void startForaging(int foragetype);
+	void finishForaging(int foragetype);
+	bool forageMoveCheck(float startx, float starty, int startplanet);
+	bool forageZoneCheck(int foragetype);
+	int lottery(int mytickets, int totaltickets);
+	bool discardForageItems();
+	void giveForageItems(int foragetype);
 
-		for (int i=0; i<consentList.size(); i++) {
+	inline bool hasConsent(String name) {
+		name = name.toLowerCase();
+
+		for (int i = 0; i < consentList.size(); i++) {
 			if (consentList.get(i) == name)
 				return true;
 		}
@@ -735,34 +795,37 @@ public:
 		return false;
 	}
 
-	inline int getConsentIndex(string name) {
-		String::toLower(name);
+	inline int getConsentIndex(String name) {
+		name = name.toLowerCase();
 
-		for (int i=0; i<consentList.size(); i++) {
+		for (int i = 0; i < consentList.size(); i++) {
 			if (consentList.get(i) == name)
 				return i;
 		}
 		return -1;
 	}
 
-	inline bool giveConsent(string name) {
-		String::toLower(name);
+	inline bool giveConsent(String name) {
+		name = name.toLowerCase();
 
 		if (!hasConsent(name)) {
 			consentList.add(name);
 			return true;
 		}
+
 		return false;
 	}
 
-	inline bool revokeConsent(string name) {
-		String::toLower(name);
+	inline bool revokeConsent(String name) {
+		name = name.toLowerCase();
+
 		int index = getConsentIndex(name);
 
 		if (index >= 0) {
 			consentList.remove(index);
 			return true;
 		}
+
 		return false;
 	}
 
@@ -770,7 +833,7 @@ public:
 		return consentList.size();
 	}
 
-	inline string& getConsentEntry(int index) {
+	inline String& getConsentEntry(int index) {
 		return consentList.get(index);
 	}
 
@@ -787,16 +850,24 @@ public:
 		misoBSB |= tms;
 	}
 
-	void addToCurMisoKeys(string& tck) {
+	void addToCurMisoKeys(String& tck) {
 		curMisoKeys += (tck + ",");
 	}
-	bool isOnCurMisoKey(string tmk); //player is currently on the mission key
-	void removeFromCurMisoKeys(string tck);
 
-	void addToFinMisoKeys(string& tmp) {
+	bool isOnCurMisoKey(String tmk); //player is currently on the mission key
+	void removeFromCurMisoKeys(String tck);
+
+	void addToFinMisoKeys(String& tmp) {
 		finMisoKeys += (tmp + ",");
 	}
-	bool hasCompletedMisoKey(string& tmk);
+
+	bool hasCompletedMisoKey(String& tmk);
+
+	void saveMissions();
+
+	void updateMissionSave(String misoKey, const String& dbVar, String& varName, String& varData, bool doLock = false);
+
+	void fillMissionSaveVars();
 
 	// buffing methods
 	void addBuff(uint32 buffcrc, float time);
@@ -814,24 +885,24 @@ public:
 	}
 
 	void setForcePowerBar(uint32 fp) {
-		if(playerObject != NULL)
+		if (playerObject != NULL)
 			playerObject->setForcePowerBar(fp);
 	}
 
 	void updateMaxForcePowerBar(bool updateClient = true) {
-		if(playerObject != NULL)
+		if (playerObject != NULL)
 			playerObject->updateMaxForcePowerBar(updateClient);
 	}
 
 	int getFoodFilling() {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return 0;
 
 		return playerObject->getFoodFilling();
 	}
 
 	int getDrinkFilling() {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return 0;
 
 		return playerObject->getDrinkFilling();
@@ -839,42 +910,42 @@ public:
 
 
 	void setFoodFilling(uint32 fill, bool updateClient = true) {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return;
 
 		playerObject->setFoodFilling(fill, updateClient);
 
-		if(playerObject->isDigesting())
+		if (playerObject->isDigesting())
 			activateDigest();
 	}
 
 	void setDrinkFilling(uint32 fill, bool updateClient = true) {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return;
 
 		playerObject->setDrinkFilling(fill, updateClient);
 
-		if(playerObject->isDigesting())
+		if (playerObject->isDigesting())
 			activateDigest();
 	}
 
 	void changeFoodFilling(uint32 fill, bool updateClient = true) {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return;
 
 		playerObject->changeFoodFilling(fill, updateClient);
 
-		if(playerObject->isDigesting())
+		if (playerObject->isDigesting())
 			activateDigest();
 	}
 
 	void changeDrinkFilling(uint32 fill, bool updateClient = true) {
-		if(playerObject == NULL)
+		if (playerObject == NULL)
 			return;
 
 		playerObject->changeDrinkFilling(fill, updateClient);
 
-		if(playerObject->isDigesting())
+		if (playerObject->isDigesting())
 			activateDigest();
 	}
 
@@ -924,7 +995,6 @@ public:
 	void unsetArmorSkillMods(Armor* armoritem);
 
 	bool setArmorEncumbrance(Armor* armor, bool forced);
-	void unsetArmorEncumbrance(Armor* armor);
 
 	void applyAttachment(uint64 attachmentID, uint64 targetID);
 	void applyPowerup(uint64 powerupID, uint64 targetID);
@@ -935,8 +1005,8 @@ public:
 	void saveProfessions();
 	void loadProfessions();
 	void trainStartingProfession();
-	bool trainSkillBox(const string& name, bool updateClient = true);
-	void surrenderSkillBox(const string& name);
+	bool trainSkillBox(const String& name, bool updateClient = true);
+	void surrenderSkillBox(const String& name);
 
 	void resetSkillBoxesIterator() {
 		skillBoxes.resetIterator();
@@ -946,7 +1016,7 @@ public:
 		return skillBoxes.size();
 	}
 
-	string& getNextSkillBox() {
+	String& getNextSkillBox() {
 		return skillBoxes.getNextValue()->getName();
 	}
 
@@ -986,7 +1056,7 @@ public:
 		return certificationList.size();
 	}
 
-	string& getCertification(int idx) {
+	String& getCertification(int idx) {
 		return certificationList.get(idx)->getName();
 	}
 
@@ -1000,14 +1070,14 @@ public:
 	void prepareCraftingSession(CraftingTool* ct, DraftSchematic* ds);
 	void addIngredientToSlot(TangibleObject* tano, int slot, int counter);
 	void removeResourceFromCraft(uint64 resID, int slot, int counter);
-	void nextCraftingStage(string test);
-	void craftingCustomization(string name, int condition, string customizationstring);
-	void createPrototype(string count);
-	void createSchematic(string count);
-	void handleExperimenting(int count, int numRowsAttempted, string expstring);
+	void nextCraftingStage(String test);
+	void craftingCustomization(String name, int condition, String customizationString);
+	void createPrototype(String count);
+	void createSchematic(String count);
+	void handleExperimenting(int count, int numRowsAttempted, String expString);
 
 
-	bool checkCertification(string certification) {
+	bool checkCertification(String certification) {
 		if (certification == "")
 			return true;
 		else
@@ -1019,8 +1089,8 @@ public:
 
 	// Draft Schematics granted from a schematicGroupName
 	void sendDraftSchematics();
-	void addDraftSchematicsFromGroupName(const string& schematicGroupName);
-	void subtractDraftSchematicsFromGroupName(const string& schematicGroupName);
+	void addDraftSchematicsFromGroupName(const String& schematicGroupName);
+	void subtractDraftSchematicsFromGroupName(const String& schematicGroupName);
 	void addDraftSchematic(DraftSchematic* ds);
 	void subtractDraftSchematic(DraftSchematic* ds);
 
@@ -1043,9 +1113,13 @@ public:
 	// badge methods
 	void toggleCharacterBit(uint32 bit);
 
-	void addBadgeBitmask(uint32 bitmask);
+	void awardBadge(uint8 badge);
 
-	bool awardBadge(uint32 badgeindex);
+	void removeBadge(uint8 badge);
+
+	inline bool hasBadge(uint8 badge) {
+		return badges->hasBadge(badge);
+	}
 
 	// guild methods
 	bool setGuild(uint32 gid);
@@ -1088,27 +1162,24 @@ public:
 		skillPoints -= sPoints;
 	}
 
-	int getXp(const string& xpType) {
+	int getXp(const String& xpType) {
 		return playerObject->getExperience(xpType);
 	}
-	void addXp(const string& xpType, int xp, bool updateClient) {
+	void addXp(const String& xpType, int xp, bool updateClient) {
 		playerObject->addExperience(xpType, xp, updateClient);
 	}
-	void removeXp(const string& xpType, int xp, bool updateClient) {
+	void removeXp(const String& xpType, int xp, bool updateClient) {
 		playerObject->removeExperience(xpType, xp, updateClient);
 	}
-	void loadXp(const string& xpStr) {
+	void loadXp(const String& xpStr) {
 		playerObject->loadExperience(xpStr);
 	}
-	string& saveXp() {
+	String& saveXp() {
 		return playerObject->saveExperience();
 	}
-	int getXpTypeCap(string xptype);
+	int getXpTypeCap(String xptype);
 	void loadXpTypeCap();
-	int calcPlayerLevel(string xptype);
-	void getXpTypeProse(string xptype, string& prosetype) {
-		prosetype = server->getProfessionManager()->getSkillXpTypeProse(xptype);
-	}
+	int calcPlayerLevel(String xptype);
 
 	void addSkillBox(SkillBox* skillBox, bool updateClient = false);
 	void removeSkillBox(SkillBox* skillBox, bool updateClient = false);
@@ -1116,7 +1187,7 @@ public:
 	void removeCertifications(Vector<Certification*>& certs, bool updateClient = false);
 
 
-	void queueHeal(TangibleObject* medpack, uint32 actionCRC, const string& attribute);
+	void queueHeal(TangibleObject* medpack, uint32 actionCRC, const String& attribute);
 
 	// waypoint methods
 	void addWaypoint(WaypointObject* wp) {
@@ -1142,7 +1213,7 @@ public:
 		playerObject->saveWaypoints(player);
 	}
 
-	WaypointObject* searchWaypoint(Player* play, const string& name, int mode) {
+	WaypointObject* searchWaypoint(Player* play, const String& name, int mode) {
 		return playerObject->searchWaypoint(play,name,mode);
 	}
 
@@ -1155,13 +1226,12 @@ public:
 	// packet methods
 	void sendMessage(BaseMessage* msg);
 	void sendMessage(StandaloneBaseMessage* msg);
+	void broadcastMessageToOthersAround(Player* player, BaseMessage* msg);
 
 	// setters
 	void setOnline();
 
-	void setOffline() {
-		onlineStatus = OFFLINE;
-	}
+	void setOffline();
 
 	void setLinkDead();
 
@@ -1181,13 +1251,13 @@ public:
 		owner = client;
 	}
 
-	void sendMail(string& mailSender, unicode& subjectSender, unicode& bodySender, string& charNameSender);
+	void sendMail(String& mailSender, UnicodeString& subjectSender, UnicodeString& bodySender, String& charNameSender);
 
-	inline void setStartingLocation(string& loc) {
+	inline void setStartingLocation(String& loc) {
 		startingLocation = loc;
 	}
 
-	inline void setRaceFileName(string& name) {
+	inline void setRaceFileName(String& name) {
 		raceFile = name;
 	}
 
@@ -1195,23 +1265,23 @@ public:
 		raceID = id;
 	}
 
-	inline void setHairObject(const string& hair) {
+	inline void setHairObject(const String& hair) {
 		hairObject = hair;
 	}
 
-	//inline void setHairData(string& hair) {
+	//inline void setHairData(String& hair) {
 	//	hairData = hair;
 	//}
 
-	inline void setStartingProfession(const string& prof) {
+	inline void setStartingProfession(const String& prof) {
 		startingProfession = prof;
 	}
 
-	inline void setBiography(unicode& bio) {
+	inline void setBiography(UnicodeString& bio) {
 		biography = bio;
 	}
 
-	inline void setBiography(const string& bio) {
+	inline void setBiography(const String& bio) {
 		biography = bio;
 	}
 
@@ -1219,15 +1289,15 @@ public:
 		conversatingCreature = conversator;
 	}
 
-	inline void setFirstName(const string& name) {
+	inline void setFirstName(const String& name) {
 		firstName = name;
 	}
 
-	inline void setLastName(const string& name) {
+	inline void setLastName(const String& name) {
 		lastName = name;
 	}
 
-	inline void setFirstNameProper(const string& name) {
+	inline void setFirstNameProper(const String& name) {
 		firstNameProper = name;
 	}
 
@@ -1256,7 +1326,7 @@ public:
 	void setWeaponAccuracy(Weapon* weapon);
 
 	// getters
-	//inline string& getHairData() {
+	//inline String& getHairData() {
 	//	return hairData;
 	//}
 
@@ -1270,6 +1340,10 @@ public:
 
 	inline bool isOffline() {
 		return onlineStatus == OFFLINE;
+	}
+
+	inline bool isLoading() {
+		return onlineStatus == LOADING || onlineStatus == LOGGINGIN;
 	}
 
 	inline bool isLinkDead() {
@@ -1300,15 +1374,15 @@ public:
 		return characterID;
 	}
 
-	inline string& getFirstName() {
+	inline String& getFirstName() {
 		return firstName;
 	}
 
-	inline string& getLastName() {
+	inline String& getLastName() {
 		return lastName;
 	}
 
-	inline string& getFirstNameProper() {
+	inline String& getFirstNameProper() {
 		return firstNameProper;
 	}
 
@@ -1316,7 +1390,7 @@ public:
 		return owner;
 	}
 
-	inline string& getRaceFileName() {
+	inline String& getRaceFileName() {
 		return raceFile;
 	}
 
@@ -1332,19 +1406,19 @@ public:
 		return zone;
 	}
 
-	inline string& getStartingLocation() {
+	inline String& getStartingLocation() {
 		return startingLocation;
 	}
 
-	inline string& getHairObject() {
+	inline String& getHairObject() {
 		return hairObject;
 	}
 
-	inline string& getStartingProfession() {
+	inline String& getStartingProfession() {
 		return startingProfession;
 	}
 
-	inline unicode& getBiography() {
+	inline UnicodeString& getBiography() {
 		return biography;
 	}
 
@@ -1380,7 +1454,7 @@ public:
 		playerObject = obj;
 	}
 
-	inline bool hasSkillBox(string& skillBox) {
+	inline bool hasSkillBox(String& skillBox) {
 		return skillBoxes.containsKey(skillBox);
 	}
 
@@ -1393,7 +1467,7 @@ public:
 	}
 
 	inline Badges* getBadges() {
-		return &badges;
+		return badges;
 	}
 
 	inline int getRegionID() {
@@ -1424,15 +1498,27 @@ public:
 		return meditating;
 	}
 
+	inline bool getPowerboosted() {
+		return powerboosted;
+	}
+
+	inline void setPowerboosted(bool pb) {
+		powerboosted = pb;
+	}
+
 	inline bool isChangingFactionStatus() {
 		return changeFactionEvent != NULL;
+	}
+
+	inline bool isForaging() {
+		return foraging;
 	}
 
 	void setResourceDeedID(uint64 objectID);
 
 	uint64 getResourceDeedID();
 
-	void addSuiBoxChoice(string& choice);
+	void addSuiBoxChoice(String& choice);
 
 	void removeLastSuiBoxChoice();
 
@@ -1514,8 +1600,8 @@ public:
 
 
 	// Survey and Sample Functions
-	void setSurveyEvent(string& resource_name);
-	void setSampleEvent(string& resource_name, bool firstTime = false);
+	void setSurveyEvent(String& resource_name);
+	void setSampleEvent(String& resource_name, bool firstTime = false);
 	void stopSample();
 	void sendSampleTimeRemaining();
 
@@ -1537,6 +1623,10 @@ public:
 
 	inline void setCanSample() {
 		sampleEvent = NULL;
+	}
+
+	inline void clearFirstSampleEvent() {
+		firstSampleEvent = NULL;
 	}
 
 	inline void setSurveyErrorMessage() {
@@ -1606,27 +1696,27 @@ public:
 	void addEntertainerHealingXp(int xp);
 
 	//NPC Conversation Methods
-	inline void setLastNpcConvStr(const string& conv) {
+	inline void setLastNpcConvStr(const String& conv) {
 		lastNpcConvo = conv;
 	}
 
-	inline void setLastNpcConvMessStr(const string& mess) {
+	inline void setLastNpcConvMessStr(const String& mess) {
 		lastNpcConvoMessage = mess;
 	}
 
-	inline string& getLastNpcConvStr() {
+	inline String& getLastNpcConvStr() {
 		return lastNpcConvo;
 	}
 
-	inline string& getLastNpcConvMessStr() {
+	inline String& getLastNpcConvMessStr() {
 		return lastNpcConvoMessage;
 	}
 
-	inline string& getLastNpcConvOption(int idx) {
+	inline String& getLastNpcConvOption(int idx) {
 		return lastNpcConvoOptions.get(idx);
 	}
 
-	inline void addLastNpcConvOptions(const string& option) {
+	inline void addLastNpcConvOptions(const String& option) {
 		lastNpcConvoOptions.add(option);
 	}
 
@@ -1646,13 +1736,13 @@ public:
 		return currentStructureID;
 	}
 
-	inline int16 getFactionPoints(const string& faction) {
+	inline int16 getFactionPoints(const String& faction) {
 		return factionPointsMap.getFactionPoints(faction);
 	}
 
-	inline uint32 getMaxFactionPoints(string faction) {
+	inline uint32 getMaxFactionPoints(String faction) {
 		if (faction == "imperial" || faction == "rebel") {
-			if (getFaction() == String::hashCode(faction) || getFaction() == 0)
+			if (getFaction() == faction.hashCode() || getFaction() == 0)
 				return FactionRankTable::getFPCap(getFactionRank());
 			else
 				return 500;
@@ -1660,8 +1750,8 @@ public:
 			return 5000;
 	}
 
-	void addFactionPoints(string faction, uint32 points);
-	void subtractFactionPoints(string faction, uint32 points);
+	void addFactionPoints(String faction, uint32 points);
+	void subtractFactionPoints(String faction, uint32 points);
 
 	inline int getFactionStatus() {
 		return factionStatus;
@@ -1683,7 +1773,7 @@ public:
 
 	void teachPlayer(Player* player);
 
-	void setTeachingOffer(string& sBox) {
+	void setTeachingOffer(String& sBox) {
 		teachingOffer = server->getProfessionManager()->getSkillBox(sBox);
 	}
 
@@ -1695,7 +1785,7 @@ public:
 		teachingTarget = player;
 	}
 
-	string& getTeachingOffer() {
+	String& getTeachingOffer() {
 		return teachingOffer->getName();
 	}
 
@@ -1707,7 +1797,7 @@ public:
 		return teachingTarget;
 	}
 
-	string& getTeachingSkillOption(int idx) {
+	String& getTeachingSkillOption(int idx) {
 		return teachingSkillList.get(idx)->getName();
 	}
 
@@ -1715,13 +1805,24 @@ public:
 		teachingSkillList.removeAll();
 	}
 
-	void teachSkill(string& skillname);
+	void teachSkill(String& skillname);
 
 	Armor* getPlayerArmor (int location) {
 		if (location > 14 || location < 0)
 			return NULL;
 		else
 			return equippedItems->getArmor(location);
+	}
+
+	void updateWeather();
+	void queueThrow(TangibleObject* throwItem, uint32 actionCRC);
+
+	inline ActiveArea * getActiveArea() {
+		return activeArea;
+	}
+
+	inline void setActiveArea(ActiveArea * area) {
+		activeArea = area;
 	}
 
 	friend class PlayerManager;

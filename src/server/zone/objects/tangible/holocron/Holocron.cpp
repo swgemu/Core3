@@ -14,7 +14,7 @@
  *	HolocronStub
  */
 
-Holocron::Holocron(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+Holocron::Holocron(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new HolocronImplementation(player, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }

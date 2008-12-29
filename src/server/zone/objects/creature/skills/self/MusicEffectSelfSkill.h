@@ -50,27 +50,27 @@ which carries forward this exception.
 class MusicEffectSelfSkill : public SelfSkill {
 
 public:
-	MusicEffectSelfSkill(const string& name, const string& effect, ZoneProcessServerImplementation* serv) : SelfSkill(name, effect.c_str(), ENTERTAIN, serv) {
+	MusicEffectSelfSkill(const String& name, const String& effect, ZoneProcessServerImplementation* serv) : SelfSkill(name, effect.toCharArray(), ENTERTAIN, serv) {
 	}
 	
-	void doSkill(CreatureObject* creature, string& modifier) {
-		int actionModifier = atoi(modifier.c_str());
+	void doSkill(CreatureObject* creature, String& modifier) {
+		int actionModifier = atoi(modifier.toCharArray());
 
 		
-		if(actionModifier > 3 or actionModifier < 1)
+		if (actionModifier > 3 or actionModifier < 1)
 			actionModifier = 3;
 		
 		// This returns a prefix for entertain skills - need to add an actionModifier and .cef
-		//cout << "doing skill, effect: " << getEffectName() << dec << actionModifier << ".cef";
+		//System::out << "doing skill, effect: " << getEffectName() << dec << actionModifier << ".cef";
 		
-    	stringstream effect;
+    	StringBuffer effect;
 		effect << getEffectName() << dec << actionModifier << ".cef";
-		creature->playEffect(effect.str(), "");
+		creature->playEffect(effect.toString(), "");
 		
 
-		if(getSkillName() == "firejet")
+		if (getSkillName() == "firejet")
 			creature->sendSystemMessage("performance", "effect_perform_fire_jets");
-		else if(getSkillName() == "ventriloquism")
+		else if (getSkillName() == "ventriloquism")
 			creature->sendSystemMessage("performance", "effect_perform_ventriloquism");
 	}
 	

@@ -16,8 +16,8 @@ protected:
 	int type, cellCount;
 
 public:
-	PlayerHouseDeedImplementation(CreatureObject* creature, uint32 tempcrc, const unicode& n, const string& tempn);
-	PlayerHouseDeedImplementation(uint64 objid, uint32 tempcrc, const unicode& n, const string& tempn);
+	PlayerHouseDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn);
+	PlayerHouseDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn);
 	~PlayerHouseDeedImplementation();
 
 	inline int getCellCount() {

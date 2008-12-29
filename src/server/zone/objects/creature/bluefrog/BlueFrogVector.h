@@ -13,16 +13,16 @@ public:
 
 	unsigned int size();
 
-	void add(string& item);
+	void add(String& item);
 
-	string& get(unsigned int index);
+	String& get(unsigned int index);
 
 protected:
 	BlueFrogVector(DummyConstructorParameter* param);
 
 	virtual ~BlueFrogVector();
 
-	string _return_get;
+	String _return_get;
 
 	friend class BlueFrogVectorHelper;
 };
@@ -37,12 +37,12 @@ public:
 
 	unsigned int size();
 
-	void add(string& item);
+	void add(String& item);
 
-	string& get(unsigned int index);
+	String& get(unsigned int index);
 
 protected:
-	string _param0_add__string_;
+	String _param0_add__String_;
 };
 
 class BlueFrogVectorHelper : public DistributedObjectClassHelper, public Singleton<BlueFrogVectorHelper> {

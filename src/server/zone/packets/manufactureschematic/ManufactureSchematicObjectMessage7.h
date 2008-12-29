@@ -64,14 +64,14 @@ public:
 		insertInt(ingredientListSize);
 		insertInt(updateCount);
 
-		for(int i = 0; i < ingredientListSize; i++) {
+		for (int i = 0; i < ingredientListSize; i++) {
 			DraftSchematicIngredient* dsi = draftSchematic->getIngredient(i);
-			if(dsi != NULL) {
+			if (dsi != NULL) {
 				insertAscii(dsi->getTemplateName());
 				insertInt(0);
 				insertAscii(dsi->getTitleName());
 			} else {
-				cerr << "\n\nInvalid dsi: MSCO7 line 63.\n\n";
+				System::out << "\n\nInvalid dsi: MSCO7 line 63.\n\n";
 			}
 		}
 
@@ -109,8 +109,8 @@ public:
 		insertInt(titleCount);
 		insertInt(titleCount);
 
-		for(int i = 0; i < titleCount; i++) {
-			string title = craftingValues->getExperimentalPropertyTitle(i);
+		for (int i = 0; i < titleCount; i++) {
+			String title = craftingValues->getExperimentalPropertyTitle(i);
 
 			insertAscii("crafting");  // I think this is always "crafting"
 			insertInt(0);
@@ -119,21 +119,21 @@ public:
 		}
 
 		// NO IDEA WTF THIS IS FOR (doing this cause they were in live's logs)
-		for(int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4; i++) {
 			insertInt(titleCount);
 			insertInt(titleCount);
-			for(int j = 0; j < titleCount; j++) {
+			for (int j = 0; j < titleCount; j++) {
 				insertInt(0);
 			}
 
 			//insertInt(4);
 			//insertInt(4);
-			/*for(int j = 0; j < 4; j++) {
+			/*for (int j = 0; j < 4; j++) {
 				insertInt(0);
 			}*/
 		}
 
-		for(int i = 0; i < 4; i++) {
+		for (int i = 0; i < 4; i++) {
 			insertInt(0);
 			insertInt(0);
 		}

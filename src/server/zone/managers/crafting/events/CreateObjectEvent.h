@@ -72,7 +72,7 @@ public:
 
 			ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
-			if(tano != NULL && doCreate) {
+			if (tano != NULL && doCreate) {
 				Inventory* inventory = player->getInventory();
 
 				if (inventory->getObjectCount() < 80) {
@@ -95,7 +95,7 @@ public:
 
 					Container* hopper = ct->getHopper(player);
 
-					for(int i = 0; i < hopper->objectsSize(); i++){
+					for (int i = 0; i < hopper->objectsSize(); i++){
 						hopper->removeObject(0);
 					}
 
@@ -117,7 +117,7 @@ public:
 			ct->unlock();
 
 		} catch (...) {
-			cout << "Unreported exception caught in CreateObjectEvent::activate\n";
+			System::out << "Unreported exception caught in CreateObjectEvent::activate\n";
 			player->unlock();
 			ct->unlock();
 		}

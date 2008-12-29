@@ -232,7 +232,7 @@ public:
 			break;
 
 		default:
-			cout << "Unknown clothing type " << item->getObjectSubType() << endl;
+			System::out << "Unknown clothing type " << item->getObjectSubType() << endl;
 			break;
 		}
 
@@ -331,7 +331,7 @@ public:
 
 	Armor* getArmor (int location) {
 		if (location > 14 || location < 0) {
-			cout << "Illegal clothing location " << location << endl;
+			System::out << "Illegal clothing location " << location << endl;
 			return NULL;
 		}
 		if (clothingLocations[location] == NULL || !clothingLocations[location]->isArmor()) {
@@ -449,11 +449,11 @@ public:
 		if (item->isInstrument()) {
 			int instrument = ((Instrument*)item)->getInstrumentType();
 
-			string skillBox;
+			String skillBox;
 			// Needs to be refactored
 			skillBox = instrumentSkills[instrument];
 			if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
-				player->sendSystemMessage("You do not have sufficient abilities to equip " + item->getName().c_str() + ".");
+				player->sendSystemMessage("You do not have sufficient abilities to equip " + item->getName().toString() + ".");
 				return false;
 			}
 
@@ -513,7 +513,7 @@ public:
 		if (type == 0)
 			return;
 
-		string enhanceName = enhancements[type];
+		String enhanceName = enhancements[type];
 		player->addSkillModBonus(enhanceName, value, true);
 	}
 

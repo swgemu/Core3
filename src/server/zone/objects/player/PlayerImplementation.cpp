@@ -59,6 +59,7 @@ which carries forward this exception.
 #include "../../managers/resource/ResourceManager.h"
 #include "../../managers/loot/LootManager.h"
 #include "../../managers/sui/SuiManager.h"
+#include "../../managers/mission/MissionManager.h"
 
 #include "../../../chat/ChatManager.h"
 #include "../../../ServerCore.h"
@@ -85,10 +86,12 @@ which carries forward this exception.
 #include "events/ChangeFactionStatusEvent.h"
 #include "events/CenterOfBeingEvent.h"
 #include "events/PowerboostEventWane.h"
-#include "events/PowerboostEventEnd.h"
 #include "events/SurveyEvent.h"
 #include "events/EntertainerEvent.h"
 #include "events/SampleEvent.h"
+
+#include "events/ForageDelayEvent.h"
+#include "../creature/skills/self/ForageZone.h"
 
 #include "../creature/events/DizzyFallDownEvent.h"
 
@@ -99,6 +102,7 @@ which carries forward this exception.
 
 #include "../../managers/combat/CommandQueueAction.h"
 #include "../../managers/skills/SkillManager.h"
+#include "badges/Badge.h"
 
 PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 	zoneID = 1;
@@ -106,16 +110,15 @@ PlayerImplementation::PlayerImplementation() : PlayerServant(0) {
 
 	setHeight(1.0f);
 	imagedesignXpGiven = false;
-
 }
 
 PlayerImplementation::PlayerImplementation(uint64 cid) : PlayerServant(baseID = cid << 32) {
 	characterID = cid;
 	imagedesignXpGiven = false;
-
 }
 
 PlayerImplementation::~PlayerImplementation() {
+
 	clearBuffs(false);
 
 	for (int i = 0; i < suiBoxes.size(); ++i) {
@@ -163,15 +166,9 @@ PlayerImplementation::~PlayerImplementation() {
 		centerOfBeingEvent = NULL;
 	}
 
-	if (powerboostEventEnd != NULL) {
-		server->removeEvent(powerboostEventEnd);
-
-		delete powerboostEventEnd;
-		powerboostEventEnd = NULL;
-	}
-
 	if (powerboostEventWane != NULL) {
-		server->removeEvent(powerboostEventWane);
+		if (powerboostEventWane->isQueued())
+			server->removeEvent(powerboostEventWane);
 
 		delete powerboostEventWane;
 		powerboostEventWane = NULL;
@@ -193,9 +190,20 @@ PlayerImplementation::~PlayerImplementation() {
 		digestEvent = NULL;
 	}
 
+	if (suiChoicesList != NULL) {
+		suiChoicesList->finalize();
+		suiChoicesList = NULL;
+	}
+
+	if (badges != NULL) {
+		badges->finalize();
+		badges = NULL;
+	}
+
 	server->getZoneServer()->increaseTotalDeletedPlayers();
 
 	info("undeploying player");
+
 }
 
 void PlayerImplementation::initialize() {
@@ -221,6 +229,7 @@ void PlayerImplementation::initialize() {
 	changeFactionEvent = NULL;
 
 	datapad = NULL;
+	equippedItems = NULL;
 
 	stfName = "species";
 
@@ -261,6 +270,7 @@ void PlayerImplementation::initialize() {
 	misoBSB = 0;
 	curMisoKeys = "";
 	finMisoKeys = "";
+	//missionSaveList.setNullValue(NULL);
 
  	regionId = 31; //Ancorhead I think lols.
 
@@ -269,12 +279,17 @@ void PlayerImplementation::initialize() {
  	chatRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 
  	centered = false;
-	powerboosted = false;
+
+ 	powerboosted = false;
+
+ 	foraging = false;
+ 	forageDelayEvent = NULL;
 
 	centerOfBeingEvent = new CenterOfBeingEvent(this);
-	powerboostEventEnd = new PowerboostEventEnd(this);
-	powerboostEventWane = new PowerboostEventWane(this);
 
+	uint32 pbCRC = 0x8C2221CB; //powerboost
+	PowerboostSelfSkill* skill = (PowerboostSelfSkill*)creatureSkills.get(pbCRC); //Get the Powerboost skill.
+	powerboostEventWane = new PowerboostEventWane(_this, skill);
 
 	lastTestPositionX = 0.f;
 	lastTestPositionY = 0.f;
@@ -321,6 +336,8 @@ void PlayerImplementation::initialize() {
 	teachingTrainer = NULL;
 	teachingSkillList.removeAll();
 	teachingOffer = false;
+	activeArea = NULL;
+	badges = new Badges();
 
 	if (getWeapon() == NULL) {
 		int templevel = calcPlayerLevel("combat_meleespecialize_unarmed");
@@ -341,7 +358,7 @@ void PlayerImplementation::create(ZoneClientSession* client) {
 	setClient(client);
 	client->setPlayer(_this);
 
-	string logName = "Player = " + firstName;
+	String logName = "Player = " + firstName;
 
 	setLockName(logName);
 	//client->setLockName("ZoneClient = " + firstName);
@@ -361,7 +378,7 @@ void PlayerImplementation::makeCharacterMask() {
 	else
 		characterMask |= NEUTRAL;
 
-	if(this->isOnLeave())
+	if (this->isOnLeave())
 		characterMask |= COVERT;
 
 	switch (raceID) {
@@ -446,11 +463,11 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		owner = client;
 		client->setPlayer(_this);
 
-		stringstream logName;
+		StringBuffer logName;
 		logName << "Player = " << firstName << " (0x" << hex << objectID << dec << ")";
 
-		setLockName(logName.str());
-		setLoggingName(logName.str());
+		setLockName(logName.toString());
+		setLoggingName(logName.toString());
 
 		info("loading player");
 
@@ -465,8 +482,6 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		insertToZone(zone);
 
 		initializeEvents();
-
-		server->addEvent(playerSaveStateEvent, 300000);
 
 		resetArmorEncumbrance();
 
@@ -537,8 +552,6 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 
 		initializeEvents();
 
-		server->addEvent(playerSaveStateEvent, 300000);
-
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
 
 		if (isInQuadTree())
@@ -560,6 +573,7 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		//reset mission vars:
 		misoRFC = 0x01;
 		misoBSB = 0;
+		_this->fillMissionSaveVars(); //REAL
 
 		playerManager->updateOtherFriendlists(_this, true);
 
@@ -586,6 +600,13 @@ void PlayerImplementation::unload() {
 	}
 
 	commandQueue.removeAll();
+
+	forageZones.removeAll();
+	medForageZones.removeAll();
+
+	if (powerboosted) {
+		removePowerboost();
+	}
 
 	clearCombatState(); // remove the defenders
 
@@ -644,6 +665,8 @@ void PlayerImplementation::unload() {
 			//zone = NULL;
 		}
 	}
+
+	activateRecovery();
 }
 
 void PlayerImplementation::savePlayerState(bool doSchedule) {
@@ -652,6 +675,8 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 	saveWaypoints(_this);
 
 	saveDatapad(_this);
+
+	_this->saveMissions(); //REAL
 
 	playerObject->saveFriends();
 	playerObject->saveIgnore();
@@ -666,17 +691,8 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 		itemManager->unloadPlayerItems(_this);
 	}
 
-	if (playerSaveStateEvent == NULL)
-		return;
-
-	if (doSchedule) {
-		playerSaveStateEvent->setPlayer(_this);
-		server->addEvent(playerSaveStateEvent, 300000);
-	} else {
-		if (playerSaveStateEvent->isQueued())
-			server->removeEvent(playerSaveStateEvent);
-		playerSaveStateEvent->setPlayer(NULL);
-	}
+	if (doSchedule)
+		activateSaveStateEvent();
 }
 
 void PlayerImplementation::logout(bool doLock) {
@@ -728,9 +744,9 @@ void PlayerImplementation::resurrectCountdown(int counter) {
 		{
 			int realCount = counter - 1;
 
-			stringstream msgRemainingTime;
+			StringBuffer msgRemainingTime;
 			msgRemainingTime << "You have " << (counter - 1) << " minute" << ((counter == 2) ? "" : "s") << " remaining to be resuscitated.";
-			sendSystemMessage(msgRemainingTime.str());
+			sendSystemMessage(msgRemainingTime.toString());
 
 			//Find out how much time is actually left until the next tick should be going off.
 			int diff = abs((int) resurrectionExpires.miliDifference());
@@ -844,7 +860,7 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 		}
 
 		if (closeClient && owner != NULL) {
-			owner->closeConnection();
+			owner->closeConnection(false);
 		}
 
 		owner = NULL;
@@ -865,20 +881,11 @@ void PlayerImplementation::disconnect(bool closeClient, bool doLock) {
 }
 
 void PlayerImplementation::initializeEvents() {
-	if (playerSaveStateEvent == NULL)
+	if (playerSaveStateEvent == NULL) {
 		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
-	else
-		playerSaveStateEvent->setPlayer(_this);
 
-	if (recoveryEvent == NULL)
-		recoveryEvent = new PlayerRecoveryEvent(_this);
-	else
-		recoveryEvent->setPlayer(_this);
-
-	if (digestEvent == NULL)
-		digestEvent = new PlayerDigestEvent(_this);
-	else
-		digestEvent->setPlayer(_this);
+		server->addEvent(playerSaveStateEvent);
+	}
 
 	if (dizzyFallDownEvent == NULL)
 		dizzyFallDownEvent = new DizzyFallDownEvent(this);
@@ -937,33 +944,37 @@ void PlayerImplementation::removeEvents() {
 
 void PlayerImplementation::createItems() {
 	inventory = new Inventory(_this);
-	datapad = new Datapad(_this);
 	equippedItems = new EquippedItems(_this);
+	datapad = new Datapad(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadDefaultPlayerItems(_this);
 	itemManager->loadPlayerDatapadItems(_this);
 
-	if (!hairObject.empty()) {
-		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
-		string hairAppearance;
+	if (!hairObject.isEmpty()) {
+		hairObj = new HairObject(_this, hairObject.hashCode(), UnicodeString("hair"), "hair");
+
+		String hairAppearance;
 		getHairAppearance(hairAppearance);
+
 		hairObj->setCustomizationString(hairAppearance);
 	}
 }
 
 void PlayerImplementation::loadItems() {
 	inventory = new Inventory(_this);
+
 	datapad = new Datapad(_this);
-	equippedItems = new EquippedItems(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
 	itemManager->loadPlayerItems(_this);
 
-	if (!hairObject.empty()) {
-		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
-		string hairAppearance;
+	if (!hairObject.isEmpty()) {
+		hairObj = new HairObject(_this, hairObject.hashCode(), UnicodeString("hair"), "hair");
+
+		String hairAppearance;
 		getHairAppearance(hairAppearance);
+
 		hairObj->setCustomizationString(hairAppearance);
 	}
 }
@@ -985,12 +996,15 @@ void PlayerImplementation::updateHair() {
 		}
 	}
 
-	if (!hairObject.empty()) {
-		hairObj = new HairObject(_this, String::hashCode(hairObject), unicode("hair"), "hair");
-		string hairAppearance;
+	if (!hairObject.isEmpty()) {
+		hairObj = new HairObject(_this, hairObject.hashCode(), UnicodeString("hair"), "hair");
+
+		String hairAppearance;
 		getHairAppearance(hairAppearance);
+
 		hairObj->setCustomizationString(hairAppearance);
 		hairObj->sendTo(_this);
+
 		unequipItem(hairObj);
 		equipItem(hairObj);
 	}
@@ -1057,17 +1071,17 @@ void PlayerImplementation::decayInventory() {
 		}
 }
 
-
 void PlayerImplementation::resetArmorEncumbrance() {
 	healthEncumbrance = equippedItems->getHealthEncumbrance();
 	actionEncumbrance = equippedItems->getActionEncumbrance();
 	mindEncumbrance = equippedItems->getMindEncumbrance();
 }
 
-
 void PlayerImplementation::sendToOwner() {
-	if (faction != 0)
-		pvpStatusBitmask |= CreatureFlag::OVERT;
+
+	// Why is this here? -Bobius
+	//if (faction != 0)
+	//	pvpStatusBitmask |= CreatureFlag::OVERT;
 
 	CreatureObjectImplementation::sendToOwner(_this, false);
 
@@ -1107,6 +1121,9 @@ void PlayerImplementation::sendPersonalContainers() {
 void PlayerImplementation::insertToZone(Zone* zone) {
 	PlayerImplementation::zone = zone;
 
+	if (onlineStatus != LOGGINGIN)
+		onlineStatus = LOADING;
+
 	if (owner == NULL)
 		return;
 
@@ -1115,10 +1132,8 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		info("inserting to zone");
 
-		if (parent == NULL) {
-			//cout << "Debug Position Cout: Player inserted with cords: " <<  positionX << " " << zone->getHeight(positionX, positionY) << " " << positionY << endl;
+		if (parent == NULL)
 			setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
-		}
 
 		zone->registerObject(_this);
 
@@ -1128,8 +1143,23 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 		if (parent != NULL && parent->isCell()) {
 			BuildingObject* building = (BuildingObject*) parent->getParent();
+
 			insertToBuilding(building);
+
 			building->notifyInsertToZone(_this);
+
+			if (!building->getStorageLoaded()) {
+				ZoneServer* zserver = zone->getZoneServer();
+				ItemManager* itemManager = zserver->getItemManager();
+
+				zone->unlock();
+
+				itemManager->loadStructurePlayerItems(_this, parent->getObjectID());
+
+				owner->resetPacketCheckupTime();
+
+				return;
+			}
 		} else {
 			zone->insert(this);
 			zone->inRange(this, 128);
@@ -1173,6 +1203,9 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 }
 
 void PlayerImplementation::reinsertToZone(Zone* zone) {
+	if (onlineStatus != LOGGINGIN)
+		onlineStatus = LOADING;
+
 	try {
 		zone->lock();
 
@@ -1207,7 +1240,7 @@ void PlayerImplementation::updateZone(bool lightUpdate) {
 
 	/*if (zone->getZoneID() == 8) {
 		float height = zone->getHeight(positionX, positionY);
-		cout << "(" << positionX << "," << height << "," << positionY << "\n";
+		System::out << "(" << positionX << "," << height << "," << positionY << "\n";
 	}*/
 
 	if (isMounted())
@@ -1262,6 +1295,9 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 	if (newParent == NULL)
 		return;
 
+	if (!newParent->isCell())
+		return;
+
 	bool insert = false;
 
 	try {
@@ -1272,25 +1308,28 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 				zone->remove(this);
 				insert = true;
 			} else {
-				BuildingObject* building = (BuildingObject*) parent->getParent();
-				SceneObject* newObj = newParent->getParent();
+				if (parent->isCell()) {
+					BuildingObject* building = (BuildingObject*) parent->getParent();
+					SceneObject* newObj = newParent->getParent();
 
-				if (newObj->isBuilding()) {
-					BuildingObject* newBuilding = (BuildingObject*) newObj;
+					if (newObj->isBuilding()) {
+						BuildingObject* newBuilding = (BuildingObject*) newObj;
 
-					if (building != newBuilding) {
-						cout << "Does this actually ever happen when someone goes from one building to another?" << endl;
-						removeFromBuilding(building);
+						if (building != newBuilding) {
+							System::out << "Does this actually ever happen when someone goes from one building to another?" << endl;
+							removeFromBuilding(building);
 
-						insert = true;
+							insert = true;
+						}
 					}
-				}
 
-				// remove from old cell
-				((CellObject*) parent)->removeChild(_this);
+					// remove from old cell
+					((CellObject*) parent)->removeChild(_this);
+				} else
+					insert = true;
 			}
 
-			//cout << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
+			//System::out << "Cell Transition.  Old: " << hex << parent <<  dec << " New: " << hex << newParent << dec << endl;
 			// add to new cell
 			parent = newParent;
 			((CellObject*) parent)->addChild(_this);
@@ -1360,7 +1399,7 @@ void PlayerImplementation::updateMountPosition() {
 
 		mount->unlock();
 	} catch (...) {
-		cout << "Unreported exception in PlayerImplementation::updateMount()\n";
+		System::out << "Unreported exception in PlayerImplementation::updateMount()\n";
 		mount->unlock();
 	}
 }
@@ -1417,38 +1456,35 @@ void PlayerImplementation::deaggro() {
 
 			for (int i = 0; i < getDefenderListSize(); ++i) {
 				scno = getDefender(i);
-				scno->dropDamageDone((CreatureObject*)this);
 
-				if (scno->isNonPlayerCreature()) {
+				try {
+					if ((SceneObject*) scno != (SceneObject*) _this)
+						scno->wlock(_this);
 
-					defender = (Creature*) scno;
-					aggroedCreature = defender->getAggroedCreature();
+					scno->dropDamageDone((CreatureObject*)_this);
 
-					if (aggroedCreature != NULL && aggroedCreature->isPlayer()) {
+					if (scno->isNonPlayerCreature()) {
 
-						aggroedPlayer = (Player*) aggroedCreature;
+						defender = (Creature*) scno;
+						aggroedCreature = defender->getAggroedCreature();
 
-						if (aggroedPlayer->getFirstName() == getFirstName()) {
+						if (aggroedCreature != NULL && aggroedCreature->isPlayer()) {
 
-							try {
-								if ((SceneObject*) defender
-										!= (SceneObject*) _this)
+							aggroedPlayer = (Player*) aggroedCreature;
 
-								defender->wlock(_this);
+							if (aggroedPlayer->getFirstName() == getFirstName()) {
 								defender->deagro();
 								defender->removeFromDamageMap(aggroedCreature);
 								removeDefender(scno);
-
-								if ((SceneObject*) defender
-										!= (SceneObject*) _this)
-									defender->unlock();
-							} catch (...) {
-								if ((SceneObject*) defender
-										!= (SceneObject*) _this)
-									defender->unlock();
 							}
 						}
 					}
+
+					if ((SceneObject*) scno != (SceneObject*) _this)
+						scno->unlock();
+				} catch (...) {
+					if ((SceneObject*) scno != (SceneObject*) _this)
+						scno->unlock();
 				}
 
 				if (scno->isPlayer()) {
@@ -1566,7 +1602,7 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 }
 
 void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
-	//cout << "PlayerImplementation::notifyDissapear" << endl;
+	//System::out << "PlayerImplementation::notifyDissapear" << endl;
 
 	SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
 
@@ -1629,6 +1665,7 @@ void PlayerImplementation::switchMap(int planetid) {
 	//reset mission vars:
 	misoRFC = 0x01;
 	misoBSB = 0;
+	//_this->fillMissionSaveVars(); NOT REAL
 
 	setPositionZ(zone->getHeight(positionX, positionY));
 
@@ -1677,15 +1714,15 @@ void PlayerImplementation::notifySceneReady() {
 	PlayerObject* playerObject = getPlayerObject();
 
 	if (onlineStatus  == LOGGINGIN) {
-		unicode msg = unicode("Welcome to the Official Core3 Test Center!");
+		UnicodeString msg = UnicodeString("Welcome to the Official Core3 Test Center!");
 		sendSystemMessage(msg);
-		unicode msg2 = unicode("Please help us sorting some problems out by being as active as you can. we need to stress the server for these bugs to arise. thank you");
+		UnicodeString msg2 = UnicodeString("Please help us sorting some problems out by being as active as you can. we need to stress the server for these bugs to arise. thank you");
 		sendSystemMessage(msg2);
 
-		unicode msg3 = unicode("This server is owned, operated, and developed by Team SWGEmu at SWGEmu.com and is in no way affiliated with any other server communities.");
+		UnicodeString msg3 = UnicodeString("This server is owned, operated, and developed by Team SWGEmu at SWGEmu.com and is in no way affiliated with any other server communities.");
 		sendSystemMessage(msg3);
 
-		unicode msg4 = unicode("Please Report All Spammer, Harassment, Exploits Or Bugs To HTTP://WWW.SWGEMU.COM/SUPPORT.");
+		UnicodeString msg4 = UnicodeString("Please Report All Spammer, Harassment, Exploits Or Bugs To HTTP://WWW.SWGEMU.COM/SUPPORT.");
 		sendSystemMessage(msg4);
 
 		playerObject->loadFriends();
@@ -1704,7 +1741,6 @@ void PlayerImplementation::notifySceneReady() {
 		}
 
 	} else {
-		//we need to reset the "magicnumber" for the internal friendlist due to clientbehaviour (Diff. Zoningservers SoE)
 		playerObject->friendsMagicNumberReset();
 	}
 
@@ -1716,6 +1752,7 @@ void PlayerImplementation::notifySceneReady() {
 
 	info("scene ready");
 	setOnline();
+    updateWeather();
 }
 
 void PlayerImplementation::loadGuildChat() {
@@ -1727,30 +1764,30 @@ void PlayerImplementation::loadGuildChat() {
 		error("Error: PlayerManagerImplementation::loadGuildChat() chatManager is null ");
 }
 
-void PlayerImplementation::sendSystemMessage(const string& message) {
-	unicode msg(message);
+void PlayerImplementation::sendSystemMessage(const String& message) {
+	UnicodeString msg(message);
 	sendSystemMessage(msg);
 }
 
-void PlayerImplementation::sendSystemMessage(const string& file, const string& str, uint64 targetid) {
+void PlayerImplementation::sendSystemMessage(const String& file, const String& str, uint64 targetid) {
 	ChatSystemMessage* msg = new ChatSystemMessage(file, str, targetid);
 	sendMessage(msg);
 }
 
-void PlayerImplementation::sendSystemMessage(const string& file, const string& str,StfParameter * param) {
+void PlayerImplementation::sendSystemMessage(const String& file, const String& str,StfParameter * param) {
 	ChatSystemMessage* msg = new ChatSystemMessage(file, str, param);
 	sendMessage(msg);
 }
 
-void PlayerImplementation::sendMail(string& mailSender, unicode& subjectSender,
-		unicode& bodySender, string& charNameSender) {
+void PlayerImplementation::sendMail(String& mailSender, UnicodeString& subjectSender,
+		UnicodeString& bodySender, String& charNameSender) {
 
 	ChatManager * chat=  zone->getChatManager();
 
 	chat->sendMail(mailSender, subjectSender, bodySender, charNameSender);
 }
 
-void PlayerImplementation::sendSystemMessage(unicode& message) {
+void PlayerImplementation::sendSystemMessage(UnicodeString& message) {
 	ChatSystemMessage* smsg = new ChatSystemMessage(message);
 	sendMessage(smsg);
 }
@@ -1758,9 +1795,9 @@ void PlayerImplementation::sendSystemMessage(unicode& message) {
 void PlayerImplementation::sendBattleFatigueMessage(CreatureObject* target) {
 	uint32 battleFatigue = target->getShockWounds();
 
-	string targetName = target->getCharacterName().c_str();
+	String targetName = target->getCharacterName().toString();
 
-	stringstream msgPlayer, msgTarget;
+	StringBuffer msgPlayer, msgTarget;
 
 	if (battleFatigue < 250) {
 		return;
@@ -1778,9 +1815,9 @@ void PlayerImplementation::sendBattleFatigueMessage(CreatureObject* target) {
 		msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
 	}
 
-	target->sendSystemMessage(msgTarget.str());
+	target->sendSystemMessage(msgTarget.toString());
 	if (_this != target)
-		sendSystemMessage(msgPlayer.str());
+		sendSystemMessage(msgPlayer.toString());
 }
 
 void PlayerImplementation::sendHealMessage(CreatureObject* target, int h, int a, int m) {
@@ -1788,7 +1825,7 @@ void PlayerImplementation::sendHealMessage(CreatureObject* target, int h, int a,
 
 	/*
 	StfParameter* stfp = new StfParameter();
-	string msgPlayer, msgTarget;
+	String msgPlayer, msgTarget;
 
 	if (h > 0 && a > 0 && m > 0 ) {
 		msgPlayer = "";
@@ -1815,22 +1852,22 @@ void PlayerImplementation::sendHealMessage(CreatureObject* target, int h, int a,
 		return;
 	}
 
-	target->sendSystemMessage("healing_response", msgTarget.str());
+	target->sendSystemMessage("healing_response", msgTarget.toString());
 	if (_this != target)
-		sendSystemMessage("healing_response", msgPlayer.str(), stfp);
+		sendSystemMessage("healing_response", msgPlayer.toString(), stfp);
 	*/
 
 	return;
 }
 
-void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, uint32 actionCntr) {
+void PlayerImplementation::queueFlourish(const String& modifier, uint64 target, uint32 actionCntr) {
 	//TODO: Refactor this part later somehow?
 	if (!isPlayer())
 		return;
 
 	//PlayerImplementation* player = (PlayerImplementation*) this;
 
-	string skillBox = "social_entertainer_novice";
+	String skillBox = "social_entertainer_novice";
 
 	if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
 		// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
@@ -1838,7 +1875,7 @@ void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, 
 		return;
 	}
 
-	int fid = atoi(modifier.c_str());
+	int fid = Integer::valueOf(modifier);
 
     if (modifier == "") {
     	sendSystemMessage("performance", "flourish_format");
@@ -1851,18 +1888,18 @@ void PlayerImplementation::queueFlourish(const string& modifier, uint64 target, 
     	return;
     }
 
-    uint32 actionCRC = String::hashCode("flourish+" + modifier); // get the CRC for flourish+1, etc
+    uint32 actionCRC = String("flourish+" + modifier).hashCode(); // get the CRC for flourish+1, etc
 
     PlayerObject* po = getPlayerObject();
     queueAction(po->getPlayer(), target, actionCRC, actionCntr, modifier);
 }
 
 
-void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const string& amod) {
-	/*stringstream ident;
+void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 actionCRC, uint32 actionCntr, const String& amod) {
+	/*StringBuffer ident;
 	ident << "0x" << hex << actionCRC << " (" << actionCntr << ")";
 
-	sendSystemMessage("queing action " + ident.str());*/
+	sendSystemMessage("queing action " + ident.toString());*/
 
 	// Try to queue some music skills
 	Skill* skill = creatureSkills.get(actionCRC);
@@ -1875,12 +1912,13 @@ void PlayerImplementation::queueAction(Player* player, uint64 target, uint32 act
 	} else if (commandQueue.size() < 15) {
 		CommandQueueAction* action = new CommandQueueAction(player, target, actionCRC, actionCntr, amod);
 
-		if (!doAction(action))
+		if (!doAction(action)) {
 			delete action;
+		}
 	} else
 		clearQueueAction(actionCntr);
 
-	/*sendSystemMessage("queing action " + ident.str() + " finished");*/
+	/*sendSystemMessage("queing action " + ident.toString() + " finished");*/
 
 	return;
 }
@@ -1909,11 +1947,9 @@ bool PlayerImplementation::doAction(CommandQueueAction* action) {
 			CommandQueueActionEvent* e = new CommandQueueActionEvent(_this);
 			server->addEvent(e, nextAction);
 		}
-
 		commandQueue.add(action);
 	} else {
 		nextAction.update();
-
 		activateQueueAction(action);
 
 	}
@@ -1940,12 +1976,12 @@ void PlayerImplementation::activateQueueAction(CommandQueueAction* action) {
 		action = commandQueue.remove(0);
 	}
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << "activating action " << action->getSkill()->getSkillName() << " " << hex << "0x" << action->getActionCRC() << " ("
 		<< action->getActionCounter() << ")";
 	info(msg);
 
-	//sendSystemMessage(msg.str());
+	//sendSystemMessage(msg.toString());
 
 	CombatManager* combatManager = server->getCombatManager();
 
@@ -2042,9 +2078,8 @@ void PlayerImplementation::deathblow(Player* killer) {
 	float currentRating = (float)getPvpRating();
 	float opponentRating = (float)killer->getPvpRating();
 
-	string mfaction = (faction == String::hashCode("imperial")) ? "imperial" : "rebel";
-	string kfaction = (killer->getFaction() == String::hashCode("imperial")) ? "imperial" : "rebel";
-
+	String mfaction = (isImperial()) ? "imperial" : "rebel";
+	String kfaction = (killer->isImperial()) ? "imperial" : "rebel";
 
 	if (!isInDuelWith(killer) && hatesFaction(killer->getFaction())) {
 		subtractFactionPoints(mfaction, 30);
@@ -2063,33 +2098,33 @@ void PlayerImplementation::deathblow(Player* killer) {
 
 	int newRating = getPvpRating();
 
-	stringstream defeatedMsg;
+	StringBuffer defeatedMsg;
 
-	string killerName = "";
-	unicode uniName = unicode("");
+	String killerName = "";
+	UnicodeString uniName = UnicodeString("");
 	uniName = killer->getCharacterName();
-	killerName = uniName.c_str();
+	killerName = uniName.toString();
 
 	if (pointsLost > 0) {
 		switch (System::random(2)) {
 		case 0:
-			defeatedMsg << "You have been killed by " << killerName.c_str() << ". Your new player combat rating is " << newRating << ".";
+			defeatedMsg << "You have been killed by " << killerName.toCharArray() << ". Your new player combat rating is " << newRating << ".";
 			break;
 		case 1:
-			defeatedMsg << "You have fallen prey to " << killerName.c_str() << ". Your new player combat rating is " << newRating << ".";
+			defeatedMsg << "You have fallen prey to " << killerName.toCharArray() << ". Your new player combat rating is " << newRating << ".";
 			break;
 		case 2:
 		default:
-			defeatedMsg << "You have perished at the hand of " << killerName.c_str() << ". Your new player combat rating is " << newRating << ".";
+			defeatedMsg << "You have perished at the hand of " << killerName.toCharArray() << ". Your new player combat rating is " << newRating << ".";
 			break;
 		}
 	} else {
-		defeatedMsg << "Although you have fallen at the hands of " << killerName.c_str() << ",  your cannot lose any more rating points at this time.  Your player combat rating remains at " << newRating << ".";
+		defeatedMsg << "Although you have fallen at the hands of " << killerName.toCharArray() << ",  your cannot lose any more rating points at this time.  Your player combat rating remains at " << newRating << ".";
 	}
 
 	sendSystemMessage("base_player", "prose_victim_dead", killer->getObjectID()); //You were slain by %TT. Requesting clone activation...
 
-	sendSystemMessage(defeatedMsg.str());
+	sendSystemMessage(defeatedMsg.toString());
 
 	clearDuelList();
 	handleDeath();
@@ -2106,11 +2141,15 @@ void PlayerImplementation::handleDeath() {
 	incapacitationCount = 0;
 
 	resurrectionExpires.update();
-	resurrectionExpires.addMiliTime(5 * 60 * 1000); //5 minutse till expires
+	resurrectionExpires.addMiliTime(5 * 60 * 1000); //5 minutes till expires
 
 	resurrectCountdown();
 
 	rescheduleRecovery(2000);
+
+	if (powerboosted) {
+		removePowerboost();
+	}
 }
 
 void PlayerImplementation::changePosture(int post) {
@@ -2145,7 +2184,7 @@ void PlayerImplementation::changePosture(int post) {
 			delete sampleEvent;
 			sampleEvent = NULL;
 
-			string str = "";
+			String str = "";
 			sampleEvent = new SampleEvent(_this, str, true);
 			server->addEvent(sampleEvent, time);
 			setCancelSample(true);
@@ -2162,8 +2201,20 @@ void PlayerImplementation::changePosture(int post) {
 
 	if (meditating) {
 		updateMood(Races::getMood(moodid));
+		clearState(CreatureState::ALERT);
+		updateStates();
 		meditating = false;
 		sendSystemMessage("teraskasi", "med_end");
+	}
+
+	if (foraging) {
+		foraging = false;
+		if (forageDelayEvent != NULL){
+			if (forageDelayEvent->isQueued()) {
+				server->removeEvent(forageDelayEvent);
+			}
+		}
+	    sendSystemMessage("skl_use", "sys_forage_movefail");  //"You failed to forage because you moved.
 	}
 
 	if (isInCombat() && post == CreaturePosture::SITTING) {
@@ -2187,16 +2238,36 @@ void PlayerImplementation::changePosture(int post) {
 }
 
 void PlayerImplementation::activateRecovery() {
-	if (recoveryEvent == NULL)
+	if (recoveryEvent == NULL) {
 		recoveryEvent = new PlayerRecoveryEvent(_this);
 
-	if (!recoveryEvent->isQueued())
 		server->addEvent(recoveryEvent, 3000);
+	}
+}
+
+void PlayerImplementation::activateSaveStateEvent() {
+	if (playerSaveStateEvent == NULL) {
+		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
+
+		server->addEvent(playerSaveStateEvent);
+	}
+}
+
+void PlayerImplementation::rescheduleSaveStateEvent(int time) {
+	if ((playerSaveStateEvent != NULL) && playerSaveStateEvent->isQueued()) {
+		server->removeEvent(playerSaveStateEvent);
+	} else
+		playerSaveStateEvent = new PlayerSaveStateEvent(_this);
+
+	server->addEvent(playerSaveStateEvent, time);
 }
 
 void PlayerImplementation::rescheduleRecovery(int time) {
-	if (recoveryEvent->isQueued())
+	if (recoveryEvent != NULL && recoveryEvent->isQueued()) {
 		server->removeEvent(recoveryEvent);
+	} else {
+		recoveryEvent = new PlayerRecoveryEvent(_this);
+	}
 
 	server->addEvent(recoveryEvent, time);
 }
@@ -2209,6 +2280,9 @@ void PlayerImplementation::doRecovery() {
 			unload();
 
 			setOffline();
+
+			if (owner != NULL)
+				owner->closeConnection(false);
 
 			return;
 		} else {
@@ -2231,16 +2305,16 @@ void PlayerImplementation::doRecovery() {
 	}
 
 
-	if (!isInCombat() && isOnFullHealth() && ((playerObject != NULL && isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
+	/*if (!isInCombat() && isOnFullHealth() && ((playerObject != NULL && isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
 		return;
-	} else if (lastCombatAction.miliDifference() > 15000) {
+	} else*/ if (lastCombatAction.miliDifference() > 15000) {
 		clearCombatState();
 	} else if (isInCombat() && targetObject != NULL && !hasState(CreatureState::PEACE)
 			&& (commandQueue.size() == 0)) {
 		queueAction(_this, getTargetID(), 0xA8FEF90A, ++actionCounter, "");
 	}
 
-	if (!isOnFullHealth() || hasWounds() || hasShockWounds())
+	if (!isOnFullHealth() || hasWounds() || hasShockWounds() || powerboosted)
 		calculateHAMregen();
 
 	if (hasStates())
@@ -2274,6 +2348,8 @@ void PlayerImplementation::resurrect() {
 	}
 
 	changePosture(CreaturePosture::UPRIGHT);
+
+	rescheduleRecovery(3000);
 }
 
 void PlayerImplementation::doStateRecovery() {
@@ -2317,21 +2393,24 @@ void PlayerImplementation::doStateRecovery() {
 }
 
 void PlayerImplementation::activateDigest() {
-	if (!digestEvent->isQueued())
+	if (digestEvent == NULL) {
+		digestEvent = new PlayerDigestEvent(_this);
+
 		server->addEvent(digestEvent, 18000);
+	}
 }
 
 void PlayerImplementation::doDigest() {
-	if(playerObject == NULL)
+	if (playerObject == NULL)
 		return;
 
 	if (!playerObject->isDigesting())
 		return;
 
-	if(playerObject->getFoodFilling() > 0)
+	if (playerObject->getFoodFilling() > 0)
 		playerObject->changeFoodFilling(-1, true);
 
-	if(playerObject->getDrinkFilling() > 0)
+	if (playerObject->getDrinkFilling() > 0)
 		playerObject->changeDrinkFilling(-1, true);
 
 	activateDigest();
@@ -2353,17 +2432,17 @@ void PlayerImplementation::activateClone() {
 
 	cloneMenu->setPromptTitle("@base_player:revive_title");
 
-	string clonerName = "Mos Eisley";
+	String clonerName = "Mos Eisley";
 
 	//TODO: Integrate this menu with cloning system.
 
-	stringstream promptText;
+	StringBuffer promptText;
 	promptText << "Closest:\t\t\t" << clonerName << "\n"
 			   << "Pre-Designated: \t" << clonerName << "\n" //Space before tab character is needed for proper formatting in this case.
 			   << "Cash Balance:\t\t" << getCashCredits() << "\n\n"
 			   << "Select the desired option and click OK.";
 
-	cloneMenu->setPromptText(promptText.str());
+	cloneMenu->setPromptText(promptText.toString());
 
 	cloneMenu->addMenuItem("@base_player:revive_closest");
 	cloneMenu->addMenuItem("@base_player:revive_bind");
@@ -2391,72 +2470,72 @@ void PlayerImplementation::doClone() {
 
 	switch (zoneID) {
 	case 0:	// Corellia
-		if (faction == String::hashCode("rebel"))
+		if (isRebel())
 			doWarp(-326.0f, -4640.0f);				// shuttle 1
 		else
 			doWarp(-28.0f, -4438.0f);				// shuttle 2
 
 		break;
 	case 1:	// Dantooine
-		if (faction == String::hashCode("rebel"))			// Mining Outpost
+		if (isRebel())			// Mining Outpost
 			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);
 		else
  			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);
 
  		break;
 	case 2: // Dathomir
-		if (faction == String::hashCode("rebel"))			// science outpost
+		if (isRebel())			// science outpost
 			doWarp(-76.0f, -1627.0f);
 		else
 			doWarp(618.0f, 3054.0f);						// trade outpost
 
 		break;
 	case 3: // Endor
-		if (faction == String::hashCode("rebel"))
+		if (isRebel())
 			doWarp(3.9f, 0.1f, 3.7f, 0, 6705359);
 		else
  			doWarp(3.9f, 0.1f, 3.6f, 0, 6705359);
 
  		break;
 	case 4: // Lok
-		if (faction == String::hashCode("rebel"))			// Nyms Stronghold
+		if (isRebel())			// Nyms Stronghold
 			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);
 		else
  			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);
 
  		break;
 	case 5: // Naboo
-		if (faction == String::hashCode("rebel"))			// Theed
+		if (isRebel())			// Theed
 			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);
 		else
  			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);
 
  		break;
 	case 6: // Rori
-		if (faction == String::hashCode("rebel"))			// Restuss
+		if (isRebel())			// Restuss
 			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);
 		else
  			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);
 
  		break;
 	case 7: // Talus
-		if (faction == String::hashCode("rebel"))			//  Daeric
+		if (isRebel())			//  Daeric
 			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);
 		else
  			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);
 
  		break;
 	case 9: // Yavin4
-		if (faction == String::hashCode("rebel"))			//  Labor Camp
+		if (isRebel())			//  Labor Camp
 			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);
 		else
  			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);
 
  		break;
 	default:
-		if (faction == String::hashCode("rebel"))
+		if (isRebel())
 			doWarp(-130.0f, -5300.0f);
-		else if (faction == String::hashCode("imperial"))
+		else if (isImperial())
      		//doWarp(10.0f, -5480.0f, 0, true);
 			doWarp(-2.8f, 0.1f, -4.8f, 0, 3565798);
 		else
@@ -2471,7 +2550,7 @@ void PlayerImplementation::doClone() {
 
 	decayInventory();
 
-	changeForcePowerBar(getForcePowerMax());
+	changeForcePowerBar(0);
 
 	if (isOvert())
 		setCovert();
@@ -2480,7 +2559,6 @@ void PlayerImplementation::doClone() {
 
 	rescheduleRecovery();
 }
-
 
 void PlayerImplementation::sendConsentBox() {
 	if (consentList.size() <= 0) {
@@ -2505,8 +2583,8 @@ void PlayerImplementation::sendConsentBox() {
 	consentBox->setPromptText("Below is listed all players whom you have given consent.");
 
 	for (int i=0; i < consentList.size(); i++) {
-		string entryName = consentList.get(i);
-		if (!entryName.empty())
+		String entryName = consentList.get(i);
+		if (!entryName.isEmpty())
 			consentBox->addMenuItem(entryName);
 	}
 
@@ -2514,45 +2592,295 @@ void PlayerImplementation::sendConsentBox() {
 	sendMessage(consentBox->generateMessage());
 }
 
-void PlayerImplementation::doPowerboost() {
-	if (powerboosted) {
-		sendSystemMessage("teraskasi", "powerboost_active");
-		return;
-	}
+void PlayerImplementation::startForaging(int foragetype) {
+	foraging = true;
 
-	int duration = 0;
+	//Collect player's current position.
+	forageX = getPositionX();
+	forageY = getPositionY();
+	foragePlanet = zone->getZoneID();
 
-	if (!meditating) {
-		sendSystemMessage("teraskasi", "powerboost_fail");
-		return;
-	}
-
-	string txt0 = "combat_unarmed_accuracy_02";
-	string txt1 = "combat_unarmed_master";
-
-	if (hasSkillBox(txt1))
-		// ToDo: Master duration modifier is missing in the packet?
-		// TKM should have 10 Minutes powerboost but the client sends only 5 minute powerboost at master as well
-		//duration = 600000;
-
-		duration = 300000;
-
-	else if (hasSkillBox(txt0))
-		duration = 300000;
-
-	//Fire the "begin"-event
-	sendSystemMessage("teraskasi", "powerboost_begin");
-
-	//Queue the "wane"-event
-	server->addEvent(powerboostEventWane, duration-60000);
-
-	//Queue the "...come to an end"-event
-	server->addEvent(powerboostEventEnd, duration);
-
-	powerboosted = true;
+	//Queue the forage delay event.
+	int delay = 8500;
+	forageDelayEvent = new ForageDelayEvent(this, foragetype);
+	server->addEvent(forageDelayEvent, delay);
 }
 
+void PlayerImplementation::finishForaging(int foragetype) {
+    if (isLinkDead() || !isForaging())
+    	return;
 
+    foraging = false;
+
+    //Check if player entered combat.
+    if (isInCombat() || isDead() || isIncapacitated()) {
+    	sendSystemMessage("skl_use", "sys_forage_combatfail"); //"Combat distracts you from your foraging attempt."
+    	return;
+    }
+
+    //Check if player moved while foraging.
+    bool success = forageMoveCheck(forageX, forageY, foragePlanet);
+    if (success == false)
+    	return;
+
+    //Determine if player is allowed to forage in this area.
+    success = forageZoneCheck(foragetype);
+    if (success == false)
+    	return;
+
+    //Determine if player gets items.
+    int forageMod;
+    int myTickets;
+    giveReg = 0;
+    giveBonus = 0;
+
+    if (foragetype == 0) {
+    	forageMod = getSkillMod("foraging");
+    	myTickets = (int)(25 + (forageMod * 0.75));
+
+    	giveReg += lottery(myTickets, 99);
+    	giveBonus = lottery(myTickets, 49999); //1 in 500 at +100 mod.
+
+    	if (forageMod >= 25)
+    		giveReg += lottery(myTickets, 2999);
+
+    	if (forageMod >=50)
+        	giveReg += lottery(myTickets, 2999);
+    }
+
+    if (foragetype == 1) {
+    	forageMod = getSkillMod("medical_foraging");
+    	myTickets = (int)(50 + (forageMod * 0.50));
+
+    	giveReg += lottery(myTickets, 99);
+        giveBonus = lottery(myTickets, 249999); //1 in 2500 at +100 mod.
+
+        if (giveBonus == 1) {
+        	giveBonus = 2; //Give 2 identical items with same serial number.
+        	giveReg = 0;
+        }
+    }
+
+    //Send success or fail message.
+    if (giveReg > 0 || giveBonus > 0)
+    	sendSystemMessage("skl_use", "sys_forage_success"); //"Your attempt at foraging was a success!"
+
+    else {
+       	sendSystemMessage("skl_use", "sys_forage_fail"); //"You failed to find anything worth foraging."
+        return;
+    }
+
+    //Discard items if the player's inventory is full.
+    success = discardForageItems();
+    if (success == false)
+        	return;
+
+    //Give items to the player.
+    giveForageItems(foragetype);
+}
+
+bool PlayerImplementation::forageMoveCheck(float startx, float starty, int startplanet) {
+    int movementX = abs((int)getPositionX() - (int)startx);
+    int movementY = abs((int)getPositionY() - (int)starty);
+
+    if (movementX > 5 || movementY > 5 || zone->getZoneID() != startplanet || isMounted() || !isStanding()) {
+    	sendSystemMessage("skl_use", "sys_forage_movefail"); //"You fail to forage because you moved."
+    	return false;
+    } else
+    	return true;
+}
+
+bool PlayerImplementation::forageZoneCheck(int foragetype) {
+	ForageZone* fZone;
+	Vector<ForageZone*>* zoneContainer;
+	int8 zoneStatus = -1;
+	int8 authorized = -1;
+
+	//Point to the correct forage zone container.
+	if (foragetype == 0)
+		zoneContainer = &forageZones;
+	else
+		zoneContainer = &medForageZones;
+
+	//Check each zone for permission to forage.
+	for (int i = 0; i < zoneContainer->size(); i++) {
+		fZone = zoneContainer->get(i);
+		zoneStatus = fZone->zonePermission(forageX, forageY, foragePlanet);
+
+        if (zoneStatus == 0) { //Zone is time expired, delete.
+            zoneContainer->remove(i);
+            i -= 1; //Indexes shift down 1 when deleting an element, compensate.
+        }
+
+        //If zoneStatus == 1, player is not in the zone but it's not expired, so ignore it.
+
+        if (zoneStatus == 2) { //Player is in this zone but was allowed to forage.
+        	authorized = i; //Remember which zone gave permission.
+        }
+
+        if (zoneStatus == 3) { //Player is not allowed to forage in this zone, deny.
+        	sendSystemMessage("skl_use", "sys_forage_empty"); //"There is nothing in this area to forage."
+        	return false;
+        }
+    }
+
+	//Check if a zone gave permission to forage.
+    if (authorized != -1) { //A zone gave permission to forage.
+    	fZone = zoneContainer->get(authorized);
+    	fZone->uses += 1; //Add 1 use to the last zone to allow forage (zones can overlap).
+
+    } else { //Player is not in any zones, so make a new one.
+    	if (zoneContainer->size() == 20) { //Determines how many zones to remember.
+    		zoneContainer->remove(0); //If at capacity, delete the oldest zone.
+    	}
+
+    	ForageZone* newZone = new ForageZone(forageX, forageY, foragePlanet);
+    	zoneContainer->add(newZone);
+    }
+    return true;
+}
+
+int PlayerImplementation::lottery(int mytickets, int totaltickets) {
+	int target = totaltickets - mytickets;
+    int randomNum = System::random(totaltickets);
+
+    if (randomNum > target)
+    	return 1; //Win.
+    else
+    	return 0; //Lose.
+}
+
+bool PlayerImplementation::discardForageItems() {
+    Inventory* inventory = getInventory();
+
+    int inventoryRoom = InventoryImplementation::MAXUNEQUIPPEDCOUNT - inventory->getUnequippedItemCount();
+
+    if (inventoryRoom < 1) {
+        sendSystemMessage("skl_use", "sys_forage_noroom"); //"Some foraged items were discarded, because your inventory is full."
+ 	    return false;
+    }
+
+    int itemCount = giveReg + giveBonus;
+    int drop = itemCount - inventoryRoom;
+
+    if (drop > 0) {
+        sendSystemMessage("skl_use", "sys_forage_noroom");
+
+        while (drop > 0) {
+               if (giveReg == 0) break;
+               giveReg -= 1;
+               drop -= 1;
+        }
+
+        while (drop > 0) {
+               if (giveBonus == 0) break;
+               giveBonus -= 1;
+               drop -= 1;
+        }
+    }
+    return true;
+}
+
+void PlayerImplementation::giveForageItems(int foragetype) {
+	ItemManager* itemManager = getZone()->getZoneServer()->getItemManager();
+	ResourceManager* resourceManager = getZone()->getZoneServer()->getResourceManager();
+
+    if (foragetype == 0) {
+    		itemManager->giveForageItem(_this, 1, giveReg); //basic forage items.
+
+        if (giveBonus == 1)
+        	itemManager->giveForageItem(_this, 2, 1); //rare forage item.
+    }
+
+    if (foragetype == 1) {
+        if (giveReg == 1) {
+	    	int randnum = System::random(99);
+
+	    	if (randnum < 25) { //Give food.
+	    		itemManager->giveForageItem(_this, 3, 1); //medicalforage food.
+	    		return;
+	    	}
+	    	if (randnum < 50) { //Give resource.
+                resourceManager->giveForageResource(_this, forageX, forageY, foragePlanet);
+	    		return;
+	        }
+
+	    	if (randnum < 100) { //Give component.
+	    		randnum = System::random(99);
+	    		if (randnum < 85) {
+	    			itemManager->giveForageItem(_this, 4, 1); //basic component.
+	    		} else {
+	    			itemManager->giveForageItem(_this, 5, 1); //advanced component.
+	    		}
+	    		return;
+	    	}
+        }
+
+    	if (giveBonus > 0) //Give rare components.
+    		itemManager->giveForageItem(_this, 6, giveBonus); //exceptional component.
+    }
+}
+
+bool PlayerImplementation::doPowerboost() {
+	uint32 pbCRC = 0x8C2221CB; //powerboost
+	PowerboostSelfSkill* skill = (PowerboostSelfSkill*)creatureSkills.get(pbCRC); //Get the Powerboost skill.
+
+	//Check if already powerboosted.
+	if (powerboosted) {
+		sendSystemMessage("teraskasi", "powerboost_active"); //"[meditation] You are unable to channel your energies any further."
+		return false;
+	}
+
+    //Make sure player is meditating.
+	if (!meditating) {
+		sendSystemMessage("teraskasi", "powerboost_fail"); //"You must be meditating to perform that command."
+		return false;
+	}
+
+	//Check if player has enough mind.
+	float bonus = skill->getBonus();
+	int availableMind = getMindMax() - getMindWounds();
+    if (availableMind <= getBaseMind() * bonus) {
+    	sendSystemMessage("teraskasi", "powerboost_mind"); //"[meditation] You currently lack the mental capacity to focus your energies."
+    	return false;
+    }
+
+	//Calculate duration.
+	int meditateMod = getSkillMod("meditate");
+	int duration = 300000 + (3000 * meditateMod);
+
+    //Start Powerboost.
+    powerboosted = true;
+	sendSystemMessage("teraskasi", "powerboost_begin"); //"[meditation] You focus your energies into your physical form."
+
+	//Queue the wane event.
+	if (powerboostEventWane != NULL) {
+		if (powerboostEventWane->isQueued()) {
+			server->removeEvent(powerboostEventWane);
+		}
+	} else {
+		powerboostEventWane = new PowerboostEventWane(_this, skill);
+	}
+
+	server->addEvent(powerboostEventWane, duration);
+
+	return true;
+}
+
+void PlayerImplementation::removePowerboost() {
+	if (!powerboosted)
+		return;
+
+	if (powerboostEventWane != NULL) {
+		if (powerboostEventWane->isQueued()) {
+			server->removeEvent(powerboostEventWane);
+		}
+	}
+
+	CreatureObject* creature = (CreatureObject*)_this;
+	creature->removePowerboost();
+	powerboosted = false;
+}
 
 void PlayerImplementation::doCenterOfBeing() {
 	if (centered) {
@@ -2598,6 +2926,7 @@ void PlayerImplementation::doCenterOfBeing() {
 	//defenseBonus += efficacy;
 	centeredBonus = efficacy;
 
+	sendSystemMessage("combat_effects", "center_start");
 	showFlyText("combat_effects", "center_start_fly", 0, 255, 0);
 
 	server->addEvent(centerOfBeingEvent, duration * 1000);
@@ -2614,6 +2943,7 @@ void PlayerImplementation::removeCenterOfBeing() {
 	//defenseBonus -= centeredBonus;
 	centeredBonus = 0;
 
+	sendSystemMessage("combat_effects", "center_stop");
 	showFlyText("combat_effects", "center_stop_fly", 255, 0, 0);
 	centered = false;
 }
@@ -2703,7 +3033,7 @@ bool PlayerImplementation::changeForcePowerBar(int32 fp) {
 
 	setForcePowerBar(MIN(newForce, playerObject->getForcePowerMax()));
 
-	if(getForcePower() < getForcePowerMax())
+	if (fp < 0)
 		activateRecovery();
 
 	return true;
@@ -2796,7 +3126,7 @@ void PlayerImplementation::addInventoryItem(TangibleObject* item) {
 
 	CreatureObjectImplementation::addInventoryItem(item);
 
-	if(item->isEquipped())
+	if (item->isEquipped())
 		equipPlayerItem(item);
 
 }
@@ -3063,9 +3393,9 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 	powerup->wlock();
 
 	if (weapon->getPowerupUses() == 0) {
-		stringstream msg;
-		msg << "You powerup your " << weapon->getName().c_str() << " with " << powerup->getName().c_str();
-		sendSystemMessage(msg.str());
+		StringBuffer msg;
+		msg << "You powerup your " << weapon->getName().toString() << " with " << powerup->getName().toString();
+		sendSystemMessage(msg.toString());
 		powerup->apply(weapon);
 		powerup->remove(_this);
 
@@ -3301,6 +3631,15 @@ void PlayerImplementation::setOnline() {
 	onlineStatus = ONLINE;
 }
 
+void PlayerImplementation::setOffline() {
+	if(isLinkDead()) {
+		if (playerObject != NULL)
+			playerObject->clearCharacterBit(PlayerObjectImplementation::LD, true);
+	}
+
+	onlineStatus = OFFLINE;
+}
+
 bool PlayerImplementation::isInDuelWith(Player* targetPlayer, bool doLock) {
 	if (_this == targetPlayer)
 		return false;
@@ -3350,14 +3689,10 @@ void PlayerImplementation::clearDuelList() {
 }
 
 // Mission Functions
-
-bool PlayerImplementation::isOnCurMisoKey(string tmk) {
+bool PlayerImplementation::isOnCurMisoKey(String tmk) {
 	tmk += ",";
 
-	size_t pos;
-	pos = curMisoKeys.find(tmk);
-
-	if (pos == string::npos) {
+	if (curMisoKeys.indexOf(tmk) == -1) {
 		//printf("PlayerImplementation::isOnCurMisoKey() : player does not have mission.");
 		return false;
 	} else {
@@ -3366,34 +3701,191 @@ bool PlayerImplementation::isOnCurMisoKey(string tmk) {
 	}
 }
 
-void PlayerImplementation::removeFromCurMisoKeys(string tck) {
+void PlayerImplementation::removeFromCurMisoKeys(String tck) {
 	tck += ",";
 
-	size_t pos;
-	pos = curMisoKeys.find(tck);
-
-	if (pos == string::npos) {
+	int pos = curMisoKeys.indexOf(tck);
+	if (pos == -1) {
 		printf("PlayerImplementation::removeFromCurMisoKeys() : player does not have mission.");
 		return;
 	}
 
-	//printf("Debug: erasing tck = %s. curMisoKeys = %s\n", tck.c_str(), curMisoKeys.c_str());
-	curMisoKeys.erase(pos, tck.size());
-	//printf("Debug: Tck erased = %s. curMisoKeys = %s\n", tck.c_str(), curMisoKeys.c_str());
+	//printf("Debug: erasing tck = %s. curMisoKeys = %s\n", tck.toCharArray(), curMisoKeys.toCharArray());
+
+	StringBuffer tempKeys(curMisoKeys);
+	tempKeys.deleteRange(pos, pos + tck.length());
+
+	curMisoKeys = tempKeys.toString();
+
+	//printf("Debug: Tck erased = %s. curMisoKeys = %s\n", tck.toCharArray(), curMisoKeys.toCharArray());
 }
 
-bool PlayerImplementation::hasCompletedMisoKey(string& tmk) {
+bool PlayerImplementation::hasCompletedMisoKey(String& tmk) {
 	tmk += ",";
 
-	size_t pos;
-	pos = finMisoKeys.find(tmk);
-
-	if (pos == string::npos) {
+	if (finMisoKeys.indexOf(tmk) == -1) {
 		//printf("PlayerImplementation::hasCompletedMisoKey() : player hasnt completed the mission.");
 		return false;
 	} else {
 		//printf("PlayerImplementation::hasCompletedMisoKey() : player has completed mission.");
 		return true;
+	}
+}
+
+//Must loop through mission save list, combine dbvarname with ALL related listvalues
+void PlayerImplementation::saveMissions() {
+	try {
+		String getStr = "";
+		String curKey = "";
+		String curVal = "";
+
+		//COMMIT THE current and finished mission keys HERE
+
+		//Get the mission manager:
+		MissionManager* misoMgr = server->getMissionManager();
+
+		StringTokenizer mkeyTok(curMisoKeys);
+		mkeyTok.setDelimeter(",");
+		while(mkeyTok.hasMoreTokens()) {
+			//Get next mission key to save:
+			mkeyTok.getStringToken(curKey);
+
+			//Compile objective_vars for db:
+			getStr = curKey + ",objective_vars";
+			if (missionSaveList.contains(getStr)) {
+				curVal = missionSaveList.get(getStr);
+
+				//Commit to db:
+				misoMgr->doMissionSave(_this, curKey, curVal, "", true);
+			}
+
+			//Compile kill_count_vars for db:
+			getStr = curKey + ",kill_count_vars";
+			if (missionSaveList.contains(getStr)) {
+				curVal = missionSaveList.get(getStr);
+				//Commit to db:
+				misoMgr->doMissionSave(_this, curKey, "", curVal, true);
+			}
+		}
+	} catch (...) {
+		info("Unreported Exception in PlayerImplementation::saveMissions()");
+	}
+}
+
+//Updates mission save in missionSaveList. List key = "misokey,dbvarname" List value: "51452=5,23232=2,"
+void PlayerImplementation::updateMissionSave(String misoKey, const String& dbVar, String& varName, String& varData, bool doLock) {
+	try {
+		wlock(doLock);
+
+		if(varName.length() == 0 || varData.length() == 0 || dbVar.length() == 0 || misoKey.length() == 0)
+			return;
+
+		String getStr = misoKey + "," + dbVar;
+
+		//If the misokey/dbvar pair exists in the missionSaveList, update. If not, put it.
+		if(missionSaveList.contains(getStr)) {
+			//Grab the full varName/varData list for the corresponding dbVar
+			String oldValNameDataList = missionSaveList.get(getStr);
+			String newValNameDataList = "";
+			String curPairStr, curPairName, curPairValue = "";
+
+			//Tokenize the entire list. Grab pairs
+			StringTokenizer oldList(oldValNameDataList);
+			oldList.setDelimeter(",");
+
+			//Drop the misokey/dbvar from the save list. We're rebuilding it here:
+			missionSaveList.drop(getStr);
+
+			//Loop through name/value list for the particular db var.
+			while(oldList.hasMoreTokens()) {
+				//Set current pair
+				oldList.getStringToken(curPairStr);
+
+				//Separate current pair. Name, value. ex. 51452=5
+				StringTokenizer curPairTok(curPairStr);
+				curPairTok.setDelimeter("=");
+				curPairTok.getStringToken(curPairName);
+				curPairTok.getStringToken(curPairValue);
+
+				//If the we find the var we are trying to update, update the value.
+				if (curPairName == varName) {
+					//add to end of new value list
+					newValNameDataList += curPairName + "=" + varData + ",";
+				} else { //If we havent found the var we are trying to update, add old name/val list pair back
+					newValNameDataList += curPairName + "=" + curPairValue + ",";
+				}
+			}
+
+			//Put the new name/value pairs under the recreated key:
+			missionSaveList.put(getStr, newValNameDataList);
+		} else {
+			String listStr = missionSaveList.get(getStr);
+
+			//Tack on the new name/value pair to the missionSaveList:
+			listStr += varName + "=" + varData + ",";
+
+			//Drop the misokey/dbvar from the save list.
+			missionSaveList.drop(getStr);
+
+			//Add new list back in:
+			missionSaveList.put(getStr, listStr);
+		}
+
+		unlock(doLock);
+	} catch (...) {
+		info("Unreported Exception in PlayerImplementation::updateMissionSave");
+	}
+}
+
+//Called on player load. Clears mission save vars. Grabs all from DB
+void PlayerImplementation::fillMissionSaveVars() {
+	try {
+		//Get the mission manager:
+		MissionManager* misoMgr = server->getMissionManager();
+
+		//Grab complete statuses for missions
+		curMisoKeys = "none";
+		finMisoKeys = "none";
+		misoMgr->getMisoKeysStatus(_this, false, curMisoKeys, true);
+		misoMgr->getMisoKeysStatus(_this, true, finMisoKeys, true);
+
+		if(curMisoKeys == "none" || finMisoKeys == "none") {
+			printf("error in fillMissionSaveVars, curMisoKeys and finMisoKeys never touched\n");
+			return;
+		}
+
+		//Tokenize all current mission keys.
+		StringTokenizer mkeyTok(curMisoKeys);
+		mkeyTok.setDelimeter(",");
+
+		//If the missionSaveList has already been filled, bail out.
+		if(missionSaveList.size() != 0) {
+			return;
+			//for(int i = 0; i <= missionSaveList.size(); i++) {
+			//	missionSaveList.drop();
+			//}
+		}
+
+		//Loop through all current mission keys
+		String curMisoKey = "";
+		while (mkeyTok.hasMoreTokens()) {
+			mkeyTok.getStringToken(curMisoKey);
+
+			String objective_vars, kill_count_vars = "none";
+			misoMgr->getMissionSaveVarLine(_this, curMisoKey, "objective_vars", objective_vars, false);
+			misoMgr->getMissionSaveVarLine(_this, curMisoKey, "kill_count_vars", kill_count_vars, false);
+
+			if (objective_vars == "none" || kill_count_vars == "none") {
+				printf("error in fillMissionSaveVars, objective_vars and kill_count_vars never touched\n");
+				continue;
+			}
+
+			//Add to missionSaveList:
+			missionSaveList.put(curMisoKey + ",objective_vars", objective_vars);
+			missionSaveList.put(curMisoKey + ",kill_count_vars", kill_count_vars);
+		}
+	} catch (...) {
+		info("Unreported Exception in PlayerImplementation::fillMissionSaveVars");
 	}
 }
 
@@ -3454,38 +3946,38 @@ void PlayerImplementation::removeResourceFromCraft(uint64 resID, int slot, int c
 	craftingManager->removeIngredientFromSlot(_this, slot, counter);
 }
 
-void PlayerImplementation::nextCraftingStage(string test) {
+void PlayerImplementation::nextCraftingStage(String test) {
 	CraftingManager* craftingManager = server->getCraftingManager();
 	craftingManager->nextCraftingStage(_this, test);
 }
 
-void PlayerImplementation::craftingCustomization(string name, int condition, string customizationstring) {
+void PlayerImplementation::craftingCustomization(String name, int condition, String customizationString) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->craftingCustomization(_this, name, condition, customizationstring);
+	craftingManager->craftingCustomization(_this, name, condition, customizationString);
 }
 
-void PlayerImplementation::createPrototype(string count) {
+void PlayerImplementation::createPrototype(String count) {
 	CraftingManager* craftingManager = server->getCraftingManager();
 	craftingManager->createPrototype(_this, count);
 }
 
-void PlayerImplementation::createSchematic(string count) {
+void PlayerImplementation::createSchematic(String count) {
 	CraftingManager* craftingManager = server->getCraftingManager();
 	craftingManager->createSchematic(_this, count);
 }
 
-void PlayerImplementation::handleExperimenting(int count, int numRowsAttempted, string expstring) {
+void PlayerImplementation::handleExperimenting(int count, int numRowsAttempted, String expString) {
 	CraftingManager* craftingManager = server->getCraftingManager();
-	craftingManager->handleExperimenting(_this, count, numRowsAttempted, expstring);
+	craftingManager->handleExperimenting(_this, count, numRowsAttempted, expString);
 }
 // Draft Schematics
 
-void PlayerImplementation::addDraftSchematicsFromGroupName(const string& schematicGroupName) {
+void PlayerImplementation::addDraftSchematicsFromGroupName(const String& schematicGroupName) {
 	CraftingManager* craftingManager = server->getCraftingManager();
 	craftingManager->addDraftSchematicsFromGroupName(_this, schematicGroupName);
 }
 
-void PlayerImplementation::subtractDraftSchematicsFromGroupName(const string& schematicGroupName) {
+void PlayerImplementation::subtractDraftSchematicsFromGroupName(const String& schematicGroupName) {
 	CraftingManager* craftingManager = server->getCraftingManager();
 	craftingManager->subtractDraftSchematicsFromGroupName(_this, schematicGroupName);
 }
@@ -3524,7 +4016,7 @@ void PlayerImplementation::sendDraftSchematics() {
 
 // Get by key
 DraftSchematic* PlayerImplementation::getDraftSchematic(uint32 schematicID) {
-	if(draftSchematicList.contains(schematicID)) {
+	if (draftSchematicList.contains(schematicID)) {
 		return draftSchematicList.get(schematicID);
 	} else {
 		return NULL;
@@ -3533,10 +4025,40 @@ DraftSchematic* PlayerImplementation::getDraftSchematic(uint32 schematicID) {
 
 // Get by index
 DraftSchematic* PlayerImplementation::getDraftSchematic(int index) {
-	if(index >= 0 && index < draftSchematicList.size()) {
+	if (index >= 0 && index < draftSchematicList.size()) {
 		return draftSchematicList.get(index);
 	} else {
 		return NULL;
+	}
+}
+
+void PlayerImplementation::broadcastMessageToOthersAround(Player* player, BaseMessage* msg) {
+	try {
+		Zone* zone = player->getZone();
+		if (zone == NULL)
+			return;
+
+		zone->lock();
+
+		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_this);
+
+			if (object->isPlayer()) {
+				Player* creature = (Player*) object;
+
+				if (creature != player) {
+					if (player->isInRange(creature, 128)) {
+						creature->sendMessage(msg);
+					}
+				}
+			}
+		}
+
+		zone->unlock();
+
+	} catch (...) {
+		zone->unlock();
+		System::out << "Exception PlayerImplementation::broadcastMessageToOthersAround(Player* player, const String& msg)\n";
 	}
 }
 
@@ -3663,13 +4185,131 @@ void PlayerImplementation::toggleGuildPermissionsBit(uint32 bit) {
 		clearGuildPermissionsBit(bit, true);
 }
 
-bool PlayerImplementation::awardBadge(uint32 badgeindex) {
-  	if (badgeindex > 139)
-  		return false;
+void PlayerImplementation::awardBadge(uint8 badge) {
+	if (!Badge::exists(badge))
+		return;
 
-	badges.setBadge(badgeindex);
+	StfParameter * badgeName = new StfParameter();
+	badgeName->addTO("badge_n", Badge::getName(badge));
 
-	return true;
+	if (hasBadge(badge)) {
+		sendSystemMessage("badge_n", "prose_hasbadge", badgeName);
+		delete badgeName;
+		return;
+	}
+
+	badges->setBadge(badge);
+	sendSystemMessage("badge_n", "prose_grant", badgeName);
+	delete badgeName;
+
+	switch (badges->getNumBadges()) {
+	case 5:
+		awardBadge(Badge::COUNT_5);
+		break;
+	case 10:
+		awardBadge(Badge::COUNT_10);
+		break;
+	case 25:
+		awardBadge(Badge::COUNT_25);
+		break;
+	case 50:
+		awardBadge(Badge::COUNT_50);
+		break;
+	case 75:
+		awardBadge(Badge::COUNT_75);
+		break;
+	case 100:
+		awardBadge(Badge::COUNT_100);
+		break;
+	case 125:
+		awardBadge(Badge::COUNT_125);
+		break;
+	default:
+		break;
+	}
+
+	if (Badge::getType(badge) == Badge::EXPLORATION) {
+		switch (badges->getTypeCount(Badge::EXPLORATION)) {
+		case 10:
+			awardBadge(Badge::BDG_EXP_10_BADGES);
+			break;
+		case 20:
+			awardBadge(Badge::BDG_EXP_20_BADGES);
+			break;
+		case 30:
+			awardBadge(Badge::BDG_EXP_30_BADGES);
+			break;
+		case 40:
+			awardBadge(Badge::BDG_EXP_40_BADGES);
+			break;
+		case 45:
+			awardBadge(Badge::BDG_EXP_45_BADGES);
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void PlayerImplementation::removeBadge(uint8 badge) {
+	if (!Badge::exists(badge) || !badges->hasBadge(badge))
+		return;
+
+	StfParameter * badgeName = new StfParameter();
+	badgeName->addTO("badge_n", Badge::getName(badge));
+
+	badges->unsetBadge(badge);
+	sendSystemMessage("badge_n", "prose_revoke", badgeName);
+
+	delete badgeName;
+
+	switch (badges->getNumBadges()) {
+	case 5:
+		removeBadge(Badge::COUNT_5);
+		break;
+	case 10:
+		removeBadge(Badge::COUNT_10);
+		break;
+	case 25:
+		removeBadge(Badge::COUNT_25);
+		break;
+	case 50:
+		removeBadge(Badge::COUNT_50);
+		break;
+	case 75:
+		removeBadge(Badge::COUNT_75);
+		break;
+	case 100:
+		removeBadge(Badge::COUNT_100);
+		break;
+	case 125:
+		removeBadge(Badge::COUNT_125);
+		break;
+	default:
+		break;
+	}
+
+	if (Badge::getType(badge) == Badge::EXPLORATION) {
+		switch (badges->getTypeCount(Badge::EXPLORATION)) {
+		case 9:
+			removeBadge(Badge::BDG_EXP_10_BADGES);
+			break;
+		case 19:
+			removeBadge(Badge::BDG_EXP_20_BADGES);
+			break;
+		case 29:
+			removeBadge(Badge::BDG_EXP_30_BADGES);
+			break;
+		case 39:
+			removeBadge(Badge::BDG_EXP_40_BADGES);
+			break;
+		case 44:
+			removeBadge(Badge::BDG_EXP_45_BADGES);
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void PlayerImplementation::getPlayersNearYou() {
@@ -3777,13 +4417,13 @@ void PlayerImplementation::loadProfessions() {
 	accuracy = getSkillMod("unarmed_accuracy");
 }
 
-bool PlayerImplementation::trainSkillBox(const string& name, bool updateClient) {
+bool PlayerImplementation::trainSkillBox(const String& name, bool updateClient) {
 	ProfessionManager* professionManager = server->getProfessionManager();
 
 	return professionManager->trainSkillBox(name, this, updateClient);
 }
 
-void PlayerImplementation::surrenderSkillBox(const string& name) {
+void PlayerImplementation::surrenderSkillBox(const String& name) {
 	ProfessionManager* professionManager = server->getProfessionManager();
 
 	return professionManager->surrenderSkillBox(name, this);
@@ -3826,16 +4466,16 @@ void PlayerImplementation::setEntertainerEvent() {
 
 	if (isDancing())
 		performance = skillManager->getDance(getPerformanceName());
-	else if(isPlayingMusic() && getInstrument() != NULL)
+	else if (isPlayingMusic() && getInstrument() != NULL)
 		performance = skillManager->getSong(getPerformanceName(), getInstrument()->getInstrumentType());
 	else
 		return;
 
-	if(!performance) { // shouldn't happen
-		stringstream msg;
+	if (!performance) { // shouldn't happen
+		StringBuffer msg;
 		msg << "Performance was null in setEntertainerEvent.  Please report to McMahon! Name: " << getPerformanceName() << " and Type: " << dec << getInstrument()->getInstrumentType();
 
-		sendSystemMessage(msg.str());
+		sendSystemMessage(msg.toString());
 		return;
 	}
 	// I think the getLoopDuration is wrong now...thinking it should just be flat 10 seconds
@@ -3855,12 +4495,12 @@ void PlayerImplementation::addEntertainerHealingXp(int xp) {
 	entEvent->addHealingXp(xp);
 }
 
-void PlayerImplementation::setSurveyEvent(string& resourceName) {
+void PlayerImplementation::setSurveyEvent(String& resourceName) {
 	surveyEvent = new SurveyEvent(_this, resourceName);
 	server->addEvent(surveyEvent, 5000);
 }
 
-void PlayerImplementation::setSampleEvent(string& resourceName, bool firstTime) {
+void PlayerImplementation::setSampleEvent(String& resourceName, bool firstTime) {
 	if (surveyTool == NULL) {
 		sendSystemMessage("Please contact Ritter ASAP and log the exact actions you just took for a bug report. Thank you.");
 		return;
@@ -3916,7 +4556,7 @@ void PlayerImplementation::sendSampleTimeRemaining() {
 	// Precondition: sampleEvent != NULL
 	int time = -(sampleEvent->getTimeStamp().miliDifference()) / 1000;
 
-	unicode ustr = "";
+	UnicodeString ustr = "";
 	ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","tool_recharge_time",ustr,time,false);
 	sendMessage(sysMessage);
 }
@@ -3980,7 +4620,7 @@ void PlayerImplementation::launchFirework(int animationType) {
 	} catch (...) {
 		zone->unlock();
 
-		cout << "unreported Exception on Player::launchFirework()\n";
+		System::out << "unreported Exception on Player::launchFirework()\n";
 	}
 
 	firework->finalize();
@@ -3988,12 +4628,12 @@ void PlayerImplementation::launchFirework(int animationType) {
 
 
 int PlayerImplementation::getSlicingAbility() {
-	string txt0 = "combat_smuggler_novice";
-	string txt1 = "combat_smuggler_slicing_01";
-	string txt2 = "combat_smuggler_slicing_02";
-	string txt3 = "combat_smuggler_slicing_03";
-	string txt4 = "combat_smuggler_slicing_04";
-	string txt5 = "combat_smuggler_master";
+	String txt0 = "combat_smuggler_novice";
+	String txt1 = "combat_smuggler_slicing_01";
+	String txt2 = "combat_smuggler_slicing_02";
+	String txt3 = "combat_smuggler_slicing_03";
+	String txt4 = "combat_smuggler_slicing_04";
+	String txt5 = "combat_smuggler_master";
 
 	if (hasSkillBox(txt5))
 		return 5;
@@ -4020,7 +4660,7 @@ void PlayerImplementation::updateBuffWindow() {
 	}
 }
 
-void PlayerImplementation::queueHeal(TangibleObject* medPack, uint32 actionCRC, const string& attribute) {
+void PlayerImplementation::queueHeal(TangibleObject* medPack, uint32 actionCRC, const String& attribute) {
 	if (medPack == NULL || !medPack->isPharmaceutical()) {
 		sendSystemMessage("healing_response", "healing_resonse_60"); //No valid medicine found.
 		return;
@@ -4028,13 +4668,28 @@ void PlayerImplementation::queueHeal(TangibleObject* medPack, uint32 actionCRC, 
 
 	uint64 objectID = medPack->getObjectID();
 
-	stringstream actionModifier;
-	if (!attribute.empty())
+	StringBuffer actionModifier;
+	if (!attribute.isEmpty())
 		actionModifier << attribute << "|";
 
 	actionModifier << objectID;
 
-	queueAction(_this, getTargetID(), actionCRC, ++actionCounter, actionModifier.str());
+	queueAction(_this, getTargetID(), actionCRC, ++actionCounter, actionModifier.toString());
+}
+
+void PlayerImplementation::queueThrow(TangibleObject* throwItem, uint32 actionCRC) {
+	//if (medPack == NULL || !medPack->isPharmaceutical()) {
+	//	sendSystemMessage("healing_response", "healing_resonse_60"); //No valid medicine found.
+	//	return;
+	//}
+
+	uint64 objectID = throwItem->getObjectID();
+
+	StringBuffer actionModifier;
+
+	actionModifier << objectID;
+
+	queueAction(_this, getTargetID(), actionCRC, ++actionCounter, actionModifier.toString());
 }
 
 void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
@@ -4067,24 +4722,24 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 void PlayerImplementation::saveDatapad(Player* player) {
 	try {
 		Datapad* datapad = player->getDatapad();
+
 		if (datapad == NULL)
 			return;
 
-		string name, detailName, appearance, mountApp, attr, fileName;
-		stringstream query;
+		String name, detailName, appearance, mountApp, attr, fileName;
+
 		uint32 objCRC, itnoCRC;
 		uint64 objID;
 
-		query.str("");
+		StringBuffer query;
 		query << "DELETE FROM datapad where character_id = " << player->getCharacterID() << ";";
+
 		ServerDatabase::instance()->executeStatement(query);
-
-
 
 		for (int i = 0; i < datapad->objectsSize(); ++i) {
 			name = "";
 			detailName = "";
-			appearance = "";
+			appearance = " "; //There's a reason for the whitespace - don't change it plz !
 			attr = "";
 			mountApp = "";
 			fileName = "";
@@ -4110,11 +4765,10 @@ void PlayerImplementation::saveDatapad(Player* player) {
 
 							itnoCRC = mountCreature->getObjectCRC();
 							objID = mountCreature->getObjectID();
-
 							mountCreature->getCharacterAppearance(mountApp);
-
 							fileName = mountCreature->getObjectFileName();
 							attr = mountCreature->getAttributes();
+
 							MySqlDatabase::escapeString(attr);
 
 							if (mountApp != "") {
@@ -4129,12 +4783,14 @@ void PlayerImplementation::saveDatapad(Player* player) {
 					//TODO: Datapad Load/save Pets
 
 					if (itnoCRC != 0 ) {
-						query.str("");
+						query.deleteAll();
 
 						query << "Insert into datapad set character_id = " << player->getCharacterID()
-						<< ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = " << itnoCRC
-						<< ",itemMask = 65535, appearance = '" << appearance.substr(0, appearance.size() - 1)
-						<< "',attributes = '" << attr << "',file_name = '" << fileName << "',obj_id = " << objID << ";";
+							  << ",name = '" << name << "', itnocrc = " << objCRC << ",item_crc = "
+							  << itnoCRC << ",itemMask = 65535, appearance = '"
+							  << appearance.subString(0, appearance.length() - 1)
+							  << "',attributes = '" << attr << "',file_name = '" << fileName << "',obj_id = "
+							  << objID << ";";
 
 						ServerDatabase::instance()->executeStatement(query);
 					}
@@ -4142,16 +4798,19 @@ void PlayerImplementation::saveDatapad(Player* player) {
 			}
 		}
 	} catch (DatabaseException& e) {
-		cout << e.getMessage() << "\n";
-		player->info("DB Exception in PlayerImplementation::saveDatapad(Player* player)");
+		player->error("DB Exception in PlayerImplementation::saveDatapad(Player* player)");
+		player->error(e.getMessage());
+	} catch (Exception& e) {
+		player->error("Exception in PlayerImplementation::saveDatapad(Player* player)");
+		e.printStackTrace();
 	} catch (...) {
-		player->info("Unreported Exception in PlayerImplementation::saveDatapad(Player* player)");
-
+		player->error("Unreported Exception in PlayerImplementation::saveDatapad(Player* player)");
 	}
 }
 
-void PlayerImplementation::addFactionPoints(string faction, uint32 points) {
+void PlayerImplementation::addFactionPoints(String faction, uint32 points) {
 	int currentPoints = factionPointsMap.getFactionPoints(faction);
+
 	uint32 maxPoints = getMaxFactionPoints(faction);
 	uint32 pointsToAdd;
 
@@ -4178,7 +4837,7 @@ void PlayerImplementation::addFactionPoints(string faction, uint32 points) {
 	}
 }
 
-void PlayerImplementation::subtractFactionPoints(string faction, uint32 points) {
+void PlayerImplementation::subtractFactionPoints(String faction, uint32 points) {
 	int currentPoints = factionPointsMap.getFactionPoints(faction);
 	uint32 pointsToAdd;
 
@@ -4190,10 +4849,11 @@ void PlayerImplementation::subtractFactionPoints(string faction, uint32 points) 
 	if (pointsToAdd > 0) {
 		factionPointsMap.subtractFactionPoints(faction, pointsToAdd);
 
-		StfParameter * param = new StfParameter();
+		StfParameter* param = new StfParameter();
 		param->addTO(faction);
 		param->addDI(pointsToAdd);
 		sendSystemMessage("base_player", "prose_lose_faction", param);
+
 		delete param;
 	}
 
@@ -4210,10 +4870,11 @@ void PlayerImplementation::delFactionPoints(Player * player, uint32 amount) {
 		return;
 
 	uint32 charge = (uint32) ceil(amount * FactionRankTable::getDelegateRatio(getFactionRank()));
-	string faction;
-	if (getFaction() == String::hashCode("imperial"))
+
+	String faction;
+	if (isImperial())
 		faction = "imperial";
-	else if (getFaction() == String::hashCode("rebel"))
+	else if (isRebel())
 		faction = "rebel";
 	else
 		return;
@@ -4235,7 +4896,12 @@ void PlayerImplementation::delFactionPoints(Player * player, uint32 amount) {
 	}
 }
 
-void PlayerImplementation::addSuiBoxChoice(string& choice){
+void PlayerImplementation::updateWeather() {
+    ServerWeatherMessage* swm = new ServerWeatherMessage(zone);
+    sendMessage(swm);
+}
+
+void PlayerImplementation::addSuiBoxChoice(String& choice){
 	suiChoicesList->add(choice);
 }
 
@@ -4264,7 +4930,7 @@ uint64 PlayerImplementation::getResourceDeedID(){
 	return resourceDeedID;
 }
 
-int PlayerImplementation::getXpTypeCap(string xptype) {
+int PlayerImplementation::getXpTypeCap(String xptype) {
 	int xpcap = 0;
 	if (xpCapList.contains(xptype))
 	 	xpcap = xpCapList.get(xptype);
@@ -4277,7 +4943,7 @@ int PlayerImplementation::getXpTypeCap(string xptype) {
 void PlayerImplementation::loadXpTypeCap() {
 	resetSkillBoxesIterator();
 	xpCapList.removeAll();
-	while ( hasNextSkillBox()) {
+	while (hasNextSkillBox()) {
 		SkillBox *skillbox = skillBoxes.getNextValue();
 
 		if (skillbox->isNoviceBox()) {
@@ -4287,7 +4953,9 @@ void PlayerImplementation::loadXpTypeCap() {
 			if (prof->isFourByFour()) {
 				for (int j = 1; j <= 4; j++) {
 					FourByFourProfession *curprof = (FourByFourProfession*)prof;
-					plusone = curprof->getBox(1,j);
+
+					plusone = curprof->getBox(j, 1);
+
 					if (xpCapList.contains(plusone->getSkillXpType())) {
 						if (plusone->getSkillXpCap() > xpCapList.get(plusone->getSkillXpType()))
 							xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
@@ -4312,12 +4980,17 @@ void PlayerImplementation::loadXpTypeCap() {
 					xpCapList.put(plusone->getSkillXpType(), plusone->getSkillXpCap());
 			}
 
+		} else if (xpCapList.contains(skillbox->getSkillXpType())) {
+			if (xpCapList.get(skillbox->getSkillXpType()) < skillbox->getSkillXpCap()) {
+				xpCapList.drop(skillbox->getSkillXpType());
+				xpCapList.put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
+			}
 		} else
 			xpCapList.put(skillbox->getSkillXpType(), skillbox->getSkillXpCap());
 	}
 }
 
-int PlayerImplementation::calcPlayerLevel(string xptype) {
+int PlayerImplementation::calcPlayerLevel(String xptype) {
 	resetSkillBoxesIterator();
 	playerLevel = 0;
 
@@ -4467,7 +5140,7 @@ int PlayerImplementation::calcPlayerLevel(string xptype) {
 		case WeaponImplementation::ONEHANDSABER:
 		case WeaponImplementation::TWOHANDSABER:
 		case WeaponImplementation::POLEARMSABER:
-			return calcPlayerLevel(string("jedi_general"));
+			return calcPlayerLevel(String("jedi_general"));
 			break;
 		case WeaponImplementation::RIFLEBEAM:
 		case WeaponImplementation::RIFLEFLAMETHROWER:
@@ -4546,9 +5219,9 @@ void PlayerImplementation::teachPlayer(Player* player) {
 		sbox->setCancelButton(true);
 
 		for (int i = 0; i < trainboxes.size(); i++) {
-			stringstream skillboxname;
+			StringBuffer skillboxname;
 			skillboxname << "@skl_n:" << trainboxes.get(i)->getName();
-			sbox->addMenuItem(skillboxname.str());
+			sbox->addMenuItem(skillboxname.toString());
 			teachingSkillList.add(trainboxes.get(i));
 		}
 
@@ -4562,7 +5235,7 @@ void PlayerImplementation::teachPlayer(Player* player) {
 	}
 }
 
-void PlayerImplementation::teachSkill(string& skillname) {
+void PlayerImplementation::teachSkill(String& skillname) {
 	SkillBox* sBox = server->getProfessionManager()->getSkillBox(skillname);
 	StfParameter* params = new StfParameter;
 
@@ -4581,11 +5254,11 @@ void PlayerImplementation::teachSkill(string& skillname) {
 		locparams->addTO("skl_n",skillname);
 
 		int xp = 0;
-		string xptype("apprenticeship");
+		String xptype("apprenticeship");
 		if (sBox->isMasterBox())
 			xp = 60;
 		else {
-			char tier = skillname.at(skillname.size()-1);
+			char tier = skillname.charAt(skillname.length()-1);
 			xp = ((tier-'0') + 1) * 10;
 		}
 		locparams->addDI(xp);

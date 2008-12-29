@@ -47,11 +47,11 @@ import "../../../creature/CreatureObject";
 import "../RangedWeapon";
 
 interface PistolRangedWeapon implements RangedWeapon {
-	PistolRangedWeapon(unsigned long oid, unsigned int tempCRC, const unicode n, const string tempn, boolean eqp = false) {
+	PistolRangedWeapon(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, boolean eqp = false) {
 		super(oid, tempCRC, n, tempn, int tp, eqp);
 	}
 	
-	PistolRangedWeapon(CreatureObject creature, const string temp, const unicode n, const string tempn, boolean eqp = false) {
+	PistolRangedWeapon(CreatureObject creature, const String temp, const UnicodeString n, const String tempn, boolean eqp = false) {
 		super(creature, temp, n, tempn, int tp, eqp);
 	}
 }

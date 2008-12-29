@@ -50,10 +50,10 @@ which carries forward this exception.
 class SurveyEvent : public Event {
 	Player* player;
 
-	string resourceName;
+	String resourceName;
 
 public:
-	SurveyEvent(Player* pl, string& rn) : Event() {
+	SurveyEvent(Player* pl, String& rn) : Event() {
 		player = pl;
 
 		resourceName = rn;

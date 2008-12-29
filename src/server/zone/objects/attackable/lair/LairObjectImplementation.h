@@ -64,12 +64,13 @@ class LairObjectImplementation : public LairObjectServant {
 	bool spawn1;
 	bool spawn2;
 
-	string stfName;
+	String stfName;
 	uint32 creatureCRC;
-	string creatureName;
-	string creatureStfName;
+	String creatureName;
+	String creatureStfName;
 	int spawnSize;
 	int babiesPerMillion;
+	int level;
 
 public:
 	LairObjectImplementation(uint32 objCRC, uint64 oid);
@@ -83,7 +84,7 @@ public:
 		maxCondition = cond;
 	}
 
-	inline void setSStfName(string& stfname) {
+	inline void setSStfName(String& stfname) {
 		stfName = stfname;
 	}
 
@@ -97,6 +98,10 @@ public:
 
 	inline void setBabiesPerMillion(int babies) {
 		babiesPerMillion = babies;
+	}
+
+	inline void setLevel(int lev) {
+		level = lev;
 	}
 
 	void addCreature(Creature* creature) {
@@ -116,6 +121,10 @@ public:
 
 	int getNumberOfCreatures() {
 		return creatures.size();
+	}
+
+	inline int getLevel() {
+		return level;
 	}
 
 };

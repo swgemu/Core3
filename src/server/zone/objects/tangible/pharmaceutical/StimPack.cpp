@@ -20,12 +20,12 @@
  *	StimPackStub
  */
 
-StimPack::StimPack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+StimPack::StimPack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new StimPackImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-StimPack::StimPack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+StimPack::StimPack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new StimPackImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -168,11 +168,11 @@ DistributedObjectAdapter* StimPackHelper::createAdapter(DistributedObjectStub* o
  *	StimPackServant
  */
 
-StimPackServant::StimPackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
+StimPackServant::StimPackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
 	_classHelper = StimPackHelper::instance();
 }
 
-StimPackServant::StimPackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
+StimPackServant::StimPackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
 	_classHelper = StimPackHelper::instance();
 }
 

@@ -75,8 +75,8 @@ public:
 		return zone;
 	}
 
-	BuildingObject* findBuildingType(const string& word, float targetX, float targetY);
-	int guessBuildingType(uint64 oid, string file);
+	BuildingObject* findBuildingType(const String& word, float targetX, float targetY);
+	int guessBuildingType(uint64 oid, String file);
 	BuildingObject* loadStaticBuilding(uint64 oid, int planet);
 
 	inline CellObject* getCell(uint64 id) {

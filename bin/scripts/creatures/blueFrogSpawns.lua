@@ -57,3 +57,9 @@ if (PLANET_ID == 5) then
  spawnBlueFrog(2.2, -2.5, 1, 0, BARTENDER, 91);
  spawnBlueFrog(-4933, 4234, 1, .1, GUNGAN, 0);
 end
+
+--Endor
+if (PLANET_ID == 3) then
+ spawnBlueFrog(3221, -3451, .99154, 0.04113, EWOK, 0);
+end
+

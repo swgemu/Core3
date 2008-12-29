@@ -63,6 +63,8 @@ which carries forward this exception.
 #include "target/DiagnoseTargetSkill.h"
 #include "target/ReviveTargetSkill.h"
 #include "target/FirstAidTargetSkill.h"
+#include "target/QuickHealTargetSkill.h"
+#include "target/MindHealTargetSkill.h"
 #include "target/TendHealTargetSkill.h"
 
 #include "self/HealSelfSkill.h"
@@ -71,14 +73,19 @@ which carries forward this exception.
 #include "self/EnhanceSelfSkill.h"
 #include "self/ChangePostureSelfSkill.h"
 #include "self/MeditateSelfSkill.h"
+#include "self/PowerboostSelfSkill.h"
 
 #include "self/EntertainSelfSkill.h"
 #include "self/EntertainEffectSelfSkill.h"
 #include "self/DanceEffectSelfSkill.h"
 #include "self/MusicEffectSelfSkill.h"
 
-
+#include "self/MaskScentSelfSkill.h"
+#include "self/ForageSelfSkill.h"
+#include "target/ConcealSkill.h"
+#include "CamoSkill.h"
 #include "PassiveSkill.h"
-
+//#include "target/attack/ThrowRandomPoolAttackTargetSkill.h"
+//#include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
 
 #endif /*SKILLS_H_*/

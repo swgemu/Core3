@@ -46,7 +46,6 @@ which carries forward this exception.
 
 #include "GameCommandHandler.h"
 
-#include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/item/ItemManager.h"
 #include "../zone/managers/player/PlayerManager.h"
 #include "../zone/managers/player/PlayerMap.h"
@@ -60,6 +59,9 @@ which carries forward this exception.
 #include "../zone/managers/guild/GuildManager.h"
 #include "../zone/managers/planet/PlanetManager.h"
 #include "../zone/managers/structure/StructureManager.h"
+#include "../zone/managers/combat/CombatManager.h"
+
+#include "../zone/objects/area/TestActiveArea.h"
 
 GMCommandMap * GameCommandHandler::gmCommands = NULL;
 
@@ -71,7 +73,7 @@ void GameCommandHandler::init() {
 	const int LEADQA = PlayerImplementation::LEADQA;							/* Lead - Quality Assurance */
 	const int QA = PlayerImplementation::QA;									/* Quality Assurance */
 	const int EMUSTAFF = PlayerImplementation::EMUSTAFF;						/* Misc Emu Staff */
-	const int NORMAL = PlayerImplementation::NORMAL;							/* Normal Player */
+	const int NORMAL = PlayerImplementation::NORMAL;							/* Normal Player*/
 
 	/* Admin Groups */
 	const int ALL = DEVELOPER | CSR | EC | LEADQA | QA | EMUSTAFF | NORMAL;		/* All Staff/Players */
@@ -81,10 +83,10 @@ void GameCommandHandler::init() {
 
 	gmCommands = new GMCommandMap();
 
-	gmCommands->addCommand("help", ALL,
+	gmCommands->addCommand("commands", ALL,
 			"Prints a list of commands.",
-			"Usage: @help [command]",
-			&help);
+			"Usage: @commands [command]",
+			&commands);
 	gmCommands->addCommand("map", STAFF,
 			"Warps you to a different map.",
 			"Usage: @map <planetid> \n PlanetId List: 0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok, 5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4",
@@ -117,10 +119,6 @@ void GameCommandHandler::init() {
 			"Disconnects all players in a certain range.",
 			"Usage: @kickArea [distance]",
 			&kickArea);
-	/*gmCommands->addCommand("printRoomTree", DEVELOPER,
-			"Prints the room tree.",
-			"Usage: @printRoomTree",
-			&printRoomTree);*/
 	gmCommands->addCommand("banUser", PRIVILEGED,
 			"Bans a user from logging in to the server.",
 			"Usage: @banUser <name> <ban time in minutes> <reason>",
@@ -155,8 +153,16 @@ void GameCommandHandler::init() {
 			&users);
 	gmCommands->addCommand("setWeather", CSREVENTS,
 			"Changes the weather conditions on the planet.",
-			"Usage: @setWeather <1-5>",
+			"Usage: @setWeather <0-4>",
 			&setWeather);
+	gmCommands->addCommand("enableWeather", DEVELOPER,
+			"Turn on weather randomization for the current planet.",
+			"Usage: @enableWeather",
+			&enableWeather);
+	gmCommands->addCommand("disableWeather", DEVELOPER,
+			"Turn off weather randomization for the current planet.",
+			"Usage: @disableWeather",
+			&disableWeather);
 	gmCommands->addCommand("ticketPurchase", DEVELOPER,
 			"Gives you a travel ticket.",
 			"Usage: @ticketPurchase <planet> <city>",
@@ -165,6 +171,10 @@ void GameCommandHandler::init() {
 			"Awards a badge to targeted player.",
 			"Usage: @awardBadge <badgeid>",
 			&awardBadge);
+	gmCommands->addCommand("revolkBadge", DEVELOPER,
+				"Remove a badge from a targeted player.",
+				"Usage: @revolkBadge <badgeid>",
+				&revolkBadge);
 	gmCommands->addCommand("systemMessage", CSREVENTS | LEADQA,
 			"Sends a message to all players on the server.",
 			"Usage: @systemMessage <range> <message>",
@@ -213,18 +223,6 @@ void GameCommandHandler::init() {
 			"Gives your player a certain spice.",
 			"Usage: @spice <spice>",
 			&spice);
-	/*gmCommands->addCommand("dbStats", DEVELOPER,
-			"Prints various database stats.",
-			"Usage: @dbStats",
-			&dbStats);
-	gmCommands->addCommand("dbShowDeleted", DEVELOPER,
-			"Prints deleted items from the database.",
-			"Usage: @dbShowDeleted",
-			&dbShowDeleted);
-	gmCommands->addCommand("dbPurge", DEVELOPER,
-			"Purges deleted items from the database.",
-			"Usage: @dbPurge",
-			&dbPurge);*/
 	gmCommands->addCommand("getDirection", STAFF,
 			"Prints out your direction or the direction of a targeted object.",
 			"Usage: @getDirection",
@@ -237,11 +235,10 @@ void GameCommandHandler::init() {
 			"Gives full detailsofyour location.",
 			"Usage: @getLocation",
 			&getLocation);
-	/* Uncomment for use on DEV servers
-	gmCommands->addCommand("getCords", DEVELOPER,
-			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
-			"Usage: @getCords <nameOfCreatureFile>",
-			&getCords); */
+	gmCommands->addCommand("getTargetLocation", ALL,
+			"Gives full details of targeted object location.",
+			"Usage: @getTargetLocation",
+			&getTargetLocation);
 	gmCommands->addCommand("giveItemTemp", DEVELOPER,
 			"Adds a requested item to your inventory.",
 			"Usage: @giveItemTemp <Item Type> [item sub-type]",
@@ -266,10 +263,6 @@ void GameCommandHandler::init() {
 			"Spawn a creature.",
 			"Usage: @spawn <creaturetype> <moves (0,1)> <cellid> <x> <y> <bitmask> <baby>",
 			&spawn);
-	gmCommands->addCommand("addNoBuildArea", DEVELOPER,
-			"Adds a no build area to the map.",
-			"Usage: @addNoBuildArea <minX> <maxX> <minY> <maxY>",
-			&addNoBuildArea);
 	gmCommands->addCommand("guildAdmin", PRIVILEGED,
 			"Let you join a guild temporarily to administer the guild via guildterminal.",
 			"Usage: @guildAdmin GUILDTAG",
@@ -298,6 +291,104 @@ void GameCommandHandler::init() {
 			"Returns a list of characters a player has registrated with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
+	// TODO: Needs re-implementing without breaking CombatManager
+	/*
+	gmCommands->addCommand("toggleCombat", DEVELOPER,
+			"Enables/Disables combat.",
+			"USAGE: @toggleCombat",
+			&toggleCombat);
+	*/
+	gmCommands->addCommand("lockServer", DEVELOPER,
+			"Locks the server for intern testing.",
+			"USAGE: @lockServer",
+			&lockServer);	gmCommands->addCommand("unlockServer", DEVELOPER,
+			"Unlocks the server for public testing.",
+			"USAGE: @lockServer",
+			&unlockServer);
+	gmCommands->addCommand("sendp", DEVELOPER,
+			"Send Packet Test.",
+			"Usage: @sendp",
+			&sendp);
+	gmCommands->addCommand("requestStartingLocations", ALL,
+			"Resends the Starting Locations packet in case you accidentally close the window.",
+			"Usage: @requestStartingLocations",
+			&requestStartingLocations);
+	gmCommands->addCommand("help", ALL,
+			"Launch a web browser to the SWGEmu Support site.",
+			"Usage: @help",
+			&help);
+	gmCommands->addCommand("openInventory", PRIVILEGED,
+			"Open a players (target) inventory.",
+			"Usage: @openInventory (with a player as the current target)",
+			&openInventory);
+	//Temporary for CSRs as long as structures and cell permissions not finally in
+	gmCommands->addCommand("poofObject", PRIVILEGED,
+			"Destroys an object finally.",
+			"USAGE: @poofObject <target>",
+			&poofObject);
+	//Temporary for CSRs as long as structures and cell permissions not finally in
+	gmCommands->addCommand("whoDroppedThis", PRIVILEGED,
+			"Shows the characters name who dropped the current target (item).",
+			"USAGE: @whoDroppedThis <target>",
+			&whoDroppedThis);
+	gmCommands->addCommand("freezePlayer", PRIVILEGED,
+			"Freezes a player to prevent movement.",
+			"Usage: @freezePlayer name.",
+			&freezePlayer);
+	gmCommands->addCommand("unfreezePlayer", PRIVILEGED,
+			"Freezes a player to prevent movement.",
+			"Usage: @unfreezePlayer name.",
+			&unfreezePlayer);
+	/**/
+	gmCommands->addCommand("setSpeed", PRIVILEGED,
+			"Sets a players speed/acceleration.",
+			"Usage: @setSpeed speed acceleration.",
+			&setSpeed);
+	gmCommands->addCommand("setHeight", PRIVILEGED,
+			"Sets the height of the object.",
+			"Usage: @setHeight number.",
+			&setHeight);
+	gmCommands->addCommand("warpAreaToWP", PRIVILEGED,
+			"Warps all players in a set radius to a specific waypoint",
+			"Usage: @warpAreaToWP <waypointName> <radius>",
+			&warpAreaToWP);
+	gmCommands->addCommand("scaleXP", PRIVILEGED,
+			"Sets the multiplier for serverwide experience",
+			"Usage: @scaleXP <scaler>",
+			&scaleXP);
+	/* Disabled Commands
+
+	Uncomment for use on DEV servers
+	gmCommands->addCommand("getCords", DEVELOPER,
+			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
+			"Usage: @getCords <nameOfCreatureFile>",
+			&getCords);
+	gmCommands->addCommand("changeTemplate", PRIVILEGED,
+			"Changes the objects template. Useful for CSR Events.",
+			"Usage: @changeTemplate newtemplate.",
+			&changeTemplate);
+	gmCommands->addCommand("dbStats", DEVELOPER,
+			"Prints various database stats.",
+			"Usage: @dbStats",
+			&dbStats);
+	gmCommands->addCommand("dbShowDeleted", DEVELOPER,
+			"Prints deleted items from the database.",
+			"Usage: @dbShowDeleted",
+			&dbShowDeleted);
+	gmCommands->addCommand("dbPurge", DEVELOPER,
+			"Purges deleted items from the database.",
+			"Usage: @dbPurge",
+			&dbPurge);
+	gmCommands->addCommand("printRoomTree", DEVELOPER,
+			"Prints the room tree.",
+			"Usage: @printRoomTree",
+			&printRoomTree);
+	gmCommands->addCommand("spawnAA", DEVELOPER,
+			"Spawns a test Action Area",
+			"Usage: @spawnAA <x> <y> <z> <range>",
+			&spawnAA);
+
+	Disabled Commands */
 }
 
 GameCommandHandler::~GameCommandHandler() {
@@ -307,7 +398,7 @@ GameCommandHandler::~GameCommandHandler() {
 	}
 }
 
-void GameCommandHandler::handleCommand(string cmd, StringTokenizer tokenizer, Player* player) {
+void GameCommandHandler::handleCommand(String cmd, StringTokenizer tokenizer, Player* player) {
 	if (!gmCommands->containsKey(cmd)) {
 		player->sendSystemMessage("Command not found.");
 		return;
@@ -320,35 +411,39 @@ void GameCommandHandler::handleCommand(string cmd, StringTokenizer tokenizer, Pl
 		player->sendSystemMessage("You do not have permission to use this command.");
 }
 
-void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::commands(StringTokenizer tokenizer, Player* player) {
 	if (tokenizer.hasMoreTokens()) {
-		string token;
+		String token;
 		tokenizer.getStringToken(token);
 
-		if(gmCommands->containsKey(token)) {
+		if ( gmCommands->containsKey(token)) {
 			player->sendSystemMessage(gmCommands->get(token)->getDesc());
 			player->sendSystemMessage(gmCommands->get(token)->getUsage());
 			return;
 		}
 	}
 
-	LinkedList<string> list = gmCommands->getCommandList();
-	stringstream ss;
-	ss << "Command List: ";
+	LinkedList<String> list = gmCommands->getCommandList();
 
-	for(int i = 0; i < list.size(); i++) {
-		string cmd = list.get(i);
-		if(gmCommands->get(cmd)->getRequiredAdminLevel() & player->getAdminLevel())
-			ss << list.get(i) << ", ";
+	StringBuffer str;
+	str << "Command List: ";
+
+	for (int i = 0; i < list.size(); i++) {
+		String cmd = list.get(i);
+
+		if (gmCommands->get(cmd)->getRequiredAdminLevel() & player->getAdminLevel())
+			str << list.get(i) << ", ";
 	}
 
-	player->sendSystemMessage(ss.str().substr(0, ss.str().length() - 2));
+	str.removeRange(str.length() - 3, str.length() - 1);
+
+	player->sendSystemMessage(str.toString());
 }
 
-void GameCommandHandler::map(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::map(StringTokenizer tokenizer, Player* player) {
 	if (tokenizer.hasMoreTokens()) {
 		int planetid = tokenizer.getIntToken();
-		if (planetid >= 0 && planetid <= 10) //Servercrash risk! Do not change this back to 50 since there are no managers initialized
+		if ((planetid >= 0 && planetid <= 10) || planetid == 42) //Servercrash risk! Do not change this back to 50 since there are no managers initialized
 			player->switchMap(planetid);
 	} else {
 		player->sendSystemMessage("Usage: map <planetid>\n"
@@ -357,7 +452,7 @@ void GameCommandHandler::map(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::warp(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::warp(StringTokenizer tokenizer, Player* player) {
 	if (!tokenizer.hasMoreTokens())
 		return;
 
@@ -381,13 +476,13 @@ void GameCommandHandler::warp(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::warpTo(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::warpTo(StringTokenizer tokenizer, Player* player) {
 	if (!tokenizer.hasMoreTokens())
 		return;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
 
-	string name, myName;
+	String name, myName;
 	tokenizer.getStringToken(name);
 
 	Player* target = chatManager->getPlayer(name);
@@ -413,8 +508,8 @@ void GameCommandHandler::warpTo(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) {
-	string name, whereTo = "";
+void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player* player) {
+	String name, whereTo = "";
 	Player* targetPlayer = NULL;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
@@ -491,9 +586,9 @@ void GameCommandHandler::warpPlayer(StringTokenizer tokenizer, Player * player) 
 	}
 }
 
-void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player* player) {
 	float x,y;
-	string wpName;
+	String wpName;
 
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(wpName);
@@ -508,7 +603,7 @@ void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player * player) {
 		x = waypoint->getPositionX();
 		y = waypoint->getPositionY();
 
-		string planetName = waypoint->getPlanetName();
+		String planetName = waypoint->getPlanetName();
 		int planet = player->getZoneIndex();
 
 		if (planetName == "corellia")
@@ -543,8 +638,8 @@ void GameCommandHandler::warpToWP(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::summon(StringTokenizer tokenizer, Player * player) {
-	string name;
+void GameCommandHandler::summon(StringTokenizer tokenizer, Player* player) {
+	String name;
 	Player* targetPlayer = NULL;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
@@ -600,8 +695,8 @@ void GameCommandHandler::summon(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::kick(StringTokenizer tokenizer, Player * player) {
-	string name;
+void GameCommandHandler::kick(StringTokenizer tokenizer, Player* player) {
+	String name;
 	Player* targetPlayer;
 	ZoneServer * server = player->getZone()->getZoneServer();
 
@@ -639,10 +734,10 @@ void GameCommandHandler::kick(StringTokenizer tokenizer, Player * player) {
 	player->wlock();
 }
 
-void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player* player) {
 	ZoneServer * server = player->getZone()->getZoneServer();
 
-	string name = player->getFirstName();
+	String name = player->getFirstName();
 	//Default
 	int meter = 32;
 	//..as you wish my master
@@ -663,7 +758,7 @@ void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player * player) {
 
 			if (obj->isPlayer()) {
 				Player* otherPlayer = (Player*) obj;
-				string otherName = otherPlayer->getFirstName();
+				String otherName = otherPlayer->getFirstName();
 
 				if (otherName != name && player->isInRange(otherPlayer, meter) && (otherPlayer->getAdminLevel() == PlayerImplementation::NORMAL)) {
 					zone->unlock();
@@ -687,7 +782,7 @@ void GameCommandHandler::kickArea(StringTokenizer tokenizer, Player * player) {
 	player->wlock();
 }
 
-void GameCommandHandler::printRoomTree(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::printRoomTree(StringTokenizer tokenizer, Player* player) {
 	ChatManager * chatManager = player->getZone()->getChatManager();
 	ChatRoom * game = chatManager->getGameRoom("SWG");
 
@@ -700,13 +795,13 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 	ZoneServer* server = player->getZone()->getZoneServer();
 	ChatManager* chatManager = player->getZone()->getChatManager();
 
-	string name;
-	stringstream banMessage;
+	String name;
+	StringBuffer banMessage;
 	int banTime;
 	Player* targetPlayer;
 
 	int offendersAccountId = -1, adminsAccountId = -1;
-	string offendersAccountName = "", adminsAccountName = "";
+	String offendersAccountName = "", adminsAccountName = "";
 
 	if (tokenizer.hasMoreTokens()) {
 
@@ -725,10 +820,10 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 		banTime *= 60;
 
-		if(banTime != 0)
+		if (banTime != 0)
 			banTime += time(0);
 
-		string tempString;
+		String tempString;
 
 		while (tokenizer.hasMoreTokens()) {
 			tokenizer.getStringToken(tempString);
@@ -737,14 +832,14 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 		}
 
-		if (banMessage.str() == "") {
+		if (banMessage.toString() == "") {
 			player->sendSystemMessage("Invalid ban format, please specify reason");
 			return;
 		}
 
 	} else {
 
-		if(ForumsDatabase::instance() != NULL){
+		if (ForumsDatabase::instance() != NULL){
 			player->sendSystemMessage("Invalid ban format, please specify duration and reason");
 			return;
 		}
@@ -755,7 +850,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 	if (ForumsDatabase::instance() != NULL) {
 
 		try {
-			stringstream query, query2, query3, query4, query5;
+			StringBuffer query, query2, query3, query4, query5;
 
 			query   << "SELECT account.account_id, account.username FROM account "
 					<< "INNER JOIN characters ON "
@@ -796,7 +891,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 				return;
 			}
 
-			stringstream getAdminID;
+			StringBuffer getAdminID;
 			getAdminID  << "SELECT " << ForumsDatabase::userTable() << ".userid FROM "
 					    << ForumsDatabase::userTable() << " WHERE "
 					    << ForumsDatabase::userTable() << ".username = '" << adminsAccountName << "'";
@@ -827,19 +922,19 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 
 			if (res->next()) {
 
-				string userid = res->getString(0);
-				string usergroupid = res->getString(1);
+				String userid = res->getString(0);
+				String usergroupid = res->getString(1);
 
-				if(usergroupid != ForumsDatabase::standardGroup()){
+				if (usergroupid != ForumsDatabase::standardGroup()){
 					delete res;
 					player->sendSystemMessage("You can only ban standard users with this command");
 					player->wlock();
 					return;
 				}
 
-				string displaygroupid = res->getString(2);
-				string usertitle = res->getString(3);
-				string customtitle = res->getString(4);
+				String displaygroupid = res->getString(2);
+				String usertitle = res->getString(3);
+				String customtitle = res->getString(4);
 
 				MySqlDatabase::escapeString(usertitle);
 				MySqlDatabase::escapeString(customtitle);
@@ -864,7 +959,7 @@ void GameCommandHandler::banUser(StringTokenizer tokenizer, Player* player) {
 					   << "', '" << usergroupid << "', '" << displaygroupid
 					   << "', '" << usertitle << "', '" << customtitle
 					   << "', '" << adminsAccountId << "', '" << time(0) << "', '"
-					   << banTime << "', '" << banMessage.str() << "')";
+					   << banTime << "', '" << banMessage.toString() << "')";
 
 				ForumsDatabase::instance()->executeStatement(query5);
 
@@ -903,7 +998,7 @@ void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player)
 	ZoneServer* server = player->getZone()->getZoneServer();
 	PlayerManager* playerManager = server->getPlayerManager();
 
-	string name;
+	String name;
 
 	Player* targetPlayer = NULL;
 
@@ -926,7 +1021,7 @@ void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player)
 
 	if (ForumsDatabase::instance() != NULL) {
 		try {
-			stringstream query;
+			StringBuffer query;
 
 			query   << "SELECT account.account_id, account.username FROM account "
 					<< "INNER JOIN characters ON "
@@ -936,7 +1031,7 @@ void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player)
 			ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
 			int offendersAccountId = -1;
-			string offendersAccountName = "";
+			String offendersAccountName = "";
 
 			if (res->next()) {
 				offendersAccountId = res->getInt(0);
@@ -954,8 +1049,8 @@ void GameCommandHandler::getForumName(StringTokenizer tokenizer, Player* player)
 	}
 }
 
-void GameCommandHandler::mutePlayer(StringTokenizer tokenizer, Player * player) {
-	string name;
+void GameCommandHandler::mutePlayer(StringTokenizer tokenizer, Player* player) {
+	String name;
 	Player* targetPlayer;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
@@ -997,8 +1092,8 @@ void GameCommandHandler::mutePlayer(StringTokenizer tokenizer, Player * player) 
 	}
 }
 
-void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
-	string name;
+void GameCommandHandler::kill(StringTokenizer tokenizer, Player* player) {
+	String name;
 	Player* targetPlayer = NULL;
 	Creature* creature = NULL;
 
@@ -1065,12 +1160,12 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::ecKill(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::ecKill(StringTokenizer tokenizer, Player* player) {
 	Creature* creature = NULL;
 
 	SceneObject* obj = player->getTarget();
 
-	string name;
+	String name;
 
 	if (obj != NULL && obj->isNonPlayerCreature()) {
 		creature = (Creature*) obj;
@@ -1098,8 +1193,8 @@ void GameCommandHandler::ecKill(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
-	string name = player->getFirstName();
+void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
+	String name = player->getFirstName();
 	//Default
 	int meter;
 
@@ -1116,14 +1211,13 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 		zone->lock();
 
 		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject
-					* obj =
+			ManagedReference<SceneObject> obj =
 							(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
 									i))->_getStub());
 
 			if (obj->isPlayer()) {
-				Player* otherPlayer = (Player*) obj;
-				string otherName = otherPlayer->getFirstName();
+				Player* otherPlayer = (Player*) obj.get();
+				String otherName = otherPlayer->getFirstName();
 
 				if (otherName != name && player->isInRange(otherPlayer, meter)
 						&& (otherPlayer->getAdminLevel()
@@ -1153,20 +1247,26 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 				}
 			} else if (obj->isNonPlayerCreature()) {
 
-				Creature* creature = (Creature*) obj;
+				Creature* creature = (Creature*) obj.get();
 
 				//if (creature->isInRange(creature, meter) && !creature->isTrainer() && !creature->isRecruiter()) {
 				if (player->isInRange(creature, meter) && creature->getCreatureBitmask() != 0x108 && creature->getCreatureBitmask() != 0x1080) {
 					zone->unlock();
 
 					try {
-						uint damage = 100000000;
+						uint32 damage = 100000000;
+
+						creature->wlock(player);
+
 						creature->explode(2, false);
 						creature->addDamage(player, damage);
 						creature->takeHealthDamage(damage);
 						player->sendSystemMessage("creature has been killed.");
+
+						creature->unlock();
 					} catch (...) {
 						player->sendSystemMessage("unable to kill creature");
+						creature->unlock();
 					}
 
 					zone->lock();
@@ -1180,7 +1280,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::muteChat(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::muteChat(StringTokenizer tokenizer, Player* player) {
 	ChatManager * chatManager = player->getZone()->getChatManager();
 
 	try {
@@ -1197,38 +1297,148 @@ void GameCommandHandler::muteChat(StringTokenizer tokenizer, Player * player) {
 		chatManager->unlock();
 	} catch (...) {
 		chatManager->unlock();
-		cout << "unreported exception caught in GameCommandHandler::muteChat()\n";
+		System::out << "unreported exception caught in GameCommandHandler::muteChat()\n";
 	}
 }
 
-void GameCommandHandler::users(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::users(StringTokenizer tokenizer, Player* player) {
 	ZoneServer * server = player->getZone()->getZoneServer();
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << server->getConnectionCount() << " users connected";
 
-	player->sendSystemMessage(msg.str());
+	player->sendSystemMessage(msg.toString());
 }
 
-void GameCommandHandler::setWeather(StringTokenizer tokenizer, Player * player) {
-	int weatherid = tokenizer.getIntToken();
+void GameCommandHandler::setWeather(StringTokenizer tokenizer, Player* player) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
 
-	ServerWeatherMessage* swm = new ServerWeatherMessage(weatherid);
-	player->broadcastMessage(swm);
+	PlanetManager* planet = zone->getPlanetManager();
+	if (planet == NULL)
+		return;
+
+	int weatherID;
+
+	if (tokenizer.hasMoreTokens()) {
+		weatherID = tokenizer.getIntToken();
+	} else {
+		player->sendSystemMessage("Usage example: @setWeather 3");
+		player->sendSystemMessage("Weather ID must be 0-4.");
+		return;
+	}
+
+	if (zone->getZoneID() > 9) {
+		player->sendSystemMessage("You can't change the weather here.");
+		return;
+	}
+
+	if (weatherID >= 0 && weatherID < 5) {
+		try {
+			player->unlock();
+
+			zone->setWeatherID(weatherID);
+			planet->weatherUpdatePlayers();
+			player->sendSystemMessage("Weather has been set.");
+
+			player->wlock();
+
+		} catch (...) {
+			player->wlock();
+			System::out << "Unreported Exception in GameCommandHandler::setWeather()\n";
+		}
+
+	} else {
+		player->sendSystemMessage("Weather ID must be 0-4.");
+		return;
+	}
 }
 
-void GameCommandHandler::ticketPurchase(StringTokenizer tokenizer, Player * player) {
-	string planet;
+void GameCommandHandler::enableWeather(StringTokenizer tokenizer, Player * player) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	PlanetManager* planet = zone->getPlanetManager();
+	if (planet == NULL)
+		return;
+
+	if (zone->getZoneID() > 9) {
+		player->sendSystemMessage("You can't change the weather here.");
+		return;
+	}
+
+	if (zone->isWeatherEnabled()) {
+		player->sendSystemMessage("Weather on this planet is already enabled.");
+		return;
+
+	} else {
+		try {
+			player->unlock();
+
+			zone->setWeatherEnabled(true);
+			planet->weatherChange();
+			player->sendSystemMessage("Weather on this planet is now enabled.");
+
+			player->wlock();
+
+		} catch (...) {
+			player->wlock();
+			System::out << "Unreported Exception in GameCommandHandler::enableWeather()\n";
+		}
+	}
+}
+
+void GameCommandHandler::disableWeather(StringTokenizer tokenizer, Player * player) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	PlanetManager* planet = zone->getPlanetManager();
+	if (planet == NULL)
+		return;
+
+	if (zone->getZoneID() > 9) {
+		player->sendSystemMessage("You can't change the weather here.");
+		return;
+	}
+
+	if (!zone->isWeatherEnabled()) {
+		player->sendSystemMessage("Weather on this planet is already disabled.");
+		return;
+
+	} else {
+		try {
+			player->unlock();
+
+			zone->setWeatherEnabled(false);
+			zone->setWeatherID(0);
+			planet->weatherUpdatePlayers();
+			planet->weatherRemoveEvents();
+			player->sendSystemMessage("Weather on this planet is now disabled.");
+
+			player->wlock();
+
+		} catch (...) {
+			player->wlock();
+			System::out << "Unreported Exception in GameCommandHandler::disableWeather()\n";
+		}
+	}
+}
+
+void GameCommandHandler::ticketPurchase(StringTokenizer tokenizer, Player* player) {
+	String planet;
 	tokenizer.getStringToken(planet);
 
-	string city;
+	String city;
 	tokenizer.getStringToken(city);
 
 	EnterTicketPurchaseModeMessage* etpm = new EnterTicketPurchaseModeMessage(planet,city);
 	player->sendMessage(etpm);
 }
 
-void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player* player) {
 	int badgeid = tokenizer.getIntToken();
 	CreatureObject* target = (CreatureObject*) player->getTarget();
 
@@ -1238,11 +1448,7 @@ void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player * player) 
 		if (targetPlayer != player)
 			targetPlayer->wlock(player);
 
-		if (targetPlayer->awardBadge(badgeid)) {
-			player->sendSystemMessage("You have awarded a badge.");
-			targetPlayer->sendSystemMessage("You have been awarded a badge.");
-		} else
-			player->sendSystemMessage("Invalid Badge ID");
+		targetPlayer->awardBadge(badgeid);
 
 		if (targetPlayer != player)
 			targetPlayer->unlock();
@@ -1250,14 +1456,30 @@ void GameCommandHandler::awardBadge(StringTokenizer tokenizer, Player * player) 
 		player->sendSystemMessage("Invalid target.");
 }
 
-void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player * player) {
-	uint32 range;
+void GameCommandHandler::revolkBadge(StringTokenizer tokenizer, Player* player) {
+	int badgeid = tokenizer.getIntToken();
+	CreatureObject* target = (CreatureObject*) player->getTarget();
+
+	if (target != NULL && target->isPlayer()) {
+		Player* targetPlayer = (Player*) target;
+
+		if (targetPlayer != player)
+			targetPlayer->wlock(player);
+
+		targetPlayer->removeBadge(badgeid);
+
+		if (targetPlayer != player)
+			targetPlayer->unlock();
+	} else
+		player->sendSystemMessage("Invalid target.");
+}
+
+void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player* player) {
+	uint32 range = 0;
 
 	try {
 		if (tokenizer.hasMoreTokens())
-			float range = tokenizer.getFloatToken();
-		else
-			range = 0;
+			range = tokenizer.getIntToken();
 
 		if (!tokenizer.hasMoreTokens()) {
 			player->sendSystemMessage("Error sending systemMessage - Usage: systemMessage RANGE TEXT");
@@ -1266,112 +1488,113 @@ void GameCommandHandler::systemMessage(StringTokenizer tokenizer, Player * playe
 
 		ChatManager * chatManager = player->getZone()->getChatManager();
 
-		stringstream message;
+		StringBuffer message;
+		String msg;
 		message << "System Message from " << player->getFirstName() << ": ";
 
 		while (tokenizer.hasMoreTokens()) {
-			tokenizer.getStringToken(message);
-			message << " ";
+			tokenizer.getStringToken(msg);
+			message << msg << " ";
 		}
 
 		if (range == 0)
-			chatManager->broadcastMessage(message.str());
+			chatManager->broadcastMessage(message.toString());
 		else
-			chatManager->broadcastMessageRange(player, message.str(), range);
+			chatManager->broadcastMessageRange(player, message.toString(), range);
 
 	} catch (...) {
 		player->sendSystemMessage("Error sending systemMessage - Usage: systemMessage RANGE TEXT");
 	}
 }
 
-void GameCommandHandler::setForce(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::setForce(StringTokenizer tokenizer, Player* player) {
 	int fp = tokenizer.getIntToken();
 	player->setForcePowerBar(fp);
-	stringstream message;
+	StringBuffer message;
 	message << "Set Force Power to: " << fp << ".";
-	player->sendSystemMessage(message.str());
+	player->sendSystemMessage(message.toString());
 }
 
-void GameCommandHandler::setDrinkFilling(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::setDrinkFilling(StringTokenizer tokenizer, Player* player) {
 	int fill = tokenizer.getIntToken();
 	player->setDrinkFilling(fill);
-	stringstream message;
+	StringBuffer message;
 	message << "Set drink filling: " << fill << ".";
-	player->sendSystemMessage(message.str());
+	player->sendSystemMessage(message.toString());
 }
 
-void GameCommandHandler::setFoodFilling(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::setFoodFilling(StringTokenizer tokenizer, Player* player) {
 	int fill = tokenizer.getIntToken();
 	player->setFoodFilling(fill);
-	stringstream message;
+	StringBuffer message;
 	message << "Set food filling: " << fill << ".";
-	player->sendSystemMessage(message.str());
+	player->sendSystemMessage(message.toString());
 }
 
-void GameCommandHandler::getDrinkFilling(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::getDrinkFilling(StringTokenizer tokenizer, Player* player) {
 	int fill = player->getDrinkFilling();
-	stringstream message;
+	StringBuffer message;
 	message << "Drink filling: " << fill << ".";
-	player->sendSystemMessage(message.str());
+	player->sendSystemMessage(message.toString());
 }
 
-void GameCommandHandler::getFoodFilling(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::getFoodFilling(StringTokenizer tokenizer, Player* player) {
 	int fill = player->getFoodFilling();
-	stringstream message;
+	StringBuffer message;
 	message << "Food filling: " << fill << ".";
-	player->sendSystemMessage(message.str());
+	player->sendSystemMessage(message.toString());
 }
 
-void GameCommandHandler::logAppearance(StringTokenizer tokenizer, Player * player) {
-	string appearance;
+void GameCommandHandler::logAppearance(StringTokenizer tokenizer, Player* player) {
+	String appearance;
 	player->getCharacterAppearance(appearance);
 
-	stringstream message;
+	StringBuffer message;
 	message << "Character Appearance:  " << uppercase << hex;
 
-	for (int i = 0; i < appearance.size(); ++i) {
-		unsigned int byte = ((unsigned int )appearance[i]) & 0xFF;
+	for (int i = 0; i < appearance.length(); ++i) {
+		byte bt = (byte) appearance.charAt(i);
 
-		if ((byte & 0xF0) == 0)
-			message << "0" << byte << " ";
+		if ((bt & 0xF0) == 0)
+			message << "0" << bt << " ";
 		else
-			message << byte << " ";
+			message << bt << " ";
 	}
 
 	message << dec << " Hair Appearance: " << uppercase << hex;
 
-	string hairData;
+	String hairData;
 	player->getHairAppearance(hairData);
 
-	for (int i = 0; i < hairData.size(); ++i) {
-		unsigned int byte = ((unsigned int )hairData[i]) & 0xFF;
+	for (int i = 0; i < hairData.length(); ++i) {
+		byte bt = (byte) hairData.charAt(i);
 
-		if ((byte & 0xF0) == 0)
-			message << "0" << byte << " ";
+		if ((bt & 0xF0) == 0)
+			message << "0" << bt << " ";
 		else
-			message << byte << " ";
+			message << bt << " ";
 	}
 
-	message << dec << " Height: " << std::fixed;
-	message.precision(8);
-	message << player->getHeight();
+	//TODO: after the StringBuffer update need to add preciosion of 8 here
+	message << dec << " Height: " << player->getHeight();
 
-	player->info(message.str());
+	player->info(message.toString());
 }
 
-void GameCommandHandler::updateAppearance(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::updateAppearance(StringTokenizer tokenizer, Player* player) {
 	((CreatureObject*) player)->updateCharacterAppearance();
 
-	stringstream message;
+	StringBuffer message;
 	message << "Character Appearance updated.";
-	player->sendSystemMessage(message.str());
+
+	player->sendSystemMessage(message.toString());
 }
 
-void GameCommandHandler::setAppearanceVariable(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::setAppearanceVariable(StringTokenizer tokenizer, Player* player) {
 	if (!tokenizer.hasMoreTokens())
 		return;
 
-	string variable;
+	String variable;
 	tokenizer.getStringToken(variable);
 
 	if (!tokenizer.hasMoreTokens())
@@ -1384,13 +1607,13 @@ void GameCommandHandler::setAppearanceVariable(StringTokenizer tokenizer, Player
 
 	((CreatureObject*) player)->setAppearanceAttribute(variable, (uint8)value);
 
-	stringstream message;
+	StringBuffer message;
 	message << "Character Appearance Attribute Updated.";
-	player->sendSystemMessage(message.str());
+	player->sendSystemMessage(message.toString());
 }
 
-void GameCommandHandler::HAMStats(StringTokenizer tokenizer, Player * player) {
-	stringstream message;
+void GameCommandHandler::HAMStats(StringTokenizer tokenizer, Player* player) {
+	StringBuffer message;
 
 	message << "Health:  " << player->getHealth() << "/"
 			<< player->getHealthMax() << "/" << player->getBaseHealth() << ".";
@@ -1419,10 +1642,10 @@ void GameCommandHandler::HAMStats(StringTokenizer tokenizer, Player * player) {
 			<< player->getWillpowerMax() << "/" << player->getBaseWillpower()
 			<< ".";
 
-	player->sendSystemMessage(message.str());
+	player->sendSystemMessage(message.toString());
 }
 
-void GameCommandHandler::buff(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::buff(StringTokenizer tokenizer, Player* player) {
 	int devBuff;
 	devBuff = 0;
 
@@ -1435,108 +1658,139 @@ void GameCommandHandler::buff(StringTokenizer tokenizer, Player * player) {
 		devBuff = 0;
 	}
 
+	//If the player has a target, the target player is buffed
+	//This function is for developers (privileged) so they can re-buff
+	//players which lost buffs due to bugs or participate in stress test
+	//and can't find someone buffing them.
 
-	int buffValue = 3000;
+	Player* targetPlayer;
+	Player* buffie;
 
-	if (devBuff > 0 )
-		buffValue = devBuff;
+	buffie = player;
+
+	try {
+		SceneObject* obj = player->getTarget();
+
+		if (obj != NULL && obj->isPlayer()) {
+			targetPlayer = (Player*) obj;
+
+			if (targetPlayer != NULL && targetPlayer != player) {
+				buffie = targetPlayer;
+				buffie->wlock(player);
+			}
+		}
+
+		int buffValue = 2750;
+
+		if (devBuff > 0 )
+			buffValue = devBuff;
 
 
-	if ( (player->getHealthMax() == player->getBaseHealth()) || (devBuff > 0)  ) {
-		//float buffDuration = 10.0f; // Testing purposes
-		float buffDuration = 10800.0f;
+		if ( (buffie->getHealthMax() == buffie->getBaseHealth()) || (devBuff > 0)  ) {
+			//Heal wounds at first
+			buffie->changeActionWoundsBar(-1500);
+			buffie->changeConstitutionWoundsBar(-1500);
+			buffie->changeHealthWoundsBar(-1500);
+			buffie->changeMindWoundsBar(-1500);
+			buffie->changeQuicknessWoundsBar(-1500);
+			buffie->changeStaminaWoundsBar(-1500);
+			buffie->changeStrengthWoundsBar(-1500);
+			buffie->changeWillpowerWoundsBar(-1500);
+			buffie->changeFocusWoundsBar(-1500);
 
-		Buff *buff; //pointer for each buff
-		BuffObject *bo; //distributed object that contains the payload
+			//now buff
+			float buffDuration = 10800.0f;
 
-		// Health
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_HEALTH, BuffType::MEDICAL, buffDuration);
-		buff->setHealthBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			Buff *buff; //pointer for each buff
+			BuffObject *bo; //distributed object that contains the payload
 
-		// Strength
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_STRENGTH, BuffType::MEDICAL, buffDuration);
-		buff->setStrengthBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Health
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_HEALTH, BuffType::MEDICAL, buffDuration);
+			buff->setHealthBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Constitution
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION, BuffType::MEDICAL, buffDuration);
-		buff->setConstitutionBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Strength
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STRENGTH, BuffType::MEDICAL, buffDuration);
+			buff->setStrengthBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Action
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_ACTION, BuffType::MEDICAL, buffDuration);
-		buff->setActionBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Constitution
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_CONSTITUTION, BuffType::MEDICAL, buffDuration);
+			buff->setConstitutionBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Quickness
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_QUICKNESS, BuffType::MEDICAL, buffDuration);
-		buff->setQuicknessBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Action
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_ACTION, BuffType::MEDICAL, buffDuration);
+			buff->setActionBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Stamina
-		buff
-				= new Buff(BuffCRC::MEDICAL_ENHANCE_STAMINA, BuffType::MEDICAL, buffDuration);
-		buff->setStaminaBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Quickness
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_QUICKNESS, BuffType::MEDICAL, buffDuration);
+			buff->setQuicknessBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		// Mind
-		buff
-				= new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
-		buff->setMindBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Stamina
+			buff = new Buff(BuffCRC::MEDICAL_ENHANCE_STAMINA, BuffType::MEDICAL, buffDuration);
+			buff->setStaminaBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		buff
-				= new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
-		buff->setFocusBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			// Mind
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_DANCE_MIND, BuffType::PERFORMANCE, buffDuration);
+			buff->setMindBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		buff
-				= new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
-		buff->setWillpowerBuff(buffValue);
-		bo = new BuffObject(buff);
-		player->applyBuff(bo);
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_FOCUS, BuffType::PERFORMANCE, buffDuration);
+			buff->setFocusBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-		player->sendSystemMessage("Buffs applied");
+			buff = new Buff(BuffCRC::PERFORMANCE_ENHANCE_MUSIC_WILLPOWER, BuffType::PERFORMANCE, buffDuration);
+			buff->setWillpowerBuff(buffValue);
+			bo = new BuffObject(buff);
+			buffie->applyBuff(bo);
 
-	} else {
-		player->sendSystemMessage("Already buffed");
+			player->sendSystemMessage("Buffs applied");
+
+		} else {
+			player->sendSystemMessage("Already buffed");
+		}
+
+		if (buffie != player)
+			buffie->unlock();
+
+	} catch (...) {
+		if (buffie != player)
+			buffie->unlock();
+
+		player->sendSystemMessage("Error buffing player.");
 	}
 }
 
-void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::spice(StringTokenizer tokenizer, Player* player) {
 	if (player->hasSpice()) {
 		player->sendSystemMessage("You already have spice.");
 	} else if (tokenizer.hasMoreTokens()) {
-		string name;
+		String name;
 		tokenizer.getStringToken(name);
 
-		stringstream spice_up;
-		spice_up << "spice." << name << ".up";
+		StringBuffer spiceUp;
+		spiceUp << "spice." << name << ".up";
 
-		stringstream spice_down;
-		spice_down << "spice." << name << ".down";
+		StringBuffer spiceDown;
+		spiceDown << "spice." << name << ".down";
 
-		Buff *buff = NULL;
-		BuffObject *bo = NULL;
+		Buff* buff = NULL;
+		BuffObject* bo = NULL;
 
-		switch (String::hashCode(spice_up.str())) {
-
-		//spice.booster_blue.up
-		case 0x18A5AEFB:
+		switch (spiceUp.toString().hashCode()) {
+		case 0x18A5AEFB: //spice.booster_blue.up
 			buff = new Buff(BuffCRC::SPICE_BOOSTER_BLUE_UP, BuffType::SPICE, 600.0f);
 			buff->setActionBuff(400);
 			buff->setQuicknessBuff(400);
@@ -1544,9 +1798,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-
-			//spice.crash_n_burn.up
-		case 0x5E1BE4D6:
+		case 0x5E1BE4D6: //spice.crash_n_burn.up
 			buff = new Buff(BuffCRC::SPICE_CRASH_N_BURN_UP, BuffType::SPICE, 600.0f);
 			buff->setActionBuff(-200);
 			buff->setQuicknessBuff(-200);
@@ -1556,8 +1808,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.droid_lube.up
-		case 0x0C969AE9:
+		case 0x0C969AE9: //spice.droid_lube.up
 			buff = new Buff(BuffCRC::SPICE_DROID_LUBE_UP, BuffType::SPICE, 600.0f);
 			buff->setHealthBuff(250);
 			buff->setStrengthBuff(250);
@@ -1566,8 +1817,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.giggledust.up
-		case 0x3E41BA17:
+		case 0x3E41BA17: //spice.giggledust.up
 			buff = new Buff(BuffCRC::SPICE_GIGGLEDUST_UP, BuffType::SPICE, 600.0f);
 			buff->setActionBuff(300);
 			buff->setQuicknessBuff(300);
@@ -1576,16 +1826,14 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.grey_gabaki.up
-		case 0xE5C9CD20:
+		case 0xE5C9CD20: //spice.grey_gabaki.up
 			buff = new Buff(BuffCRC::SPICE_GREY_GABAKI_UP, BuffType::SPICE, 500.0f);
 			buff->setFocusBuff(500);
 			buff->setBuffDownerCRC(BuffCRC::SPICE_GREY_GABAKI_DOWN);
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.gunjack.up
-		case 0x09B6F8FC:
+		case 0x09B6F8FC: //spice.gunjack.up
 			buff = new Buff(BuffCRC::SPICE_GUNJACK_UP, BuffType::SPICE, 600.0f);
 			buff->setStrengthBuff(500);
 			buff->setQuicknessBuff(-200);
@@ -1594,8 +1842,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.muon_gold.up
-		case 0xFBE87E37:
+		case 0xFBE87E37: //spice.muon_gold.up
 			buff = new Buff(BuffCRC::SPICE_MUON_GOLD_UP, BuffType::SPICE, 600.0f);
 			buff->setMindBuff(500);
 			buff->setFocusBuff(500);
@@ -1604,8 +1851,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.neutron_pixey.up
-		case 0x5DC6921F:
+		case 0x5DC6921F: //spice.neutron_pixey.up
 			buff = new Buff(BuffCRC::SPICE_NEUTRON_PIXEY_UP, BuffType::SPICE, 800.0f);
 			buff->setHealthBuff(1000);
 			buff->setStrengthBuff(200);
@@ -1617,8 +1863,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.pyrepenol.up
-		case 0x1EBC62E5:
+		case 0x1EBC62E5: //spice.pyrepenol.up
 			buff = new Buff(BuffCRC::SPICE_PYREPENOL_UP, BuffType::SPICE, 600.0f);
 			buff->setStrengthBuff(300);
 			buff->setQuicknessBuff(-100);
@@ -1627,16 +1872,14 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.scramjet.up
-		case 0x2E03F676:
+		case 0x2E03F676: //spice.scramjet.up
 			buff = new Buff(BuffCRC::SPICE_SCRAMJET_UP, BuffType::SPICE, 700.0f);
 			buff->setStrengthBuff(300);
 			buff->setBuffDownerCRC(BuffCRC::SPICE_SCRAMJET_DOWN);
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.sedative_h4b.up
-		case 0xD7A72ACF:
+		case 0xD7A72ACF: //spice.sedative_h4b.up
 			buff = new Buff(BuffCRC::SPICE_SEDATIVE_H4B_UP, BuffType::SPICE, 600.0f);
 			buff->setHealthBuff(400);
 			buff->setConstitutionBuff(300);
@@ -1646,8 +1889,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.shadowpaw.up
-		case 0x3AAD2B89:
+		case 0x3AAD2B89: //spice.shadowpaw.up
 			buff = new Buff(BuffCRC::SPICE_SHADOWPAW_UP, BuffType::SPICE, 600.0f);
 			buff->setStrengthBuff(-100);
 			buff->setActionBuff(250);
@@ -1656,8 +1898,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.sweetblossom.up
-		case 0x7EC00CB8:
+		case 0x7EC00CB8: //spice.sweetblossom.up
 			buff = new Buff(BuffCRC::SPICE_SWEETBLOSSOM_UP, BuffType::SPICE, 600.0f);
 			buff->setActionBuff(400);
 			buff->setQuicknessBuff(400);
@@ -1665,8 +1906,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.thruster_head.up
-		case 0x530E31B7:
+		case 0x530E31B7: //spice.thruster_head.up
 			buff = new Buff(BuffCRC::SPICE_THRUSTER_HEAD_UP, BuffType::SPICE, 600.0f);
 			buff->setHealthBuff(100);
 			buff->setConstitutionBuff(600);
@@ -1677,8 +1917,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.yarrock.up
-		case 0xE7F8C957:
+		case 0xE7F8C957: //spice.yarrock.up
 			buff = new Buff(BuffCRC::SPICE_YARROCK_UP, BuffType::SPICE, 600.0f);
 			buff->setMindBuff(200);
 			buff->setFocusBuff(100);
@@ -1687,8 +1926,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.kliknik_boost.up
-		case 0x37173CAD:
+		case 0x37173CAD: //spice.kliknik_boost.up
 			buff = new Buff(BuffCRC::SPICE_KLIKNIK_BOOST_UP, BuffType::SPICE, 240.0f);
 			buff->setStrengthBuff(500);
 			buff->setActionBuff(100);
@@ -1699,8 +1937,7 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-			//spice.kwi_boost.up
-		case 0x629FA918:
+		case 0x629FA918: //spice.kwi_boost.up
 			buff = new Buff(BuffCRC::SPICE_KWI_BOOST_UP, BuffType::SPICE, 60.0f);
 			buff->setHealthBuff(100);
 			buff->setConstitutionBuff(900);
@@ -1712,7 +1949,6 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 			bo = new BuffObject(buff);
 			player->applyBuff(bo);
 			break;
-
 		default:
 			player->sendSystemMessage("Usage: @spice [spice_name] (available: booster_blue | crash_n_burn | droid_lube | giggledust | grey_gabaki | gunjack | muon_gold | neutron_pixey | pyrepenol | scramjet | sedative_h4b | shadowpaw | sweetblossom | thruster_head | yarrock | kliknik_boost | kwi_boost)");
 		}
@@ -1721,51 +1957,49 @@ void GameCommandHandler::spice(StringTokenizer tokenizer, Player * player) {
 	}
 }
 
-void GameCommandHandler::dbStats(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::dbStats(StringTokenizer tokenizer, Player* player) {
 	ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
 	itemManager->showDbStats(player);
 }
 
-void GameCommandHandler::dbShowDeleted(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::dbShowDeleted(StringTokenizer tokenizer, Player* player) {
 	ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
 	itemManager->showDbDeleted(player);
 }
 
-void GameCommandHandler::dbPurge(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::dbPurge(StringTokenizer tokenizer, Player* player) {
 	ItemManager * itemManager = player->getZone()->getZoneServer()->getItemManager();
 	itemManager->purgeDbDeleted(player);
 }
 
-void GameCommandHandler::getDirection(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::getDirection(StringTokenizer tokenizer, Player* player) {
 	SceneObject* target = player->getTarget();
 
 	if (target == NULL)
 		target = player;
 
-	stringstream ss;
+	StringBuffer ss;
 	ss << "oX: " << target->getDirectionX() << endl << "oZ: "
 	   << target->getDirectionZ() << endl;
 	ss << "oY: " << target->getDirectionY() << endl << "oW: "
 	   << target->getDirectionW();
-	player->sendSystemMessage(ss.str());
+	player->sendSystemMessage(ss.toString());
 }
 
-void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player* player) {
+	ChatManager* chatManager = player->getZone()->getChatManager();
 
-	ChatManager * chatManager = player->getZone()->getChatManager();
-
-	string name;
+	String name;
 	tokenizer.getStringToken(name);
 
 	if (!tokenizer.hasMoreTokens())
-			return;
+		return;
 
 	int level = tokenizer.getIntToken();
 
-	Player * target = chatManager->getPlayer(name);
+	Player* target = chatManager->getPlayer(name);
 
 	if (target != NULL) {
-
 		if (target != player)
 			target->wlock(player);
 
@@ -1774,38 +2008,59 @@ void GameCommandHandler::setAdminLevel(StringTokenizer tokenizer, Player * playe
 		if (target != player)
 			target->unlock();
 
-		stringstream ss;
-		ss << player->getFirstName() << " has changed your admin level.";
-		target->sendSystemMessage(ss.str());
+		StringBuffer str;
+		str << player->getFirstName() << " has changed your admin level.";
+		target->sendSystemMessage(str.toString());
 	}
 
-	ostringstream query;
+	StringBuffer query;
 	query << "UPDATE characters SET " << "adminLevel ='"
 		  << level
 		  << "' WHERE firstname=\'" << name << "\';";
 
-	ServerDatabase::instance()->executeStatement(query.str());
+	ServerDatabase::instance()->executeStatement(query);
 
 	player->sendSystemMessage("Admin level set.");
 }
 
 
-void GameCommandHandler::getLocation(StringTokenizer tokenizer, Player * player) {
-
-	stringstream ss;
+void GameCommandHandler::getLocation(StringTokenizer tokenizer, Player* player) {
+	StringBuffer ss;
 	ss << "planet: " << player->getZoneID() << " cell: " << player->getParentID() << endl;
 	ss << " X: " << player->getPositionX() << " Y: " << player->getPositionY();
 	ss << " Z: " << player->getPositionZ() << endl;
 	ss << "oX: " << player->getDirectionX() << " oZ: " << player->getDirectionZ();
 	ss << "oY: " << player->getDirectionY() << " oW: " << player->getDirectionW();
-	player->sendSystemMessage(ss.str());
+
+	player->sendSystemMessage(ss.toString());
 }
 
-void GameCommandHandler::getCords(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::getTargetLocation(StringTokenizer tokenizer, Player* player) {
+	StringBuffer ss;
+
+	SceneObject* target = player->getTarget();
+
+	if (target != NULL) {
+
+		ss << "planet: " << target->getZoneID() << " cell: "
+				<< target->getParentID() << endl;
+		ss << " X: " << target->getPositionX() << " Y: "
+				<< target->getPositionY();
+		ss << " Z: " << target->getPositionZ() << endl;
+		ss << "oX: " << target->getDirectionX() << " oZ: "
+				<< target->getDirectionZ();
+		ss << "oY: " << target->getDirectionY() << " oW: "
+				<< target->getDirectionW();
+
+		player->sendSystemMessage(ss.toString());
+	}
+}
+
+void GameCommandHandler::getCords(StringTokenizer tokenizer, Player* player) {
 	//This command is for the cave devs, helping them building the needed LUA files.
 	//Please dont delete it from the SVN , Uncomment for use on dev Servers.
-	stringstream msg;
-	string name;
+	StringBuffer msg;
+	String name;
 
 	if (tokenizer.hasMoreTokens())
 		tokenizer.getStringToken(name);
@@ -1815,56 +2070,62 @@ void GameCommandHandler::getCords(StringTokenizer tokenizer, Player * player) {
 	msg << "X " << (player->getPositionX()) << " \n" << "Z "
 			<< (player->getPositionZ()) << " \n" << "Y "
 			<< (player->getPositionY()) << " \n";
-	player->sendSystemMessage(msg.str());
+	player->sendSystemMessage(msg.toString());
 
 	msg << "Cell-ID is " << (player->getParentID()) << " \n";
-	player->sendSystemMessage(msg.str());
+	player->sendSystemMessage(msg.toString());
 
 	msg << "Planet-ID is " << (player->getZoneIndex()) << " \n";
-	player->sendSystemMessage(msg.str());
+	player->sendSystemMessage(msg.toString());
 
 	msg << "Mobname is " << name << " \n";
-	player->sendSystemMessage(msg.str());
+	player->sendSystemMessage(msg.toString());
 
-	ofstream cordFile;
-	cordFile.open("cords.txt", ios::app);
+	File* cordFile = new File("cords.txt");
 
-	if ((player->getParentID() == 0))
-		cordFile << "spawnCreature(" << name << ", " << player->getZoneIndex()
-				<< ", " << player->getPositionX() << ", "
-				<< player->getPositionY() << ")\n";
-	else
-		cordFile << "spawnCreatureInCell(" << name << ", "
-				<< player->getZoneIndex() << ", " << player->getPositionX()
-				<< ", " << player->getPositionZ() << ", "
-				<< player->getPositionY() << ", " << player->getParentID()
-				<< ")\n";
+	try {
+		FileWriter cordWriter(cordFile);
 
-	cordFile << flush;
-	cordFile.close();
+		if ((player->getParentID() == 0)) {
+			cordWriter << "spawnCreature(" << name << ", " << player->getZoneIndex()
+					   << ", " << player->getPositionX() << ", "
+					   << player->getPositionY() << ")\n";
+		} else {
+			cordWriter << "spawnCreatureInCell(" << name << ", "
+					   << player->getZoneIndex() << ", " << player->getPositionX()
+					   << ", " << player->getPositionZ() << ", "
+					   << player->getPositionY() << ", " << player->getParentID()
+					   << ")\n";
+		}
+
+		cordWriter.close();
+	} catch (FileNotFoundException& e) {
+	}
+
+	delete cordFile;
 }
 
-void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player* player) {
 	//Give TANO
 	if (!tokenizer.hasMoreTokens())
 		return;
 
-	string itemType;
+	String itemType;
 	tokenizer.getStringToken(itemType);
 
 	if (itemType == "Holocron") {
-		Holocron * item = new Holocron(player, 0x9BA06548, unicode("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
+		Holocron * item = new Holocron(player, 0x9BA06548, UnicodeString("Holocron"), "object/tangible/jedi/shared_jedi_holocron_light.iff");
 		player->addInventoryItem(item);
 
 		item->sendTo(player);
 	} else if (itemType == "Jetpack") {
-			VehicleDeed * item = new VehicleDeed(player, 0x9899666C, unicode("Deed for: Jetpack"), "jetpack_deed");
+			VehicleDeed * item = new VehicleDeed(player, 0x9899666C, UnicodeString("Deed for: Jetpack"), "jetpack_deed");
 			player->addInventoryItem(item);
 
 			item->sendTo(player);
 
 	} else if (itemType == "ResourceDeed") {
-			ResourceDeed * item = new ResourceDeed(player, 0x7D28DE23, unicode("A Crate of Free Resources"), "resourceDeed");
+			ResourceDeed * item = new ResourceDeed(player, 0x7D28DE23, UnicodeString("A Crate of Free Resources"), "resourceDeed");
 			player->addInventoryItem(item);
 
 			item->sendTo(player);
@@ -1876,28 +2137,28 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player
 			switch (fwAniType) {
 			//Firework diff. animation
 			case 1:
-				item = new Firework(player, 0x7C540DEB, unicode("a Firework Type-4"), "object/tangible/firework/shared_firework_s04.iff",1);
+				item = new Firework(player, 0x7C540DEB, UnicodeString("a Firework Type-4"), "object/tangible/firework/shared_firework_s04.iff",1);
 				break;
 			case 2:
-				item = new Firework(player, 0x15ADE9E5, unicode("a Firework Type-1"), "object/tangible/firework/shared_firework_s01.iff",2);
+				item = new Firework(player, 0x15ADE9E5, UnicodeString("a Firework Type-1"), "object/tangible/firework/shared_firework_s01.iff",2);
 				break;
 			case 3:
-				item = new Firework(player, 0xCEBA4172, unicode("a Firework Type-2"), "object/tangible/firework/shared_firework_s02.iff",3);
+				item = new Firework(player, 0xCEBA4172, UnicodeString("a Firework Type-2"), "object/tangible/firework/shared_firework_s02.iff",3);
 				break;
 			case 4:
-				item = new Firework(player, 0x87B726FF, unicode("a Firework Type-3"), "object/tangible/firework/shared_firework_s03.iff",4);
+				item = new Firework(player, 0x87B726FF, UnicodeString("a Firework Type-3"), "object/tangible/firework/shared_firework_s03.iff",4);
 				break;
 			case 5:
-				item = new Firework(player, 0x35596A66, unicode("a Firework Type-5"), "object/tangible/firework/shared_firework_s05.iff",5);
+				item = new Firework(player, 0x35596A66, UnicodeString("a Firework Type-5"), "object/tangible/firework/shared_firework_s05.iff",5);
 				break;
 			case 6:
-				item = new Firework(player, 0x47888310, unicode("a Firework Type-6"), "object/tangible/firework/shared_firework_s10.iff",6);
+				item = new Firework(player, 0x47888310, UnicodeString("a Firework Type-6"), "object/tangible/firework/shared_firework_s10.iff",6);
 				break;
 			case 7:
-				item = new Firework(player, 0xE85E49D, unicode("a Firework Type-7"), "object/tangible/firework/shared_firework_s11.iff",7);
+				item = new Firework(player, 0xE85E49D, UnicodeString("a Firework Type-7"), "object/tangible/firework/shared_firework_s11.iff",7);
 				break;
 			case 8:
-				item = new Firework(player, 0x6618416, unicode("a Firework Type-8"), "object/tangible/firework/shared_firework_s18.iff",8);
+				item = new Firework(player, 0x6618416, UnicodeString("a Firework Type-8"), "object/tangible/firework/shared_firework_s18.iff",8);
 				break;
 			default:
 				player->sendSystemMessage("Useage: @giveItemTemp Firework <1-8>");
@@ -1930,26 +2191,26 @@ void GameCommandHandler::giveItemTemp(StringTokenizer tokenizer, Player * player
 	}
 }
 
-void GameCommandHandler::clientEffect(StringTokenizer tokenizer, Player * player) {
-	if(!tokenizer.hasMoreTokens())
+void GameCommandHandler::clientEffect(StringTokenizer tokenizer, Player* player) {
+	if (!tokenizer.hasMoreTokens())
 		return;
 
-	string effect;
+	String effect;
 	tokenizer.getStringToken(effect);
 
-	stringstream ss;
+	StringBuffer ss;
 	ss << "clienteffect/" << effect << ".cef";
 
-	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(player, ss.str(), "");
+	PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(player, ss.toString(), "");
 	player->broadcastMessage(explode);
 
-	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc(ss.str(), player->getZoneID(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
+	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc(ss.toString(), player->getZoneID(), player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	player->broadcastMessage(explodeLoc);
 }
 
 
-void GameCommandHandler::rez(StringTokenizer tokenizer, Player * player) {
-	string name;
+void GameCommandHandler::rez(StringTokenizer tokenizer, Player* player) {
+	String name;
 	Player* targetPlayer;
 
 	ChatManager * chatManager = player->getZone()->getChatManager();
@@ -2027,7 +2288,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	Zone* zone = player->getZone();
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	string name;
+	String name;
 	uint64 cellid;
 	uint32 objcrc;
 	float x, y;
@@ -2077,12 +2338,12 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 
 	if (x > 7680)
 		x = 7680;
-	if(x < -7680)
+	if (x < -7680)
 		x = -7680;
 
-	if(y > 7680)
+	if (y > 7680)
 		y = 7680;
-	if(y < -7680)
+	if (y < -7680)
 		y = -7680;
 
 	if (creatureManager->verifyCreatureSpawn(name)) {
@@ -2098,7 +2359,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 			creature->setRespawnTimer(0);
 			creature->setHeight(height);
 
-			if(stationary)
+			if (stationary)
 				creature->setRandomMovement(false);
 
 			CreatureImplementation * creoImpl = (CreatureImplementation *) creature->_getImplementation();
@@ -2109,7 +2370,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 				for (int i = 0; i < creoImpl->inRangeObjectCount(); ++i) {
 					SceneObjectImplementation * obj = (SceneObjectImplementation *) creoImpl->getInRangeObject(i);
 
-					if(!(obj->isPlayer() || obj->isNonPlayerCreature()) || !creoImpl->isInRange((SceneObject *) obj->_getStub(), 24))
+					if (!(obj->isPlayer() || obj->isNonPlayerCreature()) || !creoImpl->isInRange((SceneObject *) obj->_getStub(), 24))
 						continue;
 
 					obj->notifyPositionUpdate(creoImpl);
@@ -2124,48 +2385,11 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 
 	} else
 		player->sendSystemMessage("Cannot spawn creature");
-
-}
-void GameCommandHandler::addNoBuildArea(StringTokenizer tokenizer, Player* player) {
-	try {
-		if (!tokenizer.hasMoreTokens())
-			return;
-
-		float xMin = tokenizer.getFloatToken();
-
-		if (!tokenizer.hasMoreTokens())
-			return;
-
-		float xMax = tokenizer.getFloatToken();
-
-		if (!tokenizer.hasMoreTokens())
-			return;
-
-		float yMin = tokenizer.getFloatToken();
-
-		if (!tokenizer.hasMoreTokens())
-			return;
-
-		float yMax = tokenizer.getFloatToken();
-
-		PlanetManager * planetManager = player->getZone()->getPlanetManager();
-
-		if (planetManager->createNoBuildArea(xMin, xMax, yMin, yMax) != NULL)
-			player->sendSystemMessage("No Build Area Created");
-		else
-			player->sendSystemMessage("No Build Area could not be created.");
-
-	} catch (Exception e) {
-		player->sendSystemMessage("No Build Area could not be created (Exception Thrown)");
-		cout << "Exception Caught in GameCommandHandler::addNoBuildArea: "  << e.getMessage() << endl;
-	} catch (...) {
-		player->sendSystemMessage("No Build Area could not be created (Exception Thrown)");
-		cout << "Unspecified Exception Caught in GameCommandHandler::addNoBuildArea" << endl;
-	}
 }
 
-void GameCommandHandler::guildAdmin(StringTokenizer tokenizer, Player * player) {
-	string tag;
+
+void GameCommandHandler::guildAdmin(StringTokenizer tokenizer, Player* player) {
+	String tag;
 
 	if (!tokenizer.hasMoreTokens()) {
 		player->sendSystemMessage("Wrong format: Guildtag/abbrev. missing!");
@@ -2213,19 +2437,19 @@ void GameCommandHandler::guildAdmin(StringTokenizer tokenizer, Player * player) 
 		}
 
 
-		stringstream message;
+		StringBuffer message;
 
 		message << "You have become part and temporarily co-leader of the guild '" << playerGuild->getGuildName() << "'.\n"
 			<< "Please make sure, after you finished support actions, to leave the guild by typing @endGuildAdmin.";
 
-		player->sendSystemMessage(message.str());
+		player->sendSystemMessage(message.toString());
 
 	} catch (...) {
 		return;
 	}
 }
 
-void GameCommandHandler::endGuildAdmin(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::endGuildAdmin(StringTokenizer tokenizer, Player* player) {
 	uint64 defGuild = 0;
 
 	Guild* playerGuild;
@@ -2255,8 +2479,8 @@ void GameCommandHandler::endGuildAdmin(StringTokenizer tokenizer, Player * playe
 	}
 }
 
-void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) {
-	string tag;
+void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player* player) {
+	String tag;
 	uint64 faction;
 	Player* targetPlayer;
 
@@ -2270,7 +2494,7 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 	try {
 		SceneObject* obj = player->getTarget();
 
-		if(obj == NULL)
+		if (obj == NULL)
 			obj = player;
 
 		if (obj != NULL && obj->isPlayer()) {
@@ -2279,11 +2503,10 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 			if (targetPlayer != player)
 				targetPlayer->wlock(player);
 
-
 			if (tag == "rebel")
-				faction = String::hashCode("rebel");
+				faction = String("rebel").hashCode();
 			else if (tag == "imperial")
-				faction = String::hashCode("imperial");
+				faction = String("imperial").hashCode();
 			else if (tag == "neutral")
 				faction = 0;
 			else if (tag == "covert")
@@ -2294,11 +2517,12 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 				faction = targetPlayer->getFaction();
 			else {
 				player->sendSystemMessage("Usage: @factionSet overt | covert | onLeave | rebel | imperial | neutral");
+
 				if (targetPlayer != player)
 					targetPlayer->unlock();
+
 				return;
 			}
-
 
 			targetPlayer->setFaction(faction);
 
@@ -2309,16 +2533,15 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 			else
 				targetPlayer->setOvert();
 
-			stringstream msg;
+			StringBuffer msg;
 			msg << "You change " << targetPlayer->getFirstNameProper() << "'s GWC state to '" << tag << "'.";
-			player->sendSystemMessage(msg.str());
+			player->sendSystemMessage(msg.toString());
 
 			targetPlayer->makeCharacterMask();
 
 			if (targetPlayer != player)
 				targetPlayer->unlock();
 		}
-
 	} catch (...) {
 		if (targetPlayer != player)
 			targetPlayer->unlock();
@@ -2326,7 +2549,7 @@ void GameCommandHandler::factionSet(StringTokenizer tokenizer, Player * player) 
 
 }
 
-void GameCommandHandler::getCredits(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::getCredits(StringTokenizer tokenizer, Player* player) {
 	uint32 credits;
 
 	if (tokenizer.hasMoreTokens())
@@ -2337,9 +2560,9 @@ void GameCommandHandler::getCredits(StringTokenizer tokenizer, Player * player) 
 	player->addCashCredits(credits);
 }
 
-void GameCommandHandler::getXP(StringTokenizer tokenizer, Player * player) {
+void GameCommandHandler::getXP(StringTokenizer tokenizer, Player* player) {
 	int xpamount;
-	string xptype;
+	String xptype;
 
 	if (tokenizer.hasMoreTokens()) {
 		tokenizer.getStringToken(xptype);
@@ -2359,15 +2582,13 @@ void GameCommandHandler::getXP(StringTokenizer tokenizer, Player * player) {
 
 void GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player) {
 	try {
-		stringstream query,msg, appendix;
+		StringBuffer query, msg, appendix;
 
-		query   << "SELECT character_id, firstname, surname,adminLevel from characters where adminLevel <> 4 order by character_id asc;";
+		query << "SELECT character_id,firstname,surname,adminLevel from characters where adminLevel <> 4 order by character_id asc;";
+
 		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
 
 		while (res->next()) {
-			msg.str("");
-			appendix.str("");
-
 			switch (res->getInt(3)) {
 			case (1):
 				appendix << "1 (CSR)";
@@ -2392,11 +2613,12 @@ void GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player) {
 			}
 
 			msg << "Character ID: " << res->getUnsignedInt(0) << "    named: " << res->getString(1) << " "
-				<< res->getString(1) << "     with level: " << appendix.str();
+				<< res->getString(1) << "     with level: " << appendix.toString();
 
-			player->sendSystemMessage(msg.str());
+			player->sendSystemMessage(msg.toString());
 
 		}
+
 		delete res;
 	} catch (...) {
 		player->info("Unreported Exception in GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player)");
@@ -2404,60 +2626,675 @@ void GameCommandHandler::adminList(StringTokenizer tokenizer, Player* player) {
 }
 
 void GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player) {
-	stringstream name, getToons, msg;
-	string stringName;
+	StringBuffer name, getToons, msg;
+	String stringName;
 
 	Player* targetPlayer;
 	ResultSet* res;
 
 	uint32 accountID = 0;
 
-	ChatManager * chatManager = player->getZone()->getChatManager();
+	ChatManager* chatManager = player->getZone()->getChatManager();
 
 	try {
-		if (tokenizer.hasMoreTokens()) {
-
-			while (tokenizer.hasMoreTokens()) {
-				tokenizer.getStringToken(stringName);
-				name << stringName << " ";
-			}
-
-		} else {
+		if (!tokenizer.hasMoreTokens()) {
 			player->sendSystemMessage("Usage: @showChars <Forum Nickname>");
 			return;
 		}
 
-		stringName = name.str();
-		String::toLower(stringName);
+		while (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(stringName);
+			name << stringName << " ";
+		}
+
+		stringName = name.toString().toLowerCase();
 
 		MySqlDatabase::escapeString(stringName);
 
 		getToons << "SELECT characters.character_id, characters.account_id, characters.firstname "
-			<< "FROM characters Inner Join account ON account.account_id = characters.account_id "
-			<< "WHERE LCASE(account.username) = '" << stringName << "' "
-			<< "ORDER BY characters.account_id ASC, characters.firstname ASC;";
+				 << "FROM characters Inner Join account ON account.account_id = characters.account_id "
+				 << "WHERE LCASE(account.username) = '" << stringName << "' "
+				 << "ORDER BY characters.account_id ASC, characters.firstname ASC;";
 
 		res = ServerDatabase::instance()->executeQuery(getToons);
 
-		msg.str("");
 		msg << "The player " << stringName << "has registered the following characters: ";
 
-		player->sendSystemMessage(msg.str());
+		player->sendSystemMessage(msg.toString());
 
 		while (res->next()) {
-			msg.str("");
+			msg.deleteAll();
 			msg << "Character ID: " << res->getInt(0) << "    Charactername: " << res->getString(2);
 
-			player->sendSystemMessage(msg.str());
+			player->sendSystemMessage(msg.toString());
+		}
+
+		delete res;
+	} catch (DatabaseException& e) {
+		player->info("Database Exception in GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player:");
+		player->info(e.getMessage());
+
+		System::out << e.getMessage() << endl;
+	} catch (...) {
+		player->info("Unreported Exception in GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player)");
+	}
+}
+
+/*
+void GameCommandHandler::toggleCombat(StringTokenizer tokenizer, Player * player) {
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	CombatManager* combatManager = srv->getCombatManager();
+
+	combatManager->toggleCombat();
+
+	ChatManager * chatManager = zone->getChatManager();
+
+	if (combatManager->isCombatEnabled()) {
+		StringBuffer message;
+		message << player->getFirstName() << " enabled Combat";
+
+		chatManager->broadcastMessage(message.toString());
+	} else {
+		StringBuffer message;
+		message << player->getFirstName() << " disabled Combat";
+
+		chatManager->broadcastMessage(message.toString());
+	}
+}
+*/
+
+void GameCommandHandler::lockServer(StringTokenizer tokenizer, Player * player) {
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	ChatManager * chatManager = zone->getChatManager();
+
+	zoneServer->setServerStateLocked();
+
+	StringBuffer message;
+	message <<  player->getFirstName() << " locked the server";
+
+	chatManager->broadcastMessage(message.toString());
+}
+
+void GameCommandHandler::unlockServer(StringTokenizer tokenizer, Player * player) {
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	ChatManager * chatManager = zone->getChatManager();
+
+	zoneServer->setServerStateOnline();
+
+	StringBuffer message;
+	message << player->getFirstName() << " unlocked the server";
+
+	chatManager->broadcastMessage(message.toString());
+
+}
+
+void GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player) {
+	SceneObject* obj = player->getTarget();
+	uint64 oid;
+
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	if (obj == NULL || obj->isPlayer()) {
+		player->sendSystemMessage("This object was not dropped by a player - it can't be deleted!");
+		return;
+	}
+
+	player->unlock();
+
+	try {
+		obj->wlock();
+
+		oid = obj->getObjectID();
+
+		StringBuffer query;
+
+		query << "SELECT item_id FROM player_storage WHERE item_id = '" << oid << "';";
+
+		ResultSet* res = ServerDatabase::instance()->executeQuery(query);
+
+		if (!res->next()) {
+			player->sendSystemMessage("This object was not dropped by a player - it can't be deleted!");
+			obj->unlock();
+			player->wlock();
+			return;
+		}
+
+		delete res;
+
+		query.deleteAll();
+		query << "DELETE FROM player_storage WHERE item_id = " << oid << " or container = " << oid << ";";
+		ServerDatabase::instance()->executeStatement(query);
+
+
+		if (((TangibleObject*) obj)->isContainer()) {
+			Container* container = (Container*) obj;
+
+			while (!container->isEmpty()) {
+				SceneObject* sco = container->getObject(0);
+
+				container->removeObject(0);
+
+				sco->removeFromZone(true);
+			}
+		}
+
+		obj->removeFromZone(true);
+
+		obj->unlock();
+	} catch (DatabaseException& e) {
+		player->info("Database Exception in GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player)");
+		player->info(e.getMessage());
+		System::out << e.getMessage() << endl;
+		obj->unlock();
+
+	} catch (...) {
+		player->info("Unreported Exception in GameCommandHandler::poofObject(StringTokenizer tokenizer, Player * player)");
+		obj->unlock();
+	}
+
+	player->wlock();
+}
+
+void GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * player) {
+	SceneObject* obj = player->getTarget();
+
+	if (obj == NULL || obj->isPlayer())
+		return;
+
+	uint64 oid = 0;
+
+	try {
+		obj->wlock(player);
+
+		oid = obj->getObjectID();
+
+		obj->unlock();
+
+	} catch (...) {
+		obj->unlock();
+		player->info("Unreported Exception in GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * player)\n");
+		return;
+	}
+
+	StringBuffer itemInfo, msg;
+
+	itemInfo << "SELECT player_storage.dropped_by_character, characters.firstname "
+			<< "FROM player_storage "
+			<< "Inner Join characters ON player_storage.dropped_by_character = characters.character_id "
+			<< "Where item_id = " << oid << ";";
+
+	try {
+		ResultSet* res = ServerDatabase::instance()->executeQuery(itemInfo);
+
+		if (res->next()) {
+			msg.deleteAll();
+			msg << "This item was dropped by character ID: " << res->getInt(0) << "    Charactername: " << res->getString(1);
+
+			player->sendSystemMessage(msg.toString());
 		}
 
 		delete res;
 
 	} catch (DatabaseException& e) {
-		player->info("Database Exception in GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player:");
+		player->info("Database Exception in GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * player)");
 		player->info(e.getMessage());
-		cout << e.getMessage() << endl;
+		System::out << e.getMessage() << endl;
 	} catch (...) {
-		player->info("Unreported Exception in GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player)");
+		player->info("Unreported Exception in GameCommandHandler::whoDroppedThis(StringTokenizer tokenizer, Player * player)");
 	}
+}
+
+void GameCommandHandler::sendp(StringTokenizer tokenizer, Player * player) {
+	//TESTING PURPOSES ULTYMAS.
+	player->savePlayerState(false);
+	player->sendSystemMessage("char saved");
+
+}
+
+void GameCommandHandler::requestStartingLocations(StringTokenizer tokenizer, Player * player) {
+	if (player->getZoneID() == 42) {
+		StartingLocationList* sll = new StartingLocationList(player);
+		player->sendMessage(sll);
+	} else {
+		player->sendSystemMessage("You can only use this command from the tutorial.");
+	}
+}
+
+void GameCommandHandler::help(StringTokenizer tokenizer, Player * player) {
+	LaunchBrowserMessage* lbm = new LaunchBrowserMessage("www.swgemu.com/support");
+	player->sendMessage(lbm);
+}
+
+void GameCommandHandler::openInventory(StringTokenizer tokenizer, Player * player) {
+	Player* targetPlayer;
+
+	try {
+		SceneObject* obj = player->getTarget();
+
+		if (obj != NULL && obj->isPlayer()) {
+			targetPlayer = (Player*) obj;
+		} else {
+			player->sendSystemMessage("Usage: @openInventory <with a player as the current target>\n");
+			return;
+		}
+
+
+		if (targetPlayer == player || targetPlayer == NULL)
+			return;
+
+		targetPlayer->wlock(player);
+
+		Container* othersInventory = targetPlayer->getInventory();
+
+		if (othersInventory != NULL) {
+			othersInventory->sendTo(player);
+			othersInventory->sendItemsTo(player);
+			othersInventory->openTo(player);
+		}
+
+		StringBuffer devLog;
+		devLog << "Player " << player->getFirstName() << " is using @openInventory on player "
+			   << targetPlayer->getFirstName() << "\n";
+
+		player->info(devLog.toString(), true);
+
+		targetPlayer->unlock();
+
+	} catch (...) {
+		System::out << "Unreported exception caught in GameCommandHandler::openInventory(StringTokenizer tokenizer, Player * player)";
+		targetPlayer->unlock();
+	}
+}
+
+void GameCommandHandler::freezePlayer(StringTokenizer tokenizer, Player* player) {
+		String name;
+		Player* targetPlayer;
+
+		ChatManager * chatManager = player->getZone()->getChatManager();
+
+		if (tokenizer.hasMoreTokens()) {
+			tokenizer.getStringToken(name);
+			targetPlayer = chatManager->getPlayer(name);
+
+			if (targetPlayer == NULL)
+				return;
+		} else {
+			SceneObject* obj = player->getTarget();
+			if (obj != NULL && obj->isPlayer()) {
+				targetPlayer = (Player*) obj;
+				name = targetPlayer->getFirstName();
+			} else {
+				return;
+			}
+		}
+
+		//By right here, we should have a player object. or not.
+				try {
+					if (targetPlayer != player)
+						targetPlayer->wlock(player);
+
+					targetPlayer->updateSpeed(0,0);
+
+					targetPlayer->setFrozen(true);
+
+					CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(targetPlayer);
+					codm->setFrozen(true);
+					codm->close();
+					player->broadcastMessage(codm);
+
+					targetPlayer->sendSystemMessage(
+							"You have been frozen by \'"
+									+ player->getFirstName() + "\'.");
+					player->sendSystemMessage("You have frozen \'" + name
+							+ "\'.");
+
+					if (targetPlayer != player)
+						targetPlayer->unlock();
+
+				} catch (...) {
+					if (targetPlayer != player)
+						targetPlayer->unlock();
+				}
+
+
+}
+
+void GameCommandHandler::unfreezePlayer(StringTokenizer tokenizer, Player* player) {
+			String name;
+			Player* targetPlayer;
+
+			ChatManager * chatManager = player->getZone()->getChatManager();
+
+			if (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(name);
+				targetPlayer = chatManager->getPlayer(name);
+
+				if (targetPlayer == NULL)
+					return;
+			} else {
+				SceneObject* obj = player->getTarget();
+				if (obj != NULL && obj->isPlayer()) {
+					targetPlayer = (Player*) obj;
+					name = targetPlayer->getFirstName();
+				} else {
+					return;
+				}
+			}
+
+			//By right here, we should have a player object. or not.
+					try {
+						if (targetPlayer != player)
+							targetPlayer->wlock(player);
+
+						targetPlayer->updateSpeed(5.376, 1.549f);
+
+						targetPlayer->setFrozen(false);
+
+						CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(targetPlayer);
+						codm->setFrozen(false);
+						codm->close();
+						player->broadcastMessage(codm);
+
+						targetPlayer->sendSystemMessage(
+								"You have been unfrozen by \'"
+										+ player->getFirstName() + "\'.");
+						player->sendSystemMessage("You have unfrozen \'" + name
+								+ "\'.");
+
+						if (targetPlayer != player)
+							targetPlayer->unlock();
+
+					} catch (...) {
+						if (targetPlayer != player)
+							targetPlayer->unlock();
+					}
+
+
+}
+
+void GameCommandHandler::changeTemplate(StringTokenizer tokenizer, Player* player) {
+	String newTemplateString;
+
+	if (tokenizer.hasMoreTokens()) {
+		tokenizer.getStringToken(newTemplateString);
+	} else {
+		player->sendSystemMessage("Usage: @changeTemplate [string]");
+		return;
+	}
+
+	player->setTemplateString(newTemplateString);
+
+	CreatureObjectDeltaMessage6* codm = new CreatureObjectDeltaMessage6(player);
+	codm->updateTemplateString();
+	codm->close();
+	player->broadcastMessage(codm);
+}
+
+void GameCommandHandler::setSpeed(StringTokenizer tokenizer, Player* player) {
+	Player* targetPlayer;
+	SceneObject* obj = player->getTarget();
+		if (obj != NULL && obj->isPlayer()) {
+			targetPlayer = (Player*) obj;
+		} else {
+			return;
+		}
+		//Now we want to make sure theres more tokens.
+		if (!tokenizer.hasMoreTokens())
+			return;
+
+		float speed = tokenizer.getFloatToken();
+
+		if (!tokenizer.hasMoreTokens())
+				return;
+
+		float acceleration = tokenizer.getFloatToken();
+
+		int defaultFlag;
+		defaultFlag = 0;
+		if (tokenizer.hasMoreTokens()) {
+			defaultFlag = tokenizer.getIntToken();
+		}
+
+
+		//By right here, we should have a player object. or not.
+		try {
+			if (targetPlayer != player)
+				targetPlayer->wlock(player);
+
+			if (defaultFlag == 0) {
+				targetPlayer->updateSpeed(speed, acceleration);
+				targetPlayer->sendSystemMessage("Your speed has been changed.");
+				player->sendSystemMessage("You have changed their speed.");
+			} else {
+				targetPlayer->updateSpeed(5.376, 1.549f);
+				targetPlayer->sendSystemMessage("Your speed has been defaulted back to normal.");
+				player->sendSystemMessage("You have changed their speed back to default.");
+			}
+
+			if (targetPlayer != player)
+				targetPlayer->unlock();
+
+		} catch (...) {
+			if (targetPlayer != player)
+				targetPlayer->unlock();
+		}
+
+}
+
+void GameCommandHandler::setHeight(StringTokenizer tokenizer, Player* player) {
+	CreatureObject* targetObject;
+	SceneObject* obj = player->getTarget();
+		if (obj != NULL) {
+			targetObject = (CreatureObject*) obj;
+		} else {
+				return;
+		}
+
+		if (!tokenizer.hasMoreTokens())
+				return;
+
+		float height = tokenizer.getFloatToken();
+
+
+		//By right here, we should have a player object. or not.
+							try {
+								if (targetObject != player)
+									targetObject->wlock(player);
+
+								targetObject->setHeight(height);
+
+								CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(targetObject);
+								dcreo3->updateHeight();
+								dcreo3->close();
+								player->broadcastMessage(dcreo3);
+
+								//targetObject->sendSystemMessage("Your height has been changed.");
+								player->sendSystemMessage("You have changed their height.");
+
+								if (targetObject != player)
+									targetObject->unlock();
+
+							} catch (...) {
+								if (targetObject != player)
+									targetObject->unlock();
+							}
+
+}
+
+void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player) {
+	float x,y;
+	String wpName;
+
+	if (!tokenizer.hasMoreTokens())
+		return;
+	tokenizer.getStringToken(wpName);
+
+	if (!tokenizer.hasMoreTokens())
+		return;
+		int meter = tokenizer.getIntToken();
+
+	WaypointObject* waypoint = player->searchWaypoint(player, wpName,2);
+
+	if (waypoint != NULL) {
+		x = waypoint->getPositionX();
+		y = waypoint->getPositionY();
+
+		String planetName = waypoint->getPlanetName();
+		int planet = player->getZoneIndex();
+
+		if (planetName == "corellia")
+			planet = 0;
+		else if (planetName == "dantooine")
+			planet = 1;
+		else if (planetName == "dathomir")
+			planet = 2;
+		else if (planetName == "endor")
+			planet = 3;
+		else if (planetName == "lok")
+			planet = 4;
+		else if (planetName == "naboo")
+			planet = 5;
+		else if (planetName == "rori")
+			planet = 6;
+		else if (planetName == "talus")
+			planet = 7;
+		else if (planetName == "tatooine")
+			planet = 8;
+		else if (planetName == "yavin4")
+			planet = 9;
+
+	String name = player->getFirstName();
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	try {
+		zone->lock();
+
+		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+			SceneObject
+					* obj =
+							(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
+									i))->_getStub());
+
+			if (obj->isPlayer()) {
+				Player* otherPlayer = (Player*) obj;
+				String otherName = otherPlayer->getFirstName();
+
+				if (otherName != name && player->isInRange(otherPlayer, meter)
+						&& (otherPlayer->getAdminLevel()
+								== PlayerImplementation::NORMAL)) {
+
+
+					try {
+						if (planet != otherPlayer->getZoneIndex())
+
+
+						otherPlayer->switchMap(planet);
+						otherPlayer->doWarp(x, y);
+						zone->unlock();
+						player->sendSystemMessage("player \'" + otherName
+								+ "\' has been warped.");
+					} catch (...) {
+						player->sendSystemMessage("unable to warp player \'"
+								+ otherName + "\'");
+					}
+				}
+			}
+			}
+	}catch (...)
+	{}
+}
+}
+
+void GameCommandHandler::scaleXP(StringTokenizer tokenizer, Player* player) {
+	int scale;
+
+	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();
+	if (srv == NULL)
+		return;
+
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	PlayerManager* pmng = srv->getPlayerManager();
+	if (pmng == NULL)
+		return;
+
+	if (!tokenizer.hasMoreTokens())
+		return;
+
+	scale = tokenizer.getIntToken();
+
+	pmng->setXpScale(scale);
+
+	ChatManager * chatManager = zone->getChatManager();
+
+	StringBuffer message;
+	message << player->getFirstNameProper() << " set XP scale to " << scale << ".";
+	chatManager->broadcastMessage(message.toString());
+}
+
+void GameCommandHandler::spawnAA(StringTokenizer tokenizer, Player* player) {
+	Zone* zone = player->getZone();
+	PlanetManager * planetManager = zone->getPlanetManager();
+
+	float x, y, z, range;
+
+
+	if (tokenizer.hasMoreTokens()) {
+		x = tokenizer.getFloatToken();
+	} else {
+		return;
+	}
+
+	if (tokenizer.hasMoreTokens()) {
+		y = tokenizer.getFloatToken();
+	} else {
+		return;
+	}
+
+	if (tokenizer.hasMoreTokens()) {
+		z = tokenizer.getFloatToken();
+	} else {
+		return;
+	}
+
+	if (tokenizer.hasMoreTokens()) {
+		range = tokenizer.getFloatToken();
+	} else {
+		return;
+	}
+
+	TestActiveArea * testArea = new TestActiveArea(x,y,z,range);
+
+	planetManager->spawnActiveArea(testArea);
 }

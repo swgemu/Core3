@@ -41,108 +41,106 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 rebelSpecforceCaptain = Creature:new {
-      objectName = "rebelSpecforceCaptain",  -- Lua Object Name
-      creatureType = "NPC",
-      faction = "rebel", 
-	  factionPoints = 20,
-      gender = "",
+	objectName = "rebelSpecforceCaptain",  -- Lua Object Name
+	creatureType = "NPC",
+	faction = "rebel", 
+	factionPoints = 20,
+	gender = "",
 
-      name = "Rebel SpecForce Captain",
-      objectCRC = 542195677, 
-      socialGroup = "Rebel",
-      named = FALSE, 
+	speciesName = "rebel_specforce_captain",
+	stfName = "mob/creature_names", 
+	objectCRC = 542195677, 
+	socialGroup = "Rebel",
+	level = 25,
+	
+	combatFlags = 0,
 
-      level = 25,
-      
+	healthMax = 8800,
+	healthMin = 7200,
+	strength = 0,
+	constitution = 0,
 
-      combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	actionMax = 8800,
+	actionMin = 7200,
+	quickness = 0,
+	stamina = 0,
 
-      healthMax = 8800,
-      healthMin = 7200,
-      strength = 0,
-      constitution = 0,
+	mindMax = 8800,
+	mindMin = 7200,
+	focus = 0,
+	willpower = 0,
 
-      actionMax = 8800,
-      actionMin = 7200,
-      quickness = 0,
-      stamina = 0,
+	height = 1, -- Size of creature
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
+	stun = -1,
+	blast = 40,
+	heat = 0,
+	cold = 0,
+	acid = 0,
+	lightsaber = 0,
 
-      mindMax = 8800,
-      mindMin = 7200,
-      focus = 0,
-      willpower = 0,
+	accuracy = 0,
 
-      height = 1, -- Size of creature
-      armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-      kinetic = 0,
-      energy = 0,
-      electricity = 0,
-      stun = -1,
-      blast = 40,
-      heat = 0,
-      cold = 0,
-      acid = 0,
-      lightsaber = 0,
+	healer = 0,
 
-      accuracy = 0,
+	pack = 1,
+	herd = 0,
+	stalker = 0,
+	killer = 1,
+	aggressive = 0,
+	invincible = 0, 
 
-      healer = 0,
+	meleeDefense = 1,
+	rangedDefense = 1,
 
-      pack = 1,
-      herd = 0,
-      stalker = 0,
-      killer = 1,
-      aggressive = 0,
-      invincible = 0, 
+	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	  meleeDefense = 1,  
-	  rangedDefense = 1,
+	weapon = "object/weapon/ranged/rifle/shared_rifle_berserker.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "spec ops berserker", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_berserker", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 365,
+	weaponMaxDamage = 627,
+	weaponAttackSpeed = 2.2,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	
+	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 220,
+	alternateWeaponMaxDamage = 301,
+	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      attackCreatureOnSight = "", -- Enter socialGroups 
+	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-      weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      weaponName = "", -- Name ex. 'a Vibrolance'
-      weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 0,
-      weaponMinDamage = 0,
-      weaponMaxDamage = 0,
-      weaponAttackSpeed = 0,
-      weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	lootGroup = "0", -- Group it belongs to for loot
 
-      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-      alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-      alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-      alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
-      alternateWeaponMinDamage = 0,
-      alternateWeaponMaxDamage = 0,
-      alternateWeaponAttackSpeed = 0,
-      alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-      alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	tame = 0,  -- Likely hood to be tamed
 
-      internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
+	milk = 0,
 
-      lootGroup = "0", -- Group it belongs to for loot
+	boneType = "",
+	boneMax = 0,
 
-      tame = 0,  -- Likely hood to be tamed
+	hideType = "",
+	hideMax = 0,
 
-      milk = 0,
+	meatType = "",
+	meatMax = 0,
 
-      boneType = "",
-      boneMax = 0,
+	skills = { "rebelSpecforceCaptainAttack1", "rebelSpecforceCaptainAttack2" },
+	respawnTimer = 180,
 
-      hideType = "",
-      hideMax = 0,
-
-      meatType = "",
-      meatMax = 0,
-
-      skills = { "", "", "" }
-      -- respawnTimer = 180,
-
-      behaviorScript = "", -- Link to the behavior script for this object
+	behaviorScript = "", -- Link to the behavior script for this object
 }
 
 Creatures:addCreature(rebelSpecforceCaptain, 542195677) --  Add to Global Table

@@ -75,64 +75,63 @@ UserManagerImplementation::~UserManagerImplementation() {
 }
 
 void UserManagerImplementation::parseBanList() {
-	ifstream banFile("bannedusers.lst");
+	File* banFile = new File("bannedusers.lst");
 
-	if (!banFile)
-		return;
-	else
+	try {
+		FileReader banReader(banFile);
+
 		info("parsing ban list: bannedusers.lst", true);
 
- 	char line[100];
+		String line;
 
-	while (banFile.getline(line, 100)) {
-		StringTokenizer tokenizer(line);
+		while (banReader.readLine(line)) {
+			StringTokenizer tokenizer(line);
 
-		string ip;
-		tokenizer.getStringToken(ip);
+			String ip;
+			tokenizer.getStringToken(ip);
 
-		if (ip.size() > 0)
-			banUser(ip);
+			if (!ip.isEmpty())
+				banUser(ip);
+		}
+
+		banFile->close();
+	} catch (FileNotFoundException& e) {
 	}
 
-	banFile.close();
+	delete banFile;
 }
 
 void UserManagerImplementation::parseAdminList() {
-	ifstream adminFile("adminusers.lst");
+	File* adminFile = new File("adminusers.lst");
 
-	if (!adminFile)
-		return;
-	else
+	try {
+		FileReader adminReader(adminFile);
+
 		info("parsing admin list: adminusers.lst", true);
 
- 	char line[100];
+		String line;
 
-	while (adminFile.getline(line, 100)) {
-		StringTokenizer tokenizer(line);
+		while (adminReader.readLine(line)) {
+			StringTokenizer tokenizer(line);
 
-		string name;
-		tokenizer.getStringToken(name);
+			String name;
+			tokenizer.getStringToken(name);
 
-		String::toLower(name);
+			name = name.trim().toLowerCase();
 
-		//trim whitespace
-			int swhite = name.find_first_not_of(" \t\n\r\f");
-			int ewhite = name.find_last_not_of(" \t\n\r\f");
+			if (!name.isEmpty())
+				grantAdmin(name);
+		}
 
-			if (swhite == string::npos)
-				name = "";
-			else
-				name = name.substr(swhite, ewhite - swhite + 1);
-
-		if (name.size() > 0)
-			grantAdmin(name);
+		adminFile->close();
+	} catch (FileNotFoundException& e) {
 	}
 
-	adminFile.close();
+	delete adminFile;
 }
 
 bool UserManagerImplementation::checkUser(uint32 ipid) {
-	/*string ip = addr->getFullIPAddress();
+	/*String ip = addr->getFullIPAddress();
 	if (ip.substr(0, 12) != "80.99.84.166")
 		return false;*/
 
@@ -145,19 +144,15 @@ bool UserManagerImplementation::checkUser(uint32 ipid) {
 		return true;
 }
 
-void UserManagerImplementation::grantAdmin(const string& n) {
-	string name = n;
-	String::toLower(name);
-	adminUsers->add(name);
+void UserManagerImplementation::grantAdmin(const String& name) {
+	adminUsers->add(name.toLowerCase());
 }
 
-bool UserManagerImplementation::isAdmin(const string& n) {
-	string name = n;
-	String::toLower(name);
-	return adminUsers->contains(name);
+bool UserManagerImplementation::isAdmin(const String& name) {
+	return adminUsers->contains(name.toLowerCase());
 }
 
-void UserManagerImplementation::banUser(const string& ipaddr) {
+void UserManagerImplementation::banUser(const String& ipaddr) {
 	try {
 		SocketAddress addr(ipaddr, 0);
 
@@ -168,10 +163,11 @@ void UserManagerImplementation::banUser(const string& ipaddr) {
 	}
 }
 
-bool UserManagerImplementation::banUserByName(string& name, string& admin) {
+bool UserManagerImplementation::banUserByName(String& name, String& admin) {
 	PlayerManager* playerManager = server->getPlayerManager();
 
-	String::toLower(name);
+	name = name.toLowerCase();
+
 	Player* player = playerManager->getPlayer(name);
 
 	if (player != NULL) {
@@ -179,9 +175,9 @@ bool UserManagerImplementation::banUserByName(string& name, string& admin) {
 		if (client == NULL)
 			return false;
 
-		//string ip = client->getIPAddress();
-		string ip = client->getAddress();
-		ip = ip.substr(0, ip.find(":"));
+		//String ip = client->getIPAddress();
+		String ip = client->getAddress();
+		ip = ip.subString(0, ip.indexOf(":"));
 
 		banUser(ip);
 
@@ -191,15 +187,25 @@ bool UserManagerImplementation::banUserByName(string& name, string& admin) {
 
 		server->lock();
 
-		string line = ip + " // " + name + " (" + admin + ")\n";
+		String line = ip + " // " + name + " (" + admin + ")\n";
 
-		ofstream banFile;
-		banFile.open("bannedusers.lst", ios::app);
+		File* banFile = new File("bannedusers.lst");
 
-		banFile.write(line.c_str(), line.size());
-		banFile.close();
+		try {
+			FileWriter banWriter(banFile);
 
-		info("user \'" + name + "\' banned", true);
+			banWriter.writeLine(line);
+
+			banFile->close();
+
+			info("user \'" + name + "\' banned", true);
+
+			delete banFile;
+		} catch (FileNotFoundException& e) {
+			delete banFile;
+
+			return false;
+		}
 
 		return true;
 	} else {
@@ -209,10 +215,11 @@ bool UserManagerImplementation::banUserByName(string& name, string& admin) {
 	}
 }
 
-bool UserManagerImplementation::kickUser(string& name, string& admin) {
+bool UserManagerImplementation::kickUser(String& name, String& admin) {
 	PlayerManager* playerManager = server->getPlayerManager();
 
-	String::toLower(name);
+	name = name.toLowerCase();
+
 	Player* player = playerManager->getPlayer(name);
 
 	if (player != NULL) {
@@ -222,7 +229,7 @@ bool UserManagerImplementation::kickUser(string& name, string& admin) {
 
 		player->explode(1);
 
-		ErrorMessage* errMsg = new ErrorMessage(admin.c_str(), "You were disconnected from the server. "
+		ErrorMessage* errMsg = new ErrorMessage(admin.toCharArray(), "You were disconnected from the server. "
 				"Don't log in before sorting out the issue with an admin on the forums "
 				"or (better) IRC to avoid getting a perma-ban.", 0);
 		player->sendMessage(errMsg);
@@ -248,7 +255,7 @@ bool UserManagerImplementation::kickUser(string& name, string& admin) {
 void UserManagerImplementation::changeUserCap(int amount) {
 	userCap += amount;
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << dec << "cap raised to " << userCap << "\n";
 	info(msg, true);
 }

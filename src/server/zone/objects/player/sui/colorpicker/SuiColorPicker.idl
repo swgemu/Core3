@@ -52,7 +52,7 @@ interface SuiColorPicker implements SuiBox {
 		super(player, boxtype, unsigned int typeId);
 	}
 	
-	SuiColorPicker(Player player, unsigned long objectId, const string var, unsigned int boxtype) {
+	SuiColorPicker(Player player, unsigned long objectId, const String var, unsigned int boxtype) {
 		super(player, boxtype, unsigned int typeId);
 	}
 	

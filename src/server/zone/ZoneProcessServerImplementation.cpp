@@ -152,10 +152,10 @@ void ZoneProcessServerImplementation::init() {
 	processors = (ZoneMessageProcessorThread**) malloc(procThreadCount * sizeof(ZoneMessageProcessorThread*));
 
 	for (int i = 0; i < procThreadCount; ++i) {
-		stringstream name;
+		StringBuffer name;
 		name << "ZoneProcessor" << i;
 
-		processors[i] = new ZoneMessageProcessorThread(name.str(), zonephandler);
+		processors[i] = new ZoneMessageProcessorThread(name.toString(), zonephandler);
 	}
 }
 

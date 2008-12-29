@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "../../../objects.h"
 
-StatePackImplementation::StatePackImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn)
+StatePackImplementation::StatePackImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: StatePackServant(oid, tempCRC, n, tempn, STATEPACK) {
 	initialize();
 }
-StatePackImplementation::StatePackImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn)
+StatePackImplementation::StatePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: StatePackServant(creature, tempCRC, n, tempn, STATEPACK) {
 
 	name = n;
@@ -79,16 +79,16 @@ void StatePackImplementation::initialize() {
 void StatePackImplementation::parseItemAttributes() {
 	PharmaceuticalImplementation::parseItemAttributes();
 
-	string attr = "state";
+	String attr = "state";
 	setState(itemAttributes->getUnsignedLongAttribute(attr));
 }
 
 void StatePackImplementation::addAttributes(AttributeListMessage* alm) {
 	PharmaceuticalImplementation::addHeaderAttributes(alm);
 
-	stringstream eff;
+	StringBuffer eff;
 	eff << "@obj_attr_n:state_type_" << CreatureState::getName(state);
-	alm->insertAttribute("examine_heal_state", eff.str());
+	alm->insertAttribute("examine_heal_state", eff.toString());
 
 	PharmaceuticalImplementation::addFooterAttributes(alm);
 }

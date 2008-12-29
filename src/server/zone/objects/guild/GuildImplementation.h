@@ -63,15 +63,15 @@ class GuildImplementation : public GuildServant {
 
 	uint32 guildID;
 
-	string guildName;
-	string guildTag;
+	String guildName;
+	String guildTag;
 	uint32 guildLeader;
 
-	Vector<string> sponsoredMap;
+	Vector<String> sponsoredMap;
 
 
 public:
-	GuildImplementation(uint32 gid, const string& name, const string& tag);
+	GuildImplementation(uint32 gid, const String& name, const String& tag);
 
 	void sendGuildListTo(Player* player, bool doLock = true);
 
@@ -90,11 +90,11 @@ public:
 		return guildID;
 	}
 
-	inline string& getGuildName() {
+	inline String& getGuildName() {
 		return guildName;
 	}
 
-	inline void setGuildName(const string& nom) {
+	inline void setGuildName(const String& nom) {
 		guildName = nom;
 	}
 
@@ -102,11 +102,11 @@ public:
 		return guildLeader;
 	}
 
-	inline string& getGuildTag() {
+	inline String& getGuildTag() {
 		return guildTag;
 	}
 
-	inline void setGuildTag(const string& nom) {
+	inline void setGuildTag(const String& nom) {
 		guildTag = nom;
 	}
 
@@ -119,7 +119,7 @@ public:
 		guildChannel = guildchat;
 	}
 
-	inline void putSponsoredMap(const string& nom) {
+	inline void putSponsoredMap(const String& nom) {
 		sponsoredMap.add(nom);
 	}
 
@@ -127,7 +127,7 @@ public:
 		return sponsoredMap.size();
 	}
 
-	inline string& getSponsoredMap(int i) {
+	inline String& getSponsoredMap(int i) {
 		return sponsoredMap.get(i);
 	}
 

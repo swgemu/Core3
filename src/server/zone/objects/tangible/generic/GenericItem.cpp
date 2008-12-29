@@ -18,17 +18,17 @@
  *	GenericItemStub
  */
 
-GenericItem::GenericItem(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype) : TangibleObject(DummyConstructorParameter::instance()) {
+GenericItem::GenericItem(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new GenericItemImplementation(oid, tempCRC, n, tempn, gitype);
 	_impl->_setStub(this);
 }
 
-GenericItem::GenericItem(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype) : TangibleObject(DummyConstructorParameter::instance()) {
+GenericItem::GenericItem(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new GenericItemImplementation(creature, oid, tempCRC, n, tempn, gitype);
 	_impl->_setStub(this);
 }
 
-GenericItem::GenericItem(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int gitype) : TangibleObject(DummyConstructorParameter::instance()) {
+GenericItem::GenericItem(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int gitype) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new GenericItemImplementation(creature, tempCRC, n, tempn, gitype);
 	_impl->_setStub(this);
 }

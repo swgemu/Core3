@@ -49,13 +49,13 @@ which carries forward this exception.
 
 class BazaarTerminalDetails : public DistributedObject {
 	int bazaarPlanet;
-	string bazaarRegion;
+	String bazaarRegion;
 	int bazaarX;
 	int bazaarZ;
 	RegionBazaar* terminal;
 
 public:
-	BazaarTerminalDetails(int planet, string region, int x, int z) {
+	BazaarTerminalDetails(int planet, String region, int x, int z) {
 		bazaarPlanet = planet;
 		bazaarRegion = region;
 		bazaarX = x;
@@ -68,7 +68,7 @@ public:
 		return bazaarPlanet;
 	}
 
-	inline string getRegion() {
+	inline String getRegion() {
 		return bazaarRegion;
 	}
 

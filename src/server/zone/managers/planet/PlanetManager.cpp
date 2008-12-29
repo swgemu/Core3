@@ -14,9 +14,9 @@
 
 #include "../../objects/tangible/terminal/mission/MissionTerminal.h"
 
-#include "../../objects/area/NoBuildArea.h"
-
 #include "../structure/StructureManager.h"
+
+#include "../../objects/area/ActiveArea.h"
 
 /*
  *	PlanetManagerStub
@@ -131,7 +131,7 @@ unsigned long long PlanetManager::getLandingTime() {
 		return ((PlanetManagerImplementation*) _impl)->getLandingTime();
 }
 
-unsigned int PlanetManager::getTravelFare(string& departurePlanet, string& arrivalPlanet) {
+unsigned int PlanetManager::getTravelFare(String& departurePlanet, String& arrivalPlanet) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -145,7 +145,7 @@ unsigned int PlanetManager::getTravelFare(string& departurePlanet, string& arriv
 		return ((PlanetManagerImplementation*) _impl)->getTravelFare(departurePlanet, arrivalPlanet);
 }
 
-ShuttleCreature* PlanetManager::getShuttle(const string& Shuttle) {
+ShuttleCreature* PlanetManager::getShuttle(const String& Shuttle) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -215,65 +215,68 @@ bool PlanetManager::isNoBuildArea(bool x, bool y) {
 		return ((PlanetManagerImplementation*) _impl)->isNoBuildArea(x, y);
 }
 
-void PlanetManager::addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason) {
+void PlanetManager::addNoBuildArea(float x, float y, float radius) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 20);
-		method.addFloatParameter(minX);
-		method.addFloatParameter(maxX);
-		method.addFloatParameter(minY);
-		method.addFloatParameter(maxY);
-		method.addUnsignedLongParameter(uid);
-		method.addUnsignedCharParameter(reason);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addFloatParameter(radius);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlanetManagerImplementation*) _impl)->addNoBuildArea(minX, maxX, minY, maxY, uid, reason);
+		((PlanetManagerImplementation*) _impl)->addNoBuildArea(x, y, radius);
 }
 
-void PlanetManager::addNoBuildArea(NoBuildArea* area) {
+void PlanetManager::weatherUpdatePlayers() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 21);
-		method.addObjectParameter(area);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlanetManagerImplementation*) _impl)->addNoBuildArea(area);
+		((PlanetManagerImplementation*) _impl)->weatherUpdatePlayers();
 }
 
-void PlanetManager::deleteNoBuildArea(NoBuildArea* area) {
+void PlanetManager::weatherChange() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 22);
-		method.addObjectParameter(area);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlanetManagerImplementation*) _impl)->deleteNoBuildArea(area);
+		((PlanetManagerImplementation*) _impl)->weatherChange();
 }
 
-NoBuildArea* PlanetManager::createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason) {
+void PlanetManager::weatherRemoveEvents() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 23);
-		method.addFloatParameter(minX);
-		method.addFloatParameter(maxX);
-		method.addFloatParameter(minY);
-		method.addFloatParameter(maxY);
-		method.addUnsignedCharParameter(reason);
 
-		return (NoBuildArea*) method.executeWithObjectReturn();
+		method.executeWithVoidReturn();
 	} else
-		return ((PlanetManagerImplementation*) _impl)->createNoBuildArea(minX, maxX, minY, maxY, reason);
+		((PlanetManagerImplementation*) _impl)->weatherRemoveEvents();
+}
+
+void PlanetManager::spawnActiveArea(ActiveArea* area) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+		method.addObjectParameter(area);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlanetManagerImplementation*) _impl)->spawnActiveArea(area);
 }
 
 /*
@@ -312,10 +315,10 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertLong(getLandingTime());
 		break;
 	case 14:
-		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__string_string_), inv->getAsciiParameter(_param1_getTravelFare__string_string_)));
+		resp->insertInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_String_), inv->getAsciiParameter(_param1_getTravelFare__String_String_)));
 		break;
 	case 15:
-		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__string_))->_getObjectID());
+		resp->insertLong(getShuttle(inv->getAsciiParameter(_param0_getShuttle__String_))->_getObjectID());
 		break;
 	case 16:
 		sendPlanetTravelPointListResponse((Player*) inv->getObjectParameter());
@@ -330,16 +333,19 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		resp->insertBoolean(isNoBuildArea(inv->getBooleanParameter(), inv->getBooleanParameter()));
 		break;
 	case 20:
-		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter(), inv->getUnsignedCharParameter());
+		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 21:
-		addNoBuildArea((NoBuildArea*) inv->getObjectParameter());
+		weatherUpdatePlayers();
 		break;
 	case 22:
-		deleteNoBuildArea((NoBuildArea*) inv->getObjectParameter());
+		weatherChange();
 		break;
 	case 23:
-		resp->insertLong(createNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedCharParameter())->_getObjectID());
+		weatherRemoveEvents();
+		break;
+	case 24:
+		spawnActiveArea((ActiveArea*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -380,11 +386,11 @@ unsigned long long PlanetManagerAdapter::getLandingTime() {
 	return ((PlanetManagerImplementation*) impl)->getLandingTime();
 }
 
-unsigned int PlanetManagerAdapter::getTravelFare(string& departurePlanet, string& arrivalPlanet) {
+unsigned int PlanetManagerAdapter::getTravelFare(String& departurePlanet, String& arrivalPlanet) {
 	return ((PlanetManagerImplementation*) impl)->getTravelFare(departurePlanet, arrivalPlanet);
 }
 
-ShuttleCreature* PlanetManagerAdapter::getShuttle(const string& Shuttle) {
+ShuttleCreature* PlanetManagerAdapter::getShuttle(const String& Shuttle) {
 	return ((PlanetManagerImplementation*) impl)->getShuttle(Shuttle);
 }
 
@@ -404,20 +410,24 @@ bool PlanetManagerAdapter::isNoBuildArea(bool x, bool y) {
 	return ((PlanetManagerImplementation*) impl)->isNoBuildArea(x, y);
 }
 
-void PlanetManagerAdapter::addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long long uid, unsigned char reason) {
-	return ((PlanetManagerImplementation*) impl)->addNoBuildArea(minX, maxX, minY, maxY, uid, reason);
+void PlanetManagerAdapter::addNoBuildArea(float x, float y, float radius) {
+	return ((PlanetManagerImplementation*) impl)->addNoBuildArea(x, y, radius);
 }
 
-void PlanetManagerAdapter::addNoBuildArea(NoBuildArea* area) {
-	return ((PlanetManagerImplementation*) impl)->addNoBuildArea(area);
+void PlanetManagerAdapter::weatherUpdatePlayers() {
+	return ((PlanetManagerImplementation*) impl)->weatherUpdatePlayers();
 }
 
-void PlanetManagerAdapter::deleteNoBuildArea(NoBuildArea* area) {
-	return ((PlanetManagerImplementation*) impl)->deleteNoBuildArea(area);
+void PlanetManagerAdapter::weatherChange() {
+	return ((PlanetManagerImplementation*) impl)->weatherChange();
 }
 
-NoBuildArea* PlanetManagerAdapter::createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason) {
-	return ((PlanetManagerImplementation*) impl)->createNoBuildArea(minX, maxX, minY, maxY, reason);
+void PlanetManagerAdapter::weatherRemoveEvents() {
+	return ((PlanetManagerImplementation*) impl)->weatherRemoveEvents();
+}
+
+void PlanetManagerAdapter::spawnActiveArea(ActiveArea* area) {
+	return ((PlanetManagerImplementation*) impl)->spawnActiveArea(area);
 }
 
 /*

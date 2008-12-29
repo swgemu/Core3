@@ -29,11 +29,11 @@ public:
 
 	void addPlayer(Player* player);
 
-	Player* getPlayer(string& name);
+	Player* getPlayer(String& name);
 
-	Player* removePlayer(string& name);
+	Player* removePlayer(String& name);
 
-	void sendMail(const string& sendername, unicode& header, unicode& body, const string& name);
+	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
 
 	void sendMailBody(Player* receiver, unsigned int mailid);
 
@@ -49,19 +49,19 @@ public:
 
 	void handleMood(Player* player, Message* pack);
 
-	void sendSystemMessage(Player* player, unicode& message);
+	void sendSystemMessage(Player* player, UnicodeString& message);
 
-	void sendSystemMessage(Player* player, const string& file, const string& str, StfParameter* param);
+	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param);
 
-	void broadcastMessage(CreatureObject* player, unicode& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void broadcastMessage(CreatureObject* player, UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
-	void broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter* param, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
+	void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter* param, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
-	void broadcastMessage(const string& message);
+	void broadcastMessage(const String& message);
 
-	void broadcastMessageRange(Player* player, const string& message, float range);
+	void broadcastMessageRange(Player* player, const String& message, float range);
 
-	void handleGameCommand(Player* player, const string& command);
+	void handleGameCommand(Player* player, const String& command);
 
 	void initiateRooms();
 
@@ -91,17 +91,17 @@ public:
 
 	void sendGuildChat(Player* player);
 
-	ChatRoom* createRoomByFullPath(const string& path);
+	ChatRoom* createRoomByFullPath(const String& path);
 
 	void destroyRoom(ChatRoom* room);
 
 	void printRoomTree(ChatRoom* channel);
 
-	ChatRoom* getChatRoomByFullPath(const string& path);
+	ChatRoom* getChatRoomByFullPath(const String& path);
 
-	ChatRoom* getGameRoom(const string& game);
+	ChatRoom* getGameRoom(const String& game);
 
-	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const string& path);
+	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
 
 	unsigned int getNextRoomID();
 
@@ -133,11 +133,11 @@ public:
 
 	void addPlayer(Player* player);
 
-	Player* getPlayer(string& name);
+	Player* getPlayer(String& name);
 
-	Player* removePlayer(string& name);
+	Player* removePlayer(String& name);
 
-	void sendMail(const string& sendername, unicode& header, unicode& body, const string& name);
+	void sendMail(const String& sendername, UnicodeString& header, UnicodeString& body, const String& name);
 
 	void sendMailBody(Player* receiver, unsigned int mailid);
 
@@ -153,19 +153,19 @@ public:
 
 	void handleMood(Player* player, Message* pack);
 
-	void sendSystemMessage(Player* player, unicode& message);
+	void sendSystemMessage(Player* player, UnicodeString& message);
 
-	void sendSystemMessage(Player* player, const string& file, const string& str, StfParameter* param);
+	void sendSystemMessage(Player* player, const String& file, const String& str, StfParameter* param);
 
-	void broadcastMessage(CreatureObject* player, unicode& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
+	void broadcastMessage(CreatureObject* player, UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
 
-	void broadcastMessage(CreatureObject* player, const string& file, const string& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2);
+	void broadcastMessage(CreatureObject* player, const String& file, const String& str, StfParameter* param, unsigned long long target, unsigned int moodid, unsigned int mood2);
 
-	void broadcastMessage(const string& message);
+	void broadcastMessage(const String& message);
 
-	void broadcastMessageRange(Player* player, const string& message, float range);
+	void broadcastMessageRange(Player* player, const String& message, float range);
 
-	void handleGameCommand(Player* player, const string& command);
+	void handleGameCommand(Player* player, const String& command);
 
 	void initiateRooms();
 
@@ -195,17 +195,17 @@ public:
 
 	void sendGuildChat(Player* player);
 
-	ChatRoom* createRoomByFullPath(const string& path);
+	ChatRoom* createRoomByFullPath(const String& path);
 
 	void destroyRoom(ChatRoom* room);
 
 	void printRoomTree(ChatRoom* channel);
 
-	ChatRoom* getChatRoomByFullPath(const string& path);
+	ChatRoom* getChatRoomByFullPath(const String& path);
 
-	ChatRoom* getGameRoom(const string& game);
+	ChatRoom* getGameRoom(const String& game);
 
-	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const string& path);
+	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
 
 	unsigned int getNextRoomID();
 
@@ -216,25 +216,25 @@ public:
 	void setMute(bool isMuted);
 
 protected:
-	string _param0_getPlayer__string_;
-	string _param0_removePlayer__string_;
-	string _param0_sendMail__string_unicode_unicode_string_;
-	unicode _param1_sendMail__string_unicode_unicode_string_;
-	unicode _param2_sendMail__string_unicode_unicode_string_;
-	string _param3_sendMail__string_unicode_unicode_string_;
-	unicode _param1_sendSystemMessage__Player_unicode_;
-	string _param1_sendSystemMessage__Player_string_string_StfParameter_;
-	string _param2_sendSystemMessage__Player_string_string_StfParameter_;
-	unicode _param1_broadcastMessage__CreatureObject_unicode_long_int_int_;
-	string _param1_broadcastMessage__CreatureObject_string_string_StfParameter_long_int_int_;
-	string _param2_broadcastMessage__CreatureObject_string_string_StfParameter_long_int_int_;
-	string _param0_broadcastMessage__string_;
-	string _param1_broadcastMessageRange__Player_string_float_;
-	string _param1_handleGameCommand__Player_string_;
-	string _param0_createRoomByFullPath__string_;
-	string _param0_getChatRoomByFullPath__string_;
-	string _param0_getGameRoom__string_;
-	string _param1_getChatRoomByGamePath__ChatRoom_string_;
+	String _param0_getPlayer__String_;
+	String _param0_removePlayer__String_;
+	String _param0_sendMail__String_UnicodeString_UnicodeString_String_;
+	UnicodeString _param1_sendMail__String_UnicodeString_UnicodeString_String_;
+	UnicodeString _param2_sendMail__String_UnicodeString_UnicodeString_String_;
+	String _param3_sendMail__String_UnicodeString_UnicodeString_String_;
+	UnicodeString _param1_sendSystemMessage__Player_UnicodeString_;
+	String _param1_sendSystemMessage__Player_String_String_StfParameter_;
+	String _param2_sendSystemMessage__Player_String_String_StfParameter_;
+	UnicodeString _param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_;
+	String _param1_broadcastMessage__CreatureObject_String_String_StfParameter_long_int_int_;
+	String _param2_broadcastMessage__CreatureObject_String_String_StfParameter_long_int_int_;
+	String _param0_broadcastMessage__String_;
+	String _param1_broadcastMessageRange__Player_String_float_;
+	String _param1_handleGameCommand__Player_String_;
+	String _param0_createRoomByFullPath__String_;
+	String _param0_getChatRoomByFullPath__String_;
+	String _param0_getGameRoom__String_;
+	String _param1_getChatRoomByGamePath__ChatRoom_String_;
 };
 
 class ChatManagerHelper : public DistributedObjectClassHelper, public Singleton<ChatManagerHelper> {

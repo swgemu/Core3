@@ -60,7 +60,7 @@ interface ZoneClientSession {
 	
 	void disconnect(boolean doLock = true);
 
-	void closeConnection(boolean doLock = true);
+	void closeConnection(boolean lockPlayer, boolean doLock = true);
 
 	void sendMessage(BaseMessage msg);
 	void sendMessage(StandaloneBaseMessage msg);
@@ -68,7 +68,7 @@ interface ZoneClientSession {
 	void resetPacketCheckupTime();
 	void balancePacketCheckupTime();
 
-	void info(const string msg, boolean foredLog = false);
+	void info(const String msg, boolean foredLog = false);
 
 	// setters and getters
 	void setPlayer(Player player);
@@ -77,7 +77,7 @@ interface ZoneClientSession {
 
 	boolean isAvailable();
 	
-	string getAddress();	
+	String getAddress();	
 
 	unsigned int getSessionKey();
 }

@@ -16,12 +16,12 @@
  *	CraftingStationStub
  */
 
-CraftingStation::CraftingStation(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+CraftingStation::CraftingStation(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new CraftingStationImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-CraftingStation::CraftingStation(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+CraftingStation::CraftingStation(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new CraftingStationImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -222,11 +222,11 @@ DistributedObjectAdapter* CraftingStationHelper::createAdapter(DistributedObject
  *	CraftingStationServant
  */
 
-CraftingStationServant::CraftingStationServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
+CraftingStationServant::CraftingStationServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = CraftingStationHelper::instance();
 }
 
-CraftingStationServant::CraftingStationServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
+CraftingStationServant::CraftingStationServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = CraftingStationHelper::instance();
 }
 

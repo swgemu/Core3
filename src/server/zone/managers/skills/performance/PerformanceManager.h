@@ -63,8 +63,8 @@ public:
 	
 	~PerformanceManager();
 	
-	Performance* getDance(string name);
-	Performance* getSong(string name, int instrumentType);
+	Performance* getDance(String name);
+	Performance* getSong(String name, int instrumentType);
 	
 };
 

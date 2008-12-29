@@ -14,12 +14,12 @@
  *	OneHandedJediWeaponStub
  */
 
-OneHandedJediWeapon::OneHandedJediWeapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : JediWeapon(DummyConstructorParameter::instance()) {
+OneHandedJediWeapon::OneHandedJediWeapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : JediWeapon(DummyConstructorParameter::instance()) {
 	_impl = new OneHandedJediWeaponImplementation(oid, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }
 
-OneHandedJediWeapon::OneHandedJediWeapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp) : JediWeapon(DummyConstructorParameter::instance()) {
+OneHandedJediWeapon::OneHandedJediWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp) : JediWeapon(DummyConstructorParameter::instance()) {
 	_impl = new OneHandedJediWeaponImplementation(creature, temp, n, tempn, eqp);
 	_impl->_setStub(this);
 }
@@ -83,11 +83,11 @@ DistributedObjectAdapter* OneHandedJediWeaponHelper::createAdapter(DistributedOb
  *	OneHandedJediWeaponServant
  */
 
-OneHandedJediWeaponServant::OneHandedJediWeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp, bool eqp) : JediWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
+OneHandedJediWeaponServant::OneHandedJediWeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp) : JediWeaponImplementation(oid, tempCRC, n, tempn, tp, eqp) {
 	_classHelper = OneHandedJediWeaponHelper::instance();
 }
 
-OneHandedJediWeaponServant::OneHandedJediWeaponServant(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, int tp, bool eqp) : JediWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
+OneHandedJediWeaponServant::OneHandedJediWeaponServant(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp) : JediWeaponImplementation(creature, temp, n, tempn, tp, eqp) {
 	_classHelper = OneHandedJediWeaponHelper::instance();
 }
 

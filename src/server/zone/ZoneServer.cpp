@@ -200,7 +200,7 @@ SceneObject* ZoneServer::removeCachedObject(SceneObject* obj, bool doLock) {
 		return ((ZoneServerImplementation*) _impl)->removeCachedObject(obj, doLock);
 }
 
-bool ZoneServer::banUser(string& name, string& admin) {
+bool ZoneServer::banUser(String& name, String& admin) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -214,7 +214,7 @@ bool ZoneServer::banUser(string& name, string& admin) {
 		return ((ZoneServerImplementation*) _impl)->banUser(name, admin);
 }
 
-bool ZoneServer::kickUser(string& name, string& admin) {
+bool ZoneServer::kickUser(String& name, String& admin) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -485,7 +485,7 @@ Zone* ZoneServer::getZone(int index) {
 		return ((ZoneServerImplementation*) _impl)->getZone(index);
 }
 
-string& ZoneServer::getServerName() {
+String& ZoneServer::getServerName() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -498,12 +498,72 @@ string& ZoneServer::getServerName() {
 		return ((ZoneServerImplementation*) _impl)->getServerName();
 }
 
-int ZoneServer::getConnectionCount() {
+bool ZoneServer::isServerLocked() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 41);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->isServerLocked();
+}
+
+bool ZoneServer::isServerOnline() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 42);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->isServerOnline();
+}
+
+bool ZoneServer::isServerOffline() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 43);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->isServerOffline();
+}
+
+bool ZoneServer::isServerLoading() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 44);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->isServerLoading();
+}
+
+int ZoneServer::getServerState() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 45);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((ZoneServerImplementation*) _impl)->getServerState();
+}
+
+int ZoneServer::getConnectionCount() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 46);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -515,7 +575,7 @@ int ZoneServer::getTotalPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -527,7 +587,7 @@ int ZoneServer::getMaxPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -539,7 +599,7 @@ int ZoneServer::getDeletedPlayers() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -551,7 +611,7 @@ unsigned long long ZoneServer::getStartTimestamp() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -563,7 +623,7 @@ unsigned long long ZoneServer::getNextCreatureID(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 51);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -576,7 +636,7 @@ unsigned long long ZoneServer::getNextID(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 52);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
@@ -589,12 +649,49 @@ unsigned long long ZoneServer::getNextCellID(bool doLock) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 53);
 		method.addBooleanParameter(doLock);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
 		return ((ZoneServerImplementation*) _impl)->getNextCellID(doLock);
+}
+
+void ZoneServer::setServerState(int state) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 54);
+		method.addSignedIntParameter(state);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneServerImplementation*) _impl)->setServerState(state);
+}
+
+void ZoneServer::setServerStateLocked() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 55);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneServerImplementation*) _impl)->setServerStateLocked();
+}
+
+void ZoneServer::setServerStateOnline() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 56);
+
+		method.executeWithVoidReturn();
+	} else
+		((ZoneServerImplementation*) _impl)->setServerStateOnline();
 }
 
 /*
@@ -642,10 +739,10 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(removeCachedObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
 	case 17:
-		resp->insertBoolean(banUser(inv->getAsciiParameter(_param0_banUser__string_string_), inv->getAsciiParameter(_param1_banUser__string_string_)));
+		resp->insertBoolean(banUser(inv->getAsciiParameter(_param0_banUser__String_String_), inv->getAsciiParameter(_param1_banUser__String_String_)));
 		break;
 	case 18:
-		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__string_string_), inv->getAsciiParameter(_param1_kickUser__string_string_)));
+		resp->insertBoolean(kickUser(inv->getAsciiParameter(_param0_kickUser__String_String_), inv->getAsciiParameter(_param1_kickUser__String_String_)));
 		break;
 	case 19:
 		changeUserCap(inv->getSignedIntParameter());
@@ -714,28 +811,52 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertAscii(getServerName());
 		break;
 	case 41:
-		resp->insertSignedInt(getConnectionCount());
+		resp->insertBoolean(isServerLocked());
 		break;
 	case 42:
-		resp->insertSignedInt(getTotalPlayers());
+		resp->insertBoolean(isServerOnline());
 		break;
 	case 43:
-		resp->insertSignedInt(getMaxPlayers());
+		resp->insertBoolean(isServerOffline());
 		break;
 	case 44:
-		resp->insertSignedInt(getDeletedPlayers());
+		resp->insertBoolean(isServerLoading());
 		break;
 	case 45:
-		resp->insertLong(getStartTimestamp());
+		resp->insertSignedInt(getServerState());
 		break;
 	case 46:
-		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
+		resp->insertSignedInt(getConnectionCount());
 		break;
 	case 47:
-		resp->insertLong(getNextID(inv->getBooleanParameter()));
+		resp->insertSignedInt(getTotalPlayers());
 		break;
 	case 48:
+		resp->insertSignedInt(getMaxPlayers());
+		break;
+	case 49:
+		resp->insertSignedInt(getDeletedPlayers());
+		break;
+	case 50:
+		resp->insertLong(getStartTimestamp());
+		break;
+	case 51:
+		resp->insertLong(getNextCreatureID(inv->getBooleanParameter()));
+		break;
+	case 52:
+		resp->insertLong(getNextID(inv->getBooleanParameter()));
+		break;
+	case 53:
 		resp->insertLong(getNextCellID(inv->getBooleanParameter()));
+		break;
+	case 54:
+		setServerState(inv->getSignedIntParameter());
+		break;
+	case 55:
+		setServerStateLocked();
+		break;
+	case 56:
+		setServerStateOnline();
 		break;
 	default:
 		return NULL;
@@ -788,11 +909,11 @@ SceneObject* ZoneServerAdapter::removeCachedObject(SceneObject* obj, bool doLock
 	return ((ZoneServerImplementation*) impl)->removeCachedObject(obj, doLock);
 }
 
-bool ZoneServerAdapter::banUser(string& name, string& admin) {
+bool ZoneServerAdapter::banUser(String& name, String& admin) {
 	return ((ZoneServerImplementation*) impl)->banUser(name, admin);
 }
 
-bool ZoneServerAdapter::kickUser(string& name, string& admin) {
+bool ZoneServerAdapter::kickUser(String& name, String& admin) {
 	return ((ZoneServerImplementation*) impl)->kickUser(name, admin);
 }
 
@@ -880,8 +1001,28 @@ Zone* ZoneServerAdapter::getZone(int index) {
 	return ((ZoneServerImplementation*) impl)->getZone(index);
 }
 
-string& ZoneServerAdapter::getServerName() {
+String& ZoneServerAdapter::getServerName() {
 	return ((ZoneServerImplementation*) impl)->getServerName();
+}
+
+bool ZoneServerAdapter::isServerLocked() {
+	return ((ZoneServerImplementation*) impl)->isServerLocked();
+}
+
+bool ZoneServerAdapter::isServerOnline() {
+	return ((ZoneServerImplementation*) impl)->isServerOnline();
+}
+
+bool ZoneServerAdapter::isServerOffline() {
+	return ((ZoneServerImplementation*) impl)->isServerOffline();
+}
+
+bool ZoneServerAdapter::isServerLoading() {
+	return ((ZoneServerImplementation*) impl)->isServerLoading();
+}
+
+int ZoneServerAdapter::getServerState() {
+	return ((ZoneServerImplementation*) impl)->getServerState();
 }
 
 int ZoneServerAdapter::getConnectionCount() {
@@ -914,6 +1055,18 @@ unsigned long long ZoneServerAdapter::getNextID(bool doLock) {
 
 unsigned long long ZoneServerAdapter::getNextCellID(bool doLock) {
 	return ((ZoneServerImplementation*) impl)->getNextCellID(doLock);
+}
+
+void ZoneServerAdapter::setServerState(int state) {
+	return ((ZoneServerImplementation*) impl)->setServerState(state);
+}
+
+void ZoneServerAdapter::setServerStateLocked() {
+	return ((ZoneServerImplementation*) impl)->setServerStateLocked();
+}
+
+void ZoneServerAdapter::setServerStateOnline() {
+	return ((ZoneServerImplementation*) impl)->setServerStateOnline();
 }
 
 /*

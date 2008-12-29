@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
 	return 0;*/
 
 	try {
-		Vector<string> arguments;
+		Vector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
 			arguments.add(argv[i]);
 		}
@@ -65,10 +65,10 @@ int main(int argc, char* argv[]) {
 
 		core.run();
 	} catch (Exception& e) {
-		cout << e.getMessage() << "\n";
+		System::out << e.getMessage() << "\n";
 		e.printStackTrace();
 	} catch (...) {
-		cout << "unreported exception caught main()\n";
+		System::out << "unreported exception caught main()\n";
 	}
 
 	return 0;

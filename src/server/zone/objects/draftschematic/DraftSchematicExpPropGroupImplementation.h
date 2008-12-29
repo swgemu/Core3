@@ -52,26 +52,26 @@
 class ObjectControllerMessage;
 
 class DraftSchematicExpPropGroupImplementation: public DraftSchematicExpPropGroupServant {
-	Vector<string> keys; // Unfortunately needed when recalculating percentages
+	Vector<String> keys; // Unfortunately needed when recalculating percentages
 
-	VectorMap<string, uint8> expPropTypes;
-	VectorMap<string, uint8> expPropWeights;
-	VectorMap<string, float> expPropWeightPercentages;
+	VectorMap<String, uint8> expPropTypes;
+	VectorMap<String, uint8> expPropWeights;
+	VectorMap<String, float> expPropWeightPercentages;
 
 	uint32 expPropGroupListSize;
 
-	string subtitle;
+	String subtitle;
 
 public:
-	// When they allow passing of vectors, make this constructor take in a Vector of strings and a vector
+	// When they allow passing of vectors, make this constructor take in a Vector of Strings and a vector
 	// of uint32 for the types and weights
-	DraftSchematicExpPropGroupImplementation(string sub);
+	DraftSchematicExpPropGroupImplementation(String sub);
 
 	DraftSchematicExpPropGroupImplementation(DraftSchematicExpPropGroup* group);
 
 	~DraftSchematicExpPropGroupImplementation();
 
-	void addExperimentalProperty(const string& experimentalPropertyType,
+	void addExperimentalProperty(const String& experimentalPropertyType,
 			uint32 weight);
 
 	void sendToPlayer(ObjectControllerMessage* msg, int count);
@@ -79,12 +79,12 @@ public:
 	// Zero is returned if index is out of bounds
 	uint8 getTypeAndWeight(uint32 index);
 
-	bool containsExpPropType(const string& expPropType) {
+	bool containsExpPropType(const String& expPropType) {
 		return expPropTypes.contains(expPropType);
 	}
 
 	// Zero is returned if expPropType is not found
-	float getExpPropPercentage(const string& expPropType) {
+	float getExpPropPercentage(const String& expPropType) {
 		if (expPropWeightPercentages.contains(expPropType))
 			return expPropWeightPercentages.get(expPropType);
 		else
@@ -103,7 +103,7 @@ public:
 			return 0;
 	}
 
-	string& getKey(int i) {
+	String& getKey(int i) {
 		return keys.get(i);
 	}
 
@@ -111,7 +111,7 @@ public:
 		return keys.size();
 	}
 
-	string& getExpPropTypesKey(int i) {
+	String& getExpPropTypesKey(int i) {
 		return expPropTypes.elementAt(i)->getKey();
 	}
 
@@ -123,7 +123,7 @@ public:
 		return expPropTypes.size();
 	}
 
-	string& getExpPropWeightsKey(int i) {
+	String& getExpPropWeightsKey(int i) {
 		return expPropWeights.elementAt(i)->getKey();
 	}
 
@@ -135,7 +135,7 @@ public:
 		return expPropWeights.size();
 	}
 
-	string& getExpPropWeightPercentagesKey(int i) {
+	String& getExpPropWeightPercentagesKey(int i) {
 		return expPropWeightPercentages.elementAt(i)->getKey();
 	}
 
@@ -147,7 +147,7 @@ public:
 		return expPropWeightPercentages.size();
 	}
 
-	string& getSubtitle() {
+	String& getSubtitle() {
 		return subtitle;
 	}
 

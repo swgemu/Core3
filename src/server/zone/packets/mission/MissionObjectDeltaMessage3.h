@@ -121,7 +121,7 @@ public:
 		startUpdate(0x0B);
 
 		if (!isStf) {
-			insertShort(0); //No stf string
+			insertShort(0); //No stf String
 			insertInt(0);
 			insertAscii(miso->getDescriptionStf());
 		} else {
@@ -134,7 +134,7 @@ public:
 		startUpdate(0x0C);
 
 		if (!isStf) {
-			insertShort(0); //No stf string
+			insertShort(0); //No stf String
 			insertInt(0);
 			insertAscii(miso->getTitleStf());
 		} else {

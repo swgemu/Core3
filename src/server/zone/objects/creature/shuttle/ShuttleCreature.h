@@ -19,7 +19,7 @@ class Ticket;
 
 class ShuttleCreature : public Creature {
 public:
-	ShuttleCreature(const string& planet, const string& city, Coordinate* playerSpawnPoint, unsigned long long oid, unsigned int tax, bool starport);
+	ShuttleCreature(const String& planet, const String& city, Coordinate* playerSpawnPoint, unsigned long long oid, unsigned int tax, bool starport);
 
 	void doTakeOff();
 
@@ -27,9 +27,9 @@ public:
 
 	void sendPlayerTo(Player* player, Ticket* ticker);
 
-	string& getCity();
+	String& getCity();
 
-	string& getPlanet();
+	String& getPlanet();
 
 	Coordinate* getArrivalPoint();
 
@@ -44,8 +44,8 @@ protected:
 
 	virtual ~ShuttleCreature();
 
-	string _return_getCity;
-	string _return_getPlanet;
+	String _return_getCity;
+	String _return_getPlanet;
 
 	friend class ShuttleCreatureHelper;
 };
@@ -64,9 +64,9 @@ public:
 
 	void sendPlayerTo(Player* player, Ticket* ticker);
 
-	string& getCity();
+	String& getCity();
 
-	string& getPlanet();
+	String& getPlanet();
 
 	Coordinate* getArrivalPoint();
 

@@ -172,28 +172,6 @@ anchorheadNpc6 = Creature:new {
 	cellID = 0
 }
 
-anchorheadNpc7 = Creature:new {
-	objectName = "anchorheadNpc7",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 742313213,
-	positionX = 151.722,
-	positionY = -5317.28,
-	positionZ = 52,
-
-	directionX = 0.0873334,
-	directionZ = -0.0226869,
-	directionY = 0.225566,
-	directionW = 0.97004,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 anchorheadNpc8 = Creature:new {
 	objectName = "anchorheadNpc8",
 	creatureType = NPC,
@@ -279,28 +257,6 @@ anchorheadNpc11 = Creature:new {
 	directionW = 0.833795,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-anchorheadNpc12 = Creature:new {
-	objectName = "anchorheadNpc12",
-	creatureType = NPC,
-
-	speciesName = "vardias_tyne",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "npc_name",
-	objectCRC = 1104079659,
-	positionX = 102.549,
-	positionY = -5383.13,
-	positionZ = 44,
-
-	directionX = -0.0545582,
-	directionZ = 0.322239,
-	directionY = -0.157767,
-	directionW = 0.931823,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -458,28 +414,6 @@ anchorheadNpc19 = Creature:new {
 	cellID = 0
 }
 
-anchorheadNpc20 = Creature:new {
-	objectName = "anchorheadNpc20",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4182262563,
-	positionX = 157.869,
-	positionY = -5307.56,
-	positionZ = 49.5497,
-
-	directionX = 0.392367,
-	directionZ = -0.0270141,
-	directionY = 0.834502,
-	directionW = -0.385907,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
 anchorheadNpc21 = Creature:new {
 	objectName = "anchorheadNpc21",
 	creatureType = NPC,
@@ -568,28 +502,6 @@ anchorheadNpc24 = Creature:new {
 	cellID = 0
 }
 
-anchorheadNpc25 = Creature:new {
-	objectName = "anchorheadNpc25",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 1672932530,
-	positionX = 111.41,
-	positionY = -5333.7,
-	positionZ = 52,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.70035,
-	directionW = 0.713799,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
 anchorheadNpc26 = Creature:new {
 	objectName = "anchorheadNpc26",
 	creatureType = NPC,
@@ -629,50 +541,6 @@ anchorheadNpc27 = Creature:new {
 	directionZ = 0.00113377,
 	directionY = -0.244176,
 	directionW = 0.968152,
-	randomMovement = 0,
-	mood = "",
-	cellID = 0
-}
-
-anchorheadNpc28 = Creature:new {
-	objectName = "anchorheadNpc28",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4182262563,
-	positionX = 110.875,
-	positionY = -5333.71,
-	positionZ = 52,
-
-	directionX = -0,
-	directionZ = 0,
-	directionY = 0.700331,
-	directionW = 0.713818,
-	randomMovement = 0,
-	mood = "calm",
-	cellID = 0
-}
-
-anchorheadNpc29 = Creature:new {
-	objectName = "anchorheadNpc29",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 2113323558,
-	positionX = 151.696,
-	positionY = -5314.06,
-	positionZ = 51.9128,
-
-	directionX = 0.122975,
-	directionZ = -0.0330162,
-	directionY = 0.365817,
-	directionW = 0.921935,
 	randomMovement = 0,
 	mood = "",
 	cellID = 0
@@ -741,28 +609,6 @@ anchorheadNpc32 = Creature:new {
 	directionW = 0.754205,
 	randomMovement = 0,
 	mood = "conversation",
-	cellID = 0
-}
-
-anchorheadNpc33 = Creature:new {
-	objectName = "anchorheadNpc33",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 742313213,
-	positionX = 158.638,
-	positionY = -5306.8,
-	positionZ = 49.2654,
-
-	directionX = 0.112564,
-	directionZ = 0.0941682,
-	directionY = 0.914255,
-	directionW = -0.377622,
-	randomMovement = 0,
-	mood = "",
 	cellID = 0
 }
 
@@ -1140,28 +986,6 @@ anchorheadNpc50 = Creature:new {
 	cellID = 0
 }
 
-anchorheadNpc51 = Creature:new {
-	objectName = "anchorheadNpc51",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4182262563,
-	positionX = 146.238,
-	positionY = -5303.74,
-	positionZ = 51.888,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.96765,
-	directionW = 0.252297,
-	randomMovement = 0,
-	mood = "neutral",
-	cellID = 0
-}
-
 anchorheadNpc52 = Creature:new {
 	objectName = "anchorheadNpc52",
 	creatureType = NPC,
@@ -1423,28 +1247,6 @@ anchorheadNpc63 = Creature:new {
 	directionW = -0.196283,
 	randomMovement = 0,
 	mood = "calm",
-	cellID = 0
-}
-
-anchorheadNpc64 = Creature:new {
-	objectName = "anchorheadNpc64",
-	creatureType = NPC,
-
-	speciesName = "smuggler_patrol_bh_2",
-	combatFlags = 0,
-	creatureBitmask = 264,
-	stfName = "mob/creature_names",
-	objectCRC = 4182262563,
-	positionX = 146.238,
-	positionY = -5303.74,
-	positionZ = 51.888,
-
-	directionX = 0,
-	directionZ = 0,
-	directionY = 0.938722,
-	directionW = -0.344676,
-	randomMovement = 0,
-	mood = "neutral",
 	cellID = 0
 }
 

@@ -47,8 +47,9 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/ZoneServer.idl \
 				server/zone/objects/area/Area.idl \
 				server/zone/objects/area/ActiveArea.idl \
-				server/zone/objects/area/BaseArea.idl \
-				server/zone/objects/area/NoBuildArea.idl \
+				server/zone/objects/area/ActiveAreaTrigger.idl \
+				server/zone/objects/area/BadgeActiveArea.idl \
+				server/zone/objects/area/TestActiveArea.idl \
 				server/zone/objects/attackable/AttackableObject.idl \
 				server/zone/objects/auction/AuctionItem.idl \
 				server/zone/objects/scene/SceneObject.idl \
@@ -77,6 +78,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
+				server/zone/objects/player/badges/Badges.idl \
 				server/zone/objects/installation/factory/FactoryObject.idl \
 				server/zone/objects/installation/generator/GeneratorObject.idl \
 				server/zone/objects/installation/harvester/HarvesterObject.idl \

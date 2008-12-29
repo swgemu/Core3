@@ -20,12 +20,12 @@
  *	WoundPackStub
  */
 
-WoundPack::WoundPack(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+WoundPack::WoundPack(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new WoundPackImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-WoundPack::WoundPack(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
+WoundPack::WoundPack(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : Pharmaceutical(DummyConstructorParameter::instance()) {
 	_impl = new WoundPackImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -207,11 +207,11 @@ DistributedObjectAdapter* WoundPackHelper::createAdapter(DistributedObjectStub* 
  *	WoundPackServant
  */
 
-WoundPackServant::WoundPackServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
+WoundPackServant::WoundPackServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(oid, tempCRC, n, tempn, mptype) {
 	_classHelper = WoundPackHelper::instance();
 }
 
-WoundPackServant::WoundPackServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
+WoundPackServant::WoundPackServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int mptype) : PharmaceuticalImplementation(creature, tempCRC, n, tempn, mptype) {
 	_classHelper = WoundPackHelper::instance();
 }
 

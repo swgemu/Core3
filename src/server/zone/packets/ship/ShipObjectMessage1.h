@@ -149,10 +149,10 @@ public:
 	void insertUnkList1(ShipObject* ship) {
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextUnkShip1UpdateCnt());
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponentImplementation();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertFloat(1.0f); //no idea what this is for.
@@ -164,10 +164,10 @@ public:
 	void insertUnkList2(ShipObject* ship) {
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextUnkShip1UpdateCnt2());
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertFloat(1.0f); //no idea what this is for.
@@ -179,11 +179,11 @@ public:
 	void insertEnergyDrainList(ShipObject* ship) {
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextEnergyDrainUpdateCnt());
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			float totalEnergy = 0.0f;
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertFloat(tsc->getEnergyDrain());
@@ -198,11 +198,11 @@ public:
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextCompMassUpdateCnt());
 		
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			float totalMass = 0.0f;
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertFloat(tsc->getMass());
@@ -216,10 +216,10 @@ public:
 	void insertUnkList3(ShipObject* ship) {
 		insertInt(ship->getActiveComponentListSize());
 		insertInt(ship->getNextUnkShip1UpdateCnt3());
-		/*for(int i = 0; i < ship->getComponentListSize(); i++) {
+		/*for (int i = 0; i < ship->getComponentListSize(); i++) {
 			ShipComponent* tsc = new ShipComponent();
 			tsc = ship->getComponent(i);
-			if(tsc->getComponentCrc() != 0) {
+			if (tsc->getComponentCrc() != 0) {
 				insertByte(0); //?
 				insertInt(i);
 				insertInt(0); //no idea what this is for.

@@ -73,7 +73,7 @@ public:
 	MissionTerminal* _this;
 
 public:
-	MissionTerminalServant(unsigned int objCRC, unsigned long long objid, const unicode& n, const string& tempn, float x, float z, float y, int TerminalType);
+	MissionTerminalServant(unsigned int objCRC, unsigned long long objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType);
 	virtual ~MissionTerminalServant();
 
 	void _setStub(DistributedObjectStub* stub);

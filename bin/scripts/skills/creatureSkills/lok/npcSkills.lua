@@ -41,7 +41,10 @@
 --which carries forward this exception.
 -- Load files
 
--- Lok
-
-RunSkillsFile("creatureSkills/lok/npcs/nymAttacks.lua")
-
+ -- Lok
+ RunSkillsFile("creatureSkills/lok/npcs/bloodRazorAttacks.lua")
+ RunSkillsFile("creatureSkills/lok/npcs/canyonCorsairAttacks.lua")
+ RunSkillsFile("creatureSkills/lok/npcs/maroonedPirateAttacks.lua")
+ RunSkillsFile("creatureSkills/lok/npcs/mercenaryAttacks.lua")
+ RunSkillsFile("creatureSkills/lok/npcs/miscAttacks.lua")
+ RunSkillsFile("creatureSkills/lok/npcs/nymAttacks.lua")

@@ -65,7 +65,7 @@ public:
 
 	void updateOperating(bool value) {
 		inso->setOperating(value);
-		if(value)
+		if (value)
 			addIntUpdate(0x06, 0x00000101); // 01 01 00 00
 		else
 			addIntUpdate(0x06, 0x00000100); // 00 01 00 00

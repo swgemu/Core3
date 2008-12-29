@@ -53,18 +53,18 @@ which carries forward this exception.
 
 class HealDamageTargetSkill : public TargetSkill {
 protected:
-	string effectName;
+	String effectName;
 	int mindCost;
 
 public:
-	HealDamageTargetSkill(const string& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
+	HealDamageTargetSkill(const String& name, const char* aname, ZoneProcessServerImplementation* serv) : TargetSkill(name, aname, HEAL, serv) {
 		effectName = aname;
 		mindCost = 0;
 
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (effectName.size() != 0)
+		if (!effectName.isEmpty())
 			creatureTarget->playEffect(effectName, "");
 
 		if (creature == creatureTarget)
@@ -81,6 +81,12 @@ public:
 
 		if (stimPack == NULL) {
 			creature->sendSystemMessage("healing_response", "healing_response_60"); //No valid medicine found.
+			return false;
+		}
+
+		
+		if (creature->isProne()) {
+			creature->sendSystemMessage("You cannot do that while prone.");
 			return false;
 		}
 
@@ -121,9 +127,9 @@ public:
 		return true;
 	}
 
-	void parseModifier(const string& modifier, uint64& objectId) {
-		if (!modifier.empty())
-			objectId = atoll(modifier.c_str());
+	void parseModifier(const String& modifier, uint64& objectId) {
+		if (!modifier.isEmpty())
+			objectId = Long::valueOf(modifier);
 		else
 			objectId = 0;
 	}
@@ -152,7 +158,7 @@ public:
 		return NULL;
 	}
 
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("healing_response", "healing_response_62"); //Target must be a player or a creature pet in order to heal damage.
 			return 0;
@@ -200,7 +206,7 @@ public:
 		return 0;
 	}
 
-	void awardXp(CreatureObject* creature, string type, int power) {
+	void awardXp(CreatureObject* creature, String type, int power) {
 		Player* player = (Player*) creature;
 
 		int amount = (int)round((float)power * 0.25f);
@@ -215,7 +221,7 @@ public:
 		Player* player = (Player*) creature;
 		Player* playerTarget = (Player*) creatureTarget;
 
-		stringstream msgPlayer, msgTarget, msgBody, msgTail;
+		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
 		if (healthDamage > 0 && actionDamage > 0) {
 			msgBody << healthDamage << " health and " << actionDamage << " action";
@@ -230,13 +236,13 @@ public:
 		msgTail << " damage.";
 
 		if (creature == creatureTarget) {
-			msgPlayer << "You heal yourself for " << msgBody.str() << msgTail.str();
-			player->sendSystemMessage(msgPlayer.str());
+			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
 		} else {
-			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.str() << msgTail.str();
-			player->sendSystemMessage(msgPlayer.str());
-			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.str() << msgTail.str();
-			playerTarget->sendSystemMessage(msgTarget.str());
+			msgPlayer << "You heal " << playerTarget->getFirstNameProper() << " for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
+			msgTarget << player->getFirstNameProper() << " heals you for " << msgBody.toString() << msgTail.toString();
+			playerTarget->sendSystemMessage(msgTarget.toString());
 		}
 	}
 
@@ -248,7 +254,7 @@ public:
 		return true;
 	}
 
-	void setEffectName(const string& name) {
+	void setEffectName(const String& name) {
 		effectName = name;
 	}
 

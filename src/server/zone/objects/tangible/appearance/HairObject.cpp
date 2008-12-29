@@ -14,7 +14,7 @@
  *	HairObjectStub
  */
 
-HairObject::HairObject(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp) : TangibleObject(DummyConstructorParameter::instance()) {
+HairObject::HairObject(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new HairObjectImplementation(creature, tempCRC, n, tempn, eqp);
 	_impl->_setStub(this);
 }

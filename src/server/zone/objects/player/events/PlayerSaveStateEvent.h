@@ -53,40 +53,30 @@ class PlayerSaveStateEvent : public Event {
 public:
 	PlayerSaveStateEvent(Player* pl) : Event(300000) {
 		player = pl;
-
-		if (pl == NULL)
-			pl->setOnline(); // lets see where it creates it :)
-
-		setKeeping(true);
 	}
 
 	~PlayerSaveStateEvent() {
 		if (enQueued) {
-			cout << "ERROR: PlayerSaveStateEvent scheduled event deleted\n";
+			System::out << "ERROR: PlayerSaveStateEvent scheduled event deleted\n";
 			raise(SIGSEGV);
 		}
 	}
 
 	bool activate() {
-		ManagedReference<Player> temp = player;
-
-		player = NULL;
-
 		try {
-			temp->wlock();
+			player->wlock();
 
-			if (!temp->isOffline())
-				temp->savePlayerState(true);
+			player->clearSaveStateEvent();
 
-			temp->unlock();
+			if (!player->isOffline())
+				player->savePlayerState(true);
+
+			player->unlock();
 		} catch (...) {
-			temp->error("unreported Exception caught in PlayerSaveStateEvent::activate");
-			temp->clearDisconnectEvent();
+			player->error("unreported Exception caught in PlayerSaveStateEvent::activate");
 
-			temp->unlock();
+			player->unlock();
 		}
-
-		temp = NULL;
 
 		return true;
 	}

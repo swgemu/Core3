@@ -9,27 +9,17 @@
 
 class Area;
 
-class SceneObject;
-
-#include "engine/util/Coordinate.h"
+class Player;
 
 #include "Area.h"
 
 class ActiveArea : public Area {
 public:
-	ActiveArea(Coordinate* center, float width, float height);
+	ActiveArea(float x, float y, float z, float radius);
 
-	ActiveArea(float minXPos, float maxXPos, float minYPos, float maxYPos);
+	void onEnter(Player* player);
 
-	unsigned char getType();
-
-	void onEnter(SceneObject* so);
-
-	void onExit(SceneObject* so);
-
-	void onSpawn(SceneObject* so);
-
-	void onDespawn(SceneObject* so);
+	void onExit(Player* player);
 
 protected:
 	ActiveArea(DummyConstructorParameter* param);
@@ -47,15 +37,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	unsigned char getType();
+	void onEnter(Player* player);
 
-	void onEnter(SceneObject* so);
-
-	void onExit(SceneObject* so);
-
-	void onSpawn(SceneObject* so);
-
-	void onDespawn(SceneObject* so);
+	void onExit(Player* player);
 
 };
 
@@ -81,8 +65,7 @@ public:
 	ActiveArea* _this;
 
 public:
-	ActiveAreaServant(Coordinate* center, float width, float height);
-	ActiveAreaServant(float minXPos, float maxXPos, float minYPos, float maxYPos);
+	ActiveAreaServant(float x, float y, float z, float radius);
 	virtual ~ActiveAreaServant();
 
 	void _setStub(DistributedObjectStub* stub);

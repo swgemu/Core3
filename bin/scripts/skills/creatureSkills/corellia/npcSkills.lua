@@ -44,7 +44,17 @@
 -- CreatureSkills
 
 -- Corellia
-RunSkillsFile("creatureSkills/corellia/npcs/rogueCorsecAttacks.lua")
+-- RunSkillsFile("creatureSkills/corellia/npcs/rogueCorsecAttacks.lua")
 RunSkillsFile("creatureSkills/corellia/npcs/afarathuAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/beldonnasAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/corsecAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/flailAttacks.lua")
 RunSkillsFile("creatureSkills/corellia/npcs/drallAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/greckAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/hiddenDaggerAttacks.lua")
 RunSkillsFile("creatureSkills/corellia/npcs/nyaxAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/meatlumpAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/monumenterAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/ragTagAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/selonianAttacks.lua")
+RunSkillsFile("creatureSkills/corellia/npcs/smashBallAttacks.lua")

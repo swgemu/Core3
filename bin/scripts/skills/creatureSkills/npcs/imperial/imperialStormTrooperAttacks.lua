@@ -39,14 +39,15 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-stormAttack1 = {
-	attackname = "stormAttack1",	
+
+imperialStormTrooperAttack1 = {
+	attackname = "imperialStormTrooperAttack1",	
 	animation = "fire_area_medium",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.5,
 	speedRatio = 1,
 	areaRange = 0,
 	coneAngle = 0,
@@ -86,18 +87,18 @@ stormAttack1 = {
 	CbtSpamMiss = "legshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack1)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack1)
 
 -----------------------------------------------------------------------
 
-stormAttack2 = {
-	attackname = "stormAttack2",
+imperialStormTrooperAttack2 = {
+	attackname = "imperialStormTrooperAttack2",
 	animation = "fire_7_single_medium_face",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.7,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -117,18 +118,18 @@ stormAttack2 = {
 	CbtSpamMiss = "s_auto_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack2)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack2)
 
 -----------------------------------------------------------------------
 
-stormAttack3 = {
-	attackname = "stormAttack3",
+imperialStormTrooperAttack3 = {
+	attackname = "imperialStormTrooperAttack3",
 	animation = "fire_5_single_medium",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.1,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -159,17 +160,17 @@ stormAttack3 = {
 	CbtSpamMiss = "scattershot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack3)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack3)
 -----------------------------------------------------------------------
 
-stormAttack4 = {
-	attackname = "stormAttack4",
+imperialStormTrooperAttack4 = {
+	attackname = "imperialStormTrooperAttack4",
 	animation = "fire_7_single_medium",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 2.1,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -189,17 +190,17 @@ stormAttack4 = {
 	CbtSpamMiss = "wildshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack4)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack4)
 -----------------------------------------------------------------------
 
-stormAttack5 = {
-	attackname = "stormAttack5",
+imperialStormTrooperAttack5 = {
+	attackname = "imperialStormTrooperAttack5",
 	animation = "fire_5_single_medium",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.6,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -230,17 +231,17 @@ stormAttack5 = {
 	CbtSpamMiss = "scatterblast_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack5)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack5)
 -----------------------------------------------------------------------
 
-stormAttack6 = {
-	attackname = "stormAttack6",
+imperialStormTrooperAttack6 = {
+	attackname = "imperialStormTrooperAttack6",
 	animation = "fire_7_single_medium",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -260,17 +261,17 @@ stormAttack6 = {
 	CbtSpamMiss = "widewildshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack6)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack6)
 -----------------------------------------------------------------------
 
-stormAttack7 = {
-	attackname = "stormAttack7",
+imperialStormTrooperAttack7 = {
+	attackname = "imperialStormTrooperAttack7",
 	animation = "test_homing",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.9,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -300,17 +301,17 @@ stormAttack7 = {
 	CbtSpamMiss = "kneecapshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack7)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack7)
 -----------------------------------------------------------------------
 
-stormAttack8 = {
-	attackname = "stormAttack8",
+imperialStormTrooperAttack8 = {
+	attackname = "imperialStormTrooperAttack8",
 	animation = "fire_5_single_light_face",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.6,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -330,17 +331,17 @@ stormAttack8 = {
 	CbtSpamMiss = "cripplingshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack8)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack8)
 -----------------------------------------------------------------------
 
-stormAttack9 = {
-	attackname = "stormAttack9",
+imperialStormTrooperAttack9 = {
+	attackname = "imperialStormTrooperAttack9",
 	animation = "fire_7_single_medium",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 2.0,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -360,17 +361,17 @@ stormAttack9 = {
 	CbtSpamMiss = "burstshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack9)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack9)
 -----------------------------------------------------------------------
 
-stormAttack10 = {
-	attackname = "stormAttack10",
+imperialStormTrooperAttack10 = {
+	attackname = "imperialStormTrooperAttack10",
 	animation = "fire_7_single_medium",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.1,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -390,17 +391,17 @@ stormAttack10 = {
 	CbtSpamMiss = "burstblast_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack10)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack10)
 -----------------------------------------------------------------------
 
-stormAttack11 = {
-	attackname = "stormAttack11",
+imperialStormTrooperAttack11 = {
+	attackname = "imperialStormTrooperAttack11",
 	animation = "fire_area_medium",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.3,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -420,17 +421,17 @@ stormAttack11 = {
 	CbtSpamMiss = "sup_fire_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack11)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack11)
 -----------------------------------------------------------------------
 
-stormAttack12 = {
-	attackname = "stormAttack12",
+imperialStormTrooperAttack12 = {
+	attackname = "imperialStormTrooperAttack12",
 	animation = "fire_defender_posture_change_down",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.4,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -450,17 +451,17 @@ stormAttack12 = {
 	CbtSpamMiss = "a_auto_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack12)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack12)
 -----------------------------------------------------------------------
 
-stormAttack13 = {
-	attackname = "stormAttack13",
+imperialStormTrooperAttack13 = {
+	attackname = "imperialStormTrooperAttack13",
 	animation = "charge",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -480,17 +481,17 @@ stormAttack13 = {
 	CbtSpamMiss = "chargeshot_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack13)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack13)
 -----------------------------------------------------------------------
 
-stormAttack14 = {
-	attackname = "stormAttack14",
+imperialStormTrooperAttack14 = {
+	attackname = "imperialStormTrooperAttack14",
 	animation = "fire_defender_posture_change_down",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.3,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -510,17 +511,17 @@ stormAttack14 = {
 	CbtSpamMiss = "a_auto_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack14)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack14)
 -----------------------------------------------------------------------
 
-stormAttack15 = {
-	attackname = "stormAttack15",
+imperialStormTrooperAttack15 = {
+	attackname = "imperialStormTrooperAttack15",
 	animation = "charge",
 
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 3.5,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -540,5 +541,5 @@ stormAttack15 = {
 	CbtSpamMiss = "chargeblast_miss",
 }
 
-AddRandomPoolAttackTargetSkill(stormAttack15)
+AddRandomPoolAttackTargetSkill(imperialStormTrooperAttack15)
 -----------------------------------------------------------------------

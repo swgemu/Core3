@@ -69,11 +69,23 @@ public:
 
 	unsigned long long getGalacticTime();
 
-	unsigned int getWeatherId();
+	unsigned int getWeatherID();
 
-	float getWeatherCloudX();
+	void setWeatherID(unsigned int value);
 
-	float getWeatherCloudY();
+	void changeWeatherID(int value);
+
+	bool isWeatherEnabled();
+
+	void setWeatherEnabled(bool value);
+
+	void setWeatherWindX(float value);
+
+	void setWeatherWindY(float value);
+
+	float getWeatherWindX();
+
+	float getWeatherWindY();
 
 protected:
 	Zone(DummyConstructorParameter* param);
@@ -135,11 +147,23 @@ public:
 
 	unsigned long long getGalacticTime();
 
-	unsigned int getWeatherId();
+	unsigned int getWeatherID();
 
-	float getWeatherCloudX();
+	void setWeatherID(unsigned int value);
 
-	float getWeatherCloudY();
+	void changeWeatherID(int value);
+
+	bool isWeatherEnabled();
+
+	void setWeatherEnabled(bool value);
+
+	void setWeatherWindX(float value);
+
+	void setWeatherWindY(float value);
+
+	float getWeatherWindX();
+
+	float getWeatherWindY();
 
 };
 

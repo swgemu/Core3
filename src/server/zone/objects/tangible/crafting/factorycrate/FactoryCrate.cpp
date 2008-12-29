@@ -18,12 +18,12 @@
  *	FactoryCrateStub
  */
 
-FactoryCrate::FactoryCrate(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+FactoryCrate::FactoryCrate(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new FactoryCrateImplementation(oid, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
 
-FactoryCrate::FactoryCrate(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
+FactoryCrate::FactoryCrate(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new FactoryCrateImplementation(creature, tempCRC, n, tempn);
 	_impl->_setStub(this);
 }
@@ -148,11 +148,11 @@ DistributedObjectAdapter* FactoryCrateHelper::createAdapter(DistributedObjectStu
  *	FactoryCrateServant
  */
 
-FactoryCrateServant::FactoryCrateServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
+FactoryCrateServant::FactoryCrateServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
 	_classHelper = FactoryCrateHelper::instance();
 }
 
-FactoryCrateServant::FactoryCrateServant(CreatureObject* creature, unsigned int tempCRC, const unicode& n, const string& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
+FactoryCrateServant::FactoryCrateServant(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(creature, tempCRC, n, tempn, tp) {
 	_classHelper = FactoryCrateHelper::instance();
 }
 

@@ -50,7 +50,7 @@ which carries forward this exception.
 class PlayMusicMessage : public BaseMessage {
 public:
 
-    PlayMusicMessage(string soundFile) : BaseMessage() {
+    PlayMusicMessage(String soundFile) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x04270D8A);  // CRC
         insertAscii(soundFile);

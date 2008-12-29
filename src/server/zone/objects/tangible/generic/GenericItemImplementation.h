@@ -61,9 +61,9 @@ public:
 
 public:
 
-	GenericItemImplementation(uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int gitype);
-	GenericItemImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const unicode& n, const string& tempn, int gitype);
-	GenericItemImplementation(CreatureObject* creature, uint32 tempCRC, const unicode& n, const string& tempn, int gitype);
+	GenericItemImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int gitype);
+	GenericItemImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int gitype);
+	GenericItemImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, int gitype);
 
 	~GenericItemImplementation();
 
@@ -74,7 +74,7 @@ public:
 
 	inline void setGenericItemType(int gitype) {
 		giType = gitype;
-		string attr = "giType";
+		String attr = "giType";
 		itemAttributes->setIntAttribute(attr, giType);
 	}
 

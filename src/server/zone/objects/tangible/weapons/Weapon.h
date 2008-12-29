@@ -21,9 +21,9 @@ class Powerup;
 
 class Weapon : public TangibleObject {
 public:
-	Weapon(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
+	Weapon(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
 
-	Weapon(CreatureObject* creature, const string& temp, const unicode& n, const string& tempn, bool eqp, int tp, int cat);
+	Weapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
 
 	void sendTo(Player* player, bool doClose = true);
 
@@ -147,9 +147,9 @@ public:
 
 	bool hasPowerup();
 
-	string& getCert();
+	String& getCert();
 
-	string& getXpType();
+	String& getXpType();
 
 	void setType(int type);
 
@@ -227,7 +227,7 @@ public:
 
 	void setUsesRemaining(int charges);
 
-	void setCert(string& certification);
+	void setCert(String& certification);
 
 	void setCertified(bool crt);
 
@@ -238,8 +238,8 @@ protected:
 
 	virtual ~Weapon();
 
-	string _return_getCert;
-	string _return_getXpType;
+	String _return_getCert;
+	String _return_getXpType;
 
 	friend class WeaponHelper;
 };
@@ -374,9 +374,9 @@ public:
 
 	bool hasPowerup();
 
-	string& getCert();
+	String& getCert();
 
-	string& getXpType();
+	String& getXpType();
 
 	void setType(int type);
 
@@ -454,14 +454,14 @@ public:
 
 	void setUsesRemaining(int charges);
 
-	void setCert(string& certification);
+	void setCert(String& certification);
 
 	void setCertified(bool crt);
 
 	void setXpType();
 
 protected:
-	string _param0_setCert__string_;
+	String _param0_setCert__String_;
 };
 
 class WeaponHelper : public DistributedObjectClassHelper, public Singleton<WeaponHelper> {
@@ -486,7 +486,7 @@ public:
 	Weapon* _this;
 
 public:
-	WeaponServant(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int tp);
+	WeaponServant(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	WeaponServant(unsigned long long oid, int tp);
 	virtual ~WeaponServant();
 

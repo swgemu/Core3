@@ -52,8 +52,9 @@ import "../../objects/player/Player";
 import "../../objects/creature/shuttle/ShuttleCreature";
 
 import "../../objects/tangible/terminal/mission/MissionTerminal";
-import "../../objects/area/NoBuildArea";
 import "../structure/StructureManager";
+
+import "../../objects/area/ActiveArea";
 
 interface PlanetManager {
 	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
@@ -72,8 +73,8 @@ interface PlanetManager {
 	void landShuttles();
 	void takeOffShuttles();	
 	unsigned long getLandingTime();
-	unsigned int getTravelFare(string departurePlanet, string arrivalPlanet);
-	ShuttleCreature getShuttle(const string Shuttle);	
+	unsigned int getTravelFare(String departurePlanet, String arrivalPlanet);
+	ShuttleCreature getShuttle(const String Shuttle);	
 	void sendPlanetTravelPointListResponse(Player player);
 		
 	MissionTerminal getMissionTerminal(unsigned long oid);
@@ -81,8 +82,10 @@ interface PlanetManager {
 	void placePlayerStructure(Player player, unsigned long objectID, float x, float y, int orient);
 		
 	boolean isNoBuildArea(boolean x, boolean y);
-	void addNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned long uid, unsigned char reason = 0);
-	void addNoBuildArea(NoBuildArea area);
-	void deleteNoBuildArea(NoBuildArea area);
-	NoBuildArea createNoBuildArea(float minX, float maxX, float minY, float maxY, unsigned char reason = 0);
+	void addNoBuildArea(float x, float y, float radius);
+	
+	void weatherUpdatePlayers();
+	void weatherChange();
+	void weatherRemoveEvents();
+	void spawnActiveArea(ActiveArea area);
 }

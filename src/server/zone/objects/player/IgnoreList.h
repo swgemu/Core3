@@ -21,15 +21,15 @@ public:
 
 	int getMagicNumber();
 
-	string& getIgnoreName(const int i);
+	String& getIgnoreName(const int i);
 
-	string& getIgnoreServer(const int i);
+	String& getIgnoreServer(const int i);
 
-	void addIgnore(string& name, string& inServer);
+	void addIgnore(String& name, String& inServer);
 
 	void ignoreMagicNumberReset();
 
-	void removeIgnore(string& name);
+	void removeIgnore(String& name);
 
 	void saveIgnore();
 
@@ -42,8 +42,8 @@ protected:
 
 	virtual ~IgnoreList();
 
-	string _return_getIgnoreName;
-	string _return_getIgnoreServer;
+	String _return_getIgnoreName;
+	String _return_getIgnoreServer;
 
 	friend class IgnoreListHelper;
 };
@@ -60,15 +60,15 @@ public:
 
 	int getMagicNumber();
 
-	string& getIgnoreName(const int i);
+	String& getIgnoreName(const int i);
 
-	string& getIgnoreServer(const int i);
+	String& getIgnoreServer(const int i);
 
-	void addIgnore(string& name, string& inServer);
+	void addIgnore(String& name, String& inServer);
 
 	void ignoreMagicNumberReset();
 
-	void removeIgnore(string& name);
+	void removeIgnore(String& name);
 
 	void saveIgnore();
 
@@ -77,9 +77,9 @@ public:
 	void toString();
 
 protected:
-	string _param0_addIgnore__string_string_;
-	string _param1_addIgnore__string_string_;
-	string _param0_removeIgnore__string_;
+	String _param0_addIgnore__String_String_;
+	String _param1_addIgnore__String_String_;
+	String _param0_removeIgnore__String_;
 };
 
 class IgnoreListHelper : public DistributedObjectClassHelper, public Singleton<IgnoreListHelper> {

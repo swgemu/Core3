@@ -21,6 +21,8 @@ class WaypointObject;
 
 class PlayerManager;
 
+class Badges;
+
 #include "../scene/SceneObject.h"
 
 class PlayerObject : public SceneObject {
@@ -31,15 +33,15 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
-	int getExperience(const string& xpType);
+	int getExperience(const String& xpType);
 
-	void addExperience(const string& xpType, int xp, bool updateClient);
+	void addExperience(const String& xpType, int xp, bool updateClient);
 
-	void removeExperience(const string& xpType, int xp, bool updateClient);
+	void removeExperience(const String& xpType, int xp, bool updateClient);
 
-	void loadExperience(const string& xpStr);
+	void loadExperience(const String& xpStr);
 
-	string& saveExperience();
+	String& saveExperience();
 
 	bool setCharacterBit(unsigned int bit, bool updateClient = false);
 
@@ -103,11 +105,11 @@ public:
 
 	Player* getPlayer();
 
-	void setCurrentTitle(string& nTitle, bool updateClient);
+	void setCurrentTitle(String& nTitle, bool updateClient);
 
-	void setTitle(string& temptitle);
+	void setTitle(String& temptitle);
 
-	string& getCurrentTitle();
+	String& getCurrentTitle();
 
 	unsigned int getExperienceListCount();
 
@@ -119,13 +121,13 @@ public:
 
 	FriendsList* getFriendsList();
 
-	void addFriend(string& name, string& inServer);
+	void addFriend(String& name, String& inServer);
 
 	void friendsMagicNumberReset();
 
-	void removeFriend(string& name);
+	void removeFriend(String& name);
 
-	void findFriend(string& name, PlayerManager* playerManager);
+	void findFriend(String& name, PlayerManager* playerManager);
 
 	void saveFriends();
 
@@ -133,13 +135,21 @@ public:
 
 	void updateAllFriends(PlayerObject* playerObject);
 
+	void pokeReverseFriendList(unsigned long long playerID);
+
+	void removeFromReverseFriendList(unsigned long long playID);
+
+	int getReverseFriendListSize();
+
+	unsigned long long getReverseFriendListEntry(int i);
+
 	IgnoreList* getIgnoreList();
 
-	void addIgnore(string& name, string& inServer);
+	void addIgnore(String& name, String& inServer);
 
 	void ignoreMagicNumberReset();
 
-	void removeIgnore(string& name);
+	void removeIgnore(String& name);
 
 	void saveIgnore();
 
@@ -147,15 +157,15 @@ public:
 
 	void saveWaypoints(Player* player);
 
-	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
+	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
 
 protected:
 	PlayerObject(DummyConstructorParameter* param);
 
 	virtual ~PlayerObject();
 
-	string _return_getCurrentTitle;
-	string _return_saveExperience;
+	String _return_getCurrentTitle;
+	String _return_saveExperience;
 
 	friend class PlayerObjectHelper;
 };
@@ -172,15 +182,15 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
-	int getExperience(const string& xpType);
+	int getExperience(const String& xpType);
 
-	void addExperience(const string& xpType, int xp, bool updateClient);
+	void addExperience(const String& xpType, int xp, bool updateClient);
 
-	void removeExperience(const string& xpType, int xp, bool updateClient);
+	void removeExperience(const String& xpType, int xp, bool updateClient);
 
-	void loadExperience(const string& xpStr);
+	void loadExperience(const String& xpStr);
 
-	string& saveExperience();
+	String& saveExperience();
 
 	bool setCharacterBit(unsigned int bit, bool updateClient);
 
@@ -244,11 +254,11 @@ public:
 
 	Player* getPlayer();
 
-	void setCurrentTitle(string& nTitle, bool updateClient);
+	void setCurrentTitle(String& nTitle, bool updateClient);
 
-	void setTitle(string& temptitle);
+	void setTitle(String& temptitle);
 
-	string& getCurrentTitle();
+	String& getCurrentTitle();
 
 	unsigned int getExperienceListCount();
 
@@ -260,13 +270,13 @@ public:
 
 	FriendsList* getFriendsList();
 
-	void addFriend(string& name, string& inServer);
+	void addFriend(String& name, String& inServer);
 
 	void friendsMagicNumberReset();
 
-	void removeFriend(string& name);
+	void removeFriend(String& name);
 
-	void findFriend(string& name, PlayerManager* playerManager);
+	void findFriend(String& name, PlayerManager* playerManager);
 
 	void saveFriends();
 
@@ -274,13 +284,21 @@ public:
 
 	void updateAllFriends(PlayerObject* playerObject);
 
+	void pokeReverseFriendList(unsigned long long playerID);
+
+	void removeFromReverseFriendList(unsigned long long playID);
+
+	int getReverseFriendListSize();
+
+	unsigned long long getReverseFriendListEntry(int i);
+
 	IgnoreList* getIgnoreList();
 
-	void addIgnore(string& name, string& inServer);
+	void addIgnore(String& name, String& inServer);
 
 	void ignoreMagicNumberReset();
 
-	void removeIgnore(string& name);
+	void removeIgnore(String& name);
 
 	void saveIgnore();
 
@@ -288,23 +306,23 @@ public:
 
 	void saveWaypoints(Player* player);
 
-	WaypointObject* searchWaypoint(Player* play, const string& name, int mode);
+	WaypointObject* searchWaypoint(Player* play, const String& name, int mode);
 
 protected:
-	string _param0_getExperience__string_;
-	string _param0_addExperience__string_int_bool_;
-	string _param0_removeExperience__string_int_bool_;
-	string _param0_loadExperience__string_;
-	string _param0_setCurrentTitle__string_bool_;
-	string _param0_setTitle__string_;
-	string _param0_addFriend__string_string_;
-	string _param1_addFriend__string_string_;
-	string _param0_removeFriend__string_;
-	string _param0_findFriend__string_PlayerManager_;
-	string _param0_addIgnore__string_string_;
-	string _param1_addIgnore__string_string_;
-	string _param0_removeIgnore__string_;
-	string _param1_searchWaypoint__Player_string_int_;
+	String _param0_getExperience__String_;
+	String _param0_addExperience__String_int_bool_;
+	String _param0_removeExperience__String_int_bool_;
+	String _param0_loadExperience__String_;
+	String _param0_setCurrentTitle__String_bool_;
+	String _param0_setTitle__String_;
+	String _param0_addFriend__String_String_;
+	String _param1_addFriend__String_String_;
+	String _param0_removeFriend__String_;
+	String _param0_findFriend__String_PlayerManager_;
+	String _param0_addIgnore__String_String_;
+	String _param1_addIgnore__String_String_;
+	String _param0_removeIgnore__String_;
+	String _param1_searchWaypoint__Player_String_int_;
 };
 
 class PlayerObjectHelper : public DistributedObjectClassHelper, public Singleton<PlayerObjectHelper> {

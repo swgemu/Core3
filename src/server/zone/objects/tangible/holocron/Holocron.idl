@@ -47,7 +47,7 @@ import "../../player/Player";
 import "../TangibleObject";
 
 interface Holocron implements TangibleObject {
-	Holocron(Player player, unsigned int tempCRC, const unicode n, const string tempn) {
+	Holocron(Player player, unsigned int tempCRC, const UnicodeString n, const String tempn) {
 		super(unsigned long oid, int tp);
 	}
 

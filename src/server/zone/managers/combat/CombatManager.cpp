@@ -104,7 +104,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	}
 
 	TargetSkill* tskill = (TargetSkill*)action->getSkill();
-	string actionModifier = action->getActionModifier();
+	String actionModifier = action->getActionModifier();
 
 	if (creature->isWatching() && !tskill->isHealSkill())
 		creature->stopWatch(creature->getWatchID());
@@ -160,7 +160,7 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 
 	SelfSkill* selfskill = (SelfSkill*) action->getSkill();
 
-	string actionModifier = action->getActionModifier();
+	String actionModifier = action->getActionModifier();
 
 	if (!selfskill->isUseful(creature))
 		return 0.0f;
@@ -191,7 +191,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 	float DirectionVectorX = target->getPositionX() - CreatureVectorX;
 	float DirectionVectorY = target->getPositionY() - CreatureVectorY;
 
-	string actionModifier = action->getActionModifier();
+	String actionModifier = action->getActionModifier();
 
 	Zone* zone = creature->getZone();
 	try {
@@ -249,11 +249,11 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 	} catch (...) {
 		zone->unlock();
 
-		cout << "Exception in CombatManager::handleAreaAction\n";
+		System::out << "Exception in CombatManager::handleAreaAction\n";
 	}
 }
 
-bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill,  string& modifier, CombatAction* actionMessage) {
+bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
 	try {
 		target->wlock(attacker);
 
@@ -343,7 +343,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 		target->unlock();
 	} catch (Exception& e) {
-		cout << "Exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)\n"
+		System::out << "Exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)\n"
 			 << e.getMessage() << "\n";
 		e.printStackTrace();
 
@@ -351,7 +351,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 		return false;
 	} catch (...) {
-		cout << "exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)";
+		System::out << "exception in doAction(CreatureObject* attacker, CreatureObject* targetCreature, TargetSkill* skill)";
 
 		target->unlock();
 
@@ -411,17 +411,17 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 
 void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender) {
 	creature->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
-	creature->doCombatAnimation(defender, String::hashCode("dodge"), 0);
+	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 }
 
 void CombatManager::doCounterAttack(CreatureObject* creature, CreatureObject* defender) {
 	creature->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
-	creature->doCombatAnimation(defender, String::hashCode("dodge"), 0);
+	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 }
 
 void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender) {
 	creature->showFlyText("combat_effects", "block", 0, 0xFF, 0);
-	creature->doCombatAnimation(defender, String::hashCode("dodge"), 0);
+	creature->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 }
 
 // calc methods
@@ -884,7 +884,7 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 		armor = ((Player*)target)->getPlayerArmor(location);
 		if (armor != NULL)
 			if (!armor->isArmor()) {
-				cout << "Returned item is not armor, location " << location << endl;
+				System::out << "Returned item is not armor, location " << location << endl;
 				armor == NULL;
 			}
 		}
@@ -1544,9 +1544,9 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 
 			targetPlayer->unlock();
 		} catch (Exception& e) {
-			cout << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n" << e.getMessage() << "\n";
+			System::out << "Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n" << e.getMessage() << "\n";
 		} catch (...) {
-			cout << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
+			System::out << "Unreported Exception caught in CombatManager::requestDuel(Player* player, Player* targetPlayer)\n";
 			targetPlayer->unlock();
 		}
 	}
@@ -1659,7 +1659,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 				} catch (ObjectNotDeployedException& e) {
 					player->removeFromDuelList(targetPlayer);
 
-					cout << "Exception on CombatManager::freeDuelList()\n" << e.getMessage() << "\n";
+					System::out << "Exception on CombatManager::freeDuelList()\n" << e.getMessage() << "\n";
 				} catch (...) {
 					targetPlayer->unlock();
 				}

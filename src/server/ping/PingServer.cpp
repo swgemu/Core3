@@ -70,10 +70,10 @@ void PingServer::init() {
 		processors = (PingMessageProcessorThread**) malloc(procThreadCount * sizeof(PingMessageProcessorThread*));
 
 		for (int i = 0; i < procThreadCount; ++i) {
-			stringstream name;
+			StringBuffer name;
 			name << "PingProcessor" << i;
 
-			processors[i] = new PingMessageProcessorThread(name.str());
+			processors[i] = new PingMessageProcessorThread(name.toString());
 		}
 	}
 
@@ -130,7 +130,7 @@ void PingServer::handleMessage(ServiceClient* client, Packet* message) {
 		}
 
 	} catch (PacketIndexOutOfBoundsException& e) {
-		cout << e.getMessage();
+		System::out << e.getMessage();
 
 		error("incorrect packet - " + message->toString());
 	} catch (DatabaseException& e) {
@@ -138,7 +138,7 @@ void PingServer::handleMessage(ServiceClient* client, Packet* message) {
 	} catch (ArrayIndexOutOfBoundsException& e) {
 		error(e.getMessage());
 	} catch (...) {
-		cout << "[PingServer] unreported Exception caught\n";
+		System::out << "[PingServer] unreported Exception caught\n";
 	}
 }
 
@@ -154,11 +154,11 @@ bool PingServer::handleError(ServiceClient* client, Exception& e) {
 void PingServer::printInfo() {
 	lock();
 
-	stringstream msg;
+	StringBuffer msg;
 	msg << "MessageQueue - size = " << messageQueue.size();
 	info(msg, true);
 
-	stringstream msg2;
+	StringBuffer msg2;
 	msg2 << "Scheduler - size = " << scheduler->getQueueSize();
 	info(msg2, true);
 

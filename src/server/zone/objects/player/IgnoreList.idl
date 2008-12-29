@@ -51,11 +51,11 @@ interface IgnoreList{
 
 	int getCount();
 	int getMagicNumber();
-	string getIgnoreName(const int i);
-	string getIgnoreServer(const int i);
-	void addIgnore(string name, string inServer);
+	String getIgnoreName(const int i);
+	String getIgnoreServer(const int i);
+	void addIgnore(String name, String inServer);
 	void ignoreMagicNumberReset();
-	void removeIgnore(string name);
+	void removeIgnore(String name);
 	void saveIgnore();
 	void loadIgnore();
 	void toString();

@@ -54,7 +54,7 @@ private:
 	float speed;
 
 public:
-	ForcePowersPoolAttackTargetSkill(const string& name, const string& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, FORCE, serv) {
+	ForcePowersPoolAttackTargetSkill(const String& name, const String& anim, ZoneProcessServerImplementation* serv) : AttackTargetSkill(name, anim, FORCE, serv) {
 		healthPoolAttackChance = 50;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
@@ -75,7 +75,7 @@ public:
 	 * doSkill:
 	 *     returns damage (-1 for miss)
 	 */
-	int doSkill(CreatureObject* creature, SceneObject* target, const string& modifier, bool doAnimation = true) {
+	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
 
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
@@ -181,7 +181,7 @@ public:
 				accuracy = 0;
 				break;
 			default:
-				cout << "Unknown force power type " << attackType << endl;
+				System::out << "Unknown force power type " << attackType << endl;
 				break;
 			}
 		}
@@ -213,7 +213,7 @@ public:
 
 		hitChance = (int)(accTotal + 0.5);
 
-		cout << "hitChance:[" << hitChance << "]" << endl;
+		System::out << "hitChance:[" << hitChance << "]" << endl;
 
 		return hitChance;
 	}

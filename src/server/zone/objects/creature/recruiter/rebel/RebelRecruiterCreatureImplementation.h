@@ -43,10 +43,13 @@ which carries forward this exception.
 */
 
 #include "engine/engine.h"
+
 #include "RebelRecruiterCreature.h"
 
 #include "../../../player/Player.h"
+
 #include "../../../player/faction/FactionRankTable.h"
+
 #include "../../../../packets.h"
 
 
@@ -57,8 +60,8 @@ class RebelRecruiterCreatureImplementation : public RebelRecruiterCreatureServan
 public:
 	RebelRecruiterCreatureImplementation(uint64 oid) : RebelRecruiterCreatureServant(oid) {
 		objectCRC = 0xB39C9594;
-		factionCRC = String::hashCode("rebel");
-		enemyFactionCRC = String::hashCode("imperial");
+		factionCRC = String("rebel").hashCode();
+		enemyFactionCRC = String("imperial").hashCode();
 		factionString = "rebel";
 		speciesName = "rebel_recruiter";
 	}
@@ -83,12 +86,12 @@ public:
 	void sendMemberStart(Player * player) {
 		player->setLastNpcConvMessStr("member_start");
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 
-		if(qualifiesForPromotion(player))
+		if (qualifiesForPromotion(player))
 			slist->insertOption("conversation/faction_recruiter_rebel", "s_468");
 
-		if(canOfferBribe(player))
+		if (canOfferBribe(player))
 			slist->insertOption("conversation/faction_recruiter_rebel", "s_568");
 
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_504");
@@ -99,8 +102,10 @@ public:
 
 	void sendNeutralStart(Player * player) {
 		player->setLastNpcConvMessStr("neutral_start");
+
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_566"));
-		StringList * slist = new StringList(player);
+
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_580");
 		player->sendMessage(slist);
 	}
@@ -108,7 +113,7 @@ public:
 	void sendOnLeaveStart(Player * player) {
 		player->setLastNpcConvMessStr("neutral_start");
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_448"));
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_450");
 		player->sendMessage(slist);
 	}
@@ -117,7 +122,7 @@ public:
 		player->setLastNpcConvMessStr("confirm_go_covert");
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_506"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_508");
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_512");
 		player->sendMessage(slist);
@@ -136,7 +141,7 @@ public:
 		player->setLastNpcConvMessStr("confirm_go_overt");
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_516"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_518");
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_522");
 		player->sendMessage(slist);
@@ -155,7 +160,7 @@ public:
 		player->setLastNpcConvMessStr("confirm_go_on_leave");
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_528"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_530");
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_534");
 		player->sendMessage(slist);
@@ -174,7 +179,7 @@ public:
 		player->setLastNpcConvMessStr("confirm_go_active");
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_452"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_454");
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_458");
 		player->sendMessage(slist);
@@ -196,7 +201,7 @@ public:
 		player->setLastNpcConvMessStr("confirm_join_faction");
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_584"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_586");
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_592");
 		player->sendMessage(slist);
@@ -205,7 +210,7 @@ public:
 	void playerAcceptedJoin(Player * player) {
 		player->setLastNpcConvMessStr("player_accepted_join");
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_588"));
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_590");
 		player->sendMessage(slist);
 	}
@@ -218,7 +223,7 @@ public:
 		player->setLastNpcConvMessStr("confirm_leave_faction");
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_540"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_542");
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_546");
 		player->sendMessage(slist);
@@ -241,7 +246,7 @@ public:
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_470", param));
 		delete param;
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_472");
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_476");
 		player->sendMessage(slist);
@@ -260,7 +265,7 @@ public:
 
 		player->sendMessage(new NpcConversationMessage(player, "conversation/faction_recruiter_rebel", "s_570"));
 
-		StringList * slist = new StringList(player);
+		StringList* slist = new StringList(player);
 		slist->insertOption("conversation/faction_recruiter_rebel", "s_572");
 
 		if (player->getCashCredits() >= 100000 &&

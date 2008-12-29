@@ -73,13 +73,20 @@ interface ItemManager {
 	
 	void createPlayerItem(Player player, TangibleObject item);
 
+	TangibleObject clonePlayerObjectTemplate(unsigned long objectid, TangibleObject templ);
+
 	TangibleObject initializeTangibleForCrafting(int objecttype,
-			unsigned long objectid, unsigned long objectcrc, string objectn,
-			string objecttemp, boolean equipped);
+			unsigned long objectid, unsigned long objectcrc, String objectn,
+			String objecttemp, boolean equipped);
 
 	void savePlayerItem(Player player, TangibleObject item); 
 
 	void deletePlayerItem(Player player, TangibleObject item, boolean notify);
+	
+	void transferContainerItem(Player player, TangibleObject item, unsigned long destinationID);
+	void loadStructurePlayerItems(Player player, unsigned long cellID);
+	
+	void giveForageItem(Player player, int group, int count);                                                                     
 	
 	// stat methods
 	void showDbStats(Player player);
@@ -92,9 +99,9 @@ interface ItemManager {
 
 	BlueFrogVector getBFItemList();
 	
-	BlueFrogVector getBFProfList(string group);
+	BlueFrogVector getBFProfList(String group);
 
-	string getBFProf(string key);
+	String getBFProf(String key);
 
-	void giveBFItemSet(Player player, string set);
+	void giveBFItemSet(Player player, String set);
 }

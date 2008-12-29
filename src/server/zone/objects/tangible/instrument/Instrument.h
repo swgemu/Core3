@@ -17,9 +17,9 @@ class TangibleObject;
 
 class Instrument : public TangibleObject {
 public:
-	Instrument(unsigned long long oid, unsigned int tempCRC, const unicode& n, const string& tempn, int insttype);
+	Instrument(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int insttype);
 
-	Instrument(Player* player, unsigned int tempCRC, const unicode& n, const string& tempn, int insttype);
+	Instrument(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn, int insttype);
 
 	int useObject(Player* player);
 

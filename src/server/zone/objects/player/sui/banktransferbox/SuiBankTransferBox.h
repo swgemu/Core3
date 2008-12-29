@@ -27,7 +27,7 @@ public:
 
 	BaseMessage* getMessage();
 
-	void addOption(const string& itemText, const string& lblType, const string& itemType);
+	void addOption(const String& itemText, const String& lblType, const String& itemType);
 
 protected:
 	SuiBankTransferBox(DummyConstructorParameter* param);
@@ -53,12 +53,12 @@ public:
 
 	BaseMessage* getMessage();
 
-	void addOption(const string& itemText, const string& lblType, const string& itemType);
+	void addOption(const String& itemText, const String& lblType, const String& itemType);
 
 protected:
-	string _param0_addOption__string_string_string_;
-	string _param1_addOption__string_string_string_;
-	string _param2_addOption__string_string_string_;
+	String _param0_addOption__String_String_String_;
+	String _param1_addOption__String_String_String_;
+	String _param2_addOption__String_String_String_;
 };
 
 class SuiBankTransferBoxHelper : public DistributedObjectClassHelper, public Singleton<SuiBankTransferBoxHelper> {

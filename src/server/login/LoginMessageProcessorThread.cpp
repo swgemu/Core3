@@ -54,21 +54,21 @@ void LoginMessageProcessorThread::run() {
 		try {
 			phandler->handleMessage(msg);
 		} catch (PacketIndexOutOfBoundsException& e) {
-			cout << e.getMessage();
+			System::out << e.getMessage();
 
-			stringstream str;
+			StringBuffer str;
 			str << "incorrect packet - " << msg->toString();
 			error(str);
 		} catch (DatabaseException& e) {
-			stringstream msg;
+			StringBuffer msg;
 			msg << e.getMessage();
 			error(msg);
 		} catch (ArrayIndexOutOfBoundsException& e) {
-			stringstream msg;
+			StringBuffer msg;
 			msg << e.getMessage();
 			error(msg);
 		} catch (...) {
-			cout << "[LoginMessageProcessor] unreported Exception caught\n";
+			System::out << "[LoginMessageProcessor] unreported Exception caught\n";
 		}
 
 		//info("finished processing login message");

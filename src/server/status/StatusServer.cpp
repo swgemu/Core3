@@ -75,7 +75,7 @@ void StatusServer::init() {
 Packet * StatusServer::getStatusXMLPacket() {
 	Packet* p = new Packet();
 
-	stringstream ss;
+	StringBuffer ss;
 	ss << "<?xml version=\"1.0\" standalone=\"yes\"?>" << endl;
 	ss << "<zoneServer>" << endl;
 
@@ -95,9 +95,9 @@ Packet * StatusServer::getStatusXMLPacket() {
 	ss << "<timestamp>" << timestamp << "</timestamp>" << endl;
 	ss << "</zoneServer>" << endl;
 
-	string xml = ss.str();
+	String xml = ss.toString();
 
-	p->insertStream(xml.c_str(), xml.length());
+	p->insertStream(xml.toCharArray(), xml.length());
 
 	return p;
 }

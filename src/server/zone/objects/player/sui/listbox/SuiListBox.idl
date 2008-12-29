@@ -52,9 +52,9 @@ interface SuiListBox implements SuiBox {
 		super(player, boxType, unsigned int typeId);
 	}
 
-	void addMenuItem(const string item, unsigned long objectID = 0);
+	void addMenuItem(const String item, unsigned long objectID = 0);
 	
-	string getMenuItemName(int index);
+	String getMenuItemName(int index);
 	
 	void removeAllMenuItems();
 	

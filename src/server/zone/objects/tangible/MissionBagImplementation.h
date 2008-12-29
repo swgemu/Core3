@@ -57,7 +57,7 @@ public:
 	MissionBagImplementation(CreatureObject* creature) : MissionBagServant(creature->getObjectID() + 0x02) {
 		objectCRC = 0x3D7F6F9F; //0x9F, 0x6F, 0x7F, 0x3D,
 		
-		name = unicode("");
+		name = UnicodeString("");
 		
 		templateTypeName = "item_n";
 		templateName = "mission_bag";

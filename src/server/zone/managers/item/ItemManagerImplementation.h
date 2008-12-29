@@ -59,6 +59,7 @@
 #include "ItemManager.h"
 
 #include "StartingItemList.h"
+#include "ForageItemList.h"
 #include "../../objects/creature/bluefrog/BlueFrogItemSet.h"
 #include "../../objects/creature/bluefrog/BlueFrogProfessionSet.h"
 
@@ -78,6 +79,7 @@ class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	uint64 nextStaticItemID;
 
 	static StartingItemList * startingItems;
+	static ForageItemList* forageItems;
 	static BlueFrogItemSet * bfItemSet;
 	static BlueFrogProfessionSet * bfProfSet;
 
@@ -90,6 +92,9 @@ class ItemManagerImplementation : public ItemManagerServant, public Lua {
 	static int addBFProf(lua_State * l);
 	static int addBFGroup(lua_State * l);
 	static int runItemLUAFile(lua_State* L);
+
+	static int createForageItemFromLua(lua_State* l);
+	TangibleObject* forageStatRandomizer(TangibleObject* item);
 
 	static int enableBlueFrogs(lua_State* L) {
 		bfEnabled = true;
@@ -112,21 +117,22 @@ public:
 
 	TangibleObject* createPlayerObject(Player* player, ResultSet* result);
 
-	static TangibleObject* createSubObject(uint64 objectid, uint32 objectcrc, const unicode& objectname, const string& objecttemp, bool equipped);
+	static TangibleObject* createSubObject(uint64 objectid, uint32 objectcrc,
+			const UnicodeString& objectname, const String& objecttemp, bool equipped);
 
 	static TangibleObject* createPlayerObjectTemplate(int objecttype, uint64 objectid, uint32 objectcrc,
-			const unicode& objectname, const string& objecttemp, bool equipped,
-			bool makeStats, string lootAttributes, int level);
+			const UnicodeString& objectname, const String& objecttemp, bool equipped,
+			bool makeStats, String lootAttributes, int level);
 
 	static TangibleObject* createTemplateFromLua(LuaObject item);
 
 	//TODO: remove this function when a global clone() function is available for all objects
 	TangibleObject* clonePlayerObjectTemplate(uint64 objectid, TangibleObject* templ);
 	TangibleObject* initializeTangibleForCrafting(int objecttype,
-			uint64 objectid, uint32 objectcrc, string objectn,
-			string objecttemp, bool equipped);
+			uint64 objectid, uint32 objectcrc, String objectn,
+			String objecttemp, bool equipped);
 
-	void giveBFItemSet(Player * player, string& set);
+	void giveBFItemSet(Player * player, String& set);
 
 	void unloadPlayerItems(Player* player);
 
@@ -143,6 +149,30 @@ public:
 
 	void purgeDbDeleted(Player* player);
 
+	void giveForageItem(Player* player, int group, int count);
+
+	//player storage / item movement
+	void loadItemsInContainersForStructure(Player* player, Container* conti);
+	void loadContainersInStructures(Player* player, BuildingObject* building);
+	void loadStructurePlayerItems(Player* player, uint64 cellID);
+	void transferContainerItem(Player* player, TangibleObject* item, uint64 destinationID);
+	void deleteItemFromPlayerStorageDB(TangibleObject* item);
+	void moveNestedItemsToInventoryContainer(Player* player, Container* container);
+	void createPlayerItemInInventoryContainer(Player* player, TangibleObject* item, SceneObject* destinationObject);
+	void moveItemInInventory(Player* player, TangibleObject* item, SceneObject* destinationObject, bool destinationIsInventory);
+	void insertItemIntoPlayerStorage(Player* player, TangibleObject* item, SceneObject* destinationObject, Container* conti, BuildingObject* building);
+	void moveNestedItemsToPlayerStorage(Player* player, Container* container);
+
+	void moveItem(Zone* zone, Player* player, TangibleObject* item, SceneObject* object, bool comesFromCell, bool comesFromInventory,
+			bool comesFromInventoryContainer, bool comesFromExternalContainer, SceneObject* destinationObject, bool destinationIsCell,
+			bool destinationIsInventory, bool destinationIsInventoryContainer, bool destinationIsExternalContainer,
+			Container* sourceContainer,	bool itemIsContainer);
+
+	void reflectItemMovementInDB(Player* player, TangibleObject* item, bool comesFromCell, bool comesFromInventory,
+			bool comesFromInventoryContainer, bool comesFromExternalContainer, SceneObject* destinationObject, bool destinationIsCell,
+			bool destinationIsInventory, bool destinationIsInventoryContainer, bool destinationIsExternalContainer,
+			bool itemIsContainer, Container* conti, BuildingObject* building);
+
 	// setters and getters
 	inline uint64 getNextStaticObjectID() {
 		return ++nextStaticItemID;
@@ -156,11 +186,11 @@ public:
 		return bfItemSet->listContents();
 	}
 
-	inline BlueFrogVector * getBFProfList(string group = "root") {
+	inline BlueFrogVector * getBFProfList(String group = "root") {
 		return bfProfSet->listContents(group);
 	}
 
-	inline string& getBFProf(string& key) {
+	inline String& getBFProf(String& key) {
 		return bfProfSet->get(key);
 	}
 

@@ -66,6 +66,8 @@ public:
 	static const int GUNGAN = 0x01;
 	static const int MEDDROID	= 0x02;
 	static const int BARTENDER	= 0x03;
+	static const int EWOK = 0x04;
+	static const int JEDI = 0x05;
 
 	void sendConversationStartTo(SceneObject* obj);
 	void sendMessage1(Player* player);
@@ -79,7 +81,7 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
-	bool trainProfession(Player * player, string prof);
+	bool trainProfession(Player * player, String prof);
 	bool trainSkill(Player * player, SkillBox * skill);
 	void dropSkills(Player * player);
 
