@@ -39,12 +39,37 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
--- Load files
 
- RunSkillsFile("creatureSkills/yavin4/npcs/geonosianAlertDroidekaAttacks.lua")
- RunSkillsFile("creatureSkills/yavin4/npcs/geonosianCrazedAttacks.lua")
- RunSkillsFile("creatureSkills/yavin4/npcs/geonosianImperialObserverAttacks.lua")
- RunSkillsFile("creatureSkills/yavin4/npcs/geonosianMercenaryAttacks.lua")
- RunSkillsFile("creatureSkills/yavin4/npcs/geonosianTechAssistantAttacks.lua")
- RunSkillsFile("creatureSkills/yavin4/npcs/huttExpeditionAttacks.lua")
- RunSkillsFile("creatureSkills/yavin4/npcs/strandedAttacks.lua")
+huttExpeditionAttack1 = {
+        attackname = "huttExpeditionAttack1",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
+
+        range = 10,
+
+        damageRatio = 10,
+
+        speedRatio = 4,
+
+        areaRange = 0,
+        accuracyBonus = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(huttExpeditionAttack1)
+
+---------------------------------------------------------------------------------------
