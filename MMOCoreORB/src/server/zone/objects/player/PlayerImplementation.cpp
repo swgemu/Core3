@@ -5063,7 +5063,7 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 	}
 
 	if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
-		omr->addRadialItem(0, 48, 3, "@cmd_n:teach");
+		omr->addRadialItem(0, 140, 3, "@cmd_n:teach");
 	}
 
 	omr->finish();

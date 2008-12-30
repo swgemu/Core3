@@ -680,4 +680,22 @@ void SceneObjectImplementation::disseminateXp(int levels) {
 
 		//delete dmg;
 	}
+
+	cleanupDamageDone();
 }
+
+void SceneObjectImplementation::cleanupDamageDone() {
+	while ( !playerDamageList.isEmpty() ) {
+		VectorMapEntry<CreatureObject*, DamageDone*> *entry = playerDamageList.SortedVector<VectorMapEntry<CreatureObject*, DamageDone*>*>::get(0);
+		CreatureObject *creature = entry->getKey();
+		DamageDone *dmg = entry->getValue();
+
+		if (playerDamageList.drop(creature))
+			creature->release();
+
+		delete dmg;
+	}
+
+	groupDamageList.removeAll();
+}
+

@@ -843,6 +843,8 @@ public:
 
 	void teachSkill(String& skillname);
 
+	int getSkillPoints();
+
 	ActiveArea* getActiveArea();
 
 	void setActiveArea(ActiveArea* area);
@@ -1651,6 +1653,8 @@ public:
 	void clearTeachingSkillOptions();
 
 	void teachSkill(String& skillname);
+
+	int getSkillPoints();
 
 	ActiveArea* getActiveArea();
 

@@ -117,24 +117,24 @@ void DiceImplementation::addAttributes(AttributeListMessage* alm) {
 
 void DiceImplementation::sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {
 	if (player->getInventoryItem(getObjectID()) != NULL) {
-		omr->addRadialItem(0,40,3,"@dice/dice:dice_roll_single");
+		omr->addRadialItem(0,172,3,"@dice/dice:dice_roll_single");
 
 		if (diceType != CHANCECUBE && diceType != CONFIGURABLE) {
-			omr->addRadialItem(3,41,3,"@dice/dice:dice_roll_one_single");
-			omr->addRadialItem(3,42,3,"@dice/dice:dice_roll_two_single");
-			omr->addRadialItem(3,43,3,"@dice/dice:dice_roll_three_single");
-			omr->addRadialItem(3,44,3,"@dice/dice:dice_roll_four_single");
+			omr->addRadialItem(3,172,3,"@dice/dice:dice_roll_one_single");
+			omr->addRadialItem(3,173,3,"@dice/dice:dice_roll_two_single");
+			omr->addRadialItem(3,174,3,"@dice/dice:dice_roll_three_single");
+			omr->addRadialItem(3,175,3,"@dice/dice:dice_roll_four_single");
 		}
 
 		if (diceType == CONFIGURABLE) {
-			omr->addRadialItem(0,51,3,"@dice/dice_details:eqp_dice_configure");
-			omr->addRadialItem(4,52,3,"@dice/dice:dice_eight_single");
-			omr->addRadialItem(4,53,3,"@dice/dice:dice_seven_single");
-			omr->addRadialItem(4,54,3,"@dice/dice:dice_six_single");
-			omr->addRadialItem(4,55,3,"@dice/dice:dice_five_single");
-			omr->addRadialItem(4,56,3,"@dice/dice:dice_four_single");
-			omr->addRadialItem(4,57,3,"@dice/dice:dice_three_single");
-			omr->addRadialItem(4,58,3,"@dice/dice:dice_two_single");
+			omr->addRadialItem(0,164,3,"@dice/dice_details:eqp_dice_configure");
+			omr->addRadialItem(4,171,3,"@dice/dice:dice_eight_single");
+			omr->addRadialItem(4,170,3,"@dice/dice:dice_seven_single");
+			omr->addRadialItem(4,169,3,"@dice/dice:dice_six_single");
+			omr->addRadialItem(4,168,3,"@dice/dice:dice_five_single");
+			omr->addRadialItem(4,167,3,"@dice/dice:dice_four_single");
+			omr->addRadialItem(4,166,3,"@dice/dice:dice_three_single");
+			omr->addRadialItem(4,165,3,"@dice/dice:dice_two_single");
 		}
 	}
 
