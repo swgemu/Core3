@@ -349,7 +349,7 @@ void GameCommandHandler::init() {
 			"Warps all players in a set radius to a specific waypoint",
 			"Usage: @warpAreaToWP <waypointName> <radius>",
 			&warpAreaToWP);
-	gmCommands->addCommand("scaleXP", PRIVILEGED,
+	gmCommands->addCommand("scaleXP", DEVELOPER,
 			"Sets the multiplier for serverwide experience",
 			"Usage: @scaleXP <scaler>",
 			&scaleXP);

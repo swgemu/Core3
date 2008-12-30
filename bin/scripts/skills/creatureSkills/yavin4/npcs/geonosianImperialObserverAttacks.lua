@@ -39,6 +39,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 geonosianImperialObserverAttack1 = {
 	attackname = "geonosianImperialObserverAttack1",
 	animation = "creature_attack_light",

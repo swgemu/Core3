@@ -40,12 +40,13 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-strandedRebelSoilder = Creature:new {
-	objectName = "strandedRebelSoilder",  -- Lua Object Name
+
+strandedRebelSoldier = Creature:new {
+	objectName = "strandedRebelSoldier",  -- Lua Object Name
 	creatureType = "NPC",
 	gender = "",
 
-	speciesName = "stranded_rebel_soilder",
+	speciesName = "stranded_rebel_Soldier",
 	stfName = "mob/creature_names", 
 	objectCRC = 3168768022, 
 	socialGroup = "rebel",
@@ -132,10 +133,10 @@ strandedRebelSoilder = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "strandedAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(strandedRebelSoilder, 3168768022) --  Add to Global Table
+Creatures:addCreature(strandedRebelSoldier, 3168768022) -- Add to Global Table
