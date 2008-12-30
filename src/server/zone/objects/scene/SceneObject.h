@@ -241,6 +241,8 @@ public:
 
 	void disseminateXp(int levels);
 
+	void cleanupDamageDone();
+
 protected:
 	SceneObject(DummyConstructorParameter* param);
 
@@ -460,6 +462,8 @@ public:
 	int getTotalDamage();
 
 	void disseminateXp(int levels);
+
+	void cleanupDamageDone();
 
 protected:
 	String _param0_info__String_bool_;

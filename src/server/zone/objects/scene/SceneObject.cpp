@@ -1326,6 +1326,18 @@ void SceneObject::disseminateXp(int levels) {
 		((SceneObjectImplementation*) _impl)->disseminateXp(levels);
 }
 
+void SceneObject::cleanupDamageDone() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 106);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->cleanupDamageDone();
+}
+
 /*
  *	SceneObjectAdapter
  */
@@ -1636,6 +1648,9 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 105:
 		disseminateXp(inv->getSignedIntParameter());
+		break;
+	case 106:
+		cleanupDamageDone();
 		break;
 	default:
 		return NULL;
@@ -2042,6 +2057,10 @@ int SceneObjectAdapter::getTotalDamage() {
 
 void SceneObjectAdapter::disseminateXp(int levels) {
 	return ((SceneObjectImplementation*) impl)->disseminateXp(levels);
+}
+
+void SceneObjectAdapter::cleanupDamageDone() {
+	return ((SceneObjectImplementation*) impl)->cleanupDamageDone();
 }
 
 /*

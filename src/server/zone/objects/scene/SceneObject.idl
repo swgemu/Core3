@@ -262,4 +262,5 @@ interface SceneObject implements ManagedObject {
 	void dropDamageDone(CreatureObject creature);
 	int getTotalDamage();
 	void disseminateXp(int levels);
+	void cleanupDamageDone();
 }

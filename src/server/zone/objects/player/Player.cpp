@@ -4990,12 +4990,24 @@ void Player::teachSkill(String& skillname) {
 		((PlayerImplementation*) _impl)->teachSkill(skillname);
 }
 
-ActiveArea* Player::getActiveArea() {
+int Player::getSkillPoints() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 391);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getSkillPoints();
+}
+
+ActiveArea* Player::getActiveArea() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 392);
 
 		return (ActiveArea*) method.executeWithObjectReturn();
 	} else
@@ -5007,7 +5019,7 @@ void Player::setActiveArea(ActiveArea* area) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 392);
+		DistributedMethod method(this, 393);
 		method.addObjectParameter(area);
 
 		method.executeWithVoidReturn();
@@ -6182,9 +6194,12 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		teachSkill(inv->getAsciiParameter(_param0_teachSkill__String_));
 		break;
 	case 391:
-		resp->insertLong(getActiveArea()->_getObjectID());
+		resp->insertSignedInt(getSkillPoints());
 		break;
 	case 392:
+		resp->insertLong(getActiveArea()->_getObjectID());
+		break;
+	case 393:
 		setActiveArea((ActiveArea*) inv->getObjectParameter());
 		break;
 	default:
@@ -7732,6 +7747,10 @@ void PlayerAdapter::clearTeachingSkillOptions() {
 
 void PlayerAdapter::teachSkill(String& skillname) {
 	return ((PlayerImplementation*) impl)->teachSkill(skillname);
+}
+
+int PlayerAdapter::getSkillPoints() {
+	return ((PlayerImplementation*) impl)->getSkillPoints();
 }
 
 ActiveArea* PlayerAdapter::getActiveArea() {
