@@ -2209,11 +2209,10 @@ void PlayerImplementation::changePosture(int post) {
 		return;
 	}
 
-	if (meditating) {
+	if (isMeditating()) {
 		updateMood(Races::getMood(moodid));
 		clearState(CreatureState::ALERT);
 		updateStates();
-		meditating = false;
 		sendSystemMessage("teraskasi", "med_end");
 	}
 
@@ -2842,7 +2841,7 @@ bool PlayerImplementation::doPowerboost() {
 	}
 
     //Make sure player is meditating.
-	if (!meditating) {
+	if (!isMeditating()) {
 		sendSystemMessage("teraskasi", "powerboost_fail"); //"You must be meditating to perform that command."
 		return false;
 	}

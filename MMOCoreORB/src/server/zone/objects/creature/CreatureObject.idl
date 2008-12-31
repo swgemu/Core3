@@ -906,5 +906,14 @@ interface CreatureObject implements SceneObject {
 	int getCamoCooldownLeft();
 	int getMaskScent();
 	void setMaskScent(int value);
+
+
+	//Event handlers
+	void onDeath();
+	void onClone();
+	void onBlinded();
+	void onDizzied();
+	void onStunned();
+	void onIntimidated();
 	
 }

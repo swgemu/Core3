@@ -66,8 +66,8 @@ public:
 	static const uint64 BLINDED = 0x2000;
 	static const uint64 DIZZY = 0x4000;
 	static const uint64 INTIMIDATED = 0x8000;
-	static const uint64 IMMOBILIZED = 0x10000;
-	static const uint64 FROZEN = 0x20000;
+	static const uint64 SNARED = 0x10000;
+	static const uint64 ROOTED = 0x20000;
 	static const uint64 SWIMMING = 0x40000;
 	static const uint64 SITTINGONCHAIR = 0x80000;
 	static const uint64 CRAFTING = 0x100000;
@@ -120,10 +120,10 @@ public:
 			return DIZZY;
 		else if (state == "intimidated")
 			return INTIMIDATED;
-		else if (state == "immobilized")
-			return IMMOBILIZED;
-		else if (state == "frozen")
-			return FROZEN;
+		else if (state == "snared")
+			return SNARED;
+		else if (state == "rooted")
+			return ROOTED;
 		else if (state == "swimming")
 			return SWIMMING;
 		else if (state == "sittingonchair")
@@ -230,11 +230,11 @@ public:
 		case INTIMIDATED:
 			name = "intimidated";
 			break;
-		case IMMOBILIZED:
-			name = "immobilized";
+		case SNARED:
+			name = "snared";
 			break;
-		case FROZEN:
-			name = "frozen";
+		case ROOTED:
+			name = "rooted";
 			break;
 		case SWIMMING:
 			name = "swimming";

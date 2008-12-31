@@ -1207,6 +1207,18 @@ public:
 
 	void setMaskScent(int value);
 
+	void onDeath();
+
+	void onClone();
+
+	void onBlinded();
+
+	void onDizzied();
+
+	void onStunned();
+
+	void onIntimidated();
+
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -2406,6 +2418,18 @@ public:
 	int getMaskScent();
 
 	void setMaskScent(int value);
+
+	void onDeath();
+
+	void onClone();
+
+	void onBlinded();
+
+	void onDizzied();
+
+	void onStunned();
+
+	void onIntimidated();
 
 protected:
 	String _param0_info__String_bool_;

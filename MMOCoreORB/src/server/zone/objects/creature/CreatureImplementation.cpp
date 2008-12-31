@@ -1800,10 +1800,10 @@ void CreatureImplementation::doStatesRecovery() {
 		clearState(CreatureState::INTIMIDATED);
 
 	if (isRooted() && rootRecoveryTime.isPast())
-		clearState(CreatureState::FROZEN);
+		clearState(CreatureState::ROOTED);
 
 	if (isSnared() && snareRecoveryTime.isPast())
-		clearState(CreatureState::IMMOBILIZED);
+		clearState(CreatureState::SNARED);
 
 	if (isPoisoned()) {
 		if (poisonRecoveryTime.isPast())

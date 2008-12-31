@@ -1489,10 +1489,6 @@ public:
 		changeFactionEvent = eve;
 	}
 
-	inline bool getMeditate() {
-		return meditating;
-	}
-
 	inline bool getPowerboosted() {
 		return powerboosted;
 	}
