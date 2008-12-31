@@ -7489,6 +7489,78 @@ void CreatureObject::setMaskScent(int value) {
 		((CreatureObjectImplementation*) _impl)->setMaskScent(value);
 }
 
+void CreatureObject::onDeath() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 584);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->onDeath();
+}
+
+void CreatureObject::onClone() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 585);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->onClone();
+}
+
+void CreatureObject::onBlinded() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 586);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->onBlinded();
+}
+
+void CreatureObject::onDizzied() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 587);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->onDizzied();
+}
+
+void CreatureObject::onStunned() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 588);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->onStunned();
+}
+
+void CreatureObject::onIntimidated() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 589);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->onIntimidated();
+}
+
 /*
  *	CreatureObjectAdapter
  */
@@ -9233,6 +9305,24 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 583:
 		setMaskScent(inv->getSignedIntParameter());
+		break;
+	case 584:
+		onDeath();
+		break;
+	case 585:
+		onClone();
+		break;
+	case 586:
+		onBlinded();
+		break;
+	case 587:
+		onDizzied();
+		break;
+	case 588:
+		onStunned();
+		break;
+	case 589:
+		onIntimidated();
 		break;
 	default:
 		return NULL;
@@ -11551,6 +11641,30 @@ int CreatureObjectAdapter::getMaskScent() {
 
 void CreatureObjectAdapter::setMaskScent(int value) {
 	return ((CreatureObjectImplementation*) impl)->setMaskScent(value);
+}
+
+void CreatureObjectAdapter::onDeath() {
+	return ((CreatureObjectImplementation*) impl)->onDeath();
+}
+
+void CreatureObjectAdapter::onClone() {
+	return ((CreatureObjectImplementation*) impl)->onClone();
+}
+
+void CreatureObjectAdapter::onBlinded() {
+	return ((CreatureObjectImplementation*) impl)->onBlinded();
+}
+
+void CreatureObjectAdapter::onDizzied() {
+	return ((CreatureObjectImplementation*) impl)->onDizzied();
+}
+
+void CreatureObjectAdapter::onStunned() {
+	return ((CreatureObjectImplementation*) impl)->onStunned();
+}
+
+void CreatureObjectAdapter::onIntimidated() {
+	return ((CreatureObjectImplementation*) impl)->onIntimidated();
 }
 
 /*

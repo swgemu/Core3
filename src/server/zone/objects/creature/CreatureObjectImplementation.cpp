@@ -262,7 +262,6 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	accuracy = 0;
 
 	sittingOnObject = false;
-	meditating = false;
 
 	damageBonus = 0;
 	defenseBonus = 0;
@@ -595,11 +594,10 @@ void CreatureObjectImplementation::setPosture(uint8 state, bool overrideDizzy, b
 			stopPlayingMusic();
 
 		//Remove meditative state if needed.
-		if (meditating && postureState != CreaturePosture::SITTING) {
+		if (isMeditating() && postureState != CreaturePosture::SITTING) {
 			updateMood(Races::getMood(moodid));
 			clearState(CreatureState::ALERT);
 			updateStates();
-			meditating = false;
 		}
 
 		Vector<BaseMessage*> msgs;
@@ -865,7 +863,7 @@ void CreatureObjectImplementation::setIntimidatedState() {
 }
 
 void CreatureObjectImplementation::setSnaredState() {
-	if (setState(CreatureState::IMMOBILIZED)) {
+	if (setState(CreatureState::SNARED)) {
 		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
 
@@ -877,7 +875,7 @@ void CreatureObjectImplementation::setSnaredState() {
 }
 
 void CreatureObjectImplementation::setRootedState() {
-	if (setState(CreatureState::FROZEN)) {
+	if (setState(CreatureState::ROOTED)) {
 		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
 
@@ -914,8 +912,6 @@ void CreatureObjectImplementation::setMeditateState() {
 	updateMood("meditating");
 	setPosture(CreaturePosture::SITTING);
 	setState(CreatureState::ALERT);
-
-	meditating = true;
 }
 
 void CreatureObjectImplementation::setPoisonedState(int str, int type, int duration) {
@@ -1088,10 +1084,10 @@ bool CreatureObjectImplementation::clearState(uint64 state) {
 		case CreatureState::INTIMIDATED:
 			showFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
 			break;
-		case CreatureState::IMMOBILIZED:
+		case CreatureState::SNARED:
 			showFlyText("combat_effects", "no_snare", 0xFF, 0, 0);
 			break;
-		case CreatureState::FROZEN:
+		case CreatureState::ROOTED:
 			showFlyText("combat_effects", "no_rooted", 0xFF, 0, 0);
 			break;
 		default:
@@ -2470,7 +2466,7 @@ void CreatureObjectImplementation::calculateHAMregen() {
 			changeShockWounds(-System::random(3)-1);
 	}
 
-	if (meditating) {
+	if (isMeditating()) {
 		int meditateMod = getSkillMod("meditate");
 		float meditateBonus = 1 + ((float)meditateMod / 100);
 		newHealth *= meditateBonus;
@@ -2761,7 +2757,7 @@ void CreatureObjectImplementation::activateBurstRun() {
 			isDizzied() ||
 			isKnockedDown() ||
 			isMeditating() ||
-			postureState != CreaturePosture::UPRIGHT	) {
+			postureState != CreaturePosture::UPRIGHT) {
 
 		sendSystemMessage("@combat_effects:burst_run_no");
 
@@ -5474,3 +5470,15 @@ int CreatureObjectImplementation::getCamoCooldownLeft() {
 	return -1 * camoLock.miliDifference();
 }
 
+void CreatureObjectImplementation::onDeath() {
+}
+void CreatureObjectImplementation::onClone() {
+}
+void CreatureObjectImplementation::onBlinded() {
+}
+void CreatureObjectImplementation::onDizzied() {
+}
+void CreatureObjectImplementation::onStunned() {
+}
+void CreatureObjectImplementation::onIntimidated() {
+}

@@ -112,62 +112,64 @@ void ScriptAttacksManager::registerFunctions() {
 void ScriptAttacksManager::registerGlobals() {
 
 	//states
-	setGlobalLong("INVALID_STATE", 0x00);
-	setGlobalLong("COVER_STATE", 0x01);
-	setGlobalLong("COMBAT_STATE", 0x02);
-	setGlobalLong("PEACE_STATE", 0x04);
-	setGlobalLong("AIMING_STATE", 0x08);
-	setGlobalLong("ALERT_STATE", 0x10);
-	setGlobalLong("BERSERK_STATE", 0x20);
-	setGlobalLong("FEIGNDEATH_STATE", 0x40);
-	setGlobalLong("COMBATATTITUDEEVASIVE_STATE", 0x80);
-	setGlobalLong("COMBATATTITUDENORMAL_STATE", 0x100);
-	setGlobalLong("COMBATATTITUDEAGGRESSIVE_STATE", 0x200);
-	setGlobalLong("TUMBLING_STATE", 0x400);
-	setGlobalLong("RALLIED_STATE", 0x800);
-	setGlobalLong("STUNNED_STATE", 0x1000);
-	setGlobalLong("BLINDED_STATE", 0x2000);
-	setGlobalLong("DIZZY_STATE",  0x4000);
-	setGlobalLong("INTIMIDATED_STATE", 0x8000);
-	setGlobalLong("IMMOBILIZED_STATE", 0x10000);
-	setGlobalLong("FROZEN_STATE", 0x20000);
-	setGlobalLong("SWIMMING_STATE", 0x40000);
-	setGlobalLong("SITTINGONCHAIR_STATE", 0x80000);
-	setGlobalLong("CRAFTING_STATE", 0x100000);
-	setGlobalLong("GLOWINGJEDI_STATE", 0x200000);
-	setGlobalLong("MASKSCENT_STATE", 0x400000);
-	setGlobalLong("POISONED_STATE", 0x800000);
-	setGlobalLong("BLEEDING_STATE", 0x1000000);
-	setGlobalLong("DISEASED_STATE", 0x2000000);
-	setGlobalLong("ONFIRE_STATE", 0x4000000);
-	setGlobalLong("RIDINGMOUNT_STATE", 0x8000000);
-	setGlobalLong("MOUNTEDCREATURE_STATE", 0x10000000);
-	setGlobalLong("PILOTSHIP_STATE", 0x20000000);
-	setGlobalLong("SHIPOPERATIONS_STATE", 0x40000000);
-	setGlobalLong("SHIPGUNNER_STATE", 0x80000000);
+	setGlobalLong("INVALID_STATE", CreatureState::INVALID);
+	setGlobalLong("COVER_STATE", CreatureState::COVER);
+	setGlobalLong("COMBAT_STATE", CreatureState::COMBAT);
+	setGlobalLong("PEACE_STATE", CreatureState::PEACE);
+	setGlobalLong("AIMING_STATE", CreatureState::AIMING);
+	setGlobalLong("ALERT_STATE", CreatureState::ALERT);
+	setGlobalLong("BERSERK_STATE", CreatureState::BERSERK);
+	setGlobalLong("FEIGNDEATH_STATE", CreatureState::FEIGNDEATH);
+	setGlobalLong("COMBATATTITUDEEVASIVE_STATE", CreatureState::COMBATATTITUDEEVASIVE);
+	setGlobalLong("COMBATATTITUDENORMAL_STATE", CreatureState::COMBATATTITUDENORMAL);
+	setGlobalLong("COMBATATTITUDEAGGRESSIVE_STATE", CreatureState::COMBATATTITUDEAGGRESSIVE);
+	setGlobalLong("TUMBLING_STATE", CreatureState::TUMBLING);
+	setGlobalLong("RALLIED_STATE", CreatureState::RALLIED);
+	setGlobalLong("STUNNED_STATE", CreatureState::STUNNED);
+	setGlobalLong("BLINDED_STATE", CreatureState::BLINDED);
+	setGlobalLong("DIZZY_STATE",  CreatureState::DIZZY);
+	setGlobalLong("INTIMIDATED_STATE", CreatureState::INTIMIDATED);
+	setGlobalLong("IMMOBILIZED_STATE", CreatureState::SNARED);
+	setGlobalLong("FROZEN_STATE", CreatureState::ROOTED);
+	setGlobalLong("SWIMMING_STATE", CreatureState::SWIMMING);
+	setGlobalLong("SITTINGONCHAIR_STATE", CreatureState::SITTINGONCHAIR);
+	setGlobalLong("CRAFTING_STATE", CreatureState::CRAFTING);
+	setGlobalLong("GLOWINGJEDI_STATE", CreatureState::GLOWINGJEDI);
+	setGlobalLong("MASKSCENT_STATE", CreatureState::MASKSCENT);
+	setGlobalLong("POISONED_STATE", CreatureState::POISONED);
+	setGlobalLong("BLEEDING_STATE", CreatureState::BLEEDING);
+	setGlobalLong("DISEASED_STATE", CreatureState::DISEASED);
+	setGlobalLong("ONFIRE_STATE", CreatureState::ONFIRE);
+	setGlobalLong("RIDINGMOUNT_STATE", CreatureState::RIDINGMOUNT);
+	setGlobalLong("MOUNTEDCREATURE_STATE", CreatureState::MOUNTEDCREATURE);
+	setGlobalLong("PILOTSHIP_STATE", CreatureState::PILOTSHIP);
+	setGlobalLong("SHIPOPERATIONS_STATE", CreatureState::SHIPOPERATIONS);
+	setGlobalLong("SHIPGUNNER_STATE", CreatureState::SHIPGUNNER);
 
+	//TODO: remove this - there is no centered state?
 	setGlobalLong("CENTERED_STATE", 0x80000000);
 
+	//TODO: What is this? Can it be removed? who thought 0x123 would be a mask?
 	setGlobalLong("MEDITATE", 0x123);
 
 	// postures
 
-	setGlobalInt("INVALID_POSTURE", 0xFF);
-	setGlobalInt("UPRIGHT_POSTURE", 0);
-	setGlobalInt("CROUCHED_POSTURE",1);
-	setGlobalInt("PRONE_POSTURE", 2);
-	setGlobalInt("SNEAKING_POSTURE", 3);
-	setGlobalInt("BLOCKING_POSTURE", 4);
-	setGlobalInt("CLIMBING_POSTURE", 5);
-	setGlobalInt("FLYING_POSTURE", 6);
-	setGlobalInt("LYINGDOWN_POSTURE", 7);
-	setGlobalInt("SITTING_POSTURE", 8);
-	setGlobalInt("SKILLANIMATING_POSTURE", 9);
-	setGlobalInt("DRIVINGVEHICLE_POSTURE", 10);
-	setGlobalInt("RIDINGCREATURE_POSTURE",  11);
-	setGlobalInt("KNOCKEDDOWN_POSTURE" ,12);
-	setGlobalInt("INCAPACITATED_POSTURE" , 13);
-	setGlobalInt("DEAD_POSTURE" ,14);
+	setGlobalInt("INVALID_POSTURE", CreaturePosture::INVALID);
+	setGlobalInt("UPRIGHT_POSTURE", CreaturePosture::UPRIGHT);
+	setGlobalInt("CROUCHED_POSTURE", CreaturePosture::CROUCHED);
+	setGlobalInt("PRONE_POSTURE", CreaturePosture::PRONE);
+	setGlobalInt("SNEAKING_POSTURE", CreaturePosture::SNEAKING);
+	setGlobalInt("BLOCKING_POSTURE", CreaturePosture::BLOCKING);
+	setGlobalInt("CLIMBING_POSTURE", CreaturePosture::CLIMBING);
+	setGlobalInt("FLYING_POSTURE", CreaturePosture::FLYING);
+	setGlobalInt("LYINGDOWN_POSTURE", CreaturePosture::LYINGDOWN);
+	setGlobalInt("SITTING_POSTURE", CreaturePosture::SITTING);
+	setGlobalInt("SKILLANIMATING_POSTURE", CreaturePosture::SKILLANIMATING);
+	setGlobalInt("DRIVINGVEHICLE_POSTURE", CreaturePosture::DRIVINGVEHICLE);
+	setGlobalInt("RIDINGCREATURE_POSTURE", CreaturePosture::RIDINGCREATURE);
+	setGlobalInt("KNOCKEDDOWN_POSTURE", CreaturePosture::KNOCKEDDOWN);
+	setGlobalInt("INCAPACITATED_POSTURE", CreaturePosture::INCAPACITATED);
+	setGlobalInt("DEAD_POSTURE", CreaturePosture::DEAD);
 
 	// weapons
 	setGlobalInt("ALL", 0xFF);
@@ -199,15 +201,15 @@ void ScriptAttacksManager::registerGlobals() {
 	setGlobalInt("NONE", 0xFF);
 
 	// misc
-	setGlobalInt("HEALTH", 1);
-	setGlobalInt("STRENGTH", 2);
-	setGlobalInt("CONSTITUTION", 3);
-	setGlobalInt("ACTION", 4);
-	setGlobalInt("QUICKNESS", 5);
-	setGlobalInt("STAMINA", 6);
-	setGlobalInt("MIND", 7);
-	setGlobalInt("FOCUS", 8);
-	setGlobalInt("WILLPOWER", 9);
+	setGlobalInt("HEALTH", CreatureAttribute::HEALTH);
+	setGlobalInt("STRENGTH", CreatureAttribute::STRENGTH);
+	setGlobalInt("CONSTITUTION", CreatureAttribute::CONSTITUTION);
+	setGlobalInt("ACTION", CreatureAttribute::ACTION);
+	setGlobalInt("QUICKNESS", CreatureAttribute::QUICKNESS);
+	setGlobalInt("STAMINA", CreatureAttribute::STAMINA);
+	setGlobalInt("MIND", CreatureAttribute::MIND);
+	setGlobalInt("FOCUS", CreatureAttribute::FOCUS);
+	setGlobalInt("WILLPOWER", CreatureAttribute::WILLPOWER);
 }
 
 int ScriptAttacksManager::AddRandomPoolAttackTargetSkill(lua_State *L) {

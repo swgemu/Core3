@@ -260,7 +260,6 @@ interface Player implements CreatureObject {
 
 	//boolean isChangingFaction();
 
-	boolean getMeditate();
 	boolean getPowerboosted();
 	void setPowerboosted(boolean pb);
 

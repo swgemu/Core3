@@ -287,8 +287,6 @@ public:
 
 	unsigned int getMoneyToTrade();
 
-	bool getMeditate();
-
 	bool getPowerboosted();
 
 	void setPowerboosted(bool pb);
@@ -1097,8 +1095,6 @@ public:
 	void setMoneyToTrade(unsigned int value);
 
 	unsigned int getMoneyToTrade();
-
-	bool getMeditate();
 
 	bool getPowerboosted();
 

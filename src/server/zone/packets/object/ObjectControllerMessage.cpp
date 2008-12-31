@@ -4187,7 +4187,7 @@ bool ObjectControllerMessage::parseMeditation(Player* player) {
 		return false;
 	}
 
-	if (player->getMeditate()) {
+	if (player->isMeditating()) {
 		player->sendSystemMessage("jedi_spam", "already_in_meditative_state");
 		return false;
 	} else {

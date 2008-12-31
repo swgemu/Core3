@@ -337,8 +337,6 @@ protected:
 	Time nextAttackDelay;
 	Time nextAttackDelayRecovery;
 
-	bool meditating;
-
 	//Powerboost
 	int pbHA;
 	int pbMind;
@@ -581,6 +579,24 @@ public:
 	void setSnaredState();
 	void setRootedState();
 
+
+	/**
+	 * Event handlers are meant to handle actions that would result in an action. For example:
+	 * If a player deathblows another player, then the following action occurs:
+	 * player1->deathblow(player2);
+	 *
+	 * The deathblow() method handles everything that happens to player1 i.e. pvprating increased, but then player2.onDeathBlow() would handle what happens to player2.
+	 */
+	//TODO: Move towards event handler methods - more to come
+	void onDeath();
+	void onClone();
+	void onBlinded();
+	void onDizzied();
+	void onStunned();
+	void onIntimidated();
+
+
+
 	bool setNextAttackDelay(int del);
 
 	void setMeditateState();
@@ -771,11 +787,11 @@ public:
 	}
 
 	inline bool isSnared() {
-		return stateBitmask & CreatureState::IMMOBILIZED;
+		return stateBitmask & CreatureState::SNARED;
 	}
 
 	inline bool isRooted() {
-		return stateBitmask & CreatureState::FROZEN;
+		return stateBitmask & CreatureState::ROOTED;
 	}
 
 	inline bool isDiseased() {
@@ -807,7 +823,7 @@ public:
 	}
 
 	inline bool isMeditating() {
-		return meditating;
+		return stateBitmask & CreatureState::ALERT;
 	}
 
 	inline bool isCreature() {
@@ -2738,7 +2754,7 @@ public:
 	inline void setTemplateString(const String& tmpString) {
 		templateString = tmpString;
 	}
-	
+
 		void setCamoType(unsigned int cType) {
 		camoType = cType;
 	}
@@ -2763,7 +2779,7 @@ public:
 	void setMaskScent(int value) {
 		maskScent = value;
 	}
-	
+
 
 	inline void clearTemplateString() {
 		templateString = "";
