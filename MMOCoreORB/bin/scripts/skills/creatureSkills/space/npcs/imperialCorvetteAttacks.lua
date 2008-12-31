@@ -40,14 +40,46 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Corellian Corvette
- RunCreatureFile("objects/space/corellianCorvette/imperialCorellianCorvette.lua")
- RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelMidshipman.lua")
- RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelAdmiral.lua")
- RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelCommandant.lua")
- RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelCommodore.lua")
- RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelEngineer.lua")
- RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelEnsign.lua")
- RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelMate.lua")
- RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelRearAdmiral.lua")
- RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelSailor.lua")
+
+imperialCorvetteAttack1 = { 
+	attackname = "imperialCorvetteAttack1",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 65,
+	damageRatio = 70,
+	speedRatio = 1,
+	areaRange = 0,
+	accuracyBonus = 0,
+
+	healthAttackChance = 100,
+	actionAttackChance = 0,
+	mindAttackChance = 0,
+
+	dotChance = 60,
+	tickStrengthOfHit = 1,
+
+	fireStrength = 0,
+	fireType = 0,
+
+	bleedingStrength = 0,
+	bleedingType = HEALTH,
+
+	poisonStrength = 0,
+	poisonType = 0,
+
+	diseaseStrength = 0,
+	diseaseType = 0,
+	
+	CbtSpamBlock = "sapblast_block",
+	CbtSpamCounter = "sapblast_counter",
+	CbtSpamEvade = "sapblast_evade",
+	CbtSpamHit = "sapblast_hit",
+	CbtSpamMiss = "sapblast_miss",
+}
+
+AddDotPoolAttackTargetSkill(imperialCorvetteAttack1)
+
+-----------------------------------------------------------------------
+
