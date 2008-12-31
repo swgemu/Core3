@@ -40,6 +40,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 seniorProphetOfTheDarkSide = Creature:new {
 	objectName = "seniorProphetOfTheDarkSide",  -- Lua Object Name
 	creatureType = "NPC",
@@ -96,16 +97,16 @@ seniorProphetOfTheDarkSide = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/ranged/carbine/shared_carbine_ee3.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Palpatine Saber", -- Name ex. 'a Vibrolance'
+	weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponMinDamage = 850,
+	weaponMaxDamage = 1200,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -135,10 +136,10 @@ seniorProphetOfTheDarkSide = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "darksideAttack1", "darksideAttack2", "darksideAttack3", "darksideAttack4", "darksideAttack5", "darksideAttack6", "darksideAttack7", "darksideAttack8", "darksideAttack9", "darksideAttack10" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(seniorProphetOfTheDarkSide, 4246600608) --  Add to Global Table
+Creatures:addCreature(seniorProphetOfTheDarkSide, 4246600608) -- Add to Global Table

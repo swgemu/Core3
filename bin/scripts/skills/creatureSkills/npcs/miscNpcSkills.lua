@@ -40,10 +40,11 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Npcs
+ -- Misc Jedi Attacks
+ RunSkillsFile("creatureSkills/npcs/jedi/oneHandedJediAttacks.lua")
+ RunSkillsFile("creatureSkills/npcs/jedi/twoHandedJediAttacks.lua")
+ RunSkillsFile("creatureSkills/npcs/jedi/polearmJediAttacks.lua")
+ RunSkillsFile("creatureSkills/npcs/jedi/darksideAttacks.lua")
 
-
--- Misc Jedi Attacks
-RunSkillsFile("creatureSkills/npcs/jedi/oneHandedJediAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/jedi/twoHandedJediAttacks.lua")
-RunSkillsFile("creatureSkills/npcs/jedi/polearmJediAttacks.lua")
+ --Specforc
+ RunSkillsFile("creatureSkills/npcs/specforce/specforceAttacks.lua")
