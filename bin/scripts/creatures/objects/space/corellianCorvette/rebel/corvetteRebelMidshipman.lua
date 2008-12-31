@@ -40,6 +40,7 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
 corvetRebelMidshipman = Creature:new {
 	objectName = "corvetRebelMidshipman",  -- Lua Object Name
 	creatureType = "NPC",
@@ -96,16 +97,16 @@ corvetRebelMidshipman = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponName = "Republic Blaster", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_republic_blaster", -- Weapon Template ex. 'lance_vibrolance'
+	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 140,
+	weaponMaxDamage = 420,
+	weaponAttackSpeed = 1.2,
+	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -135,10 +136,10 @@ corvetRebelMidshipman = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "imperialCorvetteAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corvetRebelMidshipman, 1246114680) --  Add to Global Table
+Creatures:addCreature(corvetRebelMidshipman, 1246114680) -- Add to Global Table
