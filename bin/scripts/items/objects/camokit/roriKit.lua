@@ -8,9 +8,9 @@ camoKitRori = Object:new {
 
 	objectType = CAMOKIT,   -- 567894,
 
-	planetType = 6,
+	planetType = RORI,
 
-	uses = 5,
+	uses = 15,
 	
 	concealSkill = 40
 }

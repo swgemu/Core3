@@ -112,18 +112,24 @@ public:
 
 			String type = "trapping";
 
-			int xp = int(targetCreature->getLevel() * 10);
+			int xp = 14 * targetCreature->getLevel() - 48;
+
+			if (xp < 50)
+				xp = 50;
+			else if (xp > 600)
+				xp = 600;
 
 			player->addXp(type, xp, true);
 
-			player->sendSystemMessage(getDeBuffStrFile(), getDeBuffMessage(),
-					params);
+			player->sendSystemMessage(getDeBuffStrFile(),
+					getDeBuffHitMessage(), params);
 
 			missed = false;
 
 		} else {
 
-			player->sendSystemMessage(getDeBuffStrFile(), getDeBuffEndMessage(), params);
+			player->sendSystemMessage(getDeBuffStrFile(),
+					getDeBuffMissMessage(), params);
 
 			missed = true;
 
@@ -137,190 +143,87 @@ public:
 	}
 
 	virtual int calculateTrapDamage(CreatureObject* creature,
-				SceneObject* target, Weapon* weapon) {
+			SceneObject* target, Weapon* weapon) {
 
-			CreatureObject* targetCreature = NULL;
-			if (target->isPlayer() || target->isNonPlayerCreature())
-				targetCreature = (CreatureObject*) target;
+		CreatureObject* targetCreature = NULL;
+		if (target->isPlayer() || target->isNonPlayerCreature())
+			targetCreature = (CreatureObject*) target;
 
-			float minDamage = 0;
-			float maxDamage = 0;
-			float healthDamage = 0;
-			float actionDamage = 0;
-			float mindDamage = 0;
-			int reduction = 0;
+		float minDamage = 0;
+		float maxDamage = 0;
+		int reduction = 0;
+		int bodyPart = 0;
+		minDamage = weapon->getMinDamage();
+		maxDamage = weapon->getMaxDamage();
 
-			minDamage = weapon->getMinDamage();
-			maxDamage = weapon->getMaxDamage();
+		if (targetCreature != NULL)
+			checkMitigation(creature, targetCreature, minDamage, maxDamage);
 
-			if (targetCreature != NULL)
-				checkMitigation(creature, targetCreature, minDamage, maxDamage);
+		float damage = 0;
 
-			float damage = 0;
-			int average = 0;
+		int diff = (int) maxDamage - (int) minDamage;
+		if (diff >= 0)
+			damage = System::random(diff) + (int) minDamage;
 
-			int diff = (int) maxDamage - (int) minDamage;
-			if (diff >= 0)
-				average = System::random(diff) + (int) minDamage;
+		if (targetCreature != NULL) {
 
-			if (targetCreature != NULL) {
+			int rand = System::random(100);
 
-				int rand = System::random(100);
+			int trappingSkill = creature->getSkillMod("trapping");
 
-				int trappingSkill = creature->getSkillMod("trapping");
+			int level = targetCreature->getLevel(); //336 ancient krayt
 
-				int level = targetCreature->getLevel(); //336 ancient krayt
+			if (level > 180)
+				level = 180;
 
-				if(level > 180)
-					level = 180;
+			if ((trappingSkill + rand > level) || (rand > 10 && rand < 20)) {
+				int secondaryDefense = checkSecondaryDefenses(creature,
+						targetCreature);
 
-				if ((trappingSkill + rand > level) || (rand > 10 && rand < 20)) {
+				if (secondaryDefense < 2) {
+					if (secondaryDefense == 1)
+						damage = damage / 2;
+					int pool = System::random(100);
 
-					int secondaryDefense = checkSecondaryDefenses(creature,
-							targetCreature);
+					if (pool < healthPoolAttackChance)
+						bodyPart = System::random(5) + 1;
+					else if (pool < healthPoolAttackChance
+							+ actionPoolAttackChance)
+						bodyPart = System::random(1) + 7;
+					else if (pool < 100)
+						bodyPart = 9;
 
-					if (secondaryDefense < 2) {
-						if (secondaryDefense == 1)
-							damage = damage / 2;
-
-						if (healthPoolAttackChance != 0) {
-							healthDamage = damageRatio * average;
-							calculateDamageReduction(creature, targetCreature,
-									healthDamage);
-
-							damage += healthDamage;
-						}
-
-						if (strengthPoolAttackChance != 0) {
-
-							float strengthDamage = damageRatio * average;
-							calculateDamageReduction(creature, targetCreature,
-									strengthDamage);
-
-							applyStrengthPoolDamage(targetCreature,
-									(int32) strengthDamage);
-
-							damage += strengthDamage;
-						}
-
-						if (constitutionPoolAttackChance != 0) {
-
-							float constitutionDamage = damageRatio * average;
-							calculateDamageReduction(creature, targetCreature,
-									constitutionDamage);
-
-							applyConstitutionPoolDamage(targetCreature,
-									(int32) constitutionDamage);
-
-							damage += constitutionDamage;
-						}
-
-						if (actionPoolAttackChance != 0) {
-							actionDamage = damageRatio * average;
-							calculateDamageReduction(creature, targetCreature,
-									actionDamage);
-
-							damage += actionDamage;
-						}
-
-						if (quicknessPoolAttackChance != 0) {
-
-							float quicknessDamage = damageRatio * average;
-							calculateDamageReduction(creature, targetCreature,
-									quicknessDamage);
-
-							applyQuicknessPoolDamage(targetCreature,
-									(int32) quicknessDamage);
-
-							damage += quicknessDamage;
-						}
-
-						if (staminaPoolAttackChance != 0) {
-
-							float staminaDamage = damageRatio * average;
-							calculateDamageReduction(creature, targetCreature,
-									staminaDamage);
-
-							applyStaminaPoolDamage(targetCreature,
-									(int32) staminaDamage);
-
-							damage += staminaDamage;
-						}
-
-						if (mindPoolAttackChance != 0) {
-							mindDamage = damageRatio * average;
-							calculateDamageReduction(creature, targetCreature,
-									mindDamage);
-
-							damage += mindDamage;
-						}
-
-						if (focusPoolAttackChance != 0) {
-
-							float focusDamage = damageRatio * average;
-							calculateDamageReduction(creature, targetCreature,
-									focusDamage);
-
-							applyFocusPoolDamage(targetCreature,
-									(int32) focusDamage);
-
-							damage += focusDamage;
-						}
-
-						if (willpowerPoolAttackChance != 0) {
-
-							float willpowerDamage = damageRatio * average;
-							calculateDamageReduction(creature, targetCreature,
-									willpowerDamage);
-
-							applyWillpowerPoolDamage(targetCreature,
-									(int32) willpowerDamage);
-
-							damage += willpowerDamage;
-						}
-					} else
-						return 0;
-
-					if (damage == 0) {
-						doMiss(creature, targetCreature, (int32) damage);
-						return 0;
-					}
-
-					if (hasCbtSpamHit() && healthDamage < targetCreature->getHealth() &&
-							actionDamage < targetCreature->getAction() &&
-							mindDamage < targetCreature->getMind())
-						creature->sendCombatSpam(targetCreature, NULL,
-								(int32) damage, getCbtSpamHit());
-
-					if (healthDamage > 0 && healthDamage < targetCreature->getHealth())
-						reduction = applyHealthPoolDamage(creature, targetCreature,
-								(int32) healthDamage, System::random(5) + 1);
-					if (actionDamage > 0 && actionDamage < targetCreature->getAction())
-						reduction = applyActionPoolDamage(creature, targetCreature,
-								(int32) actionDamage, System::random(1) + 7);
-					if (mindDamage > 0 && mindDamage < targetCreature->getMind())
-						reduction = applyMindPoolDamage(creature, targetCreature,
-								(int32) mindDamage);
-
-					if (weapon != NULL) {
-						doDotWeaponAttack(creature, targetCreature, 0);
-
-						if (weapon->decreasePowerupUses())
-							weapon->setUpdated(true);
-						else if (weapon->hasPowerup())
-							weapon->removePowerup((Player*) creature, true);
-					}
-
-				} else {
-					doMiss(creature, targetCreature, (int32) damage);
+				} else
 					return 0;
-				}
-			} else {
-				return (int32) damageRatio * average;
-			}
 
-			return (int32) damage - reduction;
+				if (hasCbtSpamHit()) {
+					creature->sendCombatSpam(targetCreature, NULL,
+							(int32) damage, getCbtSpamHit());
+				}
+
+				if (bodyPart < 7)
+					reduction
+							= applyHealthPoolDamage(creature, targetCreature,
+									(int32) damage, System::random(5) + 1,
+									weapon, true);
+				else if (bodyPart < 9)
+					reduction
+							= applyActionPoolDamage(creature, targetCreature,
+									(int32) damage, System::random(1) + 7,
+									weapon, true);
+				else
+					reduction = applyMindPoolDamage(creature, targetCreature,
+							(int32) damage, weapon, true);
+
+				return (int32) damage - reduction;
+
+			} else {
+				doMiss(creature, targetCreature, (int32) damage);
+				return 0;
+			}
 		}
+		return (int32) damage;
+	}
 
 	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) {
 		return 0;

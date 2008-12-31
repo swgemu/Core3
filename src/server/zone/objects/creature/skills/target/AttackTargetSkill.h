@@ -1,46 +1,46 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+ Copyright (C) 2007 <SWGEmu>
 
-This File is part of Core3.
+ This File is part of Core3.
 
-This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
-General Public License as published by the Free Software
-Foundation; either version 2 of the License,
-or (at your option) any later version.
+ This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU Lesser
+ General Public License as published by the Free Software
+ Foundation; either version 2 of the License,
+ or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU Lesser General Public License for
-more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU Lesser General Public License for
+ more details.
 
-You should have received a copy of the GNU Lesser General
-Public License along with this program; if not, write to
-the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ You should have received a copy of the GNU Lesser General
+ Public License along with this program; if not, write to
+ the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
-Linking Engine3 statically or dynamically with other modules
-is making a combined work based on Engine3.
-Thus, the terms and conditions of the GNU Lesser General Public License
-cover the whole combination.
+ Linking Engine3 statically or dynamically with other modules
+ is making a combined work based on Engine3.
+ Thus, the terms and conditions of the GNU Lesser General Public License
+ cover the whole combination.
 
-In addition, as a special exception, the copyright holders of Engine3
-give you permission to combine Engine3 program with free software
-programs or libraries that are released under the GNU LGPL and with
-code included in the standard release of Core3 under the GNU LGPL
-license (or modified versions of such code, with unchanged license).
-You may copy and distribute such a system following the terms of the
-GNU LGPL for Engine3 and the licenses of the other code concerned,
-provided that you include the source code of that other code when
-and as the GNU LGPL requires distribution of source code.
+ In addition, as a special exception, the copyright holders of Engine3
+ give you permission to combine Engine3 program with free software
+ programs or libraries that are released under the GNU LGPL and with
+ code included in the standard release of Core3 under the GNU LGPL
+ license (or modified versions of such code, with unchanged license).
+ You may copy and distribute such a system following the terms of the
+ GNU LGPL for Engine3 and the licenses of the other code concerned,
+ provided that you include the source code of that other code when
+ and as the GNU LGPL requires distribution of source code.
 
-Note that people who make modified versions of Engine3 are not obligated
-to grant this special exception for their modified versions;
-it is their choice whether to do so. The GNU Lesser General Public License
-gives permission to release a modified version without this exception;
-this exception also makes it possible to release a modified version
-which carries forward this exception.
-*/
+ Note that people who make modified versions of Engine3 are not obligated
+ to grant this special exception for their modified versions;
+ it is their choice whether to do so. The GNU Lesser General Public License
+ gives permission to release a modified version without this exception;
+ this exception also makes it possible to release a modified version
+ which carries forward this exception.
+ */
 
 #ifndef ATTACKTARGETSKILL_H_
 #define ATTACKTARGETSKILL_H_
@@ -56,7 +56,7 @@ which carries forward this exception.
 
 class CombatManager;
 
-class AttackTargetSkill : public TargetSkill {
+class AttackTargetSkill: public TargetSkill {
 protected:
 	float damageRatio;
 
@@ -103,9 +103,9 @@ protected:
 	int stunDefDebuff;
 	int intimidateDefDebuff;
 
-	String debuffMessage;
+	String debuffHitMessage;
 	String debuffStrFile;
-	String debuffEndMessage;
+	String debuffMissMessage;
 
 public:
 	static const int DEBUFF = 1;
@@ -118,7 +118,9 @@ public:
 	static const int OTHER = 0;
 
 public:
-	AttackTargetSkill(const String& name, const String& anim, int tp, ZoneProcessServerImplementation* serv) : TargetSkill(name, anim, ATTACK, serv) {
+	AttackTargetSkill(const String& name, const String& anim, int tp,
+			ZoneProcessServerImplementation* serv) :
+		TargetSkill(name, anim, ATTACK, serv) {
 		healthPoolAttackChance = 0;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
@@ -156,28 +158,30 @@ public:
 		skillType = tp;
 	}
 
-
-	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) = 0;
-
+	virtual int
+			calculateDamage(CreatureObject* creature, SceneObject* target) = 0;
 
 	virtual bool calculateCost(CreatureObject* creature) {
 		return creature->changeMindBar(-50);
 	}
 
-	void doAnimations(CreatureObject* creature, SceneObject* target, bool doAnimations = true) {
+	void doAnimations(CreatureObject* creature, SceneObject* target,
+			bool doAnimations = true) {
 		/*
-		if (secondaryAnim.size() != 0)
-			player->playSecondaryAnim(secondaryAnim);
+		 if (secondaryAnim.size() != 0)
+		 player->playSecondaryAnim(secondaryAnim);
 
-		if (selfMessage.size() != 0)
-			player->showMessage;
+		 if (selfMessage.size() != 0)
+		 player->showMessage;
 
-		if (targetMessage.size() != 0)
-			targetPlayer->showMessage;
-		*/
+		 if (targetMessage.size() != 0)
+		 targetPlayer->showMessage;
+		 */
 	}
 
-	int applyHealthPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 1, Weapon* weapon = NULL) {
+	int applyHealthPoolDamage(CreatureObject* attacker, CreatureObject* target,
+			int32 damage, int part = 1, Weapon* weapon = NULL, bool nonFatal =
+					false) {
 
 		if (weapon == NULL)
 			weapon = attacker->getWeapon();
@@ -190,51 +194,63 @@ public:
 		if (target->isPlayer())
 			reduction = doArmorResists(armor, weapon, damage);
 		else if (weapon != NULL)
-			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
+			reduction = int(target->getArmorResist(weapon->getDamageType())
+					* damage / 100);
 		else
-			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
-
+			reduction = int(target->getArmorResist(
+					WeaponImplementation::KINETIC) * damage / 100);
 
 		if (reduction > 0)
-				APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
+			APARreduction = doArmorAPARReductions(target->getArmor(part),
+					weapon, damage, true);
 		else
-				APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,false);
+			APARreduction = doArmorAPARReductions(target->getArmor(part),
+					weapon, damage, false);
 
 		damage = damage - reduction - APARreduction;
 
 		target->addDamage(attacker, damage);
 		target->addDamageDone(attacker, damage, getSkillName());
 
-		target->takeHealthDamage(damage);
+		if (nonFatal && damage >= target->getHealth())
+			target->takeHealthDamage(target->getHealth() - 1);
+		else
+			target->takeHealthDamage(damage);
 
 		if (part < 3) {
 			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_body", 0xFF, 0, 0);
-				((Player*)attacker)->sendMessage(fly);
+				ShowFlyText* fly = new ShowFlyText(target, "combat_effects",
+						"hit_body", 0xFF, 0, 0);
+				((Player*) attacker)->sendMessage(fly);
 			}
 		} else if (part < 5) {
 			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_larm", 0xFF, 0, 0);
-				((Player*)attacker)->sendMessage(fly);
+				ShowFlyText* fly = new ShowFlyText(target, "combat_effects",
+						"hit_larm", 0xFF, 0, 0);
+				((Player*) attacker)->sendMessage(fly);
 			}
 		} else {
 			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_rarm", 0xFF, 0, 0);
-				((Player*)attacker)->sendMessage(fly);
+				ShowFlyText* fly = new ShowFlyText(target, "combat_effects",
+						"hit_rarm", 0xFF, 0, 0);
+				((Player*) attacker)->sendMessage(fly);
 			}
 		}
 
-		if (target->isPlayer() && ((reduction+APARreduction) > 0))  // if total damage reduction is positive, tell the player what their expensive armor did for them
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
-		else if (target->isPlayer() && APARreduction <0 && reduction != 0)  // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction), "armor_damaged", false);
+		if (target->isPlayer() && ((reduction + APARreduction) > 0)) // if total damage reduction is positive, tell the player what their expensive armor did for them
+			target->sendCombatSpam(target, (TangibleObject*) armor, (reduction
+					+ APARreduction), "armor_damaged", false);
+		else if (target->isPlayer() && APARreduction < 0 && reduction != 0) // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
+			target->sendCombatSpam(target, (TangibleObject*) armor,
+					(reduction), "armor_damaged", false);
 
 		float woundsRatio = 5;
 
 		if (weapon != NULL)
 			woundsRatio = weapon->getWoundsRatio();
 
-		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
+		if (woundsRatio + (woundsRatio * target->calculateBFRatio())
+				> System::random(100)) {
 			target->changeHealthWoundsBar(1, true);
 			target->changeShockWounds(1);
 
@@ -264,7 +280,9 @@ public:
 		target->changeConstitutionBar(-(int32) damage, true);
 	}
 
-	int applyActionPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part = 7, Weapon* weapon = NULL) {
+	int applyActionPoolDamage(CreatureObject* attacker, CreatureObject* target,
+			int32 damage, int part = 7, Weapon* weapon = NULL, bool nonFatal =
+					false) {
 
 		if (weapon == NULL)
 			weapon = attacker->getWeapon();
@@ -277,46 +295,57 @@ public:
 		if (target->isPlayer())
 			reduction = doArmorResists(armor, weapon, damage);
 		else if (weapon != NULL)
-			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
+			reduction = int(target->getArmorResist(weapon->getDamageType())
+					* damage / 100);
 		else
-			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
+			reduction = int(target->getArmorResist(
+					WeaponImplementation::KINETIC) * damage / 100);
 
 		if (reduction > 0)
-			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,true);
+			APARreduction = doArmorAPARReductions(target->getArmor(part),
+					attacker->getWeapon(), damage, true);
 		else
-			APARreduction = doArmorAPARReductions(target->getArmor(part),attacker->getWeapon(),damage,false);
+			APARreduction = doArmorAPARReductions(target->getArmor(part),
+					attacker->getWeapon(), damage, false);
 
 		damage = damage - reduction - APARreduction;
 
 		target->addDamage(attacker, damage);
 		target->addDamageDone(attacker, damage, getSkillName());
 
-		target->takeActionDamage(damage);
+		if (nonFatal && damage >= target->getAction())
+			target->takeActionDamage(target->getAction() - 1);
+		else
+			target->takeActionDamage(damage);
 
-
-		if (part == 7) {  // below is sending flytext for the wrong parts...
+		if (part == 7) { // below is sending flytext for the wrong parts...
 			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_lleg", 0, 0xFF, 0);
-				((Player*)attacker)->sendMessage(fly);
+				ShowFlyText* fly = new ShowFlyText(target, "combat_effects",
+						"hit_lleg", 0, 0xFF, 0);
+				((Player*) attacker)->sendMessage(fly);
 			}
 		} else {
 			if (attacker->isPlayer()) {
-				ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_rleg", 0, 0xFF, 0);
-				((Player*)attacker)->sendMessage(fly);
+				ShowFlyText* fly = new ShowFlyText(target, "combat_effects",
+						"hit_rleg", 0, 0xFF, 0);
+				((Player*) attacker)->sendMessage(fly);
 			}
 		}
 
-		if (target->isPlayer() && ((reduction+APARreduction) > 0))  // if total damage reduction is positive, tell the player what their expensive armor did for them
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
-		else if (target->isPlayer() && APARreduction <0 && reduction != 0)  // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction), "armor_damaged", false);
+		if (target->isPlayer() && ((reduction + APARreduction) > 0)) // if total damage reduction is positive, tell the player what their expensive armor did for them
+			target->sendCombatSpam(target, (TangibleObject*) armor, (reduction
+					+ APARreduction), "armor_damaged", false);
+		else if (target->isPlayer() && APARreduction < 0 && reduction != 0) // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
+			target->sendCombatSpam(target, (TangibleObject*) armor,
+					(reduction), "armor_damaged", false);
 
 		float woundsRatio = 5;
 
 		if (weapon != NULL)
 			woundsRatio = weapon->getWoundsRatio();
 
-		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
+		if (woundsRatio + (woundsRatio * target->calculateBFRatio())
+				> System::random(100)) {
 			target->changeActionWoundsBar(1, true);
 			target->changeShockWounds(1);
 
@@ -346,7 +375,8 @@ public:
 		target->changeStaminaBar(-(int32) damage, true);
 	}
 
-	int applyMindPoolDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, Weapon* weapon = NULL) {
+	int applyMindPoolDamage(CreatureObject* attacker, CreatureObject* target,
+			int32 damage, Weapon* weapon = NULL, bool nonFatal = false) {
 
 		if (weapon == NULL)
 			weapon = attacker->getWeapon();
@@ -354,44 +384,54 @@ public:
 		Armor* armor = target->getArmor(9);
 
 		int reduction = 0;
-		int APARreduction= 0;
+		int APARreduction = 0;
 
 		if (target->isPlayer())
 			reduction = doArmorResists(armor, weapon, damage);
 		else if (weapon != NULL)
-			reduction = int(target->getArmorResist(weapon->getDamageType()) * damage / 100);
+			reduction = int(target->getArmorResist(weapon->getDamageType())
+					* damage / 100);
 		else
-			reduction = int(target->getArmorResist(WeaponImplementation::KINETIC) * damage / 100);
-
+			reduction = int(target->getArmorResist(
+					WeaponImplementation::KINETIC) * damage / 100);
 
 		if (reduction > 0)
-			APARreduction = doArmorAPARReductions(target->getArmor(9),attacker->getWeapon(),damage,true);
+			APARreduction = doArmorAPARReductions(target->getArmor(9),
+					attacker->getWeapon(), damage, true);
 		else
-			APARreduction = doArmorAPARReductions(target->getArmor(9),attacker->getWeapon(),damage,false);
+			APARreduction = doArmorAPARReductions(target->getArmor(9),
+					attacker->getWeapon(), damage, false);
 
 		damage = damage - reduction - APARreduction;
 
 		target->addDamage(attacker, damage);
 		target->addDamageDone(attacker, damage, getSkillName());
 
-		target->takeMindDamage(damage);
+		if (nonFatal && damage >= target->getMind())
+			target->takeMindDamage(target->getMind() - 1);
+		else
+			target->takeMindDamage(damage);
 
 		if (attacker->isPlayer()) {
-			ShowFlyText* fly = new ShowFlyText(target, "combat_effects", "hit_head", 0, 0, 0xFF);
-			((Player*)attacker)->sendMessage(fly);
+			ShowFlyText* fly = new ShowFlyText(target, "combat_effects",
+					"hit_head", 0, 0, 0xFF);
+			((Player*) attacker)->sendMessage(fly);
 		}
 
-		if (target->isPlayer() && ((reduction+APARreduction) > 0))  // if total damage reduction is positive, tell the player what their expensive armor did for them
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction + APARreduction), "armor_damaged", false);
-		else if (target->isPlayer() && APARreduction <0 && reduction != 0)  // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
-			target->sendCombatSpam(target,(TangibleObject*) armor, (reduction), "armor_damaged", false);
+		if (target->isPlayer() && ((reduction + APARreduction) > 0)) // if total damage reduction is positive, tell the player what their expensive armor did for them
+			target->sendCombatSpam(target, (TangibleObject*) armor, (reduction
+					+ APARreduction), "armor_damaged", false);
+		else if (target->isPlayer() && APARreduction < 0 && reduction != 0) // In this case the APAR calulation increased the damage (Ie. T21 (Heavy piercing) against Composite (light rating) adds 50% damage, giving APARreduction a negative value, so only show the % reduction the armor normally gives
+			target->sendCombatSpam(target, (TangibleObject*) armor,
+					(reduction), "armor_damaged", false);
 
 		float woundsRatio = 5;
 
 		if (weapon != NULL)
 			woundsRatio = weapon->getWoundsRatio();
 
-		if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
+		if (woundsRatio + (woundsRatio * target->calculateBFRatio())
+				> System::random(100)) {
 			target->changeMindWoundsBar(1, true);
 			target->changeShockWounds(1);
 
@@ -421,9 +461,11 @@ public:
 		target->changeWillpowerBar(-(int32) damage, true);
 	}
 
-	virtual void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
+	virtual void doMiss(CreatureObject* creature, CreatureObject* target,
+			int32 damage) {
 		if (hasCbtSpamMiss())
-			creature->sendCombatSpam(target, NULL, -(int32)damage, getCbtSpamMiss());
+			creature->sendCombatSpam(target, NULL, -(int32) damage,
+					getCbtSpamMiss());
 
 		target->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
 	}
@@ -436,58 +478,74 @@ public:
 
 		if (creature->isPlayer()) {
 			if (weapon == NULL)
-				speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
-			else switch (weapon->getObjectSubType()) {
-			case TangibleObjectImplementation::MELEEWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("unarmed_speed");
-				break;
-			case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("onehandmelee_speed");
-				break;
-			case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("twohandmelee_speed");
-				break;
-			case TangibleObjectImplementation::POLEARM:
-				speedMod = ((Player*)creature)->getSkillMod("polearm_speed");
-				break;
-			case TangibleObjectImplementation::PISTOL:
-				speedMod = ((Player*)creature)->getSkillMod("pistol_speed");
-				break;
-			case TangibleObjectImplementation::CARBINE:
-				speedMod = ((Player*)creature)->getSkillMod("carbine_speed");
-				break;
-			case TangibleObjectImplementation::RIFLE:
-				speedMod = ((Player*)creature)->getSkillMod("rifle_speed");
-				break;
-			case TangibleObjectImplementation::HEAVYWEAPON:
-				speedMod = ((Player*)creature)->getSkillMod("heavyweapon_speed");
-				break;
-			case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
-				if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
-					speedMod = ((Player*)creature)->getSkillMod("heavy_flame_thrower_speed");
+				speedMod = ((Player*) creature)->getSkillMod("unarmed_speed");
+			else
+				switch (weapon->getObjectSubType()) {
+				case TangibleObjectImplementation::MELEEWEAPON:
+					speedMod = ((Player*) creature)->getSkillMod(
+							"unarmed_speed");
+					break;
+				case TangibleObjectImplementation::ONEHANDMELEEWEAPON:
+					speedMod = ((Player*) creature)->getSkillMod(
+							"onehandmelee_speed");
+					break;
+				case TangibleObjectImplementation::TWOHANDMELEEWEAPON:
+					speedMod = ((Player*) creature)->getSkillMod(
+							"twohandmelee_speed");
+					break;
+				case TangibleObjectImplementation::POLEARM:
+					speedMod = ((Player*) creature)->getSkillMod(
+							"polearm_speed");
+					break;
+				case TangibleObjectImplementation::PISTOL:
+					speedMod
+							= ((Player*) creature)->getSkillMod("pistol_speed");
+					break;
+				case TangibleObjectImplementation::CARBINE:
+					speedMod = ((Player*) creature)->getSkillMod(
+							"carbine_speed");
+					break;
+				case TangibleObjectImplementation::RIFLE:
+					speedMod = ((Player*) creature)->getSkillMod("rifle_speed");
+					break;
+				case TangibleObjectImplementation::HEAVYWEAPON:
+					speedMod = ((Player*) creature)->getSkillMod(
+							"heavyweapon_speed");
+					break;
+				case TangibleObjectImplementation::SPECIALHEAVYWEAPON:
+					if (weapon->getType()
+							== WeaponImplementation::RIFLEFLAMETHROWER)
+						speedMod = ((Player*) creature)->getSkillMod(
+								"heavy_flame_thrower_speed");
 
-				else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
-					speedMod = ((Player*)creature)->getSkillMod("heavy_rifle_lightning_speed");
+					else if (weapon->getType()
+							== WeaponImplementation::RIFLELIGHTNING)
+						speedMod = ((Player*) creature)->getSkillMod(
+								"heavy_rifle_lightning_speed");
 
-				speedMod += ((Player*)creature)->getSkillMod("heavyweapon_speed");
-				break;
-			}
+					speedMod += ((Player*) creature)->getSkillMod(
+							"heavyweapon_speed");
+					break;
+				}
 		}
 
 		if (weapon != NULL) {
-			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * speedRatio * weapon->getAttackSpeed();
+			weaponSpeed = (float) ((100.0f - speedMod) / 100.0f) * speedRatio
+					* weapon->getAttackSpeed();
 		} else
-			weaponSpeed = (float)((100.0f - speedMod) / 100.0f) * speedRatio * 3.0;
+			weaponSpeed = (float) ((100.0f - speedMod) / 100.0f) * speedRatio
+					* 3.0;
 
 		/*cout << "skill->getSpeedRatio = " << getSpeedRatio() << "\n";
-		if (weapon != NULL)
-			cout << "weapon->getAttackSpeed = " << weapon->getAttackSpeed() << "\n";
-		cout << "weapon speed  = " << weaponSpeed << "\n";
-		cout << "speed : " << MAX(weaponSpeed, 1.0f) << "\n";*/
+		 if (weapon != NULL)
+		 cout << "weapon->getAttackSpeed = " << weapon->getAttackSpeed() << "\n";
+		 cout << "weapon speed  = " << weaponSpeed << "\n";
+		 cout << "speed : " << MAX(weaponSpeed, 1.0f) << "\n";*/
 		return MAX(weaponSpeed, 1.0f);
 	}
 
-	virtual void calculateStates(CreatureObject* creature, CreatureObject* targetCreature) {
+	virtual void calculateStates(CreatureObject* creature,
+			CreatureObject* targetCreature) {
 		if (hasStateChance) {
 			checkKnockDown(creature, targetCreature);
 			checkPostureDown(creature, targetCreature);
@@ -495,8 +553,10 @@ public:
 			bool stateApply = false;
 
 			if (dizzyStateChance != 0) {
-				int targetDefense = targetCreature->getSkillMod("dizzy_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				int targetDefense =
+						targetCreature->getSkillMod("dizzy_defense");
+				targetDefense -= (int) (targetDefense
+						* targetCreature->calculateBFRatio());
 
 				int rand = System::random(100);
 
@@ -507,8 +567,10 @@ public:
 			}
 
 			if (blindStateChance != 0) {
-				int targetDefense = targetCreature->getSkillMod("blind_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				int targetDefense =
+						targetCreature->getSkillMod("blind_defense");
+				targetDefense -= (int) (targetDefense
+						* targetCreature->calculateBFRatio());
 
 				int rand = System::random(100);
 
@@ -520,7 +582,8 @@ public:
 
 			if (stunStateChance != 0) {
 				int targetDefense = targetCreature->getSkillMod("stun_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				targetDefense -= (int) (targetDefense
+						* targetCreature->calculateBFRatio());
 
 				int rand = System::random(100);
 
@@ -531,8 +594,10 @@ public:
 			}
 
 			if (intimidateStateChance != 0) {
-				int targetDefense = targetCreature->getSkillMod("intimidate_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				int targetDefense = targetCreature->getSkillMod(
+						"intimidate_defense");
+				targetDefense -= (int) (targetDefense
+						* targetCreature->calculateBFRatio());
 
 				int rand = System::random(10);
 
@@ -544,47 +609,50 @@ public:
 			}
 			//  This code is only needed if we decide to let creatures root and snare players (Also needs movement code put in player)
 			/*if (snareStateChance != 0) {
-				int targetDefense = targetCreature->getSkillMod("burst_run");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+			 int targetDefense = targetCreature->getSkillMod("burst_run");
+			 targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
 
-				int rand = System::random(10);
+			 int rand = System::random(10);
 
-				//if ((5 > rand) || (rand > targetDefense))
-				if (5 >= rand) {
-					targetCreature->setSnaredState();
-					stateApply = true;
-				}
-			}
+			 //if ((5 > rand) || (rand > targetDefense))
+			 if (5 >= rand) {
+			 targetCreature->setSnaredState();
+			 stateApply = true;
+			 }
+			 }
 
-			if (rootStateChance != 0) {
-				int targetDefense = targetCreature->getSkillMod("burst_run");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+			 if (rootStateChance != 0) {
+			 int targetDefense = targetCreature->getSkillMod("burst_run");
+			 targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
 
-				int rand = System::random(10);
+			 int rand = System::random(10);
 
-				//if ((5 > rand) || (rand > targetDefense))
-				if (5 >= rand) {
-					targetCreature->setRootedState();
-					stateApply = true;
-				}
-			}*/
+			 //if ((5 > rand) || (rand > targetDefense))
+			 if (5 >= rand) {
+			 targetCreature->setRootedState();
+			 stateApply = true;
+			 }
+			 }*/
 
 			targetCreature->updateStates();
 		}
 	}
 
-
-	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature) {
+	void checkKnockDown(CreatureObject* creature,
+			CreatureObject* targetCreature) {
 		if (knockdownStateChance != 0) {
-			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
+			if (creature->isPlayer() && (targetCreature->isKnockedDown()
+					|| targetCreature->isProne())) {
 				if (80 > System::random(100))
 					targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 				return;
 			}
 
 			if (targetCreature->checkKnockdownRecovery()) {
-				int targetDefense = targetCreature->getSkillMod("knockdown_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				int targetDefense = targetCreature->getSkillMod(
+						"knockdown_defense");
+				targetDefense -= (int) (targetDefense
+						* targetCreature->calculateBFRatio());
 				int rand = System::random(100);
 
 				if ((5 > rand) || (rand > targetDefense)) {
@@ -593,32 +661,39 @@ public:
 
 					targetCreature->setPosture(CreaturePosture::KNOCKEDDOWN);
 					targetCreature->updateKnockdownRecovery();
-					targetCreature->sendSystemMessage("cbt_spam", "posture_knocked_down");
+					targetCreature->sendSystemMessage("cbt_spam",
+							"posture_knocked_down");
 
-					int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
+					int combatEquil = targetCreature->getSkillMod(
+							"combat_equillibrium");
 
 					if (combatEquil > 100)
 						combatEquil = 100;
 
 					if ((combatEquil >> 1) > (int) System::random(100))
-						targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
+						targetCreature->setPosture(CreaturePosture::UPRIGHT,
+								true);
 				}
 			} else
 				creature->sendSystemMessage("cbt_spam", "knockdown_fail");
 		}
 	}
 
-	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature) {
+	void checkPostureDown(CreatureObject* creature,
+			CreatureObject* targetCreature) {
 		if (postureDownStateChance != 0) {
-			if (creature->isPlayer() && (targetCreature->isKnockedDown() || targetCreature->isProne())) {
+			if (creature->isPlayer() && (targetCreature->isKnockedDown()
+					|| targetCreature->isProne())) {
 				if (80 > System::random(100))
 					targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 				return;
 			}
 
 			if (targetCreature->checkPostureDownRecovery()) {
-				int targetDefense = targetCreature->getSkillMod("posture_change_down_defense");
-				targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+				int targetDefense = targetCreature->getSkillMod(
+						"posture_change_down_defense");
+				targetDefense -= (int) (targetDefense
+						* targetCreature->calculateBFRatio());
 
 				int rand = System::random(100);
 
@@ -626,31 +701,39 @@ public:
 					if (targetCreature->isMounted())
 						targetCreature->dismount();
 
-					if (targetCreature->getPosture() == CreaturePosture::UPRIGHT)
+					if (targetCreature->getPosture()
+							== CreaturePosture::UPRIGHT)
 						targetCreature->setPosture(CreaturePosture::CROUCHED);
 					else
 						targetCreature->setPosture(CreaturePosture::PRONE);
 
 					targetCreature->updatePostureDownRecovery();
-					targetCreature->sendSystemMessage("cbt_spam", "posture_down");
+					targetCreature->sendSystemMessage("cbt_spam",
+							"posture_down");
 
-					int combatEquil = targetCreature->getSkillMod("combat_equillibrium");
+					int combatEquil = targetCreature->getSkillMod(
+							"combat_equillibrium");
 
 					if (combatEquil > 100)
 						combatEquil = 100;
 
 					if ((combatEquil >> 1) > (int) System::random(100))
-						targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
+						targetCreature->setPosture(CreaturePosture::UPRIGHT,
+								true);
 				}
 			} else
 				creature->sendSystemMessage("cbt_spam", "posture_change_fail");
 		}
 	}
 
-	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature) {
-		if (postureUpStateChance != 0 && targetCreature->checkPostureUpRecovery()) {
-			int targetDefense = targetCreature->getSkillMod("posture_change_up_defense");
-			targetDefense -= (int)(targetDefense * targetCreature->calculateBFRatio());
+	void checkPostureUp(CreatureObject* creature,
+			CreatureObject* targetCreature) {
+		if (postureUpStateChance != 0
+				&& targetCreature->checkPostureUpRecovery()) {
+			int targetDefense = targetCreature->getSkillMod(
+					"posture_change_up_defense");
+			targetDefense -= (int) (targetDefense
+					* targetCreature->calculateBFRatio());
 
 			int rand = System::random(100);
 
@@ -661,7 +744,8 @@ public:
 				if (targetCreature->getPosture() == CreaturePosture::PRONE) {
 					targetCreature->setPosture(CreaturePosture::CROUCHED);
 					targetCreature->updatePostureUpRecovery();
-				} else if (targetCreature->getPosture() ==  CreaturePosture::CROUCHED) {
+				} else if (targetCreature->getPosture()
+						== CreaturePosture::CROUCHED) {
 					targetCreature->setPosture(CreaturePosture::UPRIGHT);
 					targetCreature->updatePostureUpRecovery();
 				}
@@ -670,12 +754,16 @@ public:
 			creature->sendSystemMessage("cbt_spam", "posture_change_fail");
 	}
 
-	void calculateDamageReduction(CreatureObject* creature, CreatureObject* targetCreature, float& damage) {
-		server->getCombatManager()->calculateDamageReduction(creature, targetCreature, damage);
+	void calculateDamageReduction(CreatureObject* creature,
+			CreatureObject* targetCreature, float& damage) {
+		server->getCombatManager()->calculateDamageReduction(creature,
+				targetCreature, damage);
 	}
 
-	void checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, float& minDamage, float& maxDamage) {
-		server->getCombatManager()->checkMitigation(creature, targetCreature, minDamage, maxDamage);
+	void checkMitigation(CreatureObject* creature,
+			CreatureObject* targetCreature, float& minDamage, float& maxDamage) {
+		server->getCombatManager()->checkMitigation(creature, targetCreature,
+				minDamage, maxDamage);
 	}
 
 	void doDodge(CreatureObject* creature, CreatureObject* defender) {
@@ -690,23 +778,30 @@ public:
 		server->getCombatManager()->doBlock(creature, defender);
 	}
 
-	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature) {
-		return server->getCombatManager()->checkSecondaryDefenses(creature, targetCreature);
+	int checkSecondaryDefenses(CreatureObject* creature,
+			CreatureObject* targetCreature) {
+		return server->getCombatManager()->checkSecondaryDefenses(creature,
+				targetCreature);
 	}
 
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature) {
-		return server->getCombatManager()->getHitChance(creature, targetCreature, accuracyBonus);
+		return server->getCombatManager()->getHitChance(creature,
+				targetCreature, accuracyBonus);
 	}
 
 	float getWeaponAccuracy(float currentRange, Weapon* weapon) {
-		return server->getCombatManager()->getWeaponAccuracy(currentRange, weapon);
+		return server->getCombatManager()->getWeaponAccuracy(currentRange,
+				weapon);
 	}
 
-	float getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon) {
-		return server->getCombatManager()->getTargetDefense(creature, targetCreature, weapon);
+	float getTargetDefense(CreatureObject* creature,
+			CreatureObject* targetCreature, Weapon* weapon) {
+		return server->getCombatManager()->getTargetDefense(creature,
+				targetCreature, weapon);
 	}
 
-	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit) {
+	void doDotWeaponAttack(CreatureObject* creature,
+			CreatureObject* targetCreature, bool areaHit) {
 		Weapon* weapon = creature->getWeapon();
 
 		int resist = 0;
@@ -717,26 +812,42 @@ public:
 				case 1:
 					resist = targetCreature->getSkillMod("resistance_bleeding");
 
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-						targetCreature->setBleedingState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
+					if ((int) System::random(100) < (weapon->getDot0Potency()
+							- resist))
+						targetCreature->setBleedingState(
+								weapon->getDot0Strength(),
+								weapon->getDot0Attribute(),
+								weapon->getDot0Duration());
 					break;
 				case 2:
 					resist = targetCreature->getSkillMod("resistance_disease");
 
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-					targetCreature->setDiseasedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
+					if ((int) System::random(100) < (weapon->getDot0Potency()
+							- resist))
+						targetCreature->setDiseasedState(
+								weapon->getDot0Strength(),
+								weapon->getDot0Attribute(),
+								weapon->getDot0Duration());
 					break;
 				case 3:
 					resist = targetCreature->getSkillMod("resistance_fire");
 
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-					targetCreature->setOnFireState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
+					if ((int) System::random(100) < (weapon->getDot0Potency()
+							- resist))
+						targetCreature->setOnFireState(
+								weapon->getDot0Strength(),
+								weapon->getDot0Attribute(),
+								weapon->getDot0Duration());
 					break;
 				case 4:
 					resist = targetCreature->getSkillMod("resistance_poison");
 
-					if ((int) System::random(100) < (weapon->getDot0Potency() - resist))
-					targetCreature->setPoisonedState(weapon->getDot0Strength(), weapon->getDot0Attribute(), weapon->getDot0Duration());
+					if ((int) System::random(100) < (weapon->getDot0Potency()
+							- resist))
+						targetCreature->setPoisonedState(
+								weapon->getDot0Strength(),
+								weapon->getDot0Attribute(),
+								weapon->getDot0Duration());
 					break;
 				}
 
@@ -750,26 +861,42 @@ public:
 				case 1:
 					resist = targetCreature->getSkillMod("resistance_bleeding");
 
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-						targetCreature->setBleedingState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
+					if ((int) System::random(100) < (weapon->getDot1Potency()
+							- resist))
+						targetCreature->setBleedingState(
+								weapon->getDot1Strength(),
+								weapon->getDot1Attribute(),
+								weapon->getDot1Duration());
 					break;
 				case 2:
 					resist = targetCreature->getSkillMod("resistance_disease");
 
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-					targetCreature->setDiseasedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
+					if ((int) System::random(100) < (weapon->getDot1Potency()
+							- resist))
+						targetCreature->setDiseasedState(
+								weapon->getDot1Strength(),
+								weapon->getDot1Attribute(),
+								weapon->getDot1Duration());
 					break;
 				case 3:
 					resist = targetCreature->getSkillMod("resistance_fire");
 
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-					targetCreature->setOnFireState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
+					if ((int) System::random(100) < (weapon->getDot1Potency()
+							- resist))
+						targetCreature->setOnFireState(
+								weapon->getDot1Strength(),
+								weapon->getDot1Attribute(),
+								weapon->getDot1Duration());
 					break;
 				case 4:
 					resist = targetCreature->getSkillMod("resistance_poison");
 
-					if ((int) System::random(100) < (weapon->getDot1Potency() - resist))
-					targetCreature->setPoisonedState(weapon->getDot1Strength(), weapon->getDot1Attribute(), weapon->getDot1Duration());
+					if ((int) System::random(100) < (weapon->getDot1Potency()
+							- resist))
+						targetCreature->setPoisonedState(
+								weapon->getDot1Strength(),
+								weapon->getDot1Attribute(),
+								weapon->getDot1Duration());
 					break;
 				}
 
@@ -783,26 +910,42 @@ public:
 				case 1:
 					resist = targetCreature->getSkillMod("resistance_bleeding");
 
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-						targetCreature->setBleedingState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
+					if ((int) System::random(100) < (weapon->getDot2Potency()
+							- resist))
+						targetCreature->setBleedingState(
+								weapon->getDot2Strength(),
+								weapon->getDot2Attribute(),
+								weapon->getDot2Duration());
 					break;
 				case 2:
 					resist = targetCreature->getSkillMod("resistance_disease");
 
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-					targetCreature->setDiseasedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
+					if ((int) System::random(100) < (weapon->getDot2Potency()
+							- resist))
+						targetCreature->setDiseasedState(
+								weapon->getDot2Strength(),
+								weapon->getDot2Attribute(),
+								weapon->getDot2Duration());
 					break;
 				case 3:
 					resist = targetCreature->getSkillMod("resistance_fire");
 
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-					targetCreature->setOnFireState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
+					if ((int) System::random(100) < (weapon->getDot2Potency()
+							- resist))
+						targetCreature->setOnFireState(
+								weapon->getDot2Strength(),
+								weapon->getDot2Attribute(),
+								weapon->getDot2Duration());
 					break;
 				case 4:
 					resist = targetCreature->getSkillMod("resistance_poison");
 
-					if ((int) System::random(100) < (weapon->getDot2Potency() - resist))
-					targetCreature->setPoisonedState(weapon->getDot2Strength(), weapon->getDot2Attribute(), weapon->getDot2Duration());
+					if ((int) System::random(100) < (weapon->getDot2Potency()
+							- resist))
+						targetCreature->setPoisonedState(
+								weapon->getDot2Strength(),
+								weapon->getDot2Attribute(),
+								weapon->getDot2Duration());
 					break;
 				}
 
@@ -820,8 +963,8 @@ public:
 	// @@ int damage -- initial incoming damage
 	// @@ bool isresisted -- To decide if the Benefit of AP/AR should be applied, IE. if Damage is stun, and armor has no stun resistance, you would not reduce damage by 50%, however you could still recieve the 25% inrease in damage from a Peircing weapon
 	// ## Returns - apar damage reduction.
-	int doArmorAPARReductions(Armor* armor, Weapon* weapon, int damage, bool isresisted = false)
-	{
+	int doArmorAPARReductions(Armor* armor, Weapon* weapon, int damage,
+			bool isresisted = false) {
 		int ap = 0;
 		int ar = 0;
 		int APARreduction = 0;
@@ -833,17 +976,15 @@ public:
 
 
 		if (ap > ar)
-			APARreduction = (damage - (int)(damage * powf(1.25f, ap - ar))); // If armor piercing is greater, increase by 25% per level
+			APARreduction = (damage - (int) (damage * powf(1.25f, ap - ar))); // If armor piercing is greater, increase by 25% per level
 
-		if (ap < ar && isresisted)  // If damage type was resisted, and If armor rating is greater, decrease by half per level
-			APARreduction = (damage - (int)(damage * powf(0.5f, ar - ap)));
+		if (ap < ar && isresisted) // If damage type was resisted, and If armor rating is greater, decrease by half per level
+			APARreduction = (damage - (int) (damage * powf(0.5f, ar - ap)));
 
 		return APARreduction;
 	}
 
-	int doArmorResists(Armor* armor, Weapon* weapon, int dmg)
-	{
-
+	int doArmorResists(Armor* armor, Weapon* weapon, int dmg) {
 
 		float resist = 0;
 
@@ -886,7 +1027,7 @@ public:
 		if (resist == 0)
 			return 0;
 		else
-			return (int)(dmg * (resist / 100));
+			return (int) (dmg * (resist / 100));
 
 	}
 
@@ -946,12 +1087,12 @@ public:
 		hasStateChance = true;
 	}
 
-	inline void setPostureDownChance (int chance) {
+	inline void setPostureDownChance(int chance) {
 		postureDownStateChance = chance;
 		hasStateChance = true;
 	}
 
-	inline void setPostureUpChance (int chance) {
+	inline void setPostureUpChance(int chance) {
 		postureUpStateChance = chance;
 		hasStateChance = true;
 	}
@@ -1103,11 +1244,13 @@ public:
 	}
 
 	bool isDebuff() {
-		return meleeDefDebuff != 0 || rangedDefDebuff != 0 || intimidateDefDebuff != 0 || stunDefDebuff != 0;
+		return meleeDefDebuff != 0 || rangedDefDebuff != 0
+				|| intimidateDefDebuff != 0 || stunDefDebuff != 0;
 	}
 
-	ThrowableWeapon* getThrowableWeapon(CreatureObject* creature, const String& modifier) {
-			if (!modifier.isEmpty()) {
+	ThrowableWeapon* getThrowableWeapon(CreatureObject* creature,
+			const String& modifier) {
+		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
 			String poolName;
 			uint64 objectid = 0;
@@ -1139,12 +1282,12 @@ public:
 		return true;
 	}
 
-	void setDeBuffMessage(const String& ename) {
-		debuffMessage = ename;
+	void setDeBuffHitMessage(const String& ename) {
+		debuffHitMessage = ename;
 	}
 
-	String getDeBuffMessage() {
-		return debuffMessage;
+	String getDeBuffHitMessage() {
+		return debuffHitMessage;
 	}
 
 	void setDeBuffStrFile(const String& ename) {
@@ -1155,20 +1298,24 @@ public:
 		return debuffStrFile;
 	}
 
-	void setDeBuffEndMessage(const String& ename) {
-		debuffEndMessage = ename;
+	void setDeBuffMissMessage(const String& ename) {
+		debuffMissMessage = ename;
 	}
 
-	String getDeBuffEndMessage() {
-		return debuffEndMessage;
+	String getDeBuffMissMessage() {
+		return debuffMissMessage;
 	}
 
-	bool hasDeBuffEndMessage() {
-			return !debuffEndMessage.isEmpty();
-	}
+	/*bool hasDeBuffMissMessage() {
+	 return !debuffMissMessage.isEmpty();
+	 }
 
-	bool hasDeBuffMessage() {
-			return !debuffMessage.isEmpty();
+	 bool hasDeBuffHitMessage() {
+	 return !debuffHitMessage.isEmpty();
+	 }*/
+
+	float getDamageRatio() {
+		return damageRatio;
 	}
 
 	friend class CombatManager;

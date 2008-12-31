@@ -8,9 +8,9 @@ camoKitTatooine = Object:new {
 
 	objectType = CAMOKIT,   -- 567894,
 
-	planetType = 8,
+	planetType = TATOOINE,
 
-	uses = 5,
+	uses = 15,
 	
 	concealSkill = 40,
 }

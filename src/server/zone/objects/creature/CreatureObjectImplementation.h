@@ -74,6 +74,8 @@ which carries forward this exception.
 
 #include "../../../chat/ChatManager.h"
 #include "events/MaskScentEvent.h"
+#include "skills/CamoSkill.h"
+
 class CombatManager;
 
 class Player;
@@ -428,6 +430,9 @@ protected:
 	MaskScentEvent* maskScentEvent;
 	Time camoLock;
 	uint32 maskScent;
+
+	int ferocity;
+	bool baby;
 
 public:
 	static const float DEFAULT_SPEED = 5.376f;
@@ -2761,7 +2766,7 @@ public:
 
 	uint32 getCamoType() {
 		if ((int)camoType < 0)
-			return 0;
+			return CamoSkill::NONE;
 		else
 			return camoType;
 	}
@@ -2783,6 +2788,22 @@ public:
 
 	inline void clearTemplateString() {
 		templateString = "";
+	}
+
+	void setFerocity(unsigned int fero) {
+		ferocity = fero;
+	}
+
+	unsigned int getFerocity() {
+		return ferocity;
+	}
+
+	void setBaby(bool b) {
+		baby = b;
+	}
+
+	bool isBaby() {
+		return baby;
 	}
 
 	friend class CombatManager;

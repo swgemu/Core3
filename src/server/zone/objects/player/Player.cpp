@@ -5015,6 +5015,19 @@ void Player::setActiveArea(ActiveArea* area) {
 		((PlayerImplementation*) _impl)->setActiveArea(area);
 }
 
+void Player::throwTrap(unsigned int targetID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 393);
+		method.addUnsignedIntParameter(targetID);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->throwTrap(targetID);
+}
+
 /*
  *	PlayerAdapter
  */
@@ -6186,6 +6199,9 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 392:
 		setActiveArea((ActiveArea*) inv->getObjectParameter());
+		break;
+	case 393:
+		throwTrap(inv->getUnsignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -7740,6 +7756,10 @@ ActiveArea* PlayerAdapter::getActiveArea() {
 
 void PlayerAdapter::setActiveArea(ActiveArea* area) {
 	return ((PlayerImplementation*) impl)->setActiveArea(area);
+}
+
+void PlayerAdapter::throwTrap(unsigned int targetID) {
+	return ((PlayerImplementation*) impl)->throwTrap(targetID);
 }
 
 /*

@@ -8,9 +8,9 @@ camoKitCorellia = Object:new {
 
 	objectType = CAMOKIT,
 
-	planetType = 0,
+	planetType = CORELLIA,
 
-	uses = 5,
+	uses = 15,
 	
 	concealSkill = 40
 }

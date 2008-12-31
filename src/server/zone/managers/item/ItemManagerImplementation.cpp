@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "../loot/LootManager.h"
 
 #include "ItemManagerImplementation.h"
+#include "../../objects/creature/skills/CamoSkill.h"
 
 StartingItemList * ItemManagerImplementation::startingItems = NULL;
 ForageItemList * ItemManagerImplementation::forageItems = NULL;
@@ -918,6 +919,18 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalShort("WOOKIEES", TangibleObjectImplementation::WOOKIEES);
 	setGlobalShort("ITHORIANS", TangibleObjectImplementation::ITHORIANS);
 	setGlobalShort("TWILEKS", TangibleObjectImplementation::TWILEKS);
+
+	setGlobalInt("CORELLIA", CamoSkill::CORELLIA);
+
+	setGlobalInt("DANTOOINE", CamoSkill::DANTOOINE);
+	setGlobalInt("DATHOMIR", CamoSkill::DATHOMIR);
+	setGlobalInt("ENDOR", CamoSkill::ENDOR);
+	setGlobalInt("LOK", CamoSkill::LOK);
+	setGlobalInt("NABOO", CamoSkill::NABOO);
+	setGlobalInt("RORI", CamoSkill::RORI);
+	setGlobalInt("TALUS", CamoSkill::TALUS);
+	setGlobalInt("TATOOINE", CamoSkill::TATOOINE);
+	setGlobalInt("YAVIN", CamoSkill::YAVIN);
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {

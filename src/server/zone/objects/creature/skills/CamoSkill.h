@@ -48,6 +48,20 @@ which carries forward this exception.
 #include "Skill.h"
 
 class CamoSkill : public Skill {
+public:
+	static const int CORELLIA = 0;
+	static const int DANTOOINE = 1;
+	static const int DATHOMIR = 2;
+	static const int ENDOR = 3;
+	static const int LOK = 4;
+	static const int NABOO = 5;
+	static const int RORI = 6;
+	static const int TALUS = 7;
+	static const int TATOOINE = 8;
+	static const int YAVIN = 9;
+	static const int MASKSCENT = 10;
+	static const int NONE = 11;
+
 protected:
 	float duration;
 
@@ -56,7 +70,7 @@ protected:
 public:
 	CamoSkill(const String& name,const int cat, ZoneProcessServerImplementation* serv) : Skill(name, CAMO, cat, serv) {
 		duration = 0;
-		camoType = 11;
+		camoType = NONE;
 	}
 
 

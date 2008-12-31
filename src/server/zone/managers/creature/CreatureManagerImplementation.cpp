@@ -652,6 +652,7 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 			creature->setBaseMind(creature->getMind());
 
 			creature->setHeight(creature->getHeight() / 2);
+			creature->setBaby(true);
 		}
 
 		creature->initializePosition(x, 0.0, y);
@@ -707,7 +708,8 @@ void CreatureManagerImplementation::setCreatureAttributes(Creature* creature, Lu
 	creature->setStalker(creatureConfig->getIntField("stalker"));
 	creature->setKiller(creatureConfig->getIntField("killer"));
 	creature->setAggressive(creatureConfig->getIntField("aggressive"));
-
+	creature->setFerocity(5);
+	creature->setBaby(false);
 	//creature->setBehaviorScript(creatureConfig.getStringField("behaviorScript"));
 
 
@@ -1193,7 +1195,6 @@ int CreatureManagerImplementation::runCreatureFile(lua_State* L) {
 
 		try {
 			instance->zone->getZoneServer()->lock();
-
 			spawnInfoMap->put(templatename, spawnInfo);
 
 			instance->zone->getZoneServer()->unlock();

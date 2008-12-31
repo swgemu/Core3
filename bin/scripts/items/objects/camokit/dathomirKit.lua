@@ -8,9 +8,9 @@ camoKitDathomir = Object:new {
 
 	objectType = CAMOKIT,   -- 567894,
 
-	planetType = 2,
+	planetType = DATHOMIR,
 
-	uses = 5,
+	uses = 15,
 	
 	concealSkill = 100
 }

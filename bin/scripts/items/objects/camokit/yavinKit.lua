@@ -8,9 +8,9 @@ camoKitYavin = Object:new {
 
 	objectType = CAMOKIT,   -- 567894,
 
-	planetType = 9,
+	planetType = YAVIN,
 
-	uses = 5,
+	uses = 15,
 	
 	concealSkill = 80
 }

@@ -261,7 +261,7 @@ void GameCommandHandler::init() {
 			&reloadSchematics);
 	gmCommands->addCommand("spawn", CSREVENTS,
 			"Spawn a creature.",
-			"Usage: @spawn <creaturetype> <moves (0,1)> <cellid> <x> <y> <bitmask> <baby>",
+			"Usage: @spawn <creaturetype> <moves (0,1)> <heigth> <x> <y> <baby>",
 			&spawn);
 	gmCommands->addCommand("guildAdmin", PRIVILEGED,
 			"Let you join a guild temporarily to administer the guild via guildterminal.",
@@ -2290,7 +2290,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	uint32 objcrc;
 	float x, y;
 	bool stationary = false;
-
+	bool baby = false;
 	// spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock)
 
 	if (tokenizer.hasMoreTokens()) {
@@ -2326,6 +2326,9 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	}
 
 
+	if (tokenizer.hasMoreTokens()) {
+		baby = tokenizer.getIntToken();
+	}
 
 	if (height > 100)
 		height = 100;
@@ -2348,7 +2351,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 		uint32 objcrc = creatureManager->getCreatureCrc(name);
 
 		Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
-				0, false, true, height);
+				0, baby, true, height);
 
 		Zone* zone;
 

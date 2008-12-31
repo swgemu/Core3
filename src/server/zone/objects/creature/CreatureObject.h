@@ -847,6 +847,10 @@ public:
 
 	String& getLootGroup();
 
+	unsigned int getFerocity();
+
+	bool isBaby();
+
 	void setBaseHealth(unsigned int health);
 
 	void setBaseStrength(unsigned int strength);
@@ -1154,6 +1158,10 @@ public:
 	void setCreatureFaction(const String& cfac);
 
 	void setInternalNPCDamageModifier(float indm);
+
+	void setFerocity(unsigned int fero);
+
+	void setBaby(bool baby);
 
 	void setCreatureWeapon(const String& wpon);
 
@@ -2059,6 +2067,10 @@ public:
 
 	String& getLootGroup();
 
+	unsigned int getFerocity();
+
+	bool isBaby();
+
 	void setBaseHealth(unsigned int health);
 
 	void setBaseStrength(unsigned int strength);
@@ -2366,6 +2378,10 @@ public:
 	void setCreatureFaction(const String& cfac);
 
 	void setInternalNPCDamageModifier(float indm);
+
+	void setFerocity(unsigned int fero);
+
+	void setBaby(bool baby);
 
 	void setCreatureWeapon(const String& wpon);
 

@@ -56,6 +56,8 @@
 #include "../../managers/combat/CombatManager.h"
 
 #include "skills/Skill.h"
+#include "skills/target/AttackTargetSkill.h"
+#include "skills/CamoSkill.h"
 
 #include "CreatureGroup.h"
 
@@ -206,6 +208,13 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 
+	int creaKnowledge = player->getSkillMod("creature_knowledge");
+
+	if (isDead()) {
+		player->sendMessage(alm);
+		return;
+	}
+
 	if (armor == 0)
 		alm->insertAttribute("armorrating", "None");
 	else if (armor == 1)
@@ -292,21 +301,24 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 		StringBuffer txt;
 		txt << round(getHeat()) << "%";
 		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_heat", txt.toString());
+				"cat_armor_effectiveness.armor_eff_elemental_heat",
+				txt.toString());
 	}
 
 	if (cold > 0 && cold < 100) {
 		StringBuffer txt;
 		txt << round(getCold()) << "%";
 		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_cold", txt.toString());
+				"cat_armor_effectiveness.armor_eff_elemental_cold",
+				txt.toString());
 	}
 
 	if (acid > 0 && acid < 100) {
 		StringBuffer txt;
 		txt << round(getAcid()) << "%";
 		alm->insertAttribute(
-				"cat_armor_effectiveness.armor_eff_elemental_acid", txt.toString());
+				"cat_armor_effectiveness.armor_eff_elemental_acid",
+				txt.toString());
 	}
 
 	if (lightSaber > 0 && lightSaber < 100) {
@@ -346,6 +358,116 @@ void CreatureImplementation::generateAttributes(SceneObject* obj) {
 
 	if (lightSaber == 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
+
+	if (getHideType().isEmpty() && getBoneType().isEmpty()
+			&& getMeatType().isEmpty()) {
+		player->sendMessage(alm);
+		return;
+	}
+
+	if (creaKnowledge >= 5) {
+		if (isAggressive())
+			alm->insertAttribute("aggro", "yes");
+		else
+			alm->insertAttribute("aggro", "no");
+		if (isStalker())
+			alm->insertAttribute("stalking", "yes");
+		else
+			alm->insertAttribute("stalking", "no");
+	}
+
+	if (creaKnowledge >= 10) {
+		if (getTame() >= 0.0f && isBaby())
+			alm->insertAttribute("tamable", "yes");
+		else
+			alm->insertAttribute("tamable", "no");
+	}
+
+	if (creaKnowledge >= 20) {
+		if (!getHideType().isEmpty())
+			alm->insertAttribute("res_hide", getHideType());
+		else
+			alm->insertAttribute("res_hide", "---");
+		if (!getBoneType().isEmpty())
+			alm->insertAttribute("res_bone", getBoneType());
+		else
+			alm->insertAttribute("res_bone", "---");
+		if (!getMeatType().isEmpty())
+			alm->insertAttribute("res_meat", getMeatType());
+		else
+			alm->insertAttribute("res_meat", "---");
+	}
+
+	if (creaKnowledge >= 30) {
+		if (isKiller())
+			alm->insertAttribute("killer", "yes");
+		else
+			alm->insertAttribute("killer", "no");
+	}
+
+	if (creaKnowledge >= 40) {
+		alm->insertAttribute("ferocity", (int) getFerocity());
+	}
+
+	if (creaKnowledge >= 50)
+		alm->insertAttribute("challenge_level", (int) getLevel());
+
+	int skillNum = creatureSkills.size();
+
+	if (creaKnowledge >= 70) {
+		if (skillNum >= 1)
+			alm->insertAttribute("pet_command_18", getSkill(0));
+		else
+			alm->insertAttribute("pet_command_18", "---");
+	}
+
+	if (creaKnowledge >= 80) {
+		if (skillNum >= 2)
+			alm->insertAttribute("pet_command_19", getSkill(1));
+		else
+			alm->insertAttribute("pet_command_19", "---");
+	}
+
+	if (creaKnowledge >= 90)
+		alm->insertAttribute("basetohit", 0.89f);
+
+	if (creaKnowledge >= 100) {
+		float minDamage = 0;
+		float maxDamage = 0;
+
+		Weapon* wpn = getWeapon();
+
+		if (wpn != NULL) {
+			minDamage = wpn->getMinDamage();
+			maxDamage = wpn->getMaxDamage();
+		} else {
+			maxDamage = getSkillMod("unarmed_damage");
+			if (maxDamage < 25.0f)
+				maxDamage = 25.0f;
+
+			if (isBaby())
+				maxDamage / 2;
+
+			minDamage = maxDamage / 2;
+		}
+
+		minDamage *= getInternalNPCDamageModifier();
+		maxDamage *= getInternalNPCDamageModifier();
+
+		if (skillNum > 0) {
+			Skill* skill = getSkill(getSkill(0));
+			if (skill->isAttackSkill()) {
+				AttackTargetSkill* askill = (AttackTargetSkill*) skill;
+				maxDamage *= askill->getDamageRatio();
+				minDamage *= askill->getDamageRatio();
+			}
+
+		}
+
+		StringBuffer damageMsg;
+		damageMsg << (int) minDamage << "-" << (int) maxDamage;
+		alm->insertAttribute("cat_wpn_damage", damageMsg.toString());
+	}
 
 	player->sendMessage(alm);
 }
@@ -1597,9 +1719,9 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 
 	int targetCamoType = target->getCamoType();
 
-	if (targetCamoType != 11) {
+	if (targetCamoType != CamoSkill::NONE) {
 
-		if (targetCamoType == 10 && !isCreature()) {
+		if (targetCamoType == CamoSkill::MASKSCENT && !isCreature()) {
 			camoSet = false;
 			camoCount = 0;
 			return;
@@ -1621,7 +1743,7 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 
 
 
-		if (targetCamoType == 10)
+		if (targetCamoType == CamoSkill::MASKSCENT)
 			score -= 1.0f * (float) getLevel();
 		else
 			score -= 0.5f * (float) getLevel();
@@ -1667,7 +1789,7 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 
 			return;
 		} else {
-			if (targetCamoType == 10)
+			if (targetCamoType == CamoSkill::MASKSCENT)
 				target->deactivateCamo(true);
 
 			lastCamoUser = 0;

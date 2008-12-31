@@ -64,4 +64,6 @@ interface ThrowableWeapon implements RangedWeapon {
 	void setSkill(const String sk);
 	
 	boolean isUsefull(Player player);
+
+	unsigned int getSkillCRC();
 }
