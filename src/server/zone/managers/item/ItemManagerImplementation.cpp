@@ -1003,7 +1003,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 		if (weapon->isTrap()) {
 			int uses =  itemconfig.getIntField("uses");
-			String skill = itemconfig.getStringField("skill");
+			String skill = itemconfig.getStringField("skill");  // TODO:  Should use certification
 
 			((TrapThrowableWeapon*) weapon)->setUsesRemaining(uses);
 			((TrapThrowableWeapon*) weapon)->setSkill(skill);

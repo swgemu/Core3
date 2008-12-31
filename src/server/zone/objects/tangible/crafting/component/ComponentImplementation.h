@@ -134,7 +134,6 @@ public:
 		attributeMap.drop(property);
 		attributeMap.put(property, value);
 		itemAttributes->setFloatAttribute(property, value);
-		return true;
 	}
 };
 

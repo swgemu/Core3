@@ -192,6 +192,18 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	actionEncumbrance = 0;
 	mindEncumbrance = 0;
 
+	armor = 0;
+
+	kinetic = 0;
+	energy = 0;
+	electricity = 0;
+	stun = 0;
+	blast = 0;
+	heat = 0;
+	cold = 0;
+	acid = 0;
+	lightSaber = 0;
+
 	// ent
 	performanceCounter = 0;
 
@@ -963,11 +975,11 @@ void CreatureObjectImplementation::setDiseasedState(int str, int type, int durat
 void CreatureObjectImplementation::doPoisonTick() {
 	if (nextPoisonTick.isPast()) {
 		if (poisonDotType == 1)
-			changeHealthBar(-poisonDotStrength, true);
+			changeHealthBar(-poisonDotStrength);
 		else if (poisonDotType == 4)
-			changeActionBar(-poisonDotStrength, true);
+			changeActionBar(-poisonDotStrength);
 		else
-			changeMindBar(-poisonDotStrength, true);
+			changeMindBar(-poisonDotStrength);
 
 		playEffect("clienteffect/dot_poisoned.cef");
 
@@ -979,11 +991,11 @@ void CreatureObjectImplementation::doPoisonTick() {
 void CreatureObjectImplementation::doBleedingTick() {
 	if (nextBleedingTick.isPast()) {
 		if (bleedingDotType == 1)
-			changeHealthBar(-bleedingDotStrength, true);
+			changeHealthBar(-bleedingDotStrength);
 		else if (bleedingDotType == 4)
-			changeActionBar(-bleedingDotStrength, true);
+			changeActionBar(-bleedingDotStrength);
 		else
-			changeMindBar(-bleedingDotStrength, true);
+			changeMindBar(-bleedingDotStrength);
 
 		playEffect("clienteffect/dot_bleeding.cef");
 
@@ -1020,13 +1032,13 @@ void CreatureObjectImplementation::doFireTick() {
 	if (nextFireTick.isPast()) {
 		if (fireDotType == 1){
 			changeHealthWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
-			changeHealthBar(-fireDotStrength, true);
+			changeHealthBar(-fireDotStrength);
 		} else if (fireDotType == 4) {
 			changeActionWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
-			changeActionBar(-fireDotStrength, true);
+			changeActionBar(-fireDotStrength);
 		} else {
 			changeMindWoundsBar((fireDotStrength / 5) + (shockWounds * fireDotStrength / 500));
-			changeMindBar(-fireDotStrength, true);
+			changeMindBar(-fireDotStrength);
 		}
 
 		changeShockWounds(1 + (shockWounds * fireDotStrength / 5000));
@@ -2446,13 +2458,8 @@ void CreatureObjectImplementation::setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp
 }
 
 void CreatureObjectImplementation::calculateHAMregen() {
-    // Why? None of these should ever be < 0
 	if ((int) getConstitution() < 0 || (int) getStamina() < 0 || (int) getWillpower() < 0)
 		return;
-
-	if (!(objectType == PLAYER) && isInCombat()) {  // Creatures don't regen HAM in combat
-		return;
-	}
 
 	float newHealth = (float)getConstitution() * 13 / 1200 * 3;
 	float newAction = (float)getStamina() * 13 / 1200 * 3;
@@ -2964,6 +2971,22 @@ Instrument* CreatureObjectImplementation::getInstrument() {
 
 		if (item->isInstrument() && item->isEquipped())
 				return (Instrument*) item;
+	}
+
+	return NULL;
+}
+
+Armor* CreatureObjectImplementation::getArmor(int type) {
+	if (inventory == NULL)
+		return NULL;
+
+	for (int i=0; i < inventory->objectsSize(); i++) {
+		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+		if (item->isArmor()) {
+			if (((Armor*) item)->getType() == type && item->isEquipped())
+				return (Armor*) item;
+		}
 	}
 
 	return NULL;
@@ -4119,13 +4142,6 @@ void CreatureObjectImplementation::doFlourish(const String& modifier) {
 			player->addEntertainerFlourishXp(performance->getBaseXp() + performance->getFlourishXpMod());
 		}
 
-		// Grant Experience
-		if (isPlayer()) {
-			Player* player = (Player*)_this;
-
-			player->addEntertainerFlourishXp(performance->getBaseXp() + performance->getFlourishXpMod());
-		}
-
 		sendSystemMessage("performance", "flourish_perform");
 	} else {
 		sendSystemMessage("performance", "flourish_too_tired");
@@ -4331,6 +4347,8 @@ void CreatureObjectImplementation::doEntertainerPatronEffects(bool healShock, bo
 
 	info("CreatureObjectImplementation::doEntertainerPatronEffects() end");
 }
+
+
 
 void CreatureObjectImplementation::doPerformanceAction() {
 	/*if (!isPlayer())
@@ -4866,6 +4884,40 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateClient) {
 	CreatureObjectMessage6* msg = new CreatureObjectDeltaMessage6(_this);
 	broadcastMessage(msg);
 	*/
+}
+
+float CreatureObjectImplementation::getArmorResist(int resistType) {
+	switch (resistType) {
+	case 1:
+		return kinetic - (kinetic * calculateBFRatio());
+
+	case 2:
+		return energy - (energy * calculateBFRatio());
+
+	case 3:
+		return electricity - (electricity * calculateBFRatio());
+
+	case 4:
+		return stun - (stun * calculateBFRatio());
+
+	case 5:
+		return blast - (blast * calculateBFRatio());
+
+	case 6:
+		return heat - (heat * calculateBFRatio());
+
+	case 7:
+		return cold - (cold * calculateBFRatio());
+
+	case 8:
+		return acid - (acid * calculateBFRatio());
+
+	case 9:
+		return lightSaber - (lightSaber * calculateBFRatio());
+
+	default:
+		return 0;
+	}
 }
 
 bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {

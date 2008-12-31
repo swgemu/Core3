@@ -148,18 +148,6 @@ void CreatureImplementation::init() {
 
 	movementCounter = 0;
 
-	armor = 0;
-
-	kinetic = 0;
-	energy = 0;
-	electricity = 0;
-	stun = 0;
-	blast = 0;
-	heat = 0;
-	cold = 0;
-	acid = 0;
-	lightSaber = 0;
-
 	// stats
 	aggroedCreature = NULL;
 	willAggro = false;
@@ -1569,7 +1557,9 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	info("queuing attacking");
 
 	String modifier = "";
-	CommandQueueAction * action = new CommandQueueAction(_this, target->getObjectID(), 0, actionCRC, modifier);
+	CommandQueueAction
+			* action =
+					new CommandQueueAction(_this, target->getObjectID(), 0, actionCRC, modifier);
 
 	action->setSkill(skill);
 	action->setTarget(target);
@@ -1726,40 +1716,6 @@ void CreatureImplementation::deagro() {
 
 	clearTarget();
 	clearCombatState();
-}
-
-float CreatureImplementation::getArmorResist(int resistType) {
-	switch (resistType) {
-	case 1:
-		return kinetic - (kinetic * calculateBFRatio());
-
-	case 2:
-		return energy - (energy * calculateBFRatio());
-
-	case 3:
-		return electricity - (electricity * calculateBFRatio());
-
-	case 4:
-		return stun - (stun * calculateBFRatio());
-
-	case 5:
-		return blast - (blast * calculateBFRatio());
-
-	case 6:
-		return heat - (heat * calculateBFRatio());
-
-	case 7:
-		return cold - (cold * calculateBFRatio());
-
-	case 8:
-		return acid - (acid * calculateBFRatio());
-
-	case 9:
-		return lightSaber - (lightSaber * calculateBFRatio());
-
-	default:
-		return 0;
-	}
 }
 
 void CreatureImplementation::activateRecovery() {

@@ -309,6 +309,8 @@ interface CreatureObject implements SceneObject {
 
 	Weapon getWeapon();
 
+	Armor getArmor(int type);
+
 	local void addSkill(Skill skill);
 
 	void addSkillMod(const String name, int mod, boolean updateClient = false);
@@ -525,6 +527,9 @@ interface CreatureObject implements SceneObject {
 	unsigned int getFocusMax();
 	unsigned int getWillpowerMax();
 
+	unsigned int getArmor();
+	float getArmorResist(int resistType);
+
 	unsigned int getHealthWounds();
 	unsigned int getStrengthWounds();
 	unsigned int getConstitutionWounds();
@@ -682,6 +687,8 @@ interface CreatureObject implements SceneObject {
 	void setFocusMax(unsigned int focus);
 	void setWillpowerMax(unsigned int willpower);
 
+	void setArmor(unsigned int ar);
+
 	void setHealthWounds(unsigned int wounds);
 	void setStrengthWounds(unsigned int wounds);
 	void setConstitutionWounds(unsigned int wounds);
@@ -726,6 +733,16 @@ interface CreatureObject implements SceneObject {
 
 	void setSpeed(float spd);
 	void setAcceleration(float acc);
+
+	void setKinetic(float kin);
+	void setEnergy(float ene);
+	void setElectricity(float ele);
+	void setStun(float stu);
+	void setBlast(float bla);
+	void setHeat(float hea);
+	void setCold(float col);
+	void setAcid(float aci);
+	void setLightSaber(float lig);
 
 	void changeConditionDamage(int amount);
 	void setMaxCondition(int condition);

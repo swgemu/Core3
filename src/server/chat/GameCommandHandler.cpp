@@ -291,13 +291,12 @@ void GameCommandHandler::init() {
 			"Returns a list of characters a player has registrated with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
-	// TODO: Needs re-implementing without breaking CombatManager
-	/*
+/*
 	gmCommands->addCommand("toggleCombat", DEVELOPER,
 			"Enables/Disables combat.",
 			"USAGE: @toggleCombat",
 			&toggleCombat);
-	*/
+*/
 	gmCommands->addCommand("lockServer", DEVELOPER,
 			"Locks the server for intern testing.",
 			"USAGE: @lockServer",
@@ -2680,6 +2679,7 @@ void GameCommandHandler::showChars(StringTokenizer tokenizer, Player* player) {
 	}
 }
 
+// TODO: Needs to be redone without using a variable in CombatManager
 /*
 void GameCommandHandler::toggleCombat(StringTokenizer tokenizer, Player * player) {
 	ZoneProcessServerImplementation* srv = player->getZoneProcessServer();

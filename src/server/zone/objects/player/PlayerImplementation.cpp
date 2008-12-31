@@ -64,6 +64,8 @@ which carries forward this exception.
 #include "../../../chat/ChatManager.h"
 #include "../../../ServerCore.h"
 
+#include "EquippedItems.h"
+
 #include "Races.h"
 
 #include "../terrain/Terrain.h"
@@ -942,32 +944,18 @@ void PlayerImplementation::removeEvents() {
 	}
 }
 
-void PlayerImplementation::createItems() {
+void PlayerImplementation::loadItems(bool newcharacter) {
 	inventory = new Inventory(_this);
+
+	datapad = new Datapad(_this);
 	equippedItems = new EquippedItems(_this);
-	datapad = new Datapad(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
-	itemManager->loadDefaultPlayerItems(_this);
-	itemManager->loadPlayerDatapadItems(_this);
-
-	if (!hairObject.isEmpty()) {
-		hairObj = new HairObject(_this, hairObject.hashCode(), UnicodeString("hair"), "hair");
-
-		String hairAppearance;
-		getHairAppearance(hairAppearance);
-
-		hairObj->setCustomizationString(hairAppearance);
-	}
-}
-
-void PlayerImplementation::loadItems() {
-	inventory = new Inventory(_this);
-
-	datapad = new Datapad(_this);
-
-	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
-	itemManager->loadPlayerItems(_this);
+	if (newcharacter) {
+		itemManager->loadDefaultPlayerItems(_this);
+		itemManager->loadPlayerDatapadItems(_this);
+	} else
+		itemManager->loadPlayerItems(_this);
 
 	if (!hairObject.isEmpty()) {
 		hairObj = new HairObject(_this, hairObject.hashCode(), UnicodeString("hair"), "hair");
@@ -1072,6 +1060,10 @@ void PlayerImplementation::decayInventory() {
 }
 
 void PlayerImplementation::resetArmorEncumbrance() {
+	if (equippedItems == NULL) {
+		System::out << "ERROR - equippedItems not initialised" << endl;
+		return;
+	}
 	healthEncumbrance = equippedItems->getHealthEncumbrance();
 	actionEncumbrance = equippedItems->getActionEncumbrance();
 	mindEncumbrance = equippedItems->getMindEncumbrance();
@@ -3136,18 +3128,226 @@ void PlayerImplementation::addInventoryResource(ResourceContainer* item) {
 	CreatureObjectImplementation::addInventoryResource(item);
 }
 
-
 void PlayerImplementation::equipPlayerItem(TangibleObject* item, bool updateLevel) {
 	if(item->isEquipped())
 		item->setEquipped(false);
+
 	if (item->isInstrument() || item->isWeapon())
 		changeWeapon(item->getObjectID(), updateLevel);
-	else
+	else {
+		if (equippedItems == NULL)
+			return;
+
 		equippedItems->equipItem(item);
+	}
+}
+
+bool PlayerImplementation::hasItemPermission(TangibleObject * item) {
+	uint16 maskRes = ~(item->getPlayerUseMask()) & characterMask;
+
+	if (maskRes == 0)
+		return true;
+
+	//suppress system message if item is being taken off.
+	if (item->isEquipped())
+		return false;
+
+	if (maskRes == COVERT) {
+		this->sendSystemMessage("You can not use this item while on leave.");
+		return false;
+	} else if (maskRes & (COVERT | REBEL | IMPERIAL | NEUTRAL)) {
+		this->sendSystemMessage("You are not the proper faction to use this item.");
+		return false;
+	} else if (maskRes & 0x0FFC) {
+		this->sendSystemMessage("Your species can not use this item.");
+		return false;
+	} else if (maskRes & (MALE | FEMALE)) {
+		this->sendSystemMessage("This item is not appropriate for your gender.");
+		return false;
+	}
+
+	//should never get here
+	this->sendSystemMessage("There was an error, while trying to equip this item.");
+	return false;
 }
 
 void PlayerImplementation::changeCloth(uint64 itemid) {
 	changeArmor(itemid, false);
+}
+
+void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
+	SceneObject* obj = inventory->getObject(itemid);
+
+	if (obj == NULL || !obj->isTangible())
+		return;
+
+	if (isPlayingMusic())
+		stopPlayingMusic();
+
+	if (((TangibleObject*)obj)->isWeapon()) {
+		Weapon* weapon = (Weapon*) obj;
+
+		if (weapon == NULL)
+			return;
+
+		if (!this->hasItemPermission(weapon) && !weapon->isEquipped())
+			return;
+
+		if (centered)
+			removeCenterOfBeing();
+
+		if (weapon->isEquipped()) {
+			unequipItem(weapon);
+			unsetWeaponSkillMods(weapon);
+			setWeapon(NULL);
+
+			accuracy = getSkillMod("unarmed_accuracy");
+		} else {
+			if (weaponObject != NULL) {
+				unequipItem(weaponObject);
+				unsetWeaponSkillMods(weaponObject);
+			}
+
+			setWeapon(weapon);
+			equipItem(weapon);
+
+			setWeaponSkillMods(weapon);
+
+		}
+
+		int playerlevel;
+		if (getWeapon() == NULL)
+			playerlevel = calcPlayerLevel("combat_meleespecialize_unarmed");
+		else
+			playerlevel = calcPlayerLevel(getWeapon()->getXpType());
+
+		if (calcPlayerLevel("medical") > playerlevel)
+			setLevel(calcPlayerLevel("medical"));
+		else
+			setLevel(playerlevel);
+
+		if (isInAGroup()) {
+			getGroupObject()->calcGroupLevel();
+			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(getGroupObject());
+			grp->updateLevel(getGroupObject()->getGroupLevel());
+			grp->close();
+
+			broadcastMessage(grp);
+		}
+
+		if (doUpdate) {
+			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
+			if (isInAGroup()) {
+				dcreo6->updateLevel(getGroupObject()->getGroupLevel());
+			} else {
+				dcreo6->updateLevel(getLevel());
+			}
+			dcreo6->close();
+
+			broadcastMessage(dcreo6);
+		}
+
+	} else if (((TangibleObject*)obj)->isInstrument()){
+		Instrument* device = (Instrument*) obj;
+		int instrument = device->getInstrumentType();
+
+		String skillBox;
+		// Needs to be refactored
+		switch(instrument) {
+		case InstrumentImplementation::SLITHERHORN: //SLITHERHORN
+			skillBox = "social_entertainer_novice";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		case InstrumentImplementation::FIZZ: // FIZZ
+			skillBox = "social_entertainer_music_01";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		case InstrumentImplementation::FANFAR: // FANFAR
+			skillBox = "social_entertainer_music_03";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		case InstrumentImplementation::KLOOHORN: // KLOOHORN
+			skillBox = "social_entertainer_music_04";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		case InstrumentImplementation::MANDOVIOL: // MANDOVIOL
+			skillBox = "social_entertainer_master";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		case InstrumentImplementation::TRAZ: // TRAZ
+			skillBox = "social_musician_novice";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		case InstrumentImplementation::BANDFILL: // BANDFILL
+			skillBox = "social_musician_knowledge_02";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		case InstrumentImplementation::FLUTEDROOPY: // FLUTEDROOPY
+			skillBox = "social_musician_knowledge_03";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		case InstrumentImplementation::OMNIBOX: // OMNIBOX
+			skillBox = "social_musician_knowledge_04";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		case InstrumentImplementation::NALARGON: // NALARGON
+			skillBox = "social_musician_master";
+			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
+				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+				return;
+			}
+			break;
+		default :
+			sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
+			return;
+		}
+
+		TangibleObject* item = (TangibleObject*) obj;
+
+		if (isPlayingMusic())
+			stopPlayingMusic();
+
+		if (item->isEquipped()) {
+			unequipItem(item);
+		} else
+			equipItem(item);
+	} else {
+		TangibleObject* item = (TangibleObject*) obj;
+
+		sendSystemMessage("triggered here.");
+
+		if (item->isEquipped())
+			unequipItem(item);
+		else
+			equipItem(item);
+	}
 }
 
 void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
@@ -3161,78 +3361,119 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 
 	Wearable* cloth = (Wearable*) obj;
 
-	equippedItems->changeClothing(cloth, forced);
-}
-
-void PlayerImplementation::changeWeapon(uint64 itemid, bool updateLevel) {
-	SceneObject* obj = inventory->getObject(itemid);
-
-	if (obj == NULL || !obj->isTangible())
-		return;
-
-	if (!((TangibleObject*)obj)->isWeapon() && !((TangibleObject*)obj)->isInstrument())
-		return;
-
-	TangibleObject* item = (TangibleObject*)obj;
-
-	equippedItems->changeWeapon(item);
-
-	Weapon* weapon = NULL;
-
-	if (equippedItems->getInstrument() != NULL)
-		return;
-	else if (equippedItems->getWeapon() != NULL)
-		weapon = equippedItems->getWeapon();
-
-	setWeapon(weapon);
-
-	if (centered)
-		removeCenterOfBeing();
-
-	setPlayerLevel(updateLevel);
-}
-
-void PlayerImplementation::setPlayerLevel(bool updateLevel) {
-	int playerlevel;
-
-	if (getWeapon() == NULL)
-		playerlevel = calcPlayerLevel("combat_meleespecialize_unarmed");
-	else
-		playerlevel = calcPlayerLevel(getWeapon()->getXpType());
-
-	if (calcPlayerLevel("medical") > playerlevel)
-		setLevel(calcPlayerLevel("medical"));
-	else
-		setLevel(playerlevel);
-
-	if (isInAGroup()) {
-		getGroupObject()->calcGroupLevel();
-		GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(getGroupObject());
-		grp->updateLevel(getGroupObject()->getGroupLevel());
-		grp->close();
-
-		broadcastMessage(grp);
-	}
-
-	if (updateLevel) {
-		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-		if (isInAGroup()) {
-			dcreo6->updateLevel(getGroupObject()->getGroupLevel());
-		} else {
-			dcreo6->updateLevel(getLevel());
-		}
-		dcreo6->close();
-
-		broadcastMessage(dcreo6);
-	}
-}
-
-void PlayerImplementation::setWeaponAccuracy(Weapon* weapon) {
-	if (weapon == NULL) {
-		accuracy = getSkillMod("unarmed_accuracy");
+	if (equippedItems == NULL) {
+		System::out << "ERROR - equippedItems not initialised" << endl;
 		return;
 	}
+	equippedItems->changeWearable(cloth, forced);
+}
 
+//	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
+//	BaseMessage* creo4 = new CreatureObjectMessage4(this);
+
+//	sendMessage(creo6);
+//	sendMessage(creo4);
+//}
+
+void PlayerImplementation::setItemSkillMod(int type, int value) {
+	switch (type) {
+	case 1:
+		addSkillModBonus("melee_defense", value, true);
+		break;
+	case 2:
+		addSkillModBonus("ranged_defense", value, true);
+		break;
+	case 3:
+		addSkillModBonus("stun_defense", value, true);
+		break;
+	case 4:
+		addSkillModBonus("dizzy_defense", value, true);
+		break;
+	case 5:
+		addSkillModBonus("blind_defense", value, true);
+		break;
+	case 6:
+		addSkillModBonus("knockdown_defense", value, true);
+		break;
+	case 7:
+		addSkillModBonus("intimidate_defense", value, true);
+		break;
+	case 8:
+		addSkillModBonus("pistol_speed", value, true);
+		break;
+	case 9:
+		addSkillModBonus("carbine_speed", value, true);
+		break;
+	case 10:
+		addSkillModBonus("rifle_speed", value, true);
+		break;
+	case 11:
+		addSkillModBonus("unarmed_speed", value, true);
+		break;
+	case 12:
+		addSkillModBonus("onehandmelee_speed", value, true);
+		break;
+	case 13:
+		addSkillModBonus("twohandmelee_speed", value, true);
+		break;
+	case 14:
+		addSkillModBonus("polearm_speed", value, true);
+		break;
+	case 15:
+		addSkillModBonus("pistol_accuracy", value, true);
+		break;
+	case 16:
+		addSkillModBonus("carbine_accuracy", value, true);
+		break;
+	case 17:
+		addSkillModBonus("rifle_accuracy", value, true);
+		break;
+	case 18:
+		addSkillModBonus("unarmed_accuracy", value, true);
+		break;
+	case 19:
+		addSkillModBonus("onehandmelee_accuracy", value, true);
+		break;
+	case 20:
+		addSkillModBonus("twohandmelee_accuracy", value, true);
+		break;
+	case 21:
+		addSkillModBonus("polearm_accuracy", value, true);
+		break;
+	case 22:
+		addSkillModBonus("dodge", value, true);
+		break;
+	case 23:
+		addSkillModBonus("block", value, true);
+		break;
+	case 24:
+		addSkillModBonus("counterattack", value, true);
+		break;
+	case 25:
+		addSkillModBonus("resistance_bleeding", value, true);
+		break;
+	case 26:
+		addSkillModBonus("resistance_disease", value, true);
+		break;
+	case 27:
+		addSkillModBonus("resistance_fire", value, true);
+		break;
+	case 28:
+		addSkillModBonus("resistance_poison", value, true);
+		break;
+	case 29:
+		addSkillModBonus("slope_move", value, true);
+		break;
+	case 30:
+		addSkillModBonus("heavyweapon_speed", value, true);
+		break;
+	case 31:
+		addSkillModBonus("heavyweapon_accuracy", value, true);
+		break;
+	}
+}
+
+void PlayerImplementation::setWeaponSkillMods(Weapon* weapon) {
 	switch (weapon->getType()) {
 		case WeaponImplementation::UNARMED:
 			accuracy = getSkillMod("unarmed_accuracy");
@@ -3276,18 +3517,60 @@ void PlayerImplementation::setWeaponAccuracy(Weapon* weapon) {
 			accuracy += getSkillMod("heavyweapon_accuracy");
 			break;
 
-		case WeaponImplementation::ONEHANDSABER:
-			accuracy = getSkillMod("onehandlightsaber_accuracy");
+		/*case Weapon::ONEHANDSABER:
+			accuracy = SkillMods.get("");
 			break;
 
-		case WeaponImplementation::TWOHANDSABER:
-			accuracy = getSkillMod("twohandlightsaber_accuracy");
+		case Weapon::TWOHANDSABER:
+			accuracy = SkillMods.get("");
 			break;
 
-		case WeaponImplementation::POLEARMSABER:
-			accuracy = getSkillMod("polearmlightsaber_accuracy");
-			break;
+		case Weapon::POLEARMSABER:
+			accuracy = SkillMods.get("");
+			break;*/
 	}
+	setItemSkillMod(weapon->getSkillMod0Type(), weapon->getSkillMod0Value());
+	setItemSkillMod(weapon->getSkillMod1Type(), weapon->getSkillMod1Value());
+	setItemSkillMod(weapon->getSkillMod2Type(), weapon->getSkillMod2Value());
+
+	if (checkCertification(weapon->getCert())) {
+		weapon->setCertified(true);
+	} else {
+		sendSystemMessage("You are not certified to use this weapon. Damage will be reduced.");
+		weapon->setCertified(false);
+	}
+}
+
+void PlayerImplementation::setArmorSkillMods(Armor* armoritem) {
+	setItemSkillMod(armoritem->getSkillMod0Type(), armoritem->getSkillMod0Value());
+	setItemSkillMod(armoritem->getSkillMod1Type(), armoritem->getSkillMod1Value());
+	setItemSkillMod(armoritem->getSkillMod2Type(), armoritem->getSkillMod2Value());
+
+	setItemSkillMod(armoritem->getSocket0Type(), armoritem->getSocket0Value());
+	setItemSkillMod(armoritem->getSocket1Type(), armoritem->getSocket1Value());
+	setItemSkillMod(armoritem->getSocket2Type(), armoritem->getSocket2Value());
+	setItemSkillMod(armoritem->getSocket3Type(), armoritem->getSocket3Value());
+
+}
+
+void PlayerImplementation::unsetArmorSkillMods(Armor* armoritem) {
+	setItemSkillMod(armoritem->getSkillMod0Type(), -armoritem->getSkillMod0Value());
+	setItemSkillMod(armoritem->getSkillMod1Type(), -armoritem->getSkillMod1Value());
+	setItemSkillMod(armoritem->getSkillMod2Type(), -armoritem->getSkillMod2Value());
+
+	setItemSkillMod(armoritem->getSocket0Type(), -armoritem->getSocket0Value());
+	setItemSkillMod(armoritem->getSocket1Type(), -armoritem->getSocket1Value());
+	setItemSkillMod(armoritem->getSocket2Type(), -armoritem->getSocket2Value());
+	setItemSkillMod(armoritem->getSocket3Type(), -armoritem->getSocket3Value());
+
+}
+
+void PlayerImplementation::unsetWeaponSkillMods(Weapon* weapon) {
+	setItemSkillMod(weapon->getSkillMod0Type(), -weapon->getSkillMod0Value());
+	setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
+	setItemSkillMod(weapon->getSkillMod2Type(), -weapon->getSkillMod2Value());
+
+	accuracy = getSkillMod("unarmed_accuracy");
 }
 
 bool PlayerImplementation::setArmorEncumbrance(Armor* armor, bool forced) {
@@ -3323,12 +3606,6 @@ bool PlayerImplementation::setArmorEncumbrance(Armor* armor, bool forced) {
 	focus -= mindEncumb;
 	willpower -= mindEncumb;
 
-	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
-	BaseMessage* creo4 = new CreatureObjectMessage4(this);
-
-	sendMessage(creo6);
-	sendMessage(creo4);
-
 	return true;
 
 }
@@ -3355,12 +3632,6 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 	stamina += actionEncumb;
 	focus += mindEncumb;
 	willpower += mindEncumb;
-
-	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
-	BaseMessage* creo4 = new CreatureObjectMessage4(this);
-
-	sendMessage(creo6);
-	sendMessage(creo4);
 
 }
 
@@ -3438,9 +3709,6 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 
 	Armor* armor = (Armor*) tano;
 
-	if (armor->isEquipped())
-		return;
-
 	armor->wlock();
 	attachment->wlock();
 
@@ -3459,7 +3727,17 @@ void PlayerImplementation::applyAttachment(uint64 attachmentID, uint64 targetID)
 		skillModType = attachment->getSkillModType(attachmentIndex);
 		skillModValue = attachment->getSkillModValue(attachmentIndex);
 
+		if (armor->isEquipped()) {
+			unsetArmorSkillMods(armor);
+			setMods = true;
+		}
+
 		int armorIndex = armor->addSkillMod(skillModType, skillModValue);
+
+		if (setMods) {
+			setArmorSkillMods(armor);
+			setMods = false;
+		}
 
 		switch (armorIndex) {
 		case (-1): // add failed

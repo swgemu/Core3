@@ -432,37 +432,12 @@ unsigned int Creature::getRespawnTimer() {
 		return ((CreatureImplementation*) _impl)->getRespawnTimer();
 }
 
-unsigned int Creature::getArmor() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 38);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((CreatureImplementation*) _impl)->getArmor();
-}
-
-float Creature::getArmorResist(int resistType) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 39);
-		method.addSignedIntParameter(resistType);
-
-		return method.executeWithFloatReturn();
-	} else
-		return ((CreatureImplementation*) _impl)->getArmorResist(resistType);
-}
-
 LairObject* Creature::getLair() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 38);
 
 		return (LairObject*) method.executeWithObjectReturn();
 	} else
@@ -474,7 +449,7 @@ bool Creature::hasLootCreated() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 39);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -494,7 +469,7 @@ void Creature::setLair(LairObject* Lair) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 40);
 		method.addObjectParameter(Lair);
 
 		method.executeWithVoidReturn();
@@ -507,7 +482,7 @@ void Creature::setCreatureGroup(CreatureGroup* group) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 41);
 		method.addObjectParameter(group);
 
 		method.executeWithVoidReturn();
@@ -520,7 +495,7 @@ void Creature::setObjectFileName(const String& name) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 42);
 		method.addAsciiParameter(name);
 
 		method.executeWithVoidReturn();
@@ -533,7 +508,7 @@ String& Creature::getObjectFileName() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 43);
 
 		method.executeWithAsciiReturn(_return_getObjectFileName);
 		return _return_getObjectFileName;
@@ -546,7 +521,7 @@ void Creature::setType(int tp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 44);
 		method.addSignedIntParameter(tp);
 
 		method.executeWithVoidReturn();
@@ -559,7 +534,7 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 45);
 		method.addUnsignedIntParameter(seconds);
 
 		method.executeWithVoidReturn();
@@ -567,142 +542,12 @@ void Creature::setRespawnTimer(unsigned int seconds) {
 		((CreatureImplementation*) _impl)->setRespawnTimer(seconds);
 }
 
-void Creature::setArmor(unsigned int ar) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 48);
-		method.addUnsignedIntParameter(ar);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setArmor(ar);
-}
-
-void Creature::setKinetic(float kin) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 49);
-		method.addFloatParameter(kin);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setKinetic(kin);
-}
-
-void Creature::setEnergy(float ene) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 50);
-		method.addFloatParameter(ene);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setEnergy(ene);
-}
-
-void Creature::setElectricity(float ele) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 51);
-		method.addFloatParameter(ele);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setElectricity(ele);
-}
-
-void Creature::setStun(float stu) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 52);
-		method.addFloatParameter(stu);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setStun(stu);
-}
-
-void Creature::setBlast(float bla) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 53);
-		method.addFloatParameter(bla);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setBlast(bla);
-}
-
-void Creature::setHeat(float hea) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 54);
-		method.addFloatParameter(hea);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setHeat(hea);
-}
-
-void Creature::setCold(float col) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 55);
-		method.addFloatParameter(col);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setCold(col);
-}
-
-void Creature::setAcid(float aci) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 56);
-		method.addFloatParameter(aci);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setAcid(aci);
-}
-
-void Creature::setLightSaber(float lig) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 57);
-		method.addFloatParameter(lig);
-
-		method.executeWithVoidReturn();
-	} else
-		((CreatureImplementation*) _impl)->setLightSaber(lig);
-}
-
 void Creature::removePlayerFromHarvestList(String& firstName) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 46);
 		method.addAsciiParameter(firstName);
 
 		method.executeWithVoidReturn();
@@ -715,7 +560,7 @@ bool Creature::canHarvest(String& firstName) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 47);
 		method.addAsciiParameter(firstName);
 
 		return method.executeWithBooleanReturn();
@@ -728,7 +573,7 @@ bool Creature::beenLooted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -740,7 +585,7 @@ void Creature::wasLooted() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 49);
 
 		method.executeWithVoidReturn();
 	} else
@@ -752,7 +597,7 @@ void Creature::setLootCreated(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 50);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -765,7 +610,7 @@ void Creature::setRandomMovement(bool value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 51);
 		method.addBooleanParameter(value);
 
 		method.executeWithVoidReturn();
@@ -778,7 +623,7 @@ unsigned int Creature::getFPValue() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithUnsignedIntReturn();
 	} else
@@ -790,7 +635,7 @@ void Creature::setFPValue(unsigned int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 53);
 		method.addUnsignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -906,87 +751,51 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertInt(getRespawnTimer());
 		break;
 	case 38:
-		resp->insertInt(getArmor());
-		break;
-	case 39:
-		resp->insertFloat(getArmorResist(inv->getSignedIntParameter()));
-		break;
-	case 40:
 		resp->insertLong(getLair()->_getObjectID());
 		break;
-	case 41:
+	case 39:
 		resp->insertBoolean(hasLootCreated());
 		break;
-	case 42:
+	case 40:
 		setLair((LairObject*) inv->getObjectParameter());
 		break;
-	case 43:
+	case 41:
 		setCreatureGroup((CreatureGroup*) inv->getObjectParameter());
 		break;
-	case 44:
+	case 42:
 		setObjectFileName(inv->getAsciiParameter(_param0_setObjectFileName__String_));
 		break;
-	case 45:
+	case 43:
 		resp->insertAscii(getObjectFileName());
 		break;
-	case 46:
+	case 44:
 		setType(inv->getSignedIntParameter());
 		break;
-	case 47:
+	case 45:
 		setRespawnTimer(inv->getUnsignedIntParameter());
 		break;
-	case 48:
-		setArmor(inv->getUnsignedIntParameter());
-		break;
-	case 49:
-		setKinetic(inv->getFloatParameter());
-		break;
-	case 50:
-		setEnergy(inv->getFloatParameter());
-		break;
-	case 51:
-		setElectricity(inv->getFloatParameter());
-		break;
-	case 52:
-		setStun(inv->getFloatParameter());
-		break;
-	case 53:
-		setBlast(inv->getFloatParameter());
-		break;
-	case 54:
-		setHeat(inv->getFloatParameter());
-		break;
-	case 55:
-		setCold(inv->getFloatParameter());
-		break;
-	case 56:
-		setAcid(inv->getFloatParameter());
-		break;
-	case 57:
-		setLightSaber(inv->getFloatParameter());
-		break;
-	case 58:
+	case 46:
 		removePlayerFromHarvestList(inv->getAsciiParameter(_param0_removePlayerFromHarvestList__String_));
 		break;
-	case 59:
+	case 47:
 		resp->insertBoolean(canHarvest(inv->getAsciiParameter(_param0_canHarvest__String_)));
 		break;
-	case 60:
+	case 48:
 		resp->insertBoolean(beenLooted());
 		break;
-	case 61:
+	case 49:
 		wasLooted();
 		break;
-	case 62:
+	case 50:
 		setLootCreated(inv->getBooleanParameter());
 		break;
-	case 63:
+	case 51:
 		setRandomMovement(inv->getBooleanParameter());
 		break;
-	case 64:
+	case 52:
 		resp->insertInt(getFPValue());
 		break;
-	case 65:
+	case 53:
 		setFPValue(inv->getUnsignedIntParameter());
 		break;
 	default:
@@ -1124,14 +933,6 @@ unsigned int CreatureAdapter::getRespawnTimer() {
 	return ((CreatureImplementation*) impl)->getRespawnTimer();
 }
 
-unsigned int CreatureAdapter::getArmor() {
-	return ((CreatureImplementation*) impl)->getArmor();
-}
-
-float CreatureAdapter::getArmorResist(int resistType) {
-	return ((CreatureImplementation*) impl)->getArmorResist(resistType);
-}
-
 LairObject* CreatureAdapter::getLair() {
 	return ((CreatureImplementation*) impl)->getLair();
 }
@@ -1162,46 +963,6 @@ void CreatureAdapter::setType(int tp) {
 
 void CreatureAdapter::setRespawnTimer(unsigned int seconds) {
 	return ((CreatureImplementation*) impl)->setRespawnTimer(seconds);
-}
-
-void CreatureAdapter::setArmor(unsigned int ar) {
-	return ((CreatureImplementation*) impl)->setArmor(ar);
-}
-
-void CreatureAdapter::setKinetic(float kin) {
-	return ((CreatureImplementation*) impl)->setKinetic(kin);
-}
-
-void CreatureAdapter::setEnergy(float ene) {
-	return ((CreatureImplementation*) impl)->setEnergy(ene);
-}
-
-void CreatureAdapter::setElectricity(float ele) {
-	return ((CreatureImplementation*) impl)->setElectricity(ele);
-}
-
-void CreatureAdapter::setStun(float stu) {
-	return ((CreatureImplementation*) impl)->setStun(stu);
-}
-
-void CreatureAdapter::setBlast(float bla) {
-	return ((CreatureImplementation*) impl)->setBlast(bla);
-}
-
-void CreatureAdapter::setHeat(float hea) {
-	return ((CreatureImplementation*) impl)->setHeat(hea);
-}
-
-void CreatureAdapter::setCold(float col) {
-	return ((CreatureImplementation*) impl)->setCold(col);
-}
-
-void CreatureAdapter::setAcid(float aci) {
-	return ((CreatureImplementation*) impl)->setAcid(aci);
-}
-
-void CreatureAdapter::setLightSaber(float lig) {
-	return ((CreatureImplementation*) impl)->setLightSaber(lig);
 }
 
 void CreatureAdapter::removePlayerFromHarvestList(String& firstName) {

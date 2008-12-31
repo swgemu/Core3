@@ -71,7 +71,6 @@ class SkillBox {
 	SortedVector<SkillBox*> requiredSkills;
 	Vector<String> skillPreclusions;
 	String skillXpType;
-	String skillXpTypeProse;
 
 	int skillXpCost;
 	int skillXpCap;
@@ -186,10 +185,6 @@ public:
 		skillXpType = skill;
 	}
 
-	void setSkillXpTypeProse(const String& skill) {
-		skillXpTypeProse = skill;
-	}
-
 	void setSkillXpCost(int xp) {
 		skillXpCost = xp;
 	}
@@ -244,10 +239,6 @@ public:
 
 	inline String& getSkillXpType() {
 		return skillXpType;
-	}
-
-	inline String& getSkillXpTypeProse() {
-		return skillXpTypeProse;
 	}
 
 	inline int getSkillXpCost() {

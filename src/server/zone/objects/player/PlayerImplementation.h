@@ -65,7 +65,6 @@ which carries forward this exception.
 #include "../../../chat/room/ChatRoom.h"
 
 #include "Player.h"
-#include "EquippedItems.h"
 
 #include "../tangible/surveytool/SurveyTool.h"
 
@@ -79,6 +78,7 @@ which carries forward this exception.
 
 #include "../../managers/player/PlayerManager.h"
 #include "badges/Badges.h"
+#include "EquippedItems.h"
 
 class PlayerManager;
 class ItemManager;
@@ -391,8 +391,7 @@ public:
 		playerSaveStateEvent = NULL;
 	}
 
-	void createItems();
-	void loadItems();
+	void loadItems(bool newcharacter = false);
 
 	void saveDatapad(Player* player);
 
@@ -402,7 +401,6 @@ public:
 
 	void decayInventory();
 	void resetArmorEncumbrance();
-	void unsetArmorEncumbrance(Armor* armor);
 
 	void makeCharacterMask();
 
@@ -554,7 +552,8 @@ public:
 
 	void addInventoryItem(TangibleObject* item);
 	void addInventoryResource(ResourceContainer* item);
-	void equipPlayerItem(TangibleObject* item, bool updateLevel = true);
+
+	void equipPlayerItem(TangibleObject* item, bool doUpdate = true);
 
 	SceneObject* getPlayerItem(uint64 oid);
 
@@ -568,8 +567,6 @@ public:
 	inline bool canTip() {
 		return nextTip.isPast();
 	}
-
-	void setPlayerLevel(bool updateLevel);
 
 	// trade mehtods
 	void addTradeItem(TangibleObject* item) {
@@ -985,7 +982,7 @@ public:
 
 	// item methods
 	void changeCloth(uint64 itemid);
-	void changeWeapon(uint64 itemid, bool updateLevel = true);
+	void changeWeapon(uint64 itemid, bool doUpdate = true);
 	void changeArmor(uint64 itemid, bool forced);
 
 	void setWeaponSkillMods(Weapon* weapon);
@@ -995,6 +992,7 @@ public:
 	void unsetArmorSkillMods(Armor* armoritem);
 
 	bool setArmorEncumbrance(Armor* armor, bool forced);
+	void unsetArmorEncumbrance(Armor* armor);
 
 	void applyAttachment(uint64 attachmentID, uint64 targetID);
 	void applyPowerup(uint64 powerupID, uint64 targetID);
@@ -1322,8 +1320,6 @@ public:
 	inline void setTradeRequestedPlayer(uint64 id) {
 		tradeRequestedPlayer = id;
 	}
-
-	void setWeaponAccuracy(Weapon* weapon);
 
 	// getters
 	//inline String& getHairData() {
@@ -1807,13 +1803,6 @@ public:
 
 	void teachSkill(String& skillname);
 
-	Armor* getPlayerArmor (int location) {
-		if (location > 14 || location < 0)
-			return NULL;
-		else
-			return equippedItems->getArmor(location);
-	}
-
 	void updateWeather();
 	void queueThrow(TangibleObject* throwItem, uint32 actionCRC);
 
@@ -1823,6 +1812,13 @@ public:
 
 	inline void setActiveArea(ActiveArea * area) {
 		activeArea = area;
+	}
+
+	Armor* getPlayerArmor (int location) {
+		if (location > 14 || location < 0)
+			return NULL;
+		else
+			return equippedItems->getArmor(location);
 	}
 
 	friend class PlayerManager;

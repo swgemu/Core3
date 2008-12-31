@@ -268,20 +268,17 @@ interface Player implements CreatureObject {
 	void changeCloth(unsigned long itemid);
 	void changeWeapon(unsigned long itemid, boolean doUpdate);
 	void changeArmor(unsigned long itemid, boolean forced);
-	Armor getPlayerArmor(int location);
 
-	//void setWeaponSkillMods(Weapon weapon);
-	//void setArmorSkillMods(Armor armor);
+	void setWeaponSkillMods(Weapon weapon);
+	void setArmorSkillMods(Armor armor);
 	boolean setArmorEncumbrance(Armor armor, boolean forced);
 	void unsetArmorEncumbrance(Armor armor);
-	void addSkillModBonus(String name, int mod, boolean updateClient = false);
 
 	void applyAttachment(unsigned long attachmentID, unsigned long targetID);
 
 	void applyPowerup(unsigned long powerupID, unsigned long targetID);
 
-	void createItems();
-	void loadItems();
+	void loadItems(boolean newcharacter);
 
 	void createBaseStats();
 
@@ -291,7 +288,7 @@ interface Player implements CreatureObject {
 
 	void addInventoryItem(TangibleObject item);
 	void addInventoryResource(ResourceContainer item);
-	void equipPlayerItem(TangibleObject item, boolean updateLevel);
+	void equipPlayerItem(TangibleObject item, boolean doUpdate);
 
 	void saveDatapad(Player player);
 
@@ -444,8 +441,6 @@ interface Player implements CreatureObject {
 	void setLinkDead();
 
 	void setLoggingIn();
-
-	void setWeaponAccuracy(Weapon weapon);
 
 	void setAdminLevel(int level);
 	int getAdminLevel();
@@ -717,5 +712,7 @@ interface Player implements CreatureObject {
 	
 	void equipItem(TangibleObject item);
 	void unequipItem(TangibleObject item);
+	
+	Armor getPlayerArmor (int location);
 	
 }

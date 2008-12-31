@@ -73,8 +73,8 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddRandomPoolAttackTargetSkill", AddRandomPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddDirectPoolAttackTargetSkill", AddDirectPoolAttackTargetSkill);
 	lua_register(getLuaState(), "AddForcePowersPoolAttackTargetSkill", AddForcePowersPoolAttackTargetSkill);
-	//lua_register(getLuaState(), "AddForceHealSelfSkill", AddWeaponlessForceHealSelfSkill);
 	lua_register(getLuaState(), "AddWeaponlessDotPoolAttackTargetSkill", AddWeaponlessDotPoolAttackSkill);
+	lua_register(getLuaState(), "AddForceHealSelfSkill", AddForceHealSelfSkill);
 	lua_register(getLuaState(), "AddHealSelfSkill", AddHealSelfSkill);
 	lua_register(getLuaState(), "AddHealTargetSkill", AddHealTargetSkill);
 	lua_register(getLuaState(), "AddHealEnhanceTargetSkill", AddHealEnhanceTargetSkill);
@@ -99,7 +99,7 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddEntertainEffectSkill", AddEntertainEffectSkill);
 	lua_register(getLuaState(), "AddDanceEffectSkill", AddDanceEffectSkill);
 	lua_register(getLuaState(), "AddMusicEffectSkill", AddMusicEffectSkill);
-	//lua_register(getLuaState(), "AddForceRunSelfSkill", AddForceRunSelfSkill);
+	lua_register(getLuaState(), "AddForceRunSelfSkill", AddForceRunSelfSkill);
 	lua_register(getLuaState(), "AddDiagnoseTargetSkill", AddDiagnoseTargetSkill);
 
 	lua_register(getLuaState(), "AddCamoSkill", AddCamoSkill);
@@ -210,6 +210,7 @@ void ScriptAttacksManager::registerGlobals() {
 	// Damage type for powers
 	setGlobalInt("KINETIC", WeaponImplementation::KINETIC);
 	setGlobalInt("ELECTRICITY", WeaponImplementation::ELECTRICITY);
+
 
 	// misc
 	setGlobalInt("HEALTH", 1);
@@ -654,7 +655,6 @@ int ScriptAttacksManager::AddForcePowersPoolAttackTargetSkill(lua_State *L) {
 	return 0;
 }
 
-/*
 int ScriptAttacksManager::AddForceHealSelfSkill(lua_State *L) {
 	LuaObject skill(L);
 
@@ -705,7 +705,7 @@ int ScriptAttacksManager::AddForceHealSelfSkill(lua_State *L) {
 	CombatActions->put(fheal);
 	return 0;
 }
-*/
+
 int ScriptAttacksManager::AddHealSelfSkill(lua_State* L) {
 	LuaObject skill(L);
 
@@ -1336,6 +1336,7 @@ int ScriptAttacksManager::AddWoundsDirectPoolAttackTargetSkill(lua_State *L) {
 	attack->setMindCostMultiplier(mindCostMultiplier);
 	attack->setForceCostMultiplier(forceCostMultiplier);
 
+
 	CombatActions->put(attack);
 	return 0;
 }
@@ -1463,7 +1464,6 @@ int ScriptAttacksManager::AddMusicEffectSkill(lua_State* L) {
 	return 0;
 }
 
-/*
 int ScriptAttacksManager::AddForceRunSelfSkill(lua_State *L) {
 	LuaObject skill(L);
 	if (!skill.isValidTable())
@@ -1486,7 +1486,6 @@ int ScriptAttacksManager::AddForceRunSelfSkill(lua_State *L) {
 	CombatActions->put(frun);
 	return 0;
 }
-*/
 
 int ScriptAttacksManager::AddDiagnoseTargetSkill(lua_State* L) {
 	LuaObject skill(L);
@@ -1565,7 +1564,6 @@ int ScriptAttacksManager::AddForageSkill(lua_State* L) {
 }
 
 /*
-
 int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
 	LuaObject skill(L);
 

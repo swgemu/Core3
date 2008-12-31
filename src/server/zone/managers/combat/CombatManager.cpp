@@ -182,6 +182,7 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 	return selfskill->getSpeed();
 }
 
+
 void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* target, CommandQueueAction* action, CombatAction* actionMessage) {
 	TargetSkill* skill = (TargetSkill*) action->getSkill();
 
@@ -362,9 +363,6 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 }
 
 bool CombatManager::canAttack(Player* player, Player* targetPlayer) {
-	/* Pre: player && targetPlayer not NULL; targetPlayer is cross locked to player
-	 * Post: player is in duel with target or is overt and has the oposite faction
-	 */
 	if (!player->isInDuelWith(targetPlayer, false)) {
 		if (!player->isOvert() || !targetPlayer->isOvert()) {
 			return false;

@@ -1755,7 +1755,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				}
 			}
 
-			if(customization != NULL)
+			if (customization != NULL)
 				delete customization;
 
 			if (target_object != NULL)
