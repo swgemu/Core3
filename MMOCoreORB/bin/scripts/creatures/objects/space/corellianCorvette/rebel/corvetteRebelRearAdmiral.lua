@@ -97,15 +97,15 @@ corvetteRebelRearAdmiral = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
+	weapon = "object/draft_schematic/weapon/shared_pistol_republic_blaster.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "Republic Blaster", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_republic_blaster", -- Weapon Template ex. 'lance_vibrolance'
-	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponTemp = "pistol_republic_blaster", -- Weapon Template ex. 'lance_vibrolance'	
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 140,
 	weaponMaxDamage = 420,
 	weaponAttackSpeed = 1.2,
-	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
