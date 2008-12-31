@@ -118,8 +118,8 @@ ThrowSkill = {
 	CbtSpamMiss = "attack_miss",
 	
 	deBuffStrFile = "trap\\trap",
-	deBuffMessage = "trap_drowsy_effect",
-	deBuffEndMessage = "trap_drowsy_effect_no",
+	deBuffHitMessage = "trap_drowsy_effect",
+	deBuffMissMessage = "trap_drowsy_effect_no",
 	
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
@@ -162,8 +162,8 @@ ThrowSkill = {
 	CbtSpamMiss = "attack_miss",
 	
 	deBuffStrFile = "trap\\trap",
-	deBuffMessage = "trap_melee_def_1_effect",
-	deBuffEndMessage = "trap_melee_def_1_effect_no",
+	deBuffHitMessage = "trap_melee_def_1_effect",
+	deBuffMissMessage = "trap_melee_def_1_effect_no",
 	
 	meleeDefDebuff = -15,
 	rangedDefDebuff = 0,
@@ -174,6 +174,11 @@ ThrowSkill = {
 AddThrowRandomPoolTargetSkill(ThrowSkill)
 
 ----------------------------- Traps TOOLS 1 -------------------------------
+
+--- Similar to the wire mesh trap, but this trap has been enhanced. 
+--- The wire mesh has been strengthened and treated with a bioluminescent goo. 
+--- The target will become easier to hit with both melee and ranged attacks.
+
 
 ThrowSkill = { 
 	attackname = "throwglowjuicetrap",
@@ -204,8 +209,8 @@ ThrowSkill = {
 	CbtSpamMiss = "attack_miss",
 	
 	deBuffStrFile = "trap\\trap",
-	deBuffMessage = "trap_melee_ranged_def_1_effect",
-	deBuffEndMessage = "trap_melee_ranged_def_1_effect_no",
+	deBuffHitMessage = "trap_melee_ranged_def_1_effect",
+	deBuffMissMessage = "trap_melee_ranged_def_1_effect_no",
 	
 	meleeDefDebuff = 0,
 	rangedDefDebuff = -15,
@@ -260,8 +265,8 @@ ThrowSkill = {
 	CbtSpamMiss = "attack_miss",
 	
 	deBuffStrFile = "trap\\trap",
-	deBuffMessage = "trap_spur_effect",
-	deBuffEndMessage = "trap_spur_effect_no",
+	deBuffHitMessage = "trap_spur_effect",
+	deBuffMissMessage = "trap_spur_effect_no",
 	
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
@@ -318,8 +323,8 @@ ThrowSkill = {
 	CbtSpamMiss = "attack_miss",
 	
 	deBuffStrFile = "trap\\trap",
-	deBuffMessage = "trap_noise_maker_effect",
-	deBuffEndMessage = "trap_noise_maker_effect_no",
+	deBuffHitMessage = "trap_noise_maker_effect",
+	deBuffMissMessage = "trap_noise_maker_effect_no",
 	
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
@@ -362,8 +367,8 @@ ThrowSkill = {
 	CbtSpamMiss = "attack_miss",
 	
 	deBuffStrFile = "trap\\trap",
-	deBuffMessage = "trap_state_def_1_effect",
-	deBuffEndMessage = "trap_state_def_1_effect_no",
+	deBuffHitMessage = "trap_state_def_1_effect",
+	deBuffMissMessage = "trap_state_def_1_effect_no",
 	
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
@@ -408,8 +413,8 @@ ThrowSkill = {
 	CbtSpamMiss = "attack_miss",
 	
 	deBuffStrFile = "trap\\trap",
-	deBuffMessage = "trap_melee_ranged_def_1_effect",
-	deBuffEndMessage = "trap_melee_ranged_def_1_effect_no",
+	deBuffHitMessage = "trap_melee_ranged_def_1_effect",
+	deBuffMissMessage = "trap_melee_ranged_def_1_effect_no",
 	
 	meleeDefDebuff = -30,
 	rangedDefDebuff = -30,
@@ -452,8 +457,8 @@ ThrowSkill = {
 	CbtSpamMiss = "attack_miss",
 
 	deBuffStrFile = "trap\\trap",
-	deBuffMessage = "trap_tranq_dart_effect",
-	deBuffEndMessage = "trap_tranq_dart_effect_no",
+	deBuffHitMessage = "trap_tranq_dart_effect",
+	deBuffMissMessage = "trap_tranq_dart_effect_no",
 	
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,
@@ -511,8 +516,8 @@ ThrowSkill = {
 	CbtSpamMiss = "attack_miss",
 	
 	deBuffStrFile = "trap\\trap",
-	deBuffMessage = "trap_webber_effect",
-	deBuffEndMessage = "trap_webber_effect_no",
+	deBuffHitMessage = "trap_webber_effect",
+	deBuffMissMessage = "trap_webber_effect_no",
 	
 	meleeDefDebuff = 0,
 	rangedDefDebuff = 0,

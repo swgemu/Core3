@@ -558,7 +558,7 @@ interface CreatureObject implements SceneObject {
 	unsigned int getHealthEncumbrance();
 	unsigned int getActionEncumbrance();
 	unsigned int getMindEncumbrance();
-	
+
 	int getpbHA();
 
 	int getpbMind(); 
@@ -655,6 +655,9 @@ interface CreatureObject implements SceneObject {
 	float getTame();
 
 	String getLootGroup();
+
+	unsigned int getFerocity();	
+	boolean isBaby();
 
 	// setters
 	void setBaseHealth(unsigned int health);
@@ -872,6 +875,10 @@ interface CreatureObject implements SceneObject {
 	void setCreatureFaction(const String cfac);
 
 	void setInternalNPCDamageModifier(float indm);
+
+	void setFerocity(unsigned int fero);	
+	
+	void setBaby(boolean baby);
 
 	// NPC weapons
 	void setCreatureWeapon(const String wpon);

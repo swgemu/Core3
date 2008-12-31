@@ -89,6 +89,7 @@ which carries forward this exception.
 
 #include "skills/PassiveSkill.h"
 #include "skills/EntertainerSkill.h"
+#include "skills/CamoSkill.h"
 
 #include "../../managers/skills/SkillManager.h"
 
@@ -323,6 +324,8 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	maskScentEvent = NULL;
 	maskScent = 0;
 
+	ferocity = 0;
+	baby = false;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -5427,7 +5430,7 @@ void CreatureObjectImplementation::activateCamo(unsigned int camoCRC ,unsigned i
 		setState(CreatureState::MASKSCENT);
 		updateStates();
 
-		if (camoType == 10)
+		if (camoType == CamoSkill::MASKSCENT)
 			sendSystemMessage("skl_use", "sys_scentmask_start");
 		else
 			sendSystemMessage("skl_use", "sys_conceal_start");
@@ -5438,7 +5441,7 @@ void CreatureObjectImplementation::deactivateCamo(bool forced) {
 
 		if (forced)
 			sendSystemMessage("skl_use", "sys_scentmask_break");
-		else if (getCamoType() == 10)
+		else if (getCamoType() == CamoSkill::MASKSCENT)
 			sendSystemMessage("skl_use", "sys_scentmask_stop ");
 		else
 			sendSystemMessage("skl_use", "sys_conceal_stop ");

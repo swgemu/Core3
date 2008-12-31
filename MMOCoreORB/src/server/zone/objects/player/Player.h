@@ -847,6 +847,8 @@ public:
 
 	void setActiveArea(ActiveArea* area);
 
+	void throwTrap(unsigned int targetID);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -1655,6 +1657,8 @@ public:
 	ActiveArea* getActiveArea();
 
 	void setActiveArea(ActiveArea* area);
+
+	void throwTrap(unsigned int targetID);
 
 protected:
 	String _param0_queueFlourish__String_long_int_;

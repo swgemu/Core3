@@ -49,3 +49,5 @@ RunItemLUAFile("objects/traps/phecnacineDart.lua");
 RunItemLUAFile("objects/traps/sharpBoneSpur.lua");
 RunItemLUAFile("objects/traps/stinkBomb.lua");
 RunItemLUAFile("objects/traps/wireMeshTrap.lua");
+RunItemLUAFile("objects/traps/flashBomb.lua");
+RunItemLUAFile("objects/traps/sonicPulse.lua");

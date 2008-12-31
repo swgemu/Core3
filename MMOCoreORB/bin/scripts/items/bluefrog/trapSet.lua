@@ -40,5 +40,5 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-trap_set = {adhesiveMesh,glowJuiceTrap, glowWireTrap, lecepaninDart, noiseMaker, phecnacineDart, sharpBoneSpur, stinkBomb, wireMeshTrap}
+trap_set = {adhesiveMesh,glowJuiceTrap, glowWireTrap, lecepaninDart, noiseMaker, phecnacineDart, sharpBoneSpur, stinkBomb, wireMeshTrap, flashBomb, sonicPulse}
 addBFItemSet("Trap Set" , trap_set);

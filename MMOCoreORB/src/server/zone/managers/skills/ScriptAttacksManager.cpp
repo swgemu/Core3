@@ -1524,15 +1524,15 @@ int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
 	int snareStateChance = skill.getIntField("snareChance");
 	int rootStateChance = skill.getIntField("rootChance");
 
-//	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
-//	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
-//	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
-//	string CbtSpamHit = skill.getStringField("CbtSpamHit");
-//	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 	String deBuffStrFile = skill.getStringField("deBuffStrFile");
-	String deBuffMessage = skill.getStringField("deBuffMessage");
-	String deBuffEndMessage = skill.getStringField("deBuffEndMessage");
+	String deBuffHitMessage = skill.getStringField("deBuffHitMessage");
+	String deBuffMissMessage = skill.getStringField("deBuffMissMessage");
 
 	int meleeDefDebuff = skill.getIntField("meleeDefDebuff");
 	int rangedDefDebuff = skill.getIntField("rangedDefDebuff");
@@ -1559,15 +1559,15 @@ int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
 	attack->setSnareChance(snareStateChance);
 	attack->setRootChance(rootStateChance);
 
-//	attack->setCbtSpamHit(CbtSpamHit);
-//	attack->setCbtSpamMiss(CbtSpamMiss);
-//	attack->setCbtSpamEvade(CbtSpamEvade);
-//	attack->setCbtSpamCounter(CbtSpamCounter);
-//	attack->setCbtSpamBlock(CbtSpamBlock);
+	attack->setCbtSpamHit(CbtSpamHit);
+	attack->setCbtSpamMiss(CbtSpamMiss);
+	attack->setCbtSpamEvade(CbtSpamEvade);
+	attack->setCbtSpamCounter(CbtSpamCounter);
+	attack->setCbtSpamBlock(CbtSpamBlock);
 
 	attack->setDeBuffStrFile(deBuffStrFile);
-	attack->setDeBuffMessage(deBuffMessage);
-	attack->setDeBuffEndMessage(deBuffEndMessage);
+	attack->setDeBuffHitMessage(deBuffHitMessage);
+	attack->setDeBuffMissMessage(deBuffMissMessage);
 
 	attack->setMeleeDefDebuff(meleeDefDebuff);
 	attack->setRangedDefDebuff(rangedDefDebuff);
@@ -1628,15 +1628,15 @@ int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	int snareStateChance = skill.getIntField("snareChance");
 	int rootStateChance = skill.getIntField("rootChance");
 
-//	string CbtSpamBlock = skill.getStringField("CbtSpamBlock");
-//	string CbtSpamCounter = skill.getStringField("CbtSpamCounter");
-//	string CbtSpamEvade = skill.getStringField("CbtSpamEvade");
-//	string CbtSpamHit = skill.getStringField("CbtSpamHit");
-//	string CbtSpamMiss = skill.getStringField("CbtSpamMiss");
+	String CbtSpamBlock = skill.getStringField("CbtSpamBlock");
+	String CbtSpamCounter = skill.getStringField("CbtSpamCounter");
+	String CbtSpamEvade = skill.getStringField("CbtSpamEvade");
+	String CbtSpamHit = skill.getStringField("CbtSpamHit");
+	String CbtSpamMiss = skill.getStringField("CbtSpamMiss");
 
 	String deBuffStrFile = skill.getStringField("deBuffStrFile");
-	String deBuffMessage = skill.getStringField("deBuffMessage");
-	String deBuffEndMessage = skill.getStringField("deBuffEndMessage");
+	String deBuffHitMessage = skill.getStringField("deBuffHitMessage");
+	String deBuffMissMessage = skill.getStringField("deBuffMissMessage");
 
 
 	int meleeDefDebuff = skill.getIntField("meleeDefDebuff");
@@ -1675,15 +1675,15 @@ int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	attack->setSnareChance(snareStateChance);
 	attack->setRootChance(rootStateChance);
 
-//	attack->setCbtSpamHit(CbtSpamHit);
-//	attack->setCbtSpamMiss(CbtSpamMiss);
-//	attack->setCbtSpamEvade(CbtSpamEvade);
-//	attack->setCbtSpamCounter(CbtSpamCounter);
-//	attack->setCbtSpamBlock(CbtSpamBlock);
+	attack->setCbtSpamHit(CbtSpamHit);
+	attack->setCbtSpamMiss(CbtSpamMiss);
+	attack->setCbtSpamEvade(CbtSpamEvade);
+	attack->setCbtSpamCounter(CbtSpamCounter);
+	attack->setCbtSpamBlock(CbtSpamBlock);
 
 	attack->setDeBuffStrFile(deBuffStrFile);
-	attack->setDeBuffMessage(deBuffMessage);
-	attack->setDeBuffEndMessage(deBuffEndMessage);
+	attack->setDeBuffHitMessage(deBuffHitMessage);
+	attack->setDeBuffMissMessage(deBuffMissMessage);
 
 	attack->setMeleeDefDebuff(meleeDefDebuff);
 	attack->setRangedDefDebuff(rangedDefDebuff);

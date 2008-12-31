@@ -709,5 +709,6 @@ interface Player implements CreatureObject {
 	
 	ActiveArea getActiveArea();
 	void setActiveArea(ActiveArea area);
-	
+
+	void throwTrap(unsigned int targetID);	
 }

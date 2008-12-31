@@ -5625,3 +5625,24 @@ void PlayerImplementation::teachSkill(String& skillname) {
 	getTeacher()->setStudent(NULL);
 	setTeacher(NULL);
 }
+
+void PlayerImplementation::throwTrap(uint64 targetID) {
+	Inventory* inventory = getInventory();
+
+	if (inventory != NULL) {
+		for (int i = 0; i < inventory->objectsSize(); i++) {
+			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+			if (item->isTrap()) {
+				TrapThrowableWeapon* trap = (TrapThrowableWeapon*) item;
+
+				if (trap->isUsefull(_this)) {
+
+					trap->useObject(_this);
+					return;
+				}
+			}
+		}
+	}
+}
+

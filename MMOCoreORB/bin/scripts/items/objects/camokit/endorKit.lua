@@ -8,9 +8,9 @@ camoKitEndor = Object:new {
 
 	objectType = CAMOKIT,   -- 567894,
 
-	planetType = 3,
+	planetType = ENDOR,
 
-	uses = 5,
+	uses = 15,
 	
 	concealSkill = 80
 }

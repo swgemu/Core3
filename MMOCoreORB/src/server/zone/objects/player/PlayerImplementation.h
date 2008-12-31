@@ -1809,6 +1809,8 @@ public:
 		activeArea = area;
 	}
 
+	void throwTrap(uint64 targetID);
+
 	friend class PlayerManager;
 	friend class ProfessionManager;
 	friend class SkillManager;

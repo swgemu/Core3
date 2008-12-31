@@ -136,7 +136,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 
 		player->updateServerMovementStamp();
 
-		if ((serverStamp > 50) && ((serverStamp + 250) < (uint64)deltaStamp)) {
+		if ((serverStamp > 50) && ((serverStamp + 250) < (uint64) deltaStamp)) {
 			StringBuffer deltas;
 			deltas << "speed hack detected " << "deltaStamp:[" << deltaStamp
 					<< "] serversStamp:[" << serverStamp << "]";
@@ -159,7 +159,7 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 			float dist = sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
 					- lastPosY) * (y - lastPosY)));
 
-			float speed = dist * 1000 / (float)deltaStamp;
+			float speed = dist * 1000 / (float) deltaStamp;
 
 			if (speed > player->getSpeed() * 1.5) {
 				StringBuffer msg;
@@ -188,7 +188,6 @@ bool ObjectControllerMessage::parseDataTransform(Player* player, Message* pack) 
 	player->setDirection(dx, dz, dy, dw);
 	player->setPosition(x, z, y);
 
-
 	/*System::out << "Player [" << player->getObjectID() << "] - Counter [" << player->getMovementCounter() << "]"
 	 << " - Position (" << (int) x << "," << (int) z << "," << (int) y << ")\n";*/
 
@@ -210,7 +209,6 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 	Zone* zone = player->getZone();
 	if (zone == NULL)
 		return 0;
-
 
 	if (player->getParent() != NULL)
 		oldParent = player->getParent()->getObjectID();
@@ -259,7 +257,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 
 		player->updateServerMovementStamp();
 
-		if ((serverStamp > 50) && ((serverStamp + 250) < (uint64)deltaStamp)) {
+		if ((serverStamp > 50) && ((serverStamp + 250) < (uint64) deltaStamp)) {
 			StringBuffer deltas;
 			deltas << "speed hack detected " << "deltaStamp:[" << deltaStamp
 					<< "] serversStamp:[" << serverStamp << "]";
@@ -280,7 +278,7 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 			float dist = sqrt(((x - lastPosX) * (x - lastPosX)) + ((y
 					- lastPosY) * (y - lastPosY)));
 
-			float speed = dist * 1000 / (float)deltaStamp;
+			float speed = dist * 1000 / (float) deltaStamp;
 
 			if (speed > player->getSpeed() * 1.5) {
 				StringBuffer msg;
@@ -302,26 +300,25 @@ uint64 ObjectControllerMessage::parseDataTransformWithParent(Player* player,
 		player->setLastTestPositionY(y);
 	}
 
-
 	/*
-	// if we changed cell
-	if (oldParent != parent)
-	{
-		// Just entered building
-		if (oldParent != 0)
-		{
-			// Remove from old parent cell?
+	 // if we changed cell
+	 if (oldParent != parent)
+	 {
+	 // Just entered building
+	 if (oldParent != 0)
+	 {
+	 // Remove from old parent cell?
 
-		}
-		else // from outside
-		{
-			// Remove from quadtree? before entering?
-		}
+	 }
+	 else // from outside
+	 {
+	 // Remove from quadtree? before entering?
+	 }
 
-		// Add to cell
-		UpdateContainmentMessage* link = new UpdateContainmentMessage(player->getObjectID(), parent, 0x04);
-		player->broadcastMessage(link);
-	}*/
+	 // Add to cell
+	 UpdateContainmentMessage* link = new UpdateContainmentMessage(player->getObjectID(), parent, 0x04);
+	 player->broadcastMessage(link);
+	 }*/
 
 	player->setDirection(dx, dz, dy, dw);
 	player->setPosition(x, z, y);
@@ -348,8 +345,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	 * Player is wlock() upon entry
 	 */
 
-	//cout << pack->toString() << "\n";
-
 	pack->shiftOffset(12); // skip ObjectID and size
 
 	//uint32 objectid = pack->parseLong(); // grab object id
@@ -360,7 +355,6 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	uint64 target;
 	UnicodeString name;
 
-
 	if (actionCRC == 0) {
 		player->clearQueueAction(actioncntr, 0.0f, 0, 0);
 		return;
@@ -368,68 +362,68 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 
 	// DO NOT FORGET TO ADD EVERYTHING WHICH IS ALLOWED WHILE BEING INCAP/DEAD TO THIS SWITCH HERE AS WELL
 	switch (actionCRC) {
-		case (0x68851C4F): // groupchat
-		case (0x0315D6D9): // g
-		case (0x3CDFF0CC): // gsay
-		case (0xEA69C1BD): // activateClone
-		case (0x3F8F3496): // consent
-		case (0xA2DF082A): // unconsent
-		case (0xB93A3853): // haveconsent
-		case (0x1E0B1E43): // guildremove
-		case (0x03B65950): // Logout
-		case (0x887B5461): // requestcharactersheetinfo
-		case (0xCA604B86): // requestbadges
-		case (0x7AFCA539): // requeststatmigrationdata
-		case (0x1BAD8FFC): // requestbiography
-		case (0xFBE911E4): // setbiography
-		case (0x164550EF): // getattributesbatch
-		case (0xDB555329): // setcurrentskilltitle
-		case (0xA6F95839): // showpvprating
-		case (0x9B9FE4A8): // toggleawayfromkeyboard
-		case (0x3AD396A5): // lfg
-		case (0x441F4A3E): // newbiehelper
-		case (0x32871193): // roleplay
-		case (0x665C7C03): // display faction rank
-		case (0xD40D5142): // anon
-		case (0x4982E17B): // requestwaypointatposition
-		case (0x8A19D7E1): // requestcharactermatch
-		case (0x640543FE): // waypoint (/way)
-		case (0x398F891A): // setwaypointname
-		case (0xC3EDA6B6): // setwaypointactivestatus
-		case (0x88505D58): // invite
-		case (0x2E26A47F): // uninvite
-		case (0x43E1F84F): // decline
-		case (0xA99E6807): // join
-		case (0x5061D654): // leavegroup
-		case (0x2F50053B): // dismissgroupmember
-		case (0x46D22D3A): // disband
-		case (0x939AD584): // makeleader
-		case (0x79DEB176): // guild (chat)
-		case (0x47948A6D): // guildsay
-		case (0xC64D8CB0): // tip
-		case (0x4178FD6A): // peace
-		case (0xEF3CBEDB): // loot
-		case (0x3CD5C98D): // lootall
-		case (0x2A2357ED): // Add Friend
-		case (0x929AD345): // Add Ignore
-		case (0x3629157F): // Remove Ignore
-		case (0x30BE6EE9): // Find Friend
-		case (0x8E9091D7): // Remove Friend
-		case (0x029D0CC5): // Harvest
-			break;
-		default:
-			if ( player->isIncapacitated() || player->isDead() ) {
-				player->clearQueueAction(actioncntr, 0.0f, 1, 19);
-				return;
-			}
+	case (0x68851C4F): // groupchat
+	case (0x0315D6D9): // g
+	case (0x3CDFF0CC): // gsay
+	case (0xEA69C1BD): // activateClone
+	case (0x3F8F3496): // consent
+	case (0xA2DF082A): // unconsent
+	case (0xB93A3853): // haveconsent
+	case (0x1E0B1E43): // guildremove
+	case (0x03B65950): // Logout
+	case (0x887B5461): // requestcharactersheetinfo
+	case (0xCA604B86): // requestbadges
+	case (0x7AFCA539): // requeststatmigrationdata
+	case (0x1BAD8FFC): // requestbiography
+	case (0xFBE911E4): // setbiography
+	case (0x164550EF): // getattributesbatch
+	case (0xDB555329): // setcurrentskilltitle
+	case (0xA6F95839): // showpvprating
+	case (0x9B9FE4A8): // toggleawayfromkeyboard
+	case (0x3AD396A5): // lfg
+	case (0x441F4A3E): // newbiehelper
+	case (0x32871193): // roleplay
+	case (0x665C7C03): // display faction rank
+	case (0xD40D5142): // anon
+	case (0x4982E17B): // requestwaypointatposition
+	case (0x8A19D7E1): // requestcharactermatch
+	case (0x640543FE): // waypoint (/way)
+	case (0x398F891A): // setwaypointname
+	case (0xC3EDA6B6): // setwaypointactivestatus
+	case (0x88505D58): // invite
+	case (0x2E26A47F): // uninvite
+	case (0x43E1F84F): // decline
+	case (0xA99E6807): // join
+	case (0x5061D654): // leavegroup
+	case (0x2F50053B): // dismissgroupmember
+	case (0x46D22D3A): // disband
+	case (0x939AD584): // makeleader
+	case (0x79DEB176): // guild (chat)
+	case (0x47948A6D): // guildsay
+	case (0xC64D8CB0): // tip
+	case (0x4178FD6A): // peace
+	case (0xEF3CBEDB): // loot
+	case (0x3CD5C98D): // lootall
+	case (0x2A2357ED): // Add Friend
+	case (0x929AD345): // Add Ignore
+	case (0x3629157F): // Remove Ignore
+	case (0x30BE6EE9): // Find Friend
+	case (0x8E9091D7): // Remove Friend
+	case (0x029D0CC5): // Harvest
+		break;
+	default:
+		if (player->isIncapacitated() || player->isDead()) {
+			player->clearQueueAction(actioncntr, 0.0f, 1, 19);
+			return;
+		}
 	}
 
 	player->setActionCounter(actioncntr);
 
 	/*StringBuffer msg;
-	msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
-	player->info(msg.toString());
-	System::out << msg.toString() << endl;*/
+	 msg << "parsing CommandQueueEnqueue actionCRC = (0x" << hex << actionCRC << dec <<  ")";
+	 player->info(msg.toString());
+	 System::out << msg.toString() << endl;*/
 
 	ChatManager* chatManager;
 	CombatManager* combatManager = serv->getCombatManager();
@@ -447,8 +441,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		handleRemoveFromGuild(player, pack, serv);
 		break;
 	case (0x124629F2): // Meditating
-	    if (parseMeditation(player))
-	    	player->queueAction(player, target, actionCRC, actioncntr, "");
+		if (parseMeditation(player))
+			player->queueAction(player, target, actionCRC, actioncntr, "");
 		break;
 	case (0x8C2221CB): // Powerboost
 		if (!player->hasSkill(actionCRC)) {
@@ -472,7 +466,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case (0xEA69C1BD): //activateClone
 		if (!player->isDead()) {
-			player->sendSystemMessage("You must be dead to activate your clone.");
+			player->sendSystemMessage(
+					"You must be dead to activate your clone.");
 		} else {
 			player->activateClone();
 		}
@@ -776,7 +771,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0xE5F3B39B):
 		handleDeathblow(player, pack, combatManager);
 		break;
-	case (0x7AF26B0B):  // Place Structure
+	case (0x7AF26B0B): // Place Structure
 		parsePlaceStructure(player, pack);
 		break;
 	case (0xF9996AB6): // synchronizeduilisten
@@ -785,24 +780,24 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x7C158EFD): // synchronizeduistoplistening
 		parseSynchronizedUIStopListening(player, pack);
 		break;
-	case (0xCE645C94):  // harvesteractivate
+	case (0xCE645C94): // harvesteractivate
 		parseHarvesterActivate(player, pack);
 		break;
-	case (0x2C61CB03):  // harvesterdeactivate
+	case (0x2C61CB03): // harvesterdeactivate
 		parseHarvesterDeActivate(player, pack);
 		break;
-	case (0xC89B9E26):  // harvesterdiscardhopper
+	case (0xC89B9E26): // harvesterdiscardhopper
 		parseHarvesterDiscardHopper(player, pack);
 		break;
-	case (0xF096C059):  // harvestergetresourcedata
+	case (0xF096C059): // harvestergetresourcedata
 		parseHarvesterGetResourceData(player, pack);
 		break;
-	case (0x9A35978E):  // harvestermakecrate
+	case (0x9A35978E): // harvestermakecrate
 		break;
-	case (0xFF549D14):  // harvesterselectresource
+	case (0xFF549D14): // harvesterselectresource
 		parseHarvesterSelectResource(player, pack);
 		break;
-	case (0x7EE9D72B):  // harvestertakesurvey
+	case (0x7EE9D72B): // harvestertakesurvey
 		break;
 	case (0x19C9FAC1):
 		parseSurveySlashRequest(player, pack);
@@ -869,7 +864,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x3629157F): // Remove Ignore
 		parseRemoveIgnore(player, pack);
 		break;
-	case (0x30BE6EE9 ): // Find Friend
+	case (0x30BE6EE9): // Find Friend
 		parseFindFriend(player, pack, serv->getZoneServer()->getPlayerManager());
 		break;
 	case (0x8E9091D7): // Remove Friend
@@ -881,6 +876,10 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0xCF2D30F4): // newbieselectstartinglocation
 		parseNewbieSelectStartingLocation(player, pack);
 		break;
+	case (88718951): //throwtrap
+		System::out << "CMD: throwtrap\n";
+		parseThrowTrap(player, pack);
+		break;
 	case (0x5041F83A): // Teach
 		parseTeach(player, pack);
 		break;
@@ -890,7 +889,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 
 		// fancy if statement
 		switch (actionCRC) { // modifier for entertainer-type commands /dazzle 2 vs /dazzle 1
-							 // they're dumb and all have the same action crc
+		// they're dumb and all have the same action crc
 		case (0x7B1DCBE0): //startdance
 		case (0xDDD1E8F1): //startmusic
 			//	target = player->getObjectID(); // Fake Queue Action on this - the parseLong is blank
@@ -917,19 +916,21 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 			break;
 		default:
 			/* StringBuffer opc;
-			opc << "Opc: " << hex << actionCRC;
-			player->sendSystemMessage(opc.toString());*/
+			 opc << "Opc: " << hex << actionCRC;
+			 player->sendSystemMessage(opc.toString());*/
 			break;
 		}
 
-		player->queueAction(player, target, actionCRC, actioncntr, actionModifier.toCharArray());
+		player->queueAction(player, target, actionCRC, actioncntr,
+				actionModifier.toCharArray());
 		return;
 	}
 
 	player->clearQueueAction(actioncntr);
 }
 
-void ObjectControllerMessage::parseAttachmentDragDrop(Player* player, Message* pack) {
+void ObjectControllerMessage::parseAttachmentDragDrop(Player* player,
+		Message* pack) {
 	if (player->getTradeSize() != 0) {
 		player->sendSystemMessage("You cant move objects while trading..");
 		return;
@@ -948,7 +949,8 @@ void ObjectControllerMessage::parseAttachmentDragDrop(Player* player, Message* p
 	}
 }
 
-void ObjectControllerMessage::parsePowerupDragDrop(Player* player, Message* pack) {
+void ObjectControllerMessage::parsePowerupDragDrop(Player* player,
+		Message* pack) {
 	if (player->getTradeSize() != 0) {
 		player->sendSystemMessage("You cant move objects while trading..");
 		return;
@@ -967,7 +969,8 @@ void ObjectControllerMessage::parsePowerupDragDrop(Player* player, Message* pack
 	}
 }
 
-void ObjectControllerMessage::parseCommandQueueClear(Player* player, Message* pack) {
+void ObjectControllerMessage::parseCommandQueueClear(Player* player,
+		Message* pack) {
 	pack->shiftOffset(12); // skip ObjectID and size
 
 	uint32 actioncntr = pack->parseInt();
@@ -977,7 +980,8 @@ void ObjectControllerMessage::parseCommandQueueClear(Player* player, Message* pa
 	player->deleteQueueAction(actioncntr);
 }
 
-void ObjectControllerMessage::parseSurrenderSkillBox(Player* player, Message* pack) {
+void ObjectControllerMessage::parseSurrenderSkillBox(Player* player,
+		Message* pack) {
 	try {
 		pack->shiftOffset(8);
 
@@ -986,11 +990,13 @@ void ObjectControllerMessage::parseSurrenderSkillBox(Player* player, Message* pa
 
 		player->surrenderSkillBox(skillBox.toString());
 	} catch (...) {
-		System::out << "unreported ObjectControllerMessage::parseSurrenderSkillBox(Player* player, Message* pack) exception\n";
+		System::out
+				<< "unreported ObjectControllerMessage::parseSurrenderSkillBox(Player* player, Message* pack) exception\n";
 	}
 }
 
-void ObjectControllerMessage::parseNpcStartConversation(Player* player,	Message* pack) {
+void ObjectControllerMessage::parseNpcStartConversation(Player* player,
+		Message* pack) {
 	uint64 target = pack->parseLong();
 
 	SceneObject* object = player->getZone()->lookupObject(target);
@@ -1001,21 +1007,23 @@ void ObjectControllerMessage::parseNpcStartConversation(Player* player,	Message*
 				object->wlock(player);
 
 			if (player->isInRange(object, 5)) {
-				player->setConversatingCreature((CreatureObject*)object);
+				player->setConversatingCreature((CreatureObject*) object);
 				object->sendConversationStartTo(player);
 			}
 
 			if (object != player)
 				object->unlock();
 		} catch (...) {
-			player->error("unreported ObjectControllerMessage::parseNpcStartConversation(Player* player, Message* pack) exception");
+			player->error(
+					"unreported ObjectControllerMessage::parseNpcStartConversation(Player* player, Message* pack) exception");
 			if (object != player)
 				object->unlock();
 		}
 	}
 }
 
-void ObjectControllerMessage::parseNpcConversationSelect(Player* player, Message* pack) {
+void ObjectControllerMessage::parseNpcConversationSelect(Player* player,
+		Message* pack) {
 	pack->shiftOffset(8);
 
 	SceneObject* object = player->getConversatingCreature();
@@ -1032,7 +1040,8 @@ void ObjectControllerMessage::parseNpcConversationSelect(Player* player, Message
 	}
 }
 
-void ObjectControllerMessage::parseNpcStopConversation(Player* player, Message* pack) {
+void ObjectControllerMessage::parseNpcStopConversation(Player* player,
+		Message* pack) {
 	uint64 target = pack->parseLong();
 
 	CreatureObject* npc = player->getConversatingCreature();
@@ -1040,31 +1049,35 @@ void ObjectControllerMessage::parseNpcStopConversation(Player* player, Message* 
 	if (npc != NULL) {
 		try {
 			if (npc != player)
-			npc->wlock(player);
+				npc->wlock(player);
 
-			StopNpcConversation* conv = new StopNpcConversation(player, npc->getObjectID());
+			StopNpcConversation* conv = new StopNpcConversation(player,
+					npc->getObjectID());
 			player->setConversatingCreature(NULL);
 
 			player->sendMessage(conv);
 
 			if (npc != player)
-			npc->unlock();
+				npc->unlock();
 		} catch (...) {
-			System::out << "unreported ObjectControllerMessage::parseNpcStopConversation(Player* player, Message* pack) exception\n";
+			System::out
+					<< "unreported ObjectControllerMessage::parseNpcStopConversation(Player* player, Message* pack) exception\n";
 			if (npc != player)
-			npc->unlock();
+				npc->unlock();
 		}
 	}
 }
 
-void ObjectControllerMessage::parseStatMigrationDataRequest(Player* player, Message* pack) {
+void ObjectControllerMessage::parseStatMigrationDataRequest(Player* player,
+		Message* pack) {
 	uint64 objectid = pack->parseLong();
 
 	StatMigrationTargetsMessage* smtm = new StatMigrationTargetsMessage(player);
 	player->sendMessage(smtm);
 }
 
-void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, Message* pack) {
+void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player,
+		Message* pack) {
 	uint64 objectid = pack->parseLong();
 
 	UnicodeString stats = UnicodeString("");
@@ -1083,24 +1096,41 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 	 * TODO: Stat migration bug tracking.  Remove later. *
 	 ****************************************************/
 	ChatManager * chatManager = player->getZone()->getChatManager();
-	const String  sender = "BUG TRACKER";
+	const String sender = "BUG TRACKER";
 	UnicodeString header = "STAT MIGRATION BUG REPORT";
 	StringBuffer ss;
-	ss << "The stat migration protection system has been triggered for user " << player->getCharacterName().toString() << "." << endl;
+	ss << "The stat migration protection system has been triggered for user "
+			<< player->getCharacterName().toString() << "." << endl;
 	ss << "The following is the relevant debug information:" << endl << endl;
 	ss << "Player Name: " << player->getCharacterName().toString() << endl;
 	ss << "Species: " << player->getSpeciesName() << endl;
 	ss << "Sex: " << player->getGender() << endl;
 	ss << "Target Stats: " << stats.toString() << endl;
-	ss << "Min/Max/Current Health: " << player->getMinHealth() << " | " << player->getMaxHealth() << " | " << player->getBaseHealth() << endl;
-	ss << "Min/Max/Current Strength: " << player->getMinStrength() << " | " << player->getMaxStrength() << " | " << player->getBaseStrength() << endl;
-	ss << "Min/Max/Current Constitution: " << player->getMinConstitution() << " | " << player->getMaxConstitution() << " | " << player->getBaseConstitution() << endl;
-	ss << "Min/Max/Current Action: " << player->getMinAction() << " | " << player->getMaxAction() << " | " << player->getBaseAction() << endl;
-	ss << "Min/Max/Current Quickness: " << player->getMinQuickness() << " | " << player->getMaxQuickness() << " | " << player->getBaseQuickness() << endl;
-	ss << "Min/Max/Current Stamina: " << player->getMinStamina() << " | " << player->getMaxStamina() << " | " << player->getBaseStamina() << endl;
-	ss << "Min/Max/Current Mind: " << player->getMinMind() << " | " << player->getMaxMind() << " | " << player->getBaseMind() << endl;
-	ss << "Min/Max/Current Focus: " << player->getMinFocus() << " | " << player->getMaxFocus() << " | " << player->getBaseFocus() << endl;
-	ss << "Min/Max/Current Willpower: " << player->getMinWillpower() << " | " << player->getMaxWillpower() << " | " << player->getBaseWillpower() << endl;
+	ss << "Min/Max/Current Health: " << player->getMinHealth() << " | "
+			<< player->getMaxHealth() << " | " << player->getBaseHealth()
+			<< endl;
+	ss << "Min/Max/Current Strength: " << player->getMinStrength() << " | "
+			<< player->getMaxStrength() << " | " << player->getBaseStrength()
+			<< endl;
+	ss << "Min/Max/Current Constitution: " << player->getMinConstitution()
+			<< " | " << player->getMaxConstitution() << " | "
+			<< player->getBaseConstitution() << endl;
+	ss << "Min/Max/Current Action: " << player->getMinAction() << " | "
+			<< player->getMaxAction() << " | " << player->getBaseAction()
+			<< endl;
+	ss << "Min/Max/Current Quickness: " << player->getMinQuickness() << " | "
+			<< player->getMaxQuickness() << " | " << player->getBaseQuickness()
+			<< endl;
+	ss << "Min/Max/Current Stamina: " << player->getMinStamina() << " | "
+			<< player->getMaxStamina() << " | " << player->getBaseStamina()
+			<< endl;
+	ss << "Min/Max/Current Mind: " << player->getMinMind() << " | "
+			<< player->getMaxMind() << " | " << player->getBaseMind() << endl;
+	ss << "Min/Max/Current Focus: " << player->getMinFocus() << " | "
+			<< player->getMaxFocus() << " | " << player->getBaseFocus() << endl;
+	ss << "Min/Max/Current Willpower: " << player->getMinWillpower() << " | "
+			<< player->getMaxWillpower() << " | " << player->getBaseWillpower()
+			<< endl;
 	ss << "Total Attrib Points: " << player->getTotalAttribPoints();
 	UnicodeString body = UnicodeString(ss.toString());
 	const String reciever = "Bobius";
@@ -1108,72 +1138,79 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 
 	for (int i = 0; tokenizer.hasMoreTokens(); i++) {
 		uint32 value = tokenizer.getIntToken();
-		switch(i) {
-			case 0:
-				if (value < player->getMinHealth() || value > player->getMaxHealth()) {
-					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-					return;
-				} else
-					targetHealth = value;
-				break;
-			case 1:
-				if (value < player->getMinStrength() || value > player->getMaxStrength()) {
-					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-					return;
-				} else
-					targetStrength = value;
-				break;
-			case 2:
-				if (value < player->getMinConstitution() || value > player->getMaxConstitution()) {
-					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-					return;
-				} else
-					targetConstitution = value;
-				break;
-			case 3:
-				if (value < player->getMinAction() || value > player->getMaxAction()) {
-					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-					return;
-				} else
-					targetAction = value;
-				break;
-			case 4:
-				if (value < player->getMinQuickness() || value > player->getMaxQuickness()) {
-					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-					return;
-				} else
-					targetQuickness = value;
-				break;
-			case 5:
-				if (value < player->getMinStamina() || value > player->getMaxStamina()) {
-					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-					return;
-				} else
-					targetStamina = value;
-				break;
-			case 6:
-				if (value < player->getMinMind() || value > player->getMaxMind()) {
-					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-					return;
-				} else
-					targetMind = value;
-				break;
-			case 7:
-				if (value < player->getMinFocus() || value > player->getMaxFocus()) {
-					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-					return;
-				} else
-					targetFocus = value;
-				break;
-			case 8:
-				if (value < player->getMinWillpower() || value > player->getMaxWillpower()) {
-					chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
-					return;
-				} else
-					targetWillpower = value;
-				break;
-			default: // points available
-				break;
+		switch (i) {
+		case 0:
+			if (value < player->getMinHealth() || value
+					> player->getMaxHealth()) {
+				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+				return;
+			} else
+				targetHealth = value;
+			break;
+		case 1:
+			if (value < player->getMinStrength() || value
+					> player->getMaxStrength()) {
+				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+				return;
+			} else
+				targetStrength = value;
+			break;
+		case 2:
+			if (value < player->getMinConstitution() || value
+					> player->getMaxConstitution()) {
+				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+				return;
+			} else
+				targetConstitution = value;
+			break;
+		case 3:
+			if (value < player->getMinAction() || value
+					> player->getMaxAction()) {
+				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+				return;
+			} else
+				targetAction = value;
+			break;
+		case 4:
+			if (value < player->getMinQuickness() || value
+					> player->getMaxQuickness()) {
+				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+				return;
+			} else
+				targetQuickness = value;
+			break;
+		case 5:
+			if (value < player->getMinStamina() || value
+					> player->getMaxStamina()) {
+				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+				return;
+			} else
+				targetStamina = value;
+			break;
+		case 6:
+			if (value < player->getMinMind() || value > player->getMaxMind()) {
+				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+				return;
+			} else
+				targetMind = value;
+			break;
+		case 7:
+			if (value < player->getMinFocus() || value > player->getMaxFocus()) {
+				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+				return;
+			} else
+				targetFocus = value;
+			break;
+		case 8:
+			if (value < player->getMinWillpower() || value
+					> player->getMaxWillpower()) {
+				chatManager->sendMail(sender, header, body, reciever); //TODO: remove bug tracking code later
+				return;
+			} else
+				targetWillpower = value;
+			break;
+		default: // points available
+			break;
 		}
 	}
 
@@ -1210,15 +1247,17 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player, M
 	//player->sendMessage(smtm);
 }
 
-
-void ObjectControllerMessage::parseCharacterSheetInfoRequest(Player* player, Message* pack) {
+void ObjectControllerMessage::parseCharacterSheetInfoRequest(Player* player,
+		Message* pack) {
 	uint64 objectid = pack->parseLong();
 
-	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(player);
+	CharacterSheetResponseMessage* csrm = new CharacterSheetResponseMessage(
+			player);
 	player->sendMessage(csrm);
 }
 
-void ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack) {
+void ObjectControllerMessage::parseBiographyRequest(Player* player,
+		Message *pack) {
 	uint64 objectid = pack->parseLong();
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -1239,7 +1278,8 @@ void ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pac
 			if (play != player)
 				play->unlock();
 		} catch (...) {
-			System::out << "Unreported exception in ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack)";
+			System::out
+					<< "Unreported exception in ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack)";
 			if (play != player)
 				play->unlock();
 		}
@@ -1277,7 +1317,8 @@ void ObjectControllerMessage::parseBadgesRequest(Player* player, Message *pack) 
 			if (play != player)
 				play->unlock();
 		} catch (...) {
-			System::out << "Unreported exception in ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack)";
+			System::out
+					<< "Unreported exception in ObjectControllerMessage::parseBiographyRequest(Player* player, Message *pack)";
 			if (play != player)
 				play->unlock();
 		}
@@ -1369,15 +1410,17 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 	}
 
 	// create ticket item
-	Ticket* ticket = new Ticket(player, 0xDAA0DE83, UnicodeString("Travel Ticket"), "travel_ticket",
-			departurePlanet, departurePoint, arrivalPlanet, arrivalPoint);
+	Ticket* ticket = new Ticket(player, 0xDAA0DE83, UnicodeString(
+			"Travel Ticket"), "travel_ticket", departurePlanet, departurePoint,
+			arrivalPlanet, arrivalPoint);
 
 	player->addInventoryItem(ticket);
 	ticket->sendTo(player, true);
 
 	if (roundTrip) {
-		Ticket* returnTicket = new Ticket(player, 0xDAA0DE83, UnicodeString("Travel Ticket"), "travel_ticket",
-				arrivalPlanet, arrivalPoint, departurePlanet, departurePoint);
+		Ticket* returnTicket = new Ticket(player, 0xDAA0DE83, UnicodeString(
+				"Travel Ticket"), "travel_ticket", arrivalPlanet, arrivalPoint,
+				departurePlanet, departurePoint);
 
 		player->addInventoryItem(returnTicket);
 		returnTicket->sendTo(player, true);
@@ -1470,13 +1513,14 @@ void ObjectControllerMessage::parseRadialRequest(Player* player, Message* pack,
 	radialManager->handleRadialRequest(player, pack);
 }
 
-void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
+void ObjectControllerMessage::parseImageDesignChange(Player* player,
+		Message* pack, ZoneProcessServerImplementation* serv) {
 	int xpval = 0;
 
 	try {
 		/*player->sendSystemMessage("Image Designer Update");
-		player->info("Image Design Change - Original Packet");
-		player->info(pack->toString());*/
+		 player->info("Image Design Change - Original Packet");
+		 player->info(pack->toString());*/
 
 		// Read the Packet
 		uint64 object = pack->parseLong();
@@ -1488,9 +1532,10 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 
 		uint8 type = pack->parseByte();
 
-		ImageDesignChangeMessage* msg_designer = new ImageDesignChangeMessage(designer, designer, target, tent, 0);
-		ImageDesignChangeMessage* msg_target = new ImageDesignChangeMessage(target, designer, target, tent, 0);
-
+		ImageDesignChangeMessage* msg_designer = new ImageDesignChangeMessage(
+				designer, designer, target, tent, 0);
+		ImageDesignChangeMessage* msg_target = new ImageDesignChangeMessage(
+				target, designer, target, tent, 0);
 
 		// Parse
 		String hairObject;
@@ -1573,18 +1618,16 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		msg_target->insertInt(size_float_attrs);
 
 		SceneObject* target_object = player->getZone()->lookupObject(target);
-		SceneObject* designer_object = player->getZone()->lookupObject(designer);
+		SceneObject* designer_object =
+				player->getZone()->lookupObject(designer);
 
 		bool commitChanges = false;
-		if (designer_accepted == 1 &&
-			target_object == designer_object &&
-			target_object != NULL )
+		if (designer_accepted == 1 && target_object == designer_object
+				&& target_object != NULL)
 			commitChanges = true;
 
-		if (target_accepted == 1 &&
-			designer_accepted == 1 &&
-			target_object != designer_object &&
-			target_object != NULL )
+		if (target_accepted == 1 && designer_accepted == 1 && target_object
+				!= designer_object && target_object != NULL)
 			commitChanges = true;
 
 		// This is a helper class for a bunch of the embedded logic
@@ -1596,13 +1639,12 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				target_object->wlock(player);
 
 			if (commitChanges)
-				customization = new ImageDesignCustomization(serv, ((CreatureObject *)target_object));
+				customization = new ImageDesignCustomization(serv,
+						((CreatureObject *) target_object));
 
 			// Parse
-			if (size_float_attrs > 0)
-			{
-				for (int i = 0; i < size_float_attrs; i++)
-				{
+			if (size_float_attrs > 0) {
+				for (int i = 0; i < size_float_attrs; i++) {
 					// do something later
 					String attr;
 					pack->parseAscii(attr);
@@ -1630,7 +1672,7 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 			msg_target->insertInt(attributesSize);
 
 			// Parse
-			if (attributesSize > 0)	{
+			if (attributesSize > 0) {
 				for (int i = 0; i < attributesSize; i++) {
 					// do something later
 					String attr;
@@ -1666,13 +1708,12 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 		msg_designer->insertAscii(emote);
 		msg_target->insertAscii(emote);
 
-
 		// If from designer send to target
-		if (designer == target)	{
+		if (designer == target) {
 			// do something else?
 		} else if (player->getObjectID() == designer) {
 			if (target_object != NULL)
-				((Player *)target_object)->sendMessage(msg_target);
+				((Player *) target_object)->sendMessage(msg_target);
 
 			// If from target send to designer
 		} else if (player->getObjectID() == target) {
@@ -1689,31 +1730,35 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 			if (!hairObject.isEmpty()) {
 				int idx = hairObject.indexOf("hair_");
 				if (idx != -1) {
-					hairObject = hairObject.replaceFirst("hair_", "shared_hair_");
+					hairObject = hairObject.replaceFirst("hair_",
+							"shared_hair_");
 
 					player->setHairObject(hairObject);
 					player->updateHair();
 
 					/*StringBuffer msg;
-					msg << "imagedesignerupdate, hairObject:" << hex << hairObject;
-					((Player *)target_object)->sendSystemMessage(msg.toString());*/
+					 msg << "imagedesignerupdate, hairObject:" << hex << hairObject;
+					 ((Player *)target_object)->sendSystemMessage(msg.toString());*/
 				}
 
 				if (xpval < 100)
 					xpval = 100;
 			}
 
-			PlayerManager* playerManager = serv->getZoneServer()->getPlayerManager();
+			PlayerManager* playerManager =
+					serv->getZoneServer()->getPlayerManager();
 			// Stat Migration
-			if (stat_migration > 0)	{
+			if (stat_migration > 0) {
 				if (player->getBaseHealth() != player->getTargetHealth())
 					player->setBaseHealthBar(player->getTargetHealth());
 
 				if (player->getBaseStrength() != player->getTargetStrength())
 					player->setBaseStrengthBar(player->getTargetStrength());
 
-				if (player->getBaseConstitution() != player->getTargetConstitution())
-					player->setBaseConstitutionBar(player->getTargetConstitution());
+				if (player->getBaseConstitution()
+						!= player->getTargetConstitution())
+					player->setBaseConstitutionBar(
+							player->getTargetConstitution());
 
 				if (player->getBaseAction() != player->getTargetAction())
 					player->setBaseActionBar(player->getTargetAction());
@@ -1741,16 +1786,16 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 
 			// Add Experience
 			String xptype("imagedesigner");
-			if(designer == target) {
+			if (designer == target) {
 				if (!player->getImagedesignXpGiven()) {
 					xpval /= 2;
 					player->addXp(xptype, xpval, true);
 					player->setImagedesignXpGiven(true);
 				} else
 					player->setImagedesignXpGiven(false);
-			} else if(player->getObjectID() == target) {
+			} else if (player->getObjectID() == target) {
 				if (designer_object->isPlayer()) {
-					Player* designer_player = (Player*)designer_object;
+					Player* designer_player = (Player*) designer_object;
 					designer_player->addXp(xptype, xpval, true);
 				}
 			}
@@ -1759,18 +1804,19 @@ void ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pa
 				delete customization;
 
 			if (target_object != NULL)
-				((CreatureObject *)target_object)->updateCharacterAppearance();
-
+				((CreatureObject *) target_object)->updateCharacterAppearance();
 
 			if (playerManager != NULL)
 				playerManager->updatePlayerAppearanceToDatabase(player);
 		}
 	} catch (...) {
-		System::out << "unreported ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) exception\n";
+		System::out
+				<< "unreported ObjectControllerMessage::parseImageDesignChange(Player* player, Message* pack) exception\n";
 	}
 }
 
-void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pack) {
+void ObjectControllerMessage::parseImageDesignCancel(Player* player,
+		Message* pack) {
 	// TODO combine these functions together
 	try {
 		// Read the Packet
@@ -1783,8 +1829,10 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 
 		uint8 type = pack->parseByte();
 
-		ImageDesignRejectMessage* msg_designer = new ImageDesignRejectMessage(designer, designer, target, tent, 0);
-		ImageDesignRejectMessage* msg_target = new ImageDesignRejectMessage(target, designer, target, tent, 0);
+		ImageDesignRejectMessage* msg_designer = new ImageDesignRejectMessage(
+				designer, designer, target, tent, 0);
+		ImageDesignRejectMessage* msg_target = new ImageDesignRejectMessage(
+				target, designer, target, tent, 0);
 
 		// Parse
 		String hairObject;
@@ -1867,10 +1915,8 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 		msg_target->insertInt(size_float_attrs);
 
 		// Parse
-		if (size_float_attrs > 0)
-		{
-			for (int i = 0; i < size_float_attrs; i++)
-			{
+		if (size_float_attrs > 0) {
+			for (int i = 0; i < size_float_attrs; i++) {
 				// do something later
 				String attr;
 				pack->parseAscii(attr);
@@ -1892,10 +1938,8 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 		msg_target->insertInt(size_int_attrs);
 
 		// Parse
-		if (size_int_attrs > 0)
-		{
-			for (int i = 0; i < size_int_attrs; i++)
-			{
+		if (size_int_attrs > 0) {
+			for (int i = 0; i < size_int_attrs; i++) {
 				// do something later
 				String attr;
 				pack->parseAscii(attr);
@@ -1918,31 +1962,31 @@ void ObjectControllerMessage::parseImageDesignCancel(Player* player, Message* pa
 		msg_target->insertAscii(emote);
 
 		SceneObject* target_object = player->getZone()->lookupObject(target);
-		SceneObject* designer_object = player->getZone()->lookupObject(designer);
+		SceneObject* designer_object =
+				player->getZone()->lookupObject(designer);
 
 		// If from designer send to target
-		if (designer == target)
-		{
+		if (designer == target) {
 
 			// do something else?
 		} else if (player->getObjectID() == designer) {
 			if (target_object != NULL)
-				((Player *)target_object)->sendMessage(msg_target);
+				((Player *) target_object)->sendMessage(msg_target);
 
-		// If from target send to designer
+			// If from target send to designer
 		} else if (player->getObjectID() == target) {
 
 			if (designer_object != NULL) {
 				//((Player *)designer_object)->sendSystemMessage("update from target!");
 				//player->info(msg.toString());
 				//player->info(msg_designer->toString());
-				((Player *)designer_object)->sendMessage(msg_designer);
+				((Player *) designer_object)->sendMessage(msg_designer);
 			}
 		}
 
-
 	} catch (...) {
-		System::out << "unreported ObjectControllerMessage::parseImageDesignReject(Player* player, Message* pack) exception\n";
+		System::out
+				<< "unreported ObjectControllerMessage::parseImageDesignReject(Player* player, Message* pack) exception\n";
 	}
 }
 
@@ -1995,12 +2039,12 @@ void ObjectControllerMessage::parseStopListen(Player* player, Message* pack) {
 
 void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 
-
 	String skillBox = "social_entertainer_novice";
 
 	if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
 		// TODO: sendSystemMessage("cmd_err", "ability_prose", creature);
-		player->sendSystemMessage("You do not have sufficient abilities to image design.");
+		player->sendSystemMessage(
+				"You do not have sufficient abilities to image design.");
 		return;
 	}
 
@@ -2015,59 +2059,65 @@ void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 
 	if (player->isInBuilding() && player->getBuildingType()
 			== BuildingObjectImplementation::SALON) {
-		CellObject* cell = (CellObject*)player->getParent();
-		BuildingObject* building = (BuildingObject*)cell->getParent();
+		CellObject* cell = (CellObject*) player->getParent();
+		BuildingObject* building = (BuildingObject*) cell->getParent();
 
 		tent = building->getObjectID();
 	}
 
 	try {
 		if (object != player)
-		object->wlock(player);
+			object->wlock(player);
 
 		if (object->isPlayer()) {
 			Player* targetPlayer = (Player*) object;
 
 			// If the target player isn't yourself, then that player must be in a group
 			if (targetPlayer->getObjectID() != player->getObjectID()
-					&& (!player->isInAGroup() || (player->isInAGroup() && player->getGroupID() != targetPlayer->getGroupID()))) {
+					&& (!player->isInAGroup() || (player->isInAGroup()
+							&& player->getGroupID()
+									!= targetPlayer->getGroupID()))) {
 
-				player->sendSystemMessage("Target player must be in your group to Image Design.");
+				player->sendSystemMessage(
+						"Target player must be in your group to Image Design.");
 
 				if (object != player)
-				object->unlock();
+					object->unlock();
 
 				return;
 			}
 
 			/*
-			Designer:
-			3A 02 00 00
-			72 B0 E9 91 22 00 00 00 // designer
-			00 00 00 00
-			72 B0 E9 91 22 00 00 00
-			DF D4 50 92 22 00 00 00
-			00 00 00 00 00 00 00 00 // tent
-			00 00
+			 Designer:
+			 3A 02 00 00
+			 72 B0 E9 91 22 00 00 00 // designer
+			 00 00 00 00
+			 72 B0 E9 91 22 00 00 00
+			 DF D4 50 92 22 00 00 00
+			 00 00 00 00 00 00 00 00 // tent
+			 00 00
 
 
-			Designee:
+			 Designee:
 
-			3A 02 00 00
-			72 B0 E9 91 22 00 00 00
-			00 00 00 00
-			DF D4 50 92 22 00 00 00
-			72 B0 E9 91 22 00 00 00
-			00 00 00 00 00 00 00 00
-			00 00 */
+			 3A 02 00 00
+			 72 B0 E9 91 22 00 00 00
+			 00 00 00 00
+			 DF D4 50 92 22 00 00 00
+			 72 B0 E9 91 22 00 00 00
+			 00 00 00 00 00 00 00 00
+			 00 00 */
 
 			// Initiate Self
-			ImageDesignStartMessage* msgPlayer = new ImageDesignStartMessage(player, player, targetPlayer, tent);
+			ImageDesignStartMessage* msgPlayer = new ImageDesignStartMessage(
+					player, player, targetPlayer, tent);
 			player->sendMessage(msgPlayer);
 
 			// Initiate Target (
 			if (targetPlayer->getObjectID() != player->getObjectID()) {
-				ImageDesignStartMessage* msgTarget = new ImageDesignStartMessage(targetPlayer, player, targetPlayer, tent);
+				ImageDesignStartMessage* msgTarget =
+						new ImageDesignStartMessage(targetPlayer, player,
+								targetPlayer, tent);
 				targetPlayer->sendMessage(msgTarget);
 			}
 		} else {
@@ -2075,11 +2125,12 @@ void ObjectControllerMessage::parseImageDesign(Player* player, Message* pack) {
 		}
 
 		if (object != player)
-		object->unlock();
+			object->unlock();
 	} catch (...) {
-		System::out << "Unreported exception in ObjectControllerMessage::parseImageDesign(Player* player, Message *pack)";
+		System::out
+				<< "Unreported exception in ObjectControllerMessage::parseImageDesign(Player* player, Message *pack)";
 		if (object != player)
-		object->unlock();
+			object->unlock();
 	}
 }
 
@@ -2143,16 +2194,17 @@ void ObjectControllerMessage::parseServerSit(Player* player, Message* pack) {
 			if (tokenizer.hasMoreTokens())
 				coID = tokenizer.getLongToken();
 
-			if (x < -8192 || x> 8192)
-			x = 0;
-			if (y < -8192 || y> 8192)
-			y = 0;
-			if (z < -8192 || z> 8192)
-			z = 0;
+			if (x < -8192 || x > 8192)
+				x = 0;
+			if (y < -8192 || y > 8192)
+				y = 0;
+			if (z < -8192 || z > 8192)
+				z = 0;
 
 			player->setPosture(CreaturePosture::SITTING, false, true, x, y, z);
 		} catch (...) {
-			System::out << "Unreported exception in ObjectControllerMessage::parseServerSit\n";
+			System::out
+					<< "Unreported exception in ObjectControllerMessage::parseServerSit\n";
 		}
 	}
 }
@@ -2161,41 +2213,41 @@ void ObjectControllerMessage::parseWaypointCreate(Player* player, Message* pack)
 	//outdated and throwing exceptions. We use now "parseWaypointCommand
 
 	/*
-	pack->shiftOffset(8); //Shift past the blank long.
+	 pack->shiftOffset(8); //Shift past the blank long.
 
-	UnicodeString waypoint;
-	pack->parseUnicode(waypoint);
+	 UnicodeString waypoint;
+	 pack->parseUnicode(waypoint);
 
-	StringTokenizer tokenizer(waypoint.toCharArray());
-	try {
-		String planet;
-		tokenizer.getStringToken(planet);
+	 StringTokenizer tokenizer(waypoint.toCharArray());
+	 try {
+	 String planet;
+	 tokenizer.getStringToken(planet);
 
-		float x = tokenizer.getFloatToken();
-		float z = tokenizer.getFloatToken();
-		float y = tokenizer.getFloatToken();
+	 float x = tokenizer.getFloatToken();
+	 float z = tokenizer.getFloatToken();
+	 float y = tokenizer.getFloatToken();
 
-		if (x < -8192 || x> 8192)
-		x = 0;
-		if (y < -8192 || y> 8192)
-		y = 0;
-		if (z < -8192 || z> 8192)
-		z = 0;
+	 if (x < -8192 || x> 8192)
+	 x = 0;
+	 if (y < -8192 || y> 8192)
+	 y = 0;
+	 if (z < -8192 || z> 8192)
+	 z = 0;
 
-		WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
-		waypoint->setPlanetName(planet);
-		waypoint->setPosition(x, z, y);
+	 WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
+	 waypoint->setPlanetName(planet);
+	 waypoint->setPosition(x, z, y);
 
-		player->addWaypoint(waypoint);
+	 player->addWaypoint(waypoint);
 
-	} catch (...) {
-		System::out << "Unreported exception in ObjectControllerMessage::parseWaypointCreate\n";
-	}
-	*/
+	 } catch (...) {
+	 System::out << "Unreported exception in ObjectControllerMessage::parseWaypointCreate\n";
+	 }
+	 */
 }
 
-
-void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack) {
+void ObjectControllerMessage::parseWaypointCommand(Player* player,
+		Message* pack) {
 	int counter = 0;
 	String dummy;
 
@@ -2231,10 +2283,10 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 
 	if (tokenizer.hasMoreTokens()) {
 
-	String arg1;
-	tokenizer.getStringToken(arg1);
+		String arg1;
+		tokenizer.getStringToken(arg1);
 
-	if (tokenizer.hasMoreTokens()) {
+		if (tokenizer.hasMoreTokens()) {
 			if (isalpha(arg1[0]) == 0) {
 				//A waypoint in the form of /waypoint X Y <name>
 				x = atof(arg1.toCharArray());
@@ -2319,19 +2371,19 @@ void ObjectControllerMessage::parseWaypointCommand(Player* player, Message* pack
 	y = (y < -8192) ? -8192 : y;
 	y = (y > 8192) ? 8192 : y;
 
-
 	//Create our waypoint
-	WaypointObject* waypoint = new WaypointObject(player, player->getNewItemID());
+	WaypointObject* waypoint = new WaypointObject(player,
+			player->getNewItemID());
 	waypoint->setPlanetName(planet);
 	waypoint->setPosition(x, z, y);
 	waypoint->setName(waypointName);
 
 	player->addWaypoint(waypoint);
 
-
 }
 
-void ObjectControllerMessage::parseSetWaypointName(Player* player, Message* pack) {
+void ObjectControllerMessage::parseSetWaypointName(Player* player,
+		Message* pack) {
 	uint64 wpId = pack->parseLong(); //get the waypoint id
 
 	WaypointObject* waypoint = player->getWaypoint(wpId);
@@ -2349,10 +2401,12 @@ void ObjectControllerMessage::parseSetWaypointName(Player* player, Message* pack
 	player->updateWaypoint(waypoint);
 }
 
-void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* pack) {
+void ObjectControllerMessage::parseServerDestroyObject(Player* player,
+		Message* pack) {
 	uint64 objid = pack->parseLong(); //get the id
 
-	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
+	ItemManager* itemManager =
+			player->getZone()->getZoneServer()->getItemManager();
 
 	if (player->getTradeSize() != 0) {
 		player->sendSystemMessage("You cant destroy objects while trading..");
@@ -2363,7 +2417,8 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	pack->parseUnicode(unkPramString); //?
 
 	WaypointObject* waypoint = player->getWaypoint(objid);
-	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(objid);
+	IntangibleObject* datapadData = (IntangibleObject*) player->getDatapadItem(
+			objid);
 	SceneObject* invObj = player->getInventoryItem(objid);
 
 	if (invObj != NULL && invObj->isTangible()) {
@@ -2371,7 +2426,8 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 
 		if (tano->isEquipped()) {
 			//player->changeCloth(objid);
-			player->sendSystemMessage("You must unequip the item before destroying it.");
+			player->sendSystemMessage(
+					"You must unequip the item before destroying it.");
 			return;
 		}
 
@@ -2381,7 +2437,8 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 			while (!container->isEmpty()) {
 				SceneObject* sco = container->getObject(0);
 
-				itemManager->deletePlayerItem(player, ((TangibleObject*)sco), true);
+				itemManager->deletePlayerItem(player, ((TangibleObject*) sco),
+						true);
 
 				container->removeObject(0);
 
@@ -2397,7 +2454,8 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 
 		if (item->isEquipped()) {
 			//player->changeCloth(objid);
-			player->sendSystemMessage("You must unequip the item before destroying it.");
+			player->sendSystemMessage(
+					"You must unequip the item before destroying it.");
 			return;
 		}
 
@@ -2407,7 +2465,8 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 			CraftingTool* tool = (CraftingTool*) item;
 
 			if (!tool->isReady()) {
-				player->sendSystemMessage("You cant delete a working crafting tool!");
+				player->sendSystemMessage(
+						"You cant delete a working crafting tool!");
 				return;
 			} else
 				player->clearCurrentCraftingTool();
@@ -2430,7 +2489,7 @@ void ObjectControllerMessage::parseServerDestroyObject(Player* player, Message* 
 	} else if (waypoint != NULL) {
 		if (player->removeWaypoint(waypoint))
 			waypoint->finalize();
-	} else if (datapadData != NULL){
+	} else if (datapadData != NULL) {
 		player->removeDatapadItem(objid);
 
 		BaseMessage* msg = new SceneObjectDestroyMessage(datapadData);
@@ -2456,8 +2515,8 @@ void ObjectControllerMessage::parseRequestCharacterMatch(Player* player,
 	player->getPlayersNearYou();
 }
 
-
-void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* pack) {
+void ObjectControllerMessage::parseResourceEmptyHopper(Player* player,
+		Message* pack) {
 	//cout << "parseResourceEmptyHopper: " <<  pack->toString() << endl;
 
 	//System::out << "parseResourceEmptyHopper: " <<  pack->toString() << endl;
@@ -2487,7 +2546,6 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 		return;
 	}
 
-
 	TangibleObject* tano = (TangibleObject*) object;
 
 	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER) {
@@ -2501,17 +2559,19 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	if (zone == NULL)
 		return;
 
-	ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
+	ResourceManager* resourceManager =
+			zone->getZoneServer()->getResourceManager();
 	if (resourceManager == NULL)
 		return;
 
 	bool makeNewResource = true;
 
-	quantity = (uint32)inso->removeHopperItem(rId, quantity);
+	quantity = (uint32) inso->removeHopperItem(rId, quantity);
 	if (quantity >= 1) {
 		if (byte1 == 0) // Retreive vs Discard
 		{
-			ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
+			ResourceContainer* newRcno = new ResourceContainer(
+					player->getNewItemID());
 			String resourceName = resourceManager->getResourceNameByID(rId);
 			newRcno->setResourceName(resourceName);
 			newRcno->setContents(quantity);
@@ -2521,7 +2581,8 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	}
 
 	// need to send to anyone looking
-	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	InstallationObjectDeltaMessage7* dinso7 =
+			new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateHopper();
 	dinso7->updateHopperItem(rId);
 	dinso7->updateHopperSize();
@@ -2532,23 +2593,22 @@ void ObjectControllerMessage::parseResourceEmptyHopper(Player* player, Message* 
 	//System::out << "GenericResponse: " <<  gr->toString() << endl;
 	player->sendMessage(gr);
 
+	/*
+	 InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
+	 dinso3->updateOperating(true);
+	 dinso3->close();
+	 player->sendMessage(dinso3);
 
-/*
-	InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
-	dinso3->updateOperating(true);
-	dinso3->close();
-	player->sendMessage(dinso3);
-
-	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
-	dinso7->updateOperating(true);
-	dinso7->close();
-	player->sendMessage(dinso7);
-*/
+	 InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	 dinso7->updateOperating(true);
+	 dinso7->close();
+	 player->sendMessage(dinso7);
+	 */
 
 }
 
-
-void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* pack) {
+void ObjectControllerMessage::parseMissionListRequest(Player* player,
+		Message* pack) {
 	//skip objId + old size + unk byte + refresh byte
 	pack->shiftOffset(14);
 
@@ -2558,7 +2618,8 @@ void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* p
 	//TODO: Take the error messages out after testing
 	PlanetManager* plnMgr = player->getZone()->getPlanetManager();
 	if (plnMgr == NULL) {
-		System::out << "Error: Planet Manager NULL in parseMissionListRequest() \n";
+		System::out
+				<< "Error: Planet Manager NULL in parseMissionListRequest() \n";
 		return;
 	}
 
@@ -2569,23 +2630,26 @@ void ObjectControllerMessage::parseMissionListRequest(Player* player, Message* p
 		return;
 	}
 
-	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
+	MissionManager* misoMgr =
+			player->getZone()->getZoneServer()->getMissionManager();
 	if (misoMgr == NULL) {
-		System::out << "Error: Mission Manager NULL in parseMissionListRequest() \n";
+		System::out
+				<< "Error: Mission Manager NULL in parseMissionListRequest() \n";
 		return;
 	}
 
 	misoMgr->sendTerminalData(player, mt->getTerminalMask(), true);
 }
 
-void ObjectControllerMessage::parseMissionAccept(Player* player, Message* pack){
+void ObjectControllerMessage::parseMissionAccept(Player* player, Message* pack) {
 	//skip objId + old size
 	pack->shiftOffset(12);
 
 	//Grab the mission object id
 	uint64 misoId = pack->parseLong();
 
-	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
+	MissionManager* misoMgr =
+			player->getZone()->getZoneServer()->getMissionManager();
 	if (misoMgr == NULL) {
 		System::out << "Error: Mission Manager NULL in parseMissionAccept() \n";
 		return;
@@ -2601,7 +2665,8 @@ void ObjectControllerMessage::parseMissionAbort(Player* player, Message* pack) {
 	//Grab the mission object id
 	uint64 misoId = pack->parseLong();
 
-	MissionManager* misoMgr = player->getZone()->getZoneServer()->getMissionManager();
+	MissionManager* misoMgr =
+			player->getZone()->getZoneServer()->getMissionManager();
 	if (misoMgr == NULL) {
 		System::out << "Error: Mission Manager NULL in parseMissionAbort() \n";
 		return;
@@ -2618,7 +2683,7 @@ void ObjectControllerMessage::parseGroupInvite(Player* player, Message* pack,
 	if (object == NULL || !object->isPlayer() || object == player)
 		return;
 
-	Player* invitePlayer = (Player*)object;
+	Player* invitePlayer = (Player*) object;
 	groupManager->inviteToGroup(player, invitePlayer);
 }
 
@@ -2646,13 +2711,15 @@ void ObjectControllerMessage::parseGroupUninvite(Player* player, Message* pack) 
 		} else {
 			play->updateGroupInviterId(0);
 			play->sendSystemMessage("group", "uninvite_self");
-			player->sendSystemMessage("group", "uninvite_target", play->getObjectID());
+			player->sendSystemMessage("group", "uninvite_target",
+					play->getObjectID());
 		}
 
 		play->unlock();
 	} catch (...) {
 		play->unlock();
-		System::out << "Exception in parseGroupUninvite(Player* player, Message* pack)\n";
+		System::out
+				<< "Exception in parseGroupUninvite(Player* player, Message* pack)\n";
 	}
 }
 
@@ -2699,7 +2766,7 @@ void ObjectControllerMessage::parseGroupMakeLeader(Player* player,
 
 	if (object == NULL || !object->isPlayer() || object == player)
 		return;
-	Player* targetObject = (Player*)object;
+	Player* targetObject = (Player*) object;
 
 	GroupObject* group = player->getGroupObject();
 	if (group == NULL)
@@ -2715,7 +2782,7 @@ void ObjectControllerMessage::parseGroupDecline(Player* player, Message* pack) {
 	if (object == NULL || !object->isPlayer() || object == player)
 		return;
 
-	Player* inviter = (Player*)object;
+	Player* inviter = (Player*) object;
 
 	player->updateGroupInviterId(0);
 	inviter->sendSystemMessage("group", "decline_leader", player->getObjectID());
@@ -2731,7 +2798,7 @@ void ObjectControllerMessage::parseMount(Player* player, Message* pack) {
 
 	MountCreature* mount = player->getMount();
 
-	if (object != (SceneObject*)mount)
+	if (object != (SceneObject*) mount)
 		return;
 	else {
 		if (player->isMounted())
@@ -2792,7 +2859,8 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 
 			if (tipAmount == 0) {
 				//Invalid Tip Amount/Parameter.
-				player->sendSystemMessage("Invalid Tip parameter. (Tip Amount not a number)");
+				player->sendSystemMessage(
+						"Invalid Tip parameter. (Tip Amount not a number)");
 				return;
 			}
 
@@ -2811,7 +2879,8 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 				//Do stuff like altering the db here since they arent online.
 				if (playerManager->modifyOfflineBank(player, tipToName,
 						tipAmount))
-					player->sendSystemMessage("Player not online. Credits should be transferred.");
+					player->sendSystemMessage(
+							"Player not online. Credits should be transferred.");
 				return;
 			} else {
 				//Player is online. Tip their stuff and send mail etc;
@@ -2858,7 +2927,8 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 			//They didnt type in a number, or typed in 0.
 			if (tipAmount == 0) {
 				//Invalid Tip Amount/Parameter.
-				player->sendSystemMessage("Invalid Tip parameter. (Tip Amount not a number)");
+				player->sendSystemMessage(
+						"Invalid Tip parameter. (Tip Amount not a number)");
 				return;
 			}
 
@@ -2875,7 +2945,8 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 
 				} else {
 					//They typed something else other than bank.
-					player->sendSystemMessage("Invalid Tip parameter. (Bank Parameter)");
+					player->sendSystemMessage(
+							"Invalid Tip parameter. (Bank Parameter)");
 					return;
 				}
 
@@ -2907,7 +2978,8 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 				//They didnt type in a number, or typed in 0.
 				if (tipAmount == 0) {
 					//Invalid Tip Amount/Parameter.
-					player->sendSystemMessage("Invalid Tip parameter. (Tip Amount not a number)");
+					player->sendSystemMessage(
+							"Invalid Tip parameter. (Tip Amount not a number)");
 					return;
 				}
 
@@ -2921,14 +2993,15 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 
 					if (bankParam == "bank") {
 						//Bank tip. We don't need to parse anything else now that we have this info.
-						Player* tiptoPlayer =
-								playerManager->getPlayer(tipToName);
+						Player* tiptoPlayer = playerManager->getPlayer(
+								tipToName);
 						if (tiptoPlayer == NULL) {
 							//The player exists but they are offline. So Still do the tip.
 							//Do stuff like altering the db here since they arent online.
 							playerManager->modifyOfflineBank(player, tipToName,
 									tipAmount);
-							player->sendSystemMessage("Player not online. Add Altering the DB in later.");
+							player->sendSystemMessage(
+									"Player not online. Add Altering the DB in later.");
 							return;
 						} else {
 							//Player is online. Tip their stuff and send mail etc;
@@ -2938,7 +3011,8 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 						}
 					} else {
 						//They typed something else other than bank.
-						player->sendSystemMessage("Invalid Tip parameter. (Bank Parameter)");
+						player->sendSystemMessage(
+								"Invalid Tip parameter. (Bank Parameter)");
 						return;
 					}
 				}
@@ -2966,8 +3040,8 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 	try {
 		target->wlock(player);
 
-		if (combatManager->canAttack(player, target) && target->isIncapacitated()
-				&& target->isInRange(player, 5)) {
+		if (combatManager->canAttack(player, target)
+				&& target->isIncapacitated() && target->isInRange(player, 5)) {
 
 			player->unlock();
 
@@ -2975,11 +3049,12 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 
 			player->wlock(target);
 
-			float currentRating = (float)player->getPvpRating();
-			float opponentRating = (float)target->getPvpRating();
+			float currentRating = (float) player->getPvpRating();
+			float opponentRating = (float) target->getPvpRating();
 
 			//Using the formula: N = P1 + ( (1/9) * (P2 - P1 + 100) ), where P2 - P1 - 100 >= 0
-			int pointsGained = (int)round((1.0f/9.0f) * (opponentRating - currentRating + 100.0f));
+			int pointsGained = (int) round((1.0f / 9.0f) * (opponentRating
+					- currentRating + 100.0f));
 
 			pointsGained = (pointsGained >= 0) ? pointsGained : 0;
 			//TODO: Is there a max pvp rating?
@@ -2998,35 +3073,50 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 			if (pointsGained > 0) {
 				switch (System::random(2)) {
 				case 0:
-					victoryMsg << "You have fought valiantly against " << victimName.toCharArray() << ".  For your part in their death your player combat rating has been adjusted to " << newRating << ".";
+					victoryMsg << "You have fought valiantly against "
+							<< victimName.toCharArray()
+							<< ".  For your part in their death your player combat rating has been adjusted to "
+							<< newRating << ".";
 					break;
 				case 1:
-					victoryMsg << "You have killed " << victimName.toCharArray() << ". For your part in their death your player combat rating has been adjusted to " << newRating << ".";
+					victoryMsg << "You have killed "
+							<< victimName.toCharArray()
+							<< ". For your part in their death your player combat rating has been adjusted to "
+							<< newRating << ".";
 					break;
 				case 2:
 				default:
-					victoryMsg << "You have fearlessly slain your foe " << victimName.toCharArray() << ".  For your part in their death your player combat rating has been adjusted to " << newRating << ".";
+					victoryMsg << "You have fearlessly slain your foe "
+							<< victimName.toCharArray()
+							<< ".  For your part in their death your player combat rating has been adjusted to "
+							<< newRating << ".";
 					break;
 				}
 			} else {
-				victoryMsg << "Although you have valiantly defeated " << victimName.toCharArray() << " in combat, you can reap no more combat rating points from %PT death at this time.  Your player combat rating remains at " << newRating << ".";
+				victoryMsg << "Although you have valiantly defeated "
+						<< victimName.toCharArray()
+						<< " in combat, you can reap no more combat rating points from %PT death at this time.  Your player combat rating remains at "
+						<< newRating << ".";
 			}
 
-			player->sendSystemMessage("base_player", "prose_target_dead", target->getObjectID());
+			player->sendSystemMessage("base_player", "prose_target_dead",
+					target->getObjectID());
 			player->sendSystemMessage(victoryMsg.toString());
 		}
 
 		target->unlock();
 	} catch (...) {
-		System::out << "Unreported exception caught in ObjectControllerMessage::handleDeathblow(Player* player, Message* packet)\n";
+		System::out
+				<< "Unreported exception caught in ObjectControllerMessage::handleDeathblow(Player* player, Message* packet)\n";
 		target->unlock();
 	}
 }
 
-void ObjectControllerMessage::parsePlaceStructure(Player* player, Message* packet){
+void ObjectControllerMessage::parsePlaceStructure(Player* player,
+		Message* packet) {
 	player->sendSystemMessage("Placing Structure");
-	packet->parseInt();  // Empty Data
-	packet->parseInt();  // Empty Data
+	packet->parseInt(); // Empty Data
+	packet->parseInt(); // Empty Data
 
 	UnicodeString data;
 	packet->parseUnicode(data);
@@ -3047,7 +3137,8 @@ void ObjectControllerMessage::parsePlaceStructure(Player* player, Message* packe
 	planet->placePlayerStructure(player, toID, x, y, orient);
 }
 
-void ObjectControllerMessage::parseSynchronizedUIListen(Player *player, Message *pack) {
+void ObjectControllerMessage::parseSynchronizedUIListen(Player *player,
+		Message *pack) {
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3074,7 +3165,8 @@ void ObjectControllerMessage::parseSynchronizedUIListen(Player *player, Message 
 	inso->activateSync();
 }
 
-void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player, Message *pack) {
+void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player,
+		Message *pack) {
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3091,13 +3183,12 @@ void ObjectControllerMessage::parseSynchronizedUIStopListening(Player *player, M
 		return;
 
 	InstallationObject* inso = (InstallationObject*) tano;
-
 
 	inso->removeOperator(player);
 }
 
-
-void ObjectControllerMessage::parseHarvesterActivate(Player *player, Message *pack) {
+void ObjectControllerMessage::parseHarvesterActivate(Player *player,
+		Message *pack) {
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3115,20 +3206,22 @@ void ObjectControllerMessage::parseHarvesterActivate(Player *player, Message *pa
 
 	InstallationObject* inso = (InstallationObject*) tano;
 
-
-	InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
+	InstallationObjectDeltaMessage3* dinso3 =
+			new InstallationObjectDeltaMessage3(inso);
 	dinso3->updateOperating(true);
 	dinso3->close();
 	player->sendMessage(dinso3);
 
-	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	InstallationObjectDeltaMessage7* dinso7 =
+			new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateOperating(true);
 	dinso7->updateExtractionRate(inso->getActualRate());
 	dinso7->close();
 	player->sendMessage(dinso7);
 }
 
-void ObjectControllerMessage::parseHarvesterDeActivate(Player *player, Message *pack) {
+void ObjectControllerMessage::parseHarvesterDeActivate(Player *player,
+		Message *pack) {
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3146,18 +3239,21 @@ void ObjectControllerMessage::parseHarvesterDeActivate(Player *player, Message *
 
 	InstallationObject* inso = (InstallationObject*) tano;
 
-	InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
+	InstallationObjectDeltaMessage3* dinso3 =
+			new InstallationObjectDeltaMessage3(inso);
 	dinso3->updateOperating(false);
 	dinso3->close();
 	player->sendMessage(dinso3);
 
-	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	InstallationObjectDeltaMessage7* dinso7 =
+			new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateOperating(false);
 	dinso7->close();
 	player->sendMessage(dinso7);
 }
 
-void ObjectControllerMessage::parseHarvesterDiscardHopper(Player *player, Message *pack) {
+void ObjectControllerMessage::parseHarvesterDiscardHopper(Player *player,
+		Message *pack) {
 	//skip objId + old size
 	pack->shiftOffset(12);
 
@@ -3165,20 +3261,21 @@ void ObjectControllerMessage::parseHarvesterDiscardHopper(Player *player, Messag
 	SceneObject* object = player->getZone()->lookupObject(hId);
 
 	if (object == NULL) {
-		player->error("ObjectControllerMessage::parseResourceEmptyHopper() bad object");
+		player->error(
+				"ObjectControllerMessage::parseResourceEmptyHopper() bad object");
 		return;
 	}
 
 	if (!object->isTangible()) {
-		player->error("ObjectControllerMessage::parseResourceEmptyHopper() bad tano");
+		player->error(
+				"ObjectControllerMessage::parseResourceEmptyHopper() bad tano");
 		return;
 	}
 
-
 	TangibleObject* tano = (TangibleObject*) object;
-	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER)
-	{
-		player->error("ObjectControllerMessage::parseResourceEmptyHopper() bad harvester");
+	if (tano->getObjectSubType() != TangibleObjectImplementation::HARVESTER) {
+		player->error(
+				"ObjectControllerMessage::parseResourceEmptyHopper() bad harvester");
 		return;
 	}
 
@@ -3189,72 +3286,73 @@ void ObjectControllerMessage::parseHarvesterDiscardHopper(Player *player, Messag
 
 	//Grab the harvester object id
 	/*pack->shiftOffset(8); // skip passed player
-	uint64 hId = pack->parseLong();
-	uint64 rId = pack->parseLong();
-	uint32 quantity = pack->parseInt(); // need to verify the quantity exists in the hopper
-	uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
-	uint8 byte2 = pack->parseByte(); // checksum?
+	 uint64 hId = pack->parseLong();
+	 uint64 rId = pack->parseLong();
+	 uint32 quantity = pack->parseInt(); // need to verify the quantity exists in the hopper
+	 uint8 byte1 = pack->parseByte(); // Retrieve vs Discard
+	 uint8 byte2 = pack->parseByte(); // checksum?
 
-	System::out << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
-
-
-	InstallationObject* inso = (InstallationObject*) tano;
-
-	Zone* zone = player->getZone();
-	if (zone == NULL)
-		return;
+	 System::out << "ObjectControllerMessage::parseResourceEmptyHopper(), hId: " << hex << hId << dec << " rId : " << rId << " id: " << rId << " quantity: " << quantity << endl;
 
 
-	ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
-	if (resourceManager == NULL)
-		return;
+	 InstallationObject* inso = (InstallationObject*) tano;
 
-	bool makeNewResource = true;
-
-	quantity = inso->removeHopperItem(rId, quantity);
-	if (quantity >= 1)
-	{
-		if (byte1 == 0) // Retreive vs Discard
-		{
-			ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
-			String resourceName = resourceManager->getResourceNameByID(rId);
-			newRcno->setResourceName(resourceName);
-			newRcno->setContents(quantity);
-			resourceManager->setResourceData(newRcno, false);
-			player->addInventoryResource(newRcno);
-		}
-	}
-	// need to send to anyone looking
+	 Zone* zone = player->getZone();
+	 if (zone == NULL)
+	 return;
 
 
-	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
-	dinso7->updateHopper();
-	dinso7->updateHopperItem(rId);
-	dinso7->updateHopperSize();
-	dinso7->close();
-	player->sendMessage(dinso7);
+	 ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
+	 if (resourceManager == NULL)
+	 return;
 
-	GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
-	//System::out << "GenericResponse: " <<  gr->toString() << endl;
-	player->sendMessage(gr);
+	 bool makeNewResource = true;
 
-	*/
+	 quantity = inso->removeHopperItem(rId, quantity);
+	 if (quantity >= 1)
+	 {
+	 if (byte1 == 0) // Retreive vs Discard
+	 {
+	 ResourceContainer* newRcno = new ResourceContainer(player->getNewItemID());
+	 String resourceName = resourceManager->getResourceNameByID(rId);
+	 newRcno->setResourceName(resourceName);
+	 newRcno->setContents(quantity);
+	 resourceManager->setResourceData(newRcno, false);
+	 player->addInventoryResource(newRcno);
+	 }
+	 }
+	 // need to send to anyone looking
 
-/*
-	InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
-	dinso3->updateOperating(true);
-	dinso3->close();
-	player->sendMessage(dinso3);
 
-	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
-	dinso7->updateOperating(true);
-	dinso7->close();
-	player->sendMessage(dinso7);
-*/
+	 InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	 dinso7->updateHopper();
+	 dinso7->updateHopperItem(rId);
+	 dinso7->updateHopperSize();
+	 dinso7->close();
+	 player->sendMessage(dinso7);
+
+	 GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
+	 //System::out << "GenericResponse: " <<  gr->toString() << endl;
+	 player->sendMessage(gr);
+
+	 */
+
+	/*
+	 InstallationObjectDeltaMessage3* dinso3 = new InstallationObjectDeltaMessage3(inso);
+	 dinso3->updateOperating(true);
+	 dinso3->close();
+	 player->sendMessage(dinso3);
+
+	 InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	 dinso7->updateOperating(true);
+	 dinso7->close();
+	 player->sendMessage(dinso7);
+	 */
 
 }
 
-void ObjectControllerMessage::parseHarvesterGetResourceData(Player *player, Message *pack) {
+void ObjectControllerMessage::parseHarvesterGetResourceData(Player *player,
+		Message *pack) {
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 
 	SceneObject* object = player->getZone()->lookupObject(objectid);
@@ -3272,12 +3370,13 @@ void ObjectControllerMessage::parseHarvesterGetResourceData(Player *player, Mess
 
 	HarvesterObject* hino = (HarvesterObject*) tano;
 
-	HarvesterResourceDataMessage* hrdm = new HarvesterResourceDataMessage(player, hino);
+	HarvesterResourceDataMessage* hrdm = new HarvesterResourceDataMessage(
+			player, hino);
 	player->sendMessage(hrdm);
 }
 
-
-void ObjectControllerMessage::parseHarvesterSelectResource(Player *player, Message *pack) {
+void ObjectControllerMessage::parseHarvesterSelectResource(Player *player,
+		Message *pack) {
 	uint64 objectid = pack->parseLong(); // Pop the Harvester ID - there might be some other int afterwards?
 	SceneObject* object = player->getZone()->lookupObject(objectid);
 
@@ -3305,13 +3404,13 @@ void ObjectControllerMessage::parseHarvesterSelectResource(Player *player, Messa
 
 	InstallationObject* inso = (InstallationObject*) tano;
 
-	InstallationObjectDeltaMessage7* dinso7 = new InstallationObjectDeltaMessage7(inso);
+	InstallationObjectDeltaMessage7* dinso7 =
+			new InstallationObjectDeltaMessage7(inso);
 	dinso7->updateActiveResource(resourceID);
 	dinso7->updateExtractionRate(inso->getActualRate());
 	dinso7->close();
 	player->sendMessage(dinso7);
 }
-
 
 void ObjectControllerMessage::parseSurveySlashRequest(Player* player,
 		Message* packet) {
@@ -3323,7 +3422,8 @@ void ObjectControllerMessage::parseSampleSlashRequest(Player* player,
 	player->setSampleErrorMessage();
 }
 
-void ObjectControllerMessage::parseSurveyRequest(Player* player, Message* packet) {
+void ObjectControllerMessage::parseSurveyRequest(Player* player,
+		Message* packet) {
 	uint64 targetID = packet->parseLong();
 
 	UnicodeString resourceName;
@@ -3335,17 +3435,20 @@ void ObjectControllerMessage::parseSurveyRequest(Player* player, Message* packet
 
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 		if (player->getSurveyTool() == NULL) {
-			player->sendSystemMessage("You must use a survey tool once from the Inventory before you can do this.");
+			player->sendSystemMessage(
+					"You must use a survey tool once from the Inventory before you can do this.");
 			return;
 		}
 		player->getSurveyTool()->surveyRequest(player, resName);
 	} else {
 		if (player->getSurveyErrorMessage())
-			player->sendSystemMessage("You do not have sufficient abilities to Survey Resources.");
+			player->sendSystemMessage(
+					"You do not have sufficient abilities to Survey Resources.");
 	}
 }
 
-void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet) {
+void ObjectControllerMessage::parseSampleRequest(Player* player,
+		Message* packet) {
 	uint64 targetID = packet->parseLong();
 
 	UnicodeString resourceName;
@@ -3357,13 +3460,15 @@ void ObjectControllerMessage::parseSampleRequest(Player* player, Message* packet
 
 	if (player->getSkillBoxesSize() && player->hasSkillBox(skillBox)) {
 		if (player->getSurveyTool() == NULL) {
-			player->sendSystemMessage("You must use a survey tool once from the Inventory before you can do this.");
+			player->sendSystemMessage(
+					"You must use a survey tool once from the Inventory before you can do this.");
 			return;
 		}
 		player->getSurveyTool()->sampleRequest(player, resName);
 	} else {
 		if (player->getSampleErrorMessage())
-			player->sendSystemMessage("You do not have sufficient abilities to Sample Resource.");
+			player->sendSystemMessage(
+					"You do not have sufficient abilities to Sample Resource.");
 	}
 }
 
@@ -3375,7 +3480,8 @@ void ObjectControllerMessage::parseResourceContainerSplit(Player* player,
 	}
 
 	if (player->hasFullInventory()) {
-		player->sendSystemMessage("Youd dont have enough space in your inventory");
+		player->sendSystemMessage(
+				"Youd dont have enough space in your inventory");
 		return;
 	}
 
@@ -3440,7 +3546,7 @@ void ObjectControllerMessage::parseResourceContainerTransfer(Player* player,
 		TangibleObject* resCof = (TangibleObject*) object1;
 		TangibleObject* resCot = (TangibleObject*) object2;
 		if (resCof->isResource() && resCot->isResource()) {
-			ResourceContainer* rcof = (ResourceContainer*)resCof;
+			ResourceContainer* rcof = (ResourceContainer*) resCof;
 			ResourceContainer* rcot = (ResourceContainer*) resCot;
 			rcot->transferContents(player, rcof);
 		}
@@ -3500,7 +3606,8 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 	CraftingTool* craftingTool = NULL;
 
-	if (invObj != NULL && invObj->isTangible() && ((TangibleObject*)invObj)->isCraftingTool()) {
+	if (invObj != NULL && invObj->isTangible()
+			&& ((TangibleObject*) invObj)->isCraftingTool()) {
 		craftingTool = (CraftingTool*) invObj;
 
 		if (craftingTool->isReady()) {
@@ -3509,13 +3616,15 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 		} else if (craftingTool->isFinished()) {
 
-			ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg", "crafting_tool_full");
+			ChatSystemMessage* sysMessage = new ChatSystemMessage("system_msg",
+					"crafting_tool_full");
 			player->sendMessage(sysMessage);
 
 		} else {
 
 			// Start Object Controller **************************************
-			ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
+			ObjectControllerMessage* objMsg = new ObjectControllerMessage(
+					player->getObjectID(), 0x0B, 0x010C);
 			objMsg->insertInt(0x10F);
 			objMsg->insertInt(0);
 			objMsg->insertByte(0);
@@ -3526,13 +3635,17 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 	} else {
 		// This case is reached if double clicking on a crafting station
 
-		CraftingStation* craftingStation = (CraftingStation*)player->getZone()->lookupObject(ctSceneObjID);
+		CraftingStation
+				* craftingStation =
+						(CraftingStation*) player->getZone()->lookupObject(
+								ctSceneObjID);
 
-		if (craftingStation != NULL){
+		if (craftingStation != NULL) {
 
-			craftingTool = player->getCraftingTool(craftingStation->getStationType(), false);
+			craftingTool = player->getCraftingTool(
+					craftingStation->getStationType(), false);
 
-			if (craftingTool != NULL){
+			if (craftingTool != NULL) {
 
 				craftingTool->sendToolStart(player);
 
@@ -3544,7 +3657,8 @@ void ObjectControllerMessage::parseRequestCraftingSession(Player* player,
 
 		} else {
 
-			player->sendSystemMessage("Something happened that shouldn't have.  Not a tool or a station, contact Kyle");
+			player->sendSystemMessage(
+					"Something happened that shouldn't have.  Not a tool or a station, contact Kyle");
 
 		}
 
@@ -3561,7 +3675,8 @@ void ObjectControllerMessage::parseCancelCraftingSession(Player* player,
 
 	if (ct != NULL) {
 		// DPlay9
-		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(player->getPlayerObject());
+		PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
+				player->getPlayerObject());
 		dplay9->setCraftingState(0);
 		ct->setCraftingState(0);
 		dplay9->close();
@@ -3595,14 +3710,15 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
 	if (craftingTool != NULL) {
 
 		DraftSchematic
-				* draftSchematic =
-						craftingTool->getCurrentDraftSchematic(indexOfSelectedSchematic);
+				* draftSchematic = craftingTool->getCurrentDraftSchematic(
+						indexOfSelectedSchematic);
 
 		if (draftSchematic == NULL) {
 
 			parseCancelCraftingSession(player, packet);
 			craftingTool->sendToolStart(player);
-			draftSchematic = craftingTool->getCurrentDraftSchematic(indexOfSelectedSchematic);
+			draftSchematic = craftingTool->getCurrentDraftSchematic(
+					indexOfSelectedSchematic);
 		}
 
 		if (draftSchematic != NULL) {
@@ -3615,8 +3731,7 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
 
 				craftingTool->unlock();
 
-			}
-			catch(...) {
+			} catch (...) {
 
 				craftingTool->unlock();
 
@@ -3625,7 +3740,8 @@ void ObjectControllerMessage::parseSelectDraftSchematic(Player* player,
 
 	} else {
 		// This eles should never execute
-		player->sendSystemMessage("Selected Draft Schematic was invalid.  Please inform Link of this error.");
+		player->sendSystemMessage(
+				"Selected Draft Schematic was invalid.  Please inform Link of this error.");
 	}
 
 }
@@ -3645,7 +3761,7 @@ void ObjectControllerMessage::parseAddCraftingResource(Player* player,
 	SceneObject* invObj = player->getInventoryItem(resourceObjectID);
 
 	if (invObj != NULL && invObj->isTangible()) {
-		player->addIngredientToSlot((TangibleObject*)invObj, slot, counter);
+		player->addIngredientToSlot((TangibleObject*) invObj, slot, counter);
 
 	} else {
 		// This eles should never execute
@@ -3709,14 +3825,15 @@ void ObjectControllerMessage::parseCraftCustomization(Player* player,
 		ss << count << " " << value;
 
 		if (i < customizationcount - 1)
-			ss  << " ";
+			ss << " ";
 	}
 
 	String customizationString = ss.toString();
 
 	player->craftingCustomization(name, condition, customizationString);
 }
-void ObjectControllerMessage::parseCreatePrototype(Player* player, Message* packet) {
+void ObjectControllerMessage::parseCreatePrototype(Player* player,
+		Message* packet) {
 	packet->shiftOffset(8);
 
 	UnicodeString d;
@@ -3727,7 +3844,8 @@ void ObjectControllerMessage::parseCreatePrototype(Player* player, Message* pack
 	player->createPrototype(count);
 }
 
-void ObjectControllerMessage::parseCreateSchematic(Player* player,	Message* packet) {
+void ObjectControllerMessage::parseCreateSchematic(Player* player,
+		Message* packet) {
 	packet->shiftOffset(8);
 
 	UnicodeString str;
@@ -3738,7 +3856,8 @@ void ObjectControllerMessage::parseCreateSchematic(Player* player,	Message* pack
 	player->createSchematic(count);
 }
 
-void ObjectControllerMessage::parseExperimentation(Player* player,	Message* pack) {
+void ObjectControllerMessage::parseExperimentation(Player* player,
+		Message* pack) {
 	ZoneClientSessionImplementation* client =
 			(ZoneClientSessionImplementation*) pack->getClient();
 
@@ -3773,7 +3892,8 @@ void ObjectControllerMessage::parsePickup(Player* player, Message* pack) {
 	//System::out << pack->toString() << "\n";
 }
 
-void ObjectControllerMessage::parseTransferItemMisc(Player* player,	Message* pack) {
+void ObjectControllerMessage::parseTransferItemMisc(Player* player,
+		Message* pack) {
 	uint64 target = pack->parseLong();
 	UnicodeString data;
 	pack->parseUnicode(data);
@@ -3788,7 +3908,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,	Message* pac
 	float z = tokenizer.getFloatToken();
 	float y = tokenizer.getFloatToken();
 
-	if (destinationID == player->getObjectID())  { //equipping item to player (weapons, clothes etc.)
+	if (destinationID == player->getObjectID()) { //equipping item to player (weapons, clothes etc.)
 		player->changeCloth(target);
 
 	} else if (destinationID == player->getObjectID() + 1) { //item is going to inventory
@@ -3839,7 +3959,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,	Message* pac
 			return;
 		}
 
-	//Dropping FROM the players inventory TO a cell or container (which could also be a nested inventory container)
+		//Dropping FROM the players inventory TO a cell or container (which could also be a nested inventory container)
 	} else {
 		TangibleObject* item = validateDropAction(player, target);
 
@@ -3859,8 +3979,9 @@ void ObjectControllerMessage::parseAddFriend(Player* player, Message* pack) {
 
 	String name = d.toString();
 
-	if (name != ""){
-		player->getPlayerObject()->addFriend(name, player->getZone()->getZoneServer()->getServerName());
+	if (name != "") {
+		player->getPlayerObject()->addFriend(name,
+				player->getZone()->getZoneServer()->getServerName());
 	}
 }
 
@@ -3872,12 +3993,13 @@ void ObjectControllerMessage::parseRemoveFriend(Player* player, Message* pack) {
 
 	String name = d.toString();
 
-	if (name != ""){
+	if (name != "") {
 		player->getPlayerObject()->removeFriend(name);
 	}
 }
 
-void ObjectControllerMessage::parseFindFriend(Player* player, Message* pack, PlayerManager* playerManager) {
+void ObjectControllerMessage::parseFindFriend(Player* player, Message* pack,
+		PlayerManager* playerManager) {
 	pack->shiftOffset(8);
 
 	UnicodeString d;
@@ -3885,7 +4007,7 @@ void ObjectControllerMessage::parseFindFriend(Player* player, Message* pack, Pla
 
 	String name = d.toString();
 
-	if (name != ""){
+	if (name != "") {
 		player->getPlayerObject()->findFriend(name, playerManager);
 	}
 }
@@ -3893,19 +4015,21 @@ void ObjectControllerMessage::parseFindFriend(Player* player, Message* pack, Pla
 void ObjectControllerMessage::parseRotateItem(Player* player, Message* pack) {
 	uint64 target = pack->parseLong();
 
-	SceneObject* object = player->getZone()->getZoneServer()->getObject(target, true);
+	SceneObject* object = player->getZone()->getZoneServer()->getObject(target,
+			true);
 
 	try {
 		object->wlock(player);
 
 		object->setDirection(object->getDirectionX(), (object->getDirectionZ()
 				+ sqrt(.5)), object->getDirectionY(), (object->getDirectionW()
-						+ sqrt(.5)));
+				+ sqrt(.5)));
 
 		object->unlock();
 	} catch (...) {
 		object->unlock();
-		System::out << "unreported exception caught in ObjectControllerMessage::parseRotateItem\n";
+		System::out
+				<< "unreported exception caught in ObjectControllerMessage::parseRotateItem\n";
 	}
 }
 
@@ -3918,8 +4042,9 @@ void ObjectControllerMessage::parseAddIgnore(Player* player, Message* pack) {
 
 	String name = d.toString();
 
-	if (name != ""){
-		player->getPlayerObject()->addIgnore(name, player->getZone()->getZoneServer()->getServerName());
+	if (name != "") {
+		player->getPlayerObject()->addIgnore(name,
+				player->getZone()->getZoneServer()->getServerName());
 	}
 }
 
@@ -3932,14 +4057,16 @@ void ObjectControllerMessage::parseRemoveIgnore(Player* player, Message* pack) {
 
 	String name = d.toString();
 
-	if (name != ""){
+	if (name != "") {
 		player->getPlayerObject()->removeIgnore(name);
 	}
 }
 
-void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* pack) {
+void ObjectControllerMessage::parseGiveConsentRequest(Player* player,
+		Message* pack) {
 	if (player->getConsentSize() >= 15) { //Max consent list size = 15
-		player->sendSystemMessage("Your consent list is full. You must /unconsent someone before consenting another player.");
+		player->sendSystemMessage(
+				"Your consent list is full. You must /unconsent someone before consenting another player.");
 		return;
 	}
 
@@ -3958,12 +4085,14 @@ void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* p
 	tokenizer.setDelimeter(" ");
 	tokenizer.getStringToken(consentName);
 
-	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
+	PlayerManager* playerManager =
+			player->getZone()->getZoneServer()->getPlayerManager();
 	Player* playerTarget = playerManager->getPlayer(consentName);
 
 	if (playerTarget != NULL) {
 		if (playerTarget == player) {
-			player->sendSystemMessage("You ask yourself for consent, but you get no reply.");
+			player->sendSystemMessage(
+					"You ask yourself for consent, but you get no reply.");
 			return;
 		}
 
@@ -3972,21 +4101,26 @@ void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* p
 			param->addTO(playerTarget->getCharacterName().toString());
 			player->sendSystemMessage("base_player", "prose_consent", param); //You give your consent to %TO.
 			param->addTO(player->getCharacterName().toString());
-			playerTarget->sendSystemMessage("base_player", "prose_got_consent", param); //%TO consents you.
+			playerTarget->sendSystemMessage("base_player", "prose_got_consent",
+					param); //%TO consents you.
 			delete param;
 		} else {
-			player->sendSystemMessage("You have already given them your consent.");
+			player->sendSystemMessage(
+					"You have already given them your consent.");
 		}
 
 		return;
 	} else {
-		player->sendSystemMessage("Your target for consent is either offline or does not exist.");
+		player->sendSystemMessage(
+				"Your target for consent is either offline or does not exist.");
 	}
 }
 
-void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message* pack) {
+void ObjectControllerMessage::parseRevokeConsentRequest(Player* player,
+		Message* pack) {
 	if (player->getConsentSize() <= 0) {
-		player->sendSystemMessage("You have no one on your consent list to remove.");
+		player->sendSystemMessage(
+				"You have no one on your consent list to remove.");
 		return;
 	}
 
@@ -4005,11 +4139,13 @@ void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message*
 	tokenizer.setDelimeter(" ");
 	tokenizer.getStringToken(consentName);
 
-	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
+	PlayerManager* playerManager =
+			player->getZone()->getZoneServer()->getPlayerManager();
 	Player* playerTarget = playerManager->getPlayer(consentName);
 
 	if (playerTarget == NULL) {
-		player->sendSystemMessage("Your target for unconsent is offline or does note exist.");
+		player->sendSystemMessage(
+				"Your target for unconsent is offline or does note exist.");
 		return;
 	}
 
@@ -4020,16 +4156,19 @@ void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message*
 
 		if (playerTarget != NULL) {
 			param->addTO(player->getCharacterName().toString());
-			playerTarget->sendSystemMessage("base_player", "prose_lost_consent", param); //%TO no longer consents you.
+			playerTarget->sendSystemMessage("base_player",
+					"prose_lost_consent", param); //%TO no longer consents you.
 		}
 		delete param;
 	} else {
-		player->sendSystemMessage("Your target for unconsent is offline or does note exist.");
+		player->sendSystemMessage(
+				"Your target for unconsent is offline or does note exist.");
 		return;
 	}
 }
 
-void ObjectControllerMessage::parseHaveConsentRequest(Player* player, Message* pack) {
+void ObjectControllerMessage::parseHaveConsentRequest(Player* player,
+		Message* pack) {
 	pack->shiftOffset(8);
 	UnicodeString UnicodeStringName;
 	pack->parseUnicode(UnicodeStringName);
@@ -4042,18 +4181,20 @@ void ObjectControllerMessage::parseHaveConsentRequest(Player* player, Message* p
 	}
 
 	/*
-	StringTokenizer tokenizer(name);
-	tokenizer.setDelimeter(" ");
-	tokenizer.getStringToken(consentName);
-	*/
+	 StringTokenizer tokenizer(name);
+	 tokenizer.setDelimeter(" ");
+	 tokenizer.getStringToken(consentName);
+	 */
 }
 
-void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack) {
+void ObjectControllerMessage::parseHarvestOrganics(Player* player,
+		Message* pack) {
 	Zone* zone = player->getZone();
 	if (zone == NULL)
 		return;
 
-	ResourceManager* resourceManager = zone->getZoneServer()->getResourceManager();
+	ResourceManager* resourceManager =
+			zone->getZoneServer()->getResourceManager();
 	if (resourceManager == NULL)
 		return;
 
@@ -4066,6 +4207,9 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 	Creature* creature = creatureManager->getCreature(creatureID);
 	if (creature == NULL)
 		return;
+
+	System::out << "Name:" << creature->getObjectID() << "\n";
+
 
 	try {
 
@@ -4097,22 +4241,22 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player, Message* pack
 
 void ObjectControllerMessage::parseTeach(Player* player, Message* pack) {
 	Zone* zone = player->getZone();
-	if(zone == NULL)
+	if (zone == NULL)
 		return;
 
 	uint64 targetid = pack->parseLong();
 
 	SceneObject* object = zone->lookupObject(targetid);
 	if (object == NULL) {
-		player->sendSystemMessage("teaching","no_target");
+		player->sendSystemMessage("teaching", "no_target");
 		return;
 	}
 
 	Player* target = NULL;
 	if (object->isPlayer())
-		target = (Player*)object;
+		target = (Player*) object;
 	else {
-		player->sendSystemMessage("teaching","no_target");
+		player->sendSystemMessage("teaching", "no_target");
 		return;
 	}
 
@@ -4120,23 +4264,25 @@ void ObjectControllerMessage::parseTeach(Player* player, Message* pack) {
 	params->addTT(target->getFirstNameProper());
 
 	if (player == target) {
-		player->sendSystemMessage("teaching","no_teach_self");
+		player->sendSystemMessage("teaching", "no_teach_self");
 		delete params;
 		return;
 	} else if (target->isDead() || target->isIncapacitated()) {
-		player->sendSystemMessage("teaching","student_dead",params);
+		player->sendSystemMessage("teaching", "student_dead", params);
 		delete params;
 		return;
 	} else if (!player->isInRange(target, 128)) {
-		player->sendSystemMessage("teaching","student_too_far_target",params);
+		player->sendSystemMessage("teaching", "student_too_far_target", params);
 		delete params;
 		return;
-	} else if (!player->isInAGroup() || !target->isInAGroup() || (player->getGroupObject() != target->getGroupObject())) {
-		player->sendSystemMessage("teaching","not_in_same_group");
+	} else if (!player->isInAGroup() || !target->isInAGroup()
+			|| (player->getGroupObject() != target->getGroupObject())) {
+		player->sendSystemMessage("teaching", "not_in_same_group");
 		delete params;
 		return;
 	} else if (target->getTeacher() != NULL) {
-		player->sendSystemMessage("teaching","student_has_offer_to_learn",params);
+		player->sendSystemMessage("teaching", "student_has_offer_to_learn",
+				params);
 		delete params;
 		return;
 	}
@@ -4153,7 +4299,8 @@ void ObjectControllerMessage::parseTeach(Player* player, Message* pack) {
 	}
 }
 
-void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pack, ZoneProcessServerImplementation* serv) {
+void ObjectControllerMessage::handleRemoveFromGuild(Player* player,
+		Message* pack, ZoneProcessServerImplementation* serv) {
 	//player is prelocked
 	uint64 objectid = pack->parseLong();
 
@@ -4178,10 +4325,8 @@ void ObjectControllerMessage::handleRemoveFromGuild(Player* player, Message* pac
 
 bool ObjectControllerMessage::parseMeditation(Player* player) {
 
-	if (player->isMounted() ||
-		player->isDizzied() ||
-		player->isInCombat() ||
-		player->isKnockedDown() ) {
+	if (player->isMounted() || player->isDizzied() || player->isInCombat()
+			|| player->isKnockedDown()) {
 
 		player->sendSystemMessage("teraskasi", "med_fail");
 		return false;
@@ -4196,7 +4341,8 @@ bool ObjectControllerMessage::parseMeditation(Player* player) {
 	}
 }
 
-void ObjectControllerMessage::parseDelFactionPoints(Player* player, Message* pack) {
+void ObjectControllerMessage::parseDelFactionPoints(Player* player,
+		Message* pack) {
 	uint64 tipToId = pack->parseLong();
 
 	UnicodeString tipParams;
@@ -4241,6 +4387,24 @@ void ObjectControllerMessage::parseDelFactionPoints(Player* player, Message* pac
 	player->delFactionPoints(tipTo, tipAmount);
 }
 
+void ObjectControllerMessage::parseThrowTrap(Player* player, Message* pack) {
+	Zone* zone = player->getZone();
+	if (zone == NULL)
+		return;
+
+	uint64 targetid = pack->parseLong();
+
+	SceneObject* object = zone->lookupObject(targetid);
+
+
+	if (object == NULL || !object->isNonPlayerCreature())
+		return;
+
+	Creature* target = (Creature*) object;
+
+	player->throwTrap(target->getObjectID());
+}
+
 void ObjectControllerMessage::handleContainerOpen(Player* player, Message* pack) {
 	//TODO:Cell permission must take place here
 	uint64 target = pack->parseLong();
@@ -4273,7 +4437,8 @@ void ObjectControllerMessage::handleContainerOpen(Player* player, Message* pack)
 	}
 }
 
-TangibleObject* ObjectControllerMessage::validateDropAction(Player* player, uint64 target) {
+TangibleObject* ObjectControllerMessage::validateDropAction(Player* player,
+		uint64 target) {
 	SceneObject* obj;
 
 	//TODO:Cell permission must take place here
@@ -4299,7 +4464,8 @@ TangibleObject* ObjectControllerMessage::validateDropAction(Player* player, uint
 	return (TangibleObject*) obj;
 }
 
-void ObjectControllerMessage::transferItemToContainer(Player* player, TangibleObject* item, uint64 destinationID) {
+void ObjectControllerMessage::transferItemToContainer(Player* player,
+		TangibleObject* item, uint64 destinationID) {
 	Zone* zone = player->getZone();
 	if (zone == NULL)
 		return;
@@ -4315,7 +4481,8 @@ void ObjectControllerMessage::transferItemToContainer(Player* player, TangibleOb
 	im->transferContainerItem(player, item, destinationID);
 }
 
-void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player, Message* pack) {
+void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player,
+		Message* pack) {
 
 	pack->shiftOffset(8);
 	UnicodeString startingcity;
@@ -4324,30 +4491,30 @@ void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player, 
 	//"0=Corellia, 1=Dantooine, 2=Dathomir, 3=Endor, 4=Lok,\n"
 	//"5=Naboo, 6=Rori, 7=Talus, 8=Tatooine, 9=Yavin 4, 10=Bad player prison (Space)");
 	/*
- (1,'bestine',8,-1290.000000,0.000000,-3590.000000,'Bestine, Tatooine',3,180),
- (2,'mos_espa',8,-2902.000000,0.000000,2130.000000,'Mos Espa, Tatooine',3,180),
- (3,'mos_eisley',8,3528.000000,0.000000,-4804.000000,'Mos Eisley, Tatooine',3,180),
- (4,'mos_entha',8,1291.000000,0.000000,3138.000000,'Mos Entha, Tatooine',3,180),
- (5,'coronet',0,-137.000000,0.000000,-4723.000000,'Coronet, Corellia',3,180),
- (6,'tyrena',0,-5045.000000,0.000000,-2294.000000,'Tyrena, Corellia',3,180),
- (7,'kor_vella',0,-3138.000000,0.000000,2808.000000,'Kor Vella, Corellia',3,180),
- (8,'doaba_guerfel',0,3336.000000,0.000000,5525.000000,'Doaba Guerfel, Corellia',3,180),
- (9,'dearic',7,335.000000,0.000000,-2931.000000,'Dearic, Talus',3,180),
- (10,'nashal',7,4371.000000,0.000000,5165.000000,'Nashal, Talus',3,180),
- (11,'narmle',6,-5310.000000,0.000000,-2221.000000,'Narmle, Rori',3,180),
- (12,'restuss',6,5362.000000,0.000000,5663.000000,'Restuss, Rori',3,180),
- (13,'theed',6,-4856.000000,0.000000,4162.000000,'Theed, Naboo',3,180),
- (14,'moenia',5,4800.000000,0.000000,-4700.000000,'Moenia, Naboo',3,180),
- (15,'keren',5,1441.000000,0.000000,2771.000000,'Keren, Naboo',3,180),
- (16,'kaadara',5,5209.000000,0.000000,6677.000000,'Kaadara, Naboo',3,180),
- (17,'tutorial',41,0.000000,0.000000,0.000000,'Tutorial',3,180);
+	 (1,'bestine',8,-1290.000000,0.000000,-3590.000000,'Bestine, Tatooine',3,180),
+	 (2,'mos_espa',8,-2902.000000,0.000000,2130.000000,'Mos Espa, Tatooine',3,180),
+	 (3,'mos_eisley',8,3528.000000,0.000000,-4804.000000,'Mos Eisley, Tatooine',3,180),
+	 (4,'mos_entha',8,1291.000000,0.000000,3138.000000,'Mos Entha, Tatooine',3,180),
+	 (5,'coronet',0,-137.000000,0.000000,-4723.000000,'Coronet, Corellia',3,180),
+	 (6,'tyrena',0,-5045.000000,0.000000,-2294.000000,'Tyrena, Corellia',3,180),
+	 (7,'kor_vella',0,-3138.000000,0.000000,2808.000000,'Kor Vella, Corellia',3,180),
+	 (8,'doaba_guerfel',0,3336.000000,0.000000,5525.000000,'Doaba Guerfel, Corellia',3,180),
+	 (9,'dearic',7,335.000000,0.000000,-2931.000000,'Dearic, Talus',3,180),
+	 (10,'nashal',7,4371.000000,0.000000,5165.000000,'Nashal, Talus',3,180),
+	 (11,'narmle',6,-5310.000000,0.000000,-2221.000000,'Narmle, Rori',3,180),
+	 (12,'restuss',6,5362.000000,0.000000,5663.000000,'Restuss, Rori',3,180),
+	 (13,'theed',6,-4856.000000,0.000000,4162.000000,'Theed, Naboo',3,180),
+	 (14,'moenia',5,4800.000000,0.000000,-4700.000000,'Moenia, Naboo',3,180),
+	 (15,'keren',5,1441.000000,0.000000,2771.000000,'Keren, Naboo',3,180),
+	 (16,'kaadara',5,5209.000000,0.000000,6677.000000,'Kaadara, Naboo',3,180),
+	 (17,'tutorial',41,0.000000,0.000000,0.000000,'Tutorial',3,180);
 	 */
 	if (city == "mos_eisley") {
-		player->setPosition(3528.0f,0,-4804.0f);
+		player->setPosition(3528.0f, 0, -4804.0f);
 		player->switchMap(8);
 
 	} else if (city == "bestine") {
-		player->setPosition(-1290.0f,0,-3590.0f);
+		player->setPosition(-1290.0f, 0, -3590.0f);
 		player->switchMap(8);
 
 	} else if (city == "theed") {
@@ -4355,21 +4522,18 @@ void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player, 
 		player->switchMap(5);
 
 	} else if (city == "moenia") {
-		player->setPosition(4800.0f,0,-4700.0f);
+		player->setPosition(4800.0f, 0, -4700.0f);
 		player->switchMap(5);
 
 	} else if (city == "coronet") {
-		player->setPosition(-137.00f,0,-4723.0f);
+		player->setPosition(-137.00f, 0, -4723.0f);
 		player->switchMap(0);
 
 	} else if (city == "tyrena") {
-		player->setPosition(-5045.0f,0,-2294.0f);
+		player->setPosition(-5045.0f, 0, -2294.0f);
 		player->switchMap(0);
 
 	}
-
-
-
 
 }
 
