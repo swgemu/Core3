@@ -51,7 +51,7 @@ nightsisterRanger = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3628672450, 
 	socialGroup = "nightsister",
-	level = 81,
+	level = 78,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -122,7 +122,7 @@ nightsisterRanger = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,11,19,30,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,19,30,33,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

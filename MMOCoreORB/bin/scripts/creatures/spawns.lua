@@ -100,6 +100,7 @@ end
 if (PLANET_ID == 4) then
 RunCreatureFile("spawns/lok/staticSpawns.lua")
 RunCreatureFile("spawns/lok/citys/nymsStronghold.lua")
+RunCreatureFile("spawns/lok/kimoTown.lua")
 end
 
 --Naboo
@@ -116,6 +117,7 @@ end
 
 --Rori
 if (PLANET_ID == 6) then
+RunCreatureFile("spawns/rori/facilityHyperDrive.lua")
 RunCreatureFile("spawns/rori/staticSpawns.lua")
 RunCreatureFile("spawns/rori/citys/narmale.lua")
 end
@@ -151,6 +153,7 @@ end
 if (PLANET_ID == 9) then
 RunCreatureFile("spawns/yavin4/staticSpawns.lua")
 RunCreatureFile("spawns/yavin4/geoCave.lua")
+RunCreatureFile("spawns/yavin4/woolamanderPalace.lua")
 RunCreatureFile("spawns/yavin4/citys/imperialFortress.lua")
 RunCreatureFile("spawns/yavin4/citys/laborOutpost.lua")
 RunCreatureFile("spawns/yavin4/citys/miningOutpost.lua")

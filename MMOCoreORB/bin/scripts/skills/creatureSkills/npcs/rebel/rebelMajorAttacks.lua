@@ -47,51 +47,40 @@ rebelMajorAttack1 = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
-	damageRatio = 70,
-	speedRatio = 1,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
-
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
-
-	dotChance = 60,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 0,
-	bleedingType = HEALTH,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 50,
+	stunChance = 0,
+	intimidateChance = 0,
 	
-	CbtSpamBlock = "sapblast_block",
-	CbtSpamCounter = "sapblast_counter",
-	CbtSpamEvade = "sapblast_evade",
-	CbtSpamHit = "sapblast_hit",
-	CbtSpamMiss = "sapblast_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
-AddDotPoolAttackTargetSkill(rebelMajorAttack1)
+AddRandomPoolAttackTargetSkill(rebelMajorAttack1)
 
 -----------------------------------------------------------------------
 
 rebelMajorAttack2 = { 
 	attackname = "rebelMajorAttack2",
-	animation = "creature_attack_light",
+	animation = "fire_1_special_single_light",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = PISTOL,
 	
-	range = 11,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -103,14 +92,75 @@ rebelMajorAttack2 = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(rebelMajorAttack2)
 
 -----------------------------------------------------------------------
 
+rebelMajorAttack3 = { 
+	attackname = "rebelMajorAttack3",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 75,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelMajorAttack3)
+
+-----------------------------------------------------------------------
+
+rebelMajorAttack4 = { 
+	attackname = "rebelMajorAttack4",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 50,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelMajorAttack4)
+
+-----------------------------------------------------------------------

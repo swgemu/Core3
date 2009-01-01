@@ -42,3 +42,5 @@
 
 --global clusters
 
+spawnCreatures(recluseGurkKing, 4, 700, -3300, 1000, 1)
+spawnCreature(recluseGurkKing, 4, -3764, -3468)

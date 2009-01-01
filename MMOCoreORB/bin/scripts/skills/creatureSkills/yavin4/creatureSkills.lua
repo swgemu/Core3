@@ -59,3 +59,4 @@ RunSkillsFile("creatureSkills/yavin4/creatures/geonosianEnhancedKliknikAttacks.l
 RunSkillsFile("creatureSkills/yavin4/creatures/geonosianEnhancedKwiAttacks.lua")
 RunSkillsFile("creatureSkills/yavin4/creatures/geonosianFBSAttacks.lua")
 RunSkillsFile("creatureSkills/yavin4/creatures/geonosianCaveSpiderAttacks.lua")
+RunSkillsFile("creatureSkills/yavin4/creatures/woolamanderAttacks.lua")

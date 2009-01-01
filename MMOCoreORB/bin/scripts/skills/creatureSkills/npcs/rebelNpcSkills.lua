@@ -40,9 +40,8 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Npc Skills
-
 -- Rebel Attacks
+
 RunSkillsFile("creatureSkills/npcs/rebel/chewbaccaAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/rebel/hanSoloAttacks.lua")
 RunSkillsFile("creatureSkills/npcs/rebel/lukeAttacks.lua")
@@ -56,16 +55,12 @@ RunSkillsFile("creatureSkills/npcs/rebel/rebelHighGeneralAttacks.lua") -- Weapon
 RunSkillsFile("creatureSkills/npcs/rebel/rebelJediKnightAttacks.lua") -- Weapon "2handed Lightsaber"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelJediMasterAttacks.lua") -- Weapon "Polearm Lightsaber"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelLanceCorporalAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
-RunSkillsFile("creatureSkills/npcs/rebel/rebelLieutenantColonelAttacks.lua") -- Weapon "Power 5, Stun Baton"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorAttacks.lua") -- Weapon "Power 5, Stun Baton"
-RunSkillsFile("creatureSkills/npcs/rebel/rebelMajorGeneralAttacks.lua") -- Weapon "Power 5, Stun Baton"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelMedicAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelScoutAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelSecondLieutenantAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantAttacks.lua") -- Weapon "Republic Blaster, Stun Baton"
-RunSkillsFile("creatureSkills/npcs/rebel/rebelSergeantMajorAttacks.lua") -- Weapon "Republic Blaster, Stun Baton"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelSpecforceCaptainAttacks.lua") -- Weapon "spec ops berserker, Stun Baton"
-RunSkillsFile("creatureSkills/npcs/rebel/rebelStaffCorporalAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelSurfaceMarshalAttacks.lua") -- Weapon "Power 5, Stun Baton"
 RunSkillsFile("creatureSkills/npcs/rebel/rebelTrooperAttacks.lua") -- Weapon "Laser Carbine, Stun Baton"
-RunSkillsFile("creatureSkills/npcs/rebel/rebelWarrantOfficerIAttacks.lua") -- Weapon "Power 5, Stun Baton"
+RunSkillsFile("creatureSkills/npcs/rebel/rebelWarrantOfficerAttacks.lua") -- Weapon "Power 5, Stun Baton"

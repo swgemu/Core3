@@ -51,25 +51,26 @@ rebelTrooper = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4012550111, 
 	socialGroup = "Rebel",
-	level = 15,
 	
+
+	level = 25,
 
 	combatFlags = 0,
 
 	healthMax = 3000,
 	healthMin = 2400,
-	strength = 0,
-	constitution = 0,
+	strength = 300,
+	constitution = 300,
 
 	actionMax = 3000,
 	actionMin = 2400,
-	quickness = 0,
-	stamina = 0,
+	quickness = 300,
+	stamina = 300,
 
 	mindMax = 3000,
 	mindMin = 2400,
-	focus = 0,
-	willpower = 0,
+	focus = 300,
+	willpower = 300,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +84,7 @@ rebelTrooper = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -99,27 +100,27 @@ rebelTrooper = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/carbine/shared_carbine_laser.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "a Laser Carbine", -- Name ex. 'a Vibrolance'
-	weaponTemp = "carbine_laser", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/ranged/pistol/shared_pistol_fwg5.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "FWG Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 120,
 	weaponMaxDamage = 330,
-	weaponAttackSpeed = 2.2,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY	
 	
-	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 92,
-	alternateWeaponMaxDamage = 301,
-	alternateWeaponAttackSpeed = 1.5,
-	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
@@ -139,7 +140,7 @@ rebelTrooper = Creature:new {
 	meatMax = 0,
 
 	skills = { "rebelTrooperAttack1", "rebelTrooperAttack2" },
-	respawnTimer = 180,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -238,7 +238,7 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 		luck = luck + 150;
 	} else if (playerRoll > 45000) {
 		luck = luck + 100;
-	} else if (playerRoll > 12500) {
+	} else if (playerRoll > 17500) {
 		luck = luck + 50;
 	}
 	
@@ -295,13 +295,19 @@ int AttachmentImplementation::getModValue(int luck, int modifier){
 	
 	int min, mod, result;
 	
-	if (modifier > 180){
-		min = 10;
-		mod = modifier % 25;
-	} else if (modifier > 130){
-		min = 3;
+	if (modifier > 185){
+		min = 9;
+		mod = modifier % 27;
+	} else if (modifier > 141){
+		min = 4;
+		mod = modifier % 19;
+	} else if (modifier > 110){
+		min = 2;
 		mod = modifier % 7;
-	} else {
+	} else if (modifier > 45){
+		min = 2;
+		mod = modifier % 4;
+	} else if (modifier > 15){
 		min = 1;
 		mod = modifier % 2;
 	}

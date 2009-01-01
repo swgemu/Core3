@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2008 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -40,159 +40,15 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-tuskenRangedAttack5 = {
-	attackname = "tuskenRangedAttack5",
-	animation = "fire_1_special_single_medium",
-	
+tuskenRangedAttack1 = { 
+	attackname = "tuskenRangedAttack1",
+	animation = "fire_3_special_single_medium",
+
 	requiredWeaponType = RIFLE,
-
+	
 	range = 64,
-
-	damageRatio = 10,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 1,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack5)
-
------------------------------------------------------------------------
-
-tuskenRangedAttack6 = {
-	attackname = "tuskenRangedAttack6",
-	animation = "fire_1_special_single_medium",
-	
-	requiredWeaponType = RIFLE,
-
-	range = 64,
-
-	damageRatio = 10,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 60,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack6)
-
------------------------------------------------------------------------
-
-tuskenRangedAttack7 = {
-	attackname = "tuskenRangedAttack7",
-	animation = "fire_1_special_single_medium",
-	
-	requiredWeaponType = RIFLE,
-
-	range = 64,
-
 	damageRatio = 5,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 60,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack7)
-
------------------------------------------------------------------------
-
-tuskenRangedAttack8 = {
-	attackname = "tuskenRangedAttack8",
-	animation = "fire_1_special_single_medium",
-	
-	requiredWeaponType = RIFLE,
-
-	range = 64,
-
-	damageRatio = 5,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 60,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
-
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack8)
-
------------------------------------------------------------------------
-
-tuskenRangedAttack9 = {
-	attackname = "tuskenRangedAttack9",
-	animation = "fire_1_special_single_medium",
-	
-	requiredWeaponType = RIFLE,
-
-	range = 64,
-
-	damageRatio = 5,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -202,7 +58,7 @@ tuskenRangedAttack9 = {
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
-	intimidateChance = 60,
+	intimidateChance = 12,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -211,23 +67,19 @@ tuskenRangedAttack9 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack9)
+AddRandomPoolAttackTargetSkill(tuskenRangedAttack1)
 
 -----------------------------------------------------------------------
 
-tuskenRangedAttack10 = {
-	attackname = "tuskenRangedAttack10",
-	animation = "fire_1_special_single_medium",
-	
+tuskenRangedAttack2 = { 
+	attackname = "tuskenRangedAttack2",
+	animation = "fire_3_special_single_medium",
+
 	requiredWeaponType = RIFLE,
-
+	
 	range = 64,
-
 	damageRatio = 5,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -246,23 +98,19 @@ tuskenRangedAttack10 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack10)
+AddRandomPoolAttackTargetSkill(tuskenRangedAttack2)
 
 -----------------------------------------------------------------------
 
-tuskenRangedAttack11 = {
-	attackname = "tuskenRangedAttack11",
-	animation = "fire_1_special_single_medium",
-	
+tuskenRangedAttack3 = { 
+	attackname = "tuskenRangedAttack3",
+	animation = "fire_3_special_single_medium",
+
 	requiredWeaponType = RIFLE,
-
+	
 	range = 64,
-
 	damageRatio = 5,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
+	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 		
@@ -271,7 +119,7 @@ tuskenRangedAttack11 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 0,
+	stunChance = 25,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "attack_block",
@@ -281,75 +129,36 @@ tuskenRangedAttack11 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack11)
+AddRandomPoolAttackTargetSkill(tuskenRangedAttack3)
 
 -----------------------------------------------------------------------
 
-tuskenRangedAttack12 = {
-	attackname = "tuskenRangedAttack12",
-	animation = "fire_1_special_single_medium",
-	
+tuskenRangedAttack4 = { 
+	attackname = "tuskenRangedAttack4",
+	animation = "fire_3_special_single_medium",
+
 	requiredWeaponType = RIFLE,
-
+	
 	range = 64,
-
 	damageRatio = 5,
-
-	speedRatio = 2,
-	coneAngle = 60,
-
+	speedRatio = 3,
 	areaRange = 0,
 	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "attack_block",
-	CbtSpamCounter = "attack_counter",
-	CbtSpamEvade = "attack_evade",
-	CbtSpamHit = "attack_hit",
-	CbtSpamMiss = "attack_miss",
-}
 
-AddRandomPoolAttackTargetSkill(tuskenRangedAttack12)
-
------------------------------------------------------------------------
-
-tuskenRangedAttack13 = {
-	attackname = "tuskenRangedAttack13",
-	animation = "fire_1_special_single_medium",
-	
-	requiredWeaponType = RIFLE,
-
-	range = 64,
-
-	damageRatio = 2,
-
-	speedRatio = 2,
-	coneAngle = 0,
-
-	areaRange = 0,
-	accuracyBonus = 10,
-	
-	dotChance = 80,
+	dotChance = 50,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
 	bleedingStrength = 0,
-	bleedingType = 0,
+	bleedingType = HEALTH,
 
 	poisonStrength = 0,
 	poisonType = 0,
 
 	diseaseStrength = 0,
-	diseaseType = HEALTH,
+	diseaseType = 0,
 	
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
@@ -358,6 +167,6 @@ tuskenRangedAttack13 = {
 	CbtSpamMiss = "attack_miss",
 }
 
-AddDotPoolAttackTargetSkill(tuskenRangedAttack13)
+AddDotPoolAttackTargetSkill(tuskenRangedAttack4)
 
------------------------------------------------------------------------
+-------------------------------------------------------

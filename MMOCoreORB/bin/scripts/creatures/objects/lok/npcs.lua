@@ -101,3 +101,6 @@
  RunCreatureFile("objects/lok/npcs/nym/nymPirateStrong.lua")
  RunCreatureFile("objects/lok/npcs/nym/nymPirateWeak.lua")
  RunCreatureFile("objects/lok/npcs/nym/nymSurveyer.lua")
+
+ --Cas
+ RunCreatureFile("objects/lok/npcs/misc/casVankoo.lua")

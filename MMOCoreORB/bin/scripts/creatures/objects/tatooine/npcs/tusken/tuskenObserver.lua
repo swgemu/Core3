@@ -58,18 +58,18 @@ tuskenObserver = Creature:new {
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 254000,
-	healthMin = 228000,
+	healthMax = 250000,
+	healthMin = 210000,
 	strength = 30000,
 	constitution = 30000,
 
-	actionMax = 254000,
-	actionMin = 228000,
+	actionMax = 250000,
+	actionMin = 210000,
 	quickness = 30000,
 	stamina = 30000,
 
-	mindMax = 254000,
-	mindMin = 228000,
+	mindMax = 250000,
+	mindMin = 210000,
 	focus = 30000,
 	willpower = 30000,
 
@@ -81,7 +81,7 @@ tuskenObserver = Creature:new {
 	stun = 80,
 	blast = 35,
 	heat = 100,
-	cold = 0,
+	cold = 10,
 	acid = 45,
 	lightsaber = 0,
 
@@ -110,7 +110,7 @@ tuskenObserver = Creature:new {
 	weaponEquipped = 1,
 	weaponMinDamage = 750,
 	weaponMaxDamage = 1550,
-	weaponAttackSpeed = 1.6,
+	weaponAttackSpeed = 1.5,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -127,7 +127,7 @@ tuskenObserver = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,11,15,24,25,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,4,11,15,24,25,33,39,40,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

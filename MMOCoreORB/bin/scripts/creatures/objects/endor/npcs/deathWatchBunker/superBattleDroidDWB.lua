@@ -42,32 +42,33 @@
 superBattleDroidDWB = Creature:new {
 	objectName = "superBattleDroidDWB",  -- Lua Object Name
 	creatureType = "NPC",
+	
 	gender = "",
 
 	speciesName = "mand_bunker_super_battle_droid",
 	stfName = "mob/creature_names",
 	objectCRC = 3793641800, 
 	socialGroup = "Death Watch",
-	level = 228,
 	
 
+	level = 228,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 254000,
 	healthMin = 208000,
-	strength = 80000,
-	constitution = 80000,
+	strength = 50000,
+	constitution = 50000,
 
 	actionMax = 254000,
 	actionMin = 208000,
-	quickness = 80000,
-	stamina = 80000,
+	quickness = 50000,
+	stamina = 50000,
 
 	mindMax = 254000,
 	mindMin = 208000,
-	focus = 80000,
-	willpower = 80000,
+	focus = 50000,
+	willpower = 50000,
 
 	height = 1.5, -- Size of creature
 	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +84,7 @@ superBattleDroidDWB = Creature:new {
 	lightsaber = 0,
 
 
-	accuracy = 300,
+	accuracy = 375,
 
 	healer = 0,
 
@@ -108,7 +109,7 @@ superBattleDroidDWB = Creature:new {
 	weaponMaxDamage = 1200,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAV
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAV
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -123,7 +124,7 @@ superBattleDroidDWB = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
+	lootGroup = "4", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

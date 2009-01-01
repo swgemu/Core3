@@ -46,27 +46,32 @@ pekoPeko = Creature:new {
 	gender = "",
 
 	speciesName = "peko_peko",
+	
 	stfName = "mob/creature_names",
 	objectCRC = 2319882660, 
 	socialGroup = "self",
+	
+
 	level = 14,
+
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
 	healthMax = 2400,
 	healthMin = 2000,
-	strength = 0,
-	constitution = 0,
+	strength = 500,
+	constitution = 500,
 
 	actionMax = 2400,
 	actionMin = 2000,
-	quickness = 0,
-	stamina = 0,
+	quickness = 500,
+	stamina = 500,
 
 	mindMax = 2400,
 	mindMin = 2000,
-	focus = 0,
-	willpower = 0,
+	focus = 500,
+	willpower = 500,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -80,7 +85,7 @@ pekoPeko = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 200,
+	accuracy = 300,
 
 	healer = 0,
 
@@ -91,21 +96,24 @@ pekoPeko = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
+	
+
 	meleeDefense = 1,  
+	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+      	weaponName = "Peko Peko", -- Name ex. 'a Vibrolance'
+      	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+     	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      	weaponEquipped = 1,
+      	weaponMinDamage = 100,
+      	weaponMaxDamage = 300,
+      	weaponAttackSpeed = 1,
+      	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -135,8 +143,7 @@ pekoPeko = Creature:new {
 	meatType = "meat_avian_naboo",
 	meatMax = 105,
 
-	--skills = { " Intimidation attack", "", "" }
-	skills = { "pekoPekoAttack3" },
+	skills = { "pekoPekoAttack1", "pekoPekoAttack2", "pekoPekoAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object

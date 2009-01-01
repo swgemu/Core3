@@ -43,69 +43,78 @@
 pekoPekoAlbatross = Creature:new {
 	objectName = "pekoPekoAlbatross",  -- Lua Object Name
 	creatureType = "ANIMAL",
+	
 	gender = "",
 
 	speciesName = "peko_peko_albatross",
+	
 	stfName = "mob/creature_names",
 	objectCRC = 1032288412, 
 	socialGroup = "Peko Peko",
+	
+
 	level = 155,
 
+	
+	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
 	healthMax = 91000,
 	healthMin = 74000,
-	strength = 0,
-	constitution = 0,
+	strength = 10000,
+	constitution = 10000,
 
 	actionMax = 91000,
 	actionMin = 74000,
-	quickness = 0,
-	stamina = 0,
+	quickness = 10000,
+	stamina = 10000,
 
 	mindMax = 91000,
 	mindMin = 74000,
-	focus = 0,
-	willpower = 0,
+	focus = 10000,
+	willpower = 10000,
 
-	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	height = 2.3, -- Size of creature
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 100,
 	energy = 80,
 	electricity = 90,
-	stun = 0,
+	stun = 25,
 	blast = 30,
 	heat = 80,
 	cold = 80,
-	acid = 0,
+	acid = 25,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 380,
 
 	healer = 0,
 
 	pack = 1,
-	herd = 1,
+	herd = 0,
 	stalker = 0,
 	killer = 1,
 	aggressive = 0,
 	invincible = 0, 
 
+	
+
 	meleeDefense = 1,  
+	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+      	weaponName = "Peko Peko Albatross", -- Name ex. 'a Vibrolance'
+      	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+     	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      	weaponEquipped = 1,
+      	weaponMinDamage = 800,
+      	weaponMaxDamage = 2000,
+      	weaponAttackSpeed = 1,
+      	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +129,7 @@ pekoPekoAlbatross = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,19,87", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -135,9 +144,8 @@ pekoPekoAlbatross = Creature:new {
 	meatType = "meat_avian_naboo",
 	meatMax = 400,
 
-	--skills = { " Area attack (combo)", " Area attack (knockdown)", "" }
-	skills = { "pekoPekoAttack4", "pekoPekoAttack5" },
-	respawnTimer = 60,
+	skills = { "pekoPekoAttack5", "pekoPekoAttack6", "pekoPekoAttack7" },
+	respawnTimer = 3600,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

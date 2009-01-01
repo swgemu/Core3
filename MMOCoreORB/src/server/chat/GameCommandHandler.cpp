@@ -1694,6 +1694,7 @@ void GameCommandHandler::buff(StringTokenizer tokenizer, Player* player) {
 			buffie->changeStrengthWoundsBar(-1500);
 			buffie->changeWillpowerWoundsBar(-1500);
 			buffie->changeFocusWoundsBar(-1500);
+			buffie->changeShockWounds(-1000);
 
 			//now buff
 			float buffDuration = 10800.0f;
@@ -1753,7 +1754,7 @@ void GameCommandHandler::buff(StringTokenizer tokenizer, Player* player) {
 			bo = new BuffObject(buff);
 			buffie->applyBuff(bo);
 
-			player->sendSystemMessage("Buffs applied");
+			player->sendSystemMessage("Buffs applied and you feel no fatigue");
 
 		} else {
 			player->sendSystemMessage("Already buffed");
