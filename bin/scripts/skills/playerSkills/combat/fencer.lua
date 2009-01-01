@@ -45,11 +45,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 3.5,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -76,11 +81,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
-	damageRatio = 2.25,
+	range = 0,
+	damageRatio = 3.0,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	healthAttackChance = 85,
 	strengthAttackChance = 0,
@@ -119,11 +129,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
-	damageRatio = 2.5,
+	range = 0,
+	damageRatio = 3.5,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -150,11 +165,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 4.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	healthAttackChance = 85,
 	strengthAttackChance = 0,
@@ -194,11 +214,16 @@ DotPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	actionAttackChance = 0,
@@ -236,11 +261,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
-	damageRatio = 3.5,
+	range = 0,
+	damageRatio = 3.0,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -268,11 +298,16 @@ DotPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	actionAttackChance = 0,
@@ -310,11 +345,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
@@ -352,11 +392,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 3.5,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
@@ -394,11 +439,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -425,11 +475,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -456,11 +511,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 5.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,

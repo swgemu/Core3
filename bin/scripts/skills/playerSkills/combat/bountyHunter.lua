@@ -45,11 +45,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 30,
 	postureDownChance = 0,
@@ -76,11 +81,16 @@ RandPoolAtt = {
 		
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 30,
 	postureDownChance = 0,
@@ -134,11 +144,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.3,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -165,11 +180,16 @@ DotPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	dotChance = 60,
 	tickStrengthOfHit = 1,
@@ -203,11 +223,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -245,11 +270,16 @@ DotPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.3,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
@@ -295,11 +325,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLELIGHTNING,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -326,11 +361,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLELIGHTNING,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.0,
 	coneAngle = 60,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -357,11 +397,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLELIGHTNING,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 5.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -388,11 +433,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
+	range = 0,
 	damageRatio = 5.5,
 	speedRatio = 3.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -419,11 +469,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLELIGHTNING,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 4.0,
 	speedRatio = 2.0,
 	coneAngle = 60,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -450,11 +505,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 4.15,
 	speedRatio = 3.05,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	strengthAttackChance = 0,

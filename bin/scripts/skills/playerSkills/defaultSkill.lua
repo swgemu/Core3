@@ -46,7 +46,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = NONE,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 1,
 	speedRatio = 1,
 	areaRange = 0,

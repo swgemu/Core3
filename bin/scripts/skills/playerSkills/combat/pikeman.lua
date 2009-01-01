@@ -45,11 +45,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -76,11 +81,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -107,11 +117,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 3.0,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -138,11 +153,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -180,11 +200,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.2,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -211,11 +236,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -253,11 +283,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.75,
 	speedRatio = 3.0,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -284,11 +319,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 10,
 	postureDownChance = 0,
@@ -315,11 +355,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 3.0,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 30,
 	postureDownChance = 0,
@@ -346,11 +391,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 1.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	actionAttackChance = 100,
@@ -388,11 +438,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	actionAttackChance = 100,
@@ -430,11 +485,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 4.0,
 	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 60,

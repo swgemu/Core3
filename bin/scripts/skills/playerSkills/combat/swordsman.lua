@@ -45,11 +45,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 3.0,
-	speedRatio = 2.25,
+	speedRatio = 2.3,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -76,11 +81,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.3,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 15,
@@ -107,11 +117,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.4,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 20,
@@ -138,11 +153,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.6,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 30,
@@ -169,11 +189,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 2.3,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -211,11 +236,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 3.5,
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -253,16 +283,21 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.3,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
+	dizzyChance = 50,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -284,11 +319,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.5,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 40,
@@ -315,11 +355,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 1.0,
 	speedRatio = 2.3,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	actionAttackChance = 0,
@@ -357,11 +402,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	actionAttackChance = 0,
@@ -399,17 +449,22 @@ RandPoolAtt = {
 
 	requiredWeaponType = TWOHANDED,
 	
-	range = 5,
+	range = 0,
 	damageRatio = 4.0,
-	speedRatio = 3.25,
+	speedRatio = 3.3,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
-	blindChance = 0,
+	blindChance = 25,
 	stunChance = 0,
 	intimidateChance = 0,
 	

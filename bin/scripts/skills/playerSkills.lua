@@ -60,6 +60,12 @@ RunSkillsFile("playerSkills/combat/rifleman.lua")
 RunSkillsFile("playerSkills/combat/swordsman.lua")
 RunSkillsFile("playerSkills/combat/smuggler.lua")
 RunSkillsFile("playerSkills/combat/terasKasiArtist.lua")
+RunSkillsFile("playerSkills/combat/jedi/lightsaber.lua")
+RunSkillsFile("playerSkills/combat/jedi/powers.lua")
+--RunSkillsFile("playerSkills/combat/jedi/defense.lua")
+--RunSkillsFile("playerSkills/combat/jedi/enhancement.lua")
+RunSkillsFile("playerSkills/combat/jedi/healing.lua")
+
 
 --Non Combat
 RunSkillsFile("playerSkills/nonCombat/doctor.lua")
