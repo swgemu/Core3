@@ -153,6 +153,7 @@ public:
 */
 	bool equipClothing (Wearable* item, bool forced = false) {
 		uint16 locations;
+		Armor* armor;
 
 		if(!checkPermissions(item)) { // Can player equip item
 			return false;
@@ -221,7 +222,7 @@ public:
 		case TangibleObjectImplementation::HANDARMOR:
 		case TangibleObjectImplementation::FOOTARMOR:
 			// TODO: Special cases for Wookie, Ithorian etc armour
-			Armor* armor = (Armor*)item;
+			armor = (Armor*)item;
 			locations = getArmorLocations(armor);
 
 			if (!checkEncumbrance(armor, clothingLocations[armor->getArmorType()]) && !forced) {
