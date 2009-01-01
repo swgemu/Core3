@@ -45,12 +45,17 @@ RandPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.6,
 	areaRange = 0,
 	coneAngle = 45,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -77,12 +82,17 @@ RandPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.4,
 	areaRange = 0,
 	accuracyBonus = 5,
-		
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
+
 	knockdownChance = 30,
 	postureDownChance = 0,
 	postureUpChance = 0,
@@ -109,11 +119,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
+	range = 0,
 	damageRatio = 6.0,
 	speedRatio = 4.0,
 	areaRange = 0,
 	accuracyBonus = 10,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	knockdownChance = 0,
 	postureDownChance = 0,

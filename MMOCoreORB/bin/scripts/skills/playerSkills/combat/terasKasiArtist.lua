@@ -45,11 +45,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -79,15 +84,23 @@ AddMeditateSkill(skill)
 
 -------------------------------------------------------------
 
-powerboost = {
+boost = {
 	skillname = "powerboost",
+	effect = "",
 	
-        effect = "",
-        
-        bonus = 0.5 --multiple of base mind to add to HAM  	
+	requiredState = MEDITATE,
+	
+	duration = 300.0, -- seconds
+	
+	healthBonus = 500,
+	actionBonus = 500,
+	mindBonus = 500,
+	
+	StartFlyText = "",
+	FinishFlyText = ""
 }
 
-AddPowerboostSkill(powerboost)
+AddEnhanceSelfSkill(boost)
 
 -------------------------------------------------------------
 
@@ -97,12 +110,17 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 1.0,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
 	intimidateChance = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 15,
 	postureDownChance = 0,
@@ -128,11 +146,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 40,
 	postureDownChance = 0,
@@ -159,11 +182,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 1.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -190,11 +218,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
@@ -233,11 +266,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 3.0,
 	areaRange = 7,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -264,11 +302,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 3.0,
 	speedRatio = 4.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 		
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
@@ -307,11 +350,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 100,
 	strengthAttackChance = 0,
@@ -349,11 +397,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -391,11 +444,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
+	range = 0,
 	damageRatio = 2.5,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -433,11 +491,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = UNARMED,
 	
-	range = 6,
-	damageRatio = 4.5,
+	range = 0,
+	damageRatio = 4.0,
 	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	forceCostMultiplier = 0,
 	
 	knockdownChance = 0,
 	postureDownChance = 0,

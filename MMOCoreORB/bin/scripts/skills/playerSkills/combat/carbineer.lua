@@ -45,12 +45,17 @@ DotPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 2.2,
+	range = 0,
+	damageRatio = 2.00,
 	speedRatio = 1.7,
 	areaRange = 0,
-	coneAngle = 40,
+	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 2.1,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	actionAttackChance = 100,
@@ -70,7 +75,7 @@ DotPoolAtt = {
 	fireStrength = 0,
 	fireType = 0,
 
-	bleedingStrength = 0,
+	bleedingStrength = 1,
 	bleedingType = ACTION,
 
 	poisonStrength = 0,
@@ -96,18 +101,23 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 3.0,
+	range = 0,
+	damageRatio = 3.67,
 	speedRatio = 1.7,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 2.1,
+	actionCostMultiplier = 2.7,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 25,
 	blindChance = 25,
-	stunChance = 15,
+	stunChance = 25,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "s_auto_block",
@@ -127,21 +137,26 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 3.3,
+	range = 0,
+	damageRatio = 3.33,
 	speedRatio = 2.2,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1.9,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
-	healthAttackChance = 80,
+	healthAttackChance = 67,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 	
-	actionAttackChance = 90,
+	actionAttackChance = 22,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 12,
+	mindAttackChance = 11,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -169,18 +184,23 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 2.3,
+	range = 0,
+	damageRatio = 2.33,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1.9,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 25,
+	stunChance = 40,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "wildshot_block",
@@ -200,21 +220,26 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 5.0,
+	range = 0,
+	damageRatio = 5.00,
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 2.1,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
-	healthAttackChance = 85,
+	healthAttackChance = 67,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 	
-	actionAttackChance = 95,
+	actionAttackChance = 22,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 20,
+	mindAttackChance = 11,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -242,18 +267,23 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 3.0,
+	range = 0,
+	damageRatio = 3.00,
 	speedRatio = 2.5,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 2.1,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 50,
+	stunChance = 40,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "widewildshot_block",
@@ -273,11 +303,16 @@ DirectPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 3.0,
+	range = 0,
+	damageRatio = 2.00,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 0.6,
+	actionCostMultiplier = 1.7,
+	mindCostMultiplier = 1.6,
+	forceCostMultiplier = 0,
 
 	healthAttackChance = 0,
 	strengthAttackChance = 0,
@@ -314,11 +349,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 5.0,
+	range = 0,
+	damageRatio = 5.00,
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1.1,
+	actionCostMultiplier = 2.4,
+	mindCostMultiplier = 1.1,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -345,11 +385,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 3.0,
+	range = 0,
+	damageRatio = 4.00,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1.9,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -376,11 +421,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 4.0,
+	range = 0,
+	damageRatio = 4.00,
 	speedRatio = 2.5,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 2.1,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -407,14 +457,19 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 3.7,
+	range = 0,
+	damageRatio = 2.47,
 	speedRatio = 2.8,
 	areaRange = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 2.1,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 50,
+	postureDownChance = 40,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -438,18 +493,23 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 3.5,
+	range = 0,
+	damageRatio = 2.33,
 	speedRatio = 2.0,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 2.1,
+	actionCostMultiplier = 2.7,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 13,
-	blindChance = 13,
-	stunChance = 13,
+	dizzyChance = 25,
+	blindChance = 25,
+	stunChance = 25,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "a_auto_block",
@@ -469,13 +529,18 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 3.0,
+	range = 0,
+	damageRatio = 2.00,
 	speedRatio = 2.3,
 	coneAngle = 0,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 0.9,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.9,
+	forceCostMultiplier = 0,
 		
-	knockdownChance = 10,
+	knockdownChance = 40,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -500,18 +565,23 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 4.5,
+	range = 0,
+	damageRatio = 3.00,
 	speedRatio = 2.5,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 2.7,
+	actionCostMultiplier = 2.6,
+	mindCostMultiplier = 0.6,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 20,
-	blindChance = 20,
-	stunChance = 20,
+	dizzyChance = 25,
+	blindChance = 25,
+	stunChance = 25,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "a_auto_block",
@@ -531,11 +601,16 @@ RandPoolAtt = {
 
 	requiredWeaponType = CARBINE,
 	
-	range = 64,
-	damageRatio = 3.7,
+	range = 0,
+	damageRatio = 2.47,
 	speedRatio = 3.0,
 	coneAngle = 30,
 	accuracyBonus = 0,
+
+	healthCostMultiplier = 1.9,
+	actionCostMultiplier = 2.9,
+	mindCostMultiplier1 = 1.9,
+	forceCostMultiplier = 0,
 		
 	knockdownChance = 40,
 	postureDownChance = 0,

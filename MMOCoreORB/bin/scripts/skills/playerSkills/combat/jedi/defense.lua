@@ -40,50 +40,22 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---mod values from default speed: 5.376f, default accel: 1.549
--- speed 8.0, accel .999
-FR1 = {
-	 skillname = "forcerun1",
-	 effect = "clienteffect/pl_force_run_self.cef",
+-----------------------------------------------------------------------
+
+AvSelfSkill = {
+
+	 skillname = "avoidincapacitation",
+	 effectname = "clienteffect/pl_force_avoid_incap_self.cef",
 	 
-	 forceCost = 150,
+	 forceCost = 750,
 	 
-	 speed = 2.624,
+	 speed = -2.624,
 	 acceleration = -.55,
-	 slope = 50,
-	 duration = 120
+	 slope = 0,
+	 duration = 30
+	 
 }
 
-AddForceRunSelfSkill(FR1)
-
+AddAISelfSkill(AvSelfSkill)
 
 -----------------------------------------------------------------------
--- speed 14.0, accel .999
-FR2 = {
-	 skillname = "forcerun2",
-	 effect = "clienteffect/pl_force_run_self.cef",
-	 
-	 forceCost = 250,
-	 
-	 speed = 8.624,
-	 acceleration = -.55,
-	 slope = 50,
-	 duration = 120
-}
-AddForceRunSelfSkill(FR2)
-
-
------------------------------------------------------------------------
--- speed 20.0, accel .999
-FR3 = {
-	 skillname = "forcerun3",
-	 effect = "clienteffect/pl_force_run_self.cef",
-	 
-	 forceCost = 350,
-	 
-	 speed = 14.624,
-	 acceleration = -.55,
-	 slope = 50,
-	 duration = 120
-}
-AddForceRunSelfSkill(FR3)
