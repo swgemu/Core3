@@ -260,7 +260,6 @@ interface Player implements CreatureObject {
 
 	//boolean isChangingFaction();
 
-	boolean getMeditate();
 	boolean getPowerboosted();
 	void setPowerboosted(boolean pb);
 
@@ -706,10 +705,12 @@ interface Player implements CreatureObject {
 	String getTeachingSkillOption(int idx);
 	void clearTeachingSkillOptions();
 	void teachSkill(String skillname);
+	int getSkillPoints();
 	
 	ActiveArea getActiveArea();
 	void setActiveArea(ActiveArea area);
-	
+
+	void throwTrap(unsigned int targetID);	
 	void equipItem(TangibleObject item);
 	void unequipItem(TangibleObject item);
 	

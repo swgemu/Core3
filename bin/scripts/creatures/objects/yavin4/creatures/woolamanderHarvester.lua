@@ -43,30 +43,36 @@
 woolamanderHarvester = Creature:new {
 	objectName = "woolamanderHarvester",  -- Lua Object Name
 	creatureType = "ANIMAL",
+	
 	gender = "",
 
 	speciesName = "woolamander_harvester",
+	
 	stfName = "mob/creature_names",
 	objectCRC = 23943354, 
 	socialGroup = "Woolamander",
+	
+
 	level = 38,
+
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 11100,
 	healthMin = 9100,
-	strength = 0,
-	constitution = 0,
+	strength = 2000,
+	constitution = 2000,
 
 	actionMax = 11100,
 	actionMin = 9100,
-	quickness = 0,
-	stamina = 0,
+	quickness = 2000,
+	stamina = 2000,
 
 	mindMax = 11100,
 	mindMin = 9100,
-	focus = 0,
-	willpower = 0,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -80,7 +86,7 @@ woolamanderHarvester = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -91,21 +97,24 @@ woolamanderHarvester = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
+	
+
 	meleeDefense = 1,  
+	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Woolamander Harvester", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 500,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -135,9 +144,8 @@ woolamanderHarvester = Creature:new {
 	meatType = "meat_carnivore_yavin4",
 	meatMax = 35,
 
-	--skills = { " Dizzy attack", " Area attack (knockdown)", "" }
-	skills = { "woolamanderAttack1", "woolamanderAttack5" },
-	respawnTimer = 60,
+	skills = { "woolamanderAttack7", "woolamanderAttack9" },
+	respawnTimer = 240,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

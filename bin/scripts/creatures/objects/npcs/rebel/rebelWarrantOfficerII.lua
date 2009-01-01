@@ -40,39 +40,44 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-strandedRebelSoilder = Creature:new {
-	objectName = "strandedRebelSoilder",  -- Lua Object Name
+rebelWarrantOfficerII = Creature:new {
+	objectName = "rebelWarrantOfficerII",  -- Lua Object Name
 	creatureType = "NPC",
+	faction = "rebel", 
+	factionPoints = 20,
 	gender = "",
 
-	speciesName = "stranded_rebel_soilder",
+	speciesName = "rebel_warrant_officer_ii",
 	stfName = "mob/creature_names", 
-	objectCRC = 3168768022, 
-	socialGroup = "rebel",
-	level = 24,
+	objectCRC = 3172332319, 
+	socialGroup = "Rebel",
+	
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	level = 48,
+	
 
-	healthMax = 8300,
-	healthMin = 6800,
-	strength = 0,
-	constitution = 0,
+	combatFlags = 0,
 
-	actionMax = 8300,
-	actionMin = 6800,
-	quickness = 0,
-	stamina = 0,
+	healthMax = 5000,
+	healthMin = 4100,
+	strength = 500,
+	constitution = 500,
 
-	mindMax = 8300,
-	mindMin = 6800,
-	focus = 0,
-	willpower = 0,
+	actionMax = 5000,
+	actionMin = 4100,
+	quickness = 500,
+	stamina = 500,
+
+	mindMax = 5000,
+	mindMin = 4100,
+	focus = 500,
+	willpower = 500,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 15,
-	energy = 15,
-	electricity = -1,
+	kinetic = 0,
+	energy = 0,
+	electricity = 0,
 	stun = -1,
 	blast = 0,
 	heat = 0,
@@ -80,7 +85,7 @@ strandedRebelSoilder = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -89,20 +94,23 @@ strandedRebelSoilder = Creature:new {
 	stalker = 0,
 	killer = 1,
 	aggressive = 0,
-	invincible = 0,
+	invincible = 0, 
+
+	meleeDefense = 1,
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_power5.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "officer's Power 5", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 140,
+	weaponMaxDamage = 420,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -117,7 +125,7 @@ strandedRebelSoilder = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,33", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -132,10 +140,10 @@ strandedRebelSoilder = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
-	respawnTimer = 180,
+	skills = { "rebelWarrantOfficerAttack1", "rebelWarrantOfficerAttack2" },
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(strandedRebelSoilder, 3168768022) --  Add to Global Table
+Creatures:addCreature(rebelWarrantOfficerII, 3172332319) --  Add to Global Table

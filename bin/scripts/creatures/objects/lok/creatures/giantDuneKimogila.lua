@@ -43,33 +43,38 @@
 giantDuneKimogila = Creature:new {
 	objectName = "giantDuneKimogila",  -- Lua Object Name
 	creatureType = "ANIMAL",
+	
 	gender = "",
 
 	speciesName = "giant_dune_kimogila",
+	
 	stfName = "mob/creature_names",
 	objectCRC = 1341282550, 
 	socialGroup = "Kimogila",
+	
 	level = 153,
 
+	
+	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 99000,
-	healthMin = 81000,
-	strength = 0,
-	constitution = 0,
+	healthMax = 100000,
+	healthMin = 90000,
+	strength = 15000,
+	constitution = 15000,
 
-	actionMax = 99000,
-	actionMin = 81000,
-	quickness = 0,
-	stamina = 0,
+	actionMax = 100000,
+	actionMin = 90000,
+	quickness = 15000,
+	stamina = 15000,
 
-	mindMax = 99000,
-	mindMin = 81000,
-	focus = 0,
-	willpower = 0,
+	mindMax = 100000,
+	mindMin = 90000,
+	focus = 15000,
+	willpower = 15000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 65,
 	energy = 80,
 	electricity = 65,
@@ -80,32 +85,35 @@ giantDuneKimogila = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 400,
 
 	healer = 0,
 
 	pack = 1,
 	herd = 0,
-	stalker = 0,
+	stalker = 1,
 	killer = 1,
 	aggressive = 1,
 	invincible = 0, 
 
+	
+
 	meleeDefense = 1,  
+	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+      	weaponName = "Giant Dune Kimo", -- Name ex. 'a Vibrolance'
+      	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+     	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      	weaponEquipped = 1,
+      	weaponMinDamage = 1050,
+      	weaponMaxDamage = 2000,
+      	weaponAttackSpeed = 1,
+      	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +128,7 @@ giantDuneKimogila = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,19,88", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -130,14 +138,13 @@ giantDuneKimogila = Creature:new {
 	boneMax = 20,
 
 	hideType = "hide_leathery_lok",
-	hideMax = 1400,
+	hideMax = 1000,
 
 	meatType = "meat_carnivore_lok",
-	meatMax = 1500,
+	meatMax = 1000,
 
-	--skills = { " Area attack (combo)", " Area attack (disease)", "" }
 	skills = { "kimogilaAttack2", "kimogilaAttack7" },
-	respawnTimer = 60,
+	respawnTimer = 4200,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

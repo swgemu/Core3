@@ -287,8 +287,6 @@ public:
 
 	unsigned int getMoneyToTrade();
 
-	bool getMeditate();
-
 	bool getPowerboosted();
 
 	void setPowerboosted(bool pb);
@@ -843,9 +841,13 @@ public:
 
 	void teachSkill(String& skillname);
 
+	int getSkillPoints();
+
 	ActiveArea* getActiveArea();
 
 	void setActiveArea(ActiveArea* area);
+
+	void throwTrap(unsigned int targetID);
 
 	void equipItem(TangibleObject* item);
 
@@ -1101,8 +1103,6 @@ public:
 	void setMoneyToTrade(unsigned int value);
 
 	unsigned int getMoneyToTrade();
-
-	bool getMeditate();
 
 	bool getPowerboosted();
 
@@ -1658,9 +1658,13 @@ public:
 
 	void teachSkill(String& skillname);
 
+	int getSkillPoints();
+
 	ActiveArea* getActiveArea();
 
 	void setActiveArea(ActiveArea* area);
+
+	void throwTrap(unsigned int targetID);
 
 	void equipItem(TangibleObject* item);
 

@@ -51,25 +51,26 @@ rebelStaffCorporal = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 760067467, 
 	socialGroup = "Rebel",
-	level = 16,
 	
 
+	level = 16,
+	
 	combatFlags = 0,
 
 	healthMax = 3500,
 	healthMin = 2900,
-	strength = 0,
-	constitution = 0,
+	strength = 500,
+	constitution = 500,
 
 	actionMax = 3500,
 	actionMin = 2900,
-	quickness = 0,
-	stamina = 0,
+	quickness = 500,
+	stamina = 500,
 
 	mindMax = 3500,
 	mindMin = 2900,
-	focus = 0,
-	willpower = 0,
+	focus = 500,
+	willpower = 500,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +84,7 @@ rebelStaffCorporal = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 320,
 
 	healer = 0,
 
@@ -106,24 +107,24 @@ rebelStaffCorporal = Creature:new {
 	weaponEquipped = 1,
 	weaponMinDamage = 120,
 	weaponMaxDamage = 330,
-	weaponAttackSpeed = 2.2,
-	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponAttackSpeed = 1,
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 	
-	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 92,
-	alternateWeaponMaxDamage = 301,
-	alternateWeaponAttackSpeed = 1.5,
-	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -138,8 +139,8 @@ rebelStaffCorporal = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "rebelStaffCorporalAttack1", "rebelStaffCorporalAttack2" },
-	respawnTimer = 180,
+	skills = { "rebelCorporalAttack3", "rebelCorporalAttack4" },
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

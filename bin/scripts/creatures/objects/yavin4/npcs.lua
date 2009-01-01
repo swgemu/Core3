@@ -40,4 +40,23 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+ --Geo Cave
+ RunCreatureFile("objects/yavin4/npcs/geoCave/geonosianAlertDroideka.lua")
+ RunCreatureFile("objects/yavin4/npcs/geoCave/geonosianCrazed.lua")
+ RunCreatureFile("objects/yavin4/npcs/geoCave/geonosianImperialObserver.lua")
+ RunCreatureFile("objects/yavin4/npcs/geoCave/geonosianMercenary.lua")
+ RunCreatureFile("objects/yavin4/npcs/geoCave/geonosianScientist.lua")
+ RunCreatureFile("objects/yavin4/npcs/geoCave/geonosianTechAssistant.lua")
 
+ --Hutt Expedition
+ RunCreatureFile("objects/yavin4/npcs/huttExpedition/huttExpeditionForceLeader.lua")
+ RunCreatureFile("objects/yavin4/npcs/huttExpedition/huttExpeditionForceMember.lua")
+ RunCreatureFile("objects/yavin4/npcs/huttExpedition/huttExpeditionForceSurveyer.lua")
+
+ --Stranded
+ RunCreatureFile("objects/yavin4/npcs/stranded/strandedImperialOfficer.lua")
+ RunCreatureFile("objects/yavin4/npcs/stranded/strandedImperialPilot.lua")
+ RunCreatureFile("objects/yavin4/npcs/stranded/strandedImperialSoldier.lua")
+ RunCreatureFile("objects/yavin4/npcs/stranded/strandedRebelOfficer.lua")
+ RunCreatureFile("objects/yavin4/npcs/stranded/strandedRebelPilot.lua")
+ RunCreatureFile("objects/yavin4/npcs/stranded/strandedRebelSoldier.lua")

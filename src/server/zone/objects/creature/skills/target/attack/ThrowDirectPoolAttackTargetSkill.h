@@ -1,8 +1,45 @@
 /*
- * ThrowDirectPoolAttackTargetSkill.h
- *
- *  Created on: Oct 28, 2008
- *      Author: swgdev
+ Copyright (C) 2007 <SWGEmu>
+
+ This File is part of Core3.
+
+ This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU Lesser
+ General Public License as published by the Free Software
+ Foundation; either version 2 of the License,
+ or (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU Lesser General Public License for
+ more details.
+
+ You should have received a copy of the GNU Lesser General
+ Public License along with this program; if not, write to
+ the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+ Linking Engine3 statically or dynamically with other modules
+ is making a combined work based on Engine3.
+ Thus, the terms and conditions of the GNU Lesser General Public License
+ cover the whole combination.
+
+ In addition, as a special exception, the copyright holders of Engine3
+ give you permission to combine Engine3 program with free software
+ programs or libraries that are released under the GNU LGPL and with
+ code included in the standard release of Core3 under the GNU LGPL
+ license (or modified versions of such code, with unchanged license).
+ You may copy and distribute such a system following the terms of the
+ GNU LGPL for Engine3 and the licenses of the other code concerned,
+ provided that you include the source code of that other code when
+ and as the GNU LGPL requires distribution of source code.
+
+ Note that people who make modified versions of Engine3 are not obligated
+ to grant this special exception for their modified versions;
+ it is their choice whether to do so. The GNU Lesser General Public License
+ gives permission to release a modified version without this exception;
+ this exception also makes it possible to release a modified version
+ which carries forward this exception.
  */
 
 #ifndef THROWDIRECTPOOLATTACKTARGETSKILL_H_
@@ -75,17 +112,24 @@ public:
 
 			String type = "trapping";
 
-			int xp = int(targetCreature->getLevel() * 10);
+			int xp = 14 * targetCreature->getLevel() - 48;
+
+			if (xp < 50)
+				xp = 50;
+			else if (xp > 600)
+				xp = 600;
 
 			player->addXp(type, xp, true);
 
-			player->sendSystemMessage(getDeBuffStrFile(), getDeBuffMessage(), params);
+			player->sendSystemMessage(getDeBuffStrFile(),
+					getDeBuffHitMessage(), params);
 
 			missed = false;
 
 		} else {
 
-			player->sendSystemMessage(getDeBuffStrFile(), getDeBuffEndMessage(), params);
+			player->sendSystemMessage(getDeBuffStrFile(),
+					getDeBuffMissMessage(), params);
 
 			missed = true;
 
@@ -133,7 +177,7 @@ public:
 
 			int level = targetCreature->getLevel(); //336 ancient krayt
 
-			if(level > 180)
+			if (level > 180)
 				level = 180;
 
 			if ((trappingSkill + rand > level) || (rand > 10 && rand < 20)) {
@@ -248,21 +292,21 @@ public:
 					return 0;
 				}
 
-				if (hasCbtSpamHit() && healthDamage < targetCreature->getHealth() &&
-						actionDamage < targetCreature->getAction() &&
-						mindDamage < targetCreature->getMind())
+				if (hasCbtSpamHit())
 					creature->sendCombatSpam(targetCreature, NULL,
 							(int32) damage, getCbtSpamHit());
 
-				if (healthDamage > 0 && healthDamage < targetCreature->getHealth())
+				if (healthDamage > 0)
 					reduction = applyHealthPoolDamage(creature, targetCreature,
-							(int32) healthDamage, System::random(5) + 1);
-				if (actionDamage > 0 && actionDamage < targetCreature->getAction())
+							(int32) healthDamage, System::random(5) + 1,
+							weapon, true);
+				if (actionDamage > 0)
 					reduction = applyActionPoolDamage(creature, targetCreature,
-							(int32) actionDamage, System::random(1) + 7);
-				if (mindDamage > 0 && mindDamage < targetCreature->getMind())
+							(int32) actionDamage, System::random(1) + 7,
+							weapon, true);
+				if (mindDamage > 0)
 					reduction = applyMindPoolDamage(creature, targetCreature,
-							(int32) mindDamage);
+							(int32) mindDamage, weapon, true);
 
 				if (weapon != NULL) {
 					doDotWeaponAttack(creature, targetCreature, 0);
@@ -360,23 +404,27 @@ public:
 			Buff* deBuff = new Buff(getNameCRC(), 0, duration);
 			if (meleeDefDebuff != 0) {
 				deBuff->addSkillModBuff("melee_defense", meleeDefDebuff);
-				targetCreature->showFlyText("trap/trap", "melee_def_1_on", 255, 255, 255);
+				targetCreature->showFlyText("trap/trap", "melee_def_1_on", 255,
+						255, 255);
 				debuffHit = true;
 			}
 			if (rangedDefDebuff != 0) {
 				deBuff->addSkillModBuff("ranged_defense", rangedDefDebuff);
-				targetCreature->showFlyText("trap/trap", "ranged_def_1_on", 255, 255, 255);
+				targetCreature->showFlyText("trap/trap", "ranged_def_1_on",
+						255, 255, 255);
 				debuffHit = true;
 			}
 			if (intimidateDefDebuff != 0) {
 				deBuff->addSkillModBuff("intimidate_defense",
 						intimidateDefDebuff);
-				targetCreature->showFlyText("trap/trap", "melee_ranged_def_1_on", 255, 255, 255);
+				targetCreature->showFlyText("trap/trap",
+						"melee_ranged_def_1_on", 255, 255, 255);
 				debuffHit = true;
 			}
 			if (stunDefDebuff != 0) {
 				deBuff->addSkillModBuff("stun_defense", stunDefDebuff);
-				targetCreature->showFlyText("trap/trap", "state_def_1_on", 255, 255, 255);
+				targetCreature->showFlyText("trap/trap", "state_def_1_on", 255,
+						255, 255);
 				debuffHit = true;
 			}
 

@@ -1490,10 +1490,6 @@ public:
 		changeFactionEvent = eve;
 	}
 
-	inline bool getMeditate() {
-		return meditating;
-	}
-
 	inline bool getPowerboosted() {
 		return powerboosted;
 	}
@@ -1814,6 +1810,7 @@ public:
 		activeArea = area;
 	}
 
+	void throwTrap(uint64 targetID);
 	Armor* getPlayerArmor (int location) {
 		if (location > 14 || location < 0)
 			return NULL;

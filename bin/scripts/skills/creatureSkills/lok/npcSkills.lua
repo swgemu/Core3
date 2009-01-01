@@ -48,3 +48,4 @@
  RunSkillsFile("creatureSkills/lok/npcs/mercenaryAttacks.lua")
  RunSkillsFile("creatureSkills/lok/npcs/miscAttacks.lua")
  RunSkillsFile("creatureSkills/lok/npcs/nymAttacks.lua")
+ RunSkillsFile("creatureSkills/lok/npcs/casVankooAttacks.lua")

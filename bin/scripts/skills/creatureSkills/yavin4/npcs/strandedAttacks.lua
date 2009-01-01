@@ -40,44 +40,36 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-imperialWarrantOfficerIiAttack1 = {
-	attackname = "imperialWarrantOfficerIiAttack1",
-	animation = "fire_1_special_single_light",
+strandedAttack1 = {
+        attackname = "strandedAttack1",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = NONE,
 
-	requiredWeaponType = PISTOL,
-	
-	range = 65,
-	damageRatio = 70,
-	speedRatio = 1,
-	areaRange = 0,
-	accuracyBonus = 0,
+        range = 10,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+        damageRatio = 10,
 
-	dotChance = 60,
-	tickStrengthOfHit = 1,
+        speedRatio = 4,
 
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 0,
-	bleedingType = HEALTH,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
-	
-	CbtSpamBlock = "sapblast_block",
-	CbtSpamCounter = "sapblast_counter",
-	CbtSpamEvade = "sapblast_evade",
-	CbtSpamHit = "sapblast_hit",
-	CbtSpamMiss = "sapblast_miss",
+        areaRange = 0,
+        accuracyBonus = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(imperialWarrantOfficerIiAttack1)
+AddRandomPoolAttackTargetSkill(strandedAttack1)
 
------------------------------------------------------------------------
+---------------------------------------------------------------------------------------

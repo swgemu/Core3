@@ -52,7 +52,7 @@ adhesiveMesh = Weapon:new {
 
 	damageType = WEAPON_KINETIC,
 
-	uses = 5,
+	uses = 15,
 	
 	attackSpeed = 1.0,
 

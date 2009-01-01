@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2008 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -40,77 +40,9 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+spawnCreatures(casVankoo, 4, -74, 2709, 50, 1)
+spawnCreatures(giantDuneKimogila, 4, -74, 2709, 50, 1)
+spawnCreatures(kimogilaHatchling, 4, -74, 2709, 250, 6)
 
-rebelLieutenantColonelAttack1 = { 
-	attackname = "rebelLieutenantColonelAttack1",
-	animation = "fire_1_special_single_light",
 
-	requiredWeaponType = PISTOL,
-	
-	range = 65,
-	damageRatio = 70,
-	speedRatio = 1,
-	areaRange = 0,
-	accuracyBonus = 0,
-
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
-
-	dotChance = 60,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 0,
-	bleedingType = HEALTH,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
-	
-	CbtSpamBlock = "sapblast_block",
-	CbtSpamCounter = "sapblast_counter",
-	CbtSpamEvade = "sapblast_evade",
-	CbtSpamHit = "sapblast_hit",
-	CbtSpamMiss = "sapblast_miss",
-}
-
-AddDotPoolAttackTargetSkill(rebelLieutenantColonelAttack1)
-
------------------------------------------------------------------------
-
-rebelLieutenantColonelAttack2 = { 
-	attackname = "rebelLieutenantColonelAttack2",
-	animation = "creature_attack_light",
-
-	requiredWeaponType = ONEHANDED,
-	
-	range = 11,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
-}
-
-AddRandomPoolAttackTargetSkill(rebelLieutenantColonelAttack2)
-
------------------------------------------------------------------------
 

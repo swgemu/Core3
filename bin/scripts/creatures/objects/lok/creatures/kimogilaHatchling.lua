@@ -68,7 +68,7 @@ kimogilaHatchling = Creature:new {
 	focus = 0,
 	willpower = 0,
 
-	height = 1, -- Size of creature
+	height = 0.3, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
@@ -80,7 +80,7 @@ kimogilaHatchling = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 300,
 
 	healer = 0,
 
@@ -96,16 +96,16 @@ kimogilaHatchling = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/creature/shared_creature_spit_large_red.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+      	weaponName = "Kimo Hatchling", -- Name ex. 'a Vibrolance'
+      	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+     	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      	weaponEquipped = 1,
+      	weaponMinDamage = 150,
+      	weaponMaxDamage = 400,
+      	weaponAttackSpeed = 1,
+      	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -136,8 +136,8 @@ kimogilaHatchling = Creature:new {
 	meatMax = 700,
 
 	--skills = { " Dizzy attack", " Stun attack", " Ranged attack (spit)" }
-	skills = { "kimogilaAttack6", "kimogilaAttack8", "kimogilaAttack9" },
-	respawnTimer = 60,
+	skills = { "kimogilaAttack3", "kimogilaAttack8" },
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

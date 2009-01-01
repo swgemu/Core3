@@ -43,28 +43,24 @@
 
 rebelMedicAttack1 = { 
 	attackname = "rebelMedicAttack1",
-	animation = "creature_attack_light",
+	animation = "fire_1_special_single_light",
 
-	requiredWeaponType = CARBINE,
+	requiredWeaponType = RIFLE,
 	
-	range = 11,
-	damageRatio = 1.50,
-	speedRatio = 1.45,
-	areaRange = 0,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 30,
 	accuracyBonus = 0,
-
-	healthAttackChance = 0,
-	actionAttackChance = 50,
-	mindAttackChance = 0,
 	
-	dotChance = 5,
+	dotChance = 30,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
 	bleedingStrength = 0,
-	bleedingType = ACTION,
+	bleedingType = HEALTH,
 
 	poisonStrength = 0,
 	poisonType = 0,
@@ -72,11 +68,11 @@ rebelMedicAttack1 = {
 	diseaseStrength = 0,
 	diseaseType = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddDotPoolAttackTargetSkill(rebelMedicAttack1)
@@ -85,14 +81,14 @@ AddDotPoolAttackTargetSkill(rebelMedicAttack1)
 
 rebelMedicAttack2 = { 
 	attackname = "rebelMedicAttack2",
-	animation = "creature_attack_light",
+	animation = "fire_1_special_single_light",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = RIFLE,
 	
-	range = 11,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
-	areaRange = 0,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -103,11 +99,11 @@ rebelMedicAttack2 = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(rebelMedicAttack2)

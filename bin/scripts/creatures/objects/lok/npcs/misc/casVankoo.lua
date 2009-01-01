@@ -40,69 +40,80 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-strandedImperialSoilder = Creature:new {
-	objectName = "strandedImperialSoilder",  -- Lua Object Name
+casVankoo = Creature:new {
+	objectName = "casVankoo",  -- Lua Object Name
 	creatureType = "NPC",
+	
 	gender = "",
 
-	speciesName = "stranded_imperial_soilder",
-	stfName = "mob/creature_names", 
-	objectCRC = 2951134852, 
-	socialGroup = "imperial",
-	level = 24,
+	speciesName = "cas_vankoo",
+	
+	stfName = "mob/creature_names",
+	objectCRC = 475806339, 
+	socialGroup = "Kimogila",
+	
+	level = 107,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	
+	
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 8300,
-	healthMin = 6800,
-	strength = 0,
-	constitution = 0,
+	healthMax = 50000,
+	healthMin = 42000,
+	strength = 5000,
+	constitution = 5000,
 
-	actionMax = 8300,
-	actionMin = 6800,
-	quickness = 0,
-	stamina = 0,
+	actionMax = 50000,
+	actionMin = 42000,
+	quickness = 5000,
+	stamina = 5000,
 
-	mindMax = 8300,
-	mindMin = 6800,
-	focus = 0,
-	willpower = 0,
+	mindMax = 50000,
+	mindMin = 42000,
+	focus = 5000,
+	willpower = 5000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 15,
-	energy = 15,
-	electricity = -1,
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 75,
+	energy = 75,
+	electricity = 10,
 	stun = -1,
-	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 0,
+	blast = -1,
+	heat = 10,
+	cold = 10,
+	acid = 10,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 375,
 
 	healer = 0,
 
 	pack = 1,
 	herd = 0,
-	stalker = 0,
+	stalker = 1,
 	killer = 1,
-	aggressive = 0,
-	invincible = 0,
+	aggressive = 1,
+	invincible = 0, 
+
+	
+
+	meleeDefense = 1,  
+	
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/ranged/pistol/shared_pistol_launcher.iff", -- File path to weapon -> object\xxx\xxx\xx
+      	weaponName = "Launcher Pistol", -- Name ex. 'a Vibrolance'
+      	weaponTemp = "pistol_launcher", -- Weapon Template ex. 'lance_vibrolance'
+     	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      	weaponEquipped = 1,
+      	weaponMinDamage = 600,
+      	weaponMaxDamage = 1200,
+      	weaponAttackSpeed = 1,
+      	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
+      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -117,7 +128,7 @@ strandedImperialSoilder = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,19", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -132,10 +143,10 @@ strandedImperialSoilder = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
-	respawnTimer = 180,
+	skills = { "casVankooAttack1", "casVankooAttack2", "casVankooAttack3" },
+	respawnTimer = 600,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(strandedImperialSoilder, 2951134852) --  Add to Global Table
+Creatures:addCreature(casVankoo, 475806339) --  Add to Global Table

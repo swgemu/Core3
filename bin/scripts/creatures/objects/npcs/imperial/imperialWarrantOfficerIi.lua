@@ -40,17 +40,19 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-imperialWarrantOfficerIi = Creature:new {
-	objectName = "imperialWarrantOfficerIi",  -- Lua Object Name
+imperialWarrantOfficerII = Creature:new {
+	objectName = "imperialWarrantOfficerII",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "imperial",
 	gender = "",
 
 	speciesName = "imperial_warrant_officer_ii",
+	
 	stfName = "mob/creature_names", 
+	
 	objectCRC = 1967105963, 
 	socialGroup = "imperial",
-	level = 1,
+	level = 75,
 	
 
 	combatFlags = 0,
@@ -103,8 +105,8 @@ imperialWarrantOfficerIi = Creature:new {
 	weaponMinDamage = 110,
 	weaponMaxDamage = 220,
 	weaponAttackSpeed = 1.2,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -134,10 +136,10 @@ imperialWarrantOfficerIi = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "imperialWarrantOfficerIiAttack1" },
+	skills = { "imperialWarrantOfficerAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(imperialWarrantOfficerIi, 1967105963) --  Add to Global Table
+Creatures:addCreature(imperialWarrantOfficerII, 1967105963) --  Add to Global Table

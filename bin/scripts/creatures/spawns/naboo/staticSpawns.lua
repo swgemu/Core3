@@ -40,6 +40,10 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+spawnCreatures(pekoPekoAlbatross, 5, 3600, 4900, 3000, 2)
+spawnCreatures(pekoPekoAlbatross, 5, -2200, 6300, 1750, 2)
+spawnCreatures(pekoPekoAlbatross, 5, -1900, 3200, 3000, 2)
+
 --global clusters
 
 -- Forest Creatures

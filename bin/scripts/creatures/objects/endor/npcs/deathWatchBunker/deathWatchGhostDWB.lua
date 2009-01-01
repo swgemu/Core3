@@ -104,8 +104,8 @@ deathWatchGhostDWB = Creature:new {
 	weaponMinDamage = 700,
 	weaponMaxDamage = 1200,
 	weaponAttackSpeed = 1.5,
-	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "ACID", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ deathWatchGhostDWB = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,46,47", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,19,33,46,47", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

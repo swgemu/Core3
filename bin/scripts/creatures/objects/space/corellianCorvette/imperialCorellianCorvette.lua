@@ -2019,4 +2019,3 @@ corvetteNpc133 = Creature:new {
 	mood = "neutral",
 	cellID = 1946259
 }
-

@@ -526,6 +526,10 @@ public:
 		return server->getCombatManager()->calculateWeaponAttackSpeed(creature, this);
 	}
 
+	float getDamageRatio() {
+		return damageRatio;
+	}
+
 	friend class CombatManager;
 
 };

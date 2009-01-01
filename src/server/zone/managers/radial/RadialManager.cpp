@@ -196,51 +196,12 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 36:  // LOOT_ALL
 		player->lootCorpse(true);
 		break;
-    case 41: // One dice
-        handleDiceRoll(player, obj, 1);
-        break;
-    case 42: // Two dice
-        handleDiceRoll(player, obj, 2);
-        break;
-    case 43: // Three dice
-        handleDiceRoll(player, obj, 3);
-        break;
-    case 44: // Four dice
-        handleDiceRoll(player, obj, 4);
-        break;
 	case 45: // Open vendor
 		sendRadialResponseForBazaar(obj->getObjectID(), player);
-		break;
-	case 48:
-		handleTeach(obj, player);
 		break;
 	case 50:  // LISTEN / WATCH (Entertainer)
 		handleEntertainerActions(player, obj);
 		break;
-    case 51: // Configure (dice)
-        // nothing here, has sub-members
-        break;
-    case 52:
-        handleDiceConfigure(player, obj, 8); // 8 sides
-        break;
-    case 53:
-        handleDiceConfigure(player, obj, 7); // 7 sides
-        break;
-    case 54:
-        handleDiceConfigure(player, obj, 6); // 6 sides
-        break;
-    case 55:
-        handleDiceConfigure(player, obj, 5); // 5 sides
-        break;
-    case 56:
-        handleDiceConfigure(player, obj, 4); // 4 sides
-        break;
-    case 57:
-        handleDiceConfigure(player, obj, 3); // 3 sides
-        break;
-    case 58:
-        handleDiceConfigure(player, obj, 2); // 2 sides
-        break;
 	case 60: // VEHICLE_GENERATE
 		player->unlock();
 		handleVehicleGenerate(obj);
@@ -302,9 +263,48 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 137: // SURVEY_TOOL_SET_RANGE
 		sendRadialResponseForSurveyToolRange(player, obj);
 		break;
+	case 140: // SERVER_TEACH
+		handleTeach(obj, player);
+		break;
 	case 148: // Harvest
 		handleHarvest(player, obj, 0);
 		break;
+    	case 164: // ROLL_DICE (Configure)
+        	// nothing here, has sub-members
+        	break;
+    	case 165: // DICE_TWO_FACE
+    	    	handleDiceConfigure(player, obj, 2);
+    	    	break;
+    	case 166: // DICE_THREE_FACE
+        	handleDiceConfigure(player, obj, 3);
+        	break;
+    	case 167: // DICE_FOUR_FACE
+        	handleDiceConfigure(player, obj, 4);
+        	break;
+    	case 168: // DICE_FIVE_FACE
+        	handleDiceConfigure(player, obj, 5);
+        	break;
+    	case 169: // DICE_SIX_FACE
+        	handleDiceConfigure(player, obj, 6);
+        	break;
+    	case 170: // DICE_SEVEN_FACE
+        	handleDiceConfigure(player, obj, 7);
+        	break;
+    	case 171: // DICE_EIGHT_FACE
+        	handleDiceConfigure(player, obj, 8);
+		break;
+    	case 172: // DICE_COUNT_ONE
+        	handleDiceRoll(player, obj, 1);
+        	break;
+    	case 173: // DICE_COUNT_TWO
+        	handleDiceRoll(player, obj, 2);
+        	break;
+    	case 174: // DICE_COUNT_THREE
+        	handleDiceRoll(player, obj, 3);
+        	break;
+    	case 175: // DICE_COUNT_FOUR
+        	handleDiceRoll(player, obj, 4);
+        	break;
 	case 187: // SERVER_GUILD_INFORMATION
 		player->unlock();
 		handleGuildInformation(player);

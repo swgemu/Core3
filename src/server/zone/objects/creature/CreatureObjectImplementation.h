@@ -74,6 +74,8 @@ which carries forward this exception.
 
 #include "../../../chat/ChatManager.h"
 #include "events/MaskScentEvent.h"
+#include "skills/CamoSkill.h"
+
 class CombatManager;
 
 class Player;
@@ -324,8 +326,6 @@ protected:
 	Time nextAttackDelay;
 	Time nextAttackDelayRecovery;
 
-	bool meditating;
-
 	//Powerboost
 	int pbHA;
 	int pbMind;
@@ -417,6 +417,9 @@ protected:
 	MaskScentEvent* maskScentEvent;
 	Time camoLock;
 	uint32 maskScent;
+
+	int ferocity;
+	bool baby;
 
 public:
 	static const float DEFAULT_SPEED = 5.376f;
@@ -567,6 +570,24 @@ public:
 	void setIntimidatedState();
 	void setSnaredState();
 	void setRootedState();
+
+
+	/**
+	 * Event handlers are meant to handle actions that would result in an action. For example:
+	 * If a player deathblows another player, then the following action occurs:
+	 * player1->deathblow(player2);
+	 *
+	 * The deathblow() method handles everything that happens to player1 i.e. pvprating increased, but then player2.onDeathBlow() would handle what happens to player2.
+	 */
+	//TODO: Move towards event handler methods - more to come
+	void onDeath();
+	void onClone();
+	void onBlinded();
+	void onDizzied();
+	void onStunned();
+	void onIntimidated();
+
+
 
 	bool setNextAttackDelay(int del);
 
@@ -758,11 +779,11 @@ public:
 	}
 
 	inline bool isSnared() {
-		return stateBitmask & CreatureState::IMMOBILIZED;
+		return stateBitmask & CreatureState::SNARED;
 	}
 
 	inline bool isRooted() {
-		return stateBitmask & CreatureState::FROZEN;
+		return stateBitmask & CreatureState::ROOTED;
 	}
 
 	inline bool isDiseased() {
@@ -794,7 +815,7 @@ public:
 	}
 
 	inline bool isMeditating() {
-		return meditating;
+		return stateBitmask & CreatureState::ALERT;
 	}
 
 	inline bool isCreature() {
@@ -2650,7 +2671,7 @@ public:
 
 	uint32 getCamoType() {
 		if ((int)camoType < 0)
-			return 0;
+			return CamoSkill::NONE;
 		else
 			return camoType;
 	}
@@ -2672,6 +2693,22 @@ public:
 
 	inline void clearTemplateString() {
 		templateString = "";
+	}
+
+	void setFerocity(unsigned int fero) {
+		ferocity = fero;
+	}
+
+	unsigned int getFerocity() {
+		return ferocity;
+	}
+
+	void setBaby(bool b) {
+		baby = b;
+	}
+
+	bool isBaby() {
+		return baby;
 	}
 
 	friend class CombatManager;

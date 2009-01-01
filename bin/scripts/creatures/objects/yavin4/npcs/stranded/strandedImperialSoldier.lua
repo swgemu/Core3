@@ -40,47 +40,45 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-corvetRebelMidshipman = Creature:new {
-	objectName = "corvetRebelMidshipman",  -- Lua Object Name
+
+strandedImperialSoldier = Creature:new {
+	objectName = "strandedImperialSoldier",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "rebel", 
-	factionPoints = 20,
 	gender = "",
 
-	speciesName = "corvet_rebel_midshipman",
+	speciesName = "stranded_imperial_Soldier",
 	stfName = "mob/creature_names", 
-	objectCRC = 1246114680, 
-	socialGroup = "rebel",
-	level = 136,
-	
+	objectCRC = 2951134852, 
+	socialGroup = "imperial",
+	level = 24,
 
-	combatFlags = 0,
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 75000,
-	healthMin = 62000,
+	healthMax = 8300,
+	healthMin = 6800,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 75000,
-	actionMin = 62000,
+	actionMax = 8300,
+	actionMin = 6800,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 75000,
-	mindMin = 62000,
+	mindMax = 8300,
+	mindMin = 6800,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 50,
-	energy = 65,
-	electricity = 30,
-	stun = 65,
+	kinetic = 15,
+	energy = 15,
+	electricity = -1,
+	stun = -1,
 	blast = 0,
 	heat = 0,
-	cold = 30,
-	acid = 80,
+	cold = 0,
+	acid = 0,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -91,7 +89,7 @@ corvetRebelMidshipman = Creature:new {
 	herd = 0,
 	stalker = 0,
 	killer = 1,
-	aggressive = 1,
+	aggressive = 0,
 	invincible = 0,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -135,10 +133,10 @@ corvetRebelMidshipman = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "", "", "" },
+	skills = { "strandedAttack1" },
 	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(corvetRebelMidshipman, 1246114680) --  Add to Global Table
+Creatures:addCreature(strandedImperialSoldier, 2951134852) -- Add to Global Table

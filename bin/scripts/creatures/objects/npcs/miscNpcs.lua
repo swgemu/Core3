@@ -40,13 +40,34 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+ --Jedi
+  RunCreatureFile("objects/npcs/jedi/darkAdept.lua")
+  RunCreatureFile("objects/npcs/jedi/darkJawa.lua")
+  RunCreatureFile("objects/npcs/jedi/darkJediKnight.lua")
+  RunCreatureFile("objects/npcs/jedi/darkJediMaster.lua")
+  RunCreatureFile("objects/npcs/jedi/darkJediSentinel.lua")
+  RunCreatureFile("objects/npcs/jedi/mellichae.lua")
+  RunCreatureFile("objects/npcs/jedi/moDarkJediMaster.lua")
 
+ --Senior Specforce
+  RunCreatureFile("objects/npcs/seniorSpecforce/seniorProphetOfTheDarkSide.lua")
+  RunCreatureFile("objects/npcs/seniorSpecforce/seniorSpecforceGuerrilla.lua")
+  RunCreatureFile("objects/npcs/seniorSpecforce/seniorSpecforceHeavyWeaponsSpecialist.lua")
+  RunCreatureFile("objects/npcs/seniorSpecforce/seniorSpecforceInfiltrator.lua")
+  RunCreatureFile("objects/npcs/seniorSpecforce/seniorSpecforceLieutenant.lua")
+  RunCreatureFile("objects/npcs/seniorSpecforce/seniorSpecforceMarine.lua")
+  RunCreatureFile("objects/npcs/seniorSpecforce/seniorSpecforcePathfinder.lua")
+  RunCreatureFile("objects/npcs/seniorSpecforce/seniorSpecforceTechnician.lua")
+  RunCreatureFile("objects/npcs/seniorSpecforce/seniorSpecforceWildernessTrooper.lua")
 
---Misc
-RunCreatureFile("objects/npcs/jedi/mellichae.lua")
-RunCreatureFile("objects/npcs/jedi/moDarkJediMaster.lua")
-RunCreatureFile("objects/npcs/jedi/darkJediMaster.lua")
-RunCreatureFile("objects/npcs/jedi/darkJediKnight.lua")
-RunCreatureFile("objects/npcs/jedi/darkJawa.lua")
-
-----------------------------------------------------------------------------------------------------
+ --Specforce
+  RunCreatureFile("objects/npcs/specforce/specforceHeavyWeaponsSpecialist.lua")
+  RunCreatureFile("objects/npcs/specforce/specforceInfiltrator.lua")
+  RunCreatureFile("objects/npcs/specforce/specforceInterrogator.lua")
+  RunCreatureFile("objects/npcs/specforce/specforceLieutenant.lua")
+  RunCreatureFile("objects/npcs/specforce/specforceMajor.lua")
+  RunCreatureFile("objects/npcs/specforce/specforceMarine.lua")
+  RunCreatureFile("objects/npcs/specforce/specforceMasterSergeant.lua")
+  RunCreatureFile("objects/npcs/specforce/specforceProcurementSpecialist.lua")
+  RunCreatureFile("objects/npcs/specforce/specforceTechnician.lua")
+  RunCreatureFile("objects/npcs/specforce/specforceWildernessOperative.lua")

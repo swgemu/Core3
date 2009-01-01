@@ -46,29 +46,34 @@ recluseGurkKing = Creature:new {
 	gender = "",
 
 	speciesName = "recluse_gurk_king",
+	
 	stfName = "mob/creature_names",
 	objectCRC = 657461156, 
 	socialGroup = "Gurk",
+	
+
 	level = 45,
+
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 11900,
+	healthMax = 12000,
 	healthMin = 9700,
-	strength = 0,
-	constitution = 0,
+	strength = 2000,
+	constitution = 2000,
 
-	actionMax = 11900,
+	actionMax = 12000,
 	actionMin = 9700,
-	quickness = 0,
-	stamina = 0,
+	quickness = 2000,
+	stamina = 2000,
 
-	mindMax = 11900,
+	mindMax = 12000,
 	mindMin = 9700,
-	focus = 0,
-	willpower = 0,
+	focus = 2000,
+	willpower = 2000,
 
-	height = 1, -- Size of creature
+	height = 1.4, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 35,
 	energy = 35,
@@ -80,7 +85,7 @@ recluseGurkKing = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -96,16 +101,16 @@ recluseGurkKing = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+      	weaponName = "Reclusive Gurk King", -- Name ex. 'a Vibrolance'
+      	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+     	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+      	weaponEquipped = 1,
+      	weaponMinDamage = 300,
+      	weaponMaxDamage = 600,
+      	weaponAttackSpeed = 1,
+      	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +125,7 @@ recluseGurkKing = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,19,90", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

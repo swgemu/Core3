@@ -843,6 +843,10 @@ public:
 
 	String& getLootGroup();
 
+	unsigned int getFerocity();
+
+	bool isBaby();
+
 	void setBaseHealth(unsigned int health);
 
 	void setBaseStrength(unsigned int strength);
@@ -1131,6 +1135,10 @@ public:
 
 	void setInternalNPCDamageModifier(float indm);
 
+	void setFerocity(unsigned int fero);
+
+	void setBaby(bool baby);
+
 	void setCreatureWeapon(const String& wpon);
 
 	void setCreatureWeaponName(const String& weaponname);
@@ -1182,6 +1190,18 @@ public:
 	int getMaskScent();
 
 	void setMaskScent(int value);
+
+	void onDeath();
+
+	void onClone();
+
+	void onBlinded();
+
+	void onDizzied();
+
+	void onStunned();
+
+	void onIntimidated();
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -2019,6 +2039,10 @@ public:
 
 	String& getLootGroup();
 
+	unsigned int getFerocity();
+
+	bool isBaby();
+
 	void setBaseHealth(unsigned int health);
 
 	void setBaseStrength(unsigned int strength);
@@ -2307,6 +2331,10 @@ public:
 
 	void setInternalNPCDamageModifier(float indm);
 
+	void setFerocity(unsigned int fero);
+
+	void setBaby(bool baby);
+
 	void setCreatureWeapon(const String& wpon);
 
 	void setCreatureWeaponName(const String& weaponname);
@@ -2358,6 +2386,18 @@ public:
 	int getMaskScent();
 
 	void setMaskScent(int value);
+
+	void onDeath();
+
+	void onClone();
+
+	void onBlinded();
+
+	void onDizzied();
+
+	void onStunned();
+
+	void onIntimidated();
 
 protected:
 	String _param0_info__String_bool_;

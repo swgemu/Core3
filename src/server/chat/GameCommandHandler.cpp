@@ -261,7 +261,7 @@ void GameCommandHandler::init() {
 			&reloadSchematics);
 	gmCommands->addCommand("spawn", CSREVENTS,
 			"Spawn a creature.",
-			"Usage: @spawn <creaturetype> <moves (0,1)> <cellid> <x> <y> <bitmask> <baby>",
+			"Usage: @spawn <creaturetype> <moves (0,1)> <heigth> <x> <y> <baby>",
 			&spawn);
 	gmCommands->addCommand("guildAdmin", PRIVILEGED,
 			"Let you join a guild temporarily to administer the guild via guildterminal.",
@@ -351,7 +351,7 @@ void GameCommandHandler::init() {
 			"Warps all players in a set radius to a specific waypoint",
 			"Usage: @warpAreaToWP <waypointName> <radius>",
 			&warpAreaToWP);
-	gmCommands->addCommand("scaleXP", PRIVILEGED,
+	gmCommands->addCommand("scaleXP", DEVELOPER,
 			"Sets the multiplier for serverwide experience",
 			"Usage: @scaleXP <scaler>",
 			&scaleXP);
@@ -1696,6 +1696,7 @@ void GameCommandHandler::buff(StringTokenizer tokenizer, Player* player) {
 			buffie->changeStrengthWoundsBar(-1500);
 			buffie->changeWillpowerWoundsBar(-1500);
 			buffie->changeFocusWoundsBar(-1500);
+			buffie->changeShockWounds(-1000);
 
 			//now buff
 			float buffDuration = 10800.0f;
@@ -1755,7 +1756,7 @@ void GameCommandHandler::buff(StringTokenizer tokenizer, Player* player) {
 			bo = new BuffObject(buff);
 			buffie->applyBuff(bo);
 
-			player->sendSystemMessage("Buffs applied");
+			player->sendSystemMessage("Buffs applied and you feel no fatigue");
 
 		} else {
 			player->sendSystemMessage("Already buffed");
@@ -2292,7 +2293,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	uint32 objcrc;
 	float x, y;
 	bool stationary = false;
-
+	bool baby = false;
 	// spawnCreature(uint32 objcrc, uint64 cellid, float x, float y, int bitmask, bool baby, bool doLock)
 
 	if (tokenizer.hasMoreTokens()) {
@@ -2328,6 +2329,9 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 	}
 
 
+	if (tokenizer.hasMoreTokens()) {
+		baby = tokenizer.getIntToken();
+	}
 
 	if (height > 100)
 		height = 100;
@@ -2350,7 +2354,7 @@ void GameCommandHandler::spawn(StringTokenizer tokenizer, Player* player) {
 		uint32 objcrc = creatureManager->getCreatureCrc(name);
 
 		Creature* creature = creatureManager->spawnCreature(objcrc, cellid, x, y,
-				0, false, true, height);
+				0, baby, true, height);
 
 		Zone* zone;
 

@@ -47,15 +47,104 @@ rebelSergeantAttack1 = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 65,
-	damageRatio = 70,
-	speedRatio = 1,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 50,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelSergeantAttack1)
+
+-----------------------------------------------------------------------
+
+rebelSergeantAttack2 = { 
+	attackname = "rebelSergeantAttack2",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
+AddRandomPoolAttackTargetSkill(rebelSergeantAttack2)
+
+-----------------------------------------------------------------------
+
+rebelSergeantAttack3 = { 
+	attackname = "rebelSergeantAttack3",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelSergeantAttack3)
+
+-------------------------------------------------------------------
+
+rebelSergeantAttack4 = { 
+	attackname = "rebelSergeantAttack4",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 30,
+	accuracyBonus = 0,
 
 	dotChance = 60,
 	tickStrengthOfHit = 1,
@@ -79,38 +168,4 @@ rebelSergeantAttack1 = {
 	CbtSpamMiss = "sapblast_miss",
 }
 
-AddDotPoolAttackTargetSkill(rebelSergeantAttack1)
-
------------------------------------------------------------------------
-
-rebelSergeantAttack2 = { 
-	attackname = "rebelSergeantAttack2",
-	animation = "creature_attack_light",
-
-	requiredWeaponType = ONEHANDED,
-	
-	range = 11,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
-}
-
-AddRandomPoolAttackTargetSkill(rebelSergeantAttack2)
-
------------------------------------------------------------------------
-
+AddDotPoolAttackTargetSkill(rebelSergeantAttack4)

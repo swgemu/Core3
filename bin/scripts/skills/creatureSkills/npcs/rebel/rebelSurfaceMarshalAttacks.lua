@@ -45,41 +45,30 @@ rebelSurfaceMarshalAttack1 = {
 	attackname = "rebelSurfaceMarshalAttack1",
 	animation = "fire_1_special_single_light",
 
-	requiredWeaponType = PISTOL,
+	requiredWeaponType = RIFLE,
 	
-	range = 65,
-	damageRatio = 70,
-	speedRatio = 1,
-	areaRange = 0,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 60,
 	accuracyBonus = 0,
-
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
-
-	dotChance = 60,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 0,
-	bleedingType = HEALTH,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 75,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
 	
-	CbtSpamBlock = "sapblast_block",
-	CbtSpamCounter = "sapblast_counter",
-	CbtSpamEvade = "sapblast_evade",
-	CbtSpamHit = "sapblast_hit",
-	CbtSpamMiss = "sapblast_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
-AddDotPoolAttackTargetSkill(rebelSurfaceMarshalAttack1)
+AddRandomPoolAttackTargetSkill(rebelSurfaceMarshalAttack1)
 
 -----------------------------------------------------------------------
 
@@ -87,12 +76,43 @@ rebelSurfaceMarshalAttack2 = {
 	attackname = "rebelSurfaceMarshalAttack2",
 	animation = "creature_attack_light",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = RIFLE,
 	
-	range = 11,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
-	areaRange = 0,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 60,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 75,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelSurfaceMarshalAttack2)
+
+-----------------------------------------------------------------------
+
+rebelSurfaceMarshalAttack3 = { 
+	attackname = "rebelSurfaceMarshalAttack3",
+	animation = "creature_attack_light",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 60,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -103,14 +123,13 @@ rebelSurfaceMarshalAttack2 = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(rebelSurfaceMarshalAttack2)
+AddRandomPoolAttackTargetSkill(rebelSurfaceMarshalAttack3)
 
 -----------------------------------------------------------------------
-

@@ -8,9 +8,9 @@ camoKitDantooine = Object:new {
 
 	objectType = CAMOKIT,   -- 567894,
 
-	planetType = 1,
+	planetType = DANTOOINE,
 
-	uses = 5,
+	uses = 15,
 	
 	concealSkill = 80
 }

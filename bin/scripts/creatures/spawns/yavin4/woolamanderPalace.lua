@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2008 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -40,77 +40,35 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+--Outside Agro
+spawnCreatures(woolamander, 9, 500, -666, 70, 7)
+spawnCreatures(woolamanderGatherer, 9, 500, -666, 35, 2)
+spawnCreatures(woolamanderReaper, 9, 500, -666, 10, 2)
 
-rebelWarrantOfficerAttack1 = { 
-	attackname = "rebelWarrantOfficerAttack1",
-	animation = "fire_1_special_single_light",
+--Inside Agro
+spawnCreatureInCell(woolamanderGatherer, 9, 2.3, 2.0, 2.9, 3705355)
+spawnCreatureInCell(woolamanderGatherer, 9, -2.4, 2.0, 2.5, 3705355)
+spawnCreatureInCell(woolamander, 9, -15.7, 2.0, -7.1, 3705355)
+spawnCreatureInCell(woolamander, 9, -19.9, 2.0, -1.6, 3705355)
+spawnCreatureInCell(woolamander, 9, 16.4, 2.0, -8.0, 3705355)
+spawnCreatureInCell(woolamander, 9, 20.8, 2.0, -1.3, 3705355)
+spawnCreatureInCell(woolamanderHarvester, 9, 55.3, 2.0, 6.4, 3705361)
+spawnCreatureInCell(woolamanderHarvester, 9, 55.3, 2.0, 3.5, 3705361)
+spawnCreatureInCell(woolamanderGatherer, 9, 76.3, 2.0, 15.2, 3705362)
+spawnCreatureInCell(woolamanderGatherer, 9, 76.3, 2.0, -4.4, 3705362)
+spawnCreatureInCell(woolamanderReaper, 9, -59.2, 2.0, 21.8, 3705359)
+spawnCreatureInCell(woolamanderHarvester, 9, -59.4, 2.0, -13.2, 3705359)
+spawnCreatureInCell(woolamanderHarrower, 9, -83.4, 2.0, 8.7, 3705359)
+spawnCreatureInCell(woolamanderHarrower, 9, -83.4, 2.0, 1.1, 3705359)
 
-	requiredWeaponType = PISTOL,
-	
-	range = 65,
-	damageRatio = 70,
-	speedRatio = 1,
-	areaRange = 0,
-	accuracyBonus = 0,
 
-	healthAttackChance = 100,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
 
-	dotChance = 60,
-	tickStrengthOfHit = 1,
 
-	fireStrength = 0,
-	fireType = 0,
 
-	bleedingStrength = 0,
-	bleedingType = HEALTH,
 
-	poisonStrength = 0,
-	poisonType = 0,
 
-	diseaseStrength = 0,
-	diseaseType = 0,
-	
-	CbtSpamBlock = "sapblast_block",
-	CbtSpamCounter = "sapblast_counter",
-	CbtSpamEvade = "sapblast_evade",
-	CbtSpamHit = "sapblast_hit",
-	CbtSpamMiss = "sapblast_miss",
-}
 
-AddDotPoolAttackTargetSkill(rebelWarrantOfficerAttack1)
 
------------------------------------------------------------------------
 
-rebelWarrantOfficerAttack2 = { 
-	attackname = "rebelWarrantOfficerAttack2",
-	animation = "creature_attack_light",
 
-	requiredWeaponType = ONEHANDED,
-	
-	range = 11,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
-	areaRange = 0,
-	accuracyBonus = 0,
-		
-	knockdownChance = 0,
-	postureDownChance = 0,
-	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 0,
-	stunChance = 0,
-	intimidateChance = 0,
-	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
-}
-
-AddRandomPoolAttackTargetSkill(rebelWarrantOfficerAttack2)
-
------------------------------------------------------------------------
 

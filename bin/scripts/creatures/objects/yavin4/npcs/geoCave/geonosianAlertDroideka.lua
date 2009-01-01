@@ -49,7 +49,11 @@ geonosianAlertDroideka = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2397633499, 
 	socialGroup = "self",
+	
+
 	level = 86,
+
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -97,7 +101,7 @@ geonosianAlertDroideka = Creature:new {
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Alert Droideka", -- Name ex. 'a Vibrolance'
+	weaponName = "Droideka Ranged", -- Name ex. 'a Vibrolance'
 	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,

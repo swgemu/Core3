@@ -43,7 +43,6 @@
 
 --Imperial
 RunCreatureFile("objects/npcs/imperial/imperialArmyCaptain.lua") -- Weapon "DL44"
-
 RunCreatureFile("objects/npcs/imperial/imperialCivilPatrolCaptain.lua") -- Weapon "Carbine E11"
 RunCreatureFile("objects/npcs/imperial/imperialColonel.lua") -- Weapon "DL44"
 RunCreatureFile("objects/npcs/imperial/imperialCorporal.lua") -- Weapon "DL44"

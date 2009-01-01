@@ -76,6 +76,9 @@ RunSkillsFile("creatureSkills/npcs/miscNpcSkills.lua")
 RunSkillsFile("creatureSkills/rori/creatureSkills.lua")
 RunSkillsFile("creatureSkills/rori/npcSkills.lua")
 
+-- Space
+RunSkillsFile("creatureSkills/space/npcSkills.lua")
+
 -- Talus
 RunSkillsFile("creatureSkills/talus/creatureSkills.lua")
 RunSkillsFile("creatureSkills/talus/npcSkills.lua")

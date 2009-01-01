@@ -47,3 +47,95 @@ CamoSkill = {
 }
 
 AddCamoSkill(CamoSkill)
+
+----------------------------- Advanced Trapping 2 -------------------------------
+
+--- A small bomb that emits a bright flash on impact.  
+--- This flash is intense enough to blind most creatures for a short amount of time. 
+--- The flash bomb bursts, blinding nearby enemies! 
+
+ThrowSkill = { 
+	attackname = "throwflashbomb",
+	animation = "throw_trap_flash_bomb",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 100,
+	stunChance = 0,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffHitMessage = "trap_flash_bomb_effect",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowRandomPoolTargetSkill(ThrowSkill)
+
+----------------------------- Advanced Trapping 3 -------------------------------
+
+--- The sonic pulse is a small bomb activated by impact.  
+--- When triggered, it emits an extremely powerful pulse of sonic energy.
+--- This has the result of stunning and dizzying any creatures caught within its effective radius.
+
+ThrowSkill = { 
+	attackname = "throwsonicpulse",
+	animation = "throw_trap_sonic_pulse",
+
+	requiredWeaponType = ALL,
+	
+	range = 35,
+	damageRatio = 1.0,
+	speedRatio = 2.0,
+	areaRange = 8,
+	accuracyBonus = 0,
+			
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 100,
+	blindChance = 0,
+	stunChance = 100,
+	intimidateChance = 0,
+	snareChance = 0,
+	rootChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+	
+	deBuffStrFile = "trap\\trap",
+	deBuffHitMessage = "trap_sonic_pulse_effect",
+	deBuffMissMessage = "",
+	
+	meleeDefDebuff = 0,
+	rangedDefDebuff = 0,
+	stunDefDebuff = 0,
+	intimidateDefDebuff = 0
+}
+
+AddThrowRandomPoolTargetSkill(ThrowSkill)

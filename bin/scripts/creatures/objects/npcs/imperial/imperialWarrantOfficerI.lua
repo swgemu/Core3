@@ -107,8 +107,8 @@ imperialWarrantOfficerI = Creature:new {
 	weaponMinDamage = 110,
 	weaponMaxDamage = 220,
 	weaponAttackSpeed = 1.2,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

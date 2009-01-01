@@ -213,8 +213,11 @@ public:
 	static void transferItemToContainer(Player* player, TangibleObject* item, uint64 destinationID);
 
 	static void parseNewbieSelectStartingLocation(Player* player, Message* pack);
-	
+
 	static void parseTeach(Player* player, Message* pack);
+
+	static void parseThrowTrap(Player* player, Message* pack);
+
 };
 
 #endif /*OBJECTCONTROLLERMESSAGE_H_*/

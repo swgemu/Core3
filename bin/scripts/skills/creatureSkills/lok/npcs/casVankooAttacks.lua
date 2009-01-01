@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2008 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -40,59 +40,47 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
+casVankooAttack1 = { 
+	attackname = "casVankooAttack1",
+	animation = "fire_1_special_single_light",
 
-rebelStaffCorporalAttack1 = { 
-	attackname = "rebelStaffCorporalAttack1",
-	animation = "creature_attack_light",
-
-	requiredWeaponType = CARBINE,
+	requiredWeaponType = PISTOL,
 	
-	range = 11,
-	damageRatio = 1.50,
-	speedRatio = 1.45,
-	areaRange = 0,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 60,
 	accuracyBonus = 0,
-
-	healthAttackChance = 0,
-	actionAttackChance = 50,
-	mindAttackChance = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 80,
+	stunChance = 0,
+	intimidateChance = 0,
 	
-	dotChance = 5,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 0,
-	bleedingType = ACTION,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
-	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
-AddDotPoolAttackTargetSkill(rebelStaffCorporalAttack1)
+AddRandomPoolAttackTargetSkill(casVankooAttack1)
 
 -----------------------------------------------------------------------
 
-rebelStaffCorporalAttack2 = { 
-	attackname = "rebelStaffCorporalAttack2",
-	animation = "creature_attack_light",
+casVankooAttack2 = { 
+	attackname = "casVankooAttack2",
+	animation = "fire_1_special_single_light",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = PISTOL,
 	
-	range = 11,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
-	areaRange = 0,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 60,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -103,13 +91,44 @@ rebelStaffCorporalAttack2 = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(rebelStaffCorporalAttack2)
+AddRandomPoolAttackTargetSkill(casVankooAttack2)
+
+-----------------------------------------------------------------------
+
+casVankooAttack3 = { 
+	attackname = "casVankooAttack3",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = PISTOL,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 60,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 80,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(casVankooAttack3)
 
 -----------------------------------------------------------------------

@@ -41,4 +41,13 @@
 --which carries forward this exception.
 
 -- Corellian Corvette
- RunCreatureFile("objects/space/corellianCorvette/imperialCorelllianCorvette.lua")
+ RunCreatureFile("objects/space/corellianCorvette/imperialCorellianCorvette.lua")
+ RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelMidshipman.lua")
+ RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelAdmiral.lua")
+ RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelCommandant.lua")
+ RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelCommodore.lua")
+ RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelEngineer.lua")
+ RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelEnsign.lua")
+ RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelMate.lua")
+ RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelRearAdmiral.lua")
+ RunCreatureFile("objects/space/corellianCorvette/rebel/corvetteRebelSailor.lua")

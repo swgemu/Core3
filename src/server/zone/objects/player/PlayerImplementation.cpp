@@ -2191,11 +2191,10 @@ void PlayerImplementation::changePosture(int post) {
 		return;
 	}
 
-	if (meditating) {
+	if (isMeditating()) {
 		updateMood(Races::getMood(moodid));
 		clearState(CreatureState::ALERT);
 		updateStates();
-		meditating = false;
 		sendSystemMessage("teraskasi", "med_end");
 	}
 
@@ -2824,7 +2823,7 @@ bool PlayerImplementation::doPowerboost() {
 	}
 
     //Make sure player is meditating.
-	if (!meditating) {
+	if (!isMeditating()) {
 		sendSystemMessage("teraskasi", "powerboost_fail"); //"You must be meditating to perform that command."
 		return false;
 	}
@@ -4989,7 +4988,7 @@ void PlayerImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 	}
 
 	if (_this->isInAGroup() && player->isInAGroup() && (group == player->getGroupObject())) {
-		omr->addRadialItem(0, 48, 3, "@cmd_n:teach");
+		omr->addRadialItem(0, 140, 3, "@cmd_n:teach");
 	}
 
 	omr->finish();
@@ -5552,3 +5551,24 @@ void PlayerImplementation::teachSkill(String& skillname) {
 	getTeacher()->setStudent(NULL);
 	setTeacher(NULL);
 }
+
+void PlayerImplementation::throwTrap(uint64 targetID) {
+	Inventory* inventory = getInventory();
+
+	if (inventory != NULL) {
+		for (int i = 0; i < inventory->objectsSize(); i++) {
+			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+			if (item->isTrap()) {
+				TrapThrowableWeapon* trap = (TrapThrowableWeapon*) item;
+
+				if (trap->isUsefull(_this)) {
+
+					trap->useObject(_this);
+					return;
+				}
+			}
+		}
+	}
+}
+

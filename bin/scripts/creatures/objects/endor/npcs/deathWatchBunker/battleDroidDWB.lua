@@ -80,7 +80,7 @@ battleDroidDWB = Creature:new {
 	acid = 40,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -102,10 +102,10 @@ battleDroidDWB = Creature:new {
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 600,
-	weaponMaxDamage = 900,
+	weaponMaxDamage = 1000,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ battleDroidDWB = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,39,40", -- Group it belongs to for loot
+	lootGroup = "0,4", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

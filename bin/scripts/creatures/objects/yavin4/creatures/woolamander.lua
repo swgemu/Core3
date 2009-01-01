@@ -46,27 +46,32 @@ woolamander = Creature:new {
 	gender = "",
 
 	speciesName = "woolamander",
+	
 	stfName = "mob/creature_names",
 	objectCRC = 23943354, 
 	socialGroup = "Woolamander",
+	
+
 	level = 27,
+
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 8300,
 	healthMin = 6800,
-	strength = 0,
-	constitution = 0,
+	strength = 2000,
+	constitution = 2000,
 
 	actionMax = 8300,
 	actionMin = 6800,
-	quickness = 0,
-	stamina = 0,
+	quickness = 2000,
+	stamina = 2000,
 
 	mindMax = 8300,
 	mindMin = 6800,
-	focus = 0,
-	willpower = 0,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -80,32 +85,35 @@ woolamander = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 360,
 
 	healer = 0,
 
 	pack = 1,
 	herd = 1,
-	stalker = 0,
+	stalker = 1,
 	killer = 0,
 	aggressive = 1,
 	invincible = 0, 
 
+	
+
 	meleeDefense = 1,  
+	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
-
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Woolamander", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 150,
+	weaponMaxDamage = 400,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -135,9 +143,8 @@ woolamander = Creature:new {
 	meatType = "meat_carnivore_yavin4",
 	meatMax = 35,
 
-	--skills = { " Dizzy attack", " Stun attack", "" }
-	skills = { "woolamanderAttack1", "woolamanderAttack7" },
-	respawnTimer = 60,
+	skills = { "woolamanderAttack8", "woolamanderAttack11" },
+	respawnTimer = 120,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
