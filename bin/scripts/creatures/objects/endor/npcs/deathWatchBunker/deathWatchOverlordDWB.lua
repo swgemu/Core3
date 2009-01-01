@@ -101,11 +101,11 @@ deathWatchOverlordDWB = Creature:new {
 	weaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 2150,
-	weaponMaxDamage = 2550,
+	weaponMinDamage = 300,
+	weaponMaxDamage = 800,
 	weaponAttackSpeed = 1.5,
 	weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +120,7 @@ deathWatchOverlordDWB = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,46,47", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,19,33,46,47", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

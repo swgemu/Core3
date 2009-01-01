@@ -48,28 +48,29 @@ rebelCommando = Creature:new {
 	gender = "",
 
 	speciesName = "rebel_commando",
-    stfName = "mob/creature_names",
+    	stfName = "mob/creature_names",
 	objectCRC = 1340194354, 
 	socialGroup = "Rebel",
-	level = 30,
 	
 
+	level = 30,
+	
 	combatFlags = 0,
 
 	healthMax = 8800,
 	healthMin = 7200,
-	strength = 0,
-	constitution = 0,
+	strength = 1000,
+	constitution = 1000,
 
 	actionMax = 8800,
 	actionMin = 7200,
-	quickness = 0,
-	stamina = 0,
+	quickness = 1000,
+	stamina = 1000,
 
 	mindMax = 8800,
 	mindMin = 7200,
-	focus = 0,
-	willpower = 0,
+	focus = 1000,
+	willpower = 1000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +84,7 @@ rebelCommando = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 350,
 
 	healer = 0,
 
@@ -104,11 +105,11 @@ rebelCommando = Creature:new {
 	weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 440,
-	weaponMaxDamage = 637,
-	weaponAttackSpeed = 5,
+	weaponMinDamage = 200,
+	weaponMaxDamage = 500,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -123,7 +124,7 @@ rebelCommando = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,33", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -139,7 +140,7 @@ rebelCommando = Creature:new {
 	meatMax = 0,
 
 	skills = { "rebelCommandoAttack1", "rebelCommandoAttack2" },
-	respawnTimer = 180,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

@@ -42,14 +42,14 @@
 
 rebelGeneralAttack1 = { 
 	attackname = "rebelGeneralAttack1",
-	animation = "creature_attack_light",
+	animation = "fire_1_special_single_light",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = RIFLE,
 	
-	range = 11,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
-	areaRange = 0,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 60,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -60,14 +60,73 @@ rebelGeneralAttack1 = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(rebelGeneralAttack1)
 
 -----------------------------------------------------------------------
 
+rebelGeneralAttack2 = { 
+	attackname = "rebelGeneralAttack2",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 60,
+	accuracyBonus = 0,
+		
+	knockdownChance = 50,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelGeneralAttack2)
+
+------------------------------------------------------------------------
+
+rebelGeneralAttack3 = { 
+	attackname = "rebelGeneralAttack3",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = RIFLE,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 60,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 75,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelGeneralAttack3)

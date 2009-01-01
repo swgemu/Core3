@@ -43,30 +43,36 @@
 woolamanderGatherer = Creature:new {
 	objectName = "woolamanderGatherer",  -- Lua Object Name
 	creatureType = "ANIMAL",
+	
 	gender = "",
 
 	speciesName = "woolamander_gatherer",
+	
 	stfName = "mob/creature_names",
 	objectCRC = 23943354, 
 	socialGroup = "Woolamander",
+	
+
 	level = 29,
 
-	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
+	
+
+	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 10100,
 	healthMin = 8300,
-	strength = 0,
-	constitution = 0,
+	strength = 2000,
+	constitution = 2000,
 
 	actionMax = 10100,
 	actionMin = 8300,
-	quickness = 0,
-	stamina = 0,
+	quickness = 2000,
+	stamina = 2000,
 
 	mindMax = 10100,
 	mindMin = 8300,
-	focus = 0,
-	willpower = 0,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -80,15 +86,15 @@ woolamanderGatherer = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 320,
 
 	healer = 0,
 
 	pack = 0,
 	herd = 1,
-	stalker = 1,
+	stalker = 0,
 	killer = 0,
-	aggressive = 0,
+	aggressive = 1,
 	invincible = 0, 
 
 	meleeDefense = 1,  
@@ -96,16 +102,16 @@ woolamanderGatherer = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Woolamander Gatherer", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 200,
+	weaponMaxDamage = 450,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -135,9 +141,8 @@ woolamanderGatherer = Creature:new {
 	meatType = "meat_carnivore_yavin4",
 	meatMax = 20,
 
-	--skills = { " Dizzy attack", " Intimidation attack", "" }
-	skills = { "woolamanderAttack1", "woolamanderAttack2" },
-	respawnTimer = 60,
+	skills = { "woolamanderAttack8", "woolamanderAttack10" },
+	respawnTimer = 180,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

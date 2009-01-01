@@ -2,24 +2,24 @@ woolamanderAttack1 = {
         attackname = "woolamanderAttack1",
         animation = "creature_attack_light",
         
-        requiredWeaponType = NONE,
+        requiredWeaponType = MELEE,
 
         range = 10,
 
-        damageRatio = 10,
+        damageRatio = 5,
 
-        speedRatio = 4,
+        speedRatio = 2,
 
-        areaRange = 0,
+        areaRange = 15,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
         postureDownChance = 0,
         postureUpChance = 0,
-        dizzyChance = 50,
+        dizzyChance = 85,
         blindChance = 0,
         stunChance = 0,
-        intimidateChance = 0,
+        intimidateChance = 85,
         
         CbtSpamBlock = "attack_block",
         CbtSpamCounter = "attack_counter",
@@ -36,24 +36,24 @@ woolamanderAttack2 = {
         attackname = "woolamanderAttack2",
         animation = "creature_attack_light",
         
-        requiredWeaponType = NONE,
+        requiredWeaponType = MELEE,
 
         range = 10,
 
-        damageRatio = 10,
+        damageRatio = 5,
 
-        speedRatio = 4,
+        speedRatio = 2,
 
-        areaRange = 0,
+        areaRange = 15,
         accuracyBonus = 0,
                 
-        knockdownChance = 0,
+        knockdownChance = 90,
         postureDownChance = 0,
         postureUpChance = 0,
         dizzyChance = 0,
         blindChance = 0,
         stunChance = 0,
-        intimidateChance = 50,
+        intimidateChance = 0,
         
         CbtSpamBlock = "attack_block",
         CbtSpamCounter = "attack_counter",
@@ -70,18 +70,18 @@ woolamanderAttack3 = {
         attackname = "woolamanderAttack3",
         animation = "creature_attack_light",
         
-        requiredWeaponType = NONE,
+        requiredWeaponType = MELEE,
 
         range = 10,
 
-        damageRatio = 10,
+        damageRatio = 5,
 
-        speedRatio = 4,
+        speedRatio = 2,
 
-        areaRange = 0,
+        areaRange = 15,
         accuracyBonus = 0,
                 
-        knockdownChance = 50,
+        knockdownChance = 0,
         postureDownChance = 0,
         postureUpChance = 0,
         dizzyChance = 0,
@@ -104,44 +104,36 @@ woolamanderAttack4 = {
         attackname = "woolamanderAttack4",
         animation = "creature_attack_light",
         
-        requiredWeaponType = NONE,
+        requiredWeaponType = MELEE,
 
         range = 10,
 
-        damageRatio = 15,
+        damageRatio = 5,
 
-        speedRatio = 4,
+        speedRatio = 3,
 
-        areaRange = 30,
+        areaRange = 20,
         accuracyBonus = 0,
 
-        healthAttackChance = 100,
+        healthAttackChance = 50,
         actionAttackChance = 0,
         mindAttackChance = 0,
 
-        dotChance = 50,
+        dotChance = 90,
         tickStrengthOfHit = 1,
 
         fireStrength = 0,
         fireType = 0,
 
         bleedingStrength = 0,
-		bleedingType = 0,
+	bleedingType = 0,
 
-        poisonStrength = 100,
+        poisonStrength = 0,
         poisonType = HEALTH,
 
         diseaseStrength = 0,
         diseaseType = 0,
                 
-        knockdownChance = 0,
-        postureDownChance = 0,
-        postureUpChance = 0,
-        dizzyChance = 0,
-        blindChance = 0,
-        stunChance = 0,
-        intimidateChance = 0,
-        
         CbtSpamBlock = "attack_block",
         CbtSpamCounter = "attack_counter",
         CbtSpamEvade = "attack_evade",
@@ -157,18 +149,18 @@ woolamanderAttack5 = {
         attackname = "woolamanderAttack5",
         animation = "creature_attack_light",
         
-        requiredWeaponType = NONE,
+        requiredWeaponType = MELEE,
 
         range = 10,
 
-        damageRatio = 10,
+        damageRatio = 5,
 
-        speedRatio = 4,
+        speedRatio = 2,
 
-        areaRange = 30,
+        areaRange = 15,
         accuracyBonus = 0,
                 
-        knockdownChance = 50,
+        knockdownChance = 0,
         postureDownChance = 0,
         postureUpChance = 0,
         dizzyChance = 0,
@@ -185,41 +177,56 @@ woolamanderAttack5 = {
 
 AddRandomPoolAttackTargetSkill(woolamanderAttack5)
 
----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
 woolamanderAttack6 = {
         attackname = "woolamanderAttack6",
         animation = "creature_attack_light",
         
-        requiredWeaponType = NONE,
+        requiredWeaponType = MELEE,
 
         range = 10,
 
-        damageRatio = 15,
+        damageRatio = 5,
 
-        speedRatio = 4,
+        speedRatio = 2,
 
-        areaRange = 30,
+        areaRange = 15,
         accuracyBonus = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 80,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
 
-        healthAttackChance = 100,
-        actionAttackChance = 0,
-        mindAttackChance = 0,
+AddRandomPoolAttackTargetSkill(woolamanderAttack6)
 
-        dotChance = 50,
-        tickStrengthOfHit = 1,
+---------------------------------------------------------------------------------------
 
-        fireStrength = 0,
-        fireType = 0,
+woolamanderAttack7 = {
+        attackname = "woolamanderAttack7",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = MELEE,
 
-        bleedingStrength = 0,
-		bleedingType = 0,
+        range = 10,
 
-        poisonStrength = 0,
-        poisonType = 0,
+        damageRatio = 5,
 
-        diseaseStrength = 100,
-        diseaseType = HEALTH,
+        speedRatio = 2,
+
+        areaRange = 15,
+        accuracyBonus = 0,
                 
         knockdownChance = 0,
         postureDownChance = 0,
@@ -236,31 +243,31 @@ woolamanderAttack6 = {
         CbtSpamMiss = "attack_miss",
 }
 
-AddDotPoolAttackTargetSkill(woolamanderAttack6)
+AddRandomPoolAttackTargetSkill(woolamanderAttack7)
 
---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
-woolamanderAttack7 = {
-        attackname = "woolamanderAttack7",
+woolamanderAttack8 = {
+        attackname = "woolamanderAttack8",
         animation = "creature_attack_light",
         
-        requiredWeaponType = NONE,
+        requiredWeaponType = MELEE,
 
         range = 10,
 
-        damageRatio = 10,
+        damageRatio = 5,
 
-        speedRatio = 4,
+        speedRatio = 2,
 
-        areaRange = 0,
+        areaRange = 15,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
         postureDownChance = 0,
         postureUpChance = 0,
-        dizzyChance = 0,
+        dizzyChance = 80,
         blindChance = 0,
-        stunChance = 50,
+        stunChance = 0,
         intimidateChance = 0,
         
         CbtSpamBlock = "attack_block",
@@ -270,6 +277,108 @@ woolamanderAttack7 = {
         CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(woolamanderAttack7)
+AddRandomPoolAttackTargetSkill(woolamanderAttack8)
+
+---------------------------------------------------------------------------------------
+
+woolamanderAttack9 = {
+        attackname = "woolamanderAttack9",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = MELEE,
+
+        range = 10,
+
+        damageRatio = 5,
+
+        speedRatio = 2,
+
+        areaRange = 15,
+        accuracyBonus = 0,
+                
+        knockdownChance = 75,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(woolamanderAttack9)
+
+---------------------------------------------------------------------------------------
+
+woolamanderAttack10 = {
+        attackname = "woolamanderAttack10",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = MELEE,
+
+        range = 10,
+
+        damageRatio = 5,
+
+        speedRatio = 2,
+
+        areaRange = 15,
+        accuracyBonus = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 75,
+        blindChance = 0,
+        stunChance = 0,
+        intimidateChance = 75,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(woolamanderAttack10)
+
+---------------------------------------------------------------------------------------
+
+woolamanderAttack11 = {
+        attackname = "woolamanderAttack11",
+        animation = "creature_attack_light",
+        
+        requiredWeaponType = MELEE,
+
+        range = 10,
+
+        damageRatio = 5,
+
+        speedRatio = 2,
+
+        areaRange = 15,
+        accuracyBonus = 0,
+                
+        knockdownChance = 0,
+        postureDownChance = 0,
+        postureUpChance = 0,
+        dizzyChance = 0,
+        blindChance = 0,
+        stunChance = 75,
+        intimidateChance = 0,
+        
+        CbtSpamBlock = "attack_block",
+        CbtSpamCounter = "attack_counter",
+        CbtSpamEvade = "attack_evade",
+        CbtSpamHit = "attack_hit",
+        CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(woolamanderAttack11)
 
 ---------------------------------------------------------------------------------------

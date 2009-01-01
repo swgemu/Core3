@@ -43,30 +43,36 @@
 woolamanderHarrower = Creature:new {
 	objectName = "woolamanderHarrower",  -- Lua Object Name
 	creatureType = "ANIMAL",
+	
 	gender = "",
 
 	speciesName = "woolamander_harrower",
+	
 	stfName = "mob/creature_names",
-	objectCRC = 23943354, 
+	objectCRC = 1400086815, 
 	socialGroup = "Woolamander",
+	
+
 	level = 51,
+
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 1300,
-	healthMin = 10000,
-	strength = 0,
-	constitution = 0,
+	healthMax = 13000,
+	healthMin = 11000,
+	strength = 2000,
+	constitution = 2000,
 
-	actionMax = 1300,
-	actionMin = 10000,
-	quickness = 0,
-	stamina = 0,
+	actionMax = 13000,
+	actionMin = 11000,
+	quickness = 2000,
+	stamina = 2000,
 
-	mindMax = 1300,
-	mindMin = 10000,
-	focus = 0,
-	willpower = 0,
+	mindMax = 13000,
+	mindMin = 11000,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -80,7 +86,7 @@ woolamanderHarrower = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 370,
 
 	healer = 0,
 
@@ -91,21 +97,24 @@ woolamanderHarrower = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
+	
+
 	meleeDefense = 1,  
+	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Woolamander Harrower", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 300,
+	weaponMaxDamage = 700,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +129,7 @@ woolamanderHarrower = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,19,33,89", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -135,11 +144,10 @@ woolamanderHarrower = Creature:new {
 	meatType = "meat_carnivore_yavin4",
 	meatMax = 40,
 
-	--skills = { " Area attack (poison)", " Knockdown attack", "" }
-	skills = { "woolamanderAttack4", "woolamanderAttack3" },
-	respawnTimer = 60,
+	skills = { "woolamanderAttack1", "woolamanderAttack2", "woolamanderAttack3", "woolamanderAttack4" },
+	respawnTimer = 4020,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(woolamanderHarrower, 23943354) --  Add to Global Table
+Creatures:addCreature(woolamanderHarrower, 1400086815) --  Add to Global Table

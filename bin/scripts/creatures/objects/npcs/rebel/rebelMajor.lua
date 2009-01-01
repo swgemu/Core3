@@ -51,25 +51,27 @@ rebelMajor = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 450207030, 
 	socialGroup = "Rebel",
-	level = 22,
+	
+
+	level = 32,
 	
 
 	combatFlags = 0,
 
 	healthMax = 7200,
 	healthMin = 5900,
-	strength = 0,
-	constitution = 0,
+	strength = 1000,
+	constitution = 1000,
 
 	actionMax = 7200,
 	actionMin = 5900,
-	quickness = 0,
-	stamina = 0,
+	quickness = 1000,
+	stamina = 1000,
 
 	mindMax = 7200,
 	mindMin = 5900,
-	focus = 0,
-	willpower = 0,
+	focus = 1000,
+	willpower = 1000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +85,7 @@ rebelMajor = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 330,
 
 	healer = 0,
 
@@ -99,31 +101,31 @@ rebelMajor = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/pistol/shared_pistol_power5.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "officer's Power 5", -- Name ex. 'a Vibrolance'
-	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
+	weapon = "object/weapon/ranged/pistol/shared_pistol_dl44.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "officer's Dl44", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 140,
-	weaponMaxDamage = 420,
+	weaponMaxDamage = 320,
 	weaponAttackSpeed = 1.2,
-	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "stun Baton", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 210,
-	alternateWeaponMaxDamage = 310,
-	alternateWeaponAttackSpeed = 1.5,
-	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -139,7 +141,7 @@ rebelMajor = Creature:new {
 	meatMax = 0,
 
 	skills = { "rebelMajorAttack1", "rebelMajorAttack2" },
-	respawnTimer = 180,
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

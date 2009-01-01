@@ -47,7 +47,7 @@ rebelCommandoAttack1 = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 25,
+	range = 40,
 	damageRatio = 8,
 	speedRatio = 4,
 	coneAngle = 0,
@@ -65,7 +65,7 @@ rebelCommandoAttack1 = {
 	actionAttackChance = 0,
 	mindAttackChance = 0,
 
-	dotChance = 100,
+	dotChance = 80,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -88,10 +88,10 @@ rebelCommandoAttack2 = {
 
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
-	range = 20,
+	range = 40,
 	damageRatio = 6,
 	speedRatio = 4,
-	coneAngle = 30,
+	coneAngle = 60,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -101,13 +101,12 @@ rebelCommandoAttack2 = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
-	rezChance = 100,
 
 	healthAttackChance = 100,
 	actionAttackChance = 0,
 	mindAttackChance = 0,
 
-	dotChance = 100,
+	dotChance = 80,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,

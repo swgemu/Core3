@@ -48,28 +48,29 @@ rebelGeneral = Creature:new {
 	gender = "",
 
 	speciesName = "rebel_general",
-    stfName = "mob/creature_names",
+    	stfName = "mob/creature_names",
 	objectCRC = 354934529, 
 	socialGroup = "rebel",
-	level = 28,
 	
+
+	level = 60,
 
 	combatFlags = 0,
 
 	healthMax = 10000,
 	healthMin = 8200,
-	strength = 500,
-	constitution = 500,
+	strength = 2000,
+	constitution = 2000,
 
 	actionMax = 10000,
 	actionMin = 8200,
-	quickness = 500,
-	stamina = 500,
+	quickness = 2000,
+	stamina = 2000,
 
 	mindMax = 10000,
 	mindMin = 8200,
-	focus = 500,
-	willpower = 500,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +84,7 @@ rebelGeneral = Creature:new {
 	acid = -1,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 375,
 
 	healer = 0,
 
@@ -99,31 +100,31 @@ rebelGeneral = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/melee/baton/shared_baton_gaderiffi.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "a Gaderiffi", -- Name ex. 'a Vibrolance'
-	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "officer's Jawa", -- Name ex. 'a Vibrolance'
+	weaponTemp = "rifle_jawa_ion", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 175,
-	weaponMaxDamage = 200,
-	weaponAttackSpeed = 1.5,
-	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponMinDamage = 100,
+	weaponMaxDamage = 250,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 175,
-	alternateWeaponMaxDamage = 250,
-	alternateWeaponAttackSpeed = 1.5,
-	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,11,15,19,33,44", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,19,33", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -138,8 +139,8 @@ rebelGeneral = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "rebelGeneralAttack1" },
-	 respawnTimer = 60,
+	skills = { "rebelGeneralAttack1", "rebelGeneralAttack2", "rebelGeneralAttack3" },
+	respawnTimer = 300,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }

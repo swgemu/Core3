@@ -49,6 +49,7 @@ tuskenWitchDoctor = Creature:new {
 
 	speciesName = "tusken_witch_doctor",
 	stfName = "mob/creature_names", 
+	objectCRC = 3780705985,
 	socialGroup = "tusken_raider",
 	 
 
@@ -125,7 +126,7 @@ tuskenWitchDoctor = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,11,15,19,24,25,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,19,24,25,33,39,40,99", -- Group it belongs to for loot
 	
 	tame = 0,  -- Likely hood to be tamed
 

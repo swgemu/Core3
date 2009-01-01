@@ -48,7 +48,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	coneAngle = 60,
@@ -79,7 +79,7 @@ DotPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -89,7 +89,7 @@ DotPoolAtt = {
 	actionAttackChance = 0,
 	mindAttackChance = 100,
 
-	dotChance = 50,
+	dotChance = 75,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -121,7 +121,7 @@ DirectPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 3.0,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -163,7 +163,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 1.25,
 	speedRatio = 1.25,
 	areaRange = 0,
@@ -194,7 +194,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 2.5,
 	speedRatio = 3.0,
 	areaRange = 0,
@@ -225,7 +225,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 2.0,
 	speedRatio = 2.1,
 	areaRange = 0,
@@ -256,7 +256,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 2.0,
 	speedRatio = 2.1,
 	areaRange = 0,
@@ -287,7 +287,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 4.0,
 	speedRatio = 2.6,
 	coneAngle = 60,
@@ -295,10 +295,10 @@ RandPoolAtt = {
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 20,
+	postureUpChance = 50,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 40,
+	stunChance = 75,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "flushingvolley_block",
@@ -318,7 +318,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 4.0,
 	speedRatio = 2.6,
 	areaRange = 0,
@@ -326,7 +326,7 @@ RandPoolAtt = {
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	postureUpChance = 60,
+	postureUpChance = 75,
 	dizzyChance = 0,
 	blindChance = 0,
 	stunChance = 0,
@@ -349,7 +349,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 1.5,
 	speedRatio = 2.0,
 	areaRange = 0,
@@ -358,7 +358,7 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 10,
+	dizzyChance = 25,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -380,7 +380,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 2.0,
 	speedRatio = 2.3,
 	coneAngle = 60,
@@ -389,7 +389,7 @@ RandPoolAtt = {
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 30,
+	dizzyChance = 75,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -411,7 +411,7 @@ RandPoolAtt = {
 
 	requiredWeaponType = RIFLE,
 	
-	range = 75,
+	range = 64,
 	damageRatio = 5.0,
 	speedRatio = 3.5,
 	coneAngle = 60,

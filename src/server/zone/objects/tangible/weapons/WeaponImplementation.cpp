@@ -665,33 +665,34 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	modifier = modifier + System::random(10);
 
 	int playerRoll = System::random(1000) * modifier * luck / 1000;
-	if (playerRoll > 200000) {
-		modifier = modifier + 100;
-		luck = luck + 150;
-		setMaxDamage(maxDamage * 1.5);
+	if (playerRoll > 170000) {
+		modifier = modifier + 150;
+		luck = luck + 170;
+		setMaxDamage(maxDamage * 3);
 
 		StringBuffer itemText;
 		itemText << "\\#ffff00" << name.toString() << " (Legendary)";
 		name = UnicodeString(itemText.toString());
-	} else if (playerRoll > 65000) {
-		modifier = modifier + 50;
-		luck = luck + 100;
+	} else if (playerRoll > 60000) {
+		modifier = modifier + 100;
+		luck = luck + 120;
+		setMaxDamage(maxDamage * 1.5);		
 
 		StringBuffer itemText;
 		itemText << "\\#ffff00" << name.toString() << " (Exceptional)";
 		name = UnicodeString(itemText.toString());
-	} else if (playerRoll > 12500) {
-		modifier = modifier + 25;
-		luck = luck + 50;
+	} else if (playerRoll > 11000) {
+		modifier = modifier + 35;
+		luck = luck + 65;
 
 		StringBuffer itemText;
 		itemText << "\\#ffff00" << name.toString();
 		name = UnicodeString(itemText.toString());
 	}
 
-	if (luck * System::random(100) > 1750) {
-		setMinDamage(minDamage + (minDamage * luck / 162.93f));
-		setMaxDamage(maxDamage + (maxDamage * luck / 163.11f));
+	if (luck * System::random(100) > 1500) {
+		setMinDamage(minDamage + (minDamage * luck / 149.93f));
+		setMaxDamage(maxDamage + (maxDamage * luck / 150.11f));
 	}
 
 	if (luck * System::random(100) > 1750) {
@@ -707,25 +708,25 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	if (luck * System::random(100) > 1750)
 		setWoundsRatio(woundsRatio + (woundsRatio * luck / 173));
 
-	if (playerRoll > 12500 && System::random(3) == 1) {
+	if (playerRoll > 12000 && System::random(3) == 1) {
 		setSkillMod0Type(System::random(30) + 1);
 		setSkillMod0Value(luck / (System::random(3) + 10));
 	}
-	if (playerRoll > 25000 && System::random(2) == 1) {
+	if (playerRoll > 20000 && System::random(2) == 1) {
 		setSkillMod1Type(System::random(30) + 1);
 		setSkillMod1Value(luck / (System::random(3) + 10));
 	}
-	if (playerRoll > 45000) {
+	if (playerRoll > 30000) {
 		setSkillMod2Type(System::random(30) + 1);
 		setSkillMod2Value(luck / (System::random(3) + 10));
 	}
 
-	if (playerRoll > 13500 && System::random(1) == 1)	{
+	if (playerRoll > 13000 && System::random(1) == 1)	{
 		switch (System::random(4)) {
 		case 1:
 			setDot1Type(BLEED);
 			setDot1Attribute((System::random(2) * 3) + 1);
-			setDot1Strength((modifier / 13) + (luck / 2));
+			setDot1Strength((modifier / 3) + (luck / 2));
 			setDot1Duration(((luck * 4) + modifier) / 7);
 			setDot1Potency(System::random(luck / 3) + (luck / 5));
 			setDot1Uses((modifier + luck) * 11);
@@ -733,7 +734,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		case 2:
 			setDot1Type(DISEASE);
 			setDot1Attribute((System::random(2) * 3) + 1);
-			setDot1Strength((modifier / 13) + (luck / 2));
+			setDot1Strength((modifier / 4) + (luck / 2));
 			setDot1Duration(((luck * 4) + modifier) / 7);
 			setDot1Potency(System::random(luck / 3) + (luck / 5));
 			setDot1Uses((modifier + luck) * 11);
@@ -741,7 +742,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		case 3:
 			setDot1Type(FIRE);
 			setDot1Attribute((System::random(2) * 3) + 1);
-			setDot1Strength((modifier / 13) + (luck / 2));
+			setDot1Strength((modifier / 4) + (luck / 2));
 			setDot1Duration(((luck * 4) + modifier) / 7);
 			setDot1Potency(System::random(luck / 3) + (luck / 5));
 			setDot1Uses((modifier + luck) * 11);
@@ -749,7 +750,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		case 4:
 			setDot1Type(POISON);
 			setDot1Attribute((System::random(2) * 3) + 1);
-			setDot1Strength((modifier / 13) + (luck / 2));
+			setDot1Strength((modifier / 3) + (luck / 2));
 			setDot1Duration(((luck * 4) + modifier) / 7);
 			setDot1Potency(System::random(luck / 3) + (luck / 5));
 			setDot1Uses((modifier + luck) * 11);
@@ -779,14 +780,24 @@ void WeaponImplementation::setWeaponStats(int modifier){
 			setMaxDamage(1050 + System::random(50));
 	}
 
-	else if (objectSubType == TangibleObjectImplementation::MELEEWEAPON && maxDamage > 500)
-		setMaxDamage(450 + System::random(50));
+	else if (objectSubType == TangibleObjectImplementation::MELEEWEAPON && maxDamage > 575)
+		setMaxDamage(500 + System::random(250));
 
-	else if (maxDamage > 900)
-		setMaxDamage(850 + System::random(50));
+	else if (maxDamage > 800)
+		setMaxDamage(700 + System::random(350));
 
-	if (dot1Strength > 300)
-		setDot1Strength(250 + System::random(50));
+	if (dot1Strength > 225) {
+		setDot1Strength(100 + System::random(200));
+	
+	} else if (dot1Strength > 150) {
+		setDot1Strength(100 + System::random(100));
+	
+	} else if (dot1Strength > 75) {
+		setDot1Strength(50 + System::random(75));	
+	
+	} else { setDot1Strength(1 + System::random(50));
+	
+	}
 
 	if (minDamage > maxDamage)
 		setMinDamage(round(0.8 * maxDamage));

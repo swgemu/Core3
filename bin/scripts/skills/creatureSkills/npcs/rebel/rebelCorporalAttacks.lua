@@ -43,21 +43,21 @@
 
 rebelCorporalAttack1 = { 
 	attackname = "rebelCorporalAttack1",
-	animation = "creature_attack_light",
+	animation = "fire_1_special_single_light",
 
 	requiredWeaponType = CARBINE,
 	
-	range = 11,
-	damageRatio = 1.50,
-	speedRatio = 1.45,
-	areaRange = 0,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 30,
 	accuracyBonus = 0,
 
 	healthAttackChance = 0,
 	actionAttackChance = 50,
 	mindAttackChance = 0,
 	
-	dotChance = 5,
+	dotChance = 50,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -72,11 +72,11 @@ rebelCorporalAttack1 = {
 	diseaseStrength = 0,
 	diseaseType = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddDotPoolAttackTargetSkill(rebelCorporalAttack1)
@@ -85,14 +85,76 @@ AddDotPoolAttackTargetSkill(rebelCorporalAttack1)
 
 rebelCorporalAttack2 = { 
 	attackname = "rebelCorporalAttack2",
-	animation = "creature_attack_light",
+	animation = "fire_1_special_single_light",
 
-	requiredWeaponType = ONEHANDED,
+	requiredWeaponType = CARBINE,
 	
-	range = 11,
-	damageRatio = 5.5,
-	speedRatio = 1.25,
-	areaRange = 0,
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 50,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelCorporalAttack2)
+
+-----------------------------------------------------------------------
+
+rebelCorporalAttack3 = { 
+	attackname = "rebelCorporalAttack3",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = CARBINE,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 30,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 30,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
+}
+
+AddRandomPoolAttackTargetSkill(rebelCorporalAttack3)
+
+-------------------------------------------------------------------------
+
+rebelCorporalAttack4 = { 
+	attackname = "rebelCorporalAttack4",
+	animation = "fire_1_special_single_light",
+
+	requiredWeaponType = CARBINE,
+	
+	range = 64,
+	damageRatio = 5,
+	speedRatio = 2,
+	coneAngle = 30,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -103,13 +165,11 @@ rebelCorporalAttack2 = {
 	stunChance = 0,
 	intimidateChance = 0,
 	
-	CbtSpamBlock = "melee_block",
-	CbtSpamCounter = "melee_counter",
-	CbtSpamEvade = "melee_evade",
-	CbtSpamHit = "melee_hit",
-	CbtSpamMiss = "melee_miss",
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
-AddRandomPoolAttackTargetSkill(rebelCorporalAttack2)
-
------------------------------------------------------------------------
+AddRandomPoolAttackTargetSkill(rebelCorporalAttack4)

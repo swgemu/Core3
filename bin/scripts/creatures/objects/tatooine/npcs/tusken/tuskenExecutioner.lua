@@ -126,7 +126,7 @@ tuskenExecutioner = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,11,15,24,25,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,4,11,15,24,25,33,39,40,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

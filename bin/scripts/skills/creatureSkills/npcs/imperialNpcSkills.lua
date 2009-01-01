@@ -96,5 +96,5 @@ RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperSniperAttacks.lu
 RunSkillsFile("creatureSkills/npcs/imperial/imperialStormTrooperSquadLeaderAttacks.lua") -- Weapon "Rifle E11"
 RunSkillsFile("creatureSkills/npcs/imperial/imperialSurfaceMarshalAttacks.lua") -- Weapon "DL44"
 RunSkillsFile("creatureSkills/npcs/imperial/imperialTrooperAttacks.lua") -- Weapon "Scout Blaster"
-RunSkillsFile("creatureSkills/npcs/imperial/imperialWarrantOfficerIAttacks.lua") -- Weapon "Pistol fwg5"
-RunSkillsFile("creatureSkills/npcs/imperial/imperialWarrantOfficerIiAttacks.lua") -- Weapon "Pistol fwg5"
+RunSkillsFile("creatureSkills/npcs/imperial/imperialWarrantOfficerAttacks.lua") -- Weapon "Pistol fwg5"
+
