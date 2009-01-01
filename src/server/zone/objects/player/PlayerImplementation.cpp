@@ -3365,14 +3365,13 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 		return;
 	}
 	equippedItems->changeWearable(cloth, forced);
+
+	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
+	BaseMessage* creo4 = new CreatureObjectMessage4(this);
+
+	sendMessage(creo6);
+	sendMessage(creo4);
 }
-
-//	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
-//	BaseMessage* creo4 = new CreatureObjectMessage4(this);
-
-//	sendMessage(creo6);
-//	sendMessage(creo4);
-//}
 
 void PlayerImplementation::setItemSkillMod(int type, int value) {
 	switch (type) {
