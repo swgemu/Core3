@@ -64,7 +64,7 @@ RunCreatureFile("objects/npcs/rebel/rebelStaffCorporal.lua") -- Weapon "Laser Ca
 RunCreatureFile("objects/npcs/rebel/rebelSurfaceMarshal.lua") -- Weapon "Power 5, Stun Baton"
 RunCreatureFile("objects/npcs/rebel/rebelTrooper.lua") -- Weapon "Laser Carbine, Stun Baton"
 RunCreatureFile("objects/npcs/rebel/rebelWarrantOfficerI.lua") -- Weapon "Power 5, Stun Baton"
-RunCreatureFile("objects/npcs/rebel/rebelWarrantOfficerIi.lua")
+RunCreatureFile("objects/npcs/rebel/rebelWarrantOfficerII.lua")
 
 RunCreatureFile("objects/npcs/rebel/oldMan.lua")
 RunCreatureFile("objects/npcs/rebel/luke.lua")
