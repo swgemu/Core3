@@ -50,8 +50,8 @@ which carries forward this exception.
 #include "target/attack/DotPoolAttackTargetSkill.h"
 #include "target/attack/DeBuffAttackTargetSkill.h"
 #include "target/attack/WoundsDirectPoolAttackTargetSkill.h"
-#include "target/attack/force/ForceRandomPoolAttackTargetSkill.h"
-#include "target/attack/force/ForceDotPoolAttackTargetSkill.h"
+#include "target/attack/ForcePowersPoolAttackTargetSkill.h"
+#include "target/attack/WeaponlessDotPoolAttackSkill.h"
 #include "target/HealTargetSkill.h"
 #include "target/heal/ForceHealTargetSkill.h"
 
@@ -85,7 +85,7 @@ which carries forward this exception.
 #include "target/ConcealSkill.h"
 #include "CamoSkill.h"
 #include "PassiveSkill.h"
-#include "target/attack/ThrowRandomPoolAttackTargetSkill.h"
-#include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
+//#include "target/attack/ThrowRandomPoolAttackTargetSkill.h"
+//#include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
 
 #endif /*SKILLS_H_*/

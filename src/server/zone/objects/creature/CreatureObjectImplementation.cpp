@@ -193,18 +193,6 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	actionEncumbrance = 0;
 	mindEncumbrance = 0;
 
-	armor = 0;
-
-	kinetic = 0;
-	energy = 0;
-	electricity = 0;
-	stun = 0;
-	blast = 0;
-	heat = 0;
-	cold = 0;
-	acid = 0;
-	lightSaber = 0;
-
 	// ent
 	performanceCounter = 0;
 
@@ -2459,6 +2447,10 @@ void CreatureObjectImplementation::setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp
 void CreatureObjectImplementation::calculateHAMregen() {
 	if ((int) getConstitution() < 0 || (int) getStamina() < 0 || (int) getWillpower() < 0)
 		return;
+
+	if (!(objectType == PLAYER) && isInCombat()) {  // Creatures don't regen HAM in combat
+		return;
+	}
 
 	float newHealth = (float)getConstitution() * 13 / 1200 * 3;
 	float newAction = (float)getStamina() * 13 / 1200 * 3;
@@ -4883,40 +4875,6 @@ void CreatureObjectImplementation::removeBuffs(bool doUpdateClient) {
 	CreatureObjectMessage6* msg = new CreatureObjectDeltaMessage6(_this);
 	broadcastMessage(msg);
 	*/
-}
-
-float CreatureObjectImplementation::getArmorResist(int resistType) {
-	switch (resistType) {
-	case 1:
-		return kinetic - (kinetic * calculateBFRatio());
-
-	case 2:
-		return energy - (energy * calculateBFRatio());
-
-	case 3:
-		return electricity - (electricity * calculateBFRatio());
-
-	case 4:
-		return stun - (stun * calculateBFRatio());
-
-	case 5:
-		return blast - (blast * calculateBFRatio());
-
-	case 6:
-		return heat - (heat * calculateBFRatio());
-
-	case 7:
-		return cold - (cold * calculateBFRatio());
-
-	case 8:
-		return acid - (acid * calculateBFRatio());
-
-	case 9:
-		return lightSaber - (lightSaber * calculateBFRatio());
-
-	default:
-		return 0;
-	}
 }
 
 bool CreatureObjectImplementation::isLootOwner(CreatureObject* creature) {

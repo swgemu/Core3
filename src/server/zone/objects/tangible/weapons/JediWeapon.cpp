@@ -30,31 +30,6 @@ JediWeapon::JediWeapon(DummyConstructorParameter* param) : Weapon(param) {
 JediWeapon::~JediWeapon() {
 }
 
-int JediWeapon::getForceCost() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((JediWeaponImplementation*) _impl)->getForceCost();
-}
-
-void JediWeapon::setForceCost(int fcost) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-		method.addSignedIntParameter(fcost);
-
-		method.executeWithVoidReturn();
-	} else
-		((JediWeaponImplementation*) _impl)->setForceCost(fcost);
-}
-
 /*
  *	JediWeaponAdapter
  */
@@ -66,25 +41,11 @@ Packet* JediWeaponAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case 6:
-		resp->insertSignedInt(getForceCost());
-		break;
-	case 7:
-		setForceCost(inv->getSignedIntParameter());
-		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
-}
-
-int JediWeaponAdapter::getForceCost() {
-	return ((JediWeaponImplementation*) impl)->getForceCost();
-}
-
-void JediWeaponAdapter::setForceCost(int fcost) {
-	return ((JediWeaponImplementation*) impl)->setForceCost(fcost);
 }
 
 /*

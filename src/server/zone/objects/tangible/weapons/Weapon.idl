@@ -112,6 +112,8 @@ interface Weapon implements TangibleObject {
 
 	int getMindAttackCost();
 	
+	int getForceCost();
+	
 	int getPointBlankRange();
 	
 	int getPointBlankAccuracy();
@@ -174,6 +176,7 @@ interface Weapon implements TangibleObject {
 	void setHealthAttackCost(int healthCost);
 	void setActionAttackCost(int actionCost);
 	void setMindAttackCost(int mindCost);
+	void setForceCost(int forceCost);
 	
 	void setWoundsRatio(float woundsRat);
 	

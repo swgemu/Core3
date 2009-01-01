@@ -1532,12 +1532,25 @@ bool Player::setArmorEncumbrance(Armor* armor, bool forced) {
 		return ((PlayerImplementation*) _impl)->setArmorEncumbrance(armor, forced);
 }
 
-void Player::applyAttachment(unsigned long long attachmentID, unsigned long long targetID) {
+void Player::unsetArmorEncumbrance(Armor* armor) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 121);
+		method.addObjectParameter(armor);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->unsetArmorEncumbrance(armor);
+}
+
+void Player::applyAttachment(unsigned long long attachmentID, unsigned long long targetID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 122);
 		method.addUnsignedLongParameter(attachmentID);
 		method.addUnsignedLongParameter(targetID);
 
@@ -1551,7 +1564,7 @@ void Player::applyPowerup(unsigned long long powerupID, unsigned long long targe
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 122);
+		DistributedMethod method(this, 123);
 		method.addUnsignedLongParameter(powerupID);
 		method.addUnsignedLongParameter(targetID);
 
@@ -1560,28 +1573,17 @@ void Player::applyPowerup(unsigned long long powerupID, unsigned long long targe
 		((PlayerImplementation*) _impl)->applyPowerup(powerupID, targetID);
 }
 
-void Player::createItems() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 123);
-
-		method.executeWithVoidReturn();
-	} else
-		((PlayerImplementation*) _impl)->createItems();
-}
-
-void Player::loadItems() {
+void Player::loadItems(bool newcharacter) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 124);
+		method.addBooleanParameter(newcharacter);
 
 		method.executeWithVoidReturn();
 	} else
-		((PlayerImplementation*) _impl)->loadItems();
+		((PlayerImplementation*) _impl)->loadItems(newcharacter);
 }
 
 void Player::createBaseStats() {
@@ -5028,6 +5030,45 @@ void Player::throwTrap(unsigned int targetID) {
 		((PlayerImplementation*) _impl)->throwTrap(targetID);
 }
 
+void Player::equipItem(TangibleObject* item) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 394);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->equipItem(item);
+}
+
+void Player::unequipItem(TangibleObject* item) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 395);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		((PlayerImplementation*) _impl)->unequipItem(item);
+}
+
+Armor* Player::getPlayerArmor(int location) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 396);
+		method.addSignedIntParameter(location);
+
+		return (Armor*) method.executeWithObjectReturn();
+	} else
+		return ((PlayerImplementation*) _impl)->getPlayerArmor(location);
+}
+
 /*
  *	PlayerAdapter
  */
@@ -5385,16 +5426,16 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(setArmorEncumbrance((Armor*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
 	case 121:
-		applyAttachment(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		unsetArmorEncumbrance((Armor*) inv->getObjectParameter());
 		break;
 	case 122:
-		applyPowerup(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
+		applyAttachment(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 123:
-		createItems();
+		applyPowerup(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
 		break;
 	case 124:
-		loadItems();
+		loadItems(inv->getBooleanParameter());
 		break;
 	case 125:
 		createBaseStats();
@@ -6203,6 +6244,15 @@ Packet* PlayerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 393:
 		throwTrap(inv->getUnsignedIntParameter());
 		break;
+	case 394:
+		equipItem((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 395:
+		unequipItem((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 396:
+		resp->insertLong(getPlayerArmor(inv->getSignedIntParameter())->_getObjectID());
+		break;
 	default:
 		return NULL;
 	}
@@ -6670,6 +6720,10 @@ bool PlayerAdapter::setArmorEncumbrance(Armor* armor, bool forced) {
 	return ((PlayerImplementation*) impl)->setArmorEncumbrance(armor, forced);
 }
 
+void PlayerAdapter::unsetArmorEncumbrance(Armor* armor) {
+	return ((PlayerImplementation*) impl)->unsetArmorEncumbrance(armor);
+}
+
 void PlayerAdapter::applyAttachment(unsigned long long attachmentID, unsigned long long targetID) {
 	return ((PlayerImplementation*) impl)->applyAttachment(attachmentID, targetID);
 }
@@ -6678,12 +6732,8 @@ void PlayerAdapter::applyPowerup(unsigned long long powerupID, unsigned long lon
 	return ((PlayerImplementation*) impl)->applyPowerup(powerupID, targetID);
 }
 
-void PlayerAdapter::createItems() {
-	return ((PlayerImplementation*) impl)->createItems();
-}
-
-void PlayerAdapter::loadItems() {
-	return ((PlayerImplementation*) impl)->loadItems();
+void PlayerAdapter::loadItems(bool newcharacter) {
+	return ((PlayerImplementation*) impl)->loadItems(newcharacter);
 }
 
 void PlayerAdapter::createBaseStats() {
@@ -7760,6 +7810,18 @@ void PlayerAdapter::setActiveArea(ActiveArea* area) {
 
 void PlayerAdapter::throwTrap(unsigned int targetID) {
 	return ((PlayerImplementation*) impl)->throwTrap(targetID);
+}
+
+void PlayerAdapter::equipItem(TangibleObject* item) {
+	return ((PlayerImplementation*) impl)->equipItem(item);
+}
+
+void PlayerAdapter::unequipItem(TangibleObject* item) {
+	return ((PlayerImplementation*) impl)->unequipItem(item);
+}
+
+Armor* PlayerAdapter::getPlayerArmor(int location) {
+	return ((PlayerImplementation*) impl)->getPlayerArmor(location);
 }
 
 /*

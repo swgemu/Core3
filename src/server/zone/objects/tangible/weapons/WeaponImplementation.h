@@ -91,6 +91,7 @@ protected:
 	int healthAttackCost;
 	int actionAttackCost;
 	int mindAttackCost;
+	int forceCost;
 
 	int pointBlankAccuracy;
 	int pointBlankRange;
@@ -213,7 +214,7 @@ public:
 
 public:
 	WeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
-	WeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat); 
+	WeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, bool eqp, int tp, int cat);
 
 	void initialize();
 
@@ -350,6 +351,12 @@ public:
 		mindAttackCost = mindCost;
 		String name = "mindCost";
 		itemAttributes->setIntAttribute(name, mindCost);
+	}
+
+	inline void setForceCost(int fcost) {
+		forceCost = fcost;
+		String name = "forceCost";
+		itemAttributes->setIntAttribute(name, fcost);
 	}
 
 	inline void setType(int tp) {
@@ -698,6 +705,10 @@ public:
 
 	inline int getMindAttackCost() {
 		return mindAttackCost + bonusMindAttackCost;
+	}
+
+	inline int getForceCost(){
+		return forceCost;
 	}
 
 	inline int getType() {

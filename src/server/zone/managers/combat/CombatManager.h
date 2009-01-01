@@ -56,20 +56,30 @@ class MountCreature;
 class Weapon;
 
 class TargetSkill;
+class AttackTargetSkill;
 class ZoneProcessServerImplementation;
 class CombatAction;
 
 class CommandQueueAction;
 
-class CombatManager : public Mutex {
+static uint32 defaultAttacks[] = {
+			0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
+			0x43C4FFD0, 0x56D7CC78, 0x4B41CAFB, 0x2257D06B,
+			0x306887EB
+};
+
+class CombatManager {
 	ZoneProcessServerImplementation* server;
-	bool combatEnabled;
 
 private:
 	bool doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill, String& modifier, CombatAction* actionMessage);
 	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 
 public:
+	static const float GLOBAL_MULTIPLIER = 1.5;
+	static const float PVE_MULTIPLIER = 1.0;
+	static const float PVP_MULTIPLIER = 0.25;
+
 	CombatManager(ZoneProcessServerImplementation* srv);
 
 	float handleAction(CommandQueueAction* action);
@@ -77,7 +87,6 @@ public:
 
 	float doTargetSkill(CommandQueueAction* action);
 	float doSelfSkill(CommandQueueAction* action);
-	float doCamoEvent(CommandQueueAction* action);
 
 	bool handleMountDamage(CreatureObject* targetCreature, MountCreature* mount);
 
@@ -109,28 +118,19 @@ public:
 	void checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, float& minDamage, float& maxDamage);
 	int checkSecondaryDefenses(CreatureObject* creature, CreatureObject* targetCreature);
 	int getHitChance(CreatureObject* creature, CreatureObject* targetCreature, int accuracyBonus);
-	float getWeaponAccuracy(float currentRange, Weapon* weapon);
-	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon);
-
-	inline void setCombatEnabled(bool val) {
-		lock();
-
-		combatEnabled = val;
-
-		unlock();
-	}
-
-	inline void toggleCombat() {
-		lock();
-
-		combatEnabled = !combatEnabled;
-
-		unlock();
-	}
-
-	inline bool isCombatEnabled() {
-		return combatEnabled;
-	}
+	float getWeaponRangeMod(float currentRange, Weapon* weapon);
+	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, bool forceAttack = false);
+	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill);
+	int getArmorReduction(Weapon* weapon, CreatureObject* target, int damage, int location);
+	bool calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier);
+	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill);
+	float calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill);
+	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill);
+	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
+	int calculateDamage(CreatureObject* creature, SceneObject* target, AttackTargetSkill* skill, bool randompoolhit);
+	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
 };
 
 #endif /*COMBATMANAGER_H_*/

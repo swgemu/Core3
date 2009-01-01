@@ -74,6 +74,19 @@ class CreatureImplementation : public CreatureServant, public Event {
 	String creatureName;
 	String objectFile; //object iff
 
+	// Inherent Armor,Resists
+	uint32 armor;
+
+	float kinetic;
+	float energy;
+	float electricity;
+	float stun;
+	float blast;
+	float heat;
+	float cold;
+	float acid;
+	float lightSaber;
+
 	Vector<PatrolPoint*> patrolPoints;
 
 	bool doRandomMovement;
@@ -271,6 +284,88 @@ public:
 	void setSpawnPosition(float posX, float posZ, float posY, uint64 cellid = 0) {
 		spawnPosition->setPosition(posX, posZ, posY);
 		spawnPosition->setCellID(cellid);
+	}
+
+	inline void setArmor(uint32 ar) {
+		armor = ar;
+	}
+
+	inline void setKinetic(float kin) {
+		kinetic = kin;
+	}
+
+	inline void setEnergy(float ene) {
+		energy = ene;
+	}
+
+	inline void setElectricity(float ele) {
+		electricity = ele;
+	}
+
+	inline void setStun(float stu) {
+		stun = stu;
+	}
+
+	inline void setBlast(float bla) {
+		blast = bla;
+	}
+
+	inline void setHeat(float hea) {
+		heat = hea;
+	}
+
+	inline void setCold(float col) {
+		cold = col;
+	}
+
+	inline void setAcid(float aci) {
+		acid = aci;
+	}
+
+	inline void setLightSaber(float lig) {
+		lightSaber = lig;
+	}
+
+	inline uint32 getArmor() {
+		return armor;
+	}
+
+	float getArmorResist(int resistType);
+
+	inline float getKinetic() {
+		return kinetic - (kinetic * calculateBFRatio());
+	}
+
+	inline float getEnergy() {
+		return energy - (energy  * calculateBFRatio());
+	}
+
+	inline float getElectricity() {
+		return electricity - (electricity  * calculateBFRatio());
+	}
+
+	inline float getStun() {
+		return stun - (stun * calculateBFRatio());
+	}
+
+	inline float getBlast() {
+		return blast - (blast * calculateBFRatio());
+	}
+
+	inline float getHeat() {
+		return heat - (heat * calculateBFRatio());
+	}
+
+	inline float getCold() {
+		return cold - (cold * calculateBFRatio());
+	}
+
+	inline float getAcid() {
+		return acid - (acid * calculateBFRatio());
+	}
+
+	inline float getLightSaber() {
+		return lightSaber - (lightSaber * calculateBFRatio());
 	}
 
 	inline int getType() {

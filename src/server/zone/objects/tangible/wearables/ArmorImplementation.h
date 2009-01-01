@@ -183,7 +183,11 @@ public:
 
 	void setArmorPiece();
 
-	void setArmorType();
+	//void setArmorType();
+
+	void setArmorType(int type) {
+		armorType = type;
+	}
 
 	bool isVunerableTo(String type);
 
@@ -369,6 +373,10 @@ public:
 			objectSubType = TangibleObjectImplementation::MISCARMOR;
 			break;
 		}
+	}
+
+	inline int getArmorType() {
+		return armorType;
 	}
 
 	inline void setSliced(bool hacked) {

@@ -78,6 +78,7 @@ which carries forward this exception.
 
 #include "../../managers/player/PlayerManager.h"
 #include "badges/Badges.h"
+#include "EquippedItems.h"
 
 class PlayerManager;
 class ItemManager;
@@ -131,6 +132,7 @@ class PlayerImplementation : public PlayerServant {
 	// player objects
 	PlayerObject* playerObject;
 	Datapad* datapad;
+	EquippedItems* equippedItems;
 
 	Vector<CommandQueueAction*> commandQueue;
 	Time nextAction;
@@ -389,8 +391,7 @@ public:
 		playerSaveStateEvent = NULL;
 	}
 
-	void createItems();
-	void loadItems();
+	void loadItems(bool newcharacter = false);
 
 	void saveDatapad(Player* player);
 
@@ -1810,6 +1811,12 @@ public:
 	}
 
 	void throwTrap(uint64 targetID);
+	Armor* getPlayerArmor (int location) {
+		if (location > 14 || location < 0)
+			return NULL;
+		else
+			return equippedItems->getArmor(location);
+	}
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

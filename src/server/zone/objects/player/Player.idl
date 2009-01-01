@@ -271,13 +271,13 @@ interface Player implements CreatureObject {
 	void setWeaponSkillMods(Weapon weapon);
 	void setArmorSkillMods(Armor armor);
 	boolean setArmorEncumbrance(Armor armor, boolean forced);
+	void unsetArmorEncumbrance(Armor armor);
 
 	void applyAttachment(unsigned long attachmentID, unsigned long targetID);
 
 	void applyPowerup(unsigned long powerupID, unsigned long targetID);
 
-	void createItems();
-	void loadItems();
+	void loadItems(boolean newcharacter);
 
 	void createBaseStats();
 
@@ -711,4 +711,9 @@ interface Player implements CreatureObject {
 	void setActiveArea(ActiveArea area);
 
 	void throwTrap(unsigned int targetID);	
+	void equipItem(TangibleObject item);
+	void unequipItem(TangibleObject item);
+	
+	Armor getPlayerArmor (int location);
+	
 }

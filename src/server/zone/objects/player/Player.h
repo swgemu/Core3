@@ -303,13 +303,13 @@ public:
 
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 
+	void unsetArmorEncumbrance(Armor* armor);
+
 	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
 
 	void applyPowerup(unsigned long long powerupID, unsigned long long targetID);
 
-	void createItems();
-
-	void loadItems();
+	void loadItems(bool newcharacter);
 
 	void createBaseStats();
 
@@ -849,6 +849,12 @@ public:
 
 	void throwTrap(unsigned int targetID);
 
+	void equipItem(TangibleObject* item);
+
+	void unequipItem(TangibleObject* item);
+
+	Armor* getPlayerArmor(int location);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -1114,13 +1120,13 @@ public:
 
 	bool setArmorEncumbrance(Armor* armor, bool forced);
 
+	void unsetArmorEncumbrance(Armor* armor);
+
 	void applyAttachment(unsigned long long attachmentID, unsigned long long targetID);
 
 	void applyPowerup(unsigned long long powerupID, unsigned long long targetID);
 
-	void createItems();
-
-	void loadItems();
+	void loadItems(bool newcharacter);
 
 	void createBaseStats();
 
@@ -1659,6 +1665,12 @@ public:
 	void setActiveArea(ActiveArea* area);
 
 	void throwTrap(unsigned int targetID);
+
+	void equipItem(TangibleObject* item);
+
+	void unequipItem(TangibleObject* item);
+
+	Armor* getPlayerArmor(int location);
 
 protected:
 	String _param0_queueFlourish__String_long_int_;

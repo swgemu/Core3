@@ -19,10 +19,6 @@ public:
 
 	JediWeapon(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false);
 
-	int getForceCost();
-
-	void setForceCost(int fcost);
-
 protected:
 	JediWeapon(DummyConstructorParameter* param);
 
@@ -38,10 +34,6 @@ public:
 	JediWeaponAdapter(JediWeaponImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	int getForceCost();
-
-	void setForceCost(int fcost);
 
 };
 

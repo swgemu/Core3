@@ -71,9 +71,10 @@ public:
 
 	// AddSkills functions
 	static int AddRandomPoolAttackTargetSkill(lua_State* L);
+	static int AddDirectPoolAttackTargetSkill(lua_State *L);
 	static int AddForceRandomPoolAttackTargetSkill(lua_State* L);
-	static int AddForceDotPoolAttackTargetSkill(lua_State *L);
-	static int AddDirectPoolAttackTargetSkill(lua_State* L);
+	static int AddWeaponlessDotPoolAttackSkill(lua_State *L);
+	static int AddForcePowersPoolAttackTargetSkill(lua_State *L);
 	static int AddForceHealSelfSkill(lua_State* L);
 	static int AddHealSelfSkill(lua_State* L);
 	static int AddDeBuffAttackTargetSkill(lua_State* L);

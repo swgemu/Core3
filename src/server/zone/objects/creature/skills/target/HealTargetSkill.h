@@ -158,10 +158,6 @@ public:
 		targetCreature->updateStates();
 	}
 
-	float calculateSpeed(CreatureObject* creature) {
-		return speed;
-	}
-
 	virtual bool calculateCost(CreatureObject* creature) {
 		return creature->changeMindBar(-50);
 	}

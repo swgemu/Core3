@@ -248,8 +248,8 @@ public:
 			creature->sendSystemMessage(msgPlayer.toString());
 	}
 
-	float calculateSpeed(CreatureObject* creature) {
-		return 0.0f; //Handled by event
+	float getSpeed() {
+		return 1.0f; //Handled by event
 	}
 
 	virtual bool calculateCost(CreatureObject* creature) {
