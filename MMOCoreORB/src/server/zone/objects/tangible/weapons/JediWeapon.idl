@@ -54,9 +54,4 @@ interface JediWeapon implements Weapon {
 	JediWeapon(CreatureObject creature, const String temp, const UnicodeString n, const String tempn, int tp, boolean eqp = false) {
 		super(creature, temp, n, tempn, eqp, tp, int cat);
 	}
-
-	// setters and getters	
-	int getForceCost();
-	
-	void setForceCost(int fcost);
 }

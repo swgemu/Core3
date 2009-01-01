@@ -64,6 +64,8 @@ which carries forward this exception.
 #include "../../../chat/ChatManager.h"
 #include "../../../ServerCore.h"
 
+#include "EquippedItems.h"
+
 #include "Races.h"
 
 #include "../terrain/Terrain.h"
@@ -229,6 +231,7 @@ void PlayerImplementation::initialize() {
 	changeFactionEvent = NULL;
 
 	datapad = NULL;
+	equippedItems = NULL;
 
 	stfName = "species";
 
@@ -941,32 +944,18 @@ void PlayerImplementation::removeEvents() {
 	}
 }
 
-void PlayerImplementation::createItems() {
+void PlayerImplementation::loadItems(bool newcharacter) {
 	inventory = new Inventory(_this);
 
 	datapad = new Datapad(_this);
+	equippedItems = new EquippedItems(_this);
 
 	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
-	itemManager->loadDefaultPlayerItems(_this);
-	itemManager->loadPlayerDatapadItems(_this);
-
-	if (!hairObject.isEmpty()) {
-		hairObj = new HairObject(_this, hairObject.hashCode(), UnicodeString("hair"), "hair");
-
-		String hairAppearance;
-		getHairAppearance(hairAppearance);
-
-		hairObj->setCustomizationString(hairAppearance);
-	}
-}
-
-void PlayerImplementation::loadItems() {
-	inventory = new Inventory(_this);
-
-	datapad = new Datapad(_this);
-
-	ItemManager* itemManager = zone->getZoneServer()->getItemManager();
-	itemManager->loadPlayerItems(_this);
+	if (newcharacter) {
+		itemManager->loadDefaultPlayerItems(_this);
+		itemManager->loadPlayerDatapadItems(_this);
+	} else
+		itemManager->loadPlayerItems(_this);
 
 	if (!hairObject.isEmpty()) {
 		hairObj = new HairObject(_this, hairObject.hashCode(), UnicodeString("hair"), "hair");
@@ -1071,20 +1060,13 @@ void PlayerImplementation::decayInventory() {
 }
 
 void PlayerImplementation::resetArmorEncumbrance() {
-	healthEncumbrance = 0;
-	actionEncumbrance = 0;
-	mindEncumbrance = 0;
-
-	for (int i=0; i < inventory->objectsSize(); i++) {
-		TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
-
-		if (item->isEquipped() && item->isArmor()) {
-			item->setEquipped(false);
-			unsetArmorSkillMods((Armor*)item);
-			changeArmor(item->getObjectID(), true);
-
-		}
+	if (equippedItems == NULL) {
+		System::out << "ERROR - equippedItems not initialised" << endl;
+		return;
 	}
+	healthEncumbrance = equippedItems->getHealthEncumbrance();
+	actionEncumbrance = equippedItems->getActionEncumbrance();
+	mindEncumbrance = equippedItems->getMindEncumbrance();
 }
 
 void PlayerImplementation::sendToOwner() {
@@ -3145,21 +3127,17 @@ void PlayerImplementation::addInventoryResource(ResourceContainer* item) {
 	CreatureObjectImplementation::addInventoryResource(item);
 }
 
-
-void PlayerImplementation::equipPlayerItem(TangibleObject* item, bool doUpdate) {
-	if (item->isEquipped())
+void PlayerImplementation::equipPlayerItem(TangibleObject* item, bool updateLevel) {
+	if(item->isEquipped())
 		item->setEquipped(false);
 
-	if (item->isWeapon() && !item->isThrowable()) {
-		changeWeapon(item->getObjectID(), doUpdate);
-	} else if (item->isArmor()) {
-		changeArmor(item->getObjectID(), true);
-	} else if (item->isClothing()) {
-		changeCloth(item->getObjectID());
-	} else if (item->isInstrument()) {
-		changeWeapon(item->getObjectID(), doUpdate);
-	} else if (item->isContainer1() || item->isContainer2() || item->isWearableContainer()) {
-		changeCloth(item->getObjectID());
+	if (item->isInstrument() || item->isWeapon())
+		changeWeapon(item->getObjectID(), updateLevel);
+	else {
+		if (equippedItems == NULL)
+			return;
+
+		equippedItems->equipItem(item);
 	}
 }
 
@@ -3191,34 +3169,9 @@ bool PlayerImplementation::hasItemPermission(TangibleObject * item) {
 	this->sendSystemMessage("There was an error, while trying to equip this item.");
 	return false;
 }
+
 void PlayerImplementation::changeCloth(uint64 itemid) {
-	SceneObject* obj = inventory->getObject(itemid);
-
-	if (obj == NULL || !obj->isTangible())
-		return;
-
-	TangibleObject* cloth = (TangibleObject*) obj;
-
-	if (!hasItemPermission(cloth) && !cloth->isEquipped())
-		return;
-
-	if (cloth->isWeapon()) {
-		if (cloth->isEquipped())
-			changeWeapon(itemid);
-		return;
-	}
-
-	if (cloth->isArmor()) {
-		if (cloth->isEquipped())
-			changeArmor(itemid, false);
-		return;
-	}
-
-	if (cloth->isEquipped()) {
-		unequipItem(cloth);
-	} else {
-		equipItem(cloth);
-	}
+	changeArmor(itemid, false);
 }
 
 void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
@@ -3226,8 +3179,6 @@ void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
 
 	if (obj == NULL || !obj->isTangible())
 		return;
-
-
 
 	if (isPlayingMusic())
 		stopPlayingMusic();
@@ -3404,42 +3355,16 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 	if (obj == NULL || !obj->isTangible())
 		return;
 
-	if (((TangibleObject*)obj)->isArmor()) {
-		Armor* armoritem = (Armor*) obj;
+	if (!((TangibleObject*)obj)->isArmor() && !((TangibleObject*)obj)->isClothing())
+		return;
 
-		if (armoritem == NULL)
-			return;
+	Wearable* cloth = (Wearable*) obj;
 
-		if (!hasItemPermission(armoritem) && !armoritem->isEquipped())
-			return;
-
-		if (armoritem->isEquipped()) {
-			unequipItem((TangibleObject*) obj);
-			unsetArmorSkillMods(armoritem);
-			unsetArmorEncumbrance(armoritem);
-		} else {
-			Armor* olditem = getArmor(armoritem->getType());
-
-			if (olditem != NULL) {
-				unsetArmorSkillMods(olditem);
-				unsetArmorEncumbrance(olditem);
-				unequipItem((TangibleObject*) olditem);
-			}
-
-			if (setArmorEncumbrance(armoritem, forced)) {
-				equipItem((TangibleObject*) obj);
-				setArmorSkillMods(armoritem);
-			} else
-				sendSystemMessage("You don't have enough pool points to do that!");
-		}
-	} else {
-		TangibleObject* item = (TangibleObject*) obj;
-
-		if (item->isEquipped())
-			unequipItem(item);
-		else
-			equipItem(item);
+	if (equippedItems == NULL) {
+		System::out << "ERROR - equippedItems not initialised" << endl;
+		return;
 	}
+	equippedItems->changeWearable(cloth, forced);
 
 	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
 	BaseMessage* creo4 = new CreatureObjectMessage4(this);

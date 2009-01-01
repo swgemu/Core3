@@ -47,6 +47,30 @@ public:
 
 	void doStandUp();
 
+	void setArmor(unsigned int ar);
+
+	unsigned int getArmor();
+
+	float getArmorResist(int resistType);
+
+	void setKinetic(float kin);
+
+	void setEnergy(float ene);
+
+	void setElectricity(float ele);
+
+	void setStun(float stu);
+
+	void setBlast(float bla);
+
+	void setHeat(float hea);
+
+	void setCold(float col);
+
+	void setAcid(float aci);
+
+	void setLightSaber(float lig);
+
 	void doAttack(CreatureObject* target, int damage);
 
 	bool attack(CreatureObject* target);
@@ -163,6 +187,30 @@ public:
 	void doIncapacitate();
 
 	void doStandUp();
+
+	void setArmor(unsigned int ar);
+
+	unsigned int getArmor();
+
+	float getArmorResist(int resistType);
+
+	void setKinetic(float kin);
+
+	void setEnergy(float ene);
+
+	void setElectricity(float ele);
+
+	void setStun(float stu);
+
+	void setBlast(float bla);
+
+	void setHeat(float hea);
+
+	void setCold(float col);
+
+	void setAcid(float aci);
+
+	void setLightSaber(float lig);
 
 	void doAttack(CreatureObject* target, int damage);
 

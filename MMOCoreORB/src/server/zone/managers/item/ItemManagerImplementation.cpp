@@ -569,6 +569,9 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 
 	uint16 itemMask = result->getUnsignedInt(11);
 
+	if (itemMask == 0)
+		itemMask = TangibleObjectImplementation::ALL;
+
 	BinaryData cust(appearance);
 
 	String custStr;
@@ -950,6 +953,9 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	int type = itemconfig.getIntField("objectType");
 	uint16 itemMask = itemconfig.getIntField("itemMask");
 
+	if (itemMask == 0)
+		itemMask = TangibleObjectImplementation::ALL;
+
 	TangibleObject* item = createPlayerObjectTemplate(type, 1, crc, UnicodeString(name), templ, equipped, false, "", 0);
 
 	item->setObjectSubType(type);
@@ -987,7 +993,8 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		int instType = itemconfig.getIntField("instrumentType");
 
 		((Instrument*) item)->setInstrumentType(instType);
-	} else if (type & TangibleObjectImplementation::WEAPON) {
+	} else if (type & TangibleObjectImplementation::WEAPON ||
+			type & TangibleObjectImplementation::LIGHTSABER) {
 		int damageType = itemconfig.getIntField("damageType");
 		int ap = itemconfig.getIntField("armorPiercing");
 		String cert = itemconfig.getStringField("certification");
@@ -1002,9 +1009,14 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		weapon->setMinDamage(mindmg);
 		weapon->setMaxDamage(maxdmg);
 
+		if (type & TangibleObjectImplementation::LIGHTSABER) {
+			int forceCost = itemconfig.getIntField("forceCost");
+			weapon->setForceCost(forceCost);
+		}
+
 		if (weapon->isTrap()) {
 			int uses =  itemconfig.getIntField("uses");
-			String skill = itemconfig.getStringField("skill");
+			String skill = itemconfig.getStringField("skill");  // TODO:  Should use certification
 
 			((TrapThrowableWeapon*) weapon)->setUsesRemaining(uses);
 			((TrapThrowableWeapon*) weapon)->setSkill(skill);

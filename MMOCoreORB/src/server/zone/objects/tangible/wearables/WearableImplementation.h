@@ -51,6 +51,7 @@ which carries forward this exception.
 
 class WearableImplementation : public WearableServant {
 public:
+
 	WearableImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false)
 			: WearableServant(objid, CLOTHING) {
 		objectCRC = tempCRC;
@@ -92,7 +93,6 @@ public:
 		else
 			setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 	}
-
 };
 
 #endif /*WEARABLEIMPLEMENTATION_H_*/

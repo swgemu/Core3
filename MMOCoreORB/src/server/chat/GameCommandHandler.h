@@ -199,7 +199,7 @@ private:
 	static void poofObject(StringTokenizer tokenizer, Player * player);
 	static void whoDroppedThis(StringTokenizer tokenizer, Player * player);
 	static void openInventory(StringTokenizer tokenizer, Player * player);
-	static void toggleCombat(StringTokenizer tokenizer, Player* player);
+	//static void toggleCombat(StringTokenizer tokenizer, Player* player);
 	static void lockServer(StringTokenizer tokenizer, Player* player);
 	static void unlockServer(StringTokenizer tokenizer, Player* player);
 	static void sendp(StringTokenizer tokenizer, Player* player);

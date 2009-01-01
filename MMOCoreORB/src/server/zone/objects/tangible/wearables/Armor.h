@@ -123,6 +123,8 @@ public:
 
 	int getSocket3Value();
 
+	int getArmorType();
+
 	void setArmorPiece(int armorSlot);
 
 	void setHealthEncumbrance(int healthEnc);
@@ -130,6 +132,8 @@ public:
 	void setActionEncumbrance(int actionEnc);
 
 	void setMindEncumbrance(int mindEnc);
+
+	void setRating(int rating);
 
 	void setAcid(float resist);
 
@@ -140,6 +144,8 @@ public:
 	void setElectricity(float resist);
 
 	void setEnergy(float resist);
+
+	void setStun(float resist);
 
 	void setHeat(float resist);
 
@@ -285,6 +291,8 @@ public:
 
 	int getSocket3Value();
 
+	int getArmorType();
+
 	void setArmorPiece(int armorSlot);
 
 	void setHealthEncumbrance(int healthEnc);
@@ -292,6 +300,8 @@ public:
 	void setActionEncumbrance(int actionEnc);
 
 	void setMindEncumbrance(int mindEnc);
+
+	void setRating(int rating);
 
 	void setAcid(float resist);
 
@@ -302,6 +312,8 @@ public:
 	void setElectricity(float resist);
 
 	void setEnergy(float resist);
+
+	void setStun(float resist);
 
 	void setHeat(float resist);
 

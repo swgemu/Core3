@@ -148,6 +148,8 @@ interface Armor implements Wearable {
 	int getSocket1Value();
 	int getSocket2Value();
 	int getSocket3Value();
+	
+	int getArmorType();
 
 	// setters
 	void setArmorPiece(int armorSlot);
@@ -156,11 +158,13 @@ interface Armor implements Wearable {
 	void setActionEncumbrance(int actionEnc);
 	void setMindEncumbrance(int mindEnc);
 
+	void setRating(int rating);
 	void setAcid(float resist);
 	void setBlast(float resist);
 	void setCold(float resist);
 	void setElectricity(float resist);
 	void setEnergy(float resist);
+	void setStun(float resist);
 	void setHeat(float resist);
 	void setKinetic(float resist);
 	void setLightSaber(float resist);

@@ -89,16 +89,7 @@ public:
 	int doSkill(CreatureObject* creature, SceneObject* target, const String& modifier, bool doAnimation = true) {
 		int damage = calculateDamage(creature, target);
 
-		/*if (doAnimation) {
-			if (animCRC == 0 && creature->isPlayer()) {
-				Player* player = (Player*) creature;
-				String anim = Animations::getRandomAnimation();
-				uint32 animationCRC = String::hashCode(anim);
-				player->doCombatAnimation(targetCreature, animationCRC, 1);
-				creature->sendSystemMessage(anim);
-			} else
-				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
-		}*/
+
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			CreatureObject* targetCreature = (CreatureObject*) target;
 			if (damage && targetCreature->hasAttackDelay())
@@ -150,10 +141,16 @@ public:
 		int diff = (int)maxDamage - (int)minDamage;
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
+
+		float globalMultiplier = CombatManager::GLOBAL_MULTIPLIER;
+		if (creature->isPlayer() && !target->isPlayer())
+			globalMultiplier *= CombatManager::PVE_MULTIPLIER;
+		else if (creature->isPlayer() && target->isPlayer())
+			globalMultiplier *= CombatManager::PVP_MULTIPLIER;
+
 		if (targetCreature != NULL) {
 
 			if (getHitChance(creature, targetCreature) > System::random(100)) {
-
 				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
 
 				if (secondaryDefense < 2) {
@@ -161,19 +158,19 @@ public:
 						damage = damage / 2;
 
 				if (healthPoolAttackChance != 0 && System::random(100) < healthPoolAttackChance) {
-					healthDamage = damageRatio * average;
+					healthDamage = damageRatio * average * globalMultiplier;
 					calculateDamageReduction(creature, targetCreature, healthDamage);
 					bodyPart = System::random(5)+1;
 
 					damage += healthDamage;
 				} else if (actionPoolAttackChance != 0 && System::random(100) < actionPoolAttackChance) {
-					actionDamage = damageRatio * average;
+					actionDamage = damageRatio * average * globalMultiplier;
 					calculateDamageReduction(creature, targetCreature,  actionDamage);
 					bodyPart = System::random(1)+7;
 
 					damage += actionDamage;
 				} else if (mindPoolAttackChance != 0 && System::random(100) < mindPoolAttackChance) {
-					mindDamage = damageRatio * average;
+					mindDamage = damageRatio * average * globalMultiplier;
 					calculateDamageReduction(creature, targetCreature,  mindDamage);
 					bodyPart = 9;
 
@@ -192,12 +189,7 @@ public:
 			if (hasCbtSpamHit())
 				creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
 
-			if (bodyPart < 7)
-				reduction = applyHealthPoolDamage(creature, targetCreature, (int32) healthDamage, bodyPart);
-			else if (bodyPart < 9)
-				reduction = applyActionPoolDamage(creature, targetCreature, (int32) actionDamage, bodyPart);
-			else if (bodyPart == 9)
-				reduction = applyMindPoolDamage(creature, targetCreature, (int32) mindDamage);
+			reduction = applyDamage(creature, targetCreature, (int32) healthDamage, bodyPart);
 
 			if (weapon != NULL) {
 				doDotWeaponAttack(creature, targetCreature, 0);
@@ -262,39 +254,6 @@ public:
 
 		targetCreature->updateStates();
 		}
-	}
-
-	virtual bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
-			return true;
-
-		Player* player = (Player*)creature;
-		Weapon* weapon = creature->getWeapon();
-
-		if (weapon != NULL) {
-
-			int wpnHealth = weapon->getHealthAttackCost();
-			int wpnAction = weapon->getActionAttackCost();
-			int wpnMind = weapon->getMindAttackCost();
-
-			int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength() / 1500);
-			int actionAttackCost = wpnAction - (wpnAction * creature->getQuickness() / 1500);
-			int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
-
-			if (healthAttackCost < 0)
-				healthAttackCost = 0;
-
-			if (actionAttackCost < 0)
-				actionAttackCost = 0;
-
-			if (mindAttackCost < 0)
-				mindAttackCost = 0;
-
-			if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost, -mindAttackCost))
-				return false;
-		}
-
-		return true;
 	}
 
 	void setDotChance(int dotchance) {

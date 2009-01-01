@@ -122,7 +122,7 @@ public:
 			creature->playEffect(selfEffect, "");
 	}
 
-	float calculateSpeed(CreatureObject* creature) {
+	float getSpeed() {
 		return speed;
 	}
 
@@ -194,6 +194,27 @@ public:
 	void setSpeed(float sp) {
 		speed = sp;
 	}
+
+	void setForceCost(int forcecost) {
+		forceCost = forcecost;
+	}
+
+	bool calculateCost(CreatureObject* creature) {
+		if (!creature->isPlayer())
+			return true;
+
+		Player* player = (Player*)creature;
+
+		if (forceCost > 0) {
+			if (forceCost > player->getForcePower())
+				return false;
+			else
+				player->changeForcePowerBar(-forceCost);
+		}
+
+		return true;
+	}
+
 
 	void setDuration(float dur) {
 		duration = dur;

@@ -334,7 +334,7 @@ BaseMessage* PlayerManagerImplementation::attemptPlayerCreation(Player* player, 
 			zone->registerObject(player);
 
 			player->info("trying to createItems and train professions");
-			player->createItems();
+			player->loadItems(true);
 			player->trainStartingProfession();
 
 			player->unload(); // force a save of items, client will relogin
@@ -547,6 +547,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 	player->loadProfessions();
 	player->loadXp(character->getString(60)); // put this here to avoid cap confusions
+
+	player->setForcePowerBar(player->getForcePowerMax());
 
 	PlanetManager* planetManager = zne->getPlanetManager();
 	StructureManager* structureManager = planetManager->getStructureManager();

@@ -282,19 +282,6 @@ protected:
 	uint32 actionEncumbrance;
 	uint32 mindEncumbrance;
 
-	// Inherent Armor,Resists
-	uint32 armor;
-
-	float kinetic;
-	float energy;
-	float electricity;
-	float stun;
-	float blast;
-	float heat;
-	float cold;
-	float acid;
-	float lightSaber;
-
 	// WOUND vars
 	uint32 healthWounds;
 	uint32 strengthWounds;
@@ -1429,46 +1416,6 @@ public:
 		willpowerMax += value;
 	}
 
-	inline void setArmor(uint32 ar) {
-		armor = ar;
-	}
-
-	inline void setKinetic(float kin) {
-		kinetic = kin;
-	}
-
-	inline void setEnergy(float ene) {
-		energy = ene;
-	}
-
-	inline void setElectricity(float ele) {
-		electricity = ele;
-	}
-
-	inline void setStun(float stu) {
-		stun = stu;
-	}
-
-	inline void setBlast(float bla) {
-		blast = bla;
-	}
-
-	inline void setHeat(float hea) {
-		heat = hea;
-	}
-
-	inline void setCold(float col) {
-		cold = col;
-	}
-
-	inline void setAcid(float aci) {
-		acid = aci;
-	}
-
-	inline void setLightSaber(float lig) {
-		lightSaber = lig;
-	}
-
 	inline void setHealthWounds(uint32 wounds) {
 		healthWounds = wounds;
 	}
@@ -1781,48 +1728,6 @@ public:
 		else
 			return willpowerMax;
 	}
-
-	inline uint32 getArmor() {
-		return armor;
-	}
-
-	inline float getKinetic() {
-		return kinetic - (kinetic * calculateBFRatio());
-	}
-
-	inline float getEnergy() {
-		return energy - (energy  * calculateBFRatio());
-	}
-
-	inline float getElectricity() {
-		return electricity - (electricity  * calculateBFRatio());
-	}
-
-	inline float getStun() {
-		return stun - (stun * calculateBFRatio());
-	}
-
-	inline float getBlast() {
-		return blast - (blast * calculateBFRatio());
-	}
-
-	inline float getHeat() {
-		return heat - (heat * calculateBFRatio());
-	}
-
-	inline float getCold() {
-		return cold - (cold * calculateBFRatio());
-	}
-
-	inline float getAcid() {
-		return acid - (acid * calculateBFRatio());
-	}
-
-	inline float getLightSaber() {
-		return lightSaber - (lightSaber * calculateBFRatio());
-	}
-
-	float getArmorResist(int resistType);
 
 	inline uint32 getHealthWounds() {
 		return healthWounds;

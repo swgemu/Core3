@@ -57,16 +57,7 @@ public:
 
 		int damage = calculateDamage(creature, target);
 
-		/*if (doAnimation) {
-			if (animCRC == 0 && creature->isPlayer()) {
-				Player* player = (Player*) creature;
-				String anim = Animations::getRandomAnimation();
-				uint32 animationCRC = String::hashCode(anim);
-				player->doCombatAnimation(targetCreature, animationCRC, 1);
-				creature->sendSystemMessage(anim);
-			} else
-				creature->doCombatAnimation(targetCreature, animCRC, (damage > 0));
-		}*/
+
 		if (target->isPlayer() || target->isNonPlayerCreature()) {
 			CreatureObject* targetCreature = (CreatureObject*) target;
 			if (damage && targetCreature->hasAttackDelay())
@@ -116,7 +107,13 @@ public:
 		if (diff >= 0)
 			average = System::random(diff) + (int)minDamage;
 
-		float damage = damageRatio * average;
+		float globalMultiplier = CombatManager::GLOBAL_MULTIPLIER;
+		if (creature->isPlayer() && !target->isPlayer())
+			globalMultiplier *= CombatManager::PVE_MULTIPLIER;
+		else if (creature->isPlayer() && target->isPlayer())
+			globalMultiplier *= CombatManager::PVP_MULTIPLIER;
+
+		float damage = damageRatio * average * globalMultiplier;
 
 		if (targetCreature != NULL) {
 
@@ -124,8 +121,8 @@ public:
 
 			int pool = System::random(100);
 
-			if (getHitChance(creature, targetCreature) > System::random(100)) {
-
+			//if (getHitChance(creature, targetCreature) > System::random(100)) {
+			if (true) {
 				int secondaryDefense = checkSecondaryDefenses(creature, targetCreature);
 				if (secondaryDefense < 2) {
 					if (secondaryDefense == 1)
@@ -148,13 +145,13 @@ public:
 				creature->sendCombatSpam(targetCreature, NULL, (int32)damage, getCbtSpamHit());
 
 			if (bodyPart < 7) {
-				reduction = applyHealthPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+				reduction = applyDamage(creature, targetCreature, (int32) damage, bodyPart);
 				applyHealthPoolWoundsDamage(targetCreature, (int32) damage / 25);
 			} else if (bodyPart  < 9) {
-				reduction = applyActionPoolDamage(creature, targetCreature, (int32) damage, bodyPart);
+				reduction = applyDamage(creature, targetCreature, (int32) damage, bodyPart);
 				applyActionPoolWoundsDamage(targetCreature, (int32) damage / 25);
 			} else {
-				reduction = applyMindPoolDamage(creature, targetCreature, (int32) damage);
+				reduction = applyDamage(creature, targetCreature, (int32) damage, bodyPart);
 				applyMindPoolWoundsDamage(targetCreature, (int32) damage / 25);
 			}
 		} else {

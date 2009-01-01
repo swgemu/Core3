@@ -155,10 +155,6 @@ public:
 		return 0;
 	}
 
-	float calculateSpeed(CreatureObject* creature) {
-		return speed;
-	}
-
 	virtual bool calculateCost(CreatureObject* creature) {
 		return creature->changeMindBar(mindCost);
 	}

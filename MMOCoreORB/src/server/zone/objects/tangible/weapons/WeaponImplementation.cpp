@@ -106,6 +106,7 @@ void WeaponImplementation::initialize() {
 	setHealthAttackCost(15);
 	setActionAttackCost(10);
 	setMindAttackCost(5);
+	setForceCost(0);
 
 	setPointBlankRange(0);
 	setPointBlankAccuracy(0);
@@ -209,6 +210,8 @@ void WeaponImplementation::parseItemAttributes() {
 	actionAttackCost = itemAttributes->getIntAttribute(name);
 	name = "mindCost";
 	mindAttackCost = itemAttributes->getIntAttribute(name);
+	name = "forceCost";
+	forceCost = itemAttributes->getIntAttribute(name);
 
 	name = "minDamage";
 	minDamage = itemAttributes->getFloatAttribute(name);
@@ -1207,6 +1210,10 @@ void WeaponImplementation::addAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("cat_wpn_attack_cost.action", getActionAttackCost());
 
 	alm->insertAttribute("cat_wpn_attack_cost.mind", getMindAttackCost());
+
+	// TODO: Find right string to display force cost
+	if (getForceCost() > 0)
+		alm->insertAttribute("force_cost", getForceCost());
 
 	if (dot0Uses !=0 || dot1Uses != 0 || dot2Uses != 0)
 		generateDotAttributes(alm);

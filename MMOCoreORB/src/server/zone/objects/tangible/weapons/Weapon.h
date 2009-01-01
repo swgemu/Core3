@@ -77,6 +77,8 @@ public:
 
 	int getMindAttackCost();
 
+	int getForceCost();
+
 	int getPointBlankRange();
 
 	int getPointBlankAccuracy();
@@ -164,6 +166,8 @@ public:
 	void setActionAttackCost(int actionCost);
 
 	void setMindAttackCost(int mindCost);
+
+	void setForceCost(int forceCost);
 
 	void setWoundsRatio(float woundsRat);
 
@@ -300,6 +304,8 @@ public:
 
 	int getMindAttackCost();
 
+	int getForceCost();
+
 	int getPointBlankRange();
 
 	int getPointBlankAccuracy();
@@ -387,6 +393,8 @@ public:
 	void setActionAttackCost(int actionCost);
 
 	void setMindAttackCost(int mindCost);
+
+	void setForceCost(int forceCost);
 
 	void setWoundsRatio(float woundsRat);
 

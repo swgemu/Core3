@@ -277,10 +277,6 @@ public:
 		}
 	}
 
-	float calculateSpeed(CreatureObject* creature) {
-		return 0.0f; //Handled by event
-	}
-
 	virtual bool calculateCost(CreatureObject* creature) {
 		return true;
 	}
