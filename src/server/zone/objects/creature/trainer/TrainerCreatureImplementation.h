@@ -60,15 +60,60 @@ public:
 	
 	~TrainerCreatureImplementation();
 	
+	/**
+	 * Trains a player's skillbox.
+	 * \param skillBox Skill box to be trained.
+	 * \param player Player to be trained.
+	 * \return Success boolean.
+	 */
 	bool train(SkillBox* skillBox, Player* player);	
 
+	/**
+	 * Sends the initial trainer NPC blurb.
+	 * \param player The player to send the conversation to.
+	 */
 	void sendInitialMessage(Player* player);
+	/**
+	 * Sends the initial trainer NPC options.
+	 * \param player The player to send the conversation to.
+	 */
 	void sendInitialChoices(Player* player);
+	/**
+	 * Sends the intial message to start the
+	 * training conversation. Checks for
+	 * qualificactions.
+	 * \param player The player to send the conversation to (in SceneObject form).
+	 */
 	void sendConversationStartTo(SceneObject* obj);
+	/**
+	 * Sends skill box options for player for training,
+	 * and as such can check experience.
+	 * \param player The player to send the conversation to.
+	 * \param chackXp Whether or not to check experience to determine if each skillbox should be listed.
+	 */
 	void sendSkillBoxes(Player* player, bool checkXp);
+	/**
+	 * Sends skill boxes that the particular trainer 
+	 * can train, regardless of intentionor ability 
+	 * to learn.
+	 * \param player The player to send the conversation to.
+	 * \param checkLearned Whether or not you want to check if the box has been learned already.
+	 */
 	void sendSkillBoxList(Player* player, bool checkLearned);
+	/**
+	 * Sends the Yes/No options to the player to
+	 * confirm their choice in skill acquisition.
+	 * \param player The player to send the conversation to.
+	 */
 	void sendConfirmation(Player* player);
 
+	/**
+	 * Handles the options that the player has selected
+	 * and sets the last conversation strings to be used
+	 * to determine how to parse the option selected.
+	 * \param option The numerical selection the player has made (0indexed).
+	 * \param obj The player to send the conversation to (in SceneObject form).
+	 */
 	void selectConversationOption(int option, SceneObject* obj);
 	
 };

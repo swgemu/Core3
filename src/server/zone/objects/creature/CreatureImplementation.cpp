@@ -1866,8 +1866,10 @@ void CreatureImplementation::deagro() {
 			aggroedCreature->handleDeath();
 		}
 
-		if (aggroedCreature->isDead())
+		if (aggroedCreature->isDead()) {
 			removeFromDamageMap(aggroedCreature);
+			dropDamageDone(aggroedCreature);
+		}
 
 		removeDefender(aggroedCreature);
 

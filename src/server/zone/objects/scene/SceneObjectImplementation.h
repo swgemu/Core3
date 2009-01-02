@@ -156,10 +156,37 @@ public:
 	virtual void removeFromBuilding(BuildingObject* building);
 
 	// experience functions
+	/**
+	 * Adds to or creates a log of the damage done
+	 * to this object by creature.
+	 * \param creature The CreatureObject that is doing the damage.
+	 * \param damage How much damage is done.
+	 * \param skillname the name of the skill that is doing the damage.
+	 */
 	void addDamageDone(CreatureObject* creature, int damage, String skillname);
+	/**
+	 * Removes the damage log of a specific creature
+	 * from this object.
+	 * \param creature The CreatureObject that is getting dropped.
+	 */
 	void dropDamageDone(CreatureObject* creature);
+	/**
+	 * Calculates the value of the total damage done 
+	 * to this object in all of the logs.
+	 * \return Total damage done to the mob according to the damage log.
+	 */
 	int getTotalDamage();
+	/**
+	 * takes the level of the destroyed/dead scno 
+	 * and disseminates experience appropriately.
+	 * \param levels The level of the dead object.
+	 */
 	void disseminateXp(int levels);
+	/**
+	 * Cleans up the damage logs and frees the 
+	 * appropriate resources after the logs have 
+	 * been used.
+	 */
 	void cleanupDamageDone();
 
 	void broadcastMessage(BaseMessage* msg, int range = 128, bool doLock = true, bool sendSelf = true);

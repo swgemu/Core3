@@ -1160,28 +1160,98 @@ public:
 		skillPoints -= sPoints;
 	}
 
+	/**
+	 * Retrieve the amount of experience of a certain type that the player currently has.
+	 * \param xpType The string value for the type of experience to retrieve.
+	 * \return The value of experience the player has of type xpType.
+	 */
 	int getXp(const String& xpType) {
 		return playerObject->getExperience(xpType);
 	}
+
+	/**
+	 * Adds experience of a type to the player's experience pool.
+	 * \param xpType The string value for the type of experience to add.
+	 * \param xp The value of experience to add.
+	 * \param updateClient Boolean to determing whether the client should receive a delta packet for the experience gain.
+	 */
 	void addXp(const String& xpType, int xp, bool updateClient) {
 		playerObject->addExperience(xpType, xp, updateClient);
 	}
+
+	/**
+	 * Removes experience of a type from the player's experience pool.
+         * \param xpType The string value for the type of experience to remove.
+	 * \param xp The value of experience to remove.
+	 * \param updateClient Boolean to determing whether the client should receive a delta packet for the experience loss.
+	 */
 	void removeXp(const String& xpType, int xp, bool updateClient) {
 		playerObject->removeExperience(xpType, xp, updateClient);
 	}
+
+	/**
+	 * Loads the experience pool from the database passed as a delimited string.
+	 * \param xpStr The string pulled from the database that stores the xp values for the player.
+	 */
 	void loadXp(const String& xpStr) {
 		playerObject->loadExperience(xpStr);
 	}
+
+	/**
+	 * Writes the current resident xp pool to the database for the player.
+	 */
 	String& saveXp() {
 		return playerObject->saveExperience();
 	}
+
+	/** 
+	 * Calculates the experience cap for a certain xp type, defaults to 2000.
+	 * \param xptype The string value for the type of experience to calculate the cap for.
+	 * \return The experience cap of the experience type for the player.
+	 */
 	int getXpTypeCap(String xptype);
+
+	/**
+	 * Loads the experience caps for all xp types.
+	 */
 	void loadXpTypeCap();
+
+	/**
+	 * Calculates the player level based on the current weapon equipped, or higher appropriate skills.
+	 * Based on a 5-25 level system.
+	 * \param xptype The type of experience to calculate if it is not appropriate to use the player's weapon. Okay to pass "".
+	 * \return The player level used in calculated experience and consider colors.
+	 */
 	int calcPlayerLevel(String xptype);
 
+	/**
+	 * Adds a skill box to the player's repertoire and calls the appropriate functions to recalculate level and experience cap.
+	 * Does not determine if the skill box is appropriate to train.
+	 * \param skillBox The skill box to add.
+	 * \param updateClient Boolean to determing whether the client should receive a delta packet for the new skill box.
+	 */
 	void addSkillBox(SkillBox* skillBox, bool updateClient = false);
+
+	/**
+	 * Removes a skill box from the player's repertoire and calls the appropriate functions to recalculate level and experience cap.
+	 * Does not determine if the skill box is appropriate to drop.
+	 * \param skillBox The skill box to remove.
+	 * \param updateClient Boolean to determing whether the client should receive a delta packet for the skill box removeal.
+	 */
 	void removeSkillBox(SkillBox* skillBox, bool updateClient = false);
+
+	/**
+	 * Adds a list of weapon/object certifications gained, usually through skillBox training.
+	 * \param certs A Vector of certifications that is to be added to the player.
+	 * \param updateClient Boolean to determing whether the client should receive a delta packet for the new certifications.
+	 */
 	void addCertifications(Vector<Certification*>& certs, bool updateClient = false);
+
+	/**
+	 * Removes a list of weapon/object certifications, usually through skillBox dropping.
+	 * \param certs A Vector of certifications that is to be removed from the player.
+	 * \param updateClient Boolean to determing whether the client should receive a delta packet for 
+	 */
 	void removeCertifications(Vector<Certification*>& certs, bool updateClient = false);
 
 
