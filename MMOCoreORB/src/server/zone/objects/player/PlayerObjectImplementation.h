@@ -138,13 +138,40 @@ public:
 	bool setCharacterBit(uint32 bit, bool updateClient = false);
 	bool clearCharacterBit(uint32 bit, bool updateClient = false);
 
+        /**
+	 * Retrieve the amount of experience of a certain type that the player currently has.
+	 * \param xpType The string value for the type of experience to retrieve.
+	 * \return The value of experience the player has of type xpType.
+	 */
 	int getExperience(const String& xpType) {
 		return experienceList.get(xpType);
 	}
 
+        /**
+	 * Adds experience of a type to the player's experience pool.
+	 * \param xpType The string value for the type of experience to add.
+	 * \param xp The value of experience to add.
+	 * \param updateClient Boolean to determing whether the client should receive a delta packet for the experience gain.
+	 */
 	void addExperience(const String& xpType, int xp, bool updateClient);
+
+        /**
+	 * Removes experience of a type from the player's experience pool.
+	 * \param xpType The string value for the type of experience to remove.
+	 * \param xp The value of experience to remove.
+	 * \param updateClient Boolean to determing whether the client should receive a delta packet for the experience loss.
+	 */
 	void removeExperience(const String& xpType, int xp, bool updateClient);
+
+        /**
+	 * Loads the experience pool from the database passed as a delimited string.
+	 * \param xpStr The string pulled from the database that stores the xp values for the player.
+	 */
 	void loadExperience(const String& xpStr);
+
+        /**
+	 * Writes the current resident xp pool to the database for the player.
+	 */
 	String& saveExperience();
 
 	void setCurrentTitle(String& nTitle, bool updateClient);
