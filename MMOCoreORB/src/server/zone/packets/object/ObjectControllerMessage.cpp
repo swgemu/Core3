@@ -3912,8 +3912,22 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 		player->changeCloth(target);
 
 	} else if (destinationID == player->getObjectID() + 1) { //item is going to inventory
-		if (player->getInventoryItem(target) != NULL) {
-			player->changeCloth(target);
+		TangibleObject* targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
+		if (targetTanoObject != NULL) {
+			if(targetTanoObject->isWeapon()) {
+				player->changeWeapon(target, true);
+				//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping weapon.\n";
+			}
+			else if(targetTanoObject->isArmor()) {
+				player->changeArmor(target, false);
+				//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
+			}
+			else if(targetTanoObject->isClothing()) {
+				player->changeCloth(target);
+				//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping clothing.\n";
+			}
+			else
+				System::out << "ObjectControllerMessage::parseTransferItemMisc, item unequip not implemented in ObjectControllerMessage::parseTransferItemMisc.\n";
 			return;
 		}
 
