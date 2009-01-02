@@ -104,7 +104,7 @@ void GameCommandHandler::init() {
 			"Usage @warpTo <player>",
 			&warpTo);
 	gmCommands->addCommand("warpPlayer", PRIVILEGED,
-			"Warps a player to a given set of coordinates.",
+			"Warps a player to a given location.",
 			"Usage: @warpPlayer <player> <starport |hotel | shuttle | medical | bank | garage | salon | punish>",
 			&warpPlayer);
 	gmCommands->addCommand("summon", PRIVILEGED | LEADQA,
@@ -132,7 +132,7 @@ void GameCommandHandler::init() {
 			"Usage: @mutePlayer <player>",
 			&mutePlayer);
 	gmCommands->addCommand("kill", PRIVILEGED,
-			"Kills a creature.",
+			"Kills a player or creature.",
 			"Usage: @kill <player name or current-target>",
 			&kill);
 	gmCommands->addCommand("ecKill", CSREVENTS,
@@ -140,11 +140,11 @@ void GameCommandHandler::init() {
 			"Usage: @ecKill <current-target>",
 			&ecKill);
 	gmCommands->addCommand("killArea", DEVELOPER,
-			"Kills all players within a certain range.",
+			"Kills all players or creatures within a certain range.",
 			"Usage: @killArea [distance]",
 			&killArea);
 	gmCommands->addCommand("muteChat", CSREVENTS,
-			"Prevents players from speaking in chat.",
+			"Prevents players from speaking in spacial chat.",
 			"Usage: @muteChat",
 			&muteChat);
 	gmCommands->addCommand("users", STAFF,
@@ -172,11 +172,11 @@ void GameCommandHandler::init() {
 			"Usage: @awardBadge <badgeid>",
 			&awardBadge);
 	gmCommands->addCommand("revolkBadge", DEVELOPER,
-				"Remove a badge from a targeted player.",
-				"Usage: @revolkBadge <badgeid>",
-				&revolkBadge);
+			"Remove a badge from a targeted player.",
+			"Usage: @revolkBadge <badgeid>",
+			&revolkBadge);
 	gmCommands->addCommand("systemMessage", CSREVENTS | LEADQA,
-			"Sends a message to all players on the server.",
+			"Sends a message to all players on the server within the given range.",
 			"Usage: @systemMessage <range> <message>",
 			&systemMessage);
 	gmCommands->addCommand("setForce", DEVELOPER,
@@ -216,8 +216,8 @@ void GameCommandHandler::init() {
 			"Usage: @HAMStats",
 			&HAMStats);
 	gmCommands->addCommand("buff", PRIVILEGED | LEADQA,
-			"Buffs your player.",
-			"Usage: @buff",
+			"Buffs your player or target player.",
+			"Usage: @buff <target>",
 			&buff);
 	gmCommands->addCommand("spice", ALL,
 			"Gives your player a certain spice.",
@@ -229,7 +229,7 @@ void GameCommandHandler::init() {
 			&getDirection);
 	gmCommands->addCommand("setAdminLevel", DEVELOPER,
 			"Sets your admin level.",
-			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC 32-LEADQA",
+			"Usage: @setAdminLevel <player> <level> \n Levels: 1-CSR 2-DEVELOPER 4-PLAYER 8-QA 16-EC 32-LEADQA 64-EMUSTAFF",
 			&setAdminLevel);
 	gmCommands->addCommand("getLocation", ALL,
 			"Gives full detailsofyour location.",
@@ -249,7 +249,7 @@ void GameCommandHandler::init() {
 			&clientEffect);
 	gmCommands->addCommand("rez", PRIVILEGED | LEADQA,
 			"Resurrects a player.",
-			"Usage: @rez <player>",
+			"Usage: @rez <playername or target player>",
 			&rez);
 	gmCommands->addCommand("immune", CSREVENTS | LEADQA,
 			"Toggles immunity.",
@@ -291,16 +291,11 @@ void GameCommandHandler::init() {
 			"Returns a list of characters a player has registrated with this server.",
 			"USAGE: @showChars <Forum Nickname>",
 			&showChars);
-/*
-	gmCommands->addCommand("toggleCombat", DEVELOPER,
-			"Enables/Disables combat.",
-			"USAGE: @toggleCombat",
-			&toggleCombat);
-*/
 	gmCommands->addCommand("lockServer", DEVELOPER,
 			"Locks the server for intern testing.",
 			"USAGE: @lockServer",
-			&lockServer);	gmCommands->addCommand("unlockServer", DEVELOPER,
+			&lockServer);	
+	gmCommands->addCommand("unlockServer", DEVELOPER,
 			"Unlocks the server for public testing.",
 			"USAGE: @lockServer",
 			&unlockServer);
@@ -317,12 +312,12 @@ void GameCommandHandler::init() {
 			"Usage: @help",
 			&help);
 	gmCommands->addCommand("openInventory", PRIVILEGED,
-			"Open a players (target) inventory.",
+			"Open a players (target) inventory. - THIS ACTION IS LOGGED",
 			"Usage: @openInventory (with a player as the current target)",
 			&openInventory);
 	//Temporary for CSRs as long as structures and cell permissions not finally in
 	gmCommands->addCommand("poofObject", PRIVILEGED,
-			"Destroys an object finally.",
+			"Destroys an object.",
 			"USAGE: @poofObject <target>",
 			&poofObject);
 	//Temporary for CSRs as long as structures and cell permissions not finally in
@@ -344,7 +339,7 @@ void GameCommandHandler::init() {
 			"Usage: @setSpeed speed acceleration.",
 			&setSpeed);
 	gmCommands->addCommand("setHeight", PRIVILEGED,
-			"Sets the height of the object.",
+			"Sets the height of a player or creature.",
 			"Usage: @setHeight number.",
 			&setHeight);
 	gmCommands->addCommand("warpAreaToWP", PRIVILEGED,
@@ -356,7 +351,11 @@ void GameCommandHandler::init() {
 			"Usage: @scaleXP <scaler>",
 			&scaleXP);
 	/* Disabled Commands
-
+	
+	gmCommands->addCommand("toggleCombat", DEVELOPER,
+			"Enables/Disables combat.",
+			"USAGE: @toggleCombat",
+			&toggleCombat);
 	Uncomment for use on DEV servers
 	gmCommands->addCommand("getCords", DEVELOPER,
 			"Command to aid the cave devs placing of creatures, SpawnCreature command is written pre-formatted to a file.",
