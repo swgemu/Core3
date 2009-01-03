@@ -3192,49 +3192,51 @@ void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player)
 		else if (planetName == "yavin4")
 			planet = 9;
 
-	String name = player->getFirstName();
+		String name = player->getFirstName();
 
-	Zone* zone = player->getZone();
-	if (zone == NULL)
-		return;
+		Zone* zone = player->getZone();
+		if (zone == NULL)
+			return;
 
-	try {
-		zone->lock();
+		try {
+			zone->lock();
 
-		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			SceneObject
-					* obj =
-							(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
-									i))->_getStub());
+			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
+				SceneObject
+						* obj =
+								(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
+										i))->_getStub());
 
-			if (obj->isPlayer()) {
-				Player* otherPlayer = (Player*) obj;
-				String otherName = otherPlayer->getFirstName();
+				if (obj->isPlayer()) {
+					Player* otherPlayer = (Player*) obj;
+					String otherName = otherPlayer->getFirstName();
 
-				if (otherName != name && player->isInRange(otherPlayer, meter)
-						&& (otherPlayer->getAdminLevel()
-								== PlayerImplementation::NORMAL)) {
-
-
-					try {
-						if (planet != otherPlayer->getZoneIndex())
+					if (otherName != name && player->isInRange(otherPlayer, meter)
+							&& (otherPlayer->getAdminLevel()
+									== PlayerImplementation::NORMAL)) {
 
 
-						otherPlayer->switchMap(planet);
-						otherPlayer->doWarp(x, y);
-						zone->unlock();
-						player->sendSystemMessage("player \'" + otherName
-								+ "\' has been warped.");
-					} catch (...) {
-						player->sendSystemMessage("unable to warp player \'"
-								+ otherName + "\'");
+						try {
+							if (planet != otherPlayer->getZoneIndex())
+
+
+							otherPlayer->switchMap(planet);
+							otherPlayer->doWarp(x, y);
+							zone->unlock();
+							player->sendSystemMessage("player \'" + otherName
+									+ "\' has been warped.");
+						} catch (...) {
+							player->sendSystemMessage("unable to warp player \'"
+									+ otherName + "\'");
+						}
 					}
 				}
 			}
-			}
-	}catch (...)
-	{}
-}
+			zone->unlock();
+		} catch (...) {
+			zone->unlock();
+		}
+	}
 }
 
 void GameCommandHandler::scaleXP(StringTokenizer tokenizer, Player* player) {

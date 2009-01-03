@@ -218,7 +218,7 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 			}
 		}
 
-		SuiListBox* redeedBox = new SuiListBox(player, 0x7280, 0x02);
+		SuiListBox* redeedBox = new SuiListBox(player, SuiBoxType::GUILD_INFORMATION_MEMBERS, 0x02);
 
 		redeedBox->setPromptTitle(this->getName().toString());
 
@@ -249,7 +249,7 @@ void InstallationObjectImplementation::handleStructureRedeedConfirm(
 
 		destroyCode = (System::random(999999) + 100000);
 
-		SuiInputBox * confirmRedeed = new SuiInputBox(player, 0x7281, 0x00);
+		SuiInputBox * confirmRedeed = new SuiInputBox(player, SuiBoxType::GUILD_MEMBER_OPTIONS, 0x00);
 
 		confirmRedeed->setPromptTitle("Confirm Structure Destruction");
 
@@ -285,7 +285,7 @@ void InstallationObjectImplementation::handleStructureStatus(Player* player) {
 
 		StringBuffer sscond, ssmpool, ssmrate, ssppool, ssprate;
 
-		SuiListBox* statusBox = new SuiListBox(player, 0x7282, 0x01);
+		SuiListBox* statusBox = new SuiListBox(player, SuiBoxType::GUILD_PERMISSION_SELECTION, 0x01);
 		statusBox->setPromptTitle("@player_structure:structure_status_t");
 		statusBox->setPromptText("Structure Name: " + getName().toString());
 
@@ -320,7 +320,7 @@ void InstallationObjectImplementation::handleStructureAddMaintenance(Player* pla
 
 		player->setCurrentStructureID(this->getObjectID());
 
-		SuiTransferBox* maintenanceBox = new SuiTransferBox(player, 0x7284);
+		SuiTransferBox* maintenanceBox = new SuiTransferBox(player, SuiBoxType::GUILD_TRANSFER_LEADER);
 		maintenanceBox->setPromptTitle("Select Amount");
 
 		sstext << "Select the total amount you would like to pay the existing"
@@ -348,7 +348,7 @@ void InstallationObjectImplementation::handleStructureAddEnergy(Player* player) 
 
 		player->setCurrentStructureID(this->getObjectID());
 
-		SuiTransferBox* energyBox = new SuiTransferBox(player, 0x7285);
+		SuiTransferBox* energyBox = new SuiTransferBox(player, SuiBoxType::GUILD_TRANSFER_LEADER_VERIFY);
 		energyBox->setPromptTitle("Add Power");
 
 		energyBox->setPromptText("Select the amount of power you would like to deposit"

@@ -109,6 +109,8 @@ interface ZoneServer {
 	
 	void fixScheduler();
 
+	void loadMessageoftheDay();
+
 	// getters
 	ChatManager getChatManager();
 	GuildManager getGuildManager();
@@ -143,6 +145,8 @@ interface ZoneServer {
 	unsigned long getNextCreatureID(boolean doLock = true);
 	unsigned long getNextID(boolean doLock = true);
 	unsigned long getNextCellID(boolean doLock = true);
+
+	String& getMessageoftheDay();
 	
 	// setters
 	void setServerState(int state);

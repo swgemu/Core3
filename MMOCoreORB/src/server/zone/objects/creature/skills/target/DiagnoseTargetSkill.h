@@ -46,7 +46,7 @@ which carries forward this exception.
 #define DIAGNOSETARGETSKILL_H_
 
 #include "../TargetSkill.h"
-#include "../../../player/sui/listbox/SuiListBox.h"
+#include "../../../../objects.h"
 
 class DiagnoseTargetSkill : public TargetSkill {
 protected:
@@ -88,8 +88,8 @@ public:
 		}
 
 		/*TODO: Close an already opened Diagnose box before sending a new one??
-		if (player->hasSuiBox(0xD1A6))
-			player->removeSuiBox(0xD1A6);
+		if (player->hasSuiBox(SuiBoxType::DIAGNOSE))
+			player->removeSuiBox(SuiBoxType::DIAGNOSE);
 		*/
 
 		String targetName = "";
@@ -97,7 +97,7 @@ public:
 		UnicodeStringName = creatureTarget->getCharacterName();
 		targetName = UnicodeStringName.toString();
 
-		SuiListBox* sui = new SuiListBox(player, 0xD1A6);
+		SuiListBox* sui = new SuiListBox(player, SuiBoxType::DIAGNOSE);
 		StringBuffer title;
 		title << "Patient " << targetName.toCharArray();
 		sui->setPromptTitle(title.toString());

@@ -1,15 +1,6 @@
-#include "../../../player/Player.h"
+
+#include "../../../../objects.h"
 #include "../../../../packets.h"
-
-#include "ResourceDeed.h"
-#include "ResourceDeedImplementation.h"
-#include "../DeedObject.h"
-#include "../DeedObjectImplementation.h"
-#include "../../../creature/mount/MountCreature.h"
-#include "../../../creature/mount/MountCreatureImplementation.h"
-
-#include "../../../creature/CreatureObjectImplementation.h"
-#include "../../../tangible/DatapadImplementation.h"
 
 #include "../../../../ZoneClientSessionImplementation.h"
 
@@ -72,7 +63,7 @@ int ResourceDeedImplementation::useObject(Player* player) {
 
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 
-	SuiListBox* sui1 = new SuiListBox(player, 0xE4F2);//beginning of sui chain
+	SuiListBox* sui1 = new SuiListBox(player, SuiBoxType::FREE_RESOURCE);//beginning of sui chain
 
 	sui1->setPromptTitle("Resources");
 	sui1->setPromptText("Choose resource class.");

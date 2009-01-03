@@ -43,21 +43,11 @@ which carries forward this exception.
 */
 
 #include "../../ZoneClientSession.h"
-#include "../creature/CreatureObject.h"
-
-#include "../player/Player.h"
-#include "../scene/SceneObjectImplementation.h"
 
 #include "../../Zone.h"
 
+#include "../../objects.h"
 #include "../../packets.h"
-
-#include "TangibleObjectImplementation.h"
-
-#include "../building/BuildingObject.h"
-#include "../building/cell/CellObject.h"
-
-#include "../player/sui/inputbox/SuiInputBoxImplementation.h"
 
 TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
 		: TangibleObjectServant(oid, TANGIBLE) {
@@ -361,7 +351,7 @@ void TangibleObjectImplementation::setObjectName(Player * player) {
 		player->setCurrentStructureID(this->getObjectID());
 		//player->unlock();
 
-		SuiInputBox * setTheName = new SuiInputBox(player, 0x7283, 0x00);
+		SuiInputBox * setTheName = new SuiInputBox(player, SuiBoxType::REMOVE_FROM_GUILD, 0x00);
 
 		setTheName->setPromptTitle("Name the Object");
 		setTheName->setPromptText("Please enter the new name you would like for this object");

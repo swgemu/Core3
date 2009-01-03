@@ -404,7 +404,7 @@ void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player)
 void RadialManager::sendRadialResponseForBank(uint64 objectId, Player* player) {
 	Zone* zone = player->getZone();
 
-	SuiBankTransferBox* sui = new SuiBankTransferBox(player, 0xD65E);
+	SuiBankTransferBox* sui = new SuiBankTransferBox(player, SuiBoxType::BANK_TRANSFER);
 
 	sui->addCash(player->getCashCredits());
 	sui->addBank(player->getBankCredits());
@@ -558,7 +558,7 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 	if (player->getInventoryItem(wearable->getObjectID()) == NULL)
 		return;
 
-	SuiColorPicker* sui = new SuiColorPicker(player, wearable->getObjectID(), 0xBABE);
+	SuiColorPicker* sui = new SuiColorPicker(player, wearable->getObjectID(), SuiBoxType::COLOR_PICKER2);
 
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
@@ -789,7 +789,7 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 
 	int surveyMod = player->getSkillMod(surveying);
 
-	SuiListBox* suiToolRangeBox = new SuiListBox(player, 0x7259);
+	SuiListBox* suiToolRangeBox = new SuiListBox(player, SuiBoxType::SURVEY_TOOL_RANGE);
 	suiToolRangeBox->setPromptTitle("@base_player:swg");
 	suiToolRangeBox->setPromptText("@survey:select_range");
 
@@ -855,12 +855,12 @@ void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
 }
 
 void RadialManager::handleGuildCreationTag(Player* player) {
-	if (player->hasSuiBoxType(0x7270) || player->hasSuiBoxType(0x7271))
+	if (player->hasSuiBoxType(SuiBoxType::GUILD_CREATION_INPUT_FOR_TAG) || player->hasSuiBoxType(SuiBoxType::GUILD_CREATION_INPUT_FOR_NAME))
 		return;
 
 	player->setInputBoxReturnBuffer("");
 
-	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7270, 0);
+	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_CREATION_INPUT_FOR_TAG, 0);
 
 	suiInpBox->setPromptTitle("@guild:create_abbrev_title");
 	suiInpBox->setPromptText("@guild:create_abbrev_prompt");
@@ -873,7 +873,7 @@ void RadialManager::handleGuildCreationTag(Player* player) {
 }
 
 void RadialManager::handleGuildSponsor(Player* player) {
-	if (player->hasSuiBoxType(0x7272))
+	if (player->hasSuiBoxType(SuiBoxType::GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME))
 		return;
 
 	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDSPONSOR) ) ) {
@@ -883,7 +883,7 @@ void RadialManager::handleGuildSponsor(Player* player) {
 
 	player->setInputBoxReturnBuffer("");
 
-	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7272, 0);
+	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME, 0);
 
 	suiInpBox->setPromptTitle("@guild:sponsor_title");
 	suiInpBox->setPromptText("@guild:sponsor_prompt");
@@ -928,7 +928,7 @@ void RadialManager::handleGuildDisband(Player* player) {
 		return;
 	}
 
-	SuiInputBox* suiInpBox = new SuiInputBox(player, 0x7277, 0);
+	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_DISBAND, 0);
 
 	StringBuffer prompt;
 	prompt << "@guild:disband_prompt " << endl << endl << "To confirm the disbanding of your guild, "
@@ -1081,12 +1081,12 @@ void RadialManager::handleTeach(SceneObject* obj, Player* trainer) {
 		trainer->sendSystemMessage("teaching","no_target");
 		return;
 	}
-	
+
 	Player* trainee = (Player*)obj;
-	
+
 	StfParameter *params = new StfParameter();
 	params->addTT(trainee->getFirstNameProper());
-	
+
 	if (trainer == trainee) {
 		trainer->sendSystemMessage("teaching","no_teach_self");
 		delete params;
@@ -1108,9 +1108,9 @@ void RadialManager::handleTeach(SceneObject* obj, Player* trainer) {
 		delete params;
 		return;
 	}
-	
+
 	delete params;
-	
+
 	trainer->teachPlayer(trainee);
 }
 

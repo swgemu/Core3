@@ -1378,7 +1378,7 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 	ShuttleCreature* shuttle = planetManager->getShuttle(departurePoint);
 
 	if (shuttle == NULL) {
-		SuiMessageBox* sui = new SuiMessageBox(player, 0xDAAD);
+		SuiMessageBox* sui = new SuiMessageBox(player, SuiBoxType::TICKET_PURCHASE_MESSAGE);
 		sui->setPromptTitle("@base_player:swg");
 		sui->setPromptText("@travel:no_location_found");
 
@@ -1396,7 +1396,7 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 		totalFee *= 2;
 
 	if (!player->verifyCashCredits(totalFee)) {
-		SuiMessageBox* sui = new SuiMessageBox(player, 0xDAAD);
+		SuiMessageBox* sui = new SuiMessageBox(player, SuiBoxType::TICKET_PURCHASE_MESSAGE);
 		sui->setPromptTitle("@base_player:swg");
 		sui->setPromptText("@travel:short_funds");
 
@@ -1426,7 +1426,7 @@ void ObjectControllerMessage::parsePurchaseTicket(Player* player, Message *pack)
 		returnTicket->sendTo(player, true);
 	}
 
-	SuiMessageBox* sui = new SuiMessageBox(player, 0xDAAD);
+	SuiMessageBox* sui = new SuiMessageBox(player, SuiBoxType::TICKET_PURCHASE_MESSAGE);
 	sui->setPromptTitle("@base_player:swg");
 	sui->setPromptText("@travel:ticket_purchase_complete");
 
