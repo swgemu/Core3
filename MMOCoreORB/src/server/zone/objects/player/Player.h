@@ -299,6 +299,8 @@ public:
 
 	void setWeaponSkillMods(Weapon* weapon);
 
+	void setWeaponAccuracy(Weapon* weapon);
+
 	void setArmorSkillMods(Armor* armor);
 
 	bool setArmorEncumbrance(Armor* armor, bool forced);
@@ -1115,6 +1117,8 @@ public:
 	void changeArmor(unsigned long long itemid, bool forced);
 
 	void setWeaponSkillMods(Weapon* weapon);
+
+	void setWeaponAccuracy(Weapon* weapon);
 
 	void setArmorSkillMods(Armor* armor);
 

@@ -133,8 +133,8 @@ public:
 	void equipItem (TangibleObject* item) {
 		if (item->isArmor() || item->isClothing() || item->isWearableContainer())
 			changeWearable((Wearable*)item);
-//		else if (item->isWeapon() || item->isInstrument())
-//			changeWeapon(item);
+		else if (item->isWeapon() || item->isInstrument())
+			changeWeapon(item);
 	}
 
 	bool changeWearable (Wearable* item, bool forced = false){
@@ -143,14 +143,14 @@ public:
 		else
 			return equipClothing(item, forced);
 	}
-/*
+
 	bool changeWeapon (TangibleObject* item ) {
 		if (item->isEquipped())
 			return unequipWeapon(item);
 		else
 			return equipWeapon(item);
 	}
-*/
+
 	bool equipClothing (Wearable* item, bool forced = false) {
 		uint16 locations;
 		Armor* armor;
@@ -288,7 +288,7 @@ public:
 		unequipClothing(item);
 	}
 
-/*
+
 	bool equipWeapon(TangibleObject* item) {
 		if (!checkCertification(item))
 			return false;
@@ -330,7 +330,7 @@ public:
 
 		return true;
 	}
-*/
+
 	Wearable* getClothing (int location) {
 		return clothingLocations[location];
 	}
@@ -346,7 +346,7 @@ public:
 			return (Armor*)clothingLocations[location];
 		}
 	}
-/*
+
 	Weapon* getWeapon () {
 		return weapon;
 	}
@@ -354,7 +354,7 @@ public:
 	Instrument* getInstrument () {
 		return instrument;
 	}
-*/
+
 	int getArmorLocations(Armor* armor) {
 		int locations;
 
@@ -383,7 +383,7 @@ public:
 
 		return locations;
 	}
-/*
+
 	void setWeaponSkillMods(Weapon* weapon) {
 		setItemSkillMod(weapon->getSkillMod0Type(), weapon->getSkillMod0Value());
 		setItemSkillMod(weapon->getSkillMod1Type(), weapon->getSkillMod1Value());
@@ -395,7 +395,7 @@ public:
 		setItemSkillMod(weapon->getSkillMod1Type(), -weapon->getSkillMod1Value());
 		setItemSkillMod(weapon->getSkillMod2Type(), -weapon->getSkillMod2Value());
 	}
-*/
+
 	bool checkEncumbrance(Armor* item, Wearable* originalitem) {
 		int strength = player->getStrength();
 		int constitution = player->getConstitution();
