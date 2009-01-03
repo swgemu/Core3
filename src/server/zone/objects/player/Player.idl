@@ -269,6 +269,8 @@ interface Player implements CreatureObject {
 	void changeArmor(unsigned long itemid, boolean forced);
 
 	void setWeaponSkillMods(Weapon weapon);
+	void setWeaponAccuracy(Weapon weapon);
+	
 	void setArmorSkillMods(Armor armor);
 	boolean setArmorEncumbrance(Armor armor, boolean forced);
 	void unsetArmorEncumbrance(Armor armor);

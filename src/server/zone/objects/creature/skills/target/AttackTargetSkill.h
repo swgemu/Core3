@@ -220,86 +220,6 @@ public:
 		server->getCombatManager()->doDotWeaponAttack(creature, targetCreature, areaHit);
 	}
 
-	// The following function adjusts incoming damage for Armor Piercing and Armor Rating.
-	// The Values are:
-	// @@ Armor* armor  -- Armor of the Defender
-	// @@ Weapon* weapon -- Weapon of the Attacker
-	// @@ int damage -- initial incoming damage
-	// @@ bool isresisted -- To decide if the Benefit of AP/AR should be applied, IE. if Damage is stun, and armor has no stun resistance, you would not reduce damage by 50%, however you could still recieve the 25% inrease in damage from a Peircing weapon
-	// ## Returns - apar damage reduction.
-	int doArmorAPARReductions(Armor* armor, Weapon* weapon, int damage, bool isresisted = false)
-	{
-		int ap = 0;
-		int ar = 0;
-		int APARreduction = 0;
-
-		if (weapon != NULL)
-			ap = weapon->getArmorPiercing();
-		if (armor != NULL)
-			ar = armor->getRating() / 16; // this sucks, why are they stored differently?
-
-
-		if (ap > ar)
-			APARreduction = (damage - (int)(damage * powf(1.25f, ap - ar))); // If armor piercing is greater, increase by 25% per level
-
-		if (ap < ar && isresisted)  // If damage type was resisted, and If armor rating is greater, decrease by half per level
-			APARreduction = (damage - (int)(damage * powf(0.5f, ar - ap)));
-
-		return APARreduction;
-	}
-
-	int doArmorResists(Armor* armor, Weapon* weapon, int dmg)
-	{
-
-
-		float resist = 0;
-
-		int damageType = WeaponImplementation::KINETIC;
-
-		if (weapon != NULL)
-			damageType = weapon->getDamageType();
-
-		if (armor != NULL)
-			switch (damageType) {
-			case WeaponImplementation::KINETIC:
-				resist = armor->getKinetic();
-				break;
-			case WeaponImplementation::ENERGY:
-				resist = armor->getEnergy();
-				break;
-			case WeaponImplementation::ELECTRICITY:
-				resist = armor->getElectricity();
-				break;
-			case WeaponImplementation::STUN:
-				resist = armor->getStun();
-				break;
-			case WeaponImplementation::BLAST:
-				resist = armor->getBlast();
-				break;
-			case WeaponImplementation::HEAT:
-				resist = armor->getHeat();
-				break;
-			case WeaponImplementation::COLD:
-				resist = armor->getCold();
-				break;
-			case WeaponImplementation::ACID:
-				resist = armor->getAcid();
-				break;
-			case WeaponImplementation::LIGHTSABER:
-				resist = armor->getLightSaber();
-				break;
-			case WeaponImplementation::FORCE:
-				resist = 0;
-				break;
-			}
-
-		if (resist == 0)
-			return 0;
-		else
-			return (int)(dmg * (resist / 100));
-
-	}
-
 	bool isArea() {
 		if (areaRangeDamage != 0) {
 			return true;
@@ -308,7 +228,7 @@ public:
 	}
 
 	bool isCone() {
-		return false;
+		return isConeSkill;
 	}
 
 	bool isForce() {

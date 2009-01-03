@@ -3179,178 +3179,129 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 	changeArmor(itemid, false);
 }
 
-void PlayerImplementation::changeWeapon(uint64 itemid, bool doUpdate) {
+void PlayerImplementation::changeWeapon(uint64 itemid, bool updateLevel) {
 	SceneObject* obj = inventory->getObject(itemid);
 
 	if (obj == NULL || !obj->isTangible())
 		return;
 
-	if (isPlayingMusic())
-		stopPlayingMusic();
+	if (!((TangibleObject*)obj)->isWeapon() && !((TangibleObject*)obj)->isInstrument())
+		return;
 
-	if (((TangibleObject*)obj)->isWeapon()) {
-		Weapon* weapon = (Weapon*) obj;
+	TangibleObject* item = (TangibleObject*)obj;
 
-		if (weapon == NULL)
-			return;
+	equippedItems->changeWeapon(item);
 
-		if (!this->hasItemPermission(weapon) && !weapon->isEquipped())
-			return;
+	Weapon* weapon = NULL;
 
-		if (centered)
-			removeCenterOfBeing();
+	if (equippedItems->getInstrument() != NULL)
+		return;
+	else if (equippedItems->getWeapon() != NULL)
+		weapon = equippedItems->getWeapon();
 
-		if (weapon->isEquipped()) {
-			unequipItem(weapon);
-			unsetWeaponSkillMods(weapon);
-			setWeapon(NULL);
+	setWeapon(weapon);
 
-			accuracy = getSkillMod("unarmed_accuracy");
-		} else {
-			if (weaponObject != NULL) {
-				unequipItem(weaponObject);
-				unsetWeaponSkillMods(weaponObject);
-			}
+	if (centered)
+		removeCenterOfBeing();
 
-			setWeapon(weapon);
-			equipItem(weapon);
+	setPlayerLevel(updateLevel);
+}
 
-			setWeaponSkillMods(weapon);
+void PlayerImplementation::setPlayerLevel(bool updateLevel) {
+	int playerlevel;
 
-		}
+	if (getWeapon() == NULL)
+		playerlevel = calcPlayerLevel("combat_meleespecialize_unarmed");
+	else
+		playerlevel = calcPlayerLevel(getWeapon()->getXpType());
 
-		int playerlevel;
-		if (getWeapon() == NULL)
-			playerlevel = calcPlayerLevel("combat_meleespecialize_unarmed");
-		else
-			playerlevel = calcPlayerLevel(getWeapon()->getXpType());
+	if (calcPlayerLevel("medical") > playerlevel)
+		setLevel(calcPlayerLevel("medical"));
+	else
+		setLevel(playerlevel);
 
-		if (calcPlayerLevel("medical") > playerlevel)
-			setLevel(calcPlayerLevel("medical"));
-		else
-			setLevel(playerlevel);
+	if (isInAGroup()) {
+		getGroupObject()->calcGroupLevel();
+		GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(getGroupObject());
+		grp->updateLevel(getGroupObject()->getGroupLevel());
+		grp->close();
 
+		broadcastMessage(grp);
+	}
+
+	if (updateLevel) {
+		CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
 		if (isInAGroup()) {
-			getGroupObject()->calcGroupLevel();
-			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(getGroupObject());
-			grp->updateLevel(getGroupObject()->getGroupLevel());
-			grp->close();
-
-			broadcastMessage(grp);
+			dcreo6->updateLevel(getGroupObject()->getGroupLevel());
+		} else {
+			dcreo6->updateLevel(getLevel());
 		}
+		dcreo6->close();
 
-		if (doUpdate) {
-			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(_this);
-			if (isInAGroup()) {
-				dcreo6->updateLevel(getGroupObject()->getGroupLevel());
-			} else {
-				dcreo6->updateLevel(getLevel());
-			}
-			dcreo6->close();
+		broadcastMessage(dcreo6);
+	}
+}
 
-			broadcastMessage(dcreo6);
-		}
+void PlayerImplementation::setWeaponAccuracy(Weapon* weapon) {
+	if (weapon == NULL) {
+		accuracy = getSkillMod("unarmed_accuracy");
+		return;
+	}
 
-	} else if (((TangibleObject*)obj)->isInstrument()){
-		Instrument* device = (Instrument*) obj;
-		int instrument = device->getInstrumentType();
+	switch (weapon->getType()) {
+		case WeaponImplementation::UNARMED:
+			accuracy = getSkillMod("unarmed_accuracy");
+			break;
 
-		String skillBox;
-		// Needs to be refactored
-		switch(instrument) {
-		case InstrumentImplementation::SLITHERHORN: //SLITHERHORN
-			skillBox = "social_entertainer_novice";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
+		case WeaponImplementation::ONEHANDED:
+			accuracy = getSkillMod("onehandmelee_accuracy");
 			break;
-		case InstrumentImplementation::FIZZ: // FIZZ
-			skillBox = "social_entertainer_music_01";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::FANFAR: // FANFAR
-			skillBox = "social_entertainer_music_03";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::KLOOHORN: // KLOOHORN
-			skillBox = "social_entertainer_music_04";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::MANDOVIOL: // MANDOVIOL
-			skillBox = "social_entertainer_master";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::TRAZ: // TRAZ
-			skillBox = "social_musician_novice";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::BANDFILL: // BANDFILL
-			skillBox = "social_musician_knowledge_02";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::FLUTEDROOPY: // FLUTEDROOPY
-			skillBox = "social_musician_knowledge_03";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::OMNIBOX: // OMNIBOX
-			skillBox = "social_musician_knowledge_04";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
-			break;
-		case InstrumentImplementation::NALARGON: // NALARGON
-			skillBox = "social_musician_master";
-			if (!getSkillBoxesSize() || !hasSkillBox(skillBox)) {
-				sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-				return;
-			}
-			break;
-		default :
-			sendSystemMessage("You do not have sufficient abilities to equip " + device->getName().toString() + ".");
-			return;
-		}
 
-		TangibleObject* item = (TangibleObject*) obj;
+		case WeaponImplementation::TWOHANDED:
+			accuracy = getSkillMod("twohandmelee_accuracy");
+			break;
 
-		if (isPlayingMusic())
-			stopPlayingMusic();
+		case WeaponImplementation::POLEARM:
+			accuracy = getSkillMod("polearm_accuracy");
+			break;
 
-		if (item->isEquipped()) {
-			unequipItem(item);
-		} else
-			equipItem(item);
-	} else {
-		TangibleObject* item = (TangibleObject*) obj;
+		case WeaponImplementation::PISTOL:
+			accuracy = getSkillMod("pistol_accuracy");
+			break;
 
-		sendSystemMessage("triggered here.");
+		case WeaponImplementation::CARBINE:
+			accuracy = getSkillMod("carbine_accuracy");
+			break;
 
-		if (item->isEquipped())
-			unequipItem(item);
-		else
-			equipItem(item);
+		case WeaponImplementation::RIFLE:
+			accuracy = getSkillMod("rifle_accuracy");
+			break;
+
+		case WeaponImplementation::HEAVYWEAPON:
+			accuracy = getSkillMod("heavyweapon_accuracy");
+			break;
+
+		case WeaponImplementation::SPECIALHEAVYWEAPON:
+			if (weapon->getType() == WeaponImplementation::RIFLEFLAMETHROWER)
+				accuracy = getSkillMod("heavy_flame_thrower_accuracy");
+
+			else if (weapon->getType() == WeaponImplementation::RIFLELIGHTNING)
+				accuracy = getSkillMod("heavy_rifle_lightning_accuracy");
+
+			accuracy += getSkillMod("heavyweapon_accuracy");
+			break;
+
+		case WeaponImplementation::ONEHANDSABER:
+			accuracy = getSkillMod("onehandlightsaber_accuracy");
+			break;
+
+		case WeaponImplementation::TWOHANDSABER:
+			accuracy = getSkillMod("twohandlightsaber_accuracy");
+			break;
+
+		case WeaponImplementation::POLEARMSABER:
+			accuracy = getSkillMod("polearmlightsaber_accuracy");
+			break;
 	}
 }
 

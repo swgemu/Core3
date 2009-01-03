@@ -988,6 +988,7 @@ public:
 
 	void setWeaponSkillMods(Weapon* weapon);
 	void unsetWeaponSkillMods(Weapon* weapon);
+	void setWeaponAccuracy(Weapon* weapon);
 
 	void setArmorSkillMods(Armor* armoritem);
 	void unsetArmorSkillMods(Armor* armoritem);
@@ -997,6 +998,8 @@ public:
 
 	void applyAttachment(uint64 attachmentID, uint64 targetID);
 	void applyPowerup(uint64 powerupID, uint64 targetID);
+
+	void setPlayerLevel(bool updateLevel);
 
 	void setItemSkillMod(int type, int value);
 

@@ -209,8 +209,10 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 			if (targetObject == creature || targetObject == target)
 				continue;
 
-			// TODO: Need to have a check for creatures of the same type to not attack
+			// TODO: Need to have ability og creature to attack creatures.
 			if (!targetObject->isAttackableBy(creature))
+				continue;
+			if (!creature->isPlayer() && !targetObject->isPlayer())
 				continue;
 
 			CreatureObject* creatureTarget = (CreatureObject*) targetObject;
@@ -741,16 +743,8 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 
 	int reduction = 0;
 
-	/*
-	cout << "Target is ";
-	if (target->isPlayer())
-		cout << "player" << endl;
-	else
-		cout << "creature" << endl;
-	cout << "Working out reduction for location " << part << endl;
-	*/
 	reduction = getArmorReduction(weapon, target, damage, part);
-	//cout << "Armour reduction (location " << part << ") = " << reduction << endl << endl;
+
 	damage -= reduction;
 	if (damage < 0)
 		damage = 0;
@@ -927,7 +921,7 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 			resist = ((Creature*)target)->getArmorResist(damageType);
 	}
 
-	if (resist > 0) {
+	if (resist > 0 && resist < 100) {
 		int armorPiercing = 1;
 		if (weapon != NULL) {
 			damageType = weapon->getDamageType();
@@ -1444,11 +1438,10 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 							calculateDamageReduction(creature, targetCreature, mindDamage);
 						}
 
-						reduction += applyDamage(creature, targetCreature, (int32) individualDamage, bodyPart, skill);
-
 						if (skill->hasCbtSpamHit())
 							creature->sendCombatSpam(targetCreature, NULL, (int32)individualDamage, skill->getCbtSpamHit());
 
+						reduction += applyDamage(creature, targetCreature, (int32) individualDamage, bodyPart, skill);
 					}
 				}
 

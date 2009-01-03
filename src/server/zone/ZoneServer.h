@@ -83,6 +83,8 @@ public:
 
 	void fixScheduler();
 
+	void loadMessageoftheDay();
+
 	ChatManager* getChatManager();
 
 	GuildManager* getGuildManager();
@@ -137,6 +139,8 @@ public:
 
 	unsigned long long getNextCellID(bool doLock = true);
 
+	String& getMessageoftheDay();
+
 	void setServerState(int state);
 
 	void setServerStateLocked();
@@ -148,6 +152,7 @@ protected:
 
 	virtual ~ZoneServer();
 
+	String _return_getMessageoftheDay;
 	String _return_getServerName;
 
 	friend class ZoneServerHelper;
@@ -203,6 +208,8 @@ public:
 
 	void fixScheduler();
 
+	void loadMessageoftheDay();
+
 	ChatManager* getChatManager();
 
 	GuildManager* getGuildManager();
@@ -256,6 +263,8 @@ public:
 	unsigned long long getNextID(bool doLock);
 
 	unsigned long long getNextCellID(bool doLock);
+
+	String& getMessageoftheDay();
 
 	void setServerState(int state);
 
