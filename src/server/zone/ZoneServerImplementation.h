@@ -115,6 +115,7 @@ class ZoneServerImplementation : public DatagramServiceThread, public ZoneServer
 	int serverState;
 
 	String name;
+	String messageoftheDay;
 
 public:
 	const static int OFFLINE = 0;
@@ -279,7 +280,7 @@ public:
 	inline time_t getStartTimestamp() {
 		return startTimestamp;
 	}
-	
+
 	uint64 getNextCreatureID(bool doLock = true);
 	uint64 getNextID(bool doLock = true);
 	uint64 getNextCellID(bool doLock = true);
@@ -316,6 +317,30 @@ public:
 		info(msg, true);
 
 		unlock();
+	}
+
+	inline void loadMessageoftheDay() {
+		File* file;
+		FileReader* reader;
+
+		try {
+			file = new File("motd.txt");
+			reader = new FileReader(file);
+		} catch (FileNotFoundException& e) {
+			file = NULL;
+			reader = NULL;
+		}
+
+		String line;
+		while(reader->readLine(line)) {
+			messageoftheDay += line;
+		}
+
+		reader->close();
+	}
+
+	inline String& getMessageoftheDay() {
+		return messageoftheDay;
 	}
 };
 

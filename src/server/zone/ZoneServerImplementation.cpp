@@ -238,6 +238,8 @@ void ZoneServerImplementation::init() {
 
 	startManagers();
 
+	loadMessageoftheDay();
+
 	startTimestamp = time(NULL);
 
 	//serverState = LOCKED;

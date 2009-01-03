@@ -47,31 +47,8 @@ which carries forward this exception.
 
 #include "../../ZoneClientSession.h"
 
+#include "../../objects.h"
 #include "../../packets.h"
-#include "../../packets/creature/CreatureObjectMessage3.h"
-
-#include "../player/Player.h"
-#include "../player/PlayerImplementation.h"
-
-#include "CreatureObject.h"
-#include "CreatureObjectImplementation.h"
-
-#include "../tangible/Inventory.h"
-#include "../tangible/InventoryImplementation.h"
-
-#include "../tangible/weapons/Weapon.h"
-#include "../tangible/wearables/Armor.h"
-#include "../tangible/instrument/Instrument.h"
-#include "../tangible/instrument/InstrumentImplementation.h"
-#include "../tangible/inventory/CreatureInventory.h"
-
-#include "../tangible/appearance/HairObject.h"
-#include "../tangible/appearance/HairObjectImplementation.h"
-
-#include "../tangible/pharmaceutical/Pharmaceutical.h"
-#include "../tangible/pharmaceutical/PharmaceuticalImplementation.h"
-
-#include "../group/GroupObject.h"
 
 #include "events/CreatureBurstRunOverEvent.h"
 #include "events/DizzyFallDownEvent.h"
@@ -82,10 +59,6 @@ which carries forward this exception.
 #include "events/MaskScentEvent.h"
 
 #include "../../objects/player/Races.h"
-#include "mount/MountCreature.h"
-
-#include "../building/BuildingObject.h"
-#include "../building/BuildingObjectImplementation.h"
 
 #include "skills/PassiveSkill.h"
 #include "skills/EntertainerSkill.h"
@@ -3343,10 +3316,10 @@ void CreatureObjectImplementation::startDancing(const String& modifier, bool cha
 		}
 
 		if (anim == "") {
-			uint32 boxID = 0x414E; // default startdance
+			uint32 boxID = SuiBoxType::START_DANCING; // default startdance
 
 			if (changeDance)
-				boxID = 0x4B4E; // differentiate changedance
+				boxID = SuiBoxType::CHANGE_DANCING; // differentiate changedance
 
 			SuiListBox* sui = new SuiListBox((Player*) _this, boxID);
 			sui->setPromptTitle("Available dances");
@@ -3576,10 +3549,10 @@ void CreatureObjectImplementation::startPlayingMusic(const String& modifier, boo
 		}
 
 		if (music == "") {
-			uint32 boxID = 0x5553; // default startmusic
+			uint32 boxID = SuiBoxType::START_MUSIC; // default startmusic
 
 			if (changeMusic)
-				boxID = 0x5A53; // differentiate changemusic
+				boxID = SuiBoxType::CHANGE_MUSIC; // differentiate changemusic
 
 			SuiListBox* sui = new SuiListBox((Player*) _this, boxID);
 			sui->setPromptText("Available songs");
@@ -3946,7 +3919,7 @@ void CreatureObjectImplementation::stopWatch(uint64 entid, bool doSendPackets, b
 	}
 
 	if (doSendPackets)
-		sendEntertainmentUpdate(0, "");
+		sendEntertainmentUpdate(0, moodStr);
 
 	if (isPlayer() && creature != NULL) {
 		StringBuffer msg;
@@ -4006,7 +3979,7 @@ void CreatureObjectImplementation::stopListen(uint64 entid, bool doSendPackets, 
 	}
 
 	if (doSendPackets)
-		sendEntertainmentUpdate(0, "");
+		sendEntertainmentUpdate(0, moodStr);
 
 	if (isPlayer() && creature != NULL) {
 		StringBuffer msg;

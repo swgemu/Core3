@@ -489,6 +489,7 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		playerManager->updateOtherFriendlists(_this, true);
+		displayMessageoftheDay();
 
 		//unlock();
 	} catch (Exception& e) {
@@ -578,6 +579,7 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		_this->fillMissionSaveVars(); //REAL
 
 		playerManager->updateOtherFriendlists(_this, true);
+		displayMessageoftheDay();
 
 		unlock();
 	} catch (Exception& e) {
@@ -640,6 +642,9 @@ void PlayerImplementation::unload() {
 	}
 
 	savePlayerState();
+
+	// Check if Message of the day suibox is still around
+	removeOldSuiBoxIfPresent(SuiBoxType::MOTD);
 
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
@@ -2329,7 +2334,7 @@ void PlayerImplementation::resurrect() {
 		resurrectEvent = NULL;
 	}
 
-	uint32 boxID = getSuiBoxFromType(0xC103); //Activate Clone SuiBox
+	uint32 boxID = getSuiBoxFromType(SuiBoxType::CLONE_REQUEST); //Activate Clone SuiBox
 
 	if (hasSuiBox(boxID)) {
 		SuiBox* sui = getSuiBox(boxID);
@@ -2408,8 +2413,8 @@ void PlayerImplementation::doDigest() {
 }
 
 void PlayerImplementation::activateClone() {
-	if (hasSuiBoxType(0xC103)) {
-		int boxID = getSuiBoxFromType(0xC103);
+	if (hasSuiBoxType(SuiBoxType::CLONE_REQUEST)) {
+		int boxID = getSuiBoxFromType(SuiBoxType::CLONE_REQUEST);
 		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
 
 		if (sui != NULL) {
@@ -2419,7 +2424,7 @@ void PlayerImplementation::activateClone() {
 		}
 	}
 
-	SuiListBox* cloneMenu = new SuiListBox(_this, 0xC103);
+	SuiListBox* cloneMenu = new SuiListBox(_this, SuiBoxType::CLONE_REQUEST);
 
 	cloneMenu->setPromptTitle("@base_player:revive_title");
 
@@ -2557,8 +2562,8 @@ void PlayerImplementation::sendConsentBox() {
 		return;
 	}
 
-	if (hasSuiBoxType(0xC057)) {
-		int boxID = getSuiBoxFromType(0xC057);
+	if (hasSuiBoxType(SuiBoxType::CONSENT)) {
+		int boxID = getSuiBoxFromType(SuiBoxType::CONSENT);
 		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
 
 		if (sui != NULL) {
@@ -2568,7 +2573,7 @@ void PlayerImplementation::sendConsentBox() {
 		}
 	}
 
-	SuiListBox* consentBox = new SuiListBox(_this, 0xC057);
+	SuiListBox* consentBox = new SuiListBox(_this, SuiBoxType::CONSENT);
 
 	consentBox->setPromptTitle("Consent List");
 	consentBox->setPromptText("Below is listed all players whom you have given consent.");
@@ -5489,7 +5494,7 @@ void PlayerImplementation::teachPlayer(Player* player) {
 	if (trainboxes.size() > 0) {
 		setStudent(player);
 		player->setTeacher(_this);
-		SuiListBox* sbox = new SuiListBox(player, 0x7848);
+		SuiListBox* sbox = new SuiListBox(player, SuiBoxType::TEACH_PLAYER);
 		sbox->setPromptTitle("@sui:teach");
 		sbox->setPromptText("What would you like to teach?");
 		sbox->setCancelButton(true);
@@ -5569,5 +5574,33 @@ void PlayerImplementation::throwTrap(uint64 targetID) {
 			}
 		}
 	}
+}
+
+void PlayerImplementation::removeOldSuiBoxIfPresent(const int suiBoxType) {
+	if (hasSuiBoxType(suiBoxType)) {
+		int boxID = getSuiBoxFromType(suiBoxType);
+		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
+
+		if (sui != NULL) {
+			sendMessage(sui->generateCloseMessage());
+			removeSuiBox(boxID);
+			sui->finalize();
+		}
+	}
+}
+
+void PlayerImplementation::displayMessageoftheDay() {
+
+	removeOldSuiBoxIfPresent(SuiBoxType::MOTD);
+
+	String motd = server->getZoneServer()->getMessageoftheDay();
+
+	SuiMessageBox* suiMessageBox = new SuiMessageBox(_this, SuiBoxType::MOTD);
+
+	suiMessageBox->setPromptTitle("Message of the Day");
+	suiMessageBox->setPromptText(motd);
+
+	addSuiBox(suiMessageBox);
+	sendMessage(suiMessageBox->generateMessage());
 }
 

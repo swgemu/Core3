@@ -42,18 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "TicketCollectorImplementation.h"
-
-#include "../Inventory.h"
-
-#include "../ticket/Ticket.h"
-
-#include "../../creature/shuttle/ShuttleCreature.h"
-#include "../../player/sui/listbox/SuiListBoxImplementation.h"
-
 #include "../../../Zone.h"
 #include "../../../managers/item/ItemManager.h"
 
+#include "../../../objects.h"
 #include "../../../packets.h"
 
 TicketCollectorImplementation::TicketCollectorImplementation(ShuttleCreature* shutle, uint64 objid, const UnicodeString& n,
@@ -97,7 +89,7 @@ int TicketCollectorImplementation::useObject(Player* player) {
 
 	Inventory* inventory = player->getInventory();
 
-	SuiListBox* sui = new SuiListBox(player, 0xAFAF);
+	SuiListBox* sui = new SuiListBox(player, SuiBoxType::TICKET_COLLECTOR_RESPONSES);
 	sui->setPromptTitle("@travel:ticket_collector_name");
 	sui->setPromptText("@travel:boarding_ticket_selection");
 	sui->setCancelButton(true);

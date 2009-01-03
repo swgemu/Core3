@@ -351,7 +351,8 @@ const static char* MoodStr[][2]= {
     {"hurried", "neutral"},
     {"patient", "neutral"},
     {"firm", "neutral"},
-    {"meditating", "meditating"}
+    {"meditating", "meditating"},
+	{"entertained", "entertained"}
 
 };
 

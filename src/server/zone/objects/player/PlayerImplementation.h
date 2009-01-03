@@ -59,6 +59,7 @@ which carries forward this exception.
 
 #include "../terrain/RegionNames.h"
 
+#include "sui/SuiBoxType.h"
 #include "sui/SuiBoxImplementation.h"
 #include "sui/listbox/SuiListBoxImplementation.h"
 
@@ -1204,7 +1205,7 @@ public:
 		return playerObject->saveExperience();
 	}
 
-	/** 
+	/**
 	 * Calculates the experience cap for a certain xp type, defaults to 2000.
 	 * \param xptype The string value for the type of experience to calculate the cap for.
 	 * \return The experience cap of the experience type for the player.
@@ -1250,7 +1251,7 @@ public:
 	/**
 	 * Removes a list of weapon/object certifications, usually through skillBox dropping.
 	 * \param certs A Vector of certifications that is to be removed from the player.
-	 * \param updateClient Boolean to determing whether the client should receive a delta packet for 
+	 * \param updateClient Boolean to determing whether the client should receive a delta packet for
 	 */
 	void removeCertifications(Vector<Certification*>& certs, bool updateClient = false);
 
@@ -1887,6 +1888,9 @@ public:
 		else
 			return equippedItems->getArmor(location);
 	}
+
+	void removeOldSuiBoxIfPresent(const int suiBoxType);
+	void displayMessageoftheDay();
 
 	friend class PlayerManager;
 	friend class ProfessionManager;
