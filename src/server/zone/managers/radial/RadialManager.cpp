@@ -253,7 +253,7 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		handleStructureDestroy(player, obj);
 		break;
 	case 133: // Pay Maintenance
-		handleStructureAddMaintenance(player, obj);
+		handleStructureManageMaintenance(player, obj);
 		break;
 	case 130: // Crafting tool hopper item retrieval
 		handleOpenCraftingToolHopper(player, obj);
@@ -404,7 +404,7 @@ void RadialManager::sendRadialResponseForBazaar(uint64 objectId, Player* player)
 void RadialManager::sendRadialResponseForBank(uint64 objectId, Player* player) {
 	Zone* zone = player->getZone();
 
-	SuiBankTransferBox* sui = new SuiBankTransferBox(player, SuiBoxType::BANK_TRANSFER);
+	SuiBankTransferBox* sui = new SuiBankTransferBox(player, SuiWindowType::BANK_TRANSFER);
 
 	sui->addCash(player->getCashCredits());
 	sui->addBank(player->getBankCredits());
@@ -558,7 +558,7 @@ void RadialManager::handleWearableColorChange(Player* player, SceneObject* obj) 
 	if (player->getInventoryItem(wearable->getObjectID()) == NULL)
 		return;
 
-	SuiColorPicker* sui = new SuiColorPicker(player, wearable->getObjectID(), SuiBoxType::COLOR_PICKER2);
+	SuiColorPicker* sui = new SuiColorPicker(player, wearable->getObjectID(), SuiWindowType::COLOR_PICKER2);
 
 	player->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
@@ -649,13 +649,20 @@ void RadialManager::handleSetName(Player* player, SceneObject* obj) {
 	}
 }
 
-void RadialManager::handleStructureAddMaintenance(Player* player, SceneObject* obj) {
+void RadialManager::handleStructureManageMaintenance(Player* player, SceneObject* obj) {
 	try{
-		InstallationObject * inso = (InstallationObject*) obj;
+		if(!obj->isTangible())
+			return;
+
+		TangibleObject* tano = (TangibleObject*) obj;
+
+		if(!tano->isInstallation())
+			return;
+
+		InstallationObject * inso = (InstallationObject*) tano;
 
 		if (inso!= NULL)
-
-			inso->handleStructureAddMaintenance(player);
+			inso->handleStructureManageMaintenance(player);
 
 		/*else {
 			BuildingObject * buio = (BuildingObject * ) obj;
@@ -667,15 +674,22 @@ void RadialManager::handleStructureAddMaintenance(Player* player, SceneObject* o
 
 	}
 	catch(...){
-		System::out << "Unreported exception in RadialManager::handleStructureAddMaintenance\n";
+		System::out << "Unreported exception in RadialManager::handleStructureManageMaintenance\n";
 	}
 }
 void RadialManager::handleStructureAddEnergy(Player* player, SceneObject* obj) {
 	try{
-		InstallationObject * inso = (InstallationObject*) obj;
+		if(!obj->isTangible())
+			return;
+
+		TangibleObject* tano = (TangibleObject*) obj;
+
+		if(!tano->isInstallation())
+			return;
+
+		InstallationObject * inso = (InstallationObject*) tano;
 
 		if (inso!= NULL)
-
 			inso->handleStructureAddEnergy(player);
 
 		/*else {
@@ -789,7 +803,7 @@ void RadialManager::sendRadialResponseForSurveyToolRange(Player* player, SceneOb
 
 	int surveyMod = player->getSkillMod(surveying);
 
-	SuiListBox* suiToolRangeBox = new SuiListBox(player, SuiBoxType::SURVEY_TOOL_RANGE);
+	SuiListBox* suiToolRangeBox = new SuiListBox(player, SuiWindowType::SURVEY_TOOL_RANGE);
 	suiToolRangeBox->setPromptTitle("@base_player:swg");
 	suiToolRangeBox->setPromptText("@survey:select_range");
 
@@ -855,12 +869,12 @@ void RadialManager::handleHarvest(Player* player, SceneObject* obj, int type) {
 }
 
 void RadialManager::handleGuildCreationTag(Player* player) {
-	if (player->hasSuiBoxType(SuiBoxType::GUILD_CREATION_INPUT_FOR_TAG) || player->hasSuiBoxType(SuiBoxType::GUILD_CREATION_INPUT_FOR_NAME))
+	if (player->hasSuiBoxWindowType(SuiWindowType::GUILD_CREATION_INPUT_FOR_TAG) || player->hasSuiBoxWindowType(SuiWindowType::GUILD_CREATION_INPUT_FOR_NAME))
 		return;
 
 	player->setInputBoxReturnBuffer("");
 
-	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_CREATION_INPUT_FOR_TAG, 0);
+	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATION_INPUT_FOR_TAG, 0);
 
 	suiInpBox->setPromptTitle("@guild:create_abbrev_title");
 	suiInpBox->setPromptText("@guild:create_abbrev_prompt");
@@ -873,7 +887,7 @@ void RadialManager::handleGuildCreationTag(Player* player) {
 }
 
 void RadialManager::handleGuildSponsor(Player* player) {
-	if (player->hasSuiBoxType(SuiBoxType::GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME))
+	if (player->hasSuiBoxWindowType(SuiWindowType::GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME))
 		return;
 
 	if ( ! ( ( player->getGuildPermissions() ) & (PlayerImplementation::GUILDSPONSOR) ) ) {
@@ -883,7 +897,7 @@ void RadialManager::handleGuildSponsor(Player* player) {
 
 	player->setInputBoxReturnBuffer("");
 
-	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME, 0);
+	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiWindowType::GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME, 0);
 
 	suiInpBox->setPromptTitle("@guild:sponsor_title");
 	suiInpBox->setPromptText("@guild:sponsor_prompt");
@@ -928,7 +942,7 @@ void RadialManager::handleGuildDisband(Player* player) {
 		return;
 	}
 
-	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_DISBAND, 0);
+	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiWindowType::GUILD_DISBAND, 0);
 
 	StringBuffer prompt;
 	prompt << "@guild:disband_prompt " << endl << endl << "To confirm the disbanding of your guild, "

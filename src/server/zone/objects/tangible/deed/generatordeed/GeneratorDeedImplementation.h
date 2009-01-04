@@ -13,7 +13,7 @@ class SceneObject;
 
 class GeneratorDeedImplementation : public GeneratorDeedServant {
 protected:
-	int type;
+	int type, lotSize;
 
 	float maintenanceRate, extractionRate, hopperSize;
 	uint32 surplusMaintenance;
@@ -53,6 +53,12 @@ public:
 		String attr("hopperSize");
 		itemAttributes->setFloatAttribute(attr, (float)hopperSize);
 	}
+	inline void setLotSize(int size) {
+		lotSize = size;
+		String attr("lotSize");
+		itemAttributes->setIntAttribute(attr, lotSize);
+	}
+
 	// Attribute Getters
 	inline uint32 getSurplusMaintenance() {
 		return surplusMaintenance;
@@ -65,6 +71,9 @@ public:
 	}
 	inline float getHopperSize() {
 		return hopperSize;
+	}
+	inline int getLotSize() {
+		return lotSize;
 	}
 private:
 	void init();

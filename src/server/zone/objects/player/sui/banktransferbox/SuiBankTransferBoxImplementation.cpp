@@ -46,8 +46,8 @@ which carries forward this exception.
 
 #include "../../../../packets.h"
 
-SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(Player* player, uint32 boxType) :
-	SuiBankTransferBoxServant(player, boxType, BANKTRANSFERBOX) {
+SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(Player* player, uint32 windowType) :
+	SuiBankTransferBoxServant(player, windowType, BANKTRANSFERBOX) {
 
 	options = 0;
 

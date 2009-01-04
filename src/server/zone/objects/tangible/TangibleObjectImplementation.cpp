@@ -149,6 +149,17 @@ void TangibleObjectImplementation::parseAttributes() {
 	conditionDamage = (maxCondition - itemAttributes->getCurrentCondition());
 }
 
+void TangibleObjectImplementation::parseItemAttributes() {
+	String attr = "craftersname";
+	setCraftersName(itemAttributes->getStringAttribute(attr));
+
+	attr = "craftedserial";
+	setCraftedSerial(itemAttributes->getStringAttribute(attr));
+
+	attr = "looted";
+	setLoot(itemAttributes->getBooleanAttribute(attr));
+}
+
 void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {
 	switch (skillModType) {
 	case 1:
@@ -351,7 +362,7 @@ void TangibleObjectImplementation::setObjectName(Player * player) {
 		player->setCurrentStructureID(this->getObjectID());
 		//player->unlock();
 
-		SuiInputBox * setTheName = new SuiInputBox(player, SuiBoxType::REMOVE_FROM_GUILD, 0x00);
+		SuiInputBox * setTheName = new SuiInputBox(player, SuiWindowType::REMOVE_FROM_GUILD, 0x00);
 
 		setTheName->setPromptTitle("Name the Object");
 		setTheName->setPromptText("Please enter the new name you would like for this object");

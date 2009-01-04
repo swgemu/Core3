@@ -100,12 +100,25 @@ void GeneratorDeed::setHopperSize(float size) {
 		((GeneratorDeedImplementation*) _impl)->setHopperSize(size);
 }
 
-int GeneratorDeed::getSurplusMaintenance() {
+void GeneratorDeed::setLotSize(int size) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+		method.addSignedIntParameter(size);
+
+		method.executeWithVoidReturn();
+	} else
+		((GeneratorDeedImplementation*) _impl)->setLotSize(size);
+}
+
+int GeneratorDeed::getSurplusMaintenance() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -117,7 +130,7 @@ float GeneratorDeed::getMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -129,7 +142,7 @@ float GeneratorDeed::getExtractionRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -141,11 +154,23 @@ float GeneratorDeed::getHopperSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithFloatReturn();
 	} else
 		return ((GeneratorDeedImplementation*) _impl)->getHopperSize();
+}
+
+int GeneratorDeed::getLotSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((GeneratorDeedImplementation*) _impl)->getLotSize();
 }
 
 /*
@@ -175,16 +200,22 @@ Packet* GeneratorDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		setHopperSize(inv->getFloatParameter());
 		break;
 	case 11:
-		resp->insertSignedInt(getSurplusMaintenance());
+		setLotSize(inv->getSignedIntParameter());
 		break;
 	case 12:
-		resp->insertFloat(getMaintenanceRate());
+		resp->insertSignedInt(getSurplusMaintenance());
 		break;
 	case 13:
-		resp->insertFloat(getExtractionRate());
+		resp->insertFloat(getMaintenanceRate());
 		break;
 	case 14:
+		resp->insertFloat(getExtractionRate());
+		break;
+	case 15:
 		resp->insertFloat(getHopperSize());
+		break;
+	case 16:
+		resp->insertSignedInt(getLotSize());
 		break;
 	default:
 		return NULL;
@@ -213,6 +244,10 @@ void GeneratorDeedAdapter::setHopperSize(float size) {
 	return ((GeneratorDeedImplementation*) impl)->setHopperSize(size);
 }
 
+void GeneratorDeedAdapter::setLotSize(int size) {
+	return ((GeneratorDeedImplementation*) impl)->setLotSize(size);
+}
+
 int GeneratorDeedAdapter::getSurplusMaintenance() {
 	return ((GeneratorDeedImplementation*) impl)->getSurplusMaintenance();
 }
@@ -227,6 +262,10 @@ float GeneratorDeedAdapter::getExtractionRate() {
 
 float GeneratorDeedAdapter::getHopperSize() {
 	return ((GeneratorDeedImplementation*) impl)->getHopperSize();
+}
+
+int GeneratorDeedAdapter::getLotSize() {
+	return ((GeneratorDeedImplementation*) impl)->getLotSize();
 }
 
 /*

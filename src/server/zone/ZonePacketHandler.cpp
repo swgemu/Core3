@@ -369,6 +369,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 }
 
 void ZonePacketHandler::handleCmdSceneReady(Message* pack) {
+	info("ZonePacketHandler::handleCmdSceneReady");
 	ZoneClientSessionImplementation* client = (ZoneClientSessionImplementation*) pack->getClient();
 
 	BaseMessage* csr = new CmdSceneReady();

@@ -59,8 +59,8 @@ private:
 	void generateHeader(BaseMessage* msg);
 
 public:
-	SuiColorPickerImplementation(Player* player, uint64 objectId, uint32 boxType);
-	SuiColorPickerImplementation(Player* player, uint64 objectId, const String& var, uint32 boxType);
+	SuiColorPickerImplementation(Player* player, uint64 objectId, uint32 windowType);
+	SuiColorPickerImplementation(Player* player, uint64 objectId, const String& var, uint32 windowType);
 
 	BaseMessage* generateMessage();
 

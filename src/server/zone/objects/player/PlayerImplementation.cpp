@@ -280,6 +280,7 @@ void PlayerImplementation::initialize() {
 
  	chatRooms.setInsertPlan(SortedVector<ChatRoom*>::NO_DUPLICATE);
 
+ 	setLotsRemaining(10);
  	centered = false;
 
  	powerboosted = false;
@@ -488,8 +489,8 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		resetArmorEncumbrance();
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		playerManager->updateOtherFriendlists(_this, true);
-		displayMessageoftheDay();
+		//playerManager->updateOtherFriendlists(_this, true);
+		//displayMessageoftheDay();
 
 		//unlock();
 	} catch (Exception& e) {
@@ -644,7 +645,7 @@ void PlayerImplementation::unload() {
 	savePlayerState();
 
 	// Check if Message of the day suibox is still around
-	removeOldSuiBoxIfPresent(SuiBoxType::MOTD);
+	removeOldSuiBoxIfPresent(SuiWindowType::MOTD);
 
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
@@ -1074,12 +1075,13 @@ void PlayerImplementation::resetArmorEncumbrance() {
 	mindEncumbrance = equippedItems->getMindEncumbrance();
 }
 
-void PlayerImplementation::sendToOwner() {
+void PlayerImplementation::sendToOwner(bool doClose) {
 
 	// Why is this here? -Bobius
 	//if (faction != 0)
 	//	pvpStatusBitmask |= CreatureFlag::OVERT;
 
+	info("PlayerImplementation::sendToOwner");
 	CreatureObjectImplementation::sendToOwner(_this, false);
 
 	playerObject->sendToOwner();
@@ -1088,10 +1090,11 @@ void PlayerImplementation::sendToOwner() {
 	sendPersonalContainers();
 	sendGuildList();
 
-	CreatureObjectImplementation::close(owner);
+	//if (parent != NULL)
+	//	parent->sendTo(_this);
 
-	if (parent != NULL)
-		parent->sendTo(_this);
+	if(doClose)
+		CreatureObjectImplementation::close(owner);
 }
 
 void PlayerImplementation::sendTo(Player* player, bool doClose) {
@@ -1127,7 +1130,7 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 	try {
 		zone->lock();
 
-		info("inserting to zone");
+		info("PlayerImplementation::insertToZone");
 
 		if (parent == NULL)
 			setPosition(positionX, zone->getHeight(positionX, positionY), positionY);
@@ -1139,11 +1142,10 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 		sendToOwner();
 
 		if (parent != NULL && parent->isCell()) {
+			info("parent is not null and is a cell");
 			BuildingObject* building = (BuildingObject*) parent->getParent();
 
 			insertToBuilding(building);
-
-			building->notifyInsertToZone(_this);
 
 			if (!building->getStorageLoaded()) {
 				ZoneServer* zserver = zone->getZoneServer();
@@ -1153,14 +1155,14 @@ void PlayerImplementation::insertToZone(Zone* zone) {
 
 				itemManager->loadStructurePlayerItems(_this, parent->getObjectID());
 
-				owner->resetPacketCheckupTime();
-
-				return;
+				zone->lock();
 			}
 		} else {
 			zone->insert(this);
 			zone->inRange(this, 128);
 		}
+
+
 
 		owner->resetPacketCheckupTime();
 
@@ -1179,7 +1181,7 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 	try {
 		//building->lock(doLock);
 
-		info("inserting to building");
+		info("PlayerImplementation::insertToBuilding");
 
 		((CellObject*)parent)->addChild(_this);
 
@@ -1188,10 +1190,13 @@ void PlayerImplementation::insertToBuilding(BuildingObject* building, bool doLoc
 
 		//building->unlock(doLock);
 
+		building->notifyInsertToZone(_this);
+
 		linkType = 0xFFFFFFFF;
 		//linkType = 0x04;
 		broadcastMessage(link(parent->getObjectID(), 0xFFFFFFFF), 128, false);
 
+		info("just sent cell link to everyone else");
 	} catch (...) {
 		error("exception PlayerImplementation::insertToBuilding(BuildingObject* building)");
 
@@ -1339,7 +1344,9 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 		BuildingObject* building = (BuildingObject*) parent->getParent();
 
 		if (insert) {
+			info("insertToBuilding from updateZoneWithParent");
 			insertToBuilding(building, false);
+
 		} else {
 			building->update(this);
 			building->inRange(this, 128);
@@ -2334,7 +2341,7 @@ void PlayerImplementation::resurrect() {
 		resurrectEvent = NULL;
 	}
 
-	uint32 boxID = getSuiBoxFromType(SuiBoxType::CLONE_REQUEST); //Activate Clone SuiBox
+	uint32 boxID = getSuiBoxFromWindowType(SuiWindowType::CLONE_REQUEST); //Activate Clone SuiBox
 
 	if (hasSuiBox(boxID)) {
 		SuiBox* sui = getSuiBox(boxID);
@@ -2413,8 +2420,8 @@ void PlayerImplementation::doDigest() {
 }
 
 void PlayerImplementation::activateClone() {
-	if (hasSuiBoxType(SuiBoxType::CLONE_REQUEST)) {
-		int boxID = getSuiBoxFromType(SuiBoxType::CLONE_REQUEST);
+	if (hasSuiBoxWindowType(SuiWindowType::CLONE_REQUEST)) {
+		int boxID = getSuiBoxFromWindowType(SuiWindowType::CLONE_REQUEST);
 		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
 
 		if (sui != NULL) {
@@ -2424,7 +2431,7 @@ void PlayerImplementation::activateClone() {
 		}
 	}
 
-	SuiListBox* cloneMenu = new SuiListBox(_this, SuiBoxType::CLONE_REQUEST);
+	SuiListBox* cloneMenu = new SuiListBox(_this, SuiWindowType::CLONE_REQUEST);
 
 	cloneMenu->setPromptTitle("@base_player:revive_title");
 
@@ -2562,8 +2569,8 @@ void PlayerImplementation::sendConsentBox() {
 		return;
 	}
 
-	if (hasSuiBoxType(SuiBoxType::CONSENT)) {
-		int boxID = getSuiBoxFromType(SuiBoxType::CONSENT);
+	if (hasSuiBoxWindowType(SuiWindowType::CONSENT)) {
+		int boxID = getSuiBoxFromWindowType(SuiWindowType::CONSENT);
 		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
 
 		if (sui != NULL) {
@@ -2573,7 +2580,7 @@ void PlayerImplementation::sendConsentBox() {
 		}
 	}
 
-	SuiListBox* consentBox = new SuiListBox(_this, SuiBoxType::CONSENT);
+	SuiListBox* consentBox = new SuiListBox(_this, SuiWindowType::CONSENT);
 
 	consentBox->setPromptTitle("Consent List");
 	consentBox->setPromptText("Below is listed all players whom you have given consent.");
@@ -5445,7 +5452,7 @@ void PlayerImplementation::teachPlayer(Player* player) {
 	if (trainboxes.size() > 0) {
 		setStudent(player);
 		player->setTeacher(_this);
-		SuiListBox* sbox = new SuiListBox(player, SuiBoxType::TEACH_PLAYER);
+		SuiListBox* sbox = new SuiListBox(player, SuiWindowType::TEACH_PLAYER);
 		sbox->setPromptTitle("@sui:teach");
 		sbox->setPromptText("What would you like to teach?");
 		sbox->setCancelButton(true);
@@ -5527,9 +5534,9 @@ void PlayerImplementation::throwTrap(uint64 targetID) {
 	}
 }
 
-void PlayerImplementation::removeOldSuiBoxIfPresent(const int suiBoxType) {
-	if (hasSuiBoxType(suiBoxType)) {
-		int boxID = getSuiBoxFromType(suiBoxType);
+void PlayerImplementation::removeOldSuiBoxIfPresent(const int suiWindowType) {
+	if (hasSuiBoxWindowType(suiWindowType)) {
+		int boxID = getSuiBoxFromWindowType(suiWindowType);
 		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
 
 		if (sui != NULL) {
@@ -5542,11 +5549,11 @@ void PlayerImplementation::removeOldSuiBoxIfPresent(const int suiBoxType) {
 
 void PlayerImplementation::displayMessageoftheDay() {
 
-	removeOldSuiBoxIfPresent(SuiBoxType::MOTD);
+	removeOldSuiBoxIfPresent(SuiWindowType::MOTD);
 
 	String motd = server->getZoneServer()->getMessageoftheDay();
 
-	SuiMessageBox* suiMessageBox = new SuiMessageBox(_this, SuiBoxType::MOTD);
+	SuiMessageBox* suiMessageBox = new SuiMessageBox(_this, SuiWindowType::MOTD);
 
 	suiMessageBox->setPromptTitle("Message of the Day");
 	suiMessageBox->setPromptText(motd);

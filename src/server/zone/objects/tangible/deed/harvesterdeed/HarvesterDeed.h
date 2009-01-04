@@ -9,6 +9,8 @@
 
 class DeedObject;
 
+class HarvesterObject;
+
 class TangibleObject;
 
 class packets;
@@ -25,6 +27,8 @@ public:
 
 	HarvesterDeed(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
+	HarvesterDeed(CreatureObject* creature, HarvesterObject* hino);
+
 	void parseItemAttributes();
 
 	void setSurplusMaintenance(int maint);
@@ -37,6 +41,8 @@ public:
 
 	void setHopperSize(float size);
 
+	void setLotSize(int size);
+
 	int getSurplusMaintenance();
 
 	float getMaintenanceRate();
@@ -46,6 +52,8 @@ public:
 	float getExtractionRate();
 
 	float getHopperSize();
+
+	int getLotSize();
 
 protected:
 	HarvesterDeed(DummyConstructorParameter* param);
@@ -75,6 +83,8 @@ public:
 
 	void setHopperSize(float size);
 
+	void setLotSize(int size);
+
 	int getSurplusMaintenance();
 
 	float getMaintenanceRate();
@@ -84,6 +94,8 @@ public:
 	float getExtractionRate();
 
 	float getHopperSize();
+
+	int getLotSize();
 
 };
 
@@ -111,6 +123,7 @@ public:
 public:
 	HarvesterDeedServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	HarvesterDeedServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	HarvesterDeedServant(unsigned long long oid, int tp);
 	virtual ~HarvesterDeedServant();
 
 	void _setStub(DistributedObjectStub* stub);

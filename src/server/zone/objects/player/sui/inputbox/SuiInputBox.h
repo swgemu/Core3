@@ -17,7 +17,7 @@ class Player;
 
 class SuiInputBox : public SuiBox {
 public:
-	SuiInputBox(Player* player, unsigned int boxType, int inputtype);
+	SuiInputBox(Player* player, unsigned int windowType, int inputtype);
 
 	BaseMessage* generateMessage();
 
@@ -77,7 +77,7 @@ public:
 	SuiInputBox* _this;
 
 public:
-	SuiInputBoxServant(Player* player, unsigned int boxType, unsigned int typeId);
+	SuiInputBoxServant(Player* player, unsigned int windowType, unsigned int boxType);
 	virtual ~SuiInputBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

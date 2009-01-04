@@ -63,7 +63,7 @@ int ResourceDeedImplementation::useObject(Player* player) {
 
 	ResourceManager* resourceManager = player->getZone()->getZoneServer()->getResourceManager();
 
-	SuiListBox* sui1 = new SuiListBox(player, SuiBoxType::FREE_RESOURCE);//beginning of sui chain
+	SuiListBox* sui1 = new SuiListBox(player, SuiWindowType::FREE_RESOURCE);//beginning of sui chain
 
 	sui1->setPromptTitle("Resources");
 	sui1->setPromptText("Choose resource class.");

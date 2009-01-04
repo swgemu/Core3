@@ -46,9 +46,9 @@ which carries forward this exception.
 
 #include "../../../../packets.h"
 
-SuiMessageBoxImplementation::SuiMessageBoxImplementation(Player* player, uint32 boxType) :
-	SuiMessageBoxServant(player, boxType, MESSAGEBOX) {
-	
+SuiMessageBoxImplementation::SuiMessageBoxImplementation(Player* player, uint32 windowType) :
+	SuiMessageBoxServant(player, windowType, MESSAGEBOX) {
+
 }
 
 void SuiMessageBoxImplementation::generateHeader(BaseMessage* msg) {
@@ -70,10 +70,10 @@ void SuiMessageBoxImplementation::generateHeader(BaseMessage* msg) {
 BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* msg = new SuiCreatePageMessage(boxID);
 	generateHeader(msg);
-	
+
 	msg->insertOption(3, promptText, "Prompt.lblPrompt", "Text");
 	msg->insertOption(3, promptTitle, "bg.caption.lblTitle", "Text");
-	
+
 	if (cancelButton) {
 		msg->insertOption(3, "True", "btnCancel", "Enabled");
 		msg->insertOption(3, "True", "btnCancel", "Visible");
@@ -81,13 +81,13 @@ BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 		msg->insertOption(3, "False", "btnCancel", "Enabled");
 		msg->insertOption(3, "False", "btnCancel", "Visible");
 	}
-	
+
 	msg->insertOption(3, "False", "btnRevert", "Enabled");
 	msg->insertOption(3, "False", "btnRevert", "Visible");
 
 	msg->insertLong(0);
 	msg->insertInt(0);
 	msg->insertLong(0);
-	
+
 	return msg;
 }

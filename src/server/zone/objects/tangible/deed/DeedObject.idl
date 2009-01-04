@@ -56,6 +56,10 @@ interface DeedObject implements TangibleObject {
 		super(oid, tempCRC, n, tempn, int tp);
 	}
 
+	DeedObject(unsigned long oid, int tp)  {
+		super(oid, tp);
+	}
+	
 	UnicodeString getTargetName();
 
 	String getTargetFile();
@@ -70,5 +74,7 @@ interface DeedObject implements TangibleObject {
 	void generateAttributes(SceneObject obj);
 		
 	int getHarvesterType();
+	
+	String getDefaultTemplateName(int crc);
 }
 

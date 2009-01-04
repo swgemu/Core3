@@ -25,6 +25,8 @@ public:
 
 	DeedObject(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn);
 
+	DeedObject(unsigned long long oid, int tp);
+
 	UnicodeString& getTargetName();
 
 	String& getTargetFile();
@@ -41,11 +43,14 @@ public:
 
 	int getHarvesterType();
 
+	String& getDefaultTemplateName(int crc);
+
 protected:
 	DeedObject(DummyConstructorParameter* param);
 
 	virtual ~DeedObject();
 
+	String _return_getDefaultTemplateName;
 	String _return_getTargetFile;
 	String _return_getTargetTempFile;
 	String _return_getTargetTemplate;
@@ -79,6 +84,8 @@ public:
 
 	int getHarvesterType();
 
+	String& getDefaultTemplateName(int crc);
+
 protected:
 	String _param0_setTargetFile__String_;
 };
@@ -107,6 +114,7 @@ public:
 public:
 	DeedObjectServant(CreatureObject* creature, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
 	DeedObjectServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp);
+	DeedObjectServant(unsigned long long oid, int tp);
 	virtual ~DeedObjectServant();
 
 	void _setStub(DistributedObjectStub* stub);

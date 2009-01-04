@@ -49,8 +49,8 @@ which carries forward this exception.
 #include "../SuiBoxImplementation.h"
 #include "../../PlayerImplementation.h"
 
-SuiListBoxImplementation::SuiListBoxImplementation(Player* player, uint32 boxType, int listBoxType) :
-	SuiListBoxServant(player, boxType, LISTBOX) {
+SuiListBoxImplementation::SuiListBoxImplementation(Player* player, uint32 windowType, int listBoxType) :
+	SuiListBoxServant(player, windowType, LISTBOX) {
 	init();
 
 	type = listBoxType;

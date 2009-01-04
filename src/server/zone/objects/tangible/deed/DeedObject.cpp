@@ -30,6 +30,11 @@ DeedObject::DeedObject(unsigned long long oid, int tempCRC, const UnicodeString&
 	_impl->_setStub(this);
 }
 
+DeedObject::DeedObject(unsigned long long oid, int tp) : TangibleObject(DummyConstructorParameter::instance()) {
+	_impl = new DeedObjectImplementation(oid, tp);
+	_impl->_setStub(this);
+}
+
 DeedObject::DeedObject(DummyConstructorParameter* param) : TangibleObject(param) {
 }
 
@@ -139,6 +144,20 @@ int DeedObject::getHarvesterType() {
 		return ((DeedObjectImplementation*) _impl)->getHarvesterType();
 }
 
+String& DeedObject::getDefaultTemplateName(int crc) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+		method.addSignedIntParameter(crc);
+
+		method.executeWithAsciiReturn(_return_getDefaultTemplateName);
+		return _return_getDefaultTemplateName;
+	} else
+		return ((DeedObjectImplementation*) _impl)->getDefaultTemplateName(crc);
+}
+
 /*
  *	DeedObjectAdapter
  */
@@ -173,6 +192,9 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 13:
 		resp->insertSignedInt(getHarvesterType());
+		break;
+	case 14:
+		resp->insertAscii(getDefaultTemplateName(inv->getSignedIntParameter()));
 		break;
 	default:
 		return NULL;
@@ -211,6 +233,10 @@ void DeedObjectAdapter::generateAttributes(SceneObject* obj) {
 
 int DeedObjectAdapter::getHarvesterType() {
 	return ((DeedObjectImplementation*) impl)->getHarvesterType();
+}
+
+String& DeedObjectAdapter::getDefaultTemplateName(int crc) {
+	return ((DeedObjectImplementation*) impl)->getDefaultTemplateName(crc);
 }
 
 /*
@@ -253,6 +279,10 @@ DeedObjectServant::DeedObjectServant(CreatureObject* creature, int tempCRC, cons
 }
 
 DeedObjectServant::DeedObjectServant(unsigned long long oid, int tempCRC, const UnicodeString& n, const String& tempn, int tp) : TangibleObjectImplementation(oid, tempCRC, n, tempn, tp) {
+	_classHelper = DeedObjectHelper::instance();
+}
+
+DeedObjectServant::DeedObjectServant(unsigned long long oid, int tp) : TangibleObjectImplementation(oid, tp) {
 	_classHelper = DeedObjectHelper::instance();
 }
 

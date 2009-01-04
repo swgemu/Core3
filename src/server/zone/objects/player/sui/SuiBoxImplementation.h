@@ -69,7 +69,7 @@ protected:
 
 	int boxType;
 
-	uint32 boxTypeID;
+	uint32 windowType;
 
 public:
 	const static int INPUTBOX = 0;
@@ -80,7 +80,7 @@ public:
 	const static int BANKTRANSFERBOX = 5;
 
 public:
-	SuiBoxImplementation(Player* play, uint32 typeID, uint32 boxtype);
+	SuiBoxImplementation(Player* play, uint32 windowtype, uint32 boxtype);
 
 	virtual ~SuiBoxImplementation();
 
@@ -155,8 +155,8 @@ public:
 		return boxID;
 	}
 
-	inline int getBoxTypeID() {
-		return boxTypeID;
+	inline int getWindowType() {
+		return windowType;
 	}
 
 };

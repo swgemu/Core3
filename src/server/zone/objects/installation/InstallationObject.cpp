@@ -104,7 +104,7 @@ void InstallationObject::handleStructureStatus(Player* player) {
 		((InstallationObjectImplementation*) _impl)->handleStructureStatus(player);
 }
 
-void InstallationObject::handleStructureAddMaintenance(Player* player) {
+void InstallationObject::handleStructureManageMaintenance(Player* player) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -114,7 +114,7 @@ void InstallationObject::handleStructureAddMaintenance(Player* player) {
 
 		method.executeWithVoidReturn();
 	} else
-		((InstallationObjectImplementation*) _impl)->handleStructureAddMaintenance(player);
+		((InstallationObjectImplementation*) _impl)->handleStructureManageMaintenance(player);
 }
 
 void InstallationObject::handleStructureAddEnergy(Player* player) {
@@ -181,12 +181,24 @@ void InstallationObject::setOwnerID(unsigned long long owner) {
 		((InstallationObjectImplementation*) _impl)->setOwnerID(owner);
 }
 
-int InstallationObject::getDestroyCode() {
+unsigned int InstallationObject::getDeedCRC() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 17);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return ((InstallationObjectImplementation*) _impl)->getDeedCRC();
+}
+
+int InstallationObject::getDestroyCode() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -198,7 +210,7 @@ unsigned int InstallationObject::getNewDefenderUpdateCounter(unsigned int cnt) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 		method.addUnsignedIntParameter(cnt);
 
 		return method.executeWithUnsignedIntReturn();
@@ -211,7 +223,7 @@ void InstallationObject::addMaintenance(unsigned long long maint) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 		method.addUnsignedLongParameter(maint);
 
 		method.executeWithVoidReturn();
@@ -224,7 +236,7 @@ unsigned long long InstallationObject::getSurplusMaintenance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -236,7 +248,7 @@ float InstallationObject::getMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -248,7 +260,7 @@ void InstallationObject::addPower(unsigned long long pow) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 23);
 		method.addUnsignedLongParameter(pow);
 
 		method.executeWithVoidReturn();
@@ -261,7 +273,7 @@ unsigned long long InstallationObject::getSurplusPower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -273,7 +285,7 @@ float InstallationObject::getPowerRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -285,7 +297,7 @@ void InstallationObject::updateOperators() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 26);
 
 		method.executeWithVoidReturn();
 	} else
@@ -297,7 +309,7 @@ int InstallationObject::getOperatorListSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -309,7 +321,7 @@ SceneObject* InstallationObject::getOperator(int idx) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 28);
 		method.addSignedIntParameter(idx);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -322,7 +334,7 @@ void InstallationObject::addOperator(SceneObject* op) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 29);
 		method.addObjectParameter(op);
 
 		method.executeWithVoidReturn();
@@ -335,7 +347,7 @@ void InstallationObject::removeOperator(SceneObject* op) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 30);
 		method.addObjectParameter(op);
 
 		method.executeWithVoidReturn();
@@ -348,7 +360,7 @@ void InstallationObject::activateSync() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 31);
 
 		method.executeWithVoidReturn();
 	} else
@@ -360,7 +372,7 @@ bool InstallationObject::isOperating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -372,7 +384,7 @@ void InstallationObject::setOperating(bool state) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 33);
 		method.addBooleanParameter(state);
 
 		method.executeWithVoidReturn();
@@ -385,7 +397,7 @@ float InstallationObject::getExtractionRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -397,7 +409,7 @@ float InstallationObject::getActualRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -409,7 +421,7 @@ unsigned long long InstallationObject::getActiveResourceID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -421,7 +433,7 @@ float InstallationObject::getHopperSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -433,7 +445,7 @@ float InstallationObject::getHopperSizeMax() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 38);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -445,7 +457,7 @@ void InstallationObject::updateHopper() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 39);
 
 		method.executeWithVoidReturn();
 	} else
@@ -457,7 +469,7 @@ void InstallationObject::setHopperUpdateCounter(int counter) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 40);
 		method.addSignedIntParameter(counter);
 
 		method.executeWithVoidReturn();
@@ -470,7 +482,7 @@ int InstallationObject::getNewHopperUpdateCounter(int counter) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 41);
 		method.addSignedIntParameter(counter);
 
 		return method.executeWithSignedIntReturn();
@@ -483,7 +495,7 @@ int InstallationObject::getHopperUpdateCounter() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -495,7 +507,7 @@ int InstallationObject::getHopperItemCount() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -507,7 +519,7 @@ unsigned long long InstallationObject::getHopperItemID(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 44);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithUnsignedLongReturn();
@@ -520,7 +532,7 @@ float InstallationObject::getHopperItemQuantity(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 45);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithFloatReturn();
@@ -533,7 +545,7 @@ float InstallationObject::getHopperItemQuantity(unsigned long long rid) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 46);
 		method.addUnsignedLongParameter(rid);
 
 		return method.executeWithFloatReturn();
@@ -546,7 +558,7 @@ float InstallationObject::removeHopperItem(unsigned long long rid, int quantity)
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 47);
 		method.addUnsignedLongParameter(rid);
 		method.addSignedIntParameter(quantity);
 
@@ -582,7 +594,7 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		handleStructureStatus((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		handleStructureAddMaintenance((Player*) inv->getObjectParameter());
+		handleStructureManageMaintenance((Player*) inv->getObjectParameter());
 		break;
 	case 12:
 		handleStructureAddEnergy((Player*) inv->getObjectParameter());
@@ -600,93 +612,96 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 		setOwnerID(inv->getUnsignedLongParameter());
 		break;
 	case 17:
-		resp->insertSignedInt(getDestroyCode());
+		resp->insertInt(getDeedCRC());
 		break;
 	case 18:
-		resp->insertInt(getNewDefenderUpdateCounter(inv->getUnsignedIntParameter()));
+		resp->insertSignedInt(getDestroyCode());
 		break;
 	case 19:
-		addMaintenance(inv->getUnsignedLongParameter());
+		resp->insertInt(getNewDefenderUpdateCounter(inv->getUnsignedIntParameter()));
 		break;
 	case 20:
-		resp->insertLong(getSurplusMaintenance());
+		addMaintenance(inv->getUnsignedLongParameter());
 		break;
 	case 21:
-		resp->insertFloat(getMaintenanceRate());
+		resp->insertLong(getSurplusMaintenance());
 		break;
 	case 22:
-		addPower(inv->getUnsignedLongParameter());
+		resp->insertFloat(getMaintenanceRate());
 		break;
 	case 23:
-		resp->insertLong(getSurplusPower());
+		addPower(inv->getUnsignedLongParameter());
 		break;
 	case 24:
-		resp->insertFloat(getPowerRate());
+		resp->insertLong(getSurplusPower());
 		break;
 	case 25:
-		updateOperators();
+		resp->insertFloat(getPowerRate());
 		break;
 	case 26:
-		resp->insertSignedInt(getOperatorListSize());
+		updateOperators();
 		break;
 	case 27:
-		resp->insertLong(getOperator(inv->getSignedIntParameter())->_getObjectID());
+		resp->insertSignedInt(getOperatorListSize());
 		break;
 	case 28:
-		addOperator((SceneObject*) inv->getObjectParameter());
+		resp->insertLong(getOperator(inv->getSignedIntParameter())->_getObjectID());
 		break;
 	case 29:
-		removeOperator((SceneObject*) inv->getObjectParameter());
+		addOperator((SceneObject*) inv->getObjectParameter());
 		break;
 	case 30:
-		activateSync();
+		removeOperator((SceneObject*) inv->getObjectParameter());
 		break;
 	case 31:
-		resp->insertBoolean(isOperating());
+		activateSync();
 		break;
 	case 32:
-		setOperating(inv->getBooleanParameter());
+		resp->insertBoolean(isOperating());
 		break;
 	case 33:
-		resp->insertFloat(getExtractionRate());
+		setOperating(inv->getBooleanParameter());
 		break;
 	case 34:
-		resp->insertFloat(getActualRate());
+		resp->insertFloat(getExtractionRate());
 		break;
 	case 35:
-		resp->insertLong(getActiveResourceID());
+		resp->insertFloat(getActualRate());
 		break;
 	case 36:
-		resp->insertFloat(getHopperSize());
+		resp->insertLong(getActiveResourceID());
 		break;
 	case 37:
-		resp->insertFloat(getHopperSizeMax());
+		resp->insertFloat(getHopperSize());
 		break;
 	case 38:
-		updateHopper();
+		resp->insertFloat(getHopperSizeMax());
 		break;
 	case 39:
-		setHopperUpdateCounter(inv->getSignedIntParameter());
+		updateHopper();
 		break;
 	case 40:
-		resp->insertSignedInt(getNewHopperUpdateCounter(inv->getSignedIntParameter()));
+		setHopperUpdateCounter(inv->getSignedIntParameter());
 		break;
 	case 41:
-		resp->insertSignedInt(getHopperUpdateCounter());
+		resp->insertSignedInt(getNewHopperUpdateCounter(inv->getSignedIntParameter()));
 		break;
 	case 42:
-		resp->insertSignedInt(getHopperItemCount());
+		resp->insertSignedInt(getHopperUpdateCounter());
 		break;
 	case 43:
-		resp->insertLong(getHopperItemID(inv->getSignedIntParameter()));
+		resp->insertSignedInt(getHopperItemCount());
 		break;
 	case 44:
-		resp->insertFloat(getHopperItemQuantity(inv->getSignedIntParameter()));
+		resp->insertLong(getHopperItemID(inv->getSignedIntParameter()));
 		break;
 	case 45:
-		resp->insertFloat(getHopperItemQuantity(inv->getUnsignedLongParameter()));
+		resp->insertFloat(getHopperItemQuantity(inv->getSignedIntParameter()));
 		break;
 	case 46:
+		resp->insertFloat(getHopperItemQuantity(inv->getUnsignedLongParameter()));
+		break;
+	case 47:
 		resp->insertFloat(removeHopperItem(inv->getUnsignedLongParameter(), inv->getSignedIntParameter()));
 		break;
 	default:
@@ -716,8 +731,8 @@ void InstallationObjectAdapter::handleStructureStatus(Player* player) {
 	return ((InstallationObjectImplementation*) impl)->handleStructureStatus(player);
 }
 
-void InstallationObjectAdapter::handleStructureAddMaintenance(Player* player) {
-	return ((InstallationObjectImplementation*) impl)->handleStructureAddMaintenance(player);
+void InstallationObjectAdapter::handleStructureManageMaintenance(Player* player) {
+	return ((InstallationObjectImplementation*) impl)->handleStructureManageMaintenance(player);
 }
 
 void InstallationObjectAdapter::handleStructureAddEnergy(Player* player) {
@@ -738,6 +753,10 @@ unsigned long long InstallationObjectAdapter::getOwnerID() {
 
 void InstallationObjectAdapter::setOwnerID(unsigned long long owner) {
 	return ((InstallationObjectImplementation*) impl)->setOwnerID(owner);
+}
+
+unsigned int InstallationObjectAdapter::getDeedCRC() {
+	return ((InstallationObjectImplementation*) impl)->getDeedCRC();
 }
 
 int InstallationObjectAdapter::getDestroyCode() {

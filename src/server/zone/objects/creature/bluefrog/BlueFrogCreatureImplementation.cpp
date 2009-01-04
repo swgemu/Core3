@@ -187,7 +187,7 @@ void BlueFrogCreatureImplementation::sendProfessionChoices(Player* player) {
 void BlueFrogCreatureImplementation::sendSelectItemMessage(Player * player) {
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 
-	SuiListBox* sui = new SuiListBox(player, SuiBoxType::BLUE_FROG_ITEM_REQUEST);
+	SuiListBox* sui = new SuiListBox(player, SuiWindowType::BLUE_FROG_ITEM_REQUEST);
 	sui->setPromptTitle("Blue Frog Items");
 	sui->setPromptText("You can have any of the following item sets.");
 	sui->setCancelButton(true);
@@ -202,7 +202,7 @@ void BlueFrogCreatureImplementation::sendSelectItemMessage(Player * player) {
 }
 
 void BlueFrogCreatureImplementation::sendWoundTerminalMessage(Player * player) {
-	SuiListBox* sui = new SuiListBox(player, SuiBoxType::WOUND_TERMINAL_REQUEST);
+	SuiListBox* sui = new SuiListBox(player, SuiWindowType::WOUND_TERMINAL_REQUEST);
 	sui->setPromptTitle("@wound_terminal:beta_terminal_wound");
 	sui->setPromptText("Each selection will cause 500 wound damage.");
 	sui->setCancelButton(true);
@@ -222,7 +222,7 @@ void BlueFrogCreatureImplementation::sendWoundTerminalMessage(Player * player) {
 }
 
 void BlueFrogCreatureImplementation::sendStateTerminalMessage(Player * player) {
-	SuiListBox* sui = new SuiListBox(player, SuiBoxType::STATE_TERMINAL_REQUEST);
+	SuiListBox* sui = new SuiListBox(player, SuiWindowType::STATE_TERMINAL_REQUEST);
 	sui->setPromptTitle("State Terminal");
 	sui->setPromptText("Each selection will cause a state.  Use curepacks or statepacks to heal them.");
 	sui->setCancelButton(true);

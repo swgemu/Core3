@@ -35,6 +35,8 @@ public:
 
 	void setHopperSize(float size);
 
+	void setLotSize(int size);
+
 	int getSurplusMaintenance();
 
 	float getMaintenanceRate();
@@ -42,6 +44,8 @@ public:
 	float getExtractionRate();
 
 	float getHopperSize();
+
+	int getLotSize();
 
 protected:
 	GeneratorDeed(DummyConstructorParameter* param);
@@ -69,6 +73,8 @@ public:
 
 	void setHopperSize(float size);
 
+	void setLotSize(int size);
+
 	int getSurplusMaintenance();
 
 	float getMaintenanceRate();
@@ -76,6 +82,8 @@ public:
 	float getExtractionRate();
 
 	float getHopperSize();
+
+	int getLotSize();
 
 };
 

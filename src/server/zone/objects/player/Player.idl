@@ -377,6 +377,7 @@ interface Player implements CreatureObject {
 
 	void setBiography(const String bio);
 	void setBiography(UnicodeString bio);
+	void setLotsRemaining(int lots);
 
 	//void setHairData(String hair);
 
@@ -467,8 +468,8 @@ interface Player implements CreatureObject {
 	// SuiBoxes
 
 	boolean hasSuiBox(unsigned int boxID);
-	boolean hasSuiBoxType(unsigned int boxTypeID);
-	unsigned int getSuiBoxFromType(unsigned int boxTypeID);
+	boolean hasSuiBoxWindowType(unsigned int windowType);
+	unsigned int getSuiBoxFromWindowType(unsigned int windowType);
 
 	void removeSuiBox(unsigned int boxID);
 
@@ -502,6 +503,7 @@ interface Player implements CreatureObject {
 	unsigned char getRaceID();
 
 	UnicodeString getBiography();
+	int getLotsRemaining();
 	//String getHairData();
 
 	unsigned long getCharacterID();

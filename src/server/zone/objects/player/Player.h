@@ -433,6 +433,8 @@ public:
 
 	void setBiography(UnicodeString& bio);
 
+	void setLotsRemaining(int lots);
+
 	bool changeForcePowerBar(int fp);
 
 	void setForcePowerBar(int fp);
@@ -539,9 +541,9 @@ public:
 
 	bool hasSuiBox(unsigned int boxID);
 
-	bool hasSuiBoxType(unsigned int boxTypeID);
+	bool hasSuiBoxWindowType(unsigned int windowType);
 
-	unsigned int getSuiBoxFromType(unsigned int boxTypeID);
+	unsigned int getSuiBoxFromWindowType(unsigned int windowType);
 
 	void removeSuiBox(unsigned int boxID);
 
@@ -578,6 +580,8 @@ public:
 	unsigned char getRaceID();
 
 	UnicodeString& getBiography();
+
+	int getLotsRemaining();
 
 	unsigned long long getCharacterID();
 
@@ -1252,6 +1256,8 @@ public:
 
 	void setBiography(UnicodeString& bio);
 
+	void setLotsRemaining(int lots);
+
 	bool changeForcePowerBar(int fp);
 
 	void setForcePowerBar(int fp);
@@ -1358,9 +1364,9 @@ public:
 
 	bool hasSuiBox(unsigned int boxID);
 
-	bool hasSuiBoxType(unsigned int boxTypeID);
+	bool hasSuiBoxWindowType(unsigned int windowType);
 
-	unsigned int getSuiBoxFromType(unsigned int boxTypeID);
+	unsigned int getSuiBoxFromWindowType(unsigned int windowType);
 
 	void removeSuiBox(unsigned int boxID);
 
@@ -1397,6 +1403,8 @@ public:
 	unsigned char getRaceID();
 
 	UnicodeString& getBiography();
+
+	int getLotsRemaining();
 
 	unsigned long long getCharacterID();
 

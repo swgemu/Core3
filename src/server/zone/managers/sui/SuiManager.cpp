@@ -79,125 +79,134 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	GuildManager* pGuild = server->getGuildManager();
 
 	switch (type) {
-	case SuiBoxType::MOTD:
+	case SuiWindowType::MOTD:
 		handleMessageoftheDay(boxID, player, cancel);
-	case SuiBoxType::CONSENT:
+	case SuiWindowType::CONSENT:
 		handleConsentBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::CLONE_REQUEST:
+	case SuiWindowType::CLONE_REQUEST:
 		handleCloneRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::START_MUSIC:
+	case SuiWindowType::START_MUSIC:
 		handleStartMusic(boxID, player, cancel, value.toCharArray(), false);
 		break;
-	case SuiBoxType::START_DANCING:
+	case SuiWindowType::START_DANCING:
 		handleStartDancing(boxID, player, cancel, value.toCharArray(), false);
 		break;
-	case SuiBoxType::CHANGE_MUSIC: // changemusic
+	case SuiWindowType::CHANGE_MUSIC: // changemusic
 		handleStartMusic(boxID, player, cancel, value.toCharArray(), true);
 		break;
-	case SuiBoxType::CHANGE_DANCING: // changedance
+	case SuiWindowType::CHANGE_DANCING: // changedance
 		handleStartDancing(boxID, player, cancel, value.toCharArray(), true);
 		break;
-	case SuiBoxType::SURVEY_TOOL_RANGE:
+	case SuiWindowType::SURVEY_TOOL_RANGE:
 		range = (atoi(value.toCharArray()) * 64) + 64;
 		handleSurveyToolRange(boxID, player, cancel, range);
 		break;
-	case SuiBoxType::GUILD_CREATION_INPUT_FOR_TAG: // Guild creation InputBox #1 (Tag)
+	case SuiWindowType::GUILD_CREATION_INPUT_FOR_TAG: // Guild creation InputBox #1 (Tag)
 		returnString = value;
 		pGuild->handleGuildTag(boxID, player, cancel, returnString);
 		if (!cancel)
 			pGuild->handleGuildName(boxID, player, cancel, returnString);
 		break;
-	case SuiBoxType::GUILD_CREATION_INPUT_FOR_NAME: // Guild creation InputBox #2 (name)
+	case SuiWindowType::GUILD_CREATION_INPUT_FOR_NAME: // Guild creation InputBox #2 (name)
 		returnString = value;
 		pGuild->handleGuildName(boxID, player, cancel, returnString);
 		break;
-	case SuiBoxType::GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME: // Guild Sponsoring Member InputBox (name)
+	case SuiWindowType::GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME: // Guild Sponsoring Member InputBox (name)
 		returnString = value;
 		pGuild->handleGuildSponsor(boxID, player, cancel, returnString);
 		break;
-	case SuiBoxType::VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP: // Verify Messagebox Guild Sponsoring Target
+	case SuiWindowType::VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP: // Verify Messagebox Guild Sponsoring Target
 		pGuild->handleVerifyBoxSponsorTargetforGuildMembership(boxID, player, cancel);
 		break;
-	case SuiBoxType::SPONSORED_GUILD_MEMBERS: // Sponsored guild member box
+	case SuiWindowType::SPONSORED_GUILD_MEMBERS: // Sponsored guild member box
 		pGuild->handleSponsoredGuildMembersBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::SPONSORED_GUILD_MEMBERS_ACCEPT: // Sponsored guild member accept/decline box
+	case SuiWindowType::SPONSORED_GUILD_MEMBERS_ACCEPT: // Sponsored guild member accept/decline box
 		pGuild->handleSponsoredGuildMembersAcceptBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::GUILD_DISBAND: // Disband guild verify box
+	case SuiWindowType::GUILD_DISBAND: // Disband guild verify box
 		returnString = value;
 		pGuild->handleGuildDisbandBox(boxID, player, cancel, returnString);
 		break;
-	case SuiBoxType::GUILD_NAME_CHANGE: // Namechange guild (Tag box)
+	case SuiWindowType::GUILD_NAME_CHANGE: // Namechange guild (Tag box)
 		returnString = value;
 		pGuild->handleGuildNameChange(boxID, player, cancel, returnString);
 		break;
-	case SuiBoxType::GUILD_NAME_CHANGE_NAME: // Namechange guild (Tag box)
+	case SuiWindowType::GUILD_NAME_CHANGE_NAME: // Namechange guild (Tag box)
 		returnString = value;
 		pGuild->handleGuildNameChangeName(boxID, player, cancel, returnString);
 		break;
-	case SuiBoxType::GUILD_INFORMATION_MEMBERS: // Guild Information - Members
+	case SuiWindowType::GUILD_INFORMATION_MEMBERS: // Guild Information - Members
 		pGuild->handleGuildInformationMembersBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::GUILD_MEMBER_OPTIONS: // Guild Information - Member options
+	case SuiWindowType::GUILD_MEMBER_OPTIONS: // Guild Information - Member options
 		pGuild->handleGuildMemberOptions(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::GUILD_PERMISSION_SELECTION: // Guild member permissions
+	case SuiWindowType::GUILD_PERMISSION_SELECTION: // Guild member permissions
 		pGuild->handleGuildPermissionSelection(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::REMOVE_FROM_GUILD: // Guild remove from guild exec
+	case SuiWindowType::REMOVE_FROM_GUILD: // Guild remove from guild exec
 		pGuild->execRemoveFromGuild(boxID, player, cancel);
 		break;
-	case SuiBoxType::GUILD_TRANSFER_LEADER: // Guild Transfer-Leadership Name of Target SUI Box return
+	case SuiWindowType::GUILD_TRANSFER_LEADER: // Guild Transfer-Leadership Name of Target SUI Box return
 		returnString = value;
 		pGuild->handleGuildTransferLeaderBox(boxID, player, cancel, returnString);
 		break;
-	case SuiBoxType::GUILD_TRANSFER_LEADER_VERIFY: // Guild Transfer-Leadership Accept/Decline Box Return
+	case SuiWindowType::GUILD_TRANSFER_LEADER_VERIFY: // Guild Transfer-Leadership Accept/Decline Box Return
 		pGuild->handleGuildTransferLeaderVerifyBox(boxID, player, cancel);
 		break;
-	case SuiBoxType::TICKET_PURCHASE_MESSAGE:
+	case SuiWindowType::TICKET_PURCHASE_MESSAGE:
 		handleTicketPurchaseMessageBox(boxID, player);
 		break;
-	case SuiBoxType::TICKET_COLLECTOR_RESPONSES:
+	case SuiWindowType::TICKET_COLLECTOR_RESPONSES:
 		handleTicketCollectorRespones(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::COLOR_PICKER1:
+	case SuiWindowType::COLOR_PICKER1:
 		handleColorPicker(boxID, player, cancel, value, 2);
 		break;
-	case SuiBoxType::COLOR_PICKER2:
+	case SuiWindowType::COLOR_PICKER2:
 		handleColorPicker(boxID, player, cancel, value, 1);
 		break;
-	case SuiBoxType::BANK_TRANSFER:
+	case SuiWindowType::BANK_TRANSFER:
 		handleBankTransfer(boxID, player, atoi(value.toCharArray()), atoi(value2.toCharArray()));
 		break;
-	case SuiBoxType::BLUE_FROG_ITEM_REQUEST:
+	case SuiWindowType::BLUE_FROG_ITEM_REQUEST:
 		handleBlueFrogItemRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::WOUND_TERMINAL_REQUEST:
+	case SuiWindowType::WOUND_TERMINAL_REQUEST:
 		handleWoundTerminalRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::STATE_TERMINAL_REQUEST:
+	case SuiWindowType::STATE_TERMINAL_REQUEST:
 		handleStateTerminalRequest(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::DIAGNOSE:
+	case SuiWindowType::DIAGNOSE:
 		handleDiagnose(boxID, player);
 		break;
-	case SuiBoxType::FREE_RESOURCE:
+	case SuiWindowType::FREE_RESOURCE:
 		handleFreeResource(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::GIVE_FREE_RESOURCE:
+	case SuiWindowType::GIVE_FREE_RESOURCE:
 		handleGiveFreeResource(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
-	case SuiBoxType::TEACH_SKILL:
+	case SuiWindowType::TEACH_SKILL:
 		handleTeachSkill(boxID, player, cancel);
 		break;
-	case SuiBoxType::TEACH_PLAYER:
+	case SuiWindowType::TEACH_PLAYER:
 		handleTeachPlayer(boxID, player, atoi(value.toCharArray()), cancel);
 		break;
-	case SuiBoxType::DENY_TRAINING_LIST:
+	case SuiWindowType::DENY_TRAINING_LIST:
 		handleDenyTrainingList(boxID, player);
+		break;
+	case SuiWindowType::OBJECT_NAME:   // Set Object Name
+		handleSetObjectName(boxID, player, cancel, value.toCharArray());
+		break;
+	case SuiWindowType::MANAGE_MAINTENANCE:    // Add/Remove Maintenance
+		handleManageMaintenance(boxID, player, cancel, value.toCharArray());
+		break;
+	case SuiWindowType::ADD_ENERGY:    // Add Energy
+		handleAddEnergy(boxID, player, cancel, value.toCharArray());
 		break;
 	default:
 		//Clean up players sui box:
@@ -430,7 +439,7 @@ void SuiManager::handleSetObjectName(uint32 boxID, Player* player,
 	}
 }
 
-void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
+void SuiManager::handleManageMaintenance(uint32 boxID, Player* player,
 		uint32 cancel, const String& newCashVal) {
 	try {
 
@@ -481,12 +490,12 @@ void SuiManager::handleAddMaintenance(uint32 boxID, Player* player,
 
 		player->unlock();
 	} catch (Exception& e) {
-		error("Exception in SuiManager::handleAddMaintenance ");
+		error("Exception in SuiManager::handleManageMaintenance ");
 		e.printStackTrace();
 
 		player->unlock();
 	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleAddMaintenance");
+		error("Unreported exception caught in SuiManager::handleManageMaintenance");
 		player->unlock();
 	}
 }
@@ -512,7 +521,9 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 			InstallationObject * inso = (InstallationObject *) scno;
 
 			if (inso!= NULL)	{
-				uint energy = (inso->getSurplusPower() - atoi(newEnergyVal.toCharArray()));
+				// player->getEnergy() - atoi(newEnergyVal.toCharArray())
+				uint energy = 100 - atoi(newEnergyVal.toCharArray());
+				//inso->getSurplusPower()
 
 				inso->addPower(energy);
 				//player->removeEnergy(energy);
@@ -1140,7 +1151,7 @@ void SuiManager::handleColorPicker(uint32 boxID, Player* player, uint32 cancel, 
 			}
 
 			if (var != 1) {
-				SuiColorPicker* sui2 = new SuiColorPicker(player, colorPicker->getObjectID(), "private/index_color_2", SuiBoxType::COLOR_PICKER1);
+				SuiColorPicker* sui2 = new SuiColorPicker(player, colorPicker->getObjectID(), "private/index_color_2", SuiWindowType::COLOR_PICKER1);
 
 				player->addSuiBox(sui2);
 				player->sendMessage(sui2->generateMessage());
@@ -1313,7 +1324,7 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 					}
 
 
-					SuiListBox* finalListBox = new SuiListBox(player, SuiBoxType::GIVE_FREE_RESOURCE);
+					SuiListBox* finalListBox = new SuiListBox(player, SuiWindowType::GIVE_FREE_RESOURCE);
 					player->addSuiBox(finalListBox);
 					listBox->setNextBox(finalListBox->getBoxID());
 					finalListBox->setPreviousBox(listBox->getBoxID());
@@ -1336,7 +1347,7 @@ void SuiManager::handleFreeResource(uint32 boxID, Player* player, uint32 cancel,
 						}
 					}
 					else if (listBox->getNextBox()==0){ //no listbox ahead so we create one
-						SuiListBox* listBox2 = new SuiListBox(player, SuiBoxType::FREE_RESOURCE);
+						SuiListBox* listBox2 = new SuiListBox(player, SuiWindowType::FREE_RESOURCE);
 						player->addSuiBox(listBox2);
 						listBox->setNextBox(listBox2->getBoxID());
 						listBox2->setPreviousBox(listBox->getBoxID());
@@ -1565,7 +1576,7 @@ void SuiManager::handleTeachPlayer(uint32 boxID, Player* player, int value, uint
 
 		delete params;
 
-		SuiListBox* mbox = new SuiListBox(student, SuiBoxType::TEACH_SKILL);
+		SuiListBox* mbox = new SuiListBox(student, SuiWindowType::TEACH_SKILL);
 
 		// TODO: redo this after I find the proper String
 		StringBuffer prompt, skillname;

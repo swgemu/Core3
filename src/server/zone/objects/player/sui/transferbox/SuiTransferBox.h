@@ -17,7 +17,7 @@ class Player;
 
 class SuiTransferBox : public SuiBox {
 public:
-	SuiTransferBox(Player* player, unsigned int boxtype);
+	SuiTransferBox(Player* player, unsigned int windowType);
 
 	BaseMessage* generateMessage();
 
@@ -91,7 +91,7 @@ public:
 	SuiTransferBox* _this;
 
 public:
-	SuiTransferBoxServant(Player* player, unsigned int boxtype, unsigned int typeId);
+	SuiTransferBoxServant(Player* player, unsigned int windowType, unsigned int boxType);
 	virtual ~SuiTransferBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

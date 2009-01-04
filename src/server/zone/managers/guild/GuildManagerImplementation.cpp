@@ -494,7 +494,7 @@ void GuildManagerImplementation::handleGuildTag(uint32 boxID, Player* player, ui
 void GuildManagerImplementation::handleGuildCreationName(Player* player) {
 	player->info("Entering GuildManagerImplementation::handleGuildCreationName(Player* player)");
 
-	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_CREATION_INPUT_FOR_NAME, 0);
+	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATION_INPUT_FOR_NAME, 0);
 
 	suiInpBox->setPromptTitle("@guild:create_name_title");
 	suiInpBox->setPromptText("@guild:create_name_prompt");
@@ -1013,13 +1013,13 @@ void GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player
 	try {
 		otherPlayer->wlock();
 
-		if (otherPlayer->hasSuiBoxType(SuiBoxType::VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP)) {
+		if (otherPlayer->hasSuiBoxWindowType(SuiWindowType::VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP)) {
 			otherPlayer->unlock();
 			otherPlayer->info("Clean exit from GuildManagerImplementation::VerifyBoxSponsorTargetforGuildMembership(Player* otherPlayer, String inviter, String guildname)");
 			return;
 		}
 
-		SuiMessageBox* sui = new SuiMessageBox(otherPlayer, SuiBoxType::VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP);
+		SuiMessageBox* sui = new SuiMessageBox(otherPlayer, SuiWindowType::VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP);
 		sui->setPromptTitle("Sponsor For Membership");
 		sui->setPromptText(inviter + " wishes to sponsor you for membership in " + guildname + "."
 						+ " Accepting this will cancel your sponsorship for any other guilds.  Do you accept sponsorship?");
@@ -1197,7 +1197,7 @@ void GuildManagerImplementation::handleSponsoredGuildMembersBox(uint32 boxID, Pl
 			return;
 		}
 
-		SuiListBox* sponsoredAcceptBox = new SuiListBox(player, SuiBoxType::SPONSORED_GUILD_MEMBERS_ACCEPT);
+		SuiListBox* sponsoredAcceptBox = new SuiListBox(player, SuiWindowType::SPONSORED_GUILD_MEMBERS_ACCEPT);
 
 		sponsoredAcceptBox->setPromptTitle("@guild:sponsor_title");
 		sponsoredAcceptBox->setPromptText("@guild:sponsor_verify_title : " + (playerGuild->getSponsoredMap(index)) );
@@ -1828,7 +1828,7 @@ void GuildManagerImplementation::handleGuildNameChange(uint32 boxID, Player* pla
 		}
 
 		//Create inputbox for renaming the guild
-		SuiInputBox* suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_NAME_CHANGE_NAME, 0);
+		SuiInputBox* suiInpBox = new SuiInputBox(player, SuiWindowType::GUILD_NAME_CHANGE_NAME, 0);
 
 		suiInpBox->setPromptTitle("@guild:namechange_name_title");
 		suiInpBox->setPromptText("@guild:namechange_name_prompt");
@@ -2007,7 +2007,7 @@ void GuildManagerImplementation::handleGuildInformationMembers(Player* player) {
 	try {
 		server->lock();
 
-		suiListBox = new SuiListBox(player, SuiBoxType::GUILD_INFORMATION_MEMBERS);
+		suiListBox = new SuiListBox(player, SuiWindowType::GUILD_INFORMATION_MEMBERS);
 
 		suiListBox->setPromptTitle("@guild:members_title");
 		suiListBox->setPromptText("@guild:members_prompt");
@@ -2128,7 +2128,7 @@ void GuildManagerImplementation::handleGuildInformationMembersBox(uint32 boxID, 
 	try {
 		player->wlock();
 
-		suiListBox = new SuiListBox(player, SuiBoxType::GUILD_MEMBER_OPTIONS);
+		suiListBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_OPTIONS);
 
 		prompt << "Select an operation from the list you want to perform on " << playerGuild->getSponsoredMap(index) << " and press Ok.";
 
@@ -2224,7 +2224,7 @@ void GuildManagerImplementation::handleRemoveFromGuild(Player* player, String ki
 		player->setInputBoxReturnBuffer(kickee);
 
 		StringBuffer prompt;
-		SuiMessageBox* suiMessageBox = new SuiMessageBox(player, SuiBoxType::REMOVE_FROM_GUILD);
+		SuiMessageBox* suiMessageBox = new SuiMessageBox(player, SuiWindowType::REMOVE_FROM_GUILD);
 		prompt << "Are you sure you want kick " << kickee << " out of the guild?";
 
 		suiMessageBox->setPromptTitle("@guild:kick_title");
@@ -2336,7 +2336,7 @@ void GuildManagerImplementation::callGuildPermissions(Player* player, String pro
 		}
 
 
-		SuiListBox* suiListBox = new SuiListBox(player, SuiBoxType::GUILD_PERMISSION_SELECTION);
+		SuiListBox* suiListBox = new SuiListBox(player, SuiWindowType::GUILD_PERMISSION_SELECTION);
 
 		StringBuffer prompt;
 
@@ -2865,7 +2865,7 @@ void GuildManagerImplementation::handleGuildSponsoring(Player* player) {
 		playerGuild->wlock();
 		player->wlock();
 
-		sponsoredBox = new SuiListBox(player, SuiBoxType::SPONSORED_GUILD_MEMBERS);
+		sponsoredBox = new SuiListBox(player, SuiWindowType::SPONSORED_GUILD_MEMBERS);
 
 		sponsoredBox->setPromptTitle("Sponsored for membership: " + guildName);
 		sponsoredBox->setPromptText("@guild:sponsored_prompt");
@@ -2907,7 +2907,7 @@ void GuildManagerImplementation::handleGuildRenaming(Player* player) {
 		return;
 	}
 
-	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_NAME_CHANGE, 0);
+	SuiInputBox* suiInpBox = new SuiInputBox(player, SuiWindowType::GUILD_NAME_CHANGE, 0);
 
 	suiInpBox->setPromptTitle("@guild:namechange_abbrev_title");
 	suiInpBox->setPromptText("@guild:namechange_abbrev_title");
@@ -2995,7 +2995,7 @@ void GuildManagerImplementation::handleGuildTransferLeader(Player* player) {
 			return;
 		}
 
-		suiInpBox = new SuiInputBox(player, SuiBoxType::GUILD_TRANSFER_LEADER, 0);
+		suiInpBox = new SuiInputBox(player, SuiWindowType::GUILD_TRANSFER_LEADER, 0);
 
 		suiInpBox->setPromptTitle("@guild:make_leader_t");
 		suiInpBox->setPromptText("@guild:make_leader_d");
@@ -3070,7 +3070,7 @@ void GuildManagerImplementation::handleGuildTransferLeaderBox(uint32 boxID, Play
 
 	//ToDo: If housing is in: Check free lots for PA Hall Transfer
 
-	SuiMessageBox* oSui = new SuiMessageBox(otherPlayer, SuiBoxType::GUILD_TRANSFER_LEADER_VERIFY);
+	SuiMessageBox* oSui = new SuiMessageBox(otherPlayer, SuiWindowType::GUILD_TRANSFER_LEADER_VERIFY);
 
 	oSui->setPromptTitle("@guild:make_leader_t");
 	oSui->setPromptText("@guild:make_leader_p");

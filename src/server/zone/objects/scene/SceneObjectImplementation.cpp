@@ -339,7 +339,7 @@ void SceneObjectImplementation::insertToBuilding(BuildingObject* building) {
 	try {
 		//building->lock(doLock);
 
-		info("inserting to building");
+		info("SceneObjectImplementation::insertToBuilding");
 
 		((CellObject*)parent)->addChild(_this);
 

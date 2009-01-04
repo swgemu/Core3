@@ -69,7 +69,7 @@ interface InstallationObject implements TangibleObject {
 	void handleStructureRedeedConfirm(Player player);
 	void handleMakeDeed(Player player);
 	void handleStructureStatus(Player player);
-	void handleStructureAddMaintenance(Player player);
+	void handleStructureManageMaintenance(Player player);
 	void handleStructureAddEnergy(Player player);
 
 	String getOwner();
@@ -77,6 +77,8 @@ interface InstallationObject implements TangibleObject {
 	
 	unsigned long getOwnerID();
 	void setOwnerID(unsigned long owner);
+	
+	unsigned int getDeedCRC();
 	
 	int getDestroyCode();
 	

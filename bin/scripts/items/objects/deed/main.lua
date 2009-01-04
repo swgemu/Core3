@@ -40,10 +40,10 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
---RunItemLUAFile("objects/deed/houses/mediumNabooHouseDeed.lua");
---RunItemLUAFile("objects/deed/harvesters/oreS2HarvesterDeed.lua");
---RunItemLUAFile("objects/deed/generators/fusionGeneratorDeed.lua");
---RunItemLUAFile("objects/deed/factories/structureFactoryDeed.lua");
+RunItemLUAFile("objects/deed/houses/mediumNabooHouseDeed.lua");
+RunItemLUAFile("objects/deed/harvesters/oreS2HarvesterDeed.lua");
+RunItemLUAFile("objects/deed/generators/fusionGeneratorDeed.lua");
+RunItemLUAFile("objects/deed/factories/structureFactoryDeed.lua");
 
 -- Vehicles
 RunItemLUAFile("objects/deed/vehicles/jetpackVehicleDeed.lua");
@@ -57,4 +57,3 @@ RunItemLUAFile("objects/deed/vehicles/speederbikeFlashVehicleDeed.lua");
 
 -- Crate of Resources
 RunItemLUAFile("objects/deed/resources/resourceDeed.lua");
-RunItemLUAFile("objects/deed/houses/mediumNabooHouseDeed.lua");

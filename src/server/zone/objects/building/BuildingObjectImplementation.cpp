@@ -56,7 +56,7 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 		: QuadTree(-1024, -1024, 1024, 1024), BuildingObjectServant(oid, BUILDING) {
 
 	staticBuilding = staticBuild;
-	
+
 	storageLoaded = false;
 
 	persistent = false;
@@ -97,10 +97,15 @@ BuildingObjectImplementation::~BuildingObjectImplementation() {
 }
 
 void BuildingObjectImplementation::addCell(CellObject* cell) {
+	// Guess Cell Numbers
+	if(cell->getCellNumber() == 0)
+		cell->setCellNumber(cells.size()+1);
+
 	cells.put(cell);
 }
 
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
+	info("BuildingObjectImplementation::notifyInsert");
 	SceneObjectImplementation* scno = (SceneObjectImplementation*) obj;
 
 	if (scno->isPlayer() || scno->isNonPlayerCreature()) {
@@ -142,6 +147,7 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 }
 
 void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
+	info("BuildingObjectImplementation::sendTo");
 	// send buio packets if not static
 
 	ZoneClientSession* client = player->getClient();
@@ -151,6 +157,7 @@ void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
 	if (staticBuilding)
 		return;
 
+	info("BuildingObjectImplementation::sendTo(), sending BUIO");
 	SceneObjectImplementation::create(client);
 
 	//System::out << "generating building objects" << endl;
@@ -170,6 +177,11 @@ void BuildingObjectImplementation::sendTo(Player* player, bool doClose) {
 }
 
 void BuildingObjectImplementation::sendCells(Player* player, bool doClose = true) {
+	//info("BuildingObjectImplementation::sendCells");
+
+	StringBuffer msg;
+	msg << "BuildingObjectImplementation::sendCells(): " << cells.size() << endl;
+	info(msg.toString());
 
 	UpdateContainmentMessage* link;
 	CellObjectMessage3* cellMsg3;
@@ -208,6 +220,7 @@ void BuildingObjectImplementation::sendCells(Player* player, bool doClose = true
 
 
 void BuildingObjectImplementation::sendCellUpdates(Player* player) {
+	info("BuildingObjectImplementation::sendCellUpdates");
 	CellObjectDeltaMessage3* cdelta3;
 	CellObject *cell;
 
@@ -234,6 +247,7 @@ void BuildingObjectImplementation::sendDestroyTo(Player* player) {
 }
 
 void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
+	info("BuildingObjectImplementation::notifyInsertToZone");
 	SceneObjectImplementation* creoImpl = (SceneObjectImplementation*) object->_getImplementation();
 	if (creoImpl == NULL)
 		return;

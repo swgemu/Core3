@@ -46,16 +46,16 @@ which carries forward this exception.
 
 #include "../../../../packets.h"
 
-SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint64 objectId, uint32 boxType) :
-	SuiColorPickerServant(player, boxType, COLORPICKER) {
+SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint64 objectId, uint32 windowType) :
+	SuiColorPickerServant(player, windowType, COLORPICKER) {
 
 	objectID = objectId;
 
 	variable = "private/index_color_1";
 }
 
-SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint64 objectId, const String& var, uint32 boxType) :
-	SuiColorPickerServant(player, boxType, COLORPICKER) {
+SuiColorPickerImplementation::SuiColorPickerImplementation(Player* player, uint64 objectId, const String& var, uint32 windowType) :
+	SuiColorPickerServant(player, windowType, COLORPICKER) {
 
 	objectID = objectId;
 

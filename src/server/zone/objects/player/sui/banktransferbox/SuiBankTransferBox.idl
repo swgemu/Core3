@@ -48,8 +48,8 @@ import "../../Player";
 include "engine/service/proto/BaseMessage";
 
 interface SuiBankTransferBox implements SuiBox {
-	SuiBankTransferBox(Player player, unsigned int boxtype) {
-		super(player, unsigned int typeID, boxtype);
+	SuiBankTransferBox(Player player, unsigned int windowType) {
+		super(player, windowType, unsigned int boxType);
 	}
 
 	void addCash(int cash);
