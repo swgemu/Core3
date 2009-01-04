@@ -15,7 +15,7 @@ class HarvesterDeedImplementation : public HarvesterDeedServant {
 protected:
 	int type, size, lotSize;
 
-	float maintenanceRate, extractionRate, hopperSize;
+	float maintenanceRate, extractionRate, powerRate, hopperSize;
 	uint32 surplusMaintenance, surplusPower;
 public:
 	static const int ORE = 1;
@@ -51,6 +51,12 @@ public:
 		 String attr("maintenanceRate");
 		 itemAttributes->setFloatAttribute(attr, (float)maintenanceRate);
 	}
+	inline void setPowerRate(float rate) {
+		 powerRate = rate;
+		 String attr("powerRate");
+		 itemAttributes->setFloatAttribute(attr, (float)powerRate);
+	}
+
 	inline void setSurplusPower(uint32 pow) {
 		surplusPower = pow;
 		String attr("surplusPower");
@@ -78,6 +84,9 @@ public:
 	}
 	inline float getMaintenanceRate() {
 		return maintenanceRate;
+	}
+	inline float getPowerRate() {
+		return powerRate;
 	}
 	inline uint32 getSurplusPower() {
 		return surplusPower;

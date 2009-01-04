@@ -23,6 +23,7 @@ interface HarvesterDeed implements DeedObject {
 	void setSurplusMaintenance(int maint);
 	void setMaintenanceRate(float rate);
 	void setSurplusPower(int pow);
+	void setPowerRate(float rate);
 	void setExtractionRate(float rate);
 	void setHopperSize(float size);
 	void setLotSize(int size);
@@ -30,6 +31,7 @@ interface HarvesterDeed implements DeedObject {
 	int getSurplusMaintenance();
 	float getMaintenanceRate();
 	int getSurplusPower();
+	float getPowerRate();
 	float getExtractionRate();
 	float getHopperSize();
 	int getLotSize();

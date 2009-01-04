@@ -723,7 +723,7 @@ void PlanetManagerImplementation::placePlayerStructure(Player * player,
 				break;
 		}
 
-		structureManager->spawnTempStructure(player, deed, x, player->getPositionZ(), y, oX, oZ, oY, oW);
+		structureManager->spawnTempStructure(player, deed, x, zone->getHeight(x, y), y, oX, oZ, oY, oW);
 	}
 	catch(...) {
 		System::out << "Exception in PlanetManagerImplementation::placePlayerStructure\n";

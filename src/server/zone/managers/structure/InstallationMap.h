@@ -12,21 +12,21 @@
 
 #include "../../objects/installation/InstallationObject.h"
 
-class InstallationMap : public HashTable<uint64, InstallationObject*>
-		, public HashTableIterator<uint64, InstallationObject*> {
+class InstallationMap : public HashTable<uint64, ManagedReference<InstallationObject> >
+		, public HashTableIterator<uint64, ManagedReference<InstallationObject> > {
 
 	int hash(const uint64& key) {
         return Long::hashCode(key);
 	}
 
 public:
-	InstallationMap(int initsize) : HashTable<uint64, InstallationObject*>(initsize)
-			, HashTableIterator<uint64, InstallationObject*>(this) {
+	InstallationMap(int initsize) : HashTable<uint64, ManagedReference<InstallationObject> >(initsize)
+			, HashTableIterator<uint64, ManagedReference<InstallationObject> >(this) {
 		setNullValue(NULL);
 	}
 
-	void put(uint64 oid, InstallationObject* obj) {
-		if (HashTable<uint64, InstallationObject*>::put(oid, obj) != NULL)
+	void put(uint64 oid, ManagedReference<InstallationObject> obj) {
+		if (HashTable<uint64, ManagedReference<InstallationObject> >::put(oid, obj) != NULL)
 			System::out << "INSTALLATIONMAP OID CONFLICT\n";
 	}
 

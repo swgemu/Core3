@@ -32,12 +32,20 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(uint64 objid, uint32 te
 HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creature, HarvesterObject* hino) :
 	HarvesterDeedServant(creature->getNewItemID(), TangibleObjectImplementation::INSTALLATIONDEED) {
 
+	info("HarvesterDeedImplementation(CreatureObject* creature, HarvesterObject* hino)");
 
 	objectCRC = hino->getDeedCRC();
 	templateTypeName = "deed"; // STF
-	templateName = getDefaultTemplateName(objectCRC);;
+	templateName = getDefaultTemplateName(objectCRC);
+	info(templateName);
 	name = "";
 
+	setSurplusMaintenance(hino->getSurplusMaintenance());
+	setMaintenanceRate(hino->getMaintenanceRate());
+	setSurplusPower(hino->getSurplusPower());
+	setPowerRate(hino->getPowerRate());
+	setHopperSize(hino->getHopperSizeMax());
+	setExtractionRate(hino->getExtractionRate());
 
 	init();
 }

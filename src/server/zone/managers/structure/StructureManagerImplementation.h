@@ -31,6 +31,7 @@ class ZoneServer;
 class ZoneProcessServerImplementation;
 class StructureManagerSaveStateEvent;
 class InstallationSpawnEvent;
+class InstallationDespawnEvent;
 class TempInstallationSpawnEvent;
 class TempInstallationDespawnEvent;
 
@@ -49,6 +50,7 @@ class StructureManagerImplementation : public StructureManagerServant, public Lo
 	StructureManagerSaveStateEvent* structureManagerSaveStateEvent;
 
 	InstallationSpawnEvent* installationSpawnEvent;
+	InstallationDespawnEvent* installationDespawnEvent;
 	TempInstallationSpawnEvent* tempInstallationSpawnEvent;
 	TempInstallationDespawnEvent* tempInstallationDespawnEvent;
 public:

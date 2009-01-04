@@ -271,6 +271,7 @@ interface CreatureObject implements SceneObject {
 
 	void updateTarget(unsigned long targ);
 	void updateTarget(SceneObject targ);
+	void clearTarget();
 
 	void setActionCounter(unsigned int actioncntr);
 

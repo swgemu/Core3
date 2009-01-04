@@ -37,6 +37,8 @@ public:
 
 	void setSurplusPower(int pow);
 
+	void setPowerRate(float rate);
+
 	void setExtractionRate(float rate);
 
 	void setHopperSize(float size);
@@ -48,6 +50,8 @@ public:
 	float getMaintenanceRate();
 
 	int getSurplusPower();
+
+	float getPowerRate();
 
 	float getExtractionRate();
 
@@ -79,6 +83,8 @@ public:
 
 	void setSurplusPower(int pow);
 
+	void setPowerRate(float rate);
+
 	void setExtractionRate(float rate);
 
 	void setHopperSize(float size);
@@ -90,6 +96,8 @@ public:
 	float getMaintenanceRate();
 
 	int getSurplusPower();
+
+	float getPowerRate();
 
 	float getExtractionRate();
 

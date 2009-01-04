@@ -15,6 +15,8 @@ class Player;
 
 class BuildingObject;
 
+class InstallationObject;
+
 class CellObject;
 
 class DeedObject;
@@ -42,6 +44,8 @@ public:
 	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
+	void deleteInstallation(InstallationObject* inso);
 
 	void error(const String& message);
 
@@ -82,6 +86,8 @@ public:
 	void spawnHarvester(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
 	void spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
+
+	void deleteInstallation(InstallationObject* inso);
 
 	void error(const String& message);
 
