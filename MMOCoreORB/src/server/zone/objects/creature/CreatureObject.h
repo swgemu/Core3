@@ -329,6 +329,8 @@ public:
 
 	void updateTarget(SceneObject* targ);
 
+	void clearTarget();
+
 	void setActionCounter(unsigned int actioncntr);
 
 	void setWeapon(Weapon* wep);
@@ -1526,6 +1528,8 @@ public:
 	void updateTarget(unsigned long long targ);
 
 	void updateTarget(SceneObject* targ);
+
+	void clearTarget();
 
 	void setActionCounter(unsigned int actioncntr);
 

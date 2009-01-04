@@ -8,6 +8,7 @@
 
 #include "events/StructureManagerSaveStateEvent.h"
 #include "events/InstallationSpawnEvent.h"
+#include "events/InstallationDespawnEvent.h"
 #include "events/TempInstallationSpawnEvent.h"
 #include "events/TempInstallationDespawnEvent.h"
 
@@ -945,6 +946,12 @@ void StructureManagerImplementation::deleteInstallation(InstallationObject *inso
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
 	}
+
+	installationMap->remove(inso->getObjectID());
+
+	installationDespawnEvent = new InstallationDespawnEvent(inso);
+	server->addEvent(installationDespawnEvent, 100);
+
 }
 
 void StructureManagerImplementation::createBuilding(BuildingObject* buio) {

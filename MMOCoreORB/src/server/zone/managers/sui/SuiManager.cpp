@@ -208,6 +208,12 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case SuiWindowType::ADD_ENERGY:    // Add Energy
 		handleAddEnergy(boxID, player, cancel, value.toCharArray());
 		break;
+	case SuiWindowType::INSTALLATION_REDEED:    // Redeed Verification Prompt
+		handleCodeForRedeed(boxID, player, cancel, value.toCharArray());
+		break;
+	case SuiWindowType::INSTALLATION_REDEED_CONFIRM:    // Re-Deed Confirm
+		handleRedeedStructure(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
 	default:
 		//Clean up players sui box:
 
@@ -460,7 +466,7 @@ void SuiManager::handleManageMaintenance(uint32 boxID, Player* player,
 
 			InstallationObject * inso = (InstallationObject *) scno;
 
-			if (inso!= NULL && atoi(newCashVal.toCharArray()) != 0)	{
+			if (inso!= NULL)	{
 				int maint = (player->getCashCredits() - atoi(newCashVal.toCharArray()));
 
 				inso->addMaintenance(maint);

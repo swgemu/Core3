@@ -421,7 +421,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 				break;
 		}
 		if (makeStats && item != NULL) {
-			item->setAttributes(lootAttributes );
+			item->setAttributes(lootAttributes);
 			item->parseItemAttributes();
 		}
 	}

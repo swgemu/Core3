@@ -14,6 +14,8 @@
 
 #include "../../objects/building/BuildingObject.h"
 
+#include "../../objects/installation/InstallationObject.h"
+
 #include "../../objects/building/cell/CellObject.h"
 
 #include "../../objects/tangible/deed/DeedObject.h"
@@ -196,12 +198,25 @@ void StructureManager::spawnBuilding(Player* player, DeedObject* deed, float x, 
 		((StructureManagerImplementation*) _impl)->spawnBuilding(player, deed, x, z, y, oX, oZ, oY, oW);
 }
 
-void StructureManager::error(const String& message) {
+void StructureManager::deleteInstallation(InstallationObject* inso) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 16);
+		method.addObjectParameter(inso);
+
+		method.executeWithVoidReturn();
+	} else
+		((StructureManagerImplementation*) _impl)->deleteInstallation(inso);
+}
+
+void StructureManager::error(const String& message) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -214,7 +229,7 @@ void StructureManager::info(const String& message) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 		method.addAsciiParameter(message);
 
 		method.executeWithVoidReturn();
@@ -264,9 +279,12 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		spawnBuilding((Player*) inv->getObjectParameter(), (DeedObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
 		break;
 	case 16:
-		error(inv->getAsciiParameter(_param0_error__String_));
+		deleteInstallation((InstallationObject*) inv->getObjectParameter());
 		break;
 	case 17:
+		error(inv->getAsciiParameter(_param0_error__String_));
+		break;
+	case 18:
 		info(inv->getAsciiParameter(_param0_info__String_));
 		break;
 	default:
@@ -314,6 +332,10 @@ void StructureManagerAdapter::spawnHarvester(Player* player, DeedObject* deed, f
 
 void StructureManagerAdapter::spawnBuilding(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW) {
 	return ((StructureManagerImplementation*) impl)->spawnBuilding(player, deed, x, z, y, oX, oZ, oY, oW);
+}
+
+void StructureManagerAdapter::deleteInstallation(InstallationObject* inso) {
+	return ((StructureManagerImplementation*) impl)->deleteInstallation(inso);
 }
 
 void StructureManagerAdapter::error(const String& message) {

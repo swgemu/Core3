@@ -851,84 +851,120 @@ String& DeedObjectImplementation::getDefaultTemplateName(uint32 objCRC) {
 		// Factories
 		case 0x6C0893E5: //object/tangible/deed/factory_deed/shared_factory_clothing_deed.iff
 			defaultTemplateName = "clothing_factory";
+			break;
 		case 0xCFEC24E5: //object/tangible/deed/factory_deed/shared_factory_food_deed.iff
 			defaultTemplateName = "food_factory";
+			break;
 		case 0xFD1EF87A: //object/tangible/deed/factory_deed/shared_factory_item_deed.iff
 			defaultTemplateName = "item_factory";
+			break;
 		case 0x8E331C08: //object/tangible/deed/factory_deed/shared_factory_structure_deed.iff
 			defaultTemplateName = "structure_factory";
+			break;
 
 		// Harvesters
 		case 0xE296E887: //object/tangible/deed/harvester_deed/shared_harvester_creature_deed.iff
 			defaultTemplateName = "creature_harvester_deed_name";
+			break;
 		case 0xA9557114: //object/tangible/deed/harvester_deed/shared_harvester_flora_deed.iff
 			defaultTemplateName = "flora_harvester_deed_name";
+			break;
 		case 0xEEC52333: //object/tangible/deed/harvester_deed/shared_harvester_flora_deed_heavy.iff
 			defaultTemplateName = "flora_harvester_heavy_deed_name";
+			break;
 		case 0x522BE74D: //object/tangible/deed/harvester_deed/shared_harvester_flora_deed_medium.iff
 			defaultTemplateName = "flora_harvester_medium_deed_name";
+			break;
 		case 0x85020A19: //object/tangible/deed/harvester_deed/shared_harvester_gas_deed.iff
 			defaultTemplateName = "gas_harvester_deed_name";
+			break;
 		case 0x1090794C: //object/tangible/deed/harvester_deed/shared_harvester_gas_deed_heavy.iff
 			defaultTemplateName = "gas_harvester_heavy_deed_name";
+			break;
 		case 0xB247C54E: //object/tangible/deed/harvester_deed/shared_harvester_gas_deed_medium.iff
 			defaultTemplateName = "gas_harvester_medium_deed_name";
+			break;
 		case 0xC6CF0E82: //object/tangible/deed/harvester_deed/shared_harvester_liquid_deed.iff
 			defaultTemplateName = "liquid_harvester_deed_name";
+			break;
 		case 0x4FA6CDD8: //object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_heavy.iff
 			defaultTemplateName = "liquid_harvester_heavy_deed_name";
+			break;
 		case 0xC42B47F4: //object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_medium.iff
 			defaultTemplateName = "liquid_harvester_medium_deed_name";
+			break;
 		case 0x5E1B48A7: //object/tangible/deed/harvester_deed/shared_harvester_moisture_deed.iff
 			defaultTemplateName = "moisture_harvester_deed_name";
+			break;
 		case 0x0147A463: //object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_heavy.iff
 			defaultTemplateName = "moisture_harvester_heavy_deed_name";
+			break;
 		case 0x2D4A2C89: //object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_medium.iff
 			defaultTemplateName = "moisture_harvester_medium_deed_name";
+			break;
 		case 0xC02EBAB3: //object/tangible/deed/harvester_deed/shared_harvester_ore_heavy_deed.iff
 			defaultTemplateName = "ore_heavy_harvester_deed_name";
+			break;
 		case 0x7EB8541F: //object/tangible/deed/harvester_deed/shared_harvester_ore_s1_deed.iff
 			defaultTemplateName = "ore_s1_harvester_deed_name";
+			break;
 		case 0xFBC8A901: //object/tangible/deed/harvester_deed/shared_harvester_ore_s2_deed.iff
 			defaultTemplateName = "ore_s2_harvester_deed_name";
+			break;
 
 		// Generators
 		case 0xE5A0F395: //object/tangible/deed/generator_deed/shared_generator_fusion_deed.iff
 			defaultTemplateName = "fusion_generator_deed_name";
+			break;
 		case 0x26D63643: //object/tangible/deed/generator_deed/shared_generator_photo_bio_deed.iff
 			defaultTemplateName = "photo_bio_generator_deed_name";
+			break;
 		case 0x4669B528: //object/tangible/deed/generator_deed/shared_generator_solar_deed.iff
 			defaultTemplateName = "solar_generator_deed_name";
+			break;
 		case 0xE6C711A7: //object/tangible/deed/generator_deed/shared_generator_wind_deed.iff
 			defaultTemplateName = "wind_generator_deed_name";
+			break;
 
 		// Turrets
 		case 0x2587A8C0: //object/tangible/deed/faction_perk/turret/shared_block_lg_deed.iff
 			defaultTemplateName = "turret_block_lg";
+			break;
 		case 0xFBA00806: //object/tangible/deed/faction_perk/turret/shared_block_med_deed.iff
 			defaultTemplateName = "turret_block_med";
+			break;
 		case 0xA3878091: //object/tangible/deed/faction_perk/turret/shared_block_sm_deed.iff
 			defaultTemplateName = "turret_block_sm";
+			break;
 		case 0xF07B2F6E: //object/tangible/deed/faction_perk/turret/shared_dish_lg_deed.iff
 			defaultTemplateName = "turret_dish_lg";
+			break;
 		case 0x767B073F: //object/tangible/deed/faction_perk/turret/shared_dish_sm_deed.iff
 			defaultTemplateName = "turret_dish_sm";
+			break;
 		case 0xDE76DCB5: //object/tangible/deed/faction_perk/turret/shared_tower_lg_deed.iff
 			defaultTemplateName = "turret_tower_lg";
+			break;
 		case 0xA8274B6E: //object/tangible/deed/faction_perk/turret/shared_tower_med_deed.iff
 			defaultTemplateName = "turret_tower_med";
+			break;
 		case 0x5876F4E4: //object/tangible/deed/faction_perk/turret/shared_tower_sm_deed.iff
 			defaultTemplateName = "turret_tower_sm";
+			break;
 		case 0x2775B687: //object/tangible/deed/turret_deed/shared_turret_block_large_deed.iff
 			defaultTemplateName = "turret_block_lg";
+			break;
 		case 0xE0C40914: //object/tangible/deed/turret_deed/shared_turret_block_medium_deed.iff
 			defaultTemplateName = "turret_block_med";
+			break;
 		case 0x67F3B024: //object/tangible/deed/turret_deed/shared_turret_block_small_deed.iff
 			defaultTemplateName = "turret_block_sm";
+			break;
 
 		// Minefields
 		case 0x5D30CDF7: //object/tangible/deed/faction_perk/minefield/shared_field_1x1_deed.iff
 			defaultTemplateName = "minefield_1x1";
+			break;
 
 
 		case 0x9899666C: //object/tangible/deed/vehicle_deed/shared_jetpack_deed.iff
@@ -948,168 +984,246 @@ String& DeedObjectImplementation::getDefaultTemplateName(uint32 objCRC) {
 		// City Buildings
 		case 0x17EAC380: //object/tangible/deed/city_deed/shared_bank_corellia_deed.iff
 			defaultTemplateName = "corellia_bank_deed";
+			break;
 		case 0xD40FCD49: //object/tangible/deed/city_deed/shared_bank_naboo_deed.iff
 			defaultTemplateName = "naboo_bank_deed";
+			break;
 		case 0x24980999: //object/tangible/deed/city_deed/shared_bank_tatooine_deed.iff
 			defaultTemplateName = "tatooine_bank_deed";
+			break;
 
 		case 0x82A983A9: //object/tangible/deed/city_deed/shared_cantina_corellia_deed.iff
 			defaultTemplateName = "corellia_cantina_deed";
+			break;
 		case 0x4F5A59D1: //object/tangible/deed/city_deed/shared_cantina_naboo_deed.iff
 			defaultTemplateName = "naboo_cantina_deed";
+			break;
 		case 0xB1DB49B0: //object/tangible/deed/city_deed/shared_cantina_tatooine_deed.iff
 			defaultTemplateName = "tatooine_cantina_deed";
+			break;
 
 		case 0xA5FE7FFF: //object/tangible/deed/city_deed/shared_cityhall_corellia_deed.iff
 			defaultTemplateName = "corellia_city_deed";
+			break;
 		case 0xDA53F690: //object/tangible/deed/city_deed/shared_cityhall_naboo_deed.iff
 			defaultTemplateName = "naboo_city_deed";
+			break;
 		case 0x968CB5E6: //object/tangible/deed/city_deed/shared_cityhall_tatooine_deed.iff
 			defaultTemplateName = "tatooine_city_deed";
+			break;
 
 		case 0x6D60E4C7: //object/tangible/deed/city_deed/shared_cloning_corellia_deed.iff
 			defaultTemplateName = "corellia_cloning_deed";
+			break;
 		case 0x96EF7A06: //object/tangible/deed/city_deed/shared_cloning_naboo_deed.iff
 			defaultTemplateName = "naboo_cloning_deed";
+			break;
 		case 0x5E122EDE: //object/tangible/deed/city_deed/shared_cloning_tatooine_deed.iff
 			defaultTemplateName = "tatooine_cloning_deed";
+			break;
 
 		case 0xA9B20B60: //object/tangible/deed/city_deed/shared_garage_corellia_deed.iff
 			defaultTemplateName = "corellia_garage_deed";
+			break;
 		case 0xBF38BE5C: //object/tangible/deed/city_deed/shared_garage_naboo_deed.iff
 			defaultTemplateName = "naboo_garage_deed";
+			break;
 		case 0x9AC0C179: //object/tangible/deed/city_deed/shared_garage_tatooine_deed.iff
 			defaultTemplateName = "tatooine_garage_deed";
+			break;
 
 		case 0x9A8479F1: //object/tangible/deed/city_deed/shared_garden_corellia_lrg_01_deed.iff
 			defaultTemplateName = "garden_corellia_lrg_01_deed";
+			break;
 		case 0x1FF484EF: //object/tangible/deed/city_deed/shared_garden_corellia_lrg_02_deed.iff
 			defaultTemplateName = "garden_corellia_lrg_02_deed";
+			break;
 		case 0x9F642488: //object/tangible/deed/city_deed/shared_garden_corellia_lrg_03_deed.iff
 			defaultTemplateName = "garden_corellia_lrg_03_deed";
+			break;
 		case 0x11D46364: //object/tangible/deed/city_deed/shared_garden_corellia_lrg_04_deed.iff
 			defaultTemplateName = "garden_corellia_lrg_04_deed";
+			break;
 		case 0x9144C303: //object/tangible/deed/city_deed/shared_garden_corellia_lrg_05_deed.iff
 			defaultTemplateName = "garden_corellia_lrg_05_deed";
+			break;
 		case 0xC5D89007: //object/tangible/deed/city_deed/shared_garden_corellia_med_01_deed.iff
 			defaultTemplateName = "garden_corellia_med_01_deed";
+			break;
 		case 0x40A86D19: //object/tangible/deed/city_deed/shared_garden_corellia_med_02_deed.iff
 			defaultTemplateName = "garden_corellia_med_02_deed";
+			break;
 		case 0xC038CD7E: //object/tangible/deed/city_deed/shared_garden_corellia_med_03_deed.iff
 			defaultTemplateName = "garden_corellia_med_03_deed";
+			break;
 		case 0x4E888A92: //object/tangible/deed/city_deed/shared_garden_corellia_med_04_deed.iff
 			defaultTemplateName = "garden_corellia_med_04_deed";
+			break;
 		case 0xCE182AF5: //object/tangibl5/deed/city_deed/shared_garden_corellia_med_05_deed.iff
 			defaultTemplateName = "garden_corellia_med_05_deed";
+			break;
 		case 0x7CE996DF: //object/tangible/deed/city_deed/shared_garden_corellia_sml_01_deed.iff
 			defaultTemplateName = "garden_corellia_sml_01_deed";
+			break;
 		case 0xF9996BC1: //object/tangible/deed/city_deed/shared_garden_corellia_sml_02_deed.iff
 			defaultTemplateName = "garden_corellia_sml_02_deed";
+			break;
 		case 0x7909CBA6: //object/tangible/deed/city_deed/shared_garden_corellia_sml_03_deed.iff
 			defaultTemplateName = "garden_corellia_sml_03_deed";
+			break;
 		case 0xF7B98C4A: //object/tangible/deed/city_deed/shared_garden_corellia_sml_04_deed.iff
 			defaultTemplateName = "garden_corellia_sml_04_deed";
+			break;
 		case 0x77292C2D: //object/tangible/deed/city_deed/shared_garden_corellia_sml_05_deed.iff
 			defaultTemplateName = "garden_corellia_sml_05_deed";
+			break;
 		case 0x44BC3437: //object/tangible/deed/city_deed/shared_garden_dantooine_lrg_01_deed.iff
 			defaultTemplateName = "garden_dantooine_lrg_01_deed";
+			break;
 		case 0x1BE0DDC1: //object/tangible/deed/city_deed/shared_garden_dantooine_med_01_deed.iff
 			defaultTemplateName = "garden_dantooine_med_01_deed";
+			break;
 		case 0xA2D1DB19: //object/tangible/deed/city_deed/shared_garden_dantooine_sml_01_deed.iff
 			defaultTemplateName = "garden_dantooine_sml_01_deed";
+			break;
 		case 0xC6813FAE: //object/tangible/deed/city_deed/shared_garden_dathomir_lrg_01_deed.iff
 			defaultTemplateName = "garden_dathomir_lrg_01_deed";
+			break;
 		case 0x99DDD658: //object/tangible/deed/city_deed/shared_garden_dathomir_med_01_deed.iff
 			defaultTemplateName = "garden_dathomir_med_01_deed";
+			break;
 		case 0x20ECD080: //object/tangible/deed/city_deed/shared_garden_dathomir_sml_01_deed.iff
 			defaultTemplateName = "garden_dathomir_sml_01_deed";
+			break;
 		case 0xFE4BC6C5: //object/tangible/deed/city_deed/shared_garden_endor_lrg_01_deed.iff
 			defaultTemplateName = "garden_endor_lrg_01_deed";
+			break;
 		case 0xA1172F33: //object/tangible/deed/city_deed/shared_garden_endor_med_01_deed.iff
 			defaultTemplateName = "garden_endor_med_01_deed";
+			break;
 		case 0x182629EB: //object/tangible/deed/city_deed/shared_garden_endor_sml_01_deed.iff
 			defaultTemplateName = "garden_endor_sml_01_deed";
+			break;
 		case 0x187D2021: //object/tangible/deed/city_deed/shared_garden_naboo_lrg_01_deed.iff
 			defaultTemplateName = "garden_naboo_lrg_01_deed";
+			break;
 		case 0x9D0DDD3F: //object/tangible/deed/city_deed/shared_garden_naboo_lrg_02_deed.iff
 			defaultTemplateName = "garden_naboo_lrg_02_deed";
+			break;
 		case 0x1D9D7D58: //object/tangible/deed/city_deed/shared_garden_naboo_lrg_03_deed.iff
 			defaultTemplateName = "garden_naboo_lrg_03_deed";
+			break;
 		case 0x932D3AB4: //object/tangible/deed/city_deed/shared_garden_naboo_lrg_04_deed.iff
 			defaultTemplateName = "garden_naboo_lrg_04_deed";
+			break;
 		case 0x13BD9AD3: //object/tangible/deed/city_deed/shared_garden_naboo_lrg_05_deed.iff
 			defaultTemplateName = "garden_naboo_lrg_05_deed";
+			break;
 		case 0x4721C9D7: //object/tangible/deed/city_deed/shared_garden_naboo_med_01_deed.iff
 			defaultTemplateName = "garden_naboo_med_01_deed";
+			break;
 		case 0xC25134C9: //object/tangible/deed/city_deed/shared_garden_naboo_med_02_deed.iff
 			defaultTemplateName = "garden_naboo_med_02_deed";
+			break;
 		case 0x42C194AE: //object/tangible/deed/city_deed/shared_garden_naboo_med_03_deed.iff
 			defaultTemplateName = "garden_naboo_med_03_deed";
+			break;
 		case 0xCC71D342: //object/tangible/deed/city_deed/shared_garden_naboo_med_04_deed.iff
 			defaultTemplateName = "garden_naboo_med_04_deed";
+			break;
 		case 0x4CE17325: //object/tangible/deed/city_deed/shared_garden_naboo_med_05_deed.iff
 			defaultTemplateName = "garden_naboo_med_05_deed";
+			break;
 		case 0xFE10CF0F: //object/tangible/deed/city_deed/shared_garden_naboo_sml_01_deed.iff
 			defaultTemplateName = "garden_naboo_sml_01_deed";
+			break;
 		case 0x7B603211: //object/tangible/deed/city_deed/shared_garden_naboo_sml_02_deed.iff
 			defaultTemplateName = "garden_naboo_sml_02_deed";
+			break;
 		case 0xFBF09276: //object/tangible/deed/city_deed/shared_garden_naboo_sml_03_deed.iff
 			defaultTemplateName = "garden_naboo_sml_03_deed";
+			break;
 		case 0x7540D59A: //object/tangible/deed/city_deed/shared_garden_naboo_sml_04_deed.iff
 			defaultTemplateName = "garden_naboo_sml_04_deed";
+			break;
 		case 0xF5D075FD: //object/tangible/deed/city_deed/shared_garden_naboo_sml_05_deed.iff
 			defaultTemplateName = "garden_naboo_sml_05_deed";
+			break;
 		case 0x57C36C6D: //object/tangible/deed/city_deed/shared_garden_tatooine_lrg_01_deed.iff
 			defaultTemplateName = "garden_tatooine_lrg_01_deed";
+			break;
 		case 0xD2B39173: //object/tangible/deed/city_deed/shared_garden_tatooine_lrg_02_deed.iff
 			defaultTemplateName = "garden_tatooine_lrg_02_deed";
+			break;
 		case 0x52233114: //object/tangible/deed/city_deed/shared_garden_tatooine_lrg_03_deed.iff
 			defaultTemplateName = "garden_tatooine_lrg_03_deed";
+			break;
 		case 0xDC9376F8: //object/tangible/deed/city_deed/shared_garden_tatooine_lrg_04_deed.iff
 			defaultTemplateName = "garden_tatooine_lrg_04_deed";
+			break;
 		case 0x5C03D69F: //object/tangible/deed/city_deed/shared_garden_tatooine_lrg_05_deed.iff
 			defaultTemplateName = "garden_tatooine_lrg_05_deed";
+			break;
 		case 0x089F859B: //object/tangible/deed/city_deed/shared_garden_tatooine_med_01_deed.iff
 			defaultTemplateName = "garden_tatooine_med_01_deed";
+			break;
 		case 0x8DEF7885: //object/tangible/deed/city_deed/shared_garden_tatooine_med_02_deed.iff
 			defaultTemplateName = "garden_tatooine_med_02_deed";
+			break;
 		case 0x0D7FD8E2: //object/tangible/deed/city_deed/shared_garden_tatooine_med_03_deed.iff
 			defaultTemplateName = "garden_tatooine_med_03_deed";
+			break;
 		case 0x83CF9F0E: //object/tangible/deed/city_deed/shared_garden_tatooine_med_04_deed.iff
 			defaultTemplateName = "garden_tatooine_med_04_deed";
+			break;
 		case 0x035F3F69: //object/tangible/deed/city_deed/shared_garden_tatooine_med_05_deed.iff
 			defaultTemplateName = "garden_tatooine_med_05_deed";
+			break;
 		case 0xB1AE8343: //object/tangible/deed/city_deed/shared_garden_tatooine_sml_01_deed.iff
 			defaultTemplateName = "garden_tatooine_sml_01_deed";
+			break;
 		case 0x34DE7E5D: //object/tangible/deed/city_deed/shared_garden_tatooine_sml_02_deed.iff
 			defaultTemplateName = "garden_tatooine_sml_02_deed";
+			break;
 		case 0xB44EDE3A: //object/tangible/deed/city_deed/shared_garden_tatooine_sml_03_deed.iff
 			defaultTemplateName = "garden_tatooine_sml_03_deed";
+			break;
 		case 0x3AFE99D6: //object/tangible/deed/city_deed/shared_garden_tatooine_sml_04_deed.iff
 			defaultTemplateName = "garden_tatooine_sml_04_deed";
+			break;
 		case 0xBA6E39B1: //object/tangible/deed/city_deed/shared_garden_tatooine_sml_05_deed.iff
 			defaultTemplateName = "garden_tatooine_sml_05_deed";
+			break;
 
 		case 0xA90A5290: //object/tangible/deed/city_deed/shared_hospital_corellia_deed.iff
 			defaultTemplateName = "corellia_hospital_deed";
+			break;
 		case 0x420134C6: //object/tangible/deed/city_deed/shared_hospital_naboo_deed.iff
 			defaultTemplateName = "naboo_hospital_deed";
+			break;
 		case 0x9A789889: //object/tangible/deed/city_deed/shared_hospital_tatooine_deed.iff
 			defaultTemplateName = "tatooine_hospital_deed";
+			break;
 
 		case 0xDB73A277: //object/tangible/deed/city_deed/shared_shuttleport_corellia_deed.iff
 			defaultTemplateName = "corellia_shuttleport_deed";
+			break;
 		case 0x523389B5: //object/tangible/deed/city_deed/shared_shuttleport_naboo_deed.iff
 			defaultTemplateName = "naboo_shuttleport_deed";
+			break;
 		case 0xE801686E: //object/tangible/deed/city_deed/shared_shuttleport_tatooine_deed.iff
 			defaultTemplateName = "tatooine_shuttleport_deed";
+			break;
 
 		case 0x248F6CEF: //object/tangible/deed/city_deed/shared_theater_corellia_deed.iff
 			defaultTemplateName = "corellia_theater_deed";
+			break;
 		case 0xB427B96E: //object/tangible/deed/city_deed/shared_theater_naboo_deed.iff
 			defaultTemplateName = "naboo_theater_deed";
+			break;
 		case 0x17FDA6F6: //object/tangible/deed/city_deed/shared_theater_tatooine_deed.iff
 			defaultTemplateName = "tatooine_theater_deed";
+			break;
 
 
 
@@ -1199,93 +1313,135 @@ String& DeedObjectImplementation::getDefaultTemplateName(uint32 objCRC) {
 
 		case 0xC786298D: //object/tangible/deed/faction_perk/covert_detector/shared_detector_32m_deed.iff
 			defaultTemplateName = "covert_detector_32m";
+			break;
 		case 0x87DD72EB: //object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff
+
 
 		// Faction Bases won't work for this since the imp/rebel share the CRC
 		case 0x3085BEBA: //object/tangible/deed/faction_perk/hq/shared_hq_s01.iff
 			defaultTemplateName = "hq_s01_pvp";
+			break;
 		case 0xEB92162D: //object/tangible/deed/faction_perk/hq/shared_hq_s02.iff
 			defaultTemplateName = "hq_s02_pvp";
+			break;
 		case 0xA29F71A0: //object/tangible/deed/faction_perk/hq/shared_hq_s03.iff
 			defaultTemplateName = "hq_s03_pvp";
+			break;
 		case 0x597C5AB4: //object/tangible/deed/faction_perk/hq/shared_hq_s04.iff
 			defaultTemplateName = "hq_s04_pvp";
+			break;
 		case 0x10713D39: //object/tangible/deed/faction_perk/hq/shared_hq_s05.iff
 			defaultTemplateName = "hq_s05_pvp";
+			break;
 
 		case 0xF5092D77: //object/tangible/deed/guild_deed/shared_corellia_guild_deed.iff
 			defaultTemplateName = "corellia_guild_deed";
+			break;
 		case 0xC76A6970: //object/tangible/deed/guild_deed/shared_generic_guild_deed.iff
 			defaultTemplateName = "generic_guild_deed";
+			break;
 		case 0x8EF75108: //object/tangible/deed/guild_deed/shared_naboo_guild_deed.iff
 			defaultTemplateName = "naboo_guild_deed";
+			break;
 		case 0x3287A7A2: //object/tangible/deed/guild_deed/shared_tatooine_guild_deed.iff
 		case 0x63F71FE7: //object/tangible/deed/guild_deed/shared_tatooine_guild_style_02_deed.iff
 			defaultTemplateName = "tatooine_guild_2_deed";
+			break;
 		case 0x05F7BC15: //object/tangible/deed/corellia/player_house_deed/shared_corellia_house_large_deed.iff
 		case 0xAEA2F701: //object/tangible/deed/player_house_deed/shared_corellia_house_large_deed.iff
 			defaultTemplateName = "corellia_house_large_deed";
+			break;
 		case 0xF36F169A: //object/tangible/deed/corellia/player_house_deed/shared_corellia_house_medium_deed.iff
 		case 0x7C409FF5: //object/tangible/deed/player_house_deed/shared_corellia_house_medium_deed.iff
 			defaultTemplateName = "corellia_house_medium_deed";
+			break;
 		case 0x4571BAB6: //object/tangible/deed/corellia/player_house_deed/shared_corellia_house_small_deed.iff
 			defaultTemplateName = "corellia_house_small_deed";
+			break;
 		case 0x03CE0D00: //object/tangible/deed/naboo/player_house_deed/shared_naboo_house_large_deed.iff
 			defaultTemplateName = "naboo_house_large_deed";
+			break;
 		case 0xD0584E28: //object/tangible/deed/naboo/player_house_deed/shared_naboo_house_medium_deed.iff
 			defaultTemplateName = "naboo_house_medium_deed";
+			break;
 		case 0x43480BA3: //object/tangible/deed/naboo/player_house_deed/shared_naboo_house_small_deed.iff
 			defaultTemplateName = "naboo_house_small_deed";
+			break;
 		case 0x0E051C75: //object/tangible/deed/player_house_deed/shared_corellia_house_large_style_02_deed.iff
 			defaultTemplateName = "corellia_house_large_style_2_deed";
+			break;
 		case 0x9217CAC4: //object/tangible/deed/player_house_deed/shared_corellia_house_medium_style_02_deed.iff
 			defaultTemplateName = "";
+			break;
 		case 0xFC820F50: //object/tangible/deed/player_house_deed/shared_corellia_house_small_floor_02_deed.iff
 			defaultTemplateName = "corellia_house_small_floor_2";
+			break;
 		case 0x8CD7386A: //object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_deed.iff
 			defaultTemplateName = "corellia_house_small_style_2_deed";
+			break;
 		case 0xBD4E39FA: //object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_floor_02_deed.iff
 			defaultTemplateName = "corellia_house_small_style_2_floor_2_deed";
+			break;
 		case 0x67C936E3: //object/tangible/deed/player_house_deed/shared_generic_house_large_deed.iff
 			defaultTemplateName = "generic_house_large_deed";
+			break;
 		case 0xD5D68F6C: //object/tangible/deed/player_house_deed/shared_generic_house_large_style_02_deed.iff
 			defaultTemplateName = "generic_house_large_style_2_deed";
+			break;
 		case 0x68C21D63: //object/tangible/deed/player_house_deed/shared_generic_house_medium_deed.iff
 			defaultTemplateName = "generic_house_medium_deed";
+			break;
 		case 0x7B54534C: //object/tangible/deed/player_house_deed/shared_generic_house_medium_style_02_deed.iff
 			defaultTemplateName = "generic_house_medium_style_2_deed";
+			break;
 		case 0x274F3040: //object/tangible/deed/player_house_deed/shared_generic_house_small_deed.iff
 			defaultTemplateName = "generic_house_small_deed";
+			break;
 		case 0x27519C49: //object/tangible/deed/player_house_deed/shared_generic_house_small_floor_02_deed.iff
 			defaultTemplateName = "generic_house_small_floor_2_deed";
+			break;
 		case 0x5704AB73: //object/tangible/deed/player_house_deed/shared_generic_house_small_style_02_deed.iff
 			defaultTemplateName = "generic_house_small_style_2_deed";
+			break;
 		case 0x721D4D62: //object/tangible/deed/player_house_deed/shared_generic_house_small_style_02_floor_02_deed.iff
 			defaultTemplateName = "generic_house_small_style_2_deed";
+			break;
 		case 0xA872D1FD: //object/tangible/deed/player_house_deed/shared_merchant_tent_style_01_deed.iff
 			defaultTemplateName = "merchant_tent";
+			break;
 		case 0x2D022CE3: //object/tangible/deed/player_house_deed/shared_merchant_tent_style_02_deed.iff
 			defaultTemplateName = "merchant_tent_2";
+			break;
 		case 0xAD928C84: //object/tangible/deed/player_house_deed/shared_merchant_tent_style_03_deed.iff
 			defaultTemplateName = "merchant_tent_3";
+			break;
 		case 0x9090CB14: //object/tangible/deed/player_house_deed/shared_naboo_house_large_deed.iff
 			defaultTemplateName = "naboo_house_large_deed";
+			break;
 		case 0xA6C0476F: //object/tangible/deed/player_house_deed/shared_naboo_house_medium_deed.iff
 			defaultTemplateName = "naboo_house_medium_deed";
+			break;
 		case 0xEE65658A: //object/tangible/deed/player_house_deed/shared_naboo_house_medium_style_02_deed.iff
 			defaultTemplateName = "naboo_house_medium_style_2_deed";
+			break;
 		case 0xD016CDB7: //object/tangible/deed/player_house_deed/shared_naboo_house_small_deed.iff
 			defaultTemplateName = "naboo_house_small_deed";
+			break;
 		case 0xEF0AAC25: //object/tangible/deed/player_house_deed/shared_naboo_house_small_style_02_deed.iff
 			defaultTemplateName = "naboo_house_small_style_2_deed";
+			break;
 		case 0x06FC884E: //object/tangible/deed/player_house_deed/shared_tatooine_house_large_deed.iff
 			defaultTemplateName = "tatooine_house_large_deed";
+			break;
 		case 0xF5186B43: //object/tangible/deed/player_house_deed/shared_tatooine_house_medium_deed.iff
 			defaultTemplateName = "tatooine_house_medium_deed";
+			break;
 		case 0x467A8EED: //object/tangible/deed/player_house_deed/shared_tatooine_house_small_deed.iff
 			defaultTemplateName = "tatooine_house_small_deed";
+			break;
 		case 0x83190387: //object/tangible/deed/player_house_deed/shared_tatooine_house_small_style_02_deed.iff
 			defaultTemplateName = "tatooine_house_small_style_2_deed";
+			break;
 
 		case 0xC43635AD: //object/intangible/pet/shared_pet_deed.iff
 		case 0x95396146: //object/tangible/deed/base/shared_pet_deed_base.iff
@@ -1432,7 +1588,7 @@ String& DeedObjectImplementation::getDefaultTemplateName(uint32 objCRC) {
 		case 0x87E877A4: //object/tangible/space/veteran_reward/shared_sorosuub_space_yacht_deed.iff
 		default:
 			defaultTemplateName = ""; // hmm
-
+			break;
 	}
 
 	return defaultTemplateName;

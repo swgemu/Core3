@@ -94,12 +94,25 @@ void HarvesterDeed::setSurplusPower(int pow) {
 		((HarvesterDeedImplementation*) _impl)->setSurplusPower(pow);
 }
 
-void HarvesterDeed::setExtractionRate(float rate) {
+void HarvesterDeed::setPowerRate(float rate) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 10);
+		method.addFloatParameter(rate);
+
+		method.executeWithVoidReturn();
+	} else
+		((HarvesterDeedImplementation*) _impl)->setPowerRate(rate);
+}
+
+void HarvesterDeed::setExtractionRate(float rate) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
 		method.addFloatParameter(rate);
 
 		method.executeWithVoidReturn();
@@ -112,7 +125,7 @@ void HarvesterDeed::setHopperSize(float size) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addFloatParameter(size);
 
 		method.executeWithVoidReturn();
@@ -125,7 +138,7 @@ void HarvesterDeed::setLotSize(int size) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 		method.addSignedIntParameter(size);
 
 		method.executeWithVoidReturn();
@@ -138,7 +151,7 @@ int HarvesterDeed::getSurplusMaintenance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -150,7 +163,7 @@ float HarvesterDeed::getMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -162,11 +175,23 @@ int HarvesterDeed::getSurplusPower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((HarvesterDeedImplementation*) _impl)->getSurplusPower();
+}
+
+float HarvesterDeed::getPowerRate() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((HarvesterDeedImplementation*) _impl)->getPowerRate();
 }
 
 float HarvesterDeed::getExtractionRate() {
@@ -174,7 +199,7 @@ float HarvesterDeed::getExtractionRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -186,7 +211,7 @@ float HarvesterDeed::getHopperSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -198,7 +223,7 @@ int HarvesterDeed::getLotSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -229,30 +254,36 @@ Packet* HarvesterDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		setSurplusPower(inv->getSignedIntParameter());
 		break;
 	case 10:
-		setExtractionRate(inv->getFloatParameter());
+		setPowerRate(inv->getFloatParameter());
 		break;
 	case 11:
-		setHopperSize(inv->getFloatParameter());
+		setExtractionRate(inv->getFloatParameter());
 		break;
 	case 12:
-		setLotSize(inv->getSignedIntParameter());
+		setHopperSize(inv->getFloatParameter());
 		break;
 	case 13:
-		resp->insertSignedInt(getSurplusMaintenance());
+		setLotSize(inv->getSignedIntParameter());
 		break;
 	case 14:
-		resp->insertFloat(getMaintenanceRate());
+		resp->insertSignedInt(getSurplusMaintenance());
 		break;
 	case 15:
-		resp->insertSignedInt(getSurplusPower());
+		resp->insertFloat(getMaintenanceRate());
 		break;
 	case 16:
-		resp->insertFloat(getExtractionRate());
+		resp->insertSignedInt(getSurplusPower());
 		break;
 	case 17:
-		resp->insertFloat(getHopperSize());
+		resp->insertFloat(getPowerRate());
 		break;
 	case 18:
+		resp->insertFloat(getExtractionRate());
+		break;
+	case 19:
+		resp->insertFloat(getHopperSize());
+		break;
+	case 20:
 		resp->insertSignedInt(getLotSize());
 		break;
 	default:
@@ -278,6 +309,10 @@ void HarvesterDeedAdapter::setSurplusPower(int pow) {
 	return ((HarvesterDeedImplementation*) impl)->setSurplusPower(pow);
 }
 
+void HarvesterDeedAdapter::setPowerRate(float rate) {
+	return ((HarvesterDeedImplementation*) impl)->setPowerRate(rate);
+}
+
 void HarvesterDeedAdapter::setExtractionRate(float rate) {
 	return ((HarvesterDeedImplementation*) impl)->setExtractionRate(rate);
 }
@@ -300,6 +335,10 @@ float HarvesterDeedAdapter::getMaintenanceRate() {
 
 int HarvesterDeedAdapter::getSurplusPower() {
 	return ((HarvesterDeedImplementation*) impl)->getSurplusPower();
+}
+
+float HarvesterDeedAdapter::getPowerRate() {
+	return ((HarvesterDeedImplementation*) impl)->getPowerRate();
 }
 
 float HarvesterDeedAdapter::getExtractionRate() {

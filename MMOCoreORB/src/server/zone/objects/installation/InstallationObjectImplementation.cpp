@@ -62,6 +62,9 @@ which carries forward this exception.
 
 #include "events/InstallationSyncUIEvent.h"
 
+#include "../../managers/planet/PlanetManager.h"
+#include "../../managers/structure/StructureManager.h"
+
 
 
 InstallationObjectImplementation::InstallationObjectImplementation(uint64 oid) : InstallationObjectServant(oid, INSTALLATION) {
@@ -198,7 +201,7 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 			willRedeed = "\\#32CD32YES\\#";
 
 			sscond << dec << "- CONDITION: \\#32CD32" << maxCondition - conditionDamage << "/" << maxCondition << "\\#";
-			ssmain << dec << "- MAINTENANCE: \\#32CD32" << static_cast<int>(getSurplusMaintenance()) << "/" << (getSurplusMaintenance() * 100) << "\\#";
+			ssmain << dec << "- MAINTENANCE: \\#32CD32" << static_cast<int>(getSurplusMaintenance()) << "/" << (getMaintenanceRate() * 100) << "\\#";
 
 		}
 		else {
@@ -209,13 +212,13 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 			if ((conditionDamage == 0)) {
 
 				sscond << dec << "- CONDITION: \\#32CD32"<< maxCondition - conditionDamage << "/" << maxCondition << "\\#";
-				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << (getSurplusMaintenance() * 100) << "\\#";
+				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << (getMaintenanceRate() * 100) << "\\#";
 
 			}
 			else {
 
 				sscond << dec << "- CONDITION: \\#FF6347" << maxCondition - conditionDamage << "/" << maxCondition << "\\#";
-				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << (getSurplusMaintenance() * 100) << "\\#";
+				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << (getMaintenanceRate() * 100) << "\\#";
 
 			}
 		}
@@ -254,7 +257,7 @@ void InstallationObjectImplementation::handleStructureRedeedConfirm(Player * pla
 
 		confirmRedeed->setPromptTitle("Confirm Structure Destruction");
 
-		if ((conditionDamage == 0) && (getSurplusMaintenance() >= (getSurplusMaintenance() * 100))){
+		if ((conditionDamage == 0) && (getSurplusMaintenance() >= (getMaintenanceRate() * 100))) {
 			status = "\\#32CD32WILL\\#       \\#93F5FF";
 		}
 		else{
@@ -276,9 +279,52 @@ void InstallationObjectImplementation::handleStructureRedeedConfirm(Player * pla
 	}
 
 }
-void InstallationObjectImplementation::handleMakeDeed(Player * player) {
 
+void InstallationObjectImplementation::handleMakeDeed(Player* player) {
+	info("InstallationObjectImplementation::handleMakeDeed");
+
+	if ((conditionDamage == 0) && (getSurplusMaintenance() >= (getMaintenanceRate() * 100)))
+	{
+		DeedObject* deed = NULL;
+		// create a deed
+
+		switch(getObjectSubType()) {
+		case TangibleObjectImplementation::GENERATOR:
+		case TangibleObjectImplementation::HARVESTER:
+		{
+			deed = new HarvesterDeed((CreatureObject*)player, (HarvesterObject*)_this);
+		}
+		case TangibleObjectImplementation::FACTORY:
+		default:
+			break;
+			//HarvesterDeedImplementation(CreatureObject* creature, HarvesterObject* hino)
+		}
+
+		if(deed == NULL)
+			return;
+
+
+		player->addInventoryItem(deed);
+		deed->sendTo(player);
+	}
+
+	//player->clearTarget();
+
+	Zone *zn = getZone();
+	if(zn == NULL)
+	{
+		info("zone is null...bleh");
+	} else {
+		PlanetManager* planetManager = zn->getPlanetManager();
+		StructureManager* structureManager = planetManager->getStructureManager();
+		structureManager->deleteInstallation(_this);
+	}
+
+	//deleteInstallation does these:
+	//removeFromZone(true);
+	//finalize();
 }
+
 void InstallationObjectImplementation::handleStructureStatus(Player* player) {
 	try
 	{
