@@ -100,7 +100,7 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	if (!qual) {
 		NpcConversationMessage *fail = new NpcConversationMessage(player, "skill_teacher", "no_qualify");
 		player->sendMessage(fail);
-		SuiListBox* suiBox = new SuiListBox(player, SuiBoxType::DENY_TRAINING_LIST);
+		SuiListBox* suiBox = new SuiListBox(player, SuiWindowType::DENY_TRAINING_LIST);
 		suiBox->setPromptTitle("@skill_teacher:no_qualify_title");
 		suiBox->setPromptText("@skill_teacher:no_qualify_prompt");
 		for (int j = 0; j < sBox->getRequiredSkillsSize(); j++) {

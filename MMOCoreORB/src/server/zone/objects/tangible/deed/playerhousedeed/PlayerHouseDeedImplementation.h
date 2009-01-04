@@ -13,7 +13,7 @@ class SceneObject;
 
 class PlayerHouseDeedImplementation : public PlayerHouseDeedServant {
 protected:
-	int type, cellCount;
+	int type, cellCount, lotSize;
 
 public:
 	PlayerHouseDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn);
@@ -23,6 +23,15 @@ public:
 	inline int getCellCount() {
 		return cellCount;
 	}
+
+	// Attribute Setters
+	inline void setLotSize(int size) {
+		lotSize = size;
+		String attr("lotSize");
+		itemAttributes->setIntAttribute(attr, lotSize);
+	}
+
+	// Attribute Getters
 
 private:
 	void init();

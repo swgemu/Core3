@@ -14,8 +14,8 @@
  *	SuiMessageBoxStub
  */
 
-SuiMessageBox::SuiMessageBox(Player* player, unsigned int boxtype) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiMessageBoxImplementation(player, boxtype);
+SuiMessageBox::SuiMessageBox(Player* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
+	_impl = new SuiMessageBoxImplementation(player, windowType);
 	_impl->_setStub(this);
 }
 
@@ -97,7 +97,7 @@ DistributedObjectAdapter* SuiMessageBoxHelper::createAdapter(DistributedObjectSt
  *	SuiMessageBoxServant
  */
 
-SuiMessageBoxServant::SuiMessageBoxServant(Player* player, unsigned int boxtype, unsigned int typeID) : SuiBoxImplementation(player, boxtype, typeID) {
+SuiMessageBoxServant::SuiMessageBoxServant(Player* player, unsigned int windowType, unsigned int boxType) : SuiBoxImplementation(player, windowType, boxType) {
 	_classHelper = SuiMessageBoxHelper::instance();
 }
 

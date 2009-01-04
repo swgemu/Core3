@@ -13,6 +13,7 @@ protected:
 
 	UnicodeString targetName;
 
+	String defaultTemplateName;
 public:
 	// Sub Types
 
@@ -39,6 +40,7 @@ public:
 	DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& name, const String& tempname);
 	DeedObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& name, const String& tempname, int type);
 	DeedObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& name, const String& tempname, int type);
+	DeedObjectImplementation(uint64 oid, int type);
 
 	~DeedObjectImplementation();
 
@@ -47,6 +49,14 @@ public:
 	int useObject(Player * player);
 
 	void generateAttributes(SceneObject* obj);
+
+	virtual int getLotSize() {
+		return 0;
+	}
+
+	virtual void setLotSize() {
+
+	}
 
 	virtual void parseItemAttributes();
 	virtual void addAttributes(AttributeListMessage* alm);
@@ -59,6 +69,8 @@ public:
 	//inline DeedObject* deploy() {
 	//	return (DeedObject*) SceneObjectImplementation::deploy();
 	//}
+
+	virtual String& getDefaultTemplateName(uint32 objCRC);
 
 	inline UnicodeString& getTargetName() {
 		return targetName;
@@ -83,6 +95,7 @@ public:
 	inline void setTargetTemplate(String temp) {
 		targetTemplate = temp;
 	}
+
 
 private:
 

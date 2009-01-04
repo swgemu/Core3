@@ -325,8 +325,7 @@ public:
 	// This function should be called for all character items
 	void parseAttributes();
 
-	virtual void parseItemAttributes() {
-	}
+	virtual void parseItemAttributes();
 
 	virtual void updateCraftingValues(DraftSchematic* draftSchematic) {
 
@@ -608,6 +607,12 @@ public:
 				== VEHICLEDEED) || (objectSubType == DEED));
 	}
 
+	inline bool isInstallation() {
+		return ((objectSubType == INSTALLATION) || (objectSubType
+				== FACTORY) || (objectSubType == GENERATOR)
+				|| (objectSubType == HARVESTER) || (objectSubType
+				== TURRET) || (objectSubType == MINEFIELD));
+	}
 
 	inline bool isLair() {
 		return objectSubType == LAIR;

@@ -73,7 +73,7 @@ public:
 		insertAscii("tatooine"); //Home Planet
 
 		insertUnicode(""); //Spouse Name
-		insertInt(4); //Lots Remaining
+		insertInt(player->getLotsRemaining()); //Lots Remaining
 
 		insertInt(player->getFaction()); //Faction CRC (or hashCode?)
 		insertInt(player->getFactionStatus()); //Faction Status

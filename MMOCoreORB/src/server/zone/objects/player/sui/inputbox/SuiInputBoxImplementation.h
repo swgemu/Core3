@@ -64,7 +64,7 @@ public:
 	const static int FILTER = 1;
 
 public:
-	SuiInputBoxImplementation(Player* player, uint32 boxType, int inputtype = 0);
+	SuiInputBoxImplementation(Player* player, uint32 windowType, int inputtype = 0);
 
 	BaseMessage* generateMessage();
 

@@ -100,12 +100,25 @@ void FactoryDeed::setHopperSize(float size) {
 		((FactoryDeedImplementation*) _impl)->setHopperSize(size);
 }
 
-int FactoryDeed::getSurplusMaintenance() {
+void FactoryDeed::setLotSize(int size) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 11);
+		method.addSignedIntParameter(size);
+
+		method.executeWithVoidReturn();
+	} else
+		((FactoryDeedImplementation*) _impl)->setLotSize(size);
+}
+
+int FactoryDeed::getSurplusMaintenance() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -117,7 +130,7 @@ float FactoryDeed::getMaintenanceRate() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -129,7 +142,7 @@ int FactoryDeed::getSurplusPower() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -141,11 +154,23 @@ float FactoryDeed::getHopperSize() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithFloatReturn();
 	} else
 		return ((FactoryDeedImplementation*) _impl)->getHopperSize();
+}
+
+int FactoryDeed::getLotSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((FactoryDeedImplementation*) _impl)->getLotSize();
 }
 
 /*
@@ -175,16 +200,22 @@ Packet* FactoryDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		setHopperSize(inv->getFloatParameter());
 		break;
 	case 11:
-		resp->insertSignedInt(getSurplusMaintenance());
+		setLotSize(inv->getSignedIntParameter());
 		break;
 	case 12:
-		resp->insertFloat(getMaintenanceRate());
+		resp->insertSignedInt(getSurplusMaintenance());
 		break;
 	case 13:
-		resp->insertSignedInt(getSurplusPower());
+		resp->insertFloat(getMaintenanceRate());
 		break;
 	case 14:
+		resp->insertSignedInt(getSurplusPower());
+		break;
+	case 15:
 		resp->insertFloat(getHopperSize());
+		break;
+	case 16:
+		resp->insertSignedInt(getLotSize());
 		break;
 	default:
 		return NULL;
@@ -213,6 +244,10 @@ void FactoryDeedAdapter::setHopperSize(float size) {
 	return ((FactoryDeedImplementation*) impl)->setHopperSize(size);
 }
 
+void FactoryDeedAdapter::setLotSize(int size) {
+	return ((FactoryDeedImplementation*) impl)->setLotSize(size);
+}
+
 int FactoryDeedAdapter::getSurplusMaintenance() {
 	return ((FactoryDeedImplementation*) impl)->getSurplusMaintenance();
 }
@@ -227,6 +262,10 @@ int FactoryDeedAdapter::getSurplusPower() {
 
 float FactoryDeedAdapter::getHopperSize() {
 	return ((FactoryDeedImplementation*) impl)->getHopperSize();
+}
+
+int FactoryDeedAdapter::getLotSize() {
+	return ((FactoryDeedImplementation*) impl)->getLotSize();
 }
 
 /*

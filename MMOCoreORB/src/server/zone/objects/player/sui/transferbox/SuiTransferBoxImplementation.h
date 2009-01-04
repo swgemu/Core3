@@ -54,24 +54,24 @@ class SuiCreatePageMessage;
 
 class SuiTransferBoxImplementation : public SuiTransferBoxServant {
 	int options;
-	
+
 	String lblFrom, lblStartingFrom, lblInputFrom, lblTo, lblStartingTo, lblInputTo;
 	String convertRatioFrom, convertRatioTo;
-	
+
 	SuiCreatePageMessage* message;
-	
+
 private:
 	void generateHeader(SuiCreatePageMessage* msg);
-	
+
 public:
-	SuiTransferBoxImplementation(Player* player, uint32 boxType);
-	
+	SuiTransferBoxImplementation(Player* player, uint32 windowType);
+
 	BaseMessage* generateMessage();
-	
+
 	BaseMessage* getMessage() {
 		return (BaseMessage*)message;
 	}
-	
+
 	void addOption(const String& itemText, const String& lblType, const String& itemType);
 	void addFrom(const String& from, const String& startingFrom, const String& inputFrom, const String& rFrom);
 	void addTo(const String& to, const String& startingTo, const String& inputTo, const String& rTo);

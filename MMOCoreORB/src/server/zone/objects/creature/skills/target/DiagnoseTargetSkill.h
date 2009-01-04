@@ -88,8 +88,8 @@ public:
 		}
 
 		/*TODO: Close an already opened Diagnose box before sending a new one??
-		if (player->hasSuiBox(SuiBoxType::DIAGNOSE))
-			player->removeSuiBox(SuiBoxType::DIAGNOSE);
+		if (player->hasSuiBox(SuiWindowType::DIAGNOSE))
+			player->removeSuiBox(SuiWindowType::DIAGNOSE);
 		*/
 
 		String targetName = "";
@@ -97,7 +97,7 @@ public:
 		UnicodeStringName = creatureTarget->getCharacterName();
 		targetName = UnicodeStringName.toString();
 
-		SuiListBox* sui = new SuiListBox(player, SuiBoxType::DIAGNOSE);
+		SuiListBox* sui = new SuiListBox(player, SuiWindowType::DIAGNOSE);
 		StringBuffer title;
 		title << "Patient " << targetName.toCharArray();
 		sui->setPromptTitle(title.toString());

@@ -18,10 +18,12 @@ interface GeneratorDeed implements DeedObject {
 	void setMaintenanceRate(float rate);
 	void setExtractionRate(float rate);
 	void setHopperSize(float size);
+	void setLotSize(int size);
 	
 	int getSurplusMaintenance();
 	float getMaintenanceRate();
 	float getExtractionRate();
 	float getHopperSize();
+	int getLotSize();
 }
 

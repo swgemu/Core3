@@ -14,7 +14,7 @@ class SceneObject;
 
 class FactoryDeedImplementation : public FactoryDeedServant {
 protected:
-	int type;
+	int type, lotSize;
 
 	float maintenanceRate, hopperSize;
 	uint32 surplusMaintenance, surplusPower;
@@ -54,6 +54,11 @@ public:
 		String attr("hopperSize");
 		itemAttributes->setFloatAttribute(attr, (float)hopperSize);
 	}
+	inline void setLotSize(int size) {
+		lotSize = size;
+		String attr("lotSize");
+		itemAttributes->setIntAttribute(attr, lotSize);
+	}
 
 	// Attribute Getters
 	inline uint32 getSurplusMaintenance() {
@@ -67,6 +72,9 @@ public:
 	}
 	inline float getHopperSize() {
 		return hopperSize;
+	}
+	inline int getLotSize() {
+		return lotSize;
 	}
 private:
 	void init();

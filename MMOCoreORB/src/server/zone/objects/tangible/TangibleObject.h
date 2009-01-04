@@ -93,6 +93,8 @@ public:
 
 	bool isDeed();
 
+	bool isInstallation();
+
 	bool isCraftingStation();
 
 	bool isCraftingTool();
@@ -267,6 +269,8 @@ public:
 	bool isLair();
 
 	bool isDeed();
+
+	bool isInstallation();
 
 	bool isCraftingStation();
 

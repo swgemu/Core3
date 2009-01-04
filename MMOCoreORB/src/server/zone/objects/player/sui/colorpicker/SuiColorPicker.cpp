@@ -14,13 +14,13 @@
  *	SuiColorPickerStub
  */
 
-SuiColorPicker::SuiColorPicker(Player* player, unsigned long long objectId, unsigned int boxtype) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiColorPickerImplementation(player, objectId, boxtype);
+SuiColorPicker::SuiColorPicker(Player* player, unsigned long long objectId, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
+	_impl = new SuiColorPickerImplementation(player, objectId, windowType);
 	_impl->_setStub(this);
 }
 
-SuiColorPicker::SuiColorPicker(Player* player, unsigned long long objectId, const String& var, unsigned int boxtype) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiColorPickerImplementation(player, objectId, var, boxtype);
+SuiColorPicker::SuiColorPicker(Player* player, unsigned long long objectId, const String& var, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
+	_impl = new SuiColorPickerImplementation(player, objectId, var, windowType);
 	_impl->_setStub(this);
 }
 
@@ -121,7 +121,7 @@ DistributedObjectAdapter* SuiColorPickerHelper::createAdapter(DistributedObjectS
  *	SuiColorPickerServant
  */
 
-SuiColorPickerServant::SuiColorPickerServant(Player* player, unsigned int boxtype, unsigned int typeId) : SuiBoxImplementation(player, boxtype, typeId) {
+SuiColorPickerServant::SuiColorPickerServant(Player* player, unsigned int windowType, unsigned int boxType) : SuiBoxImplementation(player, windowType, boxType) {
 	_classHelper = SuiColorPickerHelper::instance();
 }
 

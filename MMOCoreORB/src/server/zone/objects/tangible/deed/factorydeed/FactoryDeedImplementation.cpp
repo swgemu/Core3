@@ -45,6 +45,9 @@ void FactoryDeedImplementation::parseItemAttributes() {
 
 	attr = "hopperSize";
 	setHopperSize(itemAttributes->getFloatAttribute(attr));
+
+	attr = "lotSize";
+	setLotSize(itemAttributes->getIntAttribute(attr));
 }
 
 void FactoryDeedImplementation::addAttributes(AttributeListMessage* alm) {
@@ -60,6 +63,7 @@ void FactoryDeedImplementation::addAttributes(AttributeListMessage* alm) {
 
 void FactoryDeedImplementation::init() {
 	objectSubType = TangibleObjectImplementation::INSTALLATIONDEED;
+	setLotSize(1); // All Harvesters/Generators/Factories
 
 	targetTempFile = "object/installation/base/shared_construction_installation_base.iff";
 

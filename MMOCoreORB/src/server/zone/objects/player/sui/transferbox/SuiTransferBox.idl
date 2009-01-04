@@ -48,8 +48,8 @@ import "../../Player";
 include "engine/service/proto/BaseMessage";
 
 interface SuiTransferBox implements SuiBox {
-	SuiTransferBox(Player player, unsigned int boxtype) {
-		super(player, boxtype, unsigned int typeId);
+	SuiTransferBox(Player player, unsigned int windowType) {
+		super(player, windowType, unsigned int boxType);
 	}
 	
 	BaseMessage generateMessage();

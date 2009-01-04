@@ -17,7 +17,7 @@ class Player;
 
 class SuiBankTransferBox : public SuiBox {
 public:
-	SuiBankTransferBox(Player* player, unsigned int boxtype);
+	SuiBankTransferBox(Player* player, unsigned int windowType);
 
 	void addCash(int cash);
 
@@ -83,7 +83,7 @@ public:
 	SuiBankTransferBox* _this;
 
 public:
-	SuiBankTransferBoxServant(Player* player, unsigned int typeID, unsigned int boxtype);
+	SuiBankTransferBoxServant(Player* player, unsigned int windowType, unsigned int boxType);
 	virtual ~SuiBankTransferBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

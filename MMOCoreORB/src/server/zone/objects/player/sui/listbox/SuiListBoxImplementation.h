@@ -69,7 +69,7 @@ public:
 	static const int HANDLEDESTROYUI = 2;
 
 public:
-	SuiListBoxImplementation(Player* player, uint32 boxType, int listBoxType = 0);
+	SuiListBoxImplementation(Player* player, uint32 windowType, int listBoxType = 0);
 
 	~SuiListBoxImplementation();
 

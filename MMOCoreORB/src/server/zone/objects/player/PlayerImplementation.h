@@ -59,7 +59,7 @@ which carries forward this exception.
 
 #include "../terrain/RegionNames.h"
 
-#include "sui/SuiBoxType.h"
+#include "sui/SuiWindowType.h"
 #include "sui/SuiBoxImplementation.h"
 #include "sui/listbox/SuiListBoxImplementation.h"
 
@@ -129,6 +129,8 @@ class PlayerImplementation : public PlayerServant {
 	String startingProfession; //starting profession String
 
 	UnicodeString biography; //char biography
+
+	uint8 lotsRemaining;
 
 	// player objects
 	PlayerObject* playerObject;
@@ -505,7 +507,7 @@ public:
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[18];
 	}
-	void sendToOwner();
+	void sendToOwner(bool doClose = true);
 	void sendPersonalContainers();
 	void sendTo(Player* player, bool doClose = true);
 
@@ -1357,6 +1359,10 @@ public:
 		biography = bio;
 	}
 
+	inline void setLotsRemaining(uint8 lots) {
+		lotsRemaining = lots;
+	}
+
 	inline void setConversatingCreature(CreatureObject*  conversator) {
 		conversatingCreature = conversator;
 	}
@@ -1492,6 +1498,10 @@ public:
 		return biography;
 	}
 
+	inline uint8 getLotsRemaining() {
+		return lotsRemaining;
+	}
+
 	inline Datapad* getDatapad() {
 		return datapad;
 	}
@@ -1598,23 +1608,23 @@ public:
 		return suiBoxes.contains(boxID);
 	}
 
-	inline bool hasSuiBoxType(uint32 boxTypeID) {
+	inline bool hasSuiBoxWindowType(uint32 windowType) {
 		uint32 type = 0;
 		for (int i=0; i<suiBoxes.size(); i++) {
 			SuiBox* sui = suiBoxes.get(i);
-			type = sui->getBoxTypeID();
-			if (boxTypeID == type)
+			type = sui->getWindowType();
+			if (windowType == type)
 				return true;
 		}
 
 		return false;
 	}
 
-	inline uint32 getSuiBoxFromType(uint32 boxTypeID) {
+	inline uint32 getSuiBoxFromWindowType(uint32 windowType) {
 		uint32 type = 0;
 		for (int i=0; i<suiBoxes.size(); i++) {
 			SuiBox* sui = suiBoxes.get(i);
-			if (boxTypeID == sui->getBoxTypeID())
+			if (windowType == sui->getWindowType())
 				return sui->getBoxID();
 		}
 		return 0;
@@ -1892,7 +1902,7 @@ public:
 			return equippedItems->getArmor(location);
 	}
 
-	void removeOldSuiBoxIfPresent(const int suiBoxType);
+	void removeOldSuiBoxIfPresent(const int suiWindowType);
 	void displayMessageoftheDay();
 
 	friend class PlayerManager;

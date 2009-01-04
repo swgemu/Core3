@@ -294,7 +294,7 @@ void GameCommandHandler::init() {
 	gmCommands->addCommand("lockServer", DEVELOPER,
 			"Locks the server for intern testing.",
 			"USAGE: @lockServer",
-			&lockServer);	
+			&lockServer);
 	gmCommands->addCommand("unlockServer", DEVELOPER,
 			"Unlocks the server for public testing.",
 			"USAGE: @lockServer",
@@ -351,7 +351,7 @@ void GameCommandHandler::init() {
 			"Usage: @scaleXP <scaler>",
 			&scaleXP);
 	/* Disabled Commands
-	
+
 	gmCommands->addCommand("toggleCombat", DEVELOPER,
 			"Enables/Disables combat.",
 			"USAGE: @toggleCombat",
@@ -1980,7 +1980,7 @@ void GameCommandHandler::getDirection(StringTokenizer tokenizer, Player* player)
 	StringBuffer ss;
 	ss << "oX: " << target->getDirectionX() << endl << "oZ: "
 	   << target->getDirectionZ() << endl;
-	ss << "oY: " << target->getDirectionY() << endl << "oW: "
+	ss << " oY: " << target->getDirectionY() << endl << "oW: "
 	   << target->getDirectionW();
 	player->sendSystemMessage(ss.toString());
 }

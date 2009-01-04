@@ -91,7 +91,7 @@ public:
 	void handleStructureStatus(Player* player, SceneObject* obj);
 	void handleStructureDestroy(Player* player, SceneObject* obj);
 	void handleSetName(Player* player, SceneObject* obj);
-	void handleStructureAddMaintenance(Player* player, SceneObject* obj);
+	void handleStructureManageMaintenance(Player* player, SceneObject* obj);
 	void handleStructureAddEnergy(Player* player, SceneObject* obj);
 
 	void sendRadialResponseForVehicleDeed(Player* player, VehicleDeed* deed, ObjectMenuResponse* omr);
@@ -121,7 +121,7 @@ public:
 	void handleEntertainerActions(Player* player, SceneObject* obj);
 
 	void handleItemDrop(Player* player, SceneObject* obj);
-	
+
 	//Teach
 	void handleTeach(SceneObject* obj, Player* trainer);
 };

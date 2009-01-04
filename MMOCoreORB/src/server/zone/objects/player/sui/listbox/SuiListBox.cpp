@@ -14,8 +14,8 @@
  *	SuiListBoxStub
  */
 
-SuiListBox::SuiListBox(Player* player, unsigned int boxType, unsigned int listBoxType) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiListBoxImplementation(player, boxType, listBoxType);
+SuiListBox::SuiListBox(Player* player, unsigned int windowType, unsigned int listBoxType) : SuiBox(DummyConstructorParameter::instance()) {
+	_impl = new SuiListBoxImplementation(player, windowType, listBoxType);
 	_impl->_setStub(this);
 }
 
@@ -275,7 +275,7 @@ DistributedObjectAdapter* SuiListBoxHelper::createAdapter(DistributedObjectStub*
  *	SuiListBoxServant
  */
 
-SuiListBoxServant::SuiListBoxServant(Player* player, unsigned int boxType, unsigned int typeId) : SuiBoxImplementation(player, boxType, typeId) {
+SuiListBoxServant::SuiListBoxServant(Player* player, unsigned int windowType, unsigned int boxType) : SuiBoxImplementation(player, windowType, boxType) {
 	_classHelper = SuiListBoxHelper::instance();
 }
 

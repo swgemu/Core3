@@ -64,7 +64,7 @@ interface SuiBox {
 	boolean isBankTransferBox();
 
 	unsigned long getBoxID();
-	int getBoxTypeID();
+	unsigned long getWindowType();
 	unsigned long getUsingObjectID();
 	Player getPlayer();
 }

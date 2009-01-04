@@ -46,16 +46,16 @@ which carries forward this exception.
 #include "../../../packets.h"
 #include "../PlayerImplementation.h"
 
-SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 typeID, uint32 boxtype) :
+SuiBoxImplementation::SuiBoxImplementation(Player* play, uint32 windowType, uint32 boxType) :
 	SuiBoxServant() {
 
 	player = play;
 
-	boxType = boxtype;
+	this->boxType = boxType;
 
-	boxID = player->getNewSuiBoxID(typeID);
+	boxID = player->getNewSuiBoxID(windowType);
 
-	boxTypeID = typeID;
+	this->windowType = windowType;
 
 	cancelButton = false;
 

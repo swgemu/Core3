@@ -263,7 +263,7 @@ which carries forward this exception.
 // SUI
 #include "objects/player/sui/SuiBoxImplementation.h"
 #include "objects/player/sui/SuiBox.h"
-#include "objects/player/sui/SuiBoxType.h"
+#include "objects/player/sui/SuiWindowType.h"
 #include "objects/player/sui/inputbox/SuiInputBoxImplementation.h"
 #include "objects/player/sui/inputbox/SuiInputBox.h"
 #include "objects/player/sui/listbox/SuiListBoxImplementation.h"

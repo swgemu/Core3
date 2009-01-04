@@ -79,7 +79,10 @@ void StructureManagerImplementation::initializeEvents() {
 void StructureManagerImplementation::loadStructures() {
 	init();
 
-	info("Loading Structures for zone: " + zone->getZoneID());
+	StringBuffer msg;
+	msg << "StructureManagerImplementation::loadStructures(), zone: " << zone->getZoneID();
+	info(msg.toString());
+
 	loadStaticBuildings();
 	loadPlayerStructures(); // loads both buildings + installations
 
@@ -138,13 +141,19 @@ void StructureManagerImplementation::loadStaticBuildings() {
 			float y = result->getFloat(10);
 
 			float type = result->getFloat(11);
-			info("Loading Structures for zone: " + zone->getZoneID());
+			bool client = result->getBoolean(12);
+
+			//info("Loading Structures for zone: " + zone->getZoneID());
 
 			if (file.indexOf("object/cell/") != -1) {
 				BuildingObject* buio = buildingMap->get(parentId);
 
 				if (buio == NULL)
 					buio = loadStaticBuilding(parentId, planetid);
+
+				StringBuffer msg;
+				msg << "StructureManagerImplementation::loadStaticBuildings(), loading cell (" << oid << " for building: " << parentId << endl;
+				info(msg.toString());
 
 				CellObject* cell = new CellObject(oid, buio);
 
@@ -155,7 +164,7 @@ void StructureManagerImplementation::loadStaticBuildings() {
 				cell->setZoneProcessServer(server);
 				zone->registerObject(cell);
 
-				buio->addCell(cell);
+				buio->addCell(cell); // sets the cell number - assumes loading in order
 
 				if (cellMap->put(oid, cell) != NULL) {
 					error("Error CELL/BUILDING already exists\n");
@@ -176,6 +185,11 @@ void StructureManagerImplementation::loadStaticBuildings() {
 
 BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, int planet) {
 	BuildingObject* buio = NULL;
+
+
+	StringBuffer msg;
+	msg << "Loading Static Building id: " << oid;
+	info(msg.toString());
 
 	StringBuffer query;
 	query << "SELECT * FROM staticobjects WHERE zoneid = '" << planet << "' AND objectid = '" << oid << "';";
@@ -199,18 +213,21 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 			float y = result->getFloat(10);
 
 			float type = result->getFloat(11);
+			bool client = result->getBoolean(12);
 
-			buio = new BuildingObject(oid, true);
+			buio = new BuildingObject(oid, client);
 			buio->setZoneProcessServer(server);
 
 			buio->setObjectCRC(file.hashCode());
-
 			buio->setBuildingType(guessBuildingType(oid, file));
+			//setObjectType
+			//setObjectName
 
 			buio->initializePosition(x, z, y);
 			buio->setDirection(oX, oZ, oY, oW);
 			buio->setPersistent(true); // static = persistent - don't save
 			buio->setUpdated(false); // static = persistent
+
 			buio->insertToZone(zone);
 
 			if (buildingMap->put(oid, buio) != NULL) {
@@ -231,13 +248,17 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
-	info("Loading Player Structures");
+	StringBuffer msg;
+	msg << "StructureManagerImplementation::loadPlayerStructures(), zone: " << zone->getZoneID();
+	info(msg.toString());
 
 	try {
 	int planetid = zone->getZoneID();
 
 	StringBuffer query;
 	query << "SELECT character_structures.*, characters.firstname, characters.surname FROM character_structures inner join characters on character_structures.owner_id = characters.character_id WHERE zoneid = " << planetid << " and deleted = 0 and parent_id = 0;";
+	info(query.toString());
+
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query.toString());
 
 /*	sqlInsertStructure << "INSERT into `character_structures` (zone_id, object_id, parent_id, owner_id, name, "
@@ -277,7 +298,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 
 		switch(type) {
 			case SceneObjectImplementation::BUILDING: {
-				info("building");
+				info("StructureManagerImplementation::loadPlayerStructures(), type = building");
 
 				BuildingObject* buio = new BuildingObject(oid, false);
 				buio->setZoneProcessServer(server);
@@ -304,7 +325,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 			}
 			case SceneObjectImplementation::TANGIBLE: {
 
-				info("tangible");
+				info("StructureManagerImplementation::loadPlayerStructures(), type = tangible");
 				if (!(subType & TangibleObjectImplementation::INSTALLATION))
 						break;
 

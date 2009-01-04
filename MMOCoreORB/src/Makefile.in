@@ -100,13 +100,15 @@ am__objects_1 = CamoKit.$(OBJEXT) ThrowableWeapon.$(OBJEXT) \
 	PlayerMap.$(OBJEXT) ResourceManager.$(OBJEXT) \
 	ResourceList.$(OBJEXT) ResourceItem.$(OBJEXT) \
 	StructureManager.$(OBJEXT) UserManager.$(OBJEXT) \
-	AttackableObject.$(OBJEXT) LairObject.$(OBJEXT) \
-	AuctionItem.$(OBJEXT) BuildingObject.$(OBJEXT) \
-	CellObject.$(OBJEXT) Action.$(OBJEXT) ActionCreature.$(OBJEXT) \
-	BlueFrogCreature.$(OBJEXT) BlueFrogVector.$(OBJEXT) \
-	Creature.$(OBJEXT) CreatureGroup.$(OBJEXT) \
-	CreatureObject.$(OBJEXT) MountCreature.$(OBJEXT) \
-	ImperialRecruiterCreature.$(OBJEXT) \
+	Area.$(OBJEXT) ActiveArea.$(OBJEXT) \
+	ActiveAreaTrigger.$(OBJEXT) BadgeActiveArea.$(OBJEXT) \
+	TestActiveArea.$(OBJEXT) AttackableObject.$(OBJEXT) \
+	LairObject.$(OBJEXT) AuctionItem.$(OBJEXT) \
+	BuildingObject.$(OBJEXT) CellObject.$(OBJEXT) Action.$(OBJEXT) \
+	ActionCreature.$(OBJEXT) BlueFrogCreature.$(OBJEXT) \
+	BlueFrogVector.$(OBJEXT) Creature.$(OBJEXT) \
+	CreatureGroup.$(OBJEXT) CreatureObject.$(OBJEXT) \
+	MountCreature.$(OBJEXT) ImperialRecruiterCreature.$(OBJEXT) \
 	RebelRecruiterCreature.$(OBJEXT) RecruiterCreature.$(OBJEXT) \
 	ShuttleCreature.$(OBJEXT) TrainerCreature.$(OBJEXT) \
 	DraftSchematicAttribute.$(OBJEXT) DraftSchematic.$(OBJEXT) \
@@ -216,7 +218,7 @@ am_core3_OBJECTS = $(am__objects_1) CamoKitImplementation.$(OBJEXT) \
 	FriendListImplementation.$(OBJEXT) \
 	IgnoreListImplementation.$(OBJEXT) \
 	PlayerImplementation.$(OBJEXT) \
-	PlayerObjectImplementation.$(OBJEXT) \
+	PlayerObjectImplementation.$(OBJEXT) Badge.$(OBJEXT) \
 	SuiBankTransferBoxImplementation.$(OBJEXT) \
 	SuiColorPickerImplementation.$(OBJEXT) \
 	SuiInputBoxImplementation.$(OBJEXT) \
@@ -419,6 +421,11 @@ core3_IDLS = server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/managers/resource/ResourceItem.cpp \
 		server/zone/managers/structure/StructureManager.cpp \
 		server/zone/managers/user/UserManager.cpp \
+		server/zone/objects/area/Area.cpp \
+		server/zone/objects/area/ActiveArea.cpp \
+		server/zone/objects/area/ActiveAreaTrigger.cpp \
+		server/zone/objects/area/BadgeActiveArea.cpp \
+		server/zone/objects/area/TestActiveArea.cpp \
 		server/zone/objects/attackable/AttackableObject.cpp \
 		server/zone/objects/attackable/lair/LairObject.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
@@ -612,6 +619,7 @@ core3_SOURCES = $(core3_IDLS) \
 		server/zone/objects/player/IgnoreListImplementation.cpp \
 		server/zone/objects/player/PlayerImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
+		server/zone/objects/player/badges/Badge.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPickerImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
@@ -735,6 +743,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ActionCreature.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ActionCreatureImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ActionImplementation.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ActiveArea.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ActiveAreaTrigger.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Area.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Armor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ArmorImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Attachment.Po@am__quote@
@@ -742,6 +753,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttackableObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AttackableObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AuctionItem.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Badge.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BadgeActiveArea.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Badges.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Bank.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BankManager.Po@am__quote@
@@ -964,6 +977,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TangibleObjectImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TestActiveArea.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ThrowableWeapon.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ThrowableWeaponImplementation.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ticket.Po@am__quote@
@@ -1363,6 +1377,76 @@ UserManager.obj: server/zone/managers/user/UserManager.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/managers/user/UserManager.cpp' object='UserManager.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o UserManager.obj `if test -f 'server/zone/managers/user/UserManager.cpp'; then $(CYGPATH_W) 'server/zone/managers/user/UserManager.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/managers/user/UserManager.cpp'; fi`
+
+Area.o: server/zone/objects/area/Area.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Area.o -MD -MP -MF $(DEPDIR)/Area.Tpo -c -o Area.o `test -f 'server/zone/objects/area/Area.cpp' || echo '$(srcdir)/'`server/zone/objects/area/Area.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Area.Tpo $(DEPDIR)/Area.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/Area.cpp' object='Area.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Area.o `test -f 'server/zone/objects/area/Area.cpp' || echo '$(srcdir)/'`server/zone/objects/area/Area.cpp
+
+Area.obj: server/zone/objects/area/Area.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Area.obj -MD -MP -MF $(DEPDIR)/Area.Tpo -c -o Area.obj `if test -f 'server/zone/objects/area/Area.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/Area.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/Area.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Area.Tpo $(DEPDIR)/Area.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/Area.cpp' object='Area.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Area.obj `if test -f 'server/zone/objects/area/Area.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/Area.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/Area.cpp'; fi`
+
+ActiveArea.o: server/zone/objects/area/ActiveArea.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ActiveArea.o -MD -MP -MF $(DEPDIR)/ActiveArea.Tpo -c -o ActiveArea.o `test -f 'server/zone/objects/area/ActiveArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/ActiveArea.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ActiveArea.Tpo $(DEPDIR)/ActiveArea.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/ActiveArea.cpp' object='ActiveArea.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ActiveArea.o `test -f 'server/zone/objects/area/ActiveArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/ActiveArea.cpp
+
+ActiveArea.obj: server/zone/objects/area/ActiveArea.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ActiveArea.obj -MD -MP -MF $(DEPDIR)/ActiveArea.Tpo -c -o ActiveArea.obj `if test -f 'server/zone/objects/area/ActiveArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/ActiveArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/ActiveArea.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ActiveArea.Tpo $(DEPDIR)/ActiveArea.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/ActiveArea.cpp' object='ActiveArea.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ActiveArea.obj `if test -f 'server/zone/objects/area/ActiveArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/ActiveArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/ActiveArea.cpp'; fi`
+
+ActiveAreaTrigger.o: server/zone/objects/area/ActiveAreaTrigger.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ActiveAreaTrigger.o -MD -MP -MF $(DEPDIR)/ActiveAreaTrigger.Tpo -c -o ActiveAreaTrigger.o `test -f 'server/zone/objects/area/ActiveAreaTrigger.cpp' || echo '$(srcdir)/'`server/zone/objects/area/ActiveAreaTrigger.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ActiveAreaTrigger.Tpo $(DEPDIR)/ActiveAreaTrigger.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/ActiveAreaTrigger.cpp' object='ActiveAreaTrigger.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ActiveAreaTrigger.o `test -f 'server/zone/objects/area/ActiveAreaTrigger.cpp' || echo '$(srcdir)/'`server/zone/objects/area/ActiveAreaTrigger.cpp
+
+ActiveAreaTrigger.obj: server/zone/objects/area/ActiveAreaTrigger.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ActiveAreaTrigger.obj -MD -MP -MF $(DEPDIR)/ActiveAreaTrigger.Tpo -c -o ActiveAreaTrigger.obj `if test -f 'server/zone/objects/area/ActiveAreaTrigger.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/ActiveAreaTrigger.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/ActiveAreaTrigger.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/ActiveAreaTrigger.Tpo $(DEPDIR)/ActiveAreaTrigger.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/ActiveAreaTrigger.cpp' object='ActiveAreaTrigger.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ActiveAreaTrigger.obj `if test -f 'server/zone/objects/area/ActiveAreaTrigger.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/ActiveAreaTrigger.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/ActiveAreaTrigger.cpp'; fi`
+
+BadgeActiveArea.o: server/zone/objects/area/BadgeActiveArea.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BadgeActiveArea.o -MD -MP -MF $(DEPDIR)/BadgeActiveArea.Tpo -c -o BadgeActiveArea.o `test -f 'server/zone/objects/area/BadgeActiveArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/BadgeActiveArea.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BadgeActiveArea.Tpo $(DEPDIR)/BadgeActiveArea.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/BadgeActiveArea.cpp' object='BadgeActiveArea.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BadgeActiveArea.o `test -f 'server/zone/objects/area/BadgeActiveArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/BadgeActiveArea.cpp
+
+BadgeActiveArea.obj: server/zone/objects/area/BadgeActiveArea.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT BadgeActiveArea.obj -MD -MP -MF $(DEPDIR)/BadgeActiveArea.Tpo -c -o BadgeActiveArea.obj `if test -f 'server/zone/objects/area/BadgeActiveArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/BadgeActiveArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/BadgeActiveArea.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/BadgeActiveArea.Tpo $(DEPDIR)/BadgeActiveArea.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/BadgeActiveArea.cpp' object='BadgeActiveArea.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o BadgeActiveArea.obj `if test -f 'server/zone/objects/area/BadgeActiveArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/BadgeActiveArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/BadgeActiveArea.cpp'; fi`
+
+TestActiveArea.o: server/zone/objects/area/TestActiveArea.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestActiveArea.o -MD -MP -MF $(DEPDIR)/TestActiveArea.Tpo -c -o TestActiveArea.o `test -f 'server/zone/objects/area/TestActiveArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/TestActiveArea.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TestActiveArea.Tpo $(DEPDIR)/TestActiveArea.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/TestActiveArea.cpp' object='TestActiveArea.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestActiveArea.o `test -f 'server/zone/objects/area/TestActiveArea.cpp' || echo '$(srcdir)/'`server/zone/objects/area/TestActiveArea.cpp
+
+TestActiveArea.obj: server/zone/objects/area/TestActiveArea.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TestActiveArea.obj -MD -MP -MF $(DEPDIR)/TestActiveArea.Tpo -c -o TestActiveArea.obj `if test -f 'server/zone/objects/area/TestActiveArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/TestActiveArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/TestActiveArea.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/TestActiveArea.Tpo $(DEPDIR)/TestActiveArea.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/area/TestActiveArea.cpp' object='TestActiveArea.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TestActiveArea.obj `if test -f 'server/zone/objects/area/TestActiveArea.cpp'; then $(CYGPATH_W) 'server/zone/objects/area/TestActiveArea.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/area/TestActiveArea.cpp'; fi`
 
 AttackableObject.o: server/zone/objects/attackable/AttackableObject.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT AttackableObject.o -MD -MP -MF $(DEPDIR)/AttackableObject.Tpo -c -o AttackableObject.o `test -f 'server/zone/objects/attackable/AttackableObject.cpp' || echo '$(srcdir)/'`server/zone/objects/attackable/AttackableObject.cpp
@@ -4037,6 +4121,20 @@ PlayerObjectImplementation.obj: server/zone/objects/player/PlayerObjectImplement
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/PlayerObjectImplementation.cpp' object='PlayerObjectImplementation.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o PlayerObjectImplementation.obj `if test -f 'server/zone/objects/player/PlayerObjectImplementation.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/PlayerObjectImplementation.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/PlayerObjectImplementation.cpp'; fi`
+
+Badge.o: server/zone/objects/player/badges/Badge.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Badge.o -MD -MP -MF $(DEPDIR)/Badge.Tpo -c -o Badge.o `test -f 'server/zone/objects/player/badges/Badge.cpp' || echo '$(srcdir)/'`server/zone/objects/player/badges/Badge.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Badge.Tpo $(DEPDIR)/Badge.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/badges/Badge.cpp' object='Badge.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Badge.o `test -f 'server/zone/objects/player/badges/Badge.cpp' || echo '$(srcdir)/'`server/zone/objects/player/badges/Badge.cpp
+
+Badge.obj: server/zone/objects/player/badges/Badge.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Badge.obj -MD -MP -MF $(DEPDIR)/Badge.Tpo -c -o Badge.obj `if test -f 'server/zone/objects/player/badges/Badge.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/badges/Badge.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/badges/Badge.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/Badge.Tpo $(DEPDIR)/Badge.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='server/zone/objects/player/badges/Badge.cpp' object='Badge.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Badge.obj `if test -f 'server/zone/objects/player/badges/Badge.cpp'; then $(CYGPATH_W) 'server/zone/objects/player/badges/Badge.cpp'; else $(CYGPATH_W) '$(srcdir)/server/zone/objects/player/badges/Badge.cpp'; fi`
 
 SuiBankTransferBoxImplementation.o: server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT SuiBankTransferBoxImplementation.o -MD -MP -MF $(DEPDIR)/SuiBankTransferBoxImplementation.Tpo -c -o SuiBankTransferBoxImplementation.o `test -f 'server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp' || echo '$(srcdir)/'`server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp

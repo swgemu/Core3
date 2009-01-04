@@ -46,8 +46,8 @@ which carries forward this exception.
 
 #include "../../../../packets.h"
 
-SuiInputBoxImplementation::SuiInputBoxImplementation(Player* player, uint32 boxType, int inputtype) :
-	SuiInputBoxServant(player, boxType, INPUTBOX) {
+SuiInputBoxImplementation::SuiInputBoxImplementation(Player* player, uint32 windowType, int inputtype) :
+	SuiInputBoxServant(player, windowType, INPUTBOX) {
 
 	maxInputSize = 25;
 

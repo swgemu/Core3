@@ -42,10 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SUIBOXTYPE_H_
-#define SUIBOXTYPE_H_
+#ifndef SUIWINDOWTYPE_H_
+#define SUIWINDOWTYPE_H_
 
-class SuiBoxType {
+class SuiWindowType {
 public:
 
 	static const int MOTD = 0x0000;
@@ -97,6 +97,13 @@ public:
 	static const int TEACH_PLAYER = 0x0035;
 	static const int DENY_TRAINING_LIST = 0x0036;
 
+	static const int OBJECT_NAME = 0x0037;
+	static const int MANAGE_MAINTENANCE = 0x0038;
+	static const int ADD_ENERGY = 0x0039;
+	static const int INSTALLATION_STATUS = 0x0040;
+
+	static const int INSTALLATION_REDEED = 0x0041;
+	static const int INSTALLATION_REDEED_CONFIRM = 0x0042;
 };
 
-#endif /*SuiBoxType_H_*/
+#endif /*SuiWindowType_H_*/

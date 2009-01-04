@@ -39,7 +39,7 @@ public:
 
 	void handleStructureStatus(Player* player);
 
-	void handleStructureAddMaintenance(Player* player);
+	void handleStructureManageMaintenance(Player* player);
 
 	void handleStructureAddEnergy(Player* player);
 
@@ -50,6 +50,8 @@ public:
 	unsigned long long getOwnerID();
 
 	void setOwnerID(unsigned long long owner);
+
+	unsigned int getDeedCRC();
 
 	int getDestroyCode();
 
@@ -139,7 +141,7 @@ public:
 
 	void handleStructureStatus(Player* player);
 
-	void handleStructureAddMaintenance(Player* player);
+	void handleStructureManageMaintenance(Player* player);
 
 	void handleStructureAddEnergy(Player* player);
 
@@ -150,6 +152,8 @@ public:
 	unsigned long long getOwnerID();
 
 	void setOwnerID(unsigned long long owner);
+
+	unsigned int getDeedCRC();
 
 	int getDestroyCode();
 

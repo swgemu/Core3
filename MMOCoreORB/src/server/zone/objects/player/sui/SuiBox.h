@@ -39,7 +39,7 @@ public:
 
 	unsigned long long getBoxID();
 
-	int getBoxTypeID();
+	unsigned long long getWindowType();
 
 	unsigned long long getUsingObjectID();
 
@@ -87,7 +87,7 @@ public:
 
 	unsigned long long getBoxID();
 
-	int getBoxTypeID();
+	unsigned long long getWindowType();
 
 	unsigned long long getUsingObjectID();
 

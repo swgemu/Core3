@@ -13,7 +13,7 @@ class SceneObject;
 
 class HarvesterDeedImplementation : public HarvesterDeedServant {
 protected:
-	int type, size;
+	int type, size, lotSize;
 
 	float maintenanceRate, extractionRate, hopperSize;
 	uint32 surplusMaintenance, surplusPower;
@@ -31,6 +31,7 @@ public:
 
 	HarvesterDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn);
 	HarvesterDeedImplementation(uint64 objid, uint32 tempcrc, const UnicodeString& n, const String& tempn);
+	HarvesterDeedImplementation(CreatureObject* creature, HarvesterObject* hino);
 	~HarvesterDeedImplementation();
 
 	void getType();
@@ -65,6 +66,11 @@ public:
 		String attr("hopperSize");
 		itemAttributes->setFloatAttribute(attr, (float)hopperSize);
 	}
+	inline void setLotSize(int size) {
+		lotSize = size;
+		String attr("lotSize");
+		itemAttributes->setIntAttribute(attr, lotSize);
+	}
 
 	// Attribute Getters
 	inline uint32 getSurplusMaintenance() {
@@ -82,7 +88,9 @@ public:
 	inline float getHopperSize() {
 		return hopperSize;
 	}
-
+	inline int getLotSize() {
+		return lotSize;
+	}
 private:
 	void init();
 

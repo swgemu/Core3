@@ -46,18 +46,18 @@ which carries forward this exception.
 
 #include "../../../../packets.h"
 
-SuiTransferBoxImplementation::SuiTransferBoxImplementation(Player* player, uint32 boxType) :
-	SuiTransferBoxServant(player, boxType, TRANSFERBOX) {
-	
+SuiTransferBoxImplementation::SuiTransferBoxImplementation(Player* player, uint32 windowType) :
+	SuiTransferBoxServant(player, windowType, TRANSFERBOX) {
+
 	options = 0;
-	
+
 	SuiCreatePageMessage* message = NULL;
 }
 
 void SuiTransferBoxImplementation::generateHeader(SuiCreatePageMessage* msg) {
 	msg->insertAscii("Script.transfer");
 	msg->insertInt(12); // Size
-	
+
 	for (int i = 0; i < 2; i++) {  // If these are not added twice it crashes the client
 		msg->insertByte(5);
 		msg->insertInt(0);
@@ -71,7 +71,7 @@ void SuiTransferBoxImplementation::generateHeader(SuiCreatePageMessage* msg) {
 		msg->insertAscii("transaction.txtInputTo"); // 6
 		msg->insertAscii("Text"); // 7
 	}
-	
+
 	msg->insertOption(3, promptTitle, "bg.caption.lblTitle", "Text");
 	msg->insertOption(3, promptText, "Prompt.lblPrompt", "Text");
 	options = 4;
@@ -80,19 +80,19 @@ void SuiTransferBoxImplementation::generateHeader(SuiCreatePageMessage* msg) {
 BaseMessage* SuiTransferBoxImplementation::generateMessage() {
 	message = new SuiCreatePageMessage(boxID);
 	generateHeader(message);
-	
+
 	addOption(lblFrom, "transaction.lblFrom", "Text");
 	addOption(lblTo, "transaction.lblTo", "Text");
-	
+
 	addOption(lblStartingFrom, "transaction.lblStartingFrom", "Text");
 	addOption(lblStartingTo, "transaction.lblStartingTo", "Text");
-	
+
 	addOption(lblInputFrom, "transaction.txtInputFrom", "Text");
 	addOption(lblInputTo, "transaction.txtInputTo", "Text");
-	
+
 	addOption(convertRatioFrom, "transaction", "ConversionRatioFrom");
 	addOption(convertRatioTo, "transaction", "ConversionRatioTo");
-	
+
 	message->insertLong(0);
 	message->insertInt(0);
 	message->insertLong(0);
@@ -106,16 +106,16 @@ void SuiTransferBoxImplementation::addOption(const String& itemText, const Strin
 }
 void SuiTransferBoxImplementation::addFrom(const String& from,
 		const String& startingFrom, const String& inputFrom, const String& rFrom) {
-	
+
 	lblFrom = from;
 	lblStartingFrom = startingFrom;
 	lblInputFrom = inputFrom;
 	convertRatioFrom = rFrom;
-	
+
 }
 void SuiTransferBoxImplementation::addTo(const String& to,
 		const String& startingTo, const String& inputTo, const String& rTo) {
-	
+
 	lblTo = to;
 	lblStartingTo = startingTo;
 	lblInputTo = inputTo;

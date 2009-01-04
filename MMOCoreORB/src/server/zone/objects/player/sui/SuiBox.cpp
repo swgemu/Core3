@@ -180,16 +180,16 @@ unsigned long long SuiBox::getBoxID() {
 		return ((SuiBoxImplementation*) _impl)->getBoxID();
 }
 
-int SuiBox::getBoxTypeID() {
+unsigned long long SuiBox::getWindowType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 19);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedLongReturn();
 	} else
-		return ((SuiBoxImplementation*) _impl)->getBoxTypeID();
+		return ((SuiBoxImplementation*) _impl)->getWindowType();
 }
 
 unsigned long long SuiBox::getUsingObjectID() {
@@ -267,7 +267,7 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertLong(getBoxID());
 		break;
 	case 19:
-		resp->insertSignedInt(getBoxTypeID());
+		resp->insertLong(getWindowType());
 		break;
 	case 20:
 		resp->insertLong(getUsingObjectID());
@@ -334,8 +334,8 @@ unsigned long long SuiBoxAdapter::getBoxID() {
 	return ((SuiBoxImplementation*) impl)->getBoxID();
 }
 
-int SuiBoxAdapter::getBoxTypeID() {
-	return ((SuiBoxImplementation*) impl)->getBoxTypeID();
+unsigned long long SuiBoxAdapter::getWindowType() {
+	return ((SuiBoxImplementation*) impl)->getWindowType();
 }
 
 unsigned long long SuiBoxAdapter::getUsingObjectID() {

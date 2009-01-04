@@ -14,8 +14,8 @@
  *	SuiBankTransferBoxStub
  */
 
-SuiBankTransferBox::SuiBankTransferBox(Player* player, unsigned int boxtype) : SuiBox(DummyConstructorParameter::instance()) {
-	_impl = new SuiBankTransferBoxImplementation(player, boxtype);
+SuiBankTransferBox::SuiBankTransferBox(Player* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
+	_impl = new SuiBankTransferBoxImplementation(player, windowType);
 	_impl->_setStub(this);
 }
 
@@ -178,7 +178,7 @@ DistributedObjectAdapter* SuiBankTransferBoxHelper::createAdapter(DistributedObj
  *	SuiBankTransferBoxServant
  */
 
-SuiBankTransferBoxServant::SuiBankTransferBoxServant(Player* player, unsigned int typeID, unsigned int boxtype) : SuiBoxImplementation(player, typeID, boxtype) {
+SuiBankTransferBoxServant::SuiBankTransferBoxServant(Player* player, unsigned int windowType, unsigned int boxType) : SuiBoxImplementation(player, windowType, boxType) {
 	_classHelper = SuiBankTransferBoxHelper::instance();
 }
 

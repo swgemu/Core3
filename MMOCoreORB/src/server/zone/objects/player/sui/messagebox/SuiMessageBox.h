@@ -17,7 +17,7 @@ class Player;
 
 class SuiMessageBox : public SuiBox {
 public:
-	SuiMessageBox(Player* player, unsigned int boxtype);
+	SuiMessageBox(Player* player, unsigned int windowType);
 
 	BaseMessage* generateMessage();
 
@@ -63,7 +63,7 @@ public:
 	SuiMessageBox* _this;
 
 public:
-	SuiMessageBoxServant(Player* player, unsigned int boxtype, unsigned int typeID);
+	SuiMessageBoxServant(Player* player, unsigned int windowType, unsigned int boxType);
 	virtual ~SuiMessageBoxServant();
 
 	void _setStub(DistributedObjectStub* stub);

@@ -197,37 +197,37 @@ public:
 			error << "container: " << container << " != "
 					<< inResource->container << "\n";
 
-		if ((att1 != inResource->att1) && att1 != "")
+		if ((att1 != inResource->att1) && !att1.isEmpty())
 			error << "att1: " << att1 << " != " << inResource->att1 << "\n";
 
-		if ((att2 != inResource->att2) && att2 != "")
+		if ((att2 != inResource->att2) && !att2.isEmpty())
 			error << "att2: " << att2 << " != " << inResource->att2 << "\n";
 
-		if ((att3 != inResource->att3) && att3 != "")
+		if ((att3 != inResource->att3) && !att3.isEmpty())
 			error << "att3: " << att3 << " != " << inResource->att3 << "\n";
 
-		if ((att4 != inResource->att4) && att4 != "")
+		if ((att4 != inResource->att4) && !att4.isEmpty())
 			error << "att4: " << att4 << " != " << inResource->att4 << "\n";
 
-		if ((att5 != inResource->att5) && att5 != "")
+		if ((att5 != inResource->att5) && !att5.isEmpty())
 			error << "att5: " << att5 << " != " << inResource->att5 << "\n";
 
-		if ((att6 != inResource->att6) && att6 != "")
+		if ((att6 != inResource->att6) && !att6.isEmpty())
 			error << "att6: " << att6 << " != " << inResource->att6 << "\n";
 
-		if ((att7 != inResource->att7) && att7 != "")
+		if ((att7 != inResource->att7) && !att7.isEmpty())
 			error << "att7: " << att7 << " != " << inResource->att7 << "\n";
 
-		if ((att8 != inResource->att8) && att8 != "")
+		if ((att8 != inResource->att8) && !att8.isEmpty())
 			error << "att8: " << att8 << " != " << inResource->att8 << "\n";
 
-		if ((att9 != inResource->att9) && att9 != "")
+		if ((att9 != inResource->att9) && !att9.isEmpty())
 			error << "att9: " << att9 << " != " << inResource->att9 << "\n";
 
-		if ((att10 != inResource->att10) && att10 != "")
+		if ((att10 != inResource->att10) && !att10.isEmpty())
 			error << "att10: " << att10 << " != " << inResource->att10 << "\n";
 
-		if ((att11 != inResource->att11) && att11 != "")
+		if ((att11 != inResource->att11) && !att11.isEmpty())
 			error << "att11: " << att11 << " != " << inResource->att11 << "\n";
 
 		if (((att1stat != inResource->att1stat) && att1stat != 0))

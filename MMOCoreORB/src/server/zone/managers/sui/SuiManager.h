@@ -79,7 +79,7 @@ public:
 	void handleRedeedStructure(uint32 boxID, Player* player, uint32 cancel, const int extra);
 	void handleRefreshStatusListBox(uint32 boxID, Player* player, uint32 cancel, const int extra);
 	void handleSetObjectName(uint32 boxID, Player* player, uint32 cancel, const String& name);
-	void handleAddMaintenance(uint32 boxID, Player* player,uint32 cancel, const String& name);
+	void handleManageMaintenance(uint32 boxID, Player* player,uint32 cancel, const String& name);
 	void handleAddEnergy(uint32 boxID, Player* player,uint32 cancel, const String& name);
 
 

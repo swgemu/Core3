@@ -137,9 +137,9 @@ public:
 	// Other Methods
 	void handleStructureRedeed(Player * player);
 	void handleStructureRedeedConfirm(Player * player);
-	void handleMakeDeed(Player * player);
+	virtual void handleMakeDeed(Player * player);
 	void handleStructureStatus(Player* player);
-	void handleStructureAddMaintenance(Player* player);
+	void handleStructureManageMaintenance(Player* player);
 	void handleStructureAddEnergy(Player* player);
 
 
@@ -193,6 +193,7 @@ public:
 		return file;
 	}
 	int getObjectSubType();
+	uint32 getDeedCRC();
 	inline void setObjectSubType(const int type) {
 		objectSubType = type;
 	}

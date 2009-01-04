@@ -89,7 +89,7 @@ int TicketCollectorImplementation::useObject(Player* player) {
 
 	Inventory* inventory = player->getInventory();
 
-	SuiListBox* sui = new SuiListBox(player, SuiBoxType::TICKET_COLLECTOR_RESPONSES);
+	SuiListBox* sui = new SuiListBox(player, SuiWindowType::TICKET_COLLECTOR_RESPONSES);
 	sui->setPromptTitle("@travel:ticket_collector_name");
 	sui->setPromptText("@travel:boarding_ticket_selection");
 	sui->setCancelButton(true);

@@ -18,9 +18,11 @@ interface FactoryDeed implements DeedObject {
 	void setMaintenanceRate(float rate);
 	void setSurplusPower(int pow);
 	void setHopperSize(float size);
+	void setLotSize(int size);
 	
 	int getSurplusMaintenance();
 	float getMaintenanceRate();
 	int getSurplusPower();
 	float getHopperSize();
+	int getLotSize();
 }

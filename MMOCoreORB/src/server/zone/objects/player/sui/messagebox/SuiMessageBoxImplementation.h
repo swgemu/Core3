@@ -51,14 +51,14 @@ which carries forward this exception.
 class Player;
 
 class SuiMessageBoxImplementation : public SuiMessageBoxServant {
-	
+
 private:
 	void generateHeader(BaseMessage* msg);
 public:
-	SuiMessageBoxImplementation(Player* player, uint32 boxType);
-	
+	SuiMessageBoxImplementation(Player* player, uint32 windowType);
+
 	BaseMessage* generateMessage();
-	
+
 };
 
 #endif /*SUIMESSAGEBOXIMPLEMENTATION_H_*/

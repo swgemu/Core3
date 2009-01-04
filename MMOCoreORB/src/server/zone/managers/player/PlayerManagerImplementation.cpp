@@ -120,9 +120,19 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 	player->setZoneIndex(42);
 	player->setTerrainName(Terrain::getTerrainName(42));
 
-	player->initializePosition(-4908.0f, 6, 4101.0f);
+	player->initializePosition(27.0f, -3.5f, -165.0f);
+	player->setDirection(0, 0, 1, 0);
+	//player->setDirection(x,z,y,w);
+	//player->initializePosition(-4908.0f, 6, 4101.0f);
 
-	player->randomizePosition(45);
+	Zone* zne = server->getZoneServer()->getZone(42);
+	PlanetManager* planetManager = zne->getPlanetManager();
+	StructureManager* structureManager = planetManager->getStructureManager();
+	SceneObject* parent = structureManager->getCell(2203318222975uLL); // newbie tutorial skipped
+	if (parent != NULL)
+		player->setParent(parent, 0xFFFFFFFF);
+
+	//player->randomizePosition(45);
 
 	int race = Races::getRaceID(player->getRaceFileName());
 
@@ -170,7 +180,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		query << "INSERT INTO `characters` "
 		<< "(`account_id`,`galaxy_id`,`firstname`,`surname`,"
 		<< "`appearance`,`professions`,`race`,`gender`,`lots`,"
-		<< "`credits_inv`,`credits_bank`,`guild`,`x`,`y`,`z`,`zoneid`,`planet_id`,"
+		<< "`credits_inv`,`credits_bank`,`guild`,`x`,`y`,`z`,`zoneid`,`planet_id`,`parentid`,"
 		<< "`lfg`,`helper`,`roleplayer`,`faction_id`,`archived`,`scale`,`biography`,"
 		<< "`infofield`,`hair`,`hairData`,`playermodel`,`CRC`,`Title`,"
 		<< "`health`,`strength`,`constitution`,"
@@ -184,7 +194,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 		<< player->getStartingProfession() << "'," <<  race << "," << gender << ",10,"
 		<< creditsCash << "," << creditsBank << ",0,"
 		<< player->getPositionX() << "," << player->getPositionY() << ","
-		<< player->getPositionZ() << "," << player->getZoneIndex() << "," << 0//planetID
+		<< player->getPositionZ() << "," << player->getZoneIndex() << "," << 0 << ", 2203318222975" //planetID + parentid (newbie skipped cell)
 		<< ",0,0,0,0,0," << player->getHeight() << ","
 		<< "'" << bio << "','" << info << "','"
 		<< player->getHairObject() << "','" << hairdata.subString(0, hairdata.length() - 1) << "','', '0','',"
@@ -505,6 +515,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 
 	player->setHeight(character->getFloat(23));
 
+	player->setLotsRemaining(character->getInt(9));
 	player->setCashCredits(character->getInt(10));
 	player->setBankCredits(character->getInt(11));
 
@@ -778,6 +789,7 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< ",biography=\'" << biography << "\'"
 	<< ",Title=" << "'" << player->getPlayerObject()->getCurrentTitle() << "'"
 	<< ",Guild=" << "'" << player->getGuildID() << "'"
+	<< ",lots=" << player->getLotsRemaining()
 	<< ",credits_inv=" << "'" << player->getCashCredits() << "'"
 	<< ",credits_bank=" << "'" << player->getBankCredits() << "'"
 	<< ",parentid=" << "'" << player->getParentID() << "'"

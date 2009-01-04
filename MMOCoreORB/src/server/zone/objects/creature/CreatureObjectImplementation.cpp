@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "../../objects.h"
 #include "../../packets.h"
 
+
 #include "events/CreatureBurstRunOverEvent.h"
 #include "events/DizzyFallDownEvent.h"
 #include "events/WoundTreatmentOverEvent.h"
@@ -367,6 +368,7 @@ void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
 	BaseMessage* ubf = new unkByteFlag();
 	client->sendMessage(ubf);
 
+	info("CmdStartScene");
 	BaseMessage* css = new CmdStartScene(_this);
 	client->sendMessage(css);
 
@@ -374,12 +376,20 @@ void CreatureObjectImplementation::sendToOwner(Player* player, bool doClose) {
 	client->sendMessage(pmm);
 
 	if (parent != NULL)
-		parent->sendTo((Player*)_this, false);
+	{
+		if (parent != NULL && parent->isCell()) {
+			BuildingObject* building = (BuildingObject*) parent->getParent();
+			info("sending building to client through CreatureObjectImplementation::sendToOwner");
+			building->sendTo((Player*)_this, false);
+		} else
+			parent->sendTo((Player*)_this, false);
+	}
 
 	sendTo(player, doClose);
 }
 
 void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
+	info("CreatureObjectImplementation::sendTo");
 	ReferenceSlot<ZoneClientSession> client = player->getClient();
 	if (client == NULL)
 		return;
@@ -3316,10 +3326,10 @@ void CreatureObjectImplementation::startDancing(const String& modifier, bool cha
 		}
 
 		if (anim == "") {
-			uint32 boxID = SuiBoxType::START_DANCING; // default startdance
+			uint32 boxID = SuiWindowType::START_DANCING; // default startdance
 
 			if (changeDance)
-				boxID = SuiBoxType::CHANGE_DANCING; // differentiate changedance
+				boxID = SuiWindowType::CHANGE_DANCING; // differentiate changedance
 
 			SuiListBox* sui = new SuiListBox((Player*) _this, boxID);
 			sui->setPromptTitle("Available dances");
@@ -3549,10 +3559,10 @@ void CreatureObjectImplementation::startPlayingMusic(const String& modifier, boo
 		}
 
 		if (music == "") {
-			uint32 boxID = SuiBoxType::START_MUSIC; // default startmusic
+			uint32 boxID = SuiWindowType::START_MUSIC; // default startmusic
 
 			if (changeMusic)
-				boxID = SuiBoxType::CHANGE_MUSIC; // differentiate changemusic
+				boxID = SuiWindowType::CHANGE_MUSIC; // differentiate changemusic
 
 			SuiListBox* sui = new SuiListBox((Player*) _this, boxID);
 			sui->setPromptText("Available songs");

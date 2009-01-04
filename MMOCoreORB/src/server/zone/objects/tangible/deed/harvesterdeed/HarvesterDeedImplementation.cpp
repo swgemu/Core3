@@ -29,6 +29,20 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(uint64 objid, uint32 te
 	init();
 }
 
+HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creature, HarvesterObject* hino) :
+	HarvesterDeedServant(creature->getNewItemID(), TangibleObjectImplementation::INSTALLATIONDEED) {
+
+
+	objectCRC = hino->getDeedCRC();
+	templateTypeName = "deed"; // STF
+	templateName = getDefaultTemplateName(objectCRC);;
+	name = "";
+
+
+	init();
+}
+
+
 HarvesterDeedImplementation::~HarvesterDeedImplementation() {
 }
 
@@ -36,6 +50,7 @@ void HarvesterDeedImplementation::init() {
 	getType();
 	getSize();
 
+	setLotSize(1); // All Harvesters
 	objectSubType = TangibleObjectImplementation::INSTALLATIONDEED;
 
 	switch (type) {
@@ -208,6 +223,9 @@ void HarvesterDeedImplementation::parseItemAttributes() {
 
 	attr = "hopperSize";
 	setHopperSize(itemAttributes->getFloatAttribute(attr));
+
+	attr = "lotSize";
+	setLotSize(itemAttributes->getIntAttribute(attr));
 }
 
 void HarvesterDeedImplementation::addAttributes(AttributeListMessage* alm) {
