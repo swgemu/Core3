@@ -864,7 +864,7 @@ void StructureManagerImplementation::createInstallation(InstallationObject* inso
 		<< ", " << inso->getObjectID()
 		<< ", 0" // parent
 		<< ", " << inso->getOwnerID() // owner
-		<< ",'\\" << itemname << "'"
+		<< ",'" << itemname << "'"
 		<< ", " << inso->getObjectCRC()
 		<< ", " << inso->getObjectType()
 		<< ", " << inso->getObjectSubType()
@@ -907,7 +907,7 @@ void StructureManagerImplementation::saveInstallation(InstallationObject* inso) 
 		<< " zone_id = " << inso->getZoneID()
 		<< ", parent_id = 0" // parent
 		<< ", owner_id = " << inso->getOwnerID() // owner
-		<< ", name = '\\" << itemname << "'"
+		<< ", name = '" << itemname << "'"
 		<< ", template_crc = " << inso->getObjectCRC()
 		<< ", template_type = " << inso->getObjectType()
 		<< ", template_subtype = " << inso->getObjectSubType()
@@ -1052,7 +1052,7 @@ void StructureManagerImplementation::saveBuilding(BuildingObject* buio) {
 		<< " zone_id = " << inso->getZoneID()
 		<< ", parent_id = 0" // parent
 		<< ", owner_id = " << inso->getOwnerID() // owner
-		<< ", name = '\\" << itemname << "'"
+		<< ", name = '" << itemname << "'"
 		<< ", template_crc = " << inso->getObjectCRC()
 		<< ", template_type = " << inso->getObjectType()
 		<< ", template_subtype = " << inso->getObjectSubType()
