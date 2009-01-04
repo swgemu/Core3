@@ -1460,7 +1460,7 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 		query << "REPLACE DELAYED INTO `character_items` "
 		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`deleted`,`attributes`,`appearance`, `itemMask`)"
 		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
-		<< ",'\\" << itemname << "',"
+		<< ",'" << itemname << "',"
 		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 		<< item->isEquipped() << ",0,'" << attr
 		<< "','" << appearance.subString(0, appearance.length() - 1) << "', " << item->getPlayerUseMask() << ")";
@@ -2286,7 +2286,7 @@ void ItemManagerImplementation::moveNestedItemsToPlayerStorage(Player* player, C
 				query << "REPLACE DELAYED INTO `player_storage` "
 				<< "(`item_id`,`structure_id`,`name`,`template_crc`,`template_type`"
 				<< ",`template_name`,`container`,`parent_id`,`appearance`, `attributes`,`itemMask`,X,Y,Z,oX,oY,oZ,oW,dropped_by_character) "
-				<< "VALUES (" << item->getObjectID() << ",0,'\\" << itemname << "',"
+				<< "VALUES (" << item->getObjectID() << ",0,'" << itemname << "',"
 				<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 				<< containerID << ",0,'" << appearance.subString(0, appearance.length() - 1)
 				<< "','" << attr << "'," << item->getPlayerUseMask() << ","
@@ -2493,7 +2493,7 @@ void ItemManagerImplementation::insertItemIntoPlayerStorage(Player* player, Tang
 		query << "REPLACE DELAYED INTO `player_storage` "
 		<< "(`item_id`,`structure_id`,`name`,`template_crc`,`template_type`"
 		<< ",`template_name`,`container`,`parent_id`,`appearance`, `attributes`,`itemMask`,X,Y,Z,oX,oY,oZ,oW,dropped_by_character) "
-		<< "VALUES (" << item->getObjectID() << "," << structureID << ",'\\" << itemname << "',"
+		<< "VALUES (" << item->getObjectID() << "," << structureID << ",'" << itemname << "',"
 		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 		<< containerID << "," << parentID << ",'" << appearance.subString(0, appearance.length() - 1)
 		<< "','" << attr << "'," << item->getPlayerUseMask() << ","
