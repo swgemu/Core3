@@ -742,7 +742,7 @@ public:
 		return postureState == CreaturePosture::KNOCKEDDOWN;
 	}
 
-	inline bool isKneeled() {
+	inline bool isKneeling() {
 		return postureState == CreaturePosture::CROUCHED;
 	}
 

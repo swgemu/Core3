@@ -85,7 +85,7 @@ public:
 
 	bool isKnockedDown();
 
-	bool isKneeled();
+	bool isKneeling();
 
 	bool isProne();
 
@@ -1285,7 +1285,7 @@ public:
 
 	bool isKnockedDown();
 
-	bool isKneeled();
+	bool isKneeling();
 
 	bool isProne();
 

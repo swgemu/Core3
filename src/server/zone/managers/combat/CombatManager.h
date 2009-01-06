@@ -47,6 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
+#define MELEEWEAPON(weapontype) ((weapontype < 4 || (weapontype > 6 && weapontype < 10)) ? true : false)
+#define RANGEDWEAPON(weapontype) (((weapontype > 3 && weapontype < 7) || (weapontype > 6 && weapontype < 20)) ? true : false)
+#define THROWNWEAPON(weapontype) ((weapontype > 19 && weapontype < 21) ? true : false)
+
 class SceneObject;
 class ZoneServer;
 class Player;
@@ -72,7 +76,7 @@ class CombatManager {
 	ZoneProcessServerImplementation* server;
 
 private:
-	bool doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill, String& modifier, CombatAction* actionMessage);
+	bool doAttackAction(CreatureObject* attacker, SceneObject* target, AttackTargetSkill* skill, String& modifier, CombatAction* actionMessage);
 	uint32 getDefaultAttackAnimation(CreatureObject* creature);
 
 public:

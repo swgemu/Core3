@@ -1423,7 +1423,7 @@ bool CreatureImplementation::doMovement() {
 	if (isKnockedDown() || isRooted())
 		return true;
 
-	if (isKneeled())
+	if (isKneeling())
 		doStandUp();
 
 	float waypointX, waypointY, waypointZ;
