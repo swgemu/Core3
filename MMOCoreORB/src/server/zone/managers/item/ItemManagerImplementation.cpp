@@ -1908,10 +1908,20 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 				if (destinationObject->isTangible()) {
 					TangibleObject* destinationTano = (TangibleObject*) destinationObject;
 
-					if (destinationObject->getObjectID() == player->getInventory()->getObjectID()) {
-						destinationIsInventoryContainer = true;
-					} else if (destinationTano->isContainer())
-						destinationIsExternalContainer = true;
+					//We need to test if the PARENT of the destination is
+					//a) not NULL (shouldnt be possible)
+					//b) is the inventory, so the
+					//destination object must be a container, maybe even within the inventory (eg. backpack)
+
+					//I reverse patch 1053. It has a wrong logic and is causing disappearing items.
+
+					if (destinationObject->getParent() != NULL) {
+
+						if (destinationObject->getParentID() == player->getInventory()->getObjectID())
+							destinationIsInventoryContainer = true;
+						else if (destinationTano->isContainer())
+							destinationIsExternalContainer = true;
+					}
 				}
 			}
 
