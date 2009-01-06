@@ -312,7 +312,7 @@ void SurveyToolImplementation::sampleRequest(Player* player, String resourceName
 		} else if (getSurveyToolType() == ResourceHarvestType::SOLAR || getSurveyToolType() == ResourceHarvestType::WIND) {
 			player->sendSystemMessage("Unable to sample this resource type.");
 		} else if (player->getCanSample()) {
-			if (!player->isKneeled()) {
+			if (!player->isKneeling()) {
 				player->changePosture(CreaturePosture::CROUCHED);
 			}
 			ChatSystemMessage* sysMessage = new ChatSystemMessage("survey","start_sampling",resourceName,0,false);

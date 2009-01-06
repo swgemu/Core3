@@ -221,7 +221,6 @@ public:
 		case TangibleObjectImplementation::ARMARMOR:
 		case TangibleObjectImplementation::HANDARMOR:
 		case TangibleObjectImplementation::FOOTARMOR:
-			// TODO: Special cases for Wookie, Ithorian etc armour
 			armor = (Armor*)item;
 			locations = getArmorLocations(armor);
 
@@ -299,6 +298,8 @@ public:
 			unequipWeapon(instrument);
 
 		if (item->isWeapon()) {
+			if (!checkPermissions(item) && !item->isEquipped())
+				return false;
 			weapon = (Weapon*)item;
 			setWeaponSkillMods(weapon);
 			player->setWeaponAccuracy(weapon);
@@ -358,15 +359,14 @@ public:
 	int getArmorLocations(Armor* armor) {
 		int locations;
 
-		// Add extra locations covered for Wookie etc. and optional mini-suits
+		// Add extra locations covered for Wookie
 		switch (armor->getObjectCRC()) {
 
 		// Wookie armours
-		// TODO: Find out about protection for hands
 		case 0xE11CC6F9:  // Kashyykian Hunting Chest
 		case 0x9F9C111B:  // Kashyykian Black Mountain chest
 		case 0x8BA52D06:  // Kashyykian Ceremonial chest
-			locations = CHEST + HEAD  + LEFT_UPPERARM  + RIGHT_UPPERARM;
+			locations = CHEST + HEAD  + LEFT_UPPERARM  + RIGHT_UPPERARM + HANDS;
 			break;
 		case 0xF198491B:  // Kashyykian Hunting leggings
 		case 0x2BAFC7:   // Kashyykian Black Mountain leggings
@@ -426,7 +426,7 @@ public:
 			return true;
 	}
 
-	bool checkPermissions(Wearable* item) {
+	bool checkPermissions(TangibleObject* item) {
 		uint16 maskRes = ~(item->getPlayerUseMask()) & player->getCharacterMask();
 
 		if (maskRes == 0) {

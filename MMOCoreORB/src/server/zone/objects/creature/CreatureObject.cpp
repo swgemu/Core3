@@ -295,7 +295,7 @@ bool CreatureObject::isKnockedDown() {
 		return ((CreatureObjectImplementation*) _impl)->isKnockedDown();
 }
 
-bool CreatureObject::isKneeled() {
+bool CreatureObject::isKneeling() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -304,7 +304,7 @@ bool CreatureObject::isKneeled() {
 
 		return method.executeWithBooleanReturn();
 	} else
-		return ((CreatureObjectImplementation*) _impl)->isKneeled();
+		return ((CreatureObjectImplementation*) _impl)->isKneeling();
 }
 
 bool CreatureObject::isProne() {
@@ -7534,7 +7534,7 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		resp->insertBoolean(isKnockedDown());
 		break;
 	case 24:
-		resp->insertBoolean(isKneeled());
+		resp->insertBoolean(isKneeling());
 		break;
 	case 25:
 		resp->insertBoolean(isProne());
@@ -9289,8 +9289,8 @@ bool CreatureObjectAdapter::isKnockedDown() {
 	return ((CreatureObjectImplementation*) impl)->isKnockedDown();
 }
 
-bool CreatureObjectAdapter::isKneeled() {
-	return ((CreatureObjectImplementation*) impl)->isKneeled();
+bool CreatureObjectAdapter::isKneeling() {
+	return ((CreatureObjectImplementation*) impl)->isKneeling();
 }
 
 bool CreatureObjectAdapter::isProne() {

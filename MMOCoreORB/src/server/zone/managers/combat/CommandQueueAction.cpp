@@ -301,7 +301,7 @@ bool CommandQueueAction::checkWeapon() {
 		}
 	}
 
-	if (creature->isKneeled()) {
+	if (creature->isKneeling()) {
 		if (requiredWeapon < 4 || requiredWeapon == 0x10) {
 			clearError(1,4);
 			return false;

@@ -86,6 +86,7 @@ float CombatManager::handleAction(CommandQueueAction* action) {
 	else if (skill->isSelfSkill())
 		return doSelfSkill(action);
 
+	// Should not get here
 	return 0.0f;
 }
 
@@ -96,15 +97,14 @@ float CombatManager::handleAction(CommandQueueAction* action) {
 float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	CreatureObject* creature = action->getCreature();
 	SceneObject* target = action->getTarget();
+	TargetSkill* tskill = (TargetSkill*)action->getSkill();
+	String actionModifier = action->getActionModifier();
 
-	if (target != NULL && target->isPlayer() && ((Player*)target)->isImmune()) {
+	if (target != NULL && target->isPlayer() && ((Player*)target)->isImmune() && !tskill->isHealSkill()) {
 		if (creature->isPlayer())
 			((Player*)creature)->sendSystemMessage("You cannot attack an immune player.");
 		return 0.0f;
 	}
-
-	TargetSkill* tskill = (TargetSkill*)action->getSkill();
-	String actionModifier = action->getActionModifier();
 
 	if (creature->isWatching() && !tskill->isHealSkill())
 		creature->stopWatch(creature->getWatchID());
@@ -120,7 +120,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 			if (creature != target)
 				target->wlock(creature);
 
-				tskill->doSkill(creature, target, actionModifier);
+			tskill->doSkill(creature, target, actionModifier);
 
 			if (creature != target)
 				target->unlock();
@@ -132,6 +132,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 		return calculateHealSpeed(creature, tskill);
 	}
 
+	// Attack skills
 	if (!checkSkill(creature, target, tskill))
 		return 0.0f;
 
@@ -142,7 +143,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 
 	CombatAction* actionMessage = new CombatAction(creature, animCRC);
 
-	if (!doAction(creature, target, tskill, actionModifier, actionMessage)) {
+	if (!doAttackAction(creature, target, (AttackTargetSkill*)tskill, actionModifier, actionMessage)) {
 		delete actionMessage;
 		return 0.0f;
 	}
@@ -160,14 +161,13 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 
 	SelfSkill* selfskill = (SelfSkill*) action->getSkill();
 
-	String actionModifier = action->getActionModifier();
-
 	if (!selfskill->isUseful(creature))
 		return 0.0f;
 
 	if (!selfskill->calculateCost(creature))
 		return 0.0f;
 
+	String actionModifier = action->getActionModifier();
 	selfskill->doSkill(creature, actionModifier);
 
 	if (selfskill->isEnhanceSkill()) {
@@ -183,6 +183,7 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 }
 
 
+// TODO: Need support for grenades where the area is not centred around the attacker
 void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* target, CommandQueueAction* action, CombatAction* actionMessage) {
 	TargetSkill* skill = (TargetSkill*) action->getSkill();
 
@@ -199,23 +200,22 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 		zone->lock();
 
 		for (int i = 0; i < creature->inRangeObjectCount(); i++) {
+			// Is this correct?
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) creature->getInRangeObject(i))->_this);
 
 			if (!object->isPlayer() && !object->isNonPlayerCreature() && !object->isAttackableObject())
 				continue;
 
-			SceneObject* targetObject = object;
-
-			if (targetObject == creature || targetObject == target)
+			if (object == creature || object == target)
 				continue;
 
-			// TODO: Need to have ability og creature to attack creatures.
-			if (!targetObject->isAttackableBy(creature))
+			// TODO: Need to have ability for creatures to attack creatures.
+			if (!object->isAttackableBy(creature))
 				continue;
-			if (!creature->isPlayer() && !targetObject->isPlayer())
+			if (!creature->isPlayer() && !object->isPlayer())
 				continue;
 
-			CreatureObject* creatureTarget = (CreatureObject*) targetObject;
+			CreatureObject* creatureTarget = (CreatureObject*) target;
 
 			if (creatureTarget->isIncapacitated() || creatureTarget->isDead())
 				continue;
@@ -225,25 +225,39 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 					continue;
 
 			// Check they are in the same cell
-			if (creature->getParent() != targetObject->getParent())
+			if (creature->getParent() != target->getParent())
 				continue;
 
+			int weaponRange;
+			if (creature->getWeapon() != NULL)
+				weaponRange = creature->getWeapon()->getMaxRange();
+			else
+				weaponRange = 5;
+
+			int coneRange = weaponRange;
+			if (skill->getRange() != 0)
+				coneRange = (int)skill->getRange();
+
+			int areaRange = weaponRange;
+			if (skill->getRange() != 0)
+				areaRange = (int)skill->getRange();
+
 			if (skill->isCone()) {
-				if (!(creature->isInRange(targetObject, skill->getRange())))
+				if (!(creature->isInRange(target, coneRange)))
 					continue;
 
-				float angle = getConeAngle(targetObject, CreatureVectorX, CreatureVectorY, DirectionVectorX, DirectionVectorY);
+				float angle = getConeAngle(target, CreatureVectorX, CreatureVectorY, DirectionVectorX, DirectionVectorY);
 				float coneAngle = skill->getConeAngle() / 2;
 
 				if (angle > coneAngle || angle < -coneAngle)
 					continue;
 
-			} else if (!(creature->isInRange(targetObject, skill->getAreaRange())))
+			} else if (!(creature->isInRange(target, areaRange)))
 				continue;
 
 			zone->unlock();
 
-			doAction(creature, targetObject, skill, actionModifier, NULL);
+			doAttackAction(creature, target, (AttackTargetSkill*)skill, actionModifier, NULL);
 
 			zone->lock();
 		}
@@ -256,7 +270,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 	}
 }
 
-bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, TargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
+bool CombatManager::doAttackAction(CreatureObject* attacker, SceneObject* target, AttackTargetSkill* skill,  String& modifier, CombatAction* actionMessage) {
 	try {
 		target->wlock(attacker);
 
@@ -274,7 +288,7 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 				targetCreature->stopDancing();
 
 			if (target->isPlayer()) {
-				if (((Player*)targetCreature)->isImmune()) {
+				if (((Player*)targetCreature)->isImmune() || !((Player*)targetCreature)->isOnline()) {
 					target->unlock();
 					return false;
 				}
@@ -284,11 +298,6 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 						targetCreature->unlock();
 						return false;
 					}
-
-				if (!((Player*)targetCreature)->isOnline()) {
-					targetCreature->unlock();
-					return false;
-				}
 			}
 		}
 
@@ -302,10 +311,11 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 
 		int damage = skill->doSkill(attacker, target, modifier, false);
 
-		if (actionMessage != NULL && targetCreature != NULL) //disabled until we figure out how to make it work for more defenders
+		if (actionMessage != NULL && targetCreature != NULL)
 			actionMessage->addDefender(targetCreature, damage >= 0);
 
 		if (targetCreature != NULL) {
+			// TODO: Handle case of area action where all targets are dead/incapacitated
 			if (targetCreature->isIncapacitated()) {
 				attacker->sendSystemMessage("base_player", "prose_target_incap", targetCreature->getObjectID());
 
@@ -321,17 +331,12 @@ bool CombatManager::doAction(CreatureObject* attacker, SceneObject* target, Targ
 				}
 			}
 
-			if (skill->isAttackSkill()) {
-				AttackTargetSkill* askill = (AttackTargetSkill*) skill;
-				askill->calculateStates(attacker, targetCreature);
+			skill->calculateStates(attacker, targetCreature);
 
-				if(targetCreature->isNonPlayerCreature()) {
-					targetCreature->doAttack(attacker, damage);
-				}
+			if(targetCreature->isNonPlayerCreature())
+				targetCreature->doAttack(attacker, damage);
 
-				// TODO: Should NPCs/Creatures recover?
-				targetCreature->activateRecovery();
-			}
+			targetCreature->activateRecovery();
 		}
 		else {
 			AttackableObject* targetObject = (AttackableObject*) target;
@@ -434,22 +439,13 @@ void CombatManager::calculateDamageReduction(CreatureObject* creature, CreatureO
 		damage *= 0.8f;
 }
 
+// TODO: Not used for force attacks
 void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* targetCreature, float& minDamage, float& maxDamage) {
-	// TODO:  Add in Jedi code
 	Weapon* weapon = creature->getWeapon();
-	Weapon* tarWeapon = targetCreature->getWeapon();
+	uint32 mit = 0;
 
-	int creatureWeaponCategory = WeaponImplementation::MELEE;
-	int targetWeaponCategory = WeaponImplementation::MELEE;
-
-	if (weapon != NULL)
-		creatureWeaponCategory = weapon->getCategory();
-
-	if (tarWeapon != NULL)
-		targetWeaponCategory = tarWeapon->getCategory();
-
-	if (creatureWeaponCategory == WeaponImplementation::MELEE) {
-		uint32 mit = targetCreature->getMitigation("melee_damage_mitigation_3");
+	if (weapon == NULL || MELEEWEAPON(weapon->getType())) {
+		mit = targetCreature->getMitigation("melee_damage_mitigation_3");
 
 		if (mit == 0) {
 			mit = targetCreature->getMitigation("melee_damage_mitigation_2");
@@ -457,21 +453,18 @@ void CombatManager::checkMitigation(CreatureObject* creature, CreatureObject* ta
 				mit = targetCreature->getMitigation("melee_damage_mitigation_1");
 		}
 
-		if (mit != 0)
-			maxDamage = minDamage + ((maxDamage - minDamage) * (1 - (float)mit / 100));
-
-	} else if (creatureWeaponCategory == WeaponImplementation::RANGED) {
-		uint32 mit = targetCreature->getMitigation("ranged_damage_mitigation_3");
+	} else {
+		mit = targetCreature->getMitigation("ranged_damage_mitigation_3");
 
 		if (mit == 0) {
 			mit = targetCreature->getMitigation("ranged_damage_mitigation_2");
 			if (mit == 0)
 				mit = targetCreature->getMitigation("ranged_damage_mitigation_1");
 		}
-
-		if (mit != 0)
-			maxDamage = minDamage + ((maxDamage - minDamage) * (1 - (float)mit / 100));
 	}
+
+	if (mit != 0)
+		maxDamage = minDamage + ((maxDamage - minDamage) * (1 - (float)mit / 100));
 }
 
 /*
@@ -607,7 +600,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (targetCreature->isStunned())
 		stunBonus = 50;
 
-	accTotal += (attackerAccuracy + weaponAccuracy + aimMod + accuracyBonus  + stunBonus
+	accTotal += (attackerAccuracy + weaponAccuracy + aimMod + accuracyBonus + stunBonus
 			- targetDefense - blindState) / 2.0;
 
 	if (accTotal > 100)
@@ -615,7 +608,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	else if (accTotal < 0)
 		accTotal = 0;
 
-	hitChance = (int)(accTotal + 0.5);
+	hitChance = (int)accTotal;
 
 	return hitChance;
 }
@@ -657,25 +650,25 @@ int CombatManager::calculatePostureMods(CreatureObject* creature, CreatureObject
 	int accuracy = 0;
 	Weapon* weapon = creature->getWeapon();
 
-	if (targetCreature->isKneeled()) {
-		if (weapon == NULL || weapon->isMelee() || weapon->isJedi())
+	if (targetCreature->isKneeling()) {
+		if (weapon == NULL || MELEEWEAPON(weapon->getType()))
 			accuracy += 16;
 		else
 			accuracy -= 16;
 	} else if (targetCreature->isProne()) {
-		if (weapon == NULL || weapon->isMelee() || weapon->isJedi())
+		if (weapon == NULL || MELEEWEAPON(weapon->getType()))
 			accuracy += 25;
 		else
 			accuracy -= 25;
 	}
 
-	if (creature->isKneeled()) {
-		if (weapon == NULL || weapon->isMelee() || weapon->isJedi())
+	if (creature->isKneeling()) {
+		if (weapon == NULL || MELEEWEAPON(weapon->getType()))
 			accuracy -= 16;
 		else
 			accuracy += 16;
 	} else if (creature->isProne()) {
-		if (weapon == NULL || weapon->isMelee() || weapon->isJedi())
+		if (weapon == NULL || MELEEWEAPON(weapon->getType()))
 			accuracy -= 50;
 		else
 			accuracy += 50;
@@ -696,28 +689,18 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 		// TODO: Add defenses into creature luas.
 		if (!targetCreature->isPlayer()) {
 			defense = targetCreature->getLevel();
+
 			if (defense > 250)
 				defense = 250;
 			return defense;
-		}
 
-		if (weapon != NULL) {
-			if (weapon->isMelee() || weapon->isJedi()) {
-				uint32 melee = targetCreature->getSkillMod("melee_defense");
-				defense = melee;
-			} else if (weapon->isRanged()) {
-				uint32 ranged = targetCreature->getSkillMod("ranged_defense");
-				defense = ranged;
-			}
+		} else if (weapon == NULL || MELEEWEAPON(weapon->getType())) {
+			defense = targetCreature->getSkillMod("melee_defense");
 		} else {
-			uint32 melee = targetCreature->getSkillMod("melee_defense");
-			defense = melee;
+			defense = targetCreature->getSkillMod("ranged_defense");
 		}
 	}
-/*
-	if (defense > 125)
-		defense = 125;
-*/
+
 	//defense += targetCreature->getDefenseBonus();
 
 	return defense - (uint32)(defense * targetCreature->calculateBFRatio());
@@ -798,11 +781,11 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 		woundsRatio = weapon->getWoundsRatio();
 
 	if (woundsRatio + (woundsRatio * target->calculateBFRatio()) > System::random(100)) {
-		if (part == 9)
+		if (part == 8)
 			target->changeMindWoundsBar(1, true);
-		else if (part < 7)
+		else if (part < 6)
 			target->changeHealthWoundsBar(1, true);
-		else if (part < 9)
+		else if (part < 8)
 			target->changeActionWoundsBar(1, true);
 
 		target->changeShockWounds(1);
@@ -840,7 +823,7 @@ int CombatManager::getArmorReduction(Weapon* weapon, CreatureObject* target, int
 
 	// Stage two toughness
 	if (target->isPlayer())
-		if (weapon == NULL || weapon->getType() < 4 || (weapon->getType() > 6 && weapon->getType() < 10)) { // Melee attack
+		if (weapon == NULL || MELEEWEAPON(weapon->getType())) { // Melee attack
 			int toughness = 0;
 			if (target->getWeapon() == NULL)
 				toughness = target->getSkillMod("unarmed_toughness");
@@ -1426,7 +1409,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* creature, Target
 						}
 						else if (pool < skill->healthPoolAttackChance + skill->actionPoolAttackChance) {
 							actionDamage = individualDamage;
-							if (System::random(2) == 0)  // 50% chance of chest hit
+							if (System::random(2) == 0)
 								bodyPart = 7;
 							else
 								bodyPart = 6;
