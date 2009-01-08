@@ -50,6 +50,7 @@ which carries forward this exception.
 
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/tangible/weapons/Weapon.h"
+#include "../../objects/attackable/AttackableObject.h"
 
 CommandQueueAction::CommandQueueAction(CreatureObject* cr, uint64 targid, uint32 acrc, uint32 acntr, const String& amod) {
 	actionCRC = acrc;
@@ -127,6 +128,10 @@ bool CommandQueueAction::validate() {
 	if (skill->isTargetSkill()) {
 		if (target != creature) {
 			if (skill->isAttackSkill()) {
+
+				if (!checkWeapon())
+					return false;
+
 				try {
 					target->wlock(creature);
 
@@ -146,7 +151,6 @@ bool CommandQueueAction::validate() {
 						clearError(4);
 						return false;
 					}
-
 
 					SceneObject* sco = target;
 
@@ -171,16 +175,18 @@ bool CommandQueueAction::validate() {
 						}
 					}
 
-					if (!target->isAttackableBy(creature)) {
-						clearError(3);
-						target->unlock();
-						return false;
-					}
-
 					if (!target->isAttackableObject()) {
 						CreatureObject* targetCreature = (CreatureObject*) target.get();
 
 						if (targetCreature->isIncapacitated() || targetCreature->isDead()) {
+							clearError(3);
+							target->unlock();
+							return false;
+						}
+					} else {
+						AttackableObject* targetObject = (AttackableObject*) target.get();
+
+						if (targetObject->isDestroyed()) {
 							clearError(3);
 							target->unlock();
 							return false;
@@ -190,6 +196,7 @@ bool CommandQueueAction::validate() {
 					if (target->isPlayer()) {
 						Player* targetPlayer = (Player*) target.get();
 
+						// TODO:  Needs fixing for BH missions
 						if (!player->isInDuelWith(targetPlayer, false)) {
 							if (!player->isOvert() || !targetPlayer->isOvert()) {
 								clearError(3);
@@ -201,7 +208,14 @@ bool CommandQueueAction::validate() {
 								return false;
 							}
 						}
+					} else {
+						if (!target->isAttackableBy(creature)) {
+							clearError(3);
+							target->unlock();
+							return false;
+						}
 					}
+
 					target->unlock();
 				} catch (...) {
 					System::out << "Unreported Exception in CommandQueueAction::validate()\n";
@@ -210,17 +224,12 @@ bool CommandQueueAction::validate() {
 			} else if (skill->isHealSkill()) {
 				return checkHealSkill();
 			}
+		} else { // target == creature
+			if (skill->isAttackSkill()) {
+				clearError(3);
+				return false;
+			}
 		}
-	}
-
-	if (skill->isAttackSkill()) {
-		if (target == creature) {
-			clearError(3);
-			return false;
-		}
-
-		if (!checkWeapon())
-			return false;
 	}
 
 	return true;
