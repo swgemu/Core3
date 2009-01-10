@@ -156,6 +156,12 @@ public:
 	inline bool isDestroyed() {
 		return (conditionDamage >= maxCondition);
 	}
+
+	//Event Handlers
+	virtual void onReceiveDamage(SceneObject* attacker, uint32 amount);
+	//void onDestroyed();
+
+	//Actions
 };
 
 #endif /*ATTACKABLEOBJECTIMPLEMENTATION_H_*/

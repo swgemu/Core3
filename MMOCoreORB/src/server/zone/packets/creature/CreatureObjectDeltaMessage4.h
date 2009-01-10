@@ -99,24 +99,58 @@ public:
 		insertLong(objectid);
 	}
 
-	void updateEncumberances(uint32 health, uint32 action, uint32 mind) {
-		//TODO: Finish this
+	/**
+	 * Updates the client side encumbrances values by comparing the arguments to the current, and then updating the client with the current values.
+	 * \param health The new health values to set the encumbrance bar to.
+	 * \param action The new action values to set the encumbrance bar to.
+	 * \param mind The new mind values to set the encumbrance bar to.
+	 */
+	void updateEncumbrances(uint32 health, uint32 action, uint32 mind) {
+		//TODO: This still needs works!
 		startUpdate(0x02);
 
-		int h = (creo->getHealthEncumbrance() != health) ? 1 : 0;
-		int a = (creo->getActionEncumbrance() != action) ? 1 : 0;
-		int m = (creo->getMindEncumbrance() != mind) ? 1 : 0;
+		/*
+		int32 origHealth = creo->getHealthEncumbrance();
+		int32 origActione = creo->getActionEncumbrance();
+		int32 origMind = creo->getMindEncumbrance();
 
-		int updates = h + a + m;
+		uint8 h = (health != origHealth) ? 1 : 0;
+		uint8 a = (action != origAction) ? 1 : 0;
+		uint8 m = (mind != origMind) ? 1 : 0;*/
 
-		insertInt(updates);
-		insertInt(creo->getNewHAMEncumbUpdateCounter(updates));
+		uint8 h = 1;
+		uint8 a = 1;
+		uint8 m = 1;
 
-		insertInt(health);
-		insertInt(action);
-		insertInt(mind);
+		uint8 updates = h + a + m;
+
+		startList(updates, creo->getNewEncumbUpdateCounter(updates));
+
+		if (h) {
+			insertByte(0x01);
+			insertShort(0);
+			insertInt(health);
+			creo->setHealthEncumbrance(health);
+		}
+
+		if (a) {
+			insertByte(0x01);
+			insertShort(3);
+			insertInt(action);
+			creo->setActionEncumbrance(action);
+		}
+
+		if (m) {
+			insertByte(0x01);
+			insertShort(6);
+			insertInt(mind);
+			creo->setMindEncumbrance(mind);
+		}
 	}
 
+	void changeEncumbrances(int32 health, int32 action, int32 mind) {
+		updateEncumbrances(creo->getHealthEncumbrance() - health, creo->getActionEncumbrance() - action, creo->getMindEncumbrance() - mind);
+	}
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE4_H_*/

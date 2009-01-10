@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "../../managers/guild/GuildManager.h"
 #include "../../managers/group/GroupManager.h"
 #include "../../managers/planet/PlanetManager.h"
+#include "../../managers/structure/StructureManager.h"
 #include "../../managers/resource/ResourceManager.h"
 #include "../../managers/loot/LootManager.h"
 #include "../../managers/sui/SuiManager.h"
@@ -242,7 +243,7 @@ void PlayerImplementation::initialize() {
 	itemShift = 100;
 
 	// pvp stuff
-	incapacitationCount = 0;
+	incapacitationCounter = 0;
 	pvpRating = PVPRATING_DEFAULT; //New players start with pvpRating of 1200
 	duelList.setInsertPlan(SortedVector<Player*>::NO_DUPLICATE);
 	factionStatus = 0;
@@ -341,6 +342,9 @@ void PlayerImplementation::initialize() {
 	teachingOffer = false;
 	activeArea = NULL;
 	badges = new Badges();
+
+	//Cloning
+	cloningFacility = NULL;
 
 	if (getWeapon() == NULL) {
 		int templevel = calcPlayerLevel("combat_meleespecialize_unarmed");
@@ -477,8 +481,6 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 		makeCharacterMask();
 
 		loadItems();
-		//resetArmorEncumbrance();
-
 		setLoggingIn(); //Anyone notice this is in here twice?
 
 		Zone* zone = server->getZoneServer()->getZone(zoneID);
@@ -771,7 +773,7 @@ void PlayerImplementation::resurrectCountdown(int counter) {
 			delete resurrectEvent;
 			resurrectEvent = NULL;
 
-			doClone();
+			//doClone();
 			break;
 		}
 	}
@@ -1033,15 +1035,15 @@ void PlayerImplementation::createBaseStats() {
 	for (int i = 0; i < 9; i++)
 		hamValues[i] += hamMods[i];
 
-	baseHealth = hamValues[0];
-	baseStrength = hamValues[1];
-	baseConstitution = hamValues[2];
-	baseAction = hamValues[3];
-	baseQuickness = hamValues[4];
-	baseStamina = hamValues[5];
-	baseMind = hamValues[6];
-	baseFocus = hamValues[7];
-	baseWillpower = hamValues[8];
+	setBaseHealth(hamValues[0]);
+	setBaseStrength(hamValues[1]);
+	setBaseConstitution(hamValues[2]);
+	setBaseAction(hamValues[3]);
+	setBaseQuickness(hamValues[4]);
+	setBaseStamina(hamValues[5]);
+	setBaseMind(hamValues[6]);
+	setBaseFocus(hamValues[7]);
+	setBaseWillpower(hamValues[8]);
 }
 
 void PlayerImplementation::trainStartingProfession() {
@@ -1052,17 +1054,21 @@ void PlayerImplementation::trainStartingProfession() {
 }
 
 void PlayerImplementation::decayInventory() {
-	if (inventory != NULL)
+	if (inventory != NULL) {
 		for (int i = 0; i < inventory->objectsSize(); i++) {
 			TangibleObject* item = ((TangibleObject*) inventory->getObject(i));
 
-			if (item->isWeapon() && item->isEquipped())
-				((Weapon*)item)->decayWeapon(5);
-			else if (item->isArmor() && item->isEquipped())
-				((Armor*)item)->decayArmor(5);
+			if (item->isDecayable()) {
+				if (item->isInsured()) {
+					item->decay(0.01f);
+				} else {
+					item->decay(0.05f);
+				}
+			}
 
 			item->sendTo(_this);
 		}
+	}
 }
 
 void PlayerImplementation::resetArmorEncumbrance() {
@@ -1477,7 +1483,7 @@ void PlayerImplementation::deaggro() {
 							aggroedPlayer = (Player*) aggroedCreature;
 
 							if (aggroedPlayer->getFirstName() == getFirstName()) {
-								defender->deagro();
+								defender->deaggro();
 								defender->removeFromDamageMap(aggroedCreature);
 								removeDefender(scno);
 							}
@@ -1735,13 +1741,14 @@ void PlayerImplementation::notifySceneReady() {
 		loadGuildChat();
 
 		if (isDead()) {
-			activateClone();
+			onDeath();
+			/*
 			if (resurrectionExpires.isFuture()) {
 				int diff = abs((int) floor(((float)resurrectionExpires.miliDifference()) / 60000));
 				resurrectCountdown(diff + 1);
 			} else {
 				resurrectCountdown(1);
-			}
+			}*/
 		}
 
 	} else {
@@ -2046,113 +2053,27 @@ void PlayerImplementation::doIncapacitate() {
 	if (isMounted())
 		dismount(true, true);
 
-	if (incapacitationCount == 0) {
+	if (incapacitationCounter == 0) {
 		firstIncapacitationTime.update();
 		firstIncapacitationTime.addMiliTime(900000);
-	} else if (incapacitationCount != 0 && firstIncapacitationTime.isPast()) {
-		incapacitationCount = 0;
+	} else if (incapacitationCounter != 0 && firstIncapacitationTime.isPast()) {
+		incapacitationCounter = 0;
 		firstIncapacitationTime.update();
 		firstIncapacitationTime.addMiliTime(900000);
 	}
 
-	if (++incapacitationCount < 3) {
-		// send incapacitation timer
-		CreatureObjectDeltaMessage3* incap = new CreatureObjectDeltaMessage3(_this);
-		incap->updateIncapacitationRecoveryTime(10);
-		incap->close();
-
-		sendMessage(incap);
+	if (++incapacitationCounter < 3) {
+		//TODO: Calculate incap time based on health.
+		uint32 seconds = 10;
+		sendIncapacitationTimer(10);
 
 		clearStates();
 		setPosture(CreaturePosture::INCAPACITATED);
 
-		rescheduleRecovery(10000);
+		rescheduleRecovery(seconds * 1000);
 	} else {
 		if (firstIncapacitationTime.isFuture())
-			kill();
-	}
-}
-
-void PlayerImplementation::kill() {
-	sendSystemMessage("base_player", "victim_dead"); //You have died. Requesting clone activation...
-	handleDeath();
-}
-
-void PlayerImplementation::deathblow(Player* killer) {
-	float currentRating = (float)getPvpRating();
-	float opponentRating = (float)killer->getPvpRating();
-
-	String mfaction = (isImperial()) ? "imperial" : "rebel";
-	String kfaction = (killer->isImperial()) ? "imperial" : "rebel";
-
-	if (!isInDuelWith(killer) && hatesFaction(killer->getFaction())) {
-		subtractFactionPoints(mfaction, 30);
-		killer->subtractFactionPoints(mfaction, 45);
-		killer->addFactionPoints(kfaction, 45);
-	}
-
-	//Using the formula: N = P1 - ( (1/5) * (P1 - P2 + 100) ), where P1 - P2 + 100 >= 0
-	//P1 = Player1; P2 = Player2; N = PointsLost
-	int pointsLost = (int)round((1.0f/5.0f) * (currentRating - opponentRating + 100.0f));
-
-	pointsLost = (pointsLost >= 0) ? pointsLost : 0;
-	pointsLost = ((currentRating - pointsLost) >= PVPRATING_MIN) ? pointsLost : 0; //Check to be sure that they don't go below the minimum points allowed.
-
-	decreasePvpRating(pointsLost);
-
-	int newRating = getPvpRating();
-
-	StringBuffer defeatedMsg;
-
-	String killerName = "";
-	UnicodeString uniName = UnicodeString("");
-	uniName = killer->getCharacterName();
-	killerName = uniName.toString();
-
-	if (pointsLost > 0) {
-		switch (System::random(2)) {
-		case 0:
-			defeatedMsg << "You have been killed by " << killerName.toCharArray() << ". Your new player combat rating is " << newRating << ".";
-			break;
-		case 1:
-			defeatedMsg << "You have fallen prey to " << killerName.toCharArray() << ". Your new player combat rating is " << newRating << ".";
-			break;
-		case 2:
-		default:
-			defeatedMsg << "You have perished at the hand of " << killerName.toCharArray() << ". Your new player combat rating is " << newRating << ".";
-			break;
-		}
-	} else {
-		defeatedMsg << "Although you have fallen at the hands of " << killerName.toCharArray() << ",  your cannot lose any more rating points at this time.  Your player combat rating remains at " << newRating << ".";
-	}
-
-	sendSystemMessage("base_player", "prose_victim_dead", killer->getObjectID()); //You were slain by %TT. Requesting clone activation...
-
-	sendSystemMessage(defeatedMsg.toString());
-
-	clearDuelList();
-	handleDeath();
-}
-
-void PlayerImplementation::throttlePvpRating(Player* player) {
-	 /*
-	 * TODO: When a player is killed, they should be added to that players recently killed list so that no points are awarded.
-	 */
-}
-
-void PlayerImplementation::handleDeath() {
-	setPosture(CreaturePosture::DEAD);
-	incapacitationCount = 0;
-
-	resurrectionExpires.update();
-	resurrectionExpires.addMiliTime(5 * 60 * 1000); //5 minutes till expires
-
-	resurrectCountdown();
-
-	rescheduleRecovery(2000);
-
-	if (powerboosted) {
-		removePowerboost();
+			die();
 	}
 }
 
@@ -2295,30 +2216,20 @@ void PlayerImplementation::doRecovery() {
 		}
 	}
 
-	if (isIncapacitated()) {
-		speed = 5.376;
+	if (isIncapacitated())
+		recoverFromIncapacitation();
 
-		setPosture(CreaturePosture::UPRIGHT);
-	}
-
-
-	if (isDead() && isOnline() && !isLoggingIn()) {
-		activateClone();
-		return;
-	}
-
-
-	/*if (!isInCombat() && isOnFullHealth() && ((playerObject != NULL && isJedi() && playerObject->isOnFullForce()) || !isJedi()) && !hasStates() && !hasWounds() && !hasShockWounds()) {
-		return;
-	} else*/ if (lastCombatAction.miliDifference() > 15000) {
+	//TODO: Redo this too.
+	if (lastCombatAction.miliDifference() > 15000) {
 		clearCombatState();
-	} else if (isInCombat() && targetObject != NULL && !hasState(CreatureState::PEACE)
+	} else if (isInCombat() && targetObject != NULL && !isPeaced()
 			&& (commandQueue.size() == 0)) {
-		queueAction(_this, getTargetID(), 0xA8FEF90A, ++actionCounter, "");
+		queueAction(_this, getTargetID(), 0xA8FEF90A, ++actionCounter, ""); // Do default attack
 	}
 
+	//TODO: Redo this?
 	if (!isOnFullHealth() || hasWounds() || hasShockWounds() || powerboosted)
-		calculateHAMregen();
+		onRegenerateHAM();
 
 	if (hasStates())
 		doStateRecovery();
@@ -2417,182 +2328,6 @@ void PlayerImplementation::doDigest() {
 		playerObject->changeDrinkFilling(-1, true);
 
 	activateDigest();
-}
-
-void PlayerImplementation::activateClone() {
-	if (hasSuiBoxWindowType(SuiWindowType::CLONE_REQUEST)) {
-		int boxID = getSuiBoxFromWindowType(SuiWindowType::CLONE_REQUEST);
-		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
-
-		if (sui != NULL) {
-			sendMessage(sui->generateCloseMessage());
-			removeSuiBox(boxID);
-			sui->finalize();
-		}
-	}
-
-	SuiListBox* cloneMenu = new SuiListBox(_this, SuiWindowType::CLONE_REQUEST);
-
-	cloneMenu->setPromptTitle("@base_player:revive_title");
-
-	String clonerName = "Mos Eisley";
-
-	//TODO: Integrate this menu with cloning system.
-
-	StringBuffer promptText;
-	promptText << "Closest:\t\t\t" << clonerName << "\n"
-			   << "Pre-Designated: \t" << clonerName << "\n" //Space before tab character is needed for proper formatting in this case.
-			   << "Cash Balance:\t\t" << getCashCredits() << "\n\n"
-			   << "Select the desired option and click OK.";
-
-	cloneMenu->setPromptText(promptText.toString());
-
-	cloneMenu->addMenuItem("@base_player:revive_closest");
-	cloneMenu->addMenuItem("@base_player:revive_bind");
-
-	addSuiBox(cloneMenu);
-	sendMessage(cloneMenu->generateMessage());
-}
-
-void PlayerImplementation::doClone() {
-	info("cloning player");
-
-	resurrectionExpires.update();
-
-	clearStates();
-	clearBuffs(true);
-	resetArmorEncumbrance();
-
-	//TODO: This should check to see if the data is stored at the cloning facility or not, these numbers are much less if so.
-
-	changeHealthWoundsBar(100);
-	changeActionWoundsBar(100);
-	changeMindWoundsBar(100);
-
-	changeShockWounds(100);
-
-	switch (zoneID) {
-	case 0:	// Corellia
-		if (isRebel())
-			doWarp(-326.0f, -4640.0f);				// shuttle 1
-		else
-			doWarp(-28.0f, -4438.0f);				// shuttle 2
-
-		break;
-	case 1:	// Dantooine
-		if (isRebel())			// Mining Outpost
-			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);
-		else
- 			doWarp(4.3f, 0.1, 3.8f, 0, 1365997);
-
- 		break;
-	case 2: // Dathomir
-		if (isRebel())			// science outpost
-			doWarp(-76.0f, -1627.0f);
-		else
-			doWarp(618.0f, 3054.0f);						// trade outpost
-
-		break;
-	case 3: // Endor
-		if (isRebel())
-			doWarp(3.9f, 0.1f, 3.7f, 0, 6705359);
-		else
- 			doWarp(3.9f, 0.1f, 3.6f, 0, 6705359);
-
- 		break;
-	case 4: // Lok
-		if (isRebel())			// Nyms Stronghold
-			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);
-		else
- 			doWarp(0.3f, 0.3f, 1.2f, 0, 2745624);
-
- 		break;
-	case 5: // Naboo
-		if (isRebel())			// Theed
-			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);
-		else
- 			doWarp(1.7f, -4.8f, 0.1f, 0, 1697354);
-
- 		break;
-	case 6: // Rori
-		if (isRebel())			// Restuss
-			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);
-		else
- 			doWarp(1.7f, -4.8f, 0.7f, 0, 4695371);
-
- 		break;
-	case 7: // Talus
-		if (isRebel())			//  Daeric
-			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);
-		else
- 			doWarp(1.8f, -4.8f, 0.6f, 0, 3175408);
-
- 		break;
-	case 9: // Yavin4
-		if (isRebel())			//  Labor Camp
-			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);
-		else
- 			doWarp(4.3f, 0.1f, -3.7f, 0, 3035395);
-
- 		break;
-	default:
-		if (isRebel())
-			doWarp(-130.0f, -5300.0f);
-		else if (isImperial())
-     		//doWarp(10.0f, -5480.0f, 0, true);
-			doWarp(-2.8f, 0.1f, -4.8f, 0, 3565798);
-		else
-			doWarp(0.5f, 1.5f, 0.3f, 0, 1590892); // ah cloning facility
-
-		break;
-	}
-
-	//food persists cloning
-	//setFoodFilling(0, true);
-	//setDrinkFilling(0, true);
-
-	decayInventory();
-
-	changeForcePowerBar(0);
-
-	if (isOvert())
-		setCovert();
-
-	setPosture(CreaturePosture::UPRIGHT);
-
-	rescheduleRecovery();
-}
-
-void PlayerImplementation::sendConsentBox() {
-	if (consentList.size() <= 0) {
-		sendSystemMessage("You have yet to give anyone your consent.");
-		return;
-	}
-
-	if (hasSuiBoxWindowType(SuiWindowType::CONSENT)) {
-		int boxID = getSuiBoxFromWindowType(SuiWindowType::CONSENT);
-		SuiListBox* sui = (SuiListBox*) getSuiBox(boxID);
-
-		if (sui != NULL) {
-			sendMessage(sui->generateCloseMessage());
-			removeSuiBox(boxID);
-			sui->finalize();
-		}
-	}
-
-	SuiListBox* consentBox = new SuiListBox(_this, SuiWindowType::CONSENT);
-
-	consentBox->setPromptTitle("Consent List");
-	consentBox->setPromptText("Below is listed all players whom you have given consent.");
-
-	for (int i=0; i < consentList.size(); i++) {
-		String entryName = consentList.get(i);
-		if (!entryName.isEmpty())
-			consentBox->addMenuItem(entryName);
-	}
-
-	addSuiBox(consentBox);
-	sendMessage(consentBox->generateMessage());
 }
 
 void PlayerImplementation::startForaging(int foragetype) {
@@ -3327,6 +3062,7 @@ void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
 		System::out << "ERROR - equippedItems not initialised" << endl;
 		return;
 	}
+
 	equippedItems->changeWearable(cloth, forced);
 
 	BaseMessage* creo6 = new CreatureObjectMessage6(_this);
@@ -3539,33 +3275,33 @@ bool PlayerImplementation::setArmorEncumbrance(Armor* armor, bool forced) {
 	int actionEncumb = armor->getActionEncumbrance();
 	int mindEncumb = armor->getMindEncumbrance();
 
-	if ((healthEncumb >= strength || healthEncumb >= constitution ||
-		actionEncumb >= quickness || actionEncumb >= stamina ||
-		mindEncumb >= focus || mindEncumb >= willpower) && !forced)
+	if ((healthEncumb >= getStrength() || healthEncumb >= getConstitution() ||
+		actionEncumb >= getQuickness() || actionEncumb >= getStamina() ||
+		mindEncumb >= getFocus() || mindEncumb >= getWillpower()) && !forced)
 		return false;
 
-	if ((strength > 100000 || constitution > 100000 ||
-		quickness > 100000 || stamina > 100000 ||
-		focus > 100000 || willpower > 100000) && !forced)
+	if ((getStrength() > 100000 || getConstitution() > 100000 ||
+		getQuickness() > 100000 || getStamina() > 100000 ||
+		getFocus() > 100000 || getWillpower() > 100000) && !forced)
 		return false;
 
 	healthEncumbrance += healthEncumb;
 	actionEncumbrance += actionEncumb;
 	mindEncumbrance += mindEncumb;
 
-	strengthMax -= healthEncumb;
-	constitutionMax -= healthEncumb;
-	quicknessMax -= actionEncumb;
-	staminaMax -= actionEncumb;
-	focusMax -= mindEncumb;
-	willpowerMax -= mindEncumb;
+	changeStrengthMax(-healthEncumb);
+	changeConstitutionMax(-healthEncumb);
+	changeQuicknessMax(-actionEncumb);
+	changeStaminaMax(-actionEncumb);
+	changeFocusMax(-mindEncumb);
+	changeWillpowerMax(-mindEncumb);
 
-	strength -= healthEncumb;
-	constitution -= healthEncumb;
-	quickness -= actionEncumb;
-	stamina -= actionEncumb;
-	focus -= mindEncumb;
-	willpower -= mindEncumb;
+	changeStrength(-healthEncumb);
+	changeConstitution(-healthEncumb);
+	changeQuickness(-actionEncumb);
+	changeStamina(-actionEncumb);
+	changeFocus(-mindEncumb);
+	changeWillpower(-mindEncumb);
 
 	return true;
 
@@ -3580,20 +3316,19 @@ void PlayerImplementation::unsetArmorEncumbrance(Armor* armor) {
 	actionEncumbrance -= actionEncumb;
 	mindEncumbrance -= mindEncumb;
 
-	strengthMax += healthEncumb;
-	constitutionMax += healthEncumb;
-	quicknessMax += actionEncumb;
-	staminaMax += actionEncumb;
-	focusMax += mindEncumb;
-	willpowerMax += mindEncumb;
+	changeStrengthMax(healthEncumb);
+	changeConstitutionMax(healthEncumb);
+	changeQuicknessMax(actionEncumb);
+	changeStaminaMax(actionEncumb);
+	changeFocusMax(mindEncumb);
+	changeWillpowerMax(mindEncumb);
 
-	strength += healthEncumb;
-	constitution += healthEncumb;
-	quickness += actionEncumb;
-	stamina += actionEncumb;
-	focus += mindEncumb;
-	willpower += mindEncumb;
-
+	changeStrength(healthEncumb);
+	changeConstitution(healthEncumb);
+	changeQuickness(actionEncumb);
+	changeStamina(actionEncumb);
+	changeFocus(mindEncumb);
+	changeWillpower(mindEncumb);
 }
 
 void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
@@ -4381,14 +4116,6 @@ void PlayerImplementation::removeCertifications(Vector<Certification*>& certs, b
 		dplay9->close();
 		sendMessage(dplay9);
 	}
-}
-
-void PlayerImplementation::increasePvpRating(int value) {
-	pvpRating = pvpRating + value;
-}
-
-void PlayerImplementation::decreasePvpRating(int value) {
-	pvpRating = pvpRating - value;
 }
 
 void PlayerImplementation::toggleCharacterBit(uint32 bit) {
@@ -5514,6 +5241,8 @@ void PlayerImplementation::teachSkill(String& skillname) {
 	setTeacher(NULL);
 }
 
+
+
 void PlayerImplementation::throwTrap(uint64 targetID) {
 	Inventory* inventory = getInventory();
 
@@ -5533,6 +5262,8 @@ void PlayerImplementation::throwTrap(uint64 targetID) {
 		}
 	}
 }
+
+
 
 void PlayerImplementation::removeOldSuiBoxIfPresent(const int suiWindowType) {
 	if (hasSuiBoxWindowType(suiWindowType)) {
@@ -5562,3 +5293,766 @@ void PlayerImplementation::displayMessageoftheDay() {
 	sendMessage(suiMessageBox->generateMessage());
 }
 
+
+
+
+/// Sending of Messages
+/**
+ * This message will display the incapacitation timer on the client.
+ * \param seconds How many seconds will the incapacitation timer count down from.
+ * \param doRecovery Should recovery be scheduled. For example, feignDeath would use false.
+ */
+void PlayerImplementation::sendIncapacitationTimer(uint32 seconds, bool doRecovery) {
+	CreatureObjectDeltaMessage3* incapTimer = new CreatureObjectDeltaMessage3(_this);
+	incapTimer->updateIncapacitationRecoveryTime(seconds);
+	incapTimer->close();
+
+	sendMessage(incapTimer);
+
+	if (doRecovery)
+		rescheduleRecovery(seconds * 1000);
+}
+
+/**
+ * This message sends the Bank Tip confirm sui box that is displayed when a 5% tax is added on to a player's tip.
+ * \param receiver The player receiving the bank tip.
+ */
+void PlayerImplementation::sendBankTipConfirm(Player* recipient, uint32 amount) {
+	closeSuiWindowType(SuiWindowType::BANK_TIP_CONFIRM);
+
+	SuiBankTipConfirmBox* bankTip = new SuiBankTipConfirmBox(_this, recipient, amount);
+	bankTip->setRecipient(recipient);
+
+	addSuiBox(bankTip);
+	sendMessage(bankTip->generateMessage());
+}
+
+/**
+ * This message sends the Consent Sui which shows all players that you have given consent to.
+ */
+void PlayerImplementation::sendConsentList() {
+	closeSuiWindowType(SuiWindowType::CLONE_REQUEST);
+
+	if (consentList.size() <= 0) {
+		sendSystemMessage("error_message", "consent_to_empty"); //You have not granted consent to anyone.
+		return;
+	}
+
+	SuiListBox* consentBox = new SuiListBox(_this, SuiWindowType::CONSENT);
+
+	consentBox->setPromptTitle("@ui:consent_title");
+	consentBox->setPromptText("Below is listed all players whom you have given consent.");
+
+	for (int i=0; i < consentList.size(); i++) {
+		String entryName = consentList.get(i);
+		if (!entryName.isEmpty())
+			consentBox->addMenuItem(entryName);
+	}
+
+	addSuiBox(consentBox);
+	sendMessage(consentBox->generateMessage());
+}
+
+/**
+ * This message is used to send the activate clone request dialog.
+ */
+void PlayerImplementation::sendActivateCloneRequest() {
+	closeSuiWindowType(SuiWindowType::CLONE_REQUEST);
+
+	SuiListBox* cloneMenu = new SuiListBox(_this, SuiWindowType::CLONE_REQUEST);
+
+	cloneMenu->setPromptTitle("@base_player:revive_title");
+
+	StructureManager* structureManager = getZone()->getPlanetManager()->getStructureManager();
+
+	CloningFacility* closestFacility = structureManager->getClosestCloningFacility(_this);
+
+	CloningFacility* preDesignatedFacility = getCloningFacility();
+
+	String closestName = "Not Working Yet";
+	String predesignatedName = (preDesignatedFacility != NULL) ? "Not Working Yet" : "None";
+
+	//TODO: Integrate this menu with cloning system.
+
+	StringBuffer promptText;
+	promptText << "Closest:\t\t\t" << closestName << "\n"
+			   << "Pre-Designated: \t" << predesignatedName << "\n" //Space before tab character is needed for proper formatting in this case.
+			   << "Cash Balance:\t\t" << getCashCredits() << "\n\n"
+			   << "Select the desired option and click OK.";
+
+	cloneMenu->setPromptText(promptText.toString());
+
+	cloneMenu->addMenuItem("@base_player:revive_closest", closestFacility->getObjectID());
+
+	//Check if predesignated is on this planet or not.
+	if (preDesignatedFacility != NULL && preDesignatedFacility->getZoneID() == getZoneID())
+		cloneMenu->addMenuItem("@base_player:revive_bind", preDesignatedFacility->getObjectID());
+
+	addSuiBox(cloneMenu);
+	sendMessage(cloneMenu->generateMessage());
+}
+
+/**
+ * This message sends the cloning data confirmation dialog SUI box.
+ */
+void PlayerImplementation::sendCloningDataStorageConfirm(CloningTerminal* terminal) {
+	closeSuiWindowType(SuiWindowType::CLONE_CONFIRM);
+
+	SuiMessageBox* cloneConfirm = new SuiMessageBox(_this, SuiWindowType::CLONE_CONFIRM);
+	cloneConfirm->setPromptTitle("@base_player:clone_confirm_title");
+	cloneConfirm->setPromptText("@base_player:clone_confirm_prompt");
+	cloneConfirm->setCancelButton(true);
+	cloneConfirm->setUsingObjectID(terminal->getObjectID());
+
+	addSuiBox(cloneConfirm);
+	sendMessage(cloneConfirm->generateMessage());
+}
+
+/**
+ * This message sends the item insurance sui list box.
+ */
+void PlayerImplementation::sendItemInsuranceMenu(InsuranceTerminal* terminal) {
+	closeSuiWindowType(SuiWindowType::INSURANCE_MENU);
+
+	Vector<TangibleObject*> insurableItems = getInsurableItems();
+
+	if (insurableItems.size() <= 0) {
+		sendSystemMessage("terminal_ui", "no_insurable_items"); //You do not have any items that can be insured.
+		return;
+	}
+
+	SuiListBox* insuranceMenu = new SuiListBox(_this, SuiWindowType::INSURANCE_MENU);
+	insuranceMenu->setPromptTitle("@sui:mnu_insure");
+	insuranceMenu->setPromptText("Select which items you would like to buy insurance for from the list below.");
+	insuranceMenu->setUsingObjectID(terminal->getObjectID());
+
+	for (int i = 0; i < insurableItems.size(); i++) {
+		TangibleObject* item = insurableItems.get(i);
+		insuranceMenu->addMenuItem(item->getName().toString(), item->getObjectID());
+	}
+
+	addSuiBox(insuranceMenu);
+	sendMessage(insuranceMenu->generateMessage());
+
+	insurableItems.removeAll();
+}
+
+void PlayerImplementation::sendItemInsureAllConfirm(InsuranceTerminal* terminal) {
+	closeSuiWindowType(SuiWindowType::INSURE_ALL_CONFIRM);
+
+	Vector<TangibleObject*> insurableItems = getInsurableItems();
+
+	if (insurableItems.size() <= 0) {
+		sendSystemMessage("terminal_ui", "no_insurable_items"); //You do not have any items that can be insured.
+		return;
+	}
+
+	StringBuffer promptText;
+	promptText << "You are about to insure all your items. The total cost is " << (insurableItems.size() * terminal->getCost()) << " credits.\n\nAre you sure?";
+
+	SuiMessageBox* insureAll = new SuiMessageBox(_this, SuiWindowType::INSURE_ALL_CONFIRM);
+	insureAll->setUsingObjectID(terminal->getObjectID());
+	insureAll->setPromptTitle("@terminal_ui:insure_all_t");
+	insureAll->setPromptText(promptText.toString());
+	insureAll->setCancelButton(true);
+
+	addSuiBox(insureAll);
+	sendMessage(insureAll->generateMessage());
+
+	insurableItems.removeAll();
+}
+
+
+
+/// Actions
+
+void PlayerImplementation::incapacitateSelf() {
+	setPosture(CreaturePosture::INCAPACITATED);
+	onIncapacitated(NULL);
+}
+
+void PlayerImplementation::die() {
+	resetIncapacitationCounter();
+
+	//resurrectCountdown();
+
+	//rescheduleRecovery(2000);
+
+	//if (powerboosted) {
+		//removePowerboost();
+	//}
+
+	CreatureObjectImplementation::die();
+	onDeath();
+}
+
+/**
+ * Clones the player at their designated facility, or, if it hasn't been set or is off planet, at the closest one.
+ */
+void PlayerImplementation::clone() {
+	CloningFacility* cloningFacility = getCloningFacility();
+
+	if (cloningFacility != NULL && cloningFacility->getZoneID() == getZoneID()) {
+		clone(cloningFacility);
+	} else {
+		cloningFacility = getZone()->getPlanetManager()->getStructureManager()->getClosestCloningFacility(_this);
+
+		if (cloningFacility != NULL)
+			clone(cloningFacility);
+		else
+			error("Couldn't clone player at any cloning facility");
+	}
+}
+
+void PlayerImplementation::clone(uint64 facilityID) {
+	StructureManager* structureManager = getZone()->getPlanetManager()->getStructureManager();
+	CloningFacility* cloningFacility = structureManager->getCloningFacility(facilityID);
+
+	if (cloningFacility != NULL) {
+		clone(cloningFacility);
+	} else {
+		error("Cloning facility does not exist in PlayerImplementation::clone(uint64 facilityID);");
+	}
+}
+
+void PlayerImplementation::clone(CloningFacility* cloningFacility) {
+	if (cloningFacility != NULL) {
+		cloningFacility->clone(_this);
+	}
+}
+
+
+/**
+ * This method is used to increase a player's pvp rating based on an opponent.
+ * \param victim Player who was slain.
+ */
+void PlayerImplementation::increasePvpRating(Player* victim) {
+	float killerRating = (float) getPvpRating();
+	float victimRating = (float) victim->getPvpRating();
+
+	/// Increase Formula: N = P1 + ((P2 - P1 + 100) / 9), where P2 - P1 - 100 >= 0
+	/// P1 = Killer's PVP Rating; P2 = Victim's PVP Rating; N = Points Gained
+	int pointsGained = (int)round((victimRating - killerRating + 100.0f) / 9.0f);
+	pointsGained = (pointsGained >= 0) ? pointsGained : 0;
+
+	increasePvpRating(pointsGained);
+
+	onPvpRatingGained(victim);
+}
+
+/**
+ * This method is used to increase a player's pvp rating by a set amount.
+ * NOTE: Use decreasePvpRating(amount) in order to decrease a player's pvpRating.
+ * \param amount The amount to increase the player's pvpRating by. Should always be positive.
+ */
+void PlayerImplementation::increasePvpRating(uint32 amount) {
+	setPvpRating(getPvpRating() + amount);
+}
+
+/**
+ * This method is used to decrease a player's pvp rating based on their opponent.
+ * \param killer The killer in the pvp contest.
+ */
+void PlayerImplementation::decreasePvpRating(Player* killer) {
+	float killerRating = (float) killer->getPvpRating();
+	float victimRating = (float) getPvpRating();
+
+	/// Decrease Formula: N = P1 - ((P1 - P2 + 100) / 5), where P1 - P2 + 100 >= 0
+	/// P1 = Victim's PVP Rating; P2 = Killer's PVP Rating; N = Points Lost
+	int pointsLost = (int)round((victimRating - killerRating + 100.0f) / 5.0f);
+	pointsLost = (pointsLost >= 0) ? pointsLost : 0;
+
+	decreasePvpRating(pointsLost);
+
+	onPvpRatingLost(killer);
+}
+
+/**
+ * This method is used to decrease a player's pvp rating based on a set amount.
+ * \param amount The amount to decrease the player's pvp rating by.
+ */
+void PlayerImplementation::decreasePvpRating(uint32 amount) {
+	setPvpRating(getPvpRating() - amount);
+}
+
+void PlayerImplementation::cancelRecoveryEvent() {
+	if (server != NULL && recoveryEvent != NULL && recoveryEvent->isQueued())
+		server->removeEvent(recoveryEvent);
+}
+
+bool PlayerImplementation::makePaymentTo(SceneObject* target, uint32 cost, bool notifyPlayer) {
+	if (!verifyCashCredits(cost))
+		return false;
+
+	subtractCashCredits(cost);
+	target->receivePaymentFrom(_this, cost);
+
+	if (notifyPlayer)
+		onMakePaymentTo(target, cost);
+
+	return true;
+}
+
+bool PlayerImplementation::makeBankPaymentTo(SceneObject* target, uint32 cost, bool notifyPlayer) {
+	if (!verifyBankCredits(cost))
+		return false;
+
+	subtractBankCredits(-cost);
+	target->receivePaymentFrom(_this, cost);
+
+	if (notifyPlayer)
+		onMakeBankPaymentTo(target, cost);
+
+	return true;
+}
+
+void PlayerImplementation::insureItem(InsuranceTerminal* terminal, uint64 itemID, bool notifySuccess) {
+	TangibleObject* item = (TangibleObject*) getInventoryItem(itemID);
+
+	if (terminal != NULL) {
+		if (item != NULL && item->isInsurable()) {
+			int cost = terminal->getCost();
+
+			if (makePaymentTo(terminal, cost, notifySuccess)) {
+				item->updateInsurance(_this, true);
+
+				if (notifySuccess)
+					onInsureItemSuccess(itemID);
+			} else {
+				onInsureItemInsufficientFunds(itemID);
+			}
+		} else {
+			onInsureItemFailure(itemID);
+		}
+	} else {
+		onInsureItemInvalidTerminal();
+	}
+}
+
+void PlayerImplementation::insureAllItems(uint64 terminalID) {
+	InsuranceTerminal* terminal = NULL;
+	SceneObject* scoTerminal = zone->lookupObject(terminalID);
+
+	if (scoTerminal != NULL) {
+		TangibleObject* tanoTerminal = (TangibleObject*) scoTerminal;
+		if (tanoTerminal->isTerminal()) {
+			Terminal* termTerminal = (Terminal*) tanoTerminal;
+			if (termTerminal->isInsuranceTerminal())
+				terminal = (InsuranceTerminal*) termTerminal;
+		}
+	}
+
+	if (terminal != NULL) {
+		Vector<TangibleObject*> insurableItems = getInsurableItems();
+		int size = insurableItems.size();
+
+		if (size > 0) {
+			for (int i = 0; i < size; i++)
+				insureItem(terminal, insurableItems.get(i)->getObjectID(), false);
+
+			onMakePaymentTo(terminal, terminal->getCost() * size);
+
+			onInsureAllItemsComplete();
+		} else {
+			onNoValidInsurables();
+		}
+	} else {
+		onInsureItemInvalidTerminal();
+	}
+}
+
+bool PlayerImplementation::bankTipStart(Player* recipient, uint32 amount) {
+	float tax = (float) amount * 0.05f;
+
+	StfParameter* params = new StfParameter();
+	params->addDI(amount);
+	params->addTT(recipient->getObjectID());
+
+	if (amount > 1000000) {
+		sendSystemMessage("You may not bank tip more than 1,000,000 credits at a time.");
+		delete params;
+		return false;
+	}
+
+	if (!verifyBankCredits(amount + (int) tax)) {
+		sendSystemMessage("base_player", "prose_tip_nsf_bank", params); //You lack the bank funds to wire %DI credits to %TT.
+		delete params;
+		return false;
+	}
+
+	sendBankTipConfirm(recipient, amount);
+
+	delete params;
+	return true;
+}
+
+/**
+ * Finishes sending a bank wire transfer after a player has accepted the confirmation sui.
+ * \param recipient The recipient of the bank transfer.
+ * \param amount How much the transfer is for.
+ */
+void PlayerImplementation::bankTipFinish(Player* recipient, uint32 amount) {
+	float tax = (float) amount * 0.05f;
+
+	StfParameter* params = new StfParameter();
+	params->addDI(amount);
+	params->addTO(recipient->getObjectID());
+
+	recipient->addBankCredits(amount);
+	subtractBankCredits(amount + (int) tax);
+
+	sendSystemMessage("base_player", "prose_wire_pass_self", params);  //You have successfully sent %DI bank credits to %TO.
+
+	if (recipient->isOnline()) {
+		params->addTO(getObjectID());
+		recipient->sendSystemMessage("base_player", "prose_wire_pass_target", params); //You have successfully received %DI bank credits from %TO.
+	}
+
+	String mailFrom = "@base_player:prose_wire_mail_from"; //On behalf of %TO...
+
+	UnicodeString mailSubject("@base_player:wire_mail_subject");
+	UnicodeString mailMessageSender("An amount of %DI credits have been transferred from your bank to escrow. It will be delivered to %TO as soon as possible.");
+
+	ChatManager* chatManager = server->getChatManager();
+	chatManager->sendMail(mailFrom, mailSubject, mailMessageSender, getFirstName());
+
+	UnicodeString mailMessageRecipient("%DI credits from %TO have been successfully delivered from escrow to your bank account.");
+	chatManager->sendMail(mailFrom, mailSubject, mailMessageRecipient, recipient->getFirstName());
+
+	delete params;
+}
+
+
+bool PlayerImplementation::cashTip(Player* recipient, uint32 amount) {
+	StfParameter* params = new StfParameter();
+	params->addDI(amount);
+	params->addTT(recipient->getObjectID());
+
+	if (!recipient->isOnline()) {
+		sendSystemMessage("base_player", "tip_target_offline"); //You cannot tip someone who is not online.
+		delete params;
+		return false;
+	}
+
+	// Must be within 120 meters to cash tip.
+	if (!isInRange(_this, 120)) {
+		sendSystemMessage("base_player", "prose_tip_range", params); //You are too far away to tip %TT with cash. You can send a wire transfer instead.
+		delete params;
+		return false;
+	}
+
+	if (amount > 1000000) {
+		sendSystemMessage("You may not tip more than 1000000 credits at a time.");
+		delete params;
+		return false;
+	}
+
+	if (!verifyCashCredits(amount)) {
+		sendSystemMessage("base_player", "prose_tip_nsf_cash", params); //You lack the cash funds to tip %DI credits to %TT.
+		delete params;
+		return false;
+	}
+
+	recipient->addCashCredits(amount);
+	subtractCashCredits(amount);
+
+	sendSystemMessage("base_player", "prose_tip_pass_self", params); //You successfully tip %DI credits to %TT.
+	params->addTT(getObjectID());
+	recipient->sendSystemMessage("base_player", "prose_tip_pass_target", params); //%TT tips you %DI credits.
+
+	delete params;
+	return true;
+}
+
+
+
+
+
+
+
+// Event Handlers
+
+/**
+ * This event handler takes place when the player has successfully incapacitated a target.
+ * \param victim The victim of the incapacitation.
+ */
+void PlayerImplementation::onIncapacitateTarget(CreatureObject* victim) {
+	sendSystemMessage("base_player", "prose_target_incap", victim->getObjectID()); //You incapacitate %TT.
+}
+
+/**
+ * This event handler takes place when a player is set as incapacitated.
+ * \param attacker The object that caused the incapacitation
+ */
+void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
+	updateIncapacitationCounter();
+	clearCombatState();
+	clearStates();
+
+	if (getIncapacitationCounter() < 3) {
+		setPosture(CreaturePosture::INCAPACITATED);
+
+		if (attacker != NULL) {
+			sendSystemMessage("base_player", "prose_victim_incap", attacker->getObjectID()); //You have been incapacitated by %TT.
+			attacker->onIncapacitateTarget(_this);
+		} else {
+			sendSystemMessage("base_player", "victim_incapacitated"); //You have become incapacitated.
+		}
+
+		uint32 incapTime = calculateIncapacitationTimer();
+		sendIncapacitationTimer(incapTime);
+	} else {
+		if (!isFirstIncapacitationExpired()) {
+			if (attacker != NULL)
+				attacker->deathblow(_this);
+			else
+				die();
+		}
+	}
+}
+
+/**
+ * This event handler gets first after the action die() takes place.
+ */
+void PlayerImplementation::onDeath() {
+	clearDuelList();
+	clearCombatState(true);
+	clearStates();
+
+	cancelRecoveryEvent();
+
+	//TODO: Start Revive Countdown
+	sendActivateCloneRequest();
+
+	CreatureObjectImplementation::onDeath();
+}
+
+/**
+ * This event hanlder is fired when being the target of a kill()
+ */
+void PlayerImplementation::onKilled(SceneObject* killer) {
+	sendSystemMessage("base_player", "victim_dead"); //You have died. Requesting clone activation...
+	die();
+}
+
+/**
+ * onDeathblow takes place after the deathblow action has been fired. It handles what the creature does that is performing the deathblow.
+ * \param victim Player is the target of the deathblow. Only players can be deathblown. NPC's are just killed.
+ */
+void PlayerImplementation::onDeathblow(Player* victim) {
+	clearCombatState(true);
+
+	sendSystemMessage("base_player", "prose_target_dead", victim->getObjectID()); //%TT is no more.
+
+	if (!isInDuelWith(victim, false)) {
+		if (hatesFaction(victim->getFaction())) {
+			String victimsFaction = (victim->isImperial()) ? "imperial" : "rebel";
+			String killersFaction = (isImperial()) ? "imperial" : "rebel";
+
+			subtractFactionPoints(victimsFaction, 45);
+			addFactionPoints(killersFaction, 45);
+		}
+	} else {
+		increasePvpRating(victim);
+	}
+}
+
+/**
+ * onReceiveDeathblow handles what happens to the victim of the deathblow. Do they lose faction? PVP Rating etc.
+ * \param killer Killer is the performer of the deathblow.
+ */
+void PlayerImplementation::onReceiveDeathblow(SceneObject* killer) {
+	sendSystemMessage("base_player", "prose_victim_dead", killer->getObjectID()); //You were slain by %TT. Requesting clone activation...
+
+	if (killer->isPlayer()) {
+		Player* playerKiller = (Player*) killer;
+
+		if (!isInDuelWith(playerKiller, false)) {
+			if (hatesFaction(playerKiller->getFaction())) {
+				String victimsFaction = (isImperial()) ? "imperial" : "rebel";
+				subtractFactionPoints(victimsFaction, 30);
+			}
+		} else {
+			decreasePvpRating(playerKiller);
+		}
+	}
+
+	die();
+}
+
+/**
+ * This event handler takes place after the player has received a potion of pvp rating.
+ * \param victim The player who was slain.
+ */
+void PlayerImplementation::onPvpRatingGained(Player* victim) {
+	StfParameter* params = new StfParameter();
+	String messages[3] = {"win1", "win2", "win3"};
+	params->addTT(victim->getObjectID());
+	params->addDI(getPvpRating());
+	sendSystemMessage("pvp_rating", messages[System::random(2)], params);
+	delete params;
+	//TODO: Put in PVP Rating Throttling.
+}
+
+/**
+ * This event handler takes place after the player has lost a portion of pvp rating.
+ * \param killer The player that did the killing...
+ */
+void PlayerImplementation::onPvpRatingLost(Player* killer) {
+	StfParameter* params = new StfParameter();
+	String messages[3] = {"killed1", "killed2", "killed3"};
+	params->addTT(killer->getObjectID());
+	params->addDI(getPvpRating());
+	sendSystemMessage("pvp_rating", messages[System::random(2)], params);
+	delete params;
+	//TODO: Put in PVP Rating Throttling.
+}
+
+/**
+ * This event hanlder is executed when the player's pvp rating could not increase anymore from the player they killed.
+ */
+
+void PlayerImplementation::onPvpRatingGainedThrottled() {
+}
+
+/**
+ * This event handler is executed when the player's pvp rating can not decrease anymore from dying to their killer.
+ */
+void PlayerImplementation::onPvpRatingLostThrottled() {
+}
+
+/**
+ * This event handler is executed when a badge is awarded.
+ * \param badge The badge that was awareded.
+ */
+void PlayerImplementation::onBadgeAwarded(Badge* badge) {
+
+}
+
+/**
+ * This event handler is executed when a badge is revoked.
+ * \param badge The badge that was revoked.
+ */
+void PlayerImplementation::onBadgeRevoked(Badge* badge) {
+
+}
+
+/**
+ * This event handler is executed when experience is gained.
+ * \param xptype String value corresponding with the client side .tre files indicating why type of xp was gained.
+ * \param amount How much experience was gained.
+ */
+void PlayerImplementation::onExperienceGained(const String& xptype, uint32 amount) {
+
+}
+
+/**
+ * This event handler is executed when experience is lost.
+ * \param xptype String value corresponding with the client side .tre files indicating why type of xp was lost.
+ * \param amount How much experience was lost.
+ */
+void PlayerImplementation::onExperienceLost(const String& xptype, uint32 amount) {
+
+}
+
+/**
+ * This event handler is executed when clone data has been stored.
+ */
+void PlayerImplementation::onCloneDataStored() {
+	sendSystemMessage("base_player", "clone_success"); //Clone location successfully updated.
+}
+
+void PlayerImplementation::onCloneDataAlreadyStored() {
+	sendSystemMessage("You have already stored your clone data at this location.");
+}
+
+/// This event should follow after successfully cloning.
+void PlayerImplementation::onCloneSuccessful() {
+
+
+}
+
+/// This event should follow after failing to clone.
+void PlayerImplementation::onCloneFailure() {
+
+}
+
+/**
+ * This event handler takes place after makePaymentTo.
+ * \param target The target of the payment. If null, then money is simply lost.
+ * \param cost The amount of the payment.
+ */
+void PlayerImplementation::onMakePaymentTo(SceneObject* target, uint32 cost) {
+	StfParameter* params = new StfParameter();
+	params->addDI(cost);
+
+	if (target != NULL) {
+		if (target->isPlayer() || target->isNonPlayerCreature()) {
+			params->addTT(target->getObjectID());
+			sendSystemMessage("base_player", "prose_pay_success", params); //You successfully make a payment of %DI credits to %TO.
+		} else {
+			params->addTO(target->getObjectID());
+			sendSystemMessage("base_player", "prose_pay_acct_success", params); //You successfull make a payment of %DI credits to %TT.
+		}
+	} else {
+		sendSystemMessage("base_player", "prose_pay_success_no_target", params); //You successfully make a payment of %DI credits.
+	}
+
+	delete params;
+
+}
+
+void PlayerImplementation::onMakeBankPaymentTo(SceneObject* target, uint32 cost) {
+
+}
+
+void PlayerImplementation::onInsufficientFundsAvailable(SceneObject* target, uint32 amount) {
+	StfParameter* params = new StfParameter();
+	params->addDI(amount);
+
+	if (target != NULL) {
+		params->addTT(target->getObjectID());
+		sendSystemMessage("error_message", "prose_pay_nsf", params); //You have insufficient funds to pay %DI credits to %TT.
+	} else {
+		//TODO: Add in string for no object.
+	}
+
+	delete params;
+}
+
+void PlayerImplementation::onInsureItemSuccess(uint64 itemID) {
+	StfParameter* params = new StfParameter();
+	params->addTT(itemID);
+	sendSystemMessage("base_player", "prose_insure_success", params); //You successfully insure your %TT.
+	delete params;
+}
+
+void PlayerImplementation::onInsureItemFailure(uint64 itemID) {
+	StfParameter* params = new StfParameter();
+	params->addTT(itemID);
+	sendSystemMessage("error_message", "prose_insure_fail", params); //An attempt to insure your %TT has failed. Most likely, this is due to lack of funds.
+	delete params;
+}
+
+void PlayerImplementation::onInsureItemInsufficientFunds(uint64 itemID) {
+	StfParameter* params = new StfParameter();
+	params->addTT(itemID);
+	sendSystemMessage("error_message", "prose_nsf_insure", params); //You have insufficient funds to insure your %TT.
+	delete params;
+}
+
+void PlayerImplementation::onInsureItemInvalidTerminal() {
+	sendSystemMessage("Insurance failed because the insurance terminal was invalid.");
+}
+
+void PlayerImplementation::onInsureAllItemsComplete() {
+	sendSystemMessage("base_player", "insure_success");
+}
+
+void PlayerImplementation::onNoValidInsurables() {
+	sendSystemMessage("error_message", "no_uninsured_insurables"); //You do not posses any items that can be insured at this time.
+}
+
+void PlayerImplementation::onBankTipSuccessful() {
+	sendSystemMessage("base_player", "wire_pass_self"); //Your /tip transaction was successfully completed.
+}

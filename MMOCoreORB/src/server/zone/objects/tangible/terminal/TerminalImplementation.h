@@ -57,18 +57,21 @@ which carries forward this exception.
 
 class TerminalImplementation : public TerminalServant {
 protected:
-	int terminalType;
+	uint8 terminalType;
 
 
 public:
-	static const int TRAVEL = 1;
-	static const int GUILD = 2;
-	static const int VENDOR = 3;
-	static const int MISSION = 4;
-	static const int BAZAAR = 50;
+	//Terminal Types
+	static const uint8 TRAVEL = 1;
+	static const uint8 GUILD = 2;
+	static const uint8 VENDOR = 3;
+	static const uint8 MISSION = 4;
+	static const uint8 CLONING = 5;
+	static const uint8 INSURANCE = 6;
+	static const uint8 BAZAAR = 50;
 
 public:
-	TerminalImplementation(uint32 objCRC, uint64 objid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType)
+	TerminalImplementation(uint32 objCRC, uint64 objid, const UnicodeString& n, const String& tempn, float x, float z, float y, uint8 TerminalType)
 			: TerminalServant(objid, TERMINAL) {
 
 		objectCRC = objCRC;
@@ -87,7 +90,7 @@ public:
 		return 0;
 	}
 
-	inline int getTerminalType() {
+	inline uint8 getTerminalType() {
 		return terminalType;
 	}
 
@@ -101,6 +104,18 @@ public:
 
 	inline bool isMissionTerminal() {
 		return terminalType == MISSION;
+	}
+
+	inline bool isCloningTerminal() {
+		return terminalType == CLONING;
+	}
+
+	inline bool isInsuranceTerminal() {
+		return terminalType == INSURANCE;
+	}
+
+	inline bool isBazaarTerminal() {
+		return terminalType == BAZAAR;
 	}
 
 	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr) {

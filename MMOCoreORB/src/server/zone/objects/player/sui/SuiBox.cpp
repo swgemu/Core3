@@ -96,12 +96,25 @@ void SuiBox::setUsingObjectID(unsigned long long oid) {
 		((SuiBoxImplementation*) _impl)->setUsingObjectID(oid);
 }
 
-bool SuiBox::isInputBox() {
+void SuiBox::setIntValue(int value) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 12);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((SuiBoxImplementation*) _impl)->setIntValue(value);
+}
+
+bool SuiBox::isInputBox() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -113,7 +126,7 @@ bool SuiBox::isListBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -125,7 +138,7 @@ bool SuiBox::isMessageBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -137,7 +150,7 @@ bool SuiBox::isTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -149,7 +162,7 @@ bool SuiBox::isColorPicker() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -161,7 +174,7 @@ bool SuiBox::isBankTransferBox() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -173,7 +186,7 @@ unsigned long long SuiBox::getBoxID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -185,7 +198,7 @@ unsigned long long SuiBox::getWindowType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
@@ -197,11 +210,23 @@ unsigned long long SuiBox::getUsingObjectID() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithUnsignedLongReturn();
 	} else
 		return ((SuiBoxImplementation*) _impl)->getUsingObjectID();
+}
+
+int SuiBox::getIntValue() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((SuiBoxImplementation*) _impl)->getIntValue();
 }
 
 Player* SuiBox::getPlayer() {
@@ -209,7 +234,7 @@ Player* SuiBox::getPlayer() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 23);
 
 		return (Player*) method.executeWithObjectReturn();
 	} else
@@ -246,33 +271,39 @@ Packet* SuiBoxAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		setUsingObjectID(inv->getUnsignedLongParameter());
 		break;
 	case 12:
-		resp->insertBoolean(isInputBox());
+		setIntValue(inv->getSignedIntParameter());
 		break;
 	case 13:
-		resp->insertBoolean(isListBox());
+		resp->insertBoolean(isInputBox());
 		break;
 	case 14:
-		resp->insertBoolean(isMessageBox());
+		resp->insertBoolean(isListBox());
 		break;
 	case 15:
-		resp->insertBoolean(isTransferBox());
+		resp->insertBoolean(isMessageBox());
 		break;
 	case 16:
-		resp->insertBoolean(isColorPicker());
+		resp->insertBoolean(isTransferBox());
 		break;
 	case 17:
-		resp->insertBoolean(isBankTransferBox());
+		resp->insertBoolean(isColorPicker());
 		break;
 	case 18:
-		resp->insertLong(getBoxID());
+		resp->insertBoolean(isBankTransferBox());
 		break;
 	case 19:
-		resp->insertLong(getWindowType());
+		resp->insertLong(getBoxID());
 		break;
 	case 20:
-		resp->insertLong(getUsingObjectID());
+		resp->insertLong(getWindowType());
 		break;
 	case 21:
+		resp->insertLong(getUsingObjectID());
+		break;
+	case 22:
+		resp->insertSignedInt(getIntValue());
+		break;
+	case 23:
 		resp->insertLong(getPlayer()->_getObjectID());
 		break;
 	default:
@@ -304,6 +335,10 @@ void SuiBoxAdapter::setBackButton(bool value) {
 
 void SuiBoxAdapter::setUsingObjectID(unsigned long long oid) {
 	return ((SuiBoxImplementation*) impl)->setUsingObjectID(oid);
+}
+
+void SuiBoxAdapter::setIntValue(int value) {
+	return ((SuiBoxImplementation*) impl)->setIntValue(value);
 }
 
 bool SuiBoxAdapter::isInputBox() {
@@ -340,6 +375,10 @@ unsigned long long SuiBoxAdapter::getWindowType() {
 
 unsigned long long SuiBoxAdapter::getUsingObjectID() {
 	return ((SuiBoxImplementation*) impl)->getUsingObjectID();
+}
+
+int SuiBoxAdapter::getIntValue() {
+	return ((SuiBoxImplementation*) impl)->getIntValue();
 }
 
 Player* SuiBoxAdapter::getPlayer() {

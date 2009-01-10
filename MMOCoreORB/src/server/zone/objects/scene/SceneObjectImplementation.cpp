@@ -443,7 +443,7 @@ void SceneObjectImplementation::removeFromZone(bool doLock) {
 			return;
 
 		//System::out << "SceneObjectImplementation::removeFromZone(bool doLock) After Zone/QuadTree check" << endl;
-		//deagro();
+		//deaggro();
 
 		zone->lock(doLock);
 
@@ -565,13 +565,17 @@ void SceneObjectImplementation::addDamageDone(CreatureObject* creature, int dama
 }
 
 void SceneObjectImplementation::dropDamageDone(CreatureObject* creature) {
-	int damage = playerDamageList.get(creature)->getTotalDamage();
-	DamageDone *dmg = playerDamageList.get(creature);
+	DamageDone* damageDone = playerDamageList.get(creature);
+
+	if (damageDone == NULL || !creature->isCreature())
+		return;
+
+	int damage = damageDone->getTotalDamage();
 
 	if (playerDamageList.drop(creature))
 		creature->release();
 
-	delete dmg;
+	delete damageDone;
 
 	if (creature->isInAGroup() && creature->isPlayer()) {
 		Player *player = (Player*)creature;
@@ -699,3 +703,166 @@ void SceneObjectImplementation::cleanupDamageDone() {
 	groupDamageList.removeAll();
 }
 
+
+
+//Event Handlers
+
+void SceneObjectImplementation::onIncapacitateTarget(CreatureObject* victim) {
+
+}
+
+void SceneObjectImplementation::onInflictDamage(AttackableObject* victim, uint32 damage) {
+
+}
+
+void SceneObjectImplementation::onInflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage) {
+
+}
+
+/**
+ * This event handler is called after performing a deathblow on a player.
+ * \param victim Victim is the target of the deathblow. Only players can be deathblown. NPC's are just killed.
+ */
+void SceneObjectImplementation::onDeathblow(Player* victim) {
+}
+
+
+/**
+ * This event handler is called after killing a creature.
+ * \param victim The victim of the kill.
+ */
+void SceneObjectImplementation::onKill(CreatureObject* victim) {
+	//Award any faction points
+	//Gain experienced
+	clearCombatState(true);
+}
+
+/**
+ * This event handler is called following receiving a payment from a creature.
+ * \param sender The creature whom sent the payment.
+ * \param amount The amount of the payment.
+ */
+void SceneObjectImplementation::onReceivePaymentFrom(CreatureObject* sender, uint32 amount) {
+
+}
+
+
+
+//Actions
+/**
+ * Action performed to inflict damage on an attackable object.
+ * \param victim An attackable object that is to receive the damage.
+ * \parma amount How much damage to inflict.
+ */
+bool SceneObjectImplementation::inflictDamage(AttackableObject* victim, uint32 damage) {
+	return false;
+}
+
+/**
+ * Action performed to inflict damage on a creature.
+ * \param victim A creature that is to receive the damage.
+ * \param attribute The attribute to inflict damage to.
+ * \parma amount How much damage to inflict.
+ */
+bool SceneObjectImplementation::inflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage) {
+	if (!victim->isAttackable())
+		return false;
+
+	int32 oldValue = victim->getAttribute(attribute);
+	int32 newValue = oldValue - damage;
+
+	victim->setAttributeBar(attribute, newValue);
+
+	if (newValue <= 0) {
+		if (victim->isPlayer() || victim->isPet())
+			incapacitate(victim);
+		else
+			kill(victim);
+	}
+
+	return true;
+}
+
+/**
+ * Action performed when incapacitating a creature.
+ * \param victim Creature that is being incapacitated.
+ */
+void SceneObjectImplementation::incapacitate(CreatureObject* victim) {
+	if (!victim->isAttackable())
+		return;
+
+	onIncapacitateTarget(victim);
+
+	if (victim->isPlayer()) {
+		Player* playerVictim = (Player*) victim;
+		playerVictim->onIncapacitated(_this);
+	} else {
+		victim->onIncapacitated(_this);
+	}
+}
+
+/**
+ * This action is performed when a creature deathblows a player, as opposed to a player deathblowing a player. (PlayerImplementation::deathblow() handles player to player deathblow)
+ * \param victim Victim is the target of the deathblow. Only players can be deathblown. NPC's are just killed.
+ */
+void SceneObjectImplementation::deathblow(Player* victim) {
+	onDeathblow(victim);
+	try {
+		unlock();
+		victim->onReceiveDeathblow(_this);
+		wlock(victim);
+	} catch (...) {
+		System::out << "Unhandled exception in SceneObjectImplementation::deathblow" << endl;
+		wlock(victim);
+	}
+}
+
+/**
+ * Action that is performed when a creature, or player, kills a creature. Creature's can't be deathblown.
+ * \param victim Victim is the target of the kill.
+ */
+void SceneObjectImplementation::kill(CreatureObject* victim) {
+	onKill(victim);
+	victim->onKilled(_this);
+}
+
+/**
+ * Action that is performed when a payment has been received from a creature.
+ * \param sender The creature whom sent the payment.
+ * \param amount The amount the payment was for.
+ */
+void SceneObjectImplementation::receivePaymentFrom(CreatureObject* sender, uint32 amount) {
+	onReceivePaymentFrom(sender, amount);
+}
+
+/**
+ * Warps the object to the new location within the cell.
+ * \param x The x coordinate to warp to.
+ * \param y The y coordinate to warp to.
+ * \param parentID The ID of the new cell to warp to. 0 = outside.
+ */
+void SceneObjectImplementation::warpTo(float x, float z, float y, uint64 parentID) {
+	if (zone == NULL)
+		return;
+
+	removeFromZone();
+
+	parent = NULL;
+
+
+
+	if (parentID != 0) {
+		setPosition(x, z, y);
+
+		SceneObject* newParent = zone->lookupObject(parentID);
+
+		if (newParent != NULL && newParent->isCell())
+			parent = newParent;
+	} else {
+		setPosition(x, zone->getHeight(x, y), y);
+	}
+
+	//setIgnoreMovementTests(10);
+
+	insertToZone(zone);
+}

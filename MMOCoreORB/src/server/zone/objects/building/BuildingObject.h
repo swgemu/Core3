@@ -25,7 +25,7 @@ class Zone;
 
 class BuildingObject : public SceneObject {
 public:
-	BuildingObject(unsigned long long oid, bool staticBuilding);
+	BuildingObject(unsigned long long oid, bool staticBuilding, int bType = 1);
 
 	void addCell(CellObject* cell);
 
@@ -92,6 +92,8 @@ public:
 	bool getStorageLoaded();
 
 	void setStorageLoaded(bool setter);
+
+	bool isCloningFacility();
 
 protected:
 	BuildingObject(DummyConstructorParameter* param);
@@ -181,6 +183,8 @@ public:
 	bool getStorageLoaded();
 
 	void setStorageLoaded(bool setter);
+
+	bool isCloningFacility();
 
 protected:
 	String _param0_setAttributes__String_;

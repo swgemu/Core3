@@ -27,6 +27,8 @@ class Weapon;
 
 class CreatureObject;
 
+class AttackableObject;
+
 class BuildingObject;
 
 class AttackTargetSkill;
@@ -242,6 +244,32 @@ public:
 	void disseminateXp(int levels);
 
 	void cleanupDamageDone();
+
+	void onIncapacitateTarget(CreatureObject* victim);
+
+	void onInflictDamage(AttackableObject* victim, unsigned int damage);
+
+	void onInflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
+
+	void onKill(CreatureObject* victim);
+
+	void onDeathblow(Player* victim);
+
+	void onReceivePaymentFrom(CreatureObject* sender, unsigned int amount);
+
+	bool inflictDamage(AttackableObject* victim, unsigned int damage);
+
+	bool inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
+
+	void incapacitate(CreatureObject* victim);
+
+	void kill(CreatureObject* victim);
+
+	void deathblow(Player* victim);
+
+	void receivePaymentFrom(CreatureObject* sender, unsigned int amount);
+
+	void warpTo(float x, float z, float y, unsigned long long parentID = 0);
 
 protected:
 	SceneObject(DummyConstructorParameter* param);
@@ -464,6 +492,32 @@ public:
 	void disseminateXp(int levels);
 
 	void cleanupDamageDone();
+
+	void onIncapacitateTarget(CreatureObject* victim);
+
+	void onInflictDamage(AttackableObject* victim, unsigned int damage);
+
+	void onInflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
+
+	void onKill(CreatureObject* victim);
+
+	void onDeathblow(Player* victim);
+
+	void onReceivePaymentFrom(CreatureObject* sender, unsigned int amount);
+
+	bool inflictDamage(AttackableObject* victim, unsigned int damage);
+
+	bool inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
+
+	void incapacitate(CreatureObject* victim);
+
+	void kill(CreatureObject* victim);
+
+	void deathblow(Player* victim);
+
+	void receivePaymentFrom(CreatureObject* sender, unsigned int amount);
+
+	void warpTo(float x, float z, float y, unsigned long long parentID);
 
 protected:
 	String _param0_info__String_bool_;

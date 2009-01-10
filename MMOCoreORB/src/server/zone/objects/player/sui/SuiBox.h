@@ -25,6 +25,8 @@ public:
 
 	void setUsingObjectID(unsigned long long oid);
 
+	void setIntValue(int value);
+
 	bool isInputBox();
 
 	bool isListBox();
@@ -42,6 +44,8 @@ public:
 	unsigned long long getWindowType();
 
 	unsigned long long getUsingObjectID();
+
+	int getIntValue();
 
 	Player* getPlayer();
 
@@ -73,6 +77,8 @@ public:
 
 	void setUsingObjectID(unsigned long long oid);
 
+	void setIntValue(int value);
+
 	bool isInputBox();
 
 	bool isListBox();
@@ -90,6 +96,8 @@ public:
 	unsigned long long getWindowType();
 
 	unsigned long long getUsingObjectID();
+
+	int getIntValue();
 
 	Player* getPlayer();
 

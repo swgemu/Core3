@@ -49,16 +49,16 @@ which carries forward this exception.
 
 class CreatureAttribute {
 public:
-	static const uint8 UNKNOWN = 0;
-	static const uint8 HEALTH = 1;
-	static const uint8 STRENGTH = 2;
-	static const uint8 CONSTITUTION = 3;
-	static const uint8 ACTION = 4;
-	static const uint8 QUICKNESS = 5;
-	static const uint8 STAMINA = 6;
-	static const uint8 MIND = 7;
-	static const uint8 FOCUS = 8;
-	static const uint8 WILLPOWER = 9;
+	static const uint8 HEALTH = 0;
+	static const uint8 STRENGTH = 1;
+	static const uint8 CONSTITUTION = 2;
+	static const uint8 ACTION = 3;
+	static const uint8 QUICKNESS = 4;
+	static const uint8 STAMINA = 5;
+	static const uint8 MIND = 6;
+	static const uint8 FOCUS = 7;
+	static const uint8 WILLPOWER = 8;
+	static const uint8 UNKNOWN = 9;
 
 	static bool isHAM(uint8 attribute) {
 		return (attribute == HEALTH || attribute == ACTION || attribute == MIND);
@@ -67,9 +67,7 @@ public:
 	static uint8 getAttribute(String attribute) {
 		attribute = attribute.toLowerCase();
 
-		if (attribute == "health")
-			return HEALTH;
-		else if (attribute == "action")
+		if (attribute == "action")
 			return ACTION;
 		else if (attribute == "mind")
 			return MIND;
@@ -86,16 +84,14 @@ public:
 		else if (attribute == "willpower")
 			return WILLPOWER;
 		else
-			return UNKNOWN;
+			return HEALTH;
+
 	}
 
 	static String getName(const uint8 attribute, bool initialCap = false) {
 		String name = "";
 
 		switch (attribute) {
-		case HEALTH:
-			name = "health";
-			break;
 		case ACTION:
 			name = "action";
 			break;
@@ -121,7 +117,8 @@ public:
 			name = "willpower";
 			break;
 		default:
-			name = "unknown";
+		case HEALTH:
+			name = "health";
 			break;
 		}
 

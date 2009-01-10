@@ -75,7 +75,7 @@ public:
 
 	bool attack(CreatureObject* target);
 
-	void deagro();
+	void deaggro();
 
 	void activateRecovery();
 
@@ -149,6 +149,8 @@ public:
 
 	void setFPValue(unsigned int value);
 
+	void onIncapacitateTarget(CreatureObject* victim);
+
 protected:
 	Creature(DummyConstructorParameter* param);
 
@@ -216,7 +218,7 @@ public:
 
 	bool attack(CreatureObject* target);
 
-	void deagro();
+	void deaggro();
 
 	void activateRecovery();
 
@@ -287,6 +289,8 @@ public:
 	unsigned int getFPValue();
 
 	void setFPValue(unsigned int value);
+
+	void onIncapacitateTarget(CreatureObject* victim);
 
 protected:
 	String _param0_setObjectFileName__String_;

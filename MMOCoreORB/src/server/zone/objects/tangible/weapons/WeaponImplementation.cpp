@@ -348,7 +348,8 @@ void WeaponImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespon
 		if (!isSliced() && player->getSlicingAbility() >= 2)
 			omr->addRadialItem(0, 69, 3, "Slice");
 
-		omr->addRadialItem(0, 70, 3, "Repair");
+		if (getConditionDamage() > 0)
+			omr->addRadialItem(0, 70, 3, "Repair");
 
 		if (hasPowerup())
 			omr->addRadialItem(0, 71, 3, "Remove Powerup");
@@ -570,33 +571,31 @@ void WeaponImplementation::generateDotAttributes(AttributeListMessage* alm) {
 	}
 }
 
-void WeaponImplementation::decayWeapon(int decayRate) {
+void WeaponImplementation::decay(float decayRate) {
+	TangibleObjectImplementation::decay(decayRate);
 
-	setConditionDamage(conditionDamage + (maxCondition * decayRate / 100));
+	if (getMaxCondition() > 0) {
+		float ratio = ((float) getConditionDamage()) / ((float) getMaxCondition());
 
-	if (conditionDamage > maxCondition)
-		setConditionDamage(maxCondition);
+		if (ratio > 0.99f) {
+			onBroken();
+		} else if (ratio > 0.75f) {
+			setMaxDamage(getMaxDamage() * (1 - decayRate));
+			setMinDamage(getMinDamage() * (1 - decayRate));
 
-	if (maxCondition != 0) {
-		float ratio = ((float) conditionDamage) / ((float) maxCondition);
-
-		if (ratio > 0.99 || decayRate == 100 || maxCondition < 0) {
-			setMaxCondition(1);
-			setConditionDamage(1);
-			setMaxDamage(1);
-			setMinDamage(1);
-		} else if (ratio > 0.75) {
-			setMaxDamage(maxDamage - (maxDamage * decayRate / 100));
-			setMinDamage(minDamage - (minDamage * decayRate / 100));
-
-			setAttackSpeed(attackSpeed + (attackSpeed * decayRate / 100));
+			setAttackSpeed(getAttackSpeed() * (1 + decayRate));
 		}
 	}
-
-	updated = true;
-
 }
 
+void WeaponImplementation::onBroken() {
+	setMaxCondition(1);
+	setConditionDamage(1);
+	setMaxDamage(1);
+	setMinDamage(1);
+}
+
+/*
 void WeaponImplementation::repairWeapon(Player* player) {
 	int roll = System::random(100);
 
@@ -638,7 +637,7 @@ void WeaponImplementation::repairWeapon(Player* player) {
 	dtano3->updateMaxCondition();
 	dtano3->close();
 	player->broadcastMessage(dtano3);
-}
+} */
 
 void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
@@ -679,7 +678,7 @@ void WeaponImplementation::setWeaponStats(int modifier){
 	} else if (playerRoll > 60000) {
 		modifier = modifier + 100;
 		luck = luck + 120;
-		setMaxDamage(maxDamage * 1.5);		
+		setMaxDamage(maxDamage * 1.5);
 
 		StringBuffer itemText;
 		itemText << "\\#ffff00" << name.toString() << " (Exceptional)";
@@ -791,15 +790,15 @@ void WeaponImplementation::setWeaponStats(int modifier){
 
 	if (dot1Strength > 225) {
 		setDot1Strength(100 + System::random(200));
-	
+
 	} else if (dot1Strength > 150) {
 		setDot1Strength(100 + System::random(100));
-	
+
 	} else if (dot1Strength > 75) {
-		setDot1Strength(50 + System::random(75));	
-	
+		setDot1Strength(50 + System::random(75));
+
 	} else { setDot1Strength(1 + System::random(50));
-	
+
 	}
 
 	if (minDamage > maxDamage)

@@ -8,6 +8,7 @@ import "../../objects/building/BuildingObject";
 import "../../objects/installation/InstallationObject";
 import "../../objects/building/cell/CellObject";
 import "../../objects/tangible/deed/DeedObject";
+import "../../objects/building/cloningfacility/CloningFacility";
 
 interface StructureManager {
 	StructureManager(Zone zone, ZoneProcessServerImplementation processor) {
@@ -22,6 +23,9 @@ interface StructureManager {
 	
 	CellObject getCell(unsigned long id);
 	BuildingObject getBuilding(unsigned long id);
+	
+	CloningFacility getCloningFacility(unsigned long oid);
+	CloningFacility getClosestCloningFacility(Player player);
 
 	void spawnTempStructure(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 	void spawnInstallation(Player player, DeedObject deed, float x, float z, float y, float oX, float oZ, float oY, float oW);

@@ -82,8 +82,6 @@ interface TangibleObject implements SceneObject {
 	void repairItem(Player player);
 	
 	void setObjectName(Player player);
-	
-	void decay(int decayRate);
 
 	void parseItemAttributes();
 	
@@ -112,6 +110,7 @@ interface TangibleObject implements SceneObject {
 	boolean isResource();
 	boolean isTicket();
 	boolean isTicketCollector();
+	boolean isTerminal();
 	boolean isSurveyTool();
 	boolean isPharmaceutical();
 
@@ -135,6 +134,10 @@ interface TangibleObject implements SceneObject {
 	boolean isWeaponPowerup();
 	boolean isCamoKit();
 	boolean isLoot();
+	
+	boolean isInsured();
+	boolean isInsurable();
+	boolean isDecayable();
 
 	void setCraftersName(String n);
 	void setCraftedSerial(String s);
@@ -147,6 +150,9 @@ interface TangibleObject implements SceneObject {
 
 	void setPlayerUseMask(unsigned int mask);
 	unsigned int getPlayerUseMask();
+	
+	void setOptionsBitmask(unsigned int mask);
+	unsigned int getOptionsBitmask();
 
 	int getObjectSubType();
 
@@ -193,4 +199,14 @@ interface TangibleObject implements SceneObject {
 	void setObjectCount(const int count);
 	
 	void setMisoAsocKey(const String tma);
+	
+	//Sending of Messages
+	void updateOptionsBitmask(Player player);
+	void updateInsurance(Player player, boolean insure);
+
+	//Event Handlers
+	void onBroken();
+
+	//Actions
+	void decay(float decayRate);
 }

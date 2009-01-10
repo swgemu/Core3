@@ -90,6 +90,11 @@ import "badges/Badges";
 
 import "../area/ActiveArea";
 
+import "../tangible/terminal/cloning/CloningTerminal";
+import "../building/cloningfacility/CloningFacility";
+
+import "../tangible/terminal/cloning/InsuranceTerminal";
+
 interface Player implements CreatureObject {
 	Player() {
 		super(unsigned long oid);
@@ -214,15 +219,7 @@ interface Player implements CreatureObject {
 	void doPeace();
 
 	//Incapacitation, Death, Cloning
-	void kill();
-	void deathblow(Player player);
 	void resurrect();
-	void handleDeath();
-
-	void throttlePvpRating(Player player);
-
-	void doClone();
-	void activateClone();
 
 	void doRecovery();
 
@@ -235,9 +232,8 @@ interface Player implements CreatureObject {
 	String getConsentEntry(int index);
 	Badges getBadges();
 
-	void sendConsentBox();
-
 	void addBuff(unsigned int buffcrc, float time);
+	void clearBuffs(boolean doUpdatePlayer = true);
 
 	void lootCorpse(boolean lootAll = false);
 	void lootObject(Creature creature, SceneObject object);
@@ -284,6 +280,7 @@ interface Player implements CreatureObject {
 	void createBaseStats();
 
 	void decayInventory();
+	void resetArmorEncumbrance();
 
 	boolean hasFullInventory();
 
@@ -521,9 +518,6 @@ interface Player implements CreatureObject {
 	int getPvpRating();
 	void setPvpRating(int value);
 
-	void increasePvpRating(int value);
-	void decreasePvpRating(int value);
-
 	void getPlayersNearYou();
 
 	int getRegionID();
@@ -720,4 +714,71 @@ interface Player implements CreatureObject {
 	
 	Armor getPlayerArmor (int location);
 	
+	//Sending of Messages
+	void sendIncapacitationTimer(unsigned int seconds, boolean doRecovery = true);
+	void sendBankTipConfirm(Player recipient, unsigned int amount);
+	void sendConsentList();
+	void sendActivateCloneRequest();
+	void sendCloningDataStorageConfirm(CloningTerminal terminal);
+	void sendItemInsuranceMenu(InsuranceTerminal terminal);
+	void sendItemInsureAllConfirm(InsuranceTerminal terminal);
+	
+	//Event Handlers
+	void onIncapacitateTarget(CreatureObject victim);
+	void onIncapacitated(SceneObject attacker);
+	void onKilled(SceneObject killer);
+	void onDeath();
+	void onDeathblow(Player victim);
+	void onReceiveDeathblow(SceneObject killer);
+	void onPvpRatingGained(Player victim);
+	void onPvpRatingLost(Player killer);
+	void onPvpRatingGainedThrottled();
+	void onPvpRatingLostThrottled();
+	void onExperienceGained(const String xptype, unsigned int amount);
+	void onExperienceLost(const String xptype, unsigned int amount);
+	void onCloneDataStored();
+	void onCloneDataAlreadyStored();
+	void onCloneSuccessful();
+	void onCloneFailure();
+	void onMakePaymentTo(SceneObject target, unsigned int cost);
+	void onMakeBankPaymentTo(SceneObject target, unsigned int cost);
+	void onInsufficientFundsAvailable(SceneObject target, unsigned int amount);
+	void onInsureItemSuccess(unsigned int itemID);
+	void onInsureItemFailure(unsigned int itemID);
+	void onInsureItemInsufficientFunds(unsigned int itemID);
+	void onInsureItemInvalidTerminal();
+	void onInsureAllItemsComplete();
+	void onNoValidInsurables();
+	void onBankTipSuccessful();
+	
+	//Actions
+	void incapacitateSelf();
+	void die();
+	void clone();
+	void clone(unsigned long terminalID);
+	void clone(CloningFacility cloningFacility);
+	void increasePvpRating(Player victim);
+	void increasePvpRating(unsigned int amount);
+	void decreasePvpRating(Player killer);
+	void decreasePvpRating(unsigned int amount);
+	boolean makePaymentTo(SceneObject target, unsigned int cost, boolean notifyPlayer = true);
+	boolean makeBankPaymentTo(SceneObject target, unsigned int cost, boolean notifyPlayer = true);
+	void insureItem(InsuranceTerminal terminal, unsigned long itemID, boolean notifySuccess = true);
+	void insureAllItems(unsigned long terminalID);
+	boolean bankTipStart(Player recipient, unsigned int amount);
+	void bankTipFinish(Player recipient, unsigned int amount);
+	boolean cashTip(Player recipient, unsigned int amount);
+	
+	
+	//Setters
+	void setCloningFacility(CloningFacility facility);
+	
+	//Getters
+	CloningFacility getCloningFacility();
+	
+	//Calculations
+	unsigned char calculateIncapacitationTimer();
+	
+	//Sui
+	void closeSuiWindowType(unsigned int windowType);
 }

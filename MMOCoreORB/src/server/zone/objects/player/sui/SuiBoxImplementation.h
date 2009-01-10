@@ -71,6 +71,8 @@ protected:
 
 	uint32 windowType;
 
+	int32 integerValue;
+
 public:
 	const static int INPUTBOX = 0;
 	const static int LISTBOX = 1;
@@ -78,6 +80,8 @@ public:
 	const static int TRANSFERBOX = 3;
 	const static int COLORPICKER = 4;
 	const static int BANKTRANSFERBOX = 5;
+
+	const static int BANKTIPCONFIRMBOX = 10;
 
 public:
 	SuiBoxImplementation(Player* play, uint32 windowtype, uint32 boxtype);
@@ -109,6 +113,10 @@ public:
 
 	inline void setUsingObjectID(uint64 oid) {
 		usingObjectID = oid;
+	}
+
+	inline void setIntValue(int32 value) {
+		integerValue = value;
 	}
 
 	inline bool isInputBox() {
@@ -145,6 +153,10 @@ public:
 
 	inline uint64 getUsingObjectID() {
 		return usingObjectID;
+	}
+
+	inline int32 getIntValue() {
+		return integerValue;
 	}
 
 	inline Player* getPlayer() {

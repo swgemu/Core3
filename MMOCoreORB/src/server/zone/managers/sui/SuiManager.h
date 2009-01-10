@@ -95,6 +95,7 @@ public:
 	void handleFreeResource(uint32 boxID, Player* player, uint32 cancel, int index);
 	void handleGiveFreeResource(uint32 boxID, Player* player, uint32 cancel, int index);
 
+	void handleCloneConfirm(uint32 boxID, Player* player, uint32 cancel, int value);
 	void handleCloneRequest(uint32 boxID, Player* player, uint32 cancel, int value);
 	void handleConsentBox(uint32 boxID, Player* player, uint32 cancel, int value);
 
@@ -102,6 +103,11 @@ public:
 
 	void handleTeachPlayer(uint32 boxID, Player* player, int value, uint32 cancel);
 	void handleTeachSkill(uint32 boxID, Player* player, uint32 cancel);
+
+	void handleInsuranceMenu(uint32 boxID, Player* player, uint32 cancel, int index);
+	void handleInsureAllConfirm(uint32 boxID, Player* player, uint32 cancel);
+
+	void handleBankTipConfirm(uint32 boxID, Player* player, uint32 cancel);
 
 };
 

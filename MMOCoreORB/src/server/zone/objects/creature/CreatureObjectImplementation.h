@@ -244,54 +244,21 @@ protected:
 	uint32 hamUpdateCounter;
 	uint32 hamMaxUpdateCounter;
 	uint32 hamBaseUpdateCounter;
-	uint32 hamEncumbUpdateCounter;
+	uint32 encumbUpdateCounter;
 	uint32 woundsUpdateCounter;
 
-	//CREO1 HAM variables
-	uint32 baseHealth;
-	uint32 baseStrength;
-	uint32 baseConstitution;
-	uint32 baseAction;
-	uint32 baseQuickness;
-	uint32 baseStamina;
-	uint32 baseMind;
-	uint32 baseFocus;
-	uint32 baseWillpower;
+	/**
+	 * CREO1 HAM Values
+	 * \param index Index is equal to definition in CreatureAttribute.
+	 */
+	int32 attributes[9];
+	int32 baseAttributes[9];
+	int32 maxAttributes[9];
+	int32 wounds[9];
 
-	uint32 health;
-	uint32 strength;
-	uint32 constitution;
-	uint32 action;
-	uint32 quickness;
-	uint32 stamina;
-	uint32 mind;
-	uint32 focus;
-	uint32 willpower;
-
-	uint32 healthMax;
-	uint32 strengthMax;
-	uint32 constitutionMax;
-	uint32 actionMax;
-	uint32 quicknessMax;
-	uint32 staminaMax;
-	uint32 mindMax;
-	uint32 focusMax;
-	uint32 willpowerMax;
-
-	uint32 healthEncumbrance;
-	uint32 actionEncumbrance;
-	uint32 mindEncumbrance;
-
-	// WOUND vars
-	uint32 healthWounds;
-	uint32 strengthWounds;
-	uint32 constitutionWounds;
-	uint32 actionWounds;
-	uint32 quicknessWounds;
-	uint32 staminaWounds;
-	uint32 mindWounds;
-	uint32 focusWounds;
-	uint32 willpowerWounds;
+	int32 healthEncumbrance;
+	int32 actionEncumbrance;
+	int32 mindEncumbrance;
 
 	// AKA Battle Fatigue
 	uint32 shockWounds;
@@ -365,17 +332,6 @@ protected:
 	bool doPlayingMusic;
 	bool doListening;
 	bool doWatching;
-
-	// TODO: Deprecate
-	bool healthBuff;
-	bool strengthBuff;
-	bool constitutionBuff;
-	bool actionBuff;
-	bool quicknessBuff;
-	bool staminaBuff;
-	bool mindBuff;
-	bool focusBuff;
-	bool willpowerBuff;
 
 	uint64 watchID;
 	uint64 listenID;
@@ -453,46 +409,87 @@ public:
 	void updateStates();
 	void clearStates();
 
-	bool takeHealthDamage(int32 damage); // Instead of having to pass negative damage values
-	bool takeActionDamage(int32 damage); // we can now pass damage to a damage function
-	bool takeMindDamage(int32 damage);   // using positive values for damage
+	/// HAM Methods
+	bool changeHAMBars(int32 health, int32 action, int32 mind, bool forcedChange = false);
+	bool changeHAMWounds(int32 health, int32 action, int32 mind, bool forcedChange = false);
+	void changeMaxHAMBars(int32 health, int32 action, int32 mind);
 
-	bool changeHAMBars(int32 hp, int32 ap, int32 mp, bool forcedChange = false);
-	bool changeHAMWounds(int32 hpwnd, int32 apwnd, int32 mpwnd, bool forcedChange = false);
-	void changeMaxHAMBars(int32 hp, int32 ap, int32 mp);
+	bool changeAttributeBar(uint8 attribute, int32 value, bool forcedChange = false);
+	bool changeHealthBar(int32 value, bool forcedChange = false);
+	bool changeStrengthBar(int32 value, bool forcedChange = false);
+	bool changeConstitutionBar(int32 value, bool forcedChange = false);
+	bool changeActionBar(int32 value, bool forcedChange = false);
+	bool changeQuicknessBar(int32 value, bool forcedChange = false);
+	bool changeStaminaBar(int32 value, bool forcedChange = false);
+	bool changeMindBar(int32 value, bool forcedChange = false);
+	bool changeFocusBar(int32 value, bool forcedChange = false);
+	bool changeWillpowerBar(int32 value, bool forcedChange = false);
 
-	// Change Current HAM
-	bool changeHealthBar(int32 hp, bool forcedChange = false);
-	bool changeStrengthBar(int32 st, bool forcedChange = false);
-	bool changeConstitutionBar(int32 cs, bool forcedChange = false);
-	bool changeMindBar(int32 mp, bool forcedChange = false);
-	bool changeFocusBar(int32 fc, bool forcedChange = false);
-	bool changeWillpowerBar(int32 wl, bool forcedChange = false);
-	bool changeActionBar(int32 ap, bool forcedChange = false);
-	bool changeQuicknessBar(int32 qc, bool forcedChange = false);
-	bool changeStaminaBar(int32 st, bool forcedChange = false);
+	void changeMaxAttributeBar(uint8 attribute, int32 value, bool updateClient = true);
+	void changeMaxHealthBar(int32 value, bool updateClient = true);
+	void changeMaxStrengthBar(int32 value, bool updateClient = true);
+	void changeMaxConstitutionBar(int32 value, bool updateClient = true);
+	void changeMaxActionBar(int32 value, bool updateClient = true);
+	void changeMaxQuicknessBar(int32 value, bool updateClient = true);
+	void changeMaxStaminaBar(int32 value, bool updateClient = true);
+	void changeMaxMindBar(int32 value, bool updateClient = true);
+	void changeMaxFocusBar(int32 value, bool updateClient = true);
+	void changeMaxWillpowerBar(int32 value, bool updateClient = true);
 
-	// Change Max HAM
-	void changeMaxHealthBar(int32 hp, bool updateClient = true);
-	void changeMaxStrengthBar(int32 st, bool updateClient = true);
-	void changeMaxConstitutionBar(int32 cs, bool updateClient = true);
-	void changeMaxActionBar(int32 ap, bool updateClient = true);
-	void changeMaxQuicknessBar(int32 qc, bool updateClient = true);
-	void changeMaxStaminaBar(int32 st, bool updateClient = true);
-	void changeMaxMindBar(int32 mp, bool updateClient = true);
-	void changeMaxFocusBar(int32 fc, bool updateClient = true);
-	void changeMaxWillpowerBar(int32 wl, bool updateClient = true);
+	bool changeWoundsBar(uint8 attribute, int32 value, bool forcedChange = false);
+	bool changeHealthWoundsBar(int32 value, bool forcedChange = false);
+	bool changeStrengthWoundsBar(int32 value, bool forcedChange = false);
+	bool changeConstitutionWoundsBar(int32 value, bool forcedChange = false);
+	bool changeActionWoundsBar(int32 value, bool forcedChange = false);
+	bool changeQuicknessWoundsBar(int32 value, bool forcedChange = false);
+	bool changeStaminaWoundsBar(int32 value, bool forcedChange = false);
+	bool changeMindWoundsBar(int32 value, bool forcedChange = false);
+	bool changeFocusWoundsBar(int32 value, bool forcedChange = false);
+	bool changeWillpowerWoundsBar(int32 value, bool forcedChange = false);
 
-	// Change HAM Wounds
-	bool changeHealthWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeStrengthWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeConstitutionWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeActionWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeQuicknessWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeStaminaWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeMindWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeFocusWoundsBar(int32 wounds, bool forcedChange = false);
-	bool changeWillpowerWoundsBar(int32 wounds, bool forcedChange = false);
+	void setAttributeBar(uint8 attribute, int32 value);
+	void setHealthBar(int32 value);
+	void setStrengthBar(int32 value);
+	void setConstitutionBar(int32 value);
+	void setActionBar(int32 value);
+	void setQuicknessBar(int32 value);
+	void setStaminaBar(int32 value);
+	void setMindBar(int32 value);
+	void setFocusBar(int32 value);
+	void setWillpowerBar(int32 value);
+
+	void setBaseAttributeBar(uint8 attribute, int32 value, bool updateClient = true);
+	void setBaseHealthBar(int32 value, bool updateClient = true);
+	void setBaseStrengthBar(int32 value, bool updateClient = true);
+	void setBaseConstitutionBar(int32 value, bool updateClient = true);
+	void setBaseActionBar(int32 value, bool updateClient = true);
+	void setBaseQuicknessBar(int32 value, bool updateClient = true);
+	void setBaseStaminaBar(int32 value, bool updateClient = true);
+	void setBaseMindBar(int32 value, bool updateClient = true);
+	void setBaseFocusBar(int32 value, bool updateClient = true);
+	void setBaseWillpowerBar(int32 value, bool updateClient = true);
+
+	void setMaxAttributeBar(uint8 attribute, int32 value, bool updateClient = true);
+	void setMaxHealthBar(int32 value, bool updateClient = true);
+	void setMaxStrengthBar(int32 value, bool updateClient = true);
+	void setMaxConstitutionBar(int32 value, bool updateClient = true);
+	void setMaxActionBar(int32 value, bool updateClient = true);
+	void setMaxQuicknessBar(int32 value, bool updateClient = true);
+	void setMaxStaminaBar(int32 value, bool updateClient = true);
+	void setMaxMindBar(int32 value, bool updateClient = true);
+	void setMaxFocusBar(int32 value, bool updateClient = true);
+	void setMaxWillpowerBar(int32 value, bool updateClient = true);
+
+	void setWoundsBar(uint8 attribute, int32 value);
+	void setHealthWoundsBar(int32 value);
+	void setStrengthWoundsBar(int32 value);
+	void setConstitutionWoundsBar(int32 value);
+	void setActionWoundsBar(int32 value);
+	void setQuicknessWoundsBar(int32 value);
+	void setStaminaWoundsBar(int32 value);
+	void setMindWoundsBar(int32 value);
+	void setFocusWoundsBar(int32 value);
+	void setWillpowerWoundsBar(int32 value);
 
 	void changeConditionDamage(int amount);
 	void setMaxCondition(int condition);
@@ -501,55 +498,11 @@ public:
 
 	void resetHAMBars(bool doUpdateClient);
 
-	void setMaxHAMBars(uint32 hp, uint32 ap, uint32 mp);
-	void setHAMBars(uint32 hp, uint32 ap, uint32 mp);
-	void setHAMWoundsBars(uint32 hpwnds, uint32 acwnds, uint32 mpwnds);
+	void setMaxHAMBars(int32 health, int32 action, int32 mind);
+	void setHAMBars(int32 health, int32 action, int32 mind);
+	void setHAMWoundsBars(int32 health, int32 action, int32 mind);
 
-	// Set Current HAM
-	void setHealthBar(uint32 hp);
-	void setStrengthBar(uint32 st);
-	void setConstitutionBar(uint32 cst);
-	void setActionBar(uint32 ap);
-	void setQuicknessBar(uint32 qck);
-	void setStaminaBar(uint32 sta);
-	void setMindBar(uint32 mp);
-	void setFocusBar(uint32 fc);
-	void setWillpowerBar(uint32 will);
-
-	// Set Base HAM
-	void setBaseHealthBar(uint32 hp, bool updateClient = true);
-	void setBaseStrengthBar(uint32 st, bool updateClient = true);
-	void setBaseConstitutionBar(uint32 cst, bool updateClient = true);
-	void setBaseActionBar(uint32 ap, bool updateClient = true);
-	void setBaseQuicknessBar(uint32 qck, bool updateClient = true);
-	void setBaseStaminaBar(uint32 sta, bool updateClient = true);
-	void setBaseMindBar(uint32 mp, bool updateClient = true);
-	void setBaseFocusBar(uint32 fc, bool updateClient = true);
-	void setBaseWillpowerBar(uint32 will, bool updateClient = true);
-
-	// Set Max HAM
-	void setMaxHealthBar(uint32 hp, bool updateClient = true);
-	void setMaxStrengthBar(uint32 st, bool updateClient = true);
-	void setMaxConstitutionBar(uint32 cst, bool updateClient = true);
-	void setMaxActionBar(uint32 ap, bool updateClient = true);
-	void setMaxQuicknessBar(uint32 qck, bool updateClient = true);
-	void setMaxStaminaBar(uint32 sta, bool updateClient = true);
-	void setMaxMindBar(uint32 mp, bool updateClient = true);
-	void setMaxFocusBar(uint32 fc, bool updateClient = true);
-	void setMaxWillpowerBar(uint32 will, bool updateClient = true);
-
-	// Set HAM Wounds
-	void setHealthWoundsBar(uint32 wounds);
-	void setStrengthWoundsBar(uint32 wounds);
-	void setConstitutionWoundsBar(uint32 wounds);
-	void setActionWoundsBar(uint32 wounds);
-	void setQuicknessWoundsBar(uint32 wounds);
-	void setStaminaWoundsBar(uint32 wounds);
-	void setMindWoundsBar(uint32 wounds);
-	void setFocusWoundsBar(uint32 wounds);
-	void setWillpowerWoundsBar(uint32 wounds);
-
-	void calculateHAMregen();
+	uint32 calculateAttributeRegenTick(uint8 attribute);
 
 	void doMeditateHeals();
 	void doMeditateWoundHeals();
@@ -570,22 +523,6 @@ public:
 	void setIntimidatedState();
 	void setSnaredState();
 	void setRootedState();
-
-
-	/**
-	 * Event handlers are meant to handle actions that would result in an action. For example:
-	 * If a player deathblows another player, then the following action occurs:
-	 * player1->deathblow(player2);
-	 *
-	 * The deathblow() method handles everything that happens to player1 i.e. pvprating increased, but then player2.onDeathBlow() would handle what happens to player2.
-	 */
-	//TODO: Move towards event handler methods - more to come
-	void onDeath();
-	void onClone();
-	void onBlinded();
-	void onDizzied();
-	void onStunned();
-	void onIntimidated();
 
 
 
@@ -700,6 +637,21 @@ public:
 	void doFireTick();
 
 	virtual void doIncapacitate() {
+	}
+
+	inline uint8 getLowestHAMAttribute() {
+		uint8 attribute = CreatureAttribute::MIND;
+
+		int health = getHealth();
+		int action = getAction();
+		int mind = getMind();
+
+		if (health < action && health < mind)
+			attribute = CreatureAttribute::HEALTH;
+		else if (action < health && action < mind)
+			attribute = CreatureAttribute::ACTION;
+
+		return attribute;
 	}
 
 	inline bool isOnFullHealth() {
@@ -826,6 +778,12 @@ public:
 		return creatureType == "NPC";
 	}
 
+	//Future Creature Handler methods
+
+	inline bool isPet() {
+		return false;
+	}
+
 	// misc methods
 	void updateKnockdownRecovery() {
 		knockdownRecovery.update();
@@ -855,8 +813,6 @@ public:
 	}
 
 	// item methods
-	void equipItem(TangibleObject* item);
-	void unequipItem(TangibleObject* item);
 
 	void addInventoryItem(TangibleObject* item);
 	void addInventoryResource(ResourceContainer* rcno);
@@ -927,8 +883,13 @@ public:
 	void subtractCashCredits(uint32 credits);
 	void subtractBankCredits(uint32 credits);
 
-	bool verifyCashCredits(uint32 creditsToRemove);
-	bool verifyBankCredits(uint32 creditsToRemove);
+	inline bool verifyCashCredits(uint32 creditsToRemove) {
+		return (getCashCredits() >= creditsToRemove);
+	}
+
+	inline bool verifyBankCredits(uint32 creditsToRemove) {
+		return (getBankCredits() >= creditsToRemove);
+	}
 
 	// misc
 	virtual uint64 getNewItemID() {
@@ -1235,222 +1196,247 @@ public:
 
 	void updateBaseStats();
 
-	inline void setBaseHealth(uint32 value) {
-		baseHealth = value;
+
+	inline void setBaseAttribute(uint8 attribute, int32 value) {
+		baseAttributes[attribute] = value;
 	}
 
-	inline void setBaseStrength(uint32 value) {
-		baseStrength = value;
+	inline void setBaseHealth(int32 value) {
+		baseAttributes[CreatureAttribute::HEALTH] = value;
 	}
 
-	inline void setBaseConstitution(uint32 value) {
-		baseConstitution = value;
+	inline void setBaseStrength(int32 value) {
+		baseAttributes[CreatureAttribute::STRENGTH] = value;
 	}
 
-	inline void setBaseAction(uint32 value) {
-		baseAction = value;
+	inline void setBaseConstitution(int32 value) {
+		baseAttributes[CreatureAttribute::CONSTITUTION] = value;
 	}
 
-	inline void setBaseQuickness(uint32 value) {
-		baseQuickness = value;
+	inline void setBaseAction(int32 value) {
+		baseAttributes[CreatureAttribute::ACTION] = value;
 	}
 
-	inline void setBaseStamina(uint32 value) {
-		baseStamina = value;
+	inline void setBaseQuickness(int32 value) {
+		baseAttributes[CreatureAttribute::QUICKNESS] = value;
 	}
 
-	inline void setBaseMind(uint32 value) {
-		baseMind = value;
+	inline void setBaseStamina(int32 value) {
+		baseAttributes[CreatureAttribute::STAMINA] = value;
 	}
 
-	inline void setBaseFocus(uint32 value) {
-		baseFocus = value;
+	inline void setBaseMind(int32 value) {
+		baseAttributes[CreatureAttribute::MIND] = value;
 	}
 
-	inline void setBaseWillpower(uint32 value) {
-		baseWillpower = value;
+	inline void setBaseFocus(int32 value) {
+		baseAttributes[CreatureAttribute::FOCUS] = value;
 	}
 
-	inline void setHealth(uint32 value) {
-		health = value;
+	inline void setBaseWillpower(int32 value) {
+		baseAttributes[CreatureAttribute::WILLPOWER] = value;
+	}
+
+	inline void setAttribute(uint8 attribute, int32 value) {
+		attributes[attribute] = value;
+	}
+
+	inline void setHealth(int32 value) {
+		attributes[CreatureAttribute::HEALTH] = value;
+	}
+
+	inline void setStrength(int32 value) {
+		attributes[CreatureAttribute::STRENGTH] = value;
+	}
+
+	inline void setConstitution(int32 value) {
+		attributes[CreatureAttribute::CONSTITUTION] = value;
+	}
+
+	inline void setAction(int32 value) {
+		attributes[CreatureAttribute::ACTION] = value;
+	}
+
+	inline void setQuickness(int32 value) {
+		attributes[CreatureAttribute::QUICKNESS] = value;
+	}
+
+	inline void setStamina(int32 value) {
+		attributes[CreatureAttribute::STAMINA] = value;
+	}
+
+	inline void setMind(int32 value) {
+		attributes[CreatureAttribute::MIND] = value;
+	}
+
+	inline void setFocus(int32 value) {
+		attributes[CreatureAttribute::FOCUS] = value;
+	}
+
+	inline void setWillpower(int32 value) {
+		attributes[CreatureAttribute::WILLPOWER] = value;
+	}
+
+	inline void changeAttribute(uint8 attribute, int32 value) {
+		attributes[attribute] += value;
 	}
 
 	inline void changeHealth(int32 value) {
-		health += value;
-	}
-
-	inline void setStrength(uint32 value) {
-		strength = value;
+		attributes[CreatureAttribute::HEALTH] += value;
 	}
 
 	inline void changeStrength(int32 value) {
-		strength += value;
-	}
-
-	inline void setConstitution(uint32 value) {
-		constitution = value;
+		attributes[CreatureAttribute::STRENGTH] += value;
 	}
 
 	inline void changeConstitution(int32 value) {
-		constitution += value;
-	}
-
-	inline void setAction(uint32 value) {
-		action = value;
+		attributes[CreatureAttribute::CONSTITUTION] += value;
 	}
 
 	inline void changeAction(int32 value) {
-		action += value;
-	}
-
-	inline void setQuickness(uint32 value) {
-		quickness = value;
+		attributes[CreatureAttribute::ACTION] += value;
 	}
 
 	inline void changeQuickness(int32 value) {
-		quickness += value;
-	}
-
-	inline void setStamina(uint32 value) {
-		stamina = value;
+		attributes[CreatureAttribute::QUICKNESS] += value;
 	}
 
 	inline void changeStamina(int32 value) {
-		stamina += value;
-	}
-
-	inline void setMind(uint32 value) {
-		mind = value;
+		attributes[CreatureAttribute::STAMINA] += value;
 	}
 
 	inline void changeMind(int32 value) {
-		mind += value;
-	}
-
-	inline void setFocus(uint32 value) {
-		focus = value;
+		attributes[CreatureAttribute::MIND] += value;
 	}
 
 	inline void changeFocus(int32 value) {
-		focus += value;
-	}
-
-	inline void setWillpower(uint32 value) {
-		willpower = value;
+		attributes[CreatureAttribute::FOCUS] += value;
 	}
 
 	inline void changeWillpower(int32 value) {
-		willpower += value;
+		attributes[CreatureAttribute::WILLPOWER] += value;
 	}
 
+	inline void setAttributeMax(uint8 attribute, int32 value) {
+		maxAttributes[attribute] = value;
+	}
 
-	inline void setHealthMax(uint32 value) {
-		healthMax = value;
+	inline void setHealthMax(int32 value) {
+		maxAttributes[CreatureAttribute::HEALTH] = value;
+	}
+
+	inline void setStrengthMax(int32 value) {
+		maxAttributes[CreatureAttribute::STRENGTH] = value;
+	}
+
+	inline void setConstitutionMax(int32 value) {
+		maxAttributes[CreatureAttribute::CONSTITUTION] = value;
+	}
+
+	inline void setActionMax(int32 value) {
+		maxAttributes[CreatureAttribute::ACTION] = value;
+	}
+
+	inline void setQuicknessMax(int32 value) {
+		maxAttributes[CreatureAttribute::QUICKNESS] = value;
+	}
+
+	inline void setStaminaMax(int32 value) {
+		maxAttributes[CreatureAttribute::STAMINA] = value;
+	}
+
+	inline void setMindMax(int32 value) {
+		maxAttributes[CreatureAttribute::MIND] = value;
+	}
+
+	inline void setFocusMax(int32 value) {
+		maxAttributes[CreatureAttribute::FOCUS] = value;
+	}
+
+	inline void setWillpowerMax(int32 value) {
+		maxAttributes[CreatureAttribute::WILLPOWER] = value;
+	}
+
+	inline void changeAttributeMax(uint8 attribute, int32 value) {
+		maxAttributes[attribute] += value;
 	}
 
 	inline void changeHealthMax(int32 value) {
-		healthMax += value;
-	}
-
-	inline void setStrengthMax(uint32 value) {
-		strengthMax = value;
+		maxAttributes[CreatureAttribute::HEALTH] += value;
 	}
 
 	inline void changeStrengthMax(int32 value) {
-		strengthMax += value;
-	}
-
-	inline void setConstitutionMax(uint32 value) {
-		constitutionMax = value;
+		maxAttributes[CreatureAttribute::STRENGTH] += value;
 	}
 
 	inline void changeConstitutionMax(int32 value) {
-		constitutionMax += value;
-	}
-
-	inline void setActionMax(uint32 value) {
-		actionMax = value;
+		maxAttributes[CreatureAttribute::CONSTITUTION] += value;
 	}
 
 	inline void changeActionMax(int32 value) {
-		actionMax += value;
-	}
-
-	inline void setQuicknessMax(uint32 value) {
-		quicknessMax = value;
+		maxAttributes[CreatureAttribute::ACTION] += value;
 	}
 
 	inline void changeQuicknessMax(int32 value) {
-		quicknessMax += value;
-	}
-
-	inline void setStaminaMax(uint32 value) {
-		staminaMax = value;
+		maxAttributes[CreatureAttribute::QUICKNESS] += value;
 	}
 
 	inline void changeStaminaMax(int32 value) {
-		staminaMax += value;
-	}
-
-	inline void setMindMax(uint32 value) {
-		mindMax = value;
+		maxAttributes[CreatureAttribute::STAMINA] += value;
 	}
 
 	inline void changeMindMax(int32 value) {
-		mindMax += value;
-	}
-
-	inline void setFocusMax(uint32 value) {
-		focusMax = value;
+		maxAttributes[CreatureAttribute::MIND] += value;
 	}
 
 	inline void changeFocusMax(int32 value) {
-		focusMax += value;
-	}
-
-	inline void setWillpowerMax(uint32 value) {
-		willpowerMax = value;
+		maxAttributes[CreatureAttribute::FOCUS] += value;
 	}
 
 	inline void changeWillpowerMax(int32 value) {
-		willpowerMax += value;
+		maxAttributes[CreatureAttribute::WILLPOWER] += value;
 	}
 
-	inline void setHealthWounds(uint32 wounds) {
-		healthWounds = wounds;
+	inline void setWounds(uint8 attribute, int32 value) {
+		wounds[attribute] = value;
 	}
 
-	inline void setStrengthWounds(uint32 wounds) {
-		strengthWounds = wounds;
+	inline void setHealthWounds(int32 value) {
+		wounds[CreatureAttribute::HEALTH] = value;
 	}
 
-	inline void setConstitutionWounds(uint32 wounds) {
-		constitutionWounds = wounds;
+	inline void setStrengthWounds(int32 value) {
+		wounds[CreatureAttribute::STRENGTH] = value;
 	}
 
-	inline void setActionWounds(uint32 wounds) {
-		actionWounds = wounds;
+	inline void setConstitutionWounds(int32 value) {
+		wounds[CreatureAttribute::CONSTITUTION] = value;
 	}
 
-	inline void setQuicknessWounds(uint32 wounds) {
-		quicknessWounds = wounds;
+	inline void setActionWounds(int32 value) {
+		wounds[CreatureAttribute::ACTION] = value;
 	}
 
-	inline void setStaminaWounds(uint32 wounds) {
-		staminaWounds = wounds;
+	inline void setQuicknessWounds(int32 value) {
+		wounds[CreatureAttribute::QUICKNESS] = value;
 	}
 
-	inline void setMindWounds(uint32 wounds) {
-		mindWounds = wounds;
+	inline void setStaminaWounds(int32 value) {
+		wounds[CreatureAttribute::STAMINA] = value;
 	}
 
-	inline void setFocusWounds(uint32 wounds) {
-		focusWounds = wounds;
+	inline void setMindWounds(int32 value) {
+		wounds[CreatureAttribute::MIND] = value;
 	}
 
-	inline void setWillpowerWounds(uint32 wounds) {
-		willpowerWounds = wounds;
+	inline void setFocusWounds(int32 value) {
+		wounds[CreatureAttribute::FOCUS] = value;
 	}
+
+	inline void setWillpowerWounds(int32 value) {
+		wounds[CreatureAttribute::WILLPOWER] = value;
+	}
+
 	inline void setShockWounds(uint32 wounds) {
 		shockWounds = wounds;
 	}
@@ -1576,205 +1562,176 @@ public:
 	Armor* getArmor(int type);
 
 	// HAM getters
-	inline uint32 getBaseHealth() {
-		return baseHealth;
+	inline int32 getBaseAttribute(uint8 attribute) {
+		return baseAttributes[attribute];
 	}
 
-	inline uint32 getBaseStrength() {
-		return baseStrength;
+	inline int32 getBaseHealth() {
+		return baseAttributes[CreatureAttribute::HEALTH];
 	}
 
-	inline uint32 getBaseConstitution() {
-		return baseConstitution;
+	inline int32 getBaseStrength() {
+		return baseAttributes[CreatureAttribute::STRENGTH];
 	}
 
-	inline uint32 getBaseAction() {
-		return baseAction;
+	inline int32 getBaseConstitution() {
+		return baseAttributes[CreatureAttribute::CONSTITUTION];
 	}
 
-	inline uint32 getBaseQuickness() {
-		return baseQuickness;
+	inline int32 getBaseAction() {
+		return baseAttributes[CreatureAttribute::ACTION];
 	}
 
-	inline uint32 getBaseStamina() {
-		return baseStamina;
+	inline int32 getBaseQuickness() {
+		return baseAttributes[CreatureAttribute::QUICKNESS];
 	}
 
-	inline uint32 getBaseMind() {
-		return baseMind;
+	inline int32 getBaseStamina() {
+		return baseAttributes[CreatureAttribute::STAMINA];
 	}
 
-	inline uint32 getBaseFocus() {
-		return baseFocus;
+	inline int32 getBaseMind() {
+		return baseAttributes[CreatureAttribute::MIND];
 	}
 
-	inline uint32 getBaseWillpower() {
-		return baseWillpower;
+	inline int32 getBaseFocus() {
+		return baseAttributes[CreatureAttribute::FOCUS];
 	}
 
-	inline uint32 getHealth() {
-		return health;
+	inline int32 getBaseWillpower() {
+		return baseAttributes[CreatureAttribute::WILLPOWER];
 	}
 
-	inline uint32 getStrength() {
-		if ((int) strength < 1)
-			return 1;
-		else
-			return strength;
+	inline int32 getAttribute(uint8 attribute) {
+		return attributes[attribute];
 	}
 
-	inline uint32 getConstitution() {
-		if ((int) constitution < 1)
-			return 1;
-		else
-			return constitution;
+	inline int32 getHealth() {
+		return attributes[CreatureAttribute::HEALTH];
 	}
 
-	inline uint32 getAction() {
-		return action;
+	inline int32 getStrength() {
+		return attributes[CreatureAttribute::STRENGTH];
 	}
 
-	inline uint32 getQuickness() {
-		if ((int) quickness < 1)
-			return 1;
-		else
-			return quickness;
+	inline int32 getConstitution() {
+		return attributes[CreatureAttribute::CONSTITUTION];
 	}
 
-	inline uint32 getStamina() {
-		if ((int) stamina < 1)
-			return 1;
-		else
-			return stamina;
+	inline int32 getAction() {
+		return attributes[CreatureAttribute::ACTION];
 	}
 
-	inline uint32 getMind() {
-		return mind;
+	inline int32 getQuickness() {
+		return attributes[CreatureAttribute::QUICKNESS];
 	}
 
-	inline uint32 getFocus() {
-		if ((int) focus < 1)
-			return 1;
-		else
-			return focus;
+	inline int32 getStamina() {
+		return attributes[CreatureAttribute::STAMINA];
 	}
 
-	inline uint32 getWillpower() {
-		if ((int) willpower < 1)
-			return 1;
-		else
-			return willpower;
+	inline int32 getMind() {
+		return attributes[CreatureAttribute::MIND];
 	}
 
-	inline uint32 getHealthMax() {
-		if (healthMax < 1)
-			return 1;
-		else
-			return healthMax;
+	inline int32 getFocus() {
+		return attributes[CreatureAttribute::FOCUS];
 	}
 
-	inline uint32 getStrengthMax() {
-		if (strengthMax < 1)
-			return 1;
-		else
-			return strengthMax;
+	inline int32 getWillpower() {
+		return attributes[CreatureAttribute::WILLPOWER];
 	}
 
-	inline uint32 getConstitutionMax() {
-		if (constitutionMax < 1)
-			return 1;
-		else
-			return constitutionMax;
+	inline int32 getAttributeMax(uint8 attribute) {
+		return maxAttributes[attribute];
 	}
 
-	inline uint32 getActionMax() {
-		if (actionMax < 1)
-			return 1;
-		else
-			return actionMax;
+	inline int32 getHealthMax() {
+		return maxAttributes[CreatureAttribute::HEALTH];
 	}
 
-	inline uint32 getQuicknessMax() {
-		if (quicknessMax < 1)
-			return 1;
-		else
-			return quicknessMax;
+	inline int32 getStrengthMax() {
+		return maxAttributes[CreatureAttribute::STRENGTH];
 	}
 
-	inline uint32 getStaminaMax() {
-		if (staminaMax < 1)
-			return 1;
-		else
-			return staminaMax;
+	inline int32 getConstitutionMax() {
+		return maxAttributes[CreatureAttribute::CONSTITUTION];
 	}
 
-	inline uint32 getMindMax() {
-		if (mindMax < 1)
-			return 1;
-		else
-			return mindMax;
+	inline int32 getActionMax() {
+		return maxAttributes[CreatureAttribute::ACTION];
 	}
 
-	inline uint32 getFocusMax() {
-		if (focusMax < 1)
-			return 1;
-		else
-			return focusMax;
+	inline int32 getQuicknessMax() {
+		return maxAttributes[CreatureAttribute::QUICKNESS];
 	}
 
-	inline uint32 getWillpowerMax() {
-		if (willpowerMax < 1)
-			return 1;
-		else
-			return willpowerMax;
+	inline int32 getStaminaMax() {
+		return maxAttributes[CreatureAttribute::STAMINA];
 	}
 
-	inline uint32 getHealthWounds() {
-		return healthWounds;
+	inline int32 getMindMax() {
+		return maxAttributes[CreatureAttribute::MIND];
 	}
 
-	inline uint32 getStrengthWounds() {
-		return strengthWounds;
+	inline int32 getFocusMax() {
+		return maxAttributes[CreatureAttribute::FOCUS];
 	}
 
-	inline uint32 getConstitutionWounds() {
-		return constitutionWounds;
+	inline int32 getWillpowerMax() {
+		return maxAttributes[CreatureAttribute::WILLPOWER];
 	}
 
-	inline uint32 getActionWounds() {
-		return actionWounds;
+	inline int32 getWounds(uint8 attribute) {
+		return wounds[attribute];
 	}
 
-	inline uint32 getQuicknessWounds() {
-		return quicknessWounds;
+	inline int32 getHealthWounds() {
+		return wounds[CreatureAttribute::HEALTH];
 	}
 
-	inline uint32 getStaminaWounds() {
-		return staminaWounds;
+	inline int32 getStrengthWounds() {
+		return wounds[CreatureAttribute::STRENGTH];
 	}
 
-	inline uint32 getMindWounds() {
-		return mindWounds;
+	inline int32 getConstitutionWounds() {
+		return wounds[CreatureAttribute::CONSTITUTION];
 	}
 
-	inline uint32 getFocusWounds() {
-		return focusWounds;
+	inline int32 getActionWounds() {
+		return wounds[CreatureAttribute::ACTION];
 	}
 
-	inline uint32 getWillpowerWounds() {
-		return willpowerWounds;
+	inline int32 getQuicknessWounds() {
+		return wounds[CreatureAttribute::QUICKNESS];
 	}
 
-	inline uint32 getHealthDamage() {
-		return healthMax - healthWounds - health;
+	inline int32 getStaminaWounds() {
+		return wounds[CreatureAttribute::STAMINA];
 	}
 
-	inline uint32 getActionDamage() {
-		return actionMax - actionWounds - action;
+	inline int32 getMindWounds() {
+		return wounds[CreatureAttribute::MIND];
 	}
 
-	inline uint32 getMindDamage() {
-		return mindMax - mindWounds - mind;
+	inline int32 getFocusWounds() {
+		return wounds[CreatureAttribute::FOCUS];
+	}
+
+	inline int32 getWillpowerWounds() {
+		return wounds[CreatureAttribute::WILLPOWER];
+	}
+
+	inline int32 getHealthDamage() {
+		return getHealthMax() - getHealthWounds() - getHealth();
+	}
+
+	inline int32 getActionDamage() {
+		return getActionMax() - getActionWounds() - getAction();
+	}
+
+	inline int32 getMindDamage() {
+		return getMindMax() - getMindWounds() - getMind();
 	}
 
 	inline uint32 getShockWounds() {
@@ -1805,12 +1762,12 @@ public:
 			return hamBaseUpdateCounter += cnt;
 	}
 
-	inline uint32 getHAMEncumbUpdateCounter() {
-		return hamEncumbUpdateCounter;
+	inline uint32 getEncumbUpdateCounter() {
+		return encumbUpdateCounter;
 	}
 
-	inline uint32 getNewHAMEncumbUpdateCounter(int cnt) {
-			return hamEncumbUpdateCounter += cnt;
+	inline uint32 getNewEncumbUpdateCounter(int cnt) {
+		return encumbUpdateCounter += cnt;
 	}
 
 	inline uint32 getWoundsUpdateCounter() {
@@ -1850,92 +1807,85 @@ public:
 	}
 
 	inline bool hasWounds() {
-		return (healthWounds > 0 || actionWounds > 0 || mindWounds > 0);
+		return (getHealthWounds() > 0 || getActionWounds() > 0 || getMindWounds() > 0);
 	}
 
 	inline bool hasWound(uint8 attribute) {
-		switch (attribute) {
-		case CreatureAttribute::HEALTH:
-			return (getHealthWounds() > 0);
-		case CreatureAttribute::ACTION:
-			return (getActionWounds() > 0);
-		case CreatureAttribute::MIND:
-			return (getMindWounds() > 0);
-		case CreatureAttribute::STRENGTH:
-			return (getStrengthWounds() > 0);
-		case CreatureAttribute::CONSTITUTION:
-			return (getConstitutionWounds() > 0);
-		case CreatureAttribute::QUICKNESS:
-			return (getQuicknessWounds() > 0);
-		case CreatureAttribute::STAMINA:
-			return (getStaminaWounds() > 0);
-		case CreatureAttribute::FOCUS:
-			return (getFocusWounds() > 0);
-		case CreatureAttribute::WILLPOWER:
-			return (getWillpowerWounds() > 0);
-		default:
-			return false;
-		}
+		return (getWounds(attribute) > 0);
 	}
 
-	inline uint32 getWounds(uint8 attribute) {
-		switch (attribute) {
-		case CreatureAttribute::HEALTH:
-			return getHealthWounds();
-		case CreatureAttribute::ACTION:
-			return getActionWounds();
-		case CreatureAttribute::MIND:
-			return getMindWounds();
-		case CreatureAttribute::STRENGTH:
-			return getStrengthWounds();
-		case CreatureAttribute::CONSTITUTION:
-			return getConstitutionWounds();
-		case CreatureAttribute::QUICKNESS:
-			return getQuicknessWounds();
-		case CreatureAttribute::STAMINA:
-			return getStaminaWounds();
-		case CreatureAttribute::FOCUS:
-			return getFocusWounds();
-		case CreatureAttribute::WILLPOWER:
-			return getWillpowerWounds();
-		default:
-			return 0;
-		}
-	}
+	/**
+	 * Gets the next wounded attribute in order.
+	 * \param health Include health wound attributes
+	 * \param action Include action wound attributes
+	 * \param mind Include mind wound attributes
+	 * \return Returns the next wounded attribute.
+	 */
+	inline uint8 getNextWoundedAttribute(bool health = true, bool action = true, bool mind = true) {
+		int woundCount = 0;
 
-	inline uint8 getNextWoundedAttribute(bool h = true, bool a = true, bool m = false) {
-		if (h) {
-			if (healthWounds > 0)
-				return CreatureAttribute::HEALTH;
-			else if (strengthWounds > 0)
-				return CreatureAttribute::STRENGTH;
-			else if (constitutionWounds > 0)
-				return CreatureAttribute::CONSTITUTION;
+		if (health) {
+			for (uint8 i = CreatureAttribute::HEALTH; i < CreatureAttribute::ACTION; i++) {
+				if (hasWound(i))
+					return i;
+			}
 		}
 
-		if (a) {
-			if (actionWounds > 0)
-				return CreatureAttribute::ACTION;
-			else if (quicknessWounds > 0)
-				return CreatureAttribute::QUICKNESS;
-			else if (staminaWounds > 0)
-				return CreatureAttribute::STAMINA;
+		if (action) {
+			for (uint8 i = CreatureAttribute::ACTION; i < CreatureAttribute::MIND; i++) {
+				if (hasWound(i))
+					return i;
+			}
 		}
 
-		if (m) {
-			if (mindWounds > 0)
-				return CreatureAttribute::MIND;
-			else if (focusWounds > 0)
-				return CreatureAttribute::FOCUS;
-			else if (willpowerWounds > 0)
-				return CreatureAttribute::WILLPOWER;
+		if (mind) {
+			for (uint8 i = CreatureAttribute::MIND; i < CreatureAttribute::UNKNOWN; i++) {
+				if (hasWound(i))
+					return i;
+			}
 		}
 
 		return CreatureAttribute::UNKNOWN;
 	}
 
+	/**
+	 * Gets a wounded attribute by random.
+	 * \return Returns the randomly selected wounded attribute.
+	 */
+	inline uint8 getRandomWoundedAttribute(bool health = true, bool action = true, bool mind = true) {
+		Vector<uint8> woundedAttributes;
+
+		if (health) {
+			for (int i = CreatureAttribute::HEALTH; i < CreatureAttribute::ACTION; i++) {
+				if (hasWound(i))
+					woundedAttributes.add(i);
+			}
+		}
+
+		if (action) {
+			for (int i = CreatureAttribute::ACTION; i < CreatureAttribute::MIND; i++) {
+				if (hasWound(i))
+					woundedAttributes.add(i);
+			}
+		}
+
+		if (mind) {
+			for (int i = CreatureAttribute::MIND; i < CreatureAttribute::UNKNOWN; i++) {
+				if (hasWound(i))
+					woundedAttributes.add(i);
+			}
+		}
+
+		uint8 size = woundedAttributes.size();
+
+		if (size > 0)
+			return woundedAttributes.elementAt(System::random(size - 1));
+		else
+			return CreatureAttribute::UNKNOWN;
+	}
+
 	inline bool isRevivable() {
-		return (health > 0 && action > 0 && mind > 0);
+		return (getHealth() > 0 && getAction() > 0 && getMind() > 0);
 	}
 
 	inline bool isResurrectable() {
@@ -1953,15 +1903,15 @@ public:
 	}
 
 	inline bool hasHealthDamage() {
-		return (healthMax - healthWounds - health > 0);
+		return (getHealthDamage() > 0);
 	}
 
 	inline bool hasActionDamage() {
-		return (actionMax - actionWounds - action > 0);
+		return (getActionDamage() > 0);
 	}
 
 	inline bool hasMindDamage() {
-		return (mindMax - mindWounds - mind > 0);
+		return (getMindDamage() > 0);
 	}
 
 	inline bool hasDamage() {
@@ -2076,15 +2026,15 @@ public:
 		return level;
 	}
 
-	inline uint32 getHealthEncumbrance() {
+	inline int32 getHealthEncumbrance() {
 		return healthEncumbrance;
 	}
 
-	inline uint32 getActionEncumbrance() {
+	inline int32 getActionEncumbrance() {
 		return actionEncumbrance;
 	}
 
-	inline uint32 getMindEncumbrance() {
+	inline int32 getMindEncumbrance() {
 		return mindEncumbrance;
 	}
 
@@ -2565,6 +2515,30 @@ public:
 		level = lvl;
 	}
 
+	inline void setHealthEncumbrance(int32 value) {
+		healthEncumbrance = value;
+	}
+
+	inline void setActionEncumbrance(int32 value) {
+		actionEncumbrance = value;
+	}
+
+	inline void setMindEncumbrance(int32 value) {
+		mindEncumbrance = value;
+	}
+
+	inline void changeHealthEncumbrance(int32 value) {
+		healthEncumbrance += value;
+	}
+
+	inline void changeActionEncumbrance(int32 value) {
+		actionEncumbrance += value;
+	}
+
+	inline void changeMindEncumbrance(int32 value) {
+		mindEncumbrance += value;
+	}
+
 	inline Guild* getGuild() {
 		return guild;
 	}
@@ -2710,6 +2684,42 @@ public:
 	bool isBaby() {
 		return baby;
 	}
+
+
+
+
+	//Event Handlers
+	virtual void onIncapacitated(SceneObject* attacker);
+	virtual void onIncapacitationRecovery();
+	virtual void onDeath();
+	virtual void onKilled(SceneObject* killer);
+	virtual void onBlinded();
+	virtual void onDizzied();
+	virtual void onStunned();
+	virtual void onIntimidated();
+	virtual void onEquip(TangibleObject* item);
+	virtual void onUnequip(TangibleObject* item);
+	virtual void onChangeWeapon(Weapon* weapon);
+	virtual void onChangeArmor(Armor* armor);
+	//virtual void onChangeClothing(Wearable* clothing);
+	virtual void onReceiveDamage(SceneObject* attacker, uint8 attribute, uint32 amount);
+	virtual void onRegenerateHAM();
+
+	//Actions
+	virtual bool inflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage);
+	virtual void incapacitateSelf();
+	virtual void recoverFromIncapacitation();
+	virtual void die();
+	virtual void equipItem(TangibleObject* item);
+	virtual void unequipItem(TangibleObject* item);
+
+
+
+
+
+
+
+
 
 	friend class CombatManager;
 	friend class SkillManager;

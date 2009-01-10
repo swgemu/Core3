@@ -27,13 +27,11 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
-	void decayWeapon(int decayRate);
-
 	void setWeaponStats(int modifier);
 
 	void sliceWeapon(Player* player);
 
-	void repairWeapon(Player* player);
+	void decay(float decayRate);
 
 	void removePowerup(Player* player, bool notify);
 
@@ -232,6 +230,8 @@ public:
 	void setCertified(bool crt);
 
 	void setXpType();
+
+	void onBroken();
 
 protected:
 	Weapon(DummyConstructorParameter* param);
@@ -254,13 +254,11 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
-	void decayWeapon(int decayRate);
-
 	void setWeaponStats(int modifier);
 
 	void sliceWeapon(Player* player);
 
-	void repairWeapon(Player* player);
+	void decay(float decayRate);
 
 	void removePowerup(Player* player, bool notify);
 
@@ -459,6 +457,8 @@ public:
 	void setCertified(bool crt);
 
 	void setXpType();
+
+	void onBroken();
 
 protected:
 	String _param0_setCert__String_;

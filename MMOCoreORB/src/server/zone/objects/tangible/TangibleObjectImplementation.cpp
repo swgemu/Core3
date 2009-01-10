@@ -58,6 +58,8 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
 	pvpStatusBitmask = 0;
 
 	playerUseMask = ALL;
+
+	optionsBitmask = 0;
 }
 
 TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempname, int tp)
@@ -75,6 +77,8 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 te
 	pvpStatusBitmask = 0;
 
 	playerUseMask = ALL;
+
+	optionsBitmask = 0;
 }
 
 TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempname, int tp)
@@ -92,6 +96,8 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 	objectSubType = tp;
 
 	playerUseMask = ALL;
+
+	optionsBitmask = 0;
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
@@ -115,7 +121,6 @@ void TangibleObjectImplementation::initialize() {
 
 	setLogging(false);
 	setGlobalLogging(true);
-
 
 	container = NULL;
 	zone = NULL;
@@ -322,30 +327,57 @@ void TangibleObjectImplementation::close(Player* player) {
 
 
 void TangibleObjectImplementation::repairItem(Player* player) {
-	int roll = System::random(100);
+	//TODO: Should master weaponsmith or armorsmith get a bonus to repair?
 
-	int decayRate = 100;
-
-	StringBuffer txt;
-
-	if (roll < 10) {
-		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
-		maxCondition = 1;
-		conditionDamage = 1;
-		updated = true;
+	if (getCondition() == getMaxCondition()) {
+		//TODO: This will never get called after this is moved to the sui list box and referenced through the repair kits.
+		player->sendSystemMessage("That item is not in need of repair.");
 		return;
-	} else if (roll < 75) {
-		txt << "You have repaired the item, however the items maximum condition has been reduced.";
-		decayRate = 20;
-	} else {
-		txt << "You have completely repaired the item.";
-		decayRate = 0;
 	}
 
-	player->sendSystemMessage(txt.toString());
+	//Condition is unrepairable
+	if (getCondition() <= 0) {
+		StfParameter* params = new StfParameter();
+		params->addTT(getObjectID());
+		player->sendSystemMessage("error_message", "sys_repair_unrepairable", params); //%TT's condition is beyond repair even for your skills.
+		delete params;
+		return;
+	}
 
-	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
-	conditionDamage = 0;
+	float conditionRatio = getConditionDamage() / getMaxCondition();
+
+	//We subtract the conditionRatio from a random roll of 0 to 100.
+	int32 roll = (int32) ceil(System::random(100) - (conditionRatio / 3));
+
+	//Gate our roll at 0.
+	roll = (roll >= 0) ? roll : 0;
+
+	float repairRate = 1.0f;
+
+	if (roll >= 75) {
+		player->sendSystemMessage("error_message", "sys_repair_perfect"); //You have repaired the item with only minor blemishes.
+	} else if (roll >= 50) {
+		player->sendSystemMessage("error_message", "sys_repair_slight"); //You have repaired the item, however the item's maximum condition has been reduced.
+		repairRate = 0.95f; //95% repair
+	} else if (roll >= 25) {
+		player->sendSystemMessage("error_message", "sys_repair_imperfect"); //You have only marginally repaired the item. The item's max condition has been reduced.
+		repairRate = 0.80f; //80% repair
+	} else {
+		player->sendSystemMessage("error_message", "sys_repair_failed"); //You have completely failed to repair the item. The item falls apart.
+		repairRate = 0.0f; //0% repair
+
+		if (isWeapon())
+			((Weapon*)_this)->onBroken();
+
+		if (isArmor())
+			((Armor*)_this)->onBroken();
+	}
+
+	//Gate our new max condition at 1
+	int newMaxCondition = (int) ceil(((float) getMaxCondition()) * repairRate);
+	setMaxCondition((newMaxCondition > 1) ? newMaxCondition : 1);
+
+	setConditionDamage(0);
 
 	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
 	dtano3->updateConditionDamage();
@@ -377,15 +409,6 @@ void TangibleObjectImplementation::setObjectName(Player * player) {
 	}
 }
 
-void TangibleObjectImplementation::decay(int decayRate) {
-	conditionDamage = conditionDamage + (maxCondition / 100 * decayRate);
-
-	if (conditionDamage > maxCondition)
-		conditionDamage = maxCondition;
-
-	updated = true;
-}
-
 void TangibleObjectImplementation::addAttributes(AttributeListMessage* alm) {
 	StringBuffer cond;
 	cond << (maxCondition-conditionDamage) << "/" << maxCondition;
@@ -393,4 +416,41 @@ void TangibleObjectImplementation::addAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("condition", cond);
 
 	alm->insertAttribute("volume", "1");
+}
+
+
+
+//Sending of Messages
+
+/**
+ * Sends the delta packet to the player updating this items optionsBitmask
+ */
+void TangibleObjectImplementation::updateOptionsBitmask(Player* player) {
+	TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(_this);
+	tanod3->updateOptionsBitmask();
+	tanod3->close();
+	player->sendMessage(tanod3);
+}
+
+void TangibleObjectImplementation::updateInsurance(Player* player, bool insure) {
+	setInsured(insure);
+	updateOptionsBitmask(player);
+}
+
+//Event Handlers
+void TangibleObjectImplementation::onBroken() {
+
+}
+
+//Actions
+void TangibleObjectImplementation::decay(float decayRate) {
+	if (isInsured())
+		setInsured(false);
+
+	conditionDamage += (int) floor((float) maxCondition * decayRate);
+
+	if (conditionDamage > maxCondition)
+		conditionDamage = maxCondition;
+
+	updated = true;
 }

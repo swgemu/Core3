@@ -496,7 +496,7 @@ void CreatureImplementation::reload() {
 }
 
 void CreatureImplementation::unload() {
-	deagro();
+	deaggro();
 
 	clearTarget();
 
@@ -1241,7 +1241,7 @@ bool CreatureImplementation::activate() {
 
 		if (aggroedCreature != NULL) {
 			if (!aggroedCreature->isAttackable())
-				deagro();
+				deaggro();
 			else
 				needMoreActivity |= attack(aggroedCreature);
 		} else if (isInCombat())
@@ -1255,7 +1255,7 @@ bool CreatureImplementation::activate() {
 			creatureManager->queueActivity(this);
 		} else {
 			info("no more activities needed");
-			deagro();
+			deaggro();
 		}
 
 		unlock();
@@ -1282,7 +1282,7 @@ bool CreatureImplementation::checkState() {
 	if (isDead() && isInActiveState()) {
 		info("queing despawn");
 
-		deagro();
+		deaggro();
 
 		creatureState = DESPAWNING;
 
@@ -1290,7 +1290,7 @@ bool CreatureImplementation::checkState() {
 
 		return false;
 	} else if (isDeSpawning()) {
-		deagro();
+		deaggro();
 
 		creatureState = RESPAWNING;
 
@@ -1319,13 +1319,13 @@ void CreatureImplementation::resetState() {
 	creatureState = ACTIVE;
 	postureState = CreaturePosture::UPRIGHT;
 
-	health = healthMax;
-	action = actionMax;
-	mind = mindMax;
+	setHealth(getHealthMax());
+	setAction(getActionMax());
+	setMind(getMindMax());
 
-	healthWounds = 0;
-	actionWounds = 0;
-	mindWounds = 0;
+	setHealthWounds(0);
+	setActionWounds(0);
+	setMindWounds(0);
 
 	//damageMap.removeAll(); // TODO:uncomment and remove below code when VectorMap can use ManagedReference
 	while (damageMap.size() > 0) {
@@ -1466,7 +1466,7 @@ bool CreatureImplementation::doMovement() {
 	try {
 		if (aggroedCreature != NULL && (dist > 250 || getZoneID()
 				!= aggroedCreature->getZoneID())) {
-			deagro();
+			deaggro();
 			return false;
 		}
 	} catch (...) {
@@ -1541,7 +1541,7 @@ void CreatureImplementation::doIncapacitate() {
 		return;
 
 	disseminateXp(getLevel());
-	deagro();
+	deaggro();
 	setPosture(CreaturePosture::DEAD);
 
 	CreatureObject* lootOwner = getLootOwner();
@@ -1638,7 +1638,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 		return false;
 
 	if (target->isIncapacitated() || target->isDead()) {
-		deagro();
+		deaggro();
 
 		return false;
 	}
@@ -1648,7 +1648,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 				== NULL && nextPosition->getCellID() != 0))
 			return true;
 		else {
-			deagro();
+			deaggro();
 
 			return false;
 		}
@@ -1691,8 +1691,7 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	info("queuing attacking");
 
 	String modifier = "";
-	CommandQueueAction
-			* action =
+	CommandQueueAction* action =
 					new CommandQueueAction(_this, target->getObjectID(), 0, actionCRC, modifier);
 
 	action->setSkill(skill);
@@ -1702,13 +1701,13 @@ bool CreatureImplementation::attack(CreatureObject* target) {
 	delete action;
 
 	if (target->isIncapacitated() || target->isDead()) {
-		deagro();
+		deaggro();
 
 		return false;
 	}
 
 	if (target->isNonPlayerCreature() && ((Creature *)target)->isMount() && ((MountCreature *) target)->isDisabled()) {
-		deagro();
+		deaggro();
 
 		return false;
 	}
@@ -1850,21 +1849,15 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 	}
 }
 
-void CreatureImplementation::deagro() {
+/**
+ * The actions that are performed when the creature loses interest in combat and returns to their business.
+ */
+void CreatureImplementation::deaggro() {
 	if (aggroedCreature != NULL) {
 		StringBuffer msg;
 		msg << "deaggroed (0x" << hex << aggroedCreature->getObjectID() << dec
 				<< ")";
 		info(msg);
-
-		if (aggroedCreature->isDead() || aggroedCreature->isIncapacitated())
-			doIncapAnimation();
-
-		if (isKiller() && aggroedCreature->isIncapacitated()
-				&& aggroedCreature->isPlayer()) {
-
-			aggroedCreature->handleDeath();
-		}
 
 		if (aggroedCreature->isDead()) {
 			removeFromDamageMap(aggroedCreature);
@@ -1900,7 +1893,7 @@ bool CreatureImplementation::doRecovery() {
 		if (hasStates())
 			doStatesRecovery();
 
-		calculateHAMregen();
+		onRegenerateHAM();
 
 		if ((activityCount) % 6 == 0)
 			highestMadeDamage = 0;
@@ -1915,7 +1908,7 @@ bool CreatureImplementation::doRecovery() {
 	return true;
 }
 
-void CreatureImplementation::doIncapAnimation() {
+void CreatureImplementation::performRandomIncapAnimation() {
 	switch (System::random(20)) {
 	case 0:
 		doAnimation("laugh");
@@ -2095,4 +2088,16 @@ void CreatureImplementation::addRandomPatrolPoint(float radius, bool doLock) {
 					new PatrolPoint(newPositionX, newPositionZ, newPositionY, getParentID());
 
 	addPatrolPoint(cord, doLock);
+}
+
+
+
+//Event Handlers
+void CreatureImplementation::onIncapacitateTarget(CreatureObject* victim) {
+	performRandomIncapAnimation();
+
+	if (isKiller() && victim->isPlayer() && !victim->isDead() && victim->isIncapacitated())
+		deathblow((Player*) victim);
+
+	deaggro();
 }

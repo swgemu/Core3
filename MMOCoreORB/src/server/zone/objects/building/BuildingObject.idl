@@ -55,7 +55,7 @@ import "../creature/CreatureObject";
 import "../../Zone";
 
 interface BuildingObject implements SceneObject {
-	BuildingObject(unsigned long oid, boolean staticBuilding) {
+	BuildingObject(unsigned long oid, boolean staticBuilding, int bType = 1) {
 		super(oid, int type);
 	}
 	
@@ -113,5 +113,7 @@ interface BuildingObject implements SceneObject {
 	boolean getStorageLoaded();
 
 	void setStorageLoaded(boolean setter);
+	
+	boolean isCloningFacility();
 
 }

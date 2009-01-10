@@ -233,6 +233,20 @@ bool AttackableObject::isDestroyed() {
 		return ((AttackableObjectImplementation*) _impl)->isDestroyed();
 }
 
+void AttackableObject::onReceiveDamage(SceneObject* attacker, unsigned int amount) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+		method.addObjectParameter(attacker);
+		method.addUnsignedIntParameter(amount);
+
+		method.executeWithVoidReturn();
+	} else
+		((AttackableObjectImplementation*) _impl)->onReceiveDamage(attacker, amount);
+}
+
 /*
  *	AttackableObjectAdapter
  */
@@ -291,6 +305,9 @@ Packet* AttackableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 		break;
 	case 21:
 		resp->insertBoolean(isDestroyed());
+		break;
+	case 22:
+		onReceiveDamage((SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	default:
 		return NULL;
@@ -361,6 +378,10 @@ void AttackableObjectAdapter::doDamage(int damage, SceneObject* attacker) {
 
 bool AttackableObjectAdapter::isDestroyed() {
 	return ((AttackableObjectImplementation*) impl)->isDestroyed();
+}
+
+void AttackableObjectAdapter::onReceiveDamage(SceneObject* attacker, unsigned int amount) {
+	return ((AttackableObjectImplementation*) impl)->onReceiveDamage(attacker, amount);
 }
 
 /*

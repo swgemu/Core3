@@ -337,7 +337,7 @@ bool Creature::attack(CreatureObject* target) {
 		return ((CreatureImplementation*) _impl)->attack(target);
 }
 
-void Creature::deagro() {
+void Creature::deaggro() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -346,7 +346,7 @@ void Creature::deagro() {
 
 		method.executeWithVoidReturn();
 	} else
-		((CreatureImplementation*) _impl)->deagro();
+		((CreatureImplementation*) _impl)->deaggro();
 }
 
 void Creature::activateRecovery() {
@@ -798,6 +798,19 @@ void Creature::setFPValue(unsigned int value) {
 		((CreatureImplementation*) _impl)->setFPValue(value);
 }
 
+void Creature::onIncapacitateTarget(CreatureObject* victim) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 66);
+		method.addObjectParameter(victim);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureImplementation*) _impl)->onIncapacitateTarget(victim);
+}
+
 /*
  *	CreatureAdapter
  */
@@ -882,7 +895,7 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertBoolean(attack((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case 30:
-		deagro();
+		deaggro();
 		break;
 	case 31:
 		activateRecovery();
@@ -989,6 +1002,9 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case 65:
 		setFPValue(inv->getUnsignedIntParameter());
 		break;
+	case 66:
+		onIncapacitateTarget((CreatureObject*) inv->getObjectParameter());
+		break;
 	default:
 		return NULL;
 	}
@@ -1092,8 +1108,8 @@ bool CreatureAdapter::attack(CreatureObject* target) {
 	return ((CreatureImplementation*) impl)->attack(target);
 }
 
-void CreatureAdapter::deagro() {
-	return ((CreatureImplementation*) impl)->deagro();
+void CreatureAdapter::deaggro() {
+	return ((CreatureImplementation*) impl)->deaggro();
 }
 
 void CreatureAdapter::activateRecovery() {
@@ -1234,6 +1250,10 @@ unsigned int CreatureAdapter::getFPValue() {
 
 void CreatureAdapter::setFPValue(unsigned int value) {
 	return ((CreatureImplementation*) impl)->setFPValue(value);
+}
+
+void CreatureAdapter::onIncapacitateTarget(CreatureObject* victim) {
+	return ((CreatureImplementation*) impl)->onIncapacitateTarget(victim);
 }
 
 /*

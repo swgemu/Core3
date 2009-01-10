@@ -20,8 +20,8 @@
  *	BuildingObjectStub
  */
 
-BuildingObject::BuildingObject(unsigned long long oid, bool staticBuilding) : SceneObject(DummyConstructorParameter::instance()) {
-	_impl = new BuildingObjectImplementation(oid, staticBuilding);
+BuildingObject::BuildingObject(unsigned long long oid, bool staticBuilding, int bType) : SceneObject(DummyConstructorParameter::instance()) {
+	_impl = new BuildingObjectImplementation(oid, staticBuilding, bType);
 	_impl->_setStub(this);
 }
 
@@ -455,6 +455,18 @@ void BuildingObject::setStorageLoaded(bool setter) {
 		((BuildingObjectImplementation*) _impl)->setStorageLoaded(setter);
 }
 
+bool BuildingObject::isCloningFacility() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 39);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((BuildingObjectImplementation*) _impl)->isCloningFacility();
+}
+
 /*
  *	BuildingObjectAdapter
  */
@@ -564,6 +576,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 38:
 		setStorageLoaded(inv->getBooleanParameter());
+		break;
+	case 39:
+		resp->insertBoolean(isCloningFacility());
 		break;
 	default:
 		return NULL;
@@ -702,6 +717,10 @@ bool BuildingObjectAdapter::getStorageLoaded() {
 
 void BuildingObjectAdapter::setStorageLoaded(bool setter) {
 	return ((BuildingObjectImplementation*) impl)->setStorageLoaded(setter);
+}
+
+bool BuildingObjectAdapter::isCloningFacility() {
+	return ((BuildingObjectImplementation*) impl)->isCloningFacility();
 }
 
 /*

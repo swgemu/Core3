@@ -76,6 +76,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.idl \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.idl \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
+				server/zone/objects/player/sui/banktransferbox/SuiBankTipConfirmBox.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
 				server/zone/objects/player/badges/Badges.idl \
@@ -113,6 +114,8 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.idl \
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.idl \
 				server/zone/objects/tangible/terminal/guild/GuildTerminal.idl \
+				server/zone/objects/tangible/terminal/cloning/CloningTerminal.idl \
+				server/zone/objects/tangible/terminal/cloning/InsuranceTerminal.idl \
 				server/zone/objects/tangible/terminal/vendor/VendorTerminal.idl \
 				server/zone/objects/tangible/terminal/bazaar/RegionBazaar.idl \
 				server/zone/objects/tangible/ticketcollector/TicketCollector.idl \
@@ -153,6 +156,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/guild/Guild.idl \
 				server/zone/objects/building/cell/CellObject.idl \
 				server/zone/objects/building/BuildingObject.idl \
+				server/zone/objects/building/cloningfacility/CloningFacility.idl \
 				server/zone/managers/crafting/CraftingManager.idl \
 				server/zone/objects/draftschematic/DraftSchematic.idl \
 				server/zone/objects/draftschematic/DraftSchematicGroup.idl \

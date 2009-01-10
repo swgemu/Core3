@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "../../Zone.h"
 #include "../../ZoneClientSessionImplementation.h"
 
-BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool staticBuild)
+BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool staticBuild, int bType)
 		: QuadTree(-1024, -1024, 1024, 1024), BuildingObjectServant(oid, BUILDING) {
 
 	staticBuilding = staticBuild;
@@ -62,7 +62,7 @@ BuildingObjectImplementation::BuildingObjectImplementation(uint64 oid, bool stat
 	persistent = false;
 	updated = false;
 
-	buildingType = UNKNOWN; // default building Type
+	buildingType = bType; // default building Type
 	objectCRC = 0;
 
 	setDefaultName();

@@ -61,15 +61,13 @@ interface Armor implements Wearable {
 
 	void sendTo(Player player, boolean doClose = true);
 	
-	void decayArmor(int decayRate);
+	void decay(float decayRate);
 	
 	void generateAttributes(SceneObject obj);
 	
 	void setArmorStats(int modifier);
 	
 	void sliceArmor(Player player);
-	
-	void repairArmor(Player player);
 	
 	int addSkillMod(int skillModType, int skillModValue);
 	
@@ -183,4 +181,9 @@ interface Armor implements Wearable {
 	void setSocket1Value(int value);
 	void setSocket2Value(int value);
 	void setSocket3Value(int value);
+	
+	//Event Handlers
+	void onBroken();
+	
+	//Action
 }

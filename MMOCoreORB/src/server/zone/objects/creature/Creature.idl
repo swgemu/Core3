@@ -106,7 +106,7 @@ interface Creature implements CreatureObject {
 	void doAttack(CreatureObject target, int damage);
 	boolean attack(CreatureObject target);
 
-	void deagro();
+	void deaggro();
 
 	void activateRecovery();
 	boolean doRecovery();
@@ -173,4 +173,7 @@ interface Creature implements CreatureObject {
 	unsigned int getFPValue();
 	
 	void setFPValue(unsigned int value);
+	
+	//Event Handlers
+	void onIncapacitateTarget(CreatureObject victim);
 }

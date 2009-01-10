@@ -51,6 +51,8 @@ public:
 
 	bool isDestroyed();
 
+	void onReceiveDamage(SceneObject* attacker, unsigned int amount);
+
 protected:
 	AttackableObject(DummyConstructorParameter* param);
 
@@ -105,6 +107,8 @@ public:
 	void doDamage(int damage, SceneObject* attacker);
 
 	bool isDestroyed();
+
+	void onReceiveDamage(SceneObject* attacker, unsigned int amount);
 
 protected:
 	String _param0_setTemplateName__String_;

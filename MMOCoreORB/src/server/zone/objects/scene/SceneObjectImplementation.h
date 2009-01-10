@@ -171,20 +171,20 @@ public:
 	 */
 	void dropDamageDone(CreatureObject* creature);
 	/**
-	 * Calculates the value of the total damage done 
+	 * Calculates the value of the total damage done
 	 * to this object in all of the logs.
 	 * \return Total damage done to the mob according to the damage log.
 	 */
 	int getTotalDamage();
 	/**
-	 * takes the level of the destroyed/dead scno 
+	 * takes the level of the destroyed/dead scno
 	 * and disseminates experience appropriately.
 	 * \param levels The level of the dead object.
 	 */
 	void disseminateXp(int levels);
 	/**
-	 * Cleans up the damage logs and frees the 
-	 * appropriate resources after the logs have 
+	 * Cleans up the damage logs and frees the
+	 * appropriate resources after the logs have
 	 * been used.
 	 */
 	void cleanupDamageDone();
@@ -555,6 +555,25 @@ public:
 		return planetManager->isNoBuildArea(positionX, positionY);
 	}
 
+
+
+
+	//Event Handlers
+	virtual void onIncapacitateTarget(CreatureObject* victim);
+	virtual void onInflictDamage(AttackableObject* victim, uint32 damage);
+	virtual void onInflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage);
+	virtual void onKill(CreatureObject* victim);
+	virtual void onDeathblow(Player* victim);
+	virtual void onReceivePaymentFrom(CreatureObject* sender, uint32 amount);
+
+	//Actions
+	virtual bool inflictDamage(AttackableObject* victim, uint32 damage);
+	virtual bool inflictDamage(CreatureObject* victim, uint8 attribute, uint32 damage);
+	virtual void incapacitate(CreatureObject* victim);
+	virtual void kill(CreatureObject* victim);
+	virtual void deathblow(Player* victim);
+	virtual void receivePaymentFrom(CreatureObject* sender, uint32 amount);
+	virtual void warpTo(float x, float z, float y, uint64 parentID = 0);
 };
 
 #endif /*SCENEOBJECTIMPLEMENTATION_H_*/

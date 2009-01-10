@@ -14,7 +14,7 @@
  *	TerminalStub
  */
 
-Terminal::Terminal(unsigned int objCRC, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y, int TerminalType) : TangibleObject(DummyConstructorParameter::instance()) {
+Terminal::Terminal(unsigned int objCRC, unsigned long long oid, const UnicodeString& n, const String& tempn, float x, float z, float y, unsigned char TerminalType) : TangibleObject(DummyConstructorParameter::instance()) {
 	_impl = new TerminalImplementation(objCRC, oid, n, tempn, x, z, y, TerminalType);
 	_impl->_setStub(this);
 }
@@ -38,16 +38,88 @@ int Terminal::useObject(Player* player) {
 		return ((TerminalImplementation*) _impl)->useObject(player);
 }
 
-int Terminal::getTerminalType() {
+unsigned char Terminal::getTerminalType() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
 
-		return method.executeWithSignedIntReturn();
+		return method.executeWithUnsignedCharReturn();
 	} else
 		return ((TerminalImplementation*) _impl)->getTerminalType();
+}
+
+bool Terminal::isTravelTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isTravelTerminal();
+}
+
+bool Terminal::isGuildTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isGuildTerminal();
+}
+
+bool Terminal::isMissionTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isMissionTerminal();
+}
+
+bool Terminal::isCloningTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isCloningTerminal();
+}
+
+bool Terminal::isInsuranceTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isInsuranceTerminal();
+}
+
+bool Terminal::isBazaarTerminal() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((TerminalImplementation*) _impl)->isBazaarTerminal();
 }
 
 /*
@@ -65,7 +137,25 @@ Packet* TerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		resp->insertSignedInt(useObject((Player*) inv->getObjectParameter()));
 		break;
 	case 7:
-		resp->insertSignedInt(getTerminalType());
+		resp->insertByte(getTerminalType());
+		break;
+	case 8:
+		resp->insertBoolean(isTravelTerminal());
+		break;
+	case 9:
+		resp->insertBoolean(isGuildTerminal());
+		break;
+	case 10:
+		resp->insertBoolean(isMissionTerminal());
+		break;
+	case 11:
+		resp->insertBoolean(isCloningTerminal());
+		break;
+	case 12:
+		resp->insertBoolean(isInsuranceTerminal());
+		break;
+	case 13:
+		resp->insertBoolean(isBazaarTerminal());
 		break;
 	default:
 		return NULL;
@@ -78,8 +168,32 @@ int TerminalAdapter::useObject(Player* player) {
 	return ((TerminalImplementation*) impl)->useObject(player);
 }
 
-int TerminalAdapter::getTerminalType() {
+unsigned char TerminalAdapter::getTerminalType() {
 	return ((TerminalImplementation*) impl)->getTerminalType();
+}
+
+bool TerminalAdapter::isTravelTerminal() {
+	return ((TerminalImplementation*) impl)->isTravelTerminal();
+}
+
+bool TerminalAdapter::isGuildTerminal() {
+	return ((TerminalImplementation*) impl)->isGuildTerminal();
+}
+
+bool TerminalAdapter::isMissionTerminal() {
+	return ((TerminalImplementation*) impl)->isMissionTerminal();
+}
+
+bool TerminalAdapter::isCloningTerminal() {
+	return ((TerminalImplementation*) impl)->isCloningTerminal();
+}
+
+bool TerminalAdapter::isInsuranceTerminal() {
+	return ((TerminalImplementation*) impl)->isInsuranceTerminal();
+}
+
+bool TerminalAdapter::isBazaarTerminal() {
+	return ((TerminalImplementation*) impl)->isBazaarTerminal();
 }
 
 /*

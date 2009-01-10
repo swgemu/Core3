@@ -25,15 +25,13 @@ public:
 
 	void sendTo(Player* player, bool doClose = true);
 
-	void decayArmor(int decayRate);
+	void decay(float decayRate);
 
 	void generateAttributes(SceneObject* obj);
 
 	void setArmorStats(int modifier);
 
 	void sliceArmor(Player* player);
-
-	void repairArmor(Player* player);
 
 	int addSkillMod(int skillModType, int skillModValue);
 
@@ -174,6 +172,8 @@ public:
 	void setSocket2Value(int value);
 
 	void setSocket3Value(int value);
+
+	void onBroken();
 
 protected:
 	Armor(DummyConstructorParameter* param);
@@ -193,15 +193,13 @@ public:
 
 	void sendTo(Player* player, bool doClose);
 
-	void decayArmor(int decayRate);
+	void decay(float decayRate);
 
 	void generateAttributes(SceneObject* obj);
 
 	void setArmorStats(int modifier);
 
 	void sliceArmor(Player* player);
-
-	void repairArmor(Player* player);
 
 	int addSkillMod(int skillModType, int skillModValue);
 
@@ -342,6 +340,8 @@ public:
 	void setSocket2Value(int value);
 
 	void setSocket3Value(int value);
+
+	void onBroken();
 
 };
 

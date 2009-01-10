@@ -61,6 +61,8 @@ import "../tangible/weapons/Weapon";
 
 import "../creature/CreatureObject";
 
+import "../attackable/AttackableObject";
+
 import "../building/BuildingObject";
 
 import "../creature/skills/target/AttackTargetSkill";
@@ -263,4 +265,22 @@ interface SceneObject implements ManagedObject {
 	int getTotalDamage();
 	void disseminateXp(int levels);
 	void cleanupDamageDone();
+	
+	
+	//Event Handlers
+	void onIncapacitateTarget(CreatureObject victim);
+	void onInflictDamage(AttackableObject victim, unsigned int damage);
+	void onInflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);
+	void onKill(CreatureObject victim);
+	void onDeathblow(Player victim);
+	void onReceivePaymentFrom(CreatureObject sender, unsigned int amount);
+
+	//Actions
+	boolean inflictDamage(AttackableObject victim, unsigned int damage);
+	boolean inflictDamage(CreatureObject victim, unsigned char attribute, unsigned int damage);
+	void incapacitate(CreatureObject victim);
+	void kill(CreatureObject victim);
+	void deathblow(Player victim);
+	void receivePaymentFrom(CreatureObject sender, unsigned int amount);
+	void warpTo(float x, float z, float y, unsigned long parentID = 0);
 }
