@@ -13,15 +13,25 @@ class MissionManagerImplementation;
 
 class SceneObject;
 
+class TangibleObject;
+
 class Player;
 
 class Creature;
 
 class Action : public DistributedObjectStub {
 public:
-	Action(SceneObject* po, int actMask, int tpr);
+	Action(SceneObject* po, String& tky, int actMask, int tpr);
+
+	void setActionKey(String& tky);
+
+	String& getActionKey();
 
 	void setPrereq(int tpr);
+
+	void setMeetHasMission(String& tstr);
+
+	void setMeetKillLimitList(String& tlist);
 
 	void setActionMask(int tat);
 
@@ -29,10 +39,16 @@ public:
 
 	void addConvoScreen(String& screenID, String& leftBoxText, int numOptions, String& Options, String& optLinks);
 
+	void setGiveItem(TangibleObject* tempTano);
+
+	void setTakeItem(unsigned int crc, String& itemname, bool useParentMisoKey, String& withMisoKey);
+
 protected:
 	Action(DummyConstructorParameter* param);
 
 	virtual ~Action();
+
+	String _return_getActionKey;
 
 	friend class ActionHelper;
 };
@@ -45,7 +61,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void setActionKey(String& tky);
+
+	String& getActionKey();
+
 	void setPrereq(int tpr);
+
+	void setMeetHasMission(String& tstr);
+
+	void setMeetKillLimitList(String& tlist);
 
 	void setActionMask(int tat);
 
@@ -53,11 +77,20 @@ public:
 
 	void addConvoScreen(String& screenID, String& leftBoxText, int numOptions, String& Options, String& optLinks);
 
+	void setGiveItem(TangibleObject* tempTano);
+
+	void setTakeItem(unsigned int crc, String& itemname, bool useParentMisoKey, String& withMisoKey);
+
 protected:
+	String _param0_setActionKey__String_;
+	String _param0_setMeetHasMission__String_;
+	String _param0_setMeetKillLimitList__String_;
 	String _param0_addConvoScreen__String_String_int_String_String_;
 	String _param1_addConvoScreen__String_String_int_String_String_;
 	String _param3_addConvoScreen__String_String_int_String_String_;
 	String _param4_addConvoScreen__String_String_int_String_String_;
+	String _param1_setTakeItem__int_String_bool_String_;
+	String _param3_setTakeItem__int_String_bool_String_;
 };
 
 class ActionHelper : public DistributedObjectClassHelper, public Singleton<ActionHelper> {

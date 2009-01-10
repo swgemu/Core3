@@ -23,9 +23,11 @@ class ActionCreature : public Creature {
 public:
 	ActionCreature(unsigned long long oid, unsigned int objCrc, String& creName, String& stf, String& missionKey);
 
-	void addAction(String& key, Action* act);
+	void addActionObj(String& key, Action* act);
 
-	Action* getAction(String& key);
+	Action* getActionObj(String& key);
+
+	void execActionByKey(String& key, Player* player);
 
 	void onConverse(String& tco, Player* player = NULL);
 
@@ -65,9 +67,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void addAction(String& key, Action* act);
+	void addActionObj(String& key, Action* act);
 
-	Action* getAction(String& key);
+	Action* getActionObj(String& key);
+
+	void execActionByKey(String& key, Player* player);
 
 	void onConverse(String& tco, Player* player);
 
@@ -86,8 +90,9 @@ public:
 	void selectConversationOption(int option, SceneObject* obj);
 
 protected:
-	String _param0_addAction__String_Action_;
-	String _param0_getAction__String_;
+	String _param0_addActionObj__String_Action_;
+	String _param0_getActionObj__String_;
+	String _param0_execActionByKey__String_Player_;
 	String _param0_onConverse__String_Player_;
 	String _param0_onTrade__String_;
 	String _param0_onAttack__String_;

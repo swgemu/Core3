@@ -490,6 +490,8 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 
 		resetArmorEncumbrance();
 
+		//fillMissionSaveVars(); //REAL
+
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		//playerManager->updateOtherFriendlists(_this, true);
 		//displayMessageoftheDay();
@@ -579,7 +581,7 @@ void PlayerImplementation::reload(ZoneClientSession* client) {
 		//reset mission vars:
 		misoRFC = 0x01;
 		misoBSB = 0;
-		_this->fillMissionSaveVars(); //REAL
+		//_this->fillMissionSaveVars(); //REAL
 
 		playerManager->updateOtherFriendlists(_this, true);
 		displayMessageoftheDay();
@@ -686,7 +688,7 @@ void PlayerImplementation::savePlayerState(bool doSchedule) {
 
 	saveDatapad(_this);
 
-	_this->saveMissions(); //REAL
+	//_this->saveMissions(); //REAL
 
 	playerObject->saveFriends();
 	playerObject->saveIgnore();
@@ -1675,7 +1677,7 @@ void PlayerImplementation::switchMap(int planetid) {
 	//reset mission vars:
 	misoRFC = 0x01;
 	misoBSB = 0;
-	//_this->fillMissionSaveVars(); NOT REAL
+	//_this->fillMissionSaveVars(); //REAL
 
 	setPositionZ(zone->getHeight(positionX, positionY));
 
@@ -3713,8 +3715,6 @@ void PlayerImplementation::saveMissions() {
 		String curKey = "";
 		String curVal = "";
 
-		//COMMIT THE current and finished mission keys HERE
-
 		//Get the mission manager:
 		MissionManager* misoMgr = server->getMissionManager();
 
@@ -3749,7 +3749,7 @@ void PlayerImplementation::saveMissions() {
 //Updates mission save in missionSaveList. List key = "misokey,dbvarname" List value: "51452=5,23232=2,"
 void PlayerImplementation::updateMissionSave(String misoKey, const String& dbVar, String& varName, String& varData, bool doLock) {
 	try {
-		wlock(doLock);
+		lock(doLock);
 
 		if(varName.length() == 0 || varData.length() == 0 || dbVar.length() == 0 || misoKey.length() == 0)
 			return;
@@ -3796,7 +3796,7 @@ void PlayerImplementation::updateMissionSave(String misoKey, const String& dbVar
 			String listStr = missionSaveList.get(getStr);
 
 			//Tack on the new name/value pair to the missionSaveList:
-			listStr += varName + "=" + varData + ",";
+			listStr += (varName + "=" + varData + ",");
 
 			//Drop the misokey/dbvar from the save list.
 			missionSaveList.drop(getStr);
@@ -3824,7 +3824,6 @@ void PlayerImplementation::fillMissionSaveVars() {
 		misoMgr->getMisoKeysStatus(_this, true, finMisoKeys, true);
 
 		if(curMisoKeys == "none" || finMisoKeys == "none") {
-			printf("error in fillMissionSaveVars, curMisoKeys and finMisoKeys never touched\n");
 			return;
 		}
 
@@ -3845,12 +3844,12 @@ void PlayerImplementation::fillMissionSaveVars() {
 		while (mkeyTok.hasMoreTokens()) {
 			mkeyTok.getStringToken(curMisoKey);
 
-			String objective_vars, kill_count_vars = "none";
-			misoMgr->getMissionSaveVarLine(_this, curMisoKey, "objective_vars", objective_vars, false);
-			misoMgr->getMissionSaveVarLine(_this, curMisoKey, "kill_count_vars", kill_count_vars, false);
+			String objective_vars, kill_count_vars;
+			misoMgr->getMissionSaveVarLine(_this, curMisoKey, "objective_vars", objective_vars, true);
+			misoMgr->getMissionSaveVarLine(_this, curMisoKey, "kill_count_vars", kill_count_vars, true);
 
 			if (objective_vars == "none" || kill_count_vars == "none") {
-				printf("error in fillMissionSaveVars, objective_vars and kill_count_vars never touched\n");
+				//System::out << "error in fillMissionSaveVars, objective_vars and kill_count_vars never touched" << endl;
 				continue;
 			}
 
@@ -3858,6 +3857,7 @@ void PlayerImplementation::fillMissionSaveVars() {
 			missionSaveList.put(curMisoKey + ",objective_vars", objective_vars);
 			missionSaveList.put(curMisoKey + ",kill_count_vars", kill_count_vars);
 		}
+
 	} catch (...) {
 		info("Unreported Exception in PlayerImplementation::fillMissionSaveVars");
 	}

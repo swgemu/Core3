@@ -49,127 +49,259 @@ which carries forward this exception.
 
 #include "../../../packets.h"
 
+#include "../../tangible/TangibleObject.h"
 #include "../../player/Player.h"
 
-ActionImplementation::ActionImplementation(SceneObject* po, int actMask, int tpr) : ActionServant() {
+#include "../../../../ServerCore.h"
+
+ActionImplementation::ActionImplementation(SceneObject* po, String tky, int actMask, int tpr) : ActionServant() {
+	actionKey = tky;
+
 	parentObject = po;
+	parentCreature = NULL;
+
+	execCount = 0;
+
+	//Delay:
+	delayTime = 0.0f;
+
+	////////////////////////////
+	//Prerequisite:
+	////////////////////////////
+
+	hasActionParent = false;
+	hasLairParent = false;
+
+	preRequisites = tpr;
+
+	//prereq:HASMISSION:
+		hasMisoKey = "";
+
+	//prereq:killCountLimit
+		killCountLimitList = "";
+
+	////////////////////////////
+	//Action:
+	////////////////////////////
+
 	actionMask = actMask;
-	preRequisites = tpr; //MAY NOT BE A BITMASK - OVERHAUL PREREQ SYSTEM
-	sayText = "";
-	giveMissionKey = "";
+
+	//Action:Say:
+		sayText = "";
+
+	//Action:GiveItem:
+		giveItemObj = NULL;
+
+	//Action:TakeItem:
+		takeItemCrc = 0;
+		takeItemName = "";
+		takeItemUseParentMiso = true;
+		takeItemWithMisoKey = "";
+
+	//Action:GiveMission:
+		giveMissionKey = "";
 }
 
 ActionImplementation::~ActionImplementation() {
 }
 
+//Action:execAction - main call from outside functions to run the action.
 void ActionImplementation::execAction(Player* player) {
-	if (!prereqCheck(player))
-		return;
+	//Run parent settings, used throughout most actions & the prereq's
+	verifyParent();
 
-	if ((actionMask & TYPE_MOVE)) {
+	//Check for delay. If true, pool event, up execution count, bail.
+	if(execCount == 0 && (delayTime > 0.0f)) {
+		ZoneProcessServerImplementation* server = parentObject->getZoneProcessServer();
+		Event* delayEvent = new ActionDelayExecutionEvent(parentCreature, player, actionKey, delayTime);
+
+		if(server != NULL)
+			server->addEvent(delayEvent);
+
+		execCount++;
+		return;
 	}
 
-	if ((actionMask & TYPE_CONVERSE)) {
-		if (!parentObject->isNonPlayerCreature() /*|| !parentObject->isAttackableObject()*/)
+	if(!prereqCheck(player))
+		return;
+
+	if((actionMask & TYPE_MOVE)) {
+	}
+
+	if((actionMask & TYPE_CONVERSE)) {
+		if (!hasActionParent)
 			return;
 		carryConversation(player);
 	}
 
-	if ((actionMask & TYPE_SAY)) {
+	if((actionMask & TYPE_SAY)) {
 	}
 
-	if ((actionMask & TYPE_GIVEITEM)) {
-	}
+	if((actionMask & TYPE_GIVEITEM)) {
+		if(giveItemObj == NULL)
+			return;
 
-	if ((actionMask & TYPE_TAKEITEM)) {
 		String misoKey;
-		TangibleObject* pItem;
+		TangibleObject* pItem = NULL;
 
-		if (parentObject->isNonPlayerCreature()) {
-			ActionCreature* parentCreature = (ActionCreature*)parentObject;
-			if (parentCreature->getType() != CreatureImplementation::ACTION)
+		if(hasActionParent) {
+			if(!parentCreature->isMissionNpc())
 				return;
 
-			if (!parentCreature->isMissionNpc())
+			misoKey = parentCreature->getMissionKey();
+
+			TangibleObject* playerItem = new TangibleObject(player->getNewItemID(), giveItemObj->getObjectCRC(), giveItemObj->getName(), giveItemObj->getTemplateName());
+
+			playerItem->setMisoAsocKey(misoKey);
+			player->addInventoryItem(playerItem);
+			playerItem->sendTo(player);
+		}
+	}
+
+	if((actionMask & TYPE_TAKEITEM)) {
+		String misoKey;
+		TangibleObject* pItem = NULL;
+
+		if(hasActionParent) {
+			if(!parentCreature->isMissionNpc())
 				return;
+
+			//Do filter checks:
 
 			misoKey = parentCreature->getMissionKey();
 
 			pItem = player->getItemByMisoKey(misoKey);
 
-			if (pItem == NULL) {
+			if(pItem == NULL) {
 				//Elaborate with NPC dialogue later.
-				////printf("Cannot get mission item from player, it is NULL\n");
+				//printf("Cannot get mission item from player, it is NULL\n");
 				return;
 			}
-
-		} else {
 		}
 	}
 
-	if ((actionMask & TYPE_GIVEMISSION)) {
+	if((actionMask & TYPE_GIVEMISSION)) {
 	}
 
-	if ((actionMask & TYPE_COMPMISSION)) {
+	if((actionMask & TYPE_FAILMISSION)) {
 		String misoKey;
 		MissionManagerImplementation* mMgr;
 
-		if (parentObject->isNonPlayerCreature()) {
-			ActionCreature* parentCreature = (ActionCreature*)parentObject;
-			if (parentCreature->getType() != CreatureImplementation::ACTION)
-				return;
-
-			if (!parentCreature->isMissionNpc())
+		if(hasActionParent) {
+			if(!parentCreature->isMissionNpc())
 				return;
 
 			misoKey = parentCreature->getMissionKey();
 			mMgr = parentCreature->getMisoMgr();
 
-			if (mMgr == NULL) {
-				//printf("Cannot complete mission, mission manager is null in parent creature\n");
-				return;
-			}
-
-			if (misoKey.isEmpty()) {
-				return;
-			}
-
-			mMgr->doMissionComplete(player, misoKey, false);
-		} /*else if (parentObject->isAttackableObject()) {
-			//For lairs
-		}*/ else {
-		}
-	}
-
-	if ((actionMask & TYPE_FAILMISSION)) {
-		String misoKey;
-		MissionManagerImplementation* mMgr;
-
-		if (parentObject->isNonPlayerCreature()) {
-			ActionCreature* parentCreature = (ActionCreature*)parentObject;
-			if (parentCreature->getType() != CreatureImplementation::ACTION)
-				return;
-
-			if (!parentCreature->isMissionNpc())
-				return;
-
-			misoKey = parentCreature->getMissionKey();
-			mMgr = parentCreature->getMisoMgr();
-
-			if (mMgr == NULL) {
-				////printf("Cannot abort mission, mission manager is null in parent creature\n");
+			if(mMgr == NULL) {
+				//printf("Cannot abort mission, mission manager is null in parent creature\n");
 				return;
 			}
 
 			mMgr->doMissionAbort(player, misoKey, false);
 
-		} /*else if (parentObject->isAttackableObject()) {
+		} /*else if(parentObject->isAttackableObject()) {
 			//For lairs
 		}*/ else {
 		}
 	}
+
+	if((actionMask & TYPE_COMPMISSION)) {
+		String misoKey;
+		MissionManagerImplementation* mMgr;
+
+		if(hasActionParent) {
+			if(!parentCreature->isMissionNpc())
+				return;
+
+			misoKey = parentCreature->getMissionKey();
+			mMgr = parentCreature->getMisoMgr();
+
+			if(mMgr == NULL) {
+				printf("Cannot complete mission, mission manager is null in parent creature\n");
+				return;
+			}
+
+			if(misoKey.length() == 0) {
+				return;
+			}
+
+			mMgr->doMissionComplete(player, misoKey, false);
+		} /*else if(parentObject->isAttackableObject()) {
+			//For lairs
+		}*/ else {
+		}
+	}
+
+	//Death Action. Add a kill to the player that killed the parent creature
+	//Prereq is that the player has the mission
+	if((actionMask & TYPE_ADDKILL) && (preRequisites & MEET_HASMISSION)) {
+		System::out << "adding kill for action creature death" << endl;
+		//Get parentCreature CRC then convert to String(varname). Note: we assume parentCreature is correct since the prereq was tested
+		ActionCreature* parentCreature = (ActionCreature*)parentObject;
+		uint32 pcrc = parentCreature->getObjectCRC();
+		String varName = "";
+		char num[10];
+		sprintf(num,"%d",pcrc);
+		varName = num;
+
+		//Get the current kill value from the kill list
+		MissionManagerImplementation* mMgr;
+		mMgr = parentCreature->getMisoMgr();
+		if(mMgr == NULL)
+			return;
+
+		String killList = "";
+		String varData = "1";
+		mMgr->getMissionSaveVarLine(player, parentCreature->getMissionKey(), "kill_count_vars", killList, false);
+
+		//Loop through kill list to see if there is a previous value:
+		StringTokenizer kListTok(killList);
+		kListTok.setDelimeter(",");
+		while(kListTok.hasMoreTokens()) {
+			//Grab individual name/value pairs:
+			String pair, curName, curValue = "";
+
+			kListTok.getStringToken(pair);
+
+			//Parse the pair, separate the name and value for checking:
+			StringTokenizer pairTok(pair);
+			pairTok.setDelimeter("=");
+			pairTok.getStringToken(curName);
+			pairTok.getStringToken(curValue);
+
+			//If there is already a record for the creature/kill pair, update it:
+			if(curName == varName) {
+				int killVal = atoi(curValue.toCharArray());
+				killVal+=1;
+				sprintf(num,"%d",killVal);
+				varData = num;
+			}
+		}
+
+		//Update the specific creature/kill pair
+		player->updateMissionSave(parentCreature->getMissionKey(), "kill_count_vars", varName, varData, false);
+	}
+
+	//temporary stress test reward action. To lazy to script give item right now :-/
+	//executed in conversation only. make sure killLimitList and hasmission is a prereq
+	/*if((actionMask & TYPE_STRESSREWARD)) {
+		ActionCreature* parentCreature = (ActionCreature*)parentObject;
+		String misoKey = parentCreature->getMissionKey();
+
+		TangibleObject* playerItem = new TangibleObject(player->getNewItemID(), giveItemObj->getObjectCRC(), giveItemObj->getName(), giveItemObj->getTemplateName());
+
+		playerItem->setMisoAsocKey(misoKey);
+		player->addInventoryItem(playerItem);
+		playerItem->sendTo(player);
+	}*/
+
+	//Increase the execution count:
+	execCount++;
 }
 
+//Action:Conversation:addConvoScreen
 void ActionImplementation::addConvoScreen(String screenID, String leftBoxText, int numOptions, String Options, String optLinks) {
 	//optLinks syntax: nextScreenID,actionKey|next|next etc. Goes to convoOptLink<"screenID,OptionNumber","nextScreenID,actionKey">
 	String screenStr;
@@ -179,7 +311,7 @@ void ActionImplementation::addConvoScreen(String screenID, String leftBoxText, i
 	StringTokenizer token(optLinks);
 	token.setDelimeter("|");
 
-	for (int i = 0; i < numOptions; i++) {
+	for(int i = 0; i < numOptions; i++) {
 		String key = "";
 		char numBuf[10];
 		sprintf(numBuf,"%d",i);
@@ -192,11 +324,24 @@ void ActionImplementation::addConvoScreen(String screenID, String leftBoxText, i
 	}
 }
 
-//private:
+//Action:giveItem:setGiveItem
+void ActionImplementation::setGiveItem(TangibleObject* tempTano) {
+	//Copy all the settings for the tano here.
+}
 
+//Action:takeItem:setTakeItem
+void ActionImplementation::setTakeItem(uint32 crc, String itemname, bool useParentMisoKey, String withMisoKey) {
+	//NOT ALL OF THESE PRAMS HAVE TO BE SET, THIS FUNCTION SHOULD FILTER
+}
+
+//---------
+//Private:
+//---------
+
+//Action:Conversation:carryConversation
 void ActionImplementation::carryConversation(Player* player) {
-	if (player->getLastNpcConvStr() != "action_npc") {
-		////printf("debug: aborting ActionImpl carryConversation() because getLastNpcConvStr = %s\n", player->getLastNpcConvStr().toCharArray());
+	if(player->getLastNpcConvStr() != "action_npc") {
+		//printf("debug: aborting ActionImpl carryConversation() because getLastNpcConvStr = %s\n", player->getLastNpcConvStr().toCharArray());
 		return;
 	}
 
@@ -210,7 +355,7 @@ void ActionImplementation::carryConversation(Player* player) {
 	token.getStringToken(tScreenID);
 	token.getStringToken(tOptNum);
 
-	if ((tScreenID == "0") && (tOptNum == "init")) {
+	if((tScreenID == "0") && (tOptNum == "init")) {
 		StartNpcConversation* conv = new StartNpcConversation(player, parentCreature->getObjectID(), "");
 		player->sendMessage(conv);
 
@@ -222,8 +367,8 @@ void ActionImplementation::carryConversation(Player* player) {
 		//Retrive Screen/Option pair from convoOptLink and send new screen.
 		String tns = "";
 		tns = convoOptLink.get(player->getLastNpcConvMessStr());
-		if (tns == "") {
-			////printf("carryConversation() : No such Conversation Option link found in map.");
+		if(tns == "") {
+			//printf("carryConversation() : No such Conversation Option link found in map.");
 			return;
 		}
 
@@ -235,13 +380,13 @@ void ActionImplementation::carryConversation(Player* player) {
 		token2.getStringToken(actKey);
 
 		//Check for special words set as the new screen id:
-		if (newScreenID == "EXECACTION") {
-			Action* nAction = parentCreature->getAction(actKey);
+		if(newScreenID == "EXECACTION") {
+			Action* nAction = parentCreature->getActionObj(actKey);
 			nAction->execAction(player);
 
 			StopNpcConversation* scv = new StopNpcConversation(player, parentCreature->getObjectID());
 			player->sendMessage(scv);
-		} else if (newScreenID == "ENDCNV") {
+		} else if(newScreenID == "ENDCNV") {
 			StopNpcConversation* scv = new StopNpcConversation(player, parentCreature->getObjectID());
 			player->sendMessage(scv);
 			player->setLastNpcConvStr("");
@@ -252,6 +397,7 @@ void ActionImplementation::carryConversation(Player* player) {
 	}
 }
 
+//Action:Conversation:sendConvoScreen
 void ActionImplementation::sendConvoScreen(Player* player, String& screenID) {
 	String windowStr = convoScreens.get(screenID);
 	//Take the windowStr = "Left Box Text~Option1Text|O2|O3". Parse it and send the convo screen packet.
@@ -272,7 +418,7 @@ void ActionImplementation::sendConvoScreen(Player* player, String& screenID) {
 	token2.setDelimeter("|");
 	StringList* slist = new StringList(player);
 
-	while (token2.hasMoreTokens()) {
+	while(token2.hasMoreTokens()) {
 		String tempOpt;
 		token2.getStringToken(tempOpt);
 		slist->insertOption(tempOpt);
@@ -284,33 +430,134 @@ void ActionImplementation::sendConvoScreen(Player* player, String& screenID) {
 	player->setLastNpcConvMessStr(newConvStr);
 }
 
+//Prerequisite:prereqCheck
 bool ActionImplementation::prereqCheck(Player* player) {
 	//private. call this when triggers are fired so they know if its ok to exec action
 
+	//Retrive parent creature for late prereq tests, so we only have to do it once.
+	ActionCreature* parentCreature = (ActionCreature*)parentObject;
+	bool parentHasAMiso = true;
+
+	//If the parent creature isn't an action NPC, why/how the hell are we here anyway
+	if(parentCreature->getType() != CreatureImplementation::ACTION)
+		return false;
+
+	if(!parentCreature->isMissionNpc())
+		parentHasAMiso = false;
+
+	if((preRequisites & MEET_HASMISSION)) {
+		if(parentHasAMiso) {
+			//If player has the mission, continue with the prereq checks. if not, bail.
+			String mkey = parentCreature->getMissionKey();
+			if(!player->isOnCurMisoKey(mkey)) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	//Mission specific prereq, meet_hasmission must run.
+	if((preRequisites & MEET_KILLCOUNTLIMIT) && (preRequisites & MEET_HASMISSION)) {
+		MissionManagerImplementation* mMgr;
+		mMgr = parentCreature->getMisoMgr();
+		if(mMgr == NULL) {
+			return false;
+		}
+
+		bool limitMet = false;
+
+		String kill_count_ret = "";
+		mMgr->getMissionSaveVarLine(player, parentCreature->getMissionKey(), "kill_count_vars", kill_count_ret, false);
+
+		//Pull each individaul kill count var:
+		StringTokenizer kcrTok(kill_count_ret);
+		kcrTok.setDelimeter(",");
+		while(kcrTok.hasMoreTokens()) {
+			String kcrPair;
+			kcrTok.getStringToken(kcrPair);
+
+			//Pull the killed creatures crc and # of kills
+			StringTokenizer killCntTok(kcrPair);
+			String killName, killValue;
+			killCntTok.setDelimeter("=");
+
+			killCntTok.getStringToken(killName);
+			killCntTok.getStringToken(killValue);
+
+			//Compare against limit list:
+			StringTokenizer killLimitTok(killCountLimitList);
+			killLimitTok.setDelimeter(",");
+			while(killLimitTok.hasMoreTokens()) {
+				String limitPair;
+				killLimitTok.getStringToken(limitPair);
+
+				//Pull out the limit pair and compare against the current kill being counted
+				StringTokenizer limitPairTok(limitPair);
+				String limitName, limitValue;
+				limitPairTok.setDelimeter("=");
+
+				//Compare the real kill count to the limit. If the conditions have been met, limitMet will be true in the end.
+				limitPairTok.getStringToken(limitName);
+				limitPairTok.getStringToken(limitValue);
+				if(limitName == killName.toCharArray()) {
+					if(atoi(limitValue.toCharArray()) >= atoi(killValue.toCharArray())) {
+						limitMet = true;
+					} else {
+						limitMet = false;
+					}
+				}
+			}
+		}
+
+		if(!limitMet)
+			return false;
+	}
+
 	//temp
-	String misoKey;
+	/*String misoKey;
 	misoKey = "";
 
-	if (parentObject->isNonPlayerCreature()) {
+	if(parentObject->isNonPlayerCreature()) {
 		ActionCreature* parentCreature = (ActionCreature*)parentObject;
 
-		if (parentCreature->getType() != CreatureImplementation::ACTION)
+		if(parentCreature->getType() != CreatureImplementation::ACTION)
 			return false;
 
-		if (!parentCreature->isMissionNpc())
+		if(!parentCreature->isMissionNpc())
 			return false;
 
 		misoKey = parentCreature->getMissionKey();
 
-		if (misoKey == "") {
-			////printf("Unable to get Mission key from parentCreature in prereqCheck()\n");
+		if(misoKey == "") {
+			//printf("Unable to get Mission key from parentCreature in prereqCheck()\n");
 			return false;
 		} else {
 			return player->isOnCurMisoKey(misoKey);
 		}
-	}
+	}*/
 
-	return false;
+	//We'll always return true. If a condition isnt met, return false within the check
+	return true;
+}
+
+//Action:verifyParent. called at the beginning of execAction
+void ActionImplementation::verifyParent() {
+	hasActionParent = false;
+	hasLairParent = false;
+
+	if(parentObject == NULL)
+		return;
+
+	if(parentObject->isNonPlayerCreature()) {
+		parentCreature = (ActionCreature*)parentObject;
+		if(parentCreature->getType() == CreatureImplementation::ACTION) {
+			hasActionParent = true;
+		}
+	} else if(parentObject->isAttackableObject()) {
+		hasLairParent = true;
+	} else {
+	}
 }
 
 

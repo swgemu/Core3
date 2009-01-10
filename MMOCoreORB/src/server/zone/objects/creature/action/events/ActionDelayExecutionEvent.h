@@ -42,86 +42,38 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ACTIONCREATUREIMPLEMENTATION_H_
-#define ACTIONCREATUREIMPLEMENTATION_H_
+#ifndef ACTIONDELAYEXECUTIONEVENT_H_
+#define ACTIONDELAYEXECUTIONEVENT_H_
 
-class MissionManagerImplementation;
+#include "../ActionImplementation.h"
 
-class Player;
-class SceneObject;
-
-#include "engine/engine.h"
-
-#include "ActionCreature.h"
-#include "Action.h"
-
-class ActionCreatureImplementation : public ActionCreatureServant {
-
-	VectorMap<String, Action*> actionList; //<action key, action>
-
-	String misoKey; //Mission Key
-	MissionManagerImplementation* misoMgr;
-
-	//Trigger Action Keys:
-	String converseKeys;
-	String tradeKeys;
-	String attackKeys;
-	String deathKeys;
+class ActionDelayExecutionEvent : public Event {
+	ManagedReference<ActionCreature> caller;
+	ManagedReference<Player> applicant;
+	String actionKey;
 
 public:
-	ActionCreatureImplementation(uint64 oid, uint32 objCrc, String& creName, String& stf, String& missionKey);
-	~ActionCreatureImplementation();
-
-	//Action List Manip
-	void addActionObj(String& key, Action* act) {
-		actionList.put(key, act);
+	ActionDelayExecutionEvent(ActionCreature* clr, Player* pl, String tkey, float duration) : Event((int) (duration * 1000)) {
+		caller = clr;
+		applicant = pl; //WARNING: It is acceptable for this variable to be NULL.
+		actionKey = tkey;
 	}
 
-	Action* getActionObj(String& key) {
-		return actionList.get(key);
+	bool activate() {
+		try {
+			caller->wlock();
+
+			caller->execActionByKey(actionKey, applicant);
+
+			caller->unlock();
+		} catch (...) {
+			caller->error("unreported exception caught in ActionDelayExecutionEvent::activate");
+			caller->unlock();
+		}
+
+		return true;
 	}
-
-	void execActionByKey(String key, Player* player);
-
-	//Triggers: If an action key is passed, the action will be called when the trigger is pulled
-	void onConverse(String tco, Player* player = NULL);
-	void onTrade(String ttr);
-	void onAttack(String tat);
-	void onDeath(String tde);
-
-	//Mission Specific:
-	bool isMissionNpc(); //Returns true if NPC has a mission assigned to it.
-
-	String& getMissionKey() {
-		return misoKey;
-	}
-
-	//Mission Manager:
-	inline MissionManagerImplementation* getMisoMgr() {
-		return misoMgr;
-	}
-
-	inline void setMisoMgr(MissionManagerImplementation* tmgr) {
-		misoMgr = tmgr;
-	}
-
-	//Conversation Specific:
-	void sendConversationStartTo(SceneObject* obj);
-	void selectConversationOption(int option, SceneObject* obj);
-
-private:
-
-	//Action List Manip
-	void dropAction(String& key) {
-		actionList.drop(key);
-	}
-
-	void clearActions() {
-		actionList.removeAll();
-	}
-
-	friend class MissionManagerImplementation;
 
 };
 
-#endif /*ACTIONCREATUREIMPLEMENTATION_H_*/
+#endif /* ACTIONDELAYEXECUTIONEVENT_H_ */
