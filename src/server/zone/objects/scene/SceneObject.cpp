@@ -18,6 +18,8 @@
 
 #include "../creature/CreatureObject.h"
 
+#include "../attackable/AttackableObject.h"
+
 #include "../building/BuildingObject.h"
 
 #include "../creature/skills/target/AttackTargetSkill.h"
@@ -1338,6 +1340,186 @@ void SceneObject::cleanupDamageDone() {
 		((SceneObjectImplementation*) _impl)->cleanupDamageDone();
 }
 
+void SceneObject::onIncapacitateTarget(CreatureObject* victim) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 107);
+		method.addObjectParameter(victim);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->onIncapacitateTarget(victim);
+}
+
+void SceneObject::onInflictDamage(AttackableObject* victim, unsigned int damage) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 108);
+		method.addObjectParameter(victim);
+		method.addUnsignedIntParameter(damage);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->onInflictDamage(victim, damage);
+}
+
+void SceneObject::onInflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 109);
+		method.addObjectParameter(victim);
+		method.addUnsignedCharParameter(attribute);
+		method.addUnsignedIntParameter(damage);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->onInflictDamage(victim, attribute, damage);
+}
+
+void SceneObject::onKill(CreatureObject* victim) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 110);
+		method.addObjectParameter(victim);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->onKill(victim);
+}
+
+void SceneObject::onDeathblow(Player* victim) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 111);
+		method.addObjectParameter(victim);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->onDeathblow(victim);
+}
+
+void SceneObject::onReceivePaymentFrom(CreatureObject* sender, unsigned int amount) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 112);
+		method.addObjectParameter(sender);
+		method.addUnsignedIntParameter(amount);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->onReceivePaymentFrom(sender, amount);
+}
+
+bool SceneObject::inflictDamage(AttackableObject* victim, unsigned int damage) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 113);
+		method.addObjectParameter(victim);
+		method.addUnsignedIntParameter(damage);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->inflictDamage(victim, damage);
+}
+
+bool SceneObject::inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 114);
+		method.addObjectParameter(victim);
+		method.addUnsignedCharParameter(attribute);
+		method.addUnsignedIntParameter(damage);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((SceneObjectImplementation*) _impl)->inflictDamage(victim, attribute, damage);
+}
+
+void SceneObject::incapacitate(CreatureObject* victim) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 115);
+		method.addObjectParameter(victim);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->incapacitate(victim);
+}
+
+void SceneObject::kill(CreatureObject* victim) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 116);
+		method.addObjectParameter(victim);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->kill(victim);
+}
+
+void SceneObject::deathblow(Player* victim) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 117);
+		method.addObjectParameter(victim);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->deathblow(victim);
+}
+
+void SceneObject::receivePaymentFrom(CreatureObject* sender, unsigned int amount) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 118);
+		method.addObjectParameter(sender);
+		method.addUnsignedIntParameter(amount);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->receivePaymentFrom(sender, amount);
+}
+
+void SceneObject::warpTo(float x, float z, float y, unsigned long long parentID) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 119);
+		method.addFloatParameter(x);
+		method.addFloatParameter(z);
+		method.addFloatParameter(y);
+		method.addUnsignedLongParameter(parentID);
+
+		method.executeWithVoidReturn();
+	} else
+		((SceneObjectImplementation*) _impl)->warpTo(x, z, y, parentID);
+}
+
 /*
  *	SceneObjectAdapter
  */
@@ -1651,6 +1833,45 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 		break;
 	case 106:
 		cleanupDamageDone();
+		break;
+	case 107:
+		onIncapacitateTarget((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 108:
+		onInflictDamage((AttackableObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 109:
+		onInflictDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 110:
+		onKill((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 111:
+		onDeathblow((Player*) inv->getObjectParameter());
+		break;
+	case 112:
+		onReceivePaymentFrom((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 113:
+		resp->insertBoolean(inflictDamage((AttackableObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
+		break;
+	case 114:
+		resp->insertBoolean(inflictDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter()));
+		break;
+	case 115:
+		incapacitate((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 116:
+		kill((CreatureObject*) inv->getObjectParameter());
+		break;
+	case 117:
+		deathblow((Player*) inv->getObjectParameter());
+		break;
+	case 118:
+		receivePaymentFrom((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 119:
+		warpTo(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedLongParameter());
 		break;
 	default:
 		return NULL;
@@ -2061,6 +2282,58 @@ void SceneObjectAdapter::disseminateXp(int levels) {
 
 void SceneObjectAdapter::cleanupDamageDone() {
 	return ((SceneObjectImplementation*) impl)->cleanupDamageDone();
+}
+
+void SceneObjectAdapter::onIncapacitateTarget(CreatureObject* victim) {
+	return ((SceneObjectImplementation*) impl)->onIncapacitateTarget(victim);
+}
+
+void SceneObjectAdapter::onInflictDamage(AttackableObject* victim, unsigned int damage) {
+	return ((SceneObjectImplementation*) impl)->onInflictDamage(victim, damage);
+}
+
+void SceneObjectAdapter::onInflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage) {
+	return ((SceneObjectImplementation*) impl)->onInflictDamage(victim, attribute, damage);
+}
+
+void SceneObjectAdapter::onKill(CreatureObject* victim) {
+	return ((SceneObjectImplementation*) impl)->onKill(victim);
+}
+
+void SceneObjectAdapter::onDeathblow(Player* victim) {
+	return ((SceneObjectImplementation*) impl)->onDeathblow(victim);
+}
+
+void SceneObjectAdapter::onReceivePaymentFrom(CreatureObject* sender, unsigned int amount) {
+	return ((SceneObjectImplementation*) impl)->onReceivePaymentFrom(sender, amount);
+}
+
+bool SceneObjectAdapter::inflictDamage(AttackableObject* victim, unsigned int damage) {
+	return ((SceneObjectImplementation*) impl)->inflictDamage(victim, damage);
+}
+
+bool SceneObjectAdapter::inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage) {
+	return ((SceneObjectImplementation*) impl)->inflictDamage(victim, attribute, damage);
+}
+
+void SceneObjectAdapter::incapacitate(CreatureObject* victim) {
+	return ((SceneObjectImplementation*) impl)->incapacitate(victim);
+}
+
+void SceneObjectAdapter::kill(CreatureObject* victim) {
+	return ((SceneObjectImplementation*) impl)->kill(victim);
+}
+
+void SceneObjectAdapter::deathblow(Player* victim) {
+	return ((SceneObjectImplementation*) impl)->deathblow(victim);
+}
+
+void SceneObjectAdapter::receivePaymentFrom(CreatureObject* sender, unsigned int amount) {
+	return ((SceneObjectImplementation*) impl)->receivePaymentFrom(sender, amount);
+}
+
+void SceneObjectAdapter::warpTo(float x, float z, float y, unsigned long long parentID) {
+	return ((SceneObjectImplementation*) impl)->warpTo(x, z, y, parentID);
 }
 
 /*

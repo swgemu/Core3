@@ -156,7 +156,7 @@ public:
 	void setCraftingAcid(DraftSchematic* draftSchematic);
 	void setCraftingRestrain(DraftSchematic* draftSchematic);
 
-	void decayArmor(int decayRate);
+	void decay(float decayRate);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -165,8 +165,6 @@ public:
 	int sliceArmorEffectiveness(int min, int max);
 
 	int sliceArmorEncumbrance(int min, int max);
-
-	void repairArmor(Player* player);
 
 	void setArmorStats(int modifier);
 
@@ -654,5 +652,11 @@ public:
 			return false;
 		}
 	}
+
+
+	//Event Handlers
+	void onBroken();
+
+	//Actions
 };
 #endif /*ARMORIMPLEMENTATION_H_*/

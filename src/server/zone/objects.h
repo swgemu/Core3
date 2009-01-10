@@ -106,6 +106,10 @@ which carries forward this exception.
 #include "objects/tangible/terminal/mission/MissionTerminalImplementation.h"
 #include "objects/tangible/terminal/guild/GuildTerminal.h"
 #include "objects/tangible/terminal/guild/GuildTerminalImplementation.h"
+#include "objects/tangible/terminal/cloning/CloningTerminal.h"
+#include "objects/tangible/terminal/cloning/CloningTerminalImplementation.h"
+#include "objects/tangible/terminal/cloning/InsuranceTerminal.h"
+#include "objects/tangible/terminal/cloning/InsuranceTerminalImplementation.h"
 #include "objects/tangible/terminal/vendor/VendorTerminal.h"
 #include "objects/tangible/terminal/vendor/VendorTerminalImplementation.h"
 #include "objects/tangible/ticketcollector/TicketCollector.h"
@@ -234,6 +238,9 @@ which carries forward this exception.
 #include "objects/building/BuildingObject.h"
 #include "objects/building/BuildingObjectImplementation.h"
 
+#include "objects/building/cloningfacility/CloningFacility.h"
+#include "objects/building/cloningfacility/CloningFacilityImplementation.h"
+
 #include "objects/scene/SceneObject.h"
 #include "objects/scene/SceneObjectImplementation.h"
 
@@ -273,6 +280,8 @@ which carries forward this exception.
 #include "objects/player/sui/messagebox/SuiMessageBox.h"
 #include "objects/player/sui/transferbox/SuiTransferBoxImplementation.h"
 #include "objects/player/sui/transferbox/SuiTransferBox.h"
+#include "objects/player/sui/banktransferbox/SuiBankTipConfirmBoxImplementation.h"
+#include "objects/player/sui/banktransferbox/SuiBankTipConfirmBox.h"
 
 #include "objects/tangible/weapons/ThrowableWeapon.h"
 #include "objects/tangible/weapons/ThrowableWeaponImplementation.h"

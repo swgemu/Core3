@@ -49,8 +49,6 @@ public:
 
 	void setObjectName(Player* player);
 
-	void decay(int decayRate);
-
 	void parseItemAttributes();
 
 	bool isPersistent();
@@ -83,6 +81,8 @@ public:
 
 	bool isTicketCollector();
 
+	bool isTerminal();
+
 	bool isSurveyTool();
 
 	bool isPharmaceutical();
@@ -113,6 +113,12 @@ public:
 
 	bool isLoot();
 
+	bool isInsured();
+
+	bool isInsurable();
+
+	bool isDecayable();
+
 	void setCraftersName(String& n);
 
 	void setCraftedSerial(String& s);
@@ -130,6 +136,10 @@ public:
 	void setPlayerUseMask(unsigned int mask);
 
 	unsigned int getPlayerUseMask();
+
+	void setOptionsBitmask(unsigned int mask);
+
+	unsigned int getOptionsBitmask();
 
 	int getObjectSubType();
 
@@ -182,6 +192,14 @@ public:
 	void setObjectCount(const int count);
 
 	void setMisoAsocKey(const String& tma);
+
+	void updateOptionsBitmask(Player* player);
+
+	void updateInsurance(Player* player, bool insure);
+
+	void onBroken();
+
+	void decay(float decayRate);
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
@@ -226,8 +244,6 @@ public:
 
 	void setObjectName(Player* player);
 
-	void decay(int decayRate);
-
 	void parseItemAttributes();
 
 	bool isPersistent();
@@ -260,6 +276,8 @@ public:
 
 	bool isTicketCollector();
 
+	bool isTerminal();
+
 	bool isSurveyTool();
 
 	bool isPharmaceutical();
@@ -290,6 +308,12 @@ public:
 
 	bool isLoot();
 
+	bool isInsured();
+
+	bool isInsurable();
+
+	bool isDecayable();
+
 	void setCraftersName(String& n);
 
 	void setCraftedSerial(String& s);
@@ -307,6 +331,10 @@ public:
 	void setPlayerUseMask(unsigned int mask);
 
 	unsigned int getPlayerUseMask();
+
+	void setOptionsBitmask(unsigned int mask);
+
+	unsigned int getOptionsBitmask();
 
 	int getObjectSubType();
 
@@ -359,6 +387,14 @@ public:
 	void setObjectCount(const int count);
 
 	void setMisoAsocKey(const String& tma);
+
+	void updateOptionsBitmask(Player* player);
+
+	void updateInsurance(Player* player, bool insure);
+
+	void onBroken();
+
+	void decay(float decayRate);
 
 protected:
 	String _param0_setCraftersName__String_;

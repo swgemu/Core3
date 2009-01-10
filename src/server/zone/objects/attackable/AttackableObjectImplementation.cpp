@@ -297,3 +297,13 @@ void AttackableObjectImplementation::sendDestroyTo(Player* player) {
 
 	destroy(client);
 }
+
+
+//Event Handlers
+void AttackableObjectImplementation::onReceiveDamage(SceneObject* attacker, uint32 amount) {
+
+}
+//void AttackableObjectImplementation::onDestroyed() {
+//}
+
+//Actions

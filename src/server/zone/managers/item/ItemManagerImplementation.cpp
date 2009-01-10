@@ -568,6 +568,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	String appearance = result->getString(10);
 
 	uint16 itemMask = result->getUnsignedInt(11);
+	uint32 optionsBitmask = result->getUnsignedInt(12);
 
 	if (itemMask == 0)
 		itemMask = TangibleObjectImplementation::ALL;
@@ -596,6 +597,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 	item->setObjectSubType(objecttype);
 
 	item->setPlayerUseMask(itemMask);
+
+	item->setOptionsBitmask(optionsBitmask);
 
 	item->setCustomizationString(custStr);
 
@@ -670,6 +673,7 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 	newTempl->parseItemAttributes();
 
 	newTempl->setPlayerUseMask(templ->getPlayerUseMask());
+	newTempl->setOptionsBitmask(templ->getOptionsBitmask());
 
 	return newTempl;
 }
@@ -952,6 +956,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	bool equipped = bool(itemconfig.getByteField("equipped"));
 	int type = itemconfig.getIntField("objectType");
 	uint16 itemMask = itemconfig.getIntField("itemMask");
+	uint32 optionsBitmask = itemconfig.getIntField("optionsBitmask");
 
 	if (itemMask == 0)
 		itemMask = TangibleObjectImplementation::ALL;
@@ -960,6 +965,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 	item->setObjectSubType(type);
 	item->setPlayerUseMask(itemMask);
+	item->setOptionsBitmask(optionsBitmask);
 
 	//ADD ATTRIBUTES
 	if (type & TangibleObjectImplementation::ARMOR) {
@@ -1458,12 +1464,12 @@ void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject*
 		StringBuffer query;
 
 		query << "REPLACE DELAYED INTO `character_items` "
-		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`deleted`,`attributes`,`appearance`, `itemMask`)"
+		<< "(`item_id`,`character_id`,`name`,`template_crc`,`template_type`,`template_name`,`equipped`,`deleted`,`attributes`,`appearance`, `itemMask`, `optionsBitmask`)"
 		<< " VALUES(" << item->getObjectID() << "," << player->getCharacterID()
 		<< ",'" << itemname << "',"
 		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 		<< item->isEquipped() << ",0,'" << attr
-		<< "','" << appearance.subString(0, appearance.length() - 1) << "', " << item->getPlayerUseMask() << ")";
+		<< "','" << appearance.subString(0, appearance.length() - 1) << "', " << item->getPlayerUseMask() << ", " << item->getOptionsBitmask() << ")";
 
 		ServerDatabase::instance()->executeStatement(query);
 
@@ -1501,6 +1507,7 @@ void ItemManagerImplementation::savePlayerItem(Player* player, TangibleObject* i
 		query << ", attributes = '" << attr << "' ";
 		query << ", appearance = '" << appearance.subString(0, appearance.length() - 1) << "' ";
 		query << ", itemMask = " << item->getPlayerUseMask() << " ";
+		query << ", optionsBitmask = " << item->getOptionsBitmask() << " ";
 		//query << ", container = " << contiID << " ";
 		query << "where item_id = " << item->getObjectID();
 
@@ -2295,11 +2302,11 @@ void ItemManagerImplementation::moveNestedItemsToPlayerStorage(Player* player, C
 
 				query << "REPLACE DELAYED INTO `player_storage` "
 				<< "(`item_id`,`structure_id`,`name`,`template_crc`,`template_type`"
-				<< ",`template_name`,`container`,`parent_id`,`appearance`, `attributes`,`itemMask`,X,Y,Z,oX,oY,oZ,oW,dropped_by_character) "
+				<< ",`template_name`,`container`,`parent_id`,`appearance`, `attributes`,`itemMask`,`optionsBitmask`,X,Y,Z,oX,oY,oZ,oW,dropped_by_character) "
 				<< "VALUES (" << item->getObjectID() << ",0,'" << itemname << "',"
 				<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 				<< containerID << ",0,'" << appearance.subString(0, appearance.length() - 1)
-				<< "','" << attr << "'," << item->getPlayerUseMask() << ","
+				<< "','" << attr << "'," << item->getPlayerUseMask() << "," << item->getOptionsBitmask() << ","
 				<< x << "," << y << "," << z << "," << oX << "," << oY << "," << oZ << "," << oW << "," << player->getCharacterID() << ")";
 
 				ServerDatabase::instance()->executeStatement(query);
@@ -2502,11 +2509,11 @@ void ItemManagerImplementation::insertItemIntoPlayerStorage(Player* player, Tang
 
 		query << "REPLACE DELAYED INTO `player_storage` "
 		<< "(`item_id`,`structure_id`,`name`,`template_crc`,`template_type`"
-		<< ",`template_name`,`container`,`parent_id`,`appearance`, `attributes`,`itemMask`,X,Y,Z,oX,oY,oZ,oW,dropped_by_character) "
+		<< ",`template_name`,`container`,`parent_id`,`appearance`, `attributes`,`itemMask`,`optionsBitmask`,X,Y,Z,oX,oY,oZ,oW,dropped_by_character) "
 		<< "VALUES (" << item->getObjectID() << "," << structureID << ",'" << itemname << "',"
 		<< item->getObjectCRC() << "," << item->getObjectSubType() << ",'" << item->getTemplateName() << "',"
 		<< containerID << "," << parentID << ",'" << appearance.subString(0, appearance.length() - 1)
-		<< "','" << attr << "'," << item->getPlayerUseMask() << ","
+		<< "','" << attr << "'," << item->getPlayerUseMask() << "," << item->getOptionsBitmask() << ","
 		<< x << "," << y << "," << z << "," << oX << "," << oY << "," << oZ << "," << oW << "," << player->getCharacterID() << ")";
 
 		ServerDatabase::instance()->executeStatement(query);
@@ -2574,6 +2581,7 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 			uint64 parentID = result->getUnsignedLong(7);
 			String appearance = result->getString(9);
 			uint16 itemMask = result->getUnsignedInt(10);
+			uint32 optionsBitmask = result->getUnsignedInt(11);
 
 			float X = result->getFloat(11);
 			float Y = result->getFloat(12);
@@ -2609,6 +2617,8 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 			item->parseItemAttributes();
 
 			item->setPlayerUseMask(itemMask);
+
+			item->setOptionsBitmask(optionsBitmask);
 
 			item->setCustomizationString(custStr);
 
@@ -2672,6 +2682,7 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 			uint64 parentID = contiResult->getUnsignedLong(7);
 			String appearance = contiResult->getString(9);
 			uint16 itemMask = contiResult->getUnsignedInt(10);
+			uint32 optionsBitmask = contiResult->getUnsignedInt(11);
 
 			BinaryData cust(appearance);
 
@@ -2698,6 +2709,7 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 			item->parseItemAttributes();
 
 			item->setPlayerUseMask(itemMask);
+			item->setOptionsBitmask(optionsBitmask);
 
 			item->setCustomizationString(custStr);
 

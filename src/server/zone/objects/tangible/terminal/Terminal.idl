@@ -50,11 +50,18 @@ import "../TangibleObject";
 
 interface Terminal implements TangibleObject {
 	Terminal(unsigned int objCRC, unsigned long oid, const UnicodeString n, const String tempn, 
-			float x, float z, float y, int TerminalType) {
+			float x, float z, float y, unsigned char TerminalType) {
 		super(oid, int tp);
 	}
 	
 	int useObject(Player player);
 	
-	int getTerminalType();
+	unsigned char getTerminalType();
+	
+	boolean isTravelTerminal();
+	boolean isGuildTerminal();
+	boolean isMissionTerminal();
+	boolean isCloningTerminal();
+	boolean isInsuranceTerminal();
+	boolean isBazaarTerminal();
 }

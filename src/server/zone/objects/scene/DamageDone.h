@@ -50,28 +50,28 @@ class DamageDone {
 	protected:
 	VectorMap<String, int> xpDamage;
 	VectorMap<String, int> xpLevel;
-	
+
 	int totalDamage;
-	
+
 	public:
 	DamageDone() {
 		xpDamage.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
 		xpLevel.setInsertPlan(SortedVector<int>::ALLOW_OVERWRITE);
-		
+
 		xpDamage.removeAll();
 		xpLevel.removeAll();
 
 		totalDamage = 0;
 	}
-	
+
 	~DamageDone() {
 		xpDamage.removeAll();
 		xpLevel.removeAll();
 	}
-	
+
 	void addDamage( String xptype, int damage, int level ) {
 		totalDamage += damage;
-		
+
 		if (xpDamage.contains(xptype)) {
 			damage += xpDamage.get(xptype);
 			xpDamage.drop(xptype);
@@ -82,32 +82,32 @@ class DamageDone {
 		if (!xpLevel.contains(xptype))
 			xpLevel.put(xptype, level);
 	}
-	
+
 	int getSize() {
 		return xpDamage.size();
 	}
-	
+
 	String getXpType(int idx) {
 		VectorMapEntry<String, int> *entry = xpDamage.SortedVector<VectorMapEntry<String, int>*>::get(idx);
 		return entry->getKey();
 	}
-	
+
 	int getDamage(int idx) {
 		return xpDamage.get(idx);
 	}
-	
+
 	int getDamage(String xptype) {
 		return xpDamage.get(xptype);
 	}
-	
+
 	int getLevel(int idx) {
 		return xpLevel.get(idx);
 	}
-	
+
 	int getLevel(String xptype) {
 		return xpLevel.get(xptype);
 	}
-	
+
 	int getTotalDamage() {
 		return totalDamage;
 	}

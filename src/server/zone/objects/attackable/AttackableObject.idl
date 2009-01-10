@@ -76,4 +76,8 @@ interface AttackableObject implements SceneObject {
 	void doDamage(int damage, SceneObject attacker);
 
 	boolean isDestroyed();
+	
+	//Event Handlers
+	void onReceiveDamage(SceneObject attacker, unsigned int amount);
+	//void onDestroyed();
 }

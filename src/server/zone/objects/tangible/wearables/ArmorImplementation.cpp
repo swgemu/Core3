@@ -269,7 +269,8 @@ void ArmorImplementation::sendRadialResponseTo(Player* player, ObjectMenuRespons
 		if (!isSliced() && player->getSlicingAbility() >= 3)
 			omr->addRadialItem(0, 69, 3, "Slice");
 
-		omr->addRadialItem(0, 70, 3, "Repair");
+		if (getConditionDamage() > 0)
+			omr->addRadialItem(0, 70, 3, "Repair");
 	}
 
 	//TODO:Cell permission check
@@ -639,96 +640,60 @@ void ArmorImplementation::setCraftingRestrain(DraftSchematic* draftSchematic) {
 	}
 }
 
-void ArmorImplementation::decayArmor(int decayRate) {
-	setConditionDamage(conditionDamage + (maxCondition * decayRate / 100));
+void ArmorImplementation::decay(float decayRate) {
+	TangibleObjectImplementation::decay(decayRate);
 
-	if (conditionDamage > maxCondition)
-		conditionDamage = maxCondition;
-
-	if (maxCondition > 0) {
-		float ratio = ((float) conditionDamage) / ((float) maxCondition);
+	if (getMaxCondition() > 0) {
+		float ratio = ((float) getConditionDamage()) / ((float) getMaxCondition());
 
 		if (ratio > 0.99) {
-			setRating(0);
-			maxCondition = 1;
-			conditionDamage = 1;
-			itemAttributes->setCondition(0, 1);
-
-			setKinetic(0.0f);
-			setKineticIsSpecial(false);
-			setEnergy(0.0f);
-			setEnergyIsSpecial(false);
-			setElectricity(0.0f);
-			setElectricityIsSpecial(false);
-			setStun(0.0f);
-			setStunIsSpecial(false);
-			setBlast(0.0f);
-			setBlastIsSpecial(false);
-			setHeat(0.0f);
-			setHeatIsSpecial(false);
-			setCold(0.0f);
-			setColdIsSpecial(false);
-			setAcid(0.0f);
-			setAcidIsSpecial(false);
-			setLightSaber(0.0f);
-			setLightSaberIsSpecial(false);
-
+			onBroken();
 		} else if (ratio > 0.75) {
-			setKinetic(kinetic - (kinetic * decayRate / 100));
-			setEnergy(energy - (energy * decayRate / 100));
-			setElectricity(electricity - (electricity * decayRate / 100));
-			setStun(stun - (stun * decayRate / 100));
-			setBlast(blast - (blast * decayRate / 100));
-			setHeat(heat - (heat * decayRate / 100));
-			setCold(cold - (cold * decayRate / 100));
-			setAcid(acid - (acid * decayRate / 100));
-			setLightSaber(lightSaber - (lightSaber* decayRate / 100));
+			setKinetic(getKinetic() * (1 - decayRate));
+			setEnergy(getEnergy()* (1 - decayRate));
+			setElectricity(getElectricity() * (1 - decayRate));
+			setStun(getStun() * (1 - decayRate));
+			setBlast(getBlast() * (1 - decayRate));
+			setHeat(getHeat() * (1 - decayRate));
+			setCold(getCold() * (1 - decayRate));
+			setAcid(getAcid() * (1 - decayRate));
+			setLightSaber(getLightSaber() * (1 - decayRate));
 		}
 	}
-
-	updated = true;
-
 }
 
-void ArmorImplementation::repairArmor(Player* player) {
-	int roll = System::random(100);
+void ArmorImplementation::onBroken() {
+	setRating(0);
+	setMaxCondition(1);
+	setConditionDamage(1);
 
-	int decayRate = 0;
+	//Is this needed?
+	itemAttributes->setCondition(0, 1);
 
-	StringBuffer txt;
+	setKinetic(0.0f);
+	setKineticIsSpecial(false);
+	setEnergy(0.0f);
+	setEnergyIsSpecial(false);
+	setElectricity(0.0f);
+	setElectricityIsSpecial(false);
+	setStun(0.0f);
+	setStunIsSpecial(false);
+	setBlast(0.0f);
+	setBlastIsSpecial(false);
+	setHeat(0.0f);
+	setHeatIsSpecial(false);
+	setCold(0.0f);
+	setColdIsSpecial(false);
+	setAcid(0.0f);
+	setAcidIsSpecial(false);
+	setLightSaber(0.0f);
+	setLightSaberIsSpecial(false);
 
-	if (roll < 10) {
-		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
-		decayArmor(100);
-
-		updated = true;
-
-		BaseMessage* tano3 = new TangibleObjectMessage3(_this);
-		player->sendMessage(tano3);
-
-		return;
-	} else if (roll < 75) {
-		txt << "You have repaired the item, however the items maximum condition has been reduced.";
-		decayRate = 20;
-	} else {
-		txt << "You have completely repaired the item.";
-	}
-
-	player->sendSystemMessage(txt.toString());
-
-	maxCondition = (maxCondition - (maxCondition / 100 * decayRate));
-	conditionDamage = 0;
-	setCondition(maxCondition, maxCondition);
-
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
-	dtano3->updateConditionDamage();
-	dtano3->updateMaxCondition();
-	dtano3->close();
-	player->broadcastMessage(dtano3);
-
-	updated = true;
-
+	//TODO: Is this needed?
+	//BaseMessage* tano3 = new TangibleObjectMessage3(_this);
+	//player->sendMessage(tano3);
 }
+
 
 void ArmorImplementation::setArmorStats(int modifier) {
 

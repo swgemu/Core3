@@ -49,6 +49,8 @@ which carries forward this exception.
 
 #include "../../objects/creature/CreatureObject.h"
 
+#include "../../objects/creature/CreatureAttribute.h"
+
 class CreatureObjectDeltaMessage3 : public DeltaMessage {
 	CreatureObject* creo;
 
@@ -108,7 +110,7 @@ public:
 		addLongUpdate(0x0D, creo->getCreatureLinkID());
 	}
 
-	void updateHAMWoundsBars(uint32 healthWounds, uint32 actionWounds, uint32 mindWounds) {
+	void updateHAMWoundsBars(int32 healthWounds, int32 actionWounds, int32 mindWounds) {
 		startUpdate(0x11);
 
 		uint8 h = 0, a = 0, m = 0;
@@ -126,31 +128,31 @@ public:
 		startList((h+a+m), updatecount);
 
 		if (h) {
-			uint32 healthw = creo->getHealthWounds();
+			int32 healthw = creo->getHealthWounds();
 			addBar(0, healthw, healthWounds);
 
 			creo->setHealthWounds(healthw);
 		}
 
 		if (a) {
-			uint32 actionw = creo->getActionWounds();
+			int32 actionw = creo->getActionWounds();
 			addBar(3, actionw, actionWounds);
 
 			creo->setActionWounds(actionw);
 		}
 
 		if (m) {
-			uint32 mindw = creo->getMindWounds();
+			int32 mindw = creo->getMindWounds();
 			addBar(6, mindw, mindWounds);
 
 			creo->setMindWounds(mindw);
 		}
 	}
 
-	void updateHealthWoundsBar(uint32 healthWounds) {
-		uint32 healthw = creo->getHealthWounds();
+	void updateWoundsBar(uint8 attribute, int32 value) {
+		int32 creoWounds = creo->getWounds(attribute);
 
-		if (healthWounds == healthw) {
+		if (value == creoWounds) {
 			creo->error("update creo delta3 bar error");
 			StackTrace::printStackTrace();
 		}
@@ -160,163 +162,50 @@ public:
 		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
 		startList(1, updatecount);
 
-		addBar(0, healthw, healthWounds);
+		addBar(attribute, creoWounds, value);
 
-		creo->setHealthWounds(healthw);
+		creo->setWounds(attribute, creoWounds);
 	}
 
-	void updateStrengthWoundsBar(uint32 strengthWounds) {
-		uint32 strengthw = creo->getStrengthWounds();
-
-		if (strengthw == strengthWounds) {
-			creo->error("update creo delta3 bar error");
-			StackTrace::printStackTrace();
-		}
-
-		startUpdate(0x11);
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
-		startList(1, updatecount);
-
-
-		addBar(1, strengthw, strengthWounds);
-
-		creo->setStrengthWounds(strengthw);
+	void updateHealthWoundsBar(int32 value) {
+		updateWoundsBar(CreatureAttribute::HEALTH, value);
 	}
 
-	void updateConstitutionWoundsBar(uint32 constitutionWounds) {
-		uint32 constitutionw = creo->getConstitutionWounds();
-
-		if (constitutionw == constitutionWounds) {
-			creo->error("update creo delta3 bar error");
-			StackTrace::printStackTrace();
-		}
-
-		startUpdate(0x11);
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
-		startList(1, updatecount);
-
-
-		addBar(2, constitutionw, constitutionWounds);
-
-		creo->setConstitutionWounds(constitutionw);
+	void updateStrengthWoundsBar(int32 value) {
+		updateWoundsBar(CreatureAttribute::STRENGTH, value);
 	}
 
-	void updateActionWoundsBar(uint32 actionWounds) {
-		uint32 actionw = creo->getActionWounds();
-
-		if (actionw == actionWounds) {
-			creo->error("update creo delta3 bar error");
-			StackTrace::printStackTrace();
-		}
-
-		startUpdate(0x11);
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
-		startList(1, updatecount);
-
-
-		addBar(3, actionw, actionWounds);
-
-		creo->setActionWounds(actionw);
+	void updateConstitutionWoundsBar(int32 value) {
+		updateWoundsBar(CreatureAttribute::CONSTITUTION, value);
 	}
 
-	void updateQuicknessWoundsBar(uint32 quicknessWounds) {
-		uint32 quicknessw = creo->getQuicknessWounds();
-
-		if (quicknessw == quicknessWounds) {
-			creo->error("update creo delta3 bar error");
-			StackTrace::printStackTrace();
-		}
-
-		startUpdate(0x11);
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
-		startList(1, updatecount);
-
-		addBar(4, quicknessw, quicknessWounds);
-
-		creo->setQuicknessWounds(quicknessw);
+	void updateActionWoundsBar(int32 value) {
+		updateWoundsBar(CreatureAttribute::ACTION, value);
 	}
 
-	void updateStaminaWoundsBar(uint32 staminaWounds) {
-		uint32 staminaw = creo->getStaminaWounds();
-
-		if (staminaw == staminaWounds) {
-			creo->error("update creo delta3 bar error");
-			StackTrace::printStackTrace();
-		}
-
-		startUpdate(0x11);
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
-		startList(1, updatecount);
-
-		addBar(5, staminaw, staminaWounds);
-
-		creo->setStaminaWounds(staminaw);
+	void updateQuicknessWoundsBar(int32 value) {
+		updateWoundsBar(CreatureAttribute::QUICKNESS, value);
 	}
 
-	void updateMindWoundsBar(uint32 mindWounds) {
-		uint32 mindw = creo->getMindWounds();
-
-		if (mindw == mindWounds) {
-			creo->error("update creo delta3 bar error");
-			StackTrace::printStackTrace();
-		}
-
-		startUpdate(0x11);
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
-		startList(1, updatecount);
-
-		addBar(6, mindw, mindWounds);
-
-		creo->setMindWounds(mindw);
+	void updateStaminaWoundsBar(int32 value) {
+		updateWoundsBar(CreatureAttribute::STAMINA, value);
 	}
 
-	void updateFocusWoundsBar(uint32 focusWounds) {
-		uint32 focusw = creo->getFocusWounds();
-
-		if (focusw == focusWounds) {
-			creo->error("update creo delta3 bar error");
-			StackTrace::printStackTrace();
-		}
-
-		startUpdate(0x11);
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
-		startList(1, updatecount);
-
-		addBar(7, focusw, focusWounds);
-
-		creo->setFocusWounds(focusw);
+	void updateMindWoundsBar(int32 value) {
+		updateWoundsBar(CreatureAttribute::MIND, value);
 	}
 
-	void updateWillpowerWoundsBar(uint32 willpowerWounds) {
-		uint32 willpowerw = creo->getWillpowerWounds();
-
-		if (willpowerw == willpowerWounds) {
-			creo->error("update creo delta3 bar error");
-			StackTrace::printStackTrace();
-		}
-
-		startUpdate(0x11);
-
-		uint32 updatecount = creo->getNewWoundsUpdateCounter(1);
-		startList(1, updatecount);
-
-		addBar(8, willpowerw, willpowerWounds);
-
-		creo->setWillpowerWounds(willpowerw);
+	void updateFocusWoundsBar(int32 value) {
+		updateWoundsBar(CreatureAttribute::FOCUS, value);
 	}
 
-	void addBar(uint16 index, uint32& value, uint32 nvalue) {
+	void updateWillpowerWoundsBar(int32 value) {
+		updateWoundsBar(CreatureAttribute::WILLPOWER, value);
+	}
+
+	void addBar(uint16 index, int32& value, int32 nvalue) {
 		removeListIntElement(index, value = nvalue);
 	}
-
-
 };
 
 #endif /*CREATUREOBJECTDELTAMESSAGE3_H_*/

@@ -90,6 +90,7 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/auction/AuctionItem.cpp \
 		server/zone/objects/building/BuildingObject.cpp \
 		server/zone/objects/building/cell/CellObject.cpp \
+		server/zone/objects/building/cloningfacility/CloningFacility.cpp \
 		server/zone/objects/creature/action/Action.cpp \
 		server/zone/objects/creature/action/ActionCreature.cpp \
 		server/zone/objects/creature/bluefrog/BlueFrogCreature.cpp \
@@ -124,6 +125,7 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/player/Player.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
+		server/zone/objects/player/sui/banktransferbox/SuiBankTipConfirmBox.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBox.cpp \
@@ -175,6 +177,8 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/TangibleObject.cpp \
 		server/zone/objects/tangible/terminal/bazaar/RegionBazaar.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
+		server/zone/objects/tangible/terminal/cloning/CloningTerminal.cpp \
+		server/zone/objects/tangible/terminal/cloning/InsuranceTerminal.cpp \
 		server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 		server/zone/objects/tangible/terminal/Terminal.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \

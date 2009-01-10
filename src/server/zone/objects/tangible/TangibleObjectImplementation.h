@@ -72,6 +72,8 @@ protected:
 	int conditionDamage;
 	int maxCondition;
 
+	uint32 optionsBitmask;
+
 	bool persistent, updated;
 
 	uint32 templateID;
@@ -92,6 +94,8 @@ protected:
 	int objectCount;
 
 	bool equipped;
+
+	bool insured;
 
 	uint32 pvpStatusBitmask;
 
@@ -313,6 +317,13 @@ public:
 	static const uint16 ITHORIANS = ITHORIAN | ALLSEXES | ALLFACTIONS;
 	static const uint16 TWILEKS = TWILEK | ALLSEXES | ALLFACTIONS;
 
+
+	//Options Flags
+	static const uint32 OPTIONS_NONE = 0x00;
+	static const uint32 OPTIONS_UNKNOWN1 = 0x01;
+	static const uint32 OPTIONS_UNKNOWN2 = 0x02;
+	static const uint32 OPTIONS_INSURED = 0x04;
+
 public:
 	TangibleObjectImplementation(uint64 oid, int tp = 0);
 	TangibleObjectImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& name, const String& tempname, int tp = 0);
@@ -329,6 +340,14 @@ public:
 
 	virtual void updateCraftingValues(DraftSchematic* draftSchematic) {
 
+	}
+
+	inline void setOptionsBitmask(uint32 mask) {
+		optionsBitmask = mask;
+	}
+
+	inline uint32 getOptionsBitmask() {
+		return optionsBitmask;
 	}
 
 	inline void setPlayerUseMask(uint16 mask) {
@@ -352,8 +371,6 @@ public:
 	void repairItem(Player* player);
 
 	void setObjectName(Player * player);
-
-	virtual void decay(int decayRate);
 
 	virtual void addAttributes(AttributeListMessage* alm);
 
@@ -443,6 +460,19 @@ public:
 		return updated;
 	}
 
+	inline bool isInsured() {
+		return (optionsBitmask & OPTIONS_INSURED);
+	}
+
+	inline bool isInsurable() {
+		//TODO: Add in more code deciding if this item is insurable or not.
+		return (!isInsured() && isDecayable());
+	}
+
+	inline bool isDecayable() {
+		return (isWeapon() || isArmor() || isClothing());
+	}
+
 	inline SceneObject* getContainer() {
 		return container;
 	}
@@ -453,6 +483,14 @@ public:
 
 	inline void setName(const UnicodeString& n) {
 		name = n;
+	}
+
+	inline void setInsured(bool insure) {
+		if (insure) {
+			optionsBitmask |= OPTIONS_INSURED;
+		} else {
+			optionsBitmask &= ~OPTIONS_INSURED;
+		}
 	}
 
 	inline UnicodeString& getName() {
@@ -592,6 +630,10 @@ public:
 		return objectSubType == TICKETCOLLECTOR;
 	}
 
+	inline bool isTerminal() {
+		return objectSubType == TERMINAL;
+	}
+
 	inline bool isHolocron() {
 		return objectSubType == HOLOCRON;
 	}
@@ -657,6 +699,16 @@ public:
 	inline int getCondition() {
 		return maxCondition - conditionDamage;
 	}
+
+	//Sending of Messages
+	void updateOptionsBitmask(Player* player);
+	void updateInsurance(Player* player, bool insure);
+
+	//Event Handlers
+	virtual void onBroken();
+
+	//Actions
+	virtual void decay(float decayRate);
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

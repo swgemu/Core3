@@ -65,6 +65,12 @@ class Badges;
 
 class ActiveArea;
 
+class CloningTerminal;
+
+class CloningFacility;
+
+class InsuranceTerminal;
+
 #include "../creature/CreatureObject.h"
 
 class Player : public CreatureObject {
@@ -229,19 +235,7 @@ public:
 
 	void doPeace();
 
-	void kill();
-
-	void deathblow(Player* player);
-
 	void resurrect();
-
-	void handleDeath();
-
-	void throttlePvpRating(Player* player);
-
-	void doClone();
-
-	void activateClone();
 
 	void doRecovery();
 
@@ -259,9 +253,9 @@ public:
 
 	Badges* getBadges();
 
-	void sendConsentBox();
-
 	void addBuff(unsigned int buffcrc, float time);
+
+	void clearBuffs(bool doUpdatePlayer = true);
 
 	void lootCorpse(bool lootAll = false);
 
@@ -316,6 +310,8 @@ public:
 	void createBaseStats();
 
 	void decayInventory();
+
+	void resetArmorEncumbrance();
 
 	bool hasFullInventory();
 
@@ -599,10 +595,6 @@ public:
 
 	void setPvpRating(int value);
 
-	void increasePvpRating(int value);
-
-	void decreasePvpRating(int value);
-
 	void getPlayersNearYou();
 
 	int getRegionID();
@@ -861,6 +853,112 @@ public:
 
 	Armor* getPlayerArmor(int location);
 
+	void sendIncapacitationTimer(unsigned int seconds, bool doRecovery = true);
+
+	void sendBankTipConfirm(Player* recipient, unsigned int amount);
+
+	void sendConsentList();
+
+	void sendActivateCloneRequest();
+
+	void sendCloningDataStorageConfirm(CloningTerminal* terminal);
+
+	void sendItemInsuranceMenu(InsuranceTerminal* terminal);
+
+	void sendItemInsureAllConfirm(InsuranceTerminal* terminal);
+
+	void onIncapacitateTarget(CreatureObject* victim);
+
+	void onIncapacitated(SceneObject* attacker);
+
+	void onKilled(SceneObject* killer);
+
+	void onDeath();
+
+	void onDeathblow(Player* victim);
+
+	void onReceiveDeathblow(SceneObject* killer);
+
+	void onPvpRatingGained(Player* victim);
+
+	void onPvpRatingLost(Player* killer);
+
+	void onPvpRatingGainedThrottled();
+
+	void onPvpRatingLostThrottled();
+
+	void onExperienceGained(const String& xptype, unsigned int amount);
+
+	void onExperienceLost(const String& xptype, unsigned int amount);
+
+	void onCloneDataStored();
+
+	void onCloneDataAlreadyStored();
+
+	void onCloneSuccessful();
+
+	void onCloneFailure();
+
+	void onMakePaymentTo(SceneObject* target, unsigned int cost);
+
+	void onMakeBankPaymentTo(SceneObject* target, unsigned int cost);
+
+	void onInsufficientFundsAvailable(SceneObject* target, unsigned int amount);
+
+	void onInsureItemSuccess(unsigned int itemID);
+
+	void onInsureItemFailure(unsigned int itemID);
+
+	void onInsureItemInsufficientFunds(unsigned int itemID);
+
+	void onInsureItemInvalidTerminal();
+
+	void onInsureAllItemsComplete();
+
+	void onNoValidInsurables();
+
+	void onBankTipSuccessful();
+
+	void incapacitateSelf();
+
+	void die();
+
+	void clone();
+
+	void clone(unsigned long long terminalID);
+
+	void clone(CloningFacility* cloningFacility);
+
+	void increasePvpRating(Player* victim);
+
+	void increasePvpRating(unsigned int amount);
+
+	void decreasePvpRating(Player* killer);
+
+	void decreasePvpRating(unsigned int amount);
+
+	bool makePaymentTo(SceneObject* target, unsigned int cost, bool notifyPlayer = true);
+
+	bool makeBankPaymentTo(SceneObject* target, unsigned int cost, bool notifyPlayer = true);
+
+	void insureItem(InsuranceTerminal* terminal, unsigned long long itemID, bool notifySuccess = true);
+
+	void insureAllItems(unsigned long long terminalID);
+
+	bool bankTipStart(Player* recipient, unsigned int amount);
+
+	void bankTipFinish(Player* recipient, unsigned int amount);
+
+	bool cashTip(Player* recipient, unsigned int amount);
+
+	void setCloningFacility(CloningFacility* facility);
+
+	CloningFacility* getCloningFacility();
+
+	unsigned char calculateIncapacitationTimer();
+
+	void closeSuiWindowType(unsigned int windowType);
+
 protected:
 	Player(DummyConstructorParameter* param);
 
@@ -1052,19 +1150,7 @@ public:
 
 	void doPeace();
 
-	void kill();
-
-	void deathblow(Player* player);
-
 	void resurrect();
-
-	void handleDeath();
-
-	void throttlePvpRating(Player* player);
-
-	void doClone();
-
-	void activateClone();
 
 	void doRecovery();
 
@@ -1082,9 +1168,9 @@ public:
 
 	Badges* getBadges();
 
-	void sendConsentBox();
-
 	void addBuff(unsigned int buffcrc, float time);
+
+	void clearBuffs(bool doUpdatePlayer);
 
 	void lootCorpse(bool lootAll);
 
@@ -1139,6 +1225,8 @@ public:
 	void createBaseStats();
 
 	void decayInventory();
+
+	void resetArmorEncumbrance();
 
 	bool hasFullInventory();
 
@@ -1422,10 +1510,6 @@ public:
 
 	void setPvpRating(int value);
 
-	void increasePvpRating(int value);
-
-	void decreasePvpRating(int value);
-
 	void getPlayersNearYou();
 
 	int getRegionID();
@@ -1684,6 +1768,112 @@ public:
 
 	Armor* getPlayerArmor(int location);
 
+	void sendIncapacitationTimer(unsigned int seconds, bool doRecovery);
+
+	void sendBankTipConfirm(Player* recipient, unsigned int amount);
+
+	void sendConsentList();
+
+	void sendActivateCloneRequest();
+
+	void sendCloningDataStorageConfirm(CloningTerminal* terminal);
+
+	void sendItemInsuranceMenu(InsuranceTerminal* terminal);
+
+	void sendItemInsureAllConfirm(InsuranceTerminal* terminal);
+
+	void onIncapacitateTarget(CreatureObject* victim);
+
+	void onIncapacitated(SceneObject* attacker);
+
+	void onKilled(SceneObject* killer);
+
+	void onDeath();
+
+	void onDeathblow(Player* victim);
+
+	void onReceiveDeathblow(SceneObject* killer);
+
+	void onPvpRatingGained(Player* victim);
+
+	void onPvpRatingLost(Player* killer);
+
+	void onPvpRatingGainedThrottled();
+
+	void onPvpRatingLostThrottled();
+
+	void onExperienceGained(const String& xptype, unsigned int amount);
+
+	void onExperienceLost(const String& xptype, unsigned int amount);
+
+	void onCloneDataStored();
+
+	void onCloneDataAlreadyStored();
+
+	void onCloneSuccessful();
+
+	void onCloneFailure();
+
+	void onMakePaymentTo(SceneObject* target, unsigned int cost);
+
+	void onMakeBankPaymentTo(SceneObject* target, unsigned int cost);
+
+	void onInsufficientFundsAvailable(SceneObject* target, unsigned int amount);
+
+	void onInsureItemSuccess(unsigned int itemID);
+
+	void onInsureItemFailure(unsigned int itemID);
+
+	void onInsureItemInsufficientFunds(unsigned int itemID);
+
+	void onInsureItemInvalidTerminal();
+
+	void onInsureAllItemsComplete();
+
+	void onNoValidInsurables();
+
+	void onBankTipSuccessful();
+
+	void incapacitateSelf();
+
+	void die();
+
+	void clone();
+
+	void clone(unsigned long long terminalID);
+
+	void clone(CloningFacility* cloningFacility);
+
+	void increasePvpRating(Player* victim);
+
+	void increasePvpRating(unsigned int amount);
+
+	void decreasePvpRating(Player* killer);
+
+	void decreasePvpRating(unsigned int amount);
+
+	bool makePaymentTo(SceneObject* target, unsigned int cost, bool notifyPlayer);
+
+	bool makeBankPaymentTo(SceneObject* target, unsigned int cost, bool notifyPlayer);
+
+	void insureItem(InsuranceTerminal* terminal, unsigned long long itemID, bool notifySuccess);
+
+	void insureAllItems(unsigned long long terminalID);
+
+	bool bankTipStart(Player* recipient, unsigned int amount);
+
+	void bankTipFinish(Player* recipient, unsigned int amount);
+
+	bool cashTip(Player* recipient, unsigned int amount);
+
+	void setCloningFacility(CloningFacility* facility);
+
+	CloningFacility* getCloningFacility();
+
+	unsigned char calculateIncapacitationTimer();
+
+	void closeSuiWindowType(unsigned int windowType);
+
 protected:
 	String _param0_queueFlourish__String_long_int_;
 	String _param4_queueAction__Player_long_int_int_String_;
@@ -1751,6 +1941,8 @@ protected:
 	String _param0_addSuiBoxChoice__String_;
 	String _param0_setTeachingOffer__String_;
 	String _param0_teachSkill__String_;
+	String _param0_onExperienceGained__String_int_;
+	String _param0_onExperienceLost__String_int_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

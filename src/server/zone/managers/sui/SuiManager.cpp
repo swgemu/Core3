@@ -81,11 +81,15 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	switch (type) {
 	case SuiWindowType::MOTD:
 		handleMessageoftheDay(boxID, player, cancel);
+		break;
 	case SuiWindowType::CONSENT:
 		handleConsentBox(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case SuiWindowType::CLONE_REQUEST:
 		handleCloneRequest(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::CLONE_CONFIRM:
+		handleCloneConfirm(boxID, player, cancel, atoi(value.toCharArray()));
 		break;
 	case SuiWindowType::START_MUSIC:
 		handleStartMusic(boxID, player, cancel, value.toCharArray(), false);
@@ -213,6 +217,15 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 		break;
 	case SuiWindowType::INSTALLATION_REDEED_CONFIRM:    // Re-Deed Confirm
 		handleRedeedStructure(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::INSURANCE_MENU:
+		handleInsuranceMenu(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
+	case SuiWindowType::INSURE_ALL_CONFIRM:
+		handleInsureAllConfirm(boxID, player, cancel);
+		break;
+	case SuiWindowType::BANK_TIP_CONFIRM:
+		handleBankTipConfirm(boxID, player, cancel);
 		break;
 	default:
 		//Clean up players sui box:
@@ -794,7 +807,7 @@ void SuiManager::handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel,
 					Weapon* weapon = (Weapon*) item;
 
 					if (weaponCount == itemindex)
-						weapon->repairWeapon(player);
+						weapon->repairItem(player);
 
 					weaponCount++;
 				}
@@ -845,7 +858,7 @@ void SuiManager::handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, 
 					Armor* armor = (Armor*) item;
 
 					if (armorCount == itemindex)
-						armor->repairArmor(player);
+						armor->repairItem(player);
 
 					armorCount++;
 				}
@@ -1216,6 +1229,46 @@ void SuiManager::handleBankTransfer(uint32 boxID, Player* player, int cash, int 
 		player->unlock();
 	}
 }
+
+void SuiManager::handleCloneConfirm(uint32 boxID, Player* player, uint32 cancel, int index) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui != NULL && sui->isMessageBox() && cancel != 1) {
+			CloningTerminal* terminal = NULL;
+			SceneObject* scoTerminal = player->getZone()->lookupObject(sui->getUsingObjectID());
+
+			if (scoTerminal != NULL) {
+				TangibleObject* tanoTerminal = (TangibleObject*) scoTerminal;
+				if (tanoTerminal->isTerminal()) {
+					Terminal* termTerminal = (Terminal*) tanoTerminal;
+					if (termTerminal->isCloningTerminal())
+						terminal = (CloningTerminal*) termTerminal;
+				}
+			}
+
+			if (terminal != NULL) {
+				terminal->storeData(player);
+			}
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleCloneConfirm()");
+		player->unlock();
+	}
+}
 void SuiManager::handleCloneRequest(uint32 boxID, Player* player, uint32 cancel, int index) {
 	try {
 		player->wlock();
@@ -1227,20 +1280,22 @@ void SuiManager::handleCloneRequest(uint32 boxID, Player* player, uint32 cancel,
 
 		SuiBox* sui = player->getSuiBox(boxID);
 
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
 		if (index >= 0) {
 			if (!player->isDead()) {
 				player->sendSystemMessage("You must be dead to activate your clone.");
 			} else {
-				player->doClone();
+				SuiListBox* suiListBox = (SuiListBox*) sui;
+				player->clone(suiListBox->getMenuObjectID(index));
 			}
 		} else {
 			if (player->isDead())
 				player->sendSystemMessage("You will remain dead until you choose a location to clone or you are revived. Type /activateClone to restore the clone window.");
 		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
 
 		player->unlock();
 	} catch (...) {
@@ -1665,5 +1720,128 @@ void SuiManager::handleTeachSkill(uint32 boxID, Player* player, uint32 cancel) {
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleTeachSkill");
         	player->unlock();
+	}
+}
+
+
+void SuiManager::handleInsuranceMenu(uint32 boxID, Player* player, uint32 cancel, int index) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui != NULL && sui->isListBox() && cancel != 1) {
+			SuiListBox* suiList = (SuiListBox*) sui;
+			uint64 oid = suiList->getMenuObjectID(index);
+
+			uint64 terminalID = suiList->getUsingObjectID();
+
+			InsuranceTerminal* terminal = NULL;
+			SceneObject* scoTerminal = player->getZone()->lookupObject(terminalID);
+
+			if (scoTerminal != NULL) {
+				TangibleObject* tanoTerminal = (TangibleObject*) scoTerminal;
+				if (tanoTerminal->isTerminal()) {
+					Terminal* termTerminal = (Terminal*) tanoTerminal;
+					if (termTerminal->isInsuranceTerminal())
+						terminal = (InsuranceTerminal*) termTerminal;
+				}
+			}
+
+			if (terminal != NULL)
+				player->insureItem(terminal, oid);
+			else
+				player->onInsureItemInvalidTerminal();
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleInsuranceMenu ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleInsuranceMenu");
+		player->unlock();
+	}
+}
+
+
+void SuiManager::handleInsureAllConfirm(uint32 boxID, Player* player, uint32 cancel) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui != NULL && cancel != 1)
+			player->insureAllItems(sui->getUsingObjectID());
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleInsureAllConfirm ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleInsureAllConfirm");
+		player->unlock();
+	}
+}
+
+void SuiManager::handleBankTipConfirm(uint32 boxID, Player* player, uint32 cancel) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui != NULL && sui->isMessageBox() && cancel != 1) {
+			SuiBankTipConfirmBox* bankTip = (SuiBankTipConfirmBox*) sui;
+
+			Player* recipient = bankTip->getRecipient();
+			int32 amount = bankTip->getTipAmount();
+
+			recipient->wlock(player);
+
+			player->bankTipFinish(recipient, amount);
+
+			recipient->unlock();
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleBankTipConfirm ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleBankTipConfirm");
+		player->unlock();
 	}
 }

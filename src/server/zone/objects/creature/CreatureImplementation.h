@@ -201,7 +201,7 @@ public:
 
 	void agro(bool all);
 
-	void deagro();
+	void deaggro();
 
 	void doAttack(CreatureObject* target, int damage = 1);
 	bool attack(CreatureObject* target);
@@ -214,7 +214,7 @@ public:
 
 	bool shouldAgro(SceneObject * target);
 
-	void doIncapAnimation();
+	void performRandomIncapAnimation();
 
 	CreatureObject* getAggroedCreature() {
 		return aggroedCreature;
@@ -459,11 +459,10 @@ public:
 		looted = true;
 		if (playerCanHarvest.size() == 0) {
 
-			if (server != NULL && creatureRemoveEvent->isQueued()) {
+			if (server != NULL && creatureRemoveEvent != NULL && creatureRemoveEvent->isQueued())
 				server->removeEvent(creatureRemoveEvent);
 
-				scheduleDespawnCreature(500);
-			}
+			scheduleDespawnCreature(500);
 
 		}
 	}
@@ -504,6 +503,12 @@ public:
 	inline uint32 getFPValue() {
 		return fpValue;
 	}
+
+
+
+	//Event Handlers
+	void onIncapacitateTarget(CreatureObject* victim);
+
 
 	friend class CreatureManagerImplementation;
 

@@ -1,9 +1,46 @@
 /*
- * StructureManagerImplementation.cpp
- *
- *  Created on: Oct 25, 2008
- *      Author: swgemu
- */
+Copyright (C) 2007 <SWGEmu>
+
+This File is part of Core3.
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
+General Public License as published by the Free Software
+Foundation; either version 2 of the License,
+or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU Lesser General Public License for
+more details.
+
+You should have received a copy of the GNU Lesser General
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
+cover the whole combination.
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
+and as the GNU LGPL requires distribution of source code.
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
+which carries forward this exception.
+*/
 
 
 #include "events/StructureManagerSaveStateEvent.h"
@@ -26,6 +63,7 @@ StructureManagerImplementation::StructureManagerImplementation(Zone* zone, ZoneP
 	buildingMap = new BuildingMap(10000);
 	cellMap = new CellMap(10000);
 	installationMap = new InstallationMap(1000);
+	cloningFacilityMap = new CloningFacilityMap(1000);
 
 	StringBuffer loggingname;
 	loggingname << "StructureManager " << zone->getZoneID();
@@ -57,6 +95,11 @@ StructureManagerImplementation::~StructureManagerImplementation() {
 	if (buildingMap != NULL) {
 		delete buildingMap;
 		buildingMap = NULL;
+	}
+
+	if (cloningFacilityMap != NULL) {
+		delete cloningFacilityMap;
+		cloningFacilityMap = NULL;
 	}
 }
 
@@ -216,7 +259,18 @@ BuildingObject* StructureManagerImplementation::loadStaticBuilding(uint64 oid, i
 			float type = result->getFloat(11);
 			bool client = result->getBoolean(12);
 
-			buio = new BuildingObject(oid, client);
+			if (file.indexOf("building") != -1 && file.indexOf("cloning") != -1) {
+				CloningFacility* cloningFacility = new CloningFacility(oid, client);
+				buio = (BuildingObject*) cloningFacility;
+
+				if (cloningFacilityMap->put(oid, cloningFacility) != NULL) {
+					error("Error CloningFacility already exists\n");
+					raise(SIGSEGV);
+				}
+			} else {
+				buio = new BuildingObject(oid, client);
+			}
+
 			buio->setZoneProcessServer(server);
 
 			buio->setObjectCRC(file.hashCode());
@@ -713,7 +767,6 @@ void StructureManagerImplementation::clearBuildings() {
 	info("cleared buildings");
 }
 
-
 void StructureManagerImplementation::saveBuildings() {
 	buildingMap->resetIterator();
 
@@ -1094,4 +1147,43 @@ void StructureManagerImplementation::deleteBuilding(BuildingObject *buio) {
 		System::out << e.getMessage() << "\n";
 	}
 	*/
+}
+
+
+/**
+ * Used to get the closest cloning facility that is in the cloningFacilityMap
+ * \param player The player to find a close facility in relation to.
+ * \return Returns the closest cloning facility found.
+ */
+CloningFacility* StructureManagerImplementation::getClosestCloningFacility(Player* player) {
+	//TODO: Can this be redone to use the quadtree?
+	float playerX = player->getPositionX();
+	float playerY = player->getPositionY();
+
+	if (player->getParentID() > 0) {
+		SceneObject* building = player->getBuilding();
+		if (building != NULL) {
+			playerX = building->getPositionX();
+			playerY = building->getPositionY();
+		}
+	}
+
+	CloningFacility* closestFacility = NULL;
+
+	float closestDistance = 32768.0f;
+
+	cloningFacilityMap->resetIterator();
+
+	while (cloningFacilityMap->hasNext()) {
+		CloningFacility* facility = cloningFacilityMap->next();
+
+		float dist = sqrt(pow(playerX - facility->getPositionX(), 2) + pow(playerY - facility->getPositionY(), 2));
+
+		if (dist < closestDistance) {
+			closestDistance = dist;
+			closestFacility = facility;
+		}
+	}
+
+	return closestFacility;
 }

@@ -65,13 +65,11 @@ interface Weapon implements TangibleObject {
 	
 	//void generateAttributes(SceneObject obj);
 	
-	void decayWeapon(int decayRate);
-	
 	void setWeaponStats(int modifier);
 
 	void sliceWeapon(Player player);
 	
-	void repairWeapon(Player player);
+	void decay(float decayRate);
 
 	void removePowerup(Player player, boolean notify);
 
@@ -218,4 +216,8 @@ interface Weapon implements TangibleObject {
 
 	void setXpType();
 
+	//Event Handlers
+	void onBroken();
+
+	//Actions
 }

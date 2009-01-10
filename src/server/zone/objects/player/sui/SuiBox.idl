@@ -55,6 +55,7 @@ interface SuiBox {
 	void setCancelButton(boolean value);
 	void setBackButton(boolean value);
 	void setUsingObjectID(unsigned long oid);
+	void setIntValue(int value);
 
 	boolean isInputBox();
 	boolean isListBox();
@@ -66,5 +67,6 @@ interface SuiBox {
 	unsigned long getBoxID();
 	unsigned long getWindowType();
 	unsigned long getUsingObjectID();
+	int getIntValue();
 	Player getPlayer();
 }

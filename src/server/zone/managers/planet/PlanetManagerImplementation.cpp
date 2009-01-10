@@ -394,6 +394,9 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadCraftingStations();
 	loadMissionTerminals();
 	loadStaticTangibleObjects();
+	loadCloningTerminals();
+	loadInsuranceTerminals();
+	loadCloneSpawnPoints();
 }
 
 void PlanetManagerImplementation::loadShuttles() {
@@ -556,6 +559,159 @@ void PlanetManagerImplementation::loadGuildTerminals() {
 		unlock();
 	}
 
+}
+
+void PlanetManagerImplementation::loadCloningTerminals() {
+	try {
+		lock();
+
+		StringBuffer query;
+		query << "SELECT * FROM terminals WHERE type = 5 AND zoneid = " << zone->getZoneID() << " ORDER BY parentid;";
+
+		ResultSet* resultSet = ServerDatabase::instance()->executeQuery(query);
+
+		while (resultSet->next()) {
+			uint64 parentId = resultSet->getUnsignedLong(1);
+
+			float oX = resultSet->getFloat(3);
+			float oZ = resultSet->getFloat(4);
+			float oY = resultSet->getFloat(5);
+			float oW = resultSet->getFloat(6);
+
+			float X = resultSet->getFloat(7);
+			float Z = resultSet->getFloat(8);
+			float Y = resultSet->getFloat(9);
+
+			SceneObject* parentCell = zone->lookupObject(parentId);
+
+			if (parentCell != NULL) {
+				SceneObject* buildingCell = parentCell;
+
+				while (buildingCell->getParentID() > 0)
+					buildingCell = buildingCell->getParent();
+
+				BuildingObject* building = structureManager->getBuilding(buildingCell->getObjectID());
+
+				if (building != NULL && building->isCloningFacility()) {
+					CloningFacility* cloningFacility = (CloningFacility*) building;
+
+					CloningTerminal* cloningTerminal = new CloningTerminal(getNextStaticObjectID(false), X, Z, Y);
+					cloningTerminal->setDirection(oX, oZ, oY, oW);
+					cloningTerminal->setParent(parentCell);
+					cloningTerminal->setCloningFacility(cloningFacility);
+					cloningTerminal->insertToZone(zone);
+
+					cloningFacility->addCloningTerminal(cloningTerminal);
+				}
+			}
+		}
+
+		delete resultSet;
+		unlock();
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+		unlock();
+	} catch (...) {
+		error("Unreported exception caught in PlanetManagerImplementation::loadCloningTerminals()");
+		unlock();
+	}
+}
+
+
+void PlanetManagerImplementation::loadInsuranceTerminals() {
+	try {
+		lock();
+
+		StringBuffer query;
+		query << "SELECT * FROM terminals WHERE type = 6 AND zoneid = " << zone->getZoneID() << " ORDER BY parentid;";
+
+		ResultSet* resultSet = ServerDatabase::instance()->executeQuery(query);
+
+		while (resultSet->next()) {
+			uint64 parentId = resultSet->getUnsignedLong(1);
+
+			float oX = resultSet->getFloat(3);
+			float oZ = resultSet->getFloat(4);
+			float oY = resultSet->getFloat(5);
+			float oW = resultSet->getFloat(6);
+
+			float X = resultSet->getFloat(7);
+			float Z = resultSet->getFloat(8);
+			float Y = resultSet->getFloat(9);
+
+			SceneObject* parentCell = zone->lookupObject(parentId);
+
+			if (parentCell != NULL) {
+				InsuranceTerminal* insuranceTerminal = new InsuranceTerminal(getNextStaticObjectID(false), X, Z, Y);
+				insuranceTerminal->setDirection(oX, oZ, oY, oW);
+				insuranceTerminal->setParent(parentCell);
+				insuranceTerminal->insertToZone(zone);
+			}
+		}
+
+		delete resultSet;
+		unlock();
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+		unlock();
+	} catch (...) {
+		error("Unreported exception caught in PlanetManagerImplementation::loadCloningTerminals()");
+		unlock();
+	}
+}
+
+void PlanetManagerImplementation::loadCloneSpawnPoints() {
+	try {
+		lock();
+
+		StringBuffer query;
+		query << "SELECT * FROM clone_spawn_points WHERE zoneid = " << zone->getZoneID() << " ORDER BY parentid;";
+
+		ResultSet* resultSet = ServerDatabase::instance()->executeQuery(query);
+
+		while (resultSet->next()) {
+			uint64 parentId = resultSet->getUnsignedLong(8);
+
+			float oX = resultSet->getFloat(1);
+			float oZ = resultSet->getFloat(2);
+			float oY = resultSet->getFloat(3);
+			float oW = resultSet->getFloat(4);
+
+			float X = resultSet->getFloat(5);
+			float Z = resultSet->getFloat(6);
+			float Y = resultSet->getFloat(7);
+
+			SceneObject* parentCell = zone->lookupObject(parentId);
+
+			if (parentCell != NULL) {
+				SceneObject* buildingCell = parentCell;
+
+				while (buildingCell->getParentID() > 0)
+					buildingCell = buildingCell->getParent();
+
+				BuildingObject* building = structureManager->getBuilding(buildingCell->getObjectID());
+
+				if (building != NULL && building->isCloningFacility()) {
+					CloningFacility* cloningFacility = (CloningFacility*) building;
+
+					CloneSpawnPoint* spawnPoint = new CloneSpawnPoint(X, Z, Y);
+					spawnPoint->setDirection(oX, oZ, oY, oW);
+					spawnPoint->setParent(parentCell);
+
+					cloningFacility->addSpawnPoint(spawnPoint);
+				}
+			}
+		}
+
+		delete resultSet;
+		unlock();
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+		unlock();
+	} catch (...) {
+		error("Unreported exception caught in PlanetManagerImplementation::loadCloningTerminals()");
+		unlock();
+	}
 }
 
 void PlanetManagerImplementation::loadVendorTerminals() {

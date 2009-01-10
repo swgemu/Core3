@@ -1122,7 +1122,7 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player* player) {
 				targetPlayer->wlock(player);
 
 			targetPlayer->explode(2, false);
-			targetPlayer->kill();
+			targetPlayer->die();
 
 			targetPlayer->sendSystemMessage(
 					"Your character has been killed by \'"
@@ -1146,8 +1146,7 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player* player) {
 			creature->explode(2, false);
 			uint damage = 100000000;
 
-			creature->addDamage(player, damage);
-			creature->takeHealthDamage(damage);
+			player->inflictDamage(creature, CreatureAttribute::HEALTH, damage);
 
 			creature->unlock();
 
@@ -1180,8 +1179,7 @@ void GameCommandHandler::ecKill(StringTokenizer tokenizer, Player* player) {
 			creature->explode(2, false);
 			uint damage = 100000000;
 
-			creature->addDamage(player, damage);
-			creature->takeHealthDamage(damage);
+			player->inflictDamage(creature, CreatureAttribute::HEALTH, damage);
 
 			creature->unlock();
 
@@ -1227,7 +1225,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 							otherPlayer->wlock(player);
 
 						otherPlayer->explode(2, false);
-						otherPlayer->kill();
+						otherPlayer->die();
 
 						if (otherPlayer != player)
 							otherPlayer->unlock();
@@ -1257,8 +1255,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 						creature->wlock(player);
 
 						creature->explode(2, false);
-						creature->addDamage(player, damage);
-						creature->takeHealthDamage(damage);
+						player->inflictDamage(creature, CreatureAttribute::HEALTH, damage);
 						player->sendSystemMessage("creature has been killed.");
 
 						creature->unlock();

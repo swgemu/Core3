@@ -124,6 +124,9 @@ public:
 
 	//Teach
 	void handleTeach(SceneObject* obj, Player* trainer);
+
+	//Insurance
+	void handleInsureAllItems(Player* player, SceneObject* obj);
 };
 
 #endif /*RADIALMANAGER_H_*/

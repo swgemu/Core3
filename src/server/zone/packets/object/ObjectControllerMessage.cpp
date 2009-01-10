@@ -466,10 +466,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case (0xEA69C1BD): //activateClone
 		if (!player->isDead()) {
-			player->sendSystemMessage(
-					"You must be dead to activate your clone.");
+			player->sendSystemMessage("You must be dead to activate your clone.");
 		} else {
-			player->activateClone();
+			player->sendActivateCloneRequest();
 		}
 		break;
 	case (0x03B65950): // Logout
@@ -877,7 +876,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		parseNewbieSelectStartingLocation(player, pack);
 		break;
 	case (88718951): //throwtrap
-		System::out << "CMD: throwtrap\n";
+		//System::out << "CMD: throwtrap\n";
 		parseThrowTrap(player, pack);
 		break;
 	case (0x5041F83A): // Teach
@@ -2818,15 +2817,17 @@ void ObjectControllerMessage::parseDismount(Player* player, Message* pack) {
 	}
 }
 
-void ObjectControllerMessage::parseTip(Player* player, Message* pack,
-		PlayerManager* playerManager) {
+void ObjectControllerMessage::parseTip(Player* player, Message* pack, PlayerManager* playerManager) {
 	if (!player->canTip()) {
 		player->sendSystemMessage("You can only tip once every 10 seconds.");
 		return;
 	}
 
+	StfParameter* params = new StfParameter();
+
 	player->updateNextTipTime();
-	uint64 tipToId = pack->parseLong();
+
+	uint64 recipientID = pack->parseLong();
 
 	UnicodeString tipParams;
 	pack->parseUnicode(tipParams);
@@ -2834,23 +2835,27 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 	StringTokenizer tokenizer(tipParams.toString());
 	tokenizer.setDelimeter(" ");
 
-	if (!tokenizer.hasMoreTokens())
+	if (!tokenizer.hasMoreTokens()) {
+		delete params;
 		return;
+	}
 
-	uint32 tipAmount;
+	uint32 tipAmount = 0;
 
-	if (tipToId == 0) {
+	if (recipientID == 0) {
 		//either player not in range. Or not online. So lets do a bank tip.
 
-		String tipToName;
-		tokenizer.getStringToken(tipToName);
+		String recipientName;
+		tokenizer.getStringToken(recipientName);
 
 		//Ok so now we have the name. Lets verify they exist first before doing anything else.
-		if (!playerManager->validateName(tipToName)) {
+		if (!playerManager->validateName(recipientName)) {
 			//Ok so the player exists. So lets parse the rest of the packet now.
 
-			if (!tokenizer.hasMoreTokens())
+			if (!tokenizer.hasMoreTokens()) {
+				delete params;
 				return;
+			}
 
 			String tips;
 			tokenizer.getStringToken(tips);
@@ -2858,9 +2863,9 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 			tipAmount = atol(tips.toCharArray());
 
 			if (tipAmount == 0) {
-				//Invalid Tip Amount/Parameter.
-				player->sendSystemMessage(
-						"Invalid Tip parameter. (Tip Amount not a number)");
+				params->addTO(tips);
+				player->sendSystemMessage("base_player", "prose_tip_invalid_param", params); //TIP: invalid amount ("%TO") parameter.
+				delete params;
 				return;
 			}
 
@@ -2873,40 +2878,50 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 			 }
 			 */
 
-			Player* tiptoPlayer = playerManager->getPlayer(tipToName);
-			if (tiptoPlayer == NULL) {
+			Player* recipient = playerManager->getPlayer(recipientName);
+
+			if (recipient == NULL) {
 				//The player exists but they are offline. So Still do the tip.
 				//Do stuff like altering the db here since they arent online.
-				if (playerManager->modifyOfflineBank(player, tipToName,
-						tipAmount))
-					player->sendSystemMessage(
-							"Player not online. Credits should be transferred.");
+				if (playerManager->modifyOfflineBank(player, recipientName, tipAmount))
+					player->sendSystemMessage("Player not online. Credits should be transferred.");
+
+				delete params;
 				return;
 			} else {
 				//Player is online. Tip their stuff and send mail etc;
 				//make sure they have the proper credits first.
-				playerManager->doBankTip(player, tiptoPlayer, tipAmount, true);
+				try {
+					recipient->wlock(player);
+					player->bankTipStart(recipient, tipAmount);
+					recipient->unlock();
+				} catch (...) {
+					player->error("Unhandled exception in ObjectControllerMessage:parseTip");
+					recipient->unlock();
+				}
 			}
 
 		} else {
 			//Invalid Player Name
-			player->sendSystemMessage(tipToName
-					+ " is not a valid player name.");
+			player->sendSystemMessage("ui_cmnty", "friend_location_failed_noname"); //No player with that name exists.
+			delete params;
 			return;
 		}
 
 	} else {
 		//The player has SOMETHING targetted.
 		//Lets first check if its a player, cause if it is we can skip some stuff.
-		SceneObject* object = player->getZone()->lookupObject(tipToId);
+		SceneObject* object = player->getZone()->lookupObject(recipientID);
 
 		if (object == NULL) {
 			player->sendSystemMessage("SceneObject is NULL for some reason.");
+			delete params;
 			return;
 		}
 
 		if (object == player) {
-			player->sendSystemMessage("You can't tip yourself.");
+			player->sendSystemMessage("You cannot tip yourself.");
+			delete params;
 			return;
 		}
 
@@ -2914,21 +2929,23 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 			//Ok so we know its a player.
 			//If its a player in range, the client will omit any text referencing the name.
 			//So the next param SHOULD be the tip amount.
-			if (!tokenizer.hasMoreTokens())
+			if (!tokenizer.hasMoreTokens()) {
+				delete params;
 				return;
+			}
 
 			String tips;
 			tokenizer.getStringToken(tips);
 			tipAmount = atoi(tips.toCharArray());
 
 			//Quick cast of the object to a Player.
-			Player* tipTo = (Player*) object;
+			Player* recipient = (Player*) object;
 
 			//They didnt type in a number, or typed in 0.
 			if (tipAmount == 0) {
-				//Invalid Tip Amount/Parameter.
-				player->sendSystemMessage(
-						"Invalid Tip parameter. (Tip Amount not a number)");
+				params->addTO(tips);
+				player->sendSystemMessage("base_player", "prose_tip_invalid_param", params); //TIP: invalid amount ("%TO") parameter.
+				delete params;
 				return;
 			}
 
@@ -2941,35 +2958,54 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 
 				if (bankParam == "bank") {
 					//Bank tip. We don't need to parse anything else now that we have this info.
-					playerManager->doBankTip(player, tipTo, tipAmount, true);
+					try {
+						recipient->wlock(player);
+						player->bankTipStart(recipient, tipAmount);
+						recipient->unlock();
+					} catch (...) {
+						player->error("Unhandled exception in ObjectControllerMessage:parseTip");
+						recipient->unlock();
+					}
 
 				} else {
 					//They typed something else other than bank.
-					player->sendSystemMessage(
-							"Invalid Tip parameter. (Bank Parameter)");
+					params->addTO(bankParam);
+					player->sendSystemMessage("base_player", "prose_tip_invalid_param", params); //TIP: invalid amount ("%TO") parameter.
+					delete params;
 					return;
 				}
 
 			} else {
 				//Theres nothing else typed, so they want to do a cash tip. Cake!
-				playerManager->doCashTip(player, tipTo, tipAmount, true);
+				try {
+					recipient->wlock(player);
+					player->cashTip(recipient, tipAmount);
+					recipient->unlock();
+				} catch (...) {
+					player->error("Unhandled exception in ObjectControllerMessage:parseTip");
+					recipient->unlock();
+				}
 			}
 
 		} else {
 			//The current target is not a player.
 			//So we have to parse for a valid player name. (THIS IS ONLY FOR BANK TIPS)
 
-			if (!tokenizer.hasMoreTokens())
+			if (!tokenizer.hasMoreTokens()) {
+				delete params;
 				return;
+			}
 
-			String tipToName;
-			tokenizer.getStringToken(tipToName);
+			String recipientName;
+			tokenizer.getStringToken(recipientName);
 
 			//Before we go any further we should validate the player name.
-			if (!playerManager->validateName(tipToName)) {
+			if (!playerManager->validateName(recipientName)) {
 				//They exist at least. Now lets grab the tip amount.
-				if (!tokenizer.hasMoreTokens())
+				if (!tokenizer.hasMoreTokens()) {
+					delete params;
 					return;
+				}
 
 				String tips;
 				tokenizer.getStringToken(tips);
@@ -2977,9 +3013,9 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 
 				//They didnt type in a number, or typed in 0.
 				if (tipAmount == 0) {
-					//Invalid Tip Amount/Parameter.
-					player->sendSystemMessage(
-							"Invalid Tip parameter. (Tip Amount not a number)");
+					params->addTO(tips);
+					player->sendSystemMessage("base_player", "prose_tip_invalid_param", params); //TIP: invalid amount ("%TO") parameter.
+					delete params;
 					return;
 				}
 
@@ -2993,33 +3029,38 @@ void ObjectControllerMessage::parseTip(Player* player, Message* pack,
 
 					if (bankParam == "bank") {
 						//Bank tip. We don't need to parse anything else now that we have this info.
-						Player* tiptoPlayer = playerManager->getPlayer(
-								tipToName);
-						if (tiptoPlayer == NULL) {
+						Player* recipient = playerManager->getPlayer(recipientName);
+						if (recipient == NULL) {
 							//The player exists but they are offline. So Still do the tip.
 							//Do stuff like altering the db here since they arent online.
-							playerManager->modifyOfflineBank(player, tipToName,
-									tipAmount);
-							player->sendSystemMessage(
-									"Player not online. Add Altering the DB in later.");
+							playerManager->modifyOfflineBank(player, recipientName, tipAmount);
+							player->sendSystemMessage("Player not online. Add Altering the DB in later.");
+							delete params;
 							return;
 						} else {
 							//Player is online. Tip their stuff and send mail etc;
 							//make sure they have the proper credits first.
-							playerManager->doBankTip(player, tiptoPlayer,
-									tipAmount, true);
+							try {
+								recipient->wlock(player);
+								player->bankTipStart(recipient, tipAmount);
+								recipient->unlock();
+							} catch (...) {
+								player->error("Unhandled exception in ObjectControllerMessage:parseTip");
+								recipient->unlock();
+							}
 						}
 					} else {
 						//They typed something else other than bank.
-						player->sendSystemMessage(
-								"Invalid Tip parameter. (Bank Parameter)");
+						params->addTO(bankParam);
+						player->sendSystemMessage("base_player", "prose_tip_invalid_param", params); //TIP: invalid amount ("%TO") parameter.
+						delete params;
 						return;
 					}
 				}
 			} else {
 				//Invalid Player Name
-				player->sendSystemMessage(tipToName
-						+ " is not a valid player name.");
+				player->sendSystemMessage("ui_cmnty", "friend_location_failed_noname"); //No player with that name exists.
+				delete params;
 				return;
 			}
 		}
@@ -3037,71 +3078,14 @@ void ObjectControllerMessage::handleDeathblow(Player* player, Message* packet,
 
 	Player* target = (Player*) object;
 
+
 	try {
 		target->wlock(player);
 
 		if (combatManager->canAttack(player, target)
 				&& target->isIncapacitated() && target->isInRange(player, 5)) {
 
-			player->unlock();
-
-			target->deathblow(player);
-
-			player->wlock(target);
-
-			float currentRating = (float) player->getPvpRating();
-			float opponentRating = (float) target->getPvpRating();
-
-			//Using the formula: N = P1 + ( (1/9) * (P2 - P1 + 100) ), where P2 - P1 - 100 >= 0
-			int pointsGained = (int) round((1.0f / 9.0f) * (opponentRating
-					- currentRating + 100.0f));
-
-			pointsGained = (pointsGained >= 0) ? pointsGained : 0;
-			//TODO: Is there a max pvp rating?
-
-			player->increasePvpRating(pointsGained);
-
-			int newRating = player->getPvpRating();
-
-			StringBuffer victoryMsg;
-
-			String victimName = "";
-			UnicodeString uniName = UnicodeString("");
-			uniName = target->getCharacterName();
-			victimName = uniName.toString();
-
-			if (pointsGained > 0) {
-				switch (System::random(2)) {
-				case 0:
-					victoryMsg << "You have fought valiantly against "
-							<< victimName.toCharArray()
-							<< ".  For your part in their death your player combat rating has been adjusted to "
-							<< newRating << ".";
-					break;
-				case 1:
-					victoryMsg << "You have killed "
-							<< victimName.toCharArray()
-							<< ". For your part in their death your player combat rating has been adjusted to "
-							<< newRating << ".";
-					break;
-				case 2:
-				default:
-					victoryMsg << "You have fearlessly slain your foe "
-							<< victimName.toCharArray()
-							<< ".  For your part in their death your player combat rating has been adjusted to "
-							<< newRating << ".";
-					break;
-				}
-			} else {
-				victoryMsg << "Although you have valiantly defeated "
-						<< victimName.toCharArray()
-						<< " in combat, you can reap no more combat rating points from %PT death at this time.  Your player combat rating remains at "
-						<< newRating << ".";
-			}
-
-			player->sendSystemMessage("base_player", "prose_target_dead",
-					target->getObjectID());
-			player->sendSystemMessage(victoryMsg.toString());
+			player->deathblow(target);
 		}
 
 		target->unlock();
@@ -4190,7 +4174,7 @@ void ObjectControllerMessage::parseHaveConsentRequest(Player* player,
 	String consentName = "";
 
 	if (name.isEmpty()) {
-		player->sendConsentBox();
+		player->sendConsentList();
 		return;
 	}
 

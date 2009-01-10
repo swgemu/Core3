@@ -48,62 +48,68 @@ which carries forward this exception.
 class SuiWindowType {
 public:
 
-	static const int MOTD = 0x0000;
-	static const int CONSENT = 0x0001;
+	static const int MOTD = 0;
+	static const int CONSENT = 1;
 
-	static const int CLONE_REQUEST = 0x0002;
+	static const int CLONE_REQUEST = 2;
+	static const int CLONE_CONFIRM = 3;
 
-	static const int START_MUSIC = 0x0003;
-	static const int START_DANCING = 0x0004;
-	static const int CHANGE_MUSIC = 0x0005;
-	static const int CHANGE_DANCING = 0x0006;
+	static const int START_MUSIC = 4;
+	static const int START_DANCING = 5;
+	static const int CHANGE_MUSIC = 6;
+	static const int CHANGE_DANCING = 7;
 
-	static const int SURVEY_TOOL_RANGE = 0x0007;
+	static const int SURVEY_TOOL_RANGE = 8;
 
-	static const int GUILD_CREATION_INPUT_FOR_TAG = 0x0008;
-	static const int GUILD_CREATION_INPUT_FOR_NAME = 0x0009;
-	static const int GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME = 0x0010;
-	static const int VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP = 0x0011;
-	static const int SPONSORED_GUILD_MEMBERS = 0x0012;
-	static const int SPONSORED_GUILD_MEMBERS_ACCEPT = 0x0013;
-	static const int GUILD_DISBAND = 0x0014;
-	static const int GUILD_NAME_CHANGE = 0x0015;
-	static const int GUILD_NAME_CHANGE_NAME = 0x0016;
-	static const int GUILD_INFORMATION_MEMBERS = 0x0017;
-	static const int GUILD_MEMBER_OPTIONS = 0x0018;
-	static const int GUILD_PERMISSION_SELECTION = 0x0019;
-	static const int REMOVE_FROM_GUILD = 0x0020;
-	static const int GUILD_TRANSFER_LEADER = 0x0021;
-	static const int GUILD_TRANSFER_LEADER_VERIFY = 0x0022;
+	static const int GUILD_CREATION_INPUT_FOR_TAG = 9;
+	static const int GUILD_CREATION_INPUT_FOR_NAME = 10;
+	static const int GUILD_SPONSORING_MEMBER_INPUT_FOR_NAME = 11;
+	static const int VERIFY_SPONSOR_TARGET_FOR_GUILD_MEMBERSHIP = 12;
+	static const int SPONSORED_GUILD_MEMBERS = 13;
+	static const int SPONSORED_GUILD_MEMBERS_ACCEPT = 14;
+	static const int GUILD_DISBAND = 15;
+	static const int GUILD_NAME_CHANGE = 16;
+	static const int GUILD_NAME_CHANGE_NAME = 17;
+	static const int GUILD_INFORMATION_MEMBERS = 18;
+	static const int GUILD_MEMBER_OPTIONS = 19;
+	static const int GUILD_PERMISSION_SELECTION = 20;
+	static const int REMOVE_FROM_GUILD = 21;
+	static const int GUILD_TRANSFER_LEADER = 22;
+	static const int GUILD_TRANSFER_LEADER_VERIFY = 23;
 
-	static const int TICKET_PURCHASE_MESSAGE = 0x0023;
-	static const int TICKET_COLLECTOR_RESPONSES = 0x0024;
+	static const int TICKET_PURCHASE_MESSAGE = 24;
+	static const int TICKET_COLLECTOR_RESPONSES = 25;
 
-	static const int COLOR_PICKER1 = 0x0025;
-	static const int COLOR_PICKER2 = 0x0026;
+	static const int COLOR_PICKER1 = 26;
+	static const int COLOR_PICKER2 = 27;
 
-	static const int BANK_TRANSFER = 0x0027;
+	static const int BANK_TRANSFER = 28;
 
-	static const int BLUE_FROG_ITEM_REQUEST = 0x0028;
+	static const int BLUE_FROG_ITEM_REQUEST = 29;
 
-	static const int WOUND_TERMINAL_REQUEST = 0x0029;
-	static const int STATE_TERMINAL_REQUEST = 0x0030;
-	static const int DIAGNOSE = 0x0031;
+	static const int WOUND_TERMINAL_REQUEST = 30;
+	static const int STATE_TERMINAL_REQUEST = 31;
+	static const int DIAGNOSE = 32;
 
-	static const int FREE_RESOURCE = 0x0032;
-	static const int GIVE_FREE_RESOURCE = 0x0033;
+	static const int FREE_RESOURCE = 33;
+	static const int GIVE_FREE_RESOURCE = 34;
 
-	static const int TEACH_SKILL = 0x0034;
-	static const int TEACH_PLAYER = 0x0035;
-	static const int DENY_TRAINING_LIST = 0x0036;
+	static const int TEACH_SKILL = 35;
+	static const int TEACH_PLAYER = 36;
+	static const int DENY_TRAINING_LIST = 37;
 
-	static const int OBJECT_NAME = 0x0037;
-	static const int MANAGE_MAINTENANCE = 0x0038;
-	static const int ADD_ENERGY = 0x0039;
-	static const int INSTALLATION_STATUS = 0x0040;
+	static const int OBJECT_NAME = 38;
+	static const int MANAGE_MAINTENANCE = 39;
+	static const int ADD_ENERGY = 40;
+	static const int INSTALLATION_STATUS = 41;
 
-	static const int INSTALLATION_REDEED = 0x0041;
-	static const int INSTALLATION_REDEED_CONFIRM = 0x0042;
+	static const int INSTALLATION_REDEED = 42;
+	static const int INSTALLATION_REDEED_CONFIRM = 43;
+
+	static const int INSURANCE_MENU = 44;
+	static const int INSURE_ALL_CONFIRM = 45;
+
+	static const int BANK_TIP_CONFIRM = 46;
 };
 
 #endif /*SuiWindowType_H_*/

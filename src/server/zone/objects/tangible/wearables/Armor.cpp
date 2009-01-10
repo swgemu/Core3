@@ -48,17 +48,17 @@ void Armor::sendTo(Player* player, bool doClose) {
 		((ArmorImplementation*) _impl)->sendTo(player, doClose);
 }
 
-void Armor::decayArmor(int decayRate) {
+void Armor::decay(float decayRate) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 7);
-		method.addSignedIntParameter(decayRate);
+		method.addFloatParameter(decayRate);
 
 		method.executeWithVoidReturn();
 	} else
-		((ArmorImplementation*) _impl)->decayArmor(decayRate);
+		((ArmorImplementation*) _impl)->decay(decayRate);
 }
 
 void Armor::generateAttributes(SceneObject* obj) {
@@ -100,25 +100,12 @@ void Armor::sliceArmor(Player* player) {
 		((ArmorImplementation*) _impl)->sliceArmor(player);
 }
 
-void Armor::repairArmor(Player* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((ArmorImplementation*) _impl)->repairArmor(player);
-}
-
 int Armor::addSkillMod(int skillModType, int skillModValue) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 11);
 		method.addSignedIntParameter(skillModType);
 		method.addSignedIntParameter(skillModValue);
 
@@ -132,7 +119,7 @@ int Armor::getRating() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 12);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -144,7 +131,7 @@ int Armor::getCondition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -156,7 +143,7 @@ int Armor::getMaxCondition() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 14);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -168,7 +155,7 @@ int Armor::getHealthEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 15);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -180,7 +167,7 @@ int Armor::getActionEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 16);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -192,7 +179,7 @@ int Armor::getMindEncumbrance() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 18);
+		DistributedMethod method(this, 17);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -204,7 +191,7 @@ float Armor::getKinetic() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 19);
+		DistributedMethod method(this, 18);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -216,7 +203,7 @@ bool Armor::isKineticSpecial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 20);
+		DistributedMethod method(this, 19);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -228,7 +215,7 @@ float Armor::getEnergy() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 21);
+		DistributedMethod method(this, 20);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -240,7 +227,7 @@ bool Armor::isEnergySpecial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 22);
+		DistributedMethod method(this, 21);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -252,7 +239,7 @@ float Armor::getElectricity() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 23);
+		DistributedMethod method(this, 22);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -264,7 +251,7 @@ bool Armor::isElectricitySpecial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 24);
+		DistributedMethod method(this, 23);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -276,7 +263,7 @@ float Armor::getStun() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 25);
+		DistributedMethod method(this, 24);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -288,7 +275,7 @@ bool Armor::isStunSpecial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 26);
+		DistributedMethod method(this, 25);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -300,7 +287,7 @@ float Armor::getBlast() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 27);
+		DistributedMethod method(this, 26);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -312,7 +299,7 @@ bool Armor::isBlastSpecial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 28);
+		DistributedMethod method(this, 27);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -324,7 +311,7 @@ float Armor::getHeat() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 29);
+		DistributedMethod method(this, 28);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -336,7 +323,7 @@ bool Armor::isHeatSpecial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 30);
+		DistributedMethod method(this, 29);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -348,7 +335,7 @@ float Armor::getCold() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 31);
+		DistributedMethod method(this, 30);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -360,7 +347,7 @@ bool Armor::isColdSpecial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 32);
+		DistributedMethod method(this, 31);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -372,7 +359,7 @@ float Armor::getAcid() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 33);
+		DistributedMethod method(this, 32);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -384,7 +371,7 @@ bool Armor::isAcidSpecial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 34);
+		DistributedMethod method(this, 33);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -396,7 +383,7 @@ float Armor::getLightSaber() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 35);
+		DistributedMethod method(this, 34);
 
 		return method.executeWithFloatReturn();
 	} else
@@ -408,7 +395,7 @@ bool Armor::isLightSaberSpecial() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 36);
+		DistributedMethod method(this, 35);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -420,7 +407,7 @@ int Armor::getType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 37);
+		DistributedMethod method(this, 36);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -432,7 +419,7 @@ bool Armor::isSliced() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 38);
+		DistributedMethod method(this, 37);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -444,7 +431,7 @@ int Armor::getSocketType(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 39);
+		DistributedMethod method(this, 38);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
@@ -457,7 +444,7 @@ int Armor::getSocketValue(int index) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 40);
+		DistributedMethod method(this, 39);
 		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
@@ -470,7 +457,7 @@ int Armor::getSkillMod0Type() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 41);
+		DistributedMethod method(this, 40);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -482,7 +469,7 @@ int Armor::getSkillMod1Type() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 42);
+		DistributedMethod method(this, 41);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -494,7 +481,7 @@ int Armor::getSkillMod2Type() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 43);
+		DistributedMethod method(this, 42);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -506,7 +493,7 @@ int Armor::getSkillMod0Value() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 44);
+		DistributedMethod method(this, 43);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -518,7 +505,7 @@ int Armor::getSkillMod1Value() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 45);
+		DistributedMethod method(this, 44);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -530,7 +517,7 @@ int Armor::getSkillMod2Value() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 46);
+		DistributedMethod method(this, 45);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -542,7 +529,7 @@ int Armor::getSockets() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 47);
+		DistributedMethod method(this, 46);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -554,7 +541,7 @@ int Armor::getSocket0Type() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 48);
+		DistributedMethod method(this, 47);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -566,7 +553,7 @@ int Armor::getSocket1Type() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 49);
+		DistributedMethod method(this, 48);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -578,7 +565,7 @@ int Armor::getSocket2Type() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 50);
+		DistributedMethod method(this, 49);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -590,7 +577,7 @@ int Armor::getSocket3Type() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 51);
+		DistributedMethod method(this, 50);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -602,7 +589,7 @@ int Armor::getSocket0Value() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 52);
+		DistributedMethod method(this, 51);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -614,7 +601,7 @@ int Armor::getSocket1Value() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 53);
+		DistributedMethod method(this, 52);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -626,7 +613,7 @@ int Armor::getSocket2Value() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 54);
+		DistributedMethod method(this, 53);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -638,7 +625,7 @@ int Armor::getSocket3Value() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 55);
+		DistributedMethod method(this, 54);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -650,7 +637,7 @@ int Armor::getArmorType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 56);
+		DistributedMethod method(this, 55);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -662,7 +649,7 @@ void Armor::setArmorPiece(int armorSlot) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 57);
+		DistributedMethod method(this, 56);
 		method.addSignedIntParameter(armorSlot);
 
 		method.executeWithVoidReturn();
@@ -675,7 +662,7 @@ void Armor::setHealthEncumbrance(int healthEnc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 58);
+		DistributedMethod method(this, 57);
 		method.addSignedIntParameter(healthEnc);
 
 		method.executeWithVoidReturn();
@@ -688,7 +675,7 @@ void Armor::setActionEncumbrance(int actionEnc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 59);
+		DistributedMethod method(this, 58);
 		method.addSignedIntParameter(actionEnc);
 
 		method.executeWithVoidReturn();
@@ -701,7 +688,7 @@ void Armor::setMindEncumbrance(int mindEnc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 60);
+		DistributedMethod method(this, 59);
 		method.addSignedIntParameter(mindEnc);
 
 		method.executeWithVoidReturn();
@@ -714,7 +701,7 @@ void Armor::setRating(int rating) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 61);
+		DistributedMethod method(this, 60);
 		method.addSignedIntParameter(rating);
 
 		method.executeWithVoidReturn();
@@ -727,7 +714,7 @@ void Armor::setAcid(float resist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 62);
+		DistributedMethod method(this, 61);
 		method.addFloatParameter(resist);
 
 		method.executeWithVoidReturn();
@@ -740,7 +727,7 @@ void Armor::setBlast(float resist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 63);
+		DistributedMethod method(this, 62);
 		method.addFloatParameter(resist);
 
 		method.executeWithVoidReturn();
@@ -753,7 +740,7 @@ void Armor::setCold(float resist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 64);
+		DistributedMethod method(this, 63);
 		method.addFloatParameter(resist);
 
 		method.executeWithVoidReturn();
@@ -766,7 +753,7 @@ void Armor::setElectricity(float resist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 65);
+		DistributedMethod method(this, 64);
 		method.addFloatParameter(resist);
 
 		method.executeWithVoidReturn();
@@ -779,7 +766,7 @@ void Armor::setEnergy(float resist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 66);
+		DistributedMethod method(this, 65);
 		method.addFloatParameter(resist);
 
 		method.executeWithVoidReturn();
@@ -792,7 +779,7 @@ void Armor::setStun(float resist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 67);
+		DistributedMethod method(this, 66);
 		method.addFloatParameter(resist);
 
 		method.executeWithVoidReturn();
@@ -805,7 +792,7 @@ void Armor::setHeat(float resist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 68);
+		DistributedMethod method(this, 67);
 		method.addFloatParameter(resist);
 
 		method.executeWithVoidReturn();
@@ -818,7 +805,7 @@ void Armor::setKinetic(float resist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 69);
+		DistributedMethod method(this, 68);
 		method.addFloatParameter(resist);
 
 		method.executeWithVoidReturn();
@@ -831,7 +818,7 @@ void Armor::setLightSaber(float resist) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 70);
+		DistributedMethod method(this, 69);
 		method.addFloatParameter(resist);
 
 		method.executeWithVoidReturn();
@@ -844,7 +831,7 @@ void Armor::setSocketType(int index, int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 71);
+		DistributedMethod method(this, 70);
 		method.addSignedIntParameter(index);
 		method.addSignedIntParameter(type);
 
@@ -858,7 +845,7 @@ void Armor::setSocketValue(int index, int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 72);
+		DistributedMethod method(this, 71);
 		method.addSignedIntParameter(index);
 		method.addSignedIntParameter(type);
 
@@ -872,7 +859,7 @@ void Armor::setSockets(int socket) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 73);
+		DistributedMethod method(this, 72);
 		method.addSignedIntParameter(socket);
 
 		method.executeWithVoidReturn();
@@ -885,7 +872,7 @@ void Armor::setSocket0Type(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 74);
+		DistributedMethod method(this, 73);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -898,7 +885,7 @@ void Armor::setSocket1Type(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 75);
+		DistributedMethod method(this, 74);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -911,7 +898,7 @@ void Armor::setSocket2Type(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 76);
+		DistributedMethod method(this, 75);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -924,7 +911,7 @@ void Armor::setSocket3Type(int type) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 77);
+		DistributedMethod method(this, 76);
 		method.addSignedIntParameter(type);
 
 		method.executeWithVoidReturn();
@@ -937,7 +924,7 @@ void Armor::setSocket0Value(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 78);
+		DistributedMethod method(this, 77);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -950,7 +937,7 @@ void Armor::setSocket1Value(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 79);
+		DistributedMethod method(this, 78);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -963,7 +950,7 @@ void Armor::setSocket2Value(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 80);
+		DistributedMethod method(this, 79);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
@@ -976,12 +963,24 @@ void Armor::setSocket3Value(int value) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 81);
+		DistributedMethod method(this, 80);
 		method.addSignedIntParameter(value);
 
 		method.executeWithVoidReturn();
 	} else
 		((ArmorImplementation*) _impl)->setSocket3Value(value);
+}
+
+void Armor::onBroken() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 81);
+
+		method.executeWithVoidReturn();
+	} else
+		((ArmorImplementation*) _impl)->onBroken();
 }
 
 /*
@@ -999,7 +998,7 @@ Packet* ArmorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case 7:
-		decayArmor(inv->getSignedIntParameter());
+		decay(inv->getFloatParameter());
 		break;
 	case 8:
 		generateAttributes((SceneObject*) inv->getObjectParameter());
@@ -1011,217 +1010,217 @@ Packet* ArmorAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		sliceArmor((Player*) inv->getObjectParameter());
 		break;
 	case 11:
-		repairArmor((Player*) inv->getObjectParameter());
-		break;
-	case 12:
 		resp->insertSignedInt(addSkillMod(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
 		break;
-	case 13:
+	case 12:
 		resp->insertSignedInt(getRating());
 		break;
-	case 14:
+	case 13:
 		resp->insertSignedInt(getCondition());
 		break;
-	case 15:
+	case 14:
 		resp->insertSignedInt(getMaxCondition());
 		break;
-	case 16:
+	case 15:
 		resp->insertSignedInt(getHealthEncumbrance());
 		break;
-	case 17:
+	case 16:
 		resp->insertSignedInt(getActionEncumbrance());
 		break;
-	case 18:
+	case 17:
 		resp->insertSignedInt(getMindEncumbrance());
 		break;
-	case 19:
+	case 18:
 		resp->insertFloat(getKinetic());
 		break;
-	case 20:
+	case 19:
 		resp->insertBoolean(isKineticSpecial());
 		break;
-	case 21:
+	case 20:
 		resp->insertFloat(getEnergy());
 		break;
-	case 22:
+	case 21:
 		resp->insertBoolean(isEnergySpecial());
 		break;
-	case 23:
+	case 22:
 		resp->insertFloat(getElectricity());
 		break;
-	case 24:
+	case 23:
 		resp->insertBoolean(isElectricitySpecial());
 		break;
-	case 25:
+	case 24:
 		resp->insertFloat(getStun());
 		break;
-	case 26:
+	case 25:
 		resp->insertBoolean(isStunSpecial());
 		break;
-	case 27:
+	case 26:
 		resp->insertFloat(getBlast());
 		break;
-	case 28:
+	case 27:
 		resp->insertBoolean(isBlastSpecial());
 		break;
-	case 29:
+	case 28:
 		resp->insertFloat(getHeat());
 		break;
-	case 30:
+	case 29:
 		resp->insertBoolean(isHeatSpecial());
 		break;
-	case 31:
+	case 30:
 		resp->insertFloat(getCold());
 		break;
-	case 32:
+	case 31:
 		resp->insertBoolean(isColdSpecial());
 		break;
-	case 33:
+	case 32:
 		resp->insertFloat(getAcid());
 		break;
-	case 34:
+	case 33:
 		resp->insertBoolean(isAcidSpecial());
 		break;
-	case 35:
+	case 34:
 		resp->insertFloat(getLightSaber());
 		break;
-	case 36:
+	case 35:
 		resp->insertBoolean(isLightSaberSpecial());
 		break;
-	case 37:
+	case 36:
 		resp->insertSignedInt(getType());
 		break;
-	case 38:
+	case 37:
 		resp->insertBoolean(isSliced());
 		break;
-	case 39:
+	case 38:
 		resp->insertSignedInt(getSocketType(inv->getSignedIntParameter()));
 		break;
-	case 40:
+	case 39:
 		resp->insertSignedInt(getSocketValue(inv->getSignedIntParameter()));
 		break;
-	case 41:
+	case 40:
 		resp->insertSignedInt(getSkillMod0Type());
 		break;
-	case 42:
+	case 41:
 		resp->insertSignedInt(getSkillMod1Type());
 		break;
-	case 43:
+	case 42:
 		resp->insertSignedInt(getSkillMod2Type());
 		break;
-	case 44:
+	case 43:
 		resp->insertSignedInt(getSkillMod0Value());
 		break;
-	case 45:
+	case 44:
 		resp->insertSignedInt(getSkillMod1Value());
 		break;
-	case 46:
+	case 45:
 		resp->insertSignedInt(getSkillMod2Value());
 		break;
-	case 47:
+	case 46:
 		resp->insertSignedInt(getSockets());
 		break;
-	case 48:
+	case 47:
 		resp->insertSignedInt(getSocket0Type());
 		break;
-	case 49:
+	case 48:
 		resp->insertSignedInt(getSocket1Type());
 		break;
-	case 50:
+	case 49:
 		resp->insertSignedInt(getSocket2Type());
 		break;
-	case 51:
+	case 50:
 		resp->insertSignedInt(getSocket3Type());
 		break;
-	case 52:
+	case 51:
 		resp->insertSignedInt(getSocket0Value());
 		break;
-	case 53:
+	case 52:
 		resp->insertSignedInt(getSocket1Value());
 		break;
-	case 54:
+	case 53:
 		resp->insertSignedInt(getSocket2Value());
 		break;
-	case 55:
+	case 54:
 		resp->insertSignedInt(getSocket3Value());
 		break;
-	case 56:
+	case 55:
 		resp->insertSignedInt(getArmorType());
 		break;
-	case 57:
+	case 56:
 		setArmorPiece(inv->getSignedIntParameter());
 		break;
-	case 58:
+	case 57:
 		setHealthEncumbrance(inv->getSignedIntParameter());
 		break;
-	case 59:
+	case 58:
 		setActionEncumbrance(inv->getSignedIntParameter());
 		break;
-	case 60:
+	case 59:
 		setMindEncumbrance(inv->getSignedIntParameter());
 		break;
-	case 61:
+	case 60:
 		setRating(inv->getSignedIntParameter());
 		break;
-	case 62:
+	case 61:
 		setAcid(inv->getFloatParameter());
 		break;
-	case 63:
+	case 62:
 		setBlast(inv->getFloatParameter());
 		break;
-	case 64:
+	case 63:
 		setCold(inv->getFloatParameter());
 		break;
-	case 65:
+	case 64:
 		setElectricity(inv->getFloatParameter());
 		break;
-	case 66:
+	case 65:
 		setEnergy(inv->getFloatParameter());
 		break;
-	case 67:
+	case 66:
 		setStun(inv->getFloatParameter());
 		break;
-	case 68:
+	case 67:
 		setHeat(inv->getFloatParameter());
 		break;
-	case 69:
+	case 68:
 		setKinetic(inv->getFloatParameter());
 		break;
-	case 70:
+	case 69:
 		setLightSaber(inv->getFloatParameter());
 		break;
-	case 71:
+	case 70:
 		setSocketType(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 72:
+	case 71:
 		setSocketValue(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case 73:
+	case 72:
 		setSockets(inv->getSignedIntParameter());
 		break;
-	case 74:
+	case 73:
 		setSocket0Type(inv->getSignedIntParameter());
 		break;
-	case 75:
+	case 74:
 		setSocket1Type(inv->getSignedIntParameter());
 		break;
-	case 76:
+	case 75:
 		setSocket2Type(inv->getSignedIntParameter());
 		break;
-	case 77:
+	case 76:
 		setSocket3Type(inv->getSignedIntParameter());
 		break;
-	case 78:
+	case 77:
 		setSocket0Value(inv->getSignedIntParameter());
 		break;
-	case 79:
+	case 78:
 		setSocket1Value(inv->getSignedIntParameter());
 		break;
-	case 80:
+	case 79:
 		setSocket2Value(inv->getSignedIntParameter());
 		break;
-	case 81:
+	case 80:
 		setSocket3Value(inv->getSignedIntParameter());
+		break;
+	case 81:
+		onBroken();
 		break;
 	default:
 		return NULL;
@@ -1234,8 +1233,8 @@ void ArmorAdapter::sendTo(Player* player, bool doClose) {
 	return ((ArmorImplementation*) impl)->sendTo(player, doClose);
 }
 
-void ArmorAdapter::decayArmor(int decayRate) {
-	return ((ArmorImplementation*) impl)->decayArmor(decayRate);
+void ArmorAdapter::decay(float decayRate) {
+	return ((ArmorImplementation*) impl)->decay(decayRate);
 }
 
 void ArmorAdapter::generateAttributes(SceneObject* obj) {
@@ -1248,10 +1247,6 @@ void ArmorAdapter::setArmorStats(int modifier) {
 
 void ArmorAdapter::sliceArmor(Player* player) {
 	return ((ArmorImplementation*) impl)->sliceArmor(player);
-}
-
-void ArmorAdapter::repairArmor(Player* player) {
-	return ((ArmorImplementation*) impl)->repairArmor(player);
 }
 
 int ArmorAdapter::addSkillMod(int skillModType, int skillModValue) {
@@ -1532,6 +1527,10 @@ void ArmorAdapter::setSocket2Value(int value) {
 
 void ArmorAdapter::setSocket3Value(int value) {
 	return ((ArmorImplementation*) impl)->setSocket3Value(value);
+}
+
+void ArmorAdapter::onBroken() {
+	return ((ArmorImplementation*) impl)->onBroken();
 }
 
 /*

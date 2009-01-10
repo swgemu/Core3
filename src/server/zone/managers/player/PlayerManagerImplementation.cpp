@@ -584,6 +584,8 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 		player->setResurrectionExpires(rezExpires);
 	}
 
+	player->setCloningFacility(structureManager->getCloningFacility(character->getUnsignedLong(65)));
+
 	//Load consent list from database
 	loadConsentList(player);
 	loadFactionPoints(player);
@@ -781,6 +783,12 @@ void PlayerManagerImplementation::save(Player* player) {
 	String biography = player->getBiography().toString();
 	MySqlDatabase::escapeString(biography);
 
+	uint64 cloningFacilityID = 0;
+	CloningFacility* cloningFacility = player->getCloningFacility();
+
+	if (cloningFacility != NULL)
+		cloningFacilityID = cloningFacility->getObjectID();
+
 	StringBuffer query;
 	query << "UPDATE characters SET x=" << player->getPositionX() << ",y=" << player->getPositionY()
 	<< ",z=" << player->getPositionZ()
@@ -811,6 +819,7 @@ void PlayerManagerImplementation::save(Player* player) {
 	<< ",experience=" << "'" << player->saveXp() << "'"
 	<< ",posture=" << (int) player->getPosture()
 	<< ",rezExpires=" << (int) floor(((float)(player->getResurrectionExpires()) / 1000.0f))
+	<< ",cloningFacility=" << (uint64) cloningFacilityID
 	<< " WHERE character_id=" << player->getCharacterID() << ";";
 	try {
 		ServerDatabase::instance()->executeStatement(query);
@@ -1222,9 +1231,13 @@ void PlayerManagerImplementation::moveItem(Player* sender, Player* receiver, Tan
 void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
 	//Pre: sender wlocked
 	float tax = tipAmount * .05;
+	StfParameter* params = new StfParameter();
+	params->addDI(tipAmount);
+	params->addTT(receiver->getObjectID());
 
 	if (!sender->verifyBankCredits(tipAmount + (int) tax)) {
-		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
+		sender->sendSystemMessage("base_player", "prose_tip_nsf_bank", params); //You lack the bank funds to wire %DI credits to %TT.
+		delete params;
 		return;
 	}
 
@@ -1279,8 +1292,12 @@ void PlayerManagerImplementation::doBankTip(Player* sender, Player* receiver, ui
 
 void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, uint32 tipAmount, bool updateTipTo) {
 	// Pre: sender wlocked
+	StfParameter* params = new StfParameter();
+	params->addDI(tipAmount);
+	params->addTT(receiver->getObjectID());
 	if (!sender->verifyCashCredits(tipAmount)) {
-		sender->sendSystemMessage("You lack the required funds to do that. (Cash Tip.)");
+		sender->sendSystemMessage("base_player", "prose_tip_nsf_cash", params); //You lack the cash funds to tip %DI credits to %TT.
+		delete params;
 		return;
 	}
 
@@ -1290,14 +1307,14 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, ui
 		receiver->addCashCredits(tipAmount);
 
 		sender->subtractCashCredits(tipAmount);
-		sender->sendSystemMessage("You have successfully cash tipped.");
+
+		sender->sendSystemMessage("base_player", "prose_tip_pass_self", params); //You successfully tip %DI credits to %TT.
 
 		if (updateTipTo == true) {
 			//This is where we notify the other player with mail + sys message.
 			//But we have to make sure they are online first. Passed in the method.
-			StringBuffer ss;
-			ss << "You have been tipped " << tipAmount << " credits by " << sender->getFirstName() << ".";
-			receiver->sendSystemMessage(ss.toString());
+			params->addTT(sender->getObjectID());
+			receiver->sendSystemMessage("base_player", "prose_tip_pass_target", params);
 		}
 
 		receiver->unlock();
@@ -1305,12 +1322,14 @@ void PlayerManagerImplementation::doCashTip(Player* sender, Player* receiver, ui
 		System::out << "Unreported exception caught in PlayerManagerImplementation::doCashTip\n";
 		receiver->unlock();
 	}
+
+	delete params;
 }
 
 bool PlayerManagerImplementation::modifyOfflineBank(Player* sender, String receiverName, uint32 creditAmount) {
 	//First we need to get the current bank credits.
 	if (!sender->verifyBankCredits(creditAmount)) {
-		sender->sendSystemMessage("You lack the required funds to do that. (Bank Tip.)");
+		sender->sendSystemMessage("base_player", "prose_tip_nsf_bank"); //You lack the bank funds to wire %DI credits to %TT.
 		return false;
 	}
 

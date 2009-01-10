@@ -234,7 +234,7 @@ public:
 
 	void setWeaponStats(int modifier);
 
-	void decayWeapon(int decayRate);
+	void decay(float decayRate);
 
 	void removePowerup(Player* player, bool notify);
 
@@ -257,8 +257,6 @@ public:
 
 	void sliceWeaponDamage(int modifier);
 	void sliceWeaponSpeed(int modifier);
-
-	void repairWeapon(Player* player);
 
 	inline bool isSliced() {
 		return sliced;
@@ -881,6 +879,12 @@ public:
 	inline String& getXpType() {
 		return xpType;
 	}
+
+
+	//Event Handlers
+	void onBroken();
+
+	//Actions
 
 	friend class CombatManager;
 

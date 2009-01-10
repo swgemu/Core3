@@ -157,6 +157,9 @@ private:
 	void loadShuttles();
 	void loadTrainers();
 	void loadGuildTerminals();
+	void loadCloningTerminals();
+	void loadInsuranceTerminals();
+	void loadCloneSpawnPoints();
 	void loadVendorTerminals();
 	void loadMissionTerminals();
 	void loadCraftingStations();

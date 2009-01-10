@@ -21,6 +21,8 @@ class CellObject;
 
 class DeedObject;
 
+class CloningFacility;
+
 class StructureManager : public DistributedObjectStub {
 public:
 	StructureManager(Zone* zone, ZoneProcessServerImplementation* processor);
@@ -36,6 +38,10 @@ public:
 	CellObject* getCell(unsigned long long id);
 
 	BuildingObject* getBuilding(unsigned long long id);
+
+	CloningFacility* getCloningFacility(unsigned long long oid);
+
+	CloningFacility* getClosestCloningFacility(Player* player);
 
 	void spawnTempStructure(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 
@@ -78,6 +84,10 @@ public:
 	CellObject* getCell(unsigned long long id);
 
 	BuildingObject* getBuilding(unsigned long long id);
+
+	CloningFacility* getCloningFacility(unsigned long long oid);
+
+	CloningFacility* getClosestCloningFacility(Player* player);
 
 	void spawnTempStructure(Player* player, DeedObject* deed, float x, float z, float y, float oX, float oZ, float oY, float oW);
 

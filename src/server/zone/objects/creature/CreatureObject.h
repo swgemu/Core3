@@ -123,6 +123,8 @@ public:
 
 	bool isNPC();
 
+	bool isPet();
+
 	bool hatesFaction(unsigned int faction);
 
 	void updateKnockdownRecovery();
@@ -151,147 +153,153 @@ public:
 
 	void resetHAMBars(bool doUpdateClient);
 
-	bool changeHAMBars(int hp, int ap, int mp, bool forcedChange = false);
+	bool changeHAMBars(int health, int action, int mind, bool forcedChange = false);
 
-	bool changeHAMWounds(int hpwnd, int apwnd, int mpwnd, bool forcedChange = false);
+	bool changeHAMWounds(int health, int action, int mind, bool forcedChange = false);
 
-	void changeMaxHAMBars(int hp, int ap, int mp);
+	void changeMaxHAMBars(int health, int action, int mind);
 
-	bool takeHealthDamage(int damage);
+	bool changeAttributeBar(unsigned char attribute, int value, bool forcedChange = false);
 
-	bool takeActionDamage(int damage);
+	bool changeHealthBar(int value, bool forcedChange = false);
 
-	bool takeMindDamage(int damage);
+	bool changeStrengthBar(int value, bool forcedChange = false);
 
-	bool changeHealthBar(int hp, bool forcedChange = false);
+	bool changeConstitutionBar(int value, bool forcedChange = false);
 
-	bool changeStrengthBar(int st, bool forcedChange = false);
+	bool changeActionBar(int value, bool forcedChange = false);
 
-	bool changeConstitutionBar(int cs, bool forcedChange = false);
+	bool changeQuicknessBar(int value, bool forcedChange = false);
 
-	bool changeActionBar(int ap, bool forcedChange = false);
+	bool changeStaminaBar(int value, bool forcedChange = false);
 
-	bool changeQuicknessBar(int qc, bool forcedChange = false);
+	bool changeMindBar(int value, bool forcedChange = false);
 
-	bool changeStaminaBar(int st, bool forcedChange = false);
+	bool changeFocusBar(int value, bool forcedChange = false);
 
-	bool changeMindBar(int mp, bool forcedChange = false);
+	bool changeWillpowerBar(int value, bool forcedChange = false);
 
-	bool changeFocusBar(int fc, bool forcedChange = false);
+	void changeMaxAttributeBar(unsigned char attribute, int value, bool updateClient = true);
 
-	bool changeWillpowerBar(int wl, bool forcedChange = false);
+	void changeMaxHealthBar(int value, bool updateClient = true);
 
-	void changeMaxHealthBar(int hp, bool updateClient = true);
+	void changeMaxStrengthBar(int value, bool updateClient = true);
 
-	void changeMaxStrengthBar(int st, bool updateClient = true);
+	void changeMaxConstitutionBar(int value, bool updateClient = true);
 
-	void changeMaxConstitutionBar(int cs, bool updateClient = true);
+	void changeMaxActionBar(int value, bool updateClient = true);
 
-	void changeMaxActionBar(int ap, bool updateClient = true);
+	void changeMaxQuicknessBar(int value, bool updateClient = true);
 
-	void changeMaxQuicknessBar(int qc, bool updateClient = true);
+	void changeMaxStaminaBar(int value, bool updateClient = true);
 
-	void changeMaxStaminaBar(int st, bool updateClient = true);
+	void changeMaxMindBar(int value, bool updateClient = true);
 
-	void changeMaxMindBar(int mp, bool updateClient = true);
+	void changeMaxFocusBar(int value, bool updateClient = true);
 
-	void changeMaxFocusBar(int fc, bool updateClient = true);
+	void changeMaxWillpowerBar(int value, bool updateClient = true);
 
-	void changeMaxWillpowerBar(int wl, bool updateClient = true);
+	bool changeWoundsBar(unsigned char attribute, int value, bool forcedChange = false);
 
-	bool changeHealthWoundsBar(int wounds, bool forcedChange = false);
+	bool changeHealthWoundsBar(int value, bool forcedChange = false);
 
-	bool changeStrengthWoundsBar(int wounds, bool forcedChange = false);
+	bool changeStrengthWoundsBar(int value, bool forcedChange = false);
 
-	bool changeConstitutionWoundsBar(int wounds, bool forcedChange = false);
+	bool changeConstitutionWoundsBar(int value, bool forcedChange = false);
 
-	bool changeActionWoundsBar(int wounds, bool forcedChange = false);
+	bool changeActionWoundsBar(int value, bool forcedChange = false);
 
-	bool changeQuicknessWoundsBar(int wounds, bool forcedChange = false);
+	bool changeQuicknessWoundsBar(int value, bool forcedChange = false);
 
-	bool changeStaminaWoundsBar(int wounds, bool forcedChange = false);
+	bool changeStaminaWoundsBar(int value, bool forcedChange = false);
 
-	bool changeMindWoundsBar(int wounds, bool forcedChange = false);
+	bool changeMindWoundsBar(int value, bool forcedChange = false);
 
-	bool changeFocusWoundsBar(int wounds, bool forcedChange = false);
+	bool changeFocusWoundsBar(int value, bool forcedChange = false);
 
-	bool changeWillpowerWoundsBar(int wounds, bool forcedChange = false);
+	bool changeWillpowerWoundsBar(int value, bool forcedChange = false);
 
 	void changeShockWounds(int bf);
 
-	void setHealthBar(unsigned int hp);
+	void setAttributeBar(unsigned char attribute, int value);
 
-	void setStrengthBar(unsigned int st);
+	void setHealthBar(int value);
 
-	void setConstitutionBar(unsigned int cst);
+	void setStrengthBar(int value);
 
-	void setActionBar(unsigned int ap);
+	void setConstitutionBar(int value);
 
-	void setQuicknessBar(unsigned int qck);
+	void setActionBar(int value);
 
-	void setStaminaBar(unsigned int sta);
+	void setQuicknessBar(int value);
 
-	void setMindBar(unsigned int mp);
+	void setStaminaBar(int value);
 
-	void setFocusBar(unsigned int fc);
+	void setMindBar(int value);
 
-	void setWillpowerBar(unsigned int will);
+	void setFocusBar(int value);
 
-	void setBaseHealthBar(unsigned int hp, bool updateClient = true);
+	void setWillpowerBar(int value);
 
-	void setBaseStrengthBar(unsigned int st, bool updateClient = true);
+	void setBaseAttributeBar(unsigned char attribute, int value, bool updateClient = true);
 
-	void setBaseConstitutionBar(unsigned int cst, bool updateClient = true);
+	void setBaseHealthBar(int value, bool updateClient = true);
 
-	void setBaseActionBar(unsigned int ap, bool updateClient = true);
+	void setBaseStrengthBar(int value, bool updateClient = true);
 
-	void setBaseQuicknessBar(unsigned int qck, bool updateClient = true);
+	void setBaseConstitutionBar(int value, bool updateClient = true);
 
-	void setBaseStaminaBar(unsigned int sta, bool updateClient = true);
+	void setBaseActionBar(int value, bool updateClient = true);
 
-	void setBaseMindBar(unsigned int mp, bool updateClient = true);
+	void setBaseQuicknessBar(int value, bool updateClient = true);
 
-	void setBaseFocusBar(unsigned int fc, bool updateClient = true);
+	void setBaseStaminaBar(int value, bool updateClient = true);
 
-	void setBaseWillpowerBar(unsigned int will, bool updateClient = true);
+	void setBaseMindBar(int value, bool updateClient = true);
 
-	void setMaxHealthBar(unsigned int hp, bool updateClient = true);
+	void setBaseFocusBar(int value, bool updateClient = true);
 
-	void setMaxStrengthBar(unsigned int st, bool updateClient = true);
+	void setBaseWillpowerBar(int value, bool updateClient = true);
 
-	void setMaxConstitutionBar(unsigned int cst, bool updateClient = true);
+	void setMaxAttributeBar(unsigned char attribute, int value, bool updateClient = true);
 
-	void setMaxActionBar(unsigned int ap, bool updateClient = true);
+	void setMaxHealthBar(int value, bool updateClient = true);
 
-	void setMaxQuicknessBar(unsigned int qck, bool updateClient = true);
+	void setMaxStrengthBar(int value, bool updateClient = true);
 
-	void setMaxStaminaBar(unsigned int sta, bool updateClient = true);
+	void setMaxConstitutionBar(int value, bool updateClient = true);
 
-	void setMaxMindBar(unsigned int mp, bool updateClient = true);
+	void setMaxActionBar(int value, bool updateClient = true);
 
-	void setMaxFocusBar(unsigned int fc, bool updateClient = true);
+	void setMaxQuicknessBar(int value, bool updateClient = true);
 
-	void setMaxWillpowerBar(unsigned int will, bool updateClient = true);
+	void setMaxStaminaBar(int value, bool updateClient = true);
 
-	void setHealthWoundsBar(unsigned int wnds);
+	void setMaxMindBar(int value, bool updateClient = true);
 
-	void setStrengthWoundsBar(unsigned int wnds);
+	void setMaxFocusBar(int value, bool updateClient = true);
 
-	void setConstitutionWoundsBar(unsigned int wnds);
+	void setMaxWillpowerBar(int value, bool updateClient = true);
 
-	void setActionWoundsBar(unsigned int wnds);
+	void setWoundsBar(unsigned char attribute, int value);
 
-	void setQuicknessWoundsBar(unsigned int wnds);
+	void setHealthWoundsBar(int value);
 
-	void setStaminaWoundsBar(unsigned int wnds);
+	void setStrengthWoundsBar(int value);
 
-	void setMindWoundsBar(unsigned int wnds);
+	void setConstitutionWoundsBar(int value);
 
-	void setFocusWoundsBar(unsigned int wnds);
+	void setActionWoundsBar(int value);
 
-	void setWillpowerWoundsBar(unsigned int wnds);
+	void setQuicknessWoundsBar(int value);
 
-	void handleDeath();
+	void setStaminaWoundsBar(int value);
+
+	void setMindWoundsBar(int value);
+
+	void setFocusWoundsBar(int value);
+
+	void setWillpowerWoundsBar(int value);
 
 	bool hasAttackDelay();
 
@@ -348,6 +356,18 @@ public:
 	void setIgnoreMovementTests(int times);
 
 	void setLevel(unsigned int lvl);
+
+	void setHealthEncumbrance(unsigned int value);
+
+	void setActionEncumbrance(unsigned int value);
+
+	void setMindEncumbrance(unsigned int value);
+
+	void changeHealthEncumbrance(int value);
+
+	void changeActionEncumbrance(int value);
+
+	void changeMindEncumbrance(int value);
 
 	void updateServerMovementStamp();
 
@@ -549,8 +569,6 @@ public:
 
 	bool hasShockWounds();
 
-	unsigned int getWounds(unsigned char attribute);
-
 	unsigned char getNextWoundedAttribute(bool h = true, bool a = true, bool m = false);
 
 	bool isAttackable();
@@ -611,77 +629,85 @@ public:
 
 	void updateBaseStats();
 
-	unsigned int getBaseHealth();
+	int getBaseAttribute(unsigned char attribute);
 
-	unsigned int getBaseStrength();
+	int getBaseHealth();
 
-	unsigned int getBaseConstitution();
+	int getBaseStrength();
 
-	unsigned int getBaseAction();
+	int getBaseConstitution();
 
-	unsigned int getBaseQuickness();
+	int getBaseAction();
 
-	unsigned int getBaseStamina();
+	int getBaseQuickness();
 
-	unsigned int getBaseMind();
+	int getBaseStamina();
 
-	unsigned int getBaseFocus();
+	int getBaseMind();
 
-	unsigned int getBaseWillpower();
+	int getBaseFocus();
 
-	unsigned int getHealth();
+	int getBaseWillpower();
 
-	unsigned int getStrength();
+	int getAttribute(unsigned char attribute);
 
-	unsigned int getConstitution();
+	int getHealth();
 
-	unsigned int getAction();
+	int getStrength();
 
-	unsigned int getQuickness();
+	int getConstitution();
 
-	unsigned int getStamina();
+	int getAction();
 
-	unsigned int getMind();
+	int getQuickness();
 
-	unsigned int getFocus();
+	int getStamina();
 
-	unsigned int getWillpower();
+	int getMind();
 
-	unsigned int getHealthMax();
+	int getFocus();
 
-	unsigned int getStrengthMax();
+	int getWillpower();
 
-	unsigned int getConstitutionMax();
+	int getAttributeMax(unsigned char attribute);
 
-	unsigned int getActionMax();
+	int getHealthMax();
 
-	unsigned int getQuicknessMax();
+	int getStrengthMax();
 
-	unsigned int getStaminaMax();
+	int getConstitutionMax();
 
-	unsigned int getMindMax();
+	int getActionMax();
 
-	unsigned int getFocusMax();
+	int getQuicknessMax();
 
-	unsigned int getWillpowerMax();
+	int getStaminaMax();
 
-	unsigned int getHealthWounds();
+	int getMindMax();
 
-	unsigned int getStrengthWounds();
+	int getFocusMax();
 
-	unsigned int getConstitutionWounds();
+	int getWillpowerMax();
 
-	unsigned int getActionWounds();
+	int getWounds(unsigned char attribute);
 
-	unsigned int getQuicknessWounds();
+	int getHealthWounds();
 
-	unsigned int getStaminaWounds();
+	int getStrengthWounds();
 
-	unsigned int getMindWounds();
+	int getConstitutionWounds();
 
-	unsigned int getFocusWounds();
+	int getActionWounds();
 
-	unsigned int getWillpowerWounds();
+	int getQuicknessWounds();
+
+	int getStaminaWounds();
+
+	int getMindWounds();
+
+	int getFocusWounds();
+
+	int getWillpowerWounds();
 
 	unsigned int getHealthDamage();
 
@@ -703,9 +729,9 @@ public:
 
 	unsigned int getNewHAMBaseUpdateCounter(int cnt);
 
-	unsigned int getHAMEncumbUpdateCounter();
+	unsigned int getEncumbUpdateCounter();
 
-	unsigned int getNewHAMEncumbUpdateCounter(int cnt);
+	unsigned int getNewEncumbUpdateCounter(int cnt);
 
 	unsigned int getHealthEncumbrance();
 
@@ -849,117 +875,129 @@ public:
 
 	bool isBaby();
 
-	void setBaseHealth(unsigned int health);
+	void setBaseAttribute(unsigned char attribute, int value);
 
-	void setBaseStrength(unsigned int strength);
+	void setBaseHealth(int value);
 
-	void setBaseConstitution(unsigned int constituition);
+	void setBaseStrength(int value);
 
-	void setBaseAction(unsigned int action);
+	void setBaseConstitution(int value);
 
-	void setBaseQuickness(unsigned int quickness);
+	void setBaseAction(int value);
 
-	void setBaseStamina(unsigned int stamina);
+	void setBaseQuickness(int value);
 
-	void setBaseMind(unsigned int mind);
+	void setBaseStamina(int value);
 
-	void setBaseFocus(unsigned int focus);
+	void setBaseMind(int value);
 
-	void setBaseWillpower(unsigned int willpower);
+	void setBaseFocus(int value);
 
-	void setHealth(unsigned int health);
+	void setBaseWillpower(int value);
 
-	void setStrength(unsigned int strength);
+	void setAttribute(unsigned char attribute, int value);
 
-	void setConstitution(unsigned int constituition);
+	void setHealth(int value);
 
-	void setAction(unsigned int action);
+	void setStrength(int value);
 
-	void setQuickness(unsigned int quickness);
+	void setConstitution(int value);
 
-	void setStamina(unsigned int stamina);
+	void setAction(int value);
 
-	void setMind(unsigned int mind);
+	void setQuickness(int value);
 
-	void setFocus(unsigned int focus);
+	void setStamina(int value);
 
-	void setWillpower(unsigned int willpower);
+	void setMind(int value);
 
-	void setHealthMax(unsigned int health);
+	void setFocus(int value);
 
-	void setStrengthMax(unsigned int strength);
+	void setWillpower(int value);
 
-	void setConstitutionMax(unsigned int constituition);
+	void setAttributeMax(unsigned char attribute, int value);
 
-	void setActionMax(unsigned int action);
+	void setHealthMax(int value);
 
-	void setQuicknessMax(unsigned int quickness);
+	void setStrengthMax(int value);
 
-	void setStaminaMax(unsigned int stamina);
+	void setConstitutionMax(int value);
 
-	void setMindMax(unsigned int mind);
+	void setActionMax(int value);
 
-	void setFocusMax(unsigned int focus);
+	void setQuicknessMax(int value);
 
-	void setWillpowerMax(unsigned int willpower);
+	void setStaminaMax(int value);
 
-	void setHealthWounds(unsigned int wounds);
+	void setMindMax(int value);
 
-	void setStrengthWounds(unsigned int wounds);
+	void setFocusMax(int value);
 
-	void setConstitutionWounds(unsigned int wounds);
+	void setWillpowerMax(int value);
 
-	void setActionWounds(unsigned int wounds);
+	void setWounds(unsigned char attribute, int value);
 
-	void setQuicknessWounds(unsigned int wounds);
+	void setHealthWounds(int value);
 
-	void setStaminaWounds(unsigned int wounds);
+	void setStrengthWounds(int value);
 
-	void setMindWounds(unsigned int wounds);
+	void setConstitutionWounds(int value);
 
-	void setFocusWounds(unsigned int wounds);
+	void setActionWounds(int value);
 
-	void setWillpowerWounds(unsigned int wounds);
+	void setQuicknessWounds(int value);
 
-	void setShockWounds(unsigned int wounds);
+	void setStaminaWounds(int value);
+
+	void setMindWounds(int value);
+
+	void setFocusWounds(int value);
+
+	void setWillpowerWounds(int value);
+
+	void setShockWounds(int value);
 
 	void setWoundsUpdateCounter(unsigned int count);
 
-	void changeHealthMax(int health);
+	void changeAttributeMax(unsigned char attribute, int value);
 
-	void changeStrengthMax(int strength);
+	void changeHealthMax(int value);
 
-	void changeConstitutionMax(int constituition);
+	void changeStrengthMax(int value);
 
-	void changeActionMax(int action);
+	void changeConstitutionMax(int value);
 
-	void changeQuicknessMax(int quickness);
+	void changeActionMax(int value);
 
-	void changeStaminaMax(int stamina);
+	void changeQuicknessMax(int value);
 
-	void changeMindMax(int mind);
+	void changeStaminaMax(int value);
 
-	void changeFocusMax(int focus);
+	void changeMindMax(int value);
 
-	void changeWillpowerMax(int willpower);
+	void changeFocusMax(int value);
 
-	void changeHealth(int health);
+	void changeWillpowerMax(int value);
 
-	void changeStrength(int strength);
+	void changeAttribute(unsigned char attribute, int value);
 
-	void changeConstitution(int constituition);
+	void changeHealth(int value);
 
-	void changeAction(int action);
+	void changeStrength(int value);
 
-	void changeQuickness(int quickness);
+	void changeConstitution(int value);
 
-	void changeStamina(int stamina);
+	void changeAction(int value);
 
-	void changeMind(int mind);
+	void changeQuickness(int value);
 
-	void changeFocus(int focus);
+	void changeStamina(int value);
 
-	void changeWillpower(int willpower);
+	void changeMind(int value);
+
+	void changeFocus(int value);
+
+	void changeWillpower(int value);
 
 	void setpbHA(int value);
 
@@ -1193,9 +1231,15 @@ public:
 
 	void setMaskScent(int value);
 
+	unsigned char getLowestHAMAttribute();
+
+	void onIncapacitated(SceneObject* attacker);
+
+	void onIncapacitationRecovery();
+
 	void onDeath();
 
-	void onClone();
+	void onKilled(SceneObject* killer);
 
 	void onBlinded();
 
@@ -1204,6 +1248,32 @@ public:
 	void onStunned();
 
 	void onIntimidated();
+
+	void onEquip(TangibleObject* item);
+
+	void onUnequip(TangibleObject* item);
+
+	void onChangeWeapon(Weapon* weapon);
+
+	void onChangeArmor(Armor* armor);
+
+	void onReceiveDamage(SceneObject* attacker, unsigned char attribute, unsigned int amount);
+
+	void onRegenerateHAM();
+
+	bool inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
+
+	void incapacitateSelf();
+
+	void recoverFromIncapacitation();
+
+	void die();
+
+	void equipItem(TangibleObject* item);
+
+	void unequipItem(TangibleObject* item);
+
+	unsigned int calculateAttributeRegenTick(unsigned char attribute);
 
 protected:
 	CreatureObject(DummyConstructorParameter* param);
@@ -1323,6 +1393,8 @@ public:
 
 	bool isNPC();
 
+	bool isPet();
+
 	bool hatesFaction(unsigned int faction);
 
 	void updateKnockdownRecovery();
@@ -1351,147 +1423,153 @@ public:
 
 	void resetHAMBars(bool doUpdateClient);
 
-	bool changeHAMBars(int hp, int ap, int mp, bool forcedChange);
+	bool changeHAMBars(int health, int action, int mind, bool forcedChange);
 
-	bool changeHAMWounds(int hpwnd, int apwnd, int mpwnd, bool forcedChange);
+	bool changeHAMWounds(int health, int action, int mind, bool forcedChange);
 
-	void changeMaxHAMBars(int hp, int ap, int mp);
+	void changeMaxHAMBars(int health, int action, int mind);
 
-	bool takeHealthDamage(int damage);
+	bool changeAttributeBar(unsigned char attribute, int value, bool forcedChange);
 
-	bool takeActionDamage(int damage);
+	bool changeHealthBar(int value, bool forcedChange);
 
-	bool takeMindDamage(int damage);
+	bool changeStrengthBar(int value, bool forcedChange);
 
-	bool changeHealthBar(int hp, bool forcedChange);
+	bool changeConstitutionBar(int value, bool forcedChange);
 
-	bool changeStrengthBar(int st, bool forcedChange);
+	bool changeActionBar(int value, bool forcedChange);
 
-	bool changeConstitutionBar(int cs, bool forcedChange);
+	bool changeQuicknessBar(int value, bool forcedChange);
 
-	bool changeActionBar(int ap, bool forcedChange);
+	bool changeStaminaBar(int value, bool forcedChange);
 
-	bool changeQuicknessBar(int qc, bool forcedChange);
+	bool changeMindBar(int value, bool forcedChange);
 
-	bool changeStaminaBar(int st, bool forcedChange);
+	bool changeFocusBar(int value, bool forcedChange);
 
-	bool changeMindBar(int mp, bool forcedChange);
+	bool changeWillpowerBar(int value, bool forcedChange);
 
-	bool changeFocusBar(int fc, bool forcedChange);
+	void changeMaxAttributeBar(unsigned char attribute, int value, bool updateClient);
 
-	bool changeWillpowerBar(int wl, bool forcedChange);
+	void changeMaxHealthBar(int value, bool updateClient);
 
-	void changeMaxHealthBar(int hp, bool updateClient);
+	void changeMaxStrengthBar(int value, bool updateClient);
 
-	void changeMaxStrengthBar(int st, bool updateClient);
+	void changeMaxConstitutionBar(int value, bool updateClient);
 
-	void changeMaxConstitutionBar(int cs, bool updateClient);
+	void changeMaxActionBar(int value, bool updateClient);
 
-	void changeMaxActionBar(int ap, bool updateClient);
+	void changeMaxQuicknessBar(int value, bool updateClient);
 
-	void changeMaxQuicknessBar(int qc, bool updateClient);
+	void changeMaxStaminaBar(int value, bool updateClient);
 
-	void changeMaxStaminaBar(int st, bool updateClient);
+	void changeMaxMindBar(int value, bool updateClient);
 
-	void changeMaxMindBar(int mp, bool updateClient);
+	void changeMaxFocusBar(int value, bool updateClient);
 
-	void changeMaxFocusBar(int fc, bool updateClient);
+	void changeMaxWillpowerBar(int value, bool updateClient);
 
-	void changeMaxWillpowerBar(int wl, bool updateClient);
+	bool changeWoundsBar(unsigned char attribute, int value, bool forcedChange);
 
-	bool changeHealthWoundsBar(int wounds, bool forcedChange);
+	bool changeHealthWoundsBar(int value, bool forcedChange);
 
-	bool changeStrengthWoundsBar(int wounds, bool forcedChange);
+	bool changeStrengthWoundsBar(int value, bool forcedChange);
 
-	bool changeConstitutionWoundsBar(int wounds, bool forcedChange);
+	bool changeConstitutionWoundsBar(int value, bool forcedChange);
 
-	bool changeActionWoundsBar(int wounds, bool forcedChange);
+	bool changeActionWoundsBar(int value, bool forcedChange);
 
-	bool changeQuicknessWoundsBar(int wounds, bool forcedChange);
+	bool changeQuicknessWoundsBar(int value, bool forcedChange);
 
-	bool changeStaminaWoundsBar(int wounds, bool forcedChange);
+	bool changeStaminaWoundsBar(int value, bool forcedChange);
 
-	bool changeMindWoundsBar(int wounds, bool forcedChange);
+	bool changeMindWoundsBar(int value, bool forcedChange);
 
-	bool changeFocusWoundsBar(int wounds, bool forcedChange);
+	bool changeFocusWoundsBar(int value, bool forcedChange);
 
-	bool changeWillpowerWoundsBar(int wounds, bool forcedChange);
+	bool changeWillpowerWoundsBar(int value, bool forcedChange);
 
 	void changeShockWounds(int bf);
 
-	void setHealthBar(unsigned int hp);
+	void setAttributeBar(unsigned char attribute, int value);
 
-	void setStrengthBar(unsigned int st);
+	void setHealthBar(int value);
 
-	void setConstitutionBar(unsigned int cst);
+	void setStrengthBar(int value);
 
-	void setActionBar(unsigned int ap);
+	void setConstitutionBar(int value);
 
-	void setQuicknessBar(unsigned int qck);
+	void setActionBar(int value);
 
-	void setStaminaBar(unsigned int sta);
+	void setQuicknessBar(int value);
 
-	void setMindBar(unsigned int mp);
+	void setStaminaBar(int value);
 
-	void setFocusBar(unsigned int fc);
+	void setMindBar(int value);
 
-	void setWillpowerBar(unsigned int will);
+	void setFocusBar(int value);
 
-	void setBaseHealthBar(unsigned int hp, bool updateClient);
+	void setWillpowerBar(int value);
 
-	void setBaseStrengthBar(unsigned int st, bool updateClient);
+	void setBaseAttributeBar(unsigned char attribute, int value, bool updateClient);
 
-	void setBaseConstitutionBar(unsigned int cst, bool updateClient);
+	void setBaseHealthBar(int value, bool updateClient);
 
-	void setBaseActionBar(unsigned int ap, bool updateClient);
+	void setBaseStrengthBar(int value, bool updateClient);
 
-	void setBaseQuicknessBar(unsigned int qck, bool updateClient);
+	void setBaseConstitutionBar(int value, bool updateClient);
 
-	void setBaseStaminaBar(unsigned int sta, bool updateClient);
+	void setBaseActionBar(int value, bool updateClient);
 
-	void setBaseMindBar(unsigned int mp, bool updateClient);
+	void setBaseQuicknessBar(int value, bool updateClient);
 
-	void setBaseFocusBar(unsigned int fc, bool updateClient);
+	void setBaseStaminaBar(int value, bool updateClient);
 
-	void setBaseWillpowerBar(unsigned int will, bool updateClient);
+	void setBaseMindBar(int value, bool updateClient);
 
-	void setMaxHealthBar(unsigned int hp, bool updateClient);
+	void setBaseFocusBar(int value, bool updateClient);
 
-	void setMaxStrengthBar(unsigned int st, bool updateClient);
+	void setBaseWillpowerBar(int value, bool updateClient);
 
-	void setMaxConstitutionBar(unsigned int cst, bool updateClient);
+	void setMaxAttributeBar(unsigned char attribute, int value, bool updateClient);
 
-	void setMaxActionBar(unsigned int ap, bool updateClient);
+	void setMaxHealthBar(int value, bool updateClient);
 
-	void setMaxQuicknessBar(unsigned int qck, bool updateClient);
+	void setMaxStrengthBar(int value, bool updateClient);
 
-	void setMaxStaminaBar(unsigned int sta, bool updateClient);
+	void setMaxConstitutionBar(int value, bool updateClient);
 
-	void setMaxMindBar(unsigned int mp, bool updateClient);
+	void setMaxActionBar(int value, bool updateClient);
 
-	void setMaxFocusBar(unsigned int fc, bool updateClient);
+	void setMaxQuicknessBar(int value, bool updateClient);
 
-	void setMaxWillpowerBar(unsigned int will, bool updateClient);
+	void setMaxStaminaBar(int value, bool updateClient);
 
-	void setHealthWoundsBar(unsigned int wnds);
+	void setMaxMindBar(int value, bool updateClient);
 
-	void setStrengthWoundsBar(unsigned int wnds);
+	void setMaxFocusBar(int value, bool updateClient);
 
-	void setConstitutionWoundsBar(unsigned int wnds);
+	void setMaxWillpowerBar(int value, bool updateClient);
 
-	void setActionWoundsBar(unsigned int wnds);
+	void setWoundsBar(unsigned char attribute, int value);
 
-	void setQuicknessWoundsBar(unsigned int wnds);
+	void setHealthWoundsBar(int value);
 
-	void setStaminaWoundsBar(unsigned int wnds);
+	void setStrengthWoundsBar(int value);
 
-	void setMindWoundsBar(unsigned int wnds);
+	void setConstitutionWoundsBar(int value);
 
-	void setFocusWoundsBar(unsigned int wnds);
+	void setActionWoundsBar(int value);
 
-	void setWillpowerWoundsBar(unsigned int wnds);
+	void setQuicknessWoundsBar(int value);
 
-	void handleDeath();
+	void setStaminaWoundsBar(int value);
+
+	void setMindWoundsBar(int value);
+
+	void setFocusWoundsBar(int value);
+
+	void setWillpowerWoundsBar(int value);
 
 	bool hasAttackDelay();
 
@@ -1548,6 +1626,18 @@ public:
 	void setIgnoreMovementTests(int times);
 
 	void setLevel(unsigned int lvl);
+
+	void setHealthEncumbrance(unsigned int value);
+
+	void setActionEncumbrance(unsigned int value);
+
+	void setMindEncumbrance(unsigned int value);
+
+	void changeHealthEncumbrance(int value);
+
+	void changeActionEncumbrance(int value);
+
+	void changeMindEncumbrance(int value);
 
 	void updateServerMovementStamp();
 
@@ -1747,8 +1837,6 @@ public:
 
 	bool hasShockWounds();
 
-	unsigned int getWounds(unsigned char attribute);
-
 	unsigned char getNextWoundedAttribute(bool h, bool a, bool m);
 
 	bool isAttackable();
@@ -1809,77 +1897,85 @@ public:
 
 	void updateBaseStats();
 
-	unsigned int getBaseHealth();
+	int getBaseAttribute(unsigned char attribute);
 
-	unsigned int getBaseStrength();
+	int getBaseHealth();
 
-	unsigned int getBaseConstitution();
+	int getBaseStrength();
 
-	unsigned int getBaseAction();
+	int getBaseConstitution();
 
-	unsigned int getBaseQuickness();
+	int getBaseAction();
 
-	unsigned int getBaseStamina();
+	int getBaseQuickness();
 
-	unsigned int getBaseMind();
+	int getBaseStamina();
 
-	unsigned int getBaseFocus();
+	int getBaseMind();
 
-	unsigned int getBaseWillpower();
+	int getBaseFocus();
 
-	unsigned int getHealth();
+	int getBaseWillpower();
 
-	unsigned int getStrength();
+	int getAttribute(unsigned char attribute);
 
-	unsigned int getConstitution();
+	int getHealth();
 
-	unsigned int getAction();
+	int getStrength();
 
-	unsigned int getQuickness();
+	int getConstitution();
 
-	unsigned int getStamina();
+	int getAction();
 
-	unsigned int getMind();
+	int getQuickness();
 
-	unsigned int getFocus();
+	int getStamina();
 
-	unsigned int getWillpower();
+	int getMind();
 
-	unsigned int getHealthMax();
+	int getFocus();
 
-	unsigned int getStrengthMax();
+	int getWillpower();
 
-	unsigned int getConstitutionMax();
+	int getAttributeMax(unsigned char attribute);
 
-	unsigned int getActionMax();
+	int getHealthMax();
 
-	unsigned int getQuicknessMax();
+	int getStrengthMax();
 
-	unsigned int getStaminaMax();
+	int getConstitutionMax();
 
-	unsigned int getMindMax();
+	int getActionMax();
 
-	unsigned int getFocusMax();
+	int getQuicknessMax();
 
-	unsigned int getWillpowerMax();
+	int getStaminaMax();
 
-	unsigned int getHealthWounds();
+	int getMindMax();
 
-	unsigned int getStrengthWounds();
+	int getFocusMax();
 
-	unsigned int getConstitutionWounds();
+	int getWillpowerMax();
 
-	unsigned int getActionWounds();
+	int getWounds(unsigned char attribute);
 
-	unsigned int getQuicknessWounds();
+	int getHealthWounds();
 
-	unsigned int getStaminaWounds();
+	int getStrengthWounds();
 
-	unsigned int getMindWounds();
+	int getConstitutionWounds();
 
-	unsigned int getFocusWounds();
+	int getActionWounds();
 
-	unsigned int getWillpowerWounds();
+	int getQuicknessWounds();
+
+	int getStaminaWounds();
+
+	int getMindWounds();
+
+	int getFocusWounds();
+
+	int getWillpowerWounds();
 
 	unsigned int getHealthDamage();
 
@@ -1901,9 +1997,9 @@ public:
 
 	unsigned int getNewHAMBaseUpdateCounter(int cnt);
 
-	unsigned int getHAMEncumbUpdateCounter();
+	unsigned int getEncumbUpdateCounter();
 
-	unsigned int getNewHAMEncumbUpdateCounter(int cnt);
+	unsigned int getNewEncumbUpdateCounter(int cnt);
 
 	unsigned int getHealthEncumbrance();
 
@@ -2047,117 +2143,129 @@ public:
 
 	bool isBaby();
 
-	void setBaseHealth(unsigned int health);
+	void setBaseAttribute(unsigned char attribute, int value);
 
-	void setBaseStrength(unsigned int strength);
+	void setBaseHealth(int value);
 
-	void setBaseConstitution(unsigned int constituition);
+	void setBaseStrength(int value);
 
-	void setBaseAction(unsigned int action);
+	void setBaseConstitution(int value);
 
-	void setBaseQuickness(unsigned int quickness);
+	void setBaseAction(int value);
 
-	void setBaseStamina(unsigned int stamina);
+	void setBaseQuickness(int value);
 
-	void setBaseMind(unsigned int mind);
+	void setBaseStamina(int value);
 
-	void setBaseFocus(unsigned int focus);
+	void setBaseMind(int value);
 
-	void setBaseWillpower(unsigned int willpower);
+	void setBaseFocus(int value);
 
-	void setHealth(unsigned int health);
+	void setBaseWillpower(int value);
 
-	void setStrength(unsigned int strength);
+	void setAttribute(unsigned char attribute, int value);
 
-	void setConstitution(unsigned int constituition);
+	void setHealth(int value);
 
-	void setAction(unsigned int action);
+	void setStrength(int value);
 
-	void setQuickness(unsigned int quickness);
+	void setConstitution(int value);
 
-	void setStamina(unsigned int stamina);
+	void setAction(int value);
 
-	void setMind(unsigned int mind);
+	void setQuickness(int value);
 
-	void setFocus(unsigned int focus);
+	void setStamina(int value);
 
-	void setWillpower(unsigned int willpower);
+	void setMind(int value);
 
-	void setHealthMax(unsigned int health);
+	void setFocus(int value);
 
-	void setStrengthMax(unsigned int strength);
+	void setWillpower(int value);
 
-	void setConstitutionMax(unsigned int constituition);
+	void setAttributeMax(unsigned char attribute, int value);
 
-	void setActionMax(unsigned int action);
+	void setHealthMax(int value);
 
-	void setQuicknessMax(unsigned int quickness);
+	void setStrengthMax(int value);
 
-	void setStaminaMax(unsigned int stamina);
+	void setConstitutionMax(int value);
 
-	void setMindMax(unsigned int mind);
+	void setActionMax(int value);
 
-	void setFocusMax(unsigned int focus);
+	void setQuicknessMax(int value);
 
-	void setWillpowerMax(unsigned int willpower);
+	void setStaminaMax(int value);
 
-	void setHealthWounds(unsigned int wounds);
+	void setMindMax(int value);
 
-	void setStrengthWounds(unsigned int wounds);
+	void setFocusMax(int value);
 
-	void setConstitutionWounds(unsigned int wounds);
+	void setWillpowerMax(int value);
 
-	void setActionWounds(unsigned int wounds);
+	void setWounds(unsigned char attribute, int value);
 
-	void setQuicknessWounds(unsigned int wounds);
+	void setHealthWounds(int value);
 
-	void setStaminaWounds(unsigned int wounds);
+	void setStrengthWounds(int value);
 
-	void setMindWounds(unsigned int wounds);
+	void setConstitutionWounds(int value);
 
-	void setFocusWounds(unsigned int wounds);
+	void setActionWounds(int value);
 
-	void setWillpowerWounds(unsigned int wounds);
+	void setQuicknessWounds(int value);
 
-	void setShockWounds(unsigned int wounds);
+	void setStaminaWounds(int value);
+
+	void setMindWounds(int value);
+
+	void setFocusWounds(int value);
+
+	void setWillpowerWounds(int value);
+
+	void setShockWounds(int value);
 
 	void setWoundsUpdateCounter(unsigned int count);
 
-	void changeHealthMax(int health);
+	void changeAttributeMax(unsigned char attribute, int value);
 
-	void changeStrengthMax(int strength);
+	void changeHealthMax(int value);
 
-	void changeConstitutionMax(int constituition);
+	void changeStrengthMax(int value);
 
-	void changeActionMax(int action);
+	void changeConstitutionMax(int value);
 
-	void changeQuicknessMax(int quickness);
+	void changeActionMax(int value);
 
-	void changeStaminaMax(int stamina);
+	void changeQuicknessMax(int value);
 
-	void changeMindMax(int mind);
+	void changeStaminaMax(int value);
 
-	void changeFocusMax(int focus);
+	void changeMindMax(int value);
 
-	void changeWillpowerMax(int willpower);
+	void changeFocusMax(int value);
 
-	void changeHealth(int health);
+	void changeWillpowerMax(int value);
 
-	void changeStrength(int strength);
+	void changeAttribute(unsigned char attribute, int value);
 
-	void changeConstitution(int constituition);
+	void changeHealth(int value);
 
-	void changeAction(int action);
+	void changeStrength(int value);
 
-	void changeQuickness(int quickness);
+	void changeConstitution(int value);
 
-	void changeStamina(int stamina);
+	void changeAction(int value);
 
-	void changeMind(int mind);
+	void changeQuickness(int value);
 
-	void changeFocus(int focus);
+	void changeStamina(int value);
 
-	void changeWillpower(int willpower);
+	void changeMind(int value);
+
+	void changeFocus(int value);
+
+	void changeWillpower(int value);
 
 	void setpbHA(int value);
 
@@ -2391,9 +2499,15 @@ public:
 
 	void setMaskScent(int value);
 
+	unsigned char getLowestHAMAttribute();
+
+	void onIncapacitated(SceneObject* attacker);
+
+	void onIncapacitationRecovery();
+
 	void onDeath();
 
-	void onClone();
+	void onKilled(SceneObject* killer);
 
 	void onBlinded();
 
@@ -2402,6 +2516,32 @@ public:
 	void onStunned();
 
 	void onIntimidated();
+
+	void onEquip(TangibleObject* item);
+
+	void onUnequip(TangibleObject* item);
+
+	void onChangeWeapon(Weapon* weapon);
+
+	void onChangeArmor(Armor* armor);
+
+	void onReceiveDamage(SceneObject* attacker, unsigned char attribute, unsigned int amount);
+
+	void onRegenerateHAM();
+
+	bool inflictDamage(CreatureObject* victim, unsigned char attribute, unsigned int damage);
+
+	void incapacitateSelf();
+
+	void recoverFromIncapacitation();
+
+	void die();
+
+	void equipItem(TangibleObject* item);
+
+	void unequipItem(TangibleObject* item);
+
+	unsigned int calculateAttributeRegenTick(unsigned char attribute);
 
 protected:
 	String _param0_info__String_bool_;

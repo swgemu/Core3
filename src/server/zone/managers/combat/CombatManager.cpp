@@ -70,14 +70,18 @@ CombatManager::CombatManager(ZoneProcessServerImplementation* srv) {
  *     This is the entry point for combat queue actions
  */
 float CombatManager::handleAction(CommandQueueAction* action) {
-	CreatureObject* creature = action->getCreature();
+	CreatureObject* actor = action->getCreature();
 
-	if (creature != NULL && creature->isPlayer())
-		if (((Player*)creature)->isImmune()) {
-			((Player*)creature)->sendSystemMessage("You cannot attack while Immune.");
+	if (actor != NULL && actor->isPlayer()) {
+		Player* playerActor = (Player*) actor;
+
+		if (playerActor->isImmune()) {
+			playerActor->sendSystemMessage("You cannot attack while Immune.");
 			return 0.0f;
 		}
-		// TODO: Check for armour if using Jedi skill and disallow
+	}
+
+	// TODO: Check for armour if using Jedi skill and disallow
 
 	Skill* skill = action->getSkill();
 
@@ -139,7 +143,7 @@ float CombatManager::doTargetSkill(CommandQueueAction* action) {
 	uint32 animCRC = tskill->getAnimCRC();
 
 	if (animCRC == 0)  // Default combat action
-			animCRC = getDefaultAttackAnimation(creature);
+		animCRC = getDefaultAttackAnimation(creature);
 
 	CombatAction* actionMessage = new CombatAction(creature, animCRC);
 
@@ -280,24 +284,32 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, SceneObject* target
 			targetCreature = (Creature*) target;
 
 			if (targetCreature->isIncapacitated() || targetCreature->isDead()) {
-				target->unlock();
+				targetCreature->unlock();
 				return false;
 			} else if (targetCreature->isPlayingMusic())
 				targetCreature->stopPlayingMusic();
 			else if (targetCreature->isDancing())
 				targetCreature->stopDancing();
 
-			if (target->isPlayer()) {
-				if (((Player*)targetCreature)->isImmune() || !((Player*)targetCreature)->isOnline()) {
-					target->unlock();
+			if (targetCreature->isPlayer()) {
+				Player* targetPlayer = (Player*) targetCreature;
+
+				if (targetPlayer->isImmune()) {
+					targetPlayer->unlock();
 					return false;
 				}
 
-				if (attacker->isPlayer())
-					if (!canAttack((Player*)attacker, (Player*)targetCreature)) {
-						targetCreature->unlock();
+				if (attacker->isPlayer()) {
+					if (!canAttack((Player*)attacker, targetPlayer)) {
+						targetPlayer->unlock();
 						return false;
 					}
+				}
+
+				if (!targetPlayer->isOnline()) {
+					targetPlayer->unlock();
+					return false;
+				}
 			}
 		}
 
@@ -315,8 +327,9 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, SceneObject* target
 			actionMessage->addDefender(targetCreature, damage >= 0);
 
 		if (targetCreature != NULL) {
-			// TODO: Handle case of area action where all targets are dead/incapacitated
-			if (targetCreature->isIncapacitated()) {
+			/**
+			 * TODO: REMOVE - handled with event handlers now
+			 * if (targetCreature->isIncapacitated()) {
 				attacker->sendSystemMessage("base_player", "prose_target_incap", targetCreature->getObjectID());
 
 				if (!skill->isArea()) {
@@ -329,7 +342,7 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, SceneObject* target
 				if (!skill->isArea()) {
 					attacker->clearCombatState(true);
 				}
-			}
+			}*/
 
 			skill->calculateStates(attacker, targetCreature);
 
@@ -337,8 +350,7 @@ bool CombatManager::doAttackAction(CreatureObject* attacker, SceneObject* target
 				targetCreature->doAttack(attacker, damage);
 
 			targetCreature->activateRecovery();
-		}
-		else {
+		} else {
 			AttackableObject* targetObject = (AttackableObject*) target;
 			if (targetObject->isDestroyed())
 				if (!skill->isArea()) {
@@ -706,7 +718,8 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 	return defense - (uint32)(defense * targetCreature->calculateBFRatio());
 }
 
-/*  applyDamage -
+/**
+ * applyDamage -
  * 		This routine applies damage to the target
  * 		Inputs are the attacker, defender, the amount of damage
  * 		and an integer specifying where the target has been hit
@@ -732,15 +745,15 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* target,
 	if (damage < 0)
 		damage = 0;
 
-	target->addDamage(attacker, damage);
+	//target->addDamage(attacker, damage);
 	target->addDamageDone(attacker, damage, askill->getSkillName());
 
 	if (part < 6)
-		target->takeHealthDamage(damage);
+		attacker->inflictDamage(target, CreatureAttribute::HEALTH, damage);
 	else if (part < 8)
-		target->takeActionDamage(damage);
+		attacker->inflictDamage(target, CreatureAttribute::ACTION, damage);
 	else
-		target->takeMindDamage(damage);
+		attacker->inflictDamage(target, CreatureAttribute::MIND, damage);
 
 	if (attacker->isPlayer()) {
 		ShowFlyText* fly;

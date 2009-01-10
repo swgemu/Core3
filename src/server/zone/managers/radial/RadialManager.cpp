@@ -269,42 +269,42 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 148: // Harvest
 		handleHarvest(player, obj, 0);
 		break;
-    	case 164: // ROLL_DICE (Configure)
-        	// nothing here, has sub-members
-        	break;
-    	case 165: // DICE_TWO_FACE
-    	    	handleDiceConfigure(player, obj, 2);
-    	    	break;
-    	case 166: // DICE_THREE_FACE
-        	handleDiceConfigure(player, obj, 3);
-        	break;
-    	case 167: // DICE_FOUR_FACE
-        	handleDiceConfigure(player, obj, 4);
-        	break;
-    	case 168: // DICE_FIVE_FACE
-        	handleDiceConfigure(player, obj, 5);
-        	break;
-    	case 169: // DICE_SIX_FACE
-        	handleDiceConfigure(player, obj, 6);
-        	break;
-    	case 170: // DICE_SEVEN_FACE
-        	handleDiceConfigure(player, obj, 7);
-        	break;
-    	case 171: // DICE_EIGHT_FACE
-        	handleDiceConfigure(player, obj, 8);
+	case 164: // ROLL_DICE (Configure)
+		// nothing here, has sub-members
 		break;
-    	case 172: // DICE_COUNT_ONE
-        	handleDiceRoll(player, obj, 1);
-        	break;
-    	case 173: // DICE_COUNT_TWO
-        	handleDiceRoll(player, obj, 2);
-        	break;
-    	case 174: // DICE_COUNT_THREE
-        	handleDiceRoll(player, obj, 3);
-        	break;
-    	case 175: // DICE_COUNT_FOUR
-        	handleDiceRoll(player, obj, 4);
-        	break;
+	case 165: // DICE_TWO_FACE
+		handleDiceConfigure(player, obj, 2);
+		break;
+	case 166: // DICE_THREE_FACE
+		handleDiceConfigure(player, obj, 3);
+		break;
+	case 167: // DICE_FOUR_FACE
+		handleDiceConfigure(player, obj, 4);
+		break;
+	case 168: // DICE_FIVE_FACE
+		handleDiceConfigure(player, obj, 5);
+		break;
+	case 169: // DICE_SIX_FACE
+		handleDiceConfigure(player, obj, 6);
+		break;
+	case 170: // DICE_SEVEN_FACE
+		handleDiceConfigure(player, obj, 7);
+		break;
+	case 171: // DICE_EIGHT_FACE
+		handleDiceConfigure(player, obj, 8);
+		break;
+	case 172: // DICE_COUNT_ONE
+		handleDiceRoll(player, obj, 1);
+		break;
+	case 173: // DICE_COUNT_TWO
+		handleDiceRoll(player, obj, 2);
+		break;
+	case 174: // DICE_COUNT_THREE
+		handleDiceRoll(player, obj, 3);
+		break;
+	case 175: // DICE_COUNT_FOUR
+		handleDiceRoll(player, obj, 4);
+		break;
 	case 187: // SERVER_GUILD_INFORMATION
 		player->unlock();
 		handleGuildInformation(player);
@@ -350,6 +350,10 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 	case 202: // SERVER_GUILD_TRANSFER_LEADERSHIP
 		player->unlock();
 		handleGuildTransferLeader(player);
+		return;
+	case 203: //INSURE_ALL
+		player->unlock();
+		handleInsureAllItems(player, obj);
 		return;
 	default:
 		//System::out << "Unknown radial selection received:" << radialID << "\n";
@@ -740,13 +744,7 @@ void RadialManager::handleRepair(Player* player, SceneObject* obj) {
 	try {
 		tano->wlock();
 
-		if (tano->isArmor()) {
-			Armor* armor = (Armor*) tano;
-			armor->repairArmor(player);
-		} else if (tano->isWeapon()) {
-			Weapon* weapon = (Weapon*) tano;
-			weapon->repairWeapon(player);
-		}
+		tano->repairItem(player);
 
 		tano->unlock();
 	} catch (...) {
@@ -1126,5 +1124,21 @@ void RadialManager::handleTeach(SceneObject* obj, Player* trainer) {
 	delete params;
 
 	trainer->teachPlayer(trainee);
+}
+
+void RadialManager::handleInsureAllItems(Player* player, SceneObject* obj) {
+	if (obj->isTangible()) {
+		TangibleObject* tangibleObj = (TangibleObject*) obj;
+		if (tangibleObj->isTerminal()) {
+			Terminal* terminal = (Terminal*) tangibleObj;
+			if (terminal->isInsuranceTerminal()) {
+				InsuranceTerminal* insterm = (InsuranceTerminal*) terminal;
+				player->sendItemInsureAllConfirm(insterm);
+				return;
+			}
+		}
+	}
+
+	player->sendSystemMessage("The insurance terminal used was invalid.");
 }
 

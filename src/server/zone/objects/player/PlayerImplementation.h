@@ -79,7 +79,10 @@ which carries forward this exception.
 
 #include "../../managers/player/PlayerManager.h"
 #include "badges/Badges.h"
+#include "badges/Badge.h"
 #include "EquippedItems.h"
+
+//#include "../tangible/terminal/cloning/CloningTerminal.h"
 
 class PlayerManager;
 class ItemManager;
@@ -153,7 +156,7 @@ class PlayerImplementation : public PlayerServant {
 
 	int itemShift;
 
-	uint8 incapacitationCount;
+	uint8 incapacitationCounter;
 	Time firstIncapacitationTime;
 	int pvpRating;
 
@@ -297,6 +300,10 @@ class PlayerImplementation : public PlayerServant {
 	ActiveArea * activeArea;
 	Badges * badges;
 
+
+	//Cloning
+	CloningFacility* cloningFacility;
+
 public:
 	static const int ONLINE = 1;
 	static const int OFFLINE = 2;
@@ -355,7 +362,6 @@ public:
 	void initialize();
 
 	void create(ZoneClientSession* client);
-
 	void refuseCreate(ZoneClientSession* client);
 
 	void load(ZoneClientSession* client);
@@ -411,8 +417,7 @@ public:
 		return characterMask;
 	}
 
-	//Attribute Limits
-
+	//Racial Attribute Limits
 	inline uint32 getMinHealth() {
 		const uint32 * table =  Races::getAttribLimits(raceID);
 		return table[0];
@@ -762,18 +767,7 @@ public:
 	void lootCorpse(bool lootAll = false);
 	void lootObject(Creature* creature, SceneObject* object);
 
-	void kill();
-	void deathblow(Player* player);
 	void resurrect();
-
-	void throttlePvpRating(Player* player);
-
-	void activateClone();
-	void doClone();
-
-	void handleDeath();
-
-	void sendConsentBox();
 
 	//Foraging
 	void startForaging(int foragetype);
@@ -874,6 +868,28 @@ public:
 	void clearBuffs(bool doUpdatePlayer = true);
 
 	void updateBuffWindow();
+
+	/**
+	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
+	 * \param value The value that the attribute will have at incapacitation.
+	 * \param oneTick The amount of one regen tick.
+	 * \param attribute The attribute that is causing the incapacitation.
+	 * \return Returns the number of seconds until the player should recover from incapacitation.
+	 */
+	inline uint8 calculateIncapacitationTimer() {
+		uint8 attribute = getLowestHAMAttribute();
+
+		//Switch the sign of the value
+		int32 value = -getAttribute(attribute);
+
+		if (value < 0)
+			return 0;
+
+		uint32 recoveryTime = (value / 5); //In seconds - 3 seconds is recoveryEvent timer
+
+		//Gate recoveryTime: Min time of 10 seconds, Max time of 60 seconds.
+		return MIN(MAX(recoveryTime, 10), 60);
+	}
 
 	// jedi methods
 	void calculateForceRegen();
@@ -1028,11 +1044,7 @@ public:
 		return skillBoxes.hasNext();
 	}
 
-	//PVP Rating stuff.
-	void increasePvpRating(int value);
-	void decreasePvpRating(int value);
-
-	// duellist manipulation methods
+	// duel list manipulation methods
 	void addToDuelList(Player* targetPlayer);
 
 	void removeFromDuelList(Player* targetPlayer);
@@ -1434,6 +1446,37 @@ public:
 		return onlineStatus == LOGGINGOUT;
 	}
 
+	inline bool isFirstIncapacitationExpired() {
+		return firstIncapacitationTime.isPast();
+	}
+
+	inline void resetIncapacitationCounter() {
+		incapacitationCounter = 0;
+	}
+
+	inline void resetFirstIncapacitationTime() {
+		if (!isFirstIncapacitation())
+			resetIncapacitationCounter();
+
+		firstIncapacitationTime.update();
+		firstIncapacitationTime.addMiliTime(900000);
+	}
+
+	inline void updateIncapacitationCounter() {
+		incapacitationCounter++;
+
+		if (isFirstIncapacitation() || isFirstIncapacitationExpired())
+			resetFirstIncapacitationTime();
+	}
+
+	inline bool isFirstIncapacitation() {
+		return incapacitationCounter == 1;
+	}
+
+	inline uint8 getIncapacitationCounter() {
+		return incapacitationCounter;
+	}
+
 	inline float getLastTestPositionX() {
 		return lastTestPositionX;
 	}
@@ -1628,6 +1671,25 @@ public:
 				return sui->getBoxID();
 		}
 		return 0;
+	}
+
+	/**
+	 * This method will send the close packet to the client,
+	 * closing any open sui box of the suiBoxType,
+	 * and removing it from the player's list of SuiBoxes.
+	 * \param boxTypeID The box type id to search for, and close.
+	 */
+	inline void closeSuiWindowType(uint32 windowType) {
+		if (hasSuiBoxWindowType(windowType)) {
+			int boxID = getSuiBoxFromWindowType(windowType);
+			SuiBox* sui = (SuiBox*) getSuiBox(boxID);
+
+			if (sui != NULL) {
+				sendMessage(sui->generateCloseMessage());
+				removeSuiBox(boxID);
+				sui->finalize();
+			}
+		}
 	}
 
 	void removeSuiBox(uint32 boxID) {
@@ -1904,6 +1966,92 @@ public:
 
 	void removeOldSuiBoxIfPresent(const int suiWindowType);
 	void displayMessageoftheDay();
+
+
+	inline Vector<TangibleObject*> getInsurableItems() {
+		Vector<TangibleObject*> insurableItems;
+
+		for (int i = 0; i < inventory->objectsSize(); i++) {
+			TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+			if (item != NULL && item->isInsurable())
+				insurableItems.add(item);
+		}
+
+		return insurableItems;
+	}
+
+
+	//Sending of Messages
+	void sendIncapacitationTimer(uint32 seconds, bool doRecovery = true);
+	void sendBankTipConfirm(Player* recipient, uint32 amount);
+	void sendConsentList();
+	void sendActivateCloneRequest();
+	void sendCloningDataStorageConfirm(CloningTerminal* terminal);
+	void sendItemInsuranceMenu(InsuranceTerminal* terminal);
+	void sendItemInsureAllConfirm(InsuranceTerminal* terminal);
+
+	//Event Handlers
+	void onIncapacitateTarget(CreatureObject* victim);
+	void onIncapacitated(SceneObject* attacker);
+	void onKilled(SceneObject* killer);
+	void onDeath();
+	void onDeathblow(Player* victim);
+	void onReceiveDeathblow(SceneObject* killer);
+	void onPvpRatingGained(Player* victim);
+	void onPvpRatingLost(Player* killer);
+	void onPvpRatingGainedThrottled();
+	void onPvpRatingLostThrottled();
+	void onBadgeAwarded(Badge* badge);
+	void onBadgeRevoked(Badge* badge);
+	void onExperienceGained(const String& xptype, uint32 amount);
+	void onExperienceLost(const String& xptype, uint32 amount);
+	void onCloneDataStored();
+	void onCloneDataAlreadyStored();
+	void onCloneSuccessful();
+	void onCloneFailure();
+	void onMakePaymentTo(SceneObject* target, uint32 cost);
+	void onMakeBankPaymentTo(SceneObject* target, uint32 cost);
+	void onInsufficientFundsAvailable(SceneObject* target, uint32 amount);
+	void onInsureItemSuccess(uint64 itemID);
+	void onInsureItemFailure(uint64 itemID);
+	void onInsureItemInsufficientFunds(uint64 itemID);
+	void onInsureItemInvalidTerminal();
+	void onInsureAllItemsComplete();
+	void onNoValidInsurables();
+	void onBankTipSuccessful();
+
+	//Actions
+	void incapacitateSelf();
+	void die();
+	void clone();
+	void clone(uint64 terminalID);
+	void clone(CloningFacility* cloningFacility);
+	void increasePvpRating(Player* victim);
+	void increasePvpRating(uint32 amount);
+	void decreasePvpRating(Player* killer);
+	void decreasePvpRating(uint32 amount);
+	bool makePaymentTo(SceneObject* target, uint32 cost, bool notifyPlayer = true);
+	bool makeBankPaymentTo(SceneObject* target, uint32 cost, bool notifyPlayer = true);
+	void insureItem(InsuranceTerminal* terminal, uint64 itemID, bool notifySuccess = true);
+	void insureAllItems(uint64 terminalID);
+	bool bankTipStart(Player* recipient, uint32 amount);
+	void bankTipFinish(Player* recipient, uint32 amount);
+	bool cashTip(Player* recipient, uint32 amount);
+
+	void cancelRecoveryEvent();
+
+	//Setters
+	void setCloningFacility(CloningFacility* facility) {
+		cloningFacility = facility;
+		onCloneDataStored();
+	}
+
+	//Getters
+	inline CloningFacility* getCloningFacility() {
+		return cloningFacility;
+	}
+
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

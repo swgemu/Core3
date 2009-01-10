@@ -69,7 +69,7 @@ class BuildingObjectImplementation : public QuadTree, public BuildingObjectServa
 	bool persistent, updated;
 
 	bool staticBuilding;
-	
+
 	bool storageLoaded;
 
 	String templateName;
@@ -166,7 +166,7 @@ public:
 	static const int IMPERIAL_MAJOR_BASE = 81;
 
 public:
-	BuildingObjectImplementation(uint64 oid, bool staticBuild);
+	BuildingObjectImplementation(uint64 oid, bool staticBuild, int bType = UNKNOWN);
 	~BuildingObjectImplementation();
 
 
@@ -287,6 +287,11 @@ public:
 
 	void setStorageLoaded(bool setter) {
 		storageLoaded = setter;
+	}
+
+
+	inline bool isCloningFacility() {
+		return buildingType == CLONING_FACILITY;
 	}
 
 };
