@@ -392,7 +392,7 @@ void PlanetManagerImplementation::loadStaticPlanetObjects() {
 	loadGuildTerminals();
 	//loadVendorTerminals();
 	loadCraftingStations();
-	loadMissionTerminals();
+	//loadMissionTerminals();
 	loadStaticTangibleObjects();
 	loadCloningTerminals();
 	loadInsuranceTerminals();
@@ -736,12 +736,13 @@ void PlanetManagerImplementation::loadMissionTerminals() {
 
 	int planetId = zone->getZoneID();
 
-	if (planetId != 5)
+	if (planetId != 0)
 		return;
 
 	lock();
 
-	MissionTerminal* missionTerminal = new MissionTerminal(getNextStaticObjectID(false), -4836.0f, 6.0f, 4155.0f, planetId, MissionTerminalImplementation::TMASK_GENERAL);
+	//tyren start term
+	MissionTerminal* missionTerminal = new MissionTerminal(getNextStaticObjectID(false), -5100.0f, 21.0f, -2351.0f, planetId, MissionTerminalImplementation::TMASK_GENERAL);
 	missionTerminal->setDirection(0, 0, 0, 0);
 
 	missionTerminal->setZoneProcessServer(server);

@@ -31,7 +31,7 @@ ActionCreature::ActionCreature(DummyConstructorParameter* param) : Creature(para
 ActionCreature::~ActionCreature() {
 }
 
-void ActionCreature::addAction(String& key, Action* act) {
+void ActionCreature::addActionObj(String& key, Action* act) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -42,10 +42,10 @@ void ActionCreature::addAction(String& key, Action* act) {
 
 		method.executeWithVoidReturn();
 	} else
-		((ActionCreatureImplementation*) _impl)->addAction(key, act);
+		((ActionCreatureImplementation*) _impl)->addActionObj(key, act);
 }
 
-Action* ActionCreature::getAction(String& key) {
+Action* ActionCreature::getActionObj(String& key) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -55,7 +55,21 @@ Action* ActionCreature::getAction(String& key) {
 
 		return (Action*) method.executeWithObjectReturn();
 	} else
-		return ((ActionCreatureImplementation*) _impl)->getAction(key);
+		return ((ActionCreatureImplementation*) _impl)->getActionObj(key);
+}
+
+void ActionCreature::execActionByKey(String& key, Player* player) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addAsciiParameter(key);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActionCreatureImplementation*) _impl)->execActionByKey(key, player);
 }
 
 void ActionCreature::onConverse(String& tco, Player* player) {
@@ -63,7 +77,7 @@ void ActionCreature::onConverse(String& tco, Player* player) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 9);
 		method.addAsciiParameter(tco);
 		method.addObjectParameter(player);
 
@@ -77,7 +91,7 @@ void ActionCreature::onTrade(String& ttr) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 10);
 		method.addAsciiParameter(ttr);
 
 		method.executeWithVoidReturn();
@@ -90,7 +104,7 @@ void ActionCreature::onAttack(String& tat) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 11);
 		method.addAsciiParameter(tat);
 
 		method.executeWithVoidReturn();
@@ -103,7 +117,7 @@ void ActionCreature::onDeath(String& tde) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 11);
+		DistributedMethod method(this, 12);
 		method.addAsciiParameter(tde);
 
 		method.executeWithVoidReturn();
@@ -116,7 +130,7 @@ bool ActionCreature::isMissionNpc() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 13);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -128,7 +142,7 @@ String& ActionCreature::getMissionKey() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 14);
 
 		method.executeWithAsciiReturn(_return_getMissionKey);
 		return _return_getMissionKey;
@@ -157,7 +171,7 @@ void ActionCreature::sendConversationStartTo(SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 15);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -170,7 +184,7 @@ void ActionCreature::selectConversationOption(int option, SceneObject* obj) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 15);
+		DistributedMethod method(this, 16);
 		method.addSignedIntParameter(option);
 		method.addObjectParameter(obj);
 
@@ -191,33 +205,36 @@ Packet* ActionCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 
 	switch (methid) {
 	case 6:
-		addAction(inv->getAsciiParameter(_param0_addAction__String_Action_), (Action*) inv->getObjectParameter());
+		addActionObj(inv->getAsciiParameter(_param0_addActionObj__String_Action_), (Action*) inv->getObjectParameter());
 		break;
 	case 7:
-		resp->insertLong(getAction(inv->getAsciiParameter(_param0_getAction__String_))->_getObjectID());
+		resp->insertLong(getActionObj(inv->getAsciiParameter(_param0_getActionObj__String_))->_getObjectID());
 		break;
 	case 8:
-		onConverse(inv->getAsciiParameter(_param0_onConverse__String_Player_), (Player*) inv->getObjectParameter());
+		execActionByKey(inv->getAsciiParameter(_param0_execActionByKey__String_Player_), (Player*) inv->getObjectParameter());
 		break;
 	case 9:
-		onTrade(inv->getAsciiParameter(_param0_onTrade__String_));
+		onConverse(inv->getAsciiParameter(_param0_onConverse__String_Player_), (Player*) inv->getObjectParameter());
 		break;
 	case 10:
-		onAttack(inv->getAsciiParameter(_param0_onAttack__String_));
+		onTrade(inv->getAsciiParameter(_param0_onTrade__String_));
 		break;
 	case 11:
-		onDeath(inv->getAsciiParameter(_param0_onDeath__String_));
+		onAttack(inv->getAsciiParameter(_param0_onAttack__String_));
 		break;
 	case 12:
-		resp->insertBoolean(isMissionNpc());
+		onDeath(inv->getAsciiParameter(_param0_onDeath__String_));
 		break;
 	case 13:
-		resp->insertAscii(getMissionKey());
+		resp->insertBoolean(isMissionNpc());
 		break;
 	case 14:
-		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
+		resp->insertAscii(getMissionKey());
 		break;
 	case 15:
+		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case 16:
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -227,12 +244,16 @@ Packet* ActionCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-void ActionCreatureAdapter::addAction(String& key, Action* act) {
-	return ((ActionCreatureImplementation*) impl)->addAction(key, act);
+void ActionCreatureAdapter::addActionObj(String& key, Action* act) {
+	return ((ActionCreatureImplementation*) impl)->addActionObj(key, act);
 }
 
-Action* ActionCreatureAdapter::getAction(String& key) {
-	return ((ActionCreatureImplementation*) impl)->getAction(key);
+Action* ActionCreatureAdapter::getActionObj(String& key) {
+	return ((ActionCreatureImplementation*) impl)->getActionObj(key);
+}
+
+void ActionCreatureAdapter::execActionByKey(String& key, Player* player) {
+	return ((ActionCreatureImplementation*) impl)->execActionByKey(key, player);
 }
 
 void ActionCreatureAdapter::onConverse(String& tco, Player* player) {

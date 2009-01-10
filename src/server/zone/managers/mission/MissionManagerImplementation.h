@@ -126,6 +126,7 @@ public:
 	void registerFunctions();
 	void registerGlobals();
 	void loadMissionScripts();
+	void setCreatureAttributes(ActionCreature* creature, LuaObject* creatureConfig);
 
 	// Lua functions
 	static int runMissionFile(lua_State* L);

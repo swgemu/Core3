@@ -40,37 +40,9 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
------------------------------------------------------------------------------------------------------------------------
+-- Naboo Missions
 
--- Setup:
-RunMissionFile("object.lua")
-RunMissionFile("basemission.lua")
-RunMissionFile("baseaction.lua")
+-- Deliver:
+RunMissionFile("corellia/destroy/Bugs.lua")
 
--- utils
-local sin, cos = math.sin, math.cos
-local deg, rad = math.deg, math.rad
-math.sin = function (x) return sin(rad(x)) end
-math.cos = function (x) return cos(rad(x)) end
-
--- Global Mission Table:
-MissionTable = { }
-
--- Mission Table functions:
-
-function MissionTable:addMission(obj, dbkey)
-	self[dbkey] = obj
-	AddMissionToServer(obj);
-end
-
-function getMission(dbkey)
-	return MissionTable[dbkey]
-end
-
--- Mission Scripts:
-
---- Corellia
---RunMissionFile("corellia/corellia_main.lua")
-
---- Naboo
---RunMissionFile("naboo/naboo_main.lua")
+-- Destroy:

@@ -86,6 +86,15 @@ ActionCreatureImplementation::ActionCreatureImplementation(uint64 oid, uint32 ob
 ActionCreatureImplementation::~ActionCreatureImplementation() {
 }
 
+void ActionCreatureImplementation::execActionByKey(String key, Player* player) {
+	//In some cases, player CAN be null. Make sure its checked in the action
+	Action* act = actionList.get(key);
+	if(act == NULL)
+		return;
+
+	act->execAction(player);
+}
+
 void ActionCreatureImplementation::onConverse(String tco, Player* player) {
 	if (!tco.isEmpty()) { //add to conversation keys if String tco is set
 		converseKeys+=(tco+",");
@@ -165,8 +174,6 @@ void ActionCreatureImplementation::selectConversationOption(int option, SceneObj
 
 	String newConvStr = (tScreenID + "," + optionStr);
 	player->setLastNpcConvMessStr(newConvStr);
-
-	//printf("ActionCreatureImpl selectConversationOption() - Set lastMessStr(lastScreenID,selectedOption): %s\n", player->getLastNpcConvMessStr().toCharArray());
 
 	onConverse("", player);
 }

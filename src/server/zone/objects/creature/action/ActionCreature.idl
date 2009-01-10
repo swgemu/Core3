@@ -59,8 +59,10 @@ interface ActionCreature implements Creature {
 	}
 	
 	//Action List Manip
-	void addAction(String key, Action act);
-	Action getAction(String key);
+	void addActionObj(String key, Action act);
+	Action getActionObj(String key);
+	
+	void execActionByKey(String key, Player player);
 	
 	//Triggers: If an action key is passed, the action will be called when the trigger is pulled
 	void onConverse(String tco, Player player = NULL);
