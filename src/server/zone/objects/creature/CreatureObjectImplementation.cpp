@@ -4639,9 +4639,9 @@ void CreatureObjectImplementation::onRegenerateHAM() {
 	if (isMeditating()) {
 		int meditateMod = getSkillMod("meditate");
 		float meditateBonus = 1 + ((float)meditateMod / 100);
-		healthTick *= meditateBonus;
-		actionTick *= meditateBonus;
-		mindTick *= meditateBonus;
+		healthTick *= (int)meditateBonus;
+		actionTick *= (int)meditateBonus;
+		mindTick *= (int)meditateBonus;
 		doMeditateHeals();
 	}
 
