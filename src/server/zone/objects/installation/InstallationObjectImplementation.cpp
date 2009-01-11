@@ -117,6 +117,7 @@ void InstallationObjectImplementation::init() {
 	defenderID = 0;
 
 	objectCount = 0;
+	setLotSize(1); // everything defaults to 1
 
 	structureStatus = "private";
 
@@ -177,9 +178,11 @@ void InstallationObjectImplementation::sendRadialResponseTo(Player* player, Obje
 		omr->addRadialItem(2, 128, 3, "@player_structure:management_status");
 		omr->addRadialItem(2, 131, 3, "Set Name"); //"@player_structure:set_name"
 		omr->addRadialItem(2, 133, 3, "@player_structure:management_pay");
-		if (objectSubType == TangibleObjectImplementation::HARVESTER)
+		if (objectSubType == TangibleObjectImplementation::HARVESTER ||
+				objectSubType == TangibleObjectImplementation::GENERATOR)
 			omr->addRadialItem(2, 82, 3, "@harvester:manage");
-		omr->addRadialItem(2, 77, 3, "@player_structure:management_power");
+		if(objectSubType == TangibleObjectImplementation::HARVESTER)
+			omr->addRadialItem(2, 77, 3, "@player_structure:management_power");
 	}
 
 	omr->finish();
