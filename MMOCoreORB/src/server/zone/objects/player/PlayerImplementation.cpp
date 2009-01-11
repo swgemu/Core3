@@ -5293,7 +5293,93 @@ void PlayerImplementation::displayMessageoftheDay() {
 	sendMessage(suiMessageBox->generateMessage());
 }
 
+uint64 PlayerImplementation::getAvailablePower() {
+	Inventory* inventory = getInventory();
+	uint64 power = 0;
 
+	if (inventory != NULL) {
+		for (int i = 0; i < inventory->objectsSize(); i++) {
+			TangibleObject* tano = (TangibleObject*) inventory->getObject(i);
+
+			if (tano->isResource()) {
+				ResourceContainer* rcno = (ResourceContainer*)tano;
+
+
+				int PE = rcno->getPotentialEnergy();
+				if(PE > 500)
+				{
+					power += (unsigned long long) ( (PE  * 1.0) / 500.0 * (rcno->getContents() * 1.0) );
+				} else
+				{
+					power += rcno->getContents();
+				}
+			}
+		}
+	}
+
+	return power;
+}
+
+void PlayerImplementation::removePower(uint64 power) {
+	Inventory* inventory = getInventory();
+
+	uint64 containerPower = 0;
+
+	if (inventory != NULL && power > 0) {
+		for (int i = 0; i < inventory->objectsSize(); i++ && power > 0) {
+			TangibleObject* tano = (TangibleObject*) inventory->getObject(i);
+
+			if (tano->isResource()) {
+				ResourceContainer* rcno = (ResourceContainer*)tano;
+
+				int PE = rcno->getPotentialEnergy();
+				if(PE > 500)
+				{
+					containerPower = (unsigned long long) ( (PE  * 1.0) / 500.0 * (rcno->getContents() * 1.0) );
+				} else
+				{
+					containerPower = rcno->getContents();
+				}
+
+
+				if(containerPower > power) {
+					// remove
+
+					uint64 consumedUnits = (unsigned long long) ( (power * 1.0) / ( (containerPower * 1.0) / rcno->getContents() ) );
+					power = 0; // zero it down
+
+					rcno->setContents(rcno->getContents() - consumedUnits);
+
+					// Update the ResourceContainer
+					rcno->sendDeltas(_this);
+					// Flag ResourceContainer for saving changes
+					rcno->setUpdated(true);
+
+				} else {
+
+					power -= containerPower;
+					rcno->sendDestroyTo(_this);
+
+					Zone* zone = getZone();
+
+					if (zone != NULL) {
+						ZoneServer* zoneServer = zone->getZoneServer();
+
+						ItemManager* itemManager;
+						if (zoneServer != NULL && ((itemManager = zoneServer->getItemManager()) != NULL)) {
+							removeInventoryItem(rcno->getObjectID());
+
+							itemManager->deletePlayerItem(_this, rcno, false);
+
+							rcno->finalize();
+						}
+					}
+				}
+
+			}
+		}
+	}
+}
 
 
 /// Sending of Messages
@@ -6056,3 +6142,5 @@ void PlayerImplementation::onNoValidInsurables() {
 void PlayerImplementation::onBankTipSuccessful() {
 	sendSystemMessage("base_player", "wire_pass_self"); //Your /tip transaction was successfully completed.
 }
+
+

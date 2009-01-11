@@ -78,11 +78,15 @@ public:
 		try {
 			player->wlock();
 
+			int lots = player->getLotsRemaining();
+			StringBuffer bodyMsg;
+
 			String mailSender = "Structure Builder";
 			String charNameSender = player->getFirstName();
 
 			UnicodeString subjectSender("Construction Complete");
-			UnicodeString bodySender("Construction of your " + inso->getName().toString() + " is now complete.  You have xx lots remaining.");
+			bodyMsg << "Construction of your " << inso->getName().toString() << " is now complete.  You have " << player->getLotsRemaining() << " lots remaining.";
+			UnicodeString bodySender(bodyMsg.toString());
 
 			player->sendMail(mailSender, subjectSender, bodySender, charNameSender);
 

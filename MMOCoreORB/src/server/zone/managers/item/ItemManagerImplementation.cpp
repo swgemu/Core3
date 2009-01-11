@@ -2703,7 +2703,7 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 			}
 
 			item->initializePosition(0,0,0);
-			item->setDirection(0,0,1,0);
+			item->setDirection(0,0,1,0); // TODO: Verify oY should be 1 and not oW
 
 			item->setAttributes(attributes);
 			item->parseItemAttributes();

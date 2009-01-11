@@ -1967,6 +1967,8 @@ public:
 	void removeOldSuiBoxIfPresent(const int suiWindowType);
 	void displayMessageoftheDay();
 
+	uint64 getAvailablePower();
+	void removePower(uint64 power);
 
 	inline Vector<TangibleObject*> getInsurableItems() {
 		Vector<TangibleObject*> insurableItems;

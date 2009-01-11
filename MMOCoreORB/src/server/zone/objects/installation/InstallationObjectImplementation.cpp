@@ -201,7 +201,7 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 			willRedeed = "\\#32CD32YES\\#";
 
 			sscond << dec << "- CONDITION: \\#32CD32" << maxCondition - conditionDamage << "/" << maxCondition << "\\#";
-			ssmain << dec << "- MAINTENANCE: \\#32CD32" << static_cast<int>(getSurplusMaintenance()) << "/" << (getMaintenanceRate() * 100) << "\\#";
+			ssmain << dec << "- MAINTENANCE: \\#32CD32" << static_cast<int>(getSurplusMaintenance()) << "/" << static_cast<int>((getMaintenanceRate() * 100)) << "\\#";
 
 		}
 		else {
@@ -212,13 +212,13 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 			if ((conditionDamage == 0)) {
 
 				sscond << dec << "- CONDITION: \\#32CD32"<< maxCondition - conditionDamage << "/" << maxCondition << "\\#";
-				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << (getMaintenanceRate() * 100) << "\\#";
+				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << static_cast<int>((getMaintenanceRate() * 100)) << "\\#";
 
 			}
 			else {
 
 				sscond << dec << "- CONDITION: \\#FF6347" << maxCondition - conditionDamage << "/" << maxCondition << "\\#";
-				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << (getMaintenanceRate() * 100) << "\\#";
+				ssmain << dec << "- MAINTENANCE: \\#FF6347" << static_cast<int>(getSurplusMaintenance()) << "/" << static_cast<int>((getMaintenanceRate() * 100)) << "\\#";
 
 			}
 		}
@@ -308,6 +308,10 @@ void InstallationObjectImplementation::handleMakeDeed(Player* player) {
 		deed->sendTo(player);
 	}
 
+	int lots = player->getLotsRemaining();
+	lots += getLotSize();
+	player->setLotsRemaining(lots);
+
 	//player->clearTarget();
 
 	Zone *zn = getZone();
@@ -371,7 +375,7 @@ void InstallationObjectImplementation::handleStructureManageMaintenance(Player* 
 		maintenanceBox->setPromptTitle("Select Amount");
 
 		sstext << "Select the total amount you would like to pay the existing"
-			   <<" maintenace pool.\n\nCurrent maintanence pool: " << getSurplusMaintenance() << "cr.";
+			   <<" maintenace pool.\n\nCurrent maintanence pool: " << (int)getSurplusMaintenance() << "cr.";
 		maintenanceBox->setPromptText(sstext.toString());
 
 		sscash << player->getCashCredits();
@@ -399,11 +403,11 @@ void InstallationObjectImplementation::handleStructureAddEnergy(Player* player) 
 		energyBox->setPromptTitle("Add Power");
 
 		sstext	<< "Select the amount of power you would like to deposit."
-				<<"\n\nCurrent power Value: " << getSurplusPower();
+				<<"\n\nCurrent power Value: " << (int)getSurplusPower();
 
 		energyBox->setPromptText(sstext.toString());
 
-		ssTotalEnergy << "100";
+		ssTotalEnergy << player->getAvailablePower();
 
 		energyBox->addFrom("@player_structure:total_energy", ssTotalEnergy.toString(), ssTotalEnergy.toString(), "1");
 		energyBox->addTo("@player_structure:to_deposit", "0", "0", "1");

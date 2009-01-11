@@ -158,6 +158,18 @@ String& DeedObject::getDefaultTemplateName(int crc) {
 		return ((DeedObjectImplementation*) _impl)->getDefaultTemplateName(crc);
 }
 
+int DeedObject::getLotSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->getLotSize();
+}
+
 /*
  *	DeedObjectAdapter
  */
@@ -195,6 +207,9 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 14:
 		resp->insertAscii(getDefaultTemplateName(inv->getSignedIntParameter()));
+		break;
+	case 15:
+		resp->insertSignedInt(getLotSize());
 		break;
 	default:
 		return NULL;
@@ -237,6 +252,10 @@ int DeedObjectAdapter::getHarvesterType() {
 
 String& DeedObjectAdapter::getDefaultTemplateName(int crc) {
 	return ((DeedObjectImplementation*) impl)->getDefaultTemplateName(crc);
+}
+
+int DeedObjectAdapter::getLotSize() {
+	return ((DeedObjectImplementation*) impl)->getLotSize();
 }
 
 /*

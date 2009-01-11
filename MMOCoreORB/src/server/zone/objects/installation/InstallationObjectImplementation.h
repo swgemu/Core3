@@ -13,7 +13,7 @@ class InstallationObjectImplementation : public InstallationObjectServant {
 protected:
 	bool operating;
 
-	int installationType, destroyCode;
+	int installationType, destroyCode, lotSize;
 	String file, temp, owner, structureStatus;
 
 	uint64 ownerID;
@@ -128,6 +128,14 @@ public:
 	}
 	inline void setStatusPrivate() {
 		structureStatus = "private";
+	}
+
+
+	inline int getLotSize() {
+		return lotSize;
+	}
+	inline void setLotSize(int size) {
+		lotSize = size;
 	}
 
 	// Object Handlers
