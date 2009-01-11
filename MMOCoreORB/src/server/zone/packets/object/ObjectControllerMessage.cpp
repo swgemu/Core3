@@ -509,7 +509,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		break;
 	case 0x18726ca1: // equip, change armor
 		target = pack->parseLong();
-		player->changeArmor(target, false);
+		player->changeArmor(target, true);
 		break;
 	case (0xBD8D02AF):
 		if (player->isMounted()) {
@@ -3899,15 +3899,15 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 		TangibleObject* targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
 		if (targetTanoObject != NULL) {
 			if(targetTanoObject->isWeapon()) {
-				player->changeWeapon(target, true);
+				player->unequipItem(targetTanoObject);
 				//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping weapon.\n";
 			}
 			else if(targetTanoObject->isArmor()) {
-				player->changeArmor(target, false);
+				player->unequipItem(targetTanoObject);
 				//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
 			}
 			else if(targetTanoObject->isClothing()) {
-				player->changeCloth(target);
+				player->unequipItem(targetTanoObject);
 				//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping clothing.\n";
 			}
 			else
