@@ -76,5 +76,7 @@ interface DeedObject implements TangibleObject {
 	int getHarvesterType();
 	
 	String getDefaultTemplateName(int crc);
+	
+	int getLotSize();
 }
 

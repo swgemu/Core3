@@ -776,7 +776,6 @@ void PlanetManagerImplementation::loadCraftingStations() {
 
 			float oX = result->getFloat(4);
 			float oY = result->getFloat(5);
-
 			float oZ = result->getFloat(6);
 			float oW = result->getFloat(7);
 

@@ -714,6 +714,9 @@ interface Player implements CreatureObject {
 	
 	Armor getPlayerArmor (int location);
 	
+	unsigned long getAvailablePower();
+	void removePower(unsigned long power);
+
 	//Sending of Messages
 	void sendIncapacitationTimer(unsigned int seconds, boolean doRecovery = true);
 	void sendBankTipConfirm(Player recipient, unsigned int amount);

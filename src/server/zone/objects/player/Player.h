@@ -853,6 +853,10 @@ public:
 
 	Armor* getPlayerArmor(int location);
 
+	unsigned long long getAvailablePower();
+
+	void removePower(unsigned long long power);
+
 	void sendIncapacitationTimer(unsigned int seconds, bool doRecovery = true);
 
 	void sendBankTipConfirm(Player* recipient, unsigned int amount);
@@ -1767,6 +1771,10 @@ public:
 	void unequipItem(TangibleObject* item);
 
 	Armor* getPlayerArmor(int location);
+
+	unsigned long long getAvailablePower();
+
+	void removePower(unsigned long long power);
 
 	void sendIncapacitationTimer(unsigned int seconds, bool doRecovery);
 

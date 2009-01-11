@@ -539,12 +539,17 @@ void SuiManager::handleAddEnergy(uint32 boxID, Player* player,
 
 			InstallationObject * inso = (InstallationObject *) scno;
 
+			StringBuffer msg;
+
 			if (inso!= NULL)	{
 				// player->getEnergy() - atoi(newEnergyVal.toCharArray())
-				uint energy = 100 - atoi(newEnergyVal.toCharArray());
+				uint energy = player->getAvailablePower() - atoi(newEnergyVal.toCharArray());
 				//inso->getSurplusPower()
+				msg << "SuiManager::handleAddEnergy(" << boxID << ", player, " << cancel << ", " << newEnergyVal << ") : atoi: " << atoi(newEnergyVal.toCharArray()) << " / available: " << player->getAvailablePower() << endl;
+				info(msg.toString());
 
 				inso->addPower(energy);
+				player->removePower(energy);
 				//player->removeEnergy(energy);
 
 				StringBuffer report;

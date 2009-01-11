@@ -55,6 +55,10 @@ public:
 
 	int getDestroyCode();
 
+	int getLotSize();
+
+	void setLotSize(int size);
+
 	unsigned int getNewDefenderUpdateCounter(unsigned int cnt);
 
 	void addMaintenance(unsigned long long maint);
@@ -156,6 +160,10 @@ public:
 	unsigned int getDeedCRC();
 
 	int getDestroyCode();
+
+	int getLotSize();
+
+	void setLotSize(int size);
 
 	unsigned int getNewDefenderUpdateCounter(unsigned int cnt);
 

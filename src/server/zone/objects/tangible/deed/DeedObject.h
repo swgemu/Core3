@@ -45,6 +45,8 @@ public:
 
 	String& getDefaultTemplateName(int crc);
 
+	int getLotSize();
+
 protected:
 	DeedObject(DummyConstructorParameter* param);
 
@@ -85,6 +87,8 @@ public:
 	int getHarvesterType();
 
 	String& getDefaultTemplateName(int crc);
+
+	int getLotSize();
 
 protected:
 	String _param0_setTargetFile__String_;
