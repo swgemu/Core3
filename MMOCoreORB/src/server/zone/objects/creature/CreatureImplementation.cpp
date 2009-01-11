@@ -1152,6 +1152,8 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 				aggroedCreature = (CreatureObject *) scno;
 
+				showFlyText("npc_reaction", "alert", 0xFF, 0, 0);
+
 				if (isQueued())
 					creatureManager->dequeueActivity(this);
 
@@ -1200,8 +1202,13 @@ bool CreatureImplementation::shouldAgro(SceneObject * target) {
 	if (target->isNonPlayerCreature()) {
 		Creature * npc = (Creature *) target;
 
-		if (npc->isMount() && this->isAgressive())
-			return true;
+		if (npc->isMount() && this->isAgressive()) {
+
+			if(System::random(10) == 7)
+				return true;
+			else
+				return false;
+		}
 	}
 
 	if (this->hatesFaction(creature->getFaction())) {
@@ -1464,7 +1471,7 @@ bool CreatureImplementation::doMovement() {
 	float dist = sqrt(dx * dx + dy * dy);
 
 	try {
-		if (aggroedCreature != NULL && (dist > 250 || getZoneID()
+		if (aggroedCreature != NULL && (dist > 100 || getZoneID()
 				!= aggroedCreature->getZoneID())) {
 			deaggro();
 			return false;
