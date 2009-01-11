@@ -203,6 +203,20 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 	try {
 		zone->lock();
 
+		int weaponRange;
+		if (creature->getWeapon() != NULL)
+			weaponRange = creature->getWeapon()->getMaxRange();
+		else
+			weaponRange = 5;
+
+		int coneRange = weaponRange;
+		if (skill->getRange() != 0)
+			coneRange = (int)skill->getRange();
+
+		int areaRange = weaponRange;
+		if (skill->getRange() != 0)
+			areaRange = (int)skill->getRange();
+
 		for (int i = 0; i < creature->inRangeObjectCount(); i++) {
 			// Is this correct?
 			SceneObject* object = (SceneObject*) (((SceneObjectImplementation*) creature->getInRangeObject(i))->_this);
@@ -219,7 +233,7 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 			if (!creature->isPlayer() && !object->isPlayer())
 				continue;
 
-			CreatureObject* creatureTarget = (CreatureObject*) target;
+			CreatureObject* creatureTarget = (CreatureObject*) object;
 
 			if (creatureTarget->isIncapacitated() || creatureTarget->isDead())
 				continue;
@@ -229,39 +243,25 @@ void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* targ
 					continue;
 
 			// Check they are in the same cell
-			if (creature->getParent() != target->getParent())
+			if (creature->getParent() != object->getParent())
 				continue;
 
-			int weaponRange;
-			if (creature->getWeapon() != NULL)
-				weaponRange = creature->getWeapon()->getMaxRange();
-			else
-				weaponRange = 5;
-
-			int coneRange = weaponRange;
-			if (skill->getRange() != 0)
-				coneRange = (int)skill->getRange();
-
-			int areaRange = weaponRange;
-			if (skill->getRange() != 0)
-				areaRange = (int)skill->getRange();
-
 			if (skill->isCone()) {
-				if (!(creature->isInRange(target, coneRange)))
+				if (!(creature->isInRange(object, coneRange)))
 					continue;
 
-				float angle = getConeAngle(target, CreatureVectorX, CreatureVectorY, DirectionVectorX, DirectionVectorY);
+				float angle = getConeAngle(object, CreatureVectorX, CreatureVectorY, DirectionVectorX, DirectionVectorY);
 				float coneAngle = skill->getConeAngle() / 2;
 
 				if (angle > coneAngle || angle < -coneAngle)
 					continue;
 
-			} else if (!(creature->isInRange(target, areaRange)))
+			} else if (!(creature->isInRange(object, areaRange)))
 				continue;
 
 			zone->unlock();
 
-			doAttackAction(creature, target, (AttackTargetSkill*)skill, actionModifier, NULL);
+			doAttackAction(creature, object, (AttackTargetSkill*)skill, actionModifier, NULL);
 
 			zone->lock();
 		}
