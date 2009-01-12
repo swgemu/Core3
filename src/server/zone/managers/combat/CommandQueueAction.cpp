@@ -257,7 +257,7 @@ bool CommandQueueAction::checkHealSkill() {
 					target = creature;
 				else if (!player->isOvert() && targetPlayer->isOvert())
 					target = creature;
-			} else if (target->isNonPlayerCreature() && !skill->isDiagnoseSkill())
+			} else if (target->isNonPlayerCreature() && !skill->isDiagnoseSkill() && !skill->isDragSkill())
 				target = creature;
 
 			if (!creature->isInRange(target->getPositionX(), target->getPositionY(), skill->getRange())) {
@@ -266,7 +266,7 @@ bool CommandQueueAction::checkHealSkill() {
 				return false;
 			}
 
-			if (targetObject->isDead() && !skill->isReviveSkill()) {
+			if (targetObject->isDead() && !skill->isReviveSkill() && !skill->isDragSkill()) {
 				clearError(3);
 				targetObject->unlock();
 				return false;

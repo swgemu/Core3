@@ -119,6 +119,14 @@ public:
 
 	void reinsertToZone(Zone* zone);
 
+	void increaseMovementCounter();
+
+	void updatePlayerPosition(bool doLightUpdate);
+
+	void setRadialDirection(float radangle);
+
+	void drag(Player* targetPlayer, float range, float maxMovement, bool needsConsent = true, bool canDragLiveTarget = false);
+
 	void updateZone(bool lightUpdate = false);
 
 	void updateZoneWithParent(unsigned long long cell, bool lightUpdate = false);
@@ -1037,6 +1045,14 @@ public:
 	void insertToZone(Zone* zone);
 
 	void reinsertToZone(Zone* zone);
+
+	void increaseMovementCounter();
+
+	void updatePlayerPosition(bool doLightUpdate);
+
+	void setRadialDirection(float radangle);
+
+	void drag(Player* targetPlayer, float range, float maxMovement, bool needsConsent, bool canDragLiveTarget);
 
 	void updateZone(bool lightUpdate);
 

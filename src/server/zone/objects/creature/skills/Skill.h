@@ -82,6 +82,7 @@ public:
 	static const int CAMO = 11;
 	static const int THROW = 12;
 	static const int FORAGE = 13;
+	static const int DRAG = 14;
 
 	static const int TARGET = 1;
 	static const int SELF = 2;
@@ -142,7 +143,7 @@ public:
 	}
 
 	inline bool isHealSkill() {
-		return type == HEAL || type == DIAGNOSE || type == REVIVE;
+		return type == HEAL || type == DIAGNOSE || type == REVIVE || type == DRAG;
 	}
 
 	inline bool isEnhanceSkill() {
@@ -175,6 +176,10 @@ public:
 
 	inline bool isReviveSkill() {
 		return type == REVIVE;
+	}
+
+	inline bool isDragSkill() {
+		return type == DRAG;
 	}
 
 	inline uint32 getNameCRC() {

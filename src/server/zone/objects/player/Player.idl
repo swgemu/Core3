@@ -135,6 +135,12 @@ interface Player implements CreatureObject {
 	void insertToZone(Zone zone);
 	void reinsertToZone(Zone zone);
 
+    void increaseMovementCounter();
+    void updatePlayerPosition(boolean doLightUpdate);
+    void setRadialDirection(float radangle);
+    
+    void drag(Player targetPlayer, float range, float maxMovement, boolean needsConsent = true, boolean canDragLiveTarget = false);
+    
 	//void lightUpdateZone();
 	void updateZone(boolean lightUpdate = false);
 

@@ -542,6 +542,26 @@ public:
 
 	void bounceBack();
 
+	void drag(Player* targetPlayer, float maxRange, float maxMovement, bool needsConsent = true, bool canDragLiveTarget = false);
+	/**
+	* drag will move a target player closer to the player using it.
+	* \param targetPlayer Player that will be dragged.
+	* \param maxRange The max distance away from the target the player can be for drag to work.
+	* \param maxMovement The max amount to move the target toward the dragger per use.
+	* \param needsConsent Determines if the player needs consent from the target. Default is true.
+	* \param canDragLiveTarget Determines if the player can drag a target that is not dead or incapacitated. Default is false.
+	**/
+
+	Coordinate* getCoordinateBetween(Coordinate* position1, Coordinate* position2, float distanceFromPosition1);
+	/**
+	* getCoordinateBetween returns the approximate coordinate of a position between position 1 and 2, using distance from position 1.
+	* It determines the distance from an overhead (2D) view and then sets the new height value from the height map.
+	* \param position1 Coordinate of the first position.
+	* \param position2 Coordinate of the second position.
+	* \param distanceFromPosition1 Distance from the first coordinate to determine the location of.
+	* \return Coordinate* The coordinates of the position between position 1 and 2.
+	**/
+
 	void notifySceneReady();
 
 	void sendSystemMessage(const String& message);
