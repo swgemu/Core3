@@ -85,8 +85,10 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddReviveTargetSkill", AddReviveTargetSkill);
 	lua_register(getLuaState(), "AddFirstAidTargetSkill", AddFirstAidTargetSkill);
 	lua_register(getLuaState(), "AddTendHealTargetSkill", AddTendHealTargetSkill);
-	lua_register(getLuaState(), "AddMindHealTargetSkill", AddMindHealTargetSkill);
 	lua_register(getLuaState(), "AddQuickHealTargetSkill", AddQuickHealTargetSkill);
+	lua_register(getLuaState(), "AddMindHealTargetSkill", AddMindHealTargetSkill);
+	lua_register(getLuaState(), "AddDragTargetSkill", AddDragTargetSkill);
+
 	lua_register(getLuaState(), "AddDeBuffAttackTargetSkill", AddDeBuffAttackTargetSkill);
 	lua_register(getLuaState(), "AddEnhanceSelfSkill", AddEnhanceSelfSkill);
 	lua_register(getLuaState(), "AddDotPoolAttackTargetSkill", AddDotPoolAttackTargetSkill);
@@ -1103,6 +1105,33 @@ int ScriptAttacksManager::AddMindHealTargetSkill(lua_State* L) {
 	heal->setMindHealed(mindHealed);
 
 	CombatActions->put(heal);
+	return 0;
+}
+
+int ScriptAttacksManager::AddDragTargetSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	if (!skill.isValidTable())
+		return 0;
+
+	DragTargetSkill* drag;
+
+	String skillname = skill.getStringField("skillname");
+	String effect = skill.getStringField("effect");
+	float maxRange = skill.getFloatField("maxRange");
+	float maxMovement = skill.getFloatField("maxMovement");
+	float speed = skill.getFloatField("speed");
+	bool needsConsent = skill.getIntField("needsConsent");
+
+	drag = new DragTargetSkill(skillname, effect.toCharArray(), server);
+
+	drag->setMaxRange(maxRange);
+	drag->setMaxMovement(maxMovement);
+	drag->setSpeed(speed);
+	drag->setNeedsConsent(needsConsent);
+	drag->setRange(130.0f);
+
+	CombatActions->put(drag);
 	return 0;
 }
 

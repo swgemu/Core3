@@ -350,6 +350,10 @@ void GameCommandHandler::init() {
 			"Sets the multiplier for serverwide experience",
 			"Usage: @scaleXP <scaler>",
 			&scaleXP);
+	gmCommands->addCommand("drag", DEVELOPER,
+			"Drags a dead or incapacitated player toward yourself.",
+			"Usage: @drag",
+			&drag);
 	/* Disabled Commands
 
 	gmCommands->addCommand("toggleCombat", DEVELOPER,
@@ -3299,4 +3303,28 @@ void GameCommandHandler::spawnAA(StringTokenizer tokenizer, Player* player) {
 	TestActiveArea * testArea = new TestActiveArea(x,y,z,range);
 
 	planetManager->spawnActiveArea(testArea);
+}
+
+void GameCommandHandler::drag(StringTokenizer tokenizer, Player* player) {
+	SceneObject* obj = player->getTarget();
+	Player* targetPlayer;
+
+	if (obj == NULL) {
+		player->sendSystemMessage("healing_response", "healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
+		return;
+	}
+
+	if (obj->isPlayer()) {
+		targetPlayer = (Player*)obj;
+
+		if (targetPlayer == player) {
+			player->sendSystemMessage("healing_response", "healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
+			return;
+		} else
+			player->drag(targetPlayer, 128.0f, 20.0f, false, true);
+
+	} else {
+		player->sendSystemMessage("healing_response", "healing_response_a6"); //"You may only drag players!"
+		return;
+	}
 }

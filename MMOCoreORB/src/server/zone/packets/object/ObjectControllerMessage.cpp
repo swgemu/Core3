@@ -433,6 +433,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	bool canPowerboost;
 
 	switch (actionCRC) {
+
 	case (0x70177586): //Open Container
 		handleContainerOpen(player, pack);
 		break;
@@ -907,6 +908,8 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		case (0xDF49EA58): //extinguishfire
 		case (0xC9759876): //reviveplayer <targetname>
 		case (0xDC7CF134): //diagnose
+		case (0x273A06DA): //dragincapacitatedplayer <targetname>
+
 			option = UnicodeString("");
 			pack->parseUnicode(option);
 			actionModifier = option.toString();

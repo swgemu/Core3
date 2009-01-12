@@ -135,3 +135,14 @@ DiagnoseTargetSkill = {
 }
  
 AddDiagnoseTargetSkill(DiagnoseTargetSkill);
+
+DragTargetSkill = {
+	skillname = "dragincapacitatedplayer",
+	effect = "",
+	maxRange = 20.0,
+	maxMovement = 5.0,
+	speed = 0.0,
+	needsConsent = 1
+}
+ 
+AddDragTargetSkill(DragTargetSkill);

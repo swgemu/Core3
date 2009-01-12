@@ -1722,6 +1722,116 @@ void PlayerImplementation::bounceBack() {
 	}
 }
 
+void PlayerImplementation::drag(Player* targetPlayer, float maxRange, float maxMovement, bool needsConsent, bool canDragLiveTarget) {
+	if (targetPlayer == NULL) {
+		System::out << "target player is null.\n";
+		return;
+	}
+
+	if (targetPlayer == _this) {
+		sendSystemMessage("healing_response", "healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
+		return;
+	}
+
+	//Check minimum range.
+	if (isInRange(targetPlayer, 0.01f)) {
+		return;
+	}
+
+	//Check maximum range.
+	if (!isInRange(targetPlayer, maxRange)) {
+		StfParameter* rangeParam = new StfParameter;
+		rangeParam->addDI((int)maxRange);
+		sendSystemMessage("healing_response", "healing_response_b1", rangeParam); //"Your maximum drag range is %DI meters! Try getting closer."
+		delete rangeParam;
+		return;
+	}
+
+	//Check if target is dead or incapacitated.
+	if (!canDragLiveTarget) {
+		if (!targetPlayer->isDead() && !targetPlayer->isIncapacitated()) {
+			sendSystemMessage("healing_response", "healing_response_a7"); //"You may only drag incapacitated or dying players!"
+			return;
+		}
+	}
+
+	//Check for consent to drag.
+	if (needsConsent) {
+		bool hasConsentFrom = targetPlayer->hasConsent(getFirstName());
+		bool isGroupedWith = isInGroupWith((CreatureObject*)targetPlayer);
+		if (!hasConsentFrom && !isGroupedWith) {
+			sendSystemMessage("healing_response", "healing_response_b4"); //"You must be grouped with or have consent from your drag target!"
+			return;
+		}
+	}
+
+	//Collect locations of the dragger and the target player.
+	Coordinate* dragger = new Coordinate(getPositionX(), getPositionZ(), getPositionY());
+	Coordinate* target = new Coordinate(targetPlayer->getPositionX(), targetPlayer->getPositionZ(), targetPlayer->getPositionY());
+
+	//Check for height being too far above or below.
+	float heightDifference = dragger->getPositionZ() - target->getPositionZ();
+	if (abs((int)heightDifference) > maxRange) {
+		if (heightDifference > 0) {
+			sendSystemMessage("healing_response", "healing_response_b2"); //"Your target is too far below you to drag"
+			return;
+		} else {
+			sendSystemMessage("healing_response", "healing_response_b3"); //"Your target is too far above you to drag."
+			return;
+		}
+	}
+
+	//Set the proper orientation of the target (feet toward the dragger).
+	float dx = dragger->getPositionX() - target->getPositionX();
+	float dy = dragger->getPositionY() - target->getPositionY();
+	float directionangle = atan2(dy, dx);
+	float radangle = M_PI / 2 - directionangle;
+	targetPlayer->setRadialDirection(radangle);
+
+	//Set the new location of the target player.
+	Coordinate* newPosition = getCoordinateBetween(target, dragger, maxMovement);
+	targetPlayer->setPosition(newPosition->getPositionX(), getPositionZ(), newPosition->getPositionY()); //TODO: Use newPosition for Z when heightmaps are done.
+	targetPlayer->increaseMovementCounter();
+	targetPlayer->updatePlayerPosition(false); //Updates everyone except targetPlayer of their movement.
+	targetPlayer->bounceBack(); //Updates targetPlayer with the new location.
+
+	//Visuals.
+	targetPlayer->showFlyText("base_player", "fly_drag", 255, 0, 0);
+
+	StfParameter* targetParam = new StfParameter;
+	targetParam->addTT(targetPlayer->getObjectID());
+	sendSystemMessage("healing_response", "healing_response_b5", targetParam); //"Attempting to drag %TT to your location..."
+
+	delete targetParam;
+	delete dragger;
+	delete target;
+	delete newPosition;
+}
+
+Coordinate* PlayerImplementation::getCoordinateBetween(Coordinate* position1, Coordinate* position2, float distanceFromPosition1) {
+	Coordinate* newPosition = new Coordinate;
+
+	float dx = position2->getPositionX() - position1->getPositionX();
+	float dy = position2->getPositionY() - position1->getPositionY();
+
+	float distance = sqrt((dx * dx) + (dy * dy));
+
+	if (distanceFromPosition1 == 0 || distance == 0) {
+		newPosition->setPosition(position1->getPositionX(), position1->getPositionZ(), position1->getPositionY());
+		return newPosition;
+	} else if (distance < distanceFromPosition1) {
+		newPosition->setPosition(position2->getPositionX(), position2->getPositionZ(), position2->getPositionY());
+		return newPosition;
+	}
+
+	float newPositionX = position1->getPositionX() + (distanceFromPosition1 * (dx / distance));
+	float newPositionY = position1->getPositionY() + (distanceFromPosition1 * (dy / distance));
+	float newPositionZ = zone->getHeight(newPositionX, newPositionY);
+	newPosition->setPosition(newPositionX, newPositionZ, newPositionY);
+
+	return newPosition;
+}
+
 void PlayerImplementation::notifySceneReady() {
 	PlayerObject* playerObject = getPlayerObject();
 
