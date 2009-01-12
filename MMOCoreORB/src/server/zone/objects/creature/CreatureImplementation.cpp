@@ -1152,7 +1152,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 
 				aggroedCreature = (CreatureObject *) scno;
 
-				showFlyText("npc_reaction", "alert", 0xFF, 0, 0);
+				//((CreatureObject*)_this)->showFlyText("npc_reaction/flytext", "alert", 0xFF, 0, 0);
 
 				if (isQueued())
 					creatureManager->dequeueActivity(this);
