@@ -42,54 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SKILLS_H_
-#define SKILLS_H_
+#ifndef SYSTEMGROUPMESSAGESKILL_H_
+#define SYSTEMGROUPMESSAGESKILL_H_
 
-#include "target/attack/RandomPoolAttackTargetSkill.h"
-#include "target/attack/DirectPoolAttackTargetSkill.h"
-#include "target/attack/DotPoolAttackTargetSkill.h"
-#include "target/attack/DeBuffAttackTargetSkill.h"
-#include "target/attack/WoundsDirectPoolAttackTargetSkill.h"
-#include "target/attack/ForcePowersPoolAttackTargetSkill.h"
-#include "target/attack/WeaponlessDotPoolAttackSkill.h"
-#include "target/HealTargetSkill.h"
-#include "target/heal/ForceHealTargetSkill.h"
+#include "../GroupSkill.h"
 
-#include "target/HealEnhanceTargetSkill.h"
-#include "target/HealDamageTargetSkill.h"
-#include "target/HealStateTargetSkill.h"
-#include "target/HealWoundTargetSkill.h"
-#include "target/CureTargetSkill.h"
-#include "target/DiagnoseTargetSkill.h"
-#include "target/ReviveTargetSkill.h"
-#include "target/FirstAidTargetSkill.h"
-#include "target/QuickHealTargetSkill.h"
-#include "target/MindHealTargetSkill.h"
-#include "target/TendHealTargetSkill.h"
-#include "target/DragTargetSkill.h"
+class SystemGroupMessageSkill : public GroupSkill {
+protected:
 
-#include "self/HealSelfSkill.h"
-#include "self/force/ForceHealSelfSkill.h"
-#include "self/force/ForceRunSelfSkill.h"
-#include "self/EnhanceSelfSkill.h"
-#include "self/ChangePostureSelfSkill.h"
-#include "self/MeditateSelfSkill.h"
-#include "self/PowerboostSelfSkill.h"
+public:
+	SystemGroupMessageSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
 
-#include "self/EntertainSelfSkill.h"
-#include "self/EntertainEffectSelfSkill.h"
-#include "self/DanceEffectSelfSkill.h"
-#include "self/MusicEffectSelfSkill.h"
+	}
 
-#include "self/MaskScentSelfSkill.h"
-#include "self/ForageSelfSkill.h"
-#include "target/ConcealSkill.h"
-#include "CamoSkill.h"
-#include "PassiveSkill.h"
-//#include "target/attack/ThrowRandomPoolAttackTargetSkill.h"
-//#include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
+	void doSkill(CreatureObject* creature, const String& modifier, bool doAnimation = true) {
+		// this skill is handled in objectcontrollermessage
+	}
+};
 
-#include "GroupSkill.h"
-#include "group/SystemGroupMessageSkill.h"
-
-#endif /*SKILLS_H_*/
+#endif /*SYSTEMGROUPMESSAGESKILL_H_*/

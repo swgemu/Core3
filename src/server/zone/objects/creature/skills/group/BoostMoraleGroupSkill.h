@@ -42,216 +42,26 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef ENHANCESELFSKILL_H_
-#define ENHANCESELFSKILL_H_
+#ifndef BOOSTMORALEGROUPSKILL_H_
+#define BOOSTMORALEGROUPSKILL_H_
 
 #include "../SelfSkill.h"
 
-class EnhanceSelfSkill : public SelfSkill {
+class BoostMoraleGroupSkill : public GroupSkill {
 protected:
-	float speed;
-
-	float duration;
-
-	int healthBonus;
-	int actionBonus;
-	int mindBonus;
-
-	int accuracyBonus;
-	int defenseBonus;
-
-	int damageBonus;
-	float speedBonus;
-
-	String startFlyText;
-	String finishFlyText;
-
-	int state;
-
-	int requiredState;
 
 public:
-	EnhanceSelfSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : SelfSkill(Name, effect, ENHANCE, serv) {
-		duration = 0;
+	BoostMoraleSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
 
-		healthBonus = 0;
-		actionBonus = 0;
-		mindBonus = 0;
-
-		damageBonus = 0;
-		accuracyBonus = 0;
-
-		defenseBonus = 0;
-		speedBonus = 0.f;
-
-		speed = 0.f;
-
-		state = 0;
-
-		requiredState = 0;
 	}
 
 	void doSkill(CreatureObject* creature, String& modifier) {
-		calculateEnhancements(creature);
-		doAnimations(creature);
 
-		creature->addQueuedState(nameCRC);
 	}
 
 	void doAnimations(CreatureObject* creature) {
-		if (!startFlyText.isEmpty())
-			creature->showFlyText("combat_effects", startFlyText , 0, 255, 0);
 
-		if (!effectName.isEmpty())
-			creature->playEffect(effectName, "");
 	}
-
-	void finish(CreatureObject* creature) {
-		if (!creature->removeQueuedState(nameCRC))
-			return;
-
-		removeEnhancements(creature);
-
-		if (!finishFlyText.isEmpty())
-			creature->showFlyText("combat_effects", finishFlyText, 255, 0, 0);
-	}
-
-	float calculateSpeed(CreatureObject* creature) {
-		return speed;
-	}
-
-	void calculateEnhancements(CreatureObject* creature) {
-		if (healthBonus != 0)
-			creature->changeMaxHealthBar(healthBonus);
-
-		if (actionBonus != 0)
-			creature->changeMaxActionBar(actionBonus);
-
-		if (mindBonus != 0)
-			creature->changeMaxMindBar(mindBonus);
-
-		if (accuracyBonus != 0)
-			creature->setAccuracy(creature->getAccuracy() + accuracyBonus);
-
-		if (damageBonus != 0)
-			creature->setDamageBonus(creature->getDamageBonus() + damageBonus);
-
-		if (defenseBonus != 0)
-			creature->setDefenseBonus(creature->getDefenseBonus() + defenseBonus);
-
-		if (state != 0)
-			creature->setState(state);
-	}
-
-	void removeEnhancements(CreatureObject* creature) {
-		if (healthBonus != 0)
-			creature->changeMaxHealthBar(-healthBonus);
-
-		if (actionBonus != 0)
-			creature->changeMaxActionBar(-actionBonus);
-
-		if (mindBonus != 0)
-			creature->changeMaxMindBar(-mindBonus);
-
-		if (accuracyBonus != 0)
-			creature->setAccuracy(creature->getAccuracy() - accuracyBonus);
-
-		if (damageBonus != 0)
-			creature->setDamageBonus(creature->getDamageBonus() - damageBonus);
-
-		if (defenseBonus != 0)
-			creature->setDefenseBonus(creature->getDefenseBonus() - defenseBonus);
-
-		if (state != 0)
-			creature->clearState(state);
-	}
-
-	bool isUseful(CreatureObject* creature) {
-		if (creature->hasQueuedState(nameCRC))
-			return false;
-		else
-			return true;
-	}
-
-	virtual bool calculateCost(CreatureObject* creature) {
-		if (requiredState != 0) {
-			if (requiredState == 0x123) {
-				if (!creature->isMeditating())
-					return false;
-				else
-					return true;
-			} else if (!creature->hasState(requiredState))
-				return false;
-		}
-
-		return true;
-	}
-
-	void setHealthBonus(int hl) {
-		healthBonus = hl;
-	}
-
-	void setActionBonus(int bn) {
-		actionBonus = bn;
-	}
-
-	void setMindBonus(int mb) {
-		mindBonus = mb;
-	}
-
-	void setDamageBonus(int bn) {
-		damageBonus = bn;
-	}
-
-	void setAccuracyBonus(int bn) {
-		accuracyBonus = bn;
-	}
-
-	void setDefenseBonus(int def) {
-		defenseBonus = def;
-	}
-
-	void setSpeedBonus(float speed) {
-		speedBonus = speed;
-	}
-
-	void setFlyText(const String& name, const String& fname) {
-		startFlyText = name;
-		finishFlyText = fname;
-	}
-
-	void setDuration(float dur) {
-		duration = dur;
-	}
-
-	void setSpeed(float sp) {
-		speed = sp;
-	}
-
-	void setRequiredState(int st) {
-		requiredState = st;
-	}
-
-	inline int getDamageBonus() {
-		return damageBonus;
-	}
-
-	inline int getAccuracyBonus() {
-		return accuracyBonus;
-	}
-
-	inline int getdDefenseBonus() {
-		return defenseBonus;
-	}
-
-	inline float getSpeedBonus() {
-		return speedBonus;
-	}
-
-	inline float getDuration() {
-		return duration;
-	}
-
 };
 
-#endif /*ENHANCESELFSKILL_H_*/
+#endif /*BOOSTMORALEGROUPSKILL_H_*/

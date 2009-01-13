@@ -58,16 +58,16 @@ public:
 
 protected:
 
-	float healthCostMultiplier;
-	float actionCostMultiplier;
-	float mindCostMultiplier;
+	float healthCost;
+	float actionCost;
+	float mindCost;
 
 public:
 	GroupSkill(const String& name, const String& anim, int tp, ZoneProcessServerImplementation* serv) : Skill(name, tp, GROUP, serv) {
 		setAnimation(anim);
-		healthCostMultiplier = 0;
-		actionCostMultiplier = 0;
-		mindCostMultiplier = 0;
+		healthCost = 0;
+		actionCost = 0;
+		mindCost = 0;
 	}
 
 	virtual void doSkill(CreatureObject* creature, const String& modifier, bool doAnimation = true) = 0;
@@ -88,16 +88,16 @@ public:
 		return 1.0f;
 	}
 
-	void setHealthCostMultiplier(float value) {
-		healthCostMultiplier = value;
+	void setHealthCost(float value) {
+		healthCost = value;
 	}
 
-	void setActionCostMultiplier(float value) {
-		actionCostMultiplier = value;
+	void setActionCost(float value) {
+		actionCost = value;
 	}
 
-	void setMindCostMultiplier(float value) {
-		mindCostMultiplier = value;
+	void setMindCost(float value) {
+		mindCost = value;
 	}
 };
 

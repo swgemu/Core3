@@ -109,6 +109,8 @@ public:
 	static int AddForageSkill(lua_State* L);
 	static int AddThrowRandomPoolTargetSkill(lua_State *L);
 	static int AddThrowDirectPoolTargetSkill(lua_State *L);
+
+	static int AddSystemGroupMessageSkill(lua_State *L);
 };
 
 
