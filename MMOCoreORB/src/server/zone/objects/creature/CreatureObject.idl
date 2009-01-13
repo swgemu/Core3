@@ -126,6 +126,8 @@ interface CreatureObject implements SceneObject {
 	boolean isMeditating();
 	boolean isCreature();
 	boolean isNPC();
+
+	boolean isTanoObjEquipped(TangibleObject tano);
 	
 	//Future Creature Handler Stuff
 	boolean isPet();
@@ -367,6 +369,7 @@ interface CreatureObject implements SceneObject {
 	int getCenteredBonus();
 
 	void sendSystemMessage(const String message);
+	void sendSystemMessage(UnicodeString message);
 	void sendSystemMessage(const String file, const String str, unsigned long targetid = 0);
 	void updateSpeed(float speed, float acceleration);
 

@@ -55,7 +55,7 @@ public:
 		insertShort(0x05);
 		insertInt(0x6D2A6413);  // CRC
 
-		insertByte(0x00);
+		insertByte(0x01);
 
 		insertUnicode(message);
 

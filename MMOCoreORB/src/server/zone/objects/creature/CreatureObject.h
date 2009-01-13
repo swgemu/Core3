@@ -123,6 +123,8 @@ public:
 
 	bool isNPC();
 
+	bool isTanoObjEquipped(TangibleObject* tano);
+
 	bool isPet();
 
 	bool hatesFaction(unsigned int faction);
@@ -444,6 +446,8 @@ public:
 	int getCenteredBonus();
 
 	void sendSystemMessage(const String& message);
+
+	void sendSystemMessage(UnicodeString& message);
 
 	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid = 0);
 
@@ -1393,6 +1397,8 @@ public:
 
 	bool isNPC();
 
+	bool isTanoObjEquipped(TangibleObject* tano);
+
 	bool isPet();
 
 	bool hatesFaction(unsigned int faction);
@@ -1712,6 +1718,8 @@ public:
 	int getCenteredBonus();
 
 	void sendSystemMessage(const String& message);
+
+	void sendSystemMessage(UnicodeString& message);
 
 	void sendSystemMessage(const String& file, const String& str, unsigned long long targetid);
 
@@ -2562,6 +2570,7 @@ protected:
 	String _param0_addSkillModBonus__String_int_bool_;
 	String _param0_hasSkillModBonus__String_;
 	String _param0_sendSystemMessage__String_;
+	UnicodeString _param0_sendSystemMessage__UnicodeString_;
 	String _param0_sendSystemMessage__String_String_long_;
 	String _param1_sendSystemMessage__String_String_long_;
 	String _param0_startDancing__String_bool_;

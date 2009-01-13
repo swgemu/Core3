@@ -16,7 +16,7 @@ class HeightMap {
 
 	static const int PLANEWIDTH = 256;
 
-	static const int PLANELIMIT = 1;
+	static const int PLANELIMIT = 300;
 
 	static const int HEIGHTSIZE = sizeof(float);
 

@@ -42,53 +42,63 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SKILLS_H_
-#define SKILLS_H_
+#ifndef GROUPSKILL_H_
+#define GROUPSKILL_H_
 
-#include "target/attack/RandomPoolAttackTargetSkill.h"
-#include "target/attack/DirectPoolAttackTargetSkill.h"
-#include "target/attack/DotPoolAttackTargetSkill.h"
-#include "target/attack/DeBuffAttackTargetSkill.h"
-#include "target/attack/WoundsDirectPoolAttackTargetSkill.h"
-#include "target/attack/ForcePowersPoolAttackTargetSkill.h"
-#include "target/attack/WeaponlessDotPoolAttackSkill.h"
-#include "target/HealTargetSkill.h"
-#include "target/heal/ForceHealTargetSkill.h"
+#include "../CreatureObject.h"
+#include "../CreatureObjectImplementation.h"
 
-#include "target/HealEnhanceTargetSkill.h"
-#include "target/HealDamageTargetSkill.h"
-#include "target/HealStateTargetSkill.h"
-#include "target/HealWoundTargetSkill.h"
-#include "target/CureTargetSkill.h"
-#include "target/DiagnoseTargetSkill.h"
-#include "target/ReviveTargetSkill.h"
-#include "target/FirstAidTargetSkill.h"
-#include "target/QuickHealTargetSkill.h"
-#include "target/MindHealTargetSkill.h"
-#include "target/TendHealTargetSkill.h"
-#include "target/DragTargetSkill.h"
+#include "../../player/Player.h"
 
-#include "self/HealSelfSkill.h"
-#include "self/force/ForceHealSelfSkill.h"
-#include "self/force/ForceRunSelfSkill.h"
-#include "self/EnhanceSelfSkill.h"
-#include "self/ChangePostureSelfSkill.h"
-#include "self/MeditateSelfSkill.h"
-#include "self/PowerboostSelfSkill.h"
+#include "Skill.h"
 
-#include "self/EntertainSelfSkill.h"
-#include "self/EntertainEffectSelfSkill.h"
-#include "self/DanceEffectSelfSkill.h"
-#include "self/MusicEffectSelfSkill.h"
+class GroupSkill : public Skill {
+public:
 
-#include "self/MaskScentSelfSkill.h"
-#include "self/ForageSelfSkill.h"
-#include "target/ConcealSkill.h"
-#include "CamoSkill.h"
-#include "PassiveSkill.h"
-//#include "target/attack/ThrowRandomPoolAttackTargetSkill.h"
-//#include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
 
-#include "GroupSkill.h"
+protected:
 
-#endif /*SKILLS_H_*/
+	float healthCostMultiplier;
+	float actionCostMultiplier;
+	float mindCostMultiplier;
+
+public:
+	GroupSkill(const String& name, const String& anim, int tp, ZoneProcessServerImplementation* serv) : Skill(name, tp, GROUP, serv) {
+		setAnimation(anim);
+		healthCostMultiplier = 0;
+		actionCostMultiplier = 0;
+		mindCostMultiplier = 0;
+	}
+
+	virtual void doSkill(CreatureObject* creature, const String& modifier, bool doAnimation = true) = 0;
+
+	virtual void doAnimations(CreatureObject* creature) {
+
+	}
+
+	virtual bool isUseful(CreatureObject* creature, SceneObject* target) {
+		return true;
+	}
+
+	virtual bool calculateCost(CreatureObject* creature) {
+		return true;
+	}
+
+	virtual float getSpeed() {
+		return 1.0f;
+	}
+
+	void setHealthCostMultiplier(float value) {
+		healthCostMultiplier = value;
+	}
+
+	void setActionCostMultiplier(float value) {
+		actionCostMultiplier = value;
+	}
+
+	void setMindCostMultiplier(float value) {
+		mindCostMultiplier = value;
+	}
+};
+
+#endif /*GROUPSKILL_H_*/

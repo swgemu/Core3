@@ -524,7 +524,7 @@ public:
 	void setSnaredState();
 	void setRootedState();
 
-
+	bool isTanoObjEquipped(TangibleObject* tano);
 
 	bool setNextAttackDelay(int del);
 
@@ -908,7 +908,9 @@ public:
 	void broadcastMessages(Vector<BaseMessage*>& msgs, int range = 128, bool doLock = true);
 	void broadcastMessageRange(Player* player, const String& message, float range);
 
+
 	void sendSystemMessage(const String& message);
+	void sendSystemMessage(UnicodeString& message);
 	void sendSystemMessage(const String& file, const String& str, uint64 targetid = 0);
 
 	void updateSpeed(float speed, float acceleration);

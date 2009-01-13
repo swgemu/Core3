@@ -89,6 +89,8 @@ float CombatManager::handleAction(CommandQueueAction* action) {
 		return doTargetSkill(action);
 	else if (skill->isSelfSkill())
 		return doSelfSkill(action);
+	else if(skill->isGroupSkill())
+		return doGroupSkill(action);
 
 	// Should not get here
 	return 0.0f;
@@ -186,6 +188,42 @@ float CombatManager::doSelfSkill(CommandQueueAction* action) {
 	return selfskill->getSpeed();
 }
 
+float CombatManager::doGroupSkill(CommandQueueAction* action) {
+	CreatureObject* creature = action->getCreature();
+
+	GroupSkill* groupskill = (GroupSkill*) action->getSkill();
+
+	Player* player = NULL;
+	GroupObject* group = NULL;
+	if(creature->isPlayer()) {
+		player = (Player*) creature;
+		group = player->getGroupObject();
+		if(group == NULL) {
+			player->sendSystemMessage("You must be in a group to perform this action.");
+			return 0.0f;
+		}
+	}
+
+	/*if (!selfskill->isUseful(creature))
+		return 0.0f;
+
+	if (!selfskill->calculateCost(creature))
+		return 0.0f;
+
+	String actionModifier = action->getActionModifier();
+	selfskill->doSkill(creature, actionModifier);
+
+	if (selfskill->isEnhanceSkill()) {
+		EnhanceSelfSkill* enhance = (EnhanceSelfSkill*) selfskill;
+
+		if (enhance->getDuration() != 0) {
+			SelfEnhanceEvent* event = new SelfEnhanceEvent(creature, enhance);
+			server->addEvent(event);
+		}
+	}*/
+
+	return groupskill->getSpeed();
+}
 
 // TODO: Need support for grenades where the area is not centred around the attacker
 void CombatManager::handleAreaAction(CreatureObject* creature, SceneObject* target, CommandQueueAction* action, CombatAction* actionMessage) {

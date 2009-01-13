@@ -91,6 +91,7 @@ public:
 
 	float doTargetSkill(CommandQueueAction* action);
 	float doSelfSkill(CommandQueueAction* action);
+	float doGroupSkill(CommandQueueAction* action);
 
 	bool handleMountDamage(CreatureObject* targetCreature, MountCreature* mount);
 

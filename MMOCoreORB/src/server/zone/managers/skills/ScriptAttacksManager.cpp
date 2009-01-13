@@ -109,6 +109,13 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddThrowRandomPoolTargetSkill", AddThrowRandomPoolTargetSkill);
 	lua_register(getLuaState(), "AddThrowDirectPoolTargetSkill", AddThrowDirectPoolTargetSkill);
 
+	// Squad Leader skills
+	//lua_register(getLuaState(), "AddBoostMoraleGroupSkill", AddDiagnoseTargetSkill);
+	//lua_register(getLuaState(), "AddFormupGroupSkill", AddDiagnoseTargetSkill);
+	//lua_register(getLuaState(), "AddRallyGroupSkill", AddDiagnoseTargetSkill);
+	//lua_register(getLuaState(), "AddRetreatGroupSkill", AddDiagnoseTargetSkill);
+	//lua_register(getLuaState(), "AddSteadyAimGroupSkill", AddDiagnoseTargetSkill);
+	//lua_register(getLuaState(), "AddVolleyFireGroupSkill", AddDiagnoseTargetSkill);
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -1593,7 +1600,6 @@ int ScriptAttacksManager::AddForageSkill(lua_State* L) {
 	CombatActions->put(forage);
 	return 0;
 }
-
 
 int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
 	LuaObject skill(L);
