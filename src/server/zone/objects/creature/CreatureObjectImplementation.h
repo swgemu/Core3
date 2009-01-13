@@ -369,13 +369,18 @@ protected:
 	bool frozen;
 	String templateString;
 
+	// mask scent
 	uint32 camoType;
 	MaskScentEvent* maskScentEvent;
 	Time camoLock;
 	uint32 maskScent;
+	Player* camoXPTraget;
 
 	int ferocity;
 	bool baby;
+
+	int campMod;
+	int petNumber;
 
 	float combatRegenModifier;
 	float peacedRegenModifier;
@@ -2690,6 +2695,32 @@ public:
 		return baby;
 	}
 
+	Player* getCamoXPTraget() {
+		return camoXPTraget;
+	}
+
+	void setCamoXPTraget(Player* xpTaget) {
+		camoXPTraget = xpTaget;
+	}
+
+	void setCampModifier(int mod) {
+		campMod = mod;
+	}
+	int getCampModifier() {
+		return campMod;
+	}
+
+	bool isInCamp() {
+		return campMod != 0;
+	}
+
+	void setNumberOfPets(int num) {
+		petNumber = num;
+	}
+	int getNumberOfPets() {
+		return petNumber;
+	}
+
 
 
 
@@ -2736,8 +2767,6 @@ public:
 	inline float getPeacedRegenModifier() {
 		return peacedRegenModifier;
 	}
-
-
 
 
 

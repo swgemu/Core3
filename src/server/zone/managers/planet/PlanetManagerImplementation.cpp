@@ -1163,7 +1163,7 @@ void PlanetManagerImplementation::weatherRemoveEvents() {
 	}
 }
 
-void PlanetManagerImplementation::spawnActiveArea(ActiveArea * area) {
+ActiveAreaTrigger* PlanetManagerImplementation::spawnActiveArea(ActiveArea * area) {
 
 	lock();
 
@@ -1175,4 +1175,13 @@ void PlanetManagerImplementation::spawnActiveArea(ActiveArea * area) {
 	trigger->insertToZone(zone);
 
 	unlock();
+
+	return trigger;
+}
+
+void PlanetManagerImplementation::removeActiveAreaTrigger(ActiveAreaTrigger* trigger) {
+	trigger->lock();
+	trigger->removeFromZone();
+	trigger->removeUndeploymentEvent();
+	trigger->finalize();
 }

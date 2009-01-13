@@ -43,6 +43,8 @@ class Datapad;
 
 class SurveyTool;
 
+class CampSite;
+
 class GroupObject;
 
 class Guild;
@@ -860,6 +862,12 @@ public:
 	void unequipItem(TangibleObject* item);
 
 	Armor* getPlayerArmor(int location);
+
+	void setCamp(CampSite* campSite);
+
+	CampSite* getCamp();
+
+	bool hasCamp();
 
 	unsigned long long getAvailablePower();
 
@@ -1789,6 +1797,12 @@ public:
 	void unequipItem(TangibleObject* item);
 
 	Armor* getPlayerArmor(int location);
+
+	void setCamp(CampSite* campSite);
+
+	CampSite* getCamp();
+
+	bool hasCamp();
 
 	unsigned long long getAvailablePower();
 

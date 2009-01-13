@@ -1,0 +1,37 @@
+import "../../scene/SceneObject";
+
+include "engine/service/Message";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+import "../../building/BuildingObject";
+import "../../area/CampActiveArea";
+interface CampKit implements TangibleObject {
+	CampKit(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(oid, int tp);
+	}
+
+	CampKit(Player player, unsigned int tempCRC, const UnicodeString n, const String tempn) {
+		super(unsigned long oid, int tp);
+	}
+
+	void useCharge(Player player);
+
+	// getters
+	int getUsesRemaining();
+	int getXP();
+	int getDuration();
+	int getCampType();
+	
+	// setters
+	void setUsesRemaining(const int us);
+	void setXP(const int xp);
+	void setDuration(const int duration);
+	void setCampType(const int crc);
+
+	void sendDeltas(Player player);
+	void generateAttributes(SceneObject obj);
+	
+	void parseItemAttributes();
+}

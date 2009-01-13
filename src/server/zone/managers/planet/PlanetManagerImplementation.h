@@ -202,7 +202,9 @@ public:
 		return travelFare[Planet::getPlanetID(departurePlanet)][Planet::getPlanetID(arrivalPlanet)];
 	}
 
-	void spawnActiveArea(ActiveArea * area);
+	ActiveAreaTrigger* spawnActiveArea(ActiveArea * area);
+	void removeActiveAreaTrigger(ActiveAreaTrigger* trigger);
+
 };
 
 #endif

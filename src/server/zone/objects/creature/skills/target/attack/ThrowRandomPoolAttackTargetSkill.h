@@ -45,17 +45,20 @@
 #ifndef THROWRANDOMPOOLATTACKTARGETSKILL_H_
 #define THROWRANDOMPOOLATTACKTARGETSKILL_H_
 
-#include "../AttackTargetSkill.h"
+#include "ThrowAttackTargetSkill.h"
 #include "../../../../tangible/weapons/ThrowableWeapon.h"
 #include "../../../../tangible/weapons/throwable/TrapThrowableWeapon.h"
 
-class ThrowRandomPoolAttackTargetSkill: public AttackTargetSkill {
-protected:
-	bool missed;
+class ThrowRandomPoolAttackTargetSkill: public ThrowAttackTargetSkill {
 public:
+	/*
+	 * The constructor.
+	 * \param name The skill name.
+	 * \param anim The animation.
+	 * \param serv The ZoneProcessServerImplementation.
+	 */
 	ThrowRandomPoolAttackTargetSkill(const String& name, const String& anim,
-			ZoneProcessServerImplementation* serv) :
-		AttackTargetSkill(name, anim, RANDOM, serv) {
+			ZoneProcessServerImplementation* serv) : ThrowAttackTargetSkill(name, anim, RANDOM, serv) {
 		healthPoolAttackChance = 50;
 		strengthPoolAttackChance = 0;
 		constitutionPoolAttackChance = 0;
@@ -76,11 +79,31 @@ public:
 		range = 32.0f;
 
 		missed = false;
+		isDebuff = false;
+
+		dotType = 0;
+
+		snareStateChance = 0;
+		rootStateChance = 0;
+
+		meleeDefDebuff = 0;
+		rangedDefDebuff = 0;
+		stunDefDebuff = 0;
+		intimidateDefDebuff = 0;
+
+		debuffHitMessage = "";
+		debuffStrFile = "";
+		debuffMissMessage = "";
 	}
 
+	/*
+	 * Activates the target skill (throw).
+	 * \param creature The creature, that activates the skill.
+	 * \param target The target.
+	 * \param modifier The modifiers, contains the traps object id.
+	 */
 	int doSkill(CreatureObject* creature, SceneObject* target,
 			const String& modifier, bool doAnimation) {
-
 		TrapThrowableWeapon* trap = (TrapThrowableWeapon*) getThrowableWeapon(
 				creature, modifier);
 
@@ -107,7 +130,6 @@ public:
 		creatureName << "@" << targetCreature->getStfName() << ":"
 				<< targetCreature->getSpeciesName();
 		params->addTT(creatureName.toString());
-
 		if (damage != 0) {
 
 			String type = "trapping";
@@ -137,199 +159,16 @@ public:
 		return damage;
 	}
 
-	void doMiss(CreatureObject* creature, CreatureObject* target, int32 damage) {
-
-		target->showFlyText("trap/trap", "sys_miss", 0xFF, 0xFF, 0xFF);
-	}
-
+	/*
+	 * Calculates the damage of the trap. Calls getCombatManager::calculateTrapDamage.
+	 * \param creature The creature, that throws the trap.
+	 * \param target The target.
+	 * \param weapon The trap.
+	 * \return Returns Returns the damage.
+	 */
 	virtual int calculateTrapDamage(CreatureObject* creature,
-			SceneObject* target, Weapon* weapon) {
-
-		CreatureObject* targetCreature = NULL;
-		if (target->isPlayer() || target->isNonPlayerCreature())
-			targetCreature = (CreatureObject*) target;
-
-		float minDamage = 0;
-		float maxDamage = 0;
-		int reduction = 0;
-		int bodyPart = 0;
-		minDamage = weapon->getMinDamage();
-		maxDamage = weapon->getMaxDamage();
-
-		if (targetCreature != NULL)
-			checkMitigation(creature, targetCreature, minDamage, maxDamage);
-
-		float damage = 0;
-
-		int diff = (int) maxDamage - (int) minDamage;
-		if (diff >= 0)
-			damage = System::random(diff) + (int) minDamage;
-
-		if (targetCreature != NULL) {
-
-			int rand = System::random(100);
-
-			int trappingSkill = creature->getSkillMod("trapping");
-
-			int level = targetCreature->getLevel(); //336 ancient krayt
-
-			if (level > 180)
-				level = 180;
-
-			if ((trappingSkill + rand > level) || (rand > 10 && rand < 20)) {
-				int secondaryDefense = checkSecondaryDefenses(creature,
-						targetCreature);
-
-				if (secondaryDefense < 2) {
-					if (secondaryDefense == 1)
-						damage = damage / 2;
-					int pool = System::random(100);
-
-					if (pool < healthPoolAttackChance)
-						bodyPart = System::random(5) + 1;
-					else if (pool < healthPoolAttackChance
-							+ actionPoolAttackChance)
-						bodyPart = System::random(1) + 7;
-					else if (pool < 100)
-						bodyPart = 9;
-
-				} else
-					return 0;
-
-				if (hasCbtSpamHit()) {
-					creature->sendCombatSpam(targetCreature, NULL,
-							(int32) damage, getCbtSpamHit());
-				}
-
-				if (bodyPart < 7)
-					reduction
-							= applyHealthPoolDamage(creature, targetCreature,
-									(int32) damage, System::random(5) + 1,
-									weapon, true);
-				else if (bodyPart < 9)
-					reduction
-							= applyActionPoolDamage(creature, targetCreature,
-									(int32) damage, System::random(1) + 7,
-									weapon, true);
-				else
-					reduction = applyMindPoolDamage(creature, targetCreature,
-							(int32) damage, weapon, true);
-
-				return (int32) damage - reduction;
-
-			} else {
-				doMiss(creature, targetCreature, (int32) damage);
-				return 0;
-			}
-		}
-		return (int32) damage;
-	}
-
-	virtual int calculateDamage(CreatureObject* creature, SceneObject* target) {
-		return 0;
-	}
-
-	virtual bool calculateCost(CreatureObject* creature) {
-		if (!creature->isPlayer())
-			return true;
-
-		Player* player = (Player*) creature;
-
-		int wpnHealth = 20;
-		int wpnAction = 80;
-		int wpnMind = 10;
-
-		int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength()
-				/ 1500);
-		int actionAttackCost = wpnAction - (wpnAction
-				* creature->getQuickness() / 1500);
-		int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
-
-		if (healthAttackCost < 0)
-			healthAttackCost = 0;
-
-		if (actionAttackCost < 0)
-			actionAttackCost = 0;
-
-		if (mindAttackCost < 0)
-			mindAttackCost = 0;
-
-		if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost,
-				-mindAttackCost))
-			return false;
-
-		return true;
-	}
-
-	void calculateStates(CreatureObject* creature,
-			CreatureObject* targetCreature) {
-
-		if (missed)
-			return;
-
-		bool debuffHit = false;
-
-		if (hasStateChance) {
-
-			if (dizzyStateChance != 0)
-				targetCreature->setDizziedState();
-
-			if (blindStateChance != 0)
-				targetCreature->setBlindedState();
-
-			if (stunStateChance != 0)
-				targetCreature->setStunnedState();
-
-			if (intimidateStateChance != 0)
-				targetCreature->setIntimidatedState();
-
-			if (snareStateChance != 0)
-				targetCreature->setSnaredState();
-
-			if (rootStateChance != 0)
-				targetCreature->setRootedState();
-
-			targetCreature->updateStates();
-		}
-
-		if (isDebuff()) {
-			if (targetCreature->hasBuff(getNameCRC())) {
-				return;
-			}
-
-			int duration = 30;
-			Buff* deBuff = new Buff(getNameCRC(), 0, duration);
-			if (meleeDefDebuff != 0) {
-				deBuff->addSkillModBuff("melee_defense", meleeDefDebuff);
-				targetCreature->showFlyText("trap/trap", "melee_def_1_on", 255,
-						255, 255);
-				debuffHit = true;
-			}
-			if (rangedDefDebuff != 0) {
-				deBuff->addSkillModBuff("ranged_defense", rangedDefDebuff);
-				targetCreature->showFlyText("trap/trap", "ranged_def_1_on",
-						255, 255, 255);
-				debuffHit = true;
-			}
-			if (intimidateDefDebuff != 0) {
-				deBuff->addSkillModBuff("intimidate_defense",
-						intimidateDefDebuff);
-				targetCreature->showFlyText("trap/trap",
-						"melee_ranged_def_1_on", 255, 255, 255);
-				debuffHit = true;
-			}
-			if (stunDefDebuff != 0) {
-				deBuff->addSkillModBuff("stun_defense", stunDefDebuff);
-				targetCreature->showFlyText("trap/trap", "state_def_1_on", 255,
-						255, 255);
-				debuffHit = true;
-			}
-
-			if (debuffHit) {
-				BuffObject* bo = new BuffObject(deBuff);
-				targetCreature->applyBuff(bo);
-			}
-		}
+				SceneObject* target, Weapon* weapon) {
+		return server->getCombatManager()->calculateTrapDamage(creature, target, this, true, weapon);
 	}
 
 };

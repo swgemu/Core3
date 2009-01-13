@@ -23,6 +23,8 @@ class StructureManager;
 
 class ActiveArea;
 
+class ActiveAreaTrigger;
+
 class PlanetManager : public DistributedObjectStub {
 public:
 	PlanetManager(Zone* zone, ZoneProcessServerImplementation* processor);
@@ -63,7 +65,9 @@ public:
 
 	void weatherRemoveEvents();
 
-	void spawnActiveArea(ActiveArea* area);
+	ActiveAreaTrigger* spawnActiveArea(ActiveArea* area);
+
+	void removeActiveAreaTrigger(ActiveAreaTrigger* trigger);
 
 protected:
 	PlanetManager(DummyConstructorParameter* param);
@@ -117,7 +121,9 @@ public:
 
 	void weatherRemoveEvents();
 
-	void spawnActiveArea(ActiveArea* area);
+	ActiveAreaTrigger* spawnActiveArea(ActiveArea* area);
+
+	void removeActiveAreaTrigger(ActiveAreaTrigger* trigger);
 
 protected:
 	String _param0_getTravelFare__String_String_;

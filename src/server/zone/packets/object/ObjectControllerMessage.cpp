@@ -876,8 +876,7 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0xCF2D30F4): // newbieselectstartinglocation
 		parseNewbieSelectStartingLocation(player, pack);
 		break;
-	case (88718951): //throwtrap
-		//System::out << "CMD: throwtrap\n";
+	case (0x549BE67): //throwtrap
 		parseThrowTrap(player, pack);
 		break;
 	case (0x5041F83A): // Teach

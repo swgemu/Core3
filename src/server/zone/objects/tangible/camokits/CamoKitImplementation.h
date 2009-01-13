@@ -50,38 +50,112 @@ which carries forward this exception.
 
 class CamoKitImplementation: public CamoKitServant {
 protected:
+	/*
+	 * The planet
+	 */
 	uint32 planet;
+
+	/*
+	 * The uses
+	 */
 	uint32 usesRemaining;
+
+	/*
+	 * The minimum skill requirement.
+	 */
 	uint32 concealMin;
 public:
 
+	/*
+	 * Constructor. Like the other item constructors.
+	 */
 	CamoKitImplementation(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
+	/*
+	 * Constructor. Like the other item constructors.
+	 */
 	CamoKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
+	/*
+	 * Uses a charge oh the camo kit. If 0 uses are left, it is removed from the inventory.
+	 * \param player The player that uses the camo kit.
+	 */
 	void useCharge(Player* player);
 
+	/*
+	 * Returns the planet on which the camo kit can be used
+	 * \return The planet.
+	 */
 	int getPlanet();
 
+	/*
+	 * Returns the remaining uses.
+	 * \return The uses.
+	 */
 	int getUsesRemaining();
 
+	/* Retruns the conceal skill needed to use this camo kit.
+	 * \return The minimum skill requirement.
+	 */
 	int getConcealMin();
 
+	/*
+	 * Sets the planet on which the camo kit can be used
+	 * \param tp The planet.
+	 */
 	void setPlanet(const int tp);
 
+	/*
+	 * Sets the remaining uses.
+	 * \param us The uses.
+	 */
 	void setUsesRemaining(const int us);
 
+	/*
+	 * Sets the conceal skill needed to use this camo kit.
+	 * \param min The minimum skill requirement.
+	 */
 	void setConcealMin(const int min);
 
+	/*
+	 * Removes the camo kit from the inventory.
+	 * \param player The player.
+	 */
 	void remove(Player* player);
 
+	/*
+	 * Sends camo kits uses to the player.
+	 * \param player The player.
+	 */
 	void sendDeltas(Player* player);
 
+	/*
+	 * Generates the camo kit Attributes and sends them to obj.
+	 * \param obj The player.
+	 */
 	void generateAttributes(SceneObject* obj);
+
+	/*
+	 * Used in generateAttributes() to generate Attributes.
+	 * \param alm The AttributeListMessage that is filled with attributes.
+	 */
 	void addHeaderAttributes(AttributeListMessage* alm);
+
+	/*
+	 * Used in generateAttributes() to generate Attributes.
+	 * \param alm The AttributeListMessage that is filled with attributes.
+	 */
 	void addFooterAttributes(AttributeListMessage* alm);
+
+	/*
+	 * Used in generateAttributes() to generate Attributes.
+	 * \param alm The AttributeListMessage that is filled with attributes.
+	 */
 	void addAttributes(AttributeListMessage* alm);
 
+	/*
+	 * Parses the camo kits attributes.
+	 */
 	void parseItemAttributes();
 };
 

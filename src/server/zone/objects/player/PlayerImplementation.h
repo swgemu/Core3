@@ -68,6 +68,7 @@ which carries forward this exception.
 #include "Player.h"
 
 #include "../tangible/surveytool/SurveyTool.h"
+#include "../tangible/campkit/CampSite.h"
 
 #include "engine/service/Message.h"
 
@@ -300,6 +301,7 @@ class PlayerImplementation : public PlayerServant {
 	ActiveArea * activeArea;
 	Badges * badges;
 
+	CampSite* camp;
 
 	//Cloning
 	CloningFacility* cloningFacility;
@@ -1987,6 +1989,18 @@ public:
 	void removeOldSuiBoxIfPresent(const int suiWindowType);
 	void displayMessageoftheDay();
 
+	void setCamp(CampSite* campSite) {
+		camp = campSite;
+	}
+
+	CampSite* getCamp() {
+		return camp;
+	}
+
+	bool hasCamp() {
+		return camp != NULL;
+	}
+
 	uint64 getAvailablePower();
 	void removePower(uint64 power);
 
@@ -2074,7 +2088,6 @@ public:
 	inline CloningFacility* getCloningFacility() {
 		return cloningFacility;
 	}
-
 
 	friend class PlayerManager;
 	friend class ProfessionManager;

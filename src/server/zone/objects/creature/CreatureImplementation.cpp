@@ -1352,7 +1352,6 @@ void CreatureImplementation::resetState() {
 
 void CreatureImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 	BaseMessage* msg;
-
 	++movementCounter;
 
 	if (point == NULL) {
@@ -1734,6 +1733,10 @@ float CreatureImplementation::getArmorResist(int resistType) {
 	}
 }
 
+/*
+ * Checks if the target is mask scented or concealed.
+ * \param target The target.
+ */
 void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 	unsigned int targetHash = target->getCharacterName().toString().hashCode();
 
@@ -1792,8 +1795,11 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 				if (target->isPlayer()) {
 					Player* player = (Player*) target;
 					String type = "scout";
-					player->addXp(type,getLevel()*3, true);
 
+					if (player->getCamoXPTraget() != NULL && camoType != CamoSkill::MASKSCENT)
+						player->getCamoXPTraget()->addXp(type,getLevel()*3, true);
+					else
+						player->addXp(type,getLevel()*3, true);
 					StfParameter* params = new StfParameter();
 					StringBuffer creatureName;
 					creatureName << "@" << getStfName() << ":" << getSpeciesName();

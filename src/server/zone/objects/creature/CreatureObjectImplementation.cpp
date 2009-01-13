@@ -274,6 +274,9 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	camoType = 11;
 	maskScentEvent = NULL;
 	maskScent = 0;
+	camoXPTraget = NULL;
+	campMod = 0;
+	petNumber = 0;
 
 	ferocity = 0;
 	baby = false;
@@ -3456,6 +3459,9 @@ bool CreatureObjectImplementation::canGiveEntertainBuff() {
 			return true;
 		}
 	}
+	if (isInCamp())
+		return true;
+
 	return false;
 }
 
@@ -4335,13 +4341,16 @@ void CreatureObjectImplementation::activateConditionTreatment() {
 }
 
 int CreatureObjectImplementation::getMedicalFacilityRating() {
-	if (!isInBuilding()) //TODO: Add in search for nearby surgical droid
+	if (!isInBuilding() && !isInCamp()) //TODO: Add in search for nearby surgical droid
 		return 0;
 
 	int buildingType = getBuildingType();
 
 	if (buildingType == BuildingObjectImplementation::MEDICAL_CENTER || buildingType == BuildingObjectImplementation::CLONING_FACILITY)
 		return 100;
+
+	if (isInCamp())
+		return getCampModifier();
 
 	return 65;
 }
@@ -4374,6 +4383,12 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* creature) {
 	return (pvpStatusBitmask & CreatureFlag::ATTACKABLE);
 }
 
+/**
+ * Activates the camo skill.
+ * \param camoCRC The skills crc.
+ * \param time The duration.
+ * \param ms the mask scent type.
+ */
 void CreatureObjectImplementation::activateCamo(unsigned int camoCRC ,unsigned int time,unsigned int ms) {
 		MaskScentEvent* event = new MaskScentEvent(_this,camoCRC,time);
 
@@ -4392,6 +4407,10 @@ void CreatureObjectImplementation::activateCamo(unsigned int camoCRC ,unsigned i
 			sendSystemMessage("skl_use", "sys_conceal_start");
 }
 
+/**
+ *	Deactivates the camo.
+ *	\param forced Was the deactivation forcced by an attack ?
+ */
 void CreatureObjectImplementation::deactivateCamo(bool forced) {
 	if (maskScentEvent != NULL) {
 
@@ -4411,20 +4430,31 @@ void CreatureObjectImplementation::deactivateCamo(bool forced) {
 		clearState(CreatureState::MASKSCENT);
 		updateStates();
 		maskScentEvent = NULL;
-
+		camoXPTraget = NULL;
 		activateCamoLock();
 	}
 }
 
+/**
+ * Activates the camo deactivation timer.
+ */
 void CreatureObjectImplementation::activateCamoLock() {
 	camoLock.update();
 	camoLock.addMiliTime(60000);
 }
 
+/**
+ * Checks if the the camo deactivation timer is on.
+ * \return True if timer is active else false.
+ */
 bool CreatureObjectImplementation::isCamoCooldownActive() {
 	return camoLock.isPast();
 }
 
+/**
+ * Returns the deactivation time left.
+ * \return The time left until camo can be used again.
+ */
 int CreatureObjectImplementation::getCamoCooldownLeft() {
 	return -1 * camoLock.miliDifference();
 }

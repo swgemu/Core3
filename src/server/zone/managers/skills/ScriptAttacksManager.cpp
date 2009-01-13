@@ -1633,9 +1633,7 @@ int ScriptAttacksManager::AddSystemGroupMessageSkill(lua_State* L) {
 
 int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
 	LuaObject skill(L);
-	return 0;
-}
-/*
+
 	if (!skill.isValidTable())
 		return 0;
 
@@ -1717,22 +1715,12 @@ int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
 
 	CombatActions->put(attack);
 
-	*cout << attack->hasCbtSpamBlock() << "\n";
-	cout << attack->hasCbtSpamCounter() << "\n";
-	cout << attack->hasCbtSpamEvade() << "\n";
-	cout << attack->hasCbtSpamHit() << "\n";
-	cout << attack->hasCbtSpamMiss() << "\n";*
-
 	return 0;
 }
-*/
+
 int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	LuaObject skill(L);
 
-	return 0;
-}
-
-/*
 	if (!skill.isValidTable())
 		return 0;
 
@@ -1764,6 +1752,8 @@ int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	int focusPoolAttackChance = skill.getIntField("focusAttackChance");
 	int willpowerPoolAttackChance = skill.getIntField("willpowerAttackChance");
 
+	int dotType = skill.getIntField("dotType");
+
 	int knockdownStateChance = skill.getIntField("knockdownChance");
 	int postureDownStateChance = skill.getIntField("postureDownChance");
 	int dizzyStateChance = skill.getIntField("dizzyChance");
@@ -1782,7 +1772,6 @@ int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	String deBuffStrFile = skill.getStringField("deBuffStrFile");
 	String deBuffHitMessage = skill.getStringField("deBuffHitMessage");
 	String deBuffMissMessage = skill.getStringField("deBuffMissMessage");
-
 
 	int meleeDefDebuff = skill.getIntField("meleeDefDebuff");
 	int rangedDefDebuff = skill.getIntField("rangedDefDebuff");
@@ -1811,6 +1800,8 @@ int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	attack->setFocusPoolAttackRatio(focusPoolAttackChance);
 	attack->setWillpowerPoolAttackRatio(willpowerPoolAttackChance);
 
+	attack->setDotType(dotType);
+
 	attack->setKnockdownChance(knockdownStateChance);
 	attack->setPostureDownChance(postureDownStateChance);
 	attack->setDizzyChance(dizzyStateChance);
@@ -1836,12 +1827,7 @@ int ScriptAttacksManager::AddThrowDirectPoolTargetSkill(lua_State *L) {
 	attack->setIntimidateDefDebuff(intimidateDefDebuff);
 
 
-*	cout << attack->hasCbtSpamBlock() << "\n";
-	cout << attack->hasCbtSpamCounter() << "\n";
-	cout << attack->hasCbtSpamEvade() << "\n";
-	cout << attack->hasCbtSpamHit() << "\n";
-	cout << attack->hasCbtSpamMiss() << "\n";*
 	CombatActions->put(attack);
 	return 0;
 }
-*/
+

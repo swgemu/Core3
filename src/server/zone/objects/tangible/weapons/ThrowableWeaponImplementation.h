@@ -57,6 +57,10 @@ public:
 
 	void initialize();
 
+	/*
+	 * Uses a charge of the object. Ramoves the object if 0 charges left
+	 * \param player The player.
+	 */
 	virtual void useCharge(Player* player) {
 
 		decreaseUsesRemaining();
@@ -66,18 +70,42 @@ public:
 			remove(player);
 	}
 
+	/*
+	 * Removes the camo kit from the inventory.
+	 * \param player The player.
+	 */
 	void remove(Player* player);
 
+	/*
+	 * Uses the object.
+	 * \param player The player using the object.
+	 */
 	int useObject(Player* player);
 
+	/*
+	 * Parses the items attributes.
+	 */
 	void parseItemAttributes();
 
+	/*
+	 * Sets the related skills name.
+	 */
 	void setSkill(const String& sk);
 
+	/*
+	 * Returns the related skills crc.
+	 */
 	int getSkillCRC();
 
+	/*
+	 * Sets the related skills crc.
+	 */
 	void setSkillCRC(const int sk);
 
+	/*
+	 * Checks if the object is usefull.
+	 * \param player The player using the object.
+	 */
 	bool isUsefull(Player* player);
 
 };

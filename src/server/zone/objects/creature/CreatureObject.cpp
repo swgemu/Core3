@@ -7687,12 +7687,99 @@ void CreatureObject::setMaskScent(int value) {
 		((CreatureObjectImplementation*) _impl)->setMaskScent(value);
 }
 
-unsigned char CreatureObject::getLowestHAMAttribute() {
+Player* CreatureObject::getCamoXPTraget() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 598);
+
+		return (Player*) method.executeWithObjectReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getCamoXPTraget();
+}
+
+void CreatureObject::setCamoXPTraget(Player* xpTaget) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 599);
+		method.addObjectParameter(xpTaget);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setCamoXPTraget(xpTaget);
+}
+
+void CreatureObject::setCampModifier(int mod) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 600);
+		method.addSignedIntParameter(mod);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setCampModifier(mod);
+}
+
+int CreatureObject::getCampModifier() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 601);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getCampModifier();
+}
+
+bool CreatureObject::isInCamp() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 602);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->isInCamp();
+}
+
+int CreatureObject::getNumberOfPets() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 603);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((CreatureObjectImplementation*) _impl)->getNumberOfPets();
+}
+
+void CreatureObject::setNumberOfPets(int num) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 604);
+		method.addSignedIntParameter(num);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureObjectImplementation*) _impl)->setNumberOfPets(num);
+}
+
+unsigned char CreatureObject::getLowestHAMAttribute() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 605);
 
 		return method.executeWithUnsignedCharReturn();
 	} else
@@ -7704,7 +7791,7 @@ void CreatureObject::onIncapacitated(SceneObject* attacker) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 599);
+		DistributedMethod method(this, 606);
 		method.addObjectParameter(attacker);
 
 		method.executeWithVoidReturn();
@@ -7717,7 +7804,7 @@ void CreatureObject::onIncapacitationRecovery() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 600);
+		DistributedMethod method(this, 607);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7729,7 +7816,7 @@ void CreatureObject::onDeath() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 601);
+		DistributedMethod method(this, 608);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7741,7 +7828,7 @@ void CreatureObject::onKilled(SceneObject* killer) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 602);
+		DistributedMethod method(this, 609);
 		method.addObjectParameter(killer);
 
 		method.executeWithVoidReturn();
@@ -7754,7 +7841,7 @@ void CreatureObject::onBlinded() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 603);
+		DistributedMethod method(this, 610);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7766,7 +7853,7 @@ void CreatureObject::onDizzied() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 604);
+		DistributedMethod method(this, 611);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7778,7 +7865,7 @@ void CreatureObject::onStunned() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 605);
+		DistributedMethod method(this, 612);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7790,7 +7877,7 @@ void CreatureObject::onIntimidated() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 606);
+		DistributedMethod method(this, 613);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7802,7 +7889,7 @@ void CreatureObject::onEquip(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 607);
+		DistributedMethod method(this, 614);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -7815,7 +7902,7 @@ void CreatureObject::onUnequip(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 608);
+		DistributedMethod method(this, 615);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -7828,7 +7915,7 @@ void CreatureObject::onChangeWeapon(Weapon* weapon) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 609);
+		DistributedMethod method(this, 616);
 		method.addObjectParameter(weapon);
 
 		method.executeWithVoidReturn();
@@ -7841,7 +7928,7 @@ void CreatureObject::onChangeArmor(Armor* armor) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 610);
+		DistributedMethod method(this, 617);
 		method.addObjectParameter(armor);
 
 		method.executeWithVoidReturn();
@@ -7854,7 +7941,7 @@ void CreatureObject::onReceiveDamage(SceneObject* attacker, unsigned char attrib
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 611);
+		DistributedMethod method(this, 618);
 		method.addObjectParameter(attacker);
 		method.addUnsignedCharParameter(attribute);
 		method.addUnsignedIntParameter(amount);
@@ -7869,7 +7956,7 @@ void CreatureObject::onRegenerateHAM() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 612);
+		DistributedMethod method(this, 619);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7881,7 +7968,7 @@ bool CreatureObject::inflictDamage(CreatureObject* victim, unsigned char attribu
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 613);
+		DistributedMethod method(this, 620);
 		method.addObjectParameter(victim);
 		method.addUnsignedCharParameter(attribute);
 		method.addUnsignedIntParameter(damage);
@@ -7896,7 +7983,7 @@ void CreatureObject::incapacitateSelf() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 614);
+		DistributedMethod method(this, 621);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7908,7 +7995,7 @@ void CreatureObject::recoverFromIncapacitation() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 615);
+		DistributedMethod method(this, 622);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7920,7 +8007,7 @@ void CreatureObject::die() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 616);
+		DistributedMethod method(this, 623);
 
 		method.executeWithVoidReturn();
 	} else
@@ -7932,7 +8019,7 @@ void CreatureObject::equipItem(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 617);
+		DistributedMethod method(this, 624);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -7945,7 +8032,7 @@ void CreatureObject::unequipItem(TangibleObject* item) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 618);
+		DistributedMethod method(this, 625);
 		method.addObjectParameter(item);
 
 		method.executeWithVoidReturn();
@@ -9741,66 +9828,87 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		setMaskScent(inv->getSignedIntParameter());
 		break;
 	case 598:
-		resp->insertByte(getLowestHAMAttribute());
+		resp->insertLong(getCamoXPTraget()->_getObjectID());
 		break;
 	case 599:
-		onIncapacitated((SceneObject*) inv->getObjectParameter());
+		setCamoXPTraget((Player*) inv->getObjectParameter());
 		break;
 	case 600:
-		onIncapacitationRecovery();
+		setCampModifier(inv->getSignedIntParameter());
 		break;
 	case 601:
-		onDeath();
+		resp->insertSignedInt(getCampModifier());
 		break;
 	case 602:
-		onKilled((SceneObject*) inv->getObjectParameter());
+		resp->insertBoolean(isInCamp());
 		break;
 	case 603:
-		onBlinded();
+		resp->insertSignedInt(getNumberOfPets());
 		break;
 	case 604:
-		onDizzied();
+		setNumberOfPets(inv->getSignedIntParameter());
 		break;
 	case 605:
-		onStunned();
+		resp->insertByte(getLowestHAMAttribute());
 		break;
 	case 606:
-		onIntimidated();
+		onIncapacitated((SceneObject*) inv->getObjectParameter());
 		break;
 	case 607:
-		onEquip((TangibleObject*) inv->getObjectParameter());
+		onIncapacitationRecovery();
 		break;
 	case 608:
-		onUnequip((TangibleObject*) inv->getObjectParameter());
+		onDeath();
 		break;
 	case 609:
-		onChangeWeapon((Weapon*) inv->getObjectParameter());
+		onKilled((SceneObject*) inv->getObjectParameter());
 		break;
 	case 610:
-		onChangeArmor((Armor*) inv->getObjectParameter());
+		onBlinded();
 		break;
 	case 611:
-		onReceiveDamage((SceneObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
+		onDizzied();
 		break;
 	case 612:
-		onRegenerateHAM();
+		onStunned();
 		break;
 	case 613:
-		resp->insertBoolean(inflictDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter()));
+		onIntimidated();
 		break;
 	case 614:
-		incapacitateSelf();
+		onEquip((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 615:
-		recoverFromIncapacitation();
+		onUnequip((TangibleObject*) inv->getObjectParameter());
 		break;
 	case 616:
-		die();
+		onChangeWeapon((Weapon*) inv->getObjectParameter());
 		break;
 	case 617:
-		equipItem((TangibleObject*) inv->getObjectParameter());
+		onChangeArmor((Armor*) inv->getObjectParameter());
 		break;
 	case 618:
+		onReceiveDamage((SceneObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter());
+		break;
+	case 619:
+		onRegenerateHAM();
+		break;
+	case 620:
+		resp->insertBoolean(inflictDamage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedCharParameter(), inv->getUnsignedIntParameter()));
+		break;
+	case 621:
+		incapacitateSelf();
+		break;
+	case 622:
+		recoverFromIncapacitation();
+		break;
+	case 623:
+		die();
+		break;
+	case 624:
+		equipItem((TangibleObject*) inv->getObjectParameter());
+		break;
+	case 625:
 		unequipItem((TangibleObject*) inv->getObjectParameter());
 		break;
 	default:
@@ -12176,6 +12284,34 @@ int CreatureObjectAdapter::getMaskScent() {
 
 void CreatureObjectAdapter::setMaskScent(int value) {
 	return ((CreatureObjectImplementation*) impl)->setMaskScent(value);
+}
+
+Player* CreatureObjectAdapter::getCamoXPTraget() {
+	return ((CreatureObjectImplementation*) impl)->getCamoXPTraget();
+}
+
+void CreatureObjectAdapter::setCamoXPTraget(Player* xpTaget) {
+	return ((CreatureObjectImplementation*) impl)->setCamoXPTraget(xpTaget);
+}
+
+void CreatureObjectAdapter::setCampModifier(int mod) {
+	return ((CreatureObjectImplementation*) impl)->setCampModifier(mod);
+}
+
+int CreatureObjectAdapter::getCampModifier() {
+	return ((CreatureObjectImplementation*) impl)->getCampModifier();
+}
+
+bool CreatureObjectAdapter::isInCamp() {
+	return ((CreatureObjectImplementation*) impl)->isInCamp();
+}
+
+int CreatureObjectAdapter::getNumberOfPets() {
+	return ((CreatureObjectImplementation*) impl)->getNumberOfPets();
+}
+
+void CreatureObjectAdapter::setNumberOfPets(int num) {
+	return ((CreatureObjectImplementation*) impl)->setNumberOfPets(num);
 }
 
 unsigned char CreatureObjectAdapter::getLowestHAMAttribute() {

@@ -18,6 +18,8 @@
 
 #include "../../objects/area/ActiveArea.h"
 
+#include "../../objects/area/ActiveAreaTrigger.h"
+
 /*
  *	PlanetManagerStub
  */
@@ -266,7 +268,7 @@ void PlanetManager::weatherRemoveEvents() {
 		((PlanetManagerImplementation*) _impl)->weatherRemoveEvents();
 }
 
-void PlanetManager::spawnActiveArea(ActiveArea* area) {
+ActiveAreaTrigger* PlanetManager::spawnActiveArea(ActiveArea* area) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -274,9 +276,22 @@ void PlanetManager::spawnActiveArea(ActiveArea* area) {
 		DistributedMethod method(this, 24);
 		method.addObjectParameter(area);
 
+		return (ActiveAreaTrigger*) method.executeWithObjectReturn();
+	} else
+		return ((PlanetManagerImplementation*) _impl)->spawnActiveArea(area);
+}
+
+void PlanetManager::removeActiveAreaTrigger(ActiveAreaTrigger* trigger) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+		method.addObjectParameter(trigger);
+
 		method.executeWithVoidReturn();
 	} else
-		((PlanetManagerImplementation*) _impl)->spawnActiveArea(area);
+		((PlanetManagerImplementation*) _impl)->removeActiveAreaTrigger(trigger);
 }
 
 /*
@@ -345,7 +360,10 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		weatherRemoveEvents();
 		break;
 	case 24:
-		spawnActiveArea((ActiveArea*) inv->getObjectParameter());
+		resp->insertLong(spawnActiveArea((ActiveArea*) inv->getObjectParameter())->_getObjectID());
+		break;
+	case 25:
+		removeActiveAreaTrigger((ActiveAreaTrigger*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -426,8 +444,12 @@ void PlanetManagerAdapter::weatherRemoveEvents() {
 	return ((PlanetManagerImplementation*) impl)->weatherRemoveEvents();
 }
 
-void PlanetManagerAdapter::spawnActiveArea(ActiveArea* area) {
+ActiveAreaTrigger* PlanetManagerAdapter::spawnActiveArea(ActiveArea* area) {
 	return ((PlanetManagerImplementation*) impl)->spawnActiveArea(area);
+}
+
+void PlanetManagerAdapter::removeActiveAreaTrigger(ActiveAreaTrigger* trigger) {
+	return ((PlanetManagerImplementation*) impl)->removeActiveAreaTrigger(trigger);
 }
 
 /*

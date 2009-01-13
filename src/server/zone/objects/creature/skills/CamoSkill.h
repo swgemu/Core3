@@ -49,6 +49,11 @@ which carries forward this exception.
 
 class CamoSkill : public Skill {
 public:
+	/**
+	 * Static Fields:
+	 * The camo type to distinguish between mask scent and conceal
+	 * including the planets
+	 */
 	static const int CORELLIA = 0;
 	static const int DANTOOINE = 1;
 	static const int DATHOMIR = 2;
@@ -63,57 +68,117 @@ public:
 	static const int NONE = 11;
 
 protected:
+	/*
+	 * Duration of the skill
+	 */
 	float duration;
 
+	/*
+	 * Type of the skill : mask scent or conceal = planet
+	 */
 	int camoType;
 
 public:
+	/*
+	 * The constructor
+	 * \param name The skill name
+	 * \param cat The skill category : self or target.
+	 * \param serv The ZoneProcessServerImplementation.
+	 */
 	CamoSkill(const String& name,const int cat, ZoneProcessServerImplementation* serv) : Skill(name, CAMO, cat, serv) {
 		duration = 0;
 		camoType = NONE;
+		category = 0;
 	}
 
-
+	/*
+	 * Activates the self skill (mask scent)
+	 *  \param creature The creature, that activates the skill.
+	 *  \param modifier The modifiers, not used.
+	 */
 	virtual void doSkill(CreatureObject* creature, String& modifier) {
 
 	}
 
+	/*
+	 * Activates the target skill (conceal).
+	 * \param creature The creature, that activates the skill.
+	 * \param target The target to conceal, if null the self.
+	 * \param modifier The modifiers, not used.
+	 */
 	virtual void doSkill(CreatureObject* creature,SceneObject* target, String& modifier) {
 
 	}
 
-
+	/*
+	 * Does the animation.
+	 * \param creature The creature The creature, that activates the skill.
+	 */
 	void doAnimations(CreatureObject* creature) {
 	}
 
+	/*
+	 * Deactivates the conceal skill.
+	 * \param creature The creature, that is unconcealed.
+	 */
 	virtual void finish(CreatureObject* creature) {
 	}
 
+	/*
+	 * Returns the speed of the skill.
+	 * \return creature The creature The creature, that activates the skill.
+	 */
 	float calculateSpeed(CreatureObject* creature) {
 			return 0;
 	}
 
+	/*
+	 * Checks if the skill can be used.
+	 * \param creature The creature, that is checked.
+	 * \return Returns false if not usefull else true.
+	 */
 	virtual bool isUseful(CreatureObject* creature) {
 		return false;
 	}
 
+	/*
+	 * Calculates the costs of the skill.
+	 * \param creature The creature, that is checked.
+	 * \return Returns if costs are applied.
+	 */
 	virtual bool calculateCost(CreatureObject* creature) {
-		return false;
+		return true;
 	}
 
+	/*
+	 * Sets the camo type.
+	 * \param camo The camo type.
+	 */
 	virtual void setCamoType(int camo) {
 		camoType = camo;
 	}
 
+	/*
+	 * Sets the duration.
+	 * 	\param dur : The duration.
+	 */
 	virtual void setDuration(float dur) {
 		duration = dur;
 	}
 
 
+	/*
+	 * Returns the duration.
+	 * \return int The duration.
+	 */
 	inline float getDuration() {
 		return duration;
 	}
 
+	/*
+	 * Returns the camo type.
+	 * \return int The camo type.
+	 */
 	inline int getCamoType() {
 		return camoType;
 	}

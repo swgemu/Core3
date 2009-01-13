@@ -94,6 +94,10 @@ void TrapThrowableWeaponImplementation::initialize() {
 	setEquipped(false);
 }
 
+/*
+ * Uses the object.
+ * \param player The player using the object.
+ */
 int TrapThrowableWeaponImplementation::useObject(Player* player) {
 
 	String skillBox = "outdoors_scout_novice";
@@ -154,6 +158,10 @@ void TrapThrowableWeaponImplementation::addHeaderAttributes(AttributeListMessage
 	}
 }
 
+/*
+ * Uses a charge of the object. Ramoves the object if 0 charges left
+ * \param player The player.
+ */
 void TrapThrowableWeaponImplementation::useCharge(Player* player) {
 
 	decreaseUsesRemaining();
@@ -175,6 +183,10 @@ void TrapThrowableWeaponImplementation::sendDeltas(Player* player) {
 	dtano3->close();
 	player->sendMessage(dtano3);
 }
+
+/*
+ * Parses the items attributes.
+ */
 void TrapThrowableWeaponImplementation::parseItemAttributes() {
 //	cout << "parse trap\n";
 	WeaponImplementation::parseItemAttributes();
@@ -182,6 +194,10 @@ void TrapThrowableWeaponImplementation::parseItemAttributes() {
 	setSkillCRC(itemAttributes->getIntAttribute(attr));
 }
 
+/*
+ * Checks if the object is usefull.
+ * \param player The player using the object.
+ */
 bool TrapThrowableWeaponImplementation::isUsefull(Player* player) {
 //	cout << "is usefull: " <<  player->hasSkill(getSkillCRC()) << "\n";
 	return player->hasSkill(getSkillCRC());

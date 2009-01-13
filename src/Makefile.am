@@ -56,8 +56,12 @@ LIBS =	$(SYSTEM_LIBS)  \
 bin_PROGRAMS = core3
 
 core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
+		server/zone/objects/tangible/campkit/CampKit.cpp \
+		server/zone/objects/tangible/campkit/CampSite.cpp \
+		server/zone/objects/area/CampActiveArea.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeapon.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.cpp \
+		server/zone/objects/tangible/terminal/camp/CampTerminal.cpp \
 		server/chat/ChatManager.cpp \
 		server/chat/GameCommandHandler.cpp \
 		server/chat/room/ChatRoom.cpp \
@@ -215,6 +219,8 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/ZoneServer.cpp 
 core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/camokits/CamoKitImplementation.cpp \
+		server/zone/objects/tangible/campkit/CampKitImplementation.cpp \
+		server/zone/objects/tangible/campkit/CampSiteImplementation.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \

@@ -925,6 +925,16 @@ interface CreatureObject implements SceneObject {
 	int getCamoCooldownLeft();
 	int getMaskScent();
 	void setMaskScent(int value);
+	Player getCamoXPTraget();
+	void setCamoXPTraget(Player xpTaget);
+
+	void setCampModifier(int mod);
+	int getCampModifier();
+	boolean isInCamp();
+
+	int getNumberOfPets();
+	void setNumberOfPets(int num);
+
 	
 	unsigned char getLowestHAMAttribute();
 

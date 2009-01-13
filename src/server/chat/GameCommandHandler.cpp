@@ -354,7 +354,18 @@ void GameCommandHandler::init() {
 			"Drags a dead or incapacitated player toward yourself.",
 			"Usage: @drag",
 			&drag);
+
 	/* Disabled Commands
+
+	gmCommands->addCommand("setLocation", DEVELOPER,
+			"Shows your setLocation",
+			"Usage: @setLocation>",
+			&setLocation);
+	gmCommands->addCommand("setDirection", DEVELOPER,
+			"Shows your position",
+			"Usage: @setDirection>",
+			&setDirection);
+
 
 	gmCommands->addCommand("toggleCombat", DEVELOPER,
 			"Enables/Disables combat.",
@@ -3303,6 +3314,76 @@ void GameCommandHandler::spawnAA(StringTokenizer tokenizer, Player* player) {
 	TestActiveArea * testArea = new TestActiveArea(x,y,z,range);
 
 	planetManager->spawnActiveArea(testArea);
+}
+
+
+void GameCommandHandler::setLocation(StringTokenizer tokenizer, Player* player) {
+	StringBuffer message;
+
+	float x;
+	float y;
+	if (tokenizer.hasMoreTokens()) {
+		x = tokenizer.getFloatToken();
+		if (tokenizer.hasMoreTokens())
+			y = tokenizer.getFloatToken();
+		else {
+			x = player->getPositionX();
+			y = player->getPositionY();
+		}
+	}
+	else {
+		x = player->getPositionX();
+		y = player->getPositionY();
+	}
+
+	if (tokenizer.hasMoreTokens())
+				y = tokenizer.getFloatToken();
+	else
+		y = player->getPositionY();
+
+	SceneObject* obj = player->getTarget();
+	if (obj == NULL)
+		return;
+
+	float z = player->getPositionZ();
+
+	StringBuffer ss;
+	ss << "New Loaction: " << endl;
+	ss << " X: " << x << endl;
+	ss << " Y: " << y;
+
+	player->sendSystemMessage(ss.toString());
+
+	obj->setPosition(x,z,y);
+
+	UpdateTransformMessage* msg = new UpdateTransformMessage(obj);
+	player->sendMessage(msg);
+}
+
+void GameCommandHandler::setDirection(StringTokenizer tokenizer, Player* player) {
+	StringBuffer message;
+
+	float oX = player->getDirectionX();
+	float oZ = player->getDirectionZ();
+	float oY = player->getDirectionY();
+	float oW = player->getDirectionW();
+
+	SceneObject* obj = player->getTarget();
+	if (obj == NULL)
+		return;
+
+	float z = player->getPositionZ();
+
+	StringBuffer ss;
+	ss << "New Direction: " << endl;
+	ss << " oX: " << oX << endl;
+	ss << " oZ: " << oZ << endl;
+	ss << " oY: " << oY << endl;
+	ss << " oW: " << oW;
+
+	player->sendSystemMessage(ss.toString());
+
+	obj->setDirection(oX,oZ,oY,oW);
 }
 
 void GameCommandHandler::drag(StringTokenizer tokenizer, Player* player) {
