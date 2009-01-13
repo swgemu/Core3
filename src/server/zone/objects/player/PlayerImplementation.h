@@ -2012,6 +2012,7 @@ public:
 	void sendCloningDataStorageConfirm(CloningTerminal* terminal);
 	void sendItemInsuranceMenu(InsuranceTerminal* terminal);
 	void sendItemInsureAllConfirm(InsuranceTerminal* terminal);
+	void sendSlicingMenu(TangibleObject* item);
 
 	//Event Handlers
 	void onIncapacitateTarget(CreatureObject* victim);

@@ -5660,6 +5660,24 @@ void PlayerImplementation::sendItemInsureAllConfirm(InsuranceTerminal* terminal)
 	insurableItems.removeAll();
 }
 
+void PlayerImplementation::sendSlicingMenu(TangibleObject* item) {
+	if (hasSuiBoxWindowType(SuiWindowType::SLICING_MENU)) {
+		sendSystemMessage("slicing/slicing", "already_slicing"); //You are already slicing something.
+		return;
+	}
+
+	if (item != NULL && item->isSlicable()) {
+		item->setSlicerID(getObjectID());
+
+		SuiSlicingBox* slicingMenu = new SuiSlicingBox(_this, item);
+		slicingMenu->generateMenu();
+		slicingMenu->setCancelButton(true);
+
+		addSuiBox(slicingMenu);
+		sendMessage(slicingMenu->generateMessage());
+	}
+}
+
 
 
 /// Actions
@@ -6153,21 +6171,19 @@ void PlayerImplementation::onExperienceLost(const String& xptype, uint32 amount)
 
 }
 
-/**
- * This event handler is executed when clone data has been stored.
- */
+/// This event handler is executed when clone data has been stored.
 void PlayerImplementation::onCloneDataStored() {
 	sendSystemMessage("base_player", "clone_success"); //Clone location successfully updated.
 }
 
+/// This event is fired when an attempt to store clone data is made at a facility where it is already stored.
 void PlayerImplementation::onCloneDataAlreadyStored() {
 	sendSystemMessage("You have already stored your clone data at this location.");
 }
 
 /// This event should follow after successfully cloning.
 void PlayerImplementation::onCloneSuccessful() {
-
-
+	rescheduleRecovery(3000);
 }
 
 /// This event should follow after failing to clone.
@@ -6204,6 +6220,11 @@ void PlayerImplementation::onMakeBankPaymentTo(SceneObject* target, uint32 cost)
 
 }
 
+/**
+ * This event is fired when insufficient funds are available to make a payment.
+ * \param target The target of the payment.
+ * \param amount The amount of the payment.
+ */
 void PlayerImplementation::onInsufficientFundsAvailable(SceneObject* target, uint32 amount) {
 	StfParameter* params = new StfParameter();
 	params->addDI(amount);
@@ -6218,12 +6239,22 @@ void PlayerImplementation::onInsufficientFundsAvailable(SceneObject* target, uin
 	delete params;
 }
 
+/**
+ * This event is fired when an item has successfully been insured.
+ * \param itemID The objectID of the item being insured.
+ */
+
 void PlayerImplementation::onInsureItemSuccess(uint64 itemID) {
 	StfParameter* params = new StfParameter();
 	params->addTT(itemID);
 	sendSystemMessage("base_player", "prose_insure_success", params); //You successfully insure your %TT.
 	delete params;
 }
+
+/**
+ * This event is fired when an item failed to be insured for any reason.
+ * \param itemID The objectID of the item being insured.
+ */
 
 void PlayerImplementation::onInsureItemFailure(uint64 itemID) {
 	StfParameter* params = new StfParameter();
@@ -6232,6 +6263,10 @@ void PlayerImplementation::onInsureItemFailure(uint64 itemID) {
 	delete params;
 }
 
+/**
+ * This event is fired when insufficient funds are available to pay for the insurance of an item.
+ * \param itemID The objectID of the item attempting to be insured.
+ */
 void PlayerImplementation::onInsureItemInsufficientFunds(uint64 itemID) {
 	StfParameter* params = new StfParameter();
 	params->addTT(itemID);
@@ -6239,18 +6274,22 @@ void PlayerImplementation::onInsureItemInsufficientFunds(uint64 itemID) {
 	delete params;
 }
 
+/// This event is fired when an attempt to insure an item from an invalid insurance terminal is made.
 void PlayerImplementation::onInsureItemInvalidTerminal() {
 	sendSystemMessage("Insurance failed because the insurance terminal was invalid.");
 }
 
+/// This event is fired when all items have been successfully insured.
 void PlayerImplementation::onInsureAllItemsComplete() {
 	sendSystemMessage("base_player", "insure_success");
 }
 
+/// This event is fired when a player tries to insure items, but has no valid items to insure.
 void PlayerImplementation::onNoValidInsurables() {
 	sendSystemMessage("error_message", "no_uninsured_insurables"); //You do not posses any items that can be insured at this time.
 }
 
+/// This event is fired when a bank tip has completed successfully to an offline recipient.
 void PlayerImplementation::onBankTipSuccessful() {
 	sendSystemMessage("base_player", "wire_pass_self"); //Your /tip transaction was successfully completed.
 }

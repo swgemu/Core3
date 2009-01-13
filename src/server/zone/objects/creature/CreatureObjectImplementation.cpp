@@ -277,6 +277,10 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 
 	ferocity = 0;
 	baby = false;
+
+	//Regeneration modifiers
+	combatRegenModifier = 1.0f;
+	peacedRegenModifier = 1.0f;
 }
 
 CreatureObjectImplementation::~CreatureObjectImplementation() {
@@ -1631,24 +1635,6 @@ void CreatureObjectImplementation::setMaxHAMBars(int32 health, int32 action, int
 	dcreo6->close();
 
 	broadcastMessage(dcreo6);
-}
-
-uint32 CreatureObjectImplementation::calculateAttributeRegenTick(uint8 attribute) {
-	if (!CreatureAttribute::isHAM(attribute))
-		return 0;
-
-	//Get the attribute responsible for regen
-	float modifierAttribute = (float) getAttribute(attribute + 2);
-
-	float oneTick = modifierAttribute * 13.0f / 1200.0f * 3.0f;
-
-	if (isKneeling())
-		oneTick *= (5.0f / 7.0f);
-	else if (!isSitting())
-		oneTick *= (4.0f / 7.0f);
-
-	//If below 1, then gate at 1.
-	return (oneTick > 1.0f) ? (uint32) round(oneTick) : 1;
 }
 
 void CreatureObjectImplementation::doMeditateHeals() {
@@ -4652,9 +4638,20 @@ void CreatureObjectImplementation::onRegenerateHAM() {
 			changeShockWounds(-System::random(3) - 1);
 	}
 
-	uint32 healthTick = calculateAttributeRegenTick(CreatureAttribute::HEALTH);
-	uint32 actionTick = calculateAttributeRegenTick(CreatureAttribute::ACTION);
-	uint32 mindTick = calculateAttributeRegenTick(CreatureAttribute::MIND);
+	float modifier = (isInCombat()) ? combatRegenModifier : peacedRegenModifier;
+
+	if (isKneeling())
+		modifier *= (5.0f / 7.0f);
+	else if (!isSitting())
+		modifier *= (4.0f / 7.0f);
+
+	uint32 healthTick = (uint32) ceil((float) getConstitutionMax() * 13.0f / 1200.0f * 3.0f * modifier);
+	uint32 actionTick = (uint32) ceil((float) getStaminaMax() * 13.0f / 1200.0f * 3.0f * modifier);
+	uint32 mindTick = (uint32) ceil((float) getWillpowerMax() * 13.0f / 1200.0f * 3.0f * modifier);
+
+	healthTick = (healthTick > 1) ? healthTick : 1;
+	actionTick = (actionTick > 1) ? actionTick : 1;
+	mindTick = (mindTick > 1) ? mindTick : 1;
 
 	//TODO: Refactor this with event handlers
 	if (isMeditating()) {

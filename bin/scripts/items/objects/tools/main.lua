@@ -41,11 +41,20 @@
 --which carries forward this exception.
 
 
-RunItemLUAFile("objects/tools/chemicalTool.lua");
-RunItemLUAFile("objects/tools/floraTool.lua");
-RunItemLUAFile("objects/tools/gasTool.lua");
 RunItemLUAFile("objects/tools/genericTool.lua");
-RunItemLUAFile("objects/tools/mineralTool.lua");
-RunItemLUAFile("objects/tools/solarTool.lua");
-RunItemLUAFile("objects/tools/waterTool.lua");
-RunItemLUAFile("objects/tools/windTool.lua");
+
+--Surveying
+RunItemLUAFile("objects/tools/survey/chemicalTool.lua");
+RunItemLUAFile("objects/tools/survey/floraTool.lua");
+RunItemLUAFile("objects/tools/survey/gasTool.lua");
+RunItemLUAFile("objects/tools/survey/mineralTool.lua");
+RunItemLUAFile("objects/tools/survey/solarTool.lua");
+RunItemLUAFile("objects/tools/survey/waterTool.lua");
+RunItemLUAFile("objects/tools/survey/windTool.lua");
+
+--Smuggler
+RunItemLUAFile("objects/tools/smuggler/armorUpgradeKit.lua");
+RunItemLUAFile("objects/tools/smuggler/weaponUpgradeKit.lua");
+RunItemLUAFile("objects/tools/smuggler/flowAnalyzerNode.lua");
+RunItemLUAFile("objects/tools/smuggler/molecularClamp.lua");
+RunItemLUAFile("objects/tools/smuggler/precisionLaserKnife.lua");

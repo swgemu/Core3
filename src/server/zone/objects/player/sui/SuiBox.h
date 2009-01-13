@@ -39,6 +39,8 @@ public:
 
 	bool isBankTransferBox();
 
+	bool isSlicingBox();
+
 	unsigned long long getBoxID();
 
 	unsigned long long getWindowType();
@@ -90,6 +92,8 @@ public:
 	bool isColorPicker();
 
 	bool isBankTransferBox();
+
+	bool isSlicingBox();
 
 	unsigned long long getBoxID();
 

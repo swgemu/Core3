@@ -1,0 +1,1 @@
+ALTER TABLE `swgemu`.`player_storage` ADD COLUMN `optionsBitmask` INTEGER UNSIGNED NOT NULL AFTER `dropped_by_character`;

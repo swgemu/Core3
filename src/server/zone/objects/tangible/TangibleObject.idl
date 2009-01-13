@@ -111,6 +111,7 @@ interface TangibleObject implements SceneObject {
 	boolean isTicket();
 	boolean isTicketCollector();
 	boolean isTerminal();
+	boolean isTool();
 	boolean isSurveyTool();
 	boolean isPharmaceutical();
 
@@ -138,6 +139,15 @@ interface TangibleObject implements SceneObject {
 	boolean isInsured();
 	boolean isInsurable();
 	boolean isDecayable();
+	
+	boolean isSlicable();
+	boolean isSliced();
+	boolean isBeingSliced();
+	
+	unsigned long getSlicerID();
+	void setSlicerID(unsigned long id);
+	
+	void setSlicable(boolean value);
 
 	void setCraftersName(String n);
 	void setCraftedSerial(String s);
@@ -206,7 +216,9 @@ interface TangibleObject implements SceneObject {
 
 	//Event Handlers
 	void onBroken();
+	void onSlicingFailure(Player slicer);
 
 	//Actions
 	void decay(float decayRate);
+	void slice(Player slicer);
 }

@@ -1277,8 +1277,6 @@ public:
 
 	void unequipItem(TangibleObject* item);
 
-	unsigned int calculateAttributeRegenTick(unsigned char attribute);
-
 protected:
 	CreatureObject(DummyConstructorParameter* param);
 
@@ -2548,8 +2546,6 @@ public:
 	void equipItem(TangibleObject* item);
 
 	void unequipItem(TangibleObject* item);
-
-	unsigned int calculateAttributeRegenTick(unsigned char attribute);
 
 protected:
 	String _param0_info__String_bool_;

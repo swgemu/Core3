@@ -719,17 +719,24 @@ void RadialManager::handleSlicing(Player* player, SceneObject* obj) {
 
 	TangibleObject* tano = (TangibleObject*) obj;
 
+	if (!tano->isSlicable())
+		return;
 
-	if (tano->isArmor()) {
-		Armor* armor = (Armor*) tano;
-		if (!armor->isSliced())
-			armor->sliceArmor(player);
-	} else if (tano->isWeapon()) {
-		Weapon* weapon = (Weapon*) tano;
-		if (!weapon->isSliced())
-			weapon->sliceWeapon(player);
+	if (tano->isSliced()) {
+		player->sendSystemMessage("slicing/slicing", "already_sliced"); //That item has already been sliced.
+		return;
 	}
 
+	if (tano->isBeingSliced()) {
+		if (tano->getSlicerID() == player->getObjectID())
+			player->sendSystemMessage("slicing/slicing", "already_being_sliced"); //That item is already being sliced.
+		else
+			player->sendSystemMessage("slicing/slicing", "slicing_underway"); //Someone is already slicing that device.
+
+		return;
+	}
+
+	player->sendSlicingMenu(tano);
 }
 
 void RadialManager::handleRepair(Player* player, SceneObject* obj) {

@@ -50,12 +50,12 @@ which carries forward this exception.
 class JediWeaponImplementation : public JediWeaponServant {
 
 public:
-	JediWeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
+	JediWeaponImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, int tp, bool eqp = false)
 			: JediWeaponServant(objid, tempCRC, n, tempn, eqp, tp, JEDI) {
 		initialize();
 	}
 
-	JediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false) 
+	JediWeaponImplementation(CreatureObject* creature, const String& temp, const UnicodeString& n, const String& tempn, int tp, bool eqp = false)
 			: JediWeaponServant(creature, temp, n, tempn, eqp, tp, JEDI) {
 		initialize();
 	}
@@ -71,8 +71,9 @@ public:
 		setForceCost(14);
 
 		setArmorPiercing(MEDIUM);
-	}
 
+		slicable = false;
+	}
 };
 
 #endif /*JEDIWEAPONIMPLEMENTATION_H_*/

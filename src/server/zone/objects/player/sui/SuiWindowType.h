@@ -110,6 +110,8 @@ public:
 	static const int INSURE_ALL_CONFIRM = 45;
 
 	static const int BANK_TIP_CONFIRM = 46;
+
+	static const int SLICING_MENU = 47;
 };
 
 #endif /*SuiWindowType_H_*/

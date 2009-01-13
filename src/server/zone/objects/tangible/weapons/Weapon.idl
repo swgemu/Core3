@@ -66,8 +66,6 @@ interface Weapon implements TangibleObject {
 	//void generateAttributes(SceneObject obj);
 	
 	void setWeaponStats(int modifier);
-
-	void sliceWeapon(Player player);
 	
 	void decay(float decayRate);
 
@@ -78,10 +76,8 @@ interface Weapon implements TangibleObject {
 	boolean decreaseDot2Uses();
 	boolean decreasePowerupUses();
 	boolean decreaseUsesRemaining();
-
-	// getters
-	boolean isSliced();
-
+	
+	//Getters
 	boolean isJedi();
 	
 	boolean isMelee();
@@ -218,6 +214,8 @@ interface Weapon implements TangibleObject {
 
 	//Event Handlers
 	void onBroken();
+	void onSlicingFailure(Player slicer);
 
 	//Actions
+	void slice(Player slicer);
 }

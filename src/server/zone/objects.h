@@ -202,6 +202,17 @@ which carries forward this exception.
 #include "objects/tangible/pharmaceutical/CureAreaPack.h"
 #include "objects/tangible/pharmaceutical/CureAreaPackImplementation.h"
 
+#include "objects/tangible/tools/Tool.h"
+#include "objects/tangible/tools/ToolImplementation.h"
+#include "objects/tangible/tools/smuggler/PrecisionLaserKnife.h"
+#include "objects/tangible/tools/smuggler/PrecisionLaserKnifeImplementation.h"
+#include "objects/tangible/tools/smuggler/FlowAnalyzerNode.h"
+#include "objects/tangible/tools/smuggler/FlowAnalyzerNode.h"
+#include "objects/tangible/tools/smuggler/MolecularClamp.h"
+#include "objects/tangible/tools/smuggler/MolecularClampImplementation.h"
+#include "objects/tangible/tools/smuggler/UpgradeKit.h"
+#include "objects/tangible/tools/smuggler/UpgradeKitImplementation.h"
+
 #include "objects/tangible/generic/GenericItem.h"
 #include "objects/tangible/generic/GenericItemImplementation.h"
 #include "objects/tangible/generic/Dice.h"
@@ -282,6 +293,8 @@ which carries forward this exception.
 #include "objects/player/sui/transferbox/SuiTransferBox.h"
 #include "objects/player/sui/banktransferbox/SuiBankTipConfirmBoxImplementation.h"
 #include "objects/player/sui/banktransferbox/SuiBankTipConfirmBox.h"
+#include "objects/player/sui/slicingbox/SuiSlicingBox.h"
+#include "objects/player/sui/slicingbox/SuiSlicingBoxImplementation.h"
 
 #include "objects/tangible/weapons/ThrowableWeapon.h"
 #include "objects/tangible/weapons/ThrowableWeaponImplementation.h"

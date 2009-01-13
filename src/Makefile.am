@@ -124,6 +124,7 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/player/IgnoreList.cpp \
 		server/zone/objects/player/Player.cpp \
 		server/zone/objects/player/PlayerObject.cpp \
+		server/zone/objects/player/sui/slicingbox/SuiSlicingBox.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTipConfirmBox.cpp \
 		server/zone/objects/player/sui/colorpicker/SuiColorPicker.cpp \
@@ -171,6 +172,11 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
+		server/zone/objects/tangible/tools/Tool.cpp \
+		server/zone/objects/tangible/tools/smuggler/PrecisionLaserKnife.cpp \
+		server/zone/objects/tangible/tools/smuggler/FlowAnalyzerNode.cpp \
+		server/zone/objects/tangible/tools/smuggler/MolecularClamp.cpp \
+		server/zone/objects/tangible/tools/smuggler/UpgradeKit.cpp \
 		server/zone/objects/tangible/powerup/Powerup.cpp \
 		server/zone/objects/tangible/resource/ResourceContainer.cpp \
 		server/zone/objects/tangible/surveytool/SurveyTool.cpp \
@@ -317,6 +323,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/pharmaceutical/StatePackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
+		server/zone/objects/tangible/tools/ToolImplementation.cpp \
 		server/zone/objects/tangible/powerup/PowerupImplementation.cpp \
 		server/zone/objects/tangible/resource/ResourceContainerImplementation.cpp \
 		server/zone/objects/tangible/surveytool/SurveyToolImplementation.cpp \

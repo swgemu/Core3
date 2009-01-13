@@ -230,7 +230,7 @@ void ArmorImplementation::initialize() {
 
 	armorType = 0;
 
-	setSliced(false);
+	slicable = true;
 
 	customizationVars.setVariable(3, 0);
 	customizationVars.setVariable(2, 0);
@@ -844,153 +844,6 @@ void ArmorImplementation::setArmorStats(int modifier) {
 	}*/
 }
 
-void ArmorImplementation::sliceArmor(Player* player){
-	bool sliceType = System::random(1);
-	int slicePercent;
-
-	int min = 0;
-	int max = 0;
-
-	StringBuffer msg;
-
-	try {
-		wlock();
-
-		if (isEquipped())
-			msg << "You must unequip this item first.";
-		else if (!isSliced()) {
-			float sliceBonus = 0;
-
-			switch (player->getSlicingAbility()) {
-			case 3 :
-				if (sliceType == 0) {
-					min = 5;
-					max = 20;
-				} else {
-					min = 5;
-					max = 30;
-				}
-			case 4 :
-				if (sliceType == 0) {
-					min = 5;
-					max = 30;
-				} else {
-					min = 15;
-					max = 40;
-				}
-				break;
-			case 5 :
-				if (sliceType == 0) {
-					min = 11;
-					max = 35;
-				} else {
-					min = 20;
-					max = 45;
-				}
-				break;
-			default :
-				break;
-			}
-
-			switch (sliceType) {
-			case 0:
-				slicePercent = sliceArmorEffectiveness(min, max);
-				msg << "Armor effectiveness increased by " << slicePercent << "%";
-				break;
-			case 1:
-				slicePercent = sliceArmorEncumbrance(min, max);
-				msg << "Armor encumbrance reduced by " << slicePercent << "%";
-				break;
-			}
-
-			generateAttributes(player);
-
-		} else
-			msg << "Armor is already sliced.";
-
-		unlock();
-	} catch (...) {
-		unlock();
-	}
-
-	player->sendSystemMessage(msg.toString());
-}
-
-int ArmorImplementation::sliceArmorEffectiveness(int min, int max){
-	if (sliced)
-		return 0;
-
-	int modifier = System::random(max - min) + min;
-
-	if (!kineticIsSpecial) {
-		setKinetic(kinetic + (kinetic * modifier / 100));
-		if (kinetic > 90.0f)
-			setKinetic(90.0f);
-	}
-
-	if (!energyIsSpecial) {
-		setEnergy(energy + (energy * modifier / 100));
-		if (energy > 90.0f)
-			setEnergy(90.0f);
-	}
-	if (!electricityIsSpecial) {
-		setElectricity(electricity + (electricity * modifier / 100));
-		if (electricity > 90.0f)
-			setElectricity(90.0f);
-	}
-	if (!stunIsSpecial) {
-		setStun(stun + (stun * modifier / 100));
-		if (stun > 90.0f)
-			setStun(90.0f);
-	}
-	if (!blastIsSpecial) {
-		setBlast(blast + (blast * modifier / 100));
-		if (blast > 90.0f)
-			setBlast(90.0f);
-	}
-	if (!heatIsSpecial) {
-		setHeat(heat + (heat * modifier / 100));
-		if (heat > 90.0f)
-			setHeat(90.0f);
-	}
-	if (!coldIsSpecial) {
-		setCold(cold + (cold * modifier / 100));
-		if (cold > 90.0f)
-			setCold(90.0f);
-	}
-	if (!acidIsSpecial) {
-		setAcid(acid + (acid * modifier / 100));
-		if (acid > 90.0f)
-			setAcid(90.0f);
-	}
-	if (!lightSaberIsSpecial) {
-		setLightSaber(lightSaber + (lightSaber * modifier / 100));
-		if (lightSaber > 90.0f)
-			setLightSaber(90.0f);
-	}
-
-	setSliced(true);
-	updated = true;
-
-	return modifier;
-}
-
-int ArmorImplementation::sliceArmorEncumbrance(int min, int max){
-	if (sliced)
-		return 0;
-
-	int modifier = System::random(max - min) + min;
-
-	setHealthEncumbrance(healthEncumbrance - (healthEncumbrance * modifier / 100));
-	setActionEncumbrance(actionEncumbrance - (actionEncumbrance * modifier / 100));
-	setMindEncumbrance(mindEncumbrance - (mindEncumbrance * modifier / 100));
-
-	setSliced(true);
-	updated = true;
-
-	return modifier;
-}
-
 void ArmorImplementation::setSocket(int index, int type, int value) {
 	switch (index) {
 	case 0:
@@ -1353,3 +1206,173 @@ void ArmorImplementation::setArmorPiece() {
 
 	setArmorPiece(armorSlot);
 }
+
+
+//Event Handlers
+/**
+ * This event occurs following a successful encumbrance slice.
+ * \param slicer The Player doing the slicing.
+ * \param percentage The percentage increase.
+ */
+void ArmorImplementation::onEncumbranceSliced(Player* slicer, uint8 percentage) {
+	StfParameter* params = new StfParameter();
+	params->addDI(percentage);
+	slicer->sendSystemMessage("slicing/slicing", "enc_mod", params); //You have successfully reduced the encumberance of the armor by %DI%!
+	delete params;
+}
+
+/**
+ * This event occurs following a successful effectiveness slice.
+ * \param slicer The Player doing the slicing.
+ * \param percentage The percentage increase.
+ */
+void ArmorImplementation::onEffectivenessSliced(Player* slicer, uint8 percentage) {
+	StfParameter* params = new StfParameter();
+	params->addDI(percentage);
+	slicer->sendSystemMessage("slicing/slicing", "eff_mod", params); //You have successfully increased the base effectiveness of the armor by %DI%!
+	delete params;
+}
+
+/**
+ * This event occurs when a slicing attempt has gone awry.
+ * \param slicer The player doing the slicing.
+ */
+void ArmorImplementation::onSlicingFailure(Player* slicer) {
+	slicer->sendSystemMessage("slicing/slicing", "fail_armor"); //You've made a critical mistake modifying the armor's basic systems. The damage is extensive and while the armor still retains its previous effectiveness, no one will be able to modify it in the future.
+	setSliced(true);
+}
+
+//Actions
+/**
+ * Slices the item.
+ * \param slicer The player slicing the item.
+ */
+void ArmorImplementation::slice(Player* slicer) {
+	uint8 sliceType = System::random(1);
+
+	int sliceSkill = slicer->getSlicingAbility();
+	uint8 min = 0;
+	uint8 max = 0;
+
+	//sliceType 0 = effectiveness
+	//sliceType 1 = encumbrance
+
+	//Cases fall through compounding upon each other.
+	switch (sliceSkill) {
+	case 5:
+		min += (sliceType == 0) ? 6 : 5;
+		max += (sliceType == 0) ? 5 : 5;
+	case 4:
+		min += (sliceType == 0) ? 0 : 10;
+		max += (sliceType == 0) ? 10 : 10;
+	case 3:
+		min += (sliceType == 0) ? 5 : 5;
+		max += (sliceType == 0) ? 20 : 30;
+		break;
+	default:
+		return;
+	}
+
+	uint8 percentage = System::random(max - min) + min;
+
+	try {
+		wlock();
+
+		switch (sliceType) {
+		case 0:
+			sliceEffectiveness(slicer, percentage);
+			break;
+		case 1:
+			sliceEncumbrance(slicer, percentage);
+			break;
+		}
+
+		generateAttributes(slicer);
+
+		unlock();
+	} catch (...) {
+		unlock();
+	}
+}
+
+/**
+ * Slices the armor, decreasing encumbrance.
+ * \param slicer The player doing the slicing.
+ * \param percentage What percentage increase will take effect.
+ */
+void ArmorImplementation::sliceEncumbrance(Player* slicer, uint8 percentage){
+	if (isSliced())
+		return;
+
+	setHealthEncumbrance(healthEncumbrance - (healthEncumbrance * percentage / 100));
+	setActionEncumbrance(actionEncumbrance - (actionEncumbrance * percentage / 100));
+	setMindEncumbrance(mindEncumbrance - (mindEncumbrance * percentage / 100));
+
+	setSliced(true);
+	updated = true;
+
+	onEncumbranceSliced(slicer, percentage);
+}
+
+/**
+ * Slices the armor, increasing effectiveness.
+ * \param slicer The player doing the slicing.
+ * \param percentage What percentage increase will take effect.
+ */
+void ArmorImplementation::sliceEffectiveness(Player* slicer, uint8 percentage){
+	if (sliced)
+		return;
+
+	if (!kineticIsSpecial) {
+		setKinetic(kinetic + (kinetic * percentage / 100));
+		if (kinetic > 90.0f)
+			setKinetic(90.0f);
+	}
+
+	if (!energyIsSpecial) {
+		setEnergy(energy + (energy * percentage / 100));
+		if (energy > 90.0f)
+			setEnergy(90.0f);
+	}
+	if (!electricityIsSpecial) {
+		setElectricity(electricity + (electricity * percentage / 100));
+		if (electricity > 90.0f)
+			setElectricity(90.0f);
+	}
+	if (!stunIsSpecial) {
+		setStun(stun + (stun * percentage / 100));
+		if (stun > 90.0f)
+			setStun(90.0f);
+	}
+	if (!blastIsSpecial) {
+		setBlast(blast + (blast * percentage / 100));
+		if (blast > 90.0f)
+			setBlast(90.0f);
+	}
+	if (!heatIsSpecial) {
+		setHeat(heat + (heat * percentage / 100));
+		if (heat > 90.0f)
+			setHeat(90.0f);
+	}
+	if (!coldIsSpecial) {
+		setCold(cold + (cold * percentage / 100));
+		if (cold > 90.0f)
+			setCold(90.0f);
+	}
+	if (!acidIsSpecial) {
+		setAcid(acid + (acid * percentage / 100));
+		if (acid > 90.0f)
+			setAcid(90.0f);
+	}
+	if (!lightSaberIsSpecial) {
+		setLightSaber(lightSaber + (lightSaber * percentage / 100));
+		if (lightSaber > 90.0f)
+			setLightSaber(90.0f);
+	}
+
+	setSliced(true);
+	updated = true;
+
+	onEffectivenessSliced(slicer, percentage);
+}
+

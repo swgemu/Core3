@@ -370,6 +370,13 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			break;
 		case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
 			break;
+		default:
+            item = createSubObject(objectid, objectcrc, objectname, objecttemp, equipped);
+            if (makeStats) {
+                item->setAttributes(lootAttributes);
+                item->parseItemAttributes();
+            }
+			break;
 		}
 
 	} else if (objecttype & TangibleObjectImplementation::WEAPONPOWERUP) {
@@ -546,6 +553,21 @@ TangibleObject* ItemManagerImplementation::createSubObject(uint64 objectid, uint
     case 0xD474E5E7: //dice
         item = new Dice(objectid, objectcrc, objectname, objecttemp);
         break;
+    case 0x9075A4C8: //Armor Upgrade Kit
+    	item = new UpgradeKit(objectid, objectcrc, objectname, objecttemp, UpgradeKitImplementation::ARMORKIT);
+    	break;
+    case 0xC3ABF395: //Weapon Upgrade Kit
+    	item = new UpgradeKit(objectid, objectcrc, objectname, objecttemp, UpgradeKitImplementation::WEAPONKIT);
+        break;
+    case 0xE8C6FD5C:
+    	item = new PrecisionLaserKnife(objectid, objectcrc, objectname, objecttemp);
+    	break;
+    case 0x15013600:
+    	item = new FlowAnalyzerNode(objectid, objectcrc, objectname, objecttemp);
+    	break;
+    case 0x9EC5864C:
+    	item = new MolecularClamp(objectid, objectcrc, objectname, objecttemp);
+    	break;
 	default:
 		item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, TangibleObjectImplementation::MISC);
 		break;
@@ -938,6 +960,14 @@ void ItemManagerImplementation::registerGlobals() {
 	setGlobalInt("TALUS", CamoSkill::TALUS);
 	setGlobalInt("TATOOINE", CamoSkill::TATOOINE);
 	setGlobalInt("YAVIN", CamoSkill::YAVIN);
+
+	//Smuggling Tools
+	setGlobalInt("PRECLASERKNIFE", ToolImplementation::PRECLASERKNIFE);
+	setGlobalInt("UPGRADEKIT", ToolImplementation::UPGRADEKIT);
+	setGlobalInt("FLOWANALYZERNODE", ToolImplementation::FLOWANALYZERNODE);
+	setGlobalInt("MOLECULARCLAMP", ToolImplementation::MOLECULARCLAMP);
+	setGlobalInt("ARMORKIT", UpgradeKitImplementation::ARMORKIT);
+	setGlobalInt("WEAPONKIT", UpgradeKitImplementation::WEAPONKIT);
 }
 
 int ItemManagerImplementation::runItemLUAFile(lua_State* L) {
@@ -957,6 +987,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	int type = itemconfig.getIntField("objectType");
 	uint16 itemMask = itemconfig.getIntField("itemMask");
 	uint32 optionsBitmask = itemconfig.getIntField("optionsBitmask");
+	bool slicable = itemconfig.getByteField("slicable");
 
 	if (itemMask == 0)
 		itemMask = TangibleObjectImplementation::ALL;
@@ -966,6 +997,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 	item->setObjectSubType(type);
 	item->setPlayerUseMask(itemMask);
 	item->setOptionsBitmask(optionsBitmask);
+	item->setSlicable(slicable);
 
 	//ADD ATTRIBUTES
 	if (type & TangibleObjectImplementation::ARMOR) {
@@ -1232,6 +1264,22 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
             	title = "exp_effectiveness";
             	component->addProperty(attribute, power, 0, title);
 	    }
+    } else if (item->isTool()) {
+    	//ToolImplementation
+    	Tool* tool = (Tool*) item;
+
+    	uint32 toolType = itemconfig.getIntField("toolType");
+    	float effectiveness = itemconfig.getFloatField("effectiveness");
+
+    	tool->setToolType(toolType);
+    	tool->setEffectiveness(effectiveness);
+
+    	if (tool->isUpgradeKit()) {
+    		uint8 kitType = itemconfig.getIntField("kitType");
+
+    		UpgradeKit* upkit = (UpgradeKit*) tool;
+    		upkit->setKitType(kitType);
+    	}
     }
 
 	return item;
@@ -2586,7 +2634,6 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 			uint64 parentID = result->getUnsignedLong(7);
 			String appearance = result->getString(9);
 			uint16 itemMask = result->getUnsignedInt(10);
-			uint32 optionsBitmask = result->getUnsignedInt(11);
 
 			float X = result->getFloat(11);
 			float Y = result->getFloat(12);
@@ -2596,6 +2643,8 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 			float oY = result->getFloat(15);
 			float oZ = result->getFloat(16);
 			float oW = result->getFloat(17);
+
+			uint32 optionsBitmask = result->getUnsignedInt(19);
 
 			BinaryData cust(appearance);
 
@@ -2689,7 +2738,7 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 			uint64 parentID = contiResult->getUnsignedLong(7);
 			String appearance = contiResult->getString(9);
 			uint16 itemMask = contiResult->getUnsignedInt(10);
-			uint32 optionsBitmask = contiResult->getUnsignedInt(11);
+			uint32 optionsBitmask = contiResult->getUnsignedInt(19);
 
 			BinaryData cust(appearance);
 

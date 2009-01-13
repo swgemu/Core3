@@ -86,8 +86,6 @@ private:
 
 	int armorType;
 
-	bool sliced;
-
 	int skillMod0Type;
 	int skillMod0Value;
 
@@ -377,12 +375,6 @@ public:
 		return armorType;
 	}
 
-	inline void setSliced(bool hacked) {
-		sliced = hacked;
-		String key = "sliced";
-		itemAttributes->setBooleanAttribute(key, hacked);
-	}
-
 	inline void setSkillMod0Type(int skillModType) {
 		skillMod0Type = skillModType;
 		String name = "skillMod0Type";
@@ -572,10 +564,6 @@ public:
 		return armorType;
 	}
 
-	inline bool isSliced() {
-		return sliced;
-	}
-
 	inline int getSkillMod0Type() {
 		return skillMod0Type;
 	}
@@ -656,7 +644,13 @@ public:
 
 	//Event Handlers
 	void onBroken();
+	void onEncumbranceSliced(Player* slicer, uint8 percentage);
+	void onEffectivenessSliced(Player* slicer, uint8 percentage);
+	void onSlicingFailure(Player* slicer);
 
 	//Actions
+	void slice(Player* slicer);
+	void sliceEncumbrance(Player* slicer, uint8 percentage);
+	void sliceEffectiveness(Player* slicer, uint8 percentage);
 };
 #endif /*ARMORIMPLEMENTATION_H_*/

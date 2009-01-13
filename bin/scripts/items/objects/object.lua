@@ -42,7 +42,11 @@
 Object = {
 	objectName = "Object",
 
-	itemMask = ALL
+	itemMask = ALL,
+	
+	optionsBitmask = 0,
+	
+	slicable = "0"
 }
 
 -- for creation of new instances

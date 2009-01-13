@@ -110,6 +110,11 @@ protected:
 
 	bool wasLooted;
 
+	//Slicing
+	bool sliced;
+	bool slicable;
+	uint64 slicerID;
+
 public:
 	static const int HAIR = 0x30000001;
 	static const int TERMINAL = 0x30000002;
@@ -634,6 +639,10 @@ public:
 		return objectSubType == TERMINAL;
 	}
 
+	inline bool isTool() {
+		return objectSubType == TOOL;
+	}
+
 	inline bool isHolocron() {
 		return objectSubType == HOLOCRON;
 	}
@@ -685,8 +694,8 @@ public:
 	}
 
 	inline bool isCamoKit() {
-			return objectSubType == CAMOKIT;
-		}
+		return objectSubType == CAMOKIT;
+	}
 
 	inline int getConditionDamage() {
 		return conditionDamage;
@@ -706,9 +715,66 @@ public:
 
 	//Event Handlers
 	virtual void onBroken();
+	virtual void onSlicingFailure(Player* slicer);
 
 	//Actions
 	virtual void decay(float decayRate);
+	virtual void slice(Player* slicer);
+
+
+	/// Is this object able to be sliced.
+	inline bool isSlicable() {
+		return (slicable && !isSliced() && !isBeingSliced());
+	}
+
+	/// Has this object been sliced.
+	inline bool isSliced() {
+		return sliced;
+	}
+
+	/// Is the object currently being sliced?
+	inline bool isBeingSliced() {
+		return (slicerID > 0 && !isSliced());
+	}
+
+	/**
+	 * Gets the current slicers objectID
+	 * \return uint64 Returns the objectID of the object's slicer.
+	 */
+	inline uint64 getSlicerID() {
+		return slicerID;
+	}
+
+
+	/**
+	 * Set the object ID of the current slicer. If 0, then no one is currently slicing. Be sure to set to 0, after done using.
+	 * \param id The objectID of the current slicer.
+	 */
+	inline void setSlicerID(uint64 id) {
+		slicerID = id;
+		String name = "slicerID";
+		itemAttributes->setUnsignedLongAttribute(name, slicerID);
+	}
+
+	/**
+	 * Set whether or not this object is capable of being sliced.
+	 * \param value Boolean indicating whether or not this object can be sliced.
+	 */
+	inline void setSlicable(bool value) {
+		slicable = value;
+		String name = "slicable";
+		itemAttributes->setBooleanAttribute(name, slicable);
+	}
+
+	/**
+	 * Set whether or not this object has been sliced.
+	 * \param value Boolean indicating whether or not this object has been sliced.
+	 */
+	inline void setSliced(bool value) {
+		sliced = value;
+		String name = "sliced";
+		itemAttributes->setBooleanAttribute(name, sliced);
+	}
 };
 
 #endif /*TANGIBLEOBJECTIMPLEMENTATION_H_*/

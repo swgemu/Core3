@@ -958,7 +958,4 @@ interface CreatureObject implements SceneObject {
 	//Setters
 	
 	//Getters
-	
-	//Calculations
-	unsigned int calculateAttributeRegenTick(unsigned char attribute);
 }

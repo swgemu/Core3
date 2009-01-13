@@ -29,8 +29,6 @@ public:
 
 	void setWeaponStats(int modifier);
 
-	void sliceWeapon(Player* player);
-
 	void decay(float decayRate);
 
 	void removePowerup(Player* player, bool notify);
@@ -44,8 +42,6 @@ public:
 	bool decreasePowerupUses();
 
 	bool decreaseUsesRemaining();
-
-	bool isSliced();
 
 	bool isJedi();
 
@@ -232,6 +228,10 @@ public:
 	void setXpType();
 
 	void onBroken();
+
+	void onSlicingFailure(Player* slicer);
+
+	void slice(Player* slicer);
 
 protected:
 	Weapon(DummyConstructorParameter* param);
@@ -256,8 +256,6 @@ public:
 
 	void setWeaponStats(int modifier);
 
-	void sliceWeapon(Player* player);
-
 	void decay(float decayRate);
 
 	void removePowerup(Player* player, bool notify);
@@ -271,8 +269,6 @@ public:
 	bool decreasePowerupUses();
 
 	bool decreaseUsesRemaining();
-
-	bool isSliced();
 
 	bool isJedi();
 
@@ -459,6 +455,10 @@ public:
 	void setXpType();
 
 	void onBroken();
+
+	void onSlicingFailure(Player* slicer);
+
+	void slice(Player* slicer);
 
 protected:
 	String _param0_setCert__String_;

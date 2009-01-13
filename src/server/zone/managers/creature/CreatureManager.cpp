@@ -388,6 +388,31 @@ void CreatureManager::addCreature(Creature* creature) {
 		((CreatureManagerImplementation*) _impl)->addCreature(creature);
 }
 
+void CreatureManager::setGlobalNPCRegen(float value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addFloatParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((CreatureManagerImplementation*) _impl)->setGlobalNPCRegen(value);
+}
+
+float CreatureManager::getGlobalNPCRegen() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((CreatureManagerImplementation*) _impl)->getGlobalNPCRegen();
+}
+
 /*
  *	CreatureManagerAdapter
  */
@@ -470,6 +495,12 @@ Packet* CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case 29:
 		addCreature((Creature*) inv->getObjectParameter());
+		break;
+	case 30:
+		setGlobalNPCRegen(inv->getFloatParameter());
+		break;
+	case 31:
+		resp->insertFloat(getGlobalNPCRegen());
 		break;
 	default:
 		return NULL;
@@ -572,6 +603,14 @@ Creature* CreatureManagerAdapter::getCreature(unsigned long long oid) {
 
 void CreatureManagerAdapter::addCreature(Creature* creature) {
 	return ((CreatureManagerImplementation*) impl)->addCreature(creature);
+}
+
+void CreatureManagerAdapter::setGlobalNPCRegen(float value) {
+	return ((CreatureManagerImplementation*) impl)->setGlobalNPCRegen(value);
+}
+
+float CreatureManagerAdapter::getGlobalNPCRegen() {
+	return ((CreatureManagerImplementation*) impl)->getGlobalNPCRegen();
 }
 
 /*

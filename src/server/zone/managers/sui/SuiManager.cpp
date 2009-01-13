@@ -227,6 +227,9 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, Player* player, uint32
 	case SuiWindowType::BANK_TIP_CONFIRM:
 		handleBankTipConfirm(boxID, player, cancel);
 		break;
+	case SuiWindowType::SLICING_MENU:
+		handleSlicingMenu(boxID, player, cancel, atoi(value.toCharArray()));
+		break;
 	default:
 		//Clean up players sui box:
 
@@ -685,104 +688,6 @@ void SuiManager::handleSurveyToolRange(uint32 boxID, Player* player, uint32 canc
 		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleSurveyToolRange(uint32 boxID, Player* player, int range)");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleSliceWeapon(uint32 boxID, Player* player, uint32 cancel, int itemindex) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (cancel != 1) {
-			Inventory* inventory = player->getInventory();
-
-			int weaponCount = 0;
-
-			for (int i = 0; i < inventory->objectsSize(); i++) {
-				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-				if (item->isWeapon()) {
-					Weapon* weapon = (Weapon*) item;
-
-					if (!weapon->isSliced()) {
-						if (weaponCount == itemindex)
-							weapon->sliceWeapon(player);
-
-						weaponCount++;
-					}
-				}
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception in SuiManager::handleSliceWeapon " << e.getMessage();
-		error(msg.toString());
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleSliceWeapon(uint32 boxID, Player* player, int itemindex)");
-		player->unlock();
-	}
-}
-
-void SuiManager::handleSliceArmor(uint32 boxID, Player* player, uint32 cancel, int itemindex) {
-	try {
-		player->wlock();
-
-		if (!player->hasSuiBox(boxID)) {
-			player->unlock();
-			return;
-		}
-
-		SuiBox* sui = player->getSuiBox(boxID);
-
-		if (cancel != 1) {
-			Inventory* inventory = player->getInventory();
-
-			int armorCount = 0;
-
-			for (int i = 0; i < inventory->objectsSize(); i++) {
-				TangibleObject* item = (TangibleObject*) inventory->getObject(i);
-
-				if (item->isArmor()) {
-					Armor* armor = (Armor*) item;
-
-					if (!armor->isSliced()) {
-						if (armorCount == itemindex)
-							armor->sliceArmor(player);
-
-						armorCount++;
-					}
-				}
-			}
-		}
-
-		player->removeSuiBox(boxID);
-
-		sui->finalize();
-
-		player->unlock();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "Exception in SuiManager::handleSliceArmor " << e.getMessage();
-		error(msg.toString());
-
-		player->unlock();
-	} catch (...) {
-		error("Unreported exception caught in SuiManager::handleSliceArmor(uint32 boxID, Player* player, int itemindex)");
 		player->unlock();
 	}
 }
@@ -1847,6 +1752,50 @@ void SuiManager::handleBankTipConfirm(uint32 boxID, Player* player, uint32 cance
 		player->unlock();
 	} catch (...) {
 		error("Unreported exception caught in SuiManager::handleBankTipConfirm");
+		player->unlock();
+	}
+}
+
+
+
+void SuiManager::handleSlicingMenu(uint32 boxID, Player* player, uint32 cancel, int index) {
+	try {
+		player->wlock();
+
+		if (!player->hasSuiBox(boxID)) {
+			player->unlock();
+			return;
+		}
+
+		SuiBox* sui = player->getSuiBox(boxID);
+
+		if (sui != NULL && sui->isSlicingBox() && cancel != 1) {
+			SuiSlicingBox* slicingMenu = (SuiSlicingBox*) sui;
+
+			bool resendMenu = slicingMenu->handleMenuChoice(index);
+
+			if (resendMenu) {
+				player->sendMessage(slicingMenu->generateMessage());
+				player->unlock();
+				return;
+			}
+
+			//Reset the current slicer id to 0, since no one is slicing it anymore.
+			slicingMenu->getSlicingObject()->setSlicerID(0);
+		}
+
+		player->removeSuiBox(boxID);
+
+		sui->finalize();
+
+		player->unlock();
+	} catch (Exception& e) {
+		error("Exception in SuiManager::handleInsuranceMenu ");
+		e.printStackTrace();
+
+		player->unlock();
+	} catch (...) {
+		error("Unreported exception caught in SuiManager::handleInsuranceMenu");
 		player->unlock();
 	}
 }

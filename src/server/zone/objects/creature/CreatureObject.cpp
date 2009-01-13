@@ -7953,19 +7953,6 @@ void CreatureObject::unequipItem(TangibleObject* item) {
 		((CreatureObjectImplementation*) _impl)->unequipItem(item);
 }
 
-unsigned int CreatureObject::calculateAttributeRegenTick(unsigned char attribute) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 619);
-		method.addUnsignedCharParameter(attribute);
-
-		return method.executeWithUnsignedIntReturn();
-	} else
-		return ((CreatureObjectImplementation*) _impl)->calculateAttributeRegenTick(attribute);
-}
-
 /*
  *	CreatureObjectAdapter
  */
@@ -9815,9 +9802,6 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case 618:
 		unequipItem((TangibleObject*) inv->getObjectParameter());
-		break;
-	case 619:
-		resp->insertInt(calculateAttributeRegenTick(inv->getUnsignedCharParameter()));
 		break;
 	default:
 		return NULL;
@@ -12276,10 +12260,6 @@ void CreatureObjectAdapter::equipItem(TangibleObject* item) {
 
 void CreatureObjectAdapter::unequipItem(TangibleObject* item) {
 	return ((CreatureObjectImplementation*) impl)->unequipItem(item);
-}
-
-unsigned int CreatureObjectAdapter::calculateAttributeRegenTick(unsigned char attribute) {
-	return ((CreatureObjectImplementation*) impl)->calculateAttributeRegenTick(attribute);
 }
 
 /*

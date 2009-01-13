@@ -66,9 +66,6 @@ public:
 
 	void handleSurveyToolRange(uint32 boxID, Player* player, uint32 cancel, int range);
 
-	void handleSliceWeapon(uint32 boxID, Player* player, uint32 cancel, int itemindex);
-	void handleSliceArmor(uint32 boxID, Player* player, uint32 cancel, int itemindex);
-
 	void handleRepairWeapon(uint32 boxID, Player* player, uint32 cancel, int itemindex);
 	void handleRepairArmor(uint32 boxID, Player* player, uint32 cancel, int itemindex);
 
@@ -108,6 +105,7 @@ public:
 	void handleInsureAllConfirm(uint32 boxID, Player* player, uint32 cancel);
 
 	void handleBankTipConfirm(uint32 boxID, Player* player, uint32 cancel);
+	void handleSlicingMenu(uint32 boxID, Player* player, uint32 cancel, int index);
 
 };
 
