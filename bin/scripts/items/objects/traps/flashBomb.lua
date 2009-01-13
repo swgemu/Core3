@@ -14,9 +14,9 @@ flashBomb = Weapon:new {
 	
 	attackSpeed = 1.0,
 
-	minDamage = 400,
+	minDamage = 200,
 
-	maxDamage = 500,
+	maxDamage = 300,
 	
 	skill = "throwflashbomb"
 }

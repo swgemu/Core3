@@ -40,25 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-adhesiveMesh = Weapon:new {
+camp_set = {campKit , campKitLong}
 
-	objectName = "Adhesive Mesh",
+addBFItemSet("Camp Kits" , camp_set);
 
-	templateName = "object/tangible/scout/trap/shared_trap_webber.iff",
-
-	objectCRC = 3441092972,
-
-	objectType = TRAP,
-
-	damageType = WEAPON_KINETIC,
-
-	uses = 15,
-	
-	attackSpeed = 1.0,
-
-	minDamage = 120,
-
-	maxDamage = 196,
-	
-	skill = "throwadhesivemesh"
-}

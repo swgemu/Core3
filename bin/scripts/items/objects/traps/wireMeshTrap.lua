@@ -56,9 +56,9 @@ wireMeshTrap = Weapon:new {
 	
 	attackSpeed = 1.0,
 
-	minDamage = 50,
+	minDamage = 20,
 
-	maxDamage = 80,
+	maxDamage = 60,
 	
 	skill = "throwwiredmeshtrap"
 }

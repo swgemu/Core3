@@ -110,7 +110,8 @@ ThrowSkill = {
 	intimidateChance = 0,
 	snareChance = 0,
 	rootChance = 0,
-	
+	dotType = 0,
+
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
 	CbtSpamEvade = "attack_evade",
@@ -152,7 +153,7 @@ ThrowSkill = {
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
-	snareChance = 0,
+	snareChance = 100,
 	rootChance = 0,
 	
 	CbtSpamBlock = "attack_block",
@@ -257,7 +258,8 @@ ThrowSkill = {
 	intimidateChance = 0,
 	snareChance = 0,
 	rootChance = 0,
-	
+	dotType = 9,
+
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
 	CbtSpamEvade = "attack_evade",
@@ -291,7 +293,7 @@ ThrowSkill = {
 	range = 35,
 	damageRatio = 2.0,
 	speedRatio = 2.0,
-	areaRange = 0,
+	areaRange = 4,
 	accuracyBonus = 0,
 	
 	healthAttackChance = 0,
@@ -315,7 +317,8 @@ ThrowSkill = {
 	intimidateChance = 0,
 	snareChance = 0,
 	rootChance = 0,
-	
+	dotType = 0,
+
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
 	CbtSpamEvade = "attack_evade",
@@ -355,8 +358,8 @@ ThrowSkill = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 100,
-	intimidateChance = 100,
+	stunChance = 0,
+	intimidateChance = 0,
 	snareChance = 0,
 	rootChance = 0,
 	
@@ -401,7 +404,7 @@ ThrowSkill = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 100,
+	stunChance = 0,
 	intimidateChance = 0,
 	snareChance = 0,
 	rootChance = 0,
@@ -508,7 +511,8 @@ ThrowSkill = {
 	intimidateChance = 0,
 	snareChance = 0,
 	rootChance = 100,
-	
+	dotType = 0,
+
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
 	CbtSpamEvade = "attack_evade",
