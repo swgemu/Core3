@@ -46,20 +46,22 @@ which carries forward this exception.
 #define POWERBOOSTEVENTWANE_H_
 
 #include "../PlayerImplementation.h"
+
 #include "../../creature/skills/self/PowerboostSelfSkill.h"
 
 class PowerboostEventWane : public Event {
+	ManagedReference<Player> player;
 
-	Player* player;
 	PowerboostSelfSkill* powerboost;
 
 public:
 	PowerboostEventWane(Player* pl, PowerboostSelfSkill* sk) : Event() {
 		player = pl;
+
 		powerboost = sk;
+
 		setKeeping(true);
 	}
-
 
 	bool activate() {
 		try {
@@ -72,12 +74,12 @@ public:
 			player->unlock();
 		} catch (...) {
 			player->error("unreported exception caught in PowerboostEventWane::activate");
+
 			player->unlock();
 		}
 
 		return true;
 	}
-
 };
 
 #endif /*POWERBOOSTEVENTWANE_H_*/

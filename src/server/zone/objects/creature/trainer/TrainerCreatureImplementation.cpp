@@ -308,7 +308,7 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 			sendSkillBoxList(player, false);
 		}
 	} else if (player->getLastNpcConvMessStr() == "trainer_learn") {
-		SkillBox* sBox;
+		SkillBox* sBox = NULL;
 		String optionmessage;
 		StfParameter* params = new StfParameter();
 		int money, sp;
@@ -323,10 +323,12 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 				}
 			}
 
+			money = sBox->getSkillMoneyRequired();
+			sp = sBox->getSkillPointsRequired();
+
 			if (sBox->getSkillXpCost() > player->getXp(sBox->getSkillXpType())) {
 				player->sendSystemMessage("skill_teacher", "prose_train_failed", params);
 			} else if ((player->getSkillPoints() + sBox->getSkillPointsRequired()) > 250) {
-				sp = sBox->getSkillPointsRequired();
 				params->addDI(sp);
 				if (player->getSkillPoints() != 250)
 					player->sendSystemMessage("skill_teacher", "nsf_skill_points", params);
@@ -335,7 +337,6 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 			} else if (!verifyCashCredits((uint32)money)) {
 				player->sendSystemMessage("skill_teacher", "prose_nsf", params);
 			} else {
-				money = sBox->getSkillMoneyRequired();
 				params->addDI(money);
 				train(sBox, player);
 				player->addXp(sBox->getSkillXpType(), (-1)*sBox->getSkillXpCost(), true);

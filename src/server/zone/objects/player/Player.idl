@@ -412,7 +412,7 @@ interface Player implements CreatureObject {
 	void setOnline();
 
 	void clearDisconnectEvent();
-
+	
 	void setClient(ZoneClientSession client);
 
 	void updateNextTipTime();

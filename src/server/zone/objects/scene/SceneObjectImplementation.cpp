@@ -377,9 +377,11 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
                 if (range == 128 || isInRange(player, range) || player->getParent() != NULL) {
                     if (this->isPlayer()) {
                         Player* sender = (Player*) this->_getStub();
+
             			if (!sendSelf && (player == sender))
                 			continue;
                     }
+
 					//System::out << "CreatureObject - sending message to player " << player->getFirstName() << "\n";
 					player->sendMessage(msg->clone());
 				}
@@ -389,7 +391,6 @@ void SceneObjectImplementation::broadcastMessage(BaseMessage* msg, int range, bo
 		delete msg;
 
 		zone->unlock(doLock);
-
 	} catch (...) {
 		error("exception SceneObject::broadcastMessage(Message* msg, int range, bool doLock)");
 

@@ -357,6 +357,8 @@ void PlayerImplementation::initialize() {
 			templevel = calcPlayerLevel("medical");
 		setLevel(templevel);
 	}
+
+	powerboostEventWane = NULL;
 }
 
 void PlayerImplementation::create(ZoneClientSession* client) {
@@ -658,8 +660,6 @@ void PlayerImplementation::unload() {
 		playerManager->unload(_this);
 
 		if (isInQuadTree()) {
-			clearDuelList();
-
 			if (isDancing())
 				stopDancing();
 			else if (isPlayingMusic())
@@ -677,6 +677,8 @@ void PlayerImplementation::unload() {
 			//zone = NULL;
 		}
 	}
+
+	clearDuelList();
 
 	activateRecovery();
 }
@@ -3034,15 +3036,15 @@ void PlayerImplementation::changeCloth(uint64 itemid) {
 }
 
 void PlayerImplementation::changeWeapon(uint64 itemid, bool updateLevel) {
-	SceneObject* obj = inventory->getObject(itemid);
+	ManagedReference<SceneObject> obj = inventory->getObject(itemid);
 
 	if (obj == NULL || !obj->isTangible())
 		return;
 
-	if (!((TangibleObject*)obj)->isWeapon() && !((TangibleObject*)obj)->isInstrument())
+	if (!((TangibleObject*)obj.get())->isWeapon() && !((TangibleObject*)obj.get())->isInstrument())
 		return;
 
-	TangibleObject* item = (TangibleObject*)obj;
+	TangibleObject* item = (TangibleObject*)obj.get();
 
 	equippedItems->changeWeapon(item);
 
@@ -3160,15 +3162,15 @@ void PlayerImplementation::setWeaponAccuracy(Weapon* weapon) {
 }
 
 void PlayerImplementation::changeArmor(uint64 itemid, bool forced) {
-	SceneObject* obj = inventory->getObject(itemid);
+	ManagedReference<SceneObject> obj = inventory->getObject(itemid);
 
 	if (obj == NULL || !obj->isTangible())
 		return;
 
-	if (!((TangibleObject*)obj)->isArmor() && !((TangibleObject*)obj)->isClothing())
+	if (!((TangibleObject*)obj.get())->isArmor() && !((TangibleObject*)obj.get())->isClothing())
 		return;
 
-	Wearable* cloth = (Wearable*) obj;
+	Wearable* cloth = (Wearable*) obj.get();
 
 	if (equippedItems == NULL) {
 		System::out << "ERROR - equippedItems not initialised" << endl;

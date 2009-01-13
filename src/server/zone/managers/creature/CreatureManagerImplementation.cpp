@@ -592,6 +592,7 @@ Creature* CreatureManagerImplementation::spawnCreature(uint32 objcrc, uint64 cel
 
 		creature->setZoneProcessServer(server);
 		creature->setObjectCRC(objcrc);
+		creature->setCreatureManager(this);
 
 		// Load creature from lua
 		LuaFunction getCreature(getLuaState(), "getCreature", 1);
@@ -1025,6 +1026,8 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 
 	Creature* creature = new Creature(instance->getNextCreatureID());
 	creature->deploy();
+
+	creature->setCreatureManager(instance);
 
 	String objectName = creatureConfig.getStringField("objectName");
 
