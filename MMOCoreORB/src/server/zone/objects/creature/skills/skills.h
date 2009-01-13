@@ -86,8 +86,10 @@ which carries forward this exception.
 #include "target/ConcealSkill.h"
 #include "CamoSkill.h"
 #include "PassiveSkill.h"
-//#include "target/attack/ThrowRandomPoolAttackTargetSkill.h"
-//#include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
+
+#include "target/attack/ThrowAttackTargetSkill.h"
+#include "target/attack/ThrowRandomPoolAttackTargetSkill.h"
+#include "target/attack/ThrowDirectPoolAttackTargetSkill.h"
 
 #include "GroupSkill.h"
 #include "group/SystemGroupMessageSkill.h"

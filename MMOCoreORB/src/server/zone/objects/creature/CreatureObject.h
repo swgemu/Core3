@@ -1235,6 +1235,20 @@ public:
 
 	void setMaskScent(int value);
 
+	Player* getCamoXPTraget();
+
+	void setCamoXPTraget(Player* xpTaget);
+
+	void setCampModifier(int mod);
+
+	int getCampModifier();
+
+	bool isInCamp();
+
+	int getNumberOfPets();
+
+	void setNumberOfPets(int num);
+
 	unsigned char getLowestHAMAttribute();
 
 	void onIncapacitated(SceneObject* attacker);
@@ -2504,6 +2518,20 @@ public:
 	int getMaskScent();
 
 	void setMaskScent(int value);
+
+	Player* getCamoXPTraget();
+
+	void setCamoXPTraget(Player* xpTaget);
+
+	void setCampModifier(int mod);
+
+	int getCampModifier();
+
+	bool isInCamp();
+
+	int getNumberOfPets();
+
+	void setNumberOfPets(int num);
 
 	unsigned char getLowestHAMAttribute();
 

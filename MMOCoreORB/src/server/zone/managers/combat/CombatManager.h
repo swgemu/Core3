@@ -61,6 +61,7 @@ class Weapon;
 
 class TargetSkill;
 class AttackTargetSkill;
+class ThrowAttackTargetSkill;
 class ZoneProcessServerImplementation;
 class CombatAction;
 
@@ -91,6 +92,7 @@ public:
 
 	float doTargetSkill(CommandQueueAction* action);
 	float doSelfSkill(CommandQueueAction* action);
+	float doCamoSkill(CommandQueueAction* action);
 	float doGroupSkill(CommandQueueAction* action);
 
 	bool handleMountDamage(CreatureObject* targetCreature, MountCreature* mount);
@@ -126,15 +128,18 @@ public:
 	float getWeaponRangeMod(float currentRange, Weapon* weapon);
 	uint32 getTargetDefense(CreatureObject* creature, CreatureObject* targetCreature, Weapon* weapon, bool forceAttack = false);
 	int applyDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill);
+	int applyTrapDamage(CreatureObject* attacker, CreatureObject* target, int32 damage, int part, AttackTargetSkill* askill,Weapon* weapon);
 	int getArmorReduction(Weapon* weapon, CreatureObject* target, int damage, int location);
 	bool calculateCost(CreatureObject* creature, float healthMultiplier, float actionMultiplier, float mindMultiplier, float forceMultiplier);
 	float calculateWeaponAttackSpeed(CreatureObject* creature, TargetSkill* tskill);
 	float calculateHealSpeed(CreatureObject* creature, TargetSkill* tskill);
 	void calculateStates(CreatureObject* creature, CreatureObject* targetCreature, AttackTargetSkill* tskill);
+	void calculateTrapStates(CreatureObject* creature, CreatureObject* targetCreature, ThrowAttackTargetSkill* tskill);
 	void checkKnockDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureDown(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	void checkPostureUp(CreatureObject* creature, CreatureObject* targetCreature, int chance);
 	int calculateDamage(CreatureObject* creature, SceneObject* target, AttackTargetSkill* skill, bool randompoolhit);
+	int calculateTrapDamage(CreatureObject* creature, SceneObject* target, ThrowAttackTargetSkill* skill, bool randompoolhit, Weapon* weapon);
 	void doDotWeaponAttack(CreatureObject* creature, CreatureObject* targetCreature, bool areaHit);
 };
 

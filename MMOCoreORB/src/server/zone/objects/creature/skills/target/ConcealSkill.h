@@ -49,22 +49,29 @@ which carries forward this exception.
 #include "../../../tangible/camokits/CamoKit.h"
 
 #include "../../../../managers/player/PlayerManager.h"
+#include "../../../player/Player.h"
 
 class ConcealSkill : public CamoSkill {
-protected:
-	float duration;
-
-	int camoType;
 
 public:
+	/*
+	 * The constructor. Camo Type is set to NONE.
+	 * \param name The skill name
+	 * \param serv The ZoneProcessServerImplementation.
+	 */
 	ConcealSkill(const String& name, ZoneProcessServerImplementation* serv) : CamoSkill(name, SELF, serv) {
 		setDuration(0);
 		setCamoType(NONE);
 	}
 
 
+	/*
+	 * Activates the target skill (conceal).
+	 * \param creature The creature, that activates the skill.
+	 * \param target The target to conceal, if null the self.
+	 * \param modifier The modifiers, not used.
+	 */
 	void doSkill(CreatureObject* creature,SceneObject* target, String& modifier) {
-
 		Player* player = (Player*) creature;
 
 		if(player == NULL)
@@ -102,6 +109,7 @@ public:
 
 			tar->setCamoType(camoKit->getPlanet());
 			tar->activateCamo(getNameCRC(),(int)getDuration(),camoMod);
+			tar->setCamoXPTraget(player);
 
 			StfParameter* params = new StfParameter();
 			params->addTT(tar->getCharacterName());
@@ -123,17 +131,34 @@ public:
 		}
 	}
 
+	/*
+	 * Does the animation.
+	 * \param creature The creature The creature, that activates the skill.
+	 */
 	void doAnimations(CreatureObject* creature) {
 	}
 
+	/*
+	 * Deactivates the conceal skill.
+	 * \param creature The creature, that is unconcealed.
+	 */
 	void finish(CreatureObject* creature) {
 		creature->deactivateCamo(false);
 	}
 
+	/*
+	 * Returns the speed of the skill.
+	 * \return creature The creature The creature, that activates the skill.
+	 */
 	float calculateSpeed(CreatureObject* creature) {
 			return 0;
 	}
 
+	/*
+	 * Checks if the skill can be used
+	 * \param creature The creature, that is checked.
+	 * \return Returns false if not usefull else true.
+	 */
 	bool isUseful(CreatureObject* creature) {
 
 		Player* player = (Player*) creature;
@@ -172,13 +197,14 @@ public:
 			return false;
 		}
 
-		if  (!creature->changeHAMBars(-50,-100,-50,false)) {
-			return false;
-		}
-
 		return true;
 	}
 
+	/**
+	 * 	This finds a usable camo kit ,that is usable on the current planet, in the inventory.
+	 *  \param creature The creature in whichs inventory the kit is searched.
+	 *  \return Returns the camo kit or NULL if no usable kit is found.
+	 */
 	CamoKit* findCamopack(CreatureObject* creature) {
 		CamoKit* camoKit= NULL;
 
@@ -196,8 +222,46 @@ public:
 			}
 		}
 
-		return NULL; //Never found a stimpack
+		return NULL; //Never found a usable kit
 	}
+
+	/*
+	 * Calculates the costs of the skill.
+	 * \param creature The creature, that is checked.
+	 * \return Returns if costs are applied.
+	 */
+	virtual bool calculateCost(CreatureObject* creature) {
+		if (!creature->isPlayer())
+			return true;
+
+		Player* player = (Player*) creature;
+
+		int wpnHealth = 50;
+		int wpnAction = 100;
+		int wpnMind = 50;
+
+		int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength()
+				/ 1500);
+		int actionAttackCost = wpnAction - (wpnAction
+				* creature->getQuickness() / 1500);
+		int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
+
+		if (healthAttackCost < 0)
+			healthAttackCost = 0;
+
+		if (actionAttackCost < 0)
+			actionAttackCost = 0;
+
+		if (mindAttackCost < 0)
+			mindAttackCost = 0;
+
+		if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost,
+				-mindAttackCost))
+			return false;
+
+		return true;
+	}
+
 };
 
 #endif

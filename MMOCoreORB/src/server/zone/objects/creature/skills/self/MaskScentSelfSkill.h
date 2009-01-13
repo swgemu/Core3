@@ -45,23 +45,27 @@ which carries forward this exception.
 #define MASKSCENTSELFSKILL_H_
 
 #include "../CamoSkill.h"
+#include "../../../player/Player.h"
+#include "../../../../Zone.h"
 
 class MaskScentSelfSkill : public CamoSkill {
-protected:
-	float duration;
-
-	int camoType;
-
-	String startFlyText;
-	String finishFlyText;
-
 public:
+	/*
+	 * The constructor. Camo Type is set to NONE.
+	 * \param name The skill name
+	 * \param serv The ZoneProcessServerImplementation.
+	 */
 	MaskScentSelfSkill(const String& name, ZoneProcessServerImplementation* serv) : CamoSkill(name, SELF, serv) {
 		setDuration(0);
-		setCamoType(NONE);
+		setCamoType(MASKSCENT);
+		category = 0;
 	}
 
-
+	/*
+	 * Activates the target skill (maskscent).
+	 * \param creature The creature, that activates the skill, and is target.
+	 * \param modifier The modifiers, not used.
+	 */
 	void doSkill(CreatureObject* creature, String& modifier) {
 		if (!isUseful(creature)) {
 			return;
@@ -73,17 +77,34 @@ public:
 		creature->activateCamo(getNameCRC(), (int)getDuration(), camoMod);
 	}
 
+	/*
+	 * Does the animation.
+	 * \param creature The creature The creature, that activates the skill.
+	 */
 	void doAnimations(CreatureObject* creature) {
 	}
 
+	/*
+	 * Deactivates the conceal skill.
+	 * \param creature The creature, that is unconcealed.
+	 */
 	void finish(CreatureObject* creature) {
 		creature->deactivateCamo(false);
 	}
 
+	/*
+	 * Returns the speed of the skill.
+	 * \return creature The creature The creature, that activates the skill.
+	 */
 	float calculateSpeed(CreatureObject* creature) {
 			return 0;
 	}
 
+	/*
+	 * Checks if the skill can be used
+	 * \param creature The creature, that is checked.
+	 * \return Returns false if not usefull else true.
+	 */
 	bool isUseful(CreatureObject* creature) {
 
 		Player* player = (Player*) creature;
@@ -105,7 +126,6 @@ public:
 			return false;
 		}
 
-//		if (creature->hasQueuedState(getNameCRC())) {
 		if (creature->getCamoType() == 10) {
 			player->sendSystemMessage("skl_use", "sys_scentmask_already");
 
@@ -133,12 +153,46 @@ public:
 			return false;
 		}
 
-		if  (!creature->changeHAMBars(-50,-100,-50,false)) {
+		return true;
+	}
+
+	/*
+	 * Calculates the costs of the skill.
+	 * \param creature The creature, that is checked.
+	 * \return Returns if costs are applied.
+	 */
+	virtual bool calculateCost(CreatureObject* creature) {
+		if (!creature->isPlayer())
+			return true;
+
+		Player* player = (Player*) creature;
+
+		int wpnHealth = 50;
+		int wpnAction = 100;
+		int wpnMind = 50;
+
+		int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength()
+				/ 1500);
+		int actionAttackCost = wpnAction - (wpnAction
+				* creature->getQuickness() / 1500);
+		int mindAttackCost = wpnMind - (wpnMind * creature->getFocus() / 1500);
+
+		if (healthAttackCost < 0)
+			healthAttackCost = 0;
+
+		if (actionAttackCost < 0)
+			actionAttackCost = 0;
+
+		if (mindAttackCost < 0)
+			mindAttackCost = 0;
+
+		if (!player->changeHAMBars(-healthAttackCost, -actionAttackCost,
+				-mindAttackCost))
 			return false;
-		}
 
 		return true;
 	}
+
 };
 
 

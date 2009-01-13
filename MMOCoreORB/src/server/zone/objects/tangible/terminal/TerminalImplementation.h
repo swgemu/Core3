@@ -68,7 +68,9 @@ public:
 	static const uint8 MISSION = 4;
 	static const uint8 CLONING = 5;
 	static const uint8 INSURANCE = 6;
+	static const int CAMP = 7;
 	static const uint8 BAZAAR = 50;
+
 
 public:
 	TerminalImplementation(uint32 objCRC, uint64 objid, const UnicodeString& n, const String& tempn, float x, float z, float y, uint8 TerminalType)
@@ -104,6 +106,10 @@ public:
 
 	inline bool isMissionTerminal() {
 		return terminalType == MISSION;
+	}
+
+	inline bool isCampTerminal() {
+		return terminalType == CAMP;
 	}
 
 	inline bool isCloningTerminal() {

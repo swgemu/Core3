@@ -203,6 +203,11 @@ PlayerImplementation::~PlayerImplementation() {
 		badges = NULL;
 	}
 
+	if (camp != NULL) {
+		camp->abandonCamp();
+		camp = NULL;
+	}
+
 	server->getZoneServer()->increaseTotalDeletedPlayers();
 
 	info("undeploying player");
@@ -342,6 +347,7 @@ void PlayerImplementation::initialize() {
 	teachingOffer = false;
 	activeArea = NULL;
 	badges = new Badges();
+	camp = NULL;
 
 	//Cloning
 	cloningFacility = NULL;
@@ -5353,8 +5359,10 @@ void PlayerImplementation::teachSkill(String& skillname) {
 	setTeacher(NULL);
 }
 
-
-
+/**
+ * Executes the /throwtrap command. Searchs for a usefull trap and activates id.
+ * \param targetID The targets id.
+ */
 void PlayerImplementation::throwTrap(uint64 targetID) {
 	Inventory* inventory = getInventory();
 

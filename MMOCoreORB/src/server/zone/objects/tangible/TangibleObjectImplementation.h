@@ -161,6 +161,7 @@ public:
 	static const int FACTORYCRATE = 0x2011;
 	static const int TRAVELTICKET = 0x2012;
 	static const int GENERICITEM = 0x2013;
+	static const int TRAP = 0x2014;
 	static const int WEARABLECONTAINER = 0x2015;
 	static const int FISHINGPOLE = 0x2016;
 	static const int FISHINGBAIT = 0x2017;
@@ -180,6 +181,7 @@ public:
 	static const int OPERATIONSCHAIR = 0x2025;
 	static const int TURRETACCESSLADDER = 0x2026;
 	static const int CONTAINER2 = 0x2027;
+	static const int CAMOKIT = 0x2028;
 
 	static const int TOOL = 0x8000;
 	static const int CRAFTINGTOOL = 0x8001;
@@ -204,7 +206,6 @@ public:
 	static const int PISTOL = 0x2000A;
 	static const int CARBINE = 0x2000B;
 	static const int RIFLE = 0x2000C;
-	static const int TRAP = 0x2000D;
 	static const int GRANADE = 0x2000E;
 
 	static const int COMPONENT = 0x40000;
@@ -288,7 +289,6 @@ public:
 	static const int MISCCLOTHING = 0x1000011;
 	static const int SKIRT = 0x1000012;
 	static const int ITHOGARB = 0x1000013;
-	static const int CAMOKIT = 567894;
 
 	static const uint16 MALE = 0x01;
 	static const uint16 FEMALE = 0x02;

@@ -125,6 +125,9 @@ public:
 	//Teach
 	void handleTeach(SceneObject* obj, Player* trainer);
 
+	//camp
+	void handleDisbandCamp(Player* player,SceneObject* obj);
+
 	//Insurance
 	void handleInsureAllItems(Player* player, SceneObject* obj);
 };

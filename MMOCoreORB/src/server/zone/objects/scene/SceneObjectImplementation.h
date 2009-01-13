@@ -120,6 +120,7 @@ public:
 	static const int PLAYEROBJECT = 12;
 	static const int WAYPOINT = 13;
 	static const int MANUFACTURESCHEMATIC = 14;
+	static const int CAMPSITE = 15;
 
 	static const int NONATTACKABLE_BITMASK = 0x1000;
 	static const int CREO_BITMASK = 0x80;

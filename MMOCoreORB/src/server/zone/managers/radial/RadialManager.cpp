@@ -355,6 +355,10 @@ void RadialManager::handleSelection(int radialID, Player* player, SceneObject* o
 		player->unlock();
 		handleInsureAllItems(player, obj);
 		return;
+	case 204: // CAMP DESTROY
+		handleDisbandCamp(player,obj);
+		break;
+
 	default:
 		//System::out << "Unknown radial selection received:" << radialID << "\n";
 		break;
@@ -1133,6 +1137,15 @@ void RadialManager::handleTeach(SceneObject* obj, Player* trainer) {
 	trainer->teachPlayer(trainee);
 }
 
+void RadialManager::handleDisbandCamp(Player* player,SceneObject* obj) {
+	if (!obj->isTangible())
+		return;
+	CampTerminal* terminal = (CampTerminal*) obj;
+	CampSite* camp = terminal->getCampSite();
+	camp->disbandCamp();
+
+}
+
 void RadialManager::handleInsureAllItems(Player* player, SceneObject* obj) {
 	if (obj->isTangible()) {
 		TangibleObject* tangibleObj = (TangibleObject*) obj;
@@ -1148,4 +1161,3 @@ void RadialManager::handleInsureAllItems(Player* player, SceneObject* obj) {
 
 	player->sendSystemMessage("The insurance terminal used was invalid.");
 }
-

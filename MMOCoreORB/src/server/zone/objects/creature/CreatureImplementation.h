@@ -66,6 +66,7 @@ class LairObject;
 class BuildingObject;
 
 class CreatureImplementation : public CreatureServant, public Event {
+protected:
 	CreatureManagerImplementation* creatureManager;
 
 	uint64 baseID;
@@ -129,7 +130,7 @@ class CreatureImplementation : public CreatureServant, public Event {
 
 	uint32 fpValue;
 
-private:
+//private:
 	void broadcastNextPositionUpdate(PatrolPoint* point = NULL);
 	void setNextPosition();
 	void checkNewAngle(float directionangle);
@@ -148,6 +149,7 @@ public:
 	const static int RECRUITER = 3;
 	const static int MOUNT = 4;
 	const static int ACTION = 5;
+	const static int CREATUREPET = 5;
 
 	const static int ACTIVE = 1;
 	const static int INACTIVE = 2;

@@ -179,7 +179,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		uint32 objectcrc, const UnicodeString& objectname, const String& objecttemp, bool equipped, bool makeStats, String lootAttributes, int level) {
 	TangibleObject* item = NULL;
 
-	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER) {
+	if (objecttype & TangibleObjectImplementation::WEAPON || objecttype & TangibleObjectImplementation::LIGHTSABER || objecttype == TangibleObjectImplementation::TRAP) {
 		switch (objecttype) {
 		case TangibleObjectImplementation::MELEEWEAPON:
 			item = new UnarmedMeleeWeapon(objectid, objectcrc, objectname, objecttemp, equipped);
@@ -247,7 +247,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			dummy->setArmorStats(level);
 		}
 
-	} else if (objecttype & TangibleObjectImplementation::MISC) {
+	} else if (objecttype & TangibleObjectImplementation::MISC && objecttype != TangibleObjectImplementation::TRAP) {
 		switch (objecttype) {
 
 		case TangibleObjectImplementation::CONTAINER :
@@ -332,7 +332,6 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 				item->parseItemAttributes();
 			}
 			break;
-
 		default:
 			item = new TangibleObject(objectid, objectcrc, objectname, objecttemp, objecttype);
 			if (makeStats) {
@@ -367,6 +366,11 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		case TangibleObjectImplementation::REPAIRTOOL:
 			break;
 		case TangibleObjectImplementation::CAMPKIT:
+			item = new CampKit(objectid, objectcrc, objectname, objecttemp);
+			if (makeStats) {
+				item->setAttributes(lootAttributes );
+				item->parseItemAttributes();
+			}
 			break;
 		case TangibleObjectImplementation::SHIPCOMPONENTREPAIRITEM:
 			break;
@@ -408,6 +412,8 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 					case TangibleObjectImplementation::TURRET:
 						break;
 					case TangibleObjectImplementation::MINEFIELD:
+						break;
+					case TangibleObjectImplementation::PETDEED:
 						break;
 				}
 				break;
@@ -1032,7 +1038,7 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 
 		((Instrument*) item)->setInstrumentType(instType);
 	} else if (type & TangibleObjectImplementation::WEAPON ||
-			type & TangibleObjectImplementation::LIGHTSABER) {
+			type & TangibleObjectImplementation::LIGHTSABER || type == TangibleObjectImplementation::TRAP) {
 		int damageType = itemconfig.getIntField("damageType");
 		int ap = itemconfig.getIntField("armorPiercing");
 		String cert = itemconfig.getStringField("certification");
@@ -1237,6 +1243,16 @@ TangibleObject* ItemManagerImplementation::createTemplateFromLua(LuaObject itemc
 		camoKit->setPlanet(planet);
 		camoKit->setUsesRemaining(uses);
 		camoKit->setConcealMin(cMin);
+	} else if (type == TangibleObjectImplementation::CAMPKIT) {
+				CampKit* campKit = (CampKit*) item;
+				int xp = itemconfig.getIntField("xp");
+				int uses = itemconfig.getIntField("uses");
+				int duration = itemconfig.getIntField("duration");
+				int campCRC = itemconfig.getIntField("campType");;
+				campKit->setXP(xp);
+				campKit->setUsesRemaining(uses);
+				campKit->setDuration(duration);
+				campKit->setCampType(campCRC);
     } else if (type == TangibleObjectImplementation::COMPONENT) {
 	    Component* component = (Component*) item;
 	    String attribute;

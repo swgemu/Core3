@@ -55,6 +55,7 @@ import "../../objects/tangible/terminal/mission/MissionTerminal";
 import "../structure/StructureManager";
 
 import "../../objects/area/ActiveArea";
+import "../../objects/area/ActiveAreaTrigger";
 
 interface PlanetManager {
 	PlanetManager(Zone zone, ZoneProcessServerImplementation processor) {
@@ -87,5 +88,6 @@ interface PlanetManager {
 	void weatherUpdatePlayers();
 	void weatherChange();
 	void weatherRemoveEvents();
-	void spawnActiveArea(ActiveArea area);
+	ActiveAreaTrigger spawnActiveArea(ActiveArea area);
+	void removeActiveAreaTrigger(ActiveAreaTrigger trigger);
 }

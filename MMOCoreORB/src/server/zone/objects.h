@@ -302,4 +302,8 @@ which carries forward this exception.
 #include "objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.h"
 #include "objects/tangible/camokits/CamoKit.h"
 #include "objects/tangible/camokits/CamoKitImplementation.h"
+#include "objects/tangible/campkit/CampKit.h"
+#include "objects/tangible/campkit/CampKitImplementation.h"
+#include "objects/tangible/terminal/camp/CampTerminal.h"
+
 #endif /*ZONEOBJECTS_H_*/
