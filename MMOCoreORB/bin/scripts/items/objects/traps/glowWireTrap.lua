@@ -56,9 +56,9 @@ glowWireTrap = Weapon:new {
 	
 	attackSpeed = 1.0,
 
-	minDamage = 150,
+	minDamage = 90,
 
-	maxDamage = 200,
+	maxDamage = 170,
 	
 	skill = "throwglowwiretrap"
 }

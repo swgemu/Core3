@@ -52,6 +52,7 @@ RunItemLUAFile("objects/tool.lua");
 RunItemLUAFile("objects/weapon.lua");
 RunItemLUAFile("objects/camokit.lua");
 RunItemLUAFile("objects/trap.lua");
+RunItemLUAFile("objects/campkit.lua");
 
 RunItemLUAFile("objects/armor/main.lua");
 RunItemLUAFile("objects/clothing/main.lua");
@@ -63,5 +64,5 @@ RunItemLUAFile("objects/tools/main.lua");
 RunItemLUAFile("objects/weapons/main.lua");
 RunItemLUAFile("objects/camokit/main.lua");
 RunItemLUAFile("objects/traps/main.lua");
-
+RunItemLUAFile("objects/campkit/main.lua");
 

@@ -56,9 +56,9 @@ glowJuiceTrap = Weapon:new {
 	
 	attackSpeed = 1.0,
 
-	minDamage = 60,
+	minDamage = 40,
 
-	maxDamage = 120,
+	maxDamage = 75,
 	
 	skill = "throwglowjuicetrap"
 }

@@ -14,9 +14,9 @@ sonicPulse = Weapon:new {
 	
 	attackSpeed = 1.0,
 
-	minDamage = 500,
+	minDamage = 200,
 
-	maxDamage = 600,
+	maxDamage = 450,
 	
 	skill = "throwsonicpulse"
 }

@@ -56,9 +56,9 @@ noiseMaker = Weapon:new {
 	
 	attackSpeed = 1.0,
 
-	minDamage = 90,
+	minDamage = 80,
 
-	maxDamage = 150,
+	maxDamage = 120,
 	
 	skill = "thrownoisemaker"
 }

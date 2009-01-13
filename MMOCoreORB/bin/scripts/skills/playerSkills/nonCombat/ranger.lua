@@ -61,10 +61,22 @@ ThrowSkill = {
 	requiredWeaponType = ALL,
 	
 	range = 35,
-	damageRatio = 1.0,
+	damageRatio = 2.0,
 	speedRatio = 2.0,
-	areaRange = 8,
+	areaRange = 4,
 	accuracyBonus = 0,
+	
+	healthAttackChance = 0,
+	strengthAttackChance = 0,
+	constitutionAttackChance = 0,
+
+	actionAttackChance = 0,
+	quicknessAttackChance = 0,
+	staminaAttackChance = 0,
+
+	mindAttackChance = 100,
+	focusAttackChance = 0,
+	willpowerAttackChance = 0,
 			
 	knockdownChance = 0,
 	postureDownChance = 0,
@@ -75,7 +87,8 @@ ThrowSkill = {
 	intimidateChance = 0,
 	snareChance = 0,
 	rootChance = 0,
-	
+	dotType = 0,
+
 	CbtSpamBlock = "attack_block",
 	CbtSpamCounter = "attack_counter",
 	CbtSpamEvade = "attack_evade",
@@ -92,7 +105,7 @@ ThrowSkill = {
 	intimidateDefDebuff = 0
 }
 
-AddThrowRandomPoolTargetSkill(ThrowSkill)
+AddThrowDirectPoolTargetSkill(ThrowSkill)
 
 ----------------------------- Advanced Trapping 3 -------------------------------
 
