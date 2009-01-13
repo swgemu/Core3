@@ -369,6 +369,11 @@ Profession* ProfessionManager::loadProfession(ResultSet* result) {
 SkillBox* ProfessionManager::loadSkillBox(ResultSet* result, Profession* profession) {
 	SkillBox* skillBox = new SkillBox(result->getString(1), result->getInt(0), profession);
 
+	String test = "outdoors_squadleader_novice";
+	int two = 3;
+	if(skillBox->getName() == test)
+		two = 2;
+
 	String skillParent = result->getString(2);
 
 	if (skillParent.length() > 1) {

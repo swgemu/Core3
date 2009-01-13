@@ -41,6 +41,10 @@
 --which carries forward this exception.
 
 ------------------------------------------------------------------------
+SystemGroupMessageSkill = {
+	-- this is a dummy skill, look at AddSystemGroupMessageSkill in ScriptAttackManager for more info
+}
 
+AddSystemGroupMessageSkill(SystemGroupMessageSkill);
 ------------------------------------------------------------------------
 

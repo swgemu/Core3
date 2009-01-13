@@ -116,6 +116,8 @@ void ScriptAttacksManager::registerFunctions() {
 	//lua_register(getLuaState(), "AddRetreatGroupSkill", AddDiagnoseTargetSkill);
 	//lua_register(getLuaState(), "AddSteadyAimGroupSkill", AddDiagnoseTargetSkill);
 	//lua_register(getLuaState(), "AddVolleyFireGroupSkill", AddDiagnoseTargetSkill);
+	lua_register(getLuaState(), "AddSystemGroupMessageSkill", AddSystemGroupMessageSkill);
+
 }
 
 void ScriptAttacksManager::registerGlobals() {
@@ -1599,6 +1601,34 @@ int ScriptAttacksManager::AddForageSkill(lua_State* L) {
 
 	CombatActions->put(forage);
 	return 0;
+}
+
+int ScriptAttacksManager::AddSystemGroupMessageSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	try {
+
+		if (!skill.isValidTable())
+			return 0;
+
+		// THE ONLY REASON THIS IS MADE A SKILL IS SO IT LOADS SKILL
+		// BUTTONS CORRECTLY.  WHEN A PLAYER USES THIS SKILL IT WILL
+		// BE HANDLED IN OBJECTCONTROLLERMESSAGE.  HANDLING IT IN
+		// OBJECTCONTROLLERMESSAGE IS ALSO SO WHEN USING THIS SKILL,
+		// IT WILL NOT BE PUT INTO THE ATTACK QUEUE
+
+		String skillName = "sysgroup";
+		String animation = "";
+
+		SystemGroupMessageSkill* sysgroupDummy;
+		sysgroupDummy = new SystemGroupMessageSkill(skillName, animation, server);
+
+		CombatActions->put(sysgroupDummy);
+		return 0;
+	} catch(...) {
+		System::out << "[ERROR] when attempting to add SystemMessageGroupSkill!" << endl;
+		return -1;
+	}
 }
 
 int ScriptAttacksManager::AddThrowRandomPoolTargetSkill(lua_State* L) {
