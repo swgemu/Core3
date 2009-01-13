@@ -31,8 +31,6 @@ public:
 
 	void setArmorStats(int modifier);
 
-	void sliceArmor(Player* player);
-
 	int addSkillMod(int skillModType, int skillModValue);
 
 	int getRating();
@@ -84,8 +82,6 @@ public:
 	bool isLightSaberSpecial();
 
 	int getType();
-
-	bool isSliced();
 
 	int getSocketType(int index);
 
@@ -174,6 +170,10 @@ public:
 	void setSocket3Value(int value);
 
 	void onBroken();
+
+	void onSlicingFailure(Player* slicer);
+
+	void slice(Player* slicer);
 
 protected:
 	Armor(DummyConstructorParameter* param);
@@ -199,8 +199,6 @@ public:
 
 	void setArmorStats(int modifier);
 
-	void sliceArmor(Player* player);
-
 	int addSkillMod(int skillModType, int skillModValue);
 
 	int getRating();
@@ -252,8 +250,6 @@ public:
 	bool isLightSaberSpecial();
 
 	int getType();
-
-	bool isSliced();
 
 	int getSocketType(int index);
 
@@ -342,6 +338,10 @@ public:
 	void setSocket3Value(int value);
 
 	void onBroken();
+
+	void onSlicingFailure(Player* slicer);
+
+	void slice(Player* slicer);
 
 };
 

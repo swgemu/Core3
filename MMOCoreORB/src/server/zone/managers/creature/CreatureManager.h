@@ -81,6 +81,10 @@ public:
 
 	void addCreature(Creature* creature);
 
+	void setGlobalNPCRegen(float value);
+
+	float getGlobalNPCRegen();
+
 protected:
 	CreatureManager(DummyConstructorParameter* param);
 
@@ -144,6 +148,10 @@ public:
 	Creature* getCreature(unsigned long long oid);
 
 	void addCreature(Creature* creature);
+
+	void setGlobalNPCRegen(float value);
+
+	float getGlobalNPCRegen();
 
 protected:
 	String _param0_verifyCreatureSpawn__String_;

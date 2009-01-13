@@ -79,6 +79,8 @@ class CreatureManagerImplementation : public CreatureManagerServant, public Thre
 
 	EventQueue creatureActivityQueue;
 
+	float globalNPCRegen;
+
 	ZoneProcessServerImplementation* server;
 
 	static SpawnInfoMap* spawnInfoMap;
@@ -191,6 +193,14 @@ public:
 
 	inline Zone* getZone() {
 		return zone;
+	}
+
+	inline void setGlobalNPCRegen(float value) {
+		globalNPCRegen = value;
+	}
+
+	inline float getGlobalNPCRegen() {
+		return globalNPCRegen;
 	}
 
 };

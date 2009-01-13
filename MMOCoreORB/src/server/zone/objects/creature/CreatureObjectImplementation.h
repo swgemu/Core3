@@ -377,6 +377,9 @@ protected:
 	int ferocity;
 	bool baby;
 
+	float combatRegenModifier;
+	float peacedRegenModifier;
+
 public:
 	static const float DEFAULT_SPEED = 5.376f;
 	static const float DEFAULT_ACCELERATION = 1.549f;
@@ -2716,7 +2719,23 @@ public:
 	virtual void unequipItem(TangibleObject* item);
 
 
+	//Setters
+	inline void setCombatRegenModifier(float value) {
+		combatRegenModifier = value;
+	}
 
+	inline void setPeacedRegenModifier(float value) {
+		peacedRegenModifier = value;
+	}
+
+	//Getters
+	inline float getCombatRegenModifier() {
+		return combatRegenModifier;
+	}
+
+	inline float getPeacedRegenModifier() {
+		return peacedRegenModifier;
+	}
 
 
 

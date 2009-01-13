@@ -149,8 +149,6 @@ protected:
 
 	float bonusWoundsRatio;
 
-	bool sliced;
-
 	String xpType;
 
 public:
@@ -251,16 +249,6 @@ public:
 	void powerupMaxRangeAccuracy(float powerupValue);
 
 	void addAttributes(AttributeListMessage* alm);
-
-	// slicing methods
-	void sliceWeapon(Player* player);
-
-	void sliceWeaponDamage(int modifier);
-	void sliceWeaponSpeed(int modifier);
-
-	inline bool isSliced() {
-		return sliced;
-	}
 
 	// dots
 	inline bool decreaseDot0Uses() {
@@ -529,12 +517,6 @@ public:
 		dot2Uses = uses;
 		String name = "dot2Uses";
 		itemAttributes->setIntAttribute(name, uses);
-	}
-
-	inline void setSliced(bool hacked) {
-		sliced = hacked;
-		String name = "sliced";
-		itemAttributes->setBooleanAttribute(name, hacked);
 	}
 
 	inline void setSkillMod0Type(int skillModType) {
@@ -883,8 +865,14 @@ public:
 
 	//Event Handlers
 	void onBroken();
+	void onDamageSliced(Player* slicer, uint8 percentage);
+	void onSpeedSliced(Player* slicer, uint8 percentage);
+	void onSlicingFailure(Player* slicer);
 
 	//Actions
+	void slice(Player* slicer);
+	void sliceDamage(Player* slicer, uint8 percentage);
+	void sliceSpeed(Player* slicer, uint8 percentage);
 
 	friend class CombatManager;
 

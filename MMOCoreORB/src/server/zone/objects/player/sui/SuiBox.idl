@@ -63,6 +63,7 @@ interface SuiBox {
 	boolean isTransferBox();
 	boolean isColorPicker();
 	boolean isBankTransferBox();
+	boolean isSlicingBox();
 
 	unsigned long getBoxID();
 	unsigned long getWindowType();

@@ -122,6 +122,8 @@ void CreatureManagerImplementation::init() {
 	/*ZoneServer* server = zone->getZoneServer();
 	scheduler = server->getScheduler();*/
 
+	globalNPCRegen = 1.0f;
+
 	scheduler = new ScheduleManager("CreatureScheduler");
 
 	instance = this;

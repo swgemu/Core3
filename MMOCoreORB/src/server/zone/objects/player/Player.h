@@ -879,6 +879,8 @@ public:
 
 	void sendItemInsureAllConfirm(InsuranceTerminal* terminal);
 
+	void sendSlicingMenu(TangibleObject* item);
+
 	void onIncapacitateTarget(CreatureObject* victim);
 
 	void onIncapacitated(SceneObject* attacker);
@@ -1805,6 +1807,8 @@ public:
 	void sendItemInsuranceMenu(InsuranceTerminal* terminal);
 
 	void sendItemInsureAllConfirm(InsuranceTerminal* terminal);
+
+	void sendSlicingMenu(TangibleObject* item);
 
 	void onIncapacitateTarget(CreatureObject* victim);
 

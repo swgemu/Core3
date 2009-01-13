@@ -83,6 +83,8 @@ public:
 
 	const static int BANKTIPCONFIRMBOX = 10;
 
+	const static int SLICINGBOX = 20;
+
 public:
 	SuiBoxImplementation(Player* play, uint32 windowtype, uint32 boxtype);
 
@@ -137,6 +139,10 @@ public:
 
 	inline bool isBankTransferBox() {
 		return boxType == BANKTRANSFERBOX;
+	}
+
+	inline bool isSlicingBox() {
+		return boxType == SLICINGBOX;
 	}
 
 	inline bool isColorPicker() {

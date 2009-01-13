@@ -67,8 +67,6 @@ interface Armor implements Wearable {
 	
 	void setArmorStats(int modifier);
 	
-	void sliceArmor(Player player);
-	
 	int addSkillMod(int skillModType, int skillModValue);
 	
 	// getters
@@ -121,8 +119,6 @@ interface Armor implements Wearable {
 	boolean isLightSaberSpecial();
 	
 	int getType();
-	
-	boolean isSliced();
 	
 	int getSocketType(int index);
 	int getSocketValue(int index);
@@ -184,6 +180,8 @@ interface Armor implements Wearable {
 	
 	//Event Handlers
 	void onBroken();
+	void onSlicingFailure(Player slicer);
 	
 	//Action
+	void slice(Player slicer);
 }

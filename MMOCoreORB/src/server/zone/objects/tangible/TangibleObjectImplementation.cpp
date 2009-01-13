@@ -146,6 +146,10 @@ void TangibleObjectImplementation::initialize() {
 	itemAttributes = new ItemAttributes();
 
 	setLoot(false);
+
+	setSliced(false);
+	setSlicable(false);
+	setSlicerID(0);
 }
 
 void TangibleObjectImplementation::parseAttributes() {
@@ -163,6 +167,15 @@ void TangibleObjectImplementation::parseItemAttributes() {
 
 	attr = "looted";
 	setLoot(itemAttributes->getBooleanAttribute(attr));
+
+	attr = "sliced";
+	setSliced(itemAttributes->getBooleanAttribute(attr));
+
+	attr = "slicable";
+	setSlicable(itemAttributes->getBooleanAttribute(attr));
+
+	attr = "slicerID";
+	setSlicerID(itemAttributes->getUnsignedLongAttribute(attr));
 }
 
 void TangibleObjectImplementation::generateSkillMods(AttributeListMessage* alm, int skillModType, int skillModValue) {
@@ -442,6 +455,10 @@ void TangibleObjectImplementation::onBroken() {
 
 }
 
+void TangibleObjectImplementation::onSlicingFailure(Player* slicer) {
+
+}
+
 //Actions
 void TangibleObjectImplementation::decay(float decayRate) {
 	if (isInsured())
@@ -453,4 +470,8 @@ void TangibleObjectImplementation::decay(float decayRate) {
 		conditionDamage = maxCondition;
 
 	updated = true;
+}
+
+void TangibleObjectImplementation::slice(Player* slicer) {
+
 }

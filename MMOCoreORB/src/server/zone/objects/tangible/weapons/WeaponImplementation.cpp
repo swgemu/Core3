@@ -158,7 +158,7 @@ void WeaponImplementation::initialize() {
 	bonusMaxRangeAccuracy = 0;
 	bonusWoundsRatio = 0;
 
-	sliced = false;
+	slicable = true;
 
 	StringBuffer loggingname;
 	loggingname << "Weapon = 0x" << objectID;
@@ -277,9 +277,6 @@ void WeaponImplementation::parseItemAttributes() {
 	dot2Potency = itemAttributes->getIntAttribute(name);
 	name = "dot2Uses";
 	dot2Uses = itemAttributes->getIntAttribute(name);
-
-	name = "sliced";
-	sliced = itemAttributes->getBooleanAttribute(name);
 
 	name = "powerupUses";
 	powerupUses = itemAttributes->getIntAttribute(name);
@@ -595,50 +592,6 @@ void WeaponImplementation::onBroken() {
 	setMinDamage(1);
 }
 
-/*
-void WeaponImplementation::repairWeapon(Player* player) {
-	int roll = System::random(100);
-
-	int decayRate = 0;
-
-	StringBuffer txt;
-
-	if (roll < 10) {
-		player->sendSystemMessage("You have completely failed to repair the item. The item falls apart.");
-		decayWeapon(100);
-
-		updated = true;
-
-		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
-		dtano3->updateConditionDamage();
-		dtano3->updateMaxCondition();
-		dtano3->close();
-		player->broadcastMessage(dtano3);
-
-		generateAttributes(player);
-
-		return;
-	} else if (roll < 75) {
-		txt << "You have repaired the item, however the items maximum condition has been reduced.";
-		decayRate = 20;
-	} else {
-		txt << "You have completely repaired the item.";
-	}
-
-	player->sendSystemMessage(txt.toString());
-
-	setMaxCondition(maxCondition - (maxCondition / 100 * decayRate));
-	setConditionDamage(0);
-
-	updated = true;
-
-	TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this);
-	dtano3->updateConditionDamage();
-	dtano3->updateMaxCondition();
-	dtano3->close();
-	player->broadcastMessage(dtano3);
-} */
-
 void WeaponImplementation::setWeaponStats(int modifier){
 	wlock();
 
@@ -897,100 +850,6 @@ void WeaponImplementation::generatePowerup(AttributeListMessage* alm) {
 			alm->insertAttribute("cat_pup.pup_wpn_wound_chance", txt.toString());
 		}
 	}
-}
-
-void WeaponImplementation::sliceWeapon(Player* player){
-	bool sliceType = System::random(1);
-	int slicePercent;
-
-	int min = 0;
-	int max = 0;
-	int modifier = 0;
-
-	StringBuffer msg;
-
-	try {
-		wlock();
-
-		if (!isSliced()) {
-
-			int sliceSkill = player->getSlicingAbility();
-			switch (sliceSkill) {
-			case 2 :
-			case 3 :
-				min = 10;
-				max = 25;
-				modifier = System::random(max - min + sliceSkill) + min;
-				if (modifier > max)
-					modifier = max;
-				break;
-			case 4 :
-				min = 10;
-				max = 30;
-				modifier = System::random(max - min + sliceSkill) + min;
-				if (modifier > max)
-					modifier = max;
-				break;
-			case 5 :
-				min = 15;
-				max = 35;
-				modifier = System::random(max - min + sliceSkill) + min;
-				if (modifier > max)
-					modifier = max;
-				break;
-			default :
-				break;
-			}
-
-			removePowerup(player, false);
-			switch (sliceType) {
-			case 0:
-				sliceWeaponDamage(modifier);
-				msg << "Weapon damage increased by " << modifier << "%";
-				break;
-			case 1:
-				sliceWeaponSpeed(modifier);
-				msg << "Weapon speed decreased by " << modifier << "%";
-				break;
-			}
-
-			generateAttributes(player);
-
-		} else
-			msg << "Weapon is already sliced.";
-
-		unlock();
-	} catch (...) {
-		unlock();
-	}
-
-	player->sendSystemMessage(msg.toString());
-}
-
-void WeaponImplementation::sliceWeaponDamage(int modifier){
-	if (sliced)
-		return;
-
-	setMinDamage((minDamage * modifier / 100) + minDamage);
-	setMaxDamage((maxDamage * modifier / 100) + maxDamage);
-
-	setSliced(true);
-	updated = true;
-
-}
-
-void WeaponImplementation::sliceWeaponSpeed(int modifier){
-	if (sliced)
-		return;
-
-	setAttackSpeed(attackSpeed - (attackSpeed * modifier / 100));
-
-	if (attackSpeed < 1)
-		setAttackSpeed(1.0f);
-
-	setSliced(true);
-	updated = true;
-
 }
 
 void WeaponImplementation::powerupMinDamage(float powerupValue) {
@@ -1276,4 +1135,128 @@ void WeaponImplementation::setXpType() {
 			xpType = "combat_meleespecialize_unarmed";
 		return;
 	};
+}
+
+
+//Event Handlers
+/**
+ * This event occurs following a successful damage slice.
+ * \param slicer The Player doing the slicing.
+ * \param percentage The percentage increase.
+ */
+void WeaponImplementation::onDamageSliced(Player* slicer, uint8 percentage) {
+	StfParameter* params = new StfParameter();
+	params->addDI(percentage);
+	slicer->sendSystemMessage("slicing/slicing", "dam_mod", params); //You have successfully increased the damage range of the weapon by %DI%!
+	delete params;
+}
+
+/**
+ * This event occurs following a successful speed slice.
+ * \param slicer The Player doing the slicing.
+ * \param percentage The percentage increase.
+ */
+void WeaponImplementation::onSpeedSliced(Player* slicer, uint8 percentage) {
+	StfParameter* params = new StfParameter();
+	params->addDI(percentage);
+	slicer->sendSystemMessage("slicing/slicing", "spd_mod", params); //You have successfully increased the attack speed of the weapon by %DI%!
+	delete params;
+}
+
+/**
+ * This event occurs when a slicing attempt has gone awry.
+ * \param slicer The player doing the slicing.
+ */
+void WeaponImplementation::onSlicingFailure(Player* slicer) {
+	slicer->sendSystemMessage("slicing/slicing", "fail_weapon"); //You've made a critical mistake modifying the weapon's basic systems. The damage is extensive and while the weapon still retains its previous effectiveness, no one will be able to modify it in the future.
+	setSliced(true);
+}
+
+
+//Actions
+/**
+ * Slices the item.
+ * \param slicer The player slicing the item.
+ */
+void WeaponImplementation::slice(Player* slicer) {
+	int sliceSkill = slicer->getSlicingAbility();
+	uint8 min = 0;
+	uint8 max = 0;
+
+	switch (sliceSkill) {
+	case 5:
+		min += 5;
+		max += 5;
+	case 4:
+		min += 5;
+		max += 5;
+	case 3:
+	case 2:
+		min += 10;
+		max += 25;
+		break;
+	default:
+		return;
+	}
+
+	uint8 percentage = System::random(max - min) + min;
+
+	try {
+		wlock();
+
+		removePowerup(slicer, false);
+
+		switch (System::random(1)) {
+		case 0:
+			sliceDamage(slicer, percentage);
+			break;
+		case 1:
+			sliceSpeed(slicer, percentage);
+			break;
+		}
+
+		generateAttributes(slicer);
+
+		unlock();
+	} catch (...) {
+		unlock();
+	}
+}
+
+/**
+ * Slices the weapon, increasing damage.
+ * \param slicer The player doing the slicing.
+ * \param percentage What percentage increase will take effect.
+ */
+void WeaponImplementation::sliceDamage(Player* slicer, uint8 percentage){
+	if (isSliced())
+		return;
+
+	setMinDamage((minDamage * percentage / 100) + minDamage);
+	setMaxDamage((maxDamage * percentage / 100) + maxDamage);
+
+	setSliced(true);
+	updated = true;
+
+	onDamageSliced(slicer, percentage);
+}
+
+/**
+ * Slices the weapon, increasing speed.
+ * \param slicer The player doing the slicing.
+ * \param percentage What percentage increase will take effect.
+ */
+void WeaponImplementation::sliceSpeed(Player* slicer, uint8 percentage){
+	if (isSliced())
+		return;
+
+	setAttackSpeed(attackSpeed - (attackSpeed * percentage / 100));
+
+	if (attackSpeed < 1)
+		setAttackSpeed(1.0f);
+
+	setSliced(true);
+	updated = true;
+
+	onSpeedSliced(slicer, percentage);
 }

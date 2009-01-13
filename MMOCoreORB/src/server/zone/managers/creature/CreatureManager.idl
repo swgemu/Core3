@@ -106,4 +106,7 @@ interface CreatureManager {
 	// setters and getters
 	Creature getCreature(unsigned long oid);
 	void addCreature(Creature creature);
+	
+	void setGlobalNPCRegen(float value);
+	float getGlobalNPCRegen();
 }

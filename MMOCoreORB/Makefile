@@ -77,6 +77,7 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.idl \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl \
 				server/zone/objects/player/sui/banktransferbox/SuiBankTipConfirmBox.idl \
+				server/zone/objects/player/sui/slicingbox/SuiSlicingBox.idl \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.idl \
 				server/zone/objects/player/sui/colorpicker/SuiColorPicker.idl \
 				server/zone/objects/player/badges/Badges.idl \
@@ -137,6 +138,11 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/zone/objects/tangible/pharmaceutical/CurePack.idl \
 				server/zone/objects/tangible/pharmaceutical/CureAreaPack.idl \
 				server/zone/objects/tangible/pharmaceutical/RevivePack.idl \
+				server/zone/objects/tangible/tools/Tool.idl \
+				server/zone/objects/tangible/tools/smuggler/PrecisionLaserKnife.idl \
+				server/zone/objects/tangible/tools/smuggler/MolecularClamp.idl \
+				server/zone/objects/tangible/tools/smuggler/FlowAnalyzerNode.idl \
+				server/zone/objects/tangible/tools/smuggler/UpgradeKit.idl \
 				server/zone/objects/tangible/attachment/Attachment.idl \
 				server/zone/objects/tangible/powerup/Powerup.idl \
 				server/zone/objects/tangible/holocron/Holocron.idl \

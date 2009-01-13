@@ -174,6 +174,10 @@ void CreatureImplementation::init() {
 
 	creatureRemoveEvent = NULL;
 
+	//Reducing in combat regen for non players to 25% of normal.
+	combatRegenModifier = 0.25f;
+	peacedRegenModifier = 1.0f;
+
 	setObjectKeeping(true);
 
 	StringBuffer logname;

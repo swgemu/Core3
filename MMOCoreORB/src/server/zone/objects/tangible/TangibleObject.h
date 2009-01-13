@@ -83,6 +83,8 @@ public:
 
 	bool isTerminal();
 
+	bool isTool();
+
 	bool isSurveyTool();
 
 	bool isPharmaceutical();
@@ -118,6 +120,18 @@ public:
 	bool isInsurable();
 
 	bool isDecayable();
+
+	bool isSlicable();
+
+	bool isSliced();
+
+	bool isBeingSliced();
+
+	unsigned long long getSlicerID();
+
+	void setSlicerID(unsigned long long id);
+
+	void setSlicable(bool value);
 
 	void setCraftersName(String& n);
 
@@ -199,7 +213,11 @@ public:
 
 	void onBroken();
 
+	void onSlicingFailure(Player* slicer);
+
 	void decay(float decayRate);
+
+	void slice(Player* slicer);
 
 protected:
 	TangibleObject(DummyConstructorParameter* param);
@@ -278,6 +296,8 @@ public:
 
 	bool isTerminal();
 
+	bool isTool();
+
 	bool isSurveyTool();
 
 	bool isPharmaceutical();
@@ -313,6 +333,18 @@ public:
 	bool isInsurable();
 
 	bool isDecayable();
+
+	bool isSlicable();
+
+	bool isSliced();
+
+	bool isBeingSliced();
+
+	unsigned long long getSlicerID();
+
+	void setSlicerID(unsigned long long id);
+
+	void setSlicable(bool value);
 
 	void setCraftersName(String& n);
 
@@ -394,7 +426,11 @@ public:
 
 	void onBroken();
 
+	void onSlicingFailure(Player* slicer);
+
 	void decay(float decayRate);
+
+	void slice(Player* slicer);
 
 protected:
 	String _param0_setCraftersName__String_;
