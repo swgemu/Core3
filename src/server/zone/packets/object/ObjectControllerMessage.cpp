@@ -883,6 +883,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 	case (0x5041F83A): // Teach
 		parseTeach(player, pack);
 		break;
+	case (0xD6EE77C2): // System Group Message
+		parseSystemGroupMessage(player, pack);
+		break;
 	default:
 		target = pack->parseLong();
 		String actionModifier = "";
@@ -3901,20 +3904,20 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 	} else if (destinationID == player->getObjectID() + 1) { //item is going to inventory
 		TangibleObject* targetTanoObject = (TangibleObject*) player->getInventoryItem(target);
 		if (targetTanoObject != NULL) {
-			if(targetTanoObject->isWeapon()) {
-				player->unequipItem(targetTanoObject);
-				//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping weapon.\n";
+			if(player->isTanoObjEquipped(targetTanoObject)) {
+				if(targetTanoObject->isWeapon()) {
+					player->changeWeapon(target, true);
+					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping weapon.\n";
+				} else if(targetTanoObject->isArmor()) {
+					player->changeArmor(target, true);
+					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
+				} else if(targetTanoObject->isClothing()) {
+					player->changeArmor(target, true);
+					//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
+				}
 			}
-			else if(targetTanoObject->isArmor()) {
-				player->unequipItem(targetTanoObject);
-				//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping armor.\n";
-			}
-			else if(targetTanoObject->isClothing()) {
-				player->unequipItem(targetTanoObject);
-				//System::out << "ObjectControllerMessage::parseTransferItemMisc, unequipping clothing.\n";
-			}
-			else
-				System::out << "ObjectControllerMessage::parseTransferItemMisc, item unequip not implemented in ObjectControllerMessage::parseTransferItemMisc.\n";
+		} else {
+			System::out << "ObjectControllerMessage::parseTransferItemMisc, item unequip not implemented in ObjectControllerMessage::parseTransferItemMisc.\n";
 			return;
 		}
 
@@ -4536,5 +4539,35 @@ void ObjectControllerMessage::parseNewbieSelectStartingLocation(Player* player,
 
 	}
 
+}
+
+void ObjectControllerMessage::parseSystemGroupMessage(Player* player, Message* pack) {
+	pack->shiftOffset(8);
+	UnicodeString message;
+	pack->parseUnicode(message);
+
+	String skillBox = "outdoors_squadleader_novice";
+	if(player->hasSkillBox(skillBox)) {
+		GroupObject* group = player->getGroupObject();
+		if(group != NULL) {
+			if(group->getLeader() == player) {
+				UnicodeString sqLead = "Squad Leader ";
+				UnicodeString colon = ": ";
+				UnicodeString finalMessage = sqLead + player->getCharacterName() + colon + message;
+				for(int i = 0; i < group->getGroupSize(); i++) {
+					CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+					if(groupMember->isPlayer()) {
+						groupMember->sendSystemMessage(finalMessage);
+					}
+				}
+			} else {
+				player->sendSystemMessage("You must be the group leader to perform this command.");
+			}
+		} else {
+			player->sendSystemMessage("You must be in a group to perform this command.");
+		}
+	} else {
+		player->sendSystemMessage("You do not have sufficient abilities to System Group Message");
+	}
 }
 

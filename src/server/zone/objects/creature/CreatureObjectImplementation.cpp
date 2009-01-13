@@ -3582,6 +3582,11 @@ void CreatureObjectImplementation::sendSystemMessage(const String& file, const S
 		((PlayerImplementation*) this)->sendSystemMessage(file, str, targetid);
 }
 
+void CreatureObjectImplementation::sendSystemMessage(UnicodeString& message) {
+	if (isPlayer())
+		((PlayerImplementation*) this)->sendSystemMessage(message);
+}
+
 float CreatureObjectImplementation::getDistanceTo(CreatureObject* targetCreature) {
 	// TEMP till
 	float x = targetCreature->getPositionX();
@@ -4539,6 +4544,21 @@ void CreatureObjectImplementation::unequipItem(TangibleObject* item) {
 	broadcastMessage(linkmsg);
 
 	onUnequip(item);
+}
+
+bool CreatureObjectImplementation::isTanoObjEquipped(TangibleObject* tano) {
+	if (inventory == NULL)
+		return false;
+
+	for (int i = 0; i < inventory->objectsSize(); i++) {
+		TangibleObject* item = (TangibleObject*) inventory->getObject(i);
+
+		if (tano == item)
+			if(item->isEquipped())
+				return true;
+	}
+
+	return false;
 }
 
 

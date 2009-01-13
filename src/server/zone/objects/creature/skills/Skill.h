@@ -86,6 +86,7 @@ public:
 
 	static const int TARGET = 1;
 	static const int SELF = 2;
+	static const int GROUP = 3;
 
 public:
 	Skill(const String& name, int tp, int cat, ZoneProcessServerImplementation* serv) {
@@ -226,6 +227,9 @@ public:
 		return type == THROW;
 	}
 
+	inline bool isGroupSkill(){
+		return category == GROUP;
+	}
 };
 
 #endif /*SKILL_H_*/
