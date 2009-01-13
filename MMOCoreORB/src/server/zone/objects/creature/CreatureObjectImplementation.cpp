@@ -4651,6 +4651,7 @@ void CreatureObjectImplementation::onRegenerateHAM() {
 		if (getShockWounds() > 0 && System::random(1) == 1)
 			changeShockWounds(-System::random(3) - 1);
 	}
+
 	uint32 healthTick = calculateAttributeRegenTick(CreatureAttribute::HEALTH);
 	uint32 actionTick = calculateAttributeRegenTick(CreatureAttribute::ACTION);
 	uint32 mindTick = calculateAttributeRegenTick(CreatureAttribute::MIND);

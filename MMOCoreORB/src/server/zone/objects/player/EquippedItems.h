@@ -50,6 +50,8 @@ which carries forward this exception.
 #include "../tangible/weapons/Weapon.h"
 #include "../tangible/instrument/Instrument.h"
 
+#include "engine/engine.h"
+
 // This could be moved to wearable or armor
 static const char* enhancements[] =
 {
@@ -82,9 +84,10 @@ static const char* instrumentSkills[] =
 class EquippedItems {
 protected:
 	Player* player;
-	Wearable* clothingLocations[15];
-	Weapon* weapon;
-	Instrument* instrument;
+	Vector<ManagedReference<Wearable> > clothingLocations;
+	//Wearable* clothingLocations[15];
+	ManagedReference<Weapon> weapon;
+	ManagedReference<Instrument> instrument;
 
 	int armorEquipped;
 
@@ -121,7 +124,7 @@ public:
 	EquippedItems(Player* plyr) {
 		player = plyr;
 		for (int i = 0; i < 15; i++)
-			clothingLocations[i] = NULL;
+			clothingLocations.add(NULL);
 
 		weapon = NULL;
 		instrument = NULL;
@@ -224,7 +227,7 @@ public:
 			armor = (Armor*)item;
 			locations = getArmorLocations(armor);
 
-			if (!checkEncumbrance(armor, clothingLocations[armor->getArmorType()]) && !forced) {
+			if (!checkEncumbrance(armor, clothingLocations.get(armor->getArmorType())) && !forced) {
 				player->sendSystemMessage("You don't have enough pool points to do that!");
 				return false;
 			}
@@ -236,6 +239,7 @@ public:
 			break;
 
 		default:
+			locations = SHIRT + ARMS + LEGS + CHEST;
 			System::out << "Unknown clothing type " << item->getObjectSubType() << endl;
 			break;
 		}
@@ -243,10 +247,10 @@ public:
 		int currentLocation = 1; // Chest
 		for (int i = 0; i < 15; i++) {
 			if (locations & currentLocation) { // new item occupies the current location
-				if ((clothingLocations[i] != NULL) && (item != clothingLocations[i]))
+				if ((clothingLocations.get(i) != NULL) && (item != clothingLocations.get(i)))
 					// This location already has another item equipped
 					unequipClothing(i); // So unequip it
-				clothingLocations[i] = item;  // Equip the new item
+				clothingLocations.setElementAt(i, item);  // Equip the new item
 			}
 			currentLocation <<= 1;
 		}
@@ -258,17 +262,20 @@ public:
 		return true;
 	}
 
-	bool unequipClothing (Wearable* item) {
+	bool unequipClothing (Wearable* it) {
+		ManagedReference<Wearable> item = it;
+
 		bool equipped = false;
 
 		for (int i = 0; i < 15; i++)
-			if (clothingLocations[i] == item) {
-				clothingLocations[i] = NULL;
+			if (clothingLocations.get(i) == item) {
+				clothingLocations.setElementAt(i, NULL);
 				equipped = true;
 			}
 
-		if (!equipped)
+		if (!equipped) {
 			return false;
+		}
 
 		removeEnhancements(item);
 		removeEncumbrance(item);
@@ -281,7 +288,7 @@ public:
 	}
 
 	void unequipClothing (uint16 location) {
-		Wearable* item = clothingLocations[location];
+		Wearable* item = clothingLocations.get(location);
 		if (item == NULL)
 			return;
 		unequipClothing(item);
@@ -315,13 +322,15 @@ public:
 		return true;
 	}
 
-	bool unequipWeapon(TangibleObject* item) {
+	bool unequipWeapon(TangibleObject* it) {
+		ManagedReference<TangibleObject> item = it;
+
 		if (player->isPlayingMusic())
 			player->stopPlayingMusic();
 
 		if (item->isWeapon()) {
 			weapon = NULL;
-			unsetWeaponSkillMods((Weapon*)item);
+			unsetWeaponSkillMods((Weapon*)item.get());
 			player->setWeaponAccuracy(NULL);
 		} else {
 			instrument = NULL;
@@ -333,7 +342,7 @@ public:
 	}
 
 	Wearable* getClothing (int location) {
-		return clothingLocations[location];
+		return clothingLocations.get(location);
 	}
 
 	Armor* getArmor (int location) {
@@ -341,10 +350,10 @@ public:
 			System::out << "Illegal clothing location " << location << endl;
 			return NULL;
 		}
-		if (clothingLocations[location] == NULL || !clothingLocations[location]->isArmor()) {
+		if (clothingLocations.get(location) == NULL || !clothingLocations.get(location)->isArmor()) {
 			return NULL;
 		} else {
-			return (Armor*)clothingLocations[location];
+			return (Armor*)clothingLocations.get(location).get();
 		}
 	}
 

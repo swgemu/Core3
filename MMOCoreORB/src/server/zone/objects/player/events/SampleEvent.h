@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "../Player.h"
 
 class SampleEvent : public Event {
-	Player* player;
+	ManagedReference<Player> player;
 
 	String resourceName;
 

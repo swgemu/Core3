@@ -317,7 +317,6 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	}
 
 	try {
-
 		server->lock();
 
 		SceneObject* obj = server->getObject(playerID, false);
@@ -347,10 +346,10 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 
 			server->addObject(player, false);
 
+			server->unlock();
+
 			try {
 				player->wlock();
-
-				server->unlock();
 
 				player->load(client);
 
@@ -364,6 +363,7 @@ void ZonePacketHandler::handleSelectCharacter(Message* pack) {
 	} catch (Exception& e) {
 		System::out << "unreported exception caught in ZonePacketHandler::handleSelectCharacter(Message* pack)\n";
 		e.printStackTrace();
+
 		server->unlock();
 	}
 }
@@ -490,6 +490,7 @@ void ZonePacketHandler::handleObjectControllerMessage(Message* pack) {
 
 	try {
 		player->wlock();
+
 		if (!player->isOnline()) {
 			player->unlock();
 			return;

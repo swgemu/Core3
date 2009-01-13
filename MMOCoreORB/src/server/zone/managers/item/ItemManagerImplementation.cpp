@@ -1880,13 +1880,15 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 			comesFromInventory = true;
 		else {
 			item->unlock();
-			sourceObject->wlock(player);
+
+			if (sourceObject != player)
+				sourceObject->wlock(player);
 		}
 
 		if (!comesFromInventory) {
 			if (sourceObject->isCell()) {
 				comesFromCell = true;
-			} else if (sourceObject->getParentID() == player->getInventory()->getObjectID()) {
+			} else if (sourceObject->getObjectID() == player->getInventory()->getObjectID()) {
 				comesFromInventoryContainer = true;
 				sourceContainer = (Container*) sourceObject;
 			} else if (sourceTano->isContainer()) {
@@ -1894,7 +1896,9 @@ void ItemManagerImplementation::transferContainerItem(Player* player, TangibleOb
 				sourceContainer = (Container*) sourceObject;
 			}
 
-			sourceObject->unlock();
+			if (sourceObject != player)
+				sourceObject->unlock();
+
 			item->wlock(player);
 		}
 
@@ -2547,8 +2551,9 @@ void ItemManagerImplementation::loadStructurePlayerItems(Player* player, uint64 
 		return;
 
 
-	if (!building->getStorageLoaded())
-		loadContainersInStructures(player, building);
+	// this is totally fucked up
+	/*if (!building->getStorageLoaded())
+		loadContainersInStructures(player, building);*/
 }
 
 void ItemManagerImplementation::loadContainersInStructures(Player* player, BuildingObject* building) {
@@ -2606,6 +2611,7 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 
 			if (item == NULL) {
 				building->unlock();
+
 				delete result;
 				return;
 			}
@@ -2628,7 +2634,6 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 
 			SceneObject* cell = zone->lookupObject(parentID);
 			if (cell != NULL) {
-
 				item->setParent(cell);
 				item->setContainer(cell);
 
@@ -2653,9 +2658,11 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 		delete result;
 	} catch (DatabaseException& e) {
 		System::out << e.getMessage() << "\n";
+
 		building->unlock();
 	} catch (...) {
 		System::out << "unreported exception caught in ItemManagerImplementation::loadContainersInStructures(Player* player, BuildingObject* building)\n";
+
 		building->unlock();
 	}
 }
@@ -2698,6 +2705,7 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 
 			if (item == NULL) {
 				delete contiResult;
+
 				conti->unlock();
 				return;
 			}
@@ -2733,11 +2741,12 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 
 		conti->unlock();
 	} catch (DatabaseException& e) {
-		conti->unlock();
 		System::out << e.getMessage() << "\n";
 
-	} catch (...) {
 		conti->unlock();
+	} catch (...) {
 		System::out << "unreported exception caught in ItemManagerImplementation::loadItemsInContainersForStructure(Player* player, Container* conti)\n";
+
+		conti->unlock();
 	}
 }

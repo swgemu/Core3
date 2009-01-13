@@ -116,6 +116,8 @@ CreatureImplementation::~CreatureImplementation() {
 void CreatureImplementation::init() {
 	zone = NULL;
 
+	creatureManager = NULL;
+
 	objectType = NONPLAYERCREATURE;
 
 	creatureState = ACTIVE;
@@ -1085,31 +1087,21 @@ void CreatureImplementation::updateCreaturePosition(bool lightUpdate) {
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
 		SceneObject* obj =
-				(SceneObject*) (((SceneObjectImplementation*) getInRangeObject(
-						i))->_getStub());
+				(SceneObject*) (((SceneObjectImplementation*) getInRangeObject(i))->_getStub());
+
 		if (obj->isPlayer()) {
 			Player* player = (Player*) obj;
 
 			if (!lightUpdate) {
-				if (parent != NULL) {
-					UpdateTransformWithParentMessage* umsg =
-							new UpdateTransformWithParentMessage(_this);
-					player->sendMessage(umsg);
-				} else {
-					UpdateTransformMessage* umsg =
-							new UpdateTransformMessage(_this);
-					player->sendMessage(umsg);
-				}
+				if (parent != NULL)
+					player->sendMessage(new UpdateTransformWithParentMessage(_this));
+				else
+					player->sendMessage(new UpdateTransformMessage(_this));
 			} else {
-				if (parent != NULL) {
-					LightUpdateTransformWithParentMessage* umsg =
-							new LightUpdateTransformWithParentMessage(_this);
-					player->sendMessage(umsg);
-				} else {
-					LightUpdateTransformMessage* umsg =
-							new LightUpdateTransformMessage(_this);
-					player->sendMessage(umsg);
-				}
+				if (parent != NULL)
+					player->sendMessage(new LightUpdateTransformWithParentMessage(_this));
+				else
+					player->sendMessage(new LightUpdateTransformMessage(_this));
 			}
 		}
 	}
@@ -1235,11 +1227,7 @@ bool CreatureImplementation::activate() {
 		if (aggroedCreature != NULL && targetObject != aggroedCreature) {
 			updateTarget(aggroedCreature);
 		} else if (doRandomMovement) {
-			zone->lock();
-
 			doRandomMovement = false;
-
-			zone->unlock();
 
 			addRandomPatrolPoint(32 + System::random(64), false);
 		}
@@ -1346,16 +1334,7 @@ void CreatureImplementation::resetState() {
 
 	clearStates();
 
-	try {
-
-		zone->lock();
-
-		aggroedCreature = NULL;
-
-		zone->unlock();
-	} catch (...) {
-		zone->unlock();
-	}
+	aggroedCreature = NULL;
 
 	resetPatrolPoints(false);
 
@@ -1390,16 +1369,9 @@ void CreatureImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 }
 
 void CreatureImplementation::setNextPosition() {
-	try {
-		zone->lock();
+	setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(),
+		nextPosition->getPositionY());
 
-		setPosition(nextPosition->getPositionX(), nextPosition->getPositionZ(),
-				nextPosition->getPositionY());
-
-		zone->unlock();
-	} catch (...) {
-		zone->unlock();
-	}
 	uint64 newCell = nextPosition->getCellID();
 
 	StringBuffer reachedPosition;
@@ -1438,7 +1410,7 @@ bool CreatureImplementation::doMovement() {
 
 	float maxSpeed = speed + 0.75f;
 
-	if(isSnared())
+	if (isSnared())
 		maxSpeed *= 0.20f;
 
 	if (aggroedCreature != NULL && !camoSet) {
@@ -1614,22 +1586,14 @@ void CreatureImplementation::doAttack(CreatureObject* target, int damage) {
 
 		info("new target locked");
 
-		try {
-			zone->lock();
-
-			aggroedCreature = getLootOwner();
-
-			zone->unlock();
-		} catch (...) {
-			zone->unlock();
-		}
+		aggroedCreature = getLootOwner();
 
 		updateTarget(target);
 
 		info("new target locked");
 	}
 
-	if (aggroedCreature != NULL && !isActive())
+	if (aggroedCreature != NULL && !isActive() && creatureManager != NULL)
 		creatureManager->queueActivity(this, 10);
 }
 
@@ -1873,15 +1837,7 @@ void CreatureImplementation::deaggro() {
 
 		removeDefender(aggroedCreature);
 
-		try {
-			zone->lock();
-
-			aggroedCreature = NULL;
-
-			zone->unlock();
-		} catch (...) {
-			zone->unlock();
-		}
+		aggroedCreature = NULL;
 	}
 
 	clearTarget();
@@ -1889,7 +1845,7 @@ void CreatureImplementation::deaggro() {
 }
 
 void CreatureImplementation::activateRecovery() {
-	if (zone != NULL && !isActive())
+	if (zone != NULL && !isActive() && creatureManager != NULL)
 		creatureManager->queueActivity(this);
 }
 

@@ -449,11 +449,11 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		if (!player->hasSkill(actionCRC)) {
 			player->clearQueueAction(actioncntr, 0, 2, 0);
 			return;
+		}
 
-		}
-		if (!player->doPowerboost()) {
+		if (!player->doPowerboost())
 			break;
-		}
+
 		player->queueAction(player, target, actionCRC, actioncntr, "");
 		break;
 	case (0xB93A3853): //haveconsent
