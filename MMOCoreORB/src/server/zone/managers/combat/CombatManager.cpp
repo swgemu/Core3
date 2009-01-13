@@ -767,7 +767,7 @@ uint32 CombatManager::getTargetDefense(CreatureObject* creature, CreatureObject*
 
 		// TODO: Add defenses into creature luas.
 		if (!targetCreature->isPlayer()) {
-			defense = targetCreature->getLevel();
+			defense = targetCreature->getLevel() / 2;
 
 			if (defense > 250)
 				defense = 250;
