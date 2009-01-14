@@ -72,7 +72,7 @@ TicketImplementation::TicketImplementation(Player* player, uint32 tempCRC,
 	itemAttributes->setStringAttribute("departurePoint", departurePoint);
 
 	itemAttributes->setStringAttribute("arrivalPlanet", arrivalPlanet);
-	itemAttributes->setStringAttribute("arrivalPlanet", arrivalPoint);
+	itemAttributes->setStringAttribute("arrivalPoint", arrivalPoint);
 
 	templateTypeName = "wearables_name";
 	templateName = tempn;
