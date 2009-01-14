@@ -43,7 +43,4 @@
 
 -- Armorsmith
 
-RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/compositeArmorBoots.lua")
 RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/compositeArmorChestPlate.lua")
-RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/compositeArmorGloves.lua")
-RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/compositeArmorHelmet.lua")
