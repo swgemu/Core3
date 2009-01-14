@@ -46,15 +46,19 @@ which carries forward this exception.
 
 #include "../../packets/object/ObjectControllerMessage.h"
 
-DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(String sub)
+DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(String Title, String Subtitle)
 	: DraftSchematicExpPropGroupServant() {
 
-	subtitle = sub;
+	title = Title;
+
+	subtitle = Subtitle;
 
 	expPropGroupListSize = 0;
 }
 DraftSchematicExpPropGroupImplementation::DraftSchematicExpPropGroupImplementation(DraftSchematicExpPropGroup* group) : DraftSchematicExpPropGroupServant() {
 
+		title = group->getTitle();
+		subtitle = group->getSubtitle();
 
 		for (int i = 0; i < group->getKeyCount(); ++i){
 			keys.add(group->getKey(i));
@@ -84,7 +88,18 @@ DraftSchematicExpPropGroupImplementation::~DraftSchematicExpPropGroupImplementat
 
 	}
 
-void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const String& experimentalPropertyType, uint32 weight) {
+void DraftSchematicExpPropGroupImplementation::addExperimentalProperty(const String& experimentalPropertyType,
+		uint32 weight, float min, float max, int precision) {
+
+	if(minValue != min)
+		minValue = min;
+
+	if(maxValue != max)
+		maxValue = max;
+
+	if(decimalPrecision != precision)
+		decimalPrecision = precision;
+
 	uint8 expPropType = 0x00;
 
 	if (experimentalPropertyType == "PO") {

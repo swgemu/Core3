@@ -37,7 +37,7 @@ public:
 
 	void sendTo(Player* player);
 
-	void addExperimentalProperty(unsigned int groupNumber, const String& experimentalProperty, unsigned int weight, String& subtitle);
+	void addExperimentalProperty(unsigned int groupNumber, const String& experimentalProperty, unsigned int weight, String& title, String& subtitle, float min, float max, int precision);
 
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
@@ -83,17 +83,11 @@ public:
 
 	void setAssemblySkill(const String& ass);
 
+	void setResourcesWereRemoved();
+
 	void setFinished();
 
 	void setCrafter(Player* crafter);
-
-	int getAttributesToSetListSize();
-
-	DraftSchematicAttribute* getAttributeToSet(const int i);
-
-	DraftSchematicAttribute* getAttributeToSet(const String& name);
-
-	void addAttributeToSet(const String& attribute, float minVal, float maxVal, const String& attributeExpProp, const int precision);
 
 	int getExpPropGroupListSize();
 
@@ -148,6 +142,8 @@ public:
 	DraftSchematicValues* getCraftingValues();
 
 	bool isFinished();
+
+	bool resourcesWereRemoved();
 
 	void toString();
 
@@ -183,7 +179,7 @@ public:
 
 	void sendTo(Player* player);
 
-	void addExperimentalProperty(unsigned int groupNumber, const String& experimentalProperty, unsigned int weight, String& subtitle);
+	void addExperimentalProperty(unsigned int groupNumber, const String& experimentalProperty, unsigned int weight, String& title, String& subtitle, float min, float max, int precision);
 
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
@@ -229,17 +225,11 @@ public:
 
 	void setAssemblySkill(const String& ass);
 
+	void setResourcesWereRemoved();
+
 	void setFinished();
 
 	void setCrafter(Player* crafter);
-
-	int getAttributesToSetListSize();
-
-	DraftSchematicAttribute* getAttributeToSet(const int i);
-
-	DraftSchematicAttribute* getAttributeToSet(const String& name);
-
-	void addAttributeToSet(const String& attribute, float minVal, float maxVal, const String& attributeExpProp, const int precision);
 
 	int getExpPropGroupListSize();
 
@@ -295,11 +285,14 @@ public:
 
 	bool isFinished();
 
+	bool resourcesWereRemoved();
+
 	void toString();
 
 protected:
-	String _param1_addExperimentalProperty__int_String_int_String_;
-	String _param3_addExperimentalProperty__int_String_int_String_;
+	String _param1_addExperimentalProperty__int_String_int_String_String_float_float_int_;
+	String _param3_addExperimentalProperty__int_String_int_String_String_float_float_int_;
+	String _param4_addExperimentalProperty__int_String_int_String_String_float_float_int_;
 	String _param0_addIngredient__String_String_int_String_int_int_int_;
 	String _param1_addIngredient__String_String_int_String_int_int_int_;
 	String _param3_addIngredient__String_String_int_String_int_int_int_;
@@ -309,9 +302,6 @@ protected:
 	String _param0_setCustomizationSkill__String_;
 	String _param0_addCustomizationOption__String_int_;
 	String _param0_setAssemblySkill__String_;
-	String _param0_getAttributeToSet__String_;
-	String _param0_addAttributeToSet__String_float_float_String_int_;
-	String _param3_addAttributeToSet__String_float_float_String_int_;
 };
 
 class DraftSchematicHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicHelper> {

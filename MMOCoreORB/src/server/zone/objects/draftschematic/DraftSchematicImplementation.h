@@ -123,9 +123,9 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 	Vector<ManagedReference<DraftSchematicExpPropGroup> > dsExpPropGroups;
 
 	// Attributes that are sent in the packets
-	Vector<ManagedReference<DraftSchematicAttribute> > attributesToSet;
+	//Vector<ManagedReference<DraftSchematicAttribute> > attributesToSet;
 
-	VectorMap<String, float> experimentalProperties;
+	//VectorMap<String, float> experimentalProperties;
 
 	DraftSchematicValues* craftingValues;
 
@@ -153,6 +153,7 @@ class DraftSchematicImplementation: public DraftSchematicServant {
 	Vector<int> customizationDefaults;
 
 	bool finished;
+	bool resourcesRemoved;
 
 	Player* crafter;
 
@@ -189,8 +190,8 @@ public:
 
 	// Experimental Property Methods
 	// UPDATE THIS METHOD WHEN WE CAN PASS VECTORS AROUND IN IDL
-	void addExperimentalProperty(uint32 groupNumber,
-			const String& experimentalProperty, uint32 weight, String subtitle);
+	void addExperimentalProperty(uint32 groupNumber, String experimentalProperty,
+			uint32 weight, String title, String subtitle, float min, float max, int precision);
 
 	void sendExperimentalPropertiesToPlayer(Player* player);
 
@@ -272,6 +273,10 @@ public:
 		finished = true;
 	}
 
+	inline void setResourcesWereRemoved() {
+		resourcesRemoved = true;
+	}
+
 	//getters
 	inline uint32 getSchematicID() {
 		return schematicID;
@@ -349,40 +354,6 @@ public:
 		return assemblySkill;
 	}
 
-	inline void addAttributeToSet(const String& attribute, const float minVal,
-			const float maxVal, const String& attributeExpProp, int precision) {
-		DraftSchematicAttribute* attrib =
-						new DraftSchematicAttribute(attribute, minVal, maxVal, attributeExpProp, precision);
-		attributesToSet.add(attrib);
-	}
-
-	inline DraftSchematicAttribute* getAttributeToSet(const int i) {
-		return attributesToSet.get(i);
-	}
-
-	inline int getAttributesToSetListSize() {
-		return attributesToSet.size();
-	}
-
-	inline DraftSchematicAttribute* getAttributeToSet(const String& name) {
-
-		DraftSchematicAttribute* attrib;
-
-		for (int i = 0; i < getAttributesToSetListSize(); ++i) {
-
-			attrib = getAttributeToSet(i);
-
-			if (attrib->getAttributeName() == name) {
-
-				return attrib;
-
-			}
-
-		}
-
-		return NULL;
-	}
-
 	inline int getExpPoints() {
 		return expPointsUsed;
 	}
@@ -425,6 +396,9 @@ public:
 		return finished;
 	}
 
+	inline bool resourcesWereRemoved() {
+		return resourcesRemoved;
+	}
 };
 
 #endif /*DRAFTSCHEMATICIMPLEMENTATION_H_*/

@@ -44,19 +44,19 @@
 -- MEDIC
 
 -- Novice Medic
-RunDraftSchematicFile("objects/draftschematics/medic/novice/biologicalEffectController.lua")
-RunDraftSchematicFile("objects/draftschematics/medic/novice/smallStimpackA.lua")
-RunDraftSchematicFile("objects/draftschematics/medic/novice/liquidSuspension.lua")
-RunDraftSchematicFile("objects/draftschematics/medic/novice/foodChemicalCraftingTool.lua")
+--RunDraftSchematicFile("objects/draftschematics/medic/novice/biologicalEffectController.lua")
+--RunDraftSchematicFile("objects/draftschematics/medic/novice/smallStimpackA.lua")
+--RunDraftSchematicFile("objects/draftschematics/medic/novice/liquidSuspension.lua")
+--RunDraftSchematicFile("objects/draftschematics/medic/novice/foodChemicalCraftingTool.lua")
 
 -- Organic Chemistry 1
-RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry1/actionWoundMedpackA.lua")
-RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry1/healthWoundMedpackA.lua")
+--RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry1/actionWoundMedpackA.lua")
+--RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry1/healthWoundMedpackA.lua")
  
 -- Organic Chemistry 2
-RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry2/solidDeliveryShell.lua")
-RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry2/smallStimpackB.lua")
-RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry2/chemicalReleaseDurationMechanism.lua") 
+--RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry2/solidDeliveryShell.lua")
+--RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry2/smallStimpackB.lua")
+--RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry2/chemicalReleaseDurationMechanism.lua") 
 
 -- Organic Chemistry 3
 --RunDraftSchematicFile("objects/draftschematics/medic/organicchemistry4/advLiquidSuspension.lua")

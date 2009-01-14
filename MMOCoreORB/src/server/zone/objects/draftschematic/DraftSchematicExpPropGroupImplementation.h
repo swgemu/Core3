@@ -60,19 +60,23 @@ class DraftSchematicExpPropGroupImplementation: public DraftSchematicExpPropGrou
 
 	uint32 expPropGroupListSize;
 
-	String subtitle;
+	String title, subtitle;
+
+	float minValue, maxValue;
+
+	int decimalPrecision;
 
 public:
 	// When they allow passing of vectors, make this constructor take in a Vector of Strings and a vector
 	// of uint32 for the types and weights
-	DraftSchematicExpPropGroupImplementation(String sub);
+	DraftSchematicExpPropGroupImplementation(String Title, String Subtitle);
 
 	DraftSchematicExpPropGroupImplementation(DraftSchematicExpPropGroup* group);
 
 	~DraftSchematicExpPropGroupImplementation();
 
 	void addExperimentalProperty(const String& experimentalPropertyType,
-			uint32 weight);
+			uint32 weight, float min, float max, int precision);
 
 	void sendToPlayer(ObjectControllerMessage* msg, int count);
 
@@ -149,6 +153,26 @@ public:
 
 	String& getSubtitle() {
 		return subtitle;
+	}
+
+	String& getTitle() {
+		return title;
+	}
+
+	inline float getMinValue() {
+		return minValue;
+	}
+
+	inline float getMaxValue() {
+		return maxValue;
+	}
+
+	inline float getRange() {
+		return maxValue - minValue;
+	}
+
+	inline int getPrecision() {
+		return decimalPrecision;
 	}
 
 private:

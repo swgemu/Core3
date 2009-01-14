@@ -98,7 +98,7 @@ interface DraftSchematicValues implements ManagedObject {
 
 	void recalculateValues(DraftSchematic draftSchematic);
 
-	float getAttributeAndValue(DraftSchematic draftSchematic, String& attribute, const int i);
+	float getAttributeAndValue(String& attribute, const int i);
 
 	void clearAll();
 	void clear();

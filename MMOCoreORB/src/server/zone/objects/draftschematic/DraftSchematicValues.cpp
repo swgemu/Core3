@@ -513,19 +513,18 @@ void DraftSchematicValues::recalculateValues(DraftSchematic* draftSchematic) {
 		((DraftSchematicValuesImplementation*) _impl)->recalculateValues(draftSchematic);
 }
 
-float DraftSchematicValues::getAttributeAndValue(DraftSchematic* draftSchematic, String& attribute, const int i) {
+float DraftSchematicValues::getAttributeAndValue(String& attribute, const int i) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 42);
-		method.addObjectParameter(draftSchematic);
 		method.addAsciiParameter(attribute);
 		method.addSignedIntParameter(i);
 
 		return method.executeWithFloatReturn();
 	} else
-		return ((DraftSchematicValuesImplementation*) _impl)->getAttributeAndValue(draftSchematic, attribute, i);
+		return ((DraftSchematicValuesImplementation*) _impl)->getAttributeAndValue(attribute, i);
 }
 
 void DraftSchematicValues::clearAll() {
@@ -684,7 +683,7 @@ Packet* DraftSchematicValuesAdapter::invokeMethod(uint32 methid, DistributedMeth
 		recalculateValues((DraftSchematic*) inv->getObjectParameter());
 		break;
 	case 42:
-		resp->insertFloat(getAttributeAndValue((DraftSchematic*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_getAttributeAndValue__DraftSchematic_String_int_), inv->getSignedIntParameter()));
+		resp->insertFloat(getAttributeAndValue(inv->getAsciiParameter(_param0_getAttributeAndValue__String_int_), inv->getSignedIntParameter()));
 		break;
 	case 43:
 		clearAll();
@@ -846,8 +845,8 @@ void DraftSchematicValuesAdapter::recalculateValues(DraftSchematic* draftSchemat
 	return ((DraftSchematicValuesImplementation*) impl)->recalculateValues(draftSchematic);
 }
 
-float DraftSchematicValuesAdapter::getAttributeAndValue(DraftSchematic* draftSchematic, String& attribute, const int i) {
-	return ((DraftSchematicValuesImplementation*) impl)->getAttributeAndValue(draftSchematic, attribute, i);
+float DraftSchematicValuesAdapter::getAttributeAndValue(String& attribute, const int i) {
+	return ((DraftSchematicValuesImplementation*) impl)->getAttributeAndValue(attribute, i);
 }
 
 void DraftSchematicValuesAdapter::clearAll() {

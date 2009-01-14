@@ -181,7 +181,7 @@ int DraftSchematicValuesImplementation::getExperimentalPropertySubtitleSize(cons
 	if (subclasses != NULL)
 		return subclasses->size();
 
-	return -1234;
+	return (int)valueNotFound;
 }
 
 bool DraftSchematicValuesImplementation::hasProperty(const String& attribute) {
@@ -269,7 +269,7 @@ float DraftSchematicValuesImplementation::getCurrentValue(
 		}
 	}
 
-	return -1234;
+	return valueNotFound;
 }
 
 float DraftSchematicValuesImplementation::getCurrentValue(const int i) {
@@ -290,7 +290,7 @@ float DraftSchematicValuesImplementation::getCurrentValue(const int i) {
 		}
 	}
 
-	return -1234;
+	return valueNotFound;
 }
 
 void DraftSchematicValuesImplementation::lockValue(const String& attribute) {
@@ -408,7 +408,7 @@ float DraftSchematicValuesImplementation::getCurrentPercentage(
 		}
 	}
 
-	return -1234;
+	return valueNotFound;
 }
 
 float DraftSchematicValuesImplementation::getCurrentPercentage(const int i) {
@@ -429,7 +429,7 @@ float DraftSchematicValuesImplementation::getCurrentPercentage(const int i) {
 		}
 	}
 
-	return -1234;
+	return valueNotFound;
 }
 
 float DraftSchematicValuesImplementation::getCurrentPercentageAverage(const int i) {
@@ -524,7 +524,7 @@ float DraftSchematicValuesImplementation::getMaxPercentage(
 		}
 	}
 
-	return -1234;
+	return valueNotFound;
 }
 
 float DraftSchematicValuesImplementation::getMaxPercentage(const int i) {
@@ -545,7 +545,7 @@ float DraftSchematicValuesImplementation::getMaxPercentage(const int i) {
 		}
 	}
 
-	return -1234;
+	return valueNotFound;
 }
 
 float DraftSchematicValuesImplementation::getMaxPercentageAverage(const int i) {
@@ -587,7 +587,7 @@ float DraftSchematicValuesImplementation::getMaxValue(const String& attribute) {
 		}
 	}
 
-	return -1234;
+	return valueNotFound;
 }
 
 float DraftSchematicValuesImplementation::getMinValue(const String& attribute) {
@@ -607,7 +607,7 @@ float DraftSchematicValuesImplementation::getMinValue(const String& attribute) {
 		}
 	}
 
-	return -1234;
+	return valueNotFound;
 }
 
 void DraftSchematicValuesImplementation::setMinValue(const String& attribute, const float value) {
@@ -663,7 +663,7 @@ int DraftSchematicValuesImplementation::getPrecision(const String& attribute) {
 		}
 	}
 
-	return -1234;
+	return (int)valueNotFound;
 }
 
 void DraftSchematicValuesImplementation::setPrecision(const String& attribute, const int value) {
@@ -685,22 +685,24 @@ void DraftSchematicValuesImplementation::setPrecision(const String& attribute, c
 }
 
 void DraftSchematicValuesImplementation::recalculateValues(DraftSchematic* draftSchematic) {
+
 	String experimentalPropTitle, attributeName;
 	float percentage, min, max, newValue, oldValue;
-	DraftSchematicAttribute * attrib;
 
-	for (int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i) {
-		attrib = draftSchematic->getAttributeToSet(i);
-		experimentalPropTitle = attrib->getAttributeExperimentalProperty();
+	for (int i = 0; i < getSubtitleCount(); ++i) {
 
-		attributeName = attrib->getAttributeName();
-		min = attrib->getMinValue();
-		max = attrib->getMaxValue();
+		attributeName = getExperimentalPropertySubtitle(i);
+
+		experimentalPropTitle = getExperimentalPropertyTitle(attributeName);
+
+		min = getMinValue(attributeName);
+		max = getMaxValue(attributeName);
+
 		percentage = getCurrentPercentage(attributeName);//experimentalPropTitle);
 
 		oldValue = getCurrentValue(attributeName);
 
-		if (experimentalPropTitle == "null") {
+		if (experimentalPropTitle == "") {
 			if (max > min)
 				newValue = max;
 			else

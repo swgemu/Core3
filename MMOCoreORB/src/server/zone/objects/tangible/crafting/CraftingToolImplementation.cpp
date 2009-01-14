@@ -248,7 +248,7 @@ void CraftingToolImplementation::addAttributes(AttributeListMessage* alm) {
 
 	alm->insertAttribute("volume", "1");
 
-	alm->insertAttribute("craft_tool_effectiveness", effectiveness);
+	alm->insertAttribute("craft_tool_effectiveness", getPrecision(effectiveness, 2));
 
 	alm->insertAttribute("craft_tool_status", status);
 
@@ -271,7 +271,7 @@ void CraftingToolImplementation::updateCraftingValues(DraftSchematic* draftSchem
 	//craftingValues->toString();
 
 	name = "effectiveness";
-	effectiveness = craftingValues->getCurrentValue("useModifier");
+	effectiveness = craftingValues->getCurrentValue("usemodifier");
 	itemAttributes->setFloatAttribute(name, effectiveness);
 
 }

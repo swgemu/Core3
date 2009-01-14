@@ -112,12 +112,12 @@ class CraftingManagerImplementation : public CraftingManagerServant,
 	static const short SLOTBADNAME = 0x1A; // Rename object and resend
 	static const short SLOTMYSTERY = 0x1B; // Didn't read this one
 	static const short SLOTFAILEDTOTRANSFER = 0x1C; // Failed to transfer resources to station
+	static const short WEIRDFAILEDMESSAGE = 0x1D; // Hey nonny nonny tra la la!
 
 	// Ingredient math types
-	static const short RESOURCE = 0x01;
-	static const short PERCENTAGEADDPROPERTIES = 0x02;
-	static const short LINEARADDPROPERTIES = 0x03;
-	static const short SIMULATEWEIGHTEDVALUE = 0x04;
+	static const short RESOURCE = 0x00;
+	static const short COMPONENTLINEAR = 0x01;
+	static const short COMPONENTPERCENTAGE = 0x02;
 
 
 public:
@@ -188,12 +188,12 @@ private:
 	bool slotIsFull(Player* player, CraftingTool* craftingTool, TangibleObject* tano, TangibleObject* ingredientInSlot,
 			int ingredientInSlotQuantity, int slot, int quantity, int counter);
 	TangibleObject* transferIngredientToSlot(Player* player, TangibleObject* tano,
-			CraftingTool* craftingTool, int quantity);
+			CraftingTool* craftingTool, int& quantity);
 	TangibleObject* transferResourceToSlot(Player* player, ResourceContainer* rcno,
-			CraftingTool* craftingTool, int quantity);
+			CraftingTool* craftingTool, int& quantity);
 	TangibleObject* transferComponentToSlot(
 			Player* player, Component* component, CraftingTool* craftingTool,
-			int quantity);
+			int& quantity);
 
 	// Turn on Experimentation window
 	void enableExperimentation(Player* player, CraftingTool* craftingTool);
@@ -229,6 +229,8 @@ private:
 
 	Vector<String> parseStringsFromString(const String& unparsedStrings);
 	Vector<uint32> parseUnsignedInt32sFromString(const String& unparsedInts);
+	Vector<int> parseInt32sFromString(const String& unparsedInts);
+	Vector<float> parseFloatsFromString(const String& unparsedFloats);
 
 };
 

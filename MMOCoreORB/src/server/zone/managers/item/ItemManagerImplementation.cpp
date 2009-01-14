@@ -1865,7 +1865,7 @@ TangibleObject* ItemManagerImplementation::forageStatRandomizer(TangibleObject* 
 	    case (0x891C5134): //ABEC
 	    	property = "Charges";
 	    	value = component->getAttributeValue(property);
-	    	if (value != -1234.0f) {
+	    	if (value != DraftSchematicValuesImplementation::valueNotFound) {
 
 	    	   	value += System::random((int)value * 3);
 	    	   	component->changeAttributeValue(property, value);
@@ -1878,7 +1878,7 @@ TangibleObject* ItemManagerImplementation::forageStatRandomizer(TangibleObject* 
 	    case (0xAFFCBBEB): //ASDS
 	    	property = "Power";
 	    	value = component->getAttributeValue(property);
-	    	if (value != -1234.0f) {
+	    	if (value != DraftSchematicValuesImplementation::valueNotFound) {
 	    	    value += System::random((int)value * 3);
 	    	   	component->changeAttributeValue(property, value);
 	    	}

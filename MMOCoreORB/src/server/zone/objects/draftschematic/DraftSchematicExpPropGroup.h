@@ -11,11 +11,11 @@ class ObjectControllerMessage;
 
 class DraftSchematicExpPropGroup : public DistributedObjectStub {
 public:
-	DraftSchematicExpPropGroup(String& subtitle);
+	DraftSchematicExpPropGroup(String& Title, String& Subtitle);
 
 	DraftSchematicExpPropGroup(DraftSchematicExpPropGroup* group);
 
-	void addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight);
+	void addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight, float min, float max, int precision);
 
 	void sendToPlayer(ObjectControllerMessage* msg, int count);
 
@@ -53,6 +53,16 @@ public:
 
 	String& getSubtitle();
 
+	String& getTitle();
+
+	float getMinValue();
+
+	float getMaxValue();
+
+	float getRange();
+
+	int getPrecision();
+
 protected:
 	DraftSchematicExpPropGroup(DummyConstructorParameter* param);
 
@@ -63,6 +73,7 @@ protected:
 	String _return_getExpPropWeightsKey;
 	String _return_getKey;
 	String _return_getSubtitle;
+	String _return_getTitle;
 
 	friend class DraftSchematicExpPropGroupHelper;
 };
@@ -75,7 +86,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight);
+	void addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight, float min, float max, int precision);
 
 	void sendToPlayer(ObjectControllerMessage* msg, int count);
 
@@ -113,8 +124,18 @@ public:
 
 	String& getSubtitle();
 
+	String& getTitle();
+
+	float getMinValue();
+
+	float getMaxValue();
+
+	float getRange();
+
+	int getPrecision();
+
 protected:
-	String _param0_addExperimentalProperty__String_int_;
+	String _param0_addExperimentalProperty__String_int_float_float_int_;
 	String _param0_containsExpPropType__String_;
 	String _param0_getExpPropPercentage__String_;
 };

@@ -253,12 +253,6 @@ void ComponentImplementation::updateCraftingValues(DraftSchematic* draftSchemati
 	titleMap.removeAll();
 	keyList.removeAll();
 
-	for (int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i) {
-		value = craftingValues->getAttributeAndValue(draftSchematic, attribute, i);
-
-		keyList.add(attribute);
-	}
-
 	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i){
 		attribute = craftingValues->getExperimentalPropertySubtitle(i);
 
