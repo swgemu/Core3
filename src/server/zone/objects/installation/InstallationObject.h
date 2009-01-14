@@ -61,17 +61,23 @@ public:
 
 	unsigned int getNewDefenderUpdateCounter(unsigned int cnt);
 
-	void addMaintenance(unsigned long long maint);
+	void updateMaintenance();
 
-	unsigned long long getSurplusMaintenance();
+	void addMaintenance(float maint);
+
+	float getSurplusMaintenance();
 
 	float getMaintenanceRate();
 
-	void addPower(unsigned long long pow);
+	void setMaintenanceRate(float rate);
 
-	unsigned long long getSurplusPower();
+	void addPower(float pow);
+
+	float getSurplusPower();
 
 	float getPowerRate();
+
+	void setPowerRate(float rate);
 
 	void updateOperators();
 
@@ -167,17 +173,23 @@ public:
 
 	unsigned int getNewDefenderUpdateCounter(unsigned int cnt);
 
-	void addMaintenance(unsigned long long maint);
+	void updateMaintenance();
 
-	unsigned long long getSurplusMaintenance();
+	void addMaintenance(float maint);
+
+	float getSurplusMaintenance();
 
 	float getMaintenanceRate();
 
-	void addPower(unsigned long long pow);
+	void setMaintenanceRate(float rate);
 
-	unsigned long long getSurplusPower();
+	void addPower(float pow);
+
+	float getSurplusPower();
 
 	float getPowerRate();
+
+	void setPowerRate(float rate);
 
 	void updateOperators();
 

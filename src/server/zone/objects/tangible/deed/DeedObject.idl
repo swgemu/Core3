@@ -78,5 +78,6 @@ interface DeedObject implements TangibleObject {
 	String getDefaultTemplateName(int crc);
 	
 	int getLotSize();
+	int getSize();
 }
 

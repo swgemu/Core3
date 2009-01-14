@@ -87,13 +87,16 @@ interface InstallationObject implements TangibleObject {
 	
 	unsigned int getNewDefenderUpdateCounter(unsigned int cnt);
 
-	void addMaintenance(unsigned long maint);
-	unsigned long getSurplusMaintenance();
+	void updateMaintenance();
+	void addMaintenance(float maint);
+	float getSurplusMaintenance();
 	float getMaintenanceRate();
+	void setMaintenanceRate(float rate);
 
-	void addPower(unsigned long pow);
-	unsigned long getSurplusPower();
+	void addPower(float pow);
+	float getSurplusPower();
 	float getPowerRate();	
+	void setPowerRate(float rate);	
 
 	void updateOperators();
 	int getOperatorListSize();

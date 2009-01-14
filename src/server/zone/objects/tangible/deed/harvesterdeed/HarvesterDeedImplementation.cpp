@@ -55,8 +55,8 @@ HarvesterDeedImplementation::~HarvesterDeedImplementation() {
 }
 
 void HarvesterDeedImplementation::init() {
-	getType();
-	getSize();
+	initType();
+	initSize();
 
 	setLotSize(1); // All Harvesters
 	objectSubType = TangibleObjectImplementation::INSTALLATIONDEED;
@@ -248,7 +248,7 @@ void HarvesterDeedImplementation::addAttributes(AttributeListMessage* alm) {
 	addFooterAttributes(alm);
 }
 
-void HarvesterDeedImplementation::getType(){
+void HarvesterDeedImplementation::initType(){
 	if ((templateName.indexOf("ore") != -1))
 		type = ORE;
 	else if ((templateName.indexOf("flora") != -1))
@@ -263,7 +263,7 @@ void HarvesterDeedImplementation::getType(){
 		type = CREATURE;
 }
 
-void HarvesterDeedImplementation::getSize() {
+void HarvesterDeedImplementation::initSize() {
 	if ((templateName.indexOf("heavy") != -1))
 		size = LARGE;
 	else if ((templateName.indexOf("medium") != -1) || (templateName.indexOf("s2") != -1))

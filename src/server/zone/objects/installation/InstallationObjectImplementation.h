@@ -18,8 +18,8 @@ protected:
 
 	uint64 ownerID;
 
-	uint32 condition, surplusMaintenance, minimumMaintenance, surplusPower;
-	float powerRate, maintenanceRate;
+	uint32 condition, minimumMaintenance;
+	float powerRate, maintenanceRate, surplusMaintenance, surplusPower;
 
 	Vector<ManagedReference<SceneObject> > operatorList; // track synchronizeduilisten and synchronizeduistoplistening to send packet updates
 
@@ -64,11 +64,11 @@ public:
 		String attr("ownerID");
 		itemAttributes->setUnsignedLongAttribute(attr, ownerID);
 	}
-	inline void setSurplusMaintenance(uint32 maint) {
+	inline void setSurplusMaintenance(float maint) {
 		setUpdated(true);
 		surplusMaintenance = maint;
 		String attr("surplusMaintenance");
-		itemAttributes->setIntAttribute(attr, (int)surplusMaintenance);
+		itemAttributes->setFloatAttribute(attr, (float)surplusMaintenance);
 	}
 	inline void setMaintenanceRate(float rate) {
 		setUpdated(true);
@@ -76,11 +76,11 @@ public:
 		 String attr("maintenanceRate");
 		 itemAttributes->setFloatAttribute(attr, (float)maintenanceRate);
 	}
-	inline void setSurplusPower(uint32 pow) {
+	inline void setSurplusPower(float pow) {
 		setUpdated(true);
 		surplusPower = pow;
 		String attr("surplusPower");
-		itemAttributes->setIntAttribute(attr, (int)surplusPower);
+		itemAttributes->setFloatAttribute(attr, (float)surplusPower);
 	}
 	inline void setPowerRate(float rate) {
 		setUpdated(true);
@@ -99,13 +99,13 @@ public:
 	inline uint64 getOwnerID() {
 		return ownerID;
 	}
-	inline uint32 getSurplusMaintenance() {
+	inline float getSurplusMaintenance() {
 		return surplusMaintenance;
 	}
 	inline float getMaintenanceRate() {
 		return maintenanceRate;
 	}
-	inline uint32 getSurplusPower() {
+	inline float getSurplusPower() {
 		return surplusPower;
 	}
 	inline float getPowerRate() {
@@ -117,10 +117,10 @@ public:
 
 
 	// Attribute Modifiers
-	inline void addMaintenance(uint32 maint) {
+	inline void addMaintenance(float maint) {
 		setSurplusMaintenance(getSurplusMaintenance() + maint);
 	}
-	inline void addPower(uint32 powr) {
+	inline void addPower(float powr) {
 		setSurplusPower(getSurplusPower() + powr);
 	}
 	inline void setStatusPublic() {
@@ -209,8 +209,6 @@ public:
 		return destroyCode;
 	}
 
-
-
 	// Hopper Stuff
 	virtual void updateHopper() {
 	}
@@ -281,6 +279,9 @@ public:
 		return defenderUpdateCounter += cnt;
 	}
 
+	virtual void updateMaintenance() {
+
+	}
 };
 
 #endif

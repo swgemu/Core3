@@ -58,6 +58,10 @@ public:
 
 	}
 
+	virtual int getSize() {
+		return 0;
+	}
+
 	virtual void parseItemAttributes();
 	virtual void addAttributes(AttributeListMessage* alm);
 	void addHeaderAttributes(AttributeListMessage* alm);

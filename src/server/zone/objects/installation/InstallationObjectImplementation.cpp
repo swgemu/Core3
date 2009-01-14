@@ -1062,13 +1062,13 @@ void InstallationObjectImplementation::parseItemAttributes() {
 	setOwnerID(itemAttributes->getUnsignedLongAttribute(attr));
 
 	attr = "surplusMaintenance";
-	setSurplusMaintenance(itemAttributes->getIntAttribute(attr));
+	setSurplusMaintenance(itemAttributes->getFloatAttribute(attr));
 
 	attr = "maintenanceRate";
 	setMaintenanceRate(itemAttributes->getFloatAttribute(attr));
 
 	attr = "surplusPower";
-	setSurplusPower(itemAttributes->getIntAttribute(attr));
+	setSurplusPower(itemAttributes->getFloatAttribute(attr));
 
 	attr = "powerRate";
 	setPowerRate(itemAttributes->getFloatAttribute(attr));

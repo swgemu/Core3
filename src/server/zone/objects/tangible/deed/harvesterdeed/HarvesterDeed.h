@@ -59,6 +59,8 @@ public:
 
 	int getLotSize();
 
+	int getSize();
+
 protected:
 	HarvesterDeed(DummyConstructorParameter* param);
 
@@ -104,6 +106,8 @@ public:
 	float getHopperSize();
 
 	int getLotSize();
+
+	int getSize();
 
 };
 

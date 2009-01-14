@@ -57,6 +57,9 @@ void HarvesterObjectImplementation::parseItemAttributes() {
 	attr = "resourceHopperTimestamp";
 	setResourceHopperTimestamp(itemAttributes->getUnsignedLongAttribute(attr));
 
+	attr = "lastMaintenanceTime";
+	setMaintenanceTimestamp(itemAttributes->getUnsignedLongAttribute(attr));
+
 	attr = "spawnDensity";
 	setSpawnDensity(itemAttributes->getIntAttribute(attr));
 
@@ -236,6 +239,32 @@ void HarvesterObjectImplementation::updateHopper() {
 	resourceHopperTimestamp = currentTime;
 }
 
+void HarvesterObjectImplementation::updateMaintenance() {
+	Time currentTime;
+
+
+	float elapsedTime = (currentTime.getTime() - lastMaintenanceTime.getTime());
+
+	float payAmount = (elapsedTime / 3600.0) * getMaintenanceRate();
+
+	if (payAmount > getSurplusMaintenance()) {
+		payAmount = getSurplusMaintenance();
+		setOperating(false);
+	}
+
+	addMaintenance(-1.0f * payAmount);
+
+	float enegeryAmount = (elapsedTime / 3600.0) * getPowerRate();
+
+	if (enegeryAmount > getSurplusPower()) {
+		enegeryAmount = getSurplusPower();
+		setOperating(false);
+	}
+
+	addPower(-1.0f * enegeryAmount);
+
+	setMaintenanceTimestamp(currentTime.getTime());
+}
 
 // need activate code
 // If hopper size is zero for the resource + is operating, send a packet to the operators to add a zero element for delta packets

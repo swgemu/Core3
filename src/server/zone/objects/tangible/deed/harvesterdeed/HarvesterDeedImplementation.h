@@ -34,8 +34,11 @@ public:
 	HarvesterDeedImplementation(CreatureObject* creature, HarvesterObject* hino);
 	~HarvesterDeedImplementation();
 
-	void getType();
-	void getSize();
+	void initType();
+	void initSize();
+	int getSize() {
+		return size;
+	}
 
 	void parseItemAttributes();
 	void addAttributes(AttributeListMessage* alm);

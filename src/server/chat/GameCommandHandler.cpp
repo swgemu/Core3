@@ -3353,11 +3353,16 @@ void GameCommandHandler::setLocation(StringTokenizer tokenizer, Player* player) 
 	ss << " Y: " << y;
 
 	player->sendSystemMessage(ss.toString());
+	try {
+		obj->wlock(player);
+		obj->setPosition(x,z,y);
 
-	obj->setPosition(x,z,y);
-
-	UpdateTransformMessage* msg = new UpdateTransformMessage(obj);
-	player->sendMessage(msg);
+		UpdateTransformMessage* msg = new UpdateTransformMessage(obj);
+		player->sendMessage(msg);
+		obj->unlock();
+	} catch (...) {
+		obj->unlock();
+	}
 }
 
 void GameCommandHandler::setDirection(StringTokenizer tokenizer, Player* player) {
@@ -3383,7 +3388,17 @@ void GameCommandHandler::setDirection(StringTokenizer tokenizer, Player* player)
 
 	player->sendSystemMessage(ss.toString());
 
-	obj->setDirection(oX,oZ,oY,oW);
+	try {
+		obj->wlock(player);
+		obj->setDirection(oX,oZ,oY,oW);
+
+		UpdateTransformMessage* msg = new UpdateTransformMessage(obj);
+		player->sendMessage(msg);
+		obj->unlock();
+	} catch (...) {
+		obj->unlock();
+	}
+
 }
 
 void GameCommandHandler::drag(StringTokenizer tokenizer, Player* player) {

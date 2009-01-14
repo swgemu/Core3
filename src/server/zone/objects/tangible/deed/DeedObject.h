@@ -47,6 +47,8 @@ public:
 
 	int getLotSize();
 
+	int getSize();
+
 protected:
 	DeedObject(DummyConstructorParameter* param);
 
@@ -89,6 +91,8 @@ public:
 	String& getDefaultTemplateName(int crc);
 
 	int getLotSize();
+
+	int getSize();
 
 protected:
 	String _param0_setTargetFile__String_;

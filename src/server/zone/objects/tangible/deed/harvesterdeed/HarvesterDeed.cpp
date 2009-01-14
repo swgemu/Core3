@@ -230,6 +230,18 @@ int HarvesterDeed::getLotSize() {
 		return ((HarvesterDeedImplementation*) _impl)->getLotSize();
 }
 
+int HarvesterDeed::getSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((HarvesterDeedImplementation*) _impl)->getSize();
+}
+
 /*
  *	HarvesterDeedAdapter
  */
@@ -285,6 +297,9 @@ Packet* HarvesterDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case 20:
 		resp->insertSignedInt(getLotSize());
+		break;
+	case 21:
+		resp->insertSignedInt(getSize());
 		break;
 	default:
 		return NULL;
@@ -351,6 +366,10 @@ float HarvesterDeedAdapter::getHopperSize() {
 
 int HarvesterDeedAdapter::getLotSize() {
 	return ((HarvesterDeedImplementation*) impl)->getLotSize();
+}
+
+int HarvesterDeedAdapter::getSize() {
+	return ((HarvesterDeedImplementation*) impl)->getSize();
 }
 
 /*
