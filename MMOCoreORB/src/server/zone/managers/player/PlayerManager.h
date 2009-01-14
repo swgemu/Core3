@@ -83,7 +83,7 @@ public:
 
 	Player* putPlayer(Player* player);
 
-	Player* getPlayer(String& name);
+	Player* getPlayer(const String& name);
 
 	GuildManager* getGuildManager();
 
@@ -165,7 +165,7 @@ public:
 
 	Player* putPlayer(Player* player);
 
-	Player* getPlayer(String& name);
+	Player* getPlayer(const String& name);
 
 	GuildManager* getGuildManager();
 

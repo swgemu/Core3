@@ -98,10 +98,10 @@ TicketImplementation::TicketImplementation(uint64 objectid, uint32 tempCRC, cons
 
 void TicketImplementation::parseItemAttributes() {
 	departurePlanet = itemAttributes->getStringAttribute("departurePlanet");
-	departurePoint = itemAttributes->getStringAttribute("departurePlanet");
+	departurePoint = itemAttributes->getStringAttribute("departurePoint");
 
 	arrivalPlanet = itemAttributes->getStringAttribute("arrivalPlanet");
-	arrivalPoint = itemAttributes->getStringAttribute("arrivalPlanet");
+	arrivalPoint = itemAttributes->getStringAttribute("arrivalPoint");
 }
 
 void TicketImplementation::generateAttributes(SceneObject* obj) {

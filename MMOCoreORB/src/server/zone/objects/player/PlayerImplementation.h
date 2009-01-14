@@ -800,59 +800,6 @@ public:
 	bool discardForageItems();
 	void giveForageItems(int foragetype);
 
-	inline bool hasConsent(String name) {
-		name = name.toLowerCase();
-
-		for (int i = 0; i < consentList.size(); i++) {
-			if (consentList.get(i) == name)
-				return true;
-		}
-
-		return false;
-	}
-
-	inline int getConsentIndex(String name) {
-		name = name.toLowerCase();
-
-		for (int i = 0; i < consentList.size(); i++) {
-			if (consentList.get(i) == name)
-				return i;
-		}
-		return -1;
-	}
-
-	inline bool giveConsent(String name) {
-		name = name.toLowerCase();
-
-		if (!hasConsent(name)) {
-			consentList.add(name);
-			return true;
-		}
-
-		return false;
-	}
-
-	inline bool revokeConsent(String name) {
-		name = name.toLowerCase();
-
-		int index = getConsentIndex(name);
-
-		if (index >= 0) {
-			consentList.remove(index);
-			return true;
-		}
-
-		return false;
-	}
-
-	inline int getConsentSize() {
-		return consentList.size();
-	}
-
-	inline String& getConsentEntry(int index) {
-		return consentList.get(index);
-	}
-
 	//mission methods
 	uint32 nextMisoRFC() {
 		return misoRFC++;
@@ -2075,18 +2022,54 @@ public:
 	bool bankTipStart(Player* recipient, uint32 amount);
 	void bankTipFinish(Player* recipient, uint32 amount);
 	bool cashTip(Player* recipient, uint32 amount);
+	void consent(Player* playerTarget);
+	void unconsent(const String& name);
 
 	void cancelRecoveryEvent();
 
 	//Setters
-	void setCloningFacility(CloningFacility* facility) {
+	inline void setCloningFacility(CloningFacility* facility) {
 		cloningFacility = facility;
 		onCloneDataStored();
+	}
+
+	inline void addConsentEntry(const String& name) {
+		if (!hasConsented(name))
+			consentList.add(name);
+	}
+
+	inline void removeConsentEntry(const String& name) {
+		for (int i = 0; i < consentList.size(); i++) {
+			if (consentList.get(i) == name)
+				consentList.remove(i);
+		};
 	}
 
 	//Getters
 	inline CloningFacility* getCloningFacility() {
 		return cloningFacility;
+	}
+
+
+	inline bool hasConsented(const String& name) {
+		for (int i = 0; i < consentList.size(); i++) {
+			if (consentList.get(i) == name)
+				return true;
+		}
+
+		return false;
+	}
+
+	inline bool hasConsentFrom(Player* player) {
+		return player->hasConsented(getFirstName());
+	}
+
+	inline uint32 getConsentListSize() {
+		return consentList.size();
+	}
+
+	inline String& getConsentEntry(int index) {
+		return consentList.get(index);
 	}
 
 	friend class PlayerManager;

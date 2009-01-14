@@ -1455,7 +1455,11 @@ void SuiManager::handleConsentBox(uint32 boxID, Player* player, uint32 cancel, i
 
 		SuiBox* sui = player->getSuiBox(boxID);
 
-		//TODO: Remove from consent list?
+		if (sui != NULL && cancel != 1) {
+			SuiListBox* suiList = (SuiListBox*) sui;
+			String name = suiList->getMenuItemName(index);
+			player->unconsent(name);
+		}
 
 		player->removeSuiBox(boxID);
 
@@ -1769,19 +1773,25 @@ void SuiManager::handleSlicingMenu(uint32 boxID, Player* player, uint32 cancel, 
 
 		SuiBox* sui = player->getSuiBox(boxID);
 
-		if (sui != NULL && sui->isSlicingBox() && cancel != 1) {
+		if (sui != NULL && sui->isSlicingBox()) {
 			SuiSlicingBox* slicingMenu = (SuiSlicingBox*) sui;
 
-			bool resendMenu = slicingMenu->handleMenuChoice(index);
+			if (cancel != 1) {
+				bool resendMenu = slicingMenu->handleMenuChoice(index);
 
-			if (resendMenu) {
-				player->sendMessage(slicingMenu->generateMessage());
-				player->unlock();
-				return;
+				if (resendMenu) {
+					System::out << "resendingmenu" << endl;
+					player->sendMessage(slicingMenu->generateMessage());
+					player->unlock();
+					return;
+				}
 			}
 
 			//Reset the current slicer id to 0, since no one is slicing it anymore.
-			slicingMenu->getSlicingObject()->setSlicerID(0);
+			TangibleObject* slicingObject = slicingMenu->getSlicingObject();
+
+			if (slicingObject != NULL)
+				slicingObject->setSlicerID(0);
 		}
 
 		player->removeSuiBox(boxID);

@@ -143,7 +143,7 @@ public:
 		return playerMap;
 	}
 
-	inline Player* getPlayer(String name) {
+	inline Player* getPlayer(const String& name) {
 		return playerMap->get(name);
 	}
 
@@ -151,7 +151,7 @@ public:
 		return playerMap->put(player->getFirstName(), player);
 	}
 
-	inline Player* removePlayer(String firstname) {
+	inline Player* removePlayer(const String& firstname) {
 		return playerMap->remove(firstname);
 	}
 

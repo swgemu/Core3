@@ -102,7 +102,9 @@ public:
 		player->clearBuffs(true);
 		player->resetArmorEncumbrance();
 
-		if (player->isOvert() && player->getFaction() != getFaction())
+
+		//TODO: Make cloning facilities able to be neutral, imp, or rebel
+		if (player->isOvert())
 			player->setCovert();
 
 		player->setPosture(CreaturePosture::UPRIGHT);

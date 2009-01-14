@@ -24,7 +24,7 @@ PlayerMap::PlayerMap(DummyConstructorParameter* param) {
 PlayerMap::~PlayerMap() {
 }
 
-Player* PlayerMap::put(String& name, Player* player, bool doLock) {
+Player* PlayerMap::put(const String& name, Player* player, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -39,7 +39,7 @@ Player* PlayerMap::put(String& name, Player* player, bool doLock) {
 		return ((PlayerMapImplementation*) _impl)->put(name, player, doLock);
 }
 
-Player* PlayerMap::get(String& name, bool doLock) {
+Player* PlayerMap::get(const String& name, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -53,7 +53,7 @@ Player* PlayerMap::get(String& name, bool doLock) {
 		return ((PlayerMapImplementation*) _impl)->get(name, doLock);
 }
 
-Player* PlayerMap::remove(String& name, bool doLock) {
+Player* PlayerMap::remove(const String& name, bool doLock) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -206,15 +206,15 @@ Packet* PlayerMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-Player* PlayerMapAdapter::put(String& name, Player* player, bool doLock) {
+Player* PlayerMapAdapter::put(const String& name, Player* player, bool doLock) {
 	return ((PlayerMapImplementation*) impl)->put(name, player, doLock);
 }
 
-Player* PlayerMapAdapter::get(String& name, bool doLock) {
+Player* PlayerMapAdapter::get(const String& name, bool doLock) {
 	return ((PlayerMapImplementation*) impl)->get(name, doLock);
 }
 
-Player* PlayerMapAdapter::remove(String& name, bool doLock) {
+Player* PlayerMapAdapter::remove(const String& name, bool doLock) {
 	return ((PlayerMapImplementation*) impl)->remove(name, doLock);
 }
 

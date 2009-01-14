@@ -251,16 +251,6 @@ public:
 
 	void doDigest();
 
-	bool hasConsent(String& charID);
-
-	bool giveConsent(String& name);
-
-	bool revokeConsent(String& name);
-
-	int getConsentSize();
-
-	String& getConsentEntry(int index);
-
 	Badges* getBadges();
 
 	void addBuff(unsigned int buffcrc, float time);
@@ -973,9 +963,25 @@ public:
 
 	bool cashTip(Player* recipient, unsigned int amount);
 
+	void consent(Player* playerTarget);
+
+	void unconsent(String& name);
+
 	void setCloningFacility(CloningFacility* facility);
 
+	void addConsentEntry(const String& name);
+
+	void removeConsentEntry(const String& name);
+
 	CloningFacility* getCloningFacility();
+
+	bool hasConsented(const String& name);
+
+	bool hasConsentFrom(Player* player);
+
+	unsigned int getConsentListSize();
+
+	String& getConsentEntry(int index);
 
 	unsigned char calculateIncapacitationTimer();
 
@@ -1185,16 +1191,6 @@ public:
 	void doRecovery();
 
 	void doDigest();
-
-	bool hasConsent(String& charID);
-
-	bool giveConsent(String& name);
-
-	bool revokeConsent(String& name);
-
-	int getConsentSize();
-
-	String& getConsentEntry(int index);
 
 	Badges* getBadges();
 
@@ -1908,9 +1904,25 @@ public:
 
 	bool cashTip(Player* recipient, unsigned int amount);
 
+	void consent(Player* playerTarget);
+
+	void unconsent(String& name);
+
 	void setCloningFacility(CloningFacility* facility);
 
+	void addConsentEntry(const String& name);
+
+	void removeConsentEntry(const String& name);
+
 	CloningFacility* getCloningFacility();
+
+	bool hasConsented(const String& name);
+
+	bool hasConsentFrom(Player* player);
+
+	unsigned int getConsentListSize();
+
+	String& getConsentEntry(int index);
 
 	unsigned char calculateIncapacitationTimer();
 
@@ -1919,9 +1931,6 @@ public:
 protected:
 	String _param0_queueFlourish__String_long_int_;
 	String _param4_queueAction__Player_long_int_int_String_;
-	String _param0_hasConsent__String_;
-	String _param0_giveConsent__String_;
-	String _param0_revokeConsent__String_;
 	String _param0_trainSkillBox__String_bool_;
 	String _param0_surrenderSkillBox__String_;
 	String _param0_hasSkillBox__String_;
@@ -1985,6 +1994,10 @@ protected:
 	String _param0_teachSkill__String_;
 	String _param0_onExperienceGained__String_int_;
 	String _param0_onExperienceLost__String_int_;
+	String _param0_unconsent__String_;
+	String _param0_addConsentEntry__String_;
+	String _param0_removeConsentEntry__String_;
+	String _param0_hasConsented__String_;
 };
 
 class PlayerHelper : public DistributedObjectClassHelper, public Singleton<PlayerHelper> {

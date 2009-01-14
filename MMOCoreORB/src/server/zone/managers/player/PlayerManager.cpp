@@ -414,7 +414,7 @@ Player* PlayerManager::putPlayer(Player* player) {
 		return ((PlayerManagerImplementation*) _impl)->putPlayer(player);
 }
 
-Player* PlayerManager::getPlayer(String& name) {
+Player* PlayerManager::getPlayer(const String& name) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -705,7 +705,7 @@ Player* PlayerManagerAdapter::putPlayer(Player* player) {
 	return ((PlayerManagerImplementation*) impl)->putPlayer(player);
 }
 
-Player* PlayerManagerAdapter::getPlayer(String& name) {
+Player* PlayerManagerAdapter::getPlayer(const String& name) {
 	return ((PlayerManagerImplementation*) impl)->getPlayer(name);
 }
 

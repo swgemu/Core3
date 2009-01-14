@@ -112,7 +112,7 @@ public:
 	bool handleMenuChoice(uint8 index) {
 		TangibleObject* obj = getSlicingObject();
 
-		if (obj == NULL || !obj->isSlicable())
+		if (obj == NULL || !obj->isSliced())
 			return false;
 
 		uint8 progress = getProgress();
