@@ -41,9 +41,9 @@
 --which carries forward this exception.
 
 waterHarvesterSmallDeed = Deed:new {
-	objectName = "Deed for: Small Water Installation",
+	objectName = "Deed for: Personal Moisture Vaporator",
 
-	templateName = "harvester_liquid_deed",
+	templateName = "moisture_harvester_deed_name",
 
 	objectCRC = 3335458434,
 

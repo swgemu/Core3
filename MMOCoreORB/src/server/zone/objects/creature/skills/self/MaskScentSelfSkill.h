@@ -71,6 +71,10 @@ public:
 			return;
 		}
 
+		if (!calculateCost(creature)) {
+			return;
+		}
+
 		int camoMod = creature->getSkillMod("mask_scent") +  creature->getSkillModBonus("mask_scent");
 
 		creature->setCamoType(getCamoType());
@@ -167,9 +171,9 @@ public:
 
 		Player* player = (Player*) creature;
 
-		int wpnHealth = 50;
-		int wpnAction = 100;
-		int wpnMind = 50;
+		int wpnHealth = 75;
+		int wpnAction = 150;
+		int wpnMind = 75;
 
 		int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength()
 				/ 1500);

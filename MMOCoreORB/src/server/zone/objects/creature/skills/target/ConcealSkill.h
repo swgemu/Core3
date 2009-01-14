@@ -91,6 +91,10 @@ public:
 			return;
 		}
 
+		if (!calculateCost(creature)) {
+			return;
+		}
+
 		if (target != NULL) {
 			if(!target->isPlayer()) {
 				player->sendSystemMessage("skl_use", "sys_conceal_notplayer");
@@ -236,9 +240,9 @@ public:
 
 		Player* player = (Player*) creature;
 
-		int wpnHealth = 50;
-		int wpnAction = 100;
-		int wpnMind = 50;
+		int wpnHealth = 100;
+		int wpnAction = 200;
+		int wpnMind = 100;
 
 		int healthAttackCost = wpnHealth - (wpnHealth * creature->getStrength()
 				/ 1500);

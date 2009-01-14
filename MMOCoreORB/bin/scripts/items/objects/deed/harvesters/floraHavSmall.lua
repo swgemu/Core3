@@ -41,9 +41,9 @@
 --which carries forward this exception.
 
 floraHarvesterSmallDeed = Deed:new {
-	objectName = "Deed for: Small Flora Installation",
+	objectName = "Deed for: Micro Flora Farm ",
 
-	templateName = "harvester_flora_deed",
+	templateName = "flora_harvester_deed_name",
 
 	objectCRC = 2840949012,
 
