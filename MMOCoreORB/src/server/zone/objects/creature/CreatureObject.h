@@ -79,6 +79,16 @@ public:
 
 	unsigned int getMitigation(const String& mit);
 
+	void addCooldown(const String& key, int timeLimitInMilliseconds);
+
+	void removeCooldown(const String& key);
+
+	bool containsCooldown(const String& key);
+
+	int getCooldownTimeRemaining(const String& key);
+
+	bool hasCooldownExpired(const String& key);
+
 	bool isIncapacitated();
 
 	bool isDead();
@@ -694,6 +704,8 @@ public:
 	int getWillpowerMax();
 
 	int getWounds(unsigned char attribute);
+
+	unsigned char getWoundsArraySize();
 
 	int getHealthWounds();
 
@@ -1365,6 +1377,16 @@ public:
 
 	unsigned int getMitigation(const String& mit);
 
+	void addCooldown(const String& key, int timeLimitInMilliseconds);
+
+	void removeCooldown(const String& key);
+
+	bool containsCooldown(const String& key);
+
+	int getCooldownTimeRemaining(const String& key);
+
+	bool hasCooldownExpired(const String& key);
+
 	bool isIncapacitated();
 
 	bool isDead();
@@ -1979,6 +2001,8 @@ public:
 
 	int getWounds(unsigned char attribute);
 
+	unsigned char getWoundsArraySize();
+
 	int getHealthWounds();
 
 	int getStrengthWounds();
@@ -2584,6 +2608,11 @@ protected:
 	String _param1_showFlyText__String_String_char_char_char_;
 	String _param3_sendCombatSpam__CreatureObject_TangibleObject_int_String_bool_;
 	String _param0_getMitigation__String_;
+	String _param0_addCooldown__String_int_;
+	String _param0_removeCooldown__String_;
+	String _param0_containsCooldown__String_;
+	String _param0_getCooldownTimeRemaining__String_;
+	String _param0_hasCooldownExpired__String_;
 	String _param0_updateMood__String_;
 	String _param0_removeAllInventoryByMisoKey__String_;
 	String _param0_getItemByMisoKey__String_;

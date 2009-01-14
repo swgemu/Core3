@@ -127,7 +127,7 @@ void ServerCore::run() {
 		int statusPort = configManager.getStatusPort();
 		int statusAllowedConnections = configManager.getStatusAllowedConnections();
 
-		statusServer->start();
+		statusServer->start(statusPort);
 	}
 
 	if (pingServer != NULL) {

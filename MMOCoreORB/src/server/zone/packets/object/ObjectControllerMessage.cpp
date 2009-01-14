@@ -3919,7 +3919,7 @@ void ObjectControllerMessage::parseTransferItemMisc(Player* player,
 				}
 			}
 		} else {
-			System::out << "ObjectControllerMessage::parseTransferItemMisc, item unequip not implemented in ObjectControllerMessage::parseTransferItemMisc.\n";
+			//System::out << "ObjectControllerMessage::parseTransferItemMisc, item unequip not implemented in ObjectControllerMessage::parseTransferItemMisc.\n";
 			return;
 		}
 

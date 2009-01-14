@@ -61,8 +61,8 @@ static const char* SlicingFailStrings[6] = {
 };
 
 class SuiSlicingBoxImplementation : public SuiSlicingBoxServant {
-	TangibleObject* slicingObject;
-	PrecisionLaserKnife* precisionLaserKnife;
+	ManagedReference<TangibleObject> slicingObject;
+	ManagedReference<PrecisionLaserKnife> precisionLaserKnife;
 
 	uint8 firstCable;
 	bool cable[2];
@@ -86,6 +86,8 @@ public:
 		: SuiSlicingBoxServant(player, SuiWindowType::SLICING_MENU, MSGSELECTED) {
 
 		boxType = SLICINGBOX;
+
+		precisionLaserKnife = NULL;
 
 		setSlicingObject(tano);
 

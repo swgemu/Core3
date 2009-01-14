@@ -85,7 +85,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	damageMap.setInsertPlan(SortedVector<CreatureObject*>::NO_DUPLICATE);
 	damageMap.setNullValue(0);
 	cooldownMap.setInsertPlan(SortedVector<String>::NO_DUPLICATE);
-	cooldownMap.setNullValue(NULL);
+	cooldownMap.setNullValue(0);
 
 	stfName = "species";
 
