@@ -86,48 +86,14 @@ DraftSchematicImplementation::DraftSchematicImplementation(
 
 	finished = false;
 
+	resourcesRemoved = false;
+
 	for (int i = 0; i < draftSchematic->getIngredientListSize(); ++i) {
 		dsIngredients.add(draftSchematic->getIngredient(i));
 	}
 
 	for (int i = 0; i < draftSchematic->getExpPropGroupListSize(); ++i) {
 		dsExpPropGroups.add(draftSchematic->getExpPropGroup(i));
-	}
-
-	String title;
-	String subtitle;
-	DraftSchematicAttribute* attributeObject = NULL;
-
-	for (int i = 0; i < draftSchematic->getCraftingValues()->getExperimentalPropertyTitleSize(); ++i) {
-		title = draftSchematic->getCraftingValues()->getExperimentalPropertyTitle(i);
-
-		for (int j = 0; j < draftSchematic->getCraftingValues()->getExperimentalPropertySubtitleSize(title); ++j) {
-			subtitle = draftSchematic->getCraftingValues()->getExperimentalPropertySubtitle( title, j);
-
-			attributeObject = draftSchematic->getAttributeToSet(subtitle);
-
-			craftingValues->addExperimentalProperty(title, subtitle,
-					attributeObject->getMinValue(),
-					attributeObject->getMaxValue(),
-					attributeObject->getPrecision());
-		}
-	}
-
-	float min, max;
-	int precision;
-	String attributeExpProp, attribute;
-
-	for (int i = 0; i < draftSchematic->getAttributesToSetListSize(); ++i) {
-		attributeObject = draftSchematic->getAttributeToSet(i);
-		attribute = attributeObject->getAttributeName();
-		min = attributeObject->getMinValue();
-		max = attributeObject->getMaxValue();
-		attributeExpProp = attributeObject->getAttributeExperimentalProperty();
-		precision = attributeObject->getPrecision();
-
-		attributeObject = new DraftSchematicAttribute(attribute, min, max, attributeExpProp, precision);
-
-		attributesToSet.add(attributeObject);
 	}
 
 	tanoAttributes = draftSchematic->getTanoAttributes();
@@ -155,8 +121,8 @@ DraftSchematicImplementation::~DraftSchematicImplementation(){
 
 	experimentalProperties.removeAll();*/
 
-	while (attributesToSet.size() > 0)
-		attributesToSet.remove(0)->finalize();
+	//while (attributesToSet.size() > 0)
+	//	attributesToSet.remove(0)->finalize();
 
 	craftingValues->finalize();
 	craftingValues = NULL;
@@ -277,13 +243,13 @@ void DraftSchematicImplementation::helperSendIngredientsToPlayer(ObjectControlle
 
 // Experimental Property Methods
 // UPDATE THIS METHOD WHEN WE CAN PASS VECTORS AROUND IN IDL
-void DraftSchematicImplementation::addExperimentalProperty(uint32 groupNumber,
-		const String& experimentalProperty, uint32 weight, String subtitle) {
+void DraftSchematicImplementation::addExperimentalProperty(uint32 groupNumber, String experimentalProperty,
+		uint32 weight, String title, String subtitle, float min, float max, int precision) {
 	if (groupNumber < dsExpPropGroups.size()) {
-		dsExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty,	weight);
+		dsExpPropGroups.get(groupNumber)->addExperimentalProperty(experimentalProperty,	weight, min, max, precision);
 	} else {
-		DraftSchematicExpPropGroup* dsEpg = new DraftSchematicExpPropGroup(subtitle);
-		dsEpg->addExperimentalProperty(experimentalProperty, weight);
+		DraftSchematicExpPropGroup* dsEpg = new DraftSchematicExpPropGroup(title, subtitle);
+		dsEpg->addExperimentalProperty(experimentalProperty, weight, min, max, precision);
 
 		dsExpPropGroups.add(dsEpg);
 	}
@@ -396,7 +362,7 @@ void DraftSchematicImplementation::toString() {
 		System::out << "**************************" << endl;
 	}
 
-	DraftSchematicAttribute* tempAttribute;
+	/*DraftSchematicAttribute* tempAttribute;
 	for (int i = 0;i < attributesToSet.size(); ++i) {
 		tempAttribute = attributesToSet.get(i);
 
@@ -418,7 +384,7 @@ void DraftSchematicImplementation::toString() {
 		System::out << "Prop " << i << endl;
 		System::out << "Prop: " << tempProperty << endl;
 		System::out << "**************************" << endl;
-	}
+	}*/
 
 	craftingValues->toString();
 }

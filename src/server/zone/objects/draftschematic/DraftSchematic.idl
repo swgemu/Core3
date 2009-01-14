@@ -67,10 +67,8 @@ interface DraftSchematic implements ManagedObject {
 
 	void sendTo(Player player);
 
-
-	
-	void addExperimentalProperty(unsigned int groupNumber,  
-		const String experimentalProperty, unsigned int weight, String subtitle);
+	void addExperimentalProperty(unsigned int groupNumber, const String experimentalProperty, 
+	unsigned int weight, String title, String subtitle, float min, float max, int precision);
 	
 	void sendExperimentalPropertiesToPlayer(Player player);
 
@@ -121,21 +119,14 @@ interface DraftSchematic implements ManagedObject {
 
 	void setAssemblySkill(const String ass);
 
+	void setResourcesWereRemoved();
+
 	void setFinished();
 
 	void setCrafter(Player crafter);
 
 	//getters
 
-	int getAttributesToSetListSize();
-
-	DraftSchematicAttribute getAttributeToSet(const int i);
-
-	DraftSchematicAttribute getAttributeToSet(const String name);
-
-	void addAttributeToSet(const String attribute, const float minVal, const float maxVal, 
-		const String attributeExpProp, const int precision);
-	
 	int getExpPropGroupListSize();
 
 	DraftSchematicExpPropGroup getExpPropGroup(int index);
@@ -189,7 +180,8 @@ interface DraftSchematic implements ManagedObject {
 	DraftSchematicValues getCraftingValues();
 
 	boolean isFinished();
-
+	
+	boolean resourcesWereRemoved();
 
 	void toString();
 }

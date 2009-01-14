@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -40,48 +40,46 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-boosterBlue = Object:new {
 
-   objectName = "Booster Blue", -- name of the lua Object
-   stfName = "booster_blue", 
-   objectCRC = 1461060097, 
-   groupName = "craftSmugglerSpiceD", 
+clothingAndArmorCraftingTool = Object:new {
 
-   craftingToolTab = 4, 
-   complexity = 13, 
-   size = 1, 
+   objectName = "Clothing and Armor Crafting Tool",
+   stfName = "clothing_tool_name",
+   objectCRC = 1505349903,
+   groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
 
-   xpType = "crafting_spice", 
-   xp = 512, 
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 11, 
+   size = 2, 
 
-   assemblySkill = "spice_assembly", 
-   experimentingSkill = "spice_experimentation", 
+   xpType = "crafting_general", 
+   xp = 65, 
 
-   ingredientTemplateNames = "craft_food_ingredients_n, craft_food_ingredients_n, craft_food_ingredients_n",
-   ingredientTitleNames = "copper_phthalocyanine_blue, dimethylaminobenzene, delivery_mechanism",
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
+   ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
    ingredientSlotType = "0, 0, 0",
-   resourceTypes = "copper, chemical, metal",
-   resourceQuantities = "15, 15, 15",
-   combineTypes = "1, 1, 1",
+   resourceTypes = "metal, mineral, chemical",
+   resourceQuantities = "16, 8, 10",
+   combineTypes = "0, 0, 0",
    contribution = "100, 100, 100",
 
+   numberExperimentalProperties = "1, 1, 1, 1",
+   experimentalProperties = "XX, XX, XX, CD",
+   experimentalWeights = "1, 1, 1, 1",
+   experimentalGroupTitles = "null, null, null, expEffectiveness",
 
-   numberExperimentalProperties = "3",
-   experimentalProperties = "DR, OQ, UT",
-   experimentalWeights = "4, 1, 1",
-   experimentalGroupTitles = "exp_nutrition",
-   experimentalSubGroupCount = "1",
-   experimentalSubGroupTitles = "decayRate",
+   experimentalSubGroupTitles = "null, null, hitpoints, usemodifier",
+   experimentalMin = "0, 0, 1000, -15",
+   experimentalMax = "0, 0, 1000, 15",
+   experimentalPrecision = "0, 0, 0, 0",
 
-   tanoAttributes = "objecttype=8202:objectcrc=2516008025:objecttemp=spice_booster_blue:templatetype=spice:",
+   tanoAttributes = "objecttype=32769:objectcrc=753735496:objecttemp=clothing_tool:templatetype=crafting:",
    customizationOptions = "",
-   customizationDefaults = "",
-
-   attributesToSet = "decayRate, health, healthtime, action",
-   attributeExperimentalProperties = "exp_nutrition, exp_nutrition, exp_nutrition, exp_nutrition",
-   attributePrecision = "0, 0, 0 ,0",
-   attributesMinMax = "0, 0, 1000, 1000, 780, 780, 400, 400"
+   customizationDefaults = ""
 
 }
 
-DraftSchematics:addDraftSchematic(boosterBlue, 1461060097)--- Add to global DraftSchematics table
+DraftSchematics:addDraftSchematic(clothingAndArmorCraftingTool, 1505349903)--- Add to global DraftSchematics table

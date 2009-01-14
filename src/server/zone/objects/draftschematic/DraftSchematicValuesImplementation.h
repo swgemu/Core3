@@ -61,6 +61,10 @@ class DraftSchematicValuesImplementation : public DraftSchematicValuesServant {
 	String EMPTY;
 
 public:
+
+	static const float valueNotFound = -999999;
+
+public:
 	DraftSchematicValuesImplementation();
 	~DraftSchematicValuesImplementation();
 	// Experimental Titles
@@ -125,6 +129,19 @@ public:
 		return experimentalValuesMap.size();
 	}
 
+	inline int getSubtitleCount(){
+		Subclasses* subclasses;
+
+		int count = 0;
+
+		for (int j = 0; j < experimentalValuesMap.size(); ++j) {
+			subclasses = experimentalValuesMap.get(j);
+
+			count += subclasses->size();
+		}
+		return count;
+	}
+
 	inline int getValuesToSendSize(){
 		return valuesToSend.size();
 	}
@@ -152,12 +169,11 @@ public:
 		return valuesToSend.get(i);
 	}
 
-	float getAttributeAndValue(DraftSchematic* draftSchematic, String& attribute, const int i){
+	float getAttributeAndValue(String& attribute, const int i){
 
-		DraftSchematicAttribute* attrib = draftSchematic->getAttributeToSet(i);
+		String attributeName = getExperimentalPropertySubtitle(i);
 
-		attribute = attrib->getAttributeName();
-		return getCurrentValue(attribute);
+		return getCurrentValue(attributeName);
 
 	}
 

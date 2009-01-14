@@ -45,10 +45,11 @@ which carries forward this exception.
 import "../../packets/object/ObjectControllerMessage";
 
 interface DraftSchematicExpPropGroup {
-	DraftSchematicExpPropGroup(String subtitle);
+	DraftSchematicExpPropGroup(String Title, String Subtitle);
 	DraftSchematicExpPropGroup(DraftSchematicExpPropGroup group);
 	
-	void addExperimentalProperty(const String experimentalPropertyType, unsigned int weight);
+	void addExperimentalProperty(const String experimentalPropertyType, unsigned int weight,
+		float min, float max, int precision);
 	
 	void sendToPlayer(ObjectControllerMessage msg, int count);
 	
@@ -81,4 +82,11 @@ interface DraftSchematicExpPropGroup {
 	int getExpPropWeightPercentagesSize();
 
 	String getSubtitle();
+	String getTitle();
+	
+	float getMinValue();
+	float getMaxValue();
+	float getRange();
+	
+	int getPrecision();
 }

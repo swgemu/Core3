@@ -12,8 +12,8 @@
  *	DraftSchematicExpPropGroupStub
  */
 
-DraftSchematicExpPropGroup::DraftSchematicExpPropGroup(String& subtitle) {
-	_impl = new DraftSchematicExpPropGroupImplementation(subtitle);
+DraftSchematicExpPropGroup::DraftSchematicExpPropGroup(String& Title, String& Subtitle) {
+	_impl = new DraftSchematicExpPropGroupImplementation(Title, Subtitle);
 	_impl->_setStub(this);
 }
 
@@ -29,7 +29,7 @@ DraftSchematicExpPropGroup::DraftSchematicExpPropGroup(DummyConstructorParameter
 DraftSchematicExpPropGroup::~DraftSchematicExpPropGroup() {
 }
 
-void DraftSchematicExpPropGroup::addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight) {
+void DraftSchematicExpPropGroup::addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight, float min, float max, int precision) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -37,10 +37,13 @@ void DraftSchematicExpPropGroup::addExperimentalProperty(const String& experimen
 		DistributedMethod method(this, 6);
 		method.addAsciiParameter(experimentalPropertyType);
 		method.addUnsignedIntParameter(weight);
+		method.addFloatParameter(min);
+		method.addFloatParameter(max);
+		method.addSignedIntParameter(precision);
 
 		method.executeWithVoidReturn();
 	} else
-		((DraftSchematicExpPropGroupImplementation*) _impl)->addExperimentalProperty(experimentalPropertyType, weight);
+		((DraftSchematicExpPropGroupImplementation*) _impl)->addExperimentalProperty(experimentalPropertyType, weight, min, max, precision);
 }
 
 void DraftSchematicExpPropGroup::sendToPlayer(ObjectControllerMessage* msg, int count) {
@@ -277,6 +280,67 @@ String& DraftSchematicExpPropGroup::getSubtitle() {
 		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getSubtitle();
 }
 
+String& DraftSchematicExpPropGroup::getTitle() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		method.executeWithAsciiReturn(_return_getTitle);
+		return _return_getTitle;
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getTitle();
+}
+
+float DraftSchematicExpPropGroup::getMinValue() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getMinValue();
+}
+
+float DraftSchematicExpPropGroup::getMaxValue() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getMaxValue();
+}
+
+float DraftSchematicExpPropGroup::getRange() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+
+		return method.executeWithFloatReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getRange();
+}
+
+int DraftSchematicExpPropGroup::getPrecision() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DraftSchematicExpPropGroupImplementation*) _impl)->getPrecision();
+}
+
 /*
  *	DraftSchematicExpPropGroupAdapter
  */
@@ -289,7 +353,7 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 
 	switch (methid) {
 	case 6:
-		addExperimentalProperty(inv->getAsciiParameter(_param0_addExperimentalProperty__String_int_), inv->getUnsignedIntParameter());
+		addExperimentalProperty(inv->getAsciiParameter(_param0_addExperimentalProperty__String_int_float_float_int_), inv->getUnsignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
 		break;
 	case 7:
 		sendToPlayer((ObjectControllerMessage*) inv->getObjectParameter(), inv->getSignedIntParameter());
@@ -345,6 +409,21 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 	case 24:
 		resp->insertAscii(getSubtitle());
 		break;
+	case 25:
+		resp->insertAscii(getTitle());
+		break;
+	case 26:
+		resp->insertFloat(getMinValue());
+		break;
+	case 27:
+		resp->insertFloat(getMaxValue());
+		break;
+	case 28:
+		resp->insertFloat(getRange());
+		break;
+	case 29:
+		resp->insertSignedInt(getPrecision());
+		break;
 	default:
 		return NULL;
 	}
@@ -352,8 +431,8 @@ Packet* DraftSchematicExpPropGroupAdapter::invokeMethod(uint32 methid, Distribut
 	return resp;
 }
 
-void DraftSchematicExpPropGroupAdapter::addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight) {
-	return ((DraftSchematicExpPropGroupImplementation*) impl)->addExperimentalProperty(experimentalPropertyType, weight);
+void DraftSchematicExpPropGroupAdapter::addExperimentalProperty(const String& experimentalPropertyType, unsigned int weight, float min, float max, int precision) {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->addExperimentalProperty(experimentalPropertyType, weight, min, max, precision);
 }
 
 void DraftSchematicExpPropGroupAdapter::sendToPlayer(ObjectControllerMessage* msg, int count) {
@@ -426,6 +505,26 @@ int DraftSchematicExpPropGroupAdapter::getExpPropWeightPercentagesSize() {
 
 String& DraftSchematicExpPropGroupAdapter::getSubtitle() {
 	return ((DraftSchematicExpPropGroupImplementation*) impl)->getSubtitle();
+}
+
+String& DraftSchematicExpPropGroupAdapter::getTitle() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getTitle();
+}
+
+float DraftSchematicExpPropGroupAdapter::getMinValue() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getMinValue();
+}
+
+float DraftSchematicExpPropGroupAdapter::getMaxValue() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getMaxValue();
+}
+
+float DraftSchematicExpPropGroupAdapter::getRange() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getRange();
+}
+
+int DraftSchematicExpPropGroupAdapter::getPrecision() {
+	return ((DraftSchematicExpPropGroupImplementation*) impl)->getPrecision();
 }
 
 /*

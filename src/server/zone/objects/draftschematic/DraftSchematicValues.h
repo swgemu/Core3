@@ -89,7 +89,7 @@ public:
 
 	void recalculateValues(DraftSchematic* draftSchematic);
 
-	float getAttributeAndValue(DraftSchematic* draftSchematic, String& attribute, const int i);
+	float getAttributeAndValue(String& attribute, const int i);
 
 	void clearAll();
 
@@ -190,7 +190,7 @@ public:
 
 	void recalculateValues(DraftSchematic* draftSchematic);
 
-	float getAttributeAndValue(DraftSchematic* draftSchematic, String& attribute, const int i);
+	float getAttributeAndValue(String& attribute, const int i);
 
 	void clearAll();
 
@@ -223,7 +223,7 @@ protected:
 	String _param0_setMaxValue__String_float_;
 	String _param0_getPrecision__String_;
 	String _param0_setPrecision__String_int_;
-	String _param1_getAttributeAndValue__DraftSchematic_String_int_;
+	String _param0_getAttributeAndValue__String_int_;
 };
 
 class DraftSchematicValuesHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicValuesHelper> {

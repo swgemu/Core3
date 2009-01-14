@@ -41,9 +41,45 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
--- Armorsmith
+genericCraftingTool = Object:new {
 
-RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/compositeArmorBoots.lua")
-RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/compositeArmorChestPlate.lua")
-RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/compositeArmorGloves.lua")
-RunDraftSchematicFile("objects/draftschematics/armorsmith/masterArmorsmith/compositeArmorHelmet.lua")
+   objectName = "Generic Crafting Tool",
+   stfName = "generic_tool_name",
+   objectCRC = 2914524854,
+   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
+
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 10, 
+   size = 2, 
+
+   xpType = "crafting_general", 
+   xp = 40, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+
+   ingredientTemplateNames = "craft_item_ingredients_n, craft_item_ingredients_n, craft_item_ingredients_n",
+   ingredientTitleNames = "assembly_enclosure, thermal_shielding, electronic_control_unit",
+   ingredientSlotType = "0, 0, 0",
+   resourceTypes = "metal, mineral, chemical",
+   resourceQuantities = "12, 4, 4",
+   combineTypes = "0, 0, 0",
+   contribution = "100, 100, 100",
+
+   numberExperimentalProperties = "1, 1, 1, 1",
+   experimentalProperties = "XX, XX, XX, CD",
+   experimentalWeights = "1, 1, 1, 1",
+   experimentalGroupTitles = "null, null, null, expEffectiveness",
+
+   experimentalSubGroupTitles = "null, null, hitpoints, usemodifier",
+   experimentalMin = "0, 0, 1000, -15",
+   experimentalMax = "0, 0, 1000, 15",
+   experimentalPrecision = "0, 0, 0, 0",
+
+   tanoAttributes = "objecttype=32769:objectcrc=1055200365:objecttemp=generic_tool_name:templatetype=crafting:",
+   customizationOptions = "",
+   customizationDefaults = ""
+
+}
+
+DraftSchematics:addDraftSchematic(genericCraftingTool, 2914524854)--- Add to global DraftSchematics table

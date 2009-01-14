@@ -50,4 +50,4 @@
 -- Spices 3
 
 -- Spices 4
-RunDraftSchematicFile("objects/draftschematics/smuggler/spices4/boosterBlue.lua")
+--RunDraftSchematicFile("objects/draftschematics/smuggler/spices4/boosterBlue.lua")

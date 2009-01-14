@@ -45,9 +45,9 @@
 
 -- Novice
 
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/novice/blasterPowerHandler.lua")
+--RunDraftSchematicFile("objects/draftschematics/weaponsmith/novice/blasterPowerHandler.lua")
 --RunDraftSchematicFile("objects/draftschematics/weaponsmith/novice/dlt20Rifle.lua")
 
 
 -- Intermediate Firearms Crafting
-RunDraftSchematicFile("objects/draftschematics/weaponsmith/intermediatefirearms/blasterRifleBarrel.lua")
+--RunDraftSchematicFile("objects/draftschematics/weaponsmith/intermediatefirearms/blasterRifleBarrel.lua")
