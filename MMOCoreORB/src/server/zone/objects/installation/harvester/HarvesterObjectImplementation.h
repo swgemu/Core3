@@ -26,6 +26,7 @@ protected:
 	Time spawnExpireTimestamp;
 
 	Time resourceHopperTimestamp;
+	Time lastMaintenanceTime;
 	VectorMap<uint64, float> resourceHopper; // ID + Size
 	uint32 hopperResourceUpdateCounter;
 
@@ -186,6 +187,19 @@ public:
 		resourceHopper.put(rid, hopperQuantity - quantity); // update quantity
 
 		return quantity;
+	}
+
+	void updateMaintenance();
+
+	inline uint32 getMaintenanceTimestamp() {
+		return lastMaintenanceTime.getTime();
+	}
+
+	inline void setMaintenanceTimestamp(uint32 stamp) {
+		Time mStamp(stamp);
+		lastMaintenanceTime = mStamp;
+		String attr("lastMaintenanceTime");
+		itemAttributes->setUnsignedLongAttribute(attr, stamp);
 	}
 
 private:

@@ -868,11 +868,15 @@ void StructureManagerImplementation::spawnHarvester(Player * player,
  	                float oY, float oW) {
 	HarvesterObject*  hino = new HarvesterObject(player->getNewItemID(), (HarvesterDeed*)deed);
 
+	int size = deed->getSize();
+
  	hino->initializePosition(x, z, y);
  	hino->setDirection(oX, oZ, oY, oW);
  	hino->setOwner(player->getFirstName());
  	hino->setOwnerID(player->getCharacterID());
  	hino->setZoneProcessServer(server);
+ 	hino->setMaintenanceRate(30.0f * size);
+ 	hino->setPowerRate(25.0f * size);
 
  	installationSpawnEvent = new InstallationSpawnEvent(player, hino, player->getZone());
  	server->addEvent(installationSpawnEvent, 100);

@@ -29,6 +29,7 @@ public:
 
 			inso->updateHopper();
 			inso->updateOperators();
+			inso->updateMaintenance();
 
 			if (inso->getOperatorListSize() > 0)
 				inso->activateSync(); // renew

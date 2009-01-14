@@ -170,6 +170,18 @@ int DeedObject::getLotSize() {
 		return ((DeedObjectImplementation*) _impl)->getLotSize();
 }
 
+int DeedObject::getSize() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((DeedObjectImplementation*) _impl)->getSize();
+}
+
 /*
  *	DeedObjectAdapter
  */
@@ -210,6 +222,9 @@ Packet* DeedObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case 15:
 		resp->insertSignedInt(getLotSize());
+		break;
+	case 16:
+		resp->insertSignedInt(getSize());
 		break;
 	default:
 		return NULL;
@@ -256,6 +271,10 @@ String& DeedObjectAdapter::getDefaultTemplateName(int crc) {
 
 int DeedObjectAdapter::getLotSize() {
 	return ((DeedObjectImplementation*) impl)->getLotSize();
+}
+
+int DeedObjectAdapter::getSize() {
+	return ((DeedObjectImplementation*) impl)->getSize();
 }
 
 /*
