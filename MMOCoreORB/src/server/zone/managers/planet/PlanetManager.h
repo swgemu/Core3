@@ -55,7 +55,7 @@ public:
 
 	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
 
-	bool isNoBuildArea(bool x, bool y);
+	bool isNoBuildArea(float x, float y);
 
 	void addNoBuildArea(float x, float y, float radius);
 
@@ -111,7 +111,7 @@ public:
 
 	void placePlayerStructure(Player* player, unsigned long long objectID, float x, float y, int orient);
 
-	bool isNoBuildArea(bool x, bool y);
+	bool isNoBuildArea(float x, float y);
 
 	void addNoBuildArea(float x, float y, float radius);
 

@@ -203,14 +203,14 @@ void PlanetManager::placePlayerStructure(Player* player, unsigned long long obje
 		((PlanetManagerImplementation*) _impl)->placePlayerStructure(player, objectID, x, y, orient);
 }
 
-bool PlanetManager::isNoBuildArea(bool x, bool y) {
+bool PlanetManager::isNoBuildArea(float x, float y) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, 19);
-		method.addBooleanParameter(x);
-		method.addBooleanParameter(y);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
 
 		return method.executeWithBooleanReturn();
 	} else
@@ -345,7 +345,7 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		placePlayerStructure((Player*) inv->getObjectParameter(), inv->getUnsignedLongParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter());
 		break;
 	case 19:
-		resp->insertBoolean(isNoBuildArea(inv->getBooleanParameter(), inv->getBooleanParameter()));
+		resp->insertBoolean(isNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
 	case 20:
 		addNoBuildArea(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter());
@@ -424,7 +424,7 @@ void PlanetManagerAdapter::placePlayerStructure(Player* player, unsigned long lo
 	return ((PlanetManagerImplementation*) impl)->placePlayerStructure(player, objectID, x, y, orient);
 }
 
-bool PlanetManagerAdapter::isNoBuildArea(bool x, bool y) {
+bool PlanetManagerAdapter::isNoBuildArea(float x, float y) {
 	return ((PlanetManagerImplementation*) impl)->isNoBuildArea(x, y);
 }
 
