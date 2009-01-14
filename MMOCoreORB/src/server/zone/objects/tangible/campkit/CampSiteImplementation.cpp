@@ -126,13 +126,13 @@ void CampSiteImplementation::init() {
 		case 2:
 			name = UnicodeString("Quality Camp");
 			defaultName = "quality_name";
-			objectCRC = 2592959322;
+			objectCRC = 0x9A8D6B5A;
 			campModifier = 80;
 			break;
 		case 3:
 			name = UnicodeString("Luxury Camp");
 			defaultName = "luxury_name";
-			objectCRC = 3548384471;
+			objectCRC = 0xD3800CD7;
 			campModifier = 100;
 			break;
 		case 4:
@@ -196,7 +196,7 @@ void CampSiteImplementation::removeCampArea() {
 		calculateXP();
 
 		String type = "camp";
-		campOwner->addXp(type,currentXP, true);
+		campOwner->addXp(type, (int)currentXP, true);
 
 		StringBuffer msg;
 

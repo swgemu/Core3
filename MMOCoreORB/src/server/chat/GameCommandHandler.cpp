@@ -3214,33 +3214,42 @@ void GameCommandHandler::warpAreaToWP(StringTokenizer tokenizer, Player* player)
 			zone->lock();
 
 			for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-				SceneObject
-						* obj =
-								(SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(
-										i))->_getStub());
+				SceneObject* obj = (SceneObject*) (((SceneObjectImplementation*) player->getInRangeObject(i))->_getStub());
 
 				if (obj->isPlayer()) {
 					Player* otherPlayer = (Player*) obj;
 					String otherName = otherPlayer->getFirstName();
 
-					if (otherName != name && player->isInRange(otherPlayer, meter)
-							&& (otherPlayer->getAdminLevel()
-									== PlayerImplementation::NORMAL)) {
+					if (otherName != name && player->isInRange(otherPlayer,meter)
+							&& (otherPlayer->getAdminLevel() == PlayerImplementation::NORMAL)) {
+						zone->unlock();
 
+						if (otherPlayer != player)
+							player->unlock();
 
 						try {
+							if (otherPlayer != player)
+								otherPlayer->wlock();
+
 							if (planet != otherPlayer->getZoneIndex())
+								otherPlayer->switchMap(planet);
 
-
-							otherPlayer->switchMap(planet);
 							otherPlayer->doWarp(x, y);
-							zone->unlock();
-							player->sendSystemMessage("player \'" + otherName
-									+ "\' has been warped.");
+
+							player->sendSystemMessage("player \'" + otherName + "\' has been warped.");
+
+							if (otherPlayer != player)
+								otherPlayer->unlock();
 						} catch (...) {
-							player->sendSystemMessage("unable to warp player \'"
-									+ otherName + "\'");
+							player->sendSystemMessage("unable to warp player \'" + otherName + "\'");
+							if (otherPlayer != player)
+								otherPlayer->unlock();
 						}
+
+						if (otherPlayer != player)
+							player->wlock();
+
+						zone->lock();
 					}
 				}
 			}

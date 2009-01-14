@@ -40,9 +40,9 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creatur
 	info(templateName);
 	name = "";
 
-	setSurplusMaintenance(hino->getSurplusMaintenance());
+	setSurplusMaintenance((uint32)hino->getSurplusMaintenance());
 	setMaintenanceRate(hino->getMaintenanceRate());
-	setSurplusPower(hino->getSurplusPower());
+	setSurplusPower((uint32)hino->getSurplusPower());
 	setPowerRate(hino->getPowerRate());
 	setHopperSize(hino->getHopperSizeMax());
 	setExtractionRate(hino->getExtractionRate());
