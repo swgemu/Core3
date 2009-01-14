@@ -61,7 +61,7 @@ public:
 		setNullValue(NULL);
 	}
 
-	Player* put(String name, Player* player, bool doLock = true) {
+	Player* put(const String& name, Player* player, bool doLock = true) {
 		Player* play = NULL;
 
 		lock(doLock);
@@ -76,7 +76,7 @@ public:
 		return play;
 	}
 
-	Player* get(String name, bool doLock = true) {
+	Player* get(const String& name, bool doLock = true) {
 		Player* player = NULL;
 
 		lock(doLock);
@@ -88,7 +88,7 @@ public:
 		return player;
 	}
 
-	Player* remove(String name, bool doLock = true) {
+	Player* remove(const String& name, bool doLock = true) {
 		Player* player = NULL;
 
 		lock(doLock);

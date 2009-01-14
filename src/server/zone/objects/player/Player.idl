@@ -232,11 +232,6 @@ interface Player implements CreatureObject {
 
 	void doDigest();
 
-	boolean hasConsent(String charID);
-	boolean giveConsent(String name);
-	boolean revokeConsent(String name);
-	int getConsentSize();
-	String getConsentEntry(int index);
 	Badges getBadges();
 
 	void addBuff(unsigned int buffcrc, float time);
@@ -782,13 +777,21 @@ interface Player implements CreatureObject {
 	boolean bankTipStart(Player recipient, unsigned int amount);
 	void bankTipFinish(Player recipient, unsigned int amount);
 	boolean cashTip(Player recipient, unsigned int amount);
+	void consent(Player playerTarget);
+	void unconsent(String name);
 	
 	
 	//Setters
 	void setCloningFacility(CloningFacility facility);
+	void addConsentEntry(const String name);
+	void removeConsentEntry(const String name);
 	
 	//Getters
 	CloningFacility getCloningFacility();
+	boolean hasConsented(const String name);
+	boolean hasConsentFrom(Player player);
+	unsigned int getConsentListSize();
+	String getConsentEntry(int index);
 	
 	//Calculations
 	unsigned char calculateIncapacitationTimer();

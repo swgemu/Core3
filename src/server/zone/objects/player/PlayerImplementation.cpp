@@ -1765,7 +1765,7 @@ void PlayerImplementation::drag(Player* targetPlayer, float maxRange, float maxM
 
 	//Check for consent to drag.
 	if (needsConsent) {
-		bool hasConsentFrom = targetPlayer->hasConsent(getFirstName());
+		bool hasConsentFrom = targetPlayer->hasConsented(getFirstName());
 		bool isGroupedWith = isInGroupWith((CreatureObject*)targetPlayer);
 		if (!hasConsentFrom && !isGroupedWith) {
 			sendSystemMessage("healing_response", "healing_response_b4"); //"You must be grouped with or have consent from your drag target!"
@@ -5547,7 +5547,8 @@ void PlayerImplementation::sendConsentList() {
 	SuiListBox* consentBox = new SuiListBox(_this, SuiWindowType::CONSENT);
 
 	consentBox->setPromptTitle("@ui:consent_title");
-	consentBox->setPromptText("Below is listed all players whom you have given consent.");
+	consentBox->setPromptText("All players whom you have given your consent to are listed below.\n\nHighlight a player's name and click OK to revoke consent.");
+	consentBox->setCancelButton(true);
 
 	for (int i=0; i < consentList.size(); i++) {
 		String entryName = consentList.get(i);
@@ -5988,8 +5989,65 @@ bool PlayerImplementation::cashTip(Player* recipient, uint32 amount) {
 	return true;
 }
 
+void PlayerImplementation::consent(Player* playerTarget) {
+	if (playerTarget == _this) {
+		sendSystemMessage("You ask yourself for consent, but receive no answer...");
+		return;
+	}
 
+	if (playerTarget != NULL && playerTarget->isOnline()) {
+		String firstName = playerTarget->getFirstName().toLowerCase();
 
+		if (!hasConsented(firstName)) {
+			consentList.add(firstName);
+			StfParameter* params = new StfParameter();
+			params->addTO(playerTarget->getObjectID());
+			sendSystemMessage("base_player", "prose_consent", params); //You give your consent to %TO.
+			params->clear();
+			params->addTO(getObjectID());
+			playerTarget->sendSystemMessage("base_player", "prose_got_consent", params); //%TO consents you.
+			delete params;
+		} else {
+			sendSystemMessage("They already have your consent.");
+		}
+	}
+}
+
+/**
+ * This action is used to unconsent a player by first name.
+ * \param name The name of the player on your consent list. Should only be the first name.
+ */
+void PlayerImplementation::unconsent(const String& name) {
+	PlayerManager* playerManager = server->getPlayerManager();
+	int entryIndex = -1;
+
+	for (int i = 0; i < consentList.size(); i++) {
+		if (name == consentList.get(i))
+			entryIndex = i;
+	}
+
+	if (entryIndex == -1)
+		return;
+
+	consentList.remove(entryIndex);
+
+	//Try to get a player that matches the name.
+	Player* playerTarget = playerManager->getPlayer(name);
+
+	StfParameter* params = new StfParameter();
+
+	if (playerTarget != NULL && playerTarget->isOnline()) {
+		params->addTO(getObjectID());
+		playerTarget->sendSystemMessage("base_player", "prose_lost_consent", params); //%TO no longer consents you.
+		params->clear();
+		params->addTO(playerTarget->getObjectID());
+	} else {
+		params->addTO(name);
+	}
+
+	sendSystemMessage("base_player", "prose_unconsent", params); //You revoke your consent from %TO.
+	delete params;
+}
 
 
 
@@ -6013,6 +6071,9 @@ void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
 	clearCombatState();
 	clearStates();
 
+	if (isMounted())
+		dismount(true, true);
+
 	if (getIncapacitationCounter() < 3) {
 		setPosture(CreaturePosture::INCAPACITATED);
 
@@ -6025,6 +6086,7 @@ void PlayerImplementation::onIncapacitated(SceneObject* attacker) {
 
 		uint32 incapTime = calculateIncapacitationTimer();
 		sendIncapacitationTimer(incapTime);
+
 	} else {
 		if (!isFirstIncapacitationExpired()) {
 			if (attacker != NULL)

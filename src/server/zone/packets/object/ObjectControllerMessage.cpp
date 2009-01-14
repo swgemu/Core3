@@ -441,6 +441,9 @@ void ObjectControllerMessage::parseCommandQueueEnqueue(Player* player,
 		player->clearQueueAction(actioncntr);
 		handleRemoveFromGuild(player, pack, serv);
 		break;
+	case (0x081D6710): //Equilibrium
+		player->queueAction(player, target, actionCRC, actioncntr, "");
+		break;
 	case (0x124629F2): // Meditating
 		if (parseMeditation(player))
 			player->queueAction(player, target, actionCRC, actioncntr, "");
@@ -4065,11 +4068,9 @@ void ObjectControllerMessage::parseRemoveIgnore(Player* player, Message* pack) {
 	}
 }
 
-void ObjectControllerMessage::parseGiveConsentRequest(Player* player,
-		Message* pack) {
-	if (player->getConsentSize() >= 15) { //Max consent list size = 15
-		player->sendSystemMessage(
-				"Your consent list is full. You must /unconsent someone before consenting another player.");
+void ObjectControllerMessage::parseGiveConsentRequest(Player* player, Message* pack) {
+	if (player->getConsentListSize() >= 15) { //Max consent list size = 15
+		player->sendSystemMessage("player_structure", "too_many_entries"); //You have too many entries on that list. You must remove some before adding more.
 		return;
 	}
 
@@ -4080,7 +4081,7 @@ void ObjectControllerMessage::parseGiveConsentRequest(Player* player,
 	String consentName = "";
 
 	if (name.isEmpty()) {
-		player->sendSystemMessage("Usage: /consent <name>");
+		player->sendSystemMessage("Syntax: /consent <name>");
 		return;
 	}
 
@@ -4088,86 +4089,46 @@ void ObjectControllerMessage::parseGiveConsentRequest(Player* player,
 	tokenizer.setDelimeter(" ");
 	tokenizer.getStringToken(consentName);
 
-	PlayerManager* playerManager =
-			player->getZone()->getZoneServer()->getPlayerManager();
+	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
+	consentName = consentName.toLowerCase();
 	Player* playerTarget = playerManager->getPlayer(consentName);
 
-	if (playerTarget != NULL) {
-		if (playerTarget == player) {
-			player->sendSystemMessage(
-					"You ask yourself for consent, but you get no reply.");
-			return;
-		}
-
-		if (player->giveConsent(playerTarget->getFirstName())) {
-			StfParameter* param = new StfParameter();
-			param->addTO(playerTarget->getCharacterName().toString());
-			player->sendSystemMessage("base_player", "prose_consent", param); //You give your consent to %TO.
-			param->addTO(player->getCharacterName().toString());
-			playerTarget->sendSystemMessage("base_player", "prose_got_consent",
-					param); //%TO consents you.
-			delete param;
-		} else {
-			player->sendSystemMessage(
-					"You have already given them your consent.");
-		}
-
-		return;
-	} else {
-		player->sendSystemMessage(
-				"Your target for consent is either offline or does not exist.");
-	}
+	if (playerTarget != NULL)
+		player->consent(playerTarget);
 }
 
-void ObjectControllerMessage::parseRevokeConsentRequest(Player* player,
-		Message* pack) {
-	if (player->getConsentSize() <= 0) {
-		player->sendSystemMessage(
-				"You have no one on your consent list to remove.");
+void ObjectControllerMessage::parseRevokeConsentRequest(Player* player, Message* pack) {
+	if (player->getConsentListSize() <= 0) {
+		player->sendSystemMessage("error_message", "consent_to_empty"); //You have not granted consent to anyone.
 		return;
 	}
 
 	pack->shiftOffset(8);
-	UnicodeString UnicodeStringName;
-	pack->parseUnicode(UnicodeStringName);
-	String name = UnicodeStringName.toString();
-	String consentName = "";
 
-	if (name.isEmpty()) {
-		player->sendSystemMessage("Usage: /unconsent <name>");
+	UnicodeString unicodeNames;
+	pack->parseUnicode(unicodeNames);
+	String nameList = unicodeNames.toString();
+
+	if (nameList.isEmpty()) {
+		player->sendConsentList();
 		return;
 	}
 
-	StringTokenizer tokenizer(name);
-	tokenizer.setDelimeter(" ");
-	tokenizer.getStringToken(consentName);
+	StringTokenizer tokenizer(nameList);
+	tokenizer.setDelimeter(",");
 
-	PlayerManager* playerManager =
-			player->getZone()->getZoneServer()->getPlayerManager();
-	Player* playerTarget = playerManager->getPlayer(consentName);
+	PlayerManager* playerManager = player->getZone()->getZoneServer()->getPlayerManager();
 
-	if (playerTarget == NULL) {
-		player->sendSystemMessage(
-				"Your target for unconsent is offline or does note exist.");
-		return;
+	while (tokenizer.hasMoreTokens()) {
+		String name = "";
+		tokenizer.getStringToken(name);
+		name = name.toLowerCase();
+
+		player->unconsent(name);
 	}
 
-	if (player->revokeConsent(consentName)) {
-		StfParameter* param = new StfParameter();
-		param->addTO(playerTarget->getCharacterName().toString());
-		player->sendSystemMessage("base_player", "prose_unconsent", param); //You revoke your consent from %TO.
-
-		if (playerTarget != NULL) {
-			param->addTO(player->getCharacterName().toString());
-			playerTarget->sendSystemMessage("base_player",
-					"prose_lost_consent", param); //%TO no longer consents you.
-		}
-		delete param;
-	} else {
-		player->sendSystemMessage(
-				"Your target for unconsent is offline or does note exist.");
-		return;
-	}
+	//TODO: Check for invalid input, and relay the syntax command.
+	//player->sendSystemMessage("error_message", "syntax_unconsent"); //syntax: /unconsent  {optionally, use commas to seperate several player names}
 }
 
 void ObjectControllerMessage::parseHaveConsentRequest(Player* player,

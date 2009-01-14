@@ -91,7 +91,7 @@ public:
 		if (creature->isProne()) {
 			creature->sendSystemMessage("You cannot Revive while prone.");
 			return false;
-		}		
+		}
 
 		if (creature->isMeditating()) {
 			creature->sendSystemMessage("You cannot Revive while Meditating.");
@@ -113,7 +113,7 @@ public:
 			return false;
 		}
 
-		if (!creature->isInGroupWith((CreatureObject*) playerTarget) && !playerTarget->hasConsent(((Player*)creature)->getFirstName())) {
+		if (!creature->isInGroupWith((CreatureObject*) playerTarget) && !((Player*)creature)->hasConsentFrom(playerTarget)) {
 			creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
 			return false;
 		}

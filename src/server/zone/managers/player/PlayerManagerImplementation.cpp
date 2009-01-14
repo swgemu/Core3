@@ -1469,7 +1469,7 @@ void PlayerManagerImplementation::loadConsentList(Player* player) {
 
 		while (targetlist->next()) {
 			String targetName = targetlist->getString(0);
-			player->giveConsent(targetName);
+			player->addConsentEntry(targetName);
 		}
 
 		delete targetlist;
@@ -1493,7 +1493,7 @@ void PlayerManagerImplementation::updateConsentList(Player* player) {
 
 	ServerDatabase::instance()->executeStatement(query);
 
-	int size = player->getConsentSize();
+	int size = player->getConsentListSize();
 	if (size > 0) {
 		query.deleteAll();
 		query << "INSERT INTO consentlist (character_id, target_id) VALUES ";

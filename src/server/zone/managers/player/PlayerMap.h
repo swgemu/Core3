@@ -13,11 +13,11 @@ class PlayerMap : public DistributedObjectStub {
 public:
 	PlayerMap(int initsize);
 
-	Player* put(String& name, Player* player, bool doLock = true);
+	Player* put(const String& name, Player* player, bool doLock = true);
 
-	Player* get(String& name, bool doLock = true);
+	Player* get(const String& name, bool doLock = true);
 
-	Player* remove(String& name, bool doLock = true);
+	Player* remove(const String& name, bool doLock = true);
 
 	int size(bool doLock = true);
 
@@ -49,11 +49,11 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	Player* put(String& name, Player* player, bool doLock);
+	Player* put(const String& name, Player* player, bool doLock);
 
-	Player* get(String& name, bool doLock);
+	Player* get(const String& name, bool doLock);
 
-	Player* remove(String& name, bool doLock);
+	Player* remove(const String& name, bool doLock);
 
 	int size(bool doLock);
 
