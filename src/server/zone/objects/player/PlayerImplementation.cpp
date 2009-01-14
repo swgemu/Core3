@@ -502,7 +502,7 @@ void PlayerImplementation::load(ZoneClientSession* client) {
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 		//playerManager->updateOtherFriendlists(_this, true);
-		//displayMessageoftheDay();
+		displayMessageoftheDay();
 
 		//unlock();
 	} catch (Exception& e) {
@@ -655,9 +655,6 @@ void PlayerImplementation::unload() {
 	}
 
 	savePlayerState();
-
-	// Check if Message of the day suibox is still around
-	removeOldSuiBoxIfPresent(SuiWindowType::MOTD);
 
 	if (zone != NULL) {
 		ZoneServer* zserver = zone->getZoneServer();
@@ -5400,8 +5397,6 @@ void PlayerImplementation::removeOldSuiBoxIfPresent(const int suiWindowType) {
 
 void PlayerImplementation::displayMessageoftheDay() {
 
-	removeOldSuiBoxIfPresent(SuiWindowType::MOTD);
-
 	String motd = server->getZoneServer()->getMessageoftheDay();
 
 	SuiMessageBox* suiMessageBox = new SuiMessageBox(_this, SuiWindowType::MOTD);
@@ -5409,7 +5404,6 @@ void PlayerImplementation::displayMessageoftheDay() {
 	suiMessageBox->setPromptTitle("Message of the Day");
 	suiMessageBox->setPromptText(motd);
 
-	addSuiBox(suiMessageBox);
 	sendMessage(suiMessageBox->generateMessage());
 }
 

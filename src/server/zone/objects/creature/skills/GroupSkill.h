@@ -58,9 +58,11 @@ public:
 
 protected:
 
-	float healthCost;
-	float actionCost;
-	float mindCost;
+	int healthCost;
+	int actionCost;
+	int mindCost;
+	int cooldownTime;
+	String combatSpam;
 
 public:
 	GroupSkill(const String& name, const String& anim, int tp, ZoneProcessServerImplementation* serv) : Skill(name, tp, GROUP, serv) {
@@ -68,19 +70,55 @@ public:
 		healthCost = 0;
 		actionCost = 0;
 		mindCost = 0;
+		cooldownTime = 0;
+		combatSpam = "";
 	}
 
-	virtual void doSkill(CreatureObject* creature, const String& modifier, bool doAnimation = true) = 0;
+	virtual void doSkill(CreatureObject* creature, bool doAnimation = true) = 0;
 
 	virtual void doAnimations(CreatureObject* creature) {
 
 	}
 
-	virtual bool isUseful(CreatureObject* creature, SceneObject* target) {
-		return true;
+	bool canBePerformed(CreatureObject* creature) {
+		if(creature->isPlayer()) {
+			Player* player = (Player*)creature;
+			GroupObject* group = player->getGroupObject();
+			if(group == NULL) {
+				player->sendSystemMessage("You must be in a group to perform this action.");
+				return false;
+			}
+
+			if(group->getLeader() != player) {
+				player->sendSystemMessage("You must be the group leader to perform this action.");
+				return false;
+			}
+
+			if(!checkHAMCost(creature))
+				return false;
+
+			return derivedCanBePerformed(creature);
+		}
+
+		return false;
 	}
 
-	virtual bool calculateCost(CreatureObject* creature) {
+	virtual bool derivedCanBePerformed(CreatureObject* creature) = 0;
+
+	virtual bool checkHAMCost(CreatureObject* creature) {
+		if(creature->getHealth() < healthCost) {
+			creature->sendSystemMessage("You do not have enough Health to perform this action.");
+			return false;
+		}
+		if(creature->getAction() < actionCost) {
+			creature->sendSystemMessage("You do not have enough Action to perform this action.");
+			return false;
+		}
+		if(creature->getMind() < mindCost) {
+			creature->sendSystemMessage("You do not have enough Mind to perform this action.");
+			return false;
+		}
+
 		return true;
 	}
 
@@ -88,16 +126,24 @@ public:
 		return 1.0f;
 	}
 
-	void setHealthCost(float value) {
+	void setHealthCost(int value) {
 		healthCost = value;
 	}
 
-	void setActionCost(float value) {
+	void setActionCost(int value) {
 		actionCost = value;
 	}
 
-	void setMindCost(float value) {
+	void setMindCost(int value) {
 		mindCost = value;
+	}
+
+	void setCombatSpam(const String& value) {
+		combatSpam = value;
+	}
+
+	void setCooldownTime(int value) {
+		cooldownTime = value;
 	}
 };
 

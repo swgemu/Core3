@@ -55,8 +55,12 @@ public:
 
 	}
 
-	void doSkill(CreatureObject* creature, const String& modifier, bool doAnimation = true) {
+	void doSkill(CreatureObject* creature, bool doAnimation = true) {
 		// this skill is handled in objectcontrollermessage
+	}
+
+	bool derivedCanBePerformed(CreatureObject* creature) {
+		return true;
 	}
 };
 

@@ -93,5 +93,6 @@ which carries forward this exception.
 
 #include "GroupSkill.h"
 #include "group/SystemGroupMessageSkill.h"
+#include "group/BoostMoraleGroupSkill.h"
 
 #endif /*SKILLS_H_*/
