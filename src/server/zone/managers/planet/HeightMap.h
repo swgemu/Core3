@@ -5,7 +5,7 @@
 
 #include "HeightMapPlane.h"
 
-class HeightMap {
+class HeightMap : public ReadWriteLock, public Logger {
 	Reader* reader;
 
 	HeightMapPlane** planes;

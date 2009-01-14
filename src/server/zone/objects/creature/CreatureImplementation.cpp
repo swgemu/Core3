@@ -1159,7 +1159,7 @@ void CreatureImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 				&& patrolPoints.isEmpty() && System::random(200) < 1) {
 			doRandomMovement = true;
 
-			positionZ = obj->getPositionZ();
+			//positionZ = obj->getPositionZ();
 
 			//System::out << hex << player->getObjectID() << " initiating movement of " << objectID << "\n";
 
@@ -1498,7 +1498,8 @@ bool CreatureImplementation::doMovement() {
 		newPositionY = positionY + (actualSpeed * (dy / dist));
 	}
 
-	newPositionZ = zone->getHeight(newPositionX, newPositionY);
+	if (cellID == 0)
+		newPositionZ = zone->getHeight(newPositionX, newPositionY);
 
 	nextPosition->setPosition(newPositionX, newPositionZ, newPositionY);
 	nextPosition->setCellID(cellID);

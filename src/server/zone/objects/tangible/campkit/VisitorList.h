@@ -10,7 +10,7 @@ class VisitorList : public HashTable<uint64, uint64> , public HashTableIterator<
 
 public:
 	VisitorList() : HashTable<uint64, uint64>(3), HashTableIterator<uint64, uint64>(this) {
-		setNullValue(NULL);
+		setNullValue(0);
 	}
 
 	void put(uint64 playerID, uint64 time) {

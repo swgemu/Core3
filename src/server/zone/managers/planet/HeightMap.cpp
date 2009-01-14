@@ -1,6 +1,6 @@
 #include "HeightMap.h"
 
-HeightMap::HeightMap() {
+HeightMap::HeightMap() : ReadWriteLock("HeightMap"), Logger() {
 	planes = (HeightMapPlane**) malloc(PLANESSIZE * PLANESSIZE * sizeof(HeightMapPlane*));
 
 	for (int i = 0; i < PLANESSIZE * PLANESSIZE; ++i) {
@@ -8,6 +8,10 @@ HeightMap::HeightMap() {
 	}
 
 	reader = NULL;
+
+	setLoggingName("HeightMap");
+	setLogging(false);
+	setGlobalLogging(true);
 }
 
 HeightMap::~HeightMap() {
@@ -27,34 +31,56 @@ HeightMap::~HeightMap() {
 }
 
 void HeightMap::load(const String& path) {
+	wlock();
+
 	File* file = new File(path);
 
 	try {
 		reader = new FileReader(file);
+		info("loaded " + path);
 	} catch (FileNotFoundException& e) {
 		reader = NULL;
+		info("failed to load " + path);
 	}
+
+	unlock();
 }
 
 float HeightMap::getHeight(float x, float y) {
-	if (reader != NULL)
-		return getHeightFrom(reader, x, y);
-	else
+	if (reader == NULL)
 		return 0;
 
-	/*int planePosition = getPlanePosition(x, y);
+	float retHeight = 0;
 
-	HeightMapPlane* plane = planes[planePosition];
-	if (plane == NULL)
-	{
-		//System::out << "Streaming in heightplane number " << planePosition << ".\n";
-		plane = streamPlaneAt(x, y);
+	try {
+
+		int planePosition = getPlanePosition(x, y);
+
+		rlock();
+
+		HeightMapPlane* plane = planes[planePosition];
+
+		if (plane == NULL) {
+			//System::out << "Streaming in heightplane number " << planePosition << ".\n";
+			unlock();
+
+			plane = streamPlaneAt(x, y);
+
+			rlock();
+		}
+
+		int width = (int) (x + ORIGOSHIFT) % PLANEWIDTH;
+		int height = (int) (y + ORIGOSHIFT) % PLANEWIDTH;
+
+		retHeight = plane->getHeight(width, height);
+
+		unlock();
+	} catch (...) {
+		System::out << "Exception while getting height";
+		unlock();
 	}
 
-	int width = (int) (x + ORIGOSHIFT) % PLANEWIDTH;
-	int height = (int) (y + ORIGOSHIFT) % PLANEWIDTH;
-
-	return plane->getHeight(width, height);*/
+	return retHeight;
 }
 
 float HeightMap::getHeightFrom(Reader* file, float x, float y) {
@@ -74,9 +100,16 @@ float HeightMap::getHeightFrom(Reader* file, float x, float y) {
 }
 
 HeightMapPlane* HeightMap::streamPlaneAt(float x, float y) {
+	wlock();
+
 	int planePosition = getPlanePosition(x, y);
 
-	HeightMapPlane* plane = NULL;
+	HeightMapPlane* plane = planes[planePosition];
+
+	if (plane != NULL) {
+		unlock();
+		return plane;
+	}
 
 	if (planeQueue.size() < PLANELIMIT) {
 		plane = planes[planePosition] = new HeightMapPlane(planePosition, PLANEWIDTH);
@@ -92,6 +125,8 @@ HeightMapPlane* HeightMap::streamPlaneAt(float x, float y) {
 
 	int planeOffset = planePosition * PLANEWIDTH * PLANEWIDTH * HEIGHTSIZE;
 	reader->read(plane->getBuffer(), planeOffset, PLANEWIDTH * PLANEWIDTH * HEIGHTSIZE);
+
+	unlock();
 
 	return plane;
 }
