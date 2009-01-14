@@ -240,7 +240,7 @@ public:
 
 		default:
 			locations = SHIRT + ARMS + LEGS + CHEST;
-			System::out << "Unknown clothing type " << item->getObjectSubType() << endl;
+			//System::out << "Unknown clothing type " << item->getObjectSubType() << endl;
 			break;
 		}
 

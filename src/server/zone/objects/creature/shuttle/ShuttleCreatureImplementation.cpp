@@ -92,26 +92,39 @@ void ShuttleCreatureImplementation::doLanding() {
 }
 
 void ShuttleCreatureImplementation::sendPlayerTo(Player* player, Ticket* ticket) {
-	String planet = ticket->getArrivalPlanet();
-	String shuttle = ticket->getArrivalPoint();
+	try {
+		String planet = ticket->getArrivalPlanet();
+		String shuttle = ticket->getArrivalPoint();
 
-	int id = Planet::getPlanetID(planet);
-	Zone* arrivalZone = server->getZoneServer()->getZone(id);
+		int id = Planet::getPlanetID(planet);
 
-	if (arrivalZone == NULL)
-		return;
+		if (id == -1)
+			return;
 
-	PlanetManager* planetManager = arrivalZone->getPlanetManager();
-	ShuttleCreature* arrivalShuttle = planetManager->getShuttle(shuttle);
+		Zone* arrivalZone = server->getZoneServer()->getZone(id);
 
-	if (arrivalShuttle != NULL) {
-		Coordinate* coords = arrivalShuttle->getArrivalPoint();
-		if (zone != arrivalZone) {
-			player->deactivateCamo(false);
-			player->setPosition(coords->getPositionX(), coords->getPositionZ(), coords->getPositionY());
-			player->switchMap(id);
-		} else
-			player->doWarp(coords->getPositionX(), coords->getPositionY(), coords->getPositionZ(), 5.0f);
+		if (arrivalZone == NULL)
+			return;
+
+		PlanetManager* planetManager = arrivalZone->getPlanetManager();
+		ShuttleCreature* arrivalShuttle = planetManager->getShuttle(shuttle);
+
+		if (arrivalShuttle != NULL) {
+			Coordinate* coords = arrivalShuttle->getArrivalPoint();
+			if (zone != arrivalZone) {
+				player->deactivateCamo(false);
+				player->setPosition(coords->getPositionX(), coords->getPositionZ(), coords->getPositionY());
+				player->switchMap(id);
+			} else
+				player->doWarp(coords->getPositionX(), coords->getPositionY(), coords->getPositionZ(), 5.0f);
+		}
+	} catch (Exception& e) {
+		error("exception caught in ShuttleCreatureImplementation::sendPlayerTo(Player* player, Ticket* ticket)");
+		error(e.getMessage());
+
+		e.printStackTrace();
+	} catch (...) {
+		error("unreported exception caught in ShuttleCreatureImplementation::sendPlayerTo(Player* player, Ticket* ticket)");
 	}
 }
 

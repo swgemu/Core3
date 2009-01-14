@@ -47,13 +47,11 @@ which carries forward this exception.
 #include "../zone/managers/item/ItemManager.h"
 
 StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
-	: Thread(), Logger("StatusServer") {
+		: StreamServiceThread("StatusServer") {
 	zoneServer = server;
 	configManager = conf;
 
 	statusInterval = configManager->getStatusInterval();
-
-	doRun = true;
 
 	setLogging(false);
 }
@@ -63,106 +61,82 @@ StatusServer::~StatusServer() {
 }
 
 void StatusServer::init() {
-	timestamp = time(NULL);
+	timestamp.update();
 	lastStatus = true;
 
 	if (zoneServer != NULL) {
 		oid = zoneServer->getItemManager()->getNextStaticObjectID();
 		obj = new Attachment(oid, 1);
 	}
+
+	info("initialized", true);
 }
 
-Packet * StatusServer::getStatusXMLPacket() {
-	Packet* p = new Packet();
+void StatusServer::run() {
+	acceptConnections();
 
-	StringBuffer ss;
-	ss << "<?xml version=\"1.0\" standalone=\"yes\"?>" << endl;
-	ss << "<zoneServer>" << endl;
+	shutdown();
+}
 
-	if ((lastStatus = testZone())) {
-		ss << "<name>" << zoneServer->getServerName() << "</name>";
-		ss << "<status>up</status>" << endl;
-		ss << "<users>" << endl;
-		ss << "<connected>" << zoneServer->getConnectionCount() << "</connected>" << endl;
-		ss << "<max>" << zoneServer->getMaxPlayers() << "</max>" << endl;
-		ss << "<total>" << zoneServer->getTotalPlayers() << "</total>" << endl;
-		ss << "<deleted>" << zoneServer->getDeletedPlayers() << "</deleted>" << endl;
-		ss << "</users>" << endl;
-		ss << "<uptime>" << time(NULL) - zoneServer->getStartTimestamp() << "</uptime>" << endl;
+void StatusServer::shutdown() {
+}
+
+ServiceClient* StatusServer::createConnection(Socket* sock, SocketAddress& addr) {
+	Packet* pack = getStatusXMLPacket();
+
+	sock->send(pack);
+
+	sock->close();
+	delete sock;
+
+	delete pack;
+
+	return NULL;
+}
+
+Packet* StatusServer::getStatusXMLPacket() {
+	Packet* pack = new Packet();
+
+	StringBuffer str;
+	str << "<?xml version=\"1.0\" standalone=\"yes\"?>" << endl;
+	str << "<zoneServer>" << endl;
+
+	if (lastStatus = testZone()) {
+		str << "<name>" << zoneServer->getServerName() << "</name>";
+		str << "<status>up</status>" << endl;
+		str << "<users>" << endl;
+		str << "<connected>" << zoneServer->getConnectionCount() << "</connected>" << endl;
+		str << "<max>" << zoneServer->getMaxPlayers() << "</max>" << endl;
+		str << "<total>" << zoneServer->getTotalPlayers() << "</total>" << endl;
+		str << "<deleted>" << zoneServer->getDeletedPlayers() << "</deleted>" << endl;
+		str << "</users>" << endl;
+		str << "<uptime>" << time(NULL) - zoneServer->getStartTimestamp() << "</uptime>" << endl;
 	} else
-		ss << "<status>down</status>";
+		str << "<status>down</status>";
 
-	ss << "<timestamp>" << timestamp << "</timestamp>" << endl;
-	ss << "</zoneServer>" << endl;
+	str << "<timestamp>" << timestamp.getMiliTime() << "</timestamp>" << endl;
+	str << "</zoneServer>" << endl;
 
-	String xml = ss.toString();
+	pack->insertAscii(str.toString());
 
-	p->insertStream(xml.toCharArray(), xml.length());
-
-	return p;
+	return pack;
 }
 
 bool StatusServer::testZone() {
 	if (zoneServer == NULL)
 		return false;
 
-	if (time(NULL) - timestamp < statusInterval) {
+	if (-timestamp.miliDifference() < statusInterval) {
 		return lastStatus;
 	}
 
-	timestamp = time(NULL);
+	timestamp.update();
 
 	try {
 		zoneServer->addObject(obj);
-		return (zoneServer->removeObject(oid) == obj);
+
+		return zoneServer->removeObject(oid) == obj;
 	} catch (...) {
 		return false;
-	}
-}
-
-void StatusServer::run() {
-	TCPServerSocket* socket = NULL;
-
-	try {
-		init();
-
-		socket = new TCPServerSocket(new SocketAddress(configManager->getStatusPort()));
-
-		socket->listen(configManager->getStatusAllowedConnections());
-	} catch (Exception& e) {
-		error("failed to initialize");
-		error(e.getMessage());
-		return;
-	} catch (...) {
-		error("failed to initialize");
-		return;
-	}
-
-	info("initialized", true);
-
-	while (doRun) {
-		try {
-			Socket* s = socket->accept();
-			Packet* pack = getStatusXMLPacket();
-
-			s->send(pack);
-
-			s->close();
-
-			delete s;
-			delete pack;
-		} catch (SocketException& e) {
-			info("socket exception caught");
-			info(e.getMessage());
-		} catch (...) {
-			info("unreported exception caught");
-		}
-
-		Thread::sleep(1);
-	}
-
-	if (socket != NULL) {
-		socket->close();
-		delete socket;
 	}
 }

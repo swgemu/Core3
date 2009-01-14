@@ -1331,7 +1331,8 @@ void PlayerImplementation::updateZoneWithParent(uint64 Parent, bool lightUpdate)
 						BuildingObject* newBuilding = (BuildingObject*) newObj;
 
 						if (building != newBuilding) {
-							System::out << "Does this actually ever happen when someone goes from one building to another?" << endl;
+							//System::out << "Does this actually ever happen when someone goes from one building to another?" << endl;
+
 							removeFromBuilding(building);
 
 							insert = true;

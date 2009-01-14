@@ -137,13 +137,25 @@ int TicketImplementation::useObject(Player* player) {
 				if (tano->isTicketCollector() && player->isInRange(tano, 5)) {
 					zone->unlock();
 
-					TicketCollector* col = (TicketCollector*) tano;
-					col->useTicket(player, _this);
+					try {
+						TicketCollector* col = (TicketCollector*) tano;
+						col->useTicket(player, _this);
+					} catch (Exception& e) {
+						error(e.getMessage());
+						e.printStackTrace();
+					} catch (...) {
+						error("unreported exception in int TicketImplementation::useObject(Player* player)");
+					}
 
 					return 1;
 				}
 			}
 		}
+
+		zone->unlock();
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
 
 		zone->unlock();
 	} catch (...) {

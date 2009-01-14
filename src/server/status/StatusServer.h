@@ -53,38 +53,35 @@
 
 #include "../zone/objects/tangible/attachment/Attachment.h"
 
-class StatusServer: public Thread, public Logger {
+class StatusServer: public StreamServiceThread {
 	ZoneServer* zoneServer;
 
 	ConfigManager* configManager;
 
 	unsigned int statusInterval;
 
-	time_t timestamp;
+	Time timestamp;
 	bool lastStatus;
 
 	Attachment* obj; //zone test object
 	uint64 oid;
 
-	bool doRun;
-
 public:
-
 	StatusServer(ConfigManager* conf, ZoneServer * server);
 
 	~StatusServer();
 
+	void init();
+
 	void run();
 
-	void init();
+	void shutdown();
+
+	ServiceClient* createConnection(Socket* sock, SocketAddress& addr);
 
 	Packet* getStatusXMLPacket();
 
 	bool testZone();
-
-	void stop() {
-		doRun = false;
-	}
 };
 
 #endif /* STATUSSERVER_H_ */

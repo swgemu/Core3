@@ -112,14 +112,16 @@ int TrapThrowableWeaponImplementation::useObject(Player* player) {
 		return 0;
 	}
 
-	Creature* target = (Creature*) player->getTarget();
+	ManagedReference<SceneObject> obj = player->getTarget();
 
-	if(target == NULL) {
+	if (obj == NULL || !obj->isNonPlayerCreature()) {
 		player->sendSystemMessage("trap/trap", "sys_cannot_throw");
 		return 0;
 	}
 
-	if(!target->isCreature()) {
+	Creature* target = (Creature*) obj.get();
+
+	if (!target->isCreature()) {
 		player->sendSystemMessage("trap/trap", "sys_creatures_only");
 		return 0;
 	}
