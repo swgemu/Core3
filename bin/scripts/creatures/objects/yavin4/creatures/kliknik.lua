@@ -96,18 +96,18 @@ kliknik = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/creature/shared_creature_spit_large_yellow.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Creature Spit", -- Name ex. 'a Vibrolance'
-	weaponTemp = "creature_spit_large_yellow", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
 	weaponMinDamage = 0,
 	weaponMaxDamage = 10,
 	weaponAttackSpeed = 1,
-	weaponDamageType = "ACID", -- ELECTRICITY, KINETIC, etc
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'

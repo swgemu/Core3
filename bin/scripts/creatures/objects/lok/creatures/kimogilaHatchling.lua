@@ -69,7 +69,7 @@ kimogilaHatchling = Creature:new {
 	willpower = 0,
 
 	height = 0.3, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -97,17 +97,17 @@ kimogilaHatchling = Creature:new {
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-      	weaponName = "Kimo Hatchling", -- Name ex. 'a Vibrolance'
+      	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
       	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
      	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       	weaponEquipped = 1,
-      	weaponMinDamage = 150,
-      	weaponMaxDamage = 400,
-      	weaponAttackSpeed = 1,
+      	weaponMinDamage = 210,
+      	weaponMaxDamage = 220,
+      	weaponAttackSpeed = 2,
       	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'

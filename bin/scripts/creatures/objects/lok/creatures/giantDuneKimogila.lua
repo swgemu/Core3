@@ -96,8 +96,6 @@ giantDuneKimogila = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
-	
-
 	meleeDefense = 1,  
 	
 	rangedDefense = 1,
@@ -105,17 +103,17 @@ giantDuneKimogila = Creature:new {
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-      	weaponName = "Giant Dune Kimo", -- Name ex. 'a Vibrolance'
+      	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
       	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
      	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      	weaponEquipped = 1,
-      	weaponMinDamage = 1050,
-      	weaponMaxDamage = 2000,
-      	weaponAttackSpeed = 1,
+      	weaponEquipped = 0,
+      	weaponMinDamage = 895,
+      	weaponMaxDamage = 1500,
+      	weaponAttackSpeed = 2,
       	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -128,7 +126,7 @@ giantDuneKimogila = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,4,19,88", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

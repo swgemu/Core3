@@ -40,44 +40,44 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-sickeningDungMiteWorker = Creature:new {
-	objectName = "sickeningDungMiteWorker",  -- Lua Object Name
+cystCoveredRotGuard = Creature:new {
+	objectName = "cystCoveredRotGuard",  -- Lua Object Name
 	creatureType = "ANIMAL",
 	gender = "",
 
-	speciesName = "sickening_dung_mite_worker",
+	speciesName = "cyst_covered_rot_guard",
 	stfName = "mob/creature_names",
-	objectCRC = 382834958, 
+	objectCRC = 4167786528, 
 	socialGroup = "Decay Mite",
-	level = 15,
+	level = 13,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 3000,
-	healthMin = 2400,
+	healthMax = 1900,
+	healthMin = 1500,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 3000,
-	actionMin = 2400,
+	actionMax = 1900,
+	actionMin = 1500,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 3000,
-	mindMin = 2400,
+	mindMax = 1900,
+	mindMin = 1500,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
-	energy = 10,
-	electricity = -1,
+	energy = 0,
+	electricity = 0,
 	stun = -1,
-	blast = -1,
+	blast = 0,
 	heat = 0,
-	cold = -1,
-	acid = 0,
+	cold = 0,
+	acid = 15,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -89,25 +89,25 @@ sickeningDungMiteWorker = Creature:new {
 	stalker = 0,
 	killer = 0,
 	aggressive = 1,
-	invincible = 0, 
-
-	meleeDefense = 1,  
+	invincible = 0,
+	
+	meleeDefense = 1, 
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/creature/shared_creature_spit_small_green.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponMinDamage = 140,
+	weaponMaxDamage = 150,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -133,13 +133,13 @@ sickeningDungMiteWorker = Creature:new {
 	hideMax = 20,
 
 	meatType = "meat_insect_corellia",
-	meatMax = 11,
+	meatMax = 9,
 
-	--skills = { " Stun attack", " Disease attack (medium)", " Ranged attack (spit)" }
-	skills = { "dungMiteAttack1", "dungMiteAttack2", "dungMiteAttack3" },
+	--skills = { " Disease attack (medium)", " Stun attack", "" }
+	skills = { "decayMiteAttack1", "decayMiteAttack2" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(sickeningDungMiteWorker, 382834958) --  Add to Global Table
+Creatures:addCreature(cystCoveredRotGuard, 4167786528) --  Add to Global Table

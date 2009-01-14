@@ -40,44 +40,44 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-rottingPustuleGuard = Creature:new {
-	objectName = "rottingPustuleGuard",  -- Lua Object Name
+sickeningDungMiteWorker = Creature:new {
+	objectName = "sickeningDungMiteWorker",  -- Lua Object Name
 	creatureType = "ANIMAL",
 	gender = "",
 
-	speciesName = "rotting_pustule_guard",
+	speciesName = "sickening_dung_mite_worker",
 	stfName = "mob/creature_names",
-	objectCRC = 3943467921, 
+	objectCRC = 382834958, 
 	socialGroup = "Decay Mite",
-	level = 13,
+	level = 15,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 1400,
-	healthMin = 1200,
+	healthMax = 3000,
+	healthMin = 2400,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 1400,
-	actionMin = 1200,
+	actionMax = 3000,
+	actionMin = 2400,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 1400,
-	mindMin = 1200,
+	mindMax = 3000,
+	mindMin = 2400,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
-	energy = 0,
-	electricity = 0,
+	energy = 10,
+	electricity = -1,
 	stun = -1,
-	blast = 0,
+	blast = -1,
 	heat = 0,
-	cold = 0,
-	acid = 10,
+	cold = -1,
+	acid = 0,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -87,7 +87,7 @@ rottingPustuleGuard = Creature:new {
 	pack = 1,
 	herd = 1,
 	stalker = 0,
-	killer = 1,
+	killer = 0,
 	aggressive = 1,
 	invincible = 0, 
 
@@ -96,18 +96,18 @@ rottingPustuleGuard = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponMinDamage = 170,
+	weaponMaxDamage = 180,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -133,13 +133,13 @@ rottingPustuleGuard = Creature:new {
 	hideMax = 20,
 
 	meatType = "meat_insect_corellia",
-	meatMax = 9,
+	meatMax = 11,
 
-	--skills = { " Disease attack (medium)", " Intimidation attack", "" }
-	skills = { "decayMiteAttack1", "decayMiteAttack3" },
+	--skills = { " Stun attack", " Disease attack (medium)", " Ranged attack (spit)" }
+	skills = { "dungMiteAttack1", "dungMiteAttack2", "dungMiteAttack3" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(rottingPustuleGuard, 3943467921) --  Add to Global Table
+Creatures:addCreature(sickeningDungMiteWorker, 382834958) --  Add to Global Table
