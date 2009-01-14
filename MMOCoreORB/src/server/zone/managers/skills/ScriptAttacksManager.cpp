@@ -110,12 +110,12 @@ void ScriptAttacksManager::registerFunctions() {
 	lua_register(getLuaState(), "AddThrowDirectPoolTargetSkill", AddThrowDirectPoolTargetSkill);
 
 	// Squad Leader skills
-	//lua_register(getLuaState(), "AddBoostMoraleGroupSkill", AddDiagnoseTargetSkill);
-	//lua_register(getLuaState(), "AddFormupGroupSkill", AddDiagnoseTargetSkill);
-	//lua_register(getLuaState(), "AddRallyGroupSkill", AddDiagnoseTargetSkill);
-	//lua_register(getLuaState(), "AddRetreatGroupSkill", AddDiagnoseTargetSkill);
-	//lua_register(getLuaState(), "AddSteadyAimGroupSkill", AddDiagnoseTargetSkill);
-	//lua_register(getLuaState(), "AddVolleyFireGroupSkill", AddDiagnoseTargetSkill);
+	lua_register(getLuaState(), "AddBoostMoraleGroupSkill", AddBoostMoraleGroupSkill);
+	//lua_register(getLuaState(), "AddFormupGroupSkill", AddFormupGroupSkill);
+	//lua_register(getLuaState(), "AddRallyGroupSkill", AddRallyGroupSkill);
+	//lua_register(getLuaState(), "AddRetreatGroupSkill", AddRetreatGroupSkill);
+	//lua_register(getLuaState(), "AddSteadyAimGroupSkill", AddSteadyAimGroupSkill);
+	//lua_register(getLuaState(), "AddVolleyFireGroupSkill", AddVolleyFireGroupSkill);
 	lua_register(getLuaState(), "AddSystemGroupMessageSkill", AddSystemGroupMessageSkill);
 
 }
@@ -1627,6 +1627,38 @@ int ScriptAttacksManager::AddSystemGroupMessageSkill(lua_State* L) {
 		return 0;
 	} catch(...) {
 		System::out << "[ERROR] when attempting to add SystemMessageGroupSkill!" << endl;
+		return -1;
+	}
+}
+
+int ScriptAttacksManager::AddBoostMoraleGroupSkill(lua_State* L) {
+	LuaObject skill(L);
+
+	try {
+
+		if (!skill.isValidTable())
+			return 0;
+
+		String skillName = skill.getStringField("skillname");
+		String animation = "";
+		String combatSpam = skill.getStringField("combatspam");
+		int cooldownTime = skill.getIntField("cooldowntime");
+		int healthCost = skill.getIntField("healthcost");
+		int actionCost = skill.getIntField("actioncost");
+		int mindCost = skill.getIntField("mindcost");
+
+		BoostMoraleGroupSkill* boostMorale;
+		boostMorale = new BoostMoraleGroupSkill(skillName, animation, server);
+		boostMorale->setCombatSpam(combatSpam);
+		boostMorale->setCooldownTime(cooldownTime);
+		boostMorale->setHealthCost(healthCost);
+		boostMorale->setActionCost(actionCost);
+		boostMorale->setMindCost(mindCost);
+
+		CombatActions->put(boostMorale);
+		return 0;
+	} catch(...) {
+		System::out << "[ERROR] when attempting to add BoostMoraleGroupSkill!" << endl;
 		return -1;
 	}
 }

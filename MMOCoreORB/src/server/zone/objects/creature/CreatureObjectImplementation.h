@@ -251,10 +251,10 @@ protected:
 	 * CREO1 HAM Values
 	 * \param index Index is equal to definition in CreatureAttribute.
 	 */
-	int32 attributes[9];
-	int32 baseAttributes[9];
-	int32 maxAttributes[9];
-	int32 wounds[9];
+	int32 attributes[CreatureAttribute::ARRAYSIZE];
+	int32 baseAttributes[CreatureAttribute::ARRAYSIZE];
+	int32 maxAttributes[CreatureAttribute::ARRAYSIZE];
+	int32 wounds[CreatureAttribute::ARRAYSIZE];
 
 	int32 healthEncumbrance;
 	int32 actionEncumbrance;
@@ -313,6 +313,8 @@ protected:
 	Vector<ManagedReference<SceneObject> > defenderList;
 
 	VectorMap<CreatureObject*, uint32> damageMap;
+
+	VectorMap<String, Time> cooldownMap;
 
 	//group stuff
 	uint64 groupId;
@@ -631,6 +633,48 @@ public:
 	uint32 getMitigation(const String& mit);
 
 	virtual void activateRecovery() {
+	}
+
+	void addCooldown(const String& key, int timeLimitInMilliseconds) {
+		removeCooldown(key);
+
+		Time newCooldown;
+		newCooldown.addMiliTime(timeLimitInMilliseconds);
+		cooldownMap.put(key, newCooldown);
+	}
+
+	void removeCooldown(const String& key) {
+		if(cooldownMap.contains(key)) {
+			Time cooldown = cooldownMap.get(key);
+			cooldownMap.drop(key);
+		}
+	}
+
+	bool containsCooldown(const String& key) {
+		return cooldownMap.contains(key);
+	}
+
+	// Returns time in seconds
+	// Returns 0 if no cooldown entry is found
+	int getCooldownTimeRemaining(const String& key) {
+		if(cooldownMap.contains(key)) {
+			Time cooldownTime = cooldownMap.get(key);
+			Time currentTime;
+
+			return cooldownTime.getTime() - currentTime.getTime();
+		}
+
+		return 0;
+	}
+
+	bool hasCooldownExpired(const String& key) {
+		if(cooldownMap.contains(key)) {
+			Time cooldown = cooldownMap.get(key);
+			if(!cooldown.isPast())
+				return false;
+		}
+
+		return true;
 	}
 
 	// dots
@@ -1694,6 +1738,10 @@ public:
 
 	inline int32 getWounds(uint8 attribute) {
 		return wounds[attribute];
+	}
+
+	inline uint8 getWoundsArraySize() {
+		return CreatureAttribute::ARRAYSIZE;
 	}
 
 	inline int32 getHealthWounds() {

@@ -104,6 +104,12 @@ interface CreatureObject implements SceneObject {
 
 	unsigned int getMitigation(const String mit);
 
+	void addCooldown(const String key, int timeLimitInMilliseconds);
+	void removeCooldown(const String key);
+	boolean containsCooldown(const String key);
+	int getCooldownTimeRemaining(const String key);
+	boolean hasCooldownExpired(const String key);
+
 	boolean isIncapacitated();
 	boolean isDead();
 	boolean isKnockedDown();
@@ -548,6 +554,7 @@ interface CreatureObject implements SceneObject {
 	int getWillpowerMax();
 
 	int getWounds(unsigned char attribute);
+	unsigned char getWoundsArraySize();
 	int getHealthWounds();
 	int getStrengthWounds();
 	int getConstitutionWounds();

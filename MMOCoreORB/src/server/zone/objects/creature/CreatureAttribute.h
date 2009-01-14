@@ -60,6 +60,8 @@ public:
 	static const uint8 WILLPOWER = 8;
 	static const uint8 UNKNOWN = 9;
 
+	static const uint8 ARRAYSIZE = 9;
+
 	static bool isHAM(uint8 attribute) {
 		return (attribute == HEALTH || attribute == ACTION || attribute == MIND);
 	}

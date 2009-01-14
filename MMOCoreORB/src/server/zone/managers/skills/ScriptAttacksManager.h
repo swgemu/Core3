@@ -111,6 +111,7 @@ public:
 	static int AddThrowDirectPoolTargetSkill(lua_State *L);
 
 	static int AddSystemGroupMessageSkill(lua_State *L);
+	static int AddBoostMoraleGroupSkill(lua_State *L);
 };
 
 

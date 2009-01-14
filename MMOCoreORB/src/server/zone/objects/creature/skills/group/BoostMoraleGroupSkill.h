@@ -46,21 +46,89 @@ which carries forward this exception.
 #define BOOSTMORALEGROUPSKILL_H_
 
 #include "../SelfSkill.h"
+#include "../../CreatureObjectImplementation.h"
 
 class BoostMoraleGroupSkill : public GroupSkill {
 protected:
 
 public:
-	BoostMoraleSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
-
+	BoostMoraleGroupSkill(const String& Name, const char* effect, ZoneProcessServerImplementation* serv) : GroupSkill(Name, effect, OTHER, serv) {
+		combatSpam = "";
 	}
 
-	void doSkill(CreatureObject* creature, String& modifier) {
+	virtual void doSkill(CreatureObject* creature, bool doAnimation = true) {
+		if(creature->isPlayer()) {
+			Player* player = (Player*)creature;
+			GroupObject* group = player->getGroupObject();
+			int totalWounds = 0;
+			int groupWoundsAverage = 0;
+			uint8 size = creature->getWoundsArraySize();
 
+			for(int i = 0; i < group->getGroupSize(); i++) {
+				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+				if(groupMember->isPlayer()) {
+					// Find average of group member's wounds
+					for(uint8 i = 0; i < size; i++) {
+						int woundAmount = groupMember->getWounds(i);
+						totalWounds += woundAmount;
+					}
+				}
+			}
+
+			groupWoundsAverage = totalWounds / (group->getGroupSize() * size);
+
+			for(int i = 0; i < group->getGroupSize(); i++) {
+				CreatureObject* groupMember = (CreatureObject*)group->getGroupMember(i);
+				for(uint8 i = 0; i < size; i++) {
+					int currentWounds = groupMember->getWounds(i);
+					int maxWounds = groupMember->getBaseAttribute(i) - 1;
+					int amountToChange = 0;
+
+					if(groupWoundsAverage > maxWounds)
+						amountToChange = maxWounds - currentWounds;
+					else
+						amountToChange = groupWoundsAverage - currentWounds;
+
+					groupMember->changeWoundsBar(i, amountToChange, true);
+				}
+
+				groupMember->sendSystemMessage("cbt_spam", combatSpam);
+				player->sendCombatSpam(groupMember, NULL, 0, combatSpam, false);
+			}
+
+
+			player->changeHealthBar(-healthCost, true);
+			player->changeActionBar(-actionCost, true);
+			player->changeMindBar(-mindCost, true);
+
+			player->addCooldown(skillName, cooldownTime);
+		} else {
+			// should never get here unless we allow non players to be squad leaders
+		}
 	}
 
 	void doAnimations(CreatureObject* creature) {
 
+	}
+
+	// This method checks to see if the cooldown time has elasped
+	virtual bool derivedCanBePerformed(CreatureObject* creature) {
+		if(creature->hasCooldownExpired(skillName)) {
+			return true;
+		} else {
+			int timeRemaining = creature->getCooldownTimeRemaining(skillName);
+			StringBuffer message;
+			message << "You must wait " << timeRemaining << " seconds to perform Boost Morale.";
+			creature->sendSystemMessage(message.toString());
+
+			// FOR TESTING
+			uint8 size = creature->getWoundsArraySize();
+			for(uint8 i = 0; i < size; i++) {
+				creature->changeWoundsBar(i, rand() % 50, true);
+			}
+
+			return false;
+		}
 	}
 };
 

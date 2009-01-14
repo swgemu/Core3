@@ -48,3 +48,14 @@ SystemGroupMessageSkill = {
 AddSystemGroupMessageSkill(SystemGroupMessageSkill);
 ------------------------------------------------------------------------
 
+BoostMoraleGroupSkill = {
+	skillname = "boostmorale",
+	combatspam = "boostmorale_buff",
+	cooldowntime = 120000,
+	healthcost = 100,
+	actioncost = 100,
+	mindcost = 100
+}
+
+AddBoostMoraleGroupSkill(BoostMoraleGroupSkill);
+

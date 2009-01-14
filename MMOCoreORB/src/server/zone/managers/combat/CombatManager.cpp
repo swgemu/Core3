@@ -222,36 +222,12 @@ float CombatManager::doGroupSkill(CommandQueueAction* action) {
 
 	GroupSkill* groupskill = (GroupSkill*) action->getSkill();
 
-	Player* player = NULL;
-	GroupObject* group = NULL;
-	if(creature->isPlayer()) {
-		player = (Player*) creature;
-		group = player->getGroupObject();
-		if(group == NULL) {
-			player->sendSystemMessage("You must be in a group to perform this action.");
-			return 0.0f;
-		}
+	if(groupskill->canBePerformed(creature)) {
+		groupskill->doSkill(creature);
+		return groupskill->getSpeed();
+	} else {
+		return 0.0f;
 	}
-
-	/*if (!selfskill->isUseful(creature))
-		return 0.0f;
-
-	if (!selfskill->calculateCost(creature))
-		return 0.0f;
-
-	String actionModifier = action->getActionModifier();
-	selfskill->doSkill(creature, actionModifier);
-
-	if (selfskill->isEnhanceSkill()) {
-		EnhanceSelfSkill* enhance = (EnhanceSelfSkill*) selfskill;
-
-		if (enhance->getDuration() != 0) {
-			SelfEnhanceEvent* event = new SelfEnhanceEvent(creature, enhance);
-			server->addEvent(event);
-		}
-	}*/
-
-	return groupskill->getSpeed();
 }
 
 // TODO: Need support for grenades where the area is not centred around the attacker
