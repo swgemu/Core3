@@ -43,19 +43,13 @@
 pekoPekoAlbatross = Creature:new {
 	objectName = "pekoPekoAlbatross",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	
 	gender = "",
 
 	speciesName = "peko_peko_albatross",
-	
 	stfName = "mob/creature_names",
 	objectCRC = 1032288412, 
 	socialGroup = "Peko Peko",
-	
-
 	level = 155,
-
-	
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -97,26 +91,23 @@ pekoPekoAlbatross = Creature:new {
 	aggressive = 0,
 	invincible = 0, 
 
-	
-
-	meleeDefense = 1,  
-	
+	meleeDefense = 1, 
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-      	weaponName = "Peko Peko Albatross", -- Name ex. 'a Vibrolance'
+      	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
       	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
      	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      	weaponEquipped = 1,
-      	weaponMinDamage = 800,
-      	weaponMaxDamage = 2000,
-      	weaponAttackSpeed = 1,
+      	weaponEquipped = 0,
+      	weaponMinDamage = 945,
+      	weaponMaxDamage = 1600,
+      	weaponAttackSpeed = 2,
       	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -129,7 +120,7 @@ pekoPekoAlbatross = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,4,19,87", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

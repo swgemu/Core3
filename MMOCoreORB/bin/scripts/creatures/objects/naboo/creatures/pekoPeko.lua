@@ -50,11 +50,7 @@ pekoPeko = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 2319882660, 
 	socialGroup = "self",
-	
-
 	level = 14,
-
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -74,7 +70,7 @@ pekoPeko = Creature:new {
 	willpower = 500,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -86,36 +82,31 @@ pekoPeko = Creature:new {
 	lightsaber = 0,
 
 	accuracy = 300,
-
 	healer = 0,
-
 	pack = 0,
 	herd = 0,
 	stalker = 0,
 	killer = 0,
 	aggressive = 0,
 	invincible = 0, 
-
 	
-
 	meleeDefense = 1,  
-	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-      	weaponName = "Peko Peko", -- Name ex. 'a Vibrolance'
+      	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
       	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
      	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      	weaponEquipped = 1,
-      	weaponMinDamage = 100,
-      	weaponMaxDamage = 300,
-      	weaponAttackSpeed = 1,
+      	weaponEquipped = 0,
+      	weaponMinDamage = 150,
+      	weaponMaxDamage = 160,
+      	weaponAttackSpeed = 2,
       	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'

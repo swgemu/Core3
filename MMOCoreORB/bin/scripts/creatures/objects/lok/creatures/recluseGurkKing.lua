@@ -50,12 +50,9 @@ recluseGurkKing = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 657461156, 
 	socialGroup = "Gurk",
-	
 
 	level = 45,
-
 	
-
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 12000,
@@ -102,17 +99,17 @@ recluseGurkKing = Creature:new {
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
-      	weaponName = "Reclusive Gurk King", -- Name ex. 'a Vibrolance'
+      	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
       	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
      	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
       	weaponEquipped = 1,
-      	weaponMinDamage = 300,
-      	weaponMaxDamage = 600,
-      	weaponAttackSpeed = 1,
+      	weaponMinDamage = 370,
+      	weaponMaxDamage = 450,
+      	weaponAttackSpeed = 2,
       	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+      	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -125,7 +122,7 @@ recluseGurkKing = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,4,11,19,90", -- Group it belongs to for loot
+	lootGroup = "0", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

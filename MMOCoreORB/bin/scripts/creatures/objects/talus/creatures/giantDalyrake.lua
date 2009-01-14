@@ -40,44 +40,44 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-cystCoveredRotGuard = Creature:new {
-	objectName = "cystCoveredRotGuard",  -- Lua Object Name
+giantDalyrake = Creature:new {
+	objectName = "giantDalyrake",  -- Lua Object Name
 	creatureType = "ANIMAL",
 	gender = "",
 
-	speciesName = "cyst_covered_rot_guard",
+	speciesName = "giant_dalyrake",
 	stfName = "mob/creature_names",
-	objectCRC = 4167786528, 
-	socialGroup = "Decay Mite",
-	level = 13,
+	objectCRC = 1561394973, 
+	socialGroup = "Dalyrake",
+	level = 18,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 1900,
-	healthMin = 1500,
+	healthMax = 3000,
+	healthMin = 2400,
 	strength = 0,
 	constitution = 0,
 
-	actionMax = 1900,
-	actionMin = 1500,
+	actionMax = 3000,
+	actionMin = 2400,
 	quickness = 0,
 	stamina = 0,
 
-	mindMax = 1900,
-	mindMin = 1500,
+	mindMax = 3000,
+	mindMin = 2400,
 	focus = 0,
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
-	electricity = 0,
+	electricity = 35,
 	stun = -1,
 	blast = 0,
-	heat = 0,
-	cold = 0,
-	acid = 15,
+	heat = -1,
+	cold = 35,
+	acid = -1,
 	lightsaber = 0,
 
 	accuracy = 0,
@@ -85,29 +85,29 @@ cystCoveredRotGuard = Creature:new {
 	healer = 0,
 
 	pack = 1,
-	herd = 1,
+	herd = 0,
 	stalker = 0,
 	killer = 0,
 	aggressive = 1,
-	invincible = 0,
-	
-	meleeDefense = 1, 
+	invincible = 0, 
+
+	meleeDefense = 1,  
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponMinDamage = 170,
+	weaponMaxDamage = 180,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
@@ -129,17 +129,17 @@ cystCoveredRotGuard = Creature:new {
 	boneType = "",
 	boneMax = 20,
 
-	hideType = "",
-	hideMax = 20,
+	hideType = "hide_scaley_corellia",
+	hideMax = 90,
 
 	meatType = "meat_insect_corellia",
-	meatMax = 9,
+	meatMax = 60,
 
-	--skills = { " Disease attack (medium)", " Stun attack", "" }
-	skills = { "decayMiteAttack1", "decayMiteAttack2" },
+	--skills = { " Poison attack (mild)", " Dizzy attack", "" }
+	skills = { "dalyrakeAttack2", "dalyrakeAttack5" },
 	respawnTimer = 60,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(cystCoveredRotGuard, 4167786528) --  Add to Global Table
+Creatures:addCreature(giantDalyrake, 1561394973) --  Add to Global Table
