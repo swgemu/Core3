@@ -120,13 +120,6 @@ public:
 			StringBuffer message;
 			message << "You must wait " << timeRemaining << " seconds to perform Boost Morale.";
 			creature->sendSystemMessage(message.toString());
-
-			// FOR TESTING
-			uint8 size = creature->getWoundsArraySize();
-			for(uint8 i = 0; i < size; i++) {
-				creature->changeWoundsBar(i, rand() % 50, true);
-			}
-
 			return false;
 		}
 	}
