@@ -56,7 +56,7 @@ public:
 			: WearableServant(objid, CLOTHING) {
 		objectCRC = tempCRC;
 
-		name = n;
+		customName = n;
 
 		templateTypeName = "wearables_name";
 		templateName = tempn;
@@ -68,7 +68,7 @@ public:
 		: WearableServant(oid, CLOTHING) {
 		objectCRC = tempCRC;
 
-		name = n;
+		customName = n;
 
 		templateTypeName = "wearables_name";
 		templateName = tempn;
@@ -83,7 +83,7 @@ public:
 			: WearableServant(creature->getNewItemID(), CLOTHING) {
 		objectCRC = tempCRC;
 
-		name = n;
+		customName = n;
 
 		templateTypeName = "wearables_name";
 		templateName = tempn;

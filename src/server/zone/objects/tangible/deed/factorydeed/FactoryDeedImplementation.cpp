@@ -10,7 +10,7 @@ FactoryDeedImplementation::FactoryDeedImplementation(CreatureObject* creature, u
 	: FactoryDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectCRC = tempcrc;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();
@@ -22,7 +22,7 @@ FactoryDeedImplementation::FactoryDeedImplementation(uint64 objid, uint32 tempcr
 
 	objectCRC = tempcrc;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();

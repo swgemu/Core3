@@ -869,12 +869,3 @@ void SceneObjectImplementation::warpTo(float x, float z, float y, uint64 parentI
 
 	insertToZone(zone);
 }
-
-bool SceneObjectImplementation::isPlayer() {
-	//return ((objectType == TANGIBLE) && ((TangibleObjectImplementation*)this)->isPlayer());
-	return objectType == PLAYER;
-}
-
-bool SceneObjectImplementation::isNonPlayerCreature() {
-	return objectType == NONPLAYERCREATURE;
-}

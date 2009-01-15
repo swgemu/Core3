@@ -50,7 +50,7 @@ which carries forward this exception.
 
 DiceImplementation::DiceImplementation(uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: DiceServant(oid, tempCRC, n, tempn, DICE) {
-	name = n;
+	customName = n;
 	templateTypeName = "obj_n";
 	templateName = tempn;
 

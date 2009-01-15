@@ -51,7 +51,7 @@ which carries forward this exception.
 //BankManager::BankManager(ZoneServer* server, ZoneProcessServerImplementation* processor) {
 ImageDesignCustomization::ImageDesignCustomization(ZoneProcessServerImplementation* serv, CreatureObject* creo) {
 	server = serv;
-	speciesGender = creo->getSpeciesName();
+	speciesGender = creo->getTemplateName();
 	speciesGender += "_";
 	speciesGender += creo->getGender();
 

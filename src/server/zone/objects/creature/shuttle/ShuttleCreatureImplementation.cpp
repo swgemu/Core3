@@ -61,9 +61,9 @@ ShuttleCreatureImplementation::ShuttleCreatureImplementation(const String& Plane
 	this->tax = tax;
 	this->starport = starport;
 
-	speciesName = "shuttle";
+	templateName = "shuttle";
 
-	stfName = "theme_park_name";
+	templateTypeName = "theme_park_name";
 
 	objectCRC = 0x764DC035;
 

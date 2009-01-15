@@ -92,7 +92,7 @@ public:
 		ShipComponentServant(player->getNewItemID(), SHIPCOMPONENT) {
 		objectCRC = tempCRC;
 
-		name = n;
+		customName = n;
 
 		templateTypeName = "wearables_name"; //figure out what this is for components
 		templateName = tempn;

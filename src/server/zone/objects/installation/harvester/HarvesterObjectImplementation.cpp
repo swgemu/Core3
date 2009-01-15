@@ -23,7 +23,7 @@ HarvesterObjectImplementation::HarvesterObjectImplementation(uint64 oid, Harvest
 	init();
 
 	objectCRC = deed->getTargetFile().hashCode();
-	name = deed->getTargetName();
+	customName = deed->getTargetName();
 	file = deed->getTargetFile();
 	templateName = deed->getTargetTemplate();
 

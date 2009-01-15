@@ -150,7 +150,7 @@ void ActionImplementation::execAction(Player* player) {
 
 			misoKey = parentCreature->getMissionKey();
 
-			TangibleObject* playerItem = new TangibleObject(player->getNewItemID(), giveItemObj->getObjectCRC(), giveItemObj->getName(), giveItemObj->getTemplateName());
+			TangibleObject* playerItem = new TangibleObject(player->getNewItemID(), giveItemObj->getObjectCRC(), giveItemObj->getCustomName(), giveItemObj->getTemplateName());
 
 			playerItem->setMisoAsocKey(misoKey);
 			player->addInventoryItem(playerItem);

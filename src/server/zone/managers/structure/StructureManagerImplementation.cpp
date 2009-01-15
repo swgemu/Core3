@@ -407,7 +407,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 				inso->setObjectCRC(crc);
 				inso->setObjectType(type);
 				inso->setObjectSubType(subType);
-				inso->setName(name);
+				inso->setCustomName(name);
 				inso->initializePosition(x, z, y);
 				inso->setDirection(oX, oZ, oY, oW);
 				inso->setPersistent(true); // we loaded it so it must be persistent
@@ -828,7 +828,7 @@ void StructureManagerImplementation::spawnTempStructure(Player * player,
 	InstallationObject* inso = new InstallationObject(player->getNewItemID());
 
 	inso->setObjectCRC(deed->getTargetTempFile().hashCode());
-	inso->setName(deed->getTargetName());
+	inso->setCustomName(deed->getTargetName());
 	inso->setTemplateName(deed->getTargetTemplate());
 
 	inso->initializePosition(x, z, y);
@@ -909,7 +909,7 @@ void StructureManagerImplementation::spawnBuilding(Player * player,
 void StructureManagerImplementation::createInstallation(InstallationObject* inso) {
 	try {
 		StringBuffer sqlInsertStructure;
-		String itemname = inso->getName().toString();
+		String itemname = inso->getCustomName().toString();
 		MySqlDatabase::escapeString(itemname);
 
 		String attr = inso->getAttributes();
@@ -954,7 +954,7 @@ void StructureManagerImplementation::createInstallation(InstallationObject* inso
 void StructureManagerImplementation::saveInstallation(InstallationObject* inso) {
 	try {
 		StringBuffer sqlUpdateStructure;
-		String itemname = inso->getName().toString();
+		String itemname = inso->getCustomName().toString();
 		MySqlDatabase::escapeString(itemname);
 
 		String attr = inso->getAttributes();

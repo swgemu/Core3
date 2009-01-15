@@ -57,7 +57,7 @@ class InventoryImplementation : public InventoryServant {
 
 public:
 	InventoryImplementation(CreatureObject* creature) : InventoryServant(creature->getObjectID() + 0x01) {
-		name = UnicodeString("");
+		customName = UnicodeString("");
 
 		templateTypeName = "item_n";
 		templateName = "inventory";

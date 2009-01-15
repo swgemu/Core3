@@ -54,34 +54,35 @@ which carries forward this exception.
 
 CamoKitImplementation::CamoKitImplementation(unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn)
 	: CamoKitServant(oid, CAMOKIT) {
-		objectCRC = tempCRC;
-
-		templateTypeName = "obj_n";
-		templateName = tempn;
-
-		name = n;
-
-		setPlanet(0);
-		setUsesRemaining(5);
-		setEquipped(false);
-
-}
-CamoKitImplementation::CamoKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn)
-: CamoKitServant(player->getNewItemID(), CAMOKIT) {
 	objectCRC = tempCRC;
 
 	templateTypeName = "obj_n";
 	templateName = tempn;
 
-	name = n;
+	customName = n;
+
+	setPlanet(0);
+	setUsesRemaining(5);
+	setEquipped(false);
+
+}
+
+CamoKitImplementation::CamoKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn)
+	: CamoKitServant(player->getNewItemID(), CAMOKIT) {
+	objectCRC = tempCRC;
+
+	templateTypeName = "obj_n";
+	templateName = tempn;
+
+	customName = n;
 	planet = 0;
 
 
 	usesRemaining = 5 ;
 
-    setParent((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
+	setParent((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
 
-    setEquipped(false);
+	setEquipped(false);
 }
 
 void CamoKitImplementation::useCharge(Player* player) {

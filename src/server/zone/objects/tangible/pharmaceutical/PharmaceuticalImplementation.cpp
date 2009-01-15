@@ -53,7 +53,7 @@ PharmaceuticalImplementation::PharmaceuticalImplementation(uint64 oid, uint32 te
 
 	objectCRC = tempCRC;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	setMedpackType(mptype);
@@ -65,7 +65,7 @@ PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creat
 
 	objectCRC = tempCRC;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
@@ -80,7 +80,7 @@ PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creat
 
 	objectCRC = tempCRC;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	//setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);

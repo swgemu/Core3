@@ -150,9 +150,6 @@ interface TangibleObject implements SceneObject {
 	void setCraftersName(String n);
 	void setCraftedSerial(String s);
 
-	UnicodeString getName();
-	String getTemplateName();
-	String getTemplateTypeName();
 	void getCustomizationString(String appearance);
 
 	void setPlayerUseMask(unsigned int mask);
@@ -182,13 +179,7 @@ interface TangibleObject implements SceneObject {
 	String getMisoAsocKey();
 
 	// setters
-	void setName(const String n);
-	void setName(const UnicodeString n);
-
-	void setLoot(boolean l);
-	
-	void setTemplateName(const String tempName);
-	void setTemplateTypeName(const String tempTypeName);	
+	void setLoot(boolean l);	
 
 	void setObjectSubType(const int type);
 	

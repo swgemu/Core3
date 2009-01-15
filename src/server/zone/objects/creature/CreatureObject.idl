@@ -483,8 +483,6 @@ interface CreatureObject implements TangibleObject {
 
 	UnicodeString getCharacterName();
 
-	String getStfName();
-	String getSpeciesName();
 	String getRaceName();
 	String getGender();
 	String getCreatureType();
@@ -798,8 +796,6 @@ interface CreatureObject implements TangibleObject {
 	void setHairAppearanceAttribute(String type, unsigned char value);
 
 	void setRaceName(const String name);
-	void setSpeciesName(const String name);
-	void setStfName(const String name);
 	void setGender(const String name);
 	void setCreatureType(const String name);
 

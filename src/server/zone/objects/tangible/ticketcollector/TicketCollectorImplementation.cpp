@@ -53,7 +53,7 @@ TicketCollectorImplementation::TicketCollectorImplementation(ShuttleCreature* sh
 	TicketCollectorServant(objid, TICKETCOLLECTOR) {
 	objectCRC = 0xFCF0B40D;
 
-	name = n;
+	customName = n;
 
 	templateTypeName = "terminal_name";
 	templateName = tempn;

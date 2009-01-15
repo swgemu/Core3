@@ -135,12 +135,6 @@ public:
 
 	void setCraftedSerial(String& s);
 
-	UnicodeString& getName();
-
-	String& getTemplateName();
-
-	String& getTemplateTypeName();
-
 	void getCustomizationString(String& appearance);
 
 	void setPlayerUseMask(unsigned int mask);
@@ -175,15 +169,7 @@ public:
 
 	String& getMisoAsocKey();
 
-	void setName(const String& n);
-
-	void setName(const UnicodeString& n);
-
 	void setLoot(bool l);
-
-	void setTemplateName(const String& tempName);
-
-	void setTemplateTypeName(const String& tempTypeName);
 
 	void setObjectSubType(const int type);
 
@@ -224,10 +210,6 @@ protected:
 	String _return_getCraftedSerial;
 	String _return_getCraftersName;
 	String _return_getMisoAsocKey;
-	String _return_getTemplateName;
-	String _return_getTemplateTypeName;
-
-	UnicodeString _return_getName;
 
 	friend class TangibleObjectHelper;
 };
@@ -344,12 +326,6 @@ public:
 
 	void setCraftedSerial(String& s);
 
-	UnicodeString& getName();
-
-	String& getTemplateName();
-
-	String& getTemplateTypeName();
-
 	void getCustomizationString(String& appearance);
 
 	void setPlayerUseMask(unsigned int mask);
@@ -384,15 +360,7 @@ public:
 
 	String& getMisoAsocKey();
 
-	void setName(const String& n);
-
-	void setName(const UnicodeString& n);
-
 	void setLoot(bool l);
-
-	void setTemplateName(const String& tempName);
-
-	void setTemplateTypeName(const String& tempTypeName);
 
 	void setObjectSubType(const int type);
 
@@ -429,10 +397,6 @@ protected:
 	String _param0_setCraftedSerial__String_;
 	String _param0_getCustomizationString__String_;
 	String _param0_setAttributes__String_;
-	String _param0_setName__String_;
-	UnicodeString _param0_setName__UnicodeString_;
-	String _param0_setTemplateName__String_;
-	String _param0_setTemplateTypeName__String_;
 	String _param0_setCustomizationString__String_;
 	String _param0_setCustomizationVariable__String_int_;
 	String _param0_setMisoAsocKey__String_;

@@ -58,7 +58,7 @@ public:
 		insertInt(0);
 		insertAscii(weao->getTemplateName());
 
-		insertUnicode(weao->getName());
+		insertUnicode(weao->getCustomName());
 
 		insertInt(0);
 

@@ -67,8 +67,8 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 
 	mountType = 0;
 
-	stfName = stf;
-	speciesName = name;
+	templateTypeName = stf;
+	templateName = name;
 
 	objectCRC = objCRC;
 
@@ -115,8 +115,8 @@ void MountCreatureImplementation::addToDatapad() {
 	itno = new IntangibleObject((SceneObject*) linkedPlayer->getDatapad(),
 			itnoCRC, linkedCreature->getNewItemID());
 
-	itno->setName(speciesName);
-	itno->setDetailName(stfName);
+	itno->setName(templateName);
+	itno->setDetailName(templateTypeName);
 	itno->setWorldObject(_this);
 
 	linkedPlayer->addDatapadItem((SceneObject*) itno);
@@ -374,8 +374,8 @@ IntangibleObject* MountCreatureImplementation::getITNO() {
 		itno = new IntangibleObject((SceneObject*) player->getDatapad(),
 				itnoCRC, linkedCreature->getNewItemID());
 
-		itno->setName(stfName);
-		itno->setDetailName(speciesName);
+		itno->setName(templateTypeName);
+		itno->setDetailName(templateName);
 		itno->setWorldObject(_this);
 	}
 

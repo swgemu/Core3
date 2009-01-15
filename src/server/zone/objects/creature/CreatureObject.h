@@ -595,10 +595,6 @@ public:
 
 	UnicodeString& getCharacterName();
 
-	String& getStfName();
-
-	String& getSpeciesName();
-
 	String& getRaceName();
 
 	String& getGender();
@@ -1071,10 +1067,6 @@ public:
 
 	void setRaceName(const String& name);
 
-	void setSpeciesName(const String& name);
-
-	void setStfName(const String& name);
-
 	void setGender(const String& name);
 
 	void setCreatureType(const String& name);
@@ -1317,8 +1309,6 @@ protected:
 	String _return_getPerformanceName;
 	String _return_getRaceName;
 	String _return_getSkill;
-	String _return_getSpeciesName;
-	String _return_getStfName;
 	String _return_getTemplateString;
 	String _return_getTerrainName;
 
@@ -1879,10 +1869,6 @@ public:
 
 	UnicodeString& getCharacterName();
 
-	String& getStfName();
-
-	String& getSpeciesName();
-
 	String& getRaceName();
 
 	String& getGender();
@@ -2355,10 +2341,6 @@ public:
 
 	void setRaceName(const String& name);
 
-	void setSpeciesName(const String& name);
-
-	void setStfName(const String& name);
-
 	void setGender(const String& name);
 
 	void setCreatureType(const String& name);
@@ -2612,8 +2594,6 @@ protected:
 	String _param0_setHairAppearance__String_;
 	String _param0_setHairAppearanceAttribute__String_char_;
 	String _param0_setRaceName__String_;
-	String _param0_setSpeciesName__String_;
-	String _param0_setStfName__String_;
 	String _param0_setGender__String_;
 	String _param0_setCreatureType__String_;
 	String _param0_setMood__String_;

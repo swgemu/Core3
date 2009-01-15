@@ -468,7 +468,7 @@ public:
 			// Needs to be refactored
 			skillBox = instrumentSkills[instrument];
 			if (!player->getSkillBoxesSize() || !player->hasSkillBox(skillBox)) {
-				player->sendSystemMessage("You do not have sufficient abilities to equip " + item->getName().toString() + ".");
+				player->sendSystemMessage("You do not have sufficient abilities to equip " + item->getCustomName().toString() + ".");
 				return false;
 			}
 

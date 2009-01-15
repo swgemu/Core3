@@ -189,7 +189,7 @@ public:
 	}
 
 	inline void setName(UnicodeString& n) {
-		name = UnicodeString(n.toString());
+		customName = UnicodeString(n.toString());
 	}
 
 	inline void setContainerFile(String& tempn) {

@@ -80,7 +80,7 @@ InstallationObjectImplementation::InstallationObjectImplementation(uint64 oid, D
 	objectID = oid;
 	objectCRC = deed->getTargetFile().hashCode();
 	objectSubType = getObjectSubType();
-	name = deed->getTargetName();
+	customName = deed->getTargetName();
 	file = deed->getTargetFile();
 	templateName = deed->getTargetTemplate();
 
@@ -225,7 +225,7 @@ void InstallationObjectImplementation::handleStructureRedeed(Player * player) {
 
 		SuiListBox* redeedBox = new SuiListBox(player, SuiWindowType::INSTALLATION_REDEED, 0x02);
 
-		redeedBox->setPromptTitle(this->getName().toString());
+		redeedBox->setPromptTitle(this->getCustomName().toString());
 
 		redeedBox->setPromptText("You have elected to destroy a structure.  Pertinent structure"
 				" data can be found in the list below.  Please complete the following steps"
@@ -338,7 +338,7 @@ void InstallationObjectImplementation::handleStructureStatus(Player* player) {
 
 		SuiListBox* statusBox = new SuiListBox(player, SuiWindowType::INSTALLATION_STATUS, 0x01);
 		statusBox->setPromptTitle("@player_structure:structure_status_t");
-		statusBox->setPromptText("Structure Name: " + getName().toString());
+		statusBox->setPromptText("Structure Name: " + getCustomName().toString());
 
 		statusBox->addMenuItem("Owner: " + owner);
 		statusBox->addMenuItem("This structure is " + structureStatus);

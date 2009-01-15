@@ -50,7 +50,7 @@ ToolImplementation::ToolImplementation(uint64 oid, uint32 tempCRC, const Unicode
 
 	objectCRC = tempCRC;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 	templateTypeName = "obj_n";
 

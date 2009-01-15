@@ -54,7 +54,7 @@ EnhancePackImplementation::EnhancePackImplementation(uint64 oid, uint32 tempCRC,
 EnhancePackImplementation::EnhancePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: EnhancePackServant(creature, tempCRC, n, tempn, ENHANCEPACK) {
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	initialize();

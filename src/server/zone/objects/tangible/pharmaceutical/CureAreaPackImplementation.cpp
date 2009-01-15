@@ -54,7 +54,7 @@ CureAreaPackImplementation::CureAreaPackImplementation(uint64 oid, uint32 tempCR
 CureAreaPackImplementation::CureAreaPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: CureAreaPackServant(creature, tempCRC, n, tempn, CUREAREAPACK) {
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	initialize();

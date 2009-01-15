@@ -82,7 +82,7 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 
 	StartNpcConversation* conv = new StartNpcConversation(player, objectID, "");
 	player->sendMessage(conv);
-	player->setLastNpcConvStr(getSpeciesName());
+	player->setLastNpcConvStr(getTemplateName());
 
 	bool qual = true;
 
@@ -122,7 +122,7 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 }
 
 void TrainerCreatureImplementation::sendInitialMessage(Player* player) {
-	NpcConversationMessage* m1 = new NpcConversationMessage(player, "skill_teacher", getSpeciesName());
+	NpcConversationMessage* m1 = new NpcConversationMessage(player, "skill_teacher", getTemplateName());
 	player->sendMessage(m1);
 
 	player->setLastNpcConvMessStr("trainer_initial");
@@ -241,7 +241,7 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 
 	Player* player = (Player*)obj;
 
-	if (player->getLastNpcConvStr() != getSpeciesName())
+	if (player->getLastNpcConvStr() != getTemplateName())
 		return;
 
 	Vector<SkillBox*>* skillBoxes = profession->getSkillBoxes();

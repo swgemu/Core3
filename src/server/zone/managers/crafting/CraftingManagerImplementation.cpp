@@ -1486,7 +1486,7 @@ void CraftingManagerImplementation::craftingCustomization(Player* player,
 
 	MySqlDatabase::escapeString(name);
 
-	tano->setName(name);
+	tano->setCustomName(name);
 
 	VectorMap<String, int> customizationMap;
 

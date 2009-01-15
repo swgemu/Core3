@@ -59,7 +59,7 @@ SurveyToolImplementation::SurveyToolImplementation(uint64 object_id, uint32 temp
 
 	templateName = tempn;
 
-	name = n;
+	customName = n;
 
 	init();
 }
@@ -71,7 +71,7 @@ SurveyToolImplementation::SurveyToolImplementation(CreatureObject* creature, uin
 	templateTypeName = "obj_n";
 	templateName = tempn;
 
-	name = n;
+	customName = n;
 
 	init();
 }
@@ -126,7 +126,7 @@ int SurveyToolImplementation::useObject(Player* player) {
 		}
 	} else {
 		player->sendSystemMessage("You do not have sufficient abilities to open "
-					+ getName().toString() + ".");
+					+ getCustomName().toString() + ".");
 	}
 
 	return 0;

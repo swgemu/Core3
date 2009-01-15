@@ -276,7 +276,7 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 
 		TangibleObject* tano = new TangibleObject(getNextStaticObjectID(false));
 
-		tano->setName(name);
+		tano->setCustomName(name);
 		tano->setParent(zone->lookupObject(parentId));
 		tano->setObjectCRC(file.hashCode());
 		tano->initializePosition(x, z, y);

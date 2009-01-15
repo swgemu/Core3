@@ -109,6 +109,10 @@ protected:
 	int objectType;
 	uint32 objectCRC;
 
+	UnicodeString customName;
+	String templateTypeName;
+	String templateName;
+
 	int zoneID;
 
 	uint32 movementCounter;
@@ -356,9 +360,13 @@ public:
 		return server;
 	}
 
-	bool isPlayer();
+	bool isPlayer() {
+		return objectType == PLAYER;
+	}
 
-	bool isNonPlayerCreature();
+	bool isNonPlayerCreature() {
+		return objectType == NONPLAYERCREATURE;
+	}
 
 	inline bool isBuilding() {
 		return objectType == BUILDING;
@@ -523,6 +531,34 @@ public:
 			return parent->getObjectID();
 	}
 
+	inline UnicodeString& getCustomName() {
+		return customName;
+	}
+
+	void setCustomName(const String& n) {
+		customName = n;
+	}
+
+	void setCustomName(const UnicodeString& n) {
+		customName = n;
+	}
+
+	inline void setTemplateName(const String& tempName) {
+		templateName = tempName;
+	}
+
+	inline String& getTemplateName() {
+		return templateName;
+	}
+
+	inline void setTemplateTypeName(const String& tempTypeName) {
+		templateTypeName = tempTypeName;
+	}
+
+	inline String& getTemplateTypeName() {
+		return templateTypeName;
+	}
+
 	inline float getPrecision(float num, int digits) {
 		float power = pow(10, digits);
 		return float(floor(num * power + .05f) / power);
@@ -580,9 +616,6 @@ public:
 
 		return planetManager->isNoBuildArea(positionX, positionY);
 	}
-
-
-
 
 	//Event Handlers
 	virtual void onIncapacitateTarget(CreatureObject* victim);

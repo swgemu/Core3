@@ -54,7 +54,7 @@ CraftingStationImplementation::CraftingStationImplementation(uint64 object_id, u
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
 	templateName = tempn;
-	name = n;
+	customName = n;
 	init();
 }
 
@@ -64,7 +64,7 @@ CraftingStationImplementation::CraftingStationImplementation(CreatureObject* cre
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
 	templateName = tempn;
-	name = n;
+	customName = n;
 	init();
 }
 

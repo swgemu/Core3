@@ -54,7 +54,7 @@ RevivePackImplementation::RevivePackImplementation(uint64 oid, uint32 tempCRC, c
 RevivePackImplementation::RevivePackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: RevivePackServant(creature, tempCRC, n, tempn, REVIVEPACK) {
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	initialize();

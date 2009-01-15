@@ -1110,7 +1110,7 @@ void ObjectControllerMessage::parseSetStatMigrationDataRequest(Player* player,
 			<< player->getCharacterName().toString() << "." << endl;
 	ss << "The following is the relevant debug information:" << endl << endl;
 	ss << "Player Name: " << player->getCharacterName().toString() << endl;
-	ss << "Species: " << player->getSpeciesName() << endl;
+	ss << "Species: " << player->getTemplateName() << endl;
 	ss << "Sex: " << player->getGender() << endl;
 	ss << "Target Stats: " << stats.toString() << endl;
 	ss << "Min/Max/Current Health: " << player->getMinHealth() << " | "

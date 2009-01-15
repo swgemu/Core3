@@ -58,7 +58,7 @@ ActionCreatureImplementation::ActionCreatureImplementation(uint64 oid, uint32 ob
 		String& missionKey) : ActionCreatureServant(oid) {
 
 	// General NPC:
-	characterName = UnicodeString(creName);
+	customName = UnicodeString(creName);
 	setObjectFileName(stf);
 	objectCRC = objCrc;
 	setType(CreatureImplementation::ACTION);

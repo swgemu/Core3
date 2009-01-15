@@ -102,18 +102,18 @@ class CreatureInventory;
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
-	UnicodeString characterName; //character name
+	//UnicodeString characterName; //character name
 	String terrainName;
 
 	//CustomizationVariables customization;
 	String raceName; //species
-	String speciesName; //species
+	//String speciesName; //species
 	String gender;
 
 	String hairObject; //hair object iff String
 	CustomizationVariables hairCustomization;
 
-	String stfName;
+	//String stfName;
 
 	String creatureType;
 
@@ -1139,11 +1139,11 @@ public:
 	}
 
 	inline void setCharacterName(const String& name) {
-		characterName = name;
+		customName = name;
 	}
 
 	inline void setCharacterName(const UnicodeString& name) {
-		characterName = name;
+		customName = name;
 	}
 
 	inline void setTerrainName(const String& name) {
@@ -1172,14 +1172,6 @@ public:
 
 	inline void setRaceName(const String& name) {
 		raceName = name;
-	}
-
-	inline void setSpeciesName(const String& name) {
-		speciesName = name;
-	}
-
-	inline void setStfName(const String& name) {
-		stfName = name;
 	}
 
 	inline void setGender(const String& gend) {
@@ -1523,7 +1515,7 @@ public:
 	}
 
 	inline UnicodeString& getCharacterName() {
-		return characterName;
+		return customName;
 	}
 
 	inline String& getTerrainName() {
@@ -1540,20 +1532,12 @@ public:
 		return raceName;
 	}
 
-	inline String& getSpeciesName() {
-		return speciesName;
-	}
-
 	inline String& getGender() {
 		return gender;
 	}
 
 	inline String& getCreatureType() {
 		return creatureType;
-	}
-
-	inline String& getStfName() {
-		return stfName;
 	}
 
 	inline uint32 getPositionCounter() {

@@ -71,7 +71,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, uint32 te
 
 	objectCRC = tempCRC;
 
-	name = n;
+	customName = n;
 
 	templateName = tempname;
 
@@ -88,7 +88,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 		: TangibleObjectServant() {
 	initialize();
 
-	name = n;
+	customName = n;
 
 	objectCRC = tempCRC;
 	templateName = tempname;

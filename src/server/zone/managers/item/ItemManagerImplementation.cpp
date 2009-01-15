@@ -255,7 +255,7 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 		case TangibleObjectImplementation::WEARABLECONTAINER :
 			item = new Container(objectid);
 			item->setObjectCRC(objectcrc);
-			item->setName(objectname);
+			item->setCustomName(objectname);
 			item->setObjectSubType(objecttype);
 			item->setTemplateName(objecttemp);
 			item->setEquipped(equipped);
@@ -693,7 +693,7 @@ TangibleObject* ItemManagerImplementation::clonePlayerObjectTemplate(uint64 obje
 	}
 	//the name is passed in a hackish way to stop buffer overflows.. anyone know why it was doing that?
 	TangibleObject* newTempl = createPlayerObjectTemplate(templ->getObjectSubType(),
-			objectid, templ->getObjectCRC(), UnicodeString(templ->getName()),
+			objectid, templ->getObjectCRC(), UnicodeString(templ->getCustomName()),
 			(char *) templ->getTemplateName().toCharArray(), templ->isEquipped(), false, "", 0);
 
 	newTempl->setAttributes(templ->getAttributes());
@@ -1510,7 +1510,7 @@ void ItemManagerImplementation::unloadPlayerItems(Player* player) {
 
 void ItemManagerImplementation::createPlayerItem(Player* player, TangibleObject* item) {
 	try {
-		String itemname = item->getName().toString();
+		String itemname = item->getCustomName().toString();
 		MySqlDatabase::escapeString(itemname);
 
 		String appearance;
@@ -1592,7 +1592,7 @@ void ItemManagerImplementation::deletePlayerItem(Player* player, TangibleObject*
 
 		StringBuffer playertxt;
 		if (notify)
-			playertxt << "You have destroyed " << item->getName().toString() << ".";
+			playertxt << "You have destroyed " << item->getCustomName().toString() << ".";
 
 		player->sendSystemMessage(playertxt.toString());
 	} catch (DatabaseException& e) {
@@ -2341,7 +2341,7 @@ void ItemManagerImplementation::moveNestedItemsToPlayerStorage(Player* player, C
 
 				containerID = container->getObjectID();
 
-				String itemname = item->getName().toString();
+				String itemname = item->getCustomName().toString();
 				MySqlDatabase::escapeString(itemname);
 
 				String appearance;
@@ -2548,7 +2548,7 @@ void ItemManagerImplementation::insertItemIntoPlayerStorage(Player* player, Tang
 		if (destinationObject->getParent() != NULL && conti == NULL)
 			parentID = destinationObject->getObjectID();
 
-		String itemname = item->getName().toString();
+		String itemname = item->getCustomName().toString();
 		MySqlDatabase::escapeString(itemname);
 
 		String appearance = " "; //Whitespace intended!
