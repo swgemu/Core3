@@ -41,12 +41,13 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version 
 which carries forward this exception.
 */
-import "../TangibleObject";
-import "../../creature/CreatureObject";
-import "../../scene/SceneObject";
-import "../../player/Player";
-import "CampKit";
-import "../../../Zone";
+
+import "../../TangibleObject";
+import "../../../creature/CreatureObject";
+import "../../../scene/SceneObject";
+import "../../../player/Player";
+import "../CampKit";
+import "../../../../Zone";
 
 include "engine/service/Message";
 
@@ -68,6 +69,8 @@ interface CampSite implements TangibleObject {
 
 	void createCampArea();
 	void removeCampArea();
+	void spawnCampItems();
+	SceneObject getCampObject(int num);
 
 	void disbandCamp();
 	void abandonCamp();
@@ -78,5 +81,5 @@ interface CampSite implements TangibleObject {
 	void enterNotification(Player player);	
 	void exitNotificaton(Player player);
 
-
+	void printPlacmentCode();	
 }

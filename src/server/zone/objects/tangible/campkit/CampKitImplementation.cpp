@@ -43,7 +43,8 @@ which carries forward this exception.
 */
 
 #include "../../../managers/item/ItemManager.h"
-#include "CampSite.h"
+#include "campsite/CampSite.h"
+#include "campsite/BasicCampSite.h"
 
 #include "../TangibleObject.h"
 
@@ -62,7 +63,6 @@ CampKitImplementation::CampKitImplementation(unsigned long long oid, unsigned in
 
 		name = n;
 
-		setUsesRemaining(5);
 		setXP(320);
 		setDuration(60);
 		setCampType(0);
@@ -79,7 +79,6 @@ CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCR
 
 	name = n;
 
-	setUsesRemaining(5);
 	setXP(320);
 	setDuration(60);
 	setCampType(0);
@@ -98,23 +97,36 @@ CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCR
 int CampKitImplementation::useObject(Player* player) {
 	if (!isUsefull(player))
 		return 1;
-	CampSite* campSite = new CampSite(player, player->getNewItemID(), _this);
+	CampSite* campSite;
+	switch(campType) {
+		case 0:
+			campSite = new BasicCampSite(player, player->getNewItemID(), _this);
+			break;
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+		default:
+			return 1;
+	}
 	campSite->setZoneProcessServer(player->getZoneProcessServer());
 	campSite->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	campSite->setDirection(0,0,0,0);
-
-	//	campSite->insertToZone(player->getZone()); // need to do a temp structure
-	//	campSite->createCampArea();
 
 	player->setCamp(campSite);
 	player->sendSystemMessage("@camp:starting_camp");
 	CampSpawnEvent* event = new CampSpawnEvent(campSite,5000);
 	player->getZoneProcessServer()->addEvent(event);
-
+	remove(player);
 	return 1;
 }
 
 bool CampKitImplementation::isUsefull(Player* player) {
+	if (canNotUse(player)) {
+		player->sendSystemMessage("@camp:error_too_big");
+		return false;
+	}
 	if (player->isInANoBuildArea()) {
 		player->sendSystemMessage("@camp:error_nobuild");
 		return false;
@@ -124,10 +136,10 @@ bool CampKitImplementation::isUsefull(Player* player) {
 	} else if (!player->isStanding()) {
 		player->sendSystemMessage("@camp:error_cmd_fail");
 		return false;
-	}/* else if (!player->isInCombat()) {
+	} else if (player->isInCombat()) {
 		player->sendSystemMessage("@camp:sys_not_in_combat");
 		return false;
-	} */else if (player->isInCamp()) {
+	} else if (player->isInCamp()) {
 		player->sendSystemMessage("@camp:error_camp_too_close");
 		return false;
 	} else {
@@ -135,24 +147,32 @@ bool CampKitImplementation::isUsefull(Player* player) {
 	}
 }
 
-/*
- * Uses a charge oh the camo kit. If 0 uses are left, it is removed from the inventory.
- * \param player The player that uses the camo kit.
- */
-void CampKitImplementation::useCharge(Player* player) {
-	if (usesRemaining <= 0) {
-		remove(player);
-		return;
+bool CampKitImplementation::canNotUse(Player* player) {
+	String box;
+	switch(campType) {
+	case 0:
+			box = "outdoors_scout_novice";
+			break;
+		case 2:
+			box = "outdoors_scout_camp_02";
+			break;
+		case 3:
+			box = "outdoors_scout_camp_04";
+			break;
+		case 4:
+			box = "outdoors_ranger_novice";
+			break;
+		case 5:
+			box = "outdoors_scout_tracking_02";
+			break;
+		case 6:
+			box = "outdoors_scout_tracking_04";
+			break;
+		default:
+			return true;
 	}
-
-	setUsesRemaining(getUsesRemaining() - 1);
-	updated = true;
-
-	if (usesRemaining == 0)
-		remove(player);
+	return !player->hasSkillBox(box);
 }
-
-
 
 /*
  * Removes the camo kit from the inventory.
@@ -169,16 +189,8 @@ void CampKitImplementation::remove(Player* player) {
 	player->sendMessage(msg);
 }
 
-void CampKitImplementation::sendDeltas(Player* player) {
-	TangibleObjectDeltaMessage3 * dtano3 = new TangibleObjectDeltaMessage3((TangibleObject*)_this);
-	dtano3->addIntUpdate(7, (getUsesRemaining() == 1) ? 0 : getUsesRemaining()); //Update the number of charges on the pack in inventory.
-	dtano3->close();
-	player->sendMessage(dtano3);
-}
-
 void CampKitImplementation::addHeaderAttributes(AttributeListMessage* alm) {
 	alm->insertAttribute("volume", "1");
-	alm->insertAttribute("counter_uses_remaining", getUsesRemaining());
 
 	if(craftersName != ""){
 		alm->insertAttribute("crafter", craftersName);
@@ -211,9 +223,7 @@ void CampKitImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void CampKitImplementation::parseItemAttributes() {
-	String attr = "uses";
-	setUsesRemaining(itemAttributes->getIntAttribute(attr));
-	attr = "exp";
+	String attr = "exp";
 	setXP(itemAttributes->getIntAttribute(attr));
 	attr = "duration";
 	setDuration(itemAttributes->getIntAttribute(attr));

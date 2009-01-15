@@ -859,6 +859,10 @@ public:
 
 	bool hasCamp();
 
+	int getCampAggroMod();
+
+	void setCampAggroMod(int mod);
+
 	unsigned long long getAvailablePower();
 
 	void removePower(unsigned long long power);
@@ -1799,6 +1803,10 @@ public:
 	CampSite* getCamp();
 
 	bool hasCamp();
+
+	int getCampAggroMod();
+
+	void setCampAggroMod(int mod);
 
 	unsigned long long getAvailablePower();
 

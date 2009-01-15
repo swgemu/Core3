@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 #include "../../objects/building/BuildingObject.h"
-#include "../../objects/tangible/campkit/CampSite.h"
+#include "../../objects/tangible/campkit/campsite/CampSite.h"
 
 class BuildingObjectMessage3 : public BaseLineMessage {
 public:

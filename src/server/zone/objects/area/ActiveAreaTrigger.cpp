@@ -25,6 +25,30 @@ ActiveAreaTrigger::ActiveAreaTrigger(DummyConstructorParameter* param) : SceneOb
 ActiveAreaTrigger::~ActiveAreaTrigger() {
 }
 
+void ActiveAreaTrigger::forceTriggerEnter() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActiveAreaTriggerImplementation*) _impl)->forceTriggerEnter();
+}
+
+void ActiveAreaTrigger::forceTriggerExit() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		method.executeWithVoidReturn();
+	} else
+		((ActiveAreaTriggerImplementation*) _impl)->forceTriggerExit();
+}
+
 /*
  *	ActiveAreaTriggerAdapter
  */
@@ -36,11 +60,25 @@ Packet* ActiveAreaTriggerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		forceTriggerEnter();
+		break;
+	case 7:
+		forceTriggerExit();
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void ActiveAreaTriggerAdapter::forceTriggerEnter() {
+	return ((ActiveAreaTriggerImplementation*) impl)->forceTriggerEnter();
+}
+
+void ActiveAreaTriggerAdapter::forceTriggerExit() {
+	return ((ActiveAreaTriggerImplementation*) impl)->forceTriggerExit();
 }
 
 /*

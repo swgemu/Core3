@@ -36,37 +36,12 @@ CampKit::CampKit(DummyConstructorParameter* param) : TangibleObject(param) {
 CampKit::~CampKit() {
 }
 
-void CampKit::useCharge(Player* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 6);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((CampKitImplementation*) _impl)->useCharge(player);
-}
-
-int CampKit::getUsesRemaining() {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 7);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return ((CampKitImplementation*) _impl)->getUsesRemaining();
-}
-
 int CampKit::getXP() {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 8);
+		DistributedMethod method(this, 6);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -78,7 +53,7 @@ int CampKit::getDuration() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 9);
+		DistributedMethod method(this, 7);
 
 		return method.executeWithSignedIntReturn();
 	} else
@@ -90,24 +65,11 @@ int CampKit::getCampType() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 10);
+		DistributedMethod method(this, 8);
 
 		return method.executeWithSignedIntReturn();
 	} else
 		return ((CampKitImplementation*) _impl)->getCampType();
-}
-
-void CampKit::setUsesRemaining(const int us) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 11);
-		method.addSignedIntParameter(us);
-
-		method.executeWithVoidReturn();
-	} else
-		((CampKitImplementation*) _impl)->setUsesRemaining(us);
 }
 
 void CampKit::setXP(const int xp) {
@@ -115,7 +77,7 @@ void CampKit::setXP(const int xp) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 12);
+		DistributedMethod method(this, 9);
 		method.addSignedIntParameter(xp);
 
 		method.executeWithVoidReturn();
@@ -128,7 +90,7 @@ void CampKit::setDuration(const int duration) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 13);
+		DistributedMethod method(this, 10);
 		method.addSignedIntParameter(duration);
 
 		method.executeWithVoidReturn();
@@ -141,7 +103,7 @@ void CampKit::setCampType(const int crc) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 14);
+		DistributedMethod method(this, 11);
 		method.addSignedIntParameter(crc);
 
 		method.executeWithVoidReturn();
@@ -149,25 +111,12 @@ void CampKit::setCampType(const int crc) {
 		((CampKitImplementation*) _impl)->setCampType(crc);
 }
 
-void CampKit::sendDeltas(Player* player) {
-	if (_impl == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, 15);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		((CampKitImplementation*) _impl)->sendDeltas(player);
-}
-
 void CampKit::generateAttributes(SceneObject* obj) {
 	if (_impl == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 16);
+		DistributedMethod method(this, 12);
 		method.addObjectParameter(obj);
 
 		method.executeWithVoidReturn();
@@ -180,7 +129,7 @@ void CampKit::parseItemAttributes() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, 17);
+		DistributedMethod method(this, 13);
 
 		method.executeWithVoidReturn();
 	} else
@@ -199,39 +148,27 @@ Packet* CampKitAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 	switch (methid) {
 	case 6:
-		useCharge((Player*) inv->getObjectParameter());
-		break;
-	case 7:
-		resp->insertSignedInt(getUsesRemaining());
-		break;
-	case 8:
 		resp->insertSignedInt(getXP());
 		break;
-	case 9:
+	case 7:
 		resp->insertSignedInt(getDuration());
 		break;
-	case 10:
+	case 8:
 		resp->insertSignedInt(getCampType());
 		break;
-	case 11:
-		setUsesRemaining(inv->getSignedIntParameter());
-		break;
-	case 12:
+	case 9:
 		setXP(inv->getSignedIntParameter());
 		break;
-	case 13:
+	case 10:
 		setDuration(inv->getSignedIntParameter());
 		break;
-	case 14:
+	case 11:
 		setCampType(inv->getSignedIntParameter());
 		break;
-	case 15:
-		sendDeltas((Player*) inv->getObjectParameter());
-		break;
-	case 16:
+	case 12:
 		generateAttributes((SceneObject*) inv->getObjectParameter());
 		break;
-	case 17:
+	case 13:
 		parseItemAttributes();
 		break;
 	default:
@@ -239,14 +176,6 @@ Packet* CampKitAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	}
 
 	return resp;
-}
-
-void CampKitAdapter::useCharge(Player* player) {
-	return ((CampKitImplementation*) impl)->useCharge(player);
-}
-
-int CampKitAdapter::getUsesRemaining() {
-	return ((CampKitImplementation*) impl)->getUsesRemaining();
 }
 
 int CampKitAdapter::getXP() {
@@ -261,10 +190,6 @@ int CampKitAdapter::getCampType() {
 	return ((CampKitImplementation*) impl)->getCampType();
 }
 
-void CampKitAdapter::setUsesRemaining(const int us) {
-	return ((CampKitImplementation*) impl)->setUsesRemaining(us);
-}
-
 void CampKitAdapter::setXP(const int xp) {
 	return ((CampKitImplementation*) impl)->setXP(xp);
 }
@@ -275,10 +200,6 @@ void CampKitAdapter::setDuration(const int duration) {
 
 void CampKitAdapter::setCampType(const int crc) {
 	return ((CampKitImplementation*) impl)->setCampType(crc);
-}
-
-void CampKitAdapter::sendDeltas(Player* player) {
-	return ((CampKitImplementation*) impl)->sendDeltas(player);
 }
 
 void CampKitAdapter::generateAttributes(SceneObject* obj) {

@@ -196,11 +196,13 @@ IDL_SOURCES = server/zone/Zone.idl \
 				server/chat/ChatManager.idl \
 				server/zone/objects/tangible/camokits/CamoKit.idl \
 				server/zone/objects/tangible/campkit/CampKit.idl \
-				server/zone/objects/tangible/campkit/CampSite.idl \
+				server/zone/objects/tangible/campkit/campsite/CampSite.idl \
 				server/zone/objects/tangible/weapons/ThrowableWeapon.idl \
 				server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.idl \
 				server/zone/objects/area/CampActiveArea.idl \
-	 			server/zone/objects/tangible/terminal/camp/CampTerminal.idl
+	 			server/zone/objects/tangible/terminal/camp/CampTerminal.idl \
+	 			server/zone/objects/tangible/campkit/campsite/BasicCampSite.idl	
+
 all:
 	cd src && $(IDLC) $(IDL_SOURCES)
 	cd build/unix && ../../configure && make

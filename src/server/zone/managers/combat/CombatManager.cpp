@@ -901,6 +901,17 @@ int CombatManager::applyTrapDamage(CreatureObject* attacker, CreatureObject* tar
 	if (damage < 0)
 		damage = 0;
 
+	if (part < 6) {
+		if (damage >= target->getHealth())
+			damage = target->getHealth() - 1;
+	} else if (part < 8) {
+		if (damage >= target->getAction())
+			damage = target->getAction() - 1;
+	} else {
+		if (damage >= target->getMind())
+			damage = target->getMind() - 1;
+	}
+
 	target->addDamage(attacker, damage);
 	target->addDamageDone(attacker, damage, askill->getSkillName());
 

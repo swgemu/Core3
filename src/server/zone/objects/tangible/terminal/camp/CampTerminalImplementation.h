@@ -2,7 +2,7 @@
 #define CAMPTERMINALIMPLEMENTATION_H_
 
 #include "../../../player/Player.h"
-#include "../../campkit/CampSite.h"
+#include "../../campkit/campsite/CampSite.h"
 
 #include "../TerminalImplementation.h"
 

@@ -355,17 +355,29 @@ void GameCommandHandler::init() {
 			"Usage: @drag",
 			&drag);
 
+
 	/* Disabled Commands
 
 	gmCommands->addCommand("setLocation", DEVELOPER,
 			"Shows your setLocation",
 			"Usage: @setLocation>",
 			&setLocation);
+
+
+	gmCommands->addCommand("setLocation", DEVELOPER,
+			"Shows your setLocation",
+			"Usage: @setLocation>",
+			&setLocation);
+
+	gmCommands->addCommand("campCode", DEVELOPER,
+				"Shows your setLocation",
+				"Usage: @campCode>",
+				&campCode);
+
 	gmCommands->addCommand("setDirection", DEVELOPER,
 			"Shows your position",
 			"Usage: @setDirection>",
 			&setDirection);
-
 
 	gmCommands->addCommand("toggleCombat", DEVELOPER,
 			"Enables/Disables combat.",
@@ -3327,45 +3339,51 @@ void GameCommandHandler::spawnAA(StringTokenizer tokenizer, Player* player) {
 
 
 void GameCommandHandler::setLocation(StringTokenizer tokenizer, Player* player) {
-	StringBuffer message;
-
-	float x;
-	float y;
-	if (tokenizer.hasMoreTokens()) {
-		x = tokenizer.getFloatToken();
-		if (tokenizer.hasMoreTokens())
-			y = tokenizer.getFloatToken();
-		else {
-			x = player->getPositionX();
-			y = player->getPositionY();
-		}
-	}
-	else {
-		x = player->getPositionX();
-		y = player->getPositionY();
-	}
-
-	if (tokenizer.hasMoreTokens())
-				y = tokenizer.getFloatToken();
-	else
-		y = player->getPositionY();
-
-	SceneObject* obj = player->getTarget();
-	if (obj == NULL)
-		return;
-
-	float z = player->getPositionZ();
-
-	StringBuffer ss;
-	ss << "New Loaction: " << endl;
-	ss << " X: " << x << endl;
-	ss << " Y: " << y;
-
-	player->sendSystemMessage(ss.toString());
+	SceneObject* obj;
 	try {
-		obj->wlock(player);
-		obj->setPosition(x,z,y);
+		CampSite* camp = player->getCamp();
 
+		if (camp == NULL)
+			return;
+
+		int num = 0;
+
+		if (tokenizer.hasMoreTokens())
+			num = tokenizer.getIntToken();
+		else
+			return;
+		camp->lock();
+		obj = camp->getCampObject(num);
+		camp->unlock();
+
+		if (obj == NULL)
+			return;
+
+		obj->wlock(player);
+
+
+		float x = player->getPositionX();
+		float y = player->getPositionY();
+		float z = player->getPositionZ();
+
+		float oX = player->getDirectionX();
+		float oZ = player->getDirectionZ();
+		float oY = player->getDirectionY();
+		float oW = player->getDirectionW();
+
+		if (tokenizer.hasMoreTokens())
+			x += tokenizer.getFloatToken();
+		if (tokenizer.hasMoreTokens())
+			y += tokenizer.getFloatToken();
+		if (tokenizer.hasMoreTokens())
+			oX = tokenizer.getFloatToken();
+		if (tokenizer.hasMoreTokens())
+			oY = tokenizer.getFloatToken();
+		if (tokenizer.hasMoreTokens())
+			oW = tokenizer.getFloatToken();
+
+		obj->setPosition(x,z,y);
+		obj->setDirection(oX,oZ,oY,oW);
 		UpdateTransformMessage* msg = new UpdateTransformMessage(obj);
 		player->sendMessage(msg);
 		obj->unlock();
@@ -3375,38 +3393,30 @@ void GameCommandHandler::setLocation(StringTokenizer tokenizer, Player* player) 
 }
 
 void GameCommandHandler::setDirection(StringTokenizer tokenizer, Player* player) {
-	StringBuffer message;
+/*	try {
+		SceneObject* obj = player->getCamp();
 
-	float oX = player->getDirectionX();
-	float oZ = player->getDirectionZ();
-	float oY = player->getDirectionY();
-	float oW = player->getDirectionW();
+		if (obj == NULL)
+			return;
 
-	SceneObject* obj = player->getTarget();
-	if (obj == NULL)
-		return;
-
-	float z = player->getPositionZ();
-
-	StringBuffer ss;
-	ss << "New Direction: " << endl;
-	ss << " oX: " << oX << endl;
-	ss << " oZ: " << oZ << endl;
-	ss << " oY: " << oY << endl;
-	ss << " oW: " << oW;
-
-	player->sendSystemMessage(ss.toString());
-
-	try {
 		obj->wlock(player);
-		obj->setDirection(oX,oZ,oY,oW);
 
-		UpdateTransformMessage* msg = new UpdateTransformMessage(obj);
-		player->sendMessage(msg);
+		StringBuffer message;
+
+		float oX = player->getDirectionX();
+		float oZ = player->getDirectionZ();
+		float oY = player->getDirectionY();
+		float oW = player->getDirectionW();
+
+		SceneObject* obj = player->getCamp();
+
+		if (obj == NULL)
+			return;
+
 		obj->unlock();
 	} catch (...) {
 		obj->unlock();
-	}
+	}*/
 
 }
 
@@ -3431,5 +3441,24 @@ void GameCommandHandler::drag(StringTokenizer tokenizer, Player* player) {
 	} else {
 		player->sendSystemMessage("healing_response", "healing_response_a6"); //"You may only drag players!"
 		return;
+	}
+}
+
+void GameCommandHandler::campCode(StringTokenizer tokenizer, Player* player) {
+	CampSite* camp = player->getCamp();
+
+	try {
+
+		if (camp == NULL)
+			return;
+
+		camp->wlock(player);
+
+		camp->printPlacmentCode();
+
+
+		camp->unlock();
+	} catch (...) {
+		camp->unlock();
 	}
 }

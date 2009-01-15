@@ -42,41 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CAMPABANDONEVENT_H_
-#define CAMPABANDONEVENT_H_
+#ifndef BASICCAMPSITEIMPLEMENTATION_H_
+#define BASICCAMPSITEIMPLEMENTATION_H_
 
-#include "../campsite/CampSite.h"
-#include "../../../player/Player.h"
+#include "BasicCampSite.h"
 
-class CampAbandonEvent: public Event {
-	CampSite* campSite;
-	bool ended;
+class BasicCampSiteImplementation: public BasicCampSiteServant {
 public:
-	CampAbandonEvent(CampSite* camp, int dur) :
-		Event(dur) {
-		campSite = camp;
-		setKeeping(false);
-		ended = false;
-	}
+	BasicCampSiteImplementation(Player* player, uint64 oid, CampKit* campKit);
+	virtual ~BasicCampSiteImplementation();
 
-	bool activate() {
-		try {
-			if (ended) {
-				return true;
-			}
-			campSite->abandonCamp();
-		} catch (...) {
-			campSite->error("Unreported exception caught on Camp Site\n");
+	void init();
+	void spawnCampItems();
 
-			campSite->unlock();
-		}
-
-		return true;
-	}
-
-	void endNow() {
-		ended = true;
-	}
 };
 
-#endif /* CAMPDESPAWNEVENT_H_ */
+#endif /* BASICCAMPSITEIMPLEMENTATION_H_ */

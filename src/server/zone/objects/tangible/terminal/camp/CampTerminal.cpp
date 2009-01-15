@@ -6,7 +6,7 @@
 
 #include "CampTerminalImplementation.h"
 
-#include "../../campkit/CampSite.h"
+#include "../../campkit/campsite/CampSite.h"
 
 #include "../Terminal.h"
 

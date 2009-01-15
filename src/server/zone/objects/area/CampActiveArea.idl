@@ -2,7 +2,7 @@ import "../player/Player";
 
 import "ActiveArea";
 
-import "../tangible/campkit/CampSite";
+import "../tangible/campkit/campsite/CampSite";
 
 interface CampActiveArea implements ActiveArea {
 	CampActiveArea(float x, float y, float z, float radius, CampSite camp) {

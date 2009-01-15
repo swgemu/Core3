@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef CAMPDESPAWNEVENT_H_
 #define CAMPDESPAWNEVENT_H_
 
-#include "../CampSite.h"
+#include "../campsite/CampSite.h"
 #include "../../../player/Player.h"
 
 class CampDespawnEvent: public Event {
