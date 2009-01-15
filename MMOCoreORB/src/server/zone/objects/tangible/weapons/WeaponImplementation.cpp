@@ -317,6 +317,9 @@ void WeaponImplementation::parseItemAttributes() {
 
 	name = "cert";
 	cert = itemAttributes->getStringAttribute(name);
+
+	name = "sliced";
+	sliced = itemAttributes->getBooleanAttribute(name);
 }
 
 void WeaponImplementation::sendTo(Player* player, bool doClose) {
