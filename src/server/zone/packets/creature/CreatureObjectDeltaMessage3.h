@@ -62,7 +62,7 @@ public:
 
 	void updateCharacterAppearance() {
 		String appearance;
-		creo->getCharacterAppearance(appearance);
+		creo->getCustomizationString(appearance);
 		addAsciiUpdate(4, appearance);
 	}
 
@@ -87,7 +87,7 @@ public:
 	}
 
 	void updateCreatureBitmask() {
-		addIntUpdate(0x06, creo->getCreatureBitmask());
+		addIntUpdate(0x06, creo->getOptionsBitmask());
 	}
 
 	void updateConditionDamage() {

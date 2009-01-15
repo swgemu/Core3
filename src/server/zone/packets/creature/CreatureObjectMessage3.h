@@ -64,13 +64,13 @@ public:
 		insertInt(0x0085E5CA); // Volume
 
 		String appearance;
-		creo->getCharacterAppearance(appearance);
+		creo->getCustomizationString(appearance);
 		insertAscii(appearance);
 
 		insertInt(0); // list size
 		insertInt(0); // update counter
 
-		insertInt(creo->getCreatureBitmask());
+		insertInt(creo->getOptionsBitmask());
 
 		insertInt(0); // incap timer
 

@@ -73,6 +73,35 @@ class ObjectMenuResponse;
 class SceneObjectImplementation : public SceneObjectServant, public QuadTreeEntry, public Logger {
 
 protected:
+	/*
+	 * objectName - 2 asciis
+	detailedDescription - string_id_table
+	lookAtText - string_id_table
+	snapToTerrain - short default 1
+	containerType -
+	containerVolumeLimit
+	tintPalette
+	slotDescriptorFilename
+	arrangementDescriptorFilename
+	appearanceFilename
+	portalLayoutFilename
+	clientDataFile
+	collisionMaterialFlags
+	collisionMaterialPassFlags
+	collisionMaterialBlockFlags
+	collisionActionFlags
+	collisionActionPassFlags
+	collisionActionBlockFlags
+	scale
+	gameObjectType
+	sendToClient
+	scaleThresholdBeforeExtentTest
+	clearFloraRadius
+	surfaceType
+	noBuildRadius
+	onlyVisibleInTools
+	locationReservationRadius*/
+
 	ZoneProcessServerImplementation* server;
 
 	Zone* zone;
@@ -106,8 +135,8 @@ protected:
 	VectorMap<CreatureObject*, DamageDone*> playerDamageList;
 
 public:
-	static const int NONPLAYERCREATURE = 1;
-	static const int PLAYER = 2;
+	static const int NONPLAYERCREATURE = 0x10000000;
+	static const int PLAYER = 0x20000000;
 	static const int TANGIBLE = 3;
 	static const int GROUP = 4;
 	static const int BUILDING = 5;
@@ -327,13 +356,9 @@ public:
 		return server;
 	}
 
-	inline bool isPlayer() {
-		return objectType == PLAYER;
-	}
+	bool isPlayer();
 
-	inline bool isNonPlayerCreature() {
-		return objectType == NONPLAYERCREATURE;
-	}
+	bool isNonPlayerCreature();
 
 	inline bool isBuilding() {
 		return objectType == BUILDING;

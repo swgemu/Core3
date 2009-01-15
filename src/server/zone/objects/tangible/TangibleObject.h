@@ -39,8 +39,6 @@ public:
 
 	void setEquipped(bool eqp);
 
-	void setContainer(SceneObject* cont, unsigned int type = 04);
-
 	void sendTo(Player* player, bool doClose = true);
 
 	void sendDeltas(Player* player);
@@ -136,8 +134,6 @@ public:
 	void setCraftersName(String& n);
 
 	void setCraftedSerial(String& s);
-
-	SceneObject* getContainer();
 
 	UnicodeString& getName();
 
@@ -252,8 +248,6 @@ public:
 
 	void setEquipped(bool eqp);
 
-	void setContainer(SceneObject* cont, unsigned int type);
-
 	void sendTo(Player* player, bool doClose);
 
 	void sendDeltas(Player* player);
@@ -349,8 +343,6 @@ public:
 	void setCraftersName(String& n);
 
 	void setCraftedSerial(String& s);
-
-	SceneObject* getContainer();
 
 	UnicodeString& getName();
 

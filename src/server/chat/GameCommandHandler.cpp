@@ -1165,7 +1165,7 @@ void GameCommandHandler::kill(StringTokenizer tokenizer, Player* player) {
 				targetPlayer->unlock();
 		}
 	//} else if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter() && !creature->isMount()) {
-	} else if (creature != NULL && creature->getCreatureBitmask() != 0x108 && creature->getCreatureBitmask() != 0x1080) {
+	} else if (creature != NULL && creature->getOptionsBitmask() != 0x108 && creature->getOptionsBitmask() != 0x1080) {
 
 		try {
 			creature->wlock(player);
@@ -1199,7 +1199,7 @@ void GameCommandHandler::ecKill(StringTokenizer tokenizer, Player* player) {
 	}
 
 	//if (creature != NULL  && !creature->isTrainer() && !creature->isRecruiter() && !creature->isMount()) {
-	if (creature != NULL && creature->getCreatureBitmask() != 0x108 && creature->getCreatureBitmask() != 0x1080) {
+	if (creature != NULL && creature->getOptionsBitmask() != 0x108 && creature->getOptionsBitmask() != 0x1080) {
 		try {
 			creature->wlock(player);
 
@@ -1273,7 +1273,7 @@ void GameCommandHandler::killArea(StringTokenizer tokenizer, Player* player) {
 				Creature* creature = (Creature*) obj.get();
 
 				//if (creature->isInRange(creature, meter) && !creature->isTrainer() && !creature->isRecruiter()) {
-				if (player->isInRange(creature, meter) && creature->getCreatureBitmask() != 0x108 && creature->getCreatureBitmask() != 0x1080) {
+				if (player->isInRange(creature, meter) && creature->getOptionsBitmask() != 0x108 && creature->getOptionsBitmask() != 0x1080) {
 					zone->unlock();
 
 					try {
@@ -1569,7 +1569,7 @@ void GameCommandHandler::getFoodFilling(StringTokenizer tokenizer, Player* playe
 
 void GameCommandHandler::logAppearance(StringTokenizer tokenizer, Player* player) {
 	String appearance;
-	player->getCharacterAppearance(appearance);
+	player->getCustomizationString(appearance);
 
 	StringBuffer message;
 	message << "Character Appearance:  " << uppercase << hex;
@@ -1627,7 +1627,7 @@ void GameCommandHandler::setAppearanceVariable(StringTokenizer tokenizer, Player
 	if (value < 0 || value > 255) //out of range
 		return;
 
-	((CreatureObject*) player)->setAppearanceAttribute(variable, (uint8)value);
+	((CreatureObject*) player)->setCustomizationVariable(variable, (uint8)value);
 
 	StringBuffer message;
 	message << "Character Appearance Attribute Updated.";

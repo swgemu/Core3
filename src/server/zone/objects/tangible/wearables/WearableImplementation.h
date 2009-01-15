@@ -74,9 +74,9 @@ public:
 		templateName = tempn;
 
 		if ((equipped = eqp))
-			setContainer(creature, 0x04);
+			setParent(creature, 0x04);
 		else
-			setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
+			setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 	}
 
 	WearableImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false)
@@ -89,9 +89,9 @@ public:
 		templateName = tempn;
 
 		if ((equipped = eqp))
-			setContainer(creature, 0x04);
+			setParent(creature, 0x04);
 		else
-			setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
+			setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 	}
 };
 

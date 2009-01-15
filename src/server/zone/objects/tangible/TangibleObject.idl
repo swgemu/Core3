@@ -73,8 +73,6 @@ interface TangibleObject implements SceneObject {
 	
 	void setEquipped(boolean eqp);
 	
-	void setContainer(SceneObject cont, unsigned int type = 0x04);
-	
 	void sendTo(Player player, boolean doClose = true);
 	
 	void sendDeltas(Player player);
@@ -151,7 +149,6 @@ interface TangibleObject implements SceneObject {
 
 	void setCraftersName(String n);
 	void setCraftedSerial(String s);
-	SceneObject getContainer();
 
 	UnicodeString getName();
 	String getTemplateName();

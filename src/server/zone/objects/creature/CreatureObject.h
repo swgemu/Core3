@@ -43,9 +43,9 @@ class BuffObject;
 
 class ResourceContainer;
 
-#include "../scene/SceneObject.h"
+#include "../tangible/TangibleObject.h"
 
-class CreatureObject : public SceneObject {
+class CreatureObject : public TangibleObject {
 public:
 	CreatureObject(unsigned long long oid);
 
@@ -607,15 +607,11 @@ public:
 
 	String& getTerrainName();
 
-	void getCharacterAppearance(String& appearance);
-
 	void getHairAppearance(String& appearance);
 
 	bool isOvert();
 
 	unsigned long long getStateBitmask();
-
-	unsigned int getCreatureBitmask();
 
 	unsigned char getPosture();
 
@@ -1057,8 +1053,6 @@ public:
 
 	void setOnFireState(int str, int type, int duration);
 
-	void setCreatureBitmask(unsigned int bitmask);
-
 	bool setNextAttackDelay(int del);
 
 	void setCharacterName(const String& name);
@@ -1066,12 +1060,6 @@ public:
 	void setCharacterName(const UnicodeString& name);
 
 	void setTerrainName(const String& name);
-
-	void setCharacterAppearance(String& cust);
-
-	void setAppearanceAttribute(unsigned char type, unsigned char value);
-
-	void setAppearanceAttribute(String& type, unsigned char value);
 
 	void updateCharacterAppearance();
 
@@ -1341,7 +1329,7 @@ protected:
 
 class CreatureObjectImplementation;
 
-class CreatureObjectAdapter : public SceneObjectAdapter {
+class CreatureObjectAdapter : public TangibleObjectAdapter {
 public:
 	CreatureObjectAdapter(CreatureObjectImplementation* impl);
 
@@ -1903,15 +1891,11 @@ public:
 
 	String& getTerrainName();
 
-	void getCharacterAppearance(String& appearance);
-
 	void getHairAppearance(String& appearance);
 
 	bool isOvert();
 
 	unsigned long long getStateBitmask();
-
-	unsigned int getCreatureBitmask();
 
 	unsigned char getPosture();
 
@@ -2353,8 +2337,6 @@ public:
 
 	void setOnFireState(int str, int type, int duration);
 
-	void setCreatureBitmask(unsigned int bitmask);
-
 	bool setNextAttackDelay(int del);
 
 	void setCharacterName(const String& name);
@@ -2362,12 +2344,6 @@ public:
 	void setCharacterName(const UnicodeString& name);
 
 	void setTerrainName(const String& name);
-
-	void setCharacterAppearance(String& cust);
-
-	void setAppearanceAttribute(unsigned char type, unsigned char value);
-
-	void setAppearanceAttribute(String& type, unsigned char value);
 
 	void updateCharacterAppearance();
 
@@ -2629,13 +2605,10 @@ protected:
 	String _param0_startDancing__String_bool_;
 	String _param0_startPlayingMusic__String_bool_;
 	String _param0_doFlourish__String_;
-	String _param0_getCharacterAppearance__String_;
 	String _param0_getHairAppearance__String_;
 	String _param0_setCharacterName__String_;
 	UnicodeString _param0_setCharacterName__UnicodeString_;
 	String _param0_setTerrainName__String_;
-	String _param0_setCharacterAppearance__String_;
-	String _param0_setAppearanceAttribute__String_char_;
 	String _param0_setHairAppearance__String_;
 	String _param0_setHairAppearanceAttribute__String_char_;
 	String _param0_setRaceName__String_;
@@ -2677,9 +2650,9 @@ public:
 	friend class SingletonWrapper<CreatureObjectHelper>;
 };
 
-#include "../scene/SceneObjectImplementation.h"
+#include "../tangible/TangibleObjectImplementation.h"
 
-class CreatureObjectServant : public SceneObjectImplementation {
+class CreatureObjectServant : public TangibleObjectImplementation {
 public:
 	CreatureObject* _this;
 

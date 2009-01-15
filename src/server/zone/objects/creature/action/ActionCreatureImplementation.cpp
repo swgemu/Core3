@@ -62,7 +62,9 @@ ActionCreatureImplementation::ActionCreatureImplementation(uint64 oid, uint32 ob
 	setObjectFileName(stf);
 	objectCRC = objCrc;
 	setType(CreatureImplementation::ACTION);
-	creatureBitmask = 0x108; //RAMSEY: LOOK INTO
+
+	optionsBitmask = 0x108; //RAMSEY: LOOK INTO
+
 	pvpStatusBitmask = 0;
 
 	// Action:

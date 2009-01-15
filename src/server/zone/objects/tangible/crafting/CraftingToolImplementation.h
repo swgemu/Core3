@@ -189,7 +189,7 @@ public:
 
 	inline void addTempIngredient(TangibleObject* tano){
 		tempIngredient.add(tano);
-		tano->setContainer(_this);
+		tano->setParent(_this);
 	}
 
 	inline void increaseInsertCount(){

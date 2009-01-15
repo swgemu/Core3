@@ -79,7 +79,7 @@ CamoKitImplementation::CamoKitImplementation(Player* player, unsigned int tempCR
 
 	usesRemaining = 5 ;
 
-    setContainer((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
+    setParent((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
 
     setEquipped(false);
 }

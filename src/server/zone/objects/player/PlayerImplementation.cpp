@@ -1107,8 +1107,8 @@ void PlayerImplementation::sendToOwner(bool doClose) {
 	//if (parent != NULL)
 	//	parent->sendTo(_this);
 
-	if(doClose)
-		CreatureObjectImplementation::close(owner);
+	if (doClose)
+		SceneObjectImplementation::close(owner);
 }
 
 void PlayerImplementation::sendTo(Player* player, bool doClose) {
@@ -1117,7 +1117,7 @@ void PlayerImplementation::sendTo(Player* player, bool doClose) {
 	playerObject->sendTo(player);
 
 	if (doClose)
-		CreatureObjectImplementation::close(player->getClient());
+		SceneObjectImplementation::close(player->getClient());
 }
 
 void PlayerImplementation::sendPersonalContainers() {
@@ -1601,6 +1601,7 @@ void PlayerImplementation::notifyInsert(QuadTreeEntry* obj) {
 	case SceneObjectImplementation::TANGIBLE:
 		tangible = (TangibleObject*) scno;
 		tangible->sendTo(_this);
+
 		break;
 
 	case SceneObjectImplementation::STATIC:
@@ -1637,6 +1638,7 @@ void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		player->sendDestroyTo(_this);
 
 		break;
+
 	case SceneObjectImplementation::NONPLAYERCREATURE:
 		creature = (Creature*) scno;
 		creature->sendDestroyTo(_this);
@@ -1646,6 +1648,7 @@ void PlayerImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	case SceneObjectImplementation::BUILDING:
 		buio = (BuildingObject*) scno;
 		buio->sendDestroyTo(_this);
+
 		break;
 
 	case SceneObjectImplementation::TANGIBLE:
@@ -4848,7 +4851,7 @@ void PlayerImplementation::saveDatapad(Player* player) {
 
 							itnoCRC = mountCreature->getObjectCRC();
 							objID = mountCreature->getObjectID();
-							mountCreature->getCharacterAppearance(mountApp);
+							mountCreature->getCustomizationString(mountApp);
 							fileName = mountCreature->getObjectFileName();
 							attr = mountCreature->getAttributes();
 

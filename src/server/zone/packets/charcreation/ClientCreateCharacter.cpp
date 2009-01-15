@@ -65,10 +65,7 @@ void ClientCreateCharacter::parse(Packet* pack, Player* player) {
 	String customization;
 	pack->parseAscii(customization);
 
-	player->setCharacterAppearance(customization);
-
-	String playApp;
-	player->getCharacterAppearance(playApp);
+	player->setCustomizationString(customization);
 
 	UnicodeString characterName;
 	pack->parseUnicode(characterName); //get UnicodeString name

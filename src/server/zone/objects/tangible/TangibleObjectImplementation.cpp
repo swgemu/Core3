@@ -53,6 +53,9 @@ TangibleObjectImplementation::TangibleObjectImplementation(uint64 oid, int tp)
 		: TangibleObjectServant(oid, TANGIBLE) {
 	initialize();
 
+	if (tp == NONPLAYERCREATURE || tp == PLAYER)
+		objectType = tp;
+
 	objectSubType = tp;
 
 	pvpStatusBitmask = 0;
@@ -101,7 +104,7 @@ TangibleObjectImplementation::TangibleObjectImplementation(CreatureObject* creat
 }
 
 TangibleObjectImplementation::~TangibleObjectImplementation() {
-	if (container != NULL) {
+	if (parent != NULL) {
 		error(_this->getTemplateName() + "item still in container on delete");
 
 		StackTrace::printStackTrace();
@@ -122,13 +125,10 @@ void TangibleObjectImplementation::initialize() {
 	setLogging(false);
 	setGlobalLogging(true);
 
-	container = NULL;
 	zone = NULL;
 
 	persistent = false;
 	updated = false;
-
-	building = NULL;
 
 	objectCount = 0;
 
@@ -286,10 +286,7 @@ void TangibleObjectImplementation::sendTo(Player* player, bool doClose) {
 	SceneObjectImplementation::create(client);
 
 	if (parent != NULL)
-		client->sendMessage(link(parent));
-
-	if (container != NULL)
-		link(client, container);
+		link(client, parent);
 
 	BaseMessage* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
 	client->sendMessage(tano3);

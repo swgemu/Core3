@@ -84,7 +84,7 @@ CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCR
 	setCampType(0);
 	setEquipped(false);
 
-	setContainer((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
+	setParent((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
 
     setEquipped(false);
 

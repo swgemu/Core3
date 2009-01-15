@@ -640,11 +640,10 @@ TangibleObject* ItemManagerImplementation::createPlayerObject(Player* player, Re
 		if (zone != NULL) {
 			SceneObject* contiSCO = zone->lookupObject(container);
 
-			if (contiSCO != NULL) {
+			if (contiSCO != NULL && contiSCO->isTangible() && ((TangibleObject*)contiSCO)->isContainer()) {
 				Container* conti = (Container*) contiSCO;
 
 				item->setParent(contiSCO);
-				item->setContainer(contiSCO);
 
 				BaseMessage* linkmsg = item->link(contiSCO);
 				player->sendMessage(linkmsg);
@@ -1460,7 +1459,7 @@ void ItemManagerImplementation::loadPlayerDatapadItems(Player* player) {
 				String custStr;
 				cust.decode(custStr);
 
-				land->setCharacterAppearance(custStr);
+				land->setCustomizationString(custStr);
 			}
 
 			String attributes = res->getString(6);
@@ -2109,7 +2108,7 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 					object->wlock();
 
 				object->setParent(destinationObject);
-				item->setContainer(destinationObject);
+				item->setParent(destinationObject);
 
 				object->insertToZone(zone);
 				object->setZoneProcessServer(pServer);
@@ -2143,7 +2142,7 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 				}
 
 				object->setParent(destinationObject);
-				item->setContainer(destinationObject);
+				item->setParent(destinationObject);
 
 				if (item != object)
 					object->unlock();
@@ -2203,7 +2202,7 @@ void ItemManagerImplementation::moveItem(Zone* zone, Player* player, TangibleObj
 				}
 
 				object->setParent(inventory);
-				item->setContainer(inventory, 0xFFFFFFFF);
+				item->setParent(inventory, 0xFFFFFFFF);
 
 				inventory->addObject(item);
 				createPlayerItem(player, item);
@@ -2698,7 +2697,7 @@ void ItemManagerImplementation::loadContainersInStructures(Player* player, Build
 			SceneObject* cell = zone->lookupObject(parentID);
 			if (cell != NULL) {
 				item->setParent(cell);
-				item->setContainer(cell);
+				item->setParent(cell);
 
 				item->insertToZone(zone);
 				item->setZoneProcessServer(pServer);
@@ -2789,7 +2788,6 @@ void ItemManagerImplementation::loadItemsInContainersForStructure(Player* player
 			server->addObject(item);
 
 			item->setParent(conti);
-			item->setContainer(conti);
 
 			BaseMessage* linkmsg = item->link(conti);
 			player->broadcastMessage(linkmsg);

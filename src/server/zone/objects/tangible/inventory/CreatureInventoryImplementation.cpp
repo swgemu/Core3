@@ -54,11 +54,11 @@ CreatureInventoryImplementation::CreatureInventoryImplementation(CreatureObject*
 
 	objectCRC = 0x2110791C;
 
-	container = creature;
+	parent = creature;
 }
 
 CreatureInventoryImplementation::~CreatureInventoryImplementation() {
-	setContainer(NULL);
+	setParent(NULL);
 }
 
 void CreatureInventoryImplementation::sendTo(Player* player, bool doClose) {
@@ -69,8 +69,8 @@ void CreatureInventoryImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	if (container != NULL)
-		link(client, container);
+	if (parent != NULL)
+		link(client, parent);
 
 	BaseMessage* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
 	client->sendMessage(tano3);
