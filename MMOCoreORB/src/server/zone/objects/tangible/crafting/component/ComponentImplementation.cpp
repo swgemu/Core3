@@ -59,7 +59,7 @@ ComponentImplementation::ComponentImplementation(uint64 object_id, uint32 tempCR
 	templateTypeName = "obj_n";
 	templateName = tempn;
 
-	name = n;
+	customName = n;
 
 	init();
 }
@@ -72,7 +72,7 @@ ComponentImplementation::ComponentImplementation(CreatureObject* creature, uint3
 	templateTypeName = "obj_n";
 	templateName = tempn;
 
-	name = n;
+	customName = n;
 
 	init();
 }
@@ -85,7 +85,7 @@ ComponentImplementation::ComponentImplementation(Component* component, uint64 oi
 	objectCRC = component->getObjectCRC();
 	templateTypeName = component->getTemplateTypeName();
 	templateName = component->getTemplateName();
-	name = component->getName();
+	customName = component->getCustomName();
 	objectCount = component->getObjectCount();
 
 	craftersName = component->getCraftersName();

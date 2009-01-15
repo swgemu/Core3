@@ -10,7 +10,7 @@ GeneratorDeedImplementation::GeneratorDeedImplementation(CreatureObject* creatur
 		: GeneratorDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectCRC = tempcrc;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();
@@ -21,7 +21,7 @@ GeneratorDeedImplementation::GeneratorDeedImplementation(uint64 objid, uint32 te
 
 	objectCRC = tempcrc;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();

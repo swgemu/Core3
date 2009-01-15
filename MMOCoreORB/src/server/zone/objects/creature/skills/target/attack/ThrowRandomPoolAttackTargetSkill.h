@@ -127,8 +127,8 @@ public:
 
 		StfParameter* params = new StfParameter();
 		StringBuffer creatureName;
-		creatureName << "@" << targetCreature->getStfName() << ":"
-				<< targetCreature->getSpeciesName();
+		creatureName << "@" << targetCreature->getTemplateTypeName() << ":"
+				<< targetCreature->getTemplateName();
 		params->addTT(creatureName.toString());
 		if (damage != 0) {
 

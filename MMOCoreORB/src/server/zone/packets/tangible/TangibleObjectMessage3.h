@@ -60,7 +60,7 @@ public:
 		insertInt(0);
 		insertAscii(tano->getTemplateName());
 
-		insertUnicode(tano->getName());
+		insertUnicode(tano->getCustomName());
 
 		insertInt(1);
 

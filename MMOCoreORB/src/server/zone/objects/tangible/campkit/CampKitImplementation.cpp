@@ -61,7 +61,7 @@ CampKitImplementation::CampKitImplementation(unsigned long long oid, unsigned in
 		templateTypeName = "obj_n";
 		templateName = tempn;
 
-		name = n;
+		customName = n;
 
 		setXP(320);
 		setDuration(60);
@@ -77,7 +77,7 @@ CampKitImplementation::CampKitImplementation(Player* player, unsigned int tempCR
 	templateTypeName = "obj_n";
 	templateName = tempn;
 
-	name = n;
+	customName = n;
 
 	setXP(320);
 	setDuration(60);

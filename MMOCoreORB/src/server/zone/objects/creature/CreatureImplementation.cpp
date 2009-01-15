@@ -78,7 +78,7 @@ CreatureImplementation::CreatureImplementation(uint64 oid, CreatureGroup* group)
 
 	baseID = oid;
 
-	stfName = "mob/creature_names";
+	templateTypeName = "mob/creature_names";
 
 	creatureGroup = group;
 
@@ -1803,7 +1803,7 @@ void CreatureImplementation::doCamoCheck(CreatureObject* target) {
 						player->addXp(type,getLevel()*3, true);
 					StfParameter* params = new StfParameter();
 					StringBuffer creatureName;
-					creatureName << "@" << getStfName() << ":" << getSpeciesName();
+					creatureName << "@" << getTemplateTypeName() << ":" << getTemplateName();
 					params->addTT(creatureName.toString());
 
 					player->sendSystemMessage("skl_use", "sys_scentmask_success", params);

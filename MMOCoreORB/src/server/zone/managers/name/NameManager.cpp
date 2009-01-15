@@ -147,7 +147,7 @@ inline bool NameManager::isReserved(String name) {
 
 int NameManager::validateName(CreatureObject* obj) {
 	String name = (obj->getCharacterName()).toString();
-	String species = obj->getSpeciesName();
+	String species = obj->getTemplateName();
 
 	return validateName(name, species);
 }

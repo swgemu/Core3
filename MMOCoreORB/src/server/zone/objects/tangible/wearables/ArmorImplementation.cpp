@@ -63,7 +63,7 @@ ArmorImplementation::ArmorImplementation(CreatureObject* creature, uint32 tempCR
 		: ArmorServant(creature, tempCRC, n, tempn, eqp) {
 
 	//objectCRC = String::hashCode(temp);
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	initialize();
@@ -718,22 +718,22 @@ void ArmorImplementation::setArmorStats(int modifier) {
 		luck = luck + 100;
 
 		StringBuffer itemText;
-		itemText << "\\#ffff00" << name.toString() << " (Legendary)";
-		name = UnicodeString(itemText.toString());
+		itemText << "\\#ffff00" << customName.toString() << " (Legendary)";
+		customName = UnicodeString(itemText.toString());
 	} else if (playerRoll > 55000) {
 		modifier = modifier + 50;
 		luck = luck + 50;
 
 		StringBuffer itemText;
-		itemText << "\\#ffff00" << name.toString() << " (Exceptional)";
-		name = UnicodeString(itemText.toString());
+		itemText << "\\#ffff00" << customName.toString() << " (Exceptional)";
+		customName = UnicodeString(itemText.toString());
 	} else if (playerRoll > 12500) {
 		modifier = modifier + 10;
 		luck = luck + 20;
 
 		StringBuffer itemText;
-		itemText << "\\#ffff00" << name.toString();
-		name = UnicodeString(itemText.toString());
+		itemText << "\\#ffff00" << customName.toString();
+		customName = UnicodeString(itemText.toString());
 	}
 
 	maxCondition = 25000 + (luck * System::random(luck));

@@ -85,7 +85,7 @@ public:
 			String charNameSender = player->getFirstName();
 
 			UnicodeString subjectSender("Construction Complete");
-			bodyMsg << "Construction of your " << inso->getName().toString() << " is now complete.  You have " << player->getLotsRemaining() << " lots remaining.";
+			bodyMsg << "Construction of your " << inso->getCustomName().toString() << " is now complete.  You have " << player->getLotsRemaining() << " lots remaining.";
 			UnicodeString bodySender(bodyMsg.toString());
 
 			player->sendMail(mailSender, subjectSender, bodySender, charNameSender);
@@ -93,7 +93,7 @@ public:
 			// Create Waypoint to Structure
 			WaypointObject* waypoint =
 					new WaypointObject(player, player->getNewItemID());
-			waypoint->setName(inso->getName().toString());
+			waypoint->setName(inso->getCustomName().toString());
 			waypoint->setPosition(inso->getPositionX(), 0.0f, inso->getPositionY());
 			waypoint->changeStatus(true);
 

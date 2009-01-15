@@ -1,119 +1,119 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
 #include "../../../managers/item/ItemManager.h"
 
 #include "../TangibleObject.h"
- 
+
 #include "engine/engine.h"
 
 #include "PowerupImplementation.h"
 
 #include "../../../packets.h"
 
-PowerupImplementation::PowerupImplementation(uint64 objID, uint32 tempCRC, const UnicodeString& n, const String& tempn) 
+PowerupImplementation::PowerupImplementation(uint64 objID, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: PowerupServant(objID, WEAPONPOWERUP) {
 	objectCRC = tempCRC;
 	objectID = objID;
-	
-	name = n;
+
+	customName = n;
 	templateName = tempn;
 	templateTypeName = "weapon_name";
-	
+
 	initialize();
 }
 
-PowerupImplementation::PowerupImplementation(uint64 objID) 
+PowerupImplementation::PowerupImplementation(uint64 objID)
 		: PowerupServant(objID, WEAPONPOWERUP) {
 	templateTypeName = "weapon_name";
-	
+
 	initialize();
 }
 
 PowerupImplementation::~PowerupImplementation() {
-	
+
 }
 
-void PowerupImplementation::initialize() { 
+void PowerupImplementation::initialize() {
 
 	objectType = SceneObjectImplementation::TANGIBLE;
 	objectSubType = TangibleObjectImplementation::WEAPONPOWERUP;
-	
+
 	conditionDamage = 0;
 	maxCondition = 100;
 
 	equipped = false;
 	persistent = false;
 	updated = false;
-	
+
 }
 
 void PowerupImplementation::setPowerupStats(int modifier) {
-	
+
 	int maxLevel = 120;
-	
+
 	if (modifier > maxLevel){
 		int diff = System::random(modifier - maxLevel);
 		modifier = maxLevel;
 		modifier += diff;
 	}
-	
+
 	setPowerupUses(100);
-	
+
 	setPowerupType(System::random(1) + 1);
 	setPowerupSubType(System::random(5) + 1);
 
 	if (type == MELEE) {
 		setPowerup0Type(System::random(3) + 1);
 		setPowerup1Type(System::random(3) + 1);
-		setPowerup2Type(System::random(3) + 1);		
+		setPowerup2Type(System::random(3) + 1);
 	} else {
 		if (subType == BARREL || subType == STOCK)
 			setPowerup0Type(System::random(2) + 1);
 		else
 			setPowerup0Type(System::random(3) + 1);
-		
+
 		if (subType == COUPLER || subType == SCOPE) {
 			setPowerup1Type(System::random(2) + 1);
 			setPowerup2Type(System::random(2) + 1);
@@ -124,28 +124,28 @@ void PowerupImplementation::setPowerupStats(int modifier) {
 	}
 
 	setPowerup0Value(((float)System::random(modifier) + modifier) / 4.7f);
-	setPowerup1Value(((float)System::random(modifier) + modifier) / 5.7f);	
+	setPowerup1Value(((float)System::random(modifier) + modifier) / 5.7f);
 	setPowerup2Value(((float)System::random(modifier) + modifier) / 6.3f);
-	
+
 	if (powerup2Type == powerup1Type) {
 		setPowerup2Type(0);
 		setPowerup2Value(0);
 	}
-	
+
 	if (type == RANGED && subType == MUZZLE && powerup0Type == 3 && powerup1Type == 2) {
 			powerup1Type = 0;
 			powerup1Value = 0;
 	}
-	
+
 	if (powerup0Value > 33.34)
 		setPowerup0Value(33.34);
-	
+
 	if (powerup1Value > 16.67)
 		setPowerup1Value(16.67);
-	
+
 	if (powerup2Value > 8.34)
 		setPowerup2Value(8.34);
-	
+
 	if (type == MELEE) {
 		objectCRC = 0x520273B1;
 		templateName = "powerup_weapon_melee";
@@ -185,13 +185,13 @@ void PowerupImplementation::setPowerupStats(int modifier) {
 		objectCRC = 0x6195F9A8;
 		templateName = "powerup_weapon_ranged";
 	}
-	
+
 	generateName();
 }
 
 void PowerupImplementation::generateName() {
 	StringBuffer powerupName;
-	
+
 	switch (type) {
 	case MELEE :
 		switch (powerup0Type) {
@@ -392,7 +392,7 @@ void PowerupImplementation::generateName() {
 				powerupName << " of Loading";
 				break;
 			}
-			break;		
+			break;
 		}
 		break;
 	case MINE :
@@ -400,16 +400,16 @@ void PowerupImplementation::generateName() {
 	case THROWN :
 		break;
 	}
-	
-	name = UnicodeString(powerupName.toString());	
+
+	customName = UnicodeString(powerupName.toString());
 }
 
 void PowerupImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
-		
+
 	Player* player = (Player*) obj;
-	
+
 	AttributeListMessage* alm = new AttributeListMessage((Weapon*) _this);
 	addAttributes(alm);
 
@@ -417,10 +417,10 @@ void PowerupImplementation::generateAttributes(SceneObject* obj) {
 }
 
 void PowerupImplementation::apply(Weapon* weapon) {
-	
+
 	if (weapon == NULL)
 		return;
-	
+
 	switch (type) {
 	case MELEE :
 		switch (powerup0Type) {
@@ -717,20 +717,20 @@ void PowerupImplementation::apply(Weapon* weapon) {
 	}
 	weapon->setPowerupUses(uses);
 	weapon->setUpdated(true);
-	
+
 }
 
 void PowerupImplementation::parseItemAttributes() {
 
 	maxCondition = itemAttributes->getMaxCondition();
 	conditionDamage = maxCondition - itemAttributes->getCurrentCondition();
-	
+
 	String name = "type";
 	type = itemAttributes->getIntAttribute(name);
-	
+
 	name = "subType";
 	subType = itemAttributes->getIntAttribute(name);
-	
+
 	name = "powerup0Type";
 	powerup0Type = itemAttributes->getIntAttribute(name);
 	name = "powerup1Type";
@@ -747,30 +747,30 @@ void PowerupImplementation::parseItemAttributes() {
 
 	name = "uses";
 	uses = itemAttributes->getIntAttribute(name);
-	
+
 }
 
 void PowerupImplementation::remove(Player* player) {
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
-	
+
 	itemManager->deletePlayerItem(player, _this, false);
-	
+
 	player->removeInventoryItem(objectID);
-	
+
 	BaseMessage* msg = new SceneObjectDestroyMessage(objectID);
 	player->sendMessage(msg);
-	
+
 }
 
 void PowerupImplementation::addAttributes(AttributeListMessage* alm) {
 	StringBuffer val0;
 	StringBuffer val1;
 	StringBuffer val2;
-	
+
 	val0 << "+" << powerup0Value << "%";
 	val1 << "+" << powerup1Value << "%";
 	val2 << "+" << powerup2Value << "%";
-	
+
 	switch (type) {
 	case MELEE :
 		switch (powerup0Type) {

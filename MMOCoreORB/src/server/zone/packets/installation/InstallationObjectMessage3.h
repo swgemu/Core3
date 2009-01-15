@@ -57,7 +57,7 @@ public:
 		insertAscii("installation_n"); // STF FileName
 		insertInt(0); //nothing.
 		insertAscii(inso->getTemplateName()); // STF Template
-		insertUnicode(inso->getName()); // Object Name
+		insertUnicode(inso->getCustomName()); // Object Name
 		insertInt(1); // Volume
 
 		String app;

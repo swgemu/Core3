@@ -58,7 +58,7 @@ public:
 			: HairObjectServant(creature->getObjectID() + 0x0a, HAIR) {
 		objectCRC = tempCRC;
 
-		name = n;
+		customName = n;
 
 		templateTypeName = "hair_name";
 		templateName = tempn;

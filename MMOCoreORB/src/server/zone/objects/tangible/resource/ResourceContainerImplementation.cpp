@@ -54,7 +54,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid)
 
 	templateTypeName = "obj_n";
 
-	name = UnicodeString("");
+	customName = UnicodeString("");
 	templateName = "";
 
 	init();
@@ -64,7 +64,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(uint64 oid, uin
 		const String& tempn) : ResourceContainerServant(oid, tempCRC, n, tempn, RESOURCECONTAINER) {
 	templateTypeName = "obj_n";
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();
@@ -74,7 +74,7 @@ ResourceContainerImplementation::ResourceContainerImplementation(CreatureObject*
 		const UnicodeString& n, const String& tempn) : ResourceContainerServant(creature, tempCRC, n, tempn, RESOURCECONTAINER) {
 	templateTypeName = "obj_n";
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();
@@ -180,7 +180,7 @@ void ResourceContainerImplementation::splitContainer(Player* player, int newQuan
 	int oldQuantity = getContents();
 
 	if (newQuantity < oldQuantity) {
-		ResourceContainer* container = new ResourceContainer(player->getNewItemID(), getObjectCRC(), getName(), getTemplateName());
+		ResourceContainer* container = new ResourceContainer(player->getNewItemID(), getObjectCRC(), getCustomName(), getTemplateName());
 		container->setResourceName(getResourceName());
 		container->setContents(newQuantity);
 

@@ -58,7 +58,7 @@ public:
 		insertAscii(rcno->getTemplateTypeName());
 		insertInt(0);
 		insertAscii(rcno->getTemplateName());
-		insertUnicode(rcno->getName());
+		insertUnicode(rcno->getCustomName());
 
 		insertInt(1); // Volume
 		String app;

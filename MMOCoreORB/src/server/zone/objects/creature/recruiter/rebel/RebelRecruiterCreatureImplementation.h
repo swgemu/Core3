@@ -63,7 +63,7 @@ public:
 		factionCRC = String("rebel").hashCode();
 		enemyFactionCRC = String("imperial").hashCode();
 		factionString = "rebel";
-		speciesName = "rebel_recruiter";
+		templateName = "rebel_recruiter";
 	}
 
 	void greetEnemy() {

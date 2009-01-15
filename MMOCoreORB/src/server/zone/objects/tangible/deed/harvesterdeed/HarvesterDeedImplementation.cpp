@@ -11,7 +11,7 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creatur
 		HarvesterDeedServant(creature->getNewItemID(), tempcrc, n, tempn, TangibleObjectImplementation::INSTALLATIONDEED) {
 	objectCRC = tempcrc;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();
@@ -23,7 +23,7 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(uint64 objid, uint32 te
 
 	objectCRC = tempcrc;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();
@@ -38,7 +38,7 @@ HarvesterDeedImplementation::HarvesterDeedImplementation(CreatureObject* creatur
 	templateTypeName = "deed"; // STF
 	templateName = getDefaultTemplateName(objectCRC);
 	info(templateName);
-	name = "";
+	customName = "";
 
 	setSurplusMaintenance((uint32)hino->getSurplusMaintenance());
 	setMaintenanceRate(hino->getMaintenanceRate());

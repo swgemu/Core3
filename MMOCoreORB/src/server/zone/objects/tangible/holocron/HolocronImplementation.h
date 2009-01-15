@@ -61,7 +61,7 @@ public:
 			: HolocronServant(player->getNewItemID(), HOLOCRON) {
 		objectCRC = tempCRC;
 
-		name = n;
+		customName = n;
 
 		templateTypeName = "wearables_name";
 		templateName = tempn;

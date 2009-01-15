@@ -421,7 +421,7 @@ void ZonePacketHandler::handleClientCreateCharacter(Message* pack) {
 
 	player->create(client);
 
-	String species = player->getSpeciesName();
+	String species = player->getTemplateName();
 	String firstName = player->getFirstName();
 	String name = player->getCharacterName().toString();
 

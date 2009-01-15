@@ -9,7 +9,7 @@
 PlayerHouseDeedImplementation::PlayerHouseDeedImplementation(CreatureObject* creature, uint32 tempcrc, const UnicodeString& n, const String& tempn)
 	: PlayerHouseDeedServant(creature->getNewItemID(), tempcrc, n, tempn, BUILDINGDEED) {
 	objectCRC = tempcrc;
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();
@@ -19,7 +19,7 @@ PlayerHouseDeedImplementation::PlayerHouseDeedImplementation(uint64 objid, uint3
 	: PlayerHouseDeedServant(objid, tempcrc, n, tempn, BUILDINGDEED) {
 	objectID = objid;
 	objectCRC = tempcrc;
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();

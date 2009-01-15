@@ -24,7 +24,7 @@ VehicleDeedImplementation::VehicleDeedImplementation(CreatureObject* creature, u
 
 	objectCRC = tempcrc;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();
@@ -36,7 +36,7 @@ VehicleDeedImplementation::VehicleDeedImplementation(uint64 objid, uint32 tempcr
 
 	objectCRC = tempcrc;
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	init();

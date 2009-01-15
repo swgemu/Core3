@@ -57,7 +57,7 @@ public:
 	BankImplementation(CreatureObject* creature) : BankServant(creature->getObjectID() + 0x04) {
 		objectCRC = 0x70FD1394; //0x94, 0x13, 0xFD, 0x70,
 
-		name = UnicodeString("");
+		customName = UnicodeString("");
 
 		templateTypeName = "item_n";
 		templateName = "bank";

@@ -123,7 +123,7 @@ void LootManager::moveObject(TangibleObject* object, Player* player, Creature* c
 	if (player->getGroupObject() != NULL) {
 		StfParameter * param = new StfParameter();
 		param->addTU(player->getObjectID());
-		param->addTT(object->getName());
+		param->addTT(object->getCustomName());
 
 		player->getGroupObject()->sendSystemMessage(player, "base_player", "prose_item_looted_other", param);
 

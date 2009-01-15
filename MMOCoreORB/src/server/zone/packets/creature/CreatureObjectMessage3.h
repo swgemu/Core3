@@ -55,9 +55,9 @@ public:
 			: BaseLineMessage(creo->getObjectID(), 0x4352454F, 3, 0x12) {
 		insertFloat(10); // Complexity
 
-		insertAscii(creo->getStfName());
+		insertAscii(creo->getTemplateTypeName());
 		insertInt(0); // Nothing
-		insertAscii(creo->getSpeciesName());
+		insertAscii(creo->getTemplateName());
 
 		insertUnicode(creo->getCharacterName());
 

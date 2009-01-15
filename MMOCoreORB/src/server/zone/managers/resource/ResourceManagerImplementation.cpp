@@ -736,7 +736,7 @@ void ResourceManagerImplementation::harvestOrganics(Player* player,
 				stfparams->addTO(newRcno->getClassSeven());
 
 				StringBuffer creatureName;
-				creatureName << "@" << creature->getStfName() << ":" << creature->getSpeciesName();
+				creatureName << "@" << creature->getTemplateTypeName() << ":" << creature->getTemplateName();
 				stfparams->addTT(creatureName.toString());
 
 				group->sendSystemMessage(player, "group",

@@ -57,7 +57,7 @@ TicketImplementation::TicketImplementation(Player* player, uint32 tempCRC,
 			: TicketServant(player->getNewItemID(), TRAVELTICKET) {
 	objectCRC = tempCRC;
 
-	name = n;
+	customName = n;
 
 	departurePlanet = dpPlanet;
 	departurePoint = dpPoint;
@@ -90,7 +90,7 @@ TicketImplementation::TicketImplementation(uint64 objectid, uint32 tempCRC, cons
 
 	objectCRC = tempCRC;
 
-	name = n;
+	customName = n;
 	templateTypeName = "wearables_name";
 	templateName = tempn;
 

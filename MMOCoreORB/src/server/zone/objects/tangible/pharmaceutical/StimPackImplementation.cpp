@@ -54,7 +54,7 @@ StimPackImplementation::StimPackImplementation(uint64 oid, uint32 tempCRC, const
 StimPackImplementation::StimPackImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn)
 		: StimPackServant(creature, tempCRC, n, tempn, STIMPACK) {
 
-	name = n;
+	customName = n;
 	templateName = tempn;
 
 	initialize();

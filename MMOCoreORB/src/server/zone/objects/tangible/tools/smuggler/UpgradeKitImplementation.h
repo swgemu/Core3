@@ -62,7 +62,7 @@ public:
 		objectCRC = tempCRC;
 		objectID = objID;
 
-		name = n;
+		customName = n;
 		templateName = tempn;
 
 		setKitType(ktype);

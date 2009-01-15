@@ -78,7 +78,7 @@ public:
 
 		objectCRC = objCRC;
 
-		name = n;
+		customName = n;
 
 		templateTypeName = "terminal_name";
 		templateName = tempn;

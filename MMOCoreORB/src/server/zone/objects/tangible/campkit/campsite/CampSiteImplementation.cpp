@@ -193,7 +193,7 @@ void CampSiteImplementation::addCampObject(uint64 oid, uint32 ocrc, float x, flo
 
 void CampSiteImplementation::addCampObject(uint64 oid, uint32 ocrc, const UnicodeString& n, float x, float z, float y,float oX, float oZ,float oY, float oW) {
 	TangibleObject* tObj = new TangibleObject(oid,TangibleObjectImplementation::CAMPSITE);
-	tObj->setName(n);
+	tObj->setCustomName(n);
 	tObj->setObjectCRC(ocrc);
 	tObj->initializePosition(x,z,y);
 	tObj->setDirection(oX,oZ,oY,oW);
@@ -219,7 +219,7 @@ void CampSiteImplementation::abandonCamp() {
 	SceneObject* scno = campObjects.get(0);
 	if (scno != NULL && scno->isTangible()) {
 		TangibleObject* tObj = (TangibleObject*) scno;
-		tObj->setName(UnicodeString("Abandoned Camp"));
+		tObj->setCustomName(UnicodeString("Abandoned Camp"));
 	}
 }
 

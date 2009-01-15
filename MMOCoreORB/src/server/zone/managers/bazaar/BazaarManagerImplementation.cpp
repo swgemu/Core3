@@ -303,7 +303,7 @@ void BazaarManagerImplementation::addSaleItem(Player* player, uint64 objectid, u
 
 	itemType = obj->getObjectSubType();
 
-	String name = obj->getName().toString();
+	String name = obj->getCustomName().toString();
 
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
 

@@ -110,7 +110,7 @@ public:
 
 		} else {
 
-			System::out << "Name: " << contents->getName().toString() << endl;
+			System::out << "Name: " << contents->getCustomName().toString() << endl;
 			System::out << "Quantity: " << contents->getObjectCount() << endl;
 		}
 	}

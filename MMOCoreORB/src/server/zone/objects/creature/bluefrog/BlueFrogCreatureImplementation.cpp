@@ -63,8 +63,8 @@ BlueFrogCreatureImplementation::BlueFrogCreatureImplementation(uint64 oid) : Blu
 
 	optionsBitmask = 0x108;
 
-	characterName = UnicodeString("a Jawa Trader");
-	speciesName = "bluefrog";
+	customName = UnicodeString("a Jawa Trader");
+	templateName = "bluefrog";
 	objectCRC = 1350586805;
 
 	StringBuffer loggingname;
@@ -81,27 +81,27 @@ BlueFrogCreatureImplementation::~BlueFrogCreatureImplementation() {
 void BlueFrogCreatureImplementation::setBFType(int type) {
 	switch (type) {
 	case JAWA:
-		characterName = UnicodeString("Jawa Trader");
+		customName = UnicodeString("Jawa Trader");
 		objectCRC = 0x508051B5;
 		break;
 	case GUNGAN:
-		characterName = UnicodeString("Gungan Trader");
+		customName = UnicodeString("Gungan Trader");
 		objectCRC = 0xF1E56234;
 		break;
 	case MEDDROID:
-		characterName = UnicodeString("Medical Droid");
+		customName = UnicodeString("Medical Droid");
 		objectCRC = 0x25CD1614;
 		break;
 	case BARTENDER:
-		characterName = UnicodeString("Bartender");
+		customName = UnicodeString("Bartender");
 		objectCRC = 0x4B30B5E4;
 		break;
 	case EWOK:
-		characterName = UnicodeString("Ewok Trader");
+		customName = UnicodeString("Ewok Trader");
 		objectCRC = 0xC25E7435;
 		break;
 	case JEDI:
-		characterName = UnicodeString("Jedi Trader");
+		customName = UnicodeString("Jedi Trader");
 		objectCRC = 0x04340A7D;
 		break;
 	default:

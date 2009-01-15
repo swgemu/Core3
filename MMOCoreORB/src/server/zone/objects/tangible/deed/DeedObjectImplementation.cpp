@@ -12,7 +12,7 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 	objectCRC = tempCRC;
 	templateTypeName = "deed";
 	templateName = tempname;
-	name = n;
+	customName = n;
 
 	init();
 }
@@ -22,7 +22,7 @@ DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uin
 	objectCRC = tempCRC;
 	templateTypeName = "deed";
 	templateName = tempname;
-	name = n;
+	customName = n;
 
 	init();
 }
@@ -33,7 +33,7 @@ DeedObjectImplementation::DeedObjectImplementation(uint64 oid, uint32 tempCRC, c
 	objectCRC = tempCRC;
 	templateTypeName = "deed";
 	templateName = tempname;
-	name = n;
+	customName = n;
 
 	init();
 }
@@ -43,7 +43,7 @@ DeedObjectImplementation::DeedObjectImplementation(CreatureObject* creature, uin
 	objectCRC = tempCRC;
 	templateTypeName = "deed";
 	templateName = tempname;
-	name = n;
+	customName = n;
 
 	init();
 }

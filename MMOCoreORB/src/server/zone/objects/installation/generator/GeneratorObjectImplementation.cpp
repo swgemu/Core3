@@ -29,7 +29,7 @@ GeneratorObjectImplementation::GeneratorObjectImplementation(uint64 oid, Generat
 	init();
 
 	objectCRC = deed->getTargetFile().hashCode();
-	name = deed->getTargetName();
+	customName = deed->getTargetName();
 	file = deed->getTargetFile();
 	templateName = deed->getTargetTemplate();
 

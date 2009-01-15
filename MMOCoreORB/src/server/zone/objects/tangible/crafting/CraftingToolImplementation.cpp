@@ -54,7 +54,7 @@ CraftingToolImplementation::CraftingToolImplementation(uint64 object_id, uint32 
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
 	templateName = tempn;
-	name = n;
+	customName = n;
 	init();
 }
 
@@ -64,7 +64,7 @@ CraftingToolImplementation::CraftingToolImplementation(CreatureObject* creature,
 	objectCRC = tempCRC;
 	templateTypeName = "obj_n";
 	templateName = tempn;
-	name = n;
+	customName = n;
 	init();
 }
 

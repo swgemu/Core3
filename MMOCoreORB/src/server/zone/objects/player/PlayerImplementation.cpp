@@ -239,7 +239,7 @@ void PlayerImplementation::initialize() {
 	datapad = NULL;
 	equippedItems = NULL;
 
-	stfName = "species";
+	templateTypeName = "species";
 
 	// modifiers
 	weaponSpeedModifier = 1;
@@ -3483,7 +3483,7 @@ void PlayerImplementation::applyPowerup(uint64 powerupID, uint64 targetID) {
 
 	if (weapon->getPowerupUses() == 0) {
 		StringBuffer msg;
-		msg << "You powerup your " << weapon->getName().toString() << " with " << powerup->getName().toString();
+		msg << "You powerup your " << weapon->getCustomName().toString() << " with " << powerup->getCustomName().toString();
 		sendSystemMessage(msg.toString());
 		powerup->apply(weapon);
 		powerup->remove(_this);
@@ -5634,7 +5634,7 @@ void PlayerImplementation::sendItemInsuranceMenu(InsuranceTerminal* terminal) {
 
 	for (int i = 0; i < insurableItems.size(); i++) {
 		TangibleObject* item = insurableItems.get(i);
-		insuranceMenu->addMenuItem(item->getName().toString(), item->getObjectID());
+		insuranceMenu->addMenuItem(item->getCustomName().toString(), item->getObjectID());
 	}
 
 	addSuiBox(insuranceMenu);

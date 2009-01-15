@@ -63,7 +63,7 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const Strin
 		: WeaponServant(creature->getNewItemID(), WEAPON) {
 	objectCRC = temp.hashCode();
 
-	name = n;
+	customName = n;
 
 	type = tp;
 	setCategory(cat);
@@ -629,23 +629,23 @@ void WeaponImplementation::setWeaponStats(int modifier){
 		setMaxDamage(maxDamage * 3);
 
 		StringBuffer itemText;
-		itemText << "\\#ffff00" << name.toString() << " (Legendary)";
-		name = UnicodeString(itemText.toString());
+		itemText << "\\#ffff00" << customName.toString() << " (Legendary)";
+		customName = UnicodeString(itemText.toString());
 	} else if (playerRoll > 60000) {
 		modifier = modifier + 100;
 		luck = luck + 120;
 		setMaxDamage(maxDamage * 1.5);
 
 		StringBuffer itemText;
-		itemText << "\\#ffff00" << name.toString() << " (Exceptional)";
-		name = UnicodeString(itemText.toString());
+		itemText << "\\#ffff00" << customName.toString() << " (Exceptional)";
+		customName = UnicodeString(itemText.toString());
 	} else if (playerRoll > 11000) {
 		modifier = modifier + 35;
 		luck = luck + 65;
 
 		StringBuffer itemText;
-		itemText << "\\#ffff00" << name.toString();
-		name = UnicodeString(itemText.toString());
+		itemText << "\\#ffff00" << customName.toString();
+		customName = UnicodeString(itemText.toString());
 	}
 
 	if (luck * System::random(100) > 1500) {
@@ -932,7 +932,7 @@ void WeaponImplementation::removePowerup(Player* player, bool notify) {
 
 	if (notify) {
 		StringBuffer txt;
-		txt << "The powerup on your " << name.toString() << " has expired.";
+		txt << "The powerup on your " << customName.toString() << " has expired.";
 		player->sendSystemMessage(txt.toString());
 	}
 

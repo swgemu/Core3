@@ -1,44 +1,44 @@
 /*
 Copyright (C) 2007 <SWGEmu>
- 
+
 This File is part of Core3.
- 
-This program is free software; you can redistribute 
-it and/or modify it under the terms of the GNU Lesser 
+
+This program is free software; you can redistribute
+it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
-Foundation; either version 2 of the License, 
+Foundation; either version 2 of the License,
 or (at your option) any later version.
- 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU Lesser General Public License for
 more details.
- 
-You should have received a copy of the GNU Lesser General 
+
+You should have received a copy of the GNU Lesser General
 Public License along with this program; if not, write to
 the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
- 
-Linking Engine3 statically or dynamically with other modules 
-is making a combined work based on Engine3. 
-Thus, the terms and conditions of the GNU Lesser General Public License 
+
+Linking Engine3 statically or dynamically with other modules
+is making a combined work based on Engine3.
+Thus, the terms and conditions of the GNU Lesser General Public License
 cover the whole combination.
- 
-In addition, as a special exception, the copyright holders of Engine3 
-give you permission to combine Engine3 program with free software 
-programs or libraries that are released under the GNU LGPL and with 
-code included in the standard release of Core3 under the GNU LGPL 
-license (or modified versions of such code, with unchanged license). 
-You may copy and distribute such a system following the terms of the 
-GNU LGPL for Engine3 and the licenses of the other code concerned, 
-provided that you include the source code of that other code when 
+
+In addition, as a special exception, the copyright holders of Engine3
+give you permission to combine Engine3 program with free software
+programs or libraries that are released under the GNU LGPL and with
+code included in the standard release of Core3 under the GNU LGPL
+license (or modified versions of such code, with unchanged license).
+You may copy and distribute such a system following the terms of the
+GNU LGPL for Engine3 and the licenses of the other code concerned,
+provided that you include the source code of that other code when
 and as the GNU LGPL requires distribution of source code.
- 
-Note that people who make modified versions of Engine3 are not obligated 
-to grant this special exception for their modified versions; 
-it is their choice whether to do so. The GNU Lesser General Public License 
-gives permission to release a modified version without this exception; 
-this exception also makes it possible to release a modified version 
+
+Note that people who make modified versions of Engine3 are not obligated
+to grant this special exception for their modified versions;
+it is their choice whether to do so. The GNU Lesser General Public License
+gives permission to release a modified version without this exception;
+this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
@@ -57,7 +57,7 @@ AttachmentImplementation::AttachmentImplementation(uint64 objID, int type) :
 
 	attachmentType = type;
 	objectID = objID;
-	
+
 	initialize();
 }
 
@@ -65,31 +65,31 @@ AttachmentImplementation::~AttachmentImplementation()
 {
 }
 
-void AttachmentImplementation::initialize() { 
- 	
+void AttachmentImplementation::initialize() {
+
 	skillMod0Type = 0;
 	skillMod0Value = 0;
-	
+
 	skillMod1Type = 0;
 	skillMod1Value = 0;
-	
+
 	skillMod2Type = 0;
 	skillMod2Value = 0;
-	
+
 	objectType = SceneObjectImplementation::TANGIBLE;
 
 	if (attachmentType == ARMOR) {
 		objectCRC = 0xDF144F5C;
 		objectSubType = TangibleObjectImplementation::ARMORATTACHMENT;
-		name = UnicodeString("\\#ffff00Armor Attachment");
+		customName = UnicodeString("\\#ffff00Armor Attachment");
 		templateName = "gem_armor";
 	} else {
 		objectCRC = 0xC0FCFE34;
 		objectSubType = TangibleObjectImplementation::CLOTHINGATTACHMENT;
-		name = UnicodeString("\\#ffff00Clothing Attachment");
+		customName = UnicodeString("\\#ffff00Clothing Attachment");
 		templateName = "gem_clothing";
 	}
-	
+
 	templateTypeName = "weapon_name";
 
 	persistent = false;
@@ -98,7 +98,7 @@ void AttachmentImplementation::initialize() {
 }
 
 void AttachmentImplementation::parseItemAttributes() {
-	
+
 	String name = "skillMod0Type";
 	skillMod0Type = itemAttributes->getIntAttribute(name);
 	name = "skillMod0Value";
@@ -108,23 +108,23 @@ void AttachmentImplementation::parseItemAttributes() {
 	skillMod1Type = itemAttributes->getIntAttribute(name);
 	name = "skillMod1Value";
 	skillMod1Value = itemAttributes->getIntAttribute(name);
-	
+
 	name = "skillMod2Type";
 	skillMod2Type = itemAttributes->getIntAttribute(name);
 	name = "skillMod2Value";
 	skillMod2Value = itemAttributes->getIntAttribute(name);
-	
+
 }
 
 void AttachmentImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;
-		
+
 	Player* player = (Player*) obj;
-	
+
 	AttributeListMessage* alm = new AttributeListMessage(_this);
 	addAttributes(alm);
-	
+
 	player->sendMessage(alm);
 }
 
@@ -189,7 +189,7 @@ int AttachmentImplementation::getSkillModValue(int index) {
 int AttachmentImplementation::getBestSkillMod() {
 	int index = -1;
 	int skillModValue = -26;
-	
+
 	if (skillMod0Value > skillModValue) {
 		skillModValue = skillMod0Value;
 		index = 0;
@@ -206,7 +206,7 @@ int AttachmentImplementation::getBestSkillMod() {
 }
 
 void AttachmentImplementation::setSkillMods(int modifier) {
-	
+
 	int maxLevel = 120;
 
 	if (modifier > maxLevel){
@@ -215,25 +215,25 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 		modifier = maxLevel;
 		modifier += diff;
 	}
-	
+
 	int luck = (System::random(100)) + (modifier/4);
-		
+
 	if (System::random(1000) == 7)
 		luck = luck * 2;
-	
+
 	if (System::random(50000) == 77)
 		luck = luck * 5;
-		
+
 	if (System::random(1000000) == 777)
 		luck = luck * 10;
-	
+
 	if (System::random(100) == 6)
 		luck = 0;
-		
+
 	modifier = modifier + System::random(10);
-	
+
 	int playerRoll = System::random(1000) * modifier * luck / 1000;
-	
+
 	if (playerRoll > 200000) {
 		luck = luck + 150;
 	} else if (playerRoll > 45000) {
@@ -241,10 +241,10 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 	} else if (playerRoll > 17500) {
 		luck = luck + 50;
 	}
-	
+
 	setSkillMod0Type(System::random(30) + 1);
 	setSkillMod0Value(getModValue(luck, modifier));
-	
+
 	if (System::random(15) == 1) {
 		setSkillMod1Type(System::random(30) + 1);
 		setSkillMod1Value(getModValue(luck, modifier));
@@ -284,7 +284,7 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 		setSkillMod2Type(0);
 		setSkillMod2Value(0);
 	}
-	
+
 	if (skillMod1Type == skillMod0Type || skillMod1Type == skillMod2Type) {
 		setSkillMod1Type(0);
 		setSkillMod1Value(0);
@@ -292,9 +292,9 @@ void AttachmentImplementation::setSkillMods(int modifier) {
 }
 
 int AttachmentImplementation::getModValue(int luck, int modifier){
-	
+
 	int min, mod, result;
-	
+
 	if (modifier > 185){
 		min = 9;
 		mod = modifier % 27;
@@ -311,26 +311,26 @@ int AttachmentImplementation::getModValue(int luck, int modifier){
 		min = 1;
 		mod = modifier % 2;
 	}
-	
+
 	result = min + mod;
 	if (mod == 0){
 		result *= -1;
 	}
-	
+
 	return result;
-	
+
 }
 
 void AttachmentImplementation::remove(Player* player) {
 	ItemManager* itemManager = player->getZone()->getZoneServer()->getItemManager();
-	
+
 	itemManager->deletePlayerItem(player, _this, false);
-	
+
 	player->removeInventoryItem(objectID);
-	
+
 	BaseMessage* msg = new SceneObjectDestroyMessage(objectID);
 	player->sendMessage(msg);
-	
+
 }
 
 void AttachmentImplementation::addAttributes(AttributeListMessage* alm) {

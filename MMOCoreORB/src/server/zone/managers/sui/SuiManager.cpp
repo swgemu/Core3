@@ -490,7 +490,7 @@ void SuiManager::handleManageMaintenance(uint32 boxID, Player* player,
 
 				StringBuffer report;
 				report << "You successfully make a payment of " << maint << " to "
-					<< inso->getName().toString();
+					<< inso->getCustomName().toString();
 
 				player->sendSystemMessage(report.toString());
 

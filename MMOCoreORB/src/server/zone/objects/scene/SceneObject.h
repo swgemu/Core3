@@ -109,6 +109,10 @@ public:
 
 	void setZoneProcessServer(ZoneProcessServerImplementation* processor);
 
+	void setCustomName(const String& n);
+
+	void setCustomName(const UnicodeString& n);
+
 	void setObjectID(unsigned long long oid);
 
 	void setObjectCRC(unsigned int crc);
@@ -167,6 +171,12 @@ public:
 
 	String& getLoggingName();
 
+	UnicodeString& getCustomName();
+
+	String& getTemplateName();
+
+	String& getTemplateTypeName();
+
 	unsigned long long getAssociatedArea();
 
 	bool isPlayer();
@@ -210,6 +220,10 @@ public:
 	bool doKeepObject();
 
 	ZoneProcessServerImplementation* getZoneProcessServer();
+
+	void setTemplateName(const String& tempName);
+
+	void setTemplateTypeName(const String& tempTypeName);
 
 	void setCombatState();
 
@@ -279,6 +293,10 @@ protected:
 	bool _destroy();
 
 	String _return_getLoggingName;
+	String _return_getTemplateName;
+	String _return_getTemplateTypeName;
+
+	UnicodeString _return_getCustomName;
 
 	friend class SceneObjectHelper;
 };
@@ -359,6 +377,10 @@ public:
 
 	void error(const String& message);
 
+	void setCustomName(const String& n);
+
+	void setCustomName(const UnicodeString& n);
+
 	void setObjectID(unsigned long long oid);
 
 	void setObjectCRC(unsigned int crc);
@@ -417,6 +439,12 @@ public:
 
 	String& getLoggingName();
 
+	UnicodeString& getCustomName();
+
+	String& getTemplateName();
+
+	String& getTemplateTypeName();
+
 	unsigned long long getAssociatedArea();
 
 	bool isPlayer();
@@ -458,6 +486,10 @@ public:
 	void switchMovingState();
 
 	bool doKeepObject();
+
+	void setTemplateName(const String& tempName);
+
+	void setTemplateTypeName(const String& tempTypeName);
 
 	void setCombatState();
 
@@ -522,6 +554,10 @@ public:
 protected:
 	String _param0_info__String_bool_;
 	String _param0_error__String_;
+	String _param0_setCustomName__String_;
+	UnicodeString _param0_setCustomName__UnicodeString_;
+	String _param0_setTemplateName__String_;
+	String _param0_setTemplateTypeName__String_;
 	String _param2_addDamageDone__CreatureObject_int_String_;
 };
 

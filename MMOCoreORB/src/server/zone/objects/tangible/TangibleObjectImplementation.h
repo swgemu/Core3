@@ -77,10 +77,6 @@ protected:
 	uint32 templateID;
 	int objectSubType;
 
-	UnicodeString name;
-	String templateTypeName;
-	String templateName;
-
 	String attributeString;
 
 	CustomizationVariables customizationVariables;
@@ -464,13 +460,6 @@ public:
 		return (isWeapon() || isArmor() || isClothing());
 	}
 
-	inline void setName(const String& n) {
-		name = n;
-	}
-
-	inline void setName(const UnicodeString& n) {
-		name = n;
-	}
 
 	inline void setInsured(bool insure) {
 		if (insure) {
@@ -480,32 +469,12 @@ public:
 		}
 	}
 
-	inline UnicodeString& getName() {
-		return name;
-	}
-
 	inline uint32 getTemplateID() {
 		return templateID;
 	}
 
-	inline void setTemplateName(const String& tempName) {
-		templateName = tempName;
-	}
-
-	inline String& getTemplateName() {
-		return templateName;
-	}
-
 	inline void getCustomizationString(String& appearance) {
 		return customizationVariables.toString(appearance);
-	}
-
-	inline void setTemplateTypeName(const String& tempTypeName) {
-		templateTypeName = tempTypeName;
-	}
-
-	inline String& getTemplateTypeName() {
-		return templateTypeName;
 	}
 
 	inline int getObjectCount() {
@@ -567,14 +536,6 @@ public:
 
 	inline bool isContainer() {
 		return (objectSubType == WEARABLECONTAINER || objectSubType == CONTAINER || objectSubType == CONTAINER2);
-	}
-
-	inline bool isPlayer() {
-		return objectSubType == PLAYER;
-	}
-
-	inline bool isNonPlayerCreature()  {
-		return objectSubType == NONPLAYERCREATURE;
 	}
 
 	inline bool isWearableContainer() {

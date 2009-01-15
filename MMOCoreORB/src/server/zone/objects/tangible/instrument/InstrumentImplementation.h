@@ -94,7 +94,7 @@ public:
 		templateTypeName = "obj_n";
 		templateName = tempn;
 
-		name = n;
+		customName = n;
 
 	    setParent((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
 	}
@@ -107,7 +107,7 @@ public:
 		templateTypeName = "obj_n";
 		templateName = tempn;
 
-		name = n;
+		customName = n;
 
 		equipped = equipd;
 	}
