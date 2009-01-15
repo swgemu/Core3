@@ -41,4 +41,3 @@
 --which carries forward this exception.
 
 RunItemLUAFile("objects/campkit/campKit.lua");
-RunItemLUAFile("objects/campkit/campKitLong.lua");
