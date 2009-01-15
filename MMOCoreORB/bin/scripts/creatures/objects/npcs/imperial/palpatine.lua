@@ -99,10 +99,10 @@ palpatine = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/carbine/shared_carbine_ee3.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Palpatine Saber", -- Name ex. 'a Vibrolance'
-	weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
 	weaponMinDamage = 850,
 	weaponMaxDamage = 1200,

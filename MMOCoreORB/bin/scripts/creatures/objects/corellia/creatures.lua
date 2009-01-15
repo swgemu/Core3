@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+ --Copyright (C) 2007 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -58,7 +58,6 @@ RunCreatureFile("objects/corellia/creatures/corellianButterflyWarrior.lua")
 RunCreatureFile("objects/corellia/creatures/corellianButterflyWorker.lua")
 RunCreatureFile("objects/corellia/creatures/crazedDurni.lua")
 RunCreatureFile("objects/corellia/creatures/crimsonSandPanther.lua")
-RunCreatureFile("objects/corellia/creatures/cystCoveredRotGuard.lua")
 RunCreatureFile("objects/corellia/creatures/dalyrake.lua")
 RunCreatureFile("objects/corellia/creatures/dalyrakeHarvester.lua")
 RunCreatureFile("objects/corellia/creatures/dalyrakeMatriarch.lua")
@@ -113,7 +112,6 @@ RunCreatureFile("objects/corellia/creatures/paralopeAcicularDefender.lua")
 RunCreatureFile("objects/corellia/creatures/plumedRasp.lua")
 RunCreatureFile("objects/corellia/creatures/razorCatEviscerator.lua")
 RunCreatureFile("objects/corellia/creatures/rogueBageraset.lua")
-RunCreatureFile("objects/corellia/creatures/rottingPustuleGuard.lua")
 RunCreatureFile("objects/corellia/creatures/sandPanther.lua")
 RunCreatureFile("objects/corellia/creatures/sandPantherCub.lua")
 RunCreatureFile("objects/corellia/creatures/savageHumbaba.lua")
@@ -121,7 +119,6 @@ RunCreatureFile("objects/corellia/creatures/scavengerRat.lua")
 RunCreatureFile("objects/corellia/creatures/sharnaff.lua")
 RunCreatureFile("objects/corellia/creatures/sharnaffBull.lua")
 RunCreatureFile("objects/corellia/creatures/sharnaffRecklessRavager.lua")
-RunCreatureFile("objects/corellia/creatures/sickeningDungMiteWorker.lua")
 RunCreatureFile("objects/corellia/creatures/sliceHound.lua")
 RunCreatureFile("objects/corellia/creatures/startledVreltMother.lua")
 RunCreatureFile("objects/corellia/creatures/swampGurrcat.lua")
