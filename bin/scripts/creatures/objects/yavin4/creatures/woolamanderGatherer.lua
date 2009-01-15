@@ -43,19 +43,13 @@
 woolamanderGatherer = Creature:new {
 	objectName = "woolamanderGatherer",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	
 	gender = "",
 
 	speciesName = "woolamander_gatherer",
-	
 	stfName = "mob/creature_names",
 	objectCRC = 23943354, 
 	socialGroup = "Woolamander",
-	
-
 	level = 29,
-
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -87,9 +81,7 @@ woolamanderGatherer = Creature:new {
 	lightsaber = 0,
 
 	accuracy = 320,
-
 	healer = 0,
-
 	pack = 0,
 	herd = 1,
 	stalker = 0,
@@ -106,10 +98,10 @@ woolamanderGatherer = Creature:new {
 	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 1,
-	weaponMinDamage = 200,
-	weaponMaxDamage = 450,
-	weaponAttackSpeed = 1,
+	weaponEquipped = 0,
+	weaponMinDamage = 280,
+	weaponMaxDamage = 290,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -117,7 +109,7 @@ woolamanderGatherer = Creature:new {
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
+	alternateweaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
 	alternateWeaponAttackSpeed = 0,

@@ -4,13 +4,13 @@ grovoAttack1 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 15,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 100,
@@ -57,10 +57,10 @@ grovoAttack2 = {
 
         requiredWeaponType = NONE,
         
-        range = 11,
-        damageRatio = 2.15,
+        range = 7,
+        damageRatio = 1.2,
         speedRatio = 1.45,
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 0,

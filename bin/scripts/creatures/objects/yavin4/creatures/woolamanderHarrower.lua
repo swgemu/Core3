@@ -43,19 +43,13 @@
 woolamanderHarrower = Creature:new {
 	objectName = "woolamanderHarrower",  -- Lua Object Name
 	creatureType = "ANIMAL",
-	
 	gender = "",
 
 	speciesName = "woolamander_harrower",
-	
 	stfName = "mob/creature_names",
 	objectCRC = 1400086815, 
 	socialGroup = "Woolamander",
-	
-
 	level = 51,
-
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -87,20 +81,15 @@ woolamanderHarrower = Creature:new {
 	lightsaber = 0,
 
 	accuracy = 370,
-
 	healer = 0,
-
 	pack = 1,
 	herd = 1,
 	stalker = 0,
 	killer = 1,
 	aggressive = 1,
 	invincible = 0, 
-
 	
-
 	meleeDefense = 1,  
-	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -109,10 +98,10 @@ woolamanderHarrower = Creature:new {
 	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 1,
-	weaponMinDamage = 300,
-	weaponMaxDamage = 700,
-	weaponAttackSpeed = 1,
+	weaponEquipped = 0,
+	weaponMinDamage = 400,
+	weaponMaxDamage = 510,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -120,7 +109,7 @@ woolamanderHarrower = Creature:new {
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
+	alternateweaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
 	alternateWeaponAttackSpeed = 0,

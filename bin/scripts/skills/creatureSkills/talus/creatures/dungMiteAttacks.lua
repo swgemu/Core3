@@ -4,13 +4,13 @@ dungMiteAttack1 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 10,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -38,13 +38,13 @@ dungMiteAttack2 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 10,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -72,13 +72,13 @@ dungMiteAttack3 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 15,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 100,
@@ -125,13 +125,13 @@ dungMiteAttack4 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 10,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -159,13 +159,13 @@ dungMiteAttack5 = {
         
         requiredWeaponType = NONE,
 
-        range = 30,
+        range = 7,
 
-        damageRatio = 10,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 50,

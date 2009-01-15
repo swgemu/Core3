@@ -45,13 +45,13 @@ fynockAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -79,13 +79,13 @@ fynockAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -113,13 +113,13 @@ fynockAttack3 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -147,13 +147,13 @@ fynockAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 50,
@@ -181,13 +181,13 @@ fynockAttack5 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 50,

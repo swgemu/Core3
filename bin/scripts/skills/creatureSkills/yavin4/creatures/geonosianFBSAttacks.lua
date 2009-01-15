@@ -45,8 +45,8 @@ geonosianFBSAttack1 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 20,
-	damageRatio = 5,
+	range = 7,
+	damageRatio = 1.2,
 	speedRatio = 3,
 	accuracyBonus = 0,
 		
@@ -81,13 +81,13 @@ geonosianFBSAttack2 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -115,13 +115,13 @@ geonosianFBSAttack3 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -149,13 +149,13 @@ geonosianFBSAttack4 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,

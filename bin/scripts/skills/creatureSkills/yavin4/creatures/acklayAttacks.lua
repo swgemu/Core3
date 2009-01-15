@@ -46,13 +46,13 @@ acklayAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 512,
+	damageRatio = 1.2,
 
 	speedRatio = .5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -80,13 +80,13 @@ acklayAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 512,
+	damageRatio = 1.2,
 
 	speedRatio = .5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -114,13 +114,13 @@ acklayAttack3 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 512,
+	damageRatio = 1.2,
 
 	speedRatio = .5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -148,13 +148,13 @@ acklayAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 512,
+	damageRatio = 1.2,
 
 	speedRatio = .5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -182,13 +182,13 @@ acklayAttack5 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 512,
+	damageRatio = 1.2,
 
 	speedRatio = .5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -216,13 +216,13 @@ acklayAttack6 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 512,
+	damageRatio = 1.2,
 
 	speedRatio = .5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 100,
@@ -250,13 +250,13 @@ acklayAttack7 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 512,
+	damageRatio = 1.2,
 
 	speedRatio = .5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 85,
@@ -284,13 +284,13 @@ acklayAttack8 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 512,
+	damageRatio = 1.2,
 
 	speedRatio = .5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -318,13 +318,13 @@ acklayAttack9 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 64,
+	range = 7,
 
-	damageRatio = 512,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 50,
 
 	healthAttackChance = 0,

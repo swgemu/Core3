@@ -45,16 +45,11 @@ woolamanderReaper = Creature:new {
 	creatureType = "ANIMAL",
 	gender = "",
 
-	speciesName = "woolamander_reaper",
-	
+	speciesName = "woolamander_reaper",	
 	stfName = "mob/creature_names",
 	objectCRC = 23943354, 
 	socialGroup = "Woolamander",
-	
-
 	level = 47,
-
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -105,10 +100,10 @@ woolamanderReaper = Creature:new {
 	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 1,
-	weaponMinDamage = 300,
-	weaponMaxDamage = 600,
-	weaponAttackSpeed = 1,
+	weaponEquipped = 0,
+	weaponMinDamage = 375,
+	weaponMaxDamage = 460,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -116,7 +111,7 @@ woolamanderReaper = Creature:new {
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
+	alternateweaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
 	alternateWeaponAttackSpeed = 0,

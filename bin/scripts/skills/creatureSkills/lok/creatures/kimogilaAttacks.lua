@@ -46,13 +46,13 @@ kimogilaAttack1 = {
         
         requiredWeaponType = MELEE,
 
-        range = 20,
+        range = 14,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 20,
+        arearange = 14,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -81,13 +81,13 @@ kimogilaAttack2 = {
         
         requiredWeaponType = MELEE,
 
-        range = 20,
+        range = 14,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 20,
+        arearange = 14,
         accuracyBonus = 0,
                 
         knockdownChance = 90,
@@ -115,13 +115,13 @@ kimogilaAttack3 = {
         
         requiredWeaponType = MELEE,
 
-        range = 20,
+        range = 14,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 20,
+        arearange = 14,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -149,13 +149,13 @@ kimogilaAttack4 = {
         
         requiredWeaponType = MELEE,
 
-        range = 20,
+        range = 14,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 20,
+        arearange = 14,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -183,13 +183,13 @@ kimogilaAttack5 = {
         
         requiredWeaponType = MELEE,
 
-        range = 20,
+        range = 14,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 20,
+        arearange = 14,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -217,13 +217,13 @@ kimogilaAttack6 = {
         
         requiredWeaponType = MELEE,
 
-        range = 20,
+        range = 14,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 20,
+        arearange = 14,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -251,13 +251,13 @@ kimogilaAttack7 = {
         
         requiredWeaponType = MELEE,
 
-        range = 20,
+        range = 14,
 
-        damageRatio = 2,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 20,
+        arearange = 14,
         accuracyBonus = 0,
 
         healthAttackChance = 50,
@@ -296,13 +296,13 @@ kimogilaAttack8 = {
         
         requiredWeaponType = MELEE,
 
-        range = 20,
+        range = 14,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 20,
+        arearange = 14,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -330,13 +330,13 @@ kimogilaAttack9 = {
         
         requiredWeaponType = MELEE,
 
-        range = 20,
+        range = 14,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 20,
+        arearange = 14,
         accuracyBonus = 0,
                 
         knockdownChance = 0,

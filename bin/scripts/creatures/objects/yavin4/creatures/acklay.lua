@@ -69,7 +69,7 @@ acklay = Creature:new {
 	willpower = 20000,
 
 	height = 1.2, -- Size of creature
-	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 30,
 	energy = 45,
 	electricity = 30,
@@ -100,10 +100,10 @@ acklay = Creature:new {
 	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 1,
-	weaponMinDamage = 800,
-	weaponMaxDamage = 1750,
-	weaponAttackSpeed = 1,
+	weaponEquipped = 0,
+	weaponMinDamage = 935,
+	weaponMaxDamage = 1580,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -111,7 +111,7 @@ acklay = Creature:new {
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
+	alternateweaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
 	alternateWeaponAttackSpeed = 0,

@@ -45,13 +45,13 @@ wompAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 12,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -79,13 +79,13 @@ wompAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 12,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -113,13 +113,13 @@ wompAttack3 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 7,
 
-	damageRatio = 12,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 50,
@@ -147,13 +147,13 @@ wompAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 12,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -181,13 +181,13 @@ wompAttack5 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 15,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 100,

@@ -45,13 +45,13 @@ geonosianAcklayAttack1 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -79,13 +79,13 @@ geonosianAcklayAttack2 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -113,13 +113,13 @@ geonosianAcklayAttack3 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -147,13 +147,13 @@ geonosianAcklayAttack4 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -181,13 +181,13 @@ geonosianAcklayAttack5 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -215,13 +215,13 @@ geonosianAcklayAttack6 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -249,13 +249,13 @@ geonosianAcklayAttack7 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 40,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,

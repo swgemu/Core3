@@ -4,13 +4,13 @@ perlekAttack1 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 10,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -38,13 +38,13 @@ perlekAttack2 = {
         
         requiredWeaponType = NONE,
 
-        range = 30,
+        range = 7,
 
-        damageRatio = 10,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 50,
@@ -72,13 +72,13 @@ perlekAttack3 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 10,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -106,13 +106,13 @@ perlekAttack4 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 10,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,

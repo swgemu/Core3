@@ -45,13 +45,13 @@ kliknikAttack1 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -79,13 +79,13 @@ kliknikAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 50,
@@ -113,13 +113,13 @@ kliknikAttack3 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 15,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 100,
@@ -166,13 +166,13 @@ kliknikAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -200,13 +200,13 @@ kliknikAttack5 = {
 	
 	requiredWeaponType = RANGED,
 
-	range = 30,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -234,13 +234,13 @@ kliknikAttack6 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 15,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 100,
@@ -287,13 +287,13 @@ kliknikAttack7 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -321,13 +321,13 @@ kliknikAttack8 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 15,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 0,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 100,
@@ -374,13 +374,13 @@ kliknikAttack9 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -407,13 +407,13 @@ kliknikAttack10 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 50,

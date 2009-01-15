@@ -4,13 +4,13 @@ woolamanderAttack1 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -38,13 +38,13 @@ woolamanderAttack2 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 90,
@@ -72,13 +72,13 @@ woolamanderAttack3 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -106,13 +106,13 @@ woolamanderAttack4 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 3,
 
-        areaRange = 20,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 50,
@@ -151,13 +151,13 @@ woolamanderAttack5 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -185,13 +185,13 @@ woolamanderAttack6 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -219,13 +219,13 @@ woolamanderAttack7 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -253,13 +253,13 @@ woolamanderAttack8 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -287,13 +287,13 @@ woolamanderAttack9 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 75,
@@ -321,13 +321,13 @@ woolamanderAttack10 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -355,13 +355,13 @@ woolamanderAttack11 = {
         
         requiredWeaponType = MELEE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 5,
+        damageRatio = 1.2,
 
         speedRatio = 2,
 
-        areaRange = 15,
+        arearange = 7,
         accuracyBonus = 0,
                 
         knockdownChance = 0,

@@ -45,13 +45,13 @@ gapingSpiderAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 
 	healthAttackChance = 50,
@@ -98,13 +98,13 @@ gapingSpiderAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 25,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	
 	accuracyBonus = 0,
 		
@@ -133,13 +133,13 @@ gapingSpiderAttack3 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 25,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	
 	accuracyBonus = 0,
 		
@@ -168,13 +168,13 @@ gapingSpiderAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 
 	healthAttackChance = 50,
@@ -221,13 +221,13 @@ gapingSpiderAttack5 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 30,
+	range = 7,
 
-	damageRatio = 25,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	
 	accuracyBonus = 0,
 		
@@ -256,13 +256,13 @@ gapingSpiderAttack6 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 25,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 0,
+	arearange = 7,
 	
 	accuracyBonus = 0,
 		
@@ -291,13 +291,13 @@ gapingSpiderAttack7 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 15,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 30,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 100,
@@ -344,13 +344,13 @@ gapingSpiderAttack8 = {
         
         requiredWeaponType = NONE,
 
-        range = 10,
+        range = 7,
 
-        damageRatio = 15,
+        damageRatio = 1.2,
 
         speedRatio = 4,
 
-        areaRange = 10,
+        arearange = 7,
         accuracyBonus = 0,
 
         healthAttackChance = 100,
@@ -397,13 +397,13 @@ gapingSpiderAttack9 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
-	areaRange = 30,
+	arearange = 7,
 	accuracyBonus = 0,
 
 	healthAttackChance = 50,

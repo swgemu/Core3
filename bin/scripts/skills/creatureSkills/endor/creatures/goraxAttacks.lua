@@ -45,13 +45,13 @@ goraxAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 25,
+	range = 7,
 
-	damageRatio = 1024,
+	damageRatio = 1.2,
 
 	speedRatio = 1,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 500,
 		
 	knockdownChance = 0,
@@ -79,13 +79,13 @@ goraxAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 25,
+	range = 7,
 
-	damageRatio = 1024,
+	damageRatio = 1.2,
 
 	speedRatio = 1,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 500,
 		
 	knockdownChance = 90,
@@ -113,13 +113,13 @@ goraxAttack3 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 1024,
+	damageRatio = 1.2,
 
 	speedRatio = 1.5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 500,
 		
 	knockdownChance = 0,
@@ -147,13 +147,13 @@ goraxAttack4 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 1024,
+	damageRatio = 1.2,
 
 	speedRatio = 1.5,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 500,
 		
 	knockdownChance = 90,
@@ -181,13 +181,13 @@ goraxAttack5 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 1024,
+	damageRatio = 1.2,
 
 	speedRatio = 1.5,
 
-	areaRange = 30,
+	arearange = 7,
 	accuracyBonus = 500,
 		
 	knockdownChance = 0,

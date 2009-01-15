@@ -42,16 +42,14 @@
 --which carries forward this exception.
 geonosianEnhancedKwi = Creature:new {
       objectName = "geonosianEnhancedKwi",  -- Lua Object Name
-      creatureType = "ANIMAL",
-      
+      creatureType = "ANIMAL",      
       gender = "",
-
-      stfName = "Enhanced Kwi",
+      
+	  speciesName = "geonosian_enhanced_kwi",
+	  stfName = "mob/creature_names",
       objectCRC = 2111021739, 
       socialGroup = "self", 
-
-      level = 106,
-      
+      level = 106,     
 
       combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
@@ -105,10 +103,10 @@ geonosianEnhancedKwi = Creature:new {
       weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
       weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
       weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      weaponEquipped = 1,
-      weaponMinDamage = 350,
-      weaponMaxDamage = 800,
-      weaponAttackSpeed = 1,
+      weaponEquipped = 0,
+      weaponMinDamage = 690,
+      weaponMaxDamage = 1090,
+      weaponAttackSpeed = 2,
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -116,7 +114,7 @@ geonosianEnhancedKwi = Creature:new {
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
       alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      alternateWeaponEquipped = 0,
+      alternateweaponEquipped = 0,
       alternateWeaponMinDamage = 0,
       alternateWeaponMaxDamage = 0,
       alternateWeaponAttackSpeed = 0,
