@@ -179,14 +179,19 @@ void CraftingToolImplementation::sendTo(Player* player, bool doClose) {
 	if (client == NULL)
 		return;
 	SceneObjectImplementation::create(client);
-	if (container != NULL)
-		link(client, container);
+
+	if (parent != NULL)
+		link(client, parent);
+
 	TangibleObjectMessage3* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
 	client->sendMessage(tano3);
+
 	TangibleObjectMessage6* tano6 = new TangibleObjectMessage6((TangibleObject*) _this);
 	client->sendMessage(tano6);
+
 	if (doClose)
 		SceneObjectImplementation::close(client);
+
 	generateAttributes(player);
 }
 
@@ -428,7 +433,7 @@ uint64 CraftingToolImplementation::findCraftingStation(Player* player, float& wo
 void CraftingToolImplementation::setWorkingTano(TangibleObject* tano){
 	if (currentTano != NULL) {
 
-		currentTano->setContainer(NULL);
+		currentTano->setParent(NULL);
 		currentTano->finalize();
 		currentTano = NULL;
 	}
@@ -559,7 +564,7 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(currentTano->getObjectID());
 			player->sendMessage(destroy);
 
-			currentTano->setContainer(NULL);
+			currentTano->setParent(NULL);
 			currentTano->finalize();
 
 		}
@@ -578,7 +583,7 @@ void CraftingToolImplementation::cleanUp(Player* player) {
 			SceneObjectDestroyMessage* destroy = new SceneObjectDestroyMessage(tano->getObjectID());
 			player->sendMessage(destroy);
 
-			tano->setContainer(NULL);
+			tano->setParent(NULL);
 			tano->finalize();
 		}
 

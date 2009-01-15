@@ -159,7 +159,7 @@ bool PlayerManagerImplementation::create(Player* player, uint32 sessionkey) {
 
 	String appearance;
 	String playApp;
-	player->getCharacterAppearance(playApp);
+	player->getCustomizationString(playApp);
 
 	BinaryData cust(playApp);
 	cust.encode(appearance);
@@ -494,7 +494,7 @@ void PlayerManagerImplementation::loadFromDatabase(Player* player) {
 	BinaryData cust(appearance);
 	String custStr;
 	cust.decode(custStr);
-	player->setCharacterAppearance(custStr);
+	player->setCustomizationString(custStr);
 
 	String hairData = character->getString(28);
 	BinaryData hair(hairData);
@@ -1586,7 +1586,7 @@ void PlayerManagerImplementation::updatePlayerAppearanceToDatabase(Player* playe
 
 	String appearance;
 	String playApp;
-	player->getCharacterAppearance(playApp);
+	player->getCustomizationString(playApp);
 	BinaryData cust(playApp);
 	cust.encode(appearance);
 

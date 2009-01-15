@@ -105,15 +105,13 @@ protected:
 	UnicodeString characterName; //character name
 	String terrainName;
 
-	CustomizationVariables customization;
-	//String customization;
+	//CustomizationVariables customization;
 	String raceName; //species
 	String speciesName; //species
 	String gender;
 
 	String hairObject; //hair object iff String
 	CustomizationVariables hairCustomization;
-	//String hairData; //hair customization String
 
 	String stfName;
 
@@ -192,11 +190,7 @@ protected:
 	uint64 stateBitmask;
 	uint64 oldStateBitmask;
 
-	uint32 creatureBitmask;
-
 	MountCreature* mount;
-	int conditionDamage;
-	int maxCondition;
 	Time mountCooldown;
 
 	uint64 creatureLinkID;
@@ -264,7 +258,6 @@ protected:
 	uint32 shockWounds;
 
 	// misc
-	uint32 pvpStatusBitmask;
 	uint32 faction;
 	uint8 factionRank;
 
@@ -1157,25 +1150,10 @@ public:
 		terrainName = name;
 	}
 
-	inline void setCharacterAppearance(const String& cust) {
-		customization = cust;
-	}
-
 	inline void setHairAppearance(const String& cust) {
 		hairCustomization = cust;
 	}
 
-	inline void setAppearanceAttribute(uint8 type, uint8 value) {
-		customization.setVariable(type, value);
-
-		// TODO send packet update?
-	}
-
-	inline void setAppearanceAttribute(String type, uint8 value) {
-		customization.setVariable(type, value);
-
-		// TODO send packet update?
-	}
 
 	inline void setHairAppearanceAttribute(uint8 type, uint8 value) {
 		hairCustomization.setVariable(type, value);
@@ -1550,11 +1528,6 @@ public:
 
 	inline String& getTerrainName() {
 		return terrainName;
-	}
-
-	inline void getCharacterAppearance(String& appearance) {
-		customization.toString(appearance);
-		//appearance = customization;
 	}
 
 	inline void getHairAppearance(String& appearance) {
@@ -2038,14 +2011,6 @@ public:
 
 	inline uint8 getFactionRank() {
 		return factionRank;
-	}
-
-	inline void setCreatureBitmask(uint32 bit) {
-		creatureBitmask = bit;
-	}
-
-	inline uint32 getCreatureBitmask() {
-		return creatureBitmask;
 	}
 
 	uint64 getTargetID();

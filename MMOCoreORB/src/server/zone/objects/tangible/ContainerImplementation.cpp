@@ -74,7 +74,7 @@ ContainerImplementation::~ContainerImplementation() {
 		item->release();
 
 		if (item->isTangible())
-			((TangibleObject*) item)->setContainer(NULL);
+			((TangibleObject*) item)->setParent(NULL);
 
 		item->finalize();
 	}
@@ -99,7 +99,7 @@ void ContainerImplementation::removeObject(int index) {
 	items.remove(index);
 
 	if (item->isTangible())
-		((TangibleObject*) item)->setContainer(NULL);
+		((TangibleObject*) item)->setParent(NULL);
 
 	item->release();
 }
@@ -113,7 +113,7 @@ void ContainerImplementation::removeObject(uint64 oid) {
 	items.drop(oid);
 
 	if (item != NULL && item->isTangible())
-		((TangibleObject*) item)->setContainer(NULL);
+		((TangibleObject*) item)->setParent(NULL);
 
 	item->release();
 }
@@ -134,8 +134,8 @@ void ContainerImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	if (container != NULL)
-		link(client, container);
+	if (parent != NULL)
+		link(client, parent);
 
 	BaseMessage* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
 	client->sendMessage(tano3);

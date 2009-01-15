@@ -61,7 +61,7 @@ which carries forward this exception.
 BlueFrogCreatureImplementation::BlueFrogCreatureImplementation(uint64 oid) : BlueFrogCreatureServant(oid) {
 	setType(CreatureImplementation::TRAINER);
 
-	creatureBitmask = 0x108;
+	optionsBitmask = 0x108;
 
 	characterName = UnicodeString("a Jawa Trader");
 	speciesName = "bluefrog";

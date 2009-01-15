@@ -67,7 +67,7 @@ GenericItemImplementation::GenericItemImplementation(CreatureObject* creature, u
 	name = n;
 	templateName = tempn;
 
-	setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
+	setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 
 	setGenericItemType(gitype);
 }

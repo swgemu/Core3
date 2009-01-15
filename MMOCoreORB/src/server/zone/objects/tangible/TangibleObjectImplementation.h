@@ -67,8 +67,6 @@ class BuildingObject;
 
 class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
-	Zone* zone;
-
 	int conditionDamage;
 	int maxCondition;
 
@@ -79,17 +77,13 @@ protected:
 	uint32 templateID;
 	int objectSubType;
 
-	SceneObject* container;
-
-	BuildingObject* building;
-
 	UnicodeString name;
 	String templateTypeName;
 	String templateName;
 
 	String attributeString;
 
-	CustomizationVariables customizationVars;
+	CustomizationVariables customizationVariables;
 
 	int objectCount;
 
@@ -379,14 +373,6 @@ public:
 
 	virtual void addAttributes(AttributeListMessage* alm);
 
-	// setters and getters
-	//inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
-	inline void setContainer(SceneObject* cont, uint32 type = 0x04) {
-		parent = cont;
-		container = cont;
-		linkType = type;
-	}
-
 	inline void setPersistent(bool pers) {
 		persistent = pers;
 	}
@@ -400,7 +386,7 @@ public:
 	}
 
 	inline void setCustomizationString(String& cust) {
-		customizationVars = cust;
+		customizationVariables = cust;
 	}
 
 	inline void setCondition(int current, int max){
@@ -420,11 +406,11 @@ public:
 	}
 
 	inline void setCustomizationVariable(uint8 type, uint16 value) {
-		customizationVars.setVariable(type, value);
+		customizationVariables.setVariable(type, value);
 	}
 
 	inline void setCustomizationVariable(const String type, uint8 value) {
-		customizationVars.setVariable(type, value);
+		customizationVariables.setVariable(type, value);
 	}
 
 	inline void setCraftersName(String& n){
@@ -478,10 +464,6 @@ public:
 		return (isWeapon() || isArmor() || isClothing());
 	}
 
-	inline SceneObject* getContainer() {
-		return container;
-	}
-
 	inline void setName(const String& n) {
 		name = n;
 	}
@@ -515,7 +497,7 @@ public:
 	}
 
 	inline void getCustomizationString(String& appearance) {
-		return customizationVars.toString(appearance);
+		return customizationVariables.toString(appearance);
 	}
 
 	inline void setTemplateTypeName(const String& tempTypeName) {
@@ -585,6 +567,14 @@ public:
 
 	inline bool isContainer() {
 		return (objectSubType == WEARABLECONTAINER || objectSubType == CONTAINER || objectSubType == CONTAINER2);
+	}
+
+	inline bool isPlayer() {
+		return objectSubType == PLAYER;
+	}
+
+	inline bool isNonPlayerCreature()  {
+		return objectSubType == NONPLAYERCREATURE;
 	}
 
 	inline bool isWearableContainer() {

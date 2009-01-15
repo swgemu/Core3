@@ -66,6 +66,8 @@ which carries forward this exception.
 
 #include "../../managers/player/PlayerManager.h"
 
+#include "../tangible/TangibleObjectImplementation.h"
+
 SceneObjectImplementation::SceneObjectImplementation() : SceneObjectServant(), QuadTreeEntry(), Logger() {
 	objectID = 0;
 	objectType = 0;
@@ -866,4 +868,13 @@ void SceneObjectImplementation::warpTo(float x, float z, float y, uint64 parentI
 	//setIgnoreMovementTests(10);
 
 	insertToZone(zone);
+}
+
+bool SceneObjectImplementation::isPlayer() {
+	//return ((objectType == TANGIBLE) && ((TangibleObjectImplementation*)this)->isPlayer());
+	return objectType == PLAYER;
+}
+
+bool SceneObjectImplementation::isNonPlayerCreature() {
+	return objectType == NONPLAYERCREATURE;
 }

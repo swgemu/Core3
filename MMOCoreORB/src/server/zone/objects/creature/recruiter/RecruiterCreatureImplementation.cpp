@@ -56,7 +56,7 @@ which carries forward this exception.
 RecruiterCreatureImplementation::RecruiterCreatureImplementation(uint64 oid) : RecruiterCreatureServant(oid) {
 	setType(CreatureImplementation::RECRUITER);
 
-	creatureBitmask = 0x108;
+	optionsBitmask = 0x108;
 
 	StringBuffer loggingname;
 	loggingname << "Recruiter = 0x" << oid;

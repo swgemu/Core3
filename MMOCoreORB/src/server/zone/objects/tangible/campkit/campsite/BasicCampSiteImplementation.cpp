@@ -77,15 +77,12 @@ BasicCampSiteImplementation::~BasicCampSiteImplementation() {
 
 	abandonEvent = NULL;
 	visitor = NULL;
-	container = NULL;
 	zone = NULL;
 }
 
 void BasicCampSiteImplementation::init() {
 	persistent = false;
 	updated = false;
-
-	building = NULL;
 
 	objectCount = 0;
 

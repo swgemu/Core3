@@ -148,7 +148,7 @@ void CraftingManagerImplementation::createTangibleObject(Player* player,
 	TangibleObject* tano = generateTangibleObject(player, draftSchematic);
 
 	// Link TangibleObject to the CraftingTool
-	tano->setContainer(craftingTool);
+	tano->setParent(craftingTool);
 
 	// Send TangibleObject baselines to player
 	tano->sendTo(player, true);
@@ -674,7 +674,7 @@ void CraftingManagerImplementation::putComponentBackInInventory(Player* player,
 
 	newComponent->setPersistent(true);
 
-	component->setContainer(NULL);
+	component->setParent(NULL);
 
 	component->destroy(player->getClient());
 

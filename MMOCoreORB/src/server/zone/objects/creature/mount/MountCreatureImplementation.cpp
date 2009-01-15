@@ -74,7 +74,7 @@ MountCreatureImplementation::MountCreatureImplementation(CreatureObject* linkCre
 
 	setType(CreatureImplementation::MOUNT);
 
-	creatureBitmask = 0x1080;
+	optionsBitmask = 0x1080;
 	pvpStatusBitmask = 0x01;
 
 	speed = 21.9f;
@@ -143,7 +143,7 @@ void MountCreatureImplementation::sendTo(Player* player, bool doClose) {
 	}
 
 	if (doClose)
-		close(client);
+		SceneObjectImplementation::close(client);
 }
 
 void MountCreatureImplementation::repair() {
@@ -270,7 +270,7 @@ void MountCreatureImplementation::call() {
 		// Jet Pack
 		if (isJetpack()) {
 			//initializePosition(linkedCreature->getPositionX(), linkedCreature->getPositionZ() + 4, linkedCreature->getPositionY());
-			setAppearanceAttribute("index_hover_height", 40); // 32 = 9m, 64 = 12m
+			setCustomizationVariable("index_hover_height", 40); // 32 = 9m, 64 = 12m
 			//setHeight(4.0f);
 		}
 		//else

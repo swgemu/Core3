@@ -56,7 +56,7 @@ TrainerCreatureImplementation::TrainerCreatureImplementation(uint64 oid, Profess
 	profession = prof;
 	setType(CreatureImplementation::TRAINER);
 
-	creatureBitmask = 0x108;
+	optionsBitmask = 0x108;
 	pvpStatusBitmask = 0;
 
 	StringBuffer loggingname;

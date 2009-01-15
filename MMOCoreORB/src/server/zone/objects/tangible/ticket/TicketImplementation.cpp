@@ -79,7 +79,7 @@ TicketImplementation::TicketImplementation(Player* player, uint32 tempCRC,
 
 	ply = player;
 
-	setContainer((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
+	setParent((TangibleObject*) player->getInventory(), 0xFFFFFFFF);
 
 	setLogging(false);
 	setGlobalLogging(true);

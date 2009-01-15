@@ -102,7 +102,7 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	// CREO3 operands
 	postureState = CreaturePosture::UPRIGHT;
 	stateBitmask = oldStateBitmask = 0;
-	creatureBitmask = 0x80;
+	optionsBitmask = 0x80;
 
 	conditionDamage = 0;
 	maxCondition = 0;
@@ -423,7 +423,7 @@ void CreatureObjectImplementation::sendTo(Player* player, bool doClose) {
 	sendFactionStatusTo(player);
 
 	if (doClose)
-		close(client);
+		SceneObjectImplementation::close(client);
 }
 
 void CreatureObjectImplementation::sendDestroyTo(Player* player) {
@@ -1994,10 +1994,10 @@ Armor* CreatureObjectImplementation::getArmor(int type) {
 
 void CreatureObjectImplementation::addInventoryItem(TangibleObject* item) {
 	if (item->isEquipped() && item->isWeapon()) {
-		item->setContainer(_this, 0x04);
+		item->setParent(_this, 0x04);
 		setWeapon((Weapon*) item);
 	} else
-		item->setContainer(inventory, 0xFFFFFFFF);
+		item->setParent(inventory, 0xFFFFFFFF);
 
 	inventory->addObject(item);
 }
@@ -2072,7 +2072,7 @@ void CreatureObjectImplementation::addInventoryResource(ResourceContainer* rcno)
 			return;
 		}
 
-		rcno->setContainer(inventory, 0xFFFFFFFF);
+		rcno->setParent(inventory, 0xFFFFFFFF);
 
 		inventory->addObject(rcno);
 
@@ -2105,7 +2105,7 @@ void CreatureObjectImplementation::removeInventoryItem(uint64 oid) {
 
 void CreatureObjectImplementation::addLootItem(TangibleObject* item) {
 
-	item->setContainer(lootContainer, 0xFFFFFFFF);
+	item->setParent(lootContainer, 0xFFFFFFFF);
 
 	lootContainer->addObject(item);
 }
@@ -4514,8 +4514,7 @@ void CreatureObjectImplementation::equipItem(TangibleObject* item) {
 		return;
 
 	item->setEquipped(true);
-	item->setContainer(_this, 0x04);
-	item->setParent(_this);
+	item->setParent(_this, 0x04);
 
 	item->setUpdated(true);
 
@@ -4553,8 +4552,7 @@ void CreatureObjectImplementation::unequipItem(TangibleObject* item) {
         stopPlayingMusic();
 
 	item->setEquipped(false);
-	item->setContainer(inventory, 0xFFFFFFFF);
-	item->setParent(inventory);
+	item->setParent(inventory, 0xFFFFFFFF);
 
 	item->setUpdated(true);
 

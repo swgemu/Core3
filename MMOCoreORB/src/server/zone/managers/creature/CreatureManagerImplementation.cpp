@@ -1107,7 +1107,7 @@ int CreatureManagerImplementation::addCreature(lua_State *L) {
 
 	uint32 creatureBitmask = creatureConfig.getIntField("creatureBitmask");
 	if (creatureBitmask != 0)
-		creature->setCreatureBitmask(creatureBitmask);
+		creature->setOptionsBitmask(creatureBitmask);
 
 	creature->setSpawnPosition(x, z, y, cellID);
 

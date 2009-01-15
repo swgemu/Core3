@@ -68,7 +68,7 @@ PharmaceuticalImplementation::PharmaceuticalImplementation(CreatureObject* creat
 	name = n;
 	templateName = tempn;
 
-	setContainer((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
+	setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
 
 	setMedpackType(mptype);
 	initialize();

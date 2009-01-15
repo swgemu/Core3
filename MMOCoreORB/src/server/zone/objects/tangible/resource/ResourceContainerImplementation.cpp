@@ -136,8 +136,8 @@ void ResourceContainerImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	if (container != NULL) {
-		link(client, container);
+	if (parent != NULL) {
+		link(client, parent);
 	}
 
 	BaseMessage* rcno3 = new ResourceContainerObjectMessage3(_this);

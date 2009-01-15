@@ -69,7 +69,7 @@ ShuttleCreatureImplementation::ShuttleCreatureImplementation(const String& Plane
 
 	setType(CreatureImplementation::SHUTTLE);
 
-	creatureBitmask = 0x100;
+	optionsBitmask = 0x100;
 	pvpStatusBitmask = 0;
 
 	arrivalPoint = playerSpawnPoint;

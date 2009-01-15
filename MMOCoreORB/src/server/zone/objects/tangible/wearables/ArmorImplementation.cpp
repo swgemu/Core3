@@ -234,9 +234,9 @@ void ArmorImplementation::initialize() {
 
 	slicable = true;
 
-	customizationVars.setVariable(3, 0);
-	customizationVars.setVariable(2, 0);
-	customizationVars.setVariable(1, 0);
+	customizationVariables.setVariable(3, 0);
+	customizationVariables.setVariable(2, 0);
+	customizationVariables.setVariable(1, 0);
 
 	StringBuffer loggingname;
 	loggingname << "Armor = 0x" << objectID;
@@ -253,8 +253,8 @@ void ArmorImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	if (container != NULL)
-		link(client, container);
+	if (parent != NULL)
+		link(client, parent);
 
 	BaseMessage* tano3 = new TangibleObjectMessage3((TangibleObject*) _this);
 	client->sendMessage(tano3);

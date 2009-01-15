@@ -71,9 +71,9 @@ WeaponImplementation::WeaponImplementation(CreatureObject* creature, const Strin
 	templateName = tempn;
 
 	if ((equipped = eqp))
-		setContainer(creature, 0x04);
+		setParent(creature, 0x04);
 	else
-		setContainer(creature->getInventory(), 0xFFFFFFFF);
+		setParent(creature->getInventory(), 0xFFFFFFFF);
 
 	initialize();
 }
@@ -329,8 +329,8 @@ void WeaponImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	if (container != NULL)
-		link(client, container);
+	if (parent != NULL)
+		link(client, parent);
 
 	BaseMessage* weao3 = new WeaponObjectMessage3((Weapon*) _this);
 	client->sendMessage(weao3);

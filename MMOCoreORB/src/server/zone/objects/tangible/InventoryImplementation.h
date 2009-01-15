@@ -62,14 +62,14 @@ public:
 		templateTypeName = "item_n";
 		templateName = "inventory";
 
-		container = (SceneObject*) creature;
+		parent = (SceneObject*) creature;
 	}
 
 public:
 	const static int MAXUNEQUIPPEDCOUNT = 80;
 
 	virtual ~InventoryImplementation() {
-		setContainer(NULL);
+		parent = NULL;
 	}
 
 	TangibleObject* getItemByMisoKey(String& misKey) {

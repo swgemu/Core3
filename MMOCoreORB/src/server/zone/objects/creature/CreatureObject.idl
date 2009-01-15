@@ -75,7 +75,7 @@ import "buffs/BuffObject";
 
 import "../tangible/resource/ResourceContainer";
 
-interface CreatureObject implements SceneObject {
+interface CreatureObject implements TangibleObject {
 	CreatureObject(unsigned long oid) {
 		super(oid, int type);
 	}
@@ -491,14 +491,11 @@ interface CreatureObject implements SceneObject {
 
 	String getTerrainName();
 
-	void getCharacterAppearance(String appearance);
 	void getHairAppearance(String appearance);
 
 	boolean isOvert();
 
 	unsigned long getStateBitmask();
-
-	unsigned int getCreatureBitmask();
 
 	unsigned char getPosture();
 
@@ -787,8 +784,6 @@ interface CreatureObject implements SceneObject {
 	void setDiseasedState(int str, int type, int duration);
 	void setOnFireState(int str, int type, int duration);
 
-	void setCreatureBitmask(unsigned int bitmask);
-
 	boolean setNextAttackDelay(int del);
 
 	void setCharacterName(const String name);
@@ -796,9 +791,6 @@ interface CreatureObject implements SceneObject {
 
 	void setTerrainName(const String name);
 
-	void setCharacterAppearance(String cust);
-	void setAppearanceAttribute(unsigned char type, unsigned char value);
-	void setAppearanceAttribute(String type, unsigned char value);
 	void updateCharacterAppearance();
 
 	void setHairAppearance(String cust);

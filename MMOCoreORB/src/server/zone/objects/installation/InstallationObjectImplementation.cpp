@@ -102,15 +102,12 @@ InstallationObjectImplementation::~InstallationObjectImplementation() {
 }
 
 void InstallationObjectImplementation::init() {
-	container = NULL;
 	zone = NULL;
 
 	persistent = false;
 	updated = false;
 
 	ownerID = 0;
-
-	building = NULL;
 
 	// INSO6 operands
 	defenderUpdateCounter = 0;
@@ -151,8 +148,8 @@ void InstallationObjectImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	if (container != NULL)
-		link(client, container);
+	if (parent != NULL)
+		link(client, parent);
 
 	BaseMessage* inso3 = new InstallationObjectMessage3((InstallationObject*) _this);
 	client->sendMessage(inso3);

@@ -64,13 +64,13 @@ public:
 		templateName = tempn;
 
 		if ((equipped = eqp))
-			setContainer(creature, 0x04);
+			setParent(creature, 0x04);
 		else
-			setContainer((SceneObject*) creature->getInventory(), 0xFFFFFFFF);
+			setParent((SceneObject*) creature->getInventory(), 0xFFFFFFFF);
 	}
 
 	~HairObjectImplementation() {
-		setContainer(NULL);
+		setParent(NULL);
 	}
 
 };
