@@ -139,8 +139,8 @@ protected:
 	VectorMap<CreatureObject*, DamageDone*> playerDamageList;
 
 public:
-	static const int NONPLAYERCREATURE = 0x10000000;
-	static const int PLAYER = 0x20000000;
+	static const int NONPLAYERCREATURE = 1;
+	static const int PLAYER = 2;
 	static const int TANGIBLE = 3;
 	static const int GROUP = 4;
 	static const int BUILDING = 5;
