@@ -1027,7 +1027,7 @@ void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatR
 }
 
 void ChatManagerImplementation::printRoomTree(ChatRoom* channel, String name) {
-	if (channel == NULL)
+	/*if (channel == NULL)
 		return;
 
 	name = name + channel->getName();
@@ -1037,7 +1037,7 @@ void ChatManagerImplementation::printRoomTree(ChatRoom* channel, String name) {
 	for (int i = 0; i < channel->getSubRoomsSize(); i++) {
 		ChatRoom* chan = channel->getSubRoom(i);
 		printRoomTree(chan, name + ".");
-	}
+	}*/
 }
 
 ChatRoom* ChatManagerImplementation::getChatRoomByGamePath(ChatRoom* game, const String& path) {

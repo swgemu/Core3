@@ -4172,7 +4172,7 @@ void ObjectControllerMessage::parseHarvestOrganics(Player* player,
 	if (creature == NULL)
 		return;
 
-	System::out << "Name:" << creature->getObjectID() << "\n";
+	//System::out << "Name:" << creature->getObjectID() << "\n";
 
 
 	try {

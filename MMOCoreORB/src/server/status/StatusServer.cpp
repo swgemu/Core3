@@ -117,7 +117,8 @@ Packet* StatusServer::getStatusXMLPacket() {
 	str << "<timestamp>" << timestamp.getMiliTime() << "</timestamp>" << endl;
 	str << "</zoneServer>" << endl;
 
-	pack->insertAscii(str.toString());
+	String xml = str.toString();
+	pack->insertStream(xml.toCharArray(), xml.length());
 
 	return pack;
 }
