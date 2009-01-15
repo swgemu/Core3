@@ -40,7 +40,7 @@
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
 
-camp_set = {campKit , campKitLong}
+camp_set = {campKit , campKit ,campKit ,campKit ,campKit}
 
 addBFItemSet("Camp Kits" , camp_set);
 

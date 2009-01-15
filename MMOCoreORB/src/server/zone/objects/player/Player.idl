@@ -70,7 +70,7 @@ import "../tangible/powerup/Powerup";
 
 import "../tangible/Datapad";
 import "../tangible/surveytool/SurveyTool";
-import "../tangible/campkit/CampSite";
+import "../tangible/campkit/campsite/CampSite";
 
 import "../group/GroupObject";
 
@@ -719,6 +719,9 @@ interface Player implements CreatureObject {
 	void setCamp(CampSite campSite);
 	CampSite getCamp();
 	boolean hasCamp();
+	int getCampAggroMod();
+	void setCampAggroMod(int mod);
+
 	unsigned long getAvailablePower();
 	void removePower(unsigned long power);
 

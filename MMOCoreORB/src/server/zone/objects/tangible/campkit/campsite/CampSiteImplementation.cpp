@@ -44,27 +44,26 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../../objects.h"
+#include "../../../../objects.h"
 
-#include "../../../managers/planet/PlanetManager.h"
-#include "../../../Zone.h"
-#include "../../../ZoneProcessServerImplementation.h"
+#include "../../../../managers/planet/PlanetManager.h"
+#include "../../../../Zone.h"
+#include "../../../../ZoneProcessServerImplementation.h"
 
 #include "CampSiteImplementation.h"
-#include "../../area/CampActiveArea.h"
-#include "../terminal/camp/CampTerminalImplementation.h"
-#include "events/CampDespawnEvent.h"
-#include "events/CampAbandonEvent.h"
+#include "../../../area/CampActiveArea.h"
+#include "../../terminal/camp/CampTerminalImplementation.h"
+#include "../events/CampDespawnEvent.h"
+#include "../events/CampAbandonEvent.h"
 
-CampSiteImplementation::CampSiteImplementation(Player* player, uint64 oid,CampKit* campKit) : CampSiteServant(oid, MISC) {
+CampSiteImplementation::CampSiteImplementation(Player* player, uint64 oid,CampKit* campKit) : CampSiteServant(oid, CAMPSITE) {
 	objectID = oid;
 
-	objectCRC = 0;
+	objectCRC = 0x897A440;
 
 	name = UnicodeString("0");;
 	defaultName = "";
 
-	terminal = NULL;
 	campOwner = player;
 
 	campArea = NULL;
@@ -78,6 +77,7 @@ CampSiteImplementation::CampSiteImplementation(Player* player, uint64 oid,CampKi
 	abandoned = false;
 	abandonEvent = NULL;
 	despawnEvent = NULL;
+	initializePosition(player->getPositionX(),player->getPositionZ(),player->getPositionY());
 
 	init();
 }
@@ -92,64 +92,6 @@ CampSiteImplementation::~CampSiteImplementation() {
 	visitor = NULL;
 }
 
-void CampSiteImplementation::init() {
-	container = NULL;
-	zone = NULL;
-
-	persistent = false;
-	updated = false;
-
-	building = NULL;
-
-	objectCount = 0;
-
-	objectType = SceneObjectImplementation::TANGIBLE;
-	objectSubType = TangibleObjectImplementation::MISC;
-
-	equipped = false;
-
-	pvpStatusBitmask = 0;
-
-	switch(campType) {
-		case 0:
-			name = UnicodeString("Basic Camp");
-			defaultName = "basic_name";
-			objectCRC = 144155712;
-			campModifier = 60;
-			break;
-		case 1:
-			name = UnicodeString("Improved Camp");
-			defaultName = "improved_name";
-			objectCRC = 1100661709;
-			campModifier = 70;
-			break;
-		case 2:
-			name = UnicodeString("Quality Camp");
-			defaultName = "quality_name";
-			objectCRC = 0x9A8D6B5A;
-			campModifier = 80;
-			break;
-		case 3:
-			name = UnicodeString("Luxury Camp");
-			defaultName = "luxury_name";
-			objectCRC = 0xD3800CD7;
-			campModifier = 100;
-			break;
-		case 4:
-			name = UnicodeString("Elite Camp");
-			defaultName = "elite_name";
-			objectCRC = 1634615374;
-			campModifier = 120;
-			break;
-		default:
-			name = UnicodeString("Basic Camp");
-			defaultName = "basic_name";
-			objectCRC = 144155712;
-			campModifier = 60;
-			break;
-	}
-}
-
 void CampSiteImplementation::sendTo(Player* player, bool doClose) {
 	ZoneClientSession* client = player->getClient();
 	if (client == NULL)
@@ -157,10 +99,10 @@ void CampSiteImplementation::sendTo(Player* player, bool doClose) {
 
 	SceneObjectImplementation::create(client);
 
-	BaseMessage* inso3 = new BuildingObjectMessage3((CampSite*) _this);
+	BaseMessage* inso3 = new TangibleObjectMessage3((CampSite*) _this);
 	client->sendMessage(inso3);
 
-	BaseMessage* inso6 = new BuildingObjectMessage6((CampSite*) _this);
+	BaseMessage* inso6 = new TangibleObjectMessage6((CampSite*) _this);
 	client->sendMessage(inso6);
 
 	if (doClose)
@@ -196,7 +138,7 @@ void CampSiteImplementation::removeCampArea() {
 		calculateXP();
 
 		String type = "camp";
-		campOwner->addXp(type, (int)currentXP, true);
+		campOwner->addXp(type,(int)currentXP, true);
 
 		StringBuffer msg;
 
@@ -205,13 +147,10 @@ void CampSiteImplementation::removeCampArea() {
 		//TODO: check area, insert & remove include activation
 	}
 
+	campArea->forceTriggerExit();
 	PlanetManager* planetManager = campOwner->getZone()->getPlanetManager();
 	planetManager->removeActiveAreaTrigger(campArea);
 	campArea = NULL;
-
-	terminal->removeFromZone();
-	terminal->finalize();
-	terminal = NULL;
 
 	for (int i = 0 ; i < campObjects.size() ; i++) {
 		SceneObject* scno = campObjects.get(i);
@@ -232,34 +171,15 @@ void CampSiteImplementation::createCampArea() {
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 	campArea = planetManager->spawnActiveArea(new CampActiveArea(getPositionX(),  getPositionY(),  getPositionZ(), 5.0f, _this));
+	campArea->forceTriggerEnter();
 
-	despawnEvent = new CampDespawnEvent(_this,getDuration() * 1000);
+	//despawnEvent = new CampDespawnEvent(_this,getDuration() * 1000);
+
+	despawnEvent = new CampDespawnEvent(_this,(duration * 1000));
 	server->addEvent(despawnEvent);
 
 	spawnCampItems();
-
-}
-
-void CampSiteImplementation::spawnCampItems() {
-	float x = getPositionX();
-	float z = getPositionZ();
-	float y = getPositionY();
-
-	switch(campType) {
-		case 0:
-			terminal = new CampTerminal(_this,campOwner->getNewItemID(),(x + 1.5f),z , (y - 1.3f));
-			terminal->setDirection(0.0f, 0.0f, -0.6f, 0.7f);
-			terminal->insertToZone(campOwner->getZone());
-			addCampObject(campOwner->getNewItemID(), 2127813712, (x + 4), z, y, 0.0f, 0.0f, -0.6f, 0.7f);
-			addCampObject(campOwner->getNewItemID(), 1850708683, x, z, (y+1), 0.0f, 0.0f, 0.0f, 0.0f);
-			break;
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		default:
-			break;
-	}
+	insertToZone(campOwner->getZone());
 }
 
 void CampSiteImplementation::addCampObject(uint64 oid, uint32 ocrc, float x, float z, float y,float oX, float oZ,float oY, float oW) {
@@ -270,6 +190,17 @@ void CampSiteImplementation::addCampObject(uint64 oid, uint32 ocrc, float x, flo
 	tObj->insertToZone(campOwner->getZone());
 	campObjects.add(tObj);
 }
+
+void CampSiteImplementation::addCampObject(uint64 oid, uint32 ocrc, const UnicodeString& n, float x, float z, float y,float oX, float oZ,float oY, float oW) {
+	TangibleObject* tObj = new TangibleObject(oid,TangibleObjectImplementation::CAMPSITE);
+	tObj->setName(n);
+	tObj->setObjectCRC(ocrc);
+	tObj->initializePosition(x,z,y);
+	tObj->setDirection(oX,oZ,oY,oW);
+	tObj->insertToZone(campOwner->getZone());
+	campObjects.add(tObj);
+}
+
 /*
  * Disbands the camp.
  */
@@ -285,6 +216,11 @@ void CampSiteImplementation::abandonCamp() {
 	abandonEvent = NULL;
 	campOwner->setCamp(NULL);
 	campOwner->sendSystemMessage("@camp:sys_abandoned_camp");
+	SceneObject* scno = campObjects.get(0);
+	if (scno != NULL && scno->isTangible()) {
+		TangibleObject* tObj = (TangibleObject*) scno;
+		tObj->setName(UnicodeString("Abandoned Camp"));
+	}
 }
 
 /*
@@ -309,6 +245,7 @@ void CampSiteImplementation::enterNotification(Player* player) {
 
 	player->sendSystemMessage("@camp:camp_enter");
 	player->setCampModifier(campModifier);
+	player->setCampAggroMod(aggroMod);
 
 	Time enterTime;
 	visitor->put(player->getObjectID(),enterTime.getTime());
@@ -324,12 +261,13 @@ void CampSiteImplementation::exitNotificaton(Player* player) {
 		return;
 
 	if (player == campOwner && !abandoned) {
-		abandonEvent = new CampAbandonEvent(_this,1000);
+		abandonEvent = new CampAbandonEvent(_this,60000);
 		server->addEvent(abandonEvent);
 	}
 
 	player->sendSystemMessage("@camp:camp_exit");
 	player->setCampModifier(0);
+	player->setCampAggroMod(0);
 
 	addXP(player->getObjectID());
 	visitor->put(player->getObjectID(),0);
@@ -368,7 +306,29 @@ void CampSiteImplementation::addXP(uint64 playerID) {
 	if (enterTime > 0) {
 		uint64 time = 1 + current.getTime() - enterTime;
 
-		float xp = (1.0f * time / duration) * maxXP;
+		float xp = (1.0f * time / 720) * maxXP;
+
 		currentXP += xp;
 	}
 }
+
+void CampSiteImplementation::printPlacmentCode() {
+	StringBuffer code;
+	code << "\n";
+
+	for (int i = 0 ; i < campObjects.size() ; i++) {
+		SceneObject* scno = campObjects.get(i);
+
+		float diffX = getPositionX() - scno->getPositionX();
+		float diffY = getPositionY() - scno->getPositionY();
+
+		code << "addCampObject(campOwner->getNewItemID(), ";
+		code << scno->getObjectCRC() << ", ";
+		code << "(x + " << diffX  << "f), z, (y + " << diffY << "f), ";
+		code << scno->getDirectionX() << "f, "<< scno->getDirectionY() <<"f, " << scno->getDirectionY() << "f, " << scno->getDirectionW() << "f )\n";
+
+	}
+	code << "\n";
+	System::out << code.toString();
+}
+

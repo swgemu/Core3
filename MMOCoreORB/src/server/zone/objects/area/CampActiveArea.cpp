@@ -10,7 +10,7 @@
 
 #include "ActiveArea.h"
 
-#include "../tangible/campkit/CampSite.h"
+#include "../tangible/campkit/campsite/CampSite.h"
 
 /*
  *	CampActiveAreaStub

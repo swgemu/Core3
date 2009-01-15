@@ -92,6 +92,54 @@ public:
 
 	}
 
+	void forceTriggerEnter() {
+		QuadTreeEntry* obj;
+		int closeObjectCount = inRangeObjectCount();
+
+		for (int i = 0; i < closeObjectCount; ++i){
+			obj = getInRangeObject(i);
+			if (obj == NULL || obj == this)
+				continue;
+
+			SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+
+			if (scno->isPlayer()) {
+
+				Player * player = (Player *) scno;
+
+				if (player->getActiveArea() != area && area->containsPoint(player->getPositionX(), player->getPositionY())) {
+					player->setActiveArea(area);
+					area->onEnter(player);
+				}
+			}
+		}
+	}
+
+	void forceTriggerExit() {
+		QuadTreeEntry* obj;
+		int closeObjectCount = inRangeObjectCount();
+
+		for (int i = 0; i < closeObjectCount; ++i){
+			obj = getInRangeObject(i);
+			if (obj == NULL || obj == this)
+				continue;
+
+			SceneObject* scno = (SceneObject*) (((SceneObjectImplementation*) obj)->_getStub());
+
+			if (scno->isPlayer()) {
+
+				Player * player = (Player *) scno;
+
+				if (player->getActiveArea() == area) {
+					player->setActiveArea(NULL);
+					area->onExit(player);
+
+				}
+			}
+		}
+
+	}
+
 
 };
 

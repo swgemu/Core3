@@ -27,25 +27,17 @@ public:
 
 	CampKit(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	void useCharge(Player* player);
-
-	int getUsesRemaining();
-
 	int getXP();
 
 	int getDuration();
 
 	int getCampType();
 
-	void setUsesRemaining(const int us);
-
 	void setXP(const int xp);
 
 	void setDuration(const int duration);
 
 	void setCampType(const int crc);
-
-	void sendDeltas(Player* player);
 
 	void generateAttributes(SceneObject* obj);
 
@@ -67,25 +59,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void useCharge(Player* player);
-
-	int getUsesRemaining();
-
 	int getXP();
 
 	int getDuration();
 
 	int getCampType();
 
-	void setUsesRemaining(const int us);
-
 	void setXP(const int xp);
 
 	void setDuration(const int duration);
 
 	void setCampType(const int crc);
-
-	void sendDeltas(Player* player);
 
 	void generateAttributes(SceneObject* obj);
 

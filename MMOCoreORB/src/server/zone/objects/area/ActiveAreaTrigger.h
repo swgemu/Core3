@@ -17,6 +17,10 @@ class ActiveAreaTrigger : public SceneObject {
 public:
 	ActiveAreaTrigger(ActiveArea* area);
 
+	void forceTriggerEnter();
+
+	void forceTriggerExit();
+
 protected:
 	ActiveAreaTrigger(DummyConstructorParameter* param);
 
@@ -32,6 +36,10 @@ public:
 	ActiveAreaTriggerAdapter(ActiveAreaTriggerImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void forceTriggerEnter();
+
+	void forceTriggerExit();
 
 };
 

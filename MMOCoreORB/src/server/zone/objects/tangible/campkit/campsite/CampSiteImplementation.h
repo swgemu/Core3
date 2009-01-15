@@ -47,10 +47,10 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "VisitorList.h"
-#include "../terminal/camp/CampTerminal.h"
-#include "events/CampDespawnEvent.h"
-#include "events/CampAbandonEvent.h"
+#include "../VisitorList.h"
+#include "../../terminal/camp/CampTerminal.h"
+#include "../events/CampDespawnEvent.h"
+#include "../events/CampAbandonEvent.h"
 class Zone;
 class Player;
 class DeedObject;
@@ -58,27 +58,26 @@ class InstallationSyncUIEvent;
 
 
 class CampSiteImplementation : public CampSiteServant {
-private:
+protected:
 	float currentXP;
 	uint8 campType;
+	uint8 aggroMod;
 
 	ActiveAreaTrigger* campArea;
 
-	CampTerminal* terminal;
-	Vector<SceneObject*> campObjects;
+	Vector<ManagedReference<SceneObject> > campObjects;
 	VisitorList* visitor;
 	bool abandoned;
 
 	CampDespawnEvent* despawnEvent;
 	CampAbandonEvent* abandonEvent;
 
-protected:
 	String defaultName;
 	UnicodeString name;
 
 	uint8 maxXP;
-	uint8 duration;
 	uint8 campModifier;
+	uint32 duration;
 
 	Player* campOwner;
 
@@ -87,7 +86,9 @@ public:
 	CampSiteImplementation(Player* player, uint64 oid, CampKit* campKit);
 	~CampSiteImplementation();
 
-	void init();
+	virtual void init() {
+
+	}
 
 	// Attribute Setters
 	int getXP() {
@@ -104,6 +105,10 @@ public:
 
 	int getCampModifier() {
 		return campModifier;
+	}
+
+	int getAggroMod() {
+		return aggroMod;
 	}
 
 	UnicodeString& getName() {
@@ -129,6 +134,10 @@ public:
 		campModifier = mod;
 	}
 
+	void setAggroMod(int mod) {
+		aggroMod = mod;
+	}
+
 	// Object Handlers
 	void sendTo(Player* player, bool doClose = true);
 
@@ -152,17 +161,31 @@ public:
 	void addXP(uint64 playerID);
 
 	void createCampArea();
-	void spawnCampItems();
+	virtual void spawnCampItems() {
+
+	}
 	void addCampObject(uint64 oid, uint32 ocrc, float x, float z, float y, float oX, float oZ,float oY, float oW);
+	void addCampObject(uint64 oid, uint32 ocrc, const UnicodeString& n, float x, float z, float y, float oX, float oZ,float oY, float oW);
+
+	void addCampObject(SceneObject* obj) {
+		obj->insertToZone(campOwner->getZone());
+		campObjects.add(obj);
+	}
 
 	void removeCampArea();
 	void disbandCamp();
 	void abandonCamp();
 	void abortAbandonPhase();
 
+	SceneObject* getCampObject(int num) {
+		return campObjects.get(num);
+	}
+
 	bool isAbandoned() {
 		return abandoned;
 	}
+
+	void printPlacmentCode();
 
 	void enterNotification(Player* player);
 	void exitNotificaton(Player* player);

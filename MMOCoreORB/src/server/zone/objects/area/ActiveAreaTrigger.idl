@@ -47,4 +47,8 @@ import "ActiveArea";
 
 interface ActiveAreaTrigger implements SceneObject {
 	ActiveAreaTrigger(ActiveArea area);
+
+	void forceTriggerEnter();
+	void forceTriggerExit();
+
 }

@@ -63,30 +63,10 @@ public:
 
 	CampKitImplementation(Player* player, unsigned int tempCRC, const UnicodeString& n, const String& tempn);
 
-	void useCharge(Player* player);
-
 	int useObject(Player* player);
 
 	bool isUsefull(Player* player);
-
-	/*
-	 * Returns the remaining uses.
-	 * \return The uses.
-	 */
-	int getUsesRemaining() {
-		return usesRemaining;
-	}
-
-	/*
-	 * Sets the remaining uses.
-	 * \param us The uses.
-	 */
-	void setUsesRemaining(const int us) {
-		usesRemaining = us;
-		String attr = "uses";
-		itemAttributes->setIntAttribute(attr, usesRemaining);
-	}
-
+	bool canNotUse(Player* player);
 	/*
 	 * Returns the camps max xp.
 	 * \return The xp.
@@ -140,8 +120,6 @@ public:
 	}
 
 	void remove(Player* player);
-
-	void sendDeltas(Player* player);
 
 	void generateAttributes(SceneObject* obj);
 	void addHeaderAttributes(AttributeListMessage* alm);

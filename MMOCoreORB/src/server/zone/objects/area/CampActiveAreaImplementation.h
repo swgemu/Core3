@@ -2,7 +2,7 @@
 #define CAMPACTIVEAREAIMPLEMENTATION_H_
 
 #include "../player/Player.h"
-#include "../tangible/campkit/CampSite.h"
+#include "../tangible/campkit/campsite/CampSite.h"
 
 class CampActiveAreaImplementation: public CampActiveAreaServant {
 	CampSite* campSite;

@@ -41,7 +41,7 @@
 --which carries forward this exception.
 
 campKit = Object:new {
-	objectName = "A Test Camp Kit Short",
+	objectName = "A Basic Camp Kit",
 
 	templateName = "object/tangible/scout/camp/shared_camp_basic.iff",
 
@@ -49,9 +49,7 @@ campKit = Object:new {
 
 	objectType = CAMPKIT,
 
-	uses = 15,
-
-	duration = 10,
+	duration = 1200,
 
 	xp = 320,
 

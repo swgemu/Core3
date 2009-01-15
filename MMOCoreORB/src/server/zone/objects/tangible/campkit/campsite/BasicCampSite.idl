@@ -42,35 +42,16 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-import "../../scene/SceneObject";
+import "../campsite/CampSite";
+import "../CampKit";
 
-include "engine/service/Message";
+import "../../../player/Player";
 
-import "../../player/Player";
-
-import "../TangibleObject";
-import "../../building/BuildingObject";
-import "../../area/CampActiveArea";
-interface CampKit implements TangibleObject {
-	CampKit(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn) {
-		super(oid, int tp);
+interface BasicCampSite implements CampSite {
+	BasicCampSite(Player player, unsigned long oid,CampKit campKit) {
+		super(player,oid,campKit);
 	}
 
-	CampKit(Player player, unsigned int tempCRC, const UnicodeString n, const String tempn) {
-		super(unsigned long oid, int tp);
-	}
+	void spawnCampItems();
 
-	// getters
-	int getXP();
-	int getDuration();
-	int getCampType();
-	
-	// setters
-	void setXP(const int xp);
-	void setDuration(const int duration);
-	void setCampType(const int crc);
-
-	void generateAttributes(SceneObject obj);
-	
-	void parseItemAttributes();
 }

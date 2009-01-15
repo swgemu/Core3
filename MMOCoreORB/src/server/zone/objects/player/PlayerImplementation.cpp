@@ -348,6 +348,7 @@ void PlayerImplementation::initialize() {
 	activeArea = NULL;
 	badges = new Badges();
 	camp = NULL;
+	campAggro = 0;
 
 	//Cloning
 	cloningFacility = NULL;

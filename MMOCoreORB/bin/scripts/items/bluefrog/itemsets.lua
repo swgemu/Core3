@@ -54,7 +54,7 @@ RunItemLUAFile("bluefrog/clothingSets.lua");
 
 RunItemLUAFile("bluefrog/instrumentSet.lua");
 
-RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
+--RunItemLUAFile("bluefrog/vehicleDeedSet.lua");
 --RunItemLUAFile("bluefrog/housingDeedSet.lua");
 
 RunItemLUAFile("bluefrog/weaponSet.lua");
@@ -63,5 +63,5 @@ RunItemLUAFile("bluefrog/surveyingKit.lua");
 
 RunItemLUAFile("bluefrog/camokits.lua");
 RunItemLUAFile("bluefrog/trapSet.lua");
---RunItemLUAFile("bluefrog/campKits.lua");
+RunItemLUAFile("bluefrog/campKits.lua");
 RunItemLUAFile("bluefrog/slicingTools.lua");
