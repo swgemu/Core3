@@ -58,7 +58,7 @@ bin_PROGRAMS = core3
 core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/campkit/CampKit.cpp \
 		server/zone/objects/tangible/campkit/campsite/CampSite.cpp \
-		server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp \	
+		server/zone/objects/tangible/campkit/campsite/BasicCampSite.cpp \
 		server/zone/objects/area/CampActiveArea.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeapon.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeapon.cpp \
@@ -222,7 +222,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/camokits/CamoKitImplementation.cpp \
 		server/zone/objects/tangible/campkit/CampKitImplementation.cpp \
 		server/zone/objects/tangible/campkit/campsite/CampSiteImplementation.cpp \
-		server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp \	
+		server/zone/objects/tangible/campkit/campsite/BasicCampSiteImplementation.cpp \
 		server/zone/objects/tangible/weapons/ThrowableWeaponImplementation.cpp \
 		server/zone/objects/tangible/weapons/throwable/TrapThrowableWeaponImplementation.cpp \
 		server/chat/ChatManagerImplementation.cpp \
