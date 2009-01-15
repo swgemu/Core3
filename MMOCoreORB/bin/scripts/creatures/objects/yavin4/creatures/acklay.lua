@@ -69,7 +69,7 @@ acklay = Creature:new {
 	willpower = 20000,
 
 	height = 1.2, -- Size of creature
-	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 30,
 	energy = 45,
 	electricity = 30,
