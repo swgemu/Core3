@@ -109,7 +109,7 @@ geonosianForceKliknik = Creature:new {
       weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
       weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
-      alternateweapon = "", -- File path to weapon -> object\xxx\xxx\xx
+      alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
       alternateWeaponName = "", -- Name ex. 'a Vibrolance'
       alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
       alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
