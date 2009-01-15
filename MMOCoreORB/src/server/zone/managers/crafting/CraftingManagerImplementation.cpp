@@ -1657,6 +1657,9 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 	temp = "templatetype";
 	String templatetype = itemAttributes->getStringAttribute(temp);
 
+	temp = "itemmask";
+	int mask = itemAttributes->getIntAttribute(temp);
+
 	//(objectid, objectcrc, objectname, objecttemp, false);
 	// Set these defaults in case
 	/*String appearance = result->getString(10);
@@ -1677,6 +1680,8 @@ TangibleObject* CraftingManagerImplementation::generateTangibleObject(
 				new TangibleObject(objectid, objectcrc, objectname, objecttemp);
 
 	}
+	tano->setPlayerUseMask(mask);
+
 	tano->setTemplateTypeName(templatetype);
 
 	//item->setAttributes(attributes);
