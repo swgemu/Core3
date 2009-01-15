@@ -46,15 +46,10 @@ woolamander = Creature:new {
 	gender = "",
 
 	speciesName = "woolamander",
-	
 	stfName = "mob/creature_names",
 	objectCRC = 23943354, 
 	socialGroup = "Woolamander",
-	
-
 	level = 27,
-
-	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -86,9 +81,7 @@ woolamander = Creature:new {
 	lightsaber = 0,
 
 	accuracy = 360,
-
 	healer = 0,
-
 	pack = 1,
 	herd = 1,
 	stalker = 1,
@@ -96,10 +89,7 @@ woolamander = Creature:new {
 	aggressive = 1,
 	invincible = 0, 
 
-	
-
 	meleeDefense = 1,  
-	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
@@ -108,10 +98,10 @@ woolamander = Creature:new {
 	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 1,
-	weaponMinDamage = 150,
-	weaponMaxDamage = 400,
-	weaponAttackSpeed = 1,
+	weaponEquipped = 0,
+	weaponMinDamage = 280,
+	weaponMaxDamage = 290,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -119,7 +109,7 @@ woolamander = Creature:new {
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
 	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
+	alternateweaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
 	alternateWeaponAttackSpeed = 0,

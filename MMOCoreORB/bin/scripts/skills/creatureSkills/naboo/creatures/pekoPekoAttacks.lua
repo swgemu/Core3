@@ -45,13 +45,13 @@ pekoPekoAttack1 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -79,13 +79,13 @@ pekoPekoAttack2 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -113,13 +113,13 @@ pekoPekoAttack3 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -147,13 +147,13 @@ pekoPekoAttack4 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -181,13 +181,13 @@ pekoPekoAttack5 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -215,13 +215,13 @@ pekoPekoAttack6 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -249,13 +249,13 @@ pekoPekoAttack7 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 20,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 30,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 75,

@@ -45,13 +45,13 @@ geonosianCaveSpiderAttack1 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -79,13 +79,13 @@ geonosianCaveSpiderAttack2 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -113,13 +113,13 @@ geonosianCaveSpiderAttack3 = {
 	
 	requiredWeaponType = MELEE,
 
-	range = 10,
+	range = 7,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,

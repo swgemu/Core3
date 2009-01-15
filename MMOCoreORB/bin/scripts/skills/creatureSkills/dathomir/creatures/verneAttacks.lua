@@ -45,13 +45,13 @@ verneAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 15,
+	range = 7,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
-	areaRange = 15,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,

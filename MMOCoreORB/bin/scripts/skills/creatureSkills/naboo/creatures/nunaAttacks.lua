@@ -45,13 +45,13 @@ nunaAttack1 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 5,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -79,13 +79,13 @@ nunaAttack2 = {
 	
 	requiredWeaponType = NONE,
 
-	range = 8,
+	range = 7,
 
-	damageRatio = 9,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
-	areaRange = 0,
+	arearange = 7,
 	accuracyBonus = 50,
 
 	healthAttackChance = 100,
