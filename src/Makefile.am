@@ -148,6 +148,9 @@ core3_IDLS = 	server/zone/objects/tangible/camokits/CamoKit.cpp \
 		server/zone/objects/tangible/attachment/Attachment.cpp \
 		server/zone/objects/tangible/Bank.cpp \
 		server/zone/objects/tangible/component/ShipComponent.cpp \
+		server/zone/objects/tangible/consumable/Consumable.cpp \
+		server/zone/objects/tangible/consumable/food/Food.cpp \
+		server/zone/objects/tangible/consumable/drink/Drink.cpp \
 		server/zone/objects/tangible/Container.cpp \
 		server/zone/objects/tangible/crafting/component/Component.cpp \
 		server/zone/objects/tangible/crafting/CraftingStation.cpp \
@@ -307,6 +310,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
 		server/zone/objects/static/StaticObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \
+		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
+		server/zone/objects/tangible/consumable/food/FoodImplementation.cpp \
+		server/zone/objects/tangible/consumable/drink/DrinkImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/CustomizationVariables.cpp \
 		server/zone/objects/tangible/crafting/component/ComponentImplementation.cpp \
@@ -339,6 +345,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketImplementation.cpp \
 		server/zone/objects/tangible/weapons/WeaponImplementation.cpp \
+		server/zone/objects/tangible/wearables/WearableImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorImplementation.cpp \
 		server/zone/packets/object/ObjectControllerMessage.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacter.cpp \

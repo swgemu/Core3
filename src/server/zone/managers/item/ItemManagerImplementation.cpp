@@ -305,6 +305,22 @@ TangibleObject* ItemManagerImplementation::createPlayerObjectTemplate(int object
 			}
 			break;
 
+		case TangibleObjectImplementation::FOOD:
+			item = new Food(objectid, objectcrc, objectname, objecttemp);
+			if(makeStats) {
+				item->setAttributes(lootAttributes);
+				item->parseItemAttributes();
+			}
+			break;
+
+		case TangibleObjectImplementation::DRINK:
+			item = new Drink(objectid, objectcrc, objectname, objecttemp);
+			if(makeStats) {
+				item->setAttributes(lootAttributes);
+				item->parseItemAttributes();
+			}
+			break;
+
 		case TangibleObjectImplementation::FACTORYCRATE:
 			item = new FactoryCrate(objectid, objectcrc, objectname, objecttemp);
 			item->setObjectCount(5);

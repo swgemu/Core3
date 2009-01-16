@@ -185,6 +185,13 @@ which carries forward this exception.
 #include "objects/tangible/weapons/jedi/PolearmJediWeapon.h"
 #include "objects/tangible/weapons/jedi/PolearmJediWeaponImplementation.h"
 
+#include "objects/tangible/consumable/Consumable.h"
+#include "objects/tangible/consumable/ConsumableImplementation.h"
+#include "objects/tangible/consumable/food/Food.h"
+#include "objects/tangible/consumable/food/FoodImplementation.h"
+#include "objects/tangible/consumable/drink/Drink.h"
+#include "objects/tangible/consumable/drink/DrinkImplementation.h"
+
 #include "objects/tangible/pharmaceutical/Pharmaceutical.h"
 #include "objects/tangible/pharmaceutical/PharmaceuticalImplementation.h"
 #include "objects/tangible/pharmaceutical/EnhancePack.h"

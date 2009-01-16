@@ -11,6 +11,8 @@ class CreatureObject;
 
 class Player;
 
+class SceneObject;
+
 class TangibleObject;
 
 #include "../TangibleObject.h"
@@ -22,6 +24,72 @@ public:
 	Wearable(CreatureObject* creature, unsigned long long oid, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
 	Wearable(CreatureObject* creature, unsigned int tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
+
+	void parseItemAttributes();
+
+	void init();
+
+	void generateAttributes(SceneObject* obj);
+
+	void sendTo(Player* player, bool doClose = true);
+
+	int addSkillMod(int skillModType, int skillModValue);
+
+	int getSocketType(int index);
+
+	int getSocketValue(int index);
+
+	int getSkillMod0Type();
+
+	int getSkillMod1Type();
+
+	int getSkillMod2Type();
+
+	int getSkillMod0Value();
+
+	int getSkillMod1Value();
+
+	int getSkillMod2Value();
+
+	int getSockets();
+
+	int getSocket0Type();
+
+	int getSocket1Type();
+
+	int getSocket2Type();
+
+	int getSocket3Type();
+
+	int getSocket0Value();
+
+	int getSocket1Value();
+
+	int getSocket2Value();
+
+	int getSocket3Value();
+
+	void setSocketType(int index, int type);
+
+	void setSocketValue(int index, int type);
+
+	void setSockets(int socket);
+
+	void setSocket0Type(int type);
+
+	void setSocket1Type(int type);
+
+	void setSocket2Type(int type);
+
+	void setSocket3Type(int type);
+
+	void setSocket0Value(int value);
+
+	void setSocket1Value(int value);
+
+	void setSocket2Value(int value);
+
+	void setSocket3Value(int value);
 
 protected:
 	Wearable(DummyConstructorParameter* param);
@@ -38,6 +106,72 @@ public:
 	WearableAdapter(WearableImplementation* impl);
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void parseItemAttributes();
+
+	void init();
+
+	void generateAttributes(SceneObject* obj);
+
+	void sendTo(Player* player, bool doClose);
+
+	int addSkillMod(int skillModType, int skillModValue);
+
+	int getSocketType(int index);
+
+	int getSocketValue(int index);
+
+	int getSkillMod0Type();
+
+	int getSkillMod1Type();
+
+	int getSkillMod2Type();
+
+	int getSkillMod0Value();
+
+	int getSkillMod1Value();
+
+	int getSkillMod2Value();
+
+	int getSockets();
+
+	int getSocket0Type();
+
+	int getSocket1Type();
+
+	int getSocket2Type();
+
+	int getSocket3Type();
+
+	int getSocket0Value();
+
+	int getSocket1Value();
+
+	int getSocket2Value();
+
+	int getSocket3Value();
+
+	void setSocketType(int index, int type);
+
+	void setSocketValue(int index, int type);
+
+	void setSockets(int socket);
+
+	void setSocket0Type(int type);
+
+	void setSocket1Type(int type);
+
+	void setSocket2Type(int type);
+
+	void setSocket3Type(int type);
+
+	void setSocket0Value(int value);
+
+	void setSocket1Value(int value);
+
+	void setSocket2Value(int value);
+
+	void setSocket3Value(int value);
 
 };
 
