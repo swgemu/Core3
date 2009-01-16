@@ -67,6 +67,16 @@ class BuildingObject;
 
 class TangibleObjectImplementation : public TangibleObjectServant {
 protected:
+	/*paletteColorCustomizationVariables
+	rangedIntCustomizationVariables
+	constStringCustomizationVariables
+	socketDestinations
+	structureFootprintFileName
+	useStructureFootprintOutline
+	targetable
+	certificationsRequired
+	customizationVariableMapping*/
+
 	int conditionDamage;
 	int maxCondition;
 
@@ -100,10 +110,16 @@ protected:
 
 	bool wasLooted;
 
+	float complexity;
+
+	int volume;
+
 	//Slicing
 	bool sliced;
 	bool slicable;
 	uint64 slicerID;
+
+	byte unknownByte;
 
 public:
 	static const int HAIR = 0x30000001;
@@ -345,6 +361,10 @@ public:
 		return optionsBitmask;
 	}
 
+	inline byte getUnknownByte() {
+		return unknownByte;
+	}
+
 	inline void setPlayerUseMask(uint16 mask) {
 		playerUseMask = mask;
 	}
@@ -471,6 +491,14 @@ public:
 
 	inline uint32 getTemplateID() {
 		return templateID;
+	}
+
+	inline float getComplexity() {
+		return complexity;
+	}
+
+	inline int getVolume() {
+		return volume;
 	}
 
 	inline void getCustomizationString(String& appearance) {

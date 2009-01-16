@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--xtools2_universal_type_manager-->
-<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.topic" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
-<topic:TopicQuery xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:topic="http://www.ibm.com/xtools/6.0.0/Topic" xmi:id="__ZpCsOJxEd2m-fYqBBgczQ" topicId="com.ibm.xtools.mmi.ui.RelatedVisualizerElements:CDT.presets.inheritance" name="PlayerTopicDiagram">
-  <context href="mmi:///#cdt.resource%5En=PlayerImplementation.h%5Ep=/MMOCoreORB/src/server/zone/objects/player/PlayerImplementation.h$uml.Artifact"/>
-  <context href="mmi:///#cdt.struct%5En=PlayerImplementation%5Ep=/MMOCoreORB/src/server/zone/objects/player/PlayerImplementation.h$uml.Class"/>
-</topic:TopicQuery>

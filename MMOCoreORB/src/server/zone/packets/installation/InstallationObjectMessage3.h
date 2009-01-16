@@ -49,11 +49,13 @@ which carries forward this exception.
 
 #include "../../objects/installation/InstallationObject.h"
 
-class InstallationObjectMessage3 : public BaseLineMessage {
+#include "../tangible/TangibleObjectMessage3.h"
+
+class InstallationObjectMessage3 : public TangibleObjectMessage3 {
 public:
-	InstallationObjectMessage3(InstallationObject * inso)
-			: BaseLineMessage(inso->getObjectID(), 0x494E534F, 3, 0x05) {
-		insertFloat(1.0); // Complexity
+	InstallationObjectMessage3(InstallationObject* inso)
+			: TangibleObjectMessage3(inso, 0x494E534F, 0x05) {
+		/*insertFloat(1.0); // Complexity
 		insertAscii("installation_n"); // STF FileName
 		insertInt(0); //nothing.
 		insertAscii(inso->getTemplateName()); // STF Template
@@ -75,7 +77,7 @@ public:
 		insertInt(inso->getConditionDamage());//insertInt(0x03E80000); // max condition ??
 		insertInt(inso->getMaxCondition()); //insertInt(0x00010000); //refer to hardcode below. (trying to replace)
 
-		insertByte(0); // ??
+		insertByte(0); // ??*/
 
 		insertByte(1); // Active Flag
 		insertFloat(inso->getSurplusPower()); // Energy Store

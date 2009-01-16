@@ -127,6 +127,12 @@ void TangibleObjectImplementation::initialize() {
 
 	zone = NULL;
 
+	complexity = 100.f;
+
+	unknownByte = 1;
+
+	volume = 1;
+
 	persistent = false;
 	updated = false;
 

@@ -51,10 +51,9 @@ which carries forward this exception.
 
 class TangibleObjectMessage3 : public BaseLineMessage {
 public:
-	TangibleObjectMessage3(TangibleObject* tano)
-			: BaseLineMessage(tano->getObjectID(), 0x54414E4F, 3, 0x0B) {
-		insertFloat(100);
-		//insertInt(0);
+	TangibleObjectMessage3(TangibleObject* tano, uint32 objType = 0x54414E4F, uint16 opcnt = 0x0B)
+			: BaseLineMessage(tano->getObjectID(), objType, 3, opcnt) {
+		insertFloat(tano->getComplexity());
 
 		insertAscii(tano->getTemplateTypeName());
 		insertInt(0);
@@ -62,7 +61,7 @@ public:
 
 		insertUnicode(tano->getCustomName());
 
-		insertInt(1);
+		insertInt(tano->getVolume());
 
 		String app;
 		tano->getCustomizationString(app);
@@ -83,11 +82,7 @@ public:
 		insertInt(tano->getConditionDamage());
 		insertInt(tano->getMaxCondition());
 
-		insertByte(1);
-
-		/*insertByte(0);
-		insertInt(0xE8000000);
-		insertInt(0x01000003);*/
+		insertByte(tano->getUnknownByte());
 
 		setSize();
 	}
