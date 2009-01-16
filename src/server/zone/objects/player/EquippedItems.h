@@ -163,10 +163,17 @@ public:
 		}
 
 		switch (item->getObjectSubType()) {
+
+		case TangibleObjectImplementation::WOOKIEGARB:
+			locations = getWookieWearLocations(item);
+			break;
+
 		case TangibleObjectImplementation::VEST:
-		case TangibleObjectImplementation::JACKET:
 		case TangibleObjectImplementation::CAPE:
 			locations = CHEST;
+			break;
+		case TangibleObjectImplementation::JACKET:
+			locations = CHEST + ARMS;
 			break;
 
 		case TangibleObjectImplementation::BANDOLIER:
@@ -365,9 +372,58 @@ public:
 		return instrument;
 	}
 
+	// This needs to be redesigned
+	int getWookieWearLocations(Wearable* item) {
+		int locations = 0;
+
+		switch (item->getObjectCRC()) {
+
+		case 0x3A8B7EDB:
+		case 0xE19CD64C:
+		case 0xA891B1C1:
+		case 0x53729AD5:
+			locations = HANDS;
+			break;
+
+		case 0x8895F73:
+		case 0xF504D4EC:
+		case 0xBC09B361:
+		case 0x2E137C7B:
+			locations = HEAD;
+			break;
+
+		case 0x4D2E3347:
+		case 0x8A12762E:
+		case 0x10ECD9BF:
+			locations = CHEST + SHIRT + ARMS + LEGS;
+			break;
+
+		case 0xA661FA2D:
+		case 0x7D7652BA:
+		case 0x347B3537:
+		case 0xCF981E23:
+			locations = CHEST + SHIRT;
+			break;
+
+		case 0x481D5BDD:
+		case 0x930AF34A:
+			locations = CHEST;
+			break;
+
+		case 0xAE7ADF27:
+		case 0x756D77B0:
+		case 0x3C60103D:
+		case 0xC7833B29:
+			locations = LEGS;
+			break;
+		}
+		return locations;
+	}
+
 	int getArmorLocations(Armor* armor) {
 		int locations;
 
+		//System::out << "Adding armor location " << armor->getArmorType() << endl;
 		// Add extra locations covered for Wookie
 		switch (armor->getObjectCRC()) {
 
