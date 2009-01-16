@@ -102,18 +102,13 @@ class CreatureInventory;
 
 class CreatureObjectImplementation : public CreatureObjectServant {
 protected:
-	//UnicodeString characterName; //character name
 	String terrainName;
 
-	//CustomizationVariables customization;
 	String raceName; //species
-	//String speciesName; //species
 	String gender;
 
 	String hairObject; //hair object iff String
 	CustomizationVariables hairCustomization;
-
-	//String stfName;
 
 	String creatureType;
 

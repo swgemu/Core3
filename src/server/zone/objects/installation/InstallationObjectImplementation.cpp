@@ -104,10 +104,18 @@ InstallationObjectImplementation::~InstallationObjectImplementation() {
 void InstallationObjectImplementation::init() {
 	zone = NULL;
 
+	complexity = 1.f;
+
+	templateTypeName = "installation_n";
+
+	optionsBitmask = 0x00000100;
+
 	persistent = false;
 	updated = false;
 
 	ownerID = 0;
+
+	unknownByte = 0;
 
 	// INSO6 operands
 	defenderUpdateCounter = 0;
@@ -135,8 +143,6 @@ void InstallationObjectImplementation::init() {
 	equipped = false;
 
 	pvpStatusBitmask = 0;
-
-
 
 	syncEvent = new InstallationSyncUIEvent(this);
 }

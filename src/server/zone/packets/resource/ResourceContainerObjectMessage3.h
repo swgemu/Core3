@@ -48,32 +48,16 @@ which carries forward this exception.
 #include "../../objects/tangible/resource/ResourceContainer.h"
 #include "../BaseLineMessage.h"
 
-class ResourceContainerObjectMessage3 : public BaseLineMessage {
+#include "../tangible/TangibleObjectMessage3.h"
+
+class ResourceContainerObjectMessage3 : public TangibleObjectMessage3 {
 public:
 	ResourceContainerObjectMessage3(ResourceContainer* rcno)
-			: BaseLineMessage(rcno->getObjectID(), 0x52434E4F, 3, 0x0F) {
+			: TangibleObjectMessage3(rcno, 0x52434E4F, 0x0F) {
 
-		insertFloat(1.0f); // Complexity
-
-		insertAscii(rcno->getTemplateTypeName());
-		insertInt(0);
-		insertAscii(rcno->getTemplateName());
-		insertUnicode(rcno->getCustomName());
-
-		insertInt(1); // Volume
-		String app;
-		rcno->getCustomizationString(app);
-		insertAscii(app);
-
-		insertInt(0); // Defender List Size
-		insertInt(0); // Defender Counter
-		insertInt(1); // Options Bitmask
-		insertInt(0); // Timer
-		insertInt(0); // Damage
-		insertInt(0x64); // Condition (or Max Condition)
-		insertByte(0x01); // Unknown
 		insertInt(rcno->getContents()); // Stack Size
 		insertLong(rcno->getResourceID()); // ResourceID
+
 		setSize();
 	}
 };

@@ -93,6 +93,10 @@ CreatureObjectImplementation::CreatureObjectImplementation(uint64 oid) : Creatur
 	hideType = "";
 	meatType = "";
 
+	complexity = 10.f;
+
+	volume = 0x0085E5CA;
+
 	actionCounter = 0;
 
 	// CREO1 operands

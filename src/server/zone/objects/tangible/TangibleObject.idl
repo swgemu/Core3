@@ -87,6 +87,12 @@ interface TangibleObject implements SceneObject {
 	boolean isPersistent();
 	boolean isUpdated();
 	
+	char getUnknownByte();
+	
+	float getComplexity();
+	
+	int getVolume();
+	
 	boolean isEquipped();
 	
 	boolean isWeapon();

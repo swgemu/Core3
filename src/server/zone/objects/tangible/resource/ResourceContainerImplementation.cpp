@@ -108,8 +108,14 @@ bool ResourceContainerImplementation::compare(ResourceContainer* inResource){
 }
 
 void ResourceContainerImplementation::init() {
-
 	objectSubType = TangibleObjectImplementation::RESOURCECONTAINER;
+
+	optionsBitmask = 1;
+
+	maxCondition = 0x64;
+
+	complexity = 1.f;
+
 	setResourceID(0);
 	setContents(0);
 	setDecayResistance(0);

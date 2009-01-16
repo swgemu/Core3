@@ -53,6 +53,12 @@ public:
 
 	bool isUpdated();
 
+	char getUnknownByte();
+
+	float getComplexity();
+
+	int getVolume();
+
 	bool isEquipped();
 
 	bool isWeapon();
@@ -243,6 +249,12 @@ public:
 	bool isPersistent();
 
 	bool isUpdated();
+
+	char getUnknownByte();
+
+	float getComplexity();
+
+	int getVolume();
 
 	bool isEquipped();
 

@@ -47,47 +47,14 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
+#include "../tangible/TangibleObjectMessage3.h"
+
 #include "../../objects/tangible/TangibleObject.h"
 
-class FactoryCrateObjectMessage3 : public BaseLineMessage {
+class FactoryCrateObjectMessage3 : public TangibleObjectMessage3 {
 public:
 	FactoryCrateObjectMessage3(TangibleObject* tano)
-			: BaseLineMessage(tano->getObjectID(), 0x46435954, 3, 0x0B) {
-		insertFloat(100);
-		//insertInt(0);
-
-		insertAscii(tano->getTemplateTypeName());
-		insertInt(0);
-		insertAscii(tano->getTemplateName());
-
-		insertUnicode(tano->getCustomName());
-
-		insertInt(1);
-
-		String app;
-		tano->getCustomizationString(app);
-		insertAscii(app);
-
-		insertInt(0);
-		insertInt(0);
-
-		insertInt(0);
-
-		int count = tano->getObjectCount();
-
-		if (count == 1)
-			count = 0;
-
-		insertInt(count); //item count
-
-		insertInt(tano->getConditionDamage());
-		insertInt(tano->getMaxCondition());
-
-		insertByte(1);
-
-		/*insertByte(0);
-		insertInt(0xE8000000);
-		insertInt(0x01000003);*/
+			: TangibleObjectMessage3(tano, 0x46435954, 0x0B) {
 
 		setSize();
 	}
