@@ -51,7 +51,7 @@ lordNyax = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 4219937413, 
 	socialGroup = "followers_of_lord_nyax",
-	level = 250,
+	level = 129,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -71,7 +71,7 @@ lordNyax = Creature:new {
 	willpower = 5000,
 
 	height = 1, -- Size of creature
-	armor = 2,	
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 80,
 	energy = 45,
 	electricity = 100,
@@ -103,11 +103,11 @@ lordNyax = Creature:new {
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 750,
-	weaponMaxDamage = 980,
-	weaponAttackSpeed = 1.6,
+	weaponMinDamage = 775,
+	weaponMaxDamage = 1260,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -116,9 +116,9 @@ lordNyax = Creature:new {
 	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
-	alternateWeaponAttackSpeed = 0,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateweaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 

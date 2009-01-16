@@ -48,7 +48,7 @@ rebelSergeantAttack1 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -79,7 +79,7 @@ rebelSergeantAttack2 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -110,7 +110,7 @@ rebelSergeantAttack3 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -141,7 +141,7 @@ rebelSergeantAttack4 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,

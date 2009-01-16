@@ -104,9 +104,9 @@ imperialPrivate = Creature:new {
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 55,
-	weaponMaxDamage = 140,
-	weaponAttackSpeed = 2.2,
+	weaponMinDamage = 160,
+	weaponMaxDamage = 170,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "energy", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "none", -- LIGHT, NONE, MEDIUM, HEAVY
 

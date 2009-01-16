@@ -71,7 +71,7 @@ jantaShaman = Creature:new {
 	willpower = 500,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = -1,
 	energy = 40,
 	electricity = 100,
@@ -103,8 +103,8 @@ jantaShaman = Creature:new {
 	weaponTemp = "lance_staff_wood_s1", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 50,
-	weaponMaxDamage = 500,
+	weaponMinDamage = 470,
+	weaponMaxDamage = 650,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -115,9 +115,9 @@ jantaShaman = Creature:new {
 	alternateWeaponTemp = "knife_stone", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 20,
-	alternateWeaponMaxDamage = 250,
-	alternateWeaponAttackSpeed = 1,
+	alternateWeaponMinDamage = 470,
+	alternateWeaponMaxDamage = 650,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 

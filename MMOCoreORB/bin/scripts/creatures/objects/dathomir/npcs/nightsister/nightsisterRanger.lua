@@ -103,9 +103,9 @@ nightsisterRanger = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 164,
-	weaponMaxDamage = 459,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 550,
+	weaponMaxDamage = 820,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -116,7 +116,7 @@ nightsisterRanger = Creature:new {
 	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
-	alternateWeaponAttackSpeed = 0,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 

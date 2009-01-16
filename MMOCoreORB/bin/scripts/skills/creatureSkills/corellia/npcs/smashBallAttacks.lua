@@ -47,7 +47,7 @@ smashBallAttack1 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.5,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	coneAngle = 0,

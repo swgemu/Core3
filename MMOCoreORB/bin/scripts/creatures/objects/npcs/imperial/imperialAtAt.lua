@@ -50,11 +50,9 @@ imperialAtAt = Creature:new {
 	speciesName = "at_at",
 	stfName = "mob/creature_names", 
 	objectCRC = 4274898142,
-	socialGroup = "imperial",
+	socialGroup = "imperial",	
 	
-	
-	level = 500,
-	
+	level = 228,	
 	
 	combatFlags = 0,
 	
@@ -105,9 +103,9 @@ imperialAtAt = Creature:new {
 	weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 450,
-	weaponMaxDamage = 650,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 1270,
+	weaponMaxDamage = 2250,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 

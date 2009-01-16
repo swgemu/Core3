@@ -47,7 +47,7 @@ rebelJediKnightAttack1 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -79,7 +79,7 @@ rebelJediKnightAttack2 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -109,7 +109,7 @@ rebelJediKnightAttack3 = {
 	requiredWeaponType = JEDI,
 
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -141,7 +141,7 @@ rebelJediKnightAttack4 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -184,7 +184,7 @@ rebelJediKnightAttack5 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -228,7 +228,7 @@ rebelJediKnightAttack6 = {
 	
 	range = 8,
 	coneAngel = 40,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -257,7 +257,7 @@ rebelJediKnightAttack7 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 40,
@@ -298,7 +298,7 @@ rebelJediKnightAttack8 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 50,
@@ -339,7 +339,7 @@ rebelJediKnightAttack9 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 80,
@@ -380,7 +380,7 @@ rebelJediKnightAttack10 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -406,7 +406,7 @@ rebelJediKnightAttack11 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -432,7 +432,7 @@ rebelJediKnightAttack12 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -458,7 +458,7 @@ rebelJediKnightAttack13 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -484,7 +484,7 @@ rebelJediKnightAttack14 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -510,7 +510,7 @@ rebelJediKnightAttack15 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -537,7 +537,7 @@ rebelJediKnightAttack16 = {
 
 	range = 8,
 	coneAngle = 360,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	

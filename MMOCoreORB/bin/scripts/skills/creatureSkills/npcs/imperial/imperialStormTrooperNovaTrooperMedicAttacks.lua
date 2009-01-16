@@ -47,7 +47,7 @@ imperialStormTrooperNovaTrooperMedicAttack1 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.5,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	coneAngle = 0,
@@ -98,7 +98,7 @@ imperialStormTrooperNovaTrooperMedicAttack2 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.7,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -129,7 +129,7 @@ imperialStormTrooperNovaTrooperMedicAttack3 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.1,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -170,7 +170,7 @@ imperialStormTrooperNovaTrooperMedicAttack4 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 2.1,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -200,7 +200,7 @@ imperialStormTrooperNovaTrooperMedicAttack5 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.6,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -271,7 +271,7 @@ imperialStormTrooperNovaTrooperMedicAttack7 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -311,7 +311,7 @@ imperialStormTrooperNovaTrooperMedicAttack8 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.6,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -341,7 +341,7 @@ imperialStormTrooperNovaTrooperMedicAttack9 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 2.0,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -371,7 +371,7 @@ imperialStormTrooperNovaTrooperMedicAttack10 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.1,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -401,7 +401,7 @@ imperialStormTrooperNovaTrooperMedicAttack11 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.3,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -431,7 +431,7 @@ imperialStormTrooperNovaTrooperMedicAttack12 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.4,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -461,7 +461,7 @@ imperialStormTrooperNovaTrooperMedicAttack13 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -491,7 +491,7 @@ imperialStormTrooperNovaTrooperMedicAttack14 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 1.3,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,

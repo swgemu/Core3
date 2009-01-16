@@ -101,9 +101,9 @@ imperialStormTrooperNovatrooperEnsign = Creature:new {
 	weaponTemp = "pistol_scout_blaster", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 90,
-	weaponMaxDamage = 230,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 570,
+	weaponMaxDamage = 850,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

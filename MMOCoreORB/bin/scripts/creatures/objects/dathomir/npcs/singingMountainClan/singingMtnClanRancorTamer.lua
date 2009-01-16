@@ -71,7 +71,7 @@ singingMtnClanRancorTamer = Creature:new {
 	willpower = 5000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 30,
 	energy = 30,
 	electricity = 100,
@@ -103,9 +103,9 @@ singingMtnClanRancorTamer = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 500,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 520,
+	weaponMaxDamage = 750,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ singingMtnClanRancorTamer = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 250,
-	alternateWeaponMaxDamage = 600,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 520,
+	alternateWeaponMaxDamage = 750,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

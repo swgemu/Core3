@@ -48,7 +48,7 @@ dwbSBDAttack40 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	coneAngle = 7,
 	areaRange = 0,
@@ -80,7 +80,7 @@ dwbSBDAttack41 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	coneAngle = 7,
 	areaRange = 0,
@@ -112,7 +112,7 @@ dwbSBDAttack42 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.0,
+	damageRatio = 1.2,
 	speedRatio = 1.8,
 	coneAngle = 7,
 	areaRange = 7,
@@ -144,7 +144,7 @@ dwbSBDAttack43 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	coneAngle = 7,
 	areaRange = 0,
@@ -177,7 +177,7 @@ dwbSBDAttack44 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	coneAngle = 7,
 	areaRange = 0,
@@ -220,7 +220,7 @@ dwbSBDAttack45 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	coneAngle = 7,
 	areaRange = 7,
@@ -253,7 +253,7 @@ dwbSBDAttack46 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	coneAngle = 7,
 	areaRange = 0,
@@ -296,7 +296,7 @@ dwbSBDAttack47 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	coneAngle = 7,
 	areaRange = 0,
@@ -339,7 +339,7 @@ dwbSBDAttack48 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	coneAngle = 7,
 	areaRange = 0,
@@ -382,7 +382,7 @@ dwbSBDAttack49 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	coneAngle = 7,
 	areaRange = 7,
@@ -414,7 +414,7 @@ dwbSBDAttack50 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.55,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	coneAngle = 7,
 	areaRange = 7,
@@ -446,7 +446,7 @@ dwbSBDAttack51 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	coneAngle = 7,
 	areaRange = 0,
@@ -480,7 +480,7 @@ dwbSBDAttack52 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	coneAngle = 7,
 	areaRange = 0,
@@ -522,7 +522,7 @@ dwbSBDAttack53 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 3.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	coneAngle = 7,
 	areaRange = 0,
@@ -566,7 +566,7 @@ dwbSBDRangedAttack1 = {
 
 	range = 64,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 7,
@@ -598,7 +598,7 @@ dwbSBDRangedAttack2 = {
 
 	range = 64,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 7,
@@ -630,7 +630,7 @@ dwbSBDRangedAttack3 = {
 
 	range = 64,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 60,
@@ -661,7 +661,7 @@ dwbSBDRangedAttack4 = {
 	requiredWeaponType = RANGED,
 	
 	range = 64,
-	damageRatio = 7.5,
+	damageRatio = 1.2,
 	speedRatio = 7,
 	coneAngle = 7,
 	areaRange = 0,

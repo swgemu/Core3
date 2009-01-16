@@ -69,7 +69,7 @@ deathWatchWraithDWB = Creature:new {
 	willpower = 50000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 75,
 	energy = 75,
 	electricity = 45,
@@ -101,9 +101,9 @@ deathWatchWraithDWB = Creature:new {
 	weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 900,
-	weaponMaxDamage = 1000,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 1020,
+	weaponMaxDamage = 1750,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ACID", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

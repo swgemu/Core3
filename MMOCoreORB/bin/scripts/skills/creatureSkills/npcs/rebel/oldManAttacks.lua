@@ -47,7 +47,7 @@ oldManAttack1 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -79,7 +79,7 @@ oldManAttack2 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -109,7 +109,7 @@ oldManAttack3 = {
 	requiredWeaponType = JEDI,
 
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -141,7 +141,7 @@ oldManAttack4 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -184,7 +184,7 @@ oldManAttack5 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -228,7 +228,7 @@ oldManAttack6 = {
 	
 	range = 8,
 	coneAngel = 40,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -258,7 +258,7 @@ oldManAttack7 = {
 	
 	range = 8,
 	coneAngel = 40,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -288,7 +288,7 @@ oldManAttack8 = {
 	
 	range = 8,
 	coneAngel = 40,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -316,7 +316,7 @@ oldManAttack9 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 0,
@@ -357,7 +357,7 @@ oldManAttack10 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 0,
@@ -398,7 +398,7 @@ oldManAttack11 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 0,
@@ -439,7 +439,7 @@ oldManAttack12 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -465,7 +465,7 @@ oldManAttack13 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -491,7 +491,7 @@ oldManAttack14 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -517,7 +517,7 @@ oldManAttack15 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -543,7 +543,7 @@ oldManAttack16 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -570,7 +570,7 @@ oldManAttack17 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	

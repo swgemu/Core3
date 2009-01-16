@@ -47,7 +47,7 @@ tuskenRangedAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -78,7 +78,7 @@ tuskenRangedAttack2 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -109,7 +109,7 @@ tuskenRangedAttack3 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -140,7 +140,7 @@ tuskenRangedAttack4 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 3,
 	areaRange = 0,
 	accuracyBonus = 0,

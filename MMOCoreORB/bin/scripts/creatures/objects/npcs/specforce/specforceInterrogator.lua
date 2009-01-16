@@ -47,8 +47,7 @@ specforceInterrogator = Creature:new {
 	faction = "rebel",
 	gender = "",
 
-	name = "SpecForce interrogator",
-	speciesName = "creature_name",
+	speciesName = "specforce_interrogator",
 	stfName = "mob/creature_names", 
 	objectCRC = 969101090, 
 	socialGroup = "rebel",

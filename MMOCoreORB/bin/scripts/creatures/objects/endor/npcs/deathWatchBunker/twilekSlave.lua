@@ -67,7 +67,7 @@ twilekSlave = Creature:new {
 	focus = 10,
 	willpower = 10,
 	
-	armor = 2,
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 
 	height = 1,
 	kinetic = 0,
@@ -102,9 +102,9 @@ twilekSlave = Creature:new {
 		weaponTemp = "carbine_elite", -- Weapon Template ex. 'lance_vibrolance'
 		weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 		weaponEquipped = 1,
-		weaponMinDamage = 500,
-		weaponMaxDamage = 700,
-		weaponAttackSpeed = 3,
+		weaponMinDamage = 55,
+		weaponMaxDamage = 65,
+		weaponAttackSpeed = 2,
 		weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 		weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

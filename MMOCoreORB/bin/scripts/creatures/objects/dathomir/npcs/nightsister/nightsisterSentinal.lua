@@ -103,9 +103,9 @@ nightsisterSentinal = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 202,
-	weaponMaxDamage = 525,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 545,
+	weaponMaxDamage = 800,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ nightsisterSentinal = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 243,
-	alternateWeaponMaxDamage = 547,
-	alternateWeaponAttackSpeed = 1,
+	alternateWeaponMinDamage = 545,
+	alternateWeaponMaxDamage = 800,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

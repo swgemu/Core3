@@ -58,23 +58,23 @@ imperialAtSt = Creature:new {
 	
 	combatFlags = 0,
 	
-	healthMax = 55000,
+	healthMax = 61000,
     healthMin = 50000,
     strength = 5000,
     constitution = 5000,
 
-    actionMax = 55000,
+    actionMax = 61000,
     actionMin = 50000,
     quickness = 5000,
     stamina = 5000,
 
-    mindMax = 55000,
+    mindMax = 61000,
     mindMin = 50000,
     focus = 5000,
     willpower = 5000,	
 
 	height = 1,	
-	armor = 3, -- from http://web.archive.org/web/20050513205858/http://swg.allakhazam.com/db/bestiary.html?swgbeast=3736		
+	armor = 2, -- from http://web.archive.org/web/20050513205858/http://swg.allakhazam.com/db/bestiary.html?swgbeast=3736		
 	kinetic = 90,
 	energy = 90,
 	electricity = 90,
@@ -105,9 +105,9 @@ imperialAtSt = Creature:new {
 	weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 450,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 770,
+	weaponMaxDamage = 1250,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

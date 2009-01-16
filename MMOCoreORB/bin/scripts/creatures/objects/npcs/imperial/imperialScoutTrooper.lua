@@ -106,7 +106,7 @@ imperialScoutTrooper = Creature:new {
 	weaponEquipped = 1,
 	weaponMinDamage = 90,
 	weaponMaxDamage = 230,
-	weaponAttackSpeed = 1,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

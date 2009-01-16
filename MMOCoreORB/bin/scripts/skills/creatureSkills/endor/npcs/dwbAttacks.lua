@@ -48,7 +48,7 @@ dwbAttack40 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -79,7 +79,7 @@ dwbAttack41 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -110,7 +110,7 @@ dwbAttack42 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.0,
+	damageRatio = 1.2,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -141,7 +141,7 @@ dwbAttack43 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -173,7 +173,7 @@ dwbAttack44 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -215,7 +215,7 @@ dwbAttack45 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -247,7 +247,7 @@ dwbAttack46 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -289,7 +289,7 @@ dwbAttack47 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -331,7 +331,7 @@ dwbAttack48 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -373,7 +373,7 @@ dwbAttack49 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -404,7 +404,7 @@ dwbAttack50 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.55,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -435,7 +435,7 @@ dwbAttack51 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -468,7 +468,7 @@ dwbAttack52 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -509,7 +509,7 @@ dwbAttack53 = {
 	requiredWeaponType = RANGED,
 	
 	range = 30,
-	damageRatio = 3.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -552,7 +552,7 @@ dwbRangedAttack1 = {
 
 	range = 64,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -584,7 +584,7 @@ dwbRangedAttack2 = {
 
 	range = 64,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -616,7 +616,7 @@ dwbRangedAttack3 = {
 
 	range = 64,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 60,
@@ -647,7 +647,7 @@ dwbRangedAttack4 = {
 	requiredWeaponType = RANGED,
 	
 	range = 64,
-	damageRatio = 7.5,
+	damageRatio = 1.2,
 	speedRatio = 7,
 	areaRange = 0,
 	accuracyBonus = 0,

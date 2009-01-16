@@ -49,7 +49,7 @@ jindaAttack01 = {
 	requiredWeaponType = NONE,
 
 	range = 7,
-	damageRatio = 20,
+	damageRatio = 1.2,
 	speedRatio = 3,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -91,7 +91,7 @@ jindaAttack02 = {
 	requiredWeaponType = NONE,
 	
 	range = 7,
-	damageRatio = 25,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -133,7 +133,7 @@ jindaAttack03 = {
 	requiredWeaponType = NONE,
 	
 	range = 7,
-	damageRatio = 25,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -164,7 +164,7 @@ jindaAttack04 = {
 	requiredWeaponType = NONE,
 	
 	range = 7,
-	damageRatio = 30,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -194,7 +194,7 @@ jindaAttack05 = {
 	requiredWeaponType = NONE,
 	
 	range = 7,
-	damageRatio = 20,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -224,7 +224,7 @@ jindaAttack06 = {
 	requiredWeaponType = NONE, 
 	
 	range = 7,
-	damageRatio = 20,
+	damageRatio = 1.2,
 	speedRatio = 3,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -254,7 +254,7 @@ jindaAttack07 = {
 	requiredWeaponType = NONE, 
 	
 	range = 7,
-	damageRatio = 25,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -284,7 +284,7 @@ jindaAttack08 = {
 	requiredWeaponType = NONE, 
 	
 	range = 7,
-	damageRatio = 30,
+	damageRatio = 1.2,
 	speedRatio = 5,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -315,7 +315,7 @@ jindaAttack09 = {
 	requiredWeaponType = NONE, 
 	
 	range = 7,
-	damageRatio = 35,
+	damageRatio = 1.2,
 	speedRatio = 5,
 	areaRange = 7, 
 	accuracyBonus = 0, 

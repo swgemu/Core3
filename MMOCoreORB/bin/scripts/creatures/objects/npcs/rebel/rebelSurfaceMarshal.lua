@@ -50,11 +50,9 @@ rebelSurfaceMarshal = Creature:new {
 	speciesName = "rebel_surface_marshal",
 	stfName = "mob/creature_names", 
 	objectCRC = 7469172, 
-	socialGroup = "rebel",
-	
+	socialGroup = "rebel",	
 
-	level = 62,
-	
+	level = 30,	
 
 	combatFlags = 0,
 
@@ -107,9 +105,9 @@ rebelSurfaceMarshal = Creature:new {
 	weaponTemp = "rifle_t21", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 240,
-	weaponMaxDamage = 620,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 290,
+	weaponMaxDamage = 300,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

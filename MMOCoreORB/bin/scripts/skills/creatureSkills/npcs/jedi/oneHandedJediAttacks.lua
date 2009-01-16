@@ -47,7 +47,7 @@ oneHandedJediAttack1 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -79,7 +79,7 @@ oneHandedJediAttack2 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -109,7 +109,7 @@ oneHandedJediAttack3 = {
 	requiredWeaponType = JEDI,
 
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -141,7 +141,7 @@ oneHandedJediAttack4 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -184,7 +184,7 @@ oneHandedJediAttack5 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -228,7 +228,7 @@ oneHandedJediAttack6 = {
 	
 	range = 8,
 	coneAngel = 40,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -258,7 +258,7 @@ oneHandedJediAttack7 = {
 	
 	range = 8,
 	coneAngel = 40,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -288,7 +288,7 @@ oneHandedJediAttack8 = {
 	
 	range = 8,
 	coneAngel = 40,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -316,7 +316,7 @@ oneHandedJediAttack9 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 0,
@@ -357,7 +357,7 @@ oneHandedJediAttack10 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 0,
@@ -398,7 +398,7 @@ oneHandedJediAttack11 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 0,
@@ -439,7 +439,7 @@ oneHandedJediAttack12 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -465,7 +465,7 @@ oneHandedJediAttack13 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -491,7 +491,7 @@ oneHandedJediAttack14 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -517,7 +517,7 @@ oneHandedJediAttack15 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -543,7 +543,7 @@ oneHandedJediAttack16 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -570,7 +570,7 @@ oneHandedJediAttack17 = {
 	requiredWeaponType = ONEHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	

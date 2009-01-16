@@ -48,7 +48,7 @@ selonianAttack1 = {
 
 	range = 64,
 
-	damageRatio = 7.0,
+	damageRatio = 1.2,
 
 	speedRatio = 5,
 	coneAngle = 0,

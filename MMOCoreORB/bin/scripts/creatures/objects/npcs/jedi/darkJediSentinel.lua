@@ -46,12 +46,11 @@ darkJediSentinel = Creature:new {
 	creatureType = "NPC",
 	gender = "",
 
-	name = "Dark Jedi Sentinel",
-	speciesName = "creature_name",
+	speciesName = "light_jedi_sentinel",
 	stfName = "mob/creature_names", 
 	objectCRC = 2005105485, 
 	socialGroup = "self",
-	level = 300,
+	level = 500,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -71,7 +70,7 @@ darkJediSentinel = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 95,
 	energy = 95,
 	electricity = 95,
@@ -92,6 +91,9 @@ darkJediSentinel = Creature:new {
 	killer = 1,
 	aggressive = 1,
 	invincible = 0,
+	
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
@@ -100,9 +102,9 @@ darkJediSentinel = Creature:new {
 	weaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 850,
-	weaponMaxDamage = 1000,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 2645,
+	weaponMaxDamage = 5000,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

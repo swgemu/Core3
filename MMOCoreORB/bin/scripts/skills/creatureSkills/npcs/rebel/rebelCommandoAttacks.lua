@@ -48,7 +48,7 @@ rebelCommandoAttack1 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 40,
-	damageRatio = 8,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -89,7 +89,7 @@ rebelCommandoAttack2 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 40,
-	damageRatio = 6,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	coneAngle = 60,
 	accuracyBonus = 0,

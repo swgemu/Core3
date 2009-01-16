@@ -101,9 +101,9 @@ blackSunHenchmanDWB = Creature:new {
 	weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 600,
-	weaponMaxDamage = 800,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 520,
+	weaponMaxDamage = 750,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

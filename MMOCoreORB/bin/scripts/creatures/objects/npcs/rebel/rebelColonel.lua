@@ -50,10 +50,9 @@ rebelColonel = Creature:new {
 	speciesName = "rebel_colonel",
 	stfName = "mob/creature_names",
 	objectCRC = 1803030018, 
-	socialGroup = "Rebel",
-	
+	socialGroup = "Rebel",	
 
-	level = 50,
+	level = 24,
 	
 	combatFlags = 0,
 
@@ -73,7 +72,7 @@ rebelColonel = Creature:new {
 	willpower = 1000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 15,
 	energy = 15,
 	electricity = -1,
@@ -105,9 +104,9 @@ rebelColonel = Creature:new {
 	weaponTemp = "rifle_laser", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 520,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 230,
+	weaponMaxDamage = 240,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

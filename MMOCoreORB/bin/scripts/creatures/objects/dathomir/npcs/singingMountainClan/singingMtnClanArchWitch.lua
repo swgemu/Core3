@@ -103,9 +103,9 @@ singingMtnClanArchWitch = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 300,
-	weaponMaxDamage = 850,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 645,
+	weaponMaxDamage = 1000,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ singingMtnClanArchWitch = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 350,
-	alternateWeaponMaxDamage = 800,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 645,
+	alternateWeaponMaxDamage = 1000,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

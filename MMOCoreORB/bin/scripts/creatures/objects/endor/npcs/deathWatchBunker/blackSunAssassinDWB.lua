@@ -69,7 +69,7 @@ blackSunAssassinDWB = Creature:new {
 	willpower = 9000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 55,
 	energy = 55,
 	electricity = 80,
@@ -101,9 +101,9 @@ blackSunAssassinDWB = Creature:new {
 	weaponTemp = "rifle_dxr6", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 600,
-	weaponMaxDamage = 800,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 670,
+	weaponMaxDamage = 1050,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

@@ -48,7 +48,7 @@ afarathuAttack1 = {
 
 	range = 4,
 
-	damageRatio = 20,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 
@@ -82,7 +82,7 @@ afarathuAttack2 = {
 
 	range = 4,
 
-	damageRatio = 12,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 
@@ -116,7 +116,7 @@ afarathuAttack3 = {
 
 	range = 4,
 
-	damageRatio = 16,
+	damageRatio = 1.2,
 
 	speedRatio = 2,
 

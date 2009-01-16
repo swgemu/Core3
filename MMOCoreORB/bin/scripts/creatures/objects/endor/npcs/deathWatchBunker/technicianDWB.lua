@@ -69,7 +69,7 @@ technicianDWB = Creature:new {
 	willpower = 1000,
 
 	height = 1,
-	armor = 2,
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	
 	kinetic = 15,
 	energy = 15,
@@ -102,8 +102,8 @@ technicianDWB = Creature:new {
 		weaponTemp = "carbine_elite", -- Weapon Template ex. 'lance_vibrolance'
 		weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 		weaponEquipped = 1,
-		weaponMinDamage = 400,
-		weaponMaxDamage = 600,
+		weaponMinDamage = 320,
+		weaponMaxDamage = 350,
 		weaponAttackSpeed = 2,
 		weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 		weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY

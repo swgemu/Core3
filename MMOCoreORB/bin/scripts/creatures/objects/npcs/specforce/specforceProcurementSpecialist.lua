@@ -44,14 +44,13 @@
 specforceProcurementSpecialist = Creature:new {
 	objectName = "specforceProcurementSpecialist",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "■■'     Rebel VBBH",
+	faction = "rebel",
 	gender = "",
 
-	name = "SpecForce procurement specialist",
-	speciesName = "creature_name",
+	speciesName = "specforce_procurement_specialist",
 	stfName = "mob/creature_names", 
 	objectCRC = 2669072967, 
-	socialGroup = "■■'     Rebel VBBH",
+	socialGroup = "rebel",
 	level = 13,
 	
 

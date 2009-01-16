@@ -72,7 +72,7 @@ imperialStormTrooperNovatrooperCaptain = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -101,9 +101,9 @@ imperialStormTrooperNovatrooperCaptain = Creature:new {
 	weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 350,
-	weaponMaxDamage = 400,
-	weaponAttackSpeed = 2.5,
+	weaponMinDamage = 845,
+	weaponMaxDamage = 1400,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

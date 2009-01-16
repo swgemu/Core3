@@ -48,7 +48,7 @@ rebelSurfaceMarshalAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -79,7 +79,7 @@ rebelSurfaceMarshalAttack2 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -110,7 +110,7 @@ rebelSurfaceMarshalAttack3 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,

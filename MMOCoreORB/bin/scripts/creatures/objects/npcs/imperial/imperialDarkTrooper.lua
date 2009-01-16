@@ -51,8 +51,7 @@ imperialDarkTrooper = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 1312348723, 
 	socialGroup = "imperial",
-	level = 95,
-	
+	level = 228,	
 
 	combatFlags = 0,
 
@@ -72,7 +71,7 @@ imperialDarkTrooper = Creature:new {
 	willpower = 50000,
 
 	height = 1, -- Size of creature
-	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 85,
 	energy = 95,
 	electricity = 10,
@@ -106,9 +105,9 @@ imperialDarkTrooper = Creature:new {
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 230,
-	weaponMaxDamage = 411,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 1270,
+	weaponMaxDamage = 2250,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

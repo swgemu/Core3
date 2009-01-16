@@ -48,7 +48,7 @@ nymAttack1 = {
 
 	range = 25,
 
-	damageRatio = 4,3,
+	damageRatio = 1.2,
 
 	speedRatio = 1.2,
 	coneAngle = 30,
@@ -83,7 +83,7 @@ nymAttack2 = {
 
 	range = 15,
 
-	damageRatio = 3,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 	coneAngle = 30,
@@ -117,7 +117,7 @@ nymAttack3 = {
 	requiredWeaponType = RANGED,
 	
 	range = 64,
-	damageRatio = 10,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -147,7 +147,7 @@ nymAttack10 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.9,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -189,7 +189,7 @@ nymAttack11 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.6,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -220,7 +220,7 @@ nymAttack12 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.00,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -262,7 +262,7 @@ nymAttack13 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.6,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -293,7 +293,7 @@ nymAttack14 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.80,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -335,7 +335,7 @@ nymAttack15 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.50,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -366,7 +366,7 @@ nymAttack16 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.40,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -407,7 +407,7 @@ nymAttack17 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 3.50,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -438,7 +438,7 @@ nymAttack18 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.10,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -469,7 +469,7 @@ nymAttack19 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.0,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -500,7 +500,7 @@ nymAttack20 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.15,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -531,7 +531,7 @@ nymAttack21 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -562,7 +562,7 @@ nymAttack22 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -593,7 +593,7 @@ nymAttack23 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 3.15,
+	damageRatio = 1.2,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -624,7 +624,7 @@ nymAttack24 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 65,
-	damageRatio = 5.15,
+	damageRatio = 1.2,
 	speedRatio = 1.05,
 	coneAngle = 60,
 	accuracyBonus = 0,

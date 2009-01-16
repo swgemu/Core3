@@ -48,7 +48,7 @@ rebelColonelAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -79,7 +79,7 @@ rebelColonelAttack2 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -110,7 +110,7 @@ rebelColonelAttack3 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -141,7 +141,7 @@ rebelColonelAttack4 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,

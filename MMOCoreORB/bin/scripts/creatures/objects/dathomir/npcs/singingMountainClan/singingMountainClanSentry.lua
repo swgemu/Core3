@@ -71,7 +71,7 @@ singingMountainClanSentry = Creature:new {
 	willpower = 500,
 
 	height = 1, -- Size of creature
-	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 100,
 	energy = 5,
 	electricity = 100,
@@ -103,9 +103,9 @@ singingMountainClanSentry = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 175,
-	weaponMaxDamage = 400,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 190,
+	weaponMaxDamage = 200,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ singingMountainClanSentry = Creature:new {
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 100,
+	alternateWeaponMinDamage = 190,
 	alternateWeaponMaxDamage = 200,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

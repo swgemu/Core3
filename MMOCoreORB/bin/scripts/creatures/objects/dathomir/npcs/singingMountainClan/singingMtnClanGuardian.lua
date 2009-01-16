@@ -71,7 +71,7 @@ singingMtnClanGuardian = Creature:new {
 	willpower = 500,
 
 	height = 1, -- Size of creature
-	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 100,
 	energy = 10,
 	electricity = 100,
@@ -103,9 +103,9 @@ singingMtnClanGuardian = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 350,
-	weaponMaxDamage = 1000,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 895,
+	weaponMaxDamage = 1500,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ singingMtnClanGuardian = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 350,
-	alternateWeaponMaxDamage = 1100,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 895,
+	alternateWeaponMaxDamage = 1500,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

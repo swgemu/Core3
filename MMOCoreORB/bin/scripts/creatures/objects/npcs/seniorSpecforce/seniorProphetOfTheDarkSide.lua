@@ -47,8 +47,7 @@ seniorProphetOfTheDarkSide = Creature:new {
 	faction = "imperial",
 	gender = "",
 
-	name = "Senior Prophet of the Dark Side",
-	speciesName = "creature_name",
+	speciesName = "senior_prophet_of_the_dark_side",
 	stfName = "mob/creature_names", 
 	objectCRC = 4246600608, 
 	socialGroup = "imperial",
@@ -73,7 +72,7 @@ seniorProphetOfTheDarkSide = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 80,
 	energy = 80,
 	electricity = 80,
@@ -102,8 +101,8 @@ seniorProphetOfTheDarkSide = Creature:new {
 	weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
-	weaponMinDamage = 850,
-	weaponMaxDamage = 1200,
+	weaponMinDamage = 920,
+	weaponMaxDamage = 1550,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY

@@ -104,9 +104,9 @@ imperialWarrantOfficerI = Creature:new {
 	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 110,
-	weaponMaxDamage = 220,
-	weaponAttackSpeed = 1.2,
+	weaponMinDamage = 180,
+	weaponMaxDamage = 190,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

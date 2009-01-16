@@ -41,33 +41,33 @@
 --which carries forward this exception.
 
 singingMountainClanAttack1 = {
-        attackname = "singingMountainClanAttack1",
-        animation = "creature_attack_light",
-        
-        requiredWeaponType = NONE,
+	attackname = "singingMountainClanAttack1",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
 
-        range = 10,
+	range = 10,
 
-        damageRatio = 10,
+	damageRatio = 1.2,
 
-        speedRatio = 4,
+	speedRatio = 4,
 
-        areaRange = 0,
-        accuracyBonus = 0,
-                
-        knockdownChance = 0,
-        postureDownChance = 0,
-        postureUpChance = 0,
-        dizzyChance = 0,
-        blindChance = 0,
-        stunChance = 0,
-        intimidateChance = 0,
-        
-        CbtSpamBlock = "attack_block",
-        CbtSpamCounter = "attack_counter",
-        CbtSpamEvade = "attack_evade",
-        CbtSpamHit = "attack_hit",
-        CbtSpamMiss = "attack_miss",
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(singingMountainClanAttack1)
@@ -81,7 +81,7 @@ singingMountainClanAttack20 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -123,7 +123,7 @@ singingMountainClanAttack21 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -154,7 +154,7 @@ singingMountainClanAttack22 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -186,7 +186,7 @@ singingMountainClanAttack23 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -217,7 +217,7 @@ singingMountainClanAttack24 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -248,7 +248,7 @@ singingMountainClanAttack25 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -278,7 +278,7 @@ singingMountainClanAttack26 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -309,7 +309,7 @@ singingMountainClanAttack27 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -351,7 +351,7 @@ singingMountainClanAttack28 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -382,7 +382,7 @@ singingMountainClanAttack29 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -413,7 +413,7 @@ singingMountainClanAttack30 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -444,7 +444,7 @@ singingMountainClanAttack31 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -485,7 +485,7 @@ singingMountainClanAttack40 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -516,7 +516,7 @@ singingMountainClanAttack41 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -547,7 +547,7 @@ singingMountainClanAttack42 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -578,7 +578,7 @@ singingMountainClanAttack43 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -610,7 +610,7 @@ singingMountainClanAttack44 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -648,7 +648,7 @@ singingMountainClanAttack45 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -680,7 +680,7 @@ singingMountainClanAttack46 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -722,7 +722,7 @@ singingMountainClanAttack47 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -752,7 +752,7 @@ singingMountainClanAttack48 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -794,7 +794,7 @@ singingMountainClanAttack49 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -825,7 +825,7 @@ singingMountainClanAttack50 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -856,7 +856,7 @@ singingMountainClanAttack51 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,

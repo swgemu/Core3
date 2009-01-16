@@ -72,7 +72,7 @@ rebelFirstLieutenant = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -104,9 +104,9 @@ rebelFirstLieutenant = Creature:new {
 	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 140,
-	weaponMaxDamage = 420,
-	weaponAttackSpeed = 1.2,
+	weaponMinDamage = 190,
+	weaponMaxDamage = 200,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

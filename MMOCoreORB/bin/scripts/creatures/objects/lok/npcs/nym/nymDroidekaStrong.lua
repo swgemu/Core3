@@ -100,9 +100,9 @@ nymDroidekaStrong = Creature:new {
 	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 200,
-	weaponMaxDamage = 300,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 360,
+	weaponMaxDamage = 430,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

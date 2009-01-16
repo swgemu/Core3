@@ -47,7 +47,7 @@ rebelJediMasterAttack1 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -79,7 +79,7 @@ rebelJediMasterAttack2 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -109,7 +109,7 @@ rebelJediMasterAttack3 = {
 	requiredWeaponType = JEDI,
 
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 300,
@@ -141,7 +141,7 @@ rebelJediMasterAttack4 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -184,7 +184,7 @@ rebelJediMasterAttack5 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -228,7 +228,7 @@ rebelJediMasterAttack6 = {
 
 	range = 8,
 	coneAngle = 360,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -258,7 +258,7 @@ rebelJediMasterAttack7 = {
 
 	range = 8,
 	coneAngle = 40,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -288,7 +288,7 @@ rebelJediMasterAttack8 = {
 
 	range = 8,
 	coneAngle = 1,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -319,7 +319,7 @@ rebelJediMasterAttack9 = {
 
 	range = 8,
 	coneAngle = 1,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -349,7 +349,7 @@ rebelJediMasterAttack10 = {
 
 	range = 8,
 	coneAngle = 1,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -378,7 +378,7 @@ rebelJediMasterAttack11 = {
 	requiredWeaponType = POLEARMSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 0,
@@ -420,7 +420,7 @@ rebelJediMasterAttack12 = {
 	requiredWeaponType = POLEARMSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 0,
@@ -462,7 +462,7 @@ rebelJediMasterAttack13 = {
 	requiredWeaponType = POLEARMSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 0,
@@ -504,7 +504,7 @@ rebelJediMasterAttack14 = {
 
 	range = 8,
 	coneAngle = 360,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -534,7 +534,7 @@ rebelJediMasterAttack15 = {
 
 	range = 8,
 	coneAngle = 360,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	
@@ -564,7 +564,7 @@ rebelJediMasterAttack16 = {
 
 	range = 8,
 	coneAngle = 360,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 300,
 	

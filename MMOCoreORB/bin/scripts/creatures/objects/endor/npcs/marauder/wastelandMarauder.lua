@@ -71,7 +71,7 @@ wastelandMarauder = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 40,
 	energy = 40,
 	electricity = 0,
@@ -103,9 +103,9 @@ wastelandMarauder = Creature:new {
 	weaponTemp = "carbine_dh17", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 200,
-	weaponMaxDamage = 400,
-	weaponAttackSpeed = 4,
+	weaponMinDamage = 420,
+	weaponMaxDamage = 550,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,8 +114,8 @@ wastelandMarauder = Creature:new {
 	alternateWeaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 100,
-	alternateWeaponMaxDamage = 250,
+	alternateWeaponMinDamage = 420,
+	alternateWeaponMaxDamage = 550,
 	alternateWeaponAttackSpeed = 3,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY

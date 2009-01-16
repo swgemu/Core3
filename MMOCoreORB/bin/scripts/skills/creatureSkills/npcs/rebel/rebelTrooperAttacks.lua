@@ -47,7 +47,7 @@ rebelTrooperAttack1 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -78,7 +78,7 @@ rebelTrooperAttack2 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,

@@ -47,8 +47,7 @@ specforceHeavyWeaponsSpecialist = Creature:new {
 	faction = "rebel",
 	gender = "",
 
-	name = "SpecForce heavy weapons specialist",
-	speciesName = "creature_name",
+	speciesName = "specforce_heavy_weapons_specialist",
 	stfName = "mob/creature_names", 
 	objectCRC = 542195677, 
 	socialGroup = "rebel",

@@ -69,7 +69,7 @@ deathWatchOverlordDWB = Creature:new {
 	willpower = 50000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 80,
 	energy = 80,
 	electricity = 45,
@@ -101,9 +101,9 @@ deathWatchOverlordDWB = Creature:new {
 	weaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 300,
-	weaponMaxDamage = 800,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 1245,
+	weaponMaxDamage = 2200,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

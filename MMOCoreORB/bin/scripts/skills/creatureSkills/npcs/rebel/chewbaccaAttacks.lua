@@ -46,7 +46,7 @@ chewbaccaAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -78,7 +78,7 @@ chewbaccaAttack2 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -120,7 +120,7 @@ chewbaccaAttack3 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -162,7 +162,7 @@ chewbaccaAttack4 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -193,7 +193,7 @@ chewbaccaAttack5 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -224,7 +224,7 @@ chewbaccaAttack6 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -255,7 +255,7 @@ chewbaccaAttack7 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -286,7 +286,7 @@ chewbaccaAttack8 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -317,7 +317,7 @@ chewbaccaAttack9 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -348,7 +348,7 @@ chewbaccaAttack10 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -379,7 +379,7 @@ chewbaccaAttack11 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -410,7 +410,7 @@ chewbaccaAttack12 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,

@@ -47,7 +47,7 @@ imperialProbotAttack1 = {
 	requiredWeaponType = RANGED,
 	
 	range = 64,
-	damageRatio = 10,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,

@@ -48,7 +48,7 @@ jabbaAttack25 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -90,7 +90,7 @@ jabbaAttack26 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.5,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -121,7 +121,7 @@ jabbaAttack27 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 2.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -163,7 +163,7 @@ jabbaAttack28 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 11,
-	damageRatio = 3.0,
+	damageRatio = 1.2,
 	speedRatio = 2.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -194,7 +194,7 @@ jabbaAttack40 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -225,7 +225,7 @@ jabbaAttack41 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -256,7 +256,7 @@ jabbaAttack42 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 4.0,
+	damageRatio = 1.2,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,

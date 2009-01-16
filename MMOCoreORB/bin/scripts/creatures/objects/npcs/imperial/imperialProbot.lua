@@ -101,9 +101,9 @@ probot = Creature:new {
 	weaponTemp = "droid_probot_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 150,
-	weaponMaxDamage = 250,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 70,
+	weaponMaxDamage = 75,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

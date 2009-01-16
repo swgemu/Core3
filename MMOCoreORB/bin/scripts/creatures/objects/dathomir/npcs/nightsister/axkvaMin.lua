@@ -103,9 +103,9 @@ axkvaMin = Creature:new {
 	weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 456,
-	weaponMaxDamage = 903,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 1645,
+	weaponMaxDamage = 3000,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ axkvaMin = Creature:new {
 	alternateWeaponTemp = "shared_baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 105,
-	alternateWeaponMaxDamage = 312,
-	alternateWeaponAttackSpeed = 1,
+	alternateWeaponMinDamage = 1645,
+	alternateWeaponMaxDamage = 3000,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

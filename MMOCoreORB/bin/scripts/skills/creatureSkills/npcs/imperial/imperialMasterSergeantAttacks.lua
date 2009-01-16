@@ -47,7 +47,7 @@ imperialMasterSergeantAttack1 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,

@@ -104,9 +104,9 @@ imperialCivilPatrolCaptain = Creature:new {
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 69,
-	weaponMaxDamage = 169,
-	weaponAttackSpeed = 2.5,
+	weaponMinDamage = 80,
+	weaponMaxDamage = 90,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

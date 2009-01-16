@@ -71,7 +71,7 @@ warrenAgroDroidS04 = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 30,
 	energy = 30,
 	electricity = 0,
@@ -103,9 +103,9 @@ warrenAgroDroidS04 = Creature:new {
 	weaponTemp = "vehicle_atst_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 450,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 190,
+	weaponMaxDamage = 200,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -116,7 +116,7 @@ warrenAgroDroidS04 = Creature:new {
 	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
-	alternateWeaponAttackSpeed = 0,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 

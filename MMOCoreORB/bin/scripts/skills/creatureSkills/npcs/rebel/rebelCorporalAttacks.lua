@@ -48,7 +48,7 @@ rebelCorporalAttack1 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -90,7 +90,7 @@ rebelCorporalAttack2 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -121,7 +121,7 @@ rebelCorporalAttack3 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -152,7 +152,7 @@ rebelCorporalAttack4 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,

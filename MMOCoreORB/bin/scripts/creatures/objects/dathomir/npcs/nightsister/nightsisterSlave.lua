@@ -45,20 +45,14 @@ nightsisterSlave = Creature:new {
 	objectName = "nightsisterSlave",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "nightsister", 
-	
 	factionPoints = 20,
-	
 	gender = "",
+	
 	speciesName = "nightsister_slave",
-	
 	stfName = "mob/creature_names", 
-	
 	objectCRC = 1482802851, 
 	socialGroup = "nightsister",
-	
-	level = 10,
-
-	
+	level = 10,	
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -78,7 +72,7 @@ nightsisterSlave = Creature:new {
 	willpower = 100,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -107,9 +101,9 @@ nightsisterSlave = Creature:new {
 	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 75,
-	weaponMaxDamage = 200,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 130,
+	weaponMaxDamage = 140,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -120,7 +114,7 @@ nightsisterSlave = Creature:new {
 	alternateWeaponEquipped = 0,
 	alternateWeaponMinDamage = 0,
 	alternateWeaponMaxDamage = 0,
-	alternateWeaponAttackSpeed = 0,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 

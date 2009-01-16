@@ -48,7 +48,7 @@ sennexattack1 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 40,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -79,7 +79,7 @@ sennexattack2 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 42,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -110,7 +110,7 @@ sennexattack3 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 42,
+	damageRatio = 1.2,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -141,7 +141,7 @@ sennexattack4 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 42,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -173,7 +173,7 @@ sennexattack5 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 48,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,

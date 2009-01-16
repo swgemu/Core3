@@ -73,7 +73,7 @@ rebelGeneral = Creature:new {
 	willpower = 2000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 35,
@@ -105,9 +105,9 @@ rebelGeneral = Creature:new {
 	weaponTemp = "rifle_jawa_ion", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 100,
-	weaponMaxDamage = 250,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 270,
+	weaponMaxDamage = 280,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
