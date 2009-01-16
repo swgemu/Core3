@@ -50,8 +50,7 @@ rebelTrooper = Creature:new {
 	speciesName = "rebel_trooper",
 	stfName = "mob/creature_names", 
 	objectCRC = 4012550111, 
-	socialGroup = "Rebel",
-	
+	socialGroup = "Rebel",	
 
 	level = 25,
 
@@ -73,7 +72,7 @@ rebelTrooper = Creature:new {
 	willpower = 300,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -105,9 +104,9 @@ rebelTrooper = Creature:new {
 	weaponTemp = "pistol_fwg5", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 120,
-	weaponMaxDamage = 330,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 160,
+	weaponMaxDamage = 170,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY	
 	

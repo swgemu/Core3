@@ -50,11 +50,8 @@ rebelWarrantOfficerII = Creature:new {
 	speciesName = "rebel_warrant_officer_ii",
 	stfName = "mob/creature_names", 
 	objectCRC = 3172332319, 
-	socialGroup = "Rebel",
-	
-
-	level = 48,
-	
+	socialGroup = "Rebel",	
+	level = 48,	
 
 	combatFlags = 0,
 
@@ -106,9 +103,9 @@ rebelWarrantOfficerII = Creature:new {
 	weaponTemp = "pistol_power5", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 140,
-	weaponMaxDamage = 420,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 170,
+	weaponMaxDamage = 180,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

@@ -46,8 +46,7 @@ darkAdept = Creature:new {
 	creatureType = "NPC",
 	gender = "",
 
-	name = "Dark Adept",
-	speciesName = "creature_name",
+	speciesName = "dark_adept",
 	stfName = "mob/creature_names", 
 	objectCRC = 2005105485, 
 	socialGroup = "DarkJedi",
@@ -71,7 +70,7 @@ darkAdept = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 80,
 	energy = 80,
 	electricity = 80,
@@ -95,13 +94,13 @@ darkAdept = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/ranged/carbine/shared_carbine_ee3.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Palpatine Saber", -- Name ex. 'a Vibrolance'
-	weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "Creature Defualt", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 0,
-	weaponMinDamage = 850,
-	weaponMaxDamage = 1200,
+	weaponMinDamage = 945,
+	weaponMaxDamage = 1600,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY

@@ -47,7 +47,7 @@ untrainedWielderDarkSideAttack20 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 9.20,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -89,7 +89,7 @@ untrainedWielderDarkSideAttack21 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 9.20,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -120,7 +120,7 @@ untrainedWielderDarkSideAttack22 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 9.20,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -151,7 +151,7 @@ untrainedWielderDarkSideAttack23 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 9.20,
+	damageRatio = 1.2,
 	speedRatio = 23.45,
 	areaRange = 7,
 	accuracyBonus = 300,
@@ -182,7 +182,7 @@ untrainedWielderDarkSideAttack24 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 9.20,
+	damageRatio = 1.2,
 	speedRatio = 23.45,
 	areaRange = 0,
 	accuracyBonus = 300,
@@ -224,7 +224,7 @@ untrainedWielderDarkSideAttack25 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 9.20,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 300,
@@ -255,7 +255,7 @@ untrainedWielderDarkSideAttack26 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 9.20,
+	damageRatio = 1.2,
 	speedRatio = 25.45,
 	areaRange = 7,
 	accuracyBonus = 300,
@@ -285,7 +285,7 @@ untrainedWielderDarkSideAttack27 = {
 	requiredWeaponType = UNARMED,
 	
 	range = 11,
-	damageRatio = 9.20,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 300,

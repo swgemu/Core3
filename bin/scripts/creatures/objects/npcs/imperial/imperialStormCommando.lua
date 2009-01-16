@@ -101,9 +101,9 @@ imperialStormCommando = Creature:new {
 	weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 400,
-	weaponAttackSpeed = 4.9,
+	weaponMinDamage = 300,
+	weaponMaxDamage = 310,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

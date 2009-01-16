@@ -48,7 +48,7 @@ dwbMeleeAttack40 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -79,7 +79,7 @@ dwbMeleeAttack41 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -110,7 +110,7 @@ dwbMeleeAttack42 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.0,
+	damageRatio = 1.2,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -141,7 +141,7 @@ dwbMeleeAttack43 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -173,7 +173,7 @@ dwbMeleeAttack44 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -215,7 +215,7 @@ dwbMeleeAttack45 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -247,7 +247,7 @@ dwbMeleeAttack46 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -289,7 +289,7 @@ dwbMeleeAttack47 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -331,7 +331,7 @@ dwbMeleeAttack48 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -373,7 +373,7 @@ dwbMeleeAttack49 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -404,7 +404,7 @@ dwbMeleeAttack50 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.55,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -435,7 +435,7 @@ dwbMeleeAttack51 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -468,7 +468,7 @@ dwbMeleeAttack52 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -509,7 +509,7 @@ dwbMeleeAttack53 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 3.15,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -552,7 +552,7 @@ dwbMeleeRangedAttack1 = {
 
 	range = 64,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -584,7 +584,7 @@ dwbMeleeRangedAttack2 = {
 
 	range = 64,
 
-	damageRatio = 15,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -616,7 +616,7 @@ dwbMeleeRangedAttack3 = {
 
 	range = 64,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 60,
@@ -647,7 +647,7 @@ dwbMeleeRangedAttack4 = {
 	requiredWeaponType = RANGED,
 	
 	range = 64,
-	damageRatio = 7.5,
+	damageRatio = 1.2,
 	speedRatio = 7,
 	areaRange = 0,
 	accuracyBonus = 0,

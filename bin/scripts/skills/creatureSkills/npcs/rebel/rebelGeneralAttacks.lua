@@ -47,7 +47,7 @@ rebelGeneralAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -78,7 +78,7 @@ rebelGeneralAttack2 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -109,7 +109,7 @@ rebelGeneralAttack3 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,

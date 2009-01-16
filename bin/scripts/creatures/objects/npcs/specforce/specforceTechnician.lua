@@ -47,8 +47,7 @@ specforceTechnician = Creature:new {
 	faction = "rebel",
 	gender = "",
 
-	name = "SpecForce technician",
-	speciesName = "creature_name",
+	speciesName = "specforce_technician",
 	stfName = "mob/creature_names", 
 	objectCRC = 174316325, 
 	socialGroup = "rebel",

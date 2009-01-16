@@ -49,22 +49,22 @@ darkJediKnight = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 1570698968, 
 	socialGroup = "sith",
-	level = 350,
+	level = 265,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 311000,
-	healthMin = 300000,
+	healthMax = 320000,
+	healthMin = 261000,
 	strength = 50000,
 	constitution = 50000,
 
-	actionMax = 311000,
-	actionMin = 300000,
+	actionMax = 320000,
+	actionMin = 261000,
 	quickness = 50000,
 	stamina = 50000,
 
-	mindMax = 311000,
-	mindMin = 300000,
+	mindMax = 320000,
+	mindMin = 261000,
 	focus = 50000,
 	willpower = 50000,
 
@@ -101,9 +101,9 @@ darkJediKnight = Creature:new {
 	weaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 850,
-	weaponMaxDamage = 1000,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 1645,
+	weaponMaxDamage = 3000,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

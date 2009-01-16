@@ -47,8 +47,7 @@ specforceWildernessOperative = Creature:new {
 	faction = "rebel",
 	gender = "",
 
-	name = "SpecForce wilderness operative",
-	speciesName = "creature_name",
+	speciesName = "specforce_wilderness_operative",
 	stfName = "mob/creature_names", 
 	objectCRC = 2586945197, 
 	socialGroup = "rebel",

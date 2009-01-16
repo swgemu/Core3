@@ -48,7 +48,7 @@ rebelMedicAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -86,7 +86,7 @@ rebelMedicAttack2 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 30,
 	accuracyBonus = 0,

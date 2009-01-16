@@ -46,7 +46,7 @@ jawaRangedAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -78,7 +78,7 @@ jawaRangedAttack2 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -120,7 +120,7 @@ jawaRangedAttack3 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -162,7 +162,7 @@ jawaRangedAttack4 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -193,7 +193,7 @@ jawaRangedAttack5 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -224,7 +224,7 @@ jawaRangedAttack6 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -255,7 +255,7 @@ jawaRangedAttack7 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -286,7 +286,7 @@ jawaRangedAttack8 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -317,7 +317,7 @@ jawaRangedAttack9 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -348,7 +348,7 @@ jawaRangedAttack10 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -379,7 +379,7 @@ jawaRangedAttack11 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -410,7 +410,7 @@ jawaRangedAttack12 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 64,
-	damageRatio = 9,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -441,7 +441,7 @@ jawaMeleeAttack1 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 10,
-	damageRatio = 9.0,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -472,7 +472,7 @@ jawaMeleeAttack2 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 9.5,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -503,7 +503,7 @@ jawaMeleeAttack3 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 9.5,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -545,7 +545,7 @@ jawaMeleeAttack4 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 9.0,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -576,7 +576,7 @@ jawaMeleeAttack5 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 9.0,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 7,
 	accuracyBonus = 0,

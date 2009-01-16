@@ -69,7 +69,7 @@ minerDWB = Creature:new {
 	willpower = 1000,
 
 	height = 1,
-	armor = 2,
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 15,
 	energy = 15,
 	electricity = 15,
@@ -101,9 +101,9 @@ minerDWB = Creature:new {
 		weaponTemp = "pistol_cdef", -- Weapon Template ex. 'lance_vibrolance'
 		weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 		weaponEquipped = 1,
-		weaponMinDamage = 100,
-		weaponMaxDamage = 170,
-		weaponAttackSpeed = 3,
+		weaponMinDamage = 320,
+		weaponMaxDamage = 350,
+		weaponAttackSpeed = 2,
 		weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 		weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

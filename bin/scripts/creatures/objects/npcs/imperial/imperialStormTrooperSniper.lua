@@ -104,9 +104,9 @@ imperialStormTrooperSniper = Creature:new {
 	weaponTemp = "rifle_t21", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 237,
-	weaponMaxDamage = 425,
-	weaponAttackSpeed = 5.3,
+	weaponMinDamage = 250,
+	weaponMaxDamage = 260,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "HEAVY", -- LIGHT, NONE, MEDIUM, HEAVY
 

@@ -47,7 +47,7 @@ tuskenAttack40 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -78,7 +78,7 @@ tuskenAttack41 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -109,7 +109,7 @@ tuskenAttack42 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -140,7 +140,7 @@ tuskenAttack43 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -171,7 +171,7 @@ tuskenAttack44 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -213,7 +213,7 @@ tuskenAttack45 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -244,7 +244,7 @@ tuskenAttack46 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -275,7 +275,7 @@ tuskenAttack47 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -306,7 +306,7 @@ tuskenAttack49 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4.15,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -337,7 +337,7 @@ tuskenAttack50 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 4.55,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -368,7 +368,7 @@ tuskenAttack53 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 6,
-	damageRatio = 3.15,
+	damageRatio = 1.2,
 	speedRatio = 1.5,
 	areaRange = 0,
 	accuracyBonus = 0,

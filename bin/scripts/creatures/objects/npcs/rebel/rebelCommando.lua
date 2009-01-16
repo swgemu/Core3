@@ -73,7 +73,7 @@ rebelCommando = Creature:new {
 	willpower = 1000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -105,9 +105,9 @@ rebelCommando = Creature:new {
 	weaponTemp = "rifle_flame_thrower", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "HeavyRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 200,
-	weaponMaxDamage = 500,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 240,
+	weaponMaxDamage = 250,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

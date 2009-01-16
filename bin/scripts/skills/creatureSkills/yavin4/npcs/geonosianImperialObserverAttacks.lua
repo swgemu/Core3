@@ -48,7 +48,7 @@ geonosianImperialObserverAttack1 = {
 
 	range = 5,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -82,7 +82,7 @@ geonosianImperialObserverAttack2 = {
 
 	range = 5,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -116,7 +116,7 @@ geonosianImperialObserverAttack3 = {
 
 	range = 5,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -150,7 +150,7 @@ geonosianImperialObserverAttack4 = {
 
 	range = 5,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 

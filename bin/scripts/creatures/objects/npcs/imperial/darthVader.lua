@@ -105,9 +105,9 @@ darthVader = Creature:new {
 	weaponTemp = "sword_lightsaber_vader", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 650,
-	weaponMaxDamage = 950,
-	weaponAttackSpeed = 1.0,
+	weaponMinDamage = 1645,
+	weaponMaxDamage = 3000,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

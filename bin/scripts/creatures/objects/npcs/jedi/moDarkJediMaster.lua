@@ -49,22 +49,22 @@ moDarkJediMaster = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 2005105485, 
 	socialGroup = "sith",
-	level = 400,
-
+	level = 291,
+	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 444000,
-	healthMin = 440000,
+	healthMax = 392000,
+	healthMin = 321000,
 	strength = 50000,
 	constitution = 50000,
 
-	actionMax = 444000,
-	actionMin = 440000,
+	actionMax = 392000,
+	actionMin = 321000,
 	quickness = 50000,
 	stamina = 50000,
 
-	mindMax = 444000,
-	mindMin = 440000,
+	mindMax = 392000,
+	mindMin = 321000,
 	focus = 50000,
 	willpower = 50000,
 
@@ -90,20 +90,20 @@ moDarkJediMaster = Creature:new {
 	killer = 1,
 	aggressive = 1,
 	invincible = 0, 
-
-	meleeDefense = 1,  
-	rangedDefense = 1,
+	  
+    meleeDefense = 1,  	  
+    rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_s4_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weapon = "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_s2_gen4.iff", -- File path to weapon -> object\xxx\xxx\xx
 	weaponName = "Master Saber", -- Name ex. 'a Vibrolance'
-	weaponTemp = "sword_lightsaber_one_handed_s4_gen4", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "OneHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponTemp = "sword_lightsaber_polearm_s2_gen4", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PolearmJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 950,
-	weaponMaxDamage = 1200,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 1800,
+	weaponMaxDamage = 3310,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -112,8 +112,8 @@ moDarkJediMaster = Creature:new {
 	alternateWeaponTemp = "sword_lightsaber_two_handed_s9_gen4", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "TwoHandedJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 950,
-	alternateWeaponMaxDamage = 1200,
+	alternateWeaponMinDamage = 1800,
+	alternateWeaponMaxDamage = 3310,
 	alternateWeaponAttackSpeed = 1,
 	alternateWeaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY

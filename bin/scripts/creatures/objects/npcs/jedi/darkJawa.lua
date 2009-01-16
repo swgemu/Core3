@@ -102,7 +102,7 @@ darkJawa = Creature:new {
 	weaponEquipped = 1,
 	weaponMinDamage = 650,
 	weaponMaxDamage = 950,
-	weaponAttackSpeed = 1,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

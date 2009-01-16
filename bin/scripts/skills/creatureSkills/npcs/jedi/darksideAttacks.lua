@@ -50,7 +50,7 @@ darksideAttack1 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -80,7 +80,7 @@ darksideAttack2 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -111,7 +111,7 @@ darksideAttack3 = {
 	
 	range = 32,
 	coneAngle = 60,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -141,7 +141,7 @@ darksideAttack4 = {
 	
 	range = 32,
 	coneAngle = 70,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -171,7 +171,7 @@ darksideAttack5 = {
 	
 	range = 32,
 	coneAngle = 0,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -199,7 +199,7 @@ darksideAttack6 = {
 	
 	range = 32,
 	coneAngle = 0,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -227,7 +227,7 @@ darksideAttack7 = {
 	
 	range = 32,
 	coneAngle = 70,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -256,7 +256,7 @@ darksideAttack8 = {
 	
 	range = 32,
 	coneAngle = 70,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -285,7 +285,7 @@ darksideAttack9 = {
 	
 	range = 32,
 	coneAngle = 70,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -313,7 +313,7 @@ darksideAttack10 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	

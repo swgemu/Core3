@@ -46,7 +46,7 @@ atAttack1 = {
 	requiredWeaponType = RANGED,
 	
 	range = 64,
-	damageRatio = 15,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,

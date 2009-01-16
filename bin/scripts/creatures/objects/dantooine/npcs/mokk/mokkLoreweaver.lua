@@ -71,7 +71,7 @@ mokkLoreweaver = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 15,
 	energy = 50,
 	electricity = 60,
@@ -99,8 +99,8 @@ mokkLoreweaver = Creature:new {
 	weaponTemp = "lance_staff_wood_s1", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 50,
-	weaponMaxDamage = 500,
+	weaponMinDamage = 370,
+	weaponMaxDamage = 450,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
@@ -110,9 +110,9 @@ mokkLoreweaver = Creature:new {
 	alternateWeaponTemp = "knife_stone", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 20,
-	alternateWeaponMaxDamage = 250,
-	alternateWeaponAttackSpeed = 1,
+	alternateWeaponMinDamage = 370,
+	alternateWeaponMaxDamage = 450,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 

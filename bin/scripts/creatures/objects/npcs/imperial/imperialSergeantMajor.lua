@@ -104,9 +104,9 @@ imperialSergeantMajor = Creature:new {
 	weaponTemp = "pistol_scout_blaster", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 90,
-	weaponMaxDamage = 270,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 180,
+	weaponMaxDamage = 190,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "heat", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "light", -- LIGHT, NONE, MEDIUM, HEAVY
 

@@ -103,9 +103,9 @@ singingMtnClanInitiate = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 175,
-	weaponMaxDamage = 300,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 395,
+	weaponMaxDamage = 500,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ singingMtnClanInitiate = Creature:new {
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 100,
-	alternateWeaponMaxDamage = 200,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 395,
+	alternateWeaponMaxDamage = 500,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

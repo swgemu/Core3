@@ -48,7 +48,7 @@ rebelFirstLieutenantAttack1 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -90,7 +90,7 @@ rebelFirstLieutenantAttack2 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,

@@ -106,8 +106,8 @@ imperialMedic = Creature:new {
 	weaponTemp = "carbine_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 100,
-	weaponMaxDamage = 250,
+	weaponMinDamage = 170,
+	weaponMaxDamage = 180,
 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx

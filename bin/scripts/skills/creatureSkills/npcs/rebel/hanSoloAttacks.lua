@@ -46,7 +46,7 @@ hanAttack1 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -87,7 +87,7 @@ hanAttack2 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -119,7 +119,7 @@ hanAttack3 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -161,7 +161,7 @@ hanAttack4 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -192,7 +192,7 @@ hanAttack5 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -223,7 +223,7 @@ hanAttack6 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -266,7 +266,7 @@ hanAttack7 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -297,7 +297,7 @@ hanAttack8 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	coneAngle = 60,	
@@ -329,7 +329,7 @@ hanAttack9 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 5,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -361,7 +361,7 @@ hanAttack10 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 5,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -393,7 +393,7 @@ hanAttack11 = {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -424,7 +424,7 @@ hanAttack12= {
 	requiredWeaponType = PISTOL,
 	
 	range = 65,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	areaRange = 0,
 	accuracyBonus = 0,

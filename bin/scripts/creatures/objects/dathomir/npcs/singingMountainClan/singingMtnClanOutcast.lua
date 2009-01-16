@@ -71,7 +71,7 @@ singingMtnClanOutcast = Creature:new {
 	willpower = 5000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 35,
 	energy = 35,
 	electricity = 100,
@@ -103,9 +103,9 @@ singingMtnClanOutcast = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 275,
-	weaponMaxDamage = 700,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 520,
+	weaponMaxDamage = 750,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ singingMtnClanOutcast = Creature:new {
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 100,
-	alternateWeaponMaxDamage = 250,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 520,
+	alternateWeaponMaxDamage = 750,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

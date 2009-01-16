@@ -47,7 +47,7 @@ geonosianAlertDroidekaAttack1 = {
 
 	range = 64,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -81,7 +81,7 @@ geonosianAlertDroidekaAttack2 = {
 
 	range = 64,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -115,7 +115,7 @@ geonosianAlertDroidekaAttack3 = {
 
 	range = 64,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -149,7 +149,7 @@ geonosianAlertDroidekaAttack4 = {
 
 	range = 64,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 

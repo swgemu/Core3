@@ -48,7 +48,7 @@ rebelSecondLieutenantAttack1 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 11,
-	damageRatio = 1.50,
+	damageRatio = 1.2,
 	speedRatio = 1.45,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -90,7 +90,7 @@ rebelSecondLieutenantAttack2 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,

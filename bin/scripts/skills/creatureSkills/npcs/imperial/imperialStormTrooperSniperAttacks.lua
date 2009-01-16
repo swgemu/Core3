@@ -47,7 +47,7 @@ imperialStormTrooperSniperAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 2.0,
+	damageRatio = 1.2,
 	speedRatio = 2.0,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -78,7 +78,7 @@ imperialStormTrooperSniperAttack2 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 3.0,
+	damageRatio = 1.2,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -120,7 +120,7 @@ imperialStormTrooperSniperAttack3 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 2.5,
+	damageRatio = 1.2,
 	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -151,7 +151,7 @@ imperialStormTrooperSniperAttack4 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 2.0,
+	damageRatio = 1.2,
 	speedRatio = 2.1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -182,7 +182,7 @@ imperialStormTrooperSniperAttack5 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 1.25,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -213,7 +213,7 @@ imperialStormTrooperSniperAttack6 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 5.0,
+	damageRatio = 1.2,
 	speedRatio = 3.5,
 	coneAngle = 60,
 	accuracyBonus = 0,

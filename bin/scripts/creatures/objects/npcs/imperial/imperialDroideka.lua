@@ -103,7 +103,7 @@ droideka = Creature:new {
 	weaponEquipped = 1,
 	weaponMinDamage = 200,
 	weaponMaxDamage = 300,
-	weaponAttackSpeed = 1,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

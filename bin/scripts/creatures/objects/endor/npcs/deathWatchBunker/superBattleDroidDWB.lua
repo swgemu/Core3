@@ -105,9 +105,9 @@ superBattleDroidDWB = Creature:new {
 	weaponTemp = "droid_droideka_ranged", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 800,
-	weaponMaxDamage = 1200,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 1270,
+	weaponMaxDamage = 2250,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAV
 

@@ -69,7 +69,7 @@ battleDroidDWB = Creature:new {
 	willpower = 12000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 75,
 	energy = 75,
 	electricity = 25,
@@ -101,9 +101,9 @@ battleDroidDWB = Creature:new {
 	weaponTemp = "carbine_elite", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 600,
-	weaponMaxDamage = 1000,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 795,
+	weaponMaxDamage = 1300,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

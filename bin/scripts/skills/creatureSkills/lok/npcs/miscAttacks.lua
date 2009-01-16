@@ -41,33 +41,33 @@
 --which carries forward this exception.
 
 miscAttack1 = {
-        attackname = "miscAttack1",
-        animation = "creature_attack_light",
-        
-        requiredWeaponType = NONE,
+	attackname = "miscAttack1",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = NONE,
 
-        range = 10,
+	range = 10,
 
-        damageRatio = 10,
+	damageRatio = 1.2,
 
-        speedRatio = 4,
+	speedRatio = 4,
 
-        areaRange = 0,
-        accuracyBonus = 0,
-                
-        knockdownChance = 0,
-        postureDownChance = 0,
-        postureUpChance = 0,
-        dizzyChance = 0,
-        blindChance = 0,
-        stunChance = 0,
-        intimidateChance = 0,
-        
-        CbtSpamBlock = "attack_block",
-        CbtSpamCounter = "attack_counter",
-        CbtSpamEvade = "attack_evade",
-        CbtSpamHit = "attack_hit",
-        CbtSpamMiss = "attack_miss",
+	areaRange = 0,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "attack_block",
+	CbtSpamCounter = "attack_counter",
+	CbtSpamEvade = "attack_evade",
+	CbtSpamHit = "attack_hit",
+	CbtSpamMiss = "attack_miss",
 }
 
 AddRandomPoolAttackTargetSkill(miscAttack1)
@@ -81,7 +81,7 @@ miscAttack2 = {
 	requiredWeaponType = RANGED,
 	
 	range = 64,
-	damageRatio = 10,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,

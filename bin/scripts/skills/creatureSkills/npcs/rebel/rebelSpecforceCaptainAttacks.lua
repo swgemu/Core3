@@ -48,7 +48,7 @@ rebelSpecforceCaptainAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -79,7 +79,7 @@ rebelSpecforceCaptainAttack2 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 11,
-	damageRatio = 5.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,

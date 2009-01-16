@@ -106,7 +106,7 @@ imperialJediMaster = Creature:new {
 	weaponEquipped = 1,
 	weaponMinDamage = 250,
 	weaponMaxDamage = 412,
-	weaponAttackSpeed = 1,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

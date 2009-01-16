@@ -43,19 +43,15 @@
 nightsisterElderLabor = Creature:new {
 	objectName = "nightsisterElderLabor",  -- Lua Object Name
 	creatureType = "NPC",
-	faction = "nightsister", 
-	
+	faction = "nightsister", 	
 	factionPoints = 20,
 	
 	gender = "",
 	speciesName = "nightsister_elder",
 	stfName = "mob/creature_names", 
 	objectCRC = 4033230337, 
-	socialGroup = "nightsister",
-	
-	level = 278,
-
-	
+	socialGroup = "nightsister",	
+	level = 278,	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
@@ -107,9 +103,9 @@ nightsisterElderLabor = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 392,
-	weaponMaxDamage = 808,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 1520,
+	weaponMaxDamage = 2750,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -118,9 +114,9 @@ nightsisterElderLabor = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 430,
-	alternateWeaponMaxDamage = 856,
-	alternateWeaponAttackSpeed = 1,
+	alternateWeaponMinDamage = 1520,
+	alternateWeaponMaxDamage = 2750,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

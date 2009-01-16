@@ -47,7 +47,7 @@ geonosianMercenaryAttack1 = {
 
 	range = 5,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -81,7 +81,7 @@ geonosianMercenaryAttack2 = {
 
 	range = 5,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -115,7 +115,7 @@ geonosianMercenaryAttack3 = {
 
 	range = 5,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -149,7 +149,7 @@ geonosianMercenaryAttack4 = {
 
 	range = 5,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 

@@ -47,7 +47,7 @@ marauderAttack40 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -78,7 +78,7 @@ marauderAttack41 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.5,
+	damageRatio = 1.2,
 	speedRatio = 1.25,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -109,7 +109,7 @@ marauderAttack42 = {
 	requiredWeaponType = NONE,
 	
 	range = 11,
-	damageRatio = 4.0,
+	damageRatio = 1.2,
 	speedRatio = 1.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -142,7 +142,7 @@ marauderRangedAttack1 = {
 
 	range = 50,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -174,7 +174,7 @@ marauderRangedAttack2 = {
 
 	range = 40,
 
-	damageRatio = 7,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 0,
@@ -206,7 +206,7 @@ marauderRangedAttack3 = {
 
 	range = 50,
 
-	damageRatio = 10,
+	damageRatio = 1.2,
 
 	speedRatio = 4,
 	coneAngle = 60,
@@ -237,7 +237,7 @@ marauderRangedAttack4 = {
 	requiredWeaponType = RANGED,
 	
 	range = 64,
-	damageRatio = 7.5,
+	damageRatio = 1.2,
 	speedRatio = 7,
 	areaRange = 0,
 	accuracyBonus = 0,

@@ -47,7 +47,7 @@ geonosianCrazedAttack1 = {
 
 	range = 10,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -81,7 +81,7 @@ geonosianCrazedAttack2 = {
 
 	range = 10,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -115,7 +115,7 @@ geonosianCrazedAttack3 = {
 
 	range = 10,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 
@@ -149,7 +149,7 @@ geonosianCrazedAttack4 = {
 
 	range = 10,
 
-	damageRatio = 5,
+	damageRatio = 1.2,
 
 	speedRatio = 3,
 

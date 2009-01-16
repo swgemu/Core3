@@ -71,7 +71,7 @@ singingMtnClanCouncilwoman = Creature:new {
 	willpower = 30000,
 
 	height = 1, -- Size of creature
-	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 100,
 	energy = 20,
 	electricity = 100,
@@ -103,9 +103,9 @@ singingMtnClanCouncilwoman = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 1000,
-	weaponMaxDamage = 2050,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 1395,
+	weaponMaxDamage = 2500,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ singingMtnClanCouncilwoman = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 1050,
-	alternateWeaponMaxDamage = 2250,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 1395,
+	alternateWeaponMaxDamage = 2500,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

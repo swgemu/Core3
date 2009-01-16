@@ -46,8 +46,8 @@ casVankooAttack1 = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 64,
-	damageRatio = 5,
+	range = 32,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -77,8 +77,8 @@ casVankooAttack2 = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 64,
-	damageRatio = 5,
+	range = 32,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -108,8 +108,8 @@ casVankooAttack3 = {
 
 	requiredWeaponType = PISTOL,
 	
-	range = 64,
-	damageRatio = 5,
+	range = 32,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	coneAngle = 60,
 	accuracyBonus = 0,

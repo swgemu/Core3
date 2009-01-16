@@ -71,7 +71,7 @@ nightsisterInitiate = Creature:new {
 	willpower = 2000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 10,
 	energy = 10,
 	electricity = 100,
@@ -103,9 +103,9 @@ nightsisterInitiate = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 124,
-	weaponMaxDamage = 396,
-	weaponAttackSpeed = 1,
+	weaponMinDamage = 445,
+	weaponMaxDamage = 600,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ nightsisterInitiate = Creature:new {
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 23,
-	alternateWeaponMaxDamage = 102,
-	alternateWeaponAttackSpeed = 1,
+	alternateWeaponMinDamage = 445,
+	alternateWeaponMaxDamage = 600,
+	alternateweaponAttackSpeed = 2,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

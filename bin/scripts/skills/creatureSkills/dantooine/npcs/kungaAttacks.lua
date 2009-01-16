@@ -47,7 +47,7 @@ kungaAttack01 = {
 	requiredWeaponType = NONE,
 
 	range = 15,
-	damageRatio = 4.8,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -89,7 +89,7 @@ kungaAttack02 = {
 	requiredWeaponType = NONE,
 	
 	range = 15,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -131,7 +131,7 @@ kungaAttack03 = {
 	requiredWeaponType = NONE,
 	
 	range = 15,
-	damageRatio = 4.8,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -162,7 +162,7 @@ kungaAttack04 = {
 	requiredWeaponType = NONE,
 	
 	range = 15,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -192,7 +192,7 @@ kungaAttack05 = {
 	requiredWeaponType = NONE,
 	
 	range = 15,
-	damageRatio = 4.8,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -222,7 +222,7 @@ kungaAttack06 = {
 	requiredWeaponType = NONE, 
 	
 	range = 15,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -252,7 +252,7 @@ kungaAttack07 = {
 	requiredWeaponType = NONE, 
 	
 	range = 15,
-	damageRatio = 4.8,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -282,7 +282,7 @@ kungaAttack08 = {
 	requiredWeaponType = NONE, 
 	
 	range = 15,
-	damageRatio = 4.2,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 7, 
 	accuracyBonus = 0, 
@@ -313,7 +313,7 @@ kungaAttack09 = {
 	requiredWeaponType = NONE, 
 	
 	range = 15,
-	damageRatio = 4.8,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 7, 
 	accuracyBonus = 0, 

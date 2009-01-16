@@ -50,7 +50,7 @@ palpatineAttack1 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -80,7 +80,7 @@ palpatineAttack2 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -111,7 +111,7 @@ palpatineAttack3 = {
 	
 	range = 32,
 	coneAngle = 60,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -141,7 +141,7 @@ palpatineAttack4 = {
 	
 	range = 32,
 	coneAngle = 70,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -171,7 +171,7 @@ palpatineAttack5 = {
 	
 	range = 32,
 	coneAngle = 0,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -199,7 +199,7 @@ palpatineAttack6 = {
 	
 	range = 32,
 	coneAngle = 0,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -227,7 +227,7 @@ palpatineAttack7 = {
 	
 	range = 32,
 	coneAngle = 70,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -256,7 +256,7 @@ palpatineAttack8 = {
 	
 	range = 32,
 	coneAngle = 70,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -285,7 +285,7 @@ palpatineAttack9 = {
 	
 	range = 32,
 	coneAngle = 70,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	
@@ -313,7 +313,7 @@ palpatineAttack10 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 2.5,
 	accuracyBonus = 500,
 	

@@ -47,7 +47,7 @@ imperialStormTrooperNovaTrooperEliteAttack1 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 2.0,
+	damageRatio = 1.2,
 	speedRatio = 2.0,
 	coneAngle = 60,
 	accuracyBonus = 0,
@@ -78,7 +78,7 @@ imperialStormTrooperNovaTrooperEliteAttack2 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 3.0,
+	damageRatio = 1.2,
 	speedRatio = 2.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -120,7 +120,7 @@ imperialStormTrooperNovaTrooperEliteAttack3 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 2.5,
+	damageRatio = 1.2,
 	speedRatio = 3.0,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -151,7 +151,7 @@ imperialStormTrooperNovaTrooperEliteAttack4 = {
 	requiredWeaponType = RIFLE,
 	
 	range = 75,
-	damageRatio = 2.0,
+	damageRatio = 1.2,
 	speedRatio = 2.1,
 	areaRange = 0,
 	accuracyBonus = 0,

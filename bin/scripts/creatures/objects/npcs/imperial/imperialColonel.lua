@@ -104,9 +104,9 @@ imperialColonel = Creature:new {
 	weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 350,
-	weaponMaxDamage = 400,
-	weaponAttackSpeed = 2.5,
+	weaponMinDamage = 220,
+	weaponMaxDamage = 230,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

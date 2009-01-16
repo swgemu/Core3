@@ -50,11 +50,9 @@ rebelMajor = Creature:new {
 	speciesName = "rebel_major",
 	stfName = "mob/creature_names", 
 	objectCRC = 450207030, 
-	socialGroup = "Rebel",
-	
+	socialGroup = "Rebel",	
 
-	level = 32,
-	
+	level = 22,	
 
 	combatFlags = 0,
 
@@ -74,7 +72,7 @@ rebelMajor = Creature:new {
 	willpower = 1000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -106,9 +104,9 @@ rebelMajor = Creature:new {
 	weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 140,
-	weaponMaxDamage = 320,
-	weaponAttackSpeed = 1.2,
+	weaponMinDamage = 210,
+	weaponMaxDamage = 220,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

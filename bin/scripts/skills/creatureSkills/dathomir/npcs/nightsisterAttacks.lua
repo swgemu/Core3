@@ -41,30 +41,30 @@
 --which carries forward this exception.
 
 nightsisterAttack1 = {
-        attackname = "nightsisterAttack1",
-        animation = "creature_attack_light",
-        
-        requiredWeaponType = MELEE,
+	attackname = "nightsisterAttack1",
+	animation = "creature_attack_light",
+	
+	requiredWeaponType = MELEE,
 
-        range = 5,
-        damageRatio = 1,
-        speedRatio = 2,
-        areaRange = 5,
-        accuracyBonus = 0,
-                
-        knockdownChance = 0,
-        postureDownChance = 0,
-        postureUpChance = 0,
-        dizzyChance = 0,
-        blindChance = 0,
-        stunChance = 0,
-        intimidateChance = 0,
-        
-        CbtSpamBlock = "melee_block",
-        CbtSpamCounter = "melee_counter",
-        CbtSpamEvade = "melee_evade",
-        CbtSpamHit = "melee_hit",
-        CbtSpamMiss = "melee_miss",
+	range = 5,
+	damageRatio = 1.2,
+	speedRatio = 2,
+	areaRange = 5,
+	accuracyBonus = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
+	
+	CbtSpamBlock = "melee_block",
+	CbtSpamCounter = "melee_counter",
+	CbtSpamEvade = "melee_evade",
+	CbtSpamHit = "melee_hit",
+	CbtSpamMiss = "melee_miss",
 }
 
 AddRandomPoolAttackTargetSkill(nightsisterAttack1)
@@ -78,7 +78,7 @@ nightsisterAttack20 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 3.3,
+	damageRatio = 1.2,
 	speedRatio = 3,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -109,7 +109,7 @@ nightsisterAttack21 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 2.45,
+	damageRatio = 1.2,
 	speedRatio = 2.3,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -140,7 +140,7 @@ nightsisterAttack22 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 2.8,
+	damageRatio = 1.2,
 	speedRatio = 2.1,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -172,7 +172,7 @@ nightsisterAttack23 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 2.6,
+	damageRatio = 1.2,
 	speedRatio = 2.25,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -203,7 +203,7 @@ nightsisterAttack24 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 3.2,
+	damageRatio = 1.2,
 	speedRatio = 2.3,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -234,7 +234,7 @@ nightsisterAttack25 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 2,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -264,7 +264,7 @@ nightsisterAttack26 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 3.1,
+	damageRatio = 1.2,
 	speedRatio = 2.8,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -295,7 +295,7 @@ nightsisterAttack27 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 2.36,
+	damageRatio = 1.2,
 	speedRatio = 2.74,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -337,7 +337,7 @@ nightsisterAttack28 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 2.9,
+	damageRatio = 1.2,
 	speedRatio = 2.3,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -368,7 +368,7 @@ nightsisterAttack29 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 3.4,
+	damageRatio = 1.2,
 	speedRatio = 2.52,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -399,7 +399,7 @@ nightsisterAttack30 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 3.1,
+	damageRatio = 1.2,
 	speedRatio = 3,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -430,7 +430,7 @@ nightsisterAttack31 = {
 	requiredWeaponType = POLEARM,
 	
 	range = 7,
-	damageRatio = 1,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 7,
 	accuracyBonus = 0,
@@ -471,7 +471,7 @@ nightsisterAttack40 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 2.26,
+	damageRatio = 1.2,
 	speedRatio = 2.62,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -502,7 +502,7 @@ nightsisterAttack41 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 3.5,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -533,7 +533,7 @@ nightsisterAttack42 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 2.1,
+	damageRatio = 1.2,
 	speedRatio = 2.23,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -564,7 +564,7 @@ nightsisterAttack43 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 2,
+	damageRatio = 1.2,
 	speedRatio = 1.7,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -596,7 +596,7 @@ nightsisterAttack44 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 1,
+	damageRatio = 1.2,
 	speedRatio = 2.7,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -638,7 +638,7 @@ nightsisterAttack45 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 2.6,
+	damageRatio = 1.2,
 	speedRatio = 3,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -670,7 +670,7 @@ nightsisterAttack46 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 3.42,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -700,7 +700,7 @@ nightsisterAttack47 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 2.87,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -730,7 +730,7 @@ nightsisterAttack48 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 2,
+	damageRatio = 1.2,
 	speedRatio = 3.25,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -772,7 +772,7 @@ nightsisterAttack49 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 3.3,
+	damageRatio = 1.2,
 	speedRatio = 1.7,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -803,7 +803,7 @@ nightsisterAttack50 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 3.7,
+	damageRatio = 1.2,
 	speedRatio = 2.15,
 	areaRange = 5,
 	accuracyBonus = 0,
@@ -834,7 +834,7 @@ nightsisterAttack51 = {
 	requiredWeaponType = ONEHANDED,
 	
 	range = 5,
-	damageRatio = 2.54,
+	damageRatio = 1.2,
 	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,

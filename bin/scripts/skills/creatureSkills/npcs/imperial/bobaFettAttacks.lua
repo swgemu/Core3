@@ -46,7 +46,7 @@ bobaAttack1 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	coneAngle = 40,
@@ -97,7 +97,7 @@ bobaAttack2 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -128,7 +128,7 @@ bobaAttack3 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -169,7 +169,7 @@ bobaAttack4 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -199,7 +199,7 @@ bobaAttack5 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -240,7 +240,7 @@ bobaAttack6 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -270,7 +270,7 @@ bobaAttack7 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -310,7 +310,7 @@ bobaAttack8 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -340,7 +340,7 @@ bobaAttack9 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -370,7 +370,7 @@ bobaAttack10 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -400,7 +400,7 @@ bobaAttack11 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -430,7 +430,7 @@ bobaAttack12 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -460,7 +460,7 @@ bobaAttack13 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -490,7 +490,7 @@ bobaAttack14 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -520,7 +520,7 @@ bobaAttack15 = {
 	requiredWeaponType = CARBINE,
 	
 	range = 64,
-	damageRatio = 70,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 30,
 	accuracyBonus = 0,

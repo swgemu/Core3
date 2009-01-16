@@ -49,22 +49,22 @@ mellichae = Creature:new {
 	stfName = "mob/creature_names",
 	objectCRC = 1261483492, 
 	socialGroup = "sith",
-	level = 350,
+	level = 140,
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG,
 
-	healthMax = 220000,
-	healthMin = 200000,
+	healthMax = 61000,
+	healthMin = 50000,
 	strength = 50000,
 	constitution = 50000,
 
-	actionMax = 220000,
-	actionMin = 200000,
+	actionMax = 61000,
+	actionMin = 50000,
 	quickness = 50000,
 	stamina = 50000,
 
-	mindMax = 220000,
-	mindMin = 200000,
+	mindMax = 61000,
+	mindMin = 50000,
 	focus = 50000,
 	willpower = 50000,
 
@@ -101,9 +101,9 @@ mellichae = Creature:new {
 	weaponTemp = "sword_lightsaber_polearm_s1_gen4", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmJediWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 950,
-	weaponMaxDamage = 1200,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 945,
+	weaponMaxDamage = 1600,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

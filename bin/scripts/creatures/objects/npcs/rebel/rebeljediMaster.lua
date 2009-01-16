@@ -106,7 +106,7 @@ rebeljediMaster = Creature:new {
 	weaponEquipped = 1,
 	weaponMinDamage = 950,
 	weaponMaxDamage = 1200,
-	weaponAttackSpeed = 1,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "LIGHTSABER", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 

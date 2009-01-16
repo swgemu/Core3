@@ -47,7 +47,7 @@ darthAttack1 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 0,
@@ -79,7 +79,7 @@ darthAttack2 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 0,
@@ -109,7 +109,7 @@ darthAttack3 = {
 	requiredWeaponType = JEDI,
 
 	range = 32, --30,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	coneAngle = 40,
 	accuracyBonus = 0,
@@ -141,7 +141,7 @@ darthAttack4 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -184,7 +184,7 @@ darthAttack5 = {
 	requiredWeaponType = JEDI,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -228,7 +228,7 @@ darthAttack6 = {
 	
 	range = 8,
 	coneAngel = 40,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 0,
 	
@@ -257,7 +257,7 @@ darthAttack7 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 40,
@@ -298,7 +298,7 @@ darthAttack8 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 50,
@@ -339,7 +339,7 @@ darthAttack9 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	
 	healthAttackChance = 80,
@@ -380,7 +380,7 @@ darthAttack10 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 0,
 	
@@ -406,7 +406,7 @@ darthAttack11 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 0,
 	
@@ -432,7 +432,7 @@ darthAttack12 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 0,
 	
@@ -458,7 +458,7 @@ darthAttack13 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 0,
 	
@@ -484,7 +484,7 @@ darthAttack14 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 0,
 	
@@ -510,7 +510,7 @@ darthAttack15 = {
 	requiredWeaponType = TWOHANDSABER,
 	
 	range = 8,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 0,
 	
@@ -537,7 +537,7 @@ darthAttack16 = {
 
 	range = 8,
 	coneAngle = 360,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 0,
 	
@@ -567,7 +567,7 @@ darthAttack17 = {
 	requiredWeaponType = JEDI,
 	
 	range = 32,
-	damageRatio = 50,
+	damageRatio = 1.2,
 	speedRatio = 1,
 	accuracyBonus = 0,
 	

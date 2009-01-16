@@ -42,34 +42,29 @@
 --which carries forward this exception.
 casVankoo = Creature:new {
 	objectName = "casVankoo",  -- Lua Object Name
-	creatureType = "NPC",
-	
+	creatureType = "NPC",	
 	gender = "",
 
-	speciesName = "cas_vankoo",
-	
+	speciesName = "cas_vankoo",	
 	stfName = "mob/creature_names",
 	objectCRC = 475806339, 
-	socialGroup = "Kimogila",
-	
-	level = 107,
-
-	
+	socialGroup = "Kimogila",	
+	level = 117,
 	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 50000,
-	healthMin = 42000,
+	healthMax = 49000,
+	healthMin = 40000,
 	strength = 5000,
 	constitution = 5000,
 
-	actionMax = 50000,
-	actionMin = 42000,
+	actionMax = 49000,
+	actionMin = 40000,
 	quickness = 5000,
 	stamina = 5000,
 
-	mindMax = 50000,
-	mindMin = 42000,
+	mindMax = 49000,
+	mindMin = 40000,
 	focus = 5000,
 	willpower = 5000,
 
@@ -84,36 +79,31 @@ casVankoo = Creature:new {
 	cold = 10,
 	acid = 10,
 	lightsaber = 0,
-
+	
 	accuracy = 375,
-
 	healer = 0,
-
 	pack = 1,
 	herd = 0,
 	stalker = 1,
 	killer = 1,
 	aggressive = 1,
-	invincible = 0, 
-
-	
+	invincible = 0, 	
 
 	meleeDefense = 1,  
-	
 	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
 	weapon = "object/weapon/ranged/pistol/shared_pistol_launcher.iff", -- File path to weapon -> object\xxx\xxx\xx
-      	weaponName = "Launcher Pistol", -- Name ex. 'a Vibrolance'
-      	weaponTemp = "pistol_launcher", -- Weapon Template ex. 'lance_vibrolance'
-     	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-      	weaponEquipped = 1,
-      	weaponMinDamage = 600,
-      	weaponMaxDamage = 1200,
-      	weaponAttackSpeed = 1,
-      	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
-      	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponName = "Launcher Pistol", -- Name ex. 'a Vibrolance'
+	weaponTemp = "pistol_launcher", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 725,
+	weaponMaxDamage = 1160,
+	weaponAttackSpeed = 2,
+	weaponDamageType = "BLAST", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'

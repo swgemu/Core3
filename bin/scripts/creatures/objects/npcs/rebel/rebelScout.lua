@@ -51,8 +51,7 @@ rebelScout = Creature:new {
 	stfName = "mob/creature_names", 
 	objectCRC = 3518921629, 
 	socialGroup = "Rebel",
-	level = 15,
-	
+	level = 15,	
 
 	combatFlags = 0,
 
@@ -72,7 +71,7 @@ rebelScout = Creature:new {
 	willpower = 0,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	armor = 0, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
 	kinetic = 0,
 	energy = 0,
 	electricity = 0,
@@ -104,9 +103,9 @@ rebelScout = Creature:new {
 	weaponTemp = "carbine_laser", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 120,
-	weaponMaxDamage = 330,
-	weaponAttackSpeed = 2.2,
+	weaponMinDamage = 160,
+	weaponMaxDamage = 170,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "MEDIUM", -- LIGHT, NONE, MEDIUM, HEAVY
 	
@@ -115,8 +114,8 @@ rebelScout = Creature:new {
 	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 92,
-	alternateWeaponMaxDamage = 301,
+	alternateWeaponMinDamage = 160,
+	alternateWeaponMaxDamage = 170,
 	alternateWeaponAttackSpeed = 1.5,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY

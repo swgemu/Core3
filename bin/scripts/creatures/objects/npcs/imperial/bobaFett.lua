@@ -103,9 +103,9 @@ bobaFett = Creature:new {
 	weaponTemp = "carbine_ee3", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "CarbineRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 150,
-	weaponMaxDamage = 350,
-	weaponAttackSpeed = 1.0,
+	weaponMinDamage = 640,
+	weaponMaxDamage = 990,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "HEAT", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

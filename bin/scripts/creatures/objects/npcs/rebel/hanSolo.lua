@@ -55,20 +55,20 @@ hanSolo = Creature:new {
 
 	combatFlags = 0,
 
-	healthMax = 650000,
-	healthMin = 620000,
-	strength = 80000,
-	constitution = 80000,
+	healthMax = 30000,
+	healthMin = 24000,
+	strength = 0,
+	constitution = 0,
 
-	actionMax = 650000,
-	actionMin = 620000,
-	quickness = 80000,
-	stamina = 80000,
+	actionMax = 30000,
+	actionMin = 24000,
+	quickness = 0,
+	stamina = 0,
 
-	mindMax = 650000,
-	mindMin = 620000,
-	focus = 80000,
-	willpower = 80000,
+	mindMax = 30000,
+	mindMin = 24000,
+	focus = 0,
+	willpower = 0,
 
 	height = 1, -- Size of creature
 	armor = 3, -- Just a guess
@@ -103,9 +103,9 @@ hanSolo = Creature:new {
 	weaponTemp = "pistol_dl44", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PistolRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 150,
-	weaponMaxDamage = 350,
-	weaponAttackSpeed = 1.0,
+	weaponMinDamage = 645,
+	weaponMaxDamage = 1000,
+	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

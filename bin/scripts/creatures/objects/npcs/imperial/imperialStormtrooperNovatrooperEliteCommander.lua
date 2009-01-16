@@ -101,9 +101,9 @@ imperialStormTrooperNovatrooperEliteCommander = Creature:new {
 	weaponTemp = "rifle_e11", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "RifleRangedWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 79,
-	weaponMaxDamage = 250,
- 	weaponAttackSpeed = 0,
+	weaponMinDamage = 1145,
+	weaponMaxDamage = 2000,
+ 	weaponAttackSpeed = 2,
 	weaponDamageType = "ENERGY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

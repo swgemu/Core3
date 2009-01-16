@@ -47,7 +47,7 @@ imperialStormCommandoAttack1 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 25,
-	damageRatio = 3,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	areaRange = 0,
 	accuracyBonus = 0,
@@ -88,7 +88,7 @@ imperialStormCommandoAttack2 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 20,
-	damageRatio = 2,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
@@ -129,7 +129,7 @@ imperialStormCommandoAttack3 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 25,
-	damageRatio = 2.1,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	coneAngle = 0,
 	accuracyBonus = 0,
@@ -170,7 +170,7 @@ imperialStormCommandoAttack4 = {
 	requiredWeaponType = RIFLEFLAMETHROWER,
 	
 	range = 20,
-	damageRatio = 4,
+	damageRatio = 1.2,
 	speedRatio = 4,
 	coneAngle = 30,
 	accuracyBonus = 0,
