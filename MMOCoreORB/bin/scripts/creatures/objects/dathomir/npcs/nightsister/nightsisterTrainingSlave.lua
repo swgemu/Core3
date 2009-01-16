@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -58,18 +58,18 @@ nightsisterTrainingSlave = Creature:new {
 
 	healthMax = 1900,
 	healthMin = 1500,
-	strength = 0,
-	constitution = 0,
+	strength = 500,
+	constitution = 500,
 
 	actionMax = 1900,
 	actionMin = 1500,
-	quickness = 0,
-	stamina = 0,
+	quickness = 500,
+	stamina = 500,
 
 	mindMax = 1900,
 	mindMin = 1500,
-	focus = 0,
-	willpower = 0,
+	focus = 500,
+	willpower = 500,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy

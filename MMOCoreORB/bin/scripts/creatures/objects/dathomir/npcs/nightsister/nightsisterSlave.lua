@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -45,31 +45,37 @@ nightsisterSlave = Creature:new {
 	objectName = "nightsisterSlave",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "nightsister", 
+	
 	factionPoints = 20,
+	
 	gender = "",
-
 	speciesName = "nightsister_slave",
+	
 	stfName = "mob/creature_names", 
+	
 	objectCRC = 1482802851, 
 	socialGroup = "nightsister",
+	
 	level = 10,
 
+	
+	
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 495,
 	healthMin = 405,
-	strength = 0,
-	constitution = 0,
+	strength = 100,
+	constitution = 100,
 
 	actionMax = 495,
 	actionMin = 405,
-	quickness = 0,
-	stamina = 0,
+	quickness = 100,
+	stamina = 100,
 
 	mindMax = 495,
 	mindMin = 405,
-	focus = 0,
-	willpower = 0,
+	focus = 100,
+	willpower = 100,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -83,7 +89,7 @@ nightsisterSlave = Creature:new {
 	acid = 0,
 	lightsaber = 0,
 
-	accuracy = 0,
+	accuracy = 300,
 
 	healer = 0,
 
@@ -96,16 +102,16 @@ nightsisterSlave = Creature:new {
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	weapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "", -- Name ex. 'a Vibrolance'
-	weaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	weaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	weaponEquipped = 0,
-	weaponMinDamage = 0,
-	weaponMaxDamage = 0,
-	weaponAttackSpeed = 0,
-	weaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	weapon = "object/weapon/creature/shared_creature_default_weapon.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "NS Slave Unarmed", -- Name ex. 'a Vibrolance'
+	weaponTemp = "creature_default_weapon", -- Weapon Template ex. 'lance_vibrolance'
+	weaponClass = "UnarmedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	weaponEquipped = 1,
+	weaponMinDamage = 75,
+	weaponMaxDamage = 200,
+	weaponAttackSpeed = 1,
+	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
 	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
@@ -120,7 +126,7 @@ nightsisterSlave = Creature:new {
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

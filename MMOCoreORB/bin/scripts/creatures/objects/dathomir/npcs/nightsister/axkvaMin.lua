@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -84,7 +84,7 @@ axkvaMin = Creature:new {
 
 	accuracy = 400,
 
-	healer = 1,
+	healer = 0,
 
 	pack = 1,
 	herd = 0,
@@ -103,9 +103,9 @@ axkvaMin = Creature:new {
 	weaponTemp = "shared_baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 800,
-	weaponMaxDamage = 1800,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 456,
+	weaponMaxDamage = 903,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,9 +114,9 @@ axkvaMin = Creature:new {
 	alternateWeaponTemp = "shared_baton_stun", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 300,
-	alternateWeaponMaxDamage = 500,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 105,
+	alternateWeaponMaxDamage = 312,
+	alternateWeaponAttackSpeed = 1,
 	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 

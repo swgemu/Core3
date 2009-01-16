@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -82,7 +82,7 @@ nightsisterProtector = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 370,
+	accuracy = 335,
 
 	healer = 0,
 
@@ -103,9 +103,9 @@ nightsisterProtector = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 300,
-	weaponMaxDamage = 950,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 275,
+	weaponMaxDamage = 600,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,15 +114,15 @@ nightsisterProtector = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 350,
-	alternateWeaponMaxDamage = 1050,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 300,
+	alternateWeaponMaxDamage = 625,
+	alternateWeaponAttackSpeed = 1,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,4,11,15,19,30,33,39,40,99", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,30,33,39,40,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

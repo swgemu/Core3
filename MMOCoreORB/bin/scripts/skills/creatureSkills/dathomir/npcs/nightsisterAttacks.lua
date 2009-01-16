@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -44,15 +44,12 @@ nightsisterAttack1 = {
         attackname = "nightsisterAttack1",
         animation = "creature_attack_light",
         
-        requiredWeaponType = NONE,
+        requiredWeaponType = MELEE,
 
-        range = 10,
-
-        damageRatio = 10,
-
-        speedRatio = 4,
-
-        areaRange = 0,
+        range = 5,
+        damageRatio = 1,
+        speedRatio = 2,
+        areaRange = 5,
         accuracyBonus = 0,
                 
         knockdownChance = 0,
@@ -63,11 +60,11 @@ nightsisterAttack1 = {
         stunChance = 0,
         intimidateChance = 0,
         
-        CbtSpamBlock = "attack_block",
-        CbtSpamCounter = "attack_counter",
-        CbtSpamEvade = "attack_evade",
-        CbtSpamHit = "attack_hit",
-        CbtSpamMiss = "attack_miss",
+        CbtSpamBlock = "melee_block",
+        CbtSpamCounter = "melee_counter",
+        CbtSpamEvade = "melee_evade",
+        CbtSpamHit = "melee_hit",
+        CbtSpamMiss = "melee_miss",
 }
 
 AddRandomPoolAttackTargetSkill(nightsisterAttack1)
@@ -80,30 +77,19 @@ nightsisterAttack20 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 7,
+	damageRatio = 3.3,
+	speedRatio = 3,
+	areaRange = 7,
 	accuracyBonus = 0,
-
-	healthAttackChance = 0,
-	actionAttackChance = 50,
-	mindAttackChance = 0,
-	
-	dotChance = 15,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 0,
-	bleedingType = ACTION,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	postureUpChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
 	CbtSpamCounter = "melee_counter",
@@ -112,7 +98,7 @@ nightsisterAttack20 = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDotPoolAttackTargetSkill(nightsisterAttack20)
+AddRandomPoolAttackTargetSkill(nightsisterAttack20)
 
 -----------------------------------------------------------------------
 
@@ -122,14 +108,14 @@ nightsisterAttack21 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 7,
+	damageRatio = 2.45,
+	speedRatio = 2.3,
+	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 1,
+	postureDownChance = 50,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -153,10 +139,10 @@ nightsisterAttack22 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 7,
+	damageRatio = 2.8,
+	speedRatio = 2.1,
+	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -164,7 +150,7 @@ nightsisterAttack22 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 1,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -185,9 +171,9 @@ nightsisterAttack23 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
+	range = 7,
+	damageRatio = 2.6,
+	speedRatio = 2.25,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
@@ -196,7 +182,7 @@ nightsisterAttack23 = {
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 1,
+	stunChance = 60,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -216,16 +202,16 @@ nightsisterAttack24 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
+	range = 7,
+	damageRatio = 3.2,
+	speedRatio = 2.3,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 50,
+	dizzyChance = 60,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -247,10 +233,10 @@ nightsisterAttack25 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 7,
+	damageRatio = 2,
+	speedRatio = 2,
+	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -277,16 +263,16 @@ nightsisterAttack26 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
+	range = 7,
+	damageRatio = 3.1,
+	speedRatio = 2.8,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 25,
+	dizzyChance = 20,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -308,9 +294,9 @@ nightsisterAttack27 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
+	range = 7,
+	damageRatio = 2.36,
+	speedRatio = 2.74,
 	areaRange = 7,
 	accuracyBonus = 0,
 
@@ -318,11 +304,11 @@ nightsisterAttack27 = {
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
-	actionAttackChance = 0,
+	actionAttackChance = 50,
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 75,
+	mindAttackChance = 0,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -350,18 +336,18 @@ nightsisterAttack28 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
+	range = 7,
+	damageRatio = 2.9,
+	speedRatio = 2.3,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 18,
+	dizzyChance = 0,
 	blindChance = 0,
-	stunChance = 10,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -381,14 +367,14 @@ nightsisterAttack29 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 7,
+	damageRatio = 3.4,
+	speedRatio = 2.52,
+	areaRange = 7,
 	accuracyBonus = 0,
 		
-	knockdownChance = 0,
-	postureDownChance = 25,
+	knockdownChance = 67,
+	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
 	blindChance = 0,
@@ -412,13 +398,13 @@ nightsisterAttack30 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
+	range = 7,
+	damageRatio = 3.1,
+	speedRatio = 3,
 	areaRange = 7,
 	accuracyBonus = 0,
 		
-	knockdownChance = 1,
+	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
 	dizzyChance = 0,
@@ -443,17 +429,17 @@ nightsisterAttack31 = {
 
 	requiredWeaponType = POLEARM,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 7,
+	damageRatio = 1,
+	speedRatio = 2,
+	areaRange = 7,
 	accuracyBonus = 0,
 
 	healthAttackChance = 0,
-	actionAttackChance = 50,
+	actionAttackChance = 90,
 	mindAttackChance = 0,
 		
-	dotChance = 75,
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
@@ -484,10 +470,10 @@ nightsisterAttack40 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 5,
+	damageRatio = 2.26,
+	speedRatio = 2.62,
+	areaRange = 5,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -515,10 +501,10 @@ nightsisterAttack41 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 5,
+	damageRatio = 3.5,
+	speedRatio = 2,
+	areaRange = 5,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -546,16 +532,16 @@ nightsisterAttack42 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 7,
+	range = 5,
+	damageRatio = 2.1,
+	speedRatio = 2.23,
+	areaRange = 5,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 1,
+	dizzyChance = 70,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -577,10 +563,10 @@ nightsisterAttack43 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 5,
+	damageRatio = 2,
+	speedRatio = 1.7,
+	areaRange = 5,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -609,20 +595,24 @@ nightsisterAttack44 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 5,
+	damageRatio = 1,
+	speedRatio = 2.7,
+	areaRange = 5,
 	accuracyBonus = 0,
 
-	dotChance = 25,
+	healthAttackChance = 90,
+	actionAttackChance = 0,
+	mindAttackChance = 0,	
+
+	dotChance = 60,
 	tickStrengthOfHit = 1,
 
 	fireStrength = 0,
 	fireType = 0,
 
 	bleedingStrength = 0,
-	bleedingType = ACTION,
+	bleedingType = HEALTH,
 
 	poisonStrength = 0,
 	poisonType = 0,
@@ -647,16 +637,16 @@ nightsisterAttack45 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 7,
+	range = 5,
+	damageRatio = 2.6,
+	speedRatio = 3,
+	areaRange = 5,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
-	postureDownChance = 75,
+	postureDownChance = 85,
 	postureUpChance = 0,
-	dizzyChance = 25,
+	dizzyChance = 50,
 	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
@@ -679,30 +669,18 @@ nightsisterAttack46 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 7,
+	range = 5,
+	damageRatio = 3.42,
+	speedRatio = 2,
+	areaRange = 5,
 	accuracyBonus = 0,
-
-	healthAttackChance = 50,
-	actionAttackChance = 0,
-	mindAttackChance = 0,
-
-	dotChance = 75,
-	tickStrengthOfHit = 1,
-
-	fireStrength = 0,
-	fireType = 0,
-
-	bleedingStrength = 0,
-	bleedingType = HEALTH,
-
-	poisonStrength = 0,
-	poisonType = 0,
-
-	diseaseStrength = 0,
-	diseaseType = 0,
+		
+	knockdownChance = 0,
+	postureDownChance = 0,
+	dizzyChance = 0,
+	blindChance = 0,
+	stunChance = 0,
+	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
 	CbtSpamCounter = "melee_counter",
@@ -711,7 +689,7 @@ nightsisterAttack46 = {
 	CbtSpamMiss = "melee_miss",
 }
 
-AddDotPoolAttackTargetSkill(nightsisterAttack46)
+AddRandomPoolAttackTargetSkill(nightsisterAttack46)
 
 -----------------------------------------------------------------------
 
@@ -721,17 +699,17 @@ nightsisterAttack47 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 5,
+	damageRatio = 2.87,
+	speedRatio = 2,
+	areaRange = 5,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
-	dizzyChance = 10,
-	blindChance = 0,
-	stunChance = 25,
+	dizzyChance = 0,
+	blindChance = 50,
+	stunChance = 0,
 	intimidateChance = 0,
 	
 	CbtSpamBlock = "melee_block",
@@ -751,13 +729,13 @@ nightsisterAttack48 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 0,
+	range = 5,
+	damageRatio = 2,
+	speedRatio = 3.25,
+	areaRange = 5,
 	accuracyBonus = 0,
 
-	healthAttackChance = 0,
+	healthAttackChance = 25,
 	strengthAttackChance = 0,
 	constitutionAttackChance = 0,
 
@@ -765,7 +743,7 @@ nightsisterAttack48 = {
 	quicknessAttackChance = 0,
 	staminaAttackChance = 0,
 
-	mindAttackChance = 75,
+	mindAttackChance = 0,
 	focusAttackChance = 0,
 	willpowerAttackChance = 0,
 		
@@ -793,17 +771,17 @@ nightsisterAttack49 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 7,
+	range = 5,
+	damageRatio = 3.3,
+	speedRatio = 1.7,
+	areaRange = 5,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
 	postureDownChance = 0,
 	postureUpChance = 0,
-	dizzyChance = 0,
-	blindChance = 50,
+	dizzyChance = 25,
+	blindChance = 0,
 	stunChance = 0,
 	intimidateChance = 0,
 	
@@ -824,10 +802,10 @@ nightsisterAttack50 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
-	areaRange = 7,
+	range = 5,
+	damageRatio = 3.7,
+	speedRatio = 2.15,
+	areaRange = 5,
 	accuracyBonus = 0,
 		
 	knockdownChance = 0,
@@ -855,9 +833,9 @@ nightsisterAttack51 = {
 
 	requiredWeaponType = ONEHANDED,
 	
-	range = 11,
-	damageRatio = 5,
-	speedRatio = 1.5,
+	range = 5,
+	damageRatio = 2.54,
+	speedRatio = 2,
 	areaRange = 0,
 	accuracyBonus = 0,
 		

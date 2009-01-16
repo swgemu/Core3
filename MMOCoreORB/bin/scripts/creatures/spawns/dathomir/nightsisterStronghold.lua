@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -39,6 +39,33 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
+
+
+
+--Outside Stronghold
+
+spawnCreatures(nightsisterElder, 2, -3976, -175, 1, 1)
+spawnCreatures(nightsisterElder, 2, -4007, -267, 1, 1)
+spawnCreatures(nightsisterElder, 2, -4154, -97, 1, 1)
+spawnCreatures(nightsisterRancorTamer, 2, -4107, -100, 25, 2)
+spawnCreatures(nightsisterProtector, 2, -4107, -100, 25, 2)
+spawnCreatures(nightsisterSpellWeaver, 2, -4107, -100, 25, 2)
+spawnCreatures(nightsisterRancorTamer, 2, -4016, -139, 25, 2)
+spawnCreatures(nightsisterProtector, 2, -4016, -139, 25, 2)
+spawnCreatures(nightsisterSpellWeaver, 2, -4016, -139, 25, 2)
+spawnCreatures(nightsisterRancorTamer, 2, -3984, -231, 25, 2)
+spawnCreatures(nightsisterProtector, 2, -3984, -231, 25, 2)
+spawnCreatures(nightsisterSpellWeaver, 2, -3984, -231, 25, 2)
+spawnCreatures(nightsisterSentinal, 2, -4059, -157, 800, 20)
+spawnCreatures(nightsisterSentry, 2, -4059, -157, 800, 20)
+spawnCreatures(nightsisterStalker, 2, -4059, -157, 800, 20)
+spawnCreatures(nightsisterInitiate, 2, -4059, -157, 800, 20)
+spawnCreatures(nightsisterRancorTamer, 2, -4059, -157, 800, 16)
+spawnCreatures(nightsisterSpellWeaver, 2, -4059, -157, 800, 16)
+spawnCreatures(nightsisterProtector, 2, -4059, -157, 800, 12)
+spawnCreatures(nightsisterSpellWeaver, 2, -4059, -157, 1000, 20)
+spawnCreatures(nightsisterRanger, 2, -4059, -157, 1500, 50)
+spawnCreatures(nightsisterOutcast, 2, -4059, -157, 1000, 20)
 
 --Nightsister Cave
 
