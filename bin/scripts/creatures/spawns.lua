@@ -73,10 +73,11 @@ end
 --Dathomir
 if (PLANET_ID == 2) then
  RunCreatureFile("spawns/dathomir/staticSpawns.lua")
+ RunCreatureFile("spawns/dathomir/nightsisterLaborCamp.lua")
  RunCreatureFile("spawns/dathomir/nightsisters.lua")
  RunCreatureFile("spawns/dathomir/singingmtnclan.lua")
  RunCreatureFile("spawns/dathomir/rancorCave.lua")
- RunCreatureFile("spawns/dathomir/nightsisterCave.lua")
+ RunCreatureFile("spawns/dathomir/nightsisterStronghold.lua")
  RunCreatureFile("spawns/dathomir/nsVsSmcPoi.lua")
  RunCreatureFile("spawns/dathomir/imperialPrison.lua") 
  RunCreatureFile("spawns/dathomir/sarlaacPit.lua")  
@@ -124,6 +125,7 @@ end
 
 --Talus
 if (PLANET_ID == 7) then
+--RunCreatureFile("spawns/talus/aakuanCave.lua")
 RunCreatureFile("spawns/talus/staticSpawns.lua")
 RunCreatureFile("spawns/talus/citys/dearic.lua")
 RunCreatureFile("spawns/talus/citys/narshal.lua")

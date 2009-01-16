@@ -40,94 +40,93 @@
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 --which carries forward this exception.
-
-escapedNightsisterSlave = Creature:new {
-	objectName = "escapedNightsisterSlave",  -- Lua Object Name
+nightsisterElderLabor = Creature:new {
+	objectName = "nightsisterElderLabor",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "nightsister", 
 	
 	factionPoints = 20,
 	
 	gender = "",
-	speciesName = "escaped_nightsister_slave",
-	
+	speciesName = "nightsister_elder",
 	stfName = "mob/creature_names", 
-	
-	objectCRC = 361612105, 
+	objectCRC = 4033230337, 
 	socialGroup = "nightsister",
 	
-	level = 28,
+	level = 278,
 
 	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
-	healthMax = 8800,
-	healthMin = 7200,
-	strength = 1000,
-	constitution = 1000,
+	healthMax = 400000,
+	healthMin = 355000,
+	strength = 30000,
+	constitution = 30000,
 
-	actionMax = 8800,
-	actionMin = 7200,
-	quickness = 1000,
-	stamina = 1000,
+	actionMax = 400000,
+	actionMin = 355000,
+	quickness = 30000,
+	stamina = 30000,
 
-	mindMax = 8800,
-	mindMin = 7200,
-	focus = 1000,
-	willpower = 1000,
+	mindMax = 400000,
+	mindMin = 355000,
+	focus = 30000,
+	willpower = 30000,
 
 	height = 1, -- Size of creature
-	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
-	kinetic = 35,
-	energy = 35,
-	electricity = -1,
-	stun = 0,
-	blast = 0,
-	heat = -1,
-	cold = -1,
-	acid = -1,
+	armor = 3, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
+	kinetic = 100,
+	energy = 25,
+	electricity = 100,
+	stun = 100,
+	blast = 25,
+	heat = 100,
+	cold = 100,
+	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 200,
+	accuracy = 375,
 
 	healer = 0,
 
-	pack = 0,
+	pack = 1,
 	herd = 0,
 	stalker = 0,
-	killer = 0,
+	killer = 1,
 	aggressive = 1,
-	invincible = 0,
+	invincible = 0, 
+
+	meleeDefense = 1,  
+	rangedDefense = 1,
 
 	attackCreatureOnSight = "", -- Enter socialGroups 
 
-	
-	weapon = "object/weapon/melee/polearm/shared_lance_staff_wood_s1.iff", -- File path to weapon -> object\xxx\xxx\xx
-	weaponName = "Wood Staff", -- Name ex. 'a Vibrolance'
-	weaponTemp = "lance_staff_wood_s1", -- Weapon Template ex. 'lance_vibrolance'
+	weapon = "object/weapon/melee/polearm/shared_lance_vibrolance.iff", -- File path to weapon -> object\xxx\xxx\xx
+	weaponName = "a Vibrolance", -- Name ex. 'a Vibrolance'
+	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 50,
-	weaponMaxDamage = 250,
+	weaponMinDamage = 392,
+	weaponMaxDamage = 808,
 	weaponAttackSpeed = 1,
-	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
-	weaponArmorPiercing = "NONE", -- LIGHT, NONE, MEDIUM, HEAVY
+	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
+	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 0,
-	alternateWeaponMinDamage = 0,
-	alternateWeaponMaxDamage = 0,
-	alternateWeaponAttackSpeed = 0,
-	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "a Long Vibro Axe", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 1,
+	alternateWeaponMinDamage = 430,
+	alternateWeaponMaxDamage = 856,
+	alternateWeaponAttackSpeed = 1,
+	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,4", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,30,33,39,40,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
@@ -142,10 +141,10 @@ escapedNightsisterSlave = Creature:new {
 	meatType = "",
 	meatMax = 0,
 
-	skills = { "nightsisterAttack1" },
-	respawnTimer = 180,
+	skills = { "nightsisterAttack20", "nightsisterAttack21", "nightsisterAttack22", "nightsisterAttack23", "nightsisterAttack24",  "nightsisterAttack25", "nightsisterAttack26", "nightsisterAttack27", "nightsisterAttack28", "nightsisterAttack29", "nightsisterAttack30", "nightsisterAttack31" },
+	respawnTimer = 3600,
 
 	behaviorScript = "", -- Link to the behavior script for this object
 }
 
-Creatures:addCreature(escapedNightsisterSlave, 361612105) -- Add to Global Table
+Creatures:addCreature(nightsisterElderLabor, 4033230337) --  Add to Global Table

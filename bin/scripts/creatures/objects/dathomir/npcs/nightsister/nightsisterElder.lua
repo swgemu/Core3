@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -44,29 +44,33 @@ nightsisterElder = Creature:new {
 	objectName = "nightsisterElder",  -- Lua Object Name
 	creatureType = "NPC",
 	faction = "nightsister", 
+	
 	factionPoints = 20,
+	
 	gender = "",
-
 	speciesName = "nightsister_elder",
 	stfName = "mob/creature_names", 
 	objectCRC = 4033230337, 
 	socialGroup = "nightsister",
+	
 	level = 278,
+
+	
 
 	combatFlags = ATTACKABLE_FLAG + ENEMY_FLAG + AGGRESSIVE_FLAG,
 
 	healthMax = 400000,
-	healthMin = 351000,
+	healthMin = 355000,
 	strength = 30000,
 	constitution = 30000,
 
 	actionMax = 400000,
-	actionMin = 351000,
+	actionMin = 355000,
 	quickness = 30000,
 	stamina = 30000,
 
 	mindMax = 400000,
-	mindMin = 351000,
+	mindMin = 355000,
 	focus = 30000,
 	willpower = 30000,
 
@@ -82,9 +86,9 @@ nightsisterElder = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 400,
+	accuracy = 375,
 
-	healer = 1,
+	healer = 0,
 
 	pack = 1,
 	herd = 0,
@@ -103,9 +107,9 @@ nightsisterElder = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 750,
-	weaponMaxDamage = 1550,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 392,
+	weaponMaxDamage = 808,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,15 +118,15 @@ nightsisterElder = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 650,
-	alternateWeaponMaxDamage = 1950,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 430,
+	alternateWeaponMaxDamage = 856,
+	alternateWeaponAttackSpeed = 1,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,4,11,15,19,30,33,39,40,99", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,30,33,39,40,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

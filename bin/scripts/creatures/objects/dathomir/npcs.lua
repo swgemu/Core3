@@ -1,4 +1,4 @@
---Copyright (C) 2007 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
  
 --This File is part of Core3.
  
@@ -74,6 +74,7 @@
  --Nightsister
  RunCreatureFile("objects/dathomir/npcs/nightsister/axkvaMin.lua")
  RunCreatureFile("objects/dathomir/npcs/nightsister/escapedNightsisterSlave.lua")
+ RunCreatureFile("objects/dathomir/npcs/nightsister/nightsisterElderLabor.lua")
  RunCreatureFile("objects/dathomir/npcs/nightsister/nightsisterElder.lua")
  RunCreatureFile("objects/dathomir/npcs/nightsister/nightsisterInitiate.lua")
  RunCreatureFile("objects/dathomir/npcs/nightsister/nightsisterOutcast.lua")

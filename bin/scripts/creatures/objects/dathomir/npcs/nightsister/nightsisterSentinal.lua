@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -57,18 +57,18 @@ nightsisterSentinal = Creature:new {
 
 	healthMax = 26000,
 	healthMin = 21000,
-	strength = 5000,
-	constitution = 5000,
+	strength = 3000,
+	constitution = 3000,
 
 	actionMax = 26000,
 	actionMin = 21000,
-	quickness = 5000,
-	stamina = 5000,
+	quickness = 3000,
+	stamina = 3000,
 
 	mindMax = 26000,
 	mindMin = 21000,
-	focus = 5000,
-	willpower = 5000,
+	focus = 3000,
+	willpower = 3000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -82,7 +82,7 @@ nightsisterSentinal = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 350,
+	accuracy = 315,
 
 	healer = 0,
 
@@ -103,9 +103,9 @@ nightsisterSentinal = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 250,
-	weaponMaxDamage = 800,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 202,
+	weaponMaxDamage = 525,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,15 +114,15 @@ nightsisterSentinal = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 200,
-	alternateWeaponMaxDamage = 900,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 243,
+	alternateWeaponMaxDamage = 547,
+	alternateWeaponAttackSpeed = 1,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,4,11,15,19,30,33,99", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,30,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

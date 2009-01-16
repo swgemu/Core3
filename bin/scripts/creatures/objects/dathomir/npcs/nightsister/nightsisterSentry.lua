@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -57,18 +57,18 @@ nightsisterSentry = Creature:new {
 
 	healthMax = 8800,
 	healthMin = 7200,
-	strength = 5000,
-	constitution = 5000,
+	strength = 2000,
+	constitution = 2000,
 
 	actionMax = 8800,
 	actionMin = 7200,
-	quickness = 5000,
-	stamina = 5000,
+	quickness = 2000,
+	stamina = 2000,
 
 	mindMax = 8800,
 	mindMin = 7200,
-	focus = 5000,
-	willpower = 5000,
+	focus = 2000,
+	willpower = 2000,
 
 	height = 1, -- Size of creature
 	armor = 1, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -82,13 +82,13 @@ nightsisterSentry = Creature:new {
 	acid = 60,
 	lightsaber = 0,
 
-	accuracy = 300,
+	accuracy = 282,
 
 	healer = 0,
 
 	pack = 1,
 	herd = 0,
-	stalker = 0,
+	stalker = 1,
 	killer = 1,
 	aggressive = 1,
 	invincible = 0, 
@@ -103,26 +103,26 @@ nightsisterSentry = Creature:new {
 	weaponTemp = "baton_gaderiffi", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 175,
-	weaponMaxDamage = 450,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 81,
+	weaponMaxDamage = 336,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
-	alternateWeapon = "object/weapon/melee/baton/shared_baton_stun.iff", -- File path to weapon -> object\xxx\xxx\xx
-	alternateWeaponName = "a Stun Baton", -- Name ex. 'a Vibrolance'
-	alternateWeaponTemp = "baton_stun", -- Weapon Template ex. 'lance_vibrolance'
-	alternateWeaponClass = "OneHandedMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
-	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 100,
-	alternateWeaponMaxDamage = 200,
-	alternateWeaponAttackSpeed = 1.5,
-	alternateWeaponDamageType = "STUN", -- ELECTRICITY, KINETIC, etc
-	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
+	alternateWeapon = "", -- File path to weapon -> object\xxx\xxx\xx
+	alternateWeaponName = "", -- Name ex. 'a Vibrolance'
+	alternateWeaponTemp = "", -- Weapon Template ex. 'lance_vibrolance'
+	alternateWeaponClass = "", -- Weapon Class ex. 'PolearmMeleeWeapon'
+	alternateWeaponEquipped = 0,
+	alternateWeaponMinDamage = 0,
+	alternateWeaponMaxDamage = 0,
+	alternateWeaponAttackSpeed = 0,
+	alternateWeaponDamageType = "", -- ELECTRICITY, KINETIC, etc
+	alternateWeaponArmorPiercing = "", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,4,11,19,30,39", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,30", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 

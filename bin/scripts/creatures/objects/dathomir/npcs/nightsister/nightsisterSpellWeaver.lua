@@ -1,4 +1,4 @@
---Copyright (C) 2008 <SWGEmu>
+--Copyright (C) 2009 <SWGEmu>
 
 
 --This File is part of Core3.
@@ -57,18 +57,18 @@ nightsisterSpellWeaver = Creature:new {
 
 	healthMax = 30000,
 	healthMin = 24000,
-	strength = 500,
-	constitution = 500,
+	strength = 3000,
+	constitution = 3000,
 
 	actionMax = 30000,
 	actionMin = 24000,
-	quickness = 500,
-	stamina = 500,
+	quickness = 3000,
+	stamina = 3000,
 
 	mindMax = 30000,
 	mindMin = 24000,
-	focus = 500,
-	willpower = 500,
+	focus = 3000,
+	willpower = 3000,
 
 	height = 1, -- Size of creature
 	armor = 2, -- 0 = None; 1 = Light; 2 = Medium; 3 = Heavy
@@ -82,9 +82,9 @@ nightsisterSpellWeaver = Creature:new {
 	acid = 100,
 	lightsaber = 0,
 
-	accuracy = 370,
+	accuracy = 325,
 
-	healer = 1,
+	healer = 0,
 
 	pack = 1,
 	herd = 0,
@@ -103,9 +103,9 @@ nightsisterSpellWeaver = Creature:new {
 	weaponTemp = "lance_vibrolance", -- Weapon Template ex. 'lance_vibrolance'
 	weaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	weaponEquipped = 1,
-	weaponMinDamage = 300,
-	weaponMaxDamage = 850,
-	weaponAttackSpeed = 1.5,
+	weaponMinDamage = 240,
+	weaponMaxDamage = 560,
+	weaponAttackSpeed = 1,
 	weaponDamageType = "ELECTRICITY", -- ELECTRICITY, KINETIC, etc
 	weaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
@@ -114,15 +114,15 @@ nightsisterSpellWeaver = Creature:new {
 	alternateWeaponTemp = "lance_vibro_axe", -- Weapon Template ex. 'lance_vibrolance'
 	alternateWeaponClass = "PolearmMeleeWeapon", -- Weapon Class ex. 'PolearmMeleeWeapon'
 	alternateWeaponEquipped = 1,
-	alternateWeaponMinDamage = 350,
-	alternateWeaponMaxDamage = 800,
-	alternateWeaponAttackSpeed = 1.5,
+	alternateWeaponMinDamage = 280,
+	alternateWeaponMaxDamage = 589,
+	alternateWeaponAttackSpeed = 1,
 	alternateWeaponDamageType = "KINETIC", -- ELECTRICITY, KINETIC, etc
 	alternateWeaponArmorPiercing = "LIGHT", -- LIGHT, NONE, MEDIUM, HEAVY
 
 	internalNPCDamageModifier = 0.3, -- Damage Modifier to other NPC's
 
-	lootGroup = "0,1,3,4,11,15,19,30,33,39,40,99", -- Group it belongs to for loot
+	lootGroup = "0,1,3,4,11,15,19,30,39,40,99", -- Group it belongs to for loot
 
 	tame = 0,  -- Likely hood to be tamed
 
