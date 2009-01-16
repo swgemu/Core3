@@ -68,6 +68,7 @@ public:
 	~GenericItemImplementation();
 
 	void generateAttributes(SceneObject* obj);
+	void updateCraftingValues(DraftSchematic* draftschematic);
 
 	//virtual void parseItemAttributes();
 	virtual void addAttributes(AttributeListMessage* alm);

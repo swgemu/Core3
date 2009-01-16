@@ -31,6 +31,7 @@ public:
 
 	void parseItemAttributes();
 	void addAttributes(AttributeListMessage* alm);
+	void updateCraftingValues(DraftSchematic* draftSchematic);
 
 	// Attribute Setters
 	inline void setSurplusMaintenance(uint32 maint) {

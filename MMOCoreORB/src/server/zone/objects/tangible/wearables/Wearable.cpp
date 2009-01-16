@@ -10,6 +10,8 @@
 
 #include "../../player/Player.h"
 
+#include "../../scene/SceneObject.h"
+
 #include "../TangibleObject.h"
 
 /*
@@ -37,6 +39,422 @@ Wearable::Wearable(DummyConstructorParameter* param) : TangibleObject(param) {
 Wearable::~Wearable() {
 }
 
+void Wearable::parseItemAttributes() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 6);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->parseItemAttributes();
+}
+
+void Wearable::init() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 7);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->init();
+}
+
+void Wearable::generateAttributes(SceneObject* obj) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 8);
+		method.addObjectParameter(obj);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->generateAttributes(obj);
+}
+
+void Wearable::sendTo(Player* player, bool doClose) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 9);
+		method.addObjectParameter(player);
+		method.addBooleanParameter(doClose);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->sendTo(player, doClose);
+}
+
+int Wearable::addSkillMod(int skillModType, int skillModValue) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 10);
+		method.addSignedIntParameter(skillModType);
+		method.addSignedIntParameter(skillModValue);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->addSkillMod(skillModType, skillModValue);
+}
+
+int Wearable::getSocketType(int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 11);
+		method.addSignedIntParameter(index);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocketType(index);
+}
+
+int Wearable::getSocketValue(int index) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 12);
+		method.addSignedIntParameter(index);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocketValue(index);
+}
+
+int Wearable::getSkillMod0Type() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 13);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSkillMod0Type();
+}
+
+int Wearable::getSkillMod1Type() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 14);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSkillMod1Type();
+}
+
+int Wearable::getSkillMod2Type() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 15);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSkillMod2Type();
+}
+
+int Wearable::getSkillMod0Value() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 16);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSkillMod0Value();
+}
+
+int Wearable::getSkillMod1Value() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 17);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSkillMod1Value();
+}
+
+int Wearable::getSkillMod2Value() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 18);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSkillMod2Value();
+}
+
+int Wearable::getSockets() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 19);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSockets();
+}
+
+int Wearable::getSocket0Type() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 20);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocket0Type();
+}
+
+int Wearable::getSocket1Type() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 21);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocket1Type();
+}
+
+int Wearable::getSocket2Type() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 22);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocket2Type();
+}
+
+int Wearable::getSocket3Type() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 23);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocket3Type();
+}
+
+int Wearable::getSocket0Value() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 24);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocket0Value();
+}
+
+int Wearable::getSocket1Value() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 25);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocket1Value();
+}
+
+int Wearable::getSocket2Value() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 26);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocket2Value();
+}
+
+int Wearable::getSocket3Value() {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 27);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return ((WearableImplementation*) _impl)->getSocket3Value();
+}
+
+void Wearable::setSocketType(int index, int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 28);
+		method.addSignedIntParameter(index);
+		method.addSignedIntParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocketType(index, type);
+}
+
+void Wearable::setSocketValue(int index, int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 29);
+		method.addSignedIntParameter(index);
+		method.addSignedIntParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocketValue(index, type);
+}
+
+void Wearable::setSockets(int socket) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 30);
+		method.addSignedIntParameter(socket);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSockets(socket);
+}
+
+void Wearable::setSocket0Type(int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 31);
+		method.addSignedIntParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocket0Type(type);
+}
+
+void Wearable::setSocket1Type(int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 32);
+		method.addSignedIntParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocket1Type(type);
+}
+
+void Wearable::setSocket2Type(int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 33);
+		method.addSignedIntParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocket2Type(type);
+}
+
+void Wearable::setSocket3Type(int type) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 34);
+		method.addSignedIntParameter(type);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocket3Type(type);
+}
+
+void Wearable::setSocket0Value(int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 35);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocket0Value(value);
+}
+
+void Wearable::setSocket1Value(int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 36);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocket1Value(value);
+}
+
+void Wearable::setSocket2Value(int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 37);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocket2Value(value);
+}
+
+void Wearable::setSocket3Value(int value) {
+	if (_impl == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, 38);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		((WearableImplementation*) _impl)->setSocket3Value(value);
+}
+
 /*
  *	WearableAdapter
  */
@@ -48,11 +466,242 @@ Packet* WearableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case 6:
+		parseItemAttributes();
+		break;
+	case 7:
+		init();
+		break;
+	case 8:
+		generateAttributes((SceneObject*) inv->getObjectParameter());
+		break;
+	case 9:
+		sendTo((Player*) inv->getObjectParameter(), inv->getBooleanParameter());
+		break;
+	case 10:
+		resp->insertSignedInt(addSkillMod(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
+		break;
+	case 11:
+		resp->insertSignedInt(getSocketType(inv->getSignedIntParameter()));
+		break;
+	case 12:
+		resp->insertSignedInt(getSocketValue(inv->getSignedIntParameter()));
+		break;
+	case 13:
+		resp->insertSignedInt(getSkillMod0Type());
+		break;
+	case 14:
+		resp->insertSignedInt(getSkillMod1Type());
+		break;
+	case 15:
+		resp->insertSignedInt(getSkillMod2Type());
+		break;
+	case 16:
+		resp->insertSignedInt(getSkillMod0Value());
+		break;
+	case 17:
+		resp->insertSignedInt(getSkillMod1Value());
+		break;
+	case 18:
+		resp->insertSignedInt(getSkillMod2Value());
+		break;
+	case 19:
+		resp->insertSignedInt(getSockets());
+		break;
+	case 20:
+		resp->insertSignedInt(getSocket0Type());
+		break;
+	case 21:
+		resp->insertSignedInt(getSocket1Type());
+		break;
+	case 22:
+		resp->insertSignedInt(getSocket2Type());
+		break;
+	case 23:
+		resp->insertSignedInt(getSocket3Type());
+		break;
+	case 24:
+		resp->insertSignedInt(getSocket0Value());
+		break;
+	case 25:
+		resp->insertSignedInt(getSocket1Value());
+		break;
+	case 26:
+		resp->insertSignedInt(getSocket2Value());
+		break;
+	case 27:
+		resp->insertSignedInt(getSocket3Value());
+		break;
+	case 28:
+		setSocketType(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 29:
+		setSocketValue(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		break;
+	case 30:
+		setSockets(inv->getSignedIntParameter());
+		break;
+	case 31:
+		setSocket0Type(inv->getSignedIntParameter());
+		break;
+	case 32:
+		setSocket1Type(inv->getSignedIntParameter());
+		break;
+	case 33:
+		setSocket2Type(inv->getSignedIntParameter());
+		break;
+	case 34:
+		setSocket3Type(inv->getSignedIntParameter());
+		break;
+	case 35:
+		setSocket0Value(inv->getSignedIntParameter());
+		break;
+	case 36:
+		setSocket1Value(inv->getSignedIntParameter());
+		break;
+	case 37:
+		setSocket2Value(inv->getSignedIntParameter());
+		break;
+	case 38:
+		setSocket3Value(inv->getSignedIntParameter());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+void WearableAdapter::parseItemAttributes() {
+	return ((WearableImplementation*) impl)->parseItemAttributes();
+}
+
+void WearableAdapter::init() {
+	return ((WearableImplementation*) impl)->init();
+}
+
+void WearableAdapter::generateAttributes(SceneObject* obj) {
+	return ((WearableImplementation*) impl)->generateAttributes(obj);
+}
+
+void WearableAdapter::sendTo(Player* player, bool doClose) {
+	return ((WearableImplementation*) impl)->sendTo(player, doClose);
+}
+
+int WearableAdapter::addSkillMod(int skillModType, int skillModValue) {
+	return ((WearableImplementation*) impl)->addSkillMod(skillModType, skillModValue);
+}
+
+int WearableAdapter::getSocketType(int index) {
+	return ((WearableImplementation*) impl)->getSocketType(index);
+}
+
+int WearableAdapter::getSocketValue(int index) {
+	return ((WearableImplementation*) impl)->getSocketValue(index);
+}
+
+int WearableAdapter::getSkillMod0Type() {
+	return ((WearableImplementation*) impl)->getSkillMod0Type();
+}
+
+int WearableAdapter::getSkillMod1Type() {
+	return ((WearableImplementation*) impl)->getSkillMod1Type();
+}
+
+int WearableAdapter::getSkillMod2Type() {
+	return ((WearableImplementation*) impl)->getSkillMod2Type();
+}
+
+int WearableAdapter::getSkillMod0Value() {
+	return ((WearableImplementation*) impl)->getSkillMod0Value();
+}
+
+int WearableAdapter::getSkillMod1Value() {
+	return ((WearableImplementation*) impl)->getSkillMod1Value();
+}
+
+int WearableAdapter::getSkillMod2Value() {
+	return ((WearableImplementation*) impl)->getSkillMod2Value();
+}
+
+int WearableAdapter::getSockets() {
+	return ((WearableImplementation*) impl)->getSockets();
+}
+
+int WearableAdapter::getSocket0Type() {
+	return ((WearableImplementation*) impl)->getSocket0Type();
+}
+
+int WearableAdapter::getSocket1Type() {
+	return ((WearableImplementation*) impl)->getSocket1Type();
+}
+
+int WearableAdapter::getSocket2Type() {
+	return ((WearableImplementation*) impl)->getSocket2Type();
+}
+
+int WearableAdapter::getSocket3Type() {
+	return ((WearableImplementation*) impl)->getSocket3Type();
+}
+
+int WearableAdapter::getSocket0Value() {
+	return ((WearableImplementation*) impl)->getSocket0Value();
+}
+
+int WearableAdapter::getSocket1Value() {
+	return ((WearableImplementation*) impl)->getSocket1Value();
+}
+
+int WearableAdapter::getSocket2Value() {
+	return ((WearableImplementation*) impl)->getSocket2Value();
+}
+
+int WearableAdapter::getSocket3Value() {
+	return ((WearableImplementation*) impl)->getSocket3Value();
+}
+
+void WearableAdapter::setSocketType(int index, int type) {
+	return ((WearableImplementation*) impl)->setSocketType(index, type);
+}
+
+void WearableAdapter::setSocketValue(int index, int type) {
+	return ((WearableImplementation*) impl)->setSocketValue(index, type);
+}
+
+void WearableAdapter::setSockets(int socket) {
+	return ((WearableImplementation*) impl)->setSockets(socket);
+}
+
+void WearableAdapter::setSocket0Type(int type) {
+	return ((WearableImplementation*) impl)->setSocket0Type(type);
+}
+
+void WearableAdapter::setSocket1Type(int type) {
+	return ((WearableImplementation*) impl)->setSocket1Type(type);
+}
+
+void WearableAdapter::setSocket2Type(int type) {
+	return ((WearableImplementation*) impl)->setSocket2Type(type);
+}
+
+void WearableAdapter::setSocket3Type(int type) {
+	return ((WearableImplementation*) impl)->setSocket3Type(type);
+}
+
+void WearableAdapter::setSocket0Value(int value) {
+	return ((WearableImplementation*) impl)->setSocket0Value(value);
+}
+
+void WearableAdapter::setSocket1Value(int value) {
+	return ((WearableImplementation*) impl)->setSocket1Value(value);
+}
+
+void WearableAdapter::setSocket2Value(int value) {
+	return ((WearableImplementation*) impl)->setSocket2Value(value);
+}
+
+void WearableAdapter::setSocket3Value(int value) {
+	return ((WearableImplementation*) impl)->setSocket3Value(value);
 }
 
 /*

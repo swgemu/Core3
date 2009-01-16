@@ -404,6 +404,16 @@ void PowerupImplementation::generateName() {
 	customName = UnicodeString(powerupName.toString());
 }
 
+void PowerupImplementation::updateCraftingValues(DraftSchematic* draftSchematic){
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	int hitPoints = (int)craftingValues->getCurrentValue("hitpoints");
+	setPowerupUses(hitPoints);
+
+	int effect = (int)craftingValues->getCurrentValue("effect");
+	setPowerupStats(effect);
+}
+
 void PowerupImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;

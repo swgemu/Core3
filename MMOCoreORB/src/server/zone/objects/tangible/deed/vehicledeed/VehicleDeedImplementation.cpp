@@ -50,7 +50,8 @@ void VehicleDeedImplementation::init() {
 
 	setHitPoints(1000);
 
-	if (templateName == "speederbike_swoop") {
+	//speederbike_swoop is the old crafting lua's, swoop is the new crafting luas so remove speederbike_swoop after all old deeds are gone
+	if (templateName == "speederbike_swoop" || templateName == "swoop") {
 		targetName = UnicodeString("speederbike_swoop");
 		targetFile = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff";
 		vehicleFile = "object/mobile/vehicle/shared_speederbike_swoop.iff";
@@ -113,7 +114,7 @@ void VehicleDeedImplementation::sendRadialResponseTo(Player* player, ObjectMenuR
 void VehicleDeedImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
 	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
 
-	int hitPoints = (int)craftingValues->getCurrentValue("hitPoints");
+	int hitPoints = (int)craftingValues->getCurrentValue("hit_points");
 	setHitPoints(hitPoints);
 }
 

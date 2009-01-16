@@ -50,48 +50,209 @@ which carries forward this exception.
 #include "Wearable.h"
 
 class WearableImplementation : public WearableServant {
+private:
+
+	int skillMod0Type;
+	int skillMod0Value;
+
+	int skillMod1Type;
+	int skillMod1Value;
+
+	int skillMod2Type;
+	int skillMod2Value;
+
+	int sockets;
+
+	int socket0Type;
+	int socket0Value;
+
+	int socket1Type;
+	int socket1Value;
+
+	int socket2Type;
+	int socket2Value;
+
+	int socket3Type;
+	int socket3Value;
+
 public:
 
-	WearableImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false)
-			: WearableServant(objid, CLOTHING) {
-		objectCRC = tempCRC;
+	WearableImplementation(uint64 objid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
+	WearableImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
+	WearableImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false);
 
-		customName = n;
 
-		templateTypeName = "wearables_name";
-		templateName = tempn;
+	void parseItemAttributes();
+	void init();
 
-		equipped = eqp;
+	void sendTo(Player* player, bool doClose = true);
+
+	void sendRadialResponseTo(Player* player, ObjectMenuResponse* omr);
+
+	void updateCraftingValues(DraftSchematic* draftSchematic);
+
+	void generateAttributes(SceneObject* obj);
+
+	void addAttributes(AttributeListMessage* alm);
+
+	int addSkillMod(int skillModType, int skillModValue);
+
+	void setSocket(int index, int type, int value);
+	void setSocketType(int index, int type);
+	void setSocketValue(int index, int type);
+
+	int getSocketType(int index);
+	int getSocketValue(int index);
+
+	inline void setSkillMod0Type(int skillModType) {
+		skillMod0Type = skillModType;
+		String name = "skillMod0Type";
+		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
-	WearableImplementation(CreatureObject* creature, uint64 oid, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false)
-		: WearableServant(oid, CLOTHING) {
-		objectCRC = tempCRC;
-
-		customName = n;
-
-		templateTypeName = "wearables_name";
-		templateName = tempn;
-
-		if ((equipped = eqp))
-			setParent(creature, 0x04);
-		else
-			setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
+	inline void setSkillMod1Type(int skillModType) {
+		skillMod1Type = skillModType;
+		String name = "skillMod1Type";
+		itemAttributes->setIntAttribute(name, skillModType);
 	}
 
-	WearableImplementation(CreatureObject* creature, uint32 tempCRC, const UnicodeString& n, const String& tempn, bool eqp = false)
-			: WearableServant(creature->getNewItemID(), CLOTHING) {
-		objectCRC = tempCRC;
 
-		customName = n;
+	inline void setSkillMod2Type(int skillModType) {
+		skillMod2Type = skillModType;
+		String name = "skillMod2Type";
+		itemAttributes->setIntAttribute(name, skillModType);
+	}
 
-		templateTypeName = "wearables_name";
-		templateName = tempn;
+	inline void setSkillMod0Value(int skillModValue) {
+		skillMod0Value = skillModValue;
+		String name = "skillMod0Value";
+		itemAttributes->setIntAttribute(name, skillModValue);
+	}
 
-		if ((equipped = eqp))
-			setParent(creature, 0x04);
-		else
-			setParent((TangibleObject*) creature->getInventory(), 0xFFFFFFFF);
+	inline void setSkillMod1Value(int skillModValue) {
+		skillMod1Value = skillModValue;
+		String name = "skillMod1Value";
+		itemAttributes->setIntAttribute(name, skillModValue);
+	}
+
+	inline void setSkillMod2Value(int skillModValue) {
+		skillMod2Value = skillModValue;
+		String name = "skillMod2Value";
+		itemAttributes->setIntAttribute(name, skillModValue);
+	}
+
+	inline void setSockets(int socket) {
+		sockets = socket;
+		String key = "sockets";
+		itemAttributes->setIntAttribute(key, socket);
+	}
+
+	inline void setSocket0Type(int socketType) {
+		socket0Type = socketType;
+		String key = "socket0Type";
+		itemAttributes->setIntAttribute(key, socketType);
+	}
+
+	inline void setSocket1Type(int socketType) {
+		socket1Type = socketType;
+		String key = "socket1Type";
+		itemAttributes->setIntAttribute(key, socketType);
+	}
+
+	inline void setSocket2Type(int socketType) {
+		socket2Type = socketType;
+		String key = "socket2Type";
+		itemAttributes->setIntAttribute(key, socketType);
+	}
+
+	inline void setSocket3Type(int socketType) {
+		socket3Type = socketType;
+		String key = "socket3Type";
+		itemAttributes->setIntAttribute(key, socketType);
+	}
+
+	inline void setSocket0Value(int socketValue) {
+		socket0Value = socketValue;
+		String key = "socket0Value";
+		itemAttributes->setIntAttribute(key, socketValue);
+	}
+
+	inline void setSocket1Value(int socketValue) {
+		socket1Value = socketValue;
+		String key = "socket1Value";
+		itemAttributes->setIntAttribute(key, socketValue);
+	}
+
+	inline void setSocket2Value(int socketValue) {
+		socket2Value = socketValue;
+		String key = "socket2Value";
+		itemAttributes->setIntAttribute(key, socketValue);
+	}
+
+	inline void setSocket3Value(int socketValue) {
+		socket3Value = socketValue;
+		String key = "socket3Value";
+		itemAttributes->setIntAttribute(key, socketValue);
+	}
+
+	inline int getSkillMod0Type() {
+		return skillMod0Type;
+	}
+
+	inline int getSkillMod1Type() {
+		return skillMod1Type;
+	}
+
+	inline int getSkillMod2Type() {
+		return skillMod2Type;
+	}
+
+	inline int getSkillMod0Value() {
+		return skillMod0Value;
+	}
+
+	inline int getSkillMod1Value() {
+		return skillMod1Value;
+	}
+
+	inline int getSkillMod2Value() {
+		return skillMod2Value;
+	}
+
+	inline int getSockets() {
+		return sockets;
+	}
+
+	inline int getSocket0Type() {
+		return socket0Type;
+	}
+
+	inline int getSocket1Type() {
+		return socket1Type;
+	}
+
+	inline int getSocket2Type() {
+		return socket2Type;
+	}
+
+	inline int getSocket3Type() {
+		return socket3Type;
+	}
+
+	inline int getSocket0Value() {
+		return socket0Value;
+	}
+
+	inline int getSocket1Value() {
+		return socket1Value;
+	}
+
+	inline int getSocket2Value() {
+		return socket2Value;
+	}
+
+	inline int getSocket3Value() {
+		return socket3Value;
 	}
 };
 

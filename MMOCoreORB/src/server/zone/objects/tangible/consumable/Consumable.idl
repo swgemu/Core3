@@ -1,0 +1,26 @@
+import "../../scene/SceneObject";
+
+import "../../creature/CreatureObject";
+
+import "../../player/Player";
+
+import "../TangibleObject";
+
+interface Consumable implements TangibleObject {
+	
+
+	Consumable(unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, int mptype) {
+		super(oid, int tp);
+	}
+
+	Consumable(CreatureObject creature, unsigned long oid, unsigned int tempCRC, const UnicodeString n, const String tempn, int mptype) {
+		super(oid, int tp);
+	}	
+
+	Consumable(CreatureObject creature, unsigned int tempCRC, const UnicodeString n, const String tempn, int mptype) {
+		super(unsigned long oid, int tp);
+	}
+	
+	void generateAttributes(SceneObject obj);
+
+}

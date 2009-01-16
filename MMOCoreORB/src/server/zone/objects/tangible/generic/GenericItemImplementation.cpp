@@ -89,6 +89,10 @@ GenericItemImplementation::GenericItemImplementation(CreatureObject* creature, u
 GenericItemImplementation::~GenericItemImplementation() {
 }
 
+void GenericItemImplementation::updateCraftingValues(DraftSchematic* draftschematic){
+
+}
+
 void GenericItemImplementation::generateAttributes(SceneObject* obj) {
 	if (!obj->isPlayer())
 		return;

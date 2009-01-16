@@ -49,6 +49,24 @@ void GeneratorDeedImplementation::parseItemAttributes() {
 	setLotSize(itemAttributes->getIntAttribute(attr));
 }
 
+void GeneratorDeedImplementation::updateCraftingValues(DraftSchematic* draftSchematic) {
+	DraftSchematicValues* craftingValues = draftSchematic->getCraftingValues();
+
+	int extractionRate = (int)craftingValues->getCurrentValue("extractrate");
+	setExtractionRate(extractionRate);
+
+	int hopperSize = (int)craftingValues->getCurrentValue("hoppersize");
+	setHopperSize(hopperSize);
+
+	int hitPoints = (int)craftingValues->getCurrentValue("hitpoints");
+	//setHitPoints(hitPoints); isnt this the same as default 100/100? they only take damage when at 0 maintenance
+
+	setSurplusMaintenance(0);
+	setMaintenanceRate(10);//dunno what this is supposed to be set to for each harvester
+	//TODO: figure out lot sizes for all the different sizes.
+	setLotSize(1);
+}
+
 void GeneratorDeedImplementation::addAttributes(AttributeListMessage* alm) {
 	addHeaderAttributes(alm);
 
